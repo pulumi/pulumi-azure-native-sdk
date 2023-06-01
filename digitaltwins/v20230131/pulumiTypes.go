@@ -47,15 +47,15 @@ func (val *AzureDataExplorerConnectionProperties) Defaults() *AzureDataExplorerC
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		adxTableName_ := "AdtPropertyEvents"
 		tmp.AdxTableName = &adxTableName_
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		eventHubConsumerGroup_ := "$Default"
 		tmp.EventHubConsumerGroup = &eventHubConsumerGroup_
 	}
-	if isZero(tmp.RecordPropertyAndItemRemovals) {
+	if tmp.RecordPropertyAndItemRemovals == nil {
 		recordPropertyAndItemRemovals_ := "false"
 		tmp.RecordPropertyAndItemRemovals = &recordPropertyAndItemRemovals_
 	}
@@ -110,13 +110,13 @@ func (val *AzureDataExplorerConnectionPropertiesArgs) Defaults() *AzureDataExplo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		tmp.AdxTableName = pulumi.StringPtr("AdtPropertyEvents")
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		tmp.EventHubConsumerGroup = pulumi.StringPtr("$Default")
 	}
-	if isZero(tmp.RecordPropertyAndItemRemovals) {
+	if tmp.RecordPropertyAndItemRemovals == nil {
 		tmp.RecordPropertyAndItemRemovals = pulumi.StringPtr("false")
 	}
 	return &tmp
@@ -461,15 +461,15 @@ func (val *AzureDataExplorerConnectionPropertiesResponse) Defaults() *AzureDataE
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		adxTableName_ := "AdtPropertyEvents"
 		tmp.AdxTableName = &adxTableName_
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		eventHubConsumerGroup_ := "$Default"
 		tmp.EventHubConsumerGroup = &eventHubConsumerGroup_
 	}
-	if isZero(tmp.RecordPropertyAndItemRemovals) {
+	if tmp.RecordPropertyAndItemRemovals == nil {
 		recordPropertyAndItemRemovals_ := "false"
 		tmp.RecordPropertyAndItemRemovals = &recordPropertyAndItemRemovals_
 	}
@@ -964,7 +964,7 @@ type DigitalTwinsIdentity struct {
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
 	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 	// .
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // DigitalTwinsIdentityInput is an input type that accepts DigitalTwinsIdentityArgs and DigitalTwinsIdentityOutput values.
@@ -985,7 +985,7 @@ type DigitalTwinsIdentityArgs struct {
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
 	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 	// .
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (DigitalTwinsIdentityArgs) ElementType() reflect.Type {
@@ -1074,8 +1074,8 @@ func (o DigitalTwinsIdentityOutput) Type() pulumi.StringPtrOutput {
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
 // '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 // .
-func (o DigitalTwinsIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v DigitalTwinsIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o DigitalTwinsIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DigitalTwinsIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type DigitalTwinsIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1115,13 +1115,13 @@ func (o DigitalTwinsIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
 // '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 // .
-func (o DigitalTwinsIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *DigitalTwinsIdentity) map[string]interface{} {
+func (o DigitalTwinsIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DigitalTwinsIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The managed identity for the DigitalTwinsInstance.

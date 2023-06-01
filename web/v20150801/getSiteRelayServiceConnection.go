@@ -11,8 +11,6 @@ import (
 )
 
 // Class that represents a BizTalk Hybrid Connection
-//
-// Deprecated: Version 2015-08-01 will be removed in v2 of the provider.
 func LookupSiteRelayServiceConnection(ctx *pulumi.Context, args *LookupSiteRelayServiceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupSiteRelayServiceConnectionResult, error) {
 	var rv LookupSiteRelayServiceConnectionResult
 	err := ctx.Invoke("azure-native:web/v20150801:getSiteRelayServiceConnection", args, &rv, opts...)

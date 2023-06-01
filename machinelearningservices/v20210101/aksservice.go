@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,9 +51,6 @@ func NewAKSService(ctx *pulumi.Context,
 	}
 	args.ComputeType = pulumi.String("AKS")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:machinelearningservices:AKSService"),
-		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20200501preview:AKSService"),
 		},

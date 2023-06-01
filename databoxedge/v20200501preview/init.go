@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:databoxedge/v20200501preview:BandwidthSchedule":
-		r = &BandwidthSchedule{}
-	case "azure-native:databoxedge/v20200501preview:Container":
-		r = &Container{}
 	case "azure-native:databoxedge/v20200501preview:Device":
 		r = &Device{}
 	case "azure-native:databoxedge/v20200501preview:FileEventTrigger":
@@ -35,14 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Order{}
 	case "azure-native:databoxedge/v20200501preview:PeriodicTimerEventTrigger":
 		r = &PeriodicTimerEventTrigger{}
-	case "azure-native:databoxedge/v20200501preview:Share":
-		r = &Share{}
 	case "azure-native:databoxedge/v20200501preview:StorageAccount":
 		r = &StorageAccount{}
-	case "azure-native:databoxedge/v20200501preview:StorageAccountCredential":
-		r = &StorageAccountCredential{}
-	case "azure-native:databoxedge/v20200501preview:User":
-		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

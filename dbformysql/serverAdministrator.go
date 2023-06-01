@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a and external administrator to be created.
 // API Version: 2017-12-01.
+// Previous API Version: 2017-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ServerAdministrator struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +62,9 @@ func NewServerAdministrator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20171201preview:ServerAdministrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:ServerAdministrator"),
 		},
 	})
 	opts = append(opts, aliases)

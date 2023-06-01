@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workload group operations for a sql pool
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlPoolWorkloadGroup struct {
 	pulumi.CustomResourceState
 
@@ -133,7 +134,7 @@ type sqlPoolWorkloadGroupArgs struct {
 	SqlPoolName string `pulumi:"sqlPoolName"`
 	// The name of the workload group.
 	WorkloadGroupName *string `pulumi:"workloadGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -157,7 +158,7 @@ type SqlPoolWorkloadGroupArgs struct {
 	SqlPoolName pulumi.StringInput
 	// The name of the workload group.
 	WorkloadGroupName pulumi.StringPtrInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves details of a specific security connector
-// API Version: 2021-07-01-preview.
+// API Version: 2022-08-01-preview.
 func LookupSecurityConnector(ctx *pulumi.Context, args *LookupSecurityConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorResult, error) {
 	var rv LookupSecurityConnectorResult
 	err := ctx.Invoke("azure-native:security:getSecurityConnector", args, &rv, opts...)
@@ -30,12 +30,16 @@ type LookupSecurityConnectorArgs struct {
 
 // The security connector resource.
 type LookupSecurityConnectorResult struct {
+	// The security connector environment data.
+	EnvironmentData interface{} `pulumi:"environmentData"`
 	// The multi cloud resource's cloud name.
-	CloudName *string `pulumi:"cloudName"`
+	EnvironmentName *string `pulumi:"environmentName"`
 	// Entity tag is used for comparing two or more entities from the same requested resource.
 	Etag *string `pulumi:"etag"`
-	// The multi cloud resource identifier (account id in case of AWS connector).
+	// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
 	HierarchyIdentifier *string `pulumi:"hierarchyIdentifier"`
+	// The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
+	HierarchyIdentifierTrialEndDate string `pulumi:"hierarchyIdentifierTrialEndDate"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Kind of the resource
@@ -46,8 +50,6 @@ type LookupSecurityConnectorResult struct {
 	Name string `pulumi:"name"`
 	// A collection of offerings for the security connector.
 	Offerings []interface{} `pulumi:"offerings"`
-	// The multi cloud account's organizational data
-	OrganizationalData *SecurityConnectorPropertiesResponseOrganizationalData `pulumi:"organizationalData"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// A list of key value pairs that describe the resource.
@@ -95,9 +97,14 @@ func (o LookupSecurityConnectorResultOutput) ToLookupSecurityConnectorResultOutp
 	return o
 }
 
+// The security connector environment data.
+func (o LookupSecurityConnectorResultOutput) EnvironmentData() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorResult) interface{} { return v.EnvironmentData }).(pulumi.AnyOutput)
+}
+
 // The multi cloud resource's cloud name.
-func (o LookupSecurityConnectorResultOutput) CloudName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+func (o LookupSecurityConnectorResultOutput) EnvironmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.EnvironmentName }).(pulumi.StringPtrOutput)
 }
 
 // Entity tag is used for comparing two or more entities from the same requested resource.
@@ -105,9 +112,14 @@ func (o LookupSecurityConnectorResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// The multi cloud resource identifier (account id in case of AWS connector).
+// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
 func (o LookupSecurityConnectorResultOutput) HierarchyIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) *string { return v.HierarchyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
+func (o LookupSecurityConnectorResultOutput) HierarchyIdentifierTrialEndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorResult) string { return v.HierarchyIdentifierTrialEndDate }).(pulumi.StringOutput)
 }
 
 // Resource Id
@@ -133,13 +145,6 @@ func (o LookupSecurityConnectorResultOutput) Name() pulumi.StringOutput {
 // A collection of offerings for the security connector.
 func (o LookupSecurityConnectorResultOutput) Offerings() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorResult) []interface{} { return v.Offerings }).(pulumi.ArrayOutput)
-}
-
-// The multi cloud account's organizational data
-func (o LookupSecurityConnectorResultOutput) OrganizationalData() SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput {
-	return o.ApplyT(func(v LookupSecurityConnectorResult) *SecurityConnectorPropertiesResponseOrganizationalData {
-		return v.OrganizationalData
-	}).(SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

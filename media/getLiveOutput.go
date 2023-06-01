@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a live output.
-// API Version: 2020-05-01.
+// API Version: 2022-11-01.
 func LookupLiveOutput(ctx *pulumi.Context, args *LookupLiveOutputArgs, opts ...pulumi.InvokeOption) (*LookupLiveOutputResult, error) {
 	var rv LookupLiveOutputResult
 	err := ctx.Invoke("azure-native:media:getLiveOutput", args, &rv, opts...)
@@ -58,6 +58,10 @@ type LookupLiveOutputResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource state of the live output.
 	ResourceState string `pulumi:"resourceState"`
+	// ISO 8601 time between 1 minute to the duration of archiveWindowLength to control seek-able window length during Live. The service won't use this property once LiveOutput stops. The archived VOD will have full content with original ArchiveWindowLength. For example, use PT1H30M to indicate 1 hour and 30 minutes of rewind window length. Service will use implicit default value 30m only if Live Event enables LL.
+	RewindWindowLength *string `pulumi:"rewindWindowLength"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -163,6 +167,16 @@ func (o LookupLiveOutputResultOutput) ProvisioningState() pulumi.StringOutput {
 // The resource state of the live output.
 func (o LookupLiveOutputResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveOutputResult) string { return v.ResourceState }).(pulumi.StringOutput)
+}
+
+// ISO 8601 time between 1 minute to the duration of archiveWindowLength to control seek-able window length during Live. The service won't use this property once LiveOutput stops. The archived VOD will have full content with original ArchiveWindowLength. For example, use PT1H30M to indicate 1 hour and 30 minutes of rewind window length. Service will use implicit default value 30m only if Live Event enables LL.
+func (o LookupLiveOutputResultOutput) RewindWindowLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLiveOutputResult) *string { return v.RewindWindowLength }).(pulumi.StringPtrOutput)
+}
+
+// The system metadata relating to this resource.
+func (o LookupLiveOutputResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLiveOutputResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

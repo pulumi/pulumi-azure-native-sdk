@@ -11,8 +11,6 @@ import (
 )
 
 // Get a specific action rule
-//
-// Deprecated: Version 2018-11-02-privatepreview will be removed in v2 of the provider.
 func LookupActionRuleByName(ctx *pulumi.Context, args *LookupActionRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupActionRuleByNameResult, error) {
 	var rv LookupActionRuleByNameResult
 	err := ctx.Invoke("azure-native:alertsmanagement/v20181102privatepreview:getActionRuleByName", args, &rv, opts...)

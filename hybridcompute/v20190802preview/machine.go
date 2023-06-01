@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a hybrid machine.
-//
-// Deprecated: Version 2019-08-02-preview will be removed in v2 of the provider.
 type Machine struct {
 	pulumi.CustomResourceState
 
@@ -126,6 +124,9 @@ func NewMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227preview:Machine"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:Machine"),
 		},
 	})
 	opts = append(opts, aliases)

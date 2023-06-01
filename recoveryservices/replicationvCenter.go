@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // vCenter definition.
-// API Version: 2018-07-10.
+// API Version: 2023-02-01.
+// Previous API Version: 2018-07-10. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ReplicationvCenter struct {
 	pulumi.CustomResourceState
 
@@ -151,8 +152,8 @@ type replicationvCenterArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the recovery services vault.
 	ResourceName string `pulumi:"resourceName"`
-	// vCenter name.
-	VCenterName *string `pulumi:"vCenterName"`
+	// vcenter name.
+	VcenterName *string `pulumi:"vcenterName"`
 }
 
 // The set of arguments for constructing a ReplicationvCenter resource.
@@ -165,8 +166,8 @@ type ReplicationvCenterArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The name of the recovery services vault.
 	ResourceName pulumi.StringInput
-	// vCenter name.
-	VCenterName pulumi.StringPtrInput
+	// vcenter name.
+	VcenterName pulumi.StringPtrInput
 }
 
 func (ReplicationvCenterArgs) ElementType() reflect.Type {

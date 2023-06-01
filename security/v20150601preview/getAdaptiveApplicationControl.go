@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an application control VM/server group.
-//
-// Deprecated: Version 2015-06-01-preview will be removed in v2 of the provider.
 func LookupAdaptiveApplicationControl(ctx *pulumi.Context, args *LookupAdaptiveApplicationControlArgs, opts ...pulumi.InvokeOption) (*LookupAdaptiveApplicationControlResult, error) {
 	var rv LookupAdaptiveApplicationControlResult
 	err := ctx.Invoke("azure-native:security/v20150601preview:getAdaptiveApplicationControl", args, &rv, opts...)

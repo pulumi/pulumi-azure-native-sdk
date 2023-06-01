@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,7 +54,7 @@ func NewPrivateEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	if args.Subnet != nil {
-		args.Subnet = args.Subnet.ToSubnetTypePtrOutput().ApplyT(func(v *SubnetType) *SubnetType { return v.Defaults() }).(SubnetTypePtrOutput)
+		args.Subnet = args.Subnet.ToSubnetPtrOutput().ApplyT(func(v *Subnet) *Subnet { return v.Defaults() }).(SubnetPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -138,6 +138,9 @@ func NewPrivateEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:PrivateEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:PrivateEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateEndpoint
@@ -191,7 +194,7 @@ type privateEndpointArgs struct {
 	// The resource id of private endpoint.
 	ResourceGuid *string `pulumi:"resourceGuid"`
 	// The ID of the subnet from which the private IP will be allocated.
-	Subnet *SubnetType `pulumi:"subnet"`
+	Subnet *Subnet `pulumi:"subnet"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -217,7 +220,7 @@ type PrivateEndpointArgs struct {
 	// The resource id of private endpoint.
 	ResourceGuid pulumi.StringPtrInput
 	// The ID of the subnet from which the private IP will be allocated.
-	Subnet SubnetTypePtrInput
+	Subnet SubnetPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }

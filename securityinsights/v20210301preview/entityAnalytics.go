@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,9 +52,6 @@ func NewEntityAnalytics(ctx *pulumi.Context,
 	args.Kind = pulumi.String("EntityAnalytics")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:EntityAnalytics"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:EntityAnalytics"),
 		},
 		{
@@ -97,7 +94,13 @@ func NewEntityAnalytics(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:EntityAnalytics"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:EntityAnalytics"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:EntityAnalytics"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:EntityAnalytics"),
 		},
 	})
 	opts = append(opts, aliases)

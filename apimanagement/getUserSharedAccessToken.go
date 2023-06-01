@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Shared Access Authorization Token for the User.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func GetUserSharedAccessToken(ctx *pulumi.Context, args *GetUserSharedAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetUserSharedAccessTokenResult, error) {
 	var rv GetUserSharedAccessTokenResult
 	err := ctx.Invoke("azure-native:apimanagement:getUserSharedAccessToken", args.Defaults(), &rv, opts...)
@@ -26,7 +26,7 @@ type GetUserSharedAccessTokenArgs struct {
 	Expiry string `pulumi:"expiry"`
 	// The Key to be used to generate token for user.
 	KeyType KeyType `pulumi:"keyType"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -70,7 +70,7 @@ type GetUserSharedAccessTokenOutputArgs struct {
 	Expiry pulumi.StringInput `pulumi:"expiry"`
 	// The Key to be used to generate token for user.
 	KeyType KeyTypeInput `pulumi:"keyType"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

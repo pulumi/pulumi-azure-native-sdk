@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Clouds resource definition.
 // API Version: 2020-06-05-preview.
+// Previous API Version: 2020-06-05-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Cloud struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +61,9 @@ func NewCloud(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:Cloud"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:Cloud"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,8 +11,6 @@ import (
 )
 
 // Get user profile.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("azure-native:devtestlab/v20160515:getUser", args, &rv, opts...)

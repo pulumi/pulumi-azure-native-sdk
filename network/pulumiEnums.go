@@ -18,22 +18,14 @@ const (
 	AccessDeny  = Access("Deny")
 )
 
-// Direction that specifies whether the access rules is inbound/outbound.
-type AccessRuleDirection string
-
-const (
-	AccessRuleDirectionInbound  = AccessRuleDirection("Inbound")
-	AccessRuleDirectionOutbound = AccessRuleDirection("Outbound")
-)
-
-// Describes the override action to be applied when rule matches.
+// Describes the override action to be applied when rule matches. 'Allow' action is not available for CRS 3.2
 type ActionType string
 
 const (
-	ActionTypeAllow    = ActionType("Allow")
-	ActionTypeBlock    = ActionType("Block")
-	ActionTypeLog      = ActionType("Log")
-	ActionTypeRedirect = ActionType("Redirect")
+	ActionTypeAnomalyScoring = ActionType("AnomalyScoring")
+	ActionTypeAllow          = ActionType("Allow")
+	ActionTypeBlock          = ActionType("Block")
+	ActionTypeLog            = ActionType("Log")
 )
 
 // Address prefix type.
@@ -62,6 +54,14 @@ const (
 	AllowedEndpointRecordTypeAny         = AllowedEndpointRecordType("Any")
 )
 
+// Verify client certificate revocation status.
+type ApplicationGatewayClientRevocationOptions string
+
+const (
+	ApplicationGatewayClientRevocationOptionsNone = ApplicationGatewayClientRevocationOptions("None")
+	ApplicationGatewayClientRevocationOptionsOCSP = ApplicationGatewayClientRevocationOptions("OCSP")
+)
+
 // Cookie based affinity.
 type ApplicationGatewayCookieBasedAffinity string
 
@@ -70,12 +70,20 @@ const (
 	ApplicationGatewayCookieBasedAffinityDisabled = ApplicationGatewayCookieBasedAffinity("Disabled")
 )
 
-// Status code of the application gateway customer error.
+// Status code of the application gateway custom error.
 type ApplicationGatewayCustomErrorStatusCode string
 
 const (
+	ApplicationGatewayCustomErrorStatusCodeHttpStatus400 = ApplicationGatewayCustomErrorStatusCode("HttpStatus400")
 	ApplicationGatewayCustomErrorStatusCodeHttpStatus403 = ApplicationGatewayCustomErrorStatusCode("HttpStatus403")
+	ApplicationGatewayCustomErrorStatusCodeHttpStatus404 = ApplicationGatewayCustomErrorStatusCode("HttpStatus404")
+	ApplicationGatewayCustomErrorStatusCodeHttpStatus405 = ApplicationGatewayCustomErrorStatusCode("HttpStatus405")
+	ApplicationGatewayCustomErrorStatusCodeHttpStatus408 = ApplicationGatewayCustomErrorStatusCode("HttpStatus408")
+	ApplicationGatewayCustomErrorStatusCodeHttpStatus499 = ApplicationGatewayCustomErrorStatusCode("HttpStatus499")
+	ApplicationGatewayCustomErrorStatusCodeHttpStatus500 = ApplicationGatewayCustomErrorStatusCode("HttpStatus500")
 	ApplicationGatewayCustomErrorStatusCodeHttpStatus502 = ApplicationGatewayCustomErrorStatusCode("HttpStatus502")
+	ApplicationGatewayCustomErrorStatusCodeHttpStatus503 = ApplicationGatewayCustomErrorStatusCode("HttpStatus503")
+	ApplicationGatewayCustomErrorStatusCodeHttpStatus504 = ApplicationGatewayCustomErrorStatusCode("HttpStatus504")
 )
 
 // Web application firewall mode.
@@ -86,12 +94,23 @@ const (
 	ApplicationGatewayFirewallModePrevention = ApplicationGatewayFirewallMode("Prevention")
 )
 
+// Load Distribution Targets resource of an application gateway.
+type ApplicationGatewayLoadDistributionAlgorithm string
+
+const (
+	ApplicationGatewayLoadDistributionAlgorithmRoundRobin       = ApplicationGatewayLoadDistributionAlgorithm("RoundRobin")
+	ApplicationGatewayLoadDistributionAlgorithmLeastConnections = ApplicationGatewayLoadDistributionAlgorithm("LeastConnections")
+	ApplicationGatewayLoadDistributionAlgorithmIpHash           = ApplicationGatewayLoadDistributionAlgorithm("IpHash")
+)
+
 // The protocol used for the probe.
 type ApplicationGatewayProtocol string
 
 const (
 	ApplicationGatewayProtocolHttp  = ApplicationGatewayProtocol("Http")
 	ApplicationGatewayProtocolHttps = ApplicationGatewayProtocol("Https")
+	ApplicationGatewayProtocolTcp   = ApplicationGatewayProtocol("Tcp")
+	ApplicationGatewayProtocolTls   = ApplicationGatewayProtocol("Tls")
 )
 
 // HTTP redirection type.
@@ -166,6 +185,8 @@ const (
 	ApplicationGatewaySslPolicyNameAppGwSslPolicy20150501  = ApplicationGatewaySslPolicyName("AppGwSslPolicy20150501")
 	ApplicationGatewaySslPolicyNameAppGwSslPolicy20170401  = ApplicationGatewaySslPolicyName("AppGwSslPolicy20170401")
 	ApplicationGatewaySslPolicyNameAppGwSslPolicy20170401S = ApplicationGatewaySslPolicyName("AppGwSslPolicy20170401S")
+	ApplicationGatewaySslPolicyNameAppGwSslPolicy20220101  = ApplicationGatewaySslPolicyName("AppGwSslPolicy20220101")
+	ApplicationGatewaySslPolicyNameAppGwSslPolicy20220101S = ApplicationGatewaySslPolicyName("AppGwSslPolicy20220101S")
 )
 
 // Type of Ssl Policy.
@@ -174,6 +195,7 @@ type ApplicationGatewaySslPolicyType string
 const (
 	ApplicationGatewaySslPolicyTypePredefined = ApplicationGatewaySslPolicyType("Predefined")
 	ApplicationGatewaySslPolicyTypeCustom     = ApplicationGatewaySslPolicyType("Custom")
+	ApplicationGatewaySslPolicyTypeCustomV2   = ApplicationGatewaySslPolicyType("CustomV2")
 )
 
 // Minimum version of Ssl protocol to be supported on application gateway.
@@ -183,6 +205,7 @@ const (
 	ApplicationGatewaySslProtocol_TLSv1_0 = ApplicationGatewaySslProtocol("TLSv1_0")
 	ApplicationGatewaySslProtocol_TLSv1_1 = ApplicationGatewaySslProtocol("TLSv1_1")
 	ApplicationGatewaySslProtocol_TLSv1_2 = ApplicationGatewaySslProtocol("TLSv1_2")
+	ApplicationGatewaySslProtocol_TLSv1_3 = ApplicationGatewaySslProtocol("TLSv1_3")
 )
 
 // Tier of an application gateway.
@@ -195,21 +218,20 @@ const (
 	ApplicationGatewayTier_WAF_v2      = ApplicationGatewayTier("WAF_v2")
 )
 
-// Access mode on the association.
-type AssociationAccessMode string
-
-const (
-	AssociationAccessModeLearning = AssociationAccessMode("Learning")
-	AssociationAccessModeEnforced = AssociationAccessMode("Enforced")
-	AssociationAccessModeAudit    = AssociationAccessMode("Audit")
-)
-
 // The authorization use status.
 type AuthorizationUseStatus string
 
 const (
 	AuthorizationUseStatusAvailable = AuthorizationUseStatus("Available")
 	AuthorizationUseStatusInUse     = AuthorizationUseStatus("InUse")
+)
+
+// The operation mode for automatically learning private ranges to not be SNAT
+type AutoLearnPrivateRangesMode string
+
+const (
+	AutoLearnPrivateRangesModeEnabled  = AutoLearnPrivateRangesMode("Enabled")
+	AutoLearnPrivateRangesModeDisabled = AutoLearnPrivateRangesMode("Disabled")
 )
 
 // Protocol type.
@@ -261,6 +283,7 @@ type AzureFirewallSkuTier string
 const (
 	AzureFirewallSkuTierStandard = AzureFirewallSkuTier("Standard")
 	AzureFirewallSkuTierPremium  = AzureFirewallSkuTier("Premium")
+	AzureFirewallSkuTierBasic    = AzureFirewallSkuTier("Basic")
 )
 
 // The operation mode for Threat Intelligence.
@@ -280,16 +303,26 @@ const (
 	BackendEnabledStateDisabled = BackendEnabledState("Disabled")
 )
 
+// The name of this Bastion Host.
+type BastionHostSkuName string
+
+const (
+	BastionHostSkuNameBasic    = BastionHostSkuName("Basic")
+	BastionHostSkuNameStandard = BastionHostSkuName("Standard")
+)
+
 // The commissioned state of the Custom IP Prefix.
 type CommissionedState string
 
 const (
-	CommissionedStateProvisioning    = CommissionedState("Provisioning")
-	CommissionedStateProvisioned     = CommissionedState("Provisioned")
-	CommissionedStateCommissioning   = CommissionedState("Commissioning")
-	CommissionedStateCommissioned    = CommissionedState("Commissioned")
-	CommissionedStateDecommissioning = CommissionedState("Decommissioning")
-	CommissionedStateDeprovisioning  = CommissionedState("Deprovisioning")
+	CommissionedStateProvisioning                    = CommissionedState("Provisioning")
+	CommissionedStateProvisioned                     = CommissionedState("Provisioned")
+	CommissionedStateCommissioning                   = CommissionedState("Commissioning")
+	CommissionedStateCommissionedNoInternetAdvertise = CommissionedState("CommissionedNoInternetAdvertise")
+	CommissionedStateCommissioned                    = CommissionedState("Commissioned")
+	CommissionedStateDecommissioning                 = CommissionedState("Decommissioning")
+	CommissionedStateDeprovisioning                  = CommissionedState("Deprovisioning")
+	CommissionedStateDeprovisioned                   = CommissionedState("Deprovisioned")
 )
 
 // Configuration Deployment Type.
@@ -297,7 +330,6 @@ type ConfigurationType string
 
 const (
 	ConfigurationTypeSecurityAdmin = ConfigurationType("SecurityAdmin")
-	ConfigurationTypeSecurityUser  = ConfigurationType("SecurityUser")
 	ConfigurationTypeConnectivity  = ConfigurationType("Connectivity")
 )
 
@@ -344,6 +376,15 @@ const (
 	CoverageLevelFull         = CoverageLevel("Full")
 )
 
+// Type of custom IP prefix. Should be Singular, Parent, or Child.
+type CustomIpPrefixType string
+
+const (
+	CustomIpPrefixTypeSingular = CustomIpPrefixType("Singular")
+	CustomIpPrefixTypeParent   = CustomIpPrefixType("Parent")
+	CustomIpPrefixTypeChild    = CustomIpPrefixType("Child")
+)
+
 // Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
 type CustomRuleEnabledState string
 
@@ -352,39 +393,13 @@ const (
 	CustomRuleEnabledStateEnabled  = CustomRuleEnabledState("Enabled")
 )
 
-// The protocol for which the DDoS protection policy is being customized.
-type DdosCustomPolicyProtocol string
+// The DDoS protection mode of the public IP
+type DdosSettingsProtectionMode string
 
 const (
-	DdosCustomPolicyProtocolTcp = DdosCustomPolicyProtocol("Tcp")
-	DdosCustomPolicyProtocolUdp = DdosCustomPolicyProtocol("Udp")
-	DdosCustomPolicyProtocolSyn = DdosCustomPolicyProtocol("Syn")
-)
-
-// The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
-type DdosCustomPolicyTriggerSensitivityOverride string
-
-const (
-	DdosCustomPolicyTriggerSensitivityOverrideRelaxed = DdosCustomPolicyTriggerSensitivityOverride("Relaxed")
-	DdosCustomPolicyTriggerSensitivityOverrideLow     = DdosCustomPolicyTriggerSensitivityOverride("Low")
-	DdosCustomPolicyTriggerSensitivityOverrideDefault = DdosCustomPolicyTriggerSensitivityOverride("Default")
-	DdosCustomPolicyTriggerSensitivityOverrideHigh    = DdosCustomPolicyTriggerSensitivityOverride("High")
-)
-
-// The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
-type DdosSettingsProtectionCoverage string
-
-const (
-	DdosSettingsProtectionCoverageBasic    = DdosSettingsProtectionCoverage("Basic")
-	DdosSettingsProtectionCoverageStandard = DdosSettingsProtectionCoverage("Standard")
-)
-
-// Flag if need to delete existing network security groups.
-type DeleteExistingNSGs string
-
-const (
-	DeleteExistingNSGsFalse = DeleteExistingNSGs("False")
-	DeleteExistingNSGsTrue  = DeleteExistingNSGs("True")
+	DdosSettingsProtectionModeVirtualNetworkInherited = DdosSettingsProtectionMode("VirtualNetworkInherited")
+	DdosSettingsProtectionModeEnabled                 = DdosSettingsProtectionMode("Enabled")
+	DdosSettingsProtectionModeDisabled                = DdosSettingsProtectionMode("Disabled")
 )
 
 // Flag if need to remove current existing peerings.
@@ -393,6 +408,14 @@ type DeleteExistingPeering string
 const (
 	DeleteExistingPeeringFalse = DeleteExistingPeering("False")
 	DeleteExistingPeeringTrue  = DeleteExistingPeering("True")
+)
+
+// Specify what happens to the public IP address when the VM using it is deleted
+type DeleteOptions string
+
+const (
+	DeleteOptionsDelete = DeleteOptions("Delete")
+	DeleteOptionsDetach = DeleteOptions("Detach")
 )
 
 // Destination port behavior.
@@ -455,6 +478,8 @@ const (
 	EndpointTypeEnumExternalAddress     = EndpointTypeEnum("ExternalAddress")
 	EndpointTypeEnumMMAWorkspaceMachine = EndpointTypeEnum("MMAWorkspaceMachine")
 	EndpointTypeEnumMMAWorkspaceNetwork = EndpointTypeEnum("MMAWorkspaceNetwork")
+	EndpointTypeEnumAzureArcVM          = EndpointTypeEnum("AzureArcVM")
+	EndpointTypeEnumAzureVMSS           = EndpointTypeEnum("AzureVMSS")
 )
 
 // Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
@@ -532,6 +557,14 @@ const (
 	ExpressRoutePeeringTypeAzurePublicPeering  = ExpressRoutePeeringType("AzurePublicPeering")
 	ExpressRoutePeeringTypeAzurePrivatePeering = ExpressRoutePeeringType("AzurePrivatePeering")
 	ExpressRoutePeeringTypeMicrosoftPeering    = ExpressRoutePeeringType("MicrosoftPeering")
+)
+
+// The billing type of the ExpressRoutePort resource.
+type ExpressRoutePortsBillingType string
+
+const (
+	ExpressRoutePortsBillingTypeMeteredData   = ExpressRoutePortsBillingType("MeteredData")
+	ExpressRoutePortsBillingTypeUnlimitedData = ExpressRoutePortsBillingType("UnlimitedData")
 )
 
 // Encapsulation method on physical ports.
@@ -673,6 +706,7 @@ type FirewallPolicySkuTier string
 const (
 	FirewallPolicySkuTierStandard = FirewallPolicySkuTier("Standard")
 	FirewallPolicySkuTierPremium  = FirewallPolicySkuTier("Premium")
+	FirewallPolicySkuTierBasic    = FirewallPolicySkuTier("Basic")
 )
 
 // The file type of flow log.
@@ -767,6 +801,39 @@ const (
 	FrontDoorRedirectTypePermanentRedirect = FrontDoorRedirectType("PermanentRedirect")
 )
 
+// Traffic type of gateway load balancer tunnel interface.
+type GatewayLoadBalancerTunnelInterfaceType string
+
+const (
+	GatewayLoadBalancerTunnelInterfaceTypeNone     = GatewayLoadBalancerTunnelInterfaceType("None")
+	GatewayLoadBalancerTunnelInterfaceTypeInternal = GatewayLoadBalancerTunnelInterfaceType("Internal")
+	GatewayLoadBalancerTunnelInterfaceTypeExternal = GatewayLoadBalancerTunnelInterfaceType("External")
+)
+
+// Protocol of gateway load balancer tunnel interface.
+type GatewayLoadBalancerTunnelProtocol string
+
+const (
+	GatewayLoadBalancerTunnelProtocolNone   = GatewayLoadBalancerTunnelProtocol("None")
+	GatewayLoadBalancerTunnelProtocolNative = GatewayLoadBalancerTunnelProtocol("Native")
+	GatewayLoadBalancerTunnelProtocolVXLAN  = GatewayLoadBalancerTunnelProtocol("VXLAN")
+)
+
+// The Geo for CIDR advertising. Should be an Geo code.
+type Geo string
+
+const (
+	GeoGLOBAL  = Geo("GLOBAL")
+	GeoAFRI    = Geo("AFRI")
+	GeoAPAC    = Geo("APAC")
+	GeoEURO    = Geo("EURO")
+	GeoLATAM   = Geo("LATAM")
+	GeoNAM     = Geo("NAM")
+	GeoME      = Geo("ME")
+	GeoOCEANIA = Geo("OCEANIA")
+	GeoAQ      = Geo("AQ")
+)
+
 // Group connectivity type.
 type GroupConnectivity string
 
@@ -798,6 +865,15 @@ type HealthProbeEnabled string
 const (
 	HealthProbeEnabledEnabled  = HealthProbeEnabled("Enabled")
 	HealthProbeEnabledDisabled = HealthProbeEnabled("Disabled")
+)
+
+// The hubRoutingPreference of this VirtualHub.
+type HubRoutingPreference string
+
+const (
+	HubRoutingPreferenceExpressRoute = HubRoutingPreference("ExpressRoute")
+	HubRoutingPreferenceVpnGateway   = HubRoutingPreference("VpnGateway")
+	HubRoutingPreferenceASPath       = HubRoutingPreference("ASPath")
 )
 
 // The private IP address allocation method.
@@ -892,6 +968,16 @@ const (
 	IsGlobalTrue  = IsGlobal("True")
 )
 
+// A list of administrative states which once set can override health probe so that Load Balancer will always forward new connections to backend, or deny new connections and reset existing connections.
+type LoadBalancerBackendAddressAdminState string
+
+const (
+	LoadBalancerBackendAddressAdminStateNone  = LoadBalancerBackendAddressAdminState("None")
+	LoadBalancerBackendAddressAdminStateUp    = LoadBalancerBackendAddressAdminState("Up")
+	LoadBalancerBackendAddressAdminStateDown  = LoadBalancerBackendAddressAdminState("Down")
+	LoadBalancerBackendAddressAdminStateDrain = LoadBalancerBackendAddressAdminState("Drain")
+)
+
 // The protocol for the outbound rule in load balancer.
 type LoadBalancerOutboundRuleProtocol string
 
@@ -907,6 +993,7 @@ type LoadBalancerSkuName string
 const (
 	LoadBalancerSkuNameBasic    = LoadBalancerSkuName("Basic")
 	LoadBalancerSkuNameStandard = LoadBalancerSkuName("Standard")
+	LoadBalancerSkuNameGateway  = LoadBalancerSkuName("Gateway")
 )
 
 // Tier of a load balancer SKU.
@@ -931,6 +1018,7 @@ type ManagedRuleEnabledState string
 
 const (
 	ManagedRuleEnabledStateDisabled = ManagedRuleEnabledState("Disabled")
+	ManagedRuleEnabledStateEnabled  = ManagedRuleEnabledState("Enabled")
 )
 
 // The variable type to be excluded.
@@ -955,7 +1043,7 @@ const (
 	ManagedRuleExclusionSelectorMatchOperatorEqualsAny  = ManagedRuleExclusionSelectorMatchOperator("EqualsAny")
 )
 
-// Defines the action to take when a managed rule set score threshold is met.
+// Defines the rule set action.
 type ManagedRuleSetActionType string
 
 const (
@@ -988,6 +1076,24 @@ const (
 	NatGatewaySkuNameStandard = NatGatewaySkuName("Standard")
 )
 
+// Network intent policy based services.
+type NetworkIntentPolicyBasedService string
+
+const (
+	NetworkIntentPolicyBasedServiceNone           = NetworkIntentPolicyBasedService("None")
+	NetworkIntentPolicyBasedServiceAll            = NetworkIntentPolicyBasedService("All")
+	NetworkIntentPolicyBasedServiceAllowRulesOnly = NetworkIntentPolicyBasedService("AllowRulesOnly")
+)
+
+// Auxiliary mode of Network Interface resource.
+type NetworkInterfaceAuxiliaryMode string
+
+const (
+	NetworkInterfaceAuxiliaryModeNone           = NetworkInterfaceAuxiliaryMode("None")
+	NetworkInterfaceAuxiliaryModeMaxConnections = NetworkInterfaceAuxiliaryMode("MaxConnections")
+	NetworkInterfaceAuxiliaryModeFloating       = NetworkInterfaceAuxiliaryMode("Floating")
+)
+
 // Migration phase of Network Interface resource.
 type NetworkInterfaceMigrationPhase string
 
@@ -1005,6 +1111,15 @@ type NetworkInterfaceNicType string
 const (
 	NetworkInterfaceNicTypeStandard = NetworkInterfaceNicType("Standard")
 	NetworkInterfaceNicTypeElastic  = NetworkInterfaceNicType("Elastic")
+)
+
+// Next step after rule is evaluated. Current supported behaviors are 'Continue'(to next rule) and 'Terminate'.
+type NextStep string
+
+const (
+	NextStepUnknown   = NextStep("Unknown")
+	NextStepContinue  = NextStep("Continue")
+	NextStepTerminate = NextStep("Terminate")
 )
 
 // Comparison type to use for matching with the variable value.
@@ -1036,9 +1151,15 @@ const (
 type OwaspCrsExclusionEntryMatchVariable string
 
 const (
-	OwaspCrsExclusionEntryMatchVariableRequestHeaderNames = OwaspCrsExclusionEntryMatchVariable("RequestHeaderNames")
-	OwaspCrsExclusionEntryMatchVariableRequestCookieNames = OwaspCrsExclusionEntryMatchVariable("RequestCookieNames")
-	OwaspCrsExclusionEntryMatchVariableRequestArgNames    = OwaspCrsExclusionEntryMatchVariable("RequestArgNames")
+	OwaspCrsExclusionEntryMatchVariableRequestHeaderNames  = OwaspCrsExclusionEntryMatchVariable("RequestHeaderNames")
+	OwaspCrsExclusionEntryMatchVariableRequestCookieNames  = OwaspCrsExclusionEntryMatchVariable("RequestCookieNames")
+	OwaspCrsExclusionEntryMatchVariableRequestArgNames     = OwaspCrsExclusionEntryMatchVariable("RequestArgNames")
+	OwaspCrsExclusionEntryMatchVariableRequestHeaderKeys   = OwaspCrsExclusionEntryMatchVariable("RequestHeaderKeys")
+	OwaspCrsExclusionEntryMatchVariableRequestHeaderValues = OwaspCrsExclusionEntryMatchVariable("RequestHeaderValues")
+	OwaspCrsExclusionEntryMatchVariableRequestCookieKeys   = OwaspCrsExclusionEntryMatchVariable("RequestCookieKeys")
+	OwaspCrsExclusionEntryMatchVariableRequestCookieValues = OwaspCrsExclusionEntryMatchVariable("RequestCookieValues")
+	OwaspCrsExclusionEntryMatchVariableRequestArgKeys      = OwaspCrsExclusionEntryMatchVariable("RequestArgKeys")
+	OwaspCrsExclusionEntryMatchVariableRequestArgValues    = OwaspCrsExclusionEntryMatchVariable("RequestArgValues")
 )
 
 // When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
@@ -1051,6 +1172,171 @@ const (
 	OwaspCrsExclusionEntrySelectorMatchOperatorEndsWith   = OwaspCrsExclusionEntrySelectorMatchOperator("EndsWith")
 	OwaspCrsExclusionEntrySelectorMatchOperatorEqualsAny  = OwaspCrsExclusionEntrySelectorMatchOperator("EqualsAny")
 )
+
+// Target type of the resource provided.
+type PacketCaptureTargetType string
+
+const (
+	PacketCaptureTargetTypeAzureVM   = PacketCaptureTargetType("AzureVM")
+	PacketCaptureTargetTypeAzureVMSS = PacketCaptureTargetType("AzureVMSS")
+)
+
+func (PacketCaptureTargetType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketCaptureTargetType)(nil)).Elem()
+}
+
+func (e PacketCaptureTargetType) ToPacketCaptureTargetTypeOutput() PacketCaptureTargetTypeOutput {
+	return pulumi.ToOutput(e).(PacketCaptureTargetTypeOutput)
+}
+
+func (e PacketCaptureTargetType) ToPacketCaptureTargetTypeOutputWithContext(ctx context.Context) PacketCaptureTargetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PacketCaptureTargetTypeOutput)
+}
+
+func (e PacketCaptureTargetType) ToPacketCaptureTargetTypePtrOutput() PacketCaptureTargetTypePtrOutput {
+	return e.ToPacketCaptureTargetTypePtrOutputWithContext(context.Background())
+}
+
+func (e PacketCaptureTargetType) ToPacketCaptureTargetTypePtrOutputWithContext(ctx context.Context) PacketCaptureTargetTypePtrOutput {
+	return PacketCaptureTargetType(e).ToPacketCaptureTargetTypeOutputWithContext(ctx).ToPacketCaptureTargetTypePtrOutputWithContext(ctx)
+}
+
+func (e PacketCaptureTargetType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PacketCaptureTargetType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PacketCaptureTargetType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PacketCaptureTargetType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PacketCaptureTargetTypeOutput struct{ *pulumi.OutputState }
+
+func (PacketCaptureTargetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketCaptureTargetType)(nil)).Elem()
+}
+
+func (o PacketCaptureTargetTypeOutput) ToPacketCaptureTargetTypeOutput() PacketCaptureTargetTypeOutput {
+	return o
+}
+
+func (o PacketCaptureTargetTypeOutput) ToPacketCaptureTargetTypeOutputWithContext(ctx context.Context) PacketCaptureTargetTypeOutput {
+	return o
+}
+
+func (o PacketCaptureTargetTypeOutput) ToPacketCaptureTargetTypePtrOutput() PacketCaptureTargetTypePtrOutput {
+	return o.ToPacketCaptureTargetTypePtrOutputWithContext(context.Background())
+}
+
+func (o PacketCaptureTargetTypeOutput) ToPacketCaptureTargetTypePtrOutputWithContext(ctx context.Context) PacketCaptureTargetTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PacketCaptureTargetType) *PacketCaptureTargetType {
+		return &v
+	}).(PacketCaptureTargetTypePtrOutput)
+}
+
+func (o PacketCaptureTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PacketCaptureTargetTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PacketCaptureTargetType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PacketCaptureTargetTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PacketCaptureTargetTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PacketCaptureTargetType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PacketCaptureTargetTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PacketCaptureTargetTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketCaptureTargetType)(nil)).Elem()
+}
+
+func (o PacketCaptureTargetTypePtrOutput) ToPacketCaptureTargetTypePtrOutput() PacketCaptureTargetTypePtrOutput {
+	return o
+}
+
+func (o PacketCaptureTargetTypePtrOutput) ToPacketCaptureTargetTypePtrOutputWithContext(ctx context.Context) PacketCaptureTargetTypePtrOutput {
+	return o
+}
+
+func (o PacketCaptureTargetTypePtrOutput) Elem() PacketCaptureTargetTypeOutput {
+	return o.ApplyT(func(v *PacketCaptureTargetType) PacketCaptureTargetType {
+		if v != nil {
+			return *v
+		}
+		var ret PacketCaptureTargetType
+		return ret
+	}).(PacketCaptureTargetTypeOutput)
+}
+
+func (o PacketCaptureTargetTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PacketCaptureTargetTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PacketCaptureTargetType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PacketCaptureTargetTypeInput is an input type that accepts PacketCaptureTargetTypeArgs and PacketCaptureTargetTypeOutput values.
+// You can construct a concrete instance of `PacketCaptureTargetTypeInput` via:
+//
+//	PacketCaptureTargetTypeArgs{...}
+type PacketCaptureTargetTypeInput interface {
+	pulumi.Input
+
+	ToPacketCaptureTargetTypeOutput() PacketCaptureTargetTypeOutput
+	ToPacketCaptureTargetTypeOutputWithContext(context.Context) PacketCaptureTargetTypeOutput
+}
+
+var packetCaptureTargetTypePtrType = reflect.TypeOf((**PacketCaptureTargetType)(nil)).Elem()
+
+type PacketCaptureTargetTypePtrInput interface {
+	pulumi.Input
+
+	ToPacketCaptureTargetTypePtrOutput() PacketCaptureTargetTypePtrOutput
+	ToPacketCaptureTargetTypePtrOutputWithContext(context.Context) PacketCaptureTargetTypePtrOutput
+}
+
+type packetCaptureTargetTypePtr string
+
+func PacketCaptureTargetTypePtr(v string) PacketCaptureTargetTypePtrInput {
+	return (*packetCaptureTargetTypePtr)(&v)
+}
+
+func (*packetCaptureTargetTypePtr) ElementType() reflect.Type {
+	return packetCaptureTargetTypePtrType
+}
+
+func (in *packetCaptureTargetTypePtr) ToPacketCaptureTargetTypePtrOutput() PacketCaptureTargetTypePtrOutput {
+	return pulumi.ToOutput(in).(PacketCaptureTargetTypePtrOutput)
+}
+
+func (in *packetCaptureTargetTypePtr) ToPacketCaptureTargetTypePtrOutputWithContext(ctx context.Context) PacketCaptureTargetTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PacketCaptureTargetTypePtrOutput)
+}
 
 // Protocol to be filtered on.
 type PcProtocol string
@@ -1106,6 +1392,15 @@ type PreferredIPVersion string
 const (
 	PreferredIPVersionIPv4 = PreferredIPVersion("IPv4")
 	PreferredIPVersionIPv6 = PreferredIPVersion("IPv6")
+)
+
+// The preferred gateway to route on-prem traffic
+type PreferredRoutingGateway string
+
+const (
+	PreferredRoutingGatewayExpressRoute = PreferredRoutingGateway("ExpressRoute")
+	PreferredRoutingGatewayVpnGateway   = PreferredRoutingGateway("VpnGateway")
+	PreferredRoutingGatewayNone         = PreferredRoutingGateway("None")
 )
 
 // The protocol of the end point. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
@@ -1367,6 +1662,28 @@ const (
 	RouteFilterRuleTypeEnumCommunity = RouteFilterRuleTypeEnum("Community")
 )
 
+// Type of action to be taken. Supported types are 'Remove', 'Add', 'Replace', and 'Drop.'
+type RouteMapActionType string
+
+const (
+	RouteMapActionTypeUnknown = RouteMapActionType("Unknown")
+	RouteMapActionTypeRemove  = RouteMapActionType("Remove")
+	RouteMapActionTypeAdd     = RouteMapActionType("Add")
+	RouteMapActionTypeReplace = RouteMapActionType("Replace")
+	RouteMapActionTypeDrop    = RouteMapActionType("Drop")
+)
+
+// Match condition to apply RouteMap rules.
+type RouteMapMatchCondition string
+
+const (
+	RouteMapMatchConditionUnknown     = RouteMapMatchCondition("Unknown")
+	RouteMapMatchConditionContains    = RouteMapMatchCondition("Contains")
+	RouteMapMatchConditionEquals      = RouteMapMatchCondition("Equals")
+	RouteMapMatchConditionNotContains = RouteMapMatchCondition("NotContains")
+	RouteMapMatchConditionNotEquals   = RouteMapMatchCondition("NotEquals")
+)
+
 // The type of Azure hop the packet should be sent to.
 type RouteNextHopType string
 
@@ -1495,14 +1812,6 @@ const (
 	SecurityRuleProtocolAh       = SecurityRuleProtocol("Ah")
 )
 
-// Security Type.
-type SecurityType string
-
-const (
-	SecurityTypeAdminPolicy = SecurityType("AdminPolicy")
-	SecurityTypeUserPolicy  = SecurityType("UserPolicy")
-)
-
 // The ServiceProviderProvisioningState state of the resource.
 type ServiceProviderProvisioningState string
 
@@ -1599,12 +1908,12 @@ const (
 	UseHubGatewayTrue  = UseHubGateway("True")
 )
 
-// Whether the rule is custom or default.
-type UserRuleKind string
+// If the encrypted VNet allows VM that does not support encryption
+type VirtualNetworkEncryptionEnforcement string
 
 const (
-	UserRuleKindCustom  = UserRuleKind("Custom")
-	UserRuleKindDefault = UserRuleKind("Default")
+	VirtualNetworkEncryptionEnforcementDropUnencrypted  = VirtualNetworkEncryptionEnforcement("DropUnencrypted")
+	VirtualNetworkEncryptionEnforcementAllowUnencrypted = VirtualNetworkEncryptionEnforcement("AllowUnencrypted")
 )
 
 // The connection mode for this connection.
@@ -1689,6 +1998,16 @@ const (
 	VirtualNetworkGatewayTypeEnumLocalGateway = VirtualNetworkGatewayTypeEnum("LocalGateway")
 )
 
+// The peering sync status of the virtual network peering.
+type VirtualNetworkPeeringLevel string
+
+const (
+	VirtualNetworkPeeringLevelFullyInSync             = VirtualNetworkPeeringLevel("FullyInSync")
+	VirtualNetworkPeeringLevelRemoteNotInSync         = VirtualNetworkPeeringLevel("RemoteNotInSync")
+	VirtualNetworkPeeringLevelLocalNotInSync          = VirtualNetworkPeeringLevel("LocalNotInSync")
+	VirtualNetworkPeeringLevelLocalAndRemoteNotInSync = VirtualNetworkPeeringLevel("LocalAndRemoteNotInSync")
+)
+
 // The status of the virtual network peering.
 type VirtualNetworkPeeringStateEnum string
 
@@ -1712,6 +2031,14 @@ type VirtualNetworkPrivateLinkServiceNetworkPolicies string
 const (
 	VirtualNetworkPrivateLinkServiceNetworkPoliciesEnabled  = VirtualNetworkPrivateLinkServiceNetworkPolicies("Enabled")
 	VirtualNetworkPrivateLinkServiceNetworkPoliciesDisabled = VirtualNetworkPrivateLinkServiceNetworkPolicies("Disabled")
+)
+
+// Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+type VnetLocalRouteOverrideCriteria string
+
+const (
+	VnetLocalRouteOverrideCriteriaContains = VnetLocalRouteOverrideCriteria("Contains")
+	VnetLocalRouteOverrideCriteriaEqual    = VnetLocalRouteOverrideCriteria("Equal")
 )
 
 // VPN authentication types enabled for the VpnServerConfiguration.
@@ -1845,6 +2172,7 @@ const (
 	WebApplicationFirewallOperatorEndsWith           = WebApplicationFirewallOperator("EndsWith")
 	WebApplicationFirewallOperatorRegex              = WebApplicationFirewallOperator("Regex")
 	WebApplicationFirewallOperatorGeoMatch           = WebApplicationFirewallOperator("GeoMatch")
+	WebApplicationFirewallOperatorAny                = WebApplicationFirewallOperator("Any")
 )
 
 // The rule type.
@@ -1855,10 +2183,19 @@ const (
 	WebApplicationFirewallRuleTypeInvalid   = WebApplicationFirewallRuleType("Invalid")
 )
 
+// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
+type WebApplicationFirewallState string
+
+const (
+	WebApplicationFirewallStateDisabled = WebApplicationFirewallState("Disabled")
+	WebApplicationFirewallStateEnabled  = WebApplicationFirewallState("Enabled")
+)
+
 // Transforms applied before matching.
 type WebApplicationFirewallTransform string
 
 const (
+	WebApplicationFirewallTransformUppercase        = WebApplicationFirewallTransform("Uppercase")
 	WebApplicationFirewallTransformLowercase        = WebApplicationFirewallTransform("Lowercase")
 	WebApplicationFirewallTransformTrim             = WebApplicationFirewallTransform("Trim")
 	WebApplicationFirewallTransformUrlDecode        = WebApplicationFirewallTransform("UrlDecode")
@@ -2033,6 +2370,8 @@ func (in *zoneTypePtr) ToZoneTypePtrOutputWithContext(ctx context.Context) ZoneT
 }
 
 func init() {
+	pulumi.RegisterOutputType(PacketCaptureTargetTypeOutput{})
+	pulumi.RegisterOutputType(PacketCaptureTargetTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(ZoneTypeOutput{})

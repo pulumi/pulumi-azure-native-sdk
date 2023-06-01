@@ -10,66 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Container Account Description
-type ContainerAccountResponse struct {
-	// The account name
-	AccountName *string `pulumi:"accountName"`
-	// The account password
-	Password *string `pulumi:"password"`
-	// The account spn
-	Spn *string `pulumi:"spn"`
-}
-
-// Container Account Description
-type ContainerAccountResponseOutput struct{ *pulumi.OutputState }
-
-func (ContainerAccountResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerAccountResponse)(nil)).Elem()
-}
-
-func (o ContainerAccountResponseOutput) ToContainerAccountResponseOutput() ContainerAccountResponseOutput {
-	return o
-}
-
-func (o ContainerAccountResponseOutput) ToContainerAccountResponseOutputWithContext(ctx context.Context) ContainerAccountResponseOutput {
-	return o
-}
-
-// The account name
-func (o ContainerAccountResponseOutput) AccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerAccountResponse) *string { return v.AccountName }).(pulumi.StringPtrOutput)
-}
-
-// The account password
-func (o ContainerAccountResponseOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerAccountResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// The account spn
-func (o ContainerAccountResponseOutput) Spn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerAccountResponse) *string { return v.Spn }).(pulumi.StringPtrOutput)
-}
-
-type ContainerAccountResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ContainerAccountResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerAccountResponse)(nil)).Elem()
-}
-
-func (o ContainerAccountResponseArrayOutput) ToContainerAccountResponseArrayOutput() ContainerAccountResponseArrayOutput {
-	return o
-}
-
-func (o ContainerAccountResponseArrayOutput) ToContainerAccountResponseArrayOutputWithContext(ctx context.Context) ContainerAccountResponseArrayOutput {
-	return o
-}
-
-func (o ContainerAccountResponseArrayOutput) Index(i pulumi.IntInput) ContainerAccountResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerAccountResponse {
-		return vs[0].([]ContainerAccountResponse)[vs[1].(int)]
-	}).(ContainerAccountResponseOutput)
-}
-
 // Domain Security Settings
 type DomainSecuritySettings struct {
 	// A flag to determine whether or not NtlmV1 is enabled or disabled.
@@ -90,23 +30,23 @@ func (val *DomainSecuritySettings) Defaults() *DomainSecuritySettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NtlmV1) {
+	if tmp.NtlmV1 == nil {
 		ntlmV1_ := "Enabled"
 		tmp.NtlmV1 = &ntlmV1_
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		syncKerberosPasswords_ := "Enabled"
 		tmp.SyncKerberosPasswords = &syncKerberosPasswords_
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		syncNtlmPasswords_ := "Enabled"
 		tmp.SyncNtlmPasswords = &syncNtlmPasswords_
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		syncOnPremPasswords_ := "Enabled"
 		tmp.SyncOnPremPasswords = &syncOnPremPasswords_
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tlsV1_ := "Enabled"
 		tmp.TlsV1 = &tlsV1_
 	}
@@ -144,19 +84,19 @@ func (val *DomainSecuritySettingsArgs) Defaults() *DomainSecuritySettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NtlmV1) {
+	if tmp.NtlmV1 == nil {
 		tmp.NtlmV1 = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		tmp.SyncKerberosPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		tmp.SyncNtlmPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		tmp.SyncOnPremPasswords = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tmp.TlsV1 = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -358,23 +298,23 @@ func (val *DomainSecuritySettingsResponse) Defaults() *DomainSecuritySettingsRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.NtlmV1) {
+	if tmp.NtlmV1 == nil {
 		ntlmV1_ := "Enabled"
 		tmp.NtlmV1 = &ntlmV1_
 	}
-	if isZero(tmp.SyncKerberosPasswords) {
+	if tmp.SyncKerberosPasswords == nil {
 		syncKerberosPasswords_ := "Enabled"
 		tmp.SyncKerberosPasswords = &syncKerberosPasswords_
 	}
-	if isZero(tmp.SyncNtlmPasswords) {
+	if tmp.SyncNtlmPasswords == nil {
 		syncNtlmPasswords_ := "Enabled"
 		tmp.SyncNtlmPasswords = &syncNtlmPasswords_
 	}
-	if isZero(tmp.SyncOnPremPasswords) {
+	if tmp.SyncOnPremPasswords == nil {
 		syncOnPremPasswords_ := "Enabled"
 		tmp.SyncOnPremPasswords = &syncOnPremPasswords_
 	}
-	if isZero(tmp.TlsV1) {
+	if tmp.TlsV1 == nil {
 		tlsV1_ := "Enabled"
 		tmp.TlsV1 = &tlsV1_
 	}
@@ -871,11 +811,11 @@ func (val *LdapsSettings) Defaults() *LdapsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		externalAccess_ := "Disabled"
 		tmp.ExternalAccess = &externalAccess_
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		ldaps_ := "Disabled"
 		tmp.Ldaps = &ldaps_
 	}
@@ -911,10 +851,10 @@ func (val *LdapsSettingsArgs) Defaults() *LdapsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		tmp.ExternalAccess = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		tmp.Ldaps = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -1107,11 +1047,11 @@ func (val *LdapsSettingsResponse) Defaults() *LdapsSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExternalAccess) {
+	if tmp.ExternalAccess == nil {
 		externalAccess_ := "Disabled"
 		tmp.ExternalAccess = &externalAccess_
 	}
-	if isZero(tmp.Ldaps) {
+	if tmp.Ldaps == nil {
 		ldaps_ := "Disabled"
 		tmp.Ldaps = &ldaps_
 	}
@@ -1859,8 +1799,6 @@ func (o ResourceForestSettingsResponsePtrOutput) Settings() ForestTrustResponseA
 }
 
 func init() {
-	pulumi.RegisterOutputType(ContainerAccountResponseOutput{})
-	pulumi.RegisterOutputType(ContainerAccountResponseArrayOutput{})
 	pulumi.RegisterOutputType(DomainSecuritySettingsOutput{})
 	pulumi.RegisterOutputType(DomainSecuritySettingsPtrOutput{})
 	pulumi.RegisterOutputType(DomainSecuritySettingsResponseOutput{})

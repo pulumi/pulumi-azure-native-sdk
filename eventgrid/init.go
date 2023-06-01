@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,14 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainTopic{}
 	case "azure-native:eventgrid:DomainTopicEventSubscription":
 		r = &DomainTopicEventSubscription{}
-	case "azure-native:eventgrid:EventChannel":
-		r = &EventChannel{}
 	case "azure-native:eventgrid:EventSubscription":
 		r = &EventSubscription{}
 	case "azure-native:eventgrid:PartnerConfiguration":
 		r = &PartnerConfiguration{}
-	case "azure-native:eventgrid:PartnerDestination":
-		r = &PartnerDestination{}
 	case "azure-native:eventgrid:PartnerNamespace":
 		r = &PartnerNamespace{}
 	case "azure-native:eventgrid:PartnerRegistration":

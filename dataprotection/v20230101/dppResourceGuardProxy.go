@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +40,9 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dataprotection:DppResourceGuardProxy"),
+		},
+		{
 			Type: pulumi.String("azure-native:dataprotection/v20220901preview:DppResourceGuardProxy"),
 		},
 		{
@@ -47,6 +50,9 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20221101preview:DppResourceGuardProxy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:DppResourceGuardProxy"),
 		},
 	})
 	opts = append(opts, aliases)

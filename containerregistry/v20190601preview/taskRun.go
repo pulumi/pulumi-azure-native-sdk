@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,12 +49,6 @@ func NewTaskRun(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:containerregistry:TaskRun"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource TaskRun
 	err := ctx.RegisterResource("azure-native:containerregistry/v20190601preview:TaskRun", name, args, &resource, opts...)
 	if err != nil {

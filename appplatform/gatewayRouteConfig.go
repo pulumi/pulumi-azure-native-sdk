@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Spring Cloud Gateway route config resource
-// API Version: 2022-01-01-preview.
+// API Version: 2022-12-01.
+// Previous API Version: 2022-01-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type GatewayRouteConfig struct {
 	pulumi.CustomResourceState
 
@@ -42,6 +43,9 @@ func NewGatewayRouteConfig(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Properties != nil {
+		args.Properties = args.Properties.ToGatewayRouteConfigPropertiesPtrOutput().ApplyT(func(v *GatewayRouteConfigProperties) *GatewayRouteConfigProperties { return v.Defaults() }).(GatewayRouteConfigPropertiesPtrOutput)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:appplatform/v20220101preview:GatewayRouteConfig"),
@@ -63,6 +67,9 @@ func NewGatewayRouteConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:GatewayRouteConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:GatewayRouteConfig"),
 		},
 	})
 	opts = append(opts, aliases)

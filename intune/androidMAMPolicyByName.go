@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Android Policy entity for Intune MAM.
 // API Version: 2015-01-14-preview.
+// Previous API Version: 2015-01-14-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AndroidMAMPolicyByName struct {
 	pulumi.CustomResourceState
 
@@ -59,37 +60,37 @@ func NewAndroidMAMPolicyByName(ctx *pulumi.Context,
 	if args.HostName == nil {
 		return nil, errors.New("invalid value for required argument 'HostName'")
 	}
-	if isZero(args.AppSharingFromLevel) {
+	if args.AppSharingFromLevel == nil {
 		args.AppSharingFromLevel = pulumi.StringPtr("none")
 	}
-	if isZero(args.AppSharingToLevel) {
+	if args.AppSharingToLevel == nil {
 		args.AppSharingToLevel = pulumi.StringPtr("none")
 	}
-	if isZero(args.Authentication) {
+	if args.Authentication == nil {
 		args.Authentication = pulumi.StringPtr("required")
 	}
-	if isZero(args.ClipboardSharingLevel) {
+	if args.ClipboardSharingLevel == nil {
 		args.ClipboardSharingLevel = pulumi.StringPtr("blocked")
 	}
-	if isZero(args.DataBackup) {
+	if args.DataBackup == nil {
 		args.DataBackup = pulumi.StringPtr("allow")
 	}
-	if isZero(args.DeviceCompliance) {
+	if args.DeviceCompliance == nil {
 		args.DeviceCompliance = pulumi.StringPtr("enable")
 	}
-	if isZero(args.FileEncryption) {
+	if args.FileEncryption == nil {
 		args.FileEncryption = pulumi.StringPtr("required")
 	}
-	if isZero(args.FileSharingSaveAs) {
+	if args.FileSharingSaveAs == nil {
 		args.FileSharingSaveAs = pulumi.StringPtr("allow")
 	}
-	if isZero(args.ManagedBrowser) {
+	if args.ManagedBrowser == nil {
 		args.ManagedBrowser = pulumi.StringPtr("required")
 	}
-	if isZero(args.Pin) {
+	if args.Pin == nil {
 		args.Pin = pulumi.StringPtr("required")
 	}
-	if isZero(args.ScreenCapture) {
+	if args.ScreenCapture == nil {
 		args.ScreenCapture = pulumi.StringPtr("allow")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Storage Sync Service object.
-//
-// Deprecated: Version 2019-10-01 will be removed in v2 of the provider.
 type StorageSyncService struct {
 	pulumi.CustomResourceState
 

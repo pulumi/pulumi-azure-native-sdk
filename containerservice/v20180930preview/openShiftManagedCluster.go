@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OpenShift Managed cluster.
-//
-// Deprecated: Version 2018-09-30-preview will be removed in v2 of the provider.
 type OpenShiftManagedCluster struct {
 	pulumi.CustomResourceState
 

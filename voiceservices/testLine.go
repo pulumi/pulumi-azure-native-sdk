@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A TestLine resource
-// API Version: 2022-12-01-preview.
+// API Version: 2023-01-31.
+// Previous API Version: 2022-12-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type TestLine struct {
 	pulumi.CustomResourceState
 
@@ -101,7 +102,7 @@ type testLineArgs struct {
 	// The phone number
 	PhoneNumber string `pulumi:"phoneNumber"`
 	// Purpose of this test line, e.g. automated or manual testing
-	Purpose TestLinePurpose `pulumi:"purpose"`
+	Purpose string `pulumi:"purpose"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -119,7 +120,7 @@ type TestLineArgs struct {
 	// The phone number
 	PhoneNumber pulumi.StringInput
 	// Purpose of this test line, e.g. automated or manual testing
-	Purpose TestLinePurposeInput
+	Purpose pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.

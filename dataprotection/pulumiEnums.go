@@ -13,6 +13,22 @@ const (
 	AbsoluteMarkerFirstOfYear  = AbsoluteMarker("FirstOfYear")
 )
 
+type AlertsState string
+
+const (
+	AlertsStateEnabled  = AlertsState("Enabled")
+	AlertsStateDisabled = AlertsState("Disabled")
+)
+
+// CrossSubscriptionRestore state
+type CrossSubscriptionRestoreState string
+
+const (
+	CrossSubscriptionRestoreStateDisabled            = CrossSubscriptionRestoreState("Disabled")
+	CrossSubscriptionRestoreStatePermanentlyDisabled = CrossSubscriptionRestoreState("PermanentlyDisabled")
+	CrossSubscriptionRestoreStateEnabled             = CrossSubscriptionRestoreState("Enabled")
+)
+
 // type of datastore; Operational/Vault/Archive
 type DataStoreTypes string
 
@@ -34,6 +50,15 @@ const (
 	DayOfWeekWednesday = DayOfWeek("Wednesday")
 )
 
+// Immutability state
+type ImmutabilityState string
+
+const (
+	ImmutabilityStateDisabled = ImmutabilityState("Disabled")
+	ImmutabilityStateUnlocked = ImmutabilityState("Unlocked")
+	ImmutabilityStateLocked   = ImmutabilityState("Locked")
+)
+
 type Month string
 
 const (
@@ -51,13 +76,33 @@ const (
 	MonthSeptember = Month("September")
 )
 
+// Gets or sets the type of secret store
+type SecretStoreType string
+
+const (
+	SecretStoreTypeInvalid       = SecretStoreType("Invalid")
+	SecretStoreTypeAzureKeyVault = SecretStoreType("AzureKeyVault")
+)
+
+// State of soft delete
+type SoftDeleteState string
+
+const (
+	// Soft Delete is turned off for the BackupVault
+	SoftDeleteStateOff = SoftDeleteState("Off")
+	// Soft Delete is enabled for the BackupVault but can be turned off
+	SoftDeleteStateOn = SoftDeleteState("On")
+	// Soft Delete is permanently enabled for the BackupVault and the setting cannot be changed
+	SoftDeleteStateAlwaysOn = SoftDeleteState("AlwaysOn")
+)
+
 // Gets or sets the type of the datastore.
 type StorageSettingStoreTypes string
 
 const (
-	StorageSettingStoreTypesArchiveStore  = StorageSettingStoreTypes("ArchiveStore")
-	StorageSettingStoreTypesSnapshotStore = StorageSettingStoreTypes("SnapshotStore")
-	StorageSettingStoreTypesVaultStore    = StorageSettingStoreTypes("VaultStore")
+	StorageSettingStoreTypesArchiveStore     = StorageSettingStoreTypes("ArchiveStore")
+	StorageSettingStoreTypesOperationalStore = StorageSettingStoreTypes("OperationalStore")
+	StorageSettingStoreTypesVaultStore       = StorageSettingStoreTypes("VaultStore")
 )
 
 // Gets or sets the type.
@@ -66,6 +111,15 @@ type StorageSettingTypes string
 const (
 	StorageSettingTypesGeoRedundant     = StorageSettingTypes("GeoRedundant")
 	StorageSettingTypesLocallyRedundant = StorageSettingTypes("LocallyRedundant")
+	StorageSettingTypesZoneRedundant    = StorageSettingTypes("ZoneRedundant")
+)
+
+// Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+type ValidationType string
+
+const (
+	ValidationTypeShallowValidation = ValidationType("ShallowValidation")
+	ValidationTypeDeepValidation    = ValidationType("DeepValidation")
 )
 
 type WeekNumber string

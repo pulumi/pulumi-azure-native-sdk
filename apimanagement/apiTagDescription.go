@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contract details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ApiTagDescription struct {
 	pulumi.CustomResourceState
 
@@ -24,11 +25,11 @@ type ApiTagDescription struct {
 	ExternalDocsDescription pulumi.StringPtrOutput `pulumi:"externalDocsDescription"`
 	// Absolute URL of external resources describing the tag.
 	ExternalDocsUrl pulumi.StringPtrOutput `pulumi:"externalDocsUrl"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Identifier of the tag in the form of /tags/{tagId}
 	TagId pulumi.StringPtrOutput `pulumi:"tagId"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -91,6 +92,9 @@ func NewApiTagDescription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiTagDescription"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiTagDescription"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiTagDescription
@@ -133,7 +137,7 @@ type apiTagDescriptionArgs struct {
 	ExternalDocsDescription *string `pulumi:"externalDocsDescription"`
 	// Absolute URL of external resources describing the tag.
 	ExternalDocsUrl *string `pulumi:"externalDocsUrl"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -151,7 +155,7 @@ type ApiTagDescriptionArgs struct {
 	ExternalDocsDescription pulumi.StringPtrInput
 	// Absolute URL of external resources describing the tag.
 	ExternalDocsUrl pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -216,7 +220,7 @@ func (o ApiTagDescriptionOutput) ExternalDocsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiTagDescription) pulumi.StringPtrOutput { return v.ExternalDocsUrl }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ApiTagDescriptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiTagDescription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -226,7 +230,7 @@ func (o ApiTagDescriptionOutput) TagId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiTagDescription) pulumi.StringPtrOutput { return v.TagId }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApiTagDescriptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiTagDescription) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subscription details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Subscription struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +27,7 @@ type Subscription struct {
 	EndDate pulumi.StringPtrOutput `pulumi:"endDate"`
 	// Subscription expiration date. The setting is for audit purposes only and the subscription is not automatically expired. The subscription lifecycle can be managed by using the `state` property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 	ExpirationDate pulumi.StringPtrOutput `pulumi:"expirationDate"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Upcoming subscription expiration notification date. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 	NotificationDate pulumi.StringPtrOutput `pulumi:"notificationDate"`
@@ -44,7 +45,7 @@ type Subscription struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Optional subscription comment added by an administrator when the state is changed to the 'rejected'.
 	StateComment pulumi.StringPtrOutput `pulumi:"stateComment"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -116,6 +117,9 @@ func NewSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Subscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Subscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Subscription
@@ -164,7 +168,7 @@ type subscriptionArgs struct {
 	OwnerId *string `pulumi:"ownerId"`
 	// Primary subscription key. If not specified during request key will be generated automatically.
 	PrimaryKey *string `pulumi:"primaryKey"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Scope like /products/{productId} or /apis or /apis/{apiId}.
 	Scope string `pulumi:"scope"`
@@ -194,7 +198,7 @@ type SubscriptionArgs struct {
 	OwnerId pulumi.StringPtrInput
 	// Primary subscription key. If not specified during request key will be generated automatically.
 	PrimaryKey pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Scope like /products/{productId} or /apis or /apis/{apiId}.
 	Scope pulumi.StringInput
@@ -270,7 +274,7 @@ func (o SubscriptionOutput) ExpirationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringPtrOutput { return v.ExpirationDate }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o SubscriptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -315,7 +319,7 @@ func (o SubscriptionOutput) StateComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringPtrOutput { return v.StateComment }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SubscriptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

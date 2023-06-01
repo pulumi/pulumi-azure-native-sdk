@@ -31,13 +31,5 @@ const (
 	ProjectTargetPlatformUnknown = ProjectTargetPlatform("Unknown")
 )
 
-// Permission group for validations
-type ServerLevelPermissionsGroup string
-
-const (
-	ServerLevelPermissionsGroupDefault                         = ServerLevelPermissionsGroup("Default")
-	ServerLevelPermissionsGroupMigrationFromSqlServerToAzureDB = ServerLevelPermissionsGroup("MigrationFromSqlServerToAzureDB")
-)
-
 func init() {
 }

@@ -2635,79 +2635,12 @@ func (o FieldDefinitionResponseMapOutput) MapIndex(k pulumi.StringInput) FieldDe
 	}).(FieldDefinitionResponseOutput)
 }
 
-// Definition of hybrid runbook worker Legacy.
-type HybridRunbookWorkerLegacyResponse struct {
-	// Gets or sets the assigned machine IP address.
-	Ip *string `pulumi:"ip"`
-	// Last Heartbeat from the Worker
-	LastSeenDateTime *string `pulumi:"lastSeenDateTime"`
-	// Gets or sets the worker machine name.
-	Name *string `pulumi:"name"`
-	// Gets or sets the registration time of the worker machine.
-	RegistrationTime *string `pulumi:"registrationTime"`
-}
-
-// Definition of hybrid runbook worker Legacy.
-type HybridRunbookWorkerLegacyResponseOutput struct{ *pulumi.OutputState }
-
-func (HybridRunbookWorkerLegacyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridRunbookWorkerLegacyResponse)(nil)).Elem()
-}
-
-func (o HybridRunbookWorkerLegacyResponseOutput) ToHybridRunbookWorkerLegacyResponseOutput() HybridRunbookWorkerLegacyResponseOutput {
-	return o
-}
-
-func (o HybridRunbookWorkerLegacyResponseOutput) ToHybridRunbookWorkerLegacyResponseOutputWithContext(ctx context.Context) HybridRunbookWorkerLegacyResponseOutput {
-	return o
-}
-
-// Gets or sets the assigned machine IP address.
-func (o HybridRunbookWorkerLegacyResponseOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HybridRunbookWorkerLegacyResponse) *string { return v.Ip }).(pulumi.StringPtrOutput)
-}
-
-// Last Heartbeat from the Worker
-func (o HybridRunbookWorkerLegacyResponseOutput) LastSeenDateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HybridRunbookWorkerLegacyResponse) *string { return v.LastSeenDateTime }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the worker machine name.
-func (o HybridRunbookWorkerLegacyResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HybridRunbookWorkerLegacyResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the registration time of the worker machine.
-func (o HybridRunbookWorkerLegacyResponseOutput) RegistrationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HybridRunbookWorkerLegacyResponse) *string { return v.RegistrationTime }).(pulumi.StringPtrOutput)
-}
-
-type HybridRunbookWorkerLegacyResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (HybridRunbookWorkerLegacyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HybridRunbookWorkerLegacyResponse)(nil)).Elem()
-}
-
-func (o HybridRunbookWorkerLegacyResponseArrayOutput) ToHybridRunbookWorkerLegacyResponseArrayOutput() HybridRunbookWorkerLegacyResponseArrayOutput {
-	return o
-}
-
-func (o HybridRunbookWorkerLegacyResponseArrayOutput) ToHybridRunbookWorkerLegacyResponseArrayOutputWithContext(ctx context.Context) HybridRunbookWorkerLegacyResponseArrayOutput {
-	return o
-}
-
-func (o HybridRunbookWorkerLegacyResponseArrayOutput) Index(i pulumi.IntInput) HybridRunbookWorkerLegacyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HybridRunbookWorkerLegacyResponse {
-		return vs[0].([]HybridRunbookWorkerLegacyResponse)[vs[1].(int)]
-	}).(HybridRunbookWorkerLegacyResponseOutput)
-}
-
 // Identity for the resource.
 type Identity struct {
 	// The identity type.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -2726,7 +2659,7 @@ type IdentityArgs struct {
 	// The identity type.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -2813,8 +2746,8 @@ func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -2852,13 +2785,13 @@ func (o IdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the resource.
@@ -2870,7 +2803,7 @@ type IdentityResponse struct {
 	// The identity type.
 	Type *string `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]IdentityResponseUserAssignedIdentities `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]UserAssignedIdentitiesPropertiesResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Identity for the resource.
@@ -2904,10 +2837,10 @@ func (o IdentityResponseOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityResponseOutput) UserAssignedIdentities() IdentityResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v IdentityResponse) map[string]IdentityResponseUserAssignedIdentities {
+func (o IdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentitiesPropertiesResponseMapOutput {
+	return o.ApplyT(func(v IdentityResponse) map[string]UserAssignedIdentitiesPropertiesResponse {
 		return v.UserAssignedIdentities
-	}).(IdentityResponseUserAssignedIdentitiesMapOutput)
+	}).(UserAssignedIdentitiesPropertiesResponseMapOutput)
 }
 
 type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2965,64 +2898,13 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityResponsePtrOutput) UserAssignedIdentities() IdentityResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v *IdentityResponse) map[string]IdentityResponseUserAssignedIdentities {
+func (o IdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentitiesPropertiesResponseMapOutput {
+	return o.ApplyT(func(v *IdentityResponse) map[string]UserAssignedIdentitiesPropertiesResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(IdentityResponseUserAssignedIdentitiesMapOutput)
-}
-
-type IdentityResponseUserAssignedIdentities struct {
-	// The client id of user assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal id of user assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-type IdentityResponseUserAssignedIdentitiesOutput struct{ *pulumi.OutputState }
-
-func (IdentityResponseUserAssignedIdentitiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityResponseUserAssignedIdentities)(nil)).Elem()
-}
-
-func (o IdentityResponseUserAssignedIdentitiesOutput) ToIdentityResponseUserAssignedIdentitiesOutput() IdentityResponseUserAssignedIdentitiesOutput {
-	return o
-}
-
-func (o IdentityResponseUserAssignedIdentitiesOutput) ToIdentityResponseUserAssignedIdentitiesOutputWithContext(ctx context.Context) IdentityResponseUserAssignedIdentitiesOutput {
-	return o
-}
-
-// The client id of user assigned identity.
-func (o IdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal id of user assigned identity.
-func (o IdentityResponseUserAssignedIdentitiesOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityResponseUserAssignedIdentities) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type IdentityResponseUserAssignedIdentitiesMapOutput struct{ *pulumi.OutputState }
-
-func (IdentityResponseUserAssignedIdentitiesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IdentityResponseUserAssignedIdentities)(nil)).Elem()
-}
-
-func (o IdentityResponseUserAssignedIdentitiesMapOutput) ToIdentityResponseUserAssignedIdentitiesMapOutput() IdentityResponseUserAssignedIdentitiesMapOutput {
-	return o
-}
-
-func (o IdentityResponseUserAssignedIdentitiesMapOutput) ToIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) IdentityResponseUserAssignedIdentitiesMapOutput {
-	return o
-}
-
-func (o IdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) IdentityResponseUserAssignedIdentitiesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IdentityResponseUserAssignedIdentities {
-		return vs[0].(map[string]IdentityResponseUserAssignedIdentities)[vs[1].(string)]
-	}).(IdentityResponseUserAssignedIdentitiesOutput)
+	}).(UserAssignedIdentitiesPropertiesResponseMapOutput)
 }
 
 // Automation key which is used to register a DSC Node
@@ -3988,146 +3870,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 }
 
 // Private endpoint which the connection belongs to.
-type PrivateEndpointProperty struct {
-	// Resource id of the private endpoint.
-	Id *string `pulumi:"id"`
-}
-
-// PrivateEndpointPropertyInput is an input type that accepts PrivateEndpointPropertyArgs and PrivateEndpointPropertyOutput values.
-// You can construct a concrete instance of `PrivateEndpointPropertyInput` via:
-//
-//	PrivateEndpointPropertyArgs{...}
-type PrivateEndpointPropertyInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointPropertyOutput() PrivateEndpointPropertyOutput
-	ToPrivateEndpointPropertyOutputWithContext(context.Context) PrivateEndpointPropertyOutput
-}
-
-// Private endpoint which the connection belongs to.
-type PrivateEndpointPropertyArgs struct {
-	// Resource id of the private endpoint.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (PrivateEndpointPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointProperty)(nil)).Elem()
-}
-
-func (i PrivateEndpointPropertyArgs) ToPrivateEndpointPropertyOutput() PrivateEndpointPropertyOutput {
-	return i.ToPrivateEndpointPropertyOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointPropertyArgs) ToPrivateEndpointPropertyOutputWithContext(ctx context.Context) PrivateEndpointPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPropertyOutput)
-}
-
-func (i PrivateEndpointPropertyArgs) ToPrivateEndpointPropertyPtrOutput() PrivateEndpointPropertyPtrOutput {
-	return i.ToPrivateEndpointPropertyPtrOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointPropertyArgs) ToPrivateEndpointPropertyPtrOutputWithContext(ctx context.Context) PrivateEndpointPropertyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPropertyOutput).ToPrivateEndpointPropertyPtrOutputWithContext(ctx)
-}
-
-// PrivateEndpointPropertyPtrInput is an input type that accepts PrivateEndpointPropertyArgs, PrivateEndpointPropertyPtr and PrivateEndpointPropertyPtrOutput values.
-// You can construct a concrete instance of `PrivateEndpointPropertyPtrInput` via:
-//
-//	        PrivateEndpointPropertyArgs{...}
-//
-//	or:
-//
-//	        nil
-type PrivateEndpointPropertyPtrInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointPropertyPtrOutput() PrivateEndpointPropertyPtrOutput
-	ToPrivateEndpointPropertyPtrOutputWithContext(context.Context) PrivateEndpointPropertyPtrOutput
-}
-
-type privateEndpointPropertyPtrType PrivateEndpointPropertyArgs
-
-func PrivateEndpointPropertyPtr(v *PrivateEndpointPropertyArgs) PrivateEndpointPropertyPtrInput {
-	return (*privateEndpointPropertyPtrType)(v)
-}
-
-func (*privateEndpointPropertyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointProperty)(nil)).Elem()
-}
-
-func (i *privateEndpointPropertyPtrType) ToPrivateEndpointPropertyPtrOutput() PrivateEndpointPropertyPtrOutput {
-	return i.ToPrivateEndpointPropertyPtrOutputWithContext(context.Background())
-}
-
-func (i *privateEndpointPropertyPtrType) ToPrivateEndpointPropertyPtrOutputWithContext(ctx context.Context) PrivateEndpointPropertyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPropertyPtrOutput)
-}
-
-// Private endpoint which the connection belongs to.
-type PrivateEndpointPropertyOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointProperty)(nil)).Elem()
-}
-
-func (o PrivateEndpointPropertyOutput) ToPrivateEndpointPropertyOutput() PrivateEndpointPropertyOutput {
-	return o
-}
-
-func (o PrivateEndpointPropertyOutput) ToPrivateEndpointPropertyOutputWithContext(ctx context.Context) PrivateEndpointPropertyOutput {
-	return o
-}
-
-func (o PrivateEndpointPropertyOutput) ToPrivateEndpointPropertyPtrOutput() PrivateEndpointPropertyPtrOutput {
-	return o.ToPrivateEndpointPropertyPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointPropertyOutput) ToPrivateEndpointPropertyPtrOutputWithContext(ctx context.Context) PrivateEndpointPropertyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointProperty) *PrivateEndpointProperty {
-		return &v
-	}).(PrivateEndpointPropertyPtrOutput)
-}
-
-// Resource id of the private endpoint.
-func (o PrivateEndpointPropertyOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointProperty) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointPropertyPtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointPropertyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointProperty)(nil)).Elem()
-}
-
-func (o PrivateEndpointPropertyPtrOutput) ToPrivateEndpointPropertyPtrOutput() PrivateEndpointPropertyPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointPropertyPtrOutput) ToPrivateEndpointPropertyPtrOutputWithContext(ctx context.Context) PrivateEndpointPropertyPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointPropertyPtrOutput) Elem() PrivateEndpointPropertyOutput {
-	return o.ApplyT(func(v *PrivateEndpointProperty) PrivateEndpointProperty {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointProperty
-		return ret
-	}).(PrivateEndpointPropertyOutput)
-}
-
-// Resource id of the private endpoint.
-func (o PrivateEndpointPropertyPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointProperty) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Private endpoint which the connection belongs to.
 type PrivateEndpointPropertyResponse struct {
 	// Resource id of the private endpoint.
 	Id *string `pulumi:"id"`
@@ -4184,165 +3926,6 @@ func (o PrivateEndpointPropertyResponsePtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Connection State of the Private Endpoint Connection.
-type PrivateLinkServiceConnectionStateProperty struct {
-	// The private link service connection description.
-	Description *string `pulumi:"description"`
-	// The private link service connection status.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStatePropertyInput is an input type that accepts PrivateLinkServiceConnectionStatePropertyArgs and PrivateLinkServiceConnectionStatePropertyOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePropertyInput` via:
-//
-//	PrivateLinkServiceConnectionStatePropertyArgs{...}
-type PrivateLinkServiceConnectionStatePropertyInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStatePropertyOutput() PrivateLinkServiceConnectionStatePropertyOutput
-	ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePropertyOutput
-}
-
-// Connection State of the Private Endpoint Connection.
-type PrivateLinkServiceConnectionStatePropertyArgs struct {
-	// The private link service connection description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The private link service connection status.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStatePropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateProperty)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStatePropertyArgs) ToPrivateLinkServiceConnectionStatePropertyOutput() PrivateLinkServiceConnectionStatePropertyOutput {
-	return i.ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStatePropertyArgs) ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePropertyOutput)
-}
-
-func (i PrivateLinkServiceConnectionStatePropertyArgs) ToPrivateLinkServiceConnectionStatePropertyPtrOutput() PrivateLinkServiceConnectionStatePropertyPtrOutput {
-	return i.ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStatePropertyArgs) ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePropertyOutput).ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(ctx)
-}
-
-// PrivateLinkServiceConnectionStatePropertyPtrInput is an input type that accepts PrivateLinkServiceConnectionStatePropertyArgs, PrivateLinkServiceConnectionStatePropertyPtr and PrivateLinkServiceConnectionStatePropertyPtrOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePropertyPtrInput` via:
-//
-//	        PrivateLinkServiceConnectionStatePropertyArgs{...}
-//
-//	or:
-//
-//	        nil
-type PrivateLinkServiceConnectionStatePropertyPtrInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStatePropertyPtrOutput() PrivateLinkServiceConnectionStatePropertyPtrOutput
-	ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePropertyPtrOutput
-}
-
-type privateLinkServiceConnectionStatePropertyPtrType PrivateLinkServiceConnectionStatePropertyArgs
-
-func PrivateLinkServiceConnectionStatePropertyPtr(v *PrivateLinkServiceConnectionStatePropertyArgs) PrivateLinkServiceConnectionStatePropertyPtrInput {
-	return (*privateLinkServiceConnectionStatePropertyPtrType)(v)
-}
-
-func (*privateLinkServiceConnectionStatePropertyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateLinkServiceConnectionStateProperty)(nil)).Elem()
-}
-
-func (i *privateLinkServiceConnectionStatePropertyPtrType) ToPrivateLinkServiceConnectionStatePropertyPtrOutput() PrivateLinkServiceConnectionStatePropertyPtrOutput {
-	return i.ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(context.Background())
-}
-
-func (i *privateLinkServiceConnectionStatePropertyPtrType) ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePropertyPtrOutput)
-}
-
-// Connection State of the Private Endpoint Connection.
-type PrivateLinkServiceConnectionStatePropertyOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStatePropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateProperty)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyOutput) ToPrivateLinkServiceConnectionStatePropertyOutput() PrivateLinkServiceConnectionStatePropertyOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyOutput) ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyOutput) ToPrivateLinkServiceConnectionStatePropertyPtrOutput() PrivateLinkServiceConnectionStatePropertyPtrOutput {
-	return o.ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyOutput) ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionStateProperty) *PrivateLinkServiceConnectionStateProperty {
-		return &v
-	}).(PrivateLinkServiceConnectionStatePropertyPtrOutput)
-}
-
-// The private link service connection description.
-func (o PrivateLinkServiceConnectionStatePropertyOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateProperty) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The private link service connection status.
-func (o PrivateLinkServiceConnectionStatePropertyOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateProperty) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type PrivateLinkServiceConnectionStatePropertyPtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStatePropertyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateLinkServiceConnectionStateProperty)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) ToPrivateLinkServiceConnectionStatePropertyPtrOutput() PrivateLinkServiceConnectionStatePropertyPtrOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyPtrOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) Elem() PrivateLinkServiceConnectionStatePropertyOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateProperty) PrivateLinkServiceConnectionStateProperty {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateLinkServiceConnectionStateProperty
-		return ret
-	}).(PrivateLinkServiceConnectionStatePropertyOutput)
-}
-
-// The private link service connection description.
-func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateProperty) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The private link service connection status.
-func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateProperty) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5445,7 +5028,7 @@ func (val *SUCScheduleProperties) Defaults() *SUCScheduleProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -5499,7 +5082,7 @@ func (val *SUCSchedulePropertiesArgs) Defaults() *SUCSchedulePropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		tmp.IsEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -5634,7 +5217,7 @@ func (val *SUCSchedulePropertiesResponse) Defaults() *SUCSchedulePropertiesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -7470,6 +7053,57 @@ func (o UpdateConfigurationResponseOutput) Windows() WindowsPropertiesResponsePt
 	return o.ApplyT(func(v UpdateConfigurationResponse) *WindowsPropertiesResponse { return v.Windows }).(WindowsPropertiesResponsePtrOutput)
 }
 
+type UserAssignedIdentitiesPropertiesResponse struct {
+	// The client id of user assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal id of user assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+type UserAssignedIdentitiesPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentitiesPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentitiesPropertiesResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseOutput) ToUserAssignedIdentitiesPropertiesResponseOutput() UserAssignedIdentitiesPropertiesResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseOutput) ToUserAssignedIdentitiesPropertiesResponseOutputWithContext(ctx context.Context) UserAssignedIdentitiesPropertiesResponseOutput {
+	return o
+}
+
+// The client id of user assigned identity.
+func (o UserAssignedIdentitiesPropertiesResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentitiesPropertiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal id of user assigned identity.
+func (o UserAssignedIdentitiesPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentitiesPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentitiesPropertiesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentitiesPropertiesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentitiesPropertiesResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseMapOutput) ToUserAssignedIdentitiesPropertiesResponseMapOutput() UserAssignedIdentitiesPropertiesResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseMapOutput) ToUserAssignedIdentitiesPropertiesResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentitiesPropertiesResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentitiesPropertiesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentitiesPropertiesResponse {
+		return vs[0].(map[string]UserAssignedIdentitiesPropertiesResponse)[vs[1].(string)]
+	}).(UserAssignedIdentitiesPropertiesResponseOutput)
+}
+
 // Windows specific update configuration.
 type WindowsProperties struct {
 	// KB numbers excluded from the software update configuration.
@@ -7828,14 +7462,10 @@ func init() {
 	pulumi.RegisterOutputType(FieldDefinitionMapOutput{})
 	pulumi.RegisterOutputType(FieldDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(FieldDefinitionResponseMapOutput{})
-	pulumi.RegisterOutputType(HybridRunbookWorkerLegacyResponseOutput{})
-	pulumi.RegisterOutputType(HybridRunbookWorkerLegacyResponseArrayOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesOutput{})
-	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(KeyResponseOutput{})
 	pulumi.RegisterOutputType(KeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesOutput{})
@@ -7854,12 +7484,8 @@ func init() {
 	pulumi.RegisterOutputType(NonAzureQueryPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointPropertyOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointPropertyPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPropertyResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPropertyResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyPtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyResponsePtrOutput{})
 	pulumi.RegisterOutputType(RunAsCredentialAssociationPropertyOutput{})
@@ -7908,6 +7534,8 @@ func init() {
 	pulumi.RegisterOutputType(TaskPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(UpdateConfigurationOutput{})
 	pulumi.RegisterOutputType(UpdateConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentitiesPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentitiesPropertiesResponseMapOutput{})
 	pulumi.RegisterOutputType(WindowsPropertiesOutput{})
 	pulumi.RegisterOutputType(WindowsPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(WindowsPropertiesResponseOutput{})

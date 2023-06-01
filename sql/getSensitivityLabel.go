@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the sensitivity label of a given column
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
 func LookupSensitivityLabel(ctx *pulumi.Context, args *LookupSensitivityLabelArgs, opts ...pulumi.InvokeOption) (*LookupSensitivityLabelResult, error) {
 	var rv LookupSensitivityLabelResult
 	err := ctx.Invoke("azure-native:sql:getSensitivityLabel", args, &rv, opts...)

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Action rule object containing target scope, conditions and suppression logic
-//
-// Deprecated: Version 2018-11-02-privatepreview will be removed in v2 of the provider.
 type ActionRuleByName struct {
 	pulumi.CustomResourceState
 

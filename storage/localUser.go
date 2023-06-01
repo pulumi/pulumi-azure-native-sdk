@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The local user associated with the storage accounts.
-// API Version: 2021-08-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type LocalUser struct {
 	pulumi.CustomResourceState
 

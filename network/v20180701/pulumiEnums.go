@@ -3,173 +3,6 @@
 
 package v20180701
 
-// The access type of the rule. Valid values are: 'Allow', 'Deny'
-type Access string
-
-const (
-	AccessAllow = Access("Allow")
-	AccessDeny  = Access("Deny")
-)
-
-// Cookie based affinity.
-type ApplicationGatewayCookieBasedAffinity string
-
-const (
-	ApplicationGatewayCookieBasedAffinityEnabled  = ApplicationGatewayCookieBasedAffinity("Enabled")
-	ApplicationGatewayCookieBasedAffinityDisabled = ApplicationGatewayCookieBasedAffinity("Disabled")
-)
-
-// Web application firewall mode.
-type ApplicationGatewayFirewallMode string
-
-const (
-	ApplicationGatewayFirewallModeDetection  = ApplicationGatewayFirewallMode("Detection")
-	ApplicationGatewayFirewallModePrevention = ApplicationGatewayFirewallMode("Prevention")
-)
-
-// The protocol used for the probe. Possible values are 'Http' and 'Https'.
-type ApplicationGatewayProtocol string
-
-const (
-	ApplicationGatewayProtocolHttp  = ApplicationGatewayProtocol("Http")
-	ApplicationGatewayProtocolHttps = ApplicationGatewayProtocol("Https")
-)
-
-// Supported http redirection types - Permanent, Temporary, Found, SeeOther.
-type ApplicationGatewayRedirectType string
-
-const (
-	ApplicationGatewayRedirectTypePermanent = ApplicationGatewayRedirectType("Permanent")
-	ApplicationGatewayRedirectTypeFound     = ApplicationGatewayRedirectType("Found")
-	ApplicationGatewayRedirectTypeSeeOther  = ApplicationGatewayRedirectType("SeeOther")
-	ApplicationGatewayRedirectTypeTemporary = ApplicationGatewayRedirectType("Temporary")
-)
-
-// Rule type.
-type ApplicationGatewayRequestRoutingRuleType string
-
-const (
-	ApplicationGatewayRequestRoutingRuleTypeBasic            = ApplicationGatewayRequestRoutingRuleType("Basic")
-	ApplicationGatewayRequestRoutingRuleTypePathBasedRouting = ApplicationGatewayRequestRoutingRuleType("PathBasedRouting")
-)
-
-// Name of an application gateway SKU.
-type ApplicationGatewaySkuName string
-
-const (
-	ApplicationGatewaySkuName_Standard_Small  = ApplicationGatewaySkuName("Standard_Small")
-	ApplicationGatewaySkuName_Standard_Medium = ApplicationGatewaySkuName("Standard_Medium")
-	ApplicationGatewaySkuName_Standard_Large  = ApplicationGatewaySkuName("Standard_Large")
-	ApplicationGatewaySkuName_WAF_Medium      = ApplicationGatewaySkuName("WAF_Medium")
-	ApplicationGatewaySkuName_WAF_Large       = ApplicationGatewaySkuName("WAF_Large")
-	ApplicationGatewaySkuName_Standard_v2     = ApplicationGatewaySkuName("Standard_v2")
-	ApplicationGatewaySkuName_WAF_v2          = ApplicationGatewaySkuName("WAF_v2")
-)
-
-// Ssl cipher suites enums.
-type ApplicationGatewaySslCipherSuite string
-
-const (
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384   = ApplicationGatewaySslCipherSuite("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256   = ApplicationGatewaySslCipherSuite("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA      = ApplicationGatewaySslCipherSuite("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA      = ApplicationGatewaySslCipherSuite("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_RSA_WITH_AES_256_GCM_SHA384     = ApplicationGatewaySslCipherSuite("TLS_DHE_RSA_WITH_AES_256_GCM_SHA384")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_RSA_WITH_AES_128_GCM_SHA256     = ApplicationGatewaySslCipherSuite("TLS_DHE_RSA_WITH_AES_128_GCM_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_RSA_WITH_AES_256_CBC_SHA        = ApplicationGatewaySslCipherSuite("TLS_DHE_RSA_WITH_AES_256_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_RSA_WITH_AES_128_CBC_SHA        = ApplicationGatewaySslCipherSuite("TLS_DHE_RSA_WITH_AES_128_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_RSA_WITH_AES_256_GCM_SHA384         = ApplicationGatewaySslCipherSuite("TLS_RSA_WITH_AES_256_GCM_SHA384")
-	ApplicationGatewaySslCipherSuite_TLS_RSA_WITH_AES_128_GCM_SHA256         = ApplicationGatewaySslCipherSuite("TLS_RSA_WITH_AES_128_GCM_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_RSA_WITH_AES_256_CBC_SHA256         = ApplicationGatewaySslCipherSuite("TLS_RSA_WITH_AES_256_CBC_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_RSA_WITH_AES_128_CBC_SHA256         = ApplicationGatewaySslCipherSuite("TLS_RSA_WITH_AES_128_CBC_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_RSA_WITH_AES_256_CBC_SHA            = ApplicationGatewaySslCipherSuite("TLS_RSA_WITH_AES_256_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_RSA_WITH_AES_128_CBC_SHA            = ApplicationGatewaySslCipherSuite("TLS_RSA_WITH_AES_128_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 = ApplicationGatewaySslCipherSuite("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 = ApplicationGatewaySslCipherSuite("TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 = ApplicationGatewaySslCipherSuite("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 = ApplicationGatewaySslCipherSuite("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA    = ApplicationGatewaySslCipherSuite("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA    = ApplicationGatewaySslCipherSuite("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_DSS_WITH_AES_256_CBC_SHA256     = ApplicationGatewaySslCipherSuite("TLS_DHE_DSS_WITH_AES_256_CBC_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_DSS_WITH_AES_128_CBC_SHA256     = ApplicationGatewaySslCipherSuite("TLS_DHE_DSS_WITH_AES_128_CBC_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_DSS_WITH_AES_256_CBC_SHA        = ApplicationGatewaySslCipherSuite("TLS_DHE_DSS_WITH_AES_256_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_DSS_WITH_AES_128_CBC_SHA        = ApplicationGatewaySslCipherSuite("TLS_DHE_DSS_WITH_AES_128_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_RSA_WITH_3DES_EDE_CBC_SHA           = ApplicationGatewaySslCipherSuite("TLS_RSA_WITH_3DES_EDE_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA       = ApplicationGatewaySslCipherSuite("TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256   = ApplicationGatewaySslCipherSuite("TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256")
-	ApplicationGatewaySslCipherSuite_TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384   = ApplicationGatewaySslCipherSuite("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384")
-)
-
-// Name of Ssl predefined policy
-type ApplicationGatewaySslPolicyName string
-
-const (
-	ApplicationGatewaySslPolicyNameAppGwSslPolicy20150501  = ApplicationGatewaySslPolicyName("AppGwSslPolicy20150501")
-	ApplicationGatewaySslPolicyNameAppGwSslPolicy20170401  = ApplicationGatewaySslPolicyName("AppGwSslPolicy20170401")
-	ApplicationGatewaySslPolicyNameAppGwSslPolicy20170401S = ApplicationGatewaySslPolicyName("AppGwSslPolicy20170401S")
-)
-
-// Type of Ssl Policy
-type ApplicationGatewaySslPolicyType string
-
-const (
-	ApplicationGatewaySslPolicyTypePredefined = ApplicationGatewaySslPolicyType("Predefined")
-	ApplicationGatewaySslPolicyTypeCustom     = ApplicationGatewaySslPolicyType("Custom")
-)
-
-// Minimum version of Ssl protocol to be supported on application gateway.
-type ApplicationGatewaySslProtocol string
-
-const (
-	ApplicationGatewaySslProtocol_TLSv1_0 = ApplicationGatewaySslProtocol("TLSv1_0")
-	ApplicationGatewaySslProtocol_TLSv1_1 = ApplicationGatewaySslProtocol("TLSv1_1")
-	ApplicationGatewaySslProtocol_TLSv1_2 = ApplicationGatewaySslProtocol("TLSv1_2")
-)
-
-// Tier of an application gateway.
-type ApplicationGatewayTier string
-
-const (
-	ApplicationGatewayTierStandard     = ApplicationGatewayTier("Standard")
-	ApplicationGatewayTierWAF          = ApplicationGatewayTier("WAF")
-	ApplicationGatewayTier_Standard_v2 = ApplicationGatewayTier("Standard_v2")
-	ApplicationGatewayTier_WAF_v2      = ApplicationGatewayTier("WAF_v2")
-)
-
-// AuthorizationUseStatus. Possible values are: 'Available' and 'InUse'.
-type AuthorizationUseStatus string
-
-const (
-	AuthorizationUseStatusAvailable = AuthorizationUseStatus("Available")
-	AuthorizationUseStatusInUse     = AuthorizationUseStatus("InUse")
-)
-
-// Protocol type
-type AzureFirewallApplicationRuleProtocolType string
-
-const (
-	AzureFirewallApplicationRuleProtocolTypeHttp  = AzureFirewallApplicationRuleProtocolType("Http")
-	AzureFirewallApplicationRuleProtocolTypeHttps = AzureFirewallApplicationRuleProtocolType("Https")
-)
-
-// The protocol of a Network Rule resource
-type AzureFirewallNetworkRuleProtocol string
-
-const (
-	AzureFirewallNetworkRuleProtocolTCP  = AzureFirewallNetworkRuleProtocol("TCP")
-	AzureFirewallNetworkRuleProtocolUDP  = AzureFirewallNetworkRuleProtocol("UDP")
-	AzureFirewallNetworkRuleProtocolAny  = AzureFirewallNetworkRuleProtocol("Any")
-	AzureFirewallNetworkRuleProtocolICMP = AzureFirewallNetworkRuleProtocol("ICMP")
-)
-
-// The type of action.
-type AzureFirewallRCActionType string
-
-const (
-	AzureFirewallRCActionTypeAllow = AzureFirewallRCActionType("Allow")
-	AzureFirewallRCActionTypeDeny  = AzureFirewallRCActionType("Deny")
-)
-
 // The DH Groups used in IKE Phase 1 for initial SA.
 type DhGroup string
 
@@ -184,58 +17,7 @@ const (
 	DhGroupDHGroup24   = DhGroup("DHGroup24")
 )
 
-// AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-type ExpressRouteCircuitPeeringAdvertisedPublicPrefixState string
-
-const (
-	ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateNotConfigured    = ExpressRouteCircuitPeeringAdvertisedPublicPrefixState("NotConfigured")
-	ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateConfiguring      = ExpressRouteCircuitPeeringAdvertisedPublicPrefixState("Configuring")
-	ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateConfigured       = ExpressRouteCircuitPeeringAdvertisedPublicPrefixState("Configured")
-	ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateValidationNeeded = ExpressRouteCircuitPeeringAdvertisedPublicPrefixState("ValidationNeeded")
-)
-
-// The state of peering. Possible values are: 'Disabled' and 'Enabled'
-type ExpressRouteCircuitPeeringStateEnum string
-
-const (
-	ExpressRouteCircuitPeeringStateEnumDisabled = ExpressRouteCircuitPeeringStateEnum("Disabled")
-	ExpressRouteCircuitPeeringStateEnumEnabled  = ExpressRouteCircuitPeeringStateEnum("Enabled")
-)
-
-// The family of the SKU. Possible values are: 'UnlimitedData' and 'MeteredData'.
-type ExpressRouteCircuitSkuFamily string
-
-const (
-	ExpressRouteCircuitSkuFamilyUnlimitedData = ExpressRouteCircuitSkuFamily("UnlimitedData")
-	ExpressRouteCircuitSkuFamilyMeteredData   = ExpressRouteCircuitSkuFamily("MeteredData")
-)
-
-// The tier of the SKU. Possible values are 'Standard' and 'Premium'.
-type ExpressRouteCircuitSkuTier string
-
-const (
-	ExpressRouteCircuitSkuTierStandard = ExpressRouteCircuitSkuTier("Standard")
-	ExpressRouteCircuitSkuTierPremium  = ExpressRouteCircuitSkuTier("Premium")
-)
-
-// The peering state.
-type ExpressRoutePeeringState string
-
-const (
-	ExpressRoutePeeringStateDisabled = ExpressRoutePeeringState("Disabled")
-	ExpressRoutePeeringStateEnabled  = ExpressRoutePeeringState("Enabled")
-)
-
-// The peering type.
-type ExpressRoutePeeringType string
-
-const (
-	ExpressRoutePeeringTypeAzurePublicPeering  = ExpressRoutePeeringType("AzurePublicPeering")
-	ExpressRoutePeeringTypeAzurePrivatePeering = ExpressRoutePeeringType("AzurePrivatePeering")
-	ExpressRoutePeeringTypeMicrosoftPeering    = ExpressRoutePeeringType("MicrosoftPeering")
-)
-
-// The private IP allocation method. Possible values are: 'Static' and 'Dynamic'.
+// The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
 type IPAllocationMethod string
 
 const (
@@ -303,32 +85,6 @@ const (
 	IpsecIntegrityGCMAES256 = IpsecIntegrity("GCMAES256")
 )
 
-// Name of a load balancer SKU.
-type LoadBalancerSkuName string
-
-const (
-	LoadBalancerSkuNameBasic    = LoadBalancerSkuName("Basic")
-	LoadBalancerSkuNameStandard = LoadBalancerSkuName("Standard")
-)
-
-// The load distribution policy for this rule. Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
-type LoadDistribution string
-
-const (
-	LoadDistributionDefault          = LoadDistribution("Default")
-	LoadDistributionSourceIP         = LoadDistribution("SourceIP")
-	LoadDistributionSourceIPProtocol = LoadDistribution("SourceIPProtocol")
-)
-
-// Protocol to be filtered on.
-type PcProtocol string
-
-const (
-	PcProtocolTCP = PcProtocol("TCP")
-	PcProtocolUDP = PcProtocol("UDP")
-	PcProtocolAny = PcProtocol("Any")
-)
-
 // The Pfs Groups used in IKE Phase 2 for new child SA.
 type PfsGroup string
 
@@ -344,35 +100,12 @@ const (
 	PfsGroupPFSMM   = PfsGroup("PFSMM")
 )
 
-// The protocol of the end point. Possible values are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
-type ProbeProtocol string
-
-const (
-	ProbeProtocolHttp  = ProbeProtocol("Http")
-	ProbeProtocolTcp   = ProbeProtocol("Tcp")
-	ProbeProtocolHttps = ProbeProtocol("Https")
-)
-
 // Name of a public IP address SKU.
 type PublicIPAddressSkuName string
 
 const (
 	PublicIPAddressSkuNameBasic    = PublicIPAddressSkuName("Basic")
 	PublicIPAddressSkuNameStandard = PublicIPAddressSkuName("Standard")
-)
-
-// Name of a public IP prefix SKU.
-type PublicIPPrefixSkuName string
-
-const (
-	PublicIPPrefixSkuNameStandard = PublicIPPrefixSkuName("Standard")
-)
-
-// The rule type of the rule. Valid value is: 'Community'
-type RouteFilterRuleTypeEnum string
-
-const (
-	RouteFilterRuleTypeEnumCommunity = RouteFilterRuleTypeEnum("Community")
 )
 
 // The type of Azure hop the packet should be sent to. Possible values are: 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'
@@ -411,16 +144,6 @@ const (
 	SecurityRuleProtocolAsterisk = SecurityRuleProtocol("*")
 )
 
-// The ServiceProviderProvisioningState state of the resource. Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'.
-type ServiceProviderProvisioningState string
-
-const (
-	ServiceProviderProvisioningStateNotProvisioned = ServiceProviderProvisioningState("NotProvisioned")
-	ServiceProviderProvisioningStateProvisioning   = ServiceProviderProvisioningState("Provisioning")
-	ServiceProviderProvisioningStateProvisioned    = ServiceProviderProvisioningState("Provisioned")
-	ServiceProviderProvisioningStateDeprovisioning = ServiceProviderProvisioningState("Deprovisioning")
-)
-
 // The transport protocol for the endpoint. Possible values are 'Udp' or 'Tcp' or 'All'.
 type TransportProtocol string
 
@@ -428,88 +151,6 @@ const (
 	TransportProtocolUdp = TransportProtocol("Udp")
 	TransportProtocolTcp = TransportProtocol("Tcp")
 	TransportProtocolAll = TransportProtocol("All")
-)
-
-// Gateway connection type. Possible values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient.
-type VirtualNetworkGatewayConnectionType string
-
-const (
-	VirtualNetworkGatewayConnectionTypeIPsec        = VirtualNetworkGatewayConnectionType("IPsec")
-	VirtualNetworkGatewayConnectionTypeVnet2Vnet    = VirtualNetworkGatewayConnectionType("Vnet2Vnet")
-	VirtualNetworkGatewayConnectionTypeExpressRoute = VirtualNetworkGatewayConnectionType("ExpressRoute")
-	VirtualNetworkGatewayConnectionTypeVPNClient    = VirtualNetworkGatewayConnectionType("VPNClient")
-)
-
-// Gateway SKU name.
-type VirtualNetworkGatewaySkuName string
-
-const (
-	VirtualNetworkGatewaySkuNameBasic            = VirtualNetworkGatewaySkuName("Basic")
-	VirtualNetworkGatewaySkuNameHighPerformance  = VirtualNetworkGatewaySkuName("HighPerformance")
-	VirtualNetworkGatewaySkuNameStandard         = VirtualNetworkGatewaySkuName("Standard")
-	VirtualNetworkGatewaySkuNameUltraPerformance = VirtualNetworkGatewaySkuName("UltraPerformance")
-	VirtualNetworkGatewaySkuNameVpnGw1           = VirtualNetworkGatewaySkuName("VpnGw1")
-	VirtualNetworkGatewaySkuNameVpnGw2           = VirtualNetworkGatewaySkuName("VpnGw2")
-	VirtualNetworkGatewaySkuNameVpnGw3           = VirtualNetworkGatewaySkuName("VpnGw3")
-	VirtualNetworkGatewaySkuNameVpnGw1AZ         = VirtualNetworkGatewaySkuName("VpnGw1AZ")
-	VirtualNetworkGatewaySkuNameVpnGw2AZ         = VirtualNetworkGatewaySkuName("VpnGw2AZ")
-	VirtualNetworkGatewaySkuNameVpnGw3AZ         = VirtualNetworkGatewaySkuName("VpnGw3AZ")
-	VirtualNetworkGatewaySkuNameErGw1AZ          = VirtualNetworkGatewaySkuName("ErGw1AZ")
-	VirtualNetworkGatewaySkuNameErGw2AZ          = VirtualNetworkGatewaySkuName("ErGw2AZ")
-	VirtualNetworkGatewaySkuNameErGw3AZ          = VirtualNetworkGatewaySkuName("ErGw3AZ")
-)
-
-// Gateway SKU tier.
-type VirtualNetworkGatewaySkuTier string
-
-const (
-	VirtualNetworkGatewaySkuTierBasic            = VirtualNetworkGatewaySkuTier("Basic")
-	VirtualNetworkGatewaySkuTierHighPerformance  = VirtualNetworkGatewaySkuTier("HighPerformance")
-	VirtualNetworkGatewaySkuTierStandard         = VirtualNetworkGatewaySkuTier("Standard")
-	VirtualNetworkGatewaySkuTierUltraPerformance = VirtualNetworkGatewaySkuTier("UltraPerformance")
-	VirtualNetworkGatewaySkuTierVpnGw1           = VirtualNetworkGatewaySkuTier("VpnGw1")
-	VirtualNetworkGatewaySkuTierVpnGw2           = VirtualNetworkGatewaySkuTier("VpnGw2")
-	VirtualNetworkGatewaySkuTierVpnGw3           = VirtualNetworkGatewaySkuTier("VpnGw3")
-	VirtualNetworkGatewaySkuTierVpnGw1AZ         = VirtualNetworkGatewaySkuTier("VpnGw1AZ")
-	VirtualNetworkGatewaySkuTierVpnGw2AZ         = VirtualNetworkGatewaySkuTier("VpnGw2AZ")
-	VirtualNetworkGatewaySkuTierVpnGw3AZ         = VirtualNetworkGatewaySkuTier("VpnGw3AZ")
-	VirtualNetworkGatewaySkuTierErGw1AZ          = VirtualNetworkGatewaySkuTier("ErGw1AZ")
-	VirtualNetworkGatewaySkuTierErGw2AZ          = VirtualNetworkGatewaySkuTier("ErGw2AZ")
-	VirtualNetworkGatewaySkuTierErGw3AZ          = VirtualNetworkGatewaySkuTier("ErGw3AZ")
-)
-
-// The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
-type VirtualNetworkGatewayTypeEnum string
-
-const (
-	VirtualNetworkGatewayTypeEnumVpn          = VirtualNetworkGatewayTypeEnum("Vpn")
-	VirtualNetworkGatewayTypeEnumExpressRoute = VirtualNetworkGatewayTypeEnum("ExpressRoute")
-)
-
-// The status of the virtual network peering. Possible values are 'Initiated', 'Connected', and 'Disconnected'.
-type VirtualNetworkPeeringStateEnum string
-
-const (
-	VirtualNetworkPeeringStateEnumInitiated    = VirtualNetworkPeeringStateEnum("Initiated")
-	VirtualNetworkPeeringStateEnumConnected    = VirtualNetworkPeeringStateEnum("Connected")
-	VirtualNetworkPeeringStateEnumDisconnected = VirtualNetworkPeeringStateEnum("Disconnected")
-)
-
-// VPN client protocol enabled for the virtual network gateway.
-type VpnClientProtocol string
-
-const (
-	VpnClientProtocolIkeV2   = VpnClientProtocol("IkeV2")
-	VpnClientProtocolSSTP    = VpnClientProtocol("SSTP")
-	VpnClientProtocolOpenVPN = VpnClientProtocol("OpenVPN")
-)
-
-// The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
-type VpnType string
-
-const (
-	VpnTypePolicyBased = VpnType("PolicyBased")
-	VpnTypeRouteBased  = VpnType("RouteBased")
 )
 
 func init() {

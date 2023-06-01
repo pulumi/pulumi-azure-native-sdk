@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,16 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:avs/v20200717preview:Addon":
 		r = &Addon{}
-	case "azure-native:avs/v20200717preview:Authorization":
-		r = &Authorization{}
-	case "azure-native:avs/v20200717preview:Cluster":
-		r = &Cluster{}
 	case "azure-native:avs/v20200717preview:GlobalReachConnection":
 		r = &GlobalReachConnection{}
-	case "azure-native:avs/v20200717preview:HcxEnterpriseSite":
-		r = &HcxEnterpriseSite{}
-	case "azure-native:avs/v20200717preview:PrivateCloud":
-		r = &PrivateCloud{}
 	case "azure-native:avs/v20200717preview:WorkloadNetworkDhcp":
 		r = &WorkloadNetworkDhcp{}
 	case "azure-native:avs/v20200717preview:WorkloadNetworkDnsService":

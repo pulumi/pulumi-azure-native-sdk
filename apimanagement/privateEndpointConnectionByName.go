@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
-// API Version: 2021-04-01-preview.
+// API Version: 2022-08-01.
+// Previous API Version: 2021-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateEndpointConnectionByName struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +58,9 @@ func NewPrivateEndpointConnectionByName(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:PrivateEndpointConnectionByName"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:PrivateEndpointConnectionByName"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateEndpointConnectionByName
@@ -97,7 +101,7 @@ type privateEndpointConnectionByNameArgs struct {
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// The connection state of the private endpoint connection.
 	Properties *PrivateEndpointConnectionRequestProperties `pulumi:"properties"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -111,7 +115,7 @@ type PrivateEndpointConnectionByNameArgs struct {
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// The connection state of the private endpoint connection.
 	Properties PrivateEndpointConnectionRequestPropertiesPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput

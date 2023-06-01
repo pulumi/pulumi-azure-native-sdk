@@ -11,8 +11,6 @@ import (
 )
 
 // Gets details about the specified dedicated capacity.
-//
-// Deprecated: Version 2017-10-01 will be removed in v2 of the provider.
 func LookupCapacityDetails(ctx *pulumi.Context, args *LookupCapacityDetailsArgs, opts ...pulumi.InvokeOption) (*LookupCapacityDetailsResult, error) {
 	var rv LookupCapacityDetailsResult
 	err := ctx.Invoke("azure-native:powerbidedicated/v20171001:getCapacityDetails", args, &rv, opts...)

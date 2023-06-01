@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Protection profile details.
-// API Version: 2018-07-10.
+// API Version: 2023-02-01.
+// Previous API Version: 2018-07-10. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ReplicationPolicy struct {
 	pulumi.CustomResourceState
 
@@ -140,7 +141,7 @@ func (ReplicationPolicyState) ElementType() reflect.Type {
 }
 
 type replicationPolicyArgs struct {
-	// Replication policy name
+	// Replication policy name.
 	PolicyName *string `pulumi:"policyName"`
 	// Policy creation properties.
 	Properties *CreatePolicyInputProperties `pulumi:"properties"`
@@ -152,7 +153,7 @@ type replicationPolicyArgs struct {
 
 // The set of arguments for constructing a ReplicationPolicy resource.
 type ReplicationPolicyArgs struct {
-	// Replication policy name
+	// Replication policy name.
 	PolicyName pulumi.StringPtrInput
 	// Policy creation properties.
 	Properties CreatePolicyInputPropertiesPtrInput

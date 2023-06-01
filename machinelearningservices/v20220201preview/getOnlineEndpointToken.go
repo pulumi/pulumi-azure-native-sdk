@@ -47,11 +47,11 @@ func (val *GetOnlineEndpointTokenResult) Defaults() *GetOnlineEndpointTokenResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExpiryTimeUtc) {
+	if tmp.ExpiryTimeUtc == nil {
 		expiryTimeUtc_ := 0.0
 		tmp.ExpiryTimeUtc = &expiryTimeUtc_
 	}
-	if isZero(tmp.RefreshAfterTimeUtc) {
+	if tmp.RefreshAfterTimeUtc == nil {
 		refreshAfterTimeUtc_ := 0.0
 		tmp.RefreshAfterTimeUtc = &refreshAfterTimeUtc_
 	}

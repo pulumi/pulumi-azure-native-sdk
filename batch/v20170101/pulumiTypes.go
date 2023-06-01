@@ -10,94 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An application package which represents a particular version of an application.
-type ApplicationPackageResponse struct {
-	// The format of the application package, if the package is active.
-	Format string `pulumi:"format"`
-	// The ID of the application.
-	Id string `pulumi:"id"`
-	// The time at which the package was last activated, if the package is active.
-	LastActivationTime string `pulumi:"lastActivationTime"`
-	// The current state of the application package.
-	State string `pulumi:"state"`
-	// The storage URL at which the application package is stored.
-	StorageUrl string `pulumi:"storageUrl"`
-	// The UTC time at which the storage URL will expire.
-	StorageUrlExpiry string `pulumi:"storageUrlExpiry"`
-	// The version of the application package.
-	Version string `pulumi:"version"`
-}
-
-// An application package which represents a particular version of an application.
-type ApplicationPackageResponseOutput struct{ *pulumi.OutputState }
-
-func (ApplicationPackageResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationPackageResponse)(nil)).Elem()
-}
-
-func (o ApplicationPackageResponseOutput) ToApplicationPackageResponseOutput() ApplicationPackageResponseOutput {
-	return o
-}
-
-func (o ApplicationPackageResponseOutput) ToApplicationPackageResponseOutputWithContext(ctx context.Context) ApplicationPackageResponseOutput {
-	return o
-}
-
-// The format of the application package, if the package is active.
-func (o ApplicationPackageResponseOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationPackageResponse) string { return v.Format }).(pulumi.StringOutput)
-}
-
-// The ID of the application.
-func (o ApplicationPackageResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationPackageResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The time at which the package was last activated, if the package is active.
-func (o ApplicationPackageResponseOutput) LastActivationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationPackageResponse) string { return v.LastActivationTime }).(pulumi.StringOutput)
-}
-
-// The current state of the application package.
-func (o ApplicationPackageResponseOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationPackageResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-// The storage URL at which the application package is stored.
-func (o ApplicationPackageResponseOutput) StorageUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationPackageResponse) string { return v.StorageUrl }).(pulumi.StringOutput)
-}
-
-// The UTC time at which the storage URL will expire.
-func (o ApplicationPackageResponseOutput) StorageUrlExpiry() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationPackageResponse) string { return v.StorageUrlExpiry }).(pulumi.StringOutput)
-}
-
-// The version of the application package.
-func (o ApplicationPackageResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationPackageResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type ApplicationPackageResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ApplicationPackageResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationPackageResponse)(nil)).Elem()
-}
-
-func (o ApplicationPackageResponseArrayOutput) ToApplicationPackageResponseArrayOutput() ApplicationPackageResponseArrayOutput {
-	return o
-}
-
-func (o ApplicationPackageResponseArrayOutput) ToApplicationPackageResponseArrayOutputWithContext(ctx context.Context) ApplicationPackageResponseArrayOutput {
-	return o
-}
-
-func (o ApplicationPackageResponseArrayOutput) Index(i pulumi.IntInput) ApplicationPackageResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationPackageResponse {
-		return vs[0].([]ApplicationPackageResponse)[vs[1].(int)]
-	}).(ApplicationPackageResponseOutput)
-}
-
 // The properties related to auto storage account.
 type AutoStorageBaseProperties struct {
 	// The resource ID of the storage account to be used for auto storage account.
@@ -464,8 +376,6 @@ func (o KeyVaultReferenceResponseOutput) Url() pulumi.StringOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(ApplicationPackageResponseOutput{})
-	pulumi.RegisterOutputType(ApplicationPackageResponseArrayOutput{})
 	pulumi.RegisterOutputType(AutoStorageBasePropertiesOutput{})
 	pulumi.RegisterOutputType(AutoStorageBasePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AutoStoragePropertiesResponseOutput{})

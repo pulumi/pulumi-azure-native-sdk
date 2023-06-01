@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +65,9 @@ func NewManagedEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:ManagedEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ManagedEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

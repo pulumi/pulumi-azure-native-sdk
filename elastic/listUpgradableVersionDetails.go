@@ -11,7 +11,7 @@ import (
 )
 
 // Stack Versions that this version can upgrade to
-// API Version: 2021-10-01-preview.
+// API Version: 2023-02-01-preview.
 func ListUpgradableVersionDetails(ctx *pulumi.Context, args *ListUpgradableVersionDetailsArgs, opts ...pulumi.InvokeOption) (*ListUpgradableVersionDetailsResult, error) {
 	var rv ListUpgradableVersionDetailsResult
 	err := ctx.Invoke("azure-native:elastic:listUpgradableVersionDetails", args, &rv, opts...)

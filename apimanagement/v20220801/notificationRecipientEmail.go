@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,6 +81,9 @@ func NewNotificationRecipientEmail(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:NotificationRecipientEmail"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:NotificationRecipientEmail"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration of Azure web site
-//
-// Deprecated: Version 2015-08-01 will be removed in v2 of the provider.
 type SiteLogsConfig struct {
 	pulumi.CustomResourceState
 

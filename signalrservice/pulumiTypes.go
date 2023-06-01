@@ -10,6 +10,974 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Live trace category configuration of a Microsoft.SignalRService resource.
+type LiveTraceCategory struct {
+	// Indicates whether or the live trace category is enabled.
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled *string `pulumi:"enabled"`
+	// Gets or sets the live trace category's name.
+	// Available values: ConnectivityLogs, MessagingLogs.
+	// Case insensitive.
+	Name *string `pulumi:"name"`
+}
+
+// LiveTraceCategoryInput is an input type that accepts LiveTraceCategoryArgs and LiveTraceCategoryOutput values.
+// You can construct a concrete instance of `LiveTraceCategoryInput` via:
+//
+//	LiveTraceCategoryArgs{...}
+type LiveTraceCategoryInput interface {
+	pulumi.Input
+
+	ToLiveTraceCategoryOutput() LiveTraceCategoryOutput
+	ToLiveTraceCategoryOutputWithContext(context.Context) LiveTraceCategoryOutput
+}
+
+// Live trace category configuration of a Microsoft.SignalRService resource.
+type LiveTraceCategoryArgs struct {
+	// Indicates whether or the live trace category is enabled.
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+	// Gets or sets the live trace category's name.
+	// Available values: ConnectivityLogs, MessagingLogs.
+	// Case insensitive.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LiveTraceCategoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiveTraceCategory)(nil)).Elem()
+}
+
+func (i LiveTraceCategoryArgs) ToLiveTraceCategoryOutput() LiveTraceCategoryOutput {
+	return i.ToLiveTraceCategoryOutputWithContext(context.Background())
+}
+
+func (i LiveTraceCategoryArgs) ToLiveTraceCategoryOutputWithContext(ctx context.Context) LiveTraceCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiveTraceCategoryOutput)
+}
+
+// LiveTraceCategoryArrayInput is an input type that accepts LiveTraceCategoryArray and LiveTraceCategoryArrayOutput values.
+// You can construct a concrete instance of `LiveTraceCategoryArrayInput` via:
+//
+//	LiveTraceCategoryArray{ LiveTraceCategoryArgs{...} }
+type LiveTraceCategoryArrayInput interface {
+	pulumi.Input
+
+	ToLiveTraceCategoryArrayOutput() LiveTraceCategoryArrayOutput
+	ToLiveTraceCategoryArrayOutputWithContext(context.Context) LiveTraceCategoryArrayOutput
+}
+
+type LiveTraceCategoryArray []LiveTraceCategoryInput
+
+func (LiveTraceCategoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LiveTraceCategory)(nil)).Elem()
+}
+
+func (i LiveTraceCategoryArray) ToLiveTraceCategoryArrayOutput() LiveTraceCategoryArrayOutput {
+	return i.ToLiveTraceCategoryArrayOutputWithContext(context.Background())
+}
+
+func (i LiveTraceCategoryArray) ToLiveTraceCategoryArrayOutputWithContext(ctx context.Context) LiveTraceCategoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiveTraceCategoryArrayOutput)
+}
+
+// Live trace category configuration of a Microsoft.SignalRService resource.
+type LiveTraceCategoryOutput struct{ *pulumi.OutputState }
+
+func (LiveTraceCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiveTraceCategory)(nil)).Elem()
+}
+
+func (o LiveTraceCategoryOutput) ToLiveTraceCategoryOutput() LiveTraceCategoryOutput {
+	return o
+}
+
+func (o LiveTraceCategoryOutput) ToLiveTraceCategoryOutputWithContext(ctx context.Context) LiveTraceCategoryOutput {
+	return o
+}
+
+// Indicates whether or the live trace category is enabled.
+// Available values: true, false.
+// Case insensitive.
+func (o LiveTraceCategoryOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveTraceCategory) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the live trace category's name.
+// Available values: ConnectivityLogs, MessagingLogs.
+// Case insensitive.
+func (o LiveTraceCategoryOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveTraceCategory) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type LiveTraceCategoryArrayOutput struct{ *pulumi.OutputState }
+
+func (LiveTraceCategoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LiveTraceCategory)(nil)).Elem()
+}
+
+func (o LiveTraceCategoryArrayOutput) ToLiveTraceCategoryArrayOutput() LiveTraceCategoryArrayOutput {
+	return o
+}
+
+func (o LiveTraceCategoryArrayOutput) ToLiveTraceCategoryArrayOutputWithContext(ctx context.Context) LiveTraceCategoryArrayOutput {
+	return o
+}
+
+func (o LiveTraceCategoryArrayOutput) Index(i pulumi.IntInput) LiveTraceCategoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiveTraceCategory {
+		return vs[0].([]LiveTraceCategory)[vs[1].(int)]
+	}).(LiveTraceCategoryOutput)
+}
+
+// Live trace category configuration of a Microsoft.SignalRService resource.
+type LiveTraceCategoryResponse struct {
+	// Indicates whether or the live trace category is enabled.
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled *string `pulumi:"enabled"`
+	// Gets or sets the live trace category's name.
+	// Available values: ConnectivityLogs, MessagingLogs.
+	// Case insensitive.
+	Name *string `pulumi:"name"`
+}
+
+// Live trace category configuration of a Microsoft.SignalRService resource.
+type LiveTraceCategoryResponseOutput struct{ *pulumi.OutputState }
+
+func (LiveTraceCategoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiveTraceCategoryResponse)(nil)).Elem()
+}
+
+func (o LiveTraceCategoryResponseOutput) ToLiveTraceCategoryResponseOutput() LiveTraceCategoryResponseOutput {
+	return o
+}
+
+func (o LiveTraceCategoryResponseOutput) ToLiveTraceCategoryResponseOutputWithContext(ctx context.Context) LiveTraceCategoryResponseOutput {
+	return o
+}
+
+// Indicates whether or the live trace category is enabled.
+// Available values: true, false.
+// Case insensitive.
+func (o LiveTraceCategoryResponseOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveTraceCategoryResponse) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the live trace category's name.
+// Available values: ConnectivityLogs, MessagingLogs.
+// Case insensitive.
+func (o LiveTraceCategoryResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveTraceCategoryResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type LiveTraceCategoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LiveTraceCategoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LiveTraceCategoryResponse)(nil)).Elem()
+}
+
+func (o LiveTraceCategoryResponseArrayOutput) ToLiveTraceCategoryResponseArrayOutput() LiveTraceCategoryResponseArrayOutput {
+	return o
+}
+
+func (o LiveTraceCategoryResponseArrayOutput) ToLiveTraceCategoryResponseArrayOutputWithContext(ctx context.Context) LiveTraceCategoryResponseArrayOutput {
+	return o
+}
+
+func (o LiveTraceCategoryResponseArrayOutput) Index(i pulumi.IntInput) LiveTraceCategoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiveTraceCategoryResponse {
+		return vs[0].([]LiveTraceCategoryResponse)[vs[1].(int)]
+	}).(LiveTraceCategoryResponseOutput)
+}
+
+// Live trace configuration of a Microsoft.SignalRService resource.
+type LiveTraceConfiguration struct {
+	// Gets or sets the list of category configurations.
+	Categories []LiveTraceCategory `pulumi:"categories"`
+	// Indicates whether or not enable live trace.
+	// When it's set to true, live trace client can connect to the service.
+	// Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled *string `pulumi:"enabled"`
+}
+
+// Defaults sets the appropriate defaults for LiveTraceConfiguration
+func (val *LiveTraceConfiguration) Defaults() *LiveTraceConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		enabled_ := "false"
+		tmp.Enabled = &enabled_
+	}
+	return &tmp
+}
+
+// LiveTraceConfigurationInput is an input type that accepts LiveTraceConfigurationArgs and LiveTraceConfigurationOutput values.
+// You can construct a concrete instance of `LiveTraceConfigurationInput` via:
+//
+//	LiveTraceConfigurationArgs{...}
+type LiveTraceConfigurationInput interface {
+	pulumi.Input
+
+	ToLiveTraceConfigurationOutput() LiveTraceConfigurationOutput
+	ToLiveTraceConfigurationOutputWithContext(context.Context) LiveTraceConfigurationOutput
+}
+
+// Live trace configuration of a Microsoft.SignalRService resource.
+type LiveTraceConfigurationArgs struct {
+	// Gets or sets the list of category configurations.
+	Categories LiveTraceCategoryArrayInput `pulumi:"categories"`
+	// Indicates whether or not enable live trace.
+	// When it's set to true, live trace client can connect to the service.
+	// Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+}
+
+// Defaults sets the appropriate defaults for LiveTraceConfigurationArgs
+func (val *LiveTraceConfigurationArgs) Defaults() *LiveTraceConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		tmp.Enabled = pulumi.StringPtr("false")
+	}
+	return &tmp
+}
+func (LiveTraceConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiveTraceConfiguration)(nil)).Elem()
+}
+
+func (i LiveTraceConfigurationArgs) ToLiveTraceConfigurationOutput() LiveTraceConfigurationOutput {
+	return i.ToLiveTraceConfigurationOutputWithContext(context.Background())
+}
+
+func (i LiveTraceConfigurationArgs) ToLiveTraceConfigurationOutputWithContext(ctx context.Context) LiveTraceConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiveTraceConfigurationOutput)
+}
+
+func (i LiveTraceConfigurationArgs) ToLiveTraceConfigurationPtrOutput() LiveTraceConfigurationPtrOutput {
+	return i.ToLiveTraceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i LiveTraceConfigurationArgs) ToLiveTraceConfigurationPtrOutputWithContext(ctx context.Context) LiveTraceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiveTraceConfigurationOutput).ToLiveTraceConfigurationPtrOutputWithContext(ctx)
+}
+
+// LiveTraceConfigurationPtrInput is an input type that accepts LiveTraceConfigurationArgs, LiveTraceConfigurationPtr and LiveTraceConfigurationPtrOutput values.
+// You can construct a concrete instance of `LiveTraceConfigurationPtrInput` via:
+//
+//	        LiveTraceConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LiveTraceConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLiveTraceConfigurationPtrOutput() LiveTraceConfigurationPtrOutput
+	ToLiveTraceConfigurationPtrOutputWithContext(context.Context) LiveTraceConfigurationPtrOutput
+}
+
+type liveTraceConfigurationPtrType LiveTraceConfigurationArgs
+
+func LiveTraceConfigurationPtr(v *LiveTraceConfigurationArgs) LiveTraceConfigurationPtrInput {
+	return (*liveTraceConfigurationPtrType)(v)
+}
+
+func (*liveTraceConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiveTraceConfiguration)(nil)).Elem()
+}
+
+func (i *liveTraceConfigurationPtrType) ToLiveTraceConfigurationPtrOutput() LiveTraceConfigurationPtrOutput {
+	return i.ToLiveTraceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *liveTraceConfigurationPtrType) ToLiveTraceConfigurationPtrOutputWithContext(ctx context.Context) LiveTraceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiveTraceConfigurationPtrOutput)
+}
+
+// Live trace configuration of a Microsoft.SignalRService resource.
+type LiveTraceConfigurationOutput struct{ *pulumi.OutputState }
+
+func (LiveTraceConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiveTraceConfiguration)(nil)).Elem()
+}
+
+func (o LiveTraceConfigurationOutput) ToLiveTraceConfigurationOutput() LiveTraceConfigurationOutput {
+	return o
+}
+
+func (o LiveTraceConfigurationOutput) ToLiveTraceConfigurationOutputWithContext(ctx context.Context) LiveTraceConfigurationOutput {
+	return o
+}
+
+func (o LiveTraceConfigurationOutput) ToLiveTraceConfigurationPtrOutput() LiveTraceConfigurationPtrOutput {
+	return o.ToLiveTraceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o LiveTraceConfigurationOutput) ToLiveTraceConfigurationPtrOutputWithContext(ctx context.Context) LiveTraceConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiveTraceConfiguration) *LiveTraceConfiguration {
+		return &v
+	}).(LiveTraceConfigurationPtrOutput)
+}
+
+// Gets or sets the list of category configurations.
+func (o LiveTraceConfigurationOutput) Categories() LiveTraceCategoryArrayOutput {
+	return o.ApplyT(func(v LiveTraceConfiguration) []LiveTraceCategory { return v.Categories }).(LiveTraceCategoryArrayOutput)
+}
+
+// Indicates whether or not enable live trace.
+// When it's set to true, live trace client can connect to the service.
+// Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".
+// Available values: true, false.
+// Case insensitive.
+func (o LiveTraceConfigurationOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveTraceConfiguration) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+type LiveTraceConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (LiveTraceConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiveTraceConfiguration)(nil)).Elem()
+}
+
+func (o LiveTraceConfigurationPtrOutput) ToLiveTraceConfigurationPtrOutput() LiveTraceConfigurationPtrOutput {
+	return o
+}
+
+func (o LiveTraceConfigurationPtrOutput) ToLiveTraceConfigurationPtrOutputWithContext(ctx context.Context) LiveTraceConfigurationPtrOutput {
+	return o
+}
+
+func (o LiveTraceConfigurationPtrOutput) Elem() LiveTraceConfigurationOutput {
+	return o.ApplyT(func(v *LiveTraceConfiguration) LiveTraceConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret LiveTraceConfiguration
+		return ret
+	}).(LiveTraceConfigurationOutput)
+}
+
+// Gets or sets the list of category configurations.
+func (o LiveTraceConfigurationPtrOutput) Categories() LiveTraceCategoryArrayOutput {
+	return o.ApplyT(func(v *LiveTraceConfiguration) []LiveTraceCategory {
+		if v == nil {
+			return nil
+		}
+		return v.Categories
+	}).(LiveTraceCategoryArrayOutput)
+}
+
+// Indicates whether or not enable live trace.
+// When it's set to true, live trace client can connect to the service.
+// Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".
+// Available values: true, false.
+// Case insensitive.
+func (o LiveTraceConfigurationPtrOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LiveTraceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// Live trace configuration of a Microsoft.SignalRService resource.
+type LiveTraceConfigurationResponse struct {
+	// Gets or sets the list of category configurations.
+	Categories []LiveTraceCategoryResponse `pulumi:"categories"`
+	// Indicates whether or not enable live trace.
+	// When it's set to true, live trace client can connect to the service.
+	// Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled *string `pulumi:"enabled"`
+}
+
+// Defaults sets the appropriate defaults for LiveTraceConfigurationResponse
+func (val *LiveTraceConfigurationResponse) Defaults() *LiveTraceConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		enabled_ := "false"
+		tmp.Enabled = &enabled_
+	}
+	return &tmp
+}
+
+// Live trace configuration of a Microsoft.SignalRService resource.
+type LiveTraceConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (LiveTraceConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiveTraceConfigurationResponse)(nil)).Elem()
+}
+
+func (o LiveTraceConfigurationResponseOutput) ToLiveTraceConfigurationResponseOutput() LiveTraceConfigurationResponseOutput {
+	return o
+}
+
+func (o LiveTraceConfigurationResponseOutput) ToLiveTraceConfigurationResponseOutputWithContext(ctx context.Context) LiveTraceConfigurationResponseOutput {
+	return o
+}
+
+// Gets or sets the list of category configurations.
+func (o LiveTraceConfigurationResponseOutput) Categories() LiveTraceCategoryResponseArrayOutput {
+	return o.ApplyT(func(v LiveTraceConfigurationResponse) []LiveTraceCategoryResponse { return v.Categories }).(LiveTraceCategoryResponseArrayOutput)
+}
+
+// Indicates whether or not enable live trace.
+// When it's set to true, live trace client can connect to the service.
+// Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".
+// Available values: true, false.
+// Case insensitive.
+func (o LiveTraceConfigurationResponseOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveTraceConfigurationResponse) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+type LiveTraceConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LiveTraceConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiveTraceConfigurationResponse)(nil)).Elem()
+}
+
+func (o LiveTraceConfigurationResponsePtrOutput) ToLiveTraceConfigurationResponsePtrOutput() LiveTraceConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o LiveTraceConfigurationResponsePtrOutput) ToLiveTraceConfigurationResponsePtrOutputWithContext(ctx context.Context) LiveTraceConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o LiveTraceConfigurationResponsePtrOutput) Elem() LiveTraceConfigurationResponseOutput {
+	return o.ApplyT(func(v *LiveTraceConfigurationResponse) LiveTraceConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LiveTraceConfigurationResponse
+		return ret
+	}).(LiveTraceConfigurationResponseOutput)
+}
+
+// Gets or sets the list of category configurations.
+func (o LiveTraceConfigurationResponsePtrOutput) Categories() LiveTraceCategoryResponseArrayOutput {
+	return o.ApplyT(func(v *LiveTraceConfigurationResponse) []LiveTraceCategoryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Categories
+	}).(LiveTraceCategoryResponseArrayOutput)
+}
+
+// Indicates whether or not enable live trace.
+// When it's set to true, live trace client can connect to the service.
+// Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".
+// Available values: true, false.
+// Case insensitive.
+func (o LiveTraceConfigurationResponsePtrOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LiveTraceConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// A class represent managed identities used for request and response
+type ManagedIdentity struct {
+	// Represents the identity type: systemAssigned, userAssigned, None
+	Type *string `pulumi:"type"`
+	// Get or set the user assigned identities
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedIdentityInput is an input type that accepts ManagedIdentityArgs and ManagedIdentityOutput values.
+// You can construct a concrete instance of `ManagedIdentityInput` via:
+//
+//	ManagedIdentityArgs{...}
+type ManagedIdentityInput interface {
+	pulumi.Input
+
+	ToManagedIdentityOutput() ManagedIdentityOutput
+	ToManagedIdentityOutputWithContext(context.Context) ManagedIdentityOutput
+}
+
+// A class represent managed identities used for request and response
+type ManagedIdentityArgs struct {
+	// Represents the identity type: systemAssigned, userAssigned, None
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Get or set the user assigned identities
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentity)(nil)).Elem()
+}
+
+func (i ManagedIdentityArgs) ToManagedIdentityOutput() ManagedIdentityOutput {
+	return i.ToManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentityArgs) ToManagedIdentityOutputWithContext(ctx context.Context) ManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityOutput)
+}
+
+func (i ManagedIdentityArgs) ToManagedIdentityPtrOutput() ManagedIdentityPtrOutput {
+	return i.ToManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentityArgs) ToManagedIdentityPtrOutputWithContext(ctx context.Context) ManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityOutput).ToManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedIdentityPtrInput is an input type that accepts ManagedIdentityArgs, ManagedIdentityPtr and ManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedIdentityPtrInput` via:
+//
+//	        ManagedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedIdentityPtrOutput() ManagedIdentityPtrOutput
+	ToManagedIdentityPtrOutputWithContext(context.Context) ManagedIdentityPtrOutput
+}
+
+type managedIdentityPtrType ManagedIdentityArgs
+
+func ManagedIdentityPtr(v *ManagedIdentityArgs) ManagedIdentityPtrInput {
+	return (*managedIdentityPtrType)(v)
+}
+
+func (*managedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentity)(nil)).Elem()
+}
+
+func (i *managedIdentityPtrType) ToManagedIdentityPtrOutput() ManagedIdentityPtrOutput {
+	return i.ToManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedIdentityPtrType) ToManagedIdentityPtrOutputWithContext(ctx context.Context) ManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityPtrOutput)
+}
+
+// A class represent managed identities used for request and response
+type ManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentity)(nil)).Elem()
+}
+
+func (o ManagedIdentityOutput) ToManagedIdentityOutput() ManagedIdentityOutput {
+	return o
+}
+
+func (o ManagedIdentityOutput) ToManagedIdentityOutputWithContext(ctx context.Context) ManagedIdentityOutput {
+	return o
+}
+
+func (o ManagedIdentityOutput) ToManagedIdentityPtrOutput() ManagedIdentityPtrOutput {
+	return o.ToManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedIdentityOutput) ToManagedIdentityPtrOutputWithContext(ctx context.Context) ManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedIdentity) *ManagedIdentity {
+		return &v
+	}).(ManagedIdentityPtrOutput)
+}
+
+// Represents the identity type: systemAssigned, userAssigned, None
+func (o ManagedIdentityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Get or set the user assigned identities
+func (o ManagedIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentity)(nil)).Elem()
+}
+
+func (o ManagedIdentityPtrOutput) ToManagedIdentityPtrOutput() ManagedIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedIdentityPtrOutput) ToManagedIdentityPtrOutputWithContext(ctx context.Context) ManagedIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedIdentityPtrOutput) Elem() ManagedIdentityOutput {
+	return o.ApplyT(func(v *ManagedIdentity) ManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentity
+		return ret
+	}).(ManagedIdentityOutput)
+}
+
+// Represents the identity type: systemAssigned, userAssigned, None
+func (o ManagedIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Get or set the user assigned identities
+func (o ManagedIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// A class represent managed identities used for request and response
+type ManagedIdentityResponse struct {
+	// Get the principal id for the system assigned identity.
+	// Only be used in response.
+	PrincipalId string `pulumi:"principalId"`
+	// Get the tenant id for the system assigned identity.
+	// Only be used in response
+	TenantId string `pulumi:"tenantId"`
+	// Represents the identity type: systemAssigned, userAssigned, None
+	Type *string `pulumi:"type"`
+	// Get or set the user assigned identities
+	UserAssignedIdentities map[string]UserAssignedIdentityPropertyResponse `pulumi:"userAssignedIdentities"`
+}
+
+// A class represent managed identities used for request and response
+type ManagedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityResponseOutput) ToManagedIdentityResponseOutput() ManagedIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedIdentityResponseOutput) ToManagedIdentityResponseOutputWithContext(ctx context.Context) ManagedIdentityResponseOutput {
+	return o
+}
+
+// Get the principal id for the system assigned identity.
+// Only be used in response.
+func (o ManagedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Get the tenant id for the system assigned identity.
+// Only be used in response
+func (o ManagedIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Represents the identity type: systemAssigned, userAssigned, None
+func (o ManagedIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Get or set the user assigned identities
+func (o ManagedIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityPropertyResponseMapOutput {
+	return o.ApplyT(func(v ManagedIdentityResponse) map[string]UserAssignedIdentityPropertyResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityPropertyResponseMapOutput)
+}
+
+type ManagedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityResponsePtrOutput) ToManagedIdentityResponsePtrOutput() ManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityResponsePtrOutput) ToManagedIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityResponsePtrOutput) Elem() ManagedIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedIdentityResponse) ManagedIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentityResponse
+		return ret
+	}).(ManagedIdentityResponseOutput)
+}
+
+// Get the principal id for the system assigned identity.
+// Only be used in response.
+func (o ManagedIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Get the tenant id for the system assigned identity.
+// Only be used in response
+func (o ManagedIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the identity type: systemAssigned, userAssigned, None
+func (o ManagedIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Get or set the user assigned identities
+func (o ManagedIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityPropertyResponseMapOutput {
+	return o.ApplyT(func(v *ManagedIdentityResponse) map[string]UserAssignedIdentityPropertyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityPropertyResponseMapOutput)
+}
+
+// Managed identity settings for upstream.
+type ManagedIdentitySettings struct {
+	// The Resource indicating the App ID URI of the target resource.
+	// It also appears in the aud (audience) claim of the issued token.
+	Resource *string `pulumi:"resource"`
+}
+
+// ManagedIdentitySettingsInput is an input type that accepts ManagedIdentitySettingsArgs and ManagedIdentitySettingsOutput values.
+// You can construct a concrete instance of `ManagedIdentitySettingsInput` via:
+//
+//	ManagedIdentitySettingsArgs{...}
+type ManagedIdentitySettingsInput interface {
+	pulumi.Input
+
+	ToManagedIdentitySettingsOutput() ManagedIdentitySettingsOutput
+	ToManagedIdentitySettingsOutputWithContext(context.Context) ManagedIdentitySettingsOutput
+}
+
+// Managed identity settings for upstream.
+type ManagedIdentitySettingsArgs struct {
+	// The Resource indicating the App ID URI of the target resource.
+	// It also appears in the aud (audience) claim of the issued token.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (ManagedIdentitySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentitySettings)(nil)).Elem()
+}
+
+func (i ManagedIdentitySettingsArgs) ToManagedIdentitySettingsOutput() ManagedIdentitySettingsOutput {
+	return i.ToManagedIdentitySettingsOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentitySettingsArgs) ToManagedIdentitySettingsOutputWithContext(ctx context.Context) ManagedIdentitySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentitySettingsOutput)
+}
+
+func (i ManagedIdentitySettingsArgs) ToManagedIdentitySettingsPtrOutput() ManagedIdentitySettingsPtrOutput {
+	return i.ToManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentitySettingsArgs) ToManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) ManagedIdentitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentitySettingsOutput).ToManagedIdentitySettingsPtrOutputWithContext(ctx)
+}
+
+// ManagedIdentitySettingsPtrInput is an input type that accepts ManagedIdentitySettingsArgs, ManagedIdentitySettingsPtr and ManagedIdentitySettingsPtrOutput values.
+// You can construct a concrete instance of `ManagedIdentitySettingsPtrInput` via:
+//
+//	        ManagedIdentitySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedIdentitySettingsPtrInput interface {
+	pulumi.Input
+
+	ToManagedIdentitySettingsPtrOutput() ManagedIdentitySettingsPtrOutput
+	ToManagedIdentitySettingsPtrOutputWithContext(context.Context) ManagedIdentitySettingsPtrOutput
+}
+
+type managedIdentitySettingsPtrType ManagedIdentitySettingsArgs
+
+func ManagedIdentitySettingsPtr(v *ManagedIdentitySettingsArgs) ManagedIdentitySettingsPtrInput {
+	return (*managedIdentitySettingsPtrType)(v)
+}
+
+func (*managedIdentitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentitySettings)(nil)).Elem()
+}
+
+func (i *managedIdentitySettingsPtrType) ToManagedIdentitySettingsPtrOutput() ManagedIdentitySettingsPtrOutput {
+	return i.ToManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *managedIdentitySettingsPtrType) ToManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) ManagedIdentitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentitySettingsPtrOutput)
+}
+
+// Managed identity settings for upstream.
+type ManagedIdentitySettingsOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentitySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentitySettings)(nil)).Elem()
+}
+
+func (o ManagedIdentitySettingsOutput) ToManagedIdentitySettingsOutput() ManagedIdentitySettingsOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingsOutput) ToManagedIdentitySettingsOutputWithContext(ctx context.Context) ManagedIdentitySettingsOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingsOutput) ToManagedIdentitySettingsPtrOutput() ManagedIdentitySettingsPtrOutput {
+	return o.ToManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedIdentitySettingsOutput) ToManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) ManagedIdentitySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedIdentitySettings) *ManagedIdentitySettings {
+		return &v
+	}).(ManagedIdentitySettingsPtrOutput)
+}
+
+// The Resource indicating the App ID URI of the target resource.
+// It also appears in the aud (audience) claim of the issued token.
+func (o ManagedIdentitySettingsOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentitySettings) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ManagedIdentitySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentitySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentitySettings)(nil)).Elem()
+}
+
+func (o ManagedIdentitySettingsPtrOutput) ToManagedIdentitySettingsPtrOutput() ManagedIdentitySettingsPtrOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingsPtrOutput) ToManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) ManagedIdentitySettingsPtrOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingsPtrOutput) Elem() ManagedIdentitySettingsOutput {
+	return o.ApplyT(func(v *ManagedIdentitySettings) ManagedIdentitySettings {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentitySettings
+		return ret
+	}).(ManagedIdentitySettingsOutput)
+}
+
+// The Resource indicating the App ID URI of the target resource.
+// It also appears in the aud (audience) claim of the issued token.
+func (o ManagedIdentitySettingsPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentitySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed identity settings for upstream.
+type ManagedIdentitySettingsResponse struct {
+	// The Resource indicating the App ID URI of the target resource.
+	// It also appears in the aud (audience) claim of the issued token.
+	Resource *string `pulumi:"resource"`
+}
+
+// Managed identity settings for upstream.
+type ManagedIdentitySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentitySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentitySettingsResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentitySettingsResponseOutput) ToManagedIdentitySettingsResponseOutput() ManagedIdentitySettingsResponseOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingsResponseOutput) ToManagedIdentitySettingsResponseOutputWithContext(ctx context.Context) ManagedIdentitySettingsResponseOutput {
+	return o
+}
+
+// The Resource indicating the App ID URI of the target resource.
+// It also appears in the aud (audience) claim of the issued token.
+func (o ManagedIdentitySettingsResponseOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentitySettingsResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ManagedIdentitySettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentitySettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentitySettingsResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentitySettingsResponsePtrOutput) ToManagedIdentitySettingsResponsePtrOutput() ManagedIdentitySettingsResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingsResponsePtrOutput) ToManagedIdentitySettingsResponsePtrOutputWithContext(ctx context.Context) ManagedIdentitySettingsResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingsResponsePtrOutput) Elem() ManagedIdentitySettingsResponseOutput {
+	return o.ApplyT(func(v *ManagedIdentitySettingsResponse) ManagedIdentitySettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentitySettingsResponse
+		return ret
+	}).(ManagedIdentitySettingsResponseOutput)
+}
+
+// The Resource indicating the App ID URI of the target resource.
+// It also appears in the aud (audience) claim of the issued token.
+func (o ManagedIdentitySettingsResponsePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentitySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
 // Network ACL
 type NetworkACL struct {
 	// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
@@ -564,23 +1532,27 @@ func (o PrivateEndpointACLResponseArrayOutput) Index(i pulumi.IntInput) PrivateE
 	}).(PrivateEndpointACLResponseOutput)
 }
 
-// A private endpoint connection to SignalR resource
+// A private endpoint connection to an azure resource
 type PrivateEndpointConnectionResponse struct {
+	// Group IDs
+	GroupIds []string `pulumi:"groupIds"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
 	Name string `pulumi:"name"`
-	// Private endpoint associated with the private endpoint connection
+	// Private endpoint
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// Connection state
+	// Connection state of the private endpoint connection
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// Provisioning state of the private endpoint connection
+	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
 	Type string `pulumi:"type"`
 }
 
-// A private endpoint connection to SignalR resource
+// A private endpoint connection to an azure resource
 type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
@@ -595,6 +1567,11 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+// Group IDs
+func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
 // Fully qualified resource Id for the resource.
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -605,21 +1582,26 @@ func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Private endpoint associated with the private endpoint connection
+// Private endpoint
 func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
 
-// Connection state
+// Connection state of the private endpoint connection
 func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
-// Provisioning state of the private endpoint connection
+// Provisioning state of the resource.
 func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
@@ -979,6 +1961,388 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Resource log category configuration of a Microsoft.SignalRService resource.
+type ResourceLogCategory struct {
+	// Indicates whether or the resource log category is enabled.
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled *string `pulumi:"enabled"`
+	// Gets or sets the resource log category's name.
+	// Available values: ConnectivityLogs, MessagingLogs.
+	// Case insensitive.
+	Name *string `pulumi:"name"`
+}
+
+// ResourceLogCategoryInput is an input type that accepts ResourceLogCategoryArgs and ResourceLogCategoryOutput values.
+// You can construct a concrete instance of `ResourceLogCategoryInput` via:
+//
+//	ResourceLogCategoryArgs{...}
+type ResourceLogCategoryInput interface {
+	pulumi.Input
+
+	ToResourceLogCategoryOutput() ResourceLogCategoryOutput
+	ToResourceLogCategoryOutputWithContext(context.Context) ResourceLogCategoryOutput
+}
+
+// Resource log category configuration of a Microsoft.SignalRService resource.
+type ResourceLogCategoryArgs struct {
+	// Indicates whether or the resource log category is enabled.
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+	// Gets or sets the resource log category's name.
+	// Available values: ConnectivityLogs, MessagingLogs.
+	// Case insensitive.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ResourceLogCategoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceLogCategory)(nil)).Elem()
+}
+
+func (i ResourceLogCategoryArgs) ToResourceLogCategoryOutput() ResourceLogCategoryOutput {
+	return i.ToResourceLogCategoryOutputWithContext(context.Background())
+}
+
+func (i ResourceLogCategoryArgs) ToResourceLogCategoryOutputWithContext(ctx context.Context) ResourceLogCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceLogCategoryOutput)
+}
+
+// ResourceLogCategoryArrayInput is an input type that accepts ResourceLogCategoryArray and ResourceLogCategoryArrayOutput values.
+// You can construct a concrete instance of `ResourceLogCategoryArrayInput` via:
+//
+//	ResourceLogCategoryArray{ ResourceLogCategoryArgs{...} }
+type ResourceLogCategoryArrayInput interface {
+	pulumi.Input
+
+	ToResourceLogCategoryArrayOutput() ResourceLogCategoryArrayOutput
+	ToResourceLogCategoryArrayOutputWithContext(context.Context) ResourceLogCategoryArrayOutput
+}
+
+type ResourceLogCategoryArray []ResourceLogCategoryInput
+
+func (ResourceLogCategoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceLogCategory)(nil)).Elem()
+}
+
+func (i ResourceLogCategoryArray) ToResourceLogCategoryArrayOutput() ResourceLogCategoryArrayOutput {
+	return i.ToResourceLogCategoryArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceLogCategoryArray) ToResourceLogCategoryArrayOutputWithContext(ctx context.Context) ResourceLogCategoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceLogCategoryArrayOutput)
+}
+
+// Resource log category configuration of a Microsoft.SignalRService resource.
+type ResourceLogCategoryOutput struct{ *pulumi.OutputState }
+
+func (ResourceLogCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceLogCategory)(nil)).Elem()
+}
+
+func (o ResourceLogCategoryOutput) ToResourceLogCategoryOutput() ResourceLogCategoryOutput {
+	return o
+}
+
+func (o ResourceLogCategoryOutput) ToResourceLogCategoryOutputWithContext(ctx context.Context) ResourceLogCategoryOutput {
+	return o
+}
+
+// Indicates whether or the resource log category is enabled.
+// Available values: true, false.
+// Case insensitive.
+func (o ResourceLogCategoryOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceLogCategory) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the resource log category's name.
+// Available values: ConnectivityLogs, MessagingLogs.
+// Case insensitive.
+func (o ResourceLogCategoryOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceLogCategory) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ResourceLogCategoryArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceLogCategoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceLogCategory)(nil)).Elem()
+}
+
+func (o ResourceLogCategoryArrayOutput) ToResourceLogCategoryArrayOutput() ResourceLogCategoryArrayOutput {
+	return o
+}
+
+func (o ResourceLogCategoryArrayOutput) ToResourceLogCategoryArrayOutputWithContext(ctx context.Context) ResourceLogCategoryArrayOutput {
+	return o
+}
+
+func (o ResourceLogCategoryArrayOutput) Index(i pulumi.IntInput) ResourceLogCategoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceLogCategory {
+		return vs[0].([]ResourceLogCategory)[vs[1].(int)]
+	}).(ResourceLogCategoryOutput)
+}
+
+// Resource log category configuration of a Microsoft.SignalRService resource.
+type ResourceLogCategoryResponse struct {
+	// Indicates whether or the resource log category is enabled.
+	// Available values: true, false.
+	// Case insensitive.
+	Enabled *string `pulumi:"enabled"`
+	// Gets or sets the resource log category's name.
+	// Available values: ConnectivityLogs, MessagingLogs.
+	// Case insensitive.
+	Name *string `pulumi:"name"`
+}
+
+// Resource log category configuration of a Microsoft.SignalRService resource.
+type ResourceLogCategoryResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceLogCategoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceLogCategoryResponse)(nil)).Elem()
+}
+
+func (o ResourceLogCategoryResponseOutput) ToResourceLogCategoryResponseOutput() ResourceLogCategoryResponseOutput {
+	return o
+}
+
+func (o ResourceLogCategoryResponseOutput) ToResourceLogCategoryResponseOutputWithContext(ctx context.Context) ResourceLogCategoryResponseOutput {
+	return o
+}
+
+// Indicates whether or the resource log category is enabled.
+// Available values: true, false.
+// Case insensitive.
+func (o ResourceLogCategoryResponseOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceLogCategoryResponse) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the resource log category's name.
+// Available values: ConnectivityLogs, MessagingLogs.
+// Case insensitive.
+func (o ResourceLogCategoryResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceLogCategoryResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ResourceLogCategoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceLogCategoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceLogCategoryResponse)(nil)).Elem()
+}
+
+func (o ResourceLogCategoryResponseArrayOutput) ToResourceLogCategoryResponseArrayOutput() ResourceLogCategoryResponseArrayOutput {
+	return o
+}
+
+func (o ResourceLogCategoryResponseArrayOutput) ToResourceLogCategoryResponseArrayOutputWithContext(ctx context.Context) ResourceLogCategoryResponseArrayOutput {
+	return o
+}
+
+func (o ResourceLogCategoryResponseArrayOutput) Index(i pulumi.IntInput) ResourceLogCategoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceLogCategoryResponse {
+		return vs[0].([]ResourceLogCategoryResponse)[vs[1].(int)]
+	}).(ResourceLogCategoryResponseOutput)
+}
+
+// Resource log configuration of a Microsoft.SignalRService resource.
+type ResourceLogConfiguration struct {
+	// Gets or sets the list of category configurations.
+	Categories []ResourceLogCategory `pulumi:"categories"`
+}
+
+// ResourceLogConfigurationInput is an input type that accepts ResourceLogConfigurationArgs and ResourceLogConfigurationOutput values.
+// You can construct a concrete instance of `ResourceLogConfigurationInput` via:
+//
+//	ResourceLogConfigurationArgs{...}
+type ResourceLogConfigurationInput interface {
+	pulumi.Input
+
+	ToResourceLogConfigurationOutput() ResourceLogConfigurationOutput
+	ToResourceLogConfigurationOutputWithContext(context.Context) ResourceLogConfigurationOutput
+}
+
+// Resource log configuration of a Microsoft.SignalRService resource.
+type ResourceLogConfigurationArgs struct {
+	// Gets or sets the list of category configurations.
+	Categories ResourceLogCategoryArrayInput `pulumi:"categories"`
+}
+
+func (ResourceLogConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceLogConfiguration)(nil)).Elem()
+}
+
+func (i ResourceLogConfigurationArgs) ToResourceLogConfigurationOutput() ResourceLogConfigurationOutput {
+	return i.ToResourceLogConfigurationOutputWithContext(context.Background())
+}
+
+func (i ResourceLogConfigurationArgs) ToResourceLogConfigurationOutputWithContext(ctx context.Context) ResourceLogConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceLogConfigurationOutput)
+}
+
+func (i ResourceLogConfigurationArgs) ToResourceLogConfigurationPtrOutput() ResourceLogConfigurationPtrOutput {
+	return i.ToResourceLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceLogConfigurationArgs) ToResourceLogConfigurationPtrOutputWithContext(ctx context.Context) ResourceLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceLogConfigurationOutput).ToResourceLogConfigurationPtrOutputWithContext(ctx)
+}
+
+// ResourceLogConfigurationPtrInput is an input type that accepts ResourceLogConfigurationArgs, ResourceLogConfigurationPtr and ResourceLogConfigurationPtrOutput values.
+// You can construct a concrete instance of `ResourceLogConfigurationPtrInput` via:
+//
+//	        ResourceLogConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceLogConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToResourceLogConfigurationPtrOutput() ResourceLogConfigurationPtrOutput
+	ToResourceLogConfigurationPtrOutputWithContext(context.Context) ResourceLogConfigurationPtrOutput
+}
+
+type resourceLogConfigurationPtrType ResourceLogConfigurationArgs
+
+func ResourceLogConfigurationPtr(v *ResourceLogConfigurationArgs) ResourceLogConfigurationPtrInput {
+	return (*resourceLogConfigurationPtrType)(v)
+}
+
+func (*resourceLogConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceLogConfiguration)(nil)).Elem()
+}
+
+func (i *resourceLogConfigurationPtrType) ToResourceLogConfigurationPtrOutput() ResourceLogConfigurationPtrOutput {
+	return i.ToResourceLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceLogConfigurationPtrType) ToResourceLogConfigurationPtrOutputWithContext(ctx context.Context) ResourceLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceLogConfigurationPtrOutput)
+}
+
+// Resource log configuration of a Microsoft.SignalRService resource.
+type ResourceLogConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ResourceLogConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceLogConfiguration)(nil)).Elem()
+}
+
+func (o ResourceLogConfigurationOutput) ToResourceLogConfigurationOutput() ResourceLogConfigurationOutput {
+	return o
+}
+
+func (o ResourceLogConfigurationOutput) ToResourceLogConfigurationOutputWithContext(ctx context.Context) ResourceLogConfigurationOutput {
+	return o
+}
+
+func (o ResourceLogConfigurationOutput) ToResourceLogConfigurationPtrOutput() ResourceLogConfigurationPtrOutput {
+	return o.ToResourceLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceLogConfigurationOutput) ToResourceLogConfigurationPtrOutputWithContext(ctx context.Context) ResourceLogConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceLogConfiguration) *ResourceLogConfiguration {
+		return &v
+	}).(ResourceLogConfigurationPtrOutput)
+}
+
+// Gets or sets the list of category configurations.
+func (o ResourceLogConfigurationOutput) Categories() ResourceLogCategoryArrayOutput {
+	return o.ApplyT(func(v ResourceLogConfiguration) []ResourceLogCategory { return v.Categories }).(ResourceLogCategoryArrayOutput)
+}
+
+type ResourceLogConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceLogConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceLogConfiguration)(nil)).Elem()
+}
+
+func (o ResourceLogConfigurationPtrOutput) ToResourceLogConfigurationPtrOutput() ResourceLogConfigurationPtrOutput {
+	return o
+}
+
+func (o ResourceLogConfigurationPtrOutput) ToResourceLogConfigurationPtrOutputWithContext(ctx context.Context) ResourceLogConfigurationPtrOutput {
+	return o
+}
+
+func (o ResourceLogConfigurationPtrOutput) Elem() ResourceLogConfigurationOutput {
+	return o.ApplyT(func(v *ResourceLogConfiguration) ResourceLogConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceLogConfiguration
+		return ret
+	}).(ResourceLogConfigurationOutput)
+}
+
+// Gets or sets the list of category configurations.
+func (o ResourceLogConfigurationPtrOutput) Categories() ResourceLogCategoryArrayOutput {
+	return o.ApplyT(func(v *ResourceLogConfiguration) []ResourceLogCategory {
+		if v == nil {
+			return nil
+		}
+		return v.Categories
+	}).(ResourceLogCategoryArrayOutput)
+}
+
+// Resource log configuration of a Microsoft.SignalRService resource.
+type ResourceLogConfigurationResponse struct {
+	// Gets or sets the list of category configurations.
+	Categories []ResourceLogCategoryResponse `pulumi:"categories"`
+}
+
+// Resource log configuration of a Microsoft.SignalRService resource.
+type ResourceLogConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceLogConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceLogConfigurationResponse)(nil)).Elem()
+}
+
+func (o ResourceLogConfigurationResponseOutput) ToResourceLogConfigurationResponseOutput() ResourceLogConfigurationResponseOutput {
+	return o
+}
+
+func (o ResourceLogConfigurationResponseOutput) ToResourceLogConfigurationResponseOutputWithContext(ctx context.Context) ResourceLogConfigurationResponseOutput {
+	return o
+}
+
+// Gets or sets the list of category configurations.
+func (o ResourceLogConfigurationResponseOutput) Categories() ResourceLogCategoryResponseArrayOutput {
+	return o.ApplyT(func(v ResourceLogConfigurationResponse) []ResourceLogCategoryResponse { return v.Categories }).(ResourceLogCategoryResponseArrayOutput)
+}
+
+type ResourceLogConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceLogConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceLogConfigurationResponse)(nil)).Elem()
+}
+
+func (o ResourceLogConfigurationResponsePtrOutput) ToResourceLogConfigurationResponsePtrOutput() ResourceLogConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ResourceLogConfigurationResponsePtrOutput) ToResourceLogConfigurationResponsePtrOutputWithContext(ctx context.Context) ResourceLogConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ResourceLogConfigurationResponsePtrOutput) Elem() ResourceLogConfigurationResponseOutput {
+	return o.ApplyT(func(v *ResourceLogConfigurationResponse) ResourceLogConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceLogConfigurationResponse
+		return ret
+	}).(ResourceLogConfigurationResponseOutput)
+}
+
+// Gets or sets the list of category configurations.
+func (o ResourceLogConfigurationResponsePtrOutput) Categories() ResourceLogCategoryResponseArrayOutput {
+	return o.ApplyT(func(v *ResourceLogConfigurationResponse) []ResourceLogCategoryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Categories
+	}).(ResourceLogCategoryResponseArrayOutput)
+}
+
 // Reference to a resource.
 type ResourceReference struct {
 	// Resource ID.
@@ -1060,17 +2424,18 @@ func (o ResourceReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The billing information of the SignalR resource.
+// The billing information of the resource.
 type ResourceSku struct {
-	// Optional, integer. The unit count of SignalR resource. 1 by default.
+	// Optional, integer. The unit count of the resource. 1 by default.
 	//
 	// If present, following values are allowed:
-	//     Free: 1
-	//     Standard: 1,2,5,10,20,50,100
+	//     Free: 1;
+	//     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
 	Capacity *int `pulumi:"capacity"`
 	// The name of the SKU. Required.
 	//
-	// Allowed values: Standard_S1, Free_F1
+	// Allowed values: Standard_S1, Free_F1, Premium_P1
 	Name string `pulumi:"name"`
 	// Optional tier of this particular SKU. 'Standard' or 'Free'.
 	//
@@ -1089,17 +2454,18 @@ type ResourceSkuInput interface {
 	ToResourceSkuOutputWithContext(context.Context) ResourceSkuOutput
 }
 
-// The billing information of the SignalR resource.
+// The billing information of the resource.
 type ResourceSkuArgs struct {
-	// Optional, integer. The unit count of SignalR resource. 1 by default.
+	// Optional, integer. The unit count of the resource. 1 by default.
 	//
 	// If present, following values are allowed:
-	//     Free: 1
-	//     Standard: 1,2,5,10,20,50,100
+	//     Free: 1;
+	//     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
 	// The name of the SKU. Required.
 	//
-	// Allowed values: Standard_S1, Free_F1
+	// Allowed values: Standard_S1, Free_F1, Premium_P1
 	Name pulumi.StringInput `pulumi:"name"`
 	// Optional tier of this particular SKU. 'Standard' or 'Free'.
 	//
@@ -1160,7 +2526,7 @@ func (i *resourceSkuPtrType) ToResourceSkuPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSkuPtrOutput)
 }
 
-// The billing information of the SignalR resource.
+// The billing information of the resource.
 type ResourceSkuOutput struct{ *pulumi.OutputState }
 
 func (ResourceSkuOutput) ElementType() reflect.Type {
@@ -1185,19 +2551,20 @@ func (o ResourceSkuOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context
 	}).(ResourceSkuPtrOutput)
 }
 
-// Optional, integer. The unit count of SignalR resource. 1 by default.
+// Optional, integer. The unit count of the resource. 1 by default.
 //
 // If present, following values are allowed:
 //
-//	Free: 1
-//	Standard: 1,2,5,10,20,50,100
+//	Free: 1;
+//	Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
 func (o ResourceSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
 
 // The name of the SKU. Required.
 //
-// Allowed values: Standard_S1, Free_F1
+// Allowed values: Standard_S1, Free_F1, Premium_P1
 func (o ResourceSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1233,12 +2600,13 @@ func (o ResourceSkuPtrOutput) Elem() ResourceSkuOutput {
 	}).(ResourceSkuOutput)
 }
 
-// Optional, integer. The unit count of SignalR resource. 1 by default.
+// Optional, integer. The unit count of the resource. 1 by default.
 //
 // If present, following values are allowed:
 //
-//	Free: 1
-//	Standard: 1,2,5,10,20,50,100
+//	Free: 1;
+//	Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
 func (o ResourceSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourceSku) *int {
 		if v == nil {
@@ -1250,7 +2618,7 @@ func (o ResourceSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 
 // The name of the SKU. Required.
 //
-// Allowed values: Standard_S1, Free_F1
+// Allowed values: Standard_S1, Free_F1, Premium_P1
 func (o ResourceSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSku) *string {
 		if v == nil {
@@ -1272,19 +2640,20 @@ func (o ResourceSkuPtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The billing information of the SignalR resource.
+// The billing information of the resource.
 type ResourceSkuResponse struct {
-	// Optional, integer. The unit count of SignalR resource. 1 by default.
+	// Optional, integer. The unit count of the resource. 1 by default.
 	//
 	// If present, following values are allowed:
-	//     Free: 1
-	//     Standard: 1,2,5,10,20,50,100
+	//     Free: 1;
+	//     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
 	Capacity *int `pulumi:"capacity"`
 	// Not used. Retained for future use.
 	Family string `pulumi:"family"`
 	// The name of the SKU. Required.
 	//
-	// Allowed values: Standard_S1, Free_F1
+	// Allowed values: Standard_S1, Free_F1, Premium_P1
 	Name string `pulumi:"name"`
 	// Not used. Retained for future use.
 	Size string `pulumi:"size"`
@@ -1294,7 +2663,7 @@ type ResourceSkuResponse struct {
 	Tier *string `pulumi:"tier"`
 }
 
-// The billing information of the SignalR resource.
+// The billing information of the resource.
 type ResourceSkuResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceSkuResponseOutput) ElementType() reflect.Type {
@@ -1309,12 +2678,13 @@ func (o ResourceSkuResponseOutput) ToResourceSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-// Optional, integer. The unit count of SignalR resource. 1 by default.
+// Optional, integer. The unit count of the resource. 1 by default.
 //
 // If present, following values are allowed:
 //
-//	Free: 1
-//	Standard: 1,2,5,10,20,50,100
+//	Free: 1;
+//	Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
 func (o ResourceSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
@@ -1326,7 +2696,7 @@ func (o ResourceSkuResponseOutput) Family() pulumi.StringOutput {
 
 // The name of the SKU. Required.
 //
-// Allowed values: Standard_S1, Free_F1
+// Allowed values: Standard_S1, Free_F1, Premium_P1
 func (o ResourceSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1367,12 +2737,13 @@ func (o ResourceSkuResponsePtrOutput) Elem() ResourceSkuResponseOutput {
 	}).(ResourceSkuResponseOutput)
 }
 
-// Optional, integer. The unit count of SignalR resource. 1 by default.
+// Optional, integer. The unit count of the resource. 1 by default.
 //
 // If present, following values are allowed:
 //
-//	Free: 1
-//	Standard: 1,2,5,10,20,50,100
+//	Free: 1;
+//	Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
 func (o ResourceSkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourceSkuResponse) *int {
 		if v == nil {
@@ -1394,7 +2765,7 @@ func (o ResourceSkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
 
 // The name of the SKU. Required.
 //
-// Allowed values: Standard_S1, Free_F1
+// Allowed values: Standard_S1, Free_F1, Premium_P1
 func (o ResourceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSkuResponse) *string {
 		if v == nil {
@@ -1426,7 +2797,293 @@ func (o ResourceSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The settings for the Upstream when the Azure SignalR is in server-less mode.
+// Serverless settings.
+type ServerlessSettings struct {
+	// Gets or sets Client Connection Timeout. Optional to be set.
+	// Value in seconds.
+	// Default value is 30 seconds.
+	// Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals,
+	// and want the client to disconnect more quickly after the last message is sent.
+	// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
+	// and they want to keep the same client connection alive during this session.
+	// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
+	ConnectionTimeoutInSeconds *int `pulumi:"connectionTimeoutInSeconds"`
+}
+
+// Defaults sets the appropriate defaults for ServerlessSettings
+func (val *ServerlessSettings) Defaults() *ServerlessSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTimeoutInSeconds == nil {
+		connectionTimeoutInSeconds_ := 30
+		tmp.ConnectionTimeoutInSeconds = &connectionTimeoutInSeconds_
+	}
+	return &tmp
+}
+
+// ServerlessSettingsInput is an input type that accepts ServerlessSettingsArgs and ServerlessSettingsOutput values.
+// You can construct a concrete instance of `ServerlessSettingsInput` via:
+//
+//	ServerlessSettingsArgs{...}
+type ServerlessSettingsInput interface {
+	pulumi.Input
+
+	ToServerlessSettingsOutput() ServerlessSettingsOutput
+	ToServerlessSettingsOutputWithContext(context.Context) ServerlessSettingsOutput
+}
+
+// Serverless settings.
+type ServerlessSettingsArgs struct {
+	// Gets or sets Client Connection Timeout. Optional to be set.
+	// Value in seconds.
+	// Default value is 30 seconds.
+	// Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals,
+	// and want the client to disconnect more quickly after the last message is sent.
+	// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
+	// and they want to keep the same client connection alive during this session.
+	// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
+	ConnectionTimeoutInSeconds pulumi.IntPtrInput `pulumi:"connectionTimeoutInSeconds"`
+}
+
+// Defaults sets the appropriate defaults for ServerlessSettingsArgs
+func (val *ServerlessSettingsArgs) Defaults() *ServerlessSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTimeoutInSeconds == nil {
+		tmp.ConnectionTimeoutInSeconds = pulumi.IntPtr(30)
+	}
+	return &tmp
+}
+func (ServerlessSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessSettings)(nil)).Elem()
+}
+
+func (i ServerlessSettingsArgs) ToServerlessSettingsOutput() ServerlessSettingsOutput {
+	return i.ToServerlessSettingsOutputWithContext(context.Background())
+}
+
+func (i ServerlessSettingsArgs) ToServerlessSettingsOutputWithContext(ctx context.Context) ServerlessSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessSettingsOutput)
+}
+
+func (i ServerlessSettingsArgs) ToServerlessSettingsPtrOutput() ServerlessSettingsPtrOutput {
+	return i.ToServerlessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ServerlessSettingsArgs) ToServerlessSettingsPtrOutputWithContext(ctx context.Context) ServerlessSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessSettingsOutput).ToServerlessSettingsPtrOutputWithContext(ctx)
+}
+
+// ServerlessSettingsPtrInput is an input type that accepts ServerlessSettingsArgs, ServerlessSettingsPtr and ServerlessSettingsPtrOutput values.
+// You can construct a concrete instance of `ServerlessSettingsPtrInput` via:
+//
+//	        ServerlessSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerlessSettingsPtrInput interface {
+	pulumi.Input
+
+	ToServerlessSettingsPtrOutput() ServerlessSettingsPtrOutput
+	ToServerlessSettingsPtrOutputWithContext(context.Context) ServerlessSettingsPtrOutput
+}
+
+type serverlessSettingsPtrType ServerlessSettingsArgs
+
+func ServerlessSettingsPtr(v *ServerlessSettingsArgs) ServerlessSettingsPtrInput {
+	return (*serverlessSettingsPtrType)(v)
+}
+
+func (*serverlessSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessSettings)(nil)).Elem()
+}
+
+func (i *serverlessSettingsPtrType) ToServerlessSettingsPtrOutput() ServerlessSettingsPtrOutput {
+	return i.ToServerlessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *serverlessSettingsPtrType) ToServerlessSettingsPtrOutputWithContext(ctx context.Context) ServerlessSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessSettingsPtrOutput)
+}
+
+// Serverless settings.
+type ServerlessSettingsOutput struct{ *pulumi.OutputState }
+
+func (ServerlessSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessSettings)(nil)).Elem()
+}
+
+func (o ServerlessSettingsOutput) ToServerlessSettingsOutput() ServerlessSettingsOutput {
+	return o
+}
+
+func (o ServerlessSettingsOutput) ToServerlessSettingsOutputWithContext(ctx context.Context) ServerlessSettingsOutput {
+	return o
+}
+
+func (o ServerlessSettingsOutput) ToServerlessSettingsPtrOutput() ServerlessSettingsPtrOutput {
+	return o.ToServerlessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessSettingsOutput) ToServerlessSettingsPtrOutputWithContext(ctx context.Context) ServerlessSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessSettings) *ServerlessSettings {
+		return &v
+	}).(ServerlessSettingsPtrOutput)
+}
+
+// Gets or sets Client Connection Timeout. Optional to be set.
+// Value in seconds.
+// Default value is 30 seconds.
+// Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals,
+// and want the client to disconnect more quickly after the last message is sent.
+// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
+// and they want to keep the same client connection alive during this session.
+// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
+func (o ServerlessSettingsOutput) ConnectionTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerlessSettings) *int { return v.ConnectionTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type ServerlessSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessSettings)(nil)).Elem()
+}
+
+func (o ServerlessSettingsPtrOutput) ToServerlessSettingsPtrOutput() ServerlessSettingsPtrOutput {
+	return o
+}
+
+func (o ServerlessSettingsPtrOutput) ToServerlessSettingsPtrOutputWithContext(ctx context.Context) ServerlessSettingsPtrOutput {
+	return o
+}
+
+func (o ServerlessSettingsPtrOutput) Elem() ServerlessSettingsOutput {
+	return o.ApplyT(func(v *ServerlessSettings) ServerlessSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessSettings
+		return ret
+	}).(ServerlessSettingsOutput)
+}
+
+// Gets or sets Client Connection Timeout. Optional to be set.
+// Value in seconds.
+// Default value is 30 seconds.
+// Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals,
+// and want the client to disconnect more quickly after the last message is sent.
+// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
+// and they want to keep the same client connection alive during this session.
+// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
+func (o ServerlessSettingsPtrOutput) ConnectionTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerlessSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Serverless settings.
+type ServerlessSettingsResponse struct {
+	// Gets or sets Client Connection Timeout. Optional to be set.
+	// Value in seconds.
+	// Default value is 30 seconds.
+	// Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals,
+	// and want the client to disconnect more quickly after the last message is sent.
+	// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
+	// and they want to keep the same client connection alive during this session.
+	// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
+	ConnectionTimeoutInSeconds *int `pulumi:"connectionTimeoutInSeconds"`
+}
+
+// Defaults sets the appropriate defaults for ServerlessSettingsResponse
+func (val *ServerlessSettingsResponse) Defaults() *ServerlessSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTimeoutInSeconds == nil {
+		connectionTimeoutInSeconds_ := 30
+		tmp.ConnectionTimeoutInSeconds = &connectionTimeoutInSeconds_
+	}
+	return &tmp
+}
+
+// Serverless settings.
+type ServerlessSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerlessSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessSettingsResponse)(nil)).Elem()
+}
+
+func (o ServerlessSettingsResponseOutput) ToServerlessSettingsResponseOutput() ServerlessSettingsResponseOutput {
+	return o
+}
+
+func (o ServerlessSettingsResponseOutput) ToServerlessSettingsResponseOutputWithContext(ctx context.Context) ServerlessSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets Client Connection Timeout. Optional to be set.
+// Value in seconds.
+// Default value is 30 seconds.
+// Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals,
+// and want the client to disconnect more quickly after the last message is sent.
+// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
+// and they want to keep the same client connection alive during this session.
+// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
+func (o ServerlessSettingsResponseOutput) ConnectionTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerlessSettingsResponse) *int { return v.ConnectionTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type ServerlessSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessSettingsResponse)(nil)).Elem()
+}
+
+func (o ServerlessSettingsResponsePtrOutput) ToServerlessSettingsResponsePtrOutput() ServerlessSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ServerlessSettingsResponsePtrOutput) ToServerlessSettingsResponsePtrOutputWithContext(ctx context.Context) ServerlessSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ServerlessSettingsResponsePtrOutput) Elem() ServerlessSettingsResponseOutput {
+	return o.ApplyT(func(v *ServerlessSettingsResponse) ServerlessSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessSettingsResponse
+		return ret
+	}).(ServerlessSettingsResponseOutput)
+}
+
+// Gets or sets Client Connection Timeout. Optional to be set.
+// Value in seconds.
+// Default value is 30 seconds.
+// Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals,
+// and want the client to disconnect more quickly after the last message is sent.
+// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
+// and they want to keep the same client connection alive during this session.
+// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
+func (o ServerlessSettingsResponsePtrOutput) ConnectionTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerlessSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The settings for the Upstream when the service is in server-less mode.
 type ServerlessUpstreamSettings struct {
 	// Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.
 	Templates []UpstreamTemplate `pulumi:"templates"`
@@ -1443,7 +3100,7 @@ type ServerlessUpstreamSettingsInput interface {
 	ToServerlessUpstreamSettingsOutputWithContext(context.Context) ServerlessUpstreamSettingsOutput
 }
 
-// The settings for the Upstream when the Azure SignalR is in server-less mode.
+// The settings for the Upstream when the service is in server-less mode.
 type ServerlessUpstreamSettingsArgs struct {
 	// Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.
 	Templates UpstreamTemplateArrayInput `pulumi:"templates"`
@@ -1502,7 +3159,7 @@ func (i *serverlessUpstreamSettingsPtrType) ToServerlessUpstreamSettingsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessUpstreamSettingsPtrOutput)
 }
 
-// The settings for the Upstream when the Azure SignalR is in server-less mode.
+// The settings for the Upstream when the service is in server-less mode.
 type ServerlessUpstreamSettingsOutput struct{ *pulumi.OutputState }
 
 func (ServerlessUpstreamSettingsOutput) ElementType() reflect.Type {
@@ -1566,13 +3223,13 @@ func (o ServerlessUpstreamSettingsPtrOutput) Templates() UpstreamTemplateArrayOu
 	}).(UpstreamTemplateArrayOutput)
 }
 
-// The settings for the Upstream when the Azure SignalR is in server-less mode.
+// The settings for the Upstream when the service is in server-less mode.
 type ServerlessUpstreamSettingsResponse struct {
 	// Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.
 	Templates []UpstreamTemplateResponse `pulumi:"templates"`
 }
 
-// The settings for the Upstream when the Azure SignalR is in server-less mode.
+// The settings for the Upstream when the service is in server-less mode.
 type ServerlessUpstreamSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (ServerlessUpstreamSettingsResponseOutput) ElementType() reflect.Type {
@@ -1624,6 +3281,108 @@ func (o ServerlessUpstreamSettingsResponsePtrOutput) Templates() UpstreamTemplat
 		}
 		return v.Templates
 	}).(UpstreamTemplateResponseArrayOutput)
+}
+
+// Describes a Shared Private Link Resource
+type SharedPrivateLinkResourceResponse struct {
+	// The group id from the provider of resource the shared private link resource is for
+	GroupId string `pulumi:"groupId"`
+	// Fully qualified resource Id for the resource.
+	Id string `pulumi:"id"`
+	// The name of the resource.
+	Name string `pulumi:"name"`
+	// The resource id of the resource the shared private link resource is for
+	PrivateLinkResourceId string `pulumi:"privateLinkResourceId"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The request message for requesting approval of the shared private link resource
+	RequestMessage *string `pulumi:"requestMessage"`
+	// Status of the shared private link resource
+	Status string `pulumi:"status"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	Type string `pulumi:"type"`
+}
+
+// Describes a Shared Private Link Resource
+type SharedPrivateLinkResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SharedPrivateLinkResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedPrivateLinkResourceResponse)(nil)).Elem()
+}
+
+func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutput() SharedPrivateLinkResourceResponseOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseOutput {
+	return o
+}
+
+// The group id from the provider of resource the shared private link resource is for
+func (o SharedPrivateLinkResourceResponseOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource Id for the resource.
+func (o SharedPrivateLinkResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o SharedPrivateLinkResourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource id of the resource the shared private link resource is for
+func (o SharedPrivateLinkResourceResponseOutput) PrivateLinkResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.PrivateLinkResourceId }).(pulumi.StringOutput)
+}
+
+// Provisioning state of the resource.
+func (o SharedPrivateLinkResourceResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The request message for requesting approval of the shared private link resource
+func (o SharedPrivateLinkResourceResponseOutput) RequestMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
+}
+
+// Status of the shared private link resource
+func (o SharedPrivateLinkResourceResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o SharedPrivateLinkResourceResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+func (o SharedPrivateLinkResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SharedPrivateLinkResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SharedPrivateLinkResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedPrivateLinkResourceResponse)(nil)).Elem()
+}
+
+func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutput() SharedPrivateLinkResourceResponseArrayOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseArrayOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedPrivateLinkResourceResponse {
+		return vs[0].([]SharedPrivateLinkResourceResponse)[vs[1].(int)]
+	}).(SharedPrivateLinkResourceResponseOutput)
 }
 
 // Cross-Origin Resource Sharing (CORS) settings.
@@ -1826,11 +3585,13 @@ func (o SignalRCorsSettingsResponsePtrOutput) AllowedOrigins() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Feature of a SignalR resource, which controls the SignalR runtime behavior.
+// Feature of a resource, which controls the runtime behavior.
 type SignalRFeature struct {
 	// FeatureFlags is the supported features of Azure SignalR service.
 	// - ServiceMode: Flag for backend server for SignalR service. Values allowed: "Default": have your own backend server; "Serverless": your application doesn't have a backend server; "Classic": for backward compatibility. Support both Default and Serverless mode but not recommended; "PredefinedOnly": for future use.
 	// - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+	// - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+	// - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature.
 	Flag string `pulumi:"flag"`
 	// Optional properties related to this feature.
 	Properties map[string]string `pulumi:"properties"`
@@ -1849,11 +3610,13 @@ type SignalRFeatureInput interface {
 	ToSignalRFeatureOutputWithContext(context.Context) SignalRFeatureOutput
 }
 
-// Feature of a SignalR resource, which controls the SignalR runtime behavior.
+// Feature of a resource, which controls the runtime behavior.
 type SignalRFeatureArgs struct {
 	// FeatureFlags is the supported features of Azure SignalR service.
 	// - ServiceMode: Flag for backend server for SignalR service. Values allowed: "Default": have your own backend server; "Serverless": your application doesn't have a backend server; "Classic": for backward compatibility. Support both Default and Serverless mode but not recommended; "PredefinedOnly": for future use.
 	// - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+	// - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+	// - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature.
 	Flag pulumi.StringInput `pulumi:"flag"`
 	// Optional properties related to this feature.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
@@ -1898,7 +3661,7 @@ func (i SignalRFeatureArray) ToSignalRFeatureArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SignalRFeatureArrayOutput)
 }
 
-// Feature of a SignalR resource, which controls the SignalR runtime behavior.
+// Feature of a resource, which controls the runtime behavior.
 type SignalRFeatureOutput struct{ *pulumi.OutputState }
 
 func (SignalRFeatureOutput) ElementType() reflect.Type {
@@ -1916,6 +3679,8 @@ func (o SignalRFeatureOutput) ToSignalRFeatureOutputWithContext(ctx context.Cont
 // FeatureFlags is the supported features of Azure SignalR service.
 // - ServiceMode: Flag for backend server for SignalR service. Values allowed: "Default": have your own backend server; "Serverless": your application doesn't have a backend server; "Classic": for backward compatibility. Support both Default and Serverless mode but not recommended; "PredefinedOnly": for future use.
 // - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+// - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+// - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature.
 func (o SignalRFeatureOutput) Flag() pulumi.StringOutput {
 	return o.ApplyT(func(v SignalRFeature) string { return v.Flag }).(pulumi.StringOutput)
 }
@@ -1950,11 +3715,13 @@ func (o SignalRFeatureArrayOutput) Index(i pulumi.IntInput) SignalRFeatureOutput
 	}).(SignalRFeatureOutput)
 }
 
-// Feature of a SignalR resource, which controls the SignalR runtime behavior.
+// Feature of a resource, which controls the runtime behavior.
 type SignalRFeatureResponse struct {
 	// FeatureFlags is the supported features of Azure SignalR service.
 	// - ServiceMode: Flag for backend server for SignalR service. Values allowed: "Default": have your own backend server; "Serverless": your application doesn't have a backend server; "Classic": for backward compatibility. Support both Default and Serverless mode but not recommended; "PredefinedOnly": for future use.
 	// - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+	// - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+	// - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature.
 	Flag string `pulumi:"flag"`
 	// Optional properties related to this feature.
 	Properties map[string]string `pulumi:"properties"`
@@ -1962,7 +3729,7 @@ type SignalRFeatureResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// Feature of a SignalR resource, which controls the SignalR runtime behavior.
+// Feature of a resource, which controls the runtime behavior.
 type SignalRFeatureResponseOutput struct{ *pulumi.OutputState }
 
 func (SignalRFeatureResponseOutput) ElementType() reflect.Type {
@@ -1980,6 +3747,8 @@ func (o SignalRFeatureResponseOutput) ToSignalRFeatureResponseOutputWithContext(
 // FeatureFlags is the supported features of Azure SignalR service.
 // - ServiceMode: Flag for backend server for SignalR service. Values allowed: "Default": have your own backend server; "Serverless": your application doesn't have a backend server; "Classic": for backward compatibility. Support both Default and Serverless mode but not recommended; "PredefinedOnly": for future use.
 // - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+// - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively.
+// - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature.
 func (o SignalRFeatureResponseOutput) Flag() pulumi.StringOutput {
 	return o.ApplyT(func(v SignalRFeatureResponse) string { return v.Flag }).(pulumi.StringOutput)
 }
@@ -2014,27 +3783,14 @@ func (o SignalRFeatureResponseArrayOutput) Index(i pulumi.IntInput) SignalRFeatu
 	}).(SignalRFeatureResponseOutput)
 }
 
-// Network ACLs for SignalR
+// Network ACLs for the resource
 type SignalRNetworkACLs struct {
-	// Default action when no other rule matches
+	// Azure Networking ACL Action.
 	DefaultAction *string `pulumi:"defaultAction"`
 	// ACLs for requests from private endpoints
 	PrivateEndpoints []PrivateEndpointACL `pulumi:"privateEndpoints"`
-	// ACL for requests from public network
+	// Network ACL
 	PublicNetwork *NetworkACL `pulumi:"publicNetwork"`
-}
-
-// Defaults sets the appropriate defaults for SignalRNetworkACLs
-func (val *SignalRNetworkACLs) Defaults() *SignalRNetworkACLs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.DefaultAction) {
-		defaultAction_ := "Deny"
-		tmp.DefaultAction = &defaultAction_
-	}
-	return &tmp
 }
 
 // SignalRNetworkACLsInput is an input type that accepts SignalRNetworkACLsArgs and SignalRNetworkACLsOutput values.
@@ -2048,27 +3804,16 @@ type SignalRNetworkACLsInput interface {
 	ToSignalRNetworkACLsOutputWithContext(context.Context) SignalRNetworkACLsOutput
 }
 
-// Network ACLs for SignalR
+// Network ACLs for the resource
 type SignalRNetworkACLsArgs struct {
-	// Default action when no other rule matches
+	// Azure Networking ACL Action.
 	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
 	// ACLs for requests from private endpoints
 	PrivateEndpoints PrivateEndpointACLArrayInput `pulumi:"privateEndpoints"`
-	// ACL for requests from public network
+	// Network ACL
 	PublicNetwork NetworkACLPtrInput `pulumi:"publicNetwork"`
 }
 
-// Defaults sets the appropriate defaults for SignalRNetworkACLsArgs
-func (val *SignalRNetworkACLsArgs) Defaults() *SignalRNetworkACLsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.DefaultAction) {
-		tmp.DefaultAction = pulumi.StringPtr("Deny")
-	}
-	return &tmp
-}
 func (SignalRNetworkACLsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*SignalRNetworkACLs)(nil)).Elem()
 }
@@ -2122,7 +3867,7 @@ func (i *signalRNetworkACLsPtrType) ToSignalRNetworkACLsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SignalRNetworkACLsPtrOutput)
 }
 
-// Network ACLs for SignalR
+// Network ACLs for the resource
 type SignalRNetworkACLsOutput struct{ *pulumi.OutputState }
 
 func (SignalRNetworkACLsOutput) ElementType() reflect.Type {
@@ -2147,7 +3892,7 @@ func (o SignalRNetworkACLsOutput) ToSignalRNetworkACLsPtrOutputWithContext(ctx c
 	}).(SignalRNetworkACLsPtrOutput)
 }
 
-// Default action when no other rule matches
+// Azure Networking ACL Action.
 func (o SignalRNetworkACLsOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SignalRNetworkACLs) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
@@ -2157,7 +3902,7 @@ func (o SignalRNetworkACLsOutput) PrivateEndpoints() PrivateEndpointACLArrayOutp
 	return o.ApplyT(func(v SignalRNetworkACLs) []PrivateEndpointACL { return v.PrivateEndpoints }).(PrivateEndpointACLArrayOutput)
 }
 
-// ACL for requests from public network
+// Network ACL
 func (o SignalRNetworkACLsOutput) PublicNetwork() NetworkACLPtrOutput {
 	return o.ApplyT(func(v SignalRNetworkACLs) *NetworkACL { return v.PublicNetwork }).(NetworkACLPtrOutput)
 }
@@ -2186,7 +3931,7 @@ func (o SignalRNetworkACLsPtrOutput) Elem() SignalRNetworkACLsOutput {
 	}).(SignalRNetworkACLsOutput)
 }
 
-// Default action when no other rule matches
+// Azure Networking ACL Action.
 func (o SignalRNetworkACLsPtrOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SignalRNetworkACLs) *string {
 		if v == nil {
@@ -2206,7 +3951,7 @@ func (o SignalRNetworkACLsPtrOutput) PrivateEndpoints() PrivateEndpointACLArrayO
 	}).(PrivateEndpointACLArrayOutput)
 }
 
-// ACL for requests from public network
+// Network ACL
 func (o SignalRNetworkACLsPtrOutput) PublicNetwork() NetworkACLPtrOutput {
 	return o.ApplyT(func(v *SignalRNetworkACLs) *NetworkACL {
 		if v == nil {
@@ -2216,30 +3961,17 @@ func (o SignalRNetworkACLsPtrOutput) PublicNetwork() NetworkACLPtrOutput {
 	}).(NetworkACLPtrOutput)
 }
 
-// Network ACLs for SignalR
+// Network ACLs for the resource
 type SignalRNetworkACLsResponse struct {
-	// Default action when no other rule matches
+	// Azure Networking ACL Action.
 	DefaultAction *string `pulumi:"defaultAction"`
 	// ACLs for requests from private endpoints
 	PrivateEndpoints []PrivateEndpointACLResponse `pulumi:"privateEndpoints"`
-	// ACL for requests from public network
+	// Network ACL
 	PublicNetwork *NetworkACLResponse `pulumi:"publicNetwork"`
 }
 
-// Defaults sets the appropriate defaults for SignalRNetworkACLsResponse
-func (val *SignalRNetworkACLsResponse) Defaults() *SignalRNetworkACLsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.DefaultAction) {
-		defaultAction_ := "Deny"
-		tmp.DefaultAction = &defaultAction_
-	}
-	return &tmp
-}
-
-// Network ACLs for SignalR
+// Network ACLs for the resource
 type SignalRNetworkACLsResponseOutput struct{ *pulumi.OutputState }
 
 func (SignalRNetworkACLsResponseOutput) ElementType() reflect.Type {
@@ -2254,7 +3986,7 @@ func (o SignalRNetworkACLsResponseOutput) ToSignalRNetworkACLsResponseOutputWith
 	return o
 }
 
-// Default action when no other rule matches
+// Azure Networking ACL Action.
 func (o SignalRNetworkACLsResponseOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SignalRNetworkACLsResponse) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
@@ -2264,7 +3996,7 @@ func (o SignalRNetworkACLsResponseOutput) PrivateEndpoints() PrivateEndpointACLR
 	return o.ApplyT(func(v SignalRNetworkACLsResponse) []PrivateEndpointACLResponse { return v.PrivateEndpoints }).(PrivateEndpointACLResponseArrayOutput)
 }
 
-// ACL for requests from public network
+// Network ACL
 func (o SignalRNetworkACLsResponseOutput) PublicNetwork() NetworkACLResponsePtrOutput {
 	return o.ApplyT(func(v SignalRNetworkACLsResponse) *NetworkACLResponse { return v.PublicNetwork }).(NetworkACLResponsePtrOutput)
 }
@@ -2293,7 +4025,7 @@ func (o SignalRNetworkACLsResponsePtrOutput) Elem() SignalRNetworkACLsResponseOu
 	}).(SignalRNetworkACLsResponseOutput)
 }
 
-// Default action when no other rule matches
+// Azure Networking ACL Action.
 func (o SignalRNetworkACLsResponsePtrOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SignalRNetworkACLsResponse) *string {
 		if v == nil {
@@ -2313,7 +4045,7 @@ func (o SignalRNetworkACLsResponsePtrOutput) PrivateEndpoints() PrivateEndpointA
 	}).(PrivateEndpointACLResponseArrayOutput)
 }
 
-// ACL for requests from public network
+// Network ACL
 func (o SignalRNetworkACLsResponsePtrOutput) PublicNetwork() NetworkACLResponsePtrOutput {
 	return o.ApplyT(func(v *SignalRNetworkACLsResponse) *NetworkACLResponse {
 		if v == nil {
@@ -2321,6 +4053,243 @@ func (o SignalRNetworkACLsResponsePtrOutput) PublicNetwork() NetworkACLResponseP
 		}
 		return v.PublicNetwork
 	}).(NetworkACLResponsePtrOutput)
+}
+
+// TLS settings for the resource
+type SignalRTlsSettings struct {
+	// Request client certificate during TLS handshake if enabled
+	ClientCertEnabled *bool `pulumi:"clientCertEnabled"`
+}
+
+// Defaults sets the appropriate defaults for SignalRTlsSettings
+func (val *SignalRTlsSettings) Defaults() *SignalRTlsSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ClientCertEnabled == nil {
+		clientCertEnabled_ := true
+		tmp.ClientCertEnabled = &clientCertEnabled_
+	}
+	return &tmp
+}
+
+// SignalRTlsSettingsInput is an input type that accepts SignalRTlsSettingsArgs and SignalRTlsSettingsOutput values.
+// You can construct a concrete instance of `SignalRTlsSettingsInput` via:
+//
+//	SignalRTlsSettingsArgs{...}
+type SignalRTlsSettingsInput interface {
+	pulumi.Input
+
+	ToSignalRTlsSettingsOutput() SignalRTlsSettingsOutput
+	ToSignalRTlsSettingsOutputWithContext(context.Context) SignalRTlsSettingsOutput
+}
+
+// TLS settings for the resource
+type SignalRTlsSettingsArgs struct {
+	// Request client certificate during TLS handshake if enabled
+	ClientCertEnabled pulumi.BoolPtrInput `pulumi:"clientCertEnabled"`
+}
+
+// Defaults sets the appropriate defaults for SignalRTlsSettingsArgs
+func (val *SignalRTlsSettingsArgs) Defaults() *SignalRTlsSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ClientCertEnabled == nil {
+		tmp.ClientCertEnabled = pulumi.BoolPtr(true)
+	}
+	return &tmp
+}
+func (SignalRTlsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalRTlsSettings)(nil)).Elem()
+}
+
+func (i SignalRTlsSettingsArgs) ToSignalRTlsSettingsOutput() SignalRTlsSettingsOutput {
+	return i.ToSignalRTlsSettingsOutputWithContext(context.Background())
+}
+
+func (i SignalRTlsSettingsArgs) ToSignalRTlsSettingsOutputWithContext(ctx context.Context) SignalRTlsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalRTlsSettingsOutput)
+}
+
+func (i SignalRTlsSettingsArgs) ToSignalRTlsSettingsPtrOutput() SignalRTlsSettingsPtrOutput {
+	return i.ToSignalRTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SignalRTlsSettingsArgs) ToSignalRTlsSettingsPtrOutputWithContext(ctx context.Context) SignalRTlsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalRTlsSettingsOutput).ToSignalRTlsSettingsPtrOutputWithContext(ctx)
+}
+
+// SignalRTlsSettingsPtrInput is an input type that accepts SignalRTlsSettingsArgs, SignalRTlsSettingsPtr and SignalRTlsSettingsPtrOutput values.
+// You can construct a concrete instance of `SignalRTlsSettingsPtrInput` via:
+//
+//	        SignalRTlsSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SignalRTlsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSignalRTlsSettingsPtrOutput() SignalRTlsSettingsPtrOutput
+	ToSignalRTlsSettingsPtrOutputWithContext(context.Context) SignalRTlsSettingsPtrOutput
+}
+
+type signalRTlsSettingsPtrType SignalRTlsSettingsArgs
+
+func SignalRTlsSettingsPtr(v *SignalRTlsSettingsArgs) SignalRTlsSettingsPtrInput {
+	return (*signalRTlsSettingsPtrType)(v)
+}
+
+func (*signalRTlsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalRTlsSettings)(nil)).Elem()
+}
+
+func (i *signalRTlsSettingsPtrType) ToSignalRTlsSettingsPtrOutput() SignalRTlsSettingsPtrOutput {
+	return i.ToSignalRTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *signalRTlsSettingsPtrType) ToSignalRTlsSettingsPtrOutputWithContext(ctx context.Context) SignalRTlsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalRTlsSettingsPtrOutput)
+}
+
+// TLS settings for the resource
+type SignalRTlsSettingsOutput struct{ *pulumi.OutputState }
+
+func (SignalRTlsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalRTlsSettings)(nil)).Elem()
+}
+
+func (o SignalRTlsSettingsOutput) ToSignalRTlsSettingsOutput() SignalRTlsSettingsOutput {
+	return o
+}
+
+func (o SignalRTlsSettingsOutput) ToSignalRTlsSettingsOutputWithContext(ctx context.Context) SignalRTlsSettingsOutput {
+	return o
+}
+
+func (o SignalRTlsSettingsOutput) ToSignalRTlsSettingsPtrOutput() SignalRTlsSettingsPtrOutput {
+	return o.ToSignalRTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SignalRTlsSettingsOutput) ToSignalRTlsSettingsPtrOutputWithContext(ctx context.Context) SignalRTlsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SignalRTlsSettings) *SignalRTlsSettings {
+		return &v
+	}).(SignalRTlsSettingsPtrOutput)
+}
+
+// Request client certificate during TLS handshake if enabled
+func (o SignalRTlsSettingsOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SignalRTlsSettings) *bool { return v.ClientCertEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type SignalRTlsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SignalRTlsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalRTlsSettings)(nil)).Elem()
+}
+
+func (o SignalRTlsSettingsPtrOutput) ToSignalRTlsSettingsPtrOutput() SignalRTlsSettingsPtrOutput {
+	return o
+}
+
+func (o SignalRTlsSettingsPtrOutput) ToSignalRTlsSettingsPtrOutputWithContext(ctx context.Context) SignalRTlsSettingsPtrOutput {
+	return o
+}
+
+func (o SignalRTlsSettingsPtrOutput) Elem() SignalRTlsSettingsOutput {
+	return o.ApplyT(func(v *SignalRTlsSettings) SignalRTlsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SignalRTlsSettings
+		return ret
+	}).(SignalRTlsSettingsOutput)
+}
+
+// Request client certificate during TLS handshake if enabled
+func (o SignalRTlsSettingsPtrOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SignalRTlsSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// TLS settings for the resource
+type SignalRTlsSettingsResponse struct {
+	// Request client certificate during TLS handshake if enabled
+	ClientCertEnabled *bool `pulumi:"clientCertEnabled"`
+}
+
+// Defaults sets the appropriate defaults for SignalRTlsSettingsResponse
+func (val *SignalRTlsSettingsResponse) Defaults() *SignalRTlsSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ClientCertEnabled == nil {
+		clientCertEnabled_ := true
+		tmp.ClientCertEnabled = &clientCertEnabled_
+	}
+	return &tmp
+}
+
+// TLS settings for the resource
+type SignalRTlsSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SignalRTlsSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalRTlsSettingsResponse)(nil)).Elem()
+}
+
+func (o SignalRTlsSettingsResponseOutput) ToSignalRTlsSettingsResponseOutput() SignalRTlsSettingsResponseOutput {
+	return o
+}
+
+func (o SignalRTlsSettingsResponseOutput) ToSignalRTlsSettingsResponseOutputWithContext(ctx context.Context) SignalRTlsSettingsResponseOutput {
+	return o
+}
+
+// Request client certificate during TLS handshake if enabled
+func (o SignalRTlsSettingsResponseOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SignalRTlsSettingsResponse) *bool { return v.ClientCertEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type SignalRTlsSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SignalRTlsSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalRTlsSettingsResponse)(nil)).Elem()
+}
+
+func (o SignalRTlsSettingsResponsePtrOutput) ToSignalRTlsSettingsResponsePtrOutput() SignalRTlsSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SignalRTlsSettingsResponsePtrOutput) ToSignalRTlsSettingsResponsePtrOutputWithContext(ctx context.Context) SignalRTlsSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SignalRTlsSettingsResponsePtrOutput) Elem() SignalRTlsSettingsResponseOutput {
+	return o.ApplyT(func(v *SignalRTlsSettingsResponse) SignalRTlsSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SignalRTlsSettingsResponse
+		return ret
+	}).(SignalRTlsSettingsResponseOutput)
+}
+
+// Request client certificate during TLS handshake if enabled
+func (o SignalRTlsSettingsResponsePtrOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SignalRTlsSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -2384,26 +4353,264 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Upstream auth settings. If not set, no auth is used for upstream messages.
+type UpstreamAuthSettings struct {
+	// Managed identity settings for upstream.
+	ManagedIdentity *ManagedIdentitySettings `pulumi:"managedIdentity"`
+	// Upstream auth type enum.
+	Type *string `pulumi:"type"`
+}
+
+// UpstreamAuthSettingsInput is an input type that accepts UpstreamAuthSettingsArgs and UpstreamAuthSettingsOutput values.
+// You can construct a concrete instance of `UpstreamAuthSettingsInput` via:
+//
+//	UpstreamAuthSettingsArgs{...}
+type UpstreamAuthSettingsInput interface {
+	pulumi.Input
+
+	ToUpstreamAuthSettingsOutput() UpstreamAuthSettingsOutput
+	ToUpstreamAuthSettingsOutputWithContext(context.Context) UpstreamAuthSettingsOutput
+}
+
+// Upstream auth settings. If not set, no auth is used for upstream messages.
+type UpstreamAuthSettingsArgs struct {
+	// Managed identity settings for upstream.
+	ManagedIdentity ManagedIdentitySettingsPtrInput `pulumi:"managedIdentity"`
+	// Upstream auth type enum.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (UpstreamAuthSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamAuthSettings)(nil)).Elem()
+}
+
+func (i UpstreamAuthSettingsArgs) ToUpstreamAuthSettingsOutput() UpstreamAuthSettingsOutput {
+	return i.ToUpstreamAuthSettingsOutputWithContext(context.Background())
+}
+
+func (i UpstreamAuthSettingsArgs) ToUpstreamAuthSettingsOutputWithContext(ctx context.Context) UpstreamAuthSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpstreamAuthSettingsOutput)
+}
+
+func (i UpstreamAuthSettingsArgs) ToUpstreamAuthSettingsPtrOutput() UpstreamAuthSettingsPtrOutput {
+	return i.ToUpstreamAuthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i UpstreamAuthSettingsArgs) ToUpstreamAuthSettingsPtrOutputWithContext(ctx context.Context) UpstreamAuthSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpstreamAuthSettingsOutput).ToUpstreamAuthSettingsPtrOutputWithContext(ctx)
+}
+
+// UpstreamAuthSettingsPtrInput is an input type that accepts UpstreamAuthSettingsArgs, UpstreamAuthSettingsPtr and UpstreamAuthSettingsPtrOutput values.
+// You can construct a concrete instance of `UpstreamAuthSettingsPtrInput` via:
+//
+//	        UpstreamAuthSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type UpstreamAuthSettingsPtrInput interface {
+	pulumi.Input
+
+	ToUpstreamAuthSettingsPtrOutput() UpstreamAuthSettingsPtrOutput
+	ToUpstreamAuthSettingsPtrOutputWithContext(context.Context) UpstreamAuthSettingsPtrOutput
+}
+
+type upstreamAuthSettingsPtrType UpstreamAuthSettingsArgs
+
+func UpstreamAuthSettingsPtr(v *UpstreamAuthSettingsArgs) UpstreamAuthSettingsPtrInput {
+	return (*upstreamAuthSettingsPtrType)(v)
+}
+
+func (*upstreamAuthSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpstreamAuthSettings)(nil)).Elem()
+}
+
+func (i *upstreamAuthSettingsPtrType) ToUpstreamAuthSettingsPtrOutput() UpstreamAuthSettingsPtrOutput {
+	return i.ToUpstreamAuthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *upstreamAuthSettingsPtrType) ToUpstreamAuthSettingsPtrOutputWithContext(ctx context.Context) UpstreamAuthSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpstreamAuthSettingsPtrOutput)
+}
+
+// Upstream auth settings. If not set, no auth is used for upstream messages.
+type UpstreamAuthSettingsOutput struct{ *pulumi.OutputState }
+
+func (UpstreamAuthSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamAuthSettings)(nil)).Elem()
+}
+
+func (o UpstreamAuthSettingsOutput) ToUpstreamAuthSettingsOutput() UpstreamAuthSettingsOutput {
+	return o
+}
+
+func (o UpstreamAuthSettingsOutput) ToUpstreamAuthSettingsOutputWithContext(ctx context.Context) UpstreamAuthSettingsOutput {
+	return o
+}
+
+func (o UpstreamAuthSettingsOutput) ToUpstreamAuthSettingsPtrOutput() UpstreamAuthSettingsPtrOutput {
+	return o.ToUpstreamAuthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o UpstreamAuthSettingsOutput) ToUpstreamAuthSettingsPtrOutputWithContext(ctx context.Context) UpstreamAuthSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpstreamAuthSettings) *UpstreamAuthSettings {
+		return &v
+	}).(UpstreamAuthSettingsPtrOutput)
+}
+
+// Managed identity settings for upstream.
+func (o UpstreamAuthSettingsOutput) ManagedIdentity() ManagedIdentitySettingsPtrOutput {
+	return o.ApplyT(func(v UpstreamAuthSettings) *ManagedIdentitySettings { return v.ManagedIdentity }).(ManagedIdentitySettingsPtrOutput)
+}
+
+// Upstream auth type enum.
+func (o UpstreamAuthSettingsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpstreamAuthSettings) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type UpstreamAuthSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (UpstreamAuthSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpstreamAuthSettings)(nil)).Elem()
+}
+
+func (o UpstreamAuthSettingsPtrOutput) ToUpstreamAuthSettingsPtrOutput() UpstreamAuthSettingsPtrOutput {
+	return o
+}
+
+func (o UpstreamAuthSettingsPtrOutput) ToUpstreamAuthSettingsPtrOutputWithContext(ctx context.Context) UpstreamAuthSettingsPtrOutput {
+	return o
+}
+
+func (o UpstreamAuthSettingsPtrOutput) Elem() UpstreamAuthSettingsOutput {
+	return o.ApplyT(func(v *UpstreamAuthSettings) UpstreamAuthSettings {
+		if v != nil {
+			return *v
+		}
+		var ret UpstreamAuthSettings
+		return ret
+	}).(UpstreamAuthSettingsOutput)
+}
+
+// Managed identity settings for upstream.
+func (o UpstreamAuthSettingsPtrOutput) ManagedIdentity() ManagedIdentitySettingsPtrOutput {
+	return o.ApplyT(func(v *UpstreamAuthSettings) *ManagedIdentitySettings {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedIdentity
+	}).(ManagedIdentitySettingsPtrOutput)
+}
+
+// Upstream auth type enum.
+func (o UpstreamAuthSettingsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpstreamAuthSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Upstream auth settings. If not set, no auth is used for upstream messages.
+type UpstreamAuthSettingsResponse struct {
+	// Managed identity settings for upstream.
+	ManagedIdentity *ManagedIdentitySettingsResponse `pulumi:"managedIdentity"`
+	// Upstream auth type enum.
+	Type *string `pulumi:"type"`
+}
+
+// Upstream auth settings. If not set, no auth is used for upstream messages.
+type UpstreamAuthSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (UpstreamAuthSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamAuthSettingsResponse)(nil)).Elem()
+}
+
+func (o UpstreamAuthSettingsResponseOutput) ToUpstreamAuthSettingsResponseOutput() UpstreamAuthSettingsResponseOutput {
+	return o
+}
+
+func (o UpstreamAuthSettingsResponseOutput) ToUpstreamAuthSettingsResponseOutputWithContext(ctx context.Context) UpstreamAuthSettingsResponseOutput {
+	return o
+}
+
+// Managed identity settings for upstream.
+func (o UpstreamAuthSettingsResponseOutput) ManagedIdentity() ManagedIdentitySettingsResponsePtrOutput {
+	return o.ApplyT(func(v UpstreamAuthSettingsResponse) *ManagedIdentitySettingsResponse { return v.ManagedIdentity }).(ManagedIdentitySettingsResponsePtrOutput)
+}
+
+// Upstream auth type enum.
+func (o UpstreamAuthSettingsResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpstreamAuthSettingsResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type UpstreamAuthSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UpstreamAuthSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpstreamAuthSettingsResponse)(nil)).Elem()
+}
+
+func (o UpstreamAuthSettingsResponsePtrOutput) ToUpstreamAuthSettingsResponsePtrOutput() UpstreamAuthSettingsResponsePtrOutput {
+	return o
+}
+
+func (o UpstreamAuthSettingsResponsePtrOutput) ToUpstreamAuthSettingsResponsePtrOutputWithContext(ctx context.Context) UpstreamAuthSettingsResponsePtrOutput {
+	return o
+}
+
+func (o UpstreamAuthSettingsResponsePtrOutput) Elem() UpstreamAuthSettingsResponseOutput {
+	return o.ApplyT(func(v *UpstreamAuthSettingsResponse) UpstreamAuthSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UpstreamAuthSettingsResponse
+		return ret
+	}).(UpstreamAuthSettingsResponseOutput)
+}
+
+// Managed identity settings for upstream.
+func (o UpstreamAuthSettingsResponsePtrOutput) ManagedIdentity() ManagedIdentitySettingsResponsePtrOutput {
+	return o.ApplyT(func(v *UpstreamAuthSettingsResponse) *ManagedIdentitySettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedIdentity
+	}).(ManagedIdentitySettingsResponsePtrOutput)
+}
+
+// Upstream auth type enum.
+func (o UpstreamAuthSettingsResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpstreamAuthSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Upstream template item settings. It defines the Upstream URL of the incoming requests.
 // The template defines the pattern of the event, the hub or the category of the incoming request that matches current URL template.
 type UpstreamTemplate struct {
+	// Upstream auth settings. If not set, no auth is used for upstream messages.
+	Auth *UpstreamAuthSettings `pulumi:"auth"`
 	// Gets or sets the matching pattern for category names. If not set, it matches any category.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any category name
-	//     2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages"
-	//     3. The single category name, for example, "connections", it matches the category "connections"
+	//     1. "*", it to matches any category name.
+	//     2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages".
+	//     3. The single category name, for example, "connections", it matches the category "connections".
 	CategoryPattern *string `pulumi:"categoryPattern"`
 	// Gets or sets the matching pattern for event names. If not set, it matches any event.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any event name
-	//     2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect"
-	//     3. The single event name, for example, "connect", it matches "connect"
+	//     1. "*", it to matches any event name.
+	//     2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect".
+	//     3. The single event name, for example, "connect", it matches "connect".
 	EventPattern *string `pulumi:"eventPattern"`
 	// Gets or sets the matching pattern for hub names. If not set, it matches any hub.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any hub name
-	//     2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2"
-	//     3. The single hub name, for example, "hub1", it matches "hub1"
+	//     1. "*", it to matches any hub name.
+	//     2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2".
+	//     3. The single hub name, for example, "hub1", it matches "hub1".
 	HubPattern *string `pulumi:"hubPattern"`
 	// Gets or sets the Upstream URL template. You can use 3 predefined parameters {hub}, {category} {event} inside the template, the value of the Upstream URL is dynamically calculated when the client request comes in.
 	// For example, if the urlTemplate is `http://example.com/{hub}/api/{event}`, with a client request from hub `chat` connects, it will first POST to this URL: `http://example.com/chat/api/connect`.
@@ -2424,23 +4631,25 @@ type UpstreamTemplateInput interface {
 // Upstream template item settings. It defines the Upstream URL of the incoming requests.
 // The template defines the pattern of the event, the hub or the category of the incoming request that matches current URL template.
 type UpstreamTemplateArgs struct {
+	// Upstream auth settings. If not set, no auth is used for upstream messages.
+	Auth UpstreamAuthSettingsPtrInput `pulumi:"auth"`
 	// Gets or sets the matching pattern for category names. If not set, it matches any category.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any category name
-	//     2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages"
-	//     3. The single category name, for example, "connections", it matches the category "connections"
+	//     1. "*", it to matches any category name.
+	//     2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages".
+	//     3. The single category name, for example, "connections", it matches the category "connections".
 	CategoryPattern pulumi.StringPtrInput `pulumi:"categoryPattern"`
 	// Gets or sets the matching pattern for event names. If not set, it matches any event.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any event name
-	//     2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect"
-	//     3. The single event name, for example, "connect", it matches "connect"
+	//     1. "*", it to matches any event name.
+	//     2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect".
+	//     3. The single event name, for example, "connect", it matches "connect".
 	EventPattern pulumi.StringPtrInput `pulumi:"eventPattern"`
 	// Gets or sets the matching pattern for hub names. If not set, it matches any hub.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any hub name
-	//     2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2"
-	//     3. The single hub name, for example, "hub1", it matches "hub1"
+	//     1. "*", it to matches any hub name.
+	//     2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2".
+	//     3. The single hub name, for example, "hub1", it matches "hub1".
 	HubPattern pulumi.StringPtrInput `pulumi:"hubPattern"`
 	// Gets or sets the Upstream URL template. You can use 3 predefined parameters {hub}, {category} {event} inside the template, the value of the Upstream URL is dynamically calculated when the client request comes in.
 	// For example, if the urlTemplate is `http://example.com/{hub}/api/{event}`, with a client request from hub `chat` connects, it will first POST to this URL: `http://example.com/chat/api/connect`.
@@ -2500,29 +4709,34 @@ func (o UpstreamTemplateOutput) ToUpstreamTemplateOutputWithContext(ctx context.
 	return o
 }
 
+// Upstream auth settings. If not set, no auth is used for upstream messages.
+func (o UpstreamTemplateOutput) Auth() UpstreamAuthSettingsPtrOutput {
+	return o.ApplyT(func(v UpstreamTemplate) *UpstreamAuthSettings { return v.Auth }).(UpstreamAuthSettingsPtrOutput)
+}
+
 // Gets or sets the matching pattern for category names. If not set, it matches any category.
 // There are 3 kind of patterns supported:
-//  1. "*", it to matches any category name
-//  2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages"
-//  3. The single category name, for example, "connections", it matches the category "connections"
+//  1. "*", it to matches any category name.
+//  2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages".
+//  3. The single category name, for example, "connections", it matches the category "connections".
 func (o UpstreamTemplateOutput) CategoryPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpstreamTemplate) *string { return v.CategoryPattern }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the matching pattern for event names. If not set, it matches any event.
 // There are 3 kind of patterns supported:
-//  1. "*", it to matches any event name
-//  2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect"
-//  3. The single event name, for example, "connect", it matches "connect"
+//  1. "*", it to matches any event name.
+//  2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect".
+//  3. The single event name, for example, "connect", it matches "connect".
 func (o UpstreamTemplateOutput) EventPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpstreamTemplate) *string { return v.EventPattern }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the matching pattern for hub names. If not set, it matches any hub.
 // There are 3 kind of patterns supported:
-//  1. "*", it to matches any hub name
-//  2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2"
-//  3. The single hub name, for example, "hub1", it matches "hub1"
+//  1. "*", it to matches any hub name.
+//  2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2".
+//  3. The single hub name, for example, "hub1", it matches "hub1".
 func (o UpstreamTemplateOutput) HubPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpstreamTemplate) *string { return v.HubPattern }).(pulumi.StringPtrOutput)
 }
@@ -2556,23 +4770,25 @@ func (o UpstreamTemplateArrayOutput) Index(i pulumi.IntInput) UpstreamTemplateOu
 // Upstream template item settings. It defines the Upstream URL of the incoming requests.
 // The template defines the pattern of the event, the hub or the category of the incoming request that matches current URL template.
 type UpstreamTemplateResponse struct {
+	// Upstream auth settings. If not set, no auth is used for upstream messages.
+	Auth *UpstreamAuthSettingsResponse `pulumi:"auth"`
 	// Gets or sets the matching pattern for category names. If not set, it matches any category.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any category name
-	//     2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages"
-	//     3. The single category name, for example, "connections", it matches the category "connections"
+	//     1. "*", it to matches any category name.
+	//     2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages".
+	//     3. The single category name, for example, "connections", it matches the category "connections".
 	CategoryPattern *string `pulumi:"categoryPattern"`
 	// Gets or sets the matching pattern for event names. If not set, it matches any event.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any event name
-	//     2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect"
-	//     3. The single event name, for example, "connect", it matches "connect"
+	//     1. "*", it to matches any event name.
+	//     2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect".
+	//     3. The single event name, for example, "connect", it matches "connect".
 	EventPattern *string `pulumi:"eventPattern"`
 	// Gets or sets the matching pattern for hub names. If not set, it matches any hub.
 	// There are 3 kind of patterns supported:
-	//     1. "*", it to matches any hub name
-	//     2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2"
-	//     3. The single hub name, for example, "hub1", it matches "hub1"
+	//     1. "*", it to matches any hub name.
+	//     2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2".
+	//     3. The single hub name, for example, "hub1", it matches "hub1".
 	HubPattern *string `pulumi:"hubPattern"`
 	// Gets or sets the Upstream URL template. You can use 3 predefined parameters {hub}, {category} {event} inside the template, the value of the Upstream URL is dynamically calculated when the client request comes in.
 	// For example, if the urlTemplate is `http://example.com/{hub}/api/{event}`, with a client request from hub `chat` connects, it will first POST to this URL: `http://example.com/chat/api/connect`.
@@ -2595,29 +4811,34 @@ func (o UpstreamTemplateResponseOutput) ToUpstreamTemplateResponseOutputWithCont
 	return o
 }
 
+// Upstream auth settings. If not set, no auth is used for upstream messages.
+func (o UpstreamTemplateResponseOutput) Auth() UpstreamAuthSettingsResponsePtrOutput {
+	return o.ApplyT(func(v UpstreamTemplateResponse) *UpstreamAuthSettingsResponse { return v.Auth }).(UpstreamAuthSettingsResponsePtrOutput)
+}
+
 // Gets or sets the matching pattern for category names. If not set, it matches any category.
 // There are 3 kind of patterns supported:
-//  1. "*", it to matches any category name
-//  2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages"
-//  3. The single category name, for example, "connections", it matches the category "connections"
+//  1. "*", it to matches any category name.
+//  2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages".
+//  3. The single category name, for example, "connections", it matches the category "connections".
 func (o UpstreamTemplateResponseOutput) CategoryPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpstreamTemplateResponse) *string { return v.CategoryPattern }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the matching pattern for event names. If not set, it matches any event.
 // There are 3 kind of patterns supported:
-//  1. "*", it to matches any event name
-//  2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect"
-//  3. The single event name, for example, "connect", it matches "connect"
+//  1. "*", it to matches any event name.
+//  2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect".
+//  3. The single event name, for example, "connect", it matches "connect".
 func (o UpstreamTemplateResponseOutput) EventPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpstreamTemplateResponse) *string { return v.EventPattern }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the matching pattern for hub names. If not set, it matches any hub.
 // There are 3 kind of patterns supported:
-//  1. "*", it to matches any hub name
-//  2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2"
-//  3. The single hub name, for example, "hub1", it matches "hub1"
+//  1. "*", it to matches any hub name.
+//  2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2".
+//  3. The single hub name, for example, "hub1", it matches "hub1".
 func (o UpstreamTemplateResponseOutput) HubPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpstreamTemplateResponse) *string { return v.HubPattern }).(pulumi.StringPtrOutput)
 }
@@ -2648,7 +4869,76 @@ func (o UpstreamTemplateResponseArrayOutput) Index(i pulumi.IntInput) UpstreamTe
 	}).(UpstreamTemplateResponseOutput)
 }
 
+// Properties of user assigned identity.
+type UserAssignedIdentityPropertyResponse struct {
+	// Get the client id for the user assigned identity
+	ClientId string `pulumi:"clientId"`
+	// Get the principal id for the user assigned identity
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// Properties of user assigned identity.
+type UserAssignedIdentityPropertyResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityPropertyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityPropertyResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityPropertyResponseOutput) ToUserAssignedIdentityPropertyResponseOutput() UserAssignedIdentityPropertyResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityPropertyResponseOutput) ToUserAssignedIdentityPropertyResponseOutputWithContext(ctx context.Context) UserAssignedIdentityPropertyResponseOutput {
+	return o
+}
+
+// Get the client id for the user assigned identity
+func (o UserAssignedIdentityPropertyResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityPropertyResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Get the principal id for the user assigned identity
+func (o UserAssignedIdentityPropertyResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityPropertyResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityPropertyResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityPropertyResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityPropertyResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityPropertyResponseMapOutput) ToUserAssignedIdentityPropertyResponseMapOutput() UserAssignedIdentityPropertyResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityPropertyResponseMapOutput) ToUserAssignedIdentityPropertyResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityPropertyResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityPropertyResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityPropertyResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityPropertyResponse {
+		return vs[0].(map[string]UserAssignedIdentityPropertyResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityPropertyResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(LiveTraceCategoryOutput{})
+	pulumi.RegisterOutputType(LiveTraceCategoryArrayOutput{})
+	pulumi.RegisterOutputType(LiveTraceCategoryResponseOutput{})
+	pulumi.RegisterOutputType(LiveTraceCategoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(LiveTraceConfigurationOutput{})
+	pulumi.RegisterOutputType(LiveTraceConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(LiveTraceConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(LiveTraceConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentitySettingsOutput{})
+	pulumi.RegisterOutputType(ManagedIdentitySettingsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentitySettingsResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIdentitySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkACLOutput{})
 	pulumi.RegisterOutputType(NetworkACLPtrOutput{})
 	pulumi.RegisterOutputType(NetworkACLResponseOutput{})
@@ -2667,16 +4957,30 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(ResourceLogCategoryOutput{})
+	pulumi.RegisterOutputType(ResourceLogCategoryArrayOutput{})
+	pulumi.RegisterOutputType(ResourceLogCategoryResponseOutput{})
+	pulumi.RegisterOutputType(ResourceLogCategoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResourceLogConfigurationOutput{})
+	pulumi.RegisterOutputType(ResourceLogConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ResourceLogConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ResourceLogConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ResourceSkuOutput{})
 	pulumi.RegisterOutputType(ResourceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServerlessSettingsOutput{})
+	pulumi.RegisterOutputType(ServerlessSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ServerlessSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ServerlessSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServerlessUpstreamSettingsOutput{})
 	pulumi.RegisterOutputType(ServerlessUpstreamSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServerlessUpstreamSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ServerlessUpstreamSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseOutput{})
+	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(SignalRCorsSettingsOutput{})
 	pulumi.RegisterOutputType(SignalRCorsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SignalRCorsSettingsResponseOutput{})
@@ -2689,9 +4993,19 @@ func init() {
 	pulumi.RegisterOutputType(SignalRNetworkACLsPtrOutput{})
 	pulumi.RegisterOutputType(SignalRNetworkACLsResponseOutput{})
 	pulumi.RegisterOutputType(SignalRNetworkACLsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SignalRTlsSettingsOutput{})
+	pulumi.RegisterOutputType(SignalRTlsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SignalRTlsSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SignalRTlsSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UpstreamAuthSettingsOutput{})
+	pulumi.RegisterOutputType(UpstreamAuthSettingsPtrOutput{})
+	pulumi.RegisterOutputType(UpstreamAuthSettingsResponseOutput{})
+	pulumi.RegisterOutputType(UpstreamAuthSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(UpstreamTemplateOutput{})
 	pulumi.RegisterOutputType(UpstreamTemplateArrayOutput{})
 	pulumi.RegisterOutputType(UpstreamTemplateResponseOutput{})
 	pulumi.RegisterOutputType(UpstreamTemplateResponseArrayOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityPropertyResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityPropertyResponseMapOutput{})
 }

@@ -122,21 +122,21 @@ func (val *LookupVirtualMachineResult) Defaults() *LookupVirtualMachineResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllowClaim) {
+	if tmp.AllowClaim == nil {
 		allowClaim_ := false
 		tmp.AllowClaim = &allowClaim_
 	}
 	tmp.ApplicableSchedule = *tmp.ApplicableSchedule.Defaults()
 
-	if isZero(tmp.DisallowPublicIpAddress) {
+	if tmp.DisallowPublicIpAddress == nil {
 		disallowPublicIpAddress_ := false
 		tmp.DisallowPublicIpAddress = &disallowPublicIpAddress_
 	}
-	if isZero(tmp.OwnerObjectId) {
+	if tmp.OwnerObjectId == nil {
 		ownerObjectId_ := "dynamicValue"
 		tmp.OwnerObjectId = &ownerObjectId_
 	}
-	if isZero(tmp.StorageType) {
+	if tmp.StorageType == nil {
 		storageType_ := "labStorageType"
 		tmp.StorageType = &storageType_
 	}

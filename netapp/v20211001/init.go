@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,18 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:netapp/v20211001:Account":
-		r = &Account{}
-	case "azure-native:netapp/v20211001:Backup":
-		r = &Backup{}
-	case "azure-native:netapp/v20211001:BackupPolicy":
-		r = &BackupPolicy{}
-	case "azure-native:netapp/v20211001:Pool":
-		r = &Pool{}
-	case "azure-native:netapp/v20211001:Snapshot":
-		r = &Snapshot{}
-	case "azure-native:netapp/v20211001:SnapshotPolicy":
-		r = &SnapshotPolicy{}
 	case "azure-native:netapp/v20211001:Subvolume":
 		r = &Subvolume{}
 	case "azure-native:netapp/v20211001:Volume":

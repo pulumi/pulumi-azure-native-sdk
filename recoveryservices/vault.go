@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource information, as returned by the resource provider.
-// API Version: 2021-01-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Vault struct {
 	pulumi.CustomResourceState
 
@@ -159,7 +160,7 @@ type vaultArgs struct {
 	Location *string `pulumi:"location"`
 	// Properties of the vault.
 	Properties *VaultProperties `pulumi:"properties"`
-	// The name of the resource group where the recovery services vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Identifies the unique system identifier for each Azure resource.
 	Sku *Sku `pulumi:"sku"`
@@ -177,7 +178,7 @@ type VaultArgs struct {
 	Location pulumi.StringPtrInput
 	// Properties of the vault.
 	Properties VaultPropertiesPtrInput
-	// The name of the resource group where the recovery services vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Identifies the unique system identifier for each Azure resource.
 	Sku SkuPtrInput

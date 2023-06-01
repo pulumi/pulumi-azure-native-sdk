@@ -11,7 +11,7 @@ import (
 )
 
 // Get the specified network security rule.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupSecurityRule(ctx *pulumi.Context, args *LookupSecurityRuleArgs, opts ...pulumi.InvokeOption) (*LookupSecurityRuleResult, error) {
 	var rv LookupSecurityRuleResult
 	err := ctx.Invoke("azure-native:network:getSecurityRule", args, &rv, opts...)
@@ -55,7 +55,7 @@ type LookupSecurityRuleResult struct {
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
 	// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-	Priority *int `pulumi:"priority"`
+	Priority int `pulumi:"priority"`
 	// Network protocol this rule applies to.
 	Protocol string `pulumi:"protocol"`
 	// The provisioning state of the security rule resource.
@@ -173,8 +173,8 @@ func (o LookupSecurityRuleResultOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-func (o LookupSecurityRuleResultOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupSecurityRuleResult) *int { return v.Priority }).(pulumi.IntPtrOutput)
+func (o LookupSecurityRuleResultOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSecurityRuleResult) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 // Network protocol this rule applies to.

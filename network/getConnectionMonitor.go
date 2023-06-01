@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a connection monitor by name.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupConnectionMonitor(ctx *pulumi.Context, args *LookupConnectionMonitorArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorResult, error) {
 	var rv LookupConnectionMonitorResult
 	err := ctx.Invoke("azure-native:network:getConnectionMonitor", args, &rv, opts...)
@@ -78,11 +78,11 @@ func (val *LookupConnectionMonitorResult) Defaults() *LookupConnectionMonitorRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoStart) {
+	if tmp.AutoStart == nil {
 		autoStart_ := true
 		tmp.AutoStart = &autoStart_
 	}
-	if isZero(tmp.MonitoringIntervalInSeconds) {
+	if tmp.MonitoringIntervalInSeconds == nil {
 		monitoringIntervalInSeconds_ := 60
 		tmp.MonitoringIntervalInSeconds = &monitoringIntervalInSeconds_
 	}

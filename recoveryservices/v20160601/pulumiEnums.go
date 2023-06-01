@@ -33,14 +33,6 @@ const (
 	MonthOfYearDecember  = MonthOfYear("December")
 )
 
-// The identity type.
-type ResourceIdentityType string
-
-const (
-	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
-)
-
 // The retention duration type of the retention policy.
 type RetentionDurationType string
 
@@ -68,14 +60,6 @@ const (
 	ScheduleRunTypeInvalid = ScheduleRunType("Invalid")
 	ScheduleRunTypeDaily   = ScheduleRunType("Daily")
 	ScheduleRunTypeWeekly  = ScheduleRunType("Weekly")
-)
-
-// The Sku name.
-type SkuName string
-
-const (
-	SkuNameStandard = SkuName("Standard")
-	SkuNameRS0      = SkuName("RS0")
 )
 
 type WeekOfMonth string

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // LoadBalancer resource
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
@@ -189,6 +187,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:LoadBalancer"),
 		},
 	})
 	opts = append(opts, aliases)

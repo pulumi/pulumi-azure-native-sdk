@@ -11,8 +11,6 @@ import (
 )
 
 // Represents a web app
-//
-// Deprecated: Version 2015-08-01 will be removed in v2 of the provider.
 func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.InvokeOption) (*LookupSiteResult, error) {
 	var rv LookupSiteResult
 	err := ctx.Invoke("azure-native:web/v20150801:getSite", args, &rv, opts...)

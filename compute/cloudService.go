@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes the cloud service.
-// API Version: 2021-03-01.
+// API Version: 2022-09-04.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type CloudService struct {
 	pulumi.CustomResourceState
 
@@ -22,10 +23,14 @@ type CloudService struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cloud service properties
 	Properties CloudServicePropertiesResponseOutput `pulumi:"properties"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponsePtrOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewCloudService registers a new resource with the given unique name, arguments, and options.
@@ -95,6 +100,8 @@ type cloudServiceArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
+	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a CloudService resource.
@@ -109,6 +116,8 @@ type CloudServiceArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
+	Zones pulumi.StringArrayInput
 }
 
 func (CloudServiceArgs) ElementType() reflect.Type {
@@ -163,6 +172,11 @@ func (o CloudServiceOutput) Properties() CloudServicePropertiesResponseOutput {
 	return o.ApplyT(func(v *CloudService) CloudServicePropertiesResponseOutput { return v.Properties }).(CloudServicePropertiesResponseOutput)
 }
 
+// The system meta data relating to this resource.
+func (o CloudServiceOutput) SystemData() SystemDataResponsePtrOutput {
+	return o.ApplyT(func(v *CloudService) SystemDataResponsePtrOutput { return v.SystemData }).(SystemDataResponsePtrOutput)
+}
+
 // Resource tags.
 func (o CloudServiceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CloudService) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -171,6 +185,11 @@ func (o CloudServiceOutput) Tags() pulumi.StringMapOutput {
 // Resource type.
 func (o CloudServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudService) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
+func (o CloudServiceOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudService) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

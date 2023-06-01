@@ -11,7 +11,7 @@ import (
 )
 
 // Get the specified private endpoint connection associated with the device update account.
-// API Version: 2020-03-01-preview.
+// API Version: 2022-10-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:deviceupdate:getPrivateEndpointConnection", args, &rv, opts...)

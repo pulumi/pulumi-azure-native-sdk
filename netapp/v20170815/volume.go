@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Volume resource
-//
-// Deprecated: Version 2017-08-15 will be removed in v2 of the provider.
 type Volume struct {
 	pulumi.CustomResourceState
 
@@ -60,10 +58,10 @@ func NewVolume(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ServiceLevel) {
+	if args.ServiceLevel == nil {
 		args.ServiceLevel = pulumi.String("Premium")
 	}
-	if isZero(args.UsageThreshold) {
+	if args.UsageThreshold == nil {
 		args.UsageThreshold = pulumi.Float64Ptr(107374182400.0)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

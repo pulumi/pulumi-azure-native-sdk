@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Virtual Router Peering.
-// API Version: 2022-01-01.
+// API Version: 2022-09-01.
 func LookupVirtualRouterPeering(ctx *pulumi.Context, args *LookupVirtualRouterPeeringArgs, opts ...pulumi.InvokeOption) (*LookupVirtualRouterPeeringResult, error) {
 	var rv LookupVirtualRouterPeeringResult
 	err := ctx.Invoke("azure-native:network:getVirtualRouterPeering", args, &rv, opts...)

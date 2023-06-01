@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a connected cluster.
-//
-// Deprecated: Version 2020-01-01-preview will be removed in v2 of the provider.
 type ConnectedCluster struct {
 	pulumi.CustomResourceState
 

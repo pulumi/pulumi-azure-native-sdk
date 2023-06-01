@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,8 +41,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ADLSGen2StorageAccountDataSet{}
 	case "azure-native:datashare/v20201001preview:ADLSGen2StorageAccountDataSetMapping":
 		r = &ADLSGen2StorageAccountDataSetMapping{}
-	case "azure-native:datashare/v20201001preview:Account":
-		r = &Account{}
 	case "azure-native:datashare/v20201001preview:BlobContainerDataSet":
 		r = &BlobContainerDataSet{}
 	case "azure-native:datashare/v20201001preview:BlobContainerDataSetMapping":
@@ -59,8 +57,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BlobStorageAccountDataSet{}
 	case "azure-native:datashare/v20201001preview:BlobStorageAccountDataSetMapping":
 		r = &BlobStorageAccountDataSetMapping{}
-	case "azure-native:datashare/v20201001preview:Invitation":
-		r = &Invitation{}
 	case "azure-native:datashare/v20201001preview:KustoClusterDataSet":
 		r = &KustoClusterDataSet{}
 	case "azure-native:datashare/v20201001preview:KustoClusterDataSetMapping":
@@ -73,10 +69,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScheduledSynchronizationSetting{}
 	case "azure-native:datashare/v20201001preview:ScheduledTrigger":
 		r = &ScheduledTrigger{}
-	case "azure-native:datashare/v20201001preview:Share":
-		r = &Share{}
-	case "azure-native:datashare/v20201001preview:ShareSubscription":
-		r = &ShareSubscription{}
 	case "azure-native:datashare/v20201001preview:SqlDBTableDataSet":
 		r = &SqlDBTableDataSet{}
 	case "azure-native:datashare/v20201001preview:SqlDBTableDataSetMapping":

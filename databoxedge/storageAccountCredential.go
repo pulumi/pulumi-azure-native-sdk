@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The storage account credential.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type StorageAccountCredential struct {
 	pulumi.CustomResourceState
 
@@ -32,7 +33,7 @@ type StorageAccountCredential struct {
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
 	// Id of the storage account.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
-	// StorageAccountCredential object
+	// Metadata pertaining to creation and last modification of StorageAccountCredential
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -269,7 +270,7 @@ func (o StorageAccountCredentialOutput) StorageAccountId() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *StorageAccountCredential) pulumi.StringPtrOutput { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// StorageAccountCredential object
+// Metadata pertaining to creation and last modification of StorageAccountCredential
 func (o StorageAccountCredentialOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *StorageAccountCredential) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

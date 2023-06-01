@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +56,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity/v20211006preview:Endpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridconnectivity/v20230315:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)

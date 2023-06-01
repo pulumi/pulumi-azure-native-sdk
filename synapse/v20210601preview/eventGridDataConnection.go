@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,9 +79,6 @@ func NewEventGridDataConnection(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("EventGrid")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:synapse:EventGridDataConnection"),
-		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210401preview:EventGridDataConnection"),
 		},

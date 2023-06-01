@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a policy fragment.
-// API Version: 2021-12-01-preview.
+// API Version: 2022-08-01.
 func LookupPolicyFragment(ctx *pulumi.Context, args *LookupPolicyFragmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyFragmentResult, error) {
 	var rv LookupPolicyFragmentResult
 	err := ctx.Invoke("azure-native:apimanagement:getPolicyFragment", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupPolicyFragmentArgs struct {
 	Format *string `pulumi:"format"`
 	// A resource identifier.
 	Id string `pulumi:"id"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -54,7 +54,7 @@ func (val *LookupPolicyFragmentResult) Defaults() *LookupPolicyFragmentResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Format) {
+	if tmp.Format == nil {
 		format_ := "xml"
 		tmp.Format = &format_
 	}
@@ -79,7 +79,7 @@ type LookupPolicyFragmentOutputArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// A resource identifier.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Trigger details.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type FileEventTrigger struct {
 	pulumi.CustomResourceState
 
@@ -27,7 +28,7 @@ type FileEventTrigger struct {
 	SinkInfo RoleSinkInfoResponseOutput `pulumi:"sinkInfo"`
 	// File event source details.
 	SourceInfo FileSourceInfoResponseOutput `pulumi:"sourceInfo"`
-	// Trigger in DataBoxEdge Resource
+	// Metadata pertaining to creation and last modification of Trigger
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -235,7 +236,7 @@ func (o FileEventTriggerOutput) SourceInfo() FileSourceInfoResponseOutput {
 	return o.ApplyT(func(v *FileEventTrigger) FileSourceInfoResponseOutput { return v.SourceInfo }).(FileSourceInfoResponseOutput)
 }
 
-// Trigger in DataBoxEdge Resource
+// Metadata pertaining to creation and last modification of Trigger
 func (o FileEventTriggerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *FileEventTrigger) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

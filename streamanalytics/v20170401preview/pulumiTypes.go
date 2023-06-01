@@ -1445,112 +1445,112 @@ func (o ExternalResponsePtrOutput) StorageAccount() StorageAccountResponsePtrOut
 }
 
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
-type FunctionType struct {
+type Function struct {
 	// Resource name
 	Name *string `pulumi:"name"`
 	// The properties that are associated with a function.
 	Properties interface{} `pulumi:"properties"`
 }
 
-// FunctionTypeInput is an input type that accepts FunctionTypeArgs and FunctionTypeOutput values.
-// You can construct a concrete instance of `FunctionTypeInput` via:
+// FunctionInput is an input type that accepts FunctionArgs and FunctionOutput values.
+// You can construct a concrete instance of `FunctionInput` via:
 //
-//	FunctionTypeArgs{...}
-type FunctionTypeInput interface {
+//	FunctionArgs{...}
+type FunctionInput interface {
 	pulumi.Input
 
-	ToFunctionTypeOutput() FunctionTypeOutput
-	ToFunctionTypeOutputWithContext(context.Context) FunctionTypeOutput
+	ToFunctionOutput() FunctionOutput
+	ToFunctionOutputWithContext(context.Context) FunctionOutput
 }
 
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
-type FunctionTypeArgs struct {
+type FunctionArgs struct {
 	// Resource name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The properties that are associated with a function.
 	Properties pulumi.Input `pulumi:"properties"`
 }
 
-func (FunctionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionType)(nil)).Elem()
+func (FunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Function)(nil)).Elem()
 }
 
-func (i FunctionTypeArgs) ToFunctionTypeOutput() FunctionTypeOutput {
-	return i.ToFunctionTypeOutputWithContext(context.Background())
+func (i FunctionArgs) ToFunctionOutput() FunctionOutput {
+	return i.ToFunctionOutputWithContext(context.Background())
 }
 
-func (i FunctionTypeArgs) ToFunctionTypeOutputWithContext(ctx context.Context) FunctionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionTypeOutput)
+func (i FunctionArgs) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionOutput)
 }
 
-// FunctionTypeArrayInput is an input type that accepts FunctionTypeArray and FunctionTypeArrayOutput values.
-// You can construct a concrete instance of `FunctionTypeArrayInput` via:
+// FunctionArrayInput is an input type that accepts FunctionArray and FunctionArrayOutput values.
+// You can construct a concrete instance of `FunctionArrayInput` via:
 //
-//	FunctionTypeArray{ FunctionTypeArgs{...} }
-type FunctionTypeArrayInput interface {
+//	FunctionArray{ FunctionArgs{...} }
+type FunctionArrayInput interface {
 	pulumi.Input
 
-	ToFunctionTypeArrayOutput() FunctionTypeArrayOutput
-	ToFunctionTypeArrayOutputWithContext(context.Context) FunctionTypeArrayOutput
+	ToFunctionArrayOutput() FunctionArrayOutput
+	ToFunctionArrayOutputWithContext(context.Context) FunctionArrayOutput
 }
 
-type FunctionTypeArray []FunctionTypeInput
+type FunctionArray []FunctionInput
 
-func (FunctionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FunctionType)(nil)).Elem()
+func (FunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Function)(nil)).Elem()
 }
 
-func (i FunctionTypeArray) ToFunctionTypeArrayOutput() FunctionTypeArrayOutput {
-	return i.ToFunctionTypeArrayOutputWithContext(context.Background())
+func (i FunctionArray) ToFunctionArrayOutput() FunctionArrayOutput {
+	return i.ToFunctionArrayOutputWithContext(context.Background())
 }
 
-func (i FunctionTypeArray) ToFunctionTypeArrayOutputWithContext(ctx context.Context) FunctionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionTypeArrayOutput)
+func (i FunctionArray) ToFunctionArrayOutputWithContext(ctx context.Context) FunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionArrayOutput)
 }
 
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
-type FunctionTypeOutput struct{ *pulumi.OutputState }
+type FunctionOutput struct{ *pulumi.OutputState }
 
-func (FunctionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionType)(nil)).Elem()
+func (FunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Function)(nil)).Elem()
 }
 
-func (o FunctionTypeOutput) ToFunctionTypeOutput() FunctionTypeOutput {
+func (o FunctionOutput) ToFunctionOutput() FunctionOutput {
 	return o
 }
 
-func (o FunctionTypeOutput) ToFunctionTypeOutputWithContext(ctx context.Context) FunctionTypeOutput {
+func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
 	return o
 }
 
 // Resource name
-func (o FunctionTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o FunctionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Function) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The properties that are associated with a function.
-func (o FunctionTypeOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v FunctionType) interface{} { return v.Properties }).(pulumi.AnyOutput)
+func (o FunctionOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v Function) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
-type FunctionTypeArrayOutput struct{ *pulumi.OutputState }
+type FunctionArrayOutput struct{ *pulumi.OutputState }
 
-func (FunctionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FunctionType)(nil)).Elem()
+func (FunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Function)(nil)).Elem()
 }
 
-func (o FunctionTypeArrayOutput) ToFunctionTypeArrayOutput() FunctionTypeArrayOutput {
+func (o FunctionArrayOutput) ToFunctionArrayOutput() FunctionArrayOutput {
 	return o
 }
 
-func (o FunctionTypeArrayOutput) ToFunctionTypeArrayOutputWithContext(ctx context.Context) FunctionTypeArrayOutput {
+func (o FunctionArrayOutput) ToFunctionArrayOutputWithContext(ctx context.Context) FunctionArrayOutput {
 	return o
 }
 
-func (o FunctionTypeArrayOutput) Index(i pulumi.IntInput) FunctionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionType {
-		return vs[0].([]FunctionType)[vs[1].(int)]
-	}).(FunctionTypeOutput)
+func (o FunctionArrayOutput) Index(i pulumi.IntInput) FunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Function {
+		return vs[0].([]Function)[vs[1].(int)]
+	}).(FunctionOutput)
 }
 
 // Describes one input parameter of a function.
@@ -1900,112 +1900,112 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
-type InputType struct {
+type Input struct {
 	// Resource name
 	Name *string `pulumi:"name"`
 	// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
 	Properties interface{} `pulumi:"properties"`
 }
 
-// InputTypeInput is an input type that accepts InputTypeArgs and InputTypeOutput values.
-// You can construct a concrete instance of `InputTypeInput` via:
+// InputInput is an input type that accepts InputArgs and InputOutput values.
+// You can construct a concrete instance of `InputInput` via:
 //
-//	InputTypeArgs{...}
-type InputTypeInput interface {
+//	InputArgs{...}
+type InputInput interface {
 	pulumi.Input
 
-	ToInputTypeOutput() InputTypeOutput
-	ToInputTypeOutputWithContext(context.Context) InputTypeOutput
+	ToInputOutput() InputOutput
+	ToInputOutputWithContext(context.Context) InputOutput
 }
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
-type InputTypeArgs struct {
+type InputArgs struct {
 	// Resource name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
 	Properties pulumi.Input `pulumi:"properties"`
 }
 
-func (InputTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InputType)(nil)).Elem()
+func (InputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Input)(nil)).Elem()
 }
 
-func (i InputTypeArgs) ToInputTypeOutput() InputTypeOutput {
-	return i.ToInputTypeOutputWithContext(context.Background())
+func (i InputArgs) ToInputOutput() InputOutput {
+	return i.ToInputOutputWithContext(context.Background())
 }
 
-func (i InputTypeArgs) ToInputTypeOutputWithContext(ctx context.Context) InputTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InputTypeOutput)
+func (i InputArgs) ToInputOutputWithContext(ctx context.Context) InputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InputOutput)
 }
 
-// InputTypeArrayInput is an input type that accepts InputTypeArray and InputTypeArrayOutput values.
-// You can construct a concrete instance of `InputTypeArrayInput` via:
+// InputArrayInput is an input type that accepts InputArray and InputArrayOutput values.
+// You can construct a concrete instance of `InputArrayInput` via:
 //
-//	InputTypeArray{ InputTypeArgs{...} }
-type InputTypeArrayInput interface {
+//	InputArray{ InputArgs{...} }
+type InputArrayInput interface {
 	pulumi.Input
 
-	ToInputTypeArrayOutput() InputTypeArrayOutput
-	ToInputTypeArrayOutputWithContext(context.Context) InputTypeArrayOutput
+	ToInputArrayOutput() InputArrayOutput
+	ToInputArrayOutputWithContext(context.Context) InputArrayOutput
 }
 
-type InputTypeArray []InputTypeInput
+type InputArray []InputInput
 
-func (InputTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InputType)(nil)).Elem()
+func (InputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Input)(nil)).Elem()
 }
 
-func (i InputTypeArray) ToInputTypeArrayOutput() InputTypeArrayOutput {
-	return i.ToInputTypeArrayOutputWithContext(context.Background())
+func (i InputArray) ToInputArrayOutput() InputArrayOutput {
+	return i.ToInputArrayOutputWithContext(context.Background())
 }
 
-func (i InputTypeArray) ToInputTypeArrayOutputWithContext(ctx context.Context) InputTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InputTypeArrayOutput)
+func (i InputArray) ToInputArrayOutputWithContext(ctx context.Context) InputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InputArrayOutput)
 }
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
-type InputTypeOutput struct{ *pulumi.OutputState }
+type InputOutput struct{ *pulumi.OutputState }
 
-func (InputTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InputType)(nil)).Elem()
+func (InputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Input)(nil)).Elem()
 }
 
-func (o InputTypeOutput) ToInputTypeOutput() InputTypeOutput {
+func (o InputOutput) ToInputOutput() InputOutput {
 	return o
 }
 
-func (o InputTypeOutput) ToInputTypeOutputWithContext(ctx context.Context) InputTypeOutput {
+func (o InputOutput) ToInputOutputWithContext(ctx context.Context) InputOutput {
 	return o
 }
 
 // Resource name
-func (o InputTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InputType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o InputOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Input) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
-func (o InputTypeOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v InputType) interface{} { return v.Properties }).(pulumi.AnyOutput)
+func (o InputOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v Input) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
-type InputTypeArrayOutput struct{ *pulumi.OutputState }
+type InputArrayOutput struct{ *pulumi.OutputState }
 
-func (InputTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InputType)(nil)).Elem()
+func (InputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Input)(nil)).Elem()
 }
 
-func (o InputTypeArrayOutput) ToInputTypeArrayOutput() InputTypeArrayOutput {
+func (o InputArrayOutput) ToInputArrayOutput() InputArrayOutput {
 	return o
 }
 
-func (o InputTypeArrayOutput) ToInputTypeArrayOutputWithContext(ctx context.Context) InputTypeArrayOutput {
+func (o InputArrayOutput) ToInputArrayOutputWithContext(ctx context.Context) InputArrayOutput {
 	return o
 }
 
-func (o InputTypeArrayOutput) Index(i pulumi.IntInput) InputTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InputType {
-		return vs[0].([]InputType)[vs[1].(int)]
-	}).(InputTypeOutput)
+func (o InputArrayOutput) Index(i pulumi.IntInput) InputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Input {
+		return vs[0].([]Input)[vs[1].(int)]
+	}).(InputOutput)
 }
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
@@ -2422,7 +2422,7 @@ type JsonSerializationResponse struct {
 }
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
-type OutputType struct {
+type Output struct {
 	// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
 	Datasource interface{} `pulumi:"datasource"`
 	// Resource name
@@ -2434,19 +2434,19 @@ type OutputType struct {
 	TimeWindow *string `pulumi:"timeWindow"`
 }
 
-// OutputTypeInput is an input type that accepts OutputTypeArgs and OutputTypeOutput values.
-// You can construct a concrete instance of `OutputTypeInput` via:
+// OutputInput is an input type that accepts OutputArgs and OutputOutput values.
+// You can construct a concrete instance of `OutputInput` via:
 //
-//	OutputTypeArgs{...}
-type OutputTypeInput interface {
+//	OutputArgs{...}
+type OutputInput interface {
 	pulumi.Input
 
-	ToOutputTypeOutput() OutputTypeOutput
-	ToOutputTypeOutputWithContext(context.Context) OutputTypeOutput
+	ToOutputOutput() OutputOutput
+	ToOutputOutputWithContext(context.Context) OutputOutput
 }
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
-type OutputTypeArgs struct {
+type OutputArgs struct {
 	// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
 	Datasource pulumi.Input `pulumi:"datasource"`
 	// Resource name
@@ -2458,100 +2458,100 @@ type OutputTypeArgs struct {
 	TimeWindow pulumi.StringPtrInput `pulumi:"timeWindow"`
 }
 
-func (OutputTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutputType)(nil)).Elem()
+func (OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Output)(nil)).Elem()
 }
 
-func (i OutputTypeArgs) ToOutputTypeOutput() OutputTypeOutput {
-	return i.ToOutputTypeOutputWithContext(context.Background())
+func (i OutputArgs) ToOutputOutput() OutputOutput {
+	return i.ToOutputOutputWithContext(context.Background())
 }
 
-func (i OutputTypeArgs) ToOutputTypeOutputWithContext(ctx context.Context) OutputTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputTypeOutput)
+func (i OutputArgs) ToOutputOutputWithContext(ctx context.Context) OutputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputOutput)
 }
 
-// OutputTypeArrayInput is an input type that accepts OutputTypeArray and OutputTypeArrayOutput values.
-// You can construct a concrete instance of `OutputTypeArrayInput` via:
+// OutputArrayInput is an input type that accepts OutputArray and OutputArrayOutput values.
+// You can construct a concrete instance of `OutputArrayInput` via:
 //
-//	OutputTypeArray{ OutputTypeArgs{...} }
-type OutputTypeArrayInput interface {
+//	OutputArray{ OutputArgs{...} }
+type OutputArrayInput interface {
 	pulumi.Input
 
-	ToOutputTypeArrayOutput() OutputTypeArrayOutput
-	ToOutputTypeArrayOutputWithContext(context.Context) OutputTypeArrayOutput
+	ToOutputArrayOutput() OutputArrayOutput
+	ToOutputArrayOutputWithContext(context.Context) OutputArrayOutput
 }
 
-type OutputTypeArray []OutputTypeInput
+type OutputArray []OutputInput
 
-func (OutputTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OutputType)(nil)).Elem()
+func (OutputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Output)(nil)).Elem()
 }
 
-func (i OutputTypeArray) ToOutputTypeArrayOutput() OutputTypeArrayOutput {
-	return i.ToOutputTypeArrayOutputWithContext(context.Background())
+func (i OutputArray) ToOutputArrayOutput() OutputArrayOutput {
+	return i.ToOutputArrayOutputWithContext(context.Background())
 }
 
-func (i OutputTypeArray) ToOutputTypeArrayOutputWithContext(ctx context.Context) OutputTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputTypeArrayOutput)
+func (i OutputArray) ToOutputArrayOutputWithContext(ctx context.Context) OutputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputArrayOutput)
 }
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
-type OutputTypeOutput struct{ *pulumi.OutputState }
+type OutputOutput struct{ *pulumi.OutputState }
 
-func (OutputTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutputType)(nil)).Elem()
+func (OutputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Output)(nil)).Elem()
 }
 
-func (o OutputTypeOutput) ToOutputTypeOutput() OutputTypeOutput {
+func (o OutputOutput) ToOutputOutput() OutputOutput {
 	return o
 }
 
-func (o OutputTypeOutput) ToOutputTypeOutputWithContext(ctx context.Context) OutputTypeOutput {
+func (o OutputOutput) ToOutputOutputWithContext(ctx context.Context) OutputOutput {
 	return o
 }
 
 // Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
-func (o OutputTypeOutput) Datasource() pulumi.AnyOutput {
-	return o.ApplyT(func(v OutputType) interface{} { return v.Datasource }).(pulumi.AnyOutput)
+func (o OutputOutput) Datasource() pulumi.AnyOutput {
+	return o.ApplyT(func(v Output) interface{} { return v.Datasource }).(pulumi.AnyOutput)
 }
 
 // Resource name
-func (o OutputTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OutputType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o OutputOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Output) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
-func (o OutputTypeOutput) Serialization() pulumi.AnyOutput {
-	return o.ApplyT(func(v OutputType) interface{} { return v.Serialization }).(pulumi.AnyOutput)
+func (o OutputOutput) Serialization() pulumi.AnyOutput {
+	return o.ApplyT(func(v Output) interface{} { return v.Serialization }).(pulumi.AnyOutput)
 }
 
 // The size window to constrain a Stream Analytics output to.
-func (o OutputTypeOutput) SizeWindow() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OutputType) *int { return v.SizeWindow }).(pulumi.IntPtrOutput)
+func (o OutputOutput) SizeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Output) *int { return v.SizeWindow }).(pulumi.IntPtrOutput)
 }
 
-func (o OutputTypeOutput) TimeWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OutputType) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
+func (o OutputOutput) TimeWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Output) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
 }
 
-type OutputTypeArrayOutput struct{ *pulumi.OutputState }
+type OutputArrayOutput struct{ *pulumi.OutputState }
 
-func (OutputTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OutputType)(nil)).Elem()
+func (OutputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Output)(nil)).Elem()
 }
 
-func (o OutputTypeArrayOutput) ToOutputTypeArrayOutput() OutputTypeArrayOutput {
+func (o OutputArrayOutput) ToOutputArrayOutput() OutputArrayOutput {
 	return o
 }
 
-func (o OutputTypeArrayOutput) ToOutputTypeArrayOutputWithContext(ctx context.Context) OutputTypeArrayOutput {
+func (o OutputArrayOutput) ToOutputArrayOutputWithContext(ctx context.Context) OutputArrayOutput {
 	return o
 }
 
-func (o OutputTypeArrayOutput) Index(i pulumi.IntInput) OutputTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OutputType {
-		return vs[0].([]OutputType)[vs[1].(int)]
-	}).(OutputTypeOutput)
+func (o OutputArrayOutput) Index(i pulumi.IntInput) OutputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Output {
+		return vs[0].([]Output)[vs[1].(int)]
+	}).(OutputOutput)
 }
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
@@ -3721,24 +3721,24 @@ func init() {
 	pulumi.RegisterOutputType(ExternalPtrOutput{})
 	pulumi.RegisterOutputType(ExternalResponseOutput{})
 	pulumi.RegisterOutputType(ExternalResponsePtrOutput{})
-	pulumi.RegisterOutputType(FunctionTypeOutput{})
-	pulumi.RegisterOutputType(FunctionTypeArrayOutput{})
+	pulumi.RegisterOutputType(FunctionOutput{})
+	pulumi.RegisterOutputType(FunctionArrayOutput{})
 	pulumi.RegisterOutputType(FunctionResponseOutput{})
 	pulumi.RegisterOutputType(FunctionResponseArrayOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(InputTypeOutput{})
-	pulumi.RegisterOutputType(InputTypeArrayOutput{})
+	pulumi.RegisterOutputType(InputOutput{})
+	pulumi.RegisterOutputType(InputArrayOutput{})
 	pulumi.RegisterOutputType(InputResponseOutput{})
 	pulumi.RegisterOutputType(InputResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStorageAccountOutput{})
 	pulumi.RegisterOutputType(JobStorageAccountPtrOutput{})
 	pulumi.RegisterOutputType(JobStorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(JobStorageAccountResponsePtrOutput{})
-	pulumi.RegisterOutputType(OutputTypeOutput{})
-	pulumi.RegisterOutputType(OutputTypeArrayOutput{})
+	pulumi.RegisterOutputType(OutputOutput{})
+	pulumi.RegisterOutputType(OutputArrayOutput{})
 	pulumi.RegisterOutputType(OutputResponseOutput{})
 	pulumi.RegisterOutputType(OutputResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageAccountOutput{})

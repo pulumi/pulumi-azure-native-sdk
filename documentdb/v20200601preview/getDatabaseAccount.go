@@ -11,8 +11,6 @@ import (
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB database account.
-//
-// Deprecated: Version 2020-06-01-preview will be removed in v2 of the provider.
 func LookupDatabaseAccount(ctx *pulumi.Context, args *LookupDatabaseAccountArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAccountResult, error) {
 	var rv LookupDatabaseAccountResult
 	err := ctx.Invoke("azure-native:documentdb/v20200601preview:getDatabaseAccount", args, &rv, opts...)
@@ -111,11 +109,11 @@ func (val *LookupDatabaseAccountResult) Defaults() *LookupDatabaseAccountResult 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CreateMode) {
+	if tmp.CreateMode == nil {
 		createMode_ := "Default"
 		tmp.CreateMode = &createMode_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "GlobalDocumentDB"
 		tmp.Kind = &kind_
 	}

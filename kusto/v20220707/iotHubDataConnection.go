@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,7 +74,7 @@ func NewIotHubDataConnection(ctx *pulumi.Context,
 	if args.SharedAccessPolicyName == nil {
 		return nil, errors.New("invalid value for required argument 'SharedAccessPolicyName'")
 	}
-	if isZero(args.DatabaseRouting) {
+	if args.DatabaseRouting == nil {
 		args.DatabaseRouting = pulumi.StringPtr("Single")
 	}
 	args.Kind = pulumi.String("IotHub")

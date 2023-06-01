@@ -11,8 +11,6 @@ import (
 )
 
 // Get the NetApp account
-//
-// Deprecated: Version 2019-07-01 will be removed in v2 of the provider.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:netapp/v20190701:getAccount", args, &rv, opts...)

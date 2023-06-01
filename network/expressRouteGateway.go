@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ExpressRoute gateway resource.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ExpressRouteGateway struct {
 	pulumi.CustomResourceState
 
+	// Configures this gateway to accept traffic from non Virtual WAN networks.
+	AllowNonVirtualWanTraffic pulumi.BoolPtrOutput `pulumi:"allowNonVirtualWanTraffic"`
 	// Configuration for auto scaling.
 	AutoScaleConfiguration ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput `pulumi:"autoScaleConfiguration"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -131,6 +134,9 @@ func NewExpressRouteGateway(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteGateway"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteGateway"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRouteGateway
@@ -165,8 +171,12 @@ func (ExpressRouteGatewayState) ElementType() reflect.Type {
 }
 
 type expressRouteGatewayArgs struct {
+	// Configures this gateway to accept traffic from non Virtual WAN networks.
+	AllowNonVirtualWanTraffic *bool `pulumi:"allowNonVirtualWanTraffic"`
 	// Configuration for auto scaling.
 	AutoScaleConfiguration *ExpressRouteGatewayPropertiesAutoScaleConfiguration `pulumi:"autoScaleConfiguration"`
+	// List of ExpressRoute connections to the ExpressRoute gateway.
+	ExpressRouteConnections []ExpressRouteConnectionType `pulumi:"expressRouteConnections"`
 	// The name of the ExpressRoute gateway.
 	ExpressRouteGatewayName *string `pulumi:"expressRouteGatewayName"`
 	// Resource ID.
@@ -183,8 +193,12 @@ type expressRouteGatewayArgs struct {
 
 // The set of arguments for constructing a ExpressRouteGateway resource.
 type ExpressRouteGatewayArgs struct {
+	// Configures this gateway to accept traffic from non Virtual WAN networks.
+	AllowNonVirtualWanTraffic pulumi.BoolPtrInput
 	// Configuration for auto scaling.
 	AutoScaleConfiguration ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrInput
+	// List of ExpressRoute connections to the ExpressRoute gateway.
+	ExpressRouteConnections ExpressRouteConnectionTypeArrayInput
 	// The name of the ExpressRoute gateway.
 	ExpressRouteGatewayName pulumi.StringPtrInput
 	// Resource ID.
@@ -234,6 +248,11 @@ func (o ExpressRouteGatewayOutput) ToExpressRouteGatewayOutput() ExpressRouteGat
 
 func (o ExpressRouteGatewayOutput) ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput {
 	return o
+}
+
+// Configures this gateway to accept traffic from non Virtual WAN networks.
+func (o ExpressRouteGatewayOutput) AllowNonVirtualWanTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExpressRouteGateway) pulumi.BoolPtrOutput { return v.AllowNonVirtualWanTraffic }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration for auto scaling.

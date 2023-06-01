@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Object model for the Azure PowerShell script.
 // API Version: 2020-10-01.
+// Previous API Version: 2020-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AzurePowerShellScript struct {
 	pulumi.CustomResourceState
 
@@ -82,11 +83,11 @@ func NewAzurePowerShellScript(ctx *pulumi.Context,
 	if args.RetentionInterval == nil {
 		return nil, errors.New("invalid value for required argument 'RetentionInterval'")
 	}
-	if isZero(args.CleanupPreference) {
+	if args.CleanupPreference == nil {
 		args.CleanupPreference = pulumi.StringPtr("Always")
 	}
 	args.Kind = pulumi.String("AzurePowerShell")
-	if isZero(args.Timeout) {
+	if args.Timeout == nil {
 		args.Timeout = pulumi.StringPtr("P1D")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

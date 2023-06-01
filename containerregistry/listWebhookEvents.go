@@ -11,7 +11,7 @@ import (
 )
 
 // Lists recent events for the specified webhook.
-// API Version: 2019-05-01.
+// API Version: 2022-12-01.
 func ListWebhookEvents(ctx *pulumi.Context, args *ListWebhookEventsArgs, opts ...pulumi.InvokeOption) (*ListWebhookEventsResult, error) {
 	var rv ListWebhookEventsResult
 	err := ctx.Invoke("azure-native:containerregistry:listWebhookEvents", args, &rv, opts...)
@@ -24,7 +24,7 @@ func ListWebhookEvents(ctx *pulumi.Context, args *ListWebhookEventsArgs, opts ..
 type ListWebhookEventsArgs struct {
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the webhook.
 	WebhookName string `pulumi:"webhookName"`
@@ -54,7 +54,7 @@ func ListWebhookEventsOutput(ctx *pulumi.Context, args ListWebhookEventsOutputAr
 type ListWebhookEventsOutputArgs struct {
 	// The name of the container registry.
 	RegistryName pulumi.StringInput `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the webhook.
 	WebhookName pulumi.StringInput `pulumi:"webhookName"`

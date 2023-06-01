@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,34 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:media/v20211101:AccountFilter":
-		r = &AccountFilter{}
-	case "azure-native:media/v20211101:Asset":
-		r = &Asset{}
-	case "azure-native:media/v20211101:AssetFilter":
-		r = &AssetFilter{}
-	case "azure-native:media/v20211101:ContentKeyPolicy":
-		r = &ContentKeyPolicy{}
-	case "azure-native:media/v20211101:Job":
-		r = &Job{}
-	case "azure-native:media/v20211101:LiveEvent":
-		r = &LiveEvent{}
-	case "azure-native:media/v20211101:LiveOutput":
-		r = &LiveOutput{}
-	case "azure-native:media/v20211101:MediaService":
-		r = &MediaService{}
-	case "azure-native:media/v20211101:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:media/v20211101:StreamingEndpoint":
-		r = &StreamingEndpoint{}
-	case "azure-native:media/v20211101:StreamingLocator":
-		r = &StreamingLocator{}
-	case "azure-native:media/v20211101:StreamingPolicy":
-		r = &StreamingPolicy{}
 	case "azure-native:media/v20211101:Track":
 		r = &Track{}
-	case "azure-native:media/v20211101:Transform":
-		r = &Transform{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

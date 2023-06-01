@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +65,12 @@ func NewDataVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:DataVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:DataVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:DataVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:DataVersion"),

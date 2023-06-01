@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -110,6 +110,12 @@ func NewCodelessUiDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:CodelessUiDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

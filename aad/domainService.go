@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Domain service.
-// API Version: 2021-03-01.
+// API Version: 2022-12-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DomainService struct {
 	pulumi.CustomResourceState
 
+	// Configuration diagnostics data containing latest execution from client.
+	ConfigDiagnostics ConfigDiagnosticsResponsePtrOutput `pulumi:"configDiagnostics"`
 	// Deployment Id
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
 	// Domain Configuration Type
@@ -46,8 +49,12 @@ type DomainService struct {
 	ResourceForestSettings ResourceForestSettingsResponsePtrOutput `pulumi:"resourceForestSettings"`
 	// Sku Type
 	Sku pulumi.StringPtrOutput `pulumi:"sku"`
+	// The unique sync application id of the Azure AD Domain Services deployment.
+	SyncApplicationId pulumi.StringOutput `pulumi:"syncApplicationId"`
 	// SyncOwner ReplicaSet Id
 	SyncOwner pulumi.StringOutput `pulumi:"syncOwner"`
+	// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
+	SyncScope pulumi.StringPtrOutput `pulumi:"syncScope"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
@@ -75,6 +82,9 @@ func NewDomainService(ctx *pulumi.Context,
 	}
 	if args.LdapsSettings != nil {
 		args.LdapsSettings = args.LdapsSettings.ToLdapsSettingsPtrOutput().ApplyT(func(v *LdapsSettings) *LdapsSettings { return v.Defaults() }).(LdapsSettingsPtrOutput)
+	}
+	if args.SyncScope == nil {
+		args.SyncScope = pulumi.StringPtr("All")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -132,6 +142,8 @@ func (DomainServiceState) ElementType() reflect.Type {
 }
 
 type domainServiceArgs struct {
+	// Configuration diagnostics data containing latest execution from client.
+	ConfigDiagnostics *ConfigDiagnostics `pulumi:"configDiagnostics"`
 	// Domain Configuration Type
 	DomainConfigurationType *string `pulumi:"domainConfigurationType"`
 	// The name of the Azure domain that the user would like to deploy Domain Services to.
@@ -156,12 +168,16 @@ type domainServiceArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Sku Type
 	Sku *string `pulumi:"sku"`
+	// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
+	SyncScope *string `pulumi:"syncScope"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DomainService resource.
 type DomainServiceArgs struct {
+	// Configuration diagnostics data containing latest execution from client.
+	ConfigDiagnostics ConfigDiagnosticsPtrInput
 	// Domain Configuration Type
 	DomainConfigurationType pulumi.StringPtrInput
 	// The name of the Azure domain that the user would like to deploy Domain Services to.
@@ -186,6 +202,8 @@ type DomainServiceArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Sku Type
 	Sku pulumi.StringPtrInput
+	// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
+	SyncScope pulumi.StringPtrInput
 	// Resource tags
 	Tags pulumi.StringMapInput
 }
@@ -225,6 +243,11 @@ func (o DomainServiceOutput) ToDomainServiceOutput() DomainServiceOutput {
 
 func (o DomainServiceOutput) ToDomainServiceOutputWithContext(ctx context.Context) DomainServiceOutput {
 	return o
+}
+
+// Configuration diagnostics data containing latest execution from client.
+func (o DomainServiceOutput) ConfigDiagnostics() ConfigDiagnosticsResponsePtrOutput {
+	return o.ApplyT(func(v *DomainService) ConfigDiagnosticsResponsePtrOutput { return v.ConfigDiagnostics }).(ConfigDiagnosticsResponsePtrOutput)
 }
 
 // Deployment Id
@@ -302,9 +325,19 @@ func (o DomainServiceOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainService) pulumi.StringPtrOutput { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
+// The unique sync application id of the Azure AD Domain Services deployment.
+func (o DomainServiceOutput) SyncApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainService) pulumi.StringOutput { return v.SyncApplicationId }).(pulumi.StringOutput)
+}
+
 // SyncOwner ReplicaSet Id
 func (o DomainServiceOutput) SyncOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainService) pulumi.StringOutput { return v.SyncOwner }).(pulumi.StringOutput)
+}
+
+// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
+func (o DomainServiceOutput) SyncScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainService) pulumi.StringPtrOutput { return v.SyncScope }).(pulumi.StringPtrOutput)
 }
 
 // The system meta data relating to this resource.

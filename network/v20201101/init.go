@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -151,10 +151,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VirtualNetworkPeering{}
 	case "azure-native:network/v20201101:VirtualNetworkTap":
 		r = &VirtualNetworkTap{}
-	case "azure-native:network/v20201101:VirtualRouter":
-		r = &VirtualRouter{}
-	case "azure-native:network/v20201101:VirtualRouterPeering":
-		r = &VirtualRouterPeering{}
 	case "azure-native:network/v20201101:VirtualWan":
 		r = &VirtualWan{}
 	case "azure-native:network/v20201101:VpnConnection":

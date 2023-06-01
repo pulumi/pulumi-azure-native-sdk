@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Storage resource for managedEnvironment.
-// API Version: 2022-03-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2022-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ManagedEnvironmentsStorage struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +52,9 @@ func NewManagedEnvironmentsStorage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:ManagedEnvironmentsStorage"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ManagedEnvironmentsStorage"),
 		},
 	})
 	opts = append(opts, aliases)

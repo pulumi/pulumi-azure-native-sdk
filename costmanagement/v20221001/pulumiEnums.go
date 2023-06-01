@@ -3,25 +3,6 @@
 
 package v20221001
 
-// Show costs accumulated over time.
-type AccumulatedType string
-
-const (
-	AccumulatedTypeTrue  = AccumulatedType("true")
-	AccumulatedTypeFalse = AccumulatedType("false")
-)
-
-// Chart type of the main view in Cost Analysis. Required.
-type ChartType string
-
-const (
-	ChartTypeArea          = ChartType("Area")
-	ChartTypeLine          = ChartType("Line")
-	ChartTypeStackedColumn = ChartType("StackedColumn")
-	ChartTypeGroupedColumn = ChartType("GroupedColumn")
-	ChartTypeTable         = ChartType("Table")
-)
-
 // Days of Week.
 type DaysOfWeek string
 
@@ -58,61 +39,11 @@ const (
 	FormatTypeCsv = FormatType("Csv")
 )
 
-// The name of the aggregation function to use.
-type FunctionType string
-
-const (
-	FunctionTypeSum = FunctionType("Sum")
-)
-
 // The granularity of rows in the export. Currently only 'Daily' is supported.
 type GranularityType string
 
 const (
 	GranularityTypeDaily = GranularityType("Daily")
-)
-
-// KPI type (Forecast, Budget).
-type KpiTypeType string
-
-const (
-	KpiTypeTypeForecast = KpiTypeType("Forecast")
-	KpiTypeTypeBudget   = KpiTypeType("Budget")
-)
-
-// Metric to use when displaying costs.
-type MetricType string
-
-const (
-	MetricTypeActualCost    = MetricType("ActualCost")
-	MetricTypeAmortizedCost = MetricType("AmortizedCost")
-	MetricTypeAHUB          = MetricType("AHUB")
-)
-
-// The operator to use for comparison.
-type OperatorType string
-
-const (
-	OperatorTypeIn       = OperatorType("In")
-	OperatorTypeContains = OperatorType("Contains")
-)
-
-// Data type to show in view.
-type PivotTypeType string
-
-const (
-	PivotTypeTypeDimension = PivotTypeType("Dimension")
-	PivotTypeTypeTagKey    = PivotTypeType("TagKey")
-)
-
-// Has type of the column to group.
-type QueryColumnType string
-
-const (
-	// The tag associated with the cost data.
-	QueryColumnTypeTagKey = QueryColumnType("TagKey")
-	// The dimension of cost data.
-	QueryColumnTypeDimension = QueryColumnType("Dimension")
 )
 
 // The schedule recurrence.
@@ -123,39 +54,6 @@ const (
 	RecurrenceTypeWeekly   = RecurrenceType("Weekly")
 	RecurrenceTypeMonthly  = RecurrenceType("Monthly")
 	RecurrenceTypeAnnually = RecurrenceType("Annually")
-)
-
-// Direction of sort.
-type ReportConfigSortingType string
-
-const (
-	ReportConfigSortingTypeAscending  = ReportConfigSortingType("Ascending")
-	ReportConfigSortingTypeDescending = ReportConfigSortingType("Descending")
-)
-
-// The granularity of rows in the report.
-type ReportGranularityType string
-
-const (
-	ReportGranularityTypeDaily   = ReportGranularityType("Daily")
-	ReportGranularityTypeMonthly = ReportGranularityType("Monthly")
-)
-
-// The time frame for pulling data for the report. If custom, then a specific time period must be provided.
-type ReportTimeframeType string
-
-const (
-	ReportTimeframeTypeWeekToDate  = ReportTimeframeType("WeekToDate")
-	ReportTimeframeTypeMonthToDate = ReportTimeframeType("MonthToDate")
-	ReportTimeframeTypeYearToDate  = ReportTimeframeType("YearToDate")
-	ReportTimeframeTypeCustom      = ReportTimeframeType("Custom")
-)
-
-// The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates.
-type ReportType string
-
-const (
-	ReportTypeUsage = ReportType("Usage")
 )
 
 // Frequency of the schedule.

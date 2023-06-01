@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets an existing custom domain for a particular static site.
-// API Version: 2020-12-01.
+// Description for Gets an existing custom domain for a particular static site.
+// API Version: 2022-09-01.
 func LookupStaticSiteCustomDomain(ctx *pulumi.Context, args *LookupStaticSiteCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteCustomDomainResult, error) {
 	var rv LookupStaticSiteCustomDomainResult
 	err := ctx.Invoke("azure-native:web:getStaticSiteCustomDomain", args, &rv, opts...)

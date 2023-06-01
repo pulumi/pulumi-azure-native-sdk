@@ -64,7 +64,7 @@ func (val *LookupZoneResult) Defaults() *LookupZoneResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ZoneType) {
+	if tmp.ZoneType == nil {
 		zoneType_ := "Public"
 		tmp.ZoneType = &zoneType_
 	}

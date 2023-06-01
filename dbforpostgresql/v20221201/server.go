@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,7 +74,7 @@ func NewServer(ctx *pulumi.Context,
 	if args.AuthConfig != nil {
 		args.AuthConfig = args.AuthConfig.ToAuthConfigPtrOutput().ApplyT(func(v *AuthConfig) *AuthConfig { return v.Defaults() }).(AuthConfigPtrOutput)
 	}
-	if isZero(args.AvailabilityZone) {
+	if args.AvailabilityZone == nil {
 		args.AvailabilityZone = pulumi.StringPtr("")
 	}
 	if args.Backup != nil {
@@ -90,6 +90,9 @@ func NewServer(ctx *pulumi.Context,
 		args.Network = args.Network.ToNetworkPtrOutput().ApplyT(func(v *Network) *Network { return v.Defaults() }).(NetworkPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Server"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:Server"),
 		},

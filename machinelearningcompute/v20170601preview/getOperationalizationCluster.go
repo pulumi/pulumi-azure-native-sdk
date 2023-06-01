@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the operationalization cluster resource view. Note that the credentials are not returned by this call. Call ListKeys to get them.
-//
-// Deprecated: Version 2017-06-01-preview will be removed in v2 of the provider.
 func LookupOperationalizationCluster(ctx *pulumi.Context, args *LookupOperationalizationClusterArgs, opts ...pulumi.InvokeOption) (*LookupOperationalizationClusterResult, error) {
 	var rv LookupOperationalizationClusterResult
 	err := ctx.Invoke("azure-native:machinelearningcompute/v20170601preview:getOperationalizationCluster", args, &rv, opts...)

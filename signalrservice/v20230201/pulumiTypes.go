@@ -210,7 +210,7 @@ func (val *LiveTraceConfiguration) Defaults() *LiveTraceConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := "false"
 		tmp.Enabled = &enabled_
 	}
@@ -246,7 +246,7 @@ func (val *LiveTraceConfigurationArgs) Defaults() *LiveTraceConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		tmp.Enabled = pulumi.StringPtr("false")
 	}
 	return &tmp
@@ -409,7 +409,7 @@ func (val *LiveTraceConfigurationResponse) Defaults() *LiveTraceConfigurationRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := "false"
 		tmp.Enabled = &enabled_
 	}
@@ -498,7 +498,7 @@ type ManagedIdentity struct {
 	// Represents the identity type: systemAssigned, userAssigned, None
 	Type *string `pulumi:"type"`
 	// Get or set the user assigned identities
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedIdentityInput is an input type that accepts ManagedIdentityArgs and ManagedIdentityOutput values.
@@ -517,7 +517,7 @@ type ManagedIdentityArgs struct {
 	// Represents the identity type: systemAssigned, userAssigned, None
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Get or set the user assigned identities
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedIdentityArgs) ElementType() reflect.Type {
@@ -604,8 +604,8 @@ func (o ManagedIdentityOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Get or set the user assigned identities
-func (o ManagedIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -643,13 +643,13 @@ func (o ManagedIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Get or set the user assigned identities
-func (o ManagedIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedIdentity) map[string]interface{} {
+func (o ManagedIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // A class represent managed identities used for request and response
@@ -2816,7 +2816,7 @@ func (val *ServerlessSettings) Defaults() *ServerlessSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConnectionTimeoutInSeconds) {
+	if tmp.ConnectionTimeoutInSeconds == nil {
 		connectionTimeoutInSeconds_ := 30
 		tmp.ConnectionTimeoutInSeconds = &connectionTimeoutInSeconds_
 	}
@@ -2853,7 +2853,7 @@ func (val *ServerlessSettingsArgs) Defaults() *ServerlessSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConnectionTimeoutInSeconds) {
+	if tmp.ConnectionTimeoutInSeconds == nil {
 		tmp.ConnectionTimeoutInSeconds = pulumi.IntPtr(30)
 	}
 	return &tmp
@@ -3008,7 +3008,7 @@ func (val *ServerlessSettingsResponse) Defaults() *ServerlessSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConnectionTimeoutInSeconds) {
+	if tmp.ConnectionTimeoutInSeconds == nil {
 		connectionTimeoutInSeconds_ := 30
 		tmp.ConnectionTimeoutInSeconds = &connectionTimeoutInSeconds_
 	}
@@ -4067,7 +4067,7 @@ func (val *SignalRTlsSettings) Defaults() *SignalRTlsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		clientCertEnabled_ := true
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}
@@ -4097,7 +4097,7 @@ func (val *SignalRTlsSettingsArgs) Defaults() *SignalRTlsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		tmp.ClientCertEnabled = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -4231,7 +4231,7 @@ func (val *SignalRTlsSettingsResponse) Defaults() *SignalRTlsSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		clientCertEnabled_ := true
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}

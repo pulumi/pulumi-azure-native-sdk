@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SqlServerInstance.
-// API Version: 2021-06-01-preview.
+// API Version: 2023-03-15-preview.
+// Previous API Version: 2021-06-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlServerInstance struct {
 	pulumi.CustomResourceState
 
@@ -22,11 +23,11 @@ type SqlServerInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// null
 	Properties SqlServerInstancePropertiesResponseOutput `pulumi:"properties"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -58,6 +59,12 @@ func NewSqlServerInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:SqlServerInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:SqlServerInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230315preview:SqlServerInstance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -99,7 +106,7 @@ type sqlServerInstanceArgs struct {
 	Properties *SqlServerInstanceProperties `pulumi:"properties"`
 	// The name of the Azure resource group
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of SQL Server Instance
+	// Name of SQL Server Instance
 	SqlServerInstanceName *string `pulumi:"sqlServerInstanceName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -113,7 +120,7 @@ type SqlServerInstanceArgs struct {
 	Properties SqlServerInstancePropertiesPtrInput
 	// The name of the Azure resource group
 	ResourceGroupName pulumi.StringInput
-	// The name of SQL Server Instance
+	// Name of SQL Server Instance
 	SqlServerInstanceName pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -171,7 +178,7 @@ func (o SqlServerInstanceOutput) Properties() SqlServerInstancePropertiesRespons
 	return o.ApplyT(func(v *SqlServerInstance) SqlServerInstancePropertiesResponseOutput { return v.Properties }).(SqlServerInstancePropertiesResponseOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SqlServerInstanceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SqlServerInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -181,7 +188,7 @@ func (o SqlServerInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlServerInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SqlServerInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlServerInstance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -10,6 +10,659 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+type DataPlaneAadOrApiKeyAuthOption struct {
+	// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+	AadAuthFailureMode *AadAuthFailureMode `pulumi:"aadAuthFailureMode"`
+}
+
+// DataPlaneAadOrApiKeyAuthOptionInput is an input type that accepts DataPlaneAadOrApiKeyAuthOptionArgs and DataPlaneAadOrApiKeyAuthOptionOutput values.
+// You can construct a concrete instance of `DataPlaneAadOrApiKeyAuthOptionInput` via:
+//
+//	DataPlaneAadOrApiKeyAuthOptionArgs{...}
+type DataPlaneAadOrApiKeyAuthOptionInput interface {
+	pulumi.Input
+
+	ToDataPlaneAadOrApiKeyAuthOptionOutput() DataPlaneAadOrApiKeyAuthOptionOutput
+	ToDataPlaneAadOrApiKeyAuthOptionOutputWithContext(context.Context) DataPlaneAadOrApiKeyAuthOptionOutput
+}
+
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+type DataPlaneAadOrApiKeyAuthOptionArgs struct {
+	// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+	AadAuthFailureMode AadAuthFailureModePtrInput `pulumi:"aadAuthFailureMode"`
+}
+
+func (DataPlaneAadOrApiKeyAuthOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneAadOrApiKeyAuthOption)(nil)).Elem()
+}
+
+func (i DataPlaneAadOrApiKeyAuthOptionArgs) ToDataPlaneAadOrApiKeyAuthOptionOutput() DataPlaneAadOrApiKeyAuthOptionOutput {
+	return i.ToDataPlaneAadOrApiKeyAuthOptionOutputWithContext(context.Background())
+}
+
+func (i DataPlaneAadOrApiKeyAuthOptionArgs) ToDataPlaneAadOrApiKeyAuthOptionOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAadOrApiKeyAuthOptionOutput)
+}
+
+func (i DataPlaneAadOrApiKeyAuthOptionArgs) ToDataPlaneAadOrApiKeyAuthOptionPtrOutput() DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return i.ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(context.Background())
+}
+
+func (i DataPlaneAadOrApiKeyAuthOptionArgs) ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAadOrApiKeyAuthOptionOutput).ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(ctx)
+}
+
+// DataPlaneAadOrApiKeyAuthOptionPtrInput is an input type that accepts DataPlaneAadOrApiKeyAuthOptionArgs, DataPlaneAadOrApiKeyAuthOptionPtr and DataPlaneAadOrApiKeyAuthOptionPtrOutput values.
+// You can construct a concrete instance of `DataPlaneAadOrApiKeyAuthOptionPtrInput` via:
+//
+//	        DataPlaneAadOrApiKeyAuthOptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataPlaneAadOrApiKeyAuthOptionPtrInput interface {
+	pulumi.Input
+
+	ToDataPlaneAadOrApiKeyAuthOptionPtrOutput() DataPlaneAadOrApiKeyAuthOptionPtrOutput
+	ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(context.Context) DataPlaneAadOrApiKeyAuthOptionPtrOutput
+}
+
+type dataPlaneAadOrApiKeyAuthOptionPtrType DataPlaneAadOrApiKeyAuthOptionArgs
+
+func DataPlaneAadOrApiKeyAuthOptionPtr(v *DataPlaneAadOrApiKeyAuthOptionArgs) DataPlaneAadOrApiKeyAuthOptionPtrInput {
+	return (*dataPlaneAadOrApiKeyAuthOptionPtrType)(v)
+}
+
+func (*dataPlaneAadOrApiKeyAuthOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneAadOrApiKeyAuthOption)(nil)).Elem()
+}
+
+func (i *dataPlaneAadOrApiKeyAuthOptionPtrType) ToDataPlaneAadOrApiKeyAuthOptionPtrOutput() DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return i.ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *dataPlaneAadOrApiKeyAuthOptionPtrType) ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAadOrApiKeyAuthOptionPtrOutput)
+}
+
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+type DataPlaneAadOrApiKeyAuthOptionOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneAadOrApiKeyAuthOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneAadOrApiKeyAuthOption)(nil)).Elem()
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionOutput) ToDataPlaneAadOrApiKeyAuthOptionOutput() DataPlaneAadOrApiKeyAuthOptionOutput {
+	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionOutput) ToDataPlaneAadOrApiKeyAuthOptionOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionOutput {
+	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionOutput) ToDataPlaneAadOrApiKeyAuthOptionPtrOutput() DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return o.ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(context.Background())
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionOutput) ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataPlaneAadOrApiKeyAuthOption) *DataPlaneAadOrApiKeyAuthOption {
+		return &v
+	}).(DataPlaneAadOrApiKeyAuthOptionPtrOutput)
+}
+
+// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+func (o DataPlaneAadOrApiKeyAuthOptionOutput) AadAuthFailureMode() AadAuthFailureModePtrOutput {
+	return o.ApplyT(func(v DataPlaneAadOrApiKeyAuthOption) *AadAuthFailureMode { return v.AadAuthFailureMode }).(AadAuthFailureModePtrOutput)
+}
+
+type DataPlaneAadOrApiKeyAuthOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneAadOrApiKeyAuthOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneAadOrApiKeyAuthOption)(nil)).Elem()
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionPtrOutput) ToDataPlaneAadOrApiKeyAuthOptionPtrOutput() DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionPtrOutput) ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionPtrOutput) Elem() DataPlaneAadOrApiKeyAuthOptionOutput {
+	return o.ApplyT(func(v *DataPlaneAadOrApiKeyAuthOption) DataPlaneAadOrApiKeyAuthOption {
+		if v != nil {
+			return *v
+		}
+		var ret DataPlaneAadOrApiKeyAuthOption
+		return ret
+	}).(DataPlaneAadOrApiKeyAuthOptionOutput)
+}
+
+// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+func (o DataPlaneAadOrApiKeyAuthOptionPtrOutput) AadAuthFailureMode() AadAuthFailureModePtrOutput {
+	return o.ApplyT(func(v *DataPlaneAadOrApiKeyAuthOption) *AadAuthFailureMode {
+		if v == nil {
+			return nil
+		}
+		return v.AadAuthFailureMode
+	}).(AadAuthFailureModePtrOutput)
+}
+
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+type DataPlaneAadOrApiKeyAuthOptionResponse struct {
+	// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+	AadAuthFailureMode *string `pulumi:"aadAuthFailureMode"`
+}
+
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+type DataPlaneAadOrApiKeyAuthOptionResponseOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneAadOrApiKeyAuthOptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneAadOrApiKeyAuthOptionResponse)(nil)).Elem()
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionResponseOutput) ToDataPlaneAadOrApiKeyAuthOptionResponseOutput() DataPlaneAadOrApiKeyAuthOptionResponseOutput {
+	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionResponseOutput) ToDataPlaneAadOrApiKeyAuthOptionResponseOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionResponseOutput {
+	return o
+}
+
+// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+func (o DataPlaneAadOrApiKeyAuthOptionResponseOutput) AadAuthFailureMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPlaneAadOrApiKeyAuthOptionResponse) *string { return v.AadAuthFailureMode }).(pulumi.StringPtrOutput)
+}
+
+type DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneAadOrApiKeyAuthOptionResponse)(nil)).Elem()
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) ToDataPlaneAadOrApiKeyAuthOptionResponsePtrOutput() DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput {
+	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) ToDataPlaneAadOrApiKeyAuthOptionResponsePtrOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput {
+	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) Elem() DataPlaneAadOrApiKeyAuthOptionResponseOutput {
+	return o.ApplyT(func(v *DataPlaneAadOrApiKeyAuthOptionResponse) DataPlaneAadOrApiKeyAuthOptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataPlaneAadOrApiKeyAuthOptionResponse
+		return ret
+	}).(DataPlaneAadOrApiKeyAuthOptionResponseOutput)
+}
+
+// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+func (o DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) AadAuthFailureMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataPlaneAadOrApiKeyAuthOptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AadAuthFailureMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the options for how the data plane API of a Search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+type DataPlaneAuthOptions struct {
+	// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+	AadOrApiKey *DataPlaneAadOrApiKeyAuthOption `pulumi:"aadOrApiKey"`
+	// Indicates that only the API key needs to be used for authentication.
+	ApiKeyOnly interface{} `pulumi:"apiKeyOnly"`
+}
+
+// DataPlaneAuthOptionsInput is an input type that accepts DataPlaneAuthOptionsArgs and DataPlaneAuthOptionsOutput values.
+// You can construct a concrete instance of `DataPlaneAuthOptionsInput` via:
+//
+//	DataPlaneAuthOptionsArgs{...}
+type DataPlaneAuthOptionsInput interface {
+	pulumi.Input
+
+	ToDataPlaneAuthOptionsOutput() DataPlaneAuthOptionsOutput
+	ToDataPlaneAuthOptionsOutputWithContext(context.Context) DataPlaneAuthOptionsOutput
+}
+
+// Defines the options for how the data plane API of a Search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+type DataPlaneAuthOptionsArgs struct {
+	// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+	AadOrApiKey DataPlaneAadOrApiKeyAuthOptionPtrInput `pulumi:"aadOrApiKey"`
+	// Indicates that only the API key needs to be used for authentication.
+	ApiKeyOnly pulumi.Input `pulumi:"apiKeyOnly"`
+}
+
+func (DataPlaneAuthOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneAuthOptions)(nil)).Elem()
+}
+
+func (i DataPlaneAuthOptionsArgs) ToDataPlaneAuthOptionsOutput() DataPlaneAuthOptionsOutput {
+	return i.ToDataPlaneAuthOptionsOutputWithContext(context.Background())
+}
+
+func (i DataPlaneAuthOptionsArgs) ToDataPlaneAuthOptionsOutputWithContext(ctx context.Context) DataPlaneAuthOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAuthOptionsOutput)
+}
+
+func (i DataPlaneAuthOptionsArgs) ToDataPlaneAuthOptionsPtrOutput() DataPlaneAuthOptionsPtrOutput {
+	return i.ToDataPlaneAuthOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DataPlaneAuthOptionsArgs) ToDataPlaneAuthOptionsPtrOutputWithContext(ctx context.Context) DataPlaneAuthOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAuthOptionsOutput).ToDataPlaneAuthOptionsPtrOutputWithContext(ctx)
+}
+
+// DataPlaneAuthOptionsPtrInput is an input type that accepts DataPlaneAuthOptionsArgs, DataPlaneAuthOptionsPtr and DataPlaneAuthOptionsPtrOutput values.
+// You can construct a concrete instance of `DataPlaneAuthOptionsPtrInput` via:
+//
+//	        DataPlaneAuthOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataPlaneAuthOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDataPlaneAuthOptionsPtrOutput() DataPlaneAuthOptionsPtrOutput
+	ToDataPlaneAuthOptionsPtrOutputWithContext(context.Context) DataPlaneAuthOptionsPtrOutput
+}
+
+type dataPlaneAuthOptionsPtrType DataPlaneAuthOptionsArgs
+
+func DataPlaneAuthOptionsPtr(v *DataPlaneAuthOptionsArgs) DataPlaneAuthOptionsPtrInput {
+	return (*dataPlaneAuthOptionsPtrType)(v)
+}
+
+func (*dataPlaneAuthOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneAuthOptions)(nil)).Elem()
+}
+
+func (i *dataPlaneAuthOptionsPtrType) ToDataPlaneAuthOptionsPtrOutput() DataPlaneAuthOptionsPtrOutput {
+	return i.ToDataPlaneAuthOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataPlaneAuthOptionsPtrType) ToDataPlaneAuthOptionsPtrOutputWithContext(ctx context.Context) DataPlaneAuthOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAuthOptionsPtrOutput)
+}
+
+// Defines the options for how the data plane API of a Search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+type DataPlaneAuthOptionsOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneAuthOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneAuthOptions)(nil)).Elem()
+}
+
+func (o DataPlaneAuthOptionsOutput) ToDataPlaneAuthOptionsOutput() DataPlaneAuthOptionsOutput {
+	return o
+}
+
+func (o DataPlaneAuthOptionsOutput) ToDataPlaneAuthOptionsOutputWithContext(ctx context.Context) DataPlaneAuthOptionsOutput {
+	return o
+}
+
+func (o DataPlaneAuthOptionsOutput) ToDataPlaneAuthOptionsPtrOutput() DataPlaneAuthOptionsPtrOutput {
+	return o.ToDataPlaneAuthOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DataPlaneAuthOptionsOutput) ToDataPlaneAuthOptionsPtrOutputWithContext(ctx context.Context) DataPlaneAuthOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataPlaneAuthOptions) *DataPlaneAuthOptions {
+		return &v
+	}).(DataPlaneAuthOptionsPtrOutput)
+}
+
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+func (o DataPlaneAuthOptionsOutput) AadOrApiKey() DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return o.ApplyT(func(v DataPlaneAuthOptions) *DataPlaneAadOrApiKeyAuthOption { return v.AadOrApiKey }).(DataPlaneAadOrApiKeyAuthOptionPtrOutput)
+}
+
+// Indicates that only the API key needs to be used for authentication.
+func (o DataPlaneAuthOptionsOutput) ApiKeyOnly() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataPlaneAuthOptions) interface{} { return v.ApiKeyOnly }).(pulumi.AnyOutput)
+}
+
+type DataPlaneAuthOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneAuthOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneAuthOptions)(nil)).Elem()
+}
+
+func (o DataPlaneAuthOptionsPtrOutput) ToDataPlaneAuthOptionsPtrOutput() DataPlaneAuthOptionsPtrOutput {
+	return o
+}
+
+func (o DataPlaneAuthOptionsPtrOutput) ToDataPlaneAuthOptionsPtrOutputWithContext(ctx context.Context) DataPlaneAuthOptionsPtrOutput {
+	return o
+}
+
+func (o DataPlaneAuthOptionsPtrOutput) Elem() DataPlaneAuthOptionsOutput {
+	return o.ApplyT(func(v *DataPlaneAuthOptions) DataPlaneAuthOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DataPlaneAuthOptions
+		return ret
+	}).(DataPlaneAuthOptionsOutput)
+}
+
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+func (o DataPlaneAuthOptionsPtrOutput) AadOrApiKey() DataPlaneAadOrApiKeyAuthOptionPtrOutput {
+	return o.ApplyT(func(v *DataPlaneAuthOptions) *DataPlaneAadOrApiKeyAuthOption {
+		if v == nil {
+			return nil
+		}
+		return v.AadOrApiKey
+	}).(DataPlaneAadOrApiKeyAuthOptionPtrOutput)
+}
+
+// Indicates that only the API key needs to be used for authentication.
+func (o DataPlaneAuthOptionsPtrOutput) ApiKeyOnly() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataPlaneAuthOptions) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyOnly
+	}).(pulumi.AnyOutput)
+}
+
+// Defines the options for how the data plane API of a Search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+type DataPlaneAuthOptionsResponse struct {
+	// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+	AadOrApiKey *DataPlaneAadOrApiKeyAuthOptionResponse `pulumi:"aadOrApiKey"`
+	// Indicates that only the API key needs to be used for authentication.
+	ApiKeyOnly interface{} `pulumi:"apiKeyOnly"`
+}
+
+// Defines the options for how the data plane API of a Search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+type DataPlaneAuthOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneAuthOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneAuthOptionsResponse)(nil)).Elem()
+}
+
+func (o DataPlaneAuthOptionsResponseOutput) ToDataPlaneAuthOptionsResponseOutput() DataPlaneAuthOptionsResponseOutput {
+	return o
+}
+
+func (o DataPlaneAuthOptionsResponseOutput) ToDataPlaneAuthOptionsResponseOutputWithContext(ctx context.Context) DataPlaneAuthOptionsResponseOutput {
+	return o
+}
+
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+func (o DataPlaneAuthOptionsResponseOutput) AadOrApiKey() DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput {
+	return o.ApplyT(func(v DataPlaneAuthOptionsResponse) *DataPlaneAadOrApiKeyAuthOptionResponse { return v.AadOrApiKey }).(DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput)
+}
+
+// Indicates that only the API key needs to be used for authentication.
+func (o DataPlaneAuthOptionsResponseOutput) ApiKeyOnly() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataPlaneAuthOptionsResponse) interface{} { return v.ApiKeyOnly }).(pulumi.AnyOutput)
+}
+
+type DataPlaneAuthOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneAuthOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneAuthOptionsResponse)(nil)).Elem()
+}
+
+func (o DataPlaneAuthOptionsResponsePtrOutput) ToDataPlaneAuthOptionsResponsePtrOutput() DataPlaneAuthOptionsResponsePtrOutput {
+	return o
+}
+
+func (o DataPlaneAuthOptionsResponsePtrOutput) ToDataPlaneAuthOptionsResponsePtrOutputWithContext(ctx context.Context) DataPlaneAuthOptionsResponsePtrOutput {
+	return o
+}
+
+func (o DataPlaneAuthOptionsResponsePtrOutput) Elem() DataPlaneAuthOptionsResponseOutput {
+	return o.ApplyT(func(v *DataPlaneAuthOptionsResponse) DataPlaneAuthOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataPlaneAuthOptionsResponse
+		return ret
+	}).(DataPlaneAuthOptionsResponseOutput)
+}
+
+// Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+func (o DataPlaneAuthOptionsResponsePtrOutput) AadOrApiKey() DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput {
+	return o.ApplyT(func(v *DataPlaneAuthOptionsResponse) *DataPlaneAadOrApiKeyAuthOptionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AadOrApiKey
+	}).(DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput)
+}
+
+// Indicates that only the API key needs to be used for authentication.
+func (o DataPlaneAuthOptionsResponsePtrOutput) ApiKeyOnly() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataPlaneAuthOptionsResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyOnly
+	}).(pulumi.AnyOutput)
+}
+
+// Describes a policy that determines how resources within the search service are to be encrypted with Customer Managed Keys.
+type EncryptionWithCmk struct {
+	// Describes how a search service should enforce having one or more non customer encrypted resources.
+	Enforcement *SearchEncryptionWithCmk `pulumi:"enforcement"`
+}
+
+// EncryptionWithCmkInput is an input type that accepts EncryptionWithCmkArgs and EncryptionWithCmkOutput values.
+// You can construct a concrete instance of `EncryptionWithCmkInput` via:
+//
+//	EncryptionWithCmkArgs{...}
+type EncryptionWithCmkInput interface {
+	pulumi.Input
+
+	ToEncryptionWithCmkOutput() EncryptionWithCmkOutput
+	ToEncryptionWithCmkOutputWithContext(context.Context) EncryptionWithCmkOutput
+}
+
+// Describes a policy that determines how resources within the search service are to be encrypted with Customer Managed Keys.
+type EncryptionWithCmkArgs struct {
+	// Describes how a search service should enforce having one or more non customer encrypted resources.
+	Enforcement SearchEncryptionWithCmkPtrInput `pulumi:"enforcement"`
+}
+
+func (EncryptionWithCmkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionWithCmk)(nil)).Elem()
+}
+
+func (i EncryptionWithCmkArgs) ToEncryptionWithCmkOutput() EncryptionWithCmkOutput {
+	return i.ToEncryptionWithCmkOutputWithContext(context.Background())
+}
+
+func (i EncryptionWithCmkArgs) ToEncryptionWithCmkOutputWithContext(ctx context.Context) EncryptionWithCmkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionWithCmkOutput)
+}
+
+func (i EncryptionWithCmkArgs) ToEncryptionWithCmkPtrOutput() EncryptionWithCmkPtrOutput {
+	return i.ToEncryptionWithCmkPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionWithCmkArgs) ToEncryptionWithCmkPtrOutputWithContext(ctx context.Context) EncryptionWithCmkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionWithCmkOutput).ToEncryptionWithCmkPtrOutputWithContext(ctx)
+}
+
+// EncryptionWithCmkPtrInput is an input type that accepts EncryptionWithCmkArgs, EncryptionWithCmkPtr and EncryptionWithCmkPtrOutput values.
+// You can construct a concrete instance of `EncryptionWithCmkPtrInput` via:
+//
+//	        EncryptionWithCmkArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionWithCmkPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionWithCmkPtrOutput() EncryptionWithCmkPtrOutput
+	ToEncryptionWithCmkPtrOutputWithContext(context.Context) EncryptionWithCmkPtrOutput
+}
+
+type encryptionWithCmkPtrType EncryptionWithCmkArgs
+
+func EncryptionWithCmkPtr(v *EncryptionWithCmkArgs) EncryptionWithCmkPtrInput {
+	return (*encryptionWithCmkPtrType)(v)
+}
+
+func (*encryptionWithCmkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionWithCmk)(nil)).Elem()
+}
+
+func (i *encryptionWithCmkPtrType) ToEncryptionWithCmkPtrOutput() EncryptionWithCmkPtrOutput {
+	return i.ToEncryptionWithCmkPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionWithCmkPtrType) ToEncryptionWithCmkPtrOutputWithContext(ctx context.Context) EncryptionWithCmkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionWithCmkPtrOutput)
+}
+
+// Describes a policy that determines how resources within the search service are to be encrypted with Customer Managed Keys.
+type EncryptionWithCmkOutput struct{ *pulumi.OutputState }
+
+func (EncryptionWithCmkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionWithCmk)(nil)).Elem()
+}
+
+func (o EncryptionWithCmkOutput) ToEncryptionWithCmkOutput() EncryptionWithCmkOutput {
+	return o
+}
+
+func (o EncryptionWithCmkOutput) ToEncryptionWithCmkOutputWithContext(ctx context.Context) EncryptionWithCmkOutput {
+	return o
+}
+
+func (o EncryptionWithCmkOutput) ToEncryptionWithCmkPtrOutput() EncryptionWithCmkPtrOutput {
+	return o.ToEncryptionWithCmkPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionWithCmkOutput) ToEncryptionWithCmkPtrOutputWithContext(ctx context.Context) EncryptionWithCmkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionWithCmk) *EncryptionWithCmk {
+		return &v
+	}).(EncryptionWithCmkPtrOutput)
+}
+
+// Describes how a search service should enforce having one or more non customer encrypted resources.
+func (o EncryptionWithCmkOutput) Enforcement() SearchEncryptionWithCmkPtrOutput {
+	return o.ApplyT(func(v EncryptionWithCmk) *SearchEncryptionWithCmk { return v.Enforcement }).(SearchEncryptionWithCmkPtrOutput)
+}
+
+type EncryptionWithCmkPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionWithCmkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionWithCmk)(nil)).Elem()
+}
+
+func (o EncryptionWithCmkPtrOutput) ToEncryptionWithCmkPtrOutput() EncryptionWithCmkPtrOutput {
+	return o
+}
+
+func (o EncryptionWithCmkPtrOutput) ToEncryptionWithCmkPtrOutputWithContext(ctx context.Context) EncryptionWithCmkPtrOutput {
+	return o
+}
+
+func (o EncryptionWithCmkPtrOutput) Elem() EncryptionWithCmkOutput {
+	return o.ApplyT(func(v *EncryptionWithCmk) EncryptionWithCmk {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionWithCmk
+		return ret
+	}).(EncryptionWithCmkOutput)
+}
+
+// Describes how a search service should enforce having one or more non customer encrypted resources.
+func (o EncryptionWithCmkPtrOutput) Enforcement() SearchEncryptionWithCmkPtrOutput {
+	return o.ApplyT(func(v *EncryptionWithCmk) *SearchEncryptionWithCmk {
+		if v == nil {
+			return nil
+		}
+		return v.Enforcement
+	}).(SearchEncryptionWithCmkPtrOutput)
+}
+
+// Describes a policy that determines how resources within the search service are to be encrypted with Customer Managed Keys.
+type EncryptionWithCmkResponse struct {
+	// Describes whether the search service is compliant or not with respect to having non customer encrypted resources. If a service has more than one non customer encrypted resource and 'Enforcement' is 'enabled' then the service will be marked as 'nonCompliant'.
+	EncryptionComplianceStatus string `pulumi:"encryptionComplianceStatus"`
+	// Describes how a search service should enforce having one or more non customer encrypted resources.
+	Enforcement *string `pulumi:"enforcement"`
+}
+
+// Describes a policy that determines how resources within the search service are to be encrypted with Customer Managed Keys.
+type EncryptionWithCmkResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionWithCmkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionWithCmkResponse)(nil)).Elem()
+}
+
+func (o EncryptionWithCmkResponseOutput) ToEncryptionWithCmkResponseOutput() EncryptionWithCmkResponseOutput {
+	return o
+}
+
+func (o EncryptionWithCmkResponseOutput) ToEncryptionWithCmkResponseOutputWithContext(ctx context.Context) EncryptionWithCmkResponseOutput {
+	return o
+}
+
+// Describes whether the search service is compliant or not with respect to having non customer encrypted resources. If a service has more than one non customer encrypted resource and 'Enforcement' is 'enabled' then the service will be marked as 'nonCompliant'.
+func (o EncryptionWithCmkResponseOutput) EncryptionComplianceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionWithCmkResponse) string { return v.EncryptionComplianceStatus }).(pulumi.StringOutput)
+}
+
+// Describes how a search service should enforce having one or more non customer encrypted resources.
+func (o EncryptionWithCmkResponseOutput) Enforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionWithCmkResponse) *string { return v.Enforcement }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionWithCmkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionWithCmkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionWithCmkResponse)(nil)).Elem()
+}
+
+func (o EncryptionWithCmkResponsePtrOutput) ToEncryptionWithCmkResponsePtrOutput() EncryptionWithCmkResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionWithCmkResponsePtrOutput) ToEncryptionWithCmkResponsePtrOutputWithContext(ctx context.Context) EncryptionWithCmkResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionWithCmkResponsePtrOutput) Elem() EncryptionWithCmkResponseOutput {
+	return o.ApplyT(func(v *EncryptionWithCmkResponse) EncryptionWithCmkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionWithCmkResponse
+		return ret
+	}).(EncryptionWithCmkResponseOutput)
+}
+
+// Describes whether the search service is compliant or not with respect to having non customer encrypted resources. If a service has more than one non customer encrypted resource and 'Enforcement' is 'enabled' then the service will be marked as 'nonCompliant'.
+func (o EncryptionWithCmkResponsePtrOutput) EncryptionComplianceStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionWithCmkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptionComplianceStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes how a search service should enforce having one or more non customer encrypted resources.
+func (o EncryptionWithCmkResponsePtrOutput) Enforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionWithCmkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Enforcement
+	}).(pulumi.StringPtrOutput)
+}
+
 // Identity for the resource.
 type Identity struct {
 	// The identity type.
@@ -152,9 +805,9 @@ func (o IdentityPtrOutput) Type() IdentityTypePtrOutput {
 
 // Identity for the resource.
 type IdentityResponse struct {
-	// The principal ID of resource identity.
+	// The principal ID of the system-assigned identity of the search service.
 	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of resource.
+	// The tenant ID of the system-assigned identity of the search service.
 	TenantId string `pulumi:"tenantId"`
 	// The identity type.
 	Type string `pulumi:"type"`
@@ -175,12 +828,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The principal ID of resource identity.
+// The principal ID of the system-assigned identity of the search service.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-// The tenant ID of resource.
+// The tenant ID of the system-assigned identity of the search service.
 func (o IdentityResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
@@ -214,7 +867,7 @@ func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
 	}).(IdentityResponseOutput)
 }
 
-// The principal ID of resource identity.
+// The principal ID of the system-assigned identity of the search service.
 func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityResponse) *string {
 		if v == nil {
@@ -224,7 +877,7 @@ func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tenant ID of resource.
+// The tenant ID of the system-assigned identity of the search service.
 func (o IdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityResponse) *string {
 		if v == nil {
@@ -592,10 +1245,14 @@ func (o NetworkRuleSetResponsePtrOutput) IpRules() IpRuleResponseArrayOutput {
 
 // Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
 type PrivateEndpointConnectionProperties struct {
+	// The group id from the provider of resource the private link service connection is for.
+	GroupId *string `pulumi:"groupId"`
 	// The private endpoint resource from Microsoft.Network provider.
 	PrivateEndpoint *PrivateEndpointConnectionPropertiesPrivateEndpoint `pulumi:"privateEndpoint"`
 	// Describes the current state of an existing Private Link Service connection to the Azure Private Endpoint.
 	PrivateLinkServiceConnectionState *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+	ProvisioningState *string `pulumi:"provisioningState"`
 }
 
 // Defaults sets the appropriate defaults for PrivateEndpointConnectionProperties
@@ -622,10 +1279,14 @@ type PrivateEndpointConnectionPropertiesInput interface {
 
 // Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
 type PrivateEndpointConnectionPropertiesArgs struct {
+	// The group id from the provider of resource the private link service connection is for.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The private endpoint resource from Microsoft.Network provider.
 	PrivateEndpoint PrivateEndpointConnectionPropertiesPrivateEndpointPtrInput `pulumi:"privateEndpoint"`
 	// Describes the current state of an existing Private Link Service connection to the Azure Private Endpoint.
 	PrivateLinkServiceConnectionState PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 }
 
 // Defaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesArgs
@@ -715,6 +1376,11 @@ func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPr
 	}).(PrivateEndpointConnectionPropertiesPtrOutput)
 }
 
+// The group id from the provider of resource the private link service connection is for.
+func (o PrivateEndpointConnectionPropertiesOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProperties) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
 // The private endpoint resource from Microsoft.Network provider.
 func (o PrivateEndpointConnectionPropertiesOutput) PrivateEndpoint() PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionProperties) *PrivateEndpointConnectionPropertiesPrivateEndpoint {
@@ -727,6 +1393,11 @@ func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionS
 	return o.ApplyT(func(v PrivateEndpointConnectionProperties) *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+func (o PrivateEndpointConnectionPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 type PrivateEndpointConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -753,6 +1424,16 @@ func (o PrivateEndpointConnectionPropertiesPtrOutput) Elem() PrivateEndpointConn
 	}).(PrivateEndpointConnectionPropertiesOutput)
 }
 
+// The group id from the provider of resource the private link service connection is for.
+func (o PrivateEndpointConnectionPropertiesPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The private endpoint resource from Microsoft.Network provider.
 func (o PrivateEndpointConnectionPropertiesPtrOutput) PrivateEndpoint() PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnectionProperties) *PrivateEndpointConnectionPropertiesPrivateEndpoint {
@@ -771,6 +1452,16 @@ func (o PrivateEndpointConnectionPropertiesPtrOutput) PrivateLinkServiceConnecti
 		}
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+func (o PrivateEndpointConnectionPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
 }
 
 // The private endpoint resource from Microsoft.Network provider.
@@ -929,7 +1620,7 @@ func (val *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState)
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		actionsRequired_ := "None"
 		tmp.ActionsRequired = &actionsRequired_
 	}
@@ -963,7 +1654,7 @@ func (val *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		tmp.ActionsRequired = pulumi.StringPtr("None")
 	}
 	return &tmp
@@ -1123,10 +1814,14 @@ func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrO
 
 // Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
 type PrivateEndpointConnectionPropertiesResponse struct {
+	// The group id from the provider of resource the private link service connection is for.
+	GroupId *string `pulumi:"groupId"`
 	// The private endpoint resource from Microsoft.Network provider.
 	PrivateEndpoint *PrivateEndpointConnectionPropertiesResponsePrivateEndpoint `pulumi:"privateEndpoint"`
 	// Describes the current state of an existing Private Link Service connection to the Azure Private Endpoint.
 	PrivateLinkServiceConnectionState *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+	ProvisioningState *string `pulumi:"provisioningState"`
 }
 
 // Defaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesResponse
@@ -1155,6 +1850,11 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 	return o
 }
 
+// The group id from the provider of resource the private link service connection is for.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
 // The private endpoint resource from Microsoft.Network provider.
 func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoint() PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
@@ -1167,6 +1867,11 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateLinkServiceCon
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 type PrivateEndpointConnectionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1193,6 +1898,16 @@ func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) Elem() PrivateEndp
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
+// The group id from the provider of resource the private link service connection is for.
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The private endpoint resource from Microsoft.Network provider.
 func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateEndpoint() PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
@@ -1211,6 +1926,16 @@ func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateLinkService
 		}
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
 }
 
 // The private endpoint resource from Microsoft.Network provider.
@@ -1289,7 +2014,7 @@ func (val *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnecti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActionsRequired) {
+	if tmp.ActionsRequired == nil {
 		actionsRequired_ := "None"
 		tmp.ActionsRequired = &actionsRequired_
 	}
@@ -2171,6 +2896,18 @@ func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(DataPlaneAadOrApiKeyAuthOptionOutput{})
+	pulumi.RegisterOutputType(DataPlaneAadOrApiKeyAuthOptionPtrOutput{})
+	pulumi.RegisterOutputType(DataPlaneAadOrApiKeyAuthOptionResponseOutput{})
+	pulumi.RegisterOutputType(DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataPlaneAuthOptionsOutput{})
+	pulumi.RegisterOutputType(DataPlaneAuthOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DataPlaneAuthOptionsResponseOutput{})
+	pulumi.RegisterOutputType(DataPlaneAuthOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionWithCmkOutput{})
+	pulumi.RegisterOutputType(EncryptionWithCmkPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionWithCmkResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionWithCmkResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})

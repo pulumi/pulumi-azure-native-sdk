@@ -28,11 +28,11 @@ func (val *ActiveDirectoryConnectorDNSDetails) Defaults() *ActiveDirectoryConnec
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PreferK8sDnsForPtrLookups) {
+	if tmp.PreferK8sDnsForPtrLookups == nil {
 		preferK8sDnsForPtrLookups_ := true
 		tmp.PreferK8sDnsForPtrLookups = &preferK8sDnsForPtrLookups_
 	}
-	if isZero(tmp.Replicas) {
+	if tmp.Replicas == nil {
 		replicas_ := 1.0
 		tmp.Replicas = &replicas_
 	}
@@ -68,10 +68,10 @@ func (val *ActiveDirectoryConnectorDNSDetailsArgs) Defaults() *ActiveDirectoryCo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PreferK8sDnsForPtrLookups) {
+	if tmp.PreferK8sDnsForPtrLookups == nil {
 		tmp.PreferK8sDnsForPtrLookups = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Replicas) {
+	if tmp.Replicas == nil {
 		tmp.Replicas = pulumi.Float64Ptr(1.0)
 	}
 	return &tmp
@@ -141,11 +141,11 @@ func (val *ActiveDirectoryConnectorDNSDetailsResponse) Defaults() *ActiveDirecto
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PreferK8sDnsForPtrLookups) {
+	if tmp.PreferK8sDnsForPtrLookups == nil {
 		preferK8sDnsForPtrLookups_ := true
 		tmp.PreferK8sDnsForPtrLookups = &preferK8sDnsForPtrLookups_
 	}
-	if isZero(tmp.Replicas) {
+	if tmp.Replicas == nil {
 		replicas_ := 1.0
 		tmp.Replicas = &replicas_
 	}
@@ -207,7 +207,7 @@ func (val *ActiveDirectoryConnectorDomainDetails) Defaults() *ActiveDirectoryCon
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceAccountProvisioning) {
+	if tmp.ServiceAccountProvisioning == nil {
 		serviceAccountProvisioning_ := "manual"
 		tmp.ServiceAccountProvisioning = &serviceAccountProvisioning_
 	}
@@ -245,7 +245,7 @@ func (val *ActiveDirectoryConnectorDomainDetailsArgs) Defaults() *ActiveDirector
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceAccountProvisioning) {
+	if tmp.ServiceAccountProvisioning == nil {
 		tmp.ServiceAccountProvisioning = pulumi.StringPtr("manual")
 	}
 	return &tmp
@@ -324,7 +324,7 @@ func (val *ActiveDirectoryConnectorDomainDetailsResponse) Defaults() *ActiveDire
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceAccountProvisioning) {
+	if tmp.ServiceAccountProvisioning == nil {
 		serviceAccountProvisioning_ := "manual"
 		tmp.ServiceAccountProvisioning = &serviceAccountProvisioning_
 	}
@@ -1838,7 +1838,7 @@ func (val *DataControllerProperties) Defaults() *DataControllerProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Infrastructure) {
+	if tmp.Infrastructure == nil {
 		infrastructure_ := Infrastructure("other")
 		tmp.Infrastructure = &infrastructure_
 	}
@@ -1890,7 +1890,7 @@ func (val *DataControllerPropertiesArgs) Defaults() *DataControllerPropertiesArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Infrastructure) {
+	if tmp.Infrastructure == nil {
 		tmp.Infrastructure = Infrastructure("other")
 	}
 	return &tmp
@@ -2018,7 +2018,7 @@ func (val *DataControllerPropertiesResponse) Defaults() *DataControllerPropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Infrastructure) {
+	if tmp.Infrastructure == nil {
 		infrastructure_ := "other"
 		tmp.Infrastructure = &infrastructure_
 	}
@@ -3794,11 +3794,11 @@ func (val *PostgresInstanceSku) Defaults() *PostgresInstanceSku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := PostgresInstanceSkuTier("Hyperscale")
 		tmp.Tier = &tier_
 	}
@@ -3838,10 +3838,10 @@ func (val *PostgresInstanceSkuArgs) Defaults() *PostgresInstanceSkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		tmp.Dev = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = PostgresInstanceSkuTier("Hyperscale")
 	}
 	return &tmp
@@ -4060,11 +4060,11 @@ func (val *PostgresInstanceSkuResponse) Defaults() *PostgresInstanceSkuResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "Hyperscale"
 		tmp.Tier = &tier_
 	}
@@ -4668,7 +4668,7 @@ func (val *SqlManagedInstanceProperties) Defaults() *SqlManagedInstancePropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LicenseType) {
+	if tmp.LicenseType == nil {
 		licenseType_ := "BasePrice"
 		tmp.LicenseType = &licenseType_
 	}
@@ -4718,7 +4718,7 @@ func (val *SqlManagedInstancePropertiesArgs) Defaults() *SqlManagedInstancePrope
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LicenseType) {
+	if tmp.LicenseType == nil {
 		tmp.LicenseType = pulumi.StringPtr("BasePrice")
 	}
 	return &tmp
@@ -4837,7 +4837,7 @@ func (val *SqlManagedInstancePropertiesResponse) Defaults() *SqlManagedInstanceP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LicenseType) {
+	if tmp.LicenseType == nil {
 		licenseType_ := "BasePrice"
 		tmp.LicenseType = &licenseType_
 	}
@@ -4938,11 +4938,11 @@ func (val *SqlManagedInstanceSku) Defaults() *SqlManagedInstanceSku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := SqlManagedInstanceSkuTier("GeneralPurpose")
 		tmp.Tier = &tier_
 	}
@@ -4982,10 +4982,10 @@ func (val *SqlManagedInstanceSkuArgs) Defaults() *SqlManagedInstanceSkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		tmp.Dev = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = SqlManagedInstanceSkuTier("GeneralPurpose")
 	}
 	return &tmp
@@ -5204,11 +5204,11 @@ func (val *SqlManagedInstanceSkuResponse) Defaults() *SqlManagedInstanceSkuRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Dev) {
+	if tmp.Dev == nil {
 		dev_ := true
 		tmp.Dev = &dev_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "GeneralPurpose"
 		tmp.Tier = &tier_
 	}

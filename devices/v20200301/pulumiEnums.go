@@ -10,184 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The permissions assigned to the shared access policy.
-type AccessRights string
-
-const (
-	AccessRightsRegistryRead                                             = AccessRights("RegistryRead")
-	AccessRightsRegistryWrite                                            = AccessRights("RegistryWrite")
-	AccessRightsServiceConnect                                           = AccessRights("ServiceConnect")
-	AccessRightsDeviceConnect                                            = AccessRights("DeviceConnect")
-	AccessRights_RegistryRead_RegistryWrite                              = AccessRights("RegistryRead, RegistryWrite")
-	AccessRights_RegistryRead_ServiceConnect                             = AccessRights("RegistryRead, ServiceConnect")
-	AccessRights_RegistryRead_DeviceConnect                              = AccessRights("RegistryRead, DeviceConnect")
-	AccessRights_RegistryWrite_ServiceConnect                            = AccessRights("RegistryWrite, ServiceConnect")
-	AccessRights_RegistryWrite_DeviceConnect                             = AccessRights("RegistryWrite, DeviceConnect")
-	AccessRights_ServiceConnect_DeviceConnect                            = AccessRights("ServiceConnect, DeviceConnect")
-	AccessRights_RegistryRead_RegistryWrite_ServiceConnect               = AccessRights("RegistryRead, RegistryWrite, ServiceConnect")
-	AccessRights_RegistryRead_RegistryWrite_DeviceConnect                = AccessRights("RegistryRead, RegistryWrite, DeviceConnect")
-	AccessRights_RegistryRead_ServiceConnect_DeviceConnect               = AccessRights("RegistryRead, ServiceConnect, DeviceConnect")
-	AccessRights_RegistryWrite_ServiceConnect_DeviceConnect              = AccessRights("RegistryWrite, ServiceConnect, DeviceConnect")
-	AccessRights_RegistryRead_RegistryWrite_ServiceConnect_DeviceConnect = AccessRights("RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect")
-)
-
-func (AccessRights) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessRights)(nil)).Elem()
-}
-
-func (e AccessRights) ToAccessRightsOutput() AccessRightsOutput {
-	return pulumi.ToOutput(e).(AccessRightsOutput)
-}
-
-func (e AccessRights) ToAccessRightsOutputWithContext(ctx context.Context) AccessRightsOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AccessRightsOutput)
-}
-
-func (e AccessRights) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
-	return e.ToAccessRightsPtrOutputWithContext(context.Background())
-}
-
-func (e AccessRights) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
-	return AccessRights(e).ToAccessRightsOutputWithContext(ctx).ToAccessRightsPtrOutputWithContext(ctx)
-}
-
-func (e AccessRights) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AccessRights) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AccessRights) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AccessRights) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type AccessRightsOutput struct{ *pulumi.OutputState }
-
-func (AccessRightsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessRights)(nil)).Elem()
-}
-
-func (o AccessRightsOutput) ToAccessRightsOutput() AccessRightsOutput {
-	return o
-}
-
-func (o AccessRightsOutput) ToAccessRightsOutputWithContext(ctx context.Context) AccessRightsOutput {
-	return o
-}
-
-func (o AccessRightsOutput) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
-	return o.ToAccessRightsPtrOutputWithContext(context.Background())
-}
-
-func (o AccessRightsOutput) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessRights) *AccessRights {
-		return &v
-	}).(AccessRightsPtrOutput)
-}
-
-func (o AccessRightsOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o AccessRightsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessRights) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o AccessRightsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AccessRightsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessRights) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type AccessRightsPtrOutput struct{ *pulumi.OutputState }
-
-func (AccessRightsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessRights)(nil)).Elem()
-}
-
-func (o AccessRightsPtrOutput) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
-	return o
-}
-
-func (o AccessRightsPtrOutput) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
-	return o
-}
-
-func (o AccessRightsPtrOutput) Elem() AccessRightsOutput {
-	return o.ApplyT(func(v *AccessRights) AccessRights {
-		if v != nil {
-			return *v
-		}
-		var ret AccessRights
-		return ret
-	}).(AccessRightsOutput)
-}
-
-func (o AccessRightsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AccessRightsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AccessRights) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// AccessRightsInput is an input type that accepts AccessRightsArgs and AccessRightsOutput values.
-// You can construct a concrete instance of `AccessRightsInput` via:
-//
-//	AccessRightsArgs{...}
-type AccessRightsInput interface {
-	pulumi.Input
-
-	ToAccessRightsOutput() AccessRightsOutput
-	ToAccessRightsOutputWithContext(context.Context) AccessRightsOutput
-}
-
-var accessRightsPtrType = reflect.TypeOf((**AccessRights)(nil)).Elem()
-
-type AccessRightsPtrInput interface {
-	pulumi.Input
-
-	ToAccessRightsPtrOutput() AccessRightsPtrOutput
-	ToAccessRightsPtrOutputWithContext(context.Context) AccessRightsPtrOutput
-}
-
-type accessRightsPtr string
-
-func AccessRightsPtr(v string) AccessRightsPtrInput {
-	return (*accessRightsPtr)(&v)
-}
-
-func (*accessRightsPtr) ElementType() reflect.Type {
-	return accessRightsPtrType
-}
-
-func (in *accessRightsPtr) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
-	return pulumi.ToOutput(in).(AccessRightsPtrOutput)
-}
-
-func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
-}
-
 // Rights that this key has.
 type AccessRightsDescription string
 
@@ -209,40 +31,11 @@ const (
 	AllocationPolicyStatic     = AllocationPolicy("Static")
 )
 
-// Specifies authentication type being used for connecting to the storage account.
-type AuthenticationType string
-
-const (
-	AuthenticationTypeKeyBased      = AuthenticationType("keyBased")
-	AuthenticationTypeIdentityBased = AuthenticationType("identityBased")
-)
-
-// The capabilities and features enabled for the IoT hub.
-type Capabilities string
-
-const (
-	CapabilitiesNone             = Capabilities("None")
-	CapabilitiesDeviceManagement = Capabilities("DeviceManagement")
-)
-
 // Sku name.
 type IotDpsSku string
 
 const (
 	IotDpsSkuS1 = IotDpsSku("S1")
-)
-
-// The name of the SKU.
-type IotHubSku string
-
-const (
-	IotHubSkuF1 = IotHubSku("F1")
-	IotHubSkuS1 = IotHubSku("S1")
-	IotHubSkuS2 = IotHubSku("S2")
-	IotHubSkuS3 = IotHubSku("S3")
-	IotHubSkuB1 = IotHubSku("B1")
-	IotHubSkuB2 = IotHubSku("B2")
-	IotHubSkuB3 = IotHubSku("B3")
 )
 
 // The desired action for requests captured by this rule.
@@ -594,17 +387,6 @@ const (
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
-// The source that the routing rule is to be applied to, such as DeviceMessages.
-type RoutingSource string
-
-const (
-	RoutingSourceInvalid                  = RoutingSource("Invalid")
-	RoutingSourceDeviceMessages           = RoutingSource("DeviceMessages")
-	RoutingSourceTwinChangeEvents         = RoutingSource("TwinChangeEvents")
-	RoutingSourceDeviceLifecycleEvents    = RoutingSource("DeviceLifecycleEvents")
-	RoutingSourceDeviceJobLifecycleEvents = RoutingSource("DeviceJobLifecycleEvents")
-)
-
 // Current state of the provisioning service.
 type State string
 
@@ -624,8 +406,6 @@ const (
 )
 
 func init() {
-	pulumi.RegisterOutputType(AccessRightsOutput{})
-	pulumi.RegisterOutputType(AccessRightsPtrOutput{})
 	pulumi.RegisterOutputType(IpFilterActionTypeOutput{})
 	pulumi.RegisterOutputType(IpFilterActionTypePtrOutput{})
 	pulumi.RegisterOutputType(IpFilterTargetTypeOutput{})

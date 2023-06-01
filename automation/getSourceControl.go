@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the source control identified by source control name.
-// API Version: 2019-06-01.
+// API Version: 2022-08-08.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	var rv LookupSourceControlResult
 	err := ctx.Invoke("azure-native:automation:getSourceControl", args, &rv, opts...)

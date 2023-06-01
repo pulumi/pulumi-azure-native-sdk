@@ -559,6 +559,168 @@ func (o ElasticPropertiesResponsePtrOutput) ElasticCloudUser() ElasticCloudUserR
 	}).(ElasticCloudUserResponsePtrOutput)
 }
 
+// Elastic traffic filter object
+type ElasticTrafficFilterResponse struct {
+	// Description of the elastic filter
+	Description *string `pulumi:"description"`
+	// Id of the elastic filter
+	Id *string `pulumi:"id"`
+	// IncludeByDefault for the elastic filter
+	IncludeByDefault *bool `pulumi:"includeByDefault"`
+	// Name of the elastic filter
+	Name *string `pulumi:"name"`
+	// Region of the elastic filter
+	Region *string `pulumi:"region"`
+	// Rules in the elastic filter
+	Rules []ElasticTrafficFilterRuleResponse `pulumi:"rules"`
+	// Type of the elastic filter
+	Type *string `pulumi:"type"`
+}
+
+// Elastic traffic filter object
+type ElasticTrafficFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticTrafficFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticTrafficFilterResponse)(nil)).Elem()
+}
+
+func (o ElasticTrafficFilterResponseOutput) ToElasticTrafficFilterResponseOutput() ElasticTrafficFilterResponseOutput {
+	return o
+}
+
+func (o ElasticTrafficFilterResponseOutput) ToElasticTrafficFilterResponseOutputWithContext(ctx context.Context) ElasticTrafficFilterResponseOutput {
+	return o
+}
+
+// Description of the elastic filter
+func (o ElasticTrafficFilterResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Id of the elastic filter
+func (o ElasticTrafficFilterResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// IncludeByDefault for the elastic filter
+func (o ElasticTrafficFilterResponseOutput) IncludeByDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterResponse) *bool { return v.IncludeByDefault }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the elastic filter
+func (o ElasticTrafficFilterResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Region of the elastic filter
+func (o ElasticTrafficFilterResponseOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterResponse) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Rules in the elastic filter
+func (o ElasticTrafficFilterResponseOutput) Rules() ElasticTrafficFilterRuleResponseArrayOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterResponse) []ElasticTrafficFilterRuleResponse { return v.Rules }).(ElasticTrafficFilterRuleResponseArrayOutput)
+}
+
+// Type of the elastic filter
+func (o ElasticTrafficFilterResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ElasticTrafficFilterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ElasticTrafficFilterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElasticTrafficFilterResponse)(nil)).Elem()
+}
+
+func (o ElasticTrafficFilterResponseArrayOutput) ToElasticTrafficFilterResponseArrayOutput() ElasticTrafficFilterResponseArrayOutput {
+	return o
+}
+
+func (o ElasticTrafficFilterResponseArrayOutput) ToElasticTrafficFilterResponseArrayOutputWithContext(ctx context.Context) ElasticTrafficFilterResponseArrayOutput {
+	return o
+}
+
+func (o ElasticTrafficFilterResponseArrayOutput) Index(i pulumi.IntInput) ElasticTrafficFilterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticTrafficFilterResponse {
+		return vs[0].([]ElasticTrafficFilterResponse)[vs[1].(int)]
+	}).(ElasticTrafficFilterResponseOutput)
+}
+
+// Elastic traffic filter rule object
+type ElasticTrafficFilterRuleResponse struct {
+	// Guid of Private Endpoint in the elastic filter rule
+	AzureEndpointGuid *string `pulumi:"azureEndpointGuid"`
+	// Name of the Private Endpoint in the elastic filter rule
+	AzureEndpointName *string `pulumi:"azureEndpointName"`
+	// Description of the elastic filter rule
+	Description *string `pulumi:"description"`
+	// Id of the elastic filter rule
+	Id *string `pulumi:"id"`
+	// IP of the elastic filter rule
+	Source *string `pulumi:"source"`
+}
+
+// Elastic traffic filter rule object
+type ElasticTrafficFilterRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticTrafficFilterRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticTrafficFilterRuleResponse)(nil)).Elem()
+}
+
+func (o ElasticTrafficFilterRuleResponseOutput) ToElasticTrafficFilterRuleResponseOutput() ElasticTrafficFilterRuleResponseOutput {
+	return o
+}
+
+func (o ElasticTrafficFilterRuleResponseOutput) ToElasticTrafficFilterRuleResponseOutputWithContext(ctx context.Context) ElasticTrafficFilterRuleResponseOutput {
+	return o
+}
+
+// Guid of Private Endpoint in the elastic filter rule
+func (o ElasticTrafficFilterRuleResponseOutput) AzureEndpointGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterRuleResponse) *string { return v.AzureEndpointGuid }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Private Endpoint in the elastic filter rule
+func (o ElasticTrafficFilterRuleResponseOutput) AzureEndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterRuleResponse) *string { return v.AzureEndpointName }).(pulumi.StringPtrOutput)
+}
+
+// Description of the elastic filter rule
+func (o ElasticTrafficFilterRuleResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterRuleResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Id of the elastic filter rule
+func (o ElasticTrafficFilterRuleResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// IP of the elastic filter rule
+func (o ElasticTrafficFilterRuleResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticTrafficFilterRuleResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type ElasticTrafficFilterRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ElasticTrafficFilterRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElasticTrafficFilterRuleResponse)(nil)).Elem()
+}
+
+func (o ElasticTrafficFilterRuleResponseArrayOutput) ToElasticTrafficFilterRuleResponseArrayOutput() ElasticTrafficFilterRuleResponseArrayOutput {
+	return o
+}
+
+func (o ElasticTrafficFilterRuleResponseArrayOutput) ToElasticTrafficFilterRuleResponseArrayOutputWithContext(ctx context.Context) ElasticTrafficFilterRuleResponseArrayOutput {
+	return o
+}
+
+func (o ElasticTrafficFilterRuleResponseArrayOutput) Index(i pulumi.IntInput) ElasticTrafficFilterRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticTrafficFilterRuleResponse {
+		return vs[0].([]ElasticTrafficFilterRuleResponse)[vs[1].(int)]
+	}).(ElasticTrafficFilterRuleResponseOutput)
+}
+
 // The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
 type FilteringTag struct {
 	// Valid actions for a filtering tag.
@@ -1279,14 +1441,120 @@ func (o LogRulesResponsePtrOutput) SendSubscriptionLogs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Marketplace SAAS Info of the resource.
+type MarketplaceSaaSInfoResponse struct {
+	// Marketplace Subscription Details: SAAS Name
+	MarketplaceName *string `pulumi:"marketplaceName"`
+	// Marketplace Subscription Details: Resource URI
+	MarketplaceResourceId *string `pulumi:"marketplaceResourceId"`
+	// Marketplace Subscription
+	MarketplaceSubscription *MarketplaceSaaSInfoResponseMarketplaceSubscription `pulumi:"marketplaceSubscription"`
+}
+
+// Marketplace SAAS Info of the resource.
+type MarketplaceSaaSInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceSaaSInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceSaaSInfoResponse)(nil)).Elem()
+}
+
+func (o MarketplaceSaaSInfoResponseOutput) ToMarketplaceSaaSInfoResponseOutput() MarketplaceSaaSInfoResponseOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponseOutput) ToMarketplaceSaaSInfoResponseOutputWithContext(ctx context.Context) MarketplaceSaaSInfoResponseOutput {
+	return o
+}
+
+// Marketplace Subscription Details: SAAS Name
+func (o MarketplaceSaaSInfoResponseOutput) MarketplaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *string { return v.MarketplaceName }).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Details: Resource URI
+func (o MarketplaceSaaSInfoResponseOutput) MarketplaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *string { return v.MarketplaceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription
+func (o MarketplaceSaaSInfoResponseOutput) MarketplaceSubscription() MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *MarketplaceSaaSInfoResponseMarketplaceSubscription {
+		return v.MarketplaceSubscription
+	}).(MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput)
+}
+
+// Marketplace Subscription
+type MarketplaceSaaSInfoResponseMarketplaceSubscription struct {
+	// Marketplace Subscription Id. This is a GUID-formatted string.
+	Id *string `pulumi:"id"`
+}
+
+// Marketplace Subscription
+type MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceSaaSInfoResponseMarketplaceSubscription)(nil)).Elem()
+}
+
+func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput) ToMarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput() MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput) ToMarketplaceSaaSInfoResponseMarketplaceSubscriptionOutputWithContext(ctx context.Context) MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput {
+	return o
+}
+
+// Marketplace Subscription Id. This is a GUID-formatted string.
+func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponseMarketplaceSubscription) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarketplaceSaaSInfoResponseMarketplaceSubscription)(nil)).Elem()
+}
+
+func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) ToMarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput() MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) ToMarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutputWithContext(ctx context.Context) MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) Elem() MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponseMarketplaceSubscription) MarketplaceSaaSInfoResponseMarketplaceSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret MarketplaceSaaSInfoResponseMarketplaceSubscription
+		return ret
+	}).(MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput)
+}
+
+// Marketplace Subscription Id. This is a GUID-formatted string.
+func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponseMarketplaceSubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties specific to the monitor resource.
 type MonitorProperties struct {
+	// Flag to determine if User API Key has to be generated and shared.
+	GenerateApiKey *bool `pulumi:"generateApiKey"`
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus *string `pulumi:"monitoringStatus"`
 	// Provisioning state of the monitor resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// User information.
 	UserInfo *UserInfo `pulumi:"userInfo"`
+	// Version of elastic of the monitor resource
+	Version *string `pulumi:"version"`
 }
 
 // MonitorPropertiesInput is an input type that accepts MonitorPropertiesArgs and MonitorPropertiesOutput values.
@@ -1302,12 +1570,16 @@ type MonitorPropertiesInput interface {
 
 // Properties specific to the monitor resource.
 type MonitorPropertiesArgs struct {
+	// Flag to determine if User API Key has to be generated and shared.
+	GenerateApiKey pulumi.BoolPtrInput `pulumi:"generateApiKey"`
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus pulumi.StringPtrInput `pulumi:"monitoringStatus"`
 	// Provisioning state of the monitor resource.
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// User information.
 	UserInfo UserInfoPtrInput `pulumi:"userInfo"`
+	// Version of elastic of the monitor resource
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MonitorPropertiesArgs) ElementType() reflect.Type {
@@ -1388,6 +1660,11 @@ func (o MonitorPropertiesOutput) ToMonitorPropertiesPtrOutputWithContext(ctx con
 	}).(MonitorPropertiesPtrOutput)
 }
 
+// Flag to determine if User API Key has to be generated and shared.
+func (o MonitorPropertiesOutput) GenerateApiKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonitorProperties) *bool { return v.GenerateApiKey }).(pulumi.BoolPtrOutput)
+}
+
 // Flag specifying if the resource monitoring is enabled or disabled.
 func (o MonitorPropertiesOutput) MonitoringStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorProperties) *string { return v.MonitoringStatus }).(pulumi.StringPtrOutput)
@@ -1401,6 +1678,11 @@ func (o MonitorPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 // User information.
 func (o MonitorPropertiesOutput) UserInfo() UserInfoPtrOutput {
 	return o.ApplyT(func(v MonitorProperties) *UserInfo { return v.UserInfo }).(UserInfoPtrOutput)
+}
+
+// Version of elastic of the monitor resource
+func (o MonitorPropertiesOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorProperties) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type MonitorPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -1425,6 +1707,16 @@ func (o MonitorPropertiesPtrOutput) Elem() MonitorPropertiesOutput {
 		var ret MonitorProperties
 		return ret
 	}).(MonitorPropertiesOutput)
+}
+
+// Flag to determine if User API Key has to be generated and shared.
+func (o MonitorPropertiesPtrOutput) GenerateApiKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MonitorProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GenerateApiKey
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Flag specifying if the resource monitoring is enabled or disabled.
@@ -1457,17 +1749,31 @@ func (o MonitorPropertiesPtrOutput) UserInfo() UserInfoPtrOutput {
 	}).(UserInfoPtrOutput)
 }
 
+// Version of elastic of the monitor resource
+func (o MonitorPropertiesPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties specific to the monitor resource.
 type MonitorPropertiesResponse struct {
 	// Elastic cloud properties.
-	ElasticProperties     *ElasticPropertiesResponse `pulumi:"elasticProperties"`
-	LiftrResourceCategory string                     `pulumi:"liftrResourceCategory"`
+	ElasticProperties *ElasticPropertiesResponse `pulumi:"elasticProperties"`
+	// Flag to determine if User API Key has to be generated and shared.
+	GenerateApiKey        *bool  `pulumi:"generateApiKey"`
+	LiftrResourceCategory string `pulumi:"liftrResourceCategory"`
 	// The priority of the resource.
 	LiftrResourcePreference int `pulumi:"liftrResourcePreference"`
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus *string `pulumi:"monitoringStatus"`
 	// Provisioning state of the monitor resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
+	// Version of elastic of the monitor resource
+	Version *string `pulumi:"version"`
 }
 
 // Properties specific to the monitor resource.
@@ -1490,6 +1796,11 @@ func (o MonitorPropertiesResponseOutput) ElasticProperties() ElasticPropertiesRe
 	return o.ApplyT(func(v MonitorPropertiesResponse) *ElasticPropertiesResponse { return v.ElasticProperties }).(ElasticPropertiesResponsePtrOutput)
 }
 
+// Flag to determine if User API Key has to be generated and shared.
+func (o MonitorPropertiesResponseOutput) GenerateApiKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonitorPropertiesResponse) *bool { return v.GenerateApiKey }).(pulumi.BoolPtrOutput)
+}
+
 func (o MonitorPropertiesResponseOutput) LiftrResourceCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponse) string { return v.LiftrResourceCategory }).(pulumi.StringOutput)
 }
@@ -1507,6 +1818,11 @@ func (o MonitorPropertiesResponseOutput) MonitoringStatus() pulumi.StringPtrOutp
 // Provisioning state of the monitor resource.
 func (o MonitorPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// Version of elastic of the monitor resource
+func (o MonitorPropertiesResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorPropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The properties of a resource currently being monitored by the Elastic monitor resource.
@@ -2022,6 +2338,30 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+type UserApiKeyResponsePropertiesResponse struct {
+	// The User Api Key Generated based on GenerateApiKey flag. This is applicable for non-Portal clients only.
+	ApiKey *string `pulumi:"apiKey"`
+}
+
+type UserApiKeyResponsePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (UserApiKeyResponsePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserApiKeyResponsePropertiesResponse)(nil)).Elem()
+}
+
+func (o UserApiKeyResponsePropertiesResponseOutput) ToUserApiKeyResponsePropertiesResponseOutput() UserApiKeyResponsePropertiesResponseOutput {
+	return o
+}
+
+func (o UserApiKeyResponsePropertiesResponseOutput) ToUserApiKeyResponsePropertiesResponseOutputWithContext(ctx context.Context) UserApiKeyResponsePropertiesResponseOutput {
+	return o
+}
+
+// The User Api Key Generated based on GenerateApiKey flag. This is applicable for non-Portal clients only.
+func (o UserApiKeyResponsePropertiesResponseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserApiKeyResponsePropertiesResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
 // User Information to be passed to partners.
 type UserInfo struct {
 	// Company information of the user to be passed to partners.
@@ -2293,6 +2633,10 @@ func init() {
 	pulumi.RegisterOutputType(ElasticCloudUserResponsePtrOutput{})
 	pulumi.RegisterOutputType(ElasticPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ElasticPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticTrafficFilterResponseOutput{})
+	pulumi.RegisterOutputType(ElasticTrafficFilterResponseArrayOutput{})
+	pulumi.RegisterOutputType(ElasticTrafficFilterRuleResponseOutput{})
+	pulumi.RegisterOutputType(ElasticTrafficFilterRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(FilteringTagOutput{})
 	pulumi.RegisterOutputType(FilteringTagArrayOutput{})
 	pulumi.RegisterOutputType(FilteringTagResponseOutput{})
@@ -2305,6 +2649,9 @@ func init() {
 	pulumi.RegisterOutputType(LogRulesPtrOutput{})
 	pulumi.RegisterOutputType(LogRulesResponseOutput{})
 	pulumi.RegisterOutputType(LogRulesResponsePtrOutput{})
+	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponseOutput{})
+	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput{})
+	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesResponseOutput{})
@@ -2318,6 +2665,7 @@ func init() {
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserApiKeyResponsePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(UserInfoOutput{})
 	pulumi.RegisterOutputType(UserInfoPtrOutput{})
 	pulumi.RegisterOutputType(VMResourcesResponseOutput{})

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A budget resource.
-//
-// Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
 type Budget struct {
 	pulumi.CustomResourceState
 
@@ -91,6 +89,9 @@ func NewBudget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:consumption/v20220901:Budget"),
+		},
+		{
+			Type: pulumi.String("azure-native:consumption/v20230301:Budget"),
 		},
 	})
 	opts = append(opts, aliases)

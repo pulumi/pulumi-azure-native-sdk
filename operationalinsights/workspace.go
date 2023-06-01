@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The top level Workspace resource container.
-// API Version: 2020-10-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2020-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -20,12 +21,16 @@ type Workspace struct {
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// This is a read-only property. Represents the ID associated with the workspace.
 	CustomerId pulumi.StringOutput `pulumi:"customerId"`
-	// The ETag of the workspace.
-	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
+	// The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
+	DefaultDataCollectionRuleResourceId pulumi.StringPtrOutput `pulumi:"defaultDataCollectionRuleResourceId"`
+	// The etag of the workspace.
+	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Workspace features.
 	Features WorkspaceFeaturesResponsePtrOutput `pulumi:"features"`
 	// Indicates whether customer managed storage is mandatory for query management.
 	ForceCmkForQuery pulumi.BoolPtrOutput `pulumi:"forceCmkForQuery"`
+	// The identity of the resource.
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Workspace modification date.
@@ -35,7 +40,7 @@ type Workspace struct {
 	// List of linked private link scope resources.
 	PrivateLinkScopedResources PrivateLinkScopedResourceResponseArrayOutput `pulumi:"privateLinkScopedResources"`
 	// The provisioning state of the workspace.
-	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The network access type for accessing Log Analytics ingestion.
 	PublicNetworkAccessForIngestion pulumi.StringPtrOutput `pulumi:"publicNetworkAccessForIngestion"`
 	// The network access type for accessing Log Analytics query.
@@ -44,6 +49,8 @@ type Workspace struct {
 	RetentionInDays pulumi.IntPtrOutput `pulumi:"retentionInDays"`
 	// The SKU of the workspace.
 	Sku WorkspaceSkuResponsePtrOutput `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -118,16 +125,16 @@ func (WorkspaceState) ElementType() reflect.Type {
 }
 
 type workspaceArgs struct {
-	// The ETag of the workspace.
-	ETag *string `pulumi:"eTag"`
+	// The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
+	DefaultDataCollectionRuleResourceId *string `pulumi:"defaultDataCollectionRuleResourceId"`
 	// Workspace features.
 	Features *WorkspaceFeatures `pulumi:"features"`
 	// Indicates whether customer managed storage is mandatory for query management.
 	ForceCmkForQuery *bool `pulumi:"forceCmkForQuery"`
+	// The identity of the resource.
+	Identity *Identity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The provisioning state of the workspace.
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// The network access type for accessing Log Analytics ingestion.
 	PublicNetworkAccessForIngestion *string `pulumi:"publicNetworkAccessForIngestion"`
 	// The network access type for accessing Log Analytics query.
@@ -148,16 +155,16 @@ type workspaceArgs struct {
 
 // The set of arguments for constructing a Workspace resource.
 type WorkspaceArgs struct {
-	// The ETag of the workspace.
-	ETag pulumi.StringPtrInput
+	// The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
+	DefaultDataCollectionRuleResourceId pulumi.StringPtrInput
 	// Workspace features.
 	Features WorkspaceFeaturesPtrInput
 	// Indicates whether customer managed storage is mandatory for query management.
 	ForceCmkForQuery pulumi.BoolPtrInput
+	// The identity of the resource.
+	Identity IdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The provisioning state of the workspace.
-	ProvisioningState pulumi.StringPtrInput
 	// The network access type for accessing Log Analytics ingestion.
 	PublicNetworkAccessForIngestion pulumi.StringPtrInput
 	// The network access type for accessing Log Analytics query.
@@ -223,9 +230,14 @@ func (o WorkspaceOutput) CustomerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.CustomerId }).(pulumi.StringOutput)
 }
 
-// The ETag of the workspace.
-func (o WorkspaceOutput) ETag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ETag }).(pulumi.StringPtrOutput)
+// The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
+func (o WorkspaceOutput) DefaultDataCollectionRuleResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.DefaultDataCollectionRuleResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The etag of the workspace.
+func (o WorkspaceOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Workspace features.
@@ -236,6 +248,11 @@ func (o WorkspaceOutput) Features() WorkspaceFeaturesResponsePtrOutput {
 // Indicates whether customer managed storage is mandatory for query management.
 func (o WorkspaceOutput) ForceCmkForQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.ForceCmkForQuery }).(pulumi.BoolPtrOutput)
+}
+
+// The identity of the resource.
+func (o WorkspaceOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -259,8 +276,8 @@ func (o WorkspaceOutput) PrivateLinkScopedResources() PrivateLinkScopedResourceR
 }
 
 // The provisioning state of the workspace.
-func (o WorkspaceOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o WorkspaceOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The network access type for accessing Log Analytics ingestion.
@@ -281,6 +298,11 @@ func (o WorkspaceOutput) RetentionInDays() pulumi.IntPtrOutput {
 // The SKU of the workspace.
 func (o WorkspaceOutput) Sku() WorkspaceSkuResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceSkuResponsePtrOutput { return v.Sku }).(WorkspaceSkuResponsePtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

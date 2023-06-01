@@ -518,54 +518,6 @@ func (o AutoScalePropertiesResponsePtrOutput) MinNodeCount() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The custom setup of running cmdkey commands.
-type CmdkeySetup struct {
-	// The password of data source access.
-	Password SecureString `pulumi:"password"`
-	// The server name of data source access.
-	TargetName interface{} `pulumi:"targetName"`
-	// The type of custom setup.
-	// Expected value is 'CmdkeySetup'.
-	Type string `pulumi:"type"`
-	// The user name of data source access.
-	UserName interface{} `pulumi:"userName"`
-}
-
-// The custom setup of running cmdkey commands.
-type CmdkeySetupResponse struct {
-	// The password of data source access.
-	Password SecureStringResponse `pulumi:"password"`
-	// The server name of data source access.
-	TargetName interface{} `pulumi:"targetName"`
-	// The type of custom setup.
-	// Expected value is 'CmdkeySetup'.
-	Type string `pulumi:"type"`
-	// The user name of data source access.
-	UserName interface{} `pulumi:"userName"`
-}
-
-// The custom setup of installing 3rd party components.
-type ComponentSetup struct {
-	// The name of the 3rd party component.
-	ComponentName string `pulumi:"componentName"`
-	// The license key to activate the component.
-	LicenseKey *SecureString `pulumi:"licenseKey"`
-	// The type of custom setup.
-	// Expected value is 'ComponentSetup'.
-	Type string `pulumi:"type"`
-}
-
-// The custom setup of installing 3rd party components.
-type ComponentSetupResponse struct {
-	// The name of the 3rd party component.
-	ComponentName string `pulumi:"componentName"`
-	// The license key to activate the component.
-	LicenseKey *SecureStringResponse `pulumi:"licenseKey"`
-	// The type of custom setup.
-	// Expected value is 'ComponentSetup'.
-	Type string `pulumi:"type"`
-}
-
 // Initial workspace AAD admin properties for a CSP subscription
 type CspWorkspaceAdminProperties struct {
 	// AAD object ID of initial workspace admin
@@ -1672,212 +1624,6 @@ func (o EncryptionDetailsResponsePtrOutput) DoubleEncryptionEnabled() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The entity reference.
-type EntityReference struct {
-	// The name of this referenced entity.
-	ReferenceName *string `pulumi:"referenceName"`
-	// The type of this referenced entity.
-	Type *string `pulumi:"type"`
-}
-
-// The entity reference.
-type EntityReferenceResponse struct {
-	// The name of this referenced entity.
-	ReferenceName *string `pulumi:"referenceName"`
-	// The type of this referenced entity.
-	Type *string `pulumi:"type"`
-}
-
-// The custom setup of setting environment variable.
-type EnvironmentVariableSetup struct {
-	// The type of custom setup.
-	// Expected value is 'EnvironmentVariableSetup'.
-	Type string `pulumi:"type"`
-	// The name of the environment variable.
-	VariableName string `pulumi:"variableName"`
-	// The value of the environment variable.
-	VariableValue string `pulumi:"variableValue"`
-}
-
-// The custom setup of setting environment variable.
-type EnvironmentVariableSetupResponse struct {
-	// The type of custom setup.
-	// Expected value is 'EnvironmentVariableSetup'.
-	Type string `pulumi:"type"`
-	// The name of the environment variable.
-	VariableName string `pulumi:"variableName"`
-	// The value of the environment variable.
-	VariableValue string `pulumi:"variableValue"`
-}
-
-// The compute resource properties for managed integration runtime.
-type IntegrationRuntimeComputeProperties struct {
-	// Data flow properties for managed integration runtime.
-	DataFlowProperties *IntegrationRuntimeDataFlowProperties `pulumi:"dataFlowProperties"`
-	// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
-	Location *string `pulumi:"location"`
-	// Maximum parallel executions count per node for managed integration runtime.
-	MaxParallelExecutionsPerNode *int `pulumi:"maxParallelExecutionsPerNode"`
-	// The node size requirement to managed integration runtime.
-	NodeSize *string `pulumi:"nodeSize"`
-	// The required number of nodes for managed integration runtime.
-	NumberOfNodes *int `pulumi:"numberOfNodes"`
-	// VNet properties for managed integration runtime.
-	VNetProperties *IntegrationRuntimeVNetProperties `pulumi:"vNetProperties"`
-}
-
-// The compute resource properties for managed integration runtime.
-type IntegrationRuntimeComputePropertiesResponse struct {
-	// Data flow properties for managed integration runtime.
-	DataFlowProperties *IntegrationRuntimeDataFlowPropertiesResponse `pulumi:"dataFlowProperties"`
-	// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
-	Location *string `pulumi:"location"`
-	// Maximum parallel executions count per node for managed integration runtime.
-	MaxParallelExecutionsPerNode *int `pulumi:"maxParallelExecutionsPerNode"`
-	// The node size requirement to managed integration runtime.
-	NodeSize *string `pulumi:"nodeSize"`
-	// The required number of nodes for managed integration runtime.
-	NumberOfNodes *int `pulumi:"numberOfNodes"`
-	// VNet properties for managed integration runtime.
-	VNetProperties *IntegrationRuntimeVNetPropertiesResponse `pulumi:"vNetProperties"`
-}
-
-// Custom setup script properties for a managed dedicated integration runtime.
-type IntegrationRuntimeCustomSetupScriptProperties struct {
-	// The URI of the Azure blob container that contains the custom setup script.
-	BlobContainerUri *string `pulumi:"blobContainerUri"`
-	// The SAS token of the Azure blob container.
-	SasToken *SecureString `pulumi:"sasToken"`
-}
-
-// Custom setup script properties for a managed dedicated integration runtime.
-type IntegrationRuntimeCustomSetupScriptPropertiesResponse struct {
-	// The URI of the Azure blob container that contains the custom setup script.
-	BlobContainerUri *string `pulumi:"blobContainerUri"`
-	// The SAS token of the Azure blob container.
-	SasToken *SecureStringResponse `pulumi:"sasToken"`
-}
-
-// Data flow properties for managed integration runtime.
-type IntegrationRuntimeDataFlowProperties struct {
-	// Compute type of the cluster which will execute data flow job.
-	ComputeType *string `pulumi:"computeType"`
-	// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
-	CoreCount *int `pulumi:"coreCount"`
-	// Time to live (in minutes) setting of the cluster which will execute data flow job.
-	TimeToLive *int `pulumi:"timeToLive"`
-}
-
-// Data flow properties for managed integration runtime.
-type IntegrationRuntimeDataFlowPropertiesResponse struct {
-	// Compute type of the cluster which will execute data flow job.
-	ComputeType *string `pulumi:"computeType"`
-	// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
-	CoreCount *int `pulumi:"coreCount"`
-	// Time to live (in minutes) setting of the cluster which will execute data flow job.
-	TimeToLive *int `pulumi:"timeToLive"`
-}
-
-// Data proxy properties for a managed dedicated integration runtime.
-type IntegrationRuntimeDataProxyProperties struct {
-	// The self-hosted integration runtime reference.
-	ConnectVia *EntityReference `pulumi:"connectVia"`
-	// The path to contain the staged data in the Blob storage.
-	Path *string `pulumi:"path"`
-	// The staging linked service reference.
-	StagingLinkedService *EntityReference `pulumi:"stagingLinkedService"`
-}
-
-// Data proxy properties for a managed dedicated integration runtime.
-type IntegrationRuntimeDataProxyPropertiesResponse struct {
-	// The self-hosted integration runtime reference.
-	ConnectVia *EntityReferenceResponse `pulumi:"connectVia"`
-	// The path to contain the staged data in the Blob storage.
-	Path *string `pulumi:"path"`
-	// The staging linked service reference.
-	StagingLinkedService *EntityReferenceResponse `pulumi:"stagingLinkedService"`
-}
-
-// Catalog information for managed dedicated integration runtime.
-type IntegrationRuntimeSsisCatalogInfo struct {
-	// The password of the administrator user account of the catalog database.
-	CatalogAdminPassword *SecureString `pulumi:"catalogAdminPassword"`
-	// The administrator user name of catalog database.
-	CatalogAdminUserName *string `pulumi:"catalogAdminUserName"`
-	// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
-	CatalogPricingTier *string `pulumi:"catalogPricingTier"`
-	// The catalog database server URL.
-	CatalogServerEndpoint *string `pulumi:"catalogServerEndpoint"`
-}
-
-// Catalog information for managed dedicated integration runtime.
-type IntegrationRuntimeSsisCatalogInfoResponse struct {
-	// The password of the administrator user account of the catalog database.
-	CatalogAdminPassword *SecureStringResponse `pulumi:"catalogAdminPassword"`
-	// The administrator user name of catalog database.
-	CatalogAdminUserName *string `pulumi:"catalogAdminUserName"`
-	// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
-	CatalogPricingTier *string `pulumi:"catalogPricingTier"`
-	// The catalog database server URL.
-	CatalogServerEndpoint *string `pulumi:"catalogServerEndpoint"`
-}
-
-// SSIS properties for managed integration runtime.
-type IntegrationRuntimeSsisProperties struct {
-	// Catalog information for managed dedicated integration runtime.
-	CatalogInfo *IntegrationRuntimeSsisCatalogInfo `pulumi:"catalogInfo"`
-	// Custom setup script properties for a managed dedicated integration runtime.
-	CustomSetupScriptProperties *IntegrationRuntimeCustomSetupScriptProperties `pulumi:"customSetupScriptProperties"`
-	// Data proxy properties for a managed dedicated integration runtime.
-	DataProxyProperties *IntegrationRuntimeDataProxyProperties `pulumi:"dataProxyProperties"`
-	// The edition for the SSIS Integration Runtime
-	Edition *string `pulumi:"edition"`
-	// Custom setup without script properties for a SSIS integration runtime.
-	ExpressCustomSetupProperties []interface{} `pulumi:"expressCustomSetupProperties"`
-	// License type for bringing your own license scenario.
-	LicenseType *string `pulumi:"licenseType"`
-}
-
-// SSIS properties for managed integration runtime.
-type IntegrationRuntimeSsisPropertiesResponse struct {
-	// Catalog information for managed dedicated integration runtime.
-	CatalogInfo *IntegrationRuntimeSsisCatalogInfoResponse `pulumi:"catalogInfo"`
-	// Custom setup script properties for a managed dedicated integration runtime.
-	CustomSetupScriptProperties *IntegrationRuntimeCustomSetupScriptPropertiesResponse `pulumi:"customSetupScriptProperties"`
-	// Data proxy properties for a managed dedicated integration runtime.
-	DataProxyProperties *IntegrationRuntimeDataProxyPropertiesResponse `pulumi:"dataProxyProperties"`
-	// The edition for the SSIS Integration Runtime
-	Edition *string `pulumi:"edition"`
-	// Custom setup without script properties for a SSIS integration runtime.
-	ExpressCustomSetupProperties []interface{} `pulumi:"expressCustomSetupProperties"`
-	// License type for bringing your own license scenario.
-	LicenseType *string `pulumi:"licenseType"`
-}
-
-// VNet properties for managed integration runtime.
-type IntegrationRuntimeVNetProperties struct {
-	// Resource IDs of the public IP addresses that this integration runtime will use.
-	PublicIPs []string `pulumi:"publicIPs"`
-	// The name of the subnet this integration runtime will join.
-	Subnet *string `pulumi:"subnet"`
-	// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
-	SubnetId *string `pulumi:"subnetId"`
-	// The ID of the VNet that this integration runtime will join.
-	VNetId *string `pulumi:"vNetId"`
-}
-
-// VNet properties for managed integration runtime.
-type IntegrationRuntimeVNetPropertiesResponse struct {
-	// Resource IDs of the public IP addresses that this integration runtime will use.
-	PublicIPs []string `pulumi:"publicIPs"`
-	// The name of the subnet this integration runtime will join.
-	Subnet *string `pulumi:"subnet"`
-	// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
-	SubnetId *string `pulumi:"subnetId"`
-	// The ID of the VNet that this integration runtime will join.
-	VNetId *string `pulumi:"vNetId"`
-}
-
 // Key encryption key properties
 type KekIdentityProperties struct {
 	// Boolean specifying whether to use system assigned identity or not
@@ -2582,42 +2328,6 @@ func (o LibraryRequirementsResponsePtrOutput) Time() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key authorization type integration runtime.
-type LinkedIntegrationRuntimeKeyAuthorization struct {
-	// The authorization type for integration runtime sharing.
-	// Expected value is 'Key'.
-	AuthorizationType string `pulumi:"authorizationType"`
-	// The key used for authorization.
-	Key SecureString `pulumi:"key"`
-}
-
-// The key authorization type integration runtime.
-type LinkedIntegrationRuntimeKeyAuthorizationResponse struct {
-	// The authorization type for integration runtime sharing.
-	// Expected value is 'Key'.
-	AuthorizationType string `pulumi:"authorizationType"`
-	// The key used for authorization.
-	Key SecureStringResponse `pulumi:"key"`
-}
-
-// The role based access control (RBAC) authorization type integration runtime.
-type LinkedIntegrationRuntimeRbacAuthorization struct {
-	// The authorization type for integration runtime sharing.
-	// Expected value is 'RBAC'.
-	AuthorizationType string `pulumi:"authorizationType"`
-	// The resource identifier of the integration runtime to be shared.
-	ResourceId string `pulumi:"resourceId"`
-}
-
-// The role based access control (RBAC) authorization type integration runtime.
-type LinkedIntegrationRuntimeRbacAuthorizationResponse struct {
-	// The authorization type for integration runtime sharing.
-	// Expected value is 'RBAC'.
-	AuthorizationType string `pulumi:"authorizationType"`
-	// The resource identifier of the integration runtime to be shared.
-	ResourceId string `pulumi:"resourceId"`
-}
-
 // The linked integration runtime information.
 type LinkedIntegrationRuntimeResponse struct {
 	// The creating time of the linked integration runtime.
@@ -2637,7 +2347,7 @@ type ManagedIdentity struct {
 	// The type of managed identity for the workspace
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The user assigned managed identities.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedIdentityInput is an input type that accepts ManagedIdentityArgs and ManagedIdentityOutput values.
@@ -2656,7 +2366,7 @@ type ManagedIdentityArgs struct {
 	// The type of managed identity for the workspace
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The user assigned managed identities.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedIdentityArgs) ElementType() reflect.Type {
@@ -2743,8 +2453,8 @@ func (o ManagedIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The user assigned managed identities.
-func (o ManagedIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -2782,13 +2492,13 @@ func (o ManagedIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The user assigned managed identities.
-func (o ManagedIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedIdentity) map[string]interface{} {
+func (o ManagedIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The workspace managed identity
@@ -2904,19 +2614,6 @@ func (o ManagedIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedM
 	}).(UserAssignedManagedIdentityResponseMapOutput)
 }
 
-// Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
-type ManagedIntegrationRuntime struct {
-	// The compute resource for managed integration runtime.
-	ComputeProperties *IntegrationRuntimeComputeProperties `pulumi:"computeProperties"`
-	// Integration runtime description.
-	Description *string `pulumi:"description"`
-	// SSIS properties for managed integration runtime.
-	SsisProperties *IntegrationRuntimeSsisProperties `pulumi:"ssisProperties"`
-	// The type of integration runtime.
-	// Expected value is 'Managed'.
-	Type string `pulumi:"type"`
-}
-
 // Error definition for managed integration runtime.
 type ManagedIntegrationRuntimeErrorResponse struct {
 	// Error code.
@@ -2952,21 +2649,6 @@ type ManagedIntegrationRuntimeOperationResultResponse struct {
 	// The start time of the operation.
 	StartTime string `pulumi:"startTime"`
 	// The operation type. Could be start or stop.
-	Type string `pulumi:"type"`
-}
-
-// Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
-type ManagedIntegrationRuntimeResponse struct {
-	// The compute resource for managed integration runtime.
-	ComputeProperties *IntegrationRuntimeComputePropertiesResponse `pulumi:"computeProperties"`
-	// Integration runtime description.
-	Description *string `pulumi:"description"`
-	// SSIS properties for managed integration runtime.
-	SsisProperties *IntegrationRuntimeSsisPropertiesResponse `pulumi:"ssisProperties"`
-	// Integration runtime state, only valid for managed dedicated integration runtime.
-	State string `pulumi:"state"`
-	// The type of integration runtime.
-	// Expected value is 'Managed'.
 	Type string `pulumi:"type"`
 }
 
@@ -3262,176 +2944,105 @@ func (o ManagedVirtualNetworkSettingsResponsePtrOutput) PreventDataExfiltration(
 }
 
 // A private endpoint connection
-type PrivateEndpointConnectionType struct {
+type PrivateEndpointConnection struct {
 	// Connection state of the private endpoint connection.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 }
 
-// PrivateEndpointConnectionTypeInput is an input type that accepts PrivateEndpointConnectionTypeArgs and PrivateEndpointConnectionTypeOutput values.
-// You can construct a concrete instance of `PrivateEndpointConnectionTypeInput` via:
+// PrivateEndpointConnectionInput is an input type that accepts PrivateEndpointConnectionArgs and PrivateEndpointConnectionOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionInput` via:
 //
-//	PrivateEndpointConnectionTypeArgs{...}
-type PrivateEndpointConnectionTypeInput interface {
+//	PrivateEndpointConnectionArgs{...}
+type PrivateEndpointConnectionInput interface {
 	pulumi.Input
 
-	ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput
-	ToPrivateEndpointConnectionTypeOutputWithContext(context.Context) PrivateEndpointConnectionTypeOutput
+	ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput
+	ToPrivateEndpointConnectionOutputWithContext(context.Context) PrivateEndpointConnectionOutput
 }
 
 // A private endpoint connection
-type PrivateEndpointConnectionTypeArgs struct {
+type PrivateEndpointConnectionArgs struct {
 	// Connection state of the private endpoint connection.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
 }
 
-func (PrivateEndpointConnectionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionType)(nil)).Elem()
+func (PrivateEndpointConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnection)(nil)).Elem()
 }
 
-func (i PrivateEndpointConnectionTypeArgs) ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput {
-	return i.ToPrivateEndpointConnectionTypeOutputWithContext(context.Background())
+func (i PrivateEndpointConnectionArgs) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {
+	return i.ToPrivateEndpointConnectionOutputWithContext(context.Background())
 }
 
-func (i PrivateEndpointConnectionTypeArgs) ToPrivateEndpointConnectionTypeOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeOutput)
+func (i PrivateEndpointConnectionArgs) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionOutput)
 }
 
-// PrivateEndpointConnectionTypeArrayInput is an input type that accepts PrivateEndpointConnectionTypeArray and PrivateEndpointConnectionTypeArrayOutput values.
-// You can construct a concrete instance of `PrivateEndpointConnectionTypeArrayInput` via:
+// PrivateEndpointConnectionArrayInput is an input type that accepts PrivateEndpointConnectionArray and PrivateEndpointConnectionArrayOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionArrayInput` via:
 //
-//	PrivateEndpointConnectionTypeArray{ PrivateEndpointConnectionTypeArgs{...} }
-type PrivateEndpointConnectionTypeArrayInput interface {
+//	PrivateEndpointConnectionArray{ PrivateEndpointConnectionArgs{...} }
+type PrivateEndpointConnectionArrayInput interface {
 	pulumi.Input
 
-	ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput
-	ToPrivateEndpointConnectionTypeArrayOutputWithContext(context.Context) PrivateEndpointConnectionTypeArrayOutput
+	ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput
+	ToPrivateEndpointConnectionArrayOutputWithContext(context.Context) PrivateEndpointConnectionArrayOutput
 }
 
-type PrivateEndpointConnectionTypeArray []PrivateEndpointConnectionTypeInput
+type PrivateEndpointConnectionArray []PrivateEndpointConnectionInput
 
-func (PrivateEndpointConnectionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionType)(nil)).Elem()
+func (PrivateEndpointConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnection)(nil)).Elem()
 }
 
-func (i PrivateEndpointConnectionTypeArray) ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput {
-	return i.ToPrivateEndpointConnectionTypeArrayOutputWithContext(context.Background())
+func (i PrivateEndpointConnectionArray) ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput {
+	return i.ToPrivateEndpointConnectionArrayOutputWithContext(context.Background())
 }
 
-func (i PrivateEndpointConnectionTypeArray) ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeArrayOutput)
+func (i PrivateEndpointConnectionArray) ToPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionArrayOutput)
 }
 
 // A private endpoint connection
-type PrivateEndpointConnectionTypeOutput struct{ *pulumi.OutputState }
+type PrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
-func (PrivateEndpointConnectionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionType)(nil)).Elem()
+func (PrivateEndpointConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnection)(nil)).Elem()
 }
 
-func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput {
+func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {
 	return o
 }
 
-func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeOutput {
+func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
 }
 
 // Connection state of the private endpoint connection.
-func (o PrivateEndpointConnectionTypeOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionType) *PrivateLinkServiceConnectionState {
+func (o PrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnection) *PrivateLinkServiceConnectionState {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStatePtrOutput)
 }
 
-type PrivateEndpointConnectionTypeArrayOutput struct{ *pulumi.OutputState }
+type PrivateEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
 
-func (PrivateEndpointConnectionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionType)(nil)).Elem()
+func (PrivateEndpointConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnection)(nil)).Elem()
 }
 
-func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput {
+func (o PrivateEndpointConnectionArrayOutput) ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput {
 	return o
 }
 
-func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeArrayOutput {
+func (o PrivateEndpointConnectionArrayOutput) ToPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionArrayOutput {
 	return o
 }
 
-func (o PrivateEndpointConnectionTypeArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionType {
-		return vs[0].([]PrivateEndpointConnectionType)[vs[1].(int)]
-	}).(PrivateEndpointConnectionTypeOutput)
-}
-
-// Private Endpoint Connection For Private Link Hub - Basic
-type PrivateEndpointConnectionForPrivateLinkHubBasicResponse struct {
-	// identifier
-	Id string `pulumi:"id"`
-	// The private endpoint which the connection belongs to.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// Connection state of the private endpoint connection.
-	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// Provisioning state of the private endpoint connection.
-	ProvisioningState string `pulumi:"provisioningState"`
-}
-
-// Private Endpoint Connection For Private Link Hub - Basic
-type PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionForPrivateLinkHubBasicResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput) ToPrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput() PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput) ToPrivateEndpointConnectionForPrivateLinkHubBasicResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput {
-	return o
-}
-
-// identifier
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionForPrivateLinkHubBasicResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The private endpoint which the connection belongs to.
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionForPrivateLinkHubBasicResponse) *PrivateEndpointResponse {
-		return v.PrivateEndpoint
-	}).(PrivateEndpointResponsePtrOutput)
-}
-
-// Connection state of the private endpoint connection.
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionForPrivateLinkHubBasicResponse) *PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
-// Provisioning state of the private endpoint connection.
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionForPrivateLinkHubBasicResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionForPrivateLinkHubBasicResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput) ToPrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput() PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput) ToPrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionForPrivateLinkHubBasicResponse {
-		return vs[0].([]PrivateEndpointConnectionForPrivateLinkHubBasicResponse)[vs[1].(int)]
-	}).(PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput)
+func (o PrivateEndpointConnectionArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnection {
+		return vs[0].([]PrivateEndpointConnection)[vs[1].(int)]
+	}).(PrivateEndpointConnectionOutput)
 }
 
 // A private endpoint connection
@@ -4030,35 +3641,6 @@ func (o PurviewConfigurationResponsePtrOutput) PurviewResourceId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
-type SecureString struct {
-	// Type of the secret.
-	// Expected value is 'SecureString'.
-	Type string `pulumi:"type"`
-	// Value of secure string.
-	Value string `pulumi:"value"`
-}
-
-// Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
-type SecureStringResponse struct {
-	// Type of the secret.
-	// Expected value is 'SecureString'.
-	Type string `pulumi:"type"`
-	// Value of secure string.
-	Value string `pulumi:"value"`
-}
-
-// Self-hosted integration runtime.
-type SelfHostedIntegrationRuntime struct {
-	// Integration runtime description.
-	Description *string `pulumi:"description"`
-	// Linked integration runtime type from data factory
-	LinkedInfo interface{} `pulumi:"linkedInfo"`
-	// The type of integration runtime.
-	// Expected value is 'SelfHosted'.
-	Type string `pulumi:"type"`
-}
-
 // Properties of Self-hosted integration runtime node.
 type SelfHostedIntegrationRuntimeNodeResponse struct {
 	// The integration runtime capabilities dictionary
@@ -4097,17 +3679,6 @@ type SelfHostedIntegrationRuntimeNodeResponse struct {
 	Version string `pulumi:"version"`
 	// Status of the integration runtime node version.
 	VersionStatus string `pulumi:"versionStatus"`
-}
-
-// Self-hosted integration runtime.
-type SelfHostedIntegrationRuntimeResponse struct {
-	// Integration runtime description.
-	Description *string `pulumi:"description"`
-	// Linked integration runtime type from data factory
-	LinkedInfo interface{} `pulumi:"linkedInfo"`
-	// The type of integration runtime.
-	// Expected value is 'SelfHosted'.
-	Type string `pulumi:"type"`
 }
 
 // Self-hosted integration runtime status.
@@ -4425,152 +3996,6 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 		}
 		return v.Tier
 	}).(pulumi.StringPtrOutput)
-}
-
-// Properties for an Sql pool vulnerability assessment rule baseline's result.
-type SqlPoolVulnerabilityAssessmentRuleBaselineItem struct {
-	// The rule baseline result
-	Result []string `pulumi:"result"`
-}
-
-// SqlPoolVulnerabilityAssessmentRuleBaselineItemInput is an input type that accepts SqlPoolVulnerabilityAssessmentRuleBaselineItemArgs and SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput values.
-// You can construct a concrete instance of `SqlPoolVulnerabilityAssessmentRuleBaselineItemInput` via:
-//
-//	SqlPoolVulnerabilityAssessmentRuleBaselineItemArgs{...}
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemInput interface {
-	pulumi.Input
-
-	ToSqlPoolVulnerabilityAssessmentRuleBaselineItemOutput() SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput
-	ToSqlPoolVulnerabilityAssessmentRuleBaselineItemOutputWithContext(context.Context) SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput
-}
-
-// Properties for an Sql pool vulnerability assessment rule baseline's result.
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemArgs struct {
-	// The rule baseline result
-	Result pulumi.StringArrayInput `pulumi:"result"`
-}
-
-func (SqlPoolVulnerabilityAssessmentRuleBaselineItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlPoolVulnerabilityAssessmentRuleBaselineItem)(nil)).Elem()
-}
-
-func (i SqlPoolVulnerabilityAssessmentRuleBaselineItemArgs) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemOutput() SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput {
-	return i.ToSqlPoolVulnerabilityAssessmentRuleBaselineItemOutputWithContext(context.Background())
-}
-
-func (i SqlPoolVulnerabilityAssessmentRuleBaselineItemArgs) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemOutputWithContext(ctx context.Context) SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput)
-}
-
-// SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayInput is an input type that accepts SqlPoolVulnerabilityAssessmentRuleBaselineItemArray and SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput values.
-// You can construct a concrete instance of `SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayInput` via:
-//
-//	SqlPoolVulnerabilityAssessmentRuleBaselineItemArray{ SqlPoolVulnerabilityAssessmentRuleBaselineItemArgs{...} }
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayInput interface {
-	pulumi.Input
-
-	ToSqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput() SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput
-	ToSqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutputWithContext(context.Context) SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput
-}
-
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemArray []SqlPoolVulnerabilityAssessmentRuleBaselineItemInput
-
-func (SqlPoolVulnerabilityAssessmentRuleBaselineItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlPoolVulnerabilityAssessmentRuleBaselineItem)(nil)).Elem()
-}
-
-func (i SqlPoolVulnerabilityAssessmentRuleBaselineItemArray) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput() SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput {
-	return i.ToSqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutputWithContext(context.Background())
-}
-
-func (i SqlPoolVulnerabilityAssessmentRuleBaselineItemArray) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutputWithContext(ctx context.Context) SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput)
-}
-
-// Properties for an Sql pool vulnerability assessment rule baseline's result.
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput struct{ *pulumi.OutputState }
-
-func (SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlPoolVulnerabilityAssessmentRuleBaselineItem)(nil)).Elem()
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemOutput() SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput {
-	return o
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemOutputWithContext(ctx context.Context) SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput {
-	return o
-}
-
-// The rule baseline result
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput) Result() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SqlPoolVulnerabilityAssessmentRuleBaselineItem) []string { return v.Result }).(pulumi.StringArrayOutput)
-}
-
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput struct{ *pulumi.OutputState }
-
-func (SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlPoolVulnerabilityAssessmentRuleBaselineItem)(nil)).Elem()
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput() SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput {
-	return o
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutputWithContext(ctx context.Context) SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput {
-	return o
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput) Index(i pulumi.IntInput) SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlPoolVulnerabilityAssessmentRuleBaselineItem {
-		return vs[0].([]SqlPoolVulnerabilityAssessmentRuleBaselineItem)[vs[1].(int)]
-	}).(SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput)
-}
-
-// Properties for an Sql pool vulnerability assessment rule baseline's result.
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemResponse struct {
-	// The rule baseline result
-	Result []string `pulumi:"result"`
-}
-
-// Properties for an Sql pool vulnerability assessment rule baseline's result.
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput struct{ *pulumi.OutputState }
-
-func (SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlPoolVulnerabilityAssessmentRuleBaselineItemResponse)(nil)).Elem()
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput() SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput {
-	return o
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutputWithContext(ctx context.Context) SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput {
-	return o
-}
-
-// The rule baseline result
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput) Result() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SqlPoolVulnerabilityAssessmentRuleBaselineItemResponse) []string { return v.Result }).(pulumi.StringArrayOutput)
-}
-
-type SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlPoolVulnerabilityAssessmentRuleBaselineItemResponse)(nil)).Elem()
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput() SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput {
-	return o
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput) ToSqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutputWithContext(ctx context.Context) SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput {
-	return o
-}
-
-func (o SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput) Index(i pulumi.IntInput) SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlPoolVulnerabilityAssessmentRuleBaselineItemResponse {
-		return vs[0].([]SqlPoolVulnerabilityAssessmentRuleBaselineItemResponse)[vs[1].(int)]
-	}).(SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput)
 }
 
 // Ssis environment reference.
@@ -4954,317 +4379,6 @@ func (o VirtualNetworkProfileResponsePtrOutput) ComputeSubnetId() pulumi.StringP
 		}
 		return v.ComputeSubnetId
 	}).(pulumi.StringPtrOutput)
-}
-
-// Properties of a Vulnerability Assessment recurring scans.
-type VulnerabilityAssessmentRecurringScansProperties struct {
-	// Specifies that the schedule scan notification will be is sent to the subscription administrators.
-	EmailSubscriptionAdmins *bool `pulumi:"emailSubscriptionAdmins"`
-	// Specifies an array of e-mail addresses to which the scan notification is sent.
-	Emails []string `pulumi:"emails"`
-	// Recurring scans state.
-	IsEnabled *bool `pulumi:"isEnabled"`
-}
-
-// Defaults sets the appropriate defaults for VulnerabilityAssessmentRecurringScansProperties
-func (val *VulnerabilityAssessmentRecurringScansProperties) Defaults() *VulnerabilityAssessmentRecurringScansProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
-		emailSubscriptionAdmins_ := true
-		tmp.EmailSubscriptionAdmins = &emailSubscriptionAdmins_
-	}
-	return &tmp
-}
-
-// VulnerabilityAssessmentRecurringScansPropertiesInput is an input type that accepts VulnerabilityAssessmentRecurringScansPropertiesArgs and VulnerabilityAssessmentRecurringScansPropertiesOutput values.
-// You can construct a concrete instance of `VulnerabilityAssessmentRecurringScansPropertiesInput` via:
-//
-//	VulnerabilityAssessmentRecurringScansPropertiesArgs{...}
-type VulnerabilityAssessmentRecurringScansPropertiesInput interface {
-	pulumi.Input
-
-	ToVulnerabilityAssessmentRecurringScansPropertiesOutput() VulnerabilityAssessmentRecurringScansPropertiesOutput
-	ToVulnerabilityAssessmentRecurringScansPropertiesOutputWithContext(context.Context) VulnerabilityAssessmentRecurringScansPropertiesOutput
-}
-
-// Properties of a Vulnerability Assessment recurring scans.
-type VulnerabilityAssessmentRecurringScansPropertiesArgs struct {
-	// Specifies that the schedule scan notification will be is sent to the subscription administrators.
-	EmailSubscriptionAdmins pulumi.BoolPtrInput `pulumi:"emailSubscriptionAdmins"`
-	// Specifies an array of e-mail addresses to which the scan notification is sent.
-	Emails pulumi.StringArrayInput `pulumi:"emails"`
-	// Recurring scans state.
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-}
-
-// Defaults sets the appropriate defaults for VulnerabilityAssessmentRecurringScansPropertiesArgs
-func (val *VulnerabilityAssessmentRecurringScansPropertiesArgs) Defaults() *VulnerabilityAssessmentRecurringScansPropertiesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
-		tmp.EmailSubscriptionAdmins = pulumi.BoolPtr(true)
-	}
-	return &tmp
-}
-func (VulnerabilityAssessmentRecurringScansPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VulnerabilityAssessmentRecurringScansProperties)(nil)).Elem()
-}
-
-func (i VulnerabilityAssessmentRecurringScansPropertiesArgs) ToVulnerabilityAssessmentRecurringScansPropertiesOutput() VulnerabilityAssessmentRecurringScansPropertiesOutput {
-	return i.ToVulnerabilityAssessmentRecurringScansPropertiesOutputWithContext(context.Background())
-}
-
-func (i VulnerabilityAssessmentRecurringScansPropertiesArgs) ToVulnerabilityAssessmentRecurringScansPropertiesOutputWithContext(ctx context.Context) VulnerabilityAssessmentRecurringScansPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityAssessmentRecurringScansPropertiesOutput)
-}
-
-func (i VulnerabilityAssessmentRecurringScansPropertiesArgs) ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutput() VulnerabilityAssessmentRecurringScansPropertiesPtrOutput {
-	return i.ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i VulnerabilityAssessmentRecurringScansPropertiesArgs) ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentRecurringScansPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityAssessmentRecurringScansPropertiesOutput).ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(ctx)
-}
-
-// VulnerabilityAssessmentRecurringScansPropertiesPtrInput is an input type that accepts VulnerabilityAssessmentRecurringScansPropertiesArgs, VulnerabilityAssessmentRecurringScansPropertiesPtr and VulnerabilityAssessmentRecurringScansPropertiesPtrOutput values.
-// You can construct a concrete instance of `VulnerabilityAssessmentRecurringScansPropertiesPtrInput` via:
-//
-//	        VulnerabilityAssessmentRecurringScansPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type VulnerabilityAssessmentRecurringScansPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutput() VulnerabilityAssessmentRecurringScansPropertiesPtrOutput
-	ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(context.Context) VulnerabilityAssessmentRecurringScansPropertiesPtrOutput
-}
-
-type vulnerabilityAssessmentRecurringScansPropertiesPtrType VulnerabilityAssessmentRecurringScansPropertiesArgs
-
-func VulnerabilityAssessmentRecurringScansPropertiesPtr(v *VulnerabilityAssessmentRecurringScansPropertiesArgs) VulnerabilityAssessmentRecurringScansPropertiesPtrInput {
-	return (*vulnerabilityAssessmentRecurringScansPropertiesPtrType)(v)
-}
-
-func (*vulnerabilityAssessmentRecurringScansPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VulnerabilityAssessmentRecurringScansProperties)(nil)).Elem()
-}
-
-func (i *vulnerabilityAssessmentRecurringScansPropertiesPtrType) ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutput() VulnerabilityAssessmentRecurringScansPropertiesPtrOutput {
-	return i.ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *vulnerabilityAssessmentRecurringScansPropertiesPtrType) ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentRecurringScansPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityAssessmentRecurringScansPropertiesPtrOutput)
-}
-
-// Properties of a Vulnerability Assessment recurring scans.
-type VulnerabilityAssessmentRecurringScansPropertiesOutput struct{ *pulumi.OutputState }
-
-func (VulnerabilityAssessmentRecurringScansPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VulnerabilityAssessmentRecurringScansProperties)(nil)).Elem()
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesOutput) ToVulnerabilityAssessmentRecurringScansPropertiesOutput() VulnerabilityAssessmentRecurringScansPropertiesOutput {
-	return o
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesOutput) ToVulnerabilityAssessmentRecurringScansPropertiesOutputWithContext(ctx context.Context) VulnerabilityAssessmentRecurringScansPropertiesOutput {
-	return o
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesOutput) ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutput() VulnerabilityAssessmentRecurringScansPropertiesPtrOutput {
-	return o.ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesOutput) ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentRecurringScansPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityAssessmentRecurringScansProperties) *VulnerabilityAssessmentRecurringScansProperties {
-		return &v
-	}).(VulnerabilityAssessmentRecurringScansPropertiesPtrOutput)
-}
-
-// Specifies that the schedule scan notification will be is sent to the subscription administrators.
-func (o VulnerabilityAssessmentRecurringScansPropertiesOutput) EmailSubscriptionAdmins() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VulnerabilityAssessmentRecurringScansProperties) *bool { return v.EmailSubscriptionAdmins }).(pulumi.BoolPtrOutput)
-}
-
-// Specifies an array of e-mail addresses to which the scan notification is sent.
-func (o VulnerabilityAssessmentRecurringScansPropertiesOutput) Emails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VulnerabilityAssessmentRecurringScansProperties) []string { return v.Emails }).(pulumi.StringArrayOutput)
-}
-
-// Recurring scans state.
-func (o VulnerabilityAssessmentRecurringScansPropertiesOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VulnerabilityAssessmentRecurringScansProperties) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-type VulnerabilityAssessmentRecurringScansPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (VulnerabilityAssessmentRecurringScansPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VulnerabilityAssessmentRecurringScansProperties)(nil)).Elem()
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesPtrOutput) ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutput() VulnerabilityAssessmentRecurringScansPropertiesPtrOutput {
-	return o
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesPtrOutput) ToVulnerabilityAssessmentRecurringScansPropertiesPtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentRecurringScansPropertiesPtrOutput {
-	return o
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesPtrOutput) Elem() VulnerabilityAssessmentRecurringScansPropertiesOutput {
-	return o.ApplyT(func(v *VulnerabilityAssessmentRecurringScansProperties) VulnerabilityAssessmentRecurringScansProperties {
-		if v != nil {
-			return *v
-		}
-		var ret VulnerabilityAssessmentRecurringScansProperties
-		return ret
-	}).(VulnerabilityAssessmentRecurringScansPropertiesOutput)
-}
-
-// Specifies that the schedule scan notification will be is sent to the subscription administrators.
-func (o VulnerabilityAssessmentRecurringScansPropertiesPtrOutput) EmailSubscriptionAdmins() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityAssessmentRecurringScansProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EmailSubscriptionAdmins
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Specifies an array of e-mail addresses to which the scan notification is sent.
-func (o VulnerabilityAssessmentRecurringScansPropertiesPtrOutput) Emails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VulnerabilityAssessmentRecurringScansProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Emails
-	}).(pulumi.StringArrayOutput)
-}
-
-// Recurring scans state.
-func (o VulnerabilityAssessmentRecurringScansPropertiesPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityAssessmentRecurringScansProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Properties of a Vulnerability Assessment recurring scans.
-type VulnerabilityAssessmentRecurringScansPropertiesResponse struct {
-	// Specifies that the schedule scan notification will be is sent to the subscription administrators.
-	EmailSubscriptionAdmins *bool `pulumi:"emailSubscriptionAdmins"`
-	// Specifies an array of e-mail addresses to which the scan notification is sent.
-	Emails []string `pulumi:"emails"`
-	// Recurring scans state.
-	IsEnabled *bool `pulumi:"isEnabled"`
-}
-
-// Defaults sets the appropriate defaults for VulnerabilityAssessmentRecurringScansPropertiesResponse
-func (val *VulnerabilityAssessmentRecurringScansPropertiesResponse) Defaults() *VulnerabilityAssessmentRecurringScansPropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
-		emailSubscriptionAdmins_ := true
-		tmp.EmailSubscriptionAdmins = &emailSubscriptionAdmins_
-	}
-	return &tmp
-}
-
-// Properties of a Vulnerability Assessment recurring scans.
-type VulnerabilityAssessmentRecurringScansPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (VulnerabilityAssessmentRecurringScansPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VulnerabilityAssessmentRecurringScansPropertiesResponse)(nil)).Elem()
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponseOutput) ToVulnerabilityAssessmentRecurringScansPropertiesResponseOutput() VulnerabilityAssessmentRecurringScansPropertiesResponseOutput {
-	return o
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponseOutput) ToVulnerabilityAssessmentRecurringScansPropertiesResponseOutputWithContext(ctx context.Context) VulnerabilityAssessmentRecurringScansPropertiesResponseOutput {
-	return o
-}
-
-// Specifies that the schedule scan notification will be is sent to the subscription administrators.
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponseOutput) EmailSubscriptionAdmins() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VulnerabilityAssessmentRecurringScansPropertiesResponse) *bool {
-		return v.EmailSubscriptionAdmins
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Specifies an array of e-mail addresses to which the scan notification is sent.
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponseOutput) Emails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VulnerabilityAssessmentRecurringScansPropertiesResponse) []string { return v.Emails }).(pulumi.StringArrayOutput)
-}
-
-// Recurring scans state.
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VulnerabilityAssessmentRecurringScansPropertiesResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-type VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VulnerabilityAssessmentRecurringScansPropertiesResponse)(nil)).Elem()
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) ToVulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput() VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) ToVulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) Elem() VulnerabilityAssessmentRecurringScansPropertiesResponseOutput {
-	return o.ApplyT(func(v *VulnerabilityAssessmentRecurringScansPropertiesResponse) VulnerabilityAssessmentRecurringScansPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VulnerabilityAssessmentRecurringScansPropertiesResponse
-		return ret
-	}).(VulnerabilityAssessmentRecurringScansPropertiesResponseOutput)
-}
-
-// Specifies that the schedule scan notification will be is sent to the subscription administrators.
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) EmailSubscriptionAdmins() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityAssessmentRecurringScansPropertiesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EmailSubscriptionAdmins
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Specifies an array of e-mail addresses to which the scan notification is sent.
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) Emails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VulnerabilityAssessmentRecurringScansPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Emails
-	}).(pulumi.StringArrayOutput)
-}
-
-// Recurring scans state.
-func (o VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityAssessmentRecurringScansPropertiesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsEnabled
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Details of the customer managed key associated with the workspace
@@ -6040,10 +5154,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedVirtualNetworkSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedVirtualNetworkSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ManagedVirtualNetworkSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionForPrivateLinkHubBasicResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
@@ -6060,20 +5172,12 @@ func init() {
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
-	pulumi.RegisterOutputType(SqlPoolVulnerabilityAssessmentRuleBaselineItemOutput{})
-	pulumi.RegisterOutputType(SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput{})
-	pulumi.RegisterOutputType(SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput{})
-	pulumi.RegisterOutputType(SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkProfileOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkProfileResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(VulnerabilityAssessmentRecurringScansPropertiesOutput{})
-	pulumi.RegisterOutputType(VulnerabilityAssessmentRecurringScansPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(VulnerabilityAssessmentRecurringScansPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceKeyDetailsOutput{})
 	pulumi.RegisterOutputType(WorkspaceKeyDetailsPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceKeyDetailsResponseOutput{})

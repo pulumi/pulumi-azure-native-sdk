@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the connection identified by connection name.
-// API Version: 2019-06-01.
+// API Version: 2022-08-08.
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	var rv LookupConnectionResult
 	err := ctx.Invoke("azure-native:automation:getConnection", args, &rv, opts...)

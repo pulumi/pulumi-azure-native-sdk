@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Lists the roles configured for the static site.
-// API Version: 2020-12-01.
+// Description for Lists the roles configured for the static site.
+// API Version: 2022-09-01.
 func ListStaticSiteConfiguredRoles(ctx *pulumi.Context, args *ListStaticSiteConfiguredRolesArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteConfiguredRolesResult, error) {
 	var rv ListStaticSiteConfiguredRolesResult
 	err := ctx.Invoke("azure-native:web:listStaticSiteConfiguredRoles", args, &rv, opts...)

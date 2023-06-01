@@ -11,7 +11,7 @@ import (
 )
 
 // Returns ResourceGuardProxy under vault and with the name referenced in request
-// API Version: 2021-02-01-preview.
+// API Version: 2023-02-01.
 func LookupResourceGuardProxy(ctx *pulumi.Context, args *LookupResourceGuardProxyArgs, opts ...pulumi.InvokeOption) (*LookupResourceGuardProxyResult, error) {
 	var rv LookupResourceGuardProxyResult
 	err := ctx.Invoke("azure-native:recoveryservices:getResourceGuardProxy", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -213,6 +213,9 @@ func NewNetworkInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:NetworkInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkInterface"),
 		},
 	})
 	opts = append(opts, aliases)

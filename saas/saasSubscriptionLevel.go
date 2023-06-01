@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SaaS REST API resource definition.
 // API Version: 2018-03-01-beta.
+// Previous API Version: 2018-03-01-beta. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SaasSubscriptionLevel struct {
 	pulumi.CustomResourceState
 

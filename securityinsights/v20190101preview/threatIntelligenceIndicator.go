@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,7 +103,13 @@ func NewThreatIntelligenceIndicator(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:ThreatIntelligenceIndicator"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:ThreatIntelligenceIndicator"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:ThreatIntelligenceIndicator"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:ThreatIntelligenceIndicator"),
 		},
 	})
 	opts = append(opts, aliases)

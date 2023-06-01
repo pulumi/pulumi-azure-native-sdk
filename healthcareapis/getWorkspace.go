@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified workspace.
-// API Version: 2022-05-15.
+// API Version: 2022-12-01.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:healthcareapis:getWorkspace", args, &rv, opts...)

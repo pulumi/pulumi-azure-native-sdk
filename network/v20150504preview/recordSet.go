@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a DNS record set (a collection of DNS records with the same name and type).
-//
-// Deprecated: Version 2015-05-04-preview will be removed in v2 of the provider.
 type RecordSet struct {
 	pulumi.CustomResourceState
 

@@ -10,6 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ActiveRevisionsMode controls how active revisions are handled for the Container app:
+// <list><item>Multiple: multiple revisions can be active. If no value if provided, this is the default</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode</item></list>
+type ActiveRevisionsMode string
+
+const (
+	ActiveRevisionsModeMultiple = ActiveRevisionsMode("multiple")
+	ActiveRevisionsModeSingle   = ActiveRevisionsMode("single")
+)
+
 // The API type
 type ApiType string
 
@@ -1705,6 +1714,24 @@ const (
 	DatabaseTypePostgreSql = DatabaseType("PostgreSql")
 )
 
+// Default action for scm access restriction if no rules are matched.
+type DefaultAction string
+
+const (
+	DefaultActionAllow = DefaultAction("Allow")
+	DefaultActionDeny  = DefaultAction("Deny")
+)
+
+// State indicating the status of the enterprise grade CDN serving traffic to the static web app.
+type EnterpriseGradeCdnStatus string
+
+const (
+	EnterpriseGradeCdnStatusEnabled   = EnterpriseGradeCdnStatus("Enabled")
+	EnterpriseGradeCdnStatusEnabling  = EnterpriseGradeCdnStatus("Enabling")
+	EnterpriseGradeCdnStatusDisabled  = EnterpriseGradeCdnStatus("Disabled")
+	EnterpriseGradeCdnStatusDisabling = EnterpriseGradeCdnStatus("Disabling")
+)
+
 // The convention used to determine the url of the request made.
 type ForwardProxyConvention string
 
@@ -2538,6 +2565,15 @@ func (in *hostTypePtr) ToHostTypePtrOutput() HostTypePtrOutput {
 func (in *hostTypePtr) ToHostTypePtrOutputWithContext(ctx context.Context) HostTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostTypePtrOutput)
 }
+
+// Ingress transport protocol
+type IngressTransportMethod string
+
+const (
+	IngressTransportMethodAuto  = IngressTransportMethod("auto")
+	IngressTransportMethodHttp  = IngressTransportMethod("http")
+	IngressTransportMethodHttp2 = IngressTransportMethod("http2")
+)
 
 // Defines what this IP filter will be used for. This is to support IP filtering on proxies.
 type IpFilterTag string
@@ -4430,6 +4466,20 @@ func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOu
 func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOutputWithContext(ctx context.Context) UnauthenticatedClientActionV2PtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UnauthenticatedClientActionV2PtrOutput)
 }
+
+// Upgrade Preference
+type UpgradePreference string
+
+const (
+	// No preference on when this App Service Environment will be upgraded
+	UpgradePreferenceNone = UpgradePreference("None")
+	// This App Service Environment will be upgraded before others in the same region that have Upgrade Preference 'Late'
+	UpgradePreferenceEarly = UpgradePreference("Early")
+	// This App Service Environment will be upgraded after others in the same region that have Upgrade Preference 'Early'
+	UpgradePreferenceLate = UpgradePreference("Late")
+	// ASEv3 only. Once an upgrade is available, this App Service Environment will wait 10 days for the upgrade to be manually initiated. After 10 days the upgrade will begin automatically
+	UpgradePreferenceManual = UpgradePreference("Manual")
+)
 
 // The WSDL import method
 type WsdlImportMethod string

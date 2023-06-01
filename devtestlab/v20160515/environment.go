@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An environment, which is essentially an ARM template deployment.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 type Environment struct {
 	pulumi.CustomResourceState
 

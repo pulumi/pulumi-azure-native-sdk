@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,10 +40,10 @@ func NewDatabase(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbformysql:Database"),
+			Type: pulumi.String("azure-native:dbformysql/v20171201preview:Database"),
 		},
 		{
-			Type: pulumi.String("azure-native:dbformysql/v20171201preview:Database"),
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:Database"),
 		},
 	})
 	opts = append(opts, aliases)

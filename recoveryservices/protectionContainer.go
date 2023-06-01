@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Base class for container with backup items. Containers with specific workloads are derived from this class.
-// API Version: 2021-02-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2021-02-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ProtectionContainer struct {
 	pulumi.CustomResourceState
 

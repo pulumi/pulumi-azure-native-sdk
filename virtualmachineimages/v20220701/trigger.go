@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +45,12 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:virtualmachineimages:Trigger"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Trigger
 	err := ctx.RegisterResource("azure-native:virtualmachineimages/v20220701:Trigger", name, args, &resource, opts...)
 	if err != nil {

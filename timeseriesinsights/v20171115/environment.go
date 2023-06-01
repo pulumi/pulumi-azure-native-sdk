@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource.
-//
-// Deprecated: Version 2017-11-15 will be removed in v2 of the provider.
 type Environment struct {
 	pulumi.CustomResourceState
 

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
-//
-// Deprecated: Version 2019-08-01 will be removed in v2 of the provider.
 func LookupCassandraResourceCassandraKeyspace(ctx *pulumi.Context, args *LookupCassandraResourceCassandraKeyspaceArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraKeyspaceResult, error) {
 	var rv LookupCassandraResourceCassandraKeyspaceResult
 	err := ctx.Invoke("azure-native:documentdb/v20190801:getCassandraResourceCassandraKeyspace", args, &rv, opts...)

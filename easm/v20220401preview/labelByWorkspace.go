@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +45,9 @@ func NewLabelByWorkspace(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:easm:LabelByWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:easm/v20230401preview:LabelByWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

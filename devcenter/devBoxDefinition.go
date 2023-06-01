@@ -7,17 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a definition for a Developer Machine.
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
+// Previous API Version: 2022-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DevBoxDefinition struct {
 	pulumi.CustomResourceState
 
 	// Image reference information for the currently active image (only populated during updates).
 	ActiveImageReference ImageReferenceResponseOutput `pulumi:"activeImageReference"`
+	// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
+	HibernateSupport pulumi.StringPtrOutput `pulumi:"hibernateSupport"`
 	// Image reference information.
 	ImageReference ImageReferenceResponseOutput `pulumi:"imageReference"`
 	// Details for image validator error. Populated when the image validation is not successful.
@@ -77,6 +80,12 @@ func NewDevBoxDefinition(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:DevBoxDefinition"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:DevBoxDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:DevBoxDefinition"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DevBoxDefinition
@@ -115,13 +124,15 @@ type devBoxDefinitionArgs struct {
 	DevBoxDefinitionName *string `pulumi:"devBoxDefinitionName"`
 	// The name of the devcenter.
 	DevCenterName string `pulumi:"devCenterName"`
+	// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
+	HibernateSupport *string `pulumi:"hibernateSupport"`
 	// Image reference information.
 	ImageReference ImageReference `pulumi:"imageReference"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The storage type used for the Operating System disk of Dev Boxes created using this definition.
 	OsStorageType string `pulumi:"osStorageType"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU for Dev Boxes created using this definition.
 	Sku Sku `pulumi:"sku"`
@@ -135,13 +146,15 @@ type DevBoxDefinitionArgs struct {
 	DevBoxDefinitionName pulumi.StringPtrInput
 	// The name of the devcenter.
 	DevCenterName pulumi.StringInput
+	// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
+	HibernateSupport pulumi.StringPtrInput
 	// Image reference information.
 	ImageReference ImageReferenceInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The storage type used for the Operating System disk of Dev Boxes created using this definition.
 	OsStorageType pulumi.StringInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU for Dev Boxes created using this definition.
 	Sku SkuInput
@@ -189,6 +202,11 @@ func (o DevBoxDefinitionOutput) ToDevBoxDefinitionOutputWithContext(ctx context.
 // Image reference information for the currently active image (only populated during updates).
 func (o DevBoxDefinitionOutput) ActiveImageReference() ImageReferenceResponseOutput {
 	return o.ApplyT(func(v *DevBoxDefinition) ImageReferenceResponseOutput { return v.ActiveImageReference }).(ImageReferenceResponseOutput)
+}
+
+// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
+func (o DevBoxDefinitionOutput) HibernateSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevBoxDefinition) pulumi.StringPtrOutput { return v.HibernateSupport }).(pulumi.StringPtrOutput)
 }
 
 // Image reference information.

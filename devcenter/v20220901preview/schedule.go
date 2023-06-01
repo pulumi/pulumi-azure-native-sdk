@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +73,12 @@ func NewSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:Schedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:Schedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:Schedule"),
 		},
 	})
 	opts = append(opts, aliases)

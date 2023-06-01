@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,22 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AATPDataConnector{}
 	case "azure-native:securityinsights/v20220801:ASCDataConnector":
 		r = &ASCDataConnector{}
-	case "azure-native:securityinsights/v20220801:Action":
-		r = &Action{}
-	case "azure-native:securityinsights/v20220801:AutomationRule":
-		r = &AutomationRule{}
 	case "azure-native:securityinsights/v20220801:AwsCloudTrailDataConnector":
 		r = &AwsCloudTrailDataConnector{}
-	case "azure-native:securityinsights/v20220801:Bookmark":
-		r = &Bookmark{}
 	case "azure-native:securityinsights/v20220801:FusionAlertRule":
 		r = &FusionAlertRule{}
-	case "azure-native:securityinsights/v20220801:Incident":
-		r = &Incident{}
-	case "azure-native:securityinsights/v20220801:IncidentComment":
-		r = &IncidentComment{}
-	case "azure-native:securityinsights/v20220801:IncidentRelation":
-		r = &IncidentRelation{}
 	case "azure-native:securityinsights/v20220801:MCASDataConnector":
 		r = &MCASDataConnector{}
 	case "azure-native:securityinsights/v20220801:MDATPDataConnector":
@@ -53,16 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficeDataConnector{}
 	case "azure-native:securityinsights/v20220801:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
-	case "azure-native:securityinsights/v20220801:SentinelOnboardingState":
-		r = &SentinelOnboardingState{}
 	case "azure-native:securityinsights/v20220801:TIDataConnector":
 		r = &TIDataConnector{}
-	case "azure-native:securityinsights/v20220801:ThreatIntelligenceIndicator":
-		r = &ThreatIntelligenceIndicator{}
-	case "azure-native:securityinsights/v20220801:Watchlist":
-		r = &Watchlist{}
-	case "azure-native:securityinsights/v20220801:WatchlistItem":
-		r = &WatchlistItem{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

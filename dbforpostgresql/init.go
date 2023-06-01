@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:dbforpostgresql:Administrator":
+		r = &Administrator{}
+	case "azure-native:dbforpostgresql:Cluster":
+		r = &Cluster{}
 	case "azure-native:dbforpostgresql:Configuration":
 		r = &Configuration{}
 	case "azure-native:dbforpostgresql:Database":
@@ -29,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallRule{}
 	case "azure-native:dbforpostgresql:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:dbforpostgresql:Role":
+		r = &Role{}
 	case "azure-native:dbforpostgresql:Server":
 		r = &Server{}
 	case "azure-native:dbforpostgresql:ServerAdministrator":

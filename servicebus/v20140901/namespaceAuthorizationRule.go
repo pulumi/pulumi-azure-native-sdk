@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a namespace authorization rule.
-//
-// Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 

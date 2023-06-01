@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,7 +47,7 @@ func NewApiOperationPolicy(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	if isZero(args.ContentFormat) {
+	if args.ContentFormat == nil {
 		args.ContentFormat = pulumi.StringPtr("xml")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -92,6 +92,9 @@ func NewApiOperationPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiOperationPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiOperationPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

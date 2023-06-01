@@ -7,17 +7,22 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ExpressRouteCircuit resource.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ExpressRouteCircuit struct {
 	pulumi.CustomResourceState
 
 	// Allow classic operations.
 	AllowClassicOperations pulumi.BoolPtrOutput `pulumi:"allowClassicOperations"`
+	// The authorizationKey.
+	AuthorizationKey pulumi.StringPtrOutput `pulumi:"authorizationKey"`
+	// The authorization status of the Circuit.
+	AuthorizationStatus pulumi.StringOutput `pulumi:"authorizationStatus"`
 	// The list of authorizations.
 	Authorizations ExpressRouteCircuitAuthorizationResponseArrayOutput `pulumi:"authorizations"`
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
@@ -201,6 +206,9 @@ func NewExpressRouteCircuit(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuit"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCircuit"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRouteCircuit
@@ -237,6 +245,8 @@ func (ExpressRouteCircuitState) ElementType() reflect.Type {
 type expressRouteCircuitArgs struct {
 	// Allow classic operations.
 	AllowClassicOperations *bool `pulumi:"allowClassicOperations"`
+	// The authorizationKey.
+	AuthorizationKey *string `pulumi:"authorizationKey"`
 	// The list of authorizations.
 	Authorizations []ExpressRouteCircuitAuthorizationType `pulumi:"authorizations"`
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
@@ -277,6 +287,8 @@ type expressRouteCircuitArgs struct {
 type ExpressRouteCircuitArgs struct {
 	// Allow classic operations.
 	AllowClassicOperations pulumi.BoolPtrInput
+	// The authorizationKey.
+	AuthorizationKey pulumi.StringPtrInput
 	// The list of authorizations.
 	Authorizations ExpressRouteCircuitAuthorizationTypeArrayInput
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
@@ -353,6 +365,16 @@ func (o ExpressRouteCircuitOutput) ToExpressRouteCircuitOutputWithContext(ctx co
 // Allow classic operations.
 func (o ExpressRouteCircuitOutput) AllowClassicOperations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.BoolPtrOutput { return v.AllowClassicOperations }).(pulumi.BoolPtrOutput)
+}
+
+// The authorizationKey.
+func (o ExpressRouteCircuitOutput) AuthorizationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.StringPtrOutput { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
+}
+
+// The authorization status of the Circuit.
+func (o ExpressRouteCircuitOutput) AuthorizationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.StringOutput { return v.AuthorizationStatus }).(pulumi.StringOutput)
 }
 
 // The list of authorizations.

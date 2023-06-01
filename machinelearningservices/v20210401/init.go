@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,10 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EndpointVariant{}
 	case "azure-native:machinelearningservices/v20210401:MachineLearningCompute":
 		r = &MachineLearningCompute{}
-	case "azure-native:machinelearningservices/v20210401:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:machinelearningservices/v20210401:Workspace":
-		r = &Workspace{}
 	case "azure-native:machinelearningservices/v20210401:WorkspaceConnection":
 		r = &WorkspaceConnection{}
 	default:

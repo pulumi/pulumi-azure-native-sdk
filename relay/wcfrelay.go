@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of the WCF relay resource.
-// API Version: 2017-04-01.
+// API Version: 2021-11-01.
+// Previous API Version: 2017-04-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type WCFRelay struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +23,9 @@ type WCFRelay struct {
 	IsDynamic pulumi.BoolOutput `pulumi:"isDynamic"`
 	// The number of listeners for this relay. Note that min :1 and max:25 are supported.
 	ListenerCount pulumi.IntOutput `pulumi:"listenerCount"`
-	// Resource name.
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// WCF relay type.
 	RelayType pulumi.StringPtrOutput `pulumi:"relayType"`
@@ -30,7 +33,9 @@ type WCFRelay struct {
 	RequiresClientAuthorization pulumi.BoolPtrOutput `pulumi:"requiresClientAuthorization"`
 	// Returns true if transport security is needed for this relay; otherwise, false.
 	RequiresTransportSecurity pulumi.BoolPtrOutput `pulumi:"requiresTransportSecurity"`
-	// Resource type.
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -181,7 +186,12 @@ func (o WCFRelayOutput) ListenerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *WCFRelay) pulumi.IntOutput { return v.ListenerCount }).(pulumi.IntOutput)
 }
 
-// Resource name.
+// The geo-location where the resource lives
+func (o WCFRelayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *WCFRelay) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o WCFRelayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WCFRelay) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -201,7 +211,12 @@ func (o WCFRelayOutput) RequiresTransportSecurity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WCFRelay) pulumi.BoolPtrOutput { return v.RequiresTransportSecurity }).(pulumi.BoolPtrOutput)
 }
 
-// Resource type.
+// The system meta data relating to this resource.
+func (o WCFRelayOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WCFRelay) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o WCFRelayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WCFRelay) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

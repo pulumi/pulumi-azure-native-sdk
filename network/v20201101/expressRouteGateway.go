@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -129,6 +129,9 @@ func NewExpressRouteGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteGateway"),
 		},
 	})
 	opts = append(opts, aliases)

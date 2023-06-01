@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Managed cluster.
-//
-// Deprecated: Version 2017-08-31 will be removed in v2 of the provider.
 type ManagedCluster struct {
 	pulumi.CustomResourceState
 
@@ -195,6 +193,18 @@ func NewManagedCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230102preview:ManagedCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230201:ManagedCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:ManagedCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230301:ManagedCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:ManagedCluster"),
 		},
 	})
 	opts = append(opts, aliases)

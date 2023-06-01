@@ -11,8 +11,6 @@ import (
 )
 
 // Get custom image.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupCustomImage(ctx *pulumi.Context, args *LookupCustomImageArgs, opts ...pulumi.InvokeOption) (*LookupCustomImageResult, error) {
 	var rv LookupCustomImageResult
 	err := ctx.Invoke("azure-native:devtestlab/v20160515:getCustomImage", args, &rv, opts...)

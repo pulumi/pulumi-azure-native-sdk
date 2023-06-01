@@ -26,6 +26,14 @@ const (
 	EnableStatusDisabled = EnableStatus("Disabled")
 )
 
+// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
+type HibernateSupport string
+
+const (
+	HibernateSupportDisabled = HibernateSupport("Disabled")
+	HibernateSupportEnabled  = HibernateSupport("Enabled")
+)
+
 // Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
 type LicenseType string
 

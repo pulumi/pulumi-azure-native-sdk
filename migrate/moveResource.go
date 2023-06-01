@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the move resource.
-// API Version: 2021-01-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MoveResource struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type MoveResource struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the move resource properties.
 	Properties MoveResourcePropertiesResponseOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -151,6 +154,11 @@ func (o MoveResourceOutput) Name() pulumi.StringOutput {
 // Defines the move resource properties.
 func (o MoveResourceOutput) Properties() MoveResourcePropertiesResponseOutput {
 	return o.ApplyT(func(v *MoveResource) MoveResourcePropertiesResponseOutput { return v.Properties }).(MoveResourcePropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o MoveResourceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MoveResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

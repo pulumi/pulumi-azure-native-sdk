@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the properties of the specified storage domain name.
-//
-// Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupStorageDomain(ctx *pulumi.Context, args *LookupStorageDomainArgs, opts ...pulumi.InvokeOption) (*LookupStorageDomainResult, error) {
 	var rv LookupStorageDomainResult
 	err := ctx.Invoke("azure-native:storsimple/v20161001:getStorageDomain", args, &rv, opts...)

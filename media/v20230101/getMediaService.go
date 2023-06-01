@@ -68,7 +68,7 @@ func (val *LookupMediaServiceResult) Defaults() *LookupMediaServiceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinimumTlsVersion) {
+	if tmp.MinimumTlsVersion == nil {
 		minimumTlsVersion_ := "Tls12"
 		tmp.MinimumTlsVersion = &minimumTlsVersion_
 	}

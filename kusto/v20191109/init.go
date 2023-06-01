@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,14 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:kusto/v20191109:AttachedDatabaseConfiguration":
-		r = &AttachedDatabaseConfiguration{}
-	case "azure-native:kusto/v20191109:Cluster":
-		r = &Cluster{}
-	case "azure-native:kusto/v20191109:ClusterPrincipalAssignment":
-		r = &ClusterPrincipalAssignment{}
-	case "azure-native:kusto/v20191109:DatabasePrincipalAssignment":
-		r = &DatabasePrincipalAssignment{}
 	case "azure-native:kusto/v20191109:EventGridDataConnection":
 		r = &EventGridDataConnection{}
 	case "azure-native:kusto/v20191109:EventHubDataConnection":

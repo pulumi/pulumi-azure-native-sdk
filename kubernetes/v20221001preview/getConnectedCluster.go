@@ -85,13 +85,13 @@ func (val *LookupConnectedClusterResult) Defaults() *LookupConnectedClusterResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AzureHybridBenefit) {
+	if tmp.AzureHybridBenefit == nil {
 		azureHybridBenefit_ := "NotApplicable"
 		tmp.AzureHybridBenefit = &azureHybridBenefit_
 	}
 	tmp.Identity = *tmp.Identity.Defaults()
 
-	if isZero(tmp.PrivateLinkState) {
+	if tmp.PrivateLinkState == nil {
 		privateLinkState_ := "Disabled"
 		tmp.PrivateLinkState = &privateLinkState_
 	}

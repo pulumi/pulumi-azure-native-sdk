@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
-//
-// Deprecated: Version 2019-04-01 will be removed in v2 of the provider.
 type BlobContainerImmutabilityPolicy struct {
 	pulumi.CustomResourceState
 

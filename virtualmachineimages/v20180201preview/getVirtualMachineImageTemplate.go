@@ -11,8 +11,6 @@ import (
 )
 
 // Get Information about Virtual Machine Image Template
-//
-// Deprecated: Version 2018-02-01-preview will be removed in v2 of the provider.
 func LookupVirtualMachineImageTemplate(ctx *pulumi.Context, args *LookupVirtualMachineImageTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineImageTemplateResult, error) {
 	var rv LookupVirtualMachineImageTemplateResult
 	err := ctx.Invoke("azure-native:virtualmachineimages/v20180201preview:getVirtualMachineImageTemplate", args, &rv, opts...)

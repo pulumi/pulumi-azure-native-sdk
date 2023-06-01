@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a DNS zone.
 // API Version: 2018-05-01.
+// Previous API Version: 2018-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -52,7 +53,7 @@ func NewZone(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ZoneType) {
+	if args.ZoneType == nil {
 		args.ZoneType = ZoneType("Public")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -11,7 +11,7 @@ import (
 )
 
 // Get the Application Configuration Service and its properties.
-// API Version: 2022-01-01-preview.
+// API Version: 2022-12-01.
 func LookupConfigurationService(ctx *pulumi.Context, args *LookupConfigurationServiceArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationServiceResult, error) {
 	var rv LookupConfigurationServiceResult
 	err := ctx.Invoke("azure-native:appplatform:getConfigurationService", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get tenant access information details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func ListTenantAccessSecrets(ctx *pulumi.Context, args *ListTenantAccessSecretsArgs, opts ...pulumi.InvokeOption) (*ListTenantAccessSecretsResult, error) {
 	var rv ListTenantAccessSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement:listTenantAccessSecrets", args, &rv, opts...)
@@ -24,7 +24,7 @@ func ListTenantAccessSecrets(ctx *pulumi.Context, args *ListTenantAccessSecretsA
 type ListTenantAccessSecretsArgs struct {
 	// The identifier of the Access configuration.
 	AccessName string `pulumi:"accessName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -60,7 +60,7 @@ func ListTenantAccessSecretsOutput(ctx *pulumi.Context, args ListTenantAccessSec
 type ListTenantAccessSecretsOutputArgs struct {
 	// The identifier of the Access configuration.
 	AccessName pulumi.StringInput `pulumi:"accessName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

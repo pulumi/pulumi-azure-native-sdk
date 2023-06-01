@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the information about the application resource with a given name. The information includes the information about the application's services and other runtime properties.
-//
-// Deprecated: Version 2018-07-01-preview will be removed in v2 of the provider.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:servicefabricmesh/v20180701preview:getApplication", args, &rv, opts...)

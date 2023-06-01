@@ -3,22 +3,6 @@
 
 package v20210331preview
 
-// A role defining the data plane operations that a principal can perform on a Time Series Insights client.
-type AccessPolicyRole string
-
-const (
-	AccessPolicyRoleReader      = AccessPolicyRole("Reader")
-	AccessPolicyRoleContributor = AccessPolicyRole("Contributor")
-)
-
-// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
-type DataStringComparisonBehavior string
-
-const (
-	DataStringComparisonBehaviorOrdinal           = DataStringComparisonBehavior("Ordinal")
-	DataStringComparisonBehaviorOrdinalIgnoreCase = DataStringComparisonBehavior("OrdinalIgnoreCase")
-)
-
 // The kind of the environment.
 type EnvironmentKind string
 
@@ -73,16 +57,6 @@ type PublicNetworkAccess string
 const (
 	PublicNetworkAccessEnabled  = PublicNetworkAccess("enabled")
 	PublicNetworkAccessDisabled = PublicNetworkAccess("disabled")
-)
-
-// The type of the key property.
-type ReferenceDataKeyPropertyType string
-
-const (
-	ReferenceDataKeyPropertyTypeString   = ReferenceDataKeyPropertyType("String")
-	ReferenceDataKeyPropertyTypeDouble   = ReferenceDataKeyPropertyType("Double")
-	ReferenceDataKeyPropertyTypeBool     = ReferenceDataKeyPropertyType("Bool")
-	ReferenceDataKeyPropertyTypeDateTime = ReferenceDataKeyPropertyType("DateTime")
 )
 
 // The name of this SKU.

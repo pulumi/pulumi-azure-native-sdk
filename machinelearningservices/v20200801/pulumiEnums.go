@@ -10,49 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
-type ApplicationSharingPolicy string
-
-const (
-	ApplicationSharingPolicyPersonal = ApplicationSharingPolicy("Personal")
-	ApplicationSharingPolicyShared   = ApplicationSharingPolicy("Shared")
-)
-
-// The Compute Instance Authorization type. Available values are personal (default).
-type ComputeInstanceAuthorizationType string
-
-const (
-	ComputeInstanceAuthorizationTypePersonal = ComputeInstanceAuthorizationType("personal")
-)
-
-// The type of compute
-type ComputeType string
-
-const (
-	ComputeTypeAKS               = ComputeType("AKS")
-	ComputeTypeAmlCompute        = ComputeType("AmlCompute")
-	ComputeTypeComputeInstance   = ComputeType("ComputeInstance")
-	ComputeTypeDataFactory       = ComputeType("DataFactory")
-	ComputeTypeVirtualMachine    = ComputeType("VirtualMachine")
-	ComputeTypeHDInsight         = ComputeType("HDInsight")
-	ComputeTypeDatabricks        = ComputeType("Databricks")
-	ComputeTypeDataLakeAnalytics = ComputeType("DataLakeAnalytics")
-)
-
 // Indicates whether or not the encryption is enabled for the workspace.
 type EncryptionStatus string
 
 const (
 	EncryptionStatusEnabled  = EncryptionStatus("Enabled")
 	EncryptionStatusDisabled = EncryptionStatus("Disabled")
-)
-
-// Compute OS Type
-type OsType string
-
-const (
-	OsTypeLinux   = OsType("Linux")
-	OsTypeWindows = OsType("Windows")
 )
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -64,15 +27,6 @@ const (
 	PrivateEndpointServiceConnectionStatusRejected     = PrivateEndpointServiceConnectionStatus("Rejected")
 	PrivateEndpointServiceConnectionStatusDisconnected = PrivateEndpointServiceConnectionStatus("Disconnected")
 	PrivateEndpointServiceConnectionStatusTimeout      = PrivateEndpointServiceConnectionStatus("Timeout")
-)
-
-// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
-type RemoteLoginPortPublicAccess string
-
-const (
-	RemoteLoginPortPublicAccessEnabled      = RemoteLoginPortPublicAccess("Enabled")
-	RemoteLoginPortPublicAccessDisabled     = RemoteLoginPortPublicAccess("Disabled")
-	RemoteLoginPortPublicAccessNotSpecified = RemoteLoginPortPublicAccess("NotSpecified")
 )
 
 // The identity type.
@@ -241,22 +195,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
-
-// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
-type SshPublicAccess string
-
-const (
-	SshPublicAccessEnabled  = SshPublicAccess("Enabled")
-	SshPublicAccessDisabled = SshPublicAccess("Disabled")
-)
-
-// Virtual Machine priority
-type VmPriority string
-
-const (
-	VmPriorityDedicated   = VmPriority("Dedicated")
-	VmPriorityLowPriority = VmPriority("LowPriority")
-)
 
 func init() {
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})

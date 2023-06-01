@@ -151,92 +151,6 @@ const (
 	ApplicationGatewayTier_WAF_v2      = ApplicationGatewayTier("WAF_v2")
 )
 
-// The authorization use status.
-type AuthorizationUseStatus string
-
-const (
-	AuthorizationUseStatusAvailable = AuthorizationUseStatus("Available")
-	AuthorizationUseStatusInUse     = AuthorizationUseStatus("InUse")
-)
-
-// Protocol type.
-type AzureFirewallApplicationRuleProtocolType string
-
-const (
-	AzureFirewallApplicationRuleProtocolTypeHttp  = AzureFirewallApplicationRuleProtocolType("Http")
-	AzureFirewallApplicationRuleProtocolTypeHttps = AzureFirewallApplicationRuleProtocolType("Https")
-	AzureFirewallApplicationRuleProtocolTypeMssql = AzureFirewallApplicationRuleProtocolType("Mssql")
-)
-
-// The type of action.
-type AzureFirewallNatRCActionType string
-
-const (
-	AzureFirewallNatRCActionTypeSnat = AzureFirewallNatRCActionType("Snat")
-	AzureFirewallNatRCActionTypeDnat = AzureFirewallNatRCActionType("Dnat")
-)
-
-// The protocol of a Network Rule resource.
-type AzureFirewallNetworkRuleProtocol string
-
-const (
-	AzureFirewallNetworkRuleProtocolTCP  = AzureFirewallNetworkRuleProtocol("TCP")
-	AzureFirewallNetworkRuleProtocolUDP  = AzureFirewallNetworkRuleProtocol("UDP")
-	AzureFirewallNetworkRuleProtocolAny  = AzureFirewallNetworkRuleProtocol("Any")
-	AzureFirewallNetworkRuleProtocolICMP = AzureFirewallNetworkRuleProtocol("ICMP")
-)
-
-// The type of action.
-type AzureFirewallRCActionType string
-
-const (
-	AzureFirewallRCActionTypeAllow = AzureFirewallRCActionType("Allow")
-	AzureFirewallRCActionTypeDeny  = AzureFirewallRCActionType("Deny")
-)
-
-// Name of an Azure Firewall SKU.
-type AzureFirewallSkuName string
-
-const (
-	AzureFirewallSkuName_AZFW_VNet = AzureFirewallSkuName("AZFW_VNet")
-	AzureFirewallSkuName_AZFW_Hub  = AzureFirewallSkuName("AZFW_Hub")
-)
-
-// Tier of an Azure Firewall.
-type AzureFirewallSkuTier string
-
-const (
-	AzureFirewallSkuTierStandard = AzureFirewallSkuTier("Standard")
-)
-
-// The operation mode for Threat Intelligence.
-type AzureFirewallThreatIntelMode string
-
-const (
-	AzureFirewallThreatIntelModeAlert = AzureFirewallThreatIntelMode("Alert")
-	AzureFirewallThreatIntelModeDeny  = AzureFirewallThreatIntelMode("Deny")
-	AzureFirewallThreatIntelModeOff   = AzureFirewallThreatIntelMode("Off")
-)
-
-// The protocol for which the DDoS protection policy is being customized.
-type DdosCustomPolicyProtocol string
-
-const (
-	DdosCustomPolicyProtocolTcp = DdosCustomPolicyProtocol("Tcp")
-	DdosCustomPolicyProtocolUdp = DdosCustomPolicyProtocol("Udp")
-	DdosCustomPolicyProtocolSyn = DdosCustomPolicyProtocol("Syn")
-)
-
-// The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
-type DdosCustomPolicyTriggerSensitivityOverride string
-
-const (
-	DdosCustomPolicyTriggerSensitivityOverrideRelaxed = DdosCustomPolicyTriggerSensitivityOverride("Relaxed")
-	DdosCustomPolicyTriggerSensitivityOverrideLow     = DdosCustomPolicyTriggerSensitivityOverride("Low")
-	DdosCustomPolicyTriggerSensitivityOverrideDefault = DdosCustomPolicyTriggerSensitivityOverride("Default")
-	DdosCustomPolicyTriggerSensitivityOverrideHigh    = DdosCustomPolicyTriggerSensitivityOverride("High")
-)
-
 // The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
 type DdosSettingsProtectionCoverage string
 
@@ -275,24 +189,6 @@ type ExpressRouteCircuitPeeringStateEnum string
 const (
 	ExpressRouteCircuitPeeringStateEnumDisabled = ExpressRouteCircuitPeeringStateEnum("Disabled")
 	ExpressRouteCircuitPeeringStateEnumEnabled  = ExpressRouteCircuitPeeringStateEnum("Enabled")
-)
-
-// The family of the SKU.
-type ExpressRouteCircuitSkuFamily string
-
-const (
-	ExpressRouteCircuitSkuFamilyUnlimitedData = ExpressRouteCircuitSkuFamily("UnlimitedData")
-	ExpressRouteCircuitSkuFamilyMeteredData   = ExpressRouteCircuitSkuFamily("MeteredData")
-)
-
-// The tier of the SKU.
-type ExpressRouteCircuitSkuTier string
-
-const (
-	ExpressRouteCircuitSkuTierStandard = ExpressRouteCircuitSkuTier("Standard")
-	ExpressRouteCircuitSkuTierPremium  = ExpressRouteCircuitSkuTier("Premium")
-	ExpressRouteCircuitSkuTierBasic    = ExpressRouteCircuitSkuTier("Basic")
-	ExpressRouteCircuitSkuTierLocal    = ExpressRouteCircuitSkuTier("Local")
 )
 
 // Administrative state of the physical port.
@@ -336,55 +232,6 @@ const (
 	ExpressRoutePortsEncapsulationQinQ  = ExpressRoutePortsEncapsulation("QinQ")
 )
 
-// The type of action.
-type FirewallPolicyFilterRuleActionType string
-
-const (
-	FirewallPolicyFilterRuleActionTypeAllow = FirewallPolicyFilterRuleActionType("Allow")
-	FirewallPolicyFilterRuleActionTypeDeny  = FirewallPolicyFilterRuleActionType("Deny")
-)
-
-// The type of action.
-type FirewallPolicyNatRuleActionType string
-
-const (
-	FirewallPolicyNatRuleActionTypeDNAT = FirewallPolicyNatRuleActionType("DNAT")
-)
-
-// Protocol type.
-type FirewallPolicyRuleConditionApplicationProtocolType string
-
-const (
-	FirewallPolicyRuleConditionApplicationProtocolTypeHttp  = FirewallPolicyRuleConditionApplicationProtocolType("Http")
-	FirewallPolicyRuleConditionApplicationProtocolTypeHttps = FirewallPolicyRuleConditionApplicationProtocolType("Https")
-)
-
-// The Network protocol of a Rule condition.
-type FirewallPolicyRuleConditionNetworkProtocol string
-
-const (
-	FirewallPolicyRuleConditionNetworkProtocolTCP  = FirewallPolicyRuleConditionNetworkProtocol("TCP")
-	FirewallPolicyRuleConditionNetworkProtocolUDP  = FirewallPolicyRuleConditionNetworkProtocol("UDP")
-	FirewallPolicyRuleConditionNetworkProtocolAny  = FirewallPolicyRuleConditionNetworkProtocol("Any")
-	FirewallPolicyRuleConditionNetworkProtocolICMP = FirewallPolicyRuleConditionNetworkProtocol("ICMP")
-)
-
-// Rule Condition Type.
-type FirewallPolicyRuleConditionType string
-
-const (
-	FirewallPolicyRuleConditionTypeApplicationRuleCondition = FirewallPolicyRuleConditionType("ApplicationRuleCondition")
-	FirewallPolicyRuleConditionTypeNetworkRuleCondition     = FirewallPolicyRuleConditionType("NetworkRuleCondition")
-)
-
-// The type of the rule.
-type FirewallPolicyRuleType string
-
-const (
-	FirewallPolicyRuleTypeFirewallPolicyNatRule    = FirewallPolicyRuleType("FirewallPolicyNatRule")
-	FirewallPolicyRuleTypeFirewallPolicyFilterRule = FirewallPolicyRuleType("FirewallPolicyFilterRule")
-)
-
 // The private IP address allocation method.
 type IPAllocationMethod string
 
@@ -393,7 +240,7 @@ const (
 	IPAllocationMethodDynamic = IPAllocationMethod("Dynamic")
 )
 
-// Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
+// The public IP address version.
 type IPVersion string
 
 const (
@@ -479,47 +326,11 @@ const (
 	LoadDistributionSourceIPProtocol = LoadDistribution("SourceIPProtocol")
 )
 
-// Describes the state of the managed rule. Defaults to Disabled if not specified.
-type ManagedRuleEnabledState string
-
-const (
-	ManagedRuleEnabledStateDisabled = ManagedRuleEnabledState("Disabled")
-)
-
 // Name of Nat Gateway SKU.
 type NatGatewaySkuName string
 
 const (
 	NatGatewaySkuNameStandard = NatGatewaySkuName("Standard")
-)
-
-// The variable to be excluded.
-type OwaspCrsExclusionEntryMatchVariable string
-
-const (
-	OwaspCrsExclusionEntryMatchVariableRequestHeaderNames = OwaspCrsExclusionEntryMatchVariable("RequestHeaderNames")
-	OwaspCrsExclusionEntryMatchVariableRequestCookieNames = OwaspCrsExclusionEntryMatchVariable("RequestCookieNames")
-	OwaspCrsExclusionEntryMatchVariableRequestArgNames    = OwaspCrsExclusionEntryMatchVariable("RequestArgNames")
-)
-
-// When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
-type OwaspCrsExclusionEntrySelectorMatchOperator string
-
-const (
-	OwaspCrsExclusionEntrySelectorMatchOperatorEquals     = OwaspCrsExclusionEntrySelectorMatchOperator("Equals")
-	OwaspCrsExclusionEntrySelectorMatchOperatorContains   = OwaspCrsExclusionEntrySelectorMatchOperator("Contains")
-	OwaspCrsExclusionEntrySelectorMatchOperatorStartsWith = OwaspCrsExclusionEntrySelectorMatchOperator("StartsWith")
-	OwaspCrsExclusionEntrySelectorMatchOperatorEndsWith   = OwaspCrsExclusionEntrySelectorMatchOperator("EndsWith")
-	OwaspCrsExclusionEntrySelectorMatchOperatorEqualsAny  = OwaspCrsExclusionEntrySelectorMatchOperator("EqualsAny")
-)
-
-// Protocol to be filtered on.
-type PcProtocol string
-
-const (
-	PcProtocolTCP = PcProtocol("TCP")
-	PcProtocolUDP = PcProtocol("UDP")
-	PcProtocolAny = PcProtocol("Any")
 )
 
 // The Pfs Group used in IKE Phase 2 for new child SA.
@@ -729,10 +540,10 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 }
 
 // The rule type of the rule.
-type RouteFilterRuleTypeEnum string
+type RouteFilterRuleType string
 
 const (
-	RouteFilterRuleTypeEnumCommunity = RouteFilterRuleTypeEnum("Community")
+	RouteFilterRuleTypeCommunity = RouteFilterRuleType("Community")
 )
 
 // The type of Azure hop the packet should be sent to.
@@ -772,16 +583,6 @@ const (
 	SecurityRuleProtocolEsp      = SecurityRuleProtocol("Esp")
 	SecurityRuleProtocolAsterisk = SecurityRuleProtocol("*")
 	SecurityRuleProtocolAh       = SecurityRuleProtocol("Ah")
-)
-
-// The ServiceProviderProvisioningState state of the resource.
-type ServiceProviderProvisioningState string
-
-const (
-	ServiceProviderProvisioningStateNotProvisioned = ServiceProviderProvisioningState("NotProvisioned")
-	ServiceProviderProvisioningStateProvisioning   = ServiceProviderProvisioningState("Provisioning")
-	ServiceProviderProvisioningStateProvisioned    = ServiceProviderProvisioningState("Provisioned")
-	ServiceProviderProvisioningStateDeprovisioning = ServiceProviderProvisioningState("Deprovisioning")
 )
 
 // The reference to the transport protocol used by the load balancing rule.
@@ -866,21 +667,12 @@ const (
 )
 
 // The status of the virtual network peering.
-type VirtualNetworkPeeringStateEnum string
+type VirtualNetworkPeeringState string
 
 const (
-	VirtualNetworkPeeringStateEnumInitiated    = VirtualNetworkPeeringStateEnum("Initiated")
-	VirtualNetworkPeeringStateEnumConnected    = VirtualNetworkPeeringStateEnum("Connected")
-	VirtualNetworkPeeringStateEnumDisconnected = VirtualNetworkPeeringStateEnum("Disconnected")
-)
-
-// VPN authentication types enabled for the VpnServerConfiguration.
-type VpnAuthenticationType string
-
-const (
-	VpnAuthenticationTypeCertificate = VpnAuthenticationType("Certificate")
-	VpnAuthenticationTypeRadius      = VpnAuthenticationType("Radius")
-	VpnAuthenticationTypeAAD         = VpnAuthenticationType("AAD")
+	VirtualNetworkPeeringStateInitiated    = VirtualNetworkPeeringState("Initiated")
+	VirtualNetworkPeeringStateConnected    = VirtualNetworkPeeringState("Connected")
+	VirtualNetworkPeeringStateDisconnected = VirtualNetworkPeeringState("Disconnected")
 )
 
 // VPN client protocol enabled for the virtual network gateway.
@@ -901,95 +693,12 @@ const (
 	VpnGatewayGenerationGeneration2 = VpnGatewayGeneration("Generation2")
 )
 
-// VPN protocol enabled for the VpnServerConfiguration.
-type VpnGatewayTunnelingProtocol string
-
-const (
-	VpnGatewayTunnelingProtocolIkeV2   = VpnGatewayTunnelingProtocol("IkeV2")
-	VpnGatewayTunnelingProtocolOpenVPN = VpnGatewayTunnelingProtocol("OpenVPN")
-)
-
 // The type of this virtual network gateway.
 type VpnType string
 
 const (
 	VpnTypePolicyBased = VpnType("PolicyBased")
 	VpnTypeRouteBased  = VpnType("RouteBased")
-)
-
-// Type of Actions.
-type WebApplicationFirewallAction string
-
-const (
-	WebApplicationFirewallActionAllow = WebApplicationFirewallAction("Allow")
-	WebApplicationFirewallActionBlock = WebApplicationFirewallAction("Block")
-	WebApplicationFirewallActionLog   = WebApplicationFirewallAction("Log")
-)
-
-// Describes if the policy is in enabled state or disabled state.
-type WebApplicationFirewallEnabledState string
-
-const (
-	WebApplicationFirewallEnabledStateDisabled = WebApplicationFirewallEnabledState("Disabled")
-	WebApplicationFirewallEnabledStateEnabled  = WebApplicationFirewallEnabledState("Enabled")
-)
-
-// Match Variable.
-type WebApplicationFirewallMatchVariable string
-
-const (
-	WebApplicationFirewallMatchVariableRemoteAddr     = WebApplicationFirewallMatchVariable("RemoteAddr")
-	WebApplicationFirewallMatchVariableRequestMethod  = WebApplicationFirewallMatchVariable("RequestMethod")
-	WebApplicationFirewallMatchVariableQueryString    = WebApplicationFirewallMatchVariable("QueryString")
-	WebApplicationFirewallMatchVariablePostArgs       = WebApplicationFirewallMatchVariable("PostArgs")
-	WebApplicationFirewallMatchVariableRequestUri     = WebApplicationFirewallMatchVariable("RequestUri")
-	WebApplicationFirewallMatchVariableRequestHeaders = WebApplicationFirewallMatchVariable("RequestHeaders")
-	WebApplicationFirewallMatchVariableRequestBody    = WebApplicationFirewallMatchVariable("RequestBody")
-	WebApplicationFirewallMatchVariableRequestCookies = WebApplicationFirewallMatchVariable("RequestCookies")
-)
-
-// Describes if it is in detection mode or prevention mode at policy level.
-type WebApplicationFirewallMode string
-
-const (
-	WebApplicationFirewallModePrevention = WebApplicationFirewallMode("Prevention")
-	WebApplicationFirewallModeDetection  = WebApplicationFirewallMode("Detection")
-)
-
-// Describes operator to be matched.
-type WebApplicationFirewallOperator string
-
-const (
-	WebApplicationFirewallOperatorIPMatch            = WebApplicationFirewallOperator("IPMatch")
-	WebApplicationFirewallOperatorEqual              = WebApplicationFirewallOperator("Equal")
-	WebApplicationFirewallOperatorContains           = WebApplicationFirewallOperator("Contains")
-	WebApplicationFirewallOperatorLessThan           = WebApplicationFirewallOperator("LessThan")
-	WebApplicationFirewallOperatorGreaterThan        = WebApplicationFirewallOperator("GreaterThan")
-	WebApplicationFirewallOperatorLessThanOrEqual    = WebApplicationFirewallOperator("LessThanOrEqual")
-	WebApplicationFirewallOperatorGreaterThanOrEqual = WebApplicationFirewallOperator("GreaterThanOrEqual")
-	WebApplicationFirewallOperatorBeginsWith         = WebApplicationFirewallOperator("BeginsWith")
-	WebApplicationFirewallOperatorEndsWith           = WebApplicationFirewallOperator("EndsWith")
-	WebApplicationFirewallOperatorRegex              = WebApplicationFirewallOperator("Regex")
-)
-
-// Describes type of rule.
-type WebApplicationFirewallRuleType string
-
-const (
-	WebApplicationFirewallRuleTypeMatchRule = WebApplicationFirewallRuleType("MatchRule")
-	WebApplicationFirewallRuleTypeInvalid   = WebApplicationFirewallRuleType("Invalid")
-)
-
-// Describes what transforms applied before matching.
-type WebApplicationFirewallTransform string
-
-const (
-	WebApplicationFirewallTransformLowercase        = WebApplicationFirewallTransform("Lowercase")
-	WebApplicationFirewallTransformTrim             = WebApplicationFirewallTransform("Trim")
-	WebApplicationFirewallTransformUrlDecode        = WebApplicationFirewallTransform("UrlDecode")
-	WebApplicationFirewallTransformUrlEncode        = WebApplicationFirewallTransform("UrlEncode")
-	WebApplicationFirewallTransformRemoveNulls      = WebApplicationFirewallTransform("RemoveNulls")
-	WebApplicationFirewallTransformHtmlEntityDecode = WebApplicationFirewallTransform("HtmlEntityDecode")
 )
 
 func init() {

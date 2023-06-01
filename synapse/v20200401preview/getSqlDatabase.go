@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a SqlDatabase.
-//
-// Deprecated: Version 2020-04-01-preview will be removed in v2 of the provider.
 func LookupSqlDatabase(ctx *pulumi.Context, args *LookupSqlDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupSqlDatabaseResult, error) {
 	var rv LookupSqlDatabaseResult
 	err := ctx.Invoke("azure-native:synapse/v20200401preview:getSqlDatabase", args, &rv, opts...)

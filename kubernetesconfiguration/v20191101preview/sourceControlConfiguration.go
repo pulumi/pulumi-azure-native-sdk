@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The SourceControl Configuration object.
-//
-// Deprecated: Version 2019-11-01-preview will be removed in v2 of the provider.
 type SourceControlConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -64,10 +62,10 @@ func NewSourceControlConfiguration(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.OperatorNamespace) {
+	if args.OperatorNamespace == nil {
 		args.OperatorNamespace = pulumi.StringPtr("default")
 	}
-	if isZero(args.OperatorScope) {
+	if args.OperatorScope == nil {
 		args.OperatorScope = pulumi.StringPtr("cluster")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

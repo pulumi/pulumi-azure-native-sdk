@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,9 +48,6 @@ func NewEyesOn(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("EyesOn")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:securityinsights:EyesOn"),
-		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:EyesOn"),
 		},
@@ -95,6 +92,12 @@ func NewEyesOn(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:EyesOn"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:EyesOn"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:EyesOn"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get configuration for resource.
-// API Version: 2021-04-01-preview.
+// API Version: 2022-11-01-preview.
 func LookupConfigurationAssignmentParent(ctx *pulumi.Context, args *LookupConfigurationAssignmentParentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentParentResult, error) {
 	var rv LookupConfigurationAssignmentParentResult
 	err := ctx.Invoke("azure-native:maintenance:getConfigurationAssignmentParent", args, &rv, opts...)

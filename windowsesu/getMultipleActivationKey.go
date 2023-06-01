@@ -63,7 +63,7 @@ func (val *LookupMultipleActivationKeyResult) Defaults() *LookupMultipleActivati
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SupportType) {
+	if tmp.SupportType == nil {
 		supportType_ := "SupplementalServicing"
 		tmp.SupportType = &supportType_
 	}

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,16 +77,16 @@ func NewWebPubSub(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.DisableAadAuth) {
+	if args.DisableAadAuth == nil {
 		args.DisableAadAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.DisableLocalAuth) {
+	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
 	if args.NetworkACLs != nil {
 		args.NetworkACLs = args.NetworkACLs.ToWebPubSubNetworkACLsPtrOutput().ApplyT(func(v *WebPubSubNetworkACLs) *WebPubSubNetworkACLs { return v.Defaults() }).(WebPubSubNetworkACLsPtrOutput)
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	if args.Tls != nil {
@@ -110,6 +110,9 @@ func NewWebPubSub(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20230201:WebPubSub"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20230301preview:WebPubSub"),
 		},
 	})
 	opts = append(opts, aliases)

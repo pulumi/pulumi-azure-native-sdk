@@ -11,7 +11,7 @@ import (
 )
 
 // The operation to get the extension.
-// API Version: 2021-03-01.
+// API Version: 2022-11-01.
 func LookupVirtualMachineExtension(ctx *pulumi.Context, args *LookupVirtualMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineExtensionResult, error) {
 	var rv LookupVirtualMachineExtensionResult
 	err := ctx.Invoke("azure-native:compute:getVirtualMachineExtension", args, &rv, opts...)
@@ -45,17 +45,21 @@ type LookupVirtualMachineExtensionResult struct {
 	// The virtual machine extension instance view.
 	InstanceView *VirtualMachineExtensionInstanceViewResponse `pulumi:"instanceView"`
 	// Resource location
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// Resource name
 	Name string `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
+	// The extensions protected settings that are passed by reference, and consumed from key vault
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReferenceResponse `pulumi:"protectedSettingsFromKeyVault"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The name of the extension handler publisher.
 	Publisher *string `pulumi:"publisher"`
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
+	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+	SuppressFailures *bool `pulumi:"suppressFailures"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -135,8 +139,8 @@ func (o LookupVirtualMachineExtensionResultOutput) InstanceView() VirtualMachine
 }
 
 // Resource location
-func (o LookupVirtualMachineExtensionResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualMachineExtensionResult) string { return v.Location }).(pulumi.StringOutput)
+func (o LookupVirtualMachineExtensionResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineExtensionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Resource name
@@ -147,6 +151,13 @@ func (o LookupVirtualMachineExtensionResultOutput) Name() pulumi.StringOutput {
 // The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 func (o LookupVirtualMachineExtensionResultOutput) ProtectedSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupVirtualMachineExtensionResult) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
+}
+
+// The extensions protected settings that are passed by reference, and consumed from key vault
+func (o LookupVirtualMachineExtensionResultOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineExtensionResult) *KeyVaultSecretReferenceResponse {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
 }
 
 // The provisioning state, which only appears in the response.
@@ -162,6 +173,11 @@ func (o LookupVirtualMachineExtensionResultOutput) Publisher() pulumi.StringPtrO
 // Json formatted public settings for the extension.
 func (o LookupVirtualMachineExtensionResultOutput) Settings() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupVirtualMachineExtensionResult) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+func (o LookupVirtualMachineExtensionResultOutput) SuppressFailures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineExtensionResult) *bool { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
 }
 
 // Resource tags

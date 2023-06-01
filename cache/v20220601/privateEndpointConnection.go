@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +45,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:cache:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:cache/v20200601:PrivateEndpointConnection"),
 		},
 		{
@@ -55,6 +58,12 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220501:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

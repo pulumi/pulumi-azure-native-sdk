@@ -7,22 +7,25 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// HealthBot resource definition
-// API Version: 2020-12-08.
+// Azure Health Bot resource definition
+// API Version: 2022-08-08.
+// Previous API Version: 2020-12-08. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Bot struct {
 	pulumi.CustomResourceState
 
+	// The identity of the Azure Health Bot.
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The set of properties specific to Healthbot resource.
+	// The set of properties specific to Azure Health Bot resource.
 	Properties HealthBotPropertiesResponseOutput `pulumi:"properties"`
-	// SKU of the HealthBot.
+	// SKU of the Azure Health Bot.
 	Sku SkuResponseOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -103,11 +106,15 @@ func (BotState) ElementType() reflect.Type {
 type botArgs struct {
 	// The name of the Bot resource.
 	BotName *string `pulumi:"botName"`
+	// The identity of the Azure Health Bot.
+	Identity *Identity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// The set of properties specific to Azure Health Bot resource.
+	Properties *HealthBotProperties `pulumi:"properties"`
 	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// SKU of the HealthBot.
+	// SKU of the Azure Health Bot.
 	Sku Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -117,11 +124,15 @@ type botArgs struct {
 type BotArgs struct {
 	// The name of the Bot resource.
 	BotName pulumi.StringPtrInput
+	// The identity of the Azure Health Bot.
+	Identity IdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// The set of properties specific to Azure Health Bot resource.
+	Properties HealthBotPropertiesPtrInput
 	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName pulumi.StringInput
-	// SKU of the HealthBot.
+	// SKU of the Azure Health Bot.
 	Sku SkuInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -164,6 +175,11 @@ func (o BotOutput) ToBotOutputWithContext(ctx context.Context) BotOutput {
 	return o
 }
 
+// The identity of the Azure Health Bot.
+func (o BotOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Bot) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+}
+
 // The geo-location where the resource lives
 func (o BotOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -174,12 +190,12 @@ func (o BotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The set of properties specific to Healthbot resource.
+// The set of properties specific to Azure Health Bot resource.
 func (o BotOutput) Properties() HealthBotPropertiesResponseOutput {
 	return o.ApplyT(func(v *Bot) HealthBotPropertiesResponseOutput { return v.Properties }).(HealthBotPropertiesResponseOutput)
 }
 
-// SKU of the HealthBot.
+// SKU of the Azure Health Bot.
 func (o BotOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v *Bot) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }

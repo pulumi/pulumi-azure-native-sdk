@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an autoscale setting
-// API Version: 2015-04-01.
+// API Version: 2022-10-01.
 func LookupAutoscaleSetting(ctx *pulumi.Context, args *LookupAutoscaleSettingArgs, opts ...pulumi.InvokeOption) (*LookupAutoscaleSettingResult, error) {
 	var rv LookupAutoscaleSettingResult
 	err := ctx.Invoke("azure-native:insights:getAutoscaleSetting", args, &rv, opts...)
@@ -40,9 +40,13 @@ type LookupAutoscaleSettingResult struct {
 	Name string `pulumi:"name"`
 	// the collection of notifications.
 	Notifications []AutoscaleNotificationResponse `pulumi:"notifications"`
+	// the predictive autoscale policy mode.
+	PredictiveAutoscalePolicy *PredictiveAutoscalePolicyResponse `pulumi:"predictiveAutoscalePolicy"`
 	// the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
 	Profiles []AutoscaleProfileResponse `pulumi:"profiles"`
-	// Resource tags
+	// The system metadata related to the response.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
 	Tags map[string]string `pulumi:"tags"`
 	// the location of the resource that the autoscale setting should be added to.
 	TargetResourceLocation *string `pulumi:"targetResourceLocation"`
@@ -58,7 +62,7 @@ func (val *LookupAutoscaleSettingResult) Defaults() *LookupAutoscaleSettingResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}
@@ -129,12 +133,24 @@ func (o LookupAutoscaleSettingResultOutput) Notifications() AutoscaleNotificatio
 	return o.ApplyT(func(v LookupAutoscaleSettingResult) []AutoscaleNotificationResponse { return v.Notifications }).(AutoscaleNotificationResponseArrayOutput)
 }
 
+// the predictive autoscale policy mode.
+func (o LookupAutoscaleSettingResultOutput) PredictiveAutoscalePolicy() PredictiveAutoscalePolicyResponsePtrOutput {
+	return o.ApplyT(func(v LookupAutoscaleSettingResult) *PredictiveAutoscalePolicyResponse {
+		return v.PredictiveAutoscalePolicy
+	}).(PredictiveAutoscalePolicyResponsePtrOutput)
+}
+
 // the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
 func (o LookupAutoscaleSettingResultOutput) Profiles() AutoscaleProfileResponseArrayOutput {
 	return o.ApplyT(func(v LookupAutoscaleSettingResult) []AutoscaleProfileResponse { return v.Profiles }).(AutoscaleProfileResponseArrayOutput)
 }
 
-// Resource tags
+// The system metadata related to the response.
+func (o LookupAutoscaleSettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAutoscaleSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
 func (o LookupAutoscaleSettingResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAutoscaleSettingResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

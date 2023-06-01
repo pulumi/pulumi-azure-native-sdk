@@ -268,17 +268,6 @@ const (
 	LinkedServiceEntityStatusUpdating            = LinkedServiceEntityStatus("Updating")
 )
 
-// Type of the machine group
-type MachineGroupType string
-
-const (
-	MachineGroupTypeUnknown      = MachineGroupType("unknown")
-	MachineGroupType_Azure_Cs    = MachineGroupType("azure-cs")
-	MachineGroupType_Azure_Sf    = MachineGroupType("azure-sf")
-	MachineGroupType_Azure_Vmss  = MachineGroupType("azure-vmss")
-	MachineGroupType_User_Static = MachineGroupType("user-static")
-)
-
 // The network access type for accessing Log Analytics query.
 type PublicNetworkAccessType string
 
@@ -297,19 +286,6 @@ const (
 	TablePlanEnumBasic = TablePlanEnum("Basic")
 	// Logs  that allow monitoring and analytics.
 	TablePlanEnumAnalytics = TablePlanEnum("Analytics")
-)
-
-// The provisioning state of the workspace.
-type WorkspaceEntityStatus string
-
-const (
-	WorkspaceEntityStatusCreating            = WorkspaceEntityStatus("Creating")
-	WorkspaceEntityStatusSucceeded           = WorkspaceEntityStatus("Succeeded")
-	WorkspaceEntityStatusFailed              = WorkspaceEntityStatus("Failed")
-	WorkspaceEntityStatusCanceled            = WorkspaceEntityStatus("Canceled")
-	WorkspaceEntityStatusDeleting            = WorkspaceEntityStatus("Deleting")
-	WorkspaceEntityStatusProvisioningAccount = WorkspaceEntityStatus("ProvisioningAccount")
-	WorkspaceEntityStatusUpdating            = WorkspaceEntityStatus("Updating")
 )
 
 // The name of the SKU.

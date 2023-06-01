@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Machine Extension.
-//
-// Deprecated: Version 2019-08-02-preview will be removed in v2 of the provider.
 type MachineExtension struct {
 	pulumi.CustomResourceState
 
@@ -114,6 +112,9 @@ func NewMachineExtension(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227preview:MachineExtension"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:MachineExtension"),
 		},
 	})
 	opts = append(opts, aliases)

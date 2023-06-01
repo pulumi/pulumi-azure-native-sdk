@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a Configuration.
-// API Version: 2017-12-01.
+// API Version: 2021-05-01.
+// Previous API Version: 2017-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Configuration struct {
 	pulumi.CustomResourceState
 
@@ -24,10 +25,18 @@ type Configuration struct {
 	DefaultValue pulumi.StringOutput `pulumi:"defaultValue"`
 	// Description of the configuration.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// If is the configuration pending restart or not.
+	IsConfigPendingRestart pulumi.StringOutput `pulumi:"isConfigPendingRestart"`
+	// If is the configuration dynamic.
+	IsDynamicConfig pulumi.StringOutput `pulumi:"isDynamicConfig"`
+	// If is the configuration read only.
+	IsReadOnly pulumi.StringOutput `pulumi:"isReadOnly"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Source of the configuration.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Value of the configuration.
@@ -49,10 +58,22 @@ func NewConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbformysql/v20171201:Configuration"),
+			Type: pulumi.String("azure-native:dbformysql/v20200701preview:Configuration"),
 		},
 		{
-			Type: pulumi.String("azure-native:dbformysql/v20171201preview:Configuration"),
+			Type: pulumi.String("azure-native:dbformysql/v20200701privatepreview:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20210501:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20210501preview:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20211201preview:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20220101:Configuration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -171,6 +192,21 @@ func (o ConfigurationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// If is the configuration pending restart or not.
+func (o ConfigurationOutput) IsConfigPendingRestart() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.IsConfigPendingRestart }).(pulumi.StringOutput)
+}
+
+// If is the configuration dynamic.
+func (o ConfigurationOutput) IsDynamicConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.IsDynamicConfig }).(pulumi.StringOutput)
+}
+
+// If is the configuration read only.
+func (o ConfigurationOutput) IsReadOnly() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.IsReadOnly }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -179,6 +215,11 @@ func (o ConfigurationOutput) Name() pulumi.StringOutput {
 // Source of the configuration.
 func (o ConfigurationOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// The system metadata relating to this resource.
+func (o ConfigurationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Configuration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

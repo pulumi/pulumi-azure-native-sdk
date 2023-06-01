@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the client secret details of the Identity Provider.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func ListIdentityProviderSecrets(ctx *pulumi.Context, args *ListIdentityProviderSecretsArgs, opts ...pulumi.InvokeOption) (*ListIdentityProviderSecretsResult, error) {
 	var rv ListIdentityProviderSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement:listIdentityProviderSecrets", args, &rv, opts...)
@@ -24,7 +24,7 @@ func ListIdentityProviderSecrets(ctx *pulumi.Context, args *ListIdentityProvider
 type ListIdentityProviderSecretsArgs struct {
 	// Identity Provider Type identifier.
 	IdentityProviderName string `pulumi:"identityProviderName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -52,7 +52,7 @@ func ListIdentityProviderSecretsOutput(ctx *pulumi.Context, args ListIdentityPro
 type ListIdentityProviderSecretsOutputArgs struct {
 	// Identity Provider Type identifier.
 	IdentityProviderName pulumi.StringInput `pulumi:"identityProviderName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

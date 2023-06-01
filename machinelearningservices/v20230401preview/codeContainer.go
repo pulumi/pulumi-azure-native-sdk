@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,6 +66,12 @@ func NewCodeContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:CodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:CodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:CodeContainer"),
 		},
 	})
 	opts = append(opts, aliases)

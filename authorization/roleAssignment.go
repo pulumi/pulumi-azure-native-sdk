@@ -7,18 +7,19 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Role Assignments
-// API Version: 2020-10-01-preview.
+// API Version: 2022-04-01.
+// Previous API Version: 2020-10-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 
 	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 	Condition pulumi.StringPtrOutput `pulumi:"condition"`
-	// Version of the condition. Currently accepted value is '2.0'
+	// Version of the condition. Currently the only accepted value is '2.0'
 	ConditionVersion pulumi.StringPtrOutput `pulumi:"conditionVersion"`
 	// Id of the user who created the assignment
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
@@ -62,7 +63,7 @@ func NewRoleAssignment(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
-	if isZero(args.PrincipalType) {
+	if args.PrincipalType == nil {
 		args.PrincipalType = pulumi.StringPtr("User")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -129,7 +130,7 @@ func (RoleAssignmentState) ElementType() reflect.Type {
 type roleAssignmentArgs struct {
 	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 	Condition *string `pulumi:"condition"`
-	// Version of the condition. Currently accepted value is '2.0'
+	// Version of the condition. Currently the only accepted value is '2.0'
 	ConditionVersion *string `pulumi:"conditionVersion"`
 	// Id of the delegated managed identity resource
 	DelegatedManagedIdentityResourceId *string `pulumi:"delegatedManagedIdentityResourceId"`
@@ -151,7 +152,7 @@ type roleAssignmentArgs struct {
 type RoleAssignmentArgs struct {
 	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 	Condition pulumi.StringPtrInput
-	// Version of the condition. Currently accepted value is '2.0'
+	// Version of the condition. Currently the only accepted value is '2.0'
 	ConditionVersion pulumi.StringPtrInput
 	// Id of the delegated managed identity resource
 	DelegatedManagedIdentityResourceId pulumi.StringPtrInput
@@ -211,7 +212,7 @@ func (o RoleAssignmentOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-// Version of the condition. Currently accepted value is '2.0'
+// Version of the condition. Currently the only accepted value is '2.0'
 func (o RoleAssignmentOutput) ConditionVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.ConditionVersion }).(pulumi.StringPtrOutput)
 }

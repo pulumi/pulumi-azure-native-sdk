@@ -3,13 +3,6 @@
 
 package v20190601preview
 
-// Type of the sever administrator.
-type AdministratorType string
-
-const (
-	AdministratorTypeActiveDirectory = AdministratorType("ActiveDirectory")
-)
-
 // Collation of the metadata catalog.
 type CatalogCollationType string
 
@@ -66,27 +59,6 @@ const (
 	DatabaseReadScaleDisabled = DatabaseReadScale("Disabled")
 )
 
-// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-type IdentityType string
-
-const (
-	IdentityTypeNone                         = IdentityType("None")
-	IdentityTypeSystemAssigned               = IdentityType("SystemAssigned")
-	IdentityTypeUserAssigned                 = IdentityType("UserAssigned")
-	IdentityType_SystemAssigned_UserAssigned = IdentityType("SystemAssigned,UserAssigned")
-)
-
-// Managed database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. SourceDatabaseName, SourceManagedInstanceName and PointInTime must be specified. RestoreExternalBackup: Create a database by restoring from external backup files. Collation, StorageContainerUri and StorageContainerSasToken must be specified. Recovery: Creates a database by restoring a geo-replicated backup. RecoverableDatabaseId must be specified as the recoverable database resource ID to restore. RestoreLongTermRetentionBackup: Create a database by restoring from a long term retention backup (longTermRetentionBackupResourceId required).
-type ManagedDatabaseCreateMode string
-
-const (
-	ManagedDatabaseCreateModeDefault                        = ManagedDatabaseCreateMode("Default")
-	ManagedDatabaseCreateModeRestoreExternalBackup          = ManagedDatabaseCreateMode("RestoreExternalBackup")
-	ManagedDatabaseCreateModePointInTimeRestore             = ManagedDatabaseCreateMode("PointInTimeRestore")
-	ManagedDatabaseCreateModeRecovery                       = ManagedDatabaseCreateMode("Recovery")
-	ManagedDatabaseCreateModeRestoreLongTermRetentionBackup = ManagedDatabaseCreateMode("RestoreLongTermRetentionBackup")
-)
-
 // The name of the sample schema to apply when creating this database.
 type SampleName string
 
@@ -96,14 +68,6 @@ const (
 	SampleNameWideWorldImportersFull = SampleName("WideWorldImportersFull")
 )
 
-// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
-type ServerPublicNetworkAccess string
-
-const (
-	ServerPublicNetworkAccessEnabled  = ServerPublicNetworkAccess("Enabled")
-	ServerPublicNetworkAccessDisabled = ServerPublicNetworkAccess("Disabled")
-)
-
 // The storage account type used to store backups for this database.
 type StorageAccountType string
 
@@ -111,31 +75,6 @@ const (
 	StorageAccountTypeGRS = StorageAccountType("GRS")
 	StorageAccountTypeLRS = StorageAccountType("LRS")
 	StorageAccountTypeZRS = StorageAccountType("ZRS")
-)
-
-// Conflict resolution policy of the sync group.
-type SyncConflictResolutionPolicy string
-
-const (
-	SyncConflictResolutionPolicyHubWin    = SyncConflictResolutionPolicy("HubWin")
-	SyncConflictResolutionPolicyMemberWin = SyncConflictResolutionPolicy("MemberWin")
-)
-
-// Sync direction of the sync member.
-type SyncDirection string
-
-const (
-	SyncDirectionBidirectional     = SyncDirection("Bidirectional")
-	SyncDirectionOneWayMemberToHub = SyncDirection("OneWayMemberToHub")
-	SyncDirectionOneWayHubToMember = SyncDirection("OneWayHubToMember")
-)
-
-// Database type of the sync member.
-type SyncMemberDbType string
-
-const (
-	SyncMemberDbTypeAzureSqlDatabase  = SyncMemberDbType("AzureSqlDatabase")
-	SyncMemberDbTypeSqlServerDatabase = SyncMemberDbType("SqlServerDatabase")
 )
 
 func init() {

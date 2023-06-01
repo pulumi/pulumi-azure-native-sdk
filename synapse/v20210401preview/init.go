@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,54 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:synapse/v20210401preview:BigDataPool":
-		r = &BigDataPool{}
 	case "azure-native:synapse/v20210401preview:DatabasePrincipalAssignment":
 		r = &DatabasePrincipalAssignment{}
 	case "azure-native:synapse/v20210401preview:EventGridDataConnection":
 		r = &EventGridDataConnection{}
 	case "azure-native:synapse/v20210401preview:EventHubDataConnection":
 		r = &EventHubDataConnection{}
-	case "azure-native:synapse/v20210401preview:IntegrationRuntime":
-		r = &IntegrationRuntime{}
 	case "azure-native:synapse/v20210401preview:IotHubDataConnection":
 		r = &IotHubDataConnection{}
-	case "azure-native:synapse/v20210401preview:IpFirewallRule":
-		r = &IpFirewallRule{}
-	case "azure-native:synapse/v20210401preview:Key":
-		r = &Key{}
+	case "azure-native:synapse/v20210401preview:KustoPool":
+		r = &KustoPool{}
 	case "azure-native:synapse/v20210401preview:KustoPoolPrincipalAssignment":
 		r = &KustoPoolPrincipalAssignment{}
-	case "azure-native:synapse/v20210401preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:synapse/v20210401preview:PrivateLinkHub":
-		r = &PrivateLinkHub{}
 	case "azure-native:synapse/v20210401preview:ReadWriteDatabase":
 		r = &ReadWriteDatabase{}
-	case "azure-native:synapse/v20210401preview:SqlPool":
-		r = &SqlPool{}
-	case "azure-native:synapse/v20210401preview:SqlPoolSensitivityLabel":
-		r = &SqlPoolSensitivityLabel{}
-	case "azure-native:synapse/v20210401preview:SqlPoolTransparentDataEncryption":
-		r = &SqlPoolTransparentDataEncryption{}
-	case "azure-native:synapse/v20210401preview:SqlPoolVulnerabilityAssessment":
-		r = &SqlPoolVulnerabilityAssessment{}
-	case "azure-native:synapse/v20210401preview:SqlPoolVulnerabilityAssessmentRuleBaseline":
-		r = &SqlPoolVulnerabilityAssessmentRuleBaseline{}
-	case "azure-native:synapse/v20210401preview:SqlPoolWorkloadClassifier":
-		r = &SqlPoolWorkloadClassifier{}
-	case "azure-native:synapse/v20210401preview:SqlPoolWorkloadGroup":
-		r = &SqlPoolWorkloadGroup{}
-	case "azure-native:synapse/v20210401preview:Workspace":
-		r = &Workspace{}
-	case "azure-native:synapse/v20210401preview:WorkspaceAadAdmin":
-		r = &WorkspaceAadAdmin{}
-	case "azure-native:synapse/v20210401preview:WorkspaceManagedSqlServerVulnerabilityAssessment":
-		r = &WorkspaceManagedSqlServerVulnerabilityAssessment{}
-	case "azure-native:synapse/v20210401preview:WorkspaceSqlAadAdmin":
-		r = &WorkspaceSqlAadAdmin{}
-	case "azure-native:synapse/v20210401preview:kustoPool":
-		r = &KustoPool{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

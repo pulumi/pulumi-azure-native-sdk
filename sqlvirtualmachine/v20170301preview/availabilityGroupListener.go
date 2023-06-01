@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +62,9 @@ func NewAvailabilityGroupListener(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20220801preview:AvailabilityGroupListener"),
+		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine/v20230101preview:AvailabilityGroupListener"),
 		},
 	})
 	opts = append(opts, aliases)

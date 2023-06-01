@@ -11,8 +11,6 @@ import (
 )
 
 // Gets information about a disk.
-//
-// Deprecated: Version 2016-04-30-preview will be removed in v2 of the provider.
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	var rv LookupDiskResult
 	err := ctx.Invoke("azure-native:compute/v20160430preview:getDisk", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +65,12 @@ func NewEnvironmentSpecificationVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:EnvironmentSpecificationVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:EnvironmentSpecificationVersion"),

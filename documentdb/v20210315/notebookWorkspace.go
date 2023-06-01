@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,7 +109,16 @@ func NewNotebookWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:NotebookWorkspace"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:NotebookWorkspace"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:NotebookWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

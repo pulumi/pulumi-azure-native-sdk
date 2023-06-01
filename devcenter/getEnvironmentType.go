@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an environment type.
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
 func LookupEnvironmentType(ctx *pulumi.Context, args *LookupEnvironmentTypeArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentTypeResult, error) {
 	var rv LookupEnvironmentTypeResult
 	err := ctx.Invoke("azure-native:devcenter:getEnvironmentType", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupEnvironmentTypeArgs struct {
 	DevCenterName string `pulumi:"devCenterName"`
 	// The name of the environment type.
 	EnvironmentTypeName string `pulumi:"environmentTypeName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -64,7 +64,7 @@ type LookupEnvironmentTypeOutputArgs struct {
 	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
 	// The name of the environment type.
 	EnvironmentTypeName pulumi.StringInput `pulumi:"environmentTypeName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

@@ -57,14 +57,6 @@ const (
 	ComputeTypeSynapseSpark      = ComputeType("SynapseSpark")
 )
 
-// Indicates whether or not the encryption is enabled for the workspace.
-type EncryptionStatus string
-
-const (
-	EncryptionStatusEnabled  = EncryptionStatus("Enabled")
-	EncryptionStatusDisabled = EncryptionStatus("Disabled")
-)
-
 // Load Balancer Type
 type LoadBalancerType string
 
@@ -79,17 +71,6 @@ type OsType string
 const (
 	OsTypeLinux   = OsType("Linux")
 	OsTypeWindows = OsType("Windows")
-)
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-type PrivateEndpointServiceConnectionStatus string
-
-const (
-	PrivateEndpointServiceConnectionStatusPending      = PrivateEndpointServiceConnectionStatus("Pending")
-	PrivateEndpointServiceConnectionStatusApproved     = PrivateEndpointServiceConnectionStatus("Approved")
-	PrivateEndpointServiceConnectionStatusRejected     = PrivateEndpointServiceConnectionStatus("Rejected")
-	PrivateEndpointServiceConnectionStatusDisconnected = PrivateEndpointServiceConnectionStatus("Disconnected")
-	PrivateEndpointServiceConnectionStatusTimeout      = PrivateEndpointServiceConnectionStatus("Timeout")
 )
 
 // State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL server registration.
 // API Version: 2019-07-24-preview.
+// Previous API Version: 2019-07-24-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlServerRegistration struct {
 	pulumi.CustomResourceState
 

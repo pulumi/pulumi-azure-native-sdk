@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +75,9 @@ func NewBinding(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:Binding"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:Binding"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the specified commitmentPlans associated with the Cognitive Services account.
-// API Version: 2021-10-01.
+// Returns a Cognitive Services commitment plan specified by the parameters.
+// API Version: 2022-12-01.
 func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanResult, error) {
 	var rv LookupCommitmentPlanResult
 	err := ctx.Invoke("azure-native:cognitiveservices:getCommitmentPlan", args, &rv, opts...)
@@ -22,8 +22,6 @@ func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, o
 }
 
 type LookupCommitmentPlanArgs struct {
-	// The name of Cognitive Services account.
-	AccountName string `pulumi:"accountName"`
 	// The name of the commitmentPlan associated with the Cognitive Services Account
 	CommitmentPlanName string `pulumi:"commitmentPlanName"`
 	// The name of the resource group. The name is case insensitive.
@@ -36,12 +34,20 @@ type LookupCommitmentPlanResult struct {
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// The Kind of the resource.
+	Kind *string `pulumi:"kind"`
+	// The geo-location where the resource lives
+	Location *string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Properties of Cognitive Services account commitment plan.
 	Properties CommitmentPlanPropertiesResponse `pulumi:"properties"`
+	// The resource model definition representing SKU
+	Sku *SkuResponse `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -60,8 +66,6 @@ func LookupCommitmentPlanOutput(ctx *pulumi.Context, args LookupCommitmentPlanOu
 }
 
 type LookupCommitmentPlanOutputArgs struct {
-	// The name of Cognitive Services account.
-	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the commitmentPlan associated with the Cognitive Services Account
 	CommitmentPlanName pulumi.StringInput `pulumi:"commitmentPlanName"`
 	// The name of the resource group. The name is case insensitive.
@@ -97,6 +101,16 @@ func (o LookupCommitmentPlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Kind of the resource.
+func (o LookupCommitmentPlanResultOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCommitmentPlanResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// The geo-location where the resource lives
+func (o LookupCommitmentPlanResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCommitmentPlanResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o LookupCommitmentPlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) string { return v.Name }).(pulumi.StringOutput)
@@ -107,9 +121,19 @@ func (o LookupCommitmentPlanResultOutput) Properties() CommitmentPlanPropertiesR
 	return o.ApplyT(func(v LookupCommitmentPlanResult) CommitmentPlanPropertiesResponse { return v.Properties }).(CommitmentPlanPropertiesResponseOutput)
 }
 
+// The resource model definition representing SKU
+func (o LookupCommitmentPlanResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupCommitmentPlanResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 func (o LookupCommitmentPlanResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o LookupCommitmentPlanResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCommitmentPlanResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

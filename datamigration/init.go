@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,16 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:datamigration:DatabaseMigrationsSqlDb":
-		r = &DatabaseMigrationsSqlDb{}
 	case "azure-native:datamigration:File":
 		r = &File{}
 	case "azure-native:datamigration:Project":
 		r = &Project{}
 	case "azure-native:datamigration:Service":
 		r = &Service{}
-	case "azure-native:datamigration:SqlMigrationService":
-		r = &SqlMigrationService{}
+	case "azure-native:datamigration:ServiceTask":
+		r = &ServiceTask{}
 	case "azure-native:datamigration:Task":
 		r = &Task{}
 	default:

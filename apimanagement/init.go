@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Api{}
 	case "azure-native:apimanagement:ApiDiagnostic":
 		r = &ApiDiagnostic{}
-	case "azure-native:apimanagement:ApiDiagnosticLogger":
-		r = &ApiDiagnosticLogger{}
 	case "azure-native:apimanagement:ApiIssue":
 		r = &ApiIssue{}
 	case "azure-native:apimanagement:ApiIssueAttachment":
@@ -49,6 +47,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiTagDescription{}
 	case "azure-native:apimanagement:ApiVersionSet":
 		r = &ApiVersionSet{}
+	case "azure-native:apimanagement:ApiWiki":
+		r = &ApiWiki{}
+	case "azure-native:apimanagement:Authorization":
+		r = &Authorization{}
+	case "azure-native:apimanagement:AuthorizationAccessPolicy":
+		r = &AuthorizationAccessPolicy{}
+	case "azure-native:apimanagement:AuthorizationProvider":
+		r = &AuthorizationProvider{}
 	case "azure-native:apimanagement:AuthorizationServer":
 		r = &AuthorizationServer{}
 	case "azure-native:apimanagement:Backend":
@@ -63,8 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContentType{}
 	case "azure-native:apimanagement:Diagnostic":
 		r = &Diagnostic{}
-	case "azure-native:apimanagement:DiagnosticLogger":
-		r = &DiagnosticLogger{}
+	case "azure-native:apimanagement:Documentation":
+		r = &Documentation{}
 	case "azure-native:apimanagement:EmailTemplate":
 		r = &EmailTemplate{}
 	case "azure-native:apimanagement:Gateway":
@@ -75,6 +81,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GatewayCertificateAuthority{}
 	case "azure-native:apimanagement:GatewayHostnameConfiguration":
 		r = &GatewayHostnameConfiguration{}
+	case "azure-native:apimanagement:GlobalSchema":
+		r = &GlobalSchema{}
+	case "azure-native:apimanagement:GraphQLApiResolver":
+		r = &GraphQLApiResolver{}
+	case "azure-native:apimanagement:GraphQLApiResolverPolicy":
+		r = &GraphQLApiResolverPolicy{}
 	case "azure-native:apimanagement:Group":
 		r = &Group{}
 	case "azure-native:apimanagement:GroupUser":
@@ -105,10 +117,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProductGroup{}
 	case "azure-native:apimanagement:ProductPolicy":
 		r = &ProductPolicy{}
-	case "azure-native:apimanagement:Property":
-		r = &Property{}
-	case "azure-native:apimanagement:Schema":
-		r = &Schema{}
+	case "azure-native:apimanagement:ProductWiki":
+		r = &ProductWiki{}
 	case "azure-native:apimanagement:Subscription":
 		r = &Subscription{}
 	case "azure-native:apimanagement:Tag":

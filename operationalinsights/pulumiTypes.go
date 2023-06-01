@@ -619,7 +619,7 @@ type Identity struct {
 	// Type of managed service identity.
 	Type IdentityType `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -638,7 +638,7 @@ type IdentityArgs struct {
 	// Type of managed service identity.
 	Type IdentityTypeInput `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -725,8 +725,8 @@ func (o IdentityOutput) Type() IdentityTypeOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -764,13 +764,13 @@ func (o IdentityPtrOutput) Type() IdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the resource.
@@ -1464,201 +1464,6 @@ func (o LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput) Solutions(
 	}).(pulumi.StringArrayOutput)
 }
 
-// A machine reference with a hint of the machine's name and operating system.
-type MachineReferenceWithHints struct {
-	// Resource URI.
-	Id string `pulumi:"id"`
-	// Specifies the sub-class of the reference.
-	// Expected value is 'ref:machinewithhints'.
-	Kind string `pulumi:"kind"`
-}
-
-// MachineReferenceWithHintsInput is an input type that accepts MachineReferenceWithHintsArgs and MachineReferenceWithHintsOutput values.
-// You can construct a concrete instance of `MachineReferenceWithHintsInput` via:
-//
-//	MachineReferenceWithHintsArgs{...}
-type MachineReferenceWithHintsInput interface {
-	pulumi.Input
-
-	ToMachineReferenceWithHintsOutput() MachineReferenceWithHintsOutput
-	ToMachineReferenceWithHintsOutputWithContext(context.Context) MachineReferenceWithHintsOutput
-}
-
-// A machine reference with a hint of the machine's name and operating system.
-type MachineReferenceWithHintsArgs struct {
-	// Resource URI.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the sub-class of the reference.
-	// Expected value is 'ref:machinewithhints'.
-	Kind pulumi.StringInput `pulumi:"kind"`
-}
-
-func (MachineReferenceWithHintsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineReferenceWithHints)(nil)).Elem()
-}
-
-func (i MachineReferenceWithHintsArgs) ToMachineReferenceWithHintsOutput() MachineReferenceWithHintsOutput {
-	return i.ToMachineReferenceWithHintsOutputWithContext(context.Background())
-}
-
-func (i MachineReferenceWithHintsArgs) ToMachineReferenceWithHintsOutputWithContext(ctx context.Context) MachineReferenceWithHintsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MachineReferenceWithHintsOutput)
-}
-
-// MachineReferenceWithHintsArrayInput is an input type that accepts MachineReferenceWithHintsArray and MachineReferenceWithHintsArrayOutput values.
-// You can construct a concrete instance of `MachineReferenceWithHintsArrayInput` via:
-//
-//	MachineReferenceWithHintsArray{ MachineReferenceWithHintsArgs{...} }
-type MachineReferenceWithHintsArrayInput interface {
-	pulumi.Input
-
-	ToMachineReferenceWithHintsArrayOutput() MachineReferenceWithHintsArrayOutput
-	ToMachineReferenceWithHintsArrayOutputWithContext(context.Context) MachineReferenceWithHintsArrayOutput
-}
-
-type MachineReferenceWithHintsArray []MachineReferenceWithHintsInput
-
-func (MachineReferenceWithHintsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MachineReferenceWithHints)(nil)).Elem()
-}
-
-func (i MachineReferenceWithHintsArray) ToMachineReferenceWithHintsArrayOutput() MachineReferenceWithHintsArrayOutput {
-	return i.ToMachineReferenceWithHintsArrayOutputWithContext(context.Background())
-}
-
-func (i MachineReferenceWithHintsArray) ToMachineReferenceWithHintsArrayOutputWithContext(ctx context.Context) MachineReferenceWithHintsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MachineReferenceWithHintsArrayOutput)
-}
-
-// A machine reference with a hint of the machine's name and operating system.
-type MachineReferenceWithHintsOutput struct{ *pulumi.OutputState }
-
-func (MachineReferenceWithHintsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineReferenceWithHints)(nil)).Elem()
-}
-
-func (o MachineReferenceWithHintsOutput) ToMachineReferenceWithHintsOutput() MachineReferenceWithHintsOutput {
-	return o
-}
-
-func (o MachineReferenceWithHintsOutput) ToMachineReferenceWithHintsOutputWithContext(ctx context.Context) MachineReferenceWithHintsOutput {
-	return o
-}
-
-// Resource URI.
-func (o MachineReferenceWithHintsOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineReferenceWithHints) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Specifies the sub-class of the reference.
-// Expected value is 'ref:machinewithhints'.
-func (o MachineReferenceWithHintsOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineReferenceWithHints) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-type MachineReferenceWithHintsArrayOutput struct{ *pulumi.OutputState }
-
-func (MachineReferenceWithHintsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MachineReferenceWithHints)(nil)).Elem()
-}
-
-func (o MachineReferenceWithHintsArrayOutput) ToMachineReferenceWithHintsArrayOutput() MachineReferenceWithHintsArrayOutput {
-	return o
-}
-
-func (o MachineReferenceWithHintsArrayOutput) ToMachineReferenceWithHintsArrayOutputWithContext(ctx context.Context) MachineReferenceWithHintsArrayOutput {
-	return o
-}
-
-func (o MachineReferenceWithHintsArrayOutput) Index(i pulumi.IntInput) MachineReferenceWithHintsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineReferenceWithHints {
-		return vs[0].([]MachineReferenceWithHints)[vs[1].(int)]
-	}).(MachineReferenceWithHintsOutput)
-}
-
-// A machine reference with a hint of the machine's name and operating system.
-type MachineReferenceWithHintsResponse struct {
-	// Last known display name.
-	DisplayNameHint string `pulumi:"displayNameHint"`
-	// Resource URI.
-	Id string `pulumi:"id"`
-	// Specifies the sub-class of the reference.
-	// Expected value is 'ref:machinewithhints'.
-	Kind string `pulumi:"kind"`
-	// Resource name.
-	Name string `pulumi:"name"`
-	// Last known operating system family.
-	OsFamilyHint string `pulumi:"osFamilyHint"`
-	// Resource type qualifier.
-	Type string `pulumi:"type"`
-}
-
-// A machine reference with a hint of the machine's name and operating system.
-type MachineReferenceWithHintsResponseOutput struct{ *pulumi.OutputState }
-
-func (MachineReferenceWithHintsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineReferenceWithHintsResponse)(nil)).Elem()
-}
-
-func (o MachineReferenceWithHintsResponseOutput) ToMachineReferenceWithHintsResponseOutput() MachineReferenceWithHintsResponseOutput {
-	return o
-}
-
-func (o MachineReferenceWithHintsResponseOutput) ToMachineReferenceWithHintsResponseOutputWithContext(ctx context.Context) MachineReferenceWithHintsResponseOutput {
-	return o
-}
-
-// Last known display name.
-func (o MachineReferenceWithHintsResponseOutput) DisplayNameHint() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineReferenceWithHintsResponse) string { return v.DisplayNameHint }).(pulumi.StringOutput)
-}
-
-// Resource URI.
-func (o MachineReferenceWithHintsResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineReferenceWithHintsResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Specifies the sub-class of the reference.
-// Expected value is 'ref:machinewithhints'.
-func (o MachineReferenceWithHintsResponseOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineReferenceWithHintsResponse) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// Resource name.
-func (o MachineReferenceWithHintsResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineReferenceWithHintsResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Last known operating system family.
-func (o MachineReferenceWithHintsResponseOutput) OsFamilyHint() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineReferenceWithHintsResponse) string { return v.OsFamilyHint }).(pulumi.StringOutput)
-}
-
-// Resource type qualifier.
-func (o MachineReferenceWithHintsResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineReferenceWithHintsResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type MachineReferenceWithHintsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (MachineReferenceWithHintsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MachineReferenceWithHintsResponse)(nil)).Elem()
-}
-
-func (o MachineReferenceWithHintsResponseArrayOutput) ToMachineReferenceWithHintsResponseArrayOutput() MachineReferenceWithHintsResponseArrayOutput {
-	return o
-}
-
-func (o MachineReferenceWithHintsResponseArrayOutput) ToMachineReferenceWithHintsResponseArrayOutputWithContext(ctx context.Context) MachineReferenceWithHintsResponseArrayOutput {
-	return o
-}
-
-func (o MachineReferenceWithHintsResponseArrayOutput) Index(i pulumi.IntInput) MachineReferenceWithHintsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineReferenceWithHintsResponse {
-		return vs[0].([]MachineReferenceWithHintsResponse)[vs[1].(int)]
-	}).(MachineReferenceWithHintsResponseOutput)
-}
-
 // The private link scope resource reference.
 type PrivateLinkScopedResourceResponse struct {
 	// The full resource Id of the private link scope resource.
@@ -1892,6 +1697,8 @@ func (o RestoredLogsPtrOutput) StartRestoreTime() pulumi.StringPtrOutput {
 
 // Restore parameters.
 type RestoredLogsResponse struct {
+	// Search results table async operation id.
+	AzureAsyncOperationId string `pulumi:"azureAsyncOperationId"`
 	// The timestamp to end the restore by (UTC).
 	EndRestoreTime *string `pulumi:"endRestoreTime"`
 	// The table to restore data from.
@@ -1913,6 +1720,11 @@ func (o RestoredLogsResponseOutput) ToRestoredLogsResponseOutput() RestoredLogsR
 
 func (o RestoredLogsResponseOutput) ToRestoredLogsResponseOutputWithContext(ctx context.Context) RestoredLogsResponseOutput {
 	return o
+}
+
+// Search results table async operation id.
+func (o RestoredLogsResponseOutput) AzureAsyncOperationId() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoredLogsResponse) string { return v.AzureAsyncOperationId }).(pulumi.StringOutput)
 }
 
 // The timestamp to end the restore by (UTC).
@@ -1954,6 +1766,16 @@ func (o RestoredLogsResponsePtrOutput) Elem() RestoredLogsResponseOutput {
 	}).(RestoredLogsResponseOutput)
 }
 
+// Search results table async operation id.
+func (o RestoredLogsResponsePtrOutput) AzureAsyncOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoredLogsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureAsyncOperationId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The timestamp to end the restore by (UTC).
 func (o RestoredLogsResponsePtrOutput) EndRestoreTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoredLogsResponse) *string {
@@ -1990,6 +1812,8 @@ type ResultStatisticsResponse struct {
 	IngestedRecords int `pulumi:"ingestedRecords"`
 	// Search job completion percentage.
 	Progress float64 `pulumi:"progress"`
+	// Search job: Amount of scanned data.
+	ScannedGb float64 `pulumi:"scannedGb"`
 }
 
 // Search job execution statistics.
@@ -2017,48 +1841,9 @@ func (o ResultStatisticsResponseOutput) Progress() pulumi.Float64Output {
 	return o.ApplyT(func(v ResultStatisticsResponse) float64 { return v.Progress }).(pulumi.Float64Output)
 }
 
-type ResultStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResultStatisticsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResultStatisticsResponse)(nil)).Elem()
-}
-
-func (o ResultStatisticsResponsePtrOutput) ToResultStatisticsResponsePtrOutput() ResultStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o ResultStatisticsResponsePtrOutput) ToResultStatisticsResponsePtrOutputWithContext(ctx context.Context) ResultStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o ResultStatisticsResponsePtrOutput) Elem() ResultStatisticsResponseOutput {
-	return o.ApplyT(func(v *ResultStatisticsResponse) ResultStatisticsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResultStatisticsResponse
-		return ret
-	}).(ResultStatisticsResponseOutput)
-}
-
-// The number of rows that were returned by the search job.
-func (o ResultStatisticsResponsePtrOutput) IngestedRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ResultStatisticsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IngestedRecords
-	}).(pulumi.IntPtrOutput)
-}
-
-// Search job completion percentage.
-func (o ResultStatisticsResponsePtrOutput) Progress() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ResultStatisticsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Progress
-	}).(pulumi.Float64PtrOutput)
+// Search job: Amount of scanned data.
+func (o ResultStatisticsResponseOutput) ScannedGb() pulumi.Float64Output {
+	return o.ApplyT(func(v ResultStatisticsResponse) float64 { return v.ScannedGb }).(pulumi.Float64Output)
 }
 
 // Table's schema.
@@ -2272,10 +2057,6 @@ type SchemaResponse struct {
 	Labels []string `pulumi:"labels"`
 	// Table name.
 	Name *string `pulumi:"name"`
-	// Parameters of the restore operation that initiated this table.
-	RestoredLogs RestoredLogsResponse `pulumi:"restoredLogs"`
-	// Parameters of the search job that initiated this table.
-	SearchResults SearchResultsResponse `pulumi:"searchResults"`
 	// List of solutions the table is affiliated with
 	Solutions []string `pulumi:"solutions"`
 	// Table's creator.
@@ -2331,16 +2112,6 @@ func (o SchemaResponseOutput) Labels() pulumi.StringArrayOutput {
 // Table name.
 func (o SchemaResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Parameters of the restore operation that initiated this table.
-func (o SchemaResponseOutput) RestoredLogs() RestoredLogsResponseOutput {
-	return o.ApplyT(func(v SchemaResponse) RestoredLogsResponse { return v.RestoredLogs }).(RestoredLogsResponseOutput)
-}
-
-// Parameters of the search job that initiated this table.
-func (o SchemaResponseOutput) SearchResults() SearchResultsResponseOutput {
-	return o.ApplyT(func(v SchemaResponse) SearchResultsResponse { return v.SearchResults }).(SearchResultsResponseOutput)
 }
 
 // List of solutions the table is affiliated with
@@ -2450,26 +2221,6 @@ func (o SchemaResponsePtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return v.Name
 	}).(pulumi.StringPtrOutput)
-}
-
-// Parameters of the restore operation that initiated this table.
-func (o SchemaResponsePtrOutput) RestoredLogs() RestoredLogsResponsePtrOutput {
-	return o.ApplyT(func(v *SchemaResponse) *RestoredLogsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RestoredLogs
-	}).(RestoredLogsResponsePtrOutput)
-}
-
-// Parameters of the search job that initiated this table.
-func (o SchemaResponsePtrOutput) SearchResults() SearchResultsResponsePtrOutput {
-	return o.ApplyT(func(v *SchemaResponse) *SearchResultsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SearchResults
-	}).(SearchResultsResponsePtrOutput)
 }
 
 // List of solutions the table is affiliated with
@@ -2740,6 +2491,8 @@ func (o SearchResultsPtrOutput) StartSearchTime() pulumi.StringPtrOutput {
 
 // Parameters of the search job that initiated this table.
 type SearchResultsResponse struct {
+	// Search results table async operation id.
+	AzureAsyncOperationId string `pulumi:"azureAsyncOperationId"`
 	// Search job Description.
 	Description *string `pulumi:"description"`
 	// The timestamp to end the search by (UTC)
@@ -2767,6 +2520,11 @@ func (o SearchResultsResponseOutput) ToSearchResultsResponseOutput() SearchResul
 
 func (o SearchResultsResponseOutput) ToSearchResultsResponseOutputWithContext(ctx context.Context) SearchResultsResponseOutput {
 	return o
+}
+
+// Search results table async operation id.
+func (o SearchResultsResponseOutput) AzureAsyncOperationId() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchResultsResponse) string { return v.AzureAsyncOperationId }).(pulumi.StringOutput)
 }
 
 // Search job Description.
@@ -2821,6 +2579,16 @@ func (o SearchResultsResponsePtrOutput) Elem() SearchResultsResponseOutput {
 		var ret SearchResultsResponse
 		return ret
 	}).(SearchResultsResponseOutput)
+}
+
+// Search results table async operation id.
+func (o SearchResultsResponsePtrOutput) AzureAsyncOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchResultsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureAsyncOperationId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Search job Description.
@@ -3869,7 +3637,7 @@ func (o WorkspaceFeaturesResponsePtrOutput) ImmediatePurgeDataOn30Days() pulumi.
 
 // The SKU (tier) of a workspace.
 type WorkspaceSku struct {
-	// The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+	// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 	CapacityReservationLevel *int `pulumi:"capacityReservationLevel"`
 	// The name of the SKU.
 	Name string `pulumi:"name"`
@@ -3888,7 +3656,7 @@ type WorkspaceSkuInput interface {
 
 // The SKU (tier) of a workspace.
 type WorkspaceSkuArgs struct {
-	// The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+	// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 	CapacityReservationLevel pulumi.IntPtrInput `pulumi:"capacityReservationLevel"`
 	// The name of the SKU.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -3972,7 +3740,7 @@ func (o WorkspaceSkuOutput) ToWorkspaceSkuPtrOutputWithContext(ctx context.Conte
 	}).(WorkspaceSkuPtrOutput)
 }
 
-// The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 func (o WorkspaceSkuOutput) CapacityReservationLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkspaceSku) *int { return v.CapacityReservationLevel }).(pulumi.IntPtrOutput)
 }
@@ -4006,7 +3774,7 @@ func (o WorkspaceSkuPtrOutput) Elem() WorkspaceSkuOutput {
 	}).(WorkspaceSkuOutput)
 }
 
-// The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 func (o WorkspaceSkuPtrOutput) CapacityReservationLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSku) *int {
 		if v == nil {
@@ -4028,7 +3796,7 @@ func (o WorkspaceSkuPtrOutput) Name() pulumi.StringPtrOutput {
 
 // The SKU (tier) of a workspace.
 type WorkspaceSkuResponse struct {
-	// The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+	// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 	CapacityReservationLevel *int `pulumi:"capacityReservationLevel"`
 	// The last time when the sku was updated.
 	LastSkuUpdate string `pulumi:"lastSkuUpdate"`
@@ -4051,7 +3819,7 @@ func (o WorkspaceSkuResponseOutput) ToWorkspaceSkuResponseOutputWithContext(ctx 
 	return o
 }
 
-// The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 func (o WorkspaceSkuResponseOutput) CapacityReservationLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkspaceSkuResponse) *int { return v.CapacityReservationLevel }).(pulumi.IntPtrOutput)
 }
@@ -4090,7 +3858,7 @@ func (o WorkspaceSkuResponsePtrOutput) Elem() WorkspaceSkuResponseOutput {
 	}).(WorkspaceSkuResponseOutput)
 }
 
-// The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 func (o WorkspaceSkuResponsePtrOutput) CapacityReservationLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSkuResponse) *int {
 		if v == nil {
@@ -4145,10 +3913,6 @@ func init() {
 	pulumi.RegisterOutputType(LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsQueryPackQueryPropertiesResponseRelatedOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput{})
-	pulumi.RegisterOutputType(MachineReferenceWithHintsOutput{})
-	pulumi.RegisterOutputType(MachineReferenceWithHintsArrayOutput{})
-	pulumi.RegisterOutputType(MachineReferenceWithHintsResponseOutput{})
-	pulumi.RegisterOutputType(MachineReferenceWithHintsResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateLinkScopedResourceResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkScopedResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(RestoredLogsOutput{})
@@ -4156,7 +3920,6 @@ func init() {
 	pulumi.RegisterOutputType(RestoredLogsResponseOutput{})
 	pulumi.RegisterOutputType(RestoredLogsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResultStatisticsResponseOutput{})
-	pulumi.RegisterOutputType(ResultStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchemaOutput{})
 	pulumi.RegisterOutputType(SchemaPtrOutput{})
 	pulumi.RegisterOutputType(SchemaResponseOutput{})

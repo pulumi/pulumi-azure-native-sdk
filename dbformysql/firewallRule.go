@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a server firewall rule.
-// API Version: 2017-12-01.
+// API Version: 2021-05-01.
+// Previous API Version: 2017-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type FirewallRule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The start IP address of the server firewall rule. Must be IPv4 format.
 	StartIpAddress pulumi.StringOutput `pulumi:"startIpAddress"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -47,10 +50,22 @@ func NewFirewallRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbformysql/v20171201:FirewallRule"),
+			Type: pulumi.String("azure-native:dbformysql/v20200701preview:FirewallRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:dbformysql/v20171201preview:FirewallRule"),
+			Type: pulumi.String("azure-native:dbformysql/v20200701privatepreview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20210501:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20210501preview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20211201preview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20220101:FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -162,6 +177,11 @@ func (o FirewallRuleOutput) Name() pulumi.StringOutput {
 // The start IP address of the server firewall rule. Must be IPv4 format.
 func (o FirewallRuleOutput) StartIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.StartIpAddress }).(pulumi.StringOutput)
+}
+
+// The system metadata relating to this resource.
+func (o FirewallRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *FirewallRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

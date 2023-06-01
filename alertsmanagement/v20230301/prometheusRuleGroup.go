@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +56,9 @@ func NewPrometheusRuleGroup(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:alertsmanagement:PrometheusRuleGroup"),
+		},
 		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20210722preview:PrometheusRuleGroup"),
 		},

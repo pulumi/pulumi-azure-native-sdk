@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,9 +43,6 @@ func NewLabelingJob(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:LabelingJob"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20200901preview:LabelingJob"),
 		},
 		{
@@ -56,6 +53,9 @@ func NewLabelingJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:LabelingJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:LabelingJob"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:LabelingJob"),

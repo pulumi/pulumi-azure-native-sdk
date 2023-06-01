@@ -7,27 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Mobile network resource.
-// API Version: 2022-04-01-preview.
+// API Version: 2022-11-01.
+// Previous API Version: 2022-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MobileNetwork struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -103,18 +92,6 @@ func (MobileNetworkState) ElementType() reflect.Type {
 }
 
 type mobileNetworkArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the mobile network.
@@ -129,18 +106,6 @@ type mobileNetworkArgs struct {
 
 // The set of arguments for constructing a MobileNetwork resource.
 type MobileNetworkArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrInput
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrInput
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrInput
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrInput
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the mobile network.
@@ -188,36 +153,6 @@ func (o MobileNetworkOutput) ToMobileNetworkOutput() MobileNetworkOutput {
 
 func (o MobileNetworkOutput) ToMobileNetworkOutputWithContext(ctx context.Context) MobileNetworkOutput {
 	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o MobileNetworkOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MobileNetwork) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o MobileNetworkOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MobileNetwork) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o MobileNetworkOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MobileNetwork) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o MobileNetworkOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MobileNetwork) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o MobileNetworkOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MobileNetwork) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o MobileNetworkOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MobileNetwork) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives

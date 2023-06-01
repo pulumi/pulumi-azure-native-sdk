@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,9 +76,6 @@ func NewUserRule(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("Custom")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network:UserRule"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20210201preview:UserRule"),
 		},

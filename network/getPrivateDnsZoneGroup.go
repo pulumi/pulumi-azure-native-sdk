@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the private dns zone group resource by specified private dns zone group name.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupPrivateDnsZoneGroup(ctx *pulumi.Context, args *LookupPrivateDnsZoneGroupArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDnsZoneGroupResult, error) {
 	var rv LookupPrivateDnsZoneGroupResult
 	err := ctx.Invoke("azure-native:network:getPrivateDnsZoneGroup", args, &rv, opts...)

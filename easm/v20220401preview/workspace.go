@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +44,9 @@ func NewWorkspace(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:easm:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:easm/v20230401preview:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Schema for MSIX Package properties.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-09.
+// Previous API Version: 2021-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MSIXPackage struct {
 	pulumi.CustomResourceState
 
@@ -38,6 +39,8 @@ type MSIXPackage struct {
 	PackageName pulumi.StringPtrOutput `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath pulumi.StringPtrOutput `pulumi:"packageRelativePath"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Package Version found in the appxmanifest.xml.
@@ -286,6 +289,11 @@ func (o MSIXPackageOutput) PackageName() pulumi.StringPtrOutput {
 // Relative Path to the package inside the image.
 func (o MSIXPackageOutput) PackageRelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MSIXPackage) pulumi.StringPtrOutput { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o MSIXPackageOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MSIXPackage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

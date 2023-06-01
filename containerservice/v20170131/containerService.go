@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container service.
-//
-// Deprecated: Version 2017-01-31 will be removed in v2 of the provider.
 type ContainerService struct {
 	pulumi.CustomResourceState
 

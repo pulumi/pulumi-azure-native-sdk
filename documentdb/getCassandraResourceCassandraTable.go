@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Cassandra table under an existing Azure Cosmos DB database account.
-// API Version: 2021-03-15.
+// API Version: 2022-11-15.
 func LookupCassandraResourceCassandraTable(ctx *pulumi.Context, args *LookupCassandraResourceCassandraTableArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraTableResult, error) {
 	var rv LookupCassandraResourceCassandraTableResult
 	err := ctx.Invoke("azure-native:documentdb:getCassandraResourceCassandraTable", args, &rv, opts...)

@@ -437,8 +437,8 @@ type KeyValuePairResponse struct {
 type ResourceIdentity struct {
 	// String of the resource identity type.
 	Type ResourceIdentityType `pulumi:"type"`
-	// The list of user identities associated with the experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ResourceIdentityInput is an input type that accepts ResourceIdentityArgs and ResourceIdentityOutput values.
@@ -456,8 +456,8 @@ type ResourceIdentityInput interface {
 type ResourceIdentityArgs struct {
 	// String of the resource identity type.
 	Type ResourceIdentityTypeInput `pulumi:"type"`
-	// The list of user identities associated with the experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ResourceIdentityArgs) ElementType() reflect.Type {
@@ -543,9 +543,9 @@ func (o ResourceIdentityOutput) Type() ResourceIdentityTypeOutput {
 	return o.ApplyT(func(v ResourceIdentity) ResourceIdentityType { return v.Type }).(ResourceIdentityTypeOutput)
 }
 
-// The list of user identities associated with the experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ResourceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ResourceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -582,14 +582,14 @@ func (o ResourceIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-// The list of user identities associated with the experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ResourceIdentity) map[string]interface{} {
+// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The identity of a resource.
@@ -600,8 +600,8 @@ type ResourceIdentityResponse struct {
 	TenantId string `pulumi:"tenantId"`
 	// String of the resource identity type.
 	Type string `pulumi:"type"`
-	// The list of user identities associated with the experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]UserAssignedIdentitiesResponseUserAssignedIdentities `pulumi:"userAssignedIdentities"`
+	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // The identity of a resource.
@@ -634,11 +634,11 @@ func (o ResourceIdentityResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of user identities associated with the experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ResourceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v ResourceIdentityResponse) map[string]UserAssignedIdentitiesResponseUserAssignedIdentities {
+// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o ResourceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ResourceIdentityResponse) map[string]UserAssignedIdentityResponse {
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 type ResourceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -695,14 +695,14 @@ func (o ResourceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of user identities associated with the experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ResourceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v *ResourceIdentityResponse) map[string]UserAssignedIdentitiesResponseUserAssignedIdentities {
+// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o ResourceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ResourceIdentityResponse) map[string]UserAssignedIdentityResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Model that represents a selector in the Experiment resource.
@@ -1727,57 +1727,57 @@ func (o TargetReferenceResponseArrayOutput) Index(i pulumi.IntInput) TargetRefer
 	}).(TargetReferenceResponseOutput)
 }
 
-// The list of user identities associated with the experiment.
-type UserAssignedIdentitiesResponseUserAssignedIdentities struct {
-	// The client id of user assigned identity.
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
 	ClientId string `pulumi:"clientId"`
-	// The principal id of user assigned identity.
+	// The principal ID of the assigned identity.
 	PrincipalId string `pulumi:"principalId"`
 }
 
-// The list of user identities associated with the experiment.
-type UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput struct{ *pulumi.OutputState }
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
 
-func (UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentitiesResponseUserAssignedIdentities)(nil)).Elem()
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
 }
 
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesOutput() UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput {
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
 	return o
 }
 
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesOutputWithContext(ctx context.Context) UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput {
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
 	return o
 }
 
-// The client id of user assigned identity.
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentitiesResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// The principal id of user assigned identity.
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentitiesResponseUserAssignedIdentities) string { return v.PrincipalId }).(pulumi.StringOutput)
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-type UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput struct{ *pulumi.OutputState }
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
 
-func (UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentitiesResponseUserAssignedIdentities)(nil)).Elem()
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
 }
 
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput() UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
 	return o
 }
 
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
 }
 
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentitiesResponseUserAssignedIdentities {
-		return vs[0].(map[string]UserAssignedIdentitiesResponseUserAssignedIdentities)[vs[1].(string)]
-	}).(UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput)
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
 }
 
 func init() {
@@ -1813,6 +1813,6 @@ func init() {
 	pulumi.RegisterOutputType(TargetReferenceArrayOutput{})
 	pulumi.RegisterOutputType(TargetReferenceResponseOutput{})
 	pulumi.RegisterOutputType(TargetReferenceResponseArrayOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

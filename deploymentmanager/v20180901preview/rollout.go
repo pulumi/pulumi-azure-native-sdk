@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the PUT rollout request body.
-//
-// Deprecated: Version 2018-09-01-preview will be removed in v2 of the provider.
 type Rollout struct {
 	pulumi.CustomResourceState
 

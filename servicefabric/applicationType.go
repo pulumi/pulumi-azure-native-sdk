@@ -7,23 +7,24 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The application type name resource
-// API Version: 2020-03-01.
+// API Version: 2023-02-01-preview.
+// Previous API Version: 2020-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ApplicationType struct {
 	pulumi.CustomResourceState
 
-	// Azure resource etag.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// It will be deprecated in New API, resource location depends on the parent resource.
+	// Resource location depends on the parent resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Azure resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current deployment or provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Azure resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Azure resource type.
@@ -45,28 +46,40 @@ func NewApplicationType(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20170701preview:ApplicationType"),
+			Type: pulumi.String("azure-native:servicefabric/v20210101preview:ApplicationType"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20190301:ApplicationType"),
+			Type: pulumi.String("azure-native:servicefabric/v20210501:ApplicationType"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20190301preview:ApplicationType"),
+			Type: pulumi.String("azure-native:servicefabric/v20210701preview:ApplicationType"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20190601preview:ApplicationType"),
+			Type: pulumi.String("azure-native:servicefabric/v20210901privatepreview:ApplicationType"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20191101preview:ApplicationType"),
+			Type: pulumi.String("azure-native:servicefabric/v20211101preview:ApplicationType"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20200301:ApplicationType"),
+			Type: pulumi.String("azure-native:servicefabric/v20220101:ApplicationType"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20201201preview:ApplicationType"),
+			Type: pulumi.String("azure-native:servicefabric/v20220201preview:ApplicationType"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20210601:ApplicationType"),
+			Type: pulumi.String("azure-native:servicefabric/v20220601preview:ApplicationType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20220801preview:ApplicationType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20221001preview:ApplicationType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230201preview:ApplicationType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230301preview:ApplicationType"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -106,7 +119,7 @@ type applicationTypeArgs struct {
 	ApplicationTypeName *string `pulumi:"applicationTypeName"`
 	// The name of the cluster resource.
 	ClusterName string `pulumi:"clusterName"`
-	// It will be deprecated in New API, resource location depends on the parent resource.
+	// Resource location depends on the parent resource.
 	Location *string `pulumi:"location"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -120,7 +133,7 @@ type ApplicationTypeArgs struct {
 	ApplicationTypeName pulumi.StringPtrInput
 	// The name of the cluster resource.
 	ClusterName pulumi.StringInput
-	// It will be deprecated in New API, resource location depends on the parent resource.
+	// Resource location depends on the parent resource.
 	Location pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
@@ -165,12 +178,7 @@ func (o ApplicationTypeOutput) ToApplicationTypeOutputWithContext(ctx context.Co
 	return o
 }
 
-// Azure resource etag.
-func (o ApplicationTypeOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationType) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
-}
-
-// It will be deprecated in New API, resource location depends on the parent resource.
+// Resource location depends on the parent resource.
 func (o ApplicationTypeOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationType) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -183,6 +191,11 @@ func (o ApplicationTypeOutput) Name() pulumi.StringOutput {
 // The current deployment or provisioning state, which only appears in the response.
 func (o ApplicationTypeOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationType) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ApplicationTypeOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ApplicationType) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Azure resource tags.

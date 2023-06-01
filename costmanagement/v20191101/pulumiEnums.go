@@ -22,22 +22,6 @@ const (
 	ChartTypeTable         = ChartType("Table")
 )
 
-// The type of the query.
-type ExportType string
-
-const (
-	ExportTypeUsage         = ExportType("Usage")
-	ExportTypeActualCost    = ExportType("ActualCost")
-	ExportTypeAmortizedCost = ExportType("AmortizedCost")
-)
-
-// The format of the export being delivered.
-type FormatType string
-
-const (
-	FormatTypeCsv = FormatType("Csv")
-)
-
 // The name of the aggregation function to use.
 type FunctionType string
 
@@ -46,13 +30,6 @@ const (
 	FunctionTypeMax = FunctionType("Max")
 	FunctionTypeMin = FunctionType("Min")
 	FunctionTypeSum = FunctionType("Sum")
-)
-
-// The granularity of rows in the query.
-type GranularityType string
-
-const (
-	GranularityTypeDaily = GranularityType("Daily")
 )
 
 // KPI type (Forecast, Budget).
@@ -89,24 +66,6 @@ const (
 )
 
 // Has type of the column to group.
-type QueryColumnType string
-
-const (
-	QueryColumnTypeTag       = QueryColumnType("Tag")
-	QueryColumnTypeDimension = QueryColumnType("Dimension")
-)
-
-// The schedule recurrence.
-type RecurrenceType string
-
-const (
-	RecurrenceTypeDaily    = RecurrenceType("Daily")
-	RecurrenceTypeWeekly   = RecurrenceType("Weekly")
-	RecurrenceTypeMonthly  = RecurrenceType("Monthly")
-	RecurrenceTypeAnnually = RecurrenceType("Annually")
-)
-
-// Has type of the column to group.
 type ReportConfigColumnType string
 
 const (
@@ -137,26 +96,6 @@ type ReportType string
 
 const (
 	ReportTypeUsage = ReportType("Usage")
-)
-
-// The status of the schedule. Whether active or not. If inactive, the export's scheduled execution is paused.
-type StatusType string
-
-const (
-	StatusTypeActive   = StatusType("Active")
-	StatusTypeInactive = StatusType("Inactive")
-)
-
-// The time frame for pulling data for the query. If custom, then a specific time period must be provided.
-type TimeframeType string
-
-const (
-	TimeframeTypeMonthToDate         = TimeframeType("MonthToDate")
-	TimeframeTypeBillingMonthToDate  = TimeframeType("BillingMonthToDate")
-	TimeframeTypeTheLastMonth        = TimeframeType("TheLastMonth")
-	TimeframeTypeTheLastBillingMonth = TimeframeType("TheLastBillingMonth")
-	TimeframeTypeWeekToDate          = TimeframeType("WeekToDate")
-	TimeframeTypeCustom              = TimeframeType("Custom")
 )
 
 func init() {

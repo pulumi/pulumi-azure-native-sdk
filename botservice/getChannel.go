@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a BotService Channel registration specified by the parameters.
-// API Version: 2021-03-01.
+// API Version: 2022-09-15.
 func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.InvokeOption) (*LookupChannelResult, error) {
 	var rv LookupChannelResult
 	err := ctx.Invoke("azure-native:botservice:getChannel", args, &rv, opts...)
@@ -32,7 +32,7 @@ type LookupChannelArgs struct {
 
 // Bot channel resource definition
 type LookupChannelResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -95,7 +95,7 @@ func (o LookupChannelResultOutput) ToLookupChannelResultOutputWithContext(ctx co
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o LookupChannelResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupChannelResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

@@ -11,8 +11,6 @@ import (
 )
 
 // Get the specified network security rule.
-//
-// Deprecated: Version 2017-03-01 will be removed in v2 of the provider.
 func LookupSecurityRule(ctx *pulumi.Context, args *LookupSecurityRuleArgs, opts ...pulumi.InvokeOption) (*LookupSecurityRuleResult, error) {
 	var rv LookupSecurityRuleResult
 	err := ctx.Invoke("azure-native:network/v20170301:getSecurityRule", args, &rv, opts...)

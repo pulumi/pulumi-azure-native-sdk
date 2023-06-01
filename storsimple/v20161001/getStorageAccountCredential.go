@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the properties of the specified storage account credential name.
-//
-// Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupStorageAccountCredential(ctx *pulumi.Context, args *LookupStorageAccountCredentialArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountCredentialResult, error) {
 	var rv LookupStorageAccountCredentialResult
 	err := ctx.Invoke("azure-native:storsimple/v20161001:getStorageAccountCredential", args, &rv, opts...)

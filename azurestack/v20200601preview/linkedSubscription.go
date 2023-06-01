@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,12 +61,6 @@ func NewLinkedSubscription(ctx *pulumi.Context,
 	if args.ResourceGroup == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroup'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:azurestack:LinkedSubscription"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource LinkedSubscription
 	err := ctx.RegisterResource("azure-native:azurestack/v20200601preview:LinkedSubscription", name, args, &resource, opts...)
 	if err != nil {

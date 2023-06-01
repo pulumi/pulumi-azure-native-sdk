@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a job.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:sql:getJob", args, &rv, opts...)
@@ -54,7 +54,7 @@ func (val *LookupJobResult) Defaults() *LookupJobResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Description) {
+	if tmp.Description == nil {
 		description_ := ""
 		tmp.Description = &description_
 	}

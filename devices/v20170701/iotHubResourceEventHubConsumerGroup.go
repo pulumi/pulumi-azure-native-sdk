@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The properties of the EventHubConsumerGroupInfo object.
-//
-// Deprecated: Version 2017-07-01 will be removed in v2 of the provider.
 type IotHubResourceEventHubConsumerGroup struct {
 	pulumi.CustomResourceState
 
@@ -114,6 +112,9 @@ func NewIotHubResourceEventHubConsumerGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20220430preview:IotHubResourceEventHubConsumerGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20221115preview:IotHubResourceEventHubConsumerGroup"),
 		},
 	})
 	opts = append(opts, aliases)

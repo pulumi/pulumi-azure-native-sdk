@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,6 +91,15 @@ func NewSqlResourceSqlRoleAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlRoleAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlRoleAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlRoleAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlRoleAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

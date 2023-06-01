@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Security ML Analytics Settings.
-// API Version: 2022-05-01-preview.
+// API Version: 2023-02-01.
 func LookupAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *LookupAnomalySecurityMLAnalyticsSettingsArgs, opts ...pulumi.InvokeOption) (*LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
 	var rv LookupAnomalySecurityMLAnalyticsSettingsResult
 	err := ctx.Invoke("azure-native:securityinsights:getAnomalySecurityMLAnalyticsSettings", args, &rv, opts...)

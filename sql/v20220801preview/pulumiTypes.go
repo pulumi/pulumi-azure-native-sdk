@@ -15,7 +15,7 @@ type DatabaseIdentity struct {
 	// The identity type
 	Type *string `pulumi:"type"`
 	// The resource ids of the user assigned identities to use
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // DatabaseIdentityInput is an input type that accepts DatabaseIdentityArgs and DatabaseIdentityOutput values.
@@ -34,7 +34,7 @@ type DatabaseIdentityArgs struct {
 	// The identity type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The resource ids of the user assigned identities to use
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (DatabaseIdentityArgs) ElementType() reflect.Type {
@@ -121,8 +121,8 @@ func (o DatabaseIdentityOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The resource ids of the user assigned identities to use
-func (o DatabaseIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v DatabaseIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o DatabaseIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type DatabaseIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -160,13 +160,13 @@ func (o DatabaseIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The resource ids of the user assigned identities to use
-func (o DatabaseIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *DatabaseIdentity) map[string]interface{} {
+func (o DatabaseIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Azure Active Directory identity configuration for a resource.
@@ -1383,15 +1383,15 @@ func (val *JobSchedule) Defaults() *JobSchedule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EndTime) {
+	if tmp.EndTime == nil {
 		endTime_ := "9999-12-31T03:59:59-08:00"
 		tmp.EndTime = &endTime_
 	}
-	if isZero(tmp.StartTime) {
+	if tmp.StartTime == nil {
 		startTime_ := "0001-01-01T16:00:00-08:00"
 		tmp.StartTime = &startTime_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := JobScheduleType("Once")
 		tmp.Type = &type_
 	}
@@ -1429,13 +1429,13 @@ func (val *JobScheduleArgs) Defaults() *JobScheduleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EndTime) {
+	if tmp.EndTime == nil {
 		tmp.EndTime = pulumi.StringPtr("9999-12-31T03:59:59-08:00")
 	}
-	if isZero(tmp.StartTime) {
+	if tmp.StartTime == nil {
 		tmp.StartTime = pulumi.StringPtr("0001-01-01T16:00:00-08:00")
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = JobScheduleType("Once")
 	}
 	return &tmp
@@ -1637,15 +1637,15 @@ func (val *JobScheduleResponse) Defaults() *JobScheduleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EndTime) {
+	if tmp.EndTime == nil {
 		endTime_ := "9999-12-31T03:59:59-08:00"
 		tmp.EndTime = &endTime_
 	}
-	if isZero(tmp.StartTime) {
+	if tmp.StartTime == nil {
 		startTime_ := "0001-01-01T16:00:00-08:00"
 		tmp.StartTime = &startTime_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Once"
 		tmp.Type = &type_
 	}
@@ -1782,11 +1782,11 @@ func (val *JobStepAction) Defaults() *JobStepAction {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Source) {
+	if tmp.Source == nil {
 		source_ := "Inline"
 		tmp.Source = &source_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "TSql"
 		tmp.Type = &type_
 	}
@@ -1820,10 +1820,10 @@ func (val *JobStepActionArgs) Defaults() *JobStepActionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Source) {
+	if tmp.Source == nil {
 		tmp.Source = pulumi.StringPtr("Inline")
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("TSql")
 	}
 	return &tmp
@@ -1886,11 +1886,11 @@ func (val *JobStepActionResponse) Defaults() *JobStepActionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Source) {
+	if tmp.Source == nil {
 		source_ := "Inline"
 		tmp.Source = &source_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "TSql"
 		tmp.Type = &type_
 	}
@@ -1947,23 +1947,23 @@ func (val *JobStepExecutionOptions) Defaults() *JobStepExecutionOptions {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InitialRetryIntervalSeconds) {
+	if tmp.InitialRetryIntervalSeconds == nil {
 		initialRetryIntervalSeconds_ := 1
 		tmp.InitialRetryIntervalSeconds = &initialRetryIntervalSeconds_
 	}
-	if isZero(tmp.MaximumRetryIntervalSeconds) {
+	if tmp.MaximumRetryIntervalSeconds == nil {
 		maximumRetryIntervalSeconds_ := 120
 		tmp.MaximumRetryIntervalSeconds = &maximumRetryIntervalSeconds_
 	}
-	if isZero(tmp.RetryAttempts) {
+	if tmp.RetryAttempts == nil {
 		retryAttempts_ := 10
 		tmp.RetryAttempts = &retryAttempts_
 	}
-	if isZero(tmp.RetryIntervalBackoffMultiplier) {
+	if tmp.RetryIntervalBackoffMultiplier == nil {
 		retryIntervalBackoffMultiplier_ := 2.0
 		tmp.RetryIntervalBackoffMultiplier = &retryIntervalBackoffMultiplier_
 	}
-	if isZero(tmp.TimeoutSeconds) {
+	if tmp.TimeoutSeconds == nil {
 		timeoutSeconds_ := 43200
 		tmp.TimeoutSeconds = &timeoutSeconds_
 	}
@@ -2001,19 +2001,19 @@ func (val *JobStepExecutionOptionsArgs) Defaults() *JobStepExecutionOptionsArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InitialRetryIntervalSeconds) {
+	if tmp.InitialRetryIntervalSeconds == nil {
 		tmp.InitialRetryIntervalSeconds = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.MaximumRetryIntervalSeconds) {
+	if tmp.MaximumRetryIntervalSeconds == nil {
 		tmp.MaximumRetryIntervalSeconds = pulumi.IntPtr(120)
 	}
-	if isZero(tmp.RetryAttempts) {
+	if tmp.RetryAttempts == nil {
 		tmp.RetryAttempts = pulumi.IntPtr(10)
 	}
-	if isZero(tmp.RetryIntervalBackoffMultiplier) {
+	if tmp.RetryIntervalBackoffMultiplier == nil {
 		tmp.RetryIntervalBackoffMultiplier = pulumi.Float64Ptr(2.0)
 	}
-	if isZero(tmp.TimeoutSeconds) {
+	if tmp.TimeoutSeconds == nil {
 		tmp.TimeoutSeconds = pulumi.IntPtr(43200)
 	}
 	return &tmp
@@ -2215,23 +2215,23 @@ func (val *JobStepExecutionOptionsResponse) Defaults() *JobStepExecutionOptionsR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InitialRetryIntervalSeconds) {
+	if tmp.InitialRetryIntervalSeconds == nil {
 		initialRetryIntervalSeconds_ := 1
 		tmp.InitialRetryIntervalSeconds = &initialRetryIntervalSeconds_
 	}
-	if isZero(tmp.MaximumRetryIntervalSeconds) {
+	if tmp.MaximumRetryIntervalSeconds == nil {
 		maximumRetryIntervalSeconds_ := 120
 		tmp.MaximumRetryIntervalSeconds = &maximumRetryIntervalSeconds_
 	}
-	if isZero(tmp.RetryAttempts) {
+	if tmp.RetryAttempts == nil {
 		retryAttempts_ := 10
 		tmp.RetryAttempts = &retryAttempts_
 	}
-	if isZero(tmp.RetryIntervalBackoffMultiplier) {
+	if tmp.RetryIntervalBackoffMultiplier == nil {
 		retryIntervalBackoffMultiplier_ := 2.0
 		tmp.RetryIntervalBackoffMultiplier = &retryIntervalBackoffMultiplier_
 	}
-	if isZero(tmp.TimeoutSeconds) {
+	if tmp.TimeoutSeconds == nil {
 		timeoutSeconds_ := 43200
 		tmp.TimeoutSeconds = &timeoutSeconds_
 	}
@@ -2378,11 +2378,11 @@ func (val *JobStepOutputType) Defaults() *JobStepOutputType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SchemaName) {
+	if tmp.SchemaName == nil {
 		schemaName_ := "dbo"
 		tmp.SchemaName = &schemaName_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "SqlDatabase"
 		tmp.Type = &type_
 	}
@@ -2426,10 +2426,10 @@ func (val *JobStepOutputTypeArgs) Defaults() *JobStepOutputTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SchemaName) {
+	if tmp.SchemaName == nil {
 		tmp.SchemaName = pulumi.StringPtr("dbo")
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("SqlDatabase")
 	}
 	return &tmp
@@ -2682,11 +2682,11 @@ func (val *JobStepOutputResponse) Defaults() *JobStepOutputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SchemaName) {
+	if tmp.SchemaName == nil {
 		schemaName_ := "dbo"
 		tmp.SchemaName = &schemaName_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "SqlDatabase"
 		tmp.Type = &type_
 	}
@@ -2876,7 +2876,7 @@ func (val *JobTarget) Defaults() *JobTarget {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MembershipType) {
+	if tmp.MembershipType == nil {
 		membershipType_ := JobTargetGroupMembershipType("Include")
 		tmp.MembershipType = &membershipType_
 	}
@@ -2918,7 +2918,7 @@ func (val *JobTargetArgs) Defaults() *JobTargetArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MembershipType) {
+	if tmp.MembershipType == nil {
 		tmp.MembershipType = JobTargetGroupMembershipType("Include")
 	}
 	return &tmp
@@ -3054,7 +3054,7 @@ func (val *JobTargetResponse) Defaults() *JobTargetResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MembershipType) {
+	if tmp.MembershipType == nil {
 		membershipType_ := "Include"
 		tmp.MembershipType = &membershipType_
 	}
@@ -5520,7 +5520,7 @@ type ResourceIdentity struct {
 	// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 	Type *string `pulumi:"type"`
 	// The resource ids of the user assigned identities to use
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ResourceIdentityInput is an input type that accepts ResourceIdentityArgs and ResourceIdentityOutput values.
@@ -5539,7 +5539,7 @@ type ResourceIdentityArgs struct {
 	// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The resource ids of the user assigned identities to use
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ResourceIdentityArgs) ElementType() reflect.Type {
@@ -5626,8 +5626,8 @@ func (o ResourceIdentityOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The resource ids of the user assigned identities to use
-func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ResourceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ResourceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -5665,13 +5665,13 @@ func (o ResourceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The resource ids of the user assigned identities to use
-func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ResourceIdentity) map[string]interface{} {
+func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Azure Active Directory identity configuration for a resource.
@@ -7861,7 +7861,7 @@ func (val *VulnerabilityAssessmentRecurringScansProperties) Defaults() *Vulnerab
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
+	if tmp.EmailSubscriptionAdmins == nil {
 		emailSubscriptionAdmins_ := true
 		tmp.EmailSubscriptionAdmins = &emailSubscriptionAdmins_
 	}
@@ -7895,7 +7895,7 @@ func (val *VulnerabilityAssessmentRecurringScansPropertiesArgs) Defaults() *Vuln
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
+	if tmp.EmailSubscriptionAdmins == nil {
 		tmp.EmailSubscriptionAdmins = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -8063,7 +8063,7 @@ func (val *VulnerabilityAssessmentRecurringScansPropertiesResponse) Defaults() *
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EmailSubscriptionAdmins) {
+	if tmp.EmailSubscriptionAdmins == nil {
 		emailSubscriptionAdmins_ := true
 		tmp.EmailSubscriptionAdmins = &emailSubscriptionAdmins_
 	}

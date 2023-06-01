@@ -3925,7 +3925,7 @@ func (val *Encryption) Defaults() *Encryption {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Microsoft.Storage"
 		tmp.KeySource = &keySource_
 	}
@@ -3963,7 +3963,7 @@ func (val *EncryptionArgs) Defaults() *EncryptionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		tmp.KeySource = pulumi.StringPtr("Microsoft.Storage")
 	}
 	return &tmp
@@ -4401,7 +4401,7 @@ func (val *EncryptionResponse) Defaults() *EncryptionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeySource) {
+	if tmp.KeySource == nil {
 		keySource_ := "Microsoft.Storage"
 		tmp.KeySource = &keySource_
 	}
@@ -5608,7 +5608,7 @@ func (val *IPRule) Defaults() *IPRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := Action("Allow")
 		tmp.Action = &action_
 	}
@@ -5640,7 +5640,7 @@ func (val *IPRuleArgs) Defaults() *IPRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = Action("Allow")
 	}
 	return &tmp
@@ -5741,7 +5741,7 @@ func (val *IPRuleResponse) Defaults() *IPRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -5798,7 +5798,7 @@ type Identity struct {
 	// The identity type.
 	Type string `pulumi:"type"`
 	// Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -5817,7 +5817,7 @@ type IdentityArgs struct {
 	// The identity type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -5904,8 +5904,8 @@ func (o IdentityOutput) Type() pulumi.StringOutput {
 }
 
 // Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -5943,13 +5943,13 @@ func (o IdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the resource.
@@ -9509,7 +9509,7 @@ func (val *NetworkRuleSet) Defaults() *NetworkRuleSet {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		bypass_ := "AzureServices"
 		tmp.Bypass = &bypass_
 	}
@@ -9550,10 +9550,10 @@ func (val *NetworkRuleSetArgs) Defaults() *NetworkRuleSetArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		tmp.Bypass = pulumi.StringPtr("AzureServices")
 	}
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		tmp.DefaultAction = DefaultAction("Allow")
 	}
 	return &tmp
@@ -9755,7 +9755,7 @@ func (val *NetworkRuleSetResponse) Defaults() *NetworkRuleSetResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Bypass) {
+	if tmp.Bypass == nil {
 		bypass_ := "AzureServices"
 		tmp.Bypass = &bypass_
 	}
@@ -11690,7 +11690,7 @@ func (val *SasPolicyArgs) Defaults() *SasPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExpirationAction) {
+	if tmp.ExpirationAction == nil {
 		tmp.ExpirationAction = pulumi.String("Log")
 	}
 	return &tmp
@@ -13963,7 +13963,7 @@ func (val *VirtualNetworkRule) Defaults() *VirtualNetworkRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := Action("Allow")
 		tmp.Action = &action_
 	}
@@ -13997,7 +13997,7 @@ func (val *VirtualNetworkRuleArgs) Defaults() *VirtualNetworkRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = Action("Allow")
 	}
 	return &tmp
@@ -14105,7 +14105,7 @@ func (val *VirtualNetworkRuleResponse) Defaults() *VirtualNetworkRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}

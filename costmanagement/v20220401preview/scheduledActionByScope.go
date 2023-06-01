@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +75,9 @@ func NewScheduledActionByScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20221001:ScheduledActionByScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230401preview:ScheduledActionByScope"),
 		},
 	})
 	opts = append(opts, aliases)

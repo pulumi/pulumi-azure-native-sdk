@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains information about an application in a Batch account.
-//
-// Deprecated: Version 2017-09-01 will be removed in v2 of the provider.
 type Application struct {
 	pulumi.CustomResourceState
 

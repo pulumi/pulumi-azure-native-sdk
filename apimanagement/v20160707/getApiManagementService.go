@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an API Management service resource description.
-//
-// Deprecated: Version 2016-07-07 will be removed in v2 of the provider.
 func LookupApiManagementService(ctx *pulumi.Context, args *LookupApiManagementServiceArgs, opts ...pulumi.InvokeOption) (*LookupApiManagementServiceResult, error) {
 	var rv LookupApiManagementServiceResult
 	err := ctx.Invoke("azure-native:apimanagement/v20160707:getApiManagementService", args, &rv, opts...)
@@ -87,7 +85,7 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 	tmp := *val
 	tmp.Sku = *tmp.Sku.Defaults()
 
-	if isZero(tmp.VpnType) {
+	if tmp.VpnType == nil {
 		vpnType_ := "None"
 		tmp.VpnType = &vpnType_
 	}

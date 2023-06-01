@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Frontend Subresource of Traffic Controller.
 // API Version: 2022-10-01-preview.
+// Previous API Version: 2022-10-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type FrontendsInterface struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +53,9 @@ func NewFrontendsInterface(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20221001preview:FrontendsInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:FrontendsInterface"),
 		},
 	})
 	opts = append(opts, aliases)

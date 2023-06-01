@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the authorization server specified by its identifier.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func LookupAuthorizationServer(ctx *pulumi.Context, args *LookupAuthorizationServerArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationServerResult, error) {
 	var rv LookupAuthorizationServerResult
 	err := ctx.Invoke("azure-native:apimanagement:getAuthorizationServer", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupAuthorizationServer(ctx *pulumi.Context, args *LookupAuthorizationSer
 type LookupAuthorizationServerArgs struct {
 	// Identifier of the authorization server.
 	Authsid string `pulumi:"authsid"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -54,9 +54,9 @@ type LookupAuthorizationServerResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Form of an authorization grant, which the client uses to request the access token.
 	GrantTypes []string `pulumi:"grantTypes"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner password.
 	ResourceOwnerPassword *string `pulumi:"resourceOwnerPassword"`
@@ -68,8 +68,12 @@ type LookupAuthorizationServerResult struct {
 	TokenBodyParameters []TokenBodyParameterContractResponse `pulumi:"tokenBodyParameters"`
 	// OAuth token endpoint. Contains absolute URI to entity being referenced.
 	TokenEndpoint *string `pulumi:"tokenEndpoint"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// If true, the authorization server will be used in the API documentation in the developer portal. False by default if no value is provided.
+	UseInApiDocumentation *bool `pulumi:"useInApiDocumentation"`
+	// If true, the authorization server may be used in the developer portal test console. True by default if no value is provided.
+	UseInTestConsole *bool `pulumi:"useInTestConsole"`
 }
 
 func LookupAuthorizationServerOutput(ctx *pulumi.Context, args LookupAuthorizationServerOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationServerResultOutput {
@@ -88,7 +92,7 @@ func LookupAuthorizationServerOutput(ctx *pulumi.Context, args LookupAuthorizati
 type LookupAuthorizationServerOutputArgs struct {
 	// Identifier of the authorization server.
 	Authsid pulumi.StringInput `pulumi:"authsid"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -168,12 +172,12 @@ func (o LookupAuthorizationServerResultOutput) GrantTypes() pulumi.StringArrayOu
 	return o.ApplyT(func(v LookupAuthorizationServerResult) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAuthorizationServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupAuthorizationServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -205,9 +209,19 @@ func (o LookupAuthorizationServerResultOutput) TokenEndpoint() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupAuthorizationServerResult) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAuthorizationServerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationServerResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// If true, the authorization server will be used in the API documentation in the developer portal. False by default if no value is provided.
+func (o LookupAuthorizationServerResultOutput) UseInApiDocumentation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAuthorizationServerResult) *bool { return v.UseInApiDocumentation }).(pulumi.BoolPtrOutput)
+}
+
+// If true, the authorization server may be used in the developer portal test console. True by default if no value is provided.
+func (o LookupAuthorizationServerResultOutput) UseInTestConsole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAuthorizationServerResult) *bool { return v.UseInTestConsole }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

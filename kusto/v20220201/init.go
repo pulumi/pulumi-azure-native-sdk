@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,30 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:kusto/v20220201:AttachedDatabaseConfiguration":
-		r = &AttachedDatabaseConfiguration{}
-	case "azure-native:kusto/v20220201:Cluster":
-		r = &Cluster{}
-	case "azure-native:kusto/v20220201:ClusterPrincipalAssignment":
-		r = &ClusterPrincipalAssignment{}
-	case "azure-native:kusto/v20220201:DatabasePrincipalAssignment":
-		r = &DatabasePrincipalAssignment{}
 	case "azure-native:kusto/v20220201:EventGridDataConnection":
 		r = &EventGridDataConnection{}
 	case "azure-native:kusto/v20220201:EventHubDataConnection":
 		r = &EventHubDataConnection{}
 	case "azure-native:kusto/v20220201:IotHubDataConnection":
 		r = &IotHubDataConnection{}
-	case "azure-native:kusto/v20220201:ManagedPrivateEndpoint":
-		r = &ManagedPrivateEndpoint{}
-	case "azure-native:kusto/v20220201:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	case "azure-native:kusto/v20220201:ReadOnlyFollowingDatabase":
 		r = &ReadOnlyFollowingDatabase{}
 	case "azure-native:kusto/v20220201:ReadWriteDatabase":
 		r = &ReadWriteDatabase{}
-	case "azure-native:kusto/v20220201:Script":
-		r = &Script{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

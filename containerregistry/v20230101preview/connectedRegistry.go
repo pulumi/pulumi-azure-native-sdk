@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,9 +70,6 @@ func NewConnectedRegistry(ctx *pulumi.Context,
 		args.Logging = args.Logging.ToLoggingPropertiesPtrOutput().ApplyT(func(v *LoggingProperties) *LoggingProperties { return v.Defaults() }).(LoggingPropertiesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:containerregistry:ConnectedRegistry"),
-		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20201101preview:ConnectedRegistry"),
 		},

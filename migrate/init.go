@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,20 +29,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HyperVCollector{}
 	case "azure-native:migrate:ImportCollector":
 		r = &ImportCollector{}
-	case "azure-native:migrate:MigrateProject":
-		r = &MigrateProject{}
+	case "azure-native:migrate:MigrateProjectsControllerMigrateProject":
+		r = &MigrateProjectsControllerMigrateProject{}
 	case "azure-native:migrate:MoveCollection":
 		r = &MoveCollection{}
 	case "azure-native:migrate:MoveResource":
 		r = &MoveResource{}
 	case "azure-native:migrate:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:migrate:PrivateEndpointConnectionControllerPrivateEndpointConnection":
+		r = &PrivateEndpointConnectionControllerPrivateEndpointConnection{}
 	case "azure-native:migrate:Project":
 		r = &Project{}
 	case "azure-native:migrate:ServerCollector":
 		r = &ServerCollector{}
-	case "azure-native:migrate:Solution":
-		r = &Solution{}
 	case "azure-native:migrate:VMwareCollector":
 		r = &VMwareCollector{}
 	default:

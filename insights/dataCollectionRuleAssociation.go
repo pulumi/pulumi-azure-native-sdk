@@ -7,25 +7,32 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of generic ARM proxy resource.
-// API Version: 2019-11-01-preview.
+// API Version: 2022-06-01.
+// Previous API Version: 2019-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DataCollectionRuleAssociation struct {
 	pulumi.CustomResourceState
 
+	// The resource ID of the data collection endpoint that is to be associated.
+	DataCollectionEndpointId pulumi.StringPtrOutput `pulumi:"dataCollectionEndpointId"`
 	// The resource ID of the data collection rule that is to be associated.
 	DataCollectionRuleId pulumi.StringPtrOutput `pulumi:"dataCollectionRuleId"`
 	// Description of the association.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource entity tag (ETag).
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Metadata about the resource
+	Metadata DataCollectionRuleAssociationResponseMetadataOutput `pulumi:"metadata"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData DataCollectionRuleAssociationProxyOnlyResourceResponseSystemDataOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -89,6 +96,8 @@ func (DataCollectionRuleAssociationState) ElementType() reflect.Type {
 type dataCollectionRuleAssociationArgs struct {
 	// The name of the association. The name is case insensitive.
 	AssociationName *string `pulumi:"associationName"`
+	// The resource ID of the data collection endpoint that is to be associated.
+	DataCollectionEndpointId *string `pulumi:"dataCollectionEndpointId"`
 	// The resource ID of the data collection rule that is to be associated.
 	DataCollectionRuleId *string `pulumi:"dataCollectionRuleId"`
 	// Description of the association.
@@ -101,6 +110,8 @@ type dataCollectionRuleAssociationArgs struct {
 type DataCollectionRuleAssociationArgs struct {
 	// The name of the association. The name is case insensitive.
 	AssociationName pulumi.StringPtrInput
+	// The resource ID of the data collection endpoint that is to be associated.
+	DataCollectionEndpointId pulumi.StringPtrInput
 	// The resource ID of the data collection rule that is to be associated.
 	DataCollectionRuleId pulumi.StringPtrInput
 	// Description of the association.
@@ -146,6 +157,11 @@ func (o DataCollectionRuleAssociationOutput) ToDataCollectionRuleAssociationOutp
 	return o
 }
 
+// The resource ID of the data collection endpoint that is to be associated.
+func (o DataCollectionRuleAssociationOutput) DataCollectionEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataCollectionRuleAssociation) pulumi.StringPtrOutput { return v.DataCollectionEndpointId }).(pulumi.StringPtrOutput)
+}
+
 // The resource ID of the data collection rule that is to be associated.
 func (o DataCollectionRuleAssociationOutput) DataCollectionRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataCollectionRuleAssociation) pulumi.StringPtrOutput { return v.DataCollectionRuleId }).(pulumi.StringPtrOutput)
@@ -161,6 +177,13 @@ func (o DataCollectionRuleAssociationOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionRuleAssociation) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Metadata about the resource
+func (o DataCollectionRuleAssociationOutput) Metadata() DataCollectionRuleAssociationResponseMetadataOutput {
+	return o.ApplyT(func(v *DataCollectionRuleAssociation) DataCollectionRuleAssociationResponseMetadataOutput {
+		return v.Metadata
+	}).(DataCollectionRuleAssociationResponseMetadataOutput)
+}
+
 // The name of the resource.
 func (o DataCollectionRuleAssociationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionRuleAssociation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -169,6 +192,13 @@ func (o DataCollectionRuleAssociationOutput) Name() pulumi.StringOutput {
 // The resource provisioning state.
 func (o DataCollectionRuleAssociationOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionRuleAssociation) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o DataCollectionRuleAssociationOutput) SystemData() DataCollectionRuleAssociationProxyOnlyResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v *DataCollectionRuleAssociation) DataCollectionRuleAssociationProxyOnlyResourceResponseSystemDataOutput {
+		return v.SystemData
+	}).(DataCollectionRuleAssociationProxyOnlyResourceResponseSystemDataOutput)
 }
 
 // The type of the resource.

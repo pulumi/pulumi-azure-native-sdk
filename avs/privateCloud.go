@@ -7,19 +7,28 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A private cloud resource
-// API Version: 2020-03-20.
+// API Version: 2022-05-01.
+// Previous API Version: 2020-03-20. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateCloud struct {
 	pulumi.CustomResourceState
 
+	// Properties describing how the cloud is distributed across availability zones
+	Availability AvailabilityPropertiesResponsePtrOutput `pulumi:"availability"`
 	// An ExpressRoute Circuit
 	Circuit CircuitResponsePtrOutput `pulumi:"circuit"`
+	// Customer managed key encryption, can be enabled or disabled
+	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
 	// The endpoints
 	Endpoints EndpointsResponseOutput `pulumi:"endpoints"`
+	// Array of cloud link IDs from other clouds that connect to this one
+	ExternalCloudLinks pulumi.StringArrayOutput `pulumi:"externalCloudLinks"`
+	// The identity of the private cloud, if configured.
+	Identity PrivateCloudIdentityResponsePtrOutput `pulumi:"identity"`
 	// vCenter Single Sign On Identity Sources
 	IdentitySources IdentitySourceResponseArrayOutput `pulumi:"identitySources"`
 	// Connectivity to internet is enabled or disabled
@@ -34,6 +43,8 @@ type PrivateCloud struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
 	NetworkBlock pulumi.StringOutput `pulumi:"networkBlock"`
+	// Flag to indicate whether the private cloud has the quota for provisioned NSX Public IP count raised from 64 to 1024
+	NsxPublicIpQuotaRaised pulumi.StringOutput `pulumi:"nsxPublicIpQuotaRaised"`
 	// Thumbprint of the NSX-T Manager SSL certificate
 	NsxtCertificateThumbprint pulumi.StringOutput `pulumi:"nsxtCertificateThumbprint"`
 	// Optionally, set the NSX-T Manager password when the private cloud is created
@@ -42,6 +53,8 @@ type PrivateCloud struct {
 	ProvisioningNetwork pulumi.StringOutput `pulumi:"provisioningNetwork"`
 	// The provisioning state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// A secondary expressRoute circuit from a separate AZ. Only present in a stretched private cloud
+	SecondaryCircuit CircuitResponsePtrOutput `pulumi:"secondaryCircuit"`
 	// The private cloud SKU
 	Sku SkuResponseOutput `pulumi:"sku"`
 	// Resource tags
@@ -75,7 +88,7 @@ func NewPrivateCloud(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.Internet) {
+	if args.Internet == nil {
 		args.Internet = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -131,6 +144,12 @@ func (PrivateCloudState) ElementType() reflect.Type {
 }
 
 type privateCloudArgs struct {
+	// Properties describing how the cloud is distributed across availability zones
+	Availability *AvailabilityProperties `pulumi:"availability"`
+	// Customer managed key encryption, can be enabled or disabled
+	Encryption *Encryption `pulumi:"encryption"`
+	// The identity of the private cloud, if configured.
+	Identity *PrivateCloudIdentity `pulumi:"identity"`
 	// vCenter Single Sign On Identity Sources
 	IdentitySources []IdentitySource `pulumi:"identitySources"`
 	// Connectivity to internet is enabled or disabled
@@ -157,6 +176,12 @@ type privateCloudArgs struct {
 
 // The set of arguments for constructing a PrivateCloud resource.
 type PrivateCloudArgs struct {
+	// Properties describing how the cloud is distributed across availability zones
+	Availability AvailabilityPropertiesPtrInput
+	// Customer managed key encryption, can be enabled or disabled
+	Encryption EncryptionPtrInput
+	// The identity of the private cloud, if configured.
+	Identity PrivateCloudIdentityPtrInput
 	// vCenter Single Sign On Identity Sources
 	IdentitySources IdentitySourceArrayInput
 	// Connectivity to internet is enabled or disabled
@@ -218,14 +243,34 @@ func (o PrivateCloudOutput) ToPrivateCloudOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Properties describing how the cloud is distributed across availability zones
+func (o PrivateCloudOutput) Availability() AvailabilityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateCloud) AvailabilityPropertiesResponsePtrOutput { return v.Availability }).(AvailabilityPropertiesResponsePtrOutput)
+}
+
 // An ExpressRoute Circuit
 func (o PrivateCloudOutput) Circuit() CircuitResponsePtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) CircuitResponsePtrOutput { return v.Circuit }).(CircuitResponsePtrOutput)
 }
 
+// Customer managed key encryption, can be enabled or disabled
+func (o PrivateCloudOutput) Encryption() EncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateCloud) EncryptionResponsePtrOutput { return v.Encryption }).(EncryptionResponsePtrOutput)
+}
+
 // The endpoints
 func (o PrivateCloudOutput) Endpoints() EndpointsResponseOutput {
 	return o.ApplyT(func(v *PrivateCloud) EndpointsResponseOutput { return v.Endpoints }).(EndpointsResponseOutput)
+}
+
+// Array of cloud link IDs from other clouds that connect to this one
+func (o PrivateCloudOutput) ExternalCloudLinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateCloud) pulumi.StringArrayOutput { return v.ExternalCloudLinks }).(pulumi.StringArrayOutput)
+}
+
+// The identity of the private cloud, if configured.
+func (o PrivateCloudOutput) Identity() PrivateCloudIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateCloud) PrivateCloudIdentityResponsePtrOutput { return v.Identity }).(PrivateCloudIdentityResponsePtrOutput)
 }
 
 // vCenter Single Sign On Identity Sources
@@ -263,6 +308,11 @@ func (o PrivateCloudOutput) NetworkBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.NetworkBlock }).(pulumi.StringOutput)
 }
 
+// Flag to indicate whether the private cloud has the quota for provisioned NSX Public IP count raised from 64 to 1024
+func (o PrivateCloudOutput) NsxPublicIpQuotaRaised() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.NsxPublicIpQuotaRaised }).(pulumi.StringOutput)
+}
+
 // Thumbprint of the NSX-T Manager SSL certificate
 func (o PrivateCloudOutput) NsxtCertificateThumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.NsxtCertificateThumbprint }).(pulumi.StringOutput)
@@ -281,6 +331,11 @@ func (o PrivateCloudOutput) ProvisioningNetwork() pulumi.StringOutput {
 // The provisioning state
 func (o PrivateCloudOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// A secondary expressRoute circuit from a separate AZ. Only present in a stretched private cloud
+func (o PrivateCloudOutput) SecondaryCircuit() CircuitResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateCloud) CircuitResponsePtrOutput { return v.SecondaryCircuit }).(CircuitResponsePtrOutput)
 }
 
 // The private cloud SKU
