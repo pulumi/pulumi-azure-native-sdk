@@ -11,30 +11,6 @@ import (
 )
 
 // AcsChat channel definition
-type AcsChatChannel struct {
-	// The channel name
-	// Expected value is 'AcsChatChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-}
-
-// Defaults sets the appropriate defaults for AcsChatChannel
-func (val *AcsChatChannel) Defaults() *AcsChatChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// AcsChat channel definition
 type AcsChatChannelResponse struct {
 	// The channel name
 	// Expected value is 'AcsChatChannel'.
@@ -53,45 +29,11 @@ func (val *AcsChatChannelResponse) Defaults() *AcsChatChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// Alexa channel definition
-type AlexaChannel struct {
-	// The channel name
-	// Expected value is 'AlexaChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Alexa channel resource
-	Properties *AlexaChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for AlexaChannel
-func (val *AlexaChannel) Defaults() *AlexaChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Alexa channel.
-type AlexaChannelProperties struct {
-	// The Alexa skill Id
-	AlexaSkillId string `pulumi:"alexaSkillId"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
 }
 
 // The parameters to provide for the Alexa channel.
@@ -127,979 +69,11 @@ func (val *AlexaChannelResponse) Defaults() *AlexaChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// The parameters to provide for the Bot.
-type BotProperties struct {
-	// Contains resource all settings defined as key/value pairs.
-	AllSettings map[string]string `pulumi:"allSettings"`
-	// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
-	AppPasswordHint *string `pulumi:"appPasswordHint"`
-	// The CMK Url
-	CmekKeyVaultUrl *string `pulumi:"cmekKeyVaultUrl"`
-	// The description of the bot
-	Description *string `pulumi:"description"`
-	// The Application Insights key
-	DeveloperAppInsightKey *string `pulumi:"developerAppInsightKey"`
-	// The Application Insights Api Key
-	DeveloperAppInsightsApiKey *string `pulumi:"developerAppInsightsApiKey"`
-	// The Application Insights App Id
-	DeveloperAppInsightsApplicationId *string `pulumi:"developerAppInsightsApplicationId"`
-	// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// The Name of the bot
-	DisplayName string `pulumi:"displayName"`
-	// The bot's endpoint
-	Endpoint string `pulumi:"endpoint"`
-	// The Icon Url of the bot
-	IconUrl *string `pulumi:"iconUrl"`
-	// Whether Cmek is enabled
-	IsCmekEnabled *bool `pulumi:"isCmekEnabled"`
-	// Whether the bot is streaming supported
-	IsStreamingSupported *bool `pulumi:"isStreamingSupported"`
-	// Collection of LUIS App Ids
-	LuisAppIds []string `pulumi:"luisAppIds"`
-	// The LUIS Key
-	LuisKey *string `pulumi:"luisKey"`
-	// The bot's manifest url
-	ManifestUrl *string `pulumi:"manifestUrl"`
-	// Microsoft App Id for the bot
-	MsaAppId string `pulumi:"msaAppId"`
-	// Microsoft App Managed Identity Resource Id for the bot
-	MsaAppMSIResourceId *string `pulumi:"msaAppMSIResourceId"`
-	// Microsoft App Tenant Id for the bot
-	MsaAppTenantId *string `pulumi:"msaAppTenantId"`
-	// Microsoft App Type for the bot
-	MsaAppType *string `pulumi:"msaAppType"`
-	// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
-	OpenWithHint *string `pulumi:"openWithHint"`
-	// Contains resource parameters defined as key/value pairs.
-	Parameters map[string]string `pulumi:"parameters"`
-	// Whether the bot is in an isolated network
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Publishing credentials of the resource
-	PublishingCredentials *string `pulumi:"publishingCredentials"`
-	// The channel schema transformation version for the bot
-	SchemaTransformationVersion *string `pulumi:"schemaTransformationVersion"`
-	// The storage resourceId for the bot
-	StorageResourceId *string `pulumi:"storageResourceId"`
-	// The Tenant Id for the bot
-	TenantId *string `pulumi:"tenantId"`
-}
-
-// Defaults sets the appropriate defaults for BotProperties
-func (val *BotProperties) Defaults() *BotProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.IconUrl) {
-		iconUrl_ := ""
-		tmp.IconUrl = &iconUrl_
-	}
-	if isZero(tmp.IsCmekEnabled) {
-		isCmekEnabled_ := false
-		tmp.IsCmekEnabled = &isCmekEnabled_
-	}
-	if isZero(tmp.IsStreamingSupported) {
-		isStreamingSupported_ := false
-		tmp.IsStreamingSupported = &isStreamingSupported_
-	}
-	if isZero(tmp.PublicNetworkAccess) {
-		publicNetworkAccess_ := "Enabled"
-		tmp.PublicNetworkAccess = &publicNetworkAccess_
-	}
-	return &tmp
-}
-
-// BotPropertiesInput is an input type that accepts BotPropertiesArgs and BotPropertiesOutput values.
-// You can construct a concrete instance of `BotPropertiesInput` via:
-//
-//	BotPropertiesArgs{...}
-type BotPropertiesInput interface {
-	pulumi.Input
-
-	ToBotPropertiesOutput() BotPropertiesOutput
-	ToBotPropertiesOutputWithContext(context.Context) BotPropertiesOutput
-}
-
-// The parameters to provide for the Bot.
-type BotPropertiesArgs struct {
-	// Contains resource all settings defined as key/value pairs.
-	AllSettings pulumi.StringMapInput `pulumi:"allSettings"`
-	// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
-	AppPasswordHint pulumi.StringPtrInput `pulumi:"appPasswordHint"`
-	// The CMK Url
-	CmekKeyVaultUrl pulumi.StringPtrInput `pulumi:"cmekKeyVaultUrl"`
-	// The description of the bot
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The Application Insights key
-	DeveloperAppInsightKey pulumi.StringPtrInput `pulumi:"developerAppInsightKey"`
-	// The Application Insights Api Key
-	DeveloperAppInsightsApiKey pulumi.StringPtrInput `pulumi:"developerAppInsightsApiKey"`
-	// The Application Insights App Id
-	DeveloperAppInsightsApplicationId pulumi.StringPtrInput `pulumi:"developerAppInsightsApplicationId"`
-	// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-	DisableLocalAuth pulumi.BoolPtrInput `pulumi:"disableLocalAuth"`
-	// The Name of the bot
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The bot's endpoint
-	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// The Icon Url of the bot
-	IconUrl pulumi.StringPtrInput `pulumi:"iconUrl"`
-	// Whether Cmek is enabled
-	IsCmekEnabled pulumi.BoolPtrInput `pulumi:"isCmekEnabled"`
-	// Whether the bot is streaming supported
-	IsStreamingSupported pulumi.BoolPtrInput `pulumi:"isStreamingSupported"`
-	// Collection of LUIS App Ids
-	LuisAppIds pulumi.StringArrayInput `pulumi:"luisAppIds"`
-	// The LUIS Key
-	LuisKey pulumi.StringPtrInput `pulumi:"luisKey"`
-	// The bot's manifest url
-	ManifestUrl pulumi.StringPtrInput `pulumi:"manifestUrl"`
-	// Microsoft App Id for the bot
-	MsaAppId pulumi.StringInput `pulumi:"msaAppId"`
-	// Microsoft App Managed Identity Resource Id for the bot
-	MsaAppMSIResourceId pulumi.StringPtrInput `pulumi:"msaAppMSIResourceId"`
-	// Microsoft App Tenant Id for the bot
-	MsaAppTenantId pulumi.StringPtrInput `pulumi:"msaAppTenantId"`
-	// Microsoft App Type for the bot
-	MsaAppType pulumi.StringPtrInput `pulumi:"msaAppType"`
-	// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
-	OpenWithHint pulumi.StringPtrInput `pulumi:"openWithHint"`
-	// Contains resource parameters defined as key/value pairs.
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// Whether the bot is in an isolated network
-	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
-	// Publishing credentials of the resource
-	PublishingCredentials pulumi.StringPtrInput `pulumi:"publishingCredentials"`
-	// The channel schema transformation version for the bot
-	SchemaTransformationVersion pulumi.StringPtrInput `pulumi:"schemaTransformationVersion"`
-	// The storage resourceId for the bot
-	StorageResourceId pulumi.StringPtrInput `pulumi:"storageResourceId"`
-	// The Tenant Id for the bot
-	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
-}
-
-// Defaults sets the appropriate defaults for BotPropertiesArgs
-func (val *BotPropertiesArgs) Defaults() *BotPropertiesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.IconUrl) {
-		tmp.IconUrl = pulumi.StringPtr("")
-	}
-	if isZero(tmp.IsCmekEnabled) {
-		tmp.IsCmekEnabled = pulumi.BoolPtr(false)
-	}
-	if isZero(tmp.IsStreamingSupported) {
-		tmp.IsStreamingSupported = pulumi.BoolPtr(false)
-	}
-	if isZero(tmp.PublicNetworkAccess) {
-		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
-	}
-	return &tmp
-}
-func (BotPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BotProperties)(nil)).Elem()
-}
-
-func (i BotPropertiesArgs) ToBotPropertiesOutput() BotPropertiesOutput {
-	return i.ToBotPropertiesOutputWithContext(context.Background())
-}
-
-func (i BotPropertiesArgs) ToBotPropertiesOutputWithContext(ctx context.Context) BotPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotPropertiesOutput)
-}
-
-func (i BotPropertiesArgs) ToBotPropertiesPtrOutput() BotPropertiesPtrOutput {
-	return i.ToBotPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i BotPropertiesArgs) ToBotPropertiesPtrOutputWithContext(ctx context.Context) BotPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotPropertiesOutput).ToBotPropertiesPtrOutputWithContext(ctx)
-}
-
-// BotPropertiesPtrInput is an input type that accepts BotPropertiesArgs, BotPropertiesPtr and BotPropertiesPtrOutput values.
-// You can construct a concrete instance of `BotPropertiesPtrInput` via:
-//
-//	        BotPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type BotPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToBotPropertiesPtrOutput() BotPropertiesPtrOutput
-	ToBotPropertiesPtrOutputWithContext(context.Context) BotPropertiesPtrOutput
-}
-
-type botPropertiesPtrType BotPropertiesArgs
-
-func BotPropertiesPtr(v *BotPropertiesArgs) BotPropertiesPtrInput {
-	return (*botPropertiesPtrType)(v)
-}
-
-func (*botPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BotProperties)(nil)).Elem()
-}
-
-func (i *botPropertiesPtrType) ToBotPropertiesPtrOutput() BotPropertiesPtrOutput {
-	return i.ToBotPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *botPropertiesPtrType) ToBotPropertiesPtrOutputWithContext(ctx context.Context) BotPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotPropertiesPtrOutput)
-}
-
-// The parameters to provide for the Bot.
-type BotPropertiesOutput struct{ *pulumi.OutputState }
-
-func (BotPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BotProperties)(nil)).Elem()
-}
-
-func (o BotPropertiesOutput) ToBotPropertiesOutput() BotPropertiesOutput {
-	return o
-}
-
-func (o BotPropertiesOutput) ToBotPropertiesOutputWithContext(ctx context.Context) BotPropertiesOutput {
-	return o
-}
-
-func (o BotPropertiesOutput) ToBotPropertiesPtrOutput() BotPropertiesPtrOutput {
-	return o.ToBotPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o BotPropertiesOutput) ToBotPropertiesPtrOutputWithContext(ctx context.Context) BotPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BotProperties) *BotProperties {
-		return &v
-	}).(BotPropertiesPtrOutput)
-}
-
-// Contains resource all settings defined as key/value pairs.
-func (o BotPropertiesOutput) AllSettings() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BotProperties) map[string]string { return v.AllSettings }).(pulumi.StringMapOutput)
-}
-
-// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
-func (o BotPropertiesOutput) AppPasswordHint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.AppPasswordHint }).(pulumi.StringPtrOutput)
-}
-
-// The CMK Url
-func (o BotPropertiesOutput) CmekKeyVaultUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.CmekKeyVaultUrl }).(pulumi.StringPtrOutput)
-}
-
-// The description of the bot
-func (o BotPropertiesOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights key
-func (o BotPropertiesOutput) DeveloperAppInsightKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.DeveloperAppInsightKey }).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights Api Key
-func (o BotPropertiesOutput) DeveloperAppInsightsApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.DeveloperAppInsightsApiKey }).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights App Id
-func (o BotPropertiesOutput) DeveloperAppInsightsApplicationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.DeveloperAppInsightsApplicationId }).(pulumi.StringPtrOutput)
-}
-
-// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-func (o BotPropertiesOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BotProperties) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
-}
-
-// The Name of the bot
-func (o BotPropertiesOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v BotProperties) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// The bot's endpoint
-func (o BotPropertiesOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v BotProperties) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-// The Icon Url of the bot
-func (o BotPropertiesOutput) IconUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.IconUrl }).(pulumi.StringPtrOutput)
-}
-
-// Whether Cmek is enabled
-func (o BotPropertiesOutput) IsCmekEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BotProperties) *bool { return v.IsCmekEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Whether the bot is streaming supported
-func (o BotPropertiesOutput) IsStreamingSupported() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BotProperties) *bool { return v.IsStreamingSupported }).(pulumi.BoolPtrOutput)
-}
-
-// Collection of LUIS App Ids
-func (o BotPropertiesOutput) LuisAppIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BotProperties) []string { return v.LuisAppIds }).(pulumi.StringArrayOutput)
-}
-
-// The LUIS Key
-func (o BotPropertiesOutput) LuisKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.LuisKey }).(pulumi.StringPtrOutput)
-}
-
-// The bot's manifest url
-func (o BotPropertiesOutput) ManifestUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.ManifestUrl }).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Id for the bot
-func (o BotPropertiesOutput) MsaAppId() pulumi.StringOutput {
-	return o.ApplyT(func(v BotProperties) string { return v.MsaAppId }).(pulumi.StringOutput)
-}
-
-// Microsoft App Managed Identity Resource Id for the bot
-func (o BotPropertiesOutput) MsaAppMSIResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.MsaAppMSIResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Tenant Id for the bot
-func (o BotPropertiesOutput) MsaAppTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.MsaAppTenantId }).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Type for the bot
-func (o BotPropertiesOutput) MsaAppType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.MsaAppType }).(pulumi.StringPtrOutput)
-}
-
-// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
-func (o BotPropertiesOutput) OpenWithHint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.OpenWithHint }).(pulumi.StringPtrOutput)
-}
-
-// Contains resource parameters defined as key/value pairs.
-func (o BotPropertiesOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BotProperties) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
-}
-
-// Whether the bot is in an isolated network
-func (o BotPropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
-// Publishing credentials of the resource
-func (o BotPropertiesOutput) PublishingCredentials() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.PublishingCredentials }).(pulumi.StringPtrOutput)
-}
-
-// The channel schema transformation version for the bot
-func (o BotPropertiesOutput) SchemaTransformationVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.SchemaTransformationVersion }).(pulumi.StringPtrOutput)
-}
-
-// The storage resourceId for the bot
-func (o BotPropertiesOutput) StorageResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.StorageResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The Tenant Id for the bot
-func (o BotPropertiesOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotProperties) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-type BotPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (BotPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BotProperties)(nil)).Elem()
-}
-
-func (o BotPropertiesPtrOutput) ToBotPropertiesPtrOutput() BotPropertiesPtrOutput {
-	return o
-}
-
-func (o BotPropertiesPtrOutput) ToBotPropertiesPtrOutputWithContext(ctx context.Context) BotPropertiesPtrOutput {
-	return o
-}
-
-func (o BotPropertiesPtrOutput) Elem() BotPropertiesOutput {
-	return o.ApplyT(func(v *BotProperties) BotProperties {
-		if v != nil {
-			return *v
-		}
-		var ret BotProperties
-		return ret
-	}).(BotPropertiesOutput)
-}
-
-// Contains resource all settings defined as key/value pairs.
-func (o BotPropertiesPtrOutput) AllSettings() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BotProperties) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.AllSettings
-	}).(pulumi.StringMapOutput)
-}
-
-// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
-func (o BotPropertiesPtrOutput) AppPasswordHint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AppPasswordHint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The CMK Url
-func (o BotPropertiesPtrOutput) CmekKeyVaultUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CmekKeyVaultUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The description of the bot
-func (o BotPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights key
-func (o BotPropertiesPtrOutput) DeveloperAppInsightKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeveloperAppInsightKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights Api Key
-func (o BotPropertiesPtrOutput) DeveloperAppInsightsApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeveloperAppInsightsApiKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights App Id
-func (o BotPropertiesPtrOutput) DeveloperAppInsightsApplicationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeveloperAppInsightsApplicationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-func (o BotPropertiesPtrOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableLocalAuth
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The Name of the bot
-func (o BotPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The bot's endpoint
-func (o BotPropertiesPtrOutput) Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Endpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Icon Url of the bot
-func (o BotPropertiesPtrOutput) IconUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IconUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether Cmek is enabled
-func (o BotPropertiesPtrOutput) IsCmekEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsCmekEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether the bot is streaming supported
-func (o BotPropertiesPtrOutput) IsStreamingSupported() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsStreamingSupported
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Collection of LUIS App Ids
-func (o BotPropertiesPtrOutput) LuisAppIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BotProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.LuisAppIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// The LUIS Key
-func (o BotPropertiesPtrOutput) LuisKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LuisKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The bot's manifest url
-func (o BotPropertiesPtrOutput) ManifestUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ManifestUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Id for the bot
-func (o BotPropertiesPtrOutput) MsaAppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MsaAppId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Managed Identity Resource Id for the bot
-func (o BotPropertiesPtrOutput) MsaAppMSIResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MsaAppMSIResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Tenant Id for the bot
-func (o BotPropertiesPtrOutput) MsaAppTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MsaAppTenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Type for the bot
-func (o BotPropertiesPtrOutput) MsaAppType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MsaAppType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
-func (o BotPropertiesPtrOutput) OpenWithHint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpenWithHint
-	}).(pulumi.StringPtrOutput)
-}
-
-// Contains resource parameters defined as key/value pairs.
-func (o BotPropertiesPtrOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BotProperties) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(pulumi.StringMapOutput)
-}
-
-// Whether the bot is in an isolated network
-func (o BotPropertiesPtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublicNetworkAccess
-	}).(pulumi.StringPtrOutput)
-}
-
-// Publishing credentials of the resource
-func (o BotPropertiesPtrOutput) PublishingCredentials() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublishingCredentials
-	}).(pulumi.StringPtrOutput)
-}
-
-// The channel schema transformation version for the bot
-func (o BotPropertiesPtrOutput) SchemaTransformationVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaTransformationVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The storage resourceId for the bot
-func (o BotPropertiesPtrOutput) StorageResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Tenant Id for the bot
-func (o BotPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BotProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The parameters to provide for the Bot.
-type BotPropertiesResponse struct {
-	// Contains resource all settings defined as key/value pairs.
-	AllSettings map[string]string `pulumi:"allSettings"`
-	// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
-	AppPasswordHint *string `pulumi:"appPasswordHint"`
-	// The CMK encryption status
-	CmekEncryptionStatus string `pulumi:"cmekEncryptionStatus"`
-	// The CMK Url
-	CmekKeyVaultUrl *string `pulumi:"cmekKeyVaultUrl"`
-	// Collection of channels for which the bot is configured
-	ConfiguredChannels []string `pulumi:"configuredChannels"`
-	// The description of the bot
-	Description *string `pulumi:"description"`
-	// The Application Insights key
-	DeveloperAppInsightKey *string `pulumi:"developerAppInsightKey"`
-	// The Application Insights Api Key
-	DeveloperAppInsightsApiKey *string `pulumi:"developerAppInsightsApiKey"`
-	// The Application Insights App Id
-	DeveloperAppInsightsApplicationId *string `pulumi:"developerAppInsightsApplicationId"`
-	// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// The Name of the bot
-	DisplayName string `pulumi:"displayName"`
-	// Collection of channels for which the bot is enabled
-	EnabledChannels []string `pulumi:"enabledChannels"`
-	// The bot's endpoint
-	Endpoint string `pulumi:"endpoint"`
-	// The bot's endpoint version
-	EndpointVersion string `pulumi:"endpointVersion"`
-	// The Icon Url of the bot
-	IconUrl *string `pulumi:"iconUrl"`
-	// Whether Cmek is enabled
-	IsCmekEnabled *bool `pulumi:"isCmekEnabled"`
-	// Whether the bot is developerAppInsightsApiKey set
-	IsDeveloperAppInsightsApiKeySet bool `pulumi:"isDeveloperAppInsightsApiKeySet"`
-	// Whether the bot is streaming supported
-	IsStreamingSupported *bool `pulumi:"isStreamingSupported"`
-	// Collection of LUIS App Ids
-	LuisAppIds []string `pulumi:"luisAppIds"`
-	// The LUIS Key
-	LuisKey *string `pulumi:"luisKey"`
-	// The bot's manifest url
-	ManifestUrl *string `pulumi:"manifestUrl"`
-	// Token used to migrate non Azure bot to azure subscription
-	MigrationToken string `pulumi:"migrationToken"`
-	// Microsoft App Id for the bot
-	MsaAppId string `pulumi:"msaAppId"`
-	// Microsoft App Managed Identity Resource Id for the bot
-	MsaAppMSIResourceId *string `pulumi:"msaAppMSIResourceId"`
-	// Microsoft App Tenant Id for the bot
-	MsaAppTenantId *string `pulumi:"msaAppTenantId"`
-	// Microsoft App Type for the bot
-	MsaAppType *string `pulumi:"msaAppType"`
-	// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
-	OpenWithHint *string `pulumi:"openWithHint"`
-	// Contains resource parameters defined as key/value pairs.
-	Parameters map[string]string `pulumi:"parameters"`
-	// List of Private Endpoint Connections configured for the bot
-	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	// Provisioning state of the resource
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Whether the bot is in an isolated network
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Publishing credentials of the resource
-	PublishingCredentials *string `pulumi:"publishingCredentials"`
-	// The channel schema transformation version for the bot
-	SchemaTransformationVersion *string `pulumi:"schemaTransformationVersion"`
-	// The storage resourceId for the bot
-	StorageResourceId *string `pulumi:"storageResourceId"`
-	// The Tenant Id for the bot
-	TenantId *string `pulumi:"tenantId"`
-}
-
-// Defaults sets the appropriate defaults for BotPropertiesResponse
-func (val *BotPropertiesResponse) Defaults() *BotPropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.IconUrl) {
-		iconUrl_ := ""
-		tmp.IconUrl = &iconUrl_
-	}
-	if isZero(tmp.IsCmekEnabled) {
-		isCmekEnabled_ := false
-		tmp.IsCmekEnabled = &isCmekEnabled_
-	}
-	if isZero(tmp.IsStreamingSupported) {
-		isStreamingSupported_ := false
-		tmp.IsStreamingSupported = &isStreamingSupported_
-	}
-	if isZero(tmp.PublicNetworkAccess) {
-		publicNetworkAccess_ := "Enabled"
-		tmp.PublicNetworkAccess = &publicNetworkAccess_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Bot.
-type BotPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (BotPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BotPropertiesResponse)(nil)).Elem()
-}
-
-func (o BotPropertiesResponseOutput) ToBotPropertiesResponseOutput() BotPropertiesResponseOutput {
-	return o
-}
-
-func (o BotPropertiesResponseOutput) ToBotPropertiesResponseOutputWithContext(ctx context.Context) BotPropertiesResponseOutput {
-	return o
-}
-
-// Contains resource all settings defined as key/value pairs.
-func (o BotPropertiesResponseOutput) AllSettings() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) map[string]string { return v.AllSettings }).(pulumi.StringMapOutput)
-}
-
-// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
-func (o BotPropertiesResponseOutput) AppPasswordHint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.AppPasswordHint }).(pulumi.StringPtrOutput)
-}
-
-// The CMK encryption status
-func (o BotPropertiesResponseOutput) CmekEncryptionStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) string { return v.CmekEncryptionStatus }).(pulumi.StringOutput)
-}
-
-// The CMK Url
-func (o BotPropertiesResponseOutput) CmekKeyVaultUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.CmekKeyVaultUrl }).(pulumi.StringPtrOutput)
-}
-
-// Collection of channels for which the bot is configured
-func (o BotPropertiesResponseOutput) ConfiguredChannels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) []string { return v.ConfiguredChannels }).(pulumi.StringArrayOutput)
-}
-
-// The description of the bot
-func (o BotPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights key
-func (o BotPropertiesResponseOutput) DeveloperAppInsightKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.DeveloperAppInsightKey }).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights Api Key
-func (o BotPropertiesResponseOutput) DeveloperAppInsightsApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.DeveloperAppInsightsApiKey }).(pulumi.StringPtrOutput)
-}
-
-// The Application Insights App Id
-func (o BotPropertiesResponseOutput) DeveloperAppInsightsApplicationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.DeveloperAppInsightsApplicationId }).(pulumi.StringPtrOutput)
-}
-
-// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-func (o BotPropertiesResponseOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
-}
-
-// The Name of the bot
-func (o BotPropertiesResponseOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Collection of channels for which the bot is enabled
-func (o BotPropertiesResponseOutput) EnabledChannels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) []string { return v.EnabledChannels }).(pulumi.StringArrayOutput)
-}
-
-// The bot's endpoint
-func (o BotPropertiesResponseOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-// The bot's endpoint version
-func (o BotPropertiesResponseOutput) EndpointVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) string { return v.EndpointVersion }).(pulumi.StringOutput)
-}
-
-// The Icon Url of the bot
-func (o BotPropertiesResponseOutput) IconUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.IconUrl }).(pulumi.StringPtrOutput)
-}
-
-// Whether Cmek is enabled
-func (o BotPropertiesResponseOutput) IsCmekEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *bool { return v.IsCmekEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Whether the bot is developerAppInsightsApiKey set
-func (o BotPropertiesResponseOutput) IsDeveloperAppInsightsApiKeySet() pulumi.BoolOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) bool { return v.IsDeveloperAppInsightsApiKeySet }).(pulumi.BoolOutput)
-}
-
-// Whether the bot is streaming supported
-func (o BotPropertiesResponseOutput) IsStreamingSupported() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *bool { return v.IsStreamingSupported }).(pulumi.BoolPtrOutput)
-}
-
-// Collection of LUIS App Ids
-func (o BotPropertiesResponseOutput) LuisAppIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) []string { return v.LuisAppIds }).(pulumi.StringArrayOutput)
-}
-
-// The LUIS Key
-func (o BotPropertiesResponseOutput) LuisKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.LuisKey }).(pulumi.StringPtrOutput)
-}
-
-// The bot's manifest url
-func (o BotPropertiesResponseOutput) ManifestUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.ManifestUrl }).(pulumi.StringPtrOutput)
-}
-
-// Token used to migrate non Azure bot to azure subscription
-func (o BotPropertiesResponseOutput) MigrationToken() pulumi.StringOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) string { return v.MigrationToken }).(pulumi.StringOutput)
-}
-
-// Microsoft App Id for the bot
-func (o BotPropertiesResponseOutput) MsaAppId() pulumi.StringOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) string { return v.MsaAppId }).(pulumi.StringOutput)
-}
-
-// Microsoft App Managed Identity Resource Id for the bot
-func (o BotPropertiesResponseOutput) MsaAppMSIResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.MsaAppMSIResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Tenant Id for the bot
-func (o BotPropertiesResponseOutput) MsaAppTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.MsaAppTenantId }).(pulumi.StringPtrOutput)
-}
-
-// Microsoft App Type for the bot
-func (o BotPropertiesResponseOutput) MsaAppType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.MsaAppType }).(pulumi.StringPtrOutput)
-}
-
-// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
-func (o BotPropertiesResponseOutput) OpenWithHint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.OpenWithHint }).(pulumi.StringPtrOutput)
-}
-
-// Contains resource parameters defined as key/value pairs.
-func (o BotPropertiesResponseOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
-}
-
-// List of Private Endpoint Connections configured for the bot
-func (o BotPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
-}
-
-// Provisioning state of the resource
-func (o BotPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Whether the bot is in an isolated network
-func (o BotPropertiesResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
-// Publishing credentials of the resource
-func (o BotPropertiesResponseOutput) PublishingCredentials() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.PublishingCredentials }).(pulumi.StringPtrOutput)
-}
-
-// The channel schema transformation version for the bot
-func (o BotPropertiesResponseOutput) SchemaTransformationVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.SchemaTransformationVersion }).(pulumi.StringPtrOutput)
-}
-
-// The storage resourceId for the bot
-func (o BotPropertiesResponseOutput) StorageResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.StorageResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The Tenant Id for the bot
-func (o BotPropertiesResponseOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // Channel settings definition
@@ -1132,11 +106,11 @@ func (val *ChannelSettingsResponse) Defaults() *ChannelSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExtensionKey1) {
+	if tmp.ExtensionKey1 == nil {
 		extensionKey1_ := ""
 		tmp.ExtensionKey1 = &extensionKey1_
 	}
-	if isZero(tmp.ExtensionKey2) {
+	if tmp.ExtensionKey2 == nil {
 		extensionKey2_ := ""
 		tmp.ExtensionKey2 = &extensionKey2_
 	}
@@ -1333,115 +307,6 @@ func (o ChannelSettingsResponsePtrOutput) Sites() SiteResponseArrayOutput {
 }
 
 // Extra Parameter in a Connection Setting Properties to indicate service provider specific properties
-type ConnectionSettingParameter struct {
-	// Key for the Connection Setting Parameter.
-	Key *string `pulumi:"key"`
-	// Value associated with the Connection Setting Parameter.
-	Value *string `pulumi:"value"`
-}
-
-// ConnectionSettingParameterInput is an input type that accepts ConnectionSettingParameterArgs and ConnectionSettingParameterOutput values.
-// You can construct a concrete instance of `ConnectionSettingParameterInput` via:
-//
-//	ConnectionSettingParameterArgs{...}
-type ConnectionSettingParameterInput interface {
-	pulumi.Input
-
-	ToConnectionSettingParameterOutput() ConnectionSettingParameterOutput
-	ToConnectionSettingParameterOutputWithContext(context.Context) ConnectionSettingParameterOutput
-}
-
-// Extra Parameter in a Connection Setting Properties to indicate service provider specific properties
-type ConnectionSettingParameterArgs struct {
-	// Key for the Connection Setting Parameter.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Value associated with the Connection Setting Parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ConnectionSettingParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionSettingParameter)(nil)).Elem()
-}
-
-func (i ConnectionSettingParameterArgs) ToConnectionSettingParameterOutput() ConnectionSettingParameterOutput {
-	return i.ToConnectionSettingParameterOutputWithContext(context.Background())
-}
-
-func (i ConnectionSettingParameterArgs) ToConnectionSettingParameterOutputWithContext(ctx context.Context) ConnectionSettingParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSettingParameterOutput)
-}
-
-// ConnectionSettingParameterArrayInput is an input type that accepts ConnectionSettingParameterArray and ConnectionSettingParameterArrayOutput values.
-// You can construct a concrete instance of `ConnectionSettingParameterArrayInput` via:
-//
-//	ConnectionSettingParameterArray{ ConnectionSettingParameterArgs{...} }
-type ConnectionSettingParameterArrayInput interface {
-	pulumi.Input
-
-	ToConnectionSettingParameterArrayOutput() ConnectionSettingParameterArrayOutput
-	ToConnectionSettingParameterArrayOutputWithContext(context.Context) ConnectionSettingParameterArrayOutput
-}
-
-type ConnectionSettingParameterArray []ConnectionSettingParameterInput
-
-func (ConnectionSettingParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionSettingParameter)(nil)).Elem()
-}
-
-func (i ConnectionSettingParameterArray) ToConnectionSettingParameterArrayOutput() ConnectionSettingParameterArrayOutput {
-	return i.ToConnectionSettingParameterArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectionSettingParameterArray) ToConnectionSettingParameterArrayOutputWithContext(ctx context.Context) ConnectionSettingParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSettingParameterArrayOutput)
-}
-
-// Extra Parameter in a Connection Setting Properties to indicate service provider specific properties
-type ConnectionSettingParameterOutput struct{ *pulumi.OutputState }
-
-func (ConnectionSettingParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionSettingParameter)(nil)).Elem()
-}
-
-func (o ConnectionSettingParameterOutput) ToConnectionSettingParameterOutput() ConnectionSettingParameterOutput {
-	return o
-}
-
-func (o ConnectionSettingParameterOutput) ToConnectionSettingParameterOutputWithContext(ctx context.Context) ConnectionSettingParameterOutput {
-	return o
-}
-
-// Key for the Connection Setting Parameter.
-func (o ConnectionSettingParameterOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingParameter) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Value associated with the Connection Setting Parameter.
-func (o ConnectionSettingParameterOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ConnectionSettingParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (ConnectionSettingParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionSettingParameter)(nil)).Elem()
-}
-
-func (o ConnectionSettingParameterArrayOutput) ToConnectionSettingParameterArrayOutput() ConnectionSettingParameterArrayOutput {
-	return o
-}
-
-func (o ConnectionSettingParameterArrayOutput) ToConnectionSettingParameterArrayOutputWithContext(ctx context.Context) ConnectionSettingParameterArrayOutput {
-	return o
-}
-
-func (o ConnectionSettingParameterArrayOutput) Index(i pulumi.IntInput) ConnectionSettingParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionSettingParameter {
-		return vs[0].([]ConnectionSettingParameter)[vs[1].(int)]
-	}).(ConnectionSettingParameterOutput)
-}
-
-// Extra Parameter in a Connection Setting Properties to indicate service provider specific properties
 type ConnectionSettingParameterResponse struct {
 	// Key for the Connection Setting Parameter.
 	Key *string `pulumi:"key"`
@@ -1495,322 +360,6 @@ func (o ConnectionSettingParameterResponseArrayOutput) Index(i pulumi.IntInput) 
 }
 
 // Properties for a Connection Setting Item
-type ConnectionSettingProperties struct {
-	// Client Id associated with the Connection Setting.
-	ClientId *string `pulumi:"clientId"`
-	// Client Secret associated with the Connection Setting
-	ClientSecret *string `pulumi:"clientSecret"`
-	// Id of the Connection Setting.
-	Id *string `pulumi:"id"`
-	// Name of the Connection Setting.
-	Name *string `pulumi:"name"`
-	// Service Provider Parameters associated with the Connection Setting
-	Parameters []ConnectionSettingParameter `pulumi:"parameters"`
-	// Provisioning state of the resource
-	ProvisioningState *string `pulumi:"provisioningState"`
-	// Scopes associated with the Connection Setting
-	Scopes *string `pulumi:"scopes"`
-	// Service Provider Display Name associated with the Connection Setting
-	ServiceProviderDisplayName *string `pulumi:"serviceProviderDisplayName"`
-	// Service Provider Id associated with the Connection Setting
-	ServiceProviderId *string `pulumi:"serviceProviderId"`
-}
-
-// Defaults sets the appropriate defaults for ConnectionSettingProperties
-func (val *ConnectionSettingProperties) Defaults() *ConnectionSettingProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Scopes) {
-		scopes_ := ""
-		tmp.Scopes = &scopes_
-	}
-	return &tmp
-}
-
-// ConnectionSettingPropertiesInput is an input type that accepts ConnectionSettingPropertiesArgs and ConnectionSettingPropertiesOutput values.
-// You can construct a concrete instance of `ConnectionSettingPropertiesInput` via:
-//
-//	ConnectionSettingPropertiesArgs{...}
-type ConnectionSettingPropertiesInput interface {
-	pulumi.Input
-
-	ToConnectionSettingPropertiesOutput() ConnectionSettingPropertiesOutput
-	ToConnectionSettingPropertiesOutputWithContext(context.Context) ConnectionSettingPropertiesOutput
-}
-
-// Properties for a Connection Setting Item
-type ConnectionSettingPropertiesArgs struct {
-	// Client Id associated with the Connection Setting.
-	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Client Secret associated with the Connection Setting
-	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	// Id of the Connection Setting.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Name of the Connection Setting.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Service Provider Parameters associated with the Connection Setting
-	Parameters ConnectionSettingParameterArrayInput `pulumi:"parameters"`
-	// Provisioning state of the resource
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
-	// Scopes associated with the Connection Setting
-	Scopes pulumi.StringPtrInput `pulumi:"scopes"`
-	// Service Provider Display Name associated with the Connection Setting
-	ServiceProviderDisplayName pulumi.StringPtrInput `pulumi:"serviceProviderDisplayName"`
-	// Service Provider Id associated with the Connection Setting
-	ServiceProviderId pulumi.StringPtrInput `pulumi:"serviceProviderId"`
-}
-
-// Defaults sets the appropriate defaults for ConnectionSettingPropertiesArgs
-func (val *ConnectionSettingPropertiesArgs) Defaults() *ConnectionSettingPropertiesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Scopes) {
-		tmp.Scopes = pulumi.StringPtr("")
-	}
-	return &tmp
-}
-func (ConnectionSettingPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionSettingProperties)(nil)).Elem()
-}
-
-func (i ConnectionSettingPropertiesArgs) ToConnectionSettingPropertiesOutput() ConnectionSettingPropertiesOutput {
-	return i.ToConnectionSettingPropertiesOutputWithContext(context.Background())
-}
-
-func (i ConnectionSettingPropertiesArgs) ToConnectionSettingPropertiesOutputWithContext(ctx context.Context) ConnectionSettingPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSettingPropertiesOutput)
-}
-
-func (i ConnectionSettingPropertiesArgs) ToConnectionSettingPropertiesPtrOutput() ConnectionSettingPropertiesPtrOutput {
-	return i.ToConnectionSettingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i ConnectionSettingPropertiesArgs) ToConnectionSettingPropertiesPtrOutputWithContext(ctx context.Context) ConnectionSettingPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSettingPropertiesOutput).ToConnectionSettingPropertiesPtrOutputWithContext(ctx)
-}
-
-// ConnectionSettingPropertiesPtrInput is an input type that accepts ConnectionSettingPropertiesArgs, ConnectionSettingPropertiesPtr and ConnectionSettingPropertiesPtrOutput values.
-// You can construct a concrete instance of `ConnectionSettingPropertiesPtrInput` via:
-//
-//	        ConnectionSettingPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type ConnectionSettingPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToConnectionSettingPropertiesPtrOutput() ConnectionSettingPropertiesPtrOutput
-	ToConnectionSettingPropertiesPtrOutputWithContext(context.Context) ConnectionSettingPropertiesPtrOutput
-}
-
-type connectionSettingPropertiesPtrType ConnectionSettingPropertiesArgs
-
-func ConnectionSettingPropertiesPtr(v *ConnectionSettingPropertiesArgs) ConnectionSettingPropertiesPtrInput {
-	return (*connectionSettingPropertiesPtrType)(v)
-}
-
-func (*connectionSettingPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionSettingProperties)(nil)).Elem()
-}
-
-func (i *connectionSettingPropertiesPtrType) ToConnectionSettingPropertiesPtrOutput() ConnectionSettingPropertiesPtrOutput {
-	return i.ToConnectionSettingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *connectionSettingPropertiesPtrType) ToConnectionSettingPropertiesPtrOutputWithContext(ctx context.Context) ConnectionSettingPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSettingPropertiesPtrOutput)
-}
-
-// Properties for a Connection Setting Item
-type ConnectionSettingPropertiesOutput struct{ *pulumi.OutputState }
-
-func (ConnectionSettingPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionSettingProperties)(nil)).Elem()
-}
-
-func (o ConnectionSettingPropertiesOutput) ToConnectionSettingPropertiesOutput() ConnectionSettingPropertiesOutput {
-	return o
-}
-
-func (o ConnectionSettingPropertiesOutput) ToConnectionSettingPropertiesOutputWithContext(ctx context.Context) ConnectionSettingPropertiesOutput {
-	return o
-}
-
-func (o ConnectionSettingPropertiesOutput) ToConnectionSettingPropertiesPtrOutput() ConnectionSettingPropertiesPtrOutput {
-	return o.ToConnectionSettingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o ConnectionSettingPropertiesOutput) ToConnectionSettingPropertiesPtrOutputWithContext(ctx context.Context) ConnectionSettingPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionSettingProperties) *ConnectionSettingProperties {
-		return &v
-	}).(ConnectionSettingPropertiesPtrOutput)
-}
-
-// Client Id associated with the Connection Setting.
-func (o ConnectionSettingPropertiesOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-// Client Secret associated with the Connection Setting
-func (o ConnectionSettingPropertiesOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
-}
-
-// Id of the Connection Setting.
-func (o ConnectionSettingPropertiesOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Name of the Connection Setting.
-func (o ConnectionSettingPropertiesOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Service Provider Parameters associated with the Connection Setting
-func (o ConnectionSettingPropertiesOutput) Parameters() ConnectionSettingParameterArrayOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) []ConnectionSettingParameter { return v.Parameters }).(ConnectionSettingParameterArrayOutput)
-}
-
-// Provisioning state of the resource
-func (o ConnectionSettingPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// Scopes associated with the Connection Setting
-func (o ConnectionSettingPropertiesOutput) Scopes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Scopes }).(pulumi.StringPtrOutput)
-}
-
-// Service Provider Display Name associated with the Connection Setting
-func (o ConnectionSettingPropertiesOutput) ServiceProviderDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.ServiceProviderDisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Service Provider Id associated with the Connection Setting
-func (o ConnectionSettingPropertiesOutput) ServiceProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.ServiceProviderId }).(pulumi.StringPtrOutput)
-}
-
-type ConnectionSettingPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectionSettingPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionSettingProperties)(nil)).Elem()
-}
-
-func (o ConnectionSettingPropertiesPtrOutput) ToConnectionSettingPropertiesPtrOutput() ConnectionSettingPropertiesPtrOutput {
-	return o
-}
-
-func (o ConnectionSettingPropertiesPtrOutput) ToConnectionSettingPropertiesPtrOutputWithContext(ctx context.Context) ConnectionSettingPropertiesPtrOutput {
-	return o
-}
-
-func (o ConnectionSettingPropertiesPtrOutput) Elem() ConnectionSettingPropertiesOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) ConnectionSettingProperties {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectionSettingProperties
-		return ret
-	}).(ConnectionSettingPropertiesOutput)
-}
-
-// Client Id associated with the Connection Setting.
-func (o ConnectionSettingPropertiesPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Client Secret associated with the Connection Setting
-func (o ConnectionSettingPropertiesPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-// Id of the Connection Setting.
-func (o ConnectionSettingPropertiesPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the Connection Setting.
-func (o ConnectionSettingPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Provider Parameters associated with the Connection Setting
-func (o ConnectionSettingPropertiesPtrOutput) Parameters() ConnectionSettingParameterArrayOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) []ConnectionSettingParameter {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(ConnectionSettingParameterArrayOutput)
-}
-
-// Provisioning state of the resource
-func (o ConnectionSettingPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningState
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scopes associated with the Connection Setting
-func (o ConnectionSettingPropertiesPtrOutput) Scopes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scopes
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Provider Display Name associated with the Connection Setting
-func (o ConnectionSettingPropertiesPtrOutput) ServiceProviderDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceProviderDisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Provider Id associated with the Connection Setting
-func (o ConnectionSettingPropertiesPtrOutput) ServiceProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceProviderId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties for a Connection Setting Item
 type ConnectionSettingPropertiesResponse struct {
 	// Client Id associated with the Connection Setting.
 	ClientId *string `pulumi:"clientId"`
@@ -1840,7 +389,7 @@ func (val *ConnectionSettingPropertiesResponse) Defaults() *ConnectionSettingPro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Scopes) {
+	if tmp.Scopes == nil {
 		scopes_ := ""
 		tmp.Scopes = &scopes_
 	}
@@ -1912,63 +461,6 @@ func (o ConnectionSettingPropertiesResponseOutput) SettingId() pulumi.StringOutp
 	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) string { return v.SettingId }).(pulumi.StringOutput)
 }
 
-// Direct Line channel definition
-type DirectLineChannel struct {
-	// The channel name
-	// Expected value is 'DirectLineChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Direct Line channel resource
-	Properties *DirectLineChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for DirectLineChannel
-func (val *DirectLineChannel) Defaults() *DirectLineChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
-// The parameters to provide for the Direct Line channel.
-type DirectLineChannelProperties struct {
-	// Direct Line embed code of the resource
-	DirectLineEmbedCode *string `pulumi:"directLineEmbedCode"`
-	// The extensionKey1
-	ExtensionKey1 *string `pulumi:"extensionKey1"`
-	// The extensionKey2
-	ExtensionKey2 *string `pulumi:"extensionKey2"`
-	// The list of Direct Line sites
-	Sites []DirectLineSite `pulumi:"sites"`
-}
-
-// Defaults sets the appropriate defaults for DirectLineChannelProperties
-func (val *DirectLineChannelProperties) Defaults() *DirectLineChannelProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.ExtensionKey1) {
-		extensionKey1_ := ""
-		tmp.ExtensionKey1 = &extensionKey1_
-	}
-	if isZero(tmp.ExtensionKey2) {
-		extensionKey2_ := ""
-		tmp.ExtensionKey2 = &extensionKey2_
-	}
-	return &tmp
-}
-
 // The parameters to provide for the Direct Line channel.
 type DirectLineChannelPropertiesResponse struct {
 	// Direct Line embed code of the resource
@@ -1987,11 +479,11 @@ func (val *DirectLineChannelPropertiesResponse) Defaults() *DirectLineChannelPro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExtensionKey1) {
+	if tmp.ExtensionKey1 == nil {
 		extensionKey1_ := ""
 		tmp.ExtensionKey1 = &extensionKey1_
 	}
-	if isZero(tmp.ExtensionKey2) {
+	if tmp.ExtensionKey2 == nil {
 		extensionKey2_ := ""
 		tmp.ExtensionKey2 = &extensionKey2_
 	}
@@ -2019,63 +511,12 @@ func (val *DirectLineChannelResponse) Defaults() *DirectLineChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	tmp.Properties = tmp.Properties.Defaults()
 
-	return &tmp
-}
-
-// A site for the Direct Line channel
-type DirectLineSite struct {
-	// DirectLine application id
-	AppId *string `pulumi:"appId"`
-	// Entity Tag
-	ETag *string `pulumi:"eTag"`
-	// Whether this site is enabled for block user upload.
-	IsBlockUserUploadEnabled *bool `pulumi:"isBlockUserUploadEnabled"`
-	// Whether this site is disabled detailed logging for
-	IsDetailedLoggingEnabled *bool `pulumi:"isDetailedLoggingEnabled"`
-	// Whether this site is enabled for DirectLine channel
-	IsEnabled bool `pulumi:"isEnabled"`
-	// Whether this site is EndpointParameters enabled for channel
-	IsEndpointParametersEnabled *bool `pulumi:"isEndpointParametersEnabled"`
-	// Whether this no-storage site is disabled detailed logging for
-	IsNoStorageEnabled *bool `pulumi:"isNoStorageEnabled"`
-	// Whether this site is enabled for authentication with Bot Framework.
-	IsSecureSiteEnabled *bool `pulumi:"isSecureSiteEnabled"`
-	// Whether this site is enabled for Bot Framework V1 protocol.
-	IsV1Enabled bool `pulumi:"isV1Enabled"`
-	// Whether this site is enabled for Bot Framework V3 protocol.
-	IsV3Enabled bool `pulumi:"isV3Enabled"`
-	// Whether this site is enabled for Webchat Speech
-	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
-	// Whether this site is enabled for preview versions of Webchat
-	IsWebchatPreviewEnabled *bool `pulumi:"isWebchatPreviewEnabled"`
-	// Site name
-	SiteName string `pulumi:"siteName"`
-	// Tenant Id
-	TenantId *string `pulumi:"tenantId"`
-	// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
-	TrustedOrigins []string `pulumi:"trustedOrigins"`
-}
-
-// Defaults sets the appropriate defaults for DirectLineSite
-func (val *DirectLineSite) Defaults() *DirectLineSite {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
-		isWebChatSpeechEnabled_ := false
-		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
-	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
-		isWebchatPreviewEnabled_ := false
-		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
-	}
 	return &tmp
 }
 
@@ -2127,59 +568,15 @@ func (val *DirectLineSiteResponse) Defaults() *DirectLineSiteResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
+	if tmp.IsWebChatSpeechEnabled == nil {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
+	if tmp.IsWebchatPreviewEnabled == nil {
 		isWebchatPreviewEnabled_ := false
 		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
 	}
 	return &tmp
-}
-
-// DirectLine Speech channel definition
-type DirectLineSpeechChannel struct {
-	// The channel name
-	// Expected value is 'DirectLineSpeechChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to DirectLine Speech channel resource
-	Properties *DirectLineSpeechChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for DirectLineSpeechChannel
-func (val *DirectLineSpeechChannel) Defaults() *DirectLineSpeechChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the DirectLine Speech channel.
-type DirectLineSpeechChannelProperties struct {
-	// The cognitive service region with this channel registration.
-	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
-	// The cognitive service id with this channel registration.
-	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
-	// The cognitive service subscription key to use with this channel registration.
-	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
-	// Custom voice deployment id (optional).
-	CustomSpeechModelId *string `pulumi:"customSpeechModelId"`
-	// Custom speech model id (optional).
-	CustomVoiceDeploymentId *string `pulumi:"customVoiceDeploymentId"`
-	// Make this a default bot for chosen cognitive service account.
-	IsDefaultBotForCogSvcAccount *bool `pulumi:"isDefaultBotForCogSvcAccount"`
-	// Whether this channel is enabled or not.
-	IsEnabled *bool `pulumi:"isEnabled"`
 }
 
 // The parameters to provide for the DirectLine Speech channel.
@@ -2221,51 +618,11 @@ func (val *DirectLineSpeechChannelResponse) Defaults() *DirectLineSpeechChannelR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// Email channel definition
-type EmailChannel struct {
-	// The channel name
-	// Expected value is 'EmailChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to email channel resource
-	Properties *EmailChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for EmailChannel
-func (val *EmailChannel) Defaults() *EmailChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Email channel.
-type EmailChannelProperties struct {
-	// Email channel auth method. 0 Password (Default); 1 Graph.
-	AuthMethod *float64 `pulumi:"authMethod"`
-	// The email address
-	EmailAddress string `pulumi:"emailAddress"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The magic code for setting up the modern authentication.
-	MagicCode *string `pulumi:"magicCode"`
-	// The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-	Password *string `pulumi:"password"`
 }
 
 // The parameters to provide for the Email channel.
@@ -2303,49 +660,11 @@ func (val *EmailChannelResponse) Defaults() *EmailChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// Facebook channel definition
-type FacebookChannel struct {
-	// The channel name
-	// Expected value is 'FacebookChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to bot facebook channel
-	Properties *FacebookChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for FacebookChannel
-func (val *FacebookChannel) Defaults() *FacebookChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Facebook channel.
-type FacebookChannelProperties struct {
-	// Facebook application id
-	AppId string `pulumi:"appId"`
-	// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	AppSecret *string `pulumi:"appSecret"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The list of Facebook pages
-	Pages []FacebookPage `pulumi:"pages"`
 }
 
 // The parameters to provide for the Facebook channel.
@@ -2385,19 +704,11 @@ func (val *FacebookChannelResponse) Defaults() *FacebookChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// A Facebook page for Facebook channel registration
-type FacebookPage struct {
-	// Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken *string `pulumi:"accessToken"`
-	// Page id
-	Id string `pulumi:"id"`
 }
 
 // A Facebook page for Facebook channel registration
@@ -2406,44 +717,6 @@ type FacebookPageResponse struct {
 	AccessToken *string `pulumi:"accessToken"`
 	// Page id
 	Id string `pulumi:"id"`
-}
-
-// Kik channel definition
-type KikChannel struct {
-	// The channel name
-	// Expected value is 'KikChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Kik channel resource
-	Properties *KikChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for KikChannel
-func (val *KikChannel) Defaults() *KikChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Kik channel.
-type KikChannelProperties struct {
-	// Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
-	ApiKey *string `pulumi:"apiKey"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
-	// Whether this channel is validated for the bot
-	IsValidated *bool `pulumi:"isValidated"`
-	// The Kik user name
-	UserName string `pulumi:"userName"`
 }
 
 // The parameters to provide for the Kik channel.
@@ -2479,43 +752,11 @@ func (val *KikChannelResponse) Defaults() *KikChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// Line channel definition
-type LineChannel struct {
-	// The channel name
-	// Expected value is 'LineChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to line channel resource
-	Properties *LineChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for LineChannel
-func (val *LineChannel) Defaults() *LineChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Line channel.
-type LineChannelProperties struct {
-	// The list of line channel registrations
-	LineRegistrations []LineRegistration `pulumi:"lineRegistrations"`
 }
 
 // The parameters to provide for the Line channel.
@@ -2549,19 +790,11 @@ func (val *LineChannelResponse) Defaults() *LineChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// The properties corresponding to a line channel registration
-type LineRegistration struct {
-	// Access token for the line channel registration
-	ChannelAccessToken *string `pulumi:"channelAccessToken"`
-	// Secret for the line channel registration
-	ChannelSecret *string `pulumi:"channelSecret"`
 }
 
 // The properties corresponding to a line channel registration
@@ -2572,30 +805,6 @@ type LineRegistrationResponse struct {
 	ChannelSecret *string `pulumi:"channelSecret"`
 	// Id generated for the line channel registration
 	GeneratedId string `pulumi:"generatedId"`
-}
-
-// M365 Extensions definition
-type M365Extensions struct {
-	// The channel name
-	// Expected value is 'M365Extensions'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-}
-
-// Defaults sets the appropriate defaults for M365Extensions
-func (val *M365Extensions) Defaults() *M365Extensions {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
 }
 
 // M365 Extensions definition
@@ -2617,70 +826,9 @@ func (val *M365ExtensionsResponse) Defaults() *M365ExtensionsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// Microsoft Teams channel definition
-type MsTeamsChannel struct {
-	// The channel name
-	// Expected value is 'MsTeamsChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Microsoft Teams channel resource
-	Properties *MsTeamsChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for MsTeamsChannel
-func (val *MsTeamsChannel) Defaults() *MsTeamsChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
-// The parameters to provide for the Microsoft Teams channel.
-type MsTeamsChannelProperties struct {
-	// Whether this channel accepted terms
-	AcceptedTerms *bool `pulumi:"acceptedTerms"`
-	// Webhook for Microsoft Teams channel calls
-	CallingWebhook *string `pulumi:"callingWebhook"`
-	// Deployment environment for Microsoft Teams channel calls
-	DeploymentEnvironment *string `pulumi:"deploymentEnvironment"`
-	// Enable calling for Microsoft Teams channel
-	EnableCalling *bool `pulumi:"enableCalling"`
-	// Webhook for Microsoft Teams channel calls
-	IncomingCallRoute *string `pulumi:"incomingCallRoute"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
-}
-
-// Defaults sets the appropriate defaults for MsTeamsChannelProperties
-func (val *MsTeamsChannelProperties) Defaults() *MsTeamsChannelProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.DeploymentEnvironment) {
-		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
-		tmp.DeploymentEnvironment = &deploymentEnvironment_
-	}
-	if isZero(tmp.EnableCalling) {
-		enableCalling_ := false
-		tmp.EnableCalling = &enableCalling_
 	}
 	return &tmp
 }
@@ -2707,11 +855,11 @@ func (val *MsTeamsChannelPropertiesResponse) Defaults() *MsTeamsChannelPropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DeploymentEnvironment) {
+	if tmp.DeploymentEnvironment == nil {
 		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
 		tmp.DeploymentEnvironment = &deploymentEnvironment_
 	}
-	if isZero(tmp.EnableCalling) {
+	if tmp.EnableCalling == nil {
 		enableCalling_ := false
 		tmp.EnableCalling = &enableCalling_
 	}
@@ -2739,36 +887,12 @@ func (val *MsTeamsChannelResponse) Defaults() *MsTeamsChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	tmp.Properties = tmp.Properties.Defaults()
 
-	return &tmp
-}
-
-// Omnichannel channel definition
-type Omnichannel struct {
-	// The channel name
-	// Expected value is 'Omnichannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-}
-
-// Defaults sets the appropriate defaults for Omnichannel
-func (val *Omnichannel) Defaults() *Omnichannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
 	return &tmp
 }
 
@@ -2791,31 +915,7 @@ func (val *OmnichannelResponse) Defaults() *OmnichannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// Outlook channel definition
-type OutlookChannel struct {
-	// The channel name
-	// Expected value is 'OutlookChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-}
-
-// Defaults sets the appropriate defaults for OutlookChannel
-func (val *OutlookChannel) Defaults() *OutlookChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -2841,101 +941,11 @@ func (val *OutlookChannelResponse) Defaults() *OutlookChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponse struct {
-	// Group ids
-	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id string `pulumi:"id"`
-	// The name of the resource
-	Name string `pulumi:"name"`
-	// The resource of private end point.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-// Group ids
-func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the resource
-func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The resource of private end point.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
-		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseOutput)
 }
 
 // The Private Endpoint resource.
@@ -3112,30 +1122,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringP
 }
 
 // SearchAssistant definition
-type SearchAssistant struct {
-	// The channel name
-	// Expected value is 'SearchAssistant'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-}
-
-// Defaults sets the appropriate defaults for SearchAssistant
-func (val *SearchAssistant) Defaults() *SearchAssistant {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// SearchAssistant definition
 type SearchAssistantResponse struct {
 	// The channel name
 	// Expected value is 'SearchAssistant'.
@@ -3154,7 +1140,7 @@ func (val *SearchAssistantResponse) Defaults() *SearchAssistantResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
@@ -3213,7 +1199,7 @@ func (val *ServiceProviderPropertiesResponse) Defaults() *ServiceProviderPropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IconUrl) {
+	if tmp.IconUrl == nil {
 		iconUrl_ := ""
 		tmp.IconUrl = &iconUrl_
 	}
@@ -3285,11 +1271,11 @@ func (val *SiteResponse) Defaults() *SiteResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
+	if tmp.IsWebChatSpeechEnabled == nil {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
+	if tmp.IsWebchatPreviewEnabled == nil {
 		isWebchatPreviewEnabled_ := false
 		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
 	}
@@ -3427,146 +1413,6 @@ func (o SiteResponseArrayOutput) Index(i pulumi.IntInput) SiteResponseOutput {
 }
 
 // The SKU of the cognitive services account.
-type Sku struct {
-	// The sku name
-	Name string `pulumi:"name"`
-}
-
-// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
-// You can construct a concrete instance of `SkuInput` via:
-//
-//	SkuArgs{...}
-type SkuInput interface {
-	pulumi.Input
-
-	ToSkuOutput() SkuOutput
-	ToSkuOutputWithContext(context.Context) SkuOutput
-}
-
-// The SKU of the cognitive services account.
-type SkuArgs struct {
-	// The sku name
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (SkuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (i SkuArgs) ToSkuOutput() SkuOutput {
-	return i.ToSkuOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
-}
-
-func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
-}
-
-// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
-// You can construct a concrete instance of `SkuPtrInput` via:
-//
-//	        SkuArgs{...}
-//
-//	or:
-//
-//	        nil
-type SkuPtrInput interface {
-	pulumi.Input
-
-	ToSkuPtrOutput() SkuPtrOutput
-	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
-}
-
-type skuPtrType SkuArgs
-
-func SkuPtr(v *SkuArgs) SkuPtrInput {
-	return (*skuPtrType)(v)
-}
-
-func (*skuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
-}
-
-// The SKU of the cognitive services account.
-type SkuOutput struct{ *pulumi.OutputState }
-
-func (SkuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (o SkuOutput) ToSkuOutput() SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
-		return &v
-	}).(SkuPtrOutput)
-}
-
-// The sku name
-func (o SkuOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type SkuPtrOutput struct{ *pulumi.OutputState }
-
-func (SkuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) Elem() SkuOutput {
-	return o.ApplyT(func(v *Sku) Sku {
-		if v != nil {
-			return *v
-		}
-		var ret Sku
-		return ret
-	}).(SkuOutput)
-}
-
-// The sku name
-func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SKU of the cognitive services account.
 type SkuResponse struct {
 	// The sku name
 	Name string `pulumi:"name"`
@@ -3643,71 +1489,6 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Skype channel definition
-type SkypeChannel struct {
-	// The channel name
-	// Expected value is 'SkypeChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Skype channel resource
-	Properties *SkypeChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for SkypeChannel
-func (val *SkypeChannel) Defaults() *SkypeChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	tmp.Properties = tmp.Properties.Defaults()
-
-	return &tmp
-}
-
-// The parameters to provide for the Microsoft Teams channel.
-type SkypeChannelProperties struct {
-	// Calling web hook for Skype channel
-	CallingWebHook *string `pulumi:"callingWebHook"`
-	// Enable calling for Skype channel
-	EnableCalling *bool `pulumi:"enableCalling"`
-	// Enable groups for Skype channel
-	EnableGroups *bool `pulumi:"enableGroups"`
-	// Enable media cards for Skype channel
-	EnableMediaCards *bool `pulumi:"enableMediaCards"`
-	// Enable messaging for Skype channel
-	EnableMessaging *bool `pulumi:"enableMessaging"`
-	// Enable screen sharing for Skype channel
-	EnableScreenSharing *bool `pulumi:"enableScreenSharing"`
-	// Enable video for Skype channel
-	EnableVideo *bool `pulumi:"enableVideo"`
-	// Group mode for Skype channel
-	GroupsMode *string `pulumi:"groupsMode"`
-	// Incoming call route for Skype channel
-	IncomingCallRoute *string `pulumi:"incomingCallRoute"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
-}
-
-// Defaults sets the appropriate defaults for SkypeChannelProperties
-func (val *SkypeChannelProperties) Defaults() *SkypeChannelProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.EnableCalling) {
-		enableCalling_ := false
-		tmp.EnableCalling = &enableCalling_
-	}
-	return &tmp
-}
-
 // The parameters to provide for the Microsoft Teams channel.
 type SkypeChannelPropertiesResponse struct {
 	// Calling web hook for Skype channel
@@ -3738,7 +1519,7 @@ func (val *SkypeChannelPropertiesResponse) Defaults() *SkypeChannelPropertiesRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableCalling) {
+	if tmp.EnableCalling == nil {
 		enableCalling_ := false
 		tmp.EnableCalling = &enableCalling_
 	}
@@ -3766,57 +1547,13 @@ func (val *SkypeChannelResponse) Defaults() *SkypeChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	tmp.Properties = tmp.Properties.Defaults()
 
 	return &tmp
-}
-
-// Slack channel definition
-type SlackChannel struct {
-	// The channel name
-	// Expected value is 'SlackChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Slack channel resource
-	Properties *SlackChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for SlackChannel
-func (val *SlackChannel) Defaults() *SlackChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Slack channel.
-type SlackChannelProperties struct {
-	// The Slack client id
-	ClientId *string `pulumi:"clientId"`
-	// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	ClientSecret *string `pulumi:"clientSecret"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The Slack landing page Url
-	LandingPageUrl *string `pulumi:"landingPageUrl"`
-	// The Slack permission scopes.
-	Scopes *string `pulumi:"scopes"`
-	// The Slack signing secret.
-	SigningSecret *string `pulumi:"signingSecret"`
-	// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-	VerificationToken *string `pulumi:"verificationToken"`
 }
 
 // The parameters to provide for the Slack channel.
@@ -3866,51 +1603,11 @@ func (val *SlackChannelResponse) Defaults() *SlackChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// Sms channel definition
-type SmsChannel struct {
-	// The channel name
-	// Expected value is 'SmsChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Sms channel resource
-	Properties *SmsChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for SmsChannel
-func (val *SmsChannel) Defaults() *SmsChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Sms channel.
-type SmsChannelProperties struct {
-	// The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccountSID string `pulumi:"accountSID"`
-	// The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AuthToken *string `pulumi:"authToken"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
-	// Whether this channel is validated for the bot
-	IsValidated *bool `pulumi:"isValidated"`
-	// The Sms phone
-	Phone string `pulumi:"phone"`
 }
 
 // The parameters to provide for the Sms channel.
@@ -3948,47 +1645,11 @@ func (val *SmsChannelResponse) Defaults() *SmsChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// Telegram channel definition
-type TelegramChannel struct {
-	// The channel name
-	// Expected value is 'TelegramChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Telegram channel resource
-	Properties *TelegramChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for TelegramChannel
-func (val *TelegramChannel) Defaults() *TelegramChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Telegram channel.
-type TelegramChannelProperties struct {
-	// The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken *string `pulumi:"accessToken"`
-	// Whether this channel is enabled for the bot
-	IsEnabled bool `pulumi:"isEnabled"`
-	// Whether this channel is validated for the bot
-	IsValidated *bool `pulumi:"isValidated"`
 }
 
 // The parameters to provide for the Telegram channel.
@@ -4022,55 +1683,11 @@ func (val *TelegramChannelResponse) Defaults() *TelegramChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// Telephony channel definition
-type TelephonyChannel struct {
-	// The channel name
-	// Expected value is 'TelephonyChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Telephony channel resource
-	Properties *TelephonyChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for TelephonyChannel
-func (val *TelephonyChannel) Defaults() *TelephonyChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Direct Line channel.
-type TelephonyChannelProperties struct {
-	// The list of Telephony api configuration
-	ApiConfigurations []TelephonyChannelResourceApiConfiguration `pulumi:"apiConfigurations"`
-	// The extensionKey2
-	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
-	// The extensionKey1
-	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
-	// The default locale of the channel
-	DefaultLocale *string `pulumi:"defaultLocale"`
-	// Whether the channel is enabled
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The list of Telephony phone numbers
-	PhoneNumbers []TelephonyPhoneNumbers `pulumi:"phoneNumbers"`
-	// The premium SKU applied to the channel
-	PremiumSKU *string `pulumi:"premiumSKU"`
 }
 
 // The parameters to provide for the Direct Line channel.
@@ -4089,22 +1706,6 @@ type TelephonyChannelPropertiesResponse struct {
 	PhoneNumbers []TelephonyPhoneNumbersResponse `pulumi:"phoneNumbers"`
 	// The premium SKU applied to the channel
 	PremiumSKU *string `pulumi:"premiumSKU"`
-}
-
-// A resource Api configuration for the Telephony channel
-type TelephonyChannelResourceApiConfiguration struct {
-	// The cognitive service region.
-	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
-	// The cognitive service resourceId.
-	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
-	// The cognitive service subscription key.
-	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
-	// The default locale.
-	DefaultLocale *string `pulumi:"defaultLocale"`
-	// The id of config.
-	Id *string `pulumi:"id"`
-	// The provider name.
-	ProviderName *string `pulumi:"providerName"`
 }
 
 // A resource Api configuration for the Telephony channel
@@ -4144,35 +1745,11 @@ func (val *TelephonyChannelResponse) Defaults() *TelephonyChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// A telephone number for the Telephony channel
-type TelephonyPhoneNumbers struct {
-	// The endpoint of ACS.
-	AcsEndpoint *string `pulumi:"acsEndpoint"`
-	// The resource id of ACS.
-	AcsResourceId *string `pulumi:"acsResourceId"`
-	// The secret of ACS.
-	AcsSecret *string `pulumi:"acsSecret"`
-	// The service region of cognitive service.
-	CognitiveServiceRegion *string `pulumi:"cognitiveServiceRegion"`
-	// The resource id of cognitive service.
-	CognitiveServiceResourceId *string `pulumi:"cognitiveServiceResourceId"`
-	// The subscription key of cognitive service.
-	CognitiveServiceSubscriptionKey *string `pulumi:"cognitiveServiceSubscriptionKey"`
-	// The default locale of the phone number.
-	DefaultLocale *string `pulumi:"defaultLocale"`
-	// The element id.
-	Id *string `pulumi:"id"`
-	// Optional Property that will determine the offering type of the phone.
-	OfferType *string `pulumi:"offerType"`
-	// The phone number.
-	PhoneNumber *string `pulumi:"phoneNumber"`
 }
 
 // A telephone number for the Telephony channel
@@ -4197,38 +1774,6 @@ type TelephonyPhoneNumbersResponse struct {
 	OfferType *string `pulumi:"offerType"`
 	// The phone number.
 	PhoneNumber *string `pulumi:"phoneNumber"`
-}
-
-// Web Chat channel definition
-type WebChatChannel struct {
-	// The channel name
-	// Expected value is 'WebChatChannel'.
-	ChannelName string `pulumi:"channelName"`
-	// Entity Tag of the resource
-	Etag *string `pulumi:"etag"`
-	// Specifies the location of the resource.
-	Location *string `pulumi:"location"`
-	// The set of properties specific to Web Chat channel resource
-	Properties *WebChatChannelProperties `pulumi:"properties"`
-}
-
-// Defaults sets the appropriate defaults for WebChatChannel
-func (val *WebChatChannel) Defaults() *WebChatChannel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.Location) {
-		location_ := "global"
-		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// The parameters to provide for the Web Chat channel.
-type WebChatChannelProperties struct {
-	// The list of Web Chat sites
-	Sites []WebChatSite `pulumi:"sites"`
 }
 
 // The parameters to provide for the Web Chat channel.
@@ -4260,59 +1805,9 @@ func (val *WebChatChannelResponse) Defaults() *WebChatChannelResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Location) {
+	if tmp.Location == nil {
 		location_ := "global"
 		tmp.Location = &location_
-	}
-	return &tmp
-}
-
-// A site for the Webchat channel
-type WebChatSite struct {
-	// DirectLine application id
-	AppId *string `pulumi:"appId"`
-	// Entity Tag
-	ETag *string `pulumi:"eTag"`
-	// Whether this site is enabled for block user upload.
-	IsBlockUserUploadEnabled *bool `pulumi:"isBlockUserUploadEnabled"`
-	// Whether this site is disabled detailed logging for
-	IsDetailedLoggingEnabled *bool `pulumi:"isDetailedLoggingEnabled"`
-	// Whether this site is enabled for DirectLine channel
-	IsEnabled bool `pulumi:"isEnabled"`
-	// Whether this site is EndpointParameters enabled for channel
-	IsEndpointParametersEnabled *bool `pulumi:"isEndpointParametersEnabled"`
-	// Whether this no-storage site is disabled detailed logging for
-	IsNoStorageEnabled *bool `pulumi:"isNoStorageEnabled"`
-	// Whether this site is enabled for authentication with Bot Framework.
-	IsSecureSiteEnabled *bool `pulumi:"isSecureSiteEnabled"`
-	// Whether this site is enabled for Bot Framework V1 protocol.
-	IsV1Enabled *bool `pulumi:"isV1Enabled"`
-	// Whether this site is enabled for Bot Framework V3 protocol.
-	IsV3Enabled *bool `pulumi:"isV3Enabled"`
-	// Whether this site is enabled for Webchat Speech
-	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
-	// Whether this site is enabled for preview versions of Webchat
-	IsWebchatPreviewEnabled bool `pulumi:"isWebchatPreviewEnabled"`
-	// Site name
-	SiteName string `pulumi:"siteName"`
-	// Tenant Id
-	TenantId *string `pulumi:"tenantId"`
-	// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
-	TrustedOrigins []string `pulumi:"trustedOrigins"`
-}
-
-// Defaults sets the appropriate defaults for WebChatSite
-func (val *WebChatSite) Defaults() *WebChatSite {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
-		isWebChatSpeechEnabled_ := false
-		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
-	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
-		tmp.IsWebchatPreviewEnabled = false
 	}
 	return &tmp
 }
@@ -4365,7 +1860,7 @@ func (val *WebChatSiteResponse) Defaults() *WebChatSiteResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsWebChatSpeechEnabled) {
+	if tmp.IsWebChatSpeechEnabled == nil {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
@@ -4375,28 +1870,17 @@ func (val *WebChatSiteResponse) Defaults() *WebChatSiteResponse {
 	return &tmp
 }
 func init() {
-	pulumi.RegisterOutputType(BotPropertiesOutput{})
-	pulumi.RegisterOutputType(BotPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(BotPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ChannelSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ChannelSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ConnectionSettingParameterOutput{})
-	pulumi.RegisterOutputType(ConnectionSettingParameterArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionSettingParameterResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionSettingParameterResponseArrayOutput{})
-	pulumi.RegisterOutputType(ConnectionSettingPropertiesOutput{})
-	pulumi.RegisterOutputType(ConnectionSettingPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionSettingPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(SiteResponseOutput{})
 	pulumi.RegisterOutputType(SiteResponseArrayOutput{})
-	pulumi.RegisterOutputType(SkuOutput{})
-	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 }

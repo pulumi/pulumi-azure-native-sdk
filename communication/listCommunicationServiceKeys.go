@@ -11,7 +11,7 @@ import (
 )
 
 // Get the access keys of the CommunicationService resource.
-// API Version: 2020-08-20.
+// API Version: 2023-03-01-preview.
 func ListCommunicationServiceKeys(ctx *pulumi.Context, args *ListCommunicationServiceKeysArgs, opts ...pulumi.InvokeOption) (*ListCommunicationServiceKeysResult, error) {
 	var rv ListCommunicationServiceKeysResult
 	err := ctx.Invoke("azure-native:communication:listCommunicationServiceKeys", args, &rv, opts...)

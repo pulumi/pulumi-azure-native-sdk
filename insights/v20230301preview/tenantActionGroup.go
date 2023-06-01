@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,7 +52,7 @@ func NewTenantActionGroup(ctx *pulumi.Context,
 	if args.ManagementGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'ManagementGroupId'")
 	}
-	if isZero(args.Enabled) {
+	if args.Enabled == nil {
 		args.Enabled = pulumi.Bool(true)
 	}
 	var resource TenantActionGroup

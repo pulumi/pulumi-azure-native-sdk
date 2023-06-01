@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Service Endpoint policy definitions.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ServiceEndpointPolicyDefinition struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +29,8 @@ type ServiceEndpointPolicyDefinition struct {
 	Service pulumi.StringPtrOutput `pulumi:"service"`
 	// A list of service resources.
 	ServiceResources pulumi.StringArrayOutput `pulumi:"serviceResources"`
+	// The type of the resource.
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewServiceEndpointPolicyDefinition registers a new resource with the given unique name, arguments, and options.
@@ -128,6 +131,9 @@ func NewServiceEndpointPolicyDefinition(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ServiceEndpointPolicyDefinition"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ServiceEndpointPolicyDefinition"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ServiceEndpointPolicyDefinition
@@ -178,6 +184,8 @@ type serviceEndpointPolicyDefinitionArgs struct {
 	ServiceEndpointPolicyName string `pulumi:"serviceEndpointPolicyName"`
 	// A list of service resources.
 	ServiceResources []string `pulumi:"serviceResources"`
+	// The type of the resource.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ServiceEndpointPolicyDefinition resource.
@@ -198,6 +206,8 @@ type ServiceEndpointPolicyDefinitionArgs struct {
 	ServiceEndpointPolicyName pulumi.StringInput
 	// A list of service resources.
 	ServiceResources pulumi.StringArrayInput
+	// The type of the resource.
+	Type pulumi.StringPtrInput
 }
 
 func (ServiceEndpointPolicyDefinitionArgs) ElementType() reflect.Type {
@@ -265,6 +275,11 @@ func (o ServiceEndpointPolicyDefinitionOutput) Service() pulumi.StringPtrOutput 
 // A list of service resources.
 func (o ServiceEndpointPolicyDefinitionOutput) ServiceResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceEndpointPolicyDefinition) pulumi.StringArrayOutput { return v.ServiceResources }).(pulumi.StringArrayOutput)
+}
+
+// The type of the resource.
+func (o ServiceEndpointPolicyDefinitionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceEndpointPolicyDefinition) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 func init() {

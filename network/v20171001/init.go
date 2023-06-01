@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,58 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:network/v20171001:ApplicationGateway":
-		r = &ApplicationGateway{}
-	case "azure-native:network/v20171001:ApplicationSecurityGroup":
-		r = &ApplicationSecurityGroup{}
-	case "azure-native:network/v20171001:ConnectionMonitor":
-		r = &ConnectionMonitor{}
-	case "azure-native:network/v20171001:ExpressRouteCircuit":
-		r = &ExpressRouteCircuit{}
-	case "azure-native:network/v20171001:ExpressRouteCircuitAuthorization":
-		r = &ExpressRouteCircuitAuthorization{}
-	case "azure-native:network/v20171001:ExpressRouteCircuitPeering":
-		r = &ExpressRouteCircuitPeering{}
-	case "azure-native:network/v20171001:InboundNatRule":
-		r = &InboundNatRule{}
-	case "azure-native:network/v20171001:LoadBalancer":
-		r = &LoadBalancer{}
-	case "azure-native:network/v20171001:LocalNetworkGateway":
-		r = &LocalNetworkGateway{}
-	case "azure-native:network/v20171001:NetworkInterface":
-		r = &NetworkInterface{}
-	case "azure-native:network/v20171001:NetworkSecurityGroup":
-		r = &NetworkSecurityGroup{}
-	case "azure-native:network/v20171001:NetworkWatcher":
-		r = &NetworkWatcher{}
-	case "azure-native:network/v20171001:PacketCapture":
-		r = &PacketCapture{}
-	case "azure-native:network/v20171001:PublicIPAddress":
-		r = &PublicIPAddress{}
-	case "azure-native:network/v20171001:RecordSet":
-		r = &RecordSet{}
-	case "azure-native:network/v20171001:Route":
-		r = &Route{}
-	case "azure-native:network/v20171001:RouteFilter":
-		r = &RouteFilter{}
 	case "azure-native:network/v20171001:RouteFilterRule":
 		r = &RouteFilterRule{}
-	case "azure-native:network/v20171001:RouteTable":
-		r = &RouteTable{}
-	case "azure-native:network/v20171001:SecurityRule":
-		r = &SecurityRule{}
-	case "azure-native:network/v20171001:Subnet":
-		r = &Subnet{}
-	case "azure-native:network/v20171001:VirtualNetwork":
-		r = &VirtualNetwork{}
-	case "azure-native:network/v20171001:VirtualNetworkGateway":
-		r = &VirtualNetworkGateway{}
-	case "azure-native:network/v20171001:VirtualNetworkGatewayConnection":
-		r = &VirtualNetworkGatewayConnection{}
-	case "azure-native:network/v20171001:VirtualNetworkPeering":
-		r = &VirtualNetworkPeering{}
-	case "azure-native:network/v20171001:Zone":
-		r = &Zone{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

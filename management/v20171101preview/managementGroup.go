@@ -11,8 +11,6 @@ import (
 )
 
 // The management group details.
-//
-// Deprecated: Version 2017-11-01-preview will be removed in v2 of the provider.
 type ManagementGroup struct {
 	pulumi.CustomResourceState
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,12 @@ func NewMachinePool(ctx *pulumi.Context,
 	if args.ResourceName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:redhatopenshift:MachinePool"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource MachinePool
 	err := ctx.RegisterResource("azure-native:redhatopenshift/v20220904:MachinePool", name, args, &resource, opts...)
 	if err != nil {

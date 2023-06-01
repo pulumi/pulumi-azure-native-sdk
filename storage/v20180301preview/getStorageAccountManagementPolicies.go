@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the data policy rules associated with the specified storage account.
-//
-// Deprecated: Version 2018-03-01-preview will be removed in v2 of the provider.
 func LookupStorageAccountManagementPolicies(ctx *pulumi.Context, args *LookupStorageAccountManagementPoliciesArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountManagementPoliciesResult, error) {
 	var rv LookupStorageAccountManagementPoliciesResult
 	err := ctx.Invoke("azure-native:storage/v20180301preview:getStorageAccountManagementPolicies", args, &rv, opts...)

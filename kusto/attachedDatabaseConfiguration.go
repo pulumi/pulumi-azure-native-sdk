@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an attached database configuration.
-// API Version: 2021-01-01.
+// API Version: 2022-12-29.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AttachedDatabaseConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,10 @@ type AttachedDatabaseConfiguration struct {
 	ClusterResourceId pulumi.StringOutput `pulumi:"clusterResourceId"`
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
+	// Overrides the original database name. Relevant only when attaching to a specific database.
+	DatabaseNameOverride pulumi.StringPtrOutput `pulumi:"databaseNameOverride"`
+	// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
+	DatabaseNamePrefix pulumi.StringPtrOutput `pulumi:"databaseNamePrefix"`
 	// The default principals modification kind
 	DefaultPrincipalsModificationKind pulumi.StringOutput `pulumi:"defaultPrincipalsModificationKind"`
 	// Resource location.
@@ -134,6 +139,10 @@ type attachedDatabaseConfigurationArgs struct {
 	ClusterResourceId string `pulumi:"clusterResourceId"`
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 	DatabaseName string `pulumi:"databaseName"`
+	// Overrides the original database name. Relevant only when attaching to a specific database.
+	DatabaseNameOverride *string `pulumi:"databaseNameOverride"`
+	// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
+	DatabaseNamePrefix *string `pulumi:"databaseNamePrefix"`
 	// The default principals modification kind
 	DefaultPrincipalsModificationKind string `pulumi:"defaultPrincipalsModificationKind"`
 	// Resource location.
@@ -154,6 +163,10 @@ type AttachedDatabaseConfigurationArgs struct {
 	ClusterResourceId pulumi.StringInput
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 	DatabaseName pulumi.StringInput
+	// Overrides the original database name. Relevant only when attaching to a specific database.
+	DatabaseNameOverride pulumi.StringPtrInput
+	// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
+	DatabaseNamePrefix pulumi.StringPtrInput
 	// The default principals modification kind
 	DefaultPrincipalsModificationKind pulumi.StringInput
 	// Resource location.
@@ -214,6 +227,16 @@ func (o AttachedDatabaseConfigurationOutput) ClusterResourceId() pulumi.StringOu
 // The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 func (o AttachedDatabaseConfigurationOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedDatabaseConfiguration) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// Overrides the original database name. Relevant only when attaching to a specific database.
+func (o AttachedDatabaseConfigurationOutput) DatabaseNameOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedDatabaseConfiguration) pulumi.StringPtrOutput { return v.DatabaseNameOverride }).(pulumi.StringPtrOutput)
+}
+
+// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
+func (o AttachedDatabaseConfigurationOutput) DatabaseNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedDatabaseConfiguration) pulumi.StringPtrOutput { return v.DatabaseNamePrefix }).(pulumi.StringPtrOutput)
 }
 
 // The default principals modification kind

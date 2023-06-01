@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains information about a pool.
-//
-// Deprecated: Version 2020-05-01 will be removed in v2 of the provider.
 type Pool struct {
 	pulumi.CustomResourceState
 

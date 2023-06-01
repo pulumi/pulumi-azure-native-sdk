@@ -11,7 +11,7 @@ import (
 )
 
 // Implements virtual network GET method.
-// API Version: 2020-10-01-preview.
+// API Version: 2022-07-15-preview.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	var rv LookupVirtualNetworkResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getVirtualNetwork", args, &rv, opts...)

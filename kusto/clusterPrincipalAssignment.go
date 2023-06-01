@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a cluster principal assignment.
-// API Version: 2021-01-01.
+// API Version: 2022-12-29.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ClusterPrincipalAssignment struct {
 	pulumi.CustomResourceState
 
+	// The service principal object id in AAD (Azure active directory)
+	AadObjectId pulumi.StringOutput `pulumi:"aadObjectId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name.
@@ -192,6 +195,11 @@ func (o ClusterPrincipalAssignmentOutput) ToClusterPrincipalAssignmentOutput() C
 
 func (o ClusterPrincipalAssignmentOutput) ToClusterPrincipalAssignmentOutputWithContext(ctx context.Context) ClusterPrincipalAssignmentOutput {
 	return o
+}
+
+// The service principal object id in AAD (Azure active directory)
+func (o ClusterPrincipalAssignmentOutput) AadObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterPrincipalAssignment) pulumi.StringOutput { return v.AadObjectId }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -11,7 +11,7 @@ import (
 )
 
 // Display information about a cloud service.
-// API Version: 2021-03-01.
+// API Version: 2022-09-04.
 func LookupCloudService(ctx *pulumi.Context, args *LookupCloudServiceArgs, opts ...pulumi.InvokeOption) (*LookupCloudServiceResult, error) {
 	var rv LookupCloudServiceResult
 	err := ctx.Invoke("azure-native:compute:getCloudService", args, &rv, opts...)
@@ -38,10 +38,14 @@ type LookupCloudServiceResult struct {
 	Name string `pulumi:"name"`
 	// Cloud service properties
 	Properties CloudServicePropertiesResponse `pulumi:"properties"`
+	// The system meta data relating to this resource.
+	SystemData *SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type.
 	Type string `pulumi:"type"`
+	// List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
+	Zones []string `pulumi:"zones"`
 }
 
 func LookupCloudServiceOutput(ctx *pulumi.Context, args LookupCloudServiceOutputArgs, opts ...pulumi.InvokeOption) LookupCloudServiceResultOutput {
@@ -103,6 +107,11 @@ func (o LookupCloudServiceResultOutput) Properties() CloudServicePropertiesRespo
 	return o.ApplyT(func(v LookupCloudServiceResult) CloudServicePropertiesResponse { return v.Properties }).(CloudServicePropertiesResponseOutput)
 }
 
+// The system meta data relating to this resource.
+func (o LookupCloudServiceResultOutput) SystemData() SystemDataResponsePtrOutput {
+	return o.ApplyT(func(v LookupCloudServiceResult) *SystemDataResponse { return v.SystemData }).(SystemDataResponsePtrOutput)
+}
+
 // Resource tags.
 func (o LookupCloudServiceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -111,6 +120,11 @@ func (o LookupCloudServiceResultOutput) Tags() pulumi.StringMapOutput {
 // Resource type.
 func (o LookupCloudServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudServiceResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
+func (o LookupCloudServiceResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupCloudServiceResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

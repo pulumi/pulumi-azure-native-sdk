@@ -71,11 +71,11 @@ func (val *LookupIotSecuritySolutionResult) Defaults() *LookupIotSecuritySolutio
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "Enabled"
 		tmp.Status = &status_
 	}
-	if isZero(tmp.UnmaskedIpLoggingStatus) {
+	if tmp.UnmaskedIpLoggingStatus == nil {
 		unmaskedIpLoggingStatus_ := "Disabled"
 		tmp.UnmaskedIpLoggingStatus = &unmaskedIpLoggingStatus_
 	}

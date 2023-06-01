@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,8 +43,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Schedule{}
 	case "azure-native:devtestlab/v20160515:Secret":
 		r = &Secret{}
-	case "azure-native:devtestlab/v20160515:ServiceRunner":
-		r = &ServiceRunner{}
 	case "azure-native:devtestlab/v20160515:User":
 		r = &User{}
 	case "azure-native:devtestlab/v20160515:VirtualMachine":

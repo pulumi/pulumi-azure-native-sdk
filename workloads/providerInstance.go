@@ -7,22 +7,23 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A provider instance associated with SAP monitor.
-// API Version: 2021-12-01-preview.
+// API Version: 2023-04-01.
+// Previous API Version: 2021-12-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ProviderInstance struct {
 	pulumi.CustomResourceState
 
 	// Defines the provider instance errors.
 	Errors ProviderInstancePropertiesResponseErrorsOutput `pulumi:"errors"`
-	// Managed service identity (user assigned identities)
+	// [currently not in use] Managed service identity(user assigned identities)
 	Identity UserAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Defines the provider instance errors.
+	// Defines the provider specific properties.
 	ProviderSettings pulumi.AnyOutput `pulumi:"providerSettings"`
 	// State of provisioning of the provider instance
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -89,13 +90,13 @@ func (ProviderInstanceState) ElementType() reflect.Type {
 }
 
 type providerInstanceArgs struct {
-	// Managed service identity (user assigned identities)
+	// [currently not in use] Managed service identity(user assigned identities)
 	Identity *UserAssignedServiceIdentity `pulumi:"identity"`
 	// Name of the SAP monitor resource.
 	MonitorName string `pulumi:"monitorName"`
 	// Name of the provider instance.
 	ProviderInstanceName *string `pulumi:"providerInstanceName"`
-	// Defines the provider instance errors.
+	// Defines the provider specific properties.
 	ProviderSettings interface{} `pulumi:"providerSettings"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -103,13 +104,13 @@ type providerInstanceArgs struct {
 
 // The set of arguments for constructing a ProviderInstance resource.
 type ProviderInstanceArgs struct {
-	// Managed service identity (user assigned identities)
+	// [currently not in use] Managed service identity(user assigned identities)
 	Identity UserAssignedServiceIdentityPtrInput
 	// Name of the SAP monitor resource.
 	MonitorName pulumi.StringInput
 	// Name of the provider instance.
 	ProviderInstanceName pulumi.StringPtrInput
-	// Defines the provider instance errors.
+	// Defines the provider specific properties.
 	ProviderSettings pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -157,7 +158,7 @@ func (o ProviderInstanceOutput) Errors() ProviderInstancePropertiesResponseError
 	return o.ApplyT(func(v *ProviderInstance) ProviderInstancePropertiesResponseErrorsOutput { return v.Errors }).(ProviderInstancePropertiesResponseErrorsOutput)
 }
 
-// Managed service identity (user assigned identities)
+// [currently not in use] Managed service identity(user assigned identities)
 func (o ProviderInstanceOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *ProviderInstance) UserAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
 }
@@ -167,7 +168,7 @@ func (o ProviderInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProviderInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Defines the provider instance errors.
+// Defines the provider specific properties.
 func (o ProviderInstanceOutput) ProviderSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v *ProviderInstance) pulumi.AnyOutput { return v.ProviderSettings }).(pulumi.AnyOutput)
 }

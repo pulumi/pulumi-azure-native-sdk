@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,23 +68,35 @@ func NewAgentPool(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Count) {
+	if args.Count == nil {
 		args.Count = pulumi.IntPtr(1)
 	}
-	if isZero(args.Mode) {
+	if args.Mode == nil {
 		args.Mode = pulumi.StringPtr("User")
 	}
-	if isZero(args.OsType) {
+	if args.OsType == nil {
 		args.OsType = pulumi.StringPtr("Linux")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:agentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:AgentPool"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice:agentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:agentPool"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource AgentPool
-	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20220501preview:agentPool", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20220501preview:AgentPool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +108,7 @@ func NewAgentPool(ctx *pulumi.Context,
 func GetAgentPool(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AgentPoolState, opts ...pulumi.ResourceOption) (*AgentPool, error) {
 	var resource AgentPool
-	err := ctx.ReadResource("azure-native:hybridcontainerservice/v20220501preview:agentPool", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:hybridcontainerservice/v20220501preview:AgentPool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

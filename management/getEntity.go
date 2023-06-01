@@ -12,7 +12,7 @@ import (
 
 // List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
 //
-// API Version: 2020-05-01.
+// API Version: 2021-04-01.
 func GetEntity(ctx *pulumi.Context, args *GetEntityArgs, opts ...pulumi.InvokeOption) (*GetEntityResult, error) {
 	var rv GetEntityResult
 	err := ctx.Invoke("azure-native:management:getEntity", args, &rv, opts...)

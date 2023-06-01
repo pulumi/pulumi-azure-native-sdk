@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,9 +45,6 @@ func NewManagedClusterSnapshot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerservice:ManagedClusterSnapshot"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerservice/v20220302preview:ManagedClusterSnapshot"),
 		},
 		{
@@ -79,6 +76,12 @@ func NewManagedClusterSnapshot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230102preview:ManagedClusterSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:ManagedClusterSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:ManagedClusterSnapshot"),
 		},
 	})
 	opts = append(opts, aliases)

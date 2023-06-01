@@ -68,7 +68,7 @@ func (val *LookupL2NetworkResult) Defaults() *LookupL2NetworkResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HybridAksPluginType) {
+	if tmp.HybridAksPluginType == nil {
 		hybridAksPluginType_ := "SRIOV"
 		tmp.HybridAksPluginType = &hybridAksPluginType_
 	}

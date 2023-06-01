@@ -11,26 +11,6 @@ const (
 	InfrastructureEncryptionStateDisabled = InfrastructureEncryptionState("Disabled")
 )
 
-// Gets or sets the status
-type PrivateEndpointConnectionStatus string
-
-const (
-	PrivateEndpointConnectionStatusPending      = PrivateEndpointConnectionStatus("Pending")
-	PrivateEndpointConnectionStatusApproved     = PrivateEndpointConnectionStatus("Approved")
-	PrivateEndpointConnectionStatusRejected     = PrivateEndpointConnectionStatus("Rejected")
-	PrivateEndpointConnectionStatusDisconnected = PrivateEndpointConnectionStatus("Disconnected")
-)
-
-// Gets or sets provisioning state of the private endpoint connection
-type ProvisioningState string
-
-const (
-	ProvisioningStateSucceeded = ProvisioningState("Succeeded")
-	ProvisioningStateDeleting  = ProvisioningState("Deleting")
-	ProvisioningStateFailed    = ProvisioningState("Failed")
-	ProvisioningStatePending   = ProvisioningState("Pending")
-)
-
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 type ResourceIdentityType string
 

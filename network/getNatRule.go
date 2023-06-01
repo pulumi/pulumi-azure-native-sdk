@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a nat ruleGet.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupNatRule(ctx *pulumi.Context, args *LookupNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupNatRuleResult, error) {
 	var rv LookupNatRuleResult
 	err := ctx.Invoke("azure-native:network:getNatRule", args, &rv, opts...)

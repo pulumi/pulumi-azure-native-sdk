@@ -405,7 +405,7 @@ func (val *DriveStatus) Defaults() *DriveStatus {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.State) {
+	if tmp.State == nil {
 		state_ := "Specified"
 		tmp.State = &state_
 	}
@@ -457,7 +457,7 @@ func (val *DriveStatusArgs) Defaults() *DriveStatusArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.State) {
+	if tmp.State == nil {
 		tmp.State = pulumi.StringPtr("Specified")
 	}
 	return &tmp
@@ -628,7 +628,7 @@ func (val *DriveStatusResponse) Defaults() *DriveStatusResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.State) {
+	if tmp.State == nil {
 		state_ := "Specified"
 		tmp.State = &state_
 	}
@@ -746,7 +746,7 @@ func (val *EncryptionKeyDetails) Defaults() *EncryptionKeyDetails {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KekType) {
+	if tmp.KekType == nil {
 		kekType_ := "MicrosoftManaged"
 		tmp.KekType = &kekType_
 	}
@@ -780,7 +780,7 @@ func (val *EncryptionKeyDetailsArgs) Defaults() *EncryptionKeyDetailsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KekType) {
+	if tmp.KekType == nil {
 		tmp.KekType = pulumi.StringPtr("MicrosoftManaged")
 	}
 	return &tmp
@@ -948,7 +948,7 @@ func (val *EncryptionKeyDetailsResponse) Defaults() *EncryptionKeyDetailsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KekType) {
+	if tmp.KekType == nil {
 		kekType_ := "MicrosoftManaged"
 		tmp.KekType = &kekType_
 	}
@@ -1327,7 +1327,7 @@ func (val *IdentityDetailsResponse) Defaults() *IdentityDetailsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "None"
 		tmp.Type = &type_
 	}
@@ -1464,17 +1464,17 @@ func (val *JobDetails) Defaults() *JobDetails {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BackupDriveManifest) {
+	if tmp.BackupDriveManifest == nil {
 		backupDriveManifest_ := false
 		tmp.BackupDriveManifest = &backupDriveManifest_
 	}
-	if isZero(tmp.CancelRequested) {
+	if tmp.CancelRequested == nil {
 		cancelRequested_ := false
 		tmp.CancelRequested = &cancelRequested_
 	}
 	tmp.EncryptionKey = tmp.EncryptionKey.Defaults()
 
-	if isZero(tmp.State) {
+	if tmp.State == nil {
 		state_ := "Creating"
 		tmp.State = &state_
 	}
@@ -1538,14 +1538,14 @@ func (val *JobDetailsArgs) Defaults() *JobDetailsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BackupDriveManifest) {
+	if tmp.BackupDriveManifest == nil {
 		tmp.BackupDriveManifest = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.CancelRequested) {
+	if tmp.CancelRequested == nil {
 		tmp.CancelRequested = pulumi.BoolPtr(false)
 	}
 
-	if isZero(tmp.State) {
+	if tmp.State == nil {
 		tmp.State = pulumi.StringPtr("Creating")
 	}
 	return &tmp
@@ -1968,17 +1968,17 @@ func (val *JobDetailsResponse) Defaults() *JobDetailsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BackupDriveManifest) {
+	if tmp.BackupDriveManifest == nil {
 		backupDriveManifest_ := false
 		tmp.BackupDriveManifest = &backupDriveManifest_
 	}
-	if isZero(tmp.CancelRequested) {
+	if tmp.CancelRequested == nil {
 		cancelRequested_ := false
 		tmp.CancelRequested = &cancelRequested_
 	}
 	tmp.EncryptionKey = tmp.EncryptionKey.Defaults()
 
-	if isZero(tmp.State) {
+	if tmp.State == nil {
 		state_ := "Creating"
 		tmp.State = &state_
 	}

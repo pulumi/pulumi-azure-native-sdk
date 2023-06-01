@@ -20,16 +20,6 @@ const (
 	ManagedIdentityTypeUserAssigned   = ManagedIdentityType("UserAssigned")
 )
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-type PrivateLinkServiceConnectionStatus string
-
-const (
-	PrivateLinkServiceConnectionStatusPending      = PrivateLinkServiceConnectionStatus("Pending")
-	PrivateLinkServiceConnectionStatusApproved     = PrivateLinkServiceConnectionStatus("Approved")
-	PrivateLinkServiceConnectionStatusRejected     = PrivateLinkServiceConnectionStatus("Rejected")
-	PrivateLinkServiceConnectionStatusDisconnected = PrivateLinkServiceConnectionStatus("Disconnected")
-)
-
 // Gets or sets the type of auth. None or ManagedIdentity is supported now.
 type UpstreamAuthType string
 

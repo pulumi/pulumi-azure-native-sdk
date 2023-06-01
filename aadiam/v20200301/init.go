@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:aadiam/v20200301:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
-	case "azure-native:aadiam/v20200301:privateLinkForAzureAd":
+	case "azure-native:aadiam/v20200301:PrivateLinkForAzureAd":
 		r = &PrivateLinkForAzureAd{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)

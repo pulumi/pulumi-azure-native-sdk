@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -126,6 +126,9 @@ func NewIotHubResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20210702preview:IotHubResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20221115preview:IotHubResource"),
 		},
 	})
 	opts = append(opts, aliases)

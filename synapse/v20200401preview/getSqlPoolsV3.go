@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a SqlPool.
-//
-// Deprecated: Version 2020-04-01-preview will be removed in v2 of the provider.
 func LookupSqlPoolsV3(ctx *pulumi.Context, args *LookupSqlPoolsV3Args, opts ...pulumi.InvokeOption) (*LookupSqlPoolsV3Result, error) {
 	var rv LookupSqlPoolsV3Result
 	err := ctx.Invoke("azure-native:synapse/v20200401preview:getSqlPoolsV3", args, &rv, opts...)

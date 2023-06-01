@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subnet in a VirtualNetwork resource
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 type Subnet struct {
 	pulumi.CustomResourceState
 
@@ -181,6 +179,9 @@ func NewSubnet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:Subnet"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:Subnet"),
 		},
 	})
 	opts = append(opts, aliases)

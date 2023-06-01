@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A common class for general resource information
-//
-// Deprecated: Version 2016-09-01 will be removed in v2 of the provider.
 type VirtualNetworkGateway struct {
 	pulumi.CustomResourceState
 
@@ -199,6 +197,9 @@ func NewVirtualNetworkGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualNetworkGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualNetworkGateway"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,12 +62,18 @@ func NewVirtualmachineRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualmachineRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualmachineRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:virtualmachineRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualmachineRetrieve
-	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:virtualmachineRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:VirtualmachineRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -79,7 +85,7 @@ func NewVirtualmachineRetrieve(ctx *pulumi.Context,
 func GetVirtualmachineRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VirtualmachineRetrieveState, opts ...pulumi.ResourceOption) (*VirtualmachineRetrieve, error) {
 	var resource VirtualmachineRetrieve
-	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:virtualmachineRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:VirtualmachineRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

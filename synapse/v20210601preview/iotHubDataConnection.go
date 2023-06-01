@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,9 +77,6 @@ func NewIotHubDataConnection(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("IotHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:synapse:IotHubDataConnection"),
-		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210401preview:IotHubDataConnection"),
 		},

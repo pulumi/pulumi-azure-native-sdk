@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
-// API Version: 2022-05-15.
+// API Version: 2022-12-01.
+// Previous API Version: 2022-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type WorkspacePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +65,9 @@ func NewWorkspacePrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:WorkspacePrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:WorkspacePrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

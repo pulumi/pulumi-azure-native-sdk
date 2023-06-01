@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +52,12 @@ func NewWorkspaceManagerAssignment(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:WorkspaceManagerAssignment"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource WorkspaceManagerAssignment
 	err := ctx.RegisterResource("azure-native:securityinsights/v20230401preview:WorkspaceManagerAssignment", name, args, &resource, opts...)
 	if err != nil {

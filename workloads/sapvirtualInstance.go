@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the Virtual Instance for SAP solutions resource.
-// API Version: 2021-12-01-preview.
+// API Version: 2023-04-01.
+// Previous API Version: 2021-12-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SAPVirtualInstance struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +25,7 @@ type SAPVirtualInstance struct {
 	Errors SAPVirtualInstanceErrorResponseOutput `pulumi:"errors"`
 	// Defines the health of SAP Instances.
 	Health pulumi.StringOutput `pulumi:"health"`
-	// Managed service identity (user assigned identities)
+	// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 	Identity UserAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -115,7 +116,7 @@ type sapvirtualInstanceArgs struct {
 	Configuration interface{} `pulumi:"configuration"`
 	// Defines the environment type - Production/Non Production.
 	Environment string `pulumi:"environment"`
-	// Managed service identity (user assigned identities)
+	// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 	Identity *UserAssignedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
@@ -137,7 +138,7 @@ type SAPVirtualInstanceArgs struct {
 	Configuration pulumi.Input
 	// Defines the environment type - Production/Non Production.
 	Environment pulumi.StringInput
-	// Managed service identity (user assigned identities)
+	// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 	Identity UserAssignedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
@@ -210,7 +211,7 @@ func (o SAPVirtualInstanceOutput) Health() pulumi.StringOutput {
 	return o.ApplyT(func(v *SAPVirtualInstance) pulumi.StringOutput { return v.Health }).(pulumi.StringOutput)
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 func (o SAPVirtualInstanceOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *SAPVirtualInstance) UserAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a managed instance.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
 func LookupManagedInstance(ctx *pulumi.Context, args *LookupManagedInstanceArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceResult, error) {
 	var rv LookupManagedInstanceResult
 	err := ctx.Invoke("azure-native:sql:getManagedInstance", args, &rv, opts...)
@@ -38,6 +38,8 @@ type LookupManagedInstanceResult struct {
 	Administrators *ManagedInstanceExternalAdministratorResponse `pulumi:"administrators"`
 	// Collation of the managed instance.
 	Collation *string `pulumi:"collation"`
+	// The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
+	CurrentBackupStorageRedundancy string `pulumi:"currentBackupStorageRedundancy"`
 	// The Dns Zone that the managed instance is in.
 	DnsZone string `pulumi:"dnsZone"`
 	// The fully qualified domain name of the managed instance.
@@ -69,13 +71,15 @@ type LookupManagedInstanceResult struct {
 	ProxyOverride *string `pulumi:"proxyOverride"`
 	// Whether or not the public data endpoint is enabled.
 	PublicDataEndpointEnabled *bool `pulumi:"publicDataEndpointEnabled"`
-	// Managed instance SKU. Allowed values for sku.name: GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5
+	// The storage account type to be used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
+	RequestedBackupStorageRedundancy *string `pulumi:"requestedBackupStorageRedundancy"`
+	// The managed instance's service principal.
+	ServicePrincipal *ServicePrincipalResponse `pulumi:"servicePrincipal"`
+	// Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
 	Sku *SkuResponse `pulumi:"sku"`
 	// The state of the managed instance.
 	State string `pulumi:"state"`
-	// The storage account type used to store backups for this instance. The options are LRS (LocallyRedundantStorage), ZRS (ZoneRedundantStorage) and GRS (GeoRedundantStorage)
-	StorageAccountType *string `pulumi:"storageAccountType"`
-	// Storage size in GB. Minimum value: 32. Maximum value: 8192. Increments of 32 GB allowed only.
+	// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageSizeInGB *int `pulumi:"storageSizeInGB"`
 	// Subnet resource ID for the managed instance.
 	SubnetId *string `pulumi:"subnetId"`
@@ -152,6 +156,11 @@ func (o LookupManagedInstanceResultOutput) Administrators() ManagedInstanceExter
 // Collation of the managed instance.
 func (o LookupManagedInstanceResultOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.Collation }).(pulumi.StringPtrOutput)
+}
+
+// The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
+func (o LookupManagedInstanceResultOutput) CurrentBackupStorageRedundancy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.CurrentBackupStorageRedundancy }).(pulumi.StringOutput)
 }
 
 // The Dns Zone that the managed instance is in.
@@ -235,7 +244,17 @@ func (o LookupManagedInstanceResultOutput) PublicDataEndpointEnabled() pulumi.Bo
 	return o.ApplyT(func(v LookupManagedInstanceResult) *bool { return v.PublicDataEndpointEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Managed instance SKU. Allowed values for sku.name: GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5
+// The storage account type to be used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
+func (o LookupManagedInstanceResultOutput) RequestedBackupStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.RequestedBackupStorageRedundancy }).(pulumi.StringPtrOutput)
+}
+
+// The managed instance's service principal.
+func (o LookupManagedInstanceResultOutput) ServicePrincipal() ServicePrincipalResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedInstanceResult) *ServicePrincipalResponse { return v.ServicePrincipal }).(ServicePrincipalResponsePtrOutput)
+}
+
+// Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
 func (o LookupManagedInstanceResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
@@ -245,12 +264,7 @@ func (o LookupManagedInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The storage account type used to store backups for this instance. The options are LRS (LocallyRedundantStorage), ZRS (ZoneRedundantStorage) and GRS (GeoRedundantStorage)
-func (o LookupManagedInstanceResultOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-// Storage size in GB. Minimum value: 32. Maximum value: 8192. Increments of 32 GB allowed only.
+// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
 func (o LookupManagedInstanceResultOutput) StorageSizeInGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *int { return v.StorageSizeInGB }).(pulumi.IntPtrOutput)
 }

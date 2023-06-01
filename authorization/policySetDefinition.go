@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The policy set definition.
-// API Version: 2020-09-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PolicySetDefinition struct {
 	pulumi.CustomResourceState
 
@@ -32,6 +33,8 @@ type PolicySetDefinition struct {
 	PolicyDefinitions PolicyDefinitionReferenceResponseArrayOutput `pulumi:"policyDefinitions"`
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType pulumi.StringPtrOutput `pulumi:"policyType"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policySetDefinitions).
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -221,6 +224,11 @@ func (o PolicySetDefinitionOutput) PolicyDefinitions() PolicyDefinitionReference
 // The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 func (o PolicySetDefinitionOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicySetDefinition) pulumi.StringPtrOutput { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+// The system metadata relating to this resource.
+func (o PolicySetDefinitionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PolicySetDefinition) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/policySetDefinitions).

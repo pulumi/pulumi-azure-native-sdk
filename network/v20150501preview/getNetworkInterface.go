@@ -11,8 +11,6 @@ import (
 )
 
 // The Get network interface operation retrieves information about the specified network interface.
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 func LookupNetworkInterface(ctx *pulumi.Context, args *LookupNetworkInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceResult, error) {
 	var rv LookupNetworkInterfaceResult
 	err := ctx.Invoke("azure-native:network/v20150501preview:getNetworkInterface", args, &rv, opts...)

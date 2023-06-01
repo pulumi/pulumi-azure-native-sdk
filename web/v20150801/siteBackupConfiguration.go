@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a backup which will be performed
-//
-// Deprecated: Version 2015-08-01 will be removed in v2 of the provider.
 type SiteBackupConfiguration struct {
 	pulumi.CustomResourceState
 

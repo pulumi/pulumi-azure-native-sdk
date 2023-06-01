@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Data Box Edge/Gateway device.
-//
-// Deprecated: Version 2020-05-01-preview will be removed in v2 of the provider.
 type Device struct {
 	pulumi.CustomResourceState
 

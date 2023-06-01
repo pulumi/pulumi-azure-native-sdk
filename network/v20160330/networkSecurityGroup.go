@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NetworkSecurityGroup resource
-//
-// Deprecated: Version 2016-03-30 will be removed in v2 of the provider.
 type NetworkSecurityGroup struct {
 	pulumi.CustomResourceState
 
@@ -184,6 +182,9 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkSecurityGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkSecurityGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkSecurityGroup
@@ -219,13 +220,13 @@ func (NetworkSecurityGroupState) ElementType() reflect.Type {
 
 type networkSecurityGroupArgs struct {
 	// Gets or sets Default security rules of network security group
-	DefaultSecurityRules []SecurityRuleType `pulumi:"defaultSecurityRules"`
+	DefaultSecurityRules []SecurityRule `pulumi:"defaultSecurityRules"`
 	// Resource Id
 	Id *string `pulumi:"id"`
 	// Resource location
 	Location *string `pulumi:"location"`
 	// Gets collection of references to Network Interfaces
-	NetworkInterfaces []NetworkInterfaceType `pulumi:"networkInterfaces"`
+	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
 	// The name of the network security group.
 	NetworkSecurityGroupName *string `pulumi:"networkSecurityGroupName"`
 	// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
@@ -235,7 +236,7 @@ type networkSecurityGroupArgs struct {
 	// Gets or sets resource GUID property of the network security group resource
 	ResourceGuid *string `pulumi:"resourceGuid"`
 	// Gets or sets Security rules of network security group
-	SecurityRules []SecurityRuleType `pulumi:"securityRules"`
+	SecurityRules []SecurityRule `pulumi:"securityRules"`
 	// Gets collection of references to subnets
 	Subnets []SubnetType `pulumi:"subnets"`
 	// Resource tags
@@ -245,13 +246,13 @@ type networkSecurityGroupArgs struct {
 // The set of arguments for constructing a NetworkSecurityGroup resource.
 type NetworkSecurityGroupArgs struct {
 	// Gets or sets Default security rules of network security group
-	DefaultSecurityRules SecurityRuleTypeArrayInput
+	DefaultSecurityRules SecurityRuleArrayInput
 	// Resource Id
 	Id pulumi.StringPtrInput
 	// Resource location
 	Location pulumi.StringPtrInput
 	// Gets collection of references to Network Interfaces
-	NetworkInterfaces NetworkInterfaceTypeArrayInput
+	NetworkInterfaces NetworkInterfaceArrayInput
 	// The name of the network security group.
 	NetworkSecurityGroupName pulumi.StringPtrInput
 	// Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
@@ -261,7 +262,7 @@ type NetworkSecurityGroupArgs struct {
 	// Gets or sets resource GUID property of the network security group resource
 	ResourceGuid pulumi.StringPtrInput
 	// Gets or sets Security rules of network security group
-	SecurityRules SecurityRuleTypeArrayInput
+	SecurityRules SecurityRuleArrayInput
 	// Gets collection of references to subnets
 	Subnets SubnetTypeArrayInput
 	// Resource tags

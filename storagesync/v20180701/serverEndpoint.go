@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Server Endpoint object.
-//
-// Deprecated: Version 2018-07-01 will be removed in v2 of the provider.
 type ServerEndpoint struct {
 	pulumi.CustomResourceState
 

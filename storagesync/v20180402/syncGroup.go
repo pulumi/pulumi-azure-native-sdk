@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Sync Group object.
-//
-// Deprecated: Version 2018-04-02 will be removed in v2 of the provider.
 type SyncGroup struct {
 	pulumi.CustomResourceState
 

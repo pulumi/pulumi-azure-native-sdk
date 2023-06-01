@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,6 +112,9 @@ func NewMachineExtension(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227:MachineExtension"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:MachineExtension"),
 		},
 	})
 	opts = append(opts, aliases)

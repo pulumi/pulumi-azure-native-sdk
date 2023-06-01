@@ -11,7 +11,7 @@ import (
 )
 
 // Implements host GET method.
-// API Version: 2020-10-01-preview.
+// API Version: 2022-07-15-preview.
 func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.InvokeOption) (*LookupHostResult, error) {
 	var rv LookupHostResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getHost", args, &rv, opts...)
@@ -32,6 +32,8 @@ type LookupHostArgs struct {
 type LookupHostResult struct {
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
+	// Gets or sets the datastore ARM ids.
+	DatastoreIds []string `pulumi:"datastoreIds"`
 	// Gets or sets the extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Gets or sets the Id.
@@ -48,6 +50,8 @@ type LookupHostResult struct {
 	MoRefId *string `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name string `pulumi:"name"`
+	// Gets or sets the network ARM ids.
+	NetworkIds []string `pulumi:"networkIds"`
 	// Gets or sets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
@@ -108,6 +112,11 @@ func (o LookupHostResultOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
 }
 
+// Gets or sets the datastore ARM ids.
+func (o LookupHostResultOutput) DatastoreIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupHostResult) []string { return v.DatastoreIds }).(pulumi.StringArrayOutput)
+}
+
 // Gets or sets the extended location.
 func (o LookupHostResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupHostResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
@@ -146,6 +155,11 @@ func (o LookupHostResultOutput) MoRefId() pulumi.StringPtrOutput {
 // Gets or sets the name.
 func (o LookupHostResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Gets or sets the network ARM ids.
+func (o LookupHostResultOutput) NetworkIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupHostResult) []string { return v.NetworkIds }).(pulumi.StringArrayOutput)
 }
 
 // Gets or sets the provisioning state.

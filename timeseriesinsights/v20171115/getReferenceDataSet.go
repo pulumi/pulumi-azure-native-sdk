@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the reference data set with the specified name in the specified environment.
-//
-// Deprecated: Version 2017-11-15 will be removed in v2 of the provider.
 func LookupReferenceDataSet(ctx *pulumi.Context, args *LookupReferenceDataSetArgs, opts ...pulumi.InvokeOption) (*LookupReferenceDataSetResult, error) {
 	var rv LookupReferenceDataSetResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20171115:getReferenceDataSet", args, &rv, opts...)

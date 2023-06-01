@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-// API Version: 2020-09-01.
+// API Version: 2021-08-01.
 func LookupSynapseWorkspaceSqlPoolTableDataSetMapping(ctx *pulumi.Context, args *LookupSynapseWorkspaceSqlPoolTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupSynapseWorkspaceSqlPoolTableDataSetMappingResult, error) {
 	var rv LookupSynapseWorkspaceSqlPoolTableDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare:getSynapseWorkspaceSqlPoolTableDataSetMapping", args, &rv, opts...)

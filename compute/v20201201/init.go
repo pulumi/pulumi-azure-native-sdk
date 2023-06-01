@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,22 +43,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Snapshot{}
 	case "azure-native:compute/v20201201:SshPublicKey":
 		r = &SshPublicKey{}
-	case "azure-native:compute/v20201201:VirtualMachine":
-		r = &VirtualMachine{}
-	case "azure-native:compute/v20201201:VirtualMachineExtension":
-		r = &VirtualMachineExtension{}
-	case "azure-native:compute/v20201201:VirtualMachineRunCommandByVirtualMachine":
-		r = &VirtualMachineRunCommandByVirtualMachine{}
-	case "azure-native:compute/v20201201:VirtualMachineScaleSet":
-		r = &VirtualMachineScaleSet{}
-	case "azure-native:compute/v20201201:VirtualMachineScaleSetExtension":
-		r = &VirtualMachineScaleSetExtension{}
-	case "azure-native:compute/v20201201:VirtualMachineScaleSetVM":
-		r = &VirtualMachineScaleSetVM{}
-	case "azure-native:compute/v20201201:VirtualMachineScaleSetVMExtension":
-		r = &VirtualMachineScaleSetVMExtension{}
-	case "azure-native:compute/v20201201:VirtualMachineScaleSetVMRunCommand":
-		r = &VirtualMachineScaleSetVMRunCommand{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

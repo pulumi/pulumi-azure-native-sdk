@@ -11,7 +11,7 @@ import (
 )
 
 // Get a TestLine
-// API Version: 2022-12-01-preview.
+// API Version: 2023-01-31.
 func LookupTestLine(ctx *pulumi.Context, args *LookupTestLineArgs, opts ...pulumi.InvokeOption) (*LookupTestLineResult, error) {
 	var rv LookupTestLineResult
 	err := ctx.Invoke("azure-native:voiceservices:getTestLine", args, &rv, opts...)

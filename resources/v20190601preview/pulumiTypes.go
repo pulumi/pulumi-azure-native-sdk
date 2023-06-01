@@ -254,72 +254,10 @@ func (o TemplateSpecTemplateArtifactResponseArrayOutput) Index(i pulumi.IntInput
 	}).(TemplateSpecTemplateArtifactResponseOutput)
 }
 
-// High-level information about a Template Spec version.
-type TemplateSpecVersionInfoResponse struct {
-	// Template Spec version description.
-	Description string `pulumi:"description"`
-	// The timestamp of when the version was created.
-	TimeCreated string `pulumi:"timeCreated"`
-	// The timestamp of when the version was last modified.
-	TimeModified string `pulumi:"timeModified"`
-}
-
-// High-level information about a Template Spec version.
-type TemplateSpecVersionInfoResponseOutput struct{ *pulumi.OutputState }
-
-func (TemplateSpecVersionInfoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateSpecVersionInfoResponse)(nil)).Elem()
-}
-
-func (o TemplateSpecVersionInfoResponseOutput) ToTemplateSpecVersionInfoResponseOutput() TemplateSpecVersionInfoResponseOutput {
-	return o
-}
-
-func (o TemplateSpecVersionInfoResponseOutput) ToTemplateSpecVersionInfoResponseOutputWithContext(ctx context.Context) TemplateSpecVersionInfoResponseOutput {
-	return o
-}
-
-// Template Spec version description.
-func (o TemplateSpecVersionInfoResponseOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplateSpecVersionInfoResponse) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The timestamp of when the version was created.
-func (o TemplateSpecVersionInfoResponseOutput) TimeCreated() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplateSpecVersionInfoResponse) string { return v.TimeCreated }).(pulumi.StringOutput)
-}
-
-// The timestamp of when the version was last modified.
-func (o TemplateSpecVersionInfoResponseOutput) TimeModified() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplateSpecVersionInfoResponse) string { return v.TimeModified }).(pulumi.StringOutput)
-}
-
-type TemplateSpecVersionInfoResponseMapOutput struct{ *pulumi.OutputState }
-
-func (TemplateSpecVersionInfoResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TemplateSpecVersionInfoResponse)(nil)).Elem()
-}
-
-func (o TemplateSpecVersionInfoResponseMapOutput) ToTemplateSpecVersionInfoResponseMapOutput() TemplateSpecVersionInfoResponseMapOutput {
-	return o
-}
-
-func (o TemplateSpecVersionInfoResponseMapOutput) ToTemplateSpecVersionInfoResponseMapOutputWithContext(ctx context.Context) TemplateSpecVersionInfoResponseMapOutput {
-	return o
-}
-
-func (o TemplateSpecVersionInfoResponseMapOutput) MapIndex(k pulumi.StringInput) TemplateSpecVersionInfoResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TemplateSpecVersionInfoResponse {
-		return vs[0].(map[string]TemplateSpecVersionInfoResponse)[vs[1].(string)]
-	}).(TemplateSpecVersionInfoResponseOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TemplateSpecTemplateArtifactOutput{})
 	pulumi.RegisterOutputType(TemplateSpecTemplateArtifactArrayOutput{})
 	pulumi.RegisterOutputType(TemplateSpecTemplateArtifactResponseOutput{})
 	pulumi.RegisterOutputType(TemplateSpecTemplateArtifactResponseArrayOutput{})
-	pulumi.RegisterOutputType(TemplateSpecVersionInfoResponseOutput{})
-	pulumi.RegisterOutputType(TemplateSpecVersionInfoResponseMapOutput{})
 }

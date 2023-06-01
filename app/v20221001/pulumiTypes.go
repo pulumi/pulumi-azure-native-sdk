@@ -4496,7 +4496,7 @@ func (val *Configuration) Defaults() *Configuration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveRevisionsMode) {
+	if tmp.ActiveRevisionsMode == nil {
 		activeRevisionsMode_ := "Single"
 		tmp.ActiveRevisionsMode = &activeRevisionsMode_
 	}
@@ -4541,7 +4541,7 @@ func (val *ConfigurationArgs) Defaults() *ConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveRevisionsMode) {
+	if tmp.ActiveRevisionsMode == nil {
 		tmp.ActiveRevisionsMode = pulumi.StringPtr("Single")
 	}
 
@@ -4764,7 +4764,7 @@ func (val *ConfigurationResponse) Defaults() *ConfigurationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ActiveRevisionsMode) {
+	if tmp.ActiveRevisionsMode == nil {
 		activeRevisionsMode_ := "Single"
 		tmp.ActiveRevisionsMode = &activeRevisionsMode_
 	}
@@ -8382,11 +8382,11 @@ func (val *Dapr) Defaults() *Dapr {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppProtocol) {
+	if tmp.AppProtocol == nil {
 		appProtocol_ := "http"
 		tmp.AppProtocol = &appProtocol_
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}
@@ -8430,10 +8430,10 @@ func (val *DaprArgs) Defaults() *DaprArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppProtocol) {
+	if tmp.AppProtocol == nil {
 		tmp.AppProtocol = pulumi.StringPtr("http")
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		tmp.Enabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -8864,11 +8864,11 @@ func (val *DaprResponse) Defaults() *DaprResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppProtocol) {
+	if tmp.AppProtocol == nil {
 		appProtocol_ := "http"
 		tmp.AppProtocol = &appProtocol_
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}
@@ -13036,15 +13036,15 @@ func (val *Ingress) Defaults() *Ingress {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllowInsecure) {
+	if tmp.AllowInsecure == nil {
 		allowInsecure_ := false
 		tmp.AllowInsecure = &allowInsecure_
 	}
-	if isZero(tmp.External) {
+	if tmp.External == nil {
 		external_ := false
 		tmp.External = &external_
 	}
-	if isZero(tmp.Transport) {
+	if tmp.Transport == nil {
 		transport_ := "auto"
 		tmp.Transport = &transport_
 	}
@@ -13092,13 +13092,13 @@ func (val *IngressArgs) Defaults() *IngressArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllowInsecure) {
+	if tmp.AllowInsecure == nil {
 		tmp.AllowInsecure = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.External) {
+	if tmp.External == nil {
 		tmp.External = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Transport) {
+	if tmp.Transport == nil {
 		tmp.Transport = pulumi.StringPtr("auto")
 	}
 	return &tmp
@@ -13387,15 +13387,15 @@ func (val *IngressResponse) Defaults() *IngressResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllowInsecure) {
+	if tmp.AllowInsecure == nil {
 		allowInsecure_ := false
 		tmp.AllowInsecure = &allowInsecure_
 	}
-	if isZero(tmp.External) {
+	if tmp.External == nil {
 		external_ := false
 		tmp.External = &external_
 	}
-	if isZero(tmp.Transport) {
+	if tmp.Transport == nil {
 		transport_ := "auto"
 		tmp.Transport = &transport_
 	}
@@ -15662,7 +15662,7 @@ type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
@@ -15681,7 +15681,7 @@ type ManagedServiceIdentityArgs struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -15768,8 +15768,8 @@ func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -15807,13 +15807,13 @@ func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -17994,7 +17994,7 @@ func (val *Scale) Defaults() *Scale {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		maxReplicas_ := 10
 		tmp.MaxReplicas = &maxReplicas_
 	}
@@ -18028,7 +18028,7 @@ func (val *ScaleArgs) Defaults() *ScaleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		tmp.MaxReplicas = pulumi.IntPtr(10)
 	}
 	return &tmp
@@ -18196,7 +18196,7 @@ func (val *ScaleResponse) Defaults() *ScaleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxReplicas) {
+	if tmp.MaxReplicas == nil {
 		maxReplicas_ := 10
 		tmp.MaxReplicas = &maxReplicas_
 	}
@@ -19514,7 +19514,7 @@ func (val *TrafficWeight) Defaults() *TrafficWeight {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LatestRevision) {
+	if tmp.LatestRevision == nil {
 		latestRevision_ := false
 		tmp.LatestRevision = &latestRevision_
 	}
@@ -19550,7 +19550,7 @@ func (val *TrafficWeightArgs) Defaults() *TrafficWeightArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LatestRevision) {
+	if tmp.LatestRevision == nil {
 		tmp.LatestRevision = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -19665,7 +19665,7 @@ func (val *TrafficWeightResponse) Defaults() *TrafficWeightResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LatestRevision) {
+	if tmp.LatestRevision == nil {
 		latestRevision_ := false
 		tmp.LatestRevision = &latestRevision_
 	}

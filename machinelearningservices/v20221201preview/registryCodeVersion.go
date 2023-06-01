@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,7 +47,16 @@ func NewRegistryCodeVersion(ctx *pulumi.Context,
 	args.CodeVersionProperties = args.CodeVersionProperties.ToCodeVersionTypeOutput().ApplyT(func(v CodeVersionType) CodeVersionType { return *v.Defaults() }).(CodeVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryCodeVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryCodeVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryCodeVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:RegistryCodeVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:RegistryCodeVersion"),

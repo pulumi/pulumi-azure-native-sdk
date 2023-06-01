@@ -11,8 +11,6 @@ import (
 )
 
 // Returns a resource belonging to a resource group.
-//
-// Deprecated: Version 2015-11-01 will be removed in v2 of the provider.
 func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulumi.InvokeOption) (*LookupResourceResult, error) {
 	var rv LookupResourceResult
 	err := ctx.Invoke("azure-native:resources/v20151101:getResource", args, &rv, opts...)

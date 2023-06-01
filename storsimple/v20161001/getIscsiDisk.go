@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the properties of the specified iSCSI disk name.
-//
-// Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupIscsiDisk(ctx *pulumi.Context, args *LookupIscsiDiskArgs, opts ...pulumi.InvokeOption) (*LookupIscsiDiskResult, error) {
 	var rv LookupIscsiDiskResult
 	err := ctx.Invoke("azure-native:storsimple/v20161001:getIscsiDisk", args, &rv, opts...)

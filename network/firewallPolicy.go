@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // FirewallPolicy Resource.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type FirewallPolicy struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type FirewallPolicy struct {
 	DnsSettings DnsSettingsResponsePtrOutput `pulumi:"dnsSettings"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Explicit Proxy Settings definition.
+	ExplicitProxy ExplicitProxyResponsePtrOutput `pulumi:"explicitProxy"`
 	// List of references to Azure Firewalls that this Firewall Policy is associated with.
 	Firewalls SubResourceResponseArrayOutput `pulumi:"firewalls"`
 	// The identity of the firewall policy.
@@ -44,6 +47,8 @@ type FirewallPolicy struct {
 	Sku FirewallPolicySkuResponsePtrOutput `pulumi:"sku"`
 	// The private IP addresses/IP ranges to which traffic will not be SNAT.
 	Snat FirewallPolicySNATResponsePtrOutput `pulumi:"snat"`
+	// SQL Settings definition.
+	Sql FirewallPolicySQLResponsePtrOutput `pulumi:"sql"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The operation mode for Threat Intelligence.
@@ -130,6 +135,9 @@ func NewFirewallPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:FirewallPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:FirewallPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FirewallPolicy
@@ -168,6 +176,8 @@ type firewallPolicyArgs struct {
 	BasePolicy *SubResource `pulumi:"basePolicy"`
 	// DNS Proxy Settings definition.
 	DnsSettings *DnsSettings `pulumi:"dnsSettings"`
+	// Explicit Proxy Settings definition.
+	ExplicitProxy *ExplicitProxy `pulumi:"explicitProxy"`
 	// The name of the Firewall Policy.
 	FirewallPolicyName *string `pulumi:"firewallPolicyName"`
 	// Resource ID.
@@ -186,6 +196,8 @@ type firewallPolicyArgs struct {
 	Sku *FirewallPolicySku `pulumi:"sku"`
 	// The private IP addresses/IP ranges to which traffic will not be SNAT.
 	Snat *FirewallPolicySNAT `pulumi:"snat"`
+	// SQL Settings definition.
+	Sql *FirewallPolicySQL `pulumi:"sql"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The operation mode for Threat Intelligence.
@@ -202,6 +214,8 @@ type FirewallPolicyArgs struct {
 	BasePolicy SubResourcePtrInput
 	// DNS Proxy Settings definition.
 	DnsSettings DnsSettingsPtrInput
+	// Explicit Proxy Settings definition.
+	ExplicitProxy ExplicitProxyPtrInput
 	// The name of the Firewall Policy.
 	FirewallPolicyName pulumi.StringPtrInput
 	// Resource ID.
@@ -220,6 +234,8 @@ type FirewallPolicyArgs struct {
 	Sku FirewallPolicySkuPtrInput
 	// The private IP addresses/IP ranges to which traffic will not be SNAT.
 	Snat FirewallPolicySNATPtrInput
+	// SQL Settings definition.
+	Sql FirewallPolicySQLPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The operation mode for Threat Intelligence.
@@ -287,6 +303,11 @@ func (o FirewallPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Explicit Proxy Settings definition.
+func (o FirewallPolicyOutput) ExplicitProxy() ExplicitProxyResponsePtrOutput {
+	return o.ApplyT(func(v *FirewallPolicy) ExplicitProxyResponsePtrOutput { return v.ExplicitProxy }).(ExplicitProxyResponsePtrOutput)
+}
+
 // List of references to Azure Firewalls that this Firewall Policy is associated with.
 func (o FirewallPolicyOutput) Firewalls() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicy) SubResourceResponseArrayOutput { return v.Firewalls }).(SubResourceResponseArrayOutput)
@@ -335,6 +356,11 @@ func (o FirewallPolicyOutput) Sku() FirewallPolicySkuResponsePtrOutput {
 // The private IP addresses/IP ranges to which traffic will not be SNAT.
 func (o FirewallPolicyOutput) Snat() FirewallPolicySNATResponsePtrOutput {
 	return o.ApplyT(func(v *FirewallPolicy) FirewallPolicySNATResponsePtrOutput { return v.Snat }).(FirewallPolicySNATResponsePtrOutput)
+}
+
+// SQL Settings definition.
+func (o FirewallPolicyOutput) Sql() FirewallPolicySQLResponsePtrOutput {
+	return o.ApplyT(func(v *FirewallPolicy) FirewallPolicySQLResponsePtrOutput { return v.Sql }).(FirewallPolicySQLResponsePtrOutput)
 }
 
 // Resource tags.

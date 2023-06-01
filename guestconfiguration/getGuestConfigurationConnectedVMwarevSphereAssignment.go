@@ -11,7 +11,7 @@ import (
 )
 
 // Get information about a guest configuration assignment
-// API Version: 2020-06-25.
+// API Version: 2022-01-25.
 func LookupGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Context, args *LookupGuestConfigurationConnectedVMwarevSphereAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult, error) {
 	var rv LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult
 	err := ctx.Invoke("azure-native:guestconfiguration:getGuestConfigurationConnectedVMwarevSphereAssignment", args, &rv, opts...)
@@ -40,6 +40,8 @@ type LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult struct {
 	Name *string `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -116,6 +118,13 @@ func (o LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput) Pr
 	return o.ApplyT(func(v LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult) GuestConfigurationAssignmentPropertiesResponse {
 		return v.Properties
 	}).(GuestConfigurationAssignmentPropertiesResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult) SystemDataResponse {
+		return v.SystemData
+	}).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

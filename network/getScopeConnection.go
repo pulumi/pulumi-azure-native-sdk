@@ -11,7 +11,7 @@ import (
 )
 
 // Get specified scope connection created by this Network Manager.
-// API Version: 2022-02-01-preview.
+// API Version: 2022-09-01.
 func LookupScopeConnection(ctx *pulumi.Context, args *LookupScopeConnectionArgs, opts ...pulumi.InvokeOption) (*LookupScopeConnectionResult, error) {
 	var rv LookupScopeConnectionResult
 	err := ctx.Invoke("azure-native:network:getScopeConnection", args, &rv, opts...)

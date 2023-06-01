@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,12 +50,18 @@ func NewVirtualnetworkRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualnetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualnetworkRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:virtualnetworkRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualnetworkRetrieve
-	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:virtualnetworkRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:VirtualnetworkRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +73,7 @@ func NewVirtualnetworkRetrieve(ctx *pulumi.Context,
 func GetVirtualnetworkRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VirtualnetworkRetrieveState, opts ...pulumi.ResourceOption) (*VirtualnetworkRetrieve, error) {
 	var resource VirtualnetworkRetrieve
-	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:virtualnetworkRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:VirtualnetworkRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

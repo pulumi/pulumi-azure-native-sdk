@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +65,9 @@ func NewScopeConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ScopeConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ScopeConnection"),
 		},
 	})
 	opts = append(opts, aliases)

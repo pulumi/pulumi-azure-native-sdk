@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,20 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:resources/v20191001:Deployment":
-		r = &Deployment{}
-	case "azure-native:resources/v20191001:DeploymentAtManagementGroupScope":
-		r = &DeploymentAtManagementGroupScope{}
-	case "azure-native:resources/v20191001:DeploymentAtScope":
-		r = &DeploymentAtScope{}
-	case "azure-native:resources/v20191001:DeploymentAtSubscriptionScope":
-		r = &DeploymentAtSubscriptionScope{}
-	case "azure-native:resources/v20191001:DeploymentAtTenantScope":
-		r = &DeploymentAtTenantScope{}
-	case "azure-native:resources/v20191001:Resource":
-		r = &Resource{}
-	case "azure-native:resources/v20191001:ResourceGroup":
-		r = &ResourceGroup{}
 	case "azure-native:resources/v20191001:TagAtScope":
 		r = &TagAtScope{}
 	default:

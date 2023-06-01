@@ -651,7 +651,7 @@ func (val *AKSProperties) Defaults() *AKSProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClusterPurpose) {
+	if tmp.ClusterPurpose == nil {
 		clusterPurpose_ := "FastProd"
 		tmp.ClusterPurpose = &clusterPurpose_
 	}
@@ -720,7 +720,7 @@ func (val *AKSResponseProperties) Defaults() *AKSResponseProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClusterPurpose) {
+	if tmp.ClusterPurpose == nil {
 		clusterPurpose_ := "FastProd"
 		tmp.ClusterPurpose = &clusterPurpose_
 	}
@@ -1631,15 +1631,15 @@ func (val *AmlComputeProperties) Defaults() *AmlComputeProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -1722,15 +1722,15 @@ func (val *AmlComputeResponseProperties) Defaults() *AmlComputeResponsePropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -1841,11 +1841,11 @@ func (val *ComputeInstanceProperties) Defaults() *ComputeInstanceProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
+	if tmp.ApplicationSharingPolicy == nil {
 		applicationSharingPolicy_ := "Shared"
 		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
 	}
-	if isZero(tmp.ComputeInstanceAuthorizationType) {
+	if tmp.ComputeInstanceAuthorizationType == nil {
 		computeInstanceAuthorizationType_ := "personal"
 		tmp.ComputeInstanceAuthorizationType = &computeInstanceAuthorizationType_
 	}
@@ -1922,11 +1922,11 @@ func (val *ComputeInstanceResponseProperties) Defaults() *ComputeInstanceRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
+	if tmp.ApplicationSharingPolicy == nil {
 		applicationSharingPolicy_ := "Shared"
 		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
 	}
-	if isZero(tmp.ComputeInstanceAuthorizationType) {
+	if tmp.ComputeInstanceAuthorizationType == nil {
 		computeInstanceAuthorizationType_ := "personal"
 		tmp.ComputeInstanceAuthorizationType = &computeInstanceAuthorizationType_
 	}
@@ -1949,7 +1949,7 @@ func (val *ComputeInstanceSshSettings) Defaults() *ComputeInstanceSshSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
+	if tmp.SshPublicAccess == nil {
 		sshPublicAccess_ := "Disabled"
 		tmp.SshPublicAccess = &sshPublicAccess_
 	}
@@ -1974,7 +1974,7 @@ func (val *ComputeInstanceSshSettingsResponse) Defaults() *ComputeInstanceSshSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
+	if tmp.SshPublicAccess == nil {
 		sshPublicAccess_ := "Disabled"
 		tmp.SshPublicAccess = &sshPublicAccess_
 	}
@@ -3888,7 +3888,7 @@ type Identity struct {
 	// The identity type.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The user assigned identities associated with the resource.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -3907,7 +3907,7 @@ type IdentityArgs struct {
 	// The identity type.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The user assigned identities associated with the resource.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -3994,8 +3994,8 @@ func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The user assigned identities associated with the resource.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -4033,13 +4033,13 @@ func (o IdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The user assigned identities associated with the resource.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity that will be used to access key vault for encryption at rest
@@ -6943,7 +6943,7 @@ func (val *ScaleSettings) Defaults() *ScaleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}
@@ -6966,7 +6966,7 @@ func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}

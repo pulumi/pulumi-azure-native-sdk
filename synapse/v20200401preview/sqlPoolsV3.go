@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A sql pool resource.
-//
-// Deprecated: Version 2020-04-01-preview will be removed in v2 of the provider.
 type SqlPoolsV3 struct {
 	pulumi.CustomResourceState
 

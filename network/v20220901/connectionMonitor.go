@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,10 +66,10 @@ func NewConnectionMonitor(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AutoStart) {
+	if args.AutoStart == nil {
 		args.AutoStart = pulumi.BoolPtr(true)
 	}
-	if isZero(args.MonitoringIntervalInSeconds) {
+	if args.MonitoringIntervalInSeconds == nil {
 		args.MonitoringIntervalInSeconds = pulumi.IntPtr(60)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -174,6 +174,9 @@ func NewConnectionMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:ConnectionMonitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ConnectionMonitor"),
 		},
 	})
 	opts = append(opts, aliases)

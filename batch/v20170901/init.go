@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,12 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Application{}
 	case "azure-native:batch/v20170901:ApplicationPackage":
 		r = &ApplicationPackage{}
-	case "azure-native:batch/v20170901:BatchAccount":
-		r = &BatchAccount{}
-	case "azure-native:batch/v20170901:Certificate":
-		r = &Certificate{}
-	case "azure-native:batch/v20170901:Pool":
-		r = &Pool{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

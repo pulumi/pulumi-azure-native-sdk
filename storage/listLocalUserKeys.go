@@ -11,7 +11,7 @@ import (
 )
 
 // List SSH authorized keys and shared key of the local user.
-// API Version: 2021-08-01.
+// API Version: 2022-09-01.
 func ListLocalUserKeys(ctx *pulumi.Context, args *ListLocalUserKeysArgs, opts ...pulumi.InvokeOption) (*ListLocalUserKeysResult, error) {
 	var rv ListLocalUserKeysResult
 	err := ctx.Invoke("azure-native:storage:listLocalUserKeys", args, &rv, opts...)

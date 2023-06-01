@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a Redis cache (resource description).
-//
-// Deprecated: Version 2017-02-01 will be removed in v2 of the provider.
 func LookupRedis(ctx *pulumi.Context, args *LookupRedisArgs, opts ...pulumi.InvokeOption) (*LookupRedisResult, error) {
 	var rv LookupRedisResult
 	err := ctx.Invoke("azure-native:cache/v20170201:getRedis", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,14 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:storage/v20181101:BlobContainer":
-		r = &BlobContainer{}
-	case "azure-native:storage/v20181101:BlobContainerImmutabilityPolicy":
-		r = &BlobContainerImmutabilityPolicy{}
-	case "azure-native:storage/v20181101:BlobServiceProperties":
-		r = &BlobServiceProperties{}
-	case "azure-native:storage/v20181101:ManagementPolicy":
-		r = &ManagementPolicy{}
 	case "azure-native:storage/v20181101:StorageAccount":
 		r = &StorageAccount{}
 	default:

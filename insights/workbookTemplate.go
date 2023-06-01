@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Application Insights workbook template definition.
-// API Version: 2019-10-17-preview.
+// API Version: 2020-11-20.
+// Previous API Version: 2019-10-17-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type WorkbookTemplate struct {
 	pulumi.CustomResourceState
 

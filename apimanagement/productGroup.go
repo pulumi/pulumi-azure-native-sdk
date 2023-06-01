@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contract details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ProductGroup struct {
 	pulumi.CustomResourceState
 
@@ -24,9 +25,9 @@ type ProductGroup struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// For external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -89,6 +90,9 @@ func NewProductGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ProductGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ProductGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ProductGroup
@@ -127,7 +131,7 @@ type productGroupArgs struct {
 	GroupId *string `pulumi:"groupId"`
 	// Product identifier. Must be unique in the current API Management service instance.
 	ProductId string `pulumi:"productId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -139,7 +143,7 @@ type ProductGroupArgs struct {
 	GroupId pulumi.StringPtrInput
 	// Product identifier. Must be unique in the current API Management service instance.
 	ProductId pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -202,12 +206,12 @@ func (o ProductGroupOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProductGroup) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ProductGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProductGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ProductGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProductGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

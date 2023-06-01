@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,14 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:storagesync/v20181001:CloudEndpoint":
 		r = &CloudEndpoint{}
-	case "azure-native:storagesync/v20181001:RegisteredServer":
-		r = &RegisteredServer{}
 	case "azure-native:storagesync/v20181001:ServerEndpoint":
 		r = &ServerEndpoint{}
-	case "azure-native:storagesync/v20181001:StorageSyncService":
-		r = &StorageSyncService{}
-	case "azure-native:storagesync/v20181001:SyncGroup":
-		r = &SyncGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

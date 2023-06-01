@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Storage Mover resource.
-// API Version: 2022-07-01-preview.
+// API Version: 2023-03-01.
 func LookupStorageMover(ctx *pulumi.Context, args *LookupStorageMoverArgs, opts ...pulumi.InvokeOption) (*LookupStorageMoverResult, error) {
 	var rv LookupStorageMoverResult
 	err := ctx.Invoke("azure-native:storagemover:getStorageMover", args, &rv, opts...)

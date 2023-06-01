@@ -11,7 +11,7 @@ import (
 )
 
 // Get assigned Gateway Certificate Authority details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func LookupGatewayCertificateAuthority(ctx *pulumi.Context, args *LookupGatewayCertificateAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCertificateAuthorityResult, error) {
 	var rv LookupGatewayCertificateAuthorityResult
 	err := ctx.Invoke("azure-native:apimanagement:getGatewayCertificateAuthority", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupGatewayCertificateAuthorityArgs struct {
 	CertificateId string `pulumi:"certificateId"`
 	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
 	GatewayId string `pulumi:"gatewayId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -34,13 +34,13 @@ type LookupGatewayCertificateAuthorityArgs struct {
 
 // Gateway certificate authority details.
 type LookupGatewayCertificateAuthorityResult struct {
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Determines whether certificate authority is trusted.
 	IsTrusted *bool `pulumi:"isTrusted"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -62,7 +62,7 @@ type LookupGatewayCertificateAuthorityOutputArgs struct {
 	CertificateId pulumi.StringInput `pulumi:"certificateId"`
 	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
 	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -87,7 +87,7 @@ func (o LookupGatewayCertificateAuthorityResultOutput) ToLookupGatewayCertificat
 	return o
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGatewayCertificateAuthorityResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCertificateAuthorityResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -97,12 +97,12 @@ func (o LookupGatewayCertificateAuthorityResultOutput) IsTrusted() pulumi.BoolPt
 	return o.ApplyT(func(v LookupGatewayCertificateAuthorityResult) *bool { return v.IsTrusted }).(pulumi.BoolPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupGatewayCertificateAuthorityResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCertificateAuthorityResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGatewayCertificateAuthorityResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayCertificateAuthorityResult) string { return v.Type }).(pulumi.StringOutput)
 }

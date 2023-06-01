@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,6 +79,9 @@ func NewApp(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:App"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:App"),
 		},
 	})
 	opts = append(opts, aliases)

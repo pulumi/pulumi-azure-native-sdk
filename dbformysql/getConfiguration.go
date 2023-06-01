@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about a configuration of server.
-// API Version: 2017-12-01.
+// API Version: 2021-05-01.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	var rv LookupConfigurationResult
 	err := ctx.Invoke("azure-native:dbformysql:getConfiguration", args, &rv, opts...)
@@ -42,10 +42,18 @@ type LookupConfigurationResult struct {
 	Description string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// If is the configuration pending restart or not.
+	IsConfigPendingRestart string `pulumi:"isConfigPendingRestart"`
+	// If is the configuration dynamic.
+	IsDynamicConfig string `pulumi:"isDynamicConfig"`
+	// If is the configuration read only.
+	IsReadOnly string `pulumi:"isReadOnly"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Source of the configuration.
 	Source *string `pulumi:"source"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Value of the configuration.
@@ -118,6 +126,21 @@ func (o LookupConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If is the configuration pending restart or not.
+func (o LookupConfigurationResultOutput) IsConfigPendingRestart() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationResult) string { return v.IsConfigPendingRestart }).(pulumi.StringOutput)
+}
+
+// If is the configuration dynamic.
+func (o LookupConfigurationResultOutput) IsDynamicConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationResult) string { return v.IsDynamicConfig }).(pulumi.StringOutput)
+}
+
+// If is the configuration read only.
+func (o LookupConfigurationResultOutput) IsReadOnly() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationResult) string { return v.IsReadOnly }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o LookupConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
@@ -126,6 +149,11 @@ func (o LookupConfigurationResultOutput) Name() pulumi.StringOutput {
 // Source of the configuration.
 func (o LookupConfigurationResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// The system metadata relating to this resource.
+func (o LookupConfigurationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

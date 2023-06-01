@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +65,12 @@ func NewIncidentTask(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:IncidentTask"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:IncidentTask"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:IncidentTask"),
 		},
 	})
 	opts = append(opts, aliases)

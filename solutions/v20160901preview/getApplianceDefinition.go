@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the appliance definition.
-//
-// Deprecated: Version 2016-09-01-preview will be removed in v2 of the provider.
 func LookupApplianceDefinition(ctx *pulumi.Context, args *LookupApplianceDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupApplianceDefinitionResult, error) {
 	var rv LookupApplianceDefinitionResult
 	err := ctx.Invoke("azure-native:solutions/v20160901preview:getApplianceDefinition", args, &rv, opts...)

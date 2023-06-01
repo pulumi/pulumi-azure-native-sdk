@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,7 +50,13 @@ func NewWebPubSubCustomDomain(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:webpubsub:WebPubSubCustomDomain"),
+		},
+		{
 			Type: pulumi.String("azure-native:webpubsub/v20220801preview:WebPubSubCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20230301preview:WebPubSubCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,6 +70,9 @@ func NewVirtualNetworkGatewayNatRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualNetworkGatewayNatRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualNetworkGatewayNatRule"),
 		},
 	})
 	opts = append(opts, aliases)

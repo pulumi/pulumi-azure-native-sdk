@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the budget for a resource group under a subscription by budget name.
-//
-// Deprecated: Version 2018-10-01 will be removed in v2 of the provider.
 func LookupBudgetByResourceGroupName(ctx *pulumi.Context, args *LookupBudgetByResourceGroupNameArgs, opts ...pulumi.InvokeOption) (*LookupBudgetByResourceGroupNameResult, error) {
 	var rv LookupBudgetByResourceGroupNameResult
 	err := ctx.Invoke("azure-native:consumption/v20181001:getBudgetByResourceGroupName", args, &rv, opts...)

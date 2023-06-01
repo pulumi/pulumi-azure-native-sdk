@@ -11,8 +11,6 @@ import (
 )
 
 // Get a shareSubscription in an account
-//
-// Deprecated: Version 2018-11-01-preview will be removed in v2 of the provider.
 func LookupShareSubscription(ctx *pulumi.Context, args *LookupShareSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupShareSubscriptionResult, error) {
 	var rv LookupShareSubscriptionResult
 	err := ctx.Invoke("azure-native:datashare/v20181101preview:getShareSubscription", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +76,9 @@ func NewServer(ctx *pulumi.Context,
 		args.Storage = args.Storage.ToStoragePtrOutput().ApplyT(func(v *Storage) *Storage { return v.Defaults() }).(StoragePtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql:Server"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20200701preview:Server"),
 		},

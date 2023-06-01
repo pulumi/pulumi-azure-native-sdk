@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,6 +61,12 @@ func NewPostgresInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220301preview:PostgresInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:PostgresInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230315preview:PostgresInstance"),
 		},
 	})
 	opts = append(opts, aliases)

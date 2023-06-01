@@ -7,17 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
-// API Version: 2020-09-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
 	// List of content types on which compression applies. The value should be a valid MIME type.
 	ContentTypesToCompress pulumi.StringArrayOutput `pulumi:"contentTypesToCompress"`
+	// The custom domains under the endpoint.
+	CustomDomains DeepCreatedCustomDomainResponseArrayOutput `pulumi:"customDomains"`
 	// A reference to the origin group.
 	DefaultOriginGroup ResourceReferenceResponsePtrOutput `pulumi:"defaultOriginGroup"`
 	// A policy that specifies the delivery rules to be used for an endpoint.
@@ -82,13 +85,13 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.IsHttpAllowed) {
+	if args.IsHttpAllowed == nil {
 		args.IsHttpAllowed = pulumi.BoolPtr(true)
 	}
-	if isZero(args.IsHttpsAllowed) {
+	if args.IsHttpsAllowed == nil {
 		args.IsHttpsAllowed = pulumi.BoolPtr(true)
 	}
-	if isZero(args.QueryStringCachingBehavior) {
+	if args.QueryStringCachingBehavior == nil {
 		args.QueryStringCachingBehavior = QueryStringCachingBehavior("NotSet")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -301,6 +304,11 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 // List of content types on which compression applies. The value should be a valid MIME type.
 func (o EndpointOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringArrayOutput { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
+}
+
+// The custom domains under the endpoint.
+func (o EndpointOutput) CustomDomains() DeepCreatedCustomDomainResponseArrayOutput {
+	return o.ApplyT(func(v *Endpoint) DeepCreatedCustomDomainResponseArrayOutput { return v.CustomDomains }).(DeepCreatedCustomDomainResponseArrayOutput)
 }
 
 // A reference to the origin group.

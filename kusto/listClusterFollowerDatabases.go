@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a list of databases that are owned by this cluster and were followed by another cluster.
-// API Version: 2021-01-01.
+// API Version: 2022-12-29.
 func ListClusterFollowerDatabases(ctx *pulumi.Context, args *ListClusterFollowerDatabasesArgs, opts ...pulumi.InvokeOption) (*ListClusterFollowerDatabasesResult, error) {
 	var rv ListClusterFollowerDatabasesResult
 	err := ctx.Invoke("azure-native:kusto:listClusterFollowerDatabases", args, &rv, opts...)

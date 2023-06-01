@@ -75,11 +75,11 @@ func (val *LookupVirtualNetworkResult) Defaults() *LookupVirtualNetworkResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDdosProtection) {
+	if tmp.EnableDdosProtection == nil {
 		enableDdosProtection_ := false
 		tmp.EnableDdosProtection = &enableDdosProtection_
 	}
-	if isZero(tmp.EnableVmProtection) {
+	if tmp.EnableVmProtection == nil {
 		enableVmProtection_ := false
 		tmp.EnableVmProtection = &enableVmProtection_
 	}

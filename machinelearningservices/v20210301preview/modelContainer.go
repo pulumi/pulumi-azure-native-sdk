@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +62,12 @@ func NewModelContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:ModelContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:ModelContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:ModelContainer"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:ModelContainer"),

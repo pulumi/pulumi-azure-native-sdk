@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the requested ExpressRoutePort resource.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupExpressRoutePort(ctx *pulumi.Context, args *LookupExpressRoutePortArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortResult, error) {
 	var rv LookupExpressRoutePortResult
 	err := ctx.Invoke("azure-native:network:getExpressRoutePort", args, &rv, opts...)
@@ -34,6 +34,8 @@ type LookupExpressRoutePortResult struct {
 	AllocationDate string `pulumi:"allocationDate"`
 	// Bandwidth of procured ports in Gbps.
 	BandwidthInGbps *int `pulumi:"bandwidthInGbps"`
+	// The billing type of the ExpressRoutePort resource.
+	BillingType *string `pulumi:"billingType"`
 	// Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
 	Circuits []SubResourceResponse `pulumi:"circuits"`
 	// Encapsulation method on physical ports.
@@ -115,6 +117,11 @@ func (o LookupExpressRoutePortResultOutput) AllocationDate() pulumi.StringOutput
 // Bandwidth of procured ports in Gbps.
 func (o LookupExpressRoutePortResultOutput) BandwidthInGbps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) *int { return v.BandwidthInGbps }).(pulumi.IntPtrOutput)
+}
+
+// The billing type of the ExpressRoutePort resource.
+func (o LookupExpressRoutePortResultOutput) BillingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupExpressRoutePortResult) *string { return v.BillingType }).(pulumi.StringPtrOutput)
 }
 
 // Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.

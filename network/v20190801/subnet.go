@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -201,6 +201,9 @@ func NewSubnet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:Subnet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:Subnet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Subnet
@@ -258,11 +261,11 @@ type subnetArgs struct {
 	// An array of references to the external resources using subnet.
 	ResourceNavigationLinks []ResourceNavigationLink `pulumi:"resourceNavigationLinks"`
 	// The reference of the RouteTable resource.
-	RouteTable *RouteTableType `pulumi:"routeTable"`
+	RouteTable *RouteTable `pulumi:"routeTable"`
 	// An array of references to services injecting into this subnet.
 	ServiceAssociationLinks []ServiceAssociationLink `pulumi:"serviceAssociationLinks"`
 	// An array of service endpoint policies.
-	ServiceEndpointPolicies []ServiceEndpointPolicyType `pulumi:"serviceEndpointPolicies"`
+	ServiceEndpointPolicies []ServiceEndpointPolicy `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints []ServiceEndpointPropertiesFormat `pulumi:"serviceEndpoints"`
 	// The name of the subnet.
@@ -296,11 +299,11 @@ type SubnetArgs struct {
 	// An array of references to the external resources using subnet.
 	ResourceNavigationLinks ResourceNavigationLinkArrayInput
 	// The reference of the RouteTable resource.
-	RouteTable RouteTableTypePtrInput
+	RouteTable RouteTablePtrInput
 	// An array of references to services injecting into this subnet.
 	ServiceAssociationLinks ServiceAssociationLinkArrayInput
 	// An array of service endpoint policies.
-	ServiceEndpointPolicies ServiceEndpointPolicyTypeArrayInput
+	ServiceEndpointPolicies ServiceEndpointPolicyArrayInput
 	// An array of service endpoints.
 	ServiceEndpoints ServiceEndpointPropertiesFormatArrayInput
 	// The name of the subnet.

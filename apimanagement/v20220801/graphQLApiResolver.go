@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +43,15 @@ func NewGraphQLApiResolver(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement:GraphQLApiResolver"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GraphQLApiResolver"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource GraphQLApiResolver
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:GraphQLApiResolver", name, args, &resource, opts...)
 	if err != nil {

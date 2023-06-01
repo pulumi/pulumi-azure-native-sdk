@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Profile of a lab user.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 type User struct {
 	pulumi.CustomResourceState
 

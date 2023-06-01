@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +40,12 @@ func NewPrivateEndpointConnectionControllerPrivateEndpointConnection(ctx *pulumi
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:migrate:PrivateEndpointConnectionControllerPrivateEndpointConnection"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource PrivateEndpointConnectionControllerPrivateEndpointConnection
 	err := ctx.RegisterResource("azure-native:migrate/v20200501:PrivateEndpointConnectionControllerPrivateEndpointConnection", name, args, &resource, opts...)
 	if err != nil {

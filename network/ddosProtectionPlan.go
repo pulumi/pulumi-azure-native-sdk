@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A DDoS protection plan in a resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DdosProtectionPlan struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type DdosProtectionPlan struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the DDoS protection plan resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
+	PublicIPAddresses SubResourceResponseArrayOutput `pulumi:"publicIPAddresses"`
 	// The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
 	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// Resource tags.
@@ -138,6 +141,9 @@ func NewDdosProtectionPlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:DdosProtectionPlan"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:DdosProtectionPlan"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DdosProtectionPlan
@@ -249,6 +255,11 @@ func (o DdosProtectionPlanOutput) Name() pulumi.StringOutput {
 // The provisioning state of the DDoS protection plan resource.
 func (o DdosProtectionPlanOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosProtectionPlan) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
+func (o DdosProtectionPlanOutput) PublicIPAddresses() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *DdosProtectionPlan) SubResourceResponseArrayOutput { return v.PublicIPAddresses }).(SubResourceResponseArrayOutput)
 }
 
 // The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The resource proxy definition object for quantum workspace.
-// API Version: 2019-11-04-preview.
+// API Version: 2022-01-10-preview.
+// Previous API Version: 2019-11-04-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Workspace struct {
 	pulumi.CustomResourceState
 

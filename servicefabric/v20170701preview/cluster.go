@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The cluster resource
-//
-// Deprecated: Version 2017-07-01-preview will be removed in v2 of the provider.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -104,9 +102,6 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:servicefabric:Cluster"),
-		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20160901:Cluster"),
 		},

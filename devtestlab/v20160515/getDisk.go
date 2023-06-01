@@ -11,8 +11,6 @@ import (
 )
 
 // Get disk.
-//
-// Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	var rv LookupDiskResult
 	err := ctx.Invoke("azure-native:devtestlab/v20160515:getDisk", args, &rv, opts...)

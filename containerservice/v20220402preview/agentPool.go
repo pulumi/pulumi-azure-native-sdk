@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -255,6 +255,18 @@ func NewAgentPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230102preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230201:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230301:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:AgentPool"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -7,21 +7,28 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a hybrid machine.
-// API Version: 2020-08-02.
+// API Version: 2022-11-10.
+// Previous API Version: 2020-08-02. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Machine struct {
 	pulumi.CustomResourceState
 
 	// Specifies the AD fully qualified display name.
 	AdFqdn pulumi.StringOutput `pulumi:"adFqdn"`
+	// Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM.
+	AgentConfiguration AgentConfigurationResponseOutput `pulumi:"agentConfiguration"`
 	// The hybrid machine agent full version.
 	AgentVersion pulumi.StringOutput `pulumi:"agentVersion"`
 	// Public Key that the client provides to be used during initial resource onboarding
 	ClientPublicKey pulumi.StringPtrOutput `pulumi:"clientPublicKey"`
+	// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
+	CloudMetadata CloudMetadataResponsePtrOutput `pulumi:"cloudMetadata"`
+	// Detected properties from the machine.
+	DetectedProperties pulumi.StringMapOutput `pulumi:"detectedProperties"`
 	// Specifies the hybrid machine display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Specifies the DNS fully qualified display name.
@@ -30,9 +37,10 @@ type Machine struct {
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Details about the error state.
 	ErrorDetails ErrorDetailResponseArrayOutput `pulumi:"errorDetails"`
-	// Machine Extensions information
+	// Machine Extensions information (deprecated field)
 	Extensions MachineExtensionInstanceViewResponseArrayOutput `pulumi:"extensions"`
-	Identity   MachineResponseIdentityPtrOutput                `pulumi:"identity"`
+	// Identity for the resource.
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The time of the last status change.
 	LastStatusChange pulumi.StringOutput `pulumi:"lastStatusChange"`
 	// The geo-location where the resource lives
@@ -41,20 +49,34 @@ type Machine struct {
 	LocationData LocationDataResponsePtrOutput `pulumi:"locationData"`
 	// Specifies the hybrid machine FQDN.
 	MachineFqdn pulumi.StringOutput `pulumi:"machineFqdn"`
+	// Specifies whether any MS SQL instance is discovered on the machine.
+	MssqlDiscovered pulumi.StringPtrOutput `pulumi:"mssqlDiscovered"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Operating System running on the hybrid machine.
 	OsName pulumi.StringOutput `pulumi:"osName"`
 	// Specifies the operating system settings for the hybrid machine.
-	OsProfile MachinePropertiesResponseOsProfilePtrOutput `pulumi:"osProfile"`
+	OsProfile OSProfileResponsePtrOutput `pulumi:"osProfile"`
 	// Specifies the Operating System product SKU.
 	OsSku pulumi.StringOutput `pulumi:"osSku"`
+	// The type of Operating System (windows/linux).
+	OsType pulumi.StringPtrOutput `pulumi:"osType"`
 	// The version of Operating System running on the hybrid machine.
 	OsVersion pulumi.StringOutput `pulumi:"osVersion"`
+	// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+	ParentClusterResourceId pulumi.StringPtrOutput `pulumi:"parentClusterResourceId"`
+	// The resource id of the private link scope this machine is assigned to, if any.
+	PrivateLinkScopeResourceId pulumi.StringPtrOutput `pulumi:"privateLinkScopeResourceId"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The list of extensions affiliated to the machine
+	Resources MachineExtensionResponseArrayOutput `pulumi:"resources"`
+	// Statuses of dependent services that are reported back to ARM.
+	ServiceStatuses ServiceStatusesResponsePtrOutput `pulumi:"serviceStatuses"`
 	// The status of the hybrid machine agent.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -133,6 +155,9 @@ func NewMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227preview:Machine"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:Machine"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Machine
@@ -168,16 +193,31 @@ func (MachineState) ElementType() reflect.Type {
 
 type machineArgs struct {
 	// Public Key that the client provides to be used during initial resource onboarding
-	ClientPublicKey *string          `pulumi:"clientPublicKey"`
-	Identity        *MachineIdentity `pulumi:"identity"`
+	ClientPublicKey *string `pulumi:"clientPublicKey"`
+	// Machine Extensions information (deprecated field)
+	Extensions []MachineExtensionInstanceView `pulumi:"extensions"`
+	// Identity for the resource.
+	Identity *Identity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Metadata pertaining to the geographic location of the resource.
 	LocationData *LocationData `pulumi:"locationData"`
 	// The name of the hybrid machine.
-	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	MachineName *string `pulumi:"machineName"`
+	// Specifies whether any MS SQL instance is discovered on the machine.
+	MssqlDiscovered *string `pulumi:"mssqlDiscovered"`
+	// Specifies the operating system settings for the hybrid machine.
+	OsProfile *OSProfile `pulumi:"osProfile"`
+	// The type of Operating System (windows/linux).
+	OsType *string `pulumi:"osType"`
+	// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+	ParentClusterResourceId *string `pulumi:"parentClusterResourceId"`
+	// The resource id of the private link scope this machine is assigned to, if any.
+	PrivateLinkScopeResourceId *string `pulumi:"privateLinkScopeResourceId"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Statuses of dependent services that are reported back to ARM.
+	ServiceStatuses *ServiceStatuses `pulumi:"serviceStatuses"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the hybrid machine unique ID.
@@ -188,15 +228,30 @@ type machineArgs struct {
 type MachineArgs struct {
 	// Public Key that the client provides to be used during initial resource onboarding
 	ClientPublicKey pulumi.StringPtrInput
-	Identity        MachineIdentityPtrInput
+	// Machine Extensions information (deprecated field)
+	Extensions MachineExtensionInstanceViewArrayInput
+	// Identity for the resource.
+	Identity IdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Metadata pertaining to the geographic location of the resource.
 	LocationData LocationDataPtrInput
 	// The name of the hybrid machine.
-	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	MachineName pulumi.StringPtrInput
+	// Specifies whether any MS SQL instance is discovered on the machine.
+	MssqlDiscovered pulumi.StringPtrInput
+	// Specifies the operating system settings for the hybrid machine.
+	OsProfile OSProfilePtrInput
+	// The type of Operating System (windows/linux).
+	OsType pulumi.StringPtrInput
+	// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+	ParentClusterResourceId pulumi.StringPtrInput
+	// The resource id of the private link scope this machine is assigned to, if any.
+	PrivateLinkScopeResourceId pulumi.StringPtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Statuses of dependent services that are reported back to ARM.
+	ServiceStatuses ServiceStatusesPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Specifies the hybrid machine unique ID.
@@ -245,6 +300,11 @@ func (o MachineOutput) AdFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.AdFqdn }).(pulumi.StringOutput)
 }
 
+// Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM.
+func (o MachineOutput) AgentConfiguration() AgentConfigurationResponseOutput {
+	return o.ApplyT(func(v *Machine) AgentConfigurationResponseOutput { return v.AgentConfiguration }).(AgentConfigurationResponseOutput)
+}
+
 // The hybrid machine agent full version.
 func (o MachineOutput) AgentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.AgentVersion }).(pulumi.StringOutput)
@@ -253,6 +313,16 @@ func (o MachineOutput) AgentVersion() pulumi.StringOutput {
 // Public Key that the client provides to be used during initial resource onboarding
 func (o MachineOutput) ClientPublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringPtrOutput { return v.ClientPublicKey }).(pulumi.StringPtrOutput)
+}
+
+// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
+func (o MachineOutput) CloudMetadata() CloudMetadataResponsePtrOutput {
+	return o.ApplyT(func(v *Machine) CloudMetadataResponsePtrOutput { return v.CloudMetadata }).(CloudMetadataResponsePtrOutput)
+}
+
+// Detected properties from the machine.
+func (o MachineOutput) DetectedProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Machine) pulumi.StringMapOutput { return v.DetectedProperties }).(pulumi.StringMapOutput)
 }
 
 // Specifies the hybrid machine display name.
@@ -275,13 +345,14 @@ func (o MachineOutput) ErrorDetails() ErrorDetailResponseArrayOutput {
 	return o.ApplyT(func(v *Machine) ErrorDetailResponseArrayOutput { return v.ErrorDetails }).(ErrorDetailResponseArrayOutput)
 }
 
-// Machine Extensions information
+// Machine Extensions information (deprecated field)
 func (o MachineOutput) Extensions() MachineExtensionInstanceViewResponseArrayOutput {
 	return o.ApplyT(func(v *Machine) MachineExtensionInstanceViewResponseArrayOutput { return v.Extensions }).(MachineExtensionInstanceViewResponseArrayOutput)
 }
 
-func (o MachineOutput) Identity() MachineResponseIdentityPtrOutput {
-	return o.ApplyT(func(v *Machine) MachineResponseIdentityPtrOutput { return v.Identity }).(MachineResponseIdentityPtrOutput)
+// Identity for the resource.
+func (o MachineOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Machine) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // The time of the last status change.
@@ -304,6 +375,11 @@ func (o MachineOutput) MachineFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.MachineFqdn }).(pulumi.StringOutput)
 }
 
+// Specifies whether any MS SQL instance is discovered on the machine.
+func (o MachineOutput) MssqlDiscovered() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Machine) pulumi.StringPtrOutput { return v.MssqlDiscovered }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o MachineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -315,8 +391,8 @@ func (o MachineOutput) OsName() pulumi.StringOutput {
 }
 
 // Specifies the operating system settings for the hybrid machine.
-func (o MachineOutput) OsProfile() MachinePropertiesResponseOsProfilePtrOutput {
-	return o.ApplyT(func(v *Machine) MachinePropertiesResponseOsProfilePtrOutput { return v.OsProfile }).(MachinePropertiesResponseOsProfilePtrOutput)
+func (o MachineOutput) OsProfile() OSProfileResponsePtrOutput {
+	return o.ApplyT(func(v *Machine) OSProfileResponsePtrOutput { return v.OsProfile }).(OSProfileResponsePtrOutput)
 }
 
 // Specifies the Operating System product SKU.
@@ -324,9 +400,24 @@ func (o MachineOutput) OsSku() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.OsSku }).(pulumi.StringOutput)
 }
 
+// The type of Operating System (windows/linux).
+func (o MachineOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Machine) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
 // The version of Operating System running on the hybrid machine.
 func (o MachineOutput) OsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+func (o MachineOutput) ParentClusterResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Machine) pulumi.StringPtrOutput { return v.ParentClusterResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The resource id of the private link scope this machine is assigned to, if any.
+func (o MachineOutput) PrivateLinkScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Machine) pulumi.StringPtrOutput { return v.PrivateLinkScopeResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The provisioning state, which only appears in the response.
@@ -334,9 +425,24 @@ func (o MachineOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The list of extensions affiliated to the machine
+func (o MachineOutput) Resources() MachineExtensionResponseArrayOutput {
+	return o.ApplyT(func(v *Machine) MachineExtensionResponseArrayOutput { return v.Resources }).(MachineExtensionResponseArrayOutput)
+}
+
+// Statuses of dependent services that are reported back to ARM.
+func (o MachineOutput) ServiceStatuses() ServiceStatusesResponsePtrOutput {
+	return o.ApplyT(func(v *Machine) ServiceStatusesResponsePtrOutput { return v.ServiceStatuses }).(ServiceStatusesResponsePtrOutput)
+}
+
 // The status of the hybrid machine agent.
 func (o MachineOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o MachineOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Machine) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

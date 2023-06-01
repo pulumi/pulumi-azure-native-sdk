@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
-// API Version: 2020-05-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2020-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RulesEngine struct {
 	pulumi.CustomResourceState
 

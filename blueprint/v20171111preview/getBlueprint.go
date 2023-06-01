@@ -11,8 +11,6 @@ import (
 )
 
 // Get a blueprint definition.
-//
-// Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
 func LookupBlueprint(ctx *pulumi.Context, args *LookupBlueprintArgs, opts ...pulumi.InvokeOption) (*LookupBlueprintResult, error) {
 	var rv LookupBlueprintResult
 	err := ctx.Invoke("azure-native:blueprint/v20171111preview:getBlueprint", args, &rv, opts...)

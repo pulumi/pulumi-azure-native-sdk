@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Snapshot of a Volume
-//
-// Deprecated: Version 2019-10-01 will be removed in v2 of the provider.
 type Snapshot struct {
 	pulumi.CustomResourceState
 

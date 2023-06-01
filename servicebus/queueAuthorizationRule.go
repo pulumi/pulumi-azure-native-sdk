@@ -7,20 +7,25 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a namespace authorization rule.
-// API Version: 2017-04-01.
+// API Version: 2021-11-01.
+// Previous API Version: 2017-04-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type QueueAuthorizationRule struct {
 	pulumi.CustomResourceState
 
-	// Resource name
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The rights associated with the rule.
 	Rights pulumi.StringArrayOutput `pulumi:"rights"`
-	// Resource type
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -168,7 +173,12 @@ func (o QueueAuthorizationRuleOutput) ToQueueAuthorizationRuleOutputWithContext(
 	return o
 }
 
-// Resource name
+// The geo-location where the resource lives
+func (o QueueAuthorizationRuleOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o QueueAuthorizationRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -178,7 +188,12 @@ func (o QueueAuthorizationRuleOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringArrayOutput { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
-// Resource type
+// The system meta data relating to this resource.
+func (o QueueAuthorizationRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *QueueAuthorizationRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o QueueAuthorizationRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

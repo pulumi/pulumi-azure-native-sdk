@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An environment for hosting container apps
-// API Version: 2022-03-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2022-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ManagedEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type ManagedEnvironment struct {
 	// app logs to a destination. Currently only "log-analytics" is
 	// supported
 	AppLogsConfiguration AppLogsConfigurationResponsePtrOutput `pulumi:"appLogsConfiguration"`
+	// Custom domain configuration for the environment
+	CustomDomainConfiguration CustomDomainConfigurationResponsePtrOutput `pulumi:"customDomainConfiguration"`
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
 	DaprAIConnectionString pulumi.StringPtrOutput `pulumi:"daprAIConnectionString"`
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
@@ -28,12 +31,18 @@ type ManagedEnvironment struct {
 	DefaultDomain pulumi.StringOutput `pulumi:"defaultDomain"`
 	// Any errors that occurred during deployment or deployment validation
 	DeploymentErrors pulumi.StringOutput `pulumi:"deploymentErrors"`
+	// The endpoint of the eventstream of the Environment.
+	EventStreamEndpoint pulumi.StringOutput `pulumi:"eventStreamEndpoint"`
+	// Kind of the Environment.
+	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state of the Environment.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// SKU properties of the Environment.
+	Sku EnvironmentSkuPropertiesResponsePtrOutput `pulumi:"sku"`
 	// Static IP of the Environment
 	StaticIp pulumi.StringOutput `pulumi:"staticIp"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -44,6 +53,8 @@ type ManagedEnvironment struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Vnet configuration for the environment
 	VnetConfiguration VnetConfigurationResponsePtrOutput `pulumi:"vnetConfiguration"`
+	// Workload profiles configured for the Managed Environment.
+	WorkloadProfiles WorkloadProfileResponseArrayOutput `pulumi:"workloadProfiles"`
 	// Whether or not this Managed Environment is zone-redundant.
 	ZoneRedundant pulumi.BoolPtrOutput `pulumi:"zoneRedundant"`
 }
@@ -70,6 +81,9 @@ func NewManagedEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:ManagedEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ManagedEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -109,20 +123,28 @@ type managedEnvironmentArgs struct {
 	// app logs to a destination. Currently only "log-analytics" is
 	// supported
 	AppLogsConfiguration *AppLogsConfiguration `pulumi:"appLogsConfiguration"`
+	// Custom domain configuration for the environment
+	CustomDomainConfiguration *CustomDomainConfiguration `pulumi:"customDomainConfiguration"`
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
 	DaprAIConnectionString *string `pulumi:"daprAIConnectionString"`
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey *string `pulumi:"daprAIInstrumentationKey"`
 	// Name of the Environment.
 	EnvironmentName *string `pulumi:"environmentName"`
+	// Kind of the Environment.
+	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// SKU properties of the Environment.
+	Sku *EnvironmentSkuProperties `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Vnet configuration for the environment
 	VnetConfiguration *VnetConfiguration `pulumi:"vnetConfiguration"`
+	// Workload profiles configured for the Managed Environment.
+	WorkloadProfiles []WorkloadProfile `pulumi:"workloadProfiles"`
 	// Whether or not this Managed Environment is zone-redundant.
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
@@ -133,20 +155,28 @@ type ManagedEnvironmentArgs struct {
 	// app logs to a destination. Currently only "log-analytics" is
 	// supported
 	AppLogsConfiguration AppLogsConfigurationPtrInput
+	// Custom domain configuration for the environment
+	CustomDomainConfiguration CustomDomainConfigurationPtrInput
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
 	DaprAIConnectionString pulumi.StringPtrInput
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey pulumi.StringPtrInput
 	// Name of the Environment.
 	EnvironmentName pulumi.StringPtrInput
+	// Kind of the Environment.
+	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// SKU properties of the Environment.
+	Sku EnvironmentSkuPropertiesPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Vnet configuration for the environment
 	VnetConfiguration VnetConfigurationPtrInput
+	// Workload profiles configured for the Managed Environment.
+	WorkloadProfiles WorkloadProfileArrayInput
 	// Whether or not this Managed Environment is zone-redundant.
 	ZoneRedundant pulumi.BoolPtrInput
 }
@@ -195,6 +225,13 @@ func (o ManagedEnvironmentOutput) AppLogsConfiguration() AppLogsConfigurationRes
 	return o.ApplyT(func(v *ManagedEnvironment) AppLogsConfigurationResponsePtrOutput { return v.AppLogsConfiguration }).(AppLogsConfigurationResponsePtrOutput)
 }
 
+// Custom domain configuration for the environment
+func (o ManagedEnvironmentOutput) CustomDomainConfiguration() CustomDomainConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) CustomDomainConfigurationResponsePtrOutput {
+		return v.CustomDomainConfiguration
+	}).(CustomDomainConfigurationResponsePtrOutput)
+}
+
 // Application Insights connection string used by Dapr to export Service to Service communication telemetry
 func (o ManagedEnvironmentOutput) DaprAIConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringPtrOutput { return v.DaprAIConnectionString }).(pulumi.StringPtrOutput)
@@ -215,6 +252,16 @@ func (o ManagedEnvironmentOutput) DeploymentErrors() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.DeploymentErrors }).(pulumi.StringOutput)
 }
 
+// The endpoint of the eventstream of the Environment.
+func (o ManagedEnvironmentOutput) EventStreamEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.EventStreamEndpoint }).(pulumi.StringOutput)
+}
+
+// Kind of the Environment.
+func (o ManagedEnvironmentOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // The geo-location where the resource lives
 func (o ManagedEnvironmentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -228,6 +275,11 @@ func (o ManagedEnvironmentOutput) Name() pulumi.StringOutput {
 // Provisioning state of the Environment.
 func (o ManagedEnvironmentOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// SKU properties of the Environment.
+func (o ManagedEnvironmentOutput) Sku() EnvironmentSkuPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) EnvironmentSkuPropertiesResponsePtrOutput { return v.Sku }).(EnvironmentSkuPropertiesResponsePtrOutput)
 }
 
 // Static IP of the Environment
@@ -253,6 +305,11 @@ func (o ManagedEnvironmentOutput) Type() pulumi.StringOutput {
 // Vnet configuration for the environment
 func (o ManagedEnvironmentOutput) VnetConfiguration() VnetConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) VnetConfigurationResponsePtrOutput { return v.VnetConfiguration }).(VnetConfigurationResponsePtrOutput)
+}
+
+// Workload profiles configured for the Managed Environment.
+func (o ManagedEnvironmentOutput) WorkloadProfiles() WorkloadProfileResponseArrayOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) WorkloadProfileResponseArrayOutput { return v.WorkloadProfiles }).(WorkloadProfileResponseArrayOutput)
 }
 
 // Whether or not this Managed Environment is zone-redundant.

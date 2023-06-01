@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,22 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:compute/v20170330:AvailabilitySet":
-		r = &AvailabilitySet{}
-	case "azure-native:compute/v20170330:Disk":
-		r = &Disk{}
-	case "azure-native:compute/v20170330:Image":
-		r = &Image{}
 	case "azure-native:compute/v20170330:Snapshot":
 		r = &Snapshot{}
-	case "azure-native:compute/v20170330:VirtualMachine":
-		r = &VirtualMachine{}
-	case "azure-native:compute/v20170330:VirtualMachineExtension":
-		r = &VirtualMachineExtension{}
-	case "azure-native:compute/v20170330:VirtualMachineScaleSet":
-		r = &VirtualMachineScaleSet{}
-	case "azure-native:compute/v20170330:VirtualMachineScaleSetExtension":
-		r = &VirtualMachineScaleSetExtension{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

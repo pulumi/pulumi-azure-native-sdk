@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +40,12 @@ func NewSolution(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:agfoodplatform:Solution"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Solution
 	err := ctx.RegisterResource("azure-native:agfoodplatform/v20210901preview:Solution", name, args, &resource, opts...)
 	if err != nil {

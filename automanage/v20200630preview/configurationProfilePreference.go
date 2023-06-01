@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,12 +37,6 @@ func NewConfigurationProfilePreference(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:automanage:ConfigurationProfilePreference"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource ConfigurationProfilePreference
 	err := ctx.RegisterResource("azure-native:automanage/v20200630preview:ConfigurationProfilePreference", name, args, &resource, opts...)
 	if err != nil {

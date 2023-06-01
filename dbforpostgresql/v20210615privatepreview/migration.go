@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,6 +66,12 @@ func NewMigration(ctx *pulumi.Context,
 	if args.TargetDBServerSubscriptionId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetDBServerSubscriptionId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20220501preview:Migration"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Migration
 	err := ctx.RegisterResource("azure-native:dbforpostgresql/v20210615privatepreview:Migration", name, args, &resource, opts...)
 	if err != nil {

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the report config for a resource group under a subscription by report config name.
-//
-// Deprecated: Version 2018-05-31 will be removed in v2 of the provider.
 func LookupReportConfigByResourceGroupName(ctx *pulumi.Context, args *LookupReportConfigByResourceGroupNameArgs, opts ...pulumi.InvokeOption) (*LookupReportConfigByResourceGroupNameResult, error) {
 	var rv LookupReportConfigByResourceGroupNameResult
 	err := ctx.Invoke("azure-native:costmanagement/v20180531:getReportConfigByResourceGroupName", args, &rv, opts...)

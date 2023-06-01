@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Storage resource payload.
-// API Version: 2021-09-01-preview.
+// API Version: 2022-12-01.
+// Previous API Version: 2021-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Storage struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +64,9 @@ func NewStorage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:Storage"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:Storage"),
 		},
 	})
 	opts = append(opts, aliases)

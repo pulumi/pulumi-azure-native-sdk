@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A single Redis item in List or Get Operation.
-//
-// Deprecated: Version 2019-07-01 will be removed in v2 of the provider.
 type Redis struct {
 	pulumi.CustomResourceState
 
@@ -109,6 +107,12 @@ func NewRedis(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:Redis"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:Redis"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:Redis"),
 		},
 	})
 	opts = append(opts, aliases)

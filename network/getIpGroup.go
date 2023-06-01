@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified ipGroups.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupIpGroup(ctx *pulumi.Context, args *LookupIpGroupArgs, opts ...pulumi.InvokeOption) (*LookupIpGroupResult, error) {
 	var rv LookupIpGroupResult
 	err := ctx.Invoke("azure-native:network:getIpGroup", args, &rv, opts...)

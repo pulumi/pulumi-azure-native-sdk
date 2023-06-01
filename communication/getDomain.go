@@ -11,7 +11,7 @@ import (
 )
 
 // Get the Domains resource and its properties.
-// API Version: 2021-10-01-preview.
+// API Version: 2023-03-01-preview.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	var rv LookupDomainResult
 	err := ctx.Invoke("azure-native:communication:getDomain", args, &rv, opts...)
@@ -38,7 +38,7 @@ type LookupDomainResult struct {
 	DomainManagement string `pulumi:"domainManagement"`
 	// P2 sender domain that is displayed to the email recipients [RFC 5322].
 	FromSenderDomain string `pulumi:"fromSenderDomain"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -56,8 +56,6 @@ type LookupDomainResult struct {
 	Type string `pulumi:"type"`
 	// Describes whether user engagement tracking is enabled or disabled.
 	UserEngagementTracking *string `pulumi:"userEngagementTracking"`
-	// Collection of valid sender usernames. This is a key-value pair where key=username and value=display name.
-	ValidSenderUsernames map[string]string `pulumi:"validSenderUsernames"`
 	// List of DnsRecord
 	VerificationRecords DomainPropertiesResponseVerificationRecords `pulumi:"verificationRecords"`
 	// List of VerificationStatusRecord
@@ -120,7 +118,7 @@ func (o LookupDomainResultOutput) FromSenderDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.FromSenderDomain }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -163,11 +161,6 @@ func (o LookupDomainResultOutput) Type() pulumi.StringOutput {
 // Describes whether user engagement tracking is enabled or disabled.
 func (o LookupDomainResultOutput) UserEngagementTracking() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *string { return v.UserEngagementTracking }).(pulumi.StringPtrOutput)
-}
-
-// Collection of valid sender usernames. This is a key-value pair where key=username and value=display name.
-func (o LookupDomainResultOutput) ValidSenderUsernames() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupDomainResult) map[string]string { return v.ValidSenderUsernames }).(pulumi.StringMapOutput)
 }
 
 // List of DnsRecord

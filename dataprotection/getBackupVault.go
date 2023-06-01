@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a resource belonging to a resource group.
-// API Version: 2021-01-01.
+// API Version: 2023-01-01.
 func LookupBackupVault(ctx *pulumi.Context, args *LookupBackupVaultArgs, opts ...pulumi.InvokeOption) (*LookupBackupVaultResult, error) {
 	var rv LookupBackupVaultResult
 	err := ctx.Invoke("azure-native:dataprotection:getBackupVault", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupBackupVault(ctx *pulumi.Context, args *LookupBackupVaultArgs, opts ..
 }
 
 type LookupBackupVaultArgs struct {
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the backup vault.
 	VaultName string `pulumi:"vaultName"`
@@ -64,7 +64,7 @@ func LookupBackupVaultOutput(ctx *pulumi.Context, args LookupBackupVaultOutputAr
 }
 
 type LookupBackupVaultOutputArgs struct {
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the backup vault.
 	VaultName pulumi.StringInput `pulumi:"vaultName"`

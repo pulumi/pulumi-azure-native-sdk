@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an environment type.
-// API Version: 2022-09-01-preview.
+// API Version: 2022-11-11-preview.
+// Previous API Version: 2022-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type EnvironmentType struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +55,12 @@ func NewEnvironmentType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:EnvironmentType"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:EnvironmentType"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:EnvironmentType"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EnvironmentType
@@ -92,7 +99,7 @@ type environmentTypeArgs struct {
 	DevCenterName string `pulumi:"devCenterName"`
 	// The name of the environment type.
 	EnvironmentTypeName *string `pulumi:"environmentTypeName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -104,7 +111,7 @@ type EnvironmentTypeArgs struct {
 	DevCenterName pulumi.StringInput
 	// The name of the environment type.
 	EnvironmentTypeName pulumi.StringPtrInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput

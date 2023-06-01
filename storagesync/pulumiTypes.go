@@ -10,6 +10,221 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Cloud endpoint change enumeration activity object
+type CloudEndpointChangeEnumerationActivityResponse struct {
+	// Progress percentage for processing deletes. This is done separately from the rest of the enumeration run
+	DeletesProgressPercent int `pulumi:"deletesProgressPercent"`
+	// Last updated timestamp
+	LastUpdatedTimestamp string `pulumi:"lastUpdatedTimestamp"`
+	// Estimate of time remaining for the enumeration run
+	MinutesRemaining int `pulumi:"minutesRemaining"`
+	// Change enumeration operation state
+	OperationState string `pulumi:"operationState"`
+	// Count of directories processed
+	ProcessedDirectoriesCount float64 `pulumi:"processedDirectoriesCount"`
+	// Count of files processed
+	ProcessedFilesCount float64 `pulumi:"processedFilesCount"`
+	// Progress percentage for change enumeration run, excluding processing of deletes
+	ProgressPercent int `pulumi:"progressPercent"`
+	// Timestamp when change enumeration started
+	StartedTimestamp string `pulumi:"startedTimestamp"`
+	// When non-zero, indicates an issue that is delaying change enumeration
+	StatusCode int `pulumi:"statusCode"`
+	// Change enumeration total counts state
+	TotalCountsState string `pulumi:"totalCountsState"`
+	// Total count of directories enumerated
+	TotalDirectoriesCount float64 `pulumi:"totalDirectoriesCount"`
+	// Total count of files enumerated
+	TotalFilesCount float64 `pulumi:"totalFilesCount"`
+	// Total enumerated size in bytes
+	TotalSizeBytes float64 `pulumi:"totalSizeBytes"`
+}
+
+// Cloud endpoint change enumeration activity object
+type CloudEndpointChangeEnumerationActivityResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudEndpointChangeEnumerationActivityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudEndpointChangeEnumerationActivityResponse)(nil)).Elem()
+}
+
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) ToCloudEndpointChangeEnumerationActivityResponseOutput() CloudEndpointChangeEnumerationActivityResponseOutput {
+	return o
+}
+
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) ToCloudEndpointChangeEnumerationActivityResponseOutputWithContext(ctx context.Context) CloudEndpointChangeEnumerationActivityResponseOutput {
+	return o
+}
+
+// Progress percentage for processing deletes. This is done separately from the rest of the enumeration run
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) DeletesProgressPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) int { return v.DeletesProgressPercent }).(pulumi.IntOutput)
+}
+
+// Last updated timestamp
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) LastUpdatedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) string { return v.LastUpdatedTimestamp }).(pulumi.StringOutput)
+}
+
+// Estimate of time remaining for the enumeration run
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) MinutesRemaining() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) int { return v.MinutesRemaining }).(pulumi.IntOutput)
+}
+
+// Change enumeration operation state
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) OperationState() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) string { return v.OperationState }).(pulumi.StringOutput)
+}
+
+// Count of directories processed
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) ProcessedDirectoriesCount() pulumi.Float64Output {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) float64 { return v.ProcessedDirectoriesCount }).(pulumi.Float64Output)
+}
+
+// Count of files processed
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) ProcessedFilesCount() pulumi.Float64Output {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) float64 { return v.ProcessedFilesCount }).(pulumi.Float64Output)
+}
+
+// Progress percentage for change enumeration run, excluding processing of deletes
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) ProgressPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) int { return v.ProgressPercent }).(pulumi.IntOutput)
+}
+
+// Timestamp when change enumeration started
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) StartedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) string { return v.StartedTimestamp }).(pulumi.StringOutput)
+}
+
+// When non-zero, indicates an issue that is delaying change enumeration
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) int { return v.StatusCode }).(pulumi.IntOutput)
+}
+
+// Change enumeration total counts state
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) TotalCountsState() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) string { return v.TotalCountsState }).(pulumi.StringOutput)
+}
+
+// Total count of directories enumerated
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) TotalDirectoriesCount() pulumi.Float64Output {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) float64 { return v.TotalDirectoriesCount }).(pulumi.Float64Output)
+}
+
+// Total count of files enumerated
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) TotalFilesCount() pulumi.Float64Output {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) float64 { return v.TotalFilesCount }).(pulumi.Float64Output)
+}
+
+// Total enumerated size in bytes
+func (o CloudEndpointChangeEnumerationActivityResponseOutput) TotalSizeBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationActivityResponse) float64 { return v.TotalSizeBytes }).(pulumi.Float64Output)
+}
+
+// Cloud endpoint change enumeration status object
+type CloudEndpointChangeEnumerationStatusResponse struct {
+	// Change enumeration activity
+	Activity CloudEndpointChangeEnumerationActivityResponse `pulumi:"activity"`
+	// Status of last completed change enumeration
+	LastEnumerationStatus CloudEndpointLastChangeEnumerationStatusResponse `pulumi:"lastEnumerationStatus"`
+	// Last updated timestamp
+	LastUpdatedTimestamp string `pulumi:"lastUpdatedTimestamp"`
+}
+
+// Cloud endpoint change enumeration status object
+type CloudEndpointChangeEnumerationStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudEndpointChangeEnumerationStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudEndpointChangeEnumerationStatusResponse)(nil)).Elem()
+}
+
+func (o CloudEndpointChangeEnumerationStatusResponseOutput) ToCloudEndpointChangeEnumerationStatusResponseOutput() CloudEndpointChangeEnumerationStatusResponseOutput {
+	return o
+}
+
+func (o CloudEndpointChangeEnumerationStatusResponseOutput) ToCloudEndpointChangeEnumerationStatusResponseOutputWithContext(ctx context.Context) CloudEndpointChangeEnumerationStatusResponseOutput {
+	return o
+}
+
+// Change enumeration activity
+func (o CloudEndpointChangeEnumerationStatusResponseOutput) Activity() CloudEndpointChangeEnumerationActivityResponseOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationStatusResponse) CloudEndpointChangeEnumerationActivityResponse {
+		return v.Activity
+	}).(CloudEndpointChangeEnumerationActivityResponseOutput)
+}
+
+// Status of last completed change enumeration
+func (o CloudEndpointChangeEnumerationStatusResponseOutput) LastEnumerationStatus() CloudEndpointLastChangeEnumerationStatusResponseOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationStatusResponse) CloudEndpointLastChangeEnumerationStatusResponse {
+		return v.LastEnumerationStatus
+	}).(CloudEndpointLastChangeEnumerationStatusResponseOutput)
+}
+
+// Last updated timestamp
+func (o CloudEndpointChangeEnumerationStatusResponseOutput) LastUpdatedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointChangeEnumerationStatusResponse) string { return v.LastUpdatedTimestamp }).(pulumi.StringOutput)
+}
+
+// Cloud endpoint change enumeration status object
+type CloudEndpointLastChangeEnumerationStatusResponse struct {
+	// Timestamp when change enumeration completed
+	CompletedTimestamp string `pulumi:"completedTimestamp"`
+	// Count of directories in the namespace
+	NamespaceDirectoriesCount float64 `pulumi:"namespaceDirectoriesCount"`
+	// Count of files in the namespace
+	NamespaceFilesCount float64 `pulumi:"namespaceFilesCount"`
+	// Namespace size in bytes
+	NamespaceSizeBytes float64 `pulumi:"namespaceSizeBytes"`
+	// Timestamp of when change enumeration is expected to run again
+	NextRunTimestamp string `pulumi:"nextRunTimestamp"`
+	// Timestamp when change enumeration started
+	StartedTimestamp string `pulumi:"startedTimestamp"`
+}
+
+// Cloud endpoint change enumeration status object
+type CloudEndpointLastChangeEnumerationStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudEndpointLastChangeEnumerationStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudEndpointLastChangeEnumerationStatusResponse)(nil)).Elem()
+}
+
+func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) ToCloudEndpointLastChangeEnumerationStatusResponseOutput() CloudEndpointLastChangeEnumerationStatusResponseOutput {
+	return o
+}
+
+func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) ToCloudEndpointLastChangeEnumerationStatusResponseOutputWithContext(ctx context.Context) CloudEndpointLastChangeEnumerationStatusResponseOutput {
+	return o
+}
+
+// Timestamp when change enumeration completed
+func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) CompletedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointLastChangeEnumerationStatusResponse) string { return v.CompletedTimestamp }).(pulumi.StringOutput)
+}
+
+// Count of directories in the namespace
+func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) NamespaceDirectoriesCount() pulumi.Float64Output {
+	return o.ApplyT(func(v CloudEndpointLastChangeEnumerationStatusResponse) float64 { return v.NamespaceDirectoriesCount }).(pulumi.Float64Output)
+}
+
+// Count of files in the namespace
+func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) NamespaceFilesCount() pulumi.Float64Output {
+	return o.ApplyT(func(v CloudEndpointLastChangeEnumerationStatusResponse) float64 { return v.NamespaceFilesCount }).(pulumi.Float64Output)
+}
+
+// Namespace size in bytes
+func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) NamespaceSizeBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v CloudEndpointLastChangeEnumerationStatusResponse) float64 { return v.NamespaceSizeBytes }).(pulumi.Float64Output)
+}
+
+// Timestamp of when change enumeration is expected to run again
+func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) NextRunTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointLastChangeEnumerationStatusResponse) string { return v.NextRunTimestamp }).(pulumi.StringOutput)
+}
+
+// Timestamp when change enumeration started
+func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) StartedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointLastChangeEnumerationStatusResponse) string { return v.StartedTimestamp }).(pulumi.StringOutput)
+}
+
 // Server endpoint cloud tiering status object.
 type CloudTieringCachePerformanceResponse struct {
 	// Count of bytes that were served from the local server
@@ -128,6 +343,39 @@ func (o CloudTieringFilesNotTieringResponseOutput) LastUpdatedTimestamp() pulumi
 // Last cloud tiering result (HResult)
 func (o CloudTieringFilesNotTieringResponseOutput) TotalFileCount() pulumi.Float64Output {
 	return o.ApplyT(func(v CloudTieringFilesNotTieringResponse) float64 { return v.TotalFileCount }).(pulumi.Float64Output)
+}
+
+// Information regarding the low disk mode state
+type CloudTieringLowDiskModeResponse struct {
+	// Last updated timestamp
+	LastUpdatedTimestamp string `pulumi:"lastUpdatedTimestamp"`
+	// Low disk mode state
+	State string `pulumi:"state"`
+}
+
+// Information regarding the low disk mode state
+type CloudTieringLowDiskModeResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudTieringLowDiskModeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudTieringLowDiskModeResponse)(nil)).Elem()
+}
+
+func (o CloudTieringLowDiskModeResponseOutput) ToCloudTieringLowDiskModeResponseOutput() CloudTieringLowDiskModeResponseOutput {
+	return o
+}
+
+func (o CloudTieringLowDiskModeResponseOutput) ToCloudTieringLowDiskModeResponseOutputWithContext(ctx context.Context) CloudTieringLowDiskModeResponseOutput {
+	return o
+}
+
+// Last updated timestamp
+func (o CloudTieringLowDiskModeResponseOutput) LastUpdatedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudTieringLowDiskModeResponse) string { return v.LastUpdatedTimestamp }).(pulumi.StringOutput)
+}
+
+// Low disk mode state
+func (o CloudTieringLowDiskModeResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudTieringLowDiskModeResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Server endpoint cloud tiering status object.
@@ -296,6 +544,8 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -340,6 +590,11 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 // The provisioning state of the private endpoint connection resource.
 func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -540,6 +795,53 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringP
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Background data download activity object
+type ServerEndpointBackgroundDataDownloadActivityResponse struct {
+	// Running count of bytes downloaded
+	DownloadedBytes float64 `pulumi:"downloadedBytes"`
+	// Progress percentage
+	PercentProgress int `pulumi:"percentProgress"`
+	// Timestamp when the operation started
+	StartedTimestamp string `pulumi:"startedTimestamp"`
+	// Timestamp when properties were updated
+	Timestamp string `pulumi:"timestamp"`
+}
+
+// Background data download activity object
+type ServerEndpointBackgroundDataDownloadActivityResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerEndpointBackgroundDataDownloadActivityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerEndpointBackgroundDataDownloadActivityResponse)(nil)).Elem()
+}
+
+func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) ToServerEndpointBackgroundDataDownloadActivityResponseOutput() ServerEndpointBackgroundDataDownloadActivityResponseOutput {
+	return o
+}
+
+func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) ToServerEndpointBackgroundDataDownloadActivityResponseOutputWithContext(ctx context.Context) ServerEndpointBackgroundDataDownloadActivityResponseOutput {
+	return o
+}
+
+// Running count of bytes downloaded
+func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) DownloadedBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v ServerEndpointBackgroundDataDownloadActivityResponse) float64 { return v.DownloadedBytes }).(pulumi.Float64Output)
+}
+
+// Progress percentage
+func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) PercentProgress() pulumi.IntOutput {
+	return o.ApplyT(func(v ServerEndpointBackgroundDataDownloadActivityResponse) int { return v.PercentProgress }).(pulumi.IntOutput)
+}
+
+// Timestamp when the operation started
+func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) StartedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerEndpointBackgroundDataDownloadActivityResponse) string { return v.StartedTimestamp }).(pulumi.StringOutput)
+}
+
+// Timestamp when properties were updated
+func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) Timestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerEndpointBackgroundDataDownloadActivityResponse) string { return v.Timestamp }).(pulumi.StringOutput)
+}
+
 // Server endpoint cloud tiering status object.
 type ServerEndpointCloudTieringStatusResponse struct {
 	// Information regarding how well the local cache on the server is performing.
@@ -558,6 +860,8 @@ type ServerEndpointCloudTieringStatusResponse struct {
 	LastSuccessTimestamp string `pulumi:"lastSuccessTimestamp"`
 	// Last updated timestamp
 	LastUpdatedTimestamp string `pulumi:"lastUpdatedTimestamp"`
+	// Information regarding the low disk mode state
+	LowDiskMode CloudTieringLowDiskModeResponse `pulumi:"lowDiskMode"`
 	// Information regarding how much local space cloud tiering is saving.
 	SpaceSavings CloudTieringSpaceSavingsResponse `pulumi:"spaceSavings"`
 	// Status of the volume free space policy
@@ -623,6 +927,11 @@ func (o ServerEndpointCloudTieringStatusResponseOutput) LastSuccessTimestamp() p
 // Last updated timestamp
 func (o ServerEndpointCloudTieringStatusResponseOutput) LastUpdatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerEndpointCloudTieringStatusResponse) string { return v.LastUpdatedTimestamp }).(pulumi.StringOutput)
+}
+
+// Information regarding the low disk mode state
+func (o ServerEndpointCloudTieringStatusResponseOutput) LowDiskMode() CloudTieringLowDiskModeResponseOutput {
+	return o.ApplyT(func(v ServerEndpointCloudTieringStatusResponse) CloudTieringLowDiskModeResponse { return v.LowDiskMode }).(CloudTieringLowDiskModeResponseOutput)
 }
 
 // Information regarding how much local space cloud tiering is saving.
@@ -800,6 +1109,8 @@ type ServerEndpointSyncActivityStatusResponse struct {
 	AppliedItemCount float64 `pulumi:"appliedItemCount"`
 	// Per item error count
 	PerItemErrorCount float64 `pulumi:"perItemErrorCount"`
+	// Session minutes remaining (if available)
+	SessionMinutesRemaining int `pulumi:"sessionMinutesRemaining"`
 	// Sync mode
 	SyncMode string `pulumi:"syncMode"`
 	// Timestamp when properties were updated
@@ -838,6 +1149,11 @@ func (o ServerEndpointSyncActivityStatusResponseOutput) AppliedItemCount() pulum
 // Per item error count
 func (o ServerEndpointSyncActivityStatusResponseOutput) PerItemErrorCount() pulumi.Float64Output {
 	return o.ApplyT(func(v ServerEndpointSyncActivityStatusResponse) float64 { return v.PerItemErrorCount }).(pulumi.Float64Output)
+}
+
+// Session minutes remaining (if available)
+func (o ServerEndpointSyncActivityStatusResponseOutput) SessionMinutesRemaining() pulumi.IntOutput {
+	return o.ApplyT(func(v ServerEndpointSyncActivityStatusResponse) int { return v.SessionMinutesRemaining }).(pulumi.IntOutput)
 }
 
 // Sync mode
@@ -939,6 +1255,8 @@ func (o ServerEndpointSyncSessionStatusResponseOutput) TransientFilesNotSyncingC
 
 // Server Endpoint sync status
 type ServerEndpointSyncStatusResponse struct {
+	// Background data download activity
+	BackgroundDataDownloadActivity ServerEndpointBackgroundDataDownloadActivityResponse `pulumi:"backgroundDataDownloadActivity"`
 	// Combined Health Status.
 	CombinedHealth string `pulumi:"combinedHealth"`
 	// Download sync activity
@@ -976,6 +1294,13 @@ func (o ServerEndpointSyncStatusResponseOutput) ToServerEndpointSyncStatusRespon
 
 func (o ServerEndpointSyncStatusResponseOutput) ToServerEndpointSyncStatusResponseOutputWithContext(ctx context.Context) ServerEndpointSyncStatusResponseOutput {
 	return o
+}
+
+// Background data download activity
+func (o ServerEndpointSyncStatusResponseOutput) BackgroundDataDownloadActivity() ServerEndpointBackgroundDataDownloadActivityResponseOutput {
+	return o.ApplyT(func(v ServerEndpointSyncStatusResponse) ServerEndpointBackgroundDataDownloadActivityResponse {
+		return v.BackgroundDataDownloadActivity
+	}).(ServerEndpointBackgroundDataDownloadActivityResponseOutput)
 }
 
 // Combined Health Status.
@@ -1041,10 +1366,75 @@ func (o ServerEndpointSyncStatusResponseOutput) UploadStatus() ServerEndpointSyn
 	}).(ServerEndpointSyncSessionStatusResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(CloudEndpointChangeEnumerationActivityResponseOutput{})
+	pulumi.RegisterOutputType(CloudEndpointChangeEnumerationStatusResponseOutput{})
+	pulumi.RegisterOutputType(CloudEndpointLastChangeEnumerationStatusResponseOutput{})
 	pulumi.RegisterOutputType(CloudTieringCachePerformanceResponseOutput{})
 	pulumi.RegisterOutputType(CloudTieringDatePolicyStatusResponseOutput{})
 	pulumi.RegisterOutputType(CloudTieringFilesNotTieringResponseOutput{})
+	pulumi.RegisterOutputType(CloudTieringLowDiskModeResponseOutput{})
 	pulumi.RegisterOutputType(CloudTieringSpaceSavingsResponseOutput{})
 	pulumi.RegisterOutputType(CloudTieringVolumeFreeSpacePolicyStatusResponseOutput{})
 	pulumi.RegisterOutputType(FilesNotTieringErrorResponseOutput{})
@@ -1055,6 +1445,7 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(ServerEndpointBackgroundDataDownloadActivityResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointCloudTieringStatusResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointFilesNotSyncingErrorResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointFilesNotSyncingErrorResponseArrayOutput{})
@@ -1064,4 +1455,5 @@ func init() {
 	pulumi.RegisterOutputType(ServerEndpointSyncActivityStatusResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointSyncSessionStatusResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointSyncStatusResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

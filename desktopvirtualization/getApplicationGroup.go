@@ -11,7 +11,7 @@ import (
 )
 
 // Get an application group.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-09.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	var rv LookupApplicationGroupResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getApplicationGroup", args, &rv, opts...)
@@ -51,14 +51,14 @@ type LookupApplicationGroupResult struct {
 	Location *string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
-	// The registration info of HostPool.
-	MigrationRequest *MigrationRequestPropertiesResponse `pulumi:"migrationRequest"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// ObjectId of ApplicationGroup. (internal use)
 	ObjectId string                                           `pulumi:"objectId"`
 	Plan     *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
 	Sku      *ResourceModelWithAllowedPropertySetResponseSku  `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -162,11 +162,6 @@ func (o LookupApplicationGroupResultOutput) ManagedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
 }
 
-// The registration info of HostPool.
-func (o LookupApplicationGroupResultOutput) MigrationRequest() MigrationRequestPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupApplicationGroupResult) *MigrationRequestPropertiesResponse { return v.MigrationRequest }).(MigrationRequestPropertiesResponsePtrOutput)
-}
-
 // The name of the resource
 func (o LookupApplicationGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.Name }).(pulumi.StringOutput)
@@ -183,6 +178,11 @@ func (o LookupApplicationGroupResultOutput) Plan() ResourceModelWithAllowedPrope
 
 func (o LookupApplicationGroupResultOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupApplicationGroupResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

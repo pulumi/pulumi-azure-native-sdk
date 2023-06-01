@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an authorization rule for a queue by rule name.
-//
-// Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
 func LookupQueueAuthorizationRule(ctx *pulumi.Context, args *LookupQueueAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupQueueAuthorizationRuleResult, error) {
 	var rv LookupQueueAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:servicebus/v20140901:getQueueAuthorizationRule", args, &rv, opts...)

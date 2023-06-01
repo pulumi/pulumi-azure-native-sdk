@@ -11,18 +11,6 @@ const (
 	EndpointTypeDst = EndpointType("dst")
 )
 
-// The service level of the file system
-type PoolServiceLevel string
-
-const (
-	// Standard service level
-	PoolServiceLevelStandard = PoolServiceLevel("Standard")
-	// Premium service level
-	PoolServiceLevelPremium = PoolServiceLevel("Premium")
-	// Ultra service level
-	PoolServiceLevelUltra = PoolServiceLevel("Ultra")
-)
-
 // Schedule
 type ReplicationSchedule string
 

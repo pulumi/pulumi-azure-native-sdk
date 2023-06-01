@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The resource representation of a rollout step.
-//
-// Deprecated: Version 2018-09-01-preview will be removed in v2 of the provider.
 type Step struct {
 	pulumi.CustomResourceState
 

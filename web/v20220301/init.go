@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,124 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:web/v20220301:AppServiceEnvironment":
-		r = &AppServiceEnvironment{}
 	case "azure-native:web/v20220301:AppServiceEnvironmentAseCustomDnsSuffixConfiguration":
 		r = &AppServiceEnvironmentAseCustomDnsSuffixConfiguration{}
-	case "azure-native:web/v20220301:AppServiceEnvironmentPrivateEndpointConnection":
-		r = &AppServiceEnvironmentPrivateEndpointConnection{}
-	case "azure-native:web/v20220301:AppServicePlan":
-		r = &AppServicePlan{}
-	case "azure-native:web/v20220301:AppServicePlanRouteForVnet":
-		r = &AppServicePlanRouteForVnet{}
-	case "azure-native:web/v20220301:Certificate":
-		r = &Certificate{}
-	case "azure-native:web/v20220301:ContainerApp":
-		r = &ContainerApp{}
-	case "azure-native:web/v20220301:KubeEnvironment":
-		r = &KubeEnvironment{}
-	case "azure-native:web/v20220301:StaticSite":
-		r = &StaticSite{}
-	case "azure-native:web/v20220301:StaticSiteCustomDomain":
-		r = &StaticSiteCustomDomain{}
 	case "azure-native:web/v20220301:StaticSiteLinkedBackend":
 		r = &StaticSiteLinkedBackend{}
 	case "azure-native:web/v20220301:StaticSiteLinkedBackendForBuild":
 		r = &StaticSiteLinkedBackendForBuild{}
-	case "azure-native:web/v20220301:StaticSitePrivateEndpointConnection":
-		r = &StaticSitePrivateEndpointConnection{}
-	case "azure-native:web/v20220301:StaticSiteUserProvidedFunctionAppForStaticSite":
-		r = &StaticSiteUserProvidedFunctionAppForStaticSite{}
-	case "azure-native:web/v20220301:StaticSiteUserProvidedFunctionAppForStaticSiteBuild":
-		r = &StaticSiteUserProvidedFunctionAppForStaticSiteBuild{}
-	case "azure-native:web/v20220301:WebApp":
-		r = &WebApp{}
-	case "azure-native:web/v20220301:WebAppApplicationSettings":
-		r = &WebAppApplicationSettings{}
-	case "azure-native:web/v20220301:WebAppApplicationSettingsSlot":
-		r = &WebAppApplicationSettingsSlot{}
-	case "azure-native:web/v20220301:WebAppAuthSettings":
-		r = &WebAppAuthSettings{}
-	case "azure-native:web/v20220301:WebAppAuthSettingsSlot":
-		r = &WebAppAuthSettingsSlot{}
-	case "azure-native:web/v20220301:WebAppAzureStorageAccounts":
-		r = &WebAppAzureStorageAccounts{}
-	case "azure-native:web/v20220301:WebAppAzureStorageAccountsSlot":
-		r = &WebAppAzureStorageAccountsSlot{}
-	case "azure-native:web/v20220301:WebAppBackupConfiguration":
-		r = &WebAppBackupConfiguration{}
-	case "azure-native:web/v20220301:WebAppBackupConfigurationSlot":
-		r = &WebAppBackupConfigurationSlot{}
-	case "azure-native:web/v20220301:WebAppConnectionStrings":
-		r = &WebAppConnectionStrings{}
-	case "azure-native:web/v20220301:WebAppConnectionStringsSlot":
-		r = &WebAppConnectionStringsSlot{}
-	case "azure-native:web/v20220301:WebAppDeployment":
-		r = &WebAppDeployment{}
-	case "azure-native:web/v20220301:WebAppDeploymentSlot":
-		r = &WebAppDeploymentSlot{}
-	case "azure-native:web/v20220301:WebAppDiagnosticLogsConfiguration":
-		r = &WebAppDiagnosticLogsConfiguration{}
-	case "azure-native:web/v20220301:WebAppDomainOwnershipIdentifier":
-		r = &WebAppDomainOwnershipIdentifier{}
-	case "azure-native:web/v20220301:WebAppDomainOwnershipIdentifierSlot":
-		r = &WebAppDomainOwnershipIdentifierSlot{}
-	case "azure-native:web/v20220301:WebAppFunction":
-		r = &WebAppFunction{}
-	case "azure-native:web/v20220301:WebAppHostNameBinding":
-		r = &WebAppHostNameBinding{}
-	case "azure-native:web/v20220301:WebAppHostNameBindingSlot":
-		r = &WebAppHostNameBindingSlot{}
-	case "azure-native:web/v20220301:WebAppHybridConnection":
-		r = &WebAppHybridConnection{}
-	case "azure-native:web/v20220301:WebAppHybridConnectionSlot":
-		r = &WebAppHybridConnectionSlot{}
-	case "azure-native:web/v20220301:WebAppInstanceFunctionSlot":
-		r = &WebAppInstanceFunctionSlot{}
-	case "azure-native:web/v20220301:WebAppMetadata":
-		r = &WebAppMetadata{}
-	case "azure-native:web/v20220301:WebAppMetadataSlot":
-		r = &WebAppMetadataSlot{}
-	case "azure-native:web/v20220301:WebAppPremierAddOn":
-		r = &WebAppPremierAddOn{}
-	case "azure-native:web/v20220301:WebAppPremierAddOnSlot":
-		r = &WebAppPremierAddOnSlot{}
-	case "azure-native:web/v20220301:WebAppPrivateEndpointConnection":
-		r = &WebAppPrivateEndpointConnection{}
-	case "azure-native:web/v20220301:WebAppPrivateEndpointConnectionSlot":
-		r = &WebAppPrivateEndpointConnectionSlot{}
-	case "azure-native:web/v20220301:WebAppPublicCertificate":
-		r = &WebAppPublicCertificate{}
-	case "azure-native:web/v20220301:WebAppPublicCertificateSlot":
-		r = &WebAppPublicCertificateSlot{}
-	case "azure-native:web/v20220301:WebAppRelayServiceConnection":
-		r = &WebAppRelayServiceConnection{}
-	case "azure-native:web/v20220301:WebAppRelayServiceConnectionSlot":
-		r = &WebAppRelayServiceConnectionSlot{}
-	case "azure-native:web/v20220301:WebAppSiteExtension":
-		r = &WebAppSiteExtension{}
-	case "azure-native:web/v20220301:WebAppSiteExtensionSlot":
-		r = &WebAppSiteExtensionSlot{}
-	case "azure-native:web/v20220301:WebAppSitePushSettings":
-		r = &WebAppSitePushSettings{}
-	case "azure-native:web/v20220301:WebAppSitePushSettingsSlot":
-		r = &WebAppSitePushSettingsSlot{}
-	case "azure-native:web/v20220301:WebAppSlot":
-		r = &WebAppSlot{}
-	case "azure-native:web/v20220301:WebAppSlotConfigurationNames":
-		r = &WebAppSlotConfigurationNames{}
-	case "azure-native:web/v20220301:WebAppSourceControl":
-		r = &WebAppSourceControl{}
-	case "azure-native:web/v20220301:WebAppSourceControlSlot":
-		r = &WebAppSourceControlSlot{}
-	case "azure-native:web/v20220301:WebAppSwiftVirtualNetworkConnection":
-		r = &WebAppSwiftVirtualNetworkConnection{}
-	case "azure-native:web/v20220301:WebAppSwiftVirtualNetworkConnectionSlot":
-		r = &WebAppSwiftVirtualNetworkConnectionSlot{}
-	case "azure-native:web/v20220301:WebAppVnetConnection":
-		r = &WebAppVnetConnection{}
-	case "azure-native:web/v20220301:WebAppVnetConnectionSlot":
-		r = &WebAppVnetConnectionSlot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

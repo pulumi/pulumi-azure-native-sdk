@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An HCX Enterprise Site resource
-// API Version: 2020-03-20.
+// API Version: 2022-05-01.
+// Previous API Version: 2020-03-20. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type HcxEnterpriseSite struct {
 	pulumi.CustomResourceState
 

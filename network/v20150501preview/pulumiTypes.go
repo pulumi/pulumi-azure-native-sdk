@@ -3001,7 +3001,7 @@ func (o DhcpOptionsResponsePtrOutput) DnsServers() pulumi.StringArrayOutput {
 }
 
 // Authorization in a ExpressRouteCircuit resource
-type ExpressRouteCircuitAuthorizationType struct {
+type ExpressRouteCircuitAuthorization struct {
 	// Gets or sets the authorization key
 	AuthorizationKey *string `pulumi:"authorizationKey"`
 	// Gets or sets AuthorizationUseStatus
@@ -3016,19 +3016,19 @@ type ExpressRouteCircuitAuthorizationType struct {
 	ProvisioningState *string `pulumi:"provisioningState"`
 }
 
-// ExpressRouteCircuitAuthorizationTypeInput is an input type that accepts ExpressRouteCircuitAuthorizationTypeArgs and ExpressRouteCircuitAuthorizationTypeOutput values.
-// You can construct a concrete instance of `ExpressRouteCircuitAuthorizationTypeInput` via:
+// ExpressRouteCircuitAuthorizationInput is an input type that accepts ExpressRouteCircuitAuthorizationArgs and ExpressRouteCircuitAuthorizationOutput values.
+// You can construct a concrete instance of `ExpressRouteCircuitAuthorizationInput` via:
 //
-//	ExpressRouteCircuitAuthorizationTypeArgs{...}
-type ExpressRouteCircuitAuthorizationTypeInput interface {
+//	ExpressRouteCircuitAuthorizationArgs{...}
+type ExpressRouteCircuitAuthorizationInput interface {
 	pulumi.Input
 
-	ToExpressRouteCircuitAuthorizationTypeOutput() ExpressRouteCircuitAuthorizationTypeOutput
-	ToExpressRouteCircuitAuthorizationTypeOutputWithContext(context.Context) ExpressRouteCircuitAuthorizationTypeOutput
+	ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput
+	ToExpressRouteCircuitAuthorizationOutputWithContext(context.Context) ExpressRouteCircuitAuthorizationOutput
 }
 
 // Authorization in a ExpressRouteCircuit resource
-type ExpressRouteCircuitAuthorizationTypeArgs struct {
+type ExpressRouteCircuitAuthorizationArgs struct {
 	// Gets or sets the authorization key
 	AuthorizationKey pulumi.StringPtrInput `pulumi:"authorizationKey"`
 	// Gets or sets AuthorizationUseStatus
@@ -3043,106 +3043,106 @@ type ExpressRouteCircuitAuthorizationTypeArgs struct {
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 }
 
-func (ExpressRouteCircuitAuthorizationTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteCircuitAuthorizationType)(nil)).Elem()
+func (ExpressRouteCircuitAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitAuthorization)(nil)).Elem()
 }
 
-func (i ExpressRouteCircuitAuthorizationTypeArgs) ToExpressRouteCircuitAuthorizationTypeOutput() ExpressRouteCircuitAuthorizationTypeOutput {
-	return i.ToExpressRouteCircuitAuthorizationTypeOutputWithContext(context.Background())
+func (i ExpressRouteCircuitAuthorizationArgs) ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput {
+	return i.ToExpressRouteCircuitAuthorizationOutputWithContext(context.Background())
 }
 
-func (i ExpressRouteCircuitAuthorizationTypeArgs) ToExpressRouteCircuitAuthorizationTypeOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationTypeOutput)
+func (i ExpressRouteCircuitAuthorizationArgs) ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationOutput)
 }
 
-// ExpressRouteCircuitAuthorizationTypeArrayInput is an input type that accepts ExpressRouteCircuitAuthorizationTypeArray and ExpressRouteCircuitAuthorizationTypeArrayOutput values.
-// You can construct a concrete instance of `ExpressRouteCircuitAuthorizationTypeArrayInput` via:
+// ExpressRouteCircuitAuthorizationArrayInput is an input type that accepts ExpressRouteCircuitAuthorizationArray and ExpressRouteCircuitAuthorizationArrayOutput values.
+// You can construct a concrete instance of `ExpressRouteCircuitAuthorizationArrayInput` via:
 //
-//	ExpressRouteCircuitAuthorizationTypeArray{ ExpressRouteCircuitAuthorizationTypeArgs{...} }
-type ExpressRouteCircuitAuthorizationTypeArrayInput interface {
+//	ExpressRouteCircuitAuthorizationArray{ ExpressRouteCircuitAuthorizationArgs{...} }
+type ExpressRouteCircuitAuthorizationArrayInput interface {
 	pulumi.Input
 
-	ToExpressRouteCircuitAuthorizationTypeArrayOutput() ExpressRouteCircuitAuthorizationTypeArrayOutput
-	ToExpressRouteCircuitAuthorizationTypeArrayOutputWithContext(context.Context) ExpressRouteCircuitAuthorizationTypeArrayOutput
+	ToExpressRouteCircuitAuthorizationArrayOutput() ExpressRouteCircuitAuthorizationArrayOutput
+	ToExpressRouteCircuitAuthorizationArrayOutputWithContext(context.Context) ExpressRouteCircuitAuthorizationArrayOutput
 }
 
-type ExpressRouteCircuitAuthorizationTypeArray []ExpressRouteCircuitAuthorizationTypeInput
+type ExpressRouteCircuitAuthorizationArray []ExpressRouteCircuitAuthorizationInput
 
-func (ExpressRouteCircuitAuthorizationTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExpressRouteCircuitAuthorizationType)(nil)).Elem()
+func (ExpressRouteCircuitAuthorizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExpressRouteCircuitAuthorization)(nil)).Elem()
 }
 
-func (i ExpressRouteCircuitAuthorizationTypeArray) ToExpressRouteCircuitAuthorizationTypeArrayOutput() ExpressRouteCircuitAuthorizationTypeArrayOutput {
-	return i.ToExpressRouteCircuitAuthorizationTypeArrayOutputWithContext(context.Background())
+func (i ExpressRouteCircuitAuthorizationArray) ToExpressRouteCircuitAuthorizationArrayOutput() ExpressRouteCircuitAuthorizationArrayOutput {
+	return i.ToExpressRouteCircuitAuthorizationArrayOutputWithContext(context.Background())
 }
 
-func (i ExpressRouteCircuitAuthorizationTypeArray) ToExpressRouteCircuitAuthorizationTypeArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationTypeArrayOutput)
+func (i ExpressRouteCircuitAuthorizationArray) ToExpressRouteCircuitAuthorizationArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationArrayOutput)
 }
 
 // Authorization in a ExpressRouteCircuit resource
-type ExpressRouteCircuitAuthorizationTypeOutput struct{ *pulumi.OutputState }
+type ExpressRouteCircuitAuthorizationOutput struct{ *pulumi.OutputState }
 
-func (ExpressRouteCircuitAuthorizationTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteCircuitAuthorizationType)(nil)).Elem()
+func (ExpressRouteCircuitAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitAuthorization)(nil)).Elem()
 }
 
-func (o ExpressRouteCircuitAuthorizationTypeOutput) ToExpressRouteCircuitAuthorizationTypeOutput() ExpressRouteCircuitAuthorizationTypeOutput {
+func (o ExpressRouteCircuitAuthorizationOutput) ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput {
 	return o
 }
 
-func (o ExpressRouteCircuitAuthorizationTypeOutput) ToExpressRouteCircuitAuthorizationTypeOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationTypeOutput {
+func (o ExpressRouteCircuitAuthorizationOutput) ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput {
 	return o
 }
 
 // Gets or sets the authorization key
-func (o ExpressRouteCircuitAuthorizationTypeOutput) AuthorizationKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitAuthorizationType) *string { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitAuthorizationOutput) AuthorizationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitAuthorization) *string { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets AuthorizationUseStatus
-func (o ExpressRouteCircuitAuthorizationTypeOutput) AuthorizationUseStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitAuthorizationType) *string { return v.AuthorizationUseStatus }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitAuthorizationOutput) AuthorizationUseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitAuthorization) *string { return v.AuthorizationUseStatus }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated
-func (o ExpressRouteCircuitAuthorizationTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitAuthorizationType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitAuthorizationOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitAuthorization) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Resource Id
-func (o ExpressRouteCircuitAuthorizationTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitAuthorizationType) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitAuthorizationOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitAuthorization) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Gets name of the resource that is unique within a resource group. This name can be used to access the resource
-func (o ExpressRouteCircuitAuthorizationTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitAuthorizationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitAuthorizationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitAuthorization) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
-func (o ExpressRouteCircuitAuthorizationTypeOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitAuthorizationType) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitAuthorizationOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitAuthorization) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-type ExpressRouteCircuitAuthorizationTypeArrayOutput struct{ *pulumi.OutputState }
+type ExpressRouteCircuitAuthorizationArrayOutput struct{ *pulumi.OutputState }
 
-func (ExpressRouteCircuitAuthorizationTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExpressRouteCircuitAuthorizationType)(nil)).Elem()
+func (ExpressRouteCircuitAuthorizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExpressRouteCircuitAuthorization)(nil)).Elem()
 }
 
-func (o ExpressRouteCircuitAuthorizationTypeArrayOutput) ToExpressRouteCircuitAuthorizationTypeArrayOutput() ExpressRouteCircuitAuthorizationTypeArrayOutput {
+func (o ExpressRouteCircuitAuthorizationArrayOutput) ToExpressRouteCircuitAuthorizationArrayOutput() ExpressRouteCircuitAuthorizationArrayOutput {
 	return o
 }
 
-func (o ExpressRouteCircuitAuthorizationTypeArrayOutput) ToExpressRouteCircuitAuthorizationTypeArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationTypeArrayOutput {
+func (o ExpressRouteCircuitAuthorizationArrayOutput) ToExpressRouteCircuitAuthorizationArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationArrayOutput {
 	return o
 }
 
-func (o ExpressRouteCircuitAuthorizationTypeArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitAuthorizationTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteCircuitAuthorizationType {
-		return vs[0].([]ExpressRouteCircuitAuthorizationType)[vs[1].(int)]
-	}).(ExpressRouteCircuitAuthorizationTypeOutput)
+func (o ExpressRouteCircuitAuthorizationArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitAuthorizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteCircuitAuthorization {
+		return vs[0].([]ExpressRouteCircuitAuthorization)[vs[1].(int)]
+	}).(ExpressRouteCircuitAuthorizationOutput)
 }
 
 // Authorization in a ExpressRouteCircuit resource
@@ -3227,7 +3227,7 @@ func (o ExpressRouteCircuitAuthorizationResponseArrayOutput) Index(i pulumi.IntI
 }
 
 // Peering in a ExpressRouteCircuit resource
-type ExpressRouteCircuitPeeringType struct {
+type ExpressRouteCircuitPeering struct {
 	// Gets or sets the azure ASN
 	AzureASN *int `pulumi:"azureASN"`
 	// A unique read-only string that changes whenever the resource is updated
@@ -3262,19 +3262,19 @@ type ExpressRouteCircuitPeeringType struct {
 	VlanId *int `pulumi:"vlanId"`
 }
 
-// ExpressRouteCircuitPeeringTypeInput is an input type that accepts ExpressRouteCircuitPeeringTypeArgs and ExpressRouteCircuitPeeringTypeOutput values.
-// You can construct a concrete instance of `ExpressRouteCircuitPeeringTypeInput` via:
+// ExpressRouteCircuitPeeringInput is an input type that accepts ExpressRouteCircuitPeeringArgs and ExpressRouteCircuitPeeringOutput values.
+// You can construct a concrete instance of `ExpressRouteCircuitPeeringInput` via:
 //
-//	ExpressRouteCircuitPeeringTypeArgs{...}
-type ExpressRouteCircuitPeeringTypeInput interface {
+//	ExpressRouteCircuitPeeringArgs{...}
+type ExpressRouteCircuitPeeringInput interface {
 	pulumi.Input
 
-	ToExpressRouteCircuitPeeringTypeOutput() ExpressRouteCircuitPeeringTypeOutput
-	ToExpressRouteCircuitPeeringTypeOutputWithContext(context.Context) ExpressRouteCircuitPeeringTypeOutput
+	ToExpressRouteCircuitPeeringOutput() ExpressRouteCircuitPeeringOutput
+	ToExpressRouteCircuitPeeringOutputWithContext(context.Context) ExpressRouteCircuitPeeringOutput
 }
 
 // Peering in a ExpressRouteCircuit resource
-type ExpressRouteCircuitPeeringTypeArgs struct {
+type ExpressRouteCircuitPeeringArgs struct {
 	// Gets or sets the azure ASN
 	AzureASN pulumi.IntPtrInput `pulumi:"azureASN"`
 	// A unique read-only string that changes whenever the resource is updated
@@ -3309,158 +3309,156 @@ type ExpressRouteCircuitPeeringTypeArgs struct {
 	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
 }
 
-func (ExpressRouteCircuitPeeringTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteCircuitPeeringType)(nil)).Elem()
+func (ExpressRouteCircuitPeeringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitPeering)(nil)).Elem()
 }
 
-func (i ExpressRouteCircuitPeeringTypeArgs) ToExpressRouteCircuitPeeringTypeOutput() ExpressRouteCircuitPeeringTypeOutput {
-	return i.ToExpressRouteCircuitPeeringTypeOutputWithContext(context.Background())
+func (i ExpressRouteCircuitPeeringArgs) ToExpressRouteCircuitPeeringOutput() ExpressRouteCircuitPeeringOutput {
+	return i.ToExpressRouteCircuitPeeringOutputWithContext(context.Background())
 }
 
-func (i ExpressRouteCircuitPeeringTypeArgs) ToExpressRouteCircuitPeeringTypeOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringTypeOutput)
+func (i ExpressRouteCircuitPeeringArgs) ToExpressRouteCircuitPeeringOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringOutput)
 }
 
-// ExpressRouteCircuitPeeringTypeArrayInput is an input type that accepts ExpressRouteCircuitPeeringTypeArray and ExpressRouteCircuitPeeringTypeArrayOutput values.
-// You can construct a concrete instance of `ExpressRouteCircuitPeeringTypeArrayInput` via:
+// ExpressRouteCircuitPeeringArrayInput is an input type that accepts ExpressRouteCircuitPeeringArray and ExpressRouteCircuitPeeringArrayOutput values.
+// You can construct a concrete instance of `ExpressRouteCircuitPeeringArrayInput` via:
 //
-//	ExpressRouteCircuitPeeringTypeArray{ ExpressRouteCircuitPeeringTypeArgs{...} }
-type ExpressRouteCircuitPeeringTypeArrayInput interface {
+//	ExpressRouteCircuitPeeringArray{ ExpressRouteCircuitPeeringArgs{...} }
+type ExpressRouteCircuitPeeringArrayInput interface {
 	pulumi.Input
 
-	ToExpressRouteCircuitPeeringTypeArrayOutput() ExpressRouteCircuitPeeringTypeArrayOutput
-	ToExpressRouteCircuitPeeringTypeArrayOutputWithContext(context.Context) ExpressRouteCircuitPeeringTypeArrayOutput
+	ToExpressRouteCircuitPeeringArrayOutput() ExpressRouteCircuitPeeringArrayOutput
+	ToExpressRouteCircuitPeeringArrayOutputWithContext(context.Context) ExpressRouteCircuitPeeringArrayOutput
 }
 
-type ExpressRouteCircuitPeeringTypeArray []ExpressRouteCircuitPeeringTypeInput
+type ExpressRouteCircuitPeeringArray []ExpressRouteCircuitPeeringInput
 
-func (ExpressRouteCircuitPeeringTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExpressRouteCircuitPeeringType)(nil)).Elem()
+func (ExpressRouteCircuitPeeringArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExpressRouteCircuitPeering)(nil)).Elem()
 }
 
-func (i ExpressRouteCircuitPeeringTypeArray) ToExpressRouteCircuitPeeringTypeArrayOutput() ExpressRouteCircuitPeeringTypeArrayOutput {
-	return i.ToExpressRouteCircuitPeeringTypeArrayOutputWithContext(context.Background())
+func (i ExpressRouteCircuitPeeringArray) ToExpressRouteCircuitPeeringArrayOutput() ExpressRouteCircuitPeeringArrayOutput {
+	return i.ToExpressRouteCircuitPeeringArrayOutputWithContext(context.Background())
 }
 
-func (i ExpressRouteCircuitPeeringTypeArray) ToExpressRouteCircuitPeeringTypeArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringTypeArrayOutput)
+func (i ExpressRouteCircuitPeeringArray) ToExpressRouteCircuitPeeringArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringArrayOutput)
 }
 
 // Peering in a ExpressRouteCircuit resource
-type ExpressRouteCircuitPeeringTypeOutput struct{ *pulumi.OutputState }
+type ExpressRouteCircuitPeeringOutput struct{ *pulumi.OutputState }
 
-func (ExpressRouteCircuitPeeringTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteCircuitPeeringType)(nil)).Elem()
+func (ExpressRouteCircuitPeeringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitPeering)(nil)).Elem()
 }
 
-func (o ExpressRouteCircuitPeeringTypeOutput) ToExpressRouteCircuitPeeringTypeOutput() ExpressRouteCircuitPeeringTypeOutput {
+func (o ExpressRouteCircuitPeeringOutput) ToExpressRouteCircuitPeeringOutput() ExpressRouteCircuitPeeringOutput {
 	return o
 }
 
-func (o ExpressRouteCircuitPeeringTypeOutput) ToExpressRouteCircuitPeeringTypeOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringTypeOutput {
+func (o ExpressRouteCircuitPeeringOutput) ToExpressRouteCircuitPeeringOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringOutput {
 	return o
 }
 
 // Gets or sets the azure ASN
-func (o ExpressRouteCircuitPeeringTypeOutput) AzureASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *int { return v.AzureASN }).(pulumi.IntPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) AzureASN() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *int { return v.AzureASN }).(pulumi.IntPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated
-func (o ExpressRouteCircuitPeeringTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Resource Id
-func (o ExpressRouteCircuitPeeringTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the Microsoft peering config
-func (o ExpressRouteCircuitPeeringTypeOutput) MicrosoftPeeringConfig() ExpressRouteCircuitPeeringConfigPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *ExpressRouteCircuitPeeringConfig {
-		return v.MicrosoftPeeringConfig
-	}).(ExpressRouteCircuitPeeringConfigPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) MicrosoftPeeringConfig() ExpressRouteCircuitPeeringConfigPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *ExpressRouteCircuitPeeringConfig { return v.MicrosoftPeeringConfig }).(ExpressRouteCircuitPeeringConfigPtrOutput)
 }
 
 // Gets name of the resource that is unique within a resource group. This name can be used to access the resource
-func (o ExpressRouteCircuitPeeringTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the peer ASN
-func (o ExpressRouteCircuitPeeringTypeOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *int { return v.PeerASN }).(pulumi.IntPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) PeerASN() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *int { return v.PeerASN }).(pulumi.IntPtrOutput)
 }
 
 // Gets or sets PeeringType
-func (o ExpressRouteCircuitPeeringTypeOutput) PeeringType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.PeeringType }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) PeeringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.PeeringType }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the primary port
-func (o ExpressRouteCircuitPeeringTypeOutput) PrimaryAzurePort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.PrimaryAzurePort }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) PrimaryAzurePort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.PrimaryAzurePort }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the primary address prefix
-func (o ExpressRouteCircuitPeeringTypeOutput) PrimaryPeerAddressPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.PrimaryPeerAddressPrefix }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) PrimaryPeerAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.PrimaryPeerAddressPrefix }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
-func (o ExpressRouteCircuitPeeringTypeOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the secondary port
-func (o ExpressRouteCircuitPeeringTypeOutput) SecondaryAzurePort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.SecondaryAzurePort }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) SecondaryAzurePort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.SecondaryAzurePort }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the secondary address prefix
-func (o ExpressRouteCircuitPeeringTypeOutput) SecondaryPeerAddressPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.SecondaryPeerAddressPrefix }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) SecondaryPeerAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.SecondaryPeerAddressPrefix }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the shared key
-func (o ExpressRouteCircuitPeeringTypeOutput) SharedKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.SharedKey }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) SharedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.SharedKey }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets state of Peering
-func (o ExpressRouteCircuitPeeringTypeOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // Gets or peering stats
-func (o ExpressRouteCircuitPeeringTypeOutput) Stats() ExpressRouteCircuitStatsPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *ExpressRouteCircuitStats { return v.Stats }).(ExpressRouteCircuitStatsPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) Stats() ExpressRouteCircuitStatsPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *ExpressRouteCircuitStats { return v.Stats }).(ExpressRouteCircuitStatsPtrOutput)
 }
 
 // Gets or sets the vlan id
-func (o ExpressRouteCircuitPeeringTypeOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ExpressRouteCircuitPeeringType) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+func (o ExpressRouteCircuitPeeringOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExpressRouteCircuitPeering) *int { return v.VlanId }).(pulumi.IntPtrOutput)
 }
 
-type ExpressRouteCircuitPeeringTypeArrayOutput struct{ *pulumi.OutputState }
+type ExpressRouteCircuitPeeringArrayOutput struct{ *pulumi.OutputState }
 
-func (ExpressRouteCircuitPeeringTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExpressRouteCircuitPeeringType)(nil)).Elem()
+func (ExpressRouteCircuitPeeringArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExpressRouteCircuitPeering)(nil)).Elem()
 }
 
-func (o ExpressRouteCircuitPeeringTypeArrayOutput) ToExpressRouteCircuitPeeringTypeArrayOutput() ExpressRouteCircuitPeeringTypeArrayOutput {
+func (o ExpressRouteCircuitPeeringArrayOutput) ToExpressRouteCircuitPeeringArrayOutput() ExpressRouteCircuitPeeringArrayOutput {
 	return o
 }
 
-func (o ExpressRouteCircuitPeeringTypeArrayOutput) ToExpressRouteCircuitPeeringTypeArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringTypeArrayOutput {
+func (o ExpressRouteCircuitPeeringArrayOutput) ToExpressRouteCircuitPeeringArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringArrayOutput {
 	return o
 }
 
-func (o ExpressRouteCircuitPeeringTypeArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitPeeringTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteCircuitPeeringType {
-		return vs[0].([]ExpressRouteCircuitPeeringType)[vs[1].(int)]
-	}).(ExpressRouteCircuitPeeringTypeOutput)
+func (o ExpressRouteCircuitPeeringArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitPeeringOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteCircuitPeering {
+		return vs[0].([]ExpressRouteCircuitPeering)[vs[1].(int)]
+	}).(ExpressRouteCircuitPeeringOutput)
 }
 
 // Specifies the peering config
@@ -7351,7 +7349,7 @@ func (o PublicIpAddressDnsSettingsResponsePtrOutput) ReverseFqdn() pulumi.String
 }
 
 // Route resource
-type RouteType struct {
+type Route struct {
 	// Gets or sets the destination CIDR to which the route applies.
 	AddressPrefix *string `pulumi:"addressPrefix"`
 	// A unique read-only string that changes whenever the resource is updated
@@ -7368,19 +7366,19 @@ type RouteType struct {
 	ProvisioningState *string `pulumi:"provisioningState"`
 }
 
-// RouteTypeInput is an input type that accepts RouteTypeArgs and RouteTypeOutput values.
-// You can construct a concrete instance of `RouteTypeInput` via:
+// RouteInput is an input type that accepts RouteArgs and RouteOutput values.
+// You can construct a concrete instance of `RouteInput` via:
 //
-//	RouteTypeArgs{...}
-type RouteTypeInput interface {
+//	RouteArgs{...}
+type RouteInput interface {
 	pulumi.Input
 
-	ToRouteTypeOutput() RouteTypeOutput
-	ToRouteTypeOutputWithContext(context.Context) RouteTypeOutput
+	ToRouteOutput() RouteOutput
+	ToRouteOutputWithContext(context.Context) RouteOutput
 }
 
 // Route resource
-type RouteTypeArgs struct {
+type RouteArgs struct {
 	// Gets or sets the destination CIDR to which the route applies.
 	AddressPrefix pulumi.StringPtrInput `pulumi:"addressPrefix"`
 	// A unique read-only string that changes whenever the resource is updated
@@ -7397,111 +7395,111 @@ type RouteTypeArgs struct {
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 }
 
-func (RouteTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteType)(nil)).Elem()
+func (RouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Route)(nil)).Elem()
 }
 
-func (i RouteTypeArgs) ToRouteTypeOutput() RouteTypeOutput {
-	return i.ToRouteTypeOutputWithContext(context.Background())
+func (i RouteArgs) ToRouteOutput() RouteOutput {
+	return i.ToRouteOutputWithContext(context.Background())
 }
 
-func (i RouteTypeArgs) ToRouteTypeOutputWithContext(ctx context.Context) RouteTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteTypeOutput)
+func (i RouteArgs) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteOutput)
 }
 
-// RouteTypeArrayInput is an input type that accepts RouteTypeArray and RouteTypeArrayOutput values.
-// You can construct a concrete instance of `RouteTypeArrayInput` via:
+// RouteArrayInput is an input type that accepts RouteArray and RouteArrayOutput values.
+// You can construct a concrete instance of `RouteArrayInput` via:
 //
-//	RouteTypeArray{ RouteTypeArgs{...} }
-type RouteTypeArrayInput interface {
+//	RouteArray{ RouteArgs{...} }
+type RouteArrayInput interface {
 	pulumi.Input
 
-	ToRouteTypeArrayOutput() RouteTypeArrayOutput
-	ToRouteTypeArrayOutputWithContext(context.Context) RouteTypeArrayOutput
+	ToRouteArrayOutput() RouteArrayOutput
+	ToRouteArrayOutputWithContext(context.Context) RouteArrayOutput
 }
 
-type RouteTypeArray []RouteTypeInput
+type RouteArray []RouteInput
 
-func (RouteTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteType)(nil)).Elem()
+func (RouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Route)(nil)).Elem()
 }
 
-func (i RouteTypeArray) ToRouteTypeArrayOutput() RouteTypeArrayOutput {
-	return i.ToRouteTypeArrayOutputWithContext(context.Background())
+func (i RouteArray) ToRouteArrayOutput() RouteArrayOutput {
+	return i.ToRouteArrayOutputWithContext(context.Background())
 }
 
-func (i RouteTypeArray) ToRouteTypeArrayOutputWithContext(ctx context.Context) RouteTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteTypeArrayOutput)
+func (i RouteArray) ToRouteArrayOutputWithContext(ctx context.Context) RouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteArrayOutput)
 }
 
 // Route resource
-type RouteTypeOutput struct{ *pulumi.OutputState }
+type RouteOutput struct{ *pulumi.OutputState }
 
-func (RouteTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteType)(nil)).Elem()
+func (RouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Route)(nil)).Elem()
 }
 
-func (o RouteTypeOutput) ToRouteTypeOutput() RouteTypeOutput {
+func (o RouteOutput) ToRouteOutput() RouteOutput {
 	return o
 }
 
-func (o RouteTypeOutput) ToRouteTypeOutputWithContext(ctx context.Context) RouteTypeOutput {
+func (o RouteOutput) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 	return o
 }
 
 // Gets or sets the destination CIDR to which the route applies.
-func (o RouteTypeOutput) AddressPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteType) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+func (o RouteOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated
-func (o RouteTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o RouteOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Resource Id
-func (o RouteTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteType) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o RouteOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Gets name of the resource that is unique within a resource group. This name can be used to access the resource
-func (o RouteTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o RouteOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-func (o RouteTypeOutput) NextHopIpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteType) *string { return v.NextHopIpAddress }).(pulumi.StringPtrOutput)
+func (o RouteOutput) NextHopIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.NextHopIpAddress }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the type of Azure hop the packet should be sent to.
-func (o RouteTypeOutput) NextHopType() pulumi.StringOutput {
-	return o.ApplyT(func(v RouteType) string { return v.NextHopType }).(pulumi.StringOutput)
+func (o RouteOutput) NextHopType() pulumi.StringOutput {
+	return o.ApplyT(func(v Route) string { return v.NextHopType }).(pulumi.StringOutput)
 }
 
 // Gets or sets Provisioning state of the resource Updating/Deleting/Failed
-func (o RouteTypeOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteType) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o RouteOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-type RouteTypeArrayOutput struct{ *pulumi.OutputState }
+type RouteArrayOutput struct{ *pulumi.OutputState }
 
-func (RouteTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteType)(nil)).Elem()
+func (RouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Route)(nil)).Elem()
 }
 
-func (o RouteTypeArrayOutput) ToRouteTypeArrayOutput() RouteTypeArrayOutput {
+func (o RouteArrayOutput) ToRouteArrayOutput() RouteArrayOutput {
 	return o
 }
 
-func (o RouteTypeArrayOutput) ToRouteTypeArrayOutputWithContext(ctx context.Context) RouteTypeArrayOutput {
+func (o RouteArrayOutput) ToRouteArrayOutputWithContext(ctx context.Context) RouteArrayOutput {
 	return o
 }
 
-func (o RouteTypeArrayOutput) Index(i pulumi.IntInput) RouteTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteType {
-		return vs[0].([]RouteType)[vs[1].(int)]
-	}).(RouteTypeOutput)
+func (o RouteArrayOutput) Index(i pulumi.IntInput) RouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Route {
+		return vs[0].([]Route)[vs[1].(int)]
+	}).(RouteOutput)
 }
 
 // Route resource
@@ -7593,7 +7591,7 @@ func (o RouteResponseArrayOutput) Index(i pulumi.IntInput) RouteResponseOutput {
 }
 
 // Network security rule
-type SecurityRuleType struct {
+type SecurityRule struct {
 	// Gets or sets network traffic is allowed or denied. Possible values are 'Allow' and 'Deny'
 	Access string `pulumi:"access"`
 	// Gets or sets a description for this rule. Restricted to 140 chars.
@@ -7622,19 +7620,19 @@ type SecurityRuleType struct {
 	SourcePortRange *string `pulumi:"sourcePortRange"`
 }
 
-// SecurityRuleTypeInput is an input type that accepts SecurityRuleTypeArgs and SecurityRuleTypeOutput values.
-// You can construct a concrete instance of `SecurityRuleTypeInput` via:
+// SecurityRuleInput is an input type that accepts SecurityRuleArgs and SecurityRuleOutput values.
+// You can construct a concrete instance of `SecurityRuleInput` via:
 //
-//	SecurityRuleTypeArgs{...}
-type SecurityRuleTypeInput interface {
+//	SecurityRuleArgs{...}
+type SecurityRuleInput interface {
 	pulumi.Input
 
-	ToSecurityRuleTypeOutput() SecurityRuleTypeOutput
-	ToSecurityRuleTypeOutputWithContext(context.Context) SecurityRuleTypeOutput
+	ToSecurityRuleOutput() SecurityRuleOutput
+	ToSecurityRuleOutputWithContext(context.Context) SecurityRuleOutput
 }
 
 // Network security rule
-type SecurityRuleTypeArgs struct {
+type SecurityRuleArgs struct {
 	// Gets or sets network traffic is allowed or denied. Possible values are 'Allow' and 'Deny'
 	Access pulumi.StringInput `pulumi:"access"`
 	// Gets or sets a description for this rule. Restricted to 140 chars.
@@ -7663,141 +7661,141 @@ type SecurityRuleTypeArgs struct {
 	SourcePortRange pulumi.StringPtrInput `pulumi:"sourcePortRange"`
 }
 
-func (SecurityRuleTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityRuleType)(nil)).Elem()
+func (SecurityRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityRule)(nil)).Elem()
 }
 
-func (i SecurityRuleTypeArgs) ToSecurityRuleTypeOutput() SecurityRuleTypeOutput {
-	return i.ToSecurityRuleTypeOutputWithContext(context.Background())
+func (i SecurityRuleArgs) ToSecurityRuleOutput() SecurityRuleOutput {
+	return i.ToSecurityRuleOutputWithContext(context.Background())
 }
 
-func (i SecurityRuleTypeArgs) ToSecurityRuleTypeOutputWithContext(ctx context.Context) SecurityRuleTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityRuleTypeOutput)
+func (i SecurityRuleArgs) ToSecurityRuleOutputWithContext(ctx context.Context) SecurityRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityRuleOutput)
 }
 
-// SecurityRuleTypeArrayInput is an input type that accepts SecurityRuleTypeArray and SecurityRuleTypeArrayOutput values.
-// You can construct a concrete instance of `SecurityRuleTypeArrayInput` via:
+// SecurityRuleArrayInput is an input type that accepts SecurityRuleArray and SecurityRuleArrayOutput values.
+// You can construct a concrete instance of `SecurityRuleArrayInput` via:
 //
-//	SecurityRuleTypeArray{ SecurityRuleTypeArgs{...} }
-type SecurityRuleTypeArrayInput interface {
+//	SecurityRuleArray{ SecurityRuleArgs{...} }
+type SecurityRuleArrayInput interface {
 	pulumi.Input
 
-	ToSecurityRuleTypeArrayOutput() SecurityRuleTypeArrayOutput
-	ToSecurityRuleTypeArrayOutputWithContext(context.Context) SecurityRuleTypeArrayOutput
+	ToSecurityRuleArrayOutput() SecurityRuleArrayOutput
+	ToSecurityRuleArrayOutputWithContext(context.Context) SecurityRuleArrayOutput
 }
 
-type SecurityRuleTypeArray []SecurityRuleTypeInput
+type SecurityRuleArray []SecurityRuleInput
 
-func (SecurityRuleTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityRuleType)(nil)).Elem()
+func (SecurityRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityRule)(nil)).Elem()
 }
 
-func (i SecurityRuleTypeArray) ToSecurityRuleTypeArrayOutput() SecurityRuleTypeArrayOutput {
-	return i.ToSecurityRuleTypeArrayOutputWithContext(context.Background())
+func (i SecurityRuleArray) ToSecurityRuleArrayOutput() SecurityRuleArrayOutput {
+	return i.ToSecurityRuleArrayOutputWithContext(context.Background())
 }
 
-func (i SecurityRuleTypeArray) ToSecurityRuleTypeArrayOutputWithContext(ctx context.Context) SecurityRuleTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityRuleTypeArrayOutput)
+func (i SecurityRuleArray) ToSecurityRuleArrayOutputWithContext(ctx context.Context) SecurityRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityRuleArrayOutput)
 }
 
 // Network security rule
-type SecurityRuleTypeOutput struct{ *pulumi.OutputState }
+type SecurityRuleOutput struct{ *pulumi.OutputState }
 
-func (SecurityRuleTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityRuleType)(nil)).Elem()
+func (SecurityRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityRule)(nil)).Elem()
 }
 
-func (o SecurityRuleTypeOutput) ToSecurityRuleTypeOutput() SecurityRuleTypeOutput {
+func (o SecurityRuleOutput) ToSecurityRuleOutput() SecurityRuleOutput {
 	return o
 }
 
-func (o SecurityRuleTypeOutput) ToSecurityRuleTypeOutputWithContext(ctx context.Context) SecurityRuleTypeOutput {
+func (o SecurityRuleOutput) ToSecurityRuleOutputWithContext(ctx context.Context) SecurityRuleOutput {
 	return o
 }
 
 // Gets or sets network traffic is allowed or denied. Possible values are 'Allow' and 'Deny'
-func (o SecurityRuleTypeOutput) Access() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityRuleType) string { return v.Access }).(pulumi.StringOutput)
+func (o SecurityRuleOutput) Access() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityRule) string { return v.Access }).(pulumi.StringOutput)
 }
 
 // Gets or sets a description for this rule. Restricted to 140 chars.
-func (o SecurityRuleTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityRuleType) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o SecurityRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets destination address prefix. CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-func (o SecurityRuleTypeOutput) DestinationAddressPrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityRuleType) string { return v.DestinationAddressPrefix }).(pulumi.StringOutput)
+func (o SecurityRuleOutput) DestinationAddressPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityRule) string { return v.DestinationAddressPrefix }).(pulumi.StringOutput)
 }
 
 // Gets or sets Destination Port or Range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-func (o SecurityRuleTypeOutput) DestinationPortRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
+func (o SecurityRuleOutput) DestinationPortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRule) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the direction of the rule.InBound or Outbound. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-func (o SecurityRuleTypeOutput) Direction() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityRuleType) string { return v.Direction }).(pulumi.StringOutput)
+func (o SecurityRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityRule) string { return v.Direction }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated
-func (o SecurityRuleTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityRuleType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o SecurityRuleOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRule) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Resource Id
-func (o SecurityRuleTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityRuleType) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o SecurityRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Gets name of the resource that is unique within a resource group. This name can be used to access the resource
-func (o SecurityRuleTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityRuleType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o SecurityRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRule) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-func (o SecurityRuleTypeOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
+func (o SecurityRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
 // Gets or sets Network protocol this rule applies to. Can be Tcp, Udp or All(*).
-func (o SecurityRuleTypeOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityRuleType) string { return v.Protocol }).(pulumi.StringOutput)
+func (o SecurityRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityRule) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // Gets or sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
-func (o SecurityRuleTypeOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityRuleType) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o SecurityRuleOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRule) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets source address prefix. CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
-func (o SecurityRuleTypeOutput) SourceAddressPrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityRuleType) string { return v.SourceAddressPrefix }).(pulumi.StringOutput)
+func (o SecurityRuleOutput) SourceAddressPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityRule) string { return v.SourceAddressPrefix }).(pulumi.StringOutput)
 }
 
 // Gets or sets Source Port or Range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-func (o SecurityRuleTypeOutput) SourcePortRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityRuleType) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
+func (o SecurityRuleOutput) SourcePortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRule) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
 }
 
-type SecurityRuleTypeArrayOutput struct{ *pulumi.OutputState }
+type SecurityRuleArrayOutput struct{ *pulumi.OutputState }
 
-func (SecurityRuleTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityRuleType)(nil)).Elem()
+func (SecurityRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityRule)(nil)).Elem()
 }
 
-func (o SecurityRuleTypeArrayOutput) ToSecurityRuleTypeArrayOutput() SecurityRuleTypeArrayOutput {
+func (o SecurityRuleArrayOutput) ToSecurityRuleArrayOutput() SecurityRuleArrayOutput {
 	return o
 }
 
-func (o SecurityRuleTypeArrayOutput) ToSecurityRuleTypeArrayOutputWithContext(ctx context.Context) SecurityRuleTypeArrayOutput {
+func (o SecurityRuleArrayOutput) ToSecurityRuleArrayOutputWithContext(ctx context.Context) SecurityRuleArrayOutput {
 	return o
 }
 
-func (o SecurityRuleTypeArrayOutput) Index(i pulumi.IntInput) SecurityRuleTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityRuleType {
-		return vs[0].([]SecurityRuleType)[vs[1].(int)]
-	}).(SecurityRuleTypeOutput)
+func (o SecurityRuleArrayOutput) Index(i pulumi.IntInput) SecurityRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityRule {
+		return vs[0].([]SecurityRule)[vs[1].(int)]
+	}).(SecurityRuleOutput)
 }
 
 // Network security rule
@@ -8501,12 +8499,12 @@ func init() {
 	pulumi.RegisterOutputType(DhcpOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DhcpOptionsResponseOutput{})
 	pulumi.RegisterOutputType(DhcpOptionsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationTypeOutput{})
-	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationTypeArrayOutput{})
+	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationOutput{})
+	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationArrayOutput{})
 	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationResponseOutput{})
 	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationResponseArrayOutput{})
-	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringTypeOutput{})
-	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringTypeArrayOutput{})
+	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringOutput{})
+	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringArrayOutput{})
 	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringConfigOutput{})
 	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringConfigResponseOutput{})
@@ -8561,12 +8559,12 @@ func init() {
 	pulumi.RegisterOutputType(PublicIpAddressDnsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(PublicIpAddressDnsSettingsResponseOutput{})
 	pulumi.RegisterOutputType(PublicIpAddressDnsSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(RouteTypeOutput{})
-	pulumi.RegisterOutputType(RouteTypeArrayOutput{})
+	pulumi.RegisterOutputType(RouteOutput{})
+	pulumi.RegisterOutputType(RouteArrayOutput{})
 	pulumi.RegisterOutputType(RouteResponseOutput{})
 	pulumi.RegisterOutputType(RouteResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityRuleTypeOutput{})
-	pulumi.RegisterOutputType(SecurityRuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(SecurityRuleOutput{})
+	pulumi.RegisterOutputType(SecurityRuleArrayOutput{})
 	pulumi.RegisterOutputType(SecurityRuleResponseOutput{})
 	pulumi.RegisterOutputType(SecurityRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(SubResourceOutput{})

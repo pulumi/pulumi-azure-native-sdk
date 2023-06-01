@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subvolume Information properties
-// API Version: 2021-10-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Subvolume struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +25,7 @@ type Subvolume struct {
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -107,7 +108,7 @@ type subvolumeArgs struct {
 	Path *string `pulumi:"path"`
 	// The name of the capacity pool
 	PoolName string `pulumi:"poolName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Truncate subvolume to the provided size in bytes
 	Size *float64 `pulumi:"size"`
@@ -127,7 +128,7 @@ type SubvolumeArgs struct {
 	Path pulumi.StringPtrInput
 	// The name of the capacity pool
 	PoolName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Truncate subvolume to the provided size in bytes
 	Size pulumi.Float64PtrInput
@@ -194,7 +195,7 @@ func (o SubvolumeOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subvolume) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SubvolumeOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Subvolume) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

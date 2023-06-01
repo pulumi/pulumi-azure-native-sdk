@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This type describes a value of a secret resource. The name of this resource is the version identifier corresponding to this secret value.
 // API Version: 2018-09-01-preview.
+// Previous API Version: 2018-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SecretValue struct {
 	pulumi.CustomResourceState
 

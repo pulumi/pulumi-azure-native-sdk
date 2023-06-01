@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NetworkVirtualAppliance Resource.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type NetworkVirtualAppliance struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,10 @@ type NetworkVirtualAppliance struct {
 	CloudInitConfiguration pulumi.StringPtrOutput `pulumi:"cloudInitConfiguration"`
 	// CloudInitConfigurationBlob storage URLs.
 	CloudInitConfigurationBlobs pulumi.StringArrayOutput `pulumi:"cloudInitConfigurationBlobs"`
+	// The delegation for the Virtual Appliance
+	Delegation DelegationPropertiesResponsePtrOutput `pulumi:"delegation"`
+	// The deployment type. PartnerManaged for the SaaS NVA
+	DeploymentType pulumi.StringOutput `pulumi:"deploymentType"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The service principal that has read access to cloud-init and config blob.
@@ -36,13 +41,17 @@ type NetworkVirtualAppliance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network Virtual Appliance SKU.
 	NvaSku VirtualApplianceSkuPropertiesResponsePtrOutput `pulumi:"nvaSku"`
+	// The delegation for the Virtual Appliance
+	PartnerManagedResource PartnerManagedResourcePropertiesResponsePtrOutput `pulumi:"partnerManagedResource"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Public key for SSH login.
+	SshPublicKey pulumi.StringPtrOutput `pulumi:"sshPublicKey"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// VirtualAppliance ASN.
+	// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 	VirtualApplianceAsn pulumi.Float64PtrOutput `pulumi:"virtualApplianceAsn"`
 	// List of Virtual Appliance Network Interfaces.
 	VirtualApplianceNics VirtualApplianceNicPropertiesResponseArrayOutput `pulumi:"virtualApplianceNics"`
@@ -111,6 +120,9 @@ func NewNetworkVirtualAppliance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkVirtualAppliance"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkVirtualAppliance"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkVirtualAppliance
@@ -151,6 +163,8 @@ type networkVirtualApplianceArgs struct {
 	CloudInitConfiguration *string `pulumi:"cloudInitConfiguration"`
 	// CloudInitConfigurationBlob storage URLs.
 	CloudInitConfigurationBlobs []string `pulumi:"cloudInitConfigurationBlobs"`
+	// The delegation for the Virtual Appliance
+	Delegation *DelegationProperties `pulumi:"delegation"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The service principal that has read access to cloud-init and config blob.
@@ -163,9 +177,11 @@ type networkVirtualApplianceArgs struct {
 	NvaSku *VirtualApplianceSkuProperties `pulumi:"nvaSku"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Public key for SSH login.
+	SshPublicKey *string `pulumi:"sshPublicKey"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// VirtualAppliance ASN.
+	// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 	VirtualApplianceAsn *float64 `pulumi:"virtualApplianceAsn"`
 	// The Virtual Hub where Network Virtual Appliance is being deployed.
 	VirtualHub *SubResource `pulumi:"virtualHub"`
@@ -179,6 +195,8 @@ type NetworkVirtualApplianceArgs struct {
 	CloudInitConfiguration pulumi.StringPtrInput
 	// CloudInitConfigurationBlob storage URLs.
 	CloudInitConfigurationBlobs pulumi.StringArrayInput
+	// The delegation for the Virtual Appliance
+	Delegation DelegationPropertiesPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// The service principal that has read access to cloud-init and config blob.
@@ -191,9 +209,11 @@ type NetworkVirtualApplianceArgs struct {
 	NvaSku VirtualApplianceSkuPropertiesPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// Public key for SSH login.
+	SshPublicKey pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// VirtualAppliance ASN.
+	// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 	VirtualApplianceAsn pulumi.Float64PtrInput
 	// The Virtual Hub where Network Virtual Appliance is being deployed.
 	VirtualHub SubResourcePtrInput
@@ -256,6 +276,16 @@ func (o NetworkVirtualApplianceOutput) CloudInitConfigurationBlobs() pulumi.Stri
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringArrayOutput { return v.CloudInitConfigurationBlobs }).(pulumi.StringArrayOutput)
 }
 
+// The delegation for the Virtual Appliance
+func (o NetworkVirtualApplianceOutput) Delegation() DelegationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkVirtualAppliance) DelegationPropertiesResponsePtrOutput { return v.Delegation }).(DelegationPropertiesResponsePtrOutput)
+}
+
+// The deployment type. PartnerManaged for the SaaS NVA
+func (o NetworkVirtualApplianceOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringOutput { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o NetworkVirtualApplianceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -286,9 +316,21 @@ func (o NetworkVirtualApplianceOutput) NvaSku() VirtualApplianceSkuPropertiesRes
 	return o.ApplyT(func(v *NetworkVirtualAppliance) VirtualApplianceSkuPropertiesResponsePtrOutput { return v.NvaSku }).(VirtualApplianceSkuPropertiesResponsePtrOutput)
 }
 
+// The delegation for the Virtual Appliance
+func (o NetworkVirtualApplianceOutput) PartnerManagedResource() PartnerManagedResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkVirtualAppliance) PartnerManagedResourcePropertiesResponsePtrOutput {
+		return v.PartnerManagedResource
+	}).(PartnerManagedResourcePropertiesResponsePtrOutput)
+}
+
 // The provisioning state of the resource.
 func (o NetworkVirtualApplianceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public key for SSH login.
+func (o NetworkVirtualApplianceOutput) SshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringPtrOutput { return v.SshPublicKey }).(pulumi.StringPtrOutput)
 }
 
 // Resource tags.
@@ -301,7 +343,7 @@ func (o NetworkVirtualApplianceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// VirtualAppliance ASN.
+// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 func (o NetworkVirtualApplianceOutput) VirtualApplianceAsn() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.Float64PtrOutput { return v.VirtualApplianceAsn }).(pulumi.Float64PtrOutput)
 }

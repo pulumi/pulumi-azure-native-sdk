@@ -11,8 +11,6 @@ import (
 )
 
 // The resource representation of a rollout step.
-//
-// Deprecated: Version 2018-09-01-preview will be removed in v2 of the provider.
 func LookupStep(ctx *pulumi.Context, args *LookupStepArgs, opts ...pulumi.InvokeOption) (*LookupStepResult, error) {
 	var rv LookupStepResult
 	err := ctx.Invoke("azure-native:deploymentmanager/v20180901preview:getStep", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,9 +130,6 @@ func NewCluster(ctx *pulumi.Context,
 		args.UpgradeDescription = args.UpgradeDescription.ToClusterUpgradePolicyPtrOutput().ApplyT(func(v *ClusterUpgradePolicy) *ClusterUpgradePolicy { return v.Defaults() }).(ClusterUpgradePolicyPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:servicefabric:Cluster"),
-		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20160901:Cluster"),
 		},

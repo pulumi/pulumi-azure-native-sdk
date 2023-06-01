@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a HubVirtualNetworkConnection.
-// API Version: 2020-11-01.
+// API Version: 2022-09-01.
 func LookupHubVirtualNetworkConnection(ctx *pulumi.Context, args *LookupHubVirtualNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupHubVirtualNetworkConnectionResult, error) {
 	var rv LookupHubVirtualNetworkConnectionResult
 	err := ctx.Invoke("azure-native:network:getHubVirtualNetworkConnection", args, &rv, opts...)

@@ -16,10 +16,14 @@ type AzureDataExplorerConnectionProperties struct {
 	AdxDatabaseName string `pulumi:"adxDatabaseName"`
 	// The URI of the Azure Data Explorer endpoint.
 	AdxEndpointUri string `pulumi:"adxEndpointUri"`
+	// The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
+	AdxRelationshipLifecycleEventsTableName *string `pulumi:"adxRelationshipLifecycleEventsTableName"`
 	// The resource ID of the Azure Data Explorer cluster.
 	AdxResourceId string `pulumi:"adxResourceId"`
-	// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
+	// The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
 	AdxTableName *string `pulumi:"adxTableName"`
+	// The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
+	AdxTwinLifecycleEventsTableName *string `pulumi:"adxTwinLifecycleEventsTableName"`
 	// The type of time series connection resource.
 	// Expected value is 'AzureDataExplorer'.
 	ConnectionType string `pulumi:"connectionType"`
@@ -31,6 +35,10 @@ type AzureDataExplorerConnectionProperties struct {
 	EventHubEntityPath string `pulumi:"eventHubEntityPath"`
 	// The resource ID of the EventHub namespace.
 	EventHubNamespaceResourceId string `pulumi:"eventHubNamespaceResourceId"`
+	// Managed identity properties for the time series database connection resource.
+	Identity *ManagedIdentityReference `pulumi:"identity"`
+	// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
+	RecordPropertyAndItemRemovals *string `pulumi:"recordPropertyAndItemRemovals"`
 }
 
 // Defaults sets the appropriate defaults for AzureDataExplorerConnectionProperties
@@ -39,13 +47,17 @@ func (val *AzureDataExplorerConnectionProperties) Defaults() *AzureDataExplorerC
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		adxTableName_ := "AdtPropertyEvents"
 		tmp.AdxTableName = &adxTableName_
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		eventHubConsumerGroup_ := "$Default"
 		tmp.EventHubConsumerGroup = &eventHubConsumerGroup_
+	}
+	if tmp.RecordPropertyAndItemRemovals == nil {
+		recordPropertyAndItemRemovals_ := "false"
+		tmp.RecordPropertyAndItemRemovals = &recordPropertyAndItemRemovals_
 	}
 	return &tmp
 }
@@ -67,10 +79,14 @@ type AzureDataExplorerConnectionPropertiesArgs struct {
 	AdxDatabaseName pulumi.StringInput `pulumi:"adxDatabaseName"`
 	// The URI of the Azure Data Explorer endpoint.
 	AdxEndpointUri pulumi.StringInput `pulumi:"adxEndpointUri"`
+	// The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
+	AdxRelationshipLifecycleEventsTableName pulumi.StringPtrInput `pulumi:"adxRelationshipLifecycleEventsTableName"`
 	// The resource ID of the Azure Data Explorer cluster.
 	AdxResourceId pulumi.StringInput `pulumi:"adxResourceId"`
-	// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
+	// The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
 	AdxTableName pulumi.StringPtrInput `pulumi:"adxTableName"`
+	// The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
+	AdxTwinLifecycleEventsTableName pulumi.StringPtrInput `pulumi:"adxTwinLifecycleEventsTableName"`
 	// The type of time series connection resource.
 	// Expected value is 'AzureDataExplorer'.
 	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
@@ -82,6 +98,10 @@ type AzureDataExplorerConnectionPropertiesArgs struct {
 	EventHubEntityPath pulumi.StringInput `pulumi:"eventHubEntityPath"`
 	// The resource ID of the EventHub namespace.
 	EventHubNamespaceResourceId pulumi.StringInput `pulumi:"eventHubNamespaceResourceId"`
+	// Managed identity properties for the time series database connection resource.
+	Identity ManagedIdentityReferencePtrInput `pulumi:"identity"`
+	// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
+	RecordPropertyAndItemRemovals pulumi.StringPtrInput `pulumi:"recordPropertyAndItemRemovals"`
 }
 
 // Defaults sets the appropriate defaults for AzureDataExplorerConnectionPropertiesArgs
@@ -90,11 +110,14 @@ func (val *AzureDataExplorerConnectionPropertiesArgs) Defaults() *AzureDataExplo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		tmp.AdxTableName = pulumi.StringPtr("AdtPropertyEvents")
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		tmp.EventHubConsumerGroup = pulumi.StringPtr("$Default")
+	}
+	if tmp.RecordPropertyAndItemRemovals == nil {
+		tmp.RecordPropertyAndItemRemovals = pulumi.StringPtr("false")
 	}
 	return &tmp
 }
@@ -186,14 +209,26 @@ func (o AzureDataExplorerConnectionPropertiesOutput) AdxEndpointUri() pulumi.Str
 	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) string { return v.AdxEndpointUri }).(pulumi.StringOutput)
 }
 
+// The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
+func (o AzureDataExplorerConnectionPropertiesOutput) AdxRelationshipLifecycleEventsTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) *string {
+		return v.AdxRelationshipLifecycleEventsTableName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The resource ID of the Azure Data Explorer cluster.
 func (o AzureDataExplorerConnectionPropertiesOutput) AdxResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) string { return v.AdxResourceId }).(pulumi.StringOutput)
 }
 
-// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
+// The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
 func (o AzureDataExplorerConnectionPropertiesOutput) AdxTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) *string { return v.AdxTableName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
+func (o AzureDataExplorerConnectionPropertiesOutput) AdxTwinLifecycleEventsTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) *string { return v.AdxTwinLifecycleEventsTableName }).(pulumi.StringPtrOutput)
 }
 
 // The type of time series connection resource.
@@ -220,6 +255,16 @@ func (o AzureDataExplorerConnectionPropertiesOutput) EventHubEntityPath() pulumi
 // The resource ID of the EventHub namespace.
 func (o AzureDataExplorerConnectionPropertiesOutput) EventHubNamespaceResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) string { return v.EventHubNamespaceResourceId }).(pulumi.StringOutput)
+}
+
+// Managed identity properties for the time series database connection resource.
+func (o AzureDataExplorerConnectionPropertiesOutput) Identity() ManagedIdentityReferencePtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) *ManagedIdentityReference { return v.Identity }).(ManagedIdentityReferencePtrOutput)
+}
+
+// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
+func (o AzureDataExplorerConnectionPropertiesOutput) RecordPropertyAndItemRemovals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerConnectionProperties) *string { return v.RecordPropertyAndItemRemovals }).(pulumi.StringPtrOutput)
 }
 
 type AzureDataExplorerConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -266,6 +311,16 @@ func (o AzureDataExplorerConnectionPropertiesPtrOutput) AdxEndpointUri() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
+func (o AzureDataExplorerConnectionPropertiesPtrOutput) AdxRelationshipLifecycleEventsTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDataExplorerConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdxRelationshipLifecycleEventsTableName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The resource ID of the Azure Data Explorer cluster.
 func (o AzureDataExplorerConnectionPropertiesPtrOutput) AdxResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureDataExplorerConnectionProperties) *string {
@@ -276,13 +331,23 @@ func (o AzureDataExplorerConnectionPropertiesPtrOutput) AdxResourceId() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
+// The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
 func (o AzureDataExplorerConnectionPropertiesPtrOutput) AdxTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureDataExplorerConnectionProperties) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AdxTableName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
+func (o AzureDataExplorerConnectionPropertiesPtrOutput) AdxTwinLifecycleEventsTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDataExplorerConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdxTwinLifecycleEventsTableName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -337,16 +402,40 @@ func (o AzureDataExplorerConnectionPropertiesPtrOutput) EventHubNamespaceResourc
 	}).(pulumi.StringPtrOutput)
 }
 
+// Managed identity properties for the time series database connection resource.
+func (o AzureDataExplorerConnectionPropertiesPtrOutput) Identity() ManagedIdentityReferencePtrOutput {
+	return o.ApplyT(func(v *AzureDataExplorerConnectionProperties) *ManagedIdentityReference {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(ManagedIdentityReferencePtrOutput)
+}
+
+// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
+func (o AzureDataExplorerConnectionPropertiesPtrOutput) RecordPropertyAndItemRemovals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDataExplorerConnectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordPropertyAndItemRemovals
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of a time series database connection to Azure Data Explorer with data being sent via an EventHub.
 type AzureDataExplorerConnectionPropertiesResponse struct {
 	// The name of the Azure Data Explorer database.
 	AdxDatabaseName string `pulumi:"adxDatabaseName"`
 	// The URI of the Azure Data Explorer endpoint.
 	AdxEndpointUri string `pulumi:"adxEndpointUri"`
+	// The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
+	AdxRelationshipLifecycleEventsTableName *string `pulumi:"adxRelationshipLifecycleEventsTableName"`
 	// The resource ID of the Azure Data Explorer cluster.
 	AdxResourceId string `pulumi:"adxResourceId"`
-	// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
+	// The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
 	AdxTableName *string `pulumi:"adxTableName"`
+	// The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
+	AdxTwinLifecycleEventsTableName *string `pulumi:"adxTwinLifecycleEventsTableName"`
 	// The type of time series connection resource.
 	// Expected value is 'AzureDataExplorer'.
 	ConnectionType string `pulumi:"connectionType"`
@@ -358,8 +447,12 @@ type AzureDataExplorerConnectionPropertiesResponse struct {
 	EventHubEntityPath string `pulumi:"eventHubEntityPath"`
 	// The resource ID of the EventHub namespace.
 	EventHubNamespaceResourceId string `pulumi:"eventHubNamespaceResourceId"`
+	// Managed identity properties for the time series database connection resource.
+	Identity *ManagedIdentityReferenceResponse `pulumi:"identity"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
+	RecordPropertyAndItemRemovals *string `pulumi:"recordPropertyAndItemRemovals"`
 }
 
 // Defaults sets the appropriate defaults for AzureDataExplorerConnectionPropertiesResponse
@@ -368,13 +461,17 @@ func (val *AzureDataExplorerConnectionPropertiesResponse) Defaults() *AzureDataE
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		adxTableName_ := "AdtPropertyEvents"
 		tmp.AdxTableName = &adxTableName_
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		eventHubConsumerGroup_ := "$Default"
 		tmp.EventHubConsumerGroup = &eventHubConsumerGroup_
+	}
+	if tmp.RecordPropertyAndItemRemovals == nil {
+		recordPropertyAndItemRemovals_ := "false"
+		tmp.RecordPropertyAndItemRemovals = &recordPropertyAndItemRemovals_
 	}
 	return &tmp
 }
@@ -404,14 +501,28 @@ func (o AzureDataExplorerConnectionPropertiesResponseOutput) AdxEndpointUri() pu
 	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) string { return v.AdxEndpointUri }).(pulumi.StringOutput)
 }
 
+// The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
+func (o AzureDataExplorerConnectionPropertiesResponseOutput) AdxRelationshipLifecycleEventsTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) *string {
+		return v.AdxRelationshipLifecycleEventsTableName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The resource ID of the Azure Data Explorer cluster.
 func (o AzureDataExplorerConnectionPropertiesResponseOutput) AdxResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) string { return v.AdxResourceId }).(pulumi.StringOutput)
 }
 
-// The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
+// The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
 func (o AzureDataExplorerConnectionPropertiesResponseOutput) AdxTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) *string { return v.AdxTableName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
+func (o AzureDataExplorerConnectionPropertiesResponseOutput) AdxTwinLifecycleEventsTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) *string {
+		return v.AdxTwinLifecycleEventsTableName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The type of time series connection resource.
@@ -440,11 +551,90 @@ func (o AzureDataExplorerConnectionPropertiesResponseOutput) EventHubNamespaceRe
 	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) string { return v.EventHubNamespaceResourceId }).(pulumi.StringOutput)
 }
 
+// Managed identity properties for the time series database connection resource.
+func (o AzureDataExplorerConnectionPropertiesResponseOutput) Identity() ManagedIdentityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) *ManagedIdentityReferenceResponse {
+		return v.Identity
+	}).(ManagedIdentityReferenceResponsePtrOutput)
+}
+
 // The provisioning state.
 func (o AzureDataExplorerConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
+func (o AzureDataExplorerConnectionPropertiesResponseOutput) RecordPropertyAndItemRemovals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerConnectionPropertiesResponse) *string { return v.RecordPropertyAndItemRemovals }).(pulumi.StringPtrOutput)
+}
+
+// The properties of a private endpoint connection.
+type ConnectionProperties struct {
+	// The list of group ids for the private endpoint connection.
+	GroupIds []string `pulumi:"groupIds"`
+	// The connection state.
+	PrivateLinkServiceConnectionState *ConnectionPropertiesPrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+}
+
+// ConnectionPropertiesInput is an input type that accepts ConnectionPropertiesArgs and ConnectionPropertiesOutput values.
+// You can construct a concrete instance of `ConnectionPropertiesInput` via:
+//
+//	ConnectionPropertiesArgs{...}
+type ConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToConnectionPropertiesOutput() ConnectionPropertiesOutput
+	ToConnectionPropertiesOutputWithContext(context.Context) ConnectionPropertiesOutput
+}
+
+// The properties of a private endpoint connection.
+type ConnectionPropertiesArgs struct {
+	// The list of group ids for the private endpoint connection.
+	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
+	// The connection state.
+	PrivateLinkServiceConnectionState ConnectionPropertiesPrivateLinkServiceConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
+}
+
+func (ConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProperties)(nil)).Elem()
+}
+
+func (i ConnectionPropertiesArgs) ToConnectionPropertiesOutput() ConnectionPropertiesOutput {
+	return i.ToConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ConnectionPropertiesArgs) ToConnectionPropertiesOutputWithContext(ctx context.Context) ConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPropertiesOutput)
+}
+
+// The properties of a private endpoint connection.
+type ConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProperties)(nil)).Elem()
+}
+
+func (o ConnectionPropertiesOutput) ToConnectionPropertiesOutput() ConnectionPropertiesOutput {
+	return o
+}
+
+func (o ConnectionPropertiesOutput) ToConnectionPropertiesOutputWithContext(ctx context.Context) ConnectionPropertiesOutput {
+	return o
+}
+
+// The list of group ids for the private endpoint connection.
+func (o ConnectionPropertiesOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProperties) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The connection state.
+func (o ConnectionPropertiesOutput) PrivateLinkServiceConnectionState() ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v ConnectionProperties) *ConnectionPropertiesPrivateLinkServiceConnectionState {
+		return v.PrivateLinkServiceConnectionState
+	}).(ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// The connection state.
 type ConnectionPropertiesPrivateLinkServiceConnectionState struct {
 	// Actions required for a private endpoint connection.
 	ActionsRequired *string `pulumi:"actionsRequired"`
@@ -465,6 +655,7 @@ type ConnectionPropertiesPrivateLinkServiceConnectionStateInput interface {
 	ToConnectionPropertiesPrivateLinkServiceConnectionStateOutputWithContext(context.Context) ConnectionPropertiesPrivateLinkServiceConnectionStateOutput
 }
 
+// The connection state.
 type ConnectionPropertiesPrivateLinkServiceConnectionStateArgs struct {
 	// Actions required for a private endpoint connection.
 	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
@@ -527,6 +718,7 @@ func (i *connectionPropertiesPrivateLinkServiceConnectionStatePtrType) ToConnect
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
 }
 
+// The connection state.
 type ConnectionPropertiesPrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
 func (ConnectionPropertiesPrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
@@ -620,64 +812,56 @@ func (o ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput) Status()
 	}).(pulumi.StringPtrOutput)
 }
 
-type ConnectionPropertiesResponsePrivateEndpoint struct {
-	// The resource identifier.
-	Id string `pulumi:"id"`
+// The properties of a private endpoint connection.
+type ConnectionPropertiesResponse struct {
+	// The list of group ids for the private endpoint connection.
+	GroupIds []string `pulumi:"groupIds"`
+	// The private endpoint.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// The connection state.
+	PrivateLinkServiceConnectionState *ConnectionPropertiesResponsePrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
 }
 
-type ConnectionPropertiesResponsePrivateEndpointOutput struct{ *pulumi.OutputState }
+// The properties of a private endpoint connection.
+type ConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (ConnectionPropertiesResponsePrivateEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionPropertiesResponsePrivateEndpoint)(nil)).Elem()
+func (ConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPropertiesResponse)(nil)).Elem()
 }
 
-func (o ConnectionPropertiesResponsePrivateEndpointOutput) ToConnectionPropertiesResponsePrivateEndpointOutput() ConnectionPropertiesResponsePrivateEndpointOutput {
+func (o ConnectionPropertiesResponseOutput) ToConnectionPropertiesResponseOutput() ConnectionPropertiesResponseOutput {
 	return o
 }
 
-func (o ConnectionPropertiesResponsePrivateEndpointOutput) ToConnectionPropertiesResponsePrivateEndpointOutputWithContext(ctx context.Context) ConnectionPropertiesResponsePrivateEndpointOutput {
+func (o ConnectionPropertiesResponseOutput) ToConnectionPropertiesResponseOutputWithContext(ctx context.Context) ConnectionPropertiesResponseOutput {
 	return o
 }
 
-// The resource identifier.
-func (o ConnectionPropertiesResponsePrivateEndpointOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionPropertiesResponsePrivateEndpoint) string { return v.Id }).(pulumi.StringOutput)
+// The list of group ids for the private endpoint connection.
+func (o ConnectionPropertiesResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-type ConnectionPropertiesResponsePrivateEndpointPtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectionPropertiesResponsePrivateEndpointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionPropertiesResponsePrivateEndpoint)(nil)).Elem()
+// The private endpoint.
+func (o ConnectionPropertiesResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
 
-func (o ConnectionPropertiesResponsePrivateEndpointPtrOutput) ToConnectionPropertiesResponsePrivateEndpointPtrOutput() ConnectionPropertiesResponsePrivateEndpointPtrOutput {
-	return o
+// The connection state.
+func (o ConnectionPropertiesResponseOutput) PrivateLinkServiceConnectionState() ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) *ConnectionPropertiesResponsePrivateLinkServiceConnectionState {
+		return v.PrivateLinkServiceConnectionState
+	}).(ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput)
 }
 
-func (o ConnectionPropertiesResponsePrivateEndpointPtrOutput) ToConnectionPropertiesResponsePrivateEndpointPtrOutputWithContext(ctx context.Context) ConnectionPropertiesResponsePrivateEndpointPtrOutput {
-	return o
+// The provisioning state.
+func (o ConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-func (o ConnectionPropertiesResponsePrivateEndpointPtrOutput) Elem() ConnectionPropertiesResponsePrivateEndpointOutput {
-	return o.ApplyT(func(v *ConnectionPropertiesResponsePrivateEndpoint) ConnectionPropertiesResponsePrivateEndpoint {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectionPropertiesResponsePrivateEndpoint
-		return ret
-	}).(ConnectionPropertiesResponsePrivateEndpointOutput)
-}
-
-// The resource identifier.
-func (o ConnectionPropertiesResponsePrivateEndpointPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionPropertiesResponsePrivateEndpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
+// The connection state.
 type ConnectionPropertiesResponsePrivateLinkServiceConnectionState struct {
 	// Actions required for a private endpoint connection.
 	ActionsRequired *string `pulumi:"actionsRequired"`
@@ -687,6 +871,7 @@ type ConnectionPropertiesResponsePrivateLinkServiceConnectionState struct {
 	Status string `pulumi:"status"`
 }
 
+// The connection state.
 type ConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
 func (ConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
@@ -774,8 +959,12 @@ func (o ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) 
 
 // The managed identity for the DigitalTwinsInstance.
 type DigitalTwinsIdentity struct {
-	// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
+	// The type of Managed Identity used by the DigitalTwinsInstance.
 	Type *string `pulumi:"type"`
+	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	// .
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // DigitalTwinsIdentityInput is an input type that accepts DigitalTwinsIdentityArgs and DigitalTwinsIdentityOutput values.
@@ -791,8 +980,12 @@ type DigitalTwinsIdentityInput interface {
 
 // The managed identity for the DigitalTwinsInstance.
 type DigitalTwinsIdentityArgs struct {
-	// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
+	// The type of Managed Identity used by the DigitalTwinsInstance.
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	// .
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (DigitalTwinsIdentityArgs) ElementType() reflect.Type {
@@ -873,9 +1066,16 @@ func (o DigitalTwinsIdentityOutput) ToDigitalTwinsIdentityPtrOutputWithContext(c
 	}).(DigitalTwinsIdentityPtrOutput)
 }
 
-// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
+// The type of Managed Identity used by the DigitalTwinsInstance.
 func (o DigitalTwinsIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DigitalTwinsIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+// .
+func (o DigitalTwinsIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DigitalTwinsIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type DigitalTwinsIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -902,7 +1102,7 @@ func (o DigitalTwinsIdentityPtrOutput) Elem() DigitalTwinsIdentityOutput {
 	}).(DigitalTwinsIdentityOutput)
 }
 
-// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
+// The type of Managed Identity used by the DigitalTwinsInstance.
 func (o DigitalTwinsIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DigitalTwinsIdentity) *string {
 		if v == nil {
@@ -912,14 +1112,30 @@ func (o DigitalTwinsIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+// .
+func (o DigitalTwinsIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DigitalTwinsIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
 // The managed identity for the DigitalTwinsInstance.
 type DigitalTwinsIdentityResponse struct {
 	// The object id of the Managed Identity Resource. This will be sent to the RP from ARM via the x-ms-identity-principal-id header in the PUT request if the resource has a systemAssigned(implicit) identity
 	PrincipalId string `pulumi:"principalId"`
 	// The tenant id of the Managed Identity Resource. This will be sent to the RP from ARM via the x-ms-client-tenant-id header in the PUT request if the resource has a systemAssigned(implicit) identity
 	TenantId string `pulumi:"tenantId"`
-	// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
+	// The type of Managed Identity used by the DigitalTwinsInstance.
 	Type *string `pulumi:"type"`
+	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	// .
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // The managed identity for the DigitalTwinsInstance.
@@ -947,9 +1163,18 @@ func (o DigitalTwinsIdentityResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v DigitalTwinsIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
+// The type of Managed Identity used by the DigitalTwinsInstance.
 func (o DigitalTwinsIdentityResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DigitalTwinsIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+// .
+func (o DigitalTwinsIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v DigitalTwinsIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 type DigitalTwinsIdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -996,7 +1221,7 @@ func (o DigitalTwinsIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
+// The type of Managed Identity used by the DigitalTwinsInstance.
 func (o DigitalTwinsIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DigitalTwinsIdentityResponse) *string {
 		if v == nil {
@@ -1006,13 +1231,25 @@ func (o DigitalTwinsIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+// .
+func (o DigitalTwinsIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *DigitalTwinsIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // Properties related to EventGrid.
 type EventGrid struct {
 	// EventGrid secondary accesskey. Will be obfuscated during read.
 	AccessKey1 string `pulumi:"accessKey1"`
 	// EventGrid secondary accesskey. Will be obfuscated during read.
 	AccessKey2 *string `pulumi:"accessKey2"`
-	// Specifies the authentication type being used for connecting to the endpoint.
+	// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
 	AuthenticationType *string `pulumi:"authenticationType"`
 	// Dead letter storage secret for key-based authentication. Will be obfuscated during read.
 	DeadLetterSecret *string `pulumi:"deadLetterSecret"`
@@ -1021,7 +1258,9 @@ type EventGrid struct {
 	// The type of Digital Twins endpoint
 	// Expected value is 'EventGrid'.
 	EndpointType string `pulumi:"endpointType"`
-	// EventGrid Topic Endpoint
+	// Managed identity properties for the endpoint.
+	Identity *ManagedIdentityReference `pulumi:"identity"`
+	// EventGrid Topic Endpoint.
 	TopicEndpoint string `pulumi:"topicEndpoint"`
 }
 
@@ -1031,7 +1270,7 @@ type EventGridResponse struct {
 	AccessKey1 string `pulumi:"accessKey1"`
 	// EventGrid secondary accesskey. Will be obfuscated during read.
 	AccessKey2 *string `pulumi:"accessKey2"`
-	// Specifies the authentication type being used for connecting to the endpoint.
+	// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
 	AuthenticationType *string `pulumi:"authenticationType"`
 	// Time when the Endpoint was added to DigitalTwinsInstance.
 	CreatedTime string `pulumi:"createdTime"`
@@ -1042,15 +1281,17 @@ type EventGridResponse struct {
 	// The type of Digital Twins endpoint
 	// Expected value is 'EventGrid'.
 	EndpointType string `pulumi:"endpointType"`
+	// Managed identity properties for the endpoint.
+	Identity *ManagedIdentityReferenceResponse `pulumi:"identity"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// EventGrid Topic Endpoint
+	// EventGrid Topic Endpoint.
 	TopicEndpoint string `pulumi:"topicEndpoint"`
 }
 
 // Properties related to EventHub.
 type EventHub struct {
-	// Specifies the authentication type being used for connecting to the endpoint.
+	// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
 	AuthenticationType *string `pulumi:"authenticationType"`
 	// PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
 	ConnectionStringPrimaryKey *string `pulumi:"connectionStringPrimaryKey"`
@@ -1063,15 +1304,17 @@ type EventHub struct {
 	// The type of Digital Twins endpoint
 	// Expected value is 'EventHub'.
 	EndpointType string `pulumi:"endpointType"`
-	// The URL of the EventHub namespace for identity-based authentication. It must include the protocol sb://
+	// The URL of the EventHub namespace for identity-based authentication. It must include the protocol 'sb://'.
 	EndpointUri *string `pulumi:"endpointUri"`
 	// The EventHub name in the EventHub namespace for identity-based authentication.
 	EntityPath *string `pulumi:"entityPath"`
+	// Managed identity properties for the endpoint.
+	Identity *ManagedIdentityReference `pulumi:"identity"`
 }
 
 // Properties related to EventHub.
 type EventHubResponse struct {
-	// Specifies the authentication type being used for connecting to the endpoint.
+	// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
 	AuthenticationType *string `pulumi:"authenticationType"`
 	// PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
 	ConnectionStringPrimaryKey *string `pulumi:"connectionStringPrimaryKey"`
@@ -1086,17 +1329,256 @@ type EventHubResponse struct {
 	// The type of Digital Twins endpoint
 	// Expected value is 'EventHub'.
 	EndpointType string `pulumi:"endpointType"`
-	// The URL of the EventHub namespace for identity-based authentication. It must include the protocol sb://
+	// The URL of the EventHub namespace for identity-based authentication. It must include the protocol 'sb://'.
 	EndpointUri *string `pulumi:"endpointUri"`
 	// The EventHub name in the EventHub namespace for identity-based authentication.
 	EntityPath *string `pulumi:"entityPath"`
+	// Managed identity properties for the endpoint.
+	Identity *ManagedIdentityReferenceResponse `pulumi:"identity"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
+// The properties of the Managed Identity.
+type ManagedIdentityReference struct {
+	// The type of managed identity used.
+	Type *string `pulumi:"type"`
+	// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// ManagedIdentityReferenceInput is an input type that accepts ManagedIdentityReferenceArgs and ManagedIdentityReferenceOutput values.
+// You can construct a concrete instance of `ManagedIdentityReferenceInput` via:
+//
+//	ManagedIdentityReferenceArgs{...}
+type ManagedIdentityReferenceInput interface {
+	pulumi.Input
+
+	ToManagedIdentityReferenceOutput() ManagedIdentityReferenceOutput
+	ToManagedIdentityReferenceOutputWithContext(context.Context) ManagedIdentityReferenceOutput
+}
+
+// The properties of the Managed Identity.
+type ManagedIdentityReferenceArgs struct {
+	// The type of managed identity used.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (ManagedIdentityReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityReference)(nil)).Elem()
+}
+
+func (i ManagedIdentityReferenceArgs) ToManagedIdentityReferenceOutput() ManagedIdentityReferenceOutput {
+	return i.ToManagedIdentityReferenceOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentityReferenceArgs) ToManagedIdentityReferenceOutputWithContext(ctx context.Context) ManagedIdentityReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityReferenceOutput)
+}
+
+func (i ManagedIdentityReferenceArgs) ToManagedIdentityReferencePtrOutput() ManagedIdentityReferencePtrOutput {
+	return i.ToManagedIdentityReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentityReferenceArgs) ToManagedIdentityReferencePtrOutputWithContext(ctx context.Context) ManagedIdentityReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityReferenceOutput).ToManagedIdentityReferencePtrOutputWithContext(ctx)
+}
+
+// ManagedIdentityReferencePtrInput is an input type that accepts ManagedIdentityReferenceArgs, ManagedIdentityReferencePtr and ManagedIdentityReferencePtrOutput values.
+// You can construct a concrete instance of `ManagedIdentityReferencePtrInput` via:
+//
+//	        ManagedIdentityReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedIdentityReferencePtrInput interface {
+	pulumi.Input
+
+	ToManagedIdentityReferencePtrOutput() ManagedIdentityReferencePtrOutput
+	ToManagedIdentityReferencePtrOutputWithContext(context.Context) ManagedIdentityReferencePtrOutput
+}
+
+type managedIdentityReferencePtrType ManagedIdentityReferenceArgs
+
+func ManagedIdentityReferencePtr(v *ManagedIdentityReferenceArgs) ManagedIdentityReferencePtrInput {
+	return (*managedIdentityReferencePtrType)(v)
+}
+
+func (*managedIdentityReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentityReference)(nil)).Elem()
+}
+
+func (i *managedIdentityReferencePtrType) ToManagedIdentityReferencePtrOutput() ManagedIdentityReferencePtrOutput {
+	return i.ToManagedIdentityReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *managedIdentityReferencePtrType) ToManagedIdentityReferencePtrOutputWithContext(ctx context.Context) ManagedIdentityReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityReferencePtrOutput)
+}
+
+// The properties of the Managed Identity.
+type ManagedIdentityReferenceOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityReference)(nil)).Elem()
+}
+
+func (o ManagedIdentityReferenceOutput) ToManagedIdentityReferenceOutput() ManagedIdentityReferenceOutput {
+	return o
+}
+
+func (o ManagedIdentityReferenceOutput) ToManagedIdentityReferenceOutputWithContext(ctx context.Context) ManagedIdentityReferenceOutput {
+	return o
+}
+
+func (o ManagedIdentityReferenceOutput) ToManagedIdentityReferencePtrOutput() ManagedIdentityReferencePtrOutput {
+	return o.ToManagedIdentityReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedIdentityReferenceOutput) ToManagedIdentityReferencePtrOutputWithContext(ctx context.Context) ManagedIdentityReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedIdentityReference) *ManagedIdentityReference {
+		return &v
+	}).(ManagedIdentityReferencePtrOutput)
+}
+
+// The type of managed identity used.
+func (o ManagedIdentityReferenceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityReference) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
+func (o ManagedIdentityReferenceOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityReference) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type ManagedIdentityReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentityReference)(nil)).Elem()
+}
+
+func (o ManagedIdentityReferencePtrOutput) ToManagedIdentityReferencePtrOutput() ManagedIdentityReferencePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityReferencePtrOutput) ToManagedIdentityReferencePtrOutputWithContext(ctx context.Context) ManagedIdentityReferencePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityReferencePtrOutput) Elem() ManagedIdentityReferenceOutput {
+	return o.ApplyT(func(v *ManagedIdentityReference) ManagedIdentityReference {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentityReference
+		return ret
+	}).(ManagedIdentityReferenceOutput)
+}
+
+// The type of managed identity used.
+func (o ManagedIdentityReferencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
+func (o ManagedIdentityReferencePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the Managed Identity.
+type ManagedIdentityReferenceResponse struct {
+	// The type of managed identity used.
+	Type *string `pulumi:"type"`
+	// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// The properties of the Managed Identity.
+type ManagedIdentityReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityReferenceResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityReferenceResponseOutput) ToManagedIdentityReferenceResponseOutput() ManagedIdentityReferenceResponseOutput {
+	return o
+}
+
+func (o ManagedIdentityReferenceResponseOutput) ToManagedIdentityReferenceResponseOutputWithContext(ctx context.Context) ManagedIdentityReferenceResponseOutput {
+	return o
+}
+
+// The type of managed identity used.
+func (o ManagedIdentityReferenceResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityReferenceResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
+func (o ManagedIdentityReferenceResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityReferenceResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type ManagedIdentityReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentityReferenceResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityReferenceResponsePtrOutput) ToManagedIdentityReferenceResponsePtrOutput() ManagedIdentityReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityReferenceResponsePtrOutput) ToManagedIdentityReferenceResponsePtrOutputWithContext(ctx context.Context) ManagedIdentityReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityReferenceResponsePtrOutput) Elem() ManagedIdentityReferenceResponseOutput {
+	return o.ApplyT(func(v *ManagedIdentityReferenceResponse) ManagedIdentityReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentityReferenceResponse
+		return ret
+	}).(ManagedIdentityReferenceResponseOutput)
+}
+
+// The type of managed identity used.
+func (o ManagedIdentityReferenceResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
+func (o ManagedIdentityReferenceResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // The private endpoint connection of a Digital Twin.
 type PrivateEndpointConnectionType struct {
-	Properties PrivateEndpointConnectionProperties `pulumi:"properties"`
+	// The connection properties.
+	Properties ConnectionProperties `pulumi:"properties"`
 }
 
 // PrivateEndpointConnectionTypeInput is an input type that accepts PrivateEndpointConnectionTypeArgs and PrivateEndpointConnectionTypeOutput values.
@@ -1112,7 +1594,8 @@ type PrivateEndpointConnectionTypeInput interface {
 
 // The private endpoint connection of a Digital Twin.
 type PrivateEndpointConnectionTypeArgs struct {
-	Properties PrivateEndpointConnectionPropertiesInput `pulumi:"properties"`
+	// The connection properties.
+	Properties ConnectionPropertiesInput `pulumi:"properties"`
 }
 
 func (PrivateEndpointConnectionTypeArgs) ElementType() reflect.Type {
@@ -1167,8 +1650,9 @@ func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutp
 	return o
 }
 
-func (o PrivateEndpointConnectionTypeOutput) Properties() PrivateEndpointConnectionPropertiesOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionType) PrivateEndpointConnectionProperties { return v.Properties }).(PrivateEndpointConnectionPropertiesOutput)
+// The connection properties.
+func (o PrivateEndpointConnectionTypeOutput) Properties() ConnectionPropertiesOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionType) ConnectionProperties { return v.Properties }).(ConnectionPropertiesOutput)
 }
 
 type PrivateEndpointConnectionTypeArrayOutput struct{ *pulumi.OutputState }
@@ -1191,73 +1675,16 @@ func (o PrivateEndpointConnectionTypeArrayOutput) Index(i pulumi.IntInput) Priva
 	}).(PrivateEndpointConnectionTypeOutput)
 }
 
-type PrivateEndpointConnectionProperties struct {
-	// The list of group ids for the private endpoint connection.
-	GroupIds                          []string                                               `pulumi:"groupIds"`
-	PrivateLinkServiceConnectionState *ConnectionPropertiesPrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
-}
-
-// PrivateEndpointConnectionPropertiesInput is an input type that accepts PrivateEndpointConnectionPropertiesArgs and PrivateEndpointConnectionPropertiesOutput values.
-// You can construct a concrete instance of `PrivateEndpointConnectionPropertiesInput` via:
-//
-//	PrivateEndpointConnectionPropertiesArgs{...}
-type PrivateEndpointConnectionPropertiesInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointConnectionPropertiesOutput() PrivateEndpointConnectionPropertiesOutput
-	ToPrivateEndpointConnectionPropertiesOutputWithContext(context.Context) PrivateEndpointConnectionPropertiesOutput
-}
-
-type PrivateEndpointConnectionPropertiesArgs struct {
-	// The list of group ids for the private endpoint connection.
-	GroupIds                          pulumi.StringArrayInput                                       `pulumi:"groupIds"`
-	PrivateLinkServiceConnectionState ConnectionPropertiesPrivateLinkServiceConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
-}
-
-func (PrivateEndpointConnectionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionProperties)(nil)).Elem()
-}
-
-func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionPropertiesOutput() PrivateEndpointConnectionPropertiesOutput {
-	return i.ToPrivateEndpointConnectionPropertiesOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesOutput)
-}
-
-type PrivateEndpointConnectionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionProperties)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPropertiesOutput() PrivateEndpointConnectionPropertiesOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesOutput {
-	return o
-}
-
-// The list of group ids for the private endpoint connection.
-func (o PrivateEndpointConnectionPropertiesOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionProperties) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionState() ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionProperties) *ConnectionPropertiesPrivateLinkServiceConnectionState {
-		return v.PrivateLinkServiceConnectionState
-	}).(ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
-}
-
 // The private endpoint connection of a Digital Twin.
 type PrivateEndpointConnectionResponse struct {
 	// The resource identifier.
 	Id string `pulumi:"id"`
 	// The resource name.
-	Name       string                                      `pulumi:"name"`
-	Properties PrivateEndpointConnectionResponseProperties `pulumi:"properties"`
+	Name string `pulumi:"name"`
+	// The connection properties.
+	Properties ConnectionPropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the private endpoint connection.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource type.
 	Type string `pulumi:"type"`
 }
@@ -1287,10 +1714,14 @@ func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o PrivateEndpointConnectionResponseOutput) Properties() PrivateEndpointConnectionResponsePropertiesOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateEndpointConnectionResponseProperties {
-		return v.Properties
-	}).(PrivateEndpointConnectionResponsePropertiesOutput)
+// The connection properties.
+func (o PrivateEndpointConnectionResponseOutput) Properties() ConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) ConnectionPropertiesResponse { return v.Properties }).(ConnectionPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the private endpoint connection.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource type.
@@ -1318,54 +1749,69 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	}).(PrivateEndpointConnectionResponseOutput)
 }
 
-type PrivateEndpointConnectionResponseProperties struct {
-	// The list of group ids for the private endpoint connection.
-	GroupIds                          []string                                                       `pulumi:"groupIds"`
-	PrivateEndpoint                   *ConnectionPropertiesResponsePrivateEndpoint                   `pulumi:"privateEndpoint"`
-	PrivateLinkServiceConnectionState *ConnectionPropertiesResponsePrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state.
-	ProvisioningState string `pulumi:"provisioningState"`
+// The private endpoint property of a private endpoint connection.
+type PrivateEndpointResponse struct {
+	// The resource identifier.
+	Id string `pulumi:"id"`
 }
 
-type PrivateEndpointConnectionResponsePropertiesOutput struct{ *pulumi.OutputState }
+// The private endpoint property of a private endpoint connection.
+type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
 
-func (PrivateEndpointConnectionResponsePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponseProperties)(nil)).Elem()
+func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
 }
 
-func (o PrivateEndpointConnectionResponsePropertiesOutput) ToPrivateEndpointConnectionResponsePropertiesOutput() PrivateEndpointConnectionResponsePropertiesOutput {
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
 	return o
 }
 
-func (o PrivateEndpointConnectionResponsePropertiesOutput) ToPrivateEndpointConnectionResponsePropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesOutput {
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
 	return o
 }
 
-// The list of group ids for the private endpoint connection.
-func (o PrivateEndpointConnectionResponsePropertiesOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseProperties) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+// The resource identifier.
+func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o PrivateEndpointConnectionResponsePropertiesOutput) PrivateEndpoint() ConnectionPropertiesResponsePrivateEndpointPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseProperties) *ConnectionPropertiesResponsePrivateEndpoint {
-		return v.PrivateEndpoint
-	}).(ConnectionPropertiesResponsePrivateEndpointPtrOutput)
+type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
 }
 
-func (o PrivateEndpointConnectionResponsePropertiesOutput) PrivateLinkServiceConnectionState() ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseProperties) *ConnectionPropertiesResponsePrivateLinkServiceConnectionState {
-		return v.PrivateLinkServiceConnectionState
-	}).(ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput)
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
+	return o
 }
 
-// The provisioning state.
-func (o PrivateEndpointConnectionResponsePropertiesOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseProperties) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointResponse
+		return ret
+	}).(PrivateEndpointResponseOutput)
+}
+
+// The resource identifier.
+func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 // Properties related to ServiceBus.
 type ServiceBus struct {
-	// Specifies the authentication type being used for connecting to the endpoint.
+	// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
 	AuthenticationType *string `pulumi:"authenticationType"`
 	// Dead letter storage secret for key-based authentication. Will be obfuscated during read.
 	DeadLetterSecret *string `pulumi:"deadLetterSecret"`
@@ -1374,10 +1820,12 @@ type ServiceBus struct {
 	// The type of Digital Twins endpoint
 	// Expected value is 'ServiceBus'.
 	EndpointType string `pulumi:"endpointType"`
-	// The URL of the ServiceBus namespace for identity-based authentication. It must include the protocol sb://
+	// The URL of the ServiceBus namespace for identity-based authentication. It must include the protocol 'sb://'.
 	EndpointUri *string `pulumi:"endpointUri"`
-	// The ServiceBus Topic name for identity-based authentication
+	// The ServiceBus Topic name for identity-based authentication.
 	EntityPath *string `pulumi:"entityPath"`
+	// Managed identity properties for the endpoint.
+	Identity *ManagedIdentityReference `pulumi:"identity"`
 	// PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
 	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
 	// SecondaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
@@ -1386,7 +1834,7 @@ type ServiceBus struct {
 
 // Properties related to ServiceBus.
 type ServiceBusResponse struct {
-	// Specifies the authentication type being used for connecting to the endpoint.
+	// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
 	AuthenticationType *string `pulumi:"authenticationType"`
 	// Time when the Endpoint was added to DigitalTwinsInstance.
 	CreatedTime string `pulumi:"createdTime"`
@@ -1397,10 +1845,12 @@ type ServiceBusResponse struct {
 	// The type of Digital Twins endpoint
 	// Expected value is 'ServiceBus'.
 	EndpointType string `pulumi:"endpointType"`
-	// The URL of the ServiceBus namespace for identity-based authentication. It must include the protocol sb://
+	// The URL of the ServiceBus namespace for identity-based authentication. It must include the protocol 'sb://'.
 	EndpointUri *string `pulumi:"endpointUri"`
-	// The ServiceBus Topic name for identity-based authentication
+	// The ServiceBus Topic name for identity-based authentication.
 	EntityPath *string `pulumi:"entityPath"`
+	// Managed identity properties for the endpoint.
+	Identity *ManagedIdentityReferenceResponse `pulumi:"identity"`
 	// PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
 	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
 	// The provisioning state.
@@ -1470,25 +1920,84 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// The information about the user assigned identity.
+type UserAssignedIdentityResponse struct {
+	// The client id of the User Assigned Identity Resource.
+	ClientId string `pulumi:"clientId"`
+	// The object id of the User Assigned Identity Resource.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// The information about the user assigned identity.
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client id of the User Assigned Identity Resource.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The object id of the User Assigned Identity Resource.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AzureDataExplorerConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(AzureDataExplorerConnectionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AzureDataExplorerConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesPrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput{})
-	pulumi.RegisterOutputType(ConnectionPropertiesResponsePrivateEndpointOutput{})
-	pulumi.RegisterOutputType(ConnectionPropertiesResponsePrivateEndpointPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(DigitalTwinsIdentityOutput{})
 	pulumi.RegisterOutputType(DigitalTwinsIdentityPtrOutput{})
 	pulumi.RegisterOutputType(DigitalTwinsIdentityResponseOutput{})
 	pulumi.RegisterOutputType(DigitalTwinsIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityReferenceOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityReferencePtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

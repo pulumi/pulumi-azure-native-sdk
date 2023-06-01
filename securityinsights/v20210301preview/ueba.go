@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,9 +52,6 @@ func NewUeba(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Ueba")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:Ueba"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:Ueba"),
 		},
 		{
@@ -97,7 +94,13 @@ func NewUeba(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:Ueba"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:Ueba"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:Ueba"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Ueba"),
 		},
 	})
 	opts = append(opts, aliases)

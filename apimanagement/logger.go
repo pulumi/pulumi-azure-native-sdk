@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Logger details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Logger struct {
 	pulumi.CustomResourceState
 
@@ -25,11 +26,11 @@ type Logger struct {
 	IsBuffered pulumi.BoolPtrOutput `pulumi:"isBuffered"`
 	// Logger type.
 	LoggerType pulumi.StringOutput `pulumi:"loggerType"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -98,6 +99,9 @@ func NewLogger(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Logger"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Logger"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Logger
@@ -143,7 +147,7 @@ type loggerArgs struct {
 	LoggerId *string `pulumi:"loggerId"`
 	// Logger type.
 	LoggerType string `pulumi:"loggerType"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
 	ResourceId *string `pulumi:"resourceId"`
@@ -164,7 +168,7 @@ type LoggerArgs struct {
 	LoggerId pulumi.StringPtrInput
 	// Logger type.
 	LoggerType pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
 	ResourceId pulumi.StringPtrInput
@@ -230,7 +234,7 @@ func (o LoggerOutput) LoggerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Logger) pulumi.StringOutput { return v.LoggerType }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LoggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Logger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -240,7 +244,7 @@ func (o LoggerOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Logger) pulumi.StringPtrOutput { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LoggerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Logger) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

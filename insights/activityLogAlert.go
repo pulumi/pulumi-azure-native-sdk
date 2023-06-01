@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Activity Log Alert rule resource.
 // API Version: 2020-10-01.
+// Previous API Version: 2020-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ActivityLogAlert struct {
 	pulumi.CustomResourceState
 
@@ -55,10 +56,10 @@ func NewActivityLogAlert(ctx *pulumi.Context,
 	if args.Scopes == nil {
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
-	if isZero(args.Enabled) {
+	if args.Enabled == nil {
 		args.Enabled = pulumi.BoolPtr(true)
 	}
-	if isZero(args.Location) {
+	if args.Location == nil {
 		args.Location = pulumi.StringPtr("global")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

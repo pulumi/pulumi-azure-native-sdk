@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // VpnConnection Resource.
-//
-// Deprecated: Version 2018-04-01 will be removed in v2 of the provider.
 type VpnConnection struct {
 	pulumi.CustomResourceState
 
@@ -146,6 +144,9 @@ func NewVpnConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VpnConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VpnConnection"),
 		},
 	})
 	opts = append(opts, aliases)

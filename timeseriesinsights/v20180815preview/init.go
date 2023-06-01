@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,16 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:timeseriesinsights/v20180815preview:AccessPolicy":
-		r = &AccessPolicy{}
 	case "azure-native:timeseriesinsights/v20180815preview:EventHubEventSource":
 		r = &EventHubEventSource{}
 	case "azure-native:timeseriesinsights/v20180815preview:IoTHubEventSource":
 		r = &IoTHubEventSource{}
 	case "azure-native:timeseriesinsights/v20180815preview:LongTermEnvironment":
 		r = &LongTermEnvironment{}
-	case "azure-native:timeseriesinsights/v20180815preview:ReferenceDataSet":
-		r = &ReferenceDataSet{}
 	case "azure-native:timeseriesinsights/v20180815preview:StandardEnvironment":
 		r = &StandardEnvironment{}
 	default:

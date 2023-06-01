@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of WcfRelays Resource.
-//
-// Deprecated: Version 2016-07-01 will be removed in v2 of the provider.
 type WCFRelay struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy.
 //
-// API Version: 2020-05-01.
+// API Version: 2021-04-01.
 func LookupHierarchySetting(ctx *pulumi.Context, args *LookupHierarchySettingArgs, opts ...pulumi.InvokeOption) (*LookupHierarchySettingResult, error) {
 	var rv LookupHierarchySettingResult
 	err := ctx.Invoke("azure-native:management:getHierarchySetting", args, &rv, opts...)

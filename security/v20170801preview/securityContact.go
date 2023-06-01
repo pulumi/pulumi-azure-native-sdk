@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,9 +46,6 @@ func NewSecurityContact(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:security:SecurityContact"),
-		},
 		{
 			Type: pulumi.String("azure-native:security/v20200101preview:SecurityContact"),
 		},

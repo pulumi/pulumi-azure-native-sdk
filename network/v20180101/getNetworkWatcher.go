@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the specified network watcher by resource group.
-//
-// Deprecated: Version 2018-01-01 will be removed in v2 of the provider.
 func LookupNetworkWatcher(ctx *pulumi.Context, args *LookupNetworkWatcherArgs, opts ...pulumi.InvokeOption) (*LookupNetworkWatcherResult, error) {
 	var rv LookupNetworkWatcherResult
 	err := ctx.Invoke("azure-native:network/v20180101:getNetworkWatcher", args, &rv, opts...)
@@ -52,7 +50,7 @@ func (val *LookupNetworkWatcherResult) Defaults() *LookupNetworkWatcherResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Etag) {
+	if tmp.Etag == nil {
 		etag_ := "A unique read-only string that changes whenever the resource is updated."
 		tmp.Etag = &etag_
 	}

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,24 +27,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AATPDataConnector{}
 	case "azure-native:securityinsights/v20221101preview:ASCDataConnector":
 		r = &ASCDataConnector{}
-	case "azure-native:securityinsights/v20221101preview:Action":
-		r = &Action{}
 	case "azure-native:securityinsights/v20221101preview:ActivityCustomEntityQuery":
 		r = &ActivityCustomEntityQuery{}
 	case "azure-native:securityinsights/v20221101preview:Anomalies":
 		r = &Anomalies{}
 	case "azure-native:securityinsights/v20221101preview:AnomalySecurityMLAnalyticsSettings":
 		r = &AnomalySecurityMLAnalyticsSettings{}
-	case "azure-native:securityinsights/v20221101preview:AutomationRule":
-		r = &AutomationRule{}
 	case "azure-native:securityinsights/v20221101preview:AwsCloudTrailDataConnector":
 		r = &AwsCloudTrailDataConnector{}
 	case "azure-native:securityinsights/v20221101preview:AwsS3DataConnector":
 		r = &AwsS3DataConnector{}
-	case "azure-native:securityinsights/v20221101preview:Bookmark":
-		r = &Bookmark{}
-	case "azure-native:securityinsights/v20221101preview:BookmarkRelation":
-		r = &BookmarkRelation{}
 	case "azure-native:securityinsights/v20221101preview:CodelessApiPollingDataConnector":
 		r = &CodelessApiPollingDataConnector{}
 	case "azure-native:securityinsights/v20221101preview:CodelessUiDataConnector":
@@ -55,16 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EntityAnalytics{}
 	case "azure-native:securityinsights/v20221101preview:EyesOn":
 		r = &EyesOn{}
-	case "azure-native:securityinsights/v20221101preview:FileImport":
-		r = &FileImport{}
 	case "azure-native:securityinsights/v20221101preview:FusionAlertRule":
 		r = &FusionAlertRule{}
-	case "azure-native:securityinsights/v20221101preview:Incident":
-		r = &Incident{}
-	case "azure-native:securityinsights/v20221101preview:IncidentComment":
-		r = &IncidentComment{}
-	case "azure-native:securityinsights/v20221101preview:IncidentRelation":
-		r = &IncidentRelation{}
 	case "azure-native:securityinsights/v20221101preview:IoTDataConnector":
 		r = &IoTDataConnector{}
 	case "azure-native:securityinsights/v20221101preview:MCASDataConnector":
@@ -77,8 +61,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MSTIDataConnector{}
 	case "azure-native:securityinsights/v20221101preview:MTPDataConnector":
 		r = &MTPDataConnector{}
-	case "azure-native:securityinsights/v20221101preview:Metadata":
-		r = &Metadata{}
 	case "azure-native:securityinsights/v20221101preview:MicrosoftSecurityIncidentCreationAlertRule":
 		r = &MicrosoftSecurityIncidentCreationAlertRule{}
 	case "azure-native:securityinsights/v20221101preview:NrtAlertRule":
@@ -95,24 +77,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OfficePowerBIDataConnector{}
 	case "azure-native:securityinsights/v20221101preview:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
-	case "azure-native:securityinsights/v20221101preview:SentinelOnboardingState":
-		r = &SentinelOnboardingState{}
-	case "azure-native:securityinsights/v20221101preview:SourceControl":
-		r = &SourceControl{}
 	case "azure-native:securityinsights/v20221101preview:TIDataConnector":
 		r = &TIDataConnector{}
 	case "azure-native:securityinsights/v20221101preview:ThreatIntelligenceAlertRule":
 		r = &ThreatIntelligenceAlertRule{}
-	case "azure-native:securityinsights/v20221101preview:ThreatIntelligenceIndicator":
-		r = &ThreatIntelligenceIndicator{}
 	case "azure-native:securityinsights/v20221101preview:TiTaxiiDataConnector":
 		r = &TiTaxiiDataConnector{}
 	case "azure-native:securityinsights/v20221101preview:Ueba":
 		r = &Ueba{}
-	case "azure-native:securityinsights/v20221101preview:Watchlist":
-		r = &Watchlist{}
-	case "azure-native:securityinsights/v20221101preview:WatchlistItem":
-		r = &WatchlistItem{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -7,16 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Network Manager Connection resource
-// API Version: 2021-05-01-preview.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ManagementGroupNetworkManagerConnection struct {
 	pulumi.CustomResourceState
 
-	// A description of the scope connection.
+	// A description of the network manager connection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -42,7 +43,25 @@ func NewManagementGroupNetworkManagerConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network/v20210501preview:ManagementGroupNetworkManagerConnection"),
+			Type: pulumi.String("azure-native:network/v20220101:ManagementGroupNetworkManagerConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20220201preview:ManagementGroupNetworkManagerConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20220401preview:ManagementGroupNetworkManagerConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20220501:ManagementGroupNetworkManagerConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20220701:ManagementGroupNetworkManagerConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20220901:ManagementGroupNetworkManagerConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ManagementGroupNetworkManagerConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -78,7 +97,7 @@ func (ManagementGroupNetworkManagerConnectionState) ElementType() reflect.Type {
 }
 
 type managementGroupNetworkManagerConnectionArgs struct {
-	// A description of the scope connection.
+	// A description of the network manager connection.
 	Description *string `pulumi:"description"`
 	// The management group Id which uniquely identify the Microsoft Azure management group.
 	ManagementGroupId string `pulumi:"managementGroupId"`
@@ -90,7 +109,7 @@ type managementGroupNetworkManagerConnectionArgs struct {
 
 // The set of arguments for constructing a ManagementGroupNetworkManagerConnection resource.
 type ManagementGroupNetworkManagerConnectionArgs struct {
-	// A description of the scope connection.
+	// A description of the network manager connection.
 	Description pulumi.StringPtrInput
 	// The management group Id which uniquely identify the Microsoft Azure management group.
 	ManagementGroupId pulumi.StringInput
@@ -137,7 +156,7 @@ func (o ManagementGroupNetworkManagerConnectionOutput) ToManagementGroupNetworkM
 	return o
 }
 
-// A description of the scope connection.
+// A description of the network manager connection.
 func (o ManagementGroupNetworkManagerConnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementGroupNetworkManagerConnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

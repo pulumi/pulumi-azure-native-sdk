@@ -3,34 +3,12 @@
 
 package v20160701
 
-type AccessRights string
-
-const (
-	AccessRightsManage = AccessRights("Manage")
-	AccessRightsSend   = AccessRights("Send")
-	AccessRightsListen = AccessRights("Listen")
-)
-
 // WCFRelay Type.
 type Relaytype string
 
 const (
 	RelaytypeNetTcp = Relaytype("NetTcp")
 	RelaytypeHttp   = Relaytype("Http")
-)
-
-// Name of this Sku
-type SkuName string
-
-const (
-	SkuNameStandard = SkuName("Standard")
-)
-
-// The tier of this particular SKU
-type SkuTier string
-
-const (
-	SkuTierStandard = SkuTier("Standard")
 )
 
 func init() {

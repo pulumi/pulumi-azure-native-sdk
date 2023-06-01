@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a Traffic Manager profile.
-//
-// Deprecated: Version 2018-02-01 will be removed in v2 of the provider.
 type Profile struct {
 	pulumi.CustomResourceState
 

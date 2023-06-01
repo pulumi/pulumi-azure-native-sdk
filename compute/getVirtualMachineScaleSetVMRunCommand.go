@@ -11,7 +11,7 @@ import (
 )
 
 // The operation to get the VMSS VM run command.
-// API Version: 2021-03-01.
+// API Version: 2022-11-01.
 func LookupVirtualMachineScaleSetVMRunCommand(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMRunCommandArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMRunCommandResult, error) {
 	var rv LookupVirtualMachineScaleSetVMRunCommandResult
 	err := ctx.Invoke("azure-native:compute:getVirtualMachineScaleSetVMRunCommand", args, &rv, opts...)
@@ -76,7 +76,7 @@ func (val *LookupVirtualMachineScaleSetVMRunCommandResult) Defaults() *LookupVir
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AsyncExecution) {
+	if tmp.AsyncExecution == nil {
 		asyncExecution_ := false
 		tmp.AsyncExecution = &asyncExecution_
 	}

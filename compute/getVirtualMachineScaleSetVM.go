@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a virtual machine from a VM scale set.
-// API Version: 2021-03-01.
+// API Version: 2022-11-01.
 func LookupVirtualMachineScaleSetVM(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMResult, error) {
 	var rv LookupVirtualMachineScaleSetVMResult
 	err := ctx.Invoke("azure-native:compute:getVirtualMachineScaleSetVM", args, &rv, opts...)
@@ -44,6 +44,8 @@ type LookupVirtualMachineScaleSetVMResult struct {
 	HardwareProfile *HardwareProfileResponse `pulumi:"hardwareProfile"`
 	// Resource Id
 	Id string `pulumi:"id"`
+	// The identity of the virtual machine, if configured.
+	Identity *VirtualMachineIdentityResponse `pulumi:"identity"`
 	// The virtual machine instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// The virtual machine instance view.
@@ -158,6 +160,11 @@ func (o LookupVirtualMachineScaleSetVMResultOutput) HardwareProfile() HardwarePr
 // Resource Id
 func (o LookupVirtualMachineScaleSetVMResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity of the virtual machine, if configured.
+func (o LookupVirtualMachineScaleSetVMResultOutput) Identity() VirtualMachineIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) *VirtualMachineIdentityResponse { return v.Identity }).(VirtualMachineIdentityResponsePtrOutput)
 }
 
 // The virtual machine instance ID.

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // IoT Security solution configuration and resource information.
 // API Version: 2019-08-01.
+// Previous API Version: 2019-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type IotSecuritySolution struct {
 	pulumi.CustomResourceState
 
@@ -66,10 +67,10 @@ func NewIotSecuritySolution(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Status) {
+	if args.Status == nil {
 		args.Status = pulumi.StringPtr("Enabled")
 	}
-	if isZero(args.UnmaskedIpLoggingStatus) {
+	if args.UnmaskedIpLoggingStatus == nil {
 		args.UnmaskedIpLoggingStatus = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

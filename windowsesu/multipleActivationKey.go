@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MAK key details.
 // API Version: 2019-09-16-preview.
+// Previous API Version: 2019-09-16-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MultipleActivationKey struct {
 	pulumi.CustomResourceState
 
@@ -51,7 +52,7 @@ func NewMultipleActivationKey(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.SupportType) {
+	if args.SupportType == nil {
 		args.SupportType = pulumi.StringPtr("SupplementalServicing")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

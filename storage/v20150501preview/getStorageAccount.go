@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the properties for the specified storage account including but not limited to name, account type, location, and account status. The ListKeys operation should be used to retrieve storage keys.
-//
-// Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
 func LookupStorageAccount(ctx *pulumi.Context, args *LookupStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountResult, error) {
 	var rv LookupStorageAccountResult
 	err := ctx.Invoke("azure-native:storage/v20150501preview:getStorageAccount", args, &rv, opts...)

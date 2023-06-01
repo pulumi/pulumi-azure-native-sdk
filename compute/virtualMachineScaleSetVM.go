@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a virtual machine scale set virtual machine.
-// API Version: 2021-03-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualMachineScaleSetVM struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type VirtualMachineScaleSetVM struct {
 	DiagnosticsProfile DiagnosticsProfileResponsePtrOutput `pulumi:"diagnosticsProfile"`
 	// Specifies the hardware settings for the virtual machine.
 	HardwareProfile HardwareProfileResponsePtrOutput `pulumi:"hardwareProfile"`
+	// The identity of the virtual machine, if configured.
+	Identity VirtualMachineIdentityResponsePtrOutput `pulumi:"identity"`
 	// The virtual machine instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The virtual machine instance view.
@@ -177,6 +180,8 @@ type virtualMachineScaleSetVMArgs struct {
 	DiagnosticsProfile *DiagnosticsProfile `pulumi:"diagnosticsProfile"`
 	// Specifies the hardware settings for the virtual machine.
 	HardwareProfile *HardwareProfile `pulumi:"hardwareProfile"`
+	// The identity of the virtual machine, if configured.
+	Identity *VirtualMachineIdentity `pulumi:"identity"`
 	// The instance ID of the virtual machine.
 	InstanceId *string `pulumi:"instanceId"`
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
@@ -217,6 +222,8 @@ type VirtualMachineScaleSetVMArgs struct {
 	DiagnosticsProfile DiagnosticsProfilePtrInput
 	// Specifies the hardware settings for the virtual machine.
 	HardwareProfile HardwareProfilePtrInput
+	// The identity of the virtual machine, if configured.
+	Identity VirtualMachineIdentityPtrInput
 	// The instance ID of the virtual machine.
 	InstanceId pulumi.StringPtrInput
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
@@ -304,6 +311,11 @@ func (o VirtualMachineScaleSetVMOutput) DiagnosticsProfile() DiagnosticsProfileR
 // Specifies the hardware settings for the virtual machine.
 func (o VirtualMachineScaleSetVMOutput) HardwareProfile() HardwareProfileResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) HardwareProfileResponsePtrOutput { return v.HardwareProfile }).(HardwareProfileResponsePtrOutput)
+}
+
+// The identity of the virtual machine, if configured.
+func (o VirtualMachineScaleSetVMOutput) Identity() VirtualMachineIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVM) VirtualMachineIdentityResponsePtrOutput { return v.Identity }).(VirtualMachineIdentityResponsePtrOutput)
 }
 
 // The virtual machine instance ID.

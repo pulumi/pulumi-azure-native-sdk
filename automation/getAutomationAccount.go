@@ -11,7 +11,7 @@ import (
 )
 
 // Get information about an Automation Account.
-// API Version: 2021-06-22.
+// API Version: 2022-08-08.
 func LookupAutomationAccount(ctx *pulumi.Context, args *LookupAutomationAccountArgs, opts ...pulumi.InvokeOption) (*LookupAutomationAccountResult, error) {
 	var rv LookupAutomationAccountResult
 	err := ctx.Invoke("azure-native:automation:getAutomationAccount", args, &rv, opts...)

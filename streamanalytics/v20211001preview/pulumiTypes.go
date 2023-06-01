@@ -4418,7 +4418,7 @@ func (val *Transformation) Defaults() *Transformation {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StreamingUnits) {
+	if tmp.StreamingUnits == nil {
 		streamingUnits_ := 3
 		tmp.StreamingUnits = &streamingUnits_
 	}
@@ -4454,7 +4454,7 @@ func (val *TransformationArgs) Defaults() *TransformationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StreamingUnits) {
+	if tmp.StreamingUnits == nil {
 		tmp.StreamingUnits = pulumi.IntPtr(3)
 	}
 	return &tmp
@@ -4645,7 +4645,7 @@ func (val *TransformationResponse) Defaults() *TransformationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StreamingUnits) {
+	if tmp.StreamingUnits == nil {
 		streamingUnits_ := 3
 		tmp.StreamingUnits = &streamingUnits_
 	}

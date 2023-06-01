@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,38 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:documentdb/v20200601preview:CassandraResourceCassandraKeyspace":
-		r = &CassandraResourceCassandraKeyspace{}
-	case "azure-native:documentdb/v20200601preview:CassandraResourceCassandraTable":
-		r = &CassandraResourceCassandraTable{}
 	case "azure-native:documentdb/v20200601preview:DatabaseAccount":
 		r = &DatabaseAccount{}
-	case "azure-native:documentdb/v20200601preview:GremlinResourceGremlinDatabase":
-		r = &GremlinResourceGremlinDatabase{}
-	case "azure-native:documentdb/v20200601preview:GremlinResourceGremlinGraph":
-		r = &GremlinResourceGremlinGraph{}
-	case "azure-native:documentdb/v20200601preview:MongoDBResourceMongoDBCollection":
-		r = &MongoDBResourceMongoDBCollection{}
-	case "azure-native:documentdb/v20200601preview:MongoDBResourceMongoDBDatabase":
-		r = &MongoDBResourceMongoDBDatabase{}
-	case "azure-native:documentdb/v20200601preview:NotebookWorkspace":
-		r = &NotebookWorkspace{}
-	case "azure-native:documentdb/v20200601preview:SqlResourceSqlContainer":
-		r = &SqlResourceSqlContainer{}
-	case "azure-native:documentdb/v20200601preview:SqlResourceSqlDatabase":
-		r = &SqlResourceSqlDatabase{}
-	case "azure-native:documentdb/v20200601preview:SqlResourceSqlRoleAssignment":
-		r = &SqlResourceSqlRoleAssignment{}
-	case "azure-native:documentdb/v20200601preview:SqlResourceSqlRoleDefinition":
-		r = &SqlResourceSqlRoleDefinition{}
-	case "azure-native:documentdb/v20200601preview:SqlResourceSqlStoredProcedure":
-		r = &SqlResourceSqlStoredProcedure{}
-	case "azure-native:documentdb/v20200601preview:SqlResourceSqlTrigger":
-		r = &SqlResourceSqlTrigger{}
-	case "azure-native:documentdb/v20200601preview:SqlResourceSqlUserDefinedFunction":
-		r = &SqlResourceSqlUserDefinedFunction{}
-	case "azure-native:documentdb/v20200601preview:TableResourceTable":
-		r = &TableResourceTable{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

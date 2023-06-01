@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the properties of the specified backup schedule group name.
-//
-// Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
 func LookupBackupScheduleGroup(ctx *pulumi.Context, args *LookupBackupScheduleGroupArgs, opts ...pulumi.InvokeOption) (*LookupBackupScheduleGroupResult, error) {
 	var rv LookupBackupScheduleGroupResult
 	err := ctx.Invoke("azure-native:storsimple/v20161001:getBackupScheduleGroup", args, &rv, opts...)

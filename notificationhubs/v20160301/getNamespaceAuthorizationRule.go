@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an authorization rule for a namespace by name.
-//
-// Deprecated: Version 2016-03-01 will be removed in v2 of the provider.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	var rv LookupNamespaceAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:notificationhubs/v20160301:getNamespaceAuthorizationRule", args, &rv, opts...)

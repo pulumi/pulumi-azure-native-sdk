@@ -11,7 +11,7 @@ import (
 )
 
 // Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
-// API Version: 2021-12-01-preview.
+// API Version: 2023-04-01.
 func GetSAPSizingRecommendations(ctx *pulumi.Context, args *GetSAPSizingRecommendationsArgs, opts ...pulumi.InvokeOption) (*GetSAPSizingRecommendationsResult, error) {
 	var rv GetSAPSizingRecommendationsResult
 	err := ctx.Invoke("azure-native:workloads:getSAPSizingRecommendations", args, &rv, opts...)

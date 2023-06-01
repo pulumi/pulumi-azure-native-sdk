@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a VMSS VM Extension.
-// API Version: 2021-03-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualMachineScaleSetVMExtension struct {
 	pulumi.CustomResourceState
 
@@ -28,12 +29,16 @@ type VirtualMachineScaleSetVMExtension struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.AnyOutput `pulumi:"protectedSettings"`
+	// The extensions protected settings that are passed by reference, and consumed from key vault
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferenceResponsePtrOutput `pulumi:"protectedSettingsFromKeyVault"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The name of the extension handler publisher.
 	Publisher pulumi.StringPtrOutput `pulumi:"publisher"`
 	// Json formatted public settings for the extension.
 	Settings pulumi.AnyOutput `pulumi:"settings"`
+	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+	SuppressFailures pulumi.BoolPtrOutput `pulumi:"suppressFailures"`
 	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Specifies the version of the script handler.
@@ -139,12 +144,16 @@ type virtualMachineScaleSetVMExtensionArgs struct {
 	InstanceView *VirtualMachineExtensionInstanceView `pulumi:"instanceView"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
+	// The extensions protected settings that are passed by reference, and consumed from key vault
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
 	// The name of the extension handler publisher.
 	Publisher *string `pulumi:"publisher"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
+	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+	SuppressFailures *bool `pulumi:"suppressFailures"`
 	// Specifies the type of the extension; an example is "CustomScriptExtension".
 	Type *string `pulumi:"type"`
 	// Specifies the version of the script handler.
@@ -169,12 +178,16 @@ type VirtualMachineScaleSetVMExtensionArgs struct {
 	InstanceView VirtualMachineExtensionInstanceViewPtrInput
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.Input
+	// The extensions protected settings that are passed by reference, and consumed from key vault
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput
 	// The name of the extension handler publisher.
 	Publisher pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Json formatted public settings for the extension.
 	Settings pulumi.Input
+	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+	SuppressFailures pulumi.BoolPtrInput
 	// Specifies the type of the extension; an example is "CustomScriptExtension".
 	Type pulumi.StringPtrInput
 	// Specifies the version of the script handler.
@@ -254,6 +267,13 @@ func (o VirtualMachineScaleSetVMExtensionOutput) ProtectedSettings() pulumi.AnyO
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.AnyOutput { return v.ProtectedSettings }).(pulumi.AnyOutput)
 }
 
+// The extensions protected settings that are passed by reference, and consumed from key vault
+func (o VirtualMachineScaleSetVMExtensionOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) KeyVaultSecretReferenceResponsePtrOutput {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
+}
+
 // The provisioning state, which only appears in the response.
 func (o VirtualMachineScaleSetVMExtensionOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -267,6 +287,11 @@ func (o VirtualMachineScaleSetVMExtensionOutput) Publisher() pulumi.StringPtrOut
 // Json formatted public settings for the extension.
 func (o VirtualMachineScaleSetVMExtensionOutput) Settings() pulumi.AnyOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.AnyOutput { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+func (o VirtualMachineScaleSetVMExtensionOutput) SuppressFailures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.BoolPtrOutput { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
 }
 
 // Resource type

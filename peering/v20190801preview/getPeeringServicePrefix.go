@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the peering service prefix.
-//
-// Deprecated: Version 2019-08-01-preview will be removed in v2 of the provider.
 func LookupPeeringServicePrefix(ctx *pulumi.Context, args *LookupPeeringServicePrefixArgs, opts ...pulumi.InvokeOption) (*LookupPeeringServicePrefixResult, error) {
 	var rv LookupPeeringServicePrefixResult
 	err := ctx.Invoke("azure-native:peering/v20190801preview:getPeeringServicePrefix", args, &rv, opts...)

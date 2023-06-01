@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // RouteTable resource
-//
-// Deprecated: Version 2016-03-30 will be removed in v2 of the provider.
 type RouteTable struct {
 	pulumi.CustomResourceState
 
@@ -178,6 +176,9 @@ func NewRouteTable(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:RouteTable"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:RouteTable"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource RouteTable
@@ -223,7 +224,7 @@ type routeTableArgs struct {
 	// The name of the route table.
 	RouteTableName *string `pulumi:"routeTableName"`
 	// Gets or sets Routes in a Route Table
-	Routes []RouteType `pulumi:"routes"`
+	Routes []Route `pulumi:"routes"`
 	// Gets collection of references to subnets
 	Subnets []SubnetType `pulumi:"subnets"`
 	// Resource tags
@@ -243,7 +244,7 @@ type RouteTableArgs struct {
 	// The name of the route table.
 	RouteTableName pulumi.StringPtrInput
 	// Gets or sets Routes in a Route Table
-	Routes RouteTypeArrayInput
+	Routes RouteArrayInput
 	// Gets collection of references to subnets
 	Subnets SubnetTypeArrayInput
 	// Resource tags

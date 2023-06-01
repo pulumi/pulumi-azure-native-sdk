@@ -11,8 +11,6 @@ import (
 )
 
 // Retrieves information about an availability set.
-//
-// Deprecated: Version 2016-04-30-preview will be removed in v2 of the provider.
 func LookupAvailabilitySet(ctx *pulumi.Context, args *LookupAvailabilitySetArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilitySetResult, error) {
 	var rv LookupAvailabilitySetResult
 	err := ctx.Invoke("azure-native:compute/v20160430preview:getAvailabilitySet", args, &rv, opts...)

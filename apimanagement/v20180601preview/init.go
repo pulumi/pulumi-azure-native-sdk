@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,80 +23,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:apimanagement/v20180601preview:Api":
 		r = &Api{}
-	case "azure-native:apimanagement/v20180601preview:ApiDiagnostic":
-		r = &ApiDiagnostic{}
-	case "azure-native:apimanagement/v20180601preview:ApiIssue":
-		r = &ApiIssue{}
-	case "azure-native:apimanagement/v20180601preview:ApiIssueAttachment":
-		r = &ApiIssueAttachment{}
-	case "azure-native:apimanagement/v20180601preview:ApiIssueComment":
-		r = &ApiIssueComment{}
-	case "azure-native:apimanagement/v20180601preview:ApiManagementService":
-		r = &ApiManagementService{}
-	case "azure-native:apimanagement/v20180601preview:ApiOperation":
-		r = &ApiOperation{}
 	case "azure-native:apimanagement/v20180601preview:ApiOperationPolicy":
 		r = &ApiOperationPolicy{}
 	case "azure-native:apimanagement/v20180601preview:ApiPolicy":
 		r = &ApiPolicy{}
-	case "azure-native:apimanagement/v20180601preview:ApiRelease":
-		r = &ApiRelease{}
-	case "azure-native:apimanagement/v20180601preview:ApiSchema":
-		r = &ApiSchema{}
-	case "azure-native:apimanagement/v20180601preview:ApiVersionSet":
-		r = &ApiVersionSet{}
-	case "azure-native:apimanagement/v20180601preview:AuthorizationServer":
-		r = &AuthorizationServer{}
-	case "azure-native:apimanagement/v20180601preview:Backend":
-		r = &Backend{}
-	case "azure-native:apimanagement/v20180601preview:Cache":
-		r = &Cache{}
-	case "azure-native:apimanagement/v20180601preview:Certificate":
-		r = &Certificate{}
-	case "azure-native:apimanagement/v20180601preview:Diagnostic":
-		r = &Diagnostic{}
-	case "azure-native:apimanagement/v20180601preview:EmailTemplate":
-		r = &EmailTemplate{}
-	case "azure-native:apimanagement/v20180601preview:Group":
-		r = &Group{}
-	case "azure-native:apimanagement/v20180601preview:GroupUser":
-		r = &GroupUser{}
-	case "azure-native:apimanagement/v20180601preview:IdentityProvider":
-		r = &IdentityProvider{}
-	case "azure-native:apimanagement/v20180601preview:Logger":
-		r = &Logger{}
-	case "azure-native:apimanagement/v20180601preview:NotificationRecipientEmail":
-		r = &NotificationRecipientEmail{}
-	case "azure-native:apimanagement/v20180601preview:NotificationRecipientUser":
-		r = &NotificationRecipientUser{}
-	case "azure-native:apimanagement/v20180601preview:OpenIdConnectProvider":
-		r = &OpenIdConnectProvider{}
 	case "azure-native:apimanagement/v20180601preview:Policy":
 		r = &Policy{}
-	case "azure-native:apimanagement/v20180601preview:Product":
-		r = &Product{}
 	case "azure-native:apimanagement/v20180601preview:ProductApi":
 		r = &ProductApi{}
-	case "azure-native:apimanagement/v20180601preview:ProductGroup":
-		r = &ProductGroup{}
 	case "azure-native:apimanagement/v20180601preview:ProductPolicy":
 		r = &ProductPolicy{}
-	case "azure-native:apimanagement/v20180601preview:Property":
-		r = &Property{}
-	case "azure-native:apimanagement/v20180601preview:Subscription":
-		r = &Subscription{}
-	case "azure-native:apimanagement/v20180601preview:Tag":
-		r = &Tag{}
-	case "azure-native:apimanagement/v20180601preview:TagByApi":
-		r = &TagByApi{}
-	case "azure-native:apimanagement/v20180601preview:TagByOperation":
-		r = &TagByOperation{}
-	case "azure-native:apimanagement/v20180601preview:TagByProduct":
-		r = &TagByProduct{}
 	case "azure-native:apimanagement/v20180601preview:TagDescription":
 		r = &TagDescription{}
-	case "azure-native:apimanagement/v20180601preview:User":
-		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

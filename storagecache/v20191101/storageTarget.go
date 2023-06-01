@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A storage system being cached by a Cache.
-//
-// Deprecated: Version 2019-11-01 will be removed in v2 of the provider.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +79,9 @@ func NewStorageTarget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230301preview:StorageTarget"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:StorageTarget"),
 		},
 	})
 	opts = append(opts, aliases)

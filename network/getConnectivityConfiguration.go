@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-01.
 func LookupConnectivityConfiguration(ctx *pulumi.Context, args *LookupConnectivityConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConnectivityConfigurationResult, error) {
 	var rv LookupConnectivityConfigurationResult
 	err := ctx.Invoke("azure-native:network:getConnectivityConfiguration", args, &rv, opts...)
@@ -40,8 +40,6 @@ type LookupConnectivityConfigurationResult struct {
 	DeleteExistingPeering *string `pulumi:"deleteExistingPeering"`
 	// A description of the connectivity configuration.
 	Description *string `pulumi:"description"`
-	// A friendly name for the resource.
-	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// List of hubItems
@@ -121,11 +119,6 @@ func (o LookupConnectivityConfigurationResultOutput) DeleteExistingPeering() pul
 // A description of the connectivity configuration.
 func (o LookupConnectivityConfigurationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectivityConfigurationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A friendly name for the resource.
-func (o LookupConnectivityConfigurationResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupConnectivityConfigurationResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

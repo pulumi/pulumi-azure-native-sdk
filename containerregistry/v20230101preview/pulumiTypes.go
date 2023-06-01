@@ -293,7 +293,7 @@ func (val *AzureADAuthenticationAsArmPolicy) Defaults() *AzureADAuthenticationAs
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "enabled"
 		tmp.Status = &status_
 	}
@@ -323,7 +323,7 @@ func (val *AzureADAuthenticationAsArmPolicyArgs) Defaults() *AzureADAuthenticati
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("enabled")
 	}
 	return &tmp
@@ -457,7 +457,7 @@ func (val *AzureADAuthenticationAsArmPolicyResponse) Defaults() *AzureADAuthenti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "enabled"
 		tmp.Status = &status_
 	}
@@ -1458,7 +1458,7 @@ func (val *ExportPolicy) Defaults() *ExportPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "enabled"
 		tmp.Status = &status_
 	}
@@ -1488,7 +1488,7 @@ func (val *ExportPolicyArgs) Defaults() *ExportPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("enabled")
 	}
 	return &tmp
@@ -1622,7 +1622,7 @@ func (val *ExportPolicyResponse) Defaults() *ExportPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "enabled"
 		tmp.Status = &status_
 	}
@@ -1697,7 +1697,7 @@ func (val *IPRule) Defaults() *IPRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -1729,7 +1729,7 @@ func (val *IPRuleArgs) Defaults() *IPRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -1830,7 +1830,7 @@ func (val *IPRuleResponse) Defaults() *IPRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -2235,7 +2235,7 @@ func (val *ImportPipelineSourceProperties) Defaults() *ImportPipelineSourcePrope
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlobContainer"
 		tmp.Type = &type_
 	}
@@ -2271,7 +2271,7 @@ func (val *ImportPipelineSourcePropertiesArgs) Defaults() *ImportPipelineSourceP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("AzureStorageBlobContainer")
 	}
 	return &tmp
@@ -2338,7 +2338,7 @@ func (val *ImportPipelineSourcePropertiesResponse) Defaults() *ImportPipelineSou
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlobContainer"
 		tmp.Type = &type_
 	}
@@ -2729,11 +2729,11 @@ func (val *LoggingProperties) Defaults() *LoggingProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuditLogStatus) {
+	if tmp.AuditLogStatus == nil {
 		auditLogStatus_ := "Disabled"
 		tmp.AuditLogStatus = &auditLogStatus_
 	}
-	if isZero(tmp.LogLevel) {
+	if tmp.LogLevel == nil {
 		logLevel_ := "Information"
 		tmp.LogLevel = &logLevel_
 	}
@@ -2765,10 +2765,10 @@ func (val *LoggingPropertiesArgs) Defaults() *LoggingPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuditLogStatus) {
+	if tmp.AuditLogStatus == nil {
 		tmp.AuditLogStatus = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.LogLevel) {
+	if tmp.LogLevel == nil {
 		tmp.LogLevel = pulumi.StringPtr("Information")
 	}
 	return &tmp
@@ -2919,11 +2919,11 @@ func (val *LoggingPropertiesResponse) Defaults() *LoggingPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuditLogStatus) {
+	if tmp.AuditLogStatus == nil {
 		auditLogStatus_ := "Disabled"
 		tmp.AuditLogStatus = &auditLogStatus_
 	}
-	if isZero(tmp.LogLevel) {
+	if tmp.LogLevel == nil {
 		logLevel_ := "Information"
 		tmp.LogLevel = &logLevel_
 	}
@@ -3121,7 +3121,7 @@ func (val *NetworkRuleSetArgs) Defaults() *NetworkRuleSetArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		tmp.DefaultAction = pulumi.String("Allow")
 	}
 	return &tmp
@@ -3957,7 +3957,7 @@ func (val *PipelineRunSourceProperties) Defaults() *PipelineRunSourceProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlob"
 		tmp.Type = &type_
 	}
@@ -3988,7 +3988,7 @@ func (val *PipelineRunSourcePropertiesArgs) Defaults() *PipelineRunSourcePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("AzureStorageBlob")
 	}
 	return &tmp
@@ -4137,7 +4137,7 @@ func (val *PipelineRunSourcePropertiesResponse) Defaults() *PipelineRunSourcePro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlob"
 		tmp.Type = &type_
 	}
@@ -4225,7 +4225,7 @@ func (val *PipelineRunTargetProperties) Defaults() *PipelineRunTargetProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlob"
 		tmp.Type = &type_
 	}
@@ -4256,7 +4256,7 @@ func (val *PipelineRunTargetPropertiesArgs) Defaults() *PipelineRunTargetPropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("AzureStorageBlob")
 	}
 	return &tmp
@@ -4405,7 +4405,7 @@ func (val *PipelineRunTargetPropertiesResponse) Defaults() *PipelineRunTargetPro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "AzureStorageBlob"
 		tmp.Type = &type_
 	}
@@ -4577,7 +4577,7 @@ func (val *PipelineSourceTriggerPropertiesArgs) Defaults() *PipelineSourceTrigge
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.String("Enabled")
 	}
 	return &tmp
@@ -6121,7 +6121,7 @@ func (val *QuarantinePolicy) Defaults() *QuarantinePolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -6151,7 +6151,7 @@ func (val *QuarantinePolicyArgs) Defaults() *QuarantinePolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("disabled")
 	}
 	return &tmp
@@ -6285,7 +6285,7 @@ func (val *QuarantinePolicyResponse) Defaults() *QuarantinePolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -6541,11 +6541,11 @@ func (val *RetentionPolicy) Defaults() *RetentionPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		days_ := 7
 		tmp.Days = &days_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -6577,10 +6577,10 @@ func (val *RetentionPolicyArgs) Defaults() *RetentionPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		tmp.Days = pulumi.IntPtr(7)
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("disabled")
 	}
 	return &tmp
@@ -6733,11 +6733,11 @@ func (val *RetentionPolicyResponse) Defaults() *RetentionPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		days_ := 7
 		tmp.Days = &days_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -6930,11 +6930,11 @@ func (val *SoftDeletePolicy) Defaults() *SoftDeletePolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RetentionDays) {
+	if tmp.RetentionDays == nil {
 		retentionDays_ := 7
 		tmp.RetentionDays = &retentionDays_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -6966,10 +6966,10 @@ func (val *SoftDeletePolicyArgs) Defaults() *SoftDeletePolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RetentionDays) {
+	if tmp.RetentionDays == nil {
 		tmp.RetentionDays = pulumi.IntPtr(7)
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("disabled")
 	}
 	return &tmp
@@ -7122,11 +7122,11 @@ func (val *SoftDeletePolicyResponse) Defaults() *SoftDeletePolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RetentionDays) {
+	if tmp.RetentionDays == nil {
 		retentionDays_ := 7
 		tmp.RetentionDays = &retentionDays_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
@@ -8572,11 +8572,11 @@ func (val *TrustPolicy) Defaults() *TrustPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Notary"
 		tmp.Type = &type_
 	}
@@ -8608,10 +8608,10 @@ func (val *TrustPolicyArgs) Defaults() *TrustPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		tmp.Status = pulumi.StringPtr("disabled")
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		tmp.Type = pulumi.StringPtr("Notary")
 	}
 	return &tmp
@@ -8762,11 +8762,11 @@ func (val *TrustPolicyResponse) Defaults() *TrustPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "disabled"
 		tmp.Status = &status_
 	}
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "Notary"
 		tmp.Type = &type_
 	}

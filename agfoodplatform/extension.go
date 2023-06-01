@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Extension resource.
-// API Version: 2020-05-12-preview.
+// API Version: 2021-09-01-preview.
+// Previous API Version: 2020-05-12-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Extension struct {
 	pulumi.CustomResourceState
 
+	// Additional api properties.
+	AdditionalApiProperties ApiPropertiesResponseMapOutput `pulumi:"additionalApiProperties"`
 	// The ETag value to implement optimistic concurrency.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// Extension api docs link.
@@ -30,7 +33,7 @@ type Extension struct {
 	InstalledExtensionVersion pulumi.StringOutput `pulumi:"installedExtensionVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -90,8 +93,12 @@ func (ExtensionState) ElementType() reflect.Type {
 }
 
 type extensionArgs struct {
+	// Additional Api Properties.
+	AdditionalApiProperties map[string]ApiProperties `pulumi:"additionalApiProperties"`
 	// Id of extension resource.
 	ExtensionId *string `pulumi:"extensionId"`
+	// Extension Version.
+	ExtensionVersion *string `pulumi:"extensionVersion"`
 	// FarmBeats resource name.
 	FarmBeatsResourceName string `pulumi:"farmBeatsResourceName"`
 	// The name of the resource group. The name is case insensitive.
@@ -100,8 +107,12 @@ type extensionArgs struct {
 
 // The set of arguments for constructing a Extension resource.
 type ExtensionArgs struct {
+	// Additional Api Properties.
+	AdditionalApiProperties ApiPropertiesMapInput
 	// Id of extension resource.
 	ExtensionId pulumi.StringPtrInput
+	// Extension Version.
+	ExtensionVersion pulumi.StringPtrInput
 	// FarmBeats resource name.
 	FarmBeatsResourceName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
@@ -145,6 +156,11 @@ func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) Exten
 	return o
 }
 
+// Additional api properties.
+func (o ExtensionOutput) AdditionalApiProperties() ApiPropertiesResponseMapOutput {
+	return o.ApplyT(func(v *Extension) ApiPropertiesResponseMapOutput { return v.AdditionalApiProperties }).(ApiPropertiesResponseMapOutput)
+}
+
 // The ETag value to implement optimistic concurrency.
 func (o ExtensionOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
@@ -180,7 +196,7 @@ func (o ExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ExtensionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Extension) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class representing an EmailService resource.
-// API Version: 2021-10-01-preview.
+// API Version: 2023-03-01-preview.
+// Previous API Version: 2021-10-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type EmailService struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +52,9 @@ func NewEmailService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20220701preview:EmailService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230301preview:EmailService"),
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230331:EmailService"),

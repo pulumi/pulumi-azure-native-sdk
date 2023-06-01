@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,9 +37,6 @@ func NewSqlMigrationService(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datamigration:SqlMigrationService"),
-		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220130preview:SqlMigrationService"),
 		},

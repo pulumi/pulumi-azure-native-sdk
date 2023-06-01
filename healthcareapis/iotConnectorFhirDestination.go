@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // IoT Connector FHIR destination definition.
-// API Version: 2022-05-15.
+// API Version: 2022-12-01.
+// Previous API Version: 2022-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type IotConnectorFhirDestination struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +81,9 @@ func NewIotConnectorFhirDestination(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:IotConnectorFhirDestination"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:IotConnectorFhirDestination"),
 		},
 	})
 	opts = append(opts, aliases)

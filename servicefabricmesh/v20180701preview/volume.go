@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This type describes a volume resource.
-//
-// Deprecated: Version 2018-07-01-preview will be removed in v2 of the provider.
 type Volume struct {
 	pulumi.CustomResourceState
 

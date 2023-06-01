@@ -70,50 +70,50 @@ func (val *LookupAndroidMAMPolicyByNameResult) Defaults() *LookupAndroidMAMPolic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppSharingFromLevel) {
+	if tmp.AppSharingFromLevel == nil {
 		appSharingFromLevel_ := "none"
 		tmp.AppSharingFromLevel = &appSharingFromLevel_
 	}
-	if isZero(tmp.AppSharingToLevel) {
+	if tmp.AppSharingToLevel == nil {
 		appSharingToLevel_ := "none"
 		tmp.AppSharingToLevel = &appSharingToLevel_
 	}
-	if isZero(tmp.Authentication) {
+	if tmp.Authentication == nil {
 		authentication_ := "required"
 		tmp.Authentication = &authentication_
 	}
-	if isZero(tmp.ClipboardSharingLevel) {
+	if tmp.ClipboardSharingLevel == nil {
 		clipboardSharingLevel_ := "blocked"
 		tmp.ClipboardSharingLevel = &clipboardSharingLevel_
 	}
-	if isZero(tmp.DataBackup) {
+	if tmp.DataBackup == nil {
 		dataBackup_ := "allow"
 		tmp.DataBackup = &dataBackup_
 	}
-	if isZero(tmp.DeviceCompliance) {
+	if tmp.DeviceCompliance == nil {
 		deviceCompliance_ := "enable"
 		tmp.DeviceCompliance = &deviceCompliance_
 	}
-	if isZero(tmp.FileEncryption) {
+	if tmp.FileEncryption == nil {
 		fileEncryption_ := "required"
 		tmp.FileEncryption = &fileEncryption_
 	}
-	if isZero(tmp.FileSharingSaveAs) {
+	if tmp.FileSharingSaveAs == nil {
 		fileSharingSaveAs_ := "allow"
 		tmp.FileSharingSaveAs = &fileSharingSaveAs_
 	}
 	if isZero(tmp.GroupStatus) {
 		tmp.GroupStatus = "notTargeted"
 	}
-	if isZero(tmp.ManagedBrowser) {
+	if tmp.ManagedBrowser == nil {
 		managedBrowser_ := "required"
 		tmp.ManagedBrowser = &managedBrowser_
 	}
-	if isZero(tmp.Pin) {
+	if tmp.Pin == nil {
 		pin_ := "required"
 		tmp.Pin = &pin_
 	}
-	if isZero(tmp.ScreenCapture) {
+	if tmp.ScreenCapture == nil {
 		screenCapture_ := "allow"
 		tmp.ScreenCapture = &screenCapture_
 	}

@@ -7,13 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response to put/get linked server (with properties) for Redis cache.
-//
-// Deprecated: Version 2017-02-01 will be removed in v2 of the provider.
 type RedisLinkedServer struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +78,12 @@ func NewRedisLinkedServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:RedisLinkedServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:RedisLinkedServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:RedisLinkedServer"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a list of database principals of the given Kusto cluster and database.
-// API Version: 2021-01-01.
+// API Version: 2022-12-29.
 func ListDatabasePrincipals(ctx *pulumi.Context, args *ListDatabasePrincipalsArgs, opts ...pulumi.InvokeOption) (*ListDatabasePrincipalsResult, error) {
 	var rv ListDatabasePrincipalsResult
 	err := ctx.Invoke("azure-native:kusto:listDatabasePrincipals", args, &rv, opts...)

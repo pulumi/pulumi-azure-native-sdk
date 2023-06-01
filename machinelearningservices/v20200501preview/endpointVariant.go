@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,9 +49,6 @@ func NewEndpointVariant(ctx *pulumi.Context,
 	}
 	args.ComputeType = pulumi.String("Custom")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:machinelearningservices:EndpointVariant"),
-		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20200515preview:EndpointVariant"),
 		},
