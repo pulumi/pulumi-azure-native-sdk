@@ -233,7 +233,7 @@ func (val *AmlComputeProperties) Defaults() *AmlComputeProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -312,7 +312,7 @@ func (val *AmlComputeResponseProperties) Defaults() *AmlComputeResponsePropertie
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -391,7 +391,7 @@ func (val *ComputeInstanceProperties) Defaults() *ComputeInstanceProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
+	if tmp.ApplicationSharingPolicy == nil {
 		applicationSharingPolicy_ := "Shared"
 		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
 	}
@@ -464,7 +464,7 @@ func (val *ComputeInstanceResponseProperties) Defaults() *ComputeInstanceRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
+	if tmp.ApplicationSharingPolicy == nil {
 		applicationSharingPolicy_ := "Shared"
 		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
 	}
@@ -487,7 +487,7 @@ func (val *ComputeInstanceSshSettings) Defaults() *ComputeInstanceSshSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
+	if tmp.SshPublicAccess == nil {
 		sshPublicAccess_ := "Disabled"
 		tmp.SshPublicAccess = &sshPublicAccess_
 	}
@@ -512,7 +512,7 @@ func (val *ComputeInstanceSshSettingsResponse) Defaults() *ComputeInstanceSshSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
+	if tmp.SshPublicAccess == nil {
 		sshPublicAccess_ := "Disabled"
 		tmp.SshPublicAccess = &sshPublicAccess_
 	}
@@ -2107,7 +2107,7 @@ func (val *ScaleSettings) Defaults() *ScaleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}
@@ -2130,7 +2130,7 @@ func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}

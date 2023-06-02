@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a given incident.
+//
+// Deprecated: azure-native:securityinsights/v20211001:Incident is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201preview:Incident to guarantee forwards compatibility.
 func LookupIncident(ctx *pulumi.Context, args *LookupIncidentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentResult, error) {
 	var rv LookupIncidentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001:getIncident", args, &rv, opts...)

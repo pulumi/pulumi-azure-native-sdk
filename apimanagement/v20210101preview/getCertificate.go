@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the certificate specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20210101preview:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Certificate to guarantee forwards compatibility.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210101preview:getCertificate", args, &rv, opts...)

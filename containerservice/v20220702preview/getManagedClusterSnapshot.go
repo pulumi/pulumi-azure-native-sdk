@@ -11,6 +11,8 @@ import (
 )
 
 // A managed cluster snapshot resource.
+//
+// Deprecated: azure-native:containerservice/v20220702preview:ManagedClusterSnapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:ManagedClusterSnapshot to guarantee forwards compatibility.
 func LookupManagedClusterSnapshot(ctx *pulumi.Context, args *LookupManagedClusterSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterSnapshotResult, error) {
 	var rv LookupManagedClusterSnapshotResult
 	err := ctx.Invoke("azure-native:containerservice/v20220702preview:getManagedClusterSnapshot", args, &rv, opts...)

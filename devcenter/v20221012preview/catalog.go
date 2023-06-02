@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a catalog.
+//
+// Deprecated: azure-native:devcenter/v20221012preview:Catalog is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:Catalog to guarantee forwards compatibility.
 type Catalog struct {
 	pulumi.CustomResourceState
 

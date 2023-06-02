@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure.
+//
+// Deprecated: azure-native:containerservice/v20220602preview:FleetMember is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20220902preview:FleetMember to guarantee forwards compatibility.
 type FleetMember struct {
 	pulumi.CustomResourceState
 

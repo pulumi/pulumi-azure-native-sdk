@@ -11,6 +11,8 @@ import (
 )
 
 // Get a server's security alert policy.
+//
+// Deprecated: azure-native:sql/v20200202preview:ServerSecurityAlertPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerSecurityAlertPolicy to guarantee forwards compatibility.
 func LookupServerSecurityAlertPolicy(ctx *pulumi.Context, args *LookupServerSecurityAlertPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServerSecurityAlertPolicyResult, error) {
 	var rv LookupServerSecurityAlertPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20200202preview:getServerSecurityAlertPolicy", args, &rv, opts...)

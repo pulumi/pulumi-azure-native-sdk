@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Fleet resource which contains multiple Kubernetes clusters as its members.
+//
+// Deprecated: azure-native:containerservice/v20220602preview:Fleet is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20220902preview:Fleet to guarantee forwards compatibility.
 type Fleet struct {
 	pulumi.CustomResourceState
 

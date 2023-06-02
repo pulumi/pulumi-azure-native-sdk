@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,7 +62,7 @@ func NewIotSecuritySolution(ctx *pulumi.Context,
 	if args.Workspace == nil {
 		return nil, errors.New("invalid value for required argument 'Workspace'")
 	}
-	if isZero(args.Status) {
+	if args.Status == nil {
 		args.Status = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

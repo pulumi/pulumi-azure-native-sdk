@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB Mongo Role Definition.
+//
+// Deprecated: azure-native:documentdb/v20220815preview:MongoDBResourceMongoRoleDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:MongoDBResourceMongoRoleDefinition to guarantee forwards compatibility.
 type MongoDBResourceMongoRoleDefinition struct {
 	pulumi.CustomResourceState
 
@@ -116,7 +118,7 @@ type mongoDBResourceMongoRoleDefinitionArgs struct {
 	// The set of roles inherited by this Role Definition.
 	Roles []Role `pulumi:"roles"`
 	// Indicates whether the Role Definition was built-in or user created.
-	Type *MongoRoleDefinitionType `pulumi:"type"`
+	Type *float64 `pulumi:"type"`
 }
 
 // The set of arguments for constructing a MongoDBResourceMongoRoleDefinition resource.
@@ -136,7 +138,7 @@ type MongoDBResourceMongoRoleDefinitionArgs struct {
 	// The set of roles inherited by this Role Definition.
 	Roles RoleArrayInput
 	// Indicates whether the Role Definition was built-in or user created.
-	Type MongoRoleDefinitionTypePtrInput
+	Type pulumi.Float64PtrInput
 }
 
 func (MongoDBResourceMongoRoleDefinitionArgs) ElementType() reflect.Type {

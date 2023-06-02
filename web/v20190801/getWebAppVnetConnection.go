@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a virtual network the app (or deployment slot) is connected to by name.
+//
+// Deprecated: azure-native:web/v20190801:WebAppVnetConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppVnetConnection to guarantee forwards compatibility.
 func LookupWebAppVnetConnection(ctx *pulumi.Context, args *LookupWebAppVnetConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppVnetConnectionResult, error) {
 	var rv LookupWebAppVnetConnectionResult
 	err := ctx.Invoke("azure-native:web/v20190801:getWebAppVnetConnection", args, &rv, opts...)

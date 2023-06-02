@@ -13,6 +13,7 @@ import (
 // Gets the properties of the specified bandwidth schedule.
 //
 // Deprecated: Version 2019-08-01 will be removed in v2 of the provider.
+// azure-native:databoxedge/v20190801:BandwidthSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:BandwidthSchedule to guarantee forwards compatibility.
 func LookupBandwidthSchedule(ctx *pulumi.Context, args *LookupBandwidthScheduleArgs, opts ...pulumi.InvokeOption) (*LookupBandwidthScheduleResult, error) {
 	var rv LookupBandwidthScheduleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20190801:getBandwidthSchedule", args, &rv, opts...)

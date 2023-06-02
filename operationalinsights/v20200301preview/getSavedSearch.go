@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified saved search for a given workspace.
+//
+// Deprecated: azure-native:operationalinsights/v20200301preview:SavedSearch is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:SavedSearch to guarantee forwards compatibility.
 func LookupSavedSearch(ctx *pulumi.Context, args *LookupSavedSearchArgs, opts ...pulumi.InvokeOption) (*LookupSavedSearchResult, error) {
 	var rv LookupSavedSearchResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200301preview:getSavedSearch", args, &rv, opts...)

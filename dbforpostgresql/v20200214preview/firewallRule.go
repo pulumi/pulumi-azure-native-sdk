@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a server firewall rule.
+//
+// Deprecated: azure-native:dbforpostgresql/v20200214preview:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20201005privatepreview:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

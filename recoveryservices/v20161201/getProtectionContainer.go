@@ -13,6 +13,7 @@ import (
 // Gets details of the specific container registered to your Recovery Services Vault.
 //
 // Deprecated: Version 2016-12-01 will be removed in v2 of the provider.
+// azure-native:recoveryservices/v20161201:ProtectionContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ProtectionContainer to guarantee forwards compatibility.
 func LookupProtectionContainer(ctx *pulumi.Context, args *LookupProtectionContainerArgs, opts ...pulumi.InvokeOption) (*LookupProtectionContainerResult, error) {
 	var rv LookupProtectionContainerResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20161201:getProtectionContainer", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the move resource.
+//
+// Deprecated: azure-native:migrate/v20191001preview:MoveResource is being removed in the next major version of this provider. Upgrade to at least azure-native:migrate/v20220801:MoveResource to guarantee forwards compatibility.
 type MoveResource struct {
 	pulumi.CustomResourceState
 

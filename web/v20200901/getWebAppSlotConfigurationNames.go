@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the names of app settings and connection strings that stick to the slot (not swapped).
+//
+// Deprecated: azure-native:web/v20200901:WebAppSlotConfigurationNames is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppSlotConfigurationNames to guarantee forwards compatibility.
 func LookupWebAppSlotConfigurationNames(ctx *pulumi.Context, args *LookupWebAppSlotConfigurationNamesArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSlotConfigurationNamesResult, error) {
 	var rv LookupWebAppSlotConfigurationNamesResult
 	err := ctx.Invoke("azure-native:web/v20200901:getWebAppSlotConfigurationNames", args, &rv, opts...)

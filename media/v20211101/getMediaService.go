@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of a Media Services account
+//
+// Deprecated: azure-native:media/v20211101:MediaService is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:MediaService to guarantee forwards compatibility.
 func LookupMediaService(ctx *pulumi.Context, args *LookupMediaServiceArgs, opts ...pulumi.InvokeOption) (*LookupMediaServiceResult, error) {
 	var rv LookupMediaServiceResult
 	err := ctx.Invoke("azure-native:media/v20211101:getMediaService", args, &rv, opts...)

@@ -5486,16 +5486,16 @@ func (val *BackupScheduleArgs) Defaults() *BackupScheduleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FrequencyInterval) {
+	if tmp.FrequencyInterval == nil {
 		tmp.FrequencyInterval = pulumi.Int(7)
 	}
-	if isZero(tmp.FrequencyUnit) {
+	if tmp.FrequencyUnit == nil {
 		tmp.FrequencyUnit = FrequencyUnit("Day")
 	}
-	if isZero(tmp.KeepAtLeastOneBackup) {
+	if tmp.KeepAtLeastOneBackup == nil {
 		tmp.KeepAtLeastOneBackup = pulumi.Bool(true)
 	}
-	if isZero(tmp.RetentionPeriodInDays) {
+	if tmp.RetentionPeriodInDays == nil {
 		tmp.RetentionPeriodInDays = pulumi.Int(30)
 	}
 	return &tmp
@@ -9089,7 +9089,7 @@ func (val *FileSystemApplicationLogsConfig) Defaults() *FileSystemApplicationLog
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		level_ := LogLevel("Off")
 		tmp.Level = &level_
 	}
@@ -9119,7 +9119,7 @@ func (val *FileSystemApplicationLogsConfigArgs) Defaults() *FileSystemApplicatio
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		tmp.Level = LogLevel("Off")
 	}
 	return &tmp
@@ -9253,7 +9253,7 @@ func (val *FileSystemApplicationLogsConfigResponse) Defaults() *FileSystemApplic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Level) {
+	if tmp.Level == nil {
 		level_ := "Off"
 		tmp.Level = &level_
 	}
@@ -18892,15 +18892,15 @@ func (val *SiteConfig) Defaults() *SiteConfig {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Http20Enabled) {
+	if tmp.Http20Enabled == nil {
 		http20Enabled_ := true
 		tmp.Http20Enabled = &http20Enabled_
 	}
-	if isZero(tmp.LocalMySqlEnabled) {
+	if tmp.LocalMySqlEnabled == nil {
 		localMySqlEnabled_ := false
 		tmp.LocalMySqlEnabled = &localMySqlEnabled_
 	}
-	if isZero(tmp.NetFrameworkVersion) {
+	if tmp.NetFrameworkVersion == nil {
 		netFrameworkVersion_ := "v4.6"
 		tmp.NetFrameworkVersion = &netFrameworkVersion_
 	}
@@ -19047,13 +19047,13 @@ func (val *SiteConfigArgs) Defaults() *SiteConfigArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Http20Enabled) {
+	if tmp.Http20Enabled == nil {
 		tmp.Http20Enabled = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.LocalMySqlEnabled) {
+	if tmp.LocalMySqlEnabled == nil {
 		tmp.LocalMySqlEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.NetFrameworkVersion) {
+	if tmp.NetFrameworkVersion == nil {
 		tmp.NetFrameworkVersion = pulumi.StringPtr("v4.6")
 	}
 	return &tmp
@@ -20178,15 +20178,15 @@ func (val *SiteConfigResponse) Defaults() *SiteConfigResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Http20Enabled) {
+	if tmp.Http20Enabled == nil {
 		http20Enabled_ := true
 		tmp.Http20Enabled = &http20Enabled_
 	}
-	if isZero(tmp.LocalMySqlEnabled) {
+	if tmp.LocalMySqlEnabled == nil {
 		localMySqlEnabled_ := false
 		tmp.LocalMySqlEnabled = &localMySqlEnabled_
 	}
-	if isZero(tmp.NetFrameworkVersion) {
+	if tmp.NetFrameworkVersion == nil {
 		netFrameworkVersion_ := "v4.6"
 		tmp.NetFrameworkVersion = &netFrameworkVersion_
 	}

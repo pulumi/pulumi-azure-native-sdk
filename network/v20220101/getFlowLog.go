@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a flow log resource by name.
+//
+// Deprecated: azure-native:network/v20220101:FlowLog is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:FlowLog to guarantee forwards compatibility.
 func LookupFlowLog(ctx *pulumi.Context, args *LookupFlowLogArgs, opts ...pulumi.InvokeOption) (*LookupFlowLogResult, error) {
 	var rv LookupFlowLogResult
 	err := ctx.Invoke("azure-native:network/v20220101:getFlowLog", args, &rv, opts...)

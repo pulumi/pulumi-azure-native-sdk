@@ -11,6 +11,8 @@ import (
 )
 
 // List all the firewall rules in a given server.
+//
+// Deprecated: azure-native:dbforpostgresql/v20210601:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20221108:FirewallRule to guarantee forwards compatibility.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	var rv LookupFirewallRuleResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20210601:getFirewallRule", args, &rv, opts...)

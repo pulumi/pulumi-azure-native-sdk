@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service by name.
+//
+// Deprecated: azure-native:machinelearningservices/v20200515preview:AKSService is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:AKSService to guarantee forwards compatibility.
 func LookupAKSService(ctx *pulumi.Context, args *LookupAKSServiceArgs, opts ...pulumi.InvokeOption) (*LookupAKSServiceResult, error) {
 	var rv LookupAKSServiceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200515preview:getAKSService", args, &rv, opts...)

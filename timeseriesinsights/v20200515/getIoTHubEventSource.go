@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the event source with the specified name in the specified environment.
+//
+// Deprecated: azure-native:timeseriesinsights/v20200515:IoTHubEventSource is being removed in the next major version of this provider. Upgrade to at least azure-native:timeseriesinsights/v20210630preview:IoTHubEventSource to guarantee forwards compatibility.
 func LookupIoTHubEventSource(ctx *pulumi.Context, args *LookupIoTHubEventSourceArgs, opts ...pulumi.InvokeOption) (*LookupIoTHubEventSourceResult, error) {
 	var rv LookupIoTHubEventSourceResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20200515:getIoTHubEventSource", args, &rv, opts...)

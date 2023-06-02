@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // FirewallPolicy Resource.
+//
+// Deprecated: azure-native:network/v20190801:FirewallPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200401:FirewallPolicy to guarantee forwards compatibility.
 type FirewallPolicy struct {
 	pulumi.CustomResourceState
 

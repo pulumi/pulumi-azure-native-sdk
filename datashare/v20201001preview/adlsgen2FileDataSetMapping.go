@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An ADLS Gen2 file data set mapping.
+//
+// Deprecated: azure-native:datashare/v20201001preview:ADLSGen2FileDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ADLSGen2FileDataSetMapping to guarantee forwards compatibility.
 type ADLSGen2FileDataSetMapping struct {
 	pulumi.CustomResourceState
 

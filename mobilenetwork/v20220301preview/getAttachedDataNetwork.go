@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified attached data network.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:AttachedDataNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:AttachedDataNetwork to guarantee forwards compatibility.
 func LookupAttachedDataNetwork(ctx *pulumi.Context, args *LookupAttachedDataNetworkArgs, opts ...pulumi.InvokeOption) (*LookupAttachedDataNetworkResult, error) {
 	var rv LookupAttachedDataNetworkResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getAttachedDataNetwork", args, &rv, opts...)

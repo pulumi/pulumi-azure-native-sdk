@@ -13,6 +13,7 @@ import (
 // Gets the budget for the scope by budget name.
 //
 // Deprecated: Version 2019-01-01 will be removed in v2 of the provider.
+// azure-native:consumption/v20190101:Budget is being removed in the next major version of this provider. Upgrade to at least azure-native:consumption/v20190501:Budget to guarantee forwards compatibility.
 func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.InvokeOption) (*LookupBudgetResult, error) {
 	var rv LookupBudgetResult
 	err := ctx.Invoke("azure-native:consumption/v20190101:getBudget", args, &rv, opts...)

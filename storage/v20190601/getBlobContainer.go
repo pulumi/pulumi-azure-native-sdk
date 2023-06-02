@@ -13,6 +13,7 @@ import (
 // Gets properties of a specified container.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
+// azure-native:storage/v20190601:BlobContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:BlobContainer to guarantee forwards compatibility.
 func LookupBlobContainer(ctx *pulumi.Context, args *LookupBlobContainerArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerResult, error) {
 	var rv LookupBlobContainerResult
 	err := ctx.Invoke("azure-native:storage/v20190601:getBlobContainer", args, &rv, opts...)

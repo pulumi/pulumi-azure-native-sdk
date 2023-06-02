@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN.
+//
+// Deprecated: azure-native:cdn/v20210601:OriginGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:OriginGroup to guarantee forwards compatibility.
 type OriginGroup struct {
 	pulumi.CustomResourceState
 

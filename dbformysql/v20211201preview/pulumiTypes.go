@@ -24,7 +24,7 @@ func (val *Backup) Defaults() *Backup {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		geoRedundantBackup_ := "Disabled"
 		tmp.GeoRedundantBackup = &geoRedundantBackup_
 	}
@@ -56,7 +56,7 @@ func (val *BackupArgs) Defaults() *BackupArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		tmp.GeoRedundantBackup = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -209,7 +209,7 @@ func (val *BackupResponse) Defaults() *BackupResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.GeoRedundantBackup) {
+	if tmp.GeoRedundantBackup == nil {
 		geoRedundantBackup_ := "Disabled"
 		tmp.GeoRedundantBackup = &geoRedundantBackup_
 	}
@@ -1984,15 +1984,15 @@ func (val *Storage) Defaults() *Storage {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoGrow) {
+	if tmp.AutoGrow == nil {
 		autoGrow_ := "Disabled"
 		tmp.AutoGrow = &autoGrow_
 	}
-	if isZero(tmp.AutoIoScaling) {
+	if tmp.AutoIoScaling == nil {
 		autoIoScaling_ := "Disabled"
 		tmp.AutoIoScaling = &autoIoScaling_
 	}
-	if isZero(tmp.LogOnDisk) {
+	if tmp.LogOnDisk == nil {
 		logOnDisk_ := "Disabled"
 		tmp.LogOnDisk = &logOnDisk_
 	}
@@ -2030,13 +2030,13 @@ func (val *StorageArgs) Defaults() *StorageArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoGrow) {
+	if tmp.AutoGrow == nil {
 		tmp.AutoGrow = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.AutoIoScaling) {
+	if tmp.AutoIoScaling == nil {
 		tmp.AutoIoScaling = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.LogOnDisk) {
+	if tmp.LogOnDisk == nil {
 		tmp.LogOnDisk = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
@@ -2240,15 +2240,15 @@ func (val *StorageResponse) Defaults() *StorageResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoGrow) {
+	if tmp.AutoGrow == nil {
 		autoGrow_ := "Disabled"
 		tmp.AutoGrow = &autoGrow_
 	}
-	if isZero(tmp.AutoIoScaling) {
+	if tmp.AutoIoScaling == nil {
 		autoIoScaling_ := "Disabled"
 		tmp.AutoIoScaling = &autoIoScaling_
 	}
-	if isZero(tmp.LogOnDisk) {
+	if tmp.LogOnDisk == nil {
 		logOnDisk_ := "Disabled"
 		tmp.LogOnDisk = &logOnDisk_
 	}

@@ -3464,11 +3464,11 @@ func (val *SubnetType) Defaults() *SubnetType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateEndpointNetworkPolicies) {
+	if tmp.PrivateEndpointNetworkPolicies == nil {
 		privateEndpointNetworkPolicies_ := "Enabled"
 		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
 	}
-	if isZero(tmp.PrivateLinkServiceNetworkPolicies) {
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
 		privateLinkServiceNetworkPolicies_ := "Enabled"
 		tmp.PrivateLinkServiceNetworkPolicies = &privateLinkServiceNetworkPolicies_
 	}
@@ -3526,10 +3526,10 @@ func (val *SubnetTypeArgs) Defaults() *SubnetTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateEndpointNetworkPolicies) {
+	if tmp.PrivateEndpointNetworkPolicies == nil {
 		tmp.PrivateEndpointNetworkPolicies = pulumi.StringPtr("Enabled")
 	}
-	if isZero(tmp.PrivateLinkServiceNetworkPolicies) {
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
 		tmp.PrivateLinkServiceNetworkPolicies = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -3962,11 +3962,11 @@ func (val *SubnetResponse) Defaults() *SubnetResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateEndpointNetworkPolicies) {
+	if tmp.PrivateEndpointNetworkPolicies == nil {
 		privateEndpointNetworkPolicies_ := "Enabled"
 		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
 	}
-	if isZero(tmp.PrivateLinkServiceNetworkPolicies) {
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
 		privateLinkServiceNetworkPolicies_ := "Enabled"
 		tmp.PrivateLinkServiceNetworkPolicies = &privateLinkServiceNetworkPolicies_
 	}
@@ -4595,7 +4595,7 @@ func (val *TargetDnsServer) Defaults() *TargetDnsServer {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Port) {
+	if tmp.Port == nil {
 		port_ := 53
 		tmp.Port = &port_
 	}
@@ -4627,7 +4627,7 @@ func (val *TargetDnsServerArgs) Defaults() *TargetDnsServerArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Port) {
+	if tmp.Port == nil {
 		tmp.Port = pulumi.IntPtr(53)
 	}
 	return &tmp
@@ -4728,7 +4728,7 @@ func (val *TargetDnsServerResponse) Defaults() *TargetDnsServerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Port) {
+	if tmp.Port == nil {
 		port_ := 53
 		tmp.Port = &port_
 	}

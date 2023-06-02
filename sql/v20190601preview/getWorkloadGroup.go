@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a workload group
+//
+// Deprecated: azure-native:sql/v20190601preview:WorkloadGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:WorkloadGroup to guarantee forwards compatibility.
 func LookupWorkloadGroup(ctx *pulumi.Context, args *LookupWorkloadGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadGroupResult, error) {
 	var rv LookupWorkloadGroupResult
 	err := ctx.Invoke("azure-native:sql/v20190601preview:getWorkloadGroup", args, &rv, opts...)

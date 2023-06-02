@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about the connection monitor.
 //
 // Deprecated: Version 2017-10-01 will be removed in v2 of the provider.
+// azure-native:network/v20171001:ConnectionMonitor is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190901:ConnectionMonitor to guarantee forwards compatibility.
 type ConnectionMonitor struct {
 	pulumi.CustomResourceState
 
@@ -61,10 +62,10 @@ func NewConnectionMonitor(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
-	if isZero(args.AutoStart) {
+	if args.AutoStart == nil {
 		args.AutoStart = pulumi.BoolPtr(true)
 	}
-	if isZero(args.MonitoringIntervalInSeconds) {
+	if args.MonitoringIntervalInSeconds == nil {
 		args.MonitoringIntervalInSeconds = pulumi.IntPtr(60)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

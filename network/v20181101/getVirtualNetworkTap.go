@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified virtual network tap.
+//
+// Deprecated: azure-native:network/v20181101:VirtualNetworkTap is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualNetworkTap to guarantee forwards compatibility.
 func LookupVirtualNetworkTap(ctx *pulumi.Context, args *LookupVirtualNetworkTapArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkTapResult, error) {
 	var rv LookupVirtualNetworkTapResult
 	err := ctx.Invoke("azure-native:network/v20181101:getVirtualNetworkTap", args, &rv, opts...)

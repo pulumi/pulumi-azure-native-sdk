@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a source control byt its identifier.
+//
+// Deprecated: azure-native:securityinsights/v20220701preview:SourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:SourceControl to guarantee forwards compatibility.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	var rv LookupSourceControlResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getSourceControl", args, &rv, opts...)

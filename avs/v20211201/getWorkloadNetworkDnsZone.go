@@ -11,6 +11,8 @@ import (
 )
 
 // NSX DNS Zone
+//
+// Deprecated: azure-native:avs/v20211201:WorkloadNetworkDnsZone is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkDnsZone to guarantee forwards compatibility.
 func LookupWorkloadNetworkDnsZone(ctx *pulumi.Context, args *LookupWorkloadNetworkDnsZoneArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkDnsZoneResult, error) {
 	var rv LookupWorkloadNetworkDnsZoneResult
 	err := ctx.Invoke("azure-native:avs/v20211201:getWorkloadNetworkDnsZone", args, &rv, opts...)

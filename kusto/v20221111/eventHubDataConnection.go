@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an event hub data connection.
+//
+// Deprecated: azure-native:kusto/v20221111:EventHubDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:EventHubDataConnection to guarantee forwards compatibility.
 type EventHubDataConnection struct {
 	pulumi.CustomResourceState
 
@@ -75,7 +77,7 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.DatabaseRouting) {
+	if args.DatabaseRouting == nil {
 		args.DatabaseRouting = pulumi.StringPtr("Single")
 	}
 	args.Kind = pulumi.String("EventHub")

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a managed instance key.
+//
+// Deprecated: azure-native:sql/v20200202preview:ManagedInstanceKey is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedInstanceKey to guarantee forwards compatibility.
 func LookupManagedInstanceKey(ctx *pulumi.Context, args *LookupManagedInstanceKeyArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceKeyResult, error) {
 	var rv LookupManagedInstanceKeyResult
 	err := ctx.Invoke("azure-native:sql/v20200202preview:getManagedInstanceKey", args, &rv, opts...)

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Role Assignment resource format.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
+// azure-native:customerinsights/v20170101:RoleAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:customerinsights/v20170426:RoleAssignment to guarantee forwards compatibility.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 

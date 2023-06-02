@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The replica resource.
+//
+// Deprecated: azure-native:appconfiguration/v20220301preview:Replica is being removed in the next major version of this provider. Upgrade to at least azure-native:appconfiguration/v20230301:Replica to guarantee forwards compatibility.
 type Replica struct {
 	pulumi.CustomResourceState
 

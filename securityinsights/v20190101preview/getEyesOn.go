@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a setting.
+//
+// Deprecated: azure-native:securityinsights/v20190101preview:EyesOn is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:EyesOn to guarantee forwards compatibility.
 func LookupEyesOn(ctx *pulumi.Context, args *LookupEyesOnArgs, opts ...pulumi.InvokeOption) (*LookupEyesOnResult, error) {
 	var rv LookupEyesOnResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getEyesOn", args, &rv, opts...)

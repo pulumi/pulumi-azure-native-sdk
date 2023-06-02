@@ -13,6 +13,7 @@ import (
 // The metric setting details for the role
 //
 // Deprecated: Version 2020-09-01 will be removed in v2 of the provider.
+// azure-native:databoxedge/v20200901:MonitoringConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:MonitoringConfig to guarantee forwards compatibility.
 func LookupMonitoringConfig(ctx *pulumi.Context, args *LookupMonitoringConfigArgs, opts ...pulumi.InvokeOption) (*LookupMonitoringConfigResult, error) {
 	var rv LookupMonitoringConfigResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200901:getMonitoringConfig", args, &rv, opts...)

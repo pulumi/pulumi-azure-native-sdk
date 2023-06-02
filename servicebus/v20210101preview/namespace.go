@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a namespace resource.
+//
+// Deprecated: azure-native:servicebus/v20210101preview:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:Namespace to guarantee forwards compatibility.
 type Namespace struct {
 	pulumi.CustomResourceState
 

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a share on the  Data Box Edge/Gateway device.
 //
 // Deprecated: Version 2020-05-01-preview will be removed in v2 of the provider.
+// azure-native:databoxedge/v20200501preview:Share is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:Share to guarantee forwards compatibility.
 type Share struct {
 	pulumi.CustomResourceState
 

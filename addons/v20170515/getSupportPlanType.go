@@ -13,6 +13,7 @@ import (
 // Returns whether or not the canonical support plan of type {type} is enabled for the subscription.
 //
 // Deprecated: Version 2017-05-15 will be removed in v2 of the provider.
+// azure-native:addons/v20170515:SupportPlanType is being removed in the next major version of this provider. Upgrade to at least azure-native:addons/v20180301:SupportPlanType to guarantee forwards compatibility.
 func LookupSupportPlanType(ctx *pulumi.Context, args *LookupSupportPlanTypeArgs, opts ...pulumi.InvokeOption) (*LookupSupportPlanTypeResult, error) {
 	var rv LookupSupportPlanTypeResult
 	err := ctx.Invoke("azure-native:addons/v20170515:getSupportPlanType", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // A private cloud resource
+//
+// Deprecated: azure-native:avs/v20210101preview:PrivateCloud is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:PrivateCloud to guarantee forwards compatibility.
 func LookupPrivateCloud(ctx *pulumi.Context, args *LookupPrivateCloudArgs, opts ...pulumi.InvokeOption) (*LookupPrivateCloudResult, error) {
 	var rv LookupPrivateCloudResult
 	err := ctx.Invoke("azure-native:avs/v20210101preview:getPrivateCloud", args, &rv, opts...)
@@ -77,7 +79,7 @@ func (val *LookupPrivateCloudResult) Defaults() *LookupPrivateCloudResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Internet) {
+	if tmp.Internet == nil {
 		internet_ := "Disabled"
 		tmp.Internet = &internet_
 	}

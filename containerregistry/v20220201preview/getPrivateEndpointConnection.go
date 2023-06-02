@@ -11,6 +11,8 @@ import (
 )
 
 // Get the specified private endpoint connection associated with the container registry.
+//
+// Deprecated: azure-native:containerregistry/v20220201preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:containerregistry/v20220201preview:getPrivateEndpointConnection", args, &rv, opts...)

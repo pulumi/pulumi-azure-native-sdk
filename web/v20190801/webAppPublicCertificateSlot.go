@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Public certificate object
+//
+// Deprecated: azure-native:web/v20190801:WebAppPublicCertificateSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppPublicCertificateSlot to guarantee forwards compatibility.
 type WebAppPublicCertificateSlot struct {
 	pulumi.CustomResourceState
 

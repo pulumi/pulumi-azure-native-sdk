@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The storage account.
 //
 // Deprecated: Version 2018-03-01-preview will be removed in v2 of the provider.
+// azure-native:storage/v20180301preview:StorageAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20181101:StorageAccount to guarantee forwards compatibility.
 type StorageAccount struct {
 	pulumi.CustomResourceState
 
@@ -79,13 +80,13 @@ func NewStorageAccount(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.EnableHttpsTrafficOnly) {
+	if args.EnableHttpsTrafficOnly == nil {
 		args.EnableHttpsTrafficOnly = pulumi.BoolPtr(false)
 	}
 	if args.Encryption != nil {
 		args.Encryption = args.Encryption.ToEncryptionPtrOutput().ApplyT(func(v *Encryption) *Encryption { return v.Defaults() }).(EncryptionPtrOutput)
 	}
-	if isZero(args.IsHnsEnabled) {
+	if args.IsHnsEnabled == nil {
 		args.IsHnsEnabled = pulumi.BoolPtr(false)
 	}
 	if args.NetworkRuleSet != nil {

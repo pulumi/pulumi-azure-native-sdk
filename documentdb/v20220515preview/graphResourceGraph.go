@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB Graph resource.
+//
+// Deprecated: azure-native:documentdb/v20220515preview:GraphResourceGraph is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:GraphResourceGraph to guarantee forwards compatibility.
 type GraphResourceGraph struct {
 	pulumi.CustomResourceState
 

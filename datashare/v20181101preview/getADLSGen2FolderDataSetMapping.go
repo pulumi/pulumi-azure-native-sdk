@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
+//
+// Deprecated: azure-native:datashare/v20181101preview:ADLSGen2FolderDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ADLSGen2FolderDataSetMapping to guarantee forwards compatibility.
 func LookupADLSGen2FolderDataSetMapping(ctx *pulumi.Context, args *LookupADLSGen2FolderDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2FolderDataSetMappingResult, error) {
 	var rv LookupADLSGen2FolderDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20181101preview:getADLSGen2FolderDataSetMapping", args, &rv, opts...)

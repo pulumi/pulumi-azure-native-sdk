@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified sim policy.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:SimPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:SimPolicy to guarantee forwards compatibility.
 func LookupSimPolicy(ctx *pulumi.Context, args *LookupSimPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSimPolicyResult, error) {
 	var rv LookupSimPolicyResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getSimPolicy", args, &rv, opts...)
@@ -75,7 +77,7 @@ func (val *LookupSimPolicyResult) Defaults() *LookupSimPolicyResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RegistrationTimer) {
+	if tmp.RegistrationTimer == nil {
 		registrationTimer_ := 3240
 		tmp.RegistrationTimer = &registrationTimer_
 	}

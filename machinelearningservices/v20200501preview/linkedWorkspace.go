@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Linked workspace.
+//
+// Deprecated: azure-native:machinelearningservices/v20200501preview:LinkedWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20200515preview:LinkedWorkspace to guarantee forwards compatibility.
 type LinkedWorkspace struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // CloudEdgeManagementRole role.
+//
+// Deprecated: azure-native:databoxedge/v20210601preview:CloudEdgeManagementRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole to guarantee forwards compatibility.
 type CloudEdgeManagementRole struct {
 	pulumi.CustomResourceState
 

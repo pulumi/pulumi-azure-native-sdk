@@ -13,6 +13,7 @@ import (
 // Gets a resource group.
 //
 // Deprecated: Version 2018-05-01 will be removed in v2 of the provider.
+// azure-native:resources/v20180501:ResourceGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:ResourceGroup to guarantee forwards compatibility.
 func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupResourceGroupResult, error) {
 	var rv LookupResourceGroupResult
 	err := ctx.Invoke("azure-native:resources/v20180501:getResourceGroup", args, &rv, opts...)

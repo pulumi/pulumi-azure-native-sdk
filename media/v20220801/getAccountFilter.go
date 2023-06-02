@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of an Account Filter in the Media Services account.
+//
+// Deprecated: azure-native:media/v20220801:AccountFilter is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:AccountFilter to guarantee forwards compatibility.
 func LookupAccountFilter(ctx *pulumi.Context, args *LookupAccountFilterArgs, opts ...pulumi.InvokeOption) (*LookupAccountFilterResult, error) {
 	var rv LookupAccountFilterResult
 	err := ctx.Invoke("azure-native:media/v20220801:getAccountFilter", args, &rv, opts...)

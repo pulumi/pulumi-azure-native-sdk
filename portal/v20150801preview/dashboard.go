@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The shared dashboard resource definition.
 //
 // Deprecated: Version 2015-08-01-preview will be removed in v2 of the provider.
+// azure-native:portal/v20150801preview:Dashboard is being removed in the next major version of this provider. Upgrade to at least azure-native:portal/v20190101preview:Dashboard to guarantee forwards compatibility.
 type Dashboard struct {
 	pulumi.CustomResourceState
 

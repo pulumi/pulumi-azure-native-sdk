@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Backup of a Volume
+//
+// Deprecated: azure-native:netapp/v20210801:Backup is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Backup to guarantee forwards compatibility.
 type Backup struct {
 	pulumi.CustomResourceState
 
@@ -60,7 +62,7 @@ func NewBackup(ctx *pulumi.Context,
 	if args.VolumeName == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeName'")
 	}
-	if isZero(args.UseExistingSnapshot) {
+	if args.UseExistingSnapshot == nil {
 		args.UseExistingSnapshot = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

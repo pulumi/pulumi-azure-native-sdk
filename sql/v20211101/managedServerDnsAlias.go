@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A managed server DNS alias.
+//
+// Deprecated: azure-native:sql/v20211101:ManagedServerDnsAlias is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedServerDnsAlias to guarantee forwards compatibility.
 type ManagedServerDnsAlias struct {
 	pulumi.CustomResourceState
 
@@ -38,7 +40,7 @@ func NewManagedServerDnsAlias(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.CreateDnsRecord) {
+	if args.CreateDnsRecord == nil {
 		args.CreateDnsRecord = pulumi.BoolPtr(true)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

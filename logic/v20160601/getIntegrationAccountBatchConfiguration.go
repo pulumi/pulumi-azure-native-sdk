@@ -11,6 +11,8 @@ import (
 )
 
 // Get a batch configuration for an integration account.
+//
+// Deprecated: azure-native:logic/v20160601:IntegrationAccountBatchConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:logic/v20190501:IntegrationAccountBatchConfiguration to guarantee forwards compatibility.
 func LookupIntegrationAccountBatchConfiguration(ctx *pulumi.Context, args *LookupIntegrationAccountBatchConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountBatchConfigurationResult, error) {
 	var rv LookupIntegrationAccountBatchConfigurationResult
 	err := ctx.Invoke("azure-native:logic/v20160601:getIntegrationAccountBatchConfiguration", args, &rv, opts...)

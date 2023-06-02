@@ -13,6 +13,7 @@ import (
 // The Get LoadBalancer operation retrieves information about the specified LoadBalancer.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
+// azure-native:network/v20160601:LoadBalancer is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20180601:LoadBalancer to guarantee forwards compatibility.
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("azure-native:network/v20160601:getLoadBalancer", args, &rv, opts...)

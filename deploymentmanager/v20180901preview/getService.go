@@ -13,6 +13,7 @@ import (
 // The resource representation of a service in a service topology.
 //
 // Deprecated: Version 2018-09-01-preview will be removed in v2 of the provider.
+// azure-native:deploymentmanager/v20180901preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:deploymentmanager/v20191101preview:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:deploymentmanager/v20180901preview:getService", args, &rv, opts...)

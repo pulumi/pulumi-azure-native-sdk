@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the authorization server specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20210401preview:AuthorizationServer is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:AuthorizationServer to guarantee forwards compatibility.
 func LookupAuthorizationServer(ctx *pulumi.Context, args *LookupAuthorizationServerArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationServerResult, error) {
 	var rv LookupAuthorizationServerResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210401preview:getAuthorizationServer", args, &rv, opts...)

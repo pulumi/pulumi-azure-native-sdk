@@ -13,6 +13,7 @@ import (
 // Get the project with the specified name.
 //
 // Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
+// azure-native:migrate/v20171111preview:Project is being removed in the next major version of this provider. Upgrade to at least azure-native:migrate/v20180202:Project to guarantee forwards compatibility.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("azure-native:migrate/v20171111preview:getProject", args, &rv, opts...)

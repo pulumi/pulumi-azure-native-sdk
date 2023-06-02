@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the Cache specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20180601preview:Cache is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20191201preview:Cache to guarantee forwards compatibility.
 func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.InvokeOption) (*LookupCacheResult, error) {
 	var rv LookupCacheResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180601preview:getCache", args, &rv, opts...)

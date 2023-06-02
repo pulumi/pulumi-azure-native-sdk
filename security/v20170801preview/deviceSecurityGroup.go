@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The device security group resource
+//
+// Deprecated: azure-native:security/v20170801preview:DeviceSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20190801:DeviceSecurityGroup to guarantee forwards compatibility.
 type DeviceSecurityGroup struct {
 	pulumi.CustomResourceState
 

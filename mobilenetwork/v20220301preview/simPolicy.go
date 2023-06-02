@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Sim policy resource.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:SimPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:SimPolicy to guarantee forwards compatibility.
 type SimPolicy struct {
 	pulumi.CustomResourceState
 
@@ -73,7 +75,7 @@ func NewSimPolicy(ctx *pulumi.Context,
 	if args.UeAmbr == nil {
 		return nil, errors.New("invalid value for required argument 'UeAmbr'")
 	}
-	if isZero(args.RegistrationTimer) {
+	if args.RegistrationTimer == nil {
 		args.RegistrationTimer = pulumi.IntPtr(3240)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

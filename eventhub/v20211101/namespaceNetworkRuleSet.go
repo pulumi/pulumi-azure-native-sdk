@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of topic resource.
+//
+// Deprecated: azure-native:eventhub/v20211101:NamespaceNetworkRuleSet is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:NamespaceNetworkRuleSet to guarantee forwards compatibility.
 type NamespaceNetworkRuleSet struct {
 	pulumi.CustomResourceState
 
@@ -48,7 +50,7 @@ func NewNamespaceNetworkRuleSet(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

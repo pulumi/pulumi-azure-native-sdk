@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL Analytics pool
 //
 // Deprecated: Version 2020-12-01 will be removed in v2 of the provider.
+// azure-native:synapse/v20201201:SqlPool is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210501:SqlPool to guarantee forwards compatibility.
 type SqlPool struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Get site extension information by its ID for a web site, or a deployment slot.
+//
+// Deprecated: azure-native:web/v20210301:WebAppSiteExtensionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSiteExtensionSlot to guarantee forwards compatibility.
 func LookupWebAppSiteExtensionSlot(ctx *pulumi.Context, args *LookupWebAppSiteExtensionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteExtensionSlotResult, error) {
 	var rv LookupWebAppSiteExtensionSlotResult
 	err := ctx.Invoke("azure-native:web/v20210301:getWebAppSiteExtensionSlot", args, &rv, opts...)

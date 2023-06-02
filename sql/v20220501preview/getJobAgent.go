@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a job agent.
+//
+// Deprecated: azure-native:sql/v20220501preview:JobAgent is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:JobAgent to guarantee forwards compatibility.
 func LookupJobAgent(ctx *pulumi.Context, args *LookupJobAgentArgs, opts ...pulumi.InvokeOption) (*LookupJobAgentResult, error) {
 	var rv LookupJobAgentResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getJobAgent", args, &rv, opts...)

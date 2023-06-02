@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+//
+// Deprecated: azure-native:storage/v20210101:BlobServiceProperties is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:BlobServiceProperties to guarantee forwards compatibility.
 func LookupBlobServiceProperties(ctx *pulumi.Context, args *LookupBlobServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupBlobServicePropertiesResult, error) {
 	var rv LookupBlobServicePropertiesResult
 	err := ctx.Invoke("azure-native:storage/v20210101:getBlobServiceProperties", args, &rv, opts...)

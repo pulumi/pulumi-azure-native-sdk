@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class represent a resource.
+//
+// Deprecated: azure-native:webpubsub/v20220801preview:WebPubSub is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230201:WebPubSub to guarantee forwards compatibility.
 type WebPubSub struct {
 	pulumi.CustomResourceState
 
@@ -79,16 +81,16 @@ func NewWebPubSub(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.DisableAadAuth) {
+	if args.DisableAadAuth == nil {
 		args.DisableAadAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.DisableLocalAuth) {
+	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
 	if args.LiveTraceConfiguration != nil {
 		args.LiveTraceConfiguration = args.LiveTraceConfiguration.ToLiveTraceConfigurationPtrOutput().ApplyT(func(v *LiveTraceConfiguration) *LiveTraceConfiguration { return v.Defaults() }).(LiveTraceConfigurationPtrOutput)
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	if args.Tls != nil {

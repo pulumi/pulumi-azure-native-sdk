@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Firewall Policy.
+//
+// Deprecated: azure-native:network/v20191201:FirewallPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200401:FirewallPolicy to guarantee forwards compatibility.
 func LookupFirewallPolicy(ctx *pulumi.Context, args *LookupFirewallPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyResult, error) {
 	var rv LookupFirewallPolicyResult
 	err := ctx.Invoke("azure-native:network/v20191201:getFirewallPolicy", args, &rv, opts...)

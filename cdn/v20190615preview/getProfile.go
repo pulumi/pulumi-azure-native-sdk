@@ -13,6 +13,7 @@ import (
 // Gets a CDN profile with the specified profile name under the specified subscription and resource group.
 //
 // Deprecated: Version 2019-06-15-preview will be removed in v2 of the provider.
+// azure-native:cdn/v20190615preview:Profile is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20200901:Profile to guarantee forwards compatibility.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
 	var rv LookupProfileResult
 	err := ctx.Invoke("azure-native:cdn/v20190615preview:getProfile", args, &rv, opts...)

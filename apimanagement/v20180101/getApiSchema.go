@@ -11,6 +11,8 @@ import (
 )
 
 // Get the schema configuration at the API level.
+//
+// Deprecated: azure-native:apimanagement/v20180101:ApiSchema is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20190101:ApiSchema to guarantee forwards compatibility.
 func LookupApiSchema(ctx *pulumi.Context, args *LookupApiSchemaArgs, opts ...pulumi.InvokeOption) (*LookupApiSchemaResult, error) {
 	var rv LookupApiSchemaResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getApiSchema", args, &rv, opts...)

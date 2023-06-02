@@ -47,15 +47,15 @@ func (val *AzureDataExplorerConnectionProperties) Defaults() *AzureDataExplorerC
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		adxTableName_ := "AdtPropertyEvents"
 		tmp.AdxTableName = &adxTableName_
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		eventHubConsumerGroup_ := "$Default"
 		tmp.EventHubConsumerGroup = &eventHubConsumerGroup_
 	}
-	if isZero(tmp.RecordPropertyAndItemRemovals) {
+	if tmp.RecordPropertyAndItemRemovals == nil {
 		recordPropertyAndItemRemovals_ := "false"
 		tmp.RecordPropertyAndItemRemovals = &recordPropertyAndItemRemovals_
 	}
@@ -110,13 +110,13 @@ func (val *AzureDataExplorerConnectionPropertiesArgs) Defaults() *AzureDataExplo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		tmp.AdxTableName = pulumi.StringPtr("AdtPropertyEvents")
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		tmp.EventHubConsumerGroup = pulumi.StringPtr("$Default")
 	}
-	if isZero(tmp.RecordPropertyAndItemRemovals) {
+	if tmp.RecordPropertyAndItemRemovals == nil {
 		tmp.RecordPropertyAndItemRemovals = pulumi.StringPtr("false")
 	}
 	return &tmp
@@ -461,15 +461,15 @@ func (val *AzureDataExplorerConnectionPropertiesResponse) Defaults() *AzureDataE
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdxTableName) {
+	if tmp.AdxTableName == nil {
 		adxTableName_ := "AdtPropertyEvents"
 		tmp.AdxTableName = &adxTableName_
 	}
-	if isZero(tmp.EventHubConsumerGroup) {
+	if tmp.EventHubConsumerGroup == nil {
 		eventHubConsumerGroup_ := "$Default"
 		tmp.EventHubConsumerGroup = &eventHubConsumerGroup_
 	}
-	if isZero(tmp.RecordPropertyAndItemRemovals) {
+	if tmp.RecordPropertyAndItemRemovals == nil {
 		recordPropertyAndItemRemovals_ := "false"
 		tmp.RecordPropertyAndItemRemovals = &recordPropertyAndItemRemovals_
 	}

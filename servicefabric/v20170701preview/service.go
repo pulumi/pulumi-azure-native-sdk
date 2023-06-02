@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The service resource.
 //
 // Deprecated: Version 2017-07-01-preview will be removed in v2 of the provider.
+// azure-native:servicefabric/v20170701preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20210601:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

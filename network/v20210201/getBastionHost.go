@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Bastion Host.
+//
+// Deprecated: azure-native:network/v20210201:BastionHost is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:BastionHost to guarantee forwards compatibility.
 func LookupBastionHost(ctx *pulumi.Context, args *LookupBastionHostArgs, opts ...pulumi.InvokeOption) (*LookupBastionHostResult, error) {
 	var rv LookupBastionHostResult
 	err := ctx.Invoke("azure-native:network/v20210201:getBastionHost", args, &rv, opts...)

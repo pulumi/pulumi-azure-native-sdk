@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Connection Setting registration for a Bot Service
+//
+// Deprecated: azure-native:botservice/v20220615preview:BotConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:botservice/v20220915:BotConnection to guarantee forwards compatibility.
 func LookupBotConnection(ctx *pulumi.Context, args *LookupBotConnectionArgs, opts ...pulumi.InvokeOption) (*LookupBotConnectionResult, error) {
 	var rv LookupBotConnectionResult
 	err := ctx.Invoke("azure-native:botservice/v20220615preview:getBotConnection", args, &rv, opts...)

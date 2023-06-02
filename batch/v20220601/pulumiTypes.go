@@ -545,7 +545,7 @@ func (val *AutoStorageBaseProperties) Defaults() *AutoStorageBaseProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuthenticationMode) {
+	if tmp.AuthenticationMode == nil {
 		authenticationMode_ := AutoStorageAuthenticationMode("StorageKeys")
 		tmp.AuthenticationMode = &authenticationMode_
 	}
@@ -579,7 +579,7 @@ func (val *AutoStorageBasePropertiesArgs) Defaults() *AutoStorageBasePropertiesA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuthenticationMode) {
+	if tmp.AuthenticationMode == nil {
 		tmp.AuthenticationMode = AutoStorageAuthenticationMode("StorageKeys")
 	}
 	return &tmp
@@ -749,7 +749,7 @@ func (val *AutoStoragePropertiesResponse) Defaults() *AutoStoragePropertiesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AuthenticationMode) {
+	if tmp.AuthenticationMode == nil {
 		authenticationMode_ := "StorageKeys"
 		tmp.AuthenticationMode = &authenticationMode_
 	}

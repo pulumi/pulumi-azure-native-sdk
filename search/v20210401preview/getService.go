@@ -83,19 +83,19 @@ func (val *LookupServiceResult) Defaults() *LookupServiceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HostingMode) {
+	if tmp.HostingMode == nil {
 		hostingMode_ := "default"
 		tmp.HostingMode = &hostingMode_
 	}
-	if isZero(tmp.PartitionCount) {
+	if tmp.PartitionCount == nil {
 		partitionCount_ := 1
 		tmp.PartitionCount = &partitionCount_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.ReplicaCount) {
+	if tmp.ReplicaCount == nil {
 		replicaCount_ := 1
 		tmp.ReplicaCount = &replicaCount_
 	}

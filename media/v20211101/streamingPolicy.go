@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Streaming Policy resource
+//
+// Deprecated: azure-native:media/v20211101:StreamingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:StreamingPolicy to guarantee forwards compatibility.
 type StreamingPolicy struct {
 	pulumi.CustomResourceState
 

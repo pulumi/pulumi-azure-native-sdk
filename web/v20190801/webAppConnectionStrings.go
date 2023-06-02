@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // String dictionary resource.
+//
+// Deprecated: azure-native:web/v20190801:WebAppConnectionStrings is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppConnectionStrings to guarantee forwards compatibility.
 type WebAppConnectionStrings struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Machine Learning compute object wrapped into ARM resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20210701:Compute is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20220101preview:Compute to guarantee forwards compatibility.
 type Compute struct {
 	pulumi.CustomResourceState
 

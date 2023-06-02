@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
+//
+// Deprecated: azure-native:guestconfiguration/v20210125:GuestConfigurationHCRPAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:guestconfiguration/v20220125:GuestConfigurationHCRPAssignment to guarantee forwards compatibility.
 type GuestConfigurationHCRPAssignment struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified mobile network site.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:Site is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:Site to guarantee forwards compatibility.
 func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.InvokeOption) (*LookupSiteResult, error) {
 	var rv LookupSiteResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getSite", args, &rv, opts...)

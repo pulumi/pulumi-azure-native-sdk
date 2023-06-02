@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the properties of a Managed CCF app.
+//
+// Deprecated: azure-native:confidentialledger/v20220908preview:ManagedCCF is being removed in the next major version of this provider. Upgrade to at least azure-native:confidentialledger/v20230126preview:ManagedCCF to guarantee forwards compatibility.
 func LookupManagedCCF(ctx *pulumi.Context, args *LookupManagedCCFArgs, opts ...pulumi.InvokeOption) (*LookupManagedCCFResult, error) {
 	var rv LookupManagedCCFResult
 	err := ctx.Invoke("azure-native:confidentialledger/v20220908preview:getManagedCCF", args, &rv, opts...)

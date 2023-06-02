@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20221001preview:LabelingJob is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:LabelingJob to guarantee forwards compatibility.
 func LookupLabelingJob(ctx *pulumi.Context, args *LookupLabelingJobArgs, opts ...pulumi.InvokeOption) (*LookupLabelingJobResult, error) {
 	var rv LookupLabelingJobResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getLabelingJob", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Extension object.
+//
+// Deprecated: azure-native:kubernetesconfiguration/v20220301:Extension is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20220402preview:Extension to guarantee forwards compatibility.
 type Extension struct {
 	pulumi.CustomResourceState
 
@@ -72,10 +74,10 @@ func NewExtension(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AutoUpgradeMinorVersion) {
+	if args.AutoUpgradeMinorVersion == nil {
 		args.AutoUpgradeMinorVersion = pulumi.BoolPtr(true)
 	}
-	if isZero(args.ReleaseTrain) {
+	if args.ReleaseTrain == nil {
 		args.ReleaseTrain = pulumi.StringPtr("Stable")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

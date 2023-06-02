@@ -11,6 +11,8 @@ import (
 )
 
 // This operation retrieves a single policy assignment, given its name and the scope it was created at.
+//
+// Deprecated: azure-native:authorization/v20210601:PolicyAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20220601:PolicyAssignment to guarantee forwards compatibility.
 func LookupPolicyAssignment(ctx *pulumi.Context, args *LookupPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyAssignmentResult, error) {
 	var rv LookupPolicyAssignmentResult
 	err := ctx.Invoke("azure-native:authorization/v20210601:getPolicyAssignment", args, &rv, opts...)
@@ -67,7 +69,7 @@ func (val *LookupPolicyAssignmentResult) Defaults() *LookupPolicyAssignmentResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforcementMode) {
+	if tmp.EnforcementMode == nil {
 		enforcementMode_ := "Default"
 		tmp.EnforcementMode = &enforcementMode_
 	}

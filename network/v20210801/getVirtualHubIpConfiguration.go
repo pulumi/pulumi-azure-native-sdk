@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the details of a Virtual Hub Ip configuration.
+//
+// Deprecated: azure-native:network/v20210801:VirtualHubIpConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualHubIpConfiguration to guarantee forwards compatibility.
 func LookupVirtualHubIpConfiguration(ctx *pulumi.Context, args *LookupVirtualHubIpConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupVirtualHubIpConfigurationResult, error) {
 	var rv LookupVirtualHubIpConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20210801:getVirtualHubIpConfiguration", args, &rv, opts...)

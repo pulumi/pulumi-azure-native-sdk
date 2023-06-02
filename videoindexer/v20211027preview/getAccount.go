@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of an Azure Video Analyzer for Media account.
+//
+// Deprecated: azure-native:videoindexer/v20211027preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:videoindexer/v20220801:Account to guarantee forwards compatibility.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:videoindexer/v20211027preview:getAccount", args, &rv, opts...)
@@ -61,7 +63,7 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AccountId) {
+	if tmp.AccountId == nil {
 		accountId_ := "00000000-0000-0000-0000-000000000000"
 		tmp.AccountId = &accountId_
 	}

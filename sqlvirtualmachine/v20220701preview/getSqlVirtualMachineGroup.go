@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a SQL virtual machine group.
+//
+// Deprecated: azure-native:sqlvirtualmachine/v20220701preview:SqlVirtualMachineGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachineGroup to guarantee forwards compatibility.
 func LookupSqlVirtualMachineGroup(ctx *pulumi.Context, args *LookupSqlVirtualMachineGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlVirtualMachineGroupResult, error) {
 	var rv LookupSqlVirtualMachineGroupResult
 	err := ctx.Invoke("azure-native:sqlvirtualmachine/v20220701preview:getSqlVirtualMachineGroup", args, &rv, opts...)

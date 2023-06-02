@@ -13,6 +13,7 @@ import (
 // Get a Service Fabric application type version resource created or in the process of being created in the Service Fabric application type name resource.
 //
 // Deprecated: Version 2019-06-01-preview will be removed in v2 of the provider.
+// azure-native:servicefabric/v20190601preview:ApplicationTypeVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20210601:ApplicationTypeVersion to guarantee forwards compatibility.
 func LookupApplicationTypeVersion(ctx *pulumi.Context, args *LookupApplicationTypeVersionArgs, opts ...pulumi.InvokeOption) (*LookupApplicationTypeVersionResult, error) {
 	var rv LookupApplicationTypeVersionResult
 	err := ctx.Invoke("azure-native:servicefabric/v20190601preview:getApplicationTypeVersion", args, &rv, opts...)

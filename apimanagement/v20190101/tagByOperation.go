@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Tag Contract details.
+//
+// Deprecated: azure-native:apimanagement/v20190101:TagByOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:TagByOperation to guarantee forwards compatibility.
 type TagByOperation struct {
 	pulumi.CustomResourceState
 

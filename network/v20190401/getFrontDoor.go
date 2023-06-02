@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
+//
+// Deprecated: azure-native:network/v20190401:FrontDoor is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210601:FrontDoor to guarantee forwards compatibility.
 func LookupFrontDoor(ctx *pulumi.Context, args *LookupFrontDoorArgs, opts ...pulumi.InvokeOption) (*LookupFrontDoorResult, error) {
 	var rv LookupFrontDoorResult
 	err := ctx.Invoke("azure-native:network/v20190401:getFrontDoor", args, &rv, opts...)

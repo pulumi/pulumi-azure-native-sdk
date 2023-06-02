@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An event source that receives its data from an Azure EventHub.
+//
+// Deprecated: azure-native:timeseriesinsights/v20171115:EventHubEventSource is being removed in the next major version of this provider. Upgrade to at least azure-native:timeseriesinsights/v20210630preview:EventHubEventSource to guarantee forwards compatibility.
 type EventHubEventSource struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // HubVirtualNetworkConnection Resource.
+//
+// Deprecated: azure-native:network/v20210201:HubVirtualNetworkConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:HubVirtualNetworkConnection to guarantee forwards compatibility.
 type HubVirtualNetworkConnection struct {
 	pulumi.CustomResourceState
 

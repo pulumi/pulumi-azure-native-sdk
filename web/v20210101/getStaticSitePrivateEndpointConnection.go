@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a private endpoint connection
+//
+// Deprecated: azure-native:web/v20210101:StaticSitePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:StaticSitePrivateEndpointConnection to guarantee forwards compatibility.
 func LookupStaticSitePrivateEndpointConnection(ctx *pulumi.Context, args *LookupStaticSitePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupStaticSitePrivateEndpointConnectionResult, error) {
 	var rv LookupStaticSitePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:web/v20210101:getStaticSitePrivateEndpointConnection", args, &rv, opts...)

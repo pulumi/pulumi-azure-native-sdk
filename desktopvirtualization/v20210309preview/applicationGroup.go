@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a ApplicationGroup definition.
+//
+// Deprecated: azure-native:desktopvirtualization/v20210309preview:ApplicationGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20220401preview:ApplicationGroup to guarantee forwards compatibility.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 

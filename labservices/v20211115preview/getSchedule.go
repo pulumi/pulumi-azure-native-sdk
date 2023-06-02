@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the properties of a lab Schedule.
+//
+// Deprecated: azure-native:labservices/v20211115preview:Schedule is being removed in the next major version of this provider. Upgrade to at least azure-native:labservices/v20220801:Schedule to guarantee forwards compatibility.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:labservices/v20211115preview:getSchedule", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Alert processing rule object containing target scopes, conditions and scheduling logic.
+//
+// Deprecated: azure-native:alertsmanagement/v20210808:AlertProcessingRuleByName is being removed in the next major version of this provider. Upgrade to at least azure-native:alertsmanagement/v20210808preview:AlertProcessingRuleByName to guarantee forwards compatibility.
 type AlertProcessingRuleByName struct {
 	pulumi.CustomResourceState
 

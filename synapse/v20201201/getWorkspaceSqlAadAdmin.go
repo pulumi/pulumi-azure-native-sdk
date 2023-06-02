@@ -13,6 +13,7 @@ import (
 // Gets a workspace SQL active directory admin
 //
 // Deprecated: Version 2020-12-01 will be removed in v2 of the provider.
+// azure-native:synapse/v20201201:WorkspaceSqlAadAdmin is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:WorkspaceSqlAadAdmin to guarantee forwards compatibility.
 func LookupWorkspaceSqlAadAdmin(ctx *pulumi.Context, args *LookupWorkspaceSqlAadAdminArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceSqlAadAdminResult, error) {
 	var rv LookupWorkspaceSqlAadAdminResult
 	err := ctx.Invoke("azure-native:synapse/v20201201:getWorkspaceSqlAadAdmin", args, &rv, opts...)

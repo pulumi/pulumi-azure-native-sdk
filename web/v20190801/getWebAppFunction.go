@@ -11,6 +11,8 @@ import (
 )
 
 // Get function information by its ID for web site, or a deployment slot.
+//
+// Deprecated: azure-native:web/v20190801:WebAppFunction is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppFunction to guarantee forwards compatibility.
 func LookupWebAppFunction(ctx *pulumi.Context, args *LookupWebAppFunctionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFunctionResult, error) {
 	var rv LookupWebAppFunctionResult
 	err := ctx.Invoke("azure-native:web/v20190801:getWebAppFunction", args, &rv, opts...)

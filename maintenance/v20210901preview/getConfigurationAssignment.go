@@ -11,6 +11,8 @@ import (
 )
 
 // Get configuration for resource.
+//
+// Deprecated: azure-native:maintenance/v20210901preview:ConfigurationAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:maintenance/v20221101preview:ConfigurationAssignment to guarantee forwards compatibility.
 func LookupConfigurationAssignment(ctx *pulumi.Context, args *LookupConfigurationAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentResult, error) {
 	var rv LookupConfigurationAssignmentResult
 	err := ctx.Invoke("azure-native:maintenance/v20210901preview:getConfigurationAssignment", args, &rv, opts...)

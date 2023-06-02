@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A container for a managed identity to execute DevTest lab services.
 //
 // Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
+// azure-native:devtestlab/v20160515:ServiceRunner is being removed in the next major version of this provider. Upgrade to at least azure-native:devtestlab/v20180915:ServiceRunner to guarantee forwards compatibility.
 type ServiceRunner struct {
 	pulumi.CustomResourceState
 

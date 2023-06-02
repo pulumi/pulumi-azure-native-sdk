@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a ScalingPlanPooledSchedule definition.
+//
+// Deprecated: azure-native:desktopvirtualization/v20220909:ScalingPlanPooledSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:ScalingPlanPooledSchedule to guarantee forwards compatibility.
 type ScalingPlanPooledSchedule struct {
 	pulumi.CustomResourceState
 

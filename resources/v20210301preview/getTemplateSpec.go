@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Template Spec with a given name.
+//
+// Deprecated: azure-native:resources/v20210301preview:TemplateSpec is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220201:TemplateSpec to guarantee forwards compatibility.
 func LookupTemplateSpec(ctx *pulumi.Context, args *LookupTemplateSpecArgs, opts ...pulumi.InvokeOption) (*LookupTemplateSpecResult, error) {
 	var rv LookupTemplateSpecResult
 	err := ctx.Invoke("azure-native:resources/v20210301preview:getTemplateSpec", args, &rv, opts...)

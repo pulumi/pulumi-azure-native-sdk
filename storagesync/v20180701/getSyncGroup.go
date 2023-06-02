@@ -13,6 +13,7 @@ import (
 // Get a given SyncGroup.
 //
 // Deprecated: Version 2018-07-01 will be removed in v2 of the provider.
+// azure-native:storagesync/v20180701:SyncGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:storagesync/v20220601:SyncGroup to guarantee forwards compatibility.
 func LookupSyncGroup(ctx *pulumi.Context, args *LookupSyncGroupArgs, opts ...pulumi.InvokeOption) (*LookupSyncGroupResult, error) {
 	var rv LookupSyncGroupResult
 	err := ctx.Invoke("azure-native:storagesync/v20180701:getSyncGroup", args, &rv, opts...)

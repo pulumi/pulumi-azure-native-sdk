@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the SAP Database Instance resource.
+//
+// Deprecated: azure-native:workloads/v20221101preview:SAPDatabaseInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SAPDatabaseInstance to guarantee forwards compatibility.
 func LookupSAPDatabaseInstance(ctx *pulumi.Context, args *LookupSAPDatabaseInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPDatabaseInstanceResult, error) {
 	var rv LookupSAPDatabaseInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20221101preview:getSAPDatabaseInstance", args, &rv, opts...)

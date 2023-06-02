@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Properties of the blob container, including Id, resource name, resource type, Etag.
+//
+// Deprecated: azure-native:storage/v20210801:BlobContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:BlobContainer to guarantee forwards compatibility.
 type BlobContainer struct {
 	pulumi.CustomResourceState
 

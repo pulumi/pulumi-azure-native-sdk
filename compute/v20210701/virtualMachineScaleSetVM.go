@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a virtual machine scale set virtual machine.
+//
+// Deprecated: azure-native:compute/v20210701:VirtualMachineScaleSetVM is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachineScaleSetVM to guarantee forwards compatibility.
 type VirtualMachineScaleSetVM struct {
 	pulumi.CustomResourceState
 

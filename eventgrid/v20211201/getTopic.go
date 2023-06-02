@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of a topic.
+//
+// Deprecated: azure-native:eventgrid/v20211201:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:Topic to guarantee forwards compatibility.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	var rv LookupTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211201:getTopic", args, &rv, opts...)
@@ -69,15 +71,15 @@ func (val *LookupTopicResult) Defaults() *LookupTopicResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
-	if isZero(tmp.InputSchema) {
+	if tmp.InputSchema == nil {
 		inputSchema_ := "EventGridSchema"
 		tmp.InputSchema = &inputSchema_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

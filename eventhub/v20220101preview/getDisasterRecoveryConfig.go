@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
+//
+// Deprecated: azure-native:eventhub/v20220101preview:DisasterRecoveryConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:DisasterRecoveryConfig to guarantee forwards compatibility.
 func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigResult, error) {
 	var rv LookupDisasterRecoveryConfigResult
 	err := ctx.Invoke("azure-native:eventhub/v20220101preview:getDisasterRecoveryConfig", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A job.
+//
+// Deprecated: azure-native:sql/v20211101:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:Job to guarantee forwards compatibility.
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -43,7 +45,7 @@ func NewJob(ctx *pulumi.Context,
 	if args.ServerName == nil {
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
-	if isZero(args.Description) {
+	if args.Description == nil {
 		args.Description = pulumi.StringPtr("")
 	}
 	if args.Schedule != nil {

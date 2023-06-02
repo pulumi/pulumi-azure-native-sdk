@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the provider registration details.
+//
+// Deprecated: azure-native:providerhub/v20210501preview:ProviderRegistration is being removed in the next major version of this provider. Upgrade to at least azure-native:providerhub/v20210901preview:ProviderRegistration to guarantee forwards compatibility.
 func LookupProviderRegistration(ctx *pulumi.Context, args *LookupProviderRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupProviderRegistrationResult, error) {
 	var rv LookupProviderRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub/v20210501preview:getProviderRegistration", args, &rv, opts...)

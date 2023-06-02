@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
+//
+// Deprecated: azure-native:cdn/v20210601:AFDCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:AFDCustomDomain to guarantee forwards compatibility.
 func LookupAFDCustomDomain(ctx *pulumi.Context, args *LookupAFDCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupAFDCustomDomainResult, error) {
 	var rv LookupAFDCustomDomainResult
 	err := ctx.Invoke("azure-native:cdn/v20210601:getAFDCustomDomain", args, &rv, opts...)

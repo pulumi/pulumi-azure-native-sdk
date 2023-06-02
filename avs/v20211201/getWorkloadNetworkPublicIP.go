@@ -11,6 +11,8 @@ import (
 )
 
 // NSX Public IP Block
+//
+// Deprecated: azure-native:avs/v20211201:WorkloadNetworkPublicIP is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkPublicIP to guarantee forwards compatibility.
 func LookupWorkloadNetworkPublicIP(ctx *pulumi.Context, args *LookupWorkloadNetworkPublicIPArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkPublicIPResult, error) {
 	var rv LookupWorkloadNetworkPublicIPResult
 	err := ctx.Invoke("azure-native:avs/v20211201:getWorkloadNetworkPublicIP", args, &rv, opts...)

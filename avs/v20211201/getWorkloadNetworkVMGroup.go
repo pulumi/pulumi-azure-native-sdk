@@ -11,6 +11,8 @@ import (
 )
 
 // NSX VM Group
+//
+// Deprecated: azure-native:avs/v20211201:WorkloadNetworkVMGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkVMGroup to guarantee forwards compatibility.
 func LookupWorkloadNetworkVMGroup(ctx *pulumi.Context, args *LookupWorkloadNetworkVMGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkVMGroupResult, error) {
 	var rv LookupWorkloadNetworkVMGroupResult
 	err := ctx.Invoke("azure-native:avs/v20211201:getWorkloadNetworkVMGroup", args, &rv, opts...)

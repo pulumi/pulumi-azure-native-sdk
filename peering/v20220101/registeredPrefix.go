@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The customer's prefix that is registered by the peering service provider.
+//
+// Deprecated: azure-native:peering/v20220101:RegisteredPrefix is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:RegisteredPrefix to guarantee forwards compatibility.
 type RegisteredPrefix struct {
 	pulumi.CustomResourceState
 

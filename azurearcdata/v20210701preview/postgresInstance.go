@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Postgres Instance.
+//
+// Deprecated: azure-native:azurearcdata/v20210701preview:PostgresInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20220615preview:PostgresInstance to guarantee forwards compatibility.
 type PostgresInstance struct {
 	pulumi.CustomResourceState
 

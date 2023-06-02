@@ -13,6 +13,7 @@ import (
 // Gets the peer ASN with the specified name under the given subscription.
 //
 // Deprecated: Version 2020-01-01-preview will be removed in v2 of the provider.
+// azure-native:peering/v20200101preview:PeerAsn is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20210101:PeerAsn to guarantee forwards compatibility.
 func LookupPeerAsn(ctx *pulumi.Context, args *LookupPeerAsnArgs, opts ...pulumi.InvokeOption) (*LookupPeerAsnResult, error) {
 	var rv LookupPeerAsnResult
 	err := ctx.Invoke("azure-native:peering/v20200101preview:getPeerAsn", args, &rv, opts...)

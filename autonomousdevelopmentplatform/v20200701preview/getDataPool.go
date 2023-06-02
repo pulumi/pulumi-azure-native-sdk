@@ -13,6 +13,7 @@ import (
 // Gets the properties of a Data Pool.
 //
 // Deprecated: Version 2020-07-01-preview will be removed in v2 of the provider.
+// azure-native:autonomousdevelopmentplatform/v20200701preview:DataPool is being removed in the next major version of this provider. Upgrade to at least azure-native:autonomousdevelopmentplatform/v20211101preview:DataPool to guarantee forwards compatibility.
 func LookupDataPool(ctx *pulumi.Context, args *LookupDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupDataPoolResult, error) {
 	var rv LookupDataPoolResult
 	err := ctx.Invoke("azure-native:autonomousdevelopmentplatform/v20200701preview:getDataPool", args, &rv, opts...)

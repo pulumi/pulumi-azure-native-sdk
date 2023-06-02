@@ -13,6 +13,7 @@ import (
 // Gets the details of a replication policy.
 //
 // Deprecated: Version 2018-01-10 will be removed in v2 of the provider.
+// azure-native:recoveryservices/v20180110:ReplicationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationPolicy to guarantee forwards compatibility.
 func LookupReplicationPolicy(ctx *pulumi.Context, args *LookupReplicationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupReplicationPolicyResult, error) {
 	var rv LookupReplicationPolicyResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20180110:getReplicationPolicy", args, &rv, opts...)

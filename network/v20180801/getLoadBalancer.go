@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified load balancer.
+//
+// Deprecated: azure-native:network/v20180801:LoadBalancer is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:LoadBalancer to guarantee forwards compatibility.
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("azure-native:network/v20180801:getLoadBalancer", args, &rv, opts...)

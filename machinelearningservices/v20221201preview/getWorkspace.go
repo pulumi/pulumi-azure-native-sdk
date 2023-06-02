@@ -112,15 +112,15 @@ func (val *LookupWorkspaceResult) Defaults() *LookupWorkspaceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllowPublicAccessWhenBehindVnet) {
+	if tmp.AllowPublicAccessWhenBehindVnet == nil {
 		allowPublicAccessWhenBehindVnet_ := false
 		tmp.AllowPublicAccessWhenBehindVnet = &allowPublicAccessWhenBehindVnet_
 	}
-	if isZero(tmp.HbiWorkspace) {
+	if tmp.HbiWorkspace == nil {
 		hbiWorkspace_ := false
 		tmp.HbiWorkspace = &hbiWorkspace_
 	}
-	if isZero(tmp.V1LegacyMode) {
+	if tmp.V1LegacyMode == nil {
 		v1LegacyMode_ := false
 		tmp.V1LegacyMode = &v1LegacyMode_
 	}

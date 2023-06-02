@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the details of a virtual wan vpn gateway.
+//
+// Deprecated: azure-native:network/v20181201:VpnGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VpnGateway to guarantee forwards compatibility.
 func LookupVpnGateway(ctx *pulumi.Context, args *LookupVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVpnGatewayResult, error) {
 	var rv LookupVpnGatewayResult
 	err := ctx.Invoke("azure-native:network/v20181201:getVpnGateway", args, &rv, opts...)

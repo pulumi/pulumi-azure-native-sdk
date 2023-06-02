@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the description for the specified namespace.
+//
+// Deprecated: azure-native:relay/v20180101preview:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:relay/v20211101:Namespace to guarantee forwards compatibility.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	var rv LookupNamespaceResult
 	err := ctx.Invoke("azure-native:relay/v20180101preview:getNamespace", args, &rv, opts...)

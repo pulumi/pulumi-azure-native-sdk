@@ -13,6 +13,7 @@ import (
 // Get properties of a topic
 //
 // Deprecated: Version 2020-01-01-preview will be removed in v2 of the provider.
+// azure-native:eventgrid/v20200101preview:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20200401preview:Topic to guarantee forwards compatibility.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	var rv LookupTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20200101preview:getTopic", args, &rv, opts...)
@@ -59,7 +60,7 @@ func (val *LookupTopicResult) Defaults() *LookupTopicResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InputSchema) {
+	if tmp.InputSchema == nil {
 		inputSchema_ := "EventGridSchema"
 		tmp.InputSchema = &inputSchema_
 	}

@@ -13,6 +13,7 @@ import (
 // Returns the properties for the specified storage account including but not limited to name, SKU name, location, and account status. The ListKeys operation should be used to retrieve storage keys.
 //
 // Deprecated: Version 2018-03-01-preview will be removed in v2 of the provider.
+// azure-native:storage/v20180301preview:StorageAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20181101:StorageAccount to guarantee forwards compatibility.
 func LookupStorageAccount(ctx *pulumi.Context, args *LookupStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountResult, error) {
 	var rv LookupStorageAccountResult
 	err := ctx.Invoke("azure-native:storage/v20180301preview:getStorageAccount", args, &rv, opts...)
@@ -85,13 +86,13 @@ func (val *LookupStorageAccountResult) Defaults() *LookupStorageAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableHttpsTrafficOnly) {
+	if tmp.EnableHttpsTrafficOnly == nil {
 		enableHttpsTrafficOnly_ := false
 		tmp.EnableHttpsTrafficOnly = &enableHttpsTrafficOnly_
 	}
 	tmp.Encryption = *tmp.Encryption.Defaults()
 
-	if isZero(tmp.IsHnsEnabled) {
+	if tmp.IsHnsEnabled == nil {
 		isHnsEnabled_ := false
 		tmp.IsHnsEnabled = &isHnsEnabled_
 	}

@@ -11,6 +11,8 @@ import (
 )
 
 // Description for Gets an existing custom domain for a particular static site.
+//
+// Deprecated: azure-native:web/v20220301:StaticSiteCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:StaticSiteCustomDomain to guarantee forwards compatibility.
 func LookupStaticSiteCustomDomain(ctx *pulumi.Context, args *LookupStaticSiteCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteCustomDomainResult, error) {
 	var rv LookupStaticSiteCustomDomainResult
 	err := ctx.Invoke("azure-native:web/v20220301:getStaticSiteCustomDomain", args, &rv, opts...)

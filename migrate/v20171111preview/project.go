@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Migrate Project.
 //
 // Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
+// azure-native:migrate/v20171111preview:Project is being removed in the next major version of this provider. Upgrade to at least azure-native:migrate/v20180202:Project to guarantee forwards compatibility.
 type Project struct {
 	pulumi.CustomResourceState
 

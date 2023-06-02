@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure SQL job agent.
+//
+// Deprecated: azure-native:sql/v20200801preview:JobAgent is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:JobAgent to guarantee forwards compatibility.
 type JobAgent struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,7 @@ import (
 // Gets a workspace key
 //
 // Deprecated: Version 2020-12-01 will be removed in v2 of the provider.
+// azure-native:synapse/v20201201:Key is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:Key to guarantee forwards compatibility.
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {
 	var rv LookupKeyResult
 	err := ctx.Invoke("azure-native:synapse/v20201201:getKey", args, &rv, opts...)

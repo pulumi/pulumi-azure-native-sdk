@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified network function resource.
+//
+// Deprecated: azure-native:hybridnetwork/v20210501:NetworkFunction is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridnetwork/v20220101preview:NetworkFunction to guarantee forwards compatibility.
 func LookupNetworkFunction(ctx *pulumi.Context, args *LookupNetworkFunctionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFunctionResult, error) {
 	var rv LookupNetworkFunctionResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20210501:getNetworkFunction", args, &rv, opts...)

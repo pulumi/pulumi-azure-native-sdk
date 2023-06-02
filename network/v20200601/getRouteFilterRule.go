@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified rule from a route filter.
+//
+// Deprecated: azure-native:network/v20200601:RouteFilterRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:RouteFilterRule to guarantee forwards compatibility.
 func LookupRouteFilterRule(ctx *pulumi.Context, args *LookupRouteFilterRuleArgs, opts ...pulumi.InvokeOption) (*LookupRouteFilterRuleResult, error) {
 	var rv LookupRouteFilterRuleResult
 	err := ctx.Invoke("azure-native:network/v20200601:getRouteFilterRule", args, &rv, opts...)

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A storage system being cached by a Cache.
 //
 // Deprecated: Version 2019-08-01-preview will be removed in v2 of the provider.
+// azure-native:storagecache/v20190801preview:StorageTarget is being removed in the next major version of this provider. Upgrade to at least azure-native:storagecache/v20191101:StorageTarget to guarantee forwards compatibility.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 

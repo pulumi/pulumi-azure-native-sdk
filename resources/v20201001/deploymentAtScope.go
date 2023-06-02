@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Deployment information.
+//
+// Deprecated: azure-native:resources/v20201001:DeploymentAtScope is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:DeploymentAtScope to guarantee forwards compatibility.
 type DeploymentAtScope struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,7 @@ import (
 // Gets the existing immutability policy along with the corresponding ETag in response headers and body.
 //
 // Deprecated: Version 2018-03-01-preview will be removed in v2 of the provider.
+// azure-native:storage/v20180301preview:BlobContainerImmutabilityPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20190401:BlobContainerImmutabilityPolicy to guarantee forwards compatibility.
 func LookupBlobContainerImmutabilityPolicy(ctx *pulumi.Context, args *LookupBlobContainerImmutabilityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerImmutabilityPolicyResult, error) {
 	var rv LookupBlobContainerImmutabilityPolicyResult
 	err := ctx.Invoke("azure-native:storage/v20180301preview:getBlobContainerImmutabilityPolicy", args, &rv, opts...)

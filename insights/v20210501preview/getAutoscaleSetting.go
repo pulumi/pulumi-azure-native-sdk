@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an autoscale setting
+//
+// Deprecated: azure-native:insights/v20210501preview:AutoscaleSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20221001:AutoscaleSetting to guarantee forwards compatibility.
 func LookupAutoscaleSetting(ctx *pulumi.Context, args *LookupAutoscaleSettingArgs, opts ...pulumi.InvokeOption) (*LookupAutoscaleSettingResult, error) {
 	var rv LookupAutoscaleSettingResult
 	err := ctx.Invoke("azure-native:insights/v20210501preview:getAutoscaleSetting", args, &rv, opts...)
@@ -61,7 +63,7 @@ func (val *LookupAutoscaleSettingResult) Defaults() *LookupAutoscaleSettingResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}

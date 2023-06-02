@@ -11,6 +11,8 @@ import (
 )
 
 // Implements InventoryItem GET method.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20220110preview:InventoryItem is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:InventoryItem to guarantee forwards compatibility.
 func LookupInventoryItem(ctx *pulumi.Context, args *LookupInventoryItemArgs, opts ...pulumi.InvokeOption) (*LookupInventoryItemResult, error) {
 	var rv LookupInventoryItemResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20220110preview:getInventoryItem", args, &rv, opts...)

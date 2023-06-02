@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Bastion Host.
+//
+// Deprecated: azure-native:network/v20210301:BastionHost is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:BastionHost to guarantee forwards compatibility.
 func LookupBastionHost(ctx *pulumi.Context, args *LookupBastionHostArgs, opts ...pulumi.InvokeOption) (*LookupBastionHostResult, error) {
 	var rv LookupBastionHostResult
 	err := ctx.Invoke("azure-native:network/v20210301:getBastionHost", args, &rv, opts...)
@@ -69,23 +71,23 @@ func (val *LookupBastionHostResult) Defaults() *LookupBastionHostResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableCopyPaste) {
+	if tmp.DisableCopyPaste == nil {
 		disableCopyPaste_ := false
 		tmp.DisableCopyPaste = &disableCopyPaste_
 	}
-	if isZero(tmp.EnableFileCopy) {
+	if tmp.EnableFileCopy == nil {
 		enableFileCopy_ := false
 		tmp.EnableFileCopy = &enableFileCopy_
 	}
-	if isZero(tmp.EnableIpConnect) {
+	if tmp.EnableIpConnect == nil {
 		enableIpConnect_ := false
 		tmp.EnableIpConnect = &enableIpConnect_
 	}
-	if isZero(tmp.EnableShareableLink) {
+	if tmp.EnableShareableLink == nil {
 		enableShareableLink_ := false
 		tmp.EnableShareableLink = &enableShareableLink_
 	}
-	if isZero(tmp.EnableTunneling) {
+	if tmp.EnableTunneling == nil {
 		enableTunneling_ := false
 		tmp.EnableTunneling = &enableTunneling_
 	}

@@ -11,6 +11,8 @@ import (
 )
 
 // Get the specified tap configuration on a network interface.
+//
+// Deprecated: azure-native:network/v20190601:NetworkInterfaceTapConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:NetworkInterfaceTapConfiguration to guarantee forwards compatibility.
 func LookupNetworkInterfaceTapConfiguration(ctx *pulumi.Context, args *LookupNetworkInterfaceTapConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceTapConfigurationResult, error) {
 	var rv LookupNetworkInterfaceTapConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20190601:getNetworkInterfaceTapConfiguration", args, &rv, opts...)

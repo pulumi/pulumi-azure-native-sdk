@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A sensitivity label.
+//
+// Deprecated: azure-native:sql/v20210501preview:ManagedDatabaseSensitivityLabel is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedDatabaseSensitivityLabel to guarantee forwards compatibility.
 type ManagedDatabaseSensitivityLabel struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // The operation to get the extension.
+//
+// Deprecated: azure-native:compute/v20220801:VirtualMachineExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachineExtension to guarantee forwards compatibility.
 func LookupVirtualMachineExtension(ctx *pulumi.Context, args *LookupVirtualMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineExtensionResult, error) {
 	var rv LookupVirtualMachineExtensionResult
 	err := ctx.Invoke("azure-native:compute/v20220801:getVirtualMachineExtension", args, &rv, opts...)

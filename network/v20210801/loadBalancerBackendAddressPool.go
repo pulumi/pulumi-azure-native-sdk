@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Pool of backend IP addresses.
+//
+// Deprecated: azure-native:network/v20210801:LoadBalancerBackendAddressPool is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:LoadBalancerBackendAddressPool to guarantee forwards compatibility.
 type LoadBalancerBackendAddressPool struct {
 	pulumi.CustomResourceState
 

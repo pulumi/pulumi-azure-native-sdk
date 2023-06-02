@@ -11,6 +11,8 @@ import (
 )
 
 // Get private endpoint connection properties for the given private endpoint.
+//
+// Deprecated: azure-native:digitaltwins/v20210630preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:digitaltwins/v20230131:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:digitaltwins/v20210630preview:getPrivateEndpointConnection", args, &rv, opts...)

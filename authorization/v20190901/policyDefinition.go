@@ -11,6 +11,8 @@ import (
 )
 
 // The policy definition.
+//
+// Deprecated: azure-native:authorization/v20190901:PolicyDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20210601:PolicyDefinition to guarantee forwards compatibility.
 type PolicyDefinition struct {
 	pulumi.CustomResourceState
 

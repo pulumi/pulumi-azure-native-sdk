@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains information about a pool.
+//
+// Deprecated: azure-native:batch/v20220101:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20221001:Pool to guarantee forwards compatibility.
 type Pool struct {
 	pulumi.CustomResourceState
 

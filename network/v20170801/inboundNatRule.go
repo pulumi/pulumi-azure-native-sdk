@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Inbound NAT rule of the load balancer.
 //
 // Deprecated: Version 2017-08-01 will be removed in v2 of the provider.
+// azure-native:network/v20170801:InboundNatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:InboundNatRule to guarantee forwards compatibility.
 type InboundNatRule struct {
 	pulumi.CustomResourceState
 

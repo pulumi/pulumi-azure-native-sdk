@@ -2030,7 +2030,7 @@ func (val *SignalRNetworkACLs) Defaults() *SignalRNetworkACLs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		defaultAction_ := "Deny"
 		tmp.DefaultAction = &defaultAction_
 	}
@@ -2064,7 +2064,7 @@ func (val *SignalRNetworkACLsArgs) Defaults() *SignalRNetworkACLsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		tmp.DefaultAction = pulumi.StringPtr("Deny")
 	}
 	return &tmp
@@ -2232,7 +2232,7 @@ func (val *SignalRNetworkACLsResponse) Defaults() *SignalRNetworkACLsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		defaultAction_ := "Deny"
 		tmp.DefaultAction = &defaultAction_
 	}

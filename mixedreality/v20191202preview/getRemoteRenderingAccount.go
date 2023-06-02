@@ -13,6 +13,7 @@ import (
 // Retrieve a Remote Rendering Account.
 //
 // Deprecated: Version 2019-12-02-preview will be removed in v2 of the provider.
+// azure-native:mixedreality/v20191202preview:RemoteRenderingAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:mixedreality/v20210301preview:RemoteRenderingAccount to guarantee forwards compatibility.
 func LookupRemoteRenderingAccount(ctx *pulumi.Context, args *LookupRemoteRenderingAccountArgs, opts ...pulumi.InvokeOption) (*LookupRemoteRenderingAccountResult, error) {
 	var rv LookupRemoteRenderingAccountResult
 	err := ctx.Invoke("azure-native:mixedreality/v20191202preview:getRemoteRenderingAccount", args, &rv, opts...)

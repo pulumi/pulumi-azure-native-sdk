@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents an import pipeline for a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20210801preview:ImportPipeline is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:ImportPipeline to guarantee forwards compatibility.
 type ImportPipeline struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
+//
+// Deprecated: azure-native:appconfiguration/v20220301preview:ConfigurationStore is being removed in the next major version of this provider. Upgrade to at least azure-native:appconfiguration/v20230301:ConfigurationStore to guarantee forwards compatibility.
 type ConfigurationStore struct {
 	pulumi.CustomResourceState
 
@@ -62,13 +64,13 @@ func NewConfigurationStore(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.DisableLocalAuth) {
+	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnablePurgeProtection) {
+	if args.EnablePurgeProtection == nil {
 		args.EnablePurgeProtection = pulumi.BoolPtr(false)
 	}
-	if isZero(args.SoftDeleteRetentionInDays) {
+	if args.SoftDeleteRetentionInDays == nil {
 		args.SoftDeleteRetentionInDays = pulumi.IntPtr(7)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

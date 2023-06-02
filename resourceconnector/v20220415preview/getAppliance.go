@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of an Appliance with a specified resource group and name.
+//
+// Deprecated: azure-native:resourceconnector/v20220415preview:Appliance is being removed in the next major version of this provider. Upgrade to at least azure-native:resourceconnector/v20221027:Appliance to guarantee forwards compatibility.
 func LookupAppliance(ctx *pulumi.Context, args *LookupApplianceArgs, opts ...pulumi.InvokeOption) (*LookupApplianceResult, error) {
 	var rv LookupApplianceResult
 	err := ctx.Invoke("azure-native:resourceconnector/v20220415preview:getAppliance", args, &rv, opts...)
@@ -63,7 +65,7 @@ func (val *LookupApplianceResult) Defaults() *LookupApplianceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Distro) {
+	if tmp.Distro == nil {
 		distro_ := "AKSEdge"
 		tmp.Distro = &distro_
 	}

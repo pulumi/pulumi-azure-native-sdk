@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A hub setting
+//
+// Deprecated: azure-native:webpubsub/v20220801preview:WebPubSubHub is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230201:WebPubSubHub to guarantee forwards compatibility.
 type WebPubSubHub struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Get the properties of a Kubernetes Environment.
+//
+// Deprecated: azure-native:web/v20210201:KubeEnvironment is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:KubeEnvironment to guarantee forwards compatibility.
 func LookupKubeEnvironment(ctx *pulumi.Context, args *LookupKubeEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupKubeEnvironmentResult, error) {
 	var rv LookupKubeEnvironmentResult
 	err := ctx.Invoke("azure-native:web/v20210201:getKubeEnvironment", args, &rv, opts...)

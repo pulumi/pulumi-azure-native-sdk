@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A PostgreSQL Server key.
+//
+// Deprecated: azure-native:dbforpostgresql/v20200101privatepreview:ServerKey is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20200214privatepreview:ServerKey to guarantee forwards compatibility.
 type ServerKey struct {
 	pulumi.CustomResourceState
 

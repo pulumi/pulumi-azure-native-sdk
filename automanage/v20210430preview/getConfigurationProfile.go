@@ -11,6 +11,8 @@ import (
 )
 
 // Get information about a configuration profile
+//
+// Deprecated: azure-native:automanage/v20210430preview:ConfigurationProfile is being removed in the next major version of this provider. Upgrade to at least azure-native:automanage/v20220504:ConfigurationProfile to guarantee forwards compatibility.
 func LookupConfigurationProfile(ctx *pulumi.Context, args *LookupConfigurationProfileArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileResult, error) {
 	var rv LookupConfigurationProfileResult
 	err := ctx.Invoke("azure-native:automanage/v20210430preview:getConfigurationProfile", args, &rv, opts...)

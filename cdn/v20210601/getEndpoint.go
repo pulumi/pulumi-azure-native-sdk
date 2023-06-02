@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+//
+// Deprecated: azure-native:cdn/v20210601:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Endpoint to guarantee forwards compatibility.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:cdn/v20210601:getEndpoint", args, &rv, opts...)
@@ -91,15 +93,15 @@ func (val *LookupEndpointResult) Defaults() *LookupEndpointResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsHttpAllowed) {
+	if tmp.IsHttpAllowed == nil {
 		isHttpAllowed_ := true
 		tmp.IsHttpAllowed = &isHttpAllowed_
 	}
-	if isZero(tmp.IsHttpsAllowed) {
+	if tmp.IsHttpsAllowed == nil {
 		isHttpsAllowed_ := true
 		tmp.IsHttpsAllowed = &isHttpsAllowed_
 	}
-	if isZero(tmp.QueryStringCachingBehavior) {
+	if tmp.QueryStringCachingBehavior == nil {
 		queryStringCachingBehavior_ := "NotSet"
 		tmp.QueryStringCachingBehavior = &queryStringCachingBehavior_
 	}

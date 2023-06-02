@@ -13,6 +13,7 @@ import (
 // Returns a description for the specified topic.
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
+// azure-native:servicebus/v20140901:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20150801:Topic to guarantee forwards compatibility.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	var rv LookupTopicResult
 	err := ctx.Invoke("azure-native:servicebus/v20140901:getTopic", args, &rv, opts...)

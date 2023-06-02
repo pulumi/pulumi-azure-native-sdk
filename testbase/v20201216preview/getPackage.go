@@ -13,6 +13,7 @@ import (
 // Gets a Test Base Package.
 //
 // Deprecated: Version 2020-12-16-preview will be removed in v2 of the provider.
+// azure-native:testbase/v20201216preview:Package is being removed in the next major version of this provider. Upgrade to at least azure-native:testbase/v20220401preview:Package to guarantee forwards compatibility.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {
 	var rv LookupPackageResult
 	err := ctx.Invoke("azure-native:testbase/v20201216preview:getPackage", args, &rv, opts...)

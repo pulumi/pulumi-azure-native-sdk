@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Blob folder data set mapping.
+//
+// Deprecated: azure-native:datashare/v20191101:BlobFolderDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:BlobFolderDataSetMapping to guarantee forwards compatibility.
 type BlobFolderDataSetMapping struct {
 	pulumi.CustomResourceState
 

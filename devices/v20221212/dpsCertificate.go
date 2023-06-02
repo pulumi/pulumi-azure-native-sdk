@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The X509 Certificate.
+//
+// Deprecated: azure-native:devices/v20221212:DpsCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20230301preview:DpsCertificate to guarantee forwards compatibility.
 type DpsCertificate struct {
 	pulumi.CustomResourceState
 

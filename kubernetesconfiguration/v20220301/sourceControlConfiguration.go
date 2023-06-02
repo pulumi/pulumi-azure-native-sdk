@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The SourceControl Configuration object returned in Get & Put response.
+//
+// Deprecated: azure-native:kubernetesconfiguration/v20220301:SourceControlConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20221101:SourceControlConfiguration to guarantee forwards compatibility.
 type SourceControlConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -68,7 +70,7 @@ func NewSourceControlConfiguration(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.OperatorNamespace) {
+	if args.OperatorNamespace == nil {
 		args.OperatorNamespace = pulumi.StringPtr("default")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

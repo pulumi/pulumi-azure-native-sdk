@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20210601preview:Registry is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Registry to guarantee forwards compatibility.
 type Registry struct {
 	pulumi.CustomResourceState
 
@@ -74,13 +76,13 @@ func NewRegistry(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.AdminUserEnabled) {
+	if args.AdminUserEnabled == nil {
 		args.AdminUserEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(args.AnonymousPullEnabled) {
+	if args.AnonymousPullEnabled == nil {
 		args.AnonymousPullEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(args.NetworkRuleBypassOptions) {
+	if args.NetworkRuleBypassOptions == nil {
 		args.NetworkRuleBypassOptions = pulumi.StringPtr("AzureServices")
 	}
 	if args.NetworkRuleSet != nil {
@@ -89,10 +91,10 @@ func NewRegistry(ctx *pulumi.Context,
 	if args.Policies != nil {
 		args.Policies = args.Policies.ToPoliciesPtrOutput().ApplyT(func(v *Policies) *Policies { return v.Defaults() }).(PoliciesPtrOutput)
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
-	if isZero(args.ZoneRedundancy) {
+	if args.ZoneRedundancy == nil {
 		args.ZoneRedundancy = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

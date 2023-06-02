@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // App Service Environment ARM resource.
+//
+// Deprecated: azure-native:web/v20210101:AppServiceEnvironment is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20210115:AppServiceEnvironment to guarantee forwards compatibility.
 type AppServiceEnvironment struct {
 	pulumi.CustomResourceState
 

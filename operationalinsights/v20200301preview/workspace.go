@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The top level Workspace resource container.
+//
+// Deprecated: azure-native:operationalinsights/v20200301preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 

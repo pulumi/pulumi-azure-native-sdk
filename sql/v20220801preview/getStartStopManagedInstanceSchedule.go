@@ -57,11 +57,11 @@ func (val *LookupStartStopManagedInstanceScheduleResult) Defaults() *LookupStart
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Description) {
+	if tmp.Description == nil {
 		description_ := ""
 		tmp.Description = &description_
 	}
-	if isZero(tmp.TimeZoneId) {
+	if tmp.TimeZoneId == nil {
 		timeZoneId_ := "UTC"
 		tmp.TimeZoneId = &timeZoneId_
 	}

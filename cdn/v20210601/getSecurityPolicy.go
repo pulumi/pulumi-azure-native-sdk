@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing security policy within a profile.
+//
+// Deprecated: azure-native:cdn/v20210601:SecurityPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:SecurityPolicy to guarantee forwards compatibility.
 func LookupSecurityPolicy(ctx *pulumi.Context, args *LookupSecurityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPolicyResult, error) {
 	var rv LookupSecurityPolicyResult
 	err := ctx.Invoke("azure-native:cdn/v20210601:getSecurityPolicy", args, &rv, opts...)

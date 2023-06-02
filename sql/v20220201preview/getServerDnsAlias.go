@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a server DNS alias.
+//
+// Deprecated: azure-native:sql/v20220201preview:ServerDnsAlias is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerDnsAlias to guarantee forwards compatibility.
 func LookupServerDnsAlias(ctx *pulumi.Context, args *LookupServerDnsAliasArgs, opts ...pulumi.InvokeOption) (*LookupServerDnsAliasResult, error) {
 	var rv LookupServerDnsAliasResult
 	err := ctx.Invoke("azure-native:sql/v20220201preview:getServerDnsAlias", args, &rv, opts...)

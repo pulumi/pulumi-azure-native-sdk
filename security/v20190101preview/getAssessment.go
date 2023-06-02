@@ -11,6 +11,8 @@ import (
 )
 
 // Get a security assessment on your scanned resource
+//
+// Deprecated: azure-native:security/v20190101preview:Assessment is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20200101:Assessment to guarantee forwards compatibility.
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {
 	var rv LookupAssessmentResult
 	err := ctx.Invoke("azure-native:security/v20190101preview:getAssessment", args, &rv, opts...)

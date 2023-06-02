@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Video Indexer account.
+//
+// Deprecated: azure-native:videoindexer/v20220413preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:videoindexer/v20220801:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -51,7 +53,7 @@ func NewAccount(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AccountId) {
+	if args.AccountId == nil {
 		args.AccountId = pulumi.StringPtr("00000000-0000-0000-0000-000000000000")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

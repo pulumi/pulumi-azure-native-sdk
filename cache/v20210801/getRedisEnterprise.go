@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a RedisEnterprise cluster
+//
+// Deprecated: azure-native:cache/v20210801:RedisEnterprise is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20230301preview:RedisEnterprise to guarantee forwards compatibility.
 func LookupRedisEnterprise(ctx *pulumi.Context, args *LookupRedisEnterpriseArgs, opts ...pulumi.InvokeOption) (*LookupRedisEnterpriseResult, error) {
 	var rv LookupRedisEnterpriseResult
 	err := ctx.Invoke("azure-native:cache/v20210801:getRedisEnterprise", args, &rv, opts...)

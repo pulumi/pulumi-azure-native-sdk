@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an instance of a DNC controller.
 //
 // Deprecated: Version 2020-08-08-preview will be removed in v2 of the provider.
+// azure-native:delegatednetwork/v20200808preview:ControllerDetails is being removed in the next major version of this provider. Upgrade to at least azure-native:delegatednetwork/v20210315:ControllerDetails to guarantee forwards compatibility.
 type ControllerDetails struct {
 	pulumi.CustomResourceState
 

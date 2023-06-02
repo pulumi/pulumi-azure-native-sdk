@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EventGrid Domain
 //
 // Deprecated: Version 2019-02-01-preview will be removed in v2 of the provider.
+// azure-native:eventgrid/v20190201preview:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20200401preview:Domain to guarantee forwards compatibility.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -45,7 +46,7 @@ func NewDomain(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.InputSchema) {
+	if args.InputSchema == nil {
 		args.InputSchema = pulumi.StringPtr("EventGridSchema")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

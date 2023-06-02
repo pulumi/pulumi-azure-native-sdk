@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a connection monitor by name.
+//
+// Deprecated: azure-native:network/v20190601:ConnectionMonitor is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190901:ConnectionMonitor to guarantee forwards compatibility.
 func LookupConnectionMonitor(ctx *pulumi.Context, args *LookupConnectionMonitorArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorResult, error) {
 	var rv LookupConnectionMonitorResult
 	err := ctx.Invoke("azure-native:network/v20190601:getConnectionMonitor", args, &rv, opts...)
@@ -65,15 +67,15 @@ func (val *LookupConnectionMonitorResult) Defaults() *LookupConnectionMonitorRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoStart) {
+	if tmp.AutoStart == nil {
 		autoStart_ := true
 		tmp.AutoStart = &autoStart_
 	}
-	if isZero(tmp.Etag) {
+	if tmp.Etag == nil {
 		etag_ := "A unique read-only string that changes whenever the resource is updated."
 		tmp.Etag = &etag_
 	}
-	if isZero(tmp.MonitoringIntervalInSeconds) {
+	if tmp.MonitoringIntervalInSeconds == nil {
 		monitoringIntervalInSeconds_ := 60
 		tmp.MonitoringIntervalInSeconds = &monitoringIntervalInSeconds_
 	}

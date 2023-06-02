@@ -13,6 +13,7 @@ import (
 // Gets the managed application.
 //
 // Deprecated: Version 2017-09-01 will be removed in v2 of the provider.
+// azure-native:solutions/v20170901:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20171201:Application to guarantee forwards compatibility.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:solutions/v20170901:getApplication", args, &rv, opts...)

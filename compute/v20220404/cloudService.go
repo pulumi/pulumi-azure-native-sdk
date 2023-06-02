@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes the cloud service.
+//
+// Deprecated: azure-native:compute/v20220404:CloudService is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220904:CloudService to guarantee forwards compatibility.
 type CloudService struct {
 	pulumi.CustomResourceState
 

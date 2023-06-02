@@ -11,6 +11,8 @@ import (
 )
 
 // Dapr Component.
+//
+// Deprecated: azure-native:app/v20220601preview:ConnectedEnvironmentsDaprComponent is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20221001:ConnectedEnvironmentsDaprComponent to guarantee forwards compatibility.
 func LookupConnectedEnvironmentsDaprComponent(ctx *pulumi.Context, args *LookupConnectedEnvironmentsDaprComponentArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsDaprComponentResult, error) {
 	var rv LookupConnectedEnvironmentsDaprComponentResult
 	err := ctx.Invoke("azure-native:app/v20220601preview:getConnectedEnvironmentsDaprComponent", args, &rv, opts...)
@@ -63,7 +65,7 @@ func (val *LookupConnectedEnvironmentsDaprComponentResult) Defaults() *LookupCon
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IgnoreErrors) {
+	if tmp.IgnoreErrors == nil {
 		ignoreErrors_ := false
 		tmp.IgnoreErrors = &ignoreErrors_
 	}

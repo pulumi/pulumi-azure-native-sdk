@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a resource type details in the given subscription and provider.
+//
+// Deprecated: azure-native:providerhub/v20210501preview:ResourceTypeRegistration is being removed in the next major version of this provider. Upgrade to at least azure-native:providerhub/v20210901preview:ResourceTypeRegistration to guarantee forwards compatibility.
 func LookupResourceTypeRegistration(ctx *pulumi.Context, args *LookupResourceTypeRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupResourceTypeRegistrationResult, error) {
 	var rv LookupResourceTypeRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub/v20210501preview:getResourceTypeRegistration", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Kusto cluster.
+//
+// Deprecated: azure-native:kusto/v20200614:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20220707:Cluster to guarantee forwards compatibility.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("azure-native:kusto/v20200614:getCluster", args, &rv, opts...)
@@ -81,15 +83,15 @@ func (val *LookupClusterResult) Defaults() *LookupClusterResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDoubleEncryption) {
+	if tmp.EnableDoubleEncryption == nil {
 		enableDoubleEncryption_ := false
 		tmp.EnableDoubleEncryption = &enableDoubleEncryption_
 	}
-	if isZero(tmp.EnablePurge) {
+	if tmp.EnablePurge == nil {
 		enablePurge_ := false
 		tmp.EnablePurge = &enablePurge_
 	}
-	if isZero(tmp.EnableStreamingIngest) {
+	if tmp.EnableStreamingIngest == nil {
 		enableStreamingIngest_ := false
 		tmp.EnableStreamingIngest = &enableStreamingIngest_
 	}

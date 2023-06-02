@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The top level Linked service resource container.
+//
+// Deprecated: azure-native:operationalinsights/v20200301preview:LinkedService is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:LinkedService to guarantee forwards compatibility.
 type LinkedService struct {
 	pulumi.CustomResourceState
 

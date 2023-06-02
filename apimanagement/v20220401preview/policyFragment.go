@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Policy fragment contract details.
+//
+// Deprecated: azure-native:apimanagement/v20220401preview:PolicyFragment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:PolicyFragment to guarantee forwards compatibility.
 type PolicyFragment struct {
 	pulumi.CustomResourceState
 
@@ -43,7 +45,7 @@ func NewPolicyFragment(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
-	if isZero(args.Format) {
+	if args.Format == nil {
 		args.Format = pulumi.StringPtr("xml")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

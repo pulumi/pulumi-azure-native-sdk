@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified IoT Connector.
+//
+// Deprecated: azure-native:healthcareapis/v20220601:IotConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:IotConnector to guarantee forwards compatibility.
 func LookupIotConnector(ctx *pulumi.Context, args *LookupIotConnectorArgs, opts ...pulumi.InvokeOption) (*LookupIotConnectorResult, error) {
 	var rv LookupIotConnectorResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20220601:getIotConnector", args, &rv, opts...)

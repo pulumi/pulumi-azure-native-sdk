@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a private endpoint connection.
+//
+// Deprecated: azure-native:hybridcompute/v20211210preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20221227preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:hybridcompute/v20211210preview:getPrivateEndpointConnection", args, &rv, opts...)

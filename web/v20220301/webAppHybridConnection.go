@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Hybrid Connection contract. This is used to configure a Hybrid Connection.
+//
+// Deprecated: azure-native:web/v20220301:WebAppHybridConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppHybridConnection to guarantee forwards compatibility.
 type WebAppHybridConnection struct {
 	pulumi.CustomResourceState
 

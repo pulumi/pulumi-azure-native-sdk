@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified static member.
+//
+// Deprecated: azure-native:network/v20220401preview:StaticMember is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:StaticMember to guarantee forwards compatibility.
 func LookupStaticMember(ctx *pulumi.Context, args *LookupStaticMemberArgs, opts ...pulumi.InvokeOption) (*LookupStaticMemberResult, error) {
 	var rv LookupStaticMemberResult
 	err := ctx.Invoke("azure-native:network/v20220401preview:getStaticMember", args, &rv, opts...)

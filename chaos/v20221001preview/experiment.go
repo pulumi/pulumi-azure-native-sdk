@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Model that represents a Experiment resource.
+//
+// Deprecated: azure-native:chaos/v20221001preview:Experiment is being removed in the next major version of this provider. Upgrade to at least azure-native:chaos/v20230401preview:Experiment to guarantee forwards compatibility.
 type Experiment struct {
 	pulumi.CustomResourceState
 

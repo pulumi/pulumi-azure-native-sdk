@@ -11,6 +11,8 @@ import (
 )
 
 // Get the setting from the given scope by name.
+//
+// Deprecated: azure-native:costmanagement/v20221001preview:TagInheritanceSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221005preview:TagInheritanceSetting to guarantee forwards compatibility.
 func LookupTagInheritanceSetting(ctx *pulumi.Context, args *LookupTagInheritanceSettingArgs, opts ...pulumi.InvokeOption) (*LookupTagInheritanceSettingResult, error) {
 	var rv LookupTagInheritanceSettingResult
 	err := ctx.Invoke("azure-native:costmanagement/v20221001preview:getTagInheritanceSetting", args, &rv, opts...)

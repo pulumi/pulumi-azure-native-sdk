@@ -11,6 +11,8 @@ import (
 )
 
 // Get a deployment by its ID for an app, or a deployment slot.
+//
+// Deprecated: azure-native:web/v20200901:WebAppDeployment is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppDeployment to guarantee forwards compatibility.
 func LookupWebAppDeployment(ctx *pulumi.Context, args *LookupWebAppDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDeploymentResult, error) {
 	var rv LookupWebAppDeploymentResult
 	err := ctx.Invoke("azure-native:web/v20200901:getWebAppDeployment", args, &rv, opts...)

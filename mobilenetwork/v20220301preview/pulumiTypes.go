@@ -674,23 +674,23 @@ func (val *DataNetworkConfiguration) Defaults() *DataNetworkConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		allocationAndRetentionPriorityLevel_ := 9
 		tmp.AllocationAndRetentionPriorityLevel = &allocationAndRetentionPriorityLevel_
 	}
-	if isZero(tmp.DefaultSessionType) {
+	if tmp.DefaultSessionType == nil {
 		defaultSessionType_ := "IPv4"
 		tmp.DefaultSessionType = &defaultSessionType_
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		fiveQi_ := 9
 		tmp.FiveQi = &fiveQi_
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		preemptionCapability_ := "NotPreempt"
 		tmp.PreemptionCapability = &preemptionCapability_
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		preemptionVulnerability_ := "Preemptable"
 		tmp.PreemptionVulnerability = &preemptionVulnerability_
 	}
@@ -736,19 +736,19 @@ func (val *DataNetworkConfigurationArgs) Defaults() *DataNetworkConfigurationArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		tmp.AllocationAndRetentionPriorityLevel = pulumi.IntPtr(9)
 	}
-	if isZero(tmp.DefaultSessionType) {
+	if tmp.DefaultSessionType == nil {
 		tmp.DefaultSessionType = pulumi.StringPtr("IPv4")
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		tmp.FiveQi = pulumi.IntPtr(9)
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		tmp.PreemptionCapability = pulumi.StringPtr("NotPreempt")
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		tmp.PreemptionVulnerability = pulumi.StringPtr("Preemptable")
 	}
 	return &tmp
@@ -898,23 +898,23 @@ func (val *DataNetworkConfigurationResponse) Defaults() *DataNetworkConfiguratio
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		allocationAndRetentionPriorityLevel_ := 9
 		tmp.AllocationAndRetentionPriorityLevel = &allocationAndRetentionPriorityLevel_
 	}
-	if isZero(tmp.DefaultSessionType) {
+	if tmp.DefaultSessionType == nil {
 		defaultSessionType_ := "IPv4"
 		tmp.DefaultSessionType = &defaultSessionType_
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		fiveQi_ := 9
 		tmp.FiveQi = &fiveQi_
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		preemptionCapability_ := "NotPreempt"
 		tmp.PreemptionCapability = &preemptionCapability_
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		preemptionVulnerability_ := "Preemptable"
 		tmp.PreemptionVulnerability = &preemptionVulnerability_
 	}
@@ -1432,7 +1432,7 @@ func (val *NaptConfiguration) Defaults() *NaptConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PinholeLimits) {
+	if tmp.PinholeLimits == nil {
 		pinholeLimits_ := 65536
 		tmp.PinholeLimits = &pinholeLimits_
 	}
@@ -1477,7 +1477,7 @@ func (val *NaptConfigurationArgs) Defaults() *NaptConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PinholeLimits) {
+	if tmp.PinholeLimits == nil {
 		tmp.PinholeLimits = pulumi.IntPtr(65536)
 	}
 
@@ -1683,7 +1683,7 @@ func (val *NaptConfigurationResponse) Defaults() *NaptConfigurationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PinholeLimits) {
+	if tmp.PinholeLimits == nil {
 		pinholeLimits_ := 65536
 		tmp.PinholeLimits = &pinholeLimits_
 	}
@@ -1834,7 +1834,7 @@ func (val *PccRuleConfiguration) Defaults() *PccRuleConfiguration {
 	tmp := *val
 	tmp.RuleQosPolicy = tmp.RuleQosPolicy.Defaults()
 
-	if isZero(tmp.TrafficControl) {
+	if tmp.TrafficControl == nil {
 		trafficControl_ := "Enabled"
 		tmp.TrafficControl = &trafficControl_
 	}
@@ -1873,7 +1873,7 @@ func (val *PccRuleConfigurationArgs) Defaults() *PccRuleConfigurationArgs {
 	}
 	tmp := *val
 
-	if isZero(tmp.TrafficControl) {
+	if tmp.TrafficControl == nil {
 		tmp.TrafficControl = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -1997,7 +1997,7 @@ func (val *PccRuleConfigurationResponse) Defaults() *PccRuleConfigurationRespons
 	tmp := *val
 	tmp.RuleQosPolicy = tmp.RuleQosPolicy.Defaults()
 
-	if isZero(tmp.TrafficControl) {
+	if tmp.TrafficControl == nil {
 		trafficControl_ := "Enabled"
 		tmp.TrafficControl = &trafficControl_
 	}
@@ -2088,19 +2088,19 @@ func (val *PccRuleQosPolicy) Defaults() *PccRuleQosPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		allocationAndRetentionPriorityLevel_ := 9
 		tmp.AllocationAndRetentionPriorityLevel = &allocationAndRetentionPriorityLevel_
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		fiveQi_ := 9
 		tmp.FiveQi = &fiveQi_
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		preemptionCapability_ := "NotPreempt"
 		tmp.PreemptionCapability = &preemptionCapability_
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		preemptionVulnerability_ := "Preemptable"
 		tmp.PreemptionVulnerability = &preemptionVulnerability_
 	}
@@ -2140,16 +2140,16 @@ func (val *PccRuleQosPolicyArgs) Defaults() *PccRuleQosPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		tmp.AllocationAndRetentionPriorityLevel = pulumi.IntPtr(9)
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		tmp.FiveQi = pulumi.IntPtr(9)
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		tmp.PreemptionCapability = pulumi.StringPtr("NotPreempt")
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		tmp.PreemptionVulnerability = pulumi.StringPtr("Preemptable")
 	}
 	return &tmp
@@ -2368,19 +2368,19 @@ func (val *PccRuleQosPolicyResponse) Defaults() *PccRuleQosPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		allocationAndRetentionPriorityLevel_ := 9
 		tmp.AllocationAndRetentionPriorityLevel = &allocationAndRetentionPriorityLevel_
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		fiveQi_ := 9
 		tmp.FiveQi = &fiveQi_
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		preemptionCapability_ := "NotPreempt"
 		tmp.PreemptionCapability = &preemptionCapability_
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		preemptionVulnerability_ := "Preemptable"
 		tmp.PreemptionVulnerability = &preemptionVulnerability_
 	}
@@ -2532,15 +2532,15 @@ func (val *PinholeTimeouts) Defaults() *PinholeTimeouts {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Icmp) {
+	if tmp.Icmp == nil {
 		icmp_ := 60
 		tmp.Icmp = &icmp_
 	}
-	if isZero(tmp.Tcp) {
+	if tmp.Tcp == nil {
 		tcp_ := 7440
 		tmp.Tcp = &tcp_
 	}
-	if isZero(tmp.Udp) {
+	if tmp.Udp == nil {
 		udp_ := 300
 		tmp.Udp = &udp_
 	}
@@ -2574,13 +2574,13 @@ func (val *PinholeTimeoutsArgs) Defaults() *PinholeTimeoutsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Icmp) {
+	if tmp.Icmp == nil {
 		tmp.Icmp = pulumi.IntPtr(60)
 	}
-	if isZero(tmp.Tcp) {
+	if tmp.Tcp == nil {
 		tmp.Tcp = pulumi.IntPtr(7440)
 	}
-	if isZero(tmp.Udp) {
+	if tmp.Udp == nil {
 		tmp.Udp = pulumi.IntPtr(300)
 	}
 	return &tmp
@@ -2748,15 +2748,15 @@ func (val *PinholeTimeoutsResponse) Defaults() *PinholeTimeoutsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Icmp) {
+	if tmp.Icmp == nil {
 		icmp_ := 60
 		tmp.Icmp = &icmp_
 	}
-	if isZero(tmp.Tcp) {
+	if tmp.Tcp == nil {
 		tcp_ := 7440
 		tmp.Tcp = &tcp_
 	}
-	if isZero(tmp.Udp) {
+	if tmp.Udp == nil {
 		udp_ := 300
 		tmp.Udp = &udp_
 	}
@@ -2959,11 +2959,11 @@ func (val *PortRange) Defaults() *PortRange {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPort) {
+	if tmp.MaxPort == nil {
 		maxPort_ := 65535
 		tmp.MaxPort = &maxPort_
 	}
-	if isZero(tmp.MinPort) {
+	if tmp.MinPort == nil {
 		minPort_ := 1024
 		tmp.MinPort = &minPort_
 	}
@@ -2996,10 +2996,10 @@ func (val *PortRangeArgs) Defaults() *PortRangeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPort) {
+	if tmp.MaxPort == nil {
 		tmp.MaxPort = pulumi.IntPtr(65535)
 	}
-	if isZero(tmp.MinPort) {
+	if tmp.MinPort == nil {
 		tmp.MinPort = pulumi.IntPtr(1024)
 	}
 	return &tmp
@@ -3152,11 +3152,11 @@ func (val *PortRangeResponse) Defaults() *PortRangeResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPort) {
+	if tmp.MaxPort == nil {
 		maxPort_ := 65535
 		tmp.MaxPort = &maxPort_
 	}
-	if isZero(tmp.MinPort) {
+	if tmp.MinPort == nil {
 		minPort_ := 1024
 		tmp.MinPort = &minPort_
 	}
@@ -3247,11 +3247,11 @@ func (val *PortReuseHoldTimes) Defaults() *PortReuseHoldTimes {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Tcp) {
+	if tmp.Tcp == nil {
 		tcp_ := 120
 		tmp.Tcp = &tcp_
 	}
-	if isZero(tmp.Udp) {
+	if tmp.Udp == nil {
 		udp_ := 60
 		tmp.Udp = &udp_
 	}
@@ -3283,10 +3283,10 @@ func (val *PortReuseHoldTimesArgs) Defaults() *PortReuseHoldTimesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Tcp) {
+	if tmp.Tcp == nil {
 		tmp.Tcp = pulumi.IntPtr(120)
 	}
-	if isZero(tmp.Udp) {
+	if tmp.Udp == nil {
 		tmp.Udp = pulumi.IntPtr(60)
 	}
 	return &tmp
@@ -3437,11 +3437,11 @@ func (val *PortReuseHoldTimesResponse) Defaults() *PortReuseHoldTimesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Tcp) {
+	if tmp.Tcp == nil {
 		tcp_ := 120
 		tmp.Tcp = &tcp_
 	}
-	if isZero(tmp.Udp) {
+	if tmp.Udp == nil {
 		udp_ := 60
 		tmp.Udp = &udp_
 	}
@@ -3537,19 +3537,19 @@ func (val *QosPolicy) Defaults() *QosPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		allocationAndRetentionPriorityLevel_ := 9
 		tmp.AllocationAndRetentionPriorityLevel = &allocationAndRetentionPriorityLevel_
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		fiveQi_ := 9
 		tmp.FiveQi = &fiveQi_
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		preemptionCapability_ := "NotPreempt"
 		tmp.PreemptionCapability = &preemptionCapability_
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		preemptionVulnerability_ := "Preemptable"
 		tmp.PreemptionVulnerability = &preemptionVulnerability_
 	}
@@ -3587,16 +3587,16 @@ func (val *QosPolicyArgs) Defaults() *QosPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		tmp.AllocationAndRetentionPriorityLevel = pulumi.IntPtr(9)
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		tmp.FiveQi = pulumi.IntPtr(9)
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		tmp.PreemptionCapability = pulumi.StringPtr("NotPreempt")
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		tmp.PreemptionVulnerability = pulumi.StringPtr("Preemptable")
 	}
 	return &tmp
@@ -3798,19 +3798,19 @@ func (val *QosPolicyResponse) Defaults() *QosPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocationAndRetentionPriorityLevel) {
+	if tmp.AllocationAndRetentionPriorityLevel == nil {
 		allocationAndRetentionPriorityLevel_ := 9
 		tmp.AllocationAndRetentionPriorityLevel = &allocationAndRetentionPriorityLevel_
 	}
-	if isZero(tmp.FiveQi) {
+	if tmp.FiveQi == nil {
 		fiveQi_ := 9
 		tmp.FiveQi = &fiveQi_
 	}
-	if isZero(tmp.PreemptionCapability) {
+	if tmp.PreemptionCapability == nil {
 		preemptionCapability_ := "NotPreempt"
 		tmp.PreemptionCapability = &preemptionCapability_
 	}
-	if isZero(tmp.PreemptionVulnerability) {
+	if tmp.PreemptionVulnerability == nil {
 		preemptionVulnerability_ := "Preemptable"
 		tmp.PreemptionVulnerability = &preemptionVulnerability_
 	}

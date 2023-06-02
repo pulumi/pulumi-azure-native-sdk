@@ -13,6 +13,7 @@ import (
 // Get properties of a topic.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
+// azure-native:eventgrid/v20190601:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20200401preview:Topic to guarantee forwards compatibility.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	var rv LookupTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20190601:getTopic", args, &rv, opts...)

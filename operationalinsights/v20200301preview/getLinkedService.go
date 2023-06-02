@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a linked service instance.
+//
+// Deprecated: azure-native:operationalinsights/v20200301preview:LinkedService is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:LinkedService to guarantee forwards compatibility.
 func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServiceResult, error) {
 	var rv LookupLinkedServiceResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200301preview:getLinkedService", args, &rv, opts...)

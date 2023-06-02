@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The private endpoint connection of an IotHub
+//
+// Deprecated: azure-native:devices/v20200301:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20220430preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

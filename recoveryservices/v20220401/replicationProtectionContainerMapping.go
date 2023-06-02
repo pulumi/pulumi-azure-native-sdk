@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Protection container mapping object.
+//
+// Deprecated: azure-native:recoveryservices/v20220401:ReplicationProtectionContainerMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationProtectionContainerMapping to guarantee forwards compatibility.
 type ReplicationProtectionContainerMapping struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Get ArcSetting resource details of HCI Cluster.
+//
+// Deprecated: azure-native:azurestackhci/v20221201:ArcSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230201:ArcSetting to guarantee forwards compatibility.
 func LookupArcSetting(ctx *pulumi.Context, args *LookupArcSettingArgs, opts ...pulumi.InvokeOption) (*LookupArcSettingResult, error) {
 	var rv LookupArcSettingResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20221201:getArcSetting", args, &rv, opts...)

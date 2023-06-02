@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of an Asset in the Media Services account
+//
+// Deprecated: azure-native:media/v20220801:Asset is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:Asset to guarantee forwards compatibility.
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {
 	var rv LookupAssetResult
 	err := ctx.Invoke("azure-native:media/v20220801:getAsset", args, &rv, opts...)

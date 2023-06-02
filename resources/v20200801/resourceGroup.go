@@ -11,6 +11,8 @@ import (
 )
 
 // Resource group information.
+//
+// Deprecated: azure-native:resources/v20200801:ResourceGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:ResourceGroup to guarantee forwards compatibility.
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 

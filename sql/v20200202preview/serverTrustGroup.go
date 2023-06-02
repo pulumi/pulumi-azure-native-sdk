@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A server trust group.
+//
+// Deprecated: azure-native:sql/v20200202preview:ServerTrustGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerTrustGroup to guarantee forwards compatibility.
 type ServerTrustGroup struct {
 	pulumi.CustomResourceState
 

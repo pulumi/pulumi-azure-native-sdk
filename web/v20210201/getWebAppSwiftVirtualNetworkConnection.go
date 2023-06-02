@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Swift Virtual Network connection.
+//
+// Deprecated: azure-native:web/v20210201:WebAppSwiftVirtualNetworkConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSwiftVirtualNetworkConnection to guarantee forwards compatibility.
 func LookupWebAppSwiftVirtualNetworkConnection(ctx *pulumi.Context, args *LookupWebAppSwiftVirtualNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSwiftVirtualNetworkConnectionResult, error) {
 	var rv LookupWebAppSwiftVirtualNetworkConnectionResult
 	err := ctx.Invoke("azure-native:web/v20210201:getWebAppSwiftVirtualNetworkConnection", args, &rv, opts...)

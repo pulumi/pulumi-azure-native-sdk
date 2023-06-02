@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a workspace active directory admin
+//
+// Deprecated: azure-native:synapse/v20210601:WorkspaceAadAdmin is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:WorkspaceAadAdmin to guarantee forwards compatibility.
 func LookupWorkspaceAadAdmin(ctx *pulumi.Context, args *LookupWorkspaceAadAdminArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceAadAdminResult, error) {
 	var rv LookupWorkspaceAadAdminResult
 	err := ctx.Invoke("azure-native:synapse/v20210601:getWorkspaceAadAdmin", args, &rv, opts...)

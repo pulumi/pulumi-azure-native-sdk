@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Application gateway resource.
+//
+// Deprecated: azure-native:network/v20190401:ApplicationGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:ApplicationGateway to guarantee forwards compatibility.
 type ApplicationGateway struct {
 	pulumi.CustomResourceState
 

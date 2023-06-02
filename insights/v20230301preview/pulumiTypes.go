@@ -188,7 +188,7 @@ func (val *EmailReceiver) Defaults() *EmailReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -222,7 +222,7 @@ func (val *EmailReceiverArgs) Defaults() *EmailReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -332,7 +332,7 @@ func (val *EmailReceiverResponse) Defaults() *EmailReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -781,11 +781,11 @@ func (val *WebhookReceiver) Defaults() *WebhookReceiver {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		useAadAuth_ := false
 		tmp.UseAadAuth = &useAadAuth_
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}
@@ -827,10 +827,10 @@ func (val *WebhookReceiverArgs) Defaults() *WebhookReceiverArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		tmp.UseAadAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -966,11 +966,11 @@ func (val *WebhookReceiverResponse) Defaults() *WebhookReceiverResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UseAadAuth) {
+	if tmp.UseAadAuth == nil {
 		useAadAuth_ := false
 		tmp.UseAadAuth = &useAadAuth_
 	}
-	if isZero(tmp.UseCommonAlertSchema) {
+	if tmp.UseCommonAlertSchema == nil {
 		useCommonAlertSchema_ := false
 		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
 	}

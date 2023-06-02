@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the variable identified by variable name.
+//
+// Deprecated: azure-native:automation/v20200113preview:Variable is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Variable to guarantee forwards compatibility.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	var rv LookupVariableResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getVariable", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
+//
+// Deprecated: azure-native:documentdb/v20221115:SqlResourceSqlUserDefinedFunction is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:SqlResourceSqlUserDefinedFunction to guarantee forwards compatibility.
 func LookupSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context, args *LookupSqlResourceSqlUserDefinedFunctionArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlUserDefinedFunctionResult, error) {
 	var rv LookupSqlResourceSqlUserDefinedFunctionResult
 	err := ctx.Invoke("azure-native:documentdb/v20221115:getSqlResourceSqlUserDefinedFunction", args, &rv, opts...)

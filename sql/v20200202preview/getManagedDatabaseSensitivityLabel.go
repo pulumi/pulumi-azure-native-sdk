@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the sensitivity label of a given column
+//
+// Deprecated: azure-native:sql/v20200202preview:ManagedDatabaseSensitivityLabel is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedDatabaseSensitivityLabel to guarantee forwards compatibility.
 func LookupManagedDatabaseSensitivityLabel(ctx *pulumi.Context, args *LookupManagedDatabaseSensitivityLabelArgs, opts ...pulumi.InvokeOption) (*LookupManagedDatabaseSensitivityLabelResult, error) {
 	var rv LookupManagedDatabaseSensitivityLabelResult
 	err := ctx.Invoke("azure-native:sql/v20200202preview:getManagedDatabaseSensitivityLabel", args, &rv, opts...)

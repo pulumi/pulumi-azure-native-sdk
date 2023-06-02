@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure resource which represents access to a suite of Maps REST APIs.
 //
 // Deprecated: Version 2017-01-01-preview will be removed in v2 of the provider.
+// azure-native:maps/v20170101preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:maps/v20180501:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

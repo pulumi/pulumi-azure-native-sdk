@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the provisioning service.
 //
 // Deprecated: Version 2017-08-21-preview will be removed in v2 of the provider.
+// azure-native:devices/v20170821preview:IotDpsResource is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20200901preview:IotDpsResource to guarantee forwards compatibility.
 type IotDpsResource struct {
 	pulumi.CustomResourceState
 

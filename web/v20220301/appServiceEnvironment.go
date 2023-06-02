@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // App Service Environment ARM resource.
+//
+// Deprecated: azure-native:web/v20220301:AppServiceEnvironment is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:AppServiceEnvironment to guarantee forwards compatibility.
 type AppServiceEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -81,7 +83,7 @@ func NewAppServiceEnvironment(ctx *pulumi.Context,
 	if args.VirtualNetwork == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualNetwork'")
 	}
-	if isZero(args.UpgradePreference) {
+	if args.UpgradePreference == nil {
 		args.UpgradePreference = pulumi.StringPtr("None")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

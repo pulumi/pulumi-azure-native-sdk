@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
+//
+// Deprecated: azure-native:web/v20210101:WebAppAuthSettingsV2 is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20210201:WebAppAuthSettingsV2 to guarantee forwards compatibility.
 type WebAppAuthSettingsV2 struct {
 	pulumi.CustomResourceState
 

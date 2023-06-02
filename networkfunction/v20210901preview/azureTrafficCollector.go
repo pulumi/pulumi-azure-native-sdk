@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Traffic Collector resource.
+//
+// Deprecated: azure-native:networkfunction/v20210901preview:AzureTrafficCollector is being removed in the next major version of this provider. Upgrade to at least azure-native:networkfunction/v20220801:AzureTrafficCollector to guarantee forwards compatibility.
 type AzureTrafficCollector struct {
 	pulumi.CustomResourceState
 

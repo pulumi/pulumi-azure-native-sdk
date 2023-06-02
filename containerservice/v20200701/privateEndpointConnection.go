@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A private endpoint connection
+//
+// Deprecated: azure-native:containerservice/v20200701:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

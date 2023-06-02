@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an Event Hubs description for the specified Event Hub.
+//
+// Deprecated: azure-native:eventhub/v20220101preview:EventHub is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:EventHub to guarantee forwards compatibility.
 func LookupEventHub(ctx *pulumi.Context, args *LookupEventHubArgs, opts ...pulumi.InvokeOption) (*LookupEventHubResult, error) {
 	var rv LookupEventHubResult
 	err := ctx.Invoke("azure-native:eventhub/v20220101preview:getEventHub", args, &rv, opts...)

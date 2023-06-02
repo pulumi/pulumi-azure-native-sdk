@@ -13,6 +13,7 @@ import (
 // Gets a Traffic Manager endpoint.
 //
 // Deprecated: Version 2015-11-01 will be removed in v2 of the provider.
+// azure-native:network/v20151101:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20170301:Endpoint to guarantee forwards compatibility.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:network/v20151101:getEndpoint", args, &rv, opts...)

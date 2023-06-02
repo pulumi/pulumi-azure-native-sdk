@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a named add-on of an app.
+//
+// Deprecated: azure-native:web/v20200901:WebAppPremierAddOnSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppPremierAddOnSlot to guarantee forwards compatibility.
 func LookupWebAppPremierAddOnSlot(ctx *pulumi.Context, args *LookupWebAppPremierAddOnSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPremierAddOnSlotResult, error) {
 	var rv LookupWebAppPremierAddOnSlotResult
 	err := ctx.Invoke("azure-native:web/v20200901:getWebAppPremierAddOnSlot", args, &rv, opts...)

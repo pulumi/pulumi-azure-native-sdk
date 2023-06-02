@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the Security ML Analytics Settings.
+//
+// Deprecated: azure-native:securityinsights/v20230201:AnomalySecurityMLAnalyticsSettings is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AnomalySecurityMLAnalyticsSettings to guarantee forwards compatibility.
 func LookupAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *LookupAnomalySecurityMLAnalyticsSettingsArgs, opts ...pulumi.InvokeOption) (*LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
 	var rv LookupAnomalySecurityMLAnalyticsSettingsResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201:getAnomalySecurityMLAnalyticsSettings", args, &rv, opts...)

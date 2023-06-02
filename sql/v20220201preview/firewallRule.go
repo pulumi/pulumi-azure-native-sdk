@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A server firewall rule.
+//
+// Deprecated: azure-native:sql/v20220201preview:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

@@ -428,7 +428,7 @@ func (val *AzureKeyVaultKms) Defaults() *AzureKeyVaultKms {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeyVaultNetworkAccess) {
+	if tmp.KeyVaultNetworkAccess == nil {
 		keyVaultNetworkAccess_ := "Public"
 		tmp.KeyVaultNetworkAccess = &keyVaultNetworkAccess_
 	}
@@ -464,7 +464,7 @@ func (val *AzureKeyVaultKmsArgs) Defaults() *AzureKeyVaultKmsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeyVaultNetworkAccess) {
+	if tmp.KeyVaultNetworkAccess == nil {
 		tmp.KeyVaultNetworkAccess = pulumi.StringPtr("Public")
 	}
 	return &tmp
@@ -649,7 +649,7 @@ func (val *AzureKeyVaultKmsResponse) Defaults() *AzureKeyVaultKmsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeyVaultNetworkAccess) {
+	if tmp.KeyVaultNetworkAccess == nil {
 		keyVaultNetworkAccess_ := "Public"
 		tmp.KeyVaultNetworkAccess = &keyVaultNetworkAccess_
 	}
@@ -1033,11 +1033,11 @@ func (val *ContainerServiceNetworkProfile) Defaults() *ContainerServiceNetworkPr
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DnsServiceIP) {
+	if tmp.DnsServiceIP == nil {
 		dnsServiceIP_ := "10.0.0.10"
 		tmp.DnsServiceIP = &dnsServiceIP_
 	}
-	if isZero(tmp.DockerBridgeCidr) {
+	if tmp.DockerBridgeCidr == nil {
 		dockerBridgeCidr_ := "172.17.0.1/16"
 		tmp.DockerBridgeCidr = &dockerBridgeCidr_
 	}
@@ -1045,15 +1045,15 @@ func (val *ContainerServiceNetworkProfile) Defaults() *ContainerServiceNetworkPr
 
 	tmp.NatGatewayProfile = tmp.NatGatewayProfile.Defaults()
 
-	if isZero(tmp.OutboundType) {
+	if tmp.OutboundType == nil {
 		outboundType_ := "loadBalancer"
 		tmp.OutboundType = &outboundType_
 	}
-	if isZero(tmp.PodCidr) {
+	if tmp.PodCidr == nil {
 		podCidr_ := "10.244.0.0/16"
 		tmp.PodCidr = &podCidr_
 	}
-	if isZero(tmp.ServiceCidr) {
+	if tmp.ServiceCidr == nil {
 		serviceCidr_ := "10.0.0.0/16"
 		tmp.ServiceCidr = &serviceCidr_
 	}
@@ -1113,20 +1113,20 @@ func (val *ContainerServiceNetworkProfileArgs) Defaults() *ContainerServiceNetwo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DnsServiceIP) {
+	if tmp.DnsServiceIP == nil {
 		tmp.DnsServiceIP = pulumi.StringPtr("10.0.0.10")
 	}
-	if isZero(tmp.DockerBridgeCidr) {
+	if tmp.DockerBridgeCidr == nil {
 		tmp.DockerBridgeCidr = pulumi.StringPtr("172.17.0.1/16")
 	}
 
-	if isZero(tmp.OutboundType) {
+	if tmp.OutboundType == nil {
 		tmp.OutboundType = pulumi.StringPtr("loadBalancer")
 	}
-	if isZero(tmp.PodCidr) {
+	if tmp.PodCidr == nil {
 		tmp.PodCidr = pulumi.StringPtr("10.244.0.0/16")
 	}
-	if isZero(tmp.ServiceCidr) {
+	if tmp.ServiceCidr == nil {
 		tmp.ServiceCidr = pulumi.StringPtr("10.0.0.0/16")
 	}
 	return &tmp
@@ -1896,11 +1896,11 @@ func (val *ContainerServiceNetworkProfileResponse) Defaults() *ContainerServiceN
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DnsServiceIP) {
+	if tmp.DnsServiceIP == nil {
 		dnsServiceIP_ := "10.0.0.10"
 		tmp.DnsServiceIP = &dnsServiceIP_
 	}
-	if isZero(tmp.DockerBridgeCidr) {
+	if tmp.DockerBridgeCidr == nil {
 		dockerBridgeCidr_ := "172.17.0.1/16"
 		tmp.DockerBridgeCidr = &dockerBridgeCidr_
 	}
@@ -1908,15 +1908,15 @@ func (val *ContainerServiceNetworkProfileResponse) Defaults() *ContainerServiceN
 
 	tmp.NatGatewayProfile = tmp.NatGatewayProfile.Defaults()
 
-	if isZero(tmp.OutboundType) {
+	if tmp.OutboundType == nil {
 		outboundType_ := "loadBalancer"
 		tmp.OutboundType = &outboundType_
 	}
-	if isZero(tmp.PodCidr) {
+	if tmp.PodCidr == nil {
 		podCidr_ := "10.244.0.0/16"
 		tmp.PodCidr = &podCidr_
 	}
-	if isZero(tmp.ServiceCidr) {
+	if tmp.ServiceCidr == nil {
 		serviceCidr_ := "10.0.0.0/16"
 		tmp.ServiceCidr = &serviceCidr_
 	}
@@ -8291,15 +8291,15 @@ func (val *ManagedClusterLoadBalancerProfile) Defaults() *ManagedClusterLoadBala
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocatedOutboundPorts) {
+	if tmp.AllocatedOutboundPorts == nil {
 		allocatedOutboundPorts_ := 0
 		tmp.AllocatedOutboundPorts = &allocatedOutboundPorts_
 	}
-	if isZero(tmp.BackendPoolType) {
+	if tmp.BackendPoolType == nil {
 		backendPoolType_ := "NodeIPConfiguration"
 		tmp.BackendPoolType = &backendPoolType_
 	}
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		idleTimeoutInMinutes_ := 30
 		tmp.IdleTimeoutInMinutes = &idleTimeoutInMinutes_
 	}
@@ -8345,13 +8345,13 @@ func (val *ManagedClusterLoadBalancerProfileArgs) Defaults() *ManagedClusterLoad
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocatedOutboundPorts) {
+	if tmp.AllocatedOutboundPorts == nil {
 		tmp.AllocatedOutboundPorts = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.BackendPoolType) {
+	if tmp.BackendPoolType == nil {
 		tmp.BackendPoolType = pulumi.StringPtr("NodeIPConfiguration")
 	}
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		tmp.IdleTimeoutInMinutes = pulumi.IntPtr(30)
 	}
 
@@ -8599,11 +8599,11 @@ func (val *ManagedClusterLoadBalancerProfileManagedOutboundIPs) Defaults() *Mana
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.CountIPv6) {
+	if tmp.CountIPv6 == nil {
 		countIPv6_ := 0
 		tmp.CountIPv6 = &countIPv6_
 	}
@@ -8635,10 +8635,10 @@ func (val *ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs) Defaults() *
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.CountIPv6) {
+	if tmp.CountIPv6 == nil {
 		tmp.CountIPv6 = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -9083,15 +9083,15 @@ func (val *ManagedClusterLoadBalancerProfileResponse) Defaults() *ManagedCluster
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AllocatedOutboundPorts) {
+	if tmp.AllocatedOutboundPorts == nil {
 		allocatedOutboundPorts_ := 0
 		tmp.AllocatedOutboundPorts = &allocatedOutboundPorts_
 	}
-	if isZero(tmp.BackendPoolType) {
+	if tmp.BackendPoolType == nil {
 		backendPoolType_ := "NodeIPConfiguration"
 		tmp.BackendPoolType = &backendPoolType_
 	}
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		idleTimeoutInMinutes_ := 30
 		tmp.IdleTimeoutInMinutes = &idleTimeoutInMinutes_
 	}
@@ -9281,11 +9281,11 @@ func (val *ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs) Defaults
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
-	if isZero(tmp.CountIPv6) {
+	if tmp.CountIPv6 == nil {
 		countIPv6_ := 0
 		tmp.CountIPv6 = &countIPv6_
 	}
@@ -9497,7 +9497,7 @@ func (val *ManagedClusterManagedOutboundIPProfile) Defaults() *ManagedClusterMan
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
@@ -9527,7 +9527,7 @@ func (val *ManagedClusterManagedOutboundIPProfileArgs) Defaults() *ManagedCluste
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		tmp.Count = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -9661,7 +9661,7 @@ func (val *ManagedClusterManagedOutboundIPProfileResponse) Defaults() *ManagedCl
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Count) {
+	if tmp.Count == nil {
 		count_ := 1
 		tmp.Count = &count_
 	}
@@ -9738,7 +9738,7 @@ func (val *ManagedClusterNATGatewayProfile) Defaults() *ManagedClusterNATGateway
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		idleTimeoutInMinutes_ := 4
 		tmp.IdleTimeoutInMinutes = &idleTimeoutInMinutes_
 	}
@@ -9774,7 +9774,7 @@ func (val *ManagedClusterNATGatewayProfileArgs) Defaults() *ManagedClusterNATGat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		tmp.IdleTimeoutInMinutes = pulumi.IntPtr(4)
 	}
 
@@ -9945,7 +9945,7 @@ func (val *ManagedClusterNATGatewayProfileResponse) Defaults() *ManagedClusterNA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IdleTimeoutInMinutes) {
+	if tmp.IdleTimeoutInMinutes == nil {
 		idleTimeoutInMinutes_ := 4
 		tmp.IdleTimeoutInMinutes = &idleTimeoutInMinutes_
 	}
@@ -15971,13 +15971,13 @@ func (val *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) Def
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ControlledValues) {
+	if tmp.ControlledValues == nil {
 		tmp.ControlledValues = pulumi.String("RequestsAndLimits")
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		tmp.Enabled = pulumi.Bool(false)
 	}
-	if isZero(tmp.UpdateMode) {
+	if tmp.UpdateMode == nil {
 		tmp.UpdateMode = pulumi.String("Off")
 	}
 	return &tmp

@@ -13,6 +13,7 @@ import (
 // Gets the specified public IP address in a specified resource group.
 //
 // Deprecated: Version 2017-03-01 will be removed in v2 of the provider.
+// azure-native:network/v20170301:PublicIPAddress is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:PublicIPAddress to guarantee forwards compatibility.
 func LookupPublicIPAddress(ctx *pulumi.Context, args *LookupPublicIPAddressArgs, opts ...pulumi.InvokeOption) (*LookupPublicIPAddressResult, error) {
 	var rv LookupPublicIPAddressResult
 	err := ctx.Invoke("azure-native:network/v20170301:getPublicIPAddress", args, &rv, opts...)

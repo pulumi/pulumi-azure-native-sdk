@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data connector.
+//
+// Deprecated: azure-native:securityinsights/v20190101preview:Dynamics365DataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:Dynamics365DataConnector to guarantee forwards compatibility.
 func LookupDynamics365DataConnector(ctx *pulumi.Context, args *LookupDynamics365DataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupDynamics365DataConnectorResult, error) {
 	var rv LookupDynamics365DataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getDynamics365DataConnector", args, &rv, opts...)

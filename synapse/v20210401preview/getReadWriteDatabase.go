@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a database.
+//
+// Deprecated: azure-native:synapse/v20210401preview:ReadWriteDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:ReadWriteDatabase to guarantee forwards compatibility.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
 	var rv LookupReadWriteDatabaseResult
 	err := ctx.Invoke("azure-native:synapse/v20210401preview:getReadWriteDatabase", args, &rv, opts...)

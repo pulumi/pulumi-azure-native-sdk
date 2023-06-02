@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a Cache.
+//
+// Deprecated: azure-native:storagecache/v20230101:Cache is being removed in the next major version of this provider. Upgrade to at least azure-native:storagecache/v20230301preview:Cache to guarantee forwards compatibility.
 func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.InvokeOption) (*LookupCacheResult, error) {
 	var rv LookupCacheResult
 	err := ctx.Invoke("azure-native:storagecache/v20230101:getCache", args, &rv, opts...)

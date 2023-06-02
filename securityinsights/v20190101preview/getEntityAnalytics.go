@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a setting.
+//
+// Deprecated: azure-native:securityinsights/v20190101preview:EntityAnalytics is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:EntityAnalytics to guarantee forwards compatibility.
 func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs, opts ...pulumi.InvokeOption) (*LookupEntityAnalyticsResult, error) {
 	var rv LookupEntityAnalyticsResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getEntityAnalytics", args, &rv, opts...)

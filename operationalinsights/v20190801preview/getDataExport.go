@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data export instance.
+//
+// Deprecated: azure-native:operationalinsights/v20190801preview:DataExport is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:DataExport to guarantee forwards compatibility.
 func LookupDataExport(ctx *pulumi.Context, args *LookupDataExportArgs, opts ...pulumi.InvokeOption) (*LookupDataExportResult, error) {
 	var rv LookupDataExportResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20190801preview:getDataExport", args, &rv, opts...)

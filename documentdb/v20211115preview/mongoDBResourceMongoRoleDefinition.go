@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB Mongo Role Definition.
+//
+// Deprecated: azure-native:documentdb/v20211115preview:MongoDBResourceMongoRoleDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:MongoDBResourceMongoRoleDefinition to guarantee forwards compatibility.
 type MongoDBResourceMongoRoleDefinition struct {
 	pulumi.CustomResourceState
 

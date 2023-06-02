@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified mobile network dataNetwork.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:DataNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:DataNetwork to guarantee forwards compatibility.
 func LookupDataNetwork(ctx *pulumi.Context, args *LookupDataNetworkArgs, opts ...pulumi.InvokeOption) (*LookupDataNetworkResult, error) {
 	var rv LookupDataNetworkResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getDataNetwork", args, &rv, opts...)

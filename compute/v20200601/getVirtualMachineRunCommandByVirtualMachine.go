@@ -13,6 +13,7 @@ import (
 // The operation to get the run command.
 //
 // Deprecated: Version 2020-06-01 will be removed in v2 of the provider.
+// azure-native:compute/v20200601:VirtualMachineRunCommandByVirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachineRunCommandByVirtualMachine to guarantee forwards compatibility.
 func LookupVirtualMachineRunCommandByVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineRunCommandByVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineRunCommandByVirtualMachineResult, error) {
 	var rv LookupVirtualMachineRunCommandByVirtualMachineResult
 	err := ctx.Invoke("azure-native:compute/v20200601:getVirtualMachineRunCommandByVirtualMachine", args, &rv, opts...)
@@ -75,7 +76,7 @@ func (val *LookupVirtualMachineRunCommandByVirtualMachineResult) Defaults() *Loo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AsyncExecution) {
+	if tmp.AsyncExecution == nil {
 		asyncExecution_ := false
 		tmp.AsyncExecution = &asyncExecution_
 	}

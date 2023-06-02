@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
+//
+// Deprecated: azure-native:storage/v20210801:BlobContainerImmutabilityPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:BlobContainerImmutabilityPolicy to guarantee forwards compatibility.
 type BlobContainerImmutabilityPolicy struct {
 	pulumi.CustomResourceState
 

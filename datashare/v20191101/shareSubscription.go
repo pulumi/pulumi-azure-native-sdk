@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A share subscription data transfer object.
 //
 // Deprecated: Version 2019-11-01 will be removed in v2 of the provider.
+// azure-native:datashare/v20191101:ShareSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ShareSubscription to guarantee forwards compatibility.
 type ShareSubscription struct {
 	pulumi.CustomResourceState
 

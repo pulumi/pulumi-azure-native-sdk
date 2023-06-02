@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves Migration Config
+//
+// Deprecated: azure-native:servicebus/v20211101:MigrationConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:MigrationConfig to guarantee forwards compatibility.
 func LookupMigrationConfig(ctx *pulumi.Context, args *LookupMigrationConfigArgs, opts ...pulumi.InvokeOption) (*LookupMigrationConfigResult, error) {
 	var rv LookupMigrationConfigResult
 	err := ctx.Invoke("azure-native:servicebus/v20211101:getMigrationConfig", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve protection policy with specified name within a resource group.
+//
+// Deprecated: azure-native:network/v20200401:WebApplicationFirewallPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:WebApplicationFirewallPolicy to guarantee forwards compatibility.
 func LookupWebApplicationFirewallPolicy(ctx *pulumi.Context, args *LookupWebApplicationFirewallPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebApplicationFirewallPolicyResult, error) {
 	var rv LookupWebApplicationFirewallPolicyResult
 	err := ctx.Invoke("azure-native:network/v20200401:getWebApplicationFirewallPolicy", args, &rv, opts...)

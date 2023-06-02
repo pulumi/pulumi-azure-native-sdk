@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Shared Private Link Resource
+//
+// Deprecated: azure-native:signalrservice/v20211001:SignalRSharedPrivateLinkResource is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230201:SignalRSharedPrivateLinkResource to guarantee forwards compatibility.
 type SignalRSharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workload classifier operations for a data warehouse
+//
+// Deprecated: azure-native:synapse/v20210501:SqlPoolWorkloadClassifier is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:SqlPoolWorkloadClassifier to guarantee forwards compatibility.
 type SqlPoolWorkloadClassifier struct {
 	pulumi.CustomResourceState
 

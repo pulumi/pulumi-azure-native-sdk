@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subnet in a virtual network resource.
+//
+// Deprecated: azure-native:network/v20191201:Subnet is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200601:Subnet to guarantee forwards compatibility.
 type Subnet struct {
 	pulumi.CustomResourceState
 

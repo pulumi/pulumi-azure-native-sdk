@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the source control configuration of an app.
+//
+// Deprecated: azure-native:web/v20200601:WebAppSourceControlSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppSourceControlSlot to guarantee forwards compatibility.
 func LookupWebAppSourceControlSlot(ctx *pulumi.Context, args *LookupWebAppSourceControlSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSourceControlSlotResult, error) {
 	var rv LookupWebAppSourceControlSlotResult
 	err := ctx.Invoke("azure-native:web/v20200601:getWebAppSourceControlSlot", args, &rv, opts...)

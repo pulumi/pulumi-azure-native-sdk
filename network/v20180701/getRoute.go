@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified route from a route table.
+//
+// Deprecated: azure-native:network/v20180701:Route is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:Route to guarantee forwards compatibility.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
 	var rv LookupRouteResult
 	err := ctx.Invoke("azure-native:network/v20180701:getRoute", args, &rv, opts...)

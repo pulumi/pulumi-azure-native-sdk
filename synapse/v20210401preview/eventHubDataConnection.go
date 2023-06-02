@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an event hub data connection.
+//
+// Deprecated: azure-native:synapse/v20210401preview:EventHubDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:EventHubDataConnection to guarantee forwards compatibility.
 type EventHubDataConnection struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
+//
+// Deprecated: azure-native:peering/v20220601:ConnectionMonitorTest is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:ConnectionMonitorTest to guarantee forwards compatibility.
 func LookupConnectionMonitorTest(ctx *pulumi.Context, args *LookupConnectionMonitorTestArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorTestResult, error) {
 	var rv LookupConnectionMonitorTestResult
 	err := ctx.Invoke("azure-native:peering/v20220601:getConnectionMonitorTest", args, &rv, opts...)

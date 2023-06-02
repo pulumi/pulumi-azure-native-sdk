@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Domain service.
+//
+// Deprecated: azure-native:aad/v20220901:DomainService is being removed in the next major version of this provider. Upgrade to at least azure-native:aad/v20221201:DomainService to guarantee forwards compatibility.
 type DomainService struct {
 	pulumi.CustomResourceState
 
@@ -79,7 +81,7 @@ func NewDomainService(ctx *pulumi.Context,
 	if args.LdapsSettings != nil {
 		args.LdapsSettings = args.LdapsSettings.ToLdapsSettingsPtrOutput().ApplyT(func(v *LdapsSettings) *LdapsSettings { return v.Defaults() }).(LdapsSettingsPtrOutput)
 	}
-	if isZero(args.SyncScope) {
+	if args.SyncScope == nil {
 		args.SyncScope = pulumi.StringPtr("All")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

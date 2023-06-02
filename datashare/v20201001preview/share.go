@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A share data transfer object.
+//
+// Deprecated: azure-native:datashare/v20201001preview:Share is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:Share to guarantee forwards compatibility.
 type Share struct {
 	pulumi.CustomResourceState
 

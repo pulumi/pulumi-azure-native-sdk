@@ -11,6 +11,8 @@ import (
 )
 
 // Get a specific trigger by name.
+//
+// Deprecated: azure-native:databoxedge/v20200901preview:PeriodicTimerEventTrigger is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:PeriodicTimerEventTrigger to guarantee forwards compatibility.
 func LookupPeriodicTimerEventTrigger(ctx *pulumi.Context, args *LookupPeriodicTimerEventTriggerArgs, opts ...pulumi.InvokeOption) (*LookupPeriodicTimerEventTriggerResult, error) {
 	var rv LookupPeriodicTimerEventTriggerResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200901preview:getPeriodicTimerEventTrigger", args, &rv, opts...)

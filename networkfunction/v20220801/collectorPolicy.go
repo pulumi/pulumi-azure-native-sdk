@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Collector policy resource.
+//
+// Deprecated: azure-native:networkfunction/v20220801:CollectorPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:networkfunction/v20221101:CollectorPolicy to guarantee forwards compatibility.
 type CollectorPolicy struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,7 @@ import (
 // Gets a connector in the hub.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
+// azure-native:customerinsights/v20170101:Connector is being removed in the next major version of this provider. Upgrade to at least azure-native:customerinsights/v20170426:Connector to guarantee forwards compatibility.
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	var rv LookupConnectorResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170101:getConnector", args, &rv, opts...)

@@ -13,6 +13,7 @@ import (
 // Display information about a virtual machine scale set.
 //
 // Deprecated: Version 2018-04-01 will be removed in v2 of the provider.
+// azure-native:compute/v20180401:VirtualMachineScaleSet is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachineScaleSet to guarantee forwards compatibility.
 func LookupVirtualMachineScaleSet(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetResult, error) {
 	var rv LookupVirtualMachineScaleSetResult
 	err := ctx.Invoke("azure-native:compute/v20180401:getVirtualMachineScaleSet", args, &rv, opts...)

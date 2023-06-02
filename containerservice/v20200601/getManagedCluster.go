@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the managed cluster with a specified resource group and name.
+//
+// Deprecated: azure-native:containerservice/v20200601:ManagedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20210501:ManagedCluster to guarantee forwards compatibility.
 func LookupManagedCluster(ctx *pulumi.Context, args *LookupManagedClusterArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterResult, error) {
 	var rv LookupManagedClusterResult
 	err := ctx.Invoke("azure-native:containerservice/v20200601:getManagedCluster", args, &rv, opts...)

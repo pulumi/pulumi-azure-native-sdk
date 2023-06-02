@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the workspace.
+//
+// Deprecated: azure-native:machinelearningservices/v20200515preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20220101preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200515preview:getPrivateEndpointConnection", args, &rv, opts...)

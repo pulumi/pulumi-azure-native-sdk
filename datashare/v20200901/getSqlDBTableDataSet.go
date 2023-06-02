@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
+//
+// Deprecated: azure-native:datashare/v20200901:SqlDBTableDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:SqlDBTableDataSet to guarantee forwards compatibility.
 func LookupSqlDBTableDataSet(ctx *pulumi.Context, args *LookupSqlDBTableDataSetArgs, opts ...pulumi.InvokeOption) (*LookupSqlDBTableDataSetResult, error) {
 	var rv LookupSqlDBTableDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getSqlDBTableDataSet", args, &rv, opts...)

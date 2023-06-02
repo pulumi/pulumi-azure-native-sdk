@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,19 +76,19 @@ func NewComponent(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ApplicationType) {
+	if args.ApplicationType == nil {
 		args.ApplicationType = pulumi.String("web")
 	}
-	if isZero(args.FlowType) {
+	if args.FlowType == nil {
 		args.FlowType = pulumi.StringPtr("Bluefield")
 	}
-	if isZero(args.IngestionMode) {
+	if args.IngestionMode == nil {
 		args.IngestionMode = pulumi.StringPtr("ApplicationInsights")
 	}
-	if isZero(args.RequestSource) {
+	if args.RequestSource == nil {
 		args.RequestSource = pulumi.StringPtr("rest")
 	}
-	if isZero(args.RetentionInDays) {
+	if args.RetentionInDays == nil {
 		args.RetentionInDays = pulumi.IntPtr(90)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

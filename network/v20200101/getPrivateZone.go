@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Private DNS zone. Retrieves the zone properties, but not the virtual networks links or the record sets within the zone.
+//
+// Deprecated: azure-native:network/v20200101:PrivateZone is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200601:PrivateZone to guarantee forwards compatibility.
 func LookupPrivateZone(ctx *pulumi.Context, args *LookupPrivateZoneArgs, opts ...pulumi.InvokeOption) (*LookupPrivateZoneResult, error) {
 	var rv LookupPrivateZoneResult
 	err := ctx.Invoke("azure-native:network/v20200101:getPrivateZone", args, &rv, opts...)

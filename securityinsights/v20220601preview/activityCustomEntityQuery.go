@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Activity entity query.
+//
+// Deprecated: azure-native:securityinsights/v20220601preview:ActivityCustomEntityQuery is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:ActivityCustomEntityQuery to guarantee forwards compatibility.
 type ActivityCustomEntityQuery struct {
 	pulumi.CustomResourceState
 

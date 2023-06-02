@@ -11,6 +11,8 @@ import (
 )
 
 // Gets NetworkRuleSet for a Namespace.
+//
+// Deprecated: azure-native:servicebus/v20211101:NamespaceNetworkRuleSet is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:NamespaceNetworkRuleSet to guarantee forwards compatibility.
 func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNetworkRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceNetworkRuleSetResult, error) {
 	var rv LookupNamespaceNetworkRuleSetResult
 	err := ctx.Invoke("azure-native:servicebus/v20211101:getNamespaceNetworkRuleSet", args, &rv, opts...)
@@ -57,7 +59,7 @@ func (val *LookupNamespaceNetworkRuleSetResult) Defaults() *LookupNamespaceNetwo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An ADLS Gen 2 folder data set.
+//
+// Deprecated: azure-native:datashare/v20200901:ADLSGen2FolderDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ADLSGen2FolderDataSet to guarantee forwards compatibility.
 type ADLSGen2FolderDataSet struct {
 	pulumi.CustomResourceState
 

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Virtual Machine run command.
 //
 // Deprecated: Version 2020-06-01 will be removed in v2 of the provider.
+// azure-native:compute/v20200601:VirtualMachineRunCommandByVirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachineRunCommandByVirtualMachine to guarantee forwards compatibility.
 type VirtualMachineRunCommandByVirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -62,7 +63,7 @@ func NewVirtualMachineRunCommandByVirtualMachine(ctx *pulumi.Context,
 	if args.VmName == nil {
 		return nil, errors.New("invalid value for required argument 'VmName'")
 	}
-	if isZero(args.AsyncExecution) {
+	if args.AsyncExecution == nil {
 		args.AsyncExecution = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

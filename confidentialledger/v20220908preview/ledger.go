@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Confidential Ledger. Contains the properties of Confidential Ledger Resource.
+//
+// Deprecated: azure-native:confidentialledger/v20220908preview:Ledger is being removed in the next major version of this provider. Upgrade to at least azure-native:confidentialledger/v20230126preview:Ledger to guarantee forwards compatibility.
 type Ledger struct {
 	pulumi.CustomResourceState
 

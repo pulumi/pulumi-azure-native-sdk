@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
+//
+// Deprecated: azure-native:documentdb/v20211015preview:SqlResourceSqlRoleDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:SqlResourceSqlRoleDefinition to guarantee forwards compatibility.
 func LookupSqlResourceSqlRoleDefinition(ctx *pulumi.Context, args *LookupSqlResourceSqlRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlRoleDefinitionResult, error) {
 	var rv LookupSqlResourceSqlRoleDefinitionResult
 	err := ctx.Invoke("azure-native:documentdb/v20211015preview:getSqlResourceSqlRoleDefinition", args, &rv, opts...)

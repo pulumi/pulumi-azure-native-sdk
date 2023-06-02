@@ -11,6 +11,8 @@ import (
 )
 
 // Get details of the specified capacity pool
+//
+// Deprecated: azure-native:netapp/v20210401:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Pool to guarantee forwards compatibility.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:netapp/v20210401:getPool", args, &rv, opts...)
@@ -69,15 +71,15 @@ func (val *LookupPoolResult) Defaults() *LookupPoolResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CoolAccess) {
+	if tmp.CoolAccess == nil {
 		coolAccess_ := false
 		tmp.CoolAccess = &coolAccess_
 	}
-	if isZero(tmp.EncryptionType) {
+	if tmp.EncryptionType == nil {
 		encryptionType_ := "Single"
 		tmp.EncryptionType = &encryptionType_
 	}
-	if isZero(tmp.QosType) {
+	if tmp.QosType == nil {
 		qosType_ := "Auto"
 		tmp.QosType = &qosType_
 	}

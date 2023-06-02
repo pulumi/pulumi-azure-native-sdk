@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing delivery rule within a rule set.
+//
+// Deprecated: azure-native:cdn/v20210601:Rule is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Rule to guarantee forwards compatibility.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	var rv LookupRuleResult
 	err := ctx.Invoke("azure-native:cdn/v20210601:getRule", args, &rv, opts...)
@@ -62,7 +64,7 @@ func (val *LookupRuleResult) Defaults() *LookupRuleResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MatchProcessingBehavior) {
+	if tmp.MatchProcessingBehavior == nil {
 		matchProcessingBehavior_ := "Continue"
 		tmp.MatchProcessingBehavior = &matchProcessingBehavior_
 	}

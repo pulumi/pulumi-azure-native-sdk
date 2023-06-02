@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The access control record
 //
 // Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
+// azure-native:storsimple/v20161001:AccessControlRecord is being removed in the next major version of this provider. Upgrade to at least azure-native:storsimple/v20170601:AccessControlRecord to guarantee forwards compatibility.
 type AccessControlRecord struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy.
+//
+// Deprecated: azure-native:management/v20201001:HierarchySetting is being removed in the next major version of this provider. Upgrade to at least azure-native:management/v20210401:HierarchySetting to guarantee forwards compatibility.
 func LookupHierarchySetting(ctx *pulumi.Context, args *LookupHierarchySettingArgs, opts ...pulumi.InvokeOption) (*LookupHierarchySettingResult, error) {
 	var rv LookupHierarchySettingResult
 	err := ctx.Invoke("azure-native:management/v20201001:getHierarchySetting", args, &rv, opts...)

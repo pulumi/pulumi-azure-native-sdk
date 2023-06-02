@@ -11,6 +11,8 @@ import (
 )
 
 // Gets properties of a specified share.
+//
+// Deprecated: azure-native:storage/v20210101:FileShare is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:FileShare to guarantee forwards compatibility.
 func LookupFileShare(ctx *pulumi.Context, args *LookupFileShareArgs, opts ...pulumi.InvokeOption) (*LookupFileShareResult, error) {
 	var rv LookupFileShareResult
 	err := ctx.Invoke("azure-native:storage/v20210101:getFileShare", args, &rv, opts...)

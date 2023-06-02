@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provider details.
+//
+// Deprecated: azure-native:recoveryservices/v20220910:ReplicationRecoveryServicesProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationRecoveryServicesProvider to guarantee forwards compatibility.
 type ReplicationRecoveryServicesProvider struct {
 	pulumi.CustomResourceState
 

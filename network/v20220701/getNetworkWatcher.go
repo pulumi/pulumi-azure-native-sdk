@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified network watcher by resource group.
+//
+// Deprecated: azure-native:network/v20220701:NetworkWatcher is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:NetworkWatcher to guarantee forwards compatibility.
 func LookupNetworkWatcher(ctx *pulumi.Context, args *LookupNetworkWatcherArgs, opts ...pulumi.InvokeOption) (*LookupNetworkWatcherResult, error) {
 	var rv LookupNetworkWatcherResult
 	err := ctx.Invoke("azure-native:network/v20220701:getNetworkWatcher", args, &rv, opts...)

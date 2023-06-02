@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a user rule.
+//
+// Deprecated: azure-native:network/v20220201preview:UserRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220401preview:UserRule to guarantee forwards compatibility.
 func LookupUserRule(ctx *pulumi.Context, args *LookupUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleResult, error) {
 	var rv LookupUserRuleResult
 	err := ctx.Invoke("azure-native:network/v20220201preview:getUserRule", args, &rv, opts...)

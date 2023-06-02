@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Redis cache (resource description).
+//
+// Deprecated: azure-native:cache/v20220501:Redis is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20220601:Redis to guarantee forwards compatibility.
 func LookupRedis(ctx *pulumi.Context, args *LookupRedisArgs, opts ...pulumi.InvokeOption) (*LookupRedisResult, error) {
 	var rv LookupRedisResult
 	err := ctx.Invoke("azure-native:cache/v20220501:getRedis", args, &rv, opts...)
@@ -91,11 +93,11 @@ func (val *LookupRedisResult) Defaults() *LookupRedisResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNonSslPort) {
+	if tmp.EnableNonSslPort == nil {
 		enableNonSslPort_ := false
 		tmp.EnableNonSslPort = &enableNonSslPort_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

@@ -11,6 +11,8 @@ import (
 )
 
 // Get the detail of a workspace connection.
+//
+// Deprecated: azure-native:machinelearningservices/v20200901preview:WorkspaceConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:WorkspaceConnection to guarantee forwards compatibility.
 func LookupWorkspaceConnection(ctx *pulumi.Context, args *LookupWorkspaceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceConnectionResult, error) {
 	var rv LookupWorkspaceConnectionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200901preview:getWorkspaceConnection", args, &rv, opts...)

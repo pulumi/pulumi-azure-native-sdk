@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Machine Learning service object wrapped into ARM resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20200501preview:AKSService is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:AKSService to guarantee forwards compatibility.
 type AKSService struct {
 	pulumi.CustomResourceState
 

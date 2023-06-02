@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Source control configuration for an app.
+//
+// Deprecated: azure-native:web/v20210101:WebAppSourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSourceControl to guarantee forwards compatibility.
 type WebAppSourceControl struct {
 	pulumi.CustomResourceState
 

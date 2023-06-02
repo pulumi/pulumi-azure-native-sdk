@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Properties of the table, including Id, resource name, resource type.
+//
+// Deprecated: azure-native:storage/v20210101:Table is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:Table to guarantee forwards compatibility.
 type Table struct {
 	pulumi.CustomResourceState
 

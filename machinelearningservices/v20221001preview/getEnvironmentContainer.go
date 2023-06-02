@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20221001preview:EnvironmentContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:EnvironmentContainer to guarantee forwards compatibility.
 func LookupEnvironmentContainer(ctx *pulumi.Context, args *LookupEnvironmentContainerArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentContainerResult, error) {
 	var rv LookupEnvironmentContainerResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getEnvironmentContainer", args, &rv, opts...)

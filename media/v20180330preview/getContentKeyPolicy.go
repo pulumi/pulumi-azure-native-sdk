@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of a Content Key Policy in the Media Services account
+//
+// Deprecated: azure-native:media/v20180330preview:ContentKeyPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:ContentKeyPolicy to guarantee forwards compatibility.
 func LookupContentKeyPolicy(ctx *pulumi.Context, args *LookupContentKeyPolicyArgs, opts ...pulumi.InvokeOption) (*LookupContentKeyPolicyResult, error) {
 	var rv LookupContentKeyPolicyResult
 	err := ctx.Invoke("azure-native:media/v20180330preview:getContentKeyPolicy", args, &rv, opts...)

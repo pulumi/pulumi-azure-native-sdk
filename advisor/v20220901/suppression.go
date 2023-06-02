@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
+//
+// Deprecated: azure-native:advisor/v20220901:Suppression is being removed in the next major version of this provider. Upgrade to at least azure-native:advisor/v20221001:Suppression to guarantee forwards compatibility.
 type Suppression struct {
 	pulumi.CustomResourceState
 

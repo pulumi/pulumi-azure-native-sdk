@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the Dashboard.
+//
+// Deprecated: azure-native:portal/v20181001preview:Dashboard is being removed in the next major version of this provider. Upgrade to at least azure-native:portal/v20190101preview:Dashboard to guarantee forwards compatibility.
 func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pulumi.InvokeOption) (*LookupDashboardResult, error) {
 	var rv LookupDashboardResult
 	err := ctx.Invoke("azure-native:portal/v20181001preview:getDashboard", args, &rv, opts...)

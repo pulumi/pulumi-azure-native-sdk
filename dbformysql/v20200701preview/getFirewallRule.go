@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a server firewall rule.
+//
+// Deprecated: azure-native:dbformysql/v20200701preview:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20220101:FirewallRule to guarantee forwards compatibility.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	var rv LookupFirewallRuleResult
 	err := ctx.Invoke("azure-native:dbformysql/v20200701preview:getFirewallRule", args, &rv, opts...)

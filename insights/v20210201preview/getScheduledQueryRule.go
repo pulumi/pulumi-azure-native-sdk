@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve an scheduled query rule definition.
+//
+// Deprecated: azure-native:insights/v20210201preview:ScheduledQueryRule is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20220801preview:ScheduledQueryRule to guarantee forwards compatibility.
 func LookupScheduledQueryRule(ctx *pulumi.Context, args *LookupScheduledQueryRuleArgs, opts ...pulumi.InvokeOption) (*LookupScheduledQueryRuleResult, error) {
 	var rv LookupScheduledQueryRuleResult
 	err := ctx.Invoke("azure-native:insights/v20210201preview:getScheduledQueryRule", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an Event Grid data connection.
+//
+// Deprecated: azure-native:kusto/v20190515:EventGridDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20200215:EventGridDataConnection to guarantee forwards compatibility.
 type EventGridDataConnection struct {
 	pulumi.CustomResourceState
 

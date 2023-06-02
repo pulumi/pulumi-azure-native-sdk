@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Shared Private Link Resource managed by the Azure Cognitive Search service.
+//
+// Deprecated: azure-native:search/v20200801preview:SharedPrivateLinkResource is being removed in the next major version of this provider. Upgrade to at least azure-native:search/v20220901:SharedPrivateLinkResource to guarantee forwards compatibility.
 type SharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 

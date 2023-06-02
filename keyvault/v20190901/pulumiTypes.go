@@ -2174,15 +2174,15 @@ func (val *VaultProperties) Defaults() *VaultProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		enableRbacAuthorization_ := false
 		tmp.EnableRbacAuthorization = &enableRbacAuthorization_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}
@@ -2238,13 +2238,13 @@ func (val *VaultPropertiesArgs) Defaults() *VaultPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		tmp.EnableRbacAuthorization = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		tmp.SoftDeleteRetentionInDays = pulumi.IntPtr(90)
 	}
 	return &tmp
@@ -2386,15 +2386,15 @@ func (val *VaultPropertiesResponse) Defaults() *VaultPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableRbacAuthorization) {
+	if tmp.EnableRbacAuthorization == nil {
 		enableRbacAuthorization_ := false
 		tmp.EnableRbacAuthorization = &enableRbacAuthorization_
 	}
-	if isZero(tmp.EnableSoftDelete) {
+	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 90
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}

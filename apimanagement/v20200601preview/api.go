@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Api details.
+//
+// Deprecated: azure-native:apimanagement/v20200601preview:Api is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20201201:Api to guarantee forwards compatibility.
 type Api struct {
 	pulumi.CustomResourceState
 

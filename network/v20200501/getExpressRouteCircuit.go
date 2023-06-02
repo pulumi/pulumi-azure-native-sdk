@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified express route circuit.
+//
+// Deprecated: azure-native:network/v20200501:ExpressRouteCircuit is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ExpressRouteCircuit to guarantee forwards compatibility.
 func LookupExpressRouteCircuit(ctx *pulumi.Context, args *LookupExpressRouteCircuitArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitResult, error) {
 	var rv LookupExpressRouteCircuitResult
 	err := ctx.Invoke("azure-native:network/v20200501:getExpressRouteCircuit", args, &rv, opts...)

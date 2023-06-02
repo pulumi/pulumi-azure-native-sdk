@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the alert rule.
+//
+// Deprecated: azure-native:securityinsights/v20190101preview:ThreatIntelligenceAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:ThreatIntelligenceAlertRule to guarantee forwards compatibility.
 func LookupThreatIntelligenceAlertRule(ctx *pulumi.Context, args *LookupThreatIntelligenceAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupThreatIntelligenceAlertRuleResult, error) {
 	var rv LookupThreatIntelligenceAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getThreatIntelligenceAlertRule", args, &rv, opts...)

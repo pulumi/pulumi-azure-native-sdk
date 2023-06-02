@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of generic ARM proxy resource.
+//
+// Deprecated: azure-native:insights/v20210401:DataCollectionRuleAssociation is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20220601:DataCollectionRuleAssociation to guarantee forwards compatibility.
 type DataCollectionRuleAssociation struct {
 	pulumi.CustomResourceState
 

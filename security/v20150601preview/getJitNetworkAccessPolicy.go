@@ -13,6 +13,7 @@ import (
 // Policies for protecting resources using Just-in-Time access control for the subscription, location
 //
 // Deprecated: Version 2015-06-01-preview will be removed in v2 of the provider.
+// azure-native:security/v20150601preview:JitNetworkAccessPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20200101:JitNetworkAccessPolicy to guarantee forwards compatibility.
 func LookupJitNetworkAccessPolicy(ctx *pulumi.Context, args *LookupJitNetworkAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJitNetworkAccessPolicyResult, error) {
 	var rv LookupJitNetworkAccessPolicyResult
 	err := ctx.Invoke("azure-native:security/v20150601preview:getJitNetworkAccessPolicy", args, &rv, opts...)

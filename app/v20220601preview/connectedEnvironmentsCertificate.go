@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
+//
+// Deprecated: azure-native:app/v20220601preview:ConnectedEnvironmentsCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20221001:ConnectedEnvironmentsCertificate to guarantee forwards compatibility.
 type ConnectedEnvironmentsCertificate struct {
 	pulumi.CustomResourceState
 

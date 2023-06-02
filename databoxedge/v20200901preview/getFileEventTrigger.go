@@ -11,6 +11,8 @@ import (
 )
 
 // Get a specific trigger by name.
+//
+// Deprecated: azure-native:databoxedge/v20200901preview:FileEventTrigger is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:FileEventTrigger to guarantee forwards compatibility.
 func LookupFileEventTrigger(ctx *pulumi.Context, args *LookupFileEventTriggerArgs, opts ...pulumi.InvokeOption) (*LookupFileEventTriggerResult, error) {
 	var rv LookupFileEventTriggerResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200901preview:getFileEventTrigger", args, &rv, opts...)

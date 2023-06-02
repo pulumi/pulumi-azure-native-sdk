@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Kusto cluster principalAssignment.
+//
+// Deprecated: azure-native:kusto/v20191109:ClusterPrincipalAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ClusterPrincipalAssignment to guarantee forwards compatibility.
 func LookupClusterPrincipalAssignment(ctx *pulumi.Context, args *LookupClusterPrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupClusterPrincipalAssignmentResult, error) {
 	var rv LookupClusterPrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:kusto/v20191109:getClusterPrincipalAssignment", args, &rv, opts...)

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NetworkSecurityGroup resource.
 //
 // Deprecated: Version 2017-11-01 will be removed in v2 of the provider.
+// azure-native:network/v20171101:NetworkSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:NetworkSecurityGroup to guarantee forwards compatibility.
 type NetworkSecurityGroup struct {
 	pulumi.CustomResourceState
 

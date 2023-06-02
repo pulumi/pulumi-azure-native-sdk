@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data connector.
+//
+// Deprecated: azure-native:securityinsights/v20230201preview:IoTDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IoTDataConnector to guarantee forwards compatibility.
 func LookupIoTDataConnector(ctx *pulumi.Context, args *LookupIoTDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupIoTDataConnectorResult, error) {
 	var rv LookupIoTDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getIoTDataConnector", args, &rv, opts...)

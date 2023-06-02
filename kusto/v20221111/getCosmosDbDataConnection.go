@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a data connection.
+//
+// Deprecated: azure-native:kusto/v20221111:CosmosDbDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:CosmosDbDataConnection to guarantee forwards compatibility.
 func LookupCosmosDbDataConnection(ctx *pulumi.Context, args *LookupCosmosDbDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupCosmosDbDataConnectionResult, error) {
 	var rv LookupCosmosDbDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20221111:getCosmosDbDataConnection", args, &rv, opts...)

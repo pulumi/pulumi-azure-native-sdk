@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,10 +69,10 @@ func NewVirtualMachineScaleSetVMRunCommand(ctx *pulumi.Context,
 	if args.VmScaleSetName == nil {
 		return nil, errors.New("invalid value for required argument 'VmScaleSetName'")
 	}
-	if isZero(args.AsyncExecution) {
+	if args.AsyncExecution == nil {
 		args.AsyncExecution = pulumi.BoolPtr(false)
 	}
-	if isZero(args.TreatFailureAsDeploymentFailure) {
+	if args.TreatFailureAsDeploymentFailure == nil {
 		args.TreatFailureAsDeploymentFailure = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Geo backup policy for the given database resource.
+//
+// Deprecated: azure-native:sql/v20211101:GeoBackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:GeoBackupPolicy to guarantee forwards compatibility.
 func LookupGeoBackupPolicy(ctx *pulumi.Context, args *LookupGeoBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGeoBackupPolicyResult, error) {
 	var rv LookupGeoBackupPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getGeoBackupPolicy", args, &rv, opts...)

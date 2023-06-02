@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a database.
+//
+// Deprecated: azure-native:kusto/v20220707:ReadOnlyFollowingDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ReadOnlyFollowingDatabase to guarantee forwards compatibility.
 func LookupReadOnlyFollowingDatabase(ctx *pulumi.Context, args *LookupReadOnlyFollowingDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadOnlyFollowingDatabaseResult, error) {
 	var rv LookupReadOnlyFollowingDatabaseResult
 	err := ctx.Invoke("azure-native:kusto/v20220707:getReadOnlyFollowingDatabase", args, &rv, opts...)

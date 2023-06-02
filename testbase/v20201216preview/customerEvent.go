@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Customer Notification Event resource.
 //
 // Deprecated: Version 2020-12-16-preview will be removed in v2 of the provider.
+// azure-native:testbase/v20201216preview:CustomerEvent is being removed in the next major version of this provider. Upgrade to at least azure-native:testbase/v20220401preview:CustomerEvent to guarantee forwards compatibility.
 type CustomerEvent struct {
 	pulumi.CustomResourceState
 

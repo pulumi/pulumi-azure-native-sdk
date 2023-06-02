@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified network profile in a specified resource group.
+//
+// Deprecated: azure-native:network/v20181201:NetworkProfile is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190801:NetworkProfile to guarantee forwards compatibility.
 func LookupNetworkProfile(ctx *pulumi.Context, args *LookupNetworkProfileArgs, opts ...pulumi.InvokeOption) (*LookupNetworkProfileResult, error) {
 	var rv LookupNetworkProfileResult
 	err := ctx.Invoke("azure-native:network/v20181201:getNetworkProfile", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Volume group resource for create
+//
+// Deprecated: azure-native:netapp/v20210801:VolumeGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20211001:VolumeGroup to guarantee forwards compatibility.
 type VolumeGroup struct {
 	pulumi.CustomResourceState
 

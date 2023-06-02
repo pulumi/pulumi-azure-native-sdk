@@ -13,6 +13,7 @@ import (
 // Gets the role assignment in the hub.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
+// azure-native:customerinsights/v20170101:RoleAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:customerinsights/v20170426:RoleAssignment to guarantee forwards compatibility.
 func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentResult, error) {
 	var rv LookupRoleAssignmentResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170101:getRoleAssignment", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified packet core data plane.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:PacketCoreDataPlane is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:PacketCoreDataPlane to guarantee forwards compatibility.
 func LookupPacketCoreDataPlane(ctx *pulumi.Context, args *LookupPacketCoreDataPlaneArgs, opts ...pulumi.InvokeOption) (*LookupPacketCoreDataPlaneResult, error) {
 	var rv LookupPacketCoreDataPlaneResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getPacketCoreDataPlane", args, &rv, opts...)

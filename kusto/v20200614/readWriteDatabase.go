@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a read write database.
+//
+// Deprecated: azure-native:kusto/v20200614:ReadWriteDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ReadWriteDatabase to guarantee forwards compatibility.
 type ReadWriteDatabase struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the certificate identified by certificate name.
+//
+// Deprecated: azure-native:automation/v20200113preview:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Certificate to guarantee forwards compatibility.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getCertificate", args, &rv, opts...)

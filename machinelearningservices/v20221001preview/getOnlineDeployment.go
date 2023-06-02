@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:machinelearningservices/v20221001preview:OnlineDeployment is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:OnlineDeployment to guarantee forwards compatibility.
 func LookupOnlineDeployment(ctx *pulumi.Context, args *LookupOnlineDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupOnlineDeploymentResult, error) {
 	var rv LookupOnlineDeploymentResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getOnlineDeployment", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the logger specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20190101:Logger is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20191201preview:Logger to guarantee forwards compatibility.
 func LookupLogger(ctx *pulumi.Context, args *LookupLoggerArgs, opts ...pulumi.InvokeOption) (*LookupLoggerResult, error) {
 	var rv LookupLoggerResult
 	err := ctx.Invoke("azure-native:apimanagement/v20190101:getLogger", args, &rv, opts...)

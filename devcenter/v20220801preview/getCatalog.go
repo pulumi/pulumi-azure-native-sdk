@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a catalog
+//
+// Deprecated: azure-native:devcenter/v20220801preview:Catalog is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:Catalog to guarantee forwards compatibility.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	var rv LookupCatalogResult
 	err := ctx.Invoke("azure-native:devcenter/v20220801preview:getCatalog", args, &rv, opts...)

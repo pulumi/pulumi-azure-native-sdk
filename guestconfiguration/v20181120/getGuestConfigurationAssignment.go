@@ -13,6 +13,7 @@ import (
 // Get information about a guest configuration assignment
 //
 // Deprecated: Version 2018-11-20 will be removed in v2 of the provider.
+// azure-native:guestconfiguration/v20181120:GuestConfigurationAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:guestconfiguration/v20220125:GuestConfigurationAssignment to guarantee forwards compatibility.
 func LookupGuestConfigurationAssignment(ctx *pulumi.Context, args *LookupGuestConfigurationAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationAssignmentResult, error) {
 	var rv LookupGuestConfigurationAssignmentResult
 	err := ctx.Invoke("azure-native:guestconfiguration/v20181120:getGuestConfigurationAssignment", args, &rv, opts...)

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Settings defined at the Management Group scope.
 //
 // Deprecated: Version 2020-02-01 will be removed in v2 of the provider.
+// azure-native:management/v20200201:HierarchySetting is being removed in the next major version of this provider. Upgrade to at least azure-native:management/v20210401:HierarchySetting to guarantee forwards compatibility.
 type HierarchySetting struct {
 	pulumi.CustomResourceState
 

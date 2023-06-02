@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a record set.
+//
+// Deprecated: azure-native:network/v20180901:PrivateRecordSet is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200601:PrivateRecordSet to guarantee forwards compatibility.
 func LookupPrivateRecordSet(ctx *pulumi.Context, args *LookupPrivateRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupPrivateRecordSetResult, error) {
 	var rv LookupPrivateRecordSetResult
 	err := ctx.Invoke("azure-native:network/v20180901:getPrivateRecordSet", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Implements HybridIdentityMetadata GET method.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20220110preview:HybridIdentityMetadatum is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:HybridIdentityMetadatum to guarantee forwards compatibility.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
 	var rv LookupHybridIdentityMetadatumResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20220110preview:getHybridIdentityMetadatum", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a database.
+//
+// Deprecated: azure-native:kusto/v20220707:ReadWriteDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ReadWriteDatabase to guarantee forwards compatibility.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
 	var rv LookupReadWriteDatabaseResult
 	err := ctx.Invoke("azure-native:kusto/v20220707:getReadWriteDatabase", args, &rv, opts...)

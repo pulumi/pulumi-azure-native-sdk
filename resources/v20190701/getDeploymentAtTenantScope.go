@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a deployment.
+//
+// Deprecated: azure-native:resources/v20190701:DeploymentAtTenantScope is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:DeploymentAtTenantScope to guarantee forwards compatibility.
 func LookupDeploymentAtTenantScope(ctx *pulumi.Context, args *LookupDeploymentAtTenantScopeArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentAtTenantScopeResult, error) {
 	var rv LookupDeploymentAtTenantScopeResult
 	err := ctx.Invoke("azure-native:resources/v20190701:getDeploymentAtTenantScope", args, &rv, opts...)

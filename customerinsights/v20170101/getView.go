@@ -13,6 +13,7 @@ import (
 // Gets a view in the hub.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
+// azure-native:customerinsights/v20170101:View is being removed in the next major version of this provider. Upgrade to at least azure-native:customerinsights/v20170426:View to guarantee forwards compatibility.
 func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.InvokeOption) (*LookupViewResult, error) {
 	var rv LookupViewResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170101:getView", args, &rv, opts...)

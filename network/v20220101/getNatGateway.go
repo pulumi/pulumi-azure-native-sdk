@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified nat gateway in a specified resource group.
+//
+// Deprecated: azure-native:network/v20220101:NatGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:NatGateway to guarantee forwards compatibility.
 func LookupNatGateway(ctx *pulumi.Context, args *LookupNatGatewayArgs, opts ...pulumi.InvokeOption) (*LookupNatGatewayResult, error) {
 	var rv LookupNatGatewayResult
 	err := ctx.Invoke("azure-native:network/v20220101:getNatGateway", args, &rv, opts...)

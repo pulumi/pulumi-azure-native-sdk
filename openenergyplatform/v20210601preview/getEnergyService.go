@@ -11,6 +11,8 @@ import (
 )
 
 // Returns oep resource for a given name.
+//
+// Deprecated: azure-native:openenergyplatform/v20210601preview:EnergyService is being removed in the next major version of this provider. Upgrade to at least azure-native:openenergyplatform/v20220404preview:EnergyService to guarantee forwards compatibility.
 func LookupEnergyService(ctx *pulumi.Context, args *LookupEnergyServiceArgs, opts ...pulumi.InvokeOption) (*LookupEnergyServiceResult, error) {
 	var rv LookupEnergyServiceResult
 	err := ctx.Invoke("azure-native:openenergyplatform/v20210601preview:getEnergyService", args, &rv, opts...)

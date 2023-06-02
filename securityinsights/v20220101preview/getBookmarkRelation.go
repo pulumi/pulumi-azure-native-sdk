@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a bookmark relation.
+//
+// Deprecated: azure-native:securityinsights/v20220101preview:BookmarkRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:BookmarkRelation to guarantee forwards compatibility.
 func LookupBookmarkRelation(ctx *pulumi.Context, args *LookupBookmarkRelationArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkRelationResult, error) {
 	var rv LookupBookmarkRelationResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220101preview:getBookmarkRelation", args, &rv, opts...)

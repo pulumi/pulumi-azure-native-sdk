@@ -13,6 +13,7 @@ import (
 // Gets a pipeline.
 //
 // Deprecated: Version 2017-09-01-preview will be removed in v2 of the provider.
+// azure-native:datafactory/v20170901preview:Pipeline is being removed in the next major version of this provider. Upgrade to at least azure-native:datafactory/v20180601:Pipeline to guarantee forwards compatibility.
 func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulumi.InvokeOption) (*LookupPipelineResult, error) {
 	var rv LookupPipelineResult
 	err := ctx.Invoke("azure-native:datafactory/v20170901preview:getPipeline", args, &rv, opts...)

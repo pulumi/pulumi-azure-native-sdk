@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of a web, mobile, or API app.
+//
+// Deprecated: azure-native:web/v20200901:WebApp is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebApp to guarantee forwards compatibility.
 func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.InvokeOption) (*LookupWebAppResult, error) {
 	var rv LookupWebAppResult
 	err := ctx.Invoke("azure-native:web/v20200901:getWebApp", args, &rv, opts...)
@@ -134,19 +136,19 @@ func (val *LookupWebAppResult) Defaults() *LookupWebAppResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HyperV) {
+	if tmp.HyperV == nil {
 		hyperV_ := false
 		tmp.HyperV = &hyperV_
 	}
-	if isZero(tmp.IsXenon) {
+	if tmp.IsXenon == nil {
 		isXenon_ := false
 		tmp.IsXenon = &isXenon_
 	}
-	if isZero(tmp.Reserved) {
+	if tmp.Reserved == nil {
 		reserved_ := false
 		tmp.Reserved = &reserved_
 	}
-	if isZero(tmp.ScmSiteAlsoStopped) {
+	if tmp.ScmSiteAlsoStopped == nil {
 		scmSiteAlsoStopped_ := false
 		tmp.ScmSiteAlsoStopped = &scmSiteAlsoStopped_
 	}

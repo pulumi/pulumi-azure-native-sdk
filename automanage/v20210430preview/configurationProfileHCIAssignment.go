@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
+//
+// Deprecated: azure-native:automanage/v20210430preview:ConfigurationProfileHCIAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:automanage/v20220504:ConfigurationProfileHCIAssignment to guarantee forwards compatibility.
 type ConfigurationProfileHCIAssignment struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,7 @@ import (
 // Gets information about the specified relationship.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
+// azure-native:customerinsights/v20170101:Relationship is being removed in the next major version of this provider. Upgrade to at least azure-native:customerinsights/v20170426:Relationship to guarantee forwards compatibility.
 func LookupRelationship(ctx *pulumi.Context, args *LookupRelationshipArgs, opts ...pulumi.InvokeOption) (*LookupRelationshipResult, error) {
 	var rv LookupRelationshipResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170101:getRelationship", args, &rv, opts...)

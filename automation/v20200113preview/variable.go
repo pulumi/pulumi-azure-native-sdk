@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the variable.
+//
+// Deprecated: azure-native:automation/v20200113preview:Variable is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Variable to guarantee forwards compatibility.
 type Variable struct {
 	pulumi.CustomResourceState
 

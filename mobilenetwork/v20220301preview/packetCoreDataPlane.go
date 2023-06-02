@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Packet core data plane resource.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:PacketCoreDataPlane is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:PacketCoreDataPlane to guarantee forwards compatibility.
 type PacketCoreDataPlane struct {
 	pulumi.CustomResourceState
 

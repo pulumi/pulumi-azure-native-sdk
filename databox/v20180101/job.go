@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Job Resource.
 //
 // Deprecated: Version 2018-01-01 will be removed in v2 of the provider.
+// azure-native:databox/v20180101:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:databox/v20190901:Job to guarantee forwards compatibility.
 type Job struct {
 	pulumi.CustomResourceState
 

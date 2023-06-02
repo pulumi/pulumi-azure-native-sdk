@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents order item contract
 //
 // Deprecated: Version 2020-12-01-preview will be removed in v2 of the provider.
+// azure-native:edgeorder/v20201201preview:OrderItemByName is being removed in the next major version of this provider. Upgrade to at least azure-native:edgeorder/v20211201:OrderItemByName to guarantee forwards compatibility.
 type OrderItemByName struct {
 	pulumi.CustomResourceState
 

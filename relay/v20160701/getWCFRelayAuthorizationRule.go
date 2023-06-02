@@ -13,6 +13,7 @@ import (
 // Get authorizationRule for a WCFRelays by name.
 //
 // Deprecated: Version 2016-07-01 will be removed in v2 of the provider.
+// azure-native:relay/v20160701:WCFRelayAuthorizationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:relay/v20170401:WCFRelayAuthorizationRule to guarantee forwards compatibility.
 func LookupWCFRelayAuthorizationRule(ctx *pulumi.Context, args *LookupWCFRelayAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupWCFRelayAuthorizationRuleResult, error) {
 	var rv LookupWCFRelayAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:relay/v20160701:getWCFRelayAuthorizationRule", args, &rv, opts...)

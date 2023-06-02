@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of an Azure Site Recovery fabric.
+//
+// Deprecated: azure-native:recoveryservices/v20220101:ReplicationFabric is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationFabric to guarantee forwards compatibility.
 func LookupReplicationFabric(ctx *pulumi.Context, args *LookupReplicationFabricArgs, opts ...pulumi.InvokeOption) (*LookupReplicationFabricResult, error) {
 	var rv LookupReplicationFabricResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20220101:getReplicationFabric", args, &rv, opts...)

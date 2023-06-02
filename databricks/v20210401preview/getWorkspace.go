@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the workspace.
+//
+// Deprecated: azure-native:databricks/v20210401preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:databricks/v20230201:Workspace to guarantee forwards compatibility.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:databricks/v20210401preview:getWorkspace", args, &rv, opts...)

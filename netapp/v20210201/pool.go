@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Capacity pool resource
+//
+// Deprecated: azure-native:netapp/v20210201:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Pool to guarantee forwards compatibility.
 type Pool struct {
 	pulumi.CustomResourceState
 
@@ -55,10 +57,10 @@ func NewPool(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
-	if isZero(args.QosType) {
+	if args.QosType == nil {
 		args.QosType = pulumi.StringPtr("Auto")
 	}
-	if isZero(args.ServiceLevel) {
+	if args.ServiceLevel == nil {
 		args.ServiceLevel = pulumi.String("Premium")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

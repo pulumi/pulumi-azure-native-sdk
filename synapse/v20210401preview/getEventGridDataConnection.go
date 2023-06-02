@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a data connection.
+//
+// Deprecated: azure-native:synapse/v20210401preview:EventGridDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:EventGridDataConnection to guarantee forwards compatibility.
 func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventGridDataConnectionResult, error) {
 	var rv LookupEventGridDataConnectionResult
 	err := ctx.Invoke("azure-native:synapse/v20210401preview:getEventGridDataConnection", args, &rv, opts...)

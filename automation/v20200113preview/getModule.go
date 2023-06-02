@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the module identified by module name.
+//
+// Deprecated: azure-native:automation/v20200113preview:Module is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Module to guarantee forwards compatibility.
 func LookupModule(ctx *pulumi.Context, args *LookupModuleArgs, opts ...pulumi.InvokeOption) (*LookupModuleResult, error) {
 	var rv LookupModuleResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getModule", args, &rv, opts...)

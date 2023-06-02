@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Bastion Host resource.
+//
+// Deprecated: azure-native:network/v20220101:BastionHost is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:BastionHost to guarantee forwards compatibility.
 type BastionHost struct {
 	pulumi.CustomResourceState
 
@@ -57,19 +59,19 @@ func NewBastionHost(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.DisableCopyPaste) {
+	if args.DisableCopyPaste == nil {
 		args.DisableCopyPaste = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableFileCopy) {
+	if args.EnableFileCopy == nil {
 		args.EnableFileCopy = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableIpConnect) {
+	if args.EnableIpConnect == nil {
 		args.EnableIpConnect = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableShareableLink) {
+	if args.EnableShareableLink == nil {
 		args.EnableShareableLink = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableTunneling) {
+	if args.EnableTunneling == nil {
 		args.EnableTunneling = pulumi.BoolPtr(false)
 	}
 	if args.Sku != nil {

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an availability group listener.
+//
+// Deprecated: azure-native:sqlvirtualmachine/v20211101preview:AvailabilityGroupListener is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20220801preview:AvailabilityGroupListener to guarantee forwards compatibility.
 func LookupAvailabilityGroupListener(ctx *pulumi.Context, args *LookupAvailabilityGroupListenerArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilityGroupListenerResult, error) {
 	var rv LookupAvailabilityGroupListenerResult
 	err := ctx.Invoke("azure-native:sqlvirtualmachine/v20211101preview:getAvailabilityGroupListener", args, &rv, opts...)

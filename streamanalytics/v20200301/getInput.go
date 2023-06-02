@@ -11,6 +11,8 @@ import (
 )
 
 // Gets details about the specified input.
+//
+// Deprecated: azure-native:streamanalytics/v20200301:Input is being removed in the next major version of this provider. Upgrade to at least azure-native:streamanalytics/v20211001preview:Input to guarantee forwards compatibility.
 func LookupInput(ctx *pulumi.Context, args *LookupInputArgs, opts ...pulumi.InvokeOption) (*LookupInputResult, error) {
 	var rv LookupInputResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20200301:getInput", args, &rv, opts...)

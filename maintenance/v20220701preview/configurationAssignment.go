@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration Assignment
+//
+// Deprecated: azure-native:maintenance/v20220701preview:ConfigurationAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:maintenance/v20221101preview:ConfigurationAssignment to guarantee forwards compatibility.
 type ConfigurationAssignment struct {
 	pulumi.CustomResourceState
 

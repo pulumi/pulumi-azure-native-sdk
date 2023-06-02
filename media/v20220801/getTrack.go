@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of a Track in the Asset
+//
+// Deprecated: azure-native:media/v20220801:Track is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:Track to guarantee forwards compatibility.
 func LookupTrack(ctx *pulumi.Context, args *LookupTrackArgs, opts ...pulumi.InvokeOption) (*LookupTrackResult, error) {
 	var rv LookupTrackResult
 	err := ctx.Invoke("azure-native:media/v20220801:getTrack", args, &rv, opts...)

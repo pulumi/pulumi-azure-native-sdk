@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service by name.
+//
+// Deprecated: azure-native:machinelearningservices/v20200501preview:EndpointVariant is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:EndpointVariant to guarantee forwards compatibility.
 func LookupEndpointVariant(ctx *pulumi.Context, args *LookupEndpointVariantArgs, opts ...pulumi.InvokeOption) (*LookupEndpointVariantResult, error) {
 	var rv LookupEndpointVariantResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200501preview:getEndpointVariant", args, &rv, opts...)

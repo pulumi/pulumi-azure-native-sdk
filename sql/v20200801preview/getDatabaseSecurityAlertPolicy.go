@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a database's security alert policy.
+//
+// Deprecated: azure-native:sql/v20200801preview:DatabaseSecurityAlertPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:DatabaseSecurityAlertPolicy to guarantee forwards compatibility.
 func LookupDatabaseSecurityAlertPolicy(ctx *pulumi.Context, args *LookupDatabaseSecurityAlertPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseSecurityAlertPolicyResult, error) {
 	var rv LookupDatabaseSecurityAlertPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20200801preview:getDatabaseSecurityAlertPolicy", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve protection policy with specified name within a resource group.
+//
+// Deprecated: azure-native:network/v20190301:Policy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210601:Policy to guarantee forwards compatibility.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	var rv LookupPolicyResult
 	err := ctx.Invoke("azure-native:network/v20190301:getPolicy", args, &rv, opts...)

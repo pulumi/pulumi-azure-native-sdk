@@ -11,6 +11,8 @@ import (
 )
 
 // Get an App Service plan.
+//
+// Deprecated: azure-native:web/v20180201:AppServicePlan is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:AppServicePlan to guarantee forwards compatibility.
 func LookupAppServicePlan(ctx *pulumi.Context, args *LookupAppServicePlanArgs, opts ...pulumi.InvokeOption) (*LookupAppServicePlanResult, error) {
 	var rv LookupAppServicePlanResult
 	err := ctx.Invoke("azure-native:web/v20180201:getAppServicePlan", args, &rv, opts...)
@@ -90,19 +92,19 @@ func (val *LookupAppServicePlanResult) Defaults() *LookupAppServicePlanResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HyperV) {
+	if tmp.HyperV == nil {
 		hyperV_ := false
 		tmp.HyperV = &hyperV_
 	}
-	if isZero(tmp.IsXenon) {
+	if tmp.IsXenon == nil {
 		isXenon_ := false
 		tmp.IsXenon = &isXenon_
 	}
-	if isZero(tmp.PerSiteScaling) {
+	if tmp.PerSiteScaling == nil {
 		perSiteScaling_ := false
 		tmp.PerSiteScaling = &perSiteScaling_
 	}
-	if isZero(tmp.Reserved) {
+	if tmp.Reserved == nil {
 		reserved_ := false
 		tmp.Reserved = &reserved_
 	}

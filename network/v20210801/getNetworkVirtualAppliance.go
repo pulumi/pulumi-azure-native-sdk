@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Network Virtual Appliance.
+//
+// Deprecated: azure-native:network/v20210801:NetworkVirtualAppliance is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:NetworkVirtualAppliance to guarantee forwards compatibility.
 func LookupNetworkVirtualAppliance(ctx *pulumi.Context, args *LookupNetworkVirtualApplianceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkVirtualApplianceResult, error) {
 	var rv LookupNetworkVirtualApplianceResult
 	err := ctx.Invoke("azure-native:network/v20210801:getNetworkVirtualAppliance", args, &rv, opts...)

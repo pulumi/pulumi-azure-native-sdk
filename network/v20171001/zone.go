@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a DNS zone.
 //
 // Deprecated: Version 2017-10-01 will be removed in v2 of the provider.
+// azure-native:network/v20171001:Zone is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20180501:Zone to guarantee forwards compatibility.
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -49,7 +50,7 @@ func NewZone(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ZoneType) {
+	if args.ZoneType == nil {
 		args.ZoneType = ZoneType("Public")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

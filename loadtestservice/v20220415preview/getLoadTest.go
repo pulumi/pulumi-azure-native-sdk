@@ -11,6 +11,8 @@ import (
 )
 
 // Get a LoadTest resource.
+//
+// Deprecated: azure-native:loadtestservice/v20220415preview:LoadTest is being removed in the next major version of this provider. Upgrade to at least azure-native:loadtestservice/v20221201:LoadTest to guarantee forwards compatibility.
 func LookupLoadTest(ctx *pulumi.Context, args *LookupLoadTestArgs, opts ...pulumi.InvokeOption) (*LookupLoadTestResult, error) {
 	var rv LookupLoadTestResult
 	err := ctx.Invoke("azure-native:loadtestservice/v20220415preview:getLoadTest", args, &rv, opts...)

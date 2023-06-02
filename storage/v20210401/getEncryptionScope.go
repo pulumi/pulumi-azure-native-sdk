@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the properties for the specified encryption scope.
+//
+// Deprecated: azure-native:storage/v20210401:EncryptionScope is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:EncryptionScope to guarantee forwards compatibility.
 func LookupEncryptionScope(ctx *pulumi.Context, args *LookupEncryptionScopeArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionScopeResult, error) {
 	var rv LookupEncryptionScopeResult
 	err := ctx.Invoke("azure-native:storage/v20210401:getEncryptionScope", args, &rv, opts...)

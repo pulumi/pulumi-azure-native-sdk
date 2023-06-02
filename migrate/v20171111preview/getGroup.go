@@ -13,6 +13,7 @@ import (
 // Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
 //
 // Deprecated: Version 2017-11-11-preview will be removed in v2 of the provider.
+// azure-native:migrate/v20171111preview:Group is being removed in the next major version of this provider. Upgrade to at least azure-native:migrate/v20180202:Group to guarantee forwards compatibility.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	var rv LookupGroupResult
 	err := ctx.Invoke("azure-native:migrate/v20171111preview:getGroup", args, &rv, opts...)

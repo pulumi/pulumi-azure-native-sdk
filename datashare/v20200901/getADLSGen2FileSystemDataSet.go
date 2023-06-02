@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
+//
+// Deprecated: azure-native:datashare/v20200901:ADLSGen2FileSystemDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ADLSGen2FileSystemDataSet to guarantee forwards compatibility.
 func LookupADLSGen2FileSystemDataSet(ctx *pulumi.Context, args *LookupADLSGen2FileSystemDataSetArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2FileSystemDataSetResult, error) {
 	var rv LookupADLSGen2FileSystemDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getADLSGen2FileSystemDataSet", args, &rv, opts...)

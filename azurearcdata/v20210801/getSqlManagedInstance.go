@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves a SQL Managed Instance resource
+//
+// Deprecated: azure-native:azurearcdata/v20210801:SqlManagedInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20220615preview:SqlManagedInstance to guarantee forwards compatibility.
 func LookupSqlManagedInstance(ctx *pulumi.Context, args *LookupSqlManagedInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSqlManagedInstanceResult, error) {
 	var rv LookupSqlManagedInstanceResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20210801:getSqlManagedInstance", args, &rv, opts...)

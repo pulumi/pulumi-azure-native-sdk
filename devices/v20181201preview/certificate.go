@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The X509 Certificate.
 //
 // Deprecated: Version 2018-12-01-preview will be removed in v2 of the provider.
+// azure-native:devices/v20181201preview:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20200401:Certificate to guarantee forwards compatibility.
 type Certificate struct {
 	pulumi.CustomResourceState
 

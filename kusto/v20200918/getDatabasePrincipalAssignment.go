@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Kusto cluster database principalAssignment.
+//
+// Deprecated: azure-native:kusto/v20200918:DatabasePrincipalAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:DatabasePrincipalAssignment to guarantee forwards compatibility.
 func LookupDatabasePrincipalAssignment(ctx *pulumi.Context, args *LookupDatabasePrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupDatabasePrincipalAssignmentResult, error) {
 	var rv LookupDatabasePrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:kusto/v20200918:getDatabasePrincipalAssignment", args, &rv, opts...)

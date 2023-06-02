@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
+//
+// Deprecated: azure-native:virtualmachineimages/v20211001:VirtualMachineImageTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:virtualmachineimages/v20220701:VirtualMachineImageTemplate to guarantee forwards compatibility.
 type VirtualMachineImageTemplate struct {
 	pulumi.CustomResourceState
 
@@ -64,7 +66,7 @@ func NewVirtualMachineImageTemplate(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
-	if isZero(args.BuildTimeoutInMinutes) {
+	if args.BuildTimeoutInMinutes == nil {
 		args.BuildTimeoutInMinutes = pulumi.IntPtr(0)
 	}
 	if args.VmProfile != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a namespace authorization rule.
+//
+// Deprecated: azure-native:servicebus/v20210601preview:TopicAuthorizationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20220101preview:TopicAuthorizationRule to guarantee forwards compatibility.
 type TopicAuthorizationRule struct {
 	pulumi.CustomResourceState
 

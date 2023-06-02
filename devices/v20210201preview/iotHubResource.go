@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the IoT hub.
+//
+// Deprecated: azure-native:devices/v20210201preview:IotHubResource is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20220430preview:IotHubResource to guarantee forwards compatibility.
 type IotHubResource struct {
 	pulumi.CustomResourceState
 

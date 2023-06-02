@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A single Redis item in List or Get Operation.
+//
+// Deprecated: azure-native:cache/v20201201:Redis is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20220601:Redis to guarantee forwards compatibility.
 type Redis struct {
 	pulumi.CustomResourceState
 
@@ -80,10 +82,10 @@ func NewRedis(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.EnableNonSslPort) {
+	if args.EnableNonSslPort == nil {
 		args.EnableNonSslPort = pulumi.BoolPtr(false)
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -13,6 +13,7 @@ import (
 // Get service runner.
 //
 // Deprecated: Version 2016-05-15 will be removed in v2 of the provider.
+// azure-native:devtestlab/v20160515:ServiceRunner is being removed in the next major version of this provider. Upgrade to at least azure-native:devtestlab/v20180915:ServiceRunner to guarantee forwards compatibility.
 func LookupServiceRunner(ctx *pulumi.Context, args *LookupServiceRunnerArgs, opts ...pulumi.InvokeOption) (*LookupServiceRunnerResult, error) {
 	var rv LookupServiceRunnerResult
 	err := ctx.Invoke("azure-native:devtestlab/v20160515:getServiceRunner", args, &rv, opts...)

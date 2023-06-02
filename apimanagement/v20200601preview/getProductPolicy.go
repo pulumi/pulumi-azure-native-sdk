@@ -11,6 +11,8 @@ import (
 )
 
 // Get the policy configuration at the Product level.
+//
+// Deprecated: azure-native:apimanagement/v20200601preview:ProductPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ProductPolicy to guarantee forwards compatibility.
 func LookupProductPolicy(ctx *pulumi.Context, args *LookupProductPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProductPolicyResult, error) {
 	var rv LookupProductPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:getProductPolicy", args, &rv, opts...)
@@ -53,7 +55,7 @@ func (val *LookupProductPolicyResult) Defaults() *LookupProductPolicyResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Format) {
+	if tmp.Format == nil {
 		format_ := "xml"
 		tmp.Format = &format_
 	}

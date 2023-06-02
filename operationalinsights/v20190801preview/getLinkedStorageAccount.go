@@ -11,6 +11,8 @@ import (
 )
 
 // Gets all linked storage account of a specific data source type associated with the specified workspace.
+//
+// Deprecated: azure-native:operationalinsights/v20190801preview:LinkedStorageAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:LinkedStorageAccount to guarantee forwards compatibility.
 func LookupLinkedStorageAccount(ctx *pulumi.Context, args *LookupLinkedStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupLinkedStorageAccountResult, error) {
 	var rv LookupLinkedStorageAccountResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20190801preview:getLinkedStorageAccount", args, &rv, opts...)

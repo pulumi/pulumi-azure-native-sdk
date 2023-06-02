@@ -13,6 +13,7 @@ import (
 // Get the metadata of a service instance.
 //
 // Deprecated: Version 2019-09-16 will be removed in v2 of the provider.
+// azure-native:healthcareapis/v20190916:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20200315:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20190916:getService", args, &rv, opts...)

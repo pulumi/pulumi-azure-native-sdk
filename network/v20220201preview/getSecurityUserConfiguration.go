@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves a network manager security user configuration.
+//
+// Deprecated: azure-native:network/v20220201preview:SecurityUserConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220401preview:SecurityUserConfiguration to guarantee forwards compatibility.
 func LookupSecurityUserConfiguration(ctx *pulumi.Context, args *LookupSecurityUserConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSecurityUserConfigurationResult, error) {
 	var rv LookupSecurityUserConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20220201preview:getSecurityUserConfiguration", args, &rv, opts...)

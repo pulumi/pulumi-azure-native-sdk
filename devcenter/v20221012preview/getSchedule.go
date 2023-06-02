@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a schedule resource.
+//
+// Deprecated: azure-native:devcenter/v20221012preview:Schedule is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:Schedule to guarantee forwards compatibility.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:devcenter/v20221012preview:getSchedule", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // User of a lab that can register for and use virtual machines within the lab.
+//
+// Deprecated: azure-native:labservices/v20211115preview:User is being removed in the next major version of this provider. Upgrade to at least azure-native:labservices/v20220801:User to guarantee forwards compatibility.
 type User struct {
 	pulumi.CustomResourceState
 

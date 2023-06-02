@@ -11,6 +11,8 @@ import (
 )
 
 // Get a specific private endpoint connection under a topic, domain, or partner namespace.
+//
+// Deprecated: azure-native:eventgrid/v20210601preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20210601preview:getPrivateEndpointConnection", args, &rv, opts...)

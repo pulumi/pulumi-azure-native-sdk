@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the configuration type.
+//
+// Deprecated: azure-native:automation/v20151031:DscConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:DscConfiguration to guarantee forwards compatibility.
 type DscConfiguration struct {
 	pulumi.CustomResourceState
 

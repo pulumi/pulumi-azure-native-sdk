@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the service.
+//
+// Deprecated: azure-native:healthcareapis/v20221001preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

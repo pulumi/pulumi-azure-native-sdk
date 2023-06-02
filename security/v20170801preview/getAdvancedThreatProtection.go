@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the Advanced Threat Protection settings for the specified resource.
+//
+// Deprecated: azure-native:security/v20170801preview:AdvancedThreatProtection is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20190101:AdvancedThreatProtection to guarantee forwards compatibility.
 func LookupAdvancedThreatProtection(ctx *pulumi.Context, args *LookupAdvancedThreatProtectionArgs, opts ...pulumi.InvokeOption) (*LookupAdvancedThreatProtectionResult, error) {
 	var rv LookupAdvancedThreatProtectionResult
 	err := ctx.Invoke("azure-native:security/v20170801preview:getAdvancedThreatProtection", args, &rv, opts...)

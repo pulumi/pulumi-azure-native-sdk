@@ -13,6 +13,7 @@ import (
 // Gets an order item.
 //
 // Deprecated: Version 2020-12-01-preview will be removed in v2 of the provider.
+// azure-native:edgeorder/v20201201preview:OrderItemByName is being removed in the next major version of this provider. Upgrade to at least azure-native:edgeorder/v20211201:OrderItemByName to guarantee forwards compatibility.
 func LookupOrderItemByName(ctx *pulumi.Context, args *LookupOrderItemByNameArgs, opts ...pulumi.InvokeOption) (*LookupOrderItemByNameResult, error) {
 	var rv LookupOrderItemByNameResult
 	err := ctx.Invoke("azure-native:edgeorder/v20201201preview:getOrderItemByName", args, &rv, opts...)

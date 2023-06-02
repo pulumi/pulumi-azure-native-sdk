@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Event Subscription
+//
+// Deprecated: azure-native:eventgrid/v20211015preview:EventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:EventSubscription to guarantee forwards compatibility.
 type EventSubscription struct {
 	pulumi.CustomResourceState
 
@@ -59,7 +61,7 @@ func NewEventSubscription(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
-	if isZero(args.EventDeliverySchema) {
+	if args.EventDeliverySchema == nil {
 		args.EventDeliverySchema = pulumi.StringPtr("EventGridSchema")
 	}
 	if args.Filter != nil {

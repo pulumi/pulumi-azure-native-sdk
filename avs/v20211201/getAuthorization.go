@@ -11,6 +11,8 @@ import (
 )
 
 // ExpressRoute Circuit Authorization
+//
+// Deprecated: azure-native:avs/v20211201:Authorization is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:Authorization to guarantee forwards compatibility.
 func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationResult, error) {
 	var rv LookupAuthorizationResult
 	err := ctx.Invoke("azure-native:avs/v20211201:getAuthorization", args, &rv, opts...)

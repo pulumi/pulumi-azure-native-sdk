@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing registered ASN with the specified name under the given subscription, resource group and peering.
+//
+// Deprecated: azure-native:peering/v20210601:RegisteredAsn is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:RegisteredAsn to guarantee forwards compatibility.
 func LookupRegisteredAsn(ctx *pulumi.Context, args *LookupRegisteredAsnArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredAsnResult, error) {
 	var rv LookupRegisteredAsnResult
 	err := ctx.Invoke("azure-native:peering/v20210601:getRegisteredAsn", args, &rv, opts...)

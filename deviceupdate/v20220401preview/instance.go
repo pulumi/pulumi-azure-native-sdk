@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Device Update instance details.
+//
+// Deprecated: azure-native:deviceupdate/v20220401preview:Instance is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20221201preview:Instance to guarantee forwards compatibility.
 type Instance struct {
 	pulumi.CustomResourceState
 

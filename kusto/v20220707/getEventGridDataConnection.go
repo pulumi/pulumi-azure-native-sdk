@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a data connection.
+//
+// Deprecated: azure-native:kusto/v20220707:EventGridDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:EventGridDataConnection to guarantee forwards compatibility.
 func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventGridDataConnectionResult, error) {
 	var rv LookupEventGridDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20220707:getEventGridDataConnection", args, &rv, opts...)
@@ -78,7 +80,7 @@ func (val *LookupEventGridDataConnectionResult) Defaults() *LookupEventGridDataC
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DatabaseRouting) {
+	if tmp.DatabaseRouting == nil {
 		databaseRouting_ := "Single"
 		tmp.DatabaseRouting = &databaseRouting_
 	}

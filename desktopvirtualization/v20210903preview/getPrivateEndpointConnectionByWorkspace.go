@@ -11,6 +11,8 @@ import (
 )
 
 // Get a private endpoint connection.
+//
+// Deprecated: azure-native:desktopvirtualization/v20210903preview:PrivateEndpointConnectionByWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:PrivateEndpointConnectionByWorkspace to guarantee forwards compatibility.
 func LookupPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByWorkspaceResult, error) {
 	var rv LookupPrivateEndpointConnectionByWorkspaceResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20210903preview:getPrivateEndpointConnectionByWorkspace", args, &rv, opts...)

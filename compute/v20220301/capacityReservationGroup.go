@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the capacity reservation group that the capacity reservations should be assigned to. <br><br> Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
+//
+// Deprecated: azure-native:compute/v20220301:CapacityReservationGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:CapacityReservationGroup to guarantee forwards compatibility.
 type CapacityReservationGroup struct {
 	pulumi.CustomResourceState
 

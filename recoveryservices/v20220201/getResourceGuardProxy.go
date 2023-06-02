@@ -11,6 +11,8 @@ import (
 )
 
 // Returns ResourceGuardProxy under vault and with the name referenced in request
+//
+// Deprecated: azure-native:recoveryservices/v20220201:ResourceGuardProxy is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ResourceGuardProxy to guarantee forwards compatibility.
 func LookupResourceGuardProxy(ctx *pulumi.Context, args *LookupResourceGuardProxyArgs, opts ...pulumi.InvokeOption) (*LookupResourceGuardProxyResult, error) {
 	var rv LookupResourceGuardProxyResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20220201:getResourceGuardProxy", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a Configuration.
+//
+// Deprecated: azure-native:dbformysql/v20211201preview:Configuration is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20220101:Configuration to guarantee forwards compatibility.
 type Configuration struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single item in List or Get Alias(Disaster Recovery configuration) operation
+//
+// Deprecated: azure-native:servicebus/v20210101preview:DisasterRecoveryConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:DisasterRecoveryConfig to guarantee forwards compatibility.
 type DisasterRecoveryConfig struct {
 	pulumi.CustomResourceState
 

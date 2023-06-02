@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
+//
+// Deprecated: azure-native:servicefabric/v20210701preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20230201preview:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:servicefabric/v20210701preview:getService", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response for iSCSI Target requests.
+//
+// Deprecated: azure-native:storagepool/v20210401preview:IscsiTarget is being removed in the next major version of this provider. Upgrade to at least azure-native:storagepool/v20210801:IscsiTarget to guarantee forwards compatibility.
 type IscsiTarget struct {
 	pulumi.CustomResourceState
 

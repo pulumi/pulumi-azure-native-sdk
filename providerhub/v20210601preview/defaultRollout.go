@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Default rollout definition.
+//
+// Deprecated: azure-native:providerhub/v20210601preview:DefaultRollout is being removed in the next major version of this provider. Upgrade to at least azure-native:providerhub/v20210901preview:DefaultRollout to guarantee forwards compatibility.
 type DefaultRollout struct {
 	pulumi.CustomResourceState
 

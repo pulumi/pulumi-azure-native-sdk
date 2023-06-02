@@ -13,6 +13,7 @@ import (
 // Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
 //
 // Deprecated: Version 2016-03-19 will be removed in v2 of the provider.
+// azure-native:documentdb/v20160319:DatabaseAccountSqlDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20160331:DatabaseAccountSqlDatabase to guarantee forwards compatibility.
 func LookupDatabaseAccountSqlDatabase(ctx *pulumi.Context, args *LookupDatabaseAccountSqlDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAccountSqlDatabaseResult, error) {
 	var rv LookupDatabaseAccountSqlDatabaseResult
 	err := ctx.Invoke("azure-native:documentdb/v20160319:getDatabaseAccountSqlDatabase", args, &rv, opts...)

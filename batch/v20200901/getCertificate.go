@@ -13,6 +13,7 @@ import (
 // Gets information about the specified certificate.
 //
 // Deprecated: Version 2020-09-01 will be removed in v2 of the provider.
+// azure-native:batch/v20200901:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20220601:Certificate to guarantee forwards compatibility.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:batch/v20200901:getCertificate", args, &rv, opts...)

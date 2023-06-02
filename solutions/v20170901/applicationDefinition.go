@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about managed application definition.
 //
 // Deprecated: Version 2017-09-01 will be removed in v2 of the provider.
+// azure-native:solutions/v20170901:ApplicationDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20171201:ApplicationDefinition to guarantee forwards compatibility.
 type ApplicationDefinition struct {
 	pulumi.CustomResourceState
 

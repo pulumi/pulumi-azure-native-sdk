@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Tag Inheritance Setting definition.
+//
+// Deprecated: azure-native:costmanagement/v20221001preview:TagInheritanceSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221005preview:TagInheritanceSetting to guarantee forwards compatibility.
 type TagInheritanceSetting struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL DB table data set.
+//
+// Deprecated: azure-native:datashare/v20181101preview:SqlDBTableDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:SqlDBTableDataSet to guarantee forwards compatibility.
 type SqlDBTableDataSet struct {
 	pulumi.CustomResourceState
 

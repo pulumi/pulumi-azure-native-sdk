@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a definition for a Developer Machine.
+//
+// Deprecated: azure-native:devcenter/v20220801preview:DevBoxDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:DevBoxDefinition to guarantee forwards compatibility.
 type DevBoxDefinition struct {
 	pulumi.CustomResourceState
 

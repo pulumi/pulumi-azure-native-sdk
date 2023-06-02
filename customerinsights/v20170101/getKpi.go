@@ -13,6 +13,7 @@ import (
 // Gets a KPI in the hub.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
+// azure-native:customerinsights/v20170101:Kpi is being removed in the next major version of this provider. Upgrade to at least azure-native:customerinsights/v20170426:Kpi to guarantee forwards compatibility.
 func LookupKpi(ctx *pulumi.Context, args *LookupKpiArgs, opts ...pulumi.InvokeOption) (*LookupKpiResult, error) {
 	var rv LookupKpiResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170101:getKpi", args, &rv, opts...)

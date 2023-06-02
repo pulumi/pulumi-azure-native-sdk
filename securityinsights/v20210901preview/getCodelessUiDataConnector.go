@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data connector.
+//
+// Deprecated: azure-native:securityinsights/v20210901preview:CodelessUiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:CodelessUiDataConnector to guarantee forwards compatibility.
 func LookupCodelessUiDataConnector(ctx *pulumi.Context, args *LookupCodelessUiDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCodelessUiDataConnectorResult, error) {
 	var rv LookupCodelessUiDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20210901preview:getCodelessUiDataConnector", args, &rv, opts...)

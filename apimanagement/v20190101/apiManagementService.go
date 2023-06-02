@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A single API Management service resource in List or Get response.
+//
+// Deprecated: azure-native:apimanagement/v20190101:ApiManagementService is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiManagementService to guarantee forwards compatibility.
 type ApiManagementService struct {
 	pulumi.CustomResourceState
 
@@ -92,10 +94,10 @@ func NewApiManagementService(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.EnableClientCertificate) {
+	if args.EnableClientCertificate == nil {
 		args.EnableClientCertificate = pulumi.BoolPtr(false)
 	}
-	if isZero(args.VirtualNetworkType) {
+	if args.VirtualNetworkType == nil {
 		args.VirtualNetworkType = pulumi.StringPtr("None")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the python 2 package identified by package name.
+//
+// Deprecated: azure-native:automation/v20200113preview:Python2Package is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Python2Package to guarantee forwards compatibility.
 func LookupPython2Package(ctx *pulumi.Context, args *LookupPython2PackageArgs, opts ...pulumi.InvokeOption) (*LookupPython2PackageResult, error) {
 	var rv LookupPython2PackageResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getPython2Package", args, &rv, opts...)

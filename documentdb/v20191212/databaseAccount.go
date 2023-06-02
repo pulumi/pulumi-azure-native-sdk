@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB database account.
 //
 // Deprecated: Version 2019-12-12 will be removed in v2 of the provider.
+// azure-native:documentdb/v20191212:DatabaseAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20200301:DatabaseAccount to guarantee forwards compatibility.
 type DatabaseAccount struct {
 	pulumi.CustomResourceState
 
@@ -81,7 +82,7 @@ func NewDatabaseAccount(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Kind) {
+	if args.Kind == nil {
 		args.Kind = pulumi.StringPtr("GlobalDocumentDB")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a streaming endpoint.
+//
+// Deprecated: azure-native:media/v20211101:StreamingEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20221101:StreamingEndpoint to guarantee forwards compatibility.
 func LookupStreamingEndpoint(ctx *pulumi.Context, args *LookupStreamingEndpointArgs, opts ...pulumi.InvokeOption) (*LookupStreamingEndpointResult, error) {
 	var rv LookupStreamingEndpointResult
 	err := ctx.Invoke("azure-native:media/v20211101:getStreamingEndpoint", args, &rv, opts...)

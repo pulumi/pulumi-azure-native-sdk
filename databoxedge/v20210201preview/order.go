@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The order details.
+//
+// Deprecated: azure-native:databoxedge/v20210201preview:Order is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20220401preview:Order to guarantee forwards compatibility.
 type Order struct {
 	pulumi.CustomResourceState
 

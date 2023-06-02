@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an integration account.
+//
+// Deprecated: azure-native:logic/v20180701preview:IntegrationAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:logic/v20190501:IntegrationAccount to guarantee forwards compatibility.
 func LookupIntegrationAccount(ctx *pulumi.Context, args *LookupIntegrationAccountArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountResult, error) {
 	var rv LookupIntegrationAccountResult
 	err := ctx.Invoke("azure-native:logic/v20180701preview:getIntegrationAccount", args, &rv, opts...)

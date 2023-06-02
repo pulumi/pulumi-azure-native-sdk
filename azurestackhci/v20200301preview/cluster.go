@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cluster details.
 //
 // Deprecated: Version 2020-03-01-preview will be removed in v2 of the provider.
+// azure-native:azurestackhci/v20200301preview:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20220101:Cluster to guarantee forwards compatibility.
 type Cluster struct {
 	pulumi.CustomResourceState
 

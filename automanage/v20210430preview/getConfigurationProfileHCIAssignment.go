@@ -11,6 +11,8 @@ import (
 )
 
 // Get information about a configuration profile assignment
+//
+// Deprecated: azure-native:automanage/v20210430preview:ConfigurationProfileHCIAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:automanage/v20220504:ConfigurationProfileHCIAssignment to guarantee forwards compatibility.
 func LookupConfigurationProfileHCIAssignment(ctx *pulumi.Context, args *LookupConfigurationProfileHCIAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileHCIAssignmentResult, error) {
 	var rv LookupConfigurationProfileHCIAssignmentResult
 	err := ctx.Invoke("azure-native:automanage/v20210430preview:getConfigurationProfileHCIAssignment", args, &rv, opts...)

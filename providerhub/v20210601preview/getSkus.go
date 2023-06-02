@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the sku details for the given resource type and sku name.
+//
+// Deprecated: azure-native:providerhub/v20210601preview:Skus is being removed in the next major version of this provider. Upgrade to at least azure-native:providerhub/v20210901preview:Skus to guarantee forwards compatibility.
 func LookupSkus(ctx *pulumi.Context, args *LookupSkusArgs, opts ...pulumi.InvokeOption) (*LookupSkusResult, error) {
 	var rv LookupSkusResult
 	err := ctx.Invoke("azure-native:providerhub/v20210601preview:getSkus", args, &rv, opts...)

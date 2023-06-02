@@ -88,7 +88,7 @@ func (val *LookupWebPubSubResult) Defaults() *LookupWebPubSubResult {
 	tmp := *val
 	tmp.NetworkACLs = tmp.NetworkACLs.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

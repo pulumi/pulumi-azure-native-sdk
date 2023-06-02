@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a data connection.
+//
+// Deprecated: azure-native:kusto/v20190907:EventGridDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20200215:EventGridDataConnection to guarantee forwards compatibility.
 func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventGridDataConnectionResult, error) {
 	var rv LookupEventGridDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20190907:getEventGridDataConnection", args, &rv, opts...)

@@ -13,6 +13,7 @@ import (
 // Get a Service Fabric service resource created or in the process of being created in the Service Fabric application resource.
 //
 // Deprecated: Version 2019-03-01 will be removed in v2 of the provider.
+// azure-native:servicefabric/v20190301:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20210601:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:servicefabric/v20190301:getService", args, &rv, opts...)

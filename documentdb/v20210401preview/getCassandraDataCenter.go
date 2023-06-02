@@ -11,6 +11,8 @@ import (
 )
 
 // Get the properties of a managed Cassandra data center.
+//
+// Deprecated: azure-native:documentdb/v20210401preview:CassandraDataCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:CassandraDataCenter to guarantee forwards compatibility.
 func LookupCassandraDataCenter(ctx *pulumi.Context, args *LookupCassandraDataCenterArgs, opts ...pulumi.InvokeOption) (*LookupCassandraDataCenterResult, error) {
 	var rv LookupCassandraDataCenterResult
 	err := ctx.Invoke("azure-native:documentdb/v20210401preview:getCassandraDataCenter", args, &rv, opts...)

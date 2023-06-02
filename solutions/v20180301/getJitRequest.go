@@ -13,6 +13,7 @@ import (
 // Gets the JIT request.
 //
 // Deprecated: Version 2018-03-01 will be removed in v2 of the provider.
+// azure-native:solutions/v20180301:JitRequest is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20210701:JitRequest to guarantee forwards compatibility.
 func LookupJitRequest(ctx *pulumi.Context, args *LookupJitRequestArgs, opts ...pulumi.InvokeOption) (*LookupJitRequestResult, error) {
 	var rv LookupJitRequestResult
 	err := ctx.Invoke("azure-native:solutions/v20180301:getJitRequest", args, &rv, opts...)

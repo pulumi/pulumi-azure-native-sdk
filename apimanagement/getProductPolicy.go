@@ -54,7 +54,7 @@ func (val *LookupProductPolicyResult) Defaults() *LookupProductPolicyResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Format) {
+	if tmp.Format == nil {
 		format_ := "xml"
 		tmp.Format = &format_
 	}

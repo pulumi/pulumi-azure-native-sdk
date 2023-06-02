@@ -13,6 +13,7 @@ import (
 // Gets information about a disk access resource.
 //
 // Deprecated: Version 2020-05-01 will be removed in v2 of the provider.
+// azure-native:compute/v20200501:DiskAccess is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220702:DiskAccess to guarantee forwards compatibility.
 func LookupDiskAccess(ctx *pulumi.Context, args *LookupDiskAccessArgs, opts ...pulumi.InvokeOption) (*LookupDiskAccessResult, error) {
 	var rv LookupDiskAccessResult
 	err := ctx.Invoke("azure-native:compute/v20200501:getDiskAccess", args, &rv, opts...)

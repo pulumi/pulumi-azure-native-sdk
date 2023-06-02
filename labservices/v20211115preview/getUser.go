@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the properties of a lab user.
+//
+// Deprecated: azure-native:labservices/v20211115preview:User is being removed in the next major version of this provider. Upgrade to at least azure-native:labservices/v20220801:User to guarantee forwards compatibility.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("azure-native:labservices/v20211115preview:getUser", args, &rv, opts...)

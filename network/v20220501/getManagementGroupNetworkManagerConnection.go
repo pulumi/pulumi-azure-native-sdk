@@ -11,6 +11,8 @@ import (
 )
 
 // Get a specified connection created by this management group.
+//
+// Deprecated: azure-native:network/v20220501:ManagementGroupNetworkManagerConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ManagementGroupNetworkManagerConnection to guarantee forwards compatibility.
 func LookupManagementGroupNetworkManagerConnection(ctx *pulumi.Context, args *LookupManagementGroupNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupNetworkManagerConnectionResult, error) {
 	var rv LookupManagementGroupNetworkManagerConnectionResult
 	err := ctx.Invoke("azure-native:network/v20220501:getManagementGroupNetworkManagerConnection", args, &rv, opts...)

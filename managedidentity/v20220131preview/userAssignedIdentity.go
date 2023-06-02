@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes an identity resource.
+//
+// Deprecated: azure-native:managedidentity/v20220131preview:UserAssignedIdentity is being removed in the next major version of this provider. Upgrade to at least azure-native:managedidentity/v20230131:UserAssignedIdentity to guarantee forwards compatibility.
 type UserAssignedIdentity struct {
 	pulumi.CustomResourceState
 

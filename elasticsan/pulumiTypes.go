@@ -672,7 +672,7 @@ func (val *VirtualNetworkRule) Defaults() *VirtualNetworkRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := Action("Allow")
 		tmp.Action = &action_
 	}
@@ -704,7 +704,7 @@ func (val *VirtualNetworkRuleArgs) Defaults() *VirtualNetworkRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = Action("Allow")
 	}
 	return &tmp
@@ -807,7 +807,7 @@ func (val *VirtualNetworkRuleResponse) Defaults() *VirtualNetworkRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}

@@ -13,6 +13,7 @@ import (
 // Class representing Traffic Manager User Metrics.
 //
 // Deprecated: Version 2018-04-01 will be removed in v2 of the provider.
+// azure-native:network/v20180401:TrafficManagerUserMetricsKey is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220401preview:TrafficManagerUserMetricsKey to guarantee forwards compatibility.
 type TrafficManagerUserMetricsKey struct {
 	pulumi.CustomResourceState
 

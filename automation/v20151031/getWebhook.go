@@ -67,7 +67,7 @@ func (val *LookupWebhookResult) Defaults() *LookupWebhookResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := false
 		tmp.IsEnabled = &isEnabled_
 	}

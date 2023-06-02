@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Media Graph.
+//
+// Deprecated: azure-native:media/v20190901preview:MediaGraph is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20200201preview:MediaGraph to guarantee forwards compatibility.
 type MediaGraph struct {
 	pulumi.CustomResourceState
 

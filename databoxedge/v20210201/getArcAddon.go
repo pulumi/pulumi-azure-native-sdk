@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a specific addon by name.
+//
+// Deprecated: azure-native:databoxedge/v20210201:ArcAddon is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:ArcAddon to guarantee forwards compatibility.
 func LookupArcAddon(ctx *pulumi.Context, args *LookupArcAddonArgs, opts ...pulumi.InvokeOption) (*LookupArcAddonResult, error) {
 	var rv LookupArcAddonResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210201:getArcAddon", args, &rv, opts...)

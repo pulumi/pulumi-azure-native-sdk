@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the export pipeline.
+//
+// Deprecated: azure-native:containerregistry/v20210801preview:ExportPipeline is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:ExportPipeline to guarantee forwards compatibility.
 func LookupExportPipeline(ctx *pulumi.Context, args *LookupExportPipelineArgs, opts ...pulumi.InvokeOption) (*LookupExportPipelineResult, error) {
 	var rv LookupExportPipelineResult
 	err := ctx.Invoke("azure-native:containerregistry/v20210801preview:getExportPipeline", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a pipeline run for a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20191201preview:PipelineRun is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:PipelineRun to guarantee forwards compatibility.
 type PipelineRun struct {
 	pulumi.CustomResourceState
 

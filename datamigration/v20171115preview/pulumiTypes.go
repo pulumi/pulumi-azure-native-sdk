@@ -1211,11 +1211,11 @@ func (val *SqlConnectionInfo) Defaults() *SqlConnectionInfo {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		encryptConnection_ := true
 		tmp.EncryptConnection = &encryptConnection_
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		trustServerCertificate_ := false
 		tmp.TrustServerCertificate = &trustServerCertificate_
 	}
@@ -1260,10 +1260,10 @@ func (val *SqlConnectionInfoArgs) Defaults() *SqlConnectionInfoArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		tmp.EncryptConnection = pulumi.BoolPtr(true)
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		tmp.TrustServerCertificate = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1519,11 +1519,11 @@ func (val *SqlConnectionInfoResponse) Defaults() *SqlConnectionInfoResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EncryptConnection) {
+	if tmp.EncryptConnection == nil {
 		encryptConnection_ := true
 		tmp.EncryptConnection = &encryptConnection_
 	}
-	if isZero(tmp.TrustServerCertificate) {
+	if tmp.TrustServerCertificate == nil {
 		trustServerCertificate_ := false
 		tmp.TrustServerCertificate = &trustServerCertificate_
 	}

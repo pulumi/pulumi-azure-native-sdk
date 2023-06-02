@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A firewall rule on a redis cache has a name, and describes a contiguous range of IP addresses permitted to connect
 //
 // Deprecated: Version 2017-02-01 will be removed in v2 of the provider.
+// azure-native:cache/v20170201:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20220601:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

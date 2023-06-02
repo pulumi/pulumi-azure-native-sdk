@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Base class for backup items.
+//
+// Deprecated: azure-native:recoveryservices/v20210401:ProtectedItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ProtectedItem to guarantee forwards compatibility.
 type ProtectedItem struct {
 	pulumi.CustomResourceState
 

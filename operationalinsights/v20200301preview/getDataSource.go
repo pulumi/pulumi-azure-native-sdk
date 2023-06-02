@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a datasource instance.
+//
+// Deprecated: azure-native:operationalinsights/v20200301preview:DataSource is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:DataSource to guarantee forwards compatibility.
 func LookupDataSource(ctx *pulumi.Context, args *LookupDataSourceArgs, opts ...pulumi.InvokeOption) (*LookupDataSourceResult, error) {
 	var rv LookupDataSourceResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200301preview:getDataSource", args, &rv, opts...)

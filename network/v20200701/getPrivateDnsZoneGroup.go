@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the private dns zone group resource by specified private dns zone group name.
+//
+// Deprecated: azure-native:network/v20200701:PrivateDnsZoneGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210201:PrivateDnsZoneGroup to guarantee forwards compatibility.
 func LookupPrivateDnsZoneGroup(ctx *pulumi.Context, args *LookupPrivateDnsZoneGroupArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDnsZoneGroupResult, error) {
 	var rv LookupPrivateDnsZoneGroupResult
 	err := ctx.Invoke("azure-native:network/v20200701:getPrivateDnsZoneGroup", args, &rv, opts...)

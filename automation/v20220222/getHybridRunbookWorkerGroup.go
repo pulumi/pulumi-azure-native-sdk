@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve a hybrid runbook worker group.
+//
+// Deprecated: azure-native:automation/v20220222:HybridRunbookWorkerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:HybridRunbookWorkerGroup to guarantee forwards compatibility.
 func LookupHybridRunbookWorkerGroup(ctx *pulumi.Context, args *LookupHybridRunbookWorkerGroupArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerGroupResult, error) {
 	var rv LookupHybridRunbookWorkerGroupResult
 	err := ctx.Invoke("azure-native:automation/v20220222:getHybridRunbookWorkerGroup", args, &rv, opts...)

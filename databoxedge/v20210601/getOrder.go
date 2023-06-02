@@ -11,6 +11,8 @@ import (
 )
 
 // The order details.
+//
+// Deprecated: azure-native:databoxedge/v20210601:Order is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20220401preview:Order to guarantee forwards compatibility.
 func LookupOrder(ctx *pulumi.Context, args *LookupOrderArgs, opts ...pulumi.InvokeOption) (*LookupOrderResult, error) {
 	var rv LookupOrderResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210601:getOrder", args, &rv, opts...)

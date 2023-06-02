@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Virtual Router Peering resource.
+//
+// Deprecated: azure-native:network/v20190901:VirtualRouterPeering is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualRouterPeering to guarantee forwards compatibility.
 type VirtualRouterPeering struct {
 	pulumi.CustomResourceState
 

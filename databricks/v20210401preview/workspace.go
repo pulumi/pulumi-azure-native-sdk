@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about workspace.
+//
+// Deprecated: azure-native:databricks/v20210401preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:databricks/v20230201:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 

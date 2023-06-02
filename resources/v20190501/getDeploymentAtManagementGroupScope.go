@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a deployment.
+//
+// Deprecated: azure-native:resources/v20190501:DeploymentAtManagementGroupScope is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:DeploymentAtManagementGroupScope to guarantee forwards compatibility.
 func LookupDeploymentAtManagementGroupScope(ctx *pulumi.Context, args *LookupDeploymentAtManagementGroupScopeArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentAtManagementGroupScopeResult, error) {
 	var rv LookupDeploymentAtManagementGroupScopeResult
 	err := ctx.Invoke("azure-native:resources/v20190501:getDeploymentAtManagementGroupScope", args, &rv, opts...)

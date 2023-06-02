@@ -11,6 +11,8 @@ import (
 )
 
 // This operation retrieves the policy definition in the given management group with the given name.
+//
+// Deprecated: azure-native:authorization/v20190901:PolicyDefinitionAtManagementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20210601:PolicyDefinitionAtManagementGroup to guarantee forwards compatibility.
 func LookupPolicyDefinitionAtManagementGroup(ctx *pulumi.Context, args *LookupPolicyDefinitionAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupPolicyDefinitionAtManagementGroupResult, error) {
 	var rv LookupPolicyDefinitionAtManagementGroupResult
 	err := ctx.Invoke("azure-native:authorization/v20190901:getPolicyDefinitionAtManagementGroup", args, &rv, opts...)

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Domain Topic
 //
 // Deprecated: Version 2020-01-01-preview will be removed in v2 of the provider.
+// azure-native:eventgrid/v20200101preview:DomainTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:DomainTopic to guarantee forwards compatibility.
 type DomainTopic struct {
 	pulumi.CustomResourceState
 

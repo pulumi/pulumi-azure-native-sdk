@@ -11,6 +11,8 @@ import (
 )
 
 // Gets details about the specified function.
+//
+// Deprecated: azure-native:streamanalytics/v20200301:Function is being removed in the next major version of this provider. Upgrade to at least azure-native:streamanalytics/v20211001preview:Function to guarantee forwards compatibility.
 func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulumi.InvokeOption) (*LookupFunctionResult, error) {
 	var rv LookupFunctionResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20200301:getFunction", args, &rv, opts...)

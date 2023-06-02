@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the collector policy in a specified Traffic Collector
+//
+// Deprecated: azure-native:networkfunction/v20220801:CollectorPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:networkfunction/v20221101:CollectorPolicy to guarantee forwards compatibility.
 func LookupCollectorPolicy(ctx *pulumi.Context, args *LookupCollectorPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCollectorPolicyResult, error) {
 	var rv LookupCollectorPolicyResult
 	err := ctx.Invoke("azure-native:networkfunction/v20220801:getCollectorPolicy", args, &rv, opts...)

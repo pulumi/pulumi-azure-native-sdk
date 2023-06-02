@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Public IP address resource.
+//
+// Deprecated: azure-native:network/v20190701:PublicIPAddress is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190801:PublicIPAddress to guarantee forwards compatibility.
 type PublicIPAddress struct {
 	pulumi.CustomResourceState
 

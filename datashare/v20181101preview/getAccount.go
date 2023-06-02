@@ -13,6 +13,7 @@ import (
 // Get an account
 //
 // Deprecated: Version 2018-11-01-preview will be removed in v2 of the provider.
+// azure-native:datashare/v20181101preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:Account to guarantee forwards compatibility.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:datashare/v20181101preview:getAccount", args, &rv, opts...)

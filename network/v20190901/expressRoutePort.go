@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ExpressRoutePort resource definition.
+//
+// Deprecated: azure-native:network/v20190901:ExpressRoutePort is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ExpressRoutePort to guarantee forwards compatibility.
 type ExpressRoutePort struct {
 	pulumi.CustomResourceState
 

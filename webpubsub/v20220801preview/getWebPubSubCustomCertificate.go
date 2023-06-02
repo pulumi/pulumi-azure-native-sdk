@@ -11,6 +11,8 @@ import (
 )
 
 // Get a custom certificate.
+//
+// Deprecated: azure-native:webpubsub/v20220801preview:WebPubSubCustomCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230201:WebPubSubCustomCertificate to guarantee forwards compatibility.
 func LookupWebPubSubCustomCertificate(ctx *pulumi.Context, args *LookupWebPubSubCustomCertificateArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubCustomCertificateResult, error) {
 	var rv LookupWebPubSubCustomCertificateResult
 	err := ctx.Invoke("azure-native:webpubsub/v20220801preview:getWebPubSubCustomCertificate", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a managed instance administrator.
+//
+// Deprecated: azure-native:sql/v20200202preview:ManagedInstanceAdministrator is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedInstanceAdministrator to guarantee forwards compatibility.
 func LookupManagedInstanceAdministrator(ctx *pulumi.Context, args *LookupManagedInstanceAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceAdministratorResult, error) {
 	var rv LookupManagedInstanceAdministratorResult
 	err := ctx.Invoke("azure-native:sql/v20200202preview:getManagedInstanceAdministrator", args, &rv, opts...)

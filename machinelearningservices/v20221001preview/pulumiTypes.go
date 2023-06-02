@@ -98,11 +98,11 @@ func (val *AKSSchemaProperties) Defaults() *AKSSchemaProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClusterPurpose) {
+	if tmp.ClusterPurpose == nil {
 		clusterPurpose_ := "FastProd"
 		tmp.ClusterPurpose = &clusterPurpose_
 	}
-	if isZero(tmp.LoadBalancerType) {
+	if tmp.LoadBalancerType == nil {
 		loadBalancerType_ := "PublicIp"
 		tmp.LoadBalancerType = &loadBalancerType_
 	}
@@ -137,11 +137,11 @@ func (val *AKSSchemaResponseProperties) Defaults() *AKSSchemaResponseProperties 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClusterPurpose) {
+	if tmp.ClusterPurpose == nil {
 		clusterPurpose_ := "FastProd"
 		tmp.ClusterPurpose = &clusterPurpose_
 	}
-	if isZero(tmp.LoadBalancerType) {
+	if tmp.LoadBalancerType == nil {
 		loadBalancerType_ := "PublicIp"
 		tmp.LoadBalancerType = &loadBalancerType_
 	}
@@ -721,15 +721,15 @@ func (val *AmlComputeProperties) Defaults() *AmlComputeProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -782,15 +782,15 @@ func (val *AmlComputePropertiesResponse) Defaults() *AmlComputePropertiesRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableNodePublicIp) {
+	if tmp.EnableNodePublicIp == nil {
 		enableNodePublicIp_ := true
 		tmp.EnableNodePublicIp = &enableNodePublicIp_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
-	if isZero(tmp.RemoteLoginPortPublicAccess) {
+	if tmp.RemoteLoginPortPublicAccess == nil {
 		remoteLoginPortPublicAccess_ := "NotSpecified"
 		tmp.RemoteLoginPortPublicAccess = &remoteLoginPortPublicAccess_
 	}
@@ -1136,11 +1136,11 @@ func (val *AutoMLJob) Defaults() *AutoMLJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -1199,11 +1199,11 @@ func (val *AutoMLJobResponse) Defaults() *AutoMLJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -1337,7 +1337,7 @@ func (val *AzureBlobDatastore) Defaults() *AzureBlobDatastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1381,7 +1381,7 @@ func (val *AzureBlobDatastoreResponse) Defaults() *AzureBlobDatastoreResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1417,7 +1417,7 @@ func (val *AzureDataLakeGen1Datastore) Defaults() *AzureDataLakeGen1Datastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1455,7 +1455,7 @@ func (val *AzureDataLakeGen1DatastoreResponse) Defaults() *AzureDataLakeGen1Data
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1497,7 +1497,7 @@ func (val *AzureDataLakeGen2Datastore) Defaults() *AzureDataLakeGen2Datastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1541,7 +1541,7 @@ func (val *AzureDataLakeGen2DatastoreResponse) Defaults() *AzureDataLakeGen2Data
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1583,7 +1583,7 @@ func (val *AzureFileDatastore) Defaults() *AzureFileDatastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1627,7 +1627,7 @@ func (val *AzureFileDatastoreResponse) Defaults() *AzureFileDatastoreResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceDataAccessAuthIdentity) {
+	if tmp.ServiceDataAccessAuthIdentity == nil {
 		serviceDataAccessAuthIdentity_ := "None"
 		tmp.ServiceDataAccessAuthIdentity = &serviceDataAccessAuthIdentity_
 	}
@@ -1654,19 +1654,19 @@ func (val *BanditPolicy) Defaults() *BanditPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.SlackAmount) {
+	if tmp.SlackAmount == nil {
 		slackAmount_ := 0.0
 		tmp.SlackAmount = &slackAmount_
 	}
-	if isZero(tmp.SlackFactor) {
+	if tmp.SlackFactor == nil {
 		slackFactor_ := 0.0
 		tmp.SlackFactor = &slackFactor_
 	}
@@ -1693,19 +1693,19 @@ func (val *BanditPolicyResponse) Defaults() *BanditPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.SlackAmount) {
+	if tmp.SlackAmount == nil {
 		slackAmount_ := 0.0
 		tmp.SlackAmount = &slackAmount_
 	}
-	if isZero(tmp.SlackFactor) {
+	if tmp.SlackFactor == nil {
 		slackFactor_ := 0.0
 		tmp.SlackFactor = &slackFactor_
 	}
@@ -1760,27 +1760,27 @@ func (val *BatchDeploymentType) Defaults() *BatchDeploymentType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ErrorThreshold) {
+	if tmp.ErrorThreshold == nil {
 		errorThreshold_ := -1
 		tmp.ErrorThreshold = &errorThreshold_
 	}
-	if isZero(tmp.LoggingLevel) {
+	if tmp.LoggingLevel == nil {
 		loggingLevel_ := "Info"
 		tmp.LoggingLevel = &loggingLevel_
 	}
-	if isZero(tmp.MaxConcurrencyPerInstance) {
+	if tmp.MaxConcurrencyPerInstance == nil {
 		maxConcurrencyPerInstance_ := 1
 		tmp.MaxConcurrencyPerInstance = &maxConcurrencyPerInstance_
 	}
-	if isZero(tmp.MiniBatchSize) {
+	if tmp.MiniBatchSize == nil {
 		miniBatchSize_ := 10.0
 		tmp.MiniBatchSize = &miniBatchSize_
 	}
-	if isZero(tmp.OutputAction) {
+	if tmp.OutputAction == nil {
 		outputAction_ := "AppendRow"
 		tmp.OutputAction = &outputAction_
 	}
-	if isZero(tmp.OutputFileName) {
+	if tmp.OutputFileName == nil {
 		outputFileName_ := "predictions.csv"
 		tmp.OutputFileName = &outputFileName_
 	}
@@ -1850,22 +1850,22 @@ func (val *BatchDeploymentTypeArgs) Defaults() *BatchDeploymentTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ErrorThreshold) {
+	if tmp.ErrorThreshold == nil {
 		tmp.ErrorThreshold = pulumi.IntPtr(-1)
 	}
-	if isZero(tmp.LoggingLevel) {
+	if tmp.LoggingLevel == nil {
 		tmp.LoggingLevel = pulumi.StringPtr("Info")
 	}
-	if isZero(tmp.MaxConcurrencyPerInstance) {
+	if tmp.MaxConcurrencyPerInstance == nil {
 		tmp.MaxConcurrencyPerInstance = pulumi.IntPtr(1)
 	}
-	if isZero(tmp.MiniBatchSize) {
+	if tmp.MiniBatchSize == nil {
 		tmp.MiniBatchSize = pulumi.Float64Ptr(10.0)
 	}
-	if isZero(tmp.OutputAction) {
+	if tmp.OutputAction == nil {
 		tmp.OutputAction = pulumi.StringPtr("AppendRow")
 	}
-	if isZero(tmp.OutputFileName) {
+	if tmp.OutputFileName == nil {
 		tmp.OutputFileName = pulumi.StringPtr("predictions.csv")
 	}
 
@@ -2031,27 +2031,27 @@ func (val *BatchDeploymentResponse) Defaults() *BatchDeploymentResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ErrorThreshold) {
+	if tmp.ErrorThreshold == nil {
 		errorThreshold_ := -1
 		tmp.ErrorThreshold = &errorThreshold_
 	}
-	if isZero(tmp.LoggingLevel) {
+	if tmp.LoggingLevel == nil {
 		loggingLevel_ := "Info"
 		tmp.LoggingLevel = &loggingLevel_
 	}
-	if isZero(tmp.MaxConcurrencyPerInstance) {
+	if tmp.MaxConcurrencyPerInstance == nil {
 		maxConcurrencyPerInstance_ := 1
 		tmp.MaxConcurrencyPerInstance = &maxConcurrencyPerInstance_
 	}
-	if isZero(tmp.MiniBatchSize) {
+	if tmp.MiniBatchSize == nil {
 		miniBatchSize_ := 10.0
 		tmp.MiniBatchSize = &miniBatchSize_
 	}
-	if isZero(tmp.OutputAction) {
+	if tmp.OutputAction == nil {
 		outputAction_ := "AppendRow"
 		tmp.OutputAction = &outputAction_
 	}
-	if isZero(tmp.OutputFileName) {
+	if tmp.OutputFileName == nil {
 		outputFileName_ := "predictions.csv"
 		tmp.OutputFileName = &outputFileName_
 	}
@@ -2548,11 +2548,11 @@ func (val *BatchRetrySettings) Defaults() *BatchRetrySettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxRetries) {
+	if tmp.MaxRetries == nil {
 		maxRetries_ := 3
 		tmp.MaxRetries = &maxRetries_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT30S"
 		tmp.Timeout = &timeout_
 	}
@@ -2584,10 +2584,10 @@ func (val *BatchRetrySettingsArgs) Defaults() *BatchRetrySettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxRetries) {
+	if tmp.MaxRetries == nil {
 		tmp.MaxRetries = pulumi.IntPtr(3)
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		tmp.Timeout = pulumi.StringPtr("PT30S")
 	}
 	return &tmp
@@ -2738,11 +2738,11 @@ func (val *BatchRetrySettingsResponse) Defaults() *BatchRetrySettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxRetries) {
+	if tmp.MaxRetries == nil {
 		maxRetries_ := 3
 		tmp.MaxRetries = &maxRetries_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT30S"
 		tmp.Timeout = &timeout_
 	}
@@ -2864,7 +2864,7 @@ func (val *BuildContext) Defaults() *BuildContext {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DockerfilePath) {
+	if tmp.DockerfilePath == nil {
 		dockerfilePath_ := "Dockerfile"
 		tmp.DockerfilePath = &dockerfilePath_
 	}
@@ -2898,7 +2898,7 @@ func (val *BuildContextArgs) Defaults() *BuildContextArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DockerfilePath) {
+	if tmp.DockerfilePath == nil {
 		tmp.DockerfilePath = pulumi.StringPtr("Dockerfile")
 	}
 	return &tmp
@@ -3055,7 +3055,7 @@ func (val *BuildContextResponse) Defaults() *BuildContextResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DockerfilePath) {
+	if tmp.DockerfilePath == nil {
 		dockerfilePath_ := "Dockerfile"
 		tmp.DockerfilePath = &dockerfilePath_
 	}
@@ -3241,11 +3241,11 @@ func (val *Classification) Defaults() *Classification {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "AUCWeighted"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -3321,11 +3321,11 @@ func (val *ClassificationResponse) Defaults() *ClassificationResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "AUCWeighted"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -3369,27 +3369,27 @@ func (val *ClassificationTrainingSettings) Defaults() *ClassificationTrainingSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnTraining) {
+	if tmp.EnableDnnTraining == nil {
 		enableDnnTraining_ := false
 		tmp.EnableDnnTraining = &enableDnnTraining_
 	}
-	if isZero(tmp.EnableModelExplainability) {
+	if tmp.EnableModelExplainability == nil {
 		enableModelExplainability_ := true
 		tmp.EnableModelExplainability = &enableModelExplainability_
 	}
-	if isZero(tmp.EnableOnnxCompatibleModels) {
+	if tmp.EnableOnnxCompatibleModels == nil {
 		enableOnnxCompatibleModels_ := false
 		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
 	}
-	if isZero(tmp.EnableStackEnsemble) {
+	if tmp.EnableStackEnsemble == nil {
 		enableStackEnsemble_ := true
 		tmp.EnableStackEnsemble = &enableStackEnsemble_
 	}
-	if isZero(tmp.EnableVoteEnsemble) {
+	if tmp.EnableVoteEnsemble == nil {
 		enableVoteEnsemble_ := true
 		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
 	}
-	if isZero(tmp.EnsembleModelDownloadTimeout) {
+	if tmp.EnsembleModelDownloadTimeout == nil {
 		ensembleModelDownloadTimeout_ := "PT5M"
 		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
 	}
@@ -3427,27 +3427,27 @@ func (val *ClassificationTrainingSettingsResponse) Defaults() *ClassificationTra
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnTraining) {
+	if tmp.EnableDnnTraining == nil {
 		enableDnnTraining_ := false
 		tmp.EnableDnnTraining = &enableDnnTraining_
 	}
-	if isZero(tmp.EnableModelExplainability) {
+	if tmp.EnableModelExplainability == nil {
 		enableModelExplainability_ := true
 		tmp.EnableModelExplainability = &enableModelExplainability_
 	}
-	if isZero(tmp.EnableOnnxCompatibleModels) {
+	if tmp.EnableOnnxCompatibleModels == nil {
 		enableOnnxCompatibleModels_ := false
 		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
 	}
-	if isZero(tmp.EnableStackEnsemble) {
+	if tmp.EnableStackEnsemble == nil {
 		enableStackEnsemble_ := true
 		tmp.EnableStackEnsemble = &enableStackEnsemble_
 	}
-	if isZero(tmp.EnableVoteEnsemble) {
+	if tmp.EnableVoteEnsemble == nil {
 		enableVoteEnsemble_ := true
 		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
 	}
-	if isZero(tmp.EnsembleModelDownloadTimeout) {
+	if tmp.EnsembleModelDownloadTimeout == nil {
 		ensembleModelDownloadTimeout_ := "PT5M"
 		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
 	}
@@ -3710,7 +3710,7 @@ func (val *CodeContainerType) Defaults() *CodeContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3746,7 +3746,7 @@ func (val *CodeContainerTypeArgs) Defaults() *CodeContainerTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -3822,7 +3822,7 @@ func (val *CodeContainerResponse) Defaults() *CodeContainerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3901,11 +3901,11 @@ func (val *CodeVersionType) Defaults() *CodeVersionType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3945,10 +3945,10 @@ func (val *CodeVersionTypeArgs) Defaults() *CodeVersionTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		tmp.IsAnonymous = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -4034,11 +4034,11 @@ func (val *CodeVersionResponse) Defaults() *CodeVersionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4168,11 +4168,11 @@ func (val *CommandJob) Defaults() *CommandJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4256,11 +4256,11 @@ func (val *CommandJobResponse) Defaults() *CommandJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4288,7 +4288,7 @@ func (val *ComponentContainerType) Defaults() *ComponentContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4325,7 +4325,7 @@ func (val *ComponentContainerTypeArgs) Defaults() *ComponentContainerTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -4403,7 +4403,7 @@ func (val *ComponentContainerResponse) Defaults() *ComponentContainerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4484,11 +4484,11 @@ func (val *ComponentVersionType) Defaults() *ComponentVersionType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4529,10 +4529,10 @@ func (val *ComponentVersionTypeArgs) Defaults() *ComponentVersionTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		tmp.IsAnonymous = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -4620,11 +4620,11 @@ func (val *ComponentVersionResponse) Defaults() *ComponentVersionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -4778,7 +4778,7 @@ func (val *ComputeInstanceDataDiskResponse) Defaults() *ComputeInstanceDataDiskR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StorageAccountType) {
+	if tmp.StorageAccountType == nil {
 		storageAccountType_ := "Standard_LRS"
 		tmp.StorageAccountType = &storageAccountType_
 	}
@@ -4859,11 +4859,11 @@ func (val *ComputeInstanceProperties) Defaults() *ComputeInstanceProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
+	if tmp.ApplicationSharingPolicy == nil {
 		applicationSharingPolicy_ := "Shared"
 		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
 	}
-	if isZero(tmp.ComputeInstanceAuthorizationType) {
+	if tmp.ComputeInstanceAuthorizationType == nil {
 		computeInstanceAuthorizationType_ := "personal"
 		tmp.ComputeInstanceAuthorizationType = &computeInstanceAuthorizationType_
 	}
@@ -4928,11 +4928,11 @@ func (val *ComputeInstancePropertiesResponse) Defaults() *ComputeInstancePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationSharingPolicy) {
+	if tmp.ApplicationSharingPolicy == nil {
 		applicationSharingPolicy_ := "Shared"
 		tmp.ApplicationSharingPolicy = &applicationSharingPolicy_
 	}
-	if isZero(tmp.ComputeInstanceAuthorizationType) {
+	if tmp.ComputeInstanceAuthorizationType == nil {
 		computeInstanceAuthorizationType_ := "personal"
 		tmp.ComputeInstanceAuthorizationType = &computeInstanceAuthorizationType_
 	}
@@ -4993,7 +4993,7 @@ func (val *ComputeInstanceSshSettings) Defaults() *ComputeInstanceSshSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
+	if tmp.SshPublicAccess == nil {
 		sshPublicAccess_ := "Disabled"
 		tmp.SshPublicAccess = &sshPublicAccess_
 	}
@@ -5018,7 +5018,7 @@ func (val *ComputeInstanceSshSettingsResponse) Defaults() *ComputeInstanceSshSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SshPublicAccess) {
+	if tmp.SshPublicAccess == nil {
 		sshPublicAccess_ := "Disabled"
 		tmp.SshPublicAccess = &sshPublicAccess_
 	}
@@ -5322,7 +5322,7 @@ func (val *CronResponse) Defaults() *CronResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -5352,7 +5352,7 @@ func (val *CronTrigger) Defaults() *CronTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -5382,7 +5382,7 @@ func (val *CronTriggerResponse) Defaults() *CronTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -5425,7 +5425,7 @@ func (val *CustomModelJobInput) Defaults() *CustomModelJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -5450,7 +5450,7 @@ func (val *CustomModelJobInputResponse) Defaults() *CustomModelJobInputResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -5475,7 +5475,7 @@ func (val *CustomModelJobOutput) Defaults() *CustomModelJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -5500,7 +5500,7 @@ func (val *CustomModelJobOutputResponse) Defaults() *CustomModelJobOutputRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -5647,7 +5647,7 @@ func (val *DataContainerType) Defaults() *DataContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -5685,7 +5685,7 @@ func (val *DataContainerTypeArgs) Defaults() *DataContainerTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -5766,7 +5766,7 @@ func (val *DataContainerResponse) Defaults() *DataContainerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -6010,7 +6010,7 @@ func (val *DeploymentResourceConfiguration) Defaults() *DeploymentResourceConfig
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstanceCount) {
+	if tmp.InstanceCount == nil {
 		instanceCount_ := 1
 		tmp.InstanceCount = &instanceCount_
 	}
@@ -6043,7 +6043,7 @@ func (val *DeploymentResourceConfigurationArgs) Defaults() *DeploymentResourceCo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstanceCount) {
+	if tmp.InstanceCount == nil {
 		tmp.InstanceCount = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -6209,7 +6209,7 @@ func (val *DeploymentResourceConfigurationResponse) Defaults() *DeploymentResour
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstanceCount) {
+	if tmp.InstanceCount == nil {
 		instanceCount_ := 1
 		tmp.InstanceCount = &instanceCount_
 	}
@@ -6862,7 +6862,7 @@ func (val *Endpoint) Defaults() *Endpoint {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "tcp"
 		tmp.Protocol = &protocol_
 	}
@@ -7047,7 +7047,7 @@ func (val *EndpointResponse) Defaults() *EndpointResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "tcp"
 		tmp.Protocol = &protocol_
 	}
@@ -7088,7 +7088,7 @@ func (val *EnvironmentContainerType) Defaults() *EnvironmentContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -7124,7 +7124,7 @@ func (val *EnvironmentContainerTypeArgs) Defaults() *EnvironmentContainerTypeArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -7200,7 +7200,7 @@ func (val *EnvironmentContainerResponse) Defaults() *EnvironmentContainerRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -7270,7 +7270,7 @@ func (val *EnvironmentVariable) Defaults() *EnvironmentVariable {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "local"
 		tmp.Type = &type_
 	}
@@ -7290,7 +7290,7 @@ func (val *EnvironmentVariableResponse) Defaults() *EnvironmentVariableResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "local"
 		tmp.Type = &type_
 	}
@@ -7331,15 +7331,15 @@ func (val *EnvironmentVersionType) Defaults() *EnvironmentVersionType {
 	tmp := *val
 	tmp.Build = tmp.Build.Defaults()
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -7390,13 +7390,13 @@ func (val *EnvironmentVersionTypeArgs) Defaults() *EnvironmentVersionTypeArgs {
 	}
 	tmp := *val
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		tmp.IsAnonymous = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		tmp.OsType = pulumi.StringPtr("Linux")
 	}
 	return &tmp
@@ -7519,15 +7519,15 @@ func (val *EnvironmentVersionResponse) Defaults() *EnvironmentVersionResponse {
 	tmp := *val
 	tmp.Build = tmp.Build.Defaults()
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
-	if isZero(tmp.OsType) {
+	if tmp.OsType == nil {
 		osType_ := "Linux"
 		tmp.OsType = &osType_
 	}
@@ -7844,11 +7844,11 @@ func (val *Forecasting) Defaults() *Forecasting {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "NormalizedRootMeanSquaredError"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -7926,11 +7926,11 @@ func (val *ForecastingResponse) Defaults() *ForecastingResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "NormalizedRootMeanSquaredError"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -7987,19 +7987,19 @@ func (val *ForecastingSettings) Defaults() *ForecastingSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FeatureLags) {
+	if tmp.FeatureLags == nil {
 		featureLags_ := "None"
 		tmp.FeatureLags = &featureLags_
 	}
-	if isZero(tmp.ShortSeriesHandlingConfig) {
+	if tmp.ShortSeriesHandlingConfig == nil {
 		shortSeriesHandlingConfig_ := "Auto"
 		tmp.ShortSeriesHandlingConfig = &shortSeriesHandlingConfig_
 	}
-	if isZero(tmp.TargetAggregateFunction) {
+	if tmp.TargetAggregateFunction == nil {
 		targetAggregateFunction_ := "None"
 		tmp.TargetAggregateFunction = &targetAggregateFunction_
 	}
-	if isZero(tmp.UseStl) {
+	if tmp.UseStl == nil {
 		useStl_ := "None"
 		tmp.UseStl = &useStl_
 	}
@@ -8048,19 +8048,19 @@ func (val *ForecastingSettingsResponse) Defaults() *ForecastingSettingsResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FeatureLags) {
+	if tmp.FeatureLags == nil {
 		featureLags_ := "None"
 		tmp.FeatureLags = &featureLags_
 	}
-	if isZero(tmp.ShortSeriesHandlingConfig) {
+	if tmp.ShortSeriesHandlingConfig == nil {
 		shortSeriesHandlingConfig_ := "Auto"
 		tmp.ShortSeriesHandlingConfig = &shortSeriesHandlingConfig_
 	}
-	if isZero(tmp.TargetAggregateFunction) {
+	if tmp.TargetAggregateFunction == nil {
 		targetAggregateFunction_ := "None"
 		tmp.TargetAggregateFunction = &targetAggregateFunction_
 	}
-	if isZero(tmp.UseStl) {
+	if tmp.UseStl == nil {
 		useStl_ := "None"
 		tmp.UseStl = &useStl_
 	}
@@ -8096,27 +8096,27 @@ func (val *ForecastingTrainingSettings) Defaults() *ForecastingTrainingSettings 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnTraining) {
+	if tmp.EnableDnnTraining == nil {
 		enableDnnTraining_ := false
 		tmp.EnableDnnTraining = &enableDnnTraining_
 	}
-	if isZero(tmp.EnableModelExplainability) {
+	if tmp.EnableModelExplainability == nil {
 		enableModelExplainability_ := true
 		tmp.EnableModelExplainability = &enableModelExplainability_
 	}
-	if isZero(tmp.EnableOnnxCompatibleModels) {
+	if tmp.EnableOnnxCompatibleModels == nil {
 		enableOnnxCompatibleModels_ := false
 		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
 	}
-	if isZero(tmp.EnableStackEnsemble) {
+	if tmp.EnableStackEnsemble == nil {
 		enableStackEnsemble_ := true
 		tmp.EnableStackEnsemble = &enableStackEnsemble_
 	}
-	if isZero(tmp.EnableVoteEnsemble) {
+	if tmp.EnableVoteEnsemble == nil {
 		enableVoteEnsemble_ := true
 		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
 	}
-	if isZero(tmp.EnsembleModelDownloadTimeout) {
+	if tmp.EnsembleModelDownloadTimeout == nil {
 		ensembleModelDownloadTimeout_ := "PT5M"
 		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
 	}
@@ -8154,27 +8154,27 @@ func (val *ForecastingTrainingSettingsResponse) Defaults() *ForecastingTrainingS
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnTraining) {
+	if tmp.EnableDnnTraining == nil {
 		enableDnnTraining_ := false
 		tmp.EnableDnnTraining = &enableDnnTraining_
 	}
-	if isZero(tmp.EnableModelExplainability) {
+	if tmp.EnableModelExplainability == nil {
 		enableModelExplainability_ := true
 		tmp.EnableModelExplainability = &enableModelExplainability_
 	}
-	if isZero(tmp.EnableOnnxCompatibleModels) {
+	if tmp.EnableOnnxCompatibleModels == nil {
 		enableOnnxCompatibleModels_ := false
 		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
 	}
-	if isZero(tmp.EnableStackEnsemble) {
+	if tmp.EnableStackEnsemble == nil {
 		enableStackEnsemble_ := true
 		tmp.EnableStackEnsemble = &enableStackEnsemble_
 	}
-	if isZero(tmp.EnableVoteEnsemble) {
+	if tmp.EnableVoteEnsemble == nil {
 		enableVoteEnsemble_ := true
 		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
 	}
-	if isZero(tmp.EnsembleModelDownloadTimeout) {
+	if tmp.EnsembleModelDownloadTimeout == nil {
 		ensembleModelDownloadTimeout_ := "PT5M"
 		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
 	}
@@ -8281,7 +8281,7 @@ func (val *HdfsDatastore) Defaults() *HdfsDatastore {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "http"
 		tmp.Protocol = &protocol_
 	}
@@ -8316,7 +8316,7 @@ func (val *HdfsDatastoreResponse) Defaults() *HdfsDatastoreResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "http"
 		tmp.Protocol = &protocol_
 	}
@@ -8554,7 +8554,7 @@ func (val *Image) Defaults() *Image {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "docker"
 		tmp.Type = &type_
 	}
@@ -8600,13 +8600,13 @@ func (val *ImageClassification) Defaults() *ImageClassification {
 	tmp := *val
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -8656,13 +8656,13 @@ func (val *ImageClassificationMultilabel) Defaults() *ImageClassificationMultila
 	tmp := *val
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "IOU"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -8712,13 +8712,13 @@ func (val *ImageClassificationMultilabelResponse) Defaults() *ImageClassificatio
 	tmp := *val
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "IOU"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -8768,13 +8768,13 @@ func (val *ImageClassificationResponse) Defaults() *ImageClassificationResponse 
 	tmp := *val
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -8824,13 +8824,13 @@ func (val *ImageInstanceSegmentation) Defaults() *ImageInstanceSegmentation {
 	tmp := *val
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "MeanAveragePrecision"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -8880,13 +8880,13 @@ func (val *ImageInstanceSegmentationResponse) Defaults() *ImageInstanceSegmentat
 	tmp := *val
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "MeanAveragePrecision"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -8913,15 +8913,15 @@ func (val *ImageLimitSettings) Defaults() *ImageLimitSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "P7D"
 		tmp.Timeout = &timeout_
 	}
@@ -8944,15 +8944,15 @@ func (val *ImageLimitSettingsResponse) Defaults() *ImageLimitSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "P7D"
 		tmp.Timeout = &timeout_
 	}
@@ -9491,11 +9491,11 @@ func (val *ImageModelSettingsClassification) Defaults() *ImageModelSettingsClass
 	tmp := *val
 	tmp.CheckpointModel = tmp.CheckpointModel.Defaults()
 
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
-	if isZero(tmp.Optimizer) {
+	if tmp.Optimizer == nil {
 		optimizer_ := "None"
 		tmp.Optimizer = &optimizer_
 	}
@@ -9598,11 +9598,11 @@ func (val *ImageModelSettingsClassificationResponse) Defaults() *ImageModelSetti
 	tmp := *val
 	tmp.CheckpointModel = tmp.CheckpointModel.Defaults()
 
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
-	if isZero(tmp.Optimizer) {
+	if tmp.Optimizer == nil {
 		optimizer_ := "None"
 		tmp.Optimizer = &optimizer_
 	}
@@ -9739,19 +9739,19 @@ func (val *ImageModelSettingsObjectDetection) Defaults() *ImageModelSettingsObje
 	tmp := *val
 	tmp.CheckpointModel = tmp.CheckpointModel.Defaults()
 
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
-	if isZero(tmp.ModelSize) {
+	if tmp.ModelSize == nil {
 		modelSize_ := "None"
 		tmp.ModelSize = &modelSize_
 	}
-	if isZero(tmp.Optimizer) {
+	if tmp.Optimizer == nil {
 		optimizer_ := "None"
 		tmp.Optimizer = &optimizer_
 	}
-	if isZero(tmp.ValidationMetricType) {
+	if tmp.ValidationMetricType == nil {
 		validationMetricType_ := "None"
 		tmp.ValidationMetricType = &validationMetricType_
 	}
@@ -9888,19 +9888,19 @@ func (val *ImageModelSettingsObjectDetectionResponse) Defaults() *ImageModelSett
 	tmp := *val
 	tmp.CheckpointModel = tmp.CheckpointModel.Defaults()
 
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
-	if isZero(tmp.ModelSize) {
+	if tmp.ModelSize == nil {
 		modelSize_ := "None"
 		tmp.ModelSize = &modelSize_
 	}
-	if isZero(tmp.Optimizer) {
+	if tmp.Optimizer == nil {
 		optimizer_ := "None"
 		tmp.Optimizer = &optimizer_
 	}
-	if isZero(tmp.ValidationMetricType) {
+	if tmp.ValidationMetricType == nil {
 		validationMetricType_ := "None"
 		tmp.ValidationMetricType = &validationMetricType_
 	}
@@ -9946,13 +9946,13 @@ func (val *ImageObjectDetection) Defaults() *ImageObjectDetection {
 	tmp := *val
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "MeanAveragePrecision"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -10002,13 +10002,13 @@ func (val *ImageObjectDetectionResponse) Defaults() *ImageObjectDetectionRespons
 	tmp := *val
 	tmp.LimitSettings = *tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
 	tmp.ModelSettings = tmp.ModelSettings.Defaults()
 
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "MeanAveragePrecision"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -10032,7 +10032,7 @@ func (val *ImageResponse) Defaults() *ImageResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "docker"
 		tmp.Type = &type_
 	}
@@ -10373,11 +10373,11 @@ func (val *JobResourceConfiguration) Defaults() *JobResourceConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstanceCount) {
+	if tmp.InstanceCount == nil {
 		instanceCount_ := 1
 		tmp.InstanceCount = &instanceCount_
 	}
-	if isZero(tmp.ShmSize) {
+	if tmp.ShmSize == nil {
 		shmSize_ := "2g"
 		tmp.ShmSize = &shmSize_
 	}
@@ -10403,11 +10403,11 @@ func (val *JobResourceConfigurationResponse) Defaults() *JobResourceConfiguratio
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.InstanceCount) {
+	if tmp.InstanceCount == nil {
 		instanceCount_ := 1
 		tmp.InstanceCount = &instanceCount_
 	}
-	if isZero(tmp.ShmSize) {
+	if tmp.ShmSize == nil {
 		shmSize_ := "2g"
 		tmp.ShmSize = &shmSize_
 	}
@@ -10795,11 +10795,11 @@ func (val *KubernetesOnlineDeployment) Defaults() *KubernetesOnlineDeployment {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppInsightsEnabled) {
+	if tmp.AppInsightsEnabled == nil {
 		appInsightsEnabled_ := false
 		tmp.AppInsightsEnabled = &appInsightsEnabled_
 	}
-	if isZero(tmp.EgressPublicNetworkAccess) {
+	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
 	}
@@ -10860,11 +10860,11 @@ func (val *KubernetesOnlineDeploymentResponse) Defaults() *KubernetesOnlineDeplo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppInsightsEnabled) {
+	if tmp.AppInsightsEnabled == nil {
 		appInsightsEnabled_ := false
 		tmp.AppInsightsEnabled = &appInsightsEnabled_
 	}
-	if isZero(tmp.EgressPublicNetworkAccess) {
+	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
 	}
@@ -10903,7 +10903,7 @@ func (val *KubernetesProperties) Defaults() *KubernetesProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Namespace) {
+	if tmp.Namespace == nil {
 		namespace_ := "default"
 		tmp.Namespace = &namespace_
 	}
@@ -10936,7 +10936,7 @@ func (val *KubernetesPropertiesResponse) Defaults() *KubernetesPropertiesRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Namespace) {
+	if tmp.Namespace == nil {
 		namespace_ := "default"
 		tmp.Namespace = &namespace_
 	}
@@ -10997,7 +10997,7 @@ func (val *LabelCategory) Defaults() *LabelCategory {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MultiSelectEnabled) {
+	if tmp.MultiSelectEnabled == nil {
 		multiSelectEnabled_ := false
 		tmp.MultiSelectEnabled = &multiSelectEnabled_
 	}
@@ -11031,7 +11031,7 @@ func (val *LabelCategoryArgs) Defaults() *LabelCategoryArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MultiSelectEnabled) {
+	if tmp.MultiSelectEnabled == nil {
 		tmp.MultiSelectEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -11139,7 +11139,7 @@ func (val *LabelCategoryResponse) Defaults() *LabelCategoryResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MultiSelectEnabled) {
+	if tmp.MultiSelectEnabled == nil {
 		multiSelectEnabled_ := false
 		tmp.MultiSelectEnabled = &multiSelectEnabled_
 	}
@@ -11372,7 +11372,7 @@ func (val *LabelingDataConfiguration) Defaults() *LabelingDataConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IncrementalDataRefreshEnabled) {
+	if tmp.IncrementalDataRefreshEnabled == nil {
 		incrementalDataRefreshEnabled_ := false
 		tmp.IncrementalDataRefreshEnabled = &incrementalDataRefreshEnabled_
 	}
@@ -11404,7 +11404,7 @@ func (val *LabelingDataConfigurationArgs) Defaults() *LabelingDataConfigurationA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IncrementalDataRefreshEnabled) {
+	if tmp.IncrementalDataRefreshEnabled == nil {
 		tmp.IncrementalDataRefreshEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -11555,7 +11555,7 @@ func (val *LabelingDataConfigurationResponse) Defaults() *LabelingDataConfigurat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IncrementalDataRefreshEnabled) {
+	if tmp.IncrementalDataRefreshEnabled == nil {
 		incrementalDataRefreshEnabled_ := false
 		tmp.IncrementalDataRefreshEnabled = &incrementalDataRefreshEnabled_
 	}
@@ -11678,11 +11678,11 @@ func (val *LabelingJobType) Defaults() *LabelingJobType {
 	tmp := *val
 	tmp.DataConfiguration = tmp.DataConfiguration.Defaults()
 
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -11746,10 +11746,10 @@ func (val *LabelingJobTypeArgs) Defaults() *LabelingJobTypeArgs {
 	}
 	tmp := *val
 
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		tmp.ExperimentName = pulumi.StringPtr("Default")
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -11879,7 +11879,7 @@ func (val *LabelingJobImageProperties) Defaults() *LabelingJobImageProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnnotationType) {
+	if tmp.AnnotationType == nil {
 		annotationType_ := "Classification"
 		tmp.AnnotationType = &annotationType_
 	}
@@ -11901,7 +11901,7 @@ func (val *LabelingJobImagePropertiesResponse) Defaults() *LabelingJobImagePrope
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnnotationType) {
+	if tmp.AnnotationType == nil {
 		annotationType_ := "Classification"
 		tmp.AnnotationType = &annotationType_
 	}
@@ -12167,11 +12167,11 @@ func (val *LabelingJobResponse) Defaults() *LabelingJobResponse {
 	tmp := *val
 	tmp.DataConfiguration = tmp.DataConfiguration.Defaults()
 
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -12321,7 +12321,7 @@ func (val *LabelingJobTextProperties) Defaults() *LabelingJobTextProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnnotationType) {
+	if tmp.AnnotationType == nil {
 		annotationType_ := "Classification"
 		tmp.AnnotationType = &annotationType_
 	}
@@ -12343,7 +12343,7 @@ func (val *LabelingJobTextPropertiesResponse) Defaults() *LabelingJobTextPropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnnotationType) {
+	if tmp.AnnotationType == nil {
 		annotationType_ := "Classification"
 		tmp.AnnotationType = &annotationType_
 	}
@@ -12449,7 +12449,7 @@ func (val *MLFlowModelJobInput) Defaults() *MLFlowModelJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -12474,7 +12474,7 @@ func (val *MLFlowModelJobInputResponse) Defaults() *MLFlowModelJobInputResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -12499,7 +12499,7 @@ func (val *MLFlowModelJobOutput) Defaults() *MLFlowModelJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -12524,7 +12524,7 @@ func (val *MLFlowModelJobOutputResponse) Defaults() *MLFlowModelJobOutputRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -12558,11 +12558,11 @@ func (val *MLTableData) Defaults() *MLTableData {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -12596,11 +12596,11 @@ func (val *MLTableDataResponse) Defaults() *MLTableDataResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -12625,7 +12625,7 @@ func (val *MLTableJobInput) Defaults() *MLTableJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -12650,7 +12650,7 @@ func (val *MLTableJobInputResponse) Defaults() *MLTableJobInputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -12675,7 +12675,7 @@ func (val *MLTableJobOutput) Defaults() *MLTableJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -12700,7 +12700,7 @@ func (val *MLTableJobOutputResponse) Defaults() *MLTableJobOutputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -12805,11 +12805,11 @@ func (val *ManagedOnlineDeployment) Defaults() *ManagedOnlineDeployment {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppInsightsEnabled) {
+	if tmp.AppInsightsEnabled == nil {
 		appInsightsEnabled_ := false
 		tmp.AppInsightsEnabled = &appInsightsEnabled_
 	}
-	if isZero(tmp.EgressPublicNetworkAccess) {
+	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
 	}
@@ -12868,11 +12868,11 @@ func (val *ManagedOnlineDeploymentResponse) Defaults() *ManagedOnlineDeploymentR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AppInsightsEnabled) {
+	if tmp.AppInsightsEnabled == nil {
 		appInsightsEnabled_ := false
 		tmp.AppInsightsEnabled = &appInsightsEnabled_
 	}
-	if isZero(tmp.EgressPublicNetworkAccess) {
+	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
 	}
@@ -13173,11 +13173,11 @@ func (val *MedianStoppingPolicy) Defaults() *MedianStoppingPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
@@ -13200,11 +13200,11 @@ func (val *MedianStoppingPolicyResponse) Defaults() *MedianStoppingPolicyRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
@@ -13228,7 +13228,7 @@ func (val *ModelContainerType) Defaults() *ModelContainerType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -13263,7 +13263,7 @@ func (val *ModelContainerTypeArgs) Defaults() *ModelContainerTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -13337,7 +13337,7 @@ func (val *ModelContainerResponse) Defaults() *ModelContainerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -13421,11 +13421,11 @@ func (val *ModelVersionType) Defaults() *ModelVersionType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -13471,10 +13471,10 @@ func (val *ModelVersionTypeArgs) Defaults() *ModelVersionTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		tmp.IsAnonymous = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		tmp.IsArchived = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -13581,11 +13581,11 @@ func (val *ModelVersionResponse) Defaults() *ModelVersionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -13703,7 +13703,7 @@ func (val *NlpFixedParameters) Defaults() *NlpFixedParameters {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
@@ -13738,7 +13738,7 @@ func (val *NlpFixedParametersResponse) Defaults() *NlpFixedParametersResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LearningRateScheduler) {
+	if tmp.LearningRateScheduler == nil {
 		learningRateScheduler_ := "None"
 		tmp.LearningRateScheduler = &learningRateScheduler_
 	}
@@ -13835,19 +13835,19 @@ func (val *NlpVerticalLimitSettings) Defaults() *NlpVerticalLimitSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxNodes) {
+	if tmp.MaxNodes == nil {
 		maxNodes_ := 1
 		tmp.MaxNodes = &maxNodes_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "P7D"
 		tmp.Timeout = &timeout_
 	}
@@ -13874,19 +13874,19 @@ func (val *NlpVerticalLimitSettingsResponse) Defaults() *NlpVerticalLimitSetting
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxNodes) {
+	if tmp.MaxNodes == nil {
 		maxNodes_ := 1
 		tmp.MaxNodes = &maxNodes_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "P7D"
 		tmp.Timeout = &timeout_
 	}
@@ -14100,7 +14100,7 @@ func (val *OnlineEndpointType) Defaults() *OnlineEndpointType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
@@ -14146,7 +14146,7 @@ func (val *OnlineEndpointTypeArgs) Defaults() *OnlineEndpointTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -14251,7 +14251,7 @@ func (val *OnlineEndpointResponse) Defaults() *OnlineEndpointResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
@@ -14342,15 +14342,15 @@ func (val *OnlineRequestSettings) Defaults() *OnlineRequestSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentRequestsPerInstance) {
+	if tmp.MaxConcurrentRequestsPerInstance == nil {
 		maxConcurrentRequestsPerInstance_ := 1
 		tmp.MaxConcurrentRequestsPerInstance = &maxConcurrentRequestsPerInstance_
 	}
-	if isZero(tmp.MaxQueueWait) {
+	if tmp.MaxQueueWait == nil {
 		maxQueueWait_ := "PT0.5S"
 		tmp.MaxQueueWait = &maxQueueWait_
 	}
-	if isZero(tmp.RequestTimeout) {
+	if tmp.RequestTimeout == nil {
 		requestTimeout_ := "PT5S"
 		tmp.RequestTimeout = &requestTimeout_
 	}
@@ -14375,15 +14375,15 @@ func (val *OnlineRequestSettingsResponse) Defaults() *OnlineRequestSettingsRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxConcurrentRequestsPerInstance) {
+	if tmp.MaxConcurrentRequestsPerInstance == nil {
 		maxConcurrentRequestsPerInstance_ := 1
 		tmp.MaxConcurrentRequestsPerInstance = &maxConcurrentRequestsPerInstance_
 	}
-	if isZero(tmp.MaxQueueWait) {
+	if tmp.MaxQueueWait == nil {
 		maxQueueWait_ := "PT0.5S"
 		tmp.MaxQueueWait = &maxQueueWait_
 	}
-	if isZero(tmp.RequestTimeout) {
+	if tmp.RequestTimeout == nil {
 		requestTimeout_ := "PT5S"
 		tmp.RequestTimeout = &requestTimeout_
 	}
@@ -14544,11 +14544,11 @@ func (val *PipelineJob) Defaults() *PipelineJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -14602,11 +14602,11 @@ func (val *PipelineJobResponse) Defaults() *PipelineJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -14941,19 +14941,19 @@ func (val *ProbeSettings) Defaults() *ProbeSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FailureThreshold) {
+	if tmp.FailureThreshold == nil {
 		failureThreshold_ := 30
 		tmp.FailureThreshold = &failureThreshold_
 	}
-	if isZero(tmp.Period) {
+	if tmp.Period == nil {
 		period_ := "PT10S"
 		tmp.Period = &period_
 	}
-	if isZero(tmp.SuccessThreshold) {
+	if tmp.SuccessThreshold == nil {
 		successThreshold_ := 1
 		tmp.SuccessThreshold = &successThreshold_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT2S"
 		tmp.Timeout = &timeout_
 	}
@@ -14980,19 +14980,19 @@ func (val *ProbeSettingsResponse) Defaults() *ProbeSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FailureThreshold) {
+	if tmp.FailureThreshold == nil {
 		failureThreshold_ := 30
 		tmp.FailureThreshold = &failureThreshold_
 	}
-	if isZero(tmp.Period) {
+	if tmp.Period == nil {
 		period_ := "PT10S"
 		tmp.Period = &period_
 	}
-	if isZero(tmp.SuccessThreshold) {
+	if tmp.SuccessThreshold == nil {
 		successThreshold_ := 1
 		tmp.SuccessThreshold = &successThreshold_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT2S"
 		tmp.Timeout = &timeout_
 	}
@@ -15080,7 +15080,7 @@ func (val *RandomSamplingAlgorithm) Defaults() *RandomSamplingAlgorithm {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Rule) {
+	if tmp.Rule == nil {
 		rule_ := "Random"
 		tmp.Rule = &rule_
 	}
@@ -15103,7 +15103,7 @@ func (val *RandomSamplingAlgorithmResponse) Defaults() *RandomSamplingAlgorithmR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Rule) {
+	if tmp.Rule == nil {
 		rule_ := "Random"
 		tmp.Rule = &rule_
 	}
@@ -15131,7 +15131,7 @@ func (val *RecurrenceResponse) Defaults() *RecurrenceResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -15186,7 +15186,7 @@ func (val *RecurrenceTrigger) Defaults() *RecurrenceTrigger {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -15219,7 +15219,7 @@ func (val *RecurrenceTriggerResponse) Defaults() *RecurrenceTriggerResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TimeZone) {
+	if tmp.TimeZone == nil {
 		timeZone_ := "UTC"
 		tmp.TimeZone = &timeZone_
 	}
@@ -15697,11 +15697,11 @@ func (val *Regression) Defaults() *Regression {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "NormalizedRootMeanSquaredError"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -15775,11 +15775,11 @@ func (val *RegressionResponse) Defaults() *RegressionResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "NormalizedRootMeanSquaredError"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -15823,27 +15823,27 @@ func (val *RegressionTrainingSettings) Defaults() *RegressionTrainingSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnTraining) {
+	if tmp.EnableDnnTraining == nil {
 		enableDnnTraining_ := false
 		tmp.EnableDnnTraining = &enableDnnTraining_
 	}
-	if isZero(tmp.EnableModelExplainability) {
+	if tmp.EnableModelExplainability == nil {
 		enableModelExplainability_ := true
 		tmp.EnableModelExplainability = &enableModelExplainability_
 	}
-	if isZero(tmp.EnableOnnxCompatibleModels) {
+	if tmp.EnableOnnxCompatibleModels == nil {
 		enableOnnxCompatibleModels_ := false
 		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
 	}
-	if isZero(tmp.EnableStackEnsemble) {
+	if tmp.EnableStackEnsemble == nil {
 		enableStackEnsemble_ := true
 		tmp.EnableStackEnsemble = &enableStackEnsemble_
 	}
-	if isZero(tmp.EnableVoteEnsemble) {
+	if tmp.EnableVoteEnsemble == nil {
 		enableVoteEnsemble_ := true
 		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
 	}
-	if isZero(tmp.EnsembleModelDownloadTimeout) {
+	if tmp.EnsembleModelDownloadTimeout == nil {
 		ensembleModelDownloadTimeout_ := "PT5M"
 		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
 	}
@@ -15881,27 +15881,27 @@ func (val *RegressionTrainingSettingsResponse) Defaults() *RegressionTrainingSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnTraining) {
+	if tmp.EnableDnnTraining == nil {
 		enableDnnTraining_ := false
 		tmp.EnableDnnTraining = &enableDnnTraining_
 	}
-	if isZero(tmp.EnableModelExplainability) {
+	if tmp.EnableModelExplainability == nil {
 		enableModelExplainability_ := true
 		tmp.EnableModelExplainability = &enableModelExplainability_
 	}
-	if isZero(tmp.EnableOnnxCompatibleModels) {
+	if tmp.EnableOnnxCompatibleModels == nil {
 		enableOnnxCompatibleModels_ := false
 		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
 	}
-	if isZero(tmp.EnableStackEnsemble) {
+	if tmp.EnableStackEnsemble == nil {
 		enableStackEnsemble_ := true
 		tmp.EnableStackEnsemble = &enableStackEnsemble_
 	}
-	if isZero(tmp.EnableVoteEnsemble) {
+	if tmp.EnableVoteEnsemble == nil {
 		enableVoteEnsemble_ := true
 		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
 	}
-	if isZero(tmp.EnsembleModelDownloadTimeout) {
+	if tmp.EnsembleModelDownloadTimeout == nil {
 		ensembleModelDownloadTimeout_ := "PT5M"
 		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
 	}
@@ -16222,7 +16222,7 @@ func (val *ScaleSettings) Defaults() *ScaleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}
@@ -16245,7 +16245,7 @@ func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinNodeCount) {
+	if tmp.MinNodeCount == nil {
 		minNodeCount_ := 0
 		tmp.MinNodeCount = &minNodeCount_
 	}
@@ -16276,7 +16276,7 @@ func (val *ScheduleType) Defaults() *ScheduleType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := true
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -16318,7 +16318,7 @@ func (val *ScheduleTypeArgs) Defaults() *ScheduleTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		tmp.IsEnabled = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -16420,7 +16420,7 @@ func (val *ScheduleResponse) Defaults() *ScheduleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsEnabled) {
+	if tmp.IsEnabled == nil {
 		isEnabled_ := true
 		tmp.IsEnabled = &isEnabled_
 	}
@@ -17406,11 +17406,11 @@ func (val *SparkJob) Defaults() *SparkJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -17494,11 +17494,11 @@ func (val *SparkJobResponse) Defaults() *SparkJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -17534,7 +17534,7 @@ func (val *SparkResourceConfiguration) Defaults() *SparkResourceConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RuntimeVersion) {
+	if tmp.RuntimeVersion == nil {
 		runtimeVersion_ := "3.1"
 		tmp.RuntimeVersion = &runtimeVersion_
 	}
@@ -17554,7 +17554,7 @@ func (val *SparkResourceConfigurationResponse) Defaults() *SparkResourceConfigur
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RuntimeVersion) {
+	if tmp.RuntimeVersion == nil {
 		runtimeVersion_ := "3.1"
 		tmp.RuntimeVersion = &runtimeVersion_
 	}
@@ -17609,11 +17609,11 @@ func (val *StackEnsembleSettings) Defaults() *StackEnsembleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StackMetaLearnerTrainPercentage) {
+	if tmp.StackMetaLearnerTrainPercentage == nil {
 		stackMetaLearnerTrainPercentage_ := 0.2
 		tmp.StackMetaLearnerTrainPercentage = &stackMetaLearnerTrainPercentage_
 	}
-	if isZero(tmp.StackMetaLearnerType) {
+	if tmp.StackMetaLearnerType == nil {
 		stackMetaLearnerType_ := "None"
 		tmp.StackMetaLearnerType = &stackMetaLearnerType_
 	}
@@ -17636,11 +17636,11 @@ func (val *StackEnsembleSettingsResponse) Defaults() *StackEnsembleSettingsRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StackMetaLearnerTrainPercentage) {
+	if tmp.StackMetaLearnerTrainPercentage == nil {
 		stackMetaLearnerTrainPercentage_ := 0.2
 		tmp.StackMetaLearnerTrainPercentage = &stackMetaLearnerTrainPercentage_
 	}
-	if isZero(tmp.StackMetaLearnerType) {
+	if tmp.StackMetaLearnerType == nil {
 		stackMetaLearnerType_ := "None"
 		tmp.StackMetaLearnerType = &stackMetaLearnerType_
 	}
@@ -17921,11 +17921,11 @@ func (val *SweepJob) Defaults() *SweepJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -18015,11 +18015,11 @@ func (val *SweepJobResponse) Defaults() *SweepJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -18773,11 +18773,11 @@ func (val *TableFixedParameters) Defaults() *TableFixedParameters {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.WithMean) {
+	if tmp.WithMean == nil {
 		withMean_ := false
 		tmp.WithMean = &withMean_
 	}
-	if isZero(tmp.WithStd) {
+	if tmp.WithStd == nil {
 		withStd_ := false
 		tmp.WithStd = &withStd_
 	}
@@ -18834,11 +18834,11 @@ func (val *TableFixedParametersResponse) Defaults() *TableFixedParametersRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.WithMean) {
+	if tmp.WithMean == nil {
 		withMean_ := false
 		tmp.WithMean = &withMean_
 	}
-	if isZero(tmp.WithStd) {
+	if tmp.WithStd == nil {
 		withStd_ := false
 		tmp.WithStd = &withStd_
 	}
@@ -18969,11 +18969,11 @@ func (val *TableVerticalFeaturizationSettings) Defaults() *TableVerticalFeaturiz
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnFeaturization) {
+	if tmp.EnableDnnFeaturization == nil {
 		enableDnnFeaturization_ := false
 		tmp.EnableDnnFeaturization = &enableDnnFeaturization_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Auto"
 		tmp.Mode = &mode_
 	}
@@ -19004,11 +19004,11 @@ func (val *TableVerticalFeaturizationSettingsResponse) Defaults() *TableVertical
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnFeaturization) {
+	if tmp.EnableDnnFeaturization == nil {
 		enableDnnFeaturization_ := false
 		tmp.EnableDnnFeaturization = &enableDnnFeaturization_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Auto"
 		tmp.Mode = &mode_
 	}
@@ -19043,35 +19043,35 @@ func (val *TableVerticalLimitSettings) Defaults() *TableVerticalLimitSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEarlyTermination) {
+	if tmp.EnableEarlyTermination == nil {
 		enableEarlyTermination_ := true
 		tmp.EnableEarlyTermination = &enableEarlyTermination_
 	}
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxCoresPerTrial) {
+	if tmp.MaxCoresPerTrial == nil {
 		maxCoresPerTrial_ := -1
 		tmp.MaxCoresPerTrial = &maxCoresPerTrial_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1000
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.SweepConcurrentTrials) {
+	if tmp.SweepConcurrentTrials == nil {
 		sweepConcurrentTrials_ := 0
 		tmp.SweepConcurrentTrials = &sweepConcurrentTrials_
 	}
-	if isZero(tmp.SweepTrials) {
+	if tmp.SweepTrials == nil {
 		sweepTrials_ := 0
 		tmp.SweepTrials = &sweepTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT6H"
 		tmp.Timeout = &timeout_
 	}
-	if isZero(tmp.TrialTimeout) {
+	if tmp.TrialTimeout == nil {
 		trialTimeout_ := "PT30M"
 		tmp.TrialTimeout = &trialTimeout_
 	}
@@ -19106,35 +19106,35 @@ func (val *TableVerticalLimitSettingsResponse) Defaults() *TableVerticalLimitSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEarlyTermination) {
+	if tmp.EnableEarlyTermination == nil {
 		enableEarlyTermination_ := true
 		tmp.EnableEarlyTermination = &enableEarlyTermination_
 	}
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxCoresPerTrial) {
+	if tmp.MaxCoresPerTrial == nil {
 		maxCoresPerTrial_ := -1
 		tmp.MaxCoresPerTrial = &maxCoresPerTrial_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1000
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.SweepConcurrentTrials) {
+	if tmp.SweepConcurrentTrials == nil {
 		sweepConcurrentTrials_ := 0
 		tmp.SweepConcurrentTrials = &sweepConcurrentTrials_
 	}
-	if isZero(tmp.SweepTrials) {
+	if tmp.SweepTrials == nil {
 		sweepTrials_ := 0
 		tmp.SweepTrials = &sweepTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT6H"
 		tmp.Timeout = &timeout_
 	}
-	if isZero(tmp.TrialTimeout) {
+	if tmp.TrialTimeout == nil {
 		trialTimeout_ := "PT30M"
 		tmp.TrialTimeout = &trialTimeout_
 	}
@@ -19160,19 +19160,19 @@ func (val *TargetUtilizationScaleSettings) Defaults() *TargetUtilizationScaleSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxInstances) {
+	if tmp.MaxInstances == nil {
 		maxInstances_ := 1
 		tmp.MaxInstances = &maxInstances_
 	}
-	if isZero(tmp.MinInstances) {
+	if tmp.MinInstances == nil {
 		minInstances_ := 1
 		tmp.MinInstances = &minInstances_
 	}
-	if isZero(tmp.PollingInterval) {
+	if tmp.PollingInterval == nil {
 		pollingInterval_ := "PT1S"
 		tmp.PollingInterval = &pollingInterval_
 	}
-	if isZero(tmp.TargetUtilizationPercentage) {
+	if tmp.TargetUtilizationPercentage == nil {
 		targetUtilizationPercentage_ := 70
 		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
 	}
@@ -19198,19 +19198,19 @@ func (val *TargetUtilizationScaleSettingsResponse) Defaults() *TargetUtilization
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxInstances) {
+	if tmp.MaxInstances == nil {
 		maxInstances_ := 1
 		tmp.MaxInstances = &maxInstances_
 	}
-	if isZero(tmp.MinInstances) {
+	if tmp.MinInstances == nil {
 		minInstances_ := 1
 		tmp.MinInstances = &minInstances_
 	}
-	if isZero(tmp.PollingInterval) {
+	if tmp.PollingInterval == nil {
 		pollingInterval_ := "PT1S"
 		tmp.PollingInterval = &pollingInterval_
 	}
-	if isZero(tmp.TargetUtilizationPercentage) {
+	if tmp.TargetUtilizationPercentage == nil {
 		targetUtilizationPercentage_ := 70
 		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
 	}
@@ -19234,7 +19234,7 @@ func (val *TensorFlow) Defaults() *TensorFlow {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ParameterServerCount) {
+	if tmp.ParameterServerCount == nil {
 		parameterServerCount_ := 0
 		tmp.ParameterServerCount = &parameterServerCount_
 	}
@@ -19258,7 +19258,7 @@ func (val *TensorFlowResponse) Defaults() *TensorFlowResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ParameterServerCount) {
+	if tmp.ParameterServerCount == nil {
 		parameterServerCount_ := 0
 		tmp.ParameterServerCount = &parameterServerCount_
 	}
@@ -19304,11 +19304,11 @@ func (val *TextClassification) Defaults() *TextClassification {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -19356,7 +19356,7 @@ func (val *TextClassificationMultilabel) Defaults() *TextClassificationMultilabe
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -19407,7 +19407,7 @@ func (val *TextClassificationMultilabelResponse) Defaults() *TextClassificationM
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -19457,11 +19457,11 @@ func (val *TextClassificationResponse) Defaults() *TextClassificationResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -19510,7 +19510,7 @@ func (val *TextNer) Defaults() *TextNer {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -19562,7 +19562,7 @@ func (val *TextNerResponse) Defaults() *TextNerResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -19655,7 +19655,7 @@ func (val *TritonModelJobInput) Defaults() *TritonModelJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -19680,7 +19680,7 @@ func (val *TritonModelJobInputResponse) Defaults() *TritonModelJobInputResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -19705,7 +19705,7 @@ func (val *TritonModelJobOutput) Defaults() *TritonModelJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -19730,7 +19730,7 @@ func (val *TritonModelJobOutputResponse) Defaults() *TritonModelJobOutputRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -19755,15 +19755,15 @@ func (val *TruncationSelectionPolicy) Defaults() *TruncationSelectionPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.TruncationPercentage) {
+	if tmp.TruncationPercentage == nil {
 		truncationPercentage_ := 0
 		tmp.TruncationPercentage = &truncationPercentage_
 	}
@@ -19788,15 +19788,15 @@ func (val *TruncationSelectionPolicyResponse) Defaults() *TruncationSelectionPol
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.TruncationPercentage) {
+	if tmp.TruncationPercentage == nil {
 		truncationPercentage_ := 0
 		tmp.TruncationPercentage = &truncationPercentage_
 	}
@@ -19828,11 +19828,11 @@ func (val *UriFileDataVersion) Defaults() *UriFileDataVersion {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -19864,11 +19864,11 @@ func (val *UriFileDataVersionResponse) Defaults() *UriFileDataVersionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -19893,7 +19893,7 @@ func (val *UriFileJobInput) Defaults() *UriFileJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -19918,7 +19918,7 @@ func (val *UriFileJobInputResponse) Defaults() *UriFileJobInputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -19943,7 +19943,7 @@ func (val *UriFileJobOutput) Defaults() *UriFileJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -19968,7 +19968,7 @@ func (val *UriFileJobOutputResponse) Defaults() *UriFileJobOutputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -20000,11 +20000,11 @@ func (val *UriFolderDataVersion) Defaults() *UriFolderDataVersion {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -20036,11 +20036,11 @@ func (val *UriFolderDataVersionResponse) Defaults() *UriFolderDataVersionRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -20065,7 +20065,7 @@ func (val *UriFolderJobInput) Defaults() *UriFolderJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -20090,7 +20090,7 @@ func (val *UriFolderJobInputResponse) Defaults() *UriFolderJobInputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -20115,7 +20115,7 @@ func (val *UriFolderJobOutput) Defaults() *UriFolderJobOutput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -20140,7 +20140,7 @@ func (val *UriFolderJobOutputResponse) Defaults() *UriFolderJobOutputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -20781,7 +20781,7 @@ func (val *VolumeDefinition) Defaults() *VolumeDefinition {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "bind"
 		tmp.Type = &type_
 	}
@@ -20813,7 +20813,7 @@ func (val *VolumeDefinitionResponse) Defaults() *VolumeDefinitionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "bind"
 		tmp.Type = &type_
 	}

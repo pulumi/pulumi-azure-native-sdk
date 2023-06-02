@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified device.
+//
+// Deprecated: azure-native:hybridnetwork/v20210501:Device is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridnetwork/v20220101preview:Device to guarantee forwards compatibility.
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {
 	var rv LookupDeviceResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20210501:getDevice", args, &rv, opts...)

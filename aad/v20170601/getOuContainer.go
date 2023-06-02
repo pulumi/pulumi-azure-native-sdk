@@ -13,6 +13,7 @@ import (
 // Get OuContainer in DomainService instance.
 //
 // Deprecated: Version 2017-06-01 will be removed in v2 of the provider.
+// azure-native:aad/v20170601:OuContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:aad/v20221201:OuContainer to guarantee forwards compatibility.
 func LookupOuContainer(ctx *pulumi.Context, args *LookupOuContainerArgs, opts ...pulumi.InvokeOption) (*LookupOuContainerResult, error) {
 	var rv LookupOuContainerResult
 	err := ctx.Invoke("azure-native:aad/v20170601:getOuContainer", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Disk resource.
+//
+// Deprecated: azure-native:compute/v20210801:Disk is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220702:Disk to guarantee forwards compatibility.
 type Disk struct {
 	pulumi.CustomResourceState
 

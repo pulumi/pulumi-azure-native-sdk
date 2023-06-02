@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of the specified volume
+//
+// Deprecated: azure-native:netapp/v20210401preview:Volume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20211001:Volume to guarantee forwards compatibility.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:netapp/v20210401preview:getVolume", args, &rv, opts...)
@@ -102,39 +104,39 @@ func (val *LookupVolumeResult) Defaults() *LookupVolumeResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KerberosEnabled) {
+	if tmp.KerberosEnabled == nil {
 		kerberosEnabled_ := false
 		tmp.KerberosEnabled = &kerberosEnabled_
 	}
-	if isZero(tmp.LdapEnabled) {
+	if tmp.LdapEnabled == nil {
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
-	if isZero(tmp.NetworkFeatures) {
+	if tmp.NetworkFeatures == nil {
 		networkFeatures_ := "Basic"
 		tmp.NetworkFeatures = &networkFeatures_
 	}
-	if isZero(tmp.SecurityStyle) {
+	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
 	}
-	if isZero(tmp.ServiceLevel) {
+	if tmp.ServiceLevel == nil {
 		serviceLevel_ := "Premium"
 		tmp.ServiceLevel = &serviceLevel_
 	}
-	if isZero(tmp.SmbContinuouslyAvailable) {
+	if tmp.SmbContinuouslyAvailable == nil {
 		smbContinuouslyAvailable_ := false
 		tmp.SmbContinuouslyAvailable = &smbContinuouslyAvailable_
 	}
-	if isZero(tmp.SmbEncryption) {
+	if tmp.SmbEncryption == nil {
 		smbEncryption_ := false
 		tmp.SmbEncryption = &smbEncryption_
 	}
-	if isZero(tmp.SnapshotDirectoryVisible) {
+	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
 	}
-	if isZero(tmp.ThroughputMibps) {
+	if tmp.ThroughputMibps == nil {
 		throughputMibps_ := 0.0
 		tmp.ThroughputMibps = &throughputMibps_
 	}

@@ -11,6 +11,8 @@ import (
 )
 
 // The services resource is the top-level resource that represents the Database Migration Service. The GET method retrieves information about a service instance.
+//
+// Deprecated: azure-native:datamigration/v20220130preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:datamigration/v20220130preview:getService", args, &rv, opts...)

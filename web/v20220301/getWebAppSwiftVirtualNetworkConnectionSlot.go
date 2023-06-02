@@ -11,6 +11,8 @@ import (
 )
 
 // Description for Gets a Swift Virtual Network connection.
+//
+// Deprecated: azure-native:web/v20220301:WebAppSwiftVirtualNetworkConnectionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSwiftVirtualNetworkConnectionSlot to guarantee forwards compatibility.
 func LookupWebAppSwiftVirtualNetworkConnectionSlot(ctx *pulumi.Context, args *LookupWebAppSwiftVirtualNetworkConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSwiftVirtualNetworkConnectionSlotResult, error) {
 	var rv LookupWebAppSwiftVirtualNetworkConnectionSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:getWebAppSwiftVirtualNetworkConnectionSlot", args, &rv, opts...)

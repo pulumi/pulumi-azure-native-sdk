@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Live Event.
+//
+// Deprecated: azure-native:media/v20180701:LiveEvent is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20190501preview:LiveEvent to guarantee forwards compatibility.
 func LookupLiveEvent(ctx *pulumi.Context, args *LookupLiveEventArgs, opts ...pulumi.InvokeOption) (*LookupLiveEventResult, error) {
 	var rv LookupLiveEventResult
 	err := ctx.Invoke("azure-native:media/v20180701:getLiveEvent", args, &rv, opts...)

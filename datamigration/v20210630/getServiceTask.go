@@ -11,6 +11,8 @@ import (
 )
 
 // The service tasks resource is a nested, proxy-only resource representing work performed by a DMS instance. The GET method retrieves information about a service task.
+//
+// Deprecated: azure-native:datamigration/v20210630:ServiceTask is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:ServiceTask to guarantee forwards compatibility.
 func LookupServiceTask(ctx *pulumi.Context, args *LookupServiceTaskArgs, opts ...pulumi.InvokeOption) (*LookupServiceTaskResult, error) {
 	var rv LookupServiceTaskResult
 	err := ctx.Invoke("azure-native:datamigration/v20210630:getServiceTask", args, &rv, opts...)

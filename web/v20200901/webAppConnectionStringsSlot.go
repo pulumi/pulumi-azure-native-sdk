@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // String dictionary resource.
+//
+// Deprecated: azure-native:web/v20200901:WebAppConnectionStringsSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppConnectionStringsSlot to guarantee forwards compatibility.
 type WebAppConnectionStringsSlot struct {
 	pulumi.CustomResourceState
 

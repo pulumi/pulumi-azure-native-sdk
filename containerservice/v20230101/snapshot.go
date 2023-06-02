@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A node pool snapshot resource.
+//
+// Deprecated: azure-native:containerservice/v20230101:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:Snapshot to guarantee forwards compatibility.
 type Snapshot struct {
 	pulumi.CustomResourceState
 

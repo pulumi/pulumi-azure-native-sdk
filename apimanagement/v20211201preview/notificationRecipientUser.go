@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Recipient User details.
+//
+// Deprecated: azure-native:apimanagement/v20211201preview:NotificationRecipientUser is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:NotificationRecipientUser to guarantee forwards compatibility.
 type NotificationRecipientUser struct {
 	pulumi.CustomResourceState
 

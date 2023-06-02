@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure SQL managed instance.
+//
+// Deprecated: azure-native:sql/v20211101:ManagedInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedInstance to guarantee forwards compatibility.
 type ManagedInstance struct {
 	pulumi.CustomResourceState
 

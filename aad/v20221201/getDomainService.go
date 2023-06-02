@@ -91,7 +91,7 @@ func (val *LookupDomainServiceResult) Defaults() *LookupDomainServiceResult {
 
 	tmp.LdapsSettings = tmp.LdapsSettings.Defaults()
 
-	if isZero(tmp.SyncScope) {
+	if tmp.SyncScope == nil {
 		syncScope_ := "All"
 		tmp.SyncScope = &syncScope_
 	}

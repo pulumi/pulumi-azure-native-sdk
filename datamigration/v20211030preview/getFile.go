@@ -11,6 +11,8 @@ import (
 )
 
 // The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
+//
+// Deprecated: azure-native:datamigration/v20211030preview:File is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:File to guarantee forwards compatibility.
 func LookupFile(ctx *pulumi.Context, args *LookupFileArgs, opts ...pulumi.InvokeOption) (*LookupFileResult, error) {
 	var rv LookupFileResult
 	err := ctx.Invoke("azure-native:datamigration/v20211030preview:getFile", args, &rv, opts...)

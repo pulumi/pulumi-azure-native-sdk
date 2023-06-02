@@ -13,6 +13,7 @@ import (
 // Gets information about a snapshot.
 //
 // Deprecated: Version 2018-04-01 will be removed in v2 of the provider.
+// azure-native:compute/v20180401:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20180601:Snapshot to guarantee forwards compatibility.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("azure-native:compute/v20180401:getSnapshot", args, &rv, opts...)

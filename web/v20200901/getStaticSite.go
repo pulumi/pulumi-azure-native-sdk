@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of a static site.
+//
+// Deprecated: azure-native:web/v20200901:StaticSite is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:StaticSite to guarantee forwards compatibility.
 func LookupStaticSite(ctx *pulumi.Context, args *LookupStaticSiteArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteResult, error) {
 	var rv LookupStaticSiteResult
 	err := ctx.Invoke("azure-native:web/v20200901:getStaticSite", args, &rv, opts...)

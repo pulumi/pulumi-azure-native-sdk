@@ -11,6 +11,8 @@ import (
 )
 
 // Get domain ownership identifier for web app.
+//
+// Deprecated: azure-native:web/v20200601:WebAppDomainOwnershipIdentifierSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppDomainOwnershipIdentifierSlot to guarantee forwards compatibility.
 func LookupWebAppDomainOwnershipIdentifierSlot(ctx *pulumi.Context, args *LookupWebAppDomainOwnershipIdentifierSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDomainOwnershipIdentifierSlotResult, error) {
 	var rv LookupWebAppDomainOwnershipIdentifierSlotResult
 	err := ctx.Invoke("azure-native:web/v20200601:getWebAppDomainOwnershipIdentifierSlot", args, &rv, opts...)

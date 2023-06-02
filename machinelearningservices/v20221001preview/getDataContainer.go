@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20221001preview:DataContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:DataContainer to guarantee forwards compatibility.
 func LookupDataContainer(ctx *pulumi.Context, args *LookupDataContainerArgs, opts ...pulumi.InvokeOption) (*LookupDataContainerResult, error) {
 	var rv LookupDataContainerResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getDataContainer", args, &rv, opts...)

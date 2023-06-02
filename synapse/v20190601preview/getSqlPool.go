@@ -13,6 +13,7 @@ import (
 // Get SQL pool properties
 //
 // Deprecated: Version 2019-06-01-preview will be removed in v2 of the provider.
+// azure-native:synapse/v20190601preview:SqlPool is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210501:SqlPool to guarantee forwards compatibility.
 func LookupSqlPool(ctx *pulumi.Context, args *LookupSqlPoolArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolResult, error) {
 	var rv LookupSqlPoolResult
 	err := ctx.Invoke("azure-native:synapse/v20190601preview:getSqlPool", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20221001preview:ModelContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:ModelContainer to guarantee forwards compatibility.
 func LookupModelContainer(ctx *pulumi.Context, args *LookupModelContainerArgs, opts ...pulumi.InvokeOption) (*LookupModelContainerResult, error) {
 	var rv LookupModelContainerResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getModelContainer", args, &rv, opts...)

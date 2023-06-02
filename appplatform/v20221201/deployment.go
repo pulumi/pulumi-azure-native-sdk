@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Deployment resource payload
+//
+// Deprecated: azure-native:appplatform/v20221201:Deployment is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Deployment to guarantee forwards compatibility.
 type Deployment struct {
 	pulumi.CustomResourceState
 

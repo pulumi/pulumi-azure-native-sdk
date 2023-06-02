@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB Gremlin graph.
+//
+// Deprecated: azure-native:documentdb/v20211015preview:GremlinResourceGremlinGraph is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:GremlinResourceGremlinGraph to guarantee forwards compatibility.
 type GremlinResourceGremlinGraph struct {
 	pulumi.CustomResourceState
 

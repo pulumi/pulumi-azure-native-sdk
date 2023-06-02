@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The resource representation of a service in a service topology.
 //
 // Deprecated: Version 2018-09-01-preview will be removed in v2 of the provider.
+// azure-native:deploymentmanager/v20180901preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:deploymentmanager/v20191101preview:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

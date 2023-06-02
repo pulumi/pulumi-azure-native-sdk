@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the details of a RoutingIntent.
+//
+// Deprecated: azure-native:network/v20220501:RoutingIntent is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:RoutingIntent to guarantee forwards compatibility.
 func LookupRoutingIntent(ctx *pulumi.Context, args *LookupRoutingIntentArgs, opts ...pulumi.InvokeOption) (*LookupRoutingIntentResult, error) {
 	var rv LookupRoutingIntentResult
 	err := ctx.Invoke("azure-native:network/v20220501:getRoutingIntent", args, &rv, opts...)

@@ -13,6 +13,7 @@ import (
 // Maintenance configuration record type
 //
 // Deprecated: Version 2018-06-01-preview will be removed in v2 of the provider.
+// azure-native:maintenance/v20180601preview:MaintenanceConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:maintenance/v20221101preview:MaintenanceConfiguration to guarantee forwards compatibility.
 func LookupMaintenanceConfiguration(ctx *pulumi.Context, args *LookupMaintenanceConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupMaintenanceConfigurationResult, error) {
 	var rv LookupMaintenanceConfigurationResult
 	err := ctx.Invoke("azure-native:maintenance/v20180601preview:getMaintenanceConfiguration", args, &rv, opts...)

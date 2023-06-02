@@ -11,6 +11,8 @@ import (
 )
 
 // Get an assembly for an integration account.
+//
+// Deprecated: azure-native:logic/v20180701preview:IntegrationAccountAssembly is being removed in the next major version of this provider. Upgrade to at least azure-native:logic/v20190501:IntegrationAccountAssembly to guarantee forwards compatibility.
 func LookupIntegrationAccountAssembly(ctx *pulumi.Context, args *LookupIntegrationAccountAssemblyArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountAssemblyResult, error) {
 	var rv LookupIntegrationAccountAssemblyResult
 	err := ctx.Invoke("azure-native:logic/v20180701preview:getIntegrationAccountAssembly", args, &rv, opts...)

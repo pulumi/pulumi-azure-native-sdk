@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Storage mapping object.
+//
+// Deprecated: azure-native:recoveryservices/v20210701:ReplicationStorageClassificationMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationStorageClassificationMapping to guarantee forwards compatibility.
 type ReplicationStorageClassificationMapping struct {
 	pulumi.CustomResourceState
 

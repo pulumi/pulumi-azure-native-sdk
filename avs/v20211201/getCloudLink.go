@@ -11,6 +11,8 @@ import (
 )
 
 // A cloud link resource
+//
+// Deprecated: azure-native:avs/v20211201:CloudLink is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:CloudLink to guarantee forwards compatibility.
 func LookupCloudLink(ctx *pulumi.Context, args *LookupCloudLinkArgs, opts ...pulumi.InvokeOption) (*LookupCloudLinkResult, error) {
 	var rv LookupCloudLinkResult
 	err := ctx.Invoke("azure-native:avs/v20211201:getCloudLink", args, &rv, opts...)

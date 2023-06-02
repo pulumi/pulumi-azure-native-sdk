@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The manged cluster resource
+//
+// Deprecated: azure-native:servicefabric/v20210901privatepreview:ManagedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20220101:ManagedCluster to guarantee forwards compatibility.
 type ManagedCluster struct {
 	pulumi.CustomResourceState
 
@@ -101,13 +103,13 @@ func NewManagedCluster(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ClientConnectionPort) {
+	if args.ClientConnectionPort == nil {
 		args.ClientConnectionPort = pulumi.IntPtr(19000)
 	}
-	if isZero(args.HttpGatewayConnectionPort) {
+	if args.HttpGatewayConnectionPort == nil {
 		args.HttpGatewayConnectionPort = pulumi.IntPtr(19080)
 	}
-	if isZero(args.ZonalResiliency) {
+	if args.ZonalResiliency == nil {
 		args.ZonalResiliency = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

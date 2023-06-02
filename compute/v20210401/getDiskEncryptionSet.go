@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a disk encryption set.
+//
+// Deprecated: azure-native:compute/v20210401:DiskEncryptionSet is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220702:DiskEncryptionSet to guarantee forwards compatibility.
 func LookupDiskEncryptionSet(ctx *pulumi.Context, args *LookupDiskEncryptionSetArgs, opts ...pulumi.InvokeOption) (*LookupDiskEncryptionSetResult, error) {
 	var rv LookupDiskEncryptionSetResult
 	err := ctx.Invoke("azure-native:compute/v20210401:getDiskEncryptionSet", args, &rv, opts...)

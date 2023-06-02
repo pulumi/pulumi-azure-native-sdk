@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a description for the specified namespace.
+//
+// Deprecated: azure-native:servicebus/v20220101preview:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:Namespace to guarantee forwards compatibility.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	var rv LookupNamespaceResult
 	err := ctx.Invoke("azure-native:servicebus/v20220101preview:getNamespace", args, &rv, opts...)
@@ -81,7 +83,7 @@ func (val *LookupNamespaceResult) Defaults() *LookupNamespaceResult {
 	tmp := *val
 	tmp.Encryption = tmp.Encryption.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

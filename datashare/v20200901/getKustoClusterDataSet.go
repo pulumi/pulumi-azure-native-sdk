@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
+//
+// Deprecated: azure-native:datashare/v20200901:KustoClusterDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:KustoClusterDataSet to guarantee forwards compatibility.
 func LookupKustoClusterDataSet(ctx *pulumi.Context, args *LookupKustoClusterDataSetArgs, opts ...pulumi.InvokeOption) (*LookupKustoClusterDataSetResult, error) {
 	var rv LookupKustoClusterDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getKustoClusterDataSet", args, &rv, opts...)

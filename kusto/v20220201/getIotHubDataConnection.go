@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a data connection.
+//
+// Deprecated: azure-native:kusto/v20220201:IotHubDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:IotHubDataConnection to guarantee forwards compatibility.
 func LookupIotHubDataConnection(ctx *pulumi.Context, args *LookupIotHubDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotHubDataConnectionResult, error) {
 	var rv LookupIotHubDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20220201:getIotHubDataConnection", args, &rv, opts...)
@@ -70,7 +72,7 @@ func (val *LookupIotHubDataConnectionResult) Defaults() *LookupIotHubDataConnect
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DatabaseRouting) {
+	if tmp.DatabaseRouting == nil {
 		databaseRouting_ := "Single"
 		tmp.DatabaseRouting = &databaseRouting_
 	}

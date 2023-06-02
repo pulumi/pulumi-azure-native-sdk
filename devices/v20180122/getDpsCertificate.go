@@ -13,6 +13,7 @@ import (
 // Get the certificate from the provisioning service.
 //
 // Deprecated: Version 2018-01-22 will be removed in v2 of the provider.
+// azure-native:devices/v20180122:DpsCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20211015:DpsCertificate to guarantee forwards compatibility.
 func LookupDpsCertificate(ctx *pulumi.Context, args *LookupDpsCertificateArgs, opts ...pulumi.InvokeOption) (*LookupDpsCertificateResult, error) {
 	var rv LookupDpsCertificateResult
 	err := ctx.Invoke("azure-native:devices/v20180122:getDpsCertificate", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Get the resource and its properties.
+//
+// Deprecated: azure-native:webpubsub/v20220801preview:WebPubSub is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230201:WebPubSub to guarantee forwards compatibility.
 func LookupWebPubSub(ctx *pulumi.Context, args *LookupWebPubSubArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubResult, error) {
 	var rv LookupWebPubSubResult
 	err := ctx.Invoke("azure-native:webpubsub/v20220801preview:getWebPubSub", args, &rv, opts...)
@@ -91,17 +93,17 @@ func (val *LookupWebPubSubResult) Defaults() *LookupWebPubSubResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableAadAuth) {
+	if tmp.DisableAadAuth == nil {
 		disableAadAuth_ := false
 		tmp.DisableAadAuth = &disableAadAuth_
 	}
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
 	tmp.LiveTraceConfiguration = tmp.LiveTraceConfiguration.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

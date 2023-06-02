@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the job schedule identified by job schedule name.
+//
+// Deprecated: azure-native:automation/v20151031:JobSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:JobSchedule to guarantee forwards compatibility.
 func LookupJobSchedule(ctx *pulumi.Context, args *LookupJobScheduleArgs, opts ...pulumi.InvokeOption) (*LookupJobScheduleResult, error) {
 	var rv LookupJobScheduleResult
 	err := ctx.Invoke("azure-native:automation/v20151031:getJobSchedule", args, &rv, opts...)

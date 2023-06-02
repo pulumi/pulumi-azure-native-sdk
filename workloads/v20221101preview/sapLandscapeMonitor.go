@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // configuration associated with SAP Landscape Monitor Dashboard.
+//
+// Deprecated: azure-native:workloads/v20221101preview:SapLandscapeMonitor is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SapLandscapeMonitor to guarantee forwards compatibility.
 type SapLandscapeMonitor struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
+//
+// Deprecated: azure-native:securityandcompliance/v20210111:PrivateEndpointConnectionsAdtAPI is being removed in the next major version of this provider. Upgrade to at least azure-native:securityandcompliance/v20210308:PrivateEndpointConnectionsAdtAPI to guarantee forwards compatibility.
 type PrivateEndpointConnectionsAdtAPI struct {
 	pulumi.CustomResourceState
 

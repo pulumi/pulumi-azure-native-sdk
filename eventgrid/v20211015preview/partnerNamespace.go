@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EventGrid Partner Namespace.
+//
+// Deprecated: azure-native:eventgrid/v20211015preview:PartnerNamespace is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:PartnerNamespace to guarantee forwards compatibility.
 type PartnerNamespace struct {
 	pulumi.CustomResourceState
 
@@ -55,13 +57,13 @@ func NewPartnerNamespace(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.DisableLocalAuth) {
+	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.PartnerTopicRoutingMode) {
+	if args.PartnerTopicRoutingMode == nil {
 		args.PartnerTopicRoutingMode = pulumi.StringPtr("SourceEventAttribute")
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

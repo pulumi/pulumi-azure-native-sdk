@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a specific addon by name.
+//
+// Deprecated: azure-native:databoxedge/v20210601preview:IoTAddon is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20220301:IoTAddon to guarantee forwards compatibility.
 func LookupIoTAddon(ctx *pulumi.Context, args *LookupIoTAddonArgs, opts ...pulumi.InvokeOption) (*LookupIoTAddonResult, error) {
 	var rv LookupIoTAddonResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210601preview:getIoTAddon", args, &rv, opts...)

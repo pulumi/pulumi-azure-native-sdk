@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a server trust group.
+//
+// Deprecated: azure-native:sql/v20211101:ServerTrustGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerTrustGroup to guarantee forwards compatibility.
 func LookupServerTrustGroup(ctx *pulumi.Context, args *LookupServerTrustGroupArgs, opts ...pulumi.InvokeOption) (*LookupServerTrustGroupResult, error) {
 	var rv LookupServerTrustGroupResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getServerTrustGroup", args, &rv, opts...)

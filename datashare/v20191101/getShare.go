@@ -13,6 +13,7 @@ import (
 // Get a share
 //
 // Deprecated: Version 2019-11-01 will be removed in v2 of the provider.
+// azure-native:datashare/v20191101:Share is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:Share to guarantee forwards compatibility.
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
 	var rv LookupShareResult
 	err := ctx.Invoke("azure-native:datashare/v20191101:getShare", args, &rv, opts...)

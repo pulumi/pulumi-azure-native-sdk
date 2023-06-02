@@ -13,6 +13,7 @@ import (
 // This method gets job definition object by name.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
+// azure-native:hybriddata/v20160601:JobDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:hybriddata/v20190601:JobDefinition to guarantee forwards compatibility.
 func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupJobDefinitionResult, error) {
 	var rv LookupJobDefinitionResult
 	err := ctx.Invoke("azure-native:hybriddata/v20160601:getJobDefinition", args, &rv, opts...)
@@ -67,7 +68,7 @@ func (val *LookupJobDefinitionResult) Defaults() *LookupJobDefinitionResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UserConfirmation) {
+	if tmp.UserConfirmation == nil {
 		userConfirmation_ := "NotRequired"
 		tmp.UserConfirmation = &userConfirmation_
 	}

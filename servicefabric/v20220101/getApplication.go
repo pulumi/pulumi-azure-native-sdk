@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
+//
+// Deprecated: azure-native:servicefabric/v20220101:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20230201preview:Application to guarantee forwards compatibility.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:servicefabric/v20220101:getApplication", args, &rv, opts...)

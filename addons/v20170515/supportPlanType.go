@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The status of the Canonical support plan.
 //
 // Deprecated: Version 2017-05-15 will be removed in v2 of the provider.
+// azure-native:addons/v20170515:SupportPlanType is being removed in the next major version of this provider. Upgrade to at least azure-native:addons/v20180301:SupportPlanType to guarantee forwards compatibility.
 type SupportPlanType struct {
 	pulumi.CustomResourceState
 

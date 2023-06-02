@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
+//
+// Deprecated: azure-native:datashare/v20181101preview:BlobFolderDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:BlobFolderDataSetMapping to guarantee forwards compatibility.
 func LookupBlobFolderDataSetMapping(ctx *pulumi.Context, args *LookupBlobFolderDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupBlobFolderDataSetMappingResult, error) {
 	var rv LookupBlobFolderDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20181101preview:getBlobFolderDataSetMapping", args, &rv, opts...)

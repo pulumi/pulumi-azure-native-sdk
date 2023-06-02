@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint by resource group.
+//
+// Deprecated: azure-native:network/v20220501:PrivateEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:PrivateEndpoint to guarantee forwards compatibility.
 func LookupPrivateEndpoint(ctx *pulumi.Context, args *LookupPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointResult, error) {
 	var rv LookupPrivateEndpointResult
 	err := ctx.Invoke("azure-native:network/v20220501:getPrivateEndpoint", args, &rv, opts...)

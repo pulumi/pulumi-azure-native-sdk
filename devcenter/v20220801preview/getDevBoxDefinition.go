@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Dev Box definition
+//
+// Deprecated: azure-native:devcenter/v20220801preview:DevBoxDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:DevBoxDefinition to guarantee forwards compatibility.
 func LookupDevBoxDefinition(ctx *pulumi.Context, args *LookupDevBoxDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupDevBoxDefinitionResult, error) {
 	var rv LookupDevBoxDefinitionResult
 	err := ctx.Invoke("azure-native:devcenter/v20220801preview:getDevBoxDefinition", args, &rv, opts...)

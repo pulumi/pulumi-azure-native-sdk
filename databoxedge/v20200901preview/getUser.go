@@ -13,6 +13,7 @@ import (
 // Gets the properties of the specified user.
 //
 // Deprecated: Version 2020-09-01-preview will be removed in v2 of the provider.
+// azure-native:databoxedge/v20200901preview:User is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20210201preview:User to guarantee forwards compatibility.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200901preview:getUser", args, &rv, opts...)

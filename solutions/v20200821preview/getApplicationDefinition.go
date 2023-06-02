@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the managed application definition.
+//
+// Deprecated: azure-native:solutions/v20200821preview:ApplicationDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20210701:ApplicationDefinition to guarantee forwards compatibility.
 func LookupApplicationDefinition(ctx *pulumi.Context, args *LookupApplicationDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupApplicationDefinitionResult, error) {
 	var rv LookupApplicationDefinitionResult
 	err := ctx.Invoke("azure-native:solutions/v20200821preview:getApplicationDefinition", args, &rv, opts...)

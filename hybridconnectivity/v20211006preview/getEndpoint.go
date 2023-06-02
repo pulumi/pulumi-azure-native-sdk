@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the endpoint to the resource.
+//
+// Deprecated: azure-native:hybridconnectivity/v20211006preview:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridconnectivity/v20220501preview:Endpoint to guarantee forwards compatibility.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:hybridconnectivity/v20211006preview:getEndpoint", args, &rv, opts...)

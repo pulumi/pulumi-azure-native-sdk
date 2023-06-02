@@ -13,6 +13,7 @@ import (
 // Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 //
 // Deprecated: Version 2019-06-15 will be removed in v2 of the provider.
+// azure-native:cdn/v20190615:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Endpoint to guarantee forwards compatibility.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:cdn/v20190615:getEndpoint", args, &rv, opts...)

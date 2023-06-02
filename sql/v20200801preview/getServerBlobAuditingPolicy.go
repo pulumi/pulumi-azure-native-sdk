@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a server's blob auditing policy.
+//
+// Deprecated: azure-native:sql/v20200801preview:ServerBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerBlobAuditingPolicy to guarantee forwards compatibility.
 func LookupServerBlobAuditingPolicy(ctx *pulumi.Context, args *LookupServerBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServerBlobAuditingPolicyResult, error) {
 	var rv LookupServerBlobAuditingPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20200801preview:getServerBlobAuditingPolicy", args, &rv, opts...)

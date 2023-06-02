@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the Gateway hostname configuration specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20191201:GatewayHostnameConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:GatewayHostnameConfiguration to guarantee forwards compatibility.
 func LookupGatewayHostnameConfiguration(ctx *pulumi.Context, args *LookupGatewayHostnameConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupGatewayHostnameConfigurationResult, error) {
 	var rv LookupGatewayHostnameConfigurationResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201:getGatewayHostnameConfiguration", args, &rv, opts...)

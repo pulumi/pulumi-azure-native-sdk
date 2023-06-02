@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a deployment.
+//
+// Deprecated: azure-native:resources/v20190801:DeploymentAtScope is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:DeploymentAtScope to guarantee forwards compatibility.
 func LookupDeploymentAtScope(ctx *pulumi.Context, args *LookupDeploymentAtScopeArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentAtScopeResult, error) {
 	var rv LookupDeploymentAtScopeResult
 	err := ctx.Invoke("azure-native:resources/v20190801:getDeploymentAtScope", args, &rv, opts...)

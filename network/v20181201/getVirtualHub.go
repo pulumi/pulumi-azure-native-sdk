@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the details of a VirtualHub.
+//
+// Deprecated: azure-native:network/v20181201:VirtualHub is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200401:VirtualHub to guarantee forwards compatibility.
 func LookupVirtualHub(ctx *pulumi.Context, args *LookupVirtualHubArgs, opts ...pulumi.InvokeOption) (*LookupVirtualHubResult, error) {
 	var rv LookupVirtualHubResult
 	err := ctx.Invoke("azure-native:network/v20181201:getVirtualHub", args, &rv, opts...)

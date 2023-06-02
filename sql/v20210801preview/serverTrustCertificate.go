@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
+//
+// Deprecated: azure-native:sql/v20210801preview:ServerTrustCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerTrustCertificate to guarantee forwards compatibility.
 type ServerTrustCertificate struct {
 	pulumi.CustomResourceState
 

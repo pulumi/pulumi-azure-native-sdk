@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL server.
 //
 // Deprecated: Version 2017-03-01-preview will be removed in v2 of the provider.
+// azure-native:azuredata/v20170301preview:SqlServer is being removed in the next major version of this provider. Upgrade to at least azure-native:azuredata/v20190724preview:SqlServer to guarantee forwards compatibility.
 type SqlServer struct {
 	pulumi.CustomResourceState
 

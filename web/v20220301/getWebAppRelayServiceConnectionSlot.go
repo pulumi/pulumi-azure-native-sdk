@@ -11,6 +11,8 @@ import (
 )
 
 // Description for Gets a hybrid connection configuration by its name.
+//
+// Deprecated: azure-native:web/v20220301:WebAppRelayServiceConnectionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppRelayServiceConnectionSlot to guarantee forwards compatibility.
 func LookupWebAppRelayServiceConnectionSlot(ctx *pulumi.Context, args *LookupWebAppRelayServiceConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppRelayServiceConnectionSlotResult, error) {
 	var rv LookupWebAppRelayServiceConnectionSlotResult
 	err := ctx.Invoke("azure-native:web/v20220301:getWebAppRelayServiceConnectionSlot", args, &rv, opts...)

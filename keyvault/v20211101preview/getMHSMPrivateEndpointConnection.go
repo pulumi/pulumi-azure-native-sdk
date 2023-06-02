@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the managed HSM Pool.
+//
+// Deprecated: azure-native:keyvault/v20211101preview:MHSMPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:keyvault/v20230201:MHSMPrivateEndpointConnection to guarantee forwards compatibility.
 func LookupMHSMPrivateEndpointConnection(ctx *pulumi.Context, args *LookupMHSMPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupMHSMPrivateEndpointConnectionResult, error) {
 	var rv LookupMHSMPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:keyvault/v20211101preview:getMHSMPrivateEndpointConnection", args, &rv, opts...)

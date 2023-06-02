@@ -11,6 +11,8 @@ import (
 )
 
 // Use this method to get the device security group for the specified IoT Hub resource.
+//
+// Deprecated: azure-native:security/v20170801preview:DeviceSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20190801:DeviceSecurityGroup to guarantee forwards compatibility.
 func LookupDeviceSecurityGroup(ctx *pulumi.Context, args *LookupDeviceSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceSecurityGroupResult, error) {
 	var rv LookupDeviceSecurityGroupResult
 	err := ctx.Invoke("azure-native:security/v20170801preview:getDeviceSecurityGroup", args, &rv, opts...)

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Volume resource
 //
 // Deprecated: Version 2020-05-01 will be removed in v2 of the provider.
+// azure-native:netapp/v20200501:Volume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20211001:Volume to guarantee forwards compatibility.
 type Volume struct {
 	pulumi.CustomResourceState
 
@@ -83,13 +84,13 @@ func NewVolume(ctx *pulumi.Context,
 	if args.SubnetId == nil {
 		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
-	if isZero(args.KerberosEnabled) {
+	if args.KerberosEnabled == nil {
 		args.KerberosEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(args.ServiceLevel) {
+	if args.ServiceLevel == nil {
 		args.ServiceLevel = pulumi.StringPtr("Premium")
 	}
-	if isZero(args.UsageThreshold) {
+	if args.UsageThreshold == nil {
 		args.UsageThreshold = pulumi.Float64(107374182400.0)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

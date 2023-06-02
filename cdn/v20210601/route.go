@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Friendly Routes name mapping to the any Routes or secret related information.
+//
+// Deprecated: azure-native:cdn/v20210601:Route is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Route to guarantee forwards compatibility.
 type Route struct {
 	pulumi.CustomResourceState
 
@@ -69,13 +71,13 @@ func NewRoute(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ForwardingProtocol) {
+	if args.ForwardingProtocol == nil {
 		args.ForwardingProtocol = pulumi.StringPtr("MatchRequest")
 	}
-	if isZero(args.HttpsRedirect) {
+	if args.HttpsRedirect == nil {
 		args.HttpsRedirect = pulumi.StringPtr("Disabled")
 	}
-	if isZero(args.LinkToDefaultDomain) {
+	if args.LinkToDefaultDomain == nil {
 		args.LinkToDefaultDomain = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

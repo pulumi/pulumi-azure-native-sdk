@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the managed application.
+//
+// Deprecated: azure-native:solutions/v20200821preview:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20210701:Application to guarantee forwards compatibility.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:solutions/v20200821preview:getApplication", args, &rv, opts...)
