@@ -7,10 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:azureactivedirectory/v20210401:B2CTenant is being removed in the next major version of this provider. Upgrade to at least azure-native:azureactivedirectory/v20230118preview:B2CTenant to guarantee forwards compatibility.
 type B2CTenant struct {
 	pulumi.CustomResourceState
 

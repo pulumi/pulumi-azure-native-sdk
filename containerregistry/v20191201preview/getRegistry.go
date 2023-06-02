@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified container registry.
+//
+// Deprecated: azure-native:containerregistry/v20191201preview:Registry is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Registry to guarantee forwards compatibility.
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
 	var rv LookupRegistryResult
 	err := ctx.Invoke("azure-native:containerregistry/v20191201preview:getRegistry", args, &rv, opts...)
@@ -79,11 +81,11 @@ func (val *LookupRegistryResult) Defaults() *LookupRegistryResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdminUserEnabled) {
+	if tmp.AdminUserEnabled == nil {
 		adminUserEnabled_ := false
 		tmp.AdminUserEnabled = &adminUserEnabled_
 	}
-	if isZero(tmp.NetworkRuleBypassOptions) {
+	if tmp.NetworkRuleBypassOptions == nil {
 		networkRuleBypassOptions_ := "AzureServices"
 		tmp.NetworkRuleBypassOptions = &networkRuleBypassOptions_
 	}
@@ -91,7 +93,7 @@ func (val *LookupRegistryResult) Defaults() *LookupRegistryResult {
 
 	tmp.Policies = tmp.Policies.Defaults()
 
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

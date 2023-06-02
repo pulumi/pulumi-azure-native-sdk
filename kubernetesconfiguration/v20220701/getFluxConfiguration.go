@@ -11,6 +11,8 @@ import (
 )
 
 // Gets details of the Flux Configuration.
+//
+// Deprecated: azure-native:kubernetesconfiguration/v20220701:FluxConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20221101:FluxConfiguration to guarantee forwards compatibility.
 func LookupFluxConfiguration(ctx *pulumi.Context, args *LookupFluxConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupFluxConfigurationResult, error) {
 	var rv LookupFluxConfigurationResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20220701:getFluxConfiguration", args, &rv, opts...)
@@ -91,15 +93,15 @@ func (val *LookupFluxConfigurationResult) Defaults() *LookupFluxConfigurationRes
 
 	tmp.GitRepository = tmp.GitRepository.Defaults()
 
-	if isZero(tmp.Namespace) {
+	if tmp.Namespace == nil {
 		namespace_ := "default"
 		tmp.Namespace = &namespace_
 	}
-	if isZero(tmp.SourceKind) {
+	if tmp.SourceKind == nil {
 		sourceKind_ := "GitRepository"
 		tmp.SourceKind = &sourceKind_
 	}
-	if isZero(tmp.Suspend) {
+	if tmp.Suspend == nil {
 		suspend_ := false
 		tmp.Suspend = &suspend_
 	}

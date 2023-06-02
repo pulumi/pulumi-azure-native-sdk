@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Schedule for automatically turning virtual machines in a lab on and off at specified times.
+//
+// Deprecated: azure-native:labservices/v20211115preview:Schedule is being removed in the next major version of this provider. Upgrade to at least azure-native:labservices/v20220801:Schedule to guarantee forwards compatibility.
 type Schedule struct {
 	pulumi.CustomResourceState
 

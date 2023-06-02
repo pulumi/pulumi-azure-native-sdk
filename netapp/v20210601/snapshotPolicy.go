@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Snapshot policy information
+//
+// Deprecated: azure-native:netapp/v20210601:SnapshotPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:SnapshotPolicy to guarantee forwards compatibility.
 type SnapshotPolicy struct {
 	pulumi.CustomResourceState
 

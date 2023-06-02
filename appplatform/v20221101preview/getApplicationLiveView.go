@@ -11,6 +11,8 @@ import (
 )
 
 // Get the Application Live  and its properties.
+//
+// Deprecated: azure-native:appplatform/v20221101preview:ApplicationLiveView is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ApplicationLiveView to guarantee forwards compatibility.
 func LookupApplicationLiveView(ctx *pulumi.Context, args *LookupApplicationLiveViewArgs, opts ...pulumi.InvokeOption) (*LookupApplicationLiveViewResult, error) {
 	var rv LookupApplicationLiveViewResult
 	err := ctx.Invoke("azure-native:appplatform/v20221101preview:getApplicationLiveView", args, &rv, opts...)

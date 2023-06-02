@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
+//
+// Deprecated: azure-native:cdn/v20210601:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Endpoint to guarantee forwards compatibility.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
@@ -83,13 +85,13 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.IsHttpAllowed) {
+	if args.IsHttpAllowed == nil {
 		args.IsHttpAllowed = pulumi.BoolPtr(true)
 	}
-	if isZero(args.IsHttpsAllowed) {
+	if args.IsHttpsAllowed == nil {
 		args.IsHttpsAllowed = pulumi.BoolPtr(true)
 	}
-	if isZero(args.QueryStringCachingBehavior) {
+	if args.QueryStringCachingBehavior == nil {
 		args.QueryStringCachingBehavior = QueryStringCachingBehavior("NotSet")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

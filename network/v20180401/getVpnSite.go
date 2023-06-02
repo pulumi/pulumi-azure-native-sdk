@@ -13,6 +13,7 @@ import (
 // Retrieves the details of a VPN site.
 //
 // Deprecated: Version 2018-04-01 will be removed in v2 of the provider.
+// azure-native:network/v20180401:VpnSite is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20180701:VpnSite to guarantee forwards compatibility.
 func LookupVpnSite(ctx *pulumi.Context, args *LookupVpnSiteArgs, opts ...pulumi.InvokeOption) (*LookupVpnSiteResult, error) {
 	var rv LookupVpnSiteResult
 	err := ctx.Invoke("azure-native:network/v20180401:getVpnSite", args, &rv, opts...)

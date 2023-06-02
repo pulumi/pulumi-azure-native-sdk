@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified replica.
+//
+// Deprecated: azure-native:appconfiguration/v20220301preview:Replica is being removed in the next major version of this provider. Upgrade to at least azure-native:appconfiguration/v20230301:Replica to guarantee forwards compatibility.
 func LookupReplica(ctx *pulumi.Context, args *LookupReplicaArgs, opts ...pulumi.InvokeOption) (*LookupReplicaResult, error) {
 	var rv LookupReplicaResult
 	err := ctx.Invoke("azure-native:appconfiguration/v20220301preview:getReplica", args, &rv, opts...)

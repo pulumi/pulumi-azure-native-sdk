@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Flux Configuration object returned in Get & Put response.
+//
+// Deprecated: azure-native:kubernetesconfiguration/v20220301:FluxConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20221101:FluxConfiguration to guarantee forwards compatibility.
 type FluxConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -80,13 +82,13 @@ func NewFluxConfiguration(ctx *pulumi.Context,
 	if args.GitRepository != nil {
 		args.GitRepository = args.GitRepository.ToGitRepositoryDefinitionPtrOutput().ApplyT(func(v *GitRepositoryDefinition) *GitRepositoryDefinition { return v.Defaults() }).(GitRepositoryDefinitionPtrOutput)
 	}
-	if isZero(args.Namespace) {
+	if args.Namespace == nil {
 		args.Namespace = pulumi.StringPtr("default")
 	}
-	if isZero(args.SourceKind) {
+	if args.SourceKind == nil {
 		args.SourceKind = pulumi.StringPtr("GitRepository")
 	}
-	if isZero(args.Suspend) {
+	if args.Suspend == nil {
 		args.Suspend = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

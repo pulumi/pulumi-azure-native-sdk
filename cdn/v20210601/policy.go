@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines web application firewall policy for Azure CDN.
+//
+// Deprecated: azure-native:cdn/v20210601:Policy is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Policy to guarantee forwards compatibility.
 type Policy struct {
 	pulumi.CustomResourceState
 

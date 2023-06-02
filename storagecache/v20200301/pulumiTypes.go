@@ -489,7 +489,7 @@ func (val *CacheNetworkSettings) Defaults() *CacheNetworkSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
@@ -519,7 +519,7 @@ func (val *CacheNetworkSettingsArgs) Defaults() *CacheNetworkSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		tmp.Mtu = pulumi.IntPtr(1500)
 	}
 	return &tmp
@@ -655,7 +655,7 @@ func (val *CacheNetworkSettingsResponse) Defaults() *CacheNetworkSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}

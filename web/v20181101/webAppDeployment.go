@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // User credentials used for publishing activity.
+//
+// Deprecated: azure-native:web/v20181101:WebAppDeployment is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppDeployment to guarantee forwards compatibility.
 type WebAppDeployment struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Machine Learning service object wrapped into ARM resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20200901preview:ACIService is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:ACIService to guarantee forwards compatibility.
 type ACIService struct {
 	pulumi.CustomResourceState
 
@@ -47,14 +49,14 @@ func NewACIService(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	if isZero(args.AppInsightsEnabled) {
+	if args.AppInsightsEnabled == nil {
 		args.AppInsightsEnabled = pulumi.BoolPtr(false)
 	}
-	if isZero(args.AuthEnabled) {
+	if args.AuthEnabled == nil {
 		args.AuthEnabled = pulumi.BoolPtr(false)
 	}
 	args.ComputeType = pulumi.String("ACI")
-	if isZero(args.SslEnabled) {
+	if args.SslEnabled == nil {
 		args.SslEnabled = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

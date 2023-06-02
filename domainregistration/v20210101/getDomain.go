@@ -11,6 +11,8 @@ import (
 )
 
 // Get a domain.
+//
+// Deprecated: azure-native:domainregistration/v20210101:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:domainregistration/v20220901:Domain to guarantee forwards compatibility.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	var rv LookupDomainResult
 	err := ctx.Invoke("azure-native:domainregistration/v20210101:getDomain", args, &rv, opts...)
@@ -79,7 +81,7 @@ func (val *LookupDomainResult) Defaults() *LookupDomainResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoRenew) {
+	if tmp.AutoRenew == nil {
 		autoRenew_ := true
 		tmp.AutoRenew = &autoRenew_
 	}

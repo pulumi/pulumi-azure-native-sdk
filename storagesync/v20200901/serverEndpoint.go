@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Server Endpoint object.
+//
+// Deprecated: azure-native:storagesync/v20200901:ServerEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:storagesync/v20220601:ServerEndpoint to guarantee forwards compatibility.
 type ServerEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -79,19 +81,19 @@ func NewServerEndpoint(ctx *pulumi.Context,
 	if args.SyncGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'SyncGroupName'")
 	}
-	if isZero(args.InitialDownloadPolicy) {
+	if args.InitialDownloadPolicy == nil {
 		args.InitialDownloadPolicy = pulumi.StringPtr("NamespaceThenModifiedFiles")
 	}
-	if isZero(args.InitialUploadPolicy) {
+	if args.InitialUploadPolicy == nil {
 		args.InitialUploadPolicy = pulumi.StringPtr("Merge")
 	}
-	if isZero(args.LocalCacheMode) {
+	if args.LocalCacheMode == nil {
 		args.LocalCacheMode = pulumi.StringPtr("UpdateLocallyCachedFiles")
 	}
-	if isZero(args.TierFilesOlderThanDays) {
+	if args.TierFilesOlderThanDays == nil {
 		args.TierFilesOlderThanDays = pulumi.IntPtr(0)
 	}
-	if isZero(args.VolumeFreeSpacePercent) {
+	if args.VolumeFreeSpacePercent == nil {
 		args.VolumeFreeSpacePercent = pulumi.IntPtr(20)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

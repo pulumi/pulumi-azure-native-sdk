@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The policy definition.
+//
+// Deprecated: azure-native:authorization/v20180301:PolicyDefinitionAtManagementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20180501:PolicyDefinitionAtManagementGroup to guarantee forwards compatibility.
 type PolicyDefinitionAtManagementGroup struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,7 @@ import (
 // Retrieves information about an SSH public key.
 //
 // Deprecated: Version 2019-12-01 will be removed in v2 of the provider.
+// azure-native:compute/v20191201:SshPublicKey is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:SshPublicKey to guarantee forwards compatibility.
 func LookupSshPublicKey(ctx *pulumi.Context, args *LookupSshPublicKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshPublicKeyResult, error) {
 	var rv LookupSshPublicKeyResult
 	err := ctx.Invoke("azure-native:compute/v20191201:getSshPublicKey", args, &rv, opts...)

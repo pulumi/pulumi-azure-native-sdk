@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about an azure ad administrator.
+//
+// Deprecated: azure-native:dbformysql/v20211201preview:AzureADAdministrator is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20220101:AzureADAdministrator to guarantee forwards compatibility.
 func LookupAzureADAdministrator(ctx *pulumi.Context, args *LookupAzureADAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupAzureADAdministratorResult, error) {
 	var rv LookupAzureADAdministratorResult
 	err := ctx.Invoke("azure-native:dbformysql/v20211201preview:getAzureADAdministrator", args, &rv, opts...)

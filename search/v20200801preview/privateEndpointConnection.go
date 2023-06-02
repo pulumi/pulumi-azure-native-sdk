@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes an existing Private Endpoint connection to the Azure Cognitive Search service.
+//
+// Deprecated: azure-native:search/v20200801preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:search/v20220901:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

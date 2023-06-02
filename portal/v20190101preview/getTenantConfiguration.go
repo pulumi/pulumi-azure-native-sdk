@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the tenant configuration.
+//
+// Deprecated: azure-native:portal/v20190101preview:TenantConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:portal/v20200901preview:TenantConfiguration to guarantee forwards compatibility.
 func LookupTenantConfiguration(ctx *pulumi.Context, args *LookupTenantConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupTenantConfigurationResult, error) {
 	var rv LookupTenantConfigurationResult
 	err := ctx.Invoke("azure-native:portal/v20190101preview:getTenantConfiguration", args, &rv, opts...)

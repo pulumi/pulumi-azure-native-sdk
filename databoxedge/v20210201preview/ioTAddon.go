@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // IoT Addon.
+//
+// Deprecated: azure-native:databoxedge/v20210201preview:IoTAddon is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20220301:IoTAddon to guarantee forwards compatibility.
 type IoTAddon struct {
 	pulumi.CustomResourceState
 

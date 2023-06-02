@@ -11,6 +11,8 @@ import (
 )
 
 // Get an iSCSI Target.
+//
+// Deprecated: azure-native:storagepool/v20210401preview:IscsiTarget is being removed in the next major version of this provider. Upgrade to at least azure-native:storagepool/v20210801:IscsiTarget to guarantee forwards compatibility.
 func LookupIscsiTarget(ctx *pulumi.Context, args *LookupIscsiTargetArgs, opts ...pulumi.InvokeOption) (*LookupIscsiTargetResult, error) {
 	var rv LookupIscsiTargetResult
 	err := ctx.Invoke("azure-native:storagepool/v20210401preview:getIscsiTarget", args, &rv, opts...)

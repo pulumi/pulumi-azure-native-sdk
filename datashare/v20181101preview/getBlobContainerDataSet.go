@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
+//
+// Deprecated: azure-native:datashare/v20181101preview:BlobContainerDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:BlobContainerDataSet to guarantee forwards compatibility.
 func LookupBlobContainerDataSet(ctx *pulumi.Context, args *LookupBlobContainerDataSetArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerDataSetResult, error) {
 	var rv LookupBlobContainerDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20181101preview:getBlobContainerDataSet", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,7 +66,7 @@ func NewDomainTopicEventSubscription(ctx *pulumi.Context,
 	if args.TopicName == nil {
 		return nil, errors.New("invalid value for required argument 'TopicName'")
 	}
-	if isZero(args.EventDeliverySchema) {
+	if args.EventDeliverySchema == nil {
 		args.EventDeliverySchema = pulumi.StringPtr("EventGridSchema")
 	}
 	if args.Filter != nil {

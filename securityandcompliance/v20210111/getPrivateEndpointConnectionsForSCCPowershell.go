@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the service.
+//
+// Deprecated: azure-native:securityandcompliance/v20210111:PrivateEndpointConnectionsForSCCPowershell is being removed in the next major version of this provider. Upgrade to at least azure-native:securityandcompliance/v20210308:PrivateEndpointConnectionsForSCCPowershell to guarantee forwards compatibility.
 func LookupPrivateEndpointConnectionsForSCCPowershell(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionsForSCCPowershellArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionsForSCCPowershellResult, error) {
 	var rv LookupPrivateEndpointConnectionsForSCCPowershellResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210111:getPrivateEndpointConnectionsForSCCPowershell", args, &rv, opts...)

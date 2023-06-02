@@ -13,6 +13,7 @@ import (
 // The Get VirtualNetwork operation retrieves information about the specified virtual network.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
+// azure-native:network/v20160601:VirtualNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:VirtualNetwork to guarantee forwards compatibility.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	var rv LookupVirtualNetworkResult
 	err := ctx.Invoke("azure-native:network/v20160601:getVirtualNetwork", args, &rv, opts...)

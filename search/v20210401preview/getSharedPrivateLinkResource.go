@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the shared private link resource managed by the search service in the given resource group.
+//
+// Deprecated: azure-native:search/v20210401preview:SharedPrivateLinkResource is being removed in the next major version of this provider. Upgrade to at least azure-native:search/v20220901:SharedPrivateLinkResource to guarantee forwards compatibility.
 func LookupSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupSharedPrivateLinkResourceResult, error) {
 	var rv LookupSharedPrivateLinkResourceResult
 	err := ctx.Invoke("azure-native:search/v20210401preview:getSharedPrivateLinkResource", args, &rv, opts...)

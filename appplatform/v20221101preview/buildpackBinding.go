@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Buildpack Binding Resource object
+//
+// Deprecated: azure-native:appplatform/v20221101preview:BuildpackBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildpackBinding to guarantee forwards compatibility.
 type BuildpackBinding struct {
 	pulumi.CustomResourceState
 

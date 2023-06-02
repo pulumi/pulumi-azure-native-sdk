@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified service Endpoint Policies in a specified resource group.
+//
+// Deprecated: azure-native:network/v20181201:ServiceEndpointPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ServiceEndpointPolicy to guarantee forwards compatibility.
 func LookupServiceEndpointPolicy(ctx *pulumi.Context, args *LookupServiceEndpointPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointPolicyResult, error) {
 	var rv LookupServiceEndpointPolicyResult
 	err := ctx.Invoke("azure-native:network/v20181201:getServiceEndpointPolicy", args, &rv, opts...)

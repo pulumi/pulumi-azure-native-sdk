@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data connector.
+//
+// Deprecated: azure-native:securityinsights/v20220701preview:TiTaxiiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:TiTaxiiDataConnector to guarantee forwards compatibility.
 func LookupTiTaxiiDataConnector(ctx *pulumi.Context, args *LookupTiTaxiiDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupTiTaxiiDataConnectorResult, error) {
 	var rv LookupTiTaxiiDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getTiTaxiiDataConnector", args, &rv, opts...)

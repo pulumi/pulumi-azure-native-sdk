@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the details of a VirtualWAN.
+//
+// Deprecated: azure-native:network/v20190901:VirtualWan is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualWan to guarantee forwards compatibility.
 func LookupVirtualWan(ctx *pulumi.Context, args *LookupVirtualWanArgs, opts ...pulumi.InvokeOption) (*LookupVirtualWanResult, error) {
 	var rv LookupVirtualWanResult
 	err := ctx.Invoke("azure-native:network/v20190901:getVirtualWan", args, &rv, opts...)

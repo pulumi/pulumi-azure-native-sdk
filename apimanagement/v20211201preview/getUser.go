@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the user specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20211201preview:User is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:User to guarantee forwards compatibility.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:getUser", args, &rv, opts...)
@@ -61,7 +63,7 @@ func (val *LookupUserResult) Defaults() *LookupUserResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.State) {
+	if tmp.State == nil {
 		state_ := "active"
 		tmp.State = &state_
 	}

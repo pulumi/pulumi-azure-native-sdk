@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified network group.
+//
+// Deprecated: azure-native:network/v20220201preview:NetworkGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220401preview:NetworkGroup to guarantee forwards compatibility.
 func LookupNetworkGroup(ctx *pulumi.Context, args *LookupNetworkGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkGroupResult, error) {
 	var rv LookupNetworkGroupResult
 	err := ctx.Invoke("azure-native:network/v20220201preview:getNetworkGroup", args, &rv, opts...)

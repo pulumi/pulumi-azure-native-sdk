@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20220501:CodeVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:CodeVersion to guarantee forwards compatibility.
 func LookupCodeVersion(ctx *pulumi.Context, args *LookupCodeVersionArgs, opts ...pulumi.InvokeOption) (*LookupCodeVersionResult, error) {
 	var rv LookupCodeVersionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220501:getCodeVersion", args, &rv, opts...)

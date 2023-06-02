@@ -11,6 +11,8 @@ import (
 )
 
 // Description for Get the named public certificate for an app (or deployment slot, if specified).
+//
+// Deprecated: azure-native:web/v20220301:WebAppPublicCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppPublicCertificate to guarantee forwards compatibility.
 func LookupWebAppPublicCertificate(ctx *pulumi.Context, args *LookupWebAppPublicCertificateArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPublicCertificateResult, error) {
 	var rv LookupWebAppPublicCertificateResult
 	err := ctx.Invoke("azure-native:web/v20220301:getWebAppPublicCertificate", args, &rv, opts...)

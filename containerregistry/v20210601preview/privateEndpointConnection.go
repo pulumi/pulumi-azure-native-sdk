@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a private endpoint connection for a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20210601preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

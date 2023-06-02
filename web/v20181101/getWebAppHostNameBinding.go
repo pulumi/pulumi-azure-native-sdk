@@ -11,6 +11,8 @@ import (
 )
 
 // Get the named hostname binding for an app (or deployment slot, if specified).
+//
+// Deprecated: azure-native:web/v20181101:WebAppHostNameBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppHostNameBinding to guarantee forwards compatibility.
 func LookupWebAppHostNameBinding(ctx *pulumi.Context, args *LookupWebAppHostNameBindingArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHostNameBindingResult, error) {
 	var rv LookupWebAppHostNameBindingResult
 	err := ctx.Invoke("azure-native:web/v20181101:getWebAppHostNameBinding", args, &rv, opts...)

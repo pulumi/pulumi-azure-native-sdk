@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class represent a resource.
+//
+// Deprecated: azure-native:signalrservice/v20211001:SignalR is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230201:SignalR to guarantee forwards compatibility.
 type SignalR struct {
 	pulumi.CustomResourceState
 
@@ -90,13 +92,13 @@ func NewSignalR(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.DisableAadAuth) {
+	if args.DisableAadAuth == nil {
 		args.DisableAadAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.DisableLocalAuth) {
+	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	if args.Tls != nil {

@@ -11,6 +11,8 @@ import (
 )
 
 // Get a buildpack binding by name.
+//
+// Deprecated: azure-native:appplatform/v20220301preview:BuildpackBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildpackBinding to guarantee forwards compatibility.
 func LookupBuildpackBinding(ctx *pulumi.Context, args *LookupBuildpackBindingArgs, opts ...pulumi.InvokeOption) (*LookupBuildpackBindingResult, error) {
 	var rv LookupBuildpackBindingResult
 	err := ctx.Invoke("azure-native:appplatform/v20220301preview:getBuildpackBinding", args, &rv, opts...)

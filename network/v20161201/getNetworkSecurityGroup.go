@@ -13,6 +13,7 @@ import (
 // Gets the specified network security group.
 //
 // Deprecated: Version 2016-12-01 will be removed in v2 of the provider.
+// azure-native:network/v20161201:NetworkSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:NetworkSecurityGroup to guarantee forwards compatibility.
 func LookupNetworkSecurityGroup(ctx *pulumi.Context, args *LookupNetworkSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityGroupResult, error) {
 	var rv LookupNetworkSecurityGroupResult
 	err := ctx.Invoke("azure-native:network/v20161201:getNetworkSecurityGroup", args, &rv, opts...)

@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:machinelearningservices/v20220501:BatchDeployment is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:BatchDeployment to guarantee forwards compatibility.
 func LookupBatchDeployment(ctx *pulumi.Context, args *LookupBatchDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupBatchDeploymentResult, error) {
 	var rv LookupBatchDeploymentResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220501:getBatchDeployment", args, &rv, opts...)

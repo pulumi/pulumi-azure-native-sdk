@@ -13,6 +13,7 @@ import (
 // Returns a description for the specified queue.
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
+// azure-native:servicebus/v20140901:Queue is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20150801:Queue to guarantee forwards compatibility.
 func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.InvokeOption) (*LookupQueueResult, error) {
 	var rv LookupQueueResult
 	err := ctx.Invoke("azure-native:servicebus/v20140901:getQueue", args, &rv, opts...)

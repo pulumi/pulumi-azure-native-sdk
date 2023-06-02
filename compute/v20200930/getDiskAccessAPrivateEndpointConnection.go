@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a private endpoint connection under a disk access resource.
+//
+// Deprecated: azure-native:compute/v20200930:DiskAccessAPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220702:DiskAccessAPrivateEndpointConnection to guarantee forwards compatibility.
 func LookupDiskAccessAPrivateEndpointConnection(ctx *pulumi.Context, args *LookupDiskAccessAPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupDiskAccessAPrivateEndpointConnectionResult, error) {
 	var rv LookupDiskAccessAPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:compute/v20200930:getDiskAccessAPrivateEndpointConnection", args, &rv, opts...)

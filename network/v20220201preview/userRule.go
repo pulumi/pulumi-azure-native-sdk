@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Network security user rule.
+//
+// Deprecated: azure-native:network/v20220201preview:UserRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220401preview:UserRule to guarantee forwards compatibility.
 type UserRule struct {
 	pulumi.CustomResourceState
 

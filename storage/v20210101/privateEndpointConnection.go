@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
+//
+// Deprecated: azure-native:storage/v20210101:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

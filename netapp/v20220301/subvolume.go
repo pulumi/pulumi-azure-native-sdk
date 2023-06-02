@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subvolume Information properties
+//
+// Deprecated: azure-native:netapp/v20220301:Subvolume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Subvolume to guarantee forwards compatibility.
 type Subvolume struct {
 	pulumi.CustomResourceState
 

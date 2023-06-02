@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Appliances definition.
+//
+// Deprecated: azure-native:resourceconnector/v20220415preview:Appliance is being removed in the next major version of this provider. Upgrade to at least azure-native:resourceconnector/v20221027:Appliance to guarantee forwards compatibility.
 type Appliance struct {
 	pulumi.CustomResourceState
 
@@ -51,7 +53,7 @@ func NewAppliance(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Distro) {
+	if args.Distro == nil {
 		args.Distro = pulumi.StringPtr("AKSEdge")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

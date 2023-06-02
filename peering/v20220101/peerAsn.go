@@ -11,6 +11,8 @@ import (
 )
 
 // The essential information related to the peer's ASN.
+//
+// Deprecated: azure-native:peering/v20220101:PeerAsn is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:PeerAsn to guarantee forwards compatibility.
 type PeerAsn struct {
 	pulumi.CustomResourceState
 

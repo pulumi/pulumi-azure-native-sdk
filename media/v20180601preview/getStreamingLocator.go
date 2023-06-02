@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of a Streaming Locator in the Media Services account
+//
+// Deprecated: azure-native:media/v20180601preview:StreamingLocator is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:StreamingLocator to guarantee forwards compatibility.
 func LookupStreamingLocator(ctx *pulumi.Context, args *LookupStreamingLocatorArgs, opts ...pulumi.InvokeOption) (*LookupStreamingLocatorResult, error) {
 	var rv LookupStreamingLocatorResult
 	err := ctx.Invoke("azure-native:media/v20180601preview:getStreamingLocator", args, &rv, opts...)

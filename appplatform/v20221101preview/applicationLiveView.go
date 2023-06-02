@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Application Live View resource
+//
+// Deprecated: azure-native:appplatform/v20221101preview:ApplicationLiveView is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ApplicationLiveView to guarantee forwards compatibility.
 type ApplicationLiveView struct {
 	pulumi.CustomResourceState
 

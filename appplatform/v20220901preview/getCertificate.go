@@ -11,6 +11,8 @@ import (
 )
 
 // Get the certificate resource.
+//
+// Deprecated: azure-native:appplatform/v20220901preview:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Certificate to guarantee forwards compatibility.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:appplatform/v20220901preview:getCertificate", args, &rv, opts...)

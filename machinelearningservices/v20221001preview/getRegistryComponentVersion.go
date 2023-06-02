@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20221001preview:RegistryComponentVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:RegistryComponentVersion to guarantee forwards compatibility.
 func LookupRegistryComponentVersion(ctx *pulumi.Context, args *LookupRegistryComponentVersionArgs, opts ...pulumi.InvokeOption) (*LookupRegistryComponentVersionResult, error) {
 	var rv LookupRegistryComponentVersionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getRegistryComponentVersion", args, &rv, opts...)

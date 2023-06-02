@@ -11,6 +11,8 @@ import (
 )
 
 // Organization resource.
+//
+// Deprecated: azure-native:confluent/v20210901preview:Organization is being removed in the next major version of this provider. Upgrade to at least azure-native:confluent/v20211201:Organization to guarantee forwards compatibility.
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	var rv LookupOrganizationResult
 	err := ctx.Invoke("azure-native:confluent/v20210901preview:getOrganization", args, &rv, opts...)

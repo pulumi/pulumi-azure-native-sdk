@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a database on the RedisEnterprise cluster
+//
+// Deprecated: azure-native:cache/v20201001preview:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20230301preview:Database to guarantee forwards compatibility.
 type Database struct {
 	pulumi.CustomResourceState
 

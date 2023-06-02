@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+//
+// Deprecated: azure-native:servicefabric/v20220801preview:ManagedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20221001preview:ManagedCluster to guarantee forwards compatibility.
 func LookupManagedCluster(ctx *pulumi.Context, args *LookupManagedClusterArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterResult, error) {
 	var rv LookupManagedClusterResult
 	err := ctx.Invoke("azure-native:servicefabric/v20220801preview:getManagedCluster", args, &rv, opts...)
@@ -115,15 +117,15 @@ func (val *LookupManagedClusterResult) Defaults() *LookupManagedClusterResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientConnectionPort) {
+	if tmp.ClientConnectionPort == nil {
 		clientConnectionPort_ := 19000
 		tmp.ClientConnectionPort = &clientConnectionPort_
 	}
-	if isZero(tmp.HttpGatewayConnectionPort) {
+	if tmp.HttpGatewayConnectionPort == nil {
 		httpGatewayConnectionPort_ := 19080
 		tmp.HttpGatewayConnectionPort = &httpGatewayConnectionPort_
 	}
-	if isZero(tmp.ZonalResiliency) {
+	if tmp.ZonalResiliency == nil {
 		zonalResiliency_ := false
 		tmp.ZonalResiliency = &zonalResiliency_
 	}

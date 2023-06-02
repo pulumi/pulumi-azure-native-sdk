@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An ADP account.
 //
 // Deprecated: Version 2020-07-01-preview will be removed in v2 of the provider.
+// azure-native:autonomousdevelopmentplatform/v20200701preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:autonomousdevelopmentplatform/v20211101preview:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A stored credential that can be used by a job to connect to target databases.
+//
+// Deprecated: azure-native:sql/v20210501preview:JobCredential is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:JobCredential to guarantee forwards compatibility.
 type JobCredential struct {
 	pulumi.CustomResourceState
 

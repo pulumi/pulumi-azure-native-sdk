@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Property details.
+//
+// Deprecated: azure-native:apimanagement/v20180601preview:Property is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20190101:Property to guarantee forwards compatibility.
 type Property struct {
 	pulumi.CustomResourceState
 

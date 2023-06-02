@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the capacity reservation.
+//
+// Deprecated: azure-native:compute/v20211101:CapacityReservation is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:CapacityReservation to guarantee forwards compatibility.
 type CapacityReservation struct {
 	pulumi.CustomResourceState
 

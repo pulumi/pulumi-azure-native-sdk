@@ -13,6 +13,7 @@ import (
 // Get the details of the specified volume
 //
 // Deprecated: Version 2020-03-01 will be removed in v2 of the provider.
+// azure-native:netapp/v20200301:Volume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20211001:Volume to guarantee forwards compatibility.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:netapp/v20200301:getVolume", args, &rv, opts...)
@@ -83,7 +84,7 @@ func (val *LookupVolumeResult) Defaults() *LookupVolumeResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ServiceLevel) {
+	if tmp.ServiceLevel == nil {
 		serviceLevel_ := "Premium"
 		tmp.ServiceLevel = &serviceLevel_
 	}

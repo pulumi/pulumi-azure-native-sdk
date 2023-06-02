@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An access policy is used to grant users and applications access to the environment. Roles are assigned to service principals in Azure Active Directory. These roles define the actions the principal can perform through the Time Series Insights data plane APIs.
 //
 // Deprecated: Version 2018-08-15-preview will be removed in v2 of the provider.
+// azure-native:timeseriesinsights/v20180815preview:AccessPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:timeseriesinsights/v20210630preview:AccessPolicy to guarantee forwards compatibility.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 

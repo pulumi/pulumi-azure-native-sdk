@@ -31000,7 +31000,7 @@ func (val *FlowLogFormatParameters) Defaults() *FlowLogFormatParameters {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Version) {
+	if tmp.Version == nil {
 		version_ := 0
 		tmp.Version = &version_
 	}
@@ -31032,7 +31032,7 @@ func (val *FlowLogFormatParametersArgs) Defaults() *FlowLogFormatParametersArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Version) {
+	if tmp.Version == nil {
 		tmp.Version = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -31183,7 +31183,7 @@ func (val *FlowLogFormatParametersResponse) Defaults() *FlowLogFormatParametersR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Version) {
+	if tmp.Version == nil {
 		version_ := 0
 		tmp.Version = &version_
 	}
@@ -34032,7 +34032,7 @@ func (val *IPConfigurationResponse) Defaults() *IPConfigurationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateIPAllocationMethod) {
+	if tmp.PrivateIPAllocationMethod == nil {
 		privateIPAllocationMethod_ := "Dynamic"
 		tmp.PrivateIPAllocationMethod = &privateIPAllocationMethod_
 	}
@@ -43608,7 +43608,7 @@ func (val *PacketCaptureFilter) Defaults() *PacketCaptureFilter {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "Any"
 		tmp.Protocol = &protocol_
 	}
@@ -43646,7 +43646,7 @@ func (val *PacketCaptureFilterArgs) Defaults() *PacketCaptureFilterArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		tmp.Protocol = pulumi.StringPtr("Any")
 	}
 	return &tmp
@@ -43768,7 +43768,7 @@ func (val *PacketCaptureFilterResponse) Defaults() *PacketCaptureFilterResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Protocol) {
+	if tmp.Protocol == nil {
 		protocol_ := "Any"
 		tmp.Protocol = &protocol_
 	}
@@ -50703,11 +50703,11 @@ func (val *RetentionPolicyParameters) Defaults() *RetentionPolicyParameters {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		days_ := 0
 		tmp.Days = &days_
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}
@@ -50739,10 +50739,10 @@ func (val *RetentionPolicyParametersArgs) Defaults() *RetentionPolicyParametersA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		tmp.Days = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		tmp.Enabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -50893,11 +50893,11 @@ func (val *RetentionPolicyParametersResponse) Defaults() *RetentionPolicyParamet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Days) {
+	if tmp.Days == nil {
 		days_ := 0
 		tmp.Days = &days_
 	}
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := false
 		tmp.Enabled = &enabled_
 	}
@@ -53983,7 +53983,7 @@ func (val *Sku) Defaults() *Sku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		name_ := "Standard"
 		tmp.Name = &name_
 	}
@@ -54013,7 +54013,7 @@ func (val *SkuArgs) Defaults() *SkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		tmp.Name = pulumi.StringPtr("Standard")
 	}
 	return &tmp
@@ -54147,7 +54147,7 @@ func (val *SkuResponse) Defaults() *SkuResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		name_ := "Standard"
 		tmp.Name = &name_
 	}
@@ -54908,11 +54908,11 @@ func (val *SubnetType) Defaults() *SubnetType {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateEndpointNetworkPolicies) {
+	if tmp.PrivateEndpointNetworkPolicies == nil {
 		privateEndpointNetworkPolicies_ := "Disabled"
 		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
 	}
-	if isZero(tmp.PrivateLinkServiceNetworkPolicies) {
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
 		privateLinkServiceNetworkPolicies_ := "Enabled"
 		tmp.PrivateLinkServiceNetworkPolicies = &privateLinkServiceNetworkPolicies_
 	}
@@ -54970,10 +54970,10 @@ func (val *SubnetTypeArgs) Defaults() *SubnetTypeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateEndpointNetworkPolicies) {
+	if tmp.PrivateEndpointNetworkPolicies == nil {
 		tmp.PrivateEndpointNetworkPolicies = pulumi.StringPtr("Disabled")
 	}
-	if isZero(tmp.PrivateLinkServiceNetworkPolicies) {
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
 		tmp.PrivateLinkServiceNetworkPolicies = pulumi.StringPtr("Enabled")
 	}
 	return &tmp
@@ -55406,11 +55406,11 @@ func (val *SubnetResponse) Defaults() *SubnetResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateEndpointNetworkPolicies) {
+	if tmp.PrivateEndpointNetworkPolicies == nil {
 		privateEndpointNetworkPolicies_ := "Disabled"
 		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
 	}
-	if isZero(tmp.PrivateLinkServiceNetworkPolicies) {
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
 		privateLinkServiceNetworkPolicies_ := "Enabled"
 		tmp.PrivateLinkServiceNetworkPolicies = &privateLinkServiceNetworkPolicies_
 	}

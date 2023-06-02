@@ -11,6 +11,8 @@ import (
 )
 
 // Get private endpoint connection properties
+//
+// Deprecated: azure-native:devices/v20211015:IotDpsResourcePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20230301preview:IotDpsResourcePrivateEndpointConnection to guarantee forwards compatibility.
 func LookupIotDpsResourcePrivateEndpointConnection(ctx *pulumi.Context, args *LookupIotDpsResourcePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotDpsResourcePrivateEndpointConnectionResult, error) {
 	var rv LookupIotDpsResourcePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:devices/v20211015:getIotDpsResourcePrivateEndpointConnection", args, &rv, opts...)

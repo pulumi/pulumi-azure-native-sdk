@@ -13,6 +13,7 @@ import (
 // Get a msixpackage.
 //
 // Deprecated: Version 2020-10-19-preview will be removed in v2 of the provider.
+// azure-native:desktopvirtualization/v20201019preview:MSIXPackage is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:MSIXPackage to guarantee forwards compatibility.
 func LookupMSIXPackage(ctx *pulumi.Context, args *LookupMSIXPackageArgs, opts ...pulumi.InvokeOption) (*LookupMSIXPackageResult, error) {
 	var rv LookupMSIXPackageResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20201019preview:getMSIXPackage", args, &rv, opts...)

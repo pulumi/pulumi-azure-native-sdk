@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of a domain topic.
+//
+// Deprecated: azure-native:eventgrid/v20211201:DomainTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:DomainTopic to guarantee forwards compatibility.
 func LookupDomainTopic(ctx *pulumi.Context, args *LookupDomainTopicArgs, opts ...pulumi.InvokeOption) (*LookupDomainTopicResult, error) {
 	var rv LookupDomainTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211201:getDomainTopic", args, &rv, opts...)

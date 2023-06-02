@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
+//
+// Deprecated: azure-native:streamanalytics/v20170401preview:Input is being removed in the next major version of this provider. Upgrade to at least azure-native:streamanalytics/v20211001preview:Input to guarantee forwards compatibility.
 type Input struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,7 @@ import (
 // Gets a SQL Server.
 //
 // Deprecated: Version 2017-03-01-preview will be removed in v2 of the provider.
+// azure-native:azuredata/v20170301preview:SqlServer is being removed in the next major version of this provider. Upgrade to at least azure-native:azuredata/v20190724preview:SqlServer to guarantee forwards compatibility.
 func LookupSqlServer(ctx *pulumi.Context, args *LookupSqlServerArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerResult, error) {
 	var rv LookupSqlServerResult
 	err := ctx.Invoke("azure-native:azuredata/v20170301preview:getSqlServer", args, &rv, opts...)

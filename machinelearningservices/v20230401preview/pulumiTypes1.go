@@ -662,11 +662,11 @@ func (val *SparkJob) Defaults() *SparkJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -758,11 +758,11 @@ func (val *SparkJobResponse) Defaults() *SparkJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -800,7 +800,7 @@ func (val *SparkResourceConfiguration) Defaults() *SparkResourceConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RuntimeVersion) {
+	if tmp.RuntimeVersion == nil {
 		runtimeVersion_ := "3.1"
 		tmp.RuntimeVersion = &runtimeVersion_
 	}
@@ -820,7 +820,7 @@ func (val *SparkResourceConfigurationResponse) Defaults() *SparkResourceConfigur
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RuntimeVersion) {
+	if tmp.RuntimeVersion == nil {
 		runtimeVersion_ := "3.1"
 		tmp.RuntimeVersion = &runtimeVersion_
 	}
@@ -875,11 +875,11 @@ func (val *StackEnsembleSettings) Defaults() *StackEnsembleSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StackMetaLearnerTrainPercentage) {
+	if tmp.StackMetaLearnerTrainPercentage == nil {
 		stackMetaLearnerTrainPercentage_ := 0.2
 		tmp.StackMetaLearnerTrainPercentage = &stackMetaLearnerTrainPercentage_
 	}
-	if isZero(tmp.StackMetaLearnerType) {
+	if tmp.StackMetaLearnerType == nil {
 		stackMetaLearnerType_ := "None"
 		tmp.StackMetaLearnerType = &stackMetaLearnerType_
 	}
@@ -902,11 +902,11 @@ func (val *StackEnsembleSettingsResponse) Defaults() *StackEnsembleSettingsRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.StackMetaLearnerTrainPercentage) {
+	if tmp.StackMetaLearnerTrainPercentage == nil {
 		stackMetaLearnerTrainPercentage_ := 0.2
 		tmp.StackMetaLearnerTrainPercentage = &stackMetaLearnerTrainPercentage_
 	}
-	if isZero(tmp.StackMetaLearnerType) {
+	if tmp.StackMetaLearnerType == nil {
 		stackMetaLearnerType_ := "None"
 		tmp.StackMetaLearnerType = &stackMetaLearnerType_
 	}
@@ -1203,11 +1203,11 @@ func (val *SweepJob) Defaults() *SweepJob {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -1305,11 +1305,11 @@ func (val *SweepJobResponse) Defaults() *SweepJobResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExperimentName) {
+	if tmp.ExperimentName == nil {
 		experimentName_ := "Default"
 		tmp.ExperimentName = &experimentName_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -2191,11 +2191,11 @@ func (val *TableFixedParameters) Defaults() *TableFixedParameters {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.WithMean) {
+	if tmp.WithMean == nil {
 		withMean_ := false
 		tmp.WithMean = &withMean_
 	}
-	if isZero(tmp.WithStd) {
+	if tmp.WithStd == nil {
 		withStd_ := false
 		tmp.WithStd = &withStd_
 	}
@@ -2252,11 +2252,11 @@ func (val *TableFixedParametersResponse) Defaults() *TableFixedParametersRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.WithMean) {
+	if tmp.WithMean == nil {
 		withMean_ := false
 		tmp.WithMean = &withMean_
 	}
-	if isZero(tmp.WithStd) {
+	if tmp.WithStd == nil {
 		withStd_ := false
 		tmp.WithStd = &withStd_
 	}
@@ -2387,11 +2387,11 @@ func (val *TableVerticalFeaturizationSettings) Defaults() *TableVerticalFeaturiz
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnFeaturization) {
+	if tmp.EnableDnnFeaturization == nil {
 		enableDnnFeaturization_ := false
 		tmp.EnableDnnFeaturization = &enableDnnFeaturization_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Auto"
 		tmp.Mode = &mode_
 	}
@@ -2422,11 +2422,11 @@ func (val *TableVerticalFeaturizationSettingsResponse) Defaults() *TableVertical
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableDnnFeaturization) {
+	if tmp.EnableDnnFeaturization == nil {
 		enableDnnFeaturization_ := false
 		tmp.EnableDnnFeaturization = &enableDnnFeaturization_
 	}
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "Auto"
 		tmp.Mode = &mode_
 	}
@@ -2463,39 +2463,39 @@ func (val *TableVerticalLimitSettings) Defaults() *TableVerticalLimitSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEarlyTermination) {
+	if tmp.EnableEarlyTermination == nil {
 		enableEarlyTermination_ := true
 		tmp.EnableEarlyTermination = &enableEarlyTermination_
 	}
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxCoresPerTrial) {
+	if tmp.MaxCoresPerTrial == nil {
 		maxCoresPerTrial_ := -1
 		tmp.MaxCoresPerTrial = &maxCoresPerTrial_
 	}
-	if isZero(tmp.MaxNodes) {
+	if tmp.MaxNodes == nil {
 		maxNodes_ := 1
 		tmp.MaxNodes = &maxNodes_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1000
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.SweepConcurrentTrials) {
+	if tmp.SweepConcurrentTrials == nil {
 		sweepConcurrentTrials_ := 0
 		tmp.SweepConcurrentTrials = &sweepConcurrentTrials_
 	}
-	if isZero(tmp.SweepTrials) {
+	if tmp.SweepTrials == nil {
 		sweepTrials_ := 0
 		tmp.SweepTrials = &sweepTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT6H"
 		tmp.Timeout = &timeout_
 	}
-	if isZero(tmp.TrialTimeout) {
+	if tmp.TrialTimeout == nil {
 		trialTimeout_ := "PT30M"
 		tmp.TrialTimeout = &trialTimeout_
 	}
@@ -2532,39 +2532,39 @@ func (val *TableVerticalLimitSettingsResponse) Defaults() *TableVerticalLimitSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEarlyTermination) {
+	if tmp.EnableEarlyTermination == nil {
 		enableEarlyTermination_ := true
 		tmp.EnableEarlyTermination = &enableEarlyTermination_
 	}
-	if isZero(tmp.MaxConcurrentTrials) {
+	if tmp.MaxConcurrentTrials == nil {
 		maxConcurrentTrials_ := 1
 		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
 	}
-	if isZero(tmp.MaxCoresPerTrial) {
+	if tmp.MaxCoresPerTrial == nil {
 		maxCoresPerTrial_ := -1
 		tmp.MaxCoresPerTrial = &maxCoresPerTrial_
 	}
-	if isZero(tmp.MaxNodes) {
+	if tmp.MaxNodes == nil {
 		maxNodes_ := 1
 		tmp.MaxNodes = &maxNodes_
 	}
-	if isZero(tmp.MaxTrials) {
+	if tmp.MaxTrials == nil {
 		maxTrials_ := 1000
 		tmp.MaxTrials = &maxTrials_
 	}
-	if isZero(tmp.SweepConcurrentTrials) {
+	if tmp.SweepConcurrentTrials == nil {
 		sweepConcurrentTrials_ := 0
 		tmp.SweepConcurrentTrials = &sweepConcurrentTrials_
 	}
-	if isZero(tmp.SweepTrials) {
+	if tmp.SweepTrials == nil {
 		sweepTrials_ := 0
 		tmp.SweepTrials = &sweepTrials_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := "PT6H"
 		tmp.Timeout = &timeout_
 	}
-	if isZero(tmp.TrialTimeout) {
+	if tmp.TrialTimeout == nil {
 		trialTimeout_ := "PT30M"
 		tmp.TrialTimeout = &trialTimeout_
 	}
@@ -2590,19 +2590,19 @@ func (val *TargetUtilizationScaleSettings) Defaults() *TargetUtilizationScaleSet
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxInstances) {
+	if tmp.MaxInstances == nil {
 		maxInstances_ := 1
 		tmp.MaxInstances = &maxInstances_
 	}
-	if isZero(tmp.MinInstances) {
+	if tmp.MinInstances == nil {
 		minInstances_ := 1
 		tmp.MinInstances = &minInstances_
 	}
-	if isZero(tmp.PollingInterval) {
+	if tmp.PollingInterval == nil {
 		pollingInterval_ := "PT1S"
 		tmp.PollingInterval = &pollingInterval_
 	}
-	if isZero(tmp.TargetUtilizationPercentage) {
+	if tmp.TargetUtilizationPercentage == nil {
 		targetUtilizationPercentage_ := 70
 		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
 	}
@@ -2628,19 +2628,19 @@ func (val *TargetUtilizationScaleSettingsResponse) Defaults() *TargetUtilization
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxInstances) {
+	if tmp.MaxInstances == nil {
 		maxInstances_ := 1
 		tmp.MaxInstances = &maxInstances_
 	}
-	if isZero(tmp.MinInstances) {
+	if tmp.MinInstances == nil {
 		minInstances_ := 1
 		tmp.MinInstances = &minInstances_
 	}
-	if isZero(tmp.PollingInterval) {
+	if tmp.PollingInterval == nil {
 		pollingInterval_ := "PT1S"
 		tmp.PollingInterval = &pollingInterval_
 	}
-	if isZero(tmp.TargetUtilizationPercentage) {
+	if tmp.TargetUtilizationPercentage == nil {
 		targetUtilizationPercentage_ := 70
 		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
 	}
@@ -2664,7 +2664,7 @@ func (val *TensorFlow) Defaults() *TensorFlow {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ParameterServerCount) {
+	if tmp.ParameterServerCount == nil {
 		parameterServerCount_ := 0
 		tmp.ParameterServerCount = &parameterServerCount_
 	}
@@ -2688,7 +2688,7 @@ func (val *TensorFlowResponse) Defaults() *TensorFlowResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ParameterServerCount) {
+	if tmp.ParameterServerCount == nil {
 		parameterServerCount_ := 0
 		tmp.ParameterServerCount = &parameterServerCount_
 	}
@@ -2734,11 +2734,11 @@ func (val *TextClassification) Defaults() *TextClassification {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -2786,7 +2786,7 @@ func (val *TextClassificationMultilabel) Defaults() *TextClassificationMultilabe
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -2837,7 +2837,7 @@ func (val *TextClassificationMultilabelResponse) Defaults() *TextClassificationM
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -2887,11 +2887,11 @@ func (val *TextClassificationResponse) Defaults() *TextClassificationResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
-	if isZero(tmp.PrimaryMetric) {
+	if tmp.PrimaryMetric == nil {
 		primaryMetric_ := "Accuracy"
 		tmp.PrimaryMetric = &primaryMetric_
 	}
@@ -2940,7 +2940,7 @@ func (val *TextNer) Defaults() *TextNer {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -2992,7 +2992,7 @@ func (val *TextNerResponse) Defaults() *TextNerResponse {
 
 	tmp.LimitSettings = tmp.LimitSettings.Defaults()
 
-	if isZero(tmp.LogVerbosity) {
+	if tmp.LogVerbosity == nil {
 		logVerbosity_ := "Info"
 		tmp.LogVerbosity = &logVerbosity_
 	}
@@ -3026,7 +3026,7 @@ func (val *TopNFeaturesByAttribution) Defaults() *TopNFeaturesByAttribution {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Top) {
+	if tmp.Top == nil {
 		top_ := 10
 		tmp.Top = &top_
 	}
@@ -3046,7 +3046,7 @@ func (val *TopNFeaturesByAttributionResponse) Defaults() *TopNFeaturesByAttribut
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Top) {
+	if tmp.Top == nil {
 		top_ := 10
 		tmp.Top = &top_
 	}
@@ -3125,7 +3125,7 @@ func (val *TritonModelJobInput) Defaults() *TritonModelJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -3150,7 +3150,7 @@ func (val *TritonModelJobInputResponse) Defaults() *TritonModelJobInputResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -3183,7 +3183,7 @@ func (val *TritonModelJobOutput) Defaults() *TritonModelJobOutput {
 	tmp := *val
 	tmp.AutoDeleteSetting = tmp.AutoDeleteSetting.Defaults()
 
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -3216,7 +3216,7 @@ func (val *TritonModelJobOutputResponse) Defaults() *TritonModelJobOutputRespons
 	tmp := *val
 	tmp.AutoDeleteSetting = tmp.AutoDeleteSetting.Defaults()
 
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -3241,15 +3241,15 @@ func (val *TruncationSelectionPolicy) Defaults() *TruncationSelectionPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.TruncationPercentage) {
+	if tmp.TruncationPercentage == nil {
 		truncationPercentage_ := 0
 		tmp.TruncationPercentage = &truncationPercentage_
 	}
@@ -3274,15 +3274,15 @@ func (val *TruncationSelectionPolicyResponse) Defaults() *TruncationSelectionPol
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DelayEvaluation) {
+	if tmp.DelayEvaluation == nil {
 		delayEvaluation_ := 0
 		tmp.DelayEvaluation = &delayEvaluation_
 	}
-	if isZero(tmp.EvaluationInterval) {
+	if tmp.EvaluationInterval == nil {
 		evaluationInterval_ := 0
 		tmp.EvaluationInterval = &evaluationInterval_
 	}
-	if isZero(tmp.TruncationPercentage) {
+	if tmp.TruncationPercentage == nil {
 		truncationPercentage_ := 0
 		tmp.TruncationPercentage = &truncationPercentage_
 	}
@@ -3324,11 +3324,11 @@ func (val *UriFileDataVersion) Defaults() *UriFileDataVersion {
 
 	tmp.IntellectualProperty = tmp.IntellectualProperty.Defaults()
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3370,11 +3370,11 @@ func (val *UriFileDataVersionResponse) Defaults() *UriFileDataVersionResponse {
 
 	tmp.IntellectualProperty = tmp.IntellectualProperty.Defaults()
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3399,7 +3399,7 @@ func (val *UriFileJobInput) Defaults() *UriFileJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -3424,7 +3424,7 @@ func (val *UriFileJobInputResponse) Defaults() *UriFileJobInputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -3457,7 +3457,7 @@ func (val *UriFileJobOutput) Defaults() *UriFileJobOutput {
 	tmp := *val
 	tmp.AutoDeleteSetting = tmp.AutoDeleteSetting.Defaults()
 
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -3490,7 +3490,7 @@ func (val *UriFileJobOutputResponse) Defaults() *UriFileJobOutputResponse {
 	tmp := *val
 	tmp.AutoDeleteSetting = tmp.AutoDeleteSetting.Defaults()
 
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -3532,11 +3532,11 @@ func (val *UriFolderDataVersion) Defaults() *UriFolderDataVersion {
 
 	tmp.IntellectualProperty = tmp.IntellectualProperty.Defaults()
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3578,11 +3578,11 @@ func (val *UriFolderDataVersionResponse) Defaults() *UriFolderDataVersionRespons
 
 	tmp.IntellectualProperty = tmp.IntellectualProperty.Defaults()
 
-	if isZero(tmp.IsAnonymous) {
+	if tmp.IsAnonymous == nil {
 		isAnonymous_ := false
 		tmp.IsAnonymous = &isAnonymous_
 	}
-	if isZero(tmp.IsArchived) {
+	if tmp.IsArchived == nil {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
@@ -3607,7 +3607,7 @@ func (val *UriFolderJobInput) Defaults() *UriFolderJobInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -3632,7 +3632,7 @@ func (val *UriFolderJobInputResponse) Defaults() *UriFolderJobInputResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadOnlyMount"
 		tmp.Mode = &mode_
 	}
@@ -3665,7 +3665,7 @@ func (val *UriFolderJobOutput) Defaults() *UriFolderJobOutput {
 	tmp := *val
 	tmp.AutoDeleteSetting = tmp.AutoDeleteSetting.Defaults()
 
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -3698,7 +3698,7 @@ func (val *UriFolderJobOutputResponse) Defaults() *UriFolderJobOutputResponse {
 	tmp := *val
 	tmp.AutoDeleteSetting = tmp.AutoDeleteSetting.Defaults()
 
-	if isZero(tmp.Mode) {
+	if tmp.Mode == nil {
 		mode_ := "ReadWriteMount"
 		tmp.Mode = &mode_
 	}
@@ -4345,7 +4345,7 @@ func (val *VolumeDefinition) Defaults() *VolumeDefinition {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "bind"
 		tmp.Type = &type_
 	}
@@ -4377,7 +4377,7 @@ func (val *VolumeDefinitionResponse) Defaults() *VolumeDefinitionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if tmp.Type == nil {
 		type_ := "bind"
 		tmp.Type = &type_
 	}

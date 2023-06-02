@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX VM Group
+//
+// Deprecated: azure-native:avs/v20210601:WorkloadNetworkVMGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkVMGroup to guarantee forwards compatibility.
 type WorkloadNetworkVMGroup struct {
 	pulumi.CustomResourceState
 

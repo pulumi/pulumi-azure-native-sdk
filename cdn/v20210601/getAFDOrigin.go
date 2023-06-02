@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing origin within an origin group.
+//
+// Deprecated: azure-native:cdn/v20210601:AFDOrigin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:AFDOrigin to guarantee forwards compatibility.
 func LookupAFDOrigin(ctx *pulumi.Context, args *LookupAFDOriginArgs, opts ...pulumi.InvokeOption) (*LookupAFDOriginResult, error) {
 	var rv LookupAFDOriginResult
 	err := ctx.Invoke("azure-native:cdn/v20210601:getAFDOrigin", args, &rv, opts...)
@@ -74,15 +76,15 @@ func (val *LookupAFDOriginResult) Defaults() *LookupAFDOriginResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnforceCertificateNameCheck) {
+	if tmp.EnforceCertificateNameCheck == nil {
 		enforceCertificateNameCheck_ := true
 		tmp.EnforceCertificateNameCheck = &enforceCertificateNameCheck_
 	}
-	if isZero(tmp.HttpPort) {
+	if tmp.HttpPort == nil {
 		httpPort_ := 80
 		tmp.HttpPort = &httpPort_
 	}
-	if isZero(tmp.HttpsPort) {
+	if tmp.HttpsPort == nil {
 		httpsPort_ := 443
 		tmp.HttpsPort = &httpsPort_
 	}

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the property specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20180101:Property is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20190101:Property to guarantee forwards compatibility.
 func LookupProperty(ctx *pulumi.Context, args *LookupPropertyArgs, opts ...pulumi.InvokeOption) (*LookupPropertyResult, error) {
 	var rv LookupPropertyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getProperty", args, &rv, opts...)

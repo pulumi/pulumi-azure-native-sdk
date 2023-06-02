@@ -1018,13 +1018,13 @@ func (val *ArmApplicationHealthPolicy) Defaults() *ArmApplicationHealthPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConsiderWarningAsError) {
+	if tmp.ConsiderWarningAsError == nil {
 		considerWarningAsError_ := false
 		tmp.ConsiderWarningAsError = &considerWarningAsError_
 	}
 	tmp.DefaultServiceTypeHealthPolicy = tmp.DefaultServiceTypeHealthPolicy.Defaults()
 
-	if isZero(tmp.MaxPercentUnhealthyDeployedApplications) {
+	if tmp.MaxPercentUnhealthyDeployedApplications == nil {
 		maxPercentUnhealthyDeployedApplications_ := 0
 		tmp.MaxPercentUnhealthyDeployedApplications = &maxPercentUnhealthyDeployedApplications_
 	}
@@ -1063,11 +1063,11 @@ func (val *ArmApplicationHealthPolicyArgs) Defaults() *ArmApplicationHealthPolic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConsiderWarningAsError) {
+	if tmp.ConsiderWarningAsError == nil {
 		tmp.ConsiderWarningAsError = pulumi.BoolPtr(false)
 	}
 
-	if isZero(tmp.MaxPercentUnhealthyDeployedApplications) {
+	if tmp.MaxPercentUnhealthyDeployedApplications == nil {
 		tmp.MaxPercentUnhealthyDeployedApplications = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -1265,13 +1265,13 @@ func (val *ArmApplicationHealthPolicyResponse) Defaults() *ArmApplicationHealthP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConsiderWarningAsError) {
+	if tmp.ConsiderWarningAsError == nil {
 		considerWarningAsError_ := false
 		tmp.ConsiderWarningAsError = &considerWarningAsError_
 	}
 	tmp.DefaultServiceTypeHealthPolicy = tmp.DefaultServiceTypeHealthPolicy.Defaults()
 
-	if isZero(tmp.MaxPercentUnhealthyDeployedApplications) {
+	if tmp.MaxPercentUnhealthyDeployedApplications == nil {
 		maxPercentUnhealthyDeployedApplications_ := 0
 		tmp.MaxPercentUnhealthyDeployedApplications = &maxPercentUnhealthyDeployedApplications_
 	}
@@ -1783,15 +1783,15 @@ func (val *ArmServiceTypeHealthPolicy) Defaults() *ArmServiceTypeHealthPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyPartitionsPerService) {
+	if tmp.MaxPercentUnhealthyPartitionsPerService == nil {
 		maxPercentUnhealthyPartitionsPerService_ := 0
 		tmp.MaxPercentUnhealthyPartitionsPerService = &maxPercentUnhealthyPartitionsPerService_
 	}
-	if isZero(tmp.MaxPercentUnhealthyReplicasPerPartition) {
+	if tmp.MaxPercentUnhealthyReplicasPerPartition == nil {
 		maxPercentUnhealthyReplicasPerPartition_ := 0
 		tmp.MaxPercentUnhealthyReplicasPerPartition = &maxPercentUnhealthyReplicasPerPartition_
 	}
-	if isZero(tmp.MaxPercentUnhealthyServices) {
+	if tmp.MaxPercentUnhealthyServices == nil {
 		maxPercentUnhealthyServices_ := 0
 		tmp.MaxPercentUnhealthyServices = &maxPercentUnhealthyServices_
 	}
@@ -1825,13 +1825,13 @@ func (val *ArmServiceTypeHealthPolicyArgs) Defaults() *ArmServiceTypeHealthPolic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyPartitionsPerService) {
+	if tmp.MaxPercentUnhealthyPartitionsPerService == nil {
 		tmp.MaxPercentUnhealthyPartitionsPerService = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.MaxPercentUnhealthyReplicasPerPartition) {
+	if tmp.MaxPercentUnhealthyReplicasPerPartition == nil {
 		tmp.MaxPercentUnhealthyReplicasPerPartition = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.MaxPercentUnhealthyServices) {
+	if tmp.MaxPercentUnhealthyServices == nil {
 		tmp.MaxPercentUnhealthyServices = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -2044,15 +2044,15 @@ func (val *ArmServiceTypeHealthPolicyResponse) Defaults() *ArmServiceTypeHealthP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyPartitionsPerService) {
+	if tmp.MaxPercentUnhealthyPartitionsPerService == nil {
 		maxPercentUnhealthyPartitionsPerService_ := 0
 		tmp.MaxPercentUnhealthyPartitionsPerService = &maxPercentUnhealthyPartitionsPerService_
 	}
-	if isZero(tmp.MaxPercentUnhealthyReplicasPerPartition) {
+	if tmp.MaxPercentUnhealthyReplicasPerPartition == nil {
 		maxPercentUnhealthyReplicasPerPartition_ := 0
 		tmp.MaxPercentUnhealthyReplicasPerPartition = &maxPercentUnhealthyReplicasPerPartition_
 	}
-	if isZero(tmp.MaxPercentUnhealthyServices) {
+	if tmp.MaxPercentUnhealthyServices == nil {
 		maxPercentUnhealthyServices_ := 0
 		tmp.MaxPercentUnhealthyServices = &maxPercentUnhealthyServices_
 	}
@@ -3075,11 +3075,11 @@ func (val *ClusterHealthPolicy) Defaults() *ClusterHealthPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyApplications) {
+	if tmp.MaxPercentUnhealthyApplications == nil {
 		maxPercentUnhealthyApplications_ := 0
 		tmp.MaxPercentUnhealthyApplications = &maxPercentUnhealthyApplications_
 	}
-	if isZero(tmp.MaxPercentUnhealthyNodes) {
+	if tmp.MaxPercentUnhealthyNodes == nil {
 		maxPercentUnhealthyNodes_ := 0
 		tmp.MaxPercentUnhealthyNodes = &maxPercentUnhealthyNodes_
 	}
@@ -3125,10 +3125,10 @@ func (val *ClusterHealthPolicyArgs) Defaults() *ClusterHealthPolicyArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyApplications) {
+	if tmp.MaxPercentUnhealthyApplications == nil {
 		tmp.MaxPercentUnhealthyApplications = pulumi.IntPtr(0)
 	}
-	if isZero(tmp.MaxPercentUnhealthyNodes) {
+	if tmp.MaxPercentUnhealthyNodes == nil {
 		tmp.MaxPercentUnhealthyNodes = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -3332,11 +3332,11 @@ func (val *ClusterHealthPolicyResponse) Defaults() *ClusterHealthPolicyResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyApplications) {
+	if tmp.MaxPercentUnhealthyApplications == nil {
 		maxPercentUnhealthyApplications_ := 0
 		tmp.MaxPercentUnhealthyApplications = &maxPercentUnhealthyApplications_
 	}
-	if isZero(tmp.MaxPercentUnhealthyNodes) {
+	if tmp.MaxPercentUnhealthyNodes == nil {
 		maxPercentUnhealthyNodes_ := 0
 		tmp.MaxPercentUnhealthyNodes = &maxPercentUnhealthyNodes_
 	}
@@ -6250,7 +6250,7 @@ func (val *ServiceTypeDeltaHealthPolicy) Defaults() *ServiceTypeDeltaHealthPolic
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentDeltaUnhealthyServices) {
+	if tmp.MaxPercentDeltaUnhealthyServices == nil {
 		maxPercentDeltaUnhealthyServices_ := 0
 		tmp.MaxPercentDeltaUnhealthyServices = &maxPercentDeltaUnhealthyServices_
 	}
@@ -6282,7 +6282,7 @@ func (val *ServiceTypeDeltaHealthPolicyArgs) Defaults() *ServiceTypeDeltaHealthP
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentDeltaUnhealthyServices) {
+	if tmp.MaxPercentDeltaUnhealthyServices == nil {
 		tmp.MaxPercentDeltaUnhealthyServices = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -6467,7 +6467,7 @@ func (val *ServiceTypeDeltaHealthPolicyResponse) Defaults() *ServiceTypeDeltaHea
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentDeltaUnhealthyServices) {
+	if tmp.MaxPercentDeltaUnhealthyServices == nil {
 		maxPercentDeltaUnhealthyServices_ := 0
 		tmp.MaxPercentDeltaUnhealthyServices = &maxPercentDeltaUnhealthyServices_
 	}
@@ -6564,7 +6564,7 @@ func (val *ServiceTypeHealthPolicy) Defaults() *ServiceTypeHealthPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyServices) {
+	if tmp.MaxPercentUnhealthyServices == nil {
 		maxPercentUnhealthyServices_ := 0
 		tmp.MaxPercentUnhealthyServices = &maxPercentUnhealthyServices_
 	}
@@ -6594,7 +6594,7 @@ func (val *ServiceTypeHealthPolicyArgs) Defaults() *ServiceTypeHealthPolicyArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyServices) {
+	if tmp.MaxPercentUnhealthyServices == nil {
 		tmp.MaxPercentUnhealthyServices = pulumi.IntPtr(0)
 	}
 	return &tmp
@@ -6773,7 +6773,7 @@ func (val *ServiceTypeHealthPolicyResponse) Defaults() *ServiceTypeHealthPolicyR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxPercentUnhealthyServices) {
+	if tmp.MaxPercentUnhealthyServices == nil {
 		maxPercentUnhealthyServices_ := 0
 		tmp.MaxPercentUnhealthyServices = &maxPercentUnhealthyServices_
 	}

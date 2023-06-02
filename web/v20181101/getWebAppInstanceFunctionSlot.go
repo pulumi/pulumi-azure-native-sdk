@@ -11,6 +11,8 @@ import (
 )
 
 // Get function information by its ID for web site, or a deployment slot.
+//
+// Deprecated: azure-native:web/v20181101:WebAppInstanceFunctionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppInstanceFunctionSlot to guarantee forwards compatibility.
 func LookupWebAppInstanceFunctionSlot(ctx *pulumi.Context, args *LookupWebAppInstanceFunctionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppInstanceFunctionSlotResult, error) {
 	var rv LookupWebAppInstanceFunctionSlotResult
 	err := ctx.Invoke("azure-native:web/v20181101:getWebAppInstanceFunctionSlot", args, &rv, opts...)

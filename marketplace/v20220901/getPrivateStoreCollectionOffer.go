@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a specific offer.
+//
+// Deprecated: azure-native:marketplace/v20220901:PrivateStoreCollectionOffer is being removed in the next major version of this provider. Upgrade to at least azure-native:marketplace/v20230101:PrivateStoreCollectionOffer to guarantee forwards compatibility.
 func LookupPrivateStoreCollectionOffer(ctx *pulumi.Context, args *LookupPrivateStoreCollectionOfferArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreCollectionOfferResult, error) {
 	var rv LookupPrivateStoreCollectionOfferResult
 	err := ctx.Invoke("azure-native:marketplace/v20220901:getPrivateStoreCollectionOffer", args, &rv, opts...)

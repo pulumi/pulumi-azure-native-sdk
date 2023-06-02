@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves information about a Shared Image Gallery.
+//
+// Deprecated: azure-native:compute/v20220103:Gallery is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220303:Gallery to guarantee forwards compatibility.
 func LookupGallery(ctx *pulumi.Context, args *LookupGalleryArgs, opts ...pulumi.InvokeOption) (*LookupGalleryResult, error) {
 	var rv LookupGalleryResult
 	err := ctx.Invoke("azure-native:compute/v20220103:getGallery", args, &rv, opts...)

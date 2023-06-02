@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A DDoS protection plan in a resource group.
+//
+// Deprecated: azure-native:network/v20200301:DdosProtectionPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220501:DdosProtectionPlan to guarantee forwards compatibility.
 type DdosProtectionPlan struct {
 	pulumi.CustomResourceState
 

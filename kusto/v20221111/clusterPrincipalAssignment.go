@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a cluster principal assignment.
+//
+// Deprecated: azure-native:kusto/v20221111:ClusterPrincipalAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ClusterPrincipalAssignment to guarantee forwards compatibility.
 type ClusterPrincipalAssignment struct {
 	pulumi.CustomResourceState
 

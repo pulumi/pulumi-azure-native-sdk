@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the source control configuration of an app.
+//
+// Deprecated: azure-native:web/v20210115:WebAppSourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSourceControl to guarantee forwards compatibility.
 func LookupWebAppSourceControl(ctx *pulumi.Context, args *LookupWebAppSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSourceControlResult, error) {
 	var rv LookupWebAppSourceControlResult
 	err := ctx.Invoke("azure-native:web/v20210115:getWebAppSourceControl", args, &rv, opts...)

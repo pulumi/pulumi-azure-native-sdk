@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Sync Group object.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
+// azure-native:storagesync/v20190601:SyncGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:storagesync/v20220601:SyncGroup to guarantee forwards compatibility.
 type SyncGroup struct {
 	pulumi.CustomResourceState
 

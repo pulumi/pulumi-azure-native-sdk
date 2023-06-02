@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A workspace
+//
+// Deprecated: azure-native:synapse/v20210601:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -77,10 +79,10 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
-	if isZero(args.TrustedServiceBypassEnabled) {
+	if args.TrustedServiceBypassEnabled == nil {
 		args.TrustedServiceBypassEnabled = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

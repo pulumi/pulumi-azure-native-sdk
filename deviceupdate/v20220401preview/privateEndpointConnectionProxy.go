@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Private endpoint connection proxy details.
+//
+// Deprecated: azure-native:deviceupdate/v20220401preview:PrivateEndpointConnectionProxy is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20221201preview:PrivateEndpointConnectionProxy to guarantee forwards compatibility.
 type PrivateEndpointConnectionProxy struct {
 	pulumi.CustomResourceState
 

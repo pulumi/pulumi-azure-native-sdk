@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
+//
+// Deprecated: azure-native:datashare/v20191101:KustoDatabaseDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:KustoDatabaseDataSetMapping to guarantee forwards compatibility.
 func LookupKustoDatabaseDataSetMapping(ctx *pulumi.Context, args *LookupKustoDatabaseDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupKustoDatabaseDataSetMappingResult, error) {
 	var rv LookupKustoDatabaseDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20191101:getKustoDatabaseDataSetMapping", args, &rv, opts...)

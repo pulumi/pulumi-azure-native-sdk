@@ -13,6 +13,7 @@ import (
 // Represents a container on the  Data Box Edge/Gateway device.
 //
 // Deprecated: Version 2020-09-01-preview will be removed in v2 of the provider.
+// azure-native:databoxedge/v20200901preview:Container is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:Container to guarantee forwards compatibility.
 func LookupContainer(ctx *pulumi.Context, args *LookupContainerArgs, opts ...pulumi.InvokeOption) (*LookupContainerResult, error) {
 	var rv LookupContainerResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200901preview:getContainer", args, &rv, opts...)

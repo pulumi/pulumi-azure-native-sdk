@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents the response of a service unit resource.
 //
 // Deprecated: Version 2018-09-01-preview will be removed in v2 of the provider.
+// azure-native:deploymentmanager/v20180901preview:ServiceUnit is being removed in the next major version of this provider. Upgrade to at least azure-native:deploymentmanager/v20191101preview:ServiceUnit to guarantee forwards compatibility.
 type ServiceUnit struct {
 	pulumi.CustomResourceState
 

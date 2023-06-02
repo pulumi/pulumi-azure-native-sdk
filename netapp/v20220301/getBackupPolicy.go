@@ -11,6 +11,8 @@ import (
 )
 
 // Get a particular backup Policy
+//
+// Deprecated: azure-native:netapp/v20220301:BackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:BackupPolicy to guarantee forwards compatibility.
 func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPolicyResult, error) {
 	var rv LookupBackupPolicyResult
 	err := ctx.Invoke("azure-native:netapp/v20220301:getBackupPolicy", args, &rv, opts...)

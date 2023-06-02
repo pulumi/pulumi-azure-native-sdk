@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about a domain.
+//
+// Deprecated: azure-native:domainregistration/v20201201:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:domainregistration/v20220901:Domain to guarantee forwards compatibility.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -82,7 +84,7 @@ func NewDomain(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AutoRenew) {
+	if args.AutoRenew == nil {
 		args.AutoRenew = pulumi.BoolPtr(true)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

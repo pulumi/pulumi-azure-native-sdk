@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL virtual machine.
+//
+// Deprecated: azure-native:sqlvirtualmachine/v20220701preview:SqlVirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachine to guarantee forwards compatibility.
 type SqlVirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -73,10 +75,10 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.EnableAutomaticUpgrade) {
+	if args.EnableAutomaticUpgrade == nil {
 		args.EnableAutomaticUpgrade = pulumi.BoolPtr(false)
 	}
-	if isZero(args.LeastPrivilegeMode) {
+	if args.LeastPrivilegeMode == nil {
 		args.LeastPrivilegeMode = pulumi.StringPtr("NotSet")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

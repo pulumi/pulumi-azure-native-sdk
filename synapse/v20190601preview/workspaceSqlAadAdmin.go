@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workspace active directory administrator
 //
 // Deprecated: Version 2019-06-01-preview will be removed in v2 of the provider.
+// azure-native:synapse/v20190601preview:WorkspaceSqlAadAdmin is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:WorkspaceSqlAadAdmin to guarantee forwards compatibility.
 type WorkspaceSqlAadAdmin struct {
 	pulumi.CustomResourceState
 

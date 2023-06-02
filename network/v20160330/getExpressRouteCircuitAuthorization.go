@@ -13,6 +13,7 @@ import (
 // The GET authorization operation retrieves the specified authorization from the specified ExpressRouteCircuit.
 //
 // Deprecated: Version 2016-03-30 will be removed in v2 of the provider.
+// azure-native:network/v20160330:ExpressRouteCircuitAuthorization is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:ExpressRouteCircuitAuthorization to guarantee forwards compatibility.
 func LookupExpressRouteCircuitAuthorization(ctx *pulumi.Context, args *LookupExpressRouteCircuitAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitAuthorizationResult, error) {
 	var rv LookupExpressRouteCircuitAuthorizationResult
 	err := ctx.Invoke("azure-native:network/v20160330:getExpressRouteCircuitAuthorization", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Get information about a configuration profile assignment
+//
+// Deprecated: azure-native:automanage/v20210430preview:ConfigurationProfileHCRPAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:automanage/v20220504:ConfigurationProfileHCRPAssignment to guarantee forwards compatibility.
 func LookupConfigurationProfileHCRPAssignment(ctx *pulumi.Context, args *LookupConfigurationProfileHCRPAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileHCRPAssignmentResult, error) {
 	var rv LookupConfigurationProfileHCRPAssignmentResult
 	err := ctx.Invoke("azure-native:automanage/v20210430preview:getConfigurationProfileHCRPAssignment", args, &rv, opts...)

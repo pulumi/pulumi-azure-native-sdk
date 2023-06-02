@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection on application gateway.
+//
+// Deprecated: azure-native:network/v20220501:ApplicationGatewayPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ApplicationGatewayPrivateEndpointConnection to guarantee forwards compatibility.
 func LookupApplicationGatewayPrivateEndpointConnection(ctx *pulumi.Context, args *LookupApplicationGatewayPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGatewayPrivateEndpointConnectionResult, error) {
 	var rv LookupApplicationGatewayPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:network/v20220501:getApplicationGatewayPrivateEndpointConnection", args, &rv, opts...)

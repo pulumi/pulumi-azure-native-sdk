@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL virtual machine group.
+//
+// Deprecated: azure-native:sqlvirtualmachine/v20220201preview:SqlVirtualMachineGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachineGroup to guarantee forwards compatibility.
 type SqlVirtualMachineGroup struct {
 	pulumi.CustomResourceState
 

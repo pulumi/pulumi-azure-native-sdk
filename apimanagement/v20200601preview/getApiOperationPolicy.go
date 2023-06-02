@@ -11,6 +11,8 @@ import (
 )
 
 // Get the policy configuration at the API Operation level.
+//
+// Deprecated: azure-native:apimanagement/v20200601preview:ApiOperationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiOperationPolicy to guarantee forwards compatibility.
 func LookupApiOperationPolicy(ctx *pulumi.Context, args *LookupApiOperationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupApiOperationPolicyResult, error) {
 	var rv LookupApiOperationPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:getApiOperationPolicy", args, &rv, opts...)
@@ -55,7 +57,7 @@ func (val *LookupApiOperationPolicyResult) Defaults() *LookupApiOperationPolicyR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Format) {
+	if tmp.Format == nil {
 		format_ := "xml"
 		tmp.Format = &format_
 	}

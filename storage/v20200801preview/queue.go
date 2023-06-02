@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Deprecated: Version 2020-08-01-preview will be removed in v2 of the provider.
+// azure-native:storage/v20200801preview:Queue is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:Queue to guarantee forwards compatibility.
 type Queue struct {
 	pulumi.CustomResourceState
 

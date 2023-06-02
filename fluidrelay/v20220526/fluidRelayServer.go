@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A FluidRelay Server.
+//
+// Deprecated: azure-native:fluidrelay/v20220526:FluidRelayServer is being removed in the next major version of this provider. Upgrade to at least azure-native:fluidrelay/v20220601:FluidRelayServer to guarantee forwards compatibility.
 type FluidRelayServer struct {
 	pulumi.CustomResourceState
 

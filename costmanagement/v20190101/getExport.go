@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the export for the defined scope by export name.
+//
+// Deprecated: azure-native:costmanagement/v20190101:Export is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20191001:Export to guarantee forwards compatibility.
 func LookupExport(ctx *pulumi.Context, args *LookupExportArgs, opts ...pulumi.InvokeOption) (*LookupExportResult, error) {
 	var rv LookupExportResult
 	err := ctx.Invoke("azure-native:costmanagement/v20190101:getExport", args, &rv, opts...)

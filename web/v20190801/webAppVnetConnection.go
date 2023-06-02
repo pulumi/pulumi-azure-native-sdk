@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Virtual Network information contract.
+//
+// Deprecated: azure-native:web/v20190801:WebAppVnetConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppVnetConnection to guarantee forwards compatibility.
 type WebAppVnetConnection struct {
 	pulumi.CustomResourceState
 

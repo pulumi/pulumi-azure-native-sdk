@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a resource belonging to a resource group.
+//
+// Deprecated: azure-native:dataprotection/v20220301:BackupVault is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230101:BackupVault to guarantee forwards compatibility.
 func LookupBackupVault(ctx *pulumi.Context, args *LookupBackupVaultArgs, opts ...pulumi.InvokeOption) (*LookupBackupVaultResult, error) {
 	var rv LookupBackupVaultResult
 	err := ctx.Invoke("azure-native:dataprotection/v20220301:getBackupVault", args, &rv, opts...)

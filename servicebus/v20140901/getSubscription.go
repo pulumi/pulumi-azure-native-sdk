@@ -13,6 +13,7 @@ import (
 // Returns a subscription description for the specified topic.
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
+// azure-native:servicebus/v20140901:Subscription is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20150801:Subscription to guarantee forwards compatibility.
 func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionResult, error) {
 	var rv LookupSubscriptionResult
 	err := ctx.Invoke("azure-native:servicebus/v20140901:getSubscription", args, &rv, opts...)

@@ -1181,11 +1181,11 @@ func (val *ManagedResourceReferenceResponse) Defaults() *ManagedResourceReferenc
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DenyStatus) {
+	if tmp.DenyStatus == nil {
 		denyStatus_ := "None"
 		tmp.DenyStatus = &denyStatus_
 	}
-	if isZero(tmp.Status) {
+	if tmp.Status == nil {
 		status_ := "None"
 		tmp.Status = &status_
 	}

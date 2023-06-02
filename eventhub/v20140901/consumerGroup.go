@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single item in List or Get Consumer group operation
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
+// azure-native:eventhub/v20140901:ConsumerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20150801:ConsumerGroup to guarantee forwards compatibility.
 type ConsumerGroup struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves information about an availability set.
+//
+// Deprecated: azure-native:compute/v20210701:AvailabilitySet is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:AvailabilitySet to guarantee forwards compatibility.
 func LookupAvailabilitySet(ctx *pulumi.Context, args *LookupAvailabilitySetArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilitySetResult, error) {
 	var rv LookupAvailabilitySetResult
 	err := ctx.Invoke("azure-native:compute/v20210701:getAvailabilitySet", args, &rv, opts...)

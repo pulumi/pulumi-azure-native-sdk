@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Slot Config names azure resource.
+//
+// Deprecated: azure-native:web/v20210301:WebAppSlotConfigurationNames is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSlotConfigurationNames to guarantee forwards compatibility.
 type WebAppSlotConfigurationNames struct {
 	pulumi.CustomResourceState
 

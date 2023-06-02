@@ -74,7 +74,7 @@ func (val *LookupScalingPlanResult) Defaults() *LookupScalingPlanResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HostPoolType) {
+	if tmp.HostPoolType == nil {
 		hostPoolType_ := "Pooled"
 		tmp.HostPoolType = &hostPoolType_
 	}

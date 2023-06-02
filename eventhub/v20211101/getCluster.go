@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the resource description of the specified Event Hubs Cluster.
+//
+// Deprecated: azure-native:eventhub/v20211101:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:Cluster to guarantee forwards compatibility.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("azure-native:eventhub/v20211101:getCluster", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a workspace
+//
+// Deprecated: azure-native:synapse/v20210601:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:Workspace to guarantee forwards compatibility.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:synapse/v20210601:getWorkspace", args, &rv, opts...)
@@ -89,11 +91,11 @@ func (val *LookupWorkspaceResult) Defaults() *LookupWorkspaceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.TrustedServiceBypassEnabled) {
+	if tmp.TrustedServiceBypassEnabled == nil {
 		trustedServiceBypassEnabled_ := false
 		tmp.TrustedServiceBypassEnabled = &trustedServiceBypassEnabled_
 	}

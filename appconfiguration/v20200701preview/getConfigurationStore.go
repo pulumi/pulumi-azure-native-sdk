@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified configuration store.
+//
+// Deprecated: azure-native:appconfiguration/v20200701preview:ConfigurationStore is being removed in the next major version of this provider. Upgrade to at least azure-native:appconfiguration/v20230301:ConfigurationStore to guarantee forwards compatibility.
 func LookupConfigurationStore(ctx *pulumi.Context, args *LookupConfigurationStoreArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationStoreResult, error) {
 	var rv LookupConfigurationStoreResult
 	err := ctx.Invoke("azure-native:appconfiguration/v20200701preview:getConfigurationStore", args, &rv, opts...)

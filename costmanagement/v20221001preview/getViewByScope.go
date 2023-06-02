@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the view for the defined scope by view name.
+//
+// Deprecated: azure-native:costmanagement/v20221001preview:ViewByScope is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221005preview:ViewByScope to guarantee forwards compatibility.
 func LookupViewByScope(ctx *pulumi.Context, args *LookupViewByScopeArgs, opts ...pulumi.InvokeOption) (*LookupViewByScopeResult, error) {
 	var rv LookupViewByScopeResult
 	err := ctx.Invoke("azure-native:costmanagement/v20221001preview:getViewByScope", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a managed private endpoint.
+//
+// Deprecated: azure-native:kusto/v20220707:ManagedPrivateEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ManagedPrivateEndpoint to guarantee forwards compatibility.
 func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupManagedPrivateEndpointResult, error) {
 	var rv LookupManagedPrivateEndpointResult
 	err := ctx.Invoke("azure-native:kusto/v20220707:getManagedPrivateEndpoint", args, &rv, opts...)

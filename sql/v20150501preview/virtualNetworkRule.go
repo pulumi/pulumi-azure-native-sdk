@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A virtual network rule.
+//
+// Deprecated: azure-native:sql/v20150501preview:VirtualNetworkRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:VirtualNetworkRule to guarantee forwards compatibility.
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 

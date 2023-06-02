@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves information about the model view or the instance view of a hybrid machine.
+//
+// Deprecated: azure-native:hybridcompute/v20210325preview:Machine is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20220510preview:Machine to guarantee forwards compatibility.
 func LookupMachine(ctx *pulumi.Context, args *LookupMachineArgs, opts ...pulumi.InvokeOption) (*LookupMachineResult, error) {
 	var rv LookupMachineResult
 	err := ctx.Invoke("azure-native:hybridcompute/v20210325preview:getMachine", args, &rv, opts...)

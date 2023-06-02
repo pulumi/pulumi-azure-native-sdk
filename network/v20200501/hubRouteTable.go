@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // RouteTable resource in a virtual hub.
+//
+// Deprecated: azure-native:network/v20200501:HubRouteTable is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:HubRouteTable to guarantee forwards compatibility.
 type HubRouteTable struct {
 	pulumi.CustomResourceState
 

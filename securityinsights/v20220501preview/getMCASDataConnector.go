@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data connector.
+//
+// Deprecated: azure-native:securityinsights/v20220501preview:MCASDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201:MCASDataConnector to guarantee forwards compatibility.
 func LookupMCASDataConnector(ctx *pulumi.Context, args *LookupMCASDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMCASDataConnectorResult, error) {
 	var rv LookupMCASDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getMCASDataConnector", args, &rv, opts...)

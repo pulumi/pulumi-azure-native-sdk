@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20220601preview:ModelContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:ModelContainer to guarantee forwards compatibility.
 type ModelContainer struct {
 	pulumi.CustomResourceState
 

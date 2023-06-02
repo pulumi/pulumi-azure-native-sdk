@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the import pipeline.
+//
+// Deprecated: azure-native:containerregistry/v20211201preview:ImportPipeline is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:ImportPipeline to guarantee forwards compatibility.
 func LookupImportPipeline(ctx *pulumi.Context, args *LookupImportPipelineArgs, opts ...pulumi.InvokeOption) (*LookupImportPipelineResult, error) {
 	var rv LookupImportPipelineResult
 	err := ctx.Invoke("azure-native:containerregistry/v20211201preview:getImportPipeline", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single Namespace item in List or Get Operation
+//
+// Deprecated: azure-native:eventhub/v20220101preview:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:Namespace to guarantee forwards compatibility.
 type Namespace struct {
 	pulumi.CustomResourceState
 
@@ -78,7 +80,7 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.Encryption != nil {
 		args.Encryption = args.Encryption.ToEncryptionPtrOutput().ApplyT(func(v *Encryption) *Encryption { return v.Defaults() }).(EncryptionPtrOutput)
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of Dicom Service
+//
+// Deprecated: azure-native:healthcareapis/v20210601preview:DicomService is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:DicomService to guarantee forwards compatibility.
 type DicomService struct {
 	pulumi.CustomResourceState
 

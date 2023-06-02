@@ -13,6 +13,7 @@ import (
 // Gets a policy assignment.
 //
 // Deprecated: Version 2015-10-01-preview will be removed in v2 of the provider.
+// azure-native:authorization/v20151001preview:PolicyAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20160401:PolicyAssignment to guarantee forwards compatibility.
 func LookupPolicyAssignment(ctx *pulumi.Context, args *LookupPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyAssignmentResult, error) {
 	var rv LookupPolicyAssignmentResult
 	err := ctx.Invoke("azure-native:authorization/v20151001preview:getPolicyAssignment", args, &rv, opts...)

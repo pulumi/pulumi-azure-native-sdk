@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a specific role by name.
+//
+// Deprecated: azure-native:databoxedge/v20200901:KubernetesRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:KubernetesRole to guarantee forwards compatibility.
 func LookupKubernetesRole(ctx *pulumi.Context, args *LookupKubernetesRoleArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesRoleResult, error) {
 	var rv LookupKubernetesRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200901:getKubernetesRole", args, &rv, opts...)

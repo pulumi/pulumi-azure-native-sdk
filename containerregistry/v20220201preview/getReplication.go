@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified replication.
+//
+// Deprecated: azure-native:containerregistry/v20220201preview:Replication is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Replication to guarantee forwards compatibility.
 func LookupReplication(ctx *pulumi.Context, args *LookupReplicationArgs, opts ...pulumi.InvokeOption) (*LookupReplicationResult, error) {
 	var rv LookupReplicationResult
 	err := ctx.Invoke("azure-native:containerregistry/v20220201preview:getReplication", args, &rv, opts...)
@@ -59,11 +61,11 @@ func (val *LookupReplicationResult) Defaults() *LookupReplicationResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.RegionEndpointEnabled) {
+	if tmp.RegionEndpointEnabled == nil {
 		regionEndpointEnabled_ := true
 		tmp.RegionEndpointEnabled = &regionEndpointEnabled_
 	}
-	if isZero(tmp.ZoneRedundancy) {
+	if tmp.ZoneRedundancy == nil {
 		zoneRedundancy_ := "Disabled"
 		tmp.ZoneRedundancy = &zoneRedundancy_
 	}

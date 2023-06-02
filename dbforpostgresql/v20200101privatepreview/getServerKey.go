@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a PostgreSQL Server key.
+//
+// Deprecated: azure-native:dbforpostgresql/v20200101privatepreview:ServerKey is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20200214privatepreview:ServerKey to guarantee forwards compatibility.
 func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pulumi.InvokeOption) (*LookupServerKeyResult, error) {
 	var rv LookupServerKeyResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20200101privatepreview:getServerKey", args, &rv, opts...)

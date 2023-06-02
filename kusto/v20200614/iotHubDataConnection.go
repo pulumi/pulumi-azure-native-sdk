@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an iot hub data connection.
+//
+// Deprecated: azure-native:kusto/v20200614:IotHubDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:IotHubDataConnection to guarantee forwards compatibility.
 type IotHubDataConnection struct {
 	pulumi.CustomResourceState
 

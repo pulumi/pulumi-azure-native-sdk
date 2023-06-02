@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a Cognitive Services account specified by the parameters.
+//
+// Deprecated: azure-native:cognitiveservices/v20221001:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:cognitiveservices/v20221201:Account to guarantee forwards compatibility.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:cognitiveservices/v20221001:getAccount", args, &rv, opts...)

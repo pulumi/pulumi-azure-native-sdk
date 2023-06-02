@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Virtual Network information contract.
+//
+// Deprecated: azure-native:web/v20200601:WebAppVnetConnectionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppVnetConnectionSlot to guarantee forwards compatibility.
 type WebAppVnetConnectionSlot struct {
 	pulumi.CustomResourceState
 

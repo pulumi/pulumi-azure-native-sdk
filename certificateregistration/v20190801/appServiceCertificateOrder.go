@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SSL certificate purchase order.
 //
 // Deprecated: Version 2019-08-01 will be removed in v2 of the provider.
+// azure-native:certificateregistration/v20190801:AppServiceCertificateOrder is being removed in the next major version of this provider. Upgrade to at least azure-native:certificateregistration/v20201001:AppServiceCertificateOrder to guarantee forwards compatibility.
 type AppServiceCertificateOrder struct {
 	pulumi.CustomResourceState
 
@@ -80,13 +81,13 @@ func NewAppServiceCertificateOrder(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AutoRenew) {
+	if args.AutoRenew == nil {
 		args.AutoRenew = pulumi.BoolPtr(true)
 	}
-	if isZero(args.KeySize) {
+	if args.KeySize == nil {
 		args.KeySize = pulumi.IntPtr(2048)
 	}
-	if isZero(args.ValidityInYears) {
+	if args.ValidityInYears == nil {
 		args.ValidityInYears = pulumi.IntPtr(1)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

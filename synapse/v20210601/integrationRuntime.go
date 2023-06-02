@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Integration runtime resource type.
+//
+// Deprecated: azure-native:synapse/v20210601:IntegrationRuntime is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:IntegrationRuntime to guarantee forwards compatibility.
 type IntegrationRuntime struct {
 	pulumi.CustomResourceState
 

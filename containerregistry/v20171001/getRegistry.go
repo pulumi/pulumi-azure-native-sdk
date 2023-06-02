@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified container registry.
+//
+// Deprecated: azure-native:containerregistry/v20171001:Registry is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20190501:Registry to guarantee forwards compatibility.
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
 	var rv LookupRegistryResult
 	err := ctx.Invoke("azure-native:containerregistry/v20171001:getRegistry", args, &rv, opts...)
@@ -63,7 +65,7 @@ func (val *LookupRegistryResult) Defaults() *LookupRegistryResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdminUserEnabled) {
+	if tmp.AdminUserEnabled == nil {
 		adminUserEnabled_ := false
 		tmp.AdminUserEnabled = &adminUserEnabled_
 	}

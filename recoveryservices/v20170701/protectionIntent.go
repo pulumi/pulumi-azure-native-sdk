@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Base class for backup ProtectionIntent.
 //
 // Deprecated: Version 2017-07-01 will be removed in v2 of the provider.
+// azure-native:recoveryservices/v20170701:ProtectionIntent is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ProtectionIntent to guarantee forwards compatibility.
 type ProtectionIntent struct {
 	pulumi.CustomResourceState
 

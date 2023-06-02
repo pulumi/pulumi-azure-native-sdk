@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the connected registry.
+//
+// Deprecated: azure-native:containerregistry/v20210601preview:ConnectedRegistry is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:ConnectedRegistry to guarantee forwards compatibility.
 func LookupConnectedRegistry(ctx *pulumi.Context, args *LookupConnectedRegistryArgs, opts ...pulumi.InvokeOption) (*LookupConnectedRegistryResult, error) {
 	var rv LookupConnectedRegistryResult
 	err := ctx.Invoke("azure-native:containerregistry/v20210601preview:getConnectedRegistry", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contract details.
+//
+// Deprecated: azure-native:apimanagement/v20210401preview:Group is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Group to guarantee forwards compatibility.
 type Group struct {
 	pulumi.CustomResourceState
 

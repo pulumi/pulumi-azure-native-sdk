@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The application resource.
+//
+// Deprecated: azure-native:servicefabric/v20210701preview:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20230201preview:Application to guarantee forwards compatibility.
 type Application struct {
 	pulumi.CustomResourceState
 

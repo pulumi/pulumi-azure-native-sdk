@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Dapr Component.
+//
+// Deprecated: azure-native:app/v20220601preview:DaprComponent is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20221001:DaprComponent to guarantee forwards compatibility.
 type DaprComponent struct {
 	pulumi.CustomResourceState
 
@@ -52,7 +54,7 @@ func NewDaprComponent(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.IgnoreErrors) {
+	if args.IgnoreErrors == nil {
 		args.IgnoreErrors = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

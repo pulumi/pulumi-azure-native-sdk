@@ -11,6 +11,8 @@ import (
 )
 
 // Get a specific Application Insights web test definition.
+//
+// Deprecated: azure-native:insights/v20180501preview:WebTest is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20201005preview:WebTest to guarantee forwards compatibility.
 func LookupWebTest(ctx *pulumi.Context, args *LookupWebTestArgs, opts ...pulumi.InvokeOption) (*LookupWebTestResult, error) {
 	var rv LookupWebTestResult
 	err := ctx.Invoke("azure-native:insights/v20180501preview:getWebTest", args, &rv, opts...)
@@ -75,15 +77,15 @@ func (val *LookupWebTestResult) Defaults() *LookupWebTestResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Frequency) {
+	if tmp.Frequency == nil {
 		frequency_ := 300
 		tmp.Frequency = &frequency_
 	}
-	if isZero(tmp.Kind) {
+	if tmp.Kind == nil {
 		kind_ := "ping"
 		tmp.Kind = &kind_
 	}
-	if isZero(tmp.Timeout) {
+	if tmp.Timeout == nil {
 		timeout_ := 30
 		tmp.Timeout = &timeout_
 	}

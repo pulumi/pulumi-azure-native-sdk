@@ -13,6 +13,7 @@ import (
 // Gets details about the orchestrator instance.
 //
 // Deprecated: Version 2020-08-08-preview will be removed in v2 of the provider.
+// azure-native:delegatednetwork/v20200808preview:OrchestratorInstanceServiceDetails is being removed in the next major version of this provider. Upgrade to at least azure-native:delegatednetwork/v20210315:OrchestratorInstanceServiceDetails to guarantee forwards compatibility.
 func LookupOrchestratorInstanceServiceDetails(ctx *pulumi.Context, args *LookupOrchestratorInstanceServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupOrchestratorInstanceServiceDetailsResult, error) {
 	var rv LookupOrchestratorInstanceServiceDetailsResult
 	err := ctx.Invoke("azure-native:delegatednetwork/v20200808preview:getOrchestratorInstanceServiceDetails", args, &rv, opts...)

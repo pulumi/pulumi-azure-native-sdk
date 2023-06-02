@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of a storage account’s Queue service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+//
+// Deprecated: azure-native:storage/v20210901:QueueServiceProperties is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:QueueServiceProperties to guarantee forwards compatibility.
 func LookupQueueServiceProperties(ctx *pulumi.Context, args *LookupQueueServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupQueueServicePropertiesResult, error) {
 	var rv LookupQueueServicePropertiesResult
 	err := ctx.Invoke("azure-native:storage/v20210901:getQueueServiceProperties", args, &rv, opts...)

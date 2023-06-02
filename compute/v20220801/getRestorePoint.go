@@ -11,6 +11,8 @@ import (
 )
 
 // The operation to get the restore point.
+//
+// Deprecated: azure-native:compute/v20220801:RestorePoint is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:RestorePoint to guarantee forwards compatibility.
 func LookupRestorePoint(ctx *pulumi.Context, args *LookupRestorePointArgs, opts ...pulumi.InvokeOption) (*LookupRestorePointResult, error) {
 	var rv LookupRestorePointResult
 	err := ctx.Invoke("azure-native:compute/v20220801:getRestorePoint", args, &rv, opts...)

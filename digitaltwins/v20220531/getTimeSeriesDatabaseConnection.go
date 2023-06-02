@@ -11,6 +11,8 @@ import (
 )
 
 // Get the description of an existing time series database connection.
+//
+// Deprecated: azure-native:digitaltwins/v20220531:TimeSeriesDatabaseConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:digitaltwins/v20230131:TimeSeriesDatabaseConnection to guarantee forwards compatibility.
 func LookupTimeSeriesDatabaseConnection(ctx *pulumi.Context, args *LookupTimeSeriesDatabaseConnectionArgs, opts ...pulumi.InvokeOption) (*LookupTimeSeriesDatabaseConnectionResult, error) {
 	var rv LookupTimeSeriesDatabaseConnectionResult
 	err := ctx.Invoke("azure-native:digitaltwins/v20220531:getTimeSeriesDatabaseConnection", args, &rv, opts...)

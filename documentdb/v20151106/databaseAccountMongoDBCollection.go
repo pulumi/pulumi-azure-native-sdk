@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB MongoDB collection.
 //
 // Deprecated: Version 2015-11-06 will be removed in v2 of the provider.
+// azure-native:documentdb/v20151106:DatabaseAccountMongoDBCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20160331:DatabaseAccountMongoDBCollection to guarantee forwards compatibility.
 type DatabaseAccountMongoDBCollection struct {
 	pulumi.CustomResourceState
 

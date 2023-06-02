@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a specific role by name.
+//
+// Deprecated: azure-native:databoxedge/v20200901preview:CloudEdgeManagementRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole to guarantee forwards compatibility.
 func LookupCloudEdgeManagementRole(ctx *pulumi.Context, args *LookupCloudEdgeManagementRoleArgs, opts ...pulumi.InvokeOption) (*LookupCloudEdgeManagementRoleResult, error) {
 	var rv LookupCloudEdgeManagementRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20200901preview:getCloudEdgeManagementRole", args, &rv, opts...)

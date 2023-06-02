@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // CDN CustomDomain represents a mapping between a user specified domain name and a CDN endpoint. This is to use custom domain names to represent the URLs for branding purposes.
 //
 // Deprecated: Version 2016-04-02 will be removed in v2 of the provider.
+// azure-native:cdn/v20160402:CustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20161002:CustomDomain to guarantee forwards compatibility.
 type CustomDomain struct {
 	pulumi.CustomResourceState
 

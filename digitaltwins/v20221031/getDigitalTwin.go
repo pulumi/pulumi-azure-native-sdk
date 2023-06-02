@@ -11,6 +11,8 @@ import (
 )
 
 // Get DigitalTwinsInstances resource.
+//
+// Deprecated: azure-native:digitaltwins/v20221031:DigitalTwin is being removed in the next major version of this provider. Upgrade to at least azure-native:digitaltwins/v20230131:DigitalTwin to guarantee forwards compatibility.
 func LookupDigitalTwin(ctx *pulumi.Context, args *LookupDigitalTwinArgs, opts ...pulumi.InvokeOption) (*LookupDigitalTwinResult, error) {
 	var rv LookupDigitalTwinResult
 	err := ctx.Invoke("azure-native:digitaltwins/v20221031:getDigitalTwin", args, &rv, opts...)

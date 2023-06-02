@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a server advisor.
+//
+// Deprecated: azure-native:sql/v20220501preview:ServerAdvisor is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerAdvisor to guarantee forwards compatibility.
 func LookupServerAdvisor(ctx *pulumi.Context, args *LookupServerAdvisorArgs, opts ...pulumi.InvokeOption) (*LookupServerAdvisorResult, error) {
 	var rv LookupServerAdvisorResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getServerAdvisor", args, &rv, opts...)

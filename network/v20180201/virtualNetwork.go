@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Virtual Network resource.
 //
 // Deprecated: Version 2018-02-01 will be removed in v2 of the provider.
+// azure-native:network/v20180201:VirtualNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:VirtualNetwork to guarantee forwards compatibility.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
@@ -57,10 +58,10 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.EnableDdosProtection) {
+	if args.EnableDdosProtection == nil {
 		args.EnableDdosProtection = pulumi.BoolPtr(false)
 	}
-	if isZero(args.EnableVmProtection) {
+	if args.EnableVmProtection == nil {
 		args.EnableVmProtection = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

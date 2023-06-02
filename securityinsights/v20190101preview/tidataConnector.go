@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data connector to pull threat intelligence data from TIP products.
+//
+// Deprecated: azure-native:securityinsights/v20190101preview:TIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:TIDataConnector to guarantee forwards compatibility.
 type TIDataConnector struct {
 	pulumi.CustomResourceState
 

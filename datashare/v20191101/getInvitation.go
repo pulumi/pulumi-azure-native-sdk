@@ -13,6 +13,7 @@ import (
 // Get an invitation in a share
 //
 // Deprecated: Version 2019-11-01 will be removed in v2 of the provider.
+// azure-native:datashare/v20191101:Invitation is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:Invitation to guarantee forwards compatibility.
 func LookupInvitation(ctx *pulumi.Context, args *LookupInvitationArgs, opts ...pulumi.InvokeOption) (*LookupInvitationResult, error) {
 	var rv LookupInvitationResult
 	err := ctx.Invoke("azure-native:datashare/v20191101:getInvitation", args, &rv, opts...)

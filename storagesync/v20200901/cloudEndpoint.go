@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cloud Endpoint object.
+//
+// Deprecated: azure-native:storagesync/v20200901:CloudEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:storagesync/v20220601:CloudEndpoint to guarantee forwards compatibility.
 type CloudEndpoint struct {
 	pulumi.CustomResourceState
 

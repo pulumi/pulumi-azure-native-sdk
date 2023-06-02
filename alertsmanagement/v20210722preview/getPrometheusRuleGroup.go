@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve a Prometheus rule group definition.
+//
+// Deprecated: azure-native:alertsmanagement/v20210722preview:PrometheusRuleGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:alertsmanagement/v20230301:PrometheusRuleGroup to guarantee forwards compatibility.
 func LookupPrometheusRuleGroup(ctx *pulumi.Context, args *LookupPrometheusRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupPrometheusRuleGroupResult, error) {
 	var rv LookupPrometheusRuleGroupResult
 	err := ctx.Invoke("azure-native:alertsmanagement/v20210722preview:getPrometheusRuleGroup", args, &rv, opts...)

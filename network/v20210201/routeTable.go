@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Route table resource.
+//
+// Deprecated: azure-native:network/v20210201:RouteTable is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:RouteTable to guarantee forwards compatibility.
 type RouteTable struct {
 	pulumi.CustomResourceState
 

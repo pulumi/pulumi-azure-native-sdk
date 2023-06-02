@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The security connector resource.
+//
+// Deprecated: azure-native:security/v20220501preview:SecurityConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20220801preview:SecurityConnector to guarantee forwards compatibility.
 type SecurityConnector struct {
 	pulumi.CustomResourceState
 

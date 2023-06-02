@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workspace connection.
+//
+// Deprecated: azure-native:machinelearningservices/v20200901preview:WorkspaceConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:WorkspaceConnection to guarantee forwards compatibility.
 type WorkspaceConnection struct {
 	pulumi.CustomResourceState
 

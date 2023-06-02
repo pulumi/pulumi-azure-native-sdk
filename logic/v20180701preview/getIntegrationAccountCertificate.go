@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an integration account certificate.
+//
+// Deprecated: azure-native:logic/v20180701preview:IntegrationAccountCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:logic/v20190501:IntegrationAccountCertificate to guarantee forwards compatibility.
 func LookupIntegrationAccountCertificate(ctx *pulumi.Context, args *LookupIntegrationAccountCertificateArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountCertificateResult, error) {
 	var rv LookupIntegrationAccountCertificateResult
 	err := ctx.Invoke("azure-native:logic/v20180701preview:getIntegrationAccountCertificate", args, &rv, opts...)

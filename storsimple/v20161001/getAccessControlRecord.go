@@ -13,6 +13,7 @@ import (
 // Returns the properties of the specified access control record name.
 //
 // Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
+// azure-native:storsimple/v20161001:AccessControlRecord is being removed in the next major version of this provider. Upgrade to at least azure-native:storsimple/v20170601:AccessControlRecord to guarantee forwards compatibility.
 func LookupAccessControlRecord(ctx *pulumi.Context, args *LookupAccessControlRecordArgs, opts ...pulumi.InvokeOption) (*LookupAccessControlRecordResult, error) {
 	var rv LookupAccessControlRecordResult
 	err := ctx.Invoke("azure-native:storsimple/v20161001:getAccessControlRecord", args, &rv, opts...)

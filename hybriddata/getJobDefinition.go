@@ -66,7 +66,7 @@ func (val *LookupJobDefinitionResult) Defaults() *LookupJobDefinitionResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UserConfirmation) {
+	if tmp.UserConfirmation == nil {
 		userConfirmation_ := "NotRequired"
 		tmp.UserConfirmation = &userConfirmation_
 	}

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the DigitalTwins service.
+//
+// Deprecated: azure-native:digitaltwins/v20221031:DigitalTwin is being removed in the next major version of this provider. Upgrade to at least azure-native:digitaltwins/v20230131:DigitalTwin to guarantee forwards compatibility.
 type DigitalTwin struct {
 	pulumi.CustomResourceState
 

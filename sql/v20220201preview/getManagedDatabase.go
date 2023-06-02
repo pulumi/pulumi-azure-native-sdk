@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a managed database.
+//
+// Deprecated: azure-native:sql/v20220201preview:ManagedDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedDatabase to guarantee forwards compatibility.
 func LookupManagedDatabase(ctx *pulumi.Context, args *LookupManagedDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupManagedDatabaseResult, error) {
 	var rv LookupManagedDatabaseResult
 	err := ctx.Invoke("azure-native:sql/v20220201preview:getManagedDatabase", args, &rv, opts...)

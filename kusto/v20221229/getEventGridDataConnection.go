@@ -78,7 +78,7 @@ func (val *LookupEventGridDataConnectionResult) Defaults() *LookupEventGridDataC
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DatabaseRouting) {
+	if tmp.DatabaseRouting == nil {
 		databaseRouting_ := "Single"
 		tmp.DatabaseRouting = &databaseRouting_
 	}

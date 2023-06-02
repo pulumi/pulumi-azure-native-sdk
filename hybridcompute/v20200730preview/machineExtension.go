@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Machine Extension.
 //
 // Deprecated: Version 2020-07-30-preview will be removed in v2 of the provider.
+// azure-native:hybridcompute/v20200730preview:MachineExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20200815preview:MachineExtension to guarantee forwards compatibility.
 type MachineExtension struct {
 	pulumi.CustomResourceState
 

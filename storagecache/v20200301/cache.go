@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 //
 // Deprecated: Version 2020-03-01 will be removed in v2 of the provider.
+// azure-native:storagecache/v20200301:Cache is being removed in the next major version of this provider. Upgrade to at least azure-native:storagecache/v20201001:Cache to guarantee forwards compatibility.
 type Cache struct {
 	pulumi.CustomResourceState
 

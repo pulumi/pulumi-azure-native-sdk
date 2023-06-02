@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The integration account session.
+//
+// Deprecated: azure-native:logic/v20180701preview:IntegrationAccountSession is being removed in the next major version of this provider. Upgrade to at least azure-native:logic/v20190501:IntegrationAccountSession to guarantee forwards compatibility.
 type IntegrationAccountSession struct {
 	pulumi.CustomResourceState
 

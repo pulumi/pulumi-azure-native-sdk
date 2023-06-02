@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a configuration of server.
+//
+// Deprecated: azure-native:dbformysql/v20200701preview:Configuration is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20200701privatepreview:Configuration to guarantee forwards compatibility.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	var rv LookupConfigurationResult
 	err := ctx.Invoke("azure-native:dbformysql/v20200701preview:getConfiguration", args, &rv, opts...)

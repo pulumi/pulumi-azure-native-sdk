@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service Fabric application resource created or in the process of being created in the Service Fabric cluster resource.
+//
+// Deprecated: azure-native:servicefabric/v20201201preview:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20210601:Application to guarantee forwards compatibility.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:servicefabric/v20201201preview:getApplication", args, &rv, opts...)
@@ -75,7 +77,7 @@ func (val *LookupApplicationResult) Defaults() *LookupApplicationResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaximumNodes) {
+	if tmp.MaximumNodes == nil {
 		maximumNodes_ := 0.0
 		tmp.MaximumNodes = &maximumNodes_
 	}

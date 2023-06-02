@@ -13,6 +13,7 @@ import (
 // Gets a connector mapping in the connector.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
+// azure-native:customerinsights/v20170101:ConnectorMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:customerinsights/v20170426:ConnectorMapping to guarantee forwards compatibility.
 func LookupConnectorMapping(ctx *pulumi.Context, args *LookupConnectorMappingArgs, opts ...pulumi.InvokeOption) (*LookupConnectorMappingResult, error) {
 	var rv LookupConnectorMappingResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170101:getConnectorMapping", args, &rv, opts...)

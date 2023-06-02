@@ -13,6 +13,7 @@ import (
 // Gets an existing peering service with the specified name under the given subscription and resource group.
 //
 // Deprecated: Version 2019-08-01-preview will be removed in v2 of the provider.
+// azure-native:peering/v20190801preview:PeeringService is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:PeeringService to guarantee forwards compatibility.
 func LookupPeeringService(ctx *pulumi.Context, args *LookupPeeringServiceArgs, opts ...pulumi.InvokeOption) (*LookupPeeringServiceResult, error) {
 	var rv LookupPeeringServiceResult
 	err := ctx.Invoke("azure-native:peering/v20190801preview:getPeeringService", args, &rv, opts...)

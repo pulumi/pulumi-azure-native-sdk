@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class representing an EmailService resource.
+//
+// Deprecated: azure-native:communication/v20220701preview:EmailService is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230331:EmailService to guarantee forwards compatibility.
 type EmailService struct {
 	pulumi.CustomResourceState
 

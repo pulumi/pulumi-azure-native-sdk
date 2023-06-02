@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the watcher identified by watcher name.
+//
+// Deprecated: azure-native:automation/v20151031:Watcher is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20200113preview:Watcher to guarantee forwards compatibility.
 func LookupWatcher(ctx *pulumi.Context, args *LookupWatcherArgs, opts ...pulumi.InvokeOption) (*LookupWatcherResult, error) {
 	var rv LookupWatcherResult
 	err := ctx.Invoke("azure-native:automation/v20151031:getWatcher", args, &rv, opts...)

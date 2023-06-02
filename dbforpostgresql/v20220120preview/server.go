@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a server.
+//
+// Deprecated: azure-native:dbforpostgresql/v20220120preview:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20221201:Server to guarantee forwards compatibility.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -61,7 +63,7 @@ func NewServer(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.AvailabilityZone) {
+	if args.AvailabilityZone == nil {
 		args.AvailabilityZone = pulumi.StringPtr("")
 	}
 	if args.Backup != nil {

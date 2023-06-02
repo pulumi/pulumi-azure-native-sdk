@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:dataprotection/v20221101preview:DppResourceGuardProxy is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230101:DppResourceGuardProxy to guarantee forwards compatibility.
 func LookupDppResourceGuardProxy(ctx *pulumi.Context, args *LookupDppResourceGuardProxyArgs, opts ...pulumi.InvokeOption) (*LookupDppResourceGuardProxyResult, error) {
 	var rv LookupDppResourceGuardProxyResult
 	err := ctx.Invoke("azure-native:dataprotection/v20221101preview:getDppResourceGuardProxy", args, &rv, opts...)

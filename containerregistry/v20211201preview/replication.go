@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a replication for a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20211201preview:Replication is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Replication to guarantee forwards compatibility.
 type Replication struct {
 	pulumi.CustomResourceState
 
@@ -48,10 +50,10 @@ func NewReplication(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.RegionEndpointEnabled) {
+	if args.RegionEndpointEnabled == nil {
 		args.RegionEndpointEnabled = pulumi.BoolPtr(true)
 	}
-	if isZero(args.ZoneRedundancy) {
+	if args.ZoneRedundancy == nil {
 		args.ZoneRedundancy = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

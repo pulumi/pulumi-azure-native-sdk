@@ -11,6 +11,8 @@ import (
 )
 
 // Get a ScalingPlanPooledSchedule.
+//
+// Deprecated: azure-native:desktopvirtualization/v20220909:ScalingPlanPooledSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:ScalingPlanPooledSchedule to guarantee forwards compatibility.
 func LookupScalingPlanPooledSchedule(ctx *pulumi.Context, args *LookupScalingPlanPooledScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanPooledScheduleResult, error) {
 	var rv LookupScalingPlanPooledScheduleResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20220909:getScalingPlanPooledSchedule", args, &rv, opts...)

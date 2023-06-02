@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a workspace instance.
+//
+// Deprecated: azure-native:operationalinsights/v20200301preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:Workspace to guarantee forwards compatibility.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200301preview:getWorkspace", args, &rv, opts...)

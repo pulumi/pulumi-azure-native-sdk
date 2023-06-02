@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the SAP Central Services Instance resource.
+//
+// Deprecated: azure-native:workloads/v20221101preview:SAPCentralInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SAPCentralInstance to guarantee forwards compatibility.
 type SAPCentralInstance struct {
 	pulumi.CustomResourceState
 

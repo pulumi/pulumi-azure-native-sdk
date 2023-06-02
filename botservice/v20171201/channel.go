@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Bot channel resource definition
 //
 // Deprecated: Version 2017-12-01 will be removed in v2 of the provider.
+// azure-native:botservice/v20171201:Channel is being removed in the next major version of this provider. Upgrade to at least azure-native:botservice/v20220915:Channel to guarantee forwards compatibility.
 type Channel struct {
 	pulumi.CustomResourceState
 

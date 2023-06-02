@@ -11,6 +11,8 @@ import (
 )
 
 // Agent Pool.
+//
+// Deprecated: azure-native:containerservice/v20210501:AgentPool is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20210801:AgentPool to guarantee forwards compatibility.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
 	var rv LookupAgentPoolResult
 	err := ctx.Invoke("azure-native:containerservice/v20210501:getAgentPool", args, &rv, opts...)

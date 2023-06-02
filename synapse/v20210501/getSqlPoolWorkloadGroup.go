@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Sql pool's workload group.
+//
+// Deprecated: azure-native:synapse/v20210501:SqlPoolWorkloadGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:SqlPoolWorkloadGroup to guarantee forwards compatibility.
 func LookupSqlPoolWorkloadGroup(ctx *pulumi.Context, args *LookupSqlPoolWorkloadGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolWorkloadGroupResult, error) {
 	var rv LookupSqlPoolWorkloadGroupResult
 	err := ctx.Invoke("azure-native:synapse/v20210501:getSqlPoolWorkloadGroup", args, &rv, opts...)

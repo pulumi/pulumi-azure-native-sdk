@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a backup instance with name in a backup vault
+//
+// Deprecated: azure-native:dataprotection/v20220201preview:BackupInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230101:BackupInstance to guarantee forwards compatibility.
 func LookupBackupInstance(ctx *pulumi.Context, args *LookupBackupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupBackupInstanceResult, error) {
 	var rv LookupBackupInstanceResult
 	err := ctx.Invoke("azure-native:dataprotection/v20220201preview:getBackupInstance", args, &rv, opts...)

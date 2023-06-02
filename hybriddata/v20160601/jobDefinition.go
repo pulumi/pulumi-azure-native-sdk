@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Job Definition.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
+// azure-native:hybriddata/v20160601:JobDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:hybriddata/v20190601:JobDefinition to guarantee forwards compatibility.
 type JobDefinition struct {
 	pulumi.CustomResourceState
 
@@ -66,7 +67,7 @@ func NewJobDefinition(ctx *pulumi.Context,
 	if args.State == nil {
 		return nil, errors.New("invalid value for required argument 'State'")
 	}
-	if isZero(args.UserConfirmation) {
+	if args.UserConfirmation == nil {
 		args.UserConfirmation = UserConfirmation("NotRequired")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

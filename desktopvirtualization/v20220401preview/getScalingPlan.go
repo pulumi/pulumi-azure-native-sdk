@@ -11,6 +11,8 @@ import (
 )
 
 // Get a scaling plan.
+//
+// Deprecated: azure-native:desktopvirtualization/v20220401preview:ScalingPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:ScalingPlan to guarantee forwards compatibility.
 func LookupScalingPlan(ctx *pulumi.Context, args *LookupScalingPlanArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanResult, error) {
 	var rv LookupScalingPlanResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20220401preview:getScalingPlan", args, &rv, opts...)
@@ -74,7 +76,7 @@ func (val *LookupScalingPlanResult) Defaults() *LookupScalingPlanResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HostPoolType) {
+	if tmp.HostPoolType == nil {
 		hostPoolType_ := "Pooled"
 		tmp.HostPoolType = &hostPoolType_
 	}

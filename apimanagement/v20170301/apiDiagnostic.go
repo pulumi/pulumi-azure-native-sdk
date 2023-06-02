@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Diagnostic details.
+//
+// Deprecated: azure-native:apimanagement/v20170301:ApiDiagnostic is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20180101:ApiDiagnostic to guarantee forwards compatibility.
 type ApiDiagnostic struct {
 	pulumi.CustomResourceState
 

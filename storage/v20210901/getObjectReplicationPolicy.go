@@ -11,6 +11,8 @@ import (
 )
 
 // Get the object replication policy of the storage account by policy ID.
+//
+// Deprecated: azure-native:storage/v20210901:ObjectReplicationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:ObjectReplicationPolicy to guarantee forwards compatibility.
 func LookupObjectReplicationPolicy(ctx *pulumi.Context, args *LookupObjectReplicationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupObjectReplicationPolicyResult, error) {
 	var rv LookupObjectReplicationPolicyResult
 	err := ctx.Invoke("azure-native:storage/v20210901:getObjectReplicationPolicy", args, &rv, opts...)

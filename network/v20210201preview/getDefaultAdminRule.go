@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a network manager security configuration admin rule.
+//
+// Deprecated: azure-native:network/v20210201preview:DefaultAdminRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210501preview:DefaultAdminRule to guarantee forwards compatibility.
 func LookupDefaultAdminRule(ctx *pulumi.Context, args *LookupDefaultAdminRuleArgs, opts ...pulumi.InvokeOption) (*LookupDefaultAdminRuleResult, error) {
 	var rv LookupDefaultAdminRuleResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getDefaultAdminRule", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a database advisor.
+//
+// Deprecated: azure-native:sql/v20210501preview:DatabaseAdvisor is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:DatabaseAdvisor to guarantee forwards compatibility.
 func LookupDatabaseAdvisor(ctx *pulumi.Context, args *LookupDatabaseAdvisorArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAdvisorResult, error) {
 	var rv LookupDatabaseAdvisorResult
 	err := ctx.Invoke("azure-native:sql/v20210501preview:getDatabaseAdvisor", args, &rv, opts...)

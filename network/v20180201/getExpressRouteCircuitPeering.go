@@ -13,6 +13,7 @@ import (
 // Gets the specified authorization from the specified express route circuit.
 //
 // Deprecated: Version 2018-02-01 will be removed in v2 of the provider.
+// azure-native:network/v20180201:ExpressRouteCircuitPeering is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190201:ExpressRouteCircuitPeering to guarantee forwards compatibility.
 func LookupExpressRouteCircuitPeering(ctx *pulumi.Context, args *LookupExpressRouteCircuitPeeringArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitPeeringResult, error) {
 	var rv LookupExpressRouteCircuitPeeringResult
 	err := ctx.Invoke("azure-native:network/v20180201:getExpressRouteCircuitPeering", args, &rv, opts...)

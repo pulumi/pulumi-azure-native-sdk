@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a specific role by name.
+//
+// Deprecated: azure-native:databoxedge/v20190701:IoTRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:IoTRole to guarantee forwards compatibility.
 func LookupIoTRole(ctx *pulumi.Context, args *LookupIoTRoleArgs, opts ...pulumi.InvokeOption) (*LookupIoTRoleResult, error) {
 	var rv LookupIoTRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20190701:getIoTRole", args, &rv, opts...)

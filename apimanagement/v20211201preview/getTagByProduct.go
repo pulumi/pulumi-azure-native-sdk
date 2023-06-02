@@ -11,6 +11,8 @@ import (
 )
 
 // Get tag associated with the Product.
+//
+// Deprecated: azure-native:apimanagement/v20211201preview:TagByProduct is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:TagByProduct to guarantee forwards compatibility.
 func LookupTagByProduct(ctx *pulumi.Context, args *LookupTagByProductArgs, opts ...pulumi.InvokeOption) (*LookupTagByProductResult, error) {
 	var rv LookupTagByProductResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:getTagByProduct", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Data Box Edge/Gateway device.
+//
+// Deprecated: azure-native:databoxedge/v20210601preview:Device is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20220401preview:Device to guarantee forwards compatibility.
 type Device struct {
 	pulumi.CustomResourceState
 

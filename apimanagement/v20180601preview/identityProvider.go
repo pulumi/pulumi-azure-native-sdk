@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Identity Provider details.
+//
+// Deprecated: azure-native:apimanagement/v20180601preview:IdentityProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20190101:IdentityProvider to guarantee forwards compatibility.
 type IdentityProvider struct {
 	pulumi.CustomResourceState
 

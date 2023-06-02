@@ -13,6 +13,7 @@ import (
 // Gets information about the specified address.
 //
 // Deprecated: Version 2020-12-01-preview will be removed in v2 of the provider.
+// azure-native:edgeorder/v20201201preview:AddressByName is being removed in the next major version of this provider. Upgrade to at least azure-native:edgeorder/v20211201:AddressByName to guarantee forwards compatibility.
 func LookupAddressByName(ctx *pulumi.Context, args *LookupAddressByNameArgs, opts ...pulumi.InvokeOption) (*LookupAddressByNameResult, error) {
 	var rv LookupAddressByNameResult
 	err := ctx.Invoke("azure-native:edgeorder/v20201201preview:getAddressByName", args, &rv, opts...)

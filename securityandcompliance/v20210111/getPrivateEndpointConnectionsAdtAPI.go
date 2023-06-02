@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the service.
+//
+// Deprecated: azure-native:securityandcompliance/v20210111:PrivateEndpointConnectionsAdtAPI is being removed in the next major version of this provider. Upgrade to at least azure-native:securityandcompliance/v20210308:PrivateEndpointConnectionsAdtAPI to guarantee forwards compatibility.
 func LookupPrivateEndpointConnectionsAdtAPI(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionsAdtAPIArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionsAdtAPIResult, error) {
 	var rv LookupPrivateEndpointConnectionsAdtAPIResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210111:getPrivateEndpointConnectionsAdtAPI", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Linker of source and target resource
+//
+// Deprecated: azure-native:servicelinker/v20220101preview:Linker is being removed in the next major version of this provider. Upgrade to at least azure-native:servicelinker/v20221101preview:Linker to guarantee forwards compatibility.
 type Linker struct {
 	pulumi.CustomResourceState
 

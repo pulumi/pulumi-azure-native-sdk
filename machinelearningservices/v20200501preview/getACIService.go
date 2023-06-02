@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service by name.
+//
+// Deprecated: azure-native:machinelearningservices/v20200501preview:ACIService is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:ACIService to guarantee forwards compatibility.
 func LookupACIService(ctx *pulumi.Context, args *LookupACIServiceArgs, opts ...pulumi.InvokeOption) (*LookupACIServiceResult, error) {
 	var rv LookupACIServiceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200501preview:getACIService", args, &rv, opts...)

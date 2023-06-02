@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Virtual Machine.
+//
+// Deprecated: azure-native:compute/v20220801:VirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachine to guarantee forwards compatibility.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the details of a P2SVpnServerConfiguration.
+//
+// Deprecated: azure-native:network/v20181101:P2sVpnServerConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190701:P2sVpnServerConfiguration to guarantee forwards compatibility.
 func LookupP2sVpnServerConfiguration(ctx *pulumi.Context, args *LookupP2sVpnServerConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupP2sVpnServerConfigurationResult, error) {
 	var rv LookupP2sVpnServerConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20181101:getP2sVpnServerConfiguration", args, &rv, opts...)

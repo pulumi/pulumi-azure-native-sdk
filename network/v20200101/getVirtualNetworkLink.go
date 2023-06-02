@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a virtual network link to the specified Private DNS zone.
+//
+// Deprecated: azure-native:network/v20200101:VirtualNetworkLink is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200401preview:VirtualNetworkLink to guarantee forwards compatibility.
 func LookupVirtualNetworkLink(ctx *pulumi.Context, args *LookupVirtualNetworkLinkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkLinkResult, error) {
 	var rv LookupVirtualNetworkLinkResult
 	err := ctx.Invoke("azure-native:network/v20200101:getVirtualNetworkLink", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the Diagnostic for an API specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20211201preview:ApiDiagnostic is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiDiagnostic to guarantee forwards compatibility.
 func LookupApiDiagnostic(ctx *pulumi.Context, args *LookupApiDiagnosticArgs, opts ...pulumi.InvokeOption) (*LookupApiDiagnosticResult, error) {
 	var rv LookupApiDiagnosticResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:getApiDiagnostic", args, &rv, opts...)

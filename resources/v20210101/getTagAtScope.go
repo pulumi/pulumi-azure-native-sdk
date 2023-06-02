@@ -11,6 +11,8 @@ import (
 )
 
 // Wrapper resource for tags API requests and responses.
+//
+// Deprecated: azure-native:resources/v20210101:TagAtScope is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:TagAtScope to guarantee forwards compatibility.
 func LookupTagAtScope(ctx *pulumi.Context, args *LookupTagAtScopeArgs, opts ...pulumi.InvokeOption) (*LookupTagAtScopeResult, error) {
 	var rv LookupTagAtScopeResult
 	err := ctx.Invoke("azure-native:resources/v20210101:getTagAtScope", args, &rv, opts...)

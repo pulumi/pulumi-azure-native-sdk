@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The resource that defines the source location where the artifacts are located.
 //
 // Deprecated: Version 2018-09-01-preview will be removed in v2 of the provider.
+// azure-native:deploymentmanager/v20180901preview:ArtifactSource is being removed in the next major version of this provider. Upgrade to at least azure-native:deploymentmanager/v20191101preview:ArtifactSource to guarantee forwards compatibility.
 type ArtifactSource struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a network connection resource
+//
+// Deprecated: azure-native:devcenter/v20221012preview:NetworkConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:NetworkConnection to guarantee forwards compatibility.
 func LookupNetworkConnection(ctx *pulumi.Context, args *LookupNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkConnectionResult, error) {
 	var rv LookupNetworkConnectionResult
 	err := ctx.Invoke("azure-native:devcenter/v20221012preview:getNetworkConnection", args, &rv, opts...)

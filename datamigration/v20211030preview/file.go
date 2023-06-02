@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A file resource
+//
+// Deprecated: azure-native:datamigration/v20211030preview:File is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:File to guarantee forwards compatibility.
 type File struct {
 	pulumi.CustomResourceState
 

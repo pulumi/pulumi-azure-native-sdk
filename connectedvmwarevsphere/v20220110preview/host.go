@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the host.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20220110preview:Host is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:Host to guarantee forwards compatibility.
 type Host struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
+//
+// Deprecated: azure-native:logz/v20201001preview:SubAccountTagRule is being removed in the next major version of this provider. Upgrade to at least azure-native:logz/v20220101preview:SubAccountTagRule to guarantee forwards compatibility.
 func LookupSubAccountTagRule(ctx *pulumi.Context, args *LookupSubAccountTagRuleArgs, opts ...pulumi.InvokeOption) (*LookupSubAccountTagRuleResult, error) {
 	var rv LookupSubAccountTagRuleResult
 	err := ctx.Invoke("azure-native:logz/v20201001preview:getSubAccountTagRule", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // The networkinterfaces resource definition.
+//
+// Deprecated: azure-native:azurestackhci/v20210701preview:networkinterfaceRetrieve is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20210901preview:networkinterfaceRetrieve to guarantee forwards compatibility.
 func GetnetworkinterfaceRetrieve(ctx *pulumi.Context, args *GetnetworkinterfaceRetrieveArgs, opts ...pulumi.InvokeOption) (*GetnetworkinterfaceRetrieveResult, error) {
 	var rv GetnetworkinterfaceRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210701preview:getnetworkinterfaceRetrieve", args, &rv, opts...)

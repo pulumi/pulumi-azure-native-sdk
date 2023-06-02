@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20221001preview:CodeContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:CodeContainer to guarantee forwards compatibility.
 func LookupCodeContainer(ctx *pulumi.Context, args *LookupCodeContainerArgs, opts ...pulumi.InvokeOption) (*LookupCodeContainerResult, error) {
 	var rv LookupCodeContainerResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getCodeContainer", args, &rv, opts...)

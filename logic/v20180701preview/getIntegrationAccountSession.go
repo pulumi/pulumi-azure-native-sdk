@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an integration account session.
+//
+// Deprecated: azure-native:logic/v20180701preview:IntegrationAccountSession is being removed in the next major version of this provider. Upgrade to at least azure-native:logic/v20190501:IntegrationAccountSession to guarantee forwards compatibility.
 func LookupIntegrationAccountSession(ctx *pulumi.Context, args *LookupIntegrationAccountSessionArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountSessionResult, error) {
 	var rv LookupIntegrationAccountSessionResult
 	err := ctx.Invoke("azure-native:logic/v20180701preview:getIntegrationAccountSession", args, &rv, opts...)

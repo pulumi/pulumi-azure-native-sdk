@@ -249,11 +249,11 @@ func (val *ApiPortalProperties) Defaults() *ApiPortalProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
 	}
-	if isZero(tmp.Public) {
+	if tmp.Public == nil {
 		public_ := false
 		tmp.Public = &public_
 	}
@@ -291,10 +291,10 @@ func (val *ApiPortalPropertiesArgs) Defaults() *ApiPortalPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		tmp.HttpsOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Public) {
+	if tmp.Public == nil {
 		tmp.Public = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -504,11 +504,11 @@ func (val *ApiPortalPropertiesResponse) Defaults() *ApiPortalPropertiesResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
 	}
-	if isZero(tmp.Public) {
+	if tmp.Public == nil {
 		public_ := false
 		tmp.Public = &public_
 	}
@@ -638,11 +638,11 @@ func (val *AppResourceProperties) Defaults() *AppResourceProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEndToEndTLS) {
+	if tmp.EnableEndToEndTLS == nil {
 		enableEndToEndTLS_ := false
 		tmp.EnableEndToEndTLS = &enableEndToEndTLS_
 	}
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
 	}
@@ -694,10 +694,10 @@ func (val *AppResourcePropertiesArgs) Defaults() *AppResourcePropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEndToEndTLS) {
+	if tmp.EnableEndToEndTLS == nil {
 		tmp.EnableEndToEndTLS = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		tmp.HttpsOnly = pulumi.BoolPtr(false)
 	}
 
@@ -989,11 +989,11 @@ func (val *AppResourcePropertiesResponse) Defaults() *AppResourcePropertiesRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEndToEndTLS) {
+	if tmp.EnableEndToEndTLS == nil {
 		enableEndToEndTLS_ := false
 		tmp.EnableEndToEndTLS = &enableEndToEndTLS_
 	}
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
 	}
@@ -1093,7 +1093,7 @@ func (val *AppVNetAddons) Defaults() *AppVNetAddons {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicEndpoint) {
+	if tmp.PublicEndpoint == nil {
 		publicEndpoint_ := false
 		tmp.PublicEndpoint = &publicEndpoint_
 	}
@@ -1123,7 +1123,7 @@ func (val *AppVNetAddonsArgs) Defaults() *AppVNetAddonsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicEndpoint) {
+	if tmp.PublicEndpoint == nil {
 		tmp.PublicEndpoint = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -1259,7 +1259,7 @@ func (val *AppVNetAddonsResponse) Defaults() *AppVNetAddonsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicEndpoint) {
+	if tmp.PublicEndpoint == nil {
 		publicEndpoint_ := false
 		tmp.PublicEndpoint = &publicEndpoint_
 	}
@@ -3393,7 +3393,7 @@ func (val *ClusterResourceProperties) Defaults() *ClusterResourceProperties {
 	tmp := *val
 	tmp.VnetAddons = tmp.VnetAddons.Defaults()
 
-	if isZero(tmp.ZoneRedundant) {
+	if tmp.ZoneRedundant == nil {
 		zoneRedundant_ := false
 		tmp.ZoneRedundant = &zoneRedundant_
 	}
@@ -3429,7 +3429,7 @@ func (val *ClusterResourcePropertiesArgs) Defaults() *ClusterResourcePropertiesA
 	}
 	tmp := *val
 
-	if isZero(tmp.ZoneRedundant) {
+	if tmp.ZoneRedundant == nil {
 		tmp.ZoneRedundant = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -3623,7 +3623,7 @@ func (val *ClusterResourcePropertiesResponse) Defaults() *ClusterResourcePropert
 	tmp := *val
 	tmp.VnetAddons = tmp.VnetAddons.Defaults()
 
-	if isZero(tmp.ZoneRedundant) {
+	if tmp.ZoneRedundant == nil {
 		zoneRedundant_ := false
 		tmp.ZoneRedundant = &zoneRedundant_
 	}
@@ -6647,7 +6647,7 @@ func (val *DeploymentSettings) Defaults() *DeploymentSettings {
 
 	tmp.StartupProbe = tmp.StartupProbe.Defaults()
 
-	if isZero(tmp.TerminationGracePeriodSeconds) {
+	if tmp.TerminationGracePeriodSeconds == nil {
 		terminationGracePeriodSeconds_ := 90
 		tmp.TerminationGracePeriodSeconds = &terminationGracePeriodSeconds_
 	}
@@ -6692,7 +6692,7 @@ func (val *DeploymentSettingsArgs) Defaults() *DeploymentSettingsArgs {
 	}
 	tmp := *val
 
-	if isZero(tmp.TerminationGracePeriodSeconds) {
+	if tmp.TerminationGracePeriodSeconds == nil {
 		tmp.TerminationGracePeriodSeconds = pulumi.IntPtr(90)
 	}
 	return &tmp
@@ -6951,7 +6951,7 @@ func (val *DeploymentSettingsResponse) Defaults() *DeploymentSettingsResponse {
 
 	tmp.StartupProbe = tmp.StartupProbe.Defaults()
 
-	if isZero(tmp.TerminationGracePeriodSeconds) {
+	if tmp.TerminationGracePeriodSeconds == nil {
 		terminationGracePeriodSeconds_ := 90
 		tmp.TerminationGracePeriodSeconds = &terminationGracePeriodSeconds_
 	}
@@ -8685,11 +8685,11 @@ func (val *GatewayProperties) Defaults() *GatewayProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
 	}
-	if isZero(tmp.Public) {
+	if tmp.Public == nil {
 		public_ := false
 		tmp.Public = &public_
 	}
@@ -8731,10 +8731,10 @@ func (val *GatewayPropertiesArgs) Defaults() *GatewayPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		tmp.HttpsOnly = pulumi.BoolPtr(false)
 	}
-	if isZero(tmp.Public) {
+	if tmp.Public == nil {
 		tmp.Public = pulumi.BoolPtr(false)
 	}
 
@@ -8962,11 +8962,11 @@ func (val *GatewayPropertiesResponse) Defaults() *GatewayPropertiesResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HttpsOnly) {
+	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
 	}
-	if isZero(tmp.Public) {
+	if tmp.Public == nil {
 		public_ := false
 		tmp.Public = &public_
 	}
@@ -9056,11 +9056,11 @@ func (val *GatewayResourceRequests) Defaults() *GatewayResourceRequests {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cpu) {
+	if tmp.Cpu == nil {
 		cpu_ := "1"
 		tmp.Cpu = &cpu_
 	}
-	if isZero(tmp.Memory) {
+	if tmp.Memory == nil {
 		memory_ := "2Gi"
 		tmp.Memory = &memory_
 	}
@@ -9092,10 +9092,10 @@ func (val *GatewayResourceRequestsArgs) Defaults() *GatewayResourceRequestsArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cpu) {
+	if tmp.Cpu == nil {
 		tmp.Cpu = pulumi.StringPtr("1")
 	}
-	if isZero(tmp.Memory) {
+	if tmp.Memory == nil {
 		tmp.Memory = pulumi.StringPtr("2Gi")
 	}
 	return &tmp
@@ -9246,11 +9246,11 @@ func (val *GatewayResourceRequestsResponse) Defaults() *GatewayResourceRequestsR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Cpu) {
+	if tmp.Cpu == nil {
 		cpu_ := "1"
 		tmp.Cpu = &cpu_
 	}
-	if isZero(tmp.Memory) {
+	if tmp.Memory == nil {
 		memory_ := "2Gi"
 		tmp.Memory = &memory_
 	}
@@ -10356,7 +10356,7 @@ func (val *KeyVaultCertificateProperties) Defaults() *KeyVaultCertificatePropert
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExcludePrivateKey) {
+	if tmp.ExcludePrivateKey == nil {
 		excludePrivateKey_ := false
 		tmp.ExcludePrivateKey = &excludePrivateKey_
 	}
@@ -10400,7 +10400,7 @@ func (val *KeyVaultCertificatePropertiesResponse) Defaults() *KeyVaultCertificat
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExcludePrivateKey) {
+	if tmp.ExcludePrivateKey == nil {
 		excludePrivateKey_ := false
 		tmp.ExcludePrivateKey = &excludePrivateKey_
 	}
@@ -10421,7 +10421,7 @@ func (val *LoadedCertificate) Defaults() *LoadedCertificate {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LoadTrustStore) {
+	if tmp.LoadTrustStore == nil {
 		loadTrustStore_ := false
 		tmp.LoadTrustStore = &loadTrustStore_
 	}
@@ -10453,7 +10453,7 @@ func (val *LoadedCertificateArgs) Defaults() *LoadedCertificateArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LoadTrustStore) {
+	if tmp.LoadTrustStore == nil {
 		tmp.LoadTrustStore = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -10554,7 +10554,7 @@ func (val *LoadedCertificateResponse) Defaults() *LoadedCertificateResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LoadTrustStore) {
+	if tmp.LoadTrustStore == nil {
 		loadTrustStore_ := false
 		tmp.LoadTrustStore = &loadTrustStore_
 	}
@@ -12270,7 +12270,7 @@ func (val *ProbeArgs) Defaults() *ProbeArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableProbe) {
+	if tmp.DisableProbe == nil {
 		tmp.DisableProbe = pulumi.Bool(false)
 	}
 	return &tmp
@@ -13113,7 +13113,7 @@ func (val *ServiceVNetAddons) Defaults() *ServiceVNetAddons {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LogStreamPublicEndpoint) {
+	if tmp.LogStreamPublicEndpoint == nil {
 		logStreamPublicEndpoint_ := false
 		tmp.LogStreamPublicEndpoint = &logStreamPublicEndpoint_
 	}
@@ -13143,7 +13143,7 @@ func (val *ServiceVNetAddonsArgs) Defaults() *ServiceVNetAddonsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LogStreamPublicEndpoint) {
+	if tmp.LogStreamPublicEndpoint == nil {
 		tmp.LogStreamPublicEndpoint = pulumi.BoolPtr(false)
 	}
 	return &tmp
@@ -13277,7 +13277,7 @@ func (val *ServiceVNetAddonsResponse) Defaults() *ServiceVNetAddonsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.LogStreamPublicEndpoint) {
+	if tmp.LogStreamPublicEndpoint == nil {
 		logStreamPublicEndpoint_ := false
 		tmp.LogStreamPublicEndpoint = &logStreamPublicEndpoint_
 	}
@@ -13354,11 +13354,11 @@ func (val *Sku) Defaults() *Sku {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		name_ := "S0"
 		tmp.Name = &name_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "Standard"
 		tmp.Tier = &tier_
 	}
@@ -13392,10 +13392,10 @@ func (val *SkuArgs) Defaults() *SkuArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		tmp.Name = pulumi.StringPtr("S0")
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tmp.Tier = pulumi.StringPtr("Standard")
 	}
 	return &tmp
@@ -13563,11 +13563,11 @@ func (val *SkuResponse) Defaults() *SkuResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Name) {
+	if tmp.Name == nil {
 		name_ := "S0"
 		tmp.Name = &name_
 	}
-	if isZero(tmp.Tier) {
+	if tmp.Tier == nil {
 		tier_ := "Standard"
 		tmp.Tier = &tier_
 	}
@@ -14540,7 +14540,7 @@ func (val *TemporaryDisk) Defaults() *TemporaryDisk {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountPath) {
+	if tmp.MountPath == nil {
 		mountPath_ := "/tmp"
 		tmp.MountPath = &mountPath_
 	}
@@ -14572,7 +14572,7 @@ func (val *TemporaryDiskArgs) Defaults() *TemporaryDiskArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountPath) {
+	if tmp.MountPath == nil {
 		tmp.MountPath = pulumi.StringPtr("/tmp")
 	}
 	return &tmp
@@ -14723,7 +14723,7 @@ func (val *TemporaryDiskResponse) Defaults() *TemporaryDiskResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MountPath) {
+	if tmp.MountPath == nil {
 		mountPath_ := "/tmp"
 		tmp.MountPath = &mountPath_
 	}

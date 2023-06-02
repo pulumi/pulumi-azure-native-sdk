@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Email Template details.
+//
+// Deprecated: azure-native:apimanagement/v20211201preview:EmailTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:EmailTemplate to guarantee forwards compatibility.
 type EmailTemplate struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a setting.
+//
+// Deprecated: azure-native:securityinsights/v20230201preview:Ueba is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Ueba to guarantee forwards compatibility.
 func LookupUeba(ctx *pulumi.Context, args *LookupUebaArgs, opts ...pulumi.InvokeOption) (*LookupUebaResult, error) {
 	var rv LookupUebaResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getUeba", args, &rv, opts...)

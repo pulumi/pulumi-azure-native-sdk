@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20221001preview:DataVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:DataVersion to guarantee forwards compatibility.
 func LookupDataVersion(ctx *pulumi.Context, args *LookupDataVersionArgs, opts ...pulumi.InvokeOption) (*LookupDataVersionResult, error) {
 	var rv LookupDataVersionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getDataVersion", args, &rv, opts...)

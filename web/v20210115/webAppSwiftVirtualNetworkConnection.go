@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Swift Virtual Network Contract. This is used to enable the new Swift way of doing virtual network integration.
+//
+// Deprecated: azure-native:web/v20210115:WebAppSwiftVirtualNetworkConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSwiftVirtualNetworkConnection to guarantee forwards compatibility.
 type WebAppSwiftVirtualNetworkConnection struct {
 	pulumi.CustomResourceState
 

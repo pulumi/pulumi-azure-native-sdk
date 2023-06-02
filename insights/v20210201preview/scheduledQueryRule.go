@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The scheduled query rule resource.
+//
+// Deprecated: azure-native:insights/v20210201preview:ScheduledQueryRule is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20220801preview:ScheduledQueryRule to guarantee forwards compatibility.
 type ScheduledQueryRule struct {
 	pulumi.CustomResourceState
 

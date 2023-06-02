@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the connection type identified by connection type name.
+//
+// Deprecated: azure-native:automation/v20200113preview:ConnectionType is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:ConnectionType to guarantee forwards compatibility.
 func LookupConnectionType(ctx *pulumi.Context, args *LookupConnectionTypeArgs, opts ...pulumi.InvokeOption) (*LookupConnectionTypeResult, error) {
 	var rv LookupConnectionTypeResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getConnectionType", args, &rv, opts...)

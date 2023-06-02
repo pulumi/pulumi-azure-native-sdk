@@ -11,6 +11,8 @@ import (
 )
 
 // Access Review Schedule Definition.
+//
+// Deprecated: azure-native:authorization/v20210701preview:AccessReviewScheduleDefinitionById is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20211201preview:AccessReviewScheduleDefinitionById to guarantee forwards compatibility.
 type AccessReviewScheduleDefinitionById struct {
 	pulumi.CustomResourceState
 

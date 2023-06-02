@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Linked storage accounts top level resource container.
+//
+// Deprecated: azure-native:operationalinsights/v20200301preview:LinkedStorageAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20200801:LinkedStorageAccount to guarantee forwards compatibility.
 type LinkedStorageAccount struct {
 	pulumi.CustomResourceState
 

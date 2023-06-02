@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+//
+// Deprecated: azure-native:cdn/v20210601:Route is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Route to guarantee forwards compatibility.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
 	var rv LookupRouteResult
 	err := ctx.Invoke("azure-native:cdn/v20210601:getRoute", args, &rv, opts...)
@@ -76,15 +78,15 @@ func (val *LookupRouteResult) Defaults() *LookupRouteResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ForwardingProtocol) {
+	if tmp.ForwardingProtocol == nil {
 		forwardingProtocol_ := "MatchRequest"
 		tmp.ForwardingProtocol = &forwardingProtocol_
 	}
-	if isZero(tmp.HttpsRedirect) {
+	if tmp.HttpsRedirect == nil {
 		httpsRedirect_ := "Disabled"
 		tmp.HttpsRedirect = &httpsRedirect_
 	}
-	if isZero(tmp.LinkToDefaultDomain) {
+	if tmp.LinkToDefaultDomain == nil {
 		linkToDefaultDomain_ := "Disabled"
 		tmp.LinkToDefaultDomain = &linkToDefaultDomain_
 	}

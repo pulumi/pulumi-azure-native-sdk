@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Customer subscription which can use a sku.
+//
+// Deprecated: azure-native:hybridnetwork/v20210501:VendorSkuPreview is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridnetwork/v20220101preview:VendorSkuPreview to guarantee forwards compatibility.
 type VendorSkuPreview struct {
 	pulumi.CustomResourceState
 

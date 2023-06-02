@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a machine learning workspace.
 //
 // Deprecated: Version 2020-02-18-preview will be removed in v2 of the provider.
+// azure-native:machinelearningservices/v20200218preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20200801:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -67,7 +68,7 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.HbiWorkspace) {
+	if args.HbiWorkspace == nil {
 		args.HbiWorkspace = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

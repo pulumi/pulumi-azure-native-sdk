@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an Event Grid data connection.
+//
+// Deprecated: azure-native:kusto/v20221111:EventGridDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:EventGridDataConnection to guarantee forwards compatibility.
 type EventGridDataConnection struct {
 	pulumi.CustomResourceState
 
@@ -80,7 +82,7 @@ func NewEventGridDataConnection(ctx *pulumi.Context,
 	if args.StorageAccountResourceId == nil {
 		return nil, errors.New("invalid value for required argument 'StorageAccountResourceId'")
 	}
-	if isZero(args.DatabaseRouting) {
+	if args.DatabaseRouting == nil {
 		args.DatabaseRouting = pulumi.StringPtr("Single")
 	}
 	args.Kind = pulumi.String("EventGrid")

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the properties of a Lab Plan.
+//
+// Deprecated: azure-native:labservices/v20211115preview:LabPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:labservices/v20220801:LabPlan to guarantee forwards compatibility.
 func LookupLabPlan(ctx *pulumi.Context, args *LookupLabPlanArgs, opts ...pulumi.InvokeOption) (*LookupLabPlanResult, error) {
 	var rv LookupLabPlanResult
 	err := ctx.Invoke("azure-native:labservices/v20211115preview:getLabPlan", args, &rv, opts...)

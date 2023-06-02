@@ -13,6 +13,7 @@ import (
 // Gets information about the specified application package.
 //
 // Deprecated: Version 2017-05-01 will be removed in v2 of the provider.
+// azure-native:batch/v20170501:ApplicationPackage is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20170901:ApplicationPackage to guarantee forwards compatibility.
 func LookupApplicationPackage(ctx *pulumi.Context, args *LookupApplicationPackageArgs, opts ...pulumi.InvokeOption) (*LookupApplicationPackageResult, error) {
 	var rv LookupApplicationPackageResult
 	err := ctx.Invoke("azure-native:batch/v20170501:getApplicationPackage", args, &rv, opts...)

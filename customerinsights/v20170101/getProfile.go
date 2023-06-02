@@ -13,6 +13,7 @@ import (
 // Gets information about the specified profile.
 //
 // Deprecated: Version 2017-01-01 will be removed in v2 of the provider.
+// azure-native:customerinsights/v20170101:Profile is being removed in the next major version of this provider. Upgrade to at least azure-native:customerinsights/v20170426:Profile to guarantee forwards compatibility.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
 	var rv LookupProfileResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170101:getProfile", args, &rv, opts...)

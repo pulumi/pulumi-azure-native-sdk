@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,7 +65,7 @@ func NewJobDefinition(ctx *pulumi.Context,
 	if args.State == nil {
 		return nil, errors.New("invalid value for required argument 'State'")
 	}
-	if isZero(args.UserConfirmation) {
+	if args.UserConfirmation == nil {
 		args.UserConfirmation = UserConfirmation("NotRequired")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

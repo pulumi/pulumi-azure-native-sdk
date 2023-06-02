@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the module type.
+//
+// Deprecated: azure-native:automation/v20200113preview:Python2Package is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Python2Package to guarantee forwards compatibility.
 type Python2Package struct {
 	pulumi.CustomResourceState
 

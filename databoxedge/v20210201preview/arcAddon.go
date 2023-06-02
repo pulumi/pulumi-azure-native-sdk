@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Arc Addon.
+//
+// Deprecated: azure-native:databoxedge/v20210201preview:ArcAddon is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:ArcAddon to guarantee forwards compatibility.
 type ArcAddon struct {
 	pulumi.CustomResourceState
 

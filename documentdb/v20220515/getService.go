@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the status of service.
+//
+// Deprecated: azure-native:documentdb/v20220515:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:documentdb/v20220515:getService", args, &rv, opts...)

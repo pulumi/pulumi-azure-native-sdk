@@ -11,6 +11,8 @@ import (
 )
 
 // Description for Get the properties of an App Service Environment.
+//
+// Deprecated: azure-native:web/v20220301:AppServiceEnvironment is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:AppServiceEnvironment to guarantee forwards compatibility.
 func LookupAppServiceEnvironment(ctx *pulumi.Context, args *LookupAppServiceEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentResult, error) {
 	var rv LookupAppServiceEnvironmentResult
 	err := ctx.Invoke("azure-native:web/v20220301:getAppServiceEnvironment", args, &rv, opts...)
@@ -90,7 +92,7 @@ func (val *LookupAppServiceEnvironmentResult) Defaults() *LookupAppServiceEnviro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.UpgradePreference) {
+	if tmp.UpgradePreference == nil {
 		upgradePreference_ := "None"
 		tmp.UpgradePreference = &upgradePreference_
 	}

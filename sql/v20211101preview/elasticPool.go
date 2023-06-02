@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An elastic pool.
+//
+// Deprecated: azure-native:sql/v20211101preview:ElasticPool is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ElasticPool to guarantee forwards compatibility.
 type ElasticPool struct {
 	pulumi.CustomResourceState
 

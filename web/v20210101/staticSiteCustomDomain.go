@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Static Site Custom Domain Overview ARM resource.
+//
+// Deprecated: azure-native:web/v20210101:StaticSiteCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:StaticSiteCustomDomain to guarantee forwards compatibility.
 type StaticSiteCustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -45,7 +47,7 @@ func NewStaticSiteCustomDomain(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.ValidationMethod) {
+	if args.ValidationMethod == nil {
 		args.ValidationMethod = pulumi.StringPtr("cname-delegation")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the tag specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20191201:Tag is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Tag to guarantee forwards compatibility.
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
 	var rv LookupTagResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201:getTag", args, &rv, opts...)

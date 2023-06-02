@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Virtual Router.
+//
+// Deprecated: azure-native:network/v20190801:VirtualRouter is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualRouter to guarantee forwards compatibility.
 func LookupVirtualRouter(ctx *pulumi.Context, args *LookupVirtualRouterArgs, opts ...pulumi.InvokeOption) (*LookupVirtualRouterResult, error) {
 	var rv LookupVirtualRouterResult
 	err := ctx.Invoke("azure-native:network/v20190801:getVirtualRouter", args, &rv, opts...)

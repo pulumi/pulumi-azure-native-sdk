@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the search service with the given name in the given resource group.
+//
+// Deprecated: azure-native:search/v20200801preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:search/v20210401preview:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:search/v20200801preview:getService", args, &rv, opts...)
@@ -71,19 +73,19 @@ func (val *LookupServiceResult) Defaults() *LookupServiceResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.HostingMode) {
+	if tmp.HostingMode == nil {
 		hostingMode_ := "default"
 		tmp.HostingMode = &hostingMode_
 	}
-	if isZero(tmp.PartitionCount) {
+	if tmp.PartitionCount == nil {
 		partitionCount_ := 1
 		tmp.PartitionCount = &partitionCount_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.ReplicaCount) {
+	if tmp.ReplicaCount == nil {
 		replicaCount_ := 1
 		tmp.ReplicaCount = &replicaCount_
 	}

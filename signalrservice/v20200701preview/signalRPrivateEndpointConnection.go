@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A private endpoint connection to SignalR resource
+//
+// Deprecated: azure-native:signalrservice/v20200701preview:SignalRPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230201:SignalRPrivateEndpointConnection to guarantee forwards compatibility.
 type SignalRPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

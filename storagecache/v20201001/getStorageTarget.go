@@ -13,6 +13,7 @@ import (
 // Returns a Storage Target from a Cache.
 //
 // Deprecated: Version 2020-10-01 will be removed in v2 of the provider.
+// azure-native:storagecache/v20201001:StorageTarget is being removed in the next major version of this provider. Upgrade to at least azure-native:storagecache/v20210301:StorageTarget to guarantee forwards compatibility.
 func LookupStorageTarget(ctx *pulumi.Context, args *LookupStorageTargetArgs, opts ...pulumi.InvokeOption) (*LookupStorageTargetResult, error) {
 	var rv LookupStorageTargetResult
 	err := ctx.Invoke("azure-native:storagecache/v20201001:getStorageTarget", args, &rv, opts...)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,7 +45,7 @@ func NewApiPolicy(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
-	if isZero(args.Format) {
+	if args.Format == nil {
 		args.Format = pulumi.StringPtr("xml")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

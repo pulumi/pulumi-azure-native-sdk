@@ -11,6 +11,8 @@ import (
 )
 
 // Get the custom domain of one lifecycle application.
+//
+// Deprecated: azure-native:appplatform/v20201101preview:CustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:CustomDomain to guarantee forwards compatibility.
 func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
 	var rv LookupCustomDomainResult
 	err := ctx.Invoke("azure-native:appplatform/v20201101preview:getCustomDomain", args, &rv, opts...)

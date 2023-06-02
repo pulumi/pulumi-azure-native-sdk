@@ -11,6 +11,8 @@ import (
 )
 
 // Returns Linker resource for a given name.
+//
+// Deprecated: azure-native:servicelinker/v20220501:Linker is being removed in the next major version of this provider. Upgrade to at least azure-native:servicelinker/v20221101preview:Linker to guarantee forwards compatibility.
 func LookupLinker(ctx *pulumi.Context, args *LookupLinkerArgs, opts ...pulumi.InvokeOption) (*LookupLinkerResult, error) {
 	var rv LookupLinkerResult
 	err := ctx.Invoke("azure-native:servicelinker/v20220501:getLinker", args, &rv, opts...)

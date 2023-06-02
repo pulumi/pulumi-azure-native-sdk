@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OpenId Connect Provider details.
+//
+// Deprecated: azure-native:apimanagement/v20210801:OpenIdConnectProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:OpenIdConnectProvider to guarantee forwards compatibility.
 type OpenIdConnectProvider struct {
 	pulumi.CustomResourceState
 

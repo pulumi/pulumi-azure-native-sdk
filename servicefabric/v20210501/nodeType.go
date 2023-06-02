@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a node type in the cluster, each node type represents sub set of nodes in the cluster.
+//
+// Deprecated: azure-native:servicefabric/v20210501:NodeType is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20210901privatepreview:NodeType to guarantee forwards compatibility.
 type NodeType struct {
 	pulumi.CustomResourceState
 
@@ -85,10 +87,10 @@ func NewNodeType(ctx *pulumi.Context,
 	if args.VmInstanceCount == nil {
 		return nil, errors.New("invalid value for required argument 'VmInstanceCount'")
 	}
-	if isZero(args.IsStateless) {
+	if args.IsStateless == nil {
 		args.IsStateless = pulumi.BoolPtr(false)
 	}
-	if isZero(args.MultiplePlacementGroups) {
+	if args.MultiplePlacementGroups == nil {
 		args.MultiplePlacementGroups = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

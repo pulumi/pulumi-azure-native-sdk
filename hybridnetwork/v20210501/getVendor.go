@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified vendor.
+//
+// Deprecated: azure-native:hybridnetwork/v20210501:Vendor is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridnetwork/v20220101preview:Vendor to guarantee forwards compatibility.
 func LookupVendor(ctx *pulumi.Context, args *LookupVendorArgs, opts ...pulumi.InvokeOption) (*LookupVendorResult, error) {
 	var rv LookupVendorResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20210501:getVendor", args, &rv, opts...)

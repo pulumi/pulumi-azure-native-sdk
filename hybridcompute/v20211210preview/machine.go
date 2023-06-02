@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a hybrid machine.
+//
+// Deprecated: azure-native:hybridcompute/v20211210preview:Machine is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20220510preview:Machine to guarantee forwards compatibility.
 type Machine struct {
 	pulumi.CustomResourceState
 

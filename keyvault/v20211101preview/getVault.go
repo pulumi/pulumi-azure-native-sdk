@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Azure key vault.
+//
+// Deprecated: azure-native:keyvault/v20211101preview:Vault is being removed in the next major version of this provider. Upgrade to at least azure-native:keyvault/v20230201:Vault to guarantee forwards compatibility.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	var rv LookupVaultResult
 	err := ctx.Invoke("azure-native:keyvault/v20211101preview:getVault", args, &rv, opts...)

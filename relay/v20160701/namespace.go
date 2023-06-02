@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a Namespace resource.
 //
 // Deprecated: Version 2016-07-01 will be removed in v2 of the provider.
+// azure-native:relay/v20160701:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:relay/v20211101:Namespace to guarantee forwards compatibility.
 type Namespace struct {
 	pulumi.CustomResourceState
 

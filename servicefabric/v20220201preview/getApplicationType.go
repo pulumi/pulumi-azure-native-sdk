@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
+//
+// Deprecated: azure-native:servicefabric/v20220201preview:ApplicationType is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20230201preview:ApplicationType to guarantee forwards compatibility.
 func LookupApplicationType(ctx *pulumi.Context, args *LookupApplicationTypeArgs, opts ...pulumi.InvokeOption) (*LookupApplicationTypeResult, error) {
 	var rv LookupApplicationTypeResult
 	err := ctx.Invoke("azure-native:servicefabric/v20220201preview:getApplicationType", args, &rv, opts...)

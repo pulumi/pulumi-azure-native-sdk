@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the Issue for an API specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20210101preview:ApiIssue is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiIssue to guarantee forwards compatibility.
 func LookupApiIssue(ctx *pulumi.Context, args *LookupApiIssueArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueResult, error) {
 	var rv LookupApiIssueResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210101preview:getApiIssue", args, &rv, opts...)

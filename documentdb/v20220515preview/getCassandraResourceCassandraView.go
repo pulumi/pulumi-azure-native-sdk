@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the Cassandra view under an existing Azure Cosmos DB database account.
+//
+// Deprecated: azure-native:documentdb/v20220515preview:CassandraResourceCassandraView is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:CassandraResourceCassandraView to guarantee forwards compatibility.
 func LookupCassandraResourceCassandraView(ctx *pulumi.Context, args *LookupCassandraResourceCassandraViewArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraViewResult, error) {
 	var rv LookupCassandraResourceCassandraViewResult
 	err := ctx.Invoke("azure-native:documentdb/v20220515preview:getCassandraResourceCassandraView", args, &rv, opts...)

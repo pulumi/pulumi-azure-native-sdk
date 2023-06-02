@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
+//
+// Deprecated: azure-native:datashare/v20201001preview:SqlDWTableDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:SqlDWTableDataSetMapping to guarantee forwards compatibility.
 func LookupSqlDWTableDataSetMapping(ctx *pulumi.Context, args *LookupSqlDWTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupSqlDWTableDataSetMappingResult, error) {
 	var rv LookupSqlDWTableDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getSqlDWTableDataSetMapping", args, &rv, opts...)

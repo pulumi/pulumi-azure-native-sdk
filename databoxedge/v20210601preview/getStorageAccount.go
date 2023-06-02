@@ -11,6 +11,8 @@ import (
 )
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
+//
+// Deprecated: azure-native:databoxedge/v20210601preview:StorageAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:StorageAccount to guarantee forwards compatibility.
 func LookupStorageAccount(ctx *pulumi.Context, args *LookupStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountResult, error) {
 	var rv LookupStorageAccountResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210601preview:getStorageAccount", args, &rv, opts...)

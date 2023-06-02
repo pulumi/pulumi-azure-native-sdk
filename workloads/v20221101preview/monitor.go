@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SAP monitor info on Azure (ARM properties and SAP monitor properties)
+//
+// Deprecated: azure-native:workloads/v20221101preview:monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:monitor to guarantee forwards compatibility.
 type Monitor struct {
 	pulumi.CustomResourceState
 

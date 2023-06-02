@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a server.
+//
+// Deprecated: azure-native:dbforpostgresql/v20220308preview:Administrator is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20221201:Administrator to guarantee forwards compatibility.
 func LookupAdministrator(ctx *pulumi.Context, args *LookupAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupAdministratorResult, error) {
 	var rv LookupAdministratorResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20220308preview:getAdministrator", args, &rv, opts...)

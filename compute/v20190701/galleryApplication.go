@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the gallery Application Definition that you want to create or update.
 //
 // Deprecated: Version 2019-07-01 will be removed in v2 of the provider.
+// azure-native:compute/v20190701:GalleryApplication is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220303:GalleryApplication to guarantee forwards compatibility.
 type GalleryApplication struct {
 	pulumi.CustomResourceState
 

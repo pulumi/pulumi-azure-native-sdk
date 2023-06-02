@@ -13,6 +13,7 @@ import (
 // Gets the details of an ASR network mapping
 //
 // Deprecated: Version 2018-01-10 will be removed in v2 of the provider.
+// azure-native:recoveryservices/v20180110:ReplicationNetworkMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20210301:ReplicationNetworkMapping to guarantee forwards compatibility.
 func LookupReplicationNetworkMapping(ctx *pulumi.Context, args *LookupReplicationNetworkMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationNetworkMappingResult, error) {
 	var rv LookupReplicationNetworkMappingResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20180110:getReplicationNetworkMapping", args, &rv, opts...)

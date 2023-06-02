@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
+//
+// Deprecated: azure-native:streamanalytics/v20200301:Function is being removed in the next major version of this provider. Upgrade to at least azure-native:streamanalytics/v20211001preview:Function to guarantee forwards compatibility.
 type Function struct {
 	pulumi.CustomResourceState
 

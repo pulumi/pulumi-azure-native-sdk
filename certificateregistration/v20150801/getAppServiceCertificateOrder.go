@@ -13,6 +13,7 @@ import (
 // Get a certificate order.
 //
 // Deprecated: Version 2015-08-01 will be removed in v2 of the provider.
+// azure-native:certificateregistration/v20150801:AppServiceCertificateOrder is being removed in the next major version of this provider. Upgrade to at least azure-native:certificateregistration/v20201001:AppServiceCertificateOrder to guarantee forwards compatibility.
 func LookupAppServiceCertificateOrder(ctx *pulumi.Context, args *LookupAppServiceCertificateOrderArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceCertificateOrderResult, error) {
 	var rv LookupAppServiceCertificateOrderResult
 	err := ctx.Invoke("azure-native:certificateregistration/v20150801:getAppServiceCertificateOrder", args, &rv, opts...)
@@ -89,15 +90,15 @@ func (val *LookupAppServiceCertificateOrderResult) Defaults() *LookupAppServiceC
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoRenew) {
+	if tmp.AutoRenew == nil {
 		autoRenew_ := true
 		tmp.AutoRenew = &autoRenew_
 	}
-	if isZero(tmp.KeySize) {
+	if tmp.KeySize == nil {
 		keySize_ := 2048
 		tmp.KeySize = &keySize_
 	}
-	if isZero(tmp.ValidityInYears) {
+	if tmp.ValidityInYears == nil {
 		validityInYears_ := 1
 		tmp.ValidityInYears = &validityInYears_
 	}

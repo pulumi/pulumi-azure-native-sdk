@@ -11,6 +11,8 @@ import (
 )
 
 // Get the specific private end point connection by specific private link service in the resource group.
+//
+// Deprecated: azure-native:network/v20220701:PrivateLinkServicePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:PrivateLinkServicePrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateLinkServicePrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateLinkServicePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicePrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateLinkServicePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:network/v20220701:getPrivateLinkServicePrivateEndpointConnection", args, &rv, opts...)

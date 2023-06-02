@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Premier add-on.
+//
+// Deprecated: azure-native:web/v20180201:WebAppPremierAddOn is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppPremierAddOn to guarantee forwards compatibility.
 type WebAppPremierAddOn struct {
 	pulumi.CustomResourceState
 

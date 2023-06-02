@@ -13,6 +13,7 @@ import (
 // Get a Healthcare Bot.
 //
 // Deprecated: Version 2020-10-20 will be removed in v2 of the provider.
+// azure-native:healthbot/v20201020:getbot is being removed in the next major version of this provider. Upgrade to at least azure-native:healthbot/v20201020preview:getbot to guarantee forwards compatibility.
 func Getgetbot(ctx *pulumi.Context, args *GetgetbotArgs, opts ...pulumi.InvokeOption) (*GetgetbotResult, error) {
 	var rv GetgetbotResult
 	err := ctx.Invoke("azure-native:healthbot/v20201020:getgetbot", args, &rv, opts...)

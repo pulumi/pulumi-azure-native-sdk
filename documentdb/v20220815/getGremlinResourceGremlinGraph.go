@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the Gremlin graph under an existing Azure Cosmos DB database account.
+//
+// Deprecated: azure-native:documentdb/v20220815:GremlinResourceGremlinGraph is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:GremlinResourceGremlinGraph to guarantee forwards compatibility.
 func LookupGremlinResourceGremlinGraph(ctx *pulumi.Context, args *LookupGremlinResourceGremlinGraphArgs, opts ...pulumi.InvokeOption) (*LookupGremlinResourceGremlinGraphResult, error) {
 	var rv LookupGremlinResourceGremlinGraphResult
 	err := ctx.Invoke("azure-native:documentdb/v20220815:getGremlinResourceGremlinGraph", args, &rv, opts...)

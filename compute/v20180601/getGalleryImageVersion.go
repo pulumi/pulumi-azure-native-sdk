@@ -13,6 +13,7 @@ import (
 // Retrieves information about a gallery Image Version.
 //
 // Deprecated: Version 2018-06-01 will be removed in v2 of the provider.
+// azure-native:compute/v20180601:GalleryImageVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20190301:GalleryImageVersion to guarantee forwards compatibility.
 func LookupGalleryImageVersion(ctx *pulumi.Context, args *LookupGalleryImageVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageVersionResult, error) {
 	var rv LookupGalleryImageVersionResult
 	err := ctx.Invoke("azure-native:compute/v20180601:getGalleryImageVersion", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Organization resource.
+//
+// Deprecated: azure-native:confluent/v20210301preview:Organization is being removed in the next major version of this provider. Upgrade to at least azure-native:confluent/v20211201:Organization to guarantee forwards compatibility.
 type Organization struct {
 	pulumi.CustomResourceState
 

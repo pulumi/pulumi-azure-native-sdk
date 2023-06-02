@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // External OAuth authorization server settings.
+//
+// Deprecated: azure-native:apimanagement/v20200601preview:AuthorizationServer is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:AuthorizationServer to guarantee forwards compatibility.
 type AuthorizationServer struct {
 	pulumi.CustomResourceState
 

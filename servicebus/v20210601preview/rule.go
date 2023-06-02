@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of Rule Resource.
+//
+// Deprecated: azure-native:servicebus/v20210601preview:Rule is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20220101preview:Rule to guarantee forwards compatibility.
 type Rule struct {
 	pulumi.CustomResourceState
 

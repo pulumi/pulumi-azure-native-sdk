@@ -13,6 +13,7 @@ import (
 // Gets a description for the specified consumer group.
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
+// azure-native:eventhub/v20140901:ConsumerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20150801:ConsumerGroup to guarantee forwards compatibility.
 func LookupConsumerGroup(ctx *pulumi.Context, args *LookupConsumerGroupArgs, opts ...pulumi.InvokeOption) (*LookupConsumerGroupResult, error) {
 	var rv LookupConsumerGroupResult
 	err := ctx.Invoke("azure-native:eventhub/v20140901:getConsumerGroup", args, &rv, opts...)

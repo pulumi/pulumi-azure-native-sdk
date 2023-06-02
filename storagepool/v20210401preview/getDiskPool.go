@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Disk pool.
+//
+// Deprecated: azure-native:storagepool/v20210401preview:DiskPool is being removed in the next major version of this provider. Upgrade to at least azure-native:storagepool/v20210801:DiskPool to guarantee forwards compatibility.
 func LookupDiskPool(ctx *pulumi.Context, args *LookupDiskPoolArgs, opts ...pulumi.InvokeOption) (*LookupDiskPoolResult, error) {
 	var rv LookupDiskPoolResult
 	err := ctx.Invoke("azure-native:storagepool/v20210401preview:getDiskPool", args, &rv, opts...)

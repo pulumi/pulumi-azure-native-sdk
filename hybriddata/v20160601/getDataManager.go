@@ -13,6 +13,7 @@ import (
 // Gets information about the specified data manager resource.
 //
 // Deprecated: Version 2016-06-01 will be removed in v2 of the provider.
+// azure-native:hybriddata/v20160601:DataManager is being removed in the next major version of this provider. Upgrade to at least azure-native:hybriddata/v20190601:DataManager to guarantee forwards compatibility.
 func LookupDataManager(ctx *pulumi.Context, args *LookupDataManagerArgs, opts ...pulumi.InvokeOption) (*LookupDataManagerResult, error) {
 	var rv LookupDataManagerResult
 	err := ctx.Invoke("azure-native:hybriddata/v20160601:getDataManager", args, &rv, opts...)

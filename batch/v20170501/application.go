@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains information about an application in a Batch account.
 //
 // Deprecated: Version 2017-05-01 will be removed in v2 of the provider.
+// azure-native:batch/v20170501:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20170901:Application to guarantee forwards compatibility.
 type Application struct {
 	pulumi.CustomResourceState
 

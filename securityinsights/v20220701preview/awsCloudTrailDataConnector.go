@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Amazon Web Services CloudTrail data connector.
+//
+// Deprecated: azure-native:securityinsights/v20220701preview:AwsCloudTrailDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201:AwsCloudTrailDataConnector to guarantee forwards compatibility.
 type AwsCloudTrailDataConnector struct {
 	pulumi.CustomResourceState
 

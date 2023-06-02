@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // User details.
+//
+// Deprecated: azure-native:apimanagement/v20200601preview:User is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:User to guarantee forwards compatibility.
 type User struct {
 	pulumi.CustomResourceState
 
@@ -59,7 +61,7 @@ func NewUser(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
-	if isZero(args.State) {
+	if args.State == nil {
 		args.State = pulumi.StringPtr("active")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

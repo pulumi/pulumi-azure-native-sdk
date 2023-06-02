@@ -65,11 +65,11 @@ func (val *LookupPartnerNamespaceResult) Defaults() *LookupPartnerNamespaceResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

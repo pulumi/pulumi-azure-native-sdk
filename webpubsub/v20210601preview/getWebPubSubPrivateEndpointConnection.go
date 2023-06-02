@@ -11,6 +11,8 @@ import (
 )
 
 // Get the specified private endpoint connection
+//
+// Deprecated: azure-native:webpubsub/v20210601preview:WebPubSubPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230201:WebPubSubPrivateEndpointConnection to guarantee forwards compatibility.
 func LookupWebPubSubPrivateEndpointConnection(ctx *pulumi.Context, args *LookupWebPubSubPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubPrivateEndpointConnectionResult, error) {
 	var rv LookupWebPubSubPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:webpubsub/v20210601preview:getWebPubSubPrivateEndpointConnection", args, &rv, opts...)

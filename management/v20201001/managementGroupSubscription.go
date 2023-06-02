@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The details of subscription under management group.
+//
+// Deprecated: azure-native:management/v20201001:ManagementGroupSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:management/v20210401:ManagementGroupSubscription to guarantee forwards compatibility.
 type ManagementGroupSubscription struct {
 	pulumi.CustomResourceState
 

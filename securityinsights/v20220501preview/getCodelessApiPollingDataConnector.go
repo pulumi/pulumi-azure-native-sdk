@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data connector.
+//
+// Deprecated: azure-native:securityinsights/v20220501preview:CodelessApiPollingDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:CodelessApiPollingDataConnector to guarantee forwards compatibility.
 func LookupCodelessApiPollingDataConnector(ctx *pulumi.Context, args *LookupCodelessApiPollingDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCodelessApiPollingDataConnectorResult, error) {
 	var rv LookupCodelessApiPollingDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getCodelessApiPollingDataConnector", args, &rv, opts...)

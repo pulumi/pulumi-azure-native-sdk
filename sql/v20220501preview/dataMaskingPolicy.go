@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A database data masking policy.
+//
+// Deprecated: azure-native:sql/v20220501preview:DataMaskingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:DataMaskingPolicy to guarantee forwards compatibility.
 type DataMaskingPolicy struct {
 	pulumi.CustomResourceState
 

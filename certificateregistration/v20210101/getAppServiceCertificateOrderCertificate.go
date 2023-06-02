@@ -11,6 +11,8 @@ import (
 )
 
 // Get the certificate associated with a certificate order.
+//
+// Deprecated: azure-native:certificateregistration/v20210101:AppServiceCertificateOrderCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:certificateregistration/v20220901:AppServiceCertificateOrderCertificate to guarantee forwards compatibility.
 func LookupAppServiceCertificateOrderCertificate(ctx *pulumi.Context, args *LookupAppServiceCertificateOrderCertificateArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceCertificateOrderCertificateResult, error) {
 	var rv LookupAppServiceCertificateOrderCertificateResult
 	err := ctx.Invoke("azure-native:certificateregistration/v20210101:getAppServiceCertificateOrderCertificate", args, &rv, opts...)

@@ -13,6 +13,7 @@ import (
 // Gets a favorite process for a Test Base Package.
 //
 // Deprecated: Version 2020-12-16-preview will be removed in v2 of the provider.
+// azure-native:testbase/v20201216preview:FavoriteProcess is being removed in the next major version of this provider. Upgrade to at least azure-native:testbase/v20220401preview:FavoriteProcess to guarantee forwards compatibility.
 func LookupFavoriteProcess(ctx *pulumi.Context, args *LookupFavoriteProcessArgs, opts ...pulumi.InvokeOption) (*LookupFavoriteProcessResult, error) {
 	var rv LookupFavoriteProcessResult
 	err := ctx.Invoke("azure-native:testbase/v20201216preview:getFavoriteProcess", args, &rv, opts...)

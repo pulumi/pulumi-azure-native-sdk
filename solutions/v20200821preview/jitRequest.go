@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about JIT request definition.
+//
+// Deprecated: azure-native:solutions/v20200821preview:JitRequest is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20210701:JitRequest to guarantee forwards compatibility.
 type JitRequest struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents AAD (Azure Active Directory) data connector.
+//
+// Deprecated: azure-native:securityinsights/v20211001preview:AADDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201:AADDataConnector to guarantee forwards compatibility.
 type AADDataConnector struct {
 	pulumi.CustomResourceState
 

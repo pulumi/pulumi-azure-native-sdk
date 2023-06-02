@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Trigger in a shareSubscription
+//
+// Deprecated: azure-native:datashare/v20200901:ScheduledTrigger is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ScheduledTrigger to guarantee forwards compatibility.
 func LookupScheduledTrigger(ctx *pulumi.Context, args *LookupScheduledTriggerArgs, opts ...pulumi.InvokeOption) (*LookupScheduledTriggerResult, error) {
 	var rv LookupScheduledTriggerResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getScheduledTrigger", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified key-value.
+//
+// Deprecated: azure-native:appconfiguration/v20211001preview:KeyValue is being removed in the next major version of this provider. Upgrade to at least azure-native:appconfiguration/v20230301:KeyValue to guarantee forwards compatibility.
 func LookupKeyValue(ctx *pulumi.Context, args *LookupKeyValueArgs, opts ...pulumi.InvokeOption) (*LookupKeyValueResult, error) {
 	var rv LookupKeyValueResult
 	err := ctx.Invoke("azure-native:appconfiguration/v20211001preview:getKeyValue", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing registered prefix with the specified name under the given subscription, resource group and peering.
+//
+// Deprecated: azure-native:peering/v20210601:RegisteredPrefix is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:RegisteredPrefix to guarantee forwards compatibility.
 func LookupRegisteredPrefix(ctx *pulumi.Context, args *LookupRegisteredPrefixArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredPrefixResult, error) {
 	var rv LookupRegisteredPrefixResult
 	err := ctx.Invoke("azure-native:peering/v20210601:getRegisteredPrefix", args, &rv, opts...)

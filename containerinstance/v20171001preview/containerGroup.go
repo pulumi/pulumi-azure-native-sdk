@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A container group.
 //
 // Deprecated: Version 2017-10-01-preview will be removed in v2 of the provider.
+// azure-native:containerinstance/v20171001preview:ContainerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:containerinstance/v20171201preview:ContainerGroup to guarantee forwards compatibility.
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 

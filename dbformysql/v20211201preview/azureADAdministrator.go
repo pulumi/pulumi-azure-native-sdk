@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a Administrator.
+//
+// Deprecated: azure-native:dbformysql/v20211201preview:AzureADAdministrator is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20220101:AzureADAdministrator to guarantee forwards compatibility.
 type AzureADAdministrator struct {
 	pulumi.CustomResourceState
 

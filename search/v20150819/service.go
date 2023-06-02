@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes an Azure Cognitive Search service and its current state.
 //
 // Deprecated: Version 2015-08-19 will be removed in v2 of the provider.
+// azure-native:search/v20150819:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:search/v20210401preview:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -53,13 +54,13 @@ func NewService(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.HostingMode) {
+	if args.HostingMode == nil {
 		args.HostingMode = HostingMode("default")
 	}
-	if isZero(args.PartitionCount) {
+	if args.PartitionCount == nil {
 		args.PartitionCount = pulumi.IntPtr(1)
 	}
-	if isZero(args.ReplicaCount) {
+	if args.ReplicaCount == nil {
 		args.ReplicaCount = pulumi.IntPtr(1)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

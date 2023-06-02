@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the workspace vNet Peering.
+//
+// Deprecated: azure-native:databricks/v20220401preview:vNetPeering is being removed in the next major version of this provider. Upgrade to at least azure-native:databricks/v20230201:vNetPeering to guarantee forwards compatibility.
 func GetvNetPeering(ctx *pulumi.Context, args *GetvNetPeeringArgs, opts ...pulumi.InvokeOption) (*GetvNetPeeringResult, error) {
 	var rv GetvNetPeeringResult
 	err := ctx.Invoke("azure-native:databricks/v20220401preview:getvNetPeering", args, &rv, opts...)

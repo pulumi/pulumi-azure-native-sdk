@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Microsoft Threat Intelligence data connector.
+//
+// Deprecated: azure-native:securityinsights/v20220501preview:MSTIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MSTIDataConnector to guarantee forwards compatibility.
 type MSTIDataConnector struct {
 	pulumi.CustomResourceState
 

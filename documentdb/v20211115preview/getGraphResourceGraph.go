@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the Graph resource under an existing Azure Cosmos DB database account with the provided name.
+//
+// Deprecated: azure-native:documentdb/v20211115preview:GraphResourceGraph is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:GraphResourceGraph to guarantee forwards compatibility.
 func LookupGraphResourceGraph(ctx *pulumi.Context, args *LookupGraphResourceGraphArgs, opts ...pulumi.InvokeOption) (*LookupGraphResourceGraphResult, error) {
 	var rv LookupGraphResourceGraphResult
 	err := ctx.Invoke("azure-native:documentdb/v20211115preview:getGraphResourceGraph", args, &rv, opts...)

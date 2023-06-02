@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified managed HSM Pool.
+//
+// Deprecated: azure-native:keyvault/v20220701:ManagedHsm is being removed in the next major version of this provider. Upgrade to at least azure-native:keyvault/v20230201:ManagedHsm to guarantee forwards compatibility.
 func LookupManagedHsm(ctx *pulumi.Context, args *LookupManagedHsmArgs, opts ...pulumi.InvokeOption) (*LookupManagedHsmResult, error) {
 	var rv LookupManagedHsmResult
 	err := ctx.Invoke("azure-native:keyvault/v20220701:getManagedHsm", args, &rv, opts...)

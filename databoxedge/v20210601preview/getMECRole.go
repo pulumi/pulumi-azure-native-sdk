@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a specific role by name.
+//
+// Deprecated: azure-native:databoxedge/v20210601preview:MECRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:MECRole to guarantee forwards compatibility.
 func LookupMECRole(ctx *pulumi.Context, args *LookupMECRoleArgs, opts ...pulumi.InvokeOption) (*LookupMECRoleResult, error) {
 	var rv LookupMECRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210601preview:getMECRole", args, &rv, opts...)

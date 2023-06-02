@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Peering in an ExpressRoute Cross Connection resource.
+//
+// Deprecated: azure-native:network/v20190701:ExpressRouteCrossConnectionPeering is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190801:ExpressRouteCrossConnectionPeering to guarantee forwards compatibility.
 type ExpressRouteCrossConnectionPeering struct {
 	pulumi.CustomResourceState
 

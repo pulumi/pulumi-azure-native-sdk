@@ -11,6 +11,8 @@ import (
 )
 
 // Get the named public certificate for an app (or deployment slot, if specified).
+//
+// Deprecated: azure-native:web/v20181101:WebAppPublicCertificateSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppPublicCertificateSlot to guarantee forwards compatibility.
 func LookupWebAppPublicCertificateSlot(ctx *pulumi.Context, args *LookupWebAppPublicCertificateSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPublicCertificateSlotResult, error) {
 	var rv LookupWebAppPublicCertificateSlotResult
 	err := ctx.Invoke("azure-native:web/v20181101:getWebAppPublicCertificateSlot", args, &rv, opts...)

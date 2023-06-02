@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A server DNS alias.
+//
+// Deprecated: azure-native:sql/v20211101:ServerDnsAlias is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerDnsAlias to guarantee forwards compatibility.
 type ServerDnsAlias struct {
 	pulumi.CustomResourceState
 

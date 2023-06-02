@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
+//
+// Deprecated: azure-native:workloads/v20221101preview:SAPApplicationServerInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SAPApplicationServerInstance to guarantee forwards compatibility.
 func LookupSAPApplicationServerInstance(ctx *pulumi.Context, args *LookupSAPApplicationServerInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPApplicationServerInstanceResult, error) {
 	var rv LookupSAPApplicationServerInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20221101preview:getSAPApplicationServerInstance", args, &rv, opts...)

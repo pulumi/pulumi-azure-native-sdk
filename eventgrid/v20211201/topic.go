@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EventGrid Topic
+//
+// Deprecated: azure-native:eventgrid/v20211201:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:Topic to guarantee forwards compatibility.
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -57,13 +59,13 @@ func NewTopic(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.DisableLocalAuth) {
+	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
-	if isZero(args.InputSchema) {
+	if args.InputSchema == nil {
 		args.InputSchema = pulumi.StringPtr("EventGridSchema")
 	}
-	if isZero(args.PublicNetworkAccess) {
+	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

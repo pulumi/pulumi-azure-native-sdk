@@ -11,6 +11,8 @@ import (
 )
 
 // Get a synchronizationSetting in a share
+//
+// Deprecated: azure-native:datashare/v20181101preview:ScheduledSynchronizationSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ScheduledSynchronizationSetting to guarantee forwards compatibility.
 func LookupScheduledSynchronizationSetting(ctx *pulumi.Context, args *LookupScheduledSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*LookupScheduledSynchronizationSettingResult, error) {
 	var rv LookupScheduledSynchronizationSettingResult
 	err := ctx.Invoke("azure-native:datashare/v20181101preview:getScheduledSynchronizationSetting", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The policy assignment.
+//
+// Deprecated: azure-native:authorization/v20210601:PolicyAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20220601:PolicyAssignment to guarantee forwards compatibility.
 type PolicyAssignment struct {
 	pulumi.CustomResourceState
 
@@ -55,7 +57,7 @@ func NewPolicyAssignment(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
-	if isZero(args.EnforcementMode) {
+	if args.EnforcementMode == nil {
 		args.EnforcementMode = pulumi.StringPtr("Default")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

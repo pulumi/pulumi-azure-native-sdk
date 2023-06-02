@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a MySQL Server key.
+//
+// Deprecated: azure-native:dbformysql/v20200101privatepreview:ServerKey is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20200701privatepreview:ServerKey to guarantee forwards compatibility.
 func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pulumi.InvokeOption) (*LookupServerKeyResult, error) {
 	var rv LookupServerKeyResult
 	err := ctx.Invoke("azure-native:dbformysql/v20200101privatepreview:getServerKey", args, &rv, opts...)

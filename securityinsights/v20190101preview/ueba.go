@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Settings with single toggle.
+//
+// Deprecated: azure-native:securityinsights/v20190101preview:Ueba is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:Ueba to guarantee forwards compatibility.
 type Ueba struct {
 	pulumi.CustomResourceState
 

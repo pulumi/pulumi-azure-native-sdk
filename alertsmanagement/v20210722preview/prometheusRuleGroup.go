@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Prometheus rule group resource.
+//
+// Deprecated: azure-native:alertsmanagement/v20210722preview:PrometheusRuleGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:alertsmanagement/v20230301:PrometheusRuleGroup to guarantee forwards compatibility.
 type PrometheusRuleGroup struct {
 	pulumi.CustomResourceState
 

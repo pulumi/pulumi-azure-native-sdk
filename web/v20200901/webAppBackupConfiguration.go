@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a backup which will be performed.
+//
+// Deprecated: azure-native:web/v20200901:WebAppBackupConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppBackupConfiguration to guarantee forwards compatibility.
 type WebAppBackupConfiguration struct {
 	pulumi.CustomResourceState
 

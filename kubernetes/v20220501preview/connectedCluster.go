@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a connected cluster.
+//
+// Deprecated: azure-native:kubernetes/v20220501preview:ConnectedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetes/v20221001preview:ConnectedCluster to guarantee forwards compatibility.
 type ConnectedCluster struct {
 	pulumi.CustomResourceState
 
@@ -74,7 +76,7 @@ func NewConnectedCluster(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.Identity = args.Identity.ToConnectedClusterIdentityOutput().ApplyT(func(v ConnectedClusterIdentity) ConnectedClusterIdentity { return *v.Defaults() }).(ConnectedClusterIdentityOutput)
-	if isZero(args.PrivateLinkState) {
+	if args.PrivateLinkState == nil {
 		args.PrivateLinkState = pulumi.StringPtr("Disabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

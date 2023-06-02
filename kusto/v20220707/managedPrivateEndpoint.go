@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a managed private endpoint.
+//
+// Deprecated: azure-native:kusto/v20220707:ManagedPrivateEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ManagedPrivateEndpoint to guarantee forwards compatibility.
 type ManagedPrivateEndpoint struct {
 	pulumi.CustomResourceState
 

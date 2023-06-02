@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified interface endpoint by resource group.
+//
+// Deprecated: azure-native:network/v20181201:InterfaceEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190201:InterfaceEndpoint to guarantee forwards compatibility.
 func LookupInterfaceEndpoint(ctx *pulumi.Context, args *LookupInterfaceEndpointArgs, opts ...pulumi.InvokeOption) (*LookupInterfaceEndpointResult, error) {
 	var rv LookupInterfaceEndpointResult
 	err := ctx.Invoke("azure-native:network/v20181201:getInterfaceEndpoint", args, &rv, opts...)

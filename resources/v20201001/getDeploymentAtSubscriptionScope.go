@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a deployment.
+//
+// Deprecated: azure-native:resources/v20201001:DeploymentAtSubscriptionScope is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:DeploymentAtSubscriptionScope to guarantee forwards compatibility.
 func LookupDeploymentAtSubscriptionScope(ctx *pulumi.Context, args *LookupDeploymentAtSubscriptionScopeArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentAtSubscriptionScopeResult, error) {
 	var rv LookupDeploymentAtSubscriptionScopeResult
 	err := ctx.Invoke("azure-native:resources/v20201001:getDeploymentAtSubscriptionScope", args, &rv, opts...)

@@ -28,7 +28,7 @@ func (val *AdditionalRegion) Defaults() *AdditionalRegion {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SkuUnitCount) {
+	if tmp.SkuUnitCount == nil {
 		skuUnitCount_ := 1
 		tmp.SkuUnitCount = &skuUnitCount_
 	}
@@ -64,7 +64,7 @@ func (val *AdditionalRegionArgs) Defaults() *AdditionalRegionArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SkuUnitCount) {
+	if tmp.SkuUnitCount == nil {
 		tmp.SkuUnitCount = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -181,7 +181,7 @@ func (val *AdditionalRegionResponse) Defaults() *AdditionalRegionResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SkuUnitCount) {
+	if tmp.SkuUnitCount == nil {
 		skuUnitCount_ := 1
 		tmp.SkuUnitCount = &skuUnitCount_
 	}
@@ -262,7 +262,7 @@ func (val *ApiManagementServiceSkuProperties) Defaults() *ApiManagementServiceSk
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Capacity) {
+	if tmp.Capacity == nil {
 		capacity_ := 1
 		tmp.Capacity = &capacity_
 	}
@@ -294,7 +294,7 @@ func (val *ApiManagementServiceSkuPropertiesArgs) Defaults() *ApiManagementServi
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Capacity) {
+	if tmp.Capacity == nil {
 		tmp.Capacity = pulumi.IntPtr(1)
 	}
 	return &tmp
@@ -350,7 +350,7 @@ func (val *ApiManagementServiceSkuPropertiesResponse) Defaults() *ApiManagementS
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Capacity) {
+	if tmp.Capacity == nil {
 		capacity_ := 1
 		tmp.Capacity = &capacity_
 	}

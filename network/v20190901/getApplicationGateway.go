@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified application gateway.
+//
+// Deprecated: azure-native:network/v20190901:ApplicationGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ApplicationGateway to guarantee forwards compatibility.
 func LookupApplicationGateway(ctx *pulumi.Context, args *LookupApplicationGatewayArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGatewayResult, error) {
 	var rv LookupApplicationGatewayResult
 	err := ctx.Invoke("azure-native:network/v20190901:getApplicationGateway", args, &rv, opts...)

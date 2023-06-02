@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the sku details for the given resource type and sku name.
+//
+// Deprecated: azure-native:providerhub/v20210501preview:SkusNestedResourceTypeFirst is being removed in the next major version of this provider. Upgrade to at least azure-native:providerhub/v20210901preview:SkusNestedResourceTypeFirst to guarantee forwards compatibility.
 func LookupSkusNestedResourceTypeFirst(ctx *pulumi.Context, args *LookupSkusNestedResourceTypeFirstArgs, opts ...pulumi.InvokeOption) (*LookupSkusNestedResourceTypeFirstResult, error) {
 	var rv LookupSkusNestedResourceTypeFirstResult
 	err := ctx.Invoke("azure-native:providerhub/v20210501preview:getSkusNestedResourceTypeFirst", args, &rv, opts...)

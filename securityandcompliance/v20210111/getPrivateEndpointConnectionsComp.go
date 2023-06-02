@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the service.
+//
+// Deprecated: azure-native:securityandcompliance/v20210111:PrivateEndpointConnectionsComp is being removed in the next major version of this provider. Upgrade to at least azure-native:securityandcompliance/v20210308:PrivateEndpointConnectionsComp to guarantee forwards compatibility.
 func LookupPrivateEndpointConnectionsComp(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionsCompArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionsCompResult, error) {
 	var rv LookupPrivateEndpointConnectionsCompResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210111:getPrivateEndpointConnectionsComp", args, &rv, opts...)

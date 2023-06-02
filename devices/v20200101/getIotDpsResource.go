@@ -13,6 +13,7 @@ import (
 // Get the metadata of the provisioning service without SAS keys.
 //
 // Deprecated: Version 2020-01-01 will be removed in v2 of the provider.
+// azure-native:devices/v20200101:IotDpsResource is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20200901preview:IotDpsResource to guarantee forwards compatibility.
 func LookupIotDpsResource(ctx *pulumi.Context, args *LookupIotDpsResourceArgs, opts ...pulumi.InvokeOption) (*LookupIotDpsResourceResult, error) {
 	var rv LookupIotDpsResourceResult
 	err := ctx.Invoke("azure-native:devices/v20200101:getIotDpsResource", args, &rv, opts...)

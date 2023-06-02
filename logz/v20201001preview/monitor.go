@@ -7,10 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:logz/v20201001preview:Monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:logz/v20220101preview:Monitor to guarantee forwards compatibility.
 type Monitor struct {
 	pulumi.CustomResourceState
 

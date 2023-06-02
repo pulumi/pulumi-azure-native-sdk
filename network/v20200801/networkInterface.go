@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A network interface in a resource group.
+//
+// Deprecated: azure-native:network/v20200801:NetworkInterface is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:NetworkInterface to guarantee forwards compatibility.
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 
@@ -73,7 +75,7 @@ func NewNetworkInterface(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.NicType) {
+	if args.NicType == nil {
 		args.NicType = pulumi.StringPtr("Standard")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

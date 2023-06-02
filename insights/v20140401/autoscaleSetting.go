@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The autoscale setting resource.
 //
 // Deprecated: Version 2014-04-01 will be removed in v2 of the provider.
+// azure-native:insights/v20140401:AutoscaleSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20221001:AutoscaleSetting to guarantee forwards compatibility.
 type AutoscaleSetting struct {
 	pulumi.CustomResourceState
 
@@ -50,7 +51,7 @@ func NewAutoscaleSetting(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Enabled) {
+	if args.Enabled == nil {
 		args.Enabled = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

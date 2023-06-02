@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An action group resource.
+//
+// Deprecated: azure-native:insights/v20180901:ActionGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20230101:ActionGroup to guarantee forwards compatibility.
 type ActionGroup struct {
 	pulumi.CustomResourceState
 
@@ -62,7 +64,7 @@ func NewActionGroup(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.Enabled) {
+	if args.Enabled == nil {
 		args.Enabled = pulumi.Bool(true)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

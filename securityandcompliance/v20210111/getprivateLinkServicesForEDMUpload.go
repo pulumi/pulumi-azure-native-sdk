@@ -11,6 +11,8 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForEDMUpload resource.
+//
+// Deprecated: azure-native:securityandcompliance/v20210111:privateLinkServicesForEDMUpload is being removed in the next major version of this provider. Upgrade to at least azure-native:securityandcompliance/v20210308:privateLinkServicesForEDMUpload to guarantee forwards compatibility.
 func GetprivateLinkServicesForEDMUpload(ctx *pulumi.Context, args *GetprivateLinkServicesForEDMUploadArgs, opts ...pulumi.InvokeOption) (*GetprivateLinkServicesForEDMUploadResult, error) {
 	var rv GetprivateLinkServicesForEDMUploadResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210111:getprivateLinkServicesForEDMUpload", args, &rv, opts...)

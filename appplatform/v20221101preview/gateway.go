@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Spring Cloud Gateway resource
+//
+// Deprecated: azure-native:appplatform/v20221101preview:Gateway is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Gateway to guarantee forwards compatibility.
 type Gateway struct {
 	pulumi.CustomResourceState
 

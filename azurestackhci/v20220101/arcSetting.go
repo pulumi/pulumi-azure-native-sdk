@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ArcSetting details.
+//
+// Deprecated: azure-native:azurestackhci/v20220101:ArcSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20221001:ArcSetting to guarantee forwards compatibility.
 type ArcSetting struct {
 	pulumi.CustomResourceState
 

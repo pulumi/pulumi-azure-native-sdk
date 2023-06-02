@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OpenShift Managed cluster.
+//
+// Deprecated: azure-native:containerservice/v20190930preview:OpenShiftManagedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20191027preview:OpenShiftManagedCluster to guarantee forwards compatibility.
 type OpenShiftManagedCluster struct {
 	pulumi.CustomResourceState
 

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource information with extended details.
 //
 // Deprecated: Version 2016-10-01 will be removed in v2 of the provider.
+// azure-native:keyvault/v20161001:Secret is being removed in the next major version of this provider. Upgrade to at least azure-native:keyvault/v20230201:Secret to guarantee forwards compatibility.
 type Secret struct {
 	pulumi.CustomResourceState
 

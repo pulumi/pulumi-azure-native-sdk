@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Fusion alert rule.
+//
+// Deprecated: azure-native:securityinsights/v20230201preview:FusionAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:FusionAlertRule to guarantee forwards compatibility.
 type FusionAlertRule struct {
 	pulumi.CustomResourceState
 

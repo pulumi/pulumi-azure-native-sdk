@@ -13,6 +13,7 @@ import (
 // Gets the table with the specified table name, under the specified account if it exists.
 //
 // Deprecated: Version 2020-08-01-preview will be removed in v2 of the provider.
+// azure-native:storage/v20200801preview:Table is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:Table to guarantee forwards compatibility.
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {
 	var rv LookupTableResult
 	err := ctx.Invoke("azure-native:storage/v20200801preview:getTable", args, &rv, opts...)

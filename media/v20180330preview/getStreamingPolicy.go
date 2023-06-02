@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of a Streaming Policy in the Media Services account
+//
+// Deprecated: azure-native:media/v20180330preview:StreamingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:StreamingPolicy to guarantee forwards compatibility.
 func LookupStreamingPolicy(ctx *pulumi.Context, args *LookupStreamingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupStreamingPolicyResult, error) {
 	var rv LookupStreamingPolicyResult
 	err := ctx.Invoke("azure-native:media/v20180330preview:getStreamingPolicy", args, &rv, opts...)

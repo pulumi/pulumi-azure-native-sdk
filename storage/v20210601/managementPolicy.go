@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Get Storage Account ManagementPolicies operation response.
+//
+// Deprecated: azure-native:storage/v20210601:ManagementPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:ManagementPolicy to guarantee forwards compatibility.
 type ManagementPolicy struct {
 	pulumi.CustomResourceState
 

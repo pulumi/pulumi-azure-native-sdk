@@ -82,7 +82,7 @@ func (val *LookupJobResult) Defaults() *LookupJobResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DeliveryType) {
+	if tmp.DeliveryType == nil {
 		deliveryType_ := "NonScheduled"
 		tmp.DeliveryType = &deliveryType_
 	}

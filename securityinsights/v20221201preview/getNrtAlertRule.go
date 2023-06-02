@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the alert rule.
+//
+// Deprecated: azure-native:securityinsights/v20221201preview:NrtAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:NrtAlertRule to guarantee forwards compatibility.
 func LookupNrtAlertRule(ctx *pulumi.Context, args *LookupNrtAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupNrtAlertRuleResult, error) {
 	var rv LookupNrtAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getNrtAlertRule", args, &rv, opts...)

@@ -7,10 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:openenergyplatform/v20210601preview:EnergyService is being removed in the next major version of this provider. Upgrade to at least azure-native:openenergyplatform/v20220404preview:EnergyService to guarantee forwards compatibility.
 type EnergyService struct {
 	pulumi.CustomResourceState
 

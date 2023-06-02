@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Scope Connections resource
+//
+// Deprecated: azure-native:network/v20220501:ScopeConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ScopeConnection to guarantee forwards compatibility.
 type ScopeConnection struct {
 	pulumi.CustomResourceState
 

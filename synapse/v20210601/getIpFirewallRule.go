@@ -11,6 +11,8 @@ import (
 )
 
 // Get a firewall rule
+//
+// Deprecated: azure-native:synapse/v20210601:IpFirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:IpFirewallRule to guarantee forwards compatibility.
 func LookupIpFirewallRule(ctx *pulumi.Context, args *LookupIpFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupIpFirewallRuleResult, error) {
 	var rv LookupIpFirewallRuleResult
 	err := ctx.Invoke("azure-native:synapse/v20210601:getIpFirewallRule", args, &rv, opts...)

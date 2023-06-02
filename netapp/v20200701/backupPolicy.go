@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Backup policy information
 //
 // Deprecated: Version 2020-07-01 will be removed in v2 of the provider.
+// azure-native:netapp/v20200701:BackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20210401:BackupPolicy to guarantee forwards compatibility.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 

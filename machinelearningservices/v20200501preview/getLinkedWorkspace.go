@@ -11,6 +11,8 @@ import (
 )
 
 // Get the detail of a linked workspace.
+//
+// Deprecated: azure-native:machinelearningservices/v20200501preview:LinkedWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20200515preview:LinkedWorkspace to guarantee forwards compatibility.
 func LookupLinkedWorkspace(ctx *pulumi.Context, args *LookupLinkedWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedWorkspaceResult, error) {
 	var rv LookupLinkedWorkspaceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200501preview:getLinkedWorkspace", args, &rv, opts...)

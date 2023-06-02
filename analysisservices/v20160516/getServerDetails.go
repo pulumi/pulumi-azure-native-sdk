@@ -13,6 +13,7 @@ import (
 // Gets details about the specified Analysis Services server.
 //
 // Deprecated: Version 2016-05-16 will be removed in v2 of the provider.
+// azure-native:analysisservices/v20160516:ServerDetails is being removed in the next major version of this provider. Upgrade to at least azure-native:analysisservices/v20170801beta:ServerDetails to guarantee forwards compatibility.
 func LookupServerDetails(ctx *pulumi.Context, args *LookupServerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupServerDetailsResult, error) {
 	var rv LookupServerDetailsResult
 	err := ctx.Invoke("azure-native:analysisservices/v20160516:getServerDetails", args, &rv, opts...)
@@ -65,11 +66,11 @@ func (val *LookupServerDetailsResult) Defaults() *LookupServerDetailsResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ManagedMode) {
+	if tmp.ManagedMode == nil {
 		managedMode_ := 1
 		tmp.ManagedMode = &managedMode_
 	}
-	if isZero(tmp.ServerMonitorMode) {
+	if tmp.ServerMonitorMode == nil {
 		serverMonitorMode_ := 1
 		tmp.ServerMonitorMode = &serverMonitorMode_
 	}

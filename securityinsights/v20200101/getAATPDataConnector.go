@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data connector.
+//
+// Deprecated: azure-native:securityinsights/v20200101:AATPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:AATPDataConnector to guarantee forwards compatibility.
 func LookupAATPDataConnector(ctx *pulumi.Context, args *LookupAATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAATPDataConnectorResult, error) {
 	var rv LookupAATPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20200101:getAATPDataConnector", args, &rv, opts...)

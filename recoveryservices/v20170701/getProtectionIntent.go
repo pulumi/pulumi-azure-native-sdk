@@ -14,6 +14,7 @@ import (
 // call the GetItemOperationResult API.
 //
 // Deprecated: Version 2017-07-01 will be removed in v2 of the provider.
+// azure-native:recoveryservices/v20170701:ProtectionIntent is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ProtectionIntent to guarantee forwards compatibility.
 func LookupProtectionIntent(ctx *pulumi.Context, args *LookupProtectionIntentArgs, opts ...pulumi.InvokeOption) (*LookupProtectionIntentResult, error) {
 	var rv LookupProtectionIntentResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20170701:getProtectionIntent", args, &rv, opts...)

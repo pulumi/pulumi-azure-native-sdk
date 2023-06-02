@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single item in a List or Get AuthorizationRule operation
+//
+// Deprecated: azure-native:eventhub/v20211101:NamespaceAuthorizationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:NamespaceAuthorizationRule to guarantee forwards compatibility.
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 

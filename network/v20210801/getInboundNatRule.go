@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified load balancer inbound NAT rule.
+//
+// Deprecated: azure-native:network/v20210801:InboundNatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:InboundNatRule to guarantee forwards compatibility.
 func LookupInboundNatRule(ctx *pulumi.Context, args *LookupInboundNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupInboundNatRuleResult, error) {
 	var rv LookupInboundNatRuleResult
 	err := ctx.Invoke("azure-native:network/v20210801:getInboundNatRule", args, &rv, opts...)

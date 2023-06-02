@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SqlServerInstance.
+//
+// Deprecated: azure-native:azurearcdata/v20210801:SqlServerInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20220615preview:SqlServerInstance to guarantee forwards compatibility.
 type SqlServerInstance struct {
 	pulumi.CustomResourceState
 

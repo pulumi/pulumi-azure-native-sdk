@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The galleryimages resource definition.
+//
+// Deprecated: azure-native:azurestackhci/v20210701preview:galleryimageRetrieve is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20210901preview:galleryimageRetrieve to guarantee forwards compatibility.
 type GalleryimageRetrieve struct {
 	pulumi.CustomResourceState
 

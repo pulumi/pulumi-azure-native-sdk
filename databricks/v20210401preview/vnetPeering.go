@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Peerings in a VirtualNetwork resource
+//
+// Deprecated: azure-native:databricks/v20210401preview:vNetPeering is being removed in the next major version of this provider. Upgrade to at least azure-native:databricks/v20230201:vNetPeering to guarantee forwards compatibility.
 type VNetPeering struct {
 	pulumi.CustomResourceState
 

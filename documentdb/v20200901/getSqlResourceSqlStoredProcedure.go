@@ -13,6 +13,7 @@ import (
 // Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.
 //
 // Deprecated: Version 2020-09-01 will be removed in v2 of the provider.
+// azure-native:documentdb/v20200901:SqlResourceSqlStoredProcedure is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:SqlResourceSqlStoredProcedure to guarantee forwards compatibility.
 func LookupSqlResourceSqlStoredProcedure(ctx *pulumi.Context, args *LookupSqlResourceSqlStoredProcedureArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlStoredProcedureResult, error) {
 	var rv LookupSqlResourceSqlStoredProcedureResult
 	err := ctx.Invoke("azure-native:documentdb/v20200901:getSqlResourceSqlStoredProcedure", args, &rv, opts...)

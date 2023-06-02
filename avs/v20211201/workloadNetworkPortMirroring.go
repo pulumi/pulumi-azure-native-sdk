@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX Port Mirroring
+//
+// Deprecated: azure-native:avs/v20211201:WorkloadNetworkPortMirroring is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkPortMirroring to guarantee forwards compatibility.
 type WorkloadNetworkPortMirroring struct {
 	pulumi.CustomResourceState
 

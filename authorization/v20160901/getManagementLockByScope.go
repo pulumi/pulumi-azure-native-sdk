@@ -13,6 +13,7 @@ import (
 // Get a management lock by scope.
 //
 // Deprecated: Version 2016-09-01 will be removed in v2 of the provider.
+// azure-native:authorization/v20160901:ManagementLockByScope is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20200501:ManagementLockByScope to guarantee forwards compatibility.
 func LookupManagementLockByScope(ctx *pulumi.Context, args *LookupManagementLockByScopeArgs, opts ...pulumi.InvokeOption) (*LookupManagementLockByScopeResult, error) {
 	var rv LookupManagementLockByScopeResult
 	err := ctx.Invoke("azure-native:authorization/v20160901:getManagementLockByScope", args, &rv, opts...)

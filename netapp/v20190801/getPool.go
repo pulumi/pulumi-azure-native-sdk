@@ -13,6 +13,7 @@ import (
 // Get details of the specified capacity pool
 //
 // Deprecated: Version 2019-08-01 will be removed in v2 of the provider.
+// azure-native:netapp/v20190801:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Pool to guarantee forwards compatibility.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:netapp/v20190801:getPool", args, &rv, opts...)

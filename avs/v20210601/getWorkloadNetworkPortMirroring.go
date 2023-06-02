@@ -11,6 +11,8 @@ import (
 )
 
 // NSX Port Mirroring
+//
+// Deprecated: azure-native:avs/v20210601:WorkloadNetworkPortMirroring is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkPortMirroring to guarantee forwards compatibility.
 func LookupWorkloadNetworkPortMirroring(ctx *pulumi.Context, args *LookupWorkloadNetworkPortMirroringArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkPortMirroringResult, error) {
 	var rv LookupWorkloadNetworkPortMirroringResult
 	err := ctx.Invoke("azure-native:avs/v20210601:getWorkloadNetworkPortMirroring", args, &rv, opts...)

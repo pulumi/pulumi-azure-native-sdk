@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Differentiated Services Code Point configuration for any given network interface
+//
+// Deprecated: azure-native:network/v20210501:DscpConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:DscpConfiguration to guarantee forwards compatibility.
 type DscpConfiguration struct {
 	pulumi.CustomResourceState
 

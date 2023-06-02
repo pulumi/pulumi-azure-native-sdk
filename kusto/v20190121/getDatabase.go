@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a database.
+//
+// Deprecated: azure-native:kusto/v20190121:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20190515:Database to guarantee forwards compatibility.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("azure-native:kusto/v20190121:getDatabase", args, &rv, opts...)

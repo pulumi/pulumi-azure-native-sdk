@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a job step in a job's current version.
+//
+// Deprecated: azure-native:sql/v20170301preview:JobStep is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:JobStep to guarantee forwards compatibility.
 func LookupJobStep(ctx *pulumi.Context, args *LookupJobStepArgs, opts ...pulumi.InvokeOption) (*LookupJobStepResult, error) {
 	var rv LookupJobStepResult
 	err := ctx.Invoke("azure-native:sql/v20170301preview:getJobStep", args, &rv, opts...)

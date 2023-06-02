@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // vCenter definition.
 //
 // Deprecated: Version 2016-08-10 will be removed in v2 of the provider.
+// azure-native:recoveryservices/v20160810:ReplicationvCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20210301:ReplicationvCenter to guarantee forwards compatibility.
 type ReplicationvCenter struct {
 	pulumi.CustomResourceState
 

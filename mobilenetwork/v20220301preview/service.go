@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Service resource.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

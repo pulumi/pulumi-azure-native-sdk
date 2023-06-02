@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a data connection.
+//
+// Deprecated: azure-native:kusto/v20191109:IotHubDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:IotHubDataConnection to guarantee forwards compatibility.
 func LookupIotHubDataConnection(ctx *pulumi.Context, args *LookupIotHubDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotHubDataConnectionResult, error) {
 	var rv LookupIotHubDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20191109:getIotHubDataConnection", args, &rv, opts...)

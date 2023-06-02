@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves a SQL Server Instance resource
+//
+// Deprecated: azure-native:azurearcdata/v20211101:SqlServerInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20220615preview:SqlServerInstance to guarantee forwards compatibility.
 func LookupSqlServerInstance(ctx *pulumi.Context, args *LookupSqlServerInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerInstanceResult, error) {
 	var rv LookupSqlServerInstanceResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20211101:getSqlServerInstance", args, &rv, opts...)

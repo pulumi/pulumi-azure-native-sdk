@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen1 environments have data retention limits.
+//
+// Deprecated: azure-native:timeseriesinsights/v20200515:Gen1Environment is being removed in the next major version of this provider. Upgrade to at least azure-native:timeseriesinsights/v20210630preview:Gen1Environment to guarantee forwards compatibility.
 type Gen1Environment struct {
 	pulumi.CustomResourceState
 

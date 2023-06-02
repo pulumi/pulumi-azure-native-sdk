@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains information about an Azure Batch account.
 //
 // Deprecated: Version 2020-05-01 will be removed in v2 of the provider.
+// azure-native:batch/v20200501:BatchAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20220101:BatchAccount to guarantee forwards compatibility.
 type BatchAccount struct {
 	pulumi.CustomResourceState
 

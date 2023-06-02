@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the environment with the specified name in the specified subscription and resource group.
+//
+// Deprecated: azure-native:timeseriesinsights/v20210331preview:Gen1Environment is being removed in the next major version of this provider. Upgrade to at least azure-native:timeseriesinsights/v20210630preview:Gen1Environment to guarantee forwards compatibility.
 func LookupGen1Environment(ctx *pulumi.Context, args *LookupGen1EnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupGen1EnvironmentResult, error) {
 	var rv LookupGen1EnvironmentResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20210331preview:getGen1Environment", args, &rv, opts...)

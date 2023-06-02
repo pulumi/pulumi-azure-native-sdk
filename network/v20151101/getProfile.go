@@ -13,6 +13,7 @@ import (
 // Gets a Traffic Manager profile.
 //
 // Deprecated: Version 2015-11-01 will be removed in v2 of the provider.
+// azure-native:network/v20151101:Profile is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20170301:Profile to guarantee forwards compatibility.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
 	var rv LookupProfileResult
 	err := ctx.Invoke("azure-native:network/v20151101:getProfile", args, &rv, opts...)

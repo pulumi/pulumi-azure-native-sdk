@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the user provided function app registered with a static site build
+//
+// Deprecated: azure-native:web/v20210115:StaticSiteUserProvidedFunctionAppForStaticSiteBuild is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:StaticSiteUserProvidedFunctionAppForStaticSiteBuild to guarantee forwards compatibility.
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Context, args *LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult, error) {
 	var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult
 	err := ctx.Invoke("azure-native:web/v20210115:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild", args, &rv, opts...)

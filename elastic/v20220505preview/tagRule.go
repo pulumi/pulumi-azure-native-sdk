@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
+//
+// Deprecated: azure-native:elastic/v20220505preview:TagRule is being removed in the next major version of this provider. Upgrade to at least azure-native:elastic/v20220901preview:TagRule to guarantee forwards compatibility.
 type TagRule struct {
 	pulumi.CustomResourceState
 

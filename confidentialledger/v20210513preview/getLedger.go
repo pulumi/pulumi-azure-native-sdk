@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the properties of a Confidential Ledger.
+//
+// Deprecated: azure-native:confidentialledger/v20210513preview:Ledger is being removed in the next major version of this provider. Upgrade to at least azure-native:confidentialledger/v20230126preview:Ledger to guarantee forwards compatibility.
 func LookupLedger(ctx *pulumi.Context, args *LookupLedgerArgs, opts ...pulumi.InvokeOption) (*LookupLedgerResult, error) {
 	var rv LookupLedgerResult
 	err := ctx.Invoke("azure-native:confidentialledger/v20210513preview:getLedger", args, &rv, opts...)

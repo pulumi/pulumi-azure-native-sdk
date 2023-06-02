@@ -13,6 +13,7 @@ import (
 // The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project.
 //
 // Deprecated: Version 2018-03-15-preview will be removed in v2 of the provider.
+// azure-native:datamigration/v20180315preview:Project is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20180331preview:Project to guarantee forwards compatibility.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("azure-native:datamigration/v20180315preview:getProject", args, &rv, opts...)

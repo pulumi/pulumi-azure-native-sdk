@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves a specific Service Bus Hybrid Connection used by this Web App.
+//
+// Deprecated: azure-native:web/v20200601:WebAppHybridConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppHybridConnection to guarantee forwards compatibility.
 func LookupWebAppHybridConnection(ctx *pulumi.Context, args *LookupWebAppHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHybridConnectionResult, error) {
 	var rv LookupWebAppHybridConnectionResult
 	err := ctx.Invoke("azure-native:web/v20200601:getWebAppHybridConnection", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Transform.
+//
+// Deprecated: azure-native:media/v20220501preview:Transform is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20220701:Transform to guarantee forwards compatibility.
 func LookupTransform(ctx *pulumi.Context, args *LookupTransformArgs, opts ...pulumi.InvokeOption) (*LookupTransformResult, error) {
 	var rv LookupTransformResult
 	err := ctx.Invoke("azure-native:media/v20220501preview:getTransform", args, &rv, opts...)

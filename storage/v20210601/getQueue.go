@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the queue with the specified queue name, under the specified account if it exists.
+//
+// Deprecated: azure-native:storage/v20210601:Queue is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:Queue to guarantee forwards compatibility.
 func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.InvokeOption) (*LookupQueueResult, error) {
 	var rv LookupQueueResult
 	err := ctx.Invoke("azure-native:storage/v20210601:getQueue", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a named add-on of an app.
+//
+// Deprecated: azure-native:web/v20210101:WebAppPremierAddOn is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppPremierAddOn to guarantee forwards compatibility.
 func LookupWebAppPremierAddOn(ctx *pulumi.Context, args *LookupWebAppPremierAddOnArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPremierAddOnResult, error) {
 	var rv LookupWebAppPremierAddOnResult
 	err := ctx.Invoke("azure-native:web/v20210101:getWebAppPremierAddOn", args, &rv, opts...)

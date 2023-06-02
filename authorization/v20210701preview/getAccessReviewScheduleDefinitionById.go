@@ -11,6 +11,8 @@ import (
 )
 
 // Get single access review definition
+//
+// Deprecated: azure-native:authorization/v20210701preview:AccessReviewScheduleDefinitionById is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20211201preview:AccessReviewScheduleDefinitionById to guarantee forwards compatibility.
 func LookupAccessReviewScheduleDefinitionById(ctx *pulumi.Context, args *LookupAccessReviewScheduleDefinitionByIdArgs, opts ...pulumi.InvokeOption) (*LookupAccessReviewScheduleDefinitionByIdResult, error) {
 	var rv LookupAccessReviewScheduleDefinitionByIdResult
 	err := ctx.Invoke("azure-native:authorization/v20210701preview:getAccessReviewScheduleDefinitionById", args, &rv, opts...)

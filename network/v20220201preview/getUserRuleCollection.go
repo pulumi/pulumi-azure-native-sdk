@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a network manager security user configuration rule collection.
+//
+// Deprecated: azure-native:network/v20220201preview:UserRuleCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220401preview:UserRuleCollection to guarantee forwards compatibility.
 func LookupUserRuleCollection(ctx *pulumi.Context, args *LookupUserRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleCollectionResult, error) {
 	var rv LookupUserRuleCollectionResult
 	err := ctx.Invoke("azure-native:network/v20220201preview:getUserRuleCollection", args, &rv, opts...)

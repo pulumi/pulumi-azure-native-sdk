@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an authorization rule for a namespace by rule name.
+//
+// Deprecated: azure-native:servicebus/v20210601preview:NamespaceAuthorizationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20220101preview:NamespaceAuthorizationRule to guarantee forwards compatibility.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	var rv LookupNamespaceAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:servicebus/v20210601preview:getNamespaceAuthorizationRule", args, &rv, opts...)

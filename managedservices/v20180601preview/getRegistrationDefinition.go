@@ -13,6 +13,7 @@ import (
 // Gets the registration definition details.
 //
 // Deprecated: Version 2018-06-01-preview will be removed in v2 of the provider.
+// azure-native:managedservices/v20180601preview:RegistrationDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:managedservices/v20221001:RegistrationDefinition to guarantee forwards compatibility.
 func LookupRegistrationDefinition(ctx *pulumi.Context, args *LookupRegistrationDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationDefinitionResult, error) {
 	var rv LookupRegistrationDefinitionResult
 	err := ctx.Invoke("azure-native:managedservices/v20180601preview:getRegistrationDefinition", args, &rv, opts...)

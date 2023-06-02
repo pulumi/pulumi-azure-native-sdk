@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // CDN profile is a logical grouping of endpoints that share the same settings, such as CDN provider and pricing tier.
 //
 // Deprecated: Version 2019-06-15 will be removed in v2 of the provider.
+// azure-native:cdn/v20190615:Profile is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20200901:Profile to guarantee forwards compatibility.
 type Profile struct {
 	pulumi.CustomResourceState
 

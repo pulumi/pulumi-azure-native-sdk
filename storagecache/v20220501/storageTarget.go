@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Type of the Storage Target.
+//
+// Deprecated: azure-native:storagecache/v20220501:StorageTarget is being removed in the next major version of this provider. Upgrade to at least azure-native:storagecache/v20230301preview:StorageTarget to guarantee forwards compatibility.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 

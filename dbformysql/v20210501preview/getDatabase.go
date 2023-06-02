@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a database.
+//
+// Deprecated: azure-native:dbformysql/v20210501preview:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20220101:Database to guarantee forwards compatibility.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("azure-native:dbformysql/v20210501preview:getDatabase", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the description for the specified rule.
+//
+// Deprecated: azure-native:servicebus/v20210601preview:Rule is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20220101preview:Rule to guarantee forwards compatibility.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	var rv LookupRuleResult
 	err := ctx.Invoke("azure-native:servicebus/v20210601preview:getRule", args, &rv, opts...)

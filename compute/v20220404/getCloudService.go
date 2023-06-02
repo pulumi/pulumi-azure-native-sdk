@@ -11,6 +11,8 @@ import (
 )
 
 // Display information about a cloud service.
+//
+// Deprecated: azure-native:compute/v20220404:CloudService is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220904:CloudService to guarantee forwards compatibility.
 func LookupCloudService(ctx *pulumi.Context, args *LookupCloudServiceArgs, opts ...pulumi.InvokeOption) (*LookupCloudServiceResult, error) {
 	var rv LookupCloudServiceResult
 	err := ctx.Invoke("azure-native:compute/v20220404:getCloudService", args, &rv, opts...)

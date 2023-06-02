@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
+//
+// Deprecated: azure-native:cdn/v20220501preview:AFDOrigin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:AFDOrigin to guarantee forwards compatibility.
 type AFDOrigin struct {
 	pulumi.CustomResourceState
 
@@ -67,13 +69,13 @@ func NewAFDOrigin(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.EnforceCertificateNameCheck) {
+	if args.EnforceCertificateNameCheck == nil {
 		args.EnforceCertificateNameCheck = pulumi.BoolPtr(true)
 	}
-	if isZero(args.HttpPort) {
+	if args.HttpPort == nil {
 		args.HttpPort = pulumi.IntPtr(80)
 	}
-	if isZero(args.HttpsPort) {
+	if args.HttpsPort == nil {
 		args.HttpsPort = pulumi.IntPtr(443)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

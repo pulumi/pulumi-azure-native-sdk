@@ -13,6 +13,7 @@ import (
 // Gets a dataset.
 //
 // Deprecated: Version 2017-09-01-preview will be removed in v2 of the provider.
+// azure-native:datafactory/v20170901preview:Dataset is being removed in the next major version of this provider. Upgrade to at least azure-native:datafactory/v20180601:Dataset to guarantee forwards compatibility.
 func LookupDataset(ctx *pulumi.Context, args *LookupDatasetArgs, opts ...pulumi.InvokeOption) (*LookupDatasetResult, error) {
 	var rv LookupDatasetResult
 	err := ctx.Invoke("azure-native:datafactory/v20170901preview:getDataset", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified webhook.
+//
+// Deprecated: azure-native:containerregistry/v20170601preview:Webhook is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Webhook to guarantee forwards compatibility.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	var rv LookupWebhookResult
 	err := ctx.Invoke("azure-native:containerregistry/v20170601preview:getWebhook", args, &rv, opts...)

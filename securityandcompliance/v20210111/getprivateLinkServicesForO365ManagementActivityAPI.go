@@ -11,6 +11,8 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForO365ManagementActivityAPI resource.
+//
+// Deprecated: azure-native:securityandcompliance/v20210111:privateLinkServicesForO365ManagementActivityAPI is being removed in the next major version of this provider. Upgrade to at least azure-native:securityandcompliance/v20210308:privateLinkServicesForO365ManagementActivityAPI to guarantee forwards compatibility.
 func GetprivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context, args *GetprivateLinkServicesForO365ManagementActivityAPIArgs, opts ...pulumi.InvokeOption) (*GetprivateLinkServicesForO365ManagementActivityAPIResult, error) {
 	var rv GetprivateLinkServicesForO365ManagementActivityAPIResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210111:getprivateLinkServicesForO365ManagementActivityAPI", args, &rv, opts...)

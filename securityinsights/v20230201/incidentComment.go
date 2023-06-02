@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an incident comment
+//
+// Deprecated: azure-native:securityinsights/v20230201:IncidentComment is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IncidentComment to guarantee forwards compatibility.
 type IncidentComment struct {
 	pulumi.CustomResourceState
 

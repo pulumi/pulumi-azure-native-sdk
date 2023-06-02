@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Job.
+//
+// Deprecated: azure-native:media/v20211101:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20220701:Job to guarantee forwards compatibility.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:media/v20211101:getJob", args, &rv, opts...)

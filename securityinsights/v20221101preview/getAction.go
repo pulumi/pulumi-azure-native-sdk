@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the action of alert rule.
+//
+// Deprecated: azure-native:securityinsights/v20221101preview:Action is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Action to guarantee forwards compatibility.
 func LookupAction(ctx *pulumi.Context, args *LookupActionArgs, opts ...pulumi.InvokeOption) (*LookupActionResult, error) {
 	var rv LookupActionResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221101preview:getAction", args, &rv, opts...)

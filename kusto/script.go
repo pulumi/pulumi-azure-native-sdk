@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,7 +54,7 @@ func NewScript(ctx *pulumi.Context,
 	if args.ScriptUrlSasToken == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptUrlSasToken'")
 	}
-	if isZero(args.ContinueOnErrors) {
+	if args.ContinueOnErrors == nil {
 		args.ContinueOnErrors = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

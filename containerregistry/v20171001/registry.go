@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20171001:Registry is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20190501:Registry to guarantee forwards compatibility.
 type Registry struct {
 	pulumi.CustomResourceState
 
@@ -54,7 +56,7 @@ func NewRegistry(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
-	if isZero(args.AdminUserEnabled) {
+	if args.AdminUserEnabled == nil {
 		args.AdminUserEnabled = pulumi.BoolPtr(false)
 	}
 	if args.NetworkRuleSet != nil {

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the Dedicated host.
 //
 // Deprecated: Version 2020-06-01 will be removed in v2 of the provider.
+// azure-native:compute/v20200601:DedicatedHost is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:DedicatedHost to guarantee forwards compatibility.
 type DedicatedHost struct {
 	pulumi.CustomResourceState
 

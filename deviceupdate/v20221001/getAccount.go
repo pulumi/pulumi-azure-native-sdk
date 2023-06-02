@@ -11,6 +11,8 @@ import (
 )
 
 // Returns account details for the given account name.
+//
+// Deprecated: azure-native:deviceupdate/v20221001:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20221201preview:Account to guarantee forwards compatibility.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:deviceupdate/v20221001:getAccount", args, &rv, opts...)
@@ -63,11 +65,11 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
-	if isZero(tmp.Sku) {
+	if tmp.Sku == nil {
 		sku_ := "Standard"
 		tmp.Sku = &sku_
 	}

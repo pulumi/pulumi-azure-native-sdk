@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Key Vault container ARM resource for a certificate that is purchased through Azure.
+//
+// Deprecated: azure-native:certificateregistration/v20210301:AppServiceCertificateOrderCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:certificateregistration/v20220901:AppServiceCertificateOrderCertificate to guarantee forwards compatibility.
 type AppServiceCertificateOrderCertificate struct {
 	pulumi.CustomResourceState
 

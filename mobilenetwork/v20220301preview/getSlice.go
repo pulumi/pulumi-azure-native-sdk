@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified mobile network slice.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:Slice is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:Slice to guarantee forwards compatibility.
 func LookupSlice(ctx *pulumi.Context, args *LookupSliceArgs, opts ...pulumi.InvokeOption) (*LookupSliceResult, error) {
 	var rv LookupSliceResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220301preview:getSlice", args, &rv, opts...)

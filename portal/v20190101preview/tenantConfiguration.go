@@ -11,6 +11,8 @@ import (
 )
 
 // Tenant configuration.
+//
+// Deprecated: azure-native:portal/v20190101preview:TenantConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:portal/v20200901preview:TenantConfiguration to guarantee forwards compatibility.
 type TenantConfiguration struct {
 	pulumi.CustomResourceState
 

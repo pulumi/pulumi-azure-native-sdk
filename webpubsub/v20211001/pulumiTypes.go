@@ -429,7 +429,7 @@ func (val *LiveTraceConfiguration) Defaults() *LiveTraceConfiguration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := "false"
 		tmp.Enabled = &enabled_
 	}
@@ -465,7 +465,7 @@ func (val *LiveTraceConfigurationArgs) Defaults() *LiveTraceConfigurationArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		tmp.Enabled = pulumi.StringPtr("false")
 	}
 	return &tmp
@@ -628,7 +628,7 @@ func (val *LiveTraceConfigurationResponse) Defaults() *LiveTraceConfigurationRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if tmp.Enabled == nil {
 		enabled_ := "false"
 		tmp.Enabled = &enabled_
 	}
@@ -3394,7 +3394,7 @@ func (val *WebPubSubHubProperties) Defaults() *WebPubSubHubProperties {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousConnectPolicy) {
+	if tmp.AnonymousConnectPolicy == nil {
 		anonymousConnectPolicy_ := "deny"
 		tmp.AnonymousConnectPolicy = &anonymousConnectPolicy_
 	}
@@ -3426,7 +3426,7 @@ func (val *WebPubSubHubPropertiesArgs) Defaults() *WebPubSubHubPropertiesArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousConnectPolicy) {
+	if tmp.AnonymousConnectPolicy == nil {
 		tmp.AnonymousConnectPolicy = pulumi.StringPtr("deny")
 	}
 	return &tmp
@@ -3482,7 +3482,7 @@ func (val *WebPubSubHubPropertiesResponse) Defaults() *WebPubSubHubPropertiesRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AnonymousConnectPolicy) {
+	if tmp.AnonymousConnectPolicy == nil {
 		anonymousConnectPolicy_ := "deny"
 		tmp.AnonymousConnectPolicy = &anonymousConnectPolicy_
 	}
@@ -3798,7 +3798,7 @@ func (val *WebPubSubTlsSettings) Defaults() *WebPubSubTlsSettings {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		clientCertEnabled_ := true
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}
@@ -3828,7 +3828,7 @@ func (val *WebPubSubTlsSettingsArgs) Defaults() *WebPubSubTlsSettingsArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		tmp.ClientCertEnabled = pulumi.BoolPtr(true)
 	}
 	return &tmp
@@ -3962,7 +3962,7 @@ func (val *WebPubSubTlsSettingsResponse) Defaults() *WebPubSubTlsSettingsRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientCertEnabled) {
+	if tmp.ClientCertEnabled == nil {
 		clientCertEnabled_ := true
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX Public IP Block
+//
+// Deprecated: azure-native:avs/v20211201:WorkloadNetworkPublicIP is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkPublicIP to guarantee forwards compatibility.
 type WorkloadNetworkPublicIP struct {
 	pulumi.CustomResourceState
 

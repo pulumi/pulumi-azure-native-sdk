@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified subnet by virtual network and resource group.
+//
+// Deprecated: azure-native:network/v20220101:Subnet is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220701:Subnet to guarantee forwards compatibility.
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
 	var rv LookupSubnetResult
 	err := ctx.Invoke("azure-native:network/v20220101:getSubnet", args, &rv, opts...)
@@ -87,11 +89,11 @@ func (val *LookupSubnetResult) Defaults() *LookupSubnetResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrivateEndpointNetworkPolicies) {
+	if tmp.PrivateEndpointNetworkPolicies == nil {
 		privateEndpointNetworkPolicies_ := "Disabled"
 		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
 	}
-	if isZero(tmp.PrivateLinkServiceNetworkPolicies) {
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
 		privateLinkServiceNetworkPolicies_ := "Enabled"
 		tmp.PrivateLinkServiceNetworkPolicies = &privateLinkServiceNetworkPolicies_
 	}

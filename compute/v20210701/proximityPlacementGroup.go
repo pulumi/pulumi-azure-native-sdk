@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the proximity placement group.
+//
+// Deprecated: azure-native:compute/v20210701:ProximityPlacementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:ProximityPlacementGroup to guarantee forwards compatibility.
 type ProximityPlacementGroup struct {
 	pulumi.CustomResourceState
 

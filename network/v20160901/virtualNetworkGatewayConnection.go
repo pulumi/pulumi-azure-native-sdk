@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A common class for general resource information
 //
 // Deprecated: Version 2016-09-01 will be removed in v2 of the provider.
+// azure-native:network/v20160901:VirtualNetworkGatewayConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190801:VirtualNetworkGatewayConnection to guarantee forwards compatibility.
 type VirtualNetworkGatewayConnection struct {
 	pulumi.CustomResourceState
 

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Linked service resource type.
 //
 // Deprecated: Version 2017-09-01-preview will be removed in v2 of the provider.
+// azure-native:datafactory/v20170901preview:LinkedService is being removed in the next major version of this provider. Upgrade to at least azure-native:datafactory/v20180601:LinkedService to guarantee forwards compatibility.
 type LinkedService struct {
 	pulumi.CustomResourceState
 

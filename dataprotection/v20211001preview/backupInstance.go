@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // BackupInstance Resource
+//
+// Deprecated: azure-native:dataprotection/v20211001preview:BackupInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230101:BackupInstance to guarantee forwards compatibility.
 type BackupInstance struct {
 	pulumi.CustomResourceState
 

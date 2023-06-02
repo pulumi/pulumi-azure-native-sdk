@@ -11,6 +11,8 @@ import (
 )
 
 // The operation to get the extension.
+//
+// Deprecated: azure-native:compute/v20210701:VirtualMachineScaleSetExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20211101:VirtualMachineScaleSetExtension to guarantee forwards compatibility.
 func LookupVirtualMachineScaleSetExtension(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetExtensionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetExtensionResult, error) {
 	var rv LookupVirtualMachineScaleSetExtensionResult
 	err := ctx.Invoke("azure-native:compute/v20210701:getVirtualMachineScaleSetExtension", args, &rv, opts...)

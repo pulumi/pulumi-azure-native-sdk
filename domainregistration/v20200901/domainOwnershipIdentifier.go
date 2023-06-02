@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Domain ownership Identifier.
 //
 // Deprecated: Version 2020-09-01 will be removed in v2 of the provider.
+// azure-native:domainregistration/v20200901:DomainOwnershipIdentifier is being removed in the next major version of this provider. Upgrade to at least azure-native:domainregistration/v20201001:DomainOwnershipIdentifier to guarantee forwards compatibility.
 type DomainOwnershipIdentifier struct {
 	pulumi.CustomResourceState
 

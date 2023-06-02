@@ -13,6 +13,7 @@ import (
 // Gets an AuthorizationRule for an Event Hub by rule name.
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
+// azure-native:eventhub/v20140901:EventHubAuthorizationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20150801:EventHubAuthorizationRule to guarantee forwards compatibility.
 func LookupEventHubAuthorizationRule(ctx *pulumi.Context, args *LookupEventHubAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupEventHubAuthorizationRuleResult, error) {
 	var rv LookupEventHubAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:eventhub/v20140901:getEventHubAuthorizationRule", args, &rv, opts...)

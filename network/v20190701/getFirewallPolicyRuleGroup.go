@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified FirewallPolicyRuleGroup.
+//
+// Deprecated: azure-native:network/v20190701:FirewallPolicyRuleGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200401:FirewallPolicyRuleGroup to guarantee forwards compatibility.
 func LookupFirewallPolicyRuleGroup(ctx *pulumi.Context, args *LookupFirewallPolicyRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyRuleGroupResult, error) {
 	var rv LookupFirewallPolicyRuleGroupResult
 	err := ctx.Invoke("azure-native:network/v20190701:getFirewallPolicyRuleGroup", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the managementpolicy associated with the specified storage account.
+//
+// Deprecated: azure-native:storage/v20210401:ManagementPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:ManagementPolicy to guarantee forwards compatibility.
 func LookupManagementPolicy(ctx *pulumi.Context, args *LookupManagementPolicyArgs, opts ...pulumi.InvokeOption) (*LookupManagementPolicyResult, error) {
 	var rv LookupManagementPolicyResult
 	err := ctx.Invoke("azure-native:storage/v20210401:getManagementPolicy", args, &rv, opts...)

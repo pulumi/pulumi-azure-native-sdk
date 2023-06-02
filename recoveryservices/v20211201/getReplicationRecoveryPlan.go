@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the recovery plan.
+//
+// Deprecated: azure-native:recoveryservices/v20211201:ReplicationRecoveryPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationRecoveryPlan to guarantee forwards compatibility.
 func LookupReplicationRecoveryPlan(ctx *pulumi.Context, args *LookupReplicationRecoveryPlanArgs, opts ...pulumi.InvokeOption) (*LookupReplicationRecoveryPlanResult, error) {
 	var rv LookupReplicationRecoveryPlanResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20211201:getReplicationRecoveryPlan", args, &rv, opts...)

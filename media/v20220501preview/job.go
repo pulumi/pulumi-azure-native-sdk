@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Job resource type. The progress and state can be obtained by polling a Job or subscribing to events using EventGrid.
+//
+// Deprecated: azure-native:media/v20220501preview:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20220701:Job to guarantee forwards compatibility.
 type Job struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A web app, a mobile app backend, or an API app.
+//
+// Deprecated: azure-native:web/v20180201:WebApp is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20181101:WebApp to guarantee forwards compatibility.
 type WebApp struct {
 	pulumi.CustomResourceState
 
@@ -115,16 +117,16 @@ func NewWebApp(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.HyperV) {
+	if args.HyperV == nil {
 		args.HyperV = pulumi.BoolPtr(false)
 	}
-	if isZero(args.IsXenon) {
+	if args.IsXenon == nil {
 		args.IsXenon = pulumi.BoolPtr(false)
 	}
-	if isZero(args.Reserved) {
+	if args.Reserved == nil {
 		args.Reserved = pulumi.BoolPtr(false)
 	}
-	if isZero(args.ScmSiteAlsoStopped) {
+	if args.ScmSiteAlsoStopped == nil {
 		args.ScmSiteAlsoStopped = pulumi.BoolPtr(false)
 	}
 	if args.SiteConfig != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Cosmos DB Table.
+//
+// Deprecated: azure-native:documentdb/v20220515:TableResourceTable is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:TableResourceTable to guarantee forwards compatibility.
 type TableResourceTable struct {
 	pulumi.CustomResourceState
 

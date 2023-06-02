@@ -11,6 +11,8 @@ import (
 )
 
 // Get ownership identifier for domain
+//
+// Deprecated: azure-native:domainregistration/v20201201:DomainOwnershipIdentifier is being removed in the next major version of this provider. Upgrade to at least azure-native:domainregistration/v20220901:DomainOwnershipIdentifier to guarantee forwards compatibility.
 func LookupDomainOwnershipIdentifier(ctx *pulumi.Context, args *LookupDomainOwnershipIdentifierArgs, opts ...pulumi.InvokeOption) (*LookupDomainOwnershipIdentifierResult, error) {
 	var rv LookupDomainOwnershipIdentifierResult
 	err := ctx.Invoke("azure-native:domainregistration/v20201201:getDomainOwnershipIdentifier", args, &rv, opts...)

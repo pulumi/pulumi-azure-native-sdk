@@ -11,6 +11,8 @@ import (
 )
 
 // A FluidRelay Server.
+//
+// Deprecated: azure-native:fluidrelay/v20210830preview:FluidRelayServer is being removed in the next major version of this provider. Upgrade to at least azure-native:fluidrelay/v20220601:FluidRelayServer to guarantee forwards compatibility.
 func LookupFluidRelayServer(ctx *pulumi.Context, args *LookupFluidRelayServerArgs, opts ...pulumi.InvokeOption) (*LookupFluidRelayServerResult, error) {
 	var rv LookupFluidRelayServerResult
 	err := ctx.Invoke("azure-native:fluidrelay/v20210830preview:getFluidRelayServer", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the service.
+//
+// Deprecated: azure-native:healthcareapis/v20210601preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20210601preview:getPrivateEndpointConnection", args, &rv, opts...)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Media Services account.
+//
+// Deprecated: azure-native:media/v20180601preview:MediaService is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:MediaService to guarantee forwards compatibility.
 type MediaService struct {
 	pulumi.CustomResourceState
 

@@ -29,7 +29,7 @@ func (val *A2AContainerMappingInput) Defaults() *A2AContainerMappingInput {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutomationAccountAuthenticationType) {
+	if tmp.AutomationAccountAuthenticationType == nil {
 		automationAccountAuthenticationType_ := "RunAsAccount"
 		tmp.AutomationAccountAuthenticationType = &automationAccountAuthenticationType_
 	}
@@ -289,7 +289,7 @@ func (val *A2AProtectionContainerMappingDetailsResponse) Defaults() *A2AProtecti
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutomationAccountAuthenticationType) {
+	if tmp.AutomationAccountAuthenticationType == nil {
 		automationAccountAuthenticationType_ := "RunAsAccount"
 		tmp.AutomationAccountAuthenticationType = &automationAccountAuthenticationType_
 	}
@@ -14013,11 +14013,11 @@ func (val *VMNicDetailsResponse) Defaults() *VMNicDetailsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ReuseExistingNic) {
+	if tmp.ReuseExistingNic == nil {
 		reuseExistingNic_ := false
 		tmp.ReuseExistingNic = &reuseExistingNic_
 	}
-	if isZero(tmp.TfoReuseExistingNic) {
+	if tmp.TfoReuseExistingNic == nil {
 		tfoReuseExistingNic_ := false
 		tmp.TfoReuseExistingNic = &tfoReuseExistingNic_
 	}

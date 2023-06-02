@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // AzureStorageInfo dictionary resource.
+//
+// Deprecated: azure-native:web/v20210301:WebAppAzureStorageAccounts is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppAzureStorageAccounts to guarantee forwards compatibility.
 type WebAppAzureStorageAccounts struct {
 	pulumi.CustomResourceState
 

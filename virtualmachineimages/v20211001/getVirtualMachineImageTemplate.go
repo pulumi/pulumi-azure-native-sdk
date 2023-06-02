@@ -11,6 +11,8 @@ import (
 )
 
 // Get information about a virtual machine image template
+//
+// Deprecated: azure-native:virtualmachineimages/v20211001:VirtualMachineImageTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:virtualmachineimages/v20220701:VirtualMachineImageTemplate to guarantee forwards compatibility.
 func LookupVirtualMachineImageTemplate(ctx *pulumi.Context, args *LookupVirtualMachineImageTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineImageTemplateResult, error) {
 	var rv LookupVirtualMachineImageTemplateResult
 	err := ctx.Invoke("azure-native:virtualmachineimages/v20211001:getVirtualMachineImageTemplate", args, &rv, opts...)
@@ -67,7 +69,7 @@ func (val *LookupVirtualMachineImageTemplateResult) Defaults() *LookupVirtualMac
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.BuildTimeoutInMinutes) {
+	if tmp.BuildTimeoutInMinutes == nil {
 		buildTimeoutInMinutes_ := 0
 		tmp.BuildTimeoutInMinutes = &buildTimeoutInMinutes_
 	}

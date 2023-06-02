@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of a Media Graph in the Media Services account
+//
+// Deprecated: azure-native:media/v20190901preview:MediaGraph is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20200201preview:MediaGraph to guarantee forwards compatibility.
 func LookupMediaGraph(ctx *pulumi.Context, args *LookupMediaGraphArgs, opts ...pulumi.InvokeOption) (*LookupMediaGraphResult, error) {
 	var rv LookupMediaGraphResult
 	err := ctx.Invoke("azure-native:media/v20190901preview:getMediaGraph", args, &rv, opts...)

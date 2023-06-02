@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Network related settings
+//
+// Deprecated: azure-native:devcenter/v20220801preview:NetworkConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:NetworkConnection to guarantee forwards compatibility.
 type NetworkConnection struct {
 	pulumi.CustomResourceState
 

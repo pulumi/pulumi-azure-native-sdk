@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a Watchlist in Azure Security Insights.
+//
+// Deprecated: azure-native:securityinsights/v20220601preview:Watchlist is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201:Watchlist to guarantee forwards compatibility.
 type Watchlist struct {
 	pulumi.CustomResourceState
 

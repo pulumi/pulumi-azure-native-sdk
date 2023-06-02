@@ -13,6 +13,7 @@ import (
 // Get a Maps Account.
 //
 // Deprecated: Version 2017-01-01-preview will be removed in v2 of the provider.
+// azure-native:maps/v20170101preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:maps/v20180501:Account to guarantee forwards compatibility.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:maps/v20170101preview:getAccount", args, &rv, opts...)

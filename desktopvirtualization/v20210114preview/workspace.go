@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a Workspace definition.
+//
+// Deprecated: azure-native:desktopvirtualization/v20210114preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 

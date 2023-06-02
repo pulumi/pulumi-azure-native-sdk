@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents OfficeATP (Office 365 Advanced Threat Protection) data connector.
+//
+// Deprecated: azure-native:securityinsights/v20190101preview:OfficeATPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:OfficeATPDataConnector to guarantee forwards compatibility.
 type OfficeATPDataConnector struct {
 	pulumi.CustomResourceState
 

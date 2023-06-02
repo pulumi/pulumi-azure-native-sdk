@@ -11,6 +11,8 @@ import (
 )
 
 // Get a role assignment by scope and name.
+//
+// Deprecated: azure-native:authorization/v20200801preview:RoleAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20220401:RoleAssignment to guarantee forwards compatibility.
 func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentResult, error) {
 	var rv LookupRoleAssignmentResult
 	err := ctx.Invoke("azure-native:authorization/v20200801preview:getRoleAssignment", args, &rv, opts...)
@@ -69,7 +71,7 @@ func (val *LookupRoleAssignmentResult) Defaults() *LookupRoleAssignmentResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.PrincipalType) {
+	if tmp.PrincipalType == nil {
 		principalType_ := "User"
 		tmp.PrincipalType = &principalType_
 	}

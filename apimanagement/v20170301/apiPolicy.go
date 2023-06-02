@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Policy Contract details.
+//
+// Deprecated: azure-native:apimanagement/v20170301:ApiPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20180601preview:ApiPolicy to guarantee forwards compatibility.
 type ApiPolicy struct {
 	pulumi.CustomResourceState
 

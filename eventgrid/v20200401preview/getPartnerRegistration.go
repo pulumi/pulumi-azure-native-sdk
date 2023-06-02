@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a partner registration with the specified parameters.
+//
+// Deprecated: azure-native:eventgrid/v20200401preview:PartnerRegistration is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20211015preview:PartnerRegistration to guarantee forwards compatibility.
 func LookupPartnerRegistration(ctx *pulumi.Context, args *LookupPartnerRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerRegistrationResult, error) {
 	var rv LookupPartnerRegistrationResult
 	err := ctx.Invoke("azure-native:eventgrid/v20200401preview:getPartnerRegistration", args, &rv, opts...)

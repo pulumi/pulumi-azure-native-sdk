@@ -11,6 +11,8 @@ import (
 )
 
 // The Network Manager Connection resource
+//
+// Deprecated: azure-native:network/v20220401preview:SubscriptionNetworkManagerConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:SubscriptionNetworkManagerConnection to guarantee forwards compatibility.
 type SubscriptionNetworkManagerConnection struct {
 	pulumi.CustomResourceState
 

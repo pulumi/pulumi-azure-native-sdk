@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EventGrid Topic
 //
 // Deprecated: Version 2018-09-15-preview will be removed in v2 of the provider.
+// azure-native:eventgrid/v20180915preview:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20200401preview:Topic to guarantee forwards compatibility.
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -45,7 +46,7 @@ func NewTopic(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.InputSchema) {
+	if args.InputSchema == nil {
 		args.InputSchema = pulumi.StringPtr("EventGridSchema")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

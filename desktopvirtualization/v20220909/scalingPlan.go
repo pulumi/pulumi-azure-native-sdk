@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a scaling plan definition.
+//
+// Deprecated: azure-native:desktopvirtualization/v20220909:ScalingPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:ScalingPlan to guarantee forwards compatibility.
 type ScalingPlan struct {
 	pulumi.CustomResourceState
 
@@ -65,7 +67,7 @@ func NewScalingPlan(ctx *pulumi.Context,
 	if args.TimeZone == nil {
 		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
-	if isZero(args.HostPoolType) {
+	if args.HostPoolType == nil {
 		args.HostPoolType = pulumi.StringPtr("Pooled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

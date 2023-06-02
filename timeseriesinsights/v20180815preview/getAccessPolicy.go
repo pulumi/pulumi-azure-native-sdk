@@ -13,6 +13,7 @@ import (
 // Gets the access policy with the specified name in the specified environment.
 //
 // Deprecated: Version 2018-08-15-preview will be removed in v2 of the provider.
+// azure-native:timeseriesinsights/v20180815preview:AccessPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:timeseriesinsights/v20210630preview:AccessPolicy to guarantee forwards compatibility.
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	var rv LookupAccessPolicyResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20180815preview:getAccessPolicy", args, &rv, opts...)

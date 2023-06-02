@@ -11,6 +11,8 @@ import (
 )
 
 // Get the Spring Cloud Gateway custom domain.
+//
+// Deprecated: azure-native:appplatform/v20221201:GatewayCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:GatewayCustomDomain to guarantee forwards compatibility.
 func LookupGatewayCustomDomain(ctx *pulumi.Context, args *LookupGatewayCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCustomDomainResult, error) {
 	var rv LookupGatewayCustomDomainResult
 	err := ctx.Invoke("azure-native:appplatform/v20221201:getGatewayCustomDomain", args, &rv, opts...)

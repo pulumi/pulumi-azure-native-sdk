@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Event Subscription
+//
+// Deprecated: azure-native:eventgrid/v20210601preview:PartnerTopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:PartnerTopicEventSubscription to guarantee forwards compatibility.
 type PartnerTopicEventSubscription struct {
 	pulumi.CustomResourceState
 
@@ -62,7 +64,7 @@ func NewPartnerTopicEventSubscription(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if isZero(args.EventDeliverySchema) {
+	if args.EventDeliverySchema == nil {
 		args.EventDeliverySchema = pulumi.StringPtr("EventGridSchema")
 	}
 	if args.Filter != nil {

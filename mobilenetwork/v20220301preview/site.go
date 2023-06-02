@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Site resource.
+//
+// Deprecated: azure-native:mobilenetwork/v20220301preview:Site is being removed in the next major version of this provider. Upgrade to at least azure-native:mobilenetwork/v20220401preview:Site to guarantee forwards compatibility.
 type Site struct {
 	pulumi.CustomResourceState
 

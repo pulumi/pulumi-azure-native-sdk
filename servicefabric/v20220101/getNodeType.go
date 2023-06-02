@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Service Fabric node type of a given managed cluster.
+//
+// Deprecated: azure-native:servicefabric/v20220101:NodeType is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20230201preview:NodeType to guarantee forwards compatibility.
 func LookupNodeType(ctx *pulumi.Context, args *LookupNodeTypeArgs, opts ...pulumi.InvokeOption) (*LookupNodeTypeResult, error) {
 	var rv LookupNodeTypeResult
 	err := ctx.Invoke("azure-native:servicefabric/v20220101:getNodeType", args, &rv, opts...)
@@ -107,15 +109,15 @@ func (val *LookupNodeTypeResult) Defaults() *LookupNodeTypeResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableEncryptionAtHost) {
+	if tmp.EnableEncryptionAtHost == nil {
 		enableEncryptionAtHost_ := false
 		tmp.EnableEncryptionAtHost = &enableEncryptionAtHost_
 	}
-	if isZero(tmp.IsStateless) {
+	if tmp.IsStateless == nil {
 		isStateless_ := false
 		tmp.IsStateless = &isStateless_
 	}
-	if isZero(tmp.MultiplePlacementGroups) {
+	if tmp.MultiplePlacementGroups == nil {
 		multiplePlacementGroups_ := false
 		tmp.MultiplePlacementGroups = &multiplePlacementGroups_
 	}

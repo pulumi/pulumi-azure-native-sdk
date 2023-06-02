@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private link service by resource group.
+//
+// Deprecated: azure-native:network/v20200701:PrivateLinkService is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210201:PrivateLinkService to guarantee forwards compatibility.
 func LookupPrivateLinkService(ctx *pulumi.Context, args *LookupPrivateLinkServiceArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServiceResult, error) {
 	var rv LookupPrivateLinkServiceResult
 	err := ctx.Invoke("azure-native:network/v20200701:getPrivateLinkService", args, &rv, opts...)

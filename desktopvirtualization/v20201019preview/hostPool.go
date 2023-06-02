@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a HostPool definition.
 //
 // Deprecated: Version 2020-10-19-preview will be removed in v2 of the provider.
+// azure-native:desktopvirtualization/v20201019preview:HostPool is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20201102preview:HostPool to guarantee forwards compatibility.
 type HostPool struct {
 	pulumi.CustomResourceState
 

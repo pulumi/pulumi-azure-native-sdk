@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an integration account map.
+//
+// Deprecated: azure-native:logic/v20180701preview:IntegrationAccountMap is being removed in the next major version of this provider. Upgrade to at least azure-native:logic/v20190501:IntegrationAccountMap to guarantee forwards compatibility.
 func LookupIntegrationAccountMap(ctx *pulumi.Context, args *LookupIntegrationAccountMapArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountMapResult, error) {
 	var rv LookupIntegrationAccountMapResult
 	err := ctx.Invoke("azure-native:logic/v20180701preview:getIntegrationAccountMap", args, &rv, opts...)

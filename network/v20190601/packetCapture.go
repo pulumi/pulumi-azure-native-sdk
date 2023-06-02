@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about packet capture session.
+//
+// Deprecated: azure-native:network/v20190601:PacketCapture is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200601:PacketCapture to guarantee forwards compatibility.
 type PacketCapture struct {
 	pulumi.CustomResourceState
 
@@ -54,13 +56,13 @@ func NewPacketCapture(ctx *pulumi.Context,
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
 	}
-	if isZero(args.BytesToCapturePerPacket) {
+	if args.BytesToCapturePerPacket == nil {
 		args.BytesToCapturePerPacket = pulumi.IntPtr(0)
 	}
-	if isZero(args.TimeLimitInSeconds) {
+	if args.TimeLimitInSeconds == nil {
 		args.TimeLimitInSeconds = pulumi.IntPtr(18000)
 	}
-	if isZero(args.TotalBytesPerSession) {
+	if args.TotalBytesPerSession == nil {
 		args.TotalBytesPerSession = pulumi.IntPtr(1073741824)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{

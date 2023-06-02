@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified scope map.
+//
+// Deprecated: azure-native:containerregistry/v20190501preview:ScopeMap is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:ScopeMap to guarantee forwards compatibility.
 func LookupScopeMap(ctx *pulumi.Context, args *LookupScopeMapArgs, opts ...pulumi.InvokeOption) (*LookupScopeMapResult, error) {
 	var rv LookupScopeMapResult
 	err := ctx.Invoke("azure-native:containerregistry/v20190501preview:getScopeMap", args, &rv, opts...)

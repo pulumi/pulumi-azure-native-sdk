@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The registration assignment.
+//
+// Deprecated: azure-native:managedservices/v20220101preview:RegistrationAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:managedservices/v20221001:RegistrationAssignment to guarantee forwards compatibility.
 type RegistrationAssignment struct {
 	pulumi.CustomResourceState
 

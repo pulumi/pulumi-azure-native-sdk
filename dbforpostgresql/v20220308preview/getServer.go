@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a server.
+//
+// Deprecated: azure-native:dbforpostgresql/v20220308preview:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20221201:Server to guarantee forwards compatibility.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	var rv LookupServerResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20220308preview:getServer", args, &rv, opts...)
@@ -85,7 +87,7 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 	tmp := *val
 	tmp.AuthConfig = tmp.AuthConfig.Defaults()
 
-	if isZero(tmp.AvailabilityZone) {
+	if tmp.AvailabilityZone == nil {
 		availabilityZone_ := ""
 		tmp.AvailabilityZone = &availabilityZone_
 	}

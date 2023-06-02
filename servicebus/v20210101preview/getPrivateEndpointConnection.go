@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a description for the specified Private Endpoint Connection.
+//
+// Deprecated: azure-native:servicebus/v20210101preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:servicebus/v20210101preview:getPrivateEndpointConnection", args, &rv, opts...)

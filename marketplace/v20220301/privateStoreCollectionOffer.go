@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The privateStore offer data structure.
+//
+// Deprecated: azure-native:marketplace/v20220301:PrivateStoreCollectionOffer is being removed in the next major version of this provider. Upgrade to at least azure-native:marketplace/v20230101:PrivateStoreCollectionOffer to guarantee forwards compatibility.
 type PrivateStoreCollectionOffer struct {
 	pulumi.CustomResourceState
 

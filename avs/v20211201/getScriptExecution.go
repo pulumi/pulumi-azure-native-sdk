@@ -11,6 +11,8 @@ import (
 )
 
 // An instance of a script executed by a user - custom or AVS
+//
+// Deprecated: azure-native:avs/v20211201:ScriptExecution is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:ScriptExecution to guarantee forwards compatibility.
 func LookupScriptExecution(ctx *pulumi.Context, args *LookupScriptExecutionArgs, opts ...pulumi.InvokeOption) (*LookupScriptExecutionResult, error) {
 	var rv LookupScriptExecutionResult
 	err := ctx.Invoke("azure-native:avs/v20211201:getScriptExecution", args, &rv, opts...)

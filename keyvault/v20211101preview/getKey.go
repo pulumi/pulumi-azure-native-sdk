@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the current version of the specified key from the specified key vault.
+//
+// Deprecated: azure-native:keyvault/v20211101preview:Key is being removed in the next major version of this provider. Upgrade to at least azure-native:keyvault/v20230201:Key to guarantee forwards compatibility.
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {
 	var rv LookupKeyResult
 	err := ctx.Invoke("azure-native:keyvault/v20211101preview:getKey", args, &rv, opts...)

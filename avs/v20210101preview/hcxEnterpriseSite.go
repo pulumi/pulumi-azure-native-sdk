@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An HCX Enterprise Site resource
+//
+// Deprecated: azure-native:avs/v20210101preview:HcxEnterpriseSite is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:HcxEnterpriseSite to guarantee forwards compatibility.
 type HcxEnterpriseSite struct {
 	pulumi.CustomResourceState
 

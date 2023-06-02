@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a scope map for a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20190501preview:ScopeMap is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:ScopeMap to guarantee forwards compatibility.
 type ScopeMap struct {
 	pulumi.CustomResourceState
 

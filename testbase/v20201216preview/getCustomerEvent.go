@@ -13,6 +13,7 @@ import (
 // Gets a Test Base CustomerEvent.
 //
 // Deprecated: Version 2020-12-16-preview will be removed in v2 of the provider.
+// azure-native:testbase/v20201216preview:CustomerEvent is being removed in the next major version of this provider. Upgrade to at least azure-native:testbase/v20220401preview:CustomerEvent to guarantee forwards compatibility.
 func LookupCustomerEvent(ctx *pulumi.Context, args *LookupCustomerEventArgs, opts ...pulumi.InvokeOption) (*LookupCustomerEventResult, error) {
 	var rv LookupCustomerEventResult
 	err := ctx.Invoke("azure-native:testbase/v20201216preview:getCustomerEvent", args, &rv, opts...)

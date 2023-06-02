@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a policy fragment.
+//
+// Deprecated: azure-native:apimanagement/v20220401preview:PolicyFragment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:PolicyFragment to guarantee forwards compatibility.
 func LookupPolicyFragment(ctx *pulumi.Context, args *LookupPolicyFragmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyFragmentResult, error) {
 	var rv LookupPolicyFragmentResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getPolicyFragment", args, &rv, opts...)
@@ -53,7 +55,7 @@ func (val *LookupPolicyFragmentResult) Defaults() *LookupPolicyFragmentResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Format) {
+	if tmp.Format == nil {
 		format_ := "xml"
 		tmp.Format = &format_
 	}

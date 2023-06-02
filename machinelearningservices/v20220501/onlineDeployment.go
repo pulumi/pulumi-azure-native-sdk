@@ -7,10 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:machinelearningservices/v20220501:OnlineDeployment is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:OnlineDeployment to guarantee forwards compatibility.
 type OnlineDeployment struct {
 	pulumi.CustomResourceState
 

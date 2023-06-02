@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Private DNS zone.
+//
+// Deprecated: azure-native:network/v20180901:PrivateZone is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20200601:PrivateZone to guarantee forwards compatibility.
 type PrivateZone struct {
 	pulumi.CustomResourceState
 

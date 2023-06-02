@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about a partner registration.
+//
+// Deprecated: azure-native:eventgrid/v20201015preview:PartnerRegistration is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20211015preview:PartnerRegistration to guarantee forwards compatibility.
 type PartnerRegistration struct {
 	pulumi.CustomResourceState
 

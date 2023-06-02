@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a database.
+//
+// Deprecated: azure-native:sql/v20171001preview:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20190601preview:Database to guarantee forwards compatibility.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("azure-native:sql/v20171001preview:getDatabase", args, &rv, opts...)

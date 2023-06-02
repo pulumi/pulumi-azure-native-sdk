@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the Bot.
+//
+// Deprecated: azure-native:botservice/v20220615preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:botservice/v20220915:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:botservice/v20220615preview:getPrivateEndpointConnection", args, &rv, opts...)

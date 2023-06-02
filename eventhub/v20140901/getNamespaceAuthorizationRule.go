@@ -13,6 +13,7 @@ import (
 // Gets an AuthorizationRule for a Namespace by rule name.
 //
 // Deprecated: Version 2014-09-01 will be removed in v2 of the provider.
+// azure-native:eventhub/v20140901:NamespaceAuthorizationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20150801:NamespaceAuthorizationRule to guarantee forwards compatibility.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	var rv LookupNamespaceAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:eventhub/v20140901:getNamespaceAuthorizationRule", args, &rv, opts...)

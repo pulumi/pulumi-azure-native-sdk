@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of hybrid runbook worker group.
+//
+// Deprecated: azure-native:automation/v20220222:HybridRunbookWorkerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:HybridRunbookWorkerGroup to guarantee forwards compatibility.
 type HybridRunbookWorkerGroup struct {
 	pulumi.CustomResourceState
 

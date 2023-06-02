@@ -13,6 +13,7 @@ import (
 // Gets a job collection.
 //
 // Deprecated: Version 2014-08-01-preview will be removed in v2 of the provider.
+// azure-native:scheduler/v20140801preview:JobCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:scheduler/v20160301:JobCollection to guarantee forwards compatibility.
 func LookupJobCollection(ctx *pulumi.Context, args *LookupJobCollectionArgs, opts ...pulumi.InvokeOption) (*LookupJobCollectionResult, error) {
 	var rv LookupJobCollectionResult
 	err := ctx.Invoke("azure-native:scheduler/v20140801preview:getJobCollection", args, &rv, opts...)

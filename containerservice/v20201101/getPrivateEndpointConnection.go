@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the private endpoint connection by managed cluster and resource group.
+//
+// Deprecated: azure-native:containerservice/v20201101:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:containerservice/v20201101:getPrivateEndpointConnection", args, &rv, opts...)

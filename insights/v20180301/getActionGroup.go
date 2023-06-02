@@ -11,6 +11,8 @@ import (
 )
 
 // Get an action group.
+//
+// Deprecated: azure-native:insights/v20180301:ActionGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20230101:ActionGroup to guarantee forwards compatibility.
 func LookupActionGroup(ctx *pulumi.Context, args *LookupActionGroupArgs, opts ...pulumi.InvokeOption) (*LookupActionGroupResult, error) {
 	var rv LookupActionGroupResult
 	err := ctx.Invoke("azure-native:insights/v20180301:getActionGroup", args, &rv, opts...)

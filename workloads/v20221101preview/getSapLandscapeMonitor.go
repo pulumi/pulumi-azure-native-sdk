@@ -11,6 +11,8 @@ import (
 )
 
 // Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
+//
+// Deprecated: azure-native:workloads/v20221101preview:SapLandscapeMonitor is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SapLandscapeMonitor to guarantee forwards compatibility.
 func LookupSapLandscapeMonitor(ctx *pulumi.Context, args *LookupSapLandscapeMonitorArgs, opts ...pulumi.InvokeOption) (*LookupSapLandscapeMonitorResult, error) {
 	var rv LookupSapLandscapeMonitorResult
 	err := ctx.Invoke("azure-native:workloads/v20221101preview:getSapLandscapeMonitor", args, &rv, opts...)

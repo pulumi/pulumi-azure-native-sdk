@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The replication policy between two storage accounts. Multiple rules can be defined in one policy.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
+// azure-native:storage/v20190601:ObjectReplicationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:ObjectReplicationPolicy to guarantee forwards compatibility.
 type ObjectReplicationPolicy struct {
 	pulumi.CustomResourceState
 

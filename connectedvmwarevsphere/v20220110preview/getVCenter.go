@@ -11,6 +11,8 @@ import (
 )
 
 // Implements vCenter GET method.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20220110preview:VCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:VCenter to guarantee forwards compatibility.
 func LookupVCenter(ctx *pulumi.Context, args *LookupVCenterArgs, opts ...pulumi.InvokeOption) (*LookupVCenterResult, error) {
 	var rv LookupVCenterResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20220110preview:getVCenter", args, &rv, opts...)

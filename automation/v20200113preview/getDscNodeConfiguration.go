@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the Dsc node configurations by node configuration.
+//
+// Deprecated: azure-native:automation/v20200113preview:DscNodeConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:DscNodeConfiguration to guarantee forwards compatibility.
 func LookupDscNodeConfiguration(ctx *pulumi.Context, args *LookupDscNodeConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscNodeConfigurationResult, error) {
 	var rv LookupDscNodeConfigurationResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getDscNodeConfiguration", args, &rv, opts...)

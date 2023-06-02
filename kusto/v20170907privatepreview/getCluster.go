@@ -13,6 +13,7 @@ import (
 // Gets a Kusto cluster.
 //
 // Deprecated: Version 2017-09-07-privatepreview will be removed in v2 of the provider.
+// azure-native:kusto/v20170907privatepreview:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20220707:Cluster to guarantee forwards compatibility.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("azure-native:kusto/v20170907privatepreview:getCluster", args, &rv, opts...)

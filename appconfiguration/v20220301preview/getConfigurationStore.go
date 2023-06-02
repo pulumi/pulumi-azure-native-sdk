@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified configuration store.
+//
+// Deprecated: azure-native:appconfiguration/v20220301preview:ConfigurationStore is being removed in the next major version of this provider. Upgrade to at least azure-native:appconfiguration/v20230301:ConfigurationStore to guarantee forwards compatibility.
 func LookupConfigurationStore(ctx *pulumi.Context, args *LookupConfigurationStoreArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationStoreResult, error) {
 	var rv LookupConfigurationStoreResult
 	err := ctx.Invoke("azure-native:appconfiguration/v20220301preview:getConfigurationStore", args, &rv, opts...)
@@ -71,15 +73,15 @@ func (val *LookupConfigurationStoreResult) Defaults() *LookupConfigurationStoreR
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
-	if isZero(tmp.EnablePurgeProtection) {
+	if tmp.EnablePurgeProtection == nil {
 		enablePurgeProtection_ := false
 		tmp.EnablePurgeProtection = &enablePurgeProtection_
 	}
-	if isZero(tmp.SoftDeleteRetentionInDays) {
+	if tmp.SoftDeleteRetentionInDays == nil {
 		softDeleteRetentionInDays_ := 7
 		tmp.SoftDeleteRetentionInDays = &softDeleteRetentionInDays_
 	}

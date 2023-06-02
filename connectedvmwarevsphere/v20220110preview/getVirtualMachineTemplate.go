@@ -11,6 +11,8 @@ import (
 )
 
 // Implements virtual machine template GET method.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20220110preview:VirtualMachineTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:VirtualMachineTemplate to guarantee forwards compatibility.
 func LookupVirtualMachineTemplate(ctx *pulumi.Context, args *LookupVirtualMachineTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineTemplateResult, error) {
 	var rv LookupVirtualMachineTemplateResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20220110preview:getVirtualMachineTemplate", args, &rv, opts...)

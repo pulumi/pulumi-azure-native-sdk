@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // VirtualRouter Resource.
+//
+// Deprecated: azure-native:network/v20200501:VirtualRouter is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualRouter to guarantee forwards compatibility.
 type VirtualRouter struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Target resource that extends a tracked regional resource.
+//
+// Deprecated: azure-native:chaos/v20221001preview:Target is being removed in the next major version of this provider. Upgrade to at least azure-native:chaos/v20230401preview:Target to guarantee forwards compatibility.
 func LookupTarget(ctx *pulumi.Context, args *LookupTargetArgs, opts ...pulumi.InvokeOption) (*LookupTargetResult, error) {
 	var rv LookupTargetResult
 	err := ctx.Invoke("azure-native:chaos/v20221001preview:getTarget", args, &rv, opts...)

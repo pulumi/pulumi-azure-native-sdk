@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents AATP (Azure Advanced Threat Protection) data connector.
+//
+// Deprecated: azure-native:securityinsights/v20200101:AATPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:AATPDataConnector to guarantee forwards compatibility.
 type AATPDataConnector struct {
 	pulumi.CustomResourceState
 

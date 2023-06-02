@@ -11,6 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
+//
+// Deprecated: azure-native:datashare/v20191101:BlobContainerDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:BlobContainerDataSetMapping to guarantee forwards compatibility.
 func LookupBlobContainerDataSetMapping(ctx *pulumi.Context, args *LookupBlobContainerDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerDataSetMappingResult, error) {
 	var rv LookupBlobContainerDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20191101:getBlobContainerDataSetMapping", args, &rv, opts...)

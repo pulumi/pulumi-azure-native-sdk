@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
+//
+// Deprecated: azure-native:healthcareapis/v20211101:WorkspacePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:WorkspacePrivateEndpointConnection to guarantee forwards compatibility.
 type WorkspacePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

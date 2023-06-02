@@ -11,6 +11,8 @@ import (
 )
 
 // Get information about a configuration profile assignment
+//
+// Deprecated: azure-native:automanage/v20210430preview:ConfigurationProfileAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:automanage/v20220504:ConfigurationProfileAssignment to guarantee forwards compatibility.
 func LookupConfigurationProfileAssignment(ctx *pulumi.Context, args *LookupConfigurationProfileAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileAssignmentResult, error) {
 	var rv LookupConfigurationProfileAssignmentResult
 	err := ctx.Invoke("azure-native:automanage/v20210430preview:getConfigurationProfileAssignment", args, &rv, opts...)

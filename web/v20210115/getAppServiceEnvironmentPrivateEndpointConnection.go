@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a private endpoint connection
+//
+// Deprecated: azure-native:web/v20210115:AppServiceEnvironmentPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:AppServiceEnvironmentPrivateEndpointConnection to guarantee forwards compatibility.
 func LookupAppServiceEnvironmentPrivateEndpointConnection(ctx *pulumi.Context, args *LookupAppServiceEnvironmentPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentPrivateEndpointConnectionResult, error) {
 	var rv LookupAppServiceEnvironmentPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:web/v20210115:getAppServiceEnvironmentPrivateEndpointConnection", args, &rv, opts...)

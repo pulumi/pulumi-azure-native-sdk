@@ -11,6 +11,8 @@ import (
 )
 
 // Get a single private workbook by its resourceName.
+//
+// Deprecated: azure-native:insights/v20150501:MyWorkbook is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20210308:MyWorkbook to guarantee forwards compatibility.
 func LookupMyWorkbook(ctx *pulumi.Context, args *LookupMyWorkbookArgs, opts ...pulumi.InvokeOption) (*LookupMyWorkbookResult, error) {
 	var rv LookupMyWorkbookResult
 	err := ctx.Invoke("azure-native:insights/v20150501:getMyWorkbook", args, &rv, opts...)

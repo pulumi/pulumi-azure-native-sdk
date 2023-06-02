@@ -11,6 +11,8 @@ import (
 )
 
 // Get an App and its properties.
+//
+// Deprecated: azure-native:appplatform/v20210601preview:App is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:App to guarantee forwards compatibility.
 func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOption) (*LookupAppResult, error) {
 	var rv LookupAppResult
 	err := ctx.Invoke("azure-native:appplatform/v20210601preview:getApp", args, &rv, opts...)

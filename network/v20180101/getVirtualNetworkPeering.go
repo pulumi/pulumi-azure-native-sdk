@@ -13,6 +13,7 @@ import (
 // Gets the specified virtual network peering.
 //
 // Deprecated: Version 2018-01-01 will be removed in v2 of the provider.
+// azure-native:network/v20180101:VirtualNetworkPeering is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20190601:VirtualNetworkPeering to guarantee forwards compatibility.
 func LookupVirtualNetworkPeering(ctx *pulumi.Context, args *LookupVirtualNetworkPeeringArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkPeeringResult, error) {
 	var rv LookupVirtualNetworkPeeringResult
 	err := ctx.Invoke("azure-native:network/v20180101:getVirtualNetworkPeering", args, &rv, opts...)

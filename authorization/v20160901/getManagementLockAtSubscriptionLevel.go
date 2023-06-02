@@ -13,6 +13,7 @@ import (
 // Gets a management lock at the subscription level.
 //
 // Deprecated: Version 2016-09-01 will be removed in v2 of the provider.
+// azure-native:authorization/v20160901:ManagementLockAtSubscriptionLevel is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20200501:ManagementLockAtSubscriptionLevel to guarantee forwards compatibility.
 func LookupManagementLockAtSubscriptionLevel(ctx *pulumi.Context, args *LookupManagementLockAtSubscriptionLevelArgs, opts ...pulumi.InvokeOption) (*LookupManagementLockAtSubscriptionLevelResult, error) {
 	var rv LookupManagementLockAtSubscriptionLevelResult
 	err := ctx.Invoke("azure-native:authorization/v20160901:getManagementLockAtSubscriptionLevel", args, &rv, opts...)

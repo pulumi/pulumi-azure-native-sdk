@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a data connection.
+//
+// Deprecated: azure-native:kusto/v20221111:EventHubDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:EventHubDataConnection to guarantee forwards compatibility.
 func LookupEventHubDataConnection(ctx *pulumi.Context, args *LookupEventHubDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventHubDataConnectionResult, error) {
 	var rv LookupEventHubDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20221111:getEventHubDataConnection", args, &rv, opts...)
@@ -76,7 +78,7 @@ func (val *LookupEventHubDataConnectionResult) Defaults() *LookupEventHubDataCon
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DatabaseRouting) {
+	if tmp.DatabaseRouting == nil {
 		databaseRouting_ := "Single"
 		tmp.DatabaseRouting = &databaseRouting_
 	}

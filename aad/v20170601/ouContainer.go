@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for OuContainer.
 //
 // Deprecated: Version 2017-06-01 will be removed in v2 of the provider.
+// azure-native:aad/v20170601:OuContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:aad/v20221201:OuContainer to guarantee forwards compatibility.
 type OuContainer struct {
 	pulumi.CustomResourceState
 

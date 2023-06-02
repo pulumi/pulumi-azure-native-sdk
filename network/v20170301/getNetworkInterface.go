@@ -13,6 +13,7 @@ import (
 // Gets information about the specified network interface.
 //
 // Deprecated: Version 2017-03-01 will be removed in v2 of the provider.
+// azure-native:network/v20170301:NetworkInterface is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20180701:NetworkInterface to guarantee forwards compatibility.
 func LookupNetworkInterface(ctx *pulumi.Context, args *LookupNetworkInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceResult, error) {
 	var rv LookupNetworkInterfaceResult
 	err := ctx.Invoke("azure-native:network/v20170301:getNetworkInterface", args, &rv, opts...)

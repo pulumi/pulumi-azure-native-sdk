@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The preview of Virtual Machine Cloud Management from the Azure supports deploying and managing VMs on your Azure Stack Edge device from Azure Portal.
 // For more information, refer to: https://docs.microsoft.com/en-us/azure/databox-online/azure-stack-edge-gpu-virtual-machine-overview
 // By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/ for additional details.
+//
+// Deprecated: azure-native:databoxedge/v20221201preview:CloudEdgeManagementRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole to guarantee forwards compatibility.
 type CloudEdgeManagementRole struct {
 	pulumi.CustomResourceState
 

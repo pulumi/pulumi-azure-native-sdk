@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the source control identified by source control name.
+//
+// Deprecated: azure-native:automation/v20200113preview:SourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:SourceControl to guarantee forwards compatibility.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	var rv LookupSourceControlResult
 	err := ctx.Invoke("azure-native:automation/v20200113preview:getSourceControl", args, &rv, opts...)

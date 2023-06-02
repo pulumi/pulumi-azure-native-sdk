@@ -11,6 +11,8 @@ import (
 )
 
 // Definition of generic ARM proxy resource.
+//
+// Deprecated: azure-native:insights/v20210401:DataCollectionRuleAssociation is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20220601:DataCollectionRuleAssociation to guarantee forwards compatibility.
 func LookupDataCollectionRuleAssociation(ctx *pulumi.Context, args *LookupDataCollectionRuleAssociationArgs, opts ...pulumi.InvokeOption) (*LookupDataCollectionRuleAssociationResult, error) {
 	var rv LookupDataCollectionRuleAssociationResult
 	err := ctx.Invoke("azure-native:insights/v20210401:getDataCollectionRuleAssociation", args, &rv, opts...)

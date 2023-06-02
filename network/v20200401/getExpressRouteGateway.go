@@ -11,6 +11,8 @@ import (
 )
 
 // Fetches the details of a ExpressRoute gateway in a resource group.
+//
+// Deprecated: azure-native:network/v20200401:ExpressRouteGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210301:ExpressRouteGateway to guarantee forwards compatibility.
 func LookupExpressRouteGateway(ctx *pulumi.Context, args *LookupExpressRouteGatewayArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteGatewayResult, error) {
 	var rv LookupExpressRouteGatewayResult
 	err := ctx.Invoke("azure-native:network/v20200401:getExpressRouteGateway", args, &rv, opts...)

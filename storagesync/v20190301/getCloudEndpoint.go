@@ -13,6 +13,7 @@ import (
 // Get a given CloudEndpoint.
 //
 // Deprecated: Version 2019-03-01 will be removed in v2 of the provider.
+// azure-native:storagesync/v20190301:CloudEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:storagesync/v20220601:CloudEndpoint to guarantee forwards compatibility.
 func LookupCloudEndpoint(ctx *pulumi.Context, args *LookupCloudEndpointArgs, opts ...pulumi.InvokeOption) (*LookupCloudEndpointResult, error) {
 	var rv LookupCloudEndpointResult
 	err := ctx.Invoke("azure-native:storagesync/v20190301:getCloudEndpoint", args, &rv, opts...)

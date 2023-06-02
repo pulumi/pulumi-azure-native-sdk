@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The lab resource.
+//
+// Deprecated: azure-native:labservices/v20211001preview:Lab is being removed in the next major version of this provider. Upgrade to at least azure-native:labservices/v20220801:Lab to guarantee forwards compatibility.
 type Lab struct {
 	pulumi.CustomResourceState
 

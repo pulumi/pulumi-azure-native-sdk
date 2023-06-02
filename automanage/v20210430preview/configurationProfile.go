@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the configuration profile.
+//
+// Deprecated: azure-native:automanage/v20210430preview:ConfigurationProfile is being removed in the next major version of this provider. Upgrade to at least azure-native:automanage/v20220504:ConfigurationProfile to guarantee forwards compatibility.
 type ConfigurationProfile struct {
 	pulumi.CustomResourceState
 

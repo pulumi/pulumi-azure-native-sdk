@@ -11,6 +11,8 @@ import (
 )
 
 // Get details of the specified volume group
+//
+// Deprecated: azure-native:netapp/v20220301:VolumeGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:VolumeGroup to guarantee forwards compatibility.
 func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ...pulumi.InvokeOption) (*LookupVolumeGroupResult, error) {
 	var rv LookupVolumeGroupResult
 	err := ctx.Invoke("azure-native:netapp/v20220301:getVolumeGroup", args, &rv, opts...)

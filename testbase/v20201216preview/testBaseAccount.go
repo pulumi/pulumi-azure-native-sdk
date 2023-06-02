@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Test Base Account resource.
 //
 // Deprecated: Version 2020-12-16-preview will be removed in v2 of the provider.
+// azure-native:testbase/v20201216preview:TestBaseAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:testbase/v20220401preview:TestBaseAccount to guarantee forwards compatibility.
 type TestBaseAccount struct {
 	pulumi.CustomResourceState
 

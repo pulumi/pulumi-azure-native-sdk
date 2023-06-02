@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the description of the specified namespace.
+//
+// Deprecated: azure-native:eventhub/v20210601preview:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:Namespace to guarantee forwards compatibility.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	var rv LookupNamespaceResult
 	err := ctx.Invoke("azure-native:eventhub/v20210601preview:getNamespace", args, &rv, opts...)

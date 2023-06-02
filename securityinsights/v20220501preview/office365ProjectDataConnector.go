@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Office Microsoft Project data connector.
+//
+// Deprecated: azure-native:securityinsights/v20220501preview:Office365ProjectDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Office365ProjectDataConnector to guarantee forwards compatibility.
 type Office365ProjectDataConnector struct {
 	pulumi.CustomResourceState
 

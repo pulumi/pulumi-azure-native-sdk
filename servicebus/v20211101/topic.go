@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of topic resource.
+//
+// Deprecated: azure-native:servicebus/v20211101:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:Topic to guarantee forwards compatibility.
 type Topic struct {
 	pulumi.CustomResourceState
 

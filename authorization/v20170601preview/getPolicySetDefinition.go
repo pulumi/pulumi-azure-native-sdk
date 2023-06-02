@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the policy set definition.
+//
+// Deprecated: azure-native:authorization/v20170601preview:PolicySetDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20190601:PolicySetDefinition to guarantee forwards compatibility.
 func LookupPolicySetDefinition(ctx *pulumi.Context, args *LookupPolicySetDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupPolicySetDefinitionResult, error) {
 	var rv LookupPolicySetDefinitionResult
 	err := ctx.Invoke("azure-native:authorization/v20170601preview:getPolicySetDefinition", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a hybrid connection configuration by its name.
+//
+// Deprecated: azure-native:web/v20180201:WebAppRelayServiceConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20201001:WebAppRelayServiceConnection to guarantee forwards compatibility.
 func LookupWebAppRelayServiceConnection(ctx *pulumi.Context, args *LookupWebAppRelayServiceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppRelayServiceConnectionResult, error) {
 	var rv LookupWebAppRelayServiceConnectionResult
 	err := ctx.Invoke("azure-native:web/v20180201:getWebAppRelayServiceConnection", args, &rv, opts...)

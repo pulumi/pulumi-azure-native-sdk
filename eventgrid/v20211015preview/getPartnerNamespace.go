@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of a partner namespace.
+//
+// Deprecated: azure-native:eventgrid/v20211015preview:PartnerNamespace is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:PartnerNamespace to guarantee forwards compatibility.
 func LookupPartnerNamespace(ctx *pulumi.Context, args *LookupPartnerNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupPartnerNamespaceResult, error) {
 	var rv LookupPartnerNamespaceResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getPartnerNamespace", args, &rv, opts...)
@@ -67,15 +69,15 @@ func (val *LookupPartnerNamespaceResult) Defaults() *LookupPartnerNamespaceResul
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableLocalAuth) {
+	if tmp.DisableLocalAuth == nil {
 		disableLocalAuth_ := false
 		tmp.DisableLocalAuth = &disableLocalAuth_
 	}
-	if isZero(tmp.PartnerTopicRoutingMode) {
+	if tmp.PartnerTopicRoutingMode == nil {
 		partnerTopicRoutingMode_ := "SourceEventAttribute"
 		tmp.PartnerTopicRoutingMode = &partnerTopicRoutingMode_
 	}
-	if isZero(tmp.PublicNetworkAccess) {
+	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}

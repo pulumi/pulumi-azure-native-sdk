@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // States and configurations of Cost Analysis.
+//
+// Deprecated: azure-native:costmanagement/v20190401preview:ViewByScope is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20191101:ViewByScope to guarantee forwards compatibility.
 type ViewByScope struct {
 	pulumi.CustomResourceState
 

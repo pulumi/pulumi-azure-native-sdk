@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the runbook identified by runbook name.
+//
+// Deprecated: azure-native:automation/v20180630:Runbook is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Runbook to guarantee forwards compatibility.
 func LookupRunbook(ctx *pulumi.Context, args *LookupRunbookArgs, opts ...pulumi.InvokeOption) (*LookupRunbookResult, error) {
 	var rv LookupRunbookResult
 	err := ctx.Invoke("azure-native:automation/v20180630:getRunbook", args, &rv, opts...)

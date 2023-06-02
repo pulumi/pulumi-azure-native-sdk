@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Wrapper resource for tags API requests and responses.
+//
+// Deprecated: azure-native:resources/v20210101:TagAtScope is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:TagAtScope to guarantee forwards compatibility.
 type TagAtScope struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the sensitivity label of a given column
+//
+// Deprecated: azure-native:synapse/v20210601:SqlPoolSensitivityLabel is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:SqlPoolSensitivityLabel to guarantee forwards compatibility.
 func LookupSqlPoolSensitivityLabel(ctx *pulumi.Context, args *LookupSqlPoolSensitivityLabelArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolSensitivityLabelResult, error) {
 	var rv LookupSqlPoolSensitivityLabelResult
 	err := ctx.Invoke("azure-native:synapse/v20210601:getSqlPoolSensitivityLabel", args, &rv, opts...)

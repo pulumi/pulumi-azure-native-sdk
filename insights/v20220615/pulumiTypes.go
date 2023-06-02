@@ -452,11 +452,11 @@ func (val *ConditionFailingPeriods) Defaults() *ConditionFailingPeriods {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinFailingPeriodsToAlert) {
+	if tmp.MinFailingPeriodsToAlert == nil {
 		minFailingPeriodsToAlert_ := 1.0
 		tmp.MinFailingPeriodsToAlert = &minFailingPeriodsToAlert_
 	}
-	if isZero(tmp.NumberOfEvaluationPeriods) {
+	if tmp.NumberOfEvaluationPeriods == nil {
 		numberOfEvaluationPeriods_ := 1.0
 		tmp.NumberOfEvaluationPeriods = &numberOfEvaluationPeriods_
 	}
@@ -488,10 +488,10 @@ func (val *ConditionFailingPeriodsArgs) Defaults() *ConditionFailingPeriodsArgs 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinFailingPeriodsToAlert) {
+	if tmp.MinFailingPeriodsToAlert == nil {
 		tmp.MinFailingPeriodsToAlert = pulumi.Float64Ptr(1.0)
 	}
-	if isZero(tmp.NumberOfEvaluationPeriods) {
+	if tmp.NumberOfEvaluationPeriods == nil {
 		tmp.NumberOfEvaluationPeriods = pulumi.Float64Ptr(1.0)
 	}
 	return &tmp
@@ -755,11 +755,11 @@ func (val *ConditionResponseFailingPeriods) Defaults() *ConditionResponseFailing
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MinFailingPeriodsToAlert) {
+	if tmp.MinFailingPeriodsToAlert == nil {
 		minFailingPeriodsToAlert_ := 1.0
 		tmp.MinFailingPeriodsToAlert = &minFailingPeriodsToAlert_
 	}
-	if isZero(tmp.NumberOfEvaluationPeriods) {
+	if tmp.NumberOfEvaluationPeriods == nil {
 		numberOfEvaluationPeriods_ := 1.0
 		tmp.NumberOfEvaluationPeriods = &numberOfEvaluationPeriods_
 	}

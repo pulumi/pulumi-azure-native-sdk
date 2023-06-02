@@ -13,6 +13,7 @@ import (
 // Gets the SQL container under an existing Azure Cosmos DB database account.
 //
 // Deprecated: Version 2015-04-01 will be removed in v2 of the provider.
+// azure-native:documentdb/v20150401:DatabaseAccountSqlContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20160331:DatabaseAccountSqlContainer to guarantee forwards compatibility.
 func LookupDatabaseAccountSqlContainer(ctx *pulumi.Context, args *LookupDatabaseAccountSqlContainerArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAccountSqlContainerResult, error) {
 	var rv LookupDatabaseAccountSqlContainerResult
 	err := ctx.Invoke("azure-native:documentdb/v20150401:getDatabaseAccountSqlContainer", args, &rv, opts...)

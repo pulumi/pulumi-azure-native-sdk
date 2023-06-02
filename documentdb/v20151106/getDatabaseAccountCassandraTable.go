@@ -13,6 +13,7 @@ import (
 // Gets the Cassandra table under an existing Azure Cosmos DB database account.
 //
 // Deprecated: Version 2015-11-06 will be removed in v2 of the provider.
+// azure-native:documentdb/v20151106:DatabaseAccountCassandraTable is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20160331:DatabaseAccountCassandraTable to guarantee forwards compatibility.
 func LookupDatabaseAccountCassandraTable(ctx *pulumi.Context, args *LookupDatabaseAccountCassandraTableArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAccountCassandraTableResult, error) {
 	var rv LookupDatabaseAccountCassandraTableResult
 	err := ctx.Invoke("azure-native:documentdb/v20151106:getDatabaseAccountCassandraTable", args, &rv, opts...)

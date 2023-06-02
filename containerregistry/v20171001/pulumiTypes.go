@@ -562,7 +562,7 @@ func (val *IPRule) Defaults() *IPRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -594,7 +594,7 @@ func (val *IPRuleArgs) Defaults() *IPRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -695,7 +695,7 @@ func (val *IPRuleResponse) Defaults() *IPRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -796,7 +796,7 @@ func (val *NetworkRuleSetArgs) Defaults() *NetworkRuleSetArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if tmp.DefaultAction == nil {
 		tmp.DefaultAction = pulumi.String("Allow")
 	}
 	return &tmp
@@ -1850,7 +1850,7 @@ func (val *VirtualNetworkRule) Defaults() *VirtualNetworkRule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}
@@ -1882,7 +1882,7 @@ func (val *VirtualNetworkRuleArgs) Defaults() *VirtualNetworkRuleArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		tmp.Action = pulumi.StringPtr("Allow")
 	}
 	return &tmp
@@ -1983,7 +1983,7 @@ func (val *VirtualNetworkRuleResponse) Defaults() *VirtualNetworkRuleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Action) {
+	if tmp.Action == nil {
 		action_ := "Allow"
 		tmp.Action = &action_
 	}

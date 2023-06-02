@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Rule Collection Group resource.
+//
+// Deprecated: azure-native:network/v20200701:FirewallPolicyRuleCollectionGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:FirewallPolicyRuleCollectionGroup to guarantee forwards compatibility.
 type FirewallPolicyRuleCollectionGroup struct {
 	pulumi.CustomResourceState
 

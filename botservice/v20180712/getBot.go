@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a BotService specified by the parameters.
+//
+// Deprecated: azure-native:botservice/v20180712:Bot is being removed in the next major version of this provider. Upgrade to at least azure-native:botservice/v20220915:Bot to guarantee forwards compatibility.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
 	var rv LookupBotResult
 	err := ctx.Invoke("azure-native:botservice/v20180712:getBot", args, &rv, opts...)

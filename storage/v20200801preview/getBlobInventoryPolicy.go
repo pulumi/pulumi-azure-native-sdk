@@ -13,6 +13,7 @@ import (
 // Gets the blob inventory policy associated with the specified storage account.
 //
 // Deprecated: Version 2020-08-01-preview will be removed in v2 of the provider.
+// azure-native:storage/v20200801preview:BlobInventoryPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:BlobInventoryPolicy to guarantee forwards compatibility.
 func LookupBlobInventoryPolicy(ctx *pulumi.Context, args *LookupBlobInventoryPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBlobInventoryPolicyResult, error) {
 	var rv LookupBlobInventoryPolicyResult
 	err := ctx.Invoke("azure-native:storage/v20200801preview:getBlobInventoryPolicy", args, &rv, opts...)

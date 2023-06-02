@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a SQL virtual machine.
+//
+// Deprecated: azure-native:sqlvirtualmachine/v20220701preview:SqlVirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachine to guarantee forwards compatibility.
 func LookupSqlVirtualMachine(ctx *pulumi.Context, args *LookupSqlVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupSqlVirtualMachineResult, error) {
 	var rv LookupSqlVirtualMachineResult
 	err := ctx.Invoke("azure-native:sqlvirtualmachine/v20220701preview:getSqlVirtualMachine", args, &rv, opts...)
@@ -87,11 +89,11 @@ func (val *LookupSqlVirtualMachineResult) Defaults() *LookupSqlVirtualMachineRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.EnableAutomaticUpgrade) {
+	if tmp.EnableAutomaticUpgrade == nil {
 		enableAutomaticUpgrade_ := false
 		tmp.EnableAutomaticUpgrade = &enableAutomaticUpgrade_
 	}
-	if isZero(tmp.LeastPrivilegeMode) {
+	if tmp.LeastPrivilegeMode == nil {
 		leastPrivilegeMode_ := "NotSet"
 		tmp.LeastPrivilegeMode = &leastPrivilegeMode_
 	}

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the notification registration details.
+//
+// Deprecated: azure-native:providerhub/v20210501preview:NotificationRegistration is being removed in the next major version of this provider. Upgrade to at least azure-native:providerhub/v20210901preview:NotificationRegistration to guarantee forwards compatibility.
 func LookupNotificationRegistration(ctx *pulumi.Context, args *LookupNotificationRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupNotificationRegistrationResult, error) {
 	var rv LookupNotificationRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub/v20210501preview:getNotificationRegistration", args, &rv, opts...)

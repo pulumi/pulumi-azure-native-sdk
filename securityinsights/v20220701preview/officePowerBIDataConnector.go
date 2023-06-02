@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Office Microsoft PowerBI data connector.
+//
+// Deprecated: azure-native:securityinsights/v20220701preview:OfficePowerBIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:OfficePowerBIDataConnector to guarantee forwards compatibility.
 type OfficePowerBIDataConnector struct {
 	pulumi.CustomResourceState
 

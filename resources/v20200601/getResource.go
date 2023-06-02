@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a resource.
+//
+// Deprecated: azure-native:resources/v20200601:Resource is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:Resource to guarantee forwards compatibility.
 func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulumi.InvokeOption) (*LookupResourceResult, error) {
 	var rv LookupResourceResult
 	err := ctx.Invoke("azure-native:resources/v20200601:getResource", args, &rv, opts...)

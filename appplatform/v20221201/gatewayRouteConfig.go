@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Spring Cloud Gateway route config resource
+//
+// Deprecated: azure-native:appplatform/v20221201:GatewayRouteConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:GatewayRouteConfig to guarantee forwards compatibility.
 type GatewayRouteConfig struct {
 	pulumi.CustomResourceState
 

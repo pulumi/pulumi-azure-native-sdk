@@ -11,6 +11,8 @@ import (
 )
 
 // Gets Kubernetes Cluster Extension.
+//
+// Deprecated: azure-native:kubernetesconfiguration/v20210501preview:Extension is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20220402preview:Extension to guarantee forwards compatibility.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20210501preview:getExtension", args, &rv, opts...)
@@ -77,11 +79,11 @@ func (val *LookupExtensionResult) Defaults() *LookupExtensionResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AutoUpgradeMinorVersion) {
+	if tmp.AutoUpgradeMinorVersion == nil {
 		autoUpgradeMinorVersion_ := true
 		tmp.AutoUpgradeMinorVersion = &autoUpgradeMinorVersion_
 	}
-	if isZero(tmp.ReleaseTrain) {
+	if tmp.ReleaseTrain == nil {
 		releaseTrain_ := "Stable"
 		tmp.ReleaseTrain = &releaseTrain_
 	}

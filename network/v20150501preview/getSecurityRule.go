@@ -13,6 +13,7 @@ import (
 // The Get NetworkSecurityRule operation retrieves information about the specified network security rule.
 //
 // Deprecated: Version 2015-05-01-preview will be removed in v2 of the provider.
+// azure-native:network/v20150501preview:SecurityRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20170301:SecurityRule to guarantee forwards compatibility.
 func LookupSecurityRule(ctx *pulumi.Context, args *LookupSecurityRuleArgs, opts ...pulumi.InvokeOption) (*LookupSecurityRuleResult, error) {
 	var rv LookupSecurityRuleResult
 	err := ctx.Invoke("azure-native:network/v20150501preview:getSecurityRule", args, &rv, opts...)

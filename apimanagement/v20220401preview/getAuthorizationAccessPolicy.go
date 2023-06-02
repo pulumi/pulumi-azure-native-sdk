@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the authorization access policy specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20220401preview:AuthorizationAccessPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:AuthorizationAccessPolicy to guarantee forwards compatibility.
 func LookupAuthorizationAccessPolicy(ctx *pulumi.Context, args *LookupAuthorizationAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationAccessPolicyResult, error) {
 	var rv LookupAuthorizationAccessPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getAuthorizationAccessPolicy", args, &rv, opts...)

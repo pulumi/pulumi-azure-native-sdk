@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves information about a gallery Application Definition.
+//
+// Deprecated: azure-native:compute/v20220103:GalleryApplication is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220303:GalleryApplication to guarantee forwards compatibility.
 func LookupGalleryApplication(ctx *pulumi.Context, args *LookupGalleryApplicationArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationResult, error) {
 	var rv LookupGalleryApplicationResult
 	err := ctx.Invoke("azure-native:compute/v20220103:getGalleryApplication", args, &rv, opts...)

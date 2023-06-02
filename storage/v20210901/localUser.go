@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The local user associated with the storage accounts.
+//
+// Deprecated: azure-native:storage/v20210901:LocalUser is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:LocalUser to guarantee forwards compatibility.
 type LocalUser struct {
 	pulumi.CustomResourceState
 

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
+//
+// Deprecated: azure-native:appconfiguration/v20210301preview:ConfigurationStore is being removed in the next major version of this provider. Upgrade to at least azure-native:appconfiguration/v20230301:ConfigurationStore to guarantee forwards compatibility.
 type ConfigurationStore struct {
 	pulumi.CustomResourceState
 

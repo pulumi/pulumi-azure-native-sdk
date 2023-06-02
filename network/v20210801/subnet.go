@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subnet in a virtual network resource.
+//
+// Deprecated: azure-native:network/v20210801:Subnet is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220701:Subnet to guarantee forwards compatibility.
 type Subnet struct {
 	pulumi.CustomResourceState
 
@@ -74,10 +76,10 @@ func NewSubnet(ctx *pulumi.Context,
 	if args.VirtualNetworkName == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualNetworkName'")
 	}
-	if isZero(args.PrivateEndpointNetworkPolicies) {
+	if args.PrivateEndpointNetworkPolicies == nil {
 		args.PrivateEndpointNetworkPolicies = pulumi.StringPtr("Enabled")
 	}
-	if isZero(args.PrivateLinkServiceNetworkPolicies) {
+	if args.PrivateLinkServiceNetworkPolicies == nil {
 		args.PrivateLinkServiceNetworkPolicies = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
