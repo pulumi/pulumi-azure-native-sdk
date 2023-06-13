@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB userDefinedFunction.
-// API Version: 2021-03-15.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlResourceSqlUserDefinedFunction struct {
 	pulumi.CustomResourceState
 
@@ -50,24 +51,6 @@ func NewSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:SqlResourceSqlUserDefinedFunction"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:SqlResourceSqlUserDefinedFunction"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:SqlResourceSqlUserDefinedFunction"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:SqlResourceSqlUserDefinedFunction"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:SqlResourceSqlUserDefinedFunction"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:SqlResourceSqlUserDefinedFunction"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:SqlResourceSqlUserDefinedFunction"),
 		},
@@ -120,7 +103,19 @@ func NewSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlUserDefinedFunction"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlUserDefinedFunction"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlUserDefinedFunction"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlUserDefinedFunction"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlUserDefinedFunction"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlUserDefinedFunction"),
 		},
 	})
 	opts = append(opts, aliases)

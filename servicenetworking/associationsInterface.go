@@ -12,7 +12,8 @@ import (
 )
 
 // Association Subresource of Traffic Controller
-// API Version: 2022-10-01-preview.
+// API Version: 2023-05-01-preview.
+// Previous API Version: 2022-10-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AssociationsInterface struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +23,7 @@ type AssociationsInterface struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Provisioning State
+	// Provisioning State of Traffic Controller Association Resource
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Association Subnet
 	Subnet AssociationSubnetResponsePtrOutput `pulumi:"subnet"`
@@ -53,6 +54,9 @@ func NewAssociationsInterface(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20221001preview:AssociationsInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:AssociationsInterface"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -91,7 +95,7 @@ type associationsInterfaceArgs struct {
 	// Name of Association
 	AssociationName *string `pulumi:"associationName"`
 	// Association Type
-	AssociationType AssociationType `pulumi:"associationType"`
+	AssociationType string `pulumi:"associationType"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -109,7 +113,7 @@ type AssociationsInterfaceArgs struct {
 	// Name of Association
 	AssociationName pulumi.StringPtrInput
 	// Association Type
-	AssociationType AssociationTypeInput
+	AssociationType pulumi.StringInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -174,7 +178,7 @@ func (o AssociationsInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssociationsInterface) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning State
+// Provisioning State of Traffic Controller Association Resource
 func (o AssociationsInterfaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssociationsInterface) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

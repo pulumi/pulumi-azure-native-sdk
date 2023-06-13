@@ -12,7 +12,8 @@ import (
 )
 
 // Information about the connection monitor.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ConnectionMonitor struct {
 	pulumi.CustomResourceState
 
@@ -74,21 +75,6 @@ func NewConnectionMonitor(ctx *pulumi.Context,
 		args.MonitoringIntervalInSeconds = pulumi.IntPtr(60)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20171001:ConnectionMonitor"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:ConnectionMonitor"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:ConnectionMonitor"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:ConnectionMonitor"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:ConnectionMonitor"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:ConnectionMonitor"),
 		},
@@ -175,6 +161,9 @@ func NewConnectionMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ConnectionMonitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ConnectionMonitor"),
 		},
 	})
 	opts = append(opts, aliases)

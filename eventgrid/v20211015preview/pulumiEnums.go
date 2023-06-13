@@ -206,25 +206,6 @@ const (
 	PartnerTopicActivationStateDeactivated    = PartnerTopicActivationState("Deactivated")
 )
 
-// This determines if events published to this partner namespace should use the source attribute in the event payload
-// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
-type PartnerTopicRoutingMode string
-
-const (
-	PartnerTopicRoutingModeSourceEventAttribute = PartnerTopicRoutingMode("SourceEventAttribute")
-	PartnerTopicRoutingModeChannelNameHeader    = PartnerTopicRoutingMode("ChannelNameHeader")
-)
-
-// Status of the connection.
-type PersistedConnectionStatus string
-
-const (
-	PersistedConnectionStatusPending      = PersistedConnectionStatus("Pending")
-	PersistedConnectionStatusApproved     = PersistedConnectionStatus("Approved")
-	PersistedConnectionStatusRejected     = PersistedConnectionStatus("Rejected")
-	PersistedConnectionStatusDisconnected = PersistedConnectionStatus("Disconnected")
-)
-
 // This determines if traffic is allowed over public network. By default it is enabled.
 // You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
 type PublicNetworkAccess string
@@ -248,18 +229,6 @@ type ResourceKind string
 const (
 	ResourceKindAzure    = ResourceKind("Azure")
 	ResourceKindAzureArc = ResourceKind("AzureArc")
-)
-
-// Provisioning state of the Private Endpoint Connection.
-type ResourceProvisioningState string
-
-const (
-	ResourceProvisioningStateCreating  = ResourceProvisioningState("Creating")
-	ResourceProvisioningStateUpdating  = ResourceProvisioningState("Updating")
-	ResourceProvisioningStateDeleting  = ResourceProvisioningState("Deleting")
-	ResourceProvisioningStateSucceeded = ResourceProvisioningState("Succeeded")
-	ResourceProvisioningStateCanceled  = ResourceProvisioningState("Canceled")
-	ResourceProvisioningStateFailed    = ResourceProvisioningState("Failed")
 )
 
 // The Sku name of the resource. The possible values are: Basic or Premium.

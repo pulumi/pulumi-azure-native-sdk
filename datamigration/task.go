@@ -12,7 +12,8 @@ import (
 )
 
 // A task resource
-// API Version: 2018-04-19.
+// API Version: 2021-06-30.
+// Previous API Version: 2018-04-19. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Task struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type Task struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Custom task properties
 	Properties pulumi.AnyOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -43,15 +46,6 @@ func NewTask(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datamigration/v20171115preview:Task"),
-		},
-		{
-			Type: pulumi.String("azure-native:datamigration/v20180315preview:Task"),
-		},
-		{
-			Type: pulumi.String("azure-native:datamigration/v20180331preview:Task"),
-		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20180419:Task"),
 		},
@@ -180,6 +174,11 @@ func (o TaskOutput) Name() pulumi.StringOutput {
 // Custom task properties
 func (o TaskOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Task) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o TaskOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Task) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource type.

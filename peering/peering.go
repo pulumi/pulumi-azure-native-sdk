@@ -12,7 +12,8 @@ import (
 )
 
 // Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Peering struct {
 	pulumi.CustomResourceState
 
@@ -55,21 +56,6 @@ func NewPeering(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:peering/v20190801preview:Peering"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20190901preview:Peering"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20200101preview:Peering"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20200401:Peering"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20201001:Peering"),
-		},
 		{
 			Type: pulumi.String("azure-native:peering/v20210101:Peering"),
 		},

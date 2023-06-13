@@ -12,7 +12,8 @@ import (
 )
 
 // The X509 Certificate.
-// API Version: 2020-08-31.
+// API Version: 2021-07-02.
+// Previous API Version: 2020-08-31. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Certificate struct {
 	pulumi.CustomResourceState
 
@@ -40,30 +41,6 @@ func NewCertificate(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:devices/v20170701:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20180122:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20180401:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20181201preview:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20190322:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20190322preview:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20190701preview:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20191104:Certificate"),
-		},
 		{
 			Type: pulumi.String("azure-native:devices/v20200301:Certificate"),
 		},
@@ -108,6 +85,9 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20220430preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20221115preview:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)

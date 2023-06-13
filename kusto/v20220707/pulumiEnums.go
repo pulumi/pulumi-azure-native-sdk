@@ -95,14 +95,6 @@ const (
 	ClusterNetworkAccessFlagDisabled = ClusterNetworkAccessFlag("Disabled")
 )
 
-// Cluster principal role.
-type ClusterPrincipalRole string
-
-const (
-	ClusterPrincipalRoleAllDatabasesAdmin  = ClusterPrincipalRole("AllDatabasesAdmin")
-	ClusterPrincipalRoleAllDatabasesViewer = ClusterPrincipalRole("AllDatabasesViewer")
-)
-
 // The event hub messages compression type
 type Compression string
 
@@ -120,33 +112,12 @@ const (
 	DataConnectionKindIotHub    = DataConnectionKind("IotHub")
 )
 
-// Database principal role.
-type DatabasePrincipalRole string
-
-const (
-	DatabasePrincipalRoleAdmin              = DatabasePrincipalRole("Admin")
-	DatabasePrincipalRoleIngestor           = DatabasePrincipalRole("Ingestor")
-	DatabasePrincipalRoleMonitor            = DatabasePrincipalRole("Monitor")
-	DatabasePrincipalRoleUser               = DatabasePrincipalRole("User")
-	DatabasePrincipalRoleUnrestrictedViewer = DatabasePrincipalRole("UnrestrictedViewer")
-	DatabasePrincipalRoleViewer             = DatabasePrincipalRole("Viewer")
-)
-
 // Indication for database routing information from the data connection, by default only database routing information is allowed
 type DatabaseRouting string
 
 const (
 	DatabaseRoutingSingle = DatabaseRouting("Single")
 	DatabaseRoutingMulti  = DatabaseRouting("Multi")
-)
-
-// The default principals modification kind
-type DefaultPrincipalsModificationKind string
-
-const (
-	DefaultPrincipalsModificationKindUnion   = DefaultPrincipalsModificationKind("Union")
-	DefaultPrincipalsModificationKindReplace = DefaultPrincipalsModificationKind("Replace")
-	DefaultPrincipalsModificationKindNone    = DefaultPrincipalsModificationKind("None")
 )
 
 // The engine type
@@ -239,15 +210,6 @@ type Kind string
 const (
 	KindReadWrite         = Kind("ReadWrite")
 	KindReadOnlyFollowing = Kind("ReadOnlyFollowing")
-)
-
-// Principal type.
-type PrincipalType string
-
-const (
-	PrincipalTypeApp   = PrincipalType("App")
-	PrincipalTypeGroup = PrincipalType("Group")
-	PrincipalTypeUser  = PrincipalType("User")
 )
 
 // Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)

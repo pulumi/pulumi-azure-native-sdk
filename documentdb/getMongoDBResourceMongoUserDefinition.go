@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
-// API Version: 2021-10-15-preview.
+// API Version: 2023-04-15.
 func LookupMongoDBResourceMongoUserDefinition(ctx *pulumi.Context, args *LookupMongoDBResourceMongoUserDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoUserDefinitionResult, error) {
 	var rv LookupMongoDBResourceMongoUserDefinitionResult
 	err := ctx.Invoke("azure-native:documentdb:getMongoDBResourceMongoUserDefinition", args, &rv, opts...)

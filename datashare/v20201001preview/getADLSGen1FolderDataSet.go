@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
-//
-// Deprecated: azure-native:datashare/v20201001preview:ADLSGen1FolderDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ADLSGen1FolderDataSet to guarantee forwards compatibility.
-func LookupADLSGen1FolderDataSet(ctx *pulumi.Context, args *LookupADLSGen1FolderDataSetArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen1FolderDataSetResult, error) {
-	var rv LookupADLSGen1FolderDataSetResult
+func GetADLSGen1FolderDataSet(ctx *pulumi.Context, args *GetADLSGen1FolderDataSetArgs, opts ...pulumi.InvokeOption) (*GetADLSGen1FolderDataSetResult, error) {
+	var rv GetADLSGen1FolderDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getADLSGen1FolderDataSet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupADLSGen1FolderDataSet(ctx *pulumi.Context, args *LookupADLSGen1Folder
 	return &rv, nil
 }
 
-type LookupADLSGen1FolderDataSetArgs struct {
+type GetADLSGen1FolderDataSetArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -34,7 +32,7 @@ type LookupADLSGen1FolderDataSetArgs struct {
 }
 
 // An ADLS Gen 1 folder data set.
-type LookupADLSGen1FolderDataSetResult struct {
+type GetADLSGen1FolderDataSetResult struct {
 	// The ADLS account name.
 	AccountName string `pulumi:"accountName"`
 	// Unique id for identifying a data set resource
@@ -58,20 +56,20 @@ type LookupADLSGen1FolderDataSetResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupADLSGen1FolderDataSetOutput(ctx *pulumi.Context, args LookupADLSGen1FolderDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupADLSGen1FolderDataSetResultOutput {
+func GetADLSGen1FolderDataSetOutput(ctx *pulumi.Context, args GetADLSGen1FolderDataSetOutputArgs, opts ...pulumi.InvokeOption) GetADLSGen1FolderDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupADLSGen1FolderDataSetResult, error) {
-			args := v.(LookupADLSGen1FolderDataSetArgs)
-			r, err := LookupADLSGen1FolderDataSet(ctx, &args, opts...)
-			var s LookupADLSGen1FolderDataSetResult
+		ApplyT(func(v interface{}) (GetADLSGen1FolderDataSetResult, error) {
+			args := v.(GetADLSGen1FolderDataSetArgs)
+			r, err := GetADLSGen1FolderDataSet(ctx, &args, opts...)
+			var s GetADLSGen1FolderDataSetResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupADLSGen1FolderDataSetResultOutput)
+		}).(GetADLSGen1FolderDataSetResultOutput)
 }
 
-type LookupADLSGen1FolderDataSetOutputArgs struct {
+type GetADLSGen1FolderDataSetOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -82,76 +80,76 @@ type LookupADLSGen1FolderDataSetOutputArgs struct {
 	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
-func (LookupADLSGen1FolderDataSetOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupADLSGen1FolderDataSetArgs)(nil)).Elem()
+func (GetADLSGen1FolderDataSetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetADLSGen1FolderDataSetArgs)(nil)).Elem()
 }
 
 // An ADLS Gen 1 folder data set.
-type LookupADLSGen1FolderDataSetResultOutput struct{ *pulumi.OutputState }
+type GetADLSGen1FolderDataSetResultOutput struct{ *pulumi.OutputState }
 
-func (LookupADLSGen1FolderDataSetResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupADLSGen1FolderDataSetResult)(nil)).Elem()
+func (GetADLSGen1FolderDataSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetADLSGen1FolderDataSetResult)(nil)).Elem()
 }
 
-func (o LookupADLSGen1FolderDataSetResultOutput) ToLookupADLSGen1FolderDataSetResultOutput() LookupADLSGen1FolderDataSetResultOutput {
+func (o GetADLSGen1FolderDataSetResultOutput) ToGetADLSGen1FolderDataSetResultOutput() GetADLSGen1FolderDataSetResultOutput {
 	return o
 }
 
-func (o LookupADLSGen1FolderDataSetResultOutput) ToLookupADLSGen1FolderDataSetResultOutputWithContext(ctx context.Context) LookupADLSGen1FolderDataSetResultOutput {
+func (o GetADLSGen1FolderDataSetResultOutput) ToGetADLSGen1FolderDataSetResultOutputWithContext(ctx context.Context) GetADLSGen1FolderDataSetResultOutput {
 	return o
 }
 
 // The ADLS account name.
-func (o LookupADLSGen1FolderDataSetResultOutput) AccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.AccountName }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource
-func (o LookupADLSGen1FolderDataSetResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // The folder path within the ADLS account.
-func (o LookupADLSGen1FolderDataSetResultOutput) FolderPath() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.FolderPath }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) FolderPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.FolderPath }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupADLSGen1FolderDataSetResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set.
 // Expected value is 'AdlsGen1Folder'.
-func (o LookupADLSGen1FolderDataSetResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupADLSGen1FolderDataSetResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Resource group of ADLS account.
-func (o LookupADLSGen1FolderDataSetResultOutput) ResourceGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) ResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
 }
 
 // Subscription id of ADLS account.
-func (o LookupADLSGen1FolderDataSetResultOutput) SubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupADLSGen1FolderDataSetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the azure resource
-func (o LookupADLSGen1FolderDataSetResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetADLSGen1FolderDataSetResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen1FolderDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupADLSGen1FolderDataSetResultOutput{})
+	pulumi.RegisterOutputType(GetADLSGen1FolderDataSetResultOutput{})
 }

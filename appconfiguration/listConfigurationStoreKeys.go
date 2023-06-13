@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the access key for the specified configuration store.
-// API Version: 2020-06-01.
+// API Version: 2023-03-01.
 func ListConfigurationStoreKeys(ctx *pulumi.Context, args *ListConfigurationStoreKeysArgs, opts ...pulumi.InvokeOption) (*ListConfigurationStoreKeysResult, error) {
 	var rv ListConfigurationStoreKeysResult
 	err := ctx.Invoke("azure-native:appconfiguration:listConfigurationStoreKeys", args, &rv, opts...)

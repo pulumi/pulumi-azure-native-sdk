@@ -11,7 +11,8 @@ import (
 )
 
 // Resource group information.
-// API Version: 2019-05-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2019-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 
@@ -37,30 +38,6 @@ func NewResourceGroup(ctx *pulumi.Context,
 	}
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:resources/v20151101:ResourceGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20160201:ResourceGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20160701:ResourceGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20160901:ResourceGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20170510:ResourceGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20180201:ResourceGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20180501:ResourceGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20190301:ResourceGroup"),
-		},
 		{
 			Type: pulumi.String("azure-native:resources/v20190501:ResourceGroup"),
 		},

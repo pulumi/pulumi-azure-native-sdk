@@ -12,7 +12,8 @@ import (
 )
 
 // An object that represents a private endpoint connection for a container registry.
-// API Version: 2020-11-01-preview.
+// API Version: 2022-12-01.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -113,7 +114,7 @@ type privateEndpointConnectionArgs struct {
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -127,7 +128,7 @@ type PrivateEndpointConnectionArgs struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePtrInput
 	// The name of the container registry.
 	RegistryName pulumi.StringInput
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 

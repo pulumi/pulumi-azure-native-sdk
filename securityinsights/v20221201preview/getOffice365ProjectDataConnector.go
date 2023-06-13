@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20221201preview:Office365ProjectDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Office365ProjectDataConnector to guarantee forwards compatibility.
-func LookupOffice365ProjectDataConnector(ctx *pulumi.Context, args *LookupOffice365ProjectDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOffice365ProjectDataConnectorResult, error) {
-	var rv LookupOffice365ProjectDataConnectorResult
+func GetOffice365ProjectDataConnector(ctx *pulumi.Context, args *GetOffice365ProjectDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetOffice365ProjectDataConnectorResult, error) {
+	var rv GetOffice365ProjectDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getOffice365ProjectDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupOffice365ProjectDataConnector(ctx *pulumi.Context, args *LookupOffice
 	return &rv, nil
 }
 
-type LookupOffice365ProjectDataConnectorArgs struct {
+type GetOffice365ProjectDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupOffice365ProjectDataConnectorArgs struct {
 }
 
 // Represents Office Microsoft Project data connector.
-type LookupOffice365ProjectDataConnectorResult struct {
+type GetOffice365ProjectDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes Office365ProjectConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupOffice365ProjectDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupOffice365ProjectDataConnectorOutput(ctx *pulumi.Context, args LookupOffice365ProjectDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOffice365ProjectDataConnectorResultOutput {
+func GetOffice365ProjectDataConnectorOutput(ctx *pulumi.Context, args GetOffice365ProjectDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetOffice365ProjectDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOffice365ProjectDataConnectorResult, error) {
-			args := v.(LookupOffice365ProjectDataConnectorArgs)
-			r, err := LookupOffice365ProjectDataConnector(ctx, &args, opts...)
-			var s LookupOffice365ProjectDataConnectorResult
+		ApplyT(func(v interface{}) (GetOffice365ProjectDataConnectorResult, error) {
+			args := v.(GetOffice365ProjectDataConnectorArgs)
+			r, err := GetOffice365ProjectDataConnector(ctx, &args, opts...)
+			var s GetOffice365ProjectDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupOffice365ProjectDataConnectorResultOutput)
+		}).(GetOffice365ProjectDataConnectorResultOutput)
 }
 
-type LookupOffice365ProjectDataConnectorOutputArgs struct {
+type GetOffice365ProjectDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,68 +72,68 @@ type LookupOffice365ProjectDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupOffice365ProjectDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupOffice365ProjectDataConnectorArgs)(nil)).Elem()
+func (GetOffice365ProjectDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOffice365ProjectDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents Office Microsoft Project data connector.
-type LookupOffice365ProjectDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetOffice365ProjectDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupOffice365ProjectDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupOffice365ProjectDataConnectorResult)(nil)).Elem()
+func (GetOffice365ProjectDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOffice365ProjectDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupOffice365ProjectDataConnectorResultOutput) ToLookupOffice365ProjectDataConnectorResultOutput() LookupOffice365ProjectDataConnectorResultOutput {
+func (o GetOffice365ProjectDataConnectorResultOutput) ToGetOffice365ProjectDataConnectorResultOutput() GetOffice365ProjectDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupOffice365ProjectDataConnectorResultOutput) ToLookupOffice365ProjectDataConnectorResultOutputWithContext(ctx context.Context) LookupOffice365ProjectDataConnectorResultOutput {
+func (o GetOffice365ProjectDataConnectorResultOutput) ToGetOffice365ProjectDataConnectorResultOutputWithContext(ctx context.Context) GetOffice365ProjectDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupOffice365ProjectDataConnectorResultOutput) DataTypes() Office365ProjectConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupOffice365ProjectDataConnectorResult) Office365ProjectConnectorDataTypesResponse {
+func (o GetOffice365ProjectDataConnectorResultOutput) DataTypes() Office365ProjectConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetOffice365ProjectDataConnectorResult) Office365ProjectConnectorDataTypesResponse {
 		return v.DataTypes
 	}).(Office365ProjectConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
-func (o LookupOffice365ProjectDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOffice365ProjectDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetOffice365ProjectDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOffice365ProjectDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupOffice365ProjectDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOffice365ProjectDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetOffice365ProjectDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOffice365ProjectDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'Office365Project'.
-func (o LookupOffice365ProjectDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOffice365ProjectDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetOffice365ProjectDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOffice365ProjectDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupOffice365ProjectDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOffice365ProjectDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetOffice365ProjectDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOffice365ProjectDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupOffice365ProjectDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupOffice365ProjectDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetOffice365ProjectDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetOffice365ProjectDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupOffice365ProjectDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOffice365ProjectDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetOffice365ProjectDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOffice365ProjectDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupOffice365ProjectDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOffice365ProjectDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetOffice365ProjectDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOffice365ProjectDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupOffice365ProjectDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetOffice365ProjectDataConnectorResultOutput{})
 }

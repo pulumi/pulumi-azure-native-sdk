@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+type FilterType string
+
+const (
+	FilterTypeSimple = FilterType("Simple")
+)
+
 // String of the resource identity type.
 type ResourceIdentityType string
 

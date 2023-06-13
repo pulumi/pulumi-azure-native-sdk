@@ -12,7 +12,8 @@ import (
 )
 
 // SecurityPolicy association for AzureFrontDoor profile
-// API Version: 2020-09-01.
+// API Version: 2023-05-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +22,8 @@ type SecurityPolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// object which contains security policy parameters
 	Parameters SecurityPolicyWebApplicationFirewallParametersResponsePtrOutput `pulumi:"parameters"`
+	// The name of the profile which holds the security policy.
+	ProfileName pulumi.StringOutput `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Read only system data
@@ -54,6 +57,9 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20221101preview:SecurityPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230501:SecurityPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -91,7 +97,7 @@ func (SecurityPolicyState) ElementType() reflect.Type {
 type securityPolicyArgs struct {
 	// object which contains security policy parameters
 	Parameters *SecurityPolicyWebApplicationFirewallParameters `pulumi:"parameters"`
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -103,7 +109,7 @@ type securityPolicyArgs struct {
 type SecurityPolicyArgs struct {
 	// object which contains security policy parameters
 	Parameters SecurityPolicyWebApplicationFirewallParametersPtrInput
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
@@ -162,6 +168,11 @@ func (o SecurityPolicyOutput) Parameters() SecurityPolicyWebApplicationFirewallP
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyWebApplicationFirewallParametersResponsePtrOutput {
 		return v.Parameters
 	}).(SecurityPolicyWebApplicationFirewallParametersResponsePtrOutput)
+}
+
+// The name of the profile which holds the security policy.
+func (o SecurityPolicyOutput) ProfileName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.ProfileName }).(pulumi.StringOutput)
 }
 
 // Provisioning status

@@ -13,6 +13,7 @@ import (
 
 // RemoteRenderingAccount Response.
 // API Version: 2021-01-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RemoteRenderingAccount struct {
 	pulumi.CustomResourceState
 
@@ -53,12 +54,6 @@ func NewRemoteRenderingAccount(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:mixedreality/v20191202preview:RemoteRenderingAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:mixedreality/v20200406preview:RemoteRenderingAccount"),
-		},
 		{
 			Type: pulumi.String("azure-native:mixedreality/v20210101:RemoteRenderingAccount"),
 		},

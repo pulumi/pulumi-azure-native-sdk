@@ -12,7 +12,8 @@ import (
 )
 
 // App resource payload
-// API Version: 2020-07-01.
+// API Version: 2022-12-01.
+// Previous API Version: 2020-07-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type App struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type App struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the App resource
 	Properties AppResourcePropertiesResponseOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -80,6 +83,12 @@ func NewApp(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:App"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:App"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:App"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -200,6 +209,11 @@ func (o AppOutput) Name() pulumi.StringOutput {
 // Properties of the App resource
 func (o AppOutput) Properties() AppResourcePropertiesResponseOutput {
 	return o.ApplyT(func(v *App) AppResourcePropertiesResponseOutput { return v.Properties }).(AppResourcePropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o AppOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *App) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

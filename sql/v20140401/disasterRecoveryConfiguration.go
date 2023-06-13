@@ -50,12 +50,6 @@ func NewDisasterRecoveryConfiguration(ctx *pulumi.Context,
 	if args.ServerName == nil {
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:sql:DisasterRecoveryConfiguration"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource DisasterRecoveryConfiguration
 	err := ctx.RegisterResource("azure-native:sql/v20140401:DisasterRecoveryConfiguration", name, args, &resource, opts...)
 	if err != nil {

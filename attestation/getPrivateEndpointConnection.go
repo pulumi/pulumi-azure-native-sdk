@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the attestation provider.
-// API Version: 2020-10-01.
+// API Version: 2021-06-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:attestation:getPrivateEndpointConnection", args, &rv, opts...)

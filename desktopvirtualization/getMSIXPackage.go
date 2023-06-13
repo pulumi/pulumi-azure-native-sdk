@@ -11,7 +11,7 @@ import (
 )
 
 // Get a msixpackage.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-09.
 func LookupMSIXPackage(ctx *pulumi.Context, args *LookupMSIXPackageArgs, opts ...pulumi.InvokeOption) (*LookupMSIXPackageResult, error) {
 	var rv LookupMSIXPackageResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getMSIXPackage", args, &rv, opts...)
@@ -56,6 +56,8 @@ type LookupMSIXPackageResult struct {
 	PackageName *string `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Package Version found in the appxmanifest.xml.
@@ -161,6 +163,11 @@ func (o LookupMSIXPackageResultOutput) PackageName() pulumi.StringPtrOutput {
 // Relative Path to the package inside the image.
 func (o LookupMSIXPackageResultOutput) PackageRelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMSIXPackageResult) *string { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupMSIXPackageResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMSIXPackageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

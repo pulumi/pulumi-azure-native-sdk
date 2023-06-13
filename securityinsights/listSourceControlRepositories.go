@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a list of repositories metadata.
-// API Version: 2021-03-01-preview.
+// API Version: 2023-05-01-preview.
 func ListSourceControlRepositories(ctx *pulumi.Context, args *ListSourceControlRepositoriesArgs, opts ...pulumi.InvokeOption) (*ListSourceControlRepositoriesResult, error) {
 	var rv ListSourceControlRepositoriesResult
 	err := ctx.Invoke("azure-native:securityinsights:listSourceControlRepositories", args, &rv, opts...)
@@ -22,8 +22,6 @@ func ListSourceControlRepositories(ctx *pulumi.Context, args *ListSourceControlR
 }
 
 type ListSourceControlRepositoriesArgs struct {
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the workspace.
@@ -52,8 +50,6 @@ func ListSourceControlRepositoriesOutput(ctx *pulumi.Context, args ListSourceCon
 }
 
 type ListSourceControlRepositoriesOutputArgs struct {
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the workspace.

@@ -12,7 +12,8 @@ import (
 )
 
 // Key Vault container ARM resource for a certificate that is purchased through Azure.
-// API Version: 2020-10-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AppServiceCertificateOrderCertificate struct {
 	pulumi.CustomResourceState
 
@@ -28,8 +29,6 @@ type AppServiceCertificateOrderCertificate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Status of the Key Vault secret.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
@@ -50,21 +49,6 @@ func NewAppServiceCertificateOrderCertificate(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:certificateregistration/v20150801:AppServiceCertificateOrderCertificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:certificateregistration/v20180201:AppServiceCertificateOrderCertificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:certificateregistration/v20190801:AppServiceCertificateOrderCertificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:certificateregistration/v20200601:AppServiceCertificateOrderCertificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:certificateregistration/v20200901:AppServiceCertificateOrderCertificate"),
-		},
 		{
 			Type: pulumi.String("azure-native:certificateregistration/v20201001:AppServiceCertificateOrderCertificate"),
 		},
@@ -226,11 +210,6 @@ func (o AppServiceCertificateOrderCertificateOutput) Name() pulumi.StringOutput 
 // Status of the Key Vault secret.
 func (o AppServiceCertificateOrderCertificateOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppServiceCertificateOrderCertificate) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The system metadata relating to this resource.
-func (o AppServiceCertificateOrderCertificateOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AppServiceCertificateOrderCertificate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -12,7 +12,8 @@ import (
 )
 
 // Describes an existing Private Endpoint connection to the Azure Cognitive Search service.
-// API Version: 2020-08-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -41,12 +42,6 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		args.Properties = args.Properties.ToPrivateEndpointConnectionPropertiesPtrOutput().ApplyT(func(v *PrivateEndpointConnectionProperties) *PrivateEndpointConnectionProperties { return v.Defaults() }).(PrivateEndpointConnectionPropertiesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:search/v20191001preview:PrivateEndpointConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:search/v20200313:PrivateEndpointConnection"),
-		},
 		{
 			Type: pulumi.String("azure-native:search/v20200801:PrivateEndpointConnection"),
 		},

@@ -11,10 +11,8 @@ import (
 )
 
 // Get a Service by name.
-//
-// Deprecated: azure-native:machinelearningservices/v20210101:AKSService is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:AKSService to guarantee forwards compatibility.
-func LookupAKSService(ctx *pulumi.Context, args *LookupAKSServiceArgs, opts ...pulumi.InvokeOption) (*LookupAKSServiceResult, error) {
-	var rv LookupAKSServiceResult
+func GetAKSService(ctx *pulumi.Context, args *GetAKSServiceArgs, opts ...pulumi.InvokeOption) (*GetAKSServiceResult, error) {
+	var rv GetAKSServiceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20210101:getAKSService", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupAKSService(ctx *pulumi.Context, args *LookupAKSServiceArgs, opts ...p
 	return &rv, nil
 }
 
-type LookupAKSServiceArgs struct {
+type GetAKSServiceArgs struct {
 	// Set to True to include Model details.
 	Expand *bool `pulumi:"expand"`
 	// Name of the resource group in which workspace is located.
@@ -34,7 +32,7 @@ type LookupAKSServiceArgs struct {
 }
 
 // Machine Learning service object wrapped into ARM resource envelope.
-type LookupAKSServiceResult struct {
+type GetAKSServiceResult struct {
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -55,20 +53,20 @@ type LookupAKSServiceResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupAKSServiceOutput(ctx *pulumi.Context, args LookupAKSServiceOutputArgs, opts ...pulumi.InvokeOption) LookupAKSServiceResultOutput {
+func GetAKSServiceOutput(ctx *pulumi.Context, args GetAKSServiceOutputArgs, opts ...pulumi.InvokeOption) GetAKSServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAKSServiceResult, error) {
-			args := v.(LookupAKSServiceArgs)
-			r, err := LookupAKSService(ctx, &args, opts...)
-			var s LookupAKSServiceResult
+		ApplyT(func(v interface{}) (GetAKSServiceResult, error) {
+			args := v.(GetAKSServiceArgs)
+			r, err := GetAKSService(ctx, &args, opts...)
+			var s GetAKSServiceResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupAKSServiceResultOutput)
+		}).(GetAKSServiceResultOutput)
 }
 
-type LookupAKSServiceOutputArgs struct {
+type GetAKSServiceOutputArgs struct {
 	// Set to True to include Model details.
 	Expand pulumi.BoolPtrInput `pulumi:"expand"`
 	// Name of the resource group in which workspace is located.
@@ -79,70 +77,70 @@ type LookupAKSServiceOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupAKSServiceOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAKSServiceArgs)(nil)).Elem()
+func (GetAKSServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAKSServiceArgs)(nil)).Elem()
 }
 
 // Machine Learning service object wrapped into ARM resource envelope.
-type LookupAKSServiceResultOutput struct{ *pulumi.OutputState }
+type GetAKSServiceResultOutput struct{ *pulumi.OutputState }
 
-func (LookupAKSServiceResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAKSServiceResult)(nil)).Elem()
+func (GetAKSServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAKSServiceResult)(nil)).Elem()
 }
 
-func (o LookupAKSServiceResultOutput) ToLookupAKSServiceResultOutput() LookupAKSServiceResultOutput {
+func (o GetAKSServiceResultOutput) ToGetAKSServiceResultOutput() GetAKSServiceResultOutput {
 	return o
 }
 
-func (o LookupAKSServiceResultOutput) ToLookupAKSServiceResultOutputWithContext(ctx context.Context) LookupAKSServiceResultOutput {
+func (o GetAKSServiceResultOutput) ToGetAKSServiceResultOutputWithContext(ctx context.Context) GetAKSServiceResultOutput {
 	return o
 }
 
 // Specifies the resource ID.
-func (o LookupAKSServiceResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetAKSServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.
-func (o LookupAKSServiceResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+func (o GetAKSServiceResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Specifies the location of the resource.
-func (o LookupAKSServiceResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o GetAKSServiceResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the name of the resource.
-func (o LookupAKSServiceResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetAKSServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Service properties
-func (o LookupAKSServiceResultOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
+func (o GetAKSServiceResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // The sku of the workspace.
-func (o LookupAKSServiceResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o GetAKSServiceResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Read only system data
-func (o LookupAKSServiceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetAKSServiceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Contains resource tags defined as key/value pairs.
-func (o LookupAKSServiceResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+func (o GetAKSServiceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Specifies the type of the resource.
-func (o LookupAKSServiceResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAKSServiceResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetAKSServiceResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAKSServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupAKSServiceResultOutput{})
+	pulumi.RegisterOutputType(GetAKSServiceResultOutput{})
 }

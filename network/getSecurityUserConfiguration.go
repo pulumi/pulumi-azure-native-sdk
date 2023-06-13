@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves a network manager security user configuration.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-04-01-preview.
 func LookupSecurityUserConfiguration(ctx *pulumi.Context, args *LookupSecurityUserConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSecurityUserConfigurationResult, error) {
 	var rv LookupSecurityUserConfigurationResult
 	err := ctx.Invoke("azure-native:network:getSecurityUserConfiguration", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupSecurityUserConfiguration(ctx *pulumi.Context, args *LookupSecurityUs
 }
 
 type LookupSecurityUserConfigurationArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
@@ -30,14 +30,12 @@ type LookupSecurityUserConfigurationArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Defines the security configuration
+// Defines the security user configuration
 type LookupSecurityUserConfigurationResult struct {
 	// Flag if need to delete existing network security groups.
 	DeleteExistingNSGs *string `pulumi:"deleteExistingNSGs"`
-	// A description of the security configuration.
+	// A description of the security user configuration.
 	Description *string `pulumi:"description"`
-	// A display name of the security configuration.
-	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -46,8 +44,6 @@ type LookupSecurityUserConfigurationResult struct {
 	Name string `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Security Type.
-	SecurityType *string `pulumi:"securityType"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type.
@@ -68,7 +64,7 @@ func LookupSecurityUserConfigurationOutput(ctx *pulumi.Context, args LookupSecur
 }
 
 type LookupSecurityUserConfigurationOutputArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
@@ -80,7 +76,7 @@ func (LookupSecurityUserConfigurationOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSecurityUserConfigurationArgs)(nil)).Elem()
 }
 
-// Defines the security configuration
+// Defines the security user configuration
 type LookupSecurityUserConfigurationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSecurityUserConfigurationResultOutput) ElementType() reflect.Type {
@@ -100,14 +96,9 @@ func (o LookupSecurityUserConfigurationResultOutput) DeleteExistingNSGs() pulumi
 	return o.ApplyT(func(v LookupSecurityUserConfigurationResult) *string { return v.DeleteExistingNSGs }).(pulumi.StringPtrOutput)
 }
 
-// A description of the security configuration.
+// A description of the security user configuration.
 func (o LookupSecurityUserConfigurationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityUserConfigurationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A display name of the security configuration.
-func (o LookupSecurityUserConfigurationResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecurityUserConfigurationResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -128,11 +119,6 @@ func (o LookupSecurityUserConfigurationResultOutput) Name() pulumi.StringOutput 
 // The provisioning state of the resource.
 func (o LookupSecurityUserConfigurationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityUserConfigurationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Security Type.
-func (o LookupSecurityUserConfigurationResultOutput) SecurityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecurityUserConfigurationResult) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
 }
 
 // The system metadata related to this resource.

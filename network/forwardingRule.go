@@ -12,7 +12,8 @@ import (
 )
 
 // Describes a forwarding rule within a DNS forwarding ruleset.
-// API Version: 2020-04-01-preview.
+// API Version: 2022-07-01.
+// Previous API Version: 2020-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ForwardingRule struct {
 	pulumi.CustomResourceState
 

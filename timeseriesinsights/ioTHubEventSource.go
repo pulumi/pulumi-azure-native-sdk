@@ -13,6 +13,7 @@ import (
 
 // An event source that receives its data from an Azure IoTHub.
 // API Version: 2020-05-15.
+// Previous API Version: 2020-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type IoTHubEventSource struct {
 	pulumi.CustomResourceState
 
@@ -80,15 +81,6 @@ func NewIoTHubEventSource(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("Microsoft.IoTHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:IoTHubEventSource"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20171115:IoTHubEventSource"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20180815preview:IoTHubEventSource"),
-		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20200515:IoTHubEventSource"),
 		},

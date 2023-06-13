@@ -12,28 +12,49 @@ import (
 )
 
 // Custom IP prefix resource.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type CustomIPPrefix struct {
 	pulumi.CustomResourceState
 
+	// The ASN for CIDR advertising. Should be an integer as string.
+	Asn pulumi.StringPtrOutput `pulumi:"asn"`
+	// Authorization message for WAN validation.
+	AuthorizationMessage pulumi.StringPtrOutput `pulumi:"authorizationMessage"`
+	// The list of all Children for IPv6 /48 CustomIpPrefix.
+	ChildCustomIpPrefixes SubResourceResponseArrayOutput `pulumi:"childCustomIpPrefixes"`
 	// The prefix range in CIDR notation. Should include the start address and the prefix length.
 	Cidr pulumi.StringPtrOutput `pulumi:"cidr"`
 	// The commissioned state of the Custom IP Prefix.
 	CommissionedState pulumi.StringPtrOutput `pulumi:"commissionedState"`
+	// The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
+	CustomIpPrefixParent SubResourceResponsePtrOutput `pulumi:"customIpPrefixParent"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Whether to do express route advertise.
+	ExpressRouteAdvertise pulumi.BoolPtrOutput `pulumi:"expressRouteAdvertise"`
 	// The extended location of the custom IP prefix.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
+	// The reason why resource is in failed state.
+	FailedReason pulumi.StringOutput `pulumi:"failedReason"`
+	// The Geo for CIDR advertising. Should be an Geo code.
+	Geo pulumi.StringPtrOutput `pulumi:"geo"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether to Advertise the range to Internet.
+	NoInternetAdvertise pulumi.BoolPtrOutput `pulumi:"noInternetAdvertise"`
+	// Type of custom IP prefix. Should be Singular, Parent, or Child.
+	PrefixType pulumi.StringPtrOutput `pulumi:"prefixType"`
 	// The provisioning state of the custom IP prefix resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The list of all referenced PublicIpPrefixes.
 	PublicIpPrefixes SubResourceResponseArrayOutput `pulumi:"publicIpPrefixes"`
 	// The resource GUID property of the custom IP prefix resource.
 	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
+	// Signed message for WAN validation.
+	SignedMessage pulumi.StringPtrOutput `pulumi:"signedMessage"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
@@ -89,6 +110,9 @@ func NewCustomIPPrefix(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:CustomIPPrefix"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:CustomIPPrefix"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CustomIPPrefix
@@ -123,20 +147,36 @@ func (CustomIPPrefixState) ElementType() reflect.Type {
 }
 
 type customIPPrefixArgs struct {
+	// The ASN for CIDR advertising. Should be an integer as string.
+	Asn *string `pulumi:"asn"`
+	// Authorization message for WAN validation.
+	AuthorizationMessage *string `pulumi:"authorizationMessage"`
 	// The prefix range in CIDR notation. Should include the start address and the prefix length.
 	Cidr *string `pulumi:"cidr"`
 	// The commissioned state of the Custom IP Prefix.
 	CommissionedState *string `pulumi:"commissionedState"`
 	// The name of the custom IP prefix.
 	CustomIpPrefixName *string `pulumi:"customIpPrefixName"`
+	// The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
+	CustomIpPrefixParent *SubResource `pulumi:"customIpPrefixParent"`
+	// Whether to do express route advertise.
+	ExpressRouteAdvertise *bool `pulumi:"expressRouteAdvertise"`
 	// The extended location of the custom IP prefix.
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
+	// The Geo for CIDR advertising. Should be an Geo code.
+	Geo *string `pulumi:"geo"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
 	Location *string `pulumi:"location"`
+	// Whether to Advertise the range to Internet.
+	NoInternetAdvertise *bool `pulumi:"noInternetAdvertise"`
+	// Type of custom IP prefix. Should be Singular, Parent, or Child.
+	PrefixType *string `pulumi:"prefixType"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Signed message for WAN validation.
+	SignedMessage *string `pulumi:"signedMessage"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// A list of availability zones denoting the IP allocated for the resource needs to come from.
@@ -145,20 +185,36 @@ type customIPPrefixArgs struct {
 
 // The set of arguments for constructing a CustomIPPrefix resource.
 type CustomIPPrefixArgs struct {
+	// The ASN for CIDR advertising. Should be an integer as string.
+	Asn pulumi.StringPtrInput
+	// Authorization message for WAN validation.
+	AuthorizationMessage pulumi.StringPtrInput
 	// The prefix range in CIDR notation. Should include the start address and the prefix length.
 	Cidr pulumi.StringPtrInput
 	// The commissioned state of the Custom IP Prefix.
 	CommissionedState pulumi.StringPtrInput
 	// The name of the custom IP prefix.
 	CustomIpPrefixName pulumi.StringPtrInput
+	// The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
+	CustomIpPrefixParent SubResourcePtrInput
+	// Whether to do express route advertise.
+	ExpressRouteAdvertise pulumi.BoolPtrInput
 	// The extended location of the custom IP prefix.
 	ExtendedLocation ExtendedLocationPtrInput
+	// The Geo for CIDR advertising. Should be an Geo code.
+	Geo pulumi.StringPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
+	// Whether to Advertise the range to Internet.
+	NoInternetAdvertise pulumi.BoolPtrInput
+	// Type of custom IP prefix. Should be Singular, Parent, or Child.
+	PrefixType pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// Signed message for WAN validation.
+	SignedMessage pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// A list of availability zones denoting the IP allocated for the resource needs to come from.
@@ -202,6 +258,21 @@ func (o CustomIPPrefixOutput) ToCustomIPPrefixOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ASN for CIDR advertising. Should be an integer as string.
+func (o CustomIPPrefixOutput) Asn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringPtrOutput { return v.Asn }).(pulumi.StringPtrOutput)
+}
+
+// Authorization message for WAN validation.
+func (o CustomIPPrefixOutput) AuthorizationMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringPtrOutput { return v.AuthorizationMessage }).(pulumi.StringPtrOutput)
+}
+
+// The list of all Children for IPv6 /48 CustomIpPrefix.
+func (o CustomIPPrefixOutput) ChildCustomIpPrefixes() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) SubResourceResponseArrayOutput { return v.ChildCustomIpPrefixes }).(SubResourceResponseArrayOutput)
+}
+
 // The prefix range in CIDR notation. Should include the start address and the prefix length.
 func (o CustomIPPrefixOutput) Cidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringPtrOutput { return v.Cidr }).(pulumi.StringPtrOutput)
@@ -212,14 +283,34 @@ func (o CustomIPPrefixOutput) CommissionedState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringPtrOutput { return v.CommissionedState }).(pulumi.StringPtrOutput)
 }
 
+// The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
+func (o CustomIPPrefixOutput) CustomIpPrefixParent() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) SubResourceResponsePtrOutput { return v.CustomIpPrefixParent }).(SubResourceResponsePtrOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o CustomIPPrefixOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Whether to do express route advertise.
+func (o CustomIPPrefixOutput) ExpressRouteAdvertise() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.BoolPtrOutput { return v.ExpressRouteAdvertise }).(pulumi.BoolPtrOutput)
+}
+
 // The extended location of the custom IP prefix.
 func (o CustomIPPrefixOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *CustomIPPrefix) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// The reason why resource is in failed state.
+func (o CustomIPPrefixOutput) FailedReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringOutput { return v.FailedReason }).(pulumi.StringOutput)
+}
+
+// The Geo for CIDR advertising. Should be an Geo code.
+func (o CustomIPPrefixOutput) Geo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringPtrOutput { return v.Geo }).(pulumi.StringPtrOutput)
 }
 
 // Resource location.
@@ -230,6 +321,16 @@ func (o CustomIPPrefixOutput) Location() pulumi.StringPtrOutput {
 // Resource name.
 func (o CustomIPPrefixOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether to Advertise the range to Internet.
+func (o CustomIPPrefixOutput) NoInternetAdvertise() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.BoolPtrOutput { return v.NoInternetAdvertise }).(pulumi.BoolPtrOutput)
+}
+
+// Type of custom IP prefix. Should be Singular, Parent, or Child.
+func (o CustomIPPrefixOutput) PrefixType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringPtrOutput { return v.PrefixType }).(pulumi.StringPtrOutput)
 }
 
 // The provisioning state of the custom IP prefix resource.
@@ -245,6 +346,11 @@ func (o CustomIPPrefixOutput) PublicIpPrefixes() SubResourceResponseArrayOutput 
 // The resource GUID property of the custom IP prefix resource.
 func (o CustomIPPrefixOutput) ResourceGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringOutput { return v.ResourceGuid }).(pulumi.StringOutput)
+}
+
+// Signed message for WAN validation.
+func (o CustomIPPrefixOutput) SignedMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringPtrOutput { return v.SignedMessage }).(pulumi.StringPtrOutput)
 }
 
 // Resource tags.

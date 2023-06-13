@@ -12,7 +12,8 @@ import (
 )
 
 // The management group diagnostic setting resource.
-// API Version: 2020-01-01-preview.
+// API Version: 2021-05-01-preview.
+// Previous API Version: 2020-01-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ManagementGroupDiagnosticSetting struct {
 	pulumi.CustomResourceState
 
@@ -20,17 +21,19 @@ type ManagementGroupDiagnosticSetting struct {
 	EventHubAuthorizationRuleId pulumi.StringPtrOutput `pulumi:"eventHubAuthorizationRuleId"`
 	// The name of the event hub. If none is specified, the default event hub will be selected.
 	EventHubName pulumi.StringPtrOutput `pulumi:"eventHubName"`
-	// Location of the resource
-	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The list of logs settings.
 	Logs ManagementGroupLogSettingsResponseArrayOutput `pulumi:"logs"`
-	// Azure resource name
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId pulumi.StringPtrOutput `pulumi:"marketplacePartnerId"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 	ServiceBusRuleId pulumi.StringPtrOutput `pulumi:"serviceBusRuleId"`
 	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
-	// Azure resource type
+	// The system metadata related to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
 	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
@@ -91,12 +94,12 @@ type managementGroupDiagnosticSettingArgs struct {
 	EventHubAuthorizationRuleId *string `pulumi:"eventHubAuthorizationRuleId"`
 	// The name of the event hub. If none is specified, the default event hub will be selected.
 	EventHubName *string `pulumi:"eventHubName"`
-	// Location of the resource
-	Location *string `pulumi:"location"`
 	// The list of logs settings.
 	Logs []ManagementGroupLogSettings `pulumi:"logs"`
 	// The management group id.
 	ManagementGroupId string `pulumi:"managementGroupId"`
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId *string `pulumi:"marketplacePartnerId"`
 	// The name of the diagnostic setting.
 	Name *string `pulumi:"name"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
@@ -113,12 +116,12 @@ type ManagementGroupDiagnosticSettingArgs struct {
 	EventHubAuthorizationRuleId pulumi.StringPtrInput
 	// The name of the event hub. If none is specified, the default event hub will be selected.
 	EventHubName pulumi.StringPtrInput
-	// Location of the resource
-	Location pulumi.StringPtrInput
 	// The list of logs settings.
 	Logs ManagementGroupLogSettingsArrayInput
 	// The management group id.
 	ManagementGroupId pulumi.StringInput
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId pulumi.StringPtrInput
 	// The name of the diagnostic setting.
 	Name pulumi.StringPtrInput
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
@@ -176,17 +179,17 @@ func (o ManagementGroupDiagnosticSettingOutput) EventHubName() pulumi.StringPtrO
 	return o.ApplyT(func(v *ManagementGroupDiagnosticSetting) pulumi.StringPtrOutput { return v.EventHubName }).(pulumi.StringPtrOutput)
 }
 
-// Location of the resource
-func (o ManagementGroupDiagnosticSettingOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagementGroupDiagnosticSetting) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
-}
-
 // The list of logs settings.
 func (o ManagementGroupDiagnosticSettingOutput) Logs() ManagementGroupLogSettingsResponseArrayOutput {
 	return o.ApplyT(func(v *ManagementGroupDiagnosticSetting) ManagementGroupLogSettingsResponseArrayOutput { return v.Logs }).(ManagementGroupLogSettingsResponseArrayOutput)
 }
 
-// Azure resource name
+// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+func (o ManagementGroupDiagnosticSettingOutput) MarketplacePartnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagementGroupDiagnosticSetting) pulumi.StringPtrOutput { return v.MarketplacePartnerId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
 func (o ManagementGroupDiagnosticSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementGroupDiagnosticSetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -201,7 +204,12 @@ func (o ManagementGroupDiagnosticSettingOutput) StorageAccountId() pulumi.String
 	return o.ApplyT(func(v *ManagementGroupDiagnosticSetting) pulumi.StringPtrOutput { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// The system metadata related to this resource.
+func (o ManagementGroupDiagnosticSettingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManagementGroupDiagnosticSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ManagementGroupDiagnosticSettingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementGroupDiagnosticSetting) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -12,7 +12,8 @@ import (
 )
 
 // Workspace resource.
-// API Version: 2022-05-15.
+// API Version: 2023-02-28.
+// Previous API Version: 2022-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +64,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

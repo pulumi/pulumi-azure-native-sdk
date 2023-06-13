@@ -13,6 +13,7 @@ import (
 
 // Schema Contract details.
 // API Version: 2021-04-01-preview.
+// Previous API Version: 2021-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Schema struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +60,9 @@ func NewSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Schema"),
 		},
 	})
 	opts = append(opts, aliases)

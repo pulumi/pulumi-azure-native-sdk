@@ -13,6 +13,7 @@ import (
 
 // A secret.
 // API Version: 2018-09-15.
+// Previous API Version: 2018-09-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Secret struct {
 	pulumi.CustomResourceState
 
@@ -49,9 +50,6 @@ func NewSecret(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:devtestlab/v20160515:Secret"),
-		},
 		{
 			Type: pulumi.String("azure-native:devtestlab/v20180915:Secret"),
 		},

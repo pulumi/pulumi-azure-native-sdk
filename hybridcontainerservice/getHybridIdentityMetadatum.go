@@ -11,7 +11,7 @@ import (
 )
 
 // Get the hybrid identity metadata proxy resource.
-// API Version: 2022-05-01-preview.
+// API Version: 2022-09-01-preview.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
 	var rv LookupHybridIdentityMetadatumResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice:getHybridIdentityMetadatum", args, &rv, opts...)
@@ -24,10 +24,10 @@ func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdenti
 type LookupHybridIdentityMetadatumArgs struct {
 	// Parameter for the name of the hybrid identity metadata resource.
 	HybridIdentityMetadataResourceName string `pulumi:"hybridIdentityMetadataResourceName"`
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName string `pulumi:"provisionedClustersName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // Defines the hybridIdentityMetadata.
@@ -66,10 +66,10 @@ func LookupHybridIdentityMetadatumOutput(ctx *pulumi.Context, args LookupHybridI
 type LookupHybridIdentityMetadatumOutputArgs struct {
 	// Parameter for the name of the hybrid identity metadata resource.
 	HybridIdentityMetadataResourceName pulumi.StringInput `pulumi:"hybridIdentityMetadataResourceName"`
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName pulumi.StringInput `pulumi:"provisionedClustersName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupHybridIdentityMetadatumOutputArgs) ElementType() reflect.Type {

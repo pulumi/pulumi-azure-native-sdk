@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20211001preview:AATPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201:AATPDataConnector to guarantee forwards compatibility.
-func LookupAATPDataConnector(ctx *pulumi.Context, args *LookupAATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAATPDataConnectorResult, error) {
-	var rv LookupAATPDataConnectorResult
+func GetAATPDataConnector(ctx *pulumi.Context, args *GetAATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetAATPDataConnectorResult, error) {
+	var rv GetAATPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001preview:getAATPDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupAATPDataConnector(ctx *pulumi.Context, args *LookupAATPDataConnectorA
 	return &rv, nil
 }
 
-type LookupAATPDataConnectorArgs struct {
+type GetAATPDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupAATPDataConnectorArgs struct {
 }
 
 // Represents AATP (Azure Advanced Threat Protection) data connector.
-type LookupAATPDataConnectorResult struct {
+type GetAATPDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupAATPDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupAATPDataConnectorOutput(ctx *pulumi.Context, args LookupAATPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAATPDataConnectorResultOutput {
+func GetAATPDataConnectorOutput(ctx *pulumi.Context, args GetAATPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetAATPDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAATPDataConnectorResult, error) {
-			args := v.(LookupAATPDataConnectorArgs)
-			r, err := LookupAATPDataConnector(ctx, &args, opts...)
-			var s LookupAATPDataConnectorResult
+		ApplyT(func(v interface{}) (GetAATPDataConnectorResult, error) {
+			args := v.(GetAATPDataConnectorArgs)
+			r, err := GetAATPDataConnector(ctx, &args, opts...)
+			var s GetAATPDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupAATPDataConnectorResultOutput)
+		}).(GetAATPDataConnectorResultOutput)
 }
 
-type LookupAATPDataConnectorOutputArgs struct {
+type GetAATPDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,66 +72,66 @@ type LookupAATPDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupAATPDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAATPDataConnectorArgs)(nil)).Elem()
+func (GetAATPDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAATPDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents AATP (Azure Advanced Threat Protection) data connector.
-type LookupAATPDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetAATPDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupAATPDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAATPDataConnectorResult)(nil)).Elem()
+func (GetAATPDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAATPDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupAATPDataConnectorResultOutput) ToLookupAATPDataConnectorResultOutput() LookupAATPDataConnectorResultOutput {
+func (o GetAATPDataConnectorResultOutput) ToGetAATPDataConnectorResultOutput() GetAATPDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupAATPDataConnectorResultOutput) ToLookupAATPDataConnectorResultOutputWithContext(ctx context.Context) LookupAATPDataConnectorResultOutput {
+func (o GetAATPDataConnectorResultOutput) ToGetAATPDataConnectorResultOutputWithContext(ctx context.Context) GetAATPDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupAATPDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
+func (o GetAATPDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
+	return o.ApplyT(func(v GetAATPDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
 }
 
 // Etag of the azure resource
-func (o LookupAATPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetAATPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAATPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupAATPDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetAATPDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAATPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'AzureAdvancedThreatProtection'.
-func (o LookupAATPDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetAATPDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAATPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupAATPDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetAATPDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAATPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAATPDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetAATPDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetAATPDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupAATPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetAATPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAATPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupAATPDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetAATPDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAATPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupAATPDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetAATPDataConnectorResultOutput{})
 }

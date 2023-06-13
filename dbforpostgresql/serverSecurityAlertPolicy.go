@@ -12,7 +12,8 @@ import (
 )
 
 // A server security alert policy.
-// API Version: 2017-12-01.
+// API Version: 2017-12-01-preview.
+// Previous API Version: 2017-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ServerSecurityAlertPolicy struct {
 	pulumi.CustomResourceState
 
@@ -99,7 +100,7 @@ type serverSecurityAlertPolicyArgs struct {
 	EmailAccountAdmins *bool `pulumi:"emailAccountAdmins"`
 	// Specifies an array of e-mail addresses to which the alert is sent.
 	EmailAddresses []string `pulumi:"emailAddresses"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Specifies the number of days to keep in the Threat Detection audit logs.
 	RetentionDays *int `pulumi:"retentionDays"`
@@ -123,7 +124,7 @@ type ServerSecurityAlertPolicyArgs struct {
 	EmailAccountAdmins pulumi.BoolPtrInput
 	// Specifies an array of e-mail addresses to which the alert is sent.
 	EmailAddresses pulumi.StringArrayInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// Specifies the number of days to keep in the Threat Detection audit logs.
 	RetentionDays pulumi.IntPtrInput

@@ -12,7 +12,8 @@ import (
 )
 
 // Workspace details.
-// API Version: 2022-04-01-preview.
+// API Version: 2023-04-01-preview.
+// Previous API Version: 2022-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +46,9 @@ func NewWorkspace(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:easm/v20220401preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:easm/v20230401preview:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Cassandra table.
-// API Version: 2021-03-15.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type CassandraResourceCassandraTable struct {
 	pulumi.CustomResourceState
 
@@ -48,39 +49,6 @@ func NewCassandraResourceCassandraTable(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150401:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150408:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20151106:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160319:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160331:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:CassandraResourceCassandraTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:CassandraResourceCassandraTable"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:CassandraResourceCassandraTable"),
 		},
@@ -133,7 +101,19 @@ func NewCassandraResourceCassandraTable(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:CassandraResourceCassandraTable"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:CassandraResourceCassandraTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:CassandraResourceCassandraTable"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:CassandraResourceCassandraTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraResourceCassandraTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:CassandraResourceCassandraTable"),
 		},
 	})
 	opts = append(opts, aliases)

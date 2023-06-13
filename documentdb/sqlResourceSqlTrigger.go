@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB trigger.
-// API Version: 2021-03-15.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlResourceSqlTrigger struct {
 	pulumi.CustomResourceState
 
@@ -50,24 +51,6 @@ func NewSqlResourceSqlTrigger(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:SqlResourceSqlTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:SqlResourceSqlTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:SqlResourceSqlTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:SqlResourceSqlTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:SqlResourceSqlTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:SqlResourceSqlTrigger"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:SqlResourceSqlTrigger"),
 		},
@@ -120,7 +103,19 @@ func NewSqlResourceSqlTrigger(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlTrigger"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlTrigger"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlTrigger"),
 		},
 	})
 	opts = append(opts, aliases)

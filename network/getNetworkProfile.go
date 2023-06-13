@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified network profile in a specified resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupNetworkProfile(ctx *pulumi.Context, args *LookupNetworkProfileArgs, opts ...pulumi.InvokeOption) (*LookupNetworkProfileResult, error) {
 	var rv LookupNetworkProfileResult
 	err := ctx.Invoke("azure-native:network:getNetworkProfile", args, &rv, opts...)

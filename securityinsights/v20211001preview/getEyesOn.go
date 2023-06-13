@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a setting.
-//
-// Deprecated: azure-native:securityinsights/v20211001preview:EyesOn is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:EyesOn to guarantee forwards compatibility.
-func LookupEyesOn(ctx *pulumi.Context, args *LookupEyesOnArgs, opts ...pulumi.InvokeOption) (*LookupEyesOnResult, error) {
-	var rv LookupEyesOnResult
+func GetEyesOn(ctx *pulumi.Context, args *GetEyesOnArgs, opts ...pulumi.InvokeOption) (*GetEyesOnResult, error) {
+	var rv GetEyesOnResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001preview:getEyesOn", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupEyesOn(ctx *pulumi.Context, args *LookupEyesOnArgs, opts ...pulumi.In
 	return &rv, nil
 }
 
-type LookupEyesOnArgs struct {
+type GetEyesOnArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -32,7 +30,7 @@ type LookupEyesOnArgs struct {
 }
 
 // Settings with single toggle.
-type LookupEyesOnResult struct {
+type GetEyesOnResult struct {
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -50,20 +48,20 @@ type LookupEyesOnResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupEyesOnOutput(ctx *pulumi.Context, args LookupEyesOnOutputArgs, opts ...pulumi.InvokeOption) LookupEyesOnResultOutput {
+func GetEyesOnOutput(ctx *pulumi.Context, args GetEyesOnOutputArgs, opts ...pulumi.InvokeOption) GetEyesOnResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEyesOnResult, error) {
-			args := v.(LookupEyesOnArgs)
-			r, err := LookupEyesOn(ctx, &args, opts...)
-			var s LookupEyesOnResult
+		ApplyT(func(v interface{}) (GetEyesOnResult, error) {
+			args := v.(GetEyesOnArgs)
+			r, err := GetEyesOn(ctx, &args, opts...)
+			var s GetEyesOnResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupEyesOnResultOutput)
+		}).(GetEyesOnResultOutput)
 }
 
-type LookupEyesOnOutputArgs struct {
+type GetEyesOnOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -72,61 +70,61 @@ type LookupEyesOnOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupEyesOnOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupEyesOnArgs)(nil)).Elem()
+func (GetEyesOnOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEyesOnArgs)(nil)).Elem()
 }
 
 // Settings with single toggle.
-type LookupEyesOnResultOutput struct{ *pulumi.OutputState }
+type GetEyesOnResultOutput struct{ *pulumi.OutputState }
 
-func (LookupEyesOnResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupEyesOnResult)(nil)).Elem()
+func (GetEyesOnResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEyesOnResult)(nil)).Elem()
 }
 
-func (o LookupEyesOnResultOutput) ToLookupEyesOnResultOutput() LookupEyesOnResultOutput {
+func (o GetEyesOnResultOutput) ToGetEyesOnResultOutput() GetEyesOnResultOutput {
 	return o
 }
 
-func (o LookupEyesOnResultOutput) ToLookupEyesOnResultOutputWithContext(ctx context.Context) LookupEyesOnResultOutput {
+func (o GetEyesOnResultOutput) ToGetEyesOnResultOutputWithContext(ctx context.Context) GetEyesOnResultOutput {
 	return o
 }
 
 // Etag of the azure resource
-func (o LookupEyesOnResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEyesOnResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetEyesOnResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEyesOnResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupEyesOnResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEyesOnResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetEyesOnResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEyesOnResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Determines whether the setting is enable or disabled.
-func (o LookupEyesOnResultOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupEyesOnResult) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+func (o GetEyesOnResultOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEyesOnResult) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
 // The kind of the setting
 // Expected value is 'EyesOn'.
-func (o LookupEyesOnResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEyesOnResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetEyesOnResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEyesOnResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupEyesOnResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEyesOnResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetEyesOnResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEyesOnResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEyesOnResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEyesOnResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetEyesOnResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetEyesOnResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupEyesOnResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEyesOnResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetEyesOnResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEyesOnResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupEyesOnResultOutput{})
+	pulumi.RegisterOutputType(GetEyesOnResultOutput{})
 }

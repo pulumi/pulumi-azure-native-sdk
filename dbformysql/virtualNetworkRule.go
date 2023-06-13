@@ -12,7 +12,8 @@ import (
 )
 
 // A virtual network rule.
-// API Version: 2017-12-01.
+// API Version: 2017-12-01-preview.
+// Previous API Version: 2017-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +52,9 @@ func NewVirtualNetworkRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20171201preview:VirtualNetworkRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:VirtualNetworkRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetworkRule
@@ -87,7 +91,7 @@ func (VirtualNetworkRuleState) ElementType() reflect.Type {
 type virtualNetworkRuleArgs struct {
 	// Create firewall rule before the virtual network has vnet service endpoint enabled.
 	IgnoreMissingVnetServiceEndpoint *bool `pulumi:"ignoreMissingVnetServiceEndpoint"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
@@ -101,7 +105,7 @@ type virtualNetworkRuleArgs struct {
 type VirtualNetworkRuleArgs struct {
 	// Create firewall rule before the virtual network has vnet service endpoint enabled.
 	IgnoreMissingVnetServiceEndpoint pulumi.BoolPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringInput

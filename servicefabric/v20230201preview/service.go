@@ -47,6 +47,9 @@ func NewService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:servicefabric:Service"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric/v20210101preview:Service"),
 		},
 		{
@@ -75,6 +78,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20221001preview:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230301preview:Service"),
 		},
 	})
 	opts = append(opts, aliases)

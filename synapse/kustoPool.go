@@ -12,20 +12,26 @@ import (
 )
 
 // Class representing a Kusto kusto pool.
-// API Version: 2021-04-01-preview.
+// API Version: 2021-06-01-preview.
 type KustoPool struct {
 	pulumi.CustomResourceState
 
 	// The Kusto Pool data ingestion URI.
 	DataIngestionUri pulumi.StringOutput `pulumi:"dataIngestionUri"`
-	// The engine type
-	EngineType pulumi.StringPtrOutput `pulumi:"engineType"`
+	// A boolean value that indicates if the purge operations are enabled.
+	EnablePurge pulumi.BoolPtrOutput `pulumi:"enablePurge"`
+	// A boolean value that indicates if the streaming ingest is enabled.
+	EnableStreamingIngest pulumi.BoolPtrOutput `pulumi:"enableStreamingIngest"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// List of the Kusto Pool's language extensions.
+	LanguageExtensions LanguageExtensionsListResponseOutput `pulumi:"languageExtensions"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optimized auto scale definition.
+	OptimizedAutoscale OptimizedAutoscaleResponsePtrOutput `pulumi:"optimizedAutoscale"`
 	// The provisioned state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU of the kusto pool.
@@ -43,7 +49,7 @@ type KustoPool struct {
 	// The Kusto Pool URI.
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// The workspace unique identifier.
-	WorkspaceUid pulumi.StringPtrOutput `pulumi:"workspaceUid"`
+	WorkspaceUID pulumi.StringPtrOutput `pulumi:"workspaceUID"`
 }
 
 // NewKustoPool registers a new resource with the given unique name, arguments, and options.
@@ -62,17 +68,23 @@ func NewKustoPool(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	if args.EnablePurge == nil {
+		args.EnablePurge = pulumi.BoolPtr(false)
+	}
+	if args.EnableStreamingIngest == nil {
+		args.EnableStreamingIngest = pulumi.BoolPtr(false)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse/v20210401preview:kustoPool"),
+			Type: pulumi.String("azure-native:synapse/v20210401preview:KustoPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:synapse/v20210601preview:kustoPool"),
+			Type: pulumi.String("azure-native:synapse/v20210601preview:KustoPool"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource KustoPool
-	err := ctx.RegisterResource("azure-native:synapse:kustoPool", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:synapse:KustoPool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +96,7 @@ func NewKustoPool(ctx *pulumi.Context,
 func GetKustoPool(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KustoPoolState, opts ...pulumi.ResourceOption) (*KustoPool, error) {
 	var resource KustoPool
-	err := ctx.ReadResource("azure-native:synapse:kustoPool", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:synapse:KustoPool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,42 +115,50 @@ func (KustoPoolState) ElementType() reflect.Type {
 }
 
 type kustoPoolArgs struct {
-	// The engine type
-	EngineType *string `pulumi:"engineType"`
+	// A boolean value that indicates if the purge operations are enabled.
+	EnablePurge *bool `pulumi:"enablePurge"`
+	// A boolean value that indicates if the streaming ingest is enabled.
+	EnableStreamingIngest *bool `pulumi:"enableStreamingIngest"`
 	// The name of the Kusto pool.
 	KustoPoolName *string `pulumi:"kustoPoolName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Optimized auto scale definition.
+	OptimizedAutoscale *OptimizedAutoscale `pulumi:"optimizedAutoscale"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU of the kusto pool.
 	Sku AzureSku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 	// The workspace unique identifier.
-	WorkspaceUid *string `pulumi:"workspaceUid"`
+	WorkspaceUID *string `pulumi:"workspaceUID"`
 }
 
 // The set of arguments for constructing a KustoPool resource.
 type KustoPoolArgs struct {
-	// The engine type
-	EngineType pulumi.StringPtrInput
+	// A boolean value that indicates if the purge operations are enabled.
+	EnablePurge pulumi.BoolPtrInput
+	// A boolean value that indicates if the streaming ingest is enabled.
+	EnableStreamingIngest pulumi.BoolPtrInput
 	// The name of the Kusto pool.
 	KustoPoolName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Optimized auto scale definition.
+	OptimizedAutoscale OptimizedAutoscalePtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU of the kusto pool.
 	Sku AzureSkuInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 	// The workspace unique identifier.
-	WorkspaceUid pulumi.StringPtrInput
+	WorkspaceUID pulumi.StringPtrInput
 }
 
 func (KustoPoolArgs) ElementType() reflect.Type {
@@ -183,14 +203,24 @@ func (o KustoPoolOutput) DataIngestionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *KustoPool) pulumi.StringOutput { return v.DataIngestionUri }).(pulumi.StringOutput)
 }
 
-// The engine type
-func (o KustoPoolOutput) EngineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KustoPool) pulumi.StringPtrOutput { return v.EngineType }).(pulumi.StringPtrOutput)
+// A boolean value that indicates if the purge operations are enabled.
+func (o KustoPoolOutput) EnablePurge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KustoPool) pulumi.BoolPtrOutput { return v.EnablePurge }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value that indicates if the streaming ingest is enabled.
+func (o KustoPoolOutput) EnableStreamingIngest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KustoPool) pulumi.BoolPtrOutput { return v.EnableStreamingIngest }).(pulumi.BoolPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
 func (o KustoPoolOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *KustoPool) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// List of the Kusto Pool's language extensions.
+func (o KustoPoolOutput) LanguageExtensions() LanguageExtensionsListResponseOutput {
+	return o.ApplyT(func(v *KustoPool) LanguageExtensionsListResponseOutput { return v.LanguageExtensions }).(LanguageExtensionsListResponseOutput)
 }
 
 // The geo-location where the resource lives
@@ -201,6 +231,11 @@ func (o KustoPoolOutput) Location() pulumi.StringOutput {
 // The name of the resource
 func (o KustoPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KustoPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optimized auto scale definition.
+func (o KustoPoolOutput) OptimizedAutoscale() OptimizedAutoscaleResponsePtrOutput {
+	return o.ApplyT(func(v *KustoPool) OptimizedAutoscaleResponsePtrOutput { return v.OptimizedAutoscale }).(OptimizedAutoscaleResponsePtrOutput)
 }
 
 // The provisioned state of the resource.
@@ -244,8 +279,8 @@ func (o KustoPoolOutput) Uri() pulumi.StringOutput {
 }
 
 // The workspace unique identifier.
-func (o KustoPoolOutput) WorkspaceUid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KustoPool) pulumi.StringPtrOutput { return v.WorkspaceUid }).(pulumi.StringPtrOutput)
+func (o KustoPoolOutput) WorkspaceUID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KustoPool) pulumi.StringPtrOutput { return v.WorkspaceUID }).(pulumi.StringPtrOutput)
 }
 
 func init() {

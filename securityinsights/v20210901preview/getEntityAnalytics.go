@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a setting.
-//
-// Deprecated: azure-native:securityinsights/v20210901preview:EntityAnalytics is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20220101preview:EntityAnalytics to guarantee forwards compatibility.
-func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs, opts ...pulumi.InvokeOption) (*LookupEntityAnalyticsResult, error) {
-	var rv LookupEntityAnalyticsResult
+func GetEntityAnalytics(ctx *pulumi.Context, args *GetEntityAnalyticsArgs, opts ...pulumi.InvokeOption) (*GetEntityAnalyticsResult, error) {
+	var rv GetEntityAnalyticsResult
 	err := ctx.Invoke("azure-native:securityinsights/v20210901preview:getEntityAnalytics", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs,
 	return &rv, nil
 }
 
-type LookupEntityAnalyticsArgs struct {
+type GetEntityAnalyticsArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -32,7 +30,7 @@ type LookupEntityAnalyticsArgs struct {
 }
 
 // Settings with single toggle.
-type LookupEntityAnalyticsResult struct {
+type GetEntityAnalyticsResult struct {
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -50,20 +48,20 @@ type LookupEntityAnalyticsResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupEntityAnalyticsOutput(ctx *pulumi.Context, args LookupEntityAnalyticsOutputArgs, opts ...pulumi.InvokeOption) LookupEntityAnalyticsResultOutput {
+func GetEntityAnalyticsOutput(ctx *pulumi.Context, args GetEntityAnalyticsOutputArgs, opts ...pulumi.InvokeOption) GetEntityAnalyticsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEntityAnalyticsResult, error) {
-			args := v.(LookupEntityAnalyticsArgs)
-			r, err := LookupEntityAnalytics(ctx, &args, opts...)
-			var s LookupEntityAnalyticsResult
+		ApplyT(func(v interface{}) (GetEntityAnalyticsResult, error) {
+			args := v.(GetEntityAnalyticsArgs)
+			r, err := GetEntityAnalytics(ctx, &args, opts...)
+			var s GetEntityAnalyticsResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupEntityAnalyticsResultOutput)
+		}).(GetEntityAnalyticsResultOutput)
 }
 
-type LookupEntityAnalyticsOutputArgs struct {
+type GetEntityAnalyticsOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -72,61 +70,61 @@ type LookupEntityAnalyticsOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupEntityAnalyticsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupEntityAnalyticsArgs)(nil)).Elem()
+func (GetEntityAnalyticsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntityAnalyticsArgs)(nil)).Elem()
 }
 
 // Settings with single toggle.
-type LookupEntityAnalyticsResultOutput struct{ *pulumi.OutputState }
+type GetEntityAnalyticsResultOutput struct{ *pulumi.OutputState }
 
-func (LookupEntityAnalyticsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupEntityAnalyticsResult)(nil)).Elem()
+func (GetEntityAnalyticsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntityAnalyticsResult)(nil)).Elem()
 }
 
-func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutput() LookupEntityAnalyticsResultOutput {
+func (o GetEntityAnalyticsResultOutput) ToGetEntityAnalyticsResultOutput() GetEntityAnalyticsResultOutput {
 	return o
 }
 
-func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutputWithContext(ctx context.Context) LookupEntityAnalyticsResultOutput {
+func (o GetEntityAnalyticsResultOutput) ToGetEntityAnalyticsResultOutputWithContext(ctx context.Context) GetEntityAnalyticsResultOutput {
 	return o
 }
 
 // Etag of the azure resource
-func (o LookupEntityAnalyticsResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetEntityAnalyticsResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEntityAnalyticsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupEntityAnalyticsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetEntityAnalyticsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntityAnalyticsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Determines whether the setting is enable or disabled.
-func (o LookupEntityAnalyticsResultOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+func (o GetEntityAnalyticsResultOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEntityAnalyticsResult) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
 // The kind of the setting
 // Expected value is 'EntityAnalytics'.
-func (o LookupEntityAnalyticsResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetEntityAnalyticsResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntityAnalyticsResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupEntityAnalyticsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetEntityAnalyticsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntityAnalyticsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEntityAnalyticsResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetEntityAnalyticsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetEntityAnalyticsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupEntityAnalyticsResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetEntityAnalyticsResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntityAnalyticsResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupEntityAnalyticsResultOutput{})
+	pulumi.RegisterOutputType(GetEntityAnalyticsResultOutput{})
 }

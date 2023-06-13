@@ -10,45 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SKU name.
-type AzureSkuName string
-
-const (
-	AzureSkuName_Standard_DS13_v2_1TB_PS    = AzureSkuName("Standard_DS13_v2+1TB_PS")
-	AzureSkuName_Standard_DS13_v2_2TB_PS    = AzureSkuName("Standard_DS13_v2+2TB_PS")
-	AzureSkuName_Standard_DS14_v2_3TB_PS    = AzureSkuName("Standard_DS14_v2+3TB_PS")
-	AzureSkuName_Standard_DS14_v2_4TB_PS    = AzureSkuName("Standard_DS14_v2+4TB_PS")
-	AzureSkuName_Standard_D13_v2            = AzureSkuName("Standard_D13_v2")
-	AzureSkuName_Standard_D14_v2            = AzureSkuName("Standard_D14_v2")
-	AzureSkuName_Standard_L8s               = AzureSkuName("Standard_L8s")
-	AzureSkuName_Standard_L16s              = AzureSkuName("Standard_L16s")
-	AzureSkuName_Standard_L8s_v2            = AzureSkuName("Standard_L8s_v2")
-	AzureSkuName_Standard_L16s_v2           = AzureSkuName("Standard_L16s_v2")
-	AzureSkuName_Standard_D11_v2            = AzureSkuName("Standard_D11_v2")
-	AzureSkuName_Standard_D12_v2            = AzureSkuName("Standard_D12_v2")
-	AzureSkuName_Standard_L4s               = AzureSkuName("Standard_L4s")
-	AzureSkuName_Dev_No_SLA_Standard_D11_v2 = AzureSkuName("Dev(No SLA)_Standard_D11_v2")
-	AzureSkuName_Standard_E64i_v3           = AzureSkuName("Standard_E64i_v3")
-	AzureSkuName_Standard_E80ids_v4         = AzureSkuName("Standard_E80ids_v4")
-	AzureSkuName_Standard_E2a_v4            = AzureSkuName("Standard_E2a_v4")
-	AzureSkuName_Standard_E4a_v4            = AzureSkuName("Standard_E4a_v4")
-	AzureSkuName_Standard_E8a_v4            = AzureSkuName("Standard_E8a_v4")
-	AzureSkuName_Standard_E16a_v4           = AzureSkuName("Standard_E16a_v4")
-	AzureSkuName_Standard_E8as_v4_1TB_PS    = AzureSkuName("Standard_E8as_v4+1TB_PS")
-	AzureSkuName_Standard_E8as_v4_2TB_PS    = AzureSkuName("Standard_E8as_v4+2TB_PS")
-	AzureSkuName_Standard_E16as_v4_3TB_PS   = AzureSkuName("Standard_E16as_v4+3TB_PS")
-	AzureSkuName_Standard_E16as_v4_4TB_PS   = AzureSkuName("Standard_E16as_v4+4TB_PS")
-	AzureSkuName_Dev_No_SLA_Standard_E2a_v4 = AzureSkuName("Dev(No SLA)_Standard_E2a_v4")
-)
-
-// SKU tier.
-type AzureSkuTier string
-
-const (
-	AzureSkuTierBasic    = AzureSkuTier("Basic")
-	AzureSkuTierStandard = AzureSkuTier("Standard")
-)
-
 // The name of blob storage event type to process.
 type BlobStorageEventType string
 
@@ -71,6 +32,14 @@ type Compression string
 const (
 	CompressionNone = Compression("None")
 	CompressionGZip = Compression("GZip")
+)
+
+// The type of the spark config properties file.
+type ConfigurationType string
+
+const (
+	ConfigurationTypeFile     = ConfigurationType("File")
+	ConfigurationTypeArtifact = ConfigurationType("Artifact")
 )
 
 // Specifies the mode of sql pool creation.
@@ -128,14 +97,6 @@ const (
 	DefaultPrincipalsModificationKindUnion   = DefaultPrincipalsModificationKind("Union")
 	DefaultPrincipalsModificationKindReplace = DefaultPrincipalsModificationKind("Replace")
 	DefaultPrincipalsModificationKindNone    = DefaultPrincipalsModificationKind("None")
-)
-
-// The engine type
-type EngineType string
-
-const (
-	EngineTypeV2 = EngineType("V2")
-	EngineTypeV3 = EngineType("V3")
 )
 
 // The data format of the message. Optionally the data format can be added to each message.
@@ -290,8 +251,9 @@ const (
 type ResourceIdentityType string
 
 const (
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
-	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
+	ResourceIdentityTypeNone                         = ResourceIdentityType("None")
+	ResourceIdentityTypeSystemAssigned               = ResourceIdentityType("SystemAssigned")
+	ResourceIdentityType_SystemAssigned_UserAssigned = ResourceIdentityType("SystemAssigned,UserAssigned")
 )
 
 func (ResourceIdentityType) ElementType() reflect.Type {
@@ -618,13 +580,30 @@ func (in *sensitivityLabelRankPtr) ToSensitivityLabelRankPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SensitivityLabelRankPtrOutput)
 }
 
+// SKU name.
+type SkuName string
+
+const (
+	SkuName_Compute_optimized = SkuName("Compute optimized")
+	SkuName_Storage_optimized = SkuName("Storage optimized")
+)
+
+// SKU size.
+type SkuSize string
+
+const (
+	SkuSize_Extra_small = SkuSize("Extra small")
+	SkuSizeSmall        = SkuSize("Small")
+	SkuSizeMedium       = SkuSize("Medium")
+	SkuSizeLarge        = SkuSize("Large")
+)
+
 // The storage account type used to store backups for this sql pool.
 type StorageAccountType string
 
 const (
 	StorageAccountTypeGRS = StorageAccountType("GRS")
 	StorageAccountTypeLRS = StorageAccountType("LRS")
-	StorageAccountTypeZRS = StorageAccountType("ZRS")
 )
 
 // The status of the database transparent data encryption.

@@ -42,12 +42,24 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:storageSpaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:StorageSpaceRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice:storageSpaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:StorageSpaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:storageSpaceRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageSpaceRetrieve
-	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20220501preview:storageSpaceRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20220501preview:StorageSpaceRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +71,7 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 func GetStorageSpaceRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *StorageSpaceRetrieveState, opts ...pulumi.ResourceOption) (*StorageSpaceRetrieve, error) {
 	var resource StorageSpaceRetrieve
-	err := ctx.ReadResource("azure-native:hybridcontainerservice/v20220501preview:storageSpaceRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:hybridcontainerservice/v20220501preview:StorageSpaceRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

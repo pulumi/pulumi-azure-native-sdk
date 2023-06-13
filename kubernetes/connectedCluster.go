@@ -12,7 +12,8 @@ import (
 )
 
 // Represents a connected cluster.
-// API Version: 2021-03-01.
+// API Version: 2021-10-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ConnectedCluster struct {
 	pulumi.CustomResourceState
 
@@ -72,9 +73,6 @@ func NewConnectedCluster(ctx *pulumi.Context,
 	}
 	args.Identity = args.Identity.ToConnectedClusterIdentityOutput().ApplyT(func(v ConnectedClusterIdentity) ConnectedClusterIdentity { return *v.Defaults() }).(ConnectedClusterIdentityOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:kubernetes/v20200101preview:ConnectedCluster"),
-		},
 		{
 			Type: pulumi.String("azure-native:kubernetes/v20210301:ConnectedCluster"),
 		},

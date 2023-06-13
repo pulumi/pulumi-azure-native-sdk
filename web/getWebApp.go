@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the details of a web, mobile, or API app.
-// API Version: 2020-12-01.
+// Description for Gets the details of a web, mobile, or API app.
+// API Version: 2022-09-01.
 func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.InvokeOption) (*LookupWebAppResult, error) {
 	var rv LookupWebAppResult
 	err := ctx.Invoke("azure-native:web:getWebApp", args, &rv, opts...)
@@ -56,6 +56,8 @@ type LookupWebAppResult struct {
 	// Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled. Otherwise,
 	// the app is not served on those hostnames.
 	EnabledHostNames []string `pulumi:"enabledHostNames"`
+	// Extended Location.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 	HostNameSslStates []HostNameSslStateResponse `pulumi:"hostNameSslStates"`
 	// Hostnames associated with the app.
@@ -88,6 +90,8 @@ type LookupWebAppResult struct {
 	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
 	// Resource Location.
 	Location string `pulumi:"location"`
+	// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// Maximum number of workers.
 	// This only applies to Functions container.
 	MaxNumberOfWorkers int `pulumi:"maxNumberOfWorkers"`
@@ -97,6 +101,8 @@ type LookupWebAppResult struct {
 	OutboundIpAddresses string `pulumi:"outboundIpAddresses"`
 	// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
 	PossibleOutboundIpAddresses string `pulumi:"possibleOutboundIpAddresses"`
+	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Site redundancy mode
 	RedundancyMode *string `pulumi:"redundancyMode"`
 	// Name of the repository site.
@@ -132,6 +138,12 @@ type LookupWebAppResult struct {
 	// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
 	// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 	VirtualNetworkSubnetId *string `pulumi:"virtualNetworkSubnetId"`
+	// To enable accessing content over virtual network
+	VnetContentShareEnabled *bool `pulumi:"vnetContentShareEnabled"`
+	// To enable pulling image over Virtual Network
+	VnetImagePullEnabled *bool `pulumi:"vnetImagePullEnabled"`
+	// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+	VnetRouteAllEnabled *bool `pulumi:"vnetRouteAllEnabled"`
 }
 
 // Defaults sets the appropriate defaults for LookupWebAppResult
@@ -259,6 +271,11 @@ func (o LookupWebAppResultOutput) EnabledHostNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWebAppResult) []string { return v.EnabledHostNames }).(pulumi.StringArrayOutput)
 }
 
+// Extended Location.
+func (o LookupWebAppResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
 // Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 func (o LookupWebAppResultOutput) HostNameSslStates() HostNameSslStateResponseArrayOutput {
 	return o.ApplyT(func(v LookupWebAppResult) []HostNameSslStateResponse { return v.HostNameSslStates }).(HostNameSslStateResponseArrayOutput)
@@ -337,6 +354,11 @@ func (o LookupWebAppResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+func (o LookupWebAppResultOutput) ManagedEnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *string { return v.ManagedEnvironmentId }).(pulumi.StringPtrOutput)
+}
+
 // Maximum number of workers.
 // This only applies to Functions container.
 func (o LookupWebAppResultOutput) MaxNumberOfWorkers() pulumi.IntOutput {
@@ -356,6 +378,11 @@ func (o LookupWebAppResultOutput) OutboundIpAddresses() pulumi.StringOutput {
 // List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
 func (o LookupWebAppResultOutput) PossibleOutboundIpAddresses() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.PossibleOutboundIpAddresses }).(pulumi.StringOutput)
+}
+
+// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
+func (o LookupWebAppResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Site redundancy mode
@@ -442,6 +469,21 @@ func (o LookupWebAppResultOutput) UsageState() pulumi.StringOutput {
 // This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 func (o LookupWebAppResultOutput) VirtualNetworkSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppResult) *string { return v.VirtualNetworkSubnetId }).(pulumi.StringPtrOutput)
+}
+
+// To enable accessing content over virtual network
+func (o LookupWebAppResultOutput) VnetContentShareEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *bool { return v.VnetContentShareEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// To enable pulling image over Virtual Network
+func (o LookupWebAppResultOutput) VnetImagePullEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *bool { return v.VnetImagePullEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+func (o LookupWebAppResultOutput) VnetRouteAllEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *bool { return v.VnetRouteAllEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

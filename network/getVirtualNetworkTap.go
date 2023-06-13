@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified virtual network tap.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupVirtualNetworkTap(ctx *pulumi.Context, args *LookupVirtualNetworkTapArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkTapResult, error) {
 	var rv LookupVirtualNetworkTapResult
 	err := ctx.Invoke("azure-native:network:getVirtualNetworkTap", args, &rv, opts...)

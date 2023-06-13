@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2021-02-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-02-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Queue struct {
 	pulumi.CustomResourceState
 
@@ -39,12 +40,6 @@ func NewQueue(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:storage/v20190601:Queue"),
-		},
-		{
-			Type: pulumi.String("azure-native:storage/v20200801preview:Queue"),
-		},
 		{
 			Type: pulumi.String("azure-native:storage/v20210101:Queue"),
 		},

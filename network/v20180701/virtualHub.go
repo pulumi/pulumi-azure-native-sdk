@@ -50,9 +50,6 @@ func NewVirtualHub(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:VirtualHub"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20180401:VirtualHub"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:VirtualHub"),
 		},
 		{
@@ -135,6 +132,9 @@ func NewVirtualHub(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualHub"),
 		},
 	})
 	opts = append(opts, aliases)

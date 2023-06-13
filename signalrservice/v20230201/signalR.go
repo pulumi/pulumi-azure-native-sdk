@@ -117,12 +117,6 @@ func NewSignalR(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:signalrservice:SignalR"),
 		},
 		{
-			Type: pulumi.String("azure-native:signalrservice/v20180301preview:SignalR"),
-		},
-		{
-			Type: pulumi.String("azure-native:signalrservice/v20181001:SignalR"),
-		},
-		{
 			Type: pulumi.String("azure-native:signalrservice/v20200501:SignalR"),
 		},
 		{
@@ -145,6 +139,9 @@ func NewSignalR(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20220801preview:SignalR"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230301preview:SignalR"),
 		},
 	})
 	opts = append(opts, aliases)

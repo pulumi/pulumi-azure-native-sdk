@@ -12,7 +12,8 @@ import (
 )
 
 // ExpressRoutePort resource definition.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ExpressRoutePort struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type ExpressRoutePort struct {
 	AllocationDate pulumi.StringOutput `pulumi:"allocationDate"`
 	// Bandwidth of procured ports in Gbps.
 	BandwidthInGbps pulumi.IntPtrOutput `pulumi:"bandwidthInGbps"`
+	// The billing type of the ExpressRoutePort resource.
+	BillingType pulumi.StringPtrOutput `pulumi:"billingType"`
 	// Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
 	Circuits SubResourceResponseArrayOutput `pulumi:"circuits"`
 	// Encapsulation method on physical ports.
@@ -144,6 +147,9 @@ func NewExpressRoutePort(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRoutePort"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRoutePort"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRoutePort
@@ -180,6 +186,8 @@ func (ExpressRoutePortState) ElementType() reflect.Type {
 type expressRoutePortArgs struct {
 	// Bandwidth of procured ports in Gbps.
 	BandwidthInGbps *int `pulumi:"bandwidthInGbps"`
+	// The billing type of the ExpressRoutePort resource.
+	BillingType *string `pulumi:"billingType"`
 	// Encapsulation method on physical ports.
 	Encapsulation *string `pulumi:"encapsulation"`
 	// The name of the ExpressRoutePort resource.
@@ -204,6 +212,8 @@ type expressRoutePortArgs struct {
 type ExpressRoutePortArgs struct {
 	// Bandwidth of procured ports in Gbps.
 	BandwidthInGbps pulumi.IntPtrInput
+	// The billing type of the ExpressRoutePort resource.
+	BillingType pulumi.StringPtrInput
 	// Encapsulation method on physical ports.
 	Encapsulation pulumi.StringPtrInput
 	// The name of the ExpressRoutePort resource.
@@ -269,6 +279,11 @@ func (o ExpressRoutePortOutput) AllocationDate() pulumi.StringOutput {
 // Bandwidth of procured ports in Gbps.
 func (o ExpressRoutePortOutput) BandwidthInGbps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ExpressRoutePort) pulumi.IntPtrOutput { return v.BandwidthInGbps }).(pulumi.IntPtrOutput)
+}
+
+// The billing type of the ExpressRoutePort resource.
+func (o ExpressRoutePortOutput) BillingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressRoutePort) pulumi.StringPtrOutput { return v.BillingType }).(pulumi.StringPtrOutput)
 }
 
 // Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.

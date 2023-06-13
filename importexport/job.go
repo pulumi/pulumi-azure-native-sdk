@@ -12,7 +12,8 @@ import (
 )
 
 // Contains the job information.
-// API Version: 2020-08-01.
+// API Version: 2021-01-01.
+// Previous API Version: 2020-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -46,9 +47,6 @@ func NewJob(ctx *pulumi.Context,
 		args.Properties = args.Properties.ToJobDetailsPtrOutput().ApplyT(func(v *JobDetails) *JobDetails { return v.Defaults() }).(JobDetailsPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:importexport/v20161101:Job"),
-		},
 		{
 			Type: pulumi.String("azure-native:importexport/v20200801:Job"),
 		},

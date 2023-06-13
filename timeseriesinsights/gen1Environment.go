@@ -13,6 +13,7 @@ import (
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen1 environments have data retention limits.
 // API Version: 2020-05-15.
+// Previous API Version: 2020-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Gen1Environment struct {
 	pulumi.CustomResourceState
 
@@ -68,15 +69,6 @@ func NewGen1Environment(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("Gen1")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:Gen1Environment"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20171115:Gen1Environment"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20180815preview:Gen1Environment"),
-		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20200515:Gen1Environment"),
 		},

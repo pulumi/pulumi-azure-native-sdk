@@ -3,13 +3,6 @@
 
 package v20190101preview
 
-import (
-	"context"
-	"reflect"
-
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-)
-
 // The kind of the alert rule
 type AlertRuleKind string
 
@@ -293,7 +286,7 @@ const (
 	IncidentClassificationFalsePositive = IncidentClassification("FalsePositive")
 )
 
-// The classification reason the incident was closed with
+// The classification reason to close the incident with
 type IncidentClassificationReason string
 
 const (
@@ -394,163 +387,6 @@ const (
 	TriggerOperatorNotEqual    = TriggerOperator("NotEqual")
 )
 
-func (TriggerOperator) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerOperator)(nil)).Elem()
-}
-
-func (e TriggerOperator) ToTriggerOperatorOutput() TriggerOperatorOutput {
-	return pulumi.ToOutput(e).(TriggerOperatorOutput)
-}
-
-func (e TriggerOperator) ToTriggerOperatorOutputWithContext(ctx context.Context) TriggerOperatorOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(TriggerOperatorOutput)
-}
-
-func (e TriggerOperator) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput {
-	return e.ToTriggerOperatorPtrOutputWithContext(context.Background())
-}
-
-func (e TriggerOperator) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
-	return TriggerOperator(e).ToTriggerOperatorOutputWithContext(ctx).ToTriggerOperatorPtrOutputWithContext(ctx)
-}
-
-func (e TriggerOperator) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TriggerOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TriggerOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e TriggerOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type TriggerOperatorOutput struct{ *pulumi.OutputState }
-
-func (TriggerOperatorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerOperator)(nil)).Elem()
-}
-
-func (o TriggerOperatorOutput) ToTriggerOperatorOutput() TriggerOperatorOutput {
-	return o
-}
-
-func (o TriggerOperatorOutput) ToTriggerOperatorOutputWithContext(ctx context.Context) TriggerOperatorOutput {
-	return o
-}
-
-func (o TriggerOperatorOutput) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput {
-	return o.ToTriggerOperatorPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerOperatorOutput) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerOperator) *TriggerOperator {
-		return &v
-	}).(TriggerOperatorPtrOutput)
-}
-
-func (o TriggerOperatorOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o TriggerOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerOperator) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o TriggerOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerOperator) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type TriggerOperatorPtrOutput struct{ *pulumi.OutputState }
-
-func (TriggerOperatorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerOperator)(nil)).Elem()
-}
-
-func (o TriggerOperatorPtrOutput) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput {
-	return o
-}
-
-func (o TriggerOperatorPtrOutput) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
-	return o
-}
-
-func (o TriggerOperatorPtrOutput) Elem() TriggerOperatorOutput {
-	return o.ApplyT(func(v *TriggerOperator) TriggerOperator {
-		if v != nil {
-			return *v
-		}
-		var ret TriggerOperator
-		return ret
-	}).(TriggerOperatorOutput)
-}
-
-func (o TriggerOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TriggerOperator) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// TriggerOperatorInput is an input type that accepts TriggerOperatorArgs and TriggerOperatorOutput values.
-// You can construct a concrete instance of `TriggerOperatorInput` via:
-//
-//	TriggerOperatorArgs{...}
-type TriggerOperatorInput interface {
-	pulumi.Input
-
-	ToTriggerOperatorOutput() TriggerOperatorOutput
-	ToTriggerOperatorOutputWithContext(context.Context) TriggerOperatorOutput
-}
-
-var triggerOperatorPtrType = reflect.TypeOf((**TriggerOperator)(nil)).Elem()
-
-type TriggerOperatorPtrInput interface {
-	pulumi.Input
-
-	ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput
-	ToTriggerOperatorPtrOutputWithContext(context.Context) TriggerOperatorPtrOutput
-}
-
-type triggerOperatorPtr string
-
-func TriggerOperatorPtr(v string) TriggerOperatorPtrInput {
-	return (*triggerOperatorPtr)(&v)
-}
-
-func (*triggerOperatorPtr) ElementType() reflect.Type {
-	return triggerOperatorPtrType
-}
-
-func (in *triggerOperatorPtr) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput {
-	return pulumi.ToOutput(in).(TriggerOperatorPtrOutput)
-}
-
-func (in *triggerOperatorPtr) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(TriggerOperatorPtrOutput)
-}
-
 // The type of object the automation rule triggers on
 type TriggersOn string
 
@@ -578,6 +414,4 @@ const (
 )
 
 func init() {
-	pulumi.RegisterOutputType(TriggerOperatorOutput{})
-	pulumi.RegisterOutputType(TriggerOperatorPtrOutput{})
 }

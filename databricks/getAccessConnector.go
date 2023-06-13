@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an azure databricks accessConnector.
-// API Version: 2022-04-01-preview.
+// API Version: 2023-05-01.
 func LookupAccessConnector(ctx *pulumi.Context, args *LookupAccessConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAccessConnectorResult, error) {
 	var rv LookupAccessConnectorResult
 	err := ctx.Invoke("azure-native:databricks:getAccessConnector", args, &rv, opts...)
@@ -32,8 +32,8 @@ type LookupAccessConnectorArgs struct {
 type LookupAccessConnectorResult struct {
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Identity for the resource.
-	Identity *IdentityDataResponse `pulumi:"identity"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -92,9 +92,9 @@ func (o LookupAccessConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identity for the resource.
-func (o LookupAccessConnectorResultOutput) Identity() IdentityDataResponsePtrOutput {
-	return o.ApplyT(func(v LookupAccessConnectorResult) *IdentityDataResponse { return v.Identity }).(IdentityDataResponsePtrOutput)
+// Managed service identity (system assigned and/or user assigned identities)
+func (o LookupAccessConnectorResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupAccessConnectorResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

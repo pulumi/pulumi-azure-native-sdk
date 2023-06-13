@@ -5155,258 +5155,6 @@ func (o DataDiskResponseArrayOutput) Index(i pulumi.IntInput) DataDiskResponseOu
 	}).(DataDiskResponseOutput)
 }
 
-// Represents the dedicated host unutilized capacity in terms of a specific VM size.
-type DedicatedHostAllocatableVMResponse struct {
-	// Maximum number of VMs of size vmSize that can fit in the dedicated host's remaining capacity.
-	Count *float64 `pulumi:"count"`
-	// VM size in terms of which the unutilized capacity is represented.
-	VmSize *string `pulumi:"vmSize"`
-}
-
-// Represents the dedicated host unutilized capacity in terms of a specific VM size.
-type DedicatedHostAllocatableVMResponseOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostAllocatableVMResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostAllocatableVMResponse)(nil)).Elem()
-}
-
-func (o DedicatedHostAllocatableVMResponseOutput) ToDedicatedHostAllocatableVMResponseOutput() DedicatedHostAllocatableVMResponseOutput {
-	return o
-}
-
-func (o DedicatedHostAllocatableVMResponseOutput) ToDedicatedHostAllocatableVMResponseOutputWithContext(ctx context.Context) DedicatedHostAllocatableVMResponseOutput {
-	return o
-}
-
-// Maximum number of VMs of size vmSize that can fit in the dedicated host's remaining capacity.
-func (o DedicatedHostAllocatableVMResponseOutput) Count() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DedicatedHostAllocatableVMResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
-}
-
-// VM size in terms of which the unutilized capacity is represented.
-func (o DedicatedHostAllocatableVMResponseOutput) VmSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DedicatedHostAllocatableVMResponse) *string { return v.VmSize }).(pulumi.StringPtrOutput)
-}
-
-type DedicatedHostAllocatableVMResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostAllocatableVMResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DedicatedHostAllocatableVMResponse)(nil)).Elem()
-}
-
-func (o DedicatedHostAllocatableVMResponseArrayOutput) ToDedicatedHostAllocatableVMResponseArrayOutput() DedicatedHostAllocatableVMResponseArrayOutput {
-	return o
-}
-
-func (o DedicatedHostAllocatableVMResponseArrayOutput) ToDedicatedHostAllocatableVMResponseArrayOutputWithContext(ctx context.Context) DedicatedHostAllocatableVMResponseArrayOutput {
-	return o
-}
-
-func (o DedicatedHostAllocatableVMResponseArrayOutput) Index(i pulumi.IntInput) DedicatedHostAllocatableVMResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DedicatedHostAllocatableVMResponse {
-		return vs[0].([]DedicatedHostAllocatableVMResponse)[vs[1].(int)]
-	}).(DedicatedHostAllocatableVMResponseOutput)
-}
-
-// Dedicated host unutilized capacity.
-type DedicatedHostAvailableCapacityResponse struct {
-	// The unutilized capacity of the dedicated host represented in terms of each VM size that is allowed to be deployed to the dedicated host.
-	AllocatableVMs []DedicatedHostAllocatableVMResponse `pulumi:"allocatableVMs"`
-}
-
-// Dedicated host unutilized capacity.
-type DedicatedHostAvailableCapacityResponseOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostAvailableCapacityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostAvailableCapacityResponse)(nil)).Elem()
-}
-
-func (o DedicatedHostAvailableCapacityResponseOutput) ToDedicatedHostAvailableCapacityResponseOutput() DedicatedHostAvailableCapacityResponseOutput {
-	return o
-}
-
-func (o DedicatedHostAvailableCapacityResponseOutput) ToDedicatedHostAvailableCapacityResponseOutputWithContext(ctx context.Context) DedicatedHostAvailableCapacityResponseOutput {
-	return o
-}
-
-// The unutilized capacity of the dedicated host represented in terms of each VM size that is allowed to be deployed to the dedicated host.
-func (o DedicatedHostAvailableCapacityResponseOutput) AllocatableVMs() DedicatedHostAllocatableVMResponseArrayOutput {
-	return o.ApplyT(func(v DedicatedHostAvailableCapacityResponse) []DedicatedHostAllocatableVMResponse {
-		return v.AllocatableVMs
-	}).(DedicatedHostAllocatableVMResponseArrayOutput)
-}
-
-type DedicatedHostAvailableCapacityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostAvailableCapacityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DedicatedHostAvailableCapacityResponse)(nil)).Elem()
-}
-
-func (o DedicatedHostAvailableCapacityResponsePtrOutput) ToDedicatedHostAvailableCapacityResponsePtrOutput() DedicatedHostAvailableCapacityResponsePtrOutput {
-	return o
-}
-
-func (o DedicatedHostAvailableCapacityResponsePtrOutput) ToDedicatedHostAvailableCapacityResponsePtrOutputWithContext(ctx context.Context) DedicatedHostAvailableCapacityResponsePtrOutput {
-	return o
-}
-
-func (o DedicatedHostAvailableCapacityResponsePtrOutput) Elem() DedicatedHostAvailableCapacityResponseOutput {
-	return o.ApplyT(func(v *DedicatedHostAvailableCapacityResponse) DedicatedHostAvailableCapacityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DedicatedHostAvailableCapacityResponse
-		return ret
-	}).(DedicatedHostAvailableCapacityResponseOutput)
-}
-
-// The unutilized capacity of the dedicated host represented in terms of each VM size that is allowed to be deployed to the dedicated host.
-func (o DedicatedHostAvailableCapacityResponsePtrOutput) AllocatableVMs() DedicatedHostAllocatableVMResponseArrayOutput {
-	return o.ApplyT(func(v *DedicatedHostAvailableCapacityResponse) []DedicatedHostAllocatableVMResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AllocatableVMs
-	}).(DedicatedHostAllocatableVMResponseArrayOutput)
-}
-
-type DedicatedHostGroupInstanceViewResponse struct {
-	// List of instance view of the dedicated hosts under the dedicated host group.
-	Hosts []DedicatedHostInstanceViewWithNameResponse `pulumi:"hosts"`
-}
-
-type DedicatedHostGroupInstanceViewResponseOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostGroupInstanceViewResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostGroupInstanceViewResponse)(nil)).Elem()
-}
-
-func (o DedicatedHostGroupInstanceViewResponseOutput) ToDedicatedHostGroupInstanceViewResponseOutput() DedicatedHostGroupInstanceViewResponseOutput {
-	return o
-}
-
-func (o DedicatedHostGroupInstanceViewResponseOutput) ToDedicatedHostGroupInstanceViewResponseOutputWithContext(ctx context.Context) DedicatedHostGroupInstanceViewResponseOutput {
-	return o
-}
-
-// List of instance view of the dedicated hosts under the dedicated host group.
-func (o DedicatedHostGroupInstanceViewResponseOutput) Hosts() DedicatedHostInstanceViewWithNameResponseArrayOutput {
-	return o.ApplyT(func(v DedicatedHostGroupInstanceViewResponse) []DedicatedHostInstanceViewWithNameResponse {
-		return v.Hosts
-	}).(DedicatedHostInstanceViewWithNameResponseArrayOutput)
-}
-
-// The instance view of a dedicated host.
-type DedicatedHostInstanceViewResponse struct {
-	// Specifies the unique id of the dedicated physical machine on which the dedicated host resides.
-	AssetId string `pulumi:"assetId"`
-	// Unutilized capacity of the dedicated host.
-	AvailableCapacity *DedicatedHostAvailableCapacityResponse `pulumi:"availableCapacity"`
-	// The resource status information.
-	Statuses []InstanceViewStatusResponse `pulumi:"statuses"`
-}
-
-// The instance view of a dedicated host.
-type DedicatedHostInstanceViewResponseOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostInstanceViewResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostInstanceViewResponse)(nil)).Elem()
-}
-
-func (o DedicatedHostInstanceViewResponseOutput) ToDedicatedHostInstanceViewResponseOutput() DedicatedHostInstanceViewResponseOutput {
-	return o
-}
-
-func (o DedicatedHostInstanceViewResponseOutput) ToDedicatedHostInstanceViewResponseOutputWithContext(ctx context.Context) DedicatedHostInstanceViewResponseOutput {
-	return o
-}
-
-// Specifies the unique id of the dedicated physical machine on which the dedicated host resides.
-func (o DedicatedHostInstanceViewResponseOutput) AssetId() pulumi.StringOutput {
-	return o.ApplyT(func(v DedicatedHostInstanceViewResponse) string { return v.AssetId }).(pulumi.StringOutput)
-}
-
-// Unutilized capacity of the dedicated host.
-func (o DedicatedHostInstanceViewResponseOutput) AvailableCapacity() DedicatedHostAvailableCapacityResponsePtrOutput {
-	return o.ApplyT(func(v DedicatedHostInstanceViewResponse) *DedicatedHostAvailableCapacityResponse {
-		return v.AvailableCapacity
-	}).(DedicatedHostAvailableCapacityResponsePtrOutput)
-}
-
-// The resource status information.
-func (o DedicatedHostInstanceViewResponseOutput) Statuses() InstanceViewStatusResponseArrayOutput {
-	return o.ApplyT(func(v DedicatedHostInstanceViewResponse) []InstanceViewStatusResponse { return v.Statuses }).(InstanceViewStatusResponseArrayOutput)
-}
-
-// The instance view of a dedicated host that includes the name of the dedicated host. It is used for the response to the instance view of a dedicated host group.
-type DedicatedHostInstanceViewWithNameResponse struct {
-	// Specifies the unique id of the dedicated physical machine on which the dedicated host resides.
-	AssetId string `pulumi:"assetId"`
-	// Unutilized capacity of the dedicated host.
-	AvailableCapacity *DedicatedHostAvailableCapacityResponse `pulumi:"availableCapacity"`
-	// The name of the dedicated host.
-	Name string `pulumi:"name"`
-	// The resource status information.
-	Statuses []InstanceViewStatusResponse `pulumi:"statuses"`
-}
-
-// The instance view of a dedicated host that includes the name of the dedicated host. It is used for the response to the instance view of a dedicated host group.
-type DedicatedHostInstanceViewWithNameResponseOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostInstanceViewWithNameResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostInstanceViewWithNameResponse)(nil)).Elem()
-}
-
-func (o DedicatedHostInstanceViewWithNameResponseOutput) ToDedicatedHostInstanceViewWithNameResponseOutput() DedicatedHostInstanceViewWithNameResponseOutput {
-	return o
-}
-
-func (o DedicatedHostInstanceViewWithNameResponseOutput) ToDedicatedHostInstanceViewWithNameResponseOutputWithContext(ctx context.Context) DedicatedHostInstanceViewWithNameResponseOutput {
-	return o
-}
-
-// Specifies the unique id of the dedicated physical machine on which the dedicated host resides.
-func (o DedicatedHostInstanceViewWithNameResponseOutput) AssetId() pulumi.StringOutput {
-	return o.ApplyT(func(v DedicatedHostInstanceViewWithNameResponse) string { return v.AssetId }).(pulumi.StringOutput)
-}
-
-// Unutilized capacity of the dedicated host.
-func (o DedicatedHostInstanceViewWithNameResponseOutput) AvailableCapacity() DedicatedHostAvailableCapacityResponsePtrOutput {
-	return o.ApplyT(func(v DedicatedHostInstanceViewWithNameResponse) *DedicatedHostAvailableCapacityResponse {
-		return v.AvailableCapacity
-	}).(DedicatedHostAvailableCapacityResponsePtrOutput)
-}
-
-// The name of the dedicated host.
-func (o DedicatedHostInstanceViewWithNameResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DedicatedHostInstanceViewWithNameResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The resource status information.
-func (o DedicatedHostInstanceViewWithNameResponseOutput) Statuses() InstanceViewStatusResponseArrayOutput {
-	return o.ApplyT(func(v DedicatedHostInstanceViewWithNameResponse) []InstanceViewStatusResponse { return v.Statuses }).(InstanceViewStatusResponseArrayOutput)
-}
-
-type DedicatedHostInstanceViewWithNameResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostInstanceViewWithNameResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DedicatedHostInstanceViewWithNameResponse)(nil)).Elem()
-}
-
-func (o DedicatedHostInstanceViewWithNameResponseArrayOutput) ToDedicatedHostInstanceViewWithNameResponseArrayOutput() DedicatedHostInstanceViewWithNameResponseArrayOutput {
-	return o
-}
-
-func (o DedicatedHostInstanceViewWithNameResponseArrayOutput) ToDedicatedHostInstanceViewWithNameResponseArrayOutputWithContext(ctx context.Context) DedicatedHostInstanceViewWithNameResponseArrayOutput {
-	return o
-}
-
-func (o DedicatedHostInstanceViewWithNameResponseArrayOutput) Index(i pulumi.IntInput) DedicatedHostInstanceViewWithNameResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DedicatedHostInstanceViewWithNameResponse {
-		return vs[0].([]DedicatedHostInstanceViewWithNameResponse)[vs[1].(int)]
-	}).(DedicatedHostInstanceViewWithNameResponseOutput)
-}
-
 // Specifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
 type DiagnosticsProfile struct {
 	// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. <br><br> You can easily view the output of your console log. <br><br> Azure also enables you to see a screenshot of the VM from the hypervisor.
@@ -6993,752 +6741,6 @@ func (o HardwareProfileResponsePtrOutput) VmSize() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a data disk.
-type ImageDataDisk struct {
-	// The Virtual Hard Disk.
-	BlobUri *string `pulumi:"blobUri"`
-	// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-	Caching *CachingTypes `pulumi:"caching"`
-	// Specifies the customer managed disk encryption set resource id for the managed image disk.
-	DiskEncryptionSet *DiskEncryptionSetParameters `pulumi:"diskEncryptionSet"`
-	// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-	DiskSizeGB *int `pulumi:"diskSizeGB"`
-	// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
-	Lun int `pulumi:"lun"`
-	// The managedDisk.
-	ManagedDisk *SubResource `pulumi:"managedDisk"`
-	// The snapshot.
-	Snapshot *SubResource `pulumi:"snapshot"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-// ImageDataDiskInput is an input type that accepts ImageDataDiskArgs and ImageDataDiskOutput values.
-// You can construct a concrete instance of `ImageDataDiskInput` via:
-//
-//	ImageDataDiskArgs{...}
-type ImageDataDiskInput interface {
-	pulumi.Input
-
-	ToImageDataDiskOutput() ImageDataDiskOutput
-	ToImageDataDiskOutputWithContext(context.Context) ImageDataDiskOutput
-}
-
-// Describes a data disk.
-type ImageDataDiskArgs struct {
-	// The Virtual Hard Disk.
-	BlobUri pulumi.StringPtrInput `pulumi:"blobUri"`
-	// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-	Caching CachingTypesPtrInput `pulumi:"caching"`
-	// Specifies the customer managed disk encryption set resource id for the managed image disk.
-	DiskEncryptionSet DiskEncryptionSetParametersPtrInput `pulumi:"diskEncryptionSet"`
-	// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-	DiskSizeGB pulumi.IntPtrInput `pulumi:"diskSizeGB"`
-	// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
-	Lun pulumi.IntInput `pulumi:"lun"`
-	// The managedDisk.
-	ManagedDisk SubResourcePtrInput `pulumi:"managedDisk"`
-	// The snapshot.
-	Snapshot SubResourcePtrInput `pulumi:"snapshot"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-	StorageAccountType pulumi.StringPtrInput `pulumi:"storageAccountType"`
-}
-
-func (ImageDataDiskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageDataDisk)(nil)).Elem()
-}
-
-func (i ImageDataDiskArgs) ToImageDataDiskOutput() ImageDataDiskOutput {
-	return i.ToImageDataDiskOutputWithContext(context.Background())
-}
-
-func (i ImageDataDiskArgs) ToImageDataDiskOutputWithContext(ctx context.Context) ImageDataDiskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageDataDiskOutput)
-}
-
-// ImageDataDiskArrayInput is an input type that accepts ImageDataDiskArray and ImageDataDiskArrayOutput values.
-// You can construct a concrete instance of `ImageDataDiskArrayInput` via:
-//
-//	ImageDataDiskArray{ ImageDataDiskArgs{...} }
-type ImageDataDiskArrayInput interface {
-	pulumi.Input
-
-	ToImageDataDiskArrayOutput() ImageDataDiskArrayOutput
-	ToImageDataDiskArrayOutputWithContext(context.Context) ImageDataDiskArrayOutput
-}
-
-type ImageDataDiskArray []ImageDataDiskInput
-
-func (ImageDataDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ImageDataDisk)(nil)).Elem()
-}
-
-func (i ImageDataDiskArray) ToImageDataDiskArrayOutput() ImageDataDiskArrayOutput {
-	return i.ToImageDataDiskArrayOutputWithContext(context.Background())
-}
-
-func (i ImageDataDiskArray) ToImageDataDiskArrayOutputWithContext(ctx context.Context) ImageDataDiskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageDataDiskArrayOutput)
-}
-
-// Describes a data disk.
-type ImageDataDiskOutput struct{ *pulumi.OutputState }
-
-func (ImageDataDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageDataDisk)(nil)).Elem()
-}
-
-func (o ImageDataDiskOutput) ToImageDataDiskOutput() ImageDataDiskOutput {
-	return o
-}
-
-func (o ImageDataDiskOutput) ToImageDataDiskOutputWithContext(ctx context.Context) ImageDataDiskOutput {
-	return o
-}
-
-// The Virtual Hard Disk.
-func (o ImageDataDiskOutput) BlobUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageDataDisk) *string { return v.BlobUri }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-func (o ImageDataDiskOutput) Caching() CachingTypesPtrOutput {
-	return o.ApplyT(func(v ImageDataDisk) *CachingTypes { return v.Caching }).(CachingTypesPtrOutput)
-}
-
-// Specifies the customer managed disk encryption set resource id for the managed image disk.
-func (o ImageDataDiskOutput) DiskEncryptionSet() DiskEncryptionSetParametersPtrOutput {
-	return o.ApplyT(func(v ImageDataDisk) *DiskEncryptionSetParameters { return v.DiskEncryptionSet }).(DiskEncryptionSetParametersPtrOutput)
-}
-
-// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-func (o ImageDataDiskOutput) DiskSizeGB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ImageDataDisk) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
-}
-
-// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
-func (o ImageDataDiskOutput) Lun() pulumi.IntOutput {
-	return o.ApplyT(func(v ImageDataDisk) int { return v.Lun }).(pulumi.IntOutput)
-}
-
-// The managedDisk.
-func (o ImageDataDiskOutput) ManagedDisk() SubResourcePtrOutput {
-	return o.ApplyT(func(v ImageDataDisk) *SubResource { return v.ManagedDisk }).(SubResourcePtrOutput)
-}
-
-// The snapshot.
-func (o ImageDataDiskOutput) Snapshot() SubResourcePtrOutput {
-	return o.ApplyT(func(v ImageDataDisk) *SubResource { return v.Snapshot }).(SubResourcePtrOutput)
-}
-
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-func (o ImageDataDiskOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageDataDisk) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type ImageDataDiskArrayOutput struct{ *pulumi.OutputState }
-
-func (ImageDataDiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ImageDataDisk)(nil)).Elem()
-}
-
-func (o ImageDataDiskArrayOutput) ToImageDataDiskArrayOutput() ImageDataDiskArrayOutput {
-	return o
-}
-
-func (o ImageDataDiskArrayOutput) ToImageDataDiskArrayOutputWithContext(ctx context.Context) ImageDataDiskArrayOutput {
-	return o
-}
-
-func (o ImageDataDiskArrayOutput) Index(i pulumi.IntInput) ImageDataDiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageDataDisk {
-		return vs[0].([]ImageDataDisk)[vs[1].(int)]
-	}).(ImageDataDiskOutput)
-}
-
-// Describes a data disk.
-type ImageDataDiskResponse struct {
-	// The Virtual Hard Disk.
-	BlobUri *string `pulumi:"blobUri"`
-	// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-	Caching *string `pulumi:"caching"`
-	// Specifies the customer managed disk encryption set resource id for the managed image disk.
-	DiskEncryptionSet *DiskEncryptionSetParametersResponse `pulumi:"diskEncryptionSet"`
-	// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-	DiskSizeGB *int `pulumi:"diskSizeGB"`
-	// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
-	Lun int `pulumi:"lun"`
-	// The managedDisk.
-	ManagedDisk *SubResourceResponse `pulumi:"managedDisk"`
-	// The snapshot.
-	Snapshot *SubResourceResponse `pulumi:"snapshot"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-// Describes a data disk.
-type ImageDataDiskResponseOutput struct{ *pulumi.OutputState }
-
-func (ImageDataDiskResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageDataDiskResponse)(nil)).Elem()
-}
-
-func (o ImageDataDiskResponseOutput) ToImageDataDiskResponseOutput() ImageDataDiskResponseOutput {
-	return o
-}
-
-func (o ImageDataDiskResponseOutput) ToImageDataDiskResponseOutputWithContext(ctx context.Context) ImageDataDiskResponseOutput {
-	return o
-}
-
-// The Virtual Hard Disk.
-func (o ImageDataDiskResponseOutput) BlobUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageDataDiskResponse) *string { return v.BlobUri }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-func (o ImageDataDiskResponseOutput) Caching() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageDataDiskResponse) *string { return v.Caching }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the customer managed disk encryption set resource id for the managed image disk.
-func (o ImageDataDiskResponseOutput) DiskEncryptionSet() DiskEncryptionSetParametersResponsePtrOutput {
-	return o.ApplyT(func(v ImageDataDiskResponse) *DiskEncryptionSetParametersResponse { return v.DiskEncryptionSet }).(DiskEncryptionSetParametersResponsePtrOutput)
-}
-
-// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-func (o ImageDataDiskResponseOutput) DiskSizeGB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ImageDataDiskResponse) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
-}
-
-// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
-func (o ImageDataDiskResponseOutput) Lun() pulumi.IntOutput {
-	return o.ApplyT(func(v ImageDataDiskResponse) int { return v.Lun }).(pulumi.IntOutput)
-}
-
-// The managedDisk.
-func (o ImageDataDiskResponseOutput) ManagedDisk() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v ImageDataDiskResponse) *SubResourceResponse { return v.ManagedDisk }).(SubResourceResponsePtrOutput)
-}
-
-// The snapshot.
-func (o ImageDataDiskResponseOutput) Snapshot() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v ImageDataDiskResponse) *SubResourceResponse { return v.Snapshot }).(SubResourceResponsePtrOutput)
-}
-
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-func (o ImageDataDiskResponseOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageDataDiskResponse) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type ImageDataDiskResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ImageDataDiskResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ImageDataDiskResponse)(nil)).Elem()
-}
-
-func (o ImageDataDiskResponseArrayOutput) ToImageDataDiskResponseArrayOutput() ImageDataDiskResponseArrayOutput {
-	return o
-}
-
-func (o ImageDataDiskResponseArrayOutput) ToImageDataDiskResponseArrayOutputWithContext(ctx context.Context) ImageDataDiskResponseArrayOutput {
-	return o
-}
-
-func (o ImageDataDiskResponseArrayOutput) Index(i pulumi.IntInput) ImageDataDiskResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageDataDiskResponse {
-		return vs[0].([]ImageDataDiskResponse)[vs[1].(int)]
-	}).(ImageDataDiskResponseOutput)
-}
-
-// Describes an Operating System disk.
-type ImageOSDisk struct {
-	// The Virtual Hard Disk.
-	BlobUri *string `pulumi:"blobUri"`
-	// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-	Caching *CachingTypes `pulumi:"caching"`
-	// Specifies the customer managed disk encryption set resource id for the managed image disk.
-	DiskEncryptionSet *DiskEncryptionSetParameters `pulumi:"diskEncryptionSet"`
-	// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-	DiskSizeGB *int `pulumi:"diskSizeGB"`
-	// The managedDisk.
-	ManagedDisk *SubResource `pulumi:"managedDisk"`
-	// The OS State.
-	OsState OperatingSystemStateTypes `pulumi:"osState"`
-	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
-	OsType OperatingSystemTypes `pulumi:"osType"`
-	// The snapshot.
-	Snapshot *SubResource `pulumi:"snapshot"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-// ImageOSDiskInput is an input type that accepts ImageOSDiskArgs and ImageOSDiskOutput values.
-// You can construct a concrete instance of `ImageOSDiskInput` via:
-//
-//	ImageOSDiskArgs{...}
-type ImageOSDiskInput interface {
-	pulumi.Input
-
-	ToImageOSDiskOutput() ImageOSDiskOutput
-	ToImageOSDiskOutputWithContext(context.Context) ImageOSDiskOutput
-}
-
-// Describes an Operating System disk.
-type ImageOSDiskArgs struct {
-	// The Virtual Hard Disk.
-	BlobUri pulumi.StringPtrInput `pulumi:"blobUri"`
-	// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-	Caching CachingTypesPtrInput `pulumi:"caching"`
-	// Specifies the customer managed disk encryption set resource id for the managed image disk.
-	DiskEncryptionSet DiskEncryptionSetParametersPtrInput `pulumi:"diskEncryptionSet"`
-	// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-	DiskSizeGB pulumi.IntPtrInput `pulumi:"diskSizeGB"`
-	// The managedDisk.
-	ManagedDisk SubResourcePtrInput `pulumi:"managedDisk"`
-	// The OS State.
-	OsState OperatingSystemStateTypesInput `pulumi:"osState"`
-	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
-	OsType OperatingSystemTypesInput `pulumi:"osType"`
-	// The snapshot.
-	Snapshot SubResourcePtrInput `pulumi:"snapshot"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-	StorageAccountType pulumi.StringPtrInput `pulumi:"storageAccountType"`
-}
-
-func (ImageOSDiskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageOSDisk)(nil)).Elem()
-}
-
-func (i ImageOSDiskArgs) ToImageOSDiskOutput() ImageOSDiskOutput {
-	return i.ToImageOSDiskOutputWithContext(context.Background())
-}
-
-func (i ImageOSDiskArgs) ToImageOSDiskOutputWithContext(ctx context.Context) ImageOSDiskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageOSDiskOutput)
-}
-
-func (i ImageOSDiskArgs) ToImageOSDiskPtrOutput() ImageOSDiskPtrOutput {
-	return i.ToImageOSDiskPtrOutputWithContext(context.Background())
-}
-
-func (i ImageOSDiskArgs) ToImageOSDiskPtrOutputWithContext(ctx context.Context) ImageOSDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageOSDiskOutput).ToImageOSDiskPtrOutputWithContext(ctx)
-}
-
-// ImageOSDiskPtrInput is an input type that accepts ImageOSDiskArgs, ImageOSDiskPtr and ImageOSDiskPtrOutput values.
-// You can construct a concrete instance of `ImageOSDiskPtrInput` via:
-//
-//	        ImageOSDiskArgs{...}
-//
-//	or:
-//
-//	        nil
-type ImageOSDiskPtrInput interface {
-	pulumi.Input
-
-	ToImageOSDiskPtrOutput() ImageOSDiskPtrOutput
-	ToImageOSDiskPtrOutputWithContext(context.Context) ImageOSDiskPtrOutput
-}
-
-type imageOSDiskPtrType ImageOSDiskArgs
-
-func ImageOSDiskPtr(v *ImageOSDiskArgs) ImageOSDiskPtrInput {
-	return (*imageOSDiskPtrType)(v)
-}
-
-func (*imageOSDiskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageOSDisk)(nil)).Elem()
-}
-
-func (i *imageOSDiskPtrType) ToImageOSDiskPtrOutput() ImageOSDiskPtrOutput {
-	return i.ToImageOSDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *imageOSDiskPtrType) ToImageOSDiskPtrOutputWithContext(ctx context.Context) ImageOSDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageOSDiskPtrOutput)
-}
-
-// Describes an Operating System disk.
-type ImageOSDiskOutput struct{ *pulumi.OutputState }
-
-func (ImageOSDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageOSDisk)(nil)).Elem()
-}
-
-func (o ImageOSDiskOutput) ToImageOSDiskOutput() ImageOSDiskOutput {
-	return o
-}
-
-func (o ImageOSDiskOutput) ToImageOSDiskOutputWithContext(ctx context.Context) ImageOSDiskOutput {
-	return o
-}
-
-func (o ImageOSDiskOutput) ToImageOSDiskPtrOutput() ImageOSDiskPtrOutput {
-	return o.ToImageOSDiskPtrOutputWithContext(context.Background())
-}
-
-func (o ImageOSDiskOutput) ToImageOSDiskPtrOutputWithContext(ctx context.Context) ImageOSDiskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageOSDisk) *ImageOSDisk {
-		return &v
-	}).(ImageOSDiskPtrOutput)
-}
-
-// The Virtual Hard Disk.
-func (o ImageOSDiskOutput) BlobUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageOSDisk) *string { return v.BlobUri }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-func (o ImageOSDiskOutput) Caching() CachingTypesPtrOutput {
-	return o.ApplyT(func(v ImageOSDisk) *CachingTypes { return v.Caching }).(CachingTypesPtrOutput)
-}
-
-// Specifies the customer managed disk encryption set resource id for the managed image disk.
-func (o ImageOSDiskOutput) DiskEncryptionSet() DiskEncryptionSetParametersPtrOutput {
-	return o.ApplyT(func(v ImageOSDisk) *DiskEncryptionSetParameters { return v.DiskEncryptionSet }).(DiskEncryptionSetParametersPtrOutput)
-}
-
-// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-func (o ImageOSDiskOutput) DiskSizeGB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ImageOSDisk) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
-}
-
-// The managedDisk.
-func (o ImageOSDiskOutput) ManagedDisk() SubResourcePtrOutput {
-	return o.ApplyT(func(v ImageOSDisk) *SubResource { return v.ManagedDisk }).(SubResourcePtrOutput)
-}
-
-// The OS State.
-func (o ImageOSDiskOutput) OsState() OperatingSystemStateTypesOutput {
-	return o.ApplyT(func(v ImageOSDisk) OperatingSystemStateTypes { return v.OsState }).(OperatingSystemStateTypesOutput)
-}
-
-// This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
-func (o ImageOSDiskOutput) OsType() OperatingSystemTypesOutput {
-	return o.ApplyT(func(v ImageOSDisk) OperatingSystemTypes { return v.OsType }).(OperatingSystemTypesOutput)
-}
-
-// The snapshot.
-func (o ImageOSDiskOutput) Snapshot() SubResourcePtrOutput {
-	return o.ApplyT(func(v ImageOSDisk) *SubResource { return v.Snapshot }).(SubResourcePtrOutput)
-}
-
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-func (o ImageOSDiskOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageOSDisk) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type ImageOSDiskPtrOutput struct{ *pulumi.OutputState }
-
-func (ImageOSDiskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageOSDisk)(nil)).Elem()
-}
-
-func (o ImageOSDiskPtrOutput) ToImageOSDiskPtrOutput() ImageOSDiskPtrOutput {
-	return o
-}
-
-func (o ImageOSDiskPtrOutput) ToImageOSDiskPtrOutputWithContext(ctx context.Context) ImageOSDiskPtrOutput {
-	return o
-}
-
-func (o ImageOSDiskPtrOutput) Elem() ImageOSDiskOutput {
-	return o.ApplyT(func(v *ImageOSDisk) ImageOSDisk {
-		if v != nil {
-			return *v
-		}
-		var ret ImageOSDisk
-		return ret
-	}).(ImageOSDiskOutput)
-}
-
-// The Virtual Hard Disk.
-func (o ImageOSDiskPtrOutput) BlobUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BlobUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-func (o ImageOSDiskPtrOutput) Caching() CachingTypesPtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *CachingTypes {
-		if v == nil {
-			return nil
-		}
-		return v.Caching
-	}).(CachingTypesPtrOutput)
-}
-
-// Specifies the customer managed disk encryption set resource id for the managed image disk.
-func (o ImageOSDiskPtrOutput) DiskEncryptionSet() DiskEncryptionSetParametersPtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *DiskEncryptionSetParameters {
-		if v == nil {
-			return nil
-		}
-		return v.DiskEncryptionSet
-	}).(DiskEncryptionSetParametersPtrOutput)
-}
-
-// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-func (o ImageOSDiskPtrOutput) DiskSizeGB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DiskSizeGB
-	}).(pulumi.IntPtrOutput)
-}
-
-// The managedDisk.
-func (o ImageOSDiskPtrOutput) ManagedDisk() SubResourcePtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *SubResource {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedDisk
-	}).(SubResourcePtrOutput)
-}
-
-// The OS State.
-func (o ImageOSDiskPtrOutput) OsState() OperatingSystemStateTypesPtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *OperatingSystemStateTypes {
-		if v == nil {
-			return nil
-		}
-		return &v.OsState
-	}).(OperatingSystemStateTypesPtrOutput)
-}
-
-// This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
-func (o ImageOSDiskPtrOutput) OsType() OperatingSystemTypesPtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *OperatingSystemTypes {
-		if v == nil {
-			return nil
-		}
-		return &v.OsType
-	}).(OperatingSystemTypesPtrOutput)
-}
-
-// The snapshot.
-func (o ImageOSDiskPtrOutput) Snapshot() SubResourcePtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *SubResource {
-		if v == nil {
-			return nil
-		}
-		return v.Snapshot
-	}).(SubResourcePtrOutput)
-}
-
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-func (o ImageOSDiskPtrOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageOSDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes an Operating System disk.
-type ImageOSDiskResponse struct {
-	// The Virtual Hard Disk.
-	BlobUri *string `pulumi:"blobUri"`
-	// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-	Caching *string `pulumi:"caching"`
-	// Specifies the customer managed disk encryption set resource id for the managed image disk.
-	DiskEncryptionSet *DiskEncryptionSetParametersResponse `pulumi:"diskEncryptionSet"`
-	// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-	DiskSizeGB *int `pulumi:"diskSizeGB"`
-	// The managedDisk.
-	ManagedDisk *SubResourceResponse `pulumi:"managedDisk"`
-	// The OS State.
-	OsState string `pulumi:"osState"`
-	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
-	OsType string `pulumi:"osType"`
-	// The snapshot.
-	Snapshot *SubResourceResponse `pulumi:"snapshot"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-// Describes an Operating System disk.
-type ImageOSDiskResponseOutput struct{ *pulumi.OutputState }
-
-func (ImageOSDiskResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageOSDiskResponse)(nil)).Elem()
-}
-
-func (o ImageOSDiskResponseOutput) ToImageOSDiskResponseOutput() ImageOSDiskResponseOutput {
-	return o
-}
-
-func (o ImageOSDiskResponseOutput) ToImageOSDiskResponseOutputWithContext(ctx context.Context) ImageOSDiskResponseOutput {
-	return o
-}
-
-// The Virtual Hard Disk.
-func (o ImageOSDiskResponseOutput) BlobUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) *string { return v.BlobUri }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-func (o ImageOSDiskResponseOutput) Caching() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) *string { return v.Caching }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the customer managed disk encryption set resource id for the managed image disk.
-func (o ImageOSDiskResponseOutput) DiskEncryptionSet() DiskEncryptionSetParametersResponsePtrOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) *DiskEncryptionSetParametersResponse { return v.DiskEncryptionSet }).(DiskEncryptionSetParametersResponsePtrOutput)
-}
-
-// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-func (o ImageOSDiskResponseOutput) DiskSizeGB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
-}
-
-// The managedDisk.
-func (o ImageOSDiskResponseOutput) ManagedDisk() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) *SubResourceResponse { return v.ManagedDisk }).(SubResourceResponsePtrOutput)
-}
-
-// The OS State.
-func (o ImageOSDiskResponseOutput) OsState() pulumi.StringOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) string { return v.OsState }).(pulumi.StringOutput)
-}
-
-// This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
-func (o ImageOSDiskResponseOutput) OsType() pulumi.StringOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) string { return v.OsType }).(pulumi.StringOutput)
-}
-
-// The snapshot.
-func (o ImageOSDiskResponseOutput) Snapshot() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) *SubResourceResponse { return v.Snapshot }).(SubResourceResponsePtrOutput)
-}
-
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-func (o ImageOSDiskResponseOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageOSDiskResponse) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type ImageOSDiskResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ImageOSDiskResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageOSDiskResponse)(nil)).Elem()
-}
-
-func (o ImageOSDiskResponsePtrOutput) ToImageOSDiskResponsePtrOutput() ImageOSDiskResponsePtrOutput {
-	return o
-}
-
-func (o ImageOSDiskResponsePtrOutput) ToImageOSDiskResponsePtrOutputWithContext(ctx context.Context) ImageOSDiskResponsePtrOutput {
-	return o
-}
-
-func (o ImageOSDiskResponsePtrOutput) Elem() ImageOSDiskResponseOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) ImageOSDiskResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ImageOSDiskResponse
-		return ret
-	}).(ImageOSDiskResponseOutput)
-}
-
-// The Virtual Hard Disk.
-func (o ImageOSDiskResponsePtrOutput) BlobUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BlobUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
-func (o ImageOSDiskResponsePtrOutput) Caching() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Caching
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the customer managed disk encryption set resource id for the managed image disk.
-func (o ImageOSDiskResponsePtrOutput) DiskEncryptionSet() DiskEncryptionSetParametersResponsePtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *DiskEncryptionSetParametersResponse {
-		if v == nil {
-			return nil
-		}
-		return v.DiskEncryptionSet
-	}).(DiskEncryptionSetParametersResponsePtrOutput)
-}
-
-// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
-func (o ImageOSDiskResponsePtrOutput) DiskSizeGB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DiskSizeGB
-	}).(pulumi.IntPtrOutput)
-}
-
-// The managedDisk.
-func (o ImageOSDiskResponsePtrOutput) ManagedDisk() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *SubResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedDisk
-	}).(SubResourceResponsePtrOutput)
-}
-
-// The OS State.
-func (o ImageOSDiskResponsePtrOutput) OsState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OsState
-	}).(pulumi.StringPtrOutput)
-}
-
-// This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
-func (o ImageOSDiskResponsePtrOutput) OsType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OsType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The snapshot.
-func (o ImageOSDiskResponsePtrOutput) Snapshot() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *SubResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Snapshot
-	}).(SubResourceResponsePtrOutput)
-}
-
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-func (o ImageOSDiskResponsePtrOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageOSDiskResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReference struct {
 	// Resource Id
@@ -8100,278 +7102,6 @@ func (o ImageReferenceResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a storage profile.
-type ImageStorageProfile struct {
-	// Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	DataDisks []ImageDataDisk `pulumi:"dataDisks"`
-	// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	OsDisk *ImageOSDisk `pulumi:"osDisk"`
-	// Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
-	ZoneResilient *bool `pulumi:"zoneResilient"`
-}
-
-// ImageStorageProfileInput is an input type that accepts ImageStorageProfileArgs and ImageStorageProfileOutput values.
-// You can construct a concrete instance of `ImageStorageProfileInput` via:
-//
-//	ImageStorageProfileArgs{...}
-type ImageStorageProfileInput interface {
-	pulumi.Input
-
-	ToImageStorageProfileOutput() ImageStorageProfileOutput
-	ToImageStorageProfileOutputWithContext(context.Context) ImageStorageProfileOutput
-}
-
-// Describes a storage profile.
-type ImageStorageProfileArgs struct {
-	// Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	DataDisks ImageDataDiskArrayInput `pulumi:"dataDisks"`
-	// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	OsDisk ImageOSDiskPtrInput `pulumi:"osDisk"`
-	// Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
-	ZoneResilient pulumi.BoolPtrInput `pulumi:"zoneResilient"`
-}
-
-func (ImageStorageProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageStorageProfile)(nil)).Elem()
-}
-
-func (i ImageStorageProfileArgs) ToImageStorageProfileOutput() ImageStorageProfileOutput {
-	return i.ToImageStorageProfileOutputWithContext(context.Background())
-}
-
-func (i ImageStorageProfileArgs) ToImageStorageProfileOutputWithContext(ctx context.Context) ImageStorageProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageStorageProfileOutput)
-}
-
-func (i ImageStorageProfileArgs) ToImageStorageProfilePtrOutput() ImageStorageProfilePtrOutput {
-	return i.ToImageStorageProfilePtrOutputWithContext(context.Background())
-}
-
-func (i ImageStorageProfileArgs) ToImageStorageProfilePtrOutputWithContext(ctx context.Context) ImageStorageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageStorageProfileOutput).ToImageStorageProfilePtrOutputWithContext(ctx)
-}
-
-// ImageStorageProfilePtrInput is an input type that accepts ImageStorageProfileArgs, ImageStorageProfilePtr and ImageStorageProfilePtrOutput values.
-// You can construct a concrete instance of `ImageStorageProfilePtrInput` via:
-//
-//	        ImageStorageProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type ImageStorageProfilePtrInput interface {
-	pulumi.Input
-
-	ToImageStorageProfilePtrOutput() ImageStorageProfilePtrOutput
-	ToImageStorageProfilePtrOutputWithContext(context.Context) ImageStorageProfilePtrOutput
-}
-
-type imageStorageProfilePtrType ImageStorageProfileArgs
-
-func ImageStorageProfilePtr(v *ImageStorageProfileArgs) ImageStorageProfilePtrInput {
-	return (*imageStorageProfilePtrType)(v)
-}
-
-func (*imageStorageProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageStorageProfile)(nil)).Elem()
-}
-
-func (i *imageStorageProfilePtrType) ToImageStorageProfilePtrOutput() ImageStorageProfilePtrOutput {
-	return i.ToImageStorageProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *imageStorageProfilePtrType) ToImageStorageProfilePtrOutputWithContext(ctx context.Context) ImageStorageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageStorageProfilePtrOutput)
-}
-
-// Describes a storage profile.
-type ImageStorageProfileOutput struct{ *pulumi.OutputState }
-
-func (ImageStorageProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageStorageProfile)(nil)).Elem()
-}
-
-func (o ImageStorageProfileOutput) ToImageStorageProfileOutput() ImageStorageProfileOutput {
-	return o
-}
-
-func (o ImageStorageProfileOutput) ToImageStorageProfileOutputWithContext(ctx context.Context) ImageStorageProfileOutput {
-	return o
-}
-
-func (o ImageStorageProfileOutput) ToImageStorageProfilePtrOutput() ImageStorageProfilePtrOutput {
-	return o.ToImageStorageProfilePtrOutputWithContext(context.Background())
-}
-
-func (o ImageStorageProfileOutput) ToImageStorageProfilePtrOutputWithContext(ctx context.Context) ImageStorageProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageStorageProfile) *ImageStorageProfile {
-		return &v
-	}).(ImageStorageProfilePtrOutput)
-}
-
-// Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-func (o ImageStorageProfileOutput) DataDisks() ImageDataDiskArrayOutput {
-	return o.ApplyT(func(v ImageStorageProfile) []ImageDataDisk { return v.DataDisks }).(ImageDataDiskArrayOutput)
-}
-
-// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-func (o ImageStorageProfileOutput) OsDisk() ImageOSDiskPtrOutput {
-	return o.ApplyT(func(v ImageStorageProfile) *ImageOSDisk { return v.OsDisk }).(ImageOSDiskPtrOutput)
-}
-
-// Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
-func (o ImageStorageProfileOutput) ZoneResilient() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ImageStorageProfile) *bool { return v.ZoneResilient }).(pulumi.BoolPtrOutput)
-}
-
-type ImageStorageProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (ImageStorageProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageStorageProfile)(nil)).Elem()
-}
-
-func (o ImageStorageProfilePtrOutput) ToImageStorageProfilePtrOutput() ImageStorageProfilePtrOutput {
-	return o
-}
-
-func (o ImageStorageProfilePtrOutput) ToImageStorageProfilePtrOutputWithContext(ctx context.Context) ImageStorageProfilePtrOutput {
-	return o
-}
-
-func (o ImageStorageProfilePtrOutput) Elem() ImageStorageProfileOutput {
-	return o.ApplyT(func(v *ImageStorageProfile) ImageStorageProfile {
-		if v != nil {
-			return *v
-		}
-		var ret ImageStorageProfile
-		return ret
-	}).(ImageStorageProfileOutput)
-}
-
-// Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-func (o ImageStorageProfilePtrOutput) DataDisks() ImageDataDiskArrayOutput {
-	return o.ApplyT(func(v *ImageStorageProfile) []ImageDataDisk {
-		if v == nil {
-			return nil
-		}
-		return v.DataDisks
-	}).(ImageDataDiskArrayOutput)
-}
-
-// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-func (o ImageStorageProfilePtrOutput) OsDisk() ImageOSDiskPtrOutput {
-	return o.ApplyT(func(v *ImageStorageProfile) *ImageOSDisk {
-		if v == nil {
-			return nil
-		}
-		return v.OsDisk
-	}).(ImageOSDiskPtrOutput)
-}
-
-// Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
-func (o ImageStorageProfilePtrOutput) ZoneResilient() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ImageStorageProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ZoneResilient
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Describes a storage profile.
-type ImageStorageProfileResponse struct {
-	// Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	DataDisks []ImageDataDiskResponse `pulumi:"dataDisks"`
-	// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	OsDisk *ImageOSDiskResponse `pulumi:"osDisk"`
-	// Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
-	ZoneResilient *bool `pulumi:"zoneResilient"`
-}
-
-// Describes a storage profile.
-type ImageStorageProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (ImageStorageProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageStorageProfileResponse)(nil)).Elem()
-}
-
-func (o ImageStorageProfileResponseOutput) ToImageStorageProfileResponseOutput() ImageStorageProfileResponseOutput {
-	return o
-}
-
-func (o ImageStorageProfileResponseOutput) ToImageStorageProfileResponseOutputWithContext(ctx context.Context) ImageStorageProfileResponseOutput {
-	return o
-}
-
-// Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-func (o ImageStorageProfileResponseOutput) DataDisks() ImageDataDiskResponseArrayOutput {
-	return o.ApplyT(func(v ImageStorageProfileResponse) []ImageDataDiskResponse { return v.DataDisks }).(ImageDataDiskResponseArrayOutput)
-}
-
-// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-func (o ImageStorageProfileResponseOutput) OsDisk() ImageOSDiskResponsePtrOutput {
-	return o.ApplyT(func(v ImageStorageProfileResponse) *ImageOSDiskResponse { return v.OsDisk }).(ImageOSDiskResponsePtrOutput)
-}
-
-// Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
-func (o ImageStorageProfileResponseOutput) ZoneResilient() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ImageStorageProfileResponse) *bool { return v.ZoneResilient }).(pulumi.BoolPtrOutput)
-}
-
-type ImageStorageProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ImageStorageProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageStorageProfileResponse)(nil)).Elem()
-}
-
-func (o ImageStorageProfileResponsePtrOutput) ToImageStorageProfileResponsePtrOutput() ImageStorageProfileResponsePtrOutput {
-	return o
-}
-
-func (o ImageStorageProfileResponsePtrOutput) ToImageStorageProfileResponsePtrOutputWithContext(ctx context.Context) ImageStorageProfileResponsePtrOutput {
-	return o
-}
-
-func (o ImageStorageProfileResponsePtrOutput) Elem() ImageStorageProfileResponseOutput {
-	return o.ApplyT(func(v *ImageStorageProfileResponse) ImageStorageProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ImageStorageProfileResponse
-		return ret
-	}).(ImageStorageProfileResponseOutput)
-}
-
-// Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-func (o ImageStorageProfileResponsePtrOutput) DataDisks() ImageDataDiskResponseArrayOutput {
-	return o.ApplyT(func(v *ImageStorageProfileResponse) []ImageDataDiskResponse {
-		if v == nil {
-			return nil
-		}
-		return v.DataDisks
-	}).(ImageDataDiskResponseArrayOutput)
-}
-
-// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-func (o ImageStorageProfileResponsePtrOutput) OsDisk() ImageOSDiskResponsePtrOutput {
-	return o.ApplyT(func(v *ImageStorageProfileResponse) *ImageOSDiskResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OsDisk
-	}).(ImageOSDiskResponsePtrOutput)
-}
-
-// Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
-func (o ImageStorageProfileResponsePtrOutput) ZoneResilient() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ImageStorageProfileResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ZoneResilient
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Inner error details.
 type InnerErrorResponse struct {
 	// The internal error message or exception dump.
@@ -8500,47 +7230,6 @@ func (i InstanceViewStatusArgs) ToInstanceViewStatusOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceViewStatusOutput)
 }
 
-func (i InstanceViewStatusArgs) ToInstanceViewStatusPtrOutput() InstanceViewStatusPtrOutput {
-	return i.ToInstanceViewStatusPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceViewStatusArgs) ToInstanceViewStatusPtrOutputWithContext(ctx context.Context) InstanceViewStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceViewStatusOutput).ToInstanceViewStatusPtrOutputWithContext(ctx)
-}
-
-// InstanceViewStatusPtrInput is an input type that accepts InstanceViewStatusArgs, InstanceViewStatusPtr and InstanceViewStatusPtrOutput values.
-// You can construct a concrete instance of `InstanceViewStatusPtrInput` via:
-//
-//	        InstanceViewStatusArgs{...}
-//
-//	or:
-//
-//	        nil
-type InstanceViewStatusPtrInput interface {
-	pulumi.Input
-
-	ToInstanceViewStatusPtrOutput() InstanceViewStatusPtrOutput
-	ToInstanceViewStatusPtrOutputWithContext(context.Context) InstanceViewStatusPtrOutput
-}
-
-type instanceViewStatusPtrType InstanceViewStatusArgs
-
-func InstanceViewStatusPtr(v *InstanceViewStatusArgs) InstanceViewStatusPtrInput {
-	return (*instanceViewStatusPtrType)(v)
-}
-
-func (*instanceViewStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceViewStatus)(nil)).Elem()
-}
-
-func (i *instanceViewStatusPtrType) ToInstanceViewStatusPtrOutput() InstanceViewStatusPtrOutput {
-	return i.ToInstanceViewStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceViewStatusPtrType) ToInstanceViewStatusPtrOutputWithContext(ctx context.Context) InstanceViewStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceViewStatusPtrOutput)
-}
-
 // InstanceViewStatusArrayInput is an input type that accepts InstanceViewStatusArray and InstanceViewStatusArrayOutput values.
 // You can construct a concrete instance of `InstanceViewStatusArrayInput` via:
 //
@@ -8581,16 +7270,6 @@ func (o InstanceViewStatusOutput) ToInstanceViewStatusOutputWithContext(ctx cont
 	return o
 }
 
-func (o InstanceViewStatusOutput) ToInstanceViewStatusPtrOutput() InstanceViewStatusPtrOutput {
-	return o.ToInstanceViewStatusPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceViewStatusOutput) ToInstanceViewStatusPtrOutputWithContext(ctx context.Context) InstanceViewStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceViewStatus) *InstanceViewStatus {
-		return &v
-	}).(InstanceViewStatusPtrOutput)
-}
-
 // The status code.
 func (o InstanceViewStatusOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceViewStatus) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -8614,80 +7293,6 @@ func (o InstanceViewStatusOutput) Message() pulumi.StringPtrOutput {
 // The time of the status.
 func (o InstanceViewStatusOutput) Time() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceViewStatus) *string { return v.Time }).(pulumi.StringPtrOutput)
-}
-
-type InstanceViewStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceViewStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceViewStatus)(nil)).Elem()
-}
-
-func (o InstanceViewStatusPtrOutput) ToInstanceViewStatusPtrOutput() InstanceViewStatusPtrOutput {
-	return o
-}
-
-func (o InstanceViewStatusPtrOutput) ToInstanceViewStatusPtrOutputWithContext(ctx context.Context) InstanceViewStatusPtrOutput {
-	return o
-}
-
-func (o InstanceViewStatusPtrOutput) Elem() InstanceViewStatusOutput {
-	return o.ApplyT(func(v *InstanceViewStatus) InstanceViewStatus {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceViewStatus
-		return ret
-	}).(InstanceViewStatusOutput)
-}
-
-// The status code.
-func (o InstanceViewStatusPtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceViewStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.StringPtrOutput)
-}
-
-// The short localizable label for the status.
-func (o InstanceViewStatusPtrOutput) DisplayStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceViewStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The level code.
-func (o InstanceViewStatusPtrOutput) Level() StatusLevelTypesPtrOutput {
-	return o.ApplyT(func(v *InstanceViewStatus) *StatusLevelTypes {
-		if v == nil {
-			return nil
-		}
-		return v.Level
-	}).(StatusLevelTypesPtrOutput)
-}
-
-// The detailed status message, including for alerts and error messages.
-func (o InstanceViewStatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceViewStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time of the status.
-func (o InstanceViewStatusPtrOutput) Time() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceViewStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Time
-	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceViewStatusArrayOutput struct{ *pulumi.OutputState }
@@ -15655,7 +14260,7 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 // SSH configuration for Linux based VMs running on Azure
 type SshConfiguration struct {
 	// The list of SSH public keys used to authenticate with linux based VMs.
-	PublicKeys []SshPublicKeyType `pulumi:"publicKeys"`
+	PublicKeys []SshPublicKey `pulumi:"publicKeys"`
 }
 
 // SshConfigurationInput is an input type that accepts SshConfigurationArgs and SshConfigurationOutput values.
@@ -15672,7 +14277,7 @@ type SshConfigurationInput interface {
 // SSH configuration for Linux based VMs running on Azure
 type SshConfigurationArgs struct {
 	// The list of SSH public keys used to authenticate with linux based VMs.
-	PublicKeys SshPublicKeyTypeArrayInput `pulumi:"publicKeys"`
+	PublicKeys SshPublicKeyArrayInput `pulumi:"publicKeys"`
 }
 
 func (SshConfigurationArgs) ElementType() reflect.Type {
@@ -15754,8 +14359,8 @@ func (o SshConfigurationOutput) ToSshConfigurationPtrOutputWithContext(ctx conte
 }
 
 // The list of SSH public keys used to authenticate with linux based VMs.
-func (o SshConfigurationOutput) PublicKeys() SshPublicKeyTypeArrayOutput {
-	return o.ApplyT(func(v SshConfiguration) []SshPublicKeyType { return v.PublicKeys }).(SshPublicKeyTypeArrayOutput)
+func (o SshConfigurationOutput) PublicKeys() SshPublicKeyArrayOutput {
+	return o.ApplyT(func(v SshConfiguration) []SshPublicKey { return v.PublicKeys }).(SshPublicKeyArrayOutput)
 }
 
 type SshConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -15783,13 +14388,13 @@ func (o SshConfigurationPtrOutput) Elem() SshConfigurationOutput {
 }
 
 // The list of SSH public keys used to authenticate with linux based VMs.
-func (o SshConfigurationPtrOutput) PublicKeys() SshPublicKeyTypeArrayOutput {
-	return o.ApplyT(func(v *SshConfiguration) []SshPublicKeyType {
+func (o SshConfigurationPtrOutput) PublicKeys() SshPublicKeyArrayOutput {
+	return o.ApplyT(func(v *SshConfiguration) []SshPublicKey {
 		if v == nil {
 			return nil
 		}
 		return v.PublicKeys
-	}).(SshPublicKeyTypeArrayOutput)
+	}).(SshPublicKeyArrayOutput)
 }
 
 // SSH configuration for Linux based VMs running on Azure
@@ -15853,112 +14458,112 @@ func (o SshConfigurationResponsePtrOutput) PublicKeys() SshPublicKeyResponseArra
 }
 
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
-type SshPublicKeyType struct {
+type SshPublicKey struct {
 	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData *string `pulumi:"keyData"`
 	// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 	Path *string `pulumi:"path"`
 }
 
-// SshPublicKeyTypeInput is an input type that accepts SshPublicKeyTypeArgs and SshPublicKeyTypeOutput values.
-// You can construct a concrete instance of `SshPublicKeyTypeInput` via:
+// SshPublicKeyInput is an input type that accepts SshPublicKeyArgs and SshPublicKeyOutput values.
+// You can construct a concrete instance of `SshPublicKeyInput` via:
 //
-//	SshPublicKeyTypeArgs{...}
-type SshPublicKeyTypeInput interface {
+//	SshPublicKeyArgs{...}
+type SshPublicKeyInput interface {
 	pulumi.Input
 
-	ToSshPublicKeyTypeOutput() SshPublicKeyTypeOutput
-	ToSshPublicKeyTypeOutputWithContext(context.Context) SshPublicKeyTypeOutput
+	ToSshPublicKeyOutput() SshPublicKeyOutput
+	ToSshPublicKeyOutputWithContext(context.Context) SshPublicKeyOutput
 }
 
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
-type SshPublicKeyTypeArgs struct {
+type SshPublicKeyArgs struct {
 	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
 	// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
-func (SshPublicKeyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SshPublicKeyType)(nil)).Elem()
+func (SshPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKey)(nil)).Elem()
 }
 
-func (i SshPublicKeyTypeArgs) ToSshPublicKeyTypeOutput() SshPublicKeyTypeOutput {
-	return i.ToSshPublicKeyTypeOutputWithContext(context.Background())
+func (i SshPublicKeyArgs) ToSshPublicKeyOutput() SshPublicKeyOutput {
+	return i.ToSshPublicKeyOutputWithContext(context.Background())
 }
 
-func (i SshPublicKeyTypeArgs) ToSshPublicKeyTypeOutputWithContext(ctx context.Context) SshPublicKeyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyTypeOutput)
+func (i SshPublicKeyArgs) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyOutput)
 }
 
-// SshPublicKeyTypeArrayInput is an input type that accepts SshPublicKeyTypeArray and SshPublicKeyTypeArrayOutput values.
-// You can construct a concrete instance of `SshPublicKeyTypeArrayInput` via:
+// SshPublicKeyArrayInput is an input type that accepts SshPublicKeyArray and SshPublicKeyArrayOutput values.
+// You can construct a concrete instance of `SshPublicKeyArrayInput` via:
 //
-//	SshPublicKeyTypeArray{ SshPublicKeyTypeArgs{...} }
-type SshPublicKeyTypeArrayInput interface {
+//	SshPublicKeyArray{ SshPublicKeyArgs{...} }
+type SshPublicKeyArrayInput interface {
 	pulumi.Input
 
-	ToSshPublicKeyTypeArrayOutput() SshPublicKeyTypeArrayOutput
-	ToSshPublicKeyTypeArrayOutputWithContext(context.Context) SshPublicKeyTypeArrayOutput
+	ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput
+	ToSshPublicKeyArrayOutputWithContext(context.Context) SshPublicKeyArrayOutput
 }
 
-type SshPublicKeyTypeArray []SshPublicKeyTypeInput
+type SshPublicKeyArray []SshPublicKeyInput
 
-func (SshPublicKeyTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SshPublicKeyType)(nil)).Elem()
+func (SshPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKey)(nil)).Elem()
 }
 
-func (i SshPublicKeyTypeArray) ToSshPublicKeyTypeArrayOutput() SshPublicKeyTypeArrayOutput {
-	return i.ToSshPublicKeyTypeArrayOutputWithContext(context.Background())
+func (i SshPublicKeyArray) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
+	return i.ToSshPublicKeyArrayOutputWithContext(context.Background())
 }
 
-func (i SshPublicKeyTypeArray) ToSshPublicKeyTypeArrayOutputWithContext(ctx context.Context) SshPublicKeyTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyTypeArrayOutput)
+func (i SshPublicKeyArray) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyArrayOutput)
 }
 
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
-type SshPublicKeyTypeOutput struct{ *pulumi.OutputState }
+type SshPublicKeyOutput struct{ *pulumi.OutputState }
 
-func (SshPublicKeyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SshPublicKeyType)(nil)).Elem()
+func (SshPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKey)(nil)).Elem()
 }
 
-func (o SshPublicKeyTypeOutput) ToSshPublicKeyTypeOutput() SshPublicKeyTypeOutput {
+func (o SshPublicKeyOutput) ToSshPublicKeyOutput() SshPublicKeyOutput {
 	return o
 }
 
-func (o SshPublicKeyTypeOutput) ToSshPublicKeyTypeOutputWithContext(ctx context.Context) SshPublicKeyTypeOutput {
+func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
 	return o
 }
 
 // SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
-func (o SshPublicKeyTypeOutput) KeyData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SshPublicKeyType) *string { return v.KeyData }).(pulumi.StringPtrOutput)
+func (o SshPublicKeyOutput) KeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshPublicKey) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-func (o SshPublicKeyTypeOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SshPublicKeyType) *string { return v.Path }).(pulumi.StringPtrOutput)
+func (o SshPublicKeyOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshPublicKey) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-type SshPublicKeyTypeArrayOutput struct{ *pulumi.OutputState }
+type SshPublicKeyArrayOutput struct{ *pulumi.OutputState }
 
-func (SshPublicKeyTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SshPublicKeyType)(nil)).Elem()
+func (SshPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKey)(nil)).Elem()
 }
 
-func (o SshPublicKeyTypeArrayOutput) ToSshPublicKeyTypeArrayOutput() SshPublicKeyTypeArrayOutput {
+func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
 	return o
 }
 
-func (o SshPublicKeyTypeArrayOutput) ToSshPublicKeyTypeArrayOutputWithContext(ctx context.Context) SshPublicKeyTypeArrayOutput {
+func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
 	return o
 }
 
-func (o SshPublicKeyTypeArrayOutput) Index(i pulumi.IntInput) SshPublicKeyTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshPublicKeyType {
-		return vs[0].([]SshPublicKeyType)[vs[1].(int)]
-	}).(SshPublicKeyTypeOutput)
+func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshPublicKey {
+		return vs[0].([]SshPublicKey)[vs[1].(int)]
+	}).(SshPublicKeyOutput)
 }
 
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
@@ -16468,50 +15073,6 @@ func (o SubResourceArrayOutput) Index(i pulumi.IntInput) SubResourceOutput {
 	}).(SubResourceOutput)
 }
 
-type SubResourceReadOnlyResponse struct {
-	// Resource Id
-	Id string `pulumi:"id"`
-}
-
-type SubResourceReadOnlyResponseOutput struct{ *pulumi.OutputState }
-
-func (SubResourceReadOnlyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubResourceReadOnlyResponse)(nil)).Elem()
-}
-
-func (o SubResourceReadOnlyResponseOutput) ToSubResourceReadOnlyResponseOutput() SubResourceReadOnlyResponseOutput {
-	return o
-}
-
-func (o SubResourceReadOnlyResponseOutput) ToSubResourceReadOnlyResponseOutputWithContext(ctx context.Context) SubResourceReadOnlyResponseOutput {
-	return o
-}
-
-// Resource Id
-func (o SubResourceReadOnlyResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v SubResourceReadOnlyResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type SubResourceReadOnlyResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SubResourceReadOnlyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubResourceReadOnlyResponse)(nil)).Elem()
-}
-
-func (o SubResourceReadOnlyResponseArrayOutput) ToSubResourceReadOnlyResponseArrayOutput() SubResourceReadOnlyResponseArrayOutput {
-	return o
-}
-
-func (o SubResourceReadOnlyResponseArrayOutput) ToSubResourceReadOnlyResponseArrayOutputWithContext(ctx context.Context) SubResourceReadOnlyResponseArrayOutput {
-	return o
-}
-
-func (o SubResourceReadOnlyResponseArrayOutput) Index(i pulumi.IntInput) SubResourceReadOnlyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubResourceReadOnlyResponse {
-		return vs[0].([]SubResourceReadOnlyResponse)[vs[1].(int)]
-	}).(SubResourceReadOnlyResponseOutput)
-}
-
 type SubResourceResponse struct {
 	// Resource Id
 	Id *string `pulumi:"id"`
@@ -16588,57 +15149,6 @@ func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubResourceResponse {
 		return vs[0].([]SubResourceResponse)[vs[1].(int)]
 	}).(SubResourceResponseOutput)
-}
-
-type SubResourceWithColocationStatusResponse struct {
-	// Describes colocation status of a resource in the Proximity Placement Group.
-	ColocationStatus *InstanceViewStatusResponse `pulumi:"colocationStatus"`
-	// Resource Id
-	Id *string `pulumi:"id"`
-}
-
-type SubResourceWithColocationStatusResponseOutput struct{ *pulumi.OutputState }
-
-func (SubResourceWithColocationStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubResourceWithColocationStatusResponse)(nil)).Elem()
-}
-
-func (o SubResourceWithColocationStatusResponseOutput) ToSubResourceWithColocationStatusResponseOutput() SubResourceWithColocationStatusResponseOutput {
-	return o
-}
-
-func (o SubResourceWithColocationStatusResponseOutput) ToSubResourceWithColocationStatusResponseOutputWithContext(ctx context.Context) SubResourceWithColocationStatusResponseOutput {
-	return o
-}
-
-// Describes colocation status of a resource in the Proximity Placement Group.
-func (o SubResourceWithColocationStatusResponseOutput) ColocationStatus() InstanceViewStatusResponsePtrOutput {
-	return o.ApplyT(func(v SubResourceWithColocationStatusResponse) *InstanceViewStatusResponse { return v.ColocationStatus }).(InstanceViewStatusResponsePtrOutput)
-}
-
-// Resource Id
-func (o SubResourceWithColocationStatusResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubResourceWithColocationStatusResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type SubResourceWithColocationStatusResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SubResourceWithColocationStatusResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubResourceWithColocationStatusResponse)(nil)).Elem()
-}
-
-func (o SubResourceWithColocationStatusResponseArrayOutput) ToSubResourceWithColocationStatusResponseArrayOutput() SubResourceWithColocationStatusResponseArrayOutput {
-	return o
-}
-
-func (o SubResourceWithColocationStatusResponseArrayOutput) ToSubResourceWithColocationStatusResponseArrayOutputWithContext(ctx context.Context) SubResourceWithColocationStatusResponseArrayOutput {
-	return o
-}
-
-func (o SubResourceWithColocationStatusResponseArrayOutput) Index(i pulumi.IntInput) SubResourceWithColocationStatusResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubResourceWithColocationStatusResponse {
-		return vs[0].([]SubResourceWithColocationStatusResponse)[vs[1].(int)]
-	}).(SubResourceWithColocationStatusResponseOutput)
 }
 
 type TerminateNotificationProfile struct {
@@ -18596,7 +17106,7 @@ type VirtualMachineIdentity struct {
 	// The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // VirtualMachineIdentityInput is an input type that accepts VirtualMachineIdentityArgs and VirtualMachineIdentityOutput values.
@@ -18615,7 +17125,7 @@ type VirtualMachineIdentityArgs struct {
 	// The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (VirtualMachineIdentityArgs) ElementType() reflect.Type {
@@ -18702,8 +17212,8 @@ func (o VirtualMachineIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o VirtualMachineIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v VirtualMachineIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o VirtualMachineIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type VirtualMachineIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -18741,13 +17251,13 @@ func (o VirtualMachineIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o VirtualMachineIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *VirtualMachineIdentity) map[string]interface{} {
+func (o VirtualMachineIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the virtual machine.
@@ -22260,7 +20770,7 @@ type VirtualMachineScaleSetIdentity struct {
 	// The type of identity used for the virtual machine scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine scale set.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // VirtualMachineScaleSetIdentityInput is an input type that accepts VirtualMachineScaleSetIdentityArgs and VirtualMachineScaleSetIdentityOutput values.
@@ -22279,7 +20789,7 @@ type VirtualMachineScaleSetIdentityArgs struct {
 	// The type of identity used for the virtual machine scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine scale set.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (VirtualMachineScaleSetIdentityArgs) ElementType() reflect.Type {
@@ -22366,8 +20876,8 @@ func (o VirtualMachineScaleSetIdentityOutput) Type() ResourceIdentityTypePtrOutp
 }
 
 // The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o VirtualMachineScaleSetIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o VirtualMachineScaleSetIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type VirtualMachineScaleSetIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -22405,13 +20915,13 @@ func (o VirtualMachineScaleSetIdentityPtrOutput) Type() ResourceIdentityTypePtrO
 }
 
 // The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o VirtualMachineScaleSetIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetIdentity) map[string]interface{} {
+func (o VirtualMachineScaleSetIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the virtual machine scale set.
@@ -27641,14 +26151,6 @@ func init() {
 	pulumi.RegisterOutputType(DataDiskArrayOutput{})
 	pulumi.RegisterOutputType(DataDiskResponseOutput{})
 	pulumi.RegisterOutputType(DataDiskResponseArrayOutput{})
-	pulumi.RegisterOutputType(DedicatedHostAllocatableVMResponseOutput{})
-	pulumi.RegisterOutputType(DedicatedHostAllocatableVMResponseArrayOutput{})
-	pulumi.RegisterOutputType(DedicatedHostAvailableCapacityResponseOutput{})
-	pulumi.RegisterOutputType(DedicatedHostAvailableCapacityResponsePtrOutput{})
-	pulumi.RegisterOutputType(DedicatedHostGroupInstanceViewResponseOutput{})
-	pulumi.RegisterOutputType(DedicatedHostInstanceViewResponseOutput{})
-	pulumi.RegisterOutputType(DedicatedHostInstanceViewWithNameResponseOutput{})
-	pulumi.RegisterOutputType(DedicatedHostInstanceViewWithNameResponseArrayOutput{})
 	pulumi.RegisterOutputType(DiagnosticsProfileOutput{})
 	pulumi.RegisterOutputType(DiagnosticsProfilePtrOutput{})
 	pulumi.RegisterOutputType(DiagnosticsProfileResponseOutput{})
@@ -27680,26 +26182,13 @@ func init() {
 	pulumi.RegisterOutputType(HardwareProfilePtrOutput{})
 	pulumi.RegisterOutputType(HardwareProfileResponseOutput{})
 	pulumi.RegisterOutputType(HardwareProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(ImageDataDiskOutput{})
-	pulumi.RegisterOutputType(ImageDataDiskArrayOutput{})
-	pulumi.RegisterOutputType(ImageDataDiskResponseOutput{})
-	pulumi.RegisterOutputType(ImageDataDiskResponseArrayOutput{})
-	pulumi.RegisterOutputType(ImageOSDiskOutput{})
-	pulumi.RegisterOutputType(ImageOSDiskPtrOutput{})
-	pulumi.RegisterOutputType(ImageOSDiskResponseOutput{})
-	pulumi.RegisterOutputType(ImageOSDiskResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageReferenceOutput{})
 	pulumi.RegisterOutputType(ImageReferencePtrOutput{})
 	pulumi.RegisterOutputType(ImageReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ImageReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(ImageStorageProfileOutput{})
-	pulumi.RegisterOutputType(ImageStorageProfilePtrOutput{})
-	pulumi.RegisterOutputType(ImageStorageProfileResponseOutput{})
-	pulumi.RegisterOutputType(ImageStorageProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(InnerErrorResponseOutput{})
 	pulumi.RegisterOutputType(InnerErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceViewStatusOutput{})
-	pulumi.RegisterOutputType(InstanceViewStatusPtrOutput{})
 	pulumi.RegisterOutputType(InstanceViewStatusArrayOutput{})
 	pulumi.RegisterOutputType(InstanceViewStatusResponseOutput{})
 	pulumi.RegisterOutputType(InstanceViewStatusResponsePtrOutput{})
@@ -27810,8 +26299,8 @@ func init() {
 	pulumi.RegisterOutputType(SshConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SshConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SshConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(SshPublicKeyTypeOutput{})
-	pulumi.RegisterOutputType(SshPublicKeyTypeArrayOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(SshPublicKeyResponseOutput{})
 	pulumi.RegisterOutputType(SshPublicKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageProfileOutput{})
@@ -27821,13 +26310,9 @@ func init() {
 	pulumi.RegisterOutputType(SubResourceOutput{})
 	pulumi.RegisterOutputType(SubResourcePtrOutput{})
 	pulumi.RegisterOutputType(SubResourceArrayOutput{})
-	pulumi.RegisterOutputType(SubResourceReadOnlyResponseOutput{})
-	pulumi.RegisterOutputType(SubResourceReadOnlyResponseArrayOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseOutput{})
 	pulumi.RegisterOutputType(SubResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseArrayOutput{})
-	pulumi.RegisterOutputType(SubResourceWithColocationStatusResponseOutput{})
-	pulumi.RegisterOutputType(SubResourceWithColocationStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(TerminateNotificationProfileOutput{})
 	pulumi.RegisterOutputType(TerminateNotificationProfilePtrOutput{})
 	pulumi.RegisterOutputType(TerminateNotificationProfileResponseOutput{})

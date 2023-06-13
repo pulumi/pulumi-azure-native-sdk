@@ -12,11 +12,12 @@ import (
 )
 
 // Bot channel resource definition
-// API Version: 2021-03-01.
+// API Version: 2022-09-15.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Channel struct {
 	pulumi.CustomResourceState
 
-	// Entity Tag
+	// Entity Tag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
@@ -50,9 +51,6 @@ func NewChannel(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:botservice/v20171201:Channel"),
-		},
 		{
 			Type: pulumi.String("azure-native:botservice/v20180712:Channel"),
 		},
@@ -180,7 +178,7 @@ func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOu
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o ChannelOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }

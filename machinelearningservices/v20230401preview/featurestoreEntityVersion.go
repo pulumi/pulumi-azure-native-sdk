@@ -45,6 +45,15 @@ func NewFeaturestoreEntityVersion(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	args.FeaturestoreEntityVersionProperties = args.FeaturestoreEntityVersionProperties.ToFeaturestoreEntityVersionTypeOutput().ApplyT(func(v FeaturestoreEntityVersionType) FeaturestoreEntityVersionType { return *v.Defaults() }).(FeaturestoreEntityVersionTypeOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:FeaturestoreEntityVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturestoreEntityVersion"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource FeaturestoreEntityVersion
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20230401preview:FeaturestoreEntityVersion", name, args, &resource, opts...)
 	if err != nil {

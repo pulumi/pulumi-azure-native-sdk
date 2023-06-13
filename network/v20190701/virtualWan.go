@@ -60,9 +60,6 @@ func NewVirtualWan(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:VirtualWan"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20180401:VirtualWan"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:VirtualWan"),
 		},
 		{
@@ -145,6 +142,9 @@ func NewVirtualWan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualWan"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualWan"),
 		},
 	})
 	opts = append(opts, aliases)

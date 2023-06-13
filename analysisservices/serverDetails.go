@@ -13,6 +13,7 @@ import (
 
 // Represents an instance of an Analysis Services resource.
 // API Version: 2017-08-01.
+// Previous API Version: 2017-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ServerDetails struct {
 	pulumi.CustomResourceState
 
@@ -72,12 +73,6 @@ func NewServerDetails(ctx *pulumi.Context,
 	}
 	args.Sku = args.Sku.ToResourceSkuOutput().ApplyT(func(v ResourceSku) ResourceSku { return *v.Defaults() }).(ResourceSkuOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:analysisservices/v20160516:ServerDetails"),
-		},
-		{
-			Type: pulumi.String("azure-native:analysisservices/v20170714:ServerDetails"),
-		},
 		{
 			Type: pulumi.String("azure-native:analysisservices/v20170801:ServerDetails"),
 		},

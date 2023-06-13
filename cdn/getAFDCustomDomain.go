@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
-// API Version: 2020-09-01.
+// API Version: 2023-05-01.
 func LookupAFDCustomDomain(ctx *pulumi.Context, args *LookupAFDCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupAFDCustomDomainResult, error) {
 	var rv LookupAFDCustomDomainResult
 	err := ctx.Invoke("azure-native:cdn:getAFDCustomDomain", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupAFDCustomDomain(ctx *pulumi.Context, args *LookupAFDCustomDomainArgs,
 type LookupAFDCustomDomainArgs struct {
 	// Name of the domain under the profile which is unique globally.
 	CustomDomainName string `pulumi:"customDomainName"`
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -37,12 +37,18 @@ type LookupAFDCustomDomainResult struct {
 	DeploymentStatus string                     `pulumi:"deploymentStatus"`
 	// Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation.
 	DomainValidationState string `pulumi:"domainValidationState"`
+	// Key-Value pair representing migration properties for domains.
+	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// The host name of the domain. Must be a domain name.
 	HostName string `pulumi:"hostName"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource name.
 	Name string `pulumi:"name"`
+	// Resource reference to the Azure resource where custom domain ownership was prevalidated
+	PreValidatedCustomDomainResourceId *ResourceReferenceResponse `pulumi:"preValidatedCustomDomainResourceId"`
+	// The name of the profile which holds the domain.
+	ProfileName string `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Read only system data
@@ -71,7 +77,7 @@ func LookupAFDCustomDomainOutput(ctx *pulumi.Context, args LookupAFDCustomDomain
 type LookupAFDCustomDomainOutputArgs struct {
 	// Name of the domain under the profile which is unique globally.
 	CustomDomainName pulumi.StringInput `pulumi:"customDomainName"`
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -110,6 +116,11 @@ func (o LookupAFDCustomDomainResultOutput) DomainValidationState() pulumi.String
 	return o.ApplyT(func(v LookupAFDCustomDomainResult) string { return v.DomainValidationState }).(pulumi.StringOutput)
 }
 
+// Key-Value pair representing migration properties for domains.
+func (o LookupAFDCustomDomainResultOutput) ExtendedProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAFDCustomDomainResult) map[string]string { return v.ExtendedProperties }).(pulumi.StringMapOutput)
+}
+
 // The host name of the domain. Must be a domain name.
 func (o LookupAFDCustomDomainResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAFDCustomDomainResult) string { return v.HostName }).(pulumi.StringOutput)
@@ -123,6 +134,18 @@ func (o LookupAFDCustomDomainResultOutput) Id() pulumi.StringOutput {
 // Resource name.
 func (o LookupAFDCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAFDCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Resource reference to the Azure resource where custom domain ownership was prevalidated
+func (o LookupAFDCustomDomainResultOutput) PreValidatedCustomDomainResourceId() ResourceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v LookupAFDCustomDomainResult) *ResourceReferenceResponse {
+		return v.PreValidatedCustomDomainResourceId
+	}).(ResourceReferenceResponsePtrOutput)
+}
+
+// The name of the profile which holds the domain.
+func (o LookupAFDCustomDomainResultOutput) ProfileName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAFDCustomDomainResult) string { return v.ProfileName }).(pulumi.StringOutput)
 }
 
 // Provisioning status

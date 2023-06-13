@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a VPN site.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupVpnSite(ctx *pulumi.Context, args *LookupVpnSiteArgs, opts ...pulumi.InvokeOption) (*LookupVpnSiteResult, error) {
 	var rv LookupVpnSiteResult
 	err := ctx.Invoke("azure-native:network:getVpnSite", args, &rv, opts...)

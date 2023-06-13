@@ -60,6 +60,15 @@ func NewTagRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic/v20220701preview:TagRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230201preview:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230501preview:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230601:TagRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource TagRule

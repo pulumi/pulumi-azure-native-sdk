@@ -10,6 +10,314 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Azure Active Directory identity configuration for a resource.
+type DatabaseIdentity struct {
+	// The identity type
+	Type *string `pulumi:"type"`
+	// The resource ids of the user assigned identities to use
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// DatabaseIdentityInput is an input type that accepts DatabaseIdentityArgs and DatabaseIdentityOutput values.
+// You can construct a concrete instance of `DatabaseIdentityInput` via:
+//
+//	DatabaseIdentityArgs{...}
+type DatabaseIdentityInput interface {
+	pulumi.Input
+
+	ToDatabaseIdentityOutput() DatabaseIdentityOutput
+	ToDatabaseIdentityOutputWithContext(context.Context) DatabaseIdentityOutput
+}
+
+// Azure Active Directory identity configuration for a resource.
+type DatabaseIdentityArgs struct {
+	// The identity type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The resource ids of the user assigned identities to use
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (DatabaseIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIdentity)(nil)).Elem()
+}
+
+func (i DatabaseIdentityArgs) ToDatabaseIdentityOutput() DatabaseIdentityOutput {
+	return i.ToDatabaseIdentityOutputWithContext(context.Background())
+}
+
+func (i DatabaseIdentityArgs) ToDatabaseIdentityOutputWithContext(ctx context.Context) DatabaseIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIdentityOutput)
+}
+
+func (i DatabaseIdentityArgs) ToDatabaseIdentityPtrOutput() DatabaseIdentityPtrOutput {
+	return i.ToDatabaseIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseIdentityArgs) ToDatabaseIdentityPtrOutputWithContext(ctx context.Context) DatabaseIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIdentityOutput).ToDatabaseIdentityPtrOutputWithContext(ctx)
+}
+
+// DatabaseIdentityPtrInput is an input type that accepts DatabaseIdentityArgs, DatabaseIdentityPtr and DatabaseIdentityPtrOutput values.
+// You can construct a concrete instance of `DatabaseIdentityPtrInput` via:
+//
+//	        DatabaseIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseIdentityPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseIdentityPtrOutput() DatabaseIdentityPtrOutput
+	ToDatabaseIdentityPtrOutputWithContext(context.Context) DatabaseIdentityPtrOutput
+}
+
+type databaseIdentityPtrType DatabaseIdentityArgs
+
+func DatabaseIdentityPtr(v *DatabaseIdentityArgs) DatabaseIdentityPtrInput {
+	return (*databaseIdentityPtrType)(v)
+}
+
+func (*databaseIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIdentity)(nil)).Elem()
+}
+
+func (i *databaseIdentityPtrType) ToDatabaseIdentityPtrOutput() DatabaseIdentityPtrOutput {
+	return i.ToDatabaseIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseIdentityPtrType) ToDatabaseIdentityPtrOutputWithContext(ctx context.Context) DatabaseIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIdentityPtrOutput)
+}
+
+// Azure Active Directory identity configuration for a resource.
+type DatabaseIdentityOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIdentity)(nil)).Elem()
+}
+
+func (o DatabaseIdentityOutput) ToDatabaseIdentityOutput() DatabaseIdentityOutput {
+	return o
+}
+
+func (o DatabaseIdentityOutput) ToDatabaseIdentityOutputWithContext(ctx context.Context) DatabaseIdentityOutput {
+	return o
+}
+
+func (o DatabaseIdentityOutput) ToDatabaseIdentityPtrOutput() DatabaseIdentityPtrOutput {
+	return o.ToDatabaseIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseIdentityOutput) ToDatabaseIdentityPtrOutputWithContext(ctx context.Context) DatabaseIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIdentity) *DatabaseIdentity {
+		return &v
+	}).(DatabaseIdentityPtrOutput)
+}
+
+// The identity type
+func (o DatabaseIdentityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o DatabaseIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type DatabaseIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIdentity)(nil)).Elem()
+}
+
+func (o DatabaseIdentityPtrOutput) ToDatabaseIdentityPtrOutput() DatabaseIdentityPtrOutput {
+	return o
+}
+
+func (o DatabaseIdentityPtrOutput) ToDatabaseIdentityPtrOutputWithContext(ctx context.Context) DatabaseIdentityPtrOutput {
+	return o
+}
+
+func (o DatabaseIdentityPtrOutput) Elem() DatabaseIdentityOutput {
+	return o.ApplyT(func(v *DatabaseIdentity) DatabaseIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseIdentity
+		return ret
+	}).(DatabaseIdentityOutput)
+}
+
+// The identity type
+func (o DatabaseIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o DatabaseIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Azure Active Directory identity configuration for a resource.
+type DatabaseIdentityResponse struct {
+	// The Azure Active Directory tenant id.
+	TenantId string `pulumi:"tenantId"`
+	// The identity type
+	Type *string `pulumi:"type"`
+	// The resource ids of the user assigned identities to use
+	UserAssignedIdentities map[string]DatabaseUserIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Azure Active Directory identity configuration for a resource.
+type DatabaseIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIdentityResponse)(nil)).Elem()
+}
+
+func (o DatabaseIdentityResponseOutput) ToDatabaseIdentityResponseOutput() DatabaseIdentityResponseOutput {
+	return o
+}
+
+func (o DatabaseIdentityResponseOutput) ToDatabaseIdentityResponseOutputWithContext(ctx context.Context) DatabaseIdentityResponseOutput {
+	return o
+}
+
+// The Azure Active Directory tenant id.
+func (o DatabaseIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The identity type
+func (o DatabaseIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o DatabaseIdentityResponseOutput) UserAssignedIdentities() DatabaseUserIdentityResponseMapOutput {
+	return o.ApplyT(func(v DatabaseIdentityResponse) map[string]DatabaseUserIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(DatabaseUserIdentityResponseMapOutput)
+}
+
+type DatabaseIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIdentityResponse)(nil)).Elem()
+}
+
+func (o DatabaseIdentityResponsePtrOutput) ToDatabaseIdentityResponsePtrOutput() DatabaseIdentityResponsePtrOutput {
+	return o
+}
+
+func (o DatabaseIdentityResponsePtrOutput) ToDatabaseIdentityResponsePtrOutputWithContext(ctx context.Context) DatabaseIdentityResponsePtrOutput {
+	return o
+}
+
+func (o DatabaseIdentityResponsePtrOutput) Elem() DatabaseIdentityResponseOutput {
+	return o.ApplyT(func(v *DatabaseIdentityResponse) DatabaseIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseIdentityResponse
+		return ret
+	}).(DatabaseIdentityResponseOutput)
+}
+
+// The Azure Active Directory tenant id.
+func (o DatabaseIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity type
+func (o DatabaseIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o DatabaseIdentityResponsePtrOutput) UserAssignedIdentities() DatabaseUserIdentityResponseMapOutput {
+	return o.ApplyT(func(v *DatabaseIdentityResponse) map[string]DatabaseUserIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(DatabaseUserIdentityResponseMapOutput)
+}
+
+// Azure Active Directory identity configuration for a resource.
+type DatabaseUserIdentityResponse struct {
+	// The Azure Active Directory client id.
+	ClientId string `pulumi:"clientId"`
+	// The Azure Active Directory principal id.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// Azure Active Directory identity configuration for a resource.
+type DatabaseUserIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseUserIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUserIdentityResponse)(nil)).Elem()
+}
+
+func (o DatabaseUserIdentityResponseOutput) ToDatabaseUserIdentityResponseOutput() DatabaseUserIdentityResponseOutput {
+	return o
+}
+
+func (o DatabaseUserIdentityResponseOutput) ToDatabaseUserIdentityResponseOutputWithContext(ctx context.Context) DatabaseUserIdentityResponseOutput {
+	return o
+}
+
+// The Azure Active Directory client id.
+func (o DatabaseUserIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseUserIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The Azure Active Directory principal id.
+func (o DatabaseUserIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseUserIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type DatabaseUserIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseUserIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseUserIdentityResponse)(nil)).Elem()
+}
+
+func (o DatabaseUserIdentityResponseMapOutput) ToDatabaseUserIdentityResponseMapOutput() DatabaseUserIdentityResponseMapOutput {
+	return o
+}
+
+func (o DatabaseUserIdentityResponseMapOutput) ToDatabaseUserIdentityResponseMapOutputWithContext(ctx context.Context) DatabaseUserIdentityResponseMapOutput {
+	return o
+}
+
+func (o DatabaseUserIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) DatabaseUserIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseUserIdentityResponse {
+		return vs[0].(map[string]DatabaseUserIdentityResponse)[vs[1].(string)]
+	}).(DatabaseUserIdentityResponseOutput)
+}
+
 // Properties for an Azure SQL Database Vulnerability Assessment rule baseline's result.
 type DatabaseVulnerabilityAssessmentRuleBaselineItem struct {
 	// The rule baseline result
@@ -4157,6 +4465,8 @@ func (o PartnerRegionInfoResponseArrayOutput) Index(i pulumi.IntInput) PartnerRe
 
 // Properties of a private endpoint connection.
 type PrivateEndpointConnectionPropertiesResponse struct {
+	// Group IDs.
+	GroupIds []string `pulumi:"groupIds"`
 	// Private endpoint which the connection belongs to.
 	PrivateEndpoint *PrivateEndpointPropertyResponse `pulumi:"privateEndpoint"`
 	// Connection state of the private endpoint connection.
@@ -4178,6 +4488,11 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 
 func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConnectionPropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponseOutput {
 	return o
+}
+
+// Group IDs.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
 // Private endpoint which the connection belongs to.
@@ -5138,7 +5453,7 @@ type ResourceIdentity struct {
 	// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 	Type *string `pulumi:"type"`
 	// The resource ids of the user assigned identities to use
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ResourceIdentityInput is an input type that accepts ResourceIdentityArgs and ResourceIdentityOutput values.
@@ -5157,7 +5472,7 @@ type ResourceIdentityArgs struct {
 	// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The resource ids of the user assigned identities to use
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ResourceIdentityArgs) ElementType() reflect.Type {
@@ -5244,8 +5559,8 @@ func (o ResourceIdentityOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The resource ids of the user assigned identities to use
-func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ResourceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ResourceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -5283,13 +5598,13 @@ func (o ResourceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The resource ids of the user assigned identities to use
-func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ResourceIdentity) map[string]interface{} {
+func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Azure Active Directory identity configuration for a resource.
@@ -5401,6 +5716,200 @@ func (o ResourceIdentityResponsePtrOutput) UserAssignedIdentities() UserIdentity
 		}
 		return v.UserAssignedIdentities
 	}).(UserIdentityResponseMapOutput)
+}
+
+// Schedule info describing when the server should be started or stopped.
+type ScheduleItem struct {
+	// Start day.
+	StartDay string `pulumi:"startDay"`
+	// Start time.
+	StartTime string `pulumi:"startTime"`
+	// Stop day.
+	StopDay string `pulumi:"stopDay"`
+	// Stop time.
+	StopTime string `pulumi:"stopTime"`
+}
+
+// ScheduleItemInput is an input type that accepts ScheduleItemArgs and ScheduleItemOutput values.
+// You can construct a concrete instance of `ScheduleItemInput` via:
+//
+//	ScheduleItemArgs{...}
+type ScheduleItemInput interface {
+	pulumi.Input
+
+	ToScheduleItemOutput() ScheduleItemOutput
+	ToScheduleItemOutputWithContext(context.Context) ScheduleItemOutput
+}
+
+// Schedule info describing when the server should be started or stopped.
+type ScheduleItemArgs struct {
+	// Start day.
+	StartDay pulumi.StringInput `pulumi:"startDay"`
+	// Start time.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Stop day.
+	StopDay pulumi.StringInput `pulumi:"stopDay"`
+	// Stop time.
+	StopTime pulumi.StringInput `pulumi:"stopTime"`
+}
+
+func (ScheduleItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleItem)(nil)).Elem()
+}
+
+func (i ScheduleItemArgs) ToScheduleItemOutput() ScheduleItemOutput {
+	return i.ToScheduleItemOutputWithContext(context.Background())
+}
+
+func (i ScheduleItemArgs) ToScheduleItemOutputWithContext(ctx context.Context) ScheduleItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleItemOutput)
+}
+
+// ScheduleItemArrayInput is an input type that accepts ScheduleItemArray and ScheduleItemArrayOutput values.
+// You can construct a concrete instance of `ScheduleItemArrayInput` via:
+//
+//	ScheduleItemArray{ ScheduleItemArgs{...} }
+type ScheduleItemArrayInput interface {
+	pulumi.Input
+
+	ToScheduleItemArrayOutput() ScheduleItemArrayOutput
+	ToScheduleItemArrayOutputWithContext(context.Context) ScheduleItemArrayOutput
+}
+
+type ScheduleItemArray []ScheduleItemInput
+
+func (ScheduleItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleItem)(nil)).Elem()
+}
+
+func (i ScheduleItemArray) ToScheduleItemArrayOutput() ScheduleItemArrayOutput {
+	return i.ToScheduleItemArrayOutputWithContext(context.Background())
+}
+
+func (i ScheduleItemArray) ToScheduleItemArrayOutputWithContext(ctx context.Context) ScheduleItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleItemArrayOutput)
+}
+
+// Schedule info describing when the server should be started or stopped.
+type ScheduleItemOutput struct{ *pulumi.OutputState }
+
+func (ScheduleItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleItem)(nil)).Elem()
+}
+
+func (o ScheduleItemOutput) ToScheduleItemOutput() ScheduleItemOutput {
+	return o
+}
+
+func (o ScheduleItemOutput) ToScheduleItemOutputWithContext(ctx context.Context) ScheduleItemOutput {
+	return o
+}
+
+// Start day.
+func (o ScheduleItemOutput) StartDay() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleItem) string { return v.StartDay }).(pulumi.StringOutput)
+}
+
+// Start time.
+func (o ScheduleItemOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleItem) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Stop day.
+func (o ScheduleItemOutput) StopDay() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleItem) string { return v.StopDay }).(pulumi.StringOutput)
+}
+
+// Stop time.
+func (o ScheduleItemOutput) StopTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleItem) string { return v.StopTime }).(pulumi.StringOutput)
+}
+
+type ScheduleItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleItem)(nil)).Elem()
+}
+
+func (o ScheduleItemArrayOutput) ToScheduleItemArrayOutput() ScheduleItemArrayOutput {
+	return o
+}
+
+func (o ScheduleItemArrayOutput) ToScheduleItemArrayOutputWithContext(ctx context.Context) ScheduleItemArrayOutput {
+	return o
+}
+
+func (o ScheduleItemArrayOutput) Index(i pulumi.IntInput) ScheduleItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleItem {
+		return vs[0].([]ScheduleItem)[vs[1].(int)]
+	}).(ScheduleItemOutput)
+}
+
+// Schedule info describing when the server should be started or stopped.
+type ScheduleItemResponse struct {
+	// Start day.
+	StartDay string `pulumi:"startDay"`
+	// Start time.
+	StartTime string `pulumi:"startTime"`
+	// Stop day.
+	StopDay string `pulumi:"stopDay"`
+	// Stop time.
+	StopTime string `pulumi:"stopTime"`
+}
+
+// Schedule info describing when the server should be started or stopped.
+type ScheduleItemResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduleItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleItemResponse)(nil)).Elem()
+}
+
+func (o ScheduleItemResponseOutput) ToScheduleItemResponseOutput() ScheduleItemResponseOutput {
+	return o
+}
+
+func (o ScheduleItemResponseOutput) ToScheduleItemResponseOutputWithContext(ctx context.Context) ScheduleItemResponseOutput {
+	return o
+}
+
+// Start day.
+func (o ScheduleItemResponseOutput) StartDay() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleItemResponse) string { return v.StartDay }).(pulumi.StringOutput)
+}
+
+// Start time.
+func (o ScheduleItemResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleItemResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Stop day.
+func (o ScheduleItemResponseOutput) StopDay() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleItemResponse) string { return v.StopDay }).(pulumi.StringOutput)
+}
+
+// Stop time.
+func (o ScheduleItemResponseOutput) StopTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleItemResponse) string { return v.StopTime }).(pulumi.StringOutput)
+}
+
+type ScheduleItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleItemResponse)(nil)).Elem()
+}
+
+func (o ScheduleItemResponseArrayOutput) ToScheduleItemResponseArrayOutput() ScheduleItemResponseArrayOutput {
+	return o
+}
+
+func (o ScheduleItemResponseArrayOutput) ToScheduleItemResponseArrayOutputWithContext(ctx context.Context) ScheduleItemResponseArrayOutput {
+	return o
+}
+
+func (o ScheduleItemResponseArrayOutput) Index(i pulumi.IntInput) ScheduleItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleItemResponse {
+		return vs[0].([]ScheduleItemResponse)[vs[1].(int)]
+	}).(ScheduleItemResponseOutput)
 }
 
 // Properties of a active directory administrator.
@@ -5982,6 +6491,257 @@ func (o ServerPrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerPrivateEndpointConnectionResponse {
 		return vs[0].([]ServerPrivateEndpointConnectionResponse)[vs[1].(int)]
 	}).(ServerPrivateEndpointConnectionResponseOutput)
+}
+
+// The managed instance's service principal configuration for a resource.
+type ServicePrincipal struct {
+	// Service principal type.
+	Type *string `pulumi:"type"`
+}
+
+// ServicePrincipalInput is an input type that accepts ServicePrincipalArgs and ServicePrincipalOutput values.
+// You can construct a concrete instance of `ServicePrincipalInput` via:
+//
+//	ServicePrincipalArgs{...}
+type ServicePrincipalInput interface {
+	pulumi.Input
+
+	ToServicePrincipalOutput() ServicePrincipalOutput
+	ToServicePrincipalOutputWithContext(context.Context) ServicePrincipalOutput
+}
+
+// The managed instance's service principal configuration for a resource.
+type ServicePrincipalArgs struct {
+	// Service principal type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ServicePrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipal)(nil)).Elem()
+}
+
+func (i ServicePrincipalArgs) ToServicePrincipalOutput() ServicePrincipalOutput {
+	return i.ToServicePrincipalOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalArgs) ToServicePrincipalOutputWithContext(ctx context.Context) ServicePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalOutput)
+}
+
+func (i ServicePrincipalArgs) ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput {
+	return i.ToServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalArgs) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalOutput).ToServicePrincipalPtrOutputWithContext(ctx)
+}
+
+// ServicePrincipalPtrInput is an input type that accepts ServicePrincipalArgs, ServicePrincipalPtr and ServicePrincipalPtrOutput values.
+// You can construct a concrete instance of `ServicePrincipalPtrInput` via:
+//
+//	        ServicePrincipalArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePrincipalPtrInput interface {
+	pulumi.Input
+
+	ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput
+	ToServicePrincipalPtrOutputWithContext(context.Context) ServicePrincipalPtrOutput
+}
+
+type servicePrincipalPtrType ServicePrincipalArgs
+
+func ServicePrincipalPtr(v *ServicePrincipalArgs) ServicePrincipalPtrInput {
+	return (*servicePrincipalPtrType)(v)
+}
+
+func (*servicePrincipalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipal)(nil)).Elem()
+}
+
+func (i *servicePrincipalPtrType) ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput {
+	return i.ToServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePrincipalPtrType) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPtrOutput)
+}
+
+// The managed instance's service principal configuration for a resource.
+type ServicePrincipalOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipal)(nil)).Elem()
+}
+
+func (o ServicePrincipalOutput) ToServicePrincipalOutput() ServicePrincipalOutput {
+	return o
+}
+
+func (o ServicePrincipalOutput) ToServicePrincipalOutputWithContext(ctx context.Context) ServicePrincipalOutput {
+	return o
+}
+
+func (o ServicePrincipalOutput) ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput {
+	return o.ToServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePrincipalOutput) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePrincipal) *ServicePrincipal {
+		return &v
+	}).(ServicePrincipalPtrOutput)
+}
+
+// Service principal type.
+func (o ServicePrincipalOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipal) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServicePrincipalPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipal)(nil)).Elem()
+}
+
+func (o ServicePrincipalPtrOutput) ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalPtrOutput) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalPtrOutput) Elem() ServicePrincipalOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipal {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipal
+		return ret
+	}).(ServicePrincipalOutput)
+}
+
+// Service principal type.
+func (o ServicePrincipalPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The managed instance's service principal configuration for a resource.
+type ServicePrincipalResponse struct {
+	// The Azure Active Directory application client id.
+	ClientId string `pulumi:"clientId"`
+	// The Azure Active Directory application object id.
+	PrincipalId string `pulumi:"principalId"`
+	// The Azure Active Directory tenant id.
+	TenantId string `pulumi:"tenantId"`
+	// Service principal type.
+	Type *string `pulumi:"type"`
+}
+
+// The managed instance's service principal configuration for a resource.
+type ServicePrincipalResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalResponseOutput) ToServicePrincipalResponseOutput() ServicePrincipalResponseOutput {
+	return o
+}
+
+func (o ServicePrincipalResponseOutput) ToServicePrincipalResponseOutputWithContext(ctx context.Context) ServicePrincipalResponseOutput {
+	return o
+}
+
+// The Azure Active Directory application client id.
+func (o ServicePrincipalResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The Azure Active Directory application object id.
+func (o ServicePrincipalResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The Azure Active Directory tenant id.
+func (o ServicePrincipalResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Service principal type.
+func (o ServicePrincipalResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServicePrincipalResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalResponsePtrOutput) ToServicePrincipalResponsePtrOutput() ServicePrincipalResponsePtrOutput {
+	return o
+}
+
+func (o ServicePrincipalResponsePtrOutput) ToServicePrincipalResponsePtrOutputWithContext(ctx context.Context) ServicePrincipalResponsePtrOutput {
+	return o
+}
+
+func (o ServicePrincipalResponsePtrOutput) Elem() ServicePrincipalResponseOutput {
+	return o.ApplyT(func(v *ServicePrincipalResponse) ServicePrincipalResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipalResponse
+		return ret
+	}).(ServicePrincipalResponseOutput)
+}
+
+// The Azure Active Directory application client id.
+func (o ServicePrincipalResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Active Directory application object id.
+func (o ServicePrincipalResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Active Directory tenant id.
+func (o ServicePrincipalResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service principal type.
+func (o ServicePrincipalResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // An ARM Resource SKU.
@@ -7330,6 +8090,12 @@ func (o VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) IsEnab
 }
 
 func init() {
+	pulumi.RegisterOutputType(DatabaseIdentityOutput{})
+	pulumi.RegisterOutputType(DatabaseIdentityPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseIdentityResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseUserIdentityResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseUserIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(DatabaseVulnerabilityAssessmentRuleBaselineItemOutput{})
 	pulumi.RegisterOutputType(DatabaseVulnerabilityAssessmentRuleBaselineItemArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseVulnerabilityAssessmentRuleBaselineItemResponseOutput{})
@@ -7417,6 +8183,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ScheduleItemOutput{})
+	pulumi.RegisterOutputType(ScheduleItemArrayOutput{})
+	pulumi.RegisterOutputType(ScheduleItemResponseOutput{})
+	pulumi.RegisterOutputType(ScheduleItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServerExternalAdministratorOutput{})
 	pulumi.RegisterOutputType(ServerExternalAdministratorPtrOutput{})
 	pulumi.RegisterOutputType(ServerExternalAdministratorResponseOutput{})
@@ -7427,6 +8197,10 @@ func init() {
 	pulumi.RegisterOutputType(ServerInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServerPrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(ServerPrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalPtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalResponseOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalResponsePtrOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})

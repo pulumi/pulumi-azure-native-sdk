@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the search service with the given name in the given resource group.
-// API Version: 2020-08-01.
+// API Version: 2022-09-01.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:search:getService", args, &rv, opts...)
@@ -30,6 +30,12 @@ type LookupServiceArgs struct {
 
 // Describes an Azure Cognitive Search service and its current state.
 type LookupServiceResult struct {
+	// Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+	AuthOptions *DataPlaneAuthOptionsResponse `pulumi:"authOptions"`
+	// When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
+	// Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
+	EncryptionWithCmk *EncryptionWithCmkResponse `pulumi:"encryptionWithCmk"`
 	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
 	HostingMode *string `pulumi:"hostingMode"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -128,6 +134,21 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceRe
 
 func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
 	return o
+}
+
+// Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+func (o LookupServiceResultOutput) AuthOptions() DataPlaneAuthOptionsResponsePtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *DataPlaneAuthOptionsResponse { return v.AuthOptions }).(DataPlaneAuthOptionsResponsePtrOutput)
+}
+
+// When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
+func (o LookupServiceResultOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
+func (o LookupServiceResultOutput) EncryptionWithCmk() EncryptionWithCmkResponsePtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *EncryptionWithCmkResponse { return v.EncryptionWithCmk }).(EncryptionWithCmkResponsePtrOutput)
 }
 
 // Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.

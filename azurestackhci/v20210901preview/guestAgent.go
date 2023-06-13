@@ -46,6 +46,12 @@ func NewGuestAgent(ctx *pulumi.Context,
 	if args.VirtualMachineName == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualMachineName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:GuestAgent"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource GuestAgent
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:GuestAgent", name, args, &resource, opts...)
 	if err != nil {

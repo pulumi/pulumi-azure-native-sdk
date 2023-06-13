@@ -102,6 +102,9 @@ func NewSyncMember(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:SyncMember"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:SyncMember"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SyncMember

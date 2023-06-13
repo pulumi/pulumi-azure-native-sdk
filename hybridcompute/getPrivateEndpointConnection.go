@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a private endpoint connection.
-// API Version: 2021-03-25-preview.
+// API Version: 2022-12-27.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:hybridcompute:getPrivateEndpointConnection", args, &rv, opts...)
@@ -38,7 +38,7 @@ type LookupPrivateEndpointConnectionResult struct {
 	Name string `pulumi:"name"`
 	// Resource properties.
 	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -102,7 +102,7 @@ func (o LookupPrivateEndpointConnectionResultOutput) Properties() PrivateEndpoin
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

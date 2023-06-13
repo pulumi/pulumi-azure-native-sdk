@@ -87,9 +87,6 @@ func NewCluster(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci:Cluster"),
 		},
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20200301preview:Cluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20201001:Cluster"),
 		},
 		{
@@ -118,6 +115,12 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221201:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230301:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,7 +181,7 @@ type clusterArgs struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -208,7 +211,7 @@ type ClusterArgs struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type pulumi.StringInput
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput
+	UserAssignedIdentities pulumi.StringArrayInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

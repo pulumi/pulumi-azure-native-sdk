@@ -184,21 +184,6 @@ const (
 	LevelTypeInformation = LevelType("Information")
 )
 
-// Scope at which the operator will be installed.
-type OperatorScopeType string
-
-const (
-	OperatorScopeTypeCluster   = OperatorScopeType("cluster")
-	OperatorScopeTypeNamespace = OperatorScopeType("namespace")
-)
-
-// Type of the operator
-type OperatorType string
-
-const (
-	OperatorTypeFlux = OperatorType("Flux")
-)
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -362,23 +347,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
-
-// Scope at which the operator will be installed.
-type ScopeType string
-
-const (
-	ScopeTypeCluster   = ScopeType("cluster")
-	ScopeTypeNamespace = ScopeType("namespace")
-)
-
-// Source Kind to pull the configuration data from.
-type SourceKindType string
-
-const (
-	SourceKindTypeGitRepository = SourceKindType("GitRepository")
-	SourceKindTypeBucket        = SourceKindType("Bucket")
-	SourceKindTypeAzureBlob     = SourceKindType("AzureBlob")
-)
 
 func init() {
 	pulumi.RegisterOutputType(AKSIdentityTypeOutput{})

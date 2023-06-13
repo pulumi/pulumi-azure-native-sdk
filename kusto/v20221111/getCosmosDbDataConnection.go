@@ -11,10 +11,8 @@ import (
 )
 
 // Returns a data connection.
-//
-// Deprecated: azure-native:kusto/v20221111:CosmosDbDataConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:CosmosDbDataConnection to guarantee forwards compatibility.
-func LookupCosmosDbDataConnection(ctx *pulumi.Context, args *LookupCosmosDbDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupCosmosDbDataConnectionResult, error) {
-	var rv LookupCosmosDbDataConnectionResult
+func GetCosmosDbDataConnection(ctx *pulumi.Context, args *GetCosmosDbDataConnectionArgs, opts ...pulumi.InvokeOption) (*GetCosmosDbDataConnectionResult, error) {
+	var rv GetCosmosDbDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20221111:getCosmosDbDataConnection", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupCosmosDbDataConnection(ctx *pulumi.Context, args *LookupCosmosDbDataC
 	return &rv, nil
 }
 
-type LookupCosmosDbDataConnectionArgs struct {
+type GetCosmosDbDataConnectionArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the data connection.
@@ -34,7 +32,7 @@ type LookupCosmosDbDataConnectionArgs struct {
 }
 
 // Class representing a CosmosDb data connection.
-type LookupCosmosDbDataConnectionResult struct {
+type GetCosmosDbDataConnectionResult struct {
 	// The resource ID of the Cosmos DB account used to create the data connection.
 	CosmosDbAccountResourceId string `pulumi:"cosmosDbAccountResourceId"`
 	// The name of an existing container in the Cosmos DB database.
@@ -66,20 +64,20 @@ type LookupCosmosDbDataConnectionResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupCosmosDbDataConnectionOutput(ctx *pulumi.Context, args LookupCosmosDbDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupCosmosDbDataConnectionResultOutput {
+func GetCosmosDbDataConnectionOutput(ctx *pulumi.Context, args GetCosmosDbDataConnectionOutputArgs, opts ...pulumi.InvokeOption) GetCosmosDbDataConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCosmosDbDataConnectionResult, error) {
-			args := v.(LookupCosmosDbDataConnectionArgs)
-			r, err := LookupCosmosDbDataConnection(ctx, &args, opts...)
-			var s LookupCosmosDbDataConnectionResult
+		ApplyT(func(v interface{}) (GetCosmosDbDataConnectionResult, error) {
+			args := v.(GetCosmosDbDataConnectionArgs)
+			r, err := GetCosmosDbDataConnection(ctx, &args, opts...)
+			var s GetCosmosDbDataConnectionResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupCosmosDbDataConnectionResultOutput)
+		}).(GetCosmosDbDataConnectionResultOutput)
 }
 
-type LookupCosmosDbDataConnectionOutputArgs struct {
+type GetCosmosDbDataConnectionOutputArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the data connection.
@@ -90,96 +88,96 @@ type LookupCosmosDbDataConnectionOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
-func (LookupCosmosDbDataConnectionOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupCosmosDbDataConnectionArgs)(nil)).Elem()
+func (GetCosmosDbDataConnectionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCosmosDbDataConnectionArgs)(nil)).Elem()
 }
 
 // Class representing a CosmosDb data connection.
-type LookupCosmosDbDataConnectionResultOutput struct{ *pulumi.OutputState }
+type GetCosmosDbDataConnectionResultOutput struct{ *pulumi.OutputState }
 
-func (LookupCosmosDbDataConnectionResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupCosmosDbDataConnectionResult)(nil)).Elem()
+func (GetCosmosDbDataConnectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCosmosDbDataConnectionResult)(nil)).Elem()
 }
 
-func (o LookupCosmosDbDataConnectionResultOutput) ToLookupCosmosDbDataConnectionResultOutput() LookupCosmosDbDataConnectionResultOutput {
+func (o GetCosmosDbDataConnectionResultOutput) ToGetCosmosDbDataConnectionResultOutput() GetCosmosDbDataConnectionResultOutput {
 	return o
 }
 
-func (o LookupCosmosDbDataConnectionResultOutput) ToLookupCosmosDbDataConnectionResultOutputWithContext(ctx context.Context) LookupCosmosDbDataConnectionResultOutput {
+func (o GetCosmosDbDataConnectionResultOutput) ToGetCosmosDbDataConnectionResultOutputWithContext(ctx context.Context) GetCosmosDbDataConnectionResultOutput {
 	return o
 }
 
 // The resource ID of the Cosmos DB account used to create the data connection.
-func (o LookupCosmosDbDataConnectionResultOutput) CosmosDbAccountResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.CosmosDbAccountResourceId }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) CosmosDbAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.CosmosDbAccountResourceId }).(pulumi.StringOutput)
 }
 
 // The name of an existing container in the Cosmos DB database.
-func (o LookupCosmosDbDataConnectionResultOutput) CosmosDbContainer() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.CosmosDbContainer }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) CosmosDbContainer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.CosmosDbContainer }).(pulumi.StringOutput)
 }
 
 // The name of an existing database in the Cosmos DB account.
-func (o LookupCosmosDbDataConnectionResultOutput) CosmosDbDatabase() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.CosmosDbDatabase }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) CosmosDbDatabase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.CosmosDbDatabase }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupCosmosDbDataConnectionResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of the endpoint for the data connection
 // Expected value is 'CosmosDb'.
-func (o LookupCosmosDbDataConnectionResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Resource location.
-func (o LookupCosmosDbDataConnectionResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o GetCosmosDbDataConnectionResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The object ID of the managed identity resource.
-func (o LookupCosmosDbDataConnectionResultOutput) ManagedIdentityObjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.ManagedIdentityObjectId }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) ManagedIdentityObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.ManagedIdentityObjectId }).(pulumi.StringOutput)
 }
 
 // The resource ID of a managed system or user-assigned identity. The identity is used to authenticate with Cosmos DB.
-func (o LookupCosmosDbDataConnectionResultOutput) ManagedIdentityResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.ManagedIdentityResourceId }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) ManagedIdentityResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.ManagedIdentityResourceId }).(pulumi.StringOutput)
 }
 
 // The name of an existing mapping rule to use when ingesting the retrieved data.
-func (o LookupCosmosDbDataConnectionResultOutput) MappingRuleName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) *string { return v.MappingRuleName }).(pulumi.StringPtrOutput)
+func (o GetCosmosDbDataConnectionResultOutput) MappingRuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) *string { return v.MappingRuleName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
-func (o LookupCosmosDbDataConnectionResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The provisioned state of the resource.
-func (o LookupCosmosDbDataConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
-func (o LookupCosmosDbDataConnectionResultOutput) RetrievalStartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) *string { return v.RetrievalStartDate }).(pulumi.StringPtrOutput)
+func (o GetCosmosDbDataConnectionResultOutput) RetrievalStartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) *string { return v.RetrievalStartDate }).(pulumi.StringPtrOutput)
 }
 
 // The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table.
-func (o LookupCosmosDbDataConnectionResultOutput) TableName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.TableName }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupCosmosDbDataConnectionResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetCosmosDbDataConnectionResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCosmosDbDataConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupCosmosDbDataConnectionResultOutput{})
+	pulumi.RegisterOutputType(GetCosmosDbDataConnectionResultOutput{})
 }

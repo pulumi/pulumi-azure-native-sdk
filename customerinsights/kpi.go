@@ -13,6 +13,7 @@ import (
 
 // The KPI resource format.
 // API Version: 2017-04-26.
+// Previous API Version: 2017-04-26. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Kpi struct {
 	pulumi.CustomResourceState
 
@@ -89,9 +90,6 @@ func NewKpi(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:customerinsights/v20170101:Kpi"),
-		},
 		{
 			Type: pulumi.String("azure-native:customerinsights/v20170426:Kpi"),
 		},

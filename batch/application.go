@@ -12,7 +12,8 @@ import (
 )
 
 // Contains information about an application in a Batch account.
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -44,36 +45,6 @@ func NewApplication(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:batch/v20151201:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20170101:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20170501:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20170901:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20181201:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20190401:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20190801:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20200301:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20200501:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20200901:Application"),
-		},
 		{
 			Type: pulumi.String("azure-native:batch/v20210101:Application"),
 		},

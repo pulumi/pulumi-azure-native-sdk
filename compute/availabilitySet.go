@@ -11,8 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Manage the availability of virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). <br><br> For more information on Azure planned maintenance, see [Planned maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
-// API Version: 2020-12-01.
+// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to an availability set at creation time. An existing VM cannot be added to an availability set.
+// API Version: 2023-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AvailabilitySet struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +25,7 @@ type AvailabilitySet struct {
 	PlatformFaultDomainCount pulumi.IntPtrOutput `pulumi:"platformFaultDomainCount"`
 	// Update Domain count.
 	PlatformUpdateDomainCount pulumi.IntPtrOutput `pulumi:"platformUpdateDomainCount"`
-	// Specifies information about the proximity placement group that the availability set should be assigned to. <br><br>Minimum api-version: 2018-04-01.
+	// Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup SubResourceResponsePtrOutput `pulumi:"proximityPlacementGroup"`
 	// Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
@@ -49,42 +50,6 @@ func NewAvailabilitySet(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:compute/v20150615:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20160330:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20160430preview:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20170330:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20171201:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20180401:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20180601:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20181001:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190301:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190701:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20191201:AvailabilitySet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20200601:AvailabilitySet"),
-		},
 		{
 			Type: pulumi.String("azure-native:compute/v20201201:AvailabilitySet"),
 		},
@@ -154,7 +119,7 @@ type availabilitySetArgs struct {
 	PlatformFaultDomainCount *int `pulumi:"platformFaultDomainCount"`
 	// Update Domain count.
 	PlatformUpdateDomainCount *int `pulumi:"platformUpdateDomainCount"`
-	// Specifies information about the proximity placement group that the availability set should be assigned to. <br><br>Minimum api-version: 2018-04-01.
+	// Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup *SubResource `pulumi:"proximityPlacementGroup"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -176,7 +141,7 @@ type AvailabilitySetArgs struct {
 	PlatformFaultDomainCount pulumi.IntPtrInput
 	// Update Domain count.
 	PlatformUpdateDomainCount pulumi.IntPtrInput
-	// Specifies information about the proximity placement group that the availability set should be assigned to. <br><br>Minimum api-version: 2018-04-01.
+	// Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup SubResourcePtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
@@ -245,7 +210,7 @@ func (o AvailabilitySetOutput) PlatformUpdateDomainCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AvailabilitySet) pulumi.IntPtrOutput { return v.PlatformUpdateDomainCount }).(pulumi.IntPtrOutput)
 }
 
-// Specifies information about the proximity placement group that the availability set should be assigned to. <br><br>Minimum api-version: 2018-04-01.
+// Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
 func (o AvailabilitySetOutput) ProximityPlacementGroup() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v *AvailabilitySet) SubResourceResponsePtrOutput { return v.ProximityPlacementGroup }).(SubResourceResponsePtrOutput)
 }

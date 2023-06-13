@@ -11,7 +11,7 @@ import (
 )
 
 // The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource.
-// API Version: 2020-07-01.
+// API Version: 2023-06-01.
 func ListDeploymentInfo(ctx *pulumi.Context, args *ListDeploymentInfoArgs, opts ...pulumi.InvokeOption) (*ListDeploymentInfoResult, error) {
 	var rv ListDeploymentInfoResult
 	err := ctx.Invoke("azure-native:elastic:listDeploymentInfo", args, &rv, opts...)
@@ -30,8 +30,12 @@ type ListDeploymentInfoArgs struct {
 
 // The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource.
 type ListDeploymentInfoResult struct {
+	// Deployment URL of the elasticsearch in Elastic cloud deployment.
+	DeploymentUrl string `pulumi:"deploymentUrl"`
 	// Disk capacity of the elasticsearch in Elastic cloud deployment.
 	DiskCapacity string `pulumi:"diskCapacity"`
+	// Marketplace SaaS Info of the resource.
+	MarketplaceSaasInfo MarketplaceSaaSInfoResponse `pulumi:"marketplaceSaasInfo"`
 	// RAM capacity of the elasticsearch in Elastic cloud deployment.
 	MemoryCapacity string `pulumi:"memoryCapacity"`
 	// The Elastic deployment status.
@@ -79,9 +83,19 @@ func (o ListDeploymentInfoResultOutput) ToListDeploymentInfoResultOutputWithCont
 	return o
 }
 
+// Deployment URL of the elasticsearch in Elastic cloud deployment.
+func (o ListDeploymentInfoResultOutput) DeploymentUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ListDeploymentInfoResult) string { return v.DeploymentUrl }).(pulumi.StringOutput)
+}
+
 // Disk capacity of the elasticsearch in Elastic cloud deployment.
 func (o ListDeploymentInfoResultOutput) DiskCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDeploymentInfoResult) string { return v.DiskCapacity }).(pulumi.StringOutput)
+}
+
+// Marketplace SaaS Info of the resource.
+func (o ListDeploymentInfoResultOutput) MarketplaceSaasInfo() MarketplaceSaaSInfoResponseOutput {
+	return o.ApplyT(func(v ListDeploymentInfoResult) MarketplaceSaaSInfoResponse { return v.MarketplaceSaasInfo }).(MarketplaceSaaSInfoResponseOutput)
 }
 
 // RAM capacity of the elasticsearch in Elastic cloud deployment.

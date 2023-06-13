@@ -11,10 +11,8 @@ import (
 )
 
 // Gets the alert rule.
-//
-// Deprecated: azure-native:securityinsights/v20220601preview:NrtAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:NrtAlertRule to guarantee forwards compatibility.
-func LookupNrtAlertRule(ctx *pulumi.Context, args *LookupNrtAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupNrtAlertRuleResult, error) {
-	var rv LookupNrtAlertRuleResult
+func GetNrtAlertRule(ctx *pulumi.Context, args *GetNrtAlertRuleArgs, opts ...pulumi.InvokeOption) (*GetNrtAlertRuleResult, error) {
+	var rv GetNrtAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220601preview:getNrtAlertRule", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupNrtAlertRule(ctx *pulumi.Context, args *LookupNrtAlertRuleArgs, opts 
 	return &rv, nil
 }
 
-type LookupNrtAlertRuleArgs struct {
+type GetNrtAlertRuleArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Alert rule ID
@@ -32,7 +30,7 @@ type LookupNrtAlertRuleArgs struct {
 }
 
 // Represents NRT alert rule.
-type LookupNrtAlertRuleResult struct {
+type GetNrtAlertRuleResult struct {
 	// The alert details override settings
 	AlertDetailsOverride *AlertDetailsOverrideResponse `pulumi:"alertDetailsOverride"`
 	// The Name of the alert rule template used to create this rule.
@@ -80,20 +78,20 @@ type LookupNrtAlertRuleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupNrtAlertRuleOutput(ctx *pulumi.Context, args LookupNrtAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNrtAlertRuleResultOutput {
+func GetNrtAlertRuleOutput(ctx *pulumi.Context, args GetNrtAlertRuleOutputArgs, opts ...pulumi.InvokeOption) GetNrtAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNrtAlertRuleResult, error) {
-			args := v.(LookupNrtAlertRuleArgs)
-			r, err := LookupNrtAlertRule(ctx, &args, opts...)
-			var s LookupNrtAlertRuleResult
+		ApplyT(func(v interface{}) (GetNrtAlertRuleResult, error) {
+			args := v.(GetNrtAlertRuleArgs)
+			r, err := GetNrtAlertRule(ctx, &args, opts...)
+			var s GetNrtAlertRuleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupNrtAlertRuleResultOutput)
+		}).(GetNrtAlertRuleResultOutput)
 }
 
-type LookupNrtAlertRuleOutputArgs struct {
+type GetNrtAlertRuleOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Alert rule ID
@@ -102,136 +100,136 @@ type LookupNrtAlertRuleOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupNrtAlertRuleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupNrtAlertRuleArgs)(nil)).Elem()
+func (GetNrtAlertRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNrtAlertRuleArgs)(nil)).Elem()
 }
 
 // Represents NRT alert rule.
-type LookupNrtAlertRuleResultOutput struct{ *pulumi.OutputState }
+type GetNrtAlertRuleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupNrtAlertRuleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupNrtAlertRuleResult)(nil)).Elem()
+func (GetNrtAlertRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNrtAlertRuleResult)(nil)).Elem()
 }
 
-func (o LookupNrtAlertRuleResultOutput) ToLookupNrtAlertRuleResultOutput() LookupNrtAlertRuleResultOutput {
+func (o GetNrtAlertRuleResultOutput) ToGetNrtAlertRuleResultOutput() GetNrtAlertRuleResultOutput {
 	return o
 }
 
-func (o LookupNrtAlertRuleResultOutput) ToLookupNrtAlertRuleResultOutputWithContext(ctx context.Context) LookupNrtAlertRuleResultOutput {
+func (o GetNrtAlertRuleResultOutput) ToGetNrtAlertRuleResultOutputWithContext(ctx context.Context) GetNrtAlertRuleResultOutput {
 	return o
 }
 
 // The alert details override settings
-func (o LookupNrtAlertRuleResultOutput) AlertDetailsOverride() AlertDetailsOverrideResponsePtrOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) *AlertDetailsOverrideResponse { return v.AlertDetailsOverride }).(AlertDetailsOverrideResponsePtrOutput)
+func (o GetNrtAlertRuleResultOutput) AlertDetailsOverride() AlertDetailsOverrideResponsePtrOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) *AlertDetailsOverrideResponse { return v.AlertDetailsOverride }).(AlertDetailsOverrideResponsePtrOutput)
 }
 
 // The Name of the alert rule template used to create this rule.
-func (o LookupNrtAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) *string { return v.AlertRuleTemplateName }).(pulumi.StringPtrOutput)
+func (o GetNrtAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) *string { return v.AlertRuleTemplateName }).(pulumi.StringPtrOutput)
 }
 
 // Dictionary of string key-value pairs of columns to be attached to the alert
-func (o LookupNrtAlertRuleResultOutput) CustomDetails() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) map[string]string { return v.CustomDetails }).(pulumi.StringMapOutput)
+func (o GetNrtAlertRuleResultOutput) CustomDetails() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) map[string]string { return v.CustomDetails }).(pulumi.StringMapOutput)
 }
 
 // The description of the alert rule.
-func (o LookupNrtAlertRuleResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetNrtAlertRuleResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The display name for alerts created by this alert rule.
-func (o LookupNrtAlertRuleResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Determines whether this alert rule is enabled or disabled.
-func (o LookupNrtAlertRuleResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetNrtAlertRuleResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Array of the entity mappings of the alert rule
-func (o LookupNrtAlertRuleResultOutput) EntityMappings() EntityMappingResponseArrayOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) []EntityMappingResponse { return v.EntityMappings }).(EntityMappingResponseArrayOutput)
+func (o GetNrtAlertRuleResultOutput) EntityMappings() EntityMappingResponseArrayOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) []EntityMappingResponse { return v.EntityMappings }).(EntityMappingResponseArrayOutput)
 }
 
 // Etag of the azure resource
-func (o LookupNrtAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetNrtAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupNrtAlertRuleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The settings of the incidents that created from alerts triggered by this analytics rule
-func (o LookupNrtAlertRuleResultOutput) IncidentConfiguration() IncidentConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) *IncidentConfigurationResponse { return v.IncidentConfiguration }).(IncidentConfigurationResponsePtrOutput)
+func (o GetNrtAlertRuleResultOutput) IncidentConfiguration() IncidentConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) *IncidentConfigurationResponse { return v.IncidentConfiguration }).(IncidentConfigurationResponsePtrOutput)
 }
 
 // The kind of the alert rule
 // Expected value is 'NRT'.
-func (o LookupNrtAlertRuleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The last time that this alert rule has been modified.
-func (o LookupNrtAlertRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupNrtAlertRuleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The query that creates alerts for this rule.
-func (o LookupNrtAlertRuleResultOutput) Query() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.Query }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.Query }).(pulumi.StringOutput)
 }
 
 // The severity for alerts created by this alert rule.
-func (o LookupNrtAlertRuleResultOutput) Severity() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.Severity }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.Severity }).(pulumi.StringOutput)
 }
 
 // The suppression (in ISO 8601 duration format) to wait since last time this alert rule been triggered.
-func (o LookupNrtAlertRuleResultOutput) SuppressionDuration() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.SuppressionDuration }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) SuppressionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.SuppressionDuration }).(pulumi.StringOutput)
 }
 
 // Determines whether the suppression for this alert rule is enabled or disabled.
-func (o LookupNrtAlertRuleResultOutput) SuppressionEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) bool { return v.SuppressionEnabled }).(pulumi.BoolOutput)
+func (o GetNrtAlertRuleResultOutput) SuppressionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) bool { return v.SuppressionEnabled }).(pulumi.BoolOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupNrtAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetNrtAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tactics of the alert rule
-func (o LookupNrtAlertRuleResultOutput) Tactics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) []string { return v.Tactics }).(pulumi.StringArrayOutput)
+func (o GetNrtAlertRuleResultOutput) Tactics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) []string { return v.Tactics }).(pulumi.StringArrayOutput)
 }
 
 // The techniques of the alert rule
-func (o LookupNrtAlertRuleResultOutput) Techniques() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) []string { return v.Techniques }).(pulumi.StringArrayOutput)
+func (o GetNrtAlertRuleResultOutput) Techniques() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) []string { return v.Techniques }).(pulumi.StringArrayOutput)
 }
 
 // The version of the alert rule template used to create this rule - in format <a.b.c>, where all are numbers, for example 0 <1.0.2>
-func (o LookupNrtAlertRuleResultOutput) TemplateVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) *string { return v.TemplateVersion }).(pulumi.StringPtrOutput)
+func (o GetNrtAlertRuleResultOutput) TemplateVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) *string { return v.TemplateVersion }).(pulumi.StringPtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupNrtAlertRuleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNrtAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetNrtAlertRuleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNrtAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupNrtAlertRuleResultOutput{})
+	pulumi.RegisterOutputType(GetNrtAlertRuleResultOutput{})
 }

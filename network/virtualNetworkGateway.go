@@ -12,18 +12,27 @@ import (
 )
 
 // A common class for general resource information.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualNetworkGateway struct {
 	pulumi.CustomResourceState
 
 	// ActiveActive flag.
 	ActiveActive pulumi.BoolPtrOutput `pulumi:"activeActive"`
+	// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
+	AllowRemoteVnetTraffic pulumi.BoolPtrOutput `pulumi:"allowRemoteVnetTraffic"`
+	// Configures this gateway to accept traffic from remote Virtual WAN networks.
+	AllowVirtualWanTraffic pulumi.BoolPtrOutput `pulumi:"allowVirtualWanTraffic"`
 	// Virtual network gateway's BGP speaker settings.
 	BgpSettings BgpSettingsResponsePtrOutput `pulumi:"bgpSettings"`
 	// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
 	CustomRoutes AddressSpaceResponsePtrOutput `pulumi:"customRoutes"`
+	// disableIPSecReplayProtection flag.
+	DisableIPSecReplayProtection pulumi.BoolPtrOutput `pulumi:"disableIPSecReplayProtection"`
 	// Whether BGP is enabled for this virtual network gateway or not.
 	EnableBgp pulumi.BoolPtrOutput `pulumi:"enableBgp"`
+	// EnableBgpRouteTranslationForNat flag.
+	EnableBgpRouteTranslationForNat pulumi.BoolPtrOutput `pulumi:"enableBgpRouteTranslationForNat"`
 	// Whether dns forwarding is enabled or not.
 	EnableDnsForwarding pulumi.BoolPtrOutput `pulumi:"enableDnsForwarding"`
 	// Whether private IP needs to be enabled on this gateway for connections or not.
@@ -44,6 +53,8 @@ type VirtualNetworkGateway struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// NatRules for virtual network gateway.
+	NatRules VirtualNetworkGatewayNatRuleResponseArrayOutput `pulumi:"natRules"`
 	// The provisioning state of the virtual network gateway resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The resource GUID property of the virtual network gateway resource.
@@ -56,6 +67,8 @@ type VirtualNetworkGateway struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
 	VNetExtendedLocationResourceId pulumi.StringPtrOutput `pulumi:"vNetExtendedLocationResourceId"`
+	// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
+	VirtualNetworkGatewayPolicyGroups VirtualNetworkGatewayPolicyGroupResponseArrayOutput `pulumi:"virtualNetworkGatewayPolicyGroups"`
 	// The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
 	VpnClientConfiguration VpnClientConfigurationResponsePtrOutput `pulumi:"vpnClientConfiguration"`
 	// The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
@@ -75,48 +88,6 @@ func NewVirtualNetworkGateway(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20150615:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:VirtualNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:VirtualNetworkGateway"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:VirtualNetworkGateway"),
 		},
@@ -204,6 +175,9 @@ func NewVirtualNetworkGateway(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualNetworkGateway"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualNetworkGateway"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetworkGateway
@@ -240,12 +214,20 @@ func (VirtualNetworkGatewayState) ElementType() reflect.Type {
 type virtualNetworkGatewayArgs struct {
 	// ActiveActive flag.
 	ActiveActive *bool `pulumi:"activeActive"`
+	// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
+	AllowRemoteVnetTraffic *bool `pulumi:"allowRemoteVnetTraffic"`
+	// Configures this gateway to accept traffic from remote Virtual WAN networks.
+	AllowVirtualWanTraffic *bool `pulumi:"allowVirtualWanTraffic"`
 	// Virtual network gateway's BGP speaker settings.
 	BgpSettings *BgpSettings `pulumi:"bgpSettings"`
 	// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
 	CustomRoutes *AddressSpace `pulumi:"customRoutes"`
+	// disableIPSecReplayProtection flag.
+	DisableIPSecReplayProtection *bool `pulumi:"disableIPSecReplayProtection"`
 	// Whether BGP is enabled for this virtual network gateway or not.
 	EnableBgp *bool `pulumi:"enableBgp"`
+	// EnableBgpRouteTranslationForNat flag.
+	EnableBgpRouteTranslationForNat *bool `pulumi:"enableBgpRouteTranslationForNat"`
 	// Whether dns forwarding is enabled or not.
 	EnableDnsForwarding *bool `pulumi:"enableDnsForwarding"`
 	// Whether private IP needs to be enabled on this gateway for connections or not.
@@ -262,6 +244,8 @@ type virtualNetworkGatewayArgs struct {
 	IpConfigurations []VirtualNetworkGatewayIPConfiguration `pulumi:"ipConfigurations"`
 	// Resource location.
 	Location *string `pulumi:"location"`
+	// NatRules for virtual network gateway.
+	NatRules []VirtualNetworkGatewayNatRuleType `pulumi:"natRules"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
@@ -272,6 +256,8 @@ type virtualNetworkGatewayArgs struct {
 	VNetExtendedLocationResourceId *string `pulumi:"vNetExtendedLocationResourceId"`
 	// The name of the virtual network gateway.
 	VirtualNetworkGatewayName *string `pulumi:"virtualNetworkGatewayName"`
+	// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
+	VirtualNetworkGatewayPolicyGroups []VirtualNetworkGatewayPolicyGroup `pulumi:"virtualNetworkGatewayPolicyGroups"`
 	// The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
 	VpnClientConfiguration *VpnClientConfiguration `pulumi:"vpnClientConfiguration"`
 	// The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
@@ -284,12 +270,20 @@ type virtualNetworkGatewayArgs struct {
 type VirtualNetworkGatewayArgs struct {
 	// ActiveActive flag.
 	ActiveActive pulumi.BoolPtrInput
+	// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
+	AllowRemoteVnetTraffic pulumi.BoolPtrInput
+	// Configures this gateway to accept traffic from remote Virtual WAN networks.
+	AllowVirtualWanTraffic pulumi.BoolPtrInput
 	// Virtual network gateway's BGP speaker settings.
 	BgpSettings BgpSettingsPtrInput
 	// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
 	CustomRoutes AddressSpacePtrInput
+	// disableIPSecReplayProtection flag.
+	DisableIPSecReplayProtection pulumi.BoolPtrInput
 	// Whether BGP is enabled for this virtual network gateway or not.
 	EnableBgp pulumi.BoolPtrInput
+	// EnableBgpRouteTranslationForNat flag.
+	EnableBgpRouteTranslationForNat pulumi.BoolPtrInput
 	// Whether dns forwarding is enabled or not.
 	EnableDnsForwarding pulumi.BoolPtrInput
 	// Whether private IP needs to be enabled on this gateway for connections or not.
@@ -306,6 +300,8 @@ type VirtualNetworkGatewayArgs struct {
 	IpConfigurations VirtualNetworkGatewayIPConfigurationArrayInput
 	// Resource location.
 	Location pulumi.StringPtrInput
+	// NatRules for virtual network gateway.
+	NatRules VirtualNetworkGatewayNatRuleTypeArrayInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
@@ -316,6 +312,8 @@ type VirtualNetworkGatewayArgs struct {
 	VNetExtendedLocationResourceId pulumi.StringPtrInput
 	// The name of the virtual network gateway.
 	VirtualNetworkGatewayName pulumi.StringPtrInput
+	// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
+	VirtualNetworkGatewayPolicyGroups VirtualNetworkGatewayPolicyGroupArrayInput
 	// The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
 	VpnClientConfiguration VpnClientConfigurationPtrInput
 	// The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
@@ -366,6 +364,16 @@ func (o VirtualNetworkGatewayOutput) ActiveActive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.BoolPtrOutput { return v.ActiveActive }).(pulumi.BoolPtrOutput)
 }
 
+// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
+func (o VirtualNetworkGatewayOutput) AllowRemoteVnetTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.BoolPtrOutput { return v.AllowRemoteVnetTraffic }).(pulumi.BoolPtrOutput)
+}
+
+// Configures this gateway to accept traffic from remote Virtual WAN networks.
+func (o VirtualNetworkGatewayOutput) AllowVirtualWanTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.BoolPtrOutput { return v.AllowVirtualWanTraffic }).(pulumi.BoolPtrOutput)
+}
+
 // Virtual network gateway's BGP speaker settings.
 func (o VirtualNetworkGatewayOutput) BgpSettings() BgpSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkGateway) BgpSettingsResponsePtrOutput { return v.BgpSettings }).(BgpSettingsResponsePtrOutput)
@@ -376,9 +384,19 @@ func (o VirtualNetworkGatewayOutput) CustomRoutes() AddressSpaceResponsePtrOutpu
 	return o.ApplyT(func(v *VirtualNetworkGateway) AddressSpaceResponsePtrOutput { return v.CustomRoutes }).(AddressSpaceResponsePtrOutput)
 }
 
+// disableIPSecReplayProtection flag.
+func (o VirtualNetworkGatewayOutput) DisableIPSecReplayProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.BoolPtrOutput { return v.DisableIPSecReplayProtection }).(pulumi.BoolPtrOutput)
+}
+
 // Whether BGP is enabled for this virtual network gateway or not.
 func (o VirtualNetworkGatewayOutput) EnableBgp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.BoolPtrOutput { return v.EnableBgp }).(pulumi.BoolPtrOutput)
+}
+
+// EnableBgpRouteTranslationForNat flag.
+func (o VirtualNetworkGatewayOutput) EnableBgpRouteTranslationForNat() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.BoolPtrOutput { return v.EnableBgpRouteTranslationForNat }).(pulumi.BoolPtrOutput)
 }
 
 // Whether dns forwarding is enabled or not.
@@ -433,6 +451,11 @@ func (o VirtualNetworkGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// NatRules for virtual network gateway.
+func (o VirtualNetworkGatewayOutput) NatRules() VirtualNetworkGatewayNatRuleResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkGateway) VirtualNetworkGatewayNatRuleResponseArrayOutput { return v.NatRules }).(VirtualNetworkGatewayNatRuleResponseArrayOutput)
+}
+
 // The provisioning state of the virtual network gateway resource.
 func (o VirtualNetworkGatewayOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -461,6 +484,13 @@ func (o VirtualNetworkGatewayOutput) Type() pulumi.StringOutput {
 // Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
 func (o VirtualNetworkGatewayOutput) VNetExtendedLocationResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkGateway) pulumi.StringPtrOutput { return v.VNetExtendedLocationResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
+func (o VirtualNetworkGatewayOutput) VirtualNetworkGatewayPolicyGroups() VirtualNetworkGatewayPolicyGroupResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkGateway) VirtualNetworkGatewayPolicyGroupResponseArrayOutput {
+		return v.VirtualNetworkGatewayPolicyGroups
+	}).(VirtualNetworkGatewayPolicyGroupResponseArrayOutput)
 }
 
 // The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.

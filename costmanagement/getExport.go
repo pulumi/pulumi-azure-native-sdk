@@ -11,7 +11,7 @@ import (
 )
 
 // The operation to get the export for the defined scope by export name.
-// API Version: 2020-06-01.
+// API Version: 2023-03-01.
 func LookupExport(ctx *pulumi.Context, args *LookupExportArgs, opts ...pulumi.InvokeOption) (*LookupExportResult, error) {
 	var rv LookupExportResult
 	err := ctx.Invoke("azure-native:costmanagement:getExport", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupExport(ctx *pulumi.Context, args *LookupExportArgs, opts ...pulumi.In
 }
 
 type LookupExportArgs struct {
-	// May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last 10 executions of the export.
+	// May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last 10 runs of the export.
 	Expand *string `pulumi:"expand"`
 	// Export Name.
 	ExportName string `pulumi:"exportName"`
@@ -44,9 +44,11 @@ type LookupExportResult struct {
 	Id string `pulumi:"id"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// If the export has an active schedule, provides an estimate of the next execution time.
+	// If the export has an active schedule, provides an estimate of the next run time.
 	NextRunTimeEstimate string `pulumi:"nextRunTimeEstimate"`
-	// If requested, has the most recent execution history for the export.
+	// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
+	PartitionData *bool `pulumi:"partitionData"`
+	// If requested, has the most recent run history for the export.
 	RunHistory *ExportExecutionListResultResponse `pulumi:"runHistory"`
 	// Has schedule information for the export.
 	Schedule *ExportScheduleResponse `pulumi:"schedule"`
@@ -68,7 +70,7 @@ func LookupExportOutput(ctx *pulumi.Context, args LookupExportOutputArgs, opts .
 }
 
 type LookupExportOutputArgs struct {
-	// May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last 10 executions of the export.
+	// May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last 10 runs of the export.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// Export Name.
 	ExportName pulumi.StringInput `pulumi:"exportName"`
@@ -125,12 +127,17 @@ func (o LookupExportResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExportResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// If the export has an active schedule, provides an estimate of the next execution time.
+// If the export has an active schedule, provides an estimate of the next run time.
 func (o LookupExportResultOutput) NextRunTimeEstimate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExportResult) string { return v.NextRunTimeEstimate }).(pulumi.StringOutput)
 }
 
-// If requested, has the most recent execution history for the export.
+// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
+func (o LookupExportResultOutput) PartitionData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupExportResult) *bool { return v.PartitionData }).(pulumi.BoolPtrOutput)
+}
+
+// If requested, has the most recent run history for the export.
 func (o LookupExportResultOutput) RunHistory() ExportExecutionListResultResponsePtrOutput {
 	return o.ApplyT(func(v LookupExportResult) *ExportExecutionListResultResponse { return v.RunHistory }).(ExportExecutionListResultResponsePtrOutput)
 }

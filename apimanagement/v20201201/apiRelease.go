@@ -88,6 +88,9 @@ func NewApiRelease(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiRelease"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiRelease"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiRelease

@@ -12,7 +12,8 @@ import (
 )
 
 // Class representing a read write database.
-// API Version: 2021-01-01.
+// API Version: 2022-12-29.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ReadWriteDatabase struct {
 	pulumi.CustomResourceState
 
@@ -55,9 +56,6 @@ func NewReadWriteDatabase(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("ReadWrite")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:kusto/v20170907privatepreview:ReadWriteDatabase"),
-		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20180907preview:ReadWriteDatabase"),
 		},
@@ -134,6 +132,8 @@ func (ReadWriteDatabaseState) ElementType() reflect.Type {
 }
 
 type readWriteDatabaseArgs struct {
+	// By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
+	CallerRole *string `pulumi:"callerRole"`
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
@@ -153,6 +153,8 @@ type readWriteDatabaseArgs struct {
 
 // The set of arguments for constructing a ReadWriteDatabase resource.
 type ReadWriteDatabaseArgs struct {
+	// By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
+	CallerRole pulumi.StringPtrInput
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput
 	// The name of the database in the Kusto cluster.

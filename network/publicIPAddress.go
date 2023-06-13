@@ -12,12 +12,15 @@ import (
 )
 
 // Public IP address resource.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PublicIPAddress struct {
 	pulumi.CustomResourceState
 
 	// The DDoS protection custom policy associated with the public IP address.
 	DdosSettings DdosSettingsResponsePtrOutput `pulumi:"ddosSettings"`
+	// Specify what happens to the public IP address when the VM using it is deleted
+	DeleteOption pulumi.StringPtrOutput `pulumi:"deleteOption"`
 	// The FQDN of the DNS record associated with the public IP address.
 	DnsSettings PublicIPAddressDnsSettingsResponsePtrOutput `pulumi:"dnsSettings"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -75,51 +78,6 @@ func NewPublicIPAddress(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20150501preview:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:PublicIPAddress"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:PublicIPAddress"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:PublicIPAddress"),
 		},
@@ -207,6 +165,9 @@ func NewPublicIPAddress(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:PublicIPAddress"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:PublicIPAddress"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PublicIPAddress
@@ -243,6 +204,8 @@ func (PublicIPAddressState) ElementType() reflect.Type {
 type publicIPAddressArgs struct {
 	// The DDoS protection custom policy associated with the public IP address.
 	DdosSettings *DdosSettings `pulumi:"ddosSettings"`
+	// Specify what happens to the public IP address when the VM using it is deleted
+	DeleteOption *string `pulumi:"deleteOption"`
 	// The FQDN of the DNS record associated with the public IP address.
 	DnsSettings *PublicIPAddressDnsSettings `pulumi:"dnsSettings"`
 	// The extended location of the public ip address.
@@ -287,6 +250,8 @@ type publicIPAddressArgs struct {
 type PublicIPAddressArgs struct {
 	// The DDoS protection custom policy associated with the public IP address.
 	DdosSettings DdosSettingsPtrInput
+	// Specify what happens to the public IP address when the VM using it is deleted
+	DeleteOption pulumi.StringPtrInput
 	// The FQDN of the DNS record associated with the public IP address.
 	DnsSettings PublicIPAddressDnsSettingsPtrInput
 	// The extended location of the public ip address.
@@ -367,6 +332,11 @@ func (o PublicIPAddressOutput) ToPublicIPAddressOutputWithContext(ctx context.Co
 // The DDoS protection custom policy associated with the public IP address.
 func (o PublicIPAddressOutput) DdosSettings() DdosSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *PublicIPAddress) DdosSettingsResponsePtrOutput { return v.DdosSettings }).(DdosSettingsResponsePtrOutput)
+}
+
+// Specify what happens to the public IP address when the VM using it is deleted
+func (o PublicIPAddressOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddress) pulumi.StringPtrOutput { return v.DeleteOption }).(pulumi.StringPtrOutput)
 }
 
 // The FQDN of the DNS record associated with the public IP address.

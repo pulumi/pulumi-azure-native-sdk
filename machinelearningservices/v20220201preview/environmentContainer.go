@@ -65,6 +65,12 @@ func NewEnvironmentContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:EnvironmentContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:EnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:EnvironmentContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:EnvironmentContainer"),
 		},
 	})

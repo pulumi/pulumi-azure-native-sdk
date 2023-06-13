@@ -55,6 +55,12 @@ func NewMarkupRule(ctx *pulumi.Context,
 	if args.StartDate == nil {
 		return nil, errors.New("invalid value for required argument 'StartDate'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:costmanagement:MarkupRule"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource MarkupRule
 	err := ctx.RegisterResource("azure-native:costmanagement/v20221005preview:MarkupRule", name, args, &resource, opts...)
 	if err != nil {

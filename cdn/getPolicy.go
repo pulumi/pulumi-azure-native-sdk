@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve protection policy with specified name within a resource group.
-// API Version: 2020-09-01.
+// API Version: 2023-05-01.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	var rv LookupPolicyResult
 	err := ctx.Invoke("azure-native:cdn:getPolicy", args, &rv, opts...)
@@ -36,6 +36,8 @@ type LookupPolicyResult struct {
 	EndpointLinks []CdnEndpointResponse `pulumi:"endpointLinks"`
 	// Gets a unique read-only string that changes whenever the resource is updated.
 	Etag *string `pulumi:"etag"`
+	// Key-Value pair representing additional properties for Web Application Firewall policy.
+	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource location.
@@ -113,6 +115,11 @@ func (o LookupPolicyResultOutput) EndpointLinks() CdnEndpointResponseArrayOutput
 // Gets a unique read-only string that changes whenever the resource is updated.
 func (o LookupPolicyResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Key-Value pair representing additional properties for Web Application Firewall policy.
+func (o LookupPolicyResultOutput) ExtendedProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPolicyResult) map[string]string { return v.ExtendedProperties }).(pulumi.StringMapOutput)
 }
 
 // Resource ID.

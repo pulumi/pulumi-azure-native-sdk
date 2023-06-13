@@ -49,7 +49,16 @@ func NewRegistry(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:machinelearningservices:Registry"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:Registry"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:Registry"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Registry"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:Registry"),

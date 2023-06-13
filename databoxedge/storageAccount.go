@@ -12,7 +12,8 @@ import (
 )
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type StorageAccount struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +31,7 @@ type StorageAccount struct {
 	StorageAccountCredentialId pulumi.StringPtrOutput `pulumi:"storageAccountCredentialId"`
 	// Current status of the storage account
 	StorageAccountStatus pulumi.StringPtrOutput `pulumi:"storageAccountStatus"`
-	// StorageAccount object on ASE device
+	// Metadata pertaining to creation and last modification of StorageAccount
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -53,18 +54,6 @@ func NewStorageAccount(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190801:StorageAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200501preview:StorageAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901:StorageAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901preview:StorageAccount"),
-		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20201201:StorageAccount"),
 		},
@@ -232,7 +221,7 @@ func (o StorageAccountOutput) StorageAccountStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.StringPtrOutput { return v.StorageAccountStatus }).(pulumi.StringPtrOutput)
 }
 
-// StorageAccount object on ASE device
+// Metadata pertaining to creation and last modification of StorageAccount
 func (o StorageAccountOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *StorageAccount) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

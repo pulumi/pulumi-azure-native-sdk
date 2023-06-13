@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
-//
-// Deprecated: azure-native:datashare/v20200901:BlobContainerDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:BlobContainerDataSet to guarantee forwards compatibility.
-func LookupBlobContainerDataSet(ctx *pulumi.Context, args *LookupBlobContainerDataSetArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerDataSetResult, error) {
-	var rv LookupBlobContainerDataSetResult
+func GetBlobContainerDataSet(ctx *pulumi.Context, args *GetBlobContainerDataSetArgs, opts ...pulumi.InvokeOption) (*GetBlobContainerDataSetResult, error) {
+	var rv GetBlobContainerDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getBlobContainerDataSet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupBlobContainerDataSet(ctx *pulumi.Context, args *LookupBlobContainerDa
 	return &rv, nil
 }
 
-type LookupBlobContainerDataSetArgs struct {
+type GetBlobContainerDataSetArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -34,7 +32,7 @@ type LookupBlobContainerDataSetArgs struct {
 }
 
 // An Azure storage blob container data set.
-type LookupBlobContainerDataSetResult struct {
+type GetBlobContainerDataSetResult struct {
 	// BLOB Container name.
 	ContainerName string `pulumi:"containerName"`
 	// Unique id for identifying a data set resource
@@ -58,20 +56,20 @@ type LookupBlobContainerDataSetResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupBlobContainerDataSetOutput(ctx *pulumi.Context, args LookupBlobContainerDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupBlobContainerDataSetResultOutput {
+func GetBlobContainerDataSetOutput(ctx *pulumi.Context, args GetBlobContainerDataSetOutputArgs, opts ...pulumi.InvokeOption) GetBlobContainerDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBlobContainerDataSetResult, error) {
-			args := v.(LookupBlobContainerDataSetArgs)
-			r, err := LookupBlobContainerDataSet(ctx, &args, opts...)
-			var s LookupBlobContainerDataSetResult
+		ApplyT(func(v interface{}) (GetBlobContainerDataSetResult, error) {
+			args := v.(GetBlobContainerDataSetArgs)
+			r, err := GetBlobContainerDataSet(ctx, &args, opts...)
+			var s GetBlobContainerDataSetResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupBlobContainerDataSetResultOutput)
+		}).(GetBlobContainerDataSetResultOutput)
 }
 
-type LookupBlobContainerDataSetOutputArgs struct {
+type GetBlobContainerDataSetOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -82,76 +80,76 @@ type LookupBlobContainerDataSetOutputArgs struct {
 	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
-func (LookupBlobContainerDataSetOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupBlobContainerDataSetArgs)(nil)).Elem()
+func (GetBlobContainerDataSetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlobContainerDataSetArgs)(nil)).Elem()
 }
 
 // An Azure storage blob container data set.
-type LookupBlobContainerDataSetResultOutput struct{ *pulumi.OutputState }
+type GetBlobContainerDataSetResultOutput struct{ *pulumi.OutputState }
 
-func (LookupBlobContainerDataSetResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupBlobContainerDataSetResult)(nil)).Elem()
+func (GetBlobContainerDataSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlobContainerDataSetResult)(nil)).Elem()
 }
 
-func (o LookupBlobContainerDataSetResultOutput) ToLookupBlobContainerDataSetResultOutput() LookupBlobContainerDataSetResultOutput {
+func (o GetBlobContainerDataSetResultOutput) ToGetBlobContainerDataSetResultOutput() GetBlobContainerDataSetResultOutput {
 	return o
 }
 
-func (o LookupBlobContainerDataSetResultOutput) ToLookupBlobContainerDataSetResultOutputWithContext(ctx context.Context) LookupBlobContainerDataSetResultOutput {
+func (o GetBlobContainerDataSetResultOutput) ToGetBlobContainerDataSetResultOutputWithContext(ctx context.Context) GetBlobContainerDataSetResultOutput {
 	return o
 }
 
 // BLOB Container name.
-func (o LookupBlobContainerDataSetResultOutput) ContainerName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.ContainerName }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.ContainerName }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource
-func (o LookupBlobContainerDataSetResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupBlobContainerDataSetResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set.
 // Expected value is 'Container'.
-func (o LookupBlobContainerDataSetResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupBlobContainerDataSetResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Resource group of storage account
-func (o LookupBlobContainerDataSetResultOutput) ResourceGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) ResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
 }
 
 // Storage account name of the source data set
-func (o LookupBlobContainerDataSetResultOutput) StorageAccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.StorageAccountName }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.StorageAccountName }).(pulumi.StringOutput)
 }
 
 // Subscription id of storage account
-func (o LookupBlobContainerDataSetResultOutput) SubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupBlobContainerDataSetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetBlobContainerDataSetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the azure resource
-func (o LookupBlobContainerDataSetResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetBlobContainerDataSetResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobContainerDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupBlobContainerDataSetResultOutput{})
+	pulumi.RegisterOutputType(GetBlobContainerDataSetResultOutput{})
 }

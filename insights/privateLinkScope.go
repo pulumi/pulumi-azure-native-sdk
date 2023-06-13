@@ -12,21 +12,26 @@ import (
 )
 
 // An Azure Monitor PrivateLinkScope definition.
-// API Version: 2019-10-17-preview.
+// API Version: 2021-07-01-preview.
+// Previous API Version: 2019-10-17-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateLinkScope struct {
 	pulumi.CustomResourceState
 
-	// Resource location
+	// Access mode settings
+	AccessModeSettings AccessModeSettingsResponseOutput `pulumi:"accessModeSettings"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource tags
+	// System data
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -37,6 +42,9 @@ func NewPrivateLinkScope(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccessModeSettings == nil {
+		return nil, errors.New("invalid value for required argument 'AccessModeSettings'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -81,25 +89,29 @@ func (PrivateLinkScopeState) ElementType() reflect.Type {
 }
 
 type privateLinkScopeArgs struct {
-	// Resource location
+	// Access mode settings
+	AccessModeSettings AccessModeSettings `pulumi:"accessModeSettings"`
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Azure Monitor PrivateLinkScope resource.
 	ScopeName *string `pulumi:"scopeName"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PrivateLinkScope resource.
 type PrivateLinkScopeArgs struct {
-	// Resource location
+	// Access mode settings
+	AccessModeSettings AccessModeSettingsInput
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Azure Monitor PrivateLinkScope resource.
 	ScopeName pulumi.StringPtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -140,12 +152,17 @@ func (o PrivateLinkScopeOutput) ToPrivateLinkScopeOutputWithContext(ctx context.
 	return o
 }
 
-// Resource location
+// Access mode settings
+func (o PrivateLinkScopeOutput) AccessModeSettings() AccessModeSettingsResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkScope) AccessModeSettingsResponseOutput { return v.AccessModeSettings }).(AccessModeSettingsResponseOutput)
+}
+
+// The geo-location where the resource lives
 func (o PrivateLinkScopeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLinkScope) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o PrivateLinkScopeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLinkScope) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -162,12 +179,17 @@ func (o PrivateLinkScopeOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLinkScope) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// System data
+func (o PrivateLinkScopeOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkScope) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o PrivateLinkScopeOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateLinkScope) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateLinkScopeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLinkScope) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

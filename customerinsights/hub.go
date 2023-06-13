@@ -13,6 +13,7 @@ import (
 
 // Hub resource.
 // API Version: 2017-04-26.
+// Previous API Version: 2017-04-26. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Hub struct {
 	pulumi.CustomResourceState
 
@@ -47,9 +48,6 @@ func NewHub(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:customerinsights/v20170101:Hub"),
-		},
 		{
 			Type: pulumi.String("azure-native:customerinsights/v20170426:Hub"),
 		},

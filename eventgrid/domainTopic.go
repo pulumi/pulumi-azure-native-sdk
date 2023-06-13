@@ -12,7 +12,8 @@ import (
 )
 
 // Domain Topic.
-// API Version: 2020-06-01.
+// API Version: 2022-06-15.
+// Previous API Version: 2020-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DomainTopic struct {
 	pulumi.CustomResourceState
 
@@ -41,15 +42,6 @@ func NewDomainTopic(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid/v20190201preview:DomainTopic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20190601:DomainTopic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20200101preview:DomainTopic"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20200401preview:DomainTopic"),
 		},
 		{
@@ -69,6 +61,9 @@ func NewDomainTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20220615:DomainTopic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:DomainTopic"),
 		},
 	})
 	opts = append(opts, aliases)

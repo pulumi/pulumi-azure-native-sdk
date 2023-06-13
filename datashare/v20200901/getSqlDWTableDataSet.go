@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
-//
-// Deprecated: azure-native:datashare/v20200901:SqlDWTableDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:SqlDWTableDataSet to guarantee forwards compatibility.
-func LookupSqlDWTableDataSet(ctx *pulumi.Context, args *LookupSqlDWTableDataSetArgs, opts ...pulumi.InvokeOption) (*LookupSqlDWTableDataSetResult, error) {
-	var rv LookupSqlDWTableDataSetResult
+func GetSqlDWTableDataSet(ctx *pulumi.Context, args *GetSqlDWTableDataSetArgs, opts ...pulumi.InvokeOption) (*GetSqlDWTableDataSetResult, error) {
+	var rv GetSqlDWTableDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getSqlDWTableDataSet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupSqlDWTableDataSet(ctx *pulumi.Context, args *LookupSqlDWTableDataSetA
 	return &rv, nil
 }
 
-type LookupSqlDWTableDataSetArgs struct {
+type GetSqlDWTableDataSetArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -34,7 +32,7 @@ type LookupSqlDWTableDataSetArgs struct {
 }
 
 // A SQL DW table data set.
-type LookupSqlDWTableDataSetResult struct {
+type GetSqlDWTableDataSetResult struct {
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// DataWarehouse name of the source data set
@@ -58,20 +56,20 @@ type LookupSqlDWTableDataSetResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupSqlDWTableDataSetOutput(ctx *pulumi.Context, args LookupSqlDWTableDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDWTableDataSetResultOutput {
+func GetSqlDWTableDataSetOutput(ctx *pulumi.Context, args GetSqlDWTableDataSetOutputArgs, opts ...pulumi.InvokeOption) GetSqlDWTableDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlDWTableDataSetResult, error) {
-			args := v.(LookupSqlDWTableDataSetArgs)
-			r, err := LookupSqlDWTableDataSet(ctx, &args, opts...)
-			var s LookupSqlDWTableDataSetResult
+		ApplyT(func(v interface{}) (GetSqlDWTableDataSetResult, error) {
+			args := v.(GetSqlDWTableDataSetArgs)
+			r, err := GetSqlDWTableDataSet(ctx, &args, opts...)
+			var s GetSqlDWTableDataSetResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupSqlDWTableDataSetResultOutput)
+		}).(GetSqlDWTableDataSetResultOutput)
 }
 
-type LookupSqlDWTableDataSetOutputArgs struct {
+type GetSqlDWTableDataSetOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -82,76 +80,76 @@ type LookupSqlDWTableDataSetOutputArgs struct {
 	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
-func (LookupSqlDWTableDataSetOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupSqlDWTableDataSetArgs)(nil)).Elem()
+func (GetSqlDWTableDataSetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlDWTableDataSetArgs)(nil)).Elem()
 }
 
 // A SQL DW table data set.
-type LookupSqlDWTableDataSetResultOutput struct{ *pulumi.OutputState }
+type GetSqlDWTableDataSetResultOutput struct{ *pulumi.OutputState }
 
-func (LookupSqlDWTableDataSetResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupSqlDWTableDataSetResult)(nil)).Elem()
+func (GetSqlDWTableDataSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlDWTableDataSetResult)(nil)).Elem()
 }
 
-func (o LookupSqlDWTableDataSetResultOutput) ToLookupSqlDWTableDataSetResultOutput() LookupSqlDWTableDataSetResultOutput {
+func (o GetSqlDWTableDataSetResultOutput) ToGetSqlDWTableDataSetResultOutput() GetSqlDWTableDataSetResultOutput {
 	return o
 }
 
-func (o LookupSqlDWTableDataSetResultOutput) ToLookupSqlDWTableDataSetResultOutputWithContext(ctx context.Context) LookupSqlDWTableDataSetResultOutput {
+func (o GetSqlDWTableDataSetResultOutput) ToGetSqlDWTableDataSetResultOutputWithContext(ctx context.Context) GetSqlDWTableDataSetResultOutput {
 	return o
 }
 
 // Unique id for identifying a data set resource
-func (o LookupSqlDWTableDataSetResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // DataWarehouse name of the source data set
-func (o LookupSqlDWTableDataSetResultOutput) DataWarehouseName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.DataWarehouseName }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) DataWarehouseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.DataWarehouseName }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupSqlDWTableDataSetResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set.
 // Expected value is 'SqlDWTable'.
-func (o LookupSqlDWTableDataSetResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupSqlDWTableDataSetResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Schema of the table. Default value is dbo.
-func (o LookupSqlDWTableDataSetResultOutput) SchemaName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.SchemaName }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.SchemaName }).(pulumi.StringOutput)
 }
 
 // Resource id of SQL server
-func (o LookupSqlDWTableDataSetResultOutput) SqlServerResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.SqlServerResourceId }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) SqlServerResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.SqlServerResourceId }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupSqlDWTableDataSetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetSqlDWTableDataSetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // SQL DW table name.
-func (o LookupSqlDWTableDataSetResultOutput) TableName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.TableName }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
 // Type of the azure resource
-func (o LookupSqlDWTableDataSetResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupSqlDWTableDataSetResultOutput{})
+	pulumi.RegisterOutputType(GetSqlDWTableDataSetResultOutput{})
 }

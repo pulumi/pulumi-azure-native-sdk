@@ -11,7 +11,8 @@ import (
 )
 
 // The management group details.
-// API Version: 2020-05-01.
+// API Version: 2021-04-01.
+// Previous API Version: 2020-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ManagementGroup struct {
 	pulumi.CustomResourceState
 
@@ -37,21 +38,6 @@ func NewManagementGroup(ctx *pulumi.Context,
 	}
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:management/v20171101preview:ManagementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:management/v20180101preview:ManagementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:management/v20180301preview:ManagementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:management/v20191101:ManagementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:management/v20200201:ManagementGroup"),
-		},
 		{
 			Type: pulumi.String("azure-native:management/v20200501:ManagementGroup"),
 		},

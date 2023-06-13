@@ -10,6 +10,64 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Generates version number that will be latest based on existing version numbers.
+type DistributeVersionerLatest struct {
+	// Major version for the generated version number. Determine what is "latest" based on versions with this value as the major version. -1 is equivalent to leaving it unset.
+	Major *int `pulumi:"major"`
+	// Version numbering scheme to be used.
+	// Expected value is 'Latest'.
+	Scheme string `pulumi:"scheme"`
+}
+
+// Defaults sets the appropriate defaults for DistributeVersionerLatest
+func (val *DistributeVersionerLatest) Defaults() *DistributeVersionerLatest {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Major == nil {
+		major_ := -1
+		tmp.Major = &major_
+	}
+	return &tmp
+}
+
+// Generates version number that will be latest based on existing version numbers.
+type DistributeVersionerLatestResponse struct {
+	// Major version for the generated version number. Determine what is "latest" based on versions with this value as the major version. -1 is equivalent to leaving it unset.
+	Major *int `pulumi:"major"`
+	// Version numbering scheme to be used.
+	// Expected value is 'Latest'.
+	Scheme string `pulumi:"scheme"`
+}
+
+// Defaults sets the appropriate defaults for DistributeVersionerLatestResponse
+func (val *DistributeVersionerLatestResponse) Defaults() *DistributeVersionerLatestResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Major == nil {
+		major_ := -1
+		tmp.Major = &major_
+	}
+	return &tmp
+}
+
+// Generates version number based on version number of source image
+type DistributeVersionerSource struct {
+	// Version numbering scheme to be used.
+	// Expected value is 'Source'.
+	Scheme string `pulumi:"scheme"`
+}
+
+// Generates version number based on version number of source image
+type DistributeVersionerSourceResponse struct {
+	// Version numbering scheme to be used.
+	// Expected value is 'Source'.
+	Scheme string `pulumi:"scheme"`
+}
+
 // Uploads files to VMs (Linux, Windows). Corresponds to Packer file provisioner
 type ImageTemplateFileCustomizer struct {
 	// The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
@@ -66,12 +124,68 @@ func (val *ImageTemplateFileCustomizerResponse) Defaults() *ImageTemplateFileCus
 	return &tmp
 }
 
+// Uploads files required for validation to VMs (Linux, Windows). Corresponds to Packer file provisioner
+type ImageTemplateFileValidator struct {
+	// The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
+	Destination *string `pulumi:"destination"`
+	// Friendly Name to provide context on what this validation step does
+	Name *string `pulumi:"name"`
+	// SHA256 checksum of the file provided in the sourceUri field above
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// The URI of the file to be uploaded to the VM for validation. It can be a github link, Azure Storage URI (authorized or SAS), etc
+	SourceUri *string `pulumi:"sourceUri"`
+	// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+	// Expected value is 'File'.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplateFileValidator
+func (val *ImageTemplateFileValidator) Defaults() *ImageTemplateFileValidator {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Sha256Checksum == nil {
+		sha256Checksum_ := ""
+		tmp.Sha256Checksum = &sha256Checksum_
+	}
+	return &tmp
+}
+
+// Uploads files required for validation to VMs (Linux, Windows). Corresponds to Packer file provisioner
+type ImageTemplateFileValidatorResponse struct {
+	// The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
+	Destination *string `pulumi:"destination"`
+	// Friendly Name to provide context on what this validation step does
+	Name *string `pulumi:"name"`
+	// SHA256 checksum of the file provided in the sourceUri field above
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// The URI of the file to be uploaded to the VM for validation. It can be a github link, Azure Storage URI (authorized or SAS), etc
+	SourceUri *string `pulumi:"sourceUri"`
+	// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+	// Expected value is 'File'.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplateFileValidatorResponse
+func (val *ImageTemplateFileValidatorResponse) Defaults() *ImageTemplateFileValidatorResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Sha256Checksum == nil {
+		sha256Checksum_ := ""
+		tmp.Sha256Checksum = &sha256Checksum_
+	}
+	return &tmp
+}
+
 // Identity for the image template.
 type ImageTemplateIdentity struct {
 	// The type of identity used for the image template. The type 'None' will remove any identities from the image template.
 	Type *ResourceIdentityType `pulumi:"type"`
-	// The list of user identities associated with the image template. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ImageTemplateIdentityInput is an input type that accepts ImageTemplateIdentityArgs and ImageTemplateIdentityOutput values.
@@ -89,8 +203,8 @@ type ImageTemplateIdentityInput interface {
 type ImageTemplateIdentityArgs struct {
 	// The type of identity used for the image template. The type 'None' will remove any identities from the image template.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
-	// The list of user identities associated with the image template. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ImageTemplateIdentityArgs) ElementType() reflect.Type {
@@ -125,17 +239,17 @@ func (o ImageTemplateIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v ImageTemplateIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
 }
 
-// The list of user identities associated with the image template. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ImageTemplateIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ImageTemplateIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ImageTemplateIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ImageTemplateIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 // Identity for the image template.
 type ImageTemplateIdentityResponse struct {
 	// The type of identity used for the image template. The type 'None' will remove any identities from the image template.
 	Type *string `pulumi:"type"`
-	// The list of user identities associated with the image template. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]ImageTemplateIdentityResponseUserAssignedIdentities `pulumi:"userAssignedIdentities"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Identity for the image template.
@@ -158,62 +272,11 @@ func (o ImageTemplateIdentityResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageTemplateIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The list of user identities associated with the image template. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ImageTemplateIdentityResponseOutput) UserAssignedIdentities() ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v ImageTemplateIdentityResponse) map[string]ImageTemplateIdentityResponseUserAssignedIdentities {
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ImageTemplateIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ImageTemplateIdentityResponse) map[string]UserAssignedIdentityResponse {
 		return v.UserAssignedIdentities
-	}).(ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput)
-}
-
-type ImageTemplateIdentityResponseUserAssignedIdentities struct {
-	// The client id of user assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal id of user assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-type ImageTemplateIdentityResponseUserAssignedIdentitiesOutput struct{ *pulumi.OutputState }
-
-func (ImageTemplateIdentityResponseUserAssignedIdentitiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageTemplateIdentityResponseUserAssignedIdentities)(nil)).Elem()
-}
-
-func (o ImageTemplateIdentityResponseUserAssignedIdentitiesOutput) ToImageTemplateIdentityResponseUserAssignedIdentitiesOutput() ImageTemplateIdentityResponseUserAssignedIdentitiesOutput {
-	return o
-}
-
-func (o ImageTemplateIdentityResponseUserAssignedIdentitiesOutput) ToImageTemplateIdentityResponseUserAssignedIdentitiesOutputWithContext(ctx context.Context) ImageTemplateIdentityResponseUserAssignedIdentitiesOutput {
-	return o
-}
-
-// The client id of user assigned identity.
-func (o ImageTemplateIdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v ImageTemplateIdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal id of user assigned identity.
-func (o ImageTemplateIdentityResponseUserAssignedIdentitiesOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ImageTemplateIdentityResponseUserAssignedIdentities) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput struct{ *pulumi.OutputState }
-
-func (ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ImageTemplateIdentityResponseUserAssignedIdentities)(nil)).Elem()
-}
-
-func (o ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput) ToImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput() ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput {
-	return o
-}
-
-func (o ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput) ToImageTemplateIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput {
-	return o
-}
-
-func (o ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) ImageTemplateIdentityResponseUserAssignedIdentitiesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ImageTemplateIdentityResponseUserAssignedIdentities {
-		return vs[0].(map[string]ImageTemplateIdentityResponseUserAssignedIdentities)[vs[1].(string)]
-	}).(ImageTemplateIdentityResponseUserAssignedIdentitiesOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Describes the latest status of running an image template
@@ -300,7 +363,7 @@ type ImageTemplateManagedImageDistributorResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Describes an image source that is a managed image in customer subscription.
+// Describes an image source that is a managed image in customer subscription. This image must reside in the same subscription and region as the Image Builder template.
 type ImageTemplateManagedImageSource struct {
 	// ARM resource id of the managed image in customer subscription
 	ImageId string `pulumi:"imageId"`
@@ -309,7 +372,7 @@ type ImageTemplateManagedImageSource struct {
 	Type string `pulumi:"type"`
 }
 
-// Describes an image source that is a managed image in customer subscription.
+// Describes an image source that is a managed image in customer subscription. This image must reside in the same subscription and region as the Image Builder template.
 type ImageTemplateManagedImageSourceResponse struct {
 	// ARM resource id of the managed image in customer subscription
 	ImageId string `pulumi:"imageId"`
@@ -331,12 +394,14 @@ type ImageTemplatePlatformImageSource struct {
 	// Specifies the type of source image you want to start with.
 	// Expected value is 'PlatformImage'.
 	Type string `pulumi:"type"`
-	// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted. Specifying 'latest' could cause ROUNDTRIP_INCONSISTENT_PROPERTY issue which will be fixed.
+	// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
 	Version *string `pulumi:"version"`
 }
 
 // Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
 type ImageTemplatePlatformImageSourceResponse struct {
+	// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
+	ExactVersion string `pulumi:"exactVersion"`
 	// Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
 	Offer *string `pulumi:"offer"`
 	// Optional configuration of purchase plan for platform image.
@@ -348,7 +413,7 @@ type ImageTemplatePlatformImageSourceResponse struct {
 	// Specifies the type of source image you want to start with.
 	// Expected value is 'PlatformImage'.
 	Type string `pulumi:"type"`
-	// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted. Specifying 'latest' could cause ROUNDTRIP_INCONSISTENT_PROPERTY issue which will be fixed.
+	// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
 	Version *string `pulumi:"version"`
 }
 
@@ -436,6 +501,812 @@ func (val *ImageTemplatePowerShellCustomizerResponse) Defaults() *ImageTemplateP
 	return &tmp
 }
 
+// Runs the specified PowerShell script during the validation phase (Windows). Corresponds to Packer powershell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.
+type ImageTemplatePowerShellValidator struct {
+	// Array of PowerShell commands to execute
+	Inline []string `pulumi:"inline"`
+	// Friendly Name to provide context on what this validation step does
+	Name *string `pulumi:"name"`
+	// If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.
+	RunAsSystem *bool `pulumi:"runAsSystem"`
+	// If specified, the PowerShell script will be run with elevated privileges
+	RunElevated *bool `pulumi:"runElevated"`
+	// URI of the PowerShell script to be run for validation. It can be a github link, Azure Storage URI, etc
+	ScriptUri *string `pulumi:"scriptUri"`
+	// SHA256 checksum of the power shell script provided in the scriptUri field above
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+	// Expected value is 'PowerShell'.
+	Type string `pulumi:"type"`
+	// Valid exit codes for the PowerShell script. [Default: 0]
+	ValidExitCodes []int `pulumi:"validExitCodes"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplatePowerShellValidator
+func (val *ImageTemplatePowerShellValidator) Defaults() *ImageTemplatePowerShellValidator {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RunAsSystem == nil {
+		runAsSystem_ := false
+		tmp.RunAsSystem = &runAsSystem_
+	}
+	if tmp.RunElevated == nil {
+		runElevated_ := false
+		tmp.RunElevated = &runElevated_
+	}
+	if tmp.Sha256Checksum == nil {
+		sha256Checksum_ := ""
+		tmp.Sha256Checksum = &sha256Checksum_
+	}
+	return &tmp
+}
+
+// Runs the specified PowerShell script during the validation phase (Windows). Corresponds to Packer powershell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.
+type ImageTemplatePowerShellValidatorResponse struct {
+	// Array of PowerShell commands to execute
+	Inline []string `pulumi:"inline"`
+	// Friendly Name to provide context on what this validation step does
+	Name *string `pulumi:"name"`
+	// If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.
+	RunAsSystem *bool `pulumi:"runAsSystem"`
+	// If specified, the PowerShell script will be run with elevated privileges
+	RunElevated *bool `pulumi:"runElevated"`
+	// URI of the PowerShell script to be run for validation. It can be a github link, Azure Storage URI, etc
+	ScriptUri *string `pulumi:"scriptUri"`
+	// SHA256 checksum of the power shell script provided in the scriptUri field above
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+	// Expected value is 'PowerShell'.
+	Type string `pulumi:"type"`
+	// Valid exit codes for the PowerShell script. [Default: 0]
+	ValidExitCodes []int `pulumi:"validExitCodes"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplatePowerShellValidatorResponse
+func (val *ImageTemplatePowerShellValidatorResponse) Defaults() *ImageTemplatePowerShellValidatorResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RunAsSystem == nil {
+		runAsSystem_ := false
+		tmp.RunAsSystem = &runAsSystem_
+	}
+	if tmp.RunElevated == nil {
+		runElevated_ := false
+		tmp.RunElevated = &runElevated_
+	}
+	if tmp.Sha256Checksum == nil {
+		sha256Checksum_ := ""
+		tmp.Sha256Checksum = &sha256Checksum_
+	}
+	return &tmp
+}
+
+// Specifies optimization to be performed on image.
+type ImageTemplatePropertiesOptimize struct {
+	// Optimization is applied on the image for a faster VM boot.
+	VmBoot *ImageTemplatePropertiesVmBoot `pulumi:"vmBoot"`
+}
+
+// ImageTemplatePropertiesOptimizeInput is an input type that accepts ImageTemplatePropertiesOptimizeArgs and ImageTemplatePropertiesOptimizeOutput values.
+// You can construct a concrete instance of `ImageTemplatePropertiesOptimizeInput` via:
+//
+//	ImageTemplatePropertiesOptimizeArgs{...}
+type ImageTemplatePropertiesOptimizeInput interface {
+	pulumi.Input
+
+	ToImageTemplatePropertiesOptimizeOutput() ImageTemplatePropertiesOptimizeOutput
+	ToImageTemplatePropertiesOptimizeOutputWithContext(context.Context) ImageTemplatePropertiesOptimizeOutput
+}
+
+// Specifies optimization to be performed on image.
+type ImageTemplatePropertiesOptimizeArgs struct {
+	// Optimization is applied on the image for a faster VM boot.
+	VmBoot ImageTemplatePropertiesVmBootPtrInput `pulumi:"vmBoot"`
+}
+
+func (ImageTemplatePropertiesOptimizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesOptimize)(nil)).Elem()
+}
+
+func (i ImageTemplatePropertiesOptimizeArgs) ToImageTemplatePropertiesOptimizeOutput() ImageTemplatePropertiesOptimizeOutput {
+	return i.ToImageTemplatePropertiesOptimizeOutputWithContext(context.Background())
+}
+
+func (i ImageTemplatePropertiesOptimizeArgs) ToImageTemplatePropertiesOptimizeOutputWithContext(ctx context.Context) ImageTemplatePropertiesOptimizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesOptimizeOutput)
+}
+
+func (i ImageTemplatePropertiesOptimizeArgs) ToImageTemplatePropertiesOptimizePtrOutput() ImageTemplatePropertiesOptimizePtrOutput {
+	return i.ToImageTemplatePropertiesOptimizePtrOutputWithContext(context.Background())
+}
+
+func (i ImageTemplatePropertiesOptimizeArgs) ToImageTemplatePropertiesOptimizePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesOptimizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesOptimizeOutput).ToImageTemplatePropertiesOptimizePtrOutputWithContext(ctx)
+}
+
+// ImageTemplatePropertiesOptimizePtrInput is an input type that accepts ImageTemplatePropertiesOptimizeArgs, ImageTemplatePropertiesOptimizePtr and ImageTemplatePropertiesOptimizePtrOutput values.
+// You can construct a concrete instance of `ImageTemplatePropertiesOptimizePtrInput` via:
+//
+//	        ImageTemplatePropertiesOptimizeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageTemplatePropertiesOptimizePtrInput interface {
+	pulumi.Input
+
+	ToImageTemplatePropertiesOptimizePtrOutput() ImageTemplatePropertiesOptimizePtrOutput
+	ToImageTemplatePropertiesOptimizePtrOutputWithContext(context.Context) ImageTemplatePropertiesOptimizePtrOutput
+}
+
+type imageTemplatePropertiesOptimizePtrType ImageTemplatePropertiesOptimizeArgs
+
+func ImageTemplatePropertiesOptimizePtr(v *ImageTemplatePropertiesOptimizeArgs) ImageTemplatePropertiesOptimizePtrInput {
+	return (*imageTemplatePropertiesOptimizePtrType)(v)
+}
+
+func (*imageTemplatePropertiesOptimizePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesOptimize)(nil)).Elem()
+}
+
+func (i *imageTemplatePropertiesOptimizePtrType) ToImageTemplatePropertiesOptimizePtrOutput() ImageTemplatePropertiesOptimizePtrOutput {
+	return i.ToImageTemplatePropertiesOptimizePtrOutputWithContext(context.Background())
+}
+
+func (i *imageTemplatePropertiesOptimizePtrType) ToImageTemplatePropertiesOptimizePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesOptimizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesOptimizePtrOutput)
+}
+
+// Specifies optimization to be performed on image.
+type ImageTemplatePropertiesOptimizeOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesOptimizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesOptimize)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesOptimizeOutput) ToImageTemplatePropertiesOptimizeOutput() ImageTemplatePropertiesOptimizeOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesOptimizeOutput) ToImageTemplatePropertiesOptimizeOutputWithContext(ctx context.Context) ImageTemplatePropertiesOptimizeOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesOptimizeOutput) ToImageTemplatePropertiesOptimizePtrOutput() ImageTemplatePropertiesOptimizePtrOutput {
+	return o.ToImageTemplatePropertiesOptimizePtrOutputWithContext(context.Background())
+}
+
+func (o ImageTemplatePropertiesOptimizeOutput) ToImageTemplatePropertiesOptimizePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesOptimizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageTemplatePropertiesOptimize) *ImageTemplatePropertiesOptimize {
+		return &v
+	}).(ImageTemplatePropertiesOptimizePtrOutput)
+}
+
+// Optimization is applied on the image for a faster VM boot.
+func (o ImageTemplatePropertiesOptimizeOutput) VmBoot() ImageTemplatePropertiesVmBootPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesOptimize) *ImageTemplatePropertiesVmBoot { return v.VmBoot }).(ImageTemplatePropertiesVmBootPtrOutput)
+}
+
+type ImageTemplatePropertiesOptimizePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesOptimizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesOptimize)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesOptimizePtrOutput) ToImageTemplatePropertiesOptimizePtrOutput() ImageTemplatePropertiesOptimizePtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesOptimizePtrOutput) ToImageTemplatePropertiesOptimizePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesOptimizePtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesOptimizePtrOutput) Elem() ImageTemplatePropertiesOptimizeOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesOptimize) ImageTemplatePropertiesOptimize {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplatePropertiesOptimize
+		return ret
+	}).(ImageTemplatePropertiesOptimizeOutput)
+}
+
+// Optimization is applied on the image for a faster VM boot.
+func (o ImageTemplatePropertiesOptimizePtrOutput) VmBoot() ImageTemplatePropertiesVmBootPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesOptimize) *ImageTemplatePropertiesVmBoot {
+		if v == nil {
+			return nil
+		}
+		return v.VmBoot
+	}).(ImageTemplatePropertiesVmBootPtrOutput)
+}
+
+// Specifies optimization to be performed on image.
+type ImageTemplatePropertiesResponseOptimize struct {
+	// Optimization is applied on the image for a faster VM boot.
+	VmBoot *ImageTemplatePropertiesResponseVmBoot `pulumi:"vmBoot"`
+}
+
+// Specifies optimization to be performed on image.
+type ImageTemplatePropertiesResponseOptimizeOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesResponseOptimizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesResponseOptimize)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesResponseOptimizeOutput) ToImageTemplatePropertiesResponseOptimizeOutput() ImageTemplatePropertiesResponseOptimizeOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseOptimizeOutput) ToImageTemplatePropertiesResponseOptimizeOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseOptimizeOutput {
+	return o
+}
+
+// Optimization is applied on the image for a faster VM boot.
+func (o ImageTemplatePropertiesResponseOptimizeOutput) VmBoot() ImageTemplatePropertiesResponseVmBootPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesResponseOptimize) *ImageTemplatePropertiesResponseVmBoot {
+		return v.VmBoot
+	}).(ImageTemplatePropertiesResponseVmBootPtrOutput)
+}
+
+type ImageTemplatePropertiesResponseOptimizePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesResponseOptimizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesResponseOptimize)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesResponseOptimizePtrOutput) ToImageTemplatePropertiesResponseOptimizePtrOutput() ImageTemplatePropertiesResponseOptimizePtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseOptimizePtrOutput) ToImageTemplatePropertiesResponseOptimizePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseOptimizePtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseOptimizePtrOutput) Elem() ImageTemplatePropertiesResponseOptimizeOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseOptimize) ImageTemplatePropertiesResponseOptimize {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplatePropertiesResponseOptimize
+		return ret
+	}).(ImageTemplatePropertiesResponseOptimizeOutput)
+}
+
+// Optimization is applied on the image for a faster VM boot.
+func (o ImageTemplatePropertiesResponseOptimizePtrOutput) VmBoot() ImageTemplatePropertiesResponseVmBootPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseOptimize) *ImageTemplatePropertiesResponseVmBoot {
+		if v == nil {
+			return nil
+		}
+		return v.VmBoot
+	}).(ImageTemplatePropertiesResponseVmBootPtrOutput)
+}
+
+// Configuration options and list of validations to be performed on the resulting image.
+type ImageTemplatePropertiesResponseValidate struct {
+	// If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
+	ContinueDistributeOnFailure *bool `pulumi:"continueDistributeOnFailure"`
+	// List of validations to be performed.
+	InVMValidations []interface{} `pulumi:"inVMValidations"`
+	// If this field is set to true, the image specified in the 'source' section will directly be validated. No separate build will be run to generate and then validate a customized image.
+	SourceValidationOnly *bool `pulumi:"sourceValidationOnly"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplatePropertiesResponseValidate
+func (val *ImageTemplatePropertiesResponseValidate) Defaults() *ImageTemplatePropertiesResponseValidate {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContinueDistributeOnFailure == nil {
+		continueDistributeOnFailure_ := false
+		tmp.ContinueDistributeOnFailure = &continueDistributeOnFailure_
+	}
+	if tmp.SourceValidationOnly == nil {
+		sourceValidationOnly_ := false
+		tmp.SourceValidationOnly = &sourceValidationOnly_
+	}
+	return &tmp
+}
+
+// Configuration options and list of validations to be performed on the resulting image.
+type ImageTemplatePropertiesResponseValidateOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesResponseValidateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesResponseValidate)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesResponseValidateOutput) ToImageTemplatePropertiesResponseValidateOutput() ImageTemplatePropertiesResponseValidateOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseValidateOutput) ToImageTemplatePropertiesResponseValidateOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseValidateOutput {
+	return o
+}
+
+// If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
+func (o ImageTemplatePropertiesResponseValidateOutput) ContinueDistributeOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesResponseValidate) *bool { return v.ContinueDistributeOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+// List of validations to be performed.
+func (o ImageTemplatePropertiesResponseValidateOutput) InVMValidations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesResponseValidate) []interface{} { return v.InVMValidations }).(pulumi.ArrayOutput)
+}
+
+// If this field is set to true, the image specified in the 'source' section will directly be validated. No separate build will be run to generate and then validate a customized image.
+func (o ImageTemplatePropertiesResponseValidateOutput) SourceValidationOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesResponseValidate) *bool { return v.SourceValidationOnly }).(pulumi.BoolPtrOutput)
+}
+
+type ImageTemplatePropertiesResponseValidatePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesResponseValidatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesResponseValidate)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesResponseValidatePtrOutput) ToImageTemplatePropertiesResponseValidatePtrOutput() ImageTemplatePropertiesResponseValidatePtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseValidatePtrOutput) ToImageTemplatePropertiesResponseValidatePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseValidatePtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseValidatePtrOutput) Elem() ImageTemplatePropertiesResponseValidateOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseValidate) ImageTemplatePropertiesResponseValidate {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplatePropertiesResponseValidate
+		return ret
+	}).(ImageTemplatePropertiesResponseValidateOutput)
+}
+
+// If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
+func (o ImageTemplatePropertiesResponseValidatePtrOutput) ContinueDistributeOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseValidate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContinueDistributeOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of validations to be performed.
+func (o ImageTemplatePropertiesResponseValidatePtrOutput) InVMValidations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseValidate) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.InVMValidations
+	}).(pulumi.ArrayOutput)
+}
+
+// If this field is set to true, the image specified in the 'source' section will directly be validated. No separate build will be run to generate and then validate a customized image.
+func (o ImageTemplatePropertiesResponseValidatePtrOutput) SourceValidationOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseValidate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SourceValidationOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optimization is applied on the image for a faster VM boot.
+type ImageTemplatePropertiesResponseVmBoot struct {
+	// Enabling this field will improve VM boot time by optimizing the final customized image output.
+	State *string `pulumi:"state"`
+}
+
+// Optimization is applied on the image for a faster VM boot.
+type ImageTemplatePropertiesResponseVmBootOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesResponseVmBootOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesResponseVmBoot)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesResponseVmBootOutput) ToImageTemplatePropertiesResponseVmBootOutput() ImageTemplatePropertiesResponseVmBootOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseVmBootOutput) ToImageTemplatePropertiesResponseVmBootOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseVmBootOutput {
+	return o
+}
+
+// Enabling this field will improve VM boot time by optimizing the final customized image output.
+func (o ImageTemplatePropertiesResponseVmBootOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesResponseVmBoot) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type ImageTemplatePropertiesResponseVmBootPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesResponseVmBootPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesResponseVmBoot)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesResponseVmBootPtrOutput) ToImageTemplatePropertiesResponseVmBootPtrOutput() ImageTemplatePropertiesResponseVmBootPtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseVmBootPtrOutput) ToImageTemplatePropertiesResponseVmBootPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseVmBootPtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseVmBootPtrOutput) Elem() ImageTemplatePropertiesResponseVmBootOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseVmBoot) ImageTemplatePropertiesResponseVmBoot {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplatePropertiesResponseVmBoot
+		return ret
+	}).(ImageTemplatePropertiesResponseVmBootOutput)
+}
+
+// Enabling this field will improve VM boot time by optimizing the final customized image output.
+func (o ImageTemplatePropertiesResponseVmBootPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseVmBoot) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration options and list of validations to be performed on the resulting image.
+type ImageTemplatePropertiesValidate struct {
+	// If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
+	ContinueDistributeOnFailure *bool `pulumi:"continueDistributeOnFailure"`
+	// List of validations to be performed.
+	InVMValidations []interface{} `pulumi:"inVMValidations"`
+	// If this field is set to true, the image specified in the 'source' section will directly be validated. No separate build will be run to generate and then validate a customized image.
+	SourceValidationOnly *bool `pulumi:"sourceValidationOnly"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplatePropertiesValidate
+func (val *ImageTemplatePropertiesValidate) Defaults() *ImageTemplatePropertiesValidate {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContinueDistributeOnFailure == nil {
+		continueDistributeOnFailure_ := false
+		tmp.ContinueDistributeOnFailure = &continueDistributeOnFailure_
+	}
+	if tmp.SourceValidationOnly == nil {
+		sourceValidationOnly_ := false
+		tmp.SourceValidationOnly = &sourceValidationOnly_
+	}
+	return &tmp
+}
+
+// ImageTemplatePropertiesValidateInput is an input type that accepts ImageTemplatePropertiesValidateArgs and ImageTemplatePropertiesValidateOutput values.
+// You can construct a concrete instance of `ImageTemplatePropertiesValidateInput` via:
+//
+//	ImageTemplatePropertiesValidateArgs{...}
+type ImageTemplatePropertiesValidateInput interface {
+	pulumi.Input
+
+	ToImageTemplatePropertiesValidateOutput() ImageTemplatePropertiesValidateOutput
+	ToImageTemplatePropertiesValidateOutputWithContext(context.Context) ImageTemplatePropertiesValidateOutput
+}
+
+// Configuration options and list of validations to be performed on the resulting image.
+type ImageTemplatePropertiesValidateArgs struct {
+	// If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
+	ContinueDistributeOnFailure pulumi.BoolPtrInput `pulumi:"continueDistributeOnFailure"`
+	// List of validations to be performed.
+	InVMValidations pulumi.ArrayInput `pulumi:"inVMValidations"`
+	// If this field is set to true, the image specified in the 'source' section will directly be validated. No separate build will be run to generate and then validate a customized image.
+	SourceValidationOnly pulumi.BoolPtrInput `pulumi:"sourceValidationOnly"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplatePropertiesValidateArgs
+func (val *ImageTemplatePropertiesValidateArgs) Defaults() *ImageTemplatePropertiesValidateArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContinueDistributeOnFailure == nil {
+		tmp.ContinueDistributeOnFailure = pulumi.BoolPtr(false)
+	}
+	if tmp.SourceValidationOnly == nil {
+		tmp.SourceValidationOnly = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (ImageTemplatePropertiesValidateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesValidate)(nil)).Elem()
+}
+
+func (i ImageTemplatePropertiesValidateArgs) ToImageTemplatePropertiesValidateOutput() ImageTemplatePropertiesValidateOutput {
+	return i.ToImageTemplatePropertiesValidateOutputWithContext(context.Background())
+}
+
+func (i ImageTemplatePropertiesValidateArgs) ToImageTemplatePropertiesValidateOutputWithContext(ctx context.Context) ImageTemplatePropertiesValidateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesValidateOutput)
+}
+
+func (i ImageTemplatePropertiesValidateArgs) ToImageTemplatePropertiesValidatePtrOutput() ImageTemplatePropertiesValidatePtrOutput {
+	return i.ToImageTemplatePropertiesValidatePtrOutputWithContext(context.Background())
+}
+
+func (i ImageTemplatePropertiesValidateArgs) ToImageTemplatePropertiesValidatePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesValidatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesValidateOutput).ToImageTemplatePropertiesValidatePtrOutputWithContext(ctx)
+}
+
+// ImageTemplatePropertiesValidatePtrInput is an input type that accepts ImageTemplatePropertiesValidateArgs, ImageTemplatePropertiesValidatePtr and ImageTemplatePropertiesValidatePtrOutput values.
+// You can construct a concrete instance of `ImageTemplatePropertiesValidatePtrInput` via:
+//
+//	        ImageTemplatePropertiesValidateArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageTemplatePropertiesValidatePtrInput interface {
+	pulumi.Input
+
+	ToImageTemplatePropertiesValidatePtrOutput() ImageTemplatePropertiesValidatePtrOutput
+	ToImageTemplatePropertiesValidatePtrOutputWithContext(context.Context) ImageTemplatePropertiesValidatePtrOutput
+}
+
+type imageTemplatePropertiesValidatePtrType ImageTemplatePropertiesValidateArgs
+
+func ImageTemplatePropertiesValidatePtr(v *ImageTemplatePropertiesValidateArgs) ImageTemplatePropertiesValidatePtrInput {
+	return (*imageTemplatePropertiesValidatePtrType)(v)
+}
+
+func (*imageTemplatePropertiesValidatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesValidate)(nil)).Elem()
+}
+
+func (i *imageTemplatePropertiesValidatePtrType) ToImageTemplatePropertiesValidatePtrOutput() ImageTemplatePropertiesValidatePtrOutput {
+	return i.ToImageTemplatePropertiesValidatePtrOutputWithContext(context.Background())
+}
+
+func (i *imageTemplatePropertiesValidatePtrType) ToImageTemplatePropertiesValidatePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesValidatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesValidatePtrOutput)
+}
+
+// Configuration options and list of validations to be performed on the resulting image.
+type ImageTemplatePropertiesValidateOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesValidateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesValidate)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesValidateOutput) ToImageTemplatePropertiesValidateOutput() ImageTemplatePropertiesValidateOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesValidateOutput) ToImageTemplatePropertiesValidateOutputWithContext(ctx context.Context) ImageTemplatePropertiesValidateOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesValidateOutput) ToImageTemplatePropertiesValidatePtrOutput() ImageTemplatePropertiesValidatePtrOutput {
+	return o.ToImageTemplatePropertiesValidatePtrOutputWithContext(context.Background())
+}
+
+func (o ImageTemplatePropertiesValidateOutput) ToImageTemplatePropertiesValidatePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesValidatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageTemplatePropertiesValidate) *ImageTemplatePropertiesValidate {
+		return &v
+	}).(ImageTemplatePropertiesValidatePtrOutput)
+}
+
+// If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
+func (o ImageTemplatePropertiesValidateOutput) ContinueDistributeOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesValidate) *bool { return v.ContinueDistributeOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+// List of validations to be performed.
+func (o ImageTemplatePropertiesValidateOutput) InVMValidations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesValidate) []interface{} { return v.InVMValidations }).(pulumi.ArrayOutput)
+}
+
+// If this field is set to true, the image specified in the 'source' section will directly be validated. No separate build will be run to generate and then validate a customized image.
+func (o ImageTemplatePropertiesValidateOutput) SourceValidationOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesValidate) *bool { return v.SourceValidationOnly }).(pulumi.BoolPtrOutput)
+}
+
+type ImageTemplatePropertiesValidatePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesValidatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesValidate)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesValidatePtrOutput) ToImageTemplatePropertiesValidatePtrOutput() ImageTemplatePropertiesValidatePtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesValidatePtrOutput) ToImageTemplatePropertiesValidatePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesValidatePtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesValidatePtrOutput) Elem() ImageTemplatePropertiesValidateOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesValidate) ImageTemplatePropertiesValidate {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplatePropertiesValidate
+		return ret
+	}).(ImageTemplatePropertiesValidateOutput)
+}
+
+// If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
+func (o ImageTemplatePropertiesValidatePtrOutput) ContinueDistributeOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesValidate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContinueDistributeOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of validations to be performed.
+func (o ImageTemplatePropertiesValidatePtrOutput) InVMValidations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesValidate) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.InVMValidations
+	}).(pulumi.ArrayOutput)
+}
+
+// If this field is set to true, the image specified in the 'source' section will directly be validated. No separate build will be run to generate and then validate a customized image.
+func (o ImageTemplatePropertiesValidatePtrOutput) SourceValidationOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesValidate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SourceValidationOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optimization is applied on the image for a faster VM boot.
+type ImageTemplatePropertiesVmBoot struct {
+	// Enabling this field will improve VM boot time by optimizing the final customized image output.
+	State *VMBootOptimizationState `pulumi:"state"`
+}
+
+// ImageTemplatePropertiesVmBootInput is an input type that accepts ImageTemplatePropertiesVmBootArgs and ImageTemplatePropertiesVmBootOutput values.
+// You can construct a concrete instance of `ImageTemplatePropertiesVmBootInput` via:
+//
+//	ImageTemplatePropertiesVmBootArgs{...}
+type ImageTemplatePropertiesVmBootInput interface {
+	pulumi.Input
+
+	ToImageTemplatePropertiesVmBootOutput() ImageTemplatePropertiesVmBootOutput
+	ToImageTemplatePropertiesVmBootOutputWithContext(context.Context) ImageTemplatePropertiesVmBootOutput
+}
+
+// Optimization is applied on the image for a faster VM boot.
+type ImageTemplatePropertiesVmBootArgs struct {
+	// Enabling this field will improve VM boot time by optimizing the final customized image output.
+	State VMBootOptimizationStatePtrInput `pulumi:"state"`
+}
+
+func (ImageTemplatePropertiesVmBootArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesVmBoot)(nil)).Elem()
+}
+
+func (i ImageTemplatePropertiesVmBootArgs) ToImageTemplatePropertiesVmBootOutput() ImageTemplatePropertiesVmBootOutput {
+	return i.ToImageTemplatePropertiesVmBootOutputWithContext(context.Background())
+}
+
+func (i ImageTemplatePropertiesVmBootArgs) ToImageTemplatePropertiesVmBootOutputWithContext(ctx context.Context) ImageTemplatePropertiesVmBootOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesVmBootOutput)
+}
+
+func (i ImageTemplatePropertiesVmBootArgs) ToImageTemplatePropertiesVmBootPtrOutput() ImageTemplatePropertiesVmBootPtrOutput {
+	return i.ToImageTemplatePropertiesVmBootPtrOutputWithContext(context.Background())
+}
+
+func (i ImageTemplatePropertiesVmBootArgs) ToImageTemplatePropertiesVmBootPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesVmBootPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesVmBootOutput).ToImageTemplatePropertiesVmBootPtrOutputWithContext(ctx)
+}
+
+// ImageTemplatePropertiesVmBootPtrInput is an input type that accepts ImageTemplatePropertiesVmBootArgs, ImageTemplatePropertiesVmBootPtr and ImageTemplatePropertiesVmBootPtrOutput values.
+// You can construct a concrete instance of `ImageTemplatePropertiesVmBootPtrInput` via:
+//
+//	        ImageTemplatePropertiesVmBootArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageTemplatePropertiesVmBootPtrInput interface {
+	pulumi.Input
+
+	ToImageTemplatePropertiesVmBootPtrOutput() ImageTemplatePropertiesVmBootPtrOutput
+	ToImageTemplatePropertiesVmBootPtrOutputWithContext(context.Context) ImageTemplatePropertiesVmBootPtrOutput
+}
+
+type imageTemplatePropertiesVmBootPtrType ImageTemplatePropertiesVmBootArgs
+
+func ImageTemplatePropertiesVmBootPtr(v *ImageTemplatePropertiesVmBootArgs) ImageTemplatePropertiesVmBootPtrInput {
+	return (*imageTemplatePropertiesVmBootPtrType)(v)
+}
+
+func (*imageTemplatePropertiesVmBootPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesVmBoot)(nil)).Elem()
+}
+
+func (i *imageTemplatePropertiesVmBootPtrType) ToImageTemplatePropertiesVmBootPtrOutput() ImageTemplatePropertiesVmBootPtrOutput {
+	return i.ToImageTemplatePropertiesVmBootPtrOutputWithContext(context.Background())
+}
+
+func (i *imageTemplatePropertiesVmBootPtrType) ToImageTemplatePropertiesVmBootPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesVmBootPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesVmBootPtrOutput)
+}
+
+// Optimization is applied on the image for a faster VM boot.
+type ImageTemplatePropertiesVmBootOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesVmBootOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesVmBoot)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesVmBootOutput) ToImageTemplatePropertiesVmBootOutput() ImageTemplatePropertiesVmBootOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesVmBootOutput) ToImageTemplatePropertiesVmBootOutputWithContext(ctx context.Context) ImageTemplatePropertiesVmBootOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesVmBootOutput) ToImageTemplatePropertiesVmBootPtrOutput() ImageTemplatePropertiesVmBootPtrOutput {
+	return o.ToImageTemplatePropertiesVmBootPtrOutputWithContext(context.Background())
+}
+
+func (o ImageTemplatePropertiesVmBootOutput) ToImageTemplatePropertiesVmBootPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesVmBootPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageTemplatePropertiesVmBoot) *ImageTemplatePropertiesVmBoot {
+		return &v
+	}).(ImageTemplatePropertiesVmBootPtrOutput)
+}
+
+// Enabling this field will improve VM boot time by optimizing the final customized image output.
+func (o ImageTemplatePropertiesVmBootOutput) State() VMBootOptimizationStatePtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesVmBoot) *VMBootOptimizationState { return v.State }).(VMBootOptimizationStatePtrOutput)
+}
+
+type ImageTemplatePropertiesVmBootPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesVmBootPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesVmBoot)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesVmBootPtrOutput) ToImageTemplatePropertiesVmBootPtrOutput() ImageTemplatePropertiesVmBootPtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesVmBootPtrOutput) ToImageTemplatePropertiesVmBootPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesVmBootPtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesVmBootPtrOutput) Elem() ImageTemplatePropertiesVmBootOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesVmBoot) ImageTemplatePropertiesVmBoot {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplatePropertiesVmBoot
+		return ret
+	}).(ImageTemplatePropertiesVmBootOutput)
+}
+
+// Enabling this field will improve VM boot time by optimizing the final customized image output.
+func (o ImageTemplatePropertiesVmBootPtrOutput) State() VMBootOptimizationStatePtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesVmBoot) *VMBootOptimizationState {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(VMBootOptimizationStatePtrOutput)
+}
+
 // Reboots a VM and waits for it to come back online (Windows). Corresponds to Packer windows-restart provisioner
 type ImageTemplateRestartCustomizer struct {
 	// Friendly Name to provide context on what this customization step does
@@ -466,23 +1337,27 @@ type ImageTemplateRestartCustomizerResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Distribute via Shared Image Gallery.
+// Distribute via Azure Compute Gallery.
 type ImageTemplateSharedImageDistributor struct {
 	// Tags that will be applied to the artifact once it has been created/updated by the distributor.
 	ArtifactTags map[string]string `pulumi:"artifactTags"`
 	// Flag that indicates whether created image version should be excluded from latest. Omit to use the default (false).
 	ExcludeFromLatest *bool `pulumi:"excludeFromLatest"`
-	// Resource Id of the Shared Image Gallery image
+	// Resource Id of the Azure Compute Gallery image
 	GalleryImageId string `pulumi:"galleryImageId"`
-	// A list of regions that the image will be replicated to
+	// [Deprecated] A list of regions that the image will be replicated to. This list can be specified only if targetRegions is not specified. This field is deprecated - use targetRegions instead.
 	ReplicationRegions []string `pulumi:"replicationRegions"`
 	// The name to be used for the associated RunOutput.
 	RunOutputName string `pulumi:"runOutputName"`
-	// Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).
+	// [Deprecated] Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS). This field can be specified only if replicationRegions is specified. This field is deprecated - use targetRegions instead.
 	StorageAccountType *string `pulumi:"storageAccountType"`
+	// The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
+	TargetRegions []TargetRegion `pulumi:"targetRegions"`
 	// Type of distribution.
 	// Expected value is 'SharedImage'.
 	Type string `pulumi:"type"`
+	// Describes how to generate new x.y.z version number for distribution.
+	Versioning interface{} `pulumi:"versioning"`
 }
 
 // Defaults sets the appropriate defaults for ImageTemplateSharedImageDistributor
@@ -498,23 +1373,27 @@ func (val *ImageTemplateSharedImageDistributor) Defaults() *ImageTemplateSharedI
 	return &tmp
 }
 
-// Distribute via Shared Image Gallery.
+// Distribute via Azure Compute Gallery.
 type ImageTemplateSharedImageDistributorResponse struct {
 	// Tags that will be applied to the artifact once it has been created/updated by the distributor.
 	ArtifactTags map[string]string `pulumi:"artifactTags"`
 	// Flag that indicates whether created image version should be excluded from latest. Omit to use the default (false).
 	ExcludeFromLatest *bool `pulumi:"excludeFromLatest"`
-	// Resource Id of the Shared Image Gallery image
+	// Resource Id of the Azure Compute Gallery image
 	GalleryImageId string `pulumi:"galleryImageId"`
-	// A list of regions that the image will be replicated to
+	// [Deprecated] A list of regions that the image will be replicated to. This list can be specified only if targetRegions is not specified. This field is deprecated - use targetRegions instead.
 	ReplicationRegions []string `pulumi:"replicationRegions"`
 	// The name to be used for the associated RunOutput.
 	RunOutputName string `pulumi:"runOutputName"`
-	// Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).
+	// [Deprecated] Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS). This field can be specified only if replicationRegions is specified. This field is deprecated - use targetRegions instead.
 	StorageAccountType *string `pulumi:"storageAccountType"`
+	// The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
+	TargetRegions []TargetRegionResponse `pulumi:"targetRegions"`
 	// Type of distribution.
 	// Expected value is 'SharedImage'.
 	Type string `pulumi:"type"`
+	// Describes how to generate new x.y.z version number for distribution.
+	Versioning interface{} `pulumi:"versioning"`
 }
 
 // Defaults sets the appropriate defaults for ImageTemplateSharedImageDistributorResponse
@@ -530,18 +1409,20 @@ func (val *ImageTemplateSharedImageDistributorResponse) Defaults() *ImageTemplat
 	return &tmp
 }
 
-// Describes an image source that is an image version in a shared image gallery.
+// Describes an image source that is an image version in an Azure Compute Gallery or a Direct Shared Gallery.
 type ImageTemplateSharedImageVersionSource struct {
-	// ARM resource id of the image version in the shared image gallery
+	// ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
 	ImageVersionId string `pulumi:"imageVersionId"`
 	// Specifies the type of source image you want to start with.
 	// Expected value is 'SharedImageVersion'.
 	Type string `pulumi:"type"`
 }
 
-// Describes an image source that is an image version in a shared image gallery.
+// Describes an image source that is an image version in an Azure Compute Gallery or a Direct Shared Gallery.
 type ImageTemplateSharedImageVersionSourceResponse struct {
-	// ARM resource id of the image version in the shared image gallery
+	// Exact ARM resource id of the image version. This readonly field differs from the image version Id in 'imageVersionId' only if the version name specified in 'imageVersionId' field is 'latest'.
+	ExactVersion string `pulumi:"exactVersion"`
+	// ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
 	ImageVersionId string `pulumi:"imageVersionId"`
 	// Specifies the type of source image you want to start with.
 	// Expected value is 'SharedImageVersion'.
@@ -604,6 +1485,62 @@ func (val *ImageTemplateShellCustomizerResponse) Defaults() *ImageTemplateShellC
 	return &tmp
 }
 
+// Runs the specified shell script during the validation phase (Linux). Corresponds to Packer shell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.
+type ImageTemplateShellValidator struct {
+	// Array of shell commands to execute
+	Inline []string `pulumi:"inline"`
+	// Friendly Name to provide context on what this validation step does
+	Name *string `pulumi:"name"`
+	// URI of the shell script to be run for validation. It can be a github link, Azure Storage URI, etc
+	ScriptUri *string `pulumi:"scriptUri"`
+	// SHA256 checksum of the shell script provided in the scriptUri field
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+	// Expected value is 'Shell'.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplateShellValidator
+func (val *ImageTemplateShellValidator) Defaults() *ImageTemplateShellValidator {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Sha256Checksum == nil {
+		sha256Checksum_ := ""
+		tmp.Sha256Checksum = &sha256Checksum_
+	}
+	return &tmp
+}
+
+// Runs the specified shell script during the validation phase (Linux). Corresponds to Packer shell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.
+type ImageTemplateShellValidatorResponse struct {
+	// Array of shell commands to execute
+	Inline []string `pulumi:"inline"`
+	// Friendly Name to provide context on what this validation step does
+	Name *string `pulumi:"name"`
+	// URI of the shell script to be run for validation. It can be a github link, Azure Storage URI, etc
+	ScriptUri *string `pulumi:"scriptUri"`
+	// SHA256 checksum of the shell script provided in the scriptUri field
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+	// Expected value is 'Shell'.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplateShellValidatorResponse
+func (val *ImageTemplateShellValidatorResponse) Defaults() *ImageTemplateShellValidatorResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Sha256Checksum == nil {
+		sha256Checksum_ := ""
+		tmp.Sha256Checksum = &sha256Checksum_
+	}
+	return &tmp
+}
+
 // Distribute via VHD in a storage account.
 type ImageTemplateVhdDistributor struct {
 	// Tags that will be applied to the artifact once it has been created/updated by the distributor.
@@ -613,6 +1550,8 @@ type ImageTemplateVhdDistributor struct {
 	// Type of distribution.
 	// Expected value is 'VHD'.
 	Type string `pulumi:"type"`
+	// Optional Azure Storage URI for the distributed VHD blob. Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.
+	Uri *string `pulumi:"uri"`
 }
 
 // Distribute via VHD in a storage account.
@@ -624,15 +1563,19 @@ type ImageTemplateVhdDistributorResponse struct {
 	// Type of distribution.
 	// Expected value is 'VHD'.
 	Type string `pulumi:"type"`
+	// Optional Azure Storage URI for the distributed VHD blob. Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.
+	Uri *string `pulumi:"uri"`
 }
 
-// Describes the virtual machine used to build, customize and capture images
+// Describes the virtual machines used to build and validate images
 type ImageTemplateVmProfile struct {
 	// Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size.
 	OsDiskSizeGB *int `pulumi:"osDiskSizeGB"`
+	// Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 	// Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
 	VmSize *string `pulumi:"vmSize"`
-	// Optional configuration of the virtual network to use to deploy the build virtual machine in. Omit if no specific virtual network needs to be used.
+	// Optional configuration of the virtual network to use to deploy the build VM and validation VM in. Omit if no specific virtual network needs to be used.
 	VnetConfig *VirtualNetworkConfig `pulumi:"vnetConfig"`
 }
 
@@ -650,6 +1593,8 @@ func (val *ImageTemplateVmProfile) Defaults() *ImageTemplateVmProfile {
 		vmSize_ := ""
 		tmp.VmSize = &vmSize_
 	}
+	tmp.VnetConfig = tmp.VnetConfig.Defaults()
+
 	return &tmp
 }
 
@@ -664,13 +1609,15 @@ type ImageTemplateVmProfileInput interface {
 	ToImageTemplateVmProfileOutputWithContext(context.Context) ImageTemplateVmProfileOutput
 }
 
-// Describes the virtual machine used to build, customize and capture images
+// Describes the virtual machines used to build and validate images
 type ImageTemplateVmProfileArgs struct {
 	// Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size.
 	OsDiskSizeGB pulumi.IntPtrInput `pulumi:"osDiskSizeGB"`
+	// Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 	// Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
 	VmSize pulumi.StringPtrInput `pulumi:"vmSize"`
-	// Optional configuration of the virtual network to use to deploy the build virtual machine in. Omit if no specific virtual network needs to be used.
+	// Optional configuration of the virtual network to use to deploy the build VM and validation VM in. Omit if no specific virtual network needs to be used.
 	VnetConfig VirtualNetworkConfigPtrInput `pulumi:"vnetConfig"`
 }
 
@@ -686,6 +1633,7 @@ func (val *ImageTemplateVmProfileArgs) Defaults() *ImageTemplateVmProfileArgs {
 	if tmp.VmSize == nil {
 		tmp.VmSize = pulumi.StringPtr("")
 	}
+
 	return &tmp
 }
 func (ImageTemplateVmProfileArgs) ElementType() reflect.Type {
@@ -741,7 +1689,7 @@ func (i *imageTemplateVmProfilePtrType) ToImageTemplateVmProfilePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplateVmProfilePtrOutput)
 }
 
-// Describes the virtual machine used to build, customize and capture images
+// Describes the virtual machines used to build and validate images
 type ImageTemplateVmProfileOutput struct{ *pulumi.OutputState }
 
 func (ImageTemplateVmProfileOutput) ElementType() reflect.Type {
@@ -771,12 +1719,17 @@ func (o ImageTemplateVmProfileOutput) OsDiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ImageTemplateVmProfile) *int { return v.OsDiskSizeGB }).(pulumi.IntPtrOutput)
 }
 
+// Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.
+func (o ImageTemplateVmProfileOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ImageTemplateVmProfile) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
 // Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
 func (o ImageTemplateVmProfileOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageTemplateVmProfile) *string { return v.VmSize }).(pulumi.StringPtrOutput)
 }
 
-// Optional configuration of the virtual network to use to deploy the build virtual machine in. Omit if no specific virtual network needs to be used.
+// Optional configuration of the virtual network to use to deploy the build VM and validation VM in. Omit if no specific virtual network needs to be used.
 func (o ImageTemplateVmProfileOutput) VnetConfig() VirtualNetworkConfigPtrOutput {
 	return o.ApplyT(func(v ImageTemplateVmProfile) *VirtualNetworkConfig { return v.VnetConfig }).(VirtualNetworkConfigPtrOutput)
 }
@@ -815,6 +1768,16 @@ func (o ImageTemplateVmProfilePtrOutput) OsDiskSizeGB() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.
+func (o ImageTemplateVmProfilePtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageTemplateVmProfile) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
 // Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
 func (o ImageTemplateVmProfilePtrOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTemplateVmProfile) *string {
@@ -825,7 +1788,7 @@ func (o ImageTemplateVmProfilePtrOutput) VmSize() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional configuration of the virtual network to use to deploy the build virtual machine in. Omit if no specific virtual network needs to be used.
+// Optional configuration of the virtual network to use to deploy the build VM and validation VM in. Omit if no specific virtual network needs to be used.
 func (o ImageTemplateVmProfilePtrOutput) VnetConfig() VirtualNetworkConfigPtrOutput {
 	return o.ApplyT(func(v *ImageTemplateVmProfile) *VirtualNetworkConfig {
 		if v == nil {
@@ -835,13 +1798,15 @@ func (o ImageTemplateVmProfilePtrOutput) VnetConfig() VirtualNetworkConfigPtrOut
 	}).(VirtualNetworkConfigPtrOutput)
 }
 
-// Describes the virtual machine used to build, customize and capture images
+// Describes the virtual machines used to build and validate images
 type ImageTemplateVmProfileResponse struct {
 	// Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size.
 	OsDiskSizeGB *int `pulumi:"osDiskSizeGB"`
+	// Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 	// Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
 	VmSize *string `pulumi:"vmSize"`
-	// Optional configuration of the virtual network to use to deploy the build virtual machine in. Omit if no specific virtual network needs to be used.
+	// Optional configuration of the virtual network to use to deploy the build VM and validation VM in. Omit if no specific virtual network needs to be used.
 	VnetConfig *VirtualNetworkConfigResponse `pulumi:"vnetConfig"`
 }
 
@@ -859,10 +1824,12 @@ func (val *ImageTemplateVmProfileResponse) Defaults() *ImageTemplateVmProfileRes
 		vmSize_ := ""
 		tmp.VmSize = &vmSize_
 	}
+	tmp.VnetConfig = tmp.VnetConfig.Defaults()
+
 	return &tmp
 }
 
-// Describes the virtual machine used to build, customize and capture images
+// Describes the virtual machines used to build and validate images
 type ImageTemplateVmProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (ImageTemplateVmProfileResponseOutput) ElementType() reflect.Type {
@@ -882,12 +1849,17 @@ func (o ImageTemplateVmProfileResponseOutput) OsDiskSizeGB() pulumi.IntPtrOutput
 	return o.ApplyT(func(v ImageTemplateVmProfileResponse) *int { return v.OsDiskSizeGB }).(pulumi.IntPtrOutput)
 }
 
+// Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.
+func (o ImageTemplateVmProfileResponseOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ImageTemplateVmProfileResponse) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
 // Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
 func (o ImageTemplateVmProfileResponseOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageTemplateVmProfileResponse) *string { return v.VmSize }).(pulumi.StringPtrOutput)
 }
 
-// Optional configuration of the virtual network to use to deploy the build virtual machine in. Omit if no specific virtual network needs to be used.
+// Optional configuration of the virtual network to use to deploy the build VM and validation VM in. Omit if no specific virtual network needs to be used.
 func (o ImageTemplateVmProfileResponseOutput) VnetConfig() VirtualNetworkConfigResponsePtrOutput {
 	return o.ApplyT(func(v ImageTemplateVmProfileResponse) *VirtualNetworkConfigResponse { return v.VnetConfig }).(VirtualNetworkConfigResponsePtrOutput)
 }
@@ -926,6 +1898,16 @@ func (o ImageTemplateVmProfileResponsePtrOutput) OsDiskSizeGB() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.
+func (o ImageTemplateVmProfileResponsePtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageTemplateVmProfileResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
 // Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
 func (o ImageTemplateVmProfileResponsePtrOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTemplateVmProfileResponse) *string {
@@ -936,7 +1918,7 @@ func (o ImageTemplateVmProfileResponsePtrOutput) VmSize() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional configuration of the virtual network to use to deploy the build virtual machine in. Omit if no specific virtual network needs to be used.
+// Optional configuration of the virtual network to use to deploy the build VM and validation VM in. Omit if no specific virtual network needs to be used.
 func (o ImageTemplateVmProfileResponsePtrOutput) VnetConfig() VirtualNetworkConfigResponsePtrOutput {
 	return o.ApplyT(func(v *ImageTemplateVmProfileResponse) *VirtualNetworkConfigResponse {
 		if v == nil {
@@ -961,6 +1943,19 @@ type ImageTemplateWindowsUpdateCustomizer struct {
 	UpdateLimit *int `pulumi:"updateLimit"`
 }
 
+// Defaults sets the appropriate defaults for ImageTemplateWindowsUpdateCustomizer
+func (val *ImageTemplateWindowsUpdateCustomizer) Defaults() *ImageTemplateWindowsUpdateCustomizer {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UpdateLimit == nil {
+		updateLimit_ := 0
+		tmp.UpdateLimit = &updateLimit_
+	}
+	return &tmp
+}
+
 // Installs Windows Updates. Corresponds to Packer Windows Update Provisioner (https://github.com/rgl/packer-provisioner-windows-update)
 type ImageTemplateWindowsUpdateCustomizerResponse struct {
 	// Array of filters to select updates to apply. Omit or specify empty array to use the default (no filter). Refer to above link for examples and detailed description of this field.
@@ -974,6 +1969,19 @@ type ImageTemplateWindowsUpdateCustomizerResponse struct {
 	Type string `pulumi:"type"`
 	// Maximum number of updates to apply at a time. Omit or specify 0 to use the default (1000)
 	UpdateLimit *int `pulumi:"updateLimit"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplateWindowsUpdateCustomizerResponse
+func (val *ImageTemplateWindowsUpdateCustomizerResponse) Defaults() *ImageTemplateWindowsUpdateCustomizerResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UpdateLimit == nil {
+		updateLimit_ := 0
+		tmp.UpdateLimit = &updateLimit_
+	}
+	return &tmp
 }
 
 // Purchase plan configuration for platform image.
@@ -1029,10 +2037,225 @@ func (o ProvisioningErrorResponseOutput) ProvisioningErrorCode() pulumi.StringPt
 	return o.ApplyT(func(v ProvisioningErrorResponse) *string { return v.ProvisioningErrorCode }).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Describes the target region information.
+type TargetRegion struct {
+	// The name of the region.
+	Name string `pulumi:"name"`
+	// The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
+	ReplicaCount *int `pulumi:"replicaCount"`
+	// Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
+	StorageAccountType *string `pulumi:"storageAccountType"`
+}
+
+// Defaults sets the appropriate defaults for TargetRegion
+func (val *TargetRegion) Defaults() *TargetRegion {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReplicaCount == nil {
+		replicaCount_ := 1
+		tmp.ReplicaCount = &replicaCount_
+	}
+	return &tmp
+}
+
+// Describes the target region information.
+type TargetRegionResponse struct {
+	// The name of the region.
+	Name string `pulumi:"name"`
+	// The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
+	ReplicaCount *int `pulumi:"replicaCount"`
+	// Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
+	StorageAccountType *string `pulumi:"storageAccountType"`
+}
+
+// Defaults sets the appropriate defaults for TargetRegionResponse
+func (val *TargetRegionResponse) Defaults() *TargetRegionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReplicaCount == nil {
+		replicaCount_ := 1
+		tmp.ReplicaCount = &replicaCount_
+	}
+	return &tmp
+}
+
+// Describes the status of a trigger
+type TriggerStatusResponse struct {
+	// The status code.
+	Code string `pulumi:"code"`
+	// The detailed status message, including for alerts and error messages.
+	Message string `pulumi:"message"`
+	// The time of the status.
+	Time string `pulumi:"time"`
+}
+
+// Describes the status of a trigger
+type TriggerStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (TriggerStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerStatusResponse)(nil)).Elem()
+}
+
+func (o TriggerStatusResponseOutput) ToTriggerStatusResponseOutput() TriggerStatusResponseOutput {
+	return o
+}
+
+func (o TriggerStatusResponseOutput) ToTriggerStatusResponseOutputWithContext(ctx context.Context) TriggerStatusResponseOutput {
+	return o
+}
+
+// The status code.
+func (o TriggerStatusResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerStatusResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The detailed status message, including for alerts and error messages.
+func (o TriggerStatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerStatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The time of the status.
+func (o TriggerStatusResponseOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerStatusResponse) string { return v.Time }).(pulumi.StringOutput)
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 // Virtual Network configuration.
 type VirtualNetworkConfig struct {
+	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+	ProxyVmSize *string `pulumi:"proxyVmSize"`
 	// Resource id of a pre-existing subnet.
 	SubnetId *string `pulumi:"subnetId"`
+}
+
+// Defaults sets the appropriate defaults for VirtualNetworkConfig
+func (val *VirtualNetworkConfig) Defaults() *VirtualNetworkConfig {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProxyVmSize == nil {
+		proxyVmSize_ := ""
+		tmp.ProxyVmSize = &proxyVmSize_
+	}
+	return &tmp
 }
 
 // VirtualNetworkConfigInput is an input type that accepts VirtualNetworkConfigArgs and VirtualNetworkConfigOutput values.
@@ -1048,10 +2271,23 @@ type VirtualNetworkConfigInput interface {
 
 // Virtual Network configuration.
 type VirtualNetworkConfigArgs struct {
+	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+	ProxyVmSize pulumi.StringPtrInput `pulumi:"proxyVmSize"`
 	// Resource id of a pre-existing subnet.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
+// Defaults sets the appropriate defaults for VirtualNetworkConfigArgs
+func (val *VirtualNetworkConfigArgs) Defaults() *VirtualNetworkConfigArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProxyVmSize == nil {
+		tmp.ProxyVmSize = pulumi.StringPtr("")
+	}
+	return &tmp
+}
 func (VirtualNetworkConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualNetworkConfig)(nil)).Elem()
 }
@@ -1130,6 +2366,11 @@ func (o VirtualNetworkConfigOutput) ToVirtualNetworkConfigPtrOutputWithContext(c
 	}).(VirtualNetworkConfigPtrOutput)
 }
 
+// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+func (o VirtualNetworkConfigOutput) ProxyVmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkConfig) *string { return v.ProxyVmSize }).(pulumi.StringPtrOutput)
+}
+
 // Resource id of a pre-existing subnet.
 func (o VirtualNetworkConfigOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfig) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
@@ -1159,6 +2400,16 @@ func (o VirtualNetworkConfigPtrOutput) Elem() VirtualNetworkConfigOutput {
 	}).(VirtualNetworkConfigOutput)
 }
 
+// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+func (o VirtualNetworkConfigPtrOutput) ProxyVmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyVmSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // Resource id of a pre-existing subnet.
 func (o VirtualNetworkConfigPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkConfig) *string {
@@ -1171,8 +2422,23 @@ func (o VirtualNetworkConfigPtrOutput) SubnetId() pulumi.StringPtrOutput {
 
 // Virtual Network configuration.
 type VirtualNetworkConfigResponse struct {
+	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+	ProxyVmSize *string `pulumi:"proxyVmSize"`
 	// Resource id of a pre-existing subnet.
 	SubnetId *string `pulumi:"subnetId"`
+}
+
+// Defaults sets the appropriate defaults for VirtualNetworkConfigResponse
+func (val *VirtualNetworkConfigResponse) Defaults() *VirtualNetworkConfigResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProxyVmSize == nil {
+		proxyVmSize_ := ""
+		tmp.ProxyVmSize = &proxyVmSize_
+	}
+	return &tmp
 }
 
 // Virtual Network configuration.
@@ -1188,6 +2454,11 @@ func (o VirtualNetworkConfigResponseOutput) ToVirtualNetworkConfigResponseOutput
 
 func (o VirtualNetworkConfigResponseOutput) ToVirtualNetworkConfigResponseOutputWithContext(ctx context.Context) VirtualNetworkConfigResponseOutput {
 	return o
+}
+
+// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+func (o VirtualNetworkConfigResponseOutput) ProxyVmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkConfigResponse) *string { return v.ProxyVmSize }).(pulumi.StringPtrOutput)
 }
 
 // Resource id of a pre-existing subnet.
@@ -1219,6 +2490,16 @@ func (o VirtualNetworkConfigResponsePtrOutput) Elem() VirtualNetworkConfigRespon
 	}).(VirtualNetworkConfigResponseOutput)
 }
 
+// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+func (o VirtualNetworkConfigResponsePtrOutput) ProxyVmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyVmSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // Resource id of a pre-existing subnet.
 func (o VirtualNetworkConfigResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkConfigResponse) *string {
@@ -1232,14 +2513,28 @@ func (o VirtualNetworkConfigResponsePtrOutput) SubnetId() pulumi.StringPtrOutput
 func init() {
 	pulumi.RegisterOutputType(ImageTemplateIdentityOutput{})
 	pulumi.RegisterOutputType(ImageTemplateIdentityResponseOutput{})
-	pulumi.RegisterOutputType(ImageTemplateIdentityResponseUserAssignedIdentitiesOutput{})
-	pulumi.RegisterOutputType(ImageTemplateIdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(ImageTemplateLastRunStatusResponseOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesOptimizeOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesOptimizePtrOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseOptimizeOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseOptimizePtrOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseValidateOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseValidatePtrOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseVmBootOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseVmBootPtrOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesValidateOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesValidatePtrOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesVmBootOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesVmBootPtrOutput{})
 	pulumi.RegisterOutputType(ImageTemplateVmProfileOutput{})
 	pulumi.RegisterOutputType(ImageTemplateVmProfilePtrOutput{})
 	pulumi.RegisterOutputType(ImageTemplateVmProfileResponseOutput{})
 	pulumi.RegisterOutputType(ImageTemplateVmProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProvisioningErrorResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TriggerStatusResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkConfigOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkConfigResponseOutput{})

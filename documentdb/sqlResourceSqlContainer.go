@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB container.
-// API Version: 2021-03-15.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlResourceSqlContainer struct {
 	pulumi.CustomResourceState
 
@@ -49,39 +50,6 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 	}
 	args.Resource = args.Resource.ToSqlContainerResourceOutput().ApplyT(func(v SqlContainerResource) SqlContainerResource { return *v.Defaults() }).(SqlContainerResourceOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150401:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150408:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20151106:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160319:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160331:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:SqlResourceSqlContainer"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:SqlResourceSqlContainer"),
 		},
@@ -134,7 +102,19 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlContainer"),
 		},
 	})
 	opts = append(opts, aliases)

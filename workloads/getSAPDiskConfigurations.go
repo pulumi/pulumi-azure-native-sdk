@@ -11,7 +11,7 @@ import (
 )
 
 // Get the SAP Disk Configuration Layout prod/non-prod SAP System.
-// API Version: 2021-12-01-preview.
+// API Version: 2023-04-01.
 func GetSAPDiskConfigurations(ctx *pulumi.Context, args *GetSAPDiskConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetSAPDiskConfigurationsResult, error) {
 	var rv GetSAPDiskConfigurationsResult
 	err := ctx.Invoke("azure-native:workloads:getSAPDiskConfigurations", args, &rv, opts...)
@@ -40,8 +40,8 @@ type GetSAPDiskConfigurationsArgs struct {
 
 // The list of disk configuration for vmSku which are part of SAP deployment.
 type GetSAPDiskConfigurationsResult struct {
-	// Gets the list of Disk Configurations.
-	DiskConfigurations []SAPDiskConfigurationResponse `pulumi:"diskConfigurations"`
+	// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+	VolumeConfigurations map[string]SAPDiskConfigurationResponse `pulumi:"volumeConfigurations"`
 }
 
 func GetSAPDiskConfigurationsOutput(ctx *pulumi.Context, args GetSAPDiskConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetSAPDiskConfigurationsResultOutput {
@@ -93,9 +93,11 @@ func (o GetSAPDiskConfigurationsResultOutput) ToGetSAPDiskConfigurationsResultOu
 	return o
 }
 
-// Gets the list of Disk Configurations.
-func (o GetSAPDiskConfigurationsResultOutput) DiskConfigurations() SAPDiskConfigurationResponseArrayOutput {
-	return o.ApplyT(func(v GetSAPDiskConfigurationsResult) []SAPDiskConfigurationResponse { return v.DiskConfigurations }).(SAPDiskConfigurationResponseArrayOutput)
+// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+func (o GetSAPDiskConfigurationsResultOutput) VolumeConfigurations() SAPDiskConfigurationResponseMapOutput {
+	return o.ApplyT(func(v GetSAPDiskConfigurationsResult) map[string]SAPDiskConfigurationResponse {
+		return v.VolumeConfigurations
+	}).(SAPDiskConfigurationResponseMapOutput)
 }
 
 func init() {

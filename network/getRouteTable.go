@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified route table.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupRouteTableResult, error) {
 	var rv LookupRouteTableResult
 	err := ctx.Invoke("azure-native:network:getRouteTable", args, &rv, opts...)

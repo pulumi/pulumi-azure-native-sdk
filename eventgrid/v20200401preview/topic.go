@@ -66,33 +66,6 @@ func NewTopic(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid:Topic"),
 		},
 		{
-			Type: pulumi.String("azure-native:eventgrid/v20170615preview:Topic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20170915preview:Topic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20180101:Topic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20180501preview:Topic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20180915preview:Topic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20190101:Topic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20190201preview:Topic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20190601:Topic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20200101preview:Topic"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20200601:Topic"),
 		},
 		{
@@ -109,6 +82,9 @@ func NewTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20220615:Topic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:Topic"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -153,8 +129,8 @@ type topicArgs struct {
 	// This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
 	InputSchemaMapping *JsonInputSchemaMapping `pulumi:"inputSchemaMapping"`
 	// Location of the resource.
-	Location                   *string                         `pulumi:"location"`
-	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
+	Location                   *string                     `pulumi:"location"`
+	PrivateEndpointConnections []PrivateEndpointConnection `pulumi:"privateEndpointConnections"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -180,7 +156,7 @@ type TopicArgs struct {
 	InputSchemaMapping JsonInputSchemaMappingPtrInput
 	// Location of the resource.
 	Location                   pulumi.StringPtrInput
-	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
+	PrivateEndpointConnections PrivateEndpointConnectionArrayInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
 	PublicNetworkAccess pulumi.StringPtrInput

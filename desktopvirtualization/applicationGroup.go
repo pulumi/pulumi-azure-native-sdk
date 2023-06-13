@@ -12,7 +12,8 @@ import (
 )
 
 // Represents a ApplicationGroup definition.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-09.
+// Previous API Version: 2021-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 
@@ -35,14 +36,14 @@ type ApplicationGroup struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrOutput `pulumi:"managedBy"`
-	// The registration info of HostPool.
-	MigrationRequest MigrationRequestPropertiesResponsePtrOutput `pulumi:"migrationRequest"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ObjectId of ApplicationGroup. (internal use)
 	ObjectId pulumi.StringOutput                                      `pulumi:"objectId"`
 	Plan     ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
 	Sku      ResourceModelWithAllowedPropertySetResponseSkuPtrOutput  `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -68,27 +69,6 @@ func NewApplicationGroup(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20190123preview:ApplicationGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20190924preview:ApplicationGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20191210preview:ApplicationGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20200921preview:ApplicationGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201019preview:ApplicationGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201102preview:ApplicationGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201110preview:ApplicationGroup"),
-		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20210114preview:ApplicationGroup"),
 		},
@@ -169,10 +149,8 @@ type applicationGroupArgs struct {
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-	ManagedBy *string `pulumi:"managedBy"`
-	// The registration info of HostPool.
-	MigrationRequest *MigrationRequestProperties              `pulumi:"migrationRequest"`
-	Plan             *ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
+	ManagedBy *string                                  `pulumi:"managedBy"`
+	Plan      *ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string                                  `pulumi:"resourceGroupName"`
 	Sku               *ResourceModelWithAllowedPropertySetSku `pulumi:"sku"`
@@ -199,9 +177,7 @@ type ApplicationGroupArgs struct {
 	Location pulumi.StringPtrInput
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
-	// The registration info of HostPool.
-	MigrationRequest MigrationRequestPropertiesPtrInput
-	Plan             ResourceModelWithAllowedPropertySetPlanPtrInput
+	Plan      ResourceModelWithAllowedPropertySetPlanPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	Sku               ResourceModelWithAllowedPropertySetSkuPtrInput
@@ -297,11 +273,6 @@ func (o ApplicationGroupOutput) ManagedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringPtrOutput { return v.ManagedBy }).(pulumi.StringPtrOutput)
 }
 
-// The registration info of HostPool.
-func (o ApplicationGroupOutput) MigrationRequest() MigrationRequestPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *ApplicationGroup) MigrationRequestPropertiesResponsePtrOutput { return v.MigrationRequest }).(MigrationRequestPropertiesResponsePtrOutput)
-}
-
 // The name of the resource
 func (o ApplicationGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -318,6 +289,11 @@ func (o ApplicationGroupOutput) Plan() ResourceModelWithAllowedPropertySetRespon
 
 func (o ApplicationGroupOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) ResourceModelWithAllowedPropertySetResponseSkuPtrOutput { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ApplicationGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ApplicationGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

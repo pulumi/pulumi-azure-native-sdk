@@ -44,6 +44,12 @@ func NewHybridIdentityMetadatum(ctx *pulumi.Context,
 	if args.VirtualMachineName == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualMachineName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:HybridIdentityMetadatum"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource HybridIdentityMetadatum
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:HybridIdentityMetadatum", name, args, &resource, opts...)
 	if err != nil {

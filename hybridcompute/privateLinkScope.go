@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Arc PrivateLinkScope definition.
-// API Version: 2021-03-25-preview.
+// API Version: 2022-12-27.
+// Previous API Version: 2021-03-25-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateLinkScope struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +83,12 @@ func NewPrivateLinkScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227preview:PrivateLinkScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:PrivateLinkScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230425preview:PrivateLinkScope"),
 		},
 	})
 	opts = append(opts, aliases)

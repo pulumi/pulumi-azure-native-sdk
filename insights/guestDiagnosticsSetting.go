@@ -13,6 +13,7 @@ import (
 
 // Virtual machine guest diagnostics settings resource.
 // API Version: 2018-06-01-preview.
+// Previous API Version: 2018-06-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type GuestDiagnosticsSetting struct {
 	pulumi.CustomResourceState
 
@@ -43,12 +44,18 @@ func NewGuestDiagnosticsSetting(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:insights:guestDiagnosticsSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20180601preview:GuestDiagnosticsSetting"),
+		},
+		{
 			Type: pulumi.String("azure-native:insights/v20180601preview:guestDiagnosticsSetting"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource GuestDiagnosticsSetting
-	err := ctx.RegisterResource("azure-native:insights:guestDiagnosticsSetting", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:insights:GuestDiagnosticsSetting", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +67,7 @@ func NewGuestDiagnosticsSetting(ctx *pulumi.Context,
 func GetGuestDiagnosticsSetting(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *GuestDiagnosticsSettingState, opts ...pulumi.ResourceOption) (*GuestDiagnosticsSetting, error) {
 	var resource GuestDiagnosticsSetting
-	err := ctx.ReadResource("azure-native:insights:guestDiagnosticsSetting", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:insights:GuestDiagnosticsSetting", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

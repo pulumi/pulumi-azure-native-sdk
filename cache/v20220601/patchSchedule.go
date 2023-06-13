@@ -46,15 +46,6 @@ func NewPatchSchedule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cache:PatchSchedule"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20171001:PatchSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20180301:PatchSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20190701:PatchSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:cache/v20200601:PatchSchedule"),
 		},
 		{
@@ -65,6 +56,12 @@ func NewPatchSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220501:PatchSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:PatchSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:PatchSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

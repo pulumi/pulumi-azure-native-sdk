@@ -11,7 +11,7 @@ import (
 )
 
 // Get particular Arc Extension of HCI Cluster.
-// API Version: 2021-01-01-preview.
+// API Version: 2023-03-01.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:azurestackhci:getExtension", args, &rv, opts...)
@@ -38,22 +38,14 @@ type LookupExtensionResult struct {
 	AggregateState string `pulumi:"aggregateState"`
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
+	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+	// Indicates if the extension is managed by azure or the user.
+	ManagedBy string `pulumi:"managedBy"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// State of Arc Extension in each of the nodes.
@@ -66,9 +58,11 @@ type LookupExtensionResult struct {
 	Publisher *string `pulumi:"publisher"`
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Specifies the version of the script handler.
+	// Specifies the version of the script handler. Latest version would be used if not specified.
 	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
 }
 
@@ -125,19 +119,9 @@ func (o LookupExtensionResultOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOut
 	return o.ApplyT(func(v LookupExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
 }
 
-// The timestamp of resource creation (UTC).
-func (o LookupExtensionResultOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExtensionResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o LookupExtensionResultOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExtensionResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o LookupExtensionResultOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExtensionResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+func (o LookupExtensionResultOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupExtensionResult) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
 }
 
 // How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -150,19 +134,9 @@ func (o LookupExtensionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o LookupExtensionResultOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExtensionResult) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o LookupExtensionResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExtensionResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o LookupExtensionResultOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExtensionResult) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+// Indicates if the extension is managed by azure or the user.
+func (o LookupExtensionResultOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExtensionResult) string { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -195,12 +169,17 @@ func (o LookupExtensionResultOutput) Settings() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupExtensionResult) interface{} { return v.Settings }).(pulumi.AnyOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupExtensionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupExtensionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupExtensionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the version of the script handler.
+// Specifies the version of the script handler. Latest version would be used if not specified.
 func (o LookupExtensionResultOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExtensionResult) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
-// API Version: 2022-02-01-preview.
+// API Version: 2023-03-01-preview.
 func GetmanagedAzResiliencyStatus(ctx *pulumi.Context, args *GetmanagedAzResiliencyStatusArgs, opts ...pulumi.InvokeOption) (*GetmanagedAzResiliencyStatusResult, error) {
 	var rv GetmanagedAzResiliencyStatusResult
 	err := ctx.Invoke("azure-native:servicefabric:getmanagedAzResiliencyStatus", args, &rv, opts...)

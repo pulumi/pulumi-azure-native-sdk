@@ -12,7 +12,8 @@ import (
 )
 
 // The customer's ASN that is registered by the peering service provider.
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RegisteredAsn struct {
 	pulumi.CustomResourceState
 
@@ -42,15 +43,6 @@ func NewRegisteredAsn(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:peering/v20200101preview:RegisteredAsn"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20200401:RegisteredAsn"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20201001:RegisteredAsn"),
-		},
 		{
 			Type: pulumi.String("azure-native:peering/v20210101:RegisteredAsn"),
 		},

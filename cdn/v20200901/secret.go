@@ -54,6 +54,9 @@ func NewSecret(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20221101preview:Secret"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230501:Secret"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Secret

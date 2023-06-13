@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the specified private endpoint connection associated with the RedisEnterprise cluster.
-// API Version: 2021-03-01.
+// Gets the specified private endpoint connection associated with the redis cache.
+// API Version: 2023-04-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:cache:getPrivateEndpointConnection", args, &rv, opts...)
@@ -22,11 +22,11 @@ func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEnd
 }
 
 type LookupPrivateEndpointConnectionArgs struct {
-	// The name of the RedisEnterprise cluster.
-	ClusterName string `pulumi:"clusterName"`
+	// The name of the Redis cache.
+	CacheName string `pulumi:"cacheName"`
 	// The name of the private endpoint connection associated with the Azure resource
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -60,11 +60,11 @@ func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {
-	// The name of the RedisEnterprise cluster.
-	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The name of the Redis cache.
+	CacheName pulumi.StringInput `pulumi:"cacheName"`
 	// The name of the private endpoint connection associated with the Azure resource
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

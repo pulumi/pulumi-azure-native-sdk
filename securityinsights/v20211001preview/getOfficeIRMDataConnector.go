@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20211001preview:OfficeIRMDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:OfficeIRMDataConnector to guarantee forwards compatibility.
-func LookupOfficeIRMDataConnector(ctx *pulumi.Context, args *LookupOfficeIRMDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeIRMDataConnectorResult, error) {
-	var rv LookupOfficeIRMDataConnectorResult
+func GetOfficeIRMDataConnector(ctx *pulumi.Context, args *GetOfficeIRMDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetOfficeIRMDataConnectorResult, error) {
+	var rv GetOfficeIRMDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001preview:getOfficeIRMDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupOfficeIRMDataConnector(ctx *pulumi.Context, args *LookupOfficeIRMData
 	return &rv, nil
 }
 
-type LookupOfficeIRMDataConnectorArgs struct {
+type GetOfficeIRMDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupOfficeIRMDataConnectorArgs struct {
 }
 
 // Represents OfficeIRM (Microsoft Insider Risk Management) data connector.
-type LookupOfficeIRMDataConnectorResult struct {
+type GetOfficeIRMDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupOfficeIRMDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupOfficeIRMDataConnectorOutput(ctx *pulumi.Context, args LookupOfficeIRMDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOfficeIRMDataConnectorResultOutput {
+func GetOfficeIRMDataConnectorOutput(ctx *pulumi.Context, args GetOfficeIRMDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetOfficeIRMDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOfficeIRMDataConnectorResult, error) {
-			args := v.(LookupOfficeIRMDataConnectorArgs)
-			r, err := LookupOfficeIRMDataConnector(ctx, &args, opts...)
-			var s LookupOfficeIRMDataConnectorResult
+		ApplyT(func(v interface{}) (GetOfficeIRMDataConnectorResult, error) {
+			args := v.(GetOfficeIRMDataConnectorArgs)
+			r, err := GetOfficeIRMDataConnector(ctx, &args, opts...)
+			var s GetOfficeIRMDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupOfficeIRMDataConnectorResultOutput)
+		}).(GetOfficeIRMDataConnectorResultOutput)
 }
 
-type LookupOfficeIRMDataConnectorOutputArgs struct {
+type GetOfficeIRMDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,66 +72,66 @@ type LookupOfficeIRMDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupOfficeIRMDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupOfficeIRMDataConnectorArgs)(nil)).Elem()
+func (GetOfficeIRMDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOfficeIRMDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents OfficeIRM (Microsoft Insider Risk Management) data connector.
-type LookupOfficeIRMDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetOfficeIRMDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupOfficeIRMDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupOfficeIRMDataConnectorResult)(nil)).Elem()
+func (GetOfficeIRMDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOfficeIRMDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupOfficeIRMDataConnectorResultOutput) ToLookupOfficeIRMDataConnectorResultOutput() LookupOfficeIRMDataConnectorResultOutput {
+func (o GetOfficeIRMDataConnectorResultOutput) ToGetOfficeIRMDataConnectorResultOutput() GetOfficeIRMDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupOfficeIRMDataConnectorResultOutput) ToLookupOfficeIRMDataConnectorResultOutputWithContext(ctx context.Context) LookupOfficeIRMDataConnectorResultOutput {
+func (o GetOfficeIRMDataConnectorResultOutput) ToGetOfficeIRMDataConnectorResultOutputWithContext(ctx context.Context) GetOfficeIRMDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupOfficeIRMDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
-	return o.ApplyT(func(v LookupOfficeIRMDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
+func (o GetOfficeIRMDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
+	return o.ApplyT(func(v GetOfficeIRMDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
 }
 
 // Etag of the azure resource
-func (o LookupOfficeIRMDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOfficeIRMDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetOfficeIRMDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOfficeIRMDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupOfficeIRMDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeIRMDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetOfficeIRMDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeIRMDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'OfficeIRM'.
-func (o LookupOfficeIRMDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeIRMDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetOfficeIRMDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeIRMDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupOfficeIRMDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeIRMDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetOfficeIRMDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeIRMDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupOfficeIRMDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupOfficeIRMDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetOfficeIRMDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetOfficeIRMDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupOfficeIRMDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeIRMDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetOfficeIRMDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeIRMDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupOfficeIRMDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeIRMDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetOfficeIRMDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeIRMDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupOfficeIRMDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetOfficeIRMDataConnectorResultOutput{})
 }

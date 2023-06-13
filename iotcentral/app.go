@@ -13,6 +13,7 @@ import (
 
 // The IoT Central application.
 // API Version: 2021-06-01.
+// Previous API Version: 2021-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type App struct {
 	pulumi.CustomResourceState
 
@@ -54,9 +55,6 @@ func NewApp(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:iotcentral/v20180901:App"),
-		},
 		{
 			Type: pulumi.String("azure-native:iotcentral/v20210601:App"),
 		},

@@ -12,7 +12,8 @@ import (
 )
 
 // Describes a Virtual Machine Extension.
-// API Version: 2021-03-01.
+// API Version: 2023-03-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualMachineExtension struct {
 	pulumi.CustomResourceState
 
@@ -25,17 +26,23 @@ type VirtualMachineExtension struct {
 	// The virtual machine extension instance view.
 	InstanceView VirtualMachineExtensionInstanceViewResponsePtrOutput `pulumi:"instanceView"`
 	// Resource location
-	Location pulumi.StringOutput `pulumi:"location"`
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.AnyOutput `pulumi:"protectedSettings"`
+	// The extensions protected settings that are passed by reference, and consumed from key vault
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferenceResponsePtrOutput `pulumi:"protectedSettingsFromKeyVault"`
+	// Collection of extension names after which this extension needs to be provisioned.
+	ProvisionAfterExtensions pulumi.StringArrayOutput `pulumi:"provisionAfterExtensions"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The name of the extension handler publisher.
 	Publisher pulumi.StringPtrOutput `pulumi:"publisher"`
 	// Json formatted public settings for the extension.
 	Settings pulumi.AnyOutput `pulumi:"settings"`
+	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+	SuppressFailures pulumi.BoolPtrOutput `pulumi:"suppressFailures"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -58,42 +65,6 @@ func NewVirtualMachineExtension(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'VmName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:compute/v20150615:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20160330:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20160430preview:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20170330:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20171201:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20180401:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20180601:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20181001:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190301:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190701:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20191201:VirtualMachineExtension"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20200601:VirtualMachineExtension"),
-		},
 		{
 			Type: pulumi.String("azure-native:compute/v20201201:VirtualMachineExtension"),
 		},
@@ -167,12 +138,18 @@ type virtualMachineExtensionArgs struct {
 	Location *string `pulumi:"location"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
+	// The extensions protected settings that are passed by reference, and consumed from key vault
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
+	// Collection of extension names after which this extension needs to be provisioned.
+	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
 	// The name of the extension handler publisher.
 	Publisher *string `pulumi:"publisher"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
+	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+	SuppressFailures *bool `pulumi:"suppressFailures"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the extension; an example is "CustomScriptExtension".
@@ -199,12 +176,18 @@ type VirtualMachineExtensionArgs struct {
 	Location pulumi.StringPtrInput
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.Input
+	// The extensions protected settings that are passed by reference, and consumed from key vault
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput
+	// Collection of extension names after which this extension needs to be provisioned.
+	ProvisionAfterExtensions pulumi.StringArrayInput
 	// The name of the extension handler publisher.
 	Publisher pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Json formatted public settings for the extension.
 	Settings pulumi.Input
+	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+	SuppressFailures pulumi.BoolPtrInput
 	// Resource tags
 	Tags pulumi.StringMapInput
 	// Specifies the type of the extension; an example is "CustomScriptExtension".
@@ -277,8 +260,8 @@ func (o VirtualMachineExtensionOutput) InstanceView() VirtualMachineExtensionIns
 }
 
 // Resource location
-func (o VirtualMachineExtensionOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachineExtension) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+func (o VirtualMachineExtensionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineExtension) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Resource name
@@ -289,6 +272,18 @@ func (o VirtualMachineExtensionOutput) Name() pulumi.StringOutput {
 // The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 func (o VirtualMachineExtensionOutput) ProtectedSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v *VirtualMachineExtension) pulumi.AnyOutput { return v.ProtectedSettings }).(pulumi.AnyOutput)
+}
+
+// The extensions protected settings that are passed by reference, and consumed from key vault
+func (o VirtualMachineExtensionOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineExtension) KeyVaultSecretReferenceResponsePtrOutput {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Collection of extension names after which this extension needs to be provisioned.
+func (o VirtualMachineExtensionOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineExtension) pulumi.StringArrayOutput { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
 }
 
 // The provisioning state, which only appears in the response.
@@ -304,6 +299,11 @@ func (o VirtualMachineExtensionOutput) Publisher() pulumi.StringPtrOutput {
 // Json formatted public settings for the extension.
 func (o VirtualMachineExtensionOutput) Settings() pulumi.AnyOutput {
 	return o.ApplyT(func(v *VirtualMachineExtension) pulumi.AnyOutput { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+func (o VirtualMachineExtensionOutput) SuppressFailures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineExtension) pulumi.BoolPtrOutput { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
 }
 
 // Resource tags

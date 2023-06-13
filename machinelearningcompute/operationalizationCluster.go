@@ -13,6 +13,7 @@ import (
 
 // Instance of an Azure ML Operationalization Cluster resource.
 // API Version: 2017-08-01-preview.
+// Previous API Version: 2017-08-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type OperationalizationCluster struct {
 	pulumi.CustomResourceState
 
@@ -68,9 +69,6 @@ func NewOperationalizationCluster(ctx *pulumi.Context,
 		args.GlobalServiceConfiguration = args.GlobalServiceConfiguration.ToGlobalServiceConfigurationPtrOutput().ApplyT(func(v *GlobalServiceConfiguration) *GlobalServiceConfiguration { return v.Defaults() }).(GlobalServiceConfigurationPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:machinelearningcompute/v20170601preview:OperationalizationCluster"),
-		},
 		{
 			Type: pulumi.String("azure-native:machinelearningcompute/v20170801preview:OperationalizationCluster"),
 		},

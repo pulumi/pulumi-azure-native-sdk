@@ -13,6 +13,7 @@ import (
 
 // Job Definition.
 // API Version: 2019-06-01.
+// Previous API Version: 2019-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type JobDefinition struct {
 	pulumi.CustomResourceState
 
@@ -69,9 +70,6 @@ func NewJobDefinition(ctx *pulumi.Context,
 		args.UserConfirmation = UserConfirmation("NotRequired")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:hybriddata/v20160601:JobDefinition"),
-		},
 		{
 			Type: pulumi.String("azure-native:hybriddata/v20190601:JobDefinition"),
 		},

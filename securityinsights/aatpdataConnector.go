@@ -12,7 +12,8 @@ import (
 )
 
 // Represents AATP (Azure Advanced Threat Protection) data connector.
-// API Version: 2020-01-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2020-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AATPDataConnector struct {
 	pulumi.CustomResourceState
 
@@ -23,11 +24,13 @@ type AATPDataConnector struct {
 	// The kind of the data connector
 	// Expected value is 'AzureAdvancedThreatProtection'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -110,7 +113,13 @@ func NewAATPDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:AATPDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:AATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:AATPDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -153,7 +162,7 @@ type aatpdataConnectorArgs struct {
 	// The kind of the data connector
 	// Expected value is 'AzureAdvancedThreatProtection'.
 	Kind string `pulumi:"kind"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tenant id to connect to, and get the data from.
 	TenantId *string `pulumi:"tenantId"`
@@ -170,7 +179,7 @@ type AATPDataConnectorArgs struct {
 	// The kind of the data connector
 	// Expected value is 'AzureAdvancedThreatProtection'.
 	Kind pulumi.StringInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tenant id to connect to, and get the data from.
 	TenantId pulumi.StringPtrInput
@@ -231,9 +240,14 @@ func (o AATPDataConnectorOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *AATPDataConnector) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o AATPDataConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AATPDataConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AATPDataConnectorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AATPDataConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
@@ -241,7 +255,7 @@ func (o AATPDataConnectorOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AATPDataConnector) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AATPDataConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AATPDataConnector) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

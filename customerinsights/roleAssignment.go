@@ -13,6 +13,7 @@ import (
 
 // The Role Assignment resource format.
 // API Version: 2017-04-26.
+// Previous API Version: 2017-04-26. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 
@@ -82,9 +83,6 @@ func NewRoleAssignment(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:customerinsights/v20170101:RoleAssignment"),
-		},
 		{
 			Type: pulumi.String("azure-native:customerinsights/v20170426:RoleAssignment"),
 		},

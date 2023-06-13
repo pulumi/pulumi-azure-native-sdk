@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details of the specific container registered to your Recovery Services Vault.
-// API Version: 2021-02-01.
+// API Version: 2023-02-01.
 func LookupProtectionContainer(ctx *pulumi.Context, args *LookupProtectionContainerArgs, opts ...pulumi.InvokeOption) (*LookupProtectionContainerResult, error) {
 	var rv LookupProtectionContainerResult
 	err := ctx.Invoke("azure-native:recoveryservices:getProtectionContainer", args, &rv, opts...)

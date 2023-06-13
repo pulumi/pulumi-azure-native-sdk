@@ -12,7 +12,8 @@ import (
 )
 
 // Specifies information about the SSH public key.
-// API Version: 2020-12-01.
+// API Version: 2023-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SshPublicKey struct {
 	pulumi.CustomResourceState
 
@@ -39,12 +40,6 @@ func NewSshPublicKey(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:compute/v20191201:SshPublicKey"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20200601:SshPublicKey"),
-		},
 		{
 			Type: pulumi.String("azure-native:compute/v20201201:SshPublicKey"),
 		},

@@ -139,7 +139,13 @@ func NewTiTaxiiDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:TiTaxiiDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:TiTaxiiDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:TiTaxiiDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

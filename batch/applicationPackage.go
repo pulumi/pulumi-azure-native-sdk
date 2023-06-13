@@ -12,7 +12,8 @@ import (
 )
 
 // An application package which represents a particular version of an application.
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ApplicationPackage struct {
 	pulumi.CustomResourceState
 
@@ -51,36 +52,6 @@ func NewApplicationPackage(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:batch/v20151201:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20170101:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20170501:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20170901:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20181201:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20190401:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20190801:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20200301:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20200501:ApplicationPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:batch/v20200901:ApplicationPackage"),
-		},
 		{
 			Type: pulumi.String("azure-native:batch/v20210101:ApplicationPackage"),
 		},

@@ -45,7 +45,16 @@ func NewApplicationAccelerator(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:appplatform:ApplicationAccelerator"),
+		},
+		{
 			Type: pulumi.String("azure-native:appplatform/v20221101preview:ApplicationAccelerator"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ApplicationAccelerator"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ApplicationAccelerator"),
 		},
 	})
 	opts = append(opts, aliases)

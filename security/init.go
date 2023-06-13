@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:security:APICollection":
+		r = &APICollection{}
 	case "azure-native:security:AdaptiveApplicationControl":
 		r = &AdaptiveApplicationControl{}
 	case "azure-native:security:AdvancedThreatProtection":
@@ -33,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Assessment{}
 	case "azure-native:security:AssessmentMetadataInSubscription":
 		r = &AssessmentMetadataInSubscription{}
+	case "azure-native:security:AssessmentsMetadataSubscription":
+		r = &AssessmentsMetadataSubscription{}
 	case "azure-native:security:Assignment":
 		r = &Assignment{}
 	case "azure-native:security:Automation":
@@ -45,6 +49,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomEntityStoreAssignment{}
 	case "azure-native:security:DeviceSecurityGroup":
 		r = &DeviceSecurityGroup{}
+	case "azure-native:security:GovernanceAssignment":
+		r = &GovernanceAssignment{}
+	case "azure-native:security:GovernanceRule":
+		r = &GovernanceRule{}
 	case "azure-native:security:IngestionSetting":
 		r = &IngestionSetting{}
 	case "azure-native:security:IotSecuritySolution":
@@ -57,6 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityConnectorApplication{}
 	case "azure-native:security:SecurityContact":
 		r = &SecurityContact{}
+	case "azure-native:security:SecurityOperator":
+		r = &SecurityOperator{}
 	case "azure-native:security:ServerVulnerabilityAssessment":
 		r = &ServerVulnerabilityAssessment{}
 	case "azure-native:security:SqlVulnerabilityAssessmentBaselineRule":

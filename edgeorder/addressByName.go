@@ -13,6 +13,7 @@ import (
 
 // Address Resource.
 // API Version: 2021-12-01.
+// Previous API Version: 2021-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AddressByName struct {
 	pulumi.CustomResourceState
 
@@ -48,9 +49,6 @@ func NewAddressByName(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:edgeorder/v20201201preview:AddressByName"),
-		},
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20211201:AddressByName"),
 		},

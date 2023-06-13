@@ -11,7 +11,7 @@ import (
 )
 
 // Get the Spring Cloud Gateway custom domain.
-// API Version: 2022-01-01-preview.
+// API Version: 2022-12-01.
 func LookupGatewayCustomDomain(ctx *pulumi.Context, args *LookupGatewayCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCustomDomainResult, error) {
 	var rv LookupGatewayCustomDomainResult
 	err := ctx.Invoke("azure-native:appplatform:getGatewayCustomDomain", args, &rv, opts...)

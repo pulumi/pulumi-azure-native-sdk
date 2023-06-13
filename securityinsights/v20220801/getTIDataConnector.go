@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20220801:TIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201:TIDataConnector to guarantee forwards compatibility.
-func LookupTIDataConnector(ctx *pulumi.Context, args *LookupTIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupTIDataConnectorResult, error) {
-	var rv LookupTIDataConnectorResult
+func GetTIDataConnector(ctx *pulumi.Context, args *GetTIDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetTIDataConnectorResult, error) {
+	var rv GetTIDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220801:getTIDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupTIDataConnector(ctx *pulumi.Context, args *LookupTIDataConnectorArgs,
 	return &rv, nil
 }
 
-type LookupTIDataConnectorArgs struct {
+type GetTIDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupTIDataConnectorArgs struct {
 }
 
 // Represents threat intelligence data connector.
-type LookupTIDataConnectorResult struct {
+type GetTIDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes *TIDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -54,20 +52,20 @@ type LookupTIDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupTIDataConnectorOutput(ctx *pulumi.Context, args LookupTIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTIDataConnectorResultOutput {
+func GetTIDataConnectorOutput(ctx *pulumi.Context, args GetTIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetTIDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTIDataConnectorResult, error) {
-			args := v.(LookupTIDataConnectorArgs)
-			r, err := LookupTIDataConnector(ctx, &args, opts...)
-			var s LookupTIDataConnectorResult
+		ApplyT(func(v interface{}) (GetTIDataConnectorResult, error) {
+			args := v.(GetTIDataConnectorArgs)
+			r, err := GetTIDataConnector(ctx, &args, opts...)
+			var s GetTIDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupTIDataConnectorResultOutput)
+		}).(GetTIDataConnectorResultOutput)
 }
 
-type LookupTIDataConnectorOutputArgs struct {
+type GetTIDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -76,71 +74,71 @@ type LookupTIDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupTIDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupTIDataConnectorArgs)(nil)).Elem()
+func (GetTIDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTIDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents threat intelligence data connector.
-type LookupTIDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetTIDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupTIDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupTIDataConnectorResult)(nil)).Elem()
+func (GetTIDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTIDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupTIDataConnectorResultOutput) ToLookupTIDataConnectorResultOutput() LookupTIDataConnectorResultOutput {
+func (o GetTIDataConnectorResultOutput) ToGetTIDataConnectorResultOutput() GetTIDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupTIDataConnectorResultOutput) ToLookupTIDataConnectorResultOutputWithContext(ctx context.Context) LookupTIDataConnectorResultOutput {
+func (o GetTIDataConnectorResultOutput) ToGetTIDataConnectorResultOutputWithContext(ctx context.Context) GetTIDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupTIDataConnectorResultOutput) DataTypes() TIDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) *TIDataConnectorDataTypesResponse { return v.DataTypes }).(TIDataConnectorDataTypesResponsePtrOutput)
+func (o GetTIDataConnectorResultOutput) DataTypes() TIDataConnectorDataTypesResponsePtrOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) *TIDataConnectorDataTypesResponse { return v.DataTypes }).(TIDataConnectorDataTypesResponsePtrOutput)
 }
 
 // Etag of the azure resource
-func (o LookupTIDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetTIDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupTIDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetTIDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'ThreatIntelligence'.
-func (o LookupTIDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetTIDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupTIDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetTIDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupTIDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetTIDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupTIDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o GetTIDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // The lookback period for the feed to be imported.
-func (o LookupTIDataConnectorResultOutput) TipLookbackPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) *string { return v.TipLookbackPeriod }).(pulumi.StringPtrOutput)
+func (o GetTIDataConnectorResultOutput) TipLookbackPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) *string { return v.TipLookbackPeriod }).(pulumi.StringPtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupTIDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetTIDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTIDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupTIDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetTIDataConnectorResultOutput{})
 }

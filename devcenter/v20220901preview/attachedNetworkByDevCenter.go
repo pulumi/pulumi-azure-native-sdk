@@ -62,6 +62,12 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:AttachedNetworkByDevCenter"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:AttachedNetworkByDevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:AttachedNetworkByDevCenter"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AttachedNetworkByDevCenter

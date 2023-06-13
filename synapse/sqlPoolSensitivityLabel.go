@@ -12,7 +12,8 @@ import (
 )
 
 // A sensitivity label.
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlPoolSensitivityLabel struct {
 	pulumi.CustomResourceState
 
@@ -67,12 +68,6 @@ func NewSqlPoolSensitivityLabel(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:synapse/v20190601preview:SqlPoolSensitivityLabel"),
-		},
-		{
-			Type: pulumi.String("azure-native:synapse/v20201201:SqlPoolSensitivityLabel"),
-		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210301:SqlPoolSensitivityLabel"),
 		},
@@ -143,7 +138,7 @@ type sqlPoolSensitivityLabelArgs struct {
 	SqlPoolName string `pulumi:"sqlPoolName"`
 	// The name of the table.
 	TableName string `pulumi:"tableName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -170,7 +165,7 @@ type SqlPoolSensitivityLabelArgs struct {
 	SqlPoolName pulumi.StringInput
 	// The name of the table.
 	TableName pulumi.StringInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 

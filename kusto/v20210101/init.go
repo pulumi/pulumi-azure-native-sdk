@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,16 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterPrincipalAssignment{}
 	case "azure-native:kusto/v20210101:DatabasePrincipalAssignment":
 		r = &DatabasePrincipalAssignment{}
-	case "azure-native:kusto/v20210101:EventGridDataConnection":
-		r = &EventGridDataConnection{}
-	case "azure-native:kusto/v20210101:EventHubDataConnection":
-		r = &EventHubDataConnection{}
-	case "azure-native:kusto/v20210101:IotHubDataConnection":
-		r = &IotHubDataConnection{}
-	case "azure-native:kusto/v20210101:ReadOnlyFollowingDatabase":
-		r = &ReadOnlyFollowingDatabase{}
-	case "azure-native:kusto/v20210101:ReadWriteDatabase":
-		r = &ReadWriteDatabase{}
 	case "azure-native:kusto/v20210101:Script":
 		r = &Script{}
 	default:

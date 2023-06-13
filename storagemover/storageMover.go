@@ -12,7 +12,8 @@ import (
 )
 
 // The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
-// API Version: 2022-07-01-preview.
+// API Version: 2023-03-01.
+// Previous API Version: 2022-07-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type StorageMover struct {
 	pulumi.CustomResourceState
 

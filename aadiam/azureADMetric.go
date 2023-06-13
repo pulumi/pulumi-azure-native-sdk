@@ -13,6 +13,7 @@ import (
 
 // AzureADMetrics resource.
 // API Version: 2020-07-01-preview.
+// Previous API Version: 2020-07-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AzureADMetric struct {
 	pulumi.CustomResourceState
 
@@ -39,12 +40,18 @@ func NewAzureADMetric(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:aadiam:azureADMetric"),
+		},
+		{
+			Type: pulumi.String("azure-native:aadiam/v20200701preview:AzureADMetric"),
+		},
+		{
 			Type: pulumi.String("azure-native:aadiam/v20200701preview:azureADMetric"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource AzureADMetric
-	err := ctx.RegisterResource("azure-native:aadiam:azureADMetric", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:aadiam:AzureADMetric", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +63,7 @@ func NewAzureADMetric(ctx *pulumi.Context,
 func GetAzureADMetric(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AzureADMetricState, opts ...pulumi.ResourceOption) (*AzureADMetric, error) {
 	var resource AzureADMetric
-	err := ctx.ReadResource("azure-native:aadiam:azureADMetric", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:aadiam:AzureADMetric", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

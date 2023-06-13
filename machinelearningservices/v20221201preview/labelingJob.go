@@ -59,6 +59,9 @@ func NewLabelingJob(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:LabelingJob"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:LabelingJob"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:LabelingJob"),
 		},
 	})

@@ -12,7 +12,8 @@ import (
 )
 
 // The description of the DigitalTwins service.
-// API Version: 2020-12-01.
+// API Version: 2023-01-31.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DigitalTwin struct {
 	pulumi.CustomResourceState
 
@@ -27,12 +28,15 @@ type DigitalTwin struct {
 	// The resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name.
-	Name                       pulumi.StringOutput                          `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Public network access for the DigitalTwinsInstance.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
+	// Metadata pertaining to creation and last modification of the DigitalTwinsInstance.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource type.
@@ -50,12 +54,6 @@ func NewDigitalTwin(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:digitaltwins/v20200301preview:DigitalTwin"),
-		},
-		{
-			Type: pulumi.String("azure-native:digitaltwins/v20201031:DigitalTwin"),
-		},
 		{
 			Type: pulumi.String("azure-native:digitaltwins/v20201201:DigitalTwin"),
 		},
@@ -108,7 +106,8 @@ type digitalTwinArgs struct {
 	// The managed identity for the DigitalTwinsInstance.
 	Identity *DigitalTwinsIdentity `pulumi:"identity"`
 	// The resource location.
-	Location                   *string                         `pulumi:"location"`
+	Location *string `pulumi:"location"`
+	// The private endpoint connections.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// Public network access for the DigitalTwinsInstance.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -125,7 +124,8 @@ type DigitalTwinArgs struct {
 	// The managed identity for the DigitalTwinsInstance.
 	Identity DigitalTwinsIdentityPtrInput
 	// The resource location.
-	Location                   pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
+	// The private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// Public network access for the DigitalTwinsInstance.
 	PublicNetworkAccess pulumi.StringPtrInput
@@ -204,6 +204,7 @@ func (o DigitalTwinOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DigitalTwin) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The private endpoint connections.
 func (o DigitalTwinOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *DigitalTwin) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
@@ -216,6 +217,11 @@ func (o DigitalTwinOutput) ProvisioningState() pulumi.StringOutput {
 // Public network access for the DigitalTwinsInstance.
 func (o DigitalTwinOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DigitalTwin) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the DigitalTwinsInstance.
+func (o DigitalTwinOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DigitalTwin) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

@@ -67,7 +67,16 @@ func NewUpdateRun(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:azurestackhci:UpdateRun"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221201:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230301:UpdateRun"),
 		},
 	})
 	opts = append(opts, aliases)

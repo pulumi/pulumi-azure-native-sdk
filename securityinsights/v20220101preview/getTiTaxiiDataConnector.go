@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20220101preview:TiTaxiiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:TiTaxiiDataConnector to guarantee forwards compatibility.
-func LookupTiTaxiiDataConnector(ctx *pulumi.Context, args *LookupTiTaxiiDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupTiTaxiiDataConnectorResult, error) {
-	var rv LookupTiTaxiiDataConnectorResult
+func GetTiTaxiiDataConnector(ctx *pulumi.Context, args *GetTiTaxiiDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetTiTaxiiDataConnectorResult, error) {
+	var rv GetTiTaxiiDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220101preview:getTiTaxiiDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupTiTaxiiDataConnector(ctx *pulumi.Context, args *LookupTiTaxiiDataConn
 	return &rv, nil
 }
 
-type LookupTiTaxiiDataConnectorArgs struct {
+type GetTiTaxiiDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupTiTaxiiDataConnectorArgs struct {
 }
 
 // Data connector to pull Threat intelligence data from TAXII 2.0/2.1 server
-type LookupTiTaxiiDataConnectorResult struct {
+type GetTiTaxiiDataConnectorResult struct {
 	// The collection id of the TAXII server.
 	CollectionId *string `pulumi:"collectionId"`
 	// The available data types for Threat Intelligence TAXII data connector.
@@ -68,20 +66,20 @@ type LookupTiTaxiiDataConnectorResult struct {
 	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
-func LookupTiTaxiiDataConnectorOutput(ctx *pulumi.Context, args LookupTiTaxiiDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTiTaxiiDataConnectorResultOutput {
+func GetTiTaxiiDataConnectorOutput(ctx *pulumi.Context, args GetTiTaxiiDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetTiTaxiiDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTiTaxiiDataConnectorResult, error) {
-			args := v.(LookupTiTaxiiDataConnectorArgs)
-			r, err := LookupTiTaxiiDataConnector(ctx, &args, opts...)
-			var s LookupTiTaxiiDataConnectorResult
+		ApplyT(func(v interface{}) (GetTiTaxiiDataConnectorResult, error) {
+			args := v.(GetTiTaxiiDataConnectorArgs)
+			r, err := GetTiTaxiiDataConnector(ctx, &args, opts...)
+			var s GetTiTaxiiDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupTiTaxiiDataConnectorResultOutput)
+		}).(GetTiTaxiiDataConnectorResultOutput)
 }
 
-type LookupTiTaxiiDataConnectorOutputArgs struct {
+type GetTiTaxiiDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -90,106 +88,106 @@ type LookupTiTaxiiDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupTiTaxiiDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupTiTaxiiDataConnectorArgs)(nil)).Elem()
+func (GetTiTaxiiDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTiTaxiiDataConnectorArgs)(nil)).Elem()
 }
 
 // Data connector to pull Threat intelligence data from TAXII 2.0/2.1 server
-type LookupTiTaxiiDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetTiTaxiiDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupTiTaxiiDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupTiTaxiiDataConnectorResult)(nil)).Elem()
+func (GetTiTaxiiDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTiTaxiiDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupTiTaxiiDataConnectorResultOutput) ToLookupTiTaxiiDataConnectorResultOutput() LookupTiTaxiiDataConnectorResultOutput {
+func (o GetTiTaxiiDataConnectorResultOutput) ToGetTiTaxiiDataConnectorResultOutput() GetTiTaxiiDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupTiTaxiiDataConnectorResultOutput) ToLookupTiTaxiiDataConnectorResultOutputWithContext(ctx context.Context) LookupTiTaxiiDataConnectorResultOutput {
+func (o GetTiTaxiiDataConnectorResultOutput) ToGetTiTaxiiDataConnectorResultOutputWithContext(ctx context.Context) GetTiTaxiiDataConnectorResultOutput {
 	return o
 }
 
 // The collection id of the TAXII server.
-func (o LookupTiTaxiiDataConnectorResultOutput) CollectionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.CollectionId }).(pulumi.StringPtrOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) CollectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) *string { return v.CollectionId }).(pulumi.StringPtrOutput)
 }
 
 // The available data types for Threat Intelligence TAXII data connector.
-func (o LookupTiTaxiiDataConnectorResultOutput) DataTypes() TiTaxiiDataConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) TiTaxiiDataConnectorDataTypesResponse { return v.DataTypes }).(TiTaxiiDataConnectorDataTypesResponseOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) DataTypes() TiTaxiiDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) TiTaxiiDataConnectorDataTypesResponse { return v.DataTypes }).(TiTaxiiDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
-func (o LookupTiTaxiiDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // The friendly name for the TAXII server.
-func (o LookupTiTaxiiDataConnectorResultOutput) FriendlyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupTiTaxiiDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'ThreatIntelligenceTaxii'.
-func (o LookupTiTaxiiDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupTiTaxiiDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The password for the TAXII server.
-func (o LookupTiTaxiiDataConnectorResultOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.Password }).(pulumi.StringPtrOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The polling frequency for the TAXII server.
-func (o LookupTiTaxiiDataConnectorResultOutput) PollingFrequency() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) string { return v.PollingFrequency }).(pulumi.StringOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) PollingFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) string { return v.PollingFrequency }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupTiTaxiiDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The lookback period for the TAXII server.
-func (o LookupTiTaxiiDataConnectorResultOutput) TaxiiLookbackPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.TaxiiLookbackPeriod }).(pulumi.StringPtrOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) TaxiiLookbackPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) *string { return v.TaxiiLookbackPeriod }).(pulumi.StringPtrOutput)
 }
 
 // The API root for the TAXII server.
-func (o LookupTiTaxiiDataConnectorResultOutput) TaxiiServer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.TaxiiServer }).(pulumi.StringPtrOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) TaxiiServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) *string { return v.TaxiiServer }).(pulumi.StringPtrOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupTiTaxiiDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupTiTaxiiDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The userName for the TAXII server.
-func (o LookupTiTaxiiDataConnectorResultOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
 
 // The workspace id.
-func (o LookupTiTaxiiDataConnectorResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetTiTaxiiDataConnectorResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTiTaxiiDataConnectorResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupTiTaxiiDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetTiTaxiiDataConnectorResultOutput{})
 }

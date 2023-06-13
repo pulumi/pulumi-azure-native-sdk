@@ -12,6 +12,7 @@ import (
 )
 
 // API Version: 2016-03-01.
+// Previous API Version: 2016-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -37,12 +38,6 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:scheduler/v20140801preview:Job"),
-		},
-		{
-			Type: pulumi.String("azure-native:scheduler/v20160101:Job"),
-		},
 		{
 			Type: pulumi.String("azure-native:scheduler/v20160301:Job"),
 		},

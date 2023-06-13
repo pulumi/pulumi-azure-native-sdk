@@ -54,6 +54,12 @@ func NewConnector(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:servicelinker:Connector"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Connector
 	err := ctx.RegisterResource("azure-native:servicelinker/v20221101preview:Connector", name, args, &resource, opts...)
 	if err != nil {

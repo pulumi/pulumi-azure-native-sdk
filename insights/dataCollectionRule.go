@@ -12,10 +12,13 @@ import (
 )
 
 // Definition of ARM tracked top level resource.
-// API Version: 2019-11-01-preview.
+// API Version: 2022-06-01.
+// Previous API Version: 2019-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DataCollectionRule struct {
 	pulumi.CustomResourceState
 
+	// The resource ID of the data collection endpoint that this rule can be used with.
+	DataCollectionEndpointId pulumi.StringPtrOutput `pulumi:"dataCollectionEndpointId"`
 	// The specification of data flows.
 	DataFlows DataFlowResponseArrayOutput `pulumi:"dataFlows"`
 	// The specification of data sources.
@@ -27,16 +30,24 @@ type DataCollectionRule struct {
 	Destinations DataCollectionRuleResponseDestinationsPtrOutput `pulumi:"destinations"`
 	// Resource entity tag (ETag).
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Managed service identity of the resource.
+	Identity DataCollectionRuleResourceResponseIdentityPtrOutput `pulumi:"identity"`
 	// The immutable ID of this data collection rule. This property is READ-ONLY.
 	ImmutableId pulumi.StringOutput `pulumi:"immutableId"`
 	// The kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Metadata about the resource
+	Metadata DataCollectionRuleResponseMetadataOutput `pulumi:"metadata"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Declaration of custom streams used in this rule.
+	StreamDeclarations StreamDeclarationResponseMapOutput `pulumi:"streamDeclarations"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData DataCollectionRuleResourceResponseSystemDataOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource.
@@ -100,6 +111,8 @@ func (DataCollectionRuleState) ElementType() reflect.Type {
 }
 
 type dataCollectionRuleArgs struct {
+	// The resource ID of the data collection endpoint that this rule can be used with.
+	DataCollectionEndpointId *string `pulumi:"dataCollectionEndpointId"`
 	// The name of the data collection rule. The name is case insensitive.
 	DataCollectionRuleName *string `pulumi:"dataCollectionRuleName"`
 	// The specification of data flows.
@@ -111,18 +124,24 @@ type dataCollectionRuleArgs struct {
 	Description *string `pulumi:"description"`
 	// The specification of destinations.
 	Destinations *DataCollectionRuleDestinations `pulumi:"destinations"`
+	// Managed service identity of the resource.
+	Identity *DataCollectionRuleResourceIdentity `pulumi:"identity"`
 	// The kind of the resource.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives.
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Declaration of custom streams used in this rule.
+	StreamDeclarations map[string]StreamDeclaration `pulumi:"streamDeclarations"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DataCollectionRule resource.
 type DataCollectionRuleArgs struct {
+	// The resource ID of the data collection endpoint that this rule can be used with.
+	DataCollectionEndpointId pulumi.StringPtrInput
 	// The name of the data collection rule. The name is case insensitive.
 	DataCollectionRuleName pulumi.StringPtrInput
 	// The specification of data flows.
@@ -134,12 +153,16 @@ type DataCollectionRuleArgs struct {
 	Description pulumi.StringPtrInput
 	// The specification of destinations.
 	Destinations DataCollectionRuleDestinationsPtrInput
+	// Managed service identity of the resource.
+	Identity DataCollectionRuleResourceIdentityPtrInput
 	// The kind of the resource.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives.
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Declaration of custom streams used in this rule.
+	StreamDeclarations StreamDeclarationMapInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -181,6 +204,11 @@ func (o DataCollectionRuleOutput) ToDataCollectionRuleOutputWithContext(ctx cont
 	return o
 }
 
+// The resource ID of the data collection endpoint that this rule can be used with.
+func (o DataCollectionRuleOutput) DataCollectionEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataCollectionRule) pulumi.StringPtrOutput { return v.DataCollectionEndpointId }).(pulumi.StringPtrOutput)
+}
+
 // The specification of data flows.
 func (o DataCollectionRuleOutput) DataFlows() DataFlowResponseArrayOutput {
 	return o.ApplyT(func(v *DataCollectionRule) DataFlowResponseArrayOutput { return v.DataFlows }).(DataFlowResponseArrayOutput)
@@ -207,6 +235,11 @@ func (o DataCollectionRuleOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionRule) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Managed service identity of the resource.
+func (o DataCollectionRuleOutput) Identity() DataCollectionRuleResourceResponseIdentityPtrOutput {
+	return o.ApplyT(func(v *DataCollectionRule) DataCollectionRuleResourceResponseIdentityPtrOutput { return v.Identity }).(DataCollectionRuleResourceResponseIdentityPtrOutput)
+}
+
 // The immutable ID of this data collection rule. This property is READ-ONLY.
 func (o DataCollectionRuleOutput) ImmutableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionRule) pulumi.StringOutput { return v.ImmutableId }).(pulumi.StringOutput)
@@ -222,6 +255,11 @@ func (o DataCollectionRuleOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionRule) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// Metadata about the resource
+func (o DataCollectionRuleOutput) Metadata() DataCollectionRuleResponseMetadataOutput {
+	return o.ApplyT(func(v *DataCollectionRule) DataCollectionRuleResponseMetadataOutput { return v.Metadata }).(DataCollectionRuleResponseMetadataOutput)
+}
+
 // The name of the resource.
 func (o DataCollectionRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -230,6 +268,16 @@ func (o DataCollectionRuleOutput) Name() pulumi.StringOutput {
 // The resource provisioning state.
 func (o DataCollectionRuleOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionRule) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Declaration of custom streams used in this rule.
+func (o DataCollectionRuleOutput) StreamDeclarations() StreamDeclarationResponseMapOutput {
+	return o.ApplyT(func(v *DataCollectionRule) StreamDeclarationResponseMapOutput { return v.StreamDeclarations }).(StreamDeclarationResponseMapOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o DataCollectionRuleOutput) SystemData() DataCollectionRuleResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v *DataCollectionRule) DataCollectionRuleResourceResponseSystemDataOutput { return v.SystemData }).(DataCollectionRuleResourceResponseSystemDataOutput)
 }
 
 // Resource tags.

@@ -12,7 +12,8 @@ import (
 )
 
 // Subnet in a virtual network resource.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Subnet struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +22,7 @@ type Subnet struct {
 	// List of address prefixes for the subnet.
 	AddressPrefixes pulumi.StringArrayOutput `pulumi:"addressPrefixes"`
 	// Application gateway IP configurations of virtual network resource.
-	ApplicationGatewayIpConfigurations ApplicationGatewayIPConfigurationResponseArrayOutput `pulumi:"applicationGatewayIpConfigurations"`
+	ApplicationGatewayIPConfigurations ApplicationGatewayIPConfigurationResponseArrayOutput `pulumi:"applicationGatewayIPConfigurations"`
 	// An array of references to the delegations on the subnet.
 	Delegations DelegationResponseArrayOutput `pulumi:"delegations"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -76,57 +77,12 @@ func NewSubnet(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'VirtualNetworkName'")
 	}
 	if args.PrivateEndpointNetworkPolicies == nil {
-		args.PrivateEndpointNetworkPolicies = pulumi.StringPtr("Enabled")
+		args.PrivateEndpointNetworkPolicies = pulumi.StringPtr("Disabled")
 	}
 	if args.PrivateLinkServiceNetworkPolicies == nil {
 		args.PrivateLinkServiceNetworkPolicies = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20150501preview:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:Subnet"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:Subnet"),
 		},
@@ -214,6 +170,9 @@ func NewSubnet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:Subnet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:Subnet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Subnet
@@ -253,7 +212,7 @@ type subnetArgs struct {
 	// List of address prefixes for the subnet.
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
 	// Application gateway IP configurations of virtual network resource.
-	ApplicationGatewayIpConfigurations []ApplicationGatewayIPConfiguration `pulumi:"applicationGatewayIpConfigurations"`
+	ApplicationGatewayIPConfigurations []ApplicationGatewayIPConfiguration `pulumi:"applicationGatewayIPConfigurations"`
 	// An array of references to the delegations on the subnet.
 	Delegations []Delegation `pulumi:"delegations"`
 	// Resource ID.
@@ -293,7 +252,7 @@ type SubnetArgs struct {
 	// List of address prefixes for the subnet.
 	AddressPrefixes pulumi.StringArrayInput
 	// Application gateway IP configurations of virtual network resource.
-	ApplicationGatewayIpConfigurations ApplicationGatewayIPConfigurationArrayInput
+	ApplicationGatewayIPConfigurations ApplicationGatewayIPConfigurationArrayInput
 	// An array of references to the delegations on the subnet.
 	Delegations DelegationArrayInput
 	// Resource ID.
@@ -374,9 +333,9 @@ func (o SubnetOutput) AddressPrefixes() pulumi.StringArrayOutput {
 }
 
 // Application gateway IP configurations of virtual network resource.
-func (o SubnetOutput) ApplicationGatewayIpConfigurations() ApplicationGatewayIPConfigurationResponseArrayOutput {
+func (o SubnetOutput) ApplicationGatewayIPConfigurations() ApplicationGatewayIPConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v *Subnet) ApplicationGatewayIPConfigurationResponseArrayOutput {
-		return v.ApplicationGatewayIpConfigurations
+		return v.ApplicationGatewayIPConfigurations
 	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
 }
 

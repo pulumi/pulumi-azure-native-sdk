@@ -75,6 +75,12 @@ func NewDeploymentStackAtManagementGroup(ctx *pulumi.Context,
 	if args.ManagementGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'ManagementGroupId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:resources:DeploymentStackAtManagementGroup"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource DeploymentStackAtManagementGroup
 	err := ctx.RegisterResource("azure-native:resources/v20220801preview:DeploymentStackAtManagementGroup", name, args, &resource, opts...)
 	if err != nil {

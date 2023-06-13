@@ -13,6 +13,7 @@ import (
 
 // Pipeline resource type.
 // API Version: 2018-06-01.
+// Previous API Version: 2018-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Pipeline struct {
 	pulumi.CustomResourceState
 
@@ -56,9 +57,6 @@ func NewPipeline(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datafactory/v20170901preview:Pipeline"),
-		},
 		{
 			Type: pulumi.String("azure-native:datafactory/v20180601:Pipeline"),
 		},

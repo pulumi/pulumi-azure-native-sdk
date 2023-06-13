@@ -12,7 +12,8 @@ import (
 )
 
 // Defines the hybridIdentityMetadata.
-// API Version: 2022-05-01-preview.
+// API Version: 2022-09-01-preview.
+// Previous API Version: 2022-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type HybridIdentityMetadatum struct {
 	pulumi.CustomResourceState
 
@@ -39,15 +40,18 @@ func NewHybridIdentityMetadatum(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProvisionedClustersName == nil {
-		return nil, errors.New("invalid value for required argument 'ProvisionedClustersName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ResourceName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:HybridIdentityMetadatum"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:HybridIdentityMetadatum"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -87,12 +91,12 @@ type hybridIdentityMetadatumArgs struct {
 	HybridIdentityMetadataResourceName *string `pulumi:"hybridIdentityMetadataResourceName"`
 	// The identity of the provisioned cluster.
 	Identity *ProvisionedClusterIdentity `pulumi:"identity"`
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName string `pulumi:"provisionedClustersName"`
 	// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster.
 	PublicKey *string `pulumi:"publicKey"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ResourceName string `pulumi:"resourceName"`
 	// Unique id of the parent provisioned cluster resource.
 	ResourceUid *string `pulumi:"resourceUid"`
 }
@@ -103,12 +107,12 @@ type HybridIdentityMetadatumArgs struct {
 	HybridIdentityMetadataResourceName pulumi.StringPtrInput
 	// The identity of the provisioned cluster.
 	Identity ProvisionedClusterIdentityPtrInput
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName pulumi.StringInput
 	// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster.
 	PublicKey pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Parameter for the name of the provisioned cluster
+	ResourceName pulumi.StringInput
 	// Unique id of the parent provisioned cluster resource.
 	ResourceUid pulumi.StringPtrInput
 }

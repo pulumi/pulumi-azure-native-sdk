@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
-//
-// Deprecated: azure-native:datashare/v20200901:SqlDBTableDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:SqlDBTableDataSet to guarantee forwards compatibility.
-func LookupSqlDBTableDataSet(ctx *pulumi.Context, args *LookupSqlDBTableDataSetArgs, opts ...pulumi.InvokeOption) (*LookupSqlDBTableDataSetResult, error) {
-	var rv LookupSqlDBTableDataSetResult
+func GetSqlDBTableDataSet(ctx *pulumi.Context, args *GetSqlDBTableDataSetArgs, opts ...pulumi.InvokeOption) (*GetSqlDBTableDataSetResult, error) {
+	var rv GetSqlDBTableDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getSqlDBTableDataSet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupSqlDBTableDataSet(ctx *pulumi.Context, args *LookupSqlDBTableDataSetA
 	return &rv, nil
 }
 
-type LookupSqlDBTableDataSetArgs struct {
+type GetSqlDBTableDataSetArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -34,7 +32,7 @@ type LookupSqlDBTableDataSetArgs struct {
 }
 
 // A SQL DB table data set.
-type LookupSqlDBTableDataSetResult struct {
+type GetSqlDBTableDataSetResult struct {
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// Database name of the source data set
@@ -58,20 +56,20 @@ type LookupSqlDBTableDataSetResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupSqlDBTableDataSetOutput(ctx *pulumi.Context, args LookupSqlDBTableDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDBTableDataSetResultOutput {
+func GetSqlDBTableDataSetOutput(ctx *pulumi.Context, args GetSqlDBTableDataSetOutputArgs, opts ...pulumi.InvokeOption) GetSqlDBTableDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlDBTableDataSetResult, error) {
-			args := v.(LookupSqlDBTableDataSetArgs)
-			r, err := LookupSqlDBTableDataSet(ctx, &args, opts...)
-			var s LookupSqlDBTableDataSetResult
+		ApplyT(func(v interface{}) (GetSqlDBTableDataSetResult, error) {
+			args := v.(GetSqlDBTableDataSetArgs)
+			r, err := GetSqlDBTableDataSet(ctx, &args, opts...)
+			var s GetSqlDBTableDataSetResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupSqlDBTableDataSetResultOutput)
+		}).(GetSqlDBTableDataSetResultOutput)
 }
 
-type LookupSqlDBTableDataSetOutputArgs struct {
+type GetSqlDBTableDataSetOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -82,76 +80,76 @@ type LookupSqlDBTableDataSetOutputArgs struct {
 	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
-func (LookupSqlDBTableDataSetOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupSqlDBTableDataSetArgs)(nil)).Elem()
+func (GetSqlDBTableDataSetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlDBTableDataSetArgs)(nil)).Elem()
 }
 
 // A SQL DB table data set.
-type LookupSqlDBTableDataSetResultOutput struct{ *pulumi.OutputState }
+type GetSqlDBTableDataSetResultOutput struct{ *pulumi.OutputState }
 
-func (LookupSqlDBTableDataSetResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupSqlDBTableDataSetResult)(nil)).Elem()
+func (GetSqlDBTableDataSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlDBTableDataSetResult)(nil)).Elem()
 }
 
-func (o LookupSqlDBTableDataSetResultOutput) ToLookupSqlDBTableDataSetResultOutput() LookupSqlDBTableDataSetResultOutput {
+func (o GetSqlDBTableDataSetResultOutput) ToGetSqlDBTableDataSetResultOutput() GetSqlDBTableDataSetResultOutput {
 	return o
 }
 
-func (o LookupSqlDBTableDataSetResultOutput) ToLookupSqlDBTableDataSetResultOutputWithContext(ctx context.Context) LookupSqlDBTableDataSetResultOutput {
+func (o GetSqlDBTableDataSetResultOutput) ToGetSqlDBTableDataSetResultOutputWithContext(ctx context.Context) GetSqlDBTableDataSetResultOutput {
 	return o
 }
 
 // Unique id for identifying a data set resource
-func (o LookupSqlDBTableDataSetResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // Database name of the source data set
-func (o LookupSqlDBTableDataSetResultOutput) DatabaseName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.DatabaseName }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupSqlDBTableDataSetResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set.
 // Expected value is 'SqlDBTable'.
-func (o LookupSqlDBTableDataSetResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupSqlDBTableDataSetResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Schema of the table. Default value is dbo.
-func (o LookupSqlDBTableDataSetResultOutput) SchemaName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.SchemaName }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.SchemaName }).(pulumi.StringOutput)
 }
 
 // Resource id of SQL server
-func (o LookupSqlDBTableDataSetResultOutput) SqlServerResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.SqlServerResourceId }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) SqlServerResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.SqlServerResourceId }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupSqlDBTableDataSetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetSqlDBTableDataSetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // SQL DB table name.
-func (o LookupSqlDBTableDataSetResultOutput) TableName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.TableName }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
 // Type of the azure resource
-func (o LookupSqlDBTableDataSetResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDBTableDataSetResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetSqlDBTableDataSetResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDBTableDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupSqlDBTableDataSetResultOutput{})
+	pulumi.RegisterOutputType(GetSqlDBTableDataSetResultOutput{})
 }

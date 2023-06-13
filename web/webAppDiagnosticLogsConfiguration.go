@@ -12,7 +12,8 @@ import (
 )
 
 // Configuration of App Service site logs.
-// API Version: 2020-12-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type WebAppDiagnosticLogsConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -49,9 +50,6 @@ func NewWebAppDiagnosticLogsConfiguration(ctx *pulumi.Context,
 		args.ApplicationLogs = args.ApplicationLogs.ToApplicationLogsConfigPtrOutput().ApplyT(func(v *ApplicationLogsConfig) *ApplicationLogsConfig { return v.Defaults() }).(ApplicationLogsConfigPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:web/v20150801:WebAppDiagnosticLogsConfiguration"),
-		},
 		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppDiagnosticLogsConfiguration"),
 		},

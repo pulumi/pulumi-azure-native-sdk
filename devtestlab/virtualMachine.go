@@ -13,6 +13,7 @@ import (
 
 // A virtual machine.
 // API Version: 2018-09-15.
+// Previous API Version: 2018-09-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -122,12 +123,6 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		args.StorageType = pulumi.StringPtr("labStorageType")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:devtestlab/v20150521preview:VirtualMachine"),
-		},
-		{
-			Type: pulumi.String("azure-native:devtestlab/v20160515:VirtualMachine"),
-		},
 		{
 			Type: pulumi.String("azure-native:devtestlab/v20180915:VirtualMachine"),
 		},

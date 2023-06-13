@@ -12,7 +12,8 @@ import (
 )
 
 // The Private Endpoint Connection resource.
-// API Version: 2020-10-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2020-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +48,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:attestation/v20201001:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:attestation/v20210601:PrivateEndpointConnection"),
 		},
 		{
 			Type: pulumi.String("azure-native:attestation/v20210601preview:PrivateEndpointConnection"),

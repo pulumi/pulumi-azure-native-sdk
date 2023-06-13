@@ -66,21 +66,6 @@ func NewBudget(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:consumption:Budget"),
 		},
 		{
-			Type: pulumi.String("azure-native:consumption/v20190101:Budget"),
-		},
-		{
-			Type: pulumi.String("azure-native:consumption/v20190401preview:Budget"),
-		},
-		{
-			Type: pulumi.String("azure-native:consumption/v20190501:Budget"),
-		},
-		{
-			Type: pulumi.String("azure-native:consumption/v20190501preview:Budget"),
-		},
-		{
-			Type: pulumi.String("azure-native:consumption/v20190601:Budget"),
-		},
-		{
 			Type: pulumi.String("azure-native:consumption/v20191101:Budget"),
 		},
 		{
@@ -91,6 +76,9 @@ func NewBudget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:consumption/v20220901:Budget"),
+		},
+		{
+			Type: pulumi.String("azure-native:consumption/v20230301:Budget"),
 		},
 	})
 	opts = append(opts, aliases)

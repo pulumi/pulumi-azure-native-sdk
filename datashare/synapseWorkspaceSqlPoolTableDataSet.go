@@ -12,7 +12,8 @@ import (
 )
 
 // A Synapse Workspace Sql Pool Table data set.
-// API Version: 2020-09-01.
+// API Version: 2021-08-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SynapseWorkspaceSqlPoolTableDataSet struct {
 	pulumi.CustomResourceState
 
@@ -55,12 +56,6 @@ func NewSynapseWorkspaceSqlPoolTableDataSet(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("SynapseWorkspaceSqlPoolTable")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datashare/v20181101preview:SynapseWorkspaceSqlPoolTableDataSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:datashare/v20191101:SynapseWorkspaceSqlPoolTableDataSet"),
-		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20200901:SynapseWorkspaceSqlPoolTableDataSet"),
 		},

@@ -13,6 +13,7 @@ import (
 
 // Describes a DNS zone.
 // API Version: 2018-05-01.
+// Previous API Version: 2018-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -57,22 +58,10 @@ func NewZone(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network/v20150504preview:Zone"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160401:Zone"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:Zone"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:Zone"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180301preview:Zone"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180501:Zone"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:Zone"),
 		},
 	})
 	opts = append(opts, aliases)

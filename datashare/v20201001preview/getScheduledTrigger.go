@@ -11,10 +11,8 @@ import (
 )
 
 // Get a Trigger in a shareSubscription
-//
-// Deprecated: azure-native:datashare/v20201001preview:ScheduledTrigger is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ScheduledTrigger to guarantee forwards compatibility.
-func LookupScheduledTrigger(ctx *pulumi.Context, args *LookupScheduledTriggerArgs, opts ...pulumi.InvokeOption) (*LookupScheduledTriggerResult, error) {
-	var rv LookupScheduledTriggerResult
+func GetScheduledTrigger(ctx *pulumi.Context, args *GetScheduledTriggerArgs, opts ...pulumi.InvokeOption) (*GetScheduledTriggerResult, error) {
+	var rv GetScheduledTriggerResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getScheduledTrigger", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupScheduledTrigger(ctx *pulumi.Context, args *LookupScheduledTriggerArg
 	return &rv, nil
 }
 
-type LookupScheduledTriggerArgs struct {
+type GetScheduledTriggerArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The resource group name.
@@ -34,7 +32,7 @@ type LookupScheduledTriggerArgs struct {
 }
 
 // A type of trigger based on schedule
-type LookupScheduledTriggerResult struct {
+type GetScheduledTriggerResult struct {
 	// Time at which the trigger was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The resource id of the azure resource
@@ -62,20 +60,20 @@ type LookupScheduledTriggerResult struct {
 	UserName string `pulumi:"userName"`
 }
 
-func LookupScheduledTriggerOutput(ctx *pulumi.Context, args LookupScheduledTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledTriggerResultOutput {
+func GetScheduledTriggerOutput(ctx *pulumi.Context, args GetScheduledTriggerOutputArgs, opts ...pulumi.InvokeOption) GetScheduledTriggerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupScheduledTriggerResult, error) {
-			args := v.(LookupScheduledTriggerArgs)
-			r, err := LookupScheduledTrigger(ctx, &args, opts...)
-			var s LookupScheduledTriggerResult
+		ApplyT(func(v interface{}) (GetScheduledTriggerResult, error) {
+			args := v.(GetScheduledTriggerArgs)
+			r, err := GetScheduledTrigger(ctx, &args, opts...)
+			var s GetScheduledTriggerResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupScheduledTriggerResultOutput)
+		}).(GetScheduledTriggerResultOutput)
 }
 
-type LookupScheduledTriggerOutputArgs struct {
+type GetScheduledTriggerOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The resource group name.
@@ -86,86 +84,86 @@ type LookupScheduledTriggerOutputArgs struct {
 	TriggerName pulumi.StringInput `pulumi:"triggerName"`
 }
 
-func (LookupScheduledTriggerOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupScheduledTriggerArgs)(nil)).Elem()
+func (GetScheduledTriggerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduledTriggerArgs)(nil)).Elem()
 }
 
 // A type of trigger based on schedule
-type LookupScheduledTriggerResultOutput struct{ *pulumi.OutputState }
+type GetScheduledTriggerResultOutput struct{ *pulumi.OutputState }
 
-func (LookupScheduledTriggerResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupScheduledTriggerResult)(nil)).Elem()
+func (GetScheduledTriggerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduledTriggerResult)(nil)).Elem()
 }
 
-func (o LookupScheduledTriggerResultOutput) ToLookupScheduledTriggerResultOutput() LookupScheduledTriggerResultOutput {
+func (o GetScheduledTriggerResultOutput) ToGetScheduledTriggerResultOutput() GetScheduledTriggerResultOutput {
 	return o
 }
 
-func (o LookupScheduledTriggerResultOutput) ToLookupScheduledTriggerResultOutputWithContext(ctx context.Context) LookupScheduledTriggerResultOutput {
+func (o GetScheduledTriggerResultOutput) ToGetScheduledTriggerResultOutputWithContext(ctx context.Context) GetScheduledTriggerResultOutput {
 	return o
 }
 
 // Time at which the trigger was created.
-func (o LookupScheduledTriggerResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupScheduledTriggerResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of synchronization on trigger.
 // Expected value is 'ScheduleBased'.
-func (o LookupScheduledTriggerResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupScheduledTriggerResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Gets the provisioning state
-func (o LookupScheduledTriggerResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Recurrence Interval
-func (o LookupScheduledTriggerResultOutput) RecurrenceInterval() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.RecurrenceInterval }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) RecurrenceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.RecurrenceInterval }).(pulumi.StringOutput)
 }
 
 // Synchronization mode
-func (o LookupScheduledTriggerResultOutput) SynchronizationMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) *string { return v.SynchronizationMode }).(pulumi.StringPtrOutput)
+func (o GetScheduledTriggerResultOutput) SynchronizationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) *string { return v.SynchronizationMode }).(pulumi.StringPtrOutput)
 }
 
 // Synchronization time
-func (o LookupScheduledTriggerResultOutput) SynchronizationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.SynchronizationTime }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) SynchronizationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.SynchronizationTime }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupScheduledTriggerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetScheduledTriggerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Gets the trigger state
-func (o LookupScheduledTriggerResultOutput) TriggerStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.TriggerStatus }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) TriggerStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.TriggerStatus }).(pulumi.StringOutput)
 }
 
 // Type of the azure resource
-func (o LookupScheduledTriggerResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Name of the user who created the trigger.
-func (o LookupScheduledTriggerResultOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledTriggerResult) string { return v.UserName }).(pulumi.StringOutput)
+func (o GetScheduledTriggerResultOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledTriggerResult) string { return v.UserName }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupScheduledTriggerResultOutput{})
+	pulumi.RegisterOutputType(GetScheduledTriggerResultOutput{})
 }

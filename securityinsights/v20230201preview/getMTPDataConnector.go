@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20230201preview:MTPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MTPDataConnector to guarantee forwards compatibility.
-func LookupMTPDataConnector(ctx *pulumi.Context, args *LookupMTPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMTPDataConnectorResult, error) {
-	var rv LookupMTPDataConnectorResult
+func GetMTPDataConnector(ctx *pulumi.Context, args *GetMTPDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetMTPDataConnectorResult, error) {
+	var rv GetMTPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getMTPDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupMTPDataConnector(ctx *pulumi.Context, args *LookupMTPDataConnectorArg
 	return &rv, nil
 }
 
-type LookupMTPDataConnectorArgs struct {
+type GetMTPDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupMTPDataConnectorArgs struct {
 }
 
 // Represents MTP (Microsoft Threat Protection) data connector.
-type LookupMTPDataConnectorResult struct {
+type GetMTPDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes MTPDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -54,20 +52,20 @@ type LookupMTPDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupMTPDataConnectorOutput(ctx *pulumi.Context, args LookupMTPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMTPDataConnectorResultOutput {
+func GetMTPDataConnectorOutput(ctx *pulumi.Context, args GetMTPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetMTPDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMTPDataConnectorResult, error) {
-			args := v.(LookupMTPDataConnectorArgs)
-			r, err := LookupMTPDataConnector(ctx, &args, opts...)
-			var s LookupMTPDataConnectorResult
+		ApplyT(func(v interface{}) (GetMTPDataConnectorResult, error) {
+			args := v.(GetMTPDataConnectorArgs)
+			r, err := GetMTPDataConnector(ctx, &args, opts...)
+			var s GetMTPDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupMTPDataConnectorResultOutput)
+		}).(GetMTPDataConnectorResultOutput)
 }
 
-type LookupMTPDataConnectorOutputArgs struct {
+type GetMTPDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -76,71 +74,71 @@ type LookupMTPDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupMTPDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMTPDataConnectorArgs)(nil)).Elem()
+func (GetMTPDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMTPDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents MTP (Microsoft Threat Protection) data connector.
-type LookupMTPDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetMTPDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupMTPDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMTPDataConnectorResult)(nil)).Elem()
+func (GetMTPDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMTPDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupMTPDataConnectorResultOutput) ToLookupMTPDataConnectorResultOutput() LookupMTPDataConnectorResultOutput {
+func (o GetMTPDataConnectorResultOutput) ToGetMTPDataConnectorResultOutput() GetMTPDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupMTPDataConnectorResultOutput) ToLookupMTPDataConnectorResultOutputWithContext(ctx context.Context) LookupMTPDataConnectorResultOutput {
+func (o GetMTPDataConnectorResultOutput) ToGetMTPDataConnectorResultOutputWithContext(ctx context.Context) GetMTPDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupMTPDataConnectorResultOutput) DataTypes() MTPDataConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) MTPDataConnectorDataTypesResponse { return v.DataTypes }).(MTPDataConnectorDataTypesResponseOutput)
+func (o GetMTPDataConnectorResultOutput) DataTypes() MTPDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) MTPDataConnectorDataTypesResponse { return v.DataTypes }).(MTPDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
-func (o LookupMTPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetMTPDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // The available filtered providers for the connector.
-func (o LookupMTPDataConnectorResultOutput) FilteredProviders() MtpFilteredProvidersResponsePtrOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) *MtpFilteredProvidersResponse { return v.FilteredProviders }).(MtpFilteredProvidersResponsePtrOutput)
+func (o GetMTPDataConnectorResultOutput) FilteredProviders() MtpFilteredProvidersResponsePtrOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) *MtpFilteredProvidersResponse { return v.FilteredProviders }).(MtpFilteredProvidersResponsePtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupMTPDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetMTPDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'MicrosoftThreatProtection'.
-func (o LookupMTPDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetMTPDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupMTPDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetMTPDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMTPDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetMTPDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupMTPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetMTPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupMTPDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetMTPDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMTPDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupMTPDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetMTPDataConnectorResultOutput{})
 }

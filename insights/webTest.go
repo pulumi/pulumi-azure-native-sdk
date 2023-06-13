@@ -11,20 +11,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Application Insights web test definition.
-// API Version: 2015-05-01.
+// An Application Insights WebTest definition.
+// API Version: 2022-06-15.
+// Previous API Version: 2015-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type WebTest struct {
 	pulumi.CustomResourceState
 
 	// An XML configuration specification for a WebTest.
 	Configuration WebTestPropertiesResponseConfigurationPtrOutput `pulumi:"configuration"`
-	// Purpose/user defined descriptive test for this WebTest.
+	// User defined description for this WebTest.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Is the test actively being monitored.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Interval in seconds between test runs for this WebTest. Default value is 300.
 	Frequency pulumi.IntPtrOutput `pulumi:"frequency"`
-	// The kind of web test that this web test watches. Choices are ping and multistep.
+	// The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -34,6 +35,8 @@ type WebTest struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Current state of this component, whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The collection of request properties
+	Request WebTestPropertiesResponseRequestPtrOutput `pulumi:"request"`
 	// Allow for retries should this WebTest fail.
 	RetryEnabled pulumi.BoolPtrOutput `pulumi:"retryEnabled"`
 	// Unique ID of this WebTest. This is typically the same value as the Name field.
@@ -44,7 +47,9 @@ type WebTest struct {
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
 	// Azure resource type
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The kind of web test this is, valid choices are ping and multistep.
+	// The collection of validation rule properties
+	ValidationRules WebTestPropertiesResponseValidationRulesPtrOutput `pulumi:"validationRules"`
+	// The kind of web test this is, valid choices are ping, multistep and standard.
 	WebTestKind pulumi.StringOutput `pulumi:"webTestKind"`
 	// User defined name if this WebTest.
 	WebTestName pulumi.StringOutput `pulumi:"webTestName"`
@@ -127,18 +132,20 @@ func (WebTestState) ElementType() reflect.Type {
 type webTestArgs struct {
 	// An XML configuration specification for a WebTest.
 	Configuration *WebTestPropertiesConfiguration `pulumi:"configuration"`
-	// Purpose/user defined descriptive test for this WebTest.
+	// User defined description for this WebTest.
 	Description *string `pulumi:"description"`
 	// Is the test actively being monitored.
 	Enabled *bool `pulumi:"enabled"`
 	// Interval in seconds between test runs for this WebTest. Default value is 300.
 	Frequency *int `pulumi:"frequency"`
-	// The kind of web test that this web test watches. Choices are ping and multistep.
+	// The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
 	Kind *WebTestKind `pulumi:"kind"`
 	// Resource location
 	Location *string `pulumi:"location"`
 	// A list of where to physically run the tests from to give global coverage for accessibility of your application.
 	Locations []WebTestGeolocation `pulumi:"locations"`
+	// The collection of request properties
+	Request *WebTestPropertiesRequest `pulumi:"request"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Allow for retries should this WebTest fail.
@@ -149,7 +156,9 @@ type webTestArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Seconds until this WebTest will timeout and fail. Default value is 30.
 	Timeout *int `pulumi:"timeout"`
-	// The kind of web test this is, valid choices are ping and multistep.
+	// The collection of validation rule properties
+	ValidationRules *WebTestPropertiesValidationRules `pulumi:"validationRules"`
+	// The kind of web test this is, valid choices are ping, multistep and standard.
 	WebTestKind WebTestKind `pulumi:"webTestKind"`
 	// User defined name if this WebTest.
 	WebTestName *string `pulumi:"webTestName"`
@@ -159,18 +168,20 @@ type webTestArgs struct {
 type WebTestArgs struct {
 	// An XML configuration specification for a WebTest.
 	Configuration WebTestPropertiesConfigurationPtrInput
-	// Purpose/user defined descriptive test for this WebTest.
+	// User defined description for this WebTest.
 	Description pulumi.StringPtrInput
 	// Is the test actively being monitored.
 	Enabled pulumi.BoolPtrInput
 	// Interval in seconds between test runs for this WebTest. Default value is 300.
 	Frequency pulumi.IntPtrInput
-	// The kind of web test that this web test watches. Choices are ping and multistep.
+	// The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
 	Kind WebTestKindPtrInput
 	// Resource location
 	Location pulumi.StringPtrInput
 	// A list of where to physically run the tests from to give global coverage for accessibility of your application.
 	Locations WebTestGeolocationArrayInput
+	// The collection of request properties
+	Request WebTestPropertiesRequestPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Allow for retries should this WebTest fail.
@@ -181,7 +192,9 @@ type WebTestArgs struct {
 	Tags pulumi.StringMapInput
 	// Seconds until this WebTest will timeout and fail. Default value is 30.
 	Timeout pulumi.IntPtrInput
-	// The kind of web test this is, valid choices are ping and multistep.
+	// The collection of validation rule properties
+	ValidationRules WebTestPropertiesValidationRulesPtrInput
+	// The kind of web test this is, valid choices are ping, multistep and standard.
 	WebTestKind WebTestKindInput
 	// User defined name if this WebTest.
 	WebTestName pulumi.StringPtrInput
@@ -229,7 +242,7 @@ func (o WebTestOutput) Configuration() WebTestPropertiesResponseConfigurationPtr
 	return o.ApplyT(func(v *WebTest) WebTestPropertiesResponseConfigurationPtrOutput { return v.Configuration }).(WebTestPropertiesResponseConfigurationPtrOutput)
 }
 
-// Purpose/user defined descriptive test for this WebTest.
+// User defined description for this WebTest.
 func (o WebTestOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebTest) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -244,7 +257,7 @@ func (o WebTestOutput) Frequency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WebTest) pulumi.IntPtrOutput { return v.Frequency }).(pulumi.IntPtrOutput)
 }
 
-// The kind of web test that this web test watches. Choices are ping and multistep.
+// The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
 func (o WebTestOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebTest) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -267,6 +280,11 @@ func (o WebTestOutput) Name() pulumi.StringOutput {
 // Current state of this component, whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
 func (o WebTestOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebTest) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The collection of request properties
+func (o WebTestOutput) Request() WebTestPropertiesResponseRequestPtrOutput {
+	return o.ApplyT(func(v *WebTest) WebTestPropertiesResponseRequestPtrOutput { return v.Request }).(WebTestPropertiesResponseRequestPtrOutput)
 }
 
 // Allow for retries should this WebTest fail.
@@ -294,7 +312,12 @@ func (o WebTestOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebTest) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The kind of web test this is, valid choices are ping and multistep.
+// The collection of validation rule properties
+func (o WebTestOutput) ValidationRules() WebTestPropertiesResponseValidationRulesPtrOutput {
+	return o.ApplyT(func(v *WebTest) WebTestPropertiesResponseValidationRulesPtrOutput { return v.ValidationRules }).(WebTestPropertiesResponseValidationRulesPtrOutput)
+}
+
+// The kind of web test this is, valid choices are ping, multistep and standard.
 func (o WebTestOutput) WebTestKind() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebTest) pulumi.StringOutput { return v.WebTestKind }).(pulumi.StringOutput)
 }

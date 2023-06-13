@@ -12,7 +12,8 @@ import (
 )
 
 // The peering service prefix class.
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Prefix struct {
 	pulumi.CustomResourceState
 
@@ -50,21 +51,6 @@ func NewPrefix(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:peering/v20190801preview:Prefix"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20190901preview:Prefix"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20200101preview:Prefix"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20200401:Prefix"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20201001:Prefix"),
-		},
 		{
 			Type: pulumi.String("azure-native:peering/v20210101:Prefix"),
 		},

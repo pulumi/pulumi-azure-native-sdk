@@ -13,6 +13,7 @@ import (
 
 // Description of a Namespace AuthorizationRules.
 // API Version: 2017-04-01.
+// Previous API Version: 2017-04-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 
@@ -63,9 +64,6 @@ func NewNamespaceAuthorizationRule(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:notificationhubs/v20160301:NamespaceAuthorizationRule"),
-		},
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20170401:NamespaceAuthorizationRule"),
 		},

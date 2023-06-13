@@ -12,7 +12,8 @@ import (
 )
 
 // Represents a and external administrator to be created.
-// API Version: 2017-12-01.
+// API Version: 2017-12-01-preview.
+// Previous API Version: 2017-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ServerAdministrator struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +63,9 @@ func NewServerAdministrator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20171201preview:ServerAdministrator"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:ServerAdministrator"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ServerAdministrator
@@ -100,7 +104,7 @@ type serverAdministratorArgs struct {
 	AdministratorType string `pulumi:"administratorType"`
 	// The server administrator login account name.
 	Login string `pulumi:"login"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
@@ -116,7 +120,7 @@ type ServerAdministratorArgs struct {
 	AdministratorType pulumi.StringInput
 	// The server administrator login account name.
 	Login pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringInput

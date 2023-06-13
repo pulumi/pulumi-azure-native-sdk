@@ -11,7 +11,7 @@ import (
 )
 
 // Execute Insights for an entity.
-// API Version: 2019-01-01-preview.
+// API Version: 2023-05-01-preview.
 func GetEntityInsights(ctx *pulumi.Context, args *GetEntityInsightsArgs, opts ...pulumi.InvokeOption) (*GetEntityInsightsResult, error) {
 	var rv GetEntityInsightsResult
 	err := ctx.Invoke("azure-native:securityinsights:getEntityInsights", args, &rv, opts...)
@@ -30,9 +30,7 @@ type GetEntityInsightsArgs struct {
 	EntityId string `pulumi:"entityId"`
 	// List of Insights Query Id. If empty, default value is all insights of this entity
 	InsightQueryIds []string `pulumi:"insightQueryIds"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The start timeline date, so the results returned are after this date.
 	StartTime string `pulumi:"startTime"`
@@ -70,9 +68,7 @@ type GetEntityInsightsOutputArgs struct {
 	EntityId pulumi.StringInput `pulumi:"entityId"`
 	// List of Insights Query Id. If empty, default value is all insights of this entity
 	InsightQueryIds pulumi.StringArrayInput `pulumi:"insightQueryIds"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The start timeline date, so the results returned are after this date.
 	StartTime pulumi.StringInput `pulumi:"startTime"`

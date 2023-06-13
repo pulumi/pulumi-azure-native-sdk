@@ -109,39 +109,6 @@ func NewDatabaseAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb:DatabaseAccount"),
 		},
 		{
-			Type: pulumi.String("azure-native:documentdb/v20150401:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150408:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20151106:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160319:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160331:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:DatabaseAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:DatabaseAccount"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:DatabaseAccount"),
 		},
 		{
@@ -190,7 +157,19 @@ func NewDatabaseAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:DatabaseAccount"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:DatabaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:DatabaseAccount"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:DatabaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:DatabaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:DatabaseAccount"),
 		},
 	})
 	opts = append(opts, aliases)

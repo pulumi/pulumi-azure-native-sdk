@@ -12,7 +12,8 @@ import (
 )
 
 // An action group resource.
-// API Version: 2019-06-01.
+// API Version: 2023-01-01.
+// Previous API Version: 2019-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ActionGroup struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +29,8 @@ type ActionGroup struct {
 	EmailReceivers EmailReceiverResponseArrayOutput `pulumi:"emailReceivers"`
 	// Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The list of event hub receivers that are part of this action group.
+	EventHubReceivers EventHubReceiverResponseArrayOutput `pulumi:"eventHubReceivers"`
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName pulumi.StringOutput `pulumi:"groupShortName"`
 	// The list of ITSM receivers that are part of this action group.
@@ -142,6 +145,8 @@ type actionGroupArgs struct {
 	EmailReceivers []EmailReceiver `pulumi:"emailReceivers"`
 	// Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
 	Enabled bool `pulumi:"enabled"`
+	// The list of event hub receivers that are part of this action group.
+	EventHubReceivers []EventHubReceiver `pulumi:"eventHubReceivers"`
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName string `pulumi:"groupShortName"`
 	// The list of ITSM receivers that are part of this action group.
@@ -178,6 +183,8 @@ type ActionGroupArgs struct {
 	EmailReceivers EmailReceiverArrayInput
 	// Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
 	Enabled pulumi.BoolInput
+	// The list of event hub receivers that are part of this action group.
+	EventHubReceivers EventHubReceiverArrayInput
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName pulumi.StringInput
 	// The list of ITSM receivers that are part of this action group.
@@ -263,6 +270,11 @@ func (o ActionGroupOutput) EmailReceivers() EmailReceiverResponseArrayOutput {
 // Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
 func (o ActionGroupOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ActionGroup) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The list of event hub receivers that are part of this action group.
+func (o ActionGroupOutput) EventHubReceivers() EventHubReceiverResponseArrayOutput {
+	return o.ApplyT(func(v *ActionGroup) EventHubReceiverResponseArrayOutput { return v.EventHubReceivers }).(EventHubReceiverResponseArrayOutput)
 }
 
 // The short name of the action group. This will be used in SMS messages.

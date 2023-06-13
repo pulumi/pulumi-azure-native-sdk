@@ -20,6 +20,14 @@ const (
 	ActionRuleTypeDiagnostics = ActionRuleType("Diagnostics")
 )
 
+// Action that should be applied.
+type ActionType string
+
+const (
+	ActionTypeAddActionGroups       = ActionType("AddActionGroups")
+	ActionTypeRemoveAllActionGroups = ActionType("RemoveAllActionGroups")
+)
+
 // The alert rule state.
 type AlertRuleState string
 
@@ -28,7 +36,37 @@ const (
 	AlertRuleStateDisabled = AlertRuleState("Disabled")
 )
 
-// operator for a given condition
+// Days of week.
+type DaysOfWeek string
+
+const (
+	DaysOfWeekSunday    = DaysOfWeek("Sunday")
+	DaysOfWeekMonday    = DaysOfWeek("Monday")
+	DaysOfWeekTuesday   = DaysOfWeek("Tuesday")
+	DaysOfWeekWednesday = DaysOfWeek("Wednesday")
+	DaysOfWeekThursday  = DaysOfWeek("Thursday")
+	DaysOfWeekFriday    = DaysOfWeek("Friday")
+	DaysOfWeekSaturday  = DaysOfWeek("Saturday")
+)
+
+// Field for a given condition.
+type Field string
+
+const (
+	FieldSeverity            = Field("Severity")
+	FieldMonitorService      = Field("MonitorService")
+	FieldMonitorCondition    = Field("MonitorCondition")
+	FieldSignalType          = Field("SignalType")
+	FieldTargetResourceType  = Field("TargetResourceType")
+	FieldTargetResource      = Field("TargetResource")
+	FieldTargetResourceGroup = Field("TargetResourceGroup")
+	FieldAlertRuleId         = Field("AlertRuleId")
+	FieldAlertRuleName       = Field("AlertRuleName")
+	FieldDescription         = Field("Description")
+	FieldAlertContext        = Field("AlertContext")
+)
+
+// Operator for a given condition.
 type Operator string
 
 const (
@@ -36,6 +74,15 @@ const (
 	OperatorNotEquals      = Operator("NotEquals")
 	OperatorContains       = Operator("Contains")
 	OperatorDoesNotContain = Operator("DoesNotContain")
+)
+
+// Specifies when the recurrence should be applied.
+type RecurrenceType string
+
+const (
+	RecurrenceTypeDaily   = RecurrenceType("Daily")
+	RecurrenceTypeWeekly  = RecurrenceType("Weekly")
+	RecurrenceTypeMonthly = RecurrenceType("Monthly")
 )
 
 // type of target scope

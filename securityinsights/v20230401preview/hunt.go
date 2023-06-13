@@ -66,6 +66,15 @@ func NewHunt(ctx *pulumi.Context,
 	if args.Status == nil {
 		args.Status = pulumi.StringPtr("New")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:securityinsights:Hunt"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Hunt"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Hunt
 	err := ctx.RegisterResource("azure-native:securityinsights/v20230401preview:Hunt", name, args, &resource, opts...)
 	if err != nil {

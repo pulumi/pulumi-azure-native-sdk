@@ -46,6 +46,9 @@ func NewLabelByWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:easm:LabelByWorkspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:easm/v20230401preview:LabelByWorkspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource LabelByWorkspace

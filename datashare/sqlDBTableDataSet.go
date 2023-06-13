@@ -12,7 +12,8 @@ import (
 )
 
 // A SQL DB table data set.
-// API Version: 2020-09-01.
+// API Version: 2021-08-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlDBTableDataSet struct {
 	pulumi.CustomResourceState
 
@@ -70,12 +71,6 @@ func NewSqlDBTableDataSet(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("SqlDBTable")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datashare/v20181101preview:SqlDBTableDataSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:datashare/v20191101:SqlDBTableDataSet"),
-		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20200901:SqlDBTableDataSet"),
 		},

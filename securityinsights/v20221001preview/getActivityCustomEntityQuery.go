@@ -11,10 +11,8 @@ import (
 )
 
 // Gets an entity query.
-//
-// Deprecated: azure-native:securityinsights/v20221001preview:ActivityCustomEntityQuery is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:ActivityCustomEntityQuery to guarantee forwards compatibility.
-func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCustomEntityQueryArgs, opts ...pulumi.InvokeOption) (*LookupActivityCustomEntityQueryResult, error) {
-	var rv LookupActivityCustomEntityQueryResult
+func GetActivityCustomEntityQuery(ctx *pulumi.Context, args *GetActivityCustomEntityQueryArgs, opts ...pulumi.InvokeOption) (*GetActivityCustomEntityQueryResult, error) {
+	var rv GetActivityCustomEntityQueryResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221001preview:getActivityCustomEntityQuery", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCu
 	return &rv, nil
 }
 
-type LookupActivityCustomEntityQueryArgs struct {
+type GetActivityCustomEntityQueryArgs struct {
 	// entity query ID
 	EntityQueryId string `pulumi:"entityQueryId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupActivityCustomEntityQueryArgs struct {
 }
 
 // Represents Activity entity query.
-type LookupActivityCustomEntityQueryResult struct {
+type GetActivityCustomEntityQueryResult struct {
 	// The entity query content to display in timeline
 	Content *string `pulumi:"content"`
 	// The time the activity was created
@@ -70,20 +68,20 @@ type LookupActivityCustomEntityQueryResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupActivityCustomEntityQueryOutput(ctx *pulumi.Context, args LookupActivityCustomEntityQueryOutputArgs, opts ...pulumi.InvokeOption) LookupActivityCustomEntityQueryResultOutput {
+func GetActivityCustomEntityQueryOutput(ctx *pulumi.Context, args GetActivityCustomEntityQueryOutputArgs, opts ...pulumi.InvokeOption) GetActivityCustomEntityQueryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupActivityCustomEntityQueryResult, error) {
-			args := v.(LookupActivityCustomEntityQueryArgs)
-			r, err := LookupActivityCustomEntityQuery(ctx, &args, opts...)
-			var s LookupActivityCustomEntityQueryResult
+		ApplyT(func(v interface{}) (GetActivityCustomEntityQueryResult, error) {
+			args := v.(GetActivityCustomEntityQueryArgs)
+			r, err := GetActivityCustomEntityQuery(ctx, &args, opts...)
+			var s GetActivityCustomEntityQueryResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupActivityCustomEntityQueryResultOutput)
+		}).(GetActivityCustomEntityQueryResultOutput)
 }
 
-type LookupActivityCustomEntityQueryOutputArgs struct {
+type GetActivityCustomEntityQueryOutputArgs struct {
 	// entity query ID
 	EntityQueryId pulumi.StringInput `pulumi:"entityQueryId"`
 	// The name of the resource group. The name is case insensitive.
@@ -92,113 +90,113 @@ type LookupActivityCustomEntityQueryOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupActivityCustomEntityQueryOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupActivityCustomEntityQueryArgs)(nil)).Elem()
+func (GetActivityCustomEntityQueryOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActivityCustomEntityQueryArgs)(nil)).Elem()
 }
 
 // Represents Activity entity query.
-type LookupActivityCustomEntityQueryResultOutput struct{ *pulumi.OutputState }
+type GetActivityCustomEntityQueryResultOutput struct{ *pulumi.OutputState }
 
-func (LookupActivityCustomEntityQueryResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupActivityCustomEntityQueryResult)(nil)).Elem()
+func (GetActivityCustomEntityQueryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActivityCustomEntityQueryResult)(nil)).Elem()
 }
 
-func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntityQueryResultOutput() LookupActivityCustomEntityQueryResultOutput {
+func (o GetActivityCustomEntityQueryResultOutput) ToGetActivityCustomEntityQueryResultOutput() GetActivityCustomEntityQueryResultOutput {
 	return o
 }
 
-func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntityQueryResultOutputWithContext(ctx context.Context) LookupActivityCustomEntityQueryResultOutput {
+func (o GetActivityCustomEntityQueryResultOutput) ToGetActivityCustomEntityQueryResultOutputWithContext(ctx context.Context) GetActivityCustomEntityQueryResultOutput {
 	return o
 }
 
 // The entity query content to display in timeline
-func (o LookupActivityCustomEntityQueryResultOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Content }).(pulumi.StringPtrOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 // The time the activity was created
-func (o LookupActivityCustomEntityQueryResultOutput) CreatedTimeUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.CreatedTimeUtc }).(pulumi.StringOutput)
+func (o GetActivityCustomEntityQueryResultOutput) CreatedTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) string { return v.CreatedTimeUtc }).(pulumi.StringOutput)
 }
 
 // The entity query description
-func (o LookupActivityCustomEntityQueryResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Determines whether this activity is enabled or disabled.
-func (o LookupActivityCustomEntityQueryResultOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // The query applied only to entities matching to all filters
-func (o LookupActivityCustomEntityQueryResultOutput) EntitiesFilter() pulumi.StringArrayMapOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) map[string][]string { return v.EntitiesFilter }).(pulumi.StringArrayMapOutput)
+func (o GetActivityCustomEntityQueryResultOutput) EntitiesFilter() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) map[string][]string { return v.EntitiesFilter }).(pulumi.StringArrayMapOutput)
 }
 
 // Etag of the azure resource
-func (o LookupActivityCustomEntityQueryResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupActivityCustomEntityQueryResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The type of the query's source entity
-func (o LookupActivityCustomEntityQueryResultOutput) InputEntityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.InputEntityType }).(pulumi.StringPtrOutput)
+func (o GetActivityCustomEntityQueryResultOutput) InputEntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) *string { return v.InputEntityType }).(pulumi.StringPtrOutput)
 }
 
 // The kind of the entity query
 // Expected value is 'Activity'.
-func (o LookupActivityCustomEntityQueryResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The last time the activity was updated
-func (o LookupActivityCustomEntityQueryResultOutput) LastModifiedTimeUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
+func (o GetActivityCustomEntityQueryResultOutput) LastModifiedTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) string { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupActivityCustomEntityQueryResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The Activity query definitions
-func (o LookupActivityCustomEntityQueryResultOutput) QueryDefinitions() ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *ActivityEntityQueriesPropertiesResponseQueryDefinitions {
+func (o GetActivityCustomEntityQueryResultOutput) QueryDefinitions() ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) *ActivityEntityQueriesPropertiesResponseQueryDefinitions {
 		return v.QueryDefinitions
 	}).(ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput)
 }
 
 // List of the fields of the source entity that are required to run the query
-func (o LookupActivityCustomEntityQueryResultOutput) RequiredInputFieldsSets() pulumi.StringArrayArrayOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) [][]string { return v.RequiredInputFieldsSets }).(pulumi.StringArrayArrayOutput)
+func (o GetActivityCustomEntityQueryResultOutput) RequiredInputFieldsSets() pulumi.StringArrayArrayOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) [][]string { return v.RequiredInputFieldsSets }).(pulumi.StringArrayArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupActivityCustomEntityQueryResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetActivityCustomEntityQueryResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The template id this activity was created from
-func (o LookupActivityCustomEntityQueryResultOutput) TemplateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+func (o GetActivityCustomEntityQueryResultOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
 }
 
 // The entity query title
-func (o LookupActivityCustomEntityQueryResultOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupActivityCustomEntityQueryResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetActivityCustomEntityQueryResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivityCustomEntityQueryResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupActivityCustomEntityQueryResultOutput{})
+	pulumi.RegisterOutputType(GetActivityCustomEntityQueryResultOutput{})
 }

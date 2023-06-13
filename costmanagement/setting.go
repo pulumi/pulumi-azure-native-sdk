@@ -13,6 +13,7 @@ import (
 
 // State of the myscope setting.
 // API Version: 2019-11-01.
+// Previous API Version: 2019-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Setting struct {
 	pulumi.CustomResourceState
 

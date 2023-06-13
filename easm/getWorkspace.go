@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a workspace with the given name.
-// API Version: 2022-04-01-preview.
+// API Version: 2023-04-01-preview.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:easm:getWorkspace", args, &rv, opts...)

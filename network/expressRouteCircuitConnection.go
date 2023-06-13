@@ -12,7 +12,8 @@ import (
 )
 
 // Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ExpressRouteCircuitConnection struct {
 	pulumi.CustomResourceState
 
@@ -55,12 +56,6 @@ func NewExpressRouteCircuitConnection(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20180201:ExpressRouteCircuitConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:ExpressRouteCircuitConnection"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:ExpressRouteCircuitConnection"),
 		},
@@ -147,6 +142,9 @@ func NewExpressRouteCircuitConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuitConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCircuitConnection"),
 		},
 	})
 	opts = append(opts, aliases)

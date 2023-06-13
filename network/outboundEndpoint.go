@@ -12,7 +12,8 @@ import (
 )
 
 // Describes an outbound endpoint for a DNS resolver.
-// API Version: 2020-04-01-preview.
+// API Version: 2022-07-01.
+// Previous API Version: 2020-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type OutboundEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -27,7 +28,7 @@ type OutboundEndpoint struct {
 	// The resourceGuid property of the outbound endpoint resource.
 	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// The reference to the subnet used for the outbound endpoint.
-	Subnet SubResourceResponsePtrOutput `pulumi:"subnet"`
+	Subnet SubResourceResponseOutput `pulumi:"subnet"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -48,6 +49,9 @@ func NewOutboundEndpoint(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Subnet == nil {
+		return nil, errors.New("invalid value for required argument 'Subnet'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -99,7 +103,7 @@ type outboundEndpointArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The reference to the subnet used for the outbound endpoint.
-	Subnet *SubResource `pulumi:"subnet"`
+	Subnet SubResource `pulumi:"subnet"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -115,7 +119,7 @@ type OutboundEndpointArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The reference to the subnet used for the outbound endpoint.
-	Subnet SubResourcePtrInput
+	Subnet SubResourceInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -183,8 +187,8 @@ func (o OutboundEndpointOutput) ResourceGuid() pulumi.StringOutput {
 }
 
 // The reference to the subnet used for the outbound endpoint.
-func (o OutboundEndpointOutput) Subnet() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v *OutboundEndpoint) SubResourceResponsePtrOutput { return v.Subnet }).(SubResourceResponsePtrOutput)
+func (o OutboundEndpointOutput) Subnet() SubResourceResponseOutput {
+	return o.ApplyT(func(v *OutboundEndpoint) SubResourceResponseOutput { return v.Subnet }).(SubResourceResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

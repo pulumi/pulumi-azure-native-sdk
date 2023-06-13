@@ -12,7 +12,8 @@ import (
 )
 
 // Information about JIT request definition.
-// API Version: 2019-07-01.
+// API Version: 2021-07-01.
+// Previous API Version: 2019-07-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type JitRequest struct {
 	pulumi.CustomResourceState
 
@@ -34,6 +35,8 @@ type JitRequest struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The publisher tenant id.
 	PublisherTenantId pulumi.StringOutput `pulumi:"publisherTenantId"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -62,15 +65,6 @@ func NewJitRequest(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:solutions/v20180301:JitRequest"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180601:JitRequest"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180901preview:JitRequest"),
-		},
 		{
 			Type: pulumi.String("azure-native:solutions/v20190701:JitRequest"),
 		},
@@ -231,6 +225,11 @@ func (o JitRequestOutput) ProvisioningState() pulumi.StringOutput {
 // The publisher tenant id.
 func (o JitRequestOutput) PublisherTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *JitRequest) pulumi.StringOutput { return v.PublisherTenantId }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o JitRequestOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *JitRequest) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the connected registry.
-// API Version: 2020-11-01-preview.
+// API Version: 2023-01-01-preview.
 func LookupConnectedRegistry(ctx *pulumi.Context, args *LookupConnectedRegistryArgs, opts ...pulumi.InvokeOption) (*LookupConnectedRegistryResult, error) {
 	var rv LookupConnectedRegistryResult
 	err := ctx.Invoke("azure-native:containerregistry:getConnectedRegistry", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupConnectedRegistryArgs struct {
 	ConnectedRegistryName string `pulumi:"connectedRegistryName"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -50,6 +50,8 @@ type LookupConnectedRegistryResult struct {
 	Mode string `pulumi:"mode"`
 	// The name of the resource.
 	Name string `pulumi:"name"`
+	// The list of notifications subscription information for the connected registry.
+	NotificationsList []string `pulumi:"notificationsList"`
 	// The parent of the connected registry.
 	Parent ParentPropertiesResponse `pulumi:"parent"`
 	// Provisioning state of the resource.
@@ -93,7 +95,7 @@ type LookupConnectedRegistryOutputArgs struct {
 	ConnectedRegistryName pulumi.StringInput `pulumi:"connectedRegistryName"`
 	// The name of the container registry.
 	RegistryName pulumi.StringInput `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -159,6 +161,11 @@ func (o LookupConnectedRegistryResultOutput) Mode() pulumi.StringOutput {
 // The name of the resource.
 func (o LookupConnectedRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectedRegistryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of notifications subscription information for the connected registry.
+func (o LookupConnectedRegistryResultOutput) NotificationsList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupConnectedRegistryResult) []string { return v.NotificationsList }).(pulumi.StringArrayOutput)
 }
 
 // The parent of the connected registry.

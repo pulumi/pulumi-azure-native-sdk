@@ -12,7 +12,8 @@ import (
 )
 
 // An ADLS Gen 2 folder data set.
-// API Version: 2020-09-01.
+// API Version: 2021-08-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ADLSGen2FolderDataSet struct {
 	pulumi.CustomResourceState
 
@@ -75,12 +76,6 @@ func NewADLSGen2FolderDataSet(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("AdlsGen2Folder")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datashare/v20181101preview:ADLSGen2FolderDataSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:datashare/v20191101:ADLSGen2FolderDataSet"),
-		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20200901:ADLSGen2FolderDataSet"),
 		},

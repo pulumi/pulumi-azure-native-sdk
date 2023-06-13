@@ -13,6 +13,7 @@ import (
 
 // Defines the PUT rollout request body.
 // API Version: 2019-11-01-preview.
+// Previous API Version: 2019-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Rollout struct {
 	pulumi.CustomResourceState
 
@@ -59,9 +60,6 @@ func NewRollout(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'TargetServiceTopologyId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:deploymentmanager/v20180901preview:Rollout"),
-		},
 		{
 			Type: pulumi.String("azure-native:deploymentmanager/v20191101preview:Rollout"),
 		},

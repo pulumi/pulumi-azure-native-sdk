@@ -12,7 +12,8 @@ import (
 )
 
 // The properties of File services in storage account.
-// API Version: 2021-02-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-02-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type FileServiceProperties struct {
 	pulumi.CustomResourceState
 
@@ -44,15 +45,6 @@ func NewFileServiceProperties(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:storage/v20190401:FileServiceProperties"),
-		},
-		{
-			Type: pulumi.String("azure-native:storage/v20190601:FileServiceProperties"),
-		},
-		{
-			Type: pulumi.String("azure-native:storage/v20200801preview:FileServiceProperties"),
-		},
 		{
 			Type: pulumi.String("azure-native:storage/v20210101:FileServiceProperties"),
 		},

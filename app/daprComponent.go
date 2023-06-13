@@ -12,7 +12,8 @@ import (
 )
 
 // Dapr Component.
-// API Version: 2022-03-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2022-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DaprComponent struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +29,8 @@ type DaprComponent struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Names of container apps that can use this Dapr component
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
+	// Name of a Dapr component to retrieve component secrets from
+	SecretStoreComponent pulumi.StringPtrOutput `pulumi:"secretStoreComponent"`
 	// Collection of secrets used by a Dapr component
 	Secrets SecretResponseArrayOutput `pulumi:"secrets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -66,6 +69,12 @@ func NewDaprComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:DaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:DaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:DaprComponent"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -117,6 +126,8 @@ type daprComponentArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Names of container apps that can use this Dapr component
 	Scopes []string `pulumi:"scopes"`
+	// Name of a Dapr component to retrieve component secrets from
+	SecretStoreComponent *string `pulumi:"secretStoreComponent"`
 	// Collection of secrets used by a Dapr component
 	Secrets []Secret `pulumi:"secrets"`
 	// Component version
@@ -141,6 +152,8 @@ type DaprComponentArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Names of container apps that can use this Dapr component
 	Scopes pulumi.StringArrayInput
+	// Name of a Dapr component to retrieve component secrets from
+	SecretStoreComponent pulumi.StringPtrInput
 	// Collection of secrets used by a Dapr component
 	Secrets SecretArrayInput
 	// Component version
@@ -212,6 +225,11 @@ func (o DaprComponentOutput) Name() pulumi.StringOutput {
 // Names of container apps that can use this Dapr component
 func (o DaprComponentOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DaprComponent) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Name of a Dapr component to retrieve component secrets from
+func (o DaprComponentOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprComponent) pulumi.StringPtrOutput { return v.SecretStoreComponent }).(pulumi.StringPtrOutput)
 }
 
 // Collection of secrets used by a Dapr component

@@ -12,7 +12,8 @@ import (
 )
 
 // The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
-// API Version: 2020-12-01.
+// API Version: 2023-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Image struct {
 	pulumi.CustomResourceState
 
@@ -47,36 +48,6 @@ func NewImage(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:compute/v20160430preview:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20170330:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20171201:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20180401:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20180601:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20181001:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190301:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190701:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20191201:Image"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20200601:Image"),
-		},
 		{
 			Type: pulumi.String("azure-native:compute/v20201201:Image"),
 		},

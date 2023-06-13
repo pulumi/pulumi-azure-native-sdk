@@ -53,18 +53,6 @@ func NewService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:healthcareapis:Service"),
 		},
 		{
-			Type: pulumi.String("azure-native:healthcareapis/v20180820preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:healthcareapis/v20190916:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:healthcareapis/v20200315:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:healthcareapis/v20200330:Service"),
-		},
-		{
 			Type: pulumi.String("azure-native:healthcareapis/v20210111:Service"),
 		},
 		{
@@ -84,6 +72,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221001preview:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:Service"),
 		},
 	})
 	opts = append(opts, aliases)

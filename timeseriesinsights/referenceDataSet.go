@@ -13,6 +13,7 @@ import (
 
 // A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs.
 // API Version: 2020-05-15.
+// Previous API Version: 2020-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ReferenceDataSet struct {
 	pulumi.CustomResourceState
 
@@ -51,15 +52,6 @@ func NewReferenceDataSet(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:ReferenceDataSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20171115:ReferenceDataSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20180815preview:ReferenceDataSet"),
-		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20200515:ReferenceDataSet"),
 		},

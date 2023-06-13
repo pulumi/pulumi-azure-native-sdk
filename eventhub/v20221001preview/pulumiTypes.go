@@ -1592,7 +1592,7 @@ type Identity struct {
 	// Type of managed service identity.
 	Type *ManagedServiceIdentityType `pulumi:"type"`
 	// Properties for User Assigned Identities
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -1611,7 +1611,7 @@ type IdentityArgs struct {
 	// Type of managed service identity.
 	Type ManagedServiceIdentityTypePtrInput `pulumi:"type"`
 	// Properties for User Assigned Identities
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -1698,8 +1698,8 @@ func (o IdentityOutput) Type() ManagedServiceIdentityTypePtrOutput {
 }
 
 // Properties for User Assigned Identities
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1737,13 +1737,13 @@ func (o IdentityPtrOutput) Type() ManagedServiceIdentityTypePtrOutput {
 }
 
 // Properties for User Assigned Identities
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Properties to configure Identity for Bring your Own Keys
@@ -2789,9 +2789,9 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 type RetentionDescription struct {
 	// Enumerates the possible values for cleanup policy
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+	// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 	RetentionTimeInHours *float64 `pulumi:"retentionTimeInHours"`
-	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 	TombstoneRetentionTimeInHours *int `pulumi:"tombstoneRetentionTimeInHours"`
 }
 
@@ -2810,9 +2810,9 @@ type RetentionDescriptionInput interface {
 type RetentionDescriptionArgs struct {
 	// Enumerates the possible values for cleanup policy
 	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
-	// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+	// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 	RetentionTimeInHours pulumi.Float64PtrInput `pulumi:"retentionTimeInHours"`
-	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 	TombstoneRetentionTimeInHours pulumi.IntPtrInput `pulumi:"tombstoneRetentionTimeInHours"`
 }
 
@@ -2899,12 +2899,12 @@ func (o RetentionDescriptionOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionDescription) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 func (o RetentionDescriptionOutput) RetentionTimeInHours() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RetentionDescription) *float64 { return v.RetentionTimeInHours }).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 func (o RetentionDescriptionOutput) TombstoneRetentionTimeInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionDescription) *int { return v.TombstoneRetentionTimeInHours }).(pulumi.IntPtrOutput)
 }
@@ -2943,7 +2943,7 @@ func (o RetentionDescriptionPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 func (o RetentionDescriptionPtrOutput) RetentionTimeInHours() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RetentionDescription) *float64 {
 		if v == nil {
@@ -2953,7 +2953,7 @@ func (o RetentionDescriptionPtrOutput) RetentionTimeInHours() pulumi.Float64PtrO
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 func (o RetentionDescriptionPtrOutput) TombstoneRetentionTimeInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RetentionDescription) *int {
 		if v == nil {
@@ -2967,9 +2967,9 @@ func (o RetentionDescriptionPtrOutput) TombstoneRetentionTimeInHours() pulumi.In
 type RetentionDescriptionResponse struct {
 	// Enumerates the possible values for cleanup policy
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+	// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 	RetentionTimeInHours *float64 `pulumi:"retentionTimeInHours"`
-	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 	TombstoneRetentionTimeInHours *int `pulumi:"tombstoneRetentionTimeInHours"`
 }
 
@@ -2993,12 +2993,12 @@ func (o RetentionDescriptionResponseOutput) CleanupPolicy() pulumi.StringPtrOutp
 	return o.ApplyT(func(v RetentionDescriptionResponse) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 func (o RetentionDescriptionResponseOutput) RetentionTimeInHours() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RetentionDescriptionResponse) *float64 { return v.RetentionTimeInHours }).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 func (o RetentionDescriptionResponseOutput) TombstoneRetentionTimeInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionDescriptionResponse) *int { return v.TombstoneRetentionTimeInHours }).(pulumi.IntPtrOutput)
 }
@@ -3037,7 +3037,7 @@ func (o RetentionDescriptionResponsePtrOutput) CleanupPolicy() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 func (o RetentionDescriptionResponsePtrOutput) RetentionTimeInHours() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RetentionDescriptionResponse) *float64 {
 		if v == nil {
@@ -3047,7 +3047,7 @@ func (o RetentionDescriptionResponsePtrOutput) RetentionTimeInHours() pulumi.Flo
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 func (o RetentionDescriptionResponsePtrOutput) TombstoneRetentionTimeInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RetentionDescriptionResponse) *int {
 		if v == nil {

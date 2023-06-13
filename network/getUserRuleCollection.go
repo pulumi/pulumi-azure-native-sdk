@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a network manager security user configuration rule collection.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-04-01-preview.
 func LookupUserRuleCollection(ctx *pulumi.Context, args *LookupUserRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleCollectionResult, error) {
 	var rv LookupUserRuleCollectionResult
 	err := ctx.Invoke("azure-native:network:getUserRuleCollection", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupUserRuleCollection(ctx *pulumi.Context, args *LookupUserRuleCollectio
 }
 
 type LookupUserRuleCollectionArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
@@ -32,14 +32,12 @@ type LookupUserRuleCollectionArgs struct {
 	RuleCollectionName string `pulumi:"ruleCollectionName"`
 }
 
-// Defines the rule collection.
+// Defines the user rule collection.
 type LookupUserRuleCollectionResult struct {
 	// Groups for configuration
 	AppliesToGroups []NetworkManagerSecurityGroupItemResponse `pulumi:"appliesToGroups"`
-	// A description of the rule collection.
+	// A description of the user rule collection.
 	Description *string `pulumi:"description"`
-	// A display name of the rule collection.
-	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -68,7 +66,7 @@ func LookupUserRuleCollectionOutput(ctx *pulumi.Context, args LookupUserRuleColl
 }
 
 type LookupUserRuleCollectionOutputArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
@@ -82,7 +80,7 @@ func (LookupUserRuleCollectionOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupUserRuleCollectionArgs)(nil)).Elem()
 }
 
-// Defines the rule collection.
+// Defines the user rule collection.
 type LookupUserRuleCollectionResultOutput struct{ *pulumi.OutputState }
 
 func (LookupUserRuleCollectionResultOutput) ElementType() reflect.Type {
@@ -104,14 +102,9 @@ func (o LookupUserRuleCollectionResultOutput) AppliesToGroups() NetworkManagerSe
 	}).(NetworkManagerSecurityGroupItemResponseArrayOutput)
 }
 
-// A description of the rule collection.
+// A description of the user rule collection.
 func (o LookupUserRuleCollectionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserRuleCollectionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A display name of the rule collection.
-func (o LookupUserRuleCollectionResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupUserRuleCollectionResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

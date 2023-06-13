@@ -12,7 +12,8 @@ import (
 )
 
 // Product details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Product struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +23,7 @@ type Product struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Product name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished.
 	State pulumi.StringPtrOutput `pulumi:"state"`
@@ -32,7 +33,7 @@ type Product struct {
 	SubscriptionsLimit pulumi.IntPtrOutput `pulumi:"subscriptionsLimit"`
 	// Product terms of use. Developers trying to subscribe to the product will be presented and required to accept these terms before they can complete the subscription process.
 	Terms pulumi.StringPtrOutput `pulumi:"terms"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -53,9 +54,6 @@ func NewProduct(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20160707:Product"),
-		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20161010:Product"),
 		},
@@ -101,6 +99,9 @@ func NewProduct(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Product"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Product"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Product
@@ -143,7 +144,7 @@ type productArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Product identifier. Must be unique in the current API Management service instance.
 	ProductId *string `pulumi:"productId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -167,7 +168,7 @@ type ProductArgs struct {
 	DisplayName pulumi.StringInput
 	// Product identifier. Must be unique in the current API Management service instance.
 	ProductId pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -233,7 +234,7 @@ func (o ProductOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ProductOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -258,7 +259,7 @@ func (o ProductOutput) Terms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringPtrOutput { return v.Terms }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ProductOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

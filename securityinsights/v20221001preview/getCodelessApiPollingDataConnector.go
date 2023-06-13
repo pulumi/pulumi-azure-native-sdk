@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20221001preview:CodelessApiPollingDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:CodelessApiPollingDataConnector to guarantee forwards compatibility.
-func LookupCodelessApiPollingDataConnector(ctx *pulumi.Context, args *LookupCodelessApiPollingDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCodelessApiPollingDataConnectorResult, error) {
-	var rv LookupCodelessApiPollingDataConnectorResult
+func GetCodelessApiPollingDataConnector(ctx *pulumi.Context, args *GetCodelessApiPollingDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetCodelessApiPollingDataConnectorResult, error) {
+	var rv GetCodelessApiPollingDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221001preview:getCodelessApiPollingDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupCodelessApiPollingDataConnector(ctx *pulumi.Context, args *LookupCode
 	return &rv, nil
 }
 
-type LookupCodelessApiPollingDataConnectorArgs struct {
+type GetCodelessApiPollingDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupCodelessApiPollingDataConnectorArgs struct {
 }
 
 // Represents Codeless API Polling data connector.
-type LookupCodelessApiPollingDataConnectorResult struct {
+type GetCodelessApiPollingDataConnectorResult struct {
 	// Config to describe the instructions blade
 	ConnectorUiConfig *CodelessUiConnectorConfigPropertiesResponse `pulumi:"connectorUiConfig"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupCodelessApiPollingDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupCodelessApiPollingDataConnectorOutput(ctx *pulumi.Context, args LookupCodelessApiPollingDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupCodelessApiPollingDataConnectorResultOutput {
+func GetCodelessApiPollingDataConnectorOutput(ctx *pulumi.Context, args GetCodelessApiPollingDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetCodelessApiPollingDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCodelessApiPollingDataConnectorResult, error) {
-			args := v.(LookupCodelessApiPollingDataConnectorArgs)
-			r, err := LookupCodelessApiPollingDataConnector(ctx, &args, opts...)
-			var s LookupCodelessApiPollingDataConnectorResult
+		ApplyT(func(v interface{}) (GetCodelessApiPollingDataConnectorResult, error) {
+			args := v.(GetCodelessApiPollingDataConnectorArgs)
+			r, err := GetCodelessApiPollingDataConnector(ctx, &args, opts...)
+			var s GetCodelessApiPollingDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupCodelessApiPollingDataConnectorResultOutput)
+		}).(GetCodelessApiPollingDataConnectorResultOutput)
 }
 
-type LookupCodelessApiPollingDataConnectorOutputArgs struct {
+type GetCodelessApiPollingDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,70 +72,70 @@ type LookupCodelessApiPollingDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupCodelessApiPollingDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupCodelessApiPollingDataConnectorArgs)(nil)).Elem()
+func (GetCodelessApiPollingDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCodelessApiPollingDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents Codeless API Polling data connector.
-type LookupCodelessApiPollingDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetCodelessApiPollingDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupCodelessApiPollingDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupCodelessApiPollingDataConnectorResult)(nil)).Elem()
+func (GetCodelessApiPollingDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCodelessApiPollingDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupCodelessApiPollingDataConnectorResultOutput) ToLookupCodelessApiPollingDataConnectorResultOutput() LookupCodelessApiPollingDataConnectorResultOutput {
+func (o GetCodelessApiPollingDataConnectorResultOutput) ToGetCodelessApiPollingDataConnectorResultOutput() GetCodelessApiPollingDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupCodelessApiPollingDataConnectorResultOutput) ToLookupCodelessApiPollingDataConnectorResultOutputWithContext(ctx context.Context) LookupCodelessApiPollingDataConnectorResultOutput {
+func (o GetCodelessApiPollingDataConnectorResultOutput) ToGetCodelessApiPollingDataConnectorResultOutputWithContext(ctx context.Context) GetCodelessApiPollingDataConnectorResultOutput {
 	return o
 }
 
 // Config to describe the instructions blade
-func (o LookupCodelessApiPollingDataConnectorResultOutput) ConnectorUiConfig() CodelessUiConnectorConfigPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupCodelessApiPollingDataConnectorResult) *CodelessUiConnectorConfigPropertiesResponse {
+func (o GetCodelessApiPollingDataConnectorResultOutput) ConnectorUiConfig() CodelessUiConnectorConfigPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v GetCodelessApiPollingDataConnectorResult) *CodelessUiConnectorConfigPropertiesResponse {
 		return v.ConnectorUiConfig
 	}).(CodelessUiConnectorConfigPropertiesResponsePtrOutput)
 }
 
 // Etag of the azure resource
-func (o LookupCodelessApiPollingDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCodelessApiPollingDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetCodelessApiPollingDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCodelessApiPollingDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupCodelessApiPollingDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCodelessApiPollingDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetCodelessApiPollingDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCodelessApiPollingDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'APIPolling'.
-func (o LookupCodelessApiPollingDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCodelessApiPollingDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetCodelessApiPollingDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCodelessApiPollingDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupCodelessApiPollingDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCodelessApiPollingDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetCodelessApiPollingDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCodelessApiPollingDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Config to describe the polling instructions
-func (o LookupCodelessApiPollingDataConnectorResultOutput) PollingConfig() CodelessConnectorPollingConfigPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupCodelessApiPollingDataConnectorResult) *CodelessConnectorPollingConfigPropertiesResponse {
+func (o GetCodelessApiPollingDataConnectorResultOutput) PollingConfig() CodelessConnectorPollingConfigPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v GetCodelessApiPollingDataConnectorResult) *CodelessConnectorPollingConfigPropertiesResponse {
 		return v.PollingConfig
 	}).(CodelessConnectorPollingConfigPropertiesResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCodelessApiPollingDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCodelessApiPollingDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetCodelessApiPollingDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetCodelessApiPollingDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupCodelessApiPollingDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCodelessApiPollingDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetCodelessApiPollingDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCodelessApiPollingDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupCodelessApiPollingDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetCodelessApiPollingDataConnectorResultOutput{})
 }

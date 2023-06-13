@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20220501preview:CodelessUiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:CodelessUiDataConnector to guarantee forwards compatibility.
-func LookupCodelessUiDataConnector(ctx *pulumi.Context, args *LookupCodelessUiDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCodelessUiDataConnectorResult, error) {
-	var rv LookupCodelessUiDataConnectorResult
+func GetCodelessUiDataConnector(ctx *pulumi.Context, args *GetCodelessUiDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetCodelessUiDataConnectorResult, error) {
+	var rv GetCodelessUiDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getCodelessUiDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupCodelessUiDataConnector(ctx *pulumi.Context, args *LookupCodelessUiDa
 	return &rv, nil
 }
 
-type LookupCodelessUiDataConnectorArgs struct {
+type GetCodelessUiDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupCodelessUiDataConnectorArgs struct {
 }
 
 // Represents Codeless UI data connector.
-type LookupCodelessUiDataConnectorResult struct {
+type GetCodelessUiDataConnectorResult struct {
 	// Config to describe the instructions blade
 	ConnectorUiConfig *CodelessUiConnectorConfigPropertiesResponse `pulumi:"connectorUiConfig"`
 	// Etag of the azure resource
@@ -50,20 +48,20 @@ type LookupCodelessUiDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupCodelessUiDataConnectorOutput(ctx *pulumi.Context, args LookupCodelessUiDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupCodelessUiDataConnectorResultOutput {
+func GetCodelessUiDataConnectorOutput(ctx *pulumi.Context, args GetCodelessUiDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetCodelessUiDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCodelessUiDataConnectorResult, error) {
-			args := v.(LookupCodelessUiDataConnectorArgs)
-			r, err := LookupCodelessUiDataConnector(ctx, &args, opts...)
-			var s LookupCodelessUiDataConnectorResult
+		ApplyT(func(v interface{}) (GetCodelessUiDataConnectorResult, error) {
+			args := v.(GetCodelessUiDataConnectorArgs)
+			r, err := GetCodelessUiDataConnector(ctx, &args, opts...)
+			var s GetCodelessUiDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupCodelessUiDataConnectorResultOutput)
+		}).(GetCodelessUiDataConnectorResultOutput)
 }
 
-type LookupCodelessUiDataConnectorOutputArgs struct {
+type GetCodelessUiDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -72,63 +70,63 @@ type LookupCodelessUiDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupCodelessUiDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupCodelessUiDataConnectorArgs)(nil)).Elem()
+func (GetCodelessUiDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCodelessUiDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents Codeless UI data connector.
-type LookupCodelessUiDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetCodelessUiDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupCodelessUiDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupCodelessUiDataConnectorResult)(nil)).Elem()
+func (GetCodelessUiDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCodelessUiDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupCodelessUiDataConnectorResultOutput) ToLookupCodelessUiDataConnectorResultOutput() LookupCodelessUiDataConnectorResultOutput {
+func (o GetCodelessUiDataConnectorResultOutput) ToGetCodelessUiDataConnectorResultOutput() GetCodelessUiDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupCodelessUiDataConnectorResultOutput) ToLookupCodelessUiDataConnectorResultOutputWithContext(ctx context.Context) LookupCodelessUiDataConnectorResultOutput {
+func (o GetCodelessUiDataConnectorResultOutput) ToGetCodelessUiDataConnectorResultOutputWithContext(ctx context.Context) GetCodelessUiDataConnectorResultOutput {
 	return o
 }
 
 // Config to describe the instructions blade
-func (o LookupCodelessUiDataConnectorResultOutput) ConnectorUiConfig() CodelessUiConnectorConfigPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupCodelessUiDataConnectorResult) *CodelessUiConnectorConfigPropertiesResponse {
+func (o GetCodelessUiDataConnectorResultOutput) ConnectorUiConfig() CodelessUiConnectorConfigPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v GetCodelessUiDataConnectorResult) *CodelessUiConnectorConfigPropertiesResponse {
 		return v.ConnectorUiConfig
 	}).(CodelessUiConnectorConfigPropertiesResponsePtrOutput)
 }
 
 // Etag of the azure resource
-func (o LookupCodelessUiDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCodelessUiDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetCodelessUiDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCodelessUiDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupCodelessUiDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCodelessUiDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetCodelessUiDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCodelessUiDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'GenericUI'.
-func (o LookupCodelessUiDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCodelessUiDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetCodelessUiDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCodelessUiDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupCodelessUiDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCodelessUiDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetCodelessUiDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCodelessUiDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCodelessUiDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCodelessUiDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetCodelessUiDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetCodelessUiDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupCodelessUiDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCodelessUiDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetCodelessUiDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCodelessUiDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupCodelessUiDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetCodelessUiDataConnectorResultOutput{})
 }

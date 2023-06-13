@@ -11,7 +11,7 @@ import (
 )
 
 // Get the specific private end point connection by specific private link service in the resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupPrivateLinkServicePrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateLinkServicePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicePrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateLinkServicePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:network:getPrivateLinkServicePrivateEndpointConnection", args, &rv, opts...)
@@ -44,6 +44,8 @@ type LookupPrivateLinkServicePrivateEndpointConnectionResult struct {
 	Name *string `pulumi:"name"`
 	// The resource of private end point.
 	PrivateEndpoint PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// The location of the private endpoint.
+	PrivateEndpointLocation string `pulumi:"privateEndpointLocation"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
@@ -131,6 +133,13 @@ func (o LookupPrivateLinkServicePrivateEndpointConnectionResultOutput) PrivateEn
 	return o.ApplyT(func(v LookupPrivateLinkServicePrivateEndpointConnectionResult) PrivateEndpointResponse {
 		return v.PrivateEndpoint
 	}).(PrivateEndpointResponseOutput)
+}
+
+// The location of the private endpoint.
+func (o LookupPrivateLinkServicePrivateEndpointConnectionResultOutput) PrivateEndpointLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicePrivateEndpointConnectionResult) string {
+		return v.PrivateEndpointLocation
+	}).(pulumi.StringOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.

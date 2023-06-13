@@ -11,10 +11,8 @@ import (
 )
 
 // Get a Service by name.
-//
-// Deprecated: azure-native:machinelearningservices/v20210101:EndpointVariant is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:EndpointVariant to guarantee forwards compatibility.
-func LookupEndpointVariant(ctx *pulumi.Context, args *LookupEndpointVariantArgs, opts ...pulumi.InvokeOption) (*LookupEndpointVariantResult, error) {
-	var rv LookupEndpointVariantResult
+func GetEndpointVariant(ctx *pulumi.Context, args *GetEndpointVariantArgs, opts ...pulumi.InvokeOption) (*GetEndpointVariantResult, error) {
+	var rv GetEndpointVariantResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20210101:getEndpointVariant", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupEndpointVariant(ctx *pulumi.Context, args *LookupEndpointVariantArgs,
 	return &rv, nil
 }
 
-type LookupEndpointVariantArgs struct {
+type GetEndpointVariantArgs struct {
 	// Set to True to include Model details.
 	Expand *bool `pulumi:"expand"`
 	// Name of the resource group in which workspace is located.
@@ -34,7 +32,7 @@ type LookupEndpointVariantArgs struct {
 }
 
 // Machine Learning service object wrapped into ARM resource envelope.
-type LookupEndpointVariantResult struct {
+type GetEndpointVariantResult struct {
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -55,20 +53,20 @@ type LookupEndpointVariantResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupEndpointVariantOutput(ctx *pulumi.Context, args LookupEndpointVariantOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointVariantResultOutput {
+func GetEndpointVariantOutput(ctx *pulumi.Context, args GetEndpointVariantOutputArgs, opts ...pulumi.InvokeOption) GetEndpointVariantResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEndpointVariantResult, error) {
-			args := v.(LookupEndpointVariantArgs)
-			r, err := LookupEndpointVariant(ctx, &args, opts...)
-			var s LookupEndpointVariantResult
+		ApplyT(func(v interface{}) (GetEndpointVariantResult, error) {
+			args := v.(GetEndpointVariantArgs)
+			r, err := GetEndpointVariant(ctx, &args, opts...)
+			var s GetEndpointVariantResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupEndpointVariantResultOutput)
+		}).(GetEndpointVariantResultOutput)
 }
 
-type LookupEndpointVariantOutputArgs struct {
+type GetEndpointVariantOutputArgs struct {
 	// Set to True to include Model details.
 	Expand pulumi.BoolPtrInput `pulumi:"expand"`
 	// Name of the resource group in which workspace is located.
@@ -79,70 +77,70 @@ type LookupEndpointVariantOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupEndpointVariantOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupEndpointVariantArgs)(nil)).Elem()
+func (GetEndpointVariantOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointVariantArgs)(nil)).Elem()
 }
 
 // Machine Learning service object wrapped into ARM resource envelope.
-type LookupEndpointVariantResultOutput struct{ *pulumi.OutputState }
+type GetEndpointVariantResultOutput struct{ *pulumi.OutputState }
 
-func (LookupEndpointVariantResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupEndpointVariantResult)(nil)).Elem()
+func (GetEndpointVariantResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointVariantResult)(nil)).Elem()
 }
 
-func (o LookupEndpointVariantResultOutput) ToLookupEndpointVariantResultOutput() LookupEndpointVariantResultOutput {
+func (o GetEndpointVariantResultOutput) ToGetEndpointVariantResultOutput() GetEndpointVariantResultOutput {
 	return o
 }
 
-func (o LookupEndpointVariantResultOutput) ToLookupEndpointVariantResultOutputWithContext(ctx context.Context) LookupEndpointVariantResultOutput {
+func (o GetEndpointVariantResultOutput) ToGetEndpointVariantResultOutputWithContext(ctx context.Context) GetEndpointVariantResultOutput {
 	return o
 }
 
 // Specifies the resource ID.
-func (o LookupEndpointVariantResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetEndpointVariantResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.
-func (o LookupEndpointVariantResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+func (o GetEndpointVariantResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Specifies the location of the resource.
-func (o LookupEndpointVariantResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o GetEndpointVariantResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the name of the resource.
-func (o LookupEndpointVariantResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetEndpointVariantResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Service properties
-func (o LookupEndpointVariantResultOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
+func (o GetEndpointVariantResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // The sku of the workspace.
-func (o LookupEndpointVariantResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o GetEndpointVariantResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Read only system data
-func (o LookupEndpointVariantResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetEndpointVariantResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Contains resource tags defined as key/value pairs.
-func (o LookupEndpointVariantResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+func (o GetEndpointVariantResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Specifies the type of the resource.
-func (o LookupEndpointVariantResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEndpointVariantResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetEndpointVariantResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointVariantResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupEndpointVariantResultOutput{})
+	pulumi.RegisterOutputType(GetEndpointVariantResultOutput{})
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the watcher identified by watcher name.
-// API Version: 2019-06-01.
+// API Version: 2020-01-13-preview.
 func LookupWatcher(ctx *pulumi.Context, args *LookupWatcherArgs, opts ...pulumi.InvokeOption) (*LookupWatcherResult, error) {
 	var rv LookupWatcherResult
 	err := ctx.Invoke("azure-native:automation:getWatcher", args, &rv, opts...)

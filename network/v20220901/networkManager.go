@@ -78,6 +78,9 @@ func NewNetworkManager(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220701:NetworkManager"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkManager"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkManager

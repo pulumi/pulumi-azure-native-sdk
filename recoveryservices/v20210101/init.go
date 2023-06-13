@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,14 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:recoveryservices/v20210101:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:recoveryservices/v20210101:ProtectedItem":
-		r = &ProtectedItem{}
-	case "azure-native:recoveryservices/v20210101:ProtectionContainer":
-		r = &ProtectionContainer{}
-	case "azure-native:recoveryservices/v20210101:ProtectionPolicy":
-		r = &ProtectionPolicy{}
 	case "azure-native:recoveryservices/v20210101:Vault":
 		r = &Vault{}
 	default:

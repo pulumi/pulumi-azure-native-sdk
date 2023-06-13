@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Transform.
-// API Version: 2020-05-01.
+// API Version: 2022-07-01.
 func LookupTransform(ctx *pulumi.Context, args *LookupTransformArgs, opts ...pulumi.InvokeOption) (*LookupTransformResult, error) {
 	var rv LookupTransformResult
 	err := ctx.Invoke("azure-native:media:getTransform", args, &rv, opts...)

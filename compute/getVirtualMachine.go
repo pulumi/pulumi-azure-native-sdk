@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about the model view or the instance view of a virtual machine.
-// API Version: 2021-03-01.
+// API Version: 2023-03-01.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:compute:getVirtualMachine", args, &rv, opts...)
@@ -34,23 +34,27 @@ type LookupVirtualMachineArgs struct {
 type LookupVirtualMachineResult struct {
 	// Specifies additional capabilities enabled or disabled on the virtual machine.
 	AdditionalCapabilities *AdditionalCapabilitiesResponse `pulumi:"additionalCapabilities"`
-	// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). <br><br> For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates) <br><br> Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. <br><br>This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
+	// Specifies the gallery applications that should be made available to the VM/VMSS.
+	ApplicationProfile *ApplicationProfileResponse `pulumi:"applicationProfile"`
+	// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
 	AvailabilitySet *SubResourceResponse `pulumi:"availabilitySet"`
-	// Specifies the billing related details of a Azure Spot virtual machine. <br><br>Minimum api-version: 2019-03-01.
+	// Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
 	BillingProfile *BillingProfileResponse `pulumi:"billingProfile"`
-	// Specifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+	// Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
+	CapacityReservation *CapacityReservationProfileResponse `pulumi:"capacityReservation"`
+	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 	DiagnosticsProfile *DiagnosticsProfileResponse `pulumi:"diagnosticsProfile"`
-	// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. <br><br>For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. <br><br>For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
+	// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
 	// The extended location of the Virtual Machine.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). <br><br> Minimum api-version: 2020-06-01
+	// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
 	ExtensionsTimeBudget *string `pulumi:"extensionsTimeBudget"`
 	// Specifies the hardware settings for the virtual machine.
 	HardwareProfile *HardwareProfileResponse `pulumi:"hardwareProfile"`
-	// Specifies information about the dedicated host that the virtual machine resides in. <br><br>Minimum api-version: 2018-10-01.
+	// Specifies information about the dedicated host that the virtual machine resides in. Minimum api-version: 2018-10-01.
 	Host *SubResourceResponse `pulumi:"host"`
-	// Specifies information about the dedicated host group that the virtual machine resides in. <br><br>Minimum api-version: 2020-06-01. <br><br>NOTE: User cannot specify both host and hostGroup properties.
+	// Specifies information about the dedicated host group that the virtual machine resides in. **Note:** User cannot specify both host and hostGroup properties. Minimum api-version: 2020-06-01.
 	HostGroup *SubResourceResponse `pulumi:"hostGroup"`
 	// Resource Id
 	Id string `pulumi:"id"`
@@ -70,13 +74,13 @@ type LookupVirtualMachineResult struct {
 	OsProfile *OSProfileResponse `pulumi:"osProfile"`
 	// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
 	Plan *PlanResponse `pulumi:"plan"`
-	// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains.<br><li>This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set.<li>The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' &gt; 1.<li>This property cannot be updated once the Virtual Machine is created.<li>Fault domain assignment can be viewed in the Virtual Machine Instance View.<br><br>Minimum api‐version: 2020‐12‐01
+	// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
 	PlatformFaultDomain *int `pulumi:"platformFaultDomain"`
-	// Specifies the priority for the virtual machine. <br><br>Minimum api-version: 2019-03-01
+	// Specifies the priority for the virtual machine. Minimum api-version: 2019-03-01
 	Priority *string `pulumi:"priority"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Specifies information about the proximity placement group that the virtual machine should be assigned to. <br><br>Minimum api-version: 2018-04-01.
+	// Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup *SubResourceResponse `pulumi:"proximityPlacementGroup"`
 	// The virtual machine child extension resources.
 	Resources []VirtualMachineExtensionResponse `pulumi:"resources"`
@@ -88,11 +92,13 @@ type LookupVirtualMachineResult struct {
 	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
+	// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
+	TimeCreated string `pulumi:"timeCreated"`
 	// Resource type
 	Type string `pulumi:"type"`
-	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. <br><br>Minimum api-version: 2021-03-01
+	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
 	UserData *string `pulumi:"userData"`
-	// Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. <br><br>This property cannot exist along with a non-null properties.availabilitySet reference. <br><br>Minimum api‐version: 2019‐03‐01
+	// Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. This property cannot exist along with a non-null properties.availabilitySet reference. Minimum api‐version: 2019‐03‐01.
 	VirtualMachineScaleSet *SubResourceResponse `pulumi:"virtualMachineScaleSet"`
 	// Specifies the VM unique ID which is a 128-bits identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can be read using platform BIOS commands.
 	VmId string `pulumi:"vmId"`
@@ -146,22 +152,32 @@ func (o LookupVirtualMachineResultOutput) AdditionalCapabilities() AdditionalCap
 	return o.ApplyT(func(v LookupVirtualMachineResult) *AdditionalCapabilitiesResponse { return v.AdditionalCapabilities }).(AdditionalCapabilitiesResponsePtrOutput)
 }
 
-// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). <br><br> For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates) <br><br> Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. <br><br>This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
+// Specifies the gallery applications that should be made available to the VM/VMSS.
+func (o LookupVirtualMachineResultOutput) ApplicationProfile() ApplicationProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *ApplicationProfileResponse { return v.ApplicationProfile }).(ApplicationProfileResponsePtrOutput)
+}
+
+// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
 func (o LookupVirtualMachineResultOutput) AvailabilitySet() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *SubResourceResponse { return v.AvailabilitySet }).(SubResourceResponsePtrOutput)
 }
 
-// Specifies the billing related details of a Azure Spot virtual machine. <br><br>Minimum api-version: 2019-03-01.
+// Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
 func (o LookupVirtualMachineResultOutput) BillingProfile() BillingProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *BillingProfileResponse { return v.BillingProfile }).(BillingProfileResponsePtrOutput)
 }
 
-// Specifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+// Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
+func (o LookupVirtualMachineResultOutput) CapacityReservation() CapacityReservationProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *CapacityReservationProfileResponse { return v.CapacityReservation }).(CapacityReservationProfileResponsePtrOutput)
+}
+
+// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 func (o LookupVirtualMachineResultOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *DiagnosticsProfileResponse { return v.DiagnosticsProfile }).(DiagnosticsProfileResponsePtrOutput)
 }
 
-// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. <br><br>For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. <br><br>For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
+// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
 func (o LookupVirtualMachineResultOutput) EvictionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.EvictionPolicy }).(pulumi.StringPtrOutput)
 }
@@ -171,7 +187,7 @@ func (o LookupVirtualMachineResultOutput) ExtendedLocation() ExtendedLocationRes
 	return o.ApplyT(func(v LookupVirtualMachineResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
-// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). <br><br> Minimum api-version: 2020-06-01
+// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
 func (o LookupVirtualMachineResultOutput) ExtensionsTimeBudget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.ExtensionsTimeBudget }).(pulumi.StringPtrOutput)
 }
@@ -181,12 +197,12 @@ func (o LookupVirtualMachineResultOutput) HardwareProfile() HardwareProfileRespo
 	return o.ApplyT(func(v LookupVirtualMachineResult) *HardwareProfileResponse { return v.HardwareProfile }).(HardwareProfileResponsePtrOutput)
 }
 
-// Specifies information about the dedicated host that the virtual machine resides in. <br><br>Minimum api-version: 2018-10-01.
+// Specifies information about the dedicated host that the virtual machine resides in. Minimum api-version: 2018-10-01.
 func (o LookupVirtualMachineResultOutput) Host() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *SubResourceResponse { return v.Host }).(SubResourceResponsePtrOutput)
 }
 
-// Specifies information about the dedicated host group that the virtual machine resides in. <br><br>Minimum api-version: 2020-06-01. <br><br>NOTE: User cannot specify both host and hostGroup properties.
+// Specifies information about the dedicated host group that the virtual machine resides in. **Note:** User cannot specify both host and hostGroup properties. Minimum api-version: 2020-06-01.
 func (o LookupVirtualMachineResultOutput) HostGroup() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *SubResourceResponse { return v.HostGroup }).(SubResourceResponsePtrOutput)
 }
@@ -236,12 +252,12 @@ func (o LookupVirtualMachineResultOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
-// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains.<br><li>This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set.<li>The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' &gt; 1.<li>This property cannot be updated once the Virtual Machine is created.<li>Fault domain assignment can be viewed in the Virtual Machine Instance View.<br><br>Minimum api‐version: 2020‐12‐01
+// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
 func (o LookupVirtualMachineResultOutput) PlatformFaultDomain() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.PlatformFaultDomain }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the priority for the virtual machine. <br><br>Minimum api-version: 2019-03-01
+// Specifies the priority for the virtual machine. Minimum api-version: 2019-03-01
 func (o LookupVirtualMachineResultOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -251,7 +267,7 @@ func (o LookupVirtualMachineResultOutput) ProvisioningState() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Specifies information about the proximity placement group that the virtual machine should be assigned to. <br><br>Minimum api-version: 2018-04-01.
+// Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
 func (o LookupVirtualMachineResultOutput) ProximityPlacementGroup() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *SubResourceResponse { return v.ProximityPlacementGroup }).(SubResourceResponsePtrOutput)
 }
@@ -281,17 +297,22 @@ func (o LookupVirtualMachineResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
+func (o LookupVirtualMachineResultOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
 // Resource type
 func (o LookupVirtualMachineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. <br><br>Minimum api-version: 2021-03-01
+// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
 func (o LookupVirtualMachineResultOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.UserData }).(pulumi.StringPtrOutput)
 }
 
-// Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. <br><br>This property cannot exist along with a non-null properties.availabilitySet reference. <br><br>Minimum api‐version: 2019‐03‐01
+// Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. This property cannot exist along with a non-null properties.availabilitySet reference. Minimum api‐version: 2019‐03‐01.
 func (o LookupVirtualMachineResultOutput) VirtualMachineScaleSet() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *SubResourceResponse { return v.VirtualMachineScaleSet }).(SubResourceResponsePtrOutput)
 }

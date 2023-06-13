@@ -59,9 +59,6 @@ func NewEventHubConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto:EventHubConnection"),
 		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20170907privatepreview:EventHubConnection"),
-		},
 	})
 	opts = append(opts, aliases)
 	var resource EventHubConnection

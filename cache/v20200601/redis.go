@@ -89,24 +89,6 @@ func NewRedis(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cache:Redis"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20150801:Redis"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20160401:Redis"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20170201:Redis"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20171001:Redis"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20180301:Redis"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20190701:Redis"),
-		},
-		{
 			Type: pulumi.String("azure-native:cache/v20201201:Redis"),
 		},
 		{
@@ -117,6 +99,12 @@ func NewRedis(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:Redis"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:Redis"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:Redis"),
 		},
 	})
 	opts = append(opts, aliases)

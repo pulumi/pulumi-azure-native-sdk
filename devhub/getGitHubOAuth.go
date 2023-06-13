@@ -11,7 +11,7 @@ import (
 )
 
 // URL used to authorize the Developer Hub GitHub App
-// API Version: 2022-04-01-preview.
+// API Version: 2022-10-11-preview.
 func GetGitHubOAuth(ctx *pulumi.Context, args *GetGitHubOAuthArgs, opts ...pulumi.InvokeOption) (*GetGitHubOAuthResult, error) {
 	var rv GetGitHubOAuthResult
 	err := ctx.Invoke("azure-native:devhub:getGitHubOAuth", args, &rv, opts...)

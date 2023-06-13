@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-//
-// Deprecated: azure-native:datashare/v20200901:SqlDWTableDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:SqlDWTableDataSetMapping to guarantee forwards compatibility.
-func LookupSqlDWTableDataSetMapping(ctx *pulumi.Context, args *LookupSqlDWTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupSqlDWTableDataSetMappingResult, error) {
-	var rv LookupSqlDWTableDataSetMappingResult
+func GetSqlDWTableDataSetMapping(ctx *pulumi.Context, args *GetSqlDWTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*GetSqlDWTableDataSetMappingResult, error) {
+	var rv GetSqlDWTableDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getSqlDWTableDataSetMapping", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupSqlDWTableDataSetMapping(ctx *pulumi.Context, args *LookupSqlDWTableD
 	return &rv, nil
 }
 
-type LookupSqlDWTableDataSetMappingArgs struct {
+type GetSqlDWTableDataSetMappingArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSetMapping.
@@ -34,7 +32,7 @@ type LookupSqlDWTableDataSetMappingArgs struct {
 }
 
 // A SQL DW Table data set mapping.
-type LookupSqlDWTableDataSetMappingResult struct {
+type GetSqlDWTableDataSetMappingResult struct {
 	// The id of the source data set.
 	DataSetId string `pulumi:"dataSetId"`
 	// Gets the status of the data set mapping.
@@ -62,20 +60,20 @@ type LookupSqlDWTableDataSetMappingResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupSqlDWTableDataSetMappingOutput(ctx *pulumi.Context, args LookupSqlDWTableDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDWTableDataSetMappingResultOutput {
+func GetSqlDWTableDataSetMappingOutput(ctx *pulumi.Context, args GetSqlDWTableDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) GetSqlDWTableDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlDWTableDataSetMappingResult, error) {
-			args := v.(LookupSqlDWTableDataSetMappingArgs)
-			r, err := LookupSqlDWTableDataSetMapping(ctx, &args, opts...)
-			var s LookupSqlDWTableDataSetMappingResult
+		ApplyT(func(v interface{}) (GetSqlDWTableDataSetMappingResult, error) {
+			args := v.(GetSqlDWTableDataSetMappingArgs)
+			r, err := GetSqlDWTableDataSetMapping(ctx, &args, opts...)
+			var s GetSqlDWTableDataSetMappingResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupSqlDWTableDataSetMappingResultOutput)
+		}).(GetSqlDWTableDataSetMappingResultOutput)
 }
 
-type LookupSqlDWTableDataSetMappingOutputArgs struct {
+type GetSqlDWTableDataSetMappingOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSetMapping.
@@ -86,86 +84,86 @@ type LookupSqlDWTableDataSetMappingOutputArgs struct {
 	ShareSubscriptionName pulumi.StringInput `pulumi:"shareSubscriptionName"`
 }
 
-func (LookupSqlDWTableDataSetMappingOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupSqlDWTableDataSetMappingArgs)(nil)).Elem()
+func (GetSqlDWTableDataSetMappingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlDWTableDataSetMappingArgs)(nil)).Elem()
 }
 
 // A SQL DW Table data set mapping.
-type LookupSqlDWTableDataSetMappingResultOutput struct{ *pulumi.OutputState }
+type GetSqlDWTableDataSetMappingResultOutput struct{ *pulumi.OutputState }
 
-func (LookupSqlDWTableDataSetMappingResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupSqlDWTableDataSetMappingResult)(nil)).Elem()
+func (GetSqlDWTableDataSetMappingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlDWTableDataSetMappingResult)(nil)).Elem()
 }
 
-func (o LookupSqlDWTableDataSetMappingResultOutput) ToLookupSqlDWTableDataSetMappingResultOutput() LookupSqlDWTableDataSetMappingResultOutput {
+func (o GetSqlDWTableDataSetMappingResultOutput) ToGetSqlDWTableDataSetMappingResultOutput() GetSqlDWTableDataSetMappingResultOutput {
 	return o
 }
 
-func (o LookupSqlDWTableDataSetMappingResultOutput) ToLookupSqlDWTableDataSetMappingResultOutputWithContext(ctx context.Context) LookupSqlDWTableDataSetMappingResultOutput {
+func (o GetSqlDWTableDataSetMappingResultOutput) ToGetSqlDWTableDataSetMappingResultOutputWithContext(ctx context.Context) GetSqlDWTableDataSetMappingResultOutput {
 	return o
 }
 
 // The id of the source data set.
-func (o LookupSqlDWTableDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // Gets the status of the data set mapping.
-func (o LookupSqlDWTableDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
 }
 
 // DataWarehouse name of the source data set
-func (o LookupSqlDWTableDataSetMappingResultOutput) DataWarehouseName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.DataWarehouseName }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) DataWarehouseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.DataWarehouseName }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupSqlDWTableDataSetMappingResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set mapping.
 // Expected value is 'SqlDWTable'.
-func (o LookupSqlDWTableDataSetMappingResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupSqlDWTableDataSetMappingResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Provisioning state of the data set mapping.
-func (o LookupSqlDWTableDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Schema of the table. Default value is dbo.
-func (o LookupSqlDWTableDataSetMappingResultOutput) SchemaName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.SchemaName }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.SchemaName }).(pulumi.StringOutput)
 }
 
 // Resource id of SQL server
-func (o LookupSqlDWTableDataSetMappingResultOutput) SqlServerResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.SqlServerResourceId }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) SqlServerResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.SqlServerResourceId }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupSqlDWTableDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // SQL DW table name.
-func (o LookupSqlDWTableDataSetMappingResultOutput) TableName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.TableName }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
 // Type of the azure resource
-func (o LookupSqlDWTableDataSetMappingResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetSqlDWTableDataSetMappingResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlDWTableDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupSqlDWTableDataSetMappingResultOutput{})
+	pulumi.RegisterOutputType(GetSqlDWTableDataSetMappingResultOutput{})
 }

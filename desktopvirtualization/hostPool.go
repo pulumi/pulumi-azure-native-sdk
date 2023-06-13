@@ -12,10 +12,13 @@ import (
 )
 
 // Represents a HostPool definition.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-09.
+// Previous API Version: 2021-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type HostPool struct {
 	pulumi.CustomResourceState
 
+	// The session host configuration for updating agent, monitoring agent, and stack component.
+	AgentUpdate AgentUpdatePropertiesResponsePtrOutput `pulumi:"agentUpdate"`
 	// List of applicationGroup links.
 	ApplicationGroupReferences pulumi.StringArrayOutput `pulumi:"applicationGroupReferences"`
 	// Is cloud pc resource.
@@ -41,8 +44,6 @@ type HostPool struct {
 	ManagedBy pulumi.StringPtrOutput `pulumi:"managedBy"`
 	// The max session limit of HostPool.
 	MaxSessionLimit pulumi.IntPtrOutput `pulumi:"maxSessionLimit"`
-	// The registration info of HostPool.
-	MigrationRequest MigrationRequestPropertiesResponsePtrOutput `pulumi:"migrationRequest"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ObjectId of HostPool. (internal use)
@@ -67,6 +68,8 @@ type HostPool struct {
 	SsoadfsAuthority pulumi.StringPtrOutput `pulumi:"ssoadfsAuthority"`
 	// The flag to turn on/off StartVMOnConnect feature.
 	StartVMOnConnect pulumi.BoolPtrOutput `pulumi:"startVMOnConnect"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -97,27 +100,6 @@ func NewHostPool(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20190123preview:HostPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20190924preview:HostPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20191210preview:HostPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20200921preview:HostPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201019preview:HostPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201102preview:HostPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201110preview:HostPool"),
-		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20210114preview:HostPool"),
 		},
@@ -182,6 +164,8 @@ func (HostPoolState) ElementType() reflect.Type {
 }
 
 type hostPoolArgs struct {
+	// The session host configuration for updating agent, monitoring agent, and stack component.
+	AgentUpdate *AgentUpdateProperties `pulumi:"agentUpdate"`
 	// Custom rdp property of HostPool.
 	CustomRdpProperty *string `pulumi:"customRdpProperty"`
 	// Description of HostPool.
@@ -203,8 +187,6 @@ type hostPoolArgs struct {
 	ManagedBy *string `pulumi:"managedBy"`
 	// The max session limit of HostPool.
 	MaxSessionLimit *int `pulumi:"maxSessionLimit"`
-	// The registration info of HostPool.
-	MigrationRequest *MigrationRequestProperties `pulumi:"migrationRequest"`
 	// PersonalDesktopAssignment type for HostPool.
 	PersonalDesktopAssignmentType *string                                  `pulumi:"personalDesktopAssignmentType"`
 	Plan                          *ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
@@ -237,6 +219,8 @@ type hostPoolArgs struct {
 
 // The set of arguments for constructing a HostPool resource.
 type HostPoolArgs struct {
+	// The session host configuration for updating agent, monitoring agent, and stack component.
+	AgentUpdate AgentUpdatePropertiesPtrInput
 	// Custom rdp property of HostPool.
 	CustomRdpProperty pulumi.StringPtrInput
 	// Description of HostPool.
@@ -258,8 +242,6 @@ type HostPoolArgs struct {
 	ManagedBy pulumi.StringPtrInput
 	// The max session limit of HostPool.
 	MaxSessionLimit pulumi.IntPtrInput
-	// The registration info of HostPool.
-	MigrationRequest MigrationRequestPropertiesPtrInput
 	// PersonalDesktopAssignment type for HostPool.
 	PersonalDesktopAssignmentType pulumi.StringPtrInput
 	Plan                          ResourceModelWithAllowedPropertySetPlanPtrInput
@@ -327,6 +309,11 @@ func (o HostPoolOutput) ToHostPoolOutputWithContext(ctx context.Context) HostPoo
 	return o
 }
 
+// The session host configuration for updating agent, monitoring agent, and stack component.
+func (o HostPoolOutput) AgentUpdate() AgentUpdatePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *HostPool) AgentUpdatePropertiesResponsePtrOutput { return v.AgentUpdate }).(AgentUpdatePropertiesResponsePtrOutput)
+}
+
 // List of applicationGroup links.
 func (o HostPoolOutput) ApplicationGroupReferences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HostPool) pulumi.StringArrayOutput { return v.ApplicationGroupReferences }).(pulumi.StringArrayOutput)
@@ -391,11 +378,6 @@ func (o HostPoolOutput) MaxSessionLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HostPool) pulumi.IntPtrOutput { return v.MaxSessionLimit }).(pulumi.IntPtrOutput)
 }
 
-// The registration info of HostPool.
-func (o HostPoolOutput) MigrationRequest() MigrationRequestPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *HostPool) MigrationRequestPropertiesResponsePtrOutput { return v.MigrationRequest }).(MigrationRequestPropertiesResponsePtrOutput)
-}
-
 // The name of the resource
 func (o HostPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -457,6 +439,11 @@ func (o HostPoolOutput) SsoadfsAuthority() pulumi.StringPtrOutput {
 // The flag to turn on/off StartVMOnConnect feature.
 func (o HostPoolOutput) StartVMOnConnect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostPool) pulumi.BoolPtrOutput { return v.StartVMOnConnect }).(pulumi.BoolPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o HostPoolOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *HostPool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -12,7 +12,8 @@ import (
 )
 
 // A SQL Migration Service.
-// API Version: 2021-10-30-preview.
+// API Version: 2022-03-30-preview.
+// Previous API Version: 2021-10-30-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlMigrationService struct {
 	pulumi.CustomResourceState
 

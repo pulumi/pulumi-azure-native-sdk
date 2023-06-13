@@ -54,51 +54,6 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:NetworkSecurityGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20150501preview:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:NetworkSecurityGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:NetworkSecurityGroup"),
 		},
 		{
@@ -182,6 +137,9 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkSecurityGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkSecurityGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkSecurityGroup
@@ -217,7 +175,7 @@ func (NetworkSecurityGroupState) ElementType() reflect.Type {
 
 type networkSecurityGroupArgs struct {
 	// The default security rules of network security group.
-	DefaultSecurityRules []SecurityRuleType `pulumi:"defaultSecurityRules"`
+	DefaultSecurityRules []SecurityRule `pulumi:"defaultSecurityRules"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
@@ -229,7 +187,7 @@ type networkSecurityGroupArgs struct {
 	// The resource GUID property of the network security group resource.
 	ResourceGuid *string `pulumi:"resourceGuid"`
 	// A collection of security rules of the network security group.
-	SecurityRules []SecurityRuleType `pulumi:"securityRules"`
+	SecurityRules []SecurityRule `pulumi:"securityRules"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -237,7 +195,7 @@ type networkSecurityGroupArgs struct {
 // The set of arguments for constructing a NetworkSecurityGroup resource.
 type NetworkSecurityGroupArgs struct {
 	// The default security rules of network security group.
-	DefaultSecurityRules SecurityRuleTypeArrayInput
+	DefaultSecurityRules SecurityRuleArrayInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Resource location.
@@ -249,7 +207,7 @@ type NetworkSecurityGroupArgs struct {
 	// The resource GUID property of the network security group resource.
 	ResourceGuid pulumi.StringPtrInput
 	// A collection of security rules of the network security group.
-	SecurityRules SecurityRuleTypeArrayInput
+	SecurityRules SecurityRuleArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }

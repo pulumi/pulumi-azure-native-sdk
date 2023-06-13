@@ -12,7 +12,8 @@ import (
 )
 
 // The Application Group object
-// API Version: 2022-01-01-preview.
+// API Version: 2022-10-01-preview.
+// Previous API Version: 2022-01-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 

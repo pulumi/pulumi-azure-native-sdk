@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20230201preview:AADDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AADDataConnector to guarantee forwards compatibility.
-func LookupAADDataConnector(ctx *pulumi.Context, args *LookupAADDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAADDataConnectorResult, error) {
-	var rv LookupAADDataConnectorResult
+func GetAADDataConnector(ctx *pulumi.Context, args *GetAADDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetAADDataConnectorResult, error) {
+	var rv GetAADDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getAADDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupAADDataConnector(ctx *pulumi.Context, args *LookupAADDataConnectorArg
 	return &rv, nil
 }
 
-type LookupAADDataConnectorArgs struct {
+type GetAADDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupAADDataConnectorArgs struct {
 }
 
 // Represents AAD (Azure Active Directory) data connector.
-type LookupAADDataConnectorResult struct {
+type GetAADDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupAADDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupAADDataConnectorOutput(ctx *pulumi.Context, args LookupAADDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAADDataConnectorResultOutput {
+func GetAADDataConnectorOutput(ctx *pulumi.Context, args GetAADDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetAADDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAADDataConnectorResult, error) {
-			args := v.(LookupAADDataConnectorArgs)
-			r, err := LookupAADDataConnector(ctx, &args, opts...)
-			var s LookupAADDataConnectorResult
+		ApplyT(func(v interface{}) (GetAADDataConnectorResult, error) {
+			args := v.(GetAADDataConnectorArgs)
+			r, err := GetAADDataConnector(ctx, &args, opts...)
+			var s GetAADDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupAADDataConnectorResultOutput)
+		}).(GetAADDataConnectorResultOutput)
 }
 
-type LookupAADDataConnectorOutputArgs struct {
+type GetAADDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,66 +72,66 @@ type LookupAADDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupAADDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAADDataConnectorArgs)(nil)).Elem()
+func (GetAADDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAADDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents AAD (Azure Active Directory) data connector.
-type LookupAADDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetAADDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupAADDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAADDataConnectorResult)(nil)).Elem()
+func (GetAADDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAADDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupAADDataConnectorResultOutput) ToLookupAADDataConnectorResultOutput() LookupAADDataConnectorResultOutput {
+func (o GetAADDataConnectorResultOutput) ToGetAADDataConnectorResultOutput() GetAADDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupAADDataConnectorResultOutput) ToLookupAADDataConnectorResultOutputWithContext(ctx context.Context) LookupAADDataConnectorResultOutput {
+func (o GetAADDataConnectorResultOutput) ToGetAADDataConnectorResultOutputWithContext(ctx context.Context) GetAADDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupAADDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
+func (o GetAADDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
+	return o.ApplyT(func(v GetAADDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
 }
 
 // Etag of the azure resource
-func (o LookupAADDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetAADDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAADDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupAADDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetAADDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAADDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'AzureActiveDirectory'.
-func (o LookupAADDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetAADDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAADDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupAADDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetAADDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAADDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAADDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetAADDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetAADDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupAADDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetAADDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAADDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupAADDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetAADDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAADDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupAADDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetAADDataConnectorResultOutput{})
 }

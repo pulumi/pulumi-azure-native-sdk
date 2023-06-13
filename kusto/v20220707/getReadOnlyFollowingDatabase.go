@@ -11,10 +11,8 @@ import (
 )
 
 // Returns a database.
-//
-// Deprecated: azure-native:kusto/v20220707:ReadOnlyFollowingDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ReadOnlyFollowingDatabase to guarantee forwards compatibility.
-func LookupReadOnlyFollowingDatabase(ctx *pulumi.Context, args *LookupReadOnlyFollowingDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadOnlyFollowingDatabaseResult, error) {
-	var rv LookupReadOnlyFollowingDatabaseResult
+func GetReadOnlyFollowingDatabase(ctx *pulumi.Context, args *GetReadOnlyFollowingDatabaseArgs, opts ...pulumi.InvokeOption) (*GetReadOnlyFollowingDatabaseResult, error) {
+	var rv GetReadOnlyFollowingDatabaseResult
 	err := ctx.Invoke("azure-native:kusto/v20220707:getReadOnlyFollowingDatabase", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupReadOnlyFollowingDatabase(ctx *pulumi.Context, args *LookupReadOnlyFo
 	return &rv, nil
 }
 
-type LookupReadOnlyFollowingDatabaseArgs struct {
+type GetReadOnlyFollowingDatabaseArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
@@ -32,7 +30,7 @@ type LookupReadOnlyFollowingDatabaseArgs struct {
 }
 
 // Class representing a read only following database.
-type LookupReadOnlyFollowingDatabaseResult struct {
+type GetReadOnlyFollowingDatabaseResult struct {
 	// The name of the attached database configuration cluster
 	AttachedDatabaseConfigurationName string `pulumi:"attachedDatabaseConfigurationName"`
 	// The origin of the following setup.
@@ -66,20 +64,20 @@ type LookupReadOnlyFollowingDatabaseResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupReadOnlyFollowingDatabaseOutput(ctx *pulumi.Context, args LookupReadOnlyFollowingDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupReadOnlyFollowingDatabaseResultOutput {
+func GetReadOnlyFollowingDatabaseOutput(ctx *pulumi.Context, args GetReadOnlyFollowingDatabaseOutputArgs, opts ...pulumi.InvokeOption) GetReadOnlyFollowingDatabaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReadOnlyFollowingDatabaseResult, error) {
-			args := v.(LookupReadOnlyFollowingDatabaseArgs)
-			r, err := LookupReadOnlyFollowingDatabase(ctx, &args, opts...)
-			var s LookupReadOnlyFollowingDatabaseResult
+		ApplyT(func(v interface{}) (GetReadOnlyFollowingDatabaseResult, error) {
+			args := v.(GetReadOnlyFollowingDatabaseArgs)
+			r, err := GetReadOnlyFollowingDatabase(ctx, &args, opts...)
+			var s GetReadOnlyFollowingDatabaseResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupReadOnlyFollowingDatabaseResultOutput)
+		}).(GetReadOnlyFollowingDatabaseResultOutput)
 }
 
-type LookupReadOnlyFollowingDatabaseOutputArgs struct {
+type GetReadOnlyFollowingDatabaseOutputArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
@@ -88,103 +86,103 @@ type LookupReadOnlyFollowingDatabaseOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
-func (LookupReadOnlyFollowingDatabaseOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupReadOnlyFollowingDatabaseArgs)(nil)).Elem()
+func (GetReadOnlyFollowingDatabaseOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReadOnlyFollowingDatabaseArgs)(nil)).Elem()
 }
 
 // Class representing a read only following database.
-type LookupReadOnlyFollowingDatabaseResultOutput struct{ *pulumi.OutputState }
+type GetReadOnlyFollowingDatabaseResultOutput struct{ *pulumi.OutputState }
 
-func (LookupReadOnlyFollowingDatabaseResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupReadOnlyFollowingDatabaseResult)(nil)).Elem()
+func (GetReadOnlyFollowingDatabaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReadOnlyFollowingDatabaseResult)(nil)).Elem()
 }
 
-func (o LookupReadOnlyFollowingDatabaseResultOutput) ToLookupReadOnlyFollowingDatabaseResultOutput() LookupReadOnlyFollowingDatabaseResultOutput {
+func (o GetReadOnlyFollowingDatabaseResultOutput) ToGetReadOnlyFollowingDatabaseResultOutput() GetReadOnlyFollowingDatabaseResultOutput {
 	return o
 }
 
-func (o LookupReadOnlyFollowingDatabaseResultOutput) ToLookupReadOnlyFollowingDatabaseResultOutputWithContext(ctx context.Context) LookupReadOnlyFollowingDatabaseResultOutput {
+func (o GetReadOnlyFollowingDatabaseResultOutput) ToGetReadOnlyFollowingDatabaseResultOutputWithContext(ctx context.Context) GetReadOnlyFollowingDatabaseResultOutput {
 	return o
 }
 
 // The name of the attached database configuration cluster
-func (o LookupReadOnlyFollowingDatabaseResultOutput) AttachedDatabaseConfigurationName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.AttachedDatabaseConfigurationName }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) AttachedDatabaseConfigurationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.AttachedDatabaseConfigurationName }).(pulumi.StringOutput)
 }
 
 // The origin of the following setup.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) DatabaseShareOrigin() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.DatabaseShareOrigin }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) DatabaseShareOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.DatabaseShareOrigin }).(pulumi.StringOutput)
 }
 
 // The time the data should be kept in cache for fast queries in TimeSpan.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) HotCachePeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) *string { return v.HotCachePeriod }).(pulumi.StringPtrOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) HotCachePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) *string { return v.HotCachePeriod }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupReadOnlyFollowingDatabaseResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of the database
 // Expected value is 'ReadOnlyFollowing'.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the leader cluster
-func (o LookupReadOnlyFollowingDatabaseResultOutput) LeaderClusterResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.LeaderClusterResourceId }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) LeaderClusterResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.LeaderClusterResourceId }).(pulumi.StringOutput)
 }
 
 // Resource location.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
-func (o LookupReadOnlyFollowingDatabaseResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The original database name, before databaseNameOverride or databaseNamePrefix where applied.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) OriginalDatabaseName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.OriginalDatabaseName }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) OriginalDatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.OriginalDatabaseName }).(pulumi.StringOutput)
 }
 
 // The principals modification kind of the database
-func (o LookupReadOnlyFollowingDatabaseResultOutput) PrincipalsModificationKind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.PrincipalsModificationKind }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) PrincipalsModificationKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.PrincipalsModificationKind }).(pulumi.StringOutput)
 }
 
 // The provisioned state of the resource.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The time the data should be kept before it stops being accessible to queries in TimeSpan.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) SoftDeletePeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.SoftDeletePeriod }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) SoftDeletePeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.SoftDeletePeriod }).(pulumi.StringOutput)
 }
 
 // The statistics of the database.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) Statistics() DatabaseStatisticsResponseOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) DatabaseStatisticsResponse { return v.Statistics }).(DatabaseStatisticsResponseOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) Statistics() DatabaseStatisticsResponseOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) DatabaseStatisticsResponse { return v.Statistics }).(DatabaseStatisticsResponseOutput)
 }
 
 // Table level sharing specifications
-func (o LookupReadOnlyFollowingDatabaseResultOutput) TableLevelSharingProperties() TableLevelSharingPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) TableLevelSharingPropertiesResponse {
+func (o GetReadOnlyFollowingDatabaseResultOutput) TableLevelSharingProperties() TableLevelSharingPropertiesResponseOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) TableLevelSharingPropertiesResponse {
 		return v.TableLevelSharingProperties
 	}).(TableLevelSharingPropertiesResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupReadOnlyFollowingDatabaseResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetReadOnlyFollowingDatabaseResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadOnlyFollowingDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupReadOnlyFollowingDatabaseResultOutput{})
+	pulumi.RegisterOutputType(GetReadOnlyFollowingDatabaseResultOutput{})
 }

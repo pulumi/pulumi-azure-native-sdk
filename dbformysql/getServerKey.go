@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a MySQL Server key.
-// API Version: 2020-01-01.
+// Gets a server key.
+// API Version: 2020-07-01-preview.
 func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pulumi.InvokeOption) (*LookupServerKeyResult, error) {
 	var rv LookupServerKeyResult
 	err := ctx.Invoke("azure-native:dbformysql:getServerKey", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pul
 }
 
 type LookupServerKeyArgs struct {
-	// The name of the MySQL Server key to be retrieved.
+	// The name of the server key.
 	KeyName string `pulumi:"keyName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -62,7 +62,7 @@ func LookupServerKeyOutput(ctx *pulumi.Context, args LookupServerKeyOutputArgs, 
 }
 
 type LookupServerKeyOutputArgs struct {
-	// The name of the MySQL Server key to be retrieved.
+	// The name of the server key.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

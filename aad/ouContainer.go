@@ -12,7 +12,8 @@ import (
 )
 
 // Resource for OuContainer.
-// API Version: 2021-03-01.
+// API Version: 2022-12-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type OuContainer struct {
 	pulumi.CustomResourceState
 
@@ -60,12 +61,6 @@ func NewOuContainer(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:aad/v20170601:OuContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:aad/v20200101:OuContainer"),
-		},
 		{
 			Type: pulumi.String("azure-native:aad/v20210301:OuContainer"),
 		},

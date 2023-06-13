@@ -12,7 +12,8 @@ import (
 )
 
 // Information about managed application.
-// API Version: 2019-07-01.
+// API Version: 2021-07-01.
+// Previous API Version: 2019-07-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +59,8 @@ type Application struct {
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// The read-only support URLs property that is retrieved from the application package.
 	SupportUrls ApplicationPackageSupportUrlsResponseOutput `pulumi:"supportUrls"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -80,27 +83,6 @@ func NewApplication(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:solutions/v20160901preview:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20170901:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20171201:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180201:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180301:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180601:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180901preview:Application"),
-		},
 		{
 			Type: pulumi.String("azure-native:solutions/v20190701:Application"),
 		},
@@ -345,6 +327,11 @@ func (o ApplicationOutput) Sku() SkuResponsePtrOutput {
 // The read-only support URLs property that is retrieved from the application package.
 func (o ApplicationOutput) SupportUrls() ApplicationPackageSupportUrlsResponseOutput {
 	return o.ApplyT(func(v *Application) ApplicationPackageSupportUrlsResponseOutput { return v.SupportUrls }).(ApplicationPackageSupportUrlsResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ApplicationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Application) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

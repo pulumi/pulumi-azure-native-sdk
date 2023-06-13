@@ -12,7 +12,8 @@ import (
 )
 
 // The bandwidth schedule details.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type BandwidthSchedule struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +27,7 @@ type BandwidthSchedule struct {
 	Start pulumi.StringOutput `pulumi:"start"`
 	// The stop time of the schedule in UTC.
 	Stop pulumi.StringOutput `pulumi:"stop"`
-	// Bandwidth object related to ASE resource
+	// Metadata pertaining to creation and last modification of BandwidthSchedule
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -58,24 +59,6 @@ func NewBandwidthSchedule(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Stop'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190301:BandwidthSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190701:BandwidthSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190801:BandwidthSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200501preview:BandwidthSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901:BandwidthSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901preview:BandwidthSchedule"),
-		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20201201:BandwidthSchedule"),
 		},
@@ -233,7 +216,7 @@ func (o BandwidthScheduleOutput) Stop() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthSchedule) pulumi.StringOutput { return v.Stop }).(pulumi.StringOutput)
 }
 
-// Bandwidth object related to ASE resource
+// Metadata pertaining to creation and last modification of BandwidthSchedule
 func (o BandwidthScheduleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *BandwidthSchedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

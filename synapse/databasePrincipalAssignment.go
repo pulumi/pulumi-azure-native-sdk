@@ -13,6 +13,7 @@ import (
 
 // Class representing a database principal assignment.
 // API Version: 2021-04-01-preview.
+// Previous API Version: 2021-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 

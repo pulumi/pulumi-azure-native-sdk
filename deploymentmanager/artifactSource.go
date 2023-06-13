@@ -13,6 +13,7 @@ import (
 
 // The resource that defines the source location where the artifacts are located.
 // API Version: 2019-11-01-preview.
+// Previous API Version: 2019-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ArtifactSource struct {
 	pulumi.CustomResourceState
 
@@ -49,9 +50,6 @@ func NewArtifactSource(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'SourceType'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:deploymentmanager/v20180901preview:ArtifactSource"),
-		},
 		{
 			Type: pulumi.String("azure-native:deploymentmanager/v20191101preview:ArtifactSource"),
 		},

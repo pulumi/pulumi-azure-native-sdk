@@ -13,6 +13,7 @@ import (
 
 // Describes a DNS record set (a collection of DNS records with the same name and type).
 // API Version: 2018-05-01.
+// Previous API Version: 2018-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RecordSet struct {
 	pulumi.CustomResourceState
 
@@ -72,22 +73,10 @@ func NewRecordSet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network/v20150504preview:RecordSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160401:RecordSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:RecordSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:RecordSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180301preview:RecordSet"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180501:RecordSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:RecordSet"),
 		},
 	})
 	opts = append(opts, aliases)

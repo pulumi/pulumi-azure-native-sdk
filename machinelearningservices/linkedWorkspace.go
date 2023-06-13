@@ -12,7 +12,8 @@ import (
 )
 
 // Linked workspace.
-// API Version: 2020-03-01.
+// API Version: 2020-05-15-preview.
+// Previous API Version: 2020-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type LinkedWorkspace struct {
 	pulumi.CustomResourceState
 
@@ -39,7 +40,10 @@ func NewLinkedWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20200301:LinkedWorkspace"),
+			Type: pulumi.String("azure-native:machinelearningservices/v20200501preview:LinkedWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20200515preview:LinkedWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

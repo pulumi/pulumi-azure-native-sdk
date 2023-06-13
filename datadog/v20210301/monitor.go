@@ -43,9 +43,6 @@ func NewMonitor(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:datadog:Monitor"),
 		},
 		{
-			Type: pulumi.String("azure-native:datadog/v20200201preview:Monitor"),
-		},
-		{
 			Type: pulumi.String("azure-native:datadog/v20220601:Monitor"),
 		},
 	})

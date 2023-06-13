@@ -13,6 +13,7 @@ import (
 
 // The description of the Windows IoT Device Service.
 // API Version: 2019-06-01.
+// Previous API Version: 2019-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -49,9 +50,6 @@ func NewService(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:windowsiot/v20180216preview:Service"),
-		},
 		{
 			Type: pulumi.String("azure-native:windowsiot/v20190601:Service"),
 		},

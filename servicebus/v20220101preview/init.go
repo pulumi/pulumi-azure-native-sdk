@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,28 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:servicebus/v20220101preview:DisasterRecoveryConfig":
-		r = &DisasterRecoveryConfig{}
-	case "azure-native:servicebus/v20220101preview:MigrationConfig":
-		r = &MigrationConfig{}
-	case "azure-native:servicebus/v20220101preview:Namespace":
-		r = &Namespace{}
 	case "azure-native:servicebus/v20220101preview:NamespaceAuthorizationRule":
 		r = &NamespaceAuthorizationRule{}
-	case "azure-native:servicebus/v20220101preview:NamespaceNetworkRuleSet":
-		r = &NamespaceNetworkRuleSet{}
-	case "azure-native:servicebus/v20220101preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:servicebus/v20220101preview:Queue":
-		r = &Queue{}
 	case "azure-native:servicebus/v20220101preview:QueueAuthorizationRule":
 		r = &QueueAuthorizationRule{}
 	case "azure-native:servicebus/v20220101preview:Rule":
 		r = &Rule{}
-	case "azure-native:servicebus/v20220101preview:Subscription":
-		r = &Subscription{}
-	case "azure-native:servicebus/v20220101preview:Topic":
-		r = &Topic{}
 	case "azure-native:servicebus/v20220101preview:TopicAuthorizationRule":
 		r = &TopicAuthorizationRule{}
 	default:

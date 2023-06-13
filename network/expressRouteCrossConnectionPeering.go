@@ -12,7 +12,8 @@ import (
 )
 
 // Peering in an ExpressRoute Cross Connection resource.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ExpressRouteCrossConnectionPeering struct {
 	pulumi.CustomResourceState
 
@@ -66,12 +67,6 @@ func NewExpressRouteCrossConnectionPeering(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20180201:ExpressRouteCrossConnectionPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:ExpressRouteCrossConnectionPeering"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:ExpressRouteCrossConnectionPeering"),
 		},
@@ -158,6 +153,9 @@ func NewExpressRouteCrossConnectionPeering(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCrossConnectionPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCrossConnectionPeering"),
 		},
 	})
 	opts = append(opts, aliases)

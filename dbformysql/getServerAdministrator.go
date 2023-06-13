@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about a AAD server administrator.
-// API Version: 2017-12-01.
+// API Version: 2017-12-01-preview.
 func LookupServerAdministrator(ctx *pulumi.Context, args *LookupServerAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupServerAdministratorResult, error) {
 	var rv LookupServerAdministratorResult
 	err := ctx.Invoke("azure-native:dbformysql:getServerAdministrator", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupServerAdministrator(ctx *pulumi.Context, args *LookupServerAdministra
 }
 
 type LookupServerAdministratorArgs struct {
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
@@ -60,7 +60,7 @@ func LookupServerAdministratorOutput(ctx *pulumi.Context, args LookupServerAdmin
 }
 
 type LookupServerAdministratorOutputArgs struct {
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName pulumi.StringInput `pulumi:"serverName"`

@@ -12,7 +12,8 @@ import (
 )
 
 // Packet core control plane resource.
-// API Version: 2022-04-01-preview.
+// API Version: 2022-11-01.
+// Previous API Version: 2022-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PacketCoreControlPlane struct {
 	pulumi.CustomResourceState
 
@@ -20,34 +21,26 @@ type PacketCoreControlPlane struct {
 	ControlPlaneAccessInterface InterfacePropertiesResponseOutput `pulumi:"controlPlaneAccessInterface"`
 	// The core network technology generation (5G core or EPC / 4G core).
 	CoreNetworkTechnology pulumi.StringPtrOutput `pulumi:"coreNetworkTechnology"`
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
 	// The identity used to retrieve the ingress certificate from Azure key vault.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// The installation state of the packet core control plane resource.
+	Installation InstallationResponseOutput `pulumi:"installation"`
 	// Settings to allow interoperability with third party components e.g. RANs and UEs.
 	InteropSettings pulumi.AnyOutput `pulumi:"interopSettings"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
-	LocalDiagnosticsAccess LocalDiagnosticsAccessConfigurationResponsePtrOutput `pulumi:"localDiagnosticsAccess"`
+	LocalDiagnosticsAccess LocalDiagnosticsAccessConfigurationResponseOutput `pulumi:"localDiagnosticsAccess"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Mobile network in which this packet core control plane is deployed.
-	MobileNetwork MobileNetworkResourceIdResponseOutput `pulumi:"mobileNetwork"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The platform where the packet core is deployed.
-	Platform PlatformConfigurationResponsePtrOutput `pulumi:"platform"`
+	Platform PlatformConfigurationResponseOutput `pulumi:"platform"`
 	// The provisioning state of the packet core control plane resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The previous version of the packet core software that was deployed. Used when performing the rollback action.
+	RollbackVersion pulumi.StringOutput `pulumi:"rollbackVersion"`
+	// Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
+	Sites SiteResourceIdResponseArrayOutput `pulumi:"sites"`
 	// The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
 	Sku pulumi.StringOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -56,6 +49,8 @@ type PacketCoreControlPlane struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
+	UeMtu pulumi.IntPtrOutput `pulumi:"ueMtu"`
 	// The version of the packet core software that is deployed.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
@@ -70,14 +65,23 @@ func NewPacketCoreControlPlane(ctx *pulumi.Context,
 	if args.ControlPlaneAccessInterface == nil {
 		return nil, errors.New("invalid value for required argument 'ControlPlaneAccessInterface'")
 	}
-	if args.MobileNetwork == nil {
-		return nil, errors.New("invalid value for required argument 'MobileNetwork'")
+	if args.LocalDiagnosticsAccess == nil {
+		return nil, errors.New("invalid value for required argument 'LocalDiagnosticsAccess'")
+	}
+	if args.Platform == nil {
+		return nil, errors.New("invalid value for required argument 'Platform'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.Sites == nil {
+		return nil, errors.New("invalid value for required argument 'Sites'")
+	}
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
+	}
+	if args.UeMtu == nil {
+		args.UeMtu = pulumi.IntPtr(1440)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -127,38 +131,28 @@ type packetCoreControlPlaneArgs struct {
 	ControlPlaneAccessInterface InterfaceProperties `pulumi:"controlPlaneAccessInterface"`
 	// The core network technology generation (5G core or EPC / 4G core).
 	CoreNetworkTechnology *string `pulumi:"coreNetworkTechnology"`
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
 	// The identity used to retrieve the ingress certificate from Azure key vault.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Settings to allow interoperability with third party components e.g. RANs and UEs.
 	InteropSettings interface{} `pulumi:"interopSettings"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
-	LocalDiagnosticsAccess *LocalDiagnosticsAccessConfiguration `pulumi:"localDiagnosticsAccess"`
+	LocalDiagnosticsAccess LocalDiagnosticsAccessConfiguration `pulumi:"localDiagnosticsAccess"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Mobile network in which this packet core control plane is deployed.
-	MobileNetwork MobileNetworkResourceId `pulumi:"mobileNetwork"`
 	// The name of the packet core control plane.
 	PacketCoreControlPlaneName *string `pulumi:"packetCoreControlPlaneName"`
 	// The platform where the packet core is deployed.
-	Platform *PlatformConfiguration `pulumi:"platform"`
+	Platform PlatformConfiguration `pulumi:"platform"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
+	Sites []SiteResourceId `pulumi:"sites"`
 	// The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
 	Sku string `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
+	UeMtu *int `pulumi:"ueMtu"`
 	// The version of the packet core software that is deployed.
 	Version *string `pulumi:"version"`
 }
@@ -169,38 +163,28 @@ type PacketCoreControlPlaneArgs struct {
 	ControlPlaneAccessInterface InterfacePropertiesInput
 	// The core network technology generation (5G core or EPC / 4G core).
 	CoreNetworkTechnology pulumi.StringPtrInput
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrInput
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrInput
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrInput
 	// The identity used to retrieve the ingress certificate from Azure key vault.
 	Identity ManagedServiceIdentityPtrInput
 	// Settings to allow interoperability with third party components e.g. RANs and UEs.
 	InteropSettings pulumi.Input
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrInput
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrInput
 	// The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
-	LocalDiagnosticsAccess LocalDiagnosticsAccessConfigurationPtrInput
+	LocalDiagnosticsAccess LocalDiagnosticsAccessConfigurationInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Mobile network in which this packet core control plane is deployed.
-	MobileNetwork MobileNetworkResourceIdInput
 	// The name of the packet core control plane.
 	PacketCoreControlPlaneName pulumi.StringPtrInput
 	// The platform where the packet core is deployed.
-	Platform PlatformConfigurationPtrInput
+	Platform PlatformConfigurationInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
+	Sites SiteResourceIdArrayInput
 	// The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
 	Sku pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
+	UeMtu pulumi.IntPtrInput
 	// The version of the packet core software that is deployed.
 	Version pulumi.StringPtrInput
 }
@@ -254,24 +238,14 @@ func (o PacketCoreControlPlaneOutput) CoreNetworkTechnology() pulumi.StringPtrOu
 	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringPtrOutput { return v.CoreNetworkTechnology }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource creation (UTC).
-func (o PacketCoreControlPlaneOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o PacketCoreControlPlaneOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o PacketCoreControlPlaneOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
 // The identity used to retrieve the ingress certificate from Azure key vault.
 func (o PacketCoreControlPlaneOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// The installation state of the packet core control plane resource.
+func (o PacketCoreControlPlaneOutput) Installation() InstallationResponseOutput {
+	return o.ApplyT(func(v *PacketCoreControlPlane) InstallationResponseOutput { return v.Installation }).(InstallationResponseOutput)
 }
 
 // Settings to allow interoperability with third party components e.g. RANs and UEs.
@@ -279,36 +253,16 @@ func (o PacketCoreControlPlaneOutput) InteropSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.AnyOutput { return v.InteropSettings }).(pulumi.AnyOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o PacketCoreControlPlaneOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o PacketCoreControlPlaneOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o PacketCoreControlPlaneOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
-func (o PacketCoreControlPlaneOutput) LocalDiagnosticsAccess() LocalDiagnosticsAccessConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) LocalDiagnosticsAccessConfigurationResponsePtrOutput {
+func (o PacketCoreControlPlaneOutput) LocalDiagnosticsAccess() LocalDiagnosticsAccessConfigurationResponseOutput {
+	return o.ApplyT(func(v *PacketCoreControlPlane) LocalDiagnosticsAccessConfigurationResponseOutput {
 		return v.LocalDiagnosticsAccess
-	}).(LocalDiagnosticsAccessConfigurationResponsePtrOutput)
+	}).(LocalDiagnosticsAccessConfigurationResponseOutput)
 }
 
 // The geo-location where the resource lives
 func (o PacketCoreControlPlaneOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
-}
-
-// Mobile network in which this packet core control plane is deployed.
-func (o PacketCoreControlPlaneOutput) MobileNetwork() MobileNetworkResourceIdResponseOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) MobileNetworkResourceIdResponseOutput { return v.MobileNetwork }).(MobileNetworkResourceIdResponseOutput)
 }
 
 // The name of the resource
@@ -317,13 +271,23 @@ func (o PacketCoreControlPlaneOutput) Name() pulumi.StringOutput {
 }
 
 // The platform where the packet core is deployed.
-func (o PacketCoreControlPlaneOutput) Platform() PlatformConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) PlatformConfigurationResponsePtrOutput { return v.Platform }).(PlatformConfigurationResponsePtrOutput)
+func (o PacketCoreControlPlaneOutput) Platform() PlatformConfigurationResponseOutput {
+	return o.ApplyT(func(v *PacketCoreControlPlane) PlatformConfigurationResponseOutput { return v.Platform }).(PlatformConfigurationResponseOutput)
 }
 
 // The provisioning state of the packet core control plane resource.
 func (o PacketCoreControlPlaneOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The previous version of the packet core software that was deployed. Used when performing the rollback action.
+func (o PacketCoreControlPlaneOutput) RollbackVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringOutput { return v.RollbackVersion }).(pulumi.StringOutput)
+}
+
+// Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
+func (o PacketCoreControlPlaneOutput) Sites() SiteResourceIdResponseArrayOutput {
+	return o.ApplyT(func(v *PacketCoreControlPlane) SiteResourceIdResponseArrayOutput { return v.Sites }).(SiteResourceIdResponseArrayOutput)
 }
 
 // The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
@@ -344,6 +308,11 @@ func (o PacketCoreControlPlaneOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PacketCoreControlPlaneOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
+func (o PacketCoreControlPlaneOutput) UeMtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.IntPtrOutput { return v.UeMtu }).(pulumi.IntPtrOutput)
 }
 
 // The version of the packet core software that is deployed.

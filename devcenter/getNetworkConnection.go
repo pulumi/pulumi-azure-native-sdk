@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a network connection resource
-// API Version: 2022-09-01-preview.
+// API Version: 2023-04-01.
 func LookupNetworkConnection(ctx *pulumi.Context, args *LookupNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkConnectionResult, error) {
 	var rv LookupNetworkConnectionResult
 	err := ctx.Invoke("azure-native:devcenter:getNetworkConnection", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupNetworkConnection(ctx *pulumi.Context, args *LookupNetworkConnectionA
 type LookupNetworkConnectionArgs struct {
 	// Name of the Network Connection that can be applied to a Pool.
 	NetworkConnectionName string `pulumi:"networkConnectionName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -78,7 +78,7 @@ func LookupNetworkConnectionOutput(ctx *pulumi.Context, args LookupNetworkConnec
 type LookupNetworkConnectionOutputArgs struct {
 	// Name of the Network Connection that can be applied to a Pool.
 	NetworkConnectionName pulumi.StringInput `pulumi:"networkConnectionName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

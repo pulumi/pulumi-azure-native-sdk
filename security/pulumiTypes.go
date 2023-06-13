@@ -582,43 +582,57 @@ func (o AssessmentStatusOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The result of the assessment
-type AssessmentStatusResponse struct {
+type AssessmentStatusResponseResponse struct {
 	// Programmatic code for the cause of the assessment status
 	Cause *string `pulumi:"cause"`
 	// Programmatic code for the status of the assessment
 	Code string `pulumi:"code"`
 	// Human readable description of the assessment status
 	Description *string `pulumi:"description"`
+	// The time that the assessment was created and first evaluated. Returned as UTC time in ISO 8601 format
+	FirstEvaluationDate string `pulumi:"firstEvaluationDate"`
+	// The time that the status of the assessment last changed. Returned as UTC time in ISO 8601 format
+	StatusChangeDate string `pulumi:"statusChangeDate"`
 }
 
 // The result of the assessment
-type AssessmentStatusResponseOutput struct{ *pulumi.OutputState }
+type AssessmentStatusResponseResponseOutput struct{ *pulumi.OutputState }
 
-func (AssessmentStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssessmentStatusResponse)(nil)).Elem()
+func (AssessmentStatusResponseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentStatusResponseResponse)(nil)).Elem()
 }
 
-func (o AssessmentStatusResponseOutput) ToAssessmentStatusResponseOutput() AssessmentStatusResponseOutput {
+func (o AssessmentStatusResponseResponseOutput) ToAssessmentStatusResponseResponseOutput() AssessmentStatusResponseResponseOutput {
 	return o
 }
 
-func (o AssessmentStatusResponseOutput) ToAssessmentStatusResponseOutputWithContext(ctx context.Context) AssessmentStatusResponseOutput {
+func (o AssessmentStatusResponseResponseOutput) ToAssessmentStatusResponseResponseOutputWithContext(ctx context.Context) AssessmentStatusResponseResponseOutput {
 	return o
 }
 
 // Programmatic code for the cause of the assessment status
-func (o AssessmentStatusResponseOutput) Cause() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssessmentStatusResponse) *string { return v.Cause }).(pulumi.StringPtrOutput)
+func (o AssessmentStatusResponseResponseOutput) Cause() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssessmentStatusResponseResponse) *string { return v.Cause }).(pulumi.StringPtrOutput)
 }
 
 // Programmatic code for the status of the assessment
-func (o AssessmentStatusResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v AssessmentStatusResponse) string { return v.Code }).(pulumi.StringOutput)
+func (o AssessmentStatusResponseResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentStatusResponseResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
 // Human readable description of the assessment status
-func (o AssessmentStatusResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssessmentStatusResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o AssessmentStatusResponseResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssessmentStatusResponseResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The time that the assessment was created and first evaluated. Returned as UTC time in ISO 8601 format
+func (o AssessmentStatusResponseResponseOutput) FirstEvaluationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentStatusResponseResponse) string { return v.FirstEvaluationDate }).(pulumi.StringOutput)
+}
+
+// The time that the status of the assessment last changed. Returned as UTC time in ISO 8601 format
+func (o AssessmentStatusResponseResponseOutput) StatusChangeDate() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentStatusResponseResponse) string { return v.StatusChangeDate }).(pulumi.StringOutput)
 }
 
 // describe the properties of a security assessment object reference (by key)
@@ -2000,6 +2014,84 @@ type AwsCredsAuthenticationDetailsPropertiesResponse struct {
 	GrantedPermissions []string `pulumi:"grantedPermissions"`
 }
 
+// The AWS connector environment data
+type AwsEnvironmentData struct {
+	// The type of the environment data.
+	// Expected value is 'AwsAccount'.
+	EnvironmentType string `pulumi:"environmentType"`
+	// The AWS account's organizational data
+	OrganizationalData interface{} `pulumi:"organizationalData"`
+	// list of regions to scan
+	Regions []string `pulumi:"regions"`
+}
+
+// The AWS connector environment data
+type AwsEnvironmentDataResponse struct {
+	// The AWS account name
+	AccountName string `pulumi:"accountName"`
+	// The type of the environment data.
+	// Expected value is 'AwsAccount'.
+	EnvironmentType string `pulumi:"environmentType"`
+	// The AWS account's organizational data
+	OrganizationalData interface{} `pulumi:"organizationalData"`
+	// list of regions to scan
+	Regions []string `pulumi:"regions"`
+}
+
+// The AWS organization data for the master account
+type AwsOrganizationalDataMaster struct {
+	// If the multi cloud account is of membership type organization, list of accounts excluded from offering
+	ExcludedAccountIds []string `pulumi:"excludedAccountIds"`
+	// The multi cloud account's membership type in the organization
+	// Expected value is 'Organization'.
+	OrganizationMembershipType string `pulumi:"organizationMembershipType"`
+	// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
+	StacksetName *string `pulumi:"stacksetName"`
+}
+
+// The AWS organization data for the master account
+type AwsOrganizationalDataMasterResponse struct {
+	// If the multi cloud account is of membership type organization, list of accounts excluded from offering
+	ExcludedAccountIds []string `pulumi:"excludedAccountIds"`
+	// The multi cloud account's membership type in the organization
+	// Expected value is 'Organization'.
+	OrganizationMembershipType string `pulumi:"organizationMembershipType"`
+	// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
+	StacksetName *string `pulumi:"stacksetName"`
+}
+
+// The AWS organization data for the member account
+type AwsOrganizationalDataMember struct {
+	// The multi cloud account's membership type in the organization
+	// Expected value is 'Member'.
+	OrganizationMembershipType string `pulumi:"organizationMembershipType"`
+	// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
+	ParentHierarchyId *string `pulumi:"parentHierarchyId"`
+}
+
+// The AWS organization data for the member account
+type AwsOrganizationalDataMemberResponse struct {
+	// The multi cloud account's membership type in the organization
+	// Expected value is 'Member'.
+	OrganizationMembershipType string `pulumi:"organizationMembershipType"`
+	// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
+	ParentHierarchyId *string `pulumi:"parentHierarchyId"`
+}
+
+// The AzureDevOps scope connector's environment data
+type AzureDevOpsScopeEnvironmentData struct {
+	// The type of the environment data.
+	// Expected value is 'AzureDevOpsScope'.
+	EnvironmentType string `pulumi:"environmentType"`
+}
+
+// The AzureDevOps scope connector's environment data
+type AzureDevOpsScopeEnvironmentDataResponse struct {
+	// The type of the environment data.
+	// Expected value is 'AzureDevOpsScope'.
+	EnvironmentType string `pulumi:"environmentType"`
+}
+
 // Details of the Azure resource that was assessed
 type AzureResourceDetails struct {
 	// The platform where the assessed resource resides
@@ -2016,7 +2108,7 @@ type AzureResourceDetailsResponse struct {
 	Source string `pulumi:"source"`
 }
 
-// The CSPM monitoring for AWS offering configurations
+// The CSPM monitoring for AWS offering
 type CspmMonitorAwsOffering struct {
 	// The native cloud connection configuration
 	NativeCloudConnection *CspmMonitorAwsOfferingNativeCloudConnection `pulumi:"nativeCloudConnection"`
@@ -2031,7 +2123,7 @@ type CspmMonitorAwsOfferingNativeCloudConnection struct {
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The CSPM monitoring for AWS offering configurations
+// The CSPM monitoring for AWS offering
 type CspmMonitorAwsOfferingResponse struct {
 	// The offering description.
 	Description string `pulumi:"description"`
@@ -2048,12 +2140,314 @@ type CspmMonitorAwsOfferingResponseNativeCloudConnection struct {
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The Defender for Containers AWS offering configurations
+// The CSPM monitoring for AzureDevOps offering
+type CspmMonitorAzureDevOpsOffering struct {
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorAzureDevOps'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM monitoring for AzureDevOps offering
+type CspmMonitorAzureDevOpsOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorAzureDevOps'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM monitoring for GCP offering
+type CspmMonitorGcpOffering struct {
+	// The native cloud connection configuration
+	NativeCloudConnection *CspmMonitorGcpOfferingNativeCloudConnection `pulumi:"nativeCloudConnection"`
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorGcp'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The native cloud connection configuration
+type CspmMonitorGcpOfferingNativeCloudConnection struct {
+	// The service account email address in GCP for this offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for the offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The CSPM monitoring for GCP offering
+type CspmMonitorGcpOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The native cloud connection configuration
+	NativeCloudConnection *CspmMonitorGcpOfferingResponseNativeCloudConnection `pulumi:"nativeCloudConnection"`
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorGcp'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The native cloud connection configuration
+type CspmMonitorGcpOfferingResponseNativeCloudConnection struct {
+	// The service account email address in GCP for this offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for the offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The CSPM (Cloud security posture management) monitoring for gitlab offering
+type CspmMonitorGitLabOffering struct {
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorGitLab'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM (Cloud security posture management) monitoring for gitlab offering
+type CspmMonitorGitLabOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorGitLab'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM monitoring for github offering
+type CspmMonitorGithubOffering struct {
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorGithub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM monitoring for github offering
+type CspmMonitorGithubOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorGithub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM P1 for AWS offering
+type DefenderCspmAwsOffering struct {
+	// The Microsoft Defender Data Sensitivity discovery configuration
+	DataSensitivityDiscovery *DefenderCspmAwsOfferingDataSensitivityDiscovery `pulumi:"dataSensitivityDiscovery"`
+	// The databases DSPM configuration
+	DatabasesDspm *DefenderCspmAwsOfferingDatabasesDspm `pulumi:"databasesDspm"`
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmAws'.
+	OfferingType string `pulumi:"offeringType"`
+	// The Microsoft Defender for Server VM scanning configuration
+	VmScanners *DefenderCspmAwsOfferingVmScanners `pulumi:"vmScanners"`
+}
+
+// configuration for Microsoft Defender for Server VM scanning
+type DefenderCspmAwsOfferingConfiguration struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// VM tags that indicates that VM should not be scanned
+	ExclusionTags map[string]string `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode *string `pulumi:"scanningMode"`
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+type DefenderCspmAwsOfferingDataSensitivityDiscovery struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender Data Sensitivity discovery enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The databases DSPM configuration
+type DefenderCspmAwsOfferingDatabasesDspm struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is databases DSPM protection enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The CSPM P1 for AWS offering
+type DefenderCspmAwsOfferingResponse struct {
+	// The Microsoft Defender Data Sensitivity discovery configuration
+	DataSensitivityDiscovery *DefenderCspmAwsOfferingResponseDataSensitivityDiscovery `pulumi:"dataSensitivityDiscovery"`
+	// The databases DSPM configuration
+	DatabasesDspm *DefenderCspmAwsOfferingResponseDatabasesDspm `pulumi:"databasesDspm"`
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmAws'.
+	OfferingType string `pulumi:"offeringType"`
+	// The Microsoft Defender for Server VM scanning configuration
+	VmScanners *DefenderCspmAwsOfferingResponseVmScanners `pulumi:"vmScanners"`
+}
+
+// configuration for Microsoft Defender for Server VM scanning
+type DefenderCspmAwsOfferingResponseConfiguration struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// VM tags that indicates that VM should not be scanned
+	ExclusionTags map[string]string `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode *string `pulumi:"scanningMode"`
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+type DefenderCspmAwsOfferingResponseDataSensitivityDiscovery struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender Data Sensitivity discovery enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The databases DSPM configuration
+type DefenderCspmAwsOfferingResponseDatabasesDspm struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is databases DSPM protection enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for Server VM scanning configuration
+type DefenderCspmAwsOfferingResponseVmScanners struct {
+	// configuration for Microsoft Defender for Server VM scanning
+	Configuration *DefenderCspmAwsOfferingResponseConfiguration `pulumi:"configuration"`
+	// Is Microsoft Defender for Server VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for Server VM scanning configuration
+type DefenderCspmAwsOfferingVmScanners struct {
+	// configuration for Microsoft Defender for Server VM scanning
+	Configuration *DefenderCspmAwsOfferingConfiguration `pulumi:"configuration"`
+	// Is Microsoft Defender for Server VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The CSPM P1 for GCP offering
+type DefenderCspmGcpOffering struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmGcp'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM P1 for GCP offering
+type DefenderCspmGcpOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmGcp'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for Databases AWS offering
+type DefenderFoDatabasesAwsOffering struct {
+	// The ARC autoprovisioning configuration
+	ArcAutoProvisioning *DefenderFoDatabasesAwsOfferingArcAutoProvisioning `pulumi:"arcAutoProvisioning"`
+	// The databases data security posture management (DSPM) configuration
+	DatabasesDspm *DefenderFoDatabasesAwsOfferingDatabasesDspm `pulumi:"databasesDspm"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForDatabasesAws'.
+	OfferingType string `pulumi:"offeringType"`
+	// The RDS configuration
+	Rds *DefenderFoDatabasesAwsOfferingRds `pulumi:"rds"`
+}
+
+// The ARC autoprovisioning configuration
+type DefenderFoDatabasesAwsOfferingArcAutoProvisioning struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for servers Arc auto provisioning
+	Configuration *DefenderFoDatabasesAwsOfferingConfiguration `pulumi:"configuration"`
+	// Is arc auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Configuration for servers Arc auto provisioning
+type DefenderFoDatabasesAwsOfferingConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional http proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// The databases data security posture management (DSPM) configuration
+type DefenderFoDatabasesAwsOfferingDatabasesDspm struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is databases data security posture management (DSPM) protection enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The RDS configuration
+type DefenderFoDatabasesAwsOfferingRds struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is RDS protection enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Defender for Databases AWS offering
+type DefenderFoDatabasesAwsOfferingResponse struct {
+	// The ARC autoprovisioning configuration
+	ArcAutoProvisioning *DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning `pulumi:"arcAutoProvisioning"`
+	// The databases data security posture management (DSPM) configuration
+	DatabasesDspm *DefenderFoDatabasesAwsOfferingResponseDatabasesDspm `pulumi:"databasesDspm"`
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForDatabasesAws'.
+	OfferingType string `pulumi:"offeringType"`
+	// The RDS configuration
+	Rds *DefenderFoDatabasesAwsOfferingResponseRds `pulumi:"rds"`
+}
+
+// The ARC autoprovisioning configuration
+type DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for servers Arc auto provisioning
+	Configuration *DefenderFoDatabasesAwsOfferingResponseConfiguration `pulumi:"configuration"`
+	// Is arc auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Configuration for servers Arc auto provisioning
+type DefenderFoDatabasesAwsOfferingResponseConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional http proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// The databases data security posture management (DSPM) configuration
+type DefenderFoDatabasesAwsOfferingResponseDatabasesDspm struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is databases data security posture management (DSPM) protection enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The RDS configuration
+type DefenderFoDatabasesAwsOfferingResponseRds struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is RDS protection enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Defender for Containers AWS offering
 type DefenderForContainersAwsOffering struct {
+	// Is audit logs pipeline auto provisioning enabled
+	AutoProvisioning *bool `pulumi:"autoProvisioning"`
 	// The cloudwatch to kinesis connection configuration
 	CloudWatchToKinesis *DefenderForContainersAwsOfferingCloudWatchToKinesis `pulumi:"cloudWatchToKinesis"`
+	// The container vulnerability assessment configuration
+	ContainerVulnerabilityAssessment *DefenderForContainersAwsOfferingContainerVulnerabilityAssessment `pulumi:"containerVulnerabilityAssessment"`
+	// The container vulnerability assessment task configuration
+	ContainerVulnerabilityAssessmentTask *DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask `pulumi:"containerVulnerabilityAssessmentTask"`
+	// Enable container vulnerability assessment feature
+	EnableContainerVulnerabilityAssessment *bool `pulumi:"enableContainerVulnerabilityAssessment"`
 	// The kinesis to s3 connection configuration
 	KinesisToS3 *DefenderForContainersAwsOfferingKinesisToS3 `pulumi:"kinesisToS3"`
+	// The retention time in days of kube audit logs set on the CloudWatch log group
+	KubeAuditRetentionTime *float64 `pulumi:"kubeAuditRetentionTime"`
 	// The kubernetes to scuba connection configuration
 	KubernetesScubaReader *DefenderForContainersAwsOfferingKubernetesScubaReader `pulumi:"kubernetesScubaReader"`
 	// The kubernetes service connection configuration
@@ -2061,40 +2455,64 @@ type DefenderForContainersAwsOffering struct {
 	// The type of the security offering.
 	// Expected value is 'DefenderForContainersAws'.
 	OfferingType string `pulumi:"offeringType"`
+	// The externalId used by the data reader to prevent the confused deputy attack
+	ScubaExternalId *string `pulumi:"scubaExternalId"`
 }
 
 // The cloudwatch to kinesis connection configuration
 type DefenderForContainersAwsOfferingCloudWatchToKinesis struct {
+	// The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+}
+
+// The container vulnerability assessment configuration
+type DefenderForContainersAwsOfferingContainerVulnerabilityAssessment struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+}
+
+// The container vulnerability assessment task configuration
+type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask struct {
 	// The cloud role ARN in AWS for this feature
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
 // The kinesis to s3 connection configuration
 type DefenderForContainersAwsOfferingKinesisToS3 struct {
-	// The cloud role ARN in AWS for this feature
+	// The cloud role ARN in AWS used by Kinesis to transfer data into S3
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
 // The kubernetes to scuba connection configuration
 type DefenderForContainersAwsOfferingKubernetesScubaReader struct {
-	// The cloud role ARN in AWS for this feature
+	// The cloud role ARN in AWS for this feature used for reading data
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
 // The kubernetes service connection configuration
 type DefenderForContainersAwsOfferingKubernetesService struct {
-	// The cloud role ARN in AWS for this feature
+	// The cloud role ARN in AWS for this feature used for provisioning resources
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The Defender for Containers AWS offering configurations
+// The Defender for Containers AWS offering
 type DefenderForContainersAwsOfferingResponse struct {
+	// Is audit logs pipeline auto provisioning enabled
+	AutoProvisioning *bool `pulumi:"autoProvisioning"`
 	// The cloudwatch to kinesis connection configuration
 	CloudWatchToKinesis *DefenderForContainersAwsOfferingResponseCloudWatchToKinesis `pulumi:"cloudWatchToKinesis"`
+	// The container vulnerability assessment configuration
+	ContainerVulnerabilityAssessment *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment `pulumi:"containerVulnerabilityAssessment"`
+	// The container vulnerability assessment task configuration
+	ContainerVulnerabilityAssessmentTask *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask `pulumi:"containerVulnerabilityAssessmentTask"`
 	// The offering description.
 	Description string `pulumi:"description"`
+	// Enable container vulnerability assessment feature
+	EnableContainerVulnerabilityAssessment *bool `pulumi:"enableContainerVulnerabilityAssessment"`
 	// The kinesis to s3 connection configuration
 	KinesisToS3 *DefenderForContainersAwsOfferingResponseKinesisToS3 `pulumi:"kinesisToS3"`
+	// The retention time in days of kube audit logs set on the CloudWatch log group
+	KubeAuditRetentionTime *float64 `pulumi:"kubeAuditRetentionTime"`
 	// The kubernetes to scuba connection configuration
 	KubernetesScubaReader *DefenderForContainersAwsOfferingResponseKubernetesScubaReader `pulumi:"kubernetesScubaReader"`
 	// The kubernetes service connection configuration
@@ -2102,49 +2520,285 @@ type DefenderForContainersAwsOfferingResponse struct {
 	// The type of the security offering.
 	// Expected value is 'DefenderForContainersAws'.
 	OfferingType string `pulumi:"offeringType"`
+	// The externalId used by the data reader to prevent the confused deputy attack
+	ScubaExternalId *string `pulumi:"scubaExternalId"`
 }
 
 // The cloudwatch to kinesis connection configuration
 type DefenderForContainersAwsOfferingResponseCloudWatchToKinesis struct {
+	// The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+}
+
+// The container vulnerability assessment configuration
+type DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+}
+
+// The container vulnerability assessment task configuration
+type DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask struct {
 	// The cloud role ARN in AWS for this feature
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
 // The kinesis to s3 connection configuration
 type DefenderForContainersAwsOfferingResponseKinesisToS3 struct {
-	// The cloud role ARN in AWS for this feature
+	// The cloud role ARN in AWS used by Kinesis to transfer data into S3
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
 // The kubernetes to scuba connection configuration
 type DefenderForContainersAwsOfferingResponseKubernetesScubaReader struct {
-	// The cloud role ARN in AWS for this feature
+	// The cloud role ARN in AWS for this feature used for reading data
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
 // The kubernetes service connection configuration
 type DefenderForContainersAwsOfferingResponseKubernetesService struct {
-	// The cloud role ARN in AWS for this feature
+	// The cloud role ARN in AWS for this feature used for provisioning resources
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The Defender for Servers AWS offering configurations
+// The containers GCP offering
+type DefenderForContainersGcpOffering struct {
+	// Is audit logs data collection enabled
+	AuditLogsAutoProvisioningFlag *bool `pulumi:"auditLogsAutoProvisioningFlag"`
+	// The native cloud connection configuration
+	DataPipelineNativeCloudConnection *DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection `pulumi:"dataPipelineNativeCloudConnection"`
+	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+	DefenderAgentAutoProvisioningFlag *bool `pulumi:"defenderAgentAutoProvisioningFlag"`
+	// The native cloud connection configuration
+	NativeCloudConnection *DefenderForContainersGcpOfferingNativeCloudConnection `pulumi:"nativeCloudConnection"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForContainersGcp'.
+	OfferingType string `pulumi:"offeringType"`
+	// Is Policy Kubernetes agent auto provisioning enabled
+	PolicyAgentAutoProvisioningFlag *bool `pulumi:"policyAgentAutoProvisioningFlag"`
+}
+
+// The native cloud connection configuration
+type DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection struct {
+	// The data collection service account email address in GCP for this offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The data collection GCP workload identity provider id for this offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The native cloud connection configuration
+type DefenderForContainersGcpOfferingNativeCloudConnection struct {
+	// The service account email address in GCP for this offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for this offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The containers GCP offering
+type DefenderForContainersGcpOfferingResponse struct {
+	// Is audit logs data collection enabled
+	AuditLogsAutoProvisioningFlag *bool `pulumi:"auditLogsAutoProvisioningFlag"`
+	// The native cloud connection configuration
+	DataPipelineNativeCloudConnection *DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection `pulumi:"dataPipelineNativeCloudConnection"`
+	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+	DefenderAgentAutoProvisioningFlag *bool `pulumi:"defenderAgentAutoProvisioningFlag"`
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The native cloud connection configuration
+	NativeCloudConnection *DefenderForContainersGcpOfferingResponseNativeCloudConnection `pulumi:"nativeCloudConnection"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForContainersGcp'.
+	OfferingType string `pulumi:"offeringType"`
+	// Is Policy Kubernetes agent auto provisioning enabled
+	PolicyAgentAutoProvisioningFlag *bool `pulumi:"policyAgentAutoProvisioningFlag"`
+}
+
+// The native cloud connection configuration
+type DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection struct {
+	// The data collection service account email address in GCP for this offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The data collection GCP workload identity provider id for this offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The native cloud connection configuration
+type DefenderForContainersGcpOfferingResponseNativeCloudConnection struct {
+	// The service account email address in GCP for this offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for this offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Defender for Databases GCP offering configurations
+type DefenderForDatabasesGcpOffering struct {
+	// The ARC autoprovisioning configuration
+	ArcAutoProvisioning *DefenderForDatabasesGcpOfferingArcAutoProvisioning `pulumi:"arcAutoProvisioning"`
+	// The native cloud connection configuration
+	DefenderForDatabasesArcAutoProvisioning *DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning `pulumi:"defenderForDatabasesArcAutoProvisioning"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForDatabasesGcp'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The ARC autoprovisioning configuration
+type DefenderForDatabasesGcpOfferingArcAutoProvisioning struct {
+	// Configuration for servers Arc auto provisioning
+	Configuration *DefenderForDatabasesGcpOfferingConfiguration `pulumi:"configuration"`
+	// Is arc auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Configuration for servers Arc auto provisioning
+type DefenderForDatabasesGcpOfferingConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional http proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// The native cloud connection configuration
+type DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning struct {
+	// The service account email address in GCP for this offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for this offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Defender for Databases GCP offering configurations
+type DefenderForDatabasesGcpOfferingResponse struct {
+	// The ARC autoprovisioning configuration
+	ArcAutoProvisioning *DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning `pulumi:"arcAutoProvisioning"`
+	// The native cloud connection configuration
+	DefenderForDatabasesArcAutoProvisioning *DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioning `pulumi:"defenderForDatabasesArcAutoProvisioning"`
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForDatabasesGcp'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The ARC autoprovisioning configuration
+type DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning struct {
+	// Configuration for servers Arc auto provisioning
+	Configuration *DefenderForDatabasesGcpOfferingResponseConfiguration `pulumi:"configuration"`
+	// Is arc auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Configuration for servers Arc auto provisioning
+type DefenderForDatabasesGcpOfferingResponseConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional http proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// The native cloud connection configuration
+type DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioning struct {
+	// The service account email address in GCP for this offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for this offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Defender for DevOps for Azure DevOps offering
+type DefenderForDevOpsAzureDevOpsOffering struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderForDevOpsAzureDevOps'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for DevOps for Azure DevOps offering
+type DefenderForDevOpsAzureDevOpsOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForDevOpsAzureDevOps'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for DevOps for Gitlab offering
+type DefenderForDevOpsGitLabOffering struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderForDevOpsGitLab'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for DevOps for Gitlab offering
+type DefenderForDevOpsGitLabOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForDevOpsGitLab'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for DevOps for Github offering
+type DefenderForDevOpsGithubOffering struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderForDevOpsGithub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for DevOps for Github offering
+type DefenderForDevOpsGithubOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForDevOpsGithub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for Servers AWS offering
 type DefenderForServersAwsOffering struct {
 	// The ARC autoprovisioning configuration
 	ArcAutoProvisioning *DefenderForServersAwsOfferingArcAutoProvisioning `pulumi:"arcAutoProvisioning"`
 	// The Defender for servers connection configuration
 	DefenderForServers *DefenderForServersAwsOfferingDefenderForServers `pulumi:"defenderForServers"`
+	// The Microsoft Defender for Endpoint autoprovisioning configuration
+	MdeAutoProvisioning *DefenderForServersAwsOfferingMdeAutoProvisioning `pulumi:"mdeAutoProvisioning"`
 	// The type of the security offering.
 	// Expected value is 'DefenderForServersAws'.
 	OfferingType string `pulumi:"offeringType"`
+	// configuration for the servers offering subPlan
+	SubPlan *DefenderForServersAwsOfferingSubPlan `pulumi:"subPlan"`
+	// The Vulnerability Assessment autoprovisioning configuration
+	VaAutoProvisioning *DefenderForServersAwsOfferingVaAutoProvisioning `pulumi:"vaAutoProvisioning"`
+	// The Microsoft Defender for Server VM scanning configuration
+	VmScanners *DefenderForServersAwsOfferingVmScanners `pulumi:"vmScanners"`
 }
 
 // The ARC autoprovisioning configuration
 type DefenderForServersAwsOfferingArcAutoProvisioning struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for servers Arc auto provisioning
+	Configuration *DefenderForServersAwsOfferingConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
-	// Metadata of Service Principal secret for autoprovisioning
-	ServicePrincipalSecretMetadata *DefenderForServersAwsOfferingServicePrincipalSecretMetadata `pulumi:"servicePrincipalSecretMetadata"`
+}
+
+// Configuration for servers Arc auto provisioning
+type DefenderForServersAwsOfferingConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional HTTP proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// configuration for Vulnerability Assessment autoprovisioning
+type DefenderForServersAwsOfferingConfigurationConfiguration struct {
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type *string `pulumi:"type"`
+}
+
+// configuration for Microsoft Defender for Server VM scanning
+type DefenderForServersAwsOfferingConfigurationConfigurationConfiguration struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// VM tags that indicates that VM should not be scanned
+	ExclusionTags map[string]string `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode *string `pulumi:"scanningMode"`
 }
 
 // The Defender for servers connection configuration
@@ -2153,7 +2807,15 @@ type DefenderForServersAwsOfferingDefenderForServers struct {
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The Defender for Servers AWS offering configurations
+// The Microsoft Defender for Endpoint autoprovisioning configuration
+type DefenderForServersAwsOfferingMdeAutoProvisioning struct {
+	// configuration for Microsoft Defender for Endpoint autoprovisioning
+	Configuration interface{} `pulumi:"configuration"`
+	// Is Microsoft Defender for Endpoint auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Defender for Servers AWS offering
 type DefenderForServersAwsOfferingResponse struct {
 	// The ARC autoprovisioning configuration
 	ArcAutoProvisioning *DefenderForServersAwsOfferingResponseArcAutoProvisioning `pulumi:"arcAutoProvisioning"`
@@ -2161,17 +2823,51 @@ type DefenderForServersAwsOfferingResponse struct {
 	DefenderForServers *DefenderForServersAwsOfferingResponseDefenderForServers `pulumi:"defenderForServers"`
 	// The offering description.
 	Description string `pulumi:"description"`
+	// The Microsoft Defender for Endpoint autoprovisioning configuration
+	MdeAutoProvisioning *DefenderForServersAwsOfferingResponseMdeAutoProvisioning `pulumi:"mdeAutoProvisioning"`
 	// The type of the security offering.
 	// Expected value is 'DefenderForServersAws'.
 	OfferingType string `pulumi:"offeringType"`
+	// configuration for the servers offering subPlan
+	SubPlan *DefenderForServersAwsOfferingResponseSubPlan `pulumi:"subPlan"`
+	// The Vulnerability Assessment autoprovisioning configuration
+	VaAutoProvisioning *DefenderForServersAwsOfferingResponseVaAutoProvisioning `pulumi:"vaAutoProvisioning"`
+	// The Microsoft Defender for Server VM scanning configuration
+	VmScanners *DefenderForServersAwsOfferingResponseVmScanners `pulumi:"vmScanners"`
 }
 
 // The ARC autoprovisioning configuration
 type DefenderForServersAwsOfferingResponseArcAutoProvisioning struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for servers Arc auto provisioning
+	Configuration *DefenderForServersAwsOfferingResponseConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
-	// Metadata of Service Principal secret for autoprovisioning
-	ServicePrincipalSecretMetadata *DefenderForServersAwsOfferingResponseServicePrincipalSecretMetadata `pulumi:"servicePrincipalSecretMetadata"`
+}
+
+// Configuration for servers Arc auto provisioning
+type DefenderForServersAwsOfferingResponseConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional HTTP proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// configuration for Vulnerability Assessment autoprovisioning
+type DefenderForServersAwsOfferingResponseConfigurationConfiguration struct {
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type *string `pulumi:"type"`
+}
+
+// configuration for Microsoft Defender for Server VM scanning
+type DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// VM tags that indicates that VM should not be scanned
+	ExclusionTags map[string]string `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode *string `pulumi:"scanningMode"`
 }
 
 // The Defender for servers connection configuration
@@ -2180,24 +2876,232 @@ type DefenderForServersAwsOfferingResponseDefenderForServers struct {
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// Metadata of Service Principal secret for autoprovisioning
-type DefenderForServersAwsOfferingResponseServicePrincipalSecretMetadata struct {
-	// expiration date of service principal secret
-	ExpiryDate *string `pulumi:"expiryDate"`
-	// name of secret resource in parameter store
-	ParameterNameInStore *string `pulumi:"parameterNameInStore"`
-	// region of parameter store where secret is kept
-	ParameterStoreRegion *string `pulumi:"parameterStoreRegion"`
+// The Microsoft Defender for Endpoint autoprovisioning configuration
+type DefenderForServersAwsOfferingResponseMdeAutoProvisioning struct {
+	// configuration for Microsoft Defender for Endpoint autoprovisioning
+	Configuration interface{} `pulumi:"configuration"`
+	// Is Microsoft Defender for Endpoint auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
 }
 
-// Metadata of Service Principal secret for autoprovisioning
-type DefenderForServersAwsOfferingServicePrincipalSecretMetadata struct {
-	// expiration date of service principal secret
-	ExpiryDate *string `pulumi:"expiryDate"`
-	// name of secret resource in parameter store
-	ParameterNameInStore *string `pulumi:"parameterNameInStore"`
-	// region of parameter store where secret is kept
-	ParameterStoreRegion *string `pulumi:"parameterStoreRegion"`
+// configuration for the servers offering subPlan
+type DefenderForServersAwsOfferingResponseSubPlan struct {
+	// The available sub plans
+	Type *string `pulumi:"type"`
+}
+
+// The Vulnerability Assessment autoprovisioning configuration
+type DefenderForServersAwsOfferingResponseVaAutoProvisioning struct {
+	// configuration for Vulnerability Assessment autoprovisioning
+	Configuration *DefenderForServersAwsOfferingResponseConfigurationConfiguration `pulumi:"configuration"`
+	// Is Vulnerability Assessment auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for Server VM scanning configuration
+type DefenderForServersAwsOfferingResponseVmScanners struct {
+	// configuration for Microsoft Defender for Server VM scanning
+	Configuration *DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration `pulumi:"configuration"`
+	// Is Microsoft Defender for Server VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// configuration for the servers offering subPlan
+type DefenderForServersAwsOfferingSubPlan struct {
+	// The available sub plans
+	Type *string `pulumi:"type"`
+}
+
+// The Vulnerability Assessment autoprovisioning configuration
+type DefenderForServersAwsOfferingVaAutoProvisioning struct {
+	// configuration for Vulnerability Assessment autoprovisioning
+	Configuration *DefenderForServersAwsOfferingConfigurationConfiguration `pulumi:"configuration"`
+	// Is Vulnerability Assessment auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for Server VM scanning configuration
+type DefenderForServersAwsOfferingVmScanners struct {
+	// configuration for Microsoft Defender for Server VM scanning
+	Configuration *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration `pulumi:"configuration"`
+	// Is Microsoft Defender for Server VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Defender for Servers GCP offering configurations
+type DefenderForServersGcpOffering struct {
+	// The ARC autoprovisioning configuration
+	ArcAutoProvisioning *DefenderForServersGcpOfferingArcAutoProvisioning `pulumi:"arcAutoProvisioning"`
+	// The Defender for servers connection configuration
+	DefenderForServers *DefenderForServersGcpOfferingDefenderForServers `pulumi:"defenderForServers"`
+	// The Microsoft Defender for Endpoint autoprovisioning configuration
+	MdeAutoProvisioning *DefenderForServersGcpOfferingMdeAutoProvisioning `pulumi:"mdeAutoProvisioning"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForServersGcp'.
+	OfferingType string `pulumi:"offeringType"`
+	// configuration for the servers offering subPlan
+	SubPlan *DefenderForServersGcpOfferingSubPlan `pulumi:"subPlan"`
+	// The Vulnerability Assessment autoprovisioning configuration
+	VaAutoProvisioning *DefenderForServersGcpOfferingVaAutoProvisioning `pulumi:"vaAutoProvisioning"`
+	// The Microsoft Defender for Server VM scanning configuration
+	VmScanners *DefenderForServersGcpOfferingVmScanners `pulumi:"vmScanners"`
+}
+
+// The ARC autoprovisioning configuration
+type DefenderForServersGcpOfferingArcAutoProvisioning struct {
+	// Configuration for servers Arc auto provisioning
+	Configuration *DefenderForServersGcpOfferingConfiguration `pulumi:"configuration"`
+	// Is arc auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Configuration for servers Arc auto provisioning
+type DefenderForServersGcpOfferingConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional HTTP proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// configuration for Vulnerability Assessment autoprovisioning
+type DefenderForServersGcpOfferingConfigurationConfiguration struct {
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type *string `pulumi:"type"`
+}
+
+// configuration for Microsoft Defender for Server VM scanning
+type DefenderForServersGcpOfferingConfigurationConfigurationConfiguration struct {
+	// VM tags that indicate that VM should not be scanned
+	ExclusionTags map[string]string `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode *string `pulumi:"scanningMode"`
+}
+
+// The Defender for servers connection configuration
+type DefenderForServersGcpOfferingDefenderForServers struct {
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Microsoft Defender for Endpoint autoprovisioning configuration
+type DefenderForServersGcpOfferingMdeAutoProvisioning struct {
+	// configuration for Microsoft Defender for Endpoint autoprovisioning
+	Configuration interface{} `pulumi:"configuration"`
+	// Is Microsoft Defender for Endpoint auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Defender for Servers GCP offering configurations
+type DefenderForServersGcpOfferingResponse struct {
+	// The ARC autoprovisioning configuration
+	ArcAutoProvisioning *DefenderForServersGcpOfferingResponseArcAutoProvisioning `pulumi:"arcAutoProvisioning"`
+	// The Defender for servers connection configuration
+	DefenderForServers *DefenderForServersGcpOfferingResponseDefenderForServers `pulumi:"defenderForServers"`
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The Microsoft Defender for Endpoint autoprovisioning configuration
+	MdeAutoProvisioning *DefenderForServersGcpOfferingResponseMdeAutoProvisioning `pulumi:"mdeAutoProvisioning"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForServersGcp'.
+	OfferingType string `pulumi:"offeringType"`
+	// configuration for the servers offering subPlan
+	SubPlan *DefenderForServersGcpOfferingResponseSubPlan `pulumi:"subPlan"`
+	// The Vulnerability Assessment autoprovisioning configuration
+	VaAutoProvisioning *DefenderForServersGcpOfferingResponseVaAutoProvisioning `pulumi:"vaAutoProvisioning"`
+	// The Microsoft Defender for Server VM scanning configuration
+	VmScanners *DefenderForServersGcpOfferingResponseVmScanners `pulumi:"vmScanners"`
+}
+
+// The ARC autoprovisioning configuration
+type DefenderForServersGcpOfferingResponseArcAutoProvisioning struct {
+	// Configuration for servers Arc auto provisioning
+	Configuration *DefenderForServersGcpOfferingResponseConfiguration `pulumi:"configuration"`
+	// Is arc auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Configuration for servers Arc auto provisioning
+type DefenderForServersGcpOfferingResponseConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional HTTP proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// configuration for Vulnerability Assessment autoprovisioning
+type DefenderForServersGcpOfferingResponseConfigurationConfiguration struct {
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type *string `pulumi:"type"`
+}
+
+// configuration for Microsoft Defender for Server VM scanning
+type DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration struct {
+	// VM tags that indicate that VM should not be scanned
+	ExclusionTags map[string]string `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode *string `pulumi:"scanningMode"`
+}
+
+// The Defender for servers connection configuration
+type DefenderForServersGcpOfferingResponseDefenderForServers struct {
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Microsoft Defender for Endpoint autoprovisioning configuration
+type DefenderForServersGcpOfferingResponseMdeAutoProvisioning struct {
+	// configuration for Microsoft Defender for Endpoint autoprovisioning
+	Configuration interface{} `pulumi:"configuration"`
+	// Is Microsoft Defender for Endpoint auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// configuration for the servers offering subPlan
+type DefenderForServersGcpOfferingResponseSubPlan struct {
+	// The available sub plans
+	Type *string `pulumi:"type"`
+}
+
+// The Vulnerability Assessment autoprovisioning configuration
+type DefenderForServersGcpOfferingResponseVaAutoProvisioning struct {
+	// configuration for Vulnerability Assessment autoprovisioning
+	Configuration *DefenderForServersGcpOfferingResponseConfigurationConfiguration `pulumi:"configuration"`
+	// Is Vulnerability Assessment auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for Server VM scanning configuration
+type DefenderForServersGcpOfferingResponseVmScanners struct {
+	// configuration for Microsoft Defender for Server VM scanning
+	Configuration *DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration `pulumi:"configuration"`
+	// Is Microsoft Defender for Server VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// configuration for the servers offering subPlan
+type DefenderForServersGcpOfferingSubPlan struct {
+	// The available sub plans
+	Type *string `pulumi:"type"`
+}
+
+// The Vulnerability Assessment autoprovisioning configuration
+type DefenderForServersGcpOfferingVaAutoProvisioning struct {
+	// configuration for Vulnerability Assessment autoprovisioning
+	Configuration *DefenderForServersGcpOfferingConfigurationConfiguration `pulumi:"configuration"`
+	// Is Vulnerability Assessment auto provisioning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for Server VM scanning configuration
+type DefenderForServersGcpOfferingVmScanners struct {
+	// configuration for Microsoft Defender for Server VM scanning
+	Configuration *DefenderForServersGcpOfferingConfigurationConfigurationConfiguration `pulumi:"configuration"`
+	// Is Microsoft Defender for Server VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // A custom alert rule that checks if a value (depends on the custom alert type) is denied.
@@ -2464,6 +3368,1078 @@ type GcpCredentialsDetailsPropertiesResponse struct {
 	TokenUri string `pulumi:"tokenUri"`
 	// Type field of the API key (write only)
 	Type string `pulumi:"type"`
+}
+
+// The gcpOrganization data for the member account
+type GcpOrganizationalDataMember struct {
+	// The GCP management project number from organizational onboarding
+	ManagementProjectNumber *string `pulumi:"managementProjectNumber"`
+	// The multi cloud account's membership type in the organization
+	// Expected value is 'Member'.
+	OrganizationMembershipType string `pulumi:"organizationMembershipType"`
+	// If the multi cloud account is not of membership type organization, this will be the ID of the project's parent
+	ParentHierarchyId *string `pulumi:"parentHierarchyId"`
+}
+
+// The gcpOrganization data for the member account
+type GcpOrganizationalDataMemberResponse struct {
+	// The GCP management project number from organizational onboarding
+	ManagementProjectNumber *string `pulumi:"managementProjectNumber"`
+	// The multi cloud account's membership type in the organization
+	// Expected value is 'Member'.
+	OrganizationMembershipType string `pulumi:"organizationMembershipType"`
+	// If the multi cloud account is not of membership type organization, this will be the ID of the project's parent
+	ParentHierarchyId *string `pulumi:"parentHierarchyId"`
+}
+
+// The gcpOrganization data for the parent account
+type GcpOrganizationalDataOrganization struct {
+	// If the multi cloud account is of membership type organization, list of accounts excluded from offering
+	ExcludedProjectNumbers []string `pulumi:"excludedProjectNumbers"`
+	// The multi cloud account's membership type in the organization
+	// Expected value is 'Organization'.
+	OrganizationMembershipType string `pulumi:"organizationMembershipType"`
+	// The service account email address which represents the organization level permissions container.
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id which represents the permissions required to auto provision security connectors
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The gcpOrganization data for the parent account
+type GcpOrganizationalDataOrganizationResponse struct {
+	// If the multi cloud account is of membership type organization, list of accounts excluded from offering
+	ExcludedProjectNumbers []string `pulumi:"excludedProjectNumbers"`
+	// The multi cloud account's membership type in the organization
+	// Expected value is 'Organization'.
+	OrganizationMembershipType string `pulumi:"organizationMembershipType"`
+	// GCP organization name
+	OrganizationName string `pulumi:"organizationName"`
+	// The service account email address which represents the organization level permissions container.
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id which represents the permissions required to auto provision security connectors
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The details about the project represented by the security connector
+type GcpProjectDetails struct {
+	// The GCP Project id
+	ProjectId *string `pulumi:"projectId"`
+	// The unique GCP Project number
+	ProjectNumber *string `pulumi:"projectNumber"`
+}
+
+// The details about the project represented by the security connector
+type GcpProjectDetailsResponse struct {
+	// The GCP Project id
+	ProjectId *string `pulumi:"projectId"`
+	// GCP project name
+	ProjectName string `pulumi:"projectName"`
+	// The unique GCP Project number
+	ProjectNumber *string `pulumi:"projectNumber"`
+	// The GCP workload identity federation pool id
+	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
+}
+
+// The GCP project connector environment data
+type GcpProjectEnvironmentData struct {
+	// The type of the environment data.
+	// Expected value is 'GcpProject'.
+	EnvironmentType string `pulumi:"environmentType"`
+	// The Gcp project's organizational data
+	OrganizationalData interface{} `pulumi:"organizationalData"`
+	// The Gcp project's details
+	ProjectDetails *GcpProjectDetails `pulumi:"projectDetails"`
+}
+
+// The GCP project connector environment data
+type GcpProjectEnvironmentDataResponse struct {
+	// The type of the environment data.
+	// Expected value is 'GcpProject'.
+	EnvironmentType string `pulumi:"environmentType"`
+	// The Gcp project's organizational data
+	OrganizationalData interface{} `pulumi:"organizationalData"`
+	// The Gcp project's details
+	ProjectDetails *GcpProjectDetailsResponse `pulumi:"projectDetails"`
+}
+
+// The github scope connector's environment data
+type GithubScopeEnvironmentData struct {
+	// The type of the environment data.
+	// Expected value is 'GithubScope'.
+	EnvironmentType string `pulumi:"environmentType"`
+}
+
+// The github scope connector's environment data
+type GithubScopeEnvironmentDataResponse struct {
+	// The type of the environment data.
+	// Expected value is 'GithubScope'.
+	EnvironmentType string `pulumi:"environmentType"`
+}
+
+// The GitLab scope connector's environment data
+type GitlabScopeEnvironmentData struct {
+	// The type of the environment data.
+	// Expected value is 'GitlabScope'.
+	EnvironmentType string `pulumi:"environmentType"`
+}
+
+// The GitLab scope connector's environment data
+type GitlabScopeEnvironmentDataResponse struct {
+	// The type of the environment data.
+	// Expected value is 'GitlabScope'.
+	EnvironmentType string `pulumi:"environmentType"`
+}
+
+// Describe the additional data of governance assignment - optional
+type GovernanceAssignmentAdditionalData struct {
+	// Ticket link associated with this governance assignment - for example: https://snow.com
+	TicketLink *string `pulumi:"ticketLink"`
+	// Ticket number associated with this governance assignment
+	TicketNumber *int `pulumi:"ticketNumber"`
+	// The ticket status associated with this governance assignment - for example: Active
+	TicketStatus *string `pulumi:"ticketStatus"`
+}
+
+// GovernanceAssignmentAdditionalDataInput is an input type that accepts GovernanceAssignmentAdditionalDataArgs and GovernanceAssignmentAdditionalDataOutput values.
+// You can construct a concrete instance of `GovernanceAssignmentAdditionalDataInput` via:
+//
+//	GovernanceAssignmentAdditionalDataArgs{...}
+type GovernanceAssignmentAdditionalDataInput interface {
+	pulumi.Input
+
+	ToGovernanceAssignmentAdditionalDataOutput() GovernanceAssignmentAdditionalDataOutput
+	ToGovernanceAssignmentAdditionalDataOutputWithContext(context.Context) GovernanceAssignmentAdditionalDataOutput
+}
+
+// Describe the additional data of governance assignment - optional
+type GovernanceAssignmentAdditionalDataArgs struct {
+	// Ticket link associated with this governance assignment - for example: https://snow.com
+	TicketLink pulumi.StringPtrInput `pulumi:"ticketLink"`
+	// Ticket number associated with this governance assignment
+	TicketNumber pulumi.IntPtrInput `pulumi:"ticketNumber"`
+	// The ticket status associated with this governance assignment - for example: Active
+	TicketStatus pulumi.StringPtrInput `pulumi:"ticketStatus"`
+}
+
+func (GovernanceAssignmentAdditionalDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceAssignmentAdditionalData)(nil)).Elem()
+}
+
+func (i GovernanceAssignmentAdditionalDataArgs) ToGovernanceAssignmentAdditionalDataOutput() GovernanceAssignmentAdditionalDataOutput {
+	return i.ToGovernanceAssignmentAdditionalDataOutputWithContext(context.Background())
+}
+
+func (i GovernanceAssignmentAdditionalDataArgs) ToGovernanceAssignmentAdditionalDataOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceAssignmentAdditionalDataOutput)
+}
+
+func (i GovernanceAssignmentAdditionalDataArgs) ToGovernanceAssignmentAdditionalDataPtrOutput() GovernanceAssignmentAdditionalDataPtrOutput {
+	return i.ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(context.Background())
+}
+
+func (i GovernanceAssignmentAdditionalDataArgs) ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceAssignmentAdditionalDataOutput).ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(ctx)
+}
+
+// GovernanceAssignmentAdditionalDataPtrInput is an input type that accepts GovernanceAssignmentAdditionalDataArgs, GovernanceAssignmentAdditionalDataPtr and GovernanceAssignmentAdditionalDataPtrOutput values.
+// You can construct a concrete instance of `GovernanceAssignmentAdditionalDataPtrInput` via:
+//
+//	        GovernanceAssignmentAdditionalDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GovernanceAssignmentAdditionalDataPtrInput interface {
+	pulumi.Input
+
+	ToGovernanceAssignmentAdditionalDataPtrOutput() GovernanceAssignmentAdditionalDataPtrOutput
+	ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(context.Context) GovernanceAssignmentAdditionalDataPtrOutput
+}
+
+type governanceAssignmentAdditionalDataPtrType GovernanceAssignmentAdditionalDataArgs
+
+func GovernanceAssignmentAdditionalDataPtr(v *GovernanceAssignmentAdditionalDataArgs) GovernanceAssignmentAdditionalDataPtrInput {
+	return (*governanceAssignmentAdditionalDataPtrType)(v)
+}
+
+func (*governanceAssignmentAdditionalDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceAssignmentAdditionalData)(nil)).Elem()
+}
+
+func (i *governanceAssignmentAdditionalDataPtrType) ToGovernanceAssignmentAdditionalDataPtrOutput() GovernanceAssignmentAdditionalDataPtrOutput {
+	return i.ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(context.Background())
+}
+
+func (i *governanceAssignmentAdditionalDataPtrType) ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceAssignmentAdditionalDataPtrOutput)
+}
+
+// Describe the additional data of governance assignment - optional
+type GovernanceAssignmentAdditionalDataOutput struct{ *pulumi.OutputState }
+
+func (GovernanceAssignmentAdditionalDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceAssignmentAdditionalData)(nil)).Elem()
+}
+
+func (o GovernanceAssignmentAdditionalDataOutput) ToGovernanceAssignmentAdditionalDataOutput() GovernanceAssignmentAdditionalDataOutput {
+	return o
+}
+
+func (o GovernanceAssignmentAdditionalDataOutput) ToGovernanceAssignmentAdditionalDataOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataOutput {
+	return o
+}
+
+func (o GovernanceAssignmentAdditionalDataOutput) ToGovernanceAssignmentAdditionalDataPtrOutput() GovernanceAssignmentAdditionalDataPtrOutput {
+	return o.ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(context.Background())
+}
+
+func (o GovernanceAssignmentAdditionalDataOutput) ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GovernanceAssignmentAdditionalData) *GovernanceAssignmentAdditionalData {
+		return &v
+	}).(GovernanceAssignmentAdditionalDataPtrOutput)
+}
+
+// Ticket link associated with this governance assignment - for example: https://snow.com
+func (o GovernanceAssignmentAdditionalDataOutput) TicketLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GovernanceAssignmentAdditionalData) *string { return v.TicketLink }).(pulumi.StringPtrOutput)
+}
+
+// Ticket number associated with this governance assignment
+func (o GovernanceAssignmentAdditionalDataOutput) TicketNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GovernanceAssignmentAdditionalData) *int { return v.TicketNumber }).(pulumi.IntPtrOutput)
+}
+
+// The ticket status associated with this governance assignment - for example: Active
+func (o GovernanceAssignmentAdditionalDataOutput) TicketStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GovernanceAssignmentAdditionalData) *string { return v.TicketStatus }).(pulumi.StringPtrOutput)
+}
+
+type GovernanceAssignmentAdditionalDataPtrOutput struct{ *pulumi.OutputState }
+
+func (GovernanceAssignmentAdditionalDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceAssignmentAdditionalData)(nil)).Elem()
+}
+
+func (o GovernanceAssignmentAdditionalDataPtrOutput) ToGovernanceAssignmentAdditionalDataPtrOutput() GovernanceAssignmentAdditionalDataPtrOutput {
+	return o
+}
+
+func (o GovernanceAssignmentAdditionalDataPtrOutput) ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataPtrOutput {
+	return o
+}
+
+func (o GovernanceAssignmentAdditionalDataPtrOutput) Elem() GovernanceAssignmentAdditionalDataOutput {
+	return o.ApplyT(func(v *GovernanceAssignmentAdditionalData) GovernanceAssignmentAdditionalData {
+		if v != nil {
+			return *v
+		}
+		var ret GovernanceAssignmentAdditionalData
+		return ret
+	}).(GovernanceAssignmentAdditionalDataOutput)
+}
+
+// Ticket link associated with this governance assignment - for example: https://snow.com
+func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceAssignmentAdditionalData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TicketLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ticket number associated with this governance assignment
+func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GovernanceAssignmentAdditionalData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TicketNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ticket status associated with this governance assignment - for example: Active
+func (o GovernanceAssignmentAdditionalDataPtrOutput) TicketStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceAssignmentAdditionalData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TicketStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describe the additional data of governance assignment - optional
+type GovernanceAssignmentAdditionalDataResponse struct {
+	// Ticket link associated with this governance assignment - for example: https://snow.com
+	TicketLink *string `pulumi:"ticketLink"`
+	// Ticket number associated with this governance assignment
+	TicketNumber *int `pulumi:"ticketNumber"`
+	// The ticket status associated with this governance assignment - for example: Active
+	TicketStatus *string `pulumi:"ticketStatus"`
+}
+
+// Describe the additional data of governance assignment - optional
+type GovernanceAssignmentAdditionalDataResponseOutput struct{ *pulumi.OutputState }
+
+func (GovernanceAssignmentAdditionalDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceAssignmentAdditionalDataResponse)(nil)).Elem()
+}
+
+func (o GovernanceAssignmentAdditionalDataResponseOutput) ToGovernanceAssignmentAdditionalDataResponseOutput() GovernanceAssignmentAdditionalDataResponseOutput {
+	return o
+}
+
+func (o GovernanceAssignmentAdditionalDataResponseOutput) ToGovernanceAssignmentAdditionalDataResponseOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataResponseOutput {
+	return o
+}
+
+// Ticket link associated with this governance assignment - for example: https://snow.com
+func (o GovernanceAssignmentAdditionalDataResponseOutput) TicketLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GovernanceAssignmentAdditionalDataResponse) *string { return v.TicketLink }).(pulumi.StringPtrOutput)
+}
+
+// Ticket number associated with this governance assignment
+func (o GovernanceAssignmentAdditionalDataResponseOutput) TicketNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GovernanceAssignmentAdditionalDataResponse) *int { return v.TicketNumber }).(pulumi.IntPtrOutput)
+}
+
+// The ticket status associated with this governance assignment - for example: Active
+func (o GovernanceAssignmentAdditionalDataResponseOutput) TicketStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GovernanceAssignmentAdditionalDataResponse) *string { return v.TicketStatus }).(pulumi.StringPtrOutput)
+}
+
+type GovernanceAssignmentAdditionalDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GovernanceAssignmentAdditionalDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceAssignmentAdditionalDataResponse)(nil)).Elem()
+}
+
+func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) ToGovernanceAssignmentAdditionalDataResponsePtrOutput() GovernanceAssignmentAdditionalDataResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) ToGovernanceAssignmentAdditionalDataResponsePtrOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) Elem() GovernanceAssignmentAdditionalDataResponseOutput {
+	return o.ApplyT(func(v *GovernanceAssignmentAdditionalDataResponse) GovernanceAssignmentAdditionalDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GovernanceAssignmentAdditionalDataResponse
+		return ret
+	}).(GovernanceAssignmentAdditionalDataResponseOutput)
+}
+
+// Ticket link associated with this governance assignment - for example: https://snow.com
+func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) TicketLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceAssignmentAdditionalDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TicketLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ticket number associated with this governance assignment
+func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) TicketNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GovernanceAssignmentAdditionalDataResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TicketNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ticket status associated with this governance assignment - for example: Active
+func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) TicketStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceAssignmentAdditionalDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TicketStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The governance email weekly notification configuration.
+type GovernanceEmailNotification struct {
+	// Exclude manager from weekly email notification.
+	DisableManagerEmailNotification *bool `pulumi:"disableManagerEmailNotification"`
+	// Exclude  owner from weekly email notification.
+	DisableOwnerEmailNotification *bool `pulumi:"disableOwnerEmailNotification"`
+}
+
+// GovernanceEmailNotificationInput is an input type that accepts GovernanceEmailNotificationArgs and GovernanceEmailNotificationOutput values.
+// You can construct a concrete instance of `GovernanceEmailNotificationInput` via:
+//
+//	GovernanceEmailNotificationArgs{...}
+type GovernanceEmailNotificationInput interface {
+	pulumi.Input
+
+	ToGovernanceEmailNotificationOutput() GovernanceEmailNotificationOutput
+	ToGovernanceEmailNotificationOutputWithContext(context.Context) GovernanceEmailNotificationOutput
+}
+
+// The governance email weekly notification configuration.
+type GovernanceEmailNotificationArgs struct {
+	// Exclude manager from weekly email notification.
+	DisableManagerEmailNotification pulumi.BoolPtrInput `pulumi:"disableManagerEmailNotification"`
+	// Exclude  owner from weekly email notification.
+	DisableOwnerEmailNotification pulumi.BoolPtrInput `pulumi:"disableOwnerEmailNotification"`
+}
+
+func (GovernanceEmailNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceEmailNotification)(nil)).Elem()
+}
+
+func (i GovernanceEmailNotificationArgs) ToGovernanceEmailNotificationOutput() GovernanceEmailNotificationOutput {
+	return i.ToGovernanceEmailNotificationOutputWithContext(context.Background())
+}
+
+func (i GovernanceEmailNotificationArgs) ToGovernanceEmailNotificationOutputWithContext(ctx context.Context) GovernanceEmailNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceEmailNotificationOutput)
+}
+
+func (i GovernanceEmailNotificationArgs) ToGovernanceEmailNotificationPtrOutput() GovernanceEmailNotificationPtrOutput {
+	return i.ToGovernanceEmailNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i GovernanceEmailNotificationArgs) ToGovernanceEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceEmailNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceEmailNotificationOutput).ToGovernanceEmailNotificationPtrOutputWithContext(ctx)
+}
+
+// GovernanceEmailNotificationPtrInput is an input type that accepts GovernanceEmailNotificationArgs, GovernanceEmailNotificationPtr and GovernanceEmailNotificationPtrOutput values.
+// You can construct a concrete instance of `GovernanceEmailNotificationPtrInput` via:
+//
+//	        GovernanceEmailNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GovernanceEmailNotificationPtrInput interface {
+	pulumi.Input
+
+	ToGovernanceEmailNotificationPtrOutput() GovernanceEmailNotificationPtrOutput
+	ToGovernanceEmailNotificationPtrOutputWithContext(context.Context) GovernanceEmailNotificationPtrOutput
+}
+
+type governanceEmailNotificationPtrType GovernanceEmailNotificationArgs
+
+func GovernanceEmailNotificationPtr(v *GovernanceEmailNotificationArgs) GovernanceEmailNotificationPtrInput {
+	return (*governanceEmailNotificationPtrType)(v)
+}
+
+func (*governanceEmailNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceEmailNotification)(nil)).Elem()
+}
+
+func (i *governanceEmailNotificationPtrType) ToGovernanceEmailNotificationPtrOutput() GovernanceEmailNotificationPtrOutput {
+	return i.ToGovernanceEmailNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *governanceEmailNotificationPtrType) ToGovernanceEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceEmailNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceEmailNotificationPtrOutput)
+}
+
+// The governance email weekly notification configuration.
+type GovernanceEmailNotificationOutput struct{ *pulumi.OutputState }
+
+func (GovernanceEmailNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceEmailNotification)(nil)).Elem()
+}
+
+func (o GovernanceEmailNotificationOutput) ToGovernanceEmailNotificationOutput() GovernanceEmailNotificationOutput {
+	return o
+}
+
+func (o GovernanceEmailNotificationOutput) ToGovernanceEmailNotificationOutputWithContext(ctx context.Context) GovernanceEmailNotificationOutput {
+	return o
+}
+
+func (o GovernanceEmailNotificationOutput) ToGovernanceEmailNotificationPtrOutput() GovernanceEmailNotificationPtrOutput {
+	return o.ToGovernanceEmailNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o GovernanceEmailNotificationOutput) ToGovernanceEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceEmailNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GovernanceEmailNotification) *GovernanceEmailNotification {
+		return &v
+	}).(GovernanceEmailNotificationPtrOutput)
+}
+
+// Exclude manager from weekly email notification.
+func (o GovernanceEmailNotificationOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GovernanceEmailNotification) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
+}
+
+// Exclude  owner from weekly email notification.
+func (o GovernanceEmailNotificationOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GovernanceEmailNotification) *bool { return v.DisableOwnerEmailNotification }).(pulumi.BoolPtrOutput)
+}
+
+type GovernanceEmailNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (GovernanceEmailNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceEmailNotification)(nil)).Elem()
+}
+
+func (o GovernanceEmailNotificationPtrOutput) ToGovernanceEmailNotificationPtrOutput() GovernanceEmailNotificationPtrOutput {
+	return o
+}
+
+func (o GovernanceEmailNotificationPtrOutput) ToGovernanceEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceEmailNotificationPtrOutput {
+	return o
+}
+
+func (o GovernanceEmailNotificationPtrOutput) Elem() GovernanceEmailNotificationOutput {
+	return o.ApplyT(func(v *GovernanceEmailNotification) GovernanceEmailNotification {
+		if v != nil {
+			return *v
+		}
+		var ret GovernanceEmailNotification
+		return ret
+	}).(GovernanceEmailNotificationOutput)
+}
+
+// Exclude manager from weekly email notification.
+func (o GovernanceEmailNotificationPtrOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceEmailNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableManagerEmailNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Exclude  owner from weekly email notification.
+func (o GovernanceEmailNotificationPtrOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceEmailNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableOwnerEmailNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The governance email weekly notification configuration.
+type GovernanceEmailNotificationResponse struct {
+	// Exclude manager from weekly email notification.
+	DisableManagerEmailNotification *bool `pulumi:"disableManagerEmailNotification"`
+	// Exclude  owner from weekly email notification.
+	DisableOwnerEmailNotification *bool `pulumi:"disableOwnerEmailNotification"`
+}
+
+// The governance email weekly notification configuration.
+type GovernanceEmailNotificationResponseOutput struct{ *pulumi.OutputState }
+
+func (GovernanceEmailNotificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceEmailNotificationResponse)(nil)).Elem()
+}
+
+func (o GovernanceEmailNotificationResponseOutput) ToGovernanceEmailNotificationResponseOutput() GovernanceEmailNotificationResponseOutput {
+	return o
+}
+
+func (o GovernanceEmailNotificationResponseOutput) ToGovernanceEmailNotificationResponseOutputWithContext(ctx context.Context) GovernanceEmailNotificationResponseOutput {
+	return o
+}
+
+// Exclude manager from weekly email notification.
+func (o GovernanceEmailNotificationResponseOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GovernanceEmailNotificationResponse) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
+}
+
+// Exclude  owner from weekly email notification.
+func (o GovernanceEmailNotificationResponseOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GovernanceEmailNotificationResponse) *bool { return v.DisableOwnerEmailNotification }).(pulumi.BoolPtrOutput)
+}
+
+type GovernanceEmailNotificationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GovernanceEmailNotificationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceEmailNotificationResponse)(nil)).Elem()
+}
+
+func (o GovernanceEmailNotificationResponsePtrOutput) ToGovernanceEmailNotificationResponsePtrOutput() GovernanceEmailNotificationResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceEmailNotificationResponsePtrOutput) ToGovernanceEmailNotificationResponsePtrOutputWithContext(ctx context.Context) GovernanceEmailNotificationResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceEmailNotificationResponsePtrOutput) Elem() GovernanceEmailNotificationResponseOutput {
+	return o.ApplyT(func(v *GovernanceEmailNotificationResponse) GovernanceEmailNotificationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GovernanceEmailNotificationResponse
+		return ret
+	}).(GovernanceEmailNotificationResponseOutput)
+}
+
+// Exclude manager from weekly email notification.
+func (o GovernanceEmailNotificationResponsePtrOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceEmailNotificationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableManagerEmailNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Exclude  owner from weekly email notification.
+func (o GovernanceEmailNotificationResponsePtrOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceEmailNotificationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableOwnerEmailNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The governance email weekly notification configuration
+type GovernanceRuleEmailNotification struct {
+	// Defines whether manager email notifications are disabled
+	DisableManagerEmailNotification *bool `pulumi:"disableManagerEmailNotification"`
+	// Defines whether owner email notifications are disabled
+	DisableOwnerEmailNotification *bool `pulumi:"disableOwnerEmailNotification"`
+}
+
+// GovernanceRuleEmailNotificationInput is an input type that accepts GovernanceRuleEmailNotificationArgs and GovernanceRuleEmailNotificationOutput values.
+// You can construct a concrete instance of `GovernanceRuleEmailNotificationInput` via:
+//
+//	GovernanceRuleEmailNotificationArgs{...}
+type GovernanceRuleEmailNotificationInput interface {
+	pulumi.Input
+
+	ToGovernanceRuleEmailNotificationOutput() GovernanceRuleEmailNotificationOutput
+	ToGovernanceRuleEmailNotificationOutputWithContext(context.Context) GovernanceRuleEmailNotificationOutput
+}
+
+// The governance email weekly notification configuration
+type GovernanceRuleEmailNotificationArgs struct {
+	// Defines whether manager email notifications are disabled
+	DisableManagerEmailNotification pulumi.BoolPtrInput `pulumi:"disableManagerEmailNotification"`
+	// Defines whether owner email notifications are disabled
+	DisableOwnerEmailNotification pulumi.BoolPtrInput `pulumi:"disableOwnerEmailNotification"`
+}
+
+func (GovernanceRuleEmailNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceRuleEmailNotification)(nil)).Elem()
+}
+
+func (i GovernanceRuleEmailNotificationArgs) ToGovernanceRuleEmailNotificationOutput() GovernanceRuleEmailNotificationOutput {
+	return i.ToGovernanceRuleEmailNotificationOutputWithContext(context.Background())
+}
+
+func (i GovernanceRuleEmailNotificationArgs) ToGovernanceRuleEmailNotificationOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleEmailNotificationOutput)
+}
+
+func (i GovernanceRuleEmailNotificationArgs) ToGovernanceRuleEmailNotificationPtrOutput() GovernanceRuleEmailNotificationPtrOutput {
+	return i.ToGovernanceRuleEmailNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i GovernanceRuleEmailNotificationArgs) ToGovernanceRuleEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleEmailNotificationOutput).ToGovernanceRuleEmailNotificationPtrOutputWithContext(ctx)
+}
+
+// GovernanceRuleEmailNotificationPtrInput is an input type that accepts GovernanceRuleEmailNotificationArgs, GovernanceRuleEmailNotificationPtr and GovernanceRuleEmailNotificationPtrOutput values.
+// You can construct a concrete instance of `GovernanceRuleEmailNotificationPtrInput` via:
+//
+//	        GovernanceRuleEmailNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GovernanceRuleEmailNotificationPtrInput interface {
+	pulumi.Input
+
+	ToGovernanceRuleEmailNotificationPtrOutput() GovernanceRuleEmailNotificationPtrOutput
+	ToGovernanceRuleEmailNotificationPtrOutputWithContext(context.Context) GovernanceRuleEmailNotificationPtrOutput
+}
+
+type governanceRuleEmailNotificationPtrType GovernanceRuleEmailNotificationArgs
+
+func GovernanceRuleEmailNotificationPtr(v *GovernanceRuleEmailNotificationArgs) GovernanceRuleEmailNotificationPtrInput {
+	return (*governanceRuleEmailNotificationPtrType)(v)
+}
+
+func (*governanceRuleEmailNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceRuleEmailNotification)(nil)).Elem()
+}
+
+func (i *governanceRuleEmailNotificationPtrType) ToGovernanceRuleEmailNotificationPtrOutput() GovernanceRuleEmailNotificationPtrOutput {
+	return i.ToGovernanceRuleEmailNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *governanceRuleEmailNotificationPtrType) ToGovernanceRuleEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleEmailNotificationPtrOutput)
+}
+
+// The governance email weekly notification configuration
+type GovernanceRuleEmailNotificationOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleEmailNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceRuleEmailNotification)(nil)).Elem()
+}
+
+func (o GovernanceRuleEmailNotificationOutput) ToGovernanceRuleEmailNotificationOutput() GovernanceRuleEmailNotificationOutput {
+	return o
+}
+
+func (o GovernanceRuleEmailNotificationOutput) ToGovernanceRuleEmailNotificationOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationOutput {
+	return o
+}
+
+func (o GovernanceRuleEmailNotificationOutput) ToGovernanceRuleEmailNotificationPtrOutput() GovernanceRuleEmailNotificationPtrOutput {
+	return o.ToGovernanceRuleEmailNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o GovernanceRuleEmailNotificationOutput) ToGovernanceRuleEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GovernanceRuleEmailNotification) *GovernanceRuleEmailNotification {
+		return &v
+	}).(GovernanceRuleEmailNotificationPtrOutput)
+}
+
+// Defines whether manager email notifications are disabled
+func (o GovernanceRuleEmailNotificationOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GovernanceRuleEmailNotification) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether owner email notifications are disabled
+func (o GovernanceRuleEmailNotificationOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GovernanceRuleEmailNotification) *bool { return v.DisableOwnerEmailNotification }).(pulumi.BoolPtrOutput)
+}
+
+type GovernanceRuleEmailNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleEmailNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceRuleEmailNotification)(nil)).Elem()
+}
+
+func (o GovernanceRuleEmailNotificationPtrOutput) ToGovernanceRuleEmailNotificationPtrOutput() GovernanceRuleEmailNotificationPtrOutput {
+	return o
+}
+
+func (o GovernanceRuleEmailNotificationPtrOutput) ToGovernanceRuleEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationPtrOutput {
+	return o
+}
+
+func (o GovernanceRuleEmailNotificationPtrOutput) Elem() GovernanceRuleEmailNotificationOutput {
+	return o.ApplyT(func(v *GovernanceRuleEmailNotification) GovernanceRuleEmailNotification {
+		if v != nil {
+			return *v
+		}
+		var ret GovernanceRuleEmailNotification
+		return ret
+	}).(GovernanceRuleEmailNotificationOutput)
+}
+
+// Defines whether manager email notifications are disabled
+func (o GovernanceRuleEmailNotificationPtrOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleEmailNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableManagerEmailNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether owner email notifications are disabled
+func (o GovernanceRuleEmailNotificationPtrOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleEmailNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableOwnerEmailNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The governance email weekly notification configuration
+type GovernanceRuleEmailNotificationResponse struct {
+	// Defines whether manager email notifications are disabled
+	DisableManagerEmailNotification *bool `pulumi:"disableManagerEmailNotification"`
+	// Defines whether owner email notifications are disabled
+	DisableOwnerEmailNotification *bool `pulumi:"disableOwnerEmailNotification"`
+}
+
+// The governance email weekly notification configuration
+type GovernanceRuleEmailNotificationResponseOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleEmailNotificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceRuleEmailNotificationResponse)(nil)).Elem()
+}
+
+func (o GovernanceRuleEmailNotificationResponseOutput) ToGovernanceRuleEmailNotificationResponseOutput() GovernanceRuleEmailNotificationResponseOutput {
+	return o
+}
+
+func (o GovernanceRuleEmailNotificationResponseOutput) ToGovernanceRuleEmailNotificationResponseOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationResponseOutput {
+	return o
+}
+
+// Defines whether manager email notifications are disabled
+func (o GovernanceRuleEmailNotificationResponseOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GovernanceRuleEmailNotificationResponse) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether owner email notifications are disabled
+func (o GovernanceRuleEmailNotificationResponseOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GovernanceRuleEmailNotificationResponse) *bool { return v.DisableOwnerEmailNotification }).(pulumi.BoolPtrOutput)
+}
+
+type GovernanceRuleEmailNotificationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleEmailNotificationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceRuleEmailNotificationResponse)(nil)).Elem()
+}
+
+func (o GovernanceRuleEmailNotificationResponsePtrOutput) ToGovernanceRuleEmailNotificationResponsePtrOutput() GovernanceRuleEmailNotificationResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceRuleEmailNotificationResponsePtrOutput) ToGovernanceRuleEmailNotificationResponsePtrOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceRuleEmailNotificationResponsePtrOutput) Elem() GovernanceRuleEmailNotificationResponseOutput {
+	return o.ApplyT(func(v *GovernanceRuleEmailNotificationResponse) GovernanceRuleEmailNotificationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GovernanceRuleEmailNotificationResponse
+		return ret
+	}).(GovernanceRuleEmailNotificationResponseOutput)
+}
+
+// Defines whether manager email notifications are disabled
+func (o GovernanceRuleEmailNotificationResponsePtrOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleEmailNotificationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableManagerEmailNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether owner email notifications are disabled
+func (o GovernanceRuleEmailNotificationResponsePtrOutput) DisableOwnerEmailNotification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleEmailNotificationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableOwnerEmailNotification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The governance rule metadata
+type GovernanceRuleMetadataResponse struct {
+	// Governance rule Created by object id (GUID)
+	CreatedBy string `pulumi:"createdBy"`
+	// Governance rule creation date
+	CreatedOn string `pulumi:"createdOn"`
+	// Governance rule last updated by object id (GUID)
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Governance rule last update date
+	UpdatedOn string `pulumi:"updatedOn"`
+}
+
+// The governance rule metadata
+type GovernanceRuleMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceRuleMetadataResponse)(nil)).Elem()
+}
+
+func (o GovernanceRuleMetadataResponseOutput) ToGovernanceRuleMetadataResponseOutput() GovernanceRuleMetadataResponseOutput {
+	return o
+}
+
+func (o GovernanceRuleMetadataResponseOutput) ToGovernanceRuleMetadataResponseOutputWithContext(ctx context.Context) GovernanceRuleMetadataResponseOutput {
+	return o
+}
+
+// Governance rule Created by object id (GUID)
+func (o GovernanceRuleMetadataResponseOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Governance rule creation date
+func (o GovernanceRuleMetadataResponseOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Governance rule last updated by object id (GUID)
+func (o GovernanceRuleMetadataResponseOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Governance rule last update date
+func (o GovernanceRuleMetadataResponseOutput) UpdatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.UpdatedOn }).(pulumi.StringOutput)
+}
+
+type GovernanceRuleMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GovernanceRuleMetadataResponse)(nil)).Elem()
+}
+
+func (o GovernanceRuleMetadataResponsePtrOutput) ToGovernanceRuleMetadataResponsePtrOutput() GovernanceRuleMetadataResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceRuleMetadataResponsePtrOutput) ToGovernanceRuleMetadataResponsePtrOutputWithContext(ctx context.Context) GovernanceRuleMetadataResponsePtrOutput {
+	return o
+}
+
+func (o GovernanceRuleMetadataResponsePtrOutput) Elem() GovernanceRuleMetadataResponseOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) GovernanceRuleMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GovernanceRuleMetadataResponse
+		return ret
+	}).(GovernanceRuleMetadataResponseOutput)
+}
+
+// Governance rule Created by object id (GUID)
+func (o GovernanceRuleMetadataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Governance rule creation date
+func (o GovernanceRuleMetadataResponsePtrOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreatedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Governance rule last updated by object id (GUID)
+func (o GovernanceRuleMetadataResponsePtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Governance rule last update date
+func (o GovernanceRuleMetadataResponsePtrOutput) UpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GovernanceRuleMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdatedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describe the owner source of governance rule
+type GovernanceRuleOwnerSource struct {
+	// The owner type for the governance rule owner source
+	Type *string `pulumi:"type"`
+	// The source value e.g. tag key like owner name or email address
+	Value *string `pulumi:"value"`
+}
+
+// GovernanceRuleOwnerSourceInput is an input type that accepts GovernanceRuleOwnerSourceArgs and GovernanceRuleOwnerSourceOutput values.
+// You can construct a concrete instance of `GovernanceRuleOwnerSourceInput` via:
+//
+//	GovernanceRuleOwnerSourceArgs{...}
+type GovernanceRuleOwnerSourceInput interface {
+	pulumi.Input
+
+	ToGovernanceRuleOwnerSourceOutput() GovernanceRuleOwnerSourceOutput
+	ToGovernanceRuleOwnerSourceOutputWithContext(context.Context) GovernanceRuleOwnerSourceOutput
+}
+
+// Describe the owner source of governance rule
+type GovernanceRuleOwnerSourceArgs struct {
+	// The owner type for the governance rule owner source
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The source value e.g. tag key like owner name or email address
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GovernanceRuleOwnerSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceRuleOwnerSource)(nil)).Elem()
+}
+
+func (i GovernanceRuleOwnerSourceArgs) ToGovernanceRuleOwnerSourceOutput() GovernanceRuleOwnerSourceOutput {
+	return i.ToGovernanceRuleOwnerSourceOutputWithContext(context.Background())
+}
+
+func (i GovernanceRuleOwnerSourceArgs) ToGovernanceRuleOwnerSourceOutputWithContext(ctx context.Context) GovernanceRuleOwnerSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleOwnerSourceOutput)
+}
+
+// Describe the owner source of governance rule
+type GovernanceRuleOwnerSourceOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleOwnerSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceRuleOwnerSource)(nil)).Elem()
+}
+
+func (o GovernanceRuleOwnerSourceOutput) ToGovernanceRuleOwnerSourceOutput() GovernanceRuleOwnerSourceOutput {
+	return o
+}
+
+func (o GovernanceRuleOwnerSourceOutput) ToGovernanceRuleOwnerSourceOutputWithContext(ctx context.Context) GovernanceRuleOwnerSourceOutput {
+	return o
+}
+
+// The owner type for the governance rule owner source
+func (o GovernanceRuleOwnerSourceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GovernanceRuleOwnerSource) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The source value e.g. tag key like owner name or email address
+func (o GovernanceRuleOwnerSourceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GovernanceRuleOwnerSource) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Describe the owner source of governance rule
+type GovernanceRuleOwnerSourceResponse struct {
+	// The owner type for the governance rule owner source
+	Type *string `pulumi:"type"`
+	// The source value e.g. tag key like owner name or email address
+	Value *string `pulumi:"value"`
+}
+
+// Describe the owner source of governance rule
+type GovernanceRuleOwnerSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GovernanceRuleOwnerSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GovernanceRuleOwnerSourceResponse)(nil)).Elem()
+}
+
+func (o GovernanceRuleOwnerSourceResponseOutput) ToGovernanceRuleOwnerSourceResponseOutput() GovernanceRuleOwnerSourceResponseOutput {
+	return o
+}
+
+func (o GovernanceRuleOwnerSourceResponseOutput) ToGovernanceRuleOwnerSourceResponseOutputWithContext(ctx context.Context) GovernanceRuleOwnerSourceResponseOutput {
+	return o
+}
+
+// The owner type for the governance rule owner source
+func (o GovernanceRuleOwnerSourceResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GovernanceRuleOwnerSourceResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The source value e.g. tag key like owner name or email address
+func (o GovernanceRuleOwnerSourceResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GovernanceRuleOwnerSourceResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 // Settings for hybrid compute management
@@ -2829,7 +4805,101 @@ func (o HybridComputeSettingsPropertiesResponsePtrOutput) ServicePrincipal() Ser
 	}).(ServicePrincipalPropertiesResponsePtrOutput)
 }
 
-// The information protection for AWS offering configurations
+// Identity for the resource.
+type IdentityResponse struct {
+	// The principal ID of resource identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of resource.
+	TenantId string `pulumi:"tenantId"`
+	// The identity type.
+	Type *string `pulumi:"type"`
+}
+
+// Identity for the resource.
+type IdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityResponse)(nil)).Elem()
+}
+
+func (o IdentityResponseOutput) ToIdentityResponseOutput() IdentityResponseOutput {
+	return o
+}
+
+func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.Context) IdentityResponseOutput {
+	return o
+}
+
+// The principal ID of resource identity.
+func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The identity type.
+func (o IdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityResponse)(nil)).Elem()
+}
+
+func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityResponsePtrOutput {
+	return o
+}
+
+func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
+	return o
+}
+
+func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
+	return o.ApplyT(func(v *IdentityResponse) IdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityResponse
+		return ret
+	}).(IdentityResponseOutput)
+}
+
+// The principal ID of resource identity.
+func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity type.
+func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The information protection for AWS offering
 type InformationProtectionAwsOffering struct {
 	// The native cloud connection configuration
 	InformationProtection *InformationProtectionAwsOfferingInformationProtection `pulumi:"informationProtection"`
@@ -2844,7 +4914,7 @@ type InformationProtectionAwsOfferingInformationProtection struct {
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The information protection for AWS offering configurations
+// The information protection for AWS offering
 type InformationProtectionAwsOfferingResponse struct {
 	// The offering description.
 	Description string `pulumi:"description"`
@@ -5247,6 +7317,242 @@ func (o RecommendationConfigurationPropertiesResponseArrayOutput) Index(i pulumi
 	}).(RecommendationConfigurationPropertiesResponseOutput)
 }
 
+// The ETA (estimated time of arrival) for remediation
+type RemediationEta struct {
+	// ETA for remediation.
+	Eta string `pulumi:"eta"`
+	// Justification for change of Eta.
+	Justification string `pulumi:"justification"`
+}
+
+// RemediationEtaInput is an input type that accepts RemediationEtaArgs and RemediationEtaOutput values.
+// You can construct a concrete instance of `RemediationEtaInput` via:
+//
+//	RemediationEtaArgs{...}
+type RemediationEtaInput interface {
+	pulumi.Input
+
+	ToRemediationEtaOutput() RemediationEtaOutput
+	ToRemediationEtaOutputWithContext(context.Context) RemediationEtaOutput
+}
+
+// The ETA (estimated time of arrival) for remediation
+type RemediationEtaArgs struct {
+	// ETA for remediation.
+	Eta pulumi.StringInput `pulumi:"eta"`
+	// Justification for change of Eta.
+	Justification pulumi.StringInput `pulumi:"justification"`
+}
+
+func (RemediationEtaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationEta)(nil)).Elem()
+}
+
+func (i RemediationEtaArgs) ToRemediationEtaOutput() RemediationEtaOutput {
+	return i.ToRemediationEtaOutputWithContext(context.Background())
+}
+
+func (i RemediationEtaArgs) ToRemediationEtaOutputWithContext(ctx context.Context) RemediationEtaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationEtaOutput)
+}
+
+func (i RemediationEtaArgs) ToRemediationEtaPtrOutput() RemediationEtaPtrOutput {
+	return i.ToRemediationEtaPtrOutputWithContext(context.Background())
+}
+
+func (i RemediationEtaArgs) ToRemediationEtaPtrOutputWithContext(ctx context.Context) RemediationEtaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationEtaOutput).ToRemediationEtaPtrOutputWithContext(ctx)
+}
+
+// RemediationEtaPtrInput is an input type that accepts RemediationEtaArgs, RemediationEtaPtr and RemediationEtaPtrOutput values.
+// You can construct a concrete instance of `RemediationEtaPtrInput` via:
+//
+//	        RemediationEtaArgs{...}
+//
+//	or:
+//
+//	        nil
+type RemediationEtaPtrInput interface {
+	pulumi.Input
+
+	ToRemediationEtaPtrOutput() RemediationEtaPtrOutput
+	ToRemediationEtaPtrOutputWithContext(context.Context) RemediationEtaPtrOutput
+}
+
+type remediationEtaPtrType RemediationEtaArgs
+
+func RemediationEtaPtr(v *RemediationEtaArgs) RemediationEtaPtrInput {
+	return (*remediationEtaPtrType)(v)
+}
+
+func (*remediationEtaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemediationEta)(nil)).Elem()
+}
+
+func (i *remediationEtaPtrType) ToRemediationEtaPtrOutput() RemediationEtaPtrOutput {
+	return i.ToRemediationEtaPtrOutputWithContext(context.Background())
+}
+
+func (i *remediationEtaPtrType) ToRemediationEtaPtrOutputWithContext(ctx context.Context) RemediationEtaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationEtaPtrOutput)
+}
+
+// The ETA (estimated time of arrival) for remediation
+type RemediationEtaOutput struct{ *pulumi.OutputState }
+
+func (RemediationEtaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationEta)(nil)).Elem()
+}
+
+func (o RemediationEtaOutput) ToRemediationEtaOutput() RemediationEtaOutput {
+	return o
+}
+
+func (o RemediationEtaOutput) ToRemediationEtaOutputWithContext(ctx context.Context) RemediationEtaOutput {
+	return o
+}
+
+func (o RemediationEtaOutput) ToRemediationEtaPtrOutput() RemediationEtaPtrOutput {
+	return o.ToRemediationEtaPtrOutputWithContext(context.Background())
+}
+
+func (o RemediationEtaOutput) ToRemediationEtaPtrOutputWithContext(ctx context.Context) RemediationEtaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemediationEta) *RemediationEta {
+		return &v
+	}).(RemediationEtaPtrOutput)
+}
+
+// ETA for remediation.
+func (o RemediationEtaOutput) Eta() pulumi.StringOutput {
+	return o.ApplyT(func(v RemediationEta) string { return v.Eta }).(pulumi.StringOutput)
+}
+
+// Justification for change of Eta.
+func (o RemediationEtaOutput) Justification() pulumi.StringOutput {
+	return o.ApplyT(func(v RemediationEta) string { return v.Justification }).(pulumi.StringOutput)
+}
+
+type RemediationEtaPtrOutput struct{ *pulumi.OutputState }
+
+func (RemediationEtaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemediationEta)(nil)).Elem()
+}
+
+func (o RemediationEtaPtrOutput) ToRemediationEtaPtrOutput() RemediationEtaPtrOutput {
+	return o
+}
+
+func (o RemediationEtaPtrOutput) ToRemediationEtaPtrOutputWithContext(ctx context.Context) RemediationEtaPtrOutput {
+	return o
+}
+
+func (o RemediationEtaPtrOutput) Elem() RemediationEtaOutput {
+	return o.ApplyT(func(v *RemediationEta) RemediationEta {
+		if v != nil {
+			return *v
+		}
+		var ret RemediationEta
+		return ret
+	}).(RemediationEtaOutput)
+}
+
+// ETA for remediation.
+func (o RemediationEtaPtrOutput) Eta() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemediationEta) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Eta
+	}).(pulumi.StringPtrOutput)
+}
+
+// Justification for change of Eta.
+func (o RemediationEtaPtrOutput) Justification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemediationEta) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Justification
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ETA (estimated time of arrival) for remediation
+type RemediationEtaResponse struct {
+	// ETA for remediation.
+	Eta string `pulumi:"eta"`
+	// Justification for change of Eta.
+	Justification string `pulumi:"justification"`
+}
+
+// The ETA (estimated time of arrival) for remediation
+type RemediationEtaResponseOutput struct{ *pulumi.OutputState }
+
+func (RemediationEtaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationEtaResponse)(nil)).Elem()
+}
+
+func (o RemediationEtaResponseOutput) ToRemediationEtaResponseOutput() RemediationEtaResponseOutput {
+	return o
+}
+
+func (o RemediationEtaResponseOutput) ToRemediationEtaResponseOutputWithContext(ctx context.Context) RemediationEtaResponseOutput {
+	return o
+}
+
+// ETA for remediation.
+func (o RemediationEtaResponseOutput) Eta() pulumi.StringOutput {
+	return o.ApplyT(func(v RemediationEtaResponse) string { return v.Eta }).(pulumi.StringOutput)
+}
+
+// Justification for change of Eta.
+func (o RemediationEtaResponseOutput) Justification() pulumi.StringOutput {
+	return o.ApplyT(func(v RemediationEtaResponse) string { return v.Justification }).(pulumi.StringOutput)
+}
+
+type RemediationEtaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RemediationEtaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemediationEtaResponse)(nil)).Elem()
+}
+
+func (o RemediationEtaResponsePtrOutput) ToRemediationEtaResponsePtrOutput() RemediationEtaResponsePtrOutput {
+	return o
+}
+
+func (o RemediationEtaResponsePtrOutput) ToRemediationEtaResponsePtrOutputWithContext(ctx context.Context) RemediationEtaResponsePtrOutput {
+	return o
+}
+
+func (o RemediationEtaResponsePtrOutput) Elem() RemediationEtaResponseOutput {
+	return o.ApplyT(func(v *RemediationEtaResponse) RemediationEtaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RemediationEtaResponse
+		return ret
+	}).(RemediationEtaResponseOutput)
+}
+
+// ETA for remediation.
+func (o RemediationEtaResponsePtrOutput) Eta() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemediationEtaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Eta
+	}).(pulumi.StringPtrOutput)
+}
+
+// Justification for change of Eta.
+func (o RemediationEtaResponsePtrOutput) Justification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemediationEtaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Justification
+	}).(pulumi.StringPtrOutput)
+}
+
 // Rule results properties.
 type RuleResultsPropertiesResponse struct {
 	// Expected results in the baseline.
@@ -6258,6 +8564,223 @@ func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) UserImpact() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecurityAssessmentMetadataPropertiesResponsePublishDates struct {
+	GA     *string `pulumi:"gA"`
+	Public string  `pulumi:"public"`
+}
+
+// SecurityAssessmentMetadataPropertiesResponsePublishDatesInput is an input type that accepts SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs and SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput values.
+// You can construct a concrete instance of `SecurityAssessmentMetadataPropertiesResponsePublishDatesInput` via:
+//
+//	SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs{...}
+type SecurityAssessmentMetadataPropertiesResponsePublishDatesInput interface {
+	pulumi.Input
+
+	ToSecurityAssessmentMetadataPropertiesResponsePublishDatesOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput
+	ToSecurityAssessmentMetadataPropertiesResponsePublishDatesOutputWithContext(context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput
+}
+
+type SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs struct {
+	GA     pulumi.StringPtrInput `pulumi:"gA"`
+	Public pulumi.StringInput    `pulumi:"public"`
+}
+
+func (SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityAssessmentMetadataPropertiesResponsePublishDates)(nil)).Elem()
+}
+
+func (i SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput {
+	return i.ToSecurityAssessmentMetadataPropertiesResponsePublishDatesOutputWithContext(context.Background())
+}
+
+func (i SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput)
+}
+
+func (i SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
+	return i.ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput).ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(ctx)
+}
+
+// SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrInput is an input type that accepts SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs, SecurityAssessmentMetadataPropertiesResponsePublishDatesPtr and SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput values.
+// You can construct a concrete instance of `SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrInput` via:
+//
+//	        SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrInput interface {
+	pulumi.Input
+
+	ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput
+	ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput
+}
+
+type securityAssessmentMetadataPropertiesResponsePublishDatesPtrType SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs
+
+func SecurityAssessmentMetadataPropertiesResponsePublishDatesPtr(v *SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrInput {
+	return (*securityAssessmentMetadataPropertiesResponsePublishDatesPtrType)(v)
+}
+
+func (*securityAssessmentMetadataPropertiesResponsePublishDatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityAssessmentMetadataPropertiesResponsePublishDates)(nil)).Elem()
+}
+
+func (i *securityAssessmentMetadataPropertiesResponsePublishDatesPtrType) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
+	return i.ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(context.Background())
+}
+
+func (i *securityAssessmentMetadataPropertiesResponsePublishDatesPtrType) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput)
+}
+
+type SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput struct{ *pulumi.OutputState }
+
+func (SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityAssessmentMetadataPropertiesResponsePublishDates)(nil)).Elem()
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput {
+	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput {
+	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
+	return o.ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityAssessmentMetadataPropertiesResponsePublishDates) *SecurityAssessmentMetadataPropertiesResponsePublishDates {
+		return &v
+	}).(SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) GA() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityAssessmentMetadataPropertiesResponsePublishDates) *string { return v.GA }).(pulumi.StringPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) Public() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAssessmentMetadataPropertiesResponsePublishDates) string { return v.Public }).(pulumi.StringOutput)
+}
+
+type SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityAssessmentMetadataPropertiesResponsePublishDates)(nil)).Elem()
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
+	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
+	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) Elem() SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput {
+	return o.ApplyT(func(v *SecurityAssessmentMetadataPropertiesResponsePublishDates) SecurityAssessmentMetadataPropertiesResponsePublishDates {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityAssessmentMetadataPropertiesResponsePublishDates
+		return ret
+	}).(SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) GA() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityAssessmentMetadataPropertiesResponsePublishDates) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GA
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) Public() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityAssessmentMetadataPropertiesResponsePublishDates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Public
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityAssessmentMetadataPropertiesResponseResponsePublishDates struct {
+	GA     *string `pulumi:"gA"`
+	Public string  `pulumi:"public"`
+}
+
+type SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput struct{ *pulumi.OutputState }
+
+func (SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityAssessmentMetadataPropertiesResponseResponsePublishDates)(nil)).Elem()
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput) ToSecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput() SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput {
+	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput) ToSecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput {
+	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput) GA() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityAssessmentMetadataPropertiesResponseResponsePublishDates) *string { return v.GA }).(pulumi.StringPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput) Public() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAssessmentMetadataPropertiesResponseResponsePublishDates) string { return v.Public }).(pulumi.StringOutput)
+}
+
+type SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityAssessmentMetadataPropertiesResponseResponsePublishDates)(nil)).Elem()
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) ToSecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput() SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput {
+	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) ToSecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput {
+	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) Elem() SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput {
+	return o.ApplyT(func(v *SecurityAssessmentMetadataPropertiesResponseResponsePublishDates) SecurityAssessmentMetadataPropertiesResponseResponsePublishDates {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityAssessmentMetadataPropertiesResponseResponsePublishDates
+		return ret
+	}).(SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) GA() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityAssessmentMetadataPropertiesResponseResponsePublishDates) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GA
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) Public() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityAssessmentMetadataPropertiesResponseResponsePublishDates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Public
+	}).(pulumi.StringPtrOutput)
+}
+
 // Data regarding 3rd party partner integration
 type SecurityAssessmentPartnerData struct {
 	// Name of the company of the partner
@@ -6491,316 +9014,6 @@ func (o SecurityAssessmentPartnerDataResponsePtrOutput) Secret() pulumi.StringPt
 			return nil
 		}
 		return &v.Secret
-	}).(pulumi.StringPtrOutput)
-}
-
-// The multi cloud account's organizational data
-type SecurityConnectorPropertiesOrganizationalData struct {
-	// If the multi cloud account is of membership type organization, list of accounts excluded from offering
-	ExcludedAccountIds []string `pulumi:"excludedAccountIds"`
-	// The multi cloud account's membership type in the organization
-	OrganizationMembershipType *string `pulumi:"organizationMembershipType"`
-	// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-	ParentHierarchyId *string `pulumi:"parentHierarchyId"`
-	// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
-	StacksetName *string `pulumi:"stacksetName"`
-}
-
-// SecurityConnectorPropertiesOrganizationalDataInput is an input type that accepts SecurityConnectorPropertiesOrganizationalDataArgs and SecurityConnectorPropertiesOrganizationalDataOutput values.
-// You can construct a concrete instance of `SecurityConnectorPropertiesOrganizationalDataInput` via:
-//
-//	SecurityConnectorPropertiesOrganizationalDataArgs{...}
-type SecurityConnectorPropertiesOrganizationalDataInput interface {
-	pulumi.Input
-
-	ToSecurityConnectorPropertiesOrganizationalDataOutput() SecurityConnectorPropertiesOrganizationalDataOutput
-	ToSecurityConnectorPropertiesOrganizationalDataOutputWithContext(context.Context) SecurityConnectorPropertiesOrganizationalDataOutput
-}
-
-// The multi cloud account's organizational data
-type SecurityConnectorPropertiesOrganizationalDataArgs struct {
-	// If the multi cloud account is of membership type organization, list of accounts excluded from offering
-	ExcludedAccountIds pulumi.StringArrayInput `pulumi:"excludedAccountIds"`
-	// The multi cloud account's membership type in the organization
-	OrganizationMembershipType pulumi.StringPtrInput `pulumi:"organizationMembershipType"`
-	// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-	ParentHierarchyId pulumi.StringPtrInput `pulumi:"parentHierarchyId"`
-	// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
-	StacksetName pulumi.StringPtrInput `pulumi:"stacksetName"`
-}
-
-func (SecurityConnectorPropertiesOrganizationalDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityConnectorPropertiesOrganizationalData)(nil)).Elem()
-}
-
-func (i SecurityConnectorPropertiesOrganizationalDataArgs) ToSecurityConnectorPropertiesOrganizationalDataOutput() SecurityConnectorPropertiesOrganizationalDataOutput {
-	return i.ToSecurityConnectorPropertiesOrganizationalDataOutputWithContext(context.Background())
-}
-
-func (i SecurityConnectorPropertiesOrganizationalDataArgs) ToSecurityConnectorPropertiesOrganizationalDataOutputWithContext(ctx context.Context) SecurityConnectorPropertiesOrganizationalDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityConnectorPropertiesOrganizationalDataOutput)
-}
-
-func (i SecurityConnectorPropertiesOrganizationalDataArgs) ToSecurityConnectorPropertiesOrganizationalDataPtrOutput() SecurityConnectorPropertiesOrganizationalDataPtrOutput {
-	return i.ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityConnectorPropertiesOrganizationalDataArgs) ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(ctx context.Context) SecurityConnectorPropertiesOrganizationalDataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityConnectorPropertiesOrganizationalDataOutput).ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(ctx)
-}
-
-// SecurityConnectorPropertiesOrganizationalDataPtrInput is an input type that accepts SecurityConnectorPropertiesOrganizationalDataArgs, SecurityConnectorPropertiesOrganizationalDataPtr and SecurityConnectorPropertiesOrganizationalDataPtrOutput values.
-// You can construct a concrete instance of `SecurityConnectorPropertiesOrganizationalDataPtrInput` via:
-//
-//	        SecurityConnectorPropertiesOrganizationalDataArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityConnectorPropertiesOrganizationalDataPtrInput interface {
-	pulumi.Input
-
-	ToSecurityConnectorPropertiesOrganizationalDataPtrOutput() SecurityConnectorPropertiesOrganizationalDataPtrOutput
-	ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(context.Context) SecurityConnectorPropertiesOrganizationalDataPtrOutput
-}
-
-type securityConnectorPropertiesOrganizationalDataPtrType SecurityConnectorPropertiesOrganizationalDataArgs
-
-func SecurityConnectorPropertiesOrganizationalDataPtr(v *SecurityConnectorPropertiesOrganizationalDataArgs) SecurityConnectorPropertiesOrganizationalDataPtrInput {
-	return (*securityConnectorPropertiesOrganizationalDataPtrType)(v)
-}
-
-func (*securityConnectorPropertiesOrganizationalDataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityConnectorPropertiesOrganizationalData)(nil)).Elem()
-}
-
-func (i *securityConnectorPropertiesOrganizationalDataPtrType) ToSecurityConnectorPropertiesOrganizationalDataPtrOutput() SecurityConnectorPropertiesOrganizationalDataPtrOutput {
-	return i.ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(context.Background())
-}
-
-func (i *securityConnectorPropertiesOrganizationalDataPtrType) ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(ctx context.Context) SecurityConnectorPropertiesOrganizationalDataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityConnectorPropertiesOrganizationalDataPtrOutput)
-}
-
-// The multi cloud account's organizational data
-type SecurityConnectorPropertiesOrganizationalDataOutput struct{ *pulumi.OutputState }
-
-func (SecurityConnectorPropertiesOrganizationalDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityConnectorPropertiesOrganizationalData)(nil)).Elem()
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) ToSecurityConnectorPropertiesOrganizationalDataOutput() SecurityConnectorPropertiesOrganizationalDataOutput {
-	return o
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) ToSecurityConnectorPropertiesOrganizationalDataOutputWithContext(ctx context.Context) SecurityConnectorPropertiesOrganizationalDataOutput {
-	return o
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) ToSecurityConnectorPropertiesOrganizationalDataPtrOutput() SecurityConnectorPropertiesOrganizationalDataPtrOutput {
-	return o.ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(ctx context.Context) SecurityConnectorPropertiesOrganizationalDataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityConnectorPropertiesOrganizationalData) *SecurityConnectorPropertiesOrganizationalData {
-		return &v
-	}).(SecurityConnectorPropertiesOrganizationalDataPtrOutput)
-}
-
-// If the multi cloud account is of membership type organization, list of accounts excluded from offering
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) ExcludedAccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityConnectorPropertiesOrganizationalData) []string { return v.ExcludedAccountIds }).(pulumi.StringArrayOutput)
-}
-
-// The multi cloud account's membership type in the organization
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) OrganizationMembershipType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityConnectorPropertiesOrganizationalData) *string { return v.OrganizationMembershipType }).(pulumi.StringPtrOutput)
-}
-
-// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) ParentHierarchyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityConnectorPropertiesOrganizationalData) *string { return v.ParentHierarchyId }).(pulumi.StringPtrOutput)
-}
-
-// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) StacksetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityConnectorPropertiesOrganizationalData) *string { return v.StacksetName }).(pulumi.StringPtrOutput)
-}
-
-type SecurityConnectorPropertiesOrganizationalDataPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityConnectorPropertiesOrganizationalDataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityConnectorPropertiesOrganizationalData)(nil)).Elem()
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) ToSecurityConnectorPropertiesOrganizationalDataPtrOutput() SecurityConnectorPropertiesOrganizationalDataPtrOutput {
-	return o
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(ctx context.Context) SecurityConnectorPropertiesOrganizationalDataPtrOutput {
-	return o
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) Elem() SecurityConnectorPropertiesOrganizationalDataOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesOrganizationalData) SecurityConnectorPropertiesOrganizationalData {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityConnectorPropertiesOrganizationalData
-		return ret
-	}).(SecurityConnectorPropertiesOrganizationalDataOutput)
-}
-
-// If the multi cloud account is of membership type organization, list of accounts excluded from offering
-func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) ExcludedAccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesOrganizationalData) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedAccountIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// The multi cloud account's membership type in the organization
-func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) OrganizationMembershipType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesOrganizationalData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrganizationMembershipType
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) ParentHierarchyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesOrganizationalData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ParentHierarchyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
-func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) StacksetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesOrganizationalData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StacksetName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The multi cloud account's organizational data
-type SecurityConnectorPropertiesResponseOrganizationalData struct {
-	// If the multi cloud account is of membership type organization, list of accounts excluded from offering
-	ExcludedAccountIds []string `pulumi:"excludedAccountIds"`
-	// The multi cloud account's membership type in the organization
-	OrganizationMembershipType *string `pulumi:"organizationMembershipType"`
-	// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-	ParentHierarchyId *string `pulumi:"parentHierarchyId"`
-	// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
-	StacksetName *string `pulumi:"stacksetName"`
-}
-
-// The multi cloud account's organizational data
-type SecurityConnectorPropertiesResponseOrganizationalDataOutput struct{ *pulumi.OutputState }
-
-func (SecurityConnectorPropertiesResponseOrganizationalDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityConnectorPropertiesResponseOrganizationalData)(nil)).Elem()
-}
-
-func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) ToSecurityConnectorPropertiesResponseOrganizationalDataOutput() SecurityConnectorPropertiesResponseOrganizationalDataOutput {
-	return o
-}
-
-func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) ToSecurityConnectorPropertiesResponseOrganizationalDataOutputWithContext(ctx context.Context) SecurityConnectorPropertiesResponseOrganizationalDataOutput {
-	return o
-}
-
-// If the multi cloud account is of membership type organization, list of accounts excluded from offering
-func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) ExcludedAccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityConnectorPropertiesResponseOrganizationalData) []string { return v.ExcludedAccountIds }).(pulumi.StringArrayOutput)
-}
-
-// The multi cloud account's membership type in the organization
-func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) OrganizationMembershipType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityConnectorPropertiesResponseOrganizationalData) *string {
-		return v.OrganizationMembershipType
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) ParentHierarchyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityConnectorPropertiesResponseOrganizationalData) *string { return v.ParentHierarchyId }).(pulumi.StringPtrOutput)
-}
-
-// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
-func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) StacksetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityConnectorPropertiesResponseOrganizationalData) *string { return v.StacksetName }).(pulumi.StringPtrOutput)
-}
-
-type SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityConnectorPropertiesResponseOrganizationalData)(nil)).Elem()
-}
-
-func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) ToSecurityConnectorPropertiesResponseOrganizationalDataPtrOutput() SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput {
-	return o
-}
-
-func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) ToSecurityConnectorPropertiesResponseOrganizationalDataPtrOutputWithContext(ctx context.Context) SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput {
-	return o
-}
-
-func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) Elem() SecurityConnectorPropertiesResponseOrganizationalDataOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesResponseOrganizationalData) SecurityConnectorPropertiesResponseOrganizationalData {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityConnectorPropertiesResponseOrganizationalData
-		return ret
-	}).(SecurityConnectorPropertiesResponseOrganizationalDataOutput)
-}
-
-// If the multi cloud account is of membership type organization, list of accounts excluded from offering
-func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) ExcludedAccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesResponseOrganizationalData) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedAccountIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// The multi cloud account's membership type in the organization
-func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) OrganizationMembershipType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesResponseOrganizationalData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrganizationMembershipType
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) ParentHierarchyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesResponseOrganizationalData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ParentHierarchyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
-func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) StacksetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityConnectorPropertiesResponseOrganizationalData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StacksetName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8961,7 +11174,7 @@ func init() {
 	pulumi.RegisterOutputType(AllowlistCustomAlertRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(AssessmentLinksResponseOutput{})
 	pulumi.RegisterOutputType(AssessmentStatusOutput{})
-	pulumi.RegisterOutputType(AssessmentStatusResponseOutput{})
+	pulumi.RegisterOutputType(AssessmentStatusResponseResponseOutput{})
 	pulumi.RegisterOutputType(AssignedComponentItemOutput{})
 	pulumi.RegisterOutputType(AssignedComponentItemPtrOutput{})
 	pulumi.RegisterOutputType(AssignedComponentItemResponseOutput{})
@@ -8994,10 +11207,28 @@ func init() {
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleArrayOutput{})
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleResponseOutput{})
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(GovernanceAssignmentAdditionalDataOutput{})
+	pulumi.RegisterOutputType(GovernanceAssignmentAdditionalDataPtrOutput{})
+	pulumi.RegisterOutputType(GovernanceAssignmentAdditionalDataResponseOutput{})
+	pulumi.RegisterOutputType(GovernanceAssignmentAdditionalDataResponsePtrOutput{})
+	pulumi.RegisterOutputType(GovernanceEmailNotificationOutput{})
+	pulumi.RegisterOutputType(GovernanceEmailNotificationPtrOutput{})
+	pulumi.RegisterOutputType(GovernanceEmailNotificationResponseOutput{})
+	pulumi.RegisterOutputType(GovernanceEmailNotificationResponsePtrOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleEmailNotificationOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleEmailNotificationPtrOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleEmailNotificationResponseOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleEmailNotificationResponsePtrOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleOwnerSourceOutput{})
+	pulumi.RegisterOutputType(GovernanceRuleOwnerSourceResponseOutput{})
 	pulumi.RegisterOutputType(HybridComputeSettingsPropertiesOutput{})
 	pulumi.RegisterOutputType(HybridComputeSettingsPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(HybridComputeSettingsPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(HybridComputeSettingsPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityResponseOutput{})
+	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(IngestionConnectionStringResponseOutput{})
 	pulumi.RegisterOutputType(IngestionConnectionStringResponseArrayOutput{})
 	pulumi.RegisterOutputType(JitNetworkAccessPolicyVirtualMachineOutput{})
@@ -9040,6 +11271,10 @@ func init() {
 	pulumi.RegisterOutputType(RecommendationConfigurationPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(RecommendationConfigurationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RecommendationConfigurationPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(RemediationEtaOutput{})
+	pulumi.RegisterOutputType(RemediationEtaPtrOutput{})
+	pulumi.RegisterOutputType(RemediationEtaResponseOutput{})
+	pulumi.RegisterOutputType(RemediationEtaResponsePtrOutput{})
 	pulumi.RegisterOutputType(RuleResultsPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ScopeElementOutput{})
 	pulumi.RegisterOutputType(ScopeElementArrayOutput{})
@@ -9053,14 +11288,14 @@ func init() {
 	pulumi.RegisterOutputType(SecurityAssessmentMetadataPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SecurityAssessmentMetadataPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SecurityAssessmentMetadataPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput{})
+	pulumi.RegisterOutputType(SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput{})
+	pulumi.RegisterOutputType(SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput{})
+	pulumi.RegisterOutputType(SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput{})
 	pulumi.RegisterOutputType(SecurityAssessmentPartnerDataOutput{})
 	pulumi.RegisterOutputType(SecurityAssessmentPartnerDataPtrOutput{})
 	pulumi.RegisterOutputType(SecurityAssessmentPartnerDataResponseOutput{})
 	pulumi.RegisterOutputType(SecurityAssessmentPartnerDataResponsePtrOutput{})
-	pulumi.RegisterOutputType(SecurityConnectorPropertiesOrganizationalDataOutput{})
-	pulumi.RegisterOutputType(SecurityConnectorPropertiesOrganizationalDataPtrOutput{})
-	pulumi.RegisterOutputType(SecurityConnectorPropertiesResponseOrganizationalDataOutput{})
-	pulumi.RegisterOutputType(SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput{})
 	pulumi.RegisterOutputType(SecurityContactPropertiesAlertNotificationsOutput{})
 	pulumi.RegisterOutputType(SecurityContactPropertiesAlertNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityContactPropertiesNotificationsByRoleOutput{})

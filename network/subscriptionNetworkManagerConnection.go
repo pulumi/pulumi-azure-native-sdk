@@ -11,11 +11,12 @@ import (
 )
 
 // The Network Manager Connection resource
-// API Version: 2022-02-01-preview.
+// API Version: 2022-11-01.
+// Previous API Version: 2022-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SubscriptionNetworkManagerConnection struct {
 	pulumi.CustomResourceState
 
-	// A description of the scope connection.
+	// A description of the network manager connection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -58,6 +59,9 @@ func NewSubscriptionNetworkManagerConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:SubscriptionNetworkManagerConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:SubscriptionNetworkManagerConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SubscriptionNetworkManagerConnection
@@ -92,7 +96,7 @@ func (SubscriptionNetworkManagerConnectionState) ElementType() reflect.Type {
 }
 
 type subscriptionNetworkManagerConnectionArgs struct {
-	// A description of the scope connection.
+	// A description of the network manager connection.
 	Description *string `pulumi:"description"`
 	// Name for the network manager connection.
 	NetworkManagerConnectionName *string `pulumi:"networkManagerConnectionName"`
@@ -102,7 +106,7 @@ type subscriptionNetworkManagerConnectionArgs struct {
 
 // The set of arguments for constructing a SubscriptionNetworkManagerConnection resource.
 type SubscriptionNetworkManagerConnectionArgs struct {
-	// A description of the scope connection.
+	// A description of the network manager connection.
 	Description pulumi.StringPtrInput
 	// Name for the network manager connection.
 	NetworkManagerConnectionName pulumi.StringPtrInput
@@ -147,7 +151,7 @@ func (o SubscriptionNetworkManagerConnectionOutput) ToSubscriptionNetworkManager
 	return o
 }
 
-// A description of the scope connection.
+// A description of the network manager connection.
 func (o SubscriptionNetworkManagerConnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubscriptionNetworkManagerConnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

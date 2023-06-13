@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the specified storage classification mapping.
-// API Version: 2018-07-10.
+// API Version: 2023-04-01.
 func LookupReplicationStorageClassificationMapping(ctx *pulumi.Context, args *LookupReplicationStorageClassificationMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationStorageClassificationMappingResult, error) {
 	var rv LookupReplicationStorageClassificationMappingResult
 	err := ctx.Invoke("azure-native:recoveryservices:getReplicationStorageClassificationMapping", args, &rv, opts...)

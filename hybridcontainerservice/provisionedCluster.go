@@ -12,7 +12,8 @@ import (
 )
 
 // The provisionedClusters resource definition.
-// API Version: 2022-05-01-preview.
+// API Version: 2022-09-01-preview.
+// Previous API Version: 2022-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ProvisionedCluster struct {
 	pulumi.CustomResourceState
 
@@ -48,6 +49,9 @@ func NewProvisionedCluster(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:ProvisionedCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:ProvisionedCluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -90,10 +94,10 @@ type provisionedClusterArgs struct {
 	Location *string `pulumi:"location"`
 	// All properties of the provisioned cluster
 	Properties *ProvisionedClustersAllProperties `pulumi:"properties"`
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName *string `pulumi:"provisionedClustersName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ResourceName *string `pulumi:"resourceName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -107,10 +111,10 @@ type ProvisionedClusterArgs struct {
 	Location pulumi.StringPtrInput
 	// All properties of the provisioned cluster
 	Properties ProvisionedClustersAllPropertiesPtrInput
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Parameter for the name of the provisioned cluster
+	ResourceName pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }

@@ -12,7 +12,8 @@ import (
 )
 
 // Description of a namespace resource.
-// API Version: 2017-04-01.
+// API Version: 2021-11-01.
+// Previous API Version: 2017-04-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Namespace struct {
 	pulumi.CustomResourceState
 
@@ -23,12 +24,21 @@ type Namespace struct {
 	// Identifier for Azure Insights metrics.
 	MetricId pulumi.StringOutput `pulumi:"metricId"`
 	// Resource name.
-	Name              pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// List of private endpoint connections.
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	// Provisioning state of the Namespace.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// This determines if traffic is allowed over public network. By default it is enabled.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Endpoint you can use to perform Service Bus operations.
 	ServiceBusEndpoint pulumi.StringOutput `pulumi:"serviceBusEndpoint"`
 	// SKU of the namespace.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	// Status of the Namespace.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
@@ -47,10 +57,10 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.PublicNetworkAccess == nil {
+		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:relay/v20160701:Namespace"),
-		},
 		{
 			Type: pulumi.String("azure-native:relay/v20170401:Namespace"),
 		},
@@ -98,6 +108,10 @@ type namespaceArgs struct {
 	Location *string `pulumi:"location"`
 	// The namespace name
 	NamespaceName *string `pulumi:"namespaceName"`
+	// List of private endpoint connections.
+	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
+	// This determines if traffic is allowed over public network. By default it is enabled.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SKU of the namespace.
@@ -112,6 +126,10 @@ type NamespaceArgs struct {
 	Location pulumi.StringPtrInput
 	// The namespace name
 	NamespaceName pulumi.StringPtrInput
+	// List of private endpoint connections.
+	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
+	// This determines if traffic is allowed over public network. By default it is enabled.
+	PublicNetworkAccess pulumi.StringPtrInput
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// SKU of the namespace.
@@ -177,8 +195,19 @@ func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections.
+func (o NamespaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *Namespace) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Provisioning state of the Namespace.
 func (o NamespaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// This determines if traffic is allowed over public network. By default it is enabled.
+func (o NamespaceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Endpoint you can use to perform Service Bus operations.
@@ -189,6 +218,16 @@ func (o NamespaceOutput) ServiceBusEndpoint() pulumi.StringOutput {
 // SKU of the namespace.
 func (o NamespaceOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *Namespace) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+}
+
+// Status of the Namespace.
+func (o NamespaceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The system meta data relating to this resource.
+func (o NamespaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Namespace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

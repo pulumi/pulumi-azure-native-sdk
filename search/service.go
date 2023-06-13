@@ -12,10 +12,17 @@ import (
 )
 
 // Describes an Azure Cognitive Search service and its current state.
-// API Version: 2020-08-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Service struct {
 	pulumi.CustomResourceState
 
+	// Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+	AuthOptions DataPlaneAuthOptionsResponsePtrOutput `pulumi:"authOptions"`
+	// When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
+	DisableLocalAuth pulumi.BoolPtrOutput `pulumi:"disableLocalAuth"`
+	// Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
+	EncryptionWithCmk EncryptionWithCmkResponsePtrOutput `pulumi:"encryptionWithCmk"`
 	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
 	HostingMode pulumi.StringPtrOutput `pulumi:"hostingMode"`
 	// The identity of the resource.
@@ -74,15 +81,6 @@ func NewService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:search/v20150819:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:search/v20191001preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:search/v20200313:Service"),
-		},
-		{
 			Type: pulumi.String("azure-native:search/v20200801:Service"),
 		},
 		{
@@ -128,6 +126,12 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
+	// Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+	AuthOptions *DataPlaneAuthOptions `pulumi:"authOptions"`
+	// When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
+	// Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
+	EncryptionWithCmk *EncryptionWithCmk `pulumi:"encryptionWithCmk"`
 	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
 	HostingMode *HostingMode `pulumi:"hostingMode"`
 	// The identity of the resource.
@@ -154,6 +158,12 @@ type serviceArgs struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
+	// Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+	AuthOptions DataPlaneAuthOptionsPtrInput
+	// When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
+	DisableLocalAuth pulumi.BoolPtrInput
+	// Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
+	EncryptionWithCmk EncryptionWithCmkPtrInput
 	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
 	HostingMode HostingModePtrInput
 	// The identity of the resource.
@@ -213,6 +223,21 @@ func (o ServiceOutput) ToServiceOutput() ServiceOutput {
 
 func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return o
+}
+
+// Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+func (o ServiceOutput) AuthOptions() DataPlaneAuthOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *Service) DataPlaneAuthOptionsResponsePtrOutput { return v.AuthOptions }).(DataPlaneAuthOptionsResponsePtrOutput)
+}
+
+// When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
+func (o ServiceOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
+func (o ServiceOutput) EncryptionWithCmk() EncryptionWithCmkResponsePtrOutput {
+	return o.ApplyT(func(v *Service) EncryptionWithCmkResponsePtrOutput { return v.EncryptionWithCmk }).(EncryptionWithCmkResponsePtrOutput)
 }
 
 // Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.

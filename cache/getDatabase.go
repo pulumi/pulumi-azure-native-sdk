@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about a database in a RedisEnterprise cluster.
-// API Version: 2021-03-01.
+// API Version: 2023-03-01-preview.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("azure-native:cache:getDatabase", args, &rv, opts...)
@@ -38,6 +38,8 @@ type LookupDatabaseResult struct {
 	ClusteringPolicy *string `pulumi:"clusteringPolicy"`
 	// Redis eviction policy - default is VolatileLRU
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
+	// Optional set of properties to configure geo replication for this database.
+	GeoReplication *DatabasePropertiesResponseGeoReplication `pulumi:"geoReplication"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Optional set of redis modules to enable in this database - modules can only be added at creation time.
@@ -52,6 +54,8 @@ type LookupDatabaseResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Current resource status of the database
 	ResourceState string `pulumi:"resourceState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -112,6 +116,11 @@ func (o LookupDatabaseResultOutput) EvictionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.EvictionPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Optional set of properties to configure geo replication for this database.
+func (o LookupDatabaseResultOutput) GeoReplication() DatabasePropertiesResponseGeoReplicationPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) *DatabasePropertiesResponseGeoReplication { return v.GeoReplication }).(DatabasePropertiesResponseGeoReplicationPtrOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
@@ -145,6 +154,11 @@ func (o LookupDatabaseResultOutput) ProvisioningState() pulumi.StringOutput {
 // Current resource status of the database
 func (o LookupDatabaseResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ResourceState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupDatabaseResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

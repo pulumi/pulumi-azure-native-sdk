@@ -13,6 +13,7 @@ import (
 
 // Azure Data Catalog.
 // API Version: 2016-03-30.
+// Previous API Version: 2016-03-30. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ADCCatalog struct {
 	pulumi.CustomResourceState
 

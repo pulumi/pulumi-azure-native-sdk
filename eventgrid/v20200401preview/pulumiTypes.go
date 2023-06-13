@@ -854,699 +854,6 @@ func (o DeliveryWithResourceIdentityResponsePtrOutput) Identity() EventSubscript
 	}).(EventSubscriptionIdentityResponsePtrOutput)
 }
 
-// Properties of the destination of an event channel.
-type EventChannelDestination struct {
-	// Azure subscription ID of the customer creating the event channel. The partner topic
-	// associated with the event channel will be created under this Azure subscription.
-	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
-	// Name of the partner topic associated with the event channel.
-	PartnerTopicName *string `pulumi:"partnerTopicName"`
-	// Azure Resource Group of the customer creating the event channel. The partner topic
-	// associated with the event channel will be created under this resource group.
-	ResourceGroup *string `pulumi:"resourceGroup"`
-}
-
-// EventChannelDestinationInput is an input type that accepts EventChannelDestinationArgs and EventChannelDestinationOutput values.
-// You can construct a concrete instance of `EventChannelDestinationInput` via:
-//
-//	EventChannelDestinationArgs{...}
-type EventChannelDestinationInput interface {
-	pulumi.Input
-
-	ToEventChannelDestinationOutput() EventChannelDestinationOutput
-	ToEventChannelDestinationOutputWithContext(context.Context) EventChannelDestinationOutput
-}
-
-// Properties of the destination of an event channel.
-type EventChannelDestinationArgs struct {
-	// Azure subscription ID of the customer creating the event channel. The partner topic
-	// associated with the event channel will be created under this Azure subscription.
-	AzureSubscriptionId pulumi.StringPtrInput `pulumi:"azureSubscriptionId"`
-	// Name of the partner topic associated with the event channel.
-	PartnerTopicName pulumi.StringPtrInput `pulumi:"partnerTopicName"`
-	// Azure Resource Group of the customer creating the event channel. The partner topic
-	// associated with the event channel will be created under this resource group.
-	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
-}
-
-func (EventChannelDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelDestination)(nil)).Elem()
-}
-
-func (i EventChannelDestinationArgs) ToEventChannelDestinationOutput() EventChannelDestinationOutput {
-	return i.ToEventChannelDestinationOutputWithContext(context.Background())
-}
-
-func (i EventChannelDestinationArgs) ToEventChannelDestinationOutputWithContext(ctx context.Context) EventChannelDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelDestinationOutput)
-}
-
-func (i EventChannelDestinationArgs) ToEventChannelDestinationPtrOutput() EventChannelDestinationPtrOutput {
-	return i.ToEventChannelDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i EventChannelDestinationArgs) ToEventChannelDestinationPtrOutputWithContext(ctx context.Context) EventChannelDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelDestinationOutput).ToEventChannelDestinationPtrOutputWithContext(ctx)
-}
-
-// EventChannelDestinationPtrInput is an input type that accepts EventChannelDestinationArgs, EventChannelDestinationPtr and EventChannelDestinationPtrOutput values.
-// You can construct a concrete instance of `EventChannelDestinationPtrInput` via:
-//
-//	        EventChannelDestinationArgs{...}
-//
-//	or:
-//
-//	        nil
-type EventChannelDestinationPtrInput interface {
-	pulumi.Input
-
-	ToEventChannelDestinationPtrOutput() EventChannelDestinationPtrOutput
-	ToEventChannelDestinationPtrOutputWithContext(context.Context) EventChannelDestinationPtrOutput
-}
-
-type eventChannelDestinationPtrType EventChannelDestinationArgs
-
-func EventChannelDestinationPtr(v *EventChannelDestinationArgs) EventChannelDestinationPtrInput {
-	return (*eventChannelDestinationPtrType)(v)
-}
-
-func (*eventChannelDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelDestination)(nil)).Elem()
-}
-
-func (i *eventChannelDestinationPtrType) ToEventChannelDestinationPtrOutput() EventChannelDestinationPtrOutput {
-	return i.ToEventChannelDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *eventChannelDestinationPtrType) ToEventChannelDestinationPtrOutputWithContext(ctx context.Context) EventChannelDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelDestinationPtrOutput)
-}
-
-// Properties of the destination of an event channel.
-type EventChannelDestinationOutput struct{ *pulumi.OutputState }
-
-func (EventChannelDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelDestination)(nil)).Elem()
-}
-
-func (o EventChannelDestinationOutput) ToEventChannelDestinationOutput() EventChannelDestinationOutput {
-	return o
-}
-
-func (o EventChannelDestinationOutput) ToEventChannelDestinationOutputWithContext(ctx context.Context) EventChannelDestinationOutput {
-	return o
-}
-
-func (o EventChannelDestinationOutput) ToEventChannelDestinationPtrOutput() EventChannelDestinationPtrOutput {
-	return o.ToEventChannelDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o EventChannelDestinationOutput) ToEventChannelDestinationPtrOutputWithContext(ctx context.Context) EventChannelDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventChannelDestination) *EventChannelDestination {
-		return &v
-	}).(EventChannelDestinationPtrOutput)
-}
-
-// Azure subscription ID of the customer creating the event channel. The partner topic
-// associated with the event channel will be created under this Azure subscription.
-func (o EventChannelDestinationOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventChannelDestination) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the partner topic associated with the event channel.
-func (o EventChannelDestinationOutput) PartnerTopicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventChannelDestination) *string { return v.PartnerTopicName }).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Group of the customer creating the event channel. The partner topic
-// associated with the event channel will be created under this resource group.
-func (o EventChannelDestinationOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventChannelDestination) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-type EventChannelDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (EventChannelDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelDestination)(nil)).Elem()
-}
-
-func (o EventChannelDestinationPtrOutput) ToEventChannelDestinationPtrOutput() EventChannelDestinationPtrOutput {
-	return o
-}
-
-func (o EventChannelDestinationPtrOutput) ToEventChannelDestinationPtrOutputWithContext(ctx context.Context) EventChannelDestinationPtrOutput {
-	return o
-}
-
-func (o EventChannelDestinationPtrOutput) Elem() EventChannelDestinationOutput {
-	return o.ApplyT(func(v *EventChannelDestination) EventChannelDestination {
-		if v != nil {
-			return *v
-		}
-		var ret EventChannelDestination
-		return ret
-	}).(EventChannelDestinationOutput)
-}
-
-// Azure subscription ID of the customer creating the event channel. The partner topic
-// associated with the event channel will be created under this Azure subscription.
-func (o EventChannelDestinationPtrOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventChannelDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureSubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the partner topic associated with the event channel.
-func (o EventChannelDestinationPtrOutput) PartnerTopicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventChannelDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PartnerTopicName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Group of the customer creating the event channel. The partner topic
-// associated with the event channel will be created under this resource group.
-func (o EventChannelDestinationPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventChannelDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties of the destination of an event channel.
-type EventChannelDestinationResponse struct {
-	// Azure subscription ID of the customer creating the event channel. The partner topic
-	// associated with the event channel will be created under this Azure subscription.
-	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
-	// Name of the partner topic associated with the event channel.
-	PartnerTopicName *string `pulumi:"partnerTopicName"`
-	// Azure Resource Group of the customer creating the event channel. The partner topic
-	// associated with the event channel will be created under this resource group.
-	ResourceGroup *string `pulumi:"resourceGroup"`
-}
-
-// Properties of the destination of an event channel.
-type EventChannelDestinationResponseOutput struct{ *pulumi.OutputState }
-
-func (EventChannelDestinationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelDestinationResponse)(nil)).Elem()
-}
-
-func (o EventChannelDestinationResponseOutput) ToEventChannelDestinationResponseOutput() EventChannelDestinationResponseOutput {
-	return o
-}
-
-func (o EventChannelDestinationResponseOutput) ToEventChannelDestinationResponseOutputWithContext(ctx context.Context) EventChannelDestinationResponseOutput {
-	return o
-}
-
-// Azure subscription ID of the customer creating the event channel. The partner topic
-// associated with the event channel will be created under this Azure subscription.
-func (o EventChannelDestinationResponseOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventChannelDestinationResponse) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the partner topic associated with the event channel.
-func (o EventChannelDestinationResponseOutput) PartnerTopicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventChannelDestinationResponse) *string { return v.PartnerTopicName }).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Group of the customer creating the event channel. The partner topic
-// associated with the event channel will be created under this resource group.
-func (o EventChannelDestinationResponseOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventChannelDestinationResponse) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-type EventChannelDestinationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EventChannelDestinationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelDestinationResponse)(nil)).Elem()
-}
-
-func (o EventChannelDestinationResponsePtrOutput) ToEventChannelDestinationResponsePtrOutput() EventChannelDestinationResponsePtrOutput {
-	return o
-}
-
-func (o EventChannelDestinationResponsePtrOutput) ToEventChannelDestinationResponsePtrOutputWithContext(ctx context.Context) EventChannelDestinationResponsePtrOutput {
-	return o
-}
-
-func (o EventChannelDestinationResponsePtrOutput) Elem() EventChannelDestinationResponseOutput {
-	return o.ApplyT(func(v *EventChannelDestinationResponse) EventChannelDestinationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EventChannelDestinationResponse
-		return ret
-	}).(EventChannelDestinationResponseOutput)
-}
-
-// Azure subscription ID of the customer creating the event channel. The partner topic
-// associated with the event channel will be created under this Azure subscription.
-func (o EventChannelDestinationResponsePtrOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventChannelDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureSubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the partner topic associated with the event channel.
-func (o EventChannelDestinationResponsePtrOutput) PartnerTopicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventChannelDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PartnerTopicName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Group of the customer creating the event channel. The partner topic
-// associated with the event channel will be created under this resource group.
-func (o EventChannelDestinationResponsePtrOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventChannelDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Filter for the Event Channel.
-type EventChannelFilter struct {
-	// An array of advanced filters that are used for filtering event channels.
-	AdvancedFilters []interface{} `pulumi:"advancedFilters"`
-}
-
-// EventChannelFilterInput is an input type that accepts EventChannelFilterArgs and EventChannelFilterOutput values.
-// You can construct a concrete instance of `EventChannelFilterInput` via:
-//
-//	EventChannelFilterArgs{...}
-type EventChannelFilterInput interface {
-	pulumi.Input
-
-	ToEventChannelFilterOutput() EventChannelFilterOutput
-	ToEventChannelFilterOutputWithContext(context.Context) EventChannelFilterOutput
-}
-
-// Filter for the Event Channel.
-type EventChannelFilterArgs struct {
-	// An array of advanced filters that are used for filtering event channels.
-	AdvancedFilters pulumi.ArrayInput `pulumi:"advancedFilters"`
-}
-
-func (EventChannelFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelFilter)(nil)).Elem()
-}
-
-func (i EventChannelFilterArgs) ToEventChannelFilterOutput() EventChannelFilterOutput {
-	return i.ToEventChannelFilterOutputWithContext(context.Background())
-}
-
-func (i EventChannelFilterArgs) ToEventChannelFilterOutputWithContext(ctx context.Context) EventChannelFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelFilterOutput)
-}
-
-func (i EventChannelFilterArgs) ToEventChannelFilterPtrOutput() EventChannelFilterPtrOutput {
-	return i.ToEventChannelFilterPtrOutputWithContext(context.Background())
-}
-
-func (i EventChannelFilterArgs) ToEventChannelFilterPtrOutputWithContext(ctx context.Context) EventChannelFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelFilterOutput).ToEventChannelFilterPtrOutputWithContext(ctx)
-}
-
-// EventChannelFilterPtrInput is an input type that accepts EventChannelFilterArgs, EventChannelFilterPtr and EventChannelFilterPtrOutput values.
-// You can construct a concrete instance of `EventChannelFilterPtrInput` via:
-//
-//	        EventChannelFilterArgs{...}
-//
-//	or:
-//
-//	        nil
-type EventChannelFilterPtrInput interface {
-	pulumi.Input
-
-	ToEventChannelFilterPtrOutput() EventChannelFilterPtrOutput
-	ToEventChannelFilterPtrOutputWithContext(context.Context) EventChannelFilterPtrOutput
-}
-
-type eventChannelFilterPtrType EventChannelFilterArgs
-
-func EventChannelFilterPtr(v *EventChannelFilterArgs) EventChannelFilterPtrInput {
-	return (*eventChannelFilterPtrType)(v)
-}
-
-func (*eventChannelFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelFilter)(nil)).Elem()
-}
-
-func (i *eventChannelFilterPtrType) ToEventChannelFilterPtrOutput() EventChannelFilterPtrOutput {
-	return i.ToEventChannelFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *eventChannelFilterPtrType) ToEventChannelFilterPtrOutputWithContext(ctx context.Context) EventChannelFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelFilterPtrOutput)
-}
-
-// Filter for the Event Channel.
-type EventChannelFilterOutput struct{ *pulumi.OutputState }
-
-func (EventChannelFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelFilter)(nil)).Elem()
-}
-
-func (o EventChannelFilterOutput) ToEventChannelFilterOutput() EventChannelFilterOutput {
-	return o
-}
-
-func (o EventChannelFilterOutput) ToEventChannelFilterOutputWithContext(ctx context.Context) EventChannelFilterOutput {
-	return o
-}
-
-func (o EventChannelFilterOutput) ToEventChannelFilterPtrOutput() EventChannelFilterPtrOutput {
-	return o.ToEventChannelFilterPtrOutputWithContext(context.Background())
-}
-
-func (o EventChannelFilterOutput) ToEventChannelFilterPtrOutputWithContext(ctx context.Context) EventChannelFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventChannelFilter) *EventChannelFilter {
-		return &v
-	}).(EventChannelFilterPtrOutput)
-}
-
-// An array of advanced filters that are used for filtering event channels.
-func (o EventChannelFilterOutput) AdvancedFilters() pulumi.ArrayOutput {
-	return o.ApplyT(func(v EventChannelFilter) []interface{} { return v.AdvancedFilters }).(pulumi.ArrayOutput)
-}
-
-type EventChannelFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (EventChannelFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelFilter)(nil)).Elem()
-}
-
-func (o EventChannelFilterPtrOutput) ToEventChannelFilterPtrOutput() EventChannelFilterPtrOutput {
-	return o
-}
-
-func (o EventChannelFilterPtrOutput) ToEventChannelFilterPtrOutputWithContext(ctx context.Context) EventChannelFilterPtrOutput {
-	return o
-}
-
-func (o EventChannelFilterPtrOutput) Elem() EventChannelFilterOutput {
-	return o.ApplyT(func(v *EventChannelFilter) EventChannelFilter {
-		if v != nil {
-			return *v
-		}
-		var ret EventChannelFilter
-		return ret
-	}).(EventChannelFilterOutput)
-}
-
-// An array of advanced filters that are used for filtering event channels.
-func (o EventChannelFilterPtrOutput) AdvancedFilters() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *EventChannelFilter) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.AdvancedFilters
-	}).(pulumi.ArrayOutput)
-}
-
-// Filter for the Event Channel.
-type EventChannelFilterResponse struct {
-	// An array of advanced filters that are used for filtering event channels.
-	AdvancedFilters []interface{} `pulumi:"advancedFilters"`
-}
-
-// Filter for the Event Channel.
-type EventChannelFilterResponseOutput struct{ *pulumi.OutputState }
-
-func (EventChannelFilterResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelFilterResponse)(nil)).Elem()
-}
-
-func (o EventChannelFilterResponseOutput) ToEventChannelFilterResponseOutput() EventChannelFilterResponseOutput {
-	return o
-}
-
-func (o EventChannelFilterResponseOutput) ToEventChannelFilterResponseOutputWithContext(ctx context.Context) EventChannelFilterResponseOutput {
-	return o
-}
-
-// An array of advanced filters that are used for filtering event channels.
-func (o EventChannelFilterResponseOutput) AdvancedFilters() pulumi.ArrayOutput {
-	return o.ApplyT(func(v EventChannelFilterResponse) []interface{} { return v.AdvancedFilters }).(pulumi.ArrayOutput)
-}
-
-type EventChannelFilterResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EventChannelFilterResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelFilterResponse)(nil)).Elem()
-}
-
-func (o EventChannelFilterResponsePtrOutput) ToEventChannelFilterResponsePtrOutput() EventChannelFilterResponsePtrOutput {
-	return o
-}
-
-func (o EventChannelFilterResponsePtrOutput) ToEventChannelFilterResponsePtrOutputWithContext(ctx context.Context) EventChannelFilterResponsePtrOutput {
-	return o
-}
-
-func (o EventChannelFilterResponsePtrOutput) Elem() EventChannelFilterResponseOutput {
-	return o.ApplyT(func(v *EventChannelFilterResponse) EventChannelFilterResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EventChannelFilterResponse
-		return ret
-	}).(EventChannelFilterResponseOutput)
-}
-
-// An array of advanced filters that are used for filtering event channels.
-func (o EventChannelFilterResponsePtrOutput) AdvancedFilters() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *EventChannelFilterResponse) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.AdvancedFilters
-	}).(pulumi.ArrayOutput)
-}
-
-// Properties of the source of an event channel.
-type EventChannelSource struct {
-	// The identifier of the resource that's the source of the events.
-	// This represents a unique resource in the partner's resource model.
-	Source *string `pulumi:"source"`
-}
-
-// EventChannelSourceInput is an input type that accepts EventChannelSourceArgs and EventChannelSourceOutput values.
-// You can construct a concrete instance of `EventChannelSourceInput` via:
-//
-//	EventChannelSourceArgs{...}
-type EventChannelSourceInput interface {
-	pulumi.Input
-
-	ToEventChannelSourceOutput() EventChannelSourceOutput
-	ToEventChannelSourceOutputWithContext(context.Context) EventChannelSourceOutput
-}
-
-// Properties of the source of an event channel.
-type EventChannelSourceArgs struct {
-	// The identifier of the resource that's the source of the events.
-	// This represents a unique resource in the partner's resource model.
-	Source pulumi.StringPtrInput `pulumi:"source"`
-}
-
-func (EventChannelSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelSource)(nil)).Elem()
-}
-
-func (i EventChannelSourceArgs) ToEventChannelSourceOutput() EventChannelSourceOutput {
-	return i.ToEventChannelSourceOutputWithContext(context.Background())
-}
-
-func (i EventChannelSourceArgs) ToEventChannelSourceOutputWithContext(ctx context.Context) EventChannelSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelSourceOutput)
-}
-
-func (i EventChannelSourceArgs) ToEventChannelSourcePtrOutput() EventChannelSourcePtrOutput {
-	return i.ToEventChannelSourcePtrOutputWithContext(context.Background())
-}
-
-func (i EventChannelSourceArgs) ToEventChannelSourcePtrOutputWithContext(ctx context.Context) EventChannelSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelSourceOutput).ToEventChannelSourcePtrOutputWithContext(ctx)
-}
-
-// EventChannelSourcePtrInput is an input type that accepts EventChannelSourceArgs, EventChannelSourcePtr and EventChannelSourcePtrOutput values.
-// You can construct a concrete instance of `EventChannelSourcePtrInput` via:
-//
-//	        EventChannelSourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type EventChannelSourcePtrInput interface {
-	pulumi.Input
-
-	ToEventChannelSourcePtrOutput() EventChannelSourcePtrOutput
-	ToEventChannelSourcePtrOutputWithContext(context.Context) EventChannelSourcePtrOutput
-}
-
-type eventChannelSourcePtrType EventChannelSourceArgs
-
-func EventChannelSourcePtr(v *EventChannelSourceArgs) EventChannelSourcePtrInput {
-	return (*eventChannelSourcePtrType)(v)
-}
-
-func (*eventChannelSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelSource)(nil)).Elem()
-}
-
-func (i *eventChannelSourcePtrType) ToEventChannelSourcePtrOutput() EventChannelSourcePtrOutput {
-	return i.ToEventChannelSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *eventChannelSourcePtrType) ToEventChannelSourcePtrOutputWithContext(ctx context.Context) EventChannelSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventChannelSourcePtrOutput)
-}
-
-// Properties of the source of an event channel.
-type EventChannelSourceOutput struct{ *pulumi.OutputState }
-
-func (EventChannelSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelSource)(nil)).Elem()
-}
-
-func (o EventChannelSourceOutput) ToEventChannelSourceOutput() EventChannelSourceOutput {
-	return o
-}
-
-func (o EventChannelSourceOutput) ToEventChannelSourceOutputWithContext(ctx context.Context) EventChannelSourceOutput {
-	return o
-}
-
-func (o EventChannelSourceOutput) ToEventChannelSourcePtrOutput() EventChannelSourcePtrOutput {
-	return o.ToEventChannelSourcePtrOutputWithContext(context.Background())
-}
-
-func (o EventChannelSourceOutput) ToEventChannelSourcePtrOutputWithContext(ctx context.Context) EventChannelSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventChannelSource) *EventChannelSource {
-		return &v
-	}).(EventChannelSourcePtrOutput)
-}
-
-// The identifier of the resource that's the source of the events.
-// This represents a unique resource in the partner's resource model.
-func (o EventChannelSourceOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventChannelSource) *string { return v.Source }).(pulumi.StringPtrOutput)
-}
-
-type EventChannelSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (EventChannelSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelSource)(nil)).Elem()
-}
-
-func (o EventChannelSourcePtrOutput) ToEventChannelSourcePtrOutput() EventChannelSourcePtrOutput {
-	return o
-}
-
-func (o EventChannelSourcePtrOutput) ToEventChannelSourcePtrOutputWithContext(ctx context.Context) EventChannelSourcePtrOutput {
-	return o
-}
-
-func (o EventChannelSourcePtrOutput) Elem() EventChannelSourceOutput {
-	return o.ApplyT(func(v *EventChannelSource) EventChannelSource {
-		if v != nil {
-			return *v
-		}
-		var ret EventChannelSource
-		return ret
-	}).(EventChannelSourceOutput)
-}
-
-// The identifier of the resource that's the source of the events.
-// This represents a unique resource in the partner's resource model.
-func (o EventChannelSourcePtrOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventChannelSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Source
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties of the source of an event channel.
-type EventChannelSourceResponse struct {
-	// The identifier of the resource that's the source of the events.
-	// This represents a unique resource in the partner's resource model.
-	Source *string `pulumi:"source"`
-}
-
-// Properties of the source of an event channel.
-type EventChannelSourceResponseOutput struct{ *pulumi.OutputState }
-
-func (EventChannelSourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventChannelSourceResponse)(nil)).Elem()
-}
-
-func (o EventChannelSourceResponseOutput) ToEventChannelSourceResponseOutput() EventChannelSourceResponseOutput {
-	return o
-}
-
-func (o EventChannelSourceResponseOutput) ToEventChannelSourceResponseOutputWithContext(ctx context.Context) EventChannelSourceResponseOutput {
-	return o
-}
-
-// The identifier of the resource that's the source of the events.
-// This represents a unique resource in the partner's resource model.
-func (o EventChannelSourceResponseOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventChannelSourceResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
-}
-
-type EventChannelSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EventChannelSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EventChannelSourceResponse)(nil)).Elem()
-}
-
-func (o EventChannelSourceResponsePtrOutput) ToEventChannelSourceResponsePtrOutput() EventChannelSourceResponsePtrOutput {
-	return o
-}
-
-func (o EventChannelSourceResponsePtrOutput) ToEventChannelSourceResponsePtrOutputWithContext(ctx context.Context) EventChannelSourceResponsePtrOutput {
-	return o
-}
-
-func (o EventChannelSourceResponsePtrOutput) Elem() EventChannelSourceResponseOutput {
-	return o.ApplyT(func(v *EventChannelSourceResponse) EventChannelSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EventChannelSourceResponse
-		return ret
-	}).(EventChannelSourceResponseOutput)
-}
-
-// The identifier of the resource that's the source of the events.
-// This represents a unique resource in the partner's resource model.
-func (o EventChannelSourceResponsePtrOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventChannelSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Source
-	}).(pulumi.StringPtrOutput)
-}
-
 // Information about the event hub destination for an event subscription.
 type EventHubEventSubscriptionDestination struct {
 	// Type of the endpoint for the event subscription destination.
@@ -3855,7 +3162,7 @@ func (o PrivateEndpointPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type PrivateEndpointConnectionType struct {
+type PrivateEndpointConnection struct {
 	// GroupIds from the private link service resource.
 	GroupIds []string `pulumi:"groupIds"`
 	// The Private Endpoint resource for this Connection.
@@ -3866,18 +3173,18 @@ type PrivateEndpointConnectionType struct {
 	ProvisioningState *string `pulumi:"provisioningState"`
 }
 
-// PrivateEndpointConnectionTypeInput is an input type that accepts PrivateEndpointConnectionTypeArgs and PrivateEndpointConnectionTypeOutput values.
-// You can construct a concrete instance of `PrivateEndpointConnectionTypeInput` via:
+// PrivateEndpointConnectionInput is an input type that accepts PrivateEndpointConnectionArgs and PrivateEndpointConnectionOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionInput` via:
 //
-//	PrivateEndpointConnectionTypeArgs{...}
-type PrivateEndpointConnectionTypeInput interface {
+//	PrivateEndpointConnectionArgs{...}
+type PrivateEndpointConnectionInput interface {
 	pulumi.Input
 
-	ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput
-	ToPrivateEndpointConnectionTypeOutputWithContext(context.Context) PrivateEndpointConnectionTypeOutput
+	ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput
+	ToPrivateEndpointConnectionOutputWithContext(context.Context) PrivateEndpointConnectionOutput
 }
 
-type PrivateEndpointConnectionTypeArgs struct {
+type PrivateEndpointConnectionArgs struct {
 	// GroupIds from the private link service resource.
 	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
 	// The Private Endpoint resource for this Connection.
@@ -3888,95 +3195,95 @@ type PrivateEndpointConnectionTypeArgs struct {
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 }
 
-func (PrivateEndpointConnectionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionType)(nil)).Elem()
+func (PrivateEndpointConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnection)(nil)).Elem()
 }
 
-func (i PrivateEndpointConnectionTypeArgs) ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput {
-	return i.ToPrivateEndpointConnectionTypeOutputWithContext(context.Background())
+func (i PrivateEndpointConnectionArgs) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {
+	return i.ToPrivateEndpointConnectionOutputWithContext(context.Background())
 }
 
-func (i PrivateEndpointConnectionTypeArgs) ToPrivateEndpointConnectionTypeOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeOutput)
+func (i PrivateEndpointConnectionArgs) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionOutput)
 }
 
-// PrivateEndpointConnectionTypeArrayInput is an input type that accepts PrivateEndpointConnectionTypeArray and PrivateEndpointConnectionTypeArrayOutput values.
-// You can construct a concrete instance of `PrivateEndpointConnectionTypeArrayInput` via:
+// PrivateEndpointConnectionArrayInput is an input type that accepts PrivateEndpointConnectionArray and PrivateEndpointConnectionArrayOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionArrayInput` via:
 //
-//	PrivateEndpointConnectionTypeArray{ PrivateEndpointConnectionTypeArgs{...} }
-type PrivateEndpointConnectionTypeArrayInput interface {
+//	PrivateEndpointConnectionArray{ PrivateEndpointConnectionArgs{...} }
+type PrivateEndpointConnectionArrayInput interface {
 	pulumi.Input
 
-	ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput
-	ToPrivateEndpointConnectionTypeArrayOutputWithContext(context.Context) PrivateEndpointConnectionTypeArrayOutput
+	ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput
+	ToPrivateEndpointConnectionArrayOutputWithContext(context.Context) PrivateEndpointConnectionArrayOutput
 }
 
-type PrivateEndpointConnectionTypeArray []PrivateEndpointConnectionTypeInput
+type PrivateEndpointConnectionArray []PrivateEndpointConnectionInput
 
-func (PrivateEndpointConnectionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionType)(nil)).Elem()
+func (PrivateEndpointConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnection)(nil)).Elem()
 }
 
-func (i PrivateEndpointConnectionTypeArray) ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput {
-	return i.ToPrivateEndpointConnectionTypeArrayOutputWithContext(context.Background())
+func (i PrivateEndpointConnectionArray) ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput {
+	return i.ToPrivateEndpointConnectionArrayOutputWithContext(context.Background())
 }
 
-func (i PrivateEndpointConnectionTypeArray) ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeArrayOutput)
+func (i PrivateEndpointConnectionArray) ToPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionArrayOutput)
 }
 
-type PrivateEndpointConnectionTypeOutput struct{ *pulumi.OutputState }
+type PrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
-func (PrivateEndpointConnectionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionType)(nil)).Elem()
+func (PrivateEndpointConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnection)(nil)).Elem()
 }
 
-func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput {
+func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {
 	return o
 }
 
-func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeOutput {
+func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
 }
 
 // GroupIds from the private link service resource.
-func (o PrivateEndpointConnectionTypeOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionType) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+func (o PrivateEndpointConnectionOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnection) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
 // The Private Endpoint resource for this Connection.
-func (o PrivateEndpointConnectionTypeOutput) PrivateEndpoint() PrivateEndpointPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionType) *PrivateEndpoint { return v.PrivateEndpoint }).(PrivateEndpointPtrOutput)
+func (o PrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnection) *PrivateEndpoint { return v.PrivateEndpoint }).(PrivateEndpointPtrOutput)
 }
 
 // Details about the state of the connection.
-func (o PrivateEndpointConnectionTypeOutput) PrivateLinkServiceConnectionState() ConnectionStatePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionType) *ConnectionState { return v.PrivateLinkServiceConnectionState }).(ConnectionStatePtrOutput)
+func (o PrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() ConnectionStatePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnection) *ConnectionState { return v.PrivateLinkServiceConnectionState }).(ConnectionStatePtrOutput)
 }
 
 // Provisioning state of the Private Endpoint Connection.
-func (o PrivateEndpointConnectionTypeOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionType) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o PrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnection) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-type PrivateEndpointConnectionTypeArrayOutput struct{ *pulumi.OutputState }
+type PrivateEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
 
-func (PrivateEndpointConnectionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionType)(nil)).Elem()
+func (PrivateEndpointConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnection)(nil)).Elem()
 }
 
-func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput {
+func (o PrivateEndpointConnectionArrayOutput) ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput {
 	return o
 }
 
-func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeArrayOutput {
+func (o PrivateEndpointConnectionArrayOutput) ToPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionArrayOutput {
 	return o
 }
 
-func (o PrivateEndpointConnectionTypeArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionType {
-		return vs[0].([]PrivateEndpointConnectionType)[vs[1].(int)]
-	}).(PrivateEndpointConnectionTypeOutput)
+func (o PrivateEndpointConnectionArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnection {
+		return vs[0].([]PrivateEndpointConnection)[vs[1].(int)]
+	}).(PrivateEndpointConnectionOutput)
 }
 
 type PrivateEndpointConnectionResponse struct {
@@ -5315,18 +4622,6 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(EventChannelDestinationOutput{})
-	pulumi.RegisterOutputType(EventChannelDestinationPtrOutput{})
-	pulumi.RegisterOutputType(EventChannelDestinationResponseOutput{})
-	pulumi.RegisterOutputType(EventChannelDestinationResponsePtrOutput{})
-	pulumi.RegisterOutputType(EventChannelFilterOutput{})
-	pulumi.RegisterOutputType(EventChannelFilterPtrOutput{})
-	pulumi.RegisterOutputType(EventChannelFilterResponseOutput{})
-	pulumi.RegisterOutputType(EventChannelFilterResponsePtrOutput{})
-	pulumi.RegisterOutputType(EventChannelSourceOutput{})
-	pulumi.RegisterOutputType(EventChannelSourcePtrOutput{})
-	pulumi.RegisterOutputType(EventChannelSourceResponseOutput{})
-	pulumi.RegisterOutputType(EventChannelSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionFilterOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionFilterPtrOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionFilterResponseOutput{})
@@ -5357,8 +4652,8 @@ func init() {
 	pulumi.RegisterOutputType(JsonInputSchemaMappingResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})

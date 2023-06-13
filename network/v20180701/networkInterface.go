@@ -62,51 +62,6 @@ func NewNetworkInterface(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:NetworkInterface"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20150501preview:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:NetworkInterface"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:NetworkInterface"),
 		},
 		{
@@ -190,6 +145,9 @@ func NewNetworkInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkInterface
@@ -241,7 +199,7 @@ type networkInterfaceArgs struct {
 	// The name of the network interface.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
 	// The reference of the NetworkSecurityGroup resource.
-	NetworkSecurityGroup *NetworkSecurityGroupType `pulumi:"networkSecurityGroup"`
+	NetworkSecurityGroup *NetworkSecurityGroup `pulumi:"networkSecurityGroup"`
 	// Gets whether this is a primary network interface on a virtual machine.
 	Primary *bool `pulumi:"primary"`
 	// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -275,7 +233,7 @@ type NetworkInterfaceArgs struct {
 	// The name of the network interface.
 	NetworkInterfaceName pulumi.StringPtrInput
 	// The reference of the NetworkSecurityGroup resource.
-	NetworkSecurityGroup NetworkSecurityGroupTypePtrInput
+	NetworkSecurityGroup NetworkSecurityGroupPtrInput
 	// Gets whether this is a primary network interface on a virtual machine.
 	Primary pulumi.BoolPtrInput
 	// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.

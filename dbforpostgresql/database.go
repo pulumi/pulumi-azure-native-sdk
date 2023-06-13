@@ -12,7 +12,8 @@ import (
 )
 
 // Represents a Database.
-// API Version: 2017-12-01.
+// API Version: 2022-12-01.
+// Previous API Version: 2017-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Database struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type Database struct {
 	Collation pulumi.StringPtrOutput `pulumi:"collation"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -41,10 +44,25 @@ func NewDatabase(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:Database"),
+			Type: pulumi.String("azure-native:dbforpostgresql/v20201105preview:Database"),
 		},
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20171201preview:Database"),
+			Type: pulumi.String("azure-native:dbforpostgresql/v20210601:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20210601preview:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20220120preview:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20220308preview:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20221201:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:Database"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -156,6 +174,11 @@ func (o DatabaseOutput) Collation() pulumi.StringPtrOutput {
 // The name of the resource
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o DatabaseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Database) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

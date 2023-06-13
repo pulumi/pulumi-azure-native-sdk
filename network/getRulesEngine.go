@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Rules Engine Configuration with the specified name within the specified Front Door.
-// API Version: 2020-05-01.
+// API Version: 2021-06-01.
 func LookupRulesEngine(ctx *pulumi.Context, args *LookupRulesEngineArgs, opts ...pulumi.InvokeOption) (*LookupRulesEngineResult, error) {
 	var rv LookupRulesEngineResult
 	err := ctx.Invoke("azure-native:network:getRulesEngine", args, &rv, opts...)

@@ -12,7 +12,8 @@ import (
 )
 
 // String dictionary resource.
-// API Version: 2020-12-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type WebAppMetadataSlot struct {
 	pulumi.CustomResourceState
 
@@ -43,9 +44,6 @@ func NewWebAppMetadataSlot(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Slot'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:web/v20150801:WebAppMetadataSlot"),
-		},
 		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppMetadataSlot"),
 		},

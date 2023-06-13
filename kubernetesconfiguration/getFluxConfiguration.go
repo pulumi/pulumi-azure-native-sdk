@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details of the Flux Configuration.
-// API Version: 2021-11-01-preview.
+// API Version: 2023-05-01.
 func LookupFluxConfiguration(ctx *pulumi.Context, args *LookupFluxConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupFluxConfigurationResult, error) {
 	var rv LookupFluxConfigurationResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration:getFluxConfiguration", args, &rv, opts...)
@@ -24,9 +24,9 @@ func LookupFluxConfiguration(ctx *pulumi.Context, args *LookupFluxConfigurationA
 type LookupFluxConfigurationArgs struct {
 	// The name of the kubernetes cluster.
 	ClusterName string `pulumi:"clusterName"`
-	// The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+	// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
 	ClusterResourceName string `pulumi:"clusterResourceName"`
-	// The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+	// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
 	ClusterRp string `pulumi:"clusterRp"`
 	// Name of the Flux Configuration.
 	FluxConfigurationName string `pulumi:"fluxConfigurationName"`
@@ -36,6 +36,10 @@ type LookupFluxConfigurationArgs struct {
 
 // The Flux Configuration object returned in Get & Put response.
 type LookupFluxConfigurationResult struct {
+	// Parameters to reconcile to the AzureBlob source kind type.
+	AzureBlob *AzureBlobDefinitionResponse `pulumi:"azureBlob"`
+	// Parameters to reconcile to the Bucket source kind type.
+	Bucket *BucketDefinitionResponse `pulumi:"bucket"`
 	// Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects.
 	ComplianceState string `pulumi:"complianceState"`
 	// Key-value pairs of protected configuration settings for the configuration
@@ -48,22 +52,26 @@ type LookupFluxConfigurationResult struct {
 	Id string `pulumi:"id"`
 	// Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
 	Kustomizations map[string]KustomizationDefinitionResponse `pulumi:"kustomizations"`
-	// Datetime the fluxConfiguration last synced its source on the cluster.
-	LastSourceSyncedAt string `pulumi:"lastSourceSyncedAt"`
-	// Branch and SHA of the last source commit synced with the cluster.
-	LastSourceSyncedCommitId string `pulumi:"lastSourceSyncedCommitId"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The namespace to which this configuration is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
 	Namespace *string `pulumi:"namespace"`
 	// Status of the creation of the fluxConfiguration.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D
+	ReconciliationWaitDuration *string `pulumi:"reconciliationWaitDuration"`
 	// Public Key associated with this fluxConfiguration (either generated within the cluster or provided by the user).
 	RepositoryPublicKey string `pulumi:"repositoryPublicKey"`
 	// Scope at which the operator will be installed.
 	Scope *string `pulumi:"scope"`
 	// Source Kind to pull the configuration data from.
 	SourceKind *string `pulumi:"sourceKind"`
+	// Branch and/or SHA of the source commit synced with the cluster.
+	SourceSyncedCommitId string `pulumi:"sourceSyncedCommitId"`
+	// Datetime the fluxConfiguration synced its source on the cluster.
+	SourceUpdatedAt string `pulumi:"sourceUpdatedAt"`
+	// Datetime the fluxConfiguration synced its status on the cluster with Azure.
+	StatusUpdatedAt string `pulumi:"statusUpdatedAt"`
 	// Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration.
 	Statuses []ObjectStatusDefinitionResponse `pulumi:"statuses"`
 	// Whether this configuration should suspend its reconciliation of its kustomizations and sources.
@@ -72,6 +80,8 @@ type LookupFluxConfigurationResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
+	WaitForReconciliation *bool `pulumi:"waitForReconciliation"`
 }
 
 // Defaults sets the appropriate defaults for LookupFluxConfigurationResult
@@ -80,11 +90,19 @@ func (val *LookupFluxConfigurationResult) Defaults() *LookupFluxConfigurationRes
 		return nil
 	}
 	tmp := *val
+	tmp.AzureBlob = tmp.AzureBlob.Defaults()
+
+	tmp.Bucket = tmp.Bucket.Defaults()
+
 	tmp.GitRepository = tmp.GitRepository.Defaults()
 
 	if tmp.Namespace == nil {
 		namespace_ := "default"
 		tmp.Namespace = &namespace_
+	}
+	if tmp.SourceKind == nil {
+		sourceKind_ := "GitRepository"
+		tmp.SourceKind = &sourceKind_
 	}
 	if tmp.Suspend == nil {
 		suspend_ := false
@@ -109,9 +127,9 @@ func LookupFluxConfigurationOutput(ctx *pulumi.Context, args LookupFluxConfigura
 type LookupFluxConfigurationOutputArgs struct {
 	// The name of the kubernetes cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+	// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
 	ClusterResourceName pulumi.StringInput `pulumi:"clusterResourceName"`
-	// The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+	// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
 	ClusterRp pulumi.StringInput `pulumi:"clusterRp"`
 	// Name of the Flux Configuration.
 	FluxConfigurationName pulumi.StringInput `pulumi:"fluxConfigurationName"`
@@ -136,6 +154,16 @@ func (o LookupFluxConfigurationResultOutput) ToLookupFluxConfigurationResultOutp
 
 func (o LookupFluxConfigurationResultOutput) ToLookupFluxConfigurationResultOutputWithContext(ctx context.Context) LookupFluxConfigurationResultOutput {
 	return o
+}
+
+// Parameters to reconcile to the AzureBlob source kind type.
+func (o LookupFluxConfigurationResultOutput) AzureBlob() AzureBlobDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v LookupFluxConfigurationResult) *AzureBlobDefinitionResponse { return v.AzureBlob }).(AzureBlobDefinitionResponsePtrOutput)
+}
+
+// Parameters to reconcile to the Bucket source kind type.
+func (o LookupFluxConfigurationResultOutput) Bucket() BucketDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v LookupFluxConfigurationResult) *BucketDefinitionResponse { return v.Bucket }).(BucketDefinitionResponsePtrOutput)
 }
 
 // Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects.
@@ -170,16 +198,6 @@ func (o LookupFluxConfigurationResultOutput) Kustomizations() KustomizationDefin
 	}).(KustomizationDefinitionResponseMapOutput)
 }
 
-// Datetime the fluxConfiguration last synced its source on the cluster.
-func (o LookupFluxConfigurationResultOutput) LastSourceSyncedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.LastSourceSyncedAt }).(pulumi.StringOutput)
-}
-
-// Branch and SHA of the last source commit synced with the cluster.
-func (o LookupFluxConfigurationResultOutput) LastSourceSyncedCommitId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.LastSourceSyncedCommitId }).(pulumi.StringOutput)
-}
-
 // The name of the resource
 func (o LookupFluxConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
@@ -195,6 +213,11 @@ func (o LookupFluxConfigurationResultOutput) ProvisioningState() pulumi.StringOu
 	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D
+func (o LookupFluxConfigurationResultOutput) ReconciliationWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFluxConfigurationResult) *string { return v.ReconciliationWaitDuration }).(pulumi.StringPtrOutput)
+}
+
 // Public Key associated with this fluxConfiguration (either generated within the cluster or provided by the user).
 func (o LookupFluxConfigurationResultOutput) RepositoryPublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.RepositoryPublicKey }).(pulumi.StringOutput)
@@ -208,6 +231,21 @@ func (o LookupFluxConfigurationResultOutput) Scope() pulumi.StringPtrOutput {
 // Source Kind to pull the configuration data from.
 func (o LookupFluxConfigurationResultOutput) SourceKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFluxConfigurationResult) *string { return v.SourceKind }).(pulumi.StringPtrOutput)
+}
+
+// Branch and/or SHA of the source commit synced with the cluster.
+func (o LookupFluxConfigurationResultOutput) SourceSyncedCommitId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.SourceSyncedCommitId }).(pulumi.StringOutput)
+}
+
+// Datetime the fluxConfiguration synced its source on the cluster.
+func (o LookupFluxConfigurationResultOutput) SourceUpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.SourceUpdatedAt }).(pulumi.StringOutput)
+}
+
+// Datetime the fluxConfiguration synced its status on the cluster with Azure.
+func (o LookupFluxConfigurationResultOutput) StatusUpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.StatusUpdatedAt }).(pulumi.StringOutput)
 }
 
 // Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration.
@@ -228,6 +266,11 @@ func (o LookupFluxConfigurationResultOutput) SystemData() SystemDataResponseOutp
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFluxConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
+func (o LookupFluxConfigurationResultOutput) WaitForReconciliation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupFluxConfigurationResult) *bool { return v.WaitForReconciliation }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

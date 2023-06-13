@@ -11,10 +11,8 @@ import (
 )
 
 // Get a synchronizationSetting in a share
-//
-// Deprecated: azure-native:datashare/v20201001preview:ScheduledSynchronizationSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ScheduledSynchronizationSetting to guarantee forwards compatibility.
-func LookupScheduledSynchronizationSetting(ctx *pulumi.Context, args *LookupScheduledSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*LookupScheduledSynchronizationSettingResult, error) {
-	var rv LookupScheduledSynchronizationSettingResult
+func GetScheduledSynchronizationSetting(ctx *pulumi.Context, args *GetScheduledSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*GetScheduledSynchronizationSettingResult, error) {
+	var rv GetScheduledSynchronizationSettingResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getScheduledSynchronizationSetting", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupScheduledSynchronizationSetting(ctx *pulumi.Context, args *LookupSche
 	return &rv, nil
 }
 
-type LookupScheduledSynchronizationSettingArgs struct {
+type GetScheduledSynchronizationSettingArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The resource group name.
@@ -34,7 +32,7 @@ type LookupScheduledSynchronizationSettingArgs struct {
 }
 
 // A type of synchronization setting based on schedule
-type LookupScheduledSynchronizationSettingResult struct {
+type GetScheduledSynchronizationSettingResult struct {
 	// Time at which the synchronization setting was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The resource id of the azure resource
@@ -58,20 +56,20 @@ type LookupScheduledSynchronizationSettingResult struct {
 	UserName string `pulumi:"userName"`
 }
 
-func LookupScheduledSynchronizationSettingOutput(ctx *pulumi.Context, args LookupScheduledSynchronizationSettingOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledSynchronizationSettingResultOutput {
+func GetScheduledSynchronizationSettingOutput(ctx *pulumi.Context, args GetScheduledSynchronizationSettingOutputArgs, opts ...pulumi.InvokeOption) GetScheduledSynchronizationSettingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupScheduledSynchronizationSettingResult, error) {
-			args := v.(LookupScheduledSynchronizationSettingArgs)
-			r, err := LookupScheduledSynchronizationSetting(ctx, &args, opts...)
-			var s LookupScheduledSynchronizationSettingResult
+		ApplyT(func(v interface{}) (GetScheduledSynchronizationSettingResult, error) {
+			args := v.(GetScheduledSynchronizationSettingArgs)
+			r, err := GetScheduledSynchronizationSetting(ctx, &args, opts...)
+			var s GetScheduledSynchronizationSettingResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupScheduledSynchronizationSettingResultOutput)
+		}).(GetScheduledSynchronizationSettingResultOutput)
 }
 
-type LookupScheduledSynchronizationSettingOutputArgs struct {
+type GetScheduledSynchronizationSettingOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The resource group name.
@@ -82,76 +80,76 @@ type LookupScheduledSynchronizationSettingOutputArgs struct {
 	SynchronizationSettingName pulumi.StringInput `pulumi:"synchronizationSettingName"`
 }
 
-func (LookupScheduledSynchronizationSettingOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupScheduledSynchronizationSettingArgs)(nil)).Elem()
+func (GetScheduledSynchronizationSettingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduledSynchronizationSettingArgs)(nil)).Elem()
 }
 
 // A type of synchronization setting based on schedule
-type LookupScheduledSynchronizationSettingResultOutput struct{ *pulumi.OutputState }
+type GetScheduledSynchronizationSettingResultOutput struct{ *pulumi.OutputState }
 
-func (LookupScheduledSynchronizationSettingResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupScheduledSynchronizationSettingResult)(nil)).Elem()
+func (GetScheduledSynchronizationSettingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduledSynchronizationSettingResult)(nil)).Elem()
 }
 
-func (o LookupScheduledSynchronizationSettingResultOutput) ToLookupScheduledSynchronizationSettingResultOutput() LookupScheduledSynchronizationSettingResultOutput {
+func (o GetScheduledSynchronizationSettingResultOutput) ToGetScheduledSynchronizationSettingResultOutput() GetScheduledSynchronizationSettingResultOutput {
 	return o
 }
 
-func (o LookupScheduledSynchronizationSettingResultOutput) ToLookupScheduledSynchronizationSettingResultOutputWithContext(ctx context.Context) LookupScheduledSynchronizationSettingResultOutput {
+func (o GetScheduledSynchronizationSettingResultOutput) ToGetScheduledSynchronizationSettingResultOutputWithContext(ctx context.Context) GetScheduledSynchronizationSettingResultOutput {
 	return o
 }
 
 // Time at which the synchronization setting was created.
-func (o LookupScheduledSynchronizationSettingResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupScheduledSynchronizationSettingResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of synchronization setting.
 // Expected value is 'ScheduleBased'.
-func (o LookupScheduledSynchronizationSettingResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupScheduledSynchronizationSettingResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Gets or sets the provisioning state
-func (o LookupScheduledSynchronizationSettingResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Recurrence Interval
-func (o LookupScheduledSynchronizationSettingResultOutput) RecurrenceInterval() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.RecurrenceInterval }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) RecurrenceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.RecurrenceInterval }).(pulumi.StringOutput)
 }
 
 // Synchronization time
-func (o LookupScheduledSynchronizationSettingResultOutput) SynchronizationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.SynchronizationTime }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) SynchronizationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.SynchronizationTime }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupScheduledSynchronizationSettingResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the azure resource
-func (o LookupScheduledSynchronizationSettingResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Name of the user who created the synchronization setting.
-func (o LookupScheduledSynchronizationSettingResultOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.UserName }).(pulumi.StringOutput)
+func (o GetScheduledSynchronizationSettingResultOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledSynchronizationSettingResult) string { return v.UserName }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupScheduledSynchronizationSettingResultOutput{})
+	pulumi.RegisterOutputType(GetScheduledSynchronizationSettingResultOutput{})
 }

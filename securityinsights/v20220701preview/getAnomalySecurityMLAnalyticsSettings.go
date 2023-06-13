@@ -11,10 +11,8 @@ import (
 )
 
 // Gets the Security ML Analytics Settings.
-//
-// Deprecated: azure-native:securityinsights/v20220701preview:AnomalySecurityMLAnalyticsSettings is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AnomalySecurityMLAnalyticsSettings to guarantee forwards compatibility.
-func LookupAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *LookupAnomalySecurityMLAnalyticsSettingsArgs, opts ...pulumi.InvokeOption) (*LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
-	var rv LookupAnomalySecurityMLAnalyticsSettingsResult
+func GetAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *GetAnomalySecurityMLAnalyticsSettingsArgs, opts ...pulumi.InvokeOption) (*GetAnomalySecurityMLAnalyticsSettingsResult, error) {
+	var rv GetAnomalySecurityMLAnalyticsSettingsResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getAnomalySecurityMLAnalyticsSettings", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *LookupA
 	return &rv, nil
 }
 
-type LookupAnomalySecurityMLAnalyticsSettingsArgs struct {
+type GetAnomalySecurityMLAnalyticsSettingsArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Security ML Analytics Settings resource name
@@ -32,7 +30,7 @@ type LookupAnomalySecurityMLAnalyticsSettingsArgs struct {
 }
 
 // Represents Anomaly Security ML Analytics Settings
-type LookupAnomalySecurityMLAnalyticsSettingsResult struct {
+type GetAnomalySecurityMLAnalyticsSettingsResult struct {
 	// The anomaly settings version of the Anomaly security ml analytics settings that dictates whether job version gets updated or not.
 	AnomalySettingsVersion *int `pulumi:"anomalySettingsVersion"`
 	// The anomaly version of the AnomalySecurityMLAnalyticsSettings.
@@ -76,20 +74,20 @@ type LookupAnomalySecurityMLAnalyticsSettingsResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupAnomalySecurityMLAnalyticsSettingsOutput(ctx *pulumi.Context, args LookupAnomalySecurityMLAnalyticsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupAnomalySecurityMLAnalyticsSettingsResultOutput {
+func GetAnomalySecurityMLAnalyticsSettingsOutput(ctx *pulumi.Context, args GetAnomalySecurityMLAnalyticsSettingsOutputArgs, opts ...pulumi.InvokeOption) GetAnomalySecurityMLAnalyticsSettingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
-			args := v.(LookupAnomalySecurityMLAnalyticsSettingsArgs)
-			r, err := LookupAnomalySecurityMLAnalyticsSettings(ctx, &args, opts...)
-			var s LookupAnomalySecurityMLAnalyticsSettingsResult
+		ApplyT(func(v interface{}) (GetAnomalySecurityMLAnalyticsSettingsResult, error) {
+			args := v.(GetAnomalySecurityMLAnalyticsSettingsArgs)
+			r, err := GetAnomalySecurityMLAnalyticsSettings(ctx, &args, opts...)
+			var s GetAnomalySecurityMLAnalyticsSettingsResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupAnomalySecurityMLAnalyticsSettingsResultOutput)
+		}).(GetAnomalySecurityMLAnalyticsSettingsResultOutput)
 }
 
-type LookupAnomalySecurityMLAnalyticsSettingsOutputArgs struct {
+type GetAnomalySecurityMLAnalyticsSettingsOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Security ML Analytics Settings resource name
@@ -98,128 +96,128 @@ type LookupAnomalySecurityMLAnalyticsSettingsOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupAnomalySecurityMLAnalyticsSettingsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAnomalySecurityMLAnalyticsSettingsArgs)(nil)).Elem()
+func (GetAnomalySecurityMLAnalyticsSettingsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAnomalySecurityMLAnalyticsSettingsArgs)(nil)).Elem()
 }
 
 // Represents Anomaly Security ML Analytics Settings
-type LookupAnomalySecurityMLAnalyticsSettingsResultOutput struct{ *pulumi.OutputState }
+type GetAnomalySecurityMLAnalyticsSettingsResultOutput struct{ *pulumi.OutputState }
 
-func (LookupAnomalySecurityMLAnalyticsSettingsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAnomalySecurityMLAnalyticsSettingsResult)(nil)).Elem()
+func (GetAnomalySecurityMLAnalyticsSettingsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAnomalySecurityMLAnalyticsSettingsResult)(nil)).Elem()
 }
 
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) ToLookupAnomalySecurityMLAnalyticsSettingsResultOutput() LookupAnomalySecurityMLAnalyticsSettingsResultOutput {
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) ToGetAnomalySecurityMLAnalyticsSettingsResultOutput() GetAnomalySecurityMLAnalyticsSettingsResultOutput {
 	return o
 }
 
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) ToLookupAnomalySecurityMLAnalyticsSettingsResultOutputWithContext(ctx context.Context) LookupAnomalySecurityMLAnalyticsSettingsResultOutput {
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) ToGetAnomalySecurityMLAnalyticsSettingsResultOutputWithContext(ctx context.Context) GetAnomalySecurityMLAnalyticsSettingsResultOutput {
 	return o
 }
 
 // The anomaly settings version of the Anomaly security ml analytics settings that dictates whether job version gets updated or not.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) AnomalySettingsVersion() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) *int { return v.AnomalySettingsVersion }).(pulumi.IntPtrOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) AnomalySettingsVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) *int { return v.AnomalySettingsVersion }).(pulumi.IntPtrOutput)
 }
 
 // The anomaly version of the AnomalySecurityMLAnalyticsSettings.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) AnomalyVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.AnomalyVersion }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) AnomalyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.AnomalyVersion }).(pulumi.StringOutput)
 }
 
 // The customizable observations of the AnomalySecurityMLAnalyticsSettings.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) CustomizableObservations() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) interface{} { return v.CustomizableObservations }).(pulumi.AnyOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) CustomizableObservations() pulumi.AnyOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) interface{} { return v.CustomizableObservations }).(pulumi.AnyOutput)
 }
 
 // The description of the SecurityMLAnalyticsSettings.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The display name for settings created by this SecurityMLAnalyticsSettings.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Determines whether this settings is enabled or disabled.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Etag of the azure resource
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // The frequency that this SecurityMLAnalyticsSettings will be run.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.Frequency }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Determines whether this anomaly security ml analytics settings is a default settings
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) IsDefaultSettings() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) bool { return v.IsDefaultSettings }).(pulumi.BoolOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) IsDefaultSettings() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) bool { return v.IsDefaultSettings }).(pulumi.BoolOutput)
 }
 
 // The kind of security ML analytics settings
 // Expected value is 'Anomaly'.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The last time that this SecurityMLAnalyticsSettings has been modified.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) LastModifiedUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) LastModifiedUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The required data sources for this SecurityMLAnalyticsSettings
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) RequiredDataConnectors() SecurityMLAnalyticsSettingsDataSourceResponseArrayOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) []SecurityMLAnalyticsSettingsDataSourceResponse {
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) RequiredDataConnectors() SecurityMLAnalyticsSettingsDataSourceResponseArrayOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) []SecurityMLAnalyticsSettingsDataSourceResponse {
 		return v.RequiredDataConnectors
 	}).(SecurityMLAnalyticsSettingsDataSourceResponseArrayOutput)
 }
 
 // The anomaly settings definition Id
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) SettingsDefinitionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) *string { return v.SettingsDefinitionId }).(pulumi.StringPtrOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) SettingsDefinitionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) *string { return v.SettingsDefinitionId }).(pulumi.StringPtrOutput)
 }
 
 // The anomaly SecurityMLAnalyticsSettings status
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) SettingsStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.SettingsStatus }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) SettingsStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.SettingsStatus }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tactics of the SecurityMLAnalyticsSettings
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Tactics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) []string { return v.Tactics }).(pulumi.StringArrayOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Tactics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) []string { return v.Tactics }).(pulumi.StringArrayOutput)
 }
 
 // The techniques of the SecurityMLAnalyticsSettings
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Techniques() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) []string { return v.Techniques }).(pulumi.StringArrayOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Techniques() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) []string { return v.Techniques }).(pulumi.StringArrayOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetAnomalySecurityMLAnalyticsSettingsResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAnomalySecurityMLAnalyticsSettingsResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupAnomalySecurityMLAnalyticsSettingsResultOutput{})
+	pulumi.RegisterOutputType(GetAnomalySecurityMLAnalyticsSettingsResultOutput{})
 }

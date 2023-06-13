@@ -12,7 +12,8 @@ import (
 )
 
 // An object that represents a pipeline run for a container registry.
-// API Version: 2020-11-01-preview.
+// API Version: 2023-01-01-preview.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PipelineRun struct {
 	pulumi.CustomResourceState
 
@@ -112,7 +113,7 @@ type pipelineRunArgs struct {
 	RegistryName string `pulumi:"registryName"`
 	// The request parameters for a pipeline run.
 	Request *PipelineRunRequest `pulumi:"request"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -126,7 +127,7 @@ type PipelineRunArgs struct {
 	RegistryName pulumi.StringInput
 	// The request parameters for a pipeline run.
 	Request PipelineRunRequestPtrInput
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 

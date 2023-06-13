@@ -52,39 +52,6 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb:SqlResourceSqlContainer"),
 		},
 		{
-			Type: pulumi.String("azure-native:documentdb/v20150401:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150408:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20151106:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160319:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160331:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:SqlResourceSqlContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:SqlResourceSqlContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:SqlResourceSqlContainer"),
 		},
 		{
@@ -133,7 +100,19 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlContainer"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the module identified by module name.
-// API Version: 2019-06-01.
+// API Version: 2022-08-08.
 func LookupModule(ctx *pulumi.Context, args *LookupModuleArgs, opts ...pulumi.InvokeOption) (*LookupModuleResult, error) {
 	var rv LookupModuleResult
 	err := ctx.Invoke("azure-native:automation:getModule", args, &rv, opts...)

@@ -74,51 +74,6 @@ func NewExpressRouteCircuit(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:ExpressRouteCircuit"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20150501preview:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:ExpressRouteCircuit"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:ExpressRouteCircuit"),
 		},
 		{
@@ -202,6 +157,9 @@ func NewExpressRouteCircuit(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuit"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCircuit"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRouteCircuit
@@ -241,7 +199,7 @@ type expressRouteCircuitArgs struct {
 	// Flag to enable Global Reach on the circuit.
 	AllowGlobalReach *bool `pulumi:"allowGlobalReach"`
 	// The list of authorizations.
-	Authorizations []ExpressRouteCircuitAuthorizationType `pulumi:"authorizations"`
+	Authorizations []ExpressRouteCircuitAuthorization `pulumi:"authorizations"`
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 	BandwidthInGbps *float64 `pulumi:"bandwidthInGbps"`
 	// The name of the circuit.
@@ -259,7 +217,7 @@ type expressRouteCircuitArgs struct {
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// The list of peerings.
-	Peerings []ExpressRouteCircuitPeeringType `pulumi:"peerings"`
+	Peerings []ExpressRouteCircuitPeering `pulumi:"peerings"`
 	// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// The name of the resource group.
@@ -285,7 +243,7 @@ type ExpressRouteCircuitArgs struct {
 	// Flag to enable Global Reach on the circuit.
 	AllowGlobalReach pulumi.BoolPtrInput
 	// The list of authorizations.
-	Authorizations ExpressRouteCircuitAuthorizationTypeArrayInput
+	Authorizations ExpressRouteCircuitAuthorizationArrayInput
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 	BandwidthInGbps pulumi.Float64PtrInput
 	// The name of the circuit.
@@ -303,7 +261,7 @@ type ExpressRouteCircuitArgs struct {
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// The list of peerings.
-	Peerings ExpressRouteCircuitPeeringTypeArrayInput
+	Peerings ExpressRouteCircuitPeeringArrayInput
 	// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 	ProvisioningState pulumi.StringPtrInput
 	// The name of the resource group.

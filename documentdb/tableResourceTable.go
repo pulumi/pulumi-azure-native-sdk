@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Table.
-// API Version: 2021-03-15.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type TableResourceTable struct {
 	pulumi.CustomResourceState
 
@@ -45,39 +46,6 @@ func NewTableResourceTable(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150401:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150408:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20151106:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160319:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160331:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:TableResourceTable"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:TableResourceTable"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:TableResourceTable"),
 		},
@@ -130,7 +98,19 @@ func NewTableResourceTable(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:TableResourceTable"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:TableResourceTable"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:TableResourceTable"),
 		},
 	})
 	opts = append(opts, aliases)

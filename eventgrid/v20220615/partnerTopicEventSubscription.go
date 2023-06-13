@@ -87,6 +87,9 @@ func NewPartnerTopicEventSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:PartnerTopicEventSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:PartnerTopicEventSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PartnerTopicEventSubscription

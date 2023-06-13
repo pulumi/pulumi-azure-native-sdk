@@ -11,10 +11,8 @@ import (
 )
 
 // Gets the environment with the specified name in the specified subscription and resource group.
-//
-// Deprecated: azure-native:timeseriesinsights/v20200515:Gen1Environment is being removed in the next major version of this provider. Upgrade to at least azure-native:timeseriesinsights/v20210630preview:Gen1Environment to guarantee forwards compatibility.
-func LookupGen1Environment(ctx *pulumi.Context, args *LookupGen1EnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupGen1EnvironmentResult, error) {
-	var rv LookupGen1EnvironmentResult
+func GetGen1Environment(ctx *pulumi.Context, args *GetGen1EnvironmentArgs, opts ...pulumi.InvokeOption) (*GetGen1EnvironmentResult, error) {
+	var rv GetGen1EnvironmentResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20200515:getGen1Environment", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupGen1Environment(ctx *pulumi.Context, args *LookupGen1EnvironmentArgs,
 	return &rv, nil
 }
 
-type LookupGen1EnvironmentArgs struct {
+type GetGen1EnvironmentArgs struct {
 	// The name of the Time Series Insights environment associated with the specified resource group.
 	EnvironmentName string `pulumi:"environmentName"`
 	// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
@@ -32,7 +30,7 @@ type LookupGen1EnvironmentArgs struct {
 }
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen1 environments have data retention limits.
-type LookupGen1EnvironmentResult struct {
+type GetGen1EnvironmentResult struct {
 	// The time the resource was created.
 	CreationTime string `pulumi:"creationTime"`
 	// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
@@ -66,20 +64,20 @@ type LookupGen1EnvironmentResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupGen1EnvironmentOutput(ctx *pulumi.Context, args LookupGen1EnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupGen1EnvironmentResultOutput {
+func GetGen1EnvironmentOutput(ctx *pulumi.Context, args GetGen1EnvironmentOutputArgs, opts ...pulumi.InvokeOption) GetGen1EnvironmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGen1EnvironmentResult, error) {
-			args := v.(LookupGen1EnvironmentArgs)
-			r, err := LookupGen1Environment(ctx, &args, opts...)
-			var s LookupGen1EnvironmentResult
+		ApplyT(func(v interface{}) (GetGen1EnvironmentResult, error) {
+			args := v.(GetGen1EnvironmentArgs)
+			r, err := GetGen1Environment(ctx, &args, opts...)
+			var s GetGen1EnvironmentResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupGen1EnvironmentResultOutput)
+		}).(GetGen1EnvironmentResultOutput)
 }
 
-type LookupGen1EnvironmentOutputArgs struct {
+type GetGen1EnvironmentOutputArgs struct {
 	// The name of the Time Series Insights environment associated with the specified resource group.
 	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
 	// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
@@ -88,101 +86,101 @@ type LookupGen1EnvironmentOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
-func (LookupGen1EnvironmentOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupGen1EnvironmentArgs)(nil)).Elem()
+func (GetGen1EnvironmentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGen1EnvironmentArgs)(nil)).Elem()
 }
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen1 environments have data retention limits.
-type LookupGen1EnvironmentResultOutput struct{ *pulumi.OutputState }
+type GetGen1EnvironmentResultOutput struct{ *pulumi.OutputState }
 
-func (LookupGen1EnvironmentResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupGen1EnvironmentResult)(nil)).Elem()
+func (GetGen1EnvironmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGen1EnvironmentResult)(nil)).Elem()
 }
 
-func (o LookupGen1EnvironmentResultOutput) ToLookupGen1EnvironmentResultOutput() LookupGen1EnvironmentResultOutput {
+func (o GetGen1EnvironmentResultOutput) ToGetGen1EnvironmentResultOutput() GetGen1EnvironmentResultOutput {
 	return o
 }
 
-func (o LookupGen1EnvironmentResultOutput) ToLookupGen1EnvironmentResultOutputWithContext(ctx context.Context) LookupGen1EnvironmentResultOutput {
+func (o GetGen1EnvironmentResultOutput) ToGetGen1EnvironmentResultOutputWithContext(ctx context.Context) GetGen1EnvironmentResultOutput {
 	return o
 }
 
 // The time the resource was created.
-func (o LookupGen1EnvironmentResultOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.CreationTime }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
-func (o LookupGen1EnvironmentResultOutput) DataAccessFqdn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.DataAccessFqdn }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) DataAccessFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.DataAccessFqdn }).(pulumi.StringOutput)
 }
 
 // An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
-func (o LookupGen1EnvironmentResultOutput) DataAccessId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.DataAccessId }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) DataAccessId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.DataAccessId }).(pulumi.StringOutput)
 }
 
 // ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.
-func (o LookupGen1EnvironmentResultOutput) DataRetentionTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.DataRetentionTime }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) DataRetentionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.DataRetentionTime }).(pulumi.StringOutput)
 }
 
 // Resource Id
-func (o LookupGen1EnvironmentResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the environment.
 // Expected value is 'Gen1'.
-func (o LookupGen1EnvironmentResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Resource location
-func (o LookupGen1EnvironmentResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.Location }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // Resource name
-func (o LookupGen1EnvironmentResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The list of event properties which will be used to partition data in the environment. Currently, only a single partition key property is supported.
-func (o LookupGen1EnvironmentResultOutput) PartitionKeyProperties() TimeSeriesIdPropertyResponseArrayOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) []TimeSeriesIdPropertyResponse { return v.PartitionKeyProperties }).(TimeSeriesIdPropertyResponseArrayOutput)
+func (o GetGen1EnvironmentResultOutput) PartitionKeyProperties() TimeSeriesIdPropertyResponseArrayOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) []TimeSeriesIdPropertyResponse { return v.PartitionKeyProperties }).(TimeSeriesIdPropertyResponseArrayOutput)
 }
 
 // Provisioning state of the resource.
-func (o LookupGen1EnvironmentResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
-func (o LookupGen1EnvironmentResultOutput) Sku() SkuResponseOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
+func (o GetGen1EnvironmentResultOutput) Sku() SkuResponseOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
 // An object that represents the status of the environment, and its internal state in the Time Series Insights service.
-func (o LookupGen1EnvironmentResultOutput) Status() EnvironmentStatusResponseOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) EnvironmentStatusResponse { return v.Status }).(EnvironmentStatusResponseOutput)
+func (o GetGen1EnvironmentResultOutput) Status() EnvironmentStatusResponseOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) EnvironmentStatusResponse { return v.Status }).(EnvironmentStatusResponseOutput)
 }
 
 // The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
-func (o LookupGen1EnvironmentResultOutput) StorageLimitExceededBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) *string { return v.StorageLimitExceededBehavior }).(pulumi.StringPtrOutput)
+func (o GetGen1EnvironmentResultOutput) StorageLimitExceededBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) *string { return v.StorageLimitExceededBehavior }).(pulumi.StringPtrOutput)
 }
 
 // Resource tags
-func (o LookupGen1EnvironmentResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+func (o GetGen1EnvironmentResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Resource type
-func (o LookupGen1EnvironmentResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGen1EnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetGen1EnvironmentResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGen1EnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupGen1EnvironmentResultOutput{})
+	pulumi.RegisterOutputType(GetGen1EnvironmentResultOutput{})
 }

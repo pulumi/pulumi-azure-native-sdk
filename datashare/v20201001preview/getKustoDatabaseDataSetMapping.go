@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-//
-// Deprecated: azure-native:datashare/v20201001preview:KustoDatabaseDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:KustoDatabaseDataSetMapping to guarantee forwards compatibility.
-func LookupKustoDatabaseDataSetMapping(ctx *pulumi.Context, args *LookupKustoDatabaseDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupKustoDatabaseDataSetMappingResult, error) {
-	var rv LookupKustoDatabaseDataSetMappingResult
+func GetKustoDatabaseDataSetMapping(ctx *pulumi.Context, args *GetKustoDatabaseDataSetMappingArgs, opts ...pulumi.InvokeOption) (*GetKustoDatabaseDataSetMappingResult, error) {
+	var rv GetKustoDatabaseDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getKustoDatabaseDataSetMapping", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupKustoDatabaseDataSetMapping(ctx *pulumi.Context, args *LookupKustoDat
 	return &rv, nil
 }
 
-type LookupKustoDatabaseDataSetMappingArgs struct {
+type GetKustoDatabaseDataSetMappingArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSetMapping.
@@ -34,7 +32,7 @@ type LookupKustoDatabaseDataSetMappingArgs struct {
 }
 
 // A Kusto database data set mapping
-type LookupKustoDatabaseDataSetMappingResult struct {
+type GetKustoDatabaseDataSetMappingResult struct {
 	// The id of the source data set.
 	DataSetId string `pulumi:"dataSetId"`
 	// Gets the status of the data set mapping.
@@ -58,20 +56,20 @@ type LookupKustoDatabaseDataSetMappingResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupKustoDatabaseDataSetMappingOutput(ctx *pulumi.Context, args LookupKustoDatabaseDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupKustoDatabaseDataSetMappingResultOutput {
+func GetKustoDatabaseDataSetMappingOutput(ctx *pulumi.Context, args GetKustoDatabaseDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) GetKustoDatabaseDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKustoDatabaseDataSetMappingResult, error) {
-			args := v.(LookupKustoDatabaseDataSetMappingArgs)
-			r, err := LookupKustoDatabaseDataSetMapping(ctx, &args, opts...)
-			var s LookupKustoDatabaseDataSetMappingResult
+		ApplyT(func(v interface{}) (GetKustoDatabaseDataSetMappingResult, error) {
+			args := v.(GetKustoDatabaseDataSetMappingArgs)
+			r, err := GetKustoDatabaseDataSetMapping(ctx, &args, opts...)
+			var s GetKustoDatabaseDataSetMappingResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupKustoDatabaseDataSetMappingResultOutput)
+		}).(GetKustoDatabaseDataSetMappingResultOutput)
 }
 
-type LookupKustoDatabaseDataSetMappingOutputArgs struct {
+type GetKustoDatabaseDataSetMappingOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSetMapping.
@@ -82,76 +80,76 @@ type LookupKustoDatabaseDataSetMappingOutputArgs struct {
 	ShareSubscriptionName pulumi.StringInput `pulumi:"shareSubscriptionName"`
 }
 
-func (LookupKustoDatabaseDataSetMappingOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupKustoDatabaseDataSetMappingArgs)(nil)).Elem()
+func (GetKustoDatabaseDataSetMappingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKustoDatabaseDataSetMappingArgs)(nil)).Elem()
 }
 
 // A Kusto database data set mapping
-type LookupKustoDatabaseDataSetMappingResultOutput struct{ *pulumi.OutputState }
+type GetKustoDatabaseDataSetMappingResultOutput struct{ *pulumi.OutputState }
 
-func (LookupKustoDatabaseDataSetMappingResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupKustoDatabaseDataSetMappingResult)(nil)).Elem()
+func (GetKustoDatabaseDataSetMappingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKustoDatabaseDataSetMappingResult)(nil)).Elem()
 }
 
-func (o LookupKustoDatabaseDataSetMappingResultOutput) ToLookupKustoDatabaseDataSetMappingResultOutput() LookupKustoDatabaseDataSetMappingResultOutput {
+func (o GetKustoDatabaseDataSetMappingResultOutput) ToGetKustoDatabaseDataSetMappingResultOutput() GetKustoDatabaseDataSetMappingResultOutput {
 	return o
 }
 
-func (o LookupKustoDatabaseDataSetMappingResultOutput) ToLookupKustoDatabaseDataSetMappingResultOutputWithContext(ctx context.Context) LookupKustoDatabaseDataSetMappingResultOutput {
+func (o GetKustoDatabaseDataSetMappingResultOutput) ToGetKustoDatabaseDataSetMappingResultOutputWithContext(ctx context.Context) GetKustoDatabaseDataSetMappingResultOutput {
 	return o
 }
 
 // The id of the source data set.
-func (o LookupKustoDatabaseDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // Gets the status of the data set mapping.
-func (o LookupKustoDatabaseDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupKustoDatabaseDataSetMappingResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set mapping.
 // Expected value is 'KustoDatabase'.
-func (o LookupKustoDatabaseDataSetMappingResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Resource id of the sink kusto cluster.
-func (o LookupKustoDatabaseDataSetMappingResultOutput) KustoClusterResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.KustoClusterResourceId }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) KustoClusterResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.KustoClusterResourceId }).(pulumi.StringOutput)
 }
 
 // Location of the sink kusto cluster.
-func (o LookupKustoDatabaseDataSetMappingResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.Location }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupKustoDatabaseDataSetMappingResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Provisioning state of the data set mapping.
-func (o LookupKustoDatabaseDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupKustoDatabaseDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the azure resource
-func (o LookupKustoDatabaseDataSetMappingResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoDatabaseDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetKustoDatabaseDataSetMappingResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKustoDatabaseDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupKustoDatabaseDataSetMappingResultOutput{})
+	pulumi.RegisterOutputType(GetKustoDatabaseDataSetMappingResultOutput{})
 }

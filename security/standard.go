@@ -13,6 +13,7 @@ import (
 
 // Security Standard on a resource
 // API Version: 2021-08-01-preview.
+// Previous API Version: 2021-08-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Standard struct {
 	pulumi.CustomResourceState
 

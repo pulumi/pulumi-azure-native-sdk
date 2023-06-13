@@ -12,7 +12,8 @@ import (
 )
 
 // Data Lake Analytics compute policy information.
-// API Version: 2016-11-01.
+// API Version: 2019-11-01-preview.
+// Previous API Version: 2016-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ComputePolicy struct {
 	pulumi.CustomResourceState
 
@@ -50,9 +51,6 @@ func NewComputePolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datalakeanalytics/v20151001preview:ComputePolicy"),
-		},
 		{
 			Type: pulumi.String("azure-native:datalakeanalytics/v20161101:ComputePolicy"),
 		},

@@ -12,7 +12,8 @@ import (
 )
 
 // IoT Addon.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type IoTAddon struct {
 	pulumi.CustomResourceState
 
@@ -31,7 +32,7 @@ type IoTAddon struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Addon Provisioning State
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Addon type
+	// Metadata pertaining to creation and last modification of Addon
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -66,12 +67,6 @@ func NewIoTAddon(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("IotEdge")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901:IoTAddon"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901preview:IoTAddon"),
-		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20201201:IoTAddon"),
 		},
@@ -242,7 +237,7 @@ func (o IoTAddonOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *IoTAddon) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Addon type
+// Metadata pertaining to creation and last modification of Addon
 func (o IoTAddonOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *IoTAddon) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

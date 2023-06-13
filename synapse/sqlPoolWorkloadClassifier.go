@@ -12,7 +12,8 @@ import (
 )
 
 // Workload classifier operations for a data warehouse
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlPoolWorkloadClassifier struct {
 	pulumi.CustomResourceState
 
@@ -57,12 +58,6 @@ func NewSqlPoolWorkloadClassifier(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:synapse/v20190601preview:SqlPoolWorkloadClassifier"),
-		},
-		{
-			Type: pulumi.String("azure-native:synapse/v20201201:SqlPoolWorkloadClassifier"),
-		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210301:SqlPoolWorkloadClassifier"),
 		},
@@ -132,7 +127,7 @@ type sqlPoolWorkloadClassifierArgs struct {
 	WorkloadClassifierName *string `pulumi:"workloadClassifierName"`
 	// The name of the workload group.
 	WorkloadGroupName string `pulumi:"workloadGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -158,7 +153,7 @@ type SqlPoolWorkloadClassifierArgs struct {
 	WorkloadClassifierName pulumi.StringPtrInput
 	// The name of the workload group.
 	WorkloadGroupName pulumi.StringInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 

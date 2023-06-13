@@ -12,12 +12,13 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// API Version: 2022-02-01-preview.
+// API Version: 2023-04-01.
+// Previous API Version: 2022-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ComponentContainer struct {
 	pulumi.CustomResourceState
 
 	// [Required] Additional attributes of the entity.
-	ComponentContainerDetails ComponentContainerResponseOutput `pulumi:"componentContainerDetails"`
+	ComponentContainerProperties ComponentContainerResponseOutput `pulumi:"componentContainerProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -33,8 +34,8 @@ func NewComponentContainer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ComponentContainerDetails == nil {
-		return nil, errors.New("invalid value for required argument 'ComponentContainerDetails'")
+	if args.ComponentContainerProperties == nil {
+		return nil, errors.New("invalid value for required argument 'ComponentContainerProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -42,7 +43,7 @@ func NewComponentContainer(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.ComponentContainerDetails = args.ComponentContainerDetails.ToComponentContainerTypeOutput().ApplyT(func(v ComponentContainerType) ComponentContainerType { return *v.Defaults() }).(ComponentContainerTypeOutput)
+	args.ComponentContainerProperties = args.ComponentContainerProperties.ToComponentContainerTypeOutput().ApplyT(func(v ComponentContainerType) ComponentContainerType { return *v.Defaults() }).(ComponentContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:ComponentContainer"),
@@ -61,6 +62,12 @@ func NewComponentContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:ComponentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:ComponentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:ComponentContainer"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:ComponentContainer"),
@@ -100,7 +107,7 @@ func (ComponentContainerState) ElementType() reflect.Type {
 
 type componentContainerArgs struct {
 	// [Required] Additional attributes of the entity.
-	ComponentContainerDetails ComponentContainerType `pulumi:"componentContainerDetails"`
+	ComponentContainerProperties ComponentContainerType `pulumi:"componentContainerProperties"`
 	// Container name.
 	Name *string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
@@ -112,7 +119,7 @@ type componentContainerArgs struct {
 // The set of arguments for constructing a ComponentContainer resource.
 type ComponentContainerArgs struct {
 	// [Required] Additional attributes of the entity.
-	ComponentContainerDetails ComponentContainerTypeInput
+	ComponentContainerProperties ComponentContainerTypeInput
 	// Container name.
 	Name pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -159,8 +166,8 @@ func (o ComponentContainerOutput) ToComponentContainerOutputWithContext(ctx cont
 }
 
 // [Required] Additional attributes of the entity.
-func (o ComponentContainerOutput) ComponentContainerDetails() ComponentContainerResponseOutput {
-	return o.ApplyT(func(v *ComponentContainer) ComponentContainerResponseOutput { return v.ComponentContainerDetails }).(ComponentContainerResponseOutput)
+func (o ComponentContainerOutput) ComponentContainerProperties() ComponentContainerResponseOutput {
+	return o.ApplyT(func(v *ComponentContainer) ComponentContainerResponseOutput { return v.ComponentContainerProperties }).(ComponentContainerResponseOutput)
 }
 
 // The name of the resource

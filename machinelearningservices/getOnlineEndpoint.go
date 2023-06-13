@@ -10,14 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2021-03-01-preview.
+// API Version: 2023-04-01.
 func LookupOnlineEndpoint(ctx *pulumi.Context, args *LookupOnlineEndpointArgs, opts ...pulumi.InvokeOption) (*LookupOnlineEndpointResult, error) {
 	var rv LookupOnlineEndpointResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getOnlineEndpoint", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupOnlineEndpointArgs struct {
@@ -32,8 +32,8 @@ type LookupOnlineEndpointArgs struct {
 type LookupOnlineEndpointResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Service identity associated with a resource.
-	Identity *ResourceIdentityResponse `pulumi:"identity"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -41,13 +41,26 @@ type LookupOnlineEndpointResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties OnlineEndpointResponse `pulumi:"properties"`
-	// System data associated with resource provider
+	OnlineEndpointProperties OnlineEndpointResponse `pulumi:"onlineEndpointProperties"`
+	// Sku details required for ARM contract for Autoscaling.
+	Sku *SkuResponse `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupOnlineEndpointResult
+func (val *LookupOnlineEndpointResult) Defaults() *LookupOnlineEndpointResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.OnlineEndpointProperties = *tmp.OnlineEndpointProperties.Defaults()
+
+	return &tmp
 }
 
 func LookupOnlineEndpointOutput(ctx *pulumi.Context, args LookupOnlineEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineEndpointResultOutput {
@@ -95,9 +108,9 @@ func (o LookupOnlineEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnlineEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Service identity associated with a resource.
-func (o LookupOnlineEndpointResultOutput) Identity() ResourceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupOnlineEndpointResult) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
+// Managed service identity (system assigned and/or user assigned identities)
+func (o LookupOnlineEndpointResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupOnlineEndpointResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -116,11 +129,16 @@ func (o LookupOnlineEndpointResultOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o LookupOnlineEndpointResultOutput) Properties() OnlineEndpointResponseOutput {
-	return o.ApplyT(func(v LookupOnlineEndpointResult) OnlineEndpointResponse { return v.Properties }).(OnlineEndpointResponseOutput)
+func (o LookupOnlineEndpointResultOutput) OnlineEndpointProperties() OnlineEndpointResponseOutput {
+	return o.ApplyT(func(v LookupOnlineEndpointResult) OnlineEndpointResponse { return v.OnlineEndpointProperties }).(OnlineEndpointResponseOutput)
 }
 
-// System data associated with resource provider
+// Sku details required for ARM contract for Autoscaling.
+func (o LookupOnlineEndpointResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupOnlineEndpointResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupOnlineEndpointResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupOnlineEndpointResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

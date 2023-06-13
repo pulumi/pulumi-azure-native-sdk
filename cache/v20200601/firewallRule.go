@@ -49,21 +49,6 @@ func NewFirewallRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cache:FirewallRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20160401:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20170201:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20171001:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20180301:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20190701:FirewallRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:cache/v20201201:FirewallRule"),
 		},
 		{
@@ -74,6 +59,12 @@ func NewFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

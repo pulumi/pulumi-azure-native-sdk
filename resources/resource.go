@@ -12,10 +12,13 @@ import (
 )
 
 // Resource information.
-// API Version: 2019-05-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2019-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Resource struct {
 	pulumi.CustomResourceState
 
+	// Resource extended location.
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The identity of the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The kind of the resource.
@@ -58,30 +61,6 @@ func NewResource(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceType'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:resources/v20151101:Resource"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20160201:Resource"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20160701:Resource"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20160901:Resource"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20170510:Resource"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20180201:Resource"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20180501:Resource"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20190301:Resource"),
-		},
 		{
 			Type: pulumi.String("azure-native:resources/v20190501:Resource"),
 		},
@@ -149,6 +128,8 @@ func (ResourceState) ElementType() reflect.Type {
 }
 
 type resourceArgs struct {
+	// Resource extended location.
+	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// The identity of the resource.
 	Identity *Identity `pulumi:"identity"`
 	// The kind of the resource.
@@ -179,6 +160,8 @@ type resourceArgs struct {
 
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
+	// Resource extended location.
+	ExtendedLocation ExtendedLocationPtrInput
 	// The identity of the resource.
 	Identity IdentityPtrInput
 	// The kind of the resource.
@@ -242,6 +225,11 @@ func (o ResourceOutput) ToResourceOutput() ResourceOutput {
 
 func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) ResourceOutput {
 	return o
+}
+
+// Resource extended location.
+func (o ResourceOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *Resource) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
 // The identity of the resource.

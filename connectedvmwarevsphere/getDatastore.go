@@ -11,7 +11,7 @@ import (
 )
 
 // Implements datastore GET method.
-// API Version: 2020-10-01-preview.
+// API Version: 2022-07-15-preview.
 func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreResult, error) {
 	var rv LookupDatastoreResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getDatastore", args, &rv, opts...)
@@ -30,10 +30,14 @@ type LookupDatastoreArgs struct {
 
 // Define the datastore.
 type LookupDatastoreResult struct {
+	// Gets or sets Maximum capacity of this datastore in GBs.
+	CapacityGB float64 `pulumi:"capacityGB"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
 	// Gets or sets the extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Gets or sets Available space of this datastore in GBs.
+	FreeSpaceGB float64 `pulumi:"freeSpaceGB"`
 	// Gets or sets the Id.
 	Id string `pulumi:"id"`
 	// Gets or sets the inventory Item ID for the datastore.
@@ -103,6 +107,11 @@ func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutputWithContext(ct
 	return o
 }
 
+// Gets or sets Maximum capacity of this datastore in GBs.
+func (o LookupDatastoreResultOutput) CapacityGB() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDatastoreResult) float64 { return v.CapacityGB }).(pulumi.Float64Output)
+}
+
 // Gets the name of the corresponding resource in Kubernetes.
 func (o LookupDatastoreResultOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
@@ -111,6 +120,11 @@ func (o LookupDatastoreResultOutput) CustomResourceName() pulumi.StringOutput {
 // Gets or sets the extended location.
 func (o LookupDatastoreResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// Gets or sets Available space of this datastore in GBs.
+func (o LookupDatastoreResultOutput) FreeSpaceGB() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDatastoreResult) float64 { return v.FreeSpaceGB }).(pulumi.Float64Output)
 }
 
 // Gets or sets the Id.

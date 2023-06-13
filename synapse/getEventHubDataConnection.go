@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a data connection.
-// API Version: 2021-04-01-preview.
+// API Version: 2021-06-01-preview.
 func LookupEventHubDataConnection(ctx *pulumi.Context, args *LookupEventHubDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventHubDataConnectionResult, error) {
 	var rv LookupEventHubDataConnectionResult
 	err := ctx.Invoke("azure-native:synapse:getEventHubDataConnection", args, &rv, opts...)
@@ -30,7 +30,7 @@ type LookupEventHubDataConnectionArgs struct {
 	KustoPoolName string `pulumi:"kustoPoolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -53,6 +53,8 @@ type LookupEventHubDataConnectionResult struct {
 	Kind string `pulumi:"kind"`
 	// Resource location.
 	Location *string `pulumi:"location"`
+	// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
+	ManagedIdentityResourceId *string `pulumi:"managedIdentityResourceId"`
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName *string `pulumi:"mappingRuleName"`
 	// The name of the resource
@@ -89,7 +91,7 @@ type LookupEventHubDataConnectionOutputArgs struct {
 	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -151,6 +153,11 @@ func (o LookupEventHubDataConnectionResultOutput) Kind() pulumi.StringOutput {
 // Resource location.
 func (o LookupEventHubDataConnectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEventHubDataConnectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
+func (o LookupEventHubDataConnectionResultOutput) ManagedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEventHubDataConnectionResult) *string { return v.ManagedIdentityResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.

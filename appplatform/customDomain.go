@@ -12,7 +12,8 @@ import (
 )
 
 // Custom domain resource payload.
-// API Version: 2020-07-01.
+// API Version: 2022-12-01.
+// Previous API Version: 2020-07-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type CustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type CustomDomain struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the custom domain resource.
 	Properties CustomDomainPropertiesResponseOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -76,6 +79,12 @@ func NewCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:CustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:CustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:CustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -182,6 +191,11 @@ func (o CustomDomainOutput) Name() pulumi.StringOutput {
 // Properties of the custom domain resource.
 func (o CustomDomainOutput) Properties() CustomDomainPropertiesResponseOutput {
 	return o.ApplyT(func(v *CustomDomain) CustomDomainPropertiesResponseOutput { return v.Properties }).(CustomDomainPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o CustomDomainOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CustomDomain) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

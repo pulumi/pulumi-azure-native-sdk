@@ -13,6 +13,7 @@ import (
 
 // A container for a managed identity to execute DevTest lab services.
 // API Version: 2018-09-15.
+// Previous API Version: 2018-09-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ServiceRunner struct {
 	pulumi.CustomResourceState
 
@@ -42,9 +43,6 @@ func NewServiceRunner(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:devtestlab/v20160515:ServiceRunner"),
-		},
 		{
 			Type: pulumi.String("azure-native:devtestlab/v20180915:ServiceRunner"),
 		},

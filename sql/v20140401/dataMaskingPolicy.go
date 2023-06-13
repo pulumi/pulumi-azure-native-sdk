@@ -68,6 +68,9 @@ func NewDataMaskingPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:DataMaskingPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:DataMaskingPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DataMaskingPolicy

@@ -11,7 +11,7 @@ import (
 )
 
 // Get the details of an Asset Filter associated with the specified Asset.
-// API Version: 2020-05-01.
+// API Version: 2023-01-01.
 func LookupAssetFilter(ctx *pulumi.Context, args *LookupAssetFilterArgs, opts ...pulumi.InvokeOption) (*LookupAssetFilterResult, error) {
 	var rv LookupAssetFilterResult
 	err := ctx.Invoke("azure-native:media:getAssetFilter", args, &rv, opts...)

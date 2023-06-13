@@ -12,7 +12,8 @@ import (
 )
 
 // A sensitivity label.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SensitivityLabel struct {
 	pulumi.CustomResourceState
 
@@ -102,6 +103,9 @@ func NewSensitivityLabel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:SensitivityLabel"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:SensitivityLabel"),
 		},
 	})
 	opts = append(opts, aliases)

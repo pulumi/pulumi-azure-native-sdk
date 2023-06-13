@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20220101preview:MCASDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201:MCASDataConnector to guarantee forwards compatibility.
-func LookupMCASDataConnector(ctx *pulumi.Context, args *LookupMCASDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMCASDataConnectorResult, error) {
-	var rv LookupMCASDataConnectorResult
+func GetMCASDataConnector(ctx *pulumi.Context, args *GetMCASDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetMCASDataConnectorResult, error) {
+	var rv GetMCASDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220101preview:getMCASDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupMCASDataConnector(ctx *pulumi.Context, args *LookupMCASDataConnectorA
 	return &rv, nil
 }
 
-type LookupMCASDataConnectorArgs struct {
+type GetMCASDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupMCASDataConnectorArgs struct {
 }
 
 // Represents MCAS (Microsoft Cloud App Security) data connector.
-type LookupMCASDataConnectorResult struct {
+type GetMCASDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes MCASDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupMCASDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupMCASDataConnectorOutput(ctx *pulumi.Context, args LookupMCASDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMCASDataConnectorResultOutput {
+func GetMCASDataConnectorOutput(ctx *pulumi.Context, args GetMCASDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetMCASDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMCASDataConnectorResult, error) {
-			args := v.(LookupMCASDataConnectorArgs)
-			r, err := LookupMCASDataConnector(ctx, &args, opts...)
-			var s LookupMCASDataConnectorResult
+		ApplyT(func(v interface{}) (GetMCASDataConnectorResult, error) {
+			args := v.(GetMCASDataConnectorArgs)
+			r, err := GetMCASDataConnector(ctx, &args, opts...)
+			var s GetMCASDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupMCASDataConnectorResultOutput)
+		}).(GetMCASDataConnectorResultOutput)
 }
 
-type LookupMCASDataConnectorOutputArgs struct {
+type GetMCASDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,66 +72,66 @@ type LookupMCASDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupMCASDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMCASDataConnectorArgs)(nil)).Elem()
+func (GetMCASDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMCASDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents MCAS (Microsoft Cloud App Security) data connector.
-type LookupMCASDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetMCASDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupMCASDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMCASDataConnectorResult)(nil)).Elem()
+func (GetMCASDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMCASDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupMCASDataConnectorResultOutput) ToLookupMCASDataConnectorResultOutput() LookupMCASDataConnectorResultOutput {
+func (o GetMCASDataConnectorResultOutput) ToGetMCASDataConnectorResultOutput() GetMCASDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupMCASDataConnectorResultOutput) ToLookupMCASDataConnectorResultOutputWithContext(ctx context.Context) LookupMCASDataConnectorResultOutput {
+func (o GetMCASDataConnectorResultOutput) ToGetMCASDataConnectorResultOutputWithContext(ctx context.Context) GetMCASDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupMCASDataConnectorResultOutput) DataTypes() MCASDataConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) MCASDataConnectorDataTypesResponse { return v.DataTypes }).(MCASDataConnectorDataTypesResponseOutput)
+func (o GetMCASDataConnectorResultOutput) DataTypes() MCASDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetMCASDataConnectorResult) MCASDataConnectorDataTypesResponse { return v.DataTypes }).(MCASDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
-func (o LookupMCASDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetMCASDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMCASDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupMCASDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetMCASDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMCASDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'MicrosoftCloudAppSecurity'.
-func (o LookupMCASDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetMCASDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMCASDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupMCASDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetMCASDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMCASDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMCASDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetMCASDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetMCASDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupMCASDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetMCASDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMCASDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupMCASDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetMCASDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMCASDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupMCASDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetMCASDataConnectorResultOutput{})
 }

@@ -12,29 +12,18 @@ import (
 )
 
 // SIM group resource.
-// API Version: 2022-04-01-preview.
+// API Version: 2022-11-01.
+// Previous API Version: 2022-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SimGroup struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
 	// A key to encrypt the SIM data that belongs to this SIM group.
 	EncryptionKey KeyVaultKeyResponsePtrOutput `pulumi:"encryptionKey"`
 	// The identity used to retrieve the encryption key from Azure key vault.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Mobile network that this SIM belongs to
+	// Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
 	MobileNetwork MobileNetworkResourceIdResponsePtrOutput `pulumi:"mobileNetwork"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -99,25 +88,13 @@ func (SimGroupState) ElementType() reflect.Type {
 }
 
 type simGroupArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
 	// A key to encrypt the SIM data that belongs to this SIM group.
 	EncryptionKey *KeyVaultKey `pulumi:"encryptionKey"`
 	// The identity used to retrieve the encryption key from Azure key vault.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Mobile network that this SIM belongs to
+	// Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
 	MobileNetwork *MobileNetworkResourceId `pulumi:"mobileNetwork"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -129,25 +106,13 @@ type simGroupArgs struct {
 
 // The set of arguments for constructing a SimGroup resource.
 type SimGroupArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrInput
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrInput
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrInput
 	// A key to encrypt the SIM data that belongs to this SIM group.
 	EncryptionKey KeyVaultKeyPtrInput
 	// The identity used to retrieve the encryption key from Azure key vault.
 	Identity ManagedServiceIdentityPtrInput
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrInput
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Mobile network that this SIM belongs to
+	// Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
 	MobileNetwork MobileNetworkResourceIdPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -194,21 +159,6 @@ func (o SimGroupOutput) ToSimGroupOutputWithContext(ctx context.Context) SimGrou
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SimGroupOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimGroup) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SimGroupOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimGroup) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SimGroupOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimGroup) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
 // A key to encrypt the SIM data that belongs to this SIM group.
 func (o SimGroupOutput) EncryptionKey() KeyVaultKeyResponsePtrOutput {
 	return o.ApplyT(func(v *SimGroup) KeyVaultKeyResponsePtrOutput { return v.EncryptionKey }).(KeyVaultKeyResponsePtrOutput)
@@ -219,27 +169,12 @@ func (o SimGroupOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *SimGroup) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SimGroupOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimGroup) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SimGroupOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimGroup) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SimGroupOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SimGroup) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // The geo-location where the resource lives
 func (o SimGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SimGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Mobile network that this SIM belongs to
+// Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
 func (o SimGroupOutput) MobileNetwork() MobileNetworkResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v *SimGroup) MobileNetworkResourceIdResponsePtrOutput { return v.MobileNetwork }).(MobileNetworkResourceIdResponsePtrOutput)
 }

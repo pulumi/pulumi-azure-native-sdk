@@ -11,7 +11,7 @@ import (
 )
 
 // Timeline for an entity.
-// API Version: 2019-01-01-preview.
+// API Version: 2023-05-01-preview.
 func GetEntitiesGetTimeline(ctx *pulumi.Context, args *GetEntitiesGetTimelineArgs, opts ...pulumi.InvokeOption) (*GetEntitiesGetTimelineResult, error) {
 	var rv GetEntitiesGetTimelineResult
 	err := ctx.Invoke("azure-native:securityinsights:getEntitiesGetTimeline", args, &rv, opts...)
@@ -30,9 +30,7 @@ type GetEntitiesGetTimelineArgs struct {
 	Kinds []string `pulumi:"kinds"`
 	// The number of bucket for timeline queries aggregation.
 	NumberOfBucket *int `pulumi:"numberOfBucket"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The start timeline date, so the results returned are after this date.
 	StartTime string `pulumi:"startTime"`
@@ -70,9 +68,7 @@ type GetEntitiesGetTimelineOutputArgs struct {
 	Kinds pulumi.StringArrayInput `pulumi:"kinds"`
 	// The number of bucket for timeline queries aggregation.
 	NumberOfBucket pulumi.IntPtrInput `pulumi:"numberOfBucket"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The start timeline date, so the results returned are after this date.
 	StartTime pulumi.StringInput `pulumi:"startTime"`

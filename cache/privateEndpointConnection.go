@@ -12,7 +12,8 @@ import (
 )
 
 // The Private Endpoint Connection resource.
-// API Version: 2021-03-01.
+// API Version: 2023-04-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -35,8 +36,8 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ClusterName == nil {
-		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	if args.CacheName == nil {
+		return nil, errors.New("invalid value for required argument 'CacheName'")
 	}
 	if args.PrivateLinkServiceConnectionState == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateLinkServiceConnectionState'")
@@ -46,25 +47,25 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cache/v20201001preview:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:cache/v20200601:PrivateEndpointConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20210201preview:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:cache/v20201201:PrivateEndpointConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20210301:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:cache/v20210601:PrivateEndpointConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20210801:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:cache/v20220501:PrivateEndpointConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20220101:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:cache/v20220601:PrivateEndpointConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20221101preview:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:cache/v20230401:PrivateEndpointConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20230301preview:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:cache/v20230501preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -100,25 +101,25 @@ func (PrivateEndpointConnectionState) ElementType() reflect.Type {
 }
 
 type privateEndpointConnectionArgs struct {
-	// The name of the RedisEnterprise cluster.
-	ClusterName string `pulumi:"clusterName"`
+	// The name of the Redis cache.
+	CacheName string `pulumi:"cacheName"`
 	// The name of the private endpoint connection associated with the Azure resource
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The set of arguments for constructing a PrivateEndpointConnection resource.
 type PrivateEndpointConnectionArgs struct {
-	// The name of the RedisEnterprise cluster.
-	ClusterName pulumi.StringInput
+	// The name of the Redis cache.
+	CacheName pulumi.StringInput
 	// The name of the private endpoint connection associated with the Azure resource
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 }
 

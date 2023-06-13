@@ -13,6 +13,7 @@ import (
 
 // Machine Learning datastore object wrapped into ARM resource envelope.
 // API Version: 2020-05-01-preview.
+// Previous API Version: 2020-05-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MachineLearningDatastore struct {
 	pulumi.CustomResourceState
 
@@ -78,6 +79,12 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:MachineLearningDatastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:MachineLearningDatastore"),

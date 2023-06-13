@@ -12,34 +12,45 @@ import (
 )
 
 // Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
-// API Version: 2020-02-14.
+// API Version: 2022-07-01.
+// Previous API Version: 2020-02-14. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualMachineImageTemplate struct {
 	pulumi.CustomResourceState
 
-	// Maximum duration to wait while building the image template. Omit or specify 0 to use the default (4 hours).
+	// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 	BuildTimeoutInMinutes pulumi.IntPtrOutput `pulumi:"buildTimeoutInMinutes"`
 	// Specifies the properties used to describe the customization steps of the image, like Image source etc
 	Customize pulumi.ArrayOutput `pulumi:"customize"`
 	// The distribution targets where the image output needs to go to.
 	Distribute pulumi.ArrayOutput `pulumi:"distribute"`
+	// The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
+	ExactStagingResourceGroup pulumi.StringOutput `pulumi:"exactStagingResourceGroup"`
 	// The identity of the image template, if configured.
 	Identity ImageTemplateIdentityResponseOutput `pulumi:"identity"`
 	// State of 'run' that is currently executing or was last executed.
 	LastRunStatus ImageTemplateLastRunStatusResponseOutput `pulumi:"lastRunStatus"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Specifies optimization to be performed on image.
+	Optimize ImageTemplatePropertiesResponseOptimizePtrOutput `pulumi:"optimize"`
 	// Provisioning error, if any
 	ProvisioningError ProvisioningErrorResponseOutput `pulumi:"provisioningError"`
 	// Provisioning state of the resource
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Specifies the properties used to describe the source image.
 	Source pulumi.AnyOutput `pulumi:"source"`
-	// Resource tags
+	// The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
+	StagingResourceGroup pulumi.StringPtrOutput `pulumi:"stagingResourceGroup"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Configuration options and list of validations to be performed on the resulting image.
+	Validate ImageTemplatePropertiesResponseValidatePtrOutput `pulumi:"validate"`
 	// Describes how virtual machine is set up to build images
 	VmProfile ImageTemplateVmProfileResponsePtrOutput `pulumi:"vmProfile"`
 }
@@ -66,19 +77,13 @@ func NewVirtualMachineImageTemplate(ctx *pulumi.Context,
 	if args.BuildTimeoutInMinutes == nil {
 		args.BuildTimeoutInMinutes = pulumi.IntPtr(0)
 	}
+	if args.Validate != nil {
+		args.Validate = args.Validate.ToImageTemplatePropertiesValidatePtrOutput().ApplyT(func(v *ImageTemplatePropertiesValidate) *ImageTemplatePropertiesValidate { return v.Defaults() }).(ImageTemplatePropertiesValidatePtrOutput)
+	}
 	if args.VmProfile != nil {
 		args.VmProfile = args.VmProfile.ToImageTemplateVmProfilePtrOutput().ApplyT(func(v *ImageTemplateVmProfile) *ImageTemplateVmProfile { return v.Defaults() }).(ImageTemplateVmProfilePtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:virtualmachineimages/v20180201preview:VirtualMachineImageTemplate"),
-		},
-		{
-			Type: pulumi.String("azure-native:virtualmachineimages/v20190201preview:VirtualMachineImageTemplate"),
-		},
-		{
-			Type: pulumi.String("azure-native:virtualmachineimages/v20190501preview:VirtualMachineImageTemplate"),
-		},
 		{
 			Type: pulumi.String("azure-native:virtualmachineimages/v20200214:VirtualMachineImageTemplate"),
 		},
@@ -125,7 +130,7 @@ func (VirtualMachineImageTemplateState) ElementType() reflect.Type {
 }
 
 type virtualMachineImageTemplateArgs struct {
-	// Maximum duration to wait while building the image template. Omit or specify 0 to use the default (4 hours).
+	// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 	BuildTimeoutInMinutes *int `pulumi:"buildTimeoutInMinutes"`
 	// Specifies the properties used to describe the customization steps of the image, like Image source etc
 	Customize []interface{} `pulumi:"customize"`
@@ -135,21 +140,27 @@ type virtualMachineImageTemplateArgs struct {
 	Identity ImageTemplateIdentity `pulumi:"identity"`
 	// The name of the image Template
 	ImageTemplateName *string `pulumi:"imageTemplateName"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Specifies optimization to be performed on image.
+	Optimize *ImageTemplatePropertiesOptimize `pulumi:"optimize"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Specifies the properties used to describe the source image.
 	Source interface{} `pulumi:"source"`
-	// Resource tags
+	// The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
+	StagingResourceGroup *string `pulumi:"stagingResourceGroup"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Configuration options and list of validations to be performed on the resulting image.
+	Validate *ImageTemplatePropertiesValidate `pulumi:"validate"`
 	// Describes how virtual machine is set up to build images
 	VmProfile *ImageTemplateVmProfile `pulumi:"vmProfile"`
 }
 
 // The set of arguments for constructing a VirtualMachineImageTemplate resource.
 type VirtualMachineImageTemplateArgs struct {
-	// Maximum duration to wait while building the image template. Omit or specify 0 to use the default (4 hours).
+	// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 	BuildTimeoutInMinutes pulumi.IntPtrInput
 	// Specifies the properties used to describe the customization steps of the image, like Image source etc
 	Customize pulumi.ArrayInput
@@ -159,14 +170,20 @@ type VirtualMachineImageTemplateArgs struct {
 	Identity ImageTemplateIdentityInput
 	// The name of the image Template
 	ImageTemplateName pulumi.StringPtrInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Specifies optimization to be performed on image.
+	Optimize ImageTemplatePropertiesOptimizePtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Specifies the properties used to describe the source image.
 	Source pulumi.Input
-	// Resource tags
+	// The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
+	StagingResourceGroup pulumi.StringPtrInput
+	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Configuration options and list of validations to be performed on the resulting image.
+	Validate ImageTemplatePropertiesValidatePtrInput
 	// Describes how virtual machine is set up to build images
 	VmProfile ImageTemplateVmProfilePtrInput
 }
@@ -208,7 +225,7 @@ func (o VirtualMachineImageTemplateOutput) ToVirtualMachineImageTemplateOutputWi
 	return o
 }
 
-// Maximum duration to wait while building the image template. Omit or specify 0 to use the default (4 hours).
+// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 func (o VirtualMachineImageTemplateOutput) BuildTimeoutInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.IntPtrOutput { return v.BuildTimeoutInMinutes }).(pulumi.IntPtrOutput)
 }
@@ -223,6 +240,11 @@ func (o VirtualMachineImageTemplateOutput) Distribute() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.ArrayOutput { return v.Distribute }).(pulumi.ArrayOutput)
 }
 
+// The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
+func (o VirtualMachineImageTemplateOutput) ExactStagingResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringOutput { return v.ExactStagingResourceGroup }).(pulumi.StringOutput)
+}
+
 // The identity of the image template, if configured.
 func (o VirtualMachineImageTemplateOutput) Identity() ImageTemplateIdentityResponseOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) ImageTemplateIdentityResponseOutput { return v.Identity }).(ImageTemplateIdentityResponseOutput)
@@ -233,14 +255,21 @@ func (o VirtualMachineImageTemplateOutput) LastRunStatus() ImageTemplateLastRunS
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) ImageTemplateLastRunStatusResponseOutput { return v.LastRunStatus }).(ImageTemplateLastRunStatusResponseOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o VirtualMachineImageTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o VirtualMachineImageTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies optimization to be performed on image.
+func (o VirtualMachineImageTemplateOutput) Optimize() ImageTemplatePropertiesResponseOptimizePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) ImageTemplatePropertiesResponseOptimizePtrOutput {
+		return v.Optimize
+	}).(ImageTemplatePropertiesResponseOptimizePtrOutput)
 }
 
 // Provisioning error, if any
@@ -258,14 +287,31 @@ func (o VirtualMachineImageTemplateOutput) Source() pulumi.AnyOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.AnyOutput { return v.Source }).(pulumi.AnyOutput)
 }
 
-// Resource tags
+// The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
+func (o VirtualMachineImageTemplateOutput) StagingResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringPtrOutput { return v.StagingResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o VirtualMachineImageTemplateOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o VirtualMachineImageTemplateOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VirtualMachineImageTemplateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Configuration options and list of validations to be performed on the resulting image.
+func (o VirtualMachineImageTemplateOutput) Validate() ImageTemplatePropertiesResponseValidatePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) ImageTemplatePropertiesResponseValidatePtrOutput {
+		return v.Validate
+	}).(ImageTemplatePropertiesResponseValidatePtrOutput)
 }
 
 // Describes how virtual machine is set up to build images

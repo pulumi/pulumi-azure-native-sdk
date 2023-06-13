@@ -12,12 +12,15 @@ import (
 )
 
 // Peering Service
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PeeringService struct {
 	pulumi.CustomResourceState
 
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The Log Analytics Workspace Properties
+	LogAnalyticsWorkspaceProperties LogAnalyticsWorkspacePropertiesResponsePtrOutput `pulumi:"logAnalyticsWorkspaceProperties"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The location (state/province) of the customer.
@@ -49,21 +52,6 @@ func NewPeeringService(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:peering/v20190801preview:PeeringService"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20190901preview:PeeringService"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20200101preview:PeeringService"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20200401:PeeringService"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20201001:PeeringService"),
-		},
 		{
 			Type: pulumi.String("azure-native:peering/v20210101:PeeringService"),
 		},
@@ -195,6 +183,13 @@ func (o PeeringServiceOutput) ToPeeringServiceOutputWithContext(ctx context.Cont
 // The location of the resource.
 func (o PeeringServiceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringService) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The Log Analytics Workspace Properties
+func (o PeeringServiceOutput) LogAnalyticsWorkspaceProperties() LogAnalyticsWorkspacePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *PeeringService) LogAnalyticsWorkspacePropertiesResponsePtrOutput {
+		return v.LogAnalyticsWorkspaceProperties
+	}).(LogAnalyticsWorkspacePropertiesResponsePtrOutput)
 }
 
 // The name of the resource.

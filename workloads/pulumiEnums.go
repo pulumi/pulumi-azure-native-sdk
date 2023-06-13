@@ -437,6 +437,13 @@ const (
 	ManagedServiceIdentityTypeUserAssigned = ManagedServiceIdentityType("UserAssigned")
 )
 
+// The pattern type to be used for resource naming.
+type NamingPatternType string
+
+const (
+	NamingPatternTypeFullResourceName = NamingPatternType("FullResourceName")
+)
+
 // OS image offer
 type OSImageOffer string
 

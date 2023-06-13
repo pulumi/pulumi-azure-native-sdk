@@ -11,7 +11,7 @@ import (
 )
 
 // The operation to get the restore point.
-// API Version: 2021-03-01.
+// API Version: 2023-03-01.
 func LookupRestorePoint(ctx *pulumi.Context, args *LookupRestorePointArgs, opts ...pulumi.InvokeOption) (*LookupRestorePointResult, error) {
 	var rv LookupRestorePointResult
 	err := ctx.Invoke("azure-native:compute:getRestorePoint", args, &rv, opts...)
@@ -22,6 +22,8 @@ func LookupRestorePoint(ctx *pulumi.Context, args *LookupRestorePointArgs, opts 
 }
 
 type LookupRestorePointArgs struct {
+	// The expand expression to apply on the operation. 'InstanceView' retrieves information about the run-time state of a restore point.
+	Expand *string `pulumi:"expand"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the restore point collection.
@@ -32,18 +34,22 @@ type LookupRestorePointArgs struct {
 
 // Restore Point details.
 type LookupRestorePointResult struct {
-	// Gets the consistency mode for the restore point. Please refer to https://aka.ms/RestorePoints for more details.
-	ConsistencyMode string `pulumi:"consistencyMode"`
+	// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+	ConsistencyMode *string `pulumi:"consistencyMode"`
 	// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 	ExcludeDisks []ApiEntityReferenceResponse `pulumi:"excludeDisks"`
 	// Resource Id
 	Id string `pulumi:"id"`
+	// The restore point instance view.
+	InstanceView RestorePointInstanceViewResponse `pulumi:"instanceView"`
 	// Resource name
 	Name string `pulumi:"name"`
 	// Gets the provisioning state of the restore point.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Gets the details of the VM captured at the time of the restore point creation.
-	SourceMetadata RestorePointSourceMetadataResponse `pulumi:"sourceMetadata"`
+	SourceMetadata *RestorePointSourceMetadataResponse `pulumi:"sourceMetadata"`
+	// Resource Id of the source restore point from which a copy needs to be created.
+	SourceRestorePoint *ApiEntityReferenceResponse `pulumi:"sourceRestorePoint"`
 	// Gets the creation time of the restore point.
 	TimeCreated *string `pulumi:"timeCreated"`
 	// Resource type
@@ -64,6 +70,8 @@ func LookupRestorePointOutput(ctx *pulumi.Context, args LookupRestorePointOutput
 }
 
 type LookupRestorePointOutputArgs struct {
+	// The expand expression to apply on the operation. 'InstanceView' retrieves information about the run-time state of a restore point.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the restore point collection.
@@ -91,9 +99,9 @@ func (o LookupRestorePointResultOutput) ToLookupRestorePointResultOutputWithCont
 	return o
 }
 
-// Gets the consistency mode for the restore point. Please refer to https://aka.ms/RestorePoints for more details.
-func (o LookupRestorePointResultOutput) ConsistencyMode() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRestorePointResult) string { return v.ConsistencyMode }).(pulumi.StringOutput)
+// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+func (o LookupRestorePointResultOutput) ConsistencyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRestorePointResult) *string { return v.ConsistencyMode }).(pulumi.StringPtrOutput)
 }
 
 // List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
@@ -104,6 +112,11 @@ func (o LookupRestorePointResultOutput) ExcludeDisks() ApiEntityReferenceRespons
 // Resource Id
 func (o LookupRestorePointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePointResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The restore point instance view.
+func (o LookupRestorePointResultOutput) InstanceView() RestorePointInstanceViewResponseOutput {
+	return o.ApplyT(func(v LookupRestorePointResult) RestorePointInstanceViewResponse { return v.InstanceView }).(RestorePointInstanceViewResponseOutput)
 }
 
 // Resource name
@@ -117,8 +130,13 @@ func (o LookupRestorePointResultOutput) ProvisioningState() pulumi.StringOutput 
 }
 
 // Gets the details of the VM captured at the time of the restore point creation.
-func (o LookupRestorePointResultOutput) SourceMetadata() RestorePointSourceMetadataResponseOutput {
-	return o.ApplyT(func(v LookupRestorePointResult) RestorePointSourceMetadataResponse { return v.SourceMetadata }).(RestorePointSourceMetadataResponseOutput)
+func (o LookupRestorePointResultOutput) SourceMetadata() RestorePointSourceMetadataResponsePtrOutput {
+	return o.ApplyT(func(v LookupRestorePointResult) *RestorePointSourceMetadataResponse { return v.SourceMetadata }).(RestorePointSourceMetadataResponsePtrOutput)
+}
+
+// Resource Id of the source restore point from which a copy needs to be created.
+func (o LookupRestorePointResultOutput) SourceRestorePoint() ApiEntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v LookupRestorePointResult) *ApiEntityReferenceResponse { return v.SourceRestorePoint }).(ApiEntityReferenceResponsePtrOutput)
 }
 
 // Gets the creation time of the restore point.

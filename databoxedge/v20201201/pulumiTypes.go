@@ -704,140 +704,6 @@ type Authentication struct {
 	SymmetricKey *SymmetricKey `pulumi:"symmetricKey"`
 }
 
-// AuthenticationInput is an input type that accepts AuthenticationArgs and AuthenticationOutput values.
-// You can construct a concrete instance of `AuthenticationInput` via:
-//
-//	AuthenticationArgs{...}
-type AuthenticationInput interface {
-	pulumi.Input
-
-	ToAuthenticationOutput() AuthenticationOutput
-	ToAuthenticationOutputWithContext(context.Context) AuthenticationOutput
-}
-
-// Authentication mechanism for IoT devices.
-type AuthenticationArgs struct {
-	// Symmetric key for authentication.
-	SymmetricKey SymmetricKeyPtrInput `pulumi:"symmetricKey"`
-}
-
-func (AuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Authentication)(nil)).Elem()
-}
-
-func (i AuthenticationArgs) ToAuthenticationOutput() AuthenticationOutput {
-	return i.ToAuthenticationOutputWithContext(context.Background())
-}
-
-func (i AuthenticationArgs) ToAuthenticationOutputWithContext(ctx context.Context) AuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationOutput)
-}
-
-func (i AuthenticationArgs) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
-	return i.ToAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i AuthenticationArgs) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationOutput).ToAuthenticationPtrOutputWithContext(ctx)
-}
-
-// AuthenticationPtrInput is an input type that accepts AuthenticationArgs, AuthenticationPtr and AuthenticationPtrOutput values.
-// You can construct a concrete instance of `AuthenticationPtrInput` via:
-//
-//	        AuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type AuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToAuthenticationPtrOutput() AuthenticationPtrOutput
-	ToAuthenticationPtrOutputWithContext(context.Context) AuthenticationPtrOutput
-}
-
-type authenticationPtrType AuthenticationArgs
-
-func AuthenticationPtr(v *AuthenticationArgs) AuthenticationPtrInput {
-	return (*authenticationPtrType)(v)
-}
-
-func (*authenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Authentication)(nil)).Elem()
-}
-
-func (i *authenticationPtrType) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
-	return i.ToAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *authenticationPtrType) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationPtrOutput)
-}
-
-// Authentication mechanism for IoT devices.
-type AuthenticationOutput struct{ *pulumi.OutputState }
-
-func (AuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Authentication)(nil)).Elem()
-}
-
-func (o AuthenticationOutput) ToAuthenticationOutput() AuthenticationOutput {
-	return o
-}
-
-func (o AuthenticationOutput) ToAuthenticationOutputWithContext(ctx context.Context) AuthenticationOutput {
-	return o
-}
-
-func (o AuthenticationOutput) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
-	return o.ToAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o AuthenticationOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authentication) *Authentication {
-		return &v
-	}).(AuthenticationPtrOutput)
-}
-
-// Symmetric key for authentication.
-func (o AuthenticationOutput) SymmetricKey() SymmetricKeyPtrOutput {
-	return o.ApplyT(func(v Authentication) *SymmetricKey { return v.SymmetricKey }).(SymmetricKeyPtrOutput)
-}
-
-type AuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Authentication)(nil)).Elem()
-}
-
-func (o AuthenticationPtrOutput) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
-	return o
-}
-
-func (o AuthenticationPtrOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
-	return o
-}
-
-func (o AuthenticationPtrOutput) Elem() AuthenticationOutput {
-	return o.ApplyT(func(v *Authentication) Authentication {
-		if v != nil {
-			return *v
-		}
-		var ret Authentication
-		return ret
-	}).(AuthenticationOutput)
-}
-
-// Symmetric key for authentication.
-func (o AuthenticationPtrOutput) SymmetricKey() SymmetricKeyPtrOutput {
-	return o.ApplyT(func(v *Authentication) *SymmetricKey {
-		if v == nil {
-			return nil
-		}
-		return v.SymmetricKey
-	}).(SymmetricKeyPtrOutput)
-}
-
 // Authentication mechanism for IoT devices.
 type AuthenticationResponse struct {
 	// Symmetric key for authentication.
@@ -1387,157 +1253,6 @@ type ComputeResource struct {
 	ProcessorCount int `pulumi:"processorCount"`
 }
 
-// ComputeResourceInput is an input type that accepts ComputeResourceArgs and ComputeResourceOutput values.
-// You can construct a concrete instance of `ComputeResourceInput` via:
-//
-//	ComputeResourceArgs{...}
-type ComputeResourceInput interface {
-	pulumi.Input
-
-	ToComputeResourceOutput() ComputeResourceOutput
-	ToComputeResourceOutputWithContext(context.Context) ComputeResourceOutput
-}
-
-// Compute infrastructure Resource
-type ComputeResourceArgs struct {
-	// Memory in GB
-	MemoryInGB pulumi.Float64Input `pulumi:"memoryInGB"`
-	// Processor count
-	ProcessorCount pulumi.IntInput `pulumi:"processorCount"`
-}
-
-func (ComputeResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeResource)(nil)).Elem()
-}
-
-func (i ComputeResourceArgs) ToComputeResourceOutput() ComputeResourceOutput {
-	return i.ToComputeResourceOutputWithContext(context.Background())
-}
-
-func (i ComputeResourceArgs) ToComputeResourceOutputWithContext(ctx context.Context) ComputeResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeResourceOutput)
-}
-
-func (i ComputeResourceArgs) ToComputeResourcePtrOutput() ComputeResourcePtrOutput {
-	return i.ToComputeResourcePtrOutputWithContext(context.Background())
-}
-
-func (i ComputeResourceArgs) ToComputeResourcePtrOutputWithContext(ctx context.Context) ComputeResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeResourceOutput).ToComputeResourcePtrOutputWithContext(ctx)
-}
-
-// ComputeResourcePtrInput is an input type that accepts ComputeResourceArgs, ComputeResourcePtr and ComputeResourcePtrOutput values.
-// You can construct a concrete instance of `ComputeResourcePtrInput` via:
-//
-//	        ComputeResourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type ComputeResourcePtrInput interface {
-	pulumi.Input
-
-	ToComputeResourcePtrOutput() ComputeResourcePtrOutput
-	ToComputeResourcePtrOutputWithContext(context.Context) ComputeResourcePtrOutput
-}
-
-type computeResourcePtrType ComputeResourceArgs
-
-func ComputeResourcePtr(v *ComputeResourceArgs) ComputeResourcePtrInput {
-	return (*computeResourcePtrType)(v)
-}
-
-func (*computeResourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeResource)(nil)).Elem()
-}
-
-func (i *computeResourcePtrType) ToComputeResourcePtrOutput() ComputeResourcePtrOutput {
-	return i.ToComputeResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *computeResourcePtrType) ToComputeResourcePtrOutputWithContext(ctx context.Context) ComputeResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeResourcePtrOutput)
-}
-
-// Compute infrastructure Resource
-type ComputeResourceOutput struct{ *pulumi.OutputState }
-
-func (ComputeResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeResource)(nil)).Elem()
-}
-
-func (o ComputeResourceOutput) ToComputeResourceOutput() ComputeResourceOutput {
-	return o
-}
-
-func (o ComputeResourceOutput) ToComputeResourceOutputWithContext(ctx context.Context) ComputeResourceOutput {
-	return o
-}
-
-func (o ComputeResourceOutput) ToComputeResourcePtrOutput() ComputeResourcePtrOutput {
-	return o.ToComputeResourcePtrOutputWithContext(context.Background())
-}
-
-func (o ComputeResourceOutput) ToComputeResourcePtrOutputWithContext(ctx context.Context) ComputeResourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeResource) *ComputeResource {
-		return &v
-	}).(ComputeResourcePtrOutput)
-}
-
-// Memory in GB
-func (o ComputeResourceOutput) MemoryInGB() pulumi.Float64Output {
-	return o.ApplyT(func(v ComputeResource) float64 { return v.MemoryInGB }).(pulumi.Float64Output)
-}
-
-// Processor count
-func (o ComputeResourceOutput) ProcessorCount() pulumi.IntOutput {
-	return o.ApplyT(func(v ComputeResource) int { return v.ProcessorCount }).(pulumi.IntOutput)
-}
-
-type ComputeResourcePtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeResourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeResource)(nil)).Elem()
-}
-
-func (o ComputeResourcePtrOutput) ToComputeResourcePtrOutput() ComputeResourcePtrOutput {
-	return o
-}
-
-func (o ComputeResourcePtrOutput) ToComputeResourcePtrOutputWithContext(ctx context.Context) ComputeResourcePtrOutput {
-	return o
-}
-
-func (o ComputeResourcePtrOutput) Elem() ComputeResourceOutput {
-	return o.ApplyT(func(v *ComputeResource) ComputeResource {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeResource
-		return ret
-	}).(ComputeResourceOutput)
-}
-
-// Memory in GB
-func (o ComputeResourcePtrOutput) MemoryInGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ComputeResource) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.MemoryInGB
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Processor count
-func (o ComputeResourcePtrOutput) ProcessorCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeResource) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ProcessorCount
-	}).(pulumi.IntPtrOutput)
-}
-
 // Compute infrastructure Resource
 type ComputeResourceResponse struct {
 	// Memory in GB
@@ -2075,55 +1790,6 @@ type FileSourceInfo struct {
 	ShareId string `pulumi:"shareId"`
 }
 
-// FileSourceInfoInput is an input type that accepts FileSourceInfoArgs and FileSourceInfoOutput values.
-// You can construct a concrete instance of `FileSourceInfoInput` via:
-//
-//	FileSourceInfoArgs{...}
-type FileSourceInfoInput interface {
-	pulumi.Input
-
-	ToFileSourceInfoOutput() FileSourceInfoOutput
-	ToFileSourceInfoOutputWithContext(context.Context) FileSourceInfoOutput
-}
-
-// File source details.
-type FileSourceInfoArgs struct {
-	// File share ID.
-	ShareId pulumi.StringInput `pulumi:"shareId"`
-}
-
-func (FileSourceInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSourceInfo)(nil)).Elem()
-}
-
-func (i FileSourceInfoArgs) ToFileSourceInfoOutput() FileSourceInfoOutput {
-	return i.ToFileSourceInfoOutputWithContext(context.Background())
-}
-
-func (i FileSourceInfoArgs) ToFileSourceInfoOutputWithContext(ctx context.Context) FileSourceInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSourceInfoOutput)
-}
-
-// File source details.
-type FileSourceInfoOutput struct{ *pulumi.OutputState }
-
-func (FileSourceInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSourceInfo)(nil)).Elem()
-}
-
-func (o FileSourceInfoOutput) ToFileSourceInfoOutput() FileSourceInfoOutput {
-	return o
-}
-
-func (o FileSourceInfoOutput) ToFileSourceInfoOutputWithContext(ctx context.Context) FileSourceInfoOutput {
-	return o
-}
-
-// File share ID.
-func (o FileSourceInfoOutput) ShareId() pulumi.StringOutput {
-	return o.ApplyT(func(v FileSourceInfo) string { return v.ShareId }).(pulumi.StringOutput)
-}
-
 // File source details.
 type FileSourceInfoResponse struct {
 	// File share ID.
@@ -2158,174 +1824,6 @@ type ImageRepositoryCredential struct {
 	Password *AsymmetricEncryptedSecret `pulumi:"password"`
 	// Repository user name.
 	UserName string `pulumi:"userName"`
-}
-
-// ImageRepositoryCredentialInput is an input type that accepts ImageRepositoryCredentialArgs and ImageRepositoryCredentialOutput values.
-// You can construct a concrete instance of `ImageRepositoryCredentialInput` via:
-//
-//	ImageRepositoryCredentialArgs{...}
-type ImageRepositoryCredentialInput interface {
-	pulumi.Input
-
-	ToImageRepositoryCredentialOutput() ImageRepositoryCredentialOutput
-	ToImageRepositoryCredentialOutputWithContext(context.Context) ImageRepositoryCredentialOutput
-}
-
-// Image repository credential.
-type ImageRepositoryCredentialArgs struct {
-	// Image repository url (e.g.: mcr.microsoft.com).
-	ImageRepositoryUrl pulumi.StringInput `pulumi:"imageRepositoryUrl"`
-	// Repository user password.
-	Password AsymmetricEncryptedSecretPtrInput `pulumi:"password"`
-	// Repository user name.
-	UserName pulumi.StringInput `pulumi:"userName"`
-}
-
-func (ImageRepositoryCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageRepositoryCredential)(nil)).Elem()
-}
-
-func (i ImageRepositoryCredentialArgs) ToImageRepositoryCredentialOutput() ImageRepositoryCredentialOutput {
-	return i.ToImageRepositoryCredentialOutputWithContext(context.Background())
-}
-
-func (i ImageRepositoryCredentialArgs) ToImageRepositoryCredentialOutputWithContext(ctx context.Context) ImageRepositoryCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageRepositoryCredentialOutput)
-}
-
-func (i ImageRepositoryCredentialArgs) ToImageRepositoryCredentialPtrOutput() ImageRepositoryCredentialPtrOutput {
-	return i.ToImageRepositoryCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i ImageRepositoryCredentialArgs) ToImageRepositoryCredentialPtrOutputWithContext(ctx context.Context) ImageRepositoryCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageRepositoryCredentialOutput).ToImageRepositoryCredentialPtrOutputWithContext(ctx)
-}
-
-// ImageRepositoryCredentialPtrInput is an input type that accepts ImageRepositoryCredentialArgs, ImageRepositoryCredentialPtr and ImageRepositoryCredentialPtrOutput values.
-// You can construct a concrete instance of `ImageRepositoryCredentialPtrInput` via:
-//
-//	        ImageRepositoryCredentialArgs{...}
-//
-//	or:
-//
-//	        nil
-type ImageRepositoryCredentialPtrInput interface {
-	pulumi.Input
-
-	ToImageRepositoryCredentialPtrOutput() ImageRepositoryCredentialPtrOutput
-	ToImageRepositoryCredentialPtrOutputWithContext(context.Context) ImageRepositoryCredentialPtrOutput
-}
-
-type imageRepositoryCredentialPtrType ImageRepositoryCredentialArgs
-
-func ImageRepositoryCredentialPtr(v *ImageRepositoryCredentialArgs) ImageRepositoryCredentialPtrInput {
-	return (*imageRepositoryCredentialPtrType)(v)
-}
-
-func (*imageRepositoryCredentialPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageRepositoryCredential)(nil)).Elem()
-}
-
-func (i *imageRepositoryCredentialPtrType) ToImageRepositoryCredentialPtrOutput() ImageRepositoryCredentialPtrOutput {
-	return i.ToImageRepositoryCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i *imageRepositoryCredentialPtrType) ToImageRepositoryCredentialPtrOutputWithContext(ctx context.Context) ImageRepositoryCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageRepositoryCredentialPtrOutput)
-}
-
-// Image repository credential.
-type ImageRepositoryCredentialOutput struct{ *pulumi.OutputState }
-
-func (ImageRepositoryCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageRepositoryCredential)(nil)).Elem()
-}
-
-func (o ImageRepositoryCredentialOutput) ToImageRepositoryCredentialOutput() ImageRepositoryCredentialOutput {
-	return o
-}
-
-func (o ImageRepositoryCredentialOutput) ToImageRepositoryCredentialOutputWithContext(ctx context.Context) ImageRepositoryCredentialOutput {
-	return o
-}
-
-func (o ImageRepositoryCredentialOutput) ToImageRepositoryCredentialPtrOutput() ImageRepositoryCredentialPtrOutput {
-	return o.ToImageRepositoryCredentialPtrOutputWithContext(context.Background())
-}
-
-func (o ImageRepositoryCredentialOutput) ToImageRepositoryCredentialPtrOutputWithContext(ctx context.Context) ImageRepositoryCredentialPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageRepositoryCredential) *ImageRepositoryCredential {
-		return &v
-	}).(ImageRepositoryCredentialPtrOutput)
-}
-
-// Image repository url (e.g.: mcr.microsoft.com).
-func (o ImageRepositoryCredentialOutput) ImageRepositoryUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v ImageRepositoryCredential) string { return v.ImageRepositoryUrl }).(pulumi.StringOutput)
-}
-
-// Repository user password.
-func (o ImageRepositoryCredentialOutput) Password() AsymmetricEncryptedSecretPtrOutput {
-	return o.ApplyT(func(v ImageRepositoryCredential) *AsymmetricEncryptedSecret { return v.Password }).(AsymmetricEncryptedSecretPtrOutput)
-}
-
-// Repository user name.
-func (o ImageRepositoryCredentialOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v ImageRepositoryCredential) string { return v.UserName }).(pulumi.StringOutput)
-}
-
-type ImageRepositoryCredentialPtrOutput struct{ *pulumi.OutputState }
-
-func (ImageRepositoryCredentialPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageRepositoryCredential)(nil)).Elem()
-}
-
-func (o ImageRepositoryCredentialPtrOutput) ToImageRepositoryCredentialPtrOutput() ImageRepositoryCredentialPtrOutput {
-	return o
-}
-
-func (o ImageRepositoryCredentialPtrOutput) ToImageRepositoryCredentialPtrOutputWithContext(ctx context.Context) ImageRepositoryCredentialPtrOutput {
-	return o
-}
-
-func (o ImageRepositoryCredentialPtrOutput) Elem() ImageRepositoryCredentialOutput {
-	return o.ApplyT(func(v *ImageRepositoryCredential) ImageRepositoryCredential {
-		if v != nil {
-			return *v
-		}
-		var ret ImageRepositoryCredential
-		return ret
-	}).(ImageRepositoryCredentialOutput)
-}
-
-// Image repository url (e.g.: mcr.microsoft.com).
-func (o ImageRepositoryCredentialPtrOutput) ImageRepositoryUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageRepositoryCredential) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImageRepositoryUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Repository user password.
-func (o ImageRepositoryCredentialPtrOutput) Password() AsymmetricEncryptedSecretPtrOutput {
-	return o.ApplyT(func(v *ImageRepositoryCredential) *AsymmetricEncryptedSecret {
-		if v == nil {
-			return nil
-		}
-		return v.Password
-	}).(AsymmetricEncryptedSecretPtrOutput)
-}
-
-// Repository user name.
-func (o ImageRepositoryCredentialPtrOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageRepositoryCredential) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserName
-	}).(pulumi.StringPtrOutput)
 }
 
 // Image repository credential.
@@ -2434,76 +1932,6 @@ type IoTDeviceInfo struct {
 	IoTHostHubId *string `pulumi:"ioTHostHubId"`
 }
 
-// IoTDeviceInfoInput is an input type that accepts IoTDeviceInfoArgs and IoTDeviceInfoOutput values.
-// You can construct a concrete instance of `IoTDeviceInfoInput` via:
-//
-//	IoTDeviceInfoArgs{...}
-type IoTDeviceInfoInput interface {
-	pulumi.Input
-
-	ToIoTDeviceInfoOutput() IoTDeviceInfoOutput
-	ToIoTDeviceInfoOutputWithContext(context.Context) IoTDeviceInfoOutput
-}
-
-// Metadata of IoT device/IoT Edge device to be configured.
-type IoTDeviceInfoArgs struct {
-	// Encrypted IoT device/IoT edge device connection string.
-	Authentication AuthenticationPtrInput `pulumi:"authentication"`
-	// ID of the IoT device/edge device.
-	DeviceId pulumi.StringInput `pulumi:"deviceId"`
-	// Host name for the IoT hub associated to the device.
-	IoTHostHub pulumi.StringInput `pulumi:"ioTHostHub"`
-	// Id for the IoT hub associated to the device.
-	IoTHostHubId pulumi.StringPtrInput `pulumi:"ioTHostHubId"`
-}
-
-func (IoTDeviceInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IoTDeviceInfo)(nil)).Elem()
-}
-
-func (i IoTDeviceInfoArgs) ToIoTDeviceInfoOutput() IoTDeviceInfoOutput {
-	return i.ToIoTDeviceInfoOutputWithContext(context.Background())
-}
-
-func (i IoTDeviceInfoArgs) ToIoTDeviceInfoOutputWithContext(ctx context.Context) IoTDeviceInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTDeviceInfoOutput)
-}
-
-// Metadata of IoT device/IoT Edge device to be configured.
-type IoTDeviceInfoOutput struct{ *pulumi.OutputState }
-
-func (IoTDeviceInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IoTDeviceInfo)(nil)).Elem()
-}
-
-func (o IoTDeviceInfoOutput) ToIoTDeviceInfoOutput() IoTDeviceInfoOutput {
-	return o
-}
-
-func (o IoTDeviceInfoOutput) ToIoTDeviceInfoOutputWithContext(ctx context.Context) IoTDeviceInfoOutput {
-	return o
-}
-
-// Encrypted IoT device/IoT edge device connection string.
-func (o IoTDeviceInfoOutput) Authentication() AuthenticationPtrOutput {
-	return o.ApplyT(func(v IoTDeviceInfo) *Authentication { return v.Authentication }).(AuthenticationPtrOutput)
-}
-
-// ID of the IoT device/edge device.
-func (o IoTDeviceInfoOutput) DeviceId() pulumi.StringOutput {
-	return o.ApplyT(func(v IoTDeviceInfo) string { return v.DeviceId }).(pulumi.StringOutput)
-}
-
-// Host name for the IoT hub associated to the device.
-func (o IoTDeviceInfoOutput) IoTHostHub() pulumi.StringOutput {
-	return o.ApplyT(func(v IoTDeviceInfo) string { return v.IoTHostHub }).(pulumi.StringOutput)
-}
-
-// Id for the IoT hub associated to the device.
-func (o IoTDeviceInfoOutput) IoTHostHubId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IoTDeviceInfo) *string { return v.IoTHostHubId }).(pulumi.StringPtrOutput)
-}
-
 // Metadata of IoT device/IoT Edge device to be configured.
 type IoTDeviceInfoResponse struct {
 	// Encrypted IoT device/IoT edge device connection string.
@@ -2559,174 +1987,6 @@ type IoTEdgeAgentInfo struct {
 	ImageRepository *ImageRepositoryCredential `pulumi:"imageRepository"`
 	// Image Tag.
 	Tag string `pulumi:"tag"`
-}
-
-// IoTEdgeAgentInfoInput is an input type that accepts IoTEdgeAgentInfoArgs and IoTEdgeAgentInfoOutput values.
-// You can construct a concrete instance of `IoTEdgeAgentInfoInput` via:
-//
-//	IoTEdgeAgentInfoArgs{...}
-type IoTEdgeAgentInfoInput interface {
-	pulumi.Input
-
-	ToIoTEdgeAgentInfoOutput() IoTEdgeAgentInfoOutput
-	ToIoTEdgeAgentInfoOutputWithContext(context.Context) IoTEdgeAgentInfoOutput
-}
-
-// IoT edge agent details is optional, this will be used for download system Agent module while bootstrapping IoT Role if specified.
-type IoTEdgeAgentInfoArgs struct {
-	// Name of the IoT edge agent image.
-	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// Image repository details.
-	ImageRepository ImageRepositoryCredentialPtrInput `pulumi:"imageRepository"`
-	// Image Tag.
-	Tag pulumi.StringInput `pulumi:"tag"`
-}
-
-func (IoTEdgeAgentInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IoTEdgeAgentInfo)(nil)).Elem()
-}
-
-func (i IoTEdgeAgentInfoArgs) ToIoTEdgeAgentInfoOutput() IoTEdgeAgentInfoOutput {
-	return i.ToIoTEdgeAgentInfoOutputWithContext(context.Background())
-}
-
-func (i IoTEdgeAgentInfoArgs) ToIoTEdgeAgentInfoOutputWithContext(ctx context.Context) IoTEdgeAgentInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTEdgeAgentInfoOutput)
-}
-
-func (i IoTEdgeAgentInfoArgs) ToIoTEdgeAgentInfoPtrOutput() IoTEdgeAgentInfoPtrOutput {
-	return i.ToIoTEdgeAgentInfoPtrOutputWithContext(context.Background())
-}
-
-func (i IoTEdgeAgentInfoArgs) ToIoTEdgeAgentInfoPtrOutputWithContext(ctx context.Context) IoTEdgeAgentInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTEdgeAgentInfoOutput).ToIoTEdgeAgentInfoPtrOutputWithContext(ctx)
-}
-
-// IoTEdgeAgentInfoPtrInput is an input type that accepts IoTEdgeAgentInfoArgs, IoTEdgeAgentInfoPtr and IoTEdgeAgentInfoPtrOutput values.
-// You can construct a concrete instance of `IoTEdgeAgentInfoPtrInput` via:
-//
-//	        IoTEdgeAgentInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type IoTEdgeAgentInfoPtrInput interface {
-	pulumi.Input
-
-	ToIoTEdgeAgentInfoPtrOutput() IoTEdgeAgentInfoPtrOutput
-	ToIoTEdgeAgentInfoPtrOutputWithContext(context.Context) IoTEdgeAgentInfoPtrOutput
-}
-
-type ioTEdgeAgentInfoPtrType IoTEdgeAgentInfoArgs
-
-func IoTEdgeAgentInfoPtr(v *IoTEdgeAgentInfoArgs) IoTEdgeAgentInfoPtrInput {
-	return (*ioTEdgeAgentInfoPtrType)(v)
-}
-
-func (*ioTEdgeAgentInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IoTEdgeAgentInfo)(nil)).Elem()
-}
-
-func (i *ioTEdgeAgentInfoPtrType) ToIoTEdgeAgentInfoPtrOutput() IoTEdgeAgentInfoPtrOutput {
-	return i.ToIoTEdgeAgentInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *ioTEdgeAgentInfoPtrType) ToIoTEdgeAgentInfoPtrOutputWithContext(ctx context.Context) IoTEdgeAgentInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTEdgeAgentInfoPtrOutput)
-}
-
-// IoT edge agent details is optional, this will be used for download system Agent module while bootstrapping IoT Role if specified.
-type IoTEdgeAgentInfoOutput struct{ *pulumi.OutputState }
-
-func (IoTEdgeAgentInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IoTEdgeAgentInfo)(nil)).Elem()
-}
-
-func (o IoTEdgeAgentInfoOutput) ToIoTEdgeAgentInfoOutput() IoTEdgeAgentInfoOutput {
-	return o
-}
-
-func (o IoTEdgeAgentInfoOutput) ToIoTEdgeAgentInfoOutputWithContext(ctx context.Context) IoTEdgeAgentInfoOutput {
-	return o
-}
-
-func (o IoTEdgeAgentInfoOutput) ToIoTEdgeAgentInfoPtrOutput() IoTEdgeAgentInfoPtrOutput {
-	return o.ToIoTEdgeAgentInfoPtrOutputWithContext(context.Background())
-}
-
-func (o IoTEdgeAgentInfoOutput) ToIoTEdgeAgentInfoPtrOutputWithContext(ctx context.Context) IoTEdgeAgentInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IoTEdgeAgentInfo) *IoTEdgeAgentInfo {
-		return &v
-	}).(IoTEdgeAgentInfoPtrOutput)
-}
-
-// Name of the IoT edge agent image.
-func (o IoTEdgeAgentInfoOutput) ImageName() pulumi.StringOutput {
-	return o.ApplyT(func(v IoTEdgeAgentInfo) string { return v.ImageName }).(pulumi.StringOutput)
-}
-
-// Image repository details.
-func (o IoTEdgeAgentInfoOutput) ImageRepository() ImageRepositoryCredentialPtrOutput {
-	return o.ApplyT(func(v IoTEdgeAgentInfo) *ImageRepositoryCredential { return v.ImageRepository }).(ImageRepositoryCredentialPtrOutput)
-}
-
-// Image Tag.
-func (o IoTEdgeAgentInfoOutput) Tag() pulumi.StringOutput {
-	return o.ApplyT(func(v IoTEdgeAgentInfo) string { return v.Tag }).(pulumi.StringOutput)
-}
-
-type IoTEdgeAgentInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (IoTEdgeAgentInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IoTEdgeAgentInfo)(nil)).Elem()
-}
-
-func (o IoTEdgeAgentInfoPtrOutput) ToIoTEdgeAgentInfoPtrOutput() IoTEdgeAgentInfoPtrOutput {
-	return o
-}
-
-func (o IoTEdgeAgentInfoPtrOutput) ToIoTEdgeAgentInfoPtrOutputWithContext(ctx context.Context) IoTEdgeAgentInfoPtrOutput {
-	return o
-}
-
-func (o IoTEdgeAgentInfoPtrOutput) Elem() IoTEdgeAgentInfoOutput {
-	return o.ApplyT(func(v *IoTEdgeAgentInfo) IoTEdgeAgentInfo {
-		if v != nil {
-			return *v
-		}
-		var ret IoTEdgeAgentInfo
-		return ret
-	}).(IoTEdgeAgentInfoOutput)
-}
-
-// Name of the IoT edge agent image.
-func (o IoTEdgeAgentInfoPtrOutput) ImageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IoTEdgeAgentInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImageName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Image repository details.
-func (o IoTEdgeAgentInfoPtrOutput) ImageRepository() ImageRepositoryCredentialPtrOutput {
-	return o.ApplyT(func(v *IoTEdgeAgentInfo) *ImageRepositoryCredential {
-		if v == nil {
-			return nil
-		}
-		return v.ImageRepository
-	}).(ImageRepositoryCredentialPtrOutput)
-}
-
-// Image Tag.
-func (o IoTEdgeAgentInfoPtrOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IoTEdgeAgentInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Tag
-	}).(pulumi.StringPtrOutput)
 }
 
 // IoT edge agent details is optional, this will be used for download system Agent module while bootstrapping IoT Role if specified.
@@ -2829,55 +2089,6 @@ type KubernetesClusterInfo struct {
 	Version string `pulumi:"version"`
 }
 
-// KubernetesClusterInfoInput is an input type that accepts KubernetesClusterInfoArgs and KubernetesClusterInfoOutput values.
-// You can construct a concrete instance of `KubernetesClusterInfoInput` via:
-//
-//	KubernetesClusterInfoArgs{...}
-type KubernetesClusterInfoInput interface {
-	pulumi.Input
-
-	ToKubernetesClusterInfoOutput() KubernetesClusterInfoOutput
-	ToKubernetesClusterInfoOutputWithContext(context.Context) KubernetesClusterInfoOutput
-}
-
-// Kubernetes cluster configuration
-type KubernetesClusterInfoArgs struct {
-	// Kubernetes cluster version
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (KubernetesClusterInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesClusterInfo)(nil)).Elem()
-}
-
-func (i KubernetesClusterInfoArgs) ToKubernetesClusterInfoOutput() KubernetesClusterInfoOutput {
-	return i.ToKubernetesClusterInfoOutputWithContext(context.Background())
-}
-
-func (i KubernetesClusterInfoArgs) ToKubernetesClusterInfoOutputWithContext(ctx context.Context) KubernetesClusterInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterInfoOutput)
-}
-
-// Kubernetes cluster configuration
-type KubernetesClusterInfoOutput struct{ *pulumi.OutputState }
-
-func (KubernetesClusterInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesClusterInfo)(nil)).Elem()
-}
-
-func (o KubernetesClusterInfoOutput) ToKubernetesClusterInfoOutput() KubernetesClusterInfoOutput {
-	return o
-}
-
-func (o KubernetesClusterInfoOutput) ToKubernetesClusterInfoOutputWithContext(ctx context.Context) KubernetesClusterInfoOutput {
-	return o
-}
-
-// Kubernetes cluster version
-func (o KubernetesClusterInfoOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v KubernetesClusterInfo) string { return v.Version }).(pulumi.StringOutput)
-}
-
 // Kubernetes cluster configuration
 type KubernetesClusterInfoResponse struct {
 	// Etcd configuration
@@ -2977,55 +2188,6 @@ type KubernetesRoleCompute struct {
 	VmProfile string `pulumi:"vmProfile"`
 }
 
-// KubernetesRoleComputeInput is an input type that accepts KubernetesRoleComputeArgs and KubernetesRoleComputeOutput values.
-// You can construct a concrete instance of `KubernetesRoleComputeInput` via:
-//
-//	KubernetesRoleComputeArgs{...}
-type KubernetesRoleComputeInput interface {
-	pulumi.Input
-
-	ToKubernetesRoleComputeOutput() KubernetesRoleComputeOutput
-	ToKubernetesRoleComputeOutputWithContext(context.Context) KubernetesRoleComputeOutput
-}
-
-// Kubernetes role compute resource
-type KubernetesRoleComputeArgs struct {
-	// VM profile
-	VmProfile pulumi.StringInput `pulumi:"vmProfile"`
-}
-
-func (KubernetesRoleComputeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesRoleCompute)(nil)).Elem()
-}
-
-func (i KubernetesRoleComputeArgs) ToKubernetesRoleComputeOutput() KubernetesRoleComputeOutput {
-	return i.ToKubernetesRoleComputeOutputWithContext(context.Background())
-}
-
-func (i KubernetesRoleComputeArgs) ToKubernetesRoleComputeOutputWithContext(ctx context.Context) KubernetesRoleComputeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRoleComputeOutput)
-}
-
-// Kubernetes role compute resource
-type KubernetesRoleComputeOutput struct{ *pulumi.OutputState }
-
-func (KubernetesRoleComputeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesRoleCompute)(nil)).Elem()
-}
-
-func (o KubernetesRoleComputeOutput) ToKubernetesRoleComputeOutput() KubernetesRoleComputeOutput {
-	return o
-}
-
-func (o KubernetesRoleComputeOutput) ToKubernetesRoleComputeOutputWithContext(ctx context.Context) KubernetesRoleComputeOutput {
-	return o
-}
-
-// VM profile
-func (o KubernetesRoleComputeOutput) VmProfile() pulumi.StringOutput {
-	return o.ApplyT(func(v KubernetesRoleCompute) string { return v.VmProfile }).(pulumi.StringOutput)
-}
-
 // Kubernetes role compute resource
 type KubernetesRoleComputeResponse struct {
 	// Memory in bytes
@@ -3107,62 +2269,6 @@ type KubernetesRoleResources struct {
 	Storage *KubernetesRoleStorage `pulumi:"storage"`
 }
 
-// KubernetesRoleResourcesInput is an input type that accepts KubernetesRoleResourcesArgs and KubernetesRoleResourcesOutput values.
-// You can construct a concrete instance of `KubernetesRoleResourcesInput` via:
-//
-//	KubernetesRoleResourcesArgs{...}
-type KubernetesRoleResourcesInput interface {
-	pulumi.Input
-
-	ToKubernetesRoleResourcesOutput() KubernetesRoleResourcesOutput
-	ToKubernetesRoleResourcesOutputWithContext(context.Context) KubernetesRoleResourcesOutput
-}
-
-// Kubernetes role resources
-type KubernetesRoleResourcesArgs struct {
-	// Kubernetes role compute resource
-	Compute KubernetesRoleComputeInput `pulumi:"compute"`
-	// Kubernetes role storage resource
-	Storage KubernetesRoleStoragePtrInput `pulumi:"storage"`
-}
-
-func (KubernetesRoleResourcesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesRoleResources)(nil)).Elem()
-}
-
-func (i KubernetesRoleResourcesArgs) ToKubernetesRoleResourcesOutput() KubernetesRoleResourcesOutput {
-	return i.ToKubernetesRoleResourcesOutputWithContext(context.Background())
-}
-
-func (i KubernetesRoleResourcesArgs) ToKubernetesRoleResourcesOutputWithContext(ctx context.Context) KubernetesRoleResourcesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRoleResourcesOutput)
-}
-
-// Kubernetes role resources
-type KubernetesRoleResourcesOutput struct{ *pulumi.OutputState }
-
-func (KubernetesRoleResourcesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesRoleResources)(nil)).Elem()
-}
-
-func (o KubernetesRoleResourcesOutput) ToKubernetesRoleResourcesOutput() KubernetesRoleResourcesOutput {
-	return o
-}
-
-func (o KubernetesRoleResourcesOutput) ToKubernetesRoleResourcesOutputWithContext(ctx context.Context) KubernetesRoleResourcesOutput {
-	return o
-}
-
-// Kubernetes role compute resource
-func (o KubernetesRoleResourcesOutput) Compute() KubernetesRoleComputeOutput {
-	return o.ApplyT(func(v KubernetesRoleResources) KubernetesRoleCompute { return v.Compute }).(KubernetesRoleComputeOutput)
-}
-
-// Kubernetes role storage resource
-func (o KubernetesRoleResourcesOutput) Storage() KubernetesRoleStoragePtrOutput {
-	return o.ApplyT(func(v KubernetesRoleResources) *KubernetesRoleStorage { return v.Storage }).(KubernetesRoleStoragePtrOutput)
-}
-
 // Kubernetes role resources
 type KubernetesRoleResourcesResponse struct {
 	// Kubernetes role compute resource
@@ -3207,140 +2313,6 @@ func (o KubernetesRoleResourcesResponseOutput) Storage() KubernetesRoleStorageRe
 type KubernetesRoleStorage struct {
 	// Mount points of shares in role(s).
 	Endpoints []MountPointMap `pulumi:"endpoints"`
-}
-
-// KubernetesRoleStorageInput is an input type that accepts KubernetesRoleStorageArgs and KubernetesRoleStorageOutput values.
-// You can construct a concrete instance of `KubernetesRoleStorageInput` via:
-//
-//	KubernetesRoleStorageArgs{...}
-type KubernetesRoleStorageInput interface {
-	pulumi.Input
-
-	ToKubernetesRoleStorageOutput() KubernetesRoleStorageOutput
-	ToKubernetesRoleStorageOutputWithContext(context.Context) KubernetesRoleStorageOutput
-}
-
-// Kubernetes role storage resource
-type KubernetesRoleStorageArgs struct {
-	// Mount points of shares in role(s).
-	Endpoints MountPointMapArrayInput `pulumi:"endpoints"`
-}
-
-func (KubernetesRoleStorageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesRoleStorage)(nil)).Elem()
-}
-
-func (i KubernetesRoleStorageArgs) ToKubernetesRoleStorageOutput() KubernetesRoleStorageOutput {
-	return i.ToKubernetesRoleStorageOutputWithContext(context.Background())
-}
-
-func (i KubernetesRoleStorageArgs) ToKubernetesRoleStorageOutputWithContext(ctx context.Context) KubernetesRoleStorageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRoleStorageOutput)
-}
-
-func (i KubernetesRoleStorageArgs) ToKubernetesRoleStoragePtrOutput() KubernetesRoleStoragePtrOutput {
-	return i.ToKubernetesRoleStoragePtrOutputWithContext(context.Background())
-}
-
-func (i KubernetesRoleStorageArgs) ToKubernetesRoleStoragePtrOutputWithContext(ctx context.Context) KubernetesRoleStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRoleStorageOutput).ToKubernetesRoleStoragePtrOutputWithContext(ctx)
-}
-
-// KubernetesRoleStoragePtrInput is an input type that accepts KubernetesRoleStorageArgs, KubernetesRoleStoragePtr and KubernetesRoleStoragePtrOutput values.
-// You can construct a concrete instance of `KubernetesRoleStoragePtrInput` via:
-//
-//	        KubernetesRoleStorageArgs{...}
-//
-//	or:
-//
-//	        nil
-type KubernetesRoleStoragePtrInput interface {
-	pulumi.Input
-
-	ToKubernetesRoleStoragePtrOutput() KubernetesRoleStoragePtrOutput
-	ToKubernetesRoleStoragePtrOutputWithContext(context.Context) KubernetesRoleStoragePtrOutput
-}
-
-type kubernetesRoleStoragePtrType KubernetesRoleStorageArgs
-
-func KubernetesRoleStoragePtr(v *KubernetesRoleStorageArgs) KubernetesRoleStoragePtrInput {
-	return (*kubernetesRoleStoragePtrType)(v)
-}
-
-func (*kubernetesRoleStoragePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesRoleStorage)(nil)).Elem()
-}
-
-func (i *kubernetesRoleStoragePtrType) ToKubernetesRoleStoragePtrOutput() KubernetesRoleStoragePtrOutput {
-	return i.ToKubernetesRoleStoragePtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesRoleStoragePtrType) ToKubernetesRoleStoragePtrOutputWithContext(ctx context.Context) KubernetesRoleStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRoleStoragePtrOutput)
-}
-
-// Kubernetes role storage resource
-type KubernetesRoleStorageOutput struct{ *pulumi.OutputState }
-
-func (KubernetesRoleStorageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesRoleStorage)(nil)).Elem()
-}
-
-func (o KubernetesRoleStorageOutput) ToKubernetesRoleStorageOutput() KubernetesRoleStorageOutput {
-	return o
-}
-
-func (o KubernetesRoleStorageOutput) ToKubernetesRoleStorageOutputWithContext(ctx context.Context) KubernetesRoleStorageOutput {
-	return o
-}
-
-func (o KubernetesRoleStorageOutput) ToKubernetesRoleStoragePtrOutput() KubernetesRoleStoragePtrOutput {
-	return o.ToKubernetesRoleStoragePtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesRoleStorageOutput) ToKubernetesRoleStoragePtrOutputWithContext(ctx context.Context) KubernetesRoleStoragePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesRoleStorage) *KubernetesRoleStorage {
-		return &v
-	}).(KubernetesRoleStoragePtrOutput)
-}
-
-// Mount points of shares in role(s).
-func (o KubernetesRoleStorageOutput) Endpoints() MountPointMapArrayOutput {
-	return o.ApplyT(func(v KubernetesRoleStorage) []MountPointMap { return v.Endpoints }).(MountPointMapArrayOutput)
-}
-
-type KubernetesRoleStoragePtrOutput struct{ *pulumi.OutputState }
-
-func (KubernetesRoleStoragePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesRoleStorage)(nil)).Elem()
-}
-
-func (o KubernetesRoleStoragePtrOutput) ToKubernetesRoleStoragePtrOutput() KubernetesRoleStoragePtrOutput {
-	return o
-}
-
-func (o KubernetesRoleStoragePtrOutput) ToKubernetesRoleStoragePtrOutputWithContext(ctx context.Context) KubernetesRoleStoragePtrOutput {
-	return o
-}
-
-func (o KubernetesRoleStoragePtrOutput) Elem() KubernetesRoleStorageOutput {
-	return o.ApplyT(func(v *KubernetesRoleStorage) KubernetesRoleStorage {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesRoleStorage
-		return ret
-	}).(KubernetesRoleStorageOutput)
-}
-
-// Mount points of shares in role(s).
-func (o KubernetesRoleStoragePtrOutput) Endpoints() MountPointMapArrayOutput {
-	return o.ApplyT(func(v *KubernetesRoleStorage) []MountPointMap {
-		if v == nil {
-			return nil
-		}
-		return v.Endpoints
-	}).(MountPointMapArrayOutput)
 }
 
 // Kubernetes storage class info.
@@ -4217,100 +3189,6 @@ type MountPointMap struct {
 	ShareId string `pulumi:"shareId"`
 }
 
-// MountPointMapInput is an input type that accepts MountPointMap and MountPointMapOutput values.
-// You can construct a concrete instance of `MountPointMapInput` via:
-//
-//	MountPointMap{ "key": MountPointArgs{...} }
-type MountPointMapInput interface {
-	pulumi.Input
-
-	ToMountPointMapOutput() MountPointMapOutput
-	ToMountPointMapOutputWithContext(context.Context) MountPointMapOutput
-}
-
-// The share mount point.
-type MountPointMapArgs struct {
-	// ID of the share mounted to the role VM.
-	ShareId pulumi.StringInput `pulumi:"shareId"`
-}
-
-func (MountPointMapArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountPointMap)(nil)).Elem()
-}
-
-func (i MountPointMapArgs) ToMountPointMapOutput() MountPointMapOutput {
-	return i.ToMountPointMapOutputWithContext(context.Background())
-}
-
-func (i MountPointMapArgs) ToMountPointMapOutputWithContext(ctx context.Context) MountPointMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountPointMapOutput)
-}
-
-// MountPointMapArrayInput is an input type that accepts MountPointMapArray and MountPointMapArrayOutput values.
-// You can construct a concrete instance of `MountPointMapArrayInput` via:
-//
-//	MountPointMapArray{ MountPointMapArgs{...} }
-type MountPointMapArrayInput interface {
-	pulumi.Input
-
-	ToMountPointMapArrayOutput() MountPointMapArrayOutput
-	ToMountPointMapArrayOutputWithContext(context.Context) MountPointMapArrayOutput
-}
-
-type MountPointMapArray []MountPointMapInput
-
-func (MountPointMapArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MountPointMap)(nil)).Elem()
-}
-
-func (i MountPointMapArray) ToMountPointMapArrayOutput() MountPointMapArrayOutput {
-	return i.ToMountPointMapArrayOutputWithContext(context.Background())
-}
-
-func (i MountPointMapArray) ToMountPointMapArrayOutputWithContext(ctx context.Context) MountPointMapArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountPointMapArrayOutput)
-}
-
-// The share mount point.
-type MountPointMapOutput struct{ *pulumi.OutputState }
-
-func (MountPointMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountPointMap)(nil)).Elem()
-}
-
-func (o MountPointMapOutput) ToMountPointMapOutput() MountPointMapOutput {
-	return o
-}
-
-func (o MountPointMapOutput) ToMountPointMapOutputWithContext(ctx context.Context) MountPointMapOutput {
-	return o
-}
-
-// ID of the share mounted to the role VM.
-func (o MountPointMapOutput) ShareId() pulumi.StringOutput {
-	return o.ApplyT(func(v MountPointMap) string { return v.ShareId }).(pulumi.StringOutput)
-}
-
-type MountPointMapArrayOutput struct{ *pulumi.OutputState }
-
-func (MountPointMapArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MountPointMap)(nil)).Elem()
-}
-
-func (o MountPointMapArrayOutput) ToMountPointMapArrayOutput() MountPointMapArrayOutput {
-	return o
-}
-
-func (o MountPointMapArrayOutput) ToMountPointMapArrayOutputWithContext(ctx context.Context) MountPointMapArrayOutput {
-	return o
-}
-
-func (o MountPointMapArrayOutput) Index(i pulumi.IntInput) MountPointMapOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MountPointMap {
-		return vs[0].([]MountPointMap)[vs[1].(int)]
-	}).(MountPointMapOutput)
-}
-
 // The share mount point.
 type MountPointMapResponse struct {
 	// Mount point for the share.
@@ -4529,69 +3407,6 @@ type PeriodicTimerSourceInfo struct {
 	StartTime string `pulumi:"startTime"`
 	// Topic where periodic events are published to IoT device.
 	Topic *string `pulumi:"topic"`
-}
-
-// PeriodicTimerSourceInfoInput is an input type that accepts PeriodicTimerSourceInfoArgs and PeriodicTimerSourceInfoOutput values.
-// You can construct a concrete instance of `PeriodicTimerSourceInfoInput` via:
-//
-//	PeriodicTimerSourceInfoArgs{...}
-type PeriodicTimerSourceInfoInput interface {
-	pulumi.Input
-
-	ToPeriodicTimerSourceInfoOutput() PeriodicTimerSourceInfoOutput
-	ToPeriodicTimerSourceInfoOutputWithContext(context.Context) PeriodicTimerSourceInfoOutput
-}
-
-// Periodic timer event source.
-type PeriodicTimerSourceInfoArgs struct {
-	// Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds.
-	Schedule pulumi.StringInput `pulumi:"schedule"`
-	// The time of the day that results in a valid trigger. Schedule is computed with reference to the time specified upto seconds. If timezone is not specified the time will considered to be in device timezone. The value will always be returned as UTC time.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Topic where periodic events are published to IoT device.
-	Topic pulumi.StringPtrInput `pulumi:"topic"`
-}
-
-func (PeriodicTimerSourceInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeriodicTimerSourceInfo)(nil)).Elem()
-}
-
-func (i PeriodicTimerSourceInfoArgs) ToPeriodicTimerSourceInfoOutput() PeriodicTimerSourceInfoOutput {
-	return i.ToPeriodicTimerSourceInfoOutputWithContext(context.Background())
-}
-
-func (i PeriodicTimerSourceInfoArgs) ToPeriodicTimerSourceInfoOutputWithContext(ctx context.Context) PeriodicTimerSourceInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeriodicTimerSourceInfoOutput)
-}
-
-// Periodic timer event source.
-type PeriodicTimerSourceInfoOutput struct{ *pulumi.OutputState }
-
-func (PeriodicTimerSourceInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeriodicTimerSourceInfo)(nil)).Elem()
-}
-
-func (o PeriodicTimerSourceInfoOutput) ToPeriodicTimerSourceInfoOutput() PeriodicTimerSourceInfoOutput {
-	return o
-}
-
-func (o PeriodicTimerSourceInfoOutput) ToPeriodicTimerSourceInfoOutputWithContext(ctx context.Context) PeriodicTimerSourceInfoOutput {
-	return o
-}
-
-// Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds.
-func (o PeriodicTimerSourceInfoOutput) Schedule() pulumi.StringOutput {
-	return o.ApplyT(func(v PeriodicTimerSourceInfo) string { return v.Schedule }).(pulumi.StringOutput)
-}
-
-// The time of the day that results in a valid trigger. Schedule is computed with reference to the time specified upto seconds. If timezone is not specified the time will considered to be in device timezone. The value will always be returned as UTC time.
-func (o PeriodicTimerSourceInfoOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v PeriodicTimerSourceInfo) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-// Topic where periodic events are published to IoT device.
-func (o PeriodicTimerSourceInfoOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PeriodicTimerSourceInfo) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
 
 // Periodic timer event source.
@@ -5215,55 +4030,6 @@ type RoleSinkInfo struct {
 	RoleId string `pulumi:"roleId"`
 }
 
-// RoleSinkInfoInput is an input type that accepts RoleSinkInfoArgs and RoleSinkInfoOutput values.
-// You can construct a concrete instance of `RoleSinkInfoInput` via:
-//
-//	RoleSinkInfoArgs{...}
-type RoleSinkInfoInput interface {
-	pulumi.Input
-
-	ToRoleSinkInfoOutput() RoleSinkInfoOutput
-	ToRoleSinkInfoOutputWithContext(context.Context) RoleSinkInfoOutput
-}
-
-// Compute role against which events will be raised.
-type RoleSinkInfoArgs struct {
-	// Compute role ID.
-	RoleId pulumi.StringInput `pulumi:"roleId"`
-}
-
-func (RoleSinkInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleSinkInfo)(nil)).Elem()
-}
-
-func (i RoleSinkInfoArgs) ToRoleSinkInfoOutput() RoleSinkInfoOutput {
-	return i.ToRoleSinkInfoOutputWithContext(context.Background())
-}
-
-func (i RoleSinkInfoArgs) ToRoleSinkInfoOutputWithContext(ctx context.Context) RoleSinkInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoleSinkInfoOutput)
-}
-
-// Compute role against which events will be raised.
-type RoleSinkInfoOutput struct{ *pulumi.OutputState }
-
-func (RoleSinkInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleSinkInfo)(nil)).Elem()
-}
-
-func (o RoleSinkInfoOutput) ToRoleSinkInfoOutput() RoleSinkInfoOutput {
-	return o
-}
-
-func (o RoleSinkInfoOutput) ToRoleSinkInfoOutputWithContext(ctx context.Context) RoleSinkInfoOutput {
-	return o
-}
-
-// Compute role ID.
-func (o RoleSinkInfoOutput) RoleId() pulumi.StringOutput {
-	return o.ApplyT(func(v RoleSinkInfo) string { return v.RoleId }).(pulumi.StringOutput)
-}
-
 // Compute role against which events will be raised.
 type RoleSinkInfoResponse struct {
 	// Compute role ID.
@@ -5709,140 +4475,6 @@ type SymmetricKey struct {
 	ConnectionString *AsymmetricEncryptedSecret `pulumi:"connectionString"`
 }
 
-// SymmetricKeyInput is an input type that accepts SymmetricKeyArgs and SymmetricKeyOutput values.
-// You can construct a concrete instance of `SymmetricKeyInput` via:
-//
-//	SymmetricKeyArgs{...}
-type SymmetricKeyInput interface {
-	pulumi.Input
-
-	ToSymmetricKeyOutput() SymmetricKeyOutput
-	ToSymmetricKeyOutputWithContext(context.Context) SymmetricKeyOutput
-}
-
-// Symmetric key for authentication.
-type SymmetricKeyArgs struct {
-	// Connection string based on the symmetric key.
-	ConnectionString AsymmetricEncryptedSecretPtrInput `pulumi:"connectionString"`
-}
-
-func (SymmetricKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SymmetricKey)(nil)).Elem()
-}
-
-func (i SymmetricKeyArgs) ToSymmetricKeyOutput() SymmetricKeyOutput {
-	return i.ToSymmetricKeyOutputWithContext(context.Background())
-}
-
-func (i SymmetricKeyArgs) ToSymmetricKeyOutputWithContext(ctx context.Context) SymmetricKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SymmetricKeyOutput)
-}
-
-func (i SymmetricKeyArgs) ToSymmetricKeyPtrOutput() SymmetricKeyPtrOutput {
-	return i.ToSymmetricKeyPtrOutputWithContext(context.Background())
-}
-
-func (i SymmetricKeyArgs) ToSymmetricKeyPtrOutputWithContext(ctx context.Context) SymmetricKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SymmetricKeyOutput).ToSymmetricKeyPtrOutputWithContext(ctx)
-}
-
-// SymmetricKeyPtrInput is an input type that accepts SymmetricKeyArgs, SymmetricKeyPtr and SymmetricKeyPtrOutput values.
-// You can construct a concrete instance of `SymmetricKeyPtrInput` via:
-//
-//	        SymmetricKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type SymmetricKeyPtrInput interface {
-	pulumi.Input
-
-	ToSymmetricKeyPtrOutput() SymmetricKeyPtrOutput
-	ToSymmetricKeyPtrOutputWithContext(context.Context) SymmetricKeyPtrOutput
-}
-
-type symmetricKeyPtrType SymmetricKeyArgs
-
-func SymmetricKeyPtr(v *SymmetricKeyArgs) SymmetricKeyPtrInput {
-	return (*symmetricKeyPtrType)(v)
-}
-
-func (*symmetricKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SymmetricKey)(nil)).Elem()
-}
-
-func (i *symmetricKeyPtrType) ToSymmetricKeyPtrOutput() SymmetricKeyPtrOutput {
-	return i.ToSymmetricKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *symmetricKeyPtrType) ToSymmetricKeyPtrOutputWithContext(ctx context.Context) SymmetricKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SymmetricKeyPtrOutput)
-}
-
-// Symmetric key for authentication.
-type SymmetricKeyOutput struct{ *pulumi.OutputState }
-
-func (SymmetricKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SymmetricKey)(nil)).Elem()
-}
-
-func (o SymmetricKeyOutput) ToSymmetricKeyOutput() SymmetricKeyOutput {
-	return o
-}
-
-func (o SymmetricKeyOutput) ToSymmetricKeyOutputWithContext(ctx context.Context) SymmetricKeyOutput {
-	return o
-}
-
-func (o SymmetricKeyOutput) ToSymmetricKeyPtrOutput() SymmetricKeyPtrOutput {
-	return o.ToSymmetricKeyPtrOutputWithContext(context.Background())
-}
-
-func (o SymmetricKeyOutput) ToSymmetricKeyPtrOutputWithContext(ctx context.Context) SymmetricKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SymmetricKey) *SymmetricKey {
-		return &v
-	}).(SymmetricKeyPtrOutput)
-}
-
-// Connection string based on the symmetric key.
-func (o SymmetricKeyOutput) ConnectionString() AsymmetricEncryptedSecretPtrOutput {
-	return o.ApplyT(func(v SymmetricKey) *AsymmetricEncryptedSecret { return v.ConnectionString }).(AsymmetricEncryptedSecretPtrOutput)
-}
-
-type SymmetricKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (SymmetricKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SymmetricKey)(nil)).Elem()
-}
-
-func (o SymmetricKeyPtrOutput) ToSymmetricKeyPtrOutput() SymmetricKeyPtrOutput {
-	return o
-}
-
-func (o SymmetricKeyPtrOutput) ToSymmetricKeyPtrOutputWithContext(ctx context.Context) SymmetricKeyPtrOutput {
-	return o
-}
-
-func (o SymmetricKeyPtrOutput) Elem() SymmetricKeyOutput {
-	return o.ApplyT(func(v *SymmetricKey) SymmetricKey {
-		if v != nil {
-			return *v
-		}
-		var ret SymmetricKey
-		return ret
-	}).(SymmetricKeyOutput)
-}
-
-// Connection string based on the symmetric key.
-func (o SymmetricKeyPtrOutput) ConnectionString() AsymmetricEncryptedSecretPtrOutput {
-	return o.ApplyT(func(v *SymmetricKey) *AsymmetricEncryptedSecret {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectionString
-	}).(AsymmetricEncryptedSecretPtrOutput)
-}
-
 // Symmetric key for authentication.
 type SymmetricKeyResponse struct {
 	// Connection string based on the symmetric key.
@@ -6202,8 +4834,6 @@ func init() {
 	pulumi.RegisterOutputType(AsymmetricEncryptedSecretPtrOutput{})
 	pulumi.RegisterOutputType(AsymmetricEncryptedSecretResponseOutput{})
 	pulumi.RegisterOutputType(AsymmetricEncryptedSecretResponsePtrOutput{})
-	pulumi.RegisterOutputType(AuthenticationOutput{})
-	pulumi.RegisterOutputType(AuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AuthenticationResponseOutput{})
 	pulumi.RegisterOutputType(AuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureContainerInfoOutput{})
@@ -6215,8 +4845,6 @@ func init() {
 	pulumi.RegisterOutputType(ClientAccessRightResponseOutput{})
 	pulumi.RegisterOutputType(ClientAccessRightResponseArrayOutput{})
 	pulumi.RegisterOutputType(CniConfigResponseOutput{})
-	pulumi.RegisterOutputType(ComputeResourceOutput{})
-	pulumi.RegisterOutputType(ComputeResourcePtrOutput{})
 	pulumi.RegisterOutputType(ComputeResourceResponseOutput{})
 	pulumi.RegisterOutputType(ComputeResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContactDetailsOutput{})
@@ -6226,29 +4854,18 @@ func init() {
 	pulumi.RegisterOutputType(EdgeProfileSubscriptionResponseOutput{})
 	pulumi.RegisterOutputType(EdgeProfileSubscriptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(EtcdInfoResponseOutput{})
-	pulumi.RegisterOutputType(FileSourceInfoOutput{})
 	pulumi.RegisterOutputType(FileSourceInfoResponseOutput{})
-	pulumi.RegisterOutputType(ImageRepositoryCredentialOutput{})
-	pulumi.RegisterOutputType(ImageRepositoryCredentialPtrOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialResponseOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialResponsePtrOutput{})
-	pulumi.RegisterOutputType(IoTDeviceInfoOutput{})
 	pulumi.RegisterOutputType(IoTDeviceInfoResponseOutput{})
-	pulumi.RegisterOutputType(IoTEdgeAgentInfoOutput{})
-	pulumi.RegisterOutputType(IoTEdgeAgentInfoPtrOutput{})
 	pulumi.RegisterOutputType(IoTEdgeAgentInfoResponseOutput{})
 	pulumi.RegisterOutputType(IoTEdgeAgentInfoResponsePtrOutput{})
-	pulumi.RegisterOutputType(KubernetesClusterInfoOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterInfoResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesIPConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesIPConfigurationResponseArrayOutput{})
-	pulumi.RegisterOutputType(KubernetesRoleComputeOutput{})
 	pulumi.RegisterOutputType(KubernetesRoleComputeResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesRoleNetworkResponseOutput{})
-	pulumi.RegisterOutputType(KubernetesRoleResourcesOutput{})
 	pulumi.RegisterOutputType(KubernetesRoleResourcesResponseOutput{})
-	pulumi.RegisterOutputType(KubernetesRoleStorageOutput{})
-	pulumi.RegisterOutputType(KubernetesRoleStoragePtrOutput{})
 	pulumi.RegisterOutputType(KubernetesRoleStorageClassInfoResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesRoleStorageClassInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesRoleStorageResponseOutput{})
@@ -6270,15 +4887,12 @@ func init() {
 	pulumi.RegisterOutputType(MetricDimensionArrayOutput{})
 	pulumi.RegisterOutputType(MetricDimensionResponseOutput{})
 	pulumi.RegisterOutputType(MetricDimensionResponseArrayOutput{})
-	pulumi.RegisterOutputType(MountPointMapOutput{})
-	pulumi.RegisterOutputType(MountPointMapArrayOutput{})
 	pulumi.RegisterOutputType(MountPointMapResponseOutput{})
 	pulumi.RegisterOutputType(MountPointMapResponseArrayOutput{})
 	pulumi.RegisterOutputType(NodeInfoResponseOutput{})
 	pulumi.RegisterOutputType(NodeInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(OrderStatusResponseOutput{})
 	pulumi.RegisterOutputType(OrderStatusResponseArrayOutput{})
-	pulumi.RegisterOutputType(PeriodicTimerSourceInfoOutput{})
 	pulumi.RegisterOutputType(PeriodicTimerSourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(RefreshDetailsOutput{})
 	pulumi.RegisterOutputType(RefreshDetailsPtrOutput{})
@@ -6289,7 +4903,6 @@ func init() {
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceMoveDetailsResponseOutput{})
-	pulumi.RegisterOutputType(RoleSinkInfoOutput{})
 	pulumi.RegisterOutputType(RoleSinkInfoResponseOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})
 	pulumi.RegisterOutputType(SecretResponsePtrOutput{})
@@ -6301,8 +4914,6 @@ func init() {
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionRegisteredFeaturesResponseOutput{})
 	pulumi.RegisterOutputType(SubscriptionRegisteredFeaturesResponseArrayOutput{})
-	pulumi.RegisterOutputType(SymmetricKeyOutput{})
-	pulumi.RegisterOutputType(SymmetricKeyPtrOutput{})
 	pulumi.RegisterOutputType(SymmetricKeyResponseOutput{})
 	pulumi.RegisterOutputType(SymmetricKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})

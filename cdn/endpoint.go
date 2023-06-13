@@ -12,12 +12,15 @@ import (
 )
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
-// API Version: 2020-09-01.
+// API Version: 2023-05-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
 	// List of content types on which compression applies. The value should be a valid MIME type.
 	ContentTypesToCompress pulumi.StringArrayOutput `pulumi:"contentTypesToCompress"`
+	// The custom domains under the endpoint.
+	CustomDomains DeepCreatedCustomDomainResponseArrayOutput `pulumi:"customDomains"`
 	// A reference to the origin group.
 	DefaultOriginGroup ResourceReferenceResponsePtrOutput `pulumi:"defaultOriginGroup"`
 	// A policy that specifies the delivery rules to be used for an endpoint.
@@ -93,39 +96,6 @@ func NewEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cdn/v20150601:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20160402:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20161002:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20170402:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20171012:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20190415:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20190615:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20190615preview:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20191231:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20200331:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20200415:Endpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:cdn/v20200901:Endpoint"),
 		},
 		{
@@ -136,6 +106,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20221101preview:Endpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230501:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -301,6 +274,11 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 // List of content types on which compression applies. The value should be a valid MIME type.
 func (o EndpointOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringArrayOutput { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
+}
+
+// The custom domains under the endpoint.
+func (o EndpointOutput) CustomDomains() DeepCreatedCustomDomainResponseArrayOutput {
+	return o.ApplyT(func(v *Endpoint) DeepCreatedCustomDomainResponseArrayOutput { return v.CustomDomains }).(DeepCreatedCustomDomainResponseArrayOutput)
 }
 
 // A reference to the origin group.

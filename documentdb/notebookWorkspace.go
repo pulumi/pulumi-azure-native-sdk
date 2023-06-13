@@ -12,7 +12,8 @@ import (
 )
 
 // A notebook workspace resource
-// API Version: 2021-03-15.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type NotebookWorkspace struct {
 	pulumi.CustomResourceState
 
@@ -40,24 +41,6 @@ func NewNotebookWorkspace(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:NotebookWorkspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:NotebookWorkspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:NotebookWorkspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:NotebookWorkspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:NotebookWorkspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:NotebookWorkspace"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:NotebookWorkspace"),
 		},
@@ -110,7 +93,19 @@ func NewNotebookWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:NotebookWorkspace"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:NotebookWorkspace"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:NotebookWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

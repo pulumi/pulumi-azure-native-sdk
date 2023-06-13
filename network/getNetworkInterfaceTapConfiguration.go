@@ -11,7 +11,7 @@ import (
 )
 
 // Get the specified tap configuration on a network interface.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupNetworkInterfaceTapConfiguration(ctx *pulumi.Context, args *LookupNetworkInterfaceTapConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceTapConfigurationResult, error) {
 	var rv LookupNetworkInterfaceTapConfigurationResult
 	err := ctx.Invoke("azure-native:network:getNetworkInterfaceTapConfiguration", args, &rv, opts...)

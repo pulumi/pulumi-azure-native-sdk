@@ -12,7 +12,8 @@ import (
 )
 
 // Sync Group object.
-// API Version: 2020-03-01.
+// API Version: 2022-06-01.
+// Previous API Version: 2020-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SyncGroup struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type SyncGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Sync group status
 	SyncGroupStatus pulumi.StringOutput `pulumi:"syncGroupStatus"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Unique Id
@@ -40,30 +43,6 @@ func NewSyncGroup(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'StorageSyncServiceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:storagesync/v20170605preview:SyncGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20180402:SyncGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20180701:SyncGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20181001:SyncGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190201:SyncGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190301:SyncGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190601:SyncGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20191001:SyncGroup"),
-		},
 		{
 			Type: pulumi.String("azure-native:storagesync/v20200301:SyncGroup"),
 		},
@@ -170,6 +149,11 @@ func (o SyncGroupOutput) Name() pulumi.StringOutput {
 // Sync group status
 func (o SyncGroupOutput) SyncGroupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *SyncGroup) pulumi.StringOutput { return v.SyncGroupStatus }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SyncGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SyncGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

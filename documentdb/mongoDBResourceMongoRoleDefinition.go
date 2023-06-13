@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Mongo Role Definition.
-// API Version: 2021-10-15-preview.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-10-15-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MongoDBResourceMongoRoleDefinition struct {
 	pulumi.CustomResourceState
 
@@ -66,7 +67,19 @@ func NewMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:MongoDBResourceMongoRoleDefinition"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:MongoDBResourceMongoRoleDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

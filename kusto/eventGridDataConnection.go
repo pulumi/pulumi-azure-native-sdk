@@ -12,7 +12,8 @@ import (
 )
 
 // Class representing an Event Grid data connection.
-// API Version: 2021-01-01.
+// API Version: 2022-12-29.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type EventGridDataConnection struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,10 @@ type EventGridDataConnection struct {
 	ConsumerGroup pulumi.StringOutput `pulumi:"consumerGroup"`
 	// The data format of the message. Optionally the data format can be added to each message.
 	DataFormat pulumi.StringPtrOutput `pulumi:"dataFormat"`
+	// Indication for database routing information from the data connection, by default only database routing information is allowed
+	DatabaseRouting pulumi.StringPtrOutput `pulumi:"databaseRouting"`
+	// The resource ID of the event grid that is subscribed to the storage account events.
+	EventGridResourceId pulumi.StringPtrOutput `pulumi:"eventGridResourceId"`
 	// The resource ID where the event grid is configured to send events.
 	EventHubResourceId pulumi.StringOutput `pulumi:"eventHubResourceId"`
 	// A Boolean value that, if set to true, indicates that ingestion should ignore the first record of every file
@@ -31,6 +36,10 @@ type EventGridDataConnection struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// The object ID of managedIdentityResourceId
+	ManagedIdentityObjectId pulumi.StringOutput `pulumi:"managedIdentityObjectId"`
+	// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub and storage account.
+	ManagedIdentityResourceId pulumi.StringPtrOutput `pulumi:"managedIdentityResourceId"`
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName pulumi.StringPtrOutput `pulumi:"mappingRuleName"`
 	// The name of the resource
@@ -72,6 +81,9 @@ func NewEventGridDataConnection(ctx *pulumi.Context,
 	}
 	if args.StorageAccountResourceId == nil {
 		return nil, errors.New("invalid value for required argument 'StorageAccountResourceId'")
+	}
+	if args.DatabaseRouting == nil {
+		args.DatabaseRouting = pulumi.StringPtr("Single")
 	}
 	args.Kind = pulumi.String("EventGrid")
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -160,6 +172,10 @@ type eventGridDataConnectionArgs struct {
 	DataFormat *string `pulumi:"dataFormat"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
+	// Indication for database routing information from the data connection, by default only database routing information is allowed
+	DatabaseRouting *string `pulumi:"databaseRouting"`
+	// The resource ID of the event grid that is subscribed to the storage account events.
+	EventGridResourceId *string `pulumi:"eventGridResourceId"`
 	// The resource ID where the event grid is configured to send events.
 	EventHubResourceId string `pulumi:"eventHubResourceId"`
 	// A Boolean value that, if set to true, indicates that ingestion should ignore the first record of every file
@@ -169,6 +185,8 @@ type eventGridDataConnectionArgs struct {
 	Kind string `pulumi:"kind"`
 	// Resource location.
 	Location *string `pulumi:"location"`
+	// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub and storage account.
+	ManagedIdentityResourceId *string `pulumi:"managedIdentityResourceId"`
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName *string `pulumi:"mappingRuleName"`
 	// The name of the resource group containing the Kusto cluster.
@@ -193,6 +211,10 @@ type EventGridDataConnectionArgs struct {
 	DataFormat pulumi.StringPtrInput
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput
+	// Indication for database routing information from the data connection, by default only database routing information is allowed
+	DatabaseRouting pulumi.StringPtrInput
+	// The resource ID of the event grid that is subscribed to the storage account events.
+	EventGridResourceId pulumi.StringPtrInput
 	// The resource ID where the event grid is configured to send events.
 	EventHubResourceId pulumi.StringInput
 	// A Boolean value that, if set to true, indicates that ingestion should ignore the first record of every file
@@ -202,6 +224,8 @@ type EventGridDataConnectionArgs struct {
 	Kind pulumi.StringInput
 	// Resource location.
 	Location pulumi.StringPtrInput
+	// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub and storage account.
+	ManagedIdentityResourceId pulumi.StringPtrInput
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName pulumi.StringPtrInput
 	// The name of the resource group containing the Kusto cluster.
@@ -264,6 +288,16 @@ func (o EventGridDataConnectionOutput) DataFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringPtrOutput { return v.DataFormat }).(pulumi.StringPtrOutput)
 }
 
+// Indication for database routing information from the data connection, by default only database routing information is allowed
+func (o EventGridDataConnectionOutput) DatabaseRouting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringPtrOutput { return v.DatabaseRouting }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of the event grid that is subscribed to the storage account events.
+func (o EventGridDataConnectionOutput) EventGridResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringPtrOutput { return v.EventGridResourceId }).(pulumi.StringPtrOutput)
+}
+
 // The resource ID where the event grid is configured to send events.
 func (o EventGridDataConnectionOutput) EventHubResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringOutput { return v.EventHubResourceId }).(pulumi.StringOutput)
@@ -283,6 +317,16 @@ func (o EventGridDataConnectionOutput) Kind() pulumi.StringOutput {
 // Resource location.
 func (o EventGridDataConnectionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The object ID of managedIdentityResourceId
+func (o EventGridDataConnectionOutput) ManagedIdentityObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringOutput { return v.ManagedIdentityObjectId }).(pulumi.StringOutput)
+}
+
+// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub and storage account.
+func (o EventGridDataConnectionOutput) ManagedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringPtrOutput { return v.ManagedIdentityResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.

@@ -11,8 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// maintenance configuration.
-// API Version: 2021-03-01.
+// See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
+// API Version: 2023-04-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -20,9 +21,9 @@ type MaintenanceConfiguration struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Time slots on which upgrade is not allowed.
 	NotAllowedTime TimeSpanResponseArrayOutput `pulumi:"notAllowedTime"`
-	// The system meta data relating to this resource.
+	// The system metadata relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Weekday time slots allowed to upgrade.
+	// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
 	TimeInWeek TimeInWeekResponseArrayOutput `pulumi:"timeInWeek"`
 	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -135,6 +136,24 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230102preview:MaintenanceConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230201:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230301:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230401:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230402preview:MaintenanceConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource MaintenanceConfiguration
@@ -173,11 +192,11 @@ type maintenanceConfigurationArgs struct {
 	ConfigName *string `pulumi:"configName"`
 	// Time slots on which upgrade is not allowed.
 	NotAllowedTime []TimeSpan `pulumi:"notAllowedTime"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the managed cluster resource.
 	ResourceName string `pulumi:"resourceName"`
-	// Weekday time slots allowed to upgrade.
+	// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
 	TimeInWeek []TimeInWeek `pulumi:"timeInWeek"`
 }
 
@@ -187,11 +206,11 @@ type MaintenanceConfigurationArgs struct {
 	ConfigName pulumi.StringPtrInput
 	// Time slots on which upgrade is not allowed.
 	NotAllowedTime TimeSpanArrayInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the managed cluster resource.
 	ResourceName pulumi.StringInput
-	// Weekday time slots allowed to upgrade.
+	// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
 	TimeInWeek TimeInWeekArrayInput
 }
 
@@ -242,12 +261,12 @@ func (o MaintenanceConfigurationOutput) NotAllowedTime() TimeSpanResponseArrayOu
 	return o.ApplyT(func(v *MaintenanceConfiguration) TimeSpanResponseArrayOutput { return v.NotAllowedTime }).(TimeSpanResponseArrayOutput)
 }
 
-// The system meta data relating to this resource.
+// The system metadata relating to this resource.
 func (o MaintenanceConfigurationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Weekday time slots allowed to upgrade.
+// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
 func (o MaintenanceConfigurationOutput) TimeInWeek() TimeInWeekResponseArrayOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) TimeInWeekResponseArrayOutput { return v.TimeInWeek }).(TimeInWeekResponseArrayOutput)
 }

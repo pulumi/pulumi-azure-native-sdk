@@ -159,9 +159,6 @@ func NewWebApp(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:web:WebApp"),
 		},
 		{
-			Type: pulumi.String("azure-native:web/v20150801:WebApp"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20160801:WebApp"),
 		},
 		{

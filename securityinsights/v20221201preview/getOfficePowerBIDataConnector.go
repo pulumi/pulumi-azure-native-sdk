@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20221201preview:OfficePowerBIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:OfficePowerBIDataConnector to guarantee forwards compatibility.
-func LookupOfficePowerBIDataConnector(ctx *pulumi.Context, args *LookupOfficePowerBIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficePowerBIDataConnectorResult, error) {
-	var rv LookupOfficePowerBIDataConnectorResult
+func GetOfficePowerBIDataConnector(ctx *pulumi.Context, args *GetOfficePowerBIDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetOfficePowerBIDataConnectorResult, error) {
+	var rv GetOfficePowerBIDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getOfficePowerBIDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupOfficePowerBIDataConnector(ctx *pulumi.Context, args *LookupOfficePow
 	return &rv, nil
 }
 
-type LookupOfficePowerBIDataConnectorArgs struct {
+type GetOfficePowerBIDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupOfficePowerBIDataConnectorArgs struct {
 }
 
 // Represents Office Microsoft PowerBI data connector.
-type LookupOfficePowerBIDataConnectorResult struct {
+type GetOfficePowerBIDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes OfficePowerBIConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupOfficePowerBIDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupOfficePowerBIDataConnectorOutput(ctx *pulumi.Context, args LookupOfficePowerBIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOfficePowerBIDataConnectorResultOutput {
+func GetOfficePowerBIDataConnectorOutput(ctx *pulumi.Context, args GetOfficePowerBIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetOfficePowerBIDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOfficePowerBIDataConnectorResult, error) {
-			args := v.(LookupOfficePowerBIDataConnectorArgs)
-			r, err := LookupOfficePowerBIDataConnector(ctx, &args, opts...)
-			var s LookupOfficePowerBIDataConnectorResult
+		ApplyT(func(v interface{}) (GetOfficePowerBIDataConnectorResult, error) {
+			args := v.(GetOfficePowerBIDataConnectorArgs)
+			r, err := GetOfficePowerBIDataConnector(ctx, &args, opts...)
+			var s GetOfficePowerBIDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupOfficePowerBIDataConnectorResultOutput)
+		}).(GetOfficePowerBIDataConnectorResultOutput)
 }
 
-type LookupOfficePowerBIDataConnectorOutputArgs struct {
+type GetOfficePowerBIDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,68 +72,68 @@ type LookupOfficePowerBIDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupOfficePowerBIDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupOfficePowerBIDataConnectorArgs)(nil)).Elem()
+func (GetOfficePowerBIDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOfficePowerBIDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents Office Microsoft PowerBI data connector.
-type LookupOfficePowerBIDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetOfficePowerBIDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupOfficePowerBIDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupOfficePowerBIDataConnectorResult)(nil)).Elem()
+func (GetOfficePowerBIDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOfficePowerBIDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupOfficePowerBIDataConnectorResultOutput) ToLookupOfficePowerBIDataConnectorResultOutput() LookupOfficePowerBIDataConnectorResultOutput {
+func (o GetOfficePowerBIDataConnectorResultOutput) ToGetOfficePowerBIDataConnectorResultOutput() GetOfficePowerBIDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupOfficePowerBIDataConnectorResultOutput) ToLookupOfficePowerBIDataConnectorResultOutputWithContext(ctx context.Context) LookupOfficePowerBIDataConnectorResultOutput {
+func (o GetOfficePowerBIDataConnectorResultOutput) ToGetOfficePowerBIDataConnectorResultOutputWithContext(ctx context.Context) GetOfficePowerBIDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupOfficePowerBIDataConnectorResultOutput) DataTypes() OfficePowerBIConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) OfficePowerBIConnectorDataTypesResponse {
+func (o GetOfficePowerBIDataConnectorResultOutput) DataTypes() OfficePowerBIConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetOfficePowerBIDataConnectorResult) OfficePowerBIConnectorDataTypesResponse {
 		return v.DataTypes
 	}).(OfficePowerBIConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
-func (o LookupOfficePowerBIDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetOfficePowerBIDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOfficePowerBIDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupOfficePowerBIDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetOfficePowerBIDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficePowerBIDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'OfficePowerBI'.
-func (o LookupOfficePowerBIDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetOfficePowerBIDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficePowerBIDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupOfficePowerBIDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetOfficePowerBIDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficePowerBIDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupOfficePowerBIDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetOfficePowerBIDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetOfficePowerBIDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupOfficePowerBIDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetOfficePowerBIDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficePowerBIDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupOfficePowerBIDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetOfficePowerBIDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficePowerBIDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupOfficePowerBIDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetOfficePowerBIDataConnectorResultOutput{})
 }

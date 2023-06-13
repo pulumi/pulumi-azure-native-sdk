@@ -12,7 +12,8 @@ import (
 )
 
 // An application security group in a resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ApplicationSecurityGroup struct {
 	pulumi.CustomResourceState
 
@@ -43,24 +44,6 @@ func NewApplicationSecurityGroup(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20170901:ApplicationSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:ApplicationSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:ApplicationSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:ApplicationSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:ApplicationSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:ApplicationSecurityGroup"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:ApplicationSecurityGroup"),
 		},
@@ -147,6 +130,9 @@ func NewApplicationSecurityGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ApplicationSecurityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ApplicationSecurityGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -13,6 +13,7 @@ import (
 
 // The extended info of the manager.
 // API Version: 2017-06-01.
+// Previous API Version: 2017-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ManagerExtendedInfo struct {
 	pulumi.CustomResourceState
 
@@ -58,9 +59,6 @@ func NewManagerExtendedInfo(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:storsimple/v20161001:ManagerExtendedInfo"),
-		},
 		{
 			Type: pulumi.String("azure-native:storsimple/v20170601:ManagerExtendedInfo"),
 		},

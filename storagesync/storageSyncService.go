@@ -12,7 +12,8 @@ import (
 )
 
 // Storage Sync Service object.
-// API Version: 2020-03-01.
+// API Version: 2022-06-01.
+// Previous API Version: 2020-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type StorageSyncService struct {
 	pulumi.CustomResourceState
 
@@ -34,6 +35,8 @@ type StorageSyncService struct {
 	StorageSyncServiceStatus pulumi.IntOutput `pulumi:"storageSyncServiceStatus"`
 	// Storage Sync service Uid
 	StorageSyncServiceUid pulumi.StringOutput `pulumi:"storageSyncServiceUid"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -51,30 +54,6 @@ func NewStorageSyncService(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:storagesync/v20170605preview:StorageSyncService"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20180402:StorageSyncService"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20180701:StorageSyncService"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20181001:StorageSyncService"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190201:StorageSyncService"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190301:StorageSyncService"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190601:StorageSyncService"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20191001:StorageSyncService"),
-		},
 		{
 			Type: pulumi.String("azure-native:storagesync/v20200301:StorageSyncService"),
 		},
@@ -226,6 +205,11 @@ func (o StorageSyncServiceOutput) StorageSyncServiceStatus() pulumi.IntOutput {
 // Storage Sync service Uid
 func (o StorageSyncServiceOutput) StorageSyncServiceUid() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageSyncService) pulumi.StringOutput { return v.StorageSyncServiceUid }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o StorageSyncServiceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *StorageSyncService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

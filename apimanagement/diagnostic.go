@@ -12,7 +12,8 @@ import (
 )
 
 // Diagnostic details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Diagnostic struct {
 	pulumi.CustomResourceState
 
@@ -30,13 +31,13 @@ type Diagnostic struct {
 	LoggerId pulumi.StringOutput `pulumi:"loggerId"`
 	// Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
 	Metrics pulumi.BoolPtrOutput `pulumi:"metrics"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The format of the Operation Name for Application Insights telemetries. Default is Name.
 	OperationNameFormat pulumi.StringPtrOutput `pulumi:"operationNameFormat"`
 	// Sampling settings for Diagnostic.
 	Sampling SamplingSettingsResponsePtrOutput `pulumi:"sampling"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The verbosity level applied to traces emitted by trace policies.
 	Verbosity pulumi.StringPtrOutput `pulumi:"verbosity"`
@@ -101,6 +102,9 @@ func NewDiagnostic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Diagnostic"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Diagnostic"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Diagnostic
@@ -153,7 +157,7 @@ type diagnosticArgs struct {
 	Metrics *bool `pulumi:"metrics"`
 	// The format of the Operation Name for Application Insights telemetries. Default is Name.
 	OperationNameFormat *string `pulumi:"operationNameFormat"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Sampling settings for Diagnostic.
 	Sampling *SamplingSettings `pulumi:"sampling"`
@@ -183,7 +187,7 @@ type DiagnosticArgs struct {
 	Metrics pulumi.BoolPtrInput
 	// The format of the Operation Name for Application Insights telemetries. Default is Name.
 	OperationNameFormat pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Sampling settings for Diagnostic.
 	Sampling SamplingSettingsPtrInput
@@ -265,7 +269,7 @@ func (o DiagnosticOutput) Metrics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Diagnostic) pulumi.BoolPtrOutput { return v.Metrics }).(pulumi.BoolPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o DiagnosticOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Diagnostic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -280,7 +284,7 @@ func (o DiagnosticOutput) Sampling() SamplingSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *Diagnostic) SamplingSettingsResponsePtrOutput { return v.Sampling }).(SamplingSettingsResponsePtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DiagnosticOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Diagnostic) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

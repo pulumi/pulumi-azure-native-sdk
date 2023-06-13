@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the secret of the named value specified by its identifier.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func ListNamedValue(ctx *pulumi.Context, args *ListNamedValueArgs, opts ...pulumi.InvokeOption) (*ListNamedValueResult, error) {
 	var rv ListNamedValueResult
 	err := ctx.Invoke("azure-native:apimanagement:listNamedValue", args, &rv, opts...)
@@ -24,7 +24,7 @@ func ListNamedValue(ctx *pulumi.Context, args *ListNamedValueArgs, opts ...pulum
 type ListNamedValueArgs struct {
 	// Identifier of the NamedValue.
 	NamedValueId string `pulumi:"namedValueId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -52,7 +52,7 @@ func ListNamedValueOutput(ctx *pulumi.Context, args ListNamedValueOutputArgs, op
 type ListNamedValueOutputArgs struct {
 	// Identifier of the NamedValue.
 	NamedValueId pulumi.StringInput `pulumi:"namedValueId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

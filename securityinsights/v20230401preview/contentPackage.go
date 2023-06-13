@@ -92,6 +92,15 @@ func NewContentPackage(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:securityinsights:ContentPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:ContentPackage"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ContentPackage
 	err := ctx.RegisterResource("azure-native:securityinsights/v20230401preview:ContentPackage", name, args, &resource, opts...)
 	if err != nil {

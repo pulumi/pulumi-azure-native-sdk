@@ -12,7 +12,8 @@ import (
 )
 
 // Fabric definition.
-// API Version: 2018-07-10.
+// API Version: 2023-04-01.
+// Previous API Version: 2018-07-10. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ReplicationFabric struct {
 	pulumi.CustomResourceState
 
@@ -40,12 +41,6 @@ func NewReplicationFabric(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20160810:ReplicationFabric"),
-		},
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20180110:ReplicationFabric"),
-		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20180710:ReplicationFabric"),
 		},
@@ -105,6 +100,9 @@ func NewReplicationFabric(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ReplicationFabric"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:ReplicationFabric"),
 		},
 	})
 	opts = append(opts, aliases)

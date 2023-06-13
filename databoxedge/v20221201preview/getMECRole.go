@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a specific role by name.
-//
-// Deprecated: azure-native:databoxedge/v20221201preview:MECRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:MECRole to guarantee forwards compatibility.
-func LookupMECRole(ctx *pulumi.Context, args *LookupMECRoleArgs, opts ...pulumi.InvokeOption) (*LookupMECRoleResult, error) {
-	var rv LookupMECRoleResult
+func GetMECRole(ctx *pulumi.Context, args *GetMECRoleArgs, opts ...pulumi.InvokeOption) (*GetMECRoleResult, error) {
+	var rv GetMECRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20221201preview:getMECRole", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupMECRole(ctx *pulumi.Context, args *LookupMECRoleArgs, opts ...pulumi.
 	return &rv, nil
 }
 
-type LookupMECRoleArgs struct {
+type GetMECRoleArgs struct {
 	// The device name.
 	DeviceName string `pulumi:"deviceName"`
 	// The role name.
@@ -32,7 +30,7 @@ type LookupMECRoleArgs struct {
 }
 
 // MEC role.
-type LookupMECRoleResult struct {
+type GetMECRoleResult struct {
 	// Activation key of the MEC.
 	ConnectionString *AsymmetricEncryptedSecretResponse `pulumi:"connectionString"`
 	// Controller Endpoint.
@@ -54,20 +52,20 @@ type LookupMECRoleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupMECRoleOutput(ctx *pulumi.Context, args LookupMECRoleOutputArgs, opts ...pulumi.InvokeOption) LookupMECRoleResultOutput {
+func GetMECRoleOutput(ctx *pulumi.Context, args GetMECRoleOutputArgs, opts ...pulumi.InvokeOption) GetMECRoleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMECRoleResult, error) {
-			args := v.(LookupMECRoleArgs)
-			r, err := LookupMECRole(ctx, &args, opts...)
-			var s LookupMECRoleResult
+		ApplyT(func(v interface{}) (GetMECRoleResult, error) {
+			args := v.(GetMECRoleArgs)
+			r, err := GetMECRole(ctx, &args, opts...)
+			var s GetMECRoleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupMECRoleResultOutput)
+		}).(GetMECRoleResultOutput)
 }
 
-type LookupMECRoleOutputArgs struct {
+type GetMECRoleOutputArgs struct {
 	// The device name.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// The role name.
@@ -76,71 +74,71 @@ type LookupMECRoleOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
-func (LookupMECRoleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMECRoleArgs)(nil)).Elem()
+func (GetMECRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMECRoleArgs)(nil)).Elem()
 }
 
 // MEC role.
-type LookupMECRoleResultOutput struct{ *pulumi.OutputState }
+type GetMECRoleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupMECRoleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMECRoleResult)(nil)).Elem()
+func (GetMECRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMECRoleResult)(nil)).Elem()
 }
 
-func (o LookupMECRoleResultOutput) ToLookupMECRoleResultOutput() LookupMECRoleResultOutput {
+func (o GetMECRoleResultOutput) ToGetMECRoleResultOutput() GetMECRoleResultOutput {
 	return o
 }
 
-func (o LookupMECRoleResultOutput) ToLookupMECRoleResultOutputWithContext(ctx context.Context) LookupMECRoleResultOutput {
+func (o GetMECRoleResultOutput) ToGetMECRoleResultOutputWithContext(ctx context.Context) GetMECRoleResultOutput {
 	return o
 }
 
 // Activation key of the MEC.
-func (o LookupMECRoleResultOutput) ConnectionString() AsymmetricEncryptedSecretResponsePtrOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) *AsymmetricEncryptedSecretResponse { return v.ConnectionString }).(AsymmetricEncryptedSecretResponsePtrOutput)
+func (o GetMECRoleResultOutput) ConnectionString() AsymmetricEncryptedSecretResponsePtrOutput {
+	return o.ApplyT(func(v GetMECRoleResult) *AsymmetricEncryptedSecretResponse { return v.ConnectionString }).(AsymmetricEncryptedSecretResponsePtrOutput)
 }
 
 // Controller Endpoint.
-func (o LookupMECRoleResultOutput) ControllerEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) *string { return v.ControllerEndpoint }).(pulumi.StringPtrOutput)
+func (o GetMECRoleResultOutput) ControllerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMECRoleResult) *string { return v.ControllerEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // The path ID that uniquely identifies the object.
-func (o LookupMECRoleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetMECRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMECRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Role type.
 // Expected value is 'MEC'.
-func (o LookupMECRoleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetMECRoleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMECRoleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The object name.
-func (o LookupMECRoleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetMECRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMECRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Unique Id of the Resource.
-func (o LookupMECRoleResultOutput) ResourceUniqueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) *string { return v.ResourceUniqueId }).(pulumi.StringPtrOutput)
+func (o GetMECRoleResultOutput) ResourceUniqueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMECRoleResult) *string { return v.ResourceUniqueId }).(pulumi.StringPtrOutput)
 }
 
 // Role status.
-func (o LookupMECRoleResultOutput) RoleStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
+func (o GetMECRoleResultOutput) RoleStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMECRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
 }
 
 // Metadata pertaining to creation and last modification of Role
-func (o LookupMECRoleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetMECRoleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetMECRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.
-func (o LookupMECRoleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMECRoleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetMECRoleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMECRoleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupMECRoleResultOutput{})
+	pulumi.RegisterOutputType(GetMECRoleResultOutput{})
 }

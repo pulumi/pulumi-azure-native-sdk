@@ -12,7 +12,8 @@ import (
 )
 
 // A vSphere Distributed Resource Scheduler (DRS) placement policy
-// API Version: 2021-12-01.
+// API Version: 2022-05-01.
+// Previous API Version: 2021-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PlacementPolicy struct {
 	pulumi.CustomResourceState
 

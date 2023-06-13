@@ -56,6 +56,12 @@ func NewMachineExtension(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:MachineExtension"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource MachineExtension
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:MachineExtension", name, args, &resource, opts...)
 	if err != nil {

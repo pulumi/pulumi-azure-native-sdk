@@ -11,7 +11,7 @@ import (
 )
 
 // Get the details of a Streaming Locator in the Media Services account
-// API Version: 2020-05-01.
+// API Version: 2023-01-01.
 func LookupStreamingLocator(ctx *pulumi.Context, args *LookupStreamingLocatorArgs, opts ...pulumi.InvokeOption) (*LookupStreamingLocatorResult, error) {
 	var rv LookupStreamingLocatorResult
 	err := ctx.Invoke("azure-native:media:getStreamingLocator", args, &rv, opts...)

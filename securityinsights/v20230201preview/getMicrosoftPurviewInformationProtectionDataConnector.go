@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20230201preview:MicrosoftPurviewInformationProtectionDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MicrosoftPurviewInformationProtectionDataConnector to guarantee forwards compatibility.
-func LookupMicrosoftPurviewInformationProtectionDataConnector(ctx *pulumi.Context, args *LookupMicrosoftPurviewInformationProtectionDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMicrosoftPurviewInformationProtectionDataConnectorResult, error) {
-	var rv LookupMicrosoftPurviewInformationProtectionDataConnectorResult
+func GetMicrosoftPurviewInformationProtectionDataConnector(ctx *pulumi.Context, args *GetMicrosoftPurviewInformationProtectionDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetMicrosoftPurviewInformationProtectionDataConnectorResult, error) {
+	var rv GetMicrosoftPurviewInformationProtectionDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getMicrosoftPurviewInformationProtectionDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupMicrosoftPurviewInformationProtectionDataConnector(ctx *pulumi.Contex
 	return &rv, nil
 }
 
-type LookupMicrosoftPurviewInformationProtectionDataConnectorArgs struct {
+type GetMicrosoftPurviewInformationProtectionDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupMicrosoftPurviewInformationProtectionDataConnectorArgs struct {
 }
 
 // Represents Microsoft Purview Information Protection data connector.
-type LookupMicrosoftPurviewInformationProtectionDataConnectorResult struct {
+type GetMicrosoftPurviewInformationProtectionDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes MicrosoftPurviewInformationProtectionConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupMicrosoftPurviewInformationProtectionDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupMicrosoftPurviewInformationProtectionDataConnectorOutput(ctx *pulumi.Context, args LookupMicrosoftPurviewInformationProtectionDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput {
+func GetMicrosoftPurviewInformationProtectionDataConnectorOutput(ctx *pulumi.Context, args GetMicrosoftPurviewInformationProtectionDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMicrosoftPurviewInformationProtectionDataConnectorResult, error) {
-			args := v.(LookupMicrosoftPurviewInformationProtectionDataConnectorArgs)
-			r, err := LookupMicrosoftPurviewInformationProtectionDataConnector(ctx, &args, opts...)
-			var s LookupMicrosoftPurviewInformationProtectionDataConnectorResult
+		ApplyT(func(v interface{}) (GetMicrosoftPurviewInformationProtectionDataConnectorResult, error) {
+			args := v.(GetMicrosoftPurviewInformationProtectionDataConnectorArgs)
+			r, err := GetMicrosoftPurviewInformationProtectionDataConnector(ctx, &args, opts...)
+			var s GetMicrosoftPurviewInformationProtectionDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput)
+		}).(GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput)
 }
 
-type LookupMicrosoftPurviewInformationProtectionDataConnectorOutputArgs struct {
+type GetMicrosoftPurviewInformationProtectionDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,70 +72,70 @@ type LookupMicrosoftPurviewInformationProtectionDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupMicrosoftPurviewInformationProtectionDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMicrosoftPurviewInformationProtectionDataConnectorArgs)(nil)).Elem()
+func (GetMicrosoftPurviewInformationProtectionDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrosoftPurviewInformationProtectionDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents Microsoft Purview Information Protection data connector.
-type LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMicrosoftPurviewInformationProtectionDataConnectorResult)(nil)).Elem()
+func (GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrosoftPurviewInformationProtectionDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) ToLookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput() LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput {
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) ToGetMicrosoftPurviewInformationProtectionDataConnectorResultOutput() GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) ToLookupMicrosoftPurviewInformationProtectionDataConnectorResultOutputWithContext(ctx context.Context) LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput {
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) ToGetMicrosoftPurviewInformationProtectionDataConnectorResultOutputWithContext(ctx context.Context) GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) DataTypes() MicrosoftPurviewInformationProtectionConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupMicrosoftPurviewInformationProtectionDataConnectorResult) MicrosoftPurviewInformationProtectionConnectorDataTypesResponse {
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) DataTypes() MicrosoftPurviewInformationProtectionConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetMicrosoftPurviewInformationProtectionDataConnectorResult) MicrosoftPurviewInformationProtectionConnectorDataTypesResponse {
 		return v.DataTypes
 	}).(MicrosoftPurviewInformationProtectionConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMicrosoftPurviewInformationProtectionDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrosoftPurviewInformationProtectionDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'MicrosoftPurviewInformationProtection'.
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMicrosoftPurviewInformationProtectionDataConnectorResult) SystemDataResponse {
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetMicrosoftPurviewInformationProtectionDataConnectorResult) SystemDataResponse {
 		return v.SystemData
 	}).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftPurviewInformationProtectionDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetMicrosoftPurviewInformationProtectionDataConnectorResultOutput{})
 }

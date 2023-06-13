@@ -12,7 +12,8 @@ import (
 )
 
 // Quota Rule of a Volume
-// API Version: 2022-01-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2022-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VolumeQuotaRule struct {
 	pulumi.CustomResourceState
 
@@ -114,7 +115,7 @@ type volumeQuotaRuleArgs struct {
 	QuotaTarget *string `pulumi:"quotaTarget"`
 	// Type of quota
 	QuotaType *string `pulumi:"quotaType"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -138,7 +139,7 @@ type VolumeQuotaRuleArgs struct {
 	QuotaTarget pulumi.StringPtrInput
 	// Type of quota
 	QuotaType pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput

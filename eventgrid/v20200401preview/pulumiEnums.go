@@ -91,15 +91,6 @@ const (
 	IpActionTypeAllow = IpActionType("Allow")
 )
 
-// Visibility state of the partner registration.
-type PartnerRegistrationVisibilityState string
-
-const (
-	PartnerRegistrationVisibilityStateHidden             = PartnerRegistrationVisibilityState("Hidden")
-	PartnerRegistrationVisibilityStatePublicPreview      = PartnerRegistrationVisibilityState("PublicPreview")
-	PartnerRegistrationVisibilityStateGenerallyAvailable = PartnerRegistrationVisibilityState("GenerallyAvailable")
-)
-
 // Status of the connection.
 type PersistedConnectionStatus string
 

@@ -62,51 +62,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:LoadBalancer"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20150501preview:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:LoadBalancer"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:LoadBalancer"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:LoadBalancer"),
 		},
 		{
@@ -190,6 +145,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:LoadBalancer"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:LoadBalancer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource LoadBalancer
@@ -233,7 +191,7 @@ type loadBalancerArgs struct {
 	// Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound Nat rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.
 	InboundNatPools []InboundNatPool `pulumi:"inboundNatPools"`
 	// Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules.
-	InboundNatRules []InboundNatRuleType `pulumi:"inboundNatRules"`
+	InboundNatRules []InboundNatRule `pulumi:"inboundNatRules"`
 	// The name of the load balancer.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
 	// Object collection representing the load balancing rules Gets the provisioning.
@@ -265,7 +223,7 @@ type LoadBalancerArgs struct {
 	// Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound Nat rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.
 	InboundNatPools InboundNatPoolArrayInput
 	// Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules.
-	InboundNatRules InboundNatRuleTypeArrayInput
+	InboundNatRules InboundNatRuleArrayInput
 	// The name of the load balancer.
 	LoadBalancerName pulumi.StringPtrInput
 	// Object collection representing the load balancing rules Gets the provisioning.

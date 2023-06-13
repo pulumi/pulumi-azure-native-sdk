@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Gremlin graph.
-// API Version: 2021-03-15.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type GremlinResourceGremlinGraph struct {
 	pulumi.CustomResourceState
 
@@ -49,39 +50,6 @@ func NewGremlinResourceGremlinGraph(ctx *pulumi.Context,
 	}
 	args.Resource = args.Resource.ToGremlinGraphResourceOutput().ApplyT(func(v GremlinGraphResource) GremlinGraphResource { return *v.Defaults() }).(GremlinGraphResourceOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150401:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150408:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20151106:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160319:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160331:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:GremlinResourceGremlinGraph"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:GremlinResourceGremlinGraph"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:GremlinResourceGremlinGraph"),
 		},
@@ -134,7 +102,19 @@ func NewGremlinResourceGremlinGraph(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:GremlinResourceGremlinGraph"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:GremlinResourceGremlinGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:GremlinResourceGremlinGraph"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:GremlinResourceGremlinGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:GremlinResourceGremlinGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:GremlinResourceGremlinGraph"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -13,6 +13,7 @@ import (
 
 // A SQL server.
 // API Version: 2019-07-24-preview.
+// Previous API Version: 2019-07-24-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlServer struct {
 	pulumi.CustomResourceState
 
@@ -46,9 +47,6 @@ func NewSqlServer(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'SqlServerRegistrationName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:azuredata/v20170301preview:SqlServer"),
-		},
 		{
 			Type: pulumi.String("azure-native:azuredata/v20190724preview:SqlServer"),
 		},

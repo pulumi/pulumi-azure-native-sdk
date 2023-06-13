@@ -12,11 +12,12 @@ import (
 )
 
 // Bot resource definition
-// API Version: 2021-03-01.
+// API Version: 2022-09-15.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Bot struct {
 	pulumi.CustomResourceState
 
-	// Entity Tag
+	// Entity Tag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
@@ -50,9 +51,6 @@ func NewBot(ctx *pulumi.Context,
 		args.Properties = args.Properties.ToBotPropertiesPtrOutput().ApplyT(func(v *BotProperties) *BotProperties { return v.Defaults() }).(BotPropertiesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:botservice/v20171201:Bot"),
-		},
 		{
 			Type: pulumi.String("azure-native:botservice/v20180712:Bot"),
 		},
@@ -176,7 +174,7 @@ func (o BotOutput) ToBotOutputWithContext(ctx context.Context) BotOutput {
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o BotOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }

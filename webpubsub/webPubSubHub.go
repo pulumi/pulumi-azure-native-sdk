@@ -12,7 +12,8 @@ import (
 )
 
 // A hub setting
-// API Version: 2021-10-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2021-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type WebPubSubHub struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +53,9 @@ func NewWebPubSubHub(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20230201:WebPubSubHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20230301preview:WebPubSubHub"),
 		},
 	})
 	opts = append(opts, aliases)

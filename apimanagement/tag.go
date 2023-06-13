@@ -12,15 +12,16 @@ import (
 )
 
 // Tag Contract details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Tag struct {
 	pulumi.CustomResourceState
 
 	// Tag name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -83,6 +84,9 @@ func NewTag(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Tag"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Tag"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Tag
@@ -119,7 +123,7 @@ func (TagState) ElementType() reflect.Type {
 type tagArgs struct {
 	// Tag name.
 	DisplayName string `pulumi:"displayName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -131,7 +135,7 @@ type tagArgs struct {
 type TagArgs struct {
 	// Tag name.
 	DisplayName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -181,12 +185,12 @@ func (o TagOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o TagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o TagOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

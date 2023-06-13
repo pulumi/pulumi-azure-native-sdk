@@ -83,6 +83,9 @@ func NewSyncAgent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220501preview:SyncAgent"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:SyncAgent"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SyncAgent

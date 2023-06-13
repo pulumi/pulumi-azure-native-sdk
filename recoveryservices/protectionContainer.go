@@ -12,7 +12,8 @@ import (
 )
 
 // Base class for container with backup items. Containers with specific workloads are derived from this class.
-// API Version: 2021-02-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2021-02-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ProtectionContainer struct {
 	pulumi.CustomResourceState
 
@@ -47,9 +48,6 @@ func NewProtectionContainer(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'VaultName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20161201:ProtectionContainer"),
-		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20201001:ProtectionContainer"),
 		},

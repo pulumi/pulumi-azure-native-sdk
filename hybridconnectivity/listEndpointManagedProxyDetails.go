@@ -11,7 +11,7 @@ import (
 )
 
 // Fetches the managed proxy details
-// API Version: 2022-05-01-preview.
+// API Version: 2023-03-15.
 func ListEndpointManagedProxyDetails(ctx *pulumi.Context, args *ListEndpointManagedProxyDetailsArgs, opts ...pulumi.InvokeOption) (*ListEndpointManagedProxyDetailsResult, error) {
 	var rv ListEndpointManagedProxyDetailsResult
 	err := ctx.Invoke("azure-native:hybridconnectivity:listEndpointManagedProxyDetails", args, &rv, opts...)
@@ -30,6 +30,8 @@ type ListEndpointManagedProxyDetailsArgs struct {
 	ResourceUri string `pulumi:"resourceUri"`
 	// The name of the service.
 	Service string `pulumi:"service"`
+	// The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // Managed Proxy
@@ -62,6 +64,8 @@ type ListEndpointManagedProxyDetailsOutputArgs struct {
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 	// The name of the service.
 	Service pulumi.StringInput `pulumi:"service"`
+	// The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
 func (ListEndpointManagedProxyDetailsOutputArgs) ElementType() reflect.Type {

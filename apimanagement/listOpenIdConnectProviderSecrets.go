@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the client secret details of the OpenID Connect Provider.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func ListOpenIdConnectProviderSecrets(ctx *pulumi.Context, args *ListOpenIdConnectProviderSecretsArgs, opts ...pulumi.InvokeOption) (*ListOpenIdConnectProviderSecretsResult, error) {
 	var rv ListOpenIdConnectProviderSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement:listOpenIdConnectProviderSecrets", args, &rv, opts...)
@@ -24,7 +24,7 @@ func ListOpenIdConnectProviderSecrets(ctx *pulumi.Context, args *ListOpenIdConne
 type ListOpenIdConnectProviderSecretsArgs struct {
 	// Identifier of the OpenID Connect Provider.
 	Opid string `pulumi:"opid"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -52,7 +52,7 @@ func ListOpenIdConnectProviderSecretsOutput(ctx *pulumi.Context, args ListOpenId
 type ListOpenIdConnectProviderSecretsOutputArgs struct {
 	// Identifier of the OpenID Connect Provider.
 	Opid pulumi.StringInput `pulumi:"opid"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

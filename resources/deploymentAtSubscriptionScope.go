@@ -12,7 +12,8 @@ import (
 )
 
 // Deployment information.
-// API Version: 2021-01-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DeploymentAtSubscriptionScope struct {
 	pulumi.CustomResourceState
 
@@ -39,12 +40,6 @@ func NewDeploymentAtSubscriptionScope(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:resources/v20180501:DeploymentAtSubscriptionScope"),
-		},
-		{
-			Type: pulumi.String("azure-native:resources/v20190301:DeploymentAtSubscriptionScope"),
-		},
 		{
 			Type: pulumi.String("azure-native:resources/v20190501:DeploymentAtSubscriptionScope"),
 		},

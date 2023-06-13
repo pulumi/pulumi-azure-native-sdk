@@ -11,7 +11,7 @@ import (
 )
 
 // Get a server's security alert policy.
-// API Version: 2017-12-01.
+// API Version: 2017-12-01-preview.
 func LookupServerSecurityAlertPolicy(ctx *pulumi.Context, args *LookupServerSecurityAlertPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServerSecurityAlertPolicyResult, error) {
 	var rv LookupServerSecurityAlertPolicyResult
 	err := ctx.Invoke("azure-native:dbforpostgresql:getServerSecurityAlertPolicy", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupServerSecurityAlertPolicy(ctx *pulumi.Context, args *LookupServerSecu
 }
 
 type LookupServerSecurityAlertPolicyArgs struct {
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the security alert policy.
 	SecurityAlertPolicyName string `pulumi:"securityAlertPolicyName"`
@@ -68,7 +68,7 @@ func LookupServerSecurityAlertPolicyOutput(ctx *pulumi.Context, args LookupServe
 }
 
 type LookupServerSecurityAlertPolicyOutputArgs struct {
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the security alert policy.
 	SecurityAlertPolicyName pulumi.StringInput `pulumi:"securityAlertPolicyName"`

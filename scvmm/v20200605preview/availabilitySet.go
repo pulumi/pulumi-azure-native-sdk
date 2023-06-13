@@ -49,6 +49,9 @@ func NewAvailabilitySet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm:AvailabilitySet"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:AvailabilitySet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AvailabilitySet

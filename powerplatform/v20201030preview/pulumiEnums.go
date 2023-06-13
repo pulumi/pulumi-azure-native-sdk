@@ -27,6 +27,7 @@ type HealthStatus string
 const (
 	HealthStatusUndetermined = HealthStatus("Undetermined")
 	HealthStatusHealthy      = HealthStatus("Healthy")
+	HealthStatusWarning      = HealthStatus("Warning")
 	HealthStatusUnhealthy    = HealthStatus("Unhealthy")
 )
 

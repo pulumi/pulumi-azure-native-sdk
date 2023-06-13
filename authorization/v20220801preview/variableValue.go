@@ -38,6 +38,12 @@ func NewVariableValue(ctx *pulumi.Context,
 	if args.VariableName == nil {
 		return nil, errors.New("invalid value for required argument 'VariableName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:authorization:VariableValue"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource VariableValue
 	err := ctx.RegisterResource("azure-native:authorization/v20220801preview:VariableValue", name, args, &resource, opts...)
 	if err != nil {

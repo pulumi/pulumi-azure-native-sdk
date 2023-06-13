@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a devcenter.
-// API Version: 2022-09-01-preview.
+// API Version: 2023-04-01.
 func LookupDevCenter(ctx *pulumi.Context, args *LookupDevCenterArgs, opts ...pulumi.InvokeOption) (*LookupDevCenterResult, error) {
 	var rv LookupDevCenterResult
 	err := ctx.Invoke("azure-native:devcenter:getDevCenter", args, &rv, opts...)
@@ -24,12 +24,14 @@ func LookupDevCenter(ctx *pulumi.Context, args *LookupDevCenterArgs, opts ...pul
 type LookupDevCenterArgs struct {
 	// The name of the devcenter.
 	DevCenterName string `pulumi:"devCenterName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Represents a devcenter resource.
 type LookupDevCenterResult struct {
+	// The URI of the Dev Center.
+	DevCenterUri string `pulumi:"devCenterUri"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed identity properties
@@ -64,7 +66,7 @@ func LookupDevCenterOutput(ctx *pulumi.Context, args LookupDevCenterOutputArgs, 
 type LookupDevCenterOutputArgs struct {
 	// The name of the devcenter.
 	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -85,6 +87,11 @@ func (o LookupDevCenterResultOutput) ToLookupDevCenterResultOutput() LookupDevCe
 
 func (o LookupDevCenterResultOutput) ToLookupDevCenterResultOutputWithContext(ctx context.Context) LookupDevCenterResultOutput {
 	return o
+}
+
+// The URI of the Dev Center.
+func (o LookupDevCenterResultOutput) DevCenterUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDevCenterResult) string { return v.DevCenterUri }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

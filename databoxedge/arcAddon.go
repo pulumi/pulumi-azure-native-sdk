@@ -12,7 +12,8 @@ import (
 )
 
 // Arc Addon.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ArcAddon struct {
 	pulumi.CustomResourceState
 
@@ -35,7 +36,7 @@ type ArcAddon struct {
 	ResourceName pulumi.StringOutput `pulumi:"resourceName"`
 	// Arc resource subscription Id
 	SubscriptionId pulumi.StringOutput `pulumi:"subscriptionId"`
-	// Addon type
+	// Metadata pertaining to creation and last modification of Addon
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -73,12 +74,6 @@ func NewArcAddon(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("ArcForKubernetes")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901:ArcAddon"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901preview:ArcAddon"),
-		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20201201:ArcAddon"),
 		},
@@ -263,7 +258,7 @@ func (o ArcAddonOutput) SubscriptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArcAddon) pulumi.StringOutput { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
-// Addon type
+// Metadata pertaining to creation and last modification of Addon
 func (o ArcAddonOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ArcAddon) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

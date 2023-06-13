@@ -65,6 +65,9 @@ func NewVmmServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm:VmmServer"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:VmmServer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VmmServer

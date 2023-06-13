@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,14 +37,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpFirewallRule{}
 	case "azure-native:synapse:Key":
 		r = &Key{}
+	case "azure-native:synapse:KustoPool":
+		r = &KustoPool{}
 	case "azure-native:synapse:KustoPoolAttachedDatabaseConfiguration":
 		r = &KustoPoolAttachedDatabaseConfiguration{}
+	case "azure-native:synapse:KustoPoolDatabasePrincipalAssignment":
+		r = &KustoPoolDatabasePrincipalAssignment{}
 	case "azure-native:synapse:KustoPoolPrincipalAssignment":
 		r = &KustoPoolPrincipalAssignment{}
 	case "azure-native:synapse:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:synapse:PrivateLinkHub":
 		r = &PrivateLinkHub{}
+	case "azure-native:synapse:ReadOnlyFollowingDatabase":
+		r = &ReadOnlyFollowingDatabase{}
 	case "azure-native:synapse:ReadWriteDatabase":
 		r = &ReadWriteDatabase{}
 	case "azure-native:synapse:SqlPool":
@@ -69,8 +75,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkspaceManagedSqlServerVulnerabilityAssessment{}
 	case "azure-native:synapse:WorkspaceSqlAadAdmin":
 		r = &WorkspaceSqlAadAdmin{}
-	case "azure-native:synapse:kustoPool":
-		r = &KustoPool{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

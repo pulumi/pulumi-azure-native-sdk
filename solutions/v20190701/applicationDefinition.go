@@ -77,27 +77,6 @@ func NewApplicationDefinition(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:solutions:ApplicationDefinition"),
 		},
 		{
-			Type: pulumi.String("azure-native:solutions/v20160901preview:ApplicationDefinition"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20170901:ApplicationDefinition"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20171201:ApplicationDefinition"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180201:ApplicationDefinition"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180301:ApplicationDefinition"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180601:ApplicationDefinition"),
-		},
-		{
-			Type: pulumi.String("azure-native:solutions/v20180901preview:ApplicationDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:solutions/v20200821preview:ApplicationDefinition"),
 		},
 		{

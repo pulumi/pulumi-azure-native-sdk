@@ -12,14 +12,19 @@ import (
 )
 
 // disk encryption set resource.
-// API Version: 2020-12-01.
+// API Version: 2022-07-02.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DiskEncryptionSet struct {
 	pulumi.CustomResourceState
 
 	// The key vault key which is currently used by this disk encryption set.
 	ActiveKey KeyForDiskEncryptionSetResponsePtrOutput `pulumi:"activeKey"`
+	// The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
+	AutoKeyRotationError ApiErrorResponseOutput `pulumi:"autoKeyRotationError"`
 	// The type of key used to encrypt the data of the disk.
 	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
+	// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
+	FederatedClientId pulumi.StringPtrOutput `pulumi:"federatedClientId"`
 	// The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
 	Identity EncryptionSetIdentityResponsePtrOutput `pulumi:"identity"`
 	// The time when the active key of this disk encryption set was updated.
@@ -51,18 +56,6 @@ func NewDiskEncryptionSet(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:compute/v20190701:DiskEncryptionSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20191101:DiskEncryptionSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20200501:DiskEncryptionSet"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20200630:DiskEncryptionSet"),
-		},
 		{
 			Type: pulumi.String("azure-native:compute/v20200930:DiskEncryptionSet"),
 		},
@@ -120,10 +113,12 @@ func (DiskEncryptionSetState) ElementType() reflect.Type {
 type diskEncryptionSetArgs struct {
 	// The key vault key which is currently used by this disk encryption set.
 	ActiveKey *KeyForDiskEncryptionSet `pulumi:"activeKey"`
-	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskEncryptionSetName *string `pulumi:"diskEncryptionSetName"`
 	// The type of key used to encrypt the data of the disk.
 	EncryptionType *string `pulumi:"encryptionType"`
+	// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
+	FederatedClientId *string `pulumi:"federatedClientId"`
 	// The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
 	Identity *EncryptionSetIdentity `pulumi:"identity"`
 	// Resource location
@@ -140,10 +135,12 @@ type diskEncryptionSetArgs struct {
 type DiskEncryptionSetArgs struct {
 	// The key vault key which is currently used by this disk encryption set.
 	ActiveKey KeyForDiskEncryptionSetPtrInput
-	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskEncryptionSetName pulumi.StringPtrInput
 	// The type of key used to encrypt the data of the disk.
 	EncryptionType pulumi.StringPtrInput
+	// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
+	FederatedClientId pulumi.StringPtrInput
 	// The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
 	Identity EncryptionSetIdentityPtrInput
 	// Resource location
@@ -198,9 +195,19 @@ func (o DiskEncryptionSetOutput) ActiveKey() KeyForDiskEncryptionSetResponsePtrO
 	return o.ApplyT(func(v *DiskEncryptionSet) KeyForDiskEncryptionSetResponsePtrOutput { return v.ActiveKey }).(KeyForDiskEncryptionSetResponsePtrOutput)
 }
 
+// The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
+func (o DiskEncryptionSetOutput) AutoKeyRotationError() ApiErrorResponseOutput {
+	return o.ApplyT(func(v *DiskEncryptionSet) ApiErrorResponseOutput { return v.AutoKeyRotationError }).(ApiErrorResponseOutput)
+}
+
 // The type of key used to encrypt the data of the disk.
 func (o DiskEncryptionSetOutput) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskEncryptionSet) pulumi.StringPtrOutput { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
+func (o DiskEncryptionSetOutput) FederatedClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionSet) pulumi.StringPtrOutput { return v.FederatedClientId }).(pulumi.StringPtrOutput)
 }
 
 // The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.

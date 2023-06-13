@@ -12,7 +12,8 @@ import (
 )
 
 // Snapshot policy information
-// API Version: 2020-12-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SnapshotPolicy struct {
 	pulumi.CustomResourceState
 
@@ -20,19 +21,23 @@ type SnapshotPolicy struct {
 	DailySchedule DailyScheduleResponsePtrOutput `pulumi:"dailySchedule"`
 	// The property to decide policy is enabled or not
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Schedule for hourly snapshots
 	HourlySchedule HourlyScheduleResponsePtrOutput `pulumi:"hourlySchedule"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Schedule for monthly snapshots
 	MonthlySchedule MonthlyScheduleResponsePtrOutput `pulumi:"monthlySchedule"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Schedule for weekly snapshots
 	WeeklySchedule WeeklyScheduleResponsePtrOutput `pulumi:"weeklySchedule"`
@@ -52,24 +57,6 @@ func NewSnapshotPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:netapp/v20200501:SnapshotPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200601:SnapshotPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200701:SnapshotPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200801:SnapshotPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200901:SnapshotPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20201101:SnapshotPolicy"),
-		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20201201:SnapshotPolicy"),
 		},
@@ -145,15 +132,15 @@ type snapshotPolicyArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Schedule for hourly snapshots
 	HourlySchedule *HourlySchedule `pulumi:"hourlySchedule"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Schedule for monthly snapshots
 	MonthlySchedule *MonthlySchedule `pulumi:"monthlySchedule"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the snapshot policy
 	SnapshotPolicyName *string `pulumi:"snapshotPolicyName"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Schedule for weekly snapshots
 	WeeklySchedule *WeeklySchedule `pulumi:"weeklySchedule"`
@@ -169,15 +156,15 @@ type SnapshotPolicyArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// Schedule for hourly snapshots
 	HourlySchedule HourlySchedulePtrInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Schedule for monthly snapshots
 	MonthlySchedule MonthlySchedulePtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the snapshot policy
 	SnapshotPolicyName pulumi.StringPtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Schedule for weekly snapshots
 	WeeklySchedule WeeklySchedulePtrInput
@@ -230,12 +217,17 @@ func (o SnapshotPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// A unique read-only string that changes whenever the resource is updated.
+func (o SnapshotPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
 // Schedule for hourly snapshots
 func (o SnapshotPolicyOutput) HourlySchedule() HourlyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) HourlyScheduleResponsePtrOutput { return v.HourlySchedule }).(HourlyScheduleResponsePtrOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o SnapshotPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -245,7 +237,7 @@ func (o SnapshotPolicyOutput) MonthlySchedule() MonthlyScheduleResponsePtrOutput
 	return o.ApplyT(func(v *SnapshotPolicy) MonthlyScheduleResponsePtrOutput { return v.MonthlySchedule }).(MonthlyScheduleResponsePtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o SnapshotPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -255,12 +247,17 @@ func (o SnapshotPolicyOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SnapshotPolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o SnapshotPolicyOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SnapshotPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

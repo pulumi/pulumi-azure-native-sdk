@@ -12,7 +12,8 @@ import (
 )
 
 // The Get Storage Account ManagementPolicies operation response.
-// API Version: 2021-02-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2021-02-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ManagementPolicy struct {
 	pulumi.CustomResourceState
 
@@ -43,21 +44,6 @@ func NewManagementPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:storage/v20180301preview:ManagementPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:storage/v20181101:ManagementPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:storage/v20190401:ManagementPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:storage/v20190601:ManagementPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:storage/v20200801preview:ManagementPolicy"),
-		},
 		{
 			Type: pulumi.String("azure-native:storage/v20210101:ManagementPolicy"),
 		},

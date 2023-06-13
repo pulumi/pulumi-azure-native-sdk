@@ -13,6 +13,7 @@ import (
 
 // The cost allocation rule model definition
 // API Version: 2020-03-01-preview.
+// Previous API Version: 2020-03-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type CostAllocationRule struct {
 	pulumi.CustomResourceState
 

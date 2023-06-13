@@ -13,6 +13,7 @@ import (
 
 // A Service Fabric.
 // API Version: 2018-09-15.
+// Previous API Version: 2018-09-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ServiceFabric struct {
 	pulumi.CustomResourceState
 

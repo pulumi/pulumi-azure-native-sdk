@@ -51,9 +51,6 @@ func NewAddressByName(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:edgeorder:AddressByName"),
 		},
 		{
-			Type: pulumi.String("azure-native:edgeorder/v20201201preview:AddressByName"),
-		},
-		{
 			Type: pulumi.String("azure-native:edgeorder/v20220501preview:AddressByName"),
 		},
 	})

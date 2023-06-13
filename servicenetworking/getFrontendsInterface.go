@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a Traffic Controller Frontend
-// API Version: 2022-10-01-preview.
+// Get a Frontend
+// API Version: 2023-05-01-preview.
 func LookupFrontendsInterface(ctx *pulumi.Context, args *LookupFrontendsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupFrontendsInterfaceResult, error) {
 	var rv LookupFrontendsInterfaceResult
 	err := ctx.Invoke("azure-native:servicenetworking:getFrontendsInterface", args, &rv, opts...)
@@ -32,20 +32,16 @@ type LookupFrontendsInterfaceArgs struct {
 
 // Frontend Subresource of Traffic Controller.
 type LookupFrontendsInterfaceResult struct {
+	// The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
+	Fqdn string `pulumi:"fqdn"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Frontend IP Address Version (Optional).
-	IpAddressVersion *string `pulumi:"ipAddressVersion"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Frontend Mode (Optional).
-	Mode *string `pulumi:"mode"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// test doc
+	// Provisioning State of Traffic Controller Frontend Resource
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Frontend Public IP Address (Optional).
-	PublicIPAddress *FrontendPropertiesIPAddressResponse `pulumi:"publicIPAddress"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -95,14 +91,14 @@ func (o LookupFrontendsInterfaceResultOutput) ToLookupFrontendsInterfaceResultOu
 	return o
 }
 
+// The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
+func (o LookupFrontendsInterfaceResultOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFrontendsInterfaceResult) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFrontendsInterfaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontendsInterfaceResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Frontend IP Address Version (Optional).
-func (o LookupFrontendsInterfaceResultOutput) IpAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupFrontendsInterfaceResult) *string { return v.IpAddressVersion }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -110,24 +106,14 @@ func (o LookupFrontendsInterfaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontendsInterfaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Frontend Mode (Optional).
-func (o LookupFrontendsInterfaceResultOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupFrontendsInterfaceResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
 // The name of the resource
 func (o LookupFrontendsInterfaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontendsInterfaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// test doc
+// Provisioning State of Traffic Controller Frontend Resource
 func (o LookupFrontendsInterfaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFrontendsInterfaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Frontend Public IP Address (Optional).
-func (o LookupFrontendsInterfaceResultOutput) PublicIPAddress() FrontendPropertiesIPAddressResponsePtrOutput {
-	return o.ApplyT(func(v LookupFrontendsInterfaceResult) *FrontendPropertiesIPAddressResponse { return v.PublicIPAddress }).(FrontendPropertiesIPAddressResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

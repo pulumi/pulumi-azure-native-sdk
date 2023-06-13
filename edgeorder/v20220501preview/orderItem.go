@@ -59,9 +59,6 @@ func NewOrderItem(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:edgeorder:OrderItem"),
 		},
 		{
-			Type: pulumi.String("azure-native:edgeorder/v20201201preview:OrderItem"),
-		},
-		{
 			Type: pulumi.String("azure-native:edgeorder/v20211201:OrderItem"),
 		},
 	})

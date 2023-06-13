@@ -12,7 +12,8 @@ import (
 )
 
 // The Live Output.
-// API Version: 2020-05-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type LiveOutput struct {
 	pulumi.CustomResourceState
 
@@ -38,6 +39,10 @@ type LiveOutput struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The resource state of the live output.
 	ResourceState pulumi.StringOutput `pulumi:"resourceState"`
+	// ISO 8601 time between 1 minute to the duration of archiveWindowLength to control seek-able window length during Live. The service won't use this property once LiveOutput stops. The archived VOD will have full content with original ArchiveWindowLength. For example, use PT1H30M to indicate 1 hour and 30 minutes of rewind window length. Service will use implicit default value 30m only if Live Event enables LL.
+	RewindWindowLength pulumi.StringPtrOutput `pulumi:"rewindWindowLength"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -146,6 +151,8 @@ type liveOutputArgs struct {
 	OutputSnapTime *float64 `pulumi:"outputSnapTime"`
 	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// ISO 8601 time between 1 minute to the duration of archiveWindowLength to control seek-able window length during Live. The service won't use this property once LiveOutput stops. The archived VOD will have full content with original ArchiveWindowLength. For example, use PT1H30M to indicate 1 hour and 30 minutes of rewind window length. Service will use implicit default value 30m only if Live Event enables LL.
+	RewindWindowLength *string `pulumi:"rewindWindowLength"`
 }
 
 // The set of arguments for constructing a LiveOutput resource.
@@ -170,6 +177,8 @@ type LiveOutputArgs struct {
 	OutputSnapTime pulumi.Float64PtrInput
 	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
+	// ISO 8601 time between 1 minute to the duration of archiveWindowLength to control seek-able window length during Live. The service won't use this property once LiveOutput stops. The archived VOD will have full content with original ArchiveWindowLength. For example, use PT1H30M to indicate 1 hour and 30 minutes of rewind window length. Service will use implicit default value 30m only if Live Event enables LL.
+	RewindWindowLength pulumi.StringPtrInput
 }
 
 func (LiveOutputArgs) ElementType() reflect.Type {
@@ -262,6 +271,16 @@ func (o LiveOutputOutput) ProvisioningState() pulumi.StringOutput {
 // The resource state of the live output.
 func (o LiveOutputOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v *LiveOutput) pulumi.StringOutput { return v.ResourceState }).(pulumi.StringOutput)
+}
+
+// ISO 8601 time between 1 minute to the duration of archiveWindowLength to control seek-able window length during Live. The service won't use this property once LiveOutput stops. The archived VOD will have full content with original ArchiveWindowLength. For example, use PT1H30M to indicate 1 hour and 30 minutes of rewind window length. Service will use implicit default value 30m only if Live Event enables LL.
+func (o LiveOutputOutput) RewindWindowLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LiveOutput) pulumi.StringPtrOutput { return v.RewindWindowLength }).(pulumi.StringPtrOutput)
+}
+
+// The system metadata relating to this resource.
+func (o LiveOutputOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *LiveOutput) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

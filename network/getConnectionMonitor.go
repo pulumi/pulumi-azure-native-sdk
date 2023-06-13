@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a connection monitor by name.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupConnectionMonitor(ctx *pulumi.Context, args *LookupConnectionMonitorArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorResult, error) {
 	var rv LookupConnectionMonitorResult
 	err := ctx.Invoke("azure-native:network:getConnectionMonitor", args, &rv, opts...)

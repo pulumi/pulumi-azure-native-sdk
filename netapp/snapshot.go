@@ -12,7 +12,8 @@ import (
 )
 
 // Snapshot of a Volume
-// API Version: 2020-12-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Snapshot struct {
 	pulumi.CustomResourceState
 
@@ -20,13 +21,15 @@ type Snapshot struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// UUID v4 used to identify the Snapshot
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -50,51 +53,6 @@ func NewSnapshot(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'VolumeName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:netapp/v20170815:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20190501:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20190601:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20190701:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20190801:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20191001:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20191101:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200201:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200301:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200501:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200601:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200701:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200801:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200901:Snapshot"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20201101:Snapshot"),
-		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20201201:Snapshot"),
 		},
@@ -168,7 +126,7 @@ type snapshotArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the capacity pool
 	PoolName string `pulumi:"poolName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the snapshot
 	SnapshotName *string `pulumi:"snapshotName"`
@@ -184,7 +142,7 @@ type SnapshotArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the capacity pool
 	PoolName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the snapshot
 	SnapshotName pulumi.StringPtrInput
@@ -239,7 +197,7 @@ func (o SnapshotOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o SnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -254,7 +212,12 @@ func (o SnapshotOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SnapshotOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Snapshot) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SnapshotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -12,7 +12,8 @@ import (
 )
 
 // Represents a container on the  Data Box Edge/Gateway device.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Container struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +27,7 @@ type Container struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Details of the refresh job on this container.
 	RefreshDetails RefreshDetailsResponseOutput `pulumi:"refreshDetails"`
-	// Container in DataBoxEdge Resource
+	// Metadata pertaining to creation and last modification of Container
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -52,18 +53,6 @@ func NewContainer(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190801:Container"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200501preview:Container"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901:Container"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901preview:Container"),
-		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20201201:Container"),
 		},
@@ -213,7 +202,7 @@ func (o ContainerOutput) RefreshDetails() RefreshDetailsResponseOutput {
 	return o.ApplyT(func(v *Container) RefreshDetailsResponseOutput { return v.RefreshDetails }).(RefreshDetailsResponseOutput)
 }
 
-// Container in DataBoxEdge Resource
+// Metadata pertaining to creation and last modification of Container
 func (o ContainerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Container) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

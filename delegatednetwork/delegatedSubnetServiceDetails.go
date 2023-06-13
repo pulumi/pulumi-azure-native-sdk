@@ -13,6 +13,7 @@ import (
 
 // Represents an instance of a orchestrator.
 // API Version: 2021-03-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DelegatedSubnetServiceDetails struct {
 	pulumi.CustomResourceState
 
@@ -45,9 +46,6 @@ func NewDelegatedSubnetServiceDetails(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:delegatednetwork/v20200808preview:DelegatedSubnetServiceDetails"),
-		},
 		{
 			Type: pulumi.String("azure-native:delegatednetwork/v20210315:DelegatedSubnetServiceDetails"),
 		},

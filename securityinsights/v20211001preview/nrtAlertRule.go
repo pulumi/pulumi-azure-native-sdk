@@ -151,7 +151,13 @@ func NewNrtAlertRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:NrtAlertRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:NrtAlertRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:NrtAlertRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:NrtAlertRule"),
 		},
 	})
 	opts = append(opts, aliases)

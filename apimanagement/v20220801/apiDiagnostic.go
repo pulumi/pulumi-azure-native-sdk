@@ -103,6 +103,9 @@ func NewApiDiagnostic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiDiagnostic"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiDiagnostic"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiDiagnostic

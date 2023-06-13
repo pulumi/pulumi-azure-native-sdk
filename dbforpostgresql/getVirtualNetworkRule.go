@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a virtual network rule.
-// API Version: 2017-12-01.
+// API Version: 2017-12-01-preview.
 func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRuleResult, error) {
 	var rv LookupVirtualNetworkRuleResult
 	err := ctx.Invoke("azure-native:dbforpostgresql:getVirtualNetworkRule", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRul
 }
 
 type LookupVirtualNetworkRuleArgs struct {
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
@@ -60,7 +60,7 @@ func LookupVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupVirtualNetwo
 }
 
 type LookupVirtualNetworkRuleOutputArgs struct {
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName pulumi.StringInput `pulumi:"serverName"`

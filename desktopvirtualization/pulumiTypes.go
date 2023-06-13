@@ -10,240 +10,476 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Properties for arm migration.
-type MigrationRequestProperties struct {
-	// The path to the legacy object to migrate.
-	MigrationPath *string `pulumi:"migrationPath"`
-	// The type of operation for migration.
-	Operation *string `pulumi:"operation"`
+// The session host configuration for updating agent, monitoring agent, and stack component.
+type AgentUpdateProperties struct {
+	// Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
+	MaintenanceWindowTimeZone *string `pulumi:"maintenanceWindowTimeZone"`
+	// List of maintenance windows. Maintenance windows are 2 hours long.
+	MaintenanceWindows []MaintenanceWindowProperties `pulumi:"maintenanceWindows"`
+	// The type of maintenance for session host components.
+	Type *string `pulumi:"type"`
+	// Whether to use localTime of the virtual machine.
+	UseSessionHostLocalTime *bool `pulumi:"useSessionHostLocalTime"`
 }
 
-// MigrationRequestPropertiesInput is an input type that accepts MigrationRequestPropertiesArgs and MigrationRequestPropertiesOutput values.
-// You can construct a concrete instance of `MigrationRequestPropertiesInput` via:
+// AgentUpdatePropertiesInput is an input type that accepts AgentUpdatePropertiesArgs and AgentUpdatePropertiesOutput values.
+// You can construct a concrete instance of `AgentUpdatePropertiesInput` via:
 //
-//	MigrationRequestPropertiesArgs{...}
-type MigrationRequestPropertiesInput interface {
+//	AgentUpdatePropertiesArgs{...}
+type AgentUpdatePropertiesInput interface {
 	pulumi.Input
 
-	ToMigrationRequestPropertiesOutput() MigrationRequestPropertiesOutput
-	ToMigrationRequestPropertiesOutputWithContext(context.Context) MigrationRequestPropertiesOutput
+	ToAgentUpdatePropertiesOutput() AgentUpdatePropertiesOutput
+	ToAgentUpdatePropertiesOutputWithContext(context.Context) AgentUpdatePropertiesOutput
 }
 
-// Properties for arm migration.
-type MigrationRequestPropertiesArgs struct {
-	// The path to the legacy object to migrate.
-	MigrationPath pulumi.StringPtrInput `pulumi:"migrationPath"`
-	// The type of operation for migration.
-	Operation pulumi.StringPtrInput `pulumi:"operation"`
+// The session host configuration for updating agent, monitoring agent, and stack component.
+type AgentUpdatePropertiesArgs struct {
+	// Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
+	MaintenanceWindowTimeZone pulumi.StringPtrInput `pulumi:"maintenanceWindowTimeZone"`
+	// List of maintenance windows. Maintenance windows are 2 hours long.
+	MaintenanceWindows MaintenanceWindowPropertiesArrayInput `pulumi:"maintenanceWindows"`
+	// The type of maintenance for session host components.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Whether to use localTime of the virtual machine.
+	UseSessionHostLocalTime pulumi.BoolPtrInput `pulumi:"useSessionHostLocalTime"`
 }
 
-func (MigrationRequestPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrationRequestProperties)(nil)).Elem()
+func (AgentUpdatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentUpdateProperties)(nil)).Elem()
 }
 
-func (i MigrationRequestPropertiesArgs) ToMigrationRequestPropertiesOutput() MigrationRequestPropertiesOutput {
-	return i.ToMigrationRequestPropertiesOutputWithContext(context.Background())
+func (i AgentUpdatePropertiesArgs) ToAgentUpdatePropertiesOutput() AgentUpdatePropertiesOutput {
+	return i.ToAgentUpdatePropertiesOutputWithContext(context.Background())
 }
 
-func (i MigrationRequestPropertiesArgs) ToMigrationRequestPropertiesOutputWithContext(ctx context.Context) MigrationRequestPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MigrationRequestPropertiesOutput)
+func (i AgentUpdatePropertiesArgs) ToAgentUpdatePropertiesOutputWithContext(ctx context.Context) AgentUpdatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentUpdatePropertiesOutput)
 }
 
-func (i MigrationRequestPropertiesArgs) ToMigrationRequestPropertiesPtrOutput() MigrationRequestPropertiesPtrOutput {
-	return i.ToMigrationRequestPropertiesPtrOutputWithContext(context.Background())
+func (i AgentUpdatePropertiesArgs) ToAgentUpdatePropertiesPtrOutput() AgentUpdatePropertiesPtrOutput {
+	return i.ToAgentUpdatePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i MigrationRequestPropertiesArgs) ToMigrationRequestPropertiesPtrOutputWithContext(ctx context.Context) MigrationRequestPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MigrationRequestPropertiesOutput).ToMigrationRequestPropertiesPtrOutputWithContext(ctx)
+func (i AgentUpdatePropertiesArgs) ToAgentUpdatePropertiesPtrOutputWithContext(ctx context.Context) AgentUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentUpdatePropertiesOutput).ToAgentUpdatePropertiesPtrOutputWithContext(ctx)
 }
 
-// MigrationRequestPropertiesPtrInput is an input type that accepts MigrationRequestPropertiesArgs, MigrationRequestPropertiesPtr and MigrationRequestPropertiesPtrOutput values.
-// You can construct a concrete instance of `MigrationRequestPropertiesPtrInput` via:
+// AgentUpdatePropertiesPtrInput is an input type that accepts AgentUpdatePropertiesArgs, AgentUpdatePropertiesPtr and AgentUpdatePropertiesPtrOutput values.
+// You can construct a concrete instance of `AgentUpdatePropertiesPtrInput` via:
 //
-//	        MigrationRequestPropertiesArgs{...}
+//	        AgentUpdatePropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type MigrationRequestPropertiesPtrInput interface {
+type AgentUpdatePropertiesPtrInput interface {
 	pulumi.Input
 
-	ToMigrationRequestPropertiesPtrOutput() MigrationRequestPropertiesPtrOutput
-	ToMigrationRequestPropertiesPtrOutputWithContext(context.Context) MigrationRequestPropertiesPtrOutput
+	ToAgentUpdatePropertiesPtrOutput() AgentUpdatePropertiesPtrOutput
+	ToAgentUpdatePropertiesPtrOutputWithContext(context.Context) AgentUpdatePropertiesPtrOutput
 }
 
-type migrationRequestPropertiesPtrType MigrationRequestPropertiesArgs
+type agentUpdatePropertiesPtrType AgentUpdatePropertiesArgs
 
-func MigrationRequestPropertiesPtr(v *MigrationRequestPropertiesArgs) MigrationRequestPropertiesPtrInput {
-	return (*migrationRequestPropertiesPtrType)(v)
+func AgentUpdatePropertiesPtr(v *AgentUpdatePropertiesArgs) AgentUpdatePropertiesPtrInput {
+	return (*agentUpdatePropertiesPtrType)(v)
 }
 
-func (*migrationRequestPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MigrationRequestProperties)(nil)).Elem()
+func (*agentUpdatePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentUpdateProperties)(nil)).Elem()
 }
 
-func (i *migrationRequestPropertiesPtrType) ToMigrationRequestPropertiesPtrOutput() MigrationRequestPropertiesPtrOutput {
-	return i.ToMigrationRequestPropertiesPtrOutputWithContext(context.Background())
+func (i *agentUpdatePropertiesPtrType) ToAgentUpdatePropertiesPtrOutput() AgentUpdatePropertiesPtrOutput {
+	return i.ToAgentUpdatePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *migrationRequestPropertiesPtrType) ToMigrationRequestPropertiesPtrOutputWithContext(ctx context.Context) MigrationRequestPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MigrationRequestPropertiesPtrOutput)
+func (i *agentUpdatePropertiesPtrType) ToAgentUpdatePropertiesPtrOutputWithContext(ctx context.Context) AgentUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentUpdatePropertiesPtrOutput)
 }
 
-// Properties for arm migration.
-type MigrationRequestPropertiesOutput struct{ *pulumi.OutputState }
+// The session host configuration for updating agent, monitoring agent, and stack component.
+type AgentUpdatePropertiesOutput struct{ *pulumi.OutputState }
 
-func (MigrationRequestPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrationRequestProperties)(nil)).Elem()
+func (AgentUpdatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentUpdateProperties)(nil)).Elem()
 }
 
-func (o MigrationRequestPropertiesOutput) ToMigrationRequestPropertiesOutput() MigrationRequestPropertiesOutput {
+func (o AgentUpdatePropertiesOutput) ToAgentUpdatePropertiesOutput() AgentUpdatePropertiesOutput {
 	return o
 }
 
-func (o MigrationRequestPropertiesOutput) ToMigrationRequestPropertiesOutputWithContext(ctx context.Context) MigrationRequestPropertiesOutput {
+func (o AgentUpdatePropertiesOutput) ToAgentUpdatePropertiesOutputWithContext(ctx context.Context) AgentUpdatePropertiesOutput {
 	return o
 }
 
-func (o MigrationRequestPropertiesOutput) ToMigrationRequestPropertiesPtrOutput() MigrationRequestPropertiesPtrOutput {
-	return o.ToMigrationRequestPropertiesPtrOutputWithContext(context.Background())
+func (o AgentUpdatePropertiesOutput) ToAgentUpdatePropertiesPtrOutput() AgentUpdatePropertiesPtrOutput {
+	return o.ToAgentUpdatePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o MigrationRequestPropertiesOutput) ToMigrationRequestPropertiesPtrOutputWithContext(ctx context.Context) MigrationRequestPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationRequestProperties) *MigrationRequestProperties {
+func (o AgentUpdatePropertiesOutput) ToAgentUpdatePropertiesPtrOutputWithContext(ctx context.Context) AgentUpdatePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentUpdateProperties) *AgentUpdateProperties {
 		return &v
-	}).(MigrationRequestPropertiesPtrOutput)
+	}).(AgentUpdatePropertiesPtrOutput)
 }
 
-// The path to the legacy object to migrate.
-func (o MigrationRequestPropertiesOutput) MigrationPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MigrationRequestProperties) *string { return v.MigrationPath }).(pulumi.StringPtrOutput)
+// Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
+func (o AgentUpdatePropertiesOutput) MaintenanceWindowTimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentUpdateProperties) *string { return v.MaintenanceWindowTimeZone }).(pulumi.StringPtrOutput)
 }
 
-// The type of operation for migration.
-func (o MigrationRequestPropertiesOutput) Operation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MigrationRequestProperties) *string { return v.Operation }).(pulumi.StringPtrOutput)
+// List of maintenance windows. Maintenance windows are 2 hours long.
+func (o AgentUpdatePropertiesOutput) MaintenanceWindows() MaintenanceWindowPropertiesArrayOutput {
+	return o.ApplyT(func(v AgentUpdateProperties) []MaintenanceWindowProperties { return v.MaintenanceWindows }).(MaintenanceWindowPropertiesArrayOutput)
 }
 
-type MigrationRequestPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (MigrationRequestPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MigrationRequestProperties)(nil)).Elem()
+// The type of maintenance for session host components.
+func (o AgentUpdatePropertiesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentUpdateProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o MigrationRequestPropertiesPtrOutput) ToMigrationRequestPropertiesPtrOutput() MigrationRequestPropertiesPtrOutput {
+// Whether to use localTime of the virtual machine.
+func (o AgentUpdatePropertiesOutput) UseSessionHostLocalTime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentUpdateProperties) *bool { return v.UseSessionHostLocalTime }).(pulumi.BoolPtrOutput)
+}
+
+type AgentUpdatePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentUpdatePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentUpdateProperties)(nil)).Elem()
+}
+
+func (o AgentUpdatePropertiesPtrOutput) ToAgentUpdatePropertiesPtrOutput() AgentUpdatePropertiesPtrOutput {
 	return o
 }
 
-func (o MigrationRequestPropertiesPtrOutput) ToMigrationRequestPropertiesPtrOutputWithContext(ctx context.Context) MigrationRequestPropertiesPtrOutput {
+func (o AgentUpdatePropertiesPtrOutput) ToAgentUpdatePropertiesPtrOutputWithContext(ctx context.Context) AgentUpdatePropertiesPtrOutput {
 	return o
 }
 
-func (o MigrationRequestPropertiesPtrOutput) Elem() MigrationRequestPropertiesOutput {
-	return o.ApplyT(func(v *MigrationRequestProperties) MigrationRequestProperties {
+func (o AgentUpdatePropertiesPtrOutput) Elem() AgentUpdatePropertiesOutput {
+	return o.ApplyT(func(v *AgentUpdateProperties) AgentUpdateProperties {
 		if v != nil {
 			return *v
 		}
-		var ret MigrationRequestProperties
+		var ret AgentUpdateProperties
 		return ret
-	}).(MigrationRequestPropertiesOutput)
+	}).(AgentUpdatePropertiesOutput)
 }
 
-// The path to the legacy object to migrate.
-func (o MigrationRequestPropertiesPtrOutput) MigrationPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MigrationRequestProperties) *string {
+// Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
+func (o AgentUpdatePropertiesPtrOutput) MaintenanceWindowTimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentUpdateProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return v.MigrationPath
+		return v.MaintenanceWindowTimeZone
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of operation for migration.
-func (o MigrationRequestPropertiesPtrOutput) Operation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MigrationRequestProperties) *string {
+// List of maintenance windows. Maintenance windows are 2 hours long.
+func (o AgentUpdatePropertiesPtrOutput) MaintenanceWindows() MaintenanceWindowPropertiesArrayOutput {
+	return o.ApplyT(func(v *AgentUpdateProperties) []MaintenanceWindowProperties {
 		if v == nil {
 			return nil
 		}
-		return v.Operation
+		return v.MaintenanceWindows
+	}).(MaintenanceWindowPropertiesArrayOutput)
+}
+
+// The type of maintenance for session host components.
+func (o AgentUpdatePropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
-// Properties for arm migration.
-type MigrationRequestPropertiesResponse struct {
-	// The path to the legacy object to migrate.
-	MigrationPath *string `pulumi:"migrationPath"`
-	// The type of operation for migration.
-	Operation *string `pulumi:"operation"`
+// Whether to use localTime of the virtual machine.
+func (o AgentUpdatePropertiesPtrOutput) UseSessionHostLocalTime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AgentUpdateProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSessionHostLocalTime
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Properties for arm migration.
-type MigrationRequestPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (MigrationRequestPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrationRequestPropertiesResponse)(nil)).Elem()
+// The session host configuration for updating agent, monitoring agent, and stack component.
+type AgentUpdatePropertiesResponse struct {
+	// Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
+	MaintenanceWindowTimeZone *string `pulumi:"maintenanceWindowTimeZone"`
+	// List of maintenance windows. Maintenance windows are 2 hours long.
+	MaintenanceWindows []MaintenanceWindowPropertiesResponse `pulumi:"maintenanceWindows"`
+	// The type of maintenance for session host components.
+	Type *string `pulumi:"type"`
+	// Whether to use localTime of the virtual machine.
+	UseSessionHostLocalTime *bool `pulumi:"useSessionHostLocalTime"`
 }
 
-func (o MigrationRequestPropertiesResponseOutput) ToMigrationRequestPropertiesResponseOutput() MigrationRequestPropertiesResponseOutput {
+// The session host configuration for updating agent, monitoring agent, and stack component.
+type AgentUpdatePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentUpdatePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentUpdatePropertiesResponse)(nil)).Elem()
+}
+
+func (o AgentUpdatePropertiesResponseOutput) ToAgentUpdatePropertiesResponseOutput() AgentUpdatePropertiesResponseOutput {
 	return o
 }
 
-func (o MigrationRequestPropertiesResponseOutput) ToMigrationRequestPropertiesResponseOutputWithContext(ctx context.Context) MigrationRequestPropertiesResponseOutput {
+func (o AgentUpdatePropertiesResponseOutput) ToAgentUpdatePropertiesResponseOutputWithContext(ctx context.Context) AgentUpdatePropertiesResponseOutput {
 	return o
 }
 
-// The path to the legacy object to migrate.
-func (o MigrationRequestPropertiesResponseOutput) MigrationPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MigrationRequestPropertiesResponse) *string { return v.MigrationPath }).(pulumi.StringPtrOutput)
+// Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
+func (o AgentUpdatePropertiesResponseOutput) MaintenanceWindowTimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentUpdatePropertiesResponse) *string { return v.MaintenanceWindowTimeZone }).(pulumi.StringPtrOutput)
 }
 
-// The type of operation for migration.
-func (o MigrationRequestPropertiesResponseOutput) Operation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MigrationRequestPropertiesResponse) *string { return v.Operation }).(pulumi.StringPtrOutput)
+// List of maintenance windows. Maintenance windows are 2 hours long.
+func (o AgentUpdatePropertiesResponseOutput) MaintenanceWindows() MaintenanceWindowPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v AgentUpdatePropertiesResponse) []MaintenanceWindowPropertiesResponse {
+		return v.MaintenanceWindows
+	}).(MaintenanceWindowPropertiesResponseArrayOutput)
 }
 
-type MigrationRequestPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MigrationRequestPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MigrationRequestPropertiesResponse)(nil)).Elem()
+// The type of maintenance for session host components.
+func (o AgentUpdatePropertiesResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentUpdatePropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o MigrationRequestPropertiesResponsePtrOutput) ToMigrationRequestPropertiesResponsePtrOutput() MigrationRequestPropertiesResponsePtrOutput {
+// Whether to use localTime of the virtual machine.
+func (o AgentUpdatePropertiesResponseOutput) UseSessionHostLocalTime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentUpdatePropertiesResponse) *bool { return v.UseSessionHostLocalTime }).(pulumi.BoolPtrOutput)
+}
+
+type AgentUpdatePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AgentUpdatePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentUpdatePropertiesResponse)(nil)).Elem()
+}
+
+func (o AgentUpdatePropertiesResponsePtrOutput) ToAgentUpdatePropertiesResponsePtrOutput() AgentUpdatePropertiesResponsePtrOutput {
 	return o
 }
 
-func (o MigrationRequestPropertiesResponsePtrOutput) ToMigrationRequestPropertiesResponsePtrOutputWithContext(ctx context.Context) MigrationRequestPropertiesResponsePtrOutput {
+func (o AgentUpdatePropertiesResponsePtrOutput) ToAgentUpdatePropertiesResponsePtrOutputWithContext(ctx context.Context) AgentUpdatePropertiesResponsePtrOutput {
 	return o
 }
 
-func (o MigrationRequestPropertiesResponsePtrOutput) Elem() MigrationRequestPropertiesResponseOutput {
-	return o.ApplyT(func(v *MigrationRequestPropertiesResponse) MigrationRequestPropertiesResponse {
+func (o AgentUpdatePropertiesResponsePtrOutput) Elem() AgentUpdatePropertiesResponseOutput {
+	return o.ApplyT(func(v *AgentUpdatePropertiesResponse) AgentUpdatePropertiesResponse {
 		if v != nil {
 			return *v
 		}
-		var ret MigrationRequestPropertiesResponse
+		var ret AgentUpdatePropertiesResponse
 		return ret
-	}).(MigrationRequestPropertiesResponseOutput)
+	}).(AgentUpdatePropertiesResponseOutput)
 }
 
-// The path to the legacy object to migrate.
-func (o MigrationRequestPropertiesResponsePtrOutput) MigrationPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MigrationRequestPropertiesResponse) *string {
+// Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
+func (o AgentUpdatePropertiesResponsePtrOutput) MaintenanceWindowTimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentUpdatePropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.MigrationPath
+		return v.MaintenanceWindowTimeZone
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of operation for migration.
-func (o MigrationRequestPropertiesResponsePtrOutput) Operation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MigrationRequestPropertiesResponse) *string {
+// List of maintenance windows. Maintenance windows are 2 hours long.
+func (o AgentUpdatePropertiesResponsePtrOutput) MaintenanceWindows() MaintenanceWindowPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *AgentUpdatePropertiesResponse) []MaintenanceWindowPropertiesResponse {
 		if v == nil {
 			return nil
 		}
-		return v.Operation
+		return v.MaintenanceWindows
+	}).(MaintenanceWindowPropertiesResponseArrayOutput)
+}
+
+// The type of maintenance for session host components.
+func (o AgentUpdatePropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentUpdatePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to use localTime of the virtual machine.
+func (o AgentUpdatePropertiesResponsePtrOutput) UseSessionHostLocalTime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AgentUpdatePropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSessionHostLocalTime
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maintenance window starting hour and day of week.
+type MaintenanceWindowProperties struct {
+	// Day of the week.
+	DayOfWeek *DayOfWeek `pulumi:"dayOfWeek"`
+	// The update start hour of the day. (0 - 23)
+	Hour *int `pulumi:"hour"`
+}
+
+// MaintenanceWindowPropertiesInput is an input type that accepts MaintenanceWindowPropertiesArgs and MaintenanceWindowPropertiesOutput values.
+// You can construct a concrete instance of `MaintenanceWindowPropertiesInput` via:
+//
+//	MaintenanceWindowPropertiesArgs{...}
+type MaintenanceWindowPropertiesInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowPropertiesOutput() MaintenanceWindowPropertiesOutput
+	ToMaintenanceWindowPropertiesOutputWithContext(context.Context) MaintenanceWindowPropertiesOutput
+}
+
+// Maintenance window starting hour and day of week.
+type MaintenanceWindowPropertiesArgs struct {
+	// Day of the week.
+	DayOfWeek DayOfWeekPtrInput `pulumi:"dayOfWeek"`
+	// The update start hour of the day. (0 - 23)
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+}
+
+func (MaintenanceWindowPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowProperties)(nil)).Elem()
+}
+
+func (i MaintenanceWindowPropertiesArgs) ToMaintenanceWindowPropertiesOutput() MaintenanceWindowPropertiesOutput {
+	return i.ToMaintenanceWindowPropertiesOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowPropertiesArgs) ToMaintenanceWindowPropertiesOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPropertiesOutput)
+}
+
+// MaintenanceWindowPropertiesArrayInput is an input type that accepts MaintenanceWindowPropertiesArray and MaintenanceWindowPropertiesArrayOutput values.
+// You can construct a concrete instance of `MaintenanceWindowPropertiesArrayInput` via:
+//
+//	MaintenanceWindowPropertiesArray{ MaintenanceWindowPropertiesArgs{...} }
+type MaintenanceWindowPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowPropertiesArrayOutput() MaintenanceWindowPropertiesArrayOutput
+	ToMaintenanceWindowPropertiesArrayOutputWithContext(context.Context) MaintenanceWindowPropertiesArrayOutput
+}
+
+type MaintenanceWindowPropertiesArray []MaintenanceWindowPropertiesInput
+
+func (MaintenanceWindowPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceWindowProperties)(nil)).Elem()
+}
+
+func (i MaintenanceWindowPropertiesArray) ToMaintenanceWindowPropertiesArrayOutput() MaintenanceWindowPropertiesArrayOutput {
+	return i.ToMaintenanceWindowPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowPropertiesArray) ToMaintenanceWindowPropertiesArrayOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPropertiesArrayOutput)
+}
+
+// Maintenance window starting hour and day of week.
+type MaintenanceWindowPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowProperties)(nil)).Elem()
+}
+
+func (o MaintenanceWindowPropertiesOutput) ToMaintenanceWindowPropertiesOutput() MaintenanceWindowPropertiesOutput {
+	return o
+}
+
+func (o MaintenanceWindowPropertiesOutput) ToMaintenanceWindowPropertiesOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesOutput {
+	return o
+}
+
+// Day of the week.
+func (o MaintenanceWindowPropertiesOutput) DayOfWeek() DayOfWeekPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindowProperties) *DayOfWeek { return v.DayOfWeek }).(DayOfWeekPtrOutput)
+}
+
+// The update start hour of the day. (0 - 23)
+func (o MaintenanceWindowPropertiesOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindowProperties) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+type MaintenanceWindowPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceWindowProperties)(nil)).Elem()
+}
+
+func (o MaintenanceWindowPropertiesArrayOutput) ToMaintenanceWindowPropertiesArrayOutput() MaintenanceWindowPropertiesArrayOutput {
+	return o
+}
+
+func (o MaintenanceWindowPropertiesArrayOutput) ToMaintenanceWindowPropertiesArrayOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesArrayOutput {
+	return o
+}
+
+func (o MaintenanceWindowPropertiesArrayOutput) Index(i pulumi.IntInput) MaintenanceWindowPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaintenanceWindowProperties {
+		return vs[0].([]MaintenanceWindowProperties)[vs[1].(int)]
+	}).(MaintenanceWindowPropertiesOutput)
+}
+
+// Maintenance window starting hour and day of week.
+type MaintenanceWindowPropertiesResponse struct {
+	// Day of the week.
+	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// The update start hour of the day. (0 - 23)
+	Hour *int `pulumi:"hour"`
+}
+
+// Maintenance window starting hour and day of week.
+type MaintenanceWindowPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowPropertiesResponse)(nil)).Elem()
+}
+
+func (o MaintenanceWindowPropertiesResponseOutput) ToMaintenanceWindowPropertiesResponseOutput() MaintenanceWindowPropertiesResponseOutput {
+	return o
+}
+
+func (o MaintenanceWindowPropertiesResponseOutput) ToMaintenanceWindowPropertiesResponseOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesResponseOutput {
+	return o
+}
+
+// Day of the week.
+func (o MaintenanceWindowPropertiesResponseOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindowPropertiesResponse) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+}
+
+// The update start hour of the day. (0 - 23)
+func (o MaintenanceWindowPropertiesResponseOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindowPropertiesResponse) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+type MaintenanceWindowPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceWindowPropertiesResponse)(nil)).Elem()
+}
+
+func (o MaintenanceWindowPropertiesResponseArrayOutput) ToMaintenanceWindowPropertiesResponseArrayOutput() MaintenanceWindowPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o MaintenanceWindowPropertiesResponseArrayOutput) ToMaintenanceWindowPropertiesResponseArrayOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o MaintenanceWindowPropertiesResponseArrayOutput) Index(i pulumi.IntInput) MaintenanceWindowPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaintenanceWindowPropertiesResponse {
+		return vs[0].([]MaintenanceWindowPropertiesResponse)[vs[1].(int)]
+	}).(MaintenanceWindowPropertiesResponseOutput)
 }
 
 // Schema for MSIX Package Application properties.
@@ -2180,20 +2416,20 @@ func (o ScalingHostPoolReferenceResponseArrayOutput) Index(i pulumi.IntInput) Sc
 	}).(ScalingHostPoolReferenceResponseOutput)
 }
 
-// Scaling plan schedule.
+// A ScalingPlanPooledSchedule.
 type ScalingSchedule struct {
 	// Set of days of the week on which this schedule is active.
 	DaysOfWeek []string `pulumi:"daysOfWeek"`
-	// Name of the scaling schedule.
+	// Name of the ScalingPlanPooledSchedule.
 	Name *string `pulumi:"name"`
 	// Load balancing algorithm for off-peak period.
 	OffPeakLoadBalancingAlgorithm *string `pulumi:"offPeakLoadBalancingAlgorithm"`
 	// Starting time for off-peak period.
-	OffPeakStartTime *string `pulumi:"offPeakStartTime"`
+	OffPeakStartTime *Time `pulumi:"offPeakStartTime"`
 	// Load balancing algorithm for peak period.
 	PeakLoadBalancingAlgorithm *string `pulumi:"peakLoadBalancingAlgorithm"`
 	// Starting time for peak period.
-	PeakStartTime *string `pulumi:"peakStartTime"`
+	PeakStartTime *Time `pulumi:"peakStartTime"`
 	// Capacity threshold for ramp down period.
 	RampDownCapacityThresholdPct *int `pulumi:"rampDownCapacityThresholdPct"`
 	// Should users be logged off forcefully from hosts.
@@ -2205,7 +2441,7 @@ type ScalingSchedule struct {
 	// Notification message for users during ramp down period.
 	RampDownNotificationMessage *string `pulumi:"rampDownNotificationMessage"`
 	// Starting time for ramp down period.
-	RampDownStartTime *string `pulumi:"rampDownStartTime"`
+	RampDownStartTime *Time `pulumi:"rampDownStartTime"`
 	// Specifies when to stop hosts during ramp down period.
 	RampDownStopHostsWhen *string `pulumi:"rampDownStopHostsWhen"`
 	// Number of minutes to wait to stop hosts during ramp down period.
@@ -2217,7 +2453,7 @@ type ScalingSchedule struct {
 	// Minimum host percentage for ramp up period.
 	RampUpMinimumHostsPct *int `pulumi:"rampUpMinimumHostsPct"`
 	// Starting time for ramp up period.
-	RampUpStartTime *string `pulumi:"rampUpStartTime"`
+	RampUpStartTime *Time `pulumi:"rampUpStartTime"`
 }
 
 // ScalingScheduleInput is an input type that accepts ScalingScheduleArgs and ScalingScheduleOutput values.
@@ -2231,20 +2467,20 @@ type ScalingScheduleInput interface {
 	ToScalingScheduleOutputWithContext(context.Context) ScalingScheduleOutput
 }
 
-// Scaling plan schedule.
+// A ScalingPlanPooledSchedule.
 type ScalingScheduleArgs struct {
 	// Set of days of the week on which this schedule is active.
 	DaysOfWeek pulumi.StringArrayInput `pulumi:"daysOfWeek"`
-	// Name of the scaling schedule.
+	// Name of the ScalingPlanPooledSchedule.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Load balancing algorithm for off-peak period.
 	OffPeakLoadBalancingAlgorithm pulumi.StringPtrInput `pulumi:"offPeakLoadBalancingAlgorithm"`
 	// Starting time for off-peak period.
-	OffPeakStartTime pulumi.StringPtrInput `pulumi:"offPeakStartTime"`
+	OffPeakStartTime TimePtrInput `pulumi:"offPeakStartTime"`
 	// Load balancing algorithm for peak period.
 	PeakLoadBalancingAlgorithm pulumi.StringPtrInput `pulumi:"peakLoadBalancingAlgorithm"`
 	// Starting time for peak period.
-	PeakStartTime pulumi.StringPtrInput `pulumi:"peakStartTime"`
+	PeakStartTime TimePtrInput `pulumi:"peakStartTime"`
 	// Capacity threshold for ramp down period.
 	RampDownCapacityThresholdPct pulumi.IntPtrInput `pulumi:"rampDownCapacityThresholdPct"`
 	// Should users be logged off forcefully from hosts.
@@ -2256,7 +2492,7 @@ type ScalingScheduleArgs struct {
 	// Notification message for users during ramp down period.
 	RampDownNotificationMessage pulumi.StringPtrInput `pulumi:"rampDownNotificationMessage"`
 	// Starting time for ramp down period.
-	RampDownStartTime pulumi.StringPtrInput `pulumi:"rampDownStartTime"`
+	RampDownStartTime TimePtrInput `pulumi:"rampDownStartTime"`
 	// Specifies when to stop hosts during ramp down period.
 	RampDownStopHostsWhen pulumi.StringPtrInput `pulumi:"rampDownStopHostsWhen"`
 	// Number of minutes to wait to stop hosts during ramp down period.
@@ -2268,7 +2504,7 @@ type ScalingScheduleArgs struct {
 	// Minimum host percentage for ramp up period.
 	RampUpMinimumHostsPct pulumi.IntPtrInput `pulumi:"rampUpMinimumHostsPct"`
 	// Starting time for ramp up period.
-	RampUpStartTime pulumi.StringPtrInput `pulumi:"rampUpStartTime"`
+	RampUpStartTime TimePtrInput `pulumi:"rampUpStartTime"`
 }
 
 func (ScalingScheduleArgs) ElementType() reflect.Type {
@@ -2308,7 +2544,7 @@ func (i ScalingScheduleArray) ToScalingScheduleArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingScheduleArrayOutput)
 }
 
-// Scaling plan schedule.
+// A ScalingPlanPooledSchedule.
 type ScalingScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScalingScheduleOutput) ElementType() reflect.Type {
@@ -2328,7 +2564,7 @@ func (o ScalingScheduleOutput) DaysOfWeek() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ScalingSchedule) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
 }
 
-// Name of the scaling schedule.
+// Name of the ScalingPlanPooledSchedule.
 func (o ScalingScheduleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingSchedule) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2339,8 +2575,8 @@ func (o ScalingScheduleOutput) OffPeakLoadBalancingAlgorithm() pulumi.StringPtrO
 }
 
 // Starting time for off-peak period.
-func (o ScalingScheduleOutput) OffPeakStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingSchedule) *string { return v.OffPeakStartTime }).(pulumi.StringPtrOutput)
+func (o ScalingScheduleOutput) OffPeakStartTime() TimePtrOutput {
+	return o.ApplyT(func(v ScalingSchedule) *Time { return v.OffPeakStartTime }).(TimePtrOutput)
 }
 
 // Load balancing algorithm for peak period.
@@ -2349,8 +2585,8 @@ func (o ScalingScheduleOutput) PeakLoadBalancingAlgorithm() pulumi.StringPtrOutp
 }
 
 // Starting time for peak period.
-func (o ScalingScheduleOutput) PeakStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingSchedule) *string { return v.PeakStartTime }).(pulumi.StringPtrOutput)
+func (o ScalingScheduleOutput) PeakStartTime() TimePtrOutput {
+	return o.ApplyT(func(v ScalingSchedule) *Time { return v.PeakStartTime }).(TimePtrOutput)
 }
 
 // Capacity threshold for ramp down period.
@@ -2379,8 +2615,8 @@ func (o ScalingScheduleOutput) RampDownNotificationMessage() pulumi.StringPtrOut
 }
 
 // Starting time for ramp down period.
-func (o ScalingScheduleOutput) RampDownStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingSchedule) *string { return v.RampDownStartTime }).(pulumi.StringPtrOutput)
+func (o ScalingScheduleOutput) RampDownStartTime() TimePtrOutput {
+	return o.ApplyT(func(v ScalingSchedule) *Time { return v.RampDownStartTime }).(TimePtrOutput)
 }
 
 // Specifies when to stop hosts during ramp down period.
@@ -2409,8 +2645,8 @@ func (o ScalingScheduleOutput) RampUpMinimumHostsPct() pulumi.IntPtrOutput {
 }
 
 // Starting time for ramp up period.
-func (o ScalingScheduleOutput) RampUpStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingSchedule) *string { return v.RampUpStartTime }).(pulumi.StringPtrOutput)
+func (o ScalingScheduleOutput) RampUpStartTime() TimePtrOutput {
+	return o.ApplyT(func(v ScalingSchedule) *Time { return v.RampUpStartTime }).(TimePtrOutput)
 }
 
 type ScalingScheduleArrayOutput struct{ *pulumi.OutputState }
@@ -2433,20 +2669,20 @@ func (o ScalingScheduleArrayOutput) Index(i pulumi.IntInput) ScalingScheduleOutp
 	}).(ScalingScheduleOutput)
 }
 
-// Scaling plan schedule.
+// A ScalingPlanPooledSchedule.
 type ScalingScheduleResponse struct {
 	// Set of days of the week on which this schedule is active.
 	DaysOfWeek []string `pulumi:"daysOfWeek"`
-	// Name of the scaling schedule.
+	// Name of the ScalingPlanPooledSchedule.
 	Name *string `pulumi:"name"`
 	// Load balancing algorithm for off-peak period.
 	OffPeakLoadBalancingAlgorithm *string `pulumi:"offPeakLoadBalancingAlgorithm"`
 	// Starting time for off-peak period.
-	OffPeakStartTime *string `pulumi:"offPeakStartTime"`
+	OffPeakStartTime *TimeResponse `pulumi:"offPeakStartTime"`
 	// Load balancing algorithm for peak period.
 	PeakLoadBalancingAlgorithm *string `pulumi:"peakLoadBalancingAlgorithm"`
 	// Starting time for peak period.
-	PeakStartTime *string `pulumi:"peakStartTime"`
+	PeakStartTime *TimeResponse `pulumi:"peakStartTime"`
 	// Capacity threshold for ramp down period.
 	RampDownCapacityThresholdPct *int `pulumi:"rampDownCapacityThresholdPct"`
 	// Should users be logged off forcefully from hosts.
@@ -2458,7 +2694,7 @@ type ScalingScheduleResponse struct {
 	// Notification message for users during ramp down period.
 	RampDownNotificationMessage *string `pulumi:"rampDownNotificationMessage"`
 	// Starting time for ramp down period.
-	RampDownStartTime *string `pulumi:"rampDownStartTime"`
+	RampDownStartTime *TimeResponse `pulumi:"rampDownStartTime"`
 	// Specifies when to stop hosts during ramp down period.
 	RampDownStopHostsWhen *string `pulumi:"rampDownStopHostsWhen"`
 	// Number of minutes to wait to stop hosts during ramp down period.
@@ -2470,10 +2706,10 @@ type ScalingScheduleResponse struct {
 	// Minimum host percentage for ramp up period.
 	RampUpMinimumHostsPct *int `pulumi:"rampUpMinimumHostsPct"`
 	// Starting time for ramp up period.
-	RampUpStartTime *string `pulumi:"rampUpStartTime"`
+	RampUpStartTime *TimeResponse `pulumi:"rampUpStartTime"`
 }
 
-// Scaling plan schedule.
+// A ScalingPlanPooledSchedule.
 type ScalingScheduleResponseOutput struct{ *pulumi.OutputState }
 
 func (ScalingScheduleResponseOutput) ElementType() reflect.Type {
@@ -2493,7 +2729,7 @@ func (o ScalingScheduleResponseOutput) DaysOfWeek() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ScalingScheduleResponse) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
 }
 
-// Name of the scaling schedule.
+// Name of the ScalingPlanPooledSchedule.
 func (o ScalingScheduleResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingScheduleResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2504,8 +2740,8 @@ func (o ScalingScheduleResponseOutput) OffPeakLoadBalancingAlgorithm() pulumi.St
 }
 
 // Starting time for off-peak period.
-func (o ScalingScheduleResponseOutput) OffPeakStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingScheduleResponse) *string { return v.OffPeakStartTime }).(pulumi.StringPtrOutput)
+func (o ScalingScheduleResponseOutput) OffPeakStartTime() TimeResponsePtrOutput {
+	return o.ApplyT(func(v ScalingScheduleResponse) *TimeResponse { return v.OffPeakStartTime }).(TimeResponsePtrOutput)
 }
 
 // Load balancing algorithm for peak period.
@@ -2514,8 +2750,8 @@ func (o ScalingScheduleResponseOutput) PeakLoadBalancingAlgorithm() pulumi.Strin
 }
 
 // Starting time for peak period.
-func (o ScalingScheduleResponseOutput) PeakStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingScheduleResponse) *string { return v.PeakStartTime }).(pulumi.StringPtrOutput)
+func (o ScalingScheduleResponseOutput) PeakStartTime() TimeResponsePtrOutput {
+	return o.ApplyT(func(v ScalingScheduleResponse) *TimeResponse { return v.PeakStartTime }).(TimeResponsePtrOutput)
 }
 
 // Capacity threshold for ramp down period.
@@ -2544,8 +2780,8 @@ func (o ScalingScheduleResponseOutput) RampDownNotificationMessage() pulumi.Stri
 }
 
 // Starting time for ramp down period.
-func (o ScalingScheduleResponseOutput) RampDownStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingScheduleResponse) *string { return v.RampDownStartTime }).(pulumi.StringPtrOutput)
+func (o ScalingScheduleResponseOutput) RampDownStartTime() TimeResponsePtrOutput {
+	return o.ApplyT(func(v ScalingScheduleResponse) *TimeResponse { return v.RampDownStartTime }).(TimeResponsePtrOutput)
 }
 
 // Specifies when to stop hosts during ramp down period.
@@ -2574,8 +2810,8 @@ func (o ScalingScheduleResponseOutput) RampUpMinimumHostsPct() pulumi.IntPtrOutp
 }
 
 // Starting time for ramp up period.
-func (o ScalingScheduleResponseOutput) RampUpStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingScheduleResponse) *string { return v.RampUpStartTime }).(pulumi.StringPtrOutput)
+func (o ScalingScheduleResponseOutput) RampUpStartTime() TimeResponsePtrOutput {
+	return o.ApplyT(func(v ScalingScheduleResponse) *TimeResponse { return v.RampUpStartTime }).(TimeResponsePtrOutput)
 }
 
 type ScalingScheduleResponseArrayOutput struct{ *pulumi.OutputState }
@@ -2896,10 +3132,14 @@ func (o TimeResponsePtrOutput) Minute() pulumi.IntPtrOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(MigrationRequestPropertiesOutput{})
-	pulumi.RegisterOutputType(MigrationRequestPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(MigrationRequestPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(MigrationRequestPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AgentUpdatePropertiesOutput{})
+	pulumi.RegisterOutputType(AgentUpdatePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(AgentUpdatePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AgentUpdatePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowPropertiesOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(MsixPackageApplicationsOutput{})
 	pulumi.RegisterOutputType(MsixPackageApplicationsArrayOutput{})
 	pulumi.RegisterOutputType(MsixPackageApplicationsResponseOutput{})

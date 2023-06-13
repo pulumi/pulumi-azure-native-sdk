@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a data connection.
-// API Version: 2021-04-01-preview.
+// API Version: 2021-06-01-preview.
 func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventGridDataConnectionResult, error) {
 	var rv LookupEventGridDataConnectionResult
 	err := ctx.Invoke("azure-native:synapse:getEventGridDataConnection", args, &rv, opts...)
@@ -30,7 +30,7 @@ type LookupEventGridDataConnectionArgs struct {
 	KustoPoolName string `pulumi:"kustoPoolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -91,7 +91,7 @@ type LookupEventGridDataConnectionOutputArgs struct {
 	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 

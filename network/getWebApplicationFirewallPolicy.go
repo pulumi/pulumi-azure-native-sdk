@@ -11,14 +11,14 @@ import (
 )
 
 // Retrieve protection policy with specified name within a resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupWebApplicationFirewallPolicy(ctx *pulumi.Context, args *LookupWebApplicationFirewallPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebApplicationFirewallPolicyResult, error) {
 	var rv LookupWebApplicationFirewallPolicyResult
 	err := ctx.Invoke("azure-native:network:getWebApplicationFirewallPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupWebApplicationFirewallPolicyArgs struct {
@@ -58,6 +58,17 @@ type LookupWebApplicationFirewallPolicyResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type.
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupWebApplicationFirewallPolicyResult
+func (val *LookupWebApplicationFirewallPolicyResult) Defaults() *LookupWebApplicationFirewallPolicyResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.PolicySettings = tmp.PolicySettings.Defaults()
+
+	return &tmp
 }
 
 func LookupWebApplicationFirewallPolicyOutput(ctx *pulumi.Context, args LookupWebApplicationFirewallPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebApplicationFirewallPolicyResultOutput {

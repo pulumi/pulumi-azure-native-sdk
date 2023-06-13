@@ -1753,7 +1753,7 @@ type BatchAccountIdentity struct {
 	// The type of identity used for the Batch account.
 	Type ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with the Batch account.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // BatchAccountIdentityInput is an input type that accepts BatchAccountIdentityArgs and BatchAccountIdentityOutput values.
@@ -1772,7 +1772,7 @@ type BatchAccountIdentityArgs struct {
 	// The type of identity used for the Batch account.
 	Type ResourceIdentityTypeInput `pulumi:"type"`
 	// The list of user identities associated with the Batch account.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (BatchAccountIdentityArgs) ElementType() reflect.Type {
@@ -1859,8 +1859,8 @@ func (o BatchAccountIdentityOutput) Type() ResourceIdentityTypeOutput {
 }
 
 // The list of user identities associated with the Batch account.
-func (o BatchAccountIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v BatchAccountIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o BatchAccountIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BatchAccountIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type BatchAccountIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1898,13 +1898,13 @@ func (o BatchAccountIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the Batch account.
-func (o BatchAccountIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *BatchAccountIdentity) map[string]interface{} {
+func (o BatchAccountIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BatchAccountIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The identity of the Batch account, if configured. This is used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration or when `ManagedIdentity` is selected as the auto-storage authentication mode.
@@ -2025,7 +2025,7 @@ type BatchPoolIdentity struct {
 	// The type of identity used for the Batch Pool.
 	Type PoolIdentityType `pulumi:"type"`
 	// The list of user identities associated with the Batch pool.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // BatchPoolIdentityInput is an input type that accepts BatchPoolIdentityArgs and BatchPoolIdentityOutput values.
@@ -2044,7 +2044,7 @@ type BatchPoolIdentityArgs struct {
 	// The type of identity used for the Batch Pool.
 	Type PoolIdentityTypeInput `pulumi:"type"`
 	// The list of user identities associated with the Batch pool.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (BatchPoolIdentityArgs) ElementType() reflect.Type {
@@ -2131,8 +2131,8 @@ func (o BatchPoolIdentityOutput) Type() PoolIdentityTypeOutput {
 }
 
 // The list of user identities associated with the Batch pool.
-func (o BatchPoolIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v BatchPoolIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o BatchPoolIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BatchPoolIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type BatchPoolIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -2170,13 +2170,13 @@ func (o BatchPoolIdentityPtrOutput) Type() PoolIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the Batch pool.
-func (o BatchPoolIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *BatchPoolIdentity) map[string]interface{} {
+func (o BatchPoolIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BatchPoolIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The identity of the Batch pool, if configured. If the pool identity is updated during update an existing pool, only the new vms which are created after the pool shrinks to 0 will have the updated identities
@@ -9349,8 +9349,6 @@ func (o ResizeErrorResponseArrayOutput) Index(i pulumi.IntInput) ResizeErrorResp
 type ResizeOperationStatusResponse struct {
 	// This property is set only if an error occurred during the last pool resize, and only when the pool allocationState is Steady.
 	Errors []ResizeErrorResponse `pulumi:"errors"`
-	// The default value is requeue.
-	NodeDeallocationOption *string `pulumi:"nodeDeallocationOption"`
 	// The default value is 15 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service returns an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
 	ResizeTimeout          *string `pulumi:"resizeTimeout"`
 	StartTime              *string `pulumi:"startTime"`
@@ -9376,11 +9374,6 @@ func (o ResizeOperationStatusResponseOutput) ToResizeOperationStatusResponseOutp
 // This property is set only if an error occurred during the last pool resize, and only when the pool allocationState is Steady.
 func (o ResizeOperationStatusResponseOutput) Errors() ResizeErrorResponseArrayOutput {
 	return o.ApplyT(func(v ResizeOperationStatusResponse) []ResizeErrorResponse { return v.Errors }).(ResizeErrorResponseArrayOutput)
-}
-
-// The default value is requeue.
-func (o ResizeOperationStatusResponseOutput) NodeDeallocationOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResizeOperationStatusResponse) *string { return v.NodeDeallocationOption }).(pulumi.StringPtrOutput)
 }
 
 // The default value is 15 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service returns an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).

@@ -44,10 +44,19 @@ func NewRegistryComponentContainer(ctx *pulumi.Context,
 	args.ComponentContainerProperties = args.ComponentContainerProperties.ToComponentContainerTypeOutput().ApplyT(func(v ComponentContainerType) ComponentContainerType { return *v.Defaults() }).(ComponentContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryComponentContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryComponentContainer"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:RegistryComponentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryComponentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:RegistryComponentContainer"),
 		},
 	})
 	opts = append(opts, aliases)

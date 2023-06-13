@@ -13,6 +13,7 @@ import (
 
 // iOS Policy entity for Intune MAM.
 // API Version: 2015-01-14-preview.
+// Previous API Version: 2015-01-14-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type IoMAMPolicyByName struct {
 	pulumi.CustomResourceState
 

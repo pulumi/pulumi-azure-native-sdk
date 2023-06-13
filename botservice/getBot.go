@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a BotService specified by the parameters.
-// API Version: 2021-03-01.
+// API Version: 2022-09-15.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
 	var rv LookupBotResult
 	err := ctx.Invoke("azure-native:botservice:getBot", args, &rv, opts...)
@@ -30,7 +30,7 @@ type LookupBotArgs struct {
 
 // Bot resource definition
 type LookupBotResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -102,7 +102,7 @@ func (o LookupBotResultOutput) ToLookupBotResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o LookupBotResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

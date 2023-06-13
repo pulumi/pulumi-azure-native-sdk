@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The list credential result response.
+// Lists the user credentials of a Fleet.
 func ListFleetCredentials(ctx *pulumi.Context, args *ListFleetCredentialsArgs, opts ...pulumi.InvokeOption) (*ListFleetCredentialsResult, error) {
 	var rv ListFleetCredentialsResult
 	err := ctx.Invoke("azure-native:containerservice/v20220902preview:listFleetCredentials", args, &rv, opts...)
@@ -27,9 +27,9 @@ type ListFleetCredentialsArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The list credential result response.
+// The Credential results response.
 type ListFleetCredentialsResult struct {
-	// Base64-encoded Kubernetes configuration file.
+	// Array of base64-encoded Kubernetes configuration files.
 	Kubeconfigs []FleetCredentialResultResponse `pulumi:"kubeconfigs"`
 }
 
@@ -57,7 +57,7 @@ func (ListFleetCredentialsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListFleetCredentialsArgs)(nil)).Elem()
 }
 
-// The list credential result response.
+// The Credential results response.
 type ListFleetCredentialsResultOutput struct{ *pulumi.OutputState }
 
 func (ListFleetCredentialsResultOutput) ElementType() reflect.Type {
@@ -72,7 +72,7 @@ func (o ListFleetCredentialsResultOutput) ToListFleetCredentialsResultOutputWith
 	return o
 }
 
-// Base64-encoded Kubernetes configuration file.
+// Array of base64-encoded Kubernetes configuration files.
 func (o ListFleetCredentialsResultOutput) Kubeconfigs() FleetCredentialResultResponseArrayOutput {
 	return o.ApplyT(func(v ListFleetCredentialsResult) []FleetCredentialResultResponse { return v.Kubeconfigs }).(FleetCredentialResultResponseArrayOutput)
 }

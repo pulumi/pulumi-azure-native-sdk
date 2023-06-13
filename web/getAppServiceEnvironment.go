@@ -10,15 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the properties of an App Service Environment.
-// API Version: 2020-12-01.
+// Description for Get the properties of an App Service Environment.
+// API Version: 2022-09-01.
 func LookupAppServiceEnvironment(ctx *pulumi.Context, args *LookupAppServiceEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentResult, error) {
 	var rv LookupAppServiceEnvironmentResult
 	err := ctx.Invoke("azure-native:web:getAppServiceEnvironment", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupAppServiceEnvironmentArgs struct {
@@ -32,8 +32,10 @@ type LookupAppServiceEnvironmentArgs struct {
 type LookupAppServiceEnvironmentResult struct {
 	// Custom settings for changing the behavior of the App Service Environment.
 	ClusterSettings []NameValuePairResponse `pulumi:"clusterSettings"`
+	// Full view of the custom domain suffix configuration for ASEv3.
+	CustomDnsSuffixConfiguration *CustomDnsSuffixConfigurationResponse `pulumi:"customDnsSuffixConfiguration"`
 	// Dedicated Host Count
-	DedicatedHostCount int `pulumi:"dedicatedHostCount"`
+	DedicatedHostCount *int `pulumi:"dedicatedHostCount"`
 	// DNS suffix of the App Service Environment.
 	DnsSuffix *string `pulumi:"dnsSuffix"`
 	// Scale factor for front-ends.
@@ -58,6 +60,8 @@ type LookupAppServiceEnvironmentResult struct {
 	MultiSize *string `pulumi:"multiSize"`
 	// Resource Name.
 	Name string `pulumi:"name"`
+	// Full view of networking configuration for an ASE.
+	NetworkingConfiguration *AseV3NetworkingConfigurationResponse `pulumi:"networkingConfiguration"`
 	// Provisioning state of the App Service Environment.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Current status of the App Service Environment.
@@ -69,10 +73,29 @@ type LookupAppServiceEnvironmentResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type.
 	Type string `pulumi:"type"`
-	// User added list of IP Ranges allowed on ASE db
+	// Whether an upgrade is available for this App Service Environment.
+	UpgradeAvailability string `pulumi:"upgradeAvailability"`
+	// Upgrade Preference
+	UpgradePreference *string `pulumi:"upgradePreference"`
+	// User added ip ranges to whitelist on ASE db
 	UserWhitelistedIpRanges []string `pulumi:"userWhitelistedIpRanges"`
 	// Description of the Virtual Network.
 	VirtualNetwork VirtualNetworkProfileResponse `pulumi:"virtualNetwork"`
+	// Whether or not this App Service Environment is zone-redundant.
+	ZoneRedundant *bool `pulumi:"zoneRedundant"`
+}
+
+// Defaults sets the appropriate defaults for LookupAppServiceEnvironmentResult
+func (val *LookupAppServiceEnvironmentResult) Defaults() *LookupAppServiceEnvironmentResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UpgradePreference == nil {
+		upgradePreference_ := "None"
+		tmp.UpgradePreference = &upgradePreference_
+	}
+	return &tmp
 }
 
 func LookupAppServiceEnvironmentOutput(ctx *pulumi.Context, args LookupAppServiceEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupAppServiceEnvironmentResultOutput {
@@ -119,9 +142,16 @@ func (o LookupAppServiceEnvironmentResultOutput) ClusterSettings() NameValuePair
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) []NameValuePairResponse { return v.ClusterSettings }).(NameValuePairResponseArrayOutput)
 }
 
+// Full view of the custom domain suffix configuration for ASEv3.
+func (o LookupAppServiceEnvironmentResultOutput) CustomDnsSuffixConfiguration() CustomDnsSuffixConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *CustomDnsSuffixConfigurationResponse {
+		return v.CustomDnsSuffixConfiguration
+	}).(CustomDnsSuffixConfigurationResponsePtrOutput)
+}
+
 // Dedicated Host Count
-func (o LookupAppServiceEnvironmentResultOutput) DedicatedHostCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) int { return v.DedicatedHostCount }).(pulumi.IntOutput)
+func (o LookupAppServiceEnvironmentResultOutput) DedicatedHostCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *int { return v.DedicatedHostCount }).(pulumi.IntPtrOutput)
 }
 
 // DNS suffix of the App Service Environment.
@@ -184,6 +214,13 @@ func (o LookupAppServiceEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Full view of networking configuration for an ASE.
+func (o LookupAppServiceEnvironmentResultOutput) NetworkingConfiguration() AseV3NetworkingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *AseV3NetworkingConfigurationResponse {
+		return v.NetworkingConfiguration
+	}).(AseV3NetworkingConfigurationResponsePtrOutput)
+}
+
 // Provisioning state of the App Service Environment.
 func (o LookupAppServiceEnvironmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -211,7 +248,17 @@ func (o LookupAppServiceEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// User added list of IP Ranges allowed on ASE db
+// Whether an upgrade is available for this App Service Environment.
+func (o LookupAppServiceEnvironmentResultOutput) UpgradeAvailability() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.UpgradeAvailability }).(pulumi.StringOutput)
+}
+
+// Upgrade Preference
+func (o LookupAppServiceEnvironmentResultOutput) UpgradePreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *string { return v.UpgradePreference }).(pulumi.StringPtrOutput)
+}
+
+// User added ip ranges to whitelist on ASE db
 func (o LookupAppServiceEnvironmentResultOutput) UserWhitelistedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) []string { return v.UserWhitelistedIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -219,6 +266,11 @@ func (o LookupAppServiceEnvironmentResultOutput) UserWhitelistedIpRanges() pulum
 // Description of the Virtual Network.
 func (o LookupAppServiceEnvironmentResultOutput) VirtualNetwork() VirtualNetworkProfileResponseOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) VirtualNetworkProfileResponse { return v.VirtualNetwork }).(VirtualNetworkProfileResponseOutput)
+}
+
+// Whether or not this App Service Environment is zone-redundant.
+func (o LookupAppServiceEnvironmentResultOutput) ZoneRedundant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *bool { return v.ZoneRedundant }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

@@ -12,7 +12,8 @@ import (
 )
 
 // Represents a project resource.
-// API Version: 2022-09-01-preview.
+// API Version: 2023-04-01.
+// Previous API Version: 2022-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -20,8 +21,12 @@ type Project struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource Id of an associated DevCenter
 	DevCenterId pulumi.StringPtrOutput `pulumi:"devCenterId"`
+	// The URI of the Dev Center resource this project is associated with.
+	DevCenterUri pulumi.StringOutput `pulumi:"devCenterUri"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
+	MaxDevBoxesPerUser pulumi.IntPtrOutput `pulumi:"maxDevBoxesPerUser"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
@@ -56,6 +61,12 @@ func NewProject(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:Project"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -97,9 +108,11 @@ type projectArgs struct {
 	DevCenterId *string `pulumi:"devCenterId"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
+	MaxDevBoxesPerUser *int `pulumi:"maxDevBoxesPerUser"`
 	// The name of the project.
 	ProjectName *string `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -113,9 +126,11 @@ type ProjectArgs struct {
 	DevCenterId pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
+	MaxDevBoxesPerUser pulumi.IntPtrInput
 	// The name of the project.
 	ProjectName pulumi.StringPtrInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -168,9 +183,19 @@ func (o ProjectOutput) DevCenterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DevCenterId }).(pulumi.StringPtrOutput)
 }
 
+// The URI of the Dev Center resource this project is associated with.
+func (o ProjectOutput) DevCenterUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.DevCenterUri }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o ProjectOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
+func (o ProjectOutput) MaxDevBoxesPerUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.MaxDevBoxesPerUser }).(pulumi.IntPtrOutput)
 }
 
 // The name of the resource

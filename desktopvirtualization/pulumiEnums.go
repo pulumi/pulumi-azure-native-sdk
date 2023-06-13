@@ -39,6 +39,163 @@ const (
 	DayOfWeekSunday    = DayOfWeek("Sunday")
 )
 
+func (DayOfWeek) ElementType() reflect.Type {
+	return reflect.TypeOf((*DayOfWeek)(nil)).Elem()
+}
+
+func (e DayOfWeek) ToDayOfWeekOutput() DayOfWeekOutput {
+	return pulumi.ToOutput(e).(DayOfWeekOutput)
+}
+
+func (e DayOfWeek) ToDayOfWeekOutputWithContext(ctx context.Context) DayOfWeekOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DayOfWeekOutput)
+}
+
+func (e DayOfWeek) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
+	return e.ToDayOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (e DayOfWeek) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
+	return DayOfWeek(e).ToDayOfWeekOutputWithContext(ctx).ToDayOfWeekPtrOutputWithContext(ctx)
+}
+
+func (e DayOfWeek) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DayOfWeek) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DayOfWeek) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DayOfWeek) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DayOfWeekOutput struct{ *pulumi.OutputState }
+
+func (DayOfWeekOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DayOfWeek)(nil)).Elem()
+}
+
+func (o DayOfWeekOutput) ToDayOfWeekOutput() DayOfWeekOutput {
+	return o
+}
+
+func (o DayOfWeekOutput) ToDayOfWeekOutputWithContext(ctx context.Context) DayOfWeekOutput {
+	return o
+}
+
+func (o DayOfWeekOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
+	return o.ToDayOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (o DayOfWeekOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DayOfWeek) *DayOfWeek {
+		return &v
+	}).(DayOfWeekPtrOutput)
+}
+
+func (o DayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DayOfWeekOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DayOfWeek) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DayOfWeekOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DayOfWeekOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DayOfWeek) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DayOfWeekPtrOutput struct{ *pulumi.OutputState }
+
+func (DayOfWeekPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DayOfWeek)(nil)).Elem()
+}
+
+func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
+	return o
+}
+
+func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
+	return o
+}
+
+func (o DayOfWeekPtrOutput) Elem() DayOfWeekOutput {
+	return o.ApplyT(func(v *DayOfWeek) DayOfWeek {
+		if v != nil {
+			return *v
+		}
+		var ret DayOfWeek
+		return ret
+	}).(DayOfWeekOutput)
+}
+
+func (o DayOfWeekPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DayOfWeek) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DayOfWeekInput is an input type that accepts DayOfWeekArgs and DayOfWeekOutput values.
+// You can construct a concrete instance of `DayOfWeekInput` via:
+//
+//	DayOfWeekArgs{...}
+type DayOfWeekInput interface {
+	pulumi.Input
+
+	ToDayOfWeekOutput() DayOfWeekOutput
+	ToDayOfWeekOutputWithContext(context.Context) DayOfWeekOutput
+}
+
+var dayOfWeekPtrType = reflect.TypeOf((**DayOfWeek)(nil)).Elem()
+
+type DayOfWeekPtrInput interface {
+	pulumi.Input
+
+	ToDayOfWeekPtrOutput() DayOfWeekPtrOutput
+	ToDayOfWeekPtrOutputWithContext(context.Context) DayOfWeekPtrOutput
+}
+
+type dayOfWeekPtr string
+
+func DayOfWeekPtr(v string) DayOfWeekPtrInput {
+	return (*dayOfWeekPtr)(&v)
+}
+
+func (*dayOfWeekPtr) ElementType() reflect.Type {
+	return dayOfWeekPtrType
+}
+
+func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
+	return pulumi.ToOutput(in).(DayOfWeekPtrOutput)
+}
+
+func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
+}
+
 // HostPool type for desktop.
 type HostPoolType string
 
@@ -58,22 +215,6 @@ const (
 	LoadBalancerTypeBreadthFirst = LoadBalancerType("BreadthFirst")
 	LoadBalancerTypeDepthFirst   = LoadBalancerType("DepthFirst")
 	LoadBalancerTypePersistent   = LoadBalancerType("Persistent")
-)
-
-// The type of operation for migration.
-type Operation string
-
-const (
-	// Start the migration.
-	OperationStart = Operation("Start")
-	// Revoke the migration.
-	OperationRevoke = Operation("Revoke")
-	// Complete the migration.
-	OperationComplete = Operation("Complete")
-	// Hide the hostpool.
-	OperationHide = Operation("Hide")
-	// Unhide the hostpool.
-	OperationUnhide = Operation("Unhide")
 )
 
 // PersonalDesktopAssignment type for HostPool.
@@ -293,6 +434,24 @@ const (
 	SSOSecretTypeCertificateInKeyVault = SSOSecretType("CertificateInKeyVault")
 )
 
+// HostPool type for desktop.
+type ScalingHostPoolType string
+
+const (
+	// Users get a new (random) SessionHost every time it connects to the HostPool.
+	ScalingHostPoolTypePooled = ScalingHostPoolType("Pooled")
+)
+
+// The type of maintenance for session host components.
+type SessionHostComponentUpdateType string
+
+const (
+	// Agent and other agent side components are delivery schedule is controlled by WVD Infra.
+	SessionHostComponentUpdateTypeDefault = SessionHostComponentUpdateType("Default")
+	// TenantAdmin have opted in for Scheduled Component Update feature.
+	SessionHostComponentUpdateTypeScheduled = SessionHostComponentUpdateType("Scheduled")
+)
+
 // Load balancing algorithm for ramp up period.
 type SessionHostLoadBalancingAlgorithm string
 
@@ -477,6 +636,8 @@ const (
 )
 
 func init() {
+	pulumi.RegisterOutputType(DayOfWeekOutput{})
+	pulumi.RegisterOutputType(DayOfWeekPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(SkuTierOutput{})

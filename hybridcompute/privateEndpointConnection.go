@@ -12,7 +12,8 @@ import (
 )
 
 // A private endpoint connection
-// API Version: 2021-03-25-preview.
+// API Version: 2022-12-27.
+// Previous API Version: 2021-03-25-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -20,7 +21,7 @@ type PrivateEndpointConnection struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resource properties.
 	Properties PrivateEndpointConnectionPropertiesResponseOutput `pulumi:"properties"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -81,6 +82,12 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230425preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,7 +194,7 @@ func (o PrivateEndpointConnectionOutput) Properties() PrivateEndpointConnectionP
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o PrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

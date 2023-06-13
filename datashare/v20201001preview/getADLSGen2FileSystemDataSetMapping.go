@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-//
-// Deprecated: azure-native:datashare/v20201001preview:ADLSGen2FileSystemDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:ADLSGen2FileSystemDataSetMapping to guarantee forwards compatibility.
-func LookupADLSGen2FileSystemDataSetMapping(ctx *pulumi.Context, args *LookupADLSGen2FileSystemDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2FileSystemDataSetMappingResult, error) {
-	var rv LookupADLSGen2FileSystemDataSetMappingResult
+func GetADLSGen2FileSystemDataSetMapping(ctx *pulumi.Context, args *GetADLSGen2FileSystemDataSetMappingArgs, opts ...pulumi.InvokeOption) (*GetADLSGen2FileSystemDataSetMappingResult, error) {
+	var rv GetADLSGen2FileSystemDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getADLSGen2FileSystemDataSetMapping", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupADLSGen2FileSystemDataSetMapping(ctx *pulumi.Context, args *LookupADL
 	return &rv, nil
 }
 
-type LookupADLSGen2FileSystemDataSetMappingArgs struct {
+type GetADLSGen2FileSystemDataSetMappingArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSetMapping.
@@ -34,7 +32,7 @@ type LookupADLSGen2FileSystemDataSetMappingArgs struct {
 }
 
 // An ADLS Gen2 file system data set mapping.
-type LookupADLSGen2FileSystemDataSetMappingResult struct {
+type GetADLSGen2FileSystemDataSetMappingResult struct {
 	// The id of the source data set.
 	DataSetId string `pulumi:"dataSetId"`
 	// Gets the status of the data set mapping.
@@ -62,20 +60,20 @@ type LookupADLSGen2FileSystemDataSetMappingResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupADLSGen2FileSystemDataSetMappingOutput(ctx *pulumi.Context, args LookupADLSGen2FileSystemDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupADLSGen2FileSystemDataSetMappingResultOutput {
+func GetADLSGen2FileSystemDataSetMappingOutput(ctx *pulumi.Context, args GetADLSGen2FileSystemDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) GetADLSGen2FileSystemDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupADLSGen2FileSystemDataSetMappingResult, error) {
-			args := v.(LookupADLSGen2FileSystemDataSetMappingArgs)
-			r, err := LookupADLSGen2FileSystemDataSetMapping(ctx, &args, opts...)
-			var s LookupADLSGen2FileSystemDataSetMappingResult
+		ApplyT(func(v interface{}) (GetADLSGen2FileSystemDataSetMappingResult, error) {
+			args := v.(GetADLSGen2FileSystemDataSetMappingArgs)
+			r, err := GetADLSGen2FileSystemDataSetMapping(ctx, &args, opts...)
+			var s GetADLSGen2FileSystemDataSetMappingResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupADLSGen2FileSystemDataSetMappingResultOutput)
+		}).(GetADLSGen2FileSystemDataSetMappingResultOutput)
 }
 
-type LookupADLSGen2FileSystemDataSetMappingOutputArgs struct {
+type GetADLSGen2FileSystemDataSetMappingOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSetMapping.
@@ -86,86 +84,86 @@ type LookupADLSGen2FileSystemDataSetMappingOutputArgs struct {
 	ShareSubscriptionName pulumi.StringInput `pulumi:"shareSubscriptionName"`
 }
 
-func (LookupADLSGen2FileSystemDataSetMappingOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupADLSGen2FileSystemDataSetMappingArgs)(nil)).Elem()
+func (GetADLSGen2FileSystemDataSetMappingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetADLSGen2FileSystemDataSetMappingArgs)(nil)).Elem()
 }
 
 // An ADLS Gen2 file system data set mapping.
-type LookupADLSGen2FileSystemDataSetMappingResultOutput struct{ *pulumi.OutputState }
+type GetADLSGen2FileSystemDataSetMappingResultOutput struct{ *pulumi.OutputState }
 
-func (LookupADLSGen2FileSystemDataSetMappingResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupADLSGen2FileSystemDataSetMappingResult)(nil)).Elem()
+func (GetADLSGen2FileSystemDataSetMappingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetADLSGen2FileSystemDataSetMappingResult)(nil)).Elem()
 }
 
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) ToLookupADLSGen2FileSystemDataSetMappingResultOutput() LookupADLSGen2FileSystemDataSetMappingResultOutput {
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) ToGetADLSGen2FileSystemDataSetMappingResultOutput() GetADLSGen2FileSystemDataSetMappingResultOutput {
 	return o
 }
 
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) ToLookupADLSGen2FileSystemDataSetMappingResultOutputWithContext(ctx context.Context) LookupADLSGen2FileSystemDataSetMappingResultOutput {
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) ToGetADLSGen2FileSystemDataSetMappingResultOutputWithContext(ctx context.Context) GetADLSGen2FileSystemDataSetMappingResultOutput {
 	return o
 }
 
 // The id of the source data set.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // Gets the status of the data set mapping.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
 }
 
 // The file system name.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) FileSystem() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.FileSystem }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) FileSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.FileSystem }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set mapping.
 // Expected value is 'AdlsGen2FileSystem'.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Provisioning state of the data set mapping.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Resource group of storage account.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) ResourceGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) ResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
 }
 
 // Storage account name of the source data set.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) StorageAccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.StorageAccountName }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.StorageAccountName }).(pulumi.StringOutput)
 }
 
 // Subscription id of storage account.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) SubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the azure resource
-func (o LookupADLSGen2FileSystemDataSetMappingResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupADLSGen2FileSystemDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetADLSGen2FileSystemDataSetMappingResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetADLSGen2FileSystemDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupADLSGen2FileSystemDataSetMappingResultOutput{})
+	pulumi.RegisterOutputType(GetADLSGen2FileSystemDataSetMappingResultOutput{})
 }

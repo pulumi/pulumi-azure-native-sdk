@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Asset storage encryption keys used to decrypt content created by version 2 of the Media Services API
-// API Version: 2020-05-01.
+// API Version: 2023-01-01.
 func GetAssetEncryptionKey(ctx *pulumi.Context, args *GetAssetEncryptionKeyArgs, opts ...pulumi.InvokeOption) (*GetAssetEncryptionKeyResult, error) {
 	var rv GetAssetEncryptionKeyResult
 	err := ctx.Invoke("azure-native:media:getAssetEncryptionKey", args, &rv, opts...)

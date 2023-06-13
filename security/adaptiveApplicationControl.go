@@ -12,6 +12,7 @@ import (
 )
 
 // API Version: 2020-01-01.
+// Previous API Version: 2020-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AdaptiveApplicationControl struct {
 	pulumi.CustomResourceState
 
@@ -47,9 +48,6 @@ func NewAdaptiveApplicationControl(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'AscLocation'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:security/v20150601preview:AdaptiveApplicationControl"),
-		},
 		{
 			Type: pulumi.String("azure-native:security/v20200101:AdaptiveApplicationControl"),
 		},

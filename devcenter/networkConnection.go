@@ -12,7 +12,8 @@ import (
 )
 
 // Network related settings
-// API Version: 2022-09-01-preview.
+// API Version: 2023-04-01.
+// Previous API Version: 2022-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type NetworkConnection struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +76,12 @@ func NewNetworkConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:NetworkConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:NetworkConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:NetworkConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkConnection
@@ -125,7 +132,7 @@ type networkConnectionArgs struct {
 	NetworkingResourceGroupName *string `pulumi:"networkingResourceGroupName"`
 	// Active Directory domain Organization Unit (OU)
 	OrganizationUnit *string `pulumi:"organizationUnit"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The subnet to attach Virtual Machines to
 	SubnetId string `pulumi:"subnetId"`
@@ -151,7 +158,7 @@ type NetworkConnectionArgs struct {
 	NetworkingResourceGroupName pulumi.StringPtrInput
 	// Active Directory domain Organization Unit (OU)
 	OrganizationUnit pulumi.StringPtrInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The subnet to attach Virtual Machines to
 	SubnetId pulumi.StringInput

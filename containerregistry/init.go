@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:containerregistry:AgentPool":
 		r = &AgentPool{}
+	case "azure-native:containerregistry:BuildStep":
+		r = &BuildStep{}
+	case "azure-native:containerregistry:CacheRule":
+		r = &CacheRule{}
 	case "azure-native:containerregistry:ConnectedRegistry":
 		r = &ConnectedRegistry{}
+	case "azure-native:containerregistry:CredentialSet":
+		r = &CredentialSet{}
 	case "azure-native:containerregistry:ExportPipeline":
 		r = &ExportPipeline{}
 	case "azure-native:containerregistry:ImportPipeline":

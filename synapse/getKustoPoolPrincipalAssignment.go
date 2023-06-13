@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Kusto pool principalAssignment.
-// API Version: 2021-04-01-preview.
+// API Version: 2021-06-01-preview.
 func LookupKustoPoolPrincipalAssignment(ctx *pulumi.Context, args *LookupKustoPoolPrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupKustoPoolPrincipalAssignmentResult, error) {
 	var rv LookupKustoPoolPrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:synapse:getKustoPoolPrincipalAssignment", args, &rv, opts...)
@@ -28,12 +28,14 @@ type LookupKustoPoolPrincipalAssignmentArgs struct {
 	PrincipalAssignmentName string `pulumi:"principalAssignmentName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Class representing a cluster principal assignment.
 type LookupKustoPoolPrincipalAssignmentResult struct {
+	// The service principal object id in AAD (Azure active directory)
+	AadObjectId string `pulumi:"aadObjectId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -78,7 +80,7 @@ type LookupKustoPoolPrincipalAssignmentOutputArgs struct {
 	PrincipalAssignmentName pulumi.StringInput `pulumi:"principalAssignmentName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -99,6 +101,11 @@ func (o LookupKustoPoolPrincipalAssignmentResultOutput) ToLookupKustoPoolPrincip
 
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) ToLookupKustoPoolPrincipalAssignmentResultOutputWithContext(ctx context.Context) LookupKustoPoolPrincipalAssignmentResultOutput {
 	return o
+}
+
+// The service principal object id in AAD (Azure active directory)
+func (o LookupKustoPoolPrincipalAssignmentResultOutput) AadObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.AadObjectId }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

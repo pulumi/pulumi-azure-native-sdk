@@ -13,6 +13,7 @@ import (
 
 // The connector mapping resource format.
 // API Version: 2017-04-26.
+// Previous API Version: 2017-04-26. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ConnectorMapping struct {
 	pulumi.CustomResourceState
 
@@ -78,9 +79,6 @@ func NewConnectorMapping(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:customerinsights/v20170101:ConnectorMapping"),
-		},
 		{
 			Type: pulumi.String("azure-native:customerinsights/v20170426:ConnectorMapping"),
 		},

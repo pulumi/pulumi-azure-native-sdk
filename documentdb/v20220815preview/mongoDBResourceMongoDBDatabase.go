@@ -50,39 +50,6 @@ func NewMongoDBResourceMongoDBDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb:MongoDBResourceMongoDBDatabase"),
 		},
 		{
-			Type: pulumi.String("azure-native:documentdb/v20150401:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150408:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20151106:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160319:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160331:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:MongoDBResourceMongoDBDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:MongoDBResourceMongoDBDatabase"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:MongoDBResourceMongoDBDatabase"),
 		},
 		{
@@ -131,7 +98,19 @@ func NewMongoDBResourceMongoDBDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:MongoDBResourceMongoDBDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:MongoDBResourceMongoDBDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:MongoDBResourceMongoDBDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:MongoDBResourceMongoDBDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:MongoDBResourceMongoDBDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:MongoDBResourceMongoDBDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

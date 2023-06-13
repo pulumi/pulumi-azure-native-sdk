@@ -8,7 +8,7 @@ import (
 )
 
 // Get the subscription-level key used for Real User Metrics collection.
-// API Version: 2018-08-01.
+// API Version: 2022-04-01.
 func LookupTrafficManagerUserMetricsKey(ctx *pulumi.Context, args *LookupTrafficManagerUserMetricsKeyArgs, opts ...pulumi.InvokeOption) (*LookupTrafficManagerUserMetricsKeyResult, error) {
 	var rv LookupTrafficManagerUserMetricsKeyResult
 	err := ctx.Invoke("azure-native:network:getTrafficManagerUserMetricsKey", args, &rv, opts...)

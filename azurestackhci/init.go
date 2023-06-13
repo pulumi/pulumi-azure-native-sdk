@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +27,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "azure-native:azurestackhci:Extension":
 		r = &Extension{}
+	case "azure-native:azurestackhci:GalleryimageRetrieve":
+		r = &GalleryimageRetrieve{}
+	case "azure-native:azurestackhci:Marketplacegalleryimage":
+		r = &Marketplacegalleryimage{}
+	case "azure-native:azurestackhci:NetworkinterfaceRetrieve":
+		r = &NetworkinterfaceRetrieve{}
+	case "azure-native:azurestackhci:StoragecontainerRetrieve":
+		r = &StoragecontainerRetrieve{}
+	case "azure-native:azurestackhci:Update":
+		r = &Update{}
+	case "azure-native:azurestackhci:UpdateRun":
+		r = &UpdateRun{}
+	case "azure-native:azurestackhci:UpdateSummary":
+		r = &UpdateSummary{}
+	case "azure-native:azurestackhci:VirtualharddiskRetrieve":
+		r = &VirtualharddiskRetrieve{}
+	case "azure-native:azurestackhci:VirtualmachineRetrieve":
+		r = &VirtualmachineRetrieve{}
+	case "azure-native:azurestackhci:VirtualnetworkRetrieve":
+		r = &VirtualnetworkRetrieve{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

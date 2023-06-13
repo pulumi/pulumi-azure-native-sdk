@@ -82,51 +82,6 @@ func NewSecurityRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:SecurityRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20150501preview:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:SecurityRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:SecurityRule"),
 		},
 		{
@@ -210,6 +165,9 @@ func NewSecurityRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:SecurityRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:SecurityRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SecurityRule
@@ -253,7 +211,7 @@ type securityRuleArgs struct {
 	// The destination address prefixes. CIDR or destination IP ranges.
 	DestinationAddressPrefixes []string `pulumi:"destinationAddressPrefixes"`
 	// The application security group specified as destination.
-	DestinationApplicationSecurityGroups []ApplicationSecurityGroupType `pulumi:"destinationApplicationSecurityGroups"`
+	DestinationApplicationSecurityGroups []ApplicationSecurityGroup `pulumi:"destinationApplicationSecurityGroups"`
 	// The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
 	DestinationPortRange *string `pulumi:"destinationPortRange"`
 	// The destination port ranges.
@@ -279,7 +237,7 @@ type securityRuleArgs struct {
 	// The CIDR or source IP ranges.
 	SourceAddressPrefixes []string `pulumi:"sourceAddressPrefixes"`
 	// The application security group specified as source.
-	SourceApplicationSecurityGroups []ApplicationSecurityGroupType `pulumi:"sourceApplicationSecurityGroups"`
+	SourceApplicationSecurityGroups []ApplicationSecurityGroup `pulumi:"sourceApplicationSecurityGroups"`
 	// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
 	SourcePortRange *string `pulumi:"sourcePortRange"`
 	// The source port ranges.
@@ -299,7 +257,7 @@ type SecurityRuleArgs struct {
 	// The destination address prefixes. CIDR or destination IP ranges.
 	DestinationAddressPrefixes pulumi.StringArrayInput
 	// The application security group specified as destination.
-	DestinationApplicationSecurityGroups ApplicationSecurityGroupTypeArrayInput
+	DestinationApplicationSecurityGroups ApplicationSecurityGroupArrayInput
 	// The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
 	DestinationPortRange pulumi.StringPtrInput
 	// The destination port ranges.
@@ -325,7 +283,7 @@ type SecurityRuleArgs struct {
 	// The CIDR or source IP ranges.
 	SourceAddressPrefixes pulumi.StringArrayInput
 	// The application security group specified as source.
-	SourceApplicationSecurityGroups ApplicationSecurityGroupTypeArrayInput
+	SourceApplicationSecurityGroups ApplicationSecurityGroupArrayInput
 	// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
 	SourcePortRange pulumi.StringPtrInput
 	// The source port ranges.

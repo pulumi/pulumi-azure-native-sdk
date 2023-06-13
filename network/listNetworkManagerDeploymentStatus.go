@@ -11,7 +11,7 @@ import (
 )
 
 // Post to List of Network Manager Deployment Status.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-11-01.
 func ListNetworkManagerDeploymentStatus(ctx *pulumi.Context, args *ListNetworkManagerDeploymentStatusArgs, opts ...pulumi.InvokeOption) (*ListNetworkManagerDeploymentStatusResult, error) {
 	var rv ListNetworkManagerDeploymentStatusResult
 	err := ctx.Invoke("azure-native:network:listNetworkManagerDeploymentStatus", args, &rv, opts...)
@@ -32,6 +32,8 @@ type ListNetworkManagerDeploymentStatusArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Continuation token for pagination, capturing the next page size and offset, as well as the context of the query.
 	SkipToken *string `pulumi:"skipToken"`
+	// An optional query parameter which specifies the maximum number of records to be returned by the server.
+	Top *int `pulumi:"top"`
 }
 
 // A list of Network Manager Deployment Status
@@ -66,6 +68,8 @@ type ListNetworkManagerDeploymentStatusOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Continuation token for pagination, capturing the next page size and offset, as well as the context of the query.
 	SkipToken pulumi.StringPtrInput `pulumi:"skipToken"`
+	// An optional query parameter which specifies the maximum number of records to be returned by the server.
+	Top pulumi.IntPtrInput `pulumi:"top"`
 }
 
 func (ListNetworkManagerDeploymentStatusOutputArgs) ElementType() reflect.Type {

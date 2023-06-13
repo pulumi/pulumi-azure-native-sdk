@@ -50,12 +50,18 @@ func NewPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForMIPPolicySync"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance:PrivateLinkServicesForMIPPolicySync"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForMIPPolicySync"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForMIPPolicySync
-	err := ctx.RegisterResource("azure-native:securityandcompliance/v20210308:privateLinkServicesForMIPPolicySync", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForMIPPolicySync", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +73,7 @@ func NewPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context,
 func GetPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForMIPPolicySyncState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForMIPPolicySync, error) {
 	var resource PrivateLinkServicesForMIPPolicySync
-	err := ctx.ReadResource("azure-native:securityandcompliance/v20210308:privateLinkServicesForMIPPolicySync", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForMIPPolicySync", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

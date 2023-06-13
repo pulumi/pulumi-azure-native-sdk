@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified virtual network gateway connection by resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupVirtualNetworkGatewayConnection(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayConnectionResult, error) {
 	var rv LookupVirtualNetworkGatewayConnectionResult
 	err := ctx.Invoke("azure-native:network:getVirtualNetworkGatewayConnection", args, &rv, opts...)
@@ -44,16 +44,24 @@ type LookupVirtualNetworkGatewayConnectionResult struct {
 	DpdTimeoutSeconds *int `pulumi:"dpdTimeoutSeconds"`
 	// The egress bytes transferred in this connection.
 	EgressBytesTransferred float64 `pulumi:"egressBytesTransferred"`
+	// List of egress NatRules.
+	EgressNatRules []SubResourceResponse `pulumi:"egressNatRules"`
 	// EnableBgp flag.
 	EnableBgp *bool `pulumi:"enableBgp"`
+	// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
+	EnablePrivateLinkFastPath *bool `pulumi:"enablePrivateLinkFastPath"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Bypass ExpressRoute Gateway for data forwarding.
 	ExpressRouteGatewayBypass *bool `pulumi:"expressRouteGatewayBypass"`
+	// GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection.
+	GatewayCustomBgpIpAddresses []GatewayCustomBgpIpAddressIpConfigurationResponse `pulumi:"gatewayCustomBgpIpAddresses"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The ingress bytes transferred in this connection.
 	IngressBytesTransferred float64 `pulumi:"ingressBytesTransferred"`
+	// List of ingress NatRules.
+	IngressNatRules []SubResourceResponse `pulumi:"ingressNatRules"`
 	// The IPSec Policies to be considered by this connection.
 	IpsecPolicies []IpsecPolicyResponse `pulumi:"ipsecPolicies"`
 	// The reference to local network gateway resource.
@@ -164,9 +172,19 @@ func (o LookupVirtualNetworkGatewayConnectionResultOutput) EgressBytesTransferre
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) float64 { return v.EgressBytesTransferred }).(pulumi.Float64Output)
 }
 
+// List of egress NatRules.
+func (o LookupVirtualNetworkGatewayConnectionResultOutput) EgressNatRules() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) []SubResourceResponse { return v.EgressNatRules }).(SubResourceResponseArrayOutput)
+}
+
 // EnableBgp flag.
 func (o LookupVirtualNetworkGatewayConnectionResultOutput) EnableBgp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) *bool { return v.EnableBgp }).(pulumi.BoolPtrOutput)
+}
+
+// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
+func (o LookupVirtualNetworkGatewayConnectionResultOutput) EnablePrivateLinkFastPath() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) *bool { return v.EnablePrivateLinkFastPath }).(pulumi.BoolPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -179,6 +197,13 @@ func (o LookupVirtualNetworkGatewayConnectionResultOutput) ExpressRouteGatewayBy
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) *bool { return v.ExpressRouteGatewayBypass }).(pulumi.BoolPtrOutput)
 }
 
+// GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection.
+func (o LookupVirtualNetworkGatewayConnectionResultOutput) GatewayCustomBgpIpAddresses() GatewayCustomBgpIpAddressIpConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) []GatewayCustomBgpIpAddressIpConfigurationResponse {
+		return v.GatewayCustomBgpIpAddresses
+	}).(GatewayCustomBgpIpAddressIpConfigurationResponseArrayOutput)
+}
+
 // Resource ID.
 func (o LookupVirtualNetworkGatewayConnectionResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -187,6 +212,11 @@ func (o LookupVirtualNetworkGatewayConnectionResultOutput) Id() pulumi.StringPtr
 // The ingress bytes transferred in this connection.
 func (o LookupVirtualNetworkGatewayConnectionResultOutput) IngressBytesTransferred() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) float64 { return v.IngressBytesTransferred }).(pulumi.Float64Output)
+}
+
+// List of ingress NatRules.
+func (o LookupVirtualNetworkGatewayConnectionResultOutput) IngressNatRules() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayConnectionResult) []SubResourceResponse { return v.IngressNatRules }).(SubResourceResponseArrayOutput)
 }
 
 // The IPSec Policies to be considered by this connection.

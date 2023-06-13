@@ -12,7 +12,8 @@ import (
 )
 
 // Class representing a Traffic Manager profile.
-// API Version: 2018-08-01.
+// API Version: 2022-04-01.
+// Previous API Version: 2018-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Profile struct {
 	pulumi.CustomResourceState
 
@@ -54,25 +55,10 @@ func NewProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network/v20151101:Profile"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:Profile"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170501:Profile"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:Profile"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180301:Profile"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:Profile"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180801:Profile"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20220401:Profile"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220401preview:Profile"),
@@ -131,7 +117,7 @@ type profileArgs struct {
 	ProfileName *string `pulumi:"profileName"`
 	// The status of the Traffic Manager profile.
 	ProfileStatus *string `pulumi:"profileStatus"`
-	// The name of the resource group containing the Traffic Manager profile.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -165,7 +151,7 @@ type ProfileArgs struct {
 	ProfileName pulumi.StringPtrInput
 	// The status of the Traffic Manager profile.
 	ProfileStatus pulumi.StringPtrInput
-	// The name of the resource group containing the Traffic Manager profile.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput

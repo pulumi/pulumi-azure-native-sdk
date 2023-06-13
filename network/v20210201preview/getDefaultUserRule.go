@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a user rule.
-//
-// Deprecated: azure-native:network/v20210201preview:DefaultUserRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210501preview:DefaultUserRule to guarantee forwards compatibility.
-func LookupDefaultUserRule(ctx *pulumi.Context, args *LookupDefaultUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupDefaultUserRuleResult, error) {
-	var rv LookupDefaultUserRuleResult
+func GetDefaultUserRule(ctx *pulumi.Context, args *GetDefaultUserRuleArgs, opts ...pulumi.InvokeOption) (*GetDefaultUserRuleResult, error) {
+	var rv GetDefaultUserRuleResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getDefaultUserRule", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupDefaultUserRule(ctx *pulumi.Context, args *LookupDefaultUserRuleArgs,
 	return &rv, nil
 }
 
-type LookupDefaultUserRuleArgs struct {
+type GetDefaultUserRuleArgs struct {
 	// The name of the network manager security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// The name of the network manager.
@@ -36,7 +34,7 @@ type LookupDefaultUserRuleArgs struct {
 }
 
 // Network security default user rule.
-type LookupDefaultUserRuleResult struct {
+type GetDefaultUserRuleResult struct {
 	// A description for this rule. Restricted to 140 chars.
 	Description string `pulumi:"description"`
 	// The destination port ranges.
@@ -72,20 +70,20 @@ type LookupDefaultUserRuleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupDefaultUserRuleOutput(ctx *pulumi.Context, args LookupDefaultUserRuleOutputArgs, opts ...pulumi.InvokeOption) LookupDefaultUserRuleResultOutput {
+func GetDefaultUserRuleOutput(ctx *pulumi.Context, args GetDefaultUserRuleOutputArgs, opts ...pulumi.InvokeOption) GetDefaultUserRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDefaultUserRuleResult, error) {
-			args := v.(LookupDefaultUserRuleArgs)
-			r, err := LookupDefaultUserRule(ctx, &args, opts...)
-			var s LookupDefaultUserRuleResult
+		ApplyT(func(v interface{}) (GetDefaultUserRuleResult, error) {
+			args := v.(GetDefaultUserRuleArgs)
+			r, err := GetDefaultUserRule(ctx, &args, opts...)
+			var s GetDefaultUserRuleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupDefaultUserRuleResultOutput)
+		}).(GetDefaultUserRuleResultOutput)
 }
 
-type LookupDefaultUserRuleOutputArgs struct {
+type GetDefaultUserRuleOutputArgs struct {
 	// The name of the network manager security Configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 	// The name of the network manager.
@@ -98,106 +96,106 @@ type LookupDefaultUserRuleOutputArgs struct {
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
 }
 
-func (LookupDefaultUserRuleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupDefaultUserRuleArgs)(nil)).Elem()
+func (GetDefaultUserRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultUserRuleArgs)(nil)).Elem()
 }
 
 // Network security default user rule.
-type LookupDefaultUserRuleResultOutput struct{ *pulumi.OutputState }
+type GetDefaultUserRuleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupDefaultUserRuleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupDefaultUserRuleResult)(nil)).Elem()
+func (GetDefaultUserRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultUserRuleResult)(nil)).Elem()
 }
 
-func (o LookupDefaultUserRuleResultOutput) ToLookupDefaultUserRuleResultOutput() LookupDefaultUserRuleResultOutput {
+func (o GetDefaultUserRuleResultOutput) ToGetDefaultUserRuleResultOutput() GetDefaultUserRuleResultOutput {
 	return o
 }
 
-func (o LookupDefaultUserRuleResultOutput) ToLookupDefaultUserRuleResultOutputWithContext(ctx context.Context) LookupDefaultUserRuleResultOutput {
+func (o GetDefaultUserRuleResultOutput) ToGetDefaultUserRuleResultOutputWithContext(ctx context.Context) GetDefaultUserRuleResultOutput {
 	return o
 }
 
 // A description for this rule. Restricted to 140 chars.
-func (o LookupDefaultUserRuleResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Description }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The destination port ranges.
-func (o LookupDefaultUserRuleResultOutput) DestinationPortRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) []string { return v.DestinationPortRanges }).(pulumi.StringArrayOutput)
+func (o GetDefaultUserRuleResultOutput) DestinationPortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) []string { return v.DestinationPortRanges }).(pulumi.StringArrayOutput)
 }
 
 // The destination address prefixes. CIDR or destination IP ranges.
-func (o LookupDefaultUserRuleResultOutput) Destinations() AddressPrefixItemResponseArrayOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) []AddressPrefixItemResponse { return v.Destinations }).(AddressPrefixItemResponseArrayOutput)
+func (o GetDefaultUserRuleResultOutput) Destinations() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) []AddressPrefixItemResponse { return v.Destinations }).(AddressPrefixItemResponseArrayOutput)
 }
 
 // Indicates if the traffic matched against the rule in inbound or outbound.
-func (o LookupDefaultUserRuleResultOutput) Direction() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Direction }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.Direction }).(pulumi.StringOutput)
 }
 
 // A friendly name for the rule.
-func (o LookupDefaultUserRuleResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
-func (o LookupDefaultUserRuleResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Default rule flag.
-func (o LookupDefaultUserRuleResultOutput) Flag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) *string { return v.Flag }).(pulumi.StringPtrOutput)
+func (o GetDefaultUserRuleResultOutput) Flag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) *string { return v.Flag }).(pulumi.StringPtrOutput)
 }
 
 // Resource ID.
-func (o LookupDefaultUserRuleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether the rule is custom or default.
 // Expected value is 'Default'.
-func (o LookupDefaultUserRuleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Resource name.
-func (o LookupDefaultUserRuleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Network protocol this rule applies to.
-func (o LookupDefaultUserRuleResultOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Protocol }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // The provisioning state of the security configuration user rule resource.
-func (o LookupDefaultUserRuleResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The source port ranges.
-func (o LookupDefaultUserRuleResultOutput) SourcePortRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) []string { return v.SourcePortRanges }).(pulumi.StringArrayOutput)
+func (o GetDefaultUserRuleResultOutput) SourcePortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) []string { return v.SourcePortRanges }).(pulumi.StringArrayOutput)
 }
 
 // The CIDR or source IP ranges.
-func (o LookupDefaultUserRuleResultOutput) Sources() AddressPrefixItemResponseArrayOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) []AddressPrefixItemResponse { return v.Sources }).(AddressPrefixItemResponseArrayOutput)
+func (o GetDefaultUserRuleResultOutput) Sources() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) []AddressPrefixItemResponse { return v.Sources }).(AddressPrefixItemResponseArrayOutput)
 }
 
 // The system metadata related to this resource.
-func (o LookupDefaultUserRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetDefaultUserRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource type.
-func (o LookupDefaultUserRuleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetDefaultUserRuleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultUserRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupDefaultUserRuleResultOutput{})
+	pulumi.RegisterOutputType(GetDefaultUserRuleResultOutput{})
 }

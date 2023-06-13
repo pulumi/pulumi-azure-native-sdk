@@ -67,6 +67,9 @@ func NewContentItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ContentItem"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ContentItem"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ContentItem

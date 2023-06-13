@@ -13,6 +13,7 @@ import (
 
 // The VirtualNetworks resource definition.
 // API Version: 2020-06-05-preview.
+// Previous API Version: 2020-06-05-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +57,9 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:VirtualNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

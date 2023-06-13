@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Traffic Manager endpoint.
-// API Version: 2018-08-01.
+// API Version: 2022-04-01.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:network:getEndpoint", args, &rv, opts...)
@@ -28,12 +28,14 @@ type LookupEndpointArgs struct {
 	EndpointType string `pulumi:"endpointType"`
 	// The name of the Traffic Manager profile.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group containing the Traffic Manager endpoint.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing a Traffic Manager endpoint.
 type LookupEndpointResult struct {
+	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
+	AlwaysServe *string `pulumi:"alwaysServe"`
 	// List of custom headers.
 	CustomHeaders []EndpointPropertiesResponseCustomHeaders `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -88,7 +90,7 @@ type LookupEndpointOutputArgs struct {
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
 	// The name of the Traffic Manager profile.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// The name of the resource group containing the Traffic Manager endpoint.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -109,6 +111,11 @@ func (o LookupEndpointResultOutput) ToLookupEndpointResultOutput() LookupEndpoin
 
 func (o LookupEndpointResultOutput) ToLookupEndpointResultOutputWithContext(ctx context.Context) LookupEndpointResultOutput {
 	return o
+}
+
+// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
+func (o LookupEndpointResultOutput) AlwaysServe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEndpointResult) *string { return v.AlwaysServe }).(pulumi.StringPtrOutput)
 }
 
 // List of custom headers.

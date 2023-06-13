@@ -80,6 +80,12 @@ func NewApp(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:App"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:App"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:App"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource App

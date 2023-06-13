@@ -11,14 +11,14 @@ import (
 )
 
 // Gets the properties of the specified container group in the specified subscription and resource group. The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
-// API Version: 2021-03-01.
+// API Version: 2023-05-01.
 func LookupContainerGroup(ctx *pulumi.Context, args *LookupContainerGroupArgs, opts ...pulumi.InvokeOption) (*LookupContainerGroupResult, error) {
 	var rv LookupContainerGroupResult
 	err := ctx.Invoke("azure-native:containerinstance:getContainerGroup", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupContainerGroupArgs struct {
@@ -30,6 +30,8 @@ type LookupContainerGroupArgs struct {
 
 // A container group.
 type LookupContainerGroupResult struct {
+	// The properties for confidential container group
+	ConfidentialComputeProperties *ConfidentialComputePropertiesResponse `pulumi:"confidentialComputeProperties"`
 	// The containers within the container group.
 	Containers []ContainerResponse `pulumi:"containers"`
 	// The diagnostic information for a container group.
@@ -38,6 +40,8 @@ type LookupContainerGroupResult struct {
 	DnsConfig *DnsConfigurationResponse `pulumi:"dnsConfig"`
 	// The encryption properties for a container group.
 	EncryptionProperties *EncryptionPropertiesResponse `pulumi:"encryptionProperties"`
+	// extensions used by virtual kubelet
+	Extensions []DeploymentExtensionSpecResponse `pulumi:"extensions"`
 	// The resource id.
 	Id string `pulumi:"id"`
 	// The identity of the container group, if configured.
@@ -47,17 +51,17 @@ type LookupContainerGroupResult struct {
 	// The init containers for a container group.
 	InitContainers []InitContainerDefinitionResponse `pulumi:"initContainers"`
 	// The instance view of the container group. Only valid in response.
-	InstanceView ContainerGroupResponseInstanceView `pulumi:"instanceView"`
+	InstanceView ContainerGroupPropertiesResponseInstanceView `pulumi:"instanceView"`
 	// The IP address type of the container group.
 	IpAddress *IpAddressResponse `pulumi:"ipAddress"`
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// The resource name.
 	Name string `pulumi:"name"`
-	// The network profile information for a container group.
-	NetworkProfile *ContainerGroupNetworkProfileResponse `pulumi:"networkProfile"`
 	// The operating system type required by the containers in the container group.
 	OsType string `pulumi:"osType"`
+	// The priority of the container group.
+	Priority *string `pulumi:"priority"`
 	// The provisioning state of the container group. This only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Restart policy for all containers within the container group.
@@ -67,12 +71,27 @@ type LookupContainerGroupResult struct {
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// The SKU for a container group.
 	Sku *string `pulumi:"sku"`
+	// The subnet resource IDs for a container group.
+	SubnetIds []ContainerGroupSubnetIdResponse `pulumi:"subnetIds"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
 	Type string `pulumi:"type"`
 	// The list of volumes that can be mounted by containers in this container group.
 	Volumes []VolumeResponse `pulumi:"volumes"`
+	// The zones for the container group.
+	Zones []string `pulumi:"zones"`
+}
+
+// Defaults sets the appropriate defaults for LookupContainerGroupResult
+func (val *LookupContainerGroupResult) Defaults() *LookupContainerGroupResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.IpAddress = tmp.IpAddress.Defaults()
+
+	return &tmp
 }
 
 func LookupContainerGroupOutput(ctx *pulumi.Context, args LookupContainerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupContainerGroupResultOutput {
@@ -114,6 +133,13 @@ func (o LookupContainerGroupResultOutput) ToLookupContainerGroupResultOutputWith
 	return o
 }
 
+// The properties for confidential container group
+func (o LookupContainerGroupResultOutput) ConfidentialComputeProperties() ConfidentialComputePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) *ConfidentialComputePropertiesResponse {
+		return v.ConfidentialComputeProperties
+	}).(ConfidentialComputePropertiesResponsePtrOutput)
+}
+
 // The containers within the container group.
 func (o LookupContainerGroupResultOutput) Containers() ContainerResponseArrayOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
@@ -132,6 +158,11 @@ func (o LookupContainerGroupResultOutput) DnsConfig() DnsConfigurationResponsePt
 // The encryption properties for a container group.
 func (o LookupContainerGroupResultOutput) EncryptionProperties() EncryptionPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) *EncryptionPropertiesResponse { return v.EncryptionProperties }).(EncryptionPropertiesResponsePtrOutput)
+}
+
+// extensions used by virtual kubelet
+func (o LookupContainerGroupResultOutput) Extensions() DeploymentExtensionSpecResponseArrayOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) []DeploymentExtensionSpecResponse { return v.Extensions }).(DeploymentExtensionSpecResponseArrayOutput)
 }
 
 // The resource id.
@@ -157,8 +188,8 @@ func (o LookupContainerGroupResultOutput) InitContainers() InitContainerDefiniti
 }
 
 // The instance view of the container group. Only valid in response.
-func (o LookupContainerGroupResultOutput) InstanceView() ContainerGroupResponseInstanceViewOutput {
-	return o.ApplyT(func(v LookupContainerGroupResult) ContainerGroupResponseInstanceView { return v.InstanceView }).(ContainerGroupResponseInstanceViewOutput)
+func (o LookupContainerGroupResultOutput) InstanceView() ContainerGroupPropertiesResponseInstanceViewOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) ContainerGroupPropertiesResponseInstanceView { return v.InstanceView }).(ContainerGroupPropertiesResponseInstanceViewOutput)
 }
 
 // The IP address type of the container group.
@@ -176,14 +207,14 @@ func (o LookupContainerGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network profile information for a container group.
-func (o LookupContainerGroupResultOutput) NetworkProfile() ContainerGroupNetworkProfileResponsePtrOutput {
-	return o.ApplyT(func(v LookupContainerGroupResult) *ContainerGroupNetworkProfileResponse { return v.NetworkProfile }).(ContainerGroupNetworkProfileResponsePtrOutput)
-}
-
 // The operating system type required by the containers in the container group.
 func (o LookupContainerGroupResultOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// The priority of the container group.
+func (o LookupContainerGroupResultOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
 
 // The provisioning state of the container group. This only appears in the response.
@@ -204,6 +235,11 @@ func (o LookupContainerGroupResultOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
+// The subnet resource IDs for a container group.
+func (o LookupContainerGroupResultOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) []ContainerGroupSubnetIdResponse { return v.SubnetIds }).(ContainerGroupSubnetIdResponseArrayOutput)
+}
+
 // The resource tags.
 func (o LookupContainerGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -217,6 +253,11 @@ func (o LookupContainerGroupResultOutput) Type() pulumi.StringOutput {
 // The list of volumes that can be mounted by containers in this container group.
 func (o LookupContainerGroupResultOutput) Volumes() VolumeResponseArrayOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+// The zones for the container group.
+func (o LookupContainerGroupResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

@@ -12,7 +12,8 @@ import (
 )
 
 // Network default admin rule.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-11-01.
+// Previous API Version: 2021-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DefaultAdminRule struct {
 	pulumi.CustomResourceState
 
@@ -26,8 +27,6 @@ type DefaultAdminRule struct {
 	Destinations AddressPrefixItemResponseArrayOutput `pulumi:"destinations"`
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// A friendly name for the rule.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Default rule flag.
@@ -101,6 +100,9 @@ func NewDefaultAdminRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:DefaultAdminRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:DefaultAdminRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DefaultAdminRule
@@ -135,7 +137,7 @@ func (DefaultAdminRuleState) ElementType() reflect.Type {
 }
 
 type defaultAdminRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// Default rule flag.
 	Flag *string `pulumi:"flag"`
@@ -154,7 +156,7 @@ type defaultAdminRuleArgs struct {
 
 // The set of arguments for constructing a DefaultAdminRule resource.
 type DefaultAdminRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput
 	// Default rule flag.
 	Flag pulumi.StringPtrInput
@@ -231,11 +233,6 @@ func (o DefaultAdminRuleOutput) Destinations() AddressPrefixItemResponseArrayOut
 // Indicates if the traffic matched against the rule in inbound or outbound.
 func (o DefaultAdminRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
-}
-
-// A friendly name for the rule.
-func (o DefaultAdminRuleOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

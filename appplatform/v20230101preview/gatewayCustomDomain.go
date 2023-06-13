@@ -63,6 +63,12 @@ func NewGatewayCustomDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20221201:GatewayCustomDomain"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:GatewayCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:GatewayCustomDomain"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource GatewayCustomDomain

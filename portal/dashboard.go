@@ -13,6 +13,7 @@ import (
 
 // The shared dashboard resource definition.
 // API Version: 2020-09-01-preview.
+// Previous API Version: 2020-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Dashboard struct {
 	pulumi.CustomResourceState
 
@@ -41,9 +42,6 @@ func NewDashboard(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:portal/v20150801preview:Dashboard"),
-		},
 		{
 			Type: pulumi.String("azure-native:portal/v20181001preview:Dashboard"),
 		},

@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Graph resource.
-// API Version: 2021-07-01-preview.
+// API Version: 2023-03-15-preview.
+// Previous API Version: 2021-07-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type GraphResourceGraph struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +65,15 @@ func NewGraphResourceGraph(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20220815preview:GraphResourceGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:GraphResourceGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:GraphResourceGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:GraphResourceGraph"),
 		},
 	})
 	opts = append(opts, aliases)

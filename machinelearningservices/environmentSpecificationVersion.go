@@ -13,6 +13,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 // API Version: 2021-03-01-preview.
+// Previous API Version: 2021-03-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type EnvironmentSpecificationVersion struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +67,12 @@ func NewEnvironmentSpecificationVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:EnvironmentSpecificationVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:EnvironmentSpecificationVersion"),

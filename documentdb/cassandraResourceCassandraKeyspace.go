@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Cassandra keyspace.
-// API Version: 2021-03-15.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type CassandraResourceCassandraKeyspace struct {
 	pulumi.CustomResourceState
 
@@ -45,39 +46,6 @@ func NewCassandraResourceCassandraKeyspace(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150401:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20150408:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20151106:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160319:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20160331:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20190801:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20191212:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200301:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200401:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:CassandraResourceCassandraKeyspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200901:CassandraResourceCassandraKeyspace"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210115:CassandraResourceCassandraKeyspace"),
 		},
@@ -130,7 +98,19 @@ func NewCassandraResourceCassandraKeyspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:CassandraResourceCassandraKeyspace"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:CassandraResourceCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:CassandraResourceCassandraKeyspace"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:CassandraResourceCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraResourceCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:CassandraResourceCassandraKeyspace"),
 		},
 	})
 	opts = append(opts, aliases)

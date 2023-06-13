@@ -73,6 +73,12 @@ func NewScheduledAction(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20221001:ScheduledAction"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230301:ScheduledAction"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230401preview:ScheduledAction"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ScheduledAction

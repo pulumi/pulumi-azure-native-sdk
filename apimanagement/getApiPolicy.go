@@ -11,7 +11,7 @@ import (
 )
 
 // Get the policy configuration at the API level.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
 func LookupApiPolicy(ctx *pulumi.Context, args *LookupApiPolicyArgs, opts ...pulumi.InvokeOption) (*LookupApiPolicyResult, error) {
 	var rv LookupApiPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement:getApiPolicy", args, &rv, opts...)
@@ -28,7 +28,7 @@ type LookupApiPolicyArgs struct {
 	Format *string `pulumi:"format"`
 	// The identifier of the Policy.
 	PolicyId string `pulumi:"policyId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -38,11 +38,11 @@ type LookupApiPolicyArgs struct {
 type LookupApiPolicyResult struct {
 	// Format of the policyContent.
 	Format *string `pulumi:"format"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Contents of the Policy as defined by the format.
 	Value string `pulumi:"value"`
@@ -81,7 +81,7 @@ type LookupApiPolicyOutputArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The identifier of the Policy.
 	PolicyId pulumi.StringInput `pulumi:"policyId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -111,17 +111,17 @@ func (o LookupApiPolicyResultOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiPolicyResult) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupApiPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupApiPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupApiPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

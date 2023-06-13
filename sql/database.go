@@ -12,7 +12,8 @@ import (
 )
 
 // A database resource.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Database struct {
 	pulumi.CustomResourceState
 
@@ -40,8 +41,16 @@ type Database struct {
 	ElasticPoolId pulumi.StringPtrOutput `pulumi:"elasticPoolId"`
 	// Failover Group resource identifier that this database belongs to.
 	FailoverGroupId pulumi.StringOutput `pulumi:"failoverGroupId"`
-	// The number of secondary replicas associated with the database that are used to provide high availability.
+	// The Client id used for cross tenant per database CMK scenario
+	FederatedClientId pulumi.StringPtrOutput `pulumi:"federatedClientId"`
+	// The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
 	HighAvailabilityReplicaCount pulumi.IntPtrOutput `pulumi:"highAvailabilityReplicaCount"`
+	// The Azure Active Directory identity of the database.
+	Identity DatabaseIdentityResponsePtrOutput `pulumi:"identity"`
+	// Infra encryption is enabled for this database.
+	IsInfraEncryptionEnabled pulumi.BoolOutput `pulumi:"isInfraEncryptionEnabled"`
+	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
+	IsLedgerOn pulumi.BoolPtrOutput `pulumi:"isLedgerOn"`
 	// Kind of database. This is metadata used for the Azure portal experience.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
@@ -62,7 +71,7 @@ type Database struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The date when database was paused by user configuration or action(ISO8601 format). Null if the database is ready.
 	PausedDate pulumi.StringOutput `pulumi:"pausedDate"`
-	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region.
+	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 	ReadScale pulumi.StringPtrOutput `pulumi:"readScale"`
 	// The storage account type to be used to store backups for this database.
 	RequestedBackupStorageRedundancy pulumi.StringPtrOutput `pulumi:"requestedBackupStorageRedundancy"`
@@ -145,6 +154,9 @@ func NewDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:Database"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:Database"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Database
@@ -207,8 +219,14 @@ type databaseArgs struct {
 	DatabaseName *string `pulumi:"databaseName"`
 	// The resource identifier of the elastic pool containing this database.
 	ElasticPoolId *string `pulumi:"elasticPoolId"`
-	// The number of secondary replicas associated with the database that are used to provide high availability.
+	// The Client id used for cross tenant per database CMK scenario
+	FederatedClientId *string `pulumi:"federatedClientId"`
+	// The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
 	HighAvailabilityReplicaCount *int `pulumi:"highAvailabilityReplicaCount"`
+	// The Azure Active Directory identity of the database.
+	Identity *DatabaseIdentity `pulumi:"identity"`
+	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
+	IsLedgerOn *bool `pulumi:"isLedgerOn"`
 	// The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
 	LicenseType *string `pulumi:"licenseType"`
 	// Resource location.
@@ -221,7 +239,7 @@ type databaseArgs struct {
 	MaxSizeBytes *float64 `pulumi:"maxSizeBytes"`
 	// Minimal capacity that database will always have allocated, if not paused
 	MinCapacity *float64 `pulumi:"minCapacity"`
-	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region.
+	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 	ReadScale *string `pulumi:"readScale"`
 	// The resource identifier of the recoverable database associated with create operation of this database.
 	RecoverableDatabaseId *string `pulumi:"recoverableDatabaseId"`
@@ -249,6 +267,20 @@ type databaseArgs struct {
 	SourceDatabaseDeletionDate *string `pulumi:"sourceDatabaseDeletionDate"`
 	// The resource identifier of the source database associated with create operation of this database.
 	SourceDatabaseId *string `pulumi:"sourceDatabaseId"`
+	// The resource identifier of the source associated with the create operation of this database.
+	//
+	// This property is only supported for DataWarehouse edition and allows to restore across subscriptions.
+	//
+	// When sourceResourceId is specified, sourceDatabaseId, recoverableDatabaseId, restorableDroppedDatabaseId and sourceDatabaseDeletionDate must not be specified and CreateMode must be PointInTimeRestore, Restore or Recover.
+	//
+	// When createMode is PointInTimeRestore, sourceResourceId must be the resource ID of the existing database or existing sql pool, and restorePointInTime must be specified.
+	//
+	// When createMode is Restore, sourceResourceId must be the resource ID of restorable dropped database or restorable dropped sql pool.
+	//
+	// When createMode is Recover, sourceResourceId must be the resource ID of recoverable database or recoverable sql pool.
+	//
+	// When source subscription belongs to a different tenant than target subscription, “x-ms-authorization-auxiliary” header must contain authentication token for the source tenant. For more details about “x-ms-authorization-auxiliary” header see https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant
+	SourceResourceId *string `pulumi:"sourceResourceId"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
@@ -285,8 +317,14 @@ type DatabaseArgs struct {
 	DatabaseName pulumi.StringPtrInput
 	// The resource identifier of the elastic pool containing this database.
 	ElasticPoolId pulumi.StringPtrInput
-	// The number of secondary replicas associated with the database that are used to provide high availability.
+	// The Client id used for cross tenant per database CMK scenario
+	FederatedClientId pulumi.StringPtrInput
+	// The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
 	HighAvailabilityReplicaCount pulumi.IntPtrInput
+	// The Azure Active Directory identity of the database.
+	Identity DatabaseIdentityPtrInput
+	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
+	IsLedgerOn pulumi.BoolPtrInput
 	// The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
 	LicenseType pulumi.StringPtrInput
 	// Resource location.
@@ -299,7 +337,7 @@ type DatabaseArgs struct {
 	MaxSizeBytes pulumi.Float64PtrInput
 	// Minimal capacity that database will always have allocated, if not paused
 	MinCapacity pulumi.Float64PtrInput
-	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region.
+	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 	ReadScale pulumi.StringPtrInput
 	// The resource identifier of the recoverable database associated with create operation of this database.
 	RecoverableDatabaseId pulumi.StringPtrInput
@@ -327,6 +365,20 @@ type DatabaseArgs struct {
 	SourceDatabaseDeletionDate pulumi.StringPtrInput
 	// The resource identifier of the source database associated with create operation of this database.
 	SourceDatabaseId pulumi.StringPtrInput
+	// The resource identifier of the source associated with the create operation of this database.
+	//
+	// This property is only supported for DataWarehouse edition and allows to restore across subscriptions.
+	//
+	// When sourceResourceId is specified, sourceDatabaseId, recoverableDatabaseId, restorableDroppedDatabaseId and sourceDatabaseDeletionDate must not be specified and CreateMode must be PointInTimeRestore, Restore or Recover.
+	//
+	// When createMode is PointInTimeRestore, sourceResourceId must be the resource ID of the existing database or existing sql pool, and restorePointInTime must be specified.
+	//
+	// When createMode is Restore, sourceResourceId must be the resource ID of restorable dropped database or restorable dropped sql pool.
+	//
+	// When createMode is Recover, sourceResourceId must be the resource ID of recoverable database or recoverable sql pool.
+	//
+	// When source subscription belongs to a different tenant than target subscription, “x-ms-authorization-auxiliary” header must contain authentication token for the source tenant. For more details about “x-ms-authorization-auxiliary” header see https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant
+	SourceResourceId pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
@@ -430,9 +482,29 @@ func (o DatabaseOutput) FailoverGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.FailoverGroupId }).(pulumi.StringOutput)
 }
 
-// The number of secondary replicas associated with the database that are used to provide high availability.
+// The Client id used for cross tenant per database CMK scenario
+func (o DatabaseOutput) FederatedClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.FederatedClientId }).(pulumi.StringPtrOutput)
+}
+
+// The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
 func (o DatabaseOutput) HighAvailabilityReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.IntPtrOutput { return v.HighAvailabilityReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+// The Azure Active Directory identity of the database.
+func (o DatabaseOutput) Identity() DatabaseIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Database) DatabaseIdentityResponsePtrOutput { return v.Identity }).(DatabaseIdentityResponsePtrOutput)
+}
+
+// Infra encryption is enabled for this database.
+func (o DatabaseOutput) IsInfraEncryptionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolOutput { return v.IsInfraEncryptionEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
+func (o DatabaseOutput) IsLedgerOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.IsLedgerOn }).(pulumi.BoolPtrOutput)
 }
 
 // Kind of database. This is metadata used for the Azure portal experience.
@@ -485,7 +557,7 @@ func (o DatabaseOutput) PausedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.PausedDate }).(pulumi.StringOutput)
 }
 
-// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region.
+// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 func (o DatabaseOutput) ReadScale() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.ReadScale }).(pulumi.StringPtrOutput)
 }

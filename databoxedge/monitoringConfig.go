@@ -12,7 +12,8 @@ import (
 )
 
 // The metric setting details for the role
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MonitoringConfig struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +21,8 @@ type MonitoringConfig struct {
 	MetricConfigurations MetricConfigurationResponseArrayOutput `pulumi:"metricConfigurations"`
 	// The object name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Metadata pertaining to creation and last modification of MonitoringConfiguration
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -44,12 +47,6 @@ func NewMonitoringConfig(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'RoleName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901:MonitoringConfig"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901preview:MonitoringConfig"),
-		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20201201:MonitoringConfig"),
 		},
@@ -178,6 +175,11 @@ func (o MonitoringConfigOutput) MetricConfigurations() MetricConfigurationRespon
 // The object name.
 func (o MonitoringConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitoringConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of MonitoringConfiguration
+func (o MonitoringConfigOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MonitoringConfig) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

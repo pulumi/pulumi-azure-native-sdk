@@ -11,6 +11,58 @@ const (
 	AccumulatedTypeFalse = AccumulatedType("false")
 )
 
+// The comparison operator.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Supported operators for **CategoryType: Cost**
+//
+// - GreaterThan
+// - GreaterThanOrEqualTo
+//
+//	Supported operators for **CategoryType: ReservationUtilization**
+//
+// - LessThan
+type BudgetNotificationOperatorType string
+
+const (
+	// Notification will be triggered if the evaluated cost is the same as threshold value. Note: It’s not recommended to use this OperatorType as there’s low chance of cost being exactly the same as threshold value, leading to missing of your alert. This OperatorType will be deprecated in future.
+	//
+	//  Supported for CategoryType(s): Cost.
+	BudgetNotificationOperatorTypeEqualTo = BudgetNotificationOperatorType("EqualTo")
+	// Notification will be triggered if the evaluated cost is greater than the threshold value. Note: This is the recommended OperatorType while configuring Budget Alert.
+	//
+	//  Supported for CategoryType(s): Cost.
+	BudgetNotificationOperatorTypeGreaterThan = BudgetNotificationOperatorType("GreaterThan")
+	// Notification will be triggered if the evaluated cost is greater than or equal to the threshold value.
+	//
+	//  Supported for CategoryType(s): Cost.
+	BudgetNotificationOperatorTypeGreaterThanOrEqualTo = BudgetNotificationOperatorType("GreaterThanOrEqualTo")
+	// Notification will be triggered if any Reservations in the scope of the Reservation Utilization Alert Rule have a utilization less than the threshold percentage.
+	//
+	//  Supported for CategoryType(s): ReservationUtilization.
+	BudgetNotificationOperatorTypeLessThan = BudgetNotificationOperatorType("LessThan")
+)
+
+// The operator to use for comparison.
+type BudgetOperatorType string
+
+const (
+	BudgetOperatorTypeIn = BudgetOperatorType("In")
+)
+
+// The category of the budget.
+// - 'Cost' defines a Budget.
+// - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
+type CategoryType string
+
+const (
+	// A Budget that evaluates monetary cost of Azure resources against an amount, and alerts based on a configured notification threshold.
+	CategoryTypeCost = CategoryType("Cost")
+	// An Alert Rule that evaluates the utilization percentage of Azure Reservations, and alerts based on a configured notification threshold.
+	CategoryTypeReservationUtilization = CategoryType("ReservationUtilization")
+)
+
 // Chart type of the main view in Cost Analysis. Required.
 type ChartType string
 
@@ -32,6 +84,15 @@ const (
 	ConnectorBillingModelExpired     = ConnectorBillingModel("expired")
 )
 
+// Connector status
+type ConnectorStatus string
+
+const (
+	ConnectorStatusActive    = ConnectorStatus("active")
+	ConnectorStatusError     = ConnectorStatus("error")
+	ConnectorStatusSuspended = ConnectorStatus("suspended")
+)
+
 // Method of cost allocation for the rule
 type CostAllocationPolicyType string
 
@@ -47,6 +108,35 @@ const (
 	CostAllocationResourceTypeDimension = CostAllocationResourceType("Dimension")
 	// Allocates cost based on Azure Tag key value pairs.
 	CostAllocationResourceTypeTag = CostAllocationResourceType("Tag")
+)
+
+// Language in which the recipient will receive the notification,
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type CultureCode string
+
+const (
+	CultureCode_En_Us = CultureCode("en-us")
+	CultureCode_Ja_Jp = CultureCode("ja-jp")
+	CultureCode_Zh_Cn = CultureCode("zh-cn")
+	CultureCode_De_De = CultureCode("de-de")
+	CultureCode_Es_Es = CultureCode("es-es")
+	CultureCode_Fr_Fr = CultureCode("fr-fr")
+	CultureCode_It_It = CultureCode("it-it")
+	CultureCode_Ko_Kr = CultureCode("ko-kr")
+	CultureCode_Pt_Br = CultureCode("pt-br")
+	CultureCode_Ru_Ru = CultureCode("ru-ru")
+	CultureCode_Zh_Tw = CultureCode("zh-tw")
+	CultureCode_Cs_Cz = CultureCode("cs-cz")
+	CultureCode_Pl_Pl = CultureCode("pl-pl")
+	CultureCode_Tr_Tr = CultureCode("tr-tr")
+	CultureCode_Da_Dk = CultureCode("da-dk")
+	CultureCode_En_Gb = CultureCode("en-gb")
+	CultureCode_Hu_Hu = CultureCode("hu-hu")
+	CultureCode_Nb_No = CultureCode("nb-no")
+	CultureCode_Nl_Nl = CultureCode("nl-nl")
+	CultureCode_Pt_Pt = CultureCode("pt-pt")
+	CultureCode_Sv_Se = CultureCode("sv-se")
 )
 
 // Days of Week.
@@ -71,7 +161,7 @@ const (
 	ExportTypeAmortizedCost = ExportType("AmortizedCost")
 )
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. Currently only CSV format is supported.
 type FileFormat string
 
 const (
@@ -85,13 +175,24 @@ const (
 	FormatTypeCsv = FormatType("Csv")
 )
 
+// Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+//
+//	Supported for CategoryType(s): ReservationUtilization.
+type Frequency string
+
+const (
+	// After the threshold breaches and an Alert is fired, no further alerts will be sent until the next calendar day.
+	FrequencyDaily = Frequency("Daily")
+	// After the threshold breaches and an Alert is fired, no further alerts will be sent for 7 calendar days.
+	FrequencyWeekly = Frequency("Weekly")
+	// After the threshold breaches and an Alert is fired, no further alerts will be sent for 30 calendar days.
+	FrequencyMonthly = Frequency("Monthly")
+)
+
 // The name of the aggregation function to use.
 type FunctionType string
 
 const (
-	FunctionTypeAvg = FunctionType("Avg")
-	FunctionTypeMax = FunctionType("Max")
-	FunctionTypeMin = FunctionType("Min")
 	FunctionTypeSum = FunctionType("Sum")
 )
 
@@ -136,6 +237,16 @@ const (
 	PivotTypeTypeTagKey    = PivotTypeType("TagKey")
 )
 
+// Has type of the column to group.
+type QueryColumnType string
+
+const (
+	// The tag associated with the cost data.
+	QueryColumnTypeTagKey = QueryColumnType("TagKey")
+	// The dimension of cost data.
+	QueryColumnTypeDimension = QueryColumnType("Dimension")
+)
+
 // The schedule recurrence.
 type RecurrenceType string
 
@@ -154,12 +265,12 @@ const (
 	ReportColumnTypeDimension = ReportColumnType("Dimension")
 )
 
-// Has type of the column to group.
-type ReportConfigColumnType string
+// Direction of sort.
+type ReportConfigSortingType string
 
 const (
-	ReportConfigColumnTypeTag       = ReportConfigColumnType("Tag")
-	ReportConfigColumnTypeDimension = ReportConfigColumnType("Dimension")
+	ReportConfigSortingTypeAscending  = ReportConfigSortingType("Ascending")
+	ReportConfigSortingTypeDescending = ReportConfigSortingType("Descending")
 )
 
 // The granularity of rows in the report.
@@ -217,16 +328,27 @@ type ScheduledActionKind string
 const (
 	// Cost analysis data will be emailed.
 	ScheduledActionKindEmail = ScheduledActionKind("Email")
+	// Cost anomaly information will be emailed. Available only on subscription scope at daily frequency. If no anomaly is detected on the resource, an email won't be sent.
+	ScheduledActionKindInsightAlert = ScheduledActionKind("InsightAlert")
 )
 
 // Status of the scheduled action.
 type ScheduledActionStatus string
 
 const (
-	// Scheduled action is saved but will not be executed.
+	// Scheduled action is saved but will not be run.
 	ScheduledActionStatusDisabled = ScheduledActionStatus("Disabled")
-	// Scheduled action is saved and will be executed.
+	// Scheduled action is saved and will be run.
 	ScheduledActionStatusEnabled = ScheduledActionStatus("Enabled")
+	// Scheduled action is expired.
+	ScheduledActionStatusExpired = ScheduledActionStatus("Expired")
+)
+
+// Specifies the kind of settings.
+type SettingsKind string
+
+const (
+	SettingsKindTaginheritance = SettingsKind("taginheritance")
 )
 
 // The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
@@ -235,6 +357,76 @@ type StatusType string
 const (
 	StatusTypeActive   = StatusType("Active")
 	StatusTypeInactive = StatusType("Inactive")
+)
+
+// The type of threshold.
+//
+//	Supported for CategoryType(s): Cost.
+type ThresholdType string
+
+const (
+	// Actual costs budget alerts notify when the actual accrued cost exceeds the allocated budget.
+	ThresholdTypeActual = ThresholdType("Actual")
+	// Forecasted costs budget alerts provide advanced notification that your spending trends are likely to exceed your allocated budget, as it relies on forecasted cost predictions.
+	ThresholdTypeForecasted = ThresholdType("Forecasted")
+)
+
+// The time covered by a budget. Tracking of the amount will be reset based on the time grain.
+//
+// Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Supported timeGrainTypes for **CategoryType: Cost**
+//
+// - Monthly
+// - Quarterly
+// - Annually
+// - BillingMonth*
+// - BillingQuarter*
+// - BillingAnnual*
+//
+//	 *only supported for Web Direct customers.
+//
+//	Supported timeGrainTypes for **CategoryType: ReservationUtilization**
+//
+// - Last7Days
+// - Last30Days
+//
+//	Required for CategoryType(s): Cost, ReservationUtilization.
+type TimeGrainType string
+
+const (
+	// The budget will track costs in the current calendar month against the amount.
+	//
+	//  Supported for CategoryType: Cost only.
+	TimeGrainTypeMonthly = TimeGrainType("Monthly")
+	// The budget will track costs in the current calendar quarter against the amount.
+	//
+	//  Supported for CategoryType: Cost only.
+	TimeGrainTypeQuarterly = TimeGrainType("Quarterly")
+	// The budget will track costs in the current calendar year against the amount.
+	//
+	//  Supported for CategoryType: Cost only.
+	TimeGrainTypeAnnually = TimeGrainType("Annually")
+	// The budget will track costs in the current billing month against the amount.
+	//
+	//  Supported for CategoryType: Cost and Web Direct customers only.
+	TimeGrainTypeBillingMonth = TimeGrainType("BillingMonth")
+	// The budget will track costs in the current billing quarter against the amount.
+	//
+	//  Supported for CategoryType: Cost and Web Direct customers only.
+	TimeGrainTypeBillingQuarter = TimeGrainType("BillingQuarter")
+	// The budget will track costs in the current billing year against the amount.
+	//
+	//  Supported for CategoryType: Cost and Web Direct customers only.
+	TimeGrainTypeBillingAnnual = TimeGrainType("BillingAnnual")
+	// The Reservation Utilization Alert Rule will evaluate reservations based on their 7-Day utilization percentage.
+	//
+	//  Supported for CategoryType: ReservationUtilization only.
+	TimeGrainTypeLast7Days = TimeGrainType("Last7Days")
+	// The Reservation Utilization Alert Rule will evaluate reservations based on their 30-Day utilization percentage.
+	//
+	//  Supported for CategoryType: ReservationUtilization only.
+	TimeGrainTypeLast30Days = TimeGrainType("Last30Days")
 )
 
 // The time frame for pulling data for the report. If custom, then a specific time period must be provided.

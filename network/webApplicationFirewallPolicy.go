@@ -12,7 +12,8 @@ import (
 )
 
 // Defines web application firewall policy.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type WebApplicationFirewallPolicy struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +57,9 @@ func NewWebApplicationFirewallPolicy(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.PolicySettings != nil {
+		args.PolicySettings = args.PolicySettings.ToPolicySettingsPtrOutput().ApplyT(func(v *PolicySettings) *PolicySettings { return v.Defaults() }).(PolicySettingsPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -129,6 +133,9 @@ func NewWebApplicationFirewallPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:WebApplicationFirewallPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:WebApplicationFirewallPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

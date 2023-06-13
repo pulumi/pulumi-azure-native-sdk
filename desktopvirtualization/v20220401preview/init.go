@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,24 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:desktopvirtualization/v20220401preview:Application":
-		r = &Application{}
 	case "azure-native:desktopvirtualization/v20220401preview:ApplicationGroup":
 		r = &ApplicationGroup{}
 	case "azure-native:desktopvirtualization/v20220401preview:HostPool":
 		r = &HostPool{}
-	case "azure-native:desktopvirtualization/v20220401preview:MSIXPackage":
-		r = &MSIXPackage{}
-	case "azure-native:desktopvirtualization/v20220401preview:PrivateEndpointConnectionByHostPool":
-		r = &PrivateEndpointConnectionByHostPool{}
-	case "azure-native:desktopvirtualization/v20220401preview:PrivateEndpointConnectionByWorkspace":
-		r = &PrivateEndpointConnectionByWorkspace{}
-	case "azure-native:desktopvirtualization/v20220401preview:ScalingPlan":
-		r = &ScalingPlan{}
 	case "azure-native:desktopvirtualization/v20220401preview:ScalingPlanPooledSchedule":
 		r = &ScalingPlanPooledSchedule{}
-	case "azure-native:desktopvirtualization/v20220401preview:Workspace":
-		r = &Workspace{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

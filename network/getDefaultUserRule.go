@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a user rule.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-04-01-preview.
 func LookupDefaultUserRule(ctx *pulumi.Context, args *LookupDefaultUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupDefaultUserRuleResult, error) {
 	var rv LookupDefaultUserRuleResult
 	err := ctx.Invoke("azure-native:network:getDefaultUserRule", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupDefaultUserRule(ctx *pulumi.Context, args *LookupDefaultUserRuleArgs,
 }
 
 type LookupDefaultUserRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
@@ -44,8 +44,6 @@ type LookupDefaultUserRuleResult struct {
 	Destinations []AddressPrefixItemResponse `pulumi:"destinations"`
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction string `pulumi:"direction"`
-	// A friendly name for the rule.
-	DisplayName string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Default rule flag.
@@ -85,7 +83,7 @@ func LookupDefaultUserRuleOutput(ctx *pulumi.Context, args LookupDefaultUserRule
 }
 
 type LookupDefaultUserRuleOutputArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
@@ -134,11 +132,6 @@ func (o LookupDefaultUserRuleResultOutput) Destinations() AddressPrefixItemRespo
 // Indicates if the traffic matched against the rule in inbound or outbound.
 func (o LookupDefaultUserRuleResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// A friendly name for the rule.
-func (o LookupDefaultUserRuleResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultUserRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

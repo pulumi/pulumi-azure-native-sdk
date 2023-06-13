@@ -174,6 +174,9 @@ func NewNodeType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20221001preview:NodeType"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230301preview:NodeType"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NodeType

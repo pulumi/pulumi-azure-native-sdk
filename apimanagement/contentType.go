@@ -12,17 +12,18 @@ import (
 )
 
 // Content type contract details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ContentType struct {
 	pulumi.CustomResourceState
 
 	// Content type description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Content type schema.
 	Schema pulumi.AnyOutput `pulumi:"schema"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Content type version.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
@@ -69,6 +70,9 @@ func NewContentType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ContentType"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ContentType"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ContentType
@@ -105,20 +109,40 @@ func (ContentTypeState) ElementType() reflect.Type {
 type contentTypeArgs struct {
 	// Content type identifier.
 	ContentTypeId *string `pulumi:"contentTypeId"`
-	// The name of the resource group.
+	// Content type description.
+	Description *string `pulumi:"description"`
+	// Content type identifier
+	Id *string `pulumi:"id"`
+	// Content type name. Must be 1 to 250 characters long.
+	Name *string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Content type schema.
+	Schema interface{} `pulumi:"schema"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
+	// Content type version.
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a ContentType resource.
 type ContentTypeArgs struct {
 	// Content type identifier.
 	ContentTypeId pulumi.StringPtrInput
-	// The name of the resource group.
+	// Content type description.
+	Description pulumi.StringPtrInput
+	// Content type identifier
+	Id pulumi.StringPtrInput
+	// Content type name. Must be 1 to 250 characters long.
+	Name pulumi.StringPtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Content type schema.
+	Schema pulumi.Input
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
+	// Content type version.
+	Version pulumi.StringPtrInput
 }
 
 func (ContentTypeArgs) ElementType() reflect.Type {
@@ -163,7 +187,7 @@ func (o ContentTypeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentType) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ContentTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -173,7 +197,7 @@ func (o ContentTypeOutput) Schema() pulumi.AnyOutput {
 	return o.ApplyT(func(v *ContentType) pulumi.AnyOutput { return v.Schema }).(pulumi.AnyOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ContentTypeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentType) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

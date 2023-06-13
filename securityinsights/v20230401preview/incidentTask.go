@@ -61,10 +61,19 @@ func NewIncidentTask(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:securityinsights:IncidentTask"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20221201preview:IncidentTask"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:IncidentTask"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:IncidentTask"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:IncidentTask"),
 		},
 	})
 	opts = append(opts, aliases)

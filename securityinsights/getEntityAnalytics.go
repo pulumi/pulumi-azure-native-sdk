@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a setting.
-// API Version: 2021-03-01-preview.
+// API Version: 2023-05-01-preview.
 func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs, opts ...pulumi.InvokeOption) (*LookupEntityAnalyticsResult, error) {
 	var rv LookupEntityAnalyticsResult
 	err := ctx.Invoke("azure-native:securityinsights:getEntityAnalytics", args, &rv, opts...)
@@ -22,8 +22,6 @@ func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs,
 }
 
 type LookupEntityAnalyticsArgs struct {
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -34,20 +32,20 @@ type LookupEntityAnalyticsArgs struct {
 
 // Settings with single toggle.
 type LookupEntityAnalyticsResult struct {
+	// The relevant entity providers that are synced
+	EntityProviders []string `pulumi:"entityProviders"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Azure resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Determines whether the setting is enable or disabled.
-	IsEnabled bool `pulumi:"isEnabled"`
 	// The kind of the setting
 	// Expected value is 'EntityAnalytics'.
 	Kind string `pulumi:"kind"`
-	// Azure resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -65,8 +63,6 @@ func LookupEntityAnalyticsOutput(ctx *pulumi.Context, args LookupEntityAnalytics
 }
 
 type LookupEntityAnalyticsOutputArgs struct {
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -94,19 +90,19 @@ func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutputWi
 	return o
 }
 
+// The relevant entity providers that are synced
+func (o LookupEntityAnalyticsResultOutput) EntityProviders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupEntityAnalyticsResult) []string { return v.EntityProviders }).(pulumi.StringArrayOutput)
+}
+
 // Etag of the azure resource
 func (o LookupEntityAnalyticsResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEntityAnalyticsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Determines whether the setting is enable or disabled.
-func (o LookupEntityAnalyticsResultOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
 // The kind of the setting
@@ -115,7 +111,7 @@ func (o LookupEntityAnalyticsResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o LookupEntityAnalyticsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -125,7 +121,7 @@ func (o LookupEntityAnalyticsResultOutput) SystemData() SystemDataResponseOutput
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEntityAnalyticsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Type }).(pulumi.StringOutput)
 }

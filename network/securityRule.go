@@ -12,7 +12,8 @@ import (
 )
 
 // Network security rule.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SecurityRule struct {
 	pulumi.CustomResourceState
 
@@ -37,7 +38,7 @@ type SecurityRule struct {
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-	Priority pulumi.IntPtrOutput `pulumi:"priority"`
+	Priority pulumi.IntOutput `pulumi:"priority"`
 	// Network protocol this rule applies to.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The provisioning state of the security rule resource.
@@ -72,6 +73,9 @@ func NewSecurityRule(ctx *pulumi.Context,
 	if args.NetworkSecurityGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkSecurityGroupName'")
 	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
 	if args.Protocol == nil {
 		return nil, errors.New("invalid value for required argument 'Protocol'")
 	}
@@ -79,51 +83,6 @@ func NewSecurityRule(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20150501preview:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:SecurityRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:SecurityRule"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:SecurityRule"),
 		},
@@ -211,6 +170,9 @@ func NewSecurityRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:SecurityRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:SecurityRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SecurityRule
@@ -268,7 +230,7 @@ type securityRuleArgs struct {
 	// The name of the network security group.
 	NetworkSecurityGroupName string `pulumi:"networkSecurityGroupName"`
 	// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-	Priority *int `pulumi:"priority"`
+	Priority int `pulumi:"priority"`
 	// Network protocol this rule applies to.
 	Protocol string `pulumi:"protocol"`
 	// The name of the resource group.
@@ -314,7 +276,7 @@ type SecurityRuleArgs struct {
 	// The name of the network security group.
 	NetworkSecurityGroupName pulumi.StringInput
 	// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-	Priority pulumi.IntPtrInput
+	Priority pulumi.IntInput
 	// Network protocol this rule applies to.
 	Protocol pulumi.StringInput
 	// The name of the resource group.
@@ -425,8 +387,8 @@ func (o SecurityRuleOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-func (o SecurityRuleOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SecurityRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+func (o SecurityRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *SecurityRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
 // Network protocol this rule applies to.

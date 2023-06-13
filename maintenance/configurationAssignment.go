@@ -12,7 +12,8 @@ import (
 )
 
 // Configuration Assignment
-// API Version: 2021-04-01-preview.
+// API Version: 2022-11-01-preview.
+// Previous API Version: 2021-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ConfigurationAssignment struct {
 	pulumi.CustomResourceState
 

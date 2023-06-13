@@ -51,27 +51,6 @@ func NewCompute(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices:Compute"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20180301preview:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20181119:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20190501:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20190601:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20191101:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20200101:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20200218preview:Compute"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20200301:Compute"),
 		},
 		{
@@ -124,6 +103,12 @@ func NewCompute(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:Compute"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:Compute"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Compute"),
 		},
 	})
 	opts = append(opts, aliases)

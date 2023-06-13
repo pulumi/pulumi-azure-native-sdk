@@ -13,6 +13,7 @@ import (
 
 // Class representing an event hub connection.
 // API Version: 2018-09-07-preview.
+// Previous API Version: 2018-09-07-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type EventHubConnection struct {
 	pulumi.CustomResourceState
 
@@ -57,9 +58,6 @@ func NewEventHubConnection(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:kusto/v20170907privatepreview:EventHubConnection"),
-		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20180907preview:EventHubConnection"),
 		},

@@ -66,6 +66,12 @@ func NewDaprComponent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20221001:DaprComponent"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:DaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:DaprComponent"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DaprComponent

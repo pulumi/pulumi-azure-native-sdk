@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified subnet by virtual network and resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
 	var rv LookupSubnetResult
 	err := ctx.Invoke("azure-native:network:getSubnet", args, &rv, opts...)
@@ -39,7 +39,7 @@ type LookupSubnetResult struct {
 	// List of address prefixes for the subnet.
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
 	// Application gateway IP configurations of virtual network resource.
-	ApplicationGatewayIpConfigurations []ApplicationGatewayIPConfigurationResponse `pulumi:"applicationGatewayIpConfigurations"`
+	ApplicationGatewayIPConfigurations []ApplicationGatewayIPConfigurationResponse `pulumi:"applicationGatewayIPConfigurations"`
 	// An array of references to the delegations on the subnet.
 	Delegations []DelegationResponse `pulumi:"delegations"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -89,7 +89,7 @@ func (val *LookupSubnetResult) Defaults() *LookupSubnetResult {
 	}
 	tmp := *val
 	if tmp.PrivateEndpointNetworkPolicies == nil {
-		privateEndpointNetworkPolicies_ := "Enabled"
+		privateEndpointNetworkPolicies_ := "Disabled"
 		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
 	}
 	if tmp.PrivateLinkServiceNetworkPolicies == nil {
@@ -153,9 +153,9 @@ func (o LookupSubnetResultOutput) AddressPrefixes() pulumi.StringArrayOutput {
 }
 
 // Application gateway IP configurations of virtual network resource.
-func (o LookupSubnetResultOutput) ApplicationGatewayIpConfigurations() ApplicationGatewayIPConfigurationResponseArrayOutput {
+func (o LookupSubnetResultOutput) ApplicationGatewayIPConfigurations() ApplicationGatewayIPConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v LookupSubnetResult) []ApplicationGatewayIPConfigurationResponse {
-		return v.ApplicationGatewayIpConfigurations
+		return v.ApplicationGatewayIPConfigurations
 	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
 }
 

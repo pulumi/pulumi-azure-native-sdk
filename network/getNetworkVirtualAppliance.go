@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Network Virtual Appliance.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupNetworkVirtualAppliance(ctx *pulumi.Context, args *LookupNetworkVirtualApplianceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkVirtualApplianceResult, error) {
 	var rv LookupNetworkVirtualApplianceResult
 	err := ctx.Invoke("azure-native:network:getNetworkVirtualAppliance", args, &rv, opts...)
@@ -32,6 +32,8 @@ type LookupNetworkVirtualApplianceArgs struct {
 
 // NetworkVirtualAppliance Resource.
 type LookupNetworkVirtualApplianceResult struct {
+	// Details required for Additional Network Interface.
+	AdditionalNics []VirtualApplianceAdditionalNicPropertiesResponse `pulumi:"additionalNics"`
 	// Address Prefix.
 	AddressPrefix string `pulumi:"addressPrefix"`
 	// BootStrapConfigurationBlobs storage URLs.
@@ -40,6 +42,10 @@ type LookupNetworkVirtualApplianceResult struct {
 	CloudInitConfiguration *string `pulumi:"cloudInitConfiguration"`
 	// CloudInitConfigurationBlob storage URLs.
 	CloudInitConfigurationBlobs []string `pulumi:"cloudInitConfigurationBlobs"`
+	// The delegation for the Virtual Appliance
+	Delegation *DelegationPropertiesResponse `pulumi:"delegation"`
+	// The deployment type. PartnerManaged for the SaaS NVA
+	DeploymentType string `pulumi:"deploymentType"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -54,14 +60,20 @@ type LookupNetworkVirtualApplianceResult struct {
 	Name string `pulumi:"name"`
 	// Network Virtual Appliance SKU.
 	NvaSku *VirtualApplianceSkuPropertiesResponse `pulumi:"nvaSku"`
+	// The delegation for the Virtual Appliance
+	PartnerManagedResource *PartnerManagedResourcePropertiesResponse `pulumi:"partnerManagedResource"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Public key for SSH login.
+	SshPublicKey *string `pulumi:"sshPublicKey"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type.
 	Type string `pulumi:"type"`
-	// VirtualAppliance ASN.
+	// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 	VirtualApplianceAsn *float64 `pulumi:"virtualApplianceAsn"`
+	// List of references to VirtualApplianceConnections.
+	VirtualApplianceConnections []SubResourceResponse `pulumi:"virtualApplianceConnections"`
 	// List of Virtual Appliance Network Interfaces.
 	VirtualApplianceNics []VirtualApplianceNicPropertiesResponse `pulumi:"virtualApplianceNics"`
 	// List of references to VirtualApplianceSite.
@@ -111,6 +123,13 @@ func (o LookupNetworkVirtualApplianceResultOutput) ToLookupNetworkVirtualApplian
 	return o
 }
 
+// Details required for Additional Network Interface.
+func (o LookupNetworkVirtualApplianceResultOutput) AdditionalNics() VirtualApplianceAdditionalNicPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) []VirtualApplianceAdditionalNicPropertiesResponse {
+		return v.AdditionalNics
+	}).(VirtualApplianceAdditionalNicPropertiesResponseArrayOutput)
+}
+
 // Address Prefix.
 func (o LookupNetworkVirtualApplianceResultOutput) AddressPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) string { return v.AddressPrefix }).(pulumi.StringOutput)
@@ -129,6 +148,16 @@ func (o LookupNetworkVirtualApplianceResultOutput) CloudInitConfiguration() pulu
 // CloudInitConfigurationBlob storage URLs.
 func (o LookupNetworkVirtualApplianceResultOutput) CloudInitConfigurationBlobs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) []string { return v.CloudInitConfigurationBlobs }).(pulumi.StringArrayOutput)
+}
+
+// The delegation for the Virtual Appliance
+func (o LookupNetworkVirtualApplianceResultOutput) Delegation() DelegationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) *DelegationPropertiesResponse { return v.Delegation }).(DelegationPropertiesResponsePtrOutput)
+}
+
+// The deployment type. PartnerManaged for the SaaS NVA
+func (o LookupNetworkVirtualApplianceResultOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) string { return v.DeploymentType }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -166,9 +195,21 @@ func (o LookupNetworkVirtualApplianceResultOutput) NvaSku() VirtualApplianceSkuP
 	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) *VirtualApplianceSkuPropertiesResponse { return v.NvaSku }).(VirtualApplianceSkuPropertiesResponsePtrOutput)
 }
 
+// The delegation for the Virtual Appliance
+func (o LookupNetworkVirtualApplianceResultOutput) PartnerManagedResource() PartnerManagedResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) *PartnerManagedResourcePropertiesResponse {
+		return v.PartnerManagedResource
+	}).(PartnerManagedResourcePropertiesResponsePtrOutput)
+}
+
 // The provisioning state of the resource.
 func (o LookupNetworkVirtualApplianceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public key for SSH login.
+func (o LookupNetworkVirtualApplianceResultOutput) SshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) *string { return v.SshPublicKey }).(pulumi.StringPtrOutput)
 }
 
 // Resource tags.
@@ -181,9 +222,16 @@ func (o LookupNetworkVirtualApplianceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// VirtualAppliance ASN.
+// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 func (o LookupNetworkVirtualApplianceResultOutput) VirtualApplianceAsn() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) *float64 { return v.VirtualApplianceAsn }).(pulumi.Float64PtrOutput)
+}
+
+// List of references to VirtualApplianceConnections.
+func (o LookupNetworkVirtualApplianceResultOutput) VirtualApplianceConnections() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) []SubResourceResponse {
+		return v.VirtualApplianceConnections
+	}).(SubResourceResponseArrayOutput)
 }
 
 // List of Virtual Appliance Network Interfaces.

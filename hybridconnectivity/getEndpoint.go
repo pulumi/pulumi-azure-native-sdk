@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the endpoint to the resource.
-// API Version: 2022-05-01-preview.
+// API Version: 2023-03-15.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:hybridconnectivity:getEndpoint", args, &rv, opts...)
@@ -36,7 +36,7 @@ type LookupEndpointResult struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The timestamp of resource last modification (UTC)
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
@@ -46,10 +46,10 @@ type LookupEndpointResult struct {
 	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource provisioning state.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The resource Id of the connectivity endpoint (optional).
-	ResourceId *string `pulumi:"resourceId"`
+	// The endpoint properties.
+	Properties EndpointPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -108,7 +108,7 @@ func (o LookupEndpointResultOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEndpointResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -133,14 +133,14 @@ func (o LookupEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource provisioning state.
-func (o LookupEndpointResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEndpointResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+// The endpoint properties.
+func (o LookupEndpointResultOutput) Properties() EndpointPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupEndpointResult) EndpointPropertiesResponse { return v.Properties }).(EndpointPropertiesResponseOutput)
 }
 
-// The resource Id of the connectivity endpoint (optional).
-func (o LookupEndpointResultOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEndpointResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupEndpointResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEndpointResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

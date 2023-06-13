@@ -11,10 +11,8 @@ import (
 )
 
 // Gets the alert rule.
-//
-// Deprecated: azure-native:securityinsights/v20220701preview:MLBehaviorAnalyticsAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MLBehaviorAnalyticsAlertRule to guarantee forwards compatibility.
-func LookupMLBehaviorAnalyticsAlertRule(ctx *pulumi.Context, args *LookupMLBehaviorAnalyticsAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupMLBehaviorAnalyticsAlertRuleResult, error) {
-	var rv LookupMLBehaviorAnalyticsAlertRuleResult
+func GetMLBehaviorAnalyticsAlertRule(ctx *pulumi.Context, args *GetMLBehaviorAnalyticsAlertRuleArgs, opts ...pulumi.InvokeOption) (*GetMLBehaviorAnalyticsAlertRuleResult, error) {
+	var rv GetMLBehaviorAnalyticsAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getMLBehaviorAnalyticsAlertRule", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupMLBehaviorAnalyticsAlertRule(ctx *pulumi.Context, args *LookupMLBehav
 	return &rv, nil
 }
 
-type LookupMLBehaviorAnalyticsAlertRuleArgs struct {
+type GetMLBehaviorAnalyticsAlertRuleArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Alert rule ID
@@ -32,7 +30,7 @@ type LookupMLBehaviorAnalyticsAlertRuleArgs struct {
 }
 
 // Represents MLBehaviorAnalytics alert rule.
-type LookupMLBehaviorAnalyticsAlertRuleResult struct {
+type GetMLBehaviorAnalyticsAlertRuleResult struct {
 	// The Name of the alert rule template used to create this rule.
 	AlertRuleTemplateName string `pulumi:"alertRuleTemplateName"`
 	// The description of the alert rule.
@@ -64,20 +62,20 @@ type LookupMLBehaviorAnalyticsAlertRuleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupMLBehaviorAnalyticsAlertRuleOutput(ctx *pulumi.Context, args LookupMLBehaviorAnalyticsAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMLBehaviorAnalyticsAlertRuleResultOutput {
+func GetMLBehaviorAnalyticsAlertRuleOutput(ctx *pulumi.Context, args GetMLBehaviorAnalyticsAlertRuleOutputArgs, opts ...pulumi.InvokeOption) GetMLBehaviorAnalyticsAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMLBehaviorAnalyticsAlertRuleResult, error) {
-			args := v.(LookupMLBehaviorAnalyticsAlertRuleArgs)
-			r, err := LookupMLBehaviorAnalyticsAlertRule(ctx, &args, opts...)
-			var s LookupMLBehaviorAnalyticsAlertRuleResult
+		ApplyT(func(v interface{}) (GetMLBehaviorAnalyticsAlertRuleResult, error) {
+			args := v.(GetMLBehaviorAnalyticsAlertRuleArgs)
+			r, err := GetMLBehaviorAnalyticsAlertRule(ctx, &args, opts...)
+			var s GetMLBehaviorAnalyticsAlertRuleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupMLBehaviorAnalyticsAlertRuleResultOutput)
+		}).(GetMLBehaviorAnalyticsAlertRuleResultOutput)
 }
 
-type LookupMLBehaviorAnalyticsAlertRuleOutputArgs struct {
+type GetMLBehaviorAnalyticsAlertRuleOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Alert rule ID
@@ -86,96 +84,96 @@ type LookupMLBehaviorAnalyticsAlertRuleOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupMLBehaviorAnalyticsAlertRuleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMLBehaviorAnalyticsAlertRuleArgs)(nil)).Elem()
+func (GetMLBehaviorAnalyticsAlertRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMLBehaviorAnalyticsAlertRuleArgs)(nil)).Elem()
 }
 
 // Represents MLBehaviorAnalytics alert rule.
-type LookupMLBehaviorAnalyticsAlertRuleResultOutput struct{ *pulumi.OutputState }
+type GetMLBehaviorAnalyticsAlertRuleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupMLBehaviorAnalyticsAlertRuleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMLBehaviorAnalyticsAlertRuleResult)(nil)).Elem()
+func (GetMLBehaviorAnalyticsAlertRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMLBehaviorAnalyticsAlertRuleResult)(nil)).Elem()
 }
 
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) ToLookupMLBehaviorAnalyticsAlertRuleResultOutput() LookupMLBehaviorAnalyticsAlertRuleResultOutput {
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) ToGetMLBehaviorAnalyticsAlertRuleResultOutput() GetMLBehaviorAnalyticsAlertRuleResultOutput {
 	return o
 }
 
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) ToLookupMLBehaviorAnalyticsAlertRuleResultOutputWithContext(ctx context.Context) LookupMLBehaviorAnalyticsAlertRuleResultOutput {
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) ToGetMLBehaviorAnalyticsAlertRuleResultOutputWithContext(ctx context.Context) GetMLBehaviorAnalyticsAlertRuleResultOutput {
 	return o
 }
 
 // The Name of the alert rule template used to create this rule.
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.AlertRuleTemplateName }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.AlertRuleTemplateName }).(pulumi.StringOutput)
 }
 
 // The description of the alert rule.
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.Description }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The display name for alerts created by this alert rule.
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Determines whether this alert rule is enabled or disabled.
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Etag of the azure resource
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the alert rule
 // Expected value is 'MLBehaviorAnalytics'.
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The last time that this alert rule has been modified.
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The severity for alerts created by this alert rule.
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Severity() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.Severity }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.Severity }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tactics of the alert rule
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Tactics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) []string { return v.Tactics }).(pulumi.StringArrayOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Tactics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) []string { return v.Tactics }).(pulumi.StringArrayOutput)
 }
 
 // The techniques of the alert rule
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Techniques() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) []string { return v.Techniques }).(pulumi.StringArrayOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Techniques() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) []string { return v.Techniques }).(pulumi.StringArrayOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupMLBehaviorAnalyticsAlertRuleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMLBehaviorAnalyticsAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetMLBehaviorAnalyticsAlertRuleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMLBehaviorAnalyticsAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupMLBehaviorAnalyticsAlertRuleResultOutput{})
+	pulumi.RegisterOutputType(GetMLBehaviorAnalyticsAlertRuleResultOutput{})
 }

@@ -12,7 +12,8 @@ import (
 )
 
 // Trigger details.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PeriodicTimerEventTrigger struct {
 	pulumi.CustomResourceState
 
@@ -27,7 +28,7 @@ type PeriodicTimerEventTrigger struct {
 	SinkInfo RoleSinkInfoResponseOutput `pulumi:"sinkInfo"`
 	// Periodic timer details.
 	SourceInfo PeriodicTimerSourceInfoResponseOutput `pulumi:"sourceInfo"`
-	// Trigger in DataBoxEdge Resource
+	// Metadata pertaining to creation and last modification of Trigger
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -57,24 +58,6 @@ func NewPeriodicTimerEventTrigger(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("PeriodicTimerEvent")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190301:PeriodicTimerEventTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190701:PeriodicTimerEventTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190801:PeriodicTimerEventTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200501preview:PeriodicTimerEventTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901:PeriodicTimerEventTrigger"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901preview:PeriodicTimerEventTrigger"),
-		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20201201:PeriodicTimerEventTrigger"),
 		},
@@ -235,7 +218,7 @@ func (o PeriodicTimerEventTriggerOutput) SourceInfo() PeriodicTimerSourceInfoRes
 	return o.ApplyT(func(v *PeriodicTimerEventTrigger) PeriodicTimerSourceInfoResponseOutput { return v.SourceInfo }).(PeriodicTimerSourceInfoResponseOutput)
 }
 
-// Trigger in DataBoxEdge Resource
+// Metadata pertaining to creation and last modification of Trigger
 func (o PeriodicTimerEventTriggerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PeriodicTimerEventTrigger) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

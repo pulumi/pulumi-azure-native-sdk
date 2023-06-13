@@ -12,7 +12,8 @@ import (
 )
 
 // OpenId Connect Provider details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type OpenIdConnectProvider struct {
 	pulumi.CustomResourceState
 
@@ -26,10 +27,14 @@ type OpenIdConnectProvider struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Metadata endpoint URI.
 	MetadataEndpoint pulumi.StringOutput `pulumi:"metadataEndpoint"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
+	UseInApiDocumentation pulumi.BoolPtrOutput `pulumi:"useInApiDocumentation"`
+	// If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
+	UseInTestConsole pulumi.BoolPtrOutput `pulumi:"useInTestConsole"`
 }
 
 // NewOpenIdConnectProvider registers a new resource with the given unique name, arguments, and options.
@@ -55,9 +60,6 @@ func NewOpenIdConnectProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20160707:OpenIdConnectProvider"),
-		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20161010:OpenIdConnectProvider"),
 		},
@@ -102,6 +104,9 @@ func NewOpenIdConnectProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:OpenIdConnectProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:OpenIdConnectProvider"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -149,10 +154,14 @@ type openIdConnectProviderArgs struct {
 	MetadataEndpoint string `pulumi:"metadataEndpoint"`
 	// Identifier of the OpenID Connect Provider.
 	Opid *string `pulumi:"opid"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
+	// If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
+	UseInApiDocumentation *bool `pulumi:"useInApiDocumentation"`
+	// If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
+	UseInTestConsole *bool `pulumi:"useInTestConsole"`
 }
 
 // The set of arguments for constructing a OpenIdConnectProvider resource.
@@ -169,10 +178,14 @@ type OpenIdConnectProviderArgs struct {
 	MetadataEndpoint pulumi.StringInput
 	// Identifier of the OpenID Connect Provider.
 	Opid pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
+	// If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
+	UseInApiDocumentation pulumi.BoolPtrInput
+	// If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
+	UseInTestConsole pulumi.BoolPtrInput
 }
 
 func (OpenIdConnectProviderArgs) ElementType() reflect.Type {
@@ -237,14 +250,24 @@ func (o OpenIdConnectProviderOutput) MetadataEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenIdConnectProvider) pulumi.StringOutput { return v.MetadataEndpoint }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o OpenIdConnectProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenIdConnectProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o OpenIdConnectProviderOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenIdConnectProvider) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
+func (o OpenIdConnectProviderOutput) UseInApiDocumentation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenIdConnectProvider) pulumi.BoolPtrOutput { return v.UseInApiDocumentation }).(pulumi.BoolPtrOutput)
+}
+
+// If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
+func (o OpenIdConnectProviderOutput) UseInTestConsole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenIdConnectProvider) pulumi.BoolPtrOutput { return v.UseInTestConsole }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

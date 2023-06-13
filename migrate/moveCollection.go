@@ -12,7 +12,8 @@ import (
 )
 
 // Define the move collection.
-// API Version: 2021-01-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type MoveCollection struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +27,8 @@ type MoveCollection struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the move collection properties.
 	Properties MoveCollectionPropertiesResponseOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource.
@@ -179,6 +182,11 @@ func (o MoveCollectionOutput) Name() pulumi.StringOutput {
 // Defines the move collection properties.
 func (o MoveCollectionOutput) Properties() MoveCollectionPropertiesResponseOutput {
 	return o.ApplyT(func(v *MoveCollection) MoveCollectionPropertiesResponseOutput { return v.Properties }).(MoveCollectionPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o MoveCollectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MoveCollection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

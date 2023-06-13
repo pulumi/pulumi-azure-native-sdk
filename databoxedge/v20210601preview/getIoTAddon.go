@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a specific addon by name.
-//
-// Deprecated: azure-native:databoxedge/v20210601preview:IoTAddon is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20220301:IoTAddon to guarantee forwards compatibility.
-func LookupIoTAddon(ctx *pulumi.Context, args *LookupIoTAddonArgs, opts ...pulumi.InvokeOption) (*LookupIoTAddonResult, error) {
-	var rv LookupIoTAddonResult
+func GetIoTAddon(ctx *pulumi.Context, args *GetIoTAddonArgs, opts ...pulumi.InvokeOption) (*GetIoTAddonResult, error) {
+	var rv GetIoTAddonResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210601preview:getIoTAddon", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupIoTAddon(ctx *pulumi.Context, args *LookupIoTAddonArgs, opts ...pulum
 	return &rv, nil
 }
 
-type LookupIoTAddonArgs struct {
+type GetIoTAddonArgs struct {
 	// The addon name.
 	AddonName string `pulumi:"addonName"`
 	// The device name.
@@ -34,7 +32,7 @@ type LookupIoTAddonArgs struct {
 }
 
 // IoT Addon.
-type LookupIoTAddonResult struct {
+type GetIoTAddonResult struct {
 	// Host OS supported by the IoT addon.
 	HostPlatform string `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -60,20 +58,20 @@ type LookupIoTAddonResult struct {
 	Version string `pulumi:"version"`
 }
 
-func LookupIoTAddonOutput(ctx *pulumi.Context, args LookupIoTAddonOutputArgs, opts ...pulumi.InvokeOption) LookupIoTAddonResultOutput {
+func GetIoTAddonOutput(ctx *pulumi.Context, args GetIoTAddonOutputArgs, opts ...pulumi.InvokeOption) GetIoTAddonResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIoTAddonResult, error) {
-			args := v.(LookupIoTAddonArgs)
-			r, err := LookupIoTAddon(ctx, &args, opts...)
-			var s LookupIoTAddonResult
+		ApplyT(func(v interface{}) (GetIoTAddonResult, error) {
+			args := v.(GetIoTAddonArgs)
+			r, err := GetIoTAddon(ctx, &args, opts...)
+			var s GetIoTAddonResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupIoTAddonResultOutput)
+		}).(GetIoTAddonResultOutput)
 }
 
-type LookupIoTAddonOutputArgs struct {
+type GetIoTAddonOutputArgs struct {
 	// The addon name.
 	AddonName pulumi.StringInput `pulumi:"addonName"`
 	// The device name.
@@ -84,81 +82,81 @@ type LookupIoTAddonOutputArgs struct {
 	RoleName pulumi.StringInput `pulumi:"roleName"`
 }
 
-func (LookupIoTAddonOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupIoTAddonArgs)(nil)).Elem()
+func (GetIoTAddonOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIoTAddonArgs)(nil)).Elem()
 }
 
 // IoT Addon.
-type LookupIoTAddonResultOutput struct{ *pulumi.OutputState }
+type GetIoTAddonResultOutput struct{ *pulumi.OutputState }
 
-func (LookupIoTAddonResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupIoTAddonResult)(nil)).Elem()
+func (GetIoTAddonResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIoTAddonResult)(nil)).Elem()
 }
 
-func (o LookupIoTAddonResultOutput) ToLookupIoTAddonResultOutput() LookupIoTAddonResultOutput {
+func (o GetIoTAddonResultOutput) ToGetIoTAddonResultOutput() GetIoTAddonResultOutput {
 	return o
 }
 
-func (o LookupIoTAddonResultOutput) ToLookupIoTAddonResultOutputWithContext(ctx context.Context) LookupIoTAddonResultOutput {
+func (o GetIoTAddonResultOutput) ToGetIoTAddonResultOutputWithContext(ctx context.Context) GetIoTAddonResultOutput {
 	return o
 }
 
 // Host OS supported by the IoT addon.
-func (o LookupIoTAddonResultOutput) HostPlatform() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.HostPlatform }).(pulumi.StringOutput)
+func (o GetIoTAddonResultOutput) HostPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) string { return v.HostPlatform }).(pulumi.StringOutput)
 }
 
 // Platform where the runtime is hosted.
-func (o LookupIoTAddonResultOutput) HostPlatformType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.HostPlatformType }).(pulumi.StringOutput)
+func (o GetIoTAddonResultOutput) HostPlatformType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) string { return v.HostPlatformType }).(pulumi.StringOutput)
 }
 
 // The path ID that uniquely identifies the object.
-func (o LookupIoTAddonResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetIoTAddonResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // IoT device metadata to which appliance needs to be connected.
-func (o LookupIoTAddonResultOutput) IoTDeviceDetails() IoTDeviceInfoResponseOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) IoTDeviceInfoResponse { return v.IoTDeviceDetails }).(IoTDeviceInfoResponseOutput)
+func (o GetIoTAddonResultOutput) IoTDeviceDetails() IoTDeviceInfoResponseOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) IoTDeviceInfoResponse { return v.IoTDeviceDetails }).(IoTDeviceInfoResponseOutput)
 }
 
 // IoT edge device to which the IoT Addon needs to be configured.
-func (o LookupIoTAddonResultOutput) IoTEdgeDeviceDetails() IoTDeviceInfoResponseOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) IoTDeviceInfoResponse { return v.IoTEdgeDeviceDetails }).(IoTDeviceInfoResponseOutput)
+func (o GetIoTAddonResultOutput) IoTEdgeDeviceDetails() IoTDeviceInfoResponseOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) IoTDeviceInfoResponse { return v.IoTEdgeDeviceDetails }).(IoTDeviceInfoResponseOutput)
 }
 
 // Addon type.
 // Expected value is 'IotEdge'.
-func (o LookupIoTAddonResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetIoTAddonResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The object name.
-func (o LookupIoTAddonResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetIoTAddonResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Addon Provisioning State
-func (o LookupIoTAddonResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetIoTAddonResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Addon type
-func (o LookupIoTAddonResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetIoTAddonResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.
-func (o LookupIoTAddonResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetIoTAddonResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Version of IoT running on the appliance.
-func (o LookupIoTAddonResultOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.Version }).(pulumi.StringOutput)
+func (o GetIoTAddonResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTAddonResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupIoTAddonResultOutput{})
+	pulumi.RegisterOutputType(GetIoTAddonResultOutput{})
 }

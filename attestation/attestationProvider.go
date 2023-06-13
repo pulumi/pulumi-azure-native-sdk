@@ -12,7 +12,8 @@ import (
 )
 
 // Attestation service response message.
-// API Version: 2020-10-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2020-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AttestationProvider struct {
 	pulumi.CustomResourceState
 
@@ -24,12 +25,16 @@ type AttestationProvider struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections associated with the attestation provider.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Status of attestation service.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// The system metadata relating to this resource
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
+	TpmAttestationAuthentication pulumi.StringPtrOutput `pulumi:"tpmAttestationAuthentication"`
 	// Trust model for the attestation provider.
 	TrustModel pulumi.StringPtrOutput `pulumi:"trustModel"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -51,10 +56,10 @@ func NewAttestationProvider(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:attestation/v20180901preview:AttestationProvider"),
+			Type: pulumi.String("azure-native:attestation/v20201001:AttestationProvider"),
 		},
 		{
-			Type: pulumi.String("azure-native:attestation/v20201001:AttestationProvider"),
+			Type: pulumi.String("azure-native:attestation/v20210601:AttestationProvider"),
 		},
 		{
 			Type: pulumi.String("azure-native:attestation/v20210601preview:AttestationProvider"),
@@ -178,6 +183,11 @@ func (o AttestationProviderOutput) PrivateEndpointConnections() PrivateEndpointC
 	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
+// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
+func (o AttestationProviderOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestationProvider) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
 // Status of attestation service.
 func (o AttestationProviderOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttestationProvider) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
@@ -191,6 +201,11 @@ func (o AttestationProviderOutput) SystemData() SystemDataResponseOutput {
 // Resource tags.
 func (o AttestationProviderOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AttestationProvider) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
+func (o AttestationProviderOutput) TpmAttestationAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestationProvider) pulumi.StringPtrOutput { return v.TpmAttestationAuthentication }).(pulumi.StringPtrOutput)
 }
 
 // Trust model for the attestation provider.

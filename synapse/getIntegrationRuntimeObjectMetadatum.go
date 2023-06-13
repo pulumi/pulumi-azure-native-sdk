@@ -11,7 +11,7 @@ import (
 )
 
 // Get object metadata from an integration runtime
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
 func GetIntegrationRuntimeObjectMetadatum(ctx *pulumi.Context, args *GetIntegrationRuntimeObjectMetadatumArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeObjectMetadatumResult, error) {
 	var rv GetIntegrationRuntimeObjectMetadatumResult
 	err := ctx.Invoke("azure-native:synapse:getIntegrationRuntimeObjectMetadatum", args, &rv, opts...)

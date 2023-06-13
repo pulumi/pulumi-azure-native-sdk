@@ -3,28 +3,6 @@
 
 package v20201001preview
 
-// Clustering policy - default is OSSCluster. Specified at create time.
-type ClusteringPolicy string
-
-const (
-	ClusteringPolicyEnterpriseCluster = ClusteringPolicy("EnterpriseCluster")
-	ClusteringPolicyOSSCluster        = ClusteringPolicy("OSSCluster")
-)
-
-// Redis eviction policy - default is VolatileLRU
-type EvictionPolicy string
-
-const (
-	EvictionPolicyAllKeysLFU     = EvictionPolicy("AllKeysLFU")
-	EvictionPolicyAllKeysLRU     = EvictionPolicy("AllKeysLRU")
-	EvictionPolicyAllKeysRandom  = EvictionPolicy("AllKeysRandom")
-	EvictionPolicyVolatileLRU    = EvictionPolicy("VolatileLRU")
-	EvictionPolicyVolatileLFU    = EvictionPolicy("VolatileLFU")
-	EvictionPolicyVolatileTTL    = EvictionPolicy("VolatileTTL")
-	EvictionPolicyVolatileRandom = EvictionPolicy("VolatileRandom")
-	EvictionPolicyNoEviction     = EvictionPolicy("NoEviction")
-)
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -32,14 +10,6 @@ const (
 	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
 	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
 	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
-)
-
-// Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted.
-type Protocol string
-
-const (
-	ProtocolEncrypted = Protocol("Encrypted")
-	ProtocolPlaintext = Protocol("Plaintext")
 )
 
 // The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)

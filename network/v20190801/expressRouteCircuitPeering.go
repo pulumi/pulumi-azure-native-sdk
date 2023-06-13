@@ -81,51 +81,6 @@ func NewExpressRouteCircuitPeering(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:ExpressRouteCircuitPeering"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20150501preview:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:ExpressRouteCircuitPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:ExpressRouteCircuitPeering"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:ExpressRouteCircuitPeering"),
 		},
 		{
@@ -209,6 +164,9 @@ func NewExpressRouteCircuitPeering(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuitPeering"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCircuitPeering"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRouteCircuitPeering
@@ -248,7 +206,7 @@ type expressRouteCircuitPeeringArgs struct {
 	// The name of the express route circuit.
 	CircuitName string `pulumi:"circuitName"`
 	// The list of circuit connections associated with Azure Private Peering for this circuit.
-	Connections []ExpressRouteCircuitConnectionType `pulumi:"connections"`
+	Connections []ExpressRouteCircuitConnection `pulumi:"connections"`
 	// The GatewayManager Etag.
 	GatewayManagerEtag *string `pulumi:"gatewayManagerEtag"`
 	// Resource ID.
@@ -296,7 +254,7 @@ type ExpressRouteCircuitPeeringArgs struct {
 	// The name of the express route circuit.
 	CircuitName pulumi.StringInput
 	// The list of circuit connections associated with Azure Private Peering for this circuit.
-	Connections ExpressRouteCircuitConnectionTypeArrayInput
+	Connections ExpressRouteCircuitConnectionArrayInput
 	// The GatewayManager Etag.
 	GatewayManagerEtag pulumi.StringPtrInput
 	// Resource ID.

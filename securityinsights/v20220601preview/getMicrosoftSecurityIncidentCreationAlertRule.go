@@ -11,10 +11,8 @@ import (
 )
 
 // Gets the alert rule.
-//
-// Deprecated: azure-native:securityinsights/v20220601preview:MicrosoftSecurityIncidentCreationAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MicrosoftSecurityIncidentCreationAlertRule to guarantee forwards compatibility.
-func LookupMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context, args *LookupMicrosoftSecurityIncidentCreationAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupMicrosoftSecurityIncidentCreationAlertRuleResult, error) {
-	var rv LookupMicrosoftSecurityIncidentCreationAlertRuleResult
+func GetMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context, args *GetMicrosoftSecurityIncidentCreationAlertRuleArgs, opts ...pulumi.InvokeOption) (*GetMicrosoftSecurityIncidentCreationAlertRuleResult, error) {
+	var rv GetMicrosoftSecurityIncidentCreationAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220601preview:getMicrosoftSecurityIncidentCreationAlertRule", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context, args 
 	return &rv, nil
 }
 
-type LookupMicrosoftSecurityIncidentCreationAlertRuleArgs struct {
+type GetMicrosoftSecurityIncidentCreationAlertRuleArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Alert rule ID
@@ -32,7 +30,7 @@ type LookupMicrosoftSecurityIncidentCreationAlertRuleArgs struct {
 }
 
 // Represents MicrosoftSecurityIncidentCreation rule.
-type LookupMicrosoftSecurityIncidentCreationAlertRuleResult struct {
+type GetMicrosoftSecurityIncidentCreationAlertRuleResult struct {
 	// The Name of the alert rule template used to create this rule.
 	AlertRuleTemplateName *string `pulumi:"alertRuleTemplateName"`
 	// The description of the alert rule.
@@ -66,20 +64,20 @@ type LookupMicrosoftSecurityIncidentCreationAlertRuleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupMicrosoftSecurityIncidentCreationAlertRuleOutput(ctx *pulumi.Context, args LookupMicrosoftSecurityIncidentCreationAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput {
+func GetMicrosoftSecurityIncidentCreationAlertRuleOutput(ctx *pulumi.Context, args GetMicrosoftSecurityIncidentCreationAlertRuleOutputArgs, opts ...pulumi.InvokeOption) GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMicrosoftSecurityIncidentCreationAlertRuleResult, error) {
-			args := v.(LookupMicrosoftSecurityIncidentCreationAlertRuleArgs)
-			r, err := LookupMicrosoftSecurityIncidentCreationAlertRule(ctx, &args, opts...)
-			var s LookupMicrosoftSecurityIncidentCreationAlertRuleResult
+		ApplyT(func(v interface{}) (GetMicrosoftSecurityIncidentCreationAlertRuleResult, error) {
+			args := v.(GetMicrosoftSecurityIncidentCreationAlertRuleArgs)
+			r, err := GetMicrosoftSecurityIncidentCreationAlertRule(ctx, &args, opts...)
+			var s GetMicrosoftSecurityIncidentCreationAlertRuleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput)
+		}).(GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput)
 }
 
-type LookupMicrosoftSecurityIncidentCreationAlertRuleOutputArgs struct {
+type GetMicrosoftSecurityIncidentCreationAlertRuleOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Alert rule ID
@@ -88,103 +86,103 @@ type LookupMicrosoftSecurityIncidentCreationAlertRuleOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupMicrosoftSecurityIncidentCreationAlertRuleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMicrosoftSecurityIncidentCreationAlertRuleArgs)(nil)).Elem()
+func (GetMicrosoftSecurityIncidentCreationAlertRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrosoftSecurityIncidentCreationAlertRuleArgs)(nil)).Elem()
 }
 
 // Represents MicrosoftSecurityIncidentCreation rule.
-type LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput struct{ *pulumi.OutputState }
+type GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMicrosoftSecurityIncidentCreationAlertRuleResult)(nil)).Elem()
+func (GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrosoftSecurityIncidentCreationAlertRuleResult)(nil)).Elem()
 }
 
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) ToLookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput() LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput {
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) ToGetMicrosoftSecurityIncidentCreationAlertRuleResultOutput() GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput {
 	return o
 }
 
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) ToLookupMicrosoftSecurityIncidentCreationAlertRuleResultOutputWithContext(ctx context.Context) LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput {
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) ToGetMicrosoftSecurityIncidentCreationAlertRuleResultOutputWithContext(ctx context.Context) GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput {
 	return o
 }
 
 // The Name of the alert rule template used to create this rule.
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) *string { return v.AlertRuleTemplateName }).(pulumi.StringPtrOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) *string { return v.AlertRuleTemplateName }).(pulumi.StringPtrOutput)
 }
 
 // The description of the alert rule.
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The display name for alerts created by this alert rule.
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // the alerts' displayNames on which the cases will not be generated
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) DisplayNamesExcludeFilter() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) []string {
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) DisplayNamesExcludeFilter() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) []string {
 		return v.DisplayNamesExcludeFilter
 	}).(pulumi.StringArrayOutput)
 }
 
 // the alerts' displayNames on which the cases will be generated
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) DisplayNamesFilter() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) []string { return v.DisplayNamesFilter }).(pulumi.StringArrayOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) DisplayNamesFilter() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) []string { return v.DisplayNamesFilter }).(pulumi.StringArrayOutput)
 }
 
 // Determines whether this alert rule is enabled or disabled.
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Etag of the azure resource
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the alert rule
 // Expected value is 'MicrosoftSecurityIncidentCreation'.
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The last time that this alert has been modified.
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The alerts' productName on which the cases will be generated
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) ProductFilter() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.ProductFilter }).(pulumi.StringOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) ProductFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.ProductFilter }).(pulumi.StringOutput)
 }
 
 // the alerts' severities on which the cases will be generated
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) SeveritiesFilter() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) []string { return v.SeveritiesFilter }).(pulumi.StringArrayOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) SeveritiesFilter() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) []string { return v.SeveritiesFilter }).(pulumi.StringArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput{})
+	pulumi.RegisterOutputType(GetMicrosoftSecurityIncidentCreationAlertRuleResultOutput{})
 }

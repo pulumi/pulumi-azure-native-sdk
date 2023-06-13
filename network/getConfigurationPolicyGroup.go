@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a ConfigurationPolicyGroup.
-// API Version: 2022-01-01.
+// API Version: 2022-11-01.
 func LookupConfigurationPolicyGroup(ctx *pulumi.Context, args *LookupConfigurationPolicyGroupArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationPolicyGroupResult, error) {
 	var rv LookupConfigurationPolicyGroupResult
 	err := ctx.Invoke("azure-native:network:getConfigurationPolicyGroup", args, &rv, opts...)

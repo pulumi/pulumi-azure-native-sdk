@@ -129,7 +129,13 @@ func NewWatchlistItem(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:WatchlistItem"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:WatchlistItem"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:WatchlistItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:WatchlistItem"),
 		},
 	})
 	opts = append(opts, aliases)

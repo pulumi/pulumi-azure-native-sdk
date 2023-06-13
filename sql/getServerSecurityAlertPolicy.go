@@ -11,7 +11,7 @@ import (
 )
 
 // Get a server's security alert policy.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
 func LookupServerSecurityAlertPolicy(ctx *pulumi.Context, args *LookupServerSecurityAlertPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServerSecurityAlertPolicyResult, error) {
 	var rv LookupServerSecurityAlertPolicyResult
 	err := ctx.Invoke("azure-native:sql:getServerSecurityAlertPolicy", args, &rv, opts...)

@@ -12,7 +12,8 @@ import (
 )
 
 // The customer's prefix that is registered by the peering service provider.
-// API Version: 2021-01-01.
+// API Version: 2022-10-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RegisteredPrefix struct {
 	pulumi.CustomResourceState
 
@@ -46,15 +47,6 @@ func NewRegisteredPrefix(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:peering/v20200101preview:RegisteredPrefix"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20200401:RegisteredPrefix"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20201001:RegisteredPrefix"),
-		},
 		{
 			Type: pulumi.String("azure-native:peering/v20210101:RegisteredPrefix"),
 		},

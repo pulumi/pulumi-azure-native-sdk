@@ -64,18 +64,6 @@ func NewPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cdn:Policy"),
 		},
 		{
-			Type: pulumi.String("azure-native:cdn/v20190615:Policy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20190615preview:Policy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20200331:Policy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20200415:Policy"),
-		},
-		{
 			Type: pulumi.String("azure-native:cdn/v20200901:Policy"),
 		},
 		{
@@ -83,6 +71,9 @@ func NewPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20220501preview:Policy"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230501:Policy"),
 		},
 	})
 	opts = append(opts, aliases)

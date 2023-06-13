@@ -12,7 +12,8 @@ import (
 )
 
 // Specifies information about the gallery image version that you want to create or update.
-// API Version: 2020-09-30.
+// API Version: 2022-03-03.
+// Previous API Version: 2020-09-30. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type GalleryImageVersion struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +27,8 @@ type GalleryImageVersion struct {
 	PublishingProfile GalleryImageVersionPublishingProfileResponsePtrOutput `pulumi:"publishingProfile"`
 	// This is the replication status of the gallery image version.
 	ReplicationStatus ReplicationStatusResponseOutput `pulumi:"replicationStatus"`
+	// This is the safety profile of the Gallery Image Version.
+	SafetyProfile GalleryImageVersionSafetyProfileResponsePtrOutput `pulumi:"safetyProfile"`
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfileResponseOutput `pulumi:"storageProfile"`
 	// Resource tags
@@ -54,18 +57,6 @@ func NewGalleryImageVersion(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'StorageProfile'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:compute/v20180601:GalleryImageVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190301:GalleryImageVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190701:GalleryImageVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20191201:GalleryImageVersion"),
-		},
 		{
 			Type: pulumi.String("azure-native:compute/v20200930:GalleryImageVersion"),
 		},
@@ -127,6 +118,8 @@ type galleryImageVersionArgs struct {
 	PublishingProfile *GalleryImageVersionPublishingProfile `pulumi:"publishingProfile"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// This is the safety profile of the Gallery Image Version.
+	SafetyProfile *GalleryImageVersionSafetyProfile `pulumi:"safetyProfile"`
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfile `pulumi:"storageProfile"`
 	// Resource tags
@@ -147,6 +140,8 @@ type GalleryImageVersionArgs struct {
 	PublishingProfile GalleryImageVersionPublishingProfilePtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// This is the safety profile of the Gallery Image Version.
+	SafetyProfile GalleryImageVersionSafetyProfilePtrInput
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfileInput
 	// Resource tags
@@ -215,6 +210,11 @@ func (o GalleryImageVersionOutput) PublishingProfile() GalleryImageVersionPublis
 // This is the replication status of the gallery image version.
 func (o GalleryImageVersionOutput) ReplicationStatus() ReplicationStatusResponseOutput {
 	return o.ApplyT(func(v *GalleryImageVersion) ReplicationStatusResponseOutput { return v.ReplicationStatus }).(ReplicationStatusResponseOutput)
+}
+
+// This is the safety profile of the Gallery Image Version.
+func (o GalleryImageVersionOutput) SafetyProfile() GalleryImageVersionSafetyProfileResponsePtrOutput {
+	return o.ApplyT(func(v *GalleryImageVersion) GalleryImageVersionSafetyProfileResponsePtrOutput { return v.SafetyProfile }).(GalleryImageVersionSafetyProfileResponsePtrOutput)
 }
 
 // This is the storage profile of a Gallery Image Version.

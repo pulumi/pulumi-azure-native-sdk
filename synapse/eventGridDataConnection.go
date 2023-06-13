@@ -12,7 +12,7 @@ import (
 )
 
 // Class representing an Event Grid data connection.
-// API Version: 2021-04-01-preview.
+// API Version: 2021-06-01-preview.
 type EventGridDataConnection struct {
 	pulumi.CustomResourceState
 
@@ -149,7 +149,7 @@ type eventGridDataConnectionArgs struct {
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName *string `pulumi:"tableName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -184,7 +184,7 @@ type EventGridDataConnectionArgs struct {
 	StorageAccountResourceId pulumi.StringInput
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName pulumi.StringPtrInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 

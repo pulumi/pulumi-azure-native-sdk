@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified application security group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
 func LookupApplicationSecurityGroup(ctx *pulumi.Context, args *LookupApplicationSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationSecurityGroupResult, error) {
 	var rv LookupApplicationSecurityGroupResult
 	err := ctx.Invoke("azure-native:network:getApplicationSecurityGroup", args, &rv, opts...)

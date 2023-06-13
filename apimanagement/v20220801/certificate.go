@@ -47,9 +47,6 @@ func NewCertificate(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:apimanagement:Certificate"),
 		},
 		{
-			Type: pulumi.String("azure-native:apimanagement/v20160707:Certificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20161010:Certificate"),
 		},
 		{
@@ -90,6 +87,9 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -233,14 +233,6 @@ const (
 	ScheduleFrequencyMinute = ScheduleFrequency("Minute")
 )
 
-// Gets or sets the SKU name of the account.
-type SkuNameEnum string
-
-const (
-	SkuNameEnumFree  = SkuNameEnum("Free")
-	SkuNameEnumBasic = SkuNameEnum("Basic")
-)
-
 // The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
 type SourceType string
 

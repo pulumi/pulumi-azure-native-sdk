@@ -13,6 +13,7 @@ import (
 
 // IoT Security solution configuration and resource information.
 // API Version: 2019-08-01.
+// Previous API Version: 2019-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type IotSecuritySolution struct {
 	pulumi.CustomResourceState
 

@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-//
-// Deprecated: azure-native:datashare/v20201001preview:BlobFolderDataSetMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:BlobFolderDataSetMapping to guarantee forwards compatibility.
-func LookupBlobFolderDataSetMapping(ctx *pulumi.Context, args *LookupBlobFolderDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupBlobFolderDataSetMappingResult, error) {
-	var rv LookupBlobFolderDataSetMappingResult
+func GetBlobFolderDataSetMapping(ctx *pulumi.Context, args *GetBlobFolderDataSetMappingArgs, opts ...pulumi.InvokeOption) (*GetBlobFolderDataSetMappingResult, error) {
+	var rv GetBlobFolderDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getBlobFolderDataSetMapping", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupBlobFolderDataSetMapping(ctx *pulumi.Context, args *LookupBlobFolderD
 	return &rv, nil
 }
 
-type LookupBlobFolderDataSetMappingArgs struct {
+type GetBlobFolderDataSetMappingArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSetMapping.
@@ -34,7 +32,7 @@ type LookupBlobFolderDataSetMappingArgs struct {
 }
 
 // A Blob folder data set mapping.
-type LookupBlobFolderDataSetMappingResult struct {
+type GetBlobFolderDataSetMappingResult struct {
 	// Container that has the file path.
 	ContainerName string `pulumi:"containerName"`
 	// The id of the source data set.
@@ -64,20 +62,20 @@ type LookupBlobFolderDataSetMappingResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupBlobFolderDataSetMappingOutput(ctx *pulumi.Context, args LookupBlobFolderDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupBlobFolderDataSetMappingResultOutput {
+func GetBlobFolderDataSetMappingOutput(ctx *pulumi.Context, args GetBlobFolderDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) GetBlobFolderDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBlobFolderDataSetMappingResult, error) {
-			args := v.(LookupBlobFolderDataSetMappingArgs)
-			r, err := LookupBlobFolderDataSetMapping(ctx, &args, opts...)
-			var s LookupBlobFolderDataSetMappingResult
+		ApplyT(func(v interface{}) (GetBlobFolderDataSetMappingResult, error) {
+			args := v.(GetBlobFolderDataSetMappingArgs)
+			r, err := GetBlobFolderDataSetMapping(ctx, &args, opts...)
+			var s GetBlobFolderDataSetMappingResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupBlobFolderDataSetMappingResultOutput)
+		}).(GetBlobFolderDataSetMappingResultOutput)
 }
 
-type LookupBlobFolderDataSetMappingOutputArgs struct {
+type GetBlobFolderDataSetMappingOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSetMapping.
@@ -88,91 +86,91 @@ type LookupBlobFolderDataSetMappingOutputArgs struct {
 	ShareSubscriptionName pulumi.StringInput `pulumi:"shareSubscriptionName"`
 }
 
-func (LookupBlobFolderDataSetMappingOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupBlobFolderDataSetMappingArgs)(nil)).Elem()
+func (GetBlobFolderDataSetMappingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlobFolderDataSetMappingArgs)(nil)).Elem()
 }
 
 // A Blob folder data set mapping.
-type LookupBlobFolderDataSetMappingResultOutput struct{ *pulumi.OutputState }
+type GetBlobFolderDataSetMappingResultOutput struct{ *pulumi.OutputState }
 
-func (LookupBlobFolderDataSetMappingResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupBlobFolderDataSetMappingResult)(nil)).Elem()
+func (GetBlobFolderDataSetMappingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlobFolderDataSetMappingResult)(nil)).Elem()
 }
 
-func (o LookupBlobFolderDataSetMappingResultOutput) ToLookupBlobFolderDataSetMappingResultOutput() LookupBlobFolderDataSetMappingResultOutput {
+func (o GetBlobFolderDataSetMappingResultOutput) ToGetBlobFolderDataSetMappingResultOutput() GetBlobFolderDataSetMappingResultOutput {
 	return o
 }
 
-func (o LookupBlobFolderDataSetMappingResultOutput) ToLookupBlobFolderDataSetMappingResultOutputWithContext(ctx context.Context) LookupBlobFolderDataSetMappingResultOutput {
+func (o GetBlobFolderDataSetMappingResultOutput) ToGetBlobFolderDataSetMappingResultOutputWithContext(ctx context.Context) GetBlobFolderDataSetMappingResultOutput {
 	return o
 }
 
 // Container that has the file path.
-func (o LookupBlobFolderDataSetMappingResultOutput) ContainerName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.ContainerName }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.ContainerName }).(pulumi.StringOutput)
 }
 
 // The id of the source data set.
-func (o LookupBlobFolderDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // Gets the status of the data set mapping.
-func (o LookupBlobFolderDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) DataSetMappingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.DataSetMappingStatus }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupBlobFolderDataSetMappingResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set mapping.
 // Expected value is 'BlobFolder'.
-func (o LookupBlobFolderDataSetMappingResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupBlobFolderDataSetMappingResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Prefix for blob folder
-func (o LookupBlobFolderDataSetMappingResultOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Prefix }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
 // Provisioning state of the data set mapping.
-func (o LookupBlobFolderDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Resource group of storage account.
-func (o LookupBlobFolderDataSetMappingResultOutput) ResourceGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) ResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.ResourceGroup }).(pulumi.StringOutput)
 }
 
 // Storage account name of the source data set.
-func (o LookupBlobFolderDataSetMappingResultOutput) StorageAccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.StorageAccountName }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.StorageAccountName }).(pulumi.StringOutput)
 }
 
 // Subscription id of storage account.
-func (o LookupBlobFolderDataSetMappingResultOutput) SubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupBlobFolderDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the azure resource
-func (o LookupBlobFolderDataSetMappingResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBlobFolderDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetBlobFolderDataSetMappingResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlobFolderDataSetMappingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupBlobFolderDataSetMappingResultOutput{})
+	pulumi.RegisterOutputType(GetBlobFolderDataSetMappingResultOutput{})
 }

@@ -15,7 +15,7 @@ type ArmIdentity struct {
 	// Identity type. Only allowed values are SystemAssigned and UserAssigned. Comma separated if both for ex: SystemAssigned,UserAssigned.
 	IdentityType *string `pulumi:"identityType"`
 	// The set of UserAssigned identities associated with the IoT DPS resource.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ArmIdentityInput is an input type that accepts ArmIdentityArgs and ArmIdentityOutput values.
@@ -34,7 +34,7 @@ type ArmIdentityArgs struct {
 	// Identity type. Only allowed values are SystemAssigned and UserAssigned. Comma separated if both for ex: SystemAssigned,UserAssigned.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 	// The set of UserAssigned identities associated with the IoT DPS resource.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ArmIdentityArgs) ElementType() reflect.Type {
@@ -121,8 +121,8 @@ func (o ArmIdentityOutput) IdentityType() pulumi.StringPtrOutput {
 }
 
 // The set of UserAssigned identities associated with the IoT DPS resource.
-func (o ArmIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ArmIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ArmIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ArmIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ArmIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -160,13 +160,13 @@ func (o ArmIdentityPtrOutput) IdentityType() pulumi.StringPtrOutput {
 }
 
 // The set of UserAssigned identities associated with the IoT DPS resource.
-func (o ArmIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ArmIdentity) map[string]interface{} {
+func (o ArmIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ArmIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The set of ARM identities associated with the IoT DPS resource.
@@ -331,67 +331,6 @@ func (o ArmUserIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) ArmUser
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ArmUserIdentityResponse {
 		return vs[0].(map[string]ArmUserIdentityResponse)[vs[1].(string)]
 	}).(ArmUserIdentityResponseOutput)
-}
-
-// The description of an X509 CA Certificate.
-type CertificatePropertiesResponse struct {
-	// The certificate's creation date and time.
-	Created string `pulumi:"created"`
-	// The certificate's expiration date and time.
-	Expiry string `pulumi:"expiry"`
-	// Determines whether certificate has been verified.
-	IsVerified bool `pulumi:"isVerified"`
-	// The certificate's subject name.
-	Subject string `pulumi:"subject"`
-	// The certificate's thumbprint.
-	Thumbprint string `pulumi:"thumbprint"`
-	// The certificate's last update date and time.
-	Updated string `pulumi:"updated"`
-}
-
-// The description of an X509 CA Certificate.
-type CertificatePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (CertificatePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificatePropertiesResponse)(nil)).Elem()
-}
-
-func (o CertificatePropertiesResponseOutput) ToCertificatePropertiesResponseOutput() CertificatePropertiesResponseOutput {
-	return o
-}
-
-func (o CertificatePropertiesResponseOutput) ToCertificatePropertiesResponseOutputWithContext(ctx context.Context) CertificatePropertiesResponseOutput {
-	return o
-}
-
-// The certificate's creation date and time.
-func (o CertificatePropertiesResponseOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The certificate's expiration date and time.
-func (o CertificatePropertiesResponseOutput) Expiry() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Expiry }).(pulumi.StringOutput)
-}
-
-// Determines whether certificate has been verified.
-func (o CertificatePropertiesResponseOutput) IsVerified() pulumi.BoolOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) bool { return v.IsVerified }).(pulumi.BoolOutput)
-}
-
-// The certificate's subject name.
-func (o CertificatePropertiesResponseOutput) Subject() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Subject }).(pulumi.StringOutput)
-}
-
-// The certificate's thumbprint.
-func (o CertificatePropertiesResponseOutput) Thumbprint() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
-}
-
-// The certificate's last update date and time.
-func (o CertificatePropertiesResponseOutput) Updated() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificatePropertiesResponse) string { return v.Updated }).(pulumi.StringOutput)
 }
 
 // The properties of the identity used to access the key encryption key in KeyVault.
@@ -2390,7 +2329,6 @@ func init() {
 	pulumi.RegisterOutputType(ArmIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArmUserIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ArmUserIdentityResponseMapOutput{})
-	pulumi.RegisterOutputType(CertificatePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionKeyIdentityOutput{})
 	pulumi.RegisterOutputType(EncryptionKeyIdentityPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionKeyIdentityResponseOutput{})

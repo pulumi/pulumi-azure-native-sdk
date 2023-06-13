@@ -13,6 +13,7 @@ import (
 
 // The status of the Canonical support plan.
 // API Version: 2018-03-01.
+// Previous API Version: 2018-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SupportPlanType struct {
 	pulumi.CustomResourceState
 
@@ -35,9 +36,6 @@ func NewSupportPlanType(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ProviderName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:addons/v20170515:SupportPlanType"),
-		},
 		{
 			Type: pulumi.String("azure-native:addons/v20180301:SupportPlanType"),
 		},

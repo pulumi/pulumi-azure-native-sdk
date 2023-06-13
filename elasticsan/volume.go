@@ -13,6 +13,7 @@ import (
 
 // Response for Volume request.
 // API Version: 2021-11-20-preview.
+// Previous API Version: 2021-11-20-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Volume struct {
 	pulumi.CustomResourceState
 

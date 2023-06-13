@@ -13,6 +13,7 @@ import (
 
 // The description of the service.
 // API Version: 2021-03-25-preview.
+// Previous API Version: 2021-03-25-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateLinkServicesForM365ComplianceCenter struct {
 	pulumi.CustomResourceState
 
@@ -51,12 +52,18 @@ func NewPrivateLinkServicesForM365ComplianceCenter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:m365securityandcompliance:privateLinkServicesForM365ComplianceCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForM365ComplianceCenter"),
+		},
+		{
 			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForM365ComplianceCenter"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForM365ComplianceCenter
-	err := ctx.RegisterResource("azure-native:m365securityandcompliance:privateLinkServicesForM365ComplianceCenter", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:m365securityandcompliance:PrivateLinkServicesForM365ComplianceCenter", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +75,7 @@ func NewPrivateLinkServicesForM365ComplianceCenter(ctx *pulumi.Context,
 func GetPrivateLinkServicesForM365ComplianceCenter(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForM365ComplianceCenterState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForM365ComplianceCenter, error) {
 	var resource PrivateLinkServicesForM365ComplianceCenter
-	err := ctx.ReadResource("azure-native:m365securityandcompliance:privateLinkServicesForM365ComplianceCenter", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:m365securityandcompliance:PrivateLinkServicesForM365ComplianceCenter", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

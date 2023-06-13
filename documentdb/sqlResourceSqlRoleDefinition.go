@@ -12,7 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB SQL Role Definition.
-// API Version: 2021-03-01-preview.
+// API Version: 2023-04-15.
+// Previous API Version: 2021-03-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type SqlResourceSqlRoleDefinition struct {
 	pulumi.CustomResourceState
 
@@ -42,9 +43,6 @@ func NewSqlResourceSqlRoleDefinition(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:documentdb/v20200601preview:SqlResourceSqlRoleDefinition"),
-		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20210301preview:SqlResourceSqlRoleDefinition"),
 		},
@@ -91,7 +89,19 @@ func NewSqlResourceSqlRoleDefinition(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlRoleDefinition"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlRoleDefinition"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlRoleDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

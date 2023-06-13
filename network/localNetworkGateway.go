@@ -12,7 +12,8 @@ import (
 )
 
 // A common class for general resource information.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type LocalNetworkGateway struct {
 	pulumi.CustomResourceState
 
@@ -51,48 +52,6 @@ func NewLocalNetworkGateway(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20150615:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:LocalNetworkGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:LocalNetworkGateway"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:LocalNetworkGateway"),
 		},
@@ -179,6 +138,9 @@ func NewLocalNetworkGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:LocalNetworkGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:LocalNetworkGateway"),
 		},
 	})
 	opts = append(opts, aliases)

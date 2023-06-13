@@ -13,6 +13,7 @@ import (
 
 // The alert rule resource.
 // API Version: 2016-03-01.
+// Previous API Version: 2016-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AlertRule struct {
 	pulumi.CustomResourceState
 
@@ -60,9 +61,6 @@ func NewAlertRule(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:insights/v20140401:AlertRule"),
-		},
 		{
 			Type: pulumi.String("azure-native:insights/v20160301:AlertRule"),
 		},

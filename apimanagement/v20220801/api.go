@@ -84,9 +84,6 @@ func NewApi(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:apimanagement:Api"),
 		},
 		{
-			Type: pulumi.String("azure-native:apimanagement/v20160707:Api"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20161010:Api"),
 		},
 		{
@@ -127,6 +124,9 @@ func NewApi(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Api"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Api"),
 		},
 	})
 	opts = append(opts, aliases)

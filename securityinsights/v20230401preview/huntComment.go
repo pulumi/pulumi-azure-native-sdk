@@ -46,6 +46,15 @@ func NewHuntComment(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:securityinsights:HuntComment"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:HuntComment"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource HuntComment
 	err := ctx.RegisterResource("azure-native:securityinsights/v20230401preview:HuntComment", name, args, &resource, opts...)
 	if err != nil {

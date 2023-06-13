@@ -12,7 +12,8 @@ import (
 )
 
 // Define the virtualMachine.
-// API Version: 2020-10-01-preview.
+// API Version: 2022-07-15-preview.
+// Previous API Version: 2020-10-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +58,8 @@ type VirtualMachine struct {
 	// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
 	// deploy.
 	ResourcePoolId pulumi.StringPtrOutput `pulumi:"resourcePoolId"`
+	// Gets the security profile.
+	SecurityProfile SecurityProfileResponsePtrOutput `pulumi:"securityProfile"`
 	// Gets or sets the SMBIOS UUID of the vm.
 	SmbiosUuid pulumi.StringPtrOutput `pulumi:"smbiosUuid"`
 	// The resource status information.
@@ -137,6 +140,8 @@ type virtualMachineArgs struct {
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Firmware type
 	FirmwareType *string `pulumi:"firmwareType"`
+	// Guest agent status properties.
+	GuestAgentProfile *GuestAgentProfile `pulumi:"guestAgentProfile"`
 	// Hardware properties.
 	HardwareProfile *HardwareProfile `pulumi:"hardwareProfile"`
 	// The identity of the resource.
@@ -160,6 +165,8 @@ type virtualMachineArgs struct {
 	// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
 	// deploy.
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
+	// Gets the security profile.
+	SecurityProfile *SecurityProfile `pulumi:"securityProfile"`
 	// Gets or sets the SMBIOS UUID of the vm.
 	SmbiosUuid *string `pulumi:"smbiosUuid"`
 	// Storage properties.
@@ -180,6 +187,8 @@ type VirtualMachineArgs struct {
 	ExtendedLocation ExtendedLocationPtrInput
 	// Firmware type
 	FirmwareType pulumi.StringPtrInput
+	// Guest agent status properties.
+	GuestAgentProfile GuestAgentProfilePtrInput
 	// Hardware properties.
 	HardwareProfile HardwareProfilePtrInput
 	// The identity of the resource.
@@ -203,6 +212,8 @@ type VirtualMachineArgs struct {
 	// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
 	// deploy.
 	ResourcePoolId pulumi.StringPtrInput
+	// Gets the security profile.
+	SecurityProfile SecurityProfilePtrInput
 	// Gets or sets the SMBIOS UUID of the vm.
 	SmbiosUuid pulumi.StringPtrInput
 	// Storage properties.
@@ -353,6 +364,11 @@ func (o VirtualMachineOutput) ProvisioningState() pulumi.StringOutput {
 // deploy.
 func (o VirtualMachineOutput) ResourcePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.ResourcePoolId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the security profile.
+func (o VirtualMachineOutput) SecurityProfile() SecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) SecurityProfileResponsePtrOutput { return v.SecurityProfile }).(SecurityProfileResponsePtrOutput)
 }
 
 // Gets or sets the SMBIOS UUID of the vm.

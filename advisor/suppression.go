@@ -12,19 +12,22 @@ import (
 )
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
-// API Version: 2020-01-01.
+// API Version: 2023-01-01.
+// Previous API Version: 2020-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Suppression struct {
 	pulumi.CustomResourceState
 
 	// Gets or sets the expiration time stamp.
 	ExpirationTimeStamp pulumi.StringOutput `pulumi:"expirationTimeStamp"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The GUID of the suppression.
 	SuppressionId pulumi.StringPtrOutput `pulumi:"suppressionId"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The duration for which the suppression is valid.
 	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -43,15 +46,6 @@ func NewSuppression(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:advisor/v20160712preview:Suppression"),
-		},
-		{
-			Type: pulumi.String("azure-native:advisor/v20170331:Suppression"),
-		},
-		{
-			Type: pulumi.String("azure-native:advisor/v20170419:Suppression"),
-		},
-		{
 			Type: pulumi.String("azure-native:advisor/v20200101:Suppression"),
 		},
 		{
@@ -59,6 +53,9 @@ func NewSuppression(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:advisor/v20221001:Suppression"),
+		},
+		{
+			Type: pulumi.String("azure-native:advisor/v20230101:Suppression"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -162,7 +159,7 @@ func (o SuppressionOutput) ExpirationTimeStamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Suppression) pulumi.StringOutput { return v.ExpirationTimeStamp }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o SuppressionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Suppression) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -172,12 +169,17 @@ func (o SuppressionOutput) SuppressionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Suppression) pulumi.StringPtrOutput { return v.SuppressionId }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SuppressionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Suppression) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The duration for which the suppression is valid.
 func (o SuppressionOutput) Ttl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Suppression) pulumi.StringPtrOutput { return v.Ttl }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SuppressionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Suppression) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

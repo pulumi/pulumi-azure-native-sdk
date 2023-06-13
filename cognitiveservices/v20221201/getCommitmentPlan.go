@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns a Cognitive Services commitment plan specified by the parameters.
+// Gets the specified commitmentPlans associated with the Cognitive Services account.
 func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanResult, error) {
 	var rv LookupCommitmentPlanResult
 	err := ctx.Invoke("azure-native:cognitiveservices/v20221201:getCommitmentPlan", args, &rv, opts...)
@@ -21,6 +21,8 @@ func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, o
 }
 
 type LookupCommitmentPlanArgs struct {
+	// The name of Cognitive Services account.
+	AccountName string `pulumi:"accountName"`
 	// The name of the commitmentPlan associated with the Cognitive Services Account
 	CommitmentPlanName string `pulumi:"commitmentPlanName"`
 	// The name of the resource group. The name is case insensitive.
@@ -65,6 +67,8 @@ func LookupCommitmentPlanOutput(ctx *pulumi.Context, args LookupCommitmentPlanOu
 }
 
 type LookupCommitmentPlanOutputArgs struct {
+	// The name of Cognitive Services account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the commitmentPlan associated with the Cognitive Services Account
 	CommitmentPlanName pulumi.StringInput `pulumi:"commitmentPlanName"`
 	// The name of the resource group. The name is case insensitive.

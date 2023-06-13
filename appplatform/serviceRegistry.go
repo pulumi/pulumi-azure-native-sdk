@@ -12,7 +12,8 @@ import (
 )
 
 // Service Registry resource
-// API Version: 2022-01-01-preview.
+// API Version: 2022-12-01.
+// Previous API Version: 2022-01-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ServiceRegistry struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +64,12 @@ func NewServiceRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:ServiceRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ServiceRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ServiceRegistry"),
 		},
 	})
 	opts = append(opts, aliases)

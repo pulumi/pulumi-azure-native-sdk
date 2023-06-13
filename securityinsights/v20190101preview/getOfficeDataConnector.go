@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20190101preview:OfficeDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:OfficeDataConnector to guarantee forwards compatibility.
-func LookupOfficeDataConnector(ctx *pulumi.Context, args *LookupOfficeDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeDataConnectorResult, error) {
-	var rv LookupOfficeDataConnectorResult
+func GetOfficeDataConnector(ctx *pulumi.Context, args *GetOfficeDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetOfficeDataConnectorResult, error) {
+	var rv GetOfficeDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getOfficeDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupOfficeDataConnector(ctx *pulumi.Context, args *LookupOfficeDataConnec
 	return &rv, nil
 }
 
-type LookupOfficeDataConnectorArgs struct {
+type GetOfficeDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
@@ -34,7 +32,7 @@ type LookupOfficeDataConnectorArgs struct {
 }
 
 // Represents office data connector.
-type LookupOfficeDataConnectorResult struct {
+type GetOfficeDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes OfficeDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -51,20 +49,20 @@ type LookupOfficeDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupOfficeDataConnectorOutput(ctx *pulumi.Context, args LookupOfficeDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOfficeDataConnectorResultOutput {
+func GetOfficeDataConnectorOutput(ctx *pulumi.Context, args GetOfficeDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetOfficeDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOfficeDataConnectorResult, error) {
-			args := v.(LookupOfficeDataConnectorArgs)
-			r, err := LookupOfficeDataConnector(ctx, &args, opts...)
-			var s LookupOfficeDataConnectorResult
+		ApplyT(func(v interface{}) (GetOfficeDataConnectorResult, error) {
+			args := v.(GetOfficeDataConnectorArgs)
+			r, err := GetOfficeDataConnector(ctx, &args, opts...)
+			var s GetOfficeDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupOfficeDataConnectorResultOutput)
+		}).(GetOfficeDataConnectorResultOutput)
 }
 
-type LookupOfficeDataConnectorOutputArgs struct {
+type GetOfficeDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
@@ -75,60 +73,60 @@ type LookupOfficeDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupOfficeDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupOfficeDataConnectorArgs)(nil)).Elem()
+func (GetOfficeDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOfficeDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents office data connector.
-type LookupOfficeDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetOfficeDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupOfficeDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupOfficeDataConnectorResult)(nil)).Elem()
+func (GetOfficeDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOfficeDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupOfficeDataConnectorResultOutput) ToLookupOfficeDataConnectorResultOutput() LookupOfficeDataConnectorResultOutput {
+func (o GetOfficeDataConnectorResultOutput) ToGetOfficeDataConnectorResultOutput() GetOfficeDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupOfficeDataConnectorResultOutput) ToLookupOfficeDataConnectorResultOutputWithContext(ctx context.Context) LookupOfficeDataConnectorResultOutput {
+func (o GetOfficeDataConnectorResultOutput) ToGetOfficeDataConnectorResultOutputWithContext(ctx context.Context) GetOfficeDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupOfficeDataConnectorResultOutput) DataTypes() OfficeDataConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) OfficeDataConnectorDataTypesResponse { return v.DataTypes }).(OfficeDataConnectorDataTypesResponseOutput)
+func (o GetOfficeDataConnectorResultOutput) DataTypes() OfficeDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetOfficeDataConnectorResult) OfficeDataConnectorDataTypesResponse { return v.DataTypes }).(OfficeDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
-func (o LookupOfficeDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetOfficeDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOfficeDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Azure resource Id
-func (o LookupOfficeDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetOfficeDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Expected value is 'Office365'.
-func (o LookupOfficeDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetOfficeDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Azure resource name
-func (o LookupOfficeDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetOfficeDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupOfficeDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetOfficeDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // Azure resource type
-func (o LookupOfficeDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetOfficeDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOfficeDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupOfficeDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetOfficeDataConnectorResultOutput{})
 }

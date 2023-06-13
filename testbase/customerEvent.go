@@ -13,6 +13,7 @@ import (
 
 // The Customer Notification Event resource.
 // API Version: 2022-04-01-preview.
+// Previous API Version: 2022-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type CustomerEvent struct {
 	pulumi.CustomResourceState
 
@@ -48,9 +49,6 @@ func NewCustomerEvent(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'TestBaseAccountName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:testbase/v20201216preview:CustomerEvent"),
-		},
 		{
 			Type: pulumi.String("azure-native:testbase/v20220401preview:CustomerEvent"),
 		},

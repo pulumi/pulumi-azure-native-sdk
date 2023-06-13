@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,18 +43,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Bookmark{}
 	case "azure-native:securityinsights:BookmarkRelation":
 		r = &BookmarkRelation{}
+	case "azure-native:securityinsights:ContentPackage":
+		r = &ContentPackage{}
+	case "azure-native:securityinsights:ContentTemplate":
+		r = &ContentTemplate{}
 	case "azure-native:securityinsights:EntityAnalytics":
 		r = &EntityAnalytics{}
 	case "azure-native:securityinsights:EyesOn":
 		r = &EyesOn{}
+	case "azure-native:securityinsights:FileImport":
+		r = &FileImport{}
 	case "azure-native:securityinsights:FusionAlertRule":
 		r = &FusionAlertRule{}
+	case "azure-native:securityinsights:Hunt":
+		r = &Hunt{}
+	case "azure-native:securityinsights:HuntComment":
+		r = &HuntComment{}
+	case "azure-native:securityinsights:HuntRelation":
+		r = &HuntRelation{}
 	case "azure-native:securityinsights:Incident":
 		r = &Incident{}
 	case "azure-native:securityinsights:IncidentComment":
 		r = &IncidentComment{}
 	case "azure-native:securityinsights:IncidentRelation":
 		r = &IncidentRelation{}
+	case "azure-native:securityinsights:IncidentTask":
+		r = &IncidentTask{}
 	case "azure-native:securityinsights:MCASDataConnector":
 		r = &MCASDataConnector{}
 	case "azure-native:securityinsights:MDATPDataConnector":
@@ -81,6 +95,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Watchlist{}
 	case "azure-native:securityinsights:WatchlistItem":
 		r = &WatchlistItem{}
+	case "azure-native:securityinsights:WorkspaceManagerAssignment":
+		r = &WorkspaceManagerAssignment{}
+	case "azure-native:securityinsights:WorkspaceManagerConfiguration":
+		r = &WorkspaceManagerConfiguration{}
+	case "azure-native:securityinsights:WorkspaceManagerGroup":
+		r = &WorkspaceManagerGroup{}
+	case "azure-native:securityinsights:WorkspaceManagerMember":
+		r = &WorkspaceManagerMember{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

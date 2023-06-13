@@ -12,7 +12,8 @@ import (
 )
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
-// API Version: 2020-09-01.
+// API Version: 2023-05-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Origin struct {
 	pulumi.CustomResourceState
 
@@ -73,21 +74,6 @@ func NewOrigin(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cdn/v20150601:Origin"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20160402:Origin"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20191231:Origin"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20200331:Origin"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20200415:Origin"),
-		},
-		{
 			Type: pulumi.String("azure-native:cdn/v20200901:Origin"),
 		},
 		{
@@ -98,6 +84,9 @@ func NewOrigin(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20221101preview:Origin"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230501:Origin"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,8 @@ import (
 )
 
 // An object that represents an export pipeline for a container registry.
-// API Version: 2020-11-01-preview.
+// API Version: 2023-01-01-preview.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ExportPipeline struct {
 	pulumi.CustomResourceState
 
@@ -116,7 +117,7 @@ type exportPipelineArgs struct {
 	Options []string `pulumi:"options"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The target properties of the export pipeline.
 	Target ExportPipelineTargetProperties `pulumi:"target"`
@@ -134,7 +135,7 @@ type ExportPipelineArgs struct {
 	Options pulumi.StringArrayInput
 	// The name of the container registry.
 	RegistryName pulumi.StringInput
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The target properties of the export pipeline.
 	Target ExportPipelineTargetPropertiesInput

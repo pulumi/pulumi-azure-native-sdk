@@ -14,40 +14,6 @@ const (
 	AuthenticationTypeActiveDirectoryPassword   = AuthenticationType("ActiveDirectoryPassword")
 )
 
-// Backup Mode to specify whether to use existing backup or create new backup.
-type BackupMode string
-
-const (
-	BackupModeCreateBackup   = BackupMode("CreateBackup")
-	BackupModeExistingBackup = BackupMode("ExistingBackup")
-)
-
-// Describes how changes will be replicated from the source to the target. The default is OneTime.
-type MongoDbReplication string
-
-const (
-	MongoDbReplicationDisabled   = MongoDbReplication("Disabled")
-	MongoDbReplicationOneTime    = MongoDbReplication("OneTime")
-	MongoDbReplicationContinuous = MongoDbReplication("Continuous")
-)
-
-// The field ordering
-type MongoDbShardKeyOrder string
-
-const (
-	MongoDbShardKeyOrderForward = MongoDbShardKeyOrder("Forward")
-	MongoDbShardKeyOrderReverse = MongoDbShardKeyOrder("Reverse")
-	MongoDbShardKeyOrderHashed  = MongoDbShardKeyOrder("Hashed")
-)
-
-// Target Platform for the migration
-type MySqlTargetPlatformType string
-
-const (
-	MySqlTargetPlatformTypeSqlServer       = MySqlTargetPlatformType("SqlServer")
-	MySqlTargetPlatformTypeAzureDbForMySQL = MySqlTargetPlatformType("AzureDbForMySQL")
-)
-
 // Source platform for the project
 type ProjectSourcePlatform string
 
@@ -71,36 +37,11 @@ const (
 	ProjectTargetPlatformUnknown              = ProjectTargetPlatform("Unknown")
 )
 
-// Permission group for validations
-type ServerLevelPermissionsGroup string
-
-const (
-	ServerLevelPermissionsGroupDefault                             = ServerLevelPermissionsGroup("Default")
-	ServerLevelPermissionsGroupMigrationFromSqlServerToAzureDB     = ServerLevelPermissionsGroup("MigrationFromSqlServerToAzureDB")
-	ServerLevelPermissionsGroupMigrationFromSqlServerToAzureMI     = ServerLevelPermissionsGroup("MigrationFromSqlServerToAzureMI")
-	ServerLevelPermissionsGroupMigrationFromMySQLToAzureDBForMySQL = ServerLevelPermissionsGroup("MigrationFromMySQLToAzureDBForMySQL")
-)
-
 // Server platform type for connection
 type SqlSourcePlatform string
 
 const (
 	SqlSourcePlatformSqlOnPrem = SqlSourcePlatform("SqlOnPrem")
-)
-
-// The overwrite option for the SSIS project migration
-type SsisMigrationOverwriteOption string
-
-const (
-	SsisMigrationOverwriteOptionIgnore    = SsisMigrationOverwriteOption("Ignore")
-	SsisMigrationOverwriteOptionOverwrite = SsisMigrationOverwriteOption("Overwrite")
-)
-
-// The SSIS store type of source, only SSIS catalog is supported now in DMS
-type SsisStoreType string
-
-const (
-	SsisStoreTypeSsisCatalog = SsisStoreType("SsisCatalog")
 )
 
 func init() {

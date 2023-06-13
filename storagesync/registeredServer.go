@@ -12,7 +12,8 @@ import (
 )
 
 // Registered Server resource.
-// API Version: 2020-03-01.
+// API Version: 2022-06-01.
+// Previous API Version: 2020-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RegisteredServer struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +55,8 @@ type RegisteredServer struct {
 	ServerId pulumi.StringPtrOutput `pulumi:"serverId"`
 	// Registered Server Management Error Code
 	ServerManagementErrorCode pulumi.IntPtrOutput `pulumi:"serverManagementErrorCode"`
+	// Server name
+	ServerName pulumi.StringOutput `pulumi:"serverName"`
 	// Registered Server OS Version
 	ServerOSVersion pulumi.StringPtrOutput `pulumi:"serverOSVersion"`
 	// Registered Server serverRole
@@ -62,6 +65,8 @@ type RegisteredServer struct {
 	ServiceLocation pulumi.StringPtrOutput `pulumi:"serviceLocation"`
 	// Registered Server storageSyncServiceUid
 	StorageSyncServiceUid pulumi.StringPtrOutput `pulumi:"storageSyncServiceUid"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -80,30 +85,6 @@ func NewRegisteredServer(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'StorageSyncServiceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:storagesync/v20170605preview:RegisteredServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20180402:RegisteredServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20180701:RegisteredServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20181001:RegisteredServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190201:RegisteredServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190301:RegisteredServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20190601:RegisteredServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagesync/v20191001:RegisteredServer"),
-		},
 		{
 			Type: pulumi.String("azure-native:storagesync/v20200301:RegisteredServer"),
 		},
@@ -329,6 +310,11 @@ func (o RegisteredServerOutput) ServerManagementErrorCode() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v *RegisteredServer) pulumi.IntPtrOutput { return v.ServerManagementErrorCode }).(pulumi.IntPtrOutput)
 }
 
+// Server name
+func (o RegisteredServerOutput) ServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredServer) pulumi.StringOutput { return v.ServerName }).(pulumi.StringOutput)
+}
+
 // Registered Server OS Version
 func (o RegisteredServerOutput) ServerOSVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredServer) pulumi.StringPtrOutput { return v.ServerOSVersion }).(pulumi.StringPtrOutput)
@@ -347,6 +333,11 @@ func (o RegisteredServerOutput) ServiceLocation() pulumi.StringPtrOutput {
 // Registered Server storageSyncServiceUid
 func (o RegisteredServerOutput) StorageSyncServiceUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredServer) pulumi.StringPtrOutput { return v.StorageSyncServiceUid }).(pulumi.StringPtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o RegisteredServerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *RegisteredServer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

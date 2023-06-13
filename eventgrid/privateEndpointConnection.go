@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2020-06-01.
+// API Version: 2022-06-15.
+// Previous API Version: 2020-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +68,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20220615:PrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:PrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateEndpointConnection
@@ -103,9 +107,9 @@ func (PrivateEndpointConnectionState) ElementType() reflect.Type {
 type privateEndpointConnectionArgs struct {
 	// GroupIds from the private link service resource.
 	GroupIds []string `pulumi:"groupIds"`
-	// The name of the parent resource (namely, either, the topic name or domain name).
+	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name).
 	ParentName string `pulumi:"parentName"`
-	// The type of the parent resource. This can be either \'topics\' or \'domains\'.
+	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\'.
 	ParentType string `pulumi:"parentType"`
 	// The Private Endpoint resource for this Connection.
 	PrivateEndpoint *PrivateEndpoint `pulumi:"privateEndpoint"`
@@ -123,9 +127,9 @@ type privateEndpointConnectionArgs struct {
 type PrivateEndpointConnectionArgs struct {
 	// GroupIds from the private link service resource.
 	GroupIds pulumi.StringArrayInput
-	// The name of the parent resource (namely, either, the topic name or domain name).
+	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name).
 	ParentName pulumi.StringInput
-	// The type of the parent resource. This can be either \'topics\' or \'domains\'.
+	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\'.
 	ParentType pulumi.StringInput
 	// The Private Endpoint resource for this Connection.
 	PrivateEndpoint PrivateEndpointPtrInput

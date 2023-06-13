@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20220501preview:IoTDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IoTDataConnector to guarantee forwards compatibility.
-func LookupIoTDataConnector(ctx *pulumi.Context, args *LookupIoTDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupIoTDataConnectorResult, error) {
-	var rv LookupIoTDataConnectorResult
+func GetIoTDataConnector(ctx *pulumi.Context, args *GetIoTDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetIoTDataConnectorResult, error) {
+	var rv GetIoTDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getIoTDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupIoTDataConnector(ctx *pulumi.Context, args *LookupIoTDataConnectorArg
 	return &rv, nil
 }
 
-type LookupIoTDataConnectorArgs struct {
+type GetIoTDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupIoTDataConnectorArgs struct {
 }
 
 // Represents IoT data connector.
-type LookupIoTDataConnectorResult struct {
+type GetIoTDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupIoTDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupIoTDataConnectorOutput(ctx *pulumi.Context, args LookupIoTDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupIoTDataConnectorResultOutput {
+func GetIoTDataConnectorOutput(ctx *pulumi.Context, args GetIoTDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetIoTDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIoTDataConnectorResult, error) {
-			args := v.(LookupIoTDataConnectorArgs)
-			r, err := LookupIoTDataConnector(ctx, &args, opts...)
-			var s LookupIoTDataConnectorResult
+		ApplyT(func(v interface{}) (GetIoTDataConnectorResult, error) {
+			args := v.(GetIoTDataConnectorArgs)
+			r, err := GetIoTDataConnector(ctx, &args, opts...)
+			var s GetIoTDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupIoTDataConnectorResultOutput)
+		}).(GetIoTDataConnectorResultOutput)
 }
 
-type LookupIoTDataConnectorOutputArgs struct {
+type GetIoTDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,66 +72,66 @@ type LookupIoTDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupIoTDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupIoTDataConnectorArgs)(nil)).Elem()
+func (GetIoTDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIoTDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents IoT data connector.
-type LookupIoTDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetIoTDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupIoTDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupIoTDataConnectorResult)(nil)).Elem()
+func (GetIoTDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIoTDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupIoTDataConnectorResultOutput) ToLookupIoTDataConnectorResultOutput() LookupIoTDataConnectorResultOutput {
+func (o GetIoTDataConnectorResultOutput) ToGetIoTDataConnectorResultOutput() GetIoTDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupIoTDataConnectorResultOutput) ToLookupIoTDataConnectorResultOutputWithContext(ctx context.Context) LookupIoTDataConnectorResultOutput {
+func (o GetIoTDataConnectorResultOutput) ToGetIoTDataConnectorResultOutputWithContext(ctx context.Context) GetIoTDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupIoTDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
-	return o.ApplyT(func(v LookupIoTDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
+func (o GetIoTDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
+	return o.ApplyT(func(v GetIoTDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
 }
 
 // Etag of the azure resource
-func (o LookupIoTDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupIoTDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetIoTDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIoTDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupIoTDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetIoTDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'IOT'.
-func (o LookupIoTDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetIoTDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupIoTDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetIoTDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The subscription id to connect to, and get the data from.
-func (o LookupIoTDataConnectorResultOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupIoTDataConnectorResult) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+func (o GetIoTDataConnectorResultOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIoTDataConnectorResult) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupIoTDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIoTDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetIoTDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetIoTDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupIoTDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetIoTDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupIoTDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetIoTDataConnectorResultOutput{})
 }

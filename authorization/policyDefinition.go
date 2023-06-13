@@ -11,7 +11,8 @@ import (
 )
 
 // The policy definition.
-// API Version: 2020-09-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PolicyDefinition struct {
 	pulumi.CustomResourceState
 
@@ -31,6 +32,8 @@ type PolicyDefinition struct {
 	PolicyRule pulumi.AnyOutput `pulumi:"policyRule"`
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType pulumi.StringPtrOutput `pulumi:"policyType"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policyDefinitions).
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -46,15 +49,6 @@ func NewPolicyDefinition(ctx *pulumi.Context,
 		args.Mode = pulumi.StringPtr("Indexed")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:authorization/v20151001preview:PolicyDefinition"),
-		},
-		{
-			Type: pulumi.String("azure-native:authorization/v20160401:PolicyDefinition"),
-		},
-		{
-			Type: pulumi.String("azure-native:authorization/v20161201:PolicyDefinition"),
-		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20180301:PolicyDefinition"),
 		},
@@ -226,6 +220,11 @@ func (o PolicyDefinitionOutput) PolicyRule() pulumi.AnyOutput {
 // The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 func (o PolicyDefinitionOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyDefinition) pulumi.StringPtrOutput { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+// The system metadata relating to this resource.
+func (o PolicyDefinitionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PolicyDefinition) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/policyDefinitions).

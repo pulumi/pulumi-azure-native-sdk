@@ -12,10 +12,13 @@ import (
 )
 
 // The policy exemption.
-// API Version: 2020-07-01-preview.
+// API Version: 2022-07-01-preview.
+// Previous API Version: 2020-07-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PolicyExemption struct {
 	pulumi.CustomResourceState
 
+	// The option whether validate the exemption is at or under the assignment scope.
+	AssignmentScopeValidation pulumi.StringPtrOutput `pulumi:"assignmentScopeValidation"`
 	// The description of the policy exemption.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy exemption.
@@ -32,6 +35,8 @@ type PolicyExemption struct {
 	PolicyAssignmentId pulumi.StringOutput `pulumi:"policyAssignmentId"`
 	// The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
 	PolicyDefinitionReferenceIds pulumi.StringArrayOutput `pulumi:"policyDefinitionReferenceIds"`
+	// The resource selector list to filter policies by resource properties.
+	ResourceSelectors ResourceSelectorResponseArrayOutput `pulumi:"resourceSelectors"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policyExemptions).
@@ -53,6 +58,9 @@ func NewPolicyExemption(ctx *pulumi.Context,
 	}
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
+	}
+	if args.AssignmentScopeValidation == nil {
+		args.AssignmentScopeValidation = pulumi.StringPtr("Default")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -95,6 +103,8 @@ func (PolicyExemptionState) ElementType() reflect.Type {
 }
 
 type policyExemptionArgs struct {
+	// The option whether validate the exemption is at or under the assignment scope.
+	AssignmentScopeValidation *string `pulumi:"assignmentScopeValidation"`
 	// The description of the policy exemption.
 	Description *string `pulumi:"description"`
 	// The display name of the policy exemption.
@@ -111,12 +121,16 @@ type policyExemptionArgs struct {
 	PolicyDefinitionReferenceIds []string `pulumi:"policyDefinitionReferenceIds"`
 	// The name of the policy exemption to delete.
 	PolicyExemptionName *string `pulumi:"policyExemptionName"`
+	// The resource selector list to filter policies by resource properties.
+	ResourceSelectors []ResourceSelector `pulumi:"resourceSelectors"`
 	// The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 	Scope string `pulumi:"scope"`
 }
 
 // The set of arguments for constructing a PolicyExemption resource.
 type PolicyExemptionArgs struct {
+	// The option whether validate the exemption is at or under the assignment scope.
+	AssignmentScopeValidation pulumi.StringPtrInput
 	// The description of the policy exemption.
 	Description pulumi.StringPtrInput
 	// The display name of the policy exemption.
@@ -133,6 +147,8 @@ type PolicyExemptionArgs struct {
 	PolicyDefinitionReferenceIds pulumi.StringArrayInput
 	// The name of the policy exemption to delete.
 	PolicyExemptionName pulumi.StringPtrInput
+	// The resource selector list to filter policies by resource properties.
+	ResourceSelectors ResourceSelectorArrayInput
 	// The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 	Scope pulumi.StringInput
 }
@@ -174,6 +190,11 @@ func (o PolicyExemptionOutput) ToPolicyExemptionOutputWithContext(ctx context.Co
 	return o
 }
 
+// The option whether validate the exemption is at or under the assignment scope.
+func (o PolicyExemptionOutput) AssignmentScopeValidation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyExemption) pulumi.StringPtrOutput { return v.AssignmentScopeValidation }).(pulumi.StringPtrOutput)
+}
+
 // The description of the policy exemption.
 func (o PolicyExemptionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyExemption) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -212,6 +233,11 @@ func (o PolicyExemptionOutput) PolicyAssignmentId() pulumi.StringOutput {
 // The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
 func (o PolicyExemptionOutput) PolicyDefinitionReferenceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyExemption) pulumi.StringArrayOutput { return v.PolicyDefinitionReferenceIds }).(pulumi.StringArrayOutput)
+}
+
+// The resource selector list to filter policies by resource properties.
+func (o PolicyExemptionOutput) ResourceSelectors() ResourceSelectorResponseArrayOutput {
+	return o.ApplyT(func(v *PolicyExemption) ResourceSelectorResponseArrayOutput { return v.ResourceSelectors }).(ResourceSelectorResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

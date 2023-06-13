@@ -63,6 +63,12 @@ func NewConfigurationService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20221201:ConfigurationService"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ConfigurationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ConfigurationService"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ConfigurationService

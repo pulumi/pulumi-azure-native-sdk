@@ -11,10 +11,8 @@ import (
 )
 
 // Get a DataSet in a share
-//
-// Deprecated: azure-native:datashare/v20200901:SynapseWorkspaceSqlPoolTableDataSet is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:SynapseWorkspaceSqlPoolTableDataSet to guarantee forwards compatibility.
-func LookupSynapseWorkspaceSqlPoolTableDataSet(ctx *pulumi.Context, args *LookupSynapseWorkspaceSqlPoolTableDataSetArgs, opts ...pulumi.InvokeOption) (*LookupSynapseWorkspaceSqlPoolTableDataSetResult, error) {
-	var rv LookupSynapseWorkspaceSqlPoolTableDataSetResult
+func GetSynapseWorkspaceSqlPoolTableDataSet(ctx *pulumi.Context, args *GetSynapseWorkspaceSqlPoolTableDataSetArgs, opts ...pulumi.InvokeOption) (*GetSynapseWorkspaceSqlPoolTableDataSetResult, error) {
+	var rv GetSynapseWorkspaceSqlPoolTableDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20200901:getSynapseWorkspaceSqlPoolTableDataSet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupSynapseWorkspaceSqlPoolTableDataSet(ctx *pulumi.Context, args *Lookup
 	return &rv, nil
 }
 
-type LookupSynapseWorkspaceSqlPoolTableDataSetArgs struct {
+type GetSynapseWorkspaceSqlPoolTableDataSetArgs struct {
 	// The name of the share account.
 	AccountName string `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -34,7 +32,7 @@ type LookupSynapseWorkspaceSqlPoolTableDataSetArgs struct {
 }
 
 // A Synapse Workspace Sql Pool Table data set.
-type LookupSynapseWorkspaceSqlPoolTableDataSetResult struct {
+type GetSynapseWorkspaceSqlPoolTableDataSetResult struct {
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// The resource id of the azure resource
@@ -52,20 +50,20 @@ type LookupSynapseWorkspaceSqlPoolTableDataSetResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupSynapseWorkspaceSqlPoolTableDataSetOutput(ctx *pulumi.Context, args LookupSynapseWorkspaceSqlPoolTableDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput {
+func GetSynapseWorkspaceSqlPoolTableDataSetOutput(ctx *pulumi.Context, args GetSynapseWorkspaceSqlPoolTableDataSetOutputArgs, opts ...pulumi.InvokeOption) GetSynapseWorkspaceSqlPoolTableDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSynapseWorkspaceSqlPoolTableDataSetResult, error) {
-			args := v.(LookupSynapseWorkspaceSqlPoolTableDataSetArgs)
-			r, err := LookupSynapseWorkspaceSqlPoolTableDataSet(ctx, &args, opts...)
-			var s LookupSynapseWorkspaceSqlPoolTableDataSetResult
+		ApplyT(func(v interface{}) (GetSynapseWorkspaceSqlPoolTableDataSetResult, error) {
+			args := v.(GetSynapseWorkspaceSqlPoolTableDataSetArgs)
+			r, err := GetSynapseWorkspaceSqlPoolTableDataSet(ctx, &args, opts...)
+			var s GetSynapseWorkspaceSqlPoolTableDataSetResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput)
+		}).(GetSynapseWorkspaceSqlPoolTableDataSetResultOutput)
 }
 
-type LookupSynapseWorkspaceSqlPoolTableDataSetOutputArgs struct {
+type GetSynapseWorkspaceSqlPoolTableDataSetOutputArgs struct {
 	// The name of the share account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the dataSet.
@@ -76,63 +74,63 @@ type LookupSynapseWorkspaceSqlPoolTableDataSetOutputArgs struct {
 	ShareName pulumi.StringInput `pulumi:"shareName"`
 }
 
-func (LookupSynapseWorkspaceSqlPoolTableDataSetOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupSynapseWorkspaceSqlPoolTableDataSetArgs)(nil)).Elem()
+func (GetSynapseWorkspaceSqlPoolTableDataSetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSynapseWorkspaceSqlPoolTableDataSetArgs)(nil)).Elem()
 }
 
 // A Synapse Workspace Sql Pool Table data set.
-type LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput struct{ *pulumi.OutputState }
+type GetSynapseWorkspaceSqlPoolTableDataSetResultOutput struct{ *pulumi.OutputState }
 
-func (LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupSynapseWorkspaceSqlPoolTableDataSetResult)(nil)).Elem()
+func (GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSynapseWorkspaceSqlPoolTableDataSetResult)(nil)).Elem()
 }
 
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) ToLookupSynapseWorkspaceSqlPoolTableDataSetResultOutput() LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput {
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) ToGetSynapseWorkspaceSqlPoolTableDataSetResultOutput() GetSynapseWorkspaceSqlPoolTableDataSetResultOutput {
 	return o
 }
 
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) ToLookupSynapseWorkspaceSqlPoolTableDataSetResultOutputWithContext(ctx context.Context) LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput {
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) ToGetSynapseWorkspaceSqlPoolTableDataSetResultOutputWithContext(ctx context.Context) GetSynapseWorkspaceSqlPoolTableDataSetResultOutput {
 	return o
 }
 
 // Unique id for identifying a data set resource
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) DataSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) DataSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
 // The resource id of the azure resource
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of data set.
 // Expected value is 'SynapseWorkspaceSqlPoolTable'.
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the azure resource
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Resource id of the Synapse Workspace SQL Pool Table
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) SynapseWorkspaceSqlPoolTableResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetResult) string {
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) SynapseWorkspaceSqlPoolTableResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSynapseWorkspaceSqlPoolTableDataSetResult) string {
 		return v.SynapseWorkspaceSqlPoolTableResourceId
 	}).(pulumi.StringOutput)
 }
 
 // System Data of the Azure resource.
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetSynapseWorkspaceSqlPoolTableDataSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the azure resource
-func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetSynapseWorkspaceSqlPoolTableDataSetResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput{})
+	pulumi.RegisterOutputType(GetSynapseWorkspaceSqlPoolTableDataSetResultOutput{})
 }

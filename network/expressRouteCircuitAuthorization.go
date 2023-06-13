@@ -12,7 +12,8 @@ import (
 )
 
 // Authorization in an ExpressRouteCircuit resource.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ExpressRouteCircuitAuthorization struct {
 	pulumi.CustomResourceState
 
@@ -44,51 +45,6 @@ func NewExpressRouteCircuitAuthorization(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20150501preview:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:ExpressRouteCircuitAuthorization"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:ExpressRouteCircuitAuthorization"),
 		},
@@ -175,6 +131,9 @@ func NewExpressRouteCircuitAuthorization(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ExpressRouteCircuitAuthorization"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ExpressRouteCircuitAuthorization"),
 		},
 	})
 	opts = append(opts, aliases)

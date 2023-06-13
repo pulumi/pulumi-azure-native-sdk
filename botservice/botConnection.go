@@ -12,11 +12,12 @@ import (
 )
 
 // Bot channel resource definition
-// API Version: 2021-03-01.
+// API Version: 2022-09-15.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type BotConnection struct {
 	pulumi.CustomResourceState
 
-	// Entity Tag
+	// Entity Tag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
@@ -53,9 +54,6 @@ func NewBotConnection(ctx *pulumi.Context,
 		args.Properties = args.Properties.ToConnectionSettingPropertiesPtrOutput().ApplyT(func(v *ConnectionSettingProperties) *ConnectionSettingProperties { return v.Defaults() }).(ConnectionSettingPropertiesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:botservice/v20171201:BotConnection"),
-		},
 		{
 			Type: pulumi.String("azure-native:botservice/v20180712:BotConnection"),
 		},
@@ -183,7 +181,7 @@ func (o BotConnectionOutput) ToBotConnectionOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o BotConnectionOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BotConnection) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }

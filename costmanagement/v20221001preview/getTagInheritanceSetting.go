@@ -11,10 +11,8 @@ import (
 )
 
 // Get the setting from the given scope by name.
-//
-// Deprecated: azure-native:costmanagement/v20221001preview:TagInheritanceSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221005preview:TagInheritanceSetting to guarantee forwards compatibility.
-func LookupTagInheritanceSetting(ctx *pulumi.Context, args *LookupTagInheritanceSettingArgs, opts ...pulumi.InvokeOption) (*LookupTagInheritanceSettingResult, error) {
-	var rv LookupTagInheritanceSettingResult
+func GetTagInheritanceSetting(ctx *pulumi.Context, args *GetTagInheritanceSettingArgs, opts ...pulumi.InvokeOption) (*GetTagInheritanceSettingResult, error) {
+	var rv GetTagInheritanceSettingResult
 	err := ctx.Invoke("azure-native:costmanagement/v20221001preview:getTagInheritanceSetting", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupTagInheritanceSetting(ctx *pulumi.Context, args *LookupTagInheritance
 	return &rv, nil
 }
 
-type LookupTagInheritanceSettingArgs struct {
+type GetTagInheritanceSettingArgs struct {
 	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope string `pulumi:"scope"`
 	// Setting type.
@@ -30,7 +28,7 @@ type LookupTagInheritanceSettingArgs struct {
 }
 
 // Tag Inheritance Setting definition.
-type LookupTagInheritanceSettingResult struct {
+type GetTagInheritanceSettingResult struct {
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id.
@@ -46,76 +44,76 @@ type LookupTagInheritanceSettingResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupTagInheritanceSettingOutput(ctx *pulumi.Context, args LookupTagInheritanceSettingOutputArgs, opts ...pulumi.InvokeOption) LookupTagInheritanceSettingResultOutput {
+func GetTagInheritanceSettingOutput(ctx *pulumi.Context, args GetTagInheritanceSettingOutputArgs, opts ...pulumi.InvokeOption) GetTagInheritanceSettingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTagInheritanceSettingResult, error) {
-			args := v.(LookupTagInheritanceSettingArgs)
-			r, err := LookupTagInheritanceSetting(ctx, &args, opts...)
-			var s LookupTagInheritanceSettingResult
+		ApplyT(func(v interface{}) (GetTagInheritanceSettingResult, error) {
+			args := v.(GetTagInheritanceSettingArgs)
+			r, err := GetTagInheritanceSetting(ctx, &args, opts...)
+			var s GetTagInheritanceSettingResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupTagInheritanceSettingResultOutput)
+		}).(GetTagInheritanceSettingResultOutput)
 }
 
-type LookupTagInheritanceSettingOutputArgs struct {
+type GetTagInheritanceSettingOutputArgs struct {
 	// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// Setting type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (LookupTagInheritanceSettingOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupTagInheritanceSettingArgs)(nil)).Elem()
+func (GetTagInheritanceSettingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagInheritanceSettingArgs)(nil)).Elem()
 }
 
 // Tag Inheritance Setting definition.
-type LookupTagInheritanceSettingResultOutput struct{ *pulumi.OutputState }
+type GetTagInheritanceSettingResultOutput struct{ *pulumi.OutputState }
 
-func (LookupTagInheritanceSettingResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupTagInheritanceSettingResult)(nil)).Elem()
+func (GetTagInheritanceSettingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagInheritanceSettingResult)(nil)).Elem()
 }
 
-func (o LookupTagInheritanceSettingResultOutput) ToLookupTagInheritanceSettingResultOutput() LookupTagInheritanceSettingResultOutput {
+func (o GetTagInheritanceSettingResultOutput) ToGetTagInheritanceSettingResultOutput() GetTagInheritanceSettingResultOutput {
 	return o
 }
 
-func (o LookupTagInheritanceSettingResultOutput) ToLookupTagInheritanceSettingResultOutputWithContext(ctx context.Context) LookupTagInheritanceSettingResultOutput {
+func (o GetTagInheritanceSettingResultOutput) ToGetTagInheritanceSettingResultOutputWithContext(ctx context.Context) GetTagInheritanceSettingResultOutput {
 	return o
 }
 
 // eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-func (o LookupTagInheritanceSettingResultOutput) ETag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTagInheritanceSettingResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
+func (o GetTagInheritanceSettingResultOutput) ETag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTagInheritanceSettingResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
 // Resource Id.
-func (o LookupTagInheritanceSettingResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetTagInheritanceSettingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagInheritanceSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Specifies the kind of settings.
 // Expected value is 'taginheritance'.
-func (o LookupTagInheritanceSettingResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetTagInheritanceSettingResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagInheritanceSettingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Resource name.
-func (o LookupTagInheritanceSettingResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetTagInheritanceSettingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagInheritanceSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The properties of the tag inheritance setting.
-func (o LookupTagInheritanceSettingResultOutput) Properties() TagInheritancePropertiesResponseOutput {
-	return o.ApplyT(func(v LookupTagInheritanceSettingResult) TagInheritancePropertiesResponse { return v.Properties }).(TagInheritancePropertiesResponseOutput)
+func (o GetTagInheritanceSettingResultOutput) Properties() TagInheritancePropertiesResponseOutput {
+	return o.ApplyT(func(v GetTagInheritanceSettingResult) TagInheritancePropertiesResponse { return v.Properties }).(TagInheritancePropertiesResponseOutput)
 }
 
 // Resource type.
-func (o LookupTagInheritanceSettingResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetTagInheritanceSettingResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagInheritanceSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupTagInheritanceSettingResultOutput{})
+	pulumi.RegisterOutputType(GetTagInheritanceSettingResultOutput{})
 }

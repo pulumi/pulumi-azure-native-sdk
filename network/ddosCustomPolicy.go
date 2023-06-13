@@ -12,7 +12,8 @@ import (
 )
 
 // A DDoS custom policy in a resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DdosCustomPolicy struct {
 	pulumi.CustomResourceState
 
@@ -22,12 +23,8 @@ type DdosCustomPolicy struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The protocol-specific DDoS policy customization parameters.
-	ProtocolCustomSettings ProtocolCustomSettingsFormatResponseArrayOutput `pulumi:"protocolCustomSettings"`
 	// The provisioning state of the DDoS custom policy resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The list of public IPs associated with the DDoS custom policy resource. This list is read-only.
-	PublicIPAddresses SubResourceResponseArrayOutput `pulumi:"publicIPAddresses"`
 	// The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
 	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// Resource tags.
@@ -122,6 +119,9 @@ func NewDdosCustomPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:DdosCustomPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:DdosCustomPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DdosCustomPolicy
@@ -162,8 +162,6 @@ type ddosCustomPolicyArgs struct {
 	Id *string `pulumi:"id"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// The protocol-specific DDoS policy customization parameters.
-	ProtocolCustomSettings []ProtocolCustomSettingsFormat `pulumi:"protocolCustomSettings"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -178,8 +176,6 @@ type DdosCustomPolicyArgs struct {
 	Id pulumi.StringPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// The protocol-specific DDoS policy customization parameters.
-	ProtocolCustomSettings ProtocolCustomSettingsFormatArrayInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -238,21 +234,9 @@ func (o DdosCustomPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCustomPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The protocol-specific DDoS policy customization parameters.
-func (o DdosCustomPolicyOutput) ProtocolCustomSettings() ProtocolCustomSettingsFormatResponseArrayOutput {
-	return o.ApplyT(func(v *DdosCustomPolicy) ProtocolCustomSettingsFormatResponseArrayOutput {
-		return v.ProtocolCustomSettings
-	}).(ProtocolCustomSettingsFormatResponseArrayOutput)
-}
-
 // The provisioning state of the DDoS custom policy resource.
 func (o DdosCustomPolicyOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCustomPolicy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The list of public IPs associated with the DDoS custom policy resource. This list is read-only.
-func (o DdosCustomPolicyOutput) PublicIPAddresses() SubResourceResponseArrayOutput {
-	return o.ApplyT(func(v *DdosCustomPolicy) SubResourceResponseArrayOutput { return v.PublicIPAddresses }).(SubResourceResponseArrayOutput)
 }
 
 // The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.

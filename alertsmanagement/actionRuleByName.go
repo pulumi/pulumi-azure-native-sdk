@@ -13,6 +13,7 @@ import (
 
 // Action rule object containing target scope, conditions and suppression logic
 // API Version: 2019-05-05-preview.
+// Previous API Version: 2019-05-05-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ActionRuleByName struct {
 	pulumi.CustomResourceState
 
@@ -39,9 +40,6 @@ func NewActionRuleByName(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:alertsmanagement/v20181102privatepreview:ActionRuleByName"),
-		},
 		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20190505preview:ActionRuleByName"),
 		},

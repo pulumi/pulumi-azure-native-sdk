@@ -75,6 +75,12 @@ func NewConfigServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20221201:ConfigServer"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ConfigServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ConfigServer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ConfigServer

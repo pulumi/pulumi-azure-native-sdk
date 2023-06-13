@@ -12,7 +12,8 @@ import (
 )
 
 // Schema for Application properties.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-09-09.
+// Previous API Version: 2021-02-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +47,8 @@ type Application struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// Specifies whether to show the RemoteApp program in the RD Web Access server.
 	ShowInPortal pulumi.BoolPtrOutput `pulumi:"showInPortal"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -67,27 +70,6 @@ func NewApplication(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20190123preview:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20190924preview:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20191210preview:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20200921preview:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201019preview:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201102preview:Application"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20201110preview:Application"),
-		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20210114preview:Application"),
 		},
@@ -324,6 +306,11 @@ func (o ApplicationOutput) ObjectId() pulumi.StringOutput {
 // Specifies whether to show the RemoteApp program in the RD Web Access server.
 func (o ApplicationOutput) ShowInPortal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.ShowInPortal }).(pulumi.BoolPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ApplicationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Application) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

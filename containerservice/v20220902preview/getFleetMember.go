@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure.
+// Get a FleetMember
 func LookupFleetMember(ctx *pulumi.Context, args *LookupFleetMemberArgs, opts ...pulumi.InvokeOption) (*LookupFleetMemberResult, error) {
 	var rv LookupFleetMemberResult
 	err := ctx.Invoke("azure-native:containerservice/v20220902preview:getFleetMember", args, &rv, opts...)
@@ -32,14 +32,14 @@ type LookupFleetMemberArgs struct {
 // A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure.
 type LookupFleetMemberResult struct {
 	// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
-	ClusterResourceId *string `pulumi:"clusterResourceId"`
-	// Resource Etag.
-	Etag string `pulumi:"etag"`
+	ClusterResourceId string `pulumi:"clusterResourceId"`
+	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+	ETag string `pulumi:"eTag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The provisioning state of the last accepted operation.
+	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -89,13 +89,13 @@ func (o LookupFleetMemberResultOutput) ToLookupFleetMemberResultOutputWithContex
 }
 
 // The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
-func (o LookupFleetMemberResultOutput) ClusterResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupFleetMemberResult) *string { return v.ClusterResourceId }).(pulumi.StringPtrOutput)
+func (o LookupFleetMemberResultOutput) ClusterResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.ClusterResourceId }).(pulumi.StringOutput)
 }
 
-// Resource Etag.
-func (o LookupFleetMemberResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.Etag }).(pulumi.StringOutput)
+// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+func (o LookupFleetMemberResultOutput) ETag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.ETag }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -108,7 +108,7 @@ func (o LookupFleetMemberResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state of the last accepted operation.
+// The status of the last operation.
 func (o LookupFleetMemberResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetMemberResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

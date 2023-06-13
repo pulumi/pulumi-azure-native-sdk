@@ -13,6 +13,7 @@ import (
 
 // A notification.
 // API Version: 2018-09-15.
+// Previous API Version: 2018-09-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type NotificationChannel struct {
 	pulumi.CustomResourceState
 
@@ -56,9 +57,6 @@ func NewNotificationChannel(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:devtestlab/v20160515:NotificationChannel"),
-		},
 		{
 			Type: pulumi.String("azure-native:devtestlab/v20180915:NotificationChannel"),
 		},

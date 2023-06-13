@@ -12,7 +12,8 @@ import (
 )
 
 // A type of synchronization setting based on schedule
-// API Version: 2020-09-01.
+// API Version: 2021-08-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ScheduledSynchronizationSetting struct {
 	pulumi.CustomResourceState
 
@@ -64,12 +65,6 @@ func NewScheduledSynchronizationSetting(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("ScheduleBased")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datashare/v20181101preview:ScheduledSynchronizationSetting"),
-		},
-		{
-			Type: pulumi.String("azure-native:datashare/v20191101:ScheduledSynchronizationSetting"),
-		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20200901:ScheduledSynchronizationSetting"),
 		},

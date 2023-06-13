@@ -64,6 +64,12 @@ func NewJob(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:Job"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Job"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:Job"),
 		},
 	})

@@ -11,7 +11,7 @@ import (
 )
 
 // Get the detail of a linked workspace.
-// API Version: 2020-03-01.
+// API Version: 2020-05-15-preview.
 func LookupLinkedWorkspace(ctx *pulumi.Context, args *LookupLinkedWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedWorkspaceResult, error) {
 	var rv LookupLinkedWorkspaceResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getLinkedWorkspace", args, &rv, opts...)

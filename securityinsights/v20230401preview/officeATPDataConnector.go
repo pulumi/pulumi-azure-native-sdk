@@ -116,6 +116,12 @@ func NewOfficeATPDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:OfficeATPDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:OfficeATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:OfficeATPDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource OfficeATPDataConnector

@@ -12,7 +12,8 @@ import (
 )
 
 // Replication protected item.
-// API Version: 2018-07-10.
+// API Version: 2023-04-01.
+// Previous API Version: 2018-07-10. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ReplicationProtectedItem struct {
 	pulumi.CustomResourceState
 
@@ -46,12 +47,6 @@ func NewReplicationProtectedItem(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20160810:ReplicationProtectedItem"),
-		},
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20180110:ReplicationProtectedItem"),
-		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20180710:ReplicationProtectedItem"),
 		},
@@ -111,6 +106,9 @@ func NewReplicationProtectedItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ReplicationProtectedItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:ReplicationProtectedItem"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,8 @@ import (
 )
 
 // Cache details.
-// API Version: 2020-12-01.
+// API Version: 2022-08-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Cache struct {
 	pulumi.CustomResourceState
 
@@ -20,11 +21,11 @@ type Cache struct {
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Cache description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Original uri of entity in external system cache points to
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
 	UseFromLocation pulumi.StringOutput `pulumi:"useFromLocation"`
@@ -86,6 +87,9 @@ func NewCache(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Cache"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Cache"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Cache
@@ -126,7 +130,7 @@ type cacheArgs struct {
 	ConnectionString string `pulumi:"connectionString"`
 	// Cache description
 	Description *string `pulumi:"description"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Original uri of entity in external system cache points to
 	ResourceId *string `pulumi:"resourceId"`
@@ -144,7 +148,7 @@ type CacheArgs struct {
 	ConnectionString pulumi.StringInput
 	// Cache description
 	Description pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Original uri of entity in external system cache points to
 	ResourceId pulumi.StringPtrInput
@@ -201,7 +205,7 @@ func (o CacheOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o CacheOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -211,7 +215,7 @@ func (o CacheOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringPtrOutput { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o CacheOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

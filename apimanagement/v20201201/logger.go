@@ -53,9 +53,6 @@ func NewLogger(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:apimanagement:Logger"),
 		},
 		{
-			Type: pulumi.String("azure-native:apimanagement/v20160707:Logger"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20161010:Logger"),
 		},
 		{
@@ -96,6 +93,9 @@ func NewLogger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Logger"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Logger"),
 		},
 	})
 	opts = append(opts, aliases)

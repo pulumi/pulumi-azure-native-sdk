@@ -176,6 +176,9 @@ func NewDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220501preview:Database"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:Database"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Database
@@ -251,7 +254,7 @@ type databaseArgs struct {
 	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
 	IsLedgerOn *bool `pulumi:"isLedgerOn"`
 	// The resource ids of the user assigned identities to use
-	Keys map[string]interface{} `pulumi:"keys"`
+	Keys []string `pulumi:"keys"`
 	// The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
 	LicenseType *string `pulumi:"licenseType"`
 	// Resource location.
@@ -373,7 +376,7 @@ type DatabaseArgs struct {
 	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
 	IsLedgerOn pulumi.BoolPtrInput
 	// The resource ids of the user assigned identities to use
-	Keys pulumi.MapInput
+	Keys pulumi.StringArrayInput
 	// The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
 	LicenseType pulumi.StringPtrInput
 	// Resource location.

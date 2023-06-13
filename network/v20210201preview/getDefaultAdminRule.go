@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a network manager security configuration admin rule.
-//
-// Deprecated: azure-native:network/v20210201preview:DefaultAdminRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210501preview:DefaultAdminRule to guarantee forwards compatibility.
-func LookupDefaultAdminRule(ctx *pulumi.Context, args *LookupDefaultAdminRuleArgs, opts ...pulumi.InvokeOption) (*LookupDefaultAdminRuleResult, error) {
-	var rv LookupDefaultAdminRuleResult
+func GetDefaultAdminRule(ctx *pulumi.Context, args *GetDefaultAdminRuleArgs, opts ...pulumi.InvokeOption) (*GetDefaultAdminRuleResult, error) {
+	var rv GetDefaultAdminRuleResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getDefaultAdminRule", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupDefaultAdminRule(ctx *pulumi.Context, args *LookupDefaultAdminRuleArg
 	return &rv, nil
 }
 
-type LookupDefaultAdminRuleArgs struct {
+type GetDefaultAdminRuleArgs struct {
 	// The name of the network manager security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// The name of the network manager.
@@ -36,7 +34,7 @@ type LookupDefaultAdminRuleArgs struct {
 }
 
 // Network default admin rule.
-type LookupDefaultAdminRuleResult struct {
+type GetDefaultAdminRuleResult struct {
 	// Indicates the access allowed for this particular rule
 	Access string `pulumi:"access"`
 	// A description for this rule. Restricted to 140 chars.
@@ -76,20 +74,20 @@ type LookupDefaultAdminRuleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupDefaultAdminRuleOutput(ctx *pulumi.Context, args LookupDefaultAdminRuleOutputArgs, opts ...pulumi.InvokeOption) LookupDefaultAdminRuleResultOutput {
+func GetDefaultAdminRuleOutput(ctx *pulumi.Context, args GetDefaultAdminRuleOutputArgs, opts ...pulumi.InvokeOption) GetDefaultAdminRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDefaultAdminRuleResult, error) {
-			args := v.(LookupDefaultAdminRuleArgs)
-			r, err := LookupDefaultAdminRule(ctx, &args, opts...)
-			var s LookupDefaultAdminRuleResult
+		ApplyT(func(v interface{}) (GetDefaultAdminRuleResult, error) {
+			args := v.(GetDefaultAdminRuleArgs)
+			r, err := GetDefaultAdminRule(ctx, &args, opts...)
+			var s GetDefaultAdminRuleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupDefaultAdminRuleResultOutput)
+		}).(GetDefaultAdminRuleResultOutput)
 }
 
-type LookupDefaultAdminRuleOutputArgs struct {
+type GetDefaultAdminRuleOutputArgs struct {
 	// The name of the network manager security Configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 	// The name of the network manager.
@@ -102,116 +100,116 @@ type LookupDefaultAdminRuleOutputArgs struct {
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
 }
 
-func (LookupDefaultAdminRuleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupDefaultAdminRuleArgs)(nil)).Elem()
+func (GetDefaultAdminRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultAdminRuleArgs)(nil)).Elem()
 }
 
 // Network default admin rule.
-type LookupDefaultAdminRuleResultOutput struct{ *pulumi.OutputState }
+type GetDefaultAdminRuleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupDefaultAdminRuleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupDefaultAdminRuleResult)(nil)).Elem()
+func (GetDefaultAdminRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultAdminRuleResult)(nil)).Elem()
 }
 
-func (o LookupDefaultAdminRuleResultOutput) ToLookupDefaultAdminRuleResultOutput() LookupDefaultAdminRuleResultOutput {
+func (o GetDefaultAdminRuleResultOutput) ToGetDefaultAdminRuleResultOutput() GetDefaultAdminRuleResultOutput {
 	return o
 }
 
-func (o LookupDefaultAdminRuleResultOutput) ToLookupDefaultAdminRuleResultOutputWithContext(ctx context.Context) LookupDefaultAdminRuleResultOutput {
+func (o GetDefaultAdminRuleResultOutput) ToGetDefaultAdminRuleResultOutputWithContext(ctx context.Context) GetDefaultAdminRuleResultOutput {
 	return o
 }
 
 // Indicates the access allowed for this particular rule
-func (o LookupDefaultAdminRuleResultOutput) Access() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Access }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Access() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Access }).(pulumi.StringOutput)
 }
 
 // A description for this rule. Restricted to 140 chars.
-func (o LookupDefaultAdminRuleResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Description }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The destination port ranges.
-func (o LookupDefaultAdminRuleResultOutput) DestinationPortRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) []string { return v.DestinationPortRanges }).(pulumi.StringArrayOutput)
+func (o GetDefaultAdminRuleResultOutput) DestinationPortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) []string { return v.DestinationPortRanges }).(pulumi.StringArrayOutput)
 }
 
 // The destination address prefixes. CIDR or destination IP ranges.
-func (o LookupDefaultAdminRuleResultOutput) Destinations() AddressPrefixItemResponseArrayOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) []AddressPrefixItemResponse { return v.Destinations }).(AddressPrefixItemResponseArrayOutput)
+func (o GetDefaultAdminRuleResultOutput) Destinations() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) []AddressPrefixItemResponse { return v.Destinations }).(AddressPrefixItemResponseArrayOutput)
 }
 
 // Indicates if the traffic matched against the rule in inbound or outbound.
-func (o LookupDefaultAdminRuleResultOutput) Direction() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Direction }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Direction }).(pulumi.StringOutput)
 }
 
 // A friendly name for the rule.
-func (o LookupDefaultAdminRuleResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
-func (o LookupDefaultAdminRuleResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Default rule flag.
-func (o LookupDefaultAdminRuleResultOutput) Flag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) *string { return v.Flag }).(pulumi.StringPtrOutput)
+func (o GetDefaultAdminRuleResultOutput) Flag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) *string { return v.Flag }).(pulumi.StringPtrOutput)
 }
 
 // Resource ID.
-func (o LookupDefaultAdminRuleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether the rule is custom or default.
 // Expected value is 'Default'.
-func (o LookupDefaultAdminRuleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Resource name.
-func (o LookupDefaultAdminRuleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-func (o LookupDefaultAdminRuleResultOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) int { return v.Priority }).(pulumi.IntOutput)
+func (o GetDefaultAdminRuleResultOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 // Network protocol this rule applies to.
-func (o LookupDefaultAdminRuleResultOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Protocol }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // The provisioning state of the resource.
-func (o LookupDefaultAdminRuleResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The source port ranges.
-func (o LookupDefaultAdminRuleResultOutput) SourcePortRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) []string { return v.SourcePortRanges }).(pulumi.StringArrayOutput)
+func (o GetDefaultAdminRuleResultOutput) SourcePortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) []string { return v.SourcePortRanges }).(pulumi.StringArrayOutput)
 }
 
 // The CIDR or source IP ranges.
-func (o LookupDefaultAdminRuleResultOutput) Sources() AddressPrefixItemResponseArrayOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) []AddressPrefixItemResponse { return v.Sources }).(AddressPrefixItemResponseArrayOutput)
+func (o GetDefaultAdminRuleResultOutput) Sources() AddressPrefixItemResponseArrayOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) []AddressPrefixItemResponse { return v.Sources }).(AddressPrefixItemResponseArrayOutput)
 }
 
 // The system metadata related to this resource.
-func (o LookupDefaultAdminRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetDefaultAdminRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource type.
-func (o LookupDefaultAdminRuleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetDefaultAdminRuleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultAdminRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupDefaultAdminRuleResultOutput{})
+	pulumi.RegisterOutputType(GetDefaultAdminRuleResultOutput{})
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
-// API Version: 2020-09-01.
+// API Version: 2023-05-01.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:cdn:getEndpoint", args, &rv, opts...)
@@ -34,6 +34,8 @@ type LookupEndpointArgs struct {
 type LookupEndpointResult struct {
 	// List of content types on which compression applies. The value should be a valid MIME type.
 	ContentTypesToCompress []string `pulumi:"contentTypesToCompress"`
+	// The custom domains under the endpoint.
+	CustomDomains []DeepCreatedCustomDomainResponse `pulumi:"customDomains"`
 	// A reference to the origin group.
 	DefaultOriginGroup *ResourceReferenceResponse `pulumi:"defaultOriginGroup"`
 	// A policy that specifies the delivery rules to be used for an endpoint.
@@ -149,6 +151,11 @@ func (o LookupEndpointResultOutput) ToLookupEndpointResultOutputWithContext(ctx 
 // List of content types on which compression applies. The value should be a valid MIME type.
 func (o LookupEndpointResultOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEndpointResult) []string { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
+}
+
+// The custom domains under the endpoint.
+func (o LookupEndpointResultOutput) CustomDomains() DeepCreatedCustomDomainResponseArrayOutput {
+	return o.ApplyT(func(v LookupEndpointResult) []DeepCreatedCustomDomainResponse { return v.CustomDomains }).(DeepCreatedCustomDomainResponseArrayOutput)
 }
 
 // A reference to the origin group.

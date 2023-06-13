@@ -11,10 +11,8 @@ import (
 )
 
 // Gets the alert rule.
-//
-// Deprecated: azure-native:securityinsights/v20220801:ScheduledAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:ScheduledAlertRule to guarantee forwards compatibility.
-func LookupScheduledAlertRule(ctx *pulumi.Context, args *LookupScheduledAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupScheduledAlertRuleResult, error) {
-	var rv LookupScheduledAlertRuleResult
+func GetScheduledAlertRule(ctx *pulumi.Context, args *GetScheduledAlertRuleArgs, opts ...pulumi.InvokeOption) (*GetScheduledAlertRuleResult, error) {
+	var rv GetScheduledAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220801:getScheduledAlertRule", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupScheduledAlertRule(ctx *pulumi.Context, args *LookupScheduledAlertRul
 	return &rv, nil
 }
 
-type LookupScheduledAlertRuleArgs struct {
+type GetScheduledAlertRuleArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Alert rule ID
@@ -32,7 +30,7 @@ type LookupScheduledAlertRuleArgs struct {
 }
 
 // Represents scheduled alert rule.
-type LookupScheduledAlertRuleResult struct {
+type GetScheduledAlertRuleResult struct {
 	// The alert details override settings
 	AlertDetailsOverride *AlertDetailsOverrideResponse `pulumi:"alertDetailsOverride"`
 	// The Name of the alert rule template used to create this rule.
@@ -90,20 +88,20 @@ type LookupScheduledAlertRuleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupScheduledAlertRuleOutput(ctx *pulumi.Context, args LookupScheduledAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledAlertRuleResultOutput {
+func GetScheduledAlertRuleOutput(ctx *pulumi.Context, args GetScheduledAlertRuleOutputArgs, opts ...pulumi.InvokeOption) GetScheduledAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupScheduledAlertRuleResult, error) {
-			args := v.(LookupScheduledAlertRuleArgs)
-			r, err := LookupScheduledAlertRule(ctx, &args, opts...)
-			var s LookupScheduledAlertRuleResult
+		ApplyT(func(v interface{}) (GetScheduledAlertRuleResult, error) {
+			args := v.(GetScheduledAlertRuleArgs)
+			r, err := GetScheduledAlertRule(ctx, &args, opts...)
+			var s GetScheduledAlertRuleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupScheduledAlertRuleResultOutput)
+		}).(GetScheduledAlertRuleResultOutput)
 }
 
-type LookupScheduledAlertRuleOutputArgs struct {
+type GetScheduledAlertRuleOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Alert rule ID
@@ -112,161 +110,161 @@ type LookupScheduledAlertRuleOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupScheduledAlertRuleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupScheduledAlertRuleArgs)(nil)).Elem()
+func (GetScheduledAlertRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduledAlertRuleArgs)(nil)).Elem()
 }
 
 // Represents scheduled alert rule.
-type LookupScheduledAlertRuleResultOutput struct{ *pulumi.OutputState }
+type GetScheduledAlertRuleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupScheduledAlertRuleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupScheduledAlertRuleResult)(nil)).Elem()
+func (GetScheduledAlertRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduledAlertRuleResult)(nil)).Elem()
 }
 
-func (o LookupScheduledAlertRuleResultOutput) ToLookupScheduledAlertRuleResultOutput() LookupScheduledAlertRuleResultOutput {
+func (o GetScheduledAlertRuleResultOutput) ToGetScheduledAlertRuleResultOutput() GetScheduledAlertRuleResultOutput {
 	return o
 }
 
-func (o LookupScheduledAlertRuleResultOutput) ToLookupScheduledAlertRuleResultOutputWithContext(ctx context.Context) LookupScheduledAlertRuleResultOutput {
+func (o GetScheduledAlertRuleResultOutput) ToGetScheduledAlertRuleResultOutputWithContext(ctx context.Context) GetScheduledAlertRuleResultOutput {
 	return o
 }
 
 // The alert details override settings
-func (o LookupScheduledAlertRuleResultOutput) AlertDetailsOverride() AlertDetailsOverrideResponsePtrOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *AlertDetailsOverrideResponse { return v.AlertDetailsOverride }).(AlertDetailsOverrideResponsePtrOutput)
+func (o GetScheduledAlertRuleResultOutput) AlertDetailsOverride() AlertDetailsOverrideResponsePtrOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) *AlertDetailsOverrideResponse { return v.AlertDetailsOverride }).(AlertDetailsOverrideResponsePtrOutput)
 }
 
 // The Name of the alert rule template used to create this rule.
-func (o LookupScheduledAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *string { return v.AlertRuleTemplateName }).(pulumi.StringPtrOutput)
+func (o GetScheduledAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) *string { return v.AlertRuleTemplateName }).(pulumi.StringPtrOutput)
 }
 
 // Dictionary of string key-value pairs of columns to be attached to the alert
-func (o LookupScheduledAlertRuleResultOutput) CustomDetails() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) map[string]string { return v.CustomDetails }).(pulumi.StringMapOutput)
+func (o GetScheduledAlertRuleResultOutput) CustomDetails() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) map[string]string { return v.CustomDetails }).(pulumi.StringMapOutput)
 }
 
 // The description of the alert rule.
-func (o LookupScheduledAlertRuleResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetScheduledAlertRuleResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The display name for alerts created by this alert rule.
-func (o LookupScheduledAlertRuleResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Determines whether this alert rule is enabled or disabled.
-func (o LookupScheduledAlertRuleResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetScheduledAlertRuleResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Array of the entity mappings of the alert rule
-func (o LookupScheduledAlertRuleResultOutput) EntityMappings() EntityMappingResponseArrayOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) []EntityMappingResponse { return v.EntityMappings }).(EntityMappingResponseArrayOutput)
+func (o GetScheduledAlertRuleResultOutput) EntityMappings() EntityMappingResponseArrayOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) []EntityMappingResponse { return v.EntityMappings }).(EntityMappingResponseArrayOutput)
 }
 
 // Etag of the azure resource
-func (o LookupScheduledAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetScheduledAlertRuleResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // The event grouping settings.
-func (o LookupScheduledAlertRuleResultOutput) EventGroupingSettings() EventGroupingSettingsResponsePtrOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *EventGroupingSettingsResponse { return v.EventGroupingSettings }).(EventGroupingSettingsResponsePtrOutput)
+func (o GetScheduledAlertRuleResultOutput) EventGroupingSettings() EventGroupingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) *EventGroupingSettingsResponse { return v.EventGroupingSettings }).(EventGroupingSettingsResponsePtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupScheduledAlertRuleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The settings of the incidents that created from alerts triggered by this analytics rule
-func (o LookupScheduledAlertRuleResultOutput) IncidentConfiguration() IncidentConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *IncidentConfigurationResponse { return v.IncidentConfiguration }).(IncidentConfigurationResponsePtrOutput)
+func (o GetScheduledAlertRuleResultOutput) IncidentConfiguration() IncidentConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) *IncidentConfigurationResponse { return v.IncidentConfiguration }).(IncidentConfigurationResponsePtrOutput)
 }
 
 // The kind of the alert rule
 // Expected value is 'Scheduled'.
-func (o LookupScheduledAlertRuleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The last time that this alert rule has been modified.
-func (o LookupScheduledAlertRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) LastModifiedUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupScheduledAlertRuleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The query that creates alerts for this rule.
-func (o LookupScheduledAlertRuleResultOutput) Query() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.Query }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.Query }).(pulumi.StringOutput)
 }
 
 // The frequency (in ISO 8601 duration format) for this alert rule to run.
-func (o LookupScheduledAlertRuleResultOutput) QueryFrequency() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.QueryFrequency }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) QueryFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.QueryFrequency }).(pulumi.StringOutput)
 }
 
 // The period (in ISO 8601 duration format) that this alert rule looks at.
-func (o LookupScheduledAlertRuleResultOutput) QueryPeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.QueryPeriod }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) QueryPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.QueryPeriod }).(pulumi.StringOutput)
 }
 
 // The severity for alerts created by this alert rule.
-func (o LookupScheduledAlertRuleResultOutput) Severity() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.Severity }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.Severity }).(pulumi.StringOutput)
 }
 
 // The suppression (in ISO 8601 duration format) to wait since last time this alert rule been triggered.
-func (o LookupScheduledAlertRuleResultOutput) SuppressionDuration() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.SuppressionDuration }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) SuppressionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.SuppressionDuration }).(pulumi.StringOutput)
 }
 
 // Determines whether the suppression for this alert rule is enabled or disabled.
-func (o LookupScheduledAlertRuleResultOutput) SuppressionEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) bool { return v.SuppressionEnabled }).(pulumi.BoolOutput)
+func (o GetScheduledAlertRuleResultOutput) SuppressionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) bool { return v.SuppressionEnabled }).(pulumi.BoolOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupScheduledAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetScheduledAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tactics of the alert rule
-func (o LookupScheduledAlertRuleResultOutput) Tactics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) []string { return v.Tactics }).(pulumi.StringArrayOutput)
+func (o GetScheduledAlertRuleResultOutput) Tactics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) []string { return v.Tactics }).(pulumi.StringArrayOutput)
 }
 
 // The techniques of the alert rule
-func (o LookupScheduledAlertRuleResultOutput) Techniques() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) []string { return v.Techniques }).(pulumi.StringArrayOutput)
+func (o GetScheduledAlertRuleResultOutput) Techniques() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) []string { return v.Techniques }).(pulumi.StringArrayOutput)
 }
 
 // The version of the alert rule template used to create this rule - in format <a.b.c>, where all are numbers, for example 0 <1.0.2>
-func (o LookupScheduledAlertRuleResultOutput) TemplateVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *string { return v.TemplateVersion }).(pulumi.StringPtrOutput)
+func (o GetScheduledAlertRuleResultOutput) TemplateVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) *string { return v.TemplateVersion }).(pulumi.StringPtrOutput)
 }
 
 // The operation against the threshold that triggers alert rule.
-func (o LookupScheduledAlertRuleResultOutput) TriggerOperator() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.TriggerOperator }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) TriggerOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.TriggerOperator }).(pulumi.StringOutput)
 }
 
 // The threshold triggers this alert rule.
-func (o LookupScheduledAlertRuleResultOutput) TriggerThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) int { return v.TriggerThreshold }).(pulumi.IntOutput)
+func (o GetScheduledAlertRuleResultOutput) TriggerThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) int { return v.TriggerThreshold }).(pulumi.IntOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupScheduledAlertRuleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetScheduledAlertRuleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduledAlertRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupScheduledAlertRuleResultOutput{})
+	pulumi.RegisterOutputType(GetScheduledAlertRuleResultOutput{})
 }

@@ -78,12 +78,6 @@ func NewWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:synapse:Workspace"),
 		},
 		{
-			Type: pulumi.String("azure-native:synapse/v20190601preview:Workspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:synapse/v20201201:Workspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:synapse/v20210301:Workspace"),
 		},
 		{
@@ -148,7 +142,7 @@ type workspaceArgs struct {
 	// Managed Virtual Network Settings
 	ManagedVirtualNetworkSettings *ManagedVirtualNetworkSettings `pulumi:"managedVirtualNetworkSettings"`
 	// Private endpoint connections to the workspace
-	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnection `pulumi:"privateEndpointConnections"`
 	// Enable or Disable public network access to workspace
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Purview Configuration
@@ -190,7 +184,7 @@ type WorkspaceArgs struct {
 	// Managed Virtual Network Settings
 	ManagedVirtualNetworkSettings ManagedVirtualNetworkSettingsPtrInput
 	// Private endpoint connections to the workspace
-	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
+	PrivateEndpointConnections PrivateEndpointConnectionArrayInput
 	// Enable or Disable public network access to workspace
 	PublicNetworkAccess pulumi.StringPtrInput
 	// Purview Configuration

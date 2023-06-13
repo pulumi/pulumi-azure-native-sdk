@@ -55,6 +55,15 @@ func NewStartStopManagedInstanceSchedule(ctx *pulumi.Context,
 	if args.TimeZoneId == nil {
 		args.TimeZoneId = pulumi.StringPtr("UTC")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:sql:StartStopManagedInstanceSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:StartStopManagedInstanceSchedule"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource StartStopManagedInstanceSchedule
 	err := ctx.RegisterResource("azure-native:sql/v20220801preview:StartStopManagedInstanceSchedule", name, args, &resource, opts...)
 	if err != nil {

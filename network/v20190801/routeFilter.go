@@ -50,36 +50,6 @@ func NewRouteFilter(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:RouteFilter"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20161201:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:RouteFilter"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:RouteFilter"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:RouteFilter"),
 		},
 		{
@@ -163,6 +133,9 @@ func NewRouteFilter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:RouteFilter"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:RouteFilter"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource RouteFilter
@@ -210,7 +183,7 @@ type routeFilterArgs struct {
 	// The name of the route filter.
 	RouteFilterName *string `pulumi:"routeFilterName"`
 	// Collection of RouteFilterRules contained within a route filter.
-	Rules []RouteFilterRuleType `pulumi:"rules"`
+	Rules []RouteFilterRule `pulumi:"rules"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -230,7 +203,7 @@ type RouteFilterArgs struct {
 	// The name of the route filter.
 	RouteFilterName pulumi.StringPtrInput
 	// Collection of RouteFilterRules contained within a route filter.
-	Rules RouteFilterRuleTypeArrayInput
+	Rules RouteFilterRuleArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }

@@ -12,7 +12,8 @@ import (
 )
 
 // A managed database resource.
-// API Version: 2020-11-01-preview.
+// API Version: 2021-11-01.
+// Previous API Version: 2020-11-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ManagedDatabase struct {
 	pulumi.CustomResourceState
 
@@ -95,6 +96,9 @@ func NewManagedDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

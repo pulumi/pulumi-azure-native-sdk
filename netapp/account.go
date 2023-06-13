@@ -12,25 +12,32 @@ import (
 )
 
 // NetApp account resource
-// API Version: 2020-12-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Account struct {
 	pulumi.CustomResourceState
 
 	// Active Directories
 	ActiveDirectories ActiveDirectoryResponseArrayOutput `pulumi:"activeDirectories"`
+	// Shows the status of disableShowmount for all volumes under the subscription, null equals false
+	DisableShowmount pulumi.BoolOutput `pulumi:"disableShowmount"`
 	// Encryption settings
 	Encryption AccountEncryptionResponsePtrOutput `pulumi:"encryption"`
-	// Resource location
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The identity used for the resource.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -44,52 +51,10 @@ func NewAccount(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.Encryption != nil {
+		args.Encryption = args.Encryption.ToAccountEncryptionPtrOutput().ApplyT(func(v *AccountEncryption) *AccountEncryption { return v.Defaults() }).(AccountEncryptionPtrOutput)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:netapp/v20170815:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20190501:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20190601:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20190701:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20190801:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20191001:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20191101:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200201:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200301:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200501:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200601:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200701:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200801:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20200901:Account"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20201101:Account"),
-		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20201201:Account"),
 		},
@@ -163,11 +128,13 @@ type accountArgs struct {
 	ActiveDirectories []ActiveDirectory `pulumi:"activeDirectories"`
 	// Encryption settings
 	Encryption *AccountEncryption `pulumi:"encryption"`
-	// Resource location
+	// The identity used for the resource.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -179,11 +146,13 @@ type AccountArgs struct {
 	ActiveDirectories ActiveDirectoryArrayInput
 	// Encryption settings
 	Encryption AccountEncryptionPtrInput
-	// Resource location
+	// The identity used for the resource.
+	Identity ManagedServiceIdentityPtrInput
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -229,17 +198,32 @@ func (o AccountOutput) ActiveDirectories() ActiveDirectoryResponseArrayOutput {
 	return o.ApplyT(func(v *Account) ActiveDirectoryResponseArrayOutput { return v.ActiveDirectories }).(ActiveDirectoryResponseArrayOutput)
 }
 
+// Shows the status of disableShowmount for all volumes under the subscription, null equals false
+func (o AccountOutput) DisableShowmount() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Account) pulumi.BoolOutput { return v.DisableShowmount }).(pulumi.BoolOutput)
+}
+
 // Encryption settings
 func (o AccountOutput) Encryption() AccountEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v *Account) AccountEncryptionResponsePtrOutput { return v.Encryption }).(AccountEncryptionResponsePtrOutput)
 }
 
-// Resource location
+// A unique read-only string that changes whenever the resource is updated.
+func (o AccountOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The identity used for the resource.
+func (o AccountOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Account) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// The geo-location where the resource lives
 func (o AccountOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o AccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -249,17 +233,17 @@ func (o AccountOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AccountOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Account) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags
+// Resource tags.
 func (o AccountOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AccountOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

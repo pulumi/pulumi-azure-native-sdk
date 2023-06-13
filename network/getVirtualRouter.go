@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Virtual Router.
-// API Version: 2022-01-01.
+// API Version: 2022-11-01.
 func LookupVirtualRouter(ctx *pulumi.Context, args *LookupVirtualRouterArgs, opts ...pulumi.InvokeOption) (*LookupVirtualRouterResult, error) {
 	var rv LookupVirtualRouterResult
 	err := ctx.Invoke("azure-native:network:getVirtualRouter", args, &rv, opts...)

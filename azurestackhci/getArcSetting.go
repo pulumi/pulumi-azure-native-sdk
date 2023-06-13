@@ -11,7 +11,7 @@ import (
 )
 
 // Get ArcSetting resource details of HCI Cluster.
-// API Version: 2021-01-01-preview.
+// API Version: 2023-03-01.
 func LookupArcSetting(ctx *pulumi.Context, args *LookupArcSettingArgs, opts ...pulumi.InvokeOption) (*LookupArcSettingResult, error) {
 	var rv LookupArcSettingResult
 	err := ctx.Invoke("azure-native:azurestackhci:getArcSetting", args, &rv, opts...)
@@ -34,28 +34,30 @@ type LookupArcSettingArgs struct {
 type LookupArcSettingResult struct {
 	// Aggregate state of Arc agent across the nodes in this HCI cluster.
 	AggregateState string `pulumi:"aggregateState"`
+	// App id of arc AAD identity.
+	ArcApplicationClientId *string `pulumi:"arcApplicationClientId"`
+	// Object id of arc AAD identity.
+	ArcApplicationObjectId *string `pulumi:"arcApplicationObjectId"`
+	// Tenant id of arc AAD identity.
+	ArcApplicationTenantId *string `pulumi:"arcApplicationTenantId"`
 	// The resource group that hosts the Arc agents, ie. Hybrid Compute Machine resources.
-	ArcInstanceResourceGroup string `pulumi:"arcInstanceResourceGroup"`
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
+	ArcInstanceResourceGroup *string `pulumi:"arcInstanceResourceGroup"`
+	// Object id of arc AAD service principal.
+	ArcServicePrincipalObjectId *string `pulumi:"arcServicePrincipalObjectId"`
+	// contains connectivity related configuration for ARC resources
+	ConnectivityProperties []ArcConnectivityPropertiesResponse `pulumi:"connectivityProperties"`
+	// Properties for each of the default extensions category
+	DefaultExtensions []DefaultExtensionDetailsResponse `pulumi:"defaultExtensions"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// State of Arc agent in each of the nodes.
 	PerNodeDetails []PerNodeStateResponse `pulumi:"perNodeDetails"`
 	// Provisioning state of the ArcSetting proxy resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -106,44 +108,44 @@ func (o LookupArcSettingResultOutput) AggregateState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArcSettingResult) string { return v.AggregateState }).(pulumi.StringOutput)
 }
 
+// App id of arc AAD identity.
+func (o LookupArcSettingResultOutput) ArcApplicationClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.ArcApplicationClientId }).(pulumi.StringPtrOutput)
+}
+
+// Object id of arc AAD identity.
+func (o LookupArcSettingResultOutput) ArcApplicationObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.ArcApplicationObjectId }).(pulumi.StringPtrOutput)
+}
+
+// Tenant id of arc AAD identity.
+func (o LookupArcSettingResultOutput) ArcApplicationTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.ArcApplicationTenantId }).(pulumi.StringPtrOutput)
+}
+
 // The resource group that hosts the Arc agents, ie. Hybrid Compute Machine resources.
-func (o LookupArcSettingResultOutput) ArcInstanceResourceGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupArcSettingResult) string { return v.ArcInstanceResourceGroup }).(pulumi.StringOutput)
+func (o LookupArcSettingResultOutput) ArcInstanceResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.ArcInstanceResourceGroup }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource creation (UTC).
-func (o LookupArcSettingResultOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+// Object id of arc AAD service principal.
+func (o LookupArcSettingResultOutput) ArcServicePrincipalObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.ArcServicePrincipalObjectId }).(pulumi.StringPtrOutput)
 }
 
-// The identity that created the resource.
-func (o LookupArcSettingResultOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+// contains connectivity related configuration for ARC resources
+func (o LookupArcSettingResultOutput) ConnectivityProperties() ArcConnectivityPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) []ArcConnectivityPropertiesResponse { return v.ConnectivityProperties }).(ArcConnectivityPropertiesResponseArrayOutput)
 }
 
-// The type of identity that created the resource.
-func (o LookupArcSettingResultOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// Properties for each of the default extensions category
+func (o LookupArcSettingResultOutput) DefaultExtensions() DefaultExtensionDetailsResponseArrayOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) []DefaultExtensionDetailsResponse { return v.DefaultExtensions }).(DefaultExtensionDetailsResponseArrayOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupArcSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArcSettingResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o LookupArcSettingResultOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o LookupArcSettingResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o LookupArcSettingResultOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -159,6 +161,11 @@ func (o LookupArcSettingResultOutput) PerNodeDetails() PerNodeStateResponseArray
 // Provisioning state of the ArcSetting proxy resource.
 func (o LookupArcSettingResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArcSettingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupArcSettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

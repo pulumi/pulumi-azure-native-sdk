@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified deployments associated with the Cognitive Services account.
-// API Version: 2021-10-01.
+// API Version: 2023-05-01.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	var rv LookupDeploymentResult
 	err := ctx.Invoke("azure-native:cognitiveservices:getDeployment", args, &rv, opts...)
@@ -40,6 +40,8 @@ type LookupDeploymentResult struct {
 	Name string `pulumi:"name"`
 	// Properties of Cognitive Services account deployment.
 	Properties DeploymentPropertiesResponse `pulumi:"properties"`
+	// The resource model definition representing SKU
+	Sku *SkuResponse `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -105,6 +107,11 @@ func (o LookupDeploymentResultOutput) Name() pulumi.StringOutput {
 // Properties of Cognitive Services account deployment.
 func (o LookupDeploymentResultOutput) Properties() DeploymentPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) DeploymentPropertiesResponse { return v.Properties }).(DeploymentPropertiesResponseOutput)
+}
+
+// The resource model definition representing SKU
+func (o LookupDeploymentResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupDeploymentResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

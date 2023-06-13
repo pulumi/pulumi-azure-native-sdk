@@ -38,6 +38,16 @@ const (
 	AccessReviewResultNotNotified = AccessReviewResult("NotNotified")
 )
 
+// The option whether validate the exemption is at or under the assignment scope.
+type AssignmentScopeValidation string
+
+const (
+	// This option will validate the exemption is at or under the assignment scope.
+	AssignmentScopeValidationDefault = AssignmentScopeValidation("Default")
+	// This option will bypass the validation the exemption scope is at or under the policy assignment scope.
+	AssignmentScopeValidationDoNotValidate = AssignmentScopeValidation("DoNotValidate")
+)
+
 // This specifies the behavior for the autoReview feature when an access review completes.
 type DefaultDecisionType string
 
@@ -74,6 +84,14 @@ const (
 	LockLevelNotSpecified = LockLevel("NotSpecified")
 	LockLevelCanNotDelete = LockLevel("CanNotDelete")
 	LockLevelReadOnly     = LockLevel("ReadOnly")
+)
+
+// The override kind.
+type OverrideKind string
+
+const (
+	// It will override the policy effect type.
+	OverrideKindPolicyEffect = OverrideKind("policyEffect")
 )
 
 // The data type of the parameter.
@@ -117,12 +135,14 @@ const (
 	PublicNetworkAccessOptionsDisabled = PublicNetworkAccessOptions("Disabled")
 )
 
-// The identity type. This is the only required field when adding a system assigned identity to a resource.
+// The identity type. This is the only required field when adding a system or user assigned identity to a resource.
 type ResourceIdentityType string
 
 const (
 	// Indicates that a system assigned identity is associated with the resource.
 	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
+	// Indicates that a system assigned identity is associated with the resource.
+	ResourceIdentityTypeUserAssigned = ResourceIdentityType("UserAssigned")
 	// Indicates that no identity is associated with the resource or that the existing identity should be removed.
 	ResourceIdentityTypeNone = ResourceIdentityType("None")
 )
@@ -283,6 +303,20 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
+
+// The selector kind.
+type SelectorKind string
+
+const (
+	// The selector kind to filter policies by the resource location.
+	SelectorKindResourceLocation = SelectorKind("resourceLocation")
+	// The selector kind to filter policies by the resource type.
+	SelectorKindResourceType = SelectorKind("resourceType")
+	// The selector kind to filter policies by the resource without location.
+	SelectorKindResourceWithoutLocation = SelectorKind("resourceWithoutLocation")
+	// The selector kind to filter policies by the policy definition reference ID.
+	SelectorKindPolicyDefinitionReferenceId = SelectorKind("policyDefinitionReferenceId")
+)
 
 func init() {
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})

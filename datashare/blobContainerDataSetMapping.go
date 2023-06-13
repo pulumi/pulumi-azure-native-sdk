@@ -12,7 +12,8 @@ import (
 )
 
 // A Blob container data set mapping.
-// API Version: 2020-09-01.
+// API Version: 2021-08-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type BlobContainerDataSetMapping struct {
 	pulumi.CustomResourceState
 
@@ -77,12 +78,6 @@ func NewBlobContainerDataSetMapping(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("Container")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datashare/v20181101preview:BlobContainerDataSetMapping"),
-		},
-		{
-			Type: pulumi.String("azure-native:datashare/v20191101:BlobContainerDataSetMapping"),
-		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20200901:BlobContainerDataSetMapping"),
 		},

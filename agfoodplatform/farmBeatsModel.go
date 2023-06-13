@@ -12,21 +12,28 @@ import (
 )
 
 // FarmBeats ARM Resource.
-// API Version: 2020-05-12-preview.
+// API Version: 2021-09-01-preview.
+// Previous API Version: 2020-05-12-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type FarmBeatsModel struct {
 	pulumi.CustomResourceState
 
+	// Identity for the resource.
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Uri of the FarmBeats instance.
 	InstanceUri pulumi.StringOutput `pulumi:"instanceUri"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The private endpoint connection resource.
+	PrivateEndpointConnections PrivateEndpointConnectionResponseOutput `pulumi:"privateEndpointConnections"`
 	// FarmBeats instance provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The resource model definition representing SKU
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Property to allow or block public traffic for an Azure FarmBeats resource.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
+	// Sensor integration request model.
+	SensorIntegration SensorIntegrationResponsePtrOutput `pulumi:"sensorIntegration"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -87,12 +94,16 @@ func (FarmBeatsModelState) ElementType() reflect.Type {
 type farmBeatsModelArgs struct {
 	// FarmBeats resource name.
 	FarmBeatsResourceName *string `pulumi:"farmBeatsResourceName"`
+	// Identity for the resource.
+	Identity *Identity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Property to allow or block public traffic for an Azure FarmBeats resource.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The resource model definition representing SKU
-	Sku *Sku `pulumi:"sku"`
+	// Sensor integration request model.
+	SensorIntegration *SensorIntegration `pulumi:"sensorIntegration"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -101,12 +112,16 @@ type farmBeatsModelArgs struct {
 type FarmBeatsModelArgs struct {
 	// FarmBeats resource name.
 	FarmBeatsResourceName pulumi.StringPtrInput
+	// Identity for the resource.
+	Identity IdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Property to allow or block public traffic for an Azure FarmBeats resource.
+	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The resource model definition representing SKU
-	Sku SkuPtrInput
+	// Sensor integration request model.
+	SensorIntegration SensorIntegrationPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -148,6 +163,11 @@ func (o FarmBeatsModelOutput) ToFarmBeatsModelOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Identity for the resource.
+func (o FarmBeatsModelOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *FarmBeatsModel) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+}
+
 // Uri of the FarmBeats instance.
 func (o FarmBeatsModelOutput) InstanceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *FarmBeatsModel) pulumi.StringOutput { return v.InstanceUri }).(pulumi.StringOutput)
@@ -163,17 +183,27 @@ func (o FarmBeatsModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FarmBeatsModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The private endpoint connection resource.
+func (o FarmBeatsModelOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseOutput {
+	return o.ApplyT(func(v *FarmBeatsModel) PrivateEndpointConnectionResponseOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseOutput)
+}
+
 // FarmBeats instance provisioning state.
 func (o FarmBeatsModelOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *FarmBeatsModel) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The resource model definition representing SKU
-func (o FarmBeatsModelOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *FarmBeatsModel) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+// Property to allow or block public traffic for an Azure FarmBeats resource.
+func (o FarmBeatsModelOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FarmBeatsModel) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Sensor integration request model.
+func (o FarmBeatsModelOutput) SensorIntegration() SensorIntegrationResponsePtrOutput {
+	return o.ApplyT(func(v *FarmBeatsModel) SensorIntegrationResponsePtrOutput { return v.SensorIntegration }).(SensorIntegrationResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o FarmBeatsModelOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *FarmBeatsModel) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

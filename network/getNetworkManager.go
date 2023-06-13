@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Network Manager.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-11-01.
 func LookupNetworkManager(ctx *pulumi.Context, args *LookupNetworkManagerArgs, opts ...pulumi.InvokeOption) (*LookupNetworkManagerResult, error) {
 	var rv LookupNetworkManagerResult
 	err := ctx.Invoke("azure-native:network:getNetworkManager", args, &rv, opts...)
@@ -32,8 +32,6 @@ type LookupNetworkManagerArgs struct {
 type LookupNetworkManagerResult struct {
 	// A description of the network manager.
 	Description *string `pulumi:"description"`
-	// A friendly name for the network manager.
-	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -45,8 +43,8 @@ type LookupNetworkManagerResult struct {
 	// Scope Access.
 	NetworkManagerScopeAccesses []string `pulumi:"networkManagerScopeAccesses"`
 	// Scope of Network Manager.
-	NetworkManagerScopes *NetworkManagerPropertiesResponseNetworkManagerScopes `pulumi:"networkManagerScopes"`
-	// The provisioning state of the scope assignment resource.
+	NetworkManagerScopes NetworkManagerPropertiesResponseNetworkManagerScopes `pulumi:"networkManagerScopes"`
+	// The provisioning state of the network manager resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -100,11 +98,6 @@ func (o LookupNetworkManagerResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkManagerResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A friendly name for the network manager.
-func (o LookupNetworkManagerResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNetworkManagerResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
 // A unique read-only string that changes whenever the resource is updated.
 func (o LookupNetworkManagerResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkManagerResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -131,13 +124,13 @@ func (o LookupNetworkManagerResultOutput) NetworkManagerScopeAccesses() pulumi.S
 }
 
 // Scope of Network Manager.
-func (o LookupNetworkManagerResultOutput) NetworkManagerScopes() NetworkManagerPropertiesResponseNetworkManagerScopesPtrOutput {
-	return o.ApplyT(func(v LookupNetworkManagerResult) *NetworkManagerPropertiesResponseNetworkManagerScopes {
+func (o LookupNetworkManagerResultOutput) NetworkManagerScopes() NetworkManagerPropertiesResponseNetworkManagerScopesOutput {
+	return o.ApplyT(func(v LookupNetworkManagerResult) NetworkManagerPropertiesResponseNetworkManagerScopes {
 		return v.NetworkManagerScopes
-	}).(NetworkManagerPropertiesResponseNetworkManagerScopesPtrOutput)
+	}).(NetworkManagerPropertiesResponseNetworkManagerScopesOutput)
 }
 
-// The provisioning state of the scope assignment resource.
+// The provisioning state of the network manager resource.
 func (o LookupNetworkManagerResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkManagerResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

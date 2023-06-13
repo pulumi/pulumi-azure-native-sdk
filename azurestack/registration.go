@@ -12,7 +12,8 @@ import (
 )
 
 // Registration information.
-// API Version: 2017-06-01.
+// API Version: 2022-06-01.
+// Previous API Version: 2017-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Registration struct {
 	pulumi.CustomResourceState
 
@@ -48,9 +49,6 @@ func NewRegistration(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroup'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:azurestack/v20160101:Registration"),
-		},
 		{
 			Type: pulumi.String("azure-native:azurestack/v20170601:Registration"),
 		},

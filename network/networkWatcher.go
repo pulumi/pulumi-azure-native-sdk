@@ -12,7 +12,8 @@ import (
 )
 
 // Network watcher in a resource group.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type NetworkWatcher struct {
 	pulumi.CustomResourceState
 
@@ -41,39 +42,6 @@ func NewNetworkWatcher(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20160901:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:NetworkWatcher"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:NetworkWatcher"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:NetworkWatcher"),
 		},
@@ -160,6 +128,9 @@ func NewNetworkWatcher(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkWatcher"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkWatcher"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -13,6 +13,7 @@ import (
 
 // Factory resource type.
 // API Version: 2018-06-01.
+// Previous API Version: 2018-06-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Factory struct {
 	pulumi.CustomResourceState
 
@@ -57,9 +58,6 @@ func NewFactory(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datafactory/v20170901preview:Factory"),
-		},
 		{
 			Type: pulumi.String("azure-native:datafactory/v20180601:Factory"),
 		},

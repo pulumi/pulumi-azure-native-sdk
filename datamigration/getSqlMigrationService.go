@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieve the Migration Service.
-// API Version: 2021-10-30-preview.
+// Retrieve the Database Migration Service
+// API Version: 2022-03-30-preview.
 func LookupSqlMigrationService(ctx *pulumi.Context, args *LookupSqlMigrationServiceArgs, opts ...pulumi.InvokeOption) (*LookupSqlMigrationServiceResult, error) {
 	var rv LookupSqlMigrationServiceResult
 	err := ctx.Invoke("azure-native:datamigration:getSqlMigrationService", args, &rv, opts...)

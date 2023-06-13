@@ -13,6 +13,7 @@ import (
 
 // The log profile resource.
 // API Version: 2016-03-01.
+// Previous API Version: 2016-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type LogProfile struct {
 	pulumi.CustomResourceState
 

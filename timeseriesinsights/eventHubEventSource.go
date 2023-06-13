@@ -13,6 +13,7 @@ import (
 
 // An event source that receives its data from an Azure EventHub.
 // API Version: 2020-05-15.
+// Previous API Version: 2020-05-15. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type EventHubEventSource struct {
 	pulumi.CustomResourceState
 
@@ -85,15 +86,6 @@ func NewEventHubEventSource(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("Microsoft.EventHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:EventHubEventSource"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20171115:EventHubEventSource"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20180815preview:EventHubEventSource"),
-		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20200515:EventHubEventSource"),
 		},

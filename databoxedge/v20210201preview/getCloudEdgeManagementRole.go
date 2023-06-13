@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a specific role by name.
-//
-// Deprecated: azure-native:databoxedge/v20210201preview:CloudEdgeManagementRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole to guarantee forwards compatibility.
-func LookupCloudEdgeManagementRole(ctx *pulumi.Context, args *LookupCloudEdgeManagementRoleArgs, opts ...pulumi.InvokeOption) (*LookupCloudEdgeManagementRoleResult, error) {
-	var rv LookupCloudEdgeManagementRoleResult
+func GetCloudEdgeManagementRole(ctx *pulumi.Context, args *GetCloudEdgeManagementRoleArgs, opts ...pulumi.InvokeOption) (*GetCloudEdgeManagementRoleResult, error) {
+	var rv GetCloudEdgeManagementRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210201preview:getCloudEdgeManagementRole", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupCloudEdgeManagementRole(ctx *pulumi.Context, args *LookupCloudEdgeMan
 	return &rv, nil
 }
 
-type LookupCloudEdgeManagementRoleArgs struct {
+type GetCloudEdgeManagementRoleArgs struct {
 	// The device name.
 	DeviceName string `pulumi:"deviceName"`
 	// The role name.
@@ -32,7 +30,7 @@ type LookupCloudEdgeManagementRoleArgs struct {
 }
 
 // CloudEdgeManagementRole role.
-type LookupCloudEdgeManagementRoleResult struct {
+type GetCloudEdgeManagementRoleResult struct {
 	// Edge Profile of the resource
 	EdgeProfile EdgeProfileResponse `pulumi:"edgeProfile"`
 	// The path ID that uniquely identifies the object.
@@ -52,20 +50,20 @@ type LookupCloudEdgeManagementRoleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupCloudEdgeManagementRoleOutput(ctx *pulumi.Context, args LookupCloudEdgeManagementRoleOutputArgs, opts ...pulumi.InvokeOption) LookupCloudEdgeManagementRoleResultOutput {
+func GetCloudEdgeManagementRoleOutput(ctx *pulumi.Context, args GetCloudEdgeManagementRoleOutputArgs, opts ...pulumi.InvokeOption) GetCloudEdgeManagementRoleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCloudEdgeManagementRoleResult, error) {
-			args := v.(LookupCloudEdgeManagementRoleArgs)
-			r, err := LookupCloudEdgeManagementRole(ctx, &args, opts...)
-			var s LookupCloudEdgeManagementRoleResult
+		ApplyT(func(v interface{}) (GetCloudEdgeManagementRoleResult, error) {
+			args := v.(GetCloudEdgeManagementRoleArgs)
+			r, err := GetCloudEdgeManagementRole(ctx, &args, opts...)
+			var s GetCloudEdgeManagementRoleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupCloudEdgeManagementRoleResultOutput)
+		}).(GetCloudEdgeManagementRoleResultOutput)
 }
 
-type LookupCloudEdgeManagementRoleOutputArgs struct {
+type GetCloudEdgeManagementRoleOutputArgs struct {
 	// The device name.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// The role name.
@@ -74,66 +72,66 @@ type LookupCloudEdgeManagementRoleOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
-func (LookupCloudEdgeManagementRoleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupCloudEdgeManagementRoleArgs)(nil)).Elem()
+func (GetCloudEdgeManagementRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudEdgeManagementRoleArgs)(nil)).Elem()
 }
 
 // CloudEdgeManagementRole role.
-type LookupCloudEdgeManagementRoleResultOutput struct{ *pulumi.OutputState }
+type GetCloudEdgeManagementRoleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupCloudEdgeManagementRoleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupCloudEdgeManagementRoleResult)(nil)).Elem()
+func (GetCloudEdgeManagementRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudEdgeManagementRoleResult)(nil)).Elem()
 }
 
-func (o LookupCloudEdgeManagementRoleResultOutput) ToLookupCloudEdgeManagementRoleResultOutput() LookupCloudEdgeManagementRoleResultOutput {
+func (o GetCloudEdgeManagementRoleResultOutput) ToGetCloudEdgeManagementRoleResultOutput() GetCloudEdgeManagementRoleResultOutput {
 	return o
 }
 
-func (o LookupCloudEdgeManagementRoleResultOutput) ToLookupCloudEdgeManagementRoleResultOutputWithContext(ctx context.Context) LookupCloudEdgeManagementRoleResultOutput {
+func (o GetCloudEdgeManagementRoleResultOutput) ToGetCloudEdgeManagementRoleResultOutputWithContext(ctx context.Context) GetCloudEdgeManagementRoleResultOutput {
 	return o
 }
 
 // Edge Profile of the resource
-func (o LookupCloudEdgeManagementRoleResultOutput) EdgeProfile() EdgeProfileResponseOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) EdgeProfileResponse { return v.EdgeProfile }).(EdgeProfileResponseOutput)
+func (o GetCloudEdgeManagementRoleResultOutput) EdgeProfile() EdgeProfileResponseOutput {
+	return o.ApplyT(func(v GetCloudEdgeManagementRoleResult) EdgeProfileResponse { return v.EdgeProfile }).(EdgeProfileResponseOutput)
 }
 
 // The path ID that uniquely identifies the object.
-func (o LookupCloudEdgeManagementRoleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetCloudEdgeManagementRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudEdgeManagementRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Role type.
 // Expected value is 'CloudEdgeManagement'.
-func (o LookupCloudEdgeManagementRoleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetCloudEdgeManagementRoleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudEdgeManagementRoleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Local Edge Management Status
-func (o LookupCloudEdgeManagementRoleResultOutput) LocalManagementStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) string { return v.LocalManagementStatus }).(pulumi.StringOutput)
+func (o GetCloudEdgeManagementRoleResultOutput) LocalManagementStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudEdgeManagementRoleResult) string { return v.LocalManagementStatus }).(pulumi.StringOutput)
 }
 
 // The object name.
-func (o LookupCloudEdgeManagementRoleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetCloudEdgeManagementRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudEdgeManagementRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Role status.
-func (o LookupCloudEdgeManagementRoleResultOutput) RoleStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
+func (o GetCloudEdgeManagementRoleResultOutput) RoleStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudEdgeManagementRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
 }
 
 // Role configured on ASE resource
-func (o LookupCloudEdgeManagementRoleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetCloudEdgeManagementRoleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetCloudEdgeManagementRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.
-func (o LookupCloudEdgeManagementRoleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetCloudEdgeManagementRoleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudEdgeManagementRoleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupCloudEdgeManagementRoleResultOutput{})
+	pulumi.RegisterOutputType(GetCloudEdgeManagementRoleResultOutput{})
 }

@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a specific role by name.
-//
-// Deprecated: azure-native:databoxedge/v20201201:IoTRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:IoTRole to guarantee forwards compatibility.
-func LookupIoTRole(ctx *pulumi.Context, args *LookupIoTRoleArgs, opts ...pulumi.InvokeOption) (*LookupIoTRoleResult, error) {
-	var rv LookupIoTRoleResult
+func GetIoTRole(ctx *pulumi.Context, args *GetIoTRoleArgs, opts ...pulumi.InvokeOption) (*GetIoTRoleResult, error) {
+	var rv GetIoTRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20201201:getIoTRole", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupIoTRole(ctx *pulumi.Context, args *LookupIoTRoleArgs, opts ...pulumi.
 	return &rv, nil
 }
 
-type LookupIoTRoleArgs struct {
+type GetIoTRoleArgs struct {
 	// The device name.
 	DeviceName string `pulumi:"deviceName"`
 	// The role name.
@@ -32,7 +30,7 @@ type LookupIoTRoleArgs struct {
 }
 
 // Compute role.
-type LookupIoTRoleResult struct {
+type GetIoTRoleResult struct {
 	// Resource allocation
 	ComputeResource *ComputeResourceResponse `pulumi:"computeResource"`
 	// Host OS supported by the IoT role.
@@ -62,20 +60,20 @@ type LookupIoTRoleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupIoTRoleOutput(ctx *pulumi.Context, args LookupIoTRoleOutputArgs, opts ...pulumi.InvokeOption) LookupIoTRoleResultOutput {
+func GetIoTRoleOutput(ctx *pulumi.Context, args GetIoTRoleOutputArgs, opts ...pulumi.InvokeOption) GetIoTRoleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIoTRoleResult, error) {
-			args := v.(LookupIoTRoleArgs)
-			r, err := LookupIoTRole(ctx, &args, opts...)
-			var s LookupIoTRoleResult
+		ApplyT(func(v interface{}) (GetIoTRoleResult, error) {
+			args := v.(GetIoTRoleArgs)
+			r, err := GetIoTRole(ctx, &args, opts...)
+			var s GetIoTRoleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupIoTRoleResultOutput)
+		}).(GetIoTRoleResultOutput)
 }
 
-type LookupIoTRoleOutputArgs struct {
+type GetIoTRoleOutputArgs struct {
 	// The device name.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// The role name.
@@ -84,91 +82,91 @@ type LookupIoTRoleOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
-func (LookupIoTRoleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupIoTRoleArgs)(nil)).Elem()
+func (GetIoTRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIoTRoleArgs)(nil)).Elem()
 }
 
 // Compute role.
-type LookupIoTRoleResultOutput struct{ *pulumi.OutputState }
+type GetIoTRoleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupIoTRoleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupIoTRoleResult)(nil)).Elem()
+func (GetIoTRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIoTRoleResult)(nil)).Elem()
 }
 
-func (o LookupIoTRoleResultOutput) ToLookupIoTRoleResultOutput() LookupIoTRoleResultOutput {
+func (o GetIoTRoleResultOutput) ToGetIoTRoleResultOutput() GetIoTRoleResultOutput {
 	return o
 }
 
-func (o LookupIoTRoleResultOutput) ToLookupIoTRoleResultOutputWithContext(ctx context.Context) LookupIoTRoleResultOutput {
+func (o GetIoTRoleResultOutput) ToGetIoTRoleResultOutputWithContext(ctx context.Context) GetIoTRoleResultOutput {
 	return o
 }
 
 // Resource allocation
-func (o LookupIoTRoleResultOutput) ComputeResource() ComputeResourceResponsePtrOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) *ComputeResourceResponse { return v.ComputeResource }).(ComputeResourceResponsePtrOutput)
+func (o GetIoTRoleResultOutput) ComputeResource() ComputeResourceResponsePtrOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) *ComputeResourceResponse { return v.ComputeResource }).(ComputeResourceResponsePtrOutput)
 }
 
 // Host OS supported by the IoT role.
-func (o LookupIoTRoleResultOutput) HostPlatform() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) string { return v.HostPlatform }).(pulumi.StringOutput)
+func (o GetIoTRoleResultOutput) HostPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) string { return v.HostPlatform }).(pulumi.StringOutput)
 }
 
 // Platform where the Iot runtime is hosted.
-func (o LookupIoTRoleResultOutput) HostPlatformType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) string { return v.HostPlatformType }).(pulumi.StringOutput)
+func (o GetIoTRoleResultOutput) HostPlatformType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) string { return v.HostPlatformType }).(pulumi.StringOutput)
 }
 
 // The path ID that uniquely identifies the object.
-func (o LookupIoTRoleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetIoTRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // IoT device metadata to which data box edge device needs to be connected.
-func (o LookupIoTRoleResultOutput) IoTDeviceDetails() IoTDeviceInfoResponseOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) IoTDeviceInfoResponse { return v.IoTDeviceDetails }).(IoTDeviceInfoResponseOutput)
+func (o GetIoTRoleResultOutput) IoTDeviceDetails() IoTDeviceInfoResponseOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) IoTDeviceInfoResponse { return v.IoTDeviceDetails }).(IoTDeviceInfoResponseOutput)
 }
 
 // Iot edge agent details to download the agent and bootstrap iot runtime.
-func (o LookupIoTRoleResultOutput) IoTEdgeAgentInfo() IoTEdgeAgentInfoResponsePtrOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) *IoTEdgeAgentInfoResponse { return v.IoTEdgeAgentInfo }).(IoTEdgeAgentInfoResponsePtrOutput)
+func (o GetIoTRoleResultOutput) IoTEdgeAgentInfo() IoTEdgeAgentInfoResponsePtrOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) *IoTEdgeAgentInfoResponse { return v.IoTEdgeAgentInfo }).(IoTEdgeAgentInfoResponsePtrOutput)
 }
 
 // IoT edge device to which the IoT role needs to be configured.
-func (o LookupIoTRoleResultOutput) IoTEdgeDeviceDetails() IoTDeviceInfoResponseOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) IoTDeviceInfoResponse { return v.IoTEdgeDeviceDetails }).(IoTDeviceInfoResponseOutput)
+func (o GetIoTRoleResultOutput) IoTEdgeDeviceDetails() IoTDeviceInfoResponseOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) IoTDeviceInfoResponse { return v.IoTEdgeDeviceDetails }).(IoTDeviceInfoResponseOutput)
 }
 
 // Role type.
 // Expected value is 'IOT'.
-func (o LookupIoTRoleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetIoTRoleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The object name.
-func (o LookupIoTRoleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetIoTRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Role status.
-func (o LookupIoTRoleResultOutput) RoleStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
+func (o GetIoTRoleResultOutput) RoleStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
 }
 
 // Mount points of shares in role(s).
-func (o LookupIoTRoleResultOutput) ShareMappings() MountPointMapResponseArrayOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) []MountPointMapResponse { return v.ShareMappings }).(MountPointMapResponseArrayOutput)
+func (o GetIoTRoleResultOutput) ShareMappings() MountPointMapResponseArrayOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) []MountPointMapResponse { return v.ShareMappings }).(MountPointMapResponseArrayOutput)
 }
 
 // Role configured on ASE resource
-func (o LookupIoTRoleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetIoTRoleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.
-func (o LookupIoTRoleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetIoTRoleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIoTRoleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupIoTRoleResultOutput{})
+	pulumi.RegisterOutputType(GetIoTRoleResultOutput{})
 }

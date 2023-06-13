@@ -12,7 +12,8 @@ import (
 )
 
 // A Postgres Instance.
-// API Version: 2021-06-01-preview.
+// API Version: 2023-01-15-preview.
+// Previous API Version: 2021-06-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type PostgresInstance struct {
 	pulumi.CustomResourceState
 
@@ -26,11 +27,11 @@ type PostgresInstance struct {
 	Properties PostgresInstancePropertiesResponseOutput `pulumi:"properties"`
 	// Resource sku.
 	Sku PostgresInstanceSkuResponsePtrOutput `pulumi:"sku"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -62,6 +63,9 @@ func NewPostgresInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:PostgresInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:PostgresInstance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -101,7 +105,7 @@ type postgresInstanceArgs struct {
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of PostgresInstance
+	// Name of Postgres Instance
 	PostgresInstanceName *string `pulumi:"postgresInstanceName"`
 	// null
 	Properties PostgresInstanceProperties `pulumi:"properties"`
@@ -119,7 +123,7 @@ type PostgresInstanceArgs struct {
 	ExtendedLocation ExtendedLocationPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of PostgresInstance
+	// Name of Postgres Instance
 	PostgresInstanceName pulumi.StringPtrInput
 	// null
 	Properties PostgresInstancePropertiesInput
@@ -193,7 +197,7 @@ func (o PostgresInstanceOutput) Sku() PostgresInstanceSkuResponsePtrOutput {
 	return o.ApplyT(func(v *PostgresInstance) PostgresInstanceSkuResponsePtrOutput { return v.Sku }).(PostgresInstanceSkuResponsePtrOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o PostgresInstanceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PostgresInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -203,7 +207,7 @@ func (o PostgresInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PostgresInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PostgresInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresInstance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

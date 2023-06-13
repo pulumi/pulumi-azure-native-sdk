@@ -11,19 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Fleet resource which contains multiple Kubernetes clusters as its members.
+// The Fleet resource.
 type Fleet struct {
 	pulumi.CustomResourceState
 
-	// Resource Etag.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The FleetHubProfile configures the Fleet's hub.
 	HubProfile FleetHubProfileResponsePtrOutput `pulumi:"hubProfile"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The provisioning state of the last accepted operation.
+	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -45,10 +45,16 @@ func NewFleet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:containerservice:Fleet"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerservice/v20220602preview:Fleet"),
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20220702preview:Fleet"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230315preview:Fleet"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -147,9 +153,9 @@ func (o FleetOutput) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return o
 }
 
-// Resource Etag.
-func (o FleetOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+func (o FleetOutput) ETag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
 }
 
 // The FleetHubProfile configures the Fleet's hub.
@@ -167,7 +173,7 @@ func (o FleetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state of the last accepted operation.
+// The status of the last operation.
 func (o FleetOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

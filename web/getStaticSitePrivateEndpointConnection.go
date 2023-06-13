@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a private endpoint connection
-// API Version: 2020-12-01.
+// Description for Gets a private endpoint connection
+// API Version: 2022-09-01.
 func LookupStaticSitePrivateEndpointConnection(ctx *pulumi.Context, args *LookupStaticSitePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupStaticSitePrivateEndpointConnectionResult, error) {
 	var rv LookupStaticSitePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:web:getStaticSitePrivateEndpointConnection", args, &rv, opts...)

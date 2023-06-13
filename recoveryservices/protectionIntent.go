@@ -12,7 +12,8 @@ import (
 )
 
 // Base class for backup ProtectionIntent.
-// API Version: 2021-02-01.
+// API Version: 2023-02-01.
+// Previous API Version: 2021-02-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ProtectionIntent struct {
 	pulumi.CustomResourceState
 
@@ -47,9 +48,6 @@ func NewProtectionIntent(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'VaultName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20170701:ProtectionIntent"),
-		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20210201:ProtectionIntent"),
 		},

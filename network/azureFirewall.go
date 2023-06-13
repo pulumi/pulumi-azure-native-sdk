@@ -12,7 +12,8 @@ import (
 )
 
 // Azure Firewall resource.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type AzureFirewall struct {
 	pulumi.CustomResourceState
 
@@ -67,9 +68,6 @@ func NewAzureFirewall(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20180401:AzureFirewall"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:AzureFirewall"),
 		},
@@ -156,6 +154,9 @@ func NewAzureFirewall(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:AzureFirewall"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:AzureFirewall"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,8 @@ import (
 )
 
 // Provider details.
-// API Version: 2018-07-10.
+// API Version: 2023-04-01.
+// Previous API Version: 2018-07-10. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ReplicationRecoveryServicesProvider struct {
 	pulumi.CustomResourceState
 
@@ -46,9 +47,6 @@ func NewReplicationRecoveryServicesProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20180110:ReplicationRecoveryServicesProvider"),
-		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20180710:ReplicationRecoveryServicesProvider"),
 		},
@@ -108,6 +106,9 @@ func NewReplicationRecoveryServicesProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ReplicationRecoveryServicesProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:ReplicationRecoveryServicesProvider"),
 		},
 	})
 	opts = append(opts, aliases)

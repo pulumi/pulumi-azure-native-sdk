@@ -11,7 +11,7 @@ import (
 )
 
 // The operation to get the VMSS VM run command.
-// API Version: 2021-03-01.
+// API Version: 2023-03-01.
 func LookupVirtualMachineScaleSetVMRunCommand(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMRunCommandArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMRunCommandResult, error) {
 	var rv LookupVirtualMachineScaleSetVMRunCommandResult
 	err := ctx.Invoke("azure-native:compute:getVirtualMachineScaleSetVMRunCommand", args, &rv, opts...)
@@ -38,7 +38,9 @@ type LookupVirtualMachineScaleSetVMRunCommandArgs struct {
 type LookupVirtualMachineScaleSetVMRunCommandResult struct {
 	// Optional. If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.
 	AsyncExecution *bool `pulumi:"asyncExecution"`
-	// Specifies the Azure storage blob where script error stream will be uploaded.
+	// User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
+	ErrorBlobManagedIdentity *RunCommandManagedIdentityResponse `pulumi:"errorBlobManagedIdentity"`
+	// Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
 	ErrorBlobUri *string `pulumi:"errorBlobUri"`
 	// Resource Id
 	Id string `pulumi:"id"`
@@ -48,13 +50,15 @@ type LookupVirtualMachineScaleSetVMRunCommandResult struct {
 	Location string `pulumi:"location"`
 	// Resource name
 	Name string `pulumi:"name"`
-	// Specifies the Azure storage blob where script output stream will be uploaded.
+	// User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
+	OutputBlobManagedIdentity *RunCommandManagedIdentityResponse `pulumi:"outputBlobManagedIdentity"`
+	// Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
 	OutputBlobUri *string `pulumi:"outputBlobUri"`
 	// The parameters used by the script.
 	Parameters []RunCommandInputParameterResponse `pulumi:"parameters"`
 	// The parameters used by the script.
 	ProtectedParameters []RunCommandInputParameterResponse `pulumi:"protectedParameters"`
-	// The provisioning state, which only appears in the response.
+	// The provisioning state, which only appears in the response. If treatFailureAsDeploymentFailure set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If treatFailureAsDeploymentFailure set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Specifies the user account password on the VM when executing the run command.
 	RunAsPassword *string `pulumi:"runAsPassword"`
@@ -66,6 +70,8 @@ type LookupVirtualMachineScaleSetVMRunCommandResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The timeout in seconds to execute the run command.
 	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+	// Optional. If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
+	TreatFailureAsDeploymentFailure *bool `pulumi:"treatFailureAsDeploymentFailure"`
 	// Resource type
 	Type string `pulumi:"type"`
 }
@@ -79,6 +85,10 @@ func (val *LookupVirtualMachineScaleSetVMRunCommandResult) Defaults() *LookupVir
 	if tmp.AsyncExecution == nil {
 		asyncExecution_ := false
 		tmp.AsyncExecution = &asyncExecution_
+	}
+	if tmp.TreatFailureAsDeploymentFailure == nil {
+		treatFailureAsDeploymentFailure_ := false
+		tmp.TreatFailureAsDeploymentFailure = &treatFailureAsDeploymentFailure_
 	}
 	return &tmp
 }
@@ -133,7 +143,14 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) AsyncExecution() p
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *bool { return v.AsyncExecution }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Azure storage blob where script error stream will be uploaded.
+// User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
+func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) ErrorBlobManagedIdentity() RunCommandManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *RunCommandManagedIdentityResponse {
+		return v.ErrorBlobManagedIdentity
+	}).(RunCommandManagedIdentityResponsePtrOutput)
+}
+
+// Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) ErrorBlobUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *string { return v.ErrorBlobUri }).(pulumi.StringPtrOutput)
 }
@@ -160,7 +177,14 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) Name() pulumi.Stri
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the Azure storage blob where script output stream will be uploaded.
+// User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
+func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) OutputBlobManagedIdentity() RunCommandManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *RunCommandManagedIdentityResponse {
+		return v.OutputBlobManagedIdentity
+	}).(RunCommandManagedIdentityResponsePtrOutput)
+}
+
+// Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) OutputBlobUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *string { return v.OutputBlobUri }).(pulumi.StringPtrOutput)
 }
@@ -179,7 +203,7 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) ProtectedParameter
 	}).(RunCommandInputParameterResponseArrayOutput)
 }
 
-// The provisioning state, which only appears in the response.
+// The provisioning state, which only appears in the response. If treatFailureAsDeploymentFailure set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If treatFailureAsDeploymentFailure set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -209,6 +233,11 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) Tags() pulumi.Stri
 // The timeout in seconds to execute the run command.
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
+func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) TreatFailureAsDeploymentFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *bool { return v.TreatFailureAsDeploymentFailure }).(pulumi.BoolPtrOutput)
 }
 
 // Resource type

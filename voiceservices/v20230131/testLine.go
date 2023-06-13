@@ -59,6 +59,9 @@ func NewTestLine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:voiceservices/v20221201preview:TestLine"),
 		},
+		{
+			Type: pulumi.String("azure-native:voiceservices/v20230403:TestLine"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource TestLine

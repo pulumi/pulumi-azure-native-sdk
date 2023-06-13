@@ -16,12 +16,12 @@ type FleetMember struct {
 	pulumi.CustomResourceState
 
 	// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
-	ClusterResourceId pulumi.StringPtrOutput `pulumi:"clusterResourceId"`
-	// Resource Etag.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	ClusterResourceId pulumi.StringOutput `pulumi:"clusterResourceId"`
+	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The provisioning state of the last accepted operation.
+	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -36,6 +36,9 @@ func NewFleetMember(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ClusterResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterResourceId'")
+	}
 	if args.FleetName == nil {
 		return nil, errors.New("invalid value for required argument 'FleetName'")
 	}
@@ -44,10 +47,16 @@ func NewFleetMember(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:containerservice:FleetMember"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerservice/v20220602preview:FleetMember"),
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20220702preview:FleetMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230315preview:FleetMember"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -84,7 +93,7 @@ func (FleetMemberState) ElementType() reflect.Type {
 
 type fleetMemberArgs struct {
 	// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
-	ClusterResourceId *string `pulumi:"clusterResourceId"`
+	ClusterResourceId string `pulumi:"clusterResourceId"`
 	// The name of the Fleet member resource.
 	FleetMemberName *string `pulumi:"fleetMemberName"`
 	// The name of the Fleet resource.
@@ -96,7 +105,7 @@ type fleetMemberArgs struct {
 // The set of arguments for constructing a FleetMember resource.
 type FleetMemberArgs struct {
 	// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
-	ClusterResourceId pulumi.StringPtrInput
+	ClusterResourceId pulumi.StringInput
 	// The name of the Fleet member resource.
 	FleetMemberName pulumi.StringPtrInput
 	// The name of the Fleet resource.
@@ -143,13 +152,13 @@ func (o FleetMemberOutput) ToFleetMemberOutputWithContext(ctx context.Context) F
 }
 
 // The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
-func (o FleetMemberOutput) ClusterResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FleetMember) pulumi.StringPtrOutput { return v.ClusterResourceId }).(pulumi.StringPtrOutput)
+func (o FleetMemberOutput) ClusterResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FleetMember) pulumi.StringOutput { return v.ClusterResourceId }).(pulumi.StringOutput)
 }
 
-// Resource Etag.
-func (o FleetMemberOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *FleetMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+func (o FleetMemberOutput) ETag() pulumi.StringOutput {
+	return o.ApplyT(func(v *FleetMember) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -157,7 +166,7 @@ func (o FleetMemberOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FleetMember) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state of the last accepted operation.
+// The status of the last operation.
 func (o FleetMemberOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *FleetMember) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

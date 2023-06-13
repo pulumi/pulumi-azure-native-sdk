@@ -30,6 +30,80 @@ type ApplicationServerConfigurationResponse struct {
 	VirtualMachineConfiguration VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
 }
 
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+type ApplicationServerFullResourceNames struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The list of virtual machine naming details.
+	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
+}
+
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+type ApplicationServerFullResourceNamesResponse struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The list of virtual machine naming details.
+	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
+}
+
+// The Application Server VM Details.
+type ApplicationServerVmDetailsResponse struct {
+	// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
+	StorageDetails []StorageInformationResponse `pulumi:"storageDetails"`
+	// Defines the type of application server VM.
+	Type             string `pulumi:"type"`
+	VirtualMachineId string `pulumi:"virtualMachineId"`
+}
+
+// The Application Server VM Details.
+type ApplicationServerVmDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerVmDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServerVmDetailsResponse)(nil)).Elem()
+}
+
+func (o ApplicationServerVmDetailsResponseOutput) ToApplicationServerVmDetailsResponseOutput() ApplicationServerVmDetailsResponseOutput {
+	return o
+}
+
+func (o ApplicationServerVmDetailsResponseOutput) ToApplicationServerVmDetailsResponseOutputWithContext(ctx context.Context) ApplicationServerVmDetailsResponseOutput {
+	return o
+}
+
+// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
+func (o ApplicationServerVmDetailsResponseOutput) StorageDetails() StorageInformationResponseArrayOutput {
+	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) []StorageInformationResponse { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
+}
+
+// Defines the type of application server VM.
+func (o ApplicationServerVmDetailsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ApplicationServerVmDetailsResponseOutput) VirtualMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) string { return v.VirtualMachineId }).(pulumi.StringOutput)
+}
+
+type ApplicationServerVmDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerVmDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationServerVmDetailsResponse)(nil)).Elem()
+}
+
+func (o ApplicationServerVmDetailsResponseArrayOutput) ToApplicationServerVmDetailsResponseArrayOutput() ApplicationServerVmDetailsResponseArrayOutput {
+	return o
+}
+
+func (o ApplicationServerVmDetailsResponseArrayOutput) ToApplicationServerVmDetailsResponseArrayOutputWithContext(ctx context.Context) ApplicationServerVmDetailsResponseArrayOutput {
+	return o
+}
+
+func (o ApplicationServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) ApplicationServerVmDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationServerVmDetailsResponse {
+		return vs[0].([]ApplicationServerVmDetailsResponse)[vs[1].(int)]
+	}).(ApplicationServerVmDetailsResponseOutput)
+}
+
 // Backup profile
 type BackupProfile struct {
 	// Whether to enable Azure backup for the workload
@@ -592,6 +666,26 @@ type CentralServerConfigurationResponse struct {
 	VirtualMachineConfiguration VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
 }
 
+// The full resource names object for central server layer resources.
+type CentralServerFullResourceNames struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer *LoadBalancerResourceNames `pulumi:"loadBalancer"`
+	// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
+}
+
+// The full resource names object for central server layer resources.
+type CentralServerFullResourceNamesResponse struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer *LoadBalancerResourceNamesResponse `pulumi:"loadBalancer"`
+	// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
+}
+
 // The SAP Central Services Instance VM details.
 type CentralServerVmDetailsResponse struct {
 	// Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage.
@@ -650,23 +744,23 @@ func (o CentralServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) Cent
 	}).(CentralServerVmDetailsResponseOutput)
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
 type CreateAndMountFileShareConfiguration struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
 	ConfigurationType string `pulumi:"configurationType"`
-	// The name of file share resource group. The app rg is used in case of missing input.
+	// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
 	ResourceGroup *string `pulumi:"resourceGroup"`
 	// The name of file share storage account name . A custom name is used in case of missing input.
 	StorageAccountName *string `pulumi:"storageAccountName"`
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
 type CreateAndMountFileShareConfigurationResponse struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
 	ConfigurationType string `pulumi:"configurationType"`
-	// The name of file share resource group. The app rg is used in case of missing input.
+	// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
 	ResourceGroup *string `pulumi:"resourceGroup"`
 	// The name of file share storage account name . A custom name is used in case of missing input.
 	StorageAccountName *string `pulumi:"storageAccountName"`
@@ -998,6 +1092,26 @@ func (o DatabaseProfileResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseProfileResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+type DatabaseServerFullResourceNames struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer *LoadBalancerResourceNames `pulumi:"loadBalancer"`
+	// The list of virtual machine naming details.
+	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
+}
+
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+type DatabaseServerFullResourceNamesResponse struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer *LoadBalancerResourceNamesResponse `pulumi:"loadBalancer"`
+	// The list of virtual machine naming details.
+	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
+}
+
 // Database VM details.
 type DatabaseVmDetailsResponse struct {
 	// Defines the SAP Instance status.
@@ -1135,6 +1249,8 @@ type DiscoveryConfiguration struct {
 	// The configuration Type.
 	// Expected value is 'Discovery'.
 	ConfigurationType string `pulumi:"configurationType"`
+	// The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
+	ManagedRgStorageAccountName *string `pulumi:"managedRgStorageAccountName"`
 }
 
 // Discovery Details.
@@ -1146,6 +1262,8 @@ type DiscoveryConfigurationResponse struct {
 	// The configuration Type.
 	// Expected value is 'Discovery'.
 	ConfigurationType string `pulumi:"configurationType"`
+	// The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
+	ManagedRgStorageAccountName *string `pulumi:"managedRgStorageAccountName"`
 }
 
 // The Disk Configuration Details.
@@ -1158,6 +1276,94 @@ type DiskConfiguration struct {
 type DiskConfigurationResponse struct {
 	// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
 	DiskVolumeConfigurations map[string]DiskVolumeConfigurationResponse `pulumi:"diskVolumeConfigurations"`
+}
+
+// The supported disk size details for a disk type.
+type DiskDetailsResponse struct {
+	// The disk tier, e.g. P10, E10.
+	DiskTier *string `pulumi:"diskTier"`
+	// The disk Iops.
+	IopsReadWrite *float64 `pulumi:"iopsReadWrite"`
+	// The maximum supported disk count.
+	MaximumSupportedDiskCount *float64 `pulumi:"maximumSupportedDiskCount"`
+	// The disk provisioned throughput in MBps.
+	MbpsReadWrite *float64 `pulumi:"mbpsReadWrite"`
+	// The minimum supported disk count.
+	MinimumSupportedDiskCount *float64 `pulumi:"minimumSupportedDiskCount"`
+	// The disk size in GB.
+	SizeGB *float64 `pulumi:"sizeGB"`
+	// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
+	Sku *DiskSkuResponse `pulumi:"sku"`
+}
+
+// The supported disk size details for a disk type.
+type DiskDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskDetailsResponse)(nil)).Elem()
+}
+
+func (o DiskDetailsResponseOutput) ToDiskDetailsResponseOutput() DiskDetailsResponseOutput {
+	return o
+}
+
+func (o DiskDetailsResponseOutput) ToDiskDetailsResponseOutputWithContext(ctx context.Context) DiskDetailsResponseOutput {
+	return o
+}
+
+// The disk tier, e.g. P10, E10.
+func (o DiskDetailsResponseOutput) DiskTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *string { return v.DiskTier }).(pulumi.StringPtrOutput)
+}
+
+// The disk Iops.
+func (o DiskDetailsResponseOutput) IopsReadWrite() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.IopsReadWrite }).(pulumi.Float64PtrOutput)
+}
+
+// The maximum supported disk count.
+func (o DiskDetailsResponseOutput) MaximumSupportedDiskCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.MaximumSupportedDiskCount }).(pulumi.Float64PtrOutput)
+}
+
+// The disk provisioned throughput in MBps.
+func (o DiskDetailsResponseOutput) MbpsReadWrite() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.MbpsReadWrite }).(pulumi.Float64PtrOutput)
+}
+
+// The minimum supported disk count.
+func (o DiskDetailsResponseOutput) MinimumSupportedDiskCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.MinimumSupportedDiskCount }).(pulumi.Float64PtrOutput)
+}
+
+// The disk size in GB.
+func (o DiskDetailsResponseOutput) SizeGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *float64 { return v.SizeGB }).(pulumi.Float64PtrOutput)
+}
+
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
+func (o DiskDetailsResponseOutput) Sku() DiskSkuResponsePtrOutput {
+	return o.ApplyT(func(v DiskDetailsResponse) *DiskSkuResponse { return v.Sku }).(DiskSkuResponsePtrOutput)
+}
+
+type DiskDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DiskDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiskDetailsResponse)(nil)).Elem()
+}
+
+func (o DiskDetailsResponseArrayOutput) ToDiskDetailsResponseArrayOutput() DiskDetailsResponseArrayOutput {
+	return o
+}
+
+func (o DiskDetailsResponseArrayOutput) ToDiskDetailsResponseArrayOutputWithContext(ctx context.Context) DiskDetailsResponseArrayOutput {
+	return o
+}
+
+func (o DiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) DiskDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskDetailsResponse {
+		return vs[0].([]DiskDetailsResponse)[vs[1].(int)]
+	}).(DiskDetailsResponseOutput)
 }
 
 // Disk resource creation details
@@ -1461,16 +1667,70 @@ func (o DiskInfoResponseArrayOutput) Index(i pulumi.IntInput) DiskInfoResponseOu
 	}).(DiskInfoResponseOutput)
 }
 
-// The disk sku.
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
 type DiskSku struct {
 	// Defines the disk sku name.
 	Name *string `pulumi:"name"`
 }
 
-// The disk sku.
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
 type DiskSkuResponse struct {
 	// Defines the disk sku name.
 	Name *string `pulumi:"name"`
+}
+
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
+type DiskSkuResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskSkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskSkuResponse)(nil)).Elem()
+}
+
+func (o DiskSkuResponseOutput) ToDiskSkuResponseOutput() DiskSkuResponseOutput {
+	return o
+}
+
+func (o DiskSkuResponseOutput) ToDiskSkuResponseOutputWithContext(ctx context.Context) DiskSkuResponseOutput {
+	return o
+}
+
+// Defines the disk sku name.
+func (o DiskSkuResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DiskSkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskSkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskSkuResponse)(nil)).Elem()
+}
+
+func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutput() DiskSkuResponsePtrOutput {
+	return o
+}
+
+func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutputWithContext(ctx context.Context) DiskSkuResponsePtrOutput {
+	return o
+}
+
+func (o DiskSkuResponsePtrOutput) Elem() DiskSkuResponseOutput {
+	return o.ApplyT(func(v *DiskSkuResponse) DiskSkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskSkuResponse
+		return ret
+	}).(DiskSkuResponseOutput)
+}
+
+// Defines the disk sku name.
+func (o DiskSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // The disk configuration required for the selected volume.
@@ -1491,6 +1751,90 @@ type DiskVolumeConfigurationResponse struct {
 	SizeGB *float64 `pulumi:"sizeGB"`
 	// The disk SKU details.
 	Sku *DiskSkuResponse `pulumi:"sku"`
+}
+
+// The disk configuration required for the selected volume.
+type DiskVolumeConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskVolumeConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskVolumeConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskVolumeConfigurationResponseOutput) ToDiskVolumeConfigurationResponseOutput() DiskVolumeConfigurationResponseOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationResponseOutput) ToDiskVolumeConfigurationResponseOutputWithContext(ctx context.Context) DiskVolumeConfigurationResponseOutput {
+	return o
+}
+
+// The total number of disks required for the concerned volume.
+func (o DiskVolumeConfigurationResponseOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfigurationResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// The disk size in GB.
+func (o DiskVolumeConfigurationResponseOutput) SizeGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfigurationResponse) *float64 { return v.SizeGB }).(pulumi.Float64PtrOutput)
+}
+
+// The disk SKU details.
+func (o DiskVolumeConfigurationResponseOutput) Sku() DiskSkuResponsePtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfigurationResponse) *DiskSkuResponse { return v.Sku }).(DiskSkuResponsePtrOutput)
+}
+
+type DiskVolumeConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskVolumeConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskVolumeConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskVolumeConfigurationResponsePtrOutput) ToDiskVolumeConfigurationResponsePtrOutput() DiskVolumeConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationResponsePtrOutput) ToDiskVolumeConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskVolumeConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationResponsePtrOutput) Elem() DiskVolumeConfigurationResponseOutput {
+	return o.ApplyT(func(v *DiskVolumeConfigurationResponse) DiskVolumeConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskVolumeConfigurationResponse
+		return ret
+	}).(DiskVolumeConfigurationResponseOutput)
+}
+
+// The total number of disks required for the concerned volume.
+func (o DiskVolumeConfigurationResponsePtrOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiskVolumeConfigurationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The disk size in GB.
+func (o DiskVolumeConfigurationResponsePtrOutput) SizeGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiskVolumeConfigurationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGB
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The disk SKU details.
+func (o DiskVolumeConfigurationResponsePtrOutput) Sku() DiskSkuResponsePtrOutput {
+	return o.ApplyT(func(v *DiskVolumeConfigurationResponse) *DiskSkuResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(DiskSkuResponsePtrOutput)
 }
 
 // Defines the SAP Enqueue Replication Server (ERS) properties.
@@ -2497,8 +2841,6 @@ type HanaDbProviderInstanceProperties struct {
 	DbPassword *string `pulumi:"dbPassword"`
 	// Gets or sets the key vault URI to secret with the database password.
 	DbPasswordUri *string `pulumi:"dbPasswordUri"`
-	// Gets or sets the blob URI to SSL certificate for the DB.
-	DbSslCertificateUri *string `pulumi:"dbSslCertificateUri"`
 	// Gets or sets the database user name.
 	DbUsername *string `pulumi:"dbUsername"`
 	// Gets or sets the target virtual machine size.
@@ -2508,6 +2850,8 @@ type HanaDbProviderInstanceProperties struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'SapHana'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier.
+	SapSid *string `pulumi:"sapSid"`
 	// Gets or sets the database sql port.
 	SqlPort *string `pulumi:"sqlPort"`
 	// Gets or sets the blob URI to SSL certificate for the DB.
@@ -2526,8 +2870,6 @@ type HanaDbProviderInstancePropertiesResponse struct {
 	DbPassword *string `pulumi:"dbPassword"`
 	// Gets or sets the key vault URI to secret with the database password.
 	DbPasswordUri *string `pulumi:"dbPasswordUri"`
-	// Gets or sets the blob URI to SSL certificate for the DB.
-	DbSslCertificateUri *string `pulumi:"dbSslCertificateUri"`
 	// Gets or sets the database user name.
 	DbUsername *string `pulumi:"dbUsername"`
 	// Gets or sets the target virtual machine size.
@@ -2537,6 +2879,8 @@ type HanaDbProviderInstancePropertiesResponse struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'SapHana'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier.
+	SapSid *string `pulumi:"sapSid"`
 	// Gets or sets the database sql port.
 	SqlPort *string `pulumi:"sqlPort"`
 	// Gets or sets the blob URI to SSL certificate for the DB.
@@ -2581,8 +2925,6 @@ type ImageReference struct {
 	Offer *string `pulumi:"offer"`
 	// The image publisher.
 	Publisher *string `pulumi:"publisher"`
-	// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
-	SharedGalleryImageId *string `pulumi:"sharedGalleryImageId"`
 	// The image SKU.
 	Sku *string `pulumi:"sku"`
 	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
@@ -2591,14 +2933,10 @@ type ImageReference struct {
 
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceResponse struct {
-	// Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
-	ExactVersion string `pulumi:"exactVersion"`
 	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
 	Offer *string `pulumi:"offer"`
 	// The image publisher.
 	Publisher *string `pulumi:"publisher"`
-	// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
-	SharedGalleryImageId *string `pulumi:"sharedGalleryImageId"`
 	// The image SKU.
 	Sku *string `pulumi:"sku"`
 	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
@@ -2653,6 +2991,30 @@ func (o LoadBalancerDetailsResponseOutput) ToLoadBalancerDetailsResponseOutputWi
 
 func (o LoadBalancerDetailsResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerDetailsResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The resource names object for load balancer and related resources.
+type LoadBalancerResourceNames struct {
+	// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+	BackendPoolNames []string `pulumi:"backendPoolNames"`
+	// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	FrontendIpConfigurationNames []string `pulumi:"frontendIpConfigurationNames"`
+	// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	HealthProbeNames []string `pulumi:"healthProbeNames"`
+	// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
+}
+
+// The resource names object for load balancer and related resources.
+type LoadBalancerResourceNamesResponse struct {
+	// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+	BackendPoolNames []string `pulumi:"backendPoolNames"`
+	// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	FrontendIpConfigurationNames []string `pulumi:"frontendIpConfigurationNames"`
+	// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	HealthProbeNames []string `pulumi:"healthProbeNames"`
+	// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
 }
 
 // Managed resource group configuration
@@ -3175,6 +3537,18 @@ func (val *NetworkConfigurationResponse) Defaults() *NetworkConfigurationRespons
 		tmp.IsSecondaryIpEnabled = &isSecondaryIpEnabled_
 	}
 	return &tmp
+}
+
+// The resource names object for network interface and related resources.
+type NetworkInterfaceResourceNames struct {
+	// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+}
+
+// The resource names object for network interface and related resources.
+type NetworkInterfaceResourceNamesResponse struct {
+	// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
 }
 
 // Network profile
@@ -4307,7 +4681,7 @@ type PhpWorkloadResourceIdentity struct {
 	// Type of manage identity
 	Type string `pulumi:"type"`
 	// User assigned identities dictionary
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // PhpWorkloadResourceIdentityInput is an input type that accepts PhpWorkloadResourceIdentityArgs and PhpWorkloadResourceIdentityOutput values.
@@ -4326,7 +4700,7 @@ type PhpWorkloadResourceIdentityArgs struct {
 	// Type of manage identity
 	Type pulumi.StringInput `pulumi:"type"`
 	// User assigned identities dictionary
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (PhpWorkloadResourceIdentityArgs) ElementType() reflect.Type {
@@ -4413,8 +4787,8 @@ func (o PhpWorkloadResourceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // User assigned identities dictionary
-func (o PhpWorkloadResourceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v PhpWorkloadResourceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o PhpWorkloadResourceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PhpWorkloadResourceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type PhpWorkloadResourceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -4452,13 +4826,13 @@ func (o PhpWorkloadResourceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // User assigned identities dictionary
-func (o PhpWorkloadResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *PhpWorkloadResourceIdentity) map[string]interface{} {
+func (o PhpWorkloadResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PhpWorkloadResourceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the resource. Currently not supported
@@ -4585,6 +4959,8 @@ type PrometheusOSProviderInstanceProperties struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'PrometheusOS'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
 	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
 	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets certificate preference if secure communication is enabled.
@@ -4598,6 +4974,8 @@ type PrometheusOSProviderInstancePropertiesResponse struct {
 	// The provider type. For example, the value can be SapHana.
 	// Expected value is 'PrometheusOS'.
 	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
 	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
 	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets certificate preference if secure communication is enabled.
@@ -4711,25 +5089,15 @@ func (o SAPAvailabilityZonePairResponseArrayOutput) Index(i pulumi.IntInput) SAP
 	}).(SAPAvailabilityZonePairResponseOutput)
 }
 
-// The SAP Disk Configuration.
+// The SAP Disk Configuration contains 'recommended disk' details and list of supported disks detail for a volume type.
 type SAPDiskConfigurationResponse struct {
-	// The disk count.
-	DiskCount *float64 `pulumi:"diskCount"`
-	// The disk Iops.
-	DiskIopsReadWrite *float64 `pulumi:"diskIopsReadWrite"`
-	// The disk provisioned throughput in MBps.
-	DiskMBpsReadWrite *float64 `pulumi:"diskMBpsReadWrite"`
-	// The disk size in GB.
-	DiskSizeGB *float64 `pulumi:"diskSizeGB"`
-	// The disk storage type
-	DiskStorageType *string `pulumi:"diskStorageType"`
-	// The disk type.
-	DiskType *string `pulumi:"diskType"`
-	// The volume name.
-	Volume *string `pulumi:"volume"`
+	// The recommended disk details for a given VM Sku.
+	RecommendedConfiguration *DiskVolumeConfigurationResponse `pulumi:"recommendedConfiguration"`
+	// The list of supported disks for a given VM Sku.
+	SupportedConfigurations []DiskDetailsResponse `pulumi:"supportedConfigurations"`
 }
 
-// The SAP Disk Configuration.
+// The SAP Disk Configuration contains 'recommended disk' details and list of supported disks detail for a volume type.
 type SAPDiskConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (SAPDiskConfigurationResponseOutput) ElementType() reflect.Type {
@@ -4744,58 +5112,35 @@ func (o SAPDiskConfigurationResponseOutput) ToSAPDiskConfigurationResponseOutput
 	return o
 }
 
-// The disk count.
-func (o SAPDiskConfigurationResponseOutput) DiskCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *float64 { return v.DiskCount }).(pulumi.Float64PtrOutput)
+// The recommended disk details for a given VM Sku.
+func (o SAPDiskConfigurationResponseOutput) RecommendedConfiguration() DiskVolumeConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SAPDiskConfigurationResponse) *DiskVolumeConfigurationResponse {
+		return v.RecommendedConfiguration
+	}).(DiskVolumeConfigurationResponsePtrOutput)
 }
 
-// The disk Iops.
-func (o SAPDiskConfigurationResponseOutput) DiskIopsReadWrite() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *float64 { return v.DiskIopsReadWrite }).(pulumi.Float64PtrOutput)
+// The list of supported disks for a given VM Sku.
+func (o SAPDiskConfigurationResponseOutput) SupportedConfigurations() DiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v SAPDiskConfigurationResponse) []DiskDetailsResponse { return v.SupportedConfigurations }).(DiskDetailsResponseArrayOutput)
 }
 
-// The disk provisioned throughput in MBps.
-func (o SAPDiskConfigurationResponseOutput) DiskMBpsReadWrite() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *float64 { return v.DiskMBpsReadWrite }).(pulumi.Float64PtrOutput)
+type SAPDiskConfigurationResponseMapOutput struct{ *pulumi.OutputState }
+
+func (SAPDiskConfigurationResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SAPDiskConfigurationResponse)(nil)).Elem()
 }
 
-// The disk size in GB.
-func (o SAPDiskConfigurationResponseOutput) DiskSizeGB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *float64 { return v.DiskSizeGB }).(pulumi.Float64PtrOutput)
-}
-
-// The disk storage type
-func (o SAPDiskConfigurationResponseOutput) DiskStorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *string { return v.DiskStorageType }).(pulumi.StringPtrOutput)
-}
-
-// The disk type.
-func (o SAPDiskConfigurationResponseOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *string { return v.DiskType }).(pulumi.StringPtrOutput)
-}
-
-// The volume name.
-func (o SAPDiskConfigurationResponseOutput) Volume() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SAPDiskConfigurationResponse) *string { return v.Volume }).(pulumi.StringPtrOutput)
-}
-
-type SAPDiskConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SAPDiskConfigurationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SAPDiskConfigurationResponse)(nil)).Elem()
-}
-
-func (o SAPDiskConfigurationResponseArrayOutput) ToSAPDiskConfigurationResponseArrayOutput() SAPDiskConfigurationResponseArrayOutput {
+func (o SAPDiskConfigurationResponseMapOutput) ToSAPDiskConfigurationResponseMapOutput() SAPDiskConfigurationResponseMapOutput {
 	return o
 }
 
-func (o SAPDiskConfigurationResponseArrayOutput) ToSAPDiskConfigurationResponseArrayOutputWithContext(ctx context.Context) SAPDiskConfigurationResponseArrayOutput {
+func (o SAPDiskConfigurationResponseMapOutput) ToSAPDiskConfigurationResponseMapOutputWithContext(ctx context.Context) SAPDiskConfigurationResponseMapOutput {
 	return o
 }
 
-func (o SAPDiskConfigurationResponseArrayOutput) Index(i pulumi.IntInput) SAPDiskConfigurationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SAPDiskConfigurationResponse {
-		return vs[0].([]SAPDiskConfigurationResponse)[vs[1].(int)]
+func (o SAPDiskConfigurationResponseMapOutput) MapIndex(k pulumi.StringInput) SAPDiskConfigurationResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SAPDiskConfigurationResponse {
+		return vs[0].(map[string]SAPDiskConfigurationResponse)[vs[1].(string)]
 	}).(SAPDiskConfigurationResponseOutput)
 }
 
@@ -4915,6 +5260,602 @@ func (o SAPVirtualInstanceErrorResponseOutput) Properties() ErrorDefinitionRespo
 	return o.ApplyT(func(v SAPVirtualInstanceErrorResponse) *ErrorDefinitionResponse { return v.Properties }).(ErrorDefinitionResponsePtrOutput)
 }
 
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholds struct {
+	// Gets or sets the threshold value for Green.
+	Green *float64 `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name *string `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red *float64 `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow *float64 `pulumi:"yellow"`
+}
+
+// SapLandscapeMonitorMetricThresholdsInput is an input type that accepts SapLandscapeMonitorMetricThresholdsArgs and SapLandscapeMonitorMetricThresholdsOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorMetricThresholdsInput` via:
+//
+//	SapLandscapeMonitorMetricThresholdsArgs{...}
+type SapLandscapeMonitorMetricThresholdsInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput
+	ToSapLandscapeMonitorMetricThresholdsOutputWithContext(context.Context) SapLandscapeMonitorMetricThresholdsOutput
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsArgs struct {
+	// Gets or sets the threshold value for Green.
+	Green pulumi.Float64PtrInput `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red pulumi.Float64PtrInput `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow pulumi.Float64PtrInput `pulumi:"yellow"`
+}
+
+func (SapLandscapeMonitorMetricThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArgs) ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput {
+	return i.ToSapLandscapeMonitorMetricThresholdsOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArgs) ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorMetricThresholdsOutput)
+}
+
+// SapLandscapeMonitorMetricThresholdsArrayInput is an input type that accepts SapLandscapeMonitorMetricThresholdsArray and SapLandscapeMonitorMetricThresholdsArrayOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorMetricThresholdsArrayInput` via:
+//
+//	SapLandscapeMonitorMetricThresholdsArray{ SapLandscapeMonitorMetricThresholdsArgs{...} }
+type SapLandscapeMonitorMetricThresholdsArrayInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput
+	ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput
+}
+
+type SapLandscapeMonitorMetricThresholdsArray []SapLandscapeMonitorMetricThresholdsInput
+
+func (SapLandscapeMonitorMetricThresholdsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArray) ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return i.ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArray) ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorMetricThresholdsArrayOutput)
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsOutput) ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsOutput) ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsOutput {
+	return o
+}
+
+// Gets or sets the threshold value for Green.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Green() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Green }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the name of the threshold.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the threshold value for Red.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Red() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Red }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the threshold value for Yellow.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Yellow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Yellow }).(pulumi.Float64PtrOutput)
+}
+
+type SapLandscapeMonitorMetricThresholdsArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorMetricThresholdsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorMetricThresholds {
+		return vs[0].([]SapLandscapeMonitorMetricThresholds)[vs[1].(int)]
+	}).(SapLandscapeMonitorMetricThresholdsOutput)
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsResponse struct {
+	// Gets or sets the threshold value for Green.
+	Green *float64 `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name *string `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red *float64 `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow *float64 `pulumi:"yellow"`
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsResponseOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholdsResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToSapLandscapeMonitorMetricThresholdsResponseOutput() SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToSapLandscapeMonitorMetricThresholdsResponseOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return o
+}
+
+// Gets or sets the threshold value for Green.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Green() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Green }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the name of the threshold.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the threshold value for Red.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Red() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Red }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the threshold value for Yellow.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Yellow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Yellow }).(pulumi.Float64PtrOutput)
+}
+
+type SapLandscapeMonitorMetricThresholdsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholdsResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToSapLandscapeMonitorMetricThresholdsResponseArrayOutput() SapLandscapeMonitorMetricThresholdsResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToSapLandscapeMonitorMetricThresholdsResponseArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorMetricThresholdsResponse {
+		return vs[0].([]SapLandscapeMonitorMetricThresholdsResponse)[vs[1].(int)]
+	}).(SapLandscapeMonitorMetricThresholdsResponseOutput)
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGrouping struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape []SapLandscapeMonitorSidMapping `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication []SapLandscapeMonitorSidMapping `pulumi:"sapApplication"`
+}
+
+// SapLandscapeMonitorPropertiesGroupingInput is an input type that accepts SapLandscapeMonitorPropertiesGroupingArgs and SapLandscapeMonitorPropertiesGroupingOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorPropertiesGroupingInput` via:
+//
+//	SapLandscapeMonitorPropertiesGroupingArgs{...}
+type SapLandscapeMonitorPropertiesGroupingInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput
+	ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(context.Context) SapLandscapeMonitorPropertiesGroupingOutput
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGroupingArgs struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape SapLandscapeMonitorSidMappingArrayInput `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication SapLandscapeMonitorSidMappingArrayInput `pulumi:"sapApplication"`
+}
+
+func (SapLandscapeMonitorPropertiesGroupingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingOutput)
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingOutput).ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx)
+}
+
+// SapLandscapeMonitorPropertiesGroupingPtrInput is an input type that accepts SapLandscapeMonitorPropertiesGroupingArgs, SapLandscapeMonitorPropertiesGroupingPtr and SapLandscapeMonitorPropertiesGroupingPtrOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorPropertiesGroupingPtrInput` via:
+//
+//	        SapLandscapeMonitorPropertiesGroupingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SapLandscapeMonitorPropertiesGroupingPtrInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput
+	ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput
+}
+
+type sapLandscapeMonitorPropertiesGroupingPtrType SapLandscapeMonitorPropertiesGroupingArgs
+
+func SapLandscapeMonitorPropertiesGroupingPtr(v *SapLandscapeMonitorPropertiesGroupingArgs) SapLandscapeMonitorPropertiesGroupingPtrInput {
+	return (*sapLandscapeMonitorPropertiesGroupingPtrType)(v)
+}
+
+func (*sapLandscapeMonitorPropertiesGroupingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingPtrOutput)
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGroupingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesGroupingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SapLandscapeMonitorPropertiesGrouping) *SapLandscapeMonitorPropertiesGrouping {
+		return &v
+	}).(SapLandscapeMonitorPropertiesGroupingPtrOutput)
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingOutput) Landscape() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping { return v.Landscape }).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingOutput) SapApplication() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping { return v.SapApplication }).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+type SapLandscapeMonitorPropertiesGroupingPtrOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesGroupingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesGroupingOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) SapLandscapeMonitorPropertiesGrouping {
+		if v != nil {
+			return *v
+		}
+		var ret SapLandscapeMonitorPropertiesGrouping
+		return ret
+	}).(SapLandscapeMonitorPropertiesGroupingOutput)
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) Landscape() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping {
+		if v == nil {
+			return nil
+		}
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) SapApplication() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping {
+		if v == nil {
+			return nil
+		}
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesResponseGrouping struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape []SapLandscapeMonitorSidMappingResponse `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication []SapLandscapeMonitorSidMappingResponse `pulumi:"sapApplication"`
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesResponseGroupingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesResponseGroupingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesResponseGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonitorPropertiesResponseGroupingOutput() SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonitorPropertiesResponseGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+type SapLandscapeMonitorPropertiesResponseGroupingPtrOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesResponseGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutput() SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) SapLandscapeMonitorPropertiesResponseGrouping {
+		if v != nil {
+			return *v
+		}
+		var ret SapLandscapeMonitorPropertiesResponseGrouping
+		return ret
+	}).(SapLandscapeMonitorPropertiesResponseGroupingOutput)
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMapping struct {
+	// Gets or sets the name of the grouping.
+	Name *string `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid []string `pulumi:"topSid"`
+}
+
+// SapLandscapeMonitorSidMappingInput is an input type that accepts SapLandscapeMonitorSidMappingArgs and SapLandscapeMonitorSidMappingOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorSidMappingInput` via:
+//
+//	SapLandscapeMonitorSidMappingArgs{...}
+type SapLandscapeMonitorSidMappingInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput
+	ToSapLandscapeMonitorSidMappingOutputWithContext(context.Context) SapLandscapeMonitorSidMappingOutput
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingArgs struct {
+	// Gets or sets the name of the grouping.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid pulumi.StringArrayInput `pulumi:"topSid"`
+}
+
+func (SapLandscapeMonitorSidMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorSidMappingArgs) ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput {
+	return i.ToSapLandscapeMonitorSidMappingOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorSidMappingArgs) ToSapLandscapeMonitorSidMappingOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorSidMappingOutput)
+}
+
+// SapLandscapeMonitorSidMappingArrayInput is an input type that accepts SapLandscapeMonitorSidMappingArray and SapLandscapeMonitorSidMappingArrayOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorSidMappingArrayInput` via:
+//
+//	SapLandscapeMonitorSidMappingArray{ SapLandscapeMonitorSidMappingArgs{...} }
+type SapLandscapeMonitorSidMappingArrayInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput
+	ToSapLandscapeMonitorSidMappingArrayOutputWithContext(context.Context) SapLandscapeMonitorSidMappingArrayOutput
+}
+
+type SapLandscapeMonitorSidMappingArray []SapLandscapeMonitorSidMappingInput
+
+func (SapLandscapeMonitorSidMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorSidMappingArray) ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput {
+	return i.ToSapLandscapeMonitorSidMappingArrayOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorSidMappingArray) ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingOutput) ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingOutput) ToSapLandscapeMonitorSidMappingOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingOutput {
+	return o
+}
+
+// Gets or sets the name of the grouping.
+func (o SapLandscapeMonitorSidMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of SID's.
+func (o SapLandscapeMonitorSidMappingOutput) TopSid() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMapping) []string { return v.TopSid }).(pulumi.StringArrayOutput)
+}
+
+type SapLandscapeMonitorSidMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorSidMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorSidMapping {
+		return vs[0].([]SapLandscapeMonitorSidMapping)[vs[1].(int)]
+	}).(SapLandscapeMonitorSidMappingOutput)
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingResponse struct {
+	// Gets or sets the name of the grouping.
+	Name *string `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid []string `pulumi:"topSid"`
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMappingResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingResponseOutput) ToSapLandscapeMonitorSidMappingResponseOutput() SapLandscapeMonitorSidMappingResponseOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseOutput) ToSapLandscapeMonitorSidMappingResponseOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingResponseOutput {
+	return o
+}
+
+// Gets or sets the name of the grouping.
+func (o SapLandscapeMonitorSidMappingResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMappingResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of SID's.
+func (o SapLandscapeMonitorSidMappingResponseOutput) TopSid() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMappingResponse) []string { return v.TopSid }).(pulumi.StringArrayOutput)
+}
+
+type SapLandscapeMonitorSidMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMappingResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToSapLandscapeMonitorSidMappingResponseArrayOutput() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToSapLandscapeMonitorSidMappingResponseArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorSidMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorSidMappingResponse {
+		return vs[0].([]SapLandscapeMonitorSidMappingResponse)[vs[1].(int)]
+	}).(SapLandscapeMonitorSidMappingResponseOutput)
+}
+
 // Gets or sets the provider properties.
 type SapNetWeaverProviderInstanceProperties struct {
 	// The provider type. For example, the value can be SapHana.
@@ -4936,8 +5877,6 @@ type SapNetWeaverProviderInstanceProperties struct {
 	SapPortNumber *string `pulumi:"sapPortNumber"`
 	// Gets or sets the SAP System Identifier
 	SapSid *string `pulumi:"sapSid"`
-	// Gets or sets the blob URI to SSL certificate for the SAP system.
-	SapSslCertificateUri *string `pulumi:"sapSslCertificateUri"`
 	// Gets or sets the SAP user name.
 	SapUsername *string `pulumi:"sapUsername"`
 	// Gets or sets the blob URI to SSL certificate for the SAP system.
@@ -4967,8 +5906,6 @@ type SapNetWeaverProviderInstancePropertiesResponse struct {
 	SapPortNumber *string `pulumi:"sapPortNumber"`
 	// Gets or sets the SAP System Identifier
 	SapSid *string `pulumi:"sapSid"`
-	// Gets or sets the blob URI to SSL certificate for the SAP system.
-	SapSslCertificateUri *string `pulumi:"sapSslCertificateUri"`
 	// Gets or sets the SAP user name.
 	SapUsername *string `pulumi:"sapUsername"`
 	// Gets or sets the blob URI to SSL certificate for the SAP system.
@@ -5412,10 +6349,28 @@ type ServiceInitiatedSoftwareConfigurationResponse struct {
 	SshPrivateKey string `pulumi:"sshPrivateKey"`
 }
 
-// Gets or sets the single server configuration.
+// The resource names object for shared storage.
+type SharedStorageResourceNames struct {
+	// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+	SharedStorageAccountName *string `pulumi:"sharedStorageAccountName"`
+	// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+	SharedStorageAccountPrivateEndPointName *string `pulumi:"sharedStorageAccountPrivateEndPointName"`
+}
+
+// The resource names object for shared storage.
+type SharedStorageResourceNamesResponse struct {
+	// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+	SharedStorageAccountName *string `pulumi:"sharedStorageAccountName"`
+	// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+	SharedStorageAccountPrivateEndPointName *string `pulumi:"sharedStorageAccountPrivateEndPointName"`
+}
+
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type SingleServerConfiguration struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames *SingleServerFullResourceNames `pulumi:"customResourceNames"`
 	// The database type.
 	DatabaseType *string `pulumi:"databaseType"`
 	// Gets or sets the disk configuration.
@@ -5442,10 +6397,12 @@ func (val *SingleServerConfiguration) Defaults() *SingleServerConfiguration {
 	return &tmp
 }
 
-// Gets or sets the single server configuration.
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type SingleServerConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames *SingleServerFullResourceNamesResponse `pulumi:"customResourceNames"`
 	// The database type.
 	DatabaseType *string `pulumi:"databaseType"`
 	// Gets or sets the disk configuration.
@@ -5470,6 +6427,24 @@ func (val *SingleServerConfigurationResponse) Defaults() *SingleServerConfigurat
 	tmp.NetworkConfiguration = tmp.NetworkConfiguration.Defaults()
 
 	return &tmp
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
+type SingleServerFullResourceNames struct {
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType string `pulumi:"namingPatternType"`
+	// The resource names object for virtual machine and related resources.
+	VirtualMachine *VirtualMachineResourceNames `pulumi:"virtualMachine"`
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
+type SingleServerFullResourceNamesResponse struct {
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType string `pulumi:"namingPatternType"`
+	// The resource names object for virtual machine and related resources.
+	VirtualMachine *VirtualMachineResourceNamesResponse `pulumi:"virtualMachine"`
 }
 
 // Workload website profile
@@ -6187,7 +7162,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the three tier SAP configuration.
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type ThreeTierConfiguration struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -6195,6 +7170,8 @@ type ThreeTierConfiguration struct {
 	ApplicationServer ApplicationServerConfiguration `pulumi:"applicationServer"`
 	// The central server configuration.
 	CentralServer CentralServerConfiguration `pulumi:"centralServer"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames *ThreeTierFullResourceNames `pulumi:"customResourceNames"`
 	// The database configuration.
 	DatabaseServer DatabaseConfiguration `pulumi:"databaseServer"`
 	// The type of SAP deployment, single server or Three tier.
@@ -6219,7 +7196,7 @@ func (val *ThreeTierConfiguration) Defaults() *ThreeTierConfiguration {
 	return &tmp
 }
 
-// Gets or sets the three tier SAP configuration.
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type ThreeTierConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -6227,6 +7204,8 @@ type ThreeTierConfigurationResponse struct {
 	ApplicationServer ApplicationServerConfigurationResponse `pulumi:"applicationServer"`
 	// The central server configuration.
 	CentralServer CentralServerConfigurationResponse `pulumi:"centralServer"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames *ThreeTierFullResourceNamesResponse `pulumi:"customResourceNames"`
 	// The database configuration.
 	DatabaseServer DatabaseConfigurationResponse `pulumi:"databaseServer"`
 	// The type of SAP deployment, single server or Three tier.
@@ -6249,6 +7228,36 @@ func (val *ThreeTierConfigurationResponse) Defaults() *ThreeTierConfigurationRes
 	tmp.NetworkConfiguration = tmp.NetworkConfiguration.Defaults()
 
 	return &tmp
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
+type ThreeTierFullResourceNames struct {
+	// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+	ApplicationServer *ApplicationServerFullResourceNames `pulumi:"applicationServer"`
+	// The full resource names object for central server layer resources.
+	CentralServer *CentralServerFullResourceNames `pulumi:"centralServer"`
+	// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+	DatabaseServer *DatabaseServerFullResourceNames `pulumi:"databaseServer"`
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType string `pulumi:"namingPatternType"`
+	// The resource names object for shared storage.
+	SharedStorage *SharedStorageResourceNames `pulumi:"sharedStorage"`
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
+type ThreeTierFullResourceNamesResponse struct {
+	// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+	ApplicationServer *ApplicationServerFullResourceNamesResponse `pulumi:"applicationServer"`
+	// The full resource names object for central server layer resources.
+	CentralServer *CentralServerFullResourceNamesResponse `pulumi:"centralServer"`
+	// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+	DatabaseServer *DatabaseServerFullResourceNamesResponse `pulumi:"databaseServer"`
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType string `pulumi:"namingPatternType"`
+	// The resource names object for shared storage.
+	SharedStorage *SharedStorageResourceNamesResponse `pulumi:"sharedStorage"`
 }
 
 // User assigned identity properties
@@ -6304,12 +7313,12 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentity struct {
 	// Type of manage identity
 	Type string `pulumi:"type"`
 	// User assigned identities dictionary
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // UserAssignedServiceIdentityInput is an input type that accepts UserAssignedServiceIdentityArgs and UserAssignedServiceIdentityOutput values.
@@ -6323,12 +7332,12 @@ type UserAssignedServiceIdentityInput interface {
 	ToUserAssignedServiceIdentityOutputWithContext(context.Context) UserAssignedServiceIdentityOutput
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityArgs struct {
 	// Type of manage identity
 	Type pulumi.StringInput `pulumi:"type"`
 	// User assigned identities dictionary
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (UserAssignedServiceIdentityArgs) ElementType() reflect.Type {
@@ -6384,7 +7393,7 @@ func (i *userAssignedServiceIdentityPtrType) ToUserAssignedServiceIdentityPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedServiceIdentityPtrOutput)
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedServiceIdentityOutput) ElementType() reflect.Type {
@@ -6415,8 +7424,8 @@ func (o UserAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // User assigned identities dictionary
-func (o UserAssignedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v UserAssignedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o UserAssignedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAssignedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type UserAssignedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -6454,16 +7463,16 @@ func (o UserAssignedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // User assigned identities dictionary
-func (o UserAssignedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *UserAssignedServiceIdentity) map[string]interface{} {
+func (o UserAssignedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserAssignedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityResponse struct {
 	// Type of manage identity
 	Type string `pulumi:"type"`
@@ -6471,7 +7480,7 @@ type UserAssignedServiceIdentityResponse struct {
 	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedServiceIdentityResponseOutput) ElementType() reflect.Type {
@@ -6657,6 +7666,34 @@ type VirtualMachineConfigurationResponse struct {
 	OsProfile OSProfileResponse `pulumi:"osProfile"`
 	// The virtual machine size.
 	VmSize string `pulumi:"vmSize"`
+}
+
+// The resource names object for virtual machine and related resources.
+type VirtualMachineResourceNames struct {
+	// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+	DataDiskNames map[string][]string `pulumi:"dataDiskNames"`
+	// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+	HostName *string `pulumi:"hostName"`
+	// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+	NetworkInterfaces []NetworkInterfaceResourceNames `pulumi:"networkInterfaces"`
+	// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+	OsDiskName *string `pulumi:"osDiskName"`
+	// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+	VmName *string `pulumi:"vmName"`
+}
+
+// The resource names object for virtual machine and related resources.
+type VirtualMachineResourceNamesResponse struct {
+	// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+	DataDiskNames map[string][]string `pulumi:"dataDiskNames"`
+	// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+	HostName *string `pulumi:"hostName"`
+	// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+	NetworkInterfaces []NetworkInterfaceResourceNamesResponse `pulumi:"networkInterfaces"`
+	// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+	OsDiskName *string `pulumi:"osDiskName"`
+	// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+	VmName *string `pulumi:"vmName"`
 }
 
 // VMSS profile
@@ -6858,6 +7895,8 @@ type WindowsConfigurationResponse struct {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApplicationServerVmDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ApplicationServerVmDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(BackupProfileOutput{})
 	pulumi.RegisterOutputType(BackupProfilePtrOutput{})
 	pulumi.RegisterOutputType(BackupProfileResponseOutput{})
@@ -6872,12 +7911,18 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseProfileResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseVmDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiskDetailsResponseOutput{})
+	pulumi.RegisterOutputType(DiskDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(DiskInfoOutput{})
 	pulumi.RegisterOutputType(DiskInfoPtrOutput{})
 	pulumi.RegisterOutputType(DiskInfoArrayOutput{})
 	pulumi.RegisterOutputType(DiskInfoResponseOutput{})
 	pulumi.RegisterOutputType(DiskInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiskInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiskSkuResponseOutput{})
+	pulumi.RegisterOutputType(DiskSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiskVolumeConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DiskVolumeConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnqueueReplicationServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EnqueueReplicationServerPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnqueueServerPropertiesResponseOutput{})
@@ -6926,10 +7971,22 @@ func init() {
 	pulumi.RegisterOutputType(SAPAvailabilityZonePairResponseOutput{})
 	pulumi.RegisterOutputType(SAPAvailabilityZonePairResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPDiskConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(SAPDiskConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(SAPDiskConfigurationResponseMapOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceErrorResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingPtrOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesResponseGroupingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesResponseGroupingPtrOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(SearchProfileOutput{})
 	pulumi.RegisterOutputType(SearchProfilePtrOutput{})
 	pulumi.RegisterOutputType(SearchProfileResponseOutput{})

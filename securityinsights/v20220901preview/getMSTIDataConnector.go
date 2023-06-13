@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20220901preview:MSTIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MSTIDataConnector to guarantee forwards compatibility.
-func LookupMSTIDataConnector(ctx *pulumi.Context, args *LookupMSTIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMSTIDataConnectorResult, error) {
-	var rv LookupMSTIDataConnectorResult
+func GetMSTIDataConnector(ctx *pulumi.Context, args *GetMSTIDataConnectorArgs, opts ...pulumi.InvokeOption) (*GetMSTIDataConnectorResult, error) {
+	var rv GetMSTIDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220901preview:getMSTIDataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupMSTIDataConnector(ctx *pulumi.Context, args *LookupMSTIDataConnectorA
 	return &rv, nil
 }
 
-type LookupMSTIDataConnectorArgs struct {
+type GetMSTIDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupMSTIDataConnectorArgs struct {
 }
 
 // Represents Microsoft Threat Intelligence data connector.
-type LookupMSTIDataConnectorResult struct {
+type GetMSTIDataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes MSTIDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -52,20 +50,20 @@ type LookupMSTIDataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupMSTIDataConnectorOutput(ctx *pulumi.Context, args LookupMSTIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMSTIDataConnectorResultOutput {
+func GetMSTIDataConnectorOutput(ctx *pulumi.Context, args GetMSTIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetMSTIDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMSTIDataConnectorResult, error) {
-			args := v.(LookupMSTIDataConnectorArgs)
-			r, err := LookupMSTIDataConnector(ctx, &args, opts...)
-			var s LookupMSTIDataConnectorResult
+		ApplyT(func(v interface{}) (GetMSTIDataConnectorResult, error) {
+			args := v.(GetMSTIDataConnectorArgs)
+			r, err := GetMSTIDataConnector(ctx, &args, opts...)
+			var s GetMSTIDataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupMSTIDataConnectorResultOutput)
+		}).(GetMSTIDataConnectorResultOutput)
 }
 
-type LookupMSTIDataConnectorOutputArgs struct {
+type GetMSTIDataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -74,66 +72,66 @@ type LookupMSTIDataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupMSTIDataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMSTIDataConnectorArgs)(nil)).Elem()
+func (GetMSTIDataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMSTIDataConnectorArgs)(nil)).Elem()
 }
 
 // Represents Microsoft Threat Intelligence data connector.
-type LookupMSTIDataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetMSTIDataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupMSTIDataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMSTIDataConnectorResult)(nil)).Elem()
+func (GetMSTIDataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMSTIDataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupMSTIDataConnectorResultOutput) ToLookupMSTIDataConnectorResultOutput() LookupMSTIDataConnectorResultOutput {
+func (o GetMSTIDataConnectorResultOutput) ToGetMSTIDataConnectorResultOutput() GetMSTIDataConnectorResultOutput {
 	return o
 }
 
-func (o LookupMSTIDataConnectorResultOutput) ToLookupMSTIDataConnectorResultOutputWithContext(ctx context.Context) LookupMSTIDataConnectorResultOutput {
+func (o GetMSTIDataConnectorResultOutput) ToGetMSTIDataConnectorResultOutputWithContext(ctx context.Context) GetMSTIDataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupMSTIDataConnectorResultOutput) DataTypes() MSTIDataConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupMSTIDataConnectorResult) MSTIDataConnectorDataTypesResponse { return v.DataTypes }).(MSTIDataConnectorDataTypesResponseOutput)
+func (o GetMSTIDataConnectorResultOutput) DataTypes() MSTIDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetMSTIDataConnectorResult) MSTIDataConnectorDataTypesResponse { return v.DataTypes }).(MSTIDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
-func (o LookupMSTIDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMSTIDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetMSTIDataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMSTIDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupMSTIDataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMSTIDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetMSTIDataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMSTIDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'MicrosoftThreatIntelligence'.
-func (o LookupMSTIDataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMSTIDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetMSTIDataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMSTIDataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupMSTIDataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMSTIDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetMSTIDataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMSTIDataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMSTIDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMSTIDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetMSTIDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetMSTIDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupMSTIDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMSTIDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o GetMSTIDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMSTIDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupMSTIDataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMSTIDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetMSTIDataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMSTIDataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupMSTIDataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetMSTIDataConnectorResultOutput{})
 }

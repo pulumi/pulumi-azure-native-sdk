@@ -13,6 +13,7 @@ import (
 
 // A favorite process identifier.
 // API Version: 2022-04-01-preview.
+// Previous API Version: 2022-04-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type FavoriteProcess struct {
 	pulumi.CustomResourceState
 
@@ -46,9 +47,6 @@ func NewFavoriteProcess(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'TestBaseAccountName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:testbase/v20201216preview:FavoriteProcess"),
-		},
 		{
 			Type: pulumi.String("azure-native:testbase/v20220401preview:FavoriteProcess"),
 		},

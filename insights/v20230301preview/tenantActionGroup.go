@@ -55,6 +55,15 @@ func NewTenantActionGroup(ctx *pulumi.Context,
 	if args.Enabled == nil {
 		args.Enabled = pulumi.Bool(true)
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:insights:TenantActionGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20230501preview:TenantActionGroup"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource TenantActionGroup
 	err := ctx.RegisterResource("azure-native:insights/v20230301preview:TenantActionGroup", name, args, &resource, opts...)
 	if err != nil {

@@ -45,6 +45,15 @@ func NewSqlServerDatabase(ctx *pulumi.Context,
 	if args.SqlServerInstanceName == nil {
 		return nil, errors.New("invalid value for required argument 'SqlServerInstanceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:azurearcdata:SqlServerDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:SqlServerDatabase"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource SqlServerDatabase
 	err := ctx.RegisterResource("azure-native:azurearcdata/v20220615preview:SqlServerDatabase", name, args, &resource, opts...)
 	if err != nil {

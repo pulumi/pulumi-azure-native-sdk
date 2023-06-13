@@ -12,7 +12,8 @@ import (
 )
 
 // A share data transfer object.
-// API Version: 2020-09-01.
+// API Version: 2021-08-01.
+// Previous API Version: 2020-09-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Share struct {
 	pulumi.CustomResourceState
 
@@ -52,12 +53,6 @@ func NewShare(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:datashare/v20181101preview:Share"),
-		},
-		{
-			Type: pulumi.String("azure-native:datashare/v20191101:Share"),
-		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20200901:Share"),
 		},

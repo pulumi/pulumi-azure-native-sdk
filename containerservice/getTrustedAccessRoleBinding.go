@@ -11,7 +11,7 @@ import (
 )
 
 // Defines binding between a resource and role
-// API Version: 2022-04-02-preview.
+// API Version: 2023-04-02-preview.
 func LookupTrustedAccessRoleBinding(ctx *pulumi.Context, args *LookupTrustedAccessRoleBindingArgs, opts ...pulumi.InvokeOption) (*LookupTrustedAccessRoleBindingResult, error) {
 	var rv LookupTrustedAccessRoleBindingResult
 	err := ctx.Invoke("azure-native:containerservice:getTrustedAccessRoleBinding", args, &rv, opts...)

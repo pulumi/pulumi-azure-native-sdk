@@ -12,7 +12,8 @@ import (
 )
 
 // BaseBackupPolicy resource
-// API Version: 2021-01-01.
+// API Version: 2023-01-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
@@ -91,6 +92,9 @@ func NewBackupPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230101:BackupPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:BackupPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource BackupPolicy
@@ -129,7 +133,7 @@ type backupPolicyArgs struct {
 	BackupPolicyName *string `pulumi:"backupPolicyName"`
 	// BaseBackupPolicyResource properties
 	Properties *BackupPolicyType `pulumi:"properties"`
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the backup vault.
 	VaultName string `pulumi:"vaultName"`
@@ -141,7 +145,7 @@ type BackupPolicyArgs struct {
 	BackupPolicyName pulumi.StringPtrInput
 	// BaseBackupPolicyResource properties
 	Properties BackupPolicyTypePtrInput
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the backup vault.
 	VaultName pulumi.StringInput

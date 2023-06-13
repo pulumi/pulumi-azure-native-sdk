@@ -61,6 +61,9 @@ func NewSpacecraft(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:orbital:Spacecraft"),
+		},
+		{
 			Type: pulumi.String("azure-native:orbital/v20220301:Spacecraft"),
 		},
 	})

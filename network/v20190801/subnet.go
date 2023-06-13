@@ -73,51 +73,6 @@ func NewSubnet(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:Subnet"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20150501preview:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20150615:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160330:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160601:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20160901:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20161201:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:Subnet"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:Subnet"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180601:Subnet"),
 		},
 		{
@@ -201,6 +156,9 @@ func NewSubnet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:Subnet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:Subnet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Subnet
@@ -258,11 +216,11 @@ type subnetArgs struct {
 	// An array of references to the external resources using subnet.
 	ResourceNavigationLinks []ResourceNavigationLink `pulumi:"resourceNavigationLinks"`
 	// The reference of the RouteTable resource.
-	RouteTable *RouteTableType `pulumi:"routeTable"`
+	RouteTable *RouteTable `pulumi:"routeTable"`
 	// An array of references to services injecting into this subnet.
 	ServiceAssociationLinks []ServiceAssociationLink `pulumi:"serviceAssociationLinks"`
 	// An array of service endpoint policies.
-	ServiceEndpointPolicies []ServiceEndpointPolicyType `pulumi:"serviceEndpointPolicies"`
+	ServiceEndpointPolicies []ServiceEndpointPolicy `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints []ServiceEndpointPropertiesFormat `pulumi:"serviceEndpoints"`
 	// The name of the subnet.
@@ -296,11 +254,11 @@ type SubnetArgs struct {
 	// An array of references to the external resources using subnet.
 	ResourceNavigationLinks ResourceNavigationLinkArrayInput
 	// The reference of the RouteTable resource.
-	RouteTable RouteTableTypePtrInput
+	RouteTable RouteTablePtrInput
 	// An array of references to services injecting into this subnet.
 	ServiceAssociationLinks ServiceAssociationLinkArrayInput
 	// An array of service endpoint policies.
-	ServiceEndpointPolicies ServiceEndpointPolicyTypeArrayInput
+	ServiceEndpointPolicies ServiceEndpointPolicyArrayInput
 	// An array of service endpoints.
 	ServiceEndpoints ServiceEndpointPropertiesFormatArrayInput
 	// The name of the subnet.

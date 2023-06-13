@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a setting.
-//
-// Deprecated: azure-native:securityinsights/v20190101preview:Ueba is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:Ueba to guarantee forwards compatibility.
-func LookupUeba(ctx *pulumi.Context, args *LookupUebaArgs, opts ...pulumi.InvokeOption) (*LookupUebaResult, error) {
-	var rv LookupUebaResult
+func GetUeba(ctx *pulumi.Context, args *GetUebaArgs, opts ...pulumi.InvokeOption) (*GetUebaResult, error) {
+	var rv GetUebaResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getUeba", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupUeba(ctx *pulumi.Context, args *LookupUebaArgs, opts ...pulumi.Invoke
 	return &rv, nil
 }
 
-type LookupUebaArgs struct {
+type GetUebaArgs struct {
 	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
@@ -34,7 +32,7 @@ type LookupUebaArgs struct {
 }
 
 // Settings with single toggle.
-type LookupUebaResult struct {
+type GetUebaResult struct {
 	// The relevant data sources that enriched by ueba
 	DataSources []string `pulumi:"dataSources"`
 	// Etag of the azure resource
@@ -49,20 +47,20 @@ type LookupUebaResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupUebaOutput(ctx *pulumi.Context, args LookupUebaOutputArgs, opts ...pulumi.InvokeOption) LookupUebaResultOutput {
+func GetUebaOutput(ctx *pulumi.Context, args GetUebaOutputArgs, opts ...pulumi.InvokeOption) GetUebaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupUebaResult, error) {
-			args := v.(LookupUebaArgs)
-			r, err := LookupUeba(ctx, &args, opts...)
-			var s LookupUebaResult
+		ApplyT(func(v interface{}) (GetUebaResult, error) {
+			args := v.(GetUebaArgs)
+			r, err := GetUeba(ctx, &args, opts...)
+			var s GetUebaResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupUebaResultOutput)
+		}).(GetUebaResultOutput)
 }
 
-type LookupUebaOutputArgs struct {
+type GetUebaOutputArgs struct {
 	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
 	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
@@ -73,55 +71,55 @@ type LookupUebaOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupUebaOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupUebaArgs)(nil)).Elem()
+func (GetUebaOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUebaArgs)(nil)).Elem()
 }
 
 // Settings with single toggle.
-type LookupUebaResultOutput struct{ *pulumi.OutputState }
+type GetUebaResultOutput struct{ *pulumi.OutputState }
 
-func (LookupUebaResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupUebaResult)(nil)).Elem()
+func (GetUebaResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUebaResult)(nil)).Elem()
 }
 
-func (o LookupUebaResultOutput) ToLookupUebaResultOutput() LookupUebaResultOutput {
+func (o GetUebaResultOutput) ToGetUebaResultOutput() GetUebaResultOutput {
 	return o
 }
 
-func (o LookupUebaResultOutput) ToLookupUebaResultOutputWithContext(ctx context.Context) LookupUebaResultOutput {
+func (o GetUebaResultOutput) ToGetUebaResultOutputWithContext(ctx context.Context) GetUebaResultOutput {
 	return o
 }
 
 // The relevant data sources that enriched by ueba
-func (o LookupUebaResultOutput) DataSources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupUebaResult) []string { return v.DataSources }).(pulumi.StringArrayOutput)
+func (o GetUebaResultOutput) DataSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUebaResult) []string { return v.DataSources }).(pulumi.StringArrayOutput)
 }
 
 // Etag of the azure resource
-func (o LookupUebaResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupUebaResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetUebaResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUebaResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Azure resource Id
-func (o LookupUebaResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUebaResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetUebaResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUebaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Expected value is 'Ueba'.
-func (o LookupUebaResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUebaResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetUebaResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUebaResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Azure resource name
-func (o LookupUebaResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUebaResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetUebaResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUebaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure resource type
-func (o LookupUebaResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUebaResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetUebaResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUebaResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupUebaResultOutput{})
+	pulumi.RegisterOutputType(GetUebaResultOutput{})
 }

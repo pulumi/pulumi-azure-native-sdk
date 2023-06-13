@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,38 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:databoxedge/v20220401preview:ArcAddon":
-		r = &ArcAddon{}
-	case "azure-native:databoxedge/v20220401preview:BandwidthSchedule":
-		r = &BandwidthSchedule{}
-	case "azure-native:databoxedge/v20220401preview:CloudEdgeManagementRole":
-		r = &CloudEdgeManagementRole{}
-	case "azure-native:databoxedge/v20220401preview:Container":
-		r = &Container{}
 	case "azure-native:databoxedge/v20220401preview:Device":
 		r = &Device{}
-	case "azure-native:databoxedge/v20220401preview:FileEventTrigger":
-		r = &FileEventTrigger{}
-	case "azure-native:databoxedge/v20220401preview:IoTRole":
-		r = &IoTRole{}
-	case "azure-native:databoxedge/v20220401preview:KubernetesRole":
-		r = &KubernetesRole{}
-	case "azure-native:databoxedge/v20220401preview:MECRole":
-		r = &MECRole{}
-	case "azure-native:databoxedge/v20220401preview:MonitoringConfig":
-		r = &MonitoringConfig{}
 	case "azure-native:databoxedge/v20220401preview:Order":
 		r = &Order{}
-	case "azure-native:databoxedge/v20220401preview:PeriodicTimerEventTrigger":
-		r = &PeriodicTimerEventTrigger{}
-	case "azure-native:databoxedge/v20220401preview:Share":
-		r = &Share{}
-	case "azure-native:databoxedge/v20220401preview:StorageAccount":
-		r = &StorageAccount{}
-	case "azure-native:databoxedge/v20220401preview:StorageAccountCredential":
-		r = &StorageAccountCredential{}
-	case "azure-native:databoxedge/v20220401preview:User":
-		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

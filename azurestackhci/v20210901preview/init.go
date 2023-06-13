@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,29 +23,25 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:azurestackhci/v20210901preview:ArcSetting":
 		r = &ArcSetting{}
-	case "azure-native:azurestackhci/v20210901preview:Cluster":
-		r = &Cluster{}
-	case "azure-native:azurestackhci/v20210901preview:Extension":
-		r = &Extension{}
+	case "azure-native:azurestackhci/v20210901preview:GalleryimageRetrieve":
+		r = &GalleryimageRetrieve{}
 	case "azure-native:azurestackhci/v20210901preview:GuestAgent":
 		r = &GuestAgent{}
 	case "azure-native:azurestackhci/v20210901preview:HybridIdentityMetadatum":
 		r = &HybridIdentityMetadatum{}
 	case "azure-native:azurestackhci/v20210901preview:MachineExtension":
 		r = &MachineExtension{}
-	case "azure-native:azurestackhci/v20210901preview:galleryimageRetrieve":
-		r = &GalleryimageRetrieve{}
-	case "azure-native:azurestackhci/v20210901preview:marketplacegalleryimage":
+	case "azure-native:azurestackhci/v20210901preview:Marketplacegalleryimage":
 		r = &Marketplacegalleryimage{}
-	case "azure-native:azurestackhci/v20210901preview:networkinterfaceRetrieve":
+	case "azure-native:azurestackhci/v20210901preview:NetworkinterfaceRetrieve":
 		r = &NetworkinterfaceRetrieve{}
-	case "azure-native:azurestackhci/v20210901preview:storagecontainerRetrieve":
+	case "azure-native:azurestackhci/v20210901preview:StoragecontainerRetrieve":
 		r = &StoragecontainerRetrieve{}
-	case "azure-native:azurestackhci/v20210901preview:virtualharddiskRetrieve":
+	case "azure-native:azurestackhci/v20210901preview:VirtualharddiskRetrieve":
 		r = &VirtualharddiskRetrieve{}
-	case "azure-native:azurestackhci/v20210901preview:virtualmachineRetrieve":
+	case "azure-native:azurestackhci/v20210901preview:VirtualmachineRetrieve":
 		r = &VirtualmachineRetrieve{}
-	case "azure-native:azurestackhci/v20210901preview:virtualnetworkRetrieve":
+	case "azure-native:azurestackhci/v20210901preview:VirtualnetworkRetrieve":
 		r = &VirtualnetworkRetrieve{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)

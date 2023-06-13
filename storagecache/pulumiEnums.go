@@ -10,12 +10,179 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The type of identity used for the resource.
+type AmlFilesystemIdentityType string
+
+const (
+	AmlFilesystemIdentityTypeUserAssigned = AmlFilesystemIdentityType("UserAssigned")
+	AmlFilesystemIdentityTypeNone         = AmlFilesystemIdentityType("None")
+)
+
+func (AmlFilesystemIdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemIdentityType)(nil)).Elem()
+}
+
+func (e AmlFilesystemIdentityType) ToAmlFilesystemIdentityTypeOutput() AmlFilesystemIdentityTypeOutput {
+	return pulumi.ToOutput(e).(AmlFilesystemIdentityTypeOutput)
+}
+
+func (e AmlFilesystemIdentityType) ToAmlFilesystemIdentityTypeOutputWithContext(ctx context.Context) AmlFilesystemIdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AmlFilesystemIdentityTypeOutput)
+}
+
+func (e AmlFilesystemIdentityType) ToAmlFilesystemIdentityTypePtrOutput() AmlFilesystemIdentityTypePtrOutput {
+	return e.ToAmlFilesystemIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e AmlFilesystemIdentityType) ToAmlFilesystemIdentityTypePtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityTypePtrOutput {
+	return AmlFilesystemIdentityType(e).ToAmlFilesystemIdentityTypeOutputWithContext(ctx).ToAmlFilesystemIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e AmlFilesystemIdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmlFilesystemIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmlFilesystemIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AmlFilesystemIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AmlFilesystemIdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemIdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemIdentityType)(nil)).Elem()
+}
+
+func (o AmlFilesystemIdentityTypeOutput) ToAmlFilesystemIdentityTypeOutput() AmlFilesystemIdentityTypeOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityTypeOutput) ToAmlFilesystemIdentityTypeOutputWithContext(ctx context.Context) AmlFilesystemIdentityTypeOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityTypeOutput) ToAmlFilesystemIdentityTypePtrOutput() AmlFilesystemIdentityTypePtrOutput {
+	return o.ToAmlFilesystemIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemIdentityTypeOutput) ToAmlFilesystemIdentityTypePtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmlFilesystemIdentityType) *AmlFilesystemIdentityType {
+		return &v
+	}).(AmlFilesystemIdentityTypePtrOutput)
+}
+
+func (o AmlFilesystemIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmlFilesystemIdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AmlFilesystemIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmlFilesystemIdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AmlFilesystemIdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemIdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemIdentityType)(nil)).Elem()
+}
+
+func (o AmlFilesystemIdentityTypePtrOutput) ToAmlFilesystemIdentityTypePtrOutput() AmlFilesystemIdentityTypePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityTypePtrOutput) ToAmlFilesystemIdentityTypePtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityTypePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemIdentityTypePtrOutput) Elem() AmlFilesystemIdentityTypeOutput {
+	return o.ApplyT(func(v *AmlFilesystemIdentityType) AmlFilesystemIdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemIdentityType
+		return ret
+	}).(AmlFilesystemIdentityTypeOutput)
+}
+
+func (o AmlFilesystemIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AmlFilesystemIdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AmlFilesystemIdentityTypeInput is an input type that accepts AmlFilesystemIdentityTypeArgs and AmlFilesystemIdentityTypeOutput values.
+// You can construct a concrete instance of `AmlFilesystemIdentityTypeInput` via:
+//
+//	AmlFilesystemIdentityTypeArgs{...}
+type AmlFilesystemIdentityTypeInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemIdentityTypeOutput() AmlFilesystemIdentityTypeOutput
+	ToAmlFilesystemIdentityTypeOutputWithContext(context.Context) AmlFilesystemIdentityTypeOutput
+}
+
+var amlFilesystemIdentityTypePtrType = reflect.TypeOf((**AmlFilesystemIdentityType)(nil)).Elem()
+
+type AmlFilesystemIdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemIdentityTypePtrOutput() AmlFilesystemIdentityTypePtrOutput
+	ToAmlFilesystemIdentityTypePtrOutputWithContext(context.Context) AmlFilesystemIdentityTypePtrOutput
+}
+
+type amlFilesystemIdentityTypePtr string
+
+func AmlFilesystemIdentityTypePtr(v string) AmlFilesystemIdentityTypePtrInput {
+	return (*amlFilesystemIdentityTypePtr)(&v)
+}
+
+func (*amlFilesystemIdentityTypePtr) ElementType() reflect.Type {
+	return amlFilesystemIdentityTypePtrType
+}
+
+func (in *amlFilesystemIdentityTypePtr) ToAmlFilesystemIdentityTypePtrOutput() AmlFilesystemIdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(AmlFilesystemIdentityTypePtrOutput)
+}
+
+func (in *amlFilesystemIdentityTypePtr) ToAmlFilesystemIdentityTypePtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AmlFilesystemIdentityTypePtrOutput)
+}
+
 // The type of identity used for the cache
 type CacheIdentityType string
 
 const (
-	CacheIdentityTypeSystemAssigned = CacheIdentityType("SystemAssigned")
-	CacheIdentityTypeNone           = CacheIdentityType("None")
+	CacheIdentityTypeSystemAssigned               = CacheIdentityType("SystemAssigned")
+	CacheIdentityTypeUserAssigned                 = CacheIdentityType("UserAssigned")
+	CacheIdentityType_SystemAssigned_UserAssigned = CacheIdentityType("SystemAssigned, UserAssigned")
+	CacheIdentityTypeNone                         = CacheIdentityType("None")
 )
 
 func (CacheIdentityType) ElementType() reflect.Type {
@@ -175,6 +342,176 @@ func (in *cacheIdentityTypePtr) ToCacheIdentityTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(CacheIdentityTypePtrOutput)
 }
 
+// Day of the week on which the maintenance window will occur.
+type MaintenanceDayOfWeekType string
+
+const (
+	MaintenanceDayOfWeekTypeMonday    = MaintenanceDayOfWeekType("Monday")
+	MaintenanceDayOfWeekTypeTuesday   = MaintenanceDayOfWeekType("Tuesday")
+	MaintenanceDayOfWeekTypeWednesday = MaintenanceDayOfWeekType("Wednesday")
+	MaintenanceDayOfWeekTypeThursday  = MaintenanceDayOfWeekType("Thursday")
+	MaintenanceDayOfWeekTypeFriday    = MaintenanceDayOfWeekType("Friday")
+	MaintenanceDayOfWeekTypeSaturday  = MaintenanceDayOfWeekType("Saturday")
+	MaintenanceDayOfWeekTypeSunday    = MaintenanceDayOfWeekType("Sunday")
+)
+
+func (MaintenanceDayOfWeekType) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceDayOfWeekType)(nil)).Elem()
+}
+
+func (e MaintenanceDayOfWeekType) ToMaintenanceDayOfWeekTypeOutput() MaintenanceDayOfWeekTypeOutput {
+	return pulumi.ToOutput(e).(MaintenanceDayOfWeekTypeOutput)
+}
+
+func (e MaintenanceDayOfWeekType) ToMaintenanceDayOfWeekTypeOutputWithContext(ctx context.Context) MaintenanceDayOfWeekTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MaintenanceDayOfWeekTypeOutput)
+}
+
+func (e MaintenanceDayOfWeekType) ToMaintenanceDayOfWeekTypePtrOutput() MaintenanceDayOfWeekTypePtrOutput {
+	return e.ToMaintenanceDayOfWeekTypePtrOutputWithContext(context.Background())
+}
+
+func (e MaintenanceDayOfWeekType) ToMaintenanceDayOfWeekTypePtrOutputWithContext(ctx context.Context) MaintenanceDayOfWeekTypePtrOutput {
+	return MaintenanceDayOfWeekType(e).ToMaintenanceDayOfWeekTypeOutputWithContext(ctx).ToMaintenanceDayOfWeekTypePtrOutputWithContext(ctx)
+}
+
+func (e MaintenanceDayOfWeekType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaintenanceDayOfWeekType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaintenanceDayOfWeekType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MaintenanceDayOfWeekType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MaintenanceDayOfWeekTypeOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceDayOfWeekTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceDayOfWeekType)(nil)).Elem()
+}
+
+func (o MaintenanceDayOfWeekTypeOutput) ToMaintenanceDayOfWeekTypeOutput() MaintenanceDayOfWeekTypeOutput {
+	return o
+}
+
+func (o MaintenanceDayOfWeekTypeOutput) ToMaintenanceDayOfWeekTypeOutputWithContext(ctx context.Context) MaintenanceDayOfWeekTypeOutput {
+	return o
+}
+
+func (o MaintenanceDayOfWeekTypeOutput) ToMaintenanceDayOfWeekTypePtrOutput() MaintenanceDayOfWeekTypePtrOutput {
+	return o.ToMaintenanceDayOfWeekTypePtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceDayOfWeekTypeOutput) ToMaintenanceDayOfWeekTypePtrOutputWithContext(ctx context.Context) MaintenanceDayOfWeekTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceDayOfWeekType) *MaintenanceDayOfWeekType {
+		return &v
+	}).(MaintenanceDayOfWeekTypePtrOutput)
+}
+
+func (o MaintenanceDayOfWeekTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MaintenanceDayOfWeekTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaintenanceDayOfWeekType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MaintenanceDayOfWeekTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceDayOfWeekTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaintenanceDayOfWeekType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MaintenanceDayOfWeekTypePtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceDayOfWeekTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceDayOfWeekType)(nil)).Elem()
+}
+
+func (o MaintenanceDayOfWeekTypePtrOutput) ToMaintenanceDayOfWeekTypePtrOutput() MaintenanceDayOfWeekTypePtrOutput {
+	return o
+}
+
+func (o MaintenanceDayOfWeekTypePtrOutput) ToMaintenanceDayOfWeekTypePtrOutputWithContext(ctx context.Context) MaintenanceDayOfWeekTypePtrOutput {
+	return o
+}
+
+func (o MaintenanceDayOfWeekTypePtrOutput) Elem() MaintenanceDayOfWeekTypeOutput {
+	return o.ApplyT(func(v *MaintenanceDayOfWeekType) MaintenanceDayOfWeekType {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceDayOfWeekType
+		return ret
+	}).(MaintenanceDayOfWeekTypeOutput)
+}
+
+func (o MaintenanceDayOfWeekTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceDayOfWeekTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MaintenanceDayOfWeekType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MaintenanceDayOfWeekTypeInput is an input type that accepts MaintenanceDayOfWeekTypeArgs and MaintenanceDayOfWeekTypeOutput values.
+// You can construct a concrete instance of `MaintenanceDayOfWeekTypeInput` via:
+//
+//	MaintenanceDayOfWeekTypeArgs{...}
+type MaintenanceDayOfWeekTypeInput interface {
+	pulumi.Input
+
+	ToMaintenanceDayOfWeekTypeOutput() MaintenanceDayOfWeekTypeOutput
+	ToMaintenanceDayOfWeekTypeOutputWithContext(context.Context) MaintenanceDayOfWeekTypeOutput
+}
+
+var maintenanceDayOfWeekTypePtrType = reflect.TypeOf((**MaintenanceDayOfWeekType)(nil)).Elem()
+
+type MaintenanceDayOfWeekTypePtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceDayOfWeekTypePtrOutput() MaintenanceDayOfWeekTypePtrOutput
+	ToMaintenanceDayOfWeekTypePtrOutputWithContext(context.Context) MaintenanceDayOfWeekTypePtrOutput
+}
+
+type maintenanceDayOfWeekTypePtr string
+
+func MaintenanceDayOfWeekTypePtr(v string) MaintenanceDayOfWeekTypePtrInput {
+	return (*maintenanceDayOfWeekTypePtr)(&v)
+}
+
+func (*maintenanceDayOfWeekTypePtr) ElementType() reflect.Type {
+	return maintenanceDayOfWeekTypePtrType
+}
+
+func (in *maintenanceDayOfWeekTypePtr) ToMaintenanceDayOfWeekTypePtrOutput() MaintenanceDayOfWeekTypePtrOutput {
+	return pulumi.ToOutput(in).(MaintenanceDayOfWeekTypePtrOutput)
+}
+
+func (in *maintenanceDayOfWeekTypePtr) ToMaintenanceDayOfWeekTypePtrOutputWithContext(ctx context.Context) MaintenanceDayOfWeekTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceDayOfWeekTypePtrOutput)
+}
+
 // Access allowed by this rule.
 type NfsAccessRuleAccess string
 
@@ -193,16 +530,14 @@ const (
 	NfsAccessRuleScopeHost    = NfsAccessRuleScope("host")
 )
 
-// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-type ProvisioningStateType string
+// Storage target operational state.
+type OperationalStateType string
 
 const (
-	ProvisioningStateTypeSucceeded = ProvisioningStateType("Succeeded")
-	ProvisioningStateTypeFailed    = ProvisioningStateType("Failed")
-	ProvisioningStateTypeCancelled = ProvisioningStateType("Cancelled")
-	ProvisioningStateTypeCreating  = ProvisioningStateType("Creating")
-	ProvisioningStateTypeDeleting  = ProvisioningStateType("Deleting")
-	ProvisioningStateTypeUpdating  = ProvisioningStateType("Updating")
+	OperationalStateTypeReady     = OperationalStateType("Ready")
+	OperationalStateTypeBusy      = OperationalStateType("Busy")
+	OperationalStateTypeSuspended = OperationalStateType("Suspended")
+	OperationalStateTypeFlushing  = OperationalStateType("Flushing")
 )
 
 // Type of the Storage Target.
@@ -226,6 +561,10 @@ const (
 )
 
 func init() {
+	pulumi.RegisterOutputType(AmlFilesystemIdentityTypeOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(CacheIdentityTypeOutput{})
 	pulumi.RegisterOutputType(CacheIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceDayOfWeekTypeOutput{})
+	pulumi.RegisterOutputType(MaintenanceDayOfWeekTypePtrOutput{})
 }

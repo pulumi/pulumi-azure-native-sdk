@@ -10,6 +10,250 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// HDInsight MapReduce activity type.
+type HDInsightMapReduceActivity struct {
+	// User specified arguments to HDInsightActivity.
+	Arguments []interface{} `pulumi:"arguments"`
+	// Class name. Type: string (or Expression with resultType string).
+	ClassName interface{} `pulumi:"className"`
+	// Allows user to specify defines for the MapReduce job request.
+	Defines map[string]interface{} `pulumi:"defines"`
+	// Activity depends on condition.
+	DependsOn []ActivityDependency `pulumi:"dependsOn"`
+	// Activity description.
+	Description *string `pulumi:"description"`
+	// Debug info option.
+	GetDebugInfo *string `pulumi:"getDebugInfo"`
+	// Jar path. Type: string (or Expression with resultType string).
+	JarFilePath interface{} `pulumi:"jarFilePath"`
+	// Jar libs.
+	JarLibs []interface{} `pulumi:"jarLibs"`
+	// Jar linked service reference.
+	JarLinkedService *LinkedServiceReference `pulumi:"jarLinkedService"`
+	// Linked service reference.
+	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
+	// Storage linked service references.
+	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
+	// Type of activity.
+	// Expected value is 'HDInsightMapReduce'.
+	Type string `pulumi:"type"`
+	// Activity user properties.
+	UserProperties []UserProperty `pulumi:"userProperties"`
+}
+
+// HDInsight MapReduce activity type.
+type HDInsightMapReduceActivityResponse struct {
+	// User specified arguments to HDInsightActivity.
+	Arguments []interface{} `pulumi:"arguments"`
+	// Class name. Type: string (or Expression with resultType string).
+	ClassName interface{} `pulumi:"className"`
+	// Allows user to specify defines for the MapReduce job request.
+	Defines map[string]interface{} `pulumi:"defines"`
+	// Activity depends on condition.
+	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
+	// Activity description.
+	Description *string `pulumi:"description"`
+	// Debug info option.
+	GetDebugInfo *string `pulumi:"getDebugInfo"`
+	// Jar path. Type: string (or Expression with resultType string).
+	JarFilePath interface{} `pulumi:"jarFilePath"`
+	// Jar libs.
+	JarLibs []interface{} `pulumi:"jarLibs"`
+	// Jar linked service reference.
+	JarLinkedService *LinkedServiceReferenceResponse `pulumi:"jarLinkedService"`
+	// Linked service reference.
+	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
+	// Storage linked service references.
+	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
+	// Type of activity.
+	// Expected value is 'HDInsightMapReduce'.
+	Type string `pulumi:"type"`
+	// Activity user properties.
+	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
+}
+
+// HDInsight ondemand linked service.
+type HDInsightOnDemandLinkedService struct {
+	// Specifies additional storage accounts for the HDInsight linked service so that the Data Factory service can register them on your behalf.
+	AdditionalLinkedServiceNames []LinkedServiceReference `pulumi:"additionalLinkedServiceNames"`
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The prefix of cluster name, postfix will be distinct with timestamp. Type: string (or Expression with resultType string).
+	ClusterNamePrefix interface{} `pulumi:"clusterNamePrefix"`
+	// The password to access the cluster.
+	ClusterPassword interface{} `pulumi:"clusterPassword"`
+	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
+	ClusterResourceGroup interface{} `pulumi:"clusterResourceGroup"`
+	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: string (or Expression with resultType string).
+	ClusterSize interface{} `pulumi:"clusterSize"`
+	// The password to SSH remotely connect cluster’s node (for Linux).
+	ClusterSshPassword interface{} `pulumi:"clusterSshPassword"`
+	// The username to SSH remotely connect to cluster’s node (for Linux). Type: string (or Expression with resultType string).
+	ClusterSshUserName interface{} `pulumi:"clusterSshUserName"`
+	// The cluster type. Type: string (or Expression with resultType string).
+	ClusterType interface{} `pulumi:"clusterType"`
+	// The username to access the cluster. Type: string (or Expression with resultType string).
+	ClusterUserName interface{} `pulumi:"clusterUserName"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Specifies the core configuration parameters (as in core-site.xml) for the HDInsight cluster to be created.
+	CoreConfiguration interface{} `pulumi:"coreConfiguration"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
+	// Specifies the size of the data node for the HDInsight cluster.
+	DataNodeSize interface{} `pulumi:"dataNodeSize"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specifies the HBase configuration parameters (hbase-site.xml) for the HDInsight cluster.
+	HBaseConfiguration interface{} `pulumi:"hBaseConfiguration"`
+	// The name of Azure SQL linked service that point to the HCatalog database. The on-demand HDInsight cluster is created by using the Azure SQL database as the metastore.
+	HcatalogLinkedServiceName *LinkedServiceReference `pulumi:"hcatalogLinkedServiceName"`
+	// Specifies the HDFS configuration parameters (hdfs-site.xml) for the HDInsight cluster.
+	HdfsConfiguration interface{} `pulumi:"hdfsConfiguration"`
+	// Specifies the size of the head node for the HDInsight cluster.
+	HeadNodeSize interface{} `pulumi:"headNodeSize"`
+	// Specifies the hive configuration parameters (hive-site.xml) for the HDInsight cluster.
+	HiveConfiguration interface{} `pulumi:"hiveConfiguration"`
+	// The customer’s subscription to host the cluster. Type: string (or Expression with resultType string).
+	HostSubscriptionId interface{} `pulumi:"hostSubscriptionId"`
+	// Azure Storage linked service to be used by the on-demand cluster for storing and processing data.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Specifies the MapReduce configuration parameters (mapred-site.xml) for the HDInsight cluster.
+	MapReduceConfiguration interface{} `pulumi:"mapReduceConfiguration"`
+	// Specifies the Oozie configuration parameters (oozie-site.xml) for the HDInsight cluster.
+	OozieConfiguration interface{} `pulumi:"oozieConfiguration"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Custom script actions to run on HDI ondemand cluster once it's up. Please refer to https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
+	ScriptActions []ScriptAction `pulumi:"scriptActions"`
+	// The service principal id for the hostSubscriptionId. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The key for the service principal id.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
+	// The version of spark if the cluster type is 'spark'. Type: string (or Expression with resultType string).
+	SparkVersion interface{} `pulumi:"sparkVersion"`
+	// Specifies the Storm configuration parameters (storm-site.xml) for the HDInsight cluster.
+	StormConfiguration interface{} `pulumi:"stormConfiguration"`
+	// The ARM resource ID for the subnet in the vNet. If virtualNetworkId was specified, then this property is required. Type: string (or Expression with resultType string).
+	SubnetName interface{} `pulumi:"subnetName"`
+	// The Tenant id/name to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant interface{} `pulumi:"tenant"`
+	// The allowed idle time for the on-demand HDInsight cluster. Specifies how long the on-demand HDInsight cluster stays alive after completion of an activity run if there are no other active jobs in the cluster. The minimum value is 5 mins. Type: string (or Expression with resultType string).
+	TimeToLive interface{} `pulumi:"timeToLive"`
+	// Type of linked service.
+	// Expected value is 'HDInsightOnDemand'.
+	Type string `pulumi:"type"`
+	// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
+	Version interface{} `pulumi:"version"`
+	// The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
+	VirtualNetworkId interface{} `pulumi:"virtualNetworkId"`
+	// Specifies the Yarn configuration parameters (yarn-site.xml) for the HDInsight cluster.
+	YarnConfiguration interface{} `pulumi:"yarnConfiguration"`
+	// Specifies the size of the Zoo Keeper node for the HDInsight cluster.
+	ZookeeperNodeSize interface{} `pulumi:"zookeeperNodeSize"`
+}
+
+// HDInsight ondemand linked service.
+type HDInsightOnDemandLinkedServiceResponse struct {
+	// Specifies additional storage accounts for the HDInsight linked service so that the Data Factory service can register them on your behalf.
+	AdditionalLinkedServiceNames []LinkedServiceReferenceResponse `pulumi:"additionalLinkedServiceNames"`
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The prefix of cluster name, postfix will be distinct with timestamp. Type: string (or Expression with resultType string).
+	ClusterNamePrefix interface{} `pulumi:"clusterNamePrefix"`
+	// The password to access the cluster.
+	ClusterPassword interface{} `pulumi:"clusterPassword"`
+	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
+	ClusterResourceGroup interface{} `pulumi:"clusterResourceGroup"`
+	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: string (or Expression with resultType string).
+	ClusterSize interface{} `pulumi:"clusterSize"`
+	// The password to SSH remotely connect cluster’s node (for Linux).
+	ClusterSshPassword interface{} `pulumi:"clusterSshPassword"`
+	// The username to SSH remotely connect to cluster’s node (for Linux). Type: string (or Expression with resultType string).
+	ClusterSshUserName interface{} `pulumi:"clusterSshUserName"`
+	// The cluster type. Type: string (or Expression with resultType string).
+	ClusterType interface{} `pulumi:"clusterType"`
+	// The username to access the cluster. Type: string (or Expression with resultType string).
+	ClusterUserName interface{} `pulumi:"clusterUserName"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Specifies the core configuration parameters (as in core-site.xml) for the HDInsight cluster to be created.
+	CoreConfiguration interface{} `pulumi:"coreConfiguration"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
+	// Specifies the size of the data node for the HDInsight cluster.
+	DataNodeSize interface{} `pulumi:"dataNodeSize"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specifies the HBase configuration parameters (hbase-site.xml) for the HDInsight cluster.
+	HBaseConfiguration interface{} `pulumi:"hBaseConfiguration"`
+	// The name of Azure SQL linked service that point to the HCatalog database. The on-demand HDInsight cluster is created by using the Azure SQL database as the metastore.
+	HcatalogLinkedServiceName *LinkedServiceReferenceResponse `pulumi:"hcatalogLinkedServiceName"`
+	// Specifies the HDFS configuration parameters (hdfs-site.xml) for the HDInsight cluster.
+	HdfsConfiguration interface{} `pulumi:"hdfsConfiguration"`
+	// Specifies the size of the head node for the HDInsight cluster.
+	HeadNodeSize interface{} `pulumi:"headNodeSize"`
+	// Specifies the hive configuration parameters (hive-site.xml) for the HDInsight cluster.
+	HiveConfiguration interface{} `pulumi:"hiveConfiguration"`
+	// The customer’s subscription to host the cluster. Type: string (or Expression with resultType string).
+	HostSubscriptionId interface{} `pulumi:"hostSubscriptionId"`
+	// Azure Storage linked service to be used by the on-demand cluster for storing and processing data.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Specifies the MapReduce configuration parameters (mapred-site.xml) for the HDInsight cluster.
+	MapReduceConfiguration interface{} `pulumi:"mapReduceConfiguration"`
+	// Specifies the Oozie configuration parameters (oozie-site.xml) for the HDInsight cluster.
+	OozieConfiguration interface{} `pulumi:"oozieConfiguration"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Custom script actions to run on HDI ondemand cluster once it's up. Please refer to https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
+	ScriptActions []ScriptActionResponse `pulumi:"scriptActions"`
+	// The service principal id for the hostSubscriptionId. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The key for the service principal id.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
+	// The version of spark if the cluster type is 'spark'. Type: string (or Expression with resultType string).
+	SparkVersion interface{} `pulumi:"sparkVersion"`
+	// Specifies the Storm configuration parameters (storm-site.xml) for the HDInsight cluster.
+	StormConfiguration interface{} `pulumi:"stormConfiguration"`
+	// The ARM resource ID for the subnet in the vNet. If virtualNetworkId was specified, then this property is required. Type: string (or Expression with resultType string).
+	SubnetName interface{} `pulumi:"subnetName"`
+	// The Tenant id/name to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant interface{} `pulumi:"tenant"`
+	// The allowed idle time for the on-demand HDInsight cluster. Specifies how long the on-demand HDInsight cluster stays alive after completion of an activity run if there are no other active jobs in the cluster. The minimum value is 5 mins. Type: string (or Expression with resultType string).
+	TimeToLive interface{} `pulumi:"timeToLive"`
+	// Type of linked service.
+	// Expected value is 'HDInsightOnDemand'.
+	Type string `pulumi:"type"`
+	// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
+	Version interface{} `pulumi:"version"`
+	// The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
+	VirtualNetworkId interface{} `pulumi:"virtualNetworkId"`
+	// Specifies the Yarn configuration parameters (yarn-site.xml) for the HDInsight cluster.
+	YarnConfiguration interface{} `pulumi:"yarnConfiguration"`
+	// Specifies the size of the Zoo Keeper node for the HDInsight cluster.
+	ZookeeperNodeSize interface{} `pulumi:"zookeeperNodeSize"`
+}
+
 // HDInsight Pig activity type.
 type HDInsightPigActivity struct {
 	// User specified arguments to HDInsightActivity. Type: array (or Expression with resultType array).
@@ -26,12 +270,16 @@ type HDInsightPigActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Script linked service reference.
 	ScriptLinkedService *LinkedServiceReference `pulumi:"scriptLinkedService"`
 	// Script path. Type: string (or Expression with resultType string).
 	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Storage linked service references.
 	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
 	// Type of activity.
@@ -57,12 +305,16 @@ type HDInsightPigActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Script linked service reference.
 	ScriptLinkedService *LinkedServiceReferenceResponse `pulumi:"scriptLinkedService"`
 	// Script path. Type: string (or Expression with resultType string).
 	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Storage linked service references.
 	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
 	// Type of activity.
@@ -90,6 +342,8 @@ type HDInsightSparkActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// The user to impersonate that will execute the job. Type: string (or Expression with resultType string).
@@ -100,6 +354,8 @@ type HDInsightSparkActivity struct {
 	SparkConfig map[string]interface{} `pulumi:"sparkConfig"`
 	// The storage linked service for uploading the entry file and dependencies, and for receiving logs.
 	SparkJobLinkedService *LinkedServiceReference `pulumi:"sparkJobLinkedService"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'HDInsightSpark'.
 	Type string `pulumi:"type"`
@@ -125,6 +381,8 @@ type HDInsightSparkActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// The user to impersonate that will execute the job. Type: string (or Expression with resultType string).
@@ -135,6 +393,8 @@ type HDInsightSparkActivityResponse struct {
 	SparkConfig map[string]interface{} `pulumi:"sparkConfig"`
 	// The storage linked service for uploading the entry file and dependencies, and for receiving logs.
 	SparkJobLinkedService *LinkedServiceReferenceResponse `pulumi:"sparkJobLinkedService"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'HDInsightSpark'.
 	Type string `pulumi:"type"`
@@ -170,12 +430,16 @@ type HDInsightStreamingActivity struct {
 	Mapper interface{} `pulumi:"mapper"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Output blob path. Type: string (or Expression with resultType string).
 	Output interface{} `pulumi:"output"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Reducer executable name. Type: string (or Expression with resultType string).
 	Reducer interface{} `pulumi:"reducer"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Storage linked service references.
 	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
 	// Type of activity.
@@ -213,12 +477,16 @@ type HDInsightStreamingActivityResponse struct {
 	Mapper interface{} `pulumi:"mapper"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Output blob path. Type: string (or Expression with resultType string).
 	Output interface{} `pulumi:"output"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Reducer executable name. Type: string (or Expression with resultType string).
 	Reducer interface{} `pulumi:"reducer"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Storage linked service references.
 	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
 	// Type of activity.
@@ -992,6 +1260,10 @@ type IfConditionActivity struct {
 	IfTrueActivities []interface{} `pulumi:"ifTrueActivities"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'IfCondition'.
 	Type string `pulumi:"type"`
@@ -1013,6 +1285,10 @@ type IfConditionActivityResponse struct {
 	IfTrueActivities []interface{} `pulumi:"ifTrueActivities"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'IfCondition'.
 	Type string `pulumi:"type"`
@@ -2046,6 +2322,174 @@ type LinkedServiceReference struct {
 	Type string `pulumi:"type"`
 }
 
+// LinkedServiceReferenceInput is an input type that accepts LinkedServiceReferenceArgs and LinkedServiceReferenceOutput values.
+// You can construct a concrete instance of `LinkedServiceReferenceInput` via:
+//
+//	LinkedServiceReferenceArgs{...}
+type LinkedServiceReferenceInput interface {
+	pulumi.Input
+
+	ToLinkedServiceReferenceOutput() LinkedServiceReferenceOutput
+	ToLinkedServiceReferenceOutputWithContext(context.Context) LinkedServiceReferenceOutput
+}
+
+// Linked service reference type.
+type LinkedServiceReferenceArgs struct {
+	// Arguments for LinkedService.
+	Parameters pulumi.MapInput `pulumi:"parameters"`
+	// Reference LinkedService name.
+	ReferenceName pulumi.StringInput `pulumi:"referenceName"`
+	// Linked service reference type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (LinkedServiceReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceReference)(nil)).Elem()
+}
+
+func (i LinkedServiceReferenceArgs) ToLinkedServiceReferenceOutput() LinkedServiceReferenceOutput {
+	return i.ToLinkedServiceReferenceOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceReferenceArgs) ToLinkedServiceReferenceOutputWithContext(ctx context.Context) LinkedServiceReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceReferenceOutput)
+}
+
+func (i LinkedServiceReferenceArgs) ToLinkedServiceReferencePtrOutput() LinkedServiceReferencePtrOutput {
+	return i.ToLinkedServiceReferencePtrOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceReferenceArgs) ToLinkedServiceReferencePtrOutputWithContext(ctx context.Context) LinkedServiceReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceReferenceOutput).ToLinkedServiceReferencePtrOutputWithContext(ctx)
+}
+
+// LinkedServiceReferencePtrInput is an input type that accepts LinkedServiceReferenceArgs, LinkedServiceReferencePtr and LinkedServiceReferencePtrOutput values.
+// You can construct a concrete instance of `LinkedServiceReferencePtrInput` via:
+//
+//	        LinkedServiceReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LinkedServiceReferencePtrInput interface {
+	pulumi.Input
+
+	ToLinkedServiceReferencePtrOutput() LinkedServiceReferencePtrOutput
+	ToLinkedServiceReferencePtrOutputWithContext(context.Context) LinkedServiceReferencePtrOutput
+}
+
+type linkedServiceReferencePtrType LinkedServiceReferenceArgs
+
+func LinkedServiceReferencePtr(v *LinkedServiceReferenceArgs) LinkedServiceReferencePtrInput {
+	return (*linkedServiceReferencePtrType)(v)
+}
+
+func (*linkedServiceReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceReference)(nil)).Elem()
+}
+
+func (i *linkedServiceReferencePtrType) ToLinkedServiceReferencePtrOutput() LinkedServiceReferencePtrOutput {
+	return i.ToLinkedServiceReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *linkedServiceReferencePtrType) ToLinkedServiceReferencePtrOutputWithContext(ctx context.Context) LinkedServiceReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceReferencePtrOutput)
+}
+
+// Linked service reference type.
+type LinkedServiceReferenceOutput struct{ *pulumi.OutputState }
+
+func (LinkedServiceReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceReference)(nil)).Elem()
+}
+
+func (o LinkedServiceReferenceOutput) ToLinkedServiceReferenceOutput() LinkedServiceReferenceOutput {
+	return o
+}
+
+func (o LinkedServiceReferenceOutput) ToLinkedServiceReferenceOutputWithContext(ctx context.Context) LinkedServiceReferenceOutput {
+	return o
+}
+
+func (o LinkedServiceReferenceOutput) ToLinkedServiceReferencePtrOutput() LinkedServiceReferencePtrOutput {
+	return o.ToLinkedServiceReferencePtrOutputWithContext(context.Background())
+}
+
+func (o LinkedServiceReferenceOutput) ToLinkedServiceReferencePtrOutputWithContext(ctx context.Context) LinkedServiceReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkedServiceReference) *LinkedServiceReference {
+		return &v
+	}).(LinkedServiceReferencePtrOutput)
+}
+
+// Arguments for LinkedService.
+func (o LinkedServiceReferenceOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v LinkedServiceReference) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+}
+
+// Reference LinkedService name.
+func (o LinkedServiceReferenceOutput) ReferenceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedServiceReference) string { return v.ReferenceName }).(pulumi.StringOutput)
+}
+
+// Linked service reference type.
+func (o LinkedServiceReferenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedServiceReference) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type LinkedServiceReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (LinkedServiceReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceReference)(nil)).Elem()
+}
+
+func (o LinkedServiceReferencePtrOutput) ToLinkedServiceReferencePtrOutput() LinkedServiceReferencePtrOutput {
+	return o
+}
+
+func (o LinkedServiceReferencePtrOutput) ToLinkedServiceReferencePtrOutputWithContext(ctx context.Context) LinkedServiceReferencePtrOutput {
+	return o
+}
+
+func (o LinkedServiceReferencePtrOutput) Elem() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v *LinkedServiceReference) LinkedServiceReference {
+		if v != nil {
+			return *v
+		}
+		var ret LinkedServiceReference
+		return ret
+	}).(LinkedServiceReferenceOutput)
+}
+
+// Arguments for LinkedService.
+func (o LinkedServiceReferencePtrOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *LinkedServiceReference) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.MapOutput)
+}
+
+// Reference LinkedService name.
+func (o LinkedServiceReferencePtrOutput) ReferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedServiceReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReferenceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Linked service reference type.
+func (o LinkedServiceReferencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedServiceReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Linked service reference type.
 type LinkedServiceReferenceResponse struct {
 	// Arguments for LinkedService.
@@ -2054,6 +2498,90 @@ type LinkedServiceReferenceResponse struct {
 	ReferenceName string `pulumi:"referenceName"`
 	// Linked service reference type.
 	Type string `pulumi:"type"`
+}
+
+// Linked service reference type.
+type LinkedServiceReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkedServiceReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceReferenceResponse)(nil)).Elem()
+}
+
+func (o LinkedServiceReferenceResponseOutput) ToLinkedServiceReferenceResponseOutput() LinkedServiceReferenceResponseOutput {
+	return o
+}
+
+func (o LinkedServiceReferenceResponseOutput) ToLinkedServiceReferenceResponseOutputWithContext(ctx context.Context) LinkedServiceReferenceResponseOutput {
+	return o
+}
+
+// Arguments for LinkedService.
+func (o LinkedServiceReferenceResponseOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v LinkedServiceReferenceResponse) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+}
+
+// Reference LinkedService name.
+func (o LinkedServiceReferenceResponseOutput) ReferenceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedServiceReferenceResponse) string { return v.ReferenceName }).(pulumi.StringOutput)
+}
+
+// Linked service reference type.
+func (o LinkedServiceReferenceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedServiceReferenceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type LinkedServiceReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LinkedServiceReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceReferenceResponse)(nil)).Elem()
+}
+
+func (o LinkedServiceReferenceResponsePtrOutput) ToLinkedServiceReferenceResponsePtrOutput() LinkedServiceReferenceResponsePtrOutput {
+	return o
+}
+
+func (o LinkedServiceReferenceResponsePtrOutput) ToLinkedServiceReferenceResponsePtrOutputWithContext(ctx context.Context) LinkedServiceReferenceResponsePtrOutput {
+	return o
+}
+
+func (o LinkedServiceReferenceResponsePtrOutput) Elem() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v *LinkedServiceReferenceResponse) LinkedServiceReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LinkedServiceReferenceResponse
+		return ret
+	}).(LinkedServiceReferenceResponseOutput)
+}
+
+// Arguments for LinkedService.
+func (o LinkedServiceReferenceResponsePtrOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *LinkedServiceReferenceResponse) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.MapOutput)
+}
+
+// Reference LinkedService name.
+func (o LinkedServiceReferenceResponsePtrOutput) ReferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedServiceReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReferenceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Linked service reference type.
+func (o LinkedServiceReferenceResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedServiceReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Log location settings.
@@ -2130,10 +2658,14 @@ type LookupActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Dataset-specific source properties, same as copy activity source.
 	Source interface{} `pulumi:"source"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Lookup'.
 	Type string `pulumi:"type"`
@@ -2155,10 +2687,14 @@ type LookupActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Dataset-specific source properties, same as copy activity source.
 	Source interface{} `pulumi:"source"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Lookup'.
 	Type string `pulumi:"type"`
@@ -2683,6 +3219,2546 @@ type ManagedVirtualNetworkReferenceResponse struct {
 	ReferenceName string `pulumi:"referenceName"`
 	// Managed Virtual Network reference type.
 	Type string `pulumi:"type"`
+}
+
+// Source and target column mapping details.
+type MapperAttributeMapping struct {
+	// Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.
+	AttributeReference *MapperAttributeReference `pulumi:"attributeReference"`
+	// List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only.
+	AttributeReferences []MapperAttributeReference `pulumi:"attributeReferences"`
+	// Expression used for 'Aggregate' and 'Derived' type mapping.
+	Expression *string `pulumi:"expression"`
+	// Name of the function used for 'Aggregate' and 'Derived' (except 'Advanced') type mapping.
+	FunctionName *string `pulumi:"functionName"`
+	// Name of the target column.
+	Name *string `pulumi:"name"`
+	// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
+	Type *string `pulumi:"type"`
+}
+
+// MapperAttributeMappingInput is an input type that accepts MapperAttributeMappingArgs and MapperAttributeMappingOutput values.
+// You can construct a concrete instance of `MapperAttributeMappingInput` via:
+//
+//	MapperAttributeMappingArgs{...}
+type MapperAttributeMappingInput interface {
+	pulumi.Input
+
+	ToMapperAttributeMappingOutput() MapperAttributeMappingOutput
+	ToMapperAttributeMappingOutputWithContext(context.Context) MapperAttributeMappingOutput
+}
+
+// Source and target column mapping details.
+type MapperAttributeMappingArgs struct {
+	// Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.
+	AttributeReference MapperAttributeReferencePtrInput `pulumi:"attributeReference"`
+	// List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only.
+	AttributeReferences MapperAttributeReferenceArrayInput `pulumi:"attributeReferences"`
+	// Expression used for 'Aggregate' and 'Derived' type mapping.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Name of the function used for 'Aggregate' and 'Derived' (except 'Advanced') type mapping.
+	FunctionName pulumi.StringPtrInput `pulumi:"functionName"`
+	// Name of the target column.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MapperAttributeMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeMapping)(nil)).Elem()
+}
+
+func (i MapperAttributeMappingArgs) ToMapperAttributeMappingOutput() MapperAttributeMappingOutput {
+	return i.ToMapperAttributeMappingOutputWithContext(context.Background())
+}
+
+func (i MapperAttributeMappingArgs) ToMapperAttributeMappingOutputWithContext(ctx context.Context) MapperAttributeMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingOutput)
+}
+
+// MapperAttributeMappingArrayInput is an input type that accepts MapperAttributeMappingArray and MapperAttributeMappingArrayOutput values.
+// You can construct a concrete instance of `MapperAttributeMappingArrayInput` via:
+//
+//	MapperAttributeMappingArray{ MapperAttributeMappingArgs{...} }
+type MapperAttributeMappingArrayInput interface {
+	pulumi.Input
+
+	ToMapperAttributeMappingArrayOutput() MapperAttributeMappingArrayOutput
+	ToMapperAttributeMappingArrayOutputWithContext(context.Context) MapperAttributeMappingArrayOutput
+}
+
+type MapperAttributeMappingArray []MapperAttributeMappingInput
+
+func (MapperAttributeMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperAttributeMapping)(nil)).Elem()
+}
+
+func (i MapperAttributeMappingArray) ToMapperAttributeMappingArrayOutput() MapperAttributeMappingArrayOutput {
+	return i.ToMapperAttributeMappingArrayOutputWithContext(context.Background())
+}
+
+func (i MapperAttributeMappingArray) ToMapperAttributeMappingArrayOutputWithContext(ctx context.Context) MapperAttributeMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingArrayOutput)
+}
+
+// Source and target column mapping details.
+type MapperAttributeMappingOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeMapping)(nil)).Elem()
+}
+
+func (o MapperAttributeMappingOutput) ToMapperAttributeMappingOutput() MapperAttributeMappingOutput {
+	return o
+}
+
+func (o MapperAttributeMappingOutput) ToMapperAttributeMappingOutputWithContext(ctx context.Context) MapperAttributeMappingOutput {
+	return o
+}
+
+// Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.
+func (o MapperAttributeMappingOutput) AttributeReference() MapperAttributeReferencePtrOutput {
+	return o.ApplyT(func(v MapperAttributeMapping) *MapperAttributeReference { return v.AttributeReference }).(MapperAttributeReferencePtrOutput)
+}
+
+// List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only.
+func (o MapperAttributeMappingOutput) AttributeReferences() MapperAttributeReferenceArrayOutput {
+	return o.ApplyT(func(v MapperAttributeMapping) []MapperAttributeReference { return v.AttributeReferences }).(MapperAttributeReferenceArrayOutput)
+}
+
+// Expression used for 'Aggregate' and 'Derived' type mapping.
+func (o MapperAttributeMappingOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeMapping) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Name of the function used for 'Aggregate' and 'Derived' (except 'Advanced') type mapping.
+func (o MapperAttributeMappingOutput) FunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeMapping) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the target column.
+func (o MapperAttributeMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
+func (o MapperAttributeMappingOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeMapping) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MapperAttributeMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperAttributeMapping)(nil)).Elem()
+}
+
+func (o MapperAttributeMappingArrayOutput) ToMapperAttributeMappingArrayOutput() MapperAttributeMappingArrayOutput {
+	return o
+}
+
+func (o MapperAttributeMappingArrayOutput) ToMapperAttributeMappingArrayOutputWithContext(ctx context.Context) MapperAttributeMappingArrayOutput {
+	return o
+}
+
+func (o MapperAttributeMappingArrayOutput) Index(i pulumi.IntInput) MapperAttributeMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperAttributeMapping {
+		return vs[0].([]MapperAttributeMapping)[vs[1].(int)]
+	}).(MapperAttributeMappingOutput)
+}
+
+// Source and target column mapping details.
+type MapperAttributeMappingResponse struct {
+	// Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.
+	AttributeReference *MapperAttributeReferenceResponse `pulumi:"attributeReference"`
+	// List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only.
+	AttributeReferences []MapperAttributeReferenceResponse `pulumi:"attributeReferences"`
+	// Expression used for 'Aggregate' and 'Derived' type mapping.
+	Expression *string `pulumi:"expression"`
+	// Name of the function used for 'Aggregate' and 'Derived' (except 'Advanced') type mapping.
+	FunctionName *string `pulumi:"functionName"`
+	// Name of the target column.
+	Name *string `pulumi:"name"`
+	// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
+	Type *string `pulumi:"type"`
+}
+
+// Source and target column mapping details.
+type MapperAttributeMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeMappingResponse)(nil)).Elem()
+}
+
+func (o MapperAttributeMappingResponseOutput) ToMapperAttributeMappingResponseOutput() MapperAttributeMappingResponseOutput {
+	return o
+}
+
+func (o MapperAttributeMappingResponseOutput) ToMapperAttributeMappingResponseOutputWithContext(ctx context.Context) MapperAttributeMappingResponseOutput {
+	return o
+}
+
+// Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.
+func (o MapperAttributeMappingResponseOutput) AttributeReference() MapperAttributeReferenceResponsePtrOutput {
+	return o.ApplyT(func(v MapperAttributeMappingResponse) *MapperAttributeReferenceResponse { return v.AttributeReference }).(MapperAttributeReferenceResponsePtrOutput)
+}
+
+// List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only.
+func (o MapperAttributeMappingResponseOutput) AttributeReferences() MapperAttributeReferenceResponseArrayOutput {
+	return o.ApplyT(func(v MapperAttributeMappingResponse) []MapperAttributeReferenceResponse {
+		return v.AttributeReferences
+	}).(MapperAttributeReferenceResponseArrayOutput)
+}
+
+// Expression used for 'Aggregate' and 'Derived' type mapping.
+func (o MapperAttributeMappingResponseOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeMappingResponse) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Name of the function used for 'Aggregate' and 'Derived' (except 'Advanced') type mapping.
+func (o MapperAttributeMappingResponseOutput) FunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeMappingResponse) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the target column.
+func (o MapperAttributeMappingResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeMappingResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
+func (o MapperAttributeMappingResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeMappingResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MapperAttributeMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperAttributeMappingResponse)(nil)).Elem()
+}
+
+func (o MapperAttributeMappingResponseArrayOutput) ToMapperAttributeMappingResponseArrayOutput() MapperAttributeMappingResponseArrayOutput {
+	return o
+}
+
+func (o MapperAttributeMappingResponseArrayOutput) ToMapperAttributeMappingResponseArrayOutputWithContext(ctx context.Context) MapperAttributeMappingResponseArrayOutput {
+	return o
+}
+
+func (o MapperAttributeMappingResponseArrayOutput) Index(i pulumi.IntInput) MapperAttributeMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperAttributeMappingResponse {
+		return vs[0].([]MapperAttributeMappingResponse)[vs[1].(int)]
+	}).(MapperAttributeMappingResponseOutput)
+}
+
+// Attribute mapping details.
+type MapperAttributeMappings struct {
+	// List of attribute mappings.
+	AttributeMappings []MapperAttributeMapping `pulumi:"attributeMappings"`
+}
+
+// MapperAttributeMappingsInput is an input type that accepts MapperAttributeMappingsArgs and MapperAttributeMappingsOutput values.
+// You can construct a concrete instance of `MapperAttributeMappingsInput` via:
+//
+//	MapperAttributeMappingsArgs{...}
+type MapperAttributeMappingsInput interface {
+	pulumi.Input
+
+	ToMapperAttributeMappingsOutput() MapperAttributeMappingsOutput
+	ToMapperAttributeMappingsOutputWithContext(context.Context) MapperAttributeMappingsOutput
+}
+
+// Attribute mapping details.
+type MapperAttributeMappingsArgs struct {
+	// List of attribute mappings.
+	AttributeMappings MapperAttributeMappingArrayInput `pulumi:"attributeMappings"`
+}
+
+func (MapperAttributeMappingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeMappings)(nil)).Elem()
+}
+
+func (i MapperAttributeMappingsArgs) ToMapperAttributeMappingsOutput() MapperAttributeMappingsOutput {
+	return i.ToMapperAttributeMappingsOutputWithContext(context.Background())
+}
+
+func (i MapperAttributeMappingsArgs) ToMapperAttributeMappingsOutputWithContext(ctx context.Context) MapperAttributeMappingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingsOutput)
+}
+
+func (i MapperAttributeMappingsArgs) ToMapperAttributeMappingsPtrOutput() MapperAttributeMappingsPtrOutput {
+	return i.ToMapperAttributeMappingsPtrOutputWithContext(context.Background())
+}
+
+func (i MapperAttributeMappingsArgs) ToMapperAttributeMappingsPtrOutputWithContext(ctx context.Context) MapperAttributeMappingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingsOutput).ToMapperAttributeMappingsPtrOutputWithContext(ctx)
+}
+
+// MapperAttributeMappingsPtrInput is an input type that accepts MapperAttributeMappingsArgs, MapperAttributeMappingsPtr and MapperAttributeMappingsPtrOutput values.
+// You can construct a concrete instance of `MapperAttributeMappingsPtrInput` via:
+//
+//	        MapperAttributeMappingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MapperAttributeMappingsPtrInput interface {
+	pulumi.Input
+
+	ToMapperAttributeMappingsPtrOutput() MapperAttributeMappingsPtrOutput
+	ToMapperAttributeMappingsPtrOutputWithContext(context.Context) MapperAttributeMappingsPtrOutput
+}
+
+type mapperAttributeMappingsPtrType MapperAttributeMappingsArgs
+
+func MapperAttributeMappingsPtr(v *MapperAttributeMappingsArgs) MapperAttributeMappingsPtrInput {
+	return (*mapperAttributeMappingsPtrType)(v)
+}
+
+func (*mapperAttributeMappingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperAttributeMappings)(nil)).Elem()
+}
+
+func (i *mapperAttributeMappingsPtrType) ToMapperAttributeMappingsPtrOutput() MapperAttributeMappingsPtrOutput {
+	return i.ToMapperAttributeMappingsPtrOutputWithContext(context.Background())
+}
+
+func (i *mapperAttributeMappingsPtrType) ToMapperAttributeMappingsPtrOutputWithContext(ctx context.Context) MapperAttributeMappingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingsPtrOutput)
+}
+
+// Attribute mapping details.
+type MapperAttributeMappingsOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeMappingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeMappings)(nil)).Elem()
+}
+
+func (o MapperAttributeMappingsOutput) ToMapperAttributeMappingsOutput() MapperAttributeMappingsOutput {
+	return o
+}
+
+func (o MapperAttributeMappingsOutput) ToMapperAttributeMappingsOutputWithContext(ctx context.Context) MapperAttributeMappingsOutput {
+	return o
+}
+
+func (o MapperAttributeMappingsOutput) ToMapperAttributeMappingsPtrOutput() MapperAttributeMappingsPtrOutput {
+	return o.ToMapperAttributeMappingsPtrOutputWithContext(context.Background())
+}
+
+func (o MapperAttributeMappingsOutput) ToMapperAttributeMappingsPtrOutputWithContext(ctx context.Context) MapperAttributeMappingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MapperAttributeMappings) *MapperAttributeMappings {
+		return &v
+	}).(MapperAttributeMappingsPtrOutput)
+}
+
+// List of attribute mappings.
+func (o MapperAttributeMappingsOutput) AttributeMappings() MapperAttributeMappingArrayOutput {
+	return o.ApplyT(func(v MapperAttributeMappings) []MapperAttributeMapping { return v.AttributeMappings }).(MapperAttributeMappingArrayOutput)
+}
+
+type MapperAttributeMappingsPtrOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeMappingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperAttributeMappings)(nil)).Elem()
+}
+
+func (o MapperAttributeMappingsPtrOutput) ToMapperAttributeMappingsPtrOutput() MapperAttributeMappingsPtrOutput {
+	return o
+}
+
+func (o MapperAttributeMappingsPtrOutput) ToMapperAttributeMappingsPtrOutputWithContext(ctx context.Context) MapperAttributeMappingsPtrOutput {
+	return o
+}
+
+func (o MapperAttributeMappingsPtrOutput) Elem() MapperAttributeMappingsOutput {
+	return o.ApplyT(func(v *MapperAttributeMappings) MapperAttributeMappings {
+		if v != nil {
+			return *v
+		}
+		var ret MapperAttributeMappings
+		return ret
+	}).(MapperAttributeMappingsOutput)
+}
+
+// List of attribute mappings.
+func (o MapperAttributeMappingsPtrOutput) AttributeMappings() MapperAttributeMappingArrayOutput {
+	return o.ApplyT(func(v *MapperAttributeMappings) []MapperAttributeMapping {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeMappings
+	}).(MapperAttributeMappingArrayOutput)
+}
+
+// Attribute mapping details.
+type MapperAttributeMappingsResponse struct {
+	// List of attribute mappings.
+	AttributeMappings []MapperAttributeMappingResponse `pulumi:"attributeMappings"`
+}
+
+// Attribute mapping details.
+type MapperAttributeMappingsResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeMappingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeMappingsResponse)(nil)).Elem()
+}
+
+func (o MapperAttributeMappingsResponseOutput) ToMapperAttributeMappingsResponseOutput() MapperAttributeMappingsResponseOutput {
+	return o
+}
+
+func (o MapperAttributeMappingsResponseOutput) ToMapperAttributeMappingsResponseOutputWithContext(ctx context.Context) MapperAttributeMappingsResponseOutput {
+	return o
+}
+
+// List of attribute mappings.
+func (o MapperAttributeMappingsResponseOutput) AttributeMappings() MapperAttributeMappingResponseArrayOutput {
+	return o.ApplyT(func(v MapperAttributeMappingsResponse) []MapperAttributeMappingResponse { return v.AttributeMappings }).(MapperAttributeMappingResponseArrayOutput)
+}
+
+type MapperAttributeMappingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeMappingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperAttributeMappingsResponse)(nil)).Elem()
+}
+
+func (o MapperAttributeMappingsResponsePtrOutput) ToMapperAttributeMappingsResponsePtrOutput() MapperAttributeMappingsResponsePtrOutput {
+	return o
+}
+
+func (o MapperAttributeMappingsResponsePtrOutput) ToMapperAttributeMappingsResponsePtrOutputWithContext(ctx context.Context) MapperAttributeMappingsResponsePtrOutput {
+	return o
+}
+
+func (o MapperAttributeMappingsResponsePtrOutput) Elem() MapperAttributeMappingsResponseOutput {
+	return o.ApplyT(func(v *MapperAttributeMappingsResponse) MapperAttributeMappingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MapperAttributeMappingsResponse
+		return ret
+	}).(MapperAttributeMappingsResponseOutput)
+}
+
+// List of attribute mappings.
+func (o MapperAttributeMappingsResponsePtrOutput) AttributeMappings() MapperAttributeMappingResponseArrayOutput {
+	return o.ApplyT(func(v *MapperAttributeMappingsResponse) []MapperAttributeMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeMappings
+	}).(MapperAttributeMappingResponseArrayOutput)
+}
+
+// Attribute reference details for the referred column.
+type MapperAttributeReference struct {
+	// Name of the table.
+	Entity *string `pulumi:"entity"`
+	// The connection reference for the connection.
+	EntityConnectionReference *MapperConnectionReference `pulumi:"entityConnectionReference"`
+	// Name of the column.
+	Name *string `pulumi:"name"`
+}
+
+// MapperAttributeReferenceInput is an input type that accepts MapperAttributeReferenceArgs and MapperAttributeReferenceOutput values.
+// You can construct a concrete instance of `MapperAttributeReferenceInput` via:
+//
+//	MapperAttributeReferenceArgs{...}
+type MapperAttributeReferenceInput interface {
+	pulumi.Input
+
+	ToMapperAttributeReferenceOutput() MapperAttributeReferenceOutput
+	ToMapperAttributeReferenceOutputWithContext(context.Context) MapperAttributeReferenceOutput
+}
+
+// Attribute reference details for the referred column.
+type MapperAttributeReferenceArgs struct {
+	// Name of the table.
+	Entity pulumi.StringPtrInput `pulumi:"entity"`
+	// The connection reference for the connection.
+	EntityConnectionReference MapperConnectionReferencePtrInput `pulumi:"entityConnectionReference"`
+	// Name of the column.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (MapperAttributeReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeReference)(nil)).Elem()
+}
+
+func (i MapperAttributeReferenceArgs) ToMapperAttributeReferenceOutput() MapperAttributeReferenceOutput {
+	return i.ToMapperAttributeReferenceOutputWithContext(context.Background())
+}
+
+func (i MapperAttributeReferenceArgs) ToMapperAttributeReferenceOutputWithContext(ctx context.Context) MapperAttributeReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeReferenceOutput)
+}
+
+func (i MapperAttributeReferenceArgs) ToMapperAttributeReferencePtrOutput() MapperAttributeReferencePtrOutput {
+	return i.ToMapperAttributeReferencePtrOutputWithContext(context.Background())
+}
+
+func (i MapperAttributeReferenceArgs) ToMapperAttributeReferencePtrOutputWithContext(ctx context.Context) MapperAttributeReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeReferenceOutput).ToMapperAttributeReferencePtrOutputWithContext(ctx)
+}
+
+// MapperAttributeReferencePtrInput is an input type that accepts MapperAttributeReferenceArgs, MapperAttributeReferencePtr and MapperAttributeReferencePtrOutput values.
+// You can construct a concrete instance of `MapperAttributeReferencePtrInput` via:
+//
+//	        MapperAttributeReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type MapperAttributeReferencePtrInput interface {
+	pulumi.Input
+
+	ToMapperAttributeReferencePtrOutput() MapperAttributeReferencePtrOutput
+	ToMapperAttributeReferencePtrOutputWithContext(context.Context) MapperAttributeReferencePtrOutput
+}
+
+type mapperAttributeReferencePtrType MapperAttributeReferenceArgs
+
+func MapperAttributeReferencePtr(v *MapperAttributeReferenceArgs) MapperAttributeReferencePtrInput {
+	return (*mapperAttributeReferencePtrType)(v)
+}
+
+func (*mapperAttributeReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperAttributeReference)(nil)).Elem()
+}
+
+func (i *mapperAttributeReferencePtrType) ToMapperAttributeReferencePtrOutput() MapperAttributeReferencePtrOutput {
+	return i.ToMapperAttributeReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *mapperAttributeReferencePtrType) ToMapperAttributeReferencePtrOutputWithContext(ctx context.Context) MapperAttributeReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeReferencePtrOutput)
+}
+
+// MapperAttributeReferenceArrayInput is an input type that accepts MapperAttributeReferenceArray and MapperAttributeReferenceArrayOutput values.
+// You can construct a concrete instance of `MapperAttributeReferenceArrayInput` via:
+//
+//	MapperAttributeReferenceArray{ MapperAttributeReferenceArgs{...} }
+type MapperAttributeReferenceArrayInput interface {
+	pulumi.Input
+
+	ToMapperAttributeReferenceArrayOutput() MapperAttributeReferenceArrayOutput
+	ToMapperAttributeReferenceArrayOutputWithContext(context.Context) MapperAttributeReferenceArrayOutput
+}
+
+type MapperAttributeReferenceArray []MapperAttributeReferenceInput
+
+func (MapperAttributeReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperAttributeReference)(nil)).Elem()
+}
+
+func (i MapperAttributeReferenceArray) ToMapperAttributeReferenceArrayOutput() MapperAttributeReferenceArrayOutput {
+	return i.ToMapperAttributeReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i MapperAttributeReferenceArray) ToMapperAttributeReferenceArrayOutputWithContext(ctx context.Context) MapperAttributeReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeReferenceArrayOutput)
+}
+
+// Attribute reference details for the referred column.
+type MapperAttributeReferenceOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeReference)(nil)).Elem()
+}
+
+func (o MapperAttributeReferenceOutput) ToMapperAttributeReferenceOutput() MapperAttributeReferenceOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceOutput) ToMapperAttributeReferenceOutputWithContext(ctx context.Context) MapperAttributeReferenceOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceOutput) ToMapperAttributeReferencePtrOutput() MapperAttributeReferencePtrOutput {
+	return o.ToMapperAttributeReferencePtrOutputWithContext(context.Background())
+}
+
+func (o MapperAttributeReferenceOutput) ToMapperAttributeReferencePtrOutputWithContext(ctx context.Context) MapperAttributeReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MapperAttributeReference) *MapperAttributeReference {
+		return &v
+	}).(MapperAttributeReferencePtrOutput)
+}
+
+// Name of the table.
+func (o MapperAttributeReferenceOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeReference) *string { return v.Entity }).(pulumi.StringPtrOutput)
+}
+
+// The connection reference for the connection.
+func (o MapperAttributeReferenceOutput) EntityConnectionReference() MapperConnectionReferencePtrOutput {
+	return o.ApplyT(func(v MapperAttributeReference) *MapperConnectionReference { return v.EntityConnectionReference }).(MapperConnectionReferencePtrOutput)
+}
+
+// Name of the column.
+func (o MapperAttributeReferenceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeReference) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type MapperAttributeReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperAttributeReference)(nil)).Elem()
+}
+
+func (o MapperAttributeReferencePtrOutput) ToMapperAttributeReferencePtrOutput() MapperAttributeReferencePtrOutput {
+	return o
+}
+
+func (o MapperAttributeReferencePtrOutput) ToMapperAttributeReferencePtrOutputWithContext(ctx context.Context) MapperAttributeReferencePtrOutput {
+	return o
+}
+
+func (o MapperAttributeReferencePtrOutput) Elem() MapperAttributeReferenceOutput {
+	return o.ApplyT(func(v *MapperAttributeReference) MapperAttributeReference {
+		if v != nil {
+			return *v
+		}
+		var ret MapperAttributeReference
+		return ret
+	}).(MapperAttributeReferenceOutput)
+}
+
+// Name of the table.
+func (o MapperAttributeReferencePtrOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperAttributeReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Entity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connection reference for the connection.
+func (o MapperAttributeReferencePtrOutput) EntityConnectionReference() MapperConnectionReferencePtrOutput {
+	return o.ApplyT(func(v *MapperAttributeReference) *MapperConnectionReference {
+		if v == nil {
+			return nil
+		}
+		return v.EntityConnectionReference
+	}).(MapperConnectionReferencePtrOutput)
+}
+
+// Name of the column.
+func (o MapperAttributeReferencePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperAttributeReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type MapperAttributeReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperAttributeReference)(nil)).Elem()
+}
+
+func (o MapperAttributeReferenceArrayOutput) ToMapperAttributeReferenceArrayOutput() MapperAttributeReferenceArrayOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceArrayOutput) ToMapperAttributeReferenceArrayOutputWithContext(ctx context.Context) MapperAttributeReferenceArrayOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceArrayOutput) Index(i pulumi.IntInput) MapperAttributeReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperAttributeReference {
+		return vs[0].([]MapperAttributeReference)[vs[1].(int)]
+	}).(MapperAttributeReferenceOutput)
+}
+
+// Attribute reference details for the referred column.
+type MapperAttributeReferenceResponse struct {
+	// Name of the table.
+	Entity *string `pulumi:"entity"`
+	// The connection reference for the connection.
+	EntityConnectionReference *MapperConnectionReferenceResponse `pulumi:"entityConnectionReference"`
+	// Name of the column.
+	Name *string `pulumi:"name"`
+}
+
+// Attribute reference details for the referred column.
+type MapperAttributeReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperAttributeReferenceResponse)(nil)).Elem()
+}
+
+func (o MapperAttributeReferenceResponseOutput) ToMapperAttributeReferenceResponseOutput() MapperAttributeReferenceResponseOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceResponseOutput) ToMapperAttributeReferenceResponseOutputWithContext(ctx context.Context) MapperAttributeReferenceResponseOutput {
+	return o
+}
+
+// Name of the table.
+func (o MapperAttributeReferenceResponseOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeReferenceResponse) *string { return v.Entity }).(pulumi.StringPtrOutput)
+}
+
+// The connection reference for the connection.
+func (o MapperAttributeReferenceResponseOutput) EntityConnectionReference() MapperConnectionReferenceResponsePtrOutput {
+	return o.ApplyT(func(v MapperAttributeReferenceResponse) *MapperConnectionReferenceResponse {
+		return v.EntityConnectionReference
+	}).(MapperConnectionReferenceResponsePtrOutput)
+}
+
+// Name of the column.
+func (o MapperAttributeReferenceResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperAttributeReferenceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type MapperAttributeReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperAttributeReferenceResponse)(nil)).Elem()
+}
+
+func (o MapperAttributeReferenceResponsePtrOutput) ToMapperAttributeReferenceResponsePtrOutput() MapperAttributeReferenceResponsePtrOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceResponsePtrOutput) ToMapperAttributeReferenceResponsePtrOutputWithContext(ctx context.Context) MapperAttributeReferenceResponsePtrOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceResponsePtrOutput) Elem() MapperAttributeReferenceResponseOutput {
+	return o.ApplyT(func(v *MapperAttributeReferenceResponse) MapperAttributeReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MapperAttributeReferenceResponse
+		return ret
+	}).(MapperAttributeReferenceResponseOutput)
+}
+
+// Name of the table.
+func (o MapperAttributeReferenceResponsePtrOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperAttributeReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Entity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connection reference for the connection.
+func (o MapperAttributeReferenceResponsePtrOutput) EntityConnectionReference() MapperConnectionReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *MapperAttributeReferenceResponse) *MapperConnectionReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EntityConnectionReference
+	}).(MapperConnectionReferenceResponsePtrOutput)
+}
+
+// Name of the column.
+func (o MapperAttributeReferenceResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperAttributeReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type MapperAttributeReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperAttributeReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperAttributeReferenceResponse)(nil)).Elem()
+}
+
+func (o MapperAttributeReferenceResponseArrayOutput) ToMapperAttributeReferenceResponseArrayOutput() MapperAttributeReferenceResponseArrayOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceResponseArrayOutput) ToMapperAttributeReferenceResponseArrayOutputWithContext(ctx context.Context) MapperAttributeReferenceResponseArrayOutput {
+	return o
+}
+
+func (o MapperAttributeReferenceResponseArrayOutput) Index(i pulumi.IntInput) MapperAttributeReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperAttributeReferenceResponse {
+		return vs[0].([]MapperAttributeReferenceResponse)[vs[1].(int)]
+	}).(MapperAttributeReferenceResponseOutput)
+}
+
+// Source connection details.
+type MapperConnection struct {
+	// List of name/value pairs for connection properties.
+	CommonDslConnectorProperties []MapperDslConnectorProperties `pulumi:"commonDslConnectorProperties"`
+	// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
+	IsInlineDataset *bool `pulumi:"isInlineDataset"`
+	// Linked service reference.
+	LinkedService *LinkedServiceReference `pulumi:"linkedService"`
+	// Type of the linked service e.g.: AzureBlobFS.
+	LinkedServiceType *string `pulumi:"linkedServiceType"`
+	// Type of connection via linked service or dataset.
+	Type string `pulumi:"type"`
+}
+
+// MapperConnectionInput is an input type that accepts MapperConnectionArgs and MapperConnectionOutput values.
+// You can construct a concrete instance of `MapperConnectionInput` via:
+//
+//	MapperConnectionArgs{...}
+type MapperConnectionInput interface {
+	pulumi.Input
+
+	ToMapperConnectionOutput() MapperConnectionOutput
+	ToMapperConnectionOutputWithContext(context.Context) MapperConnectionOutput
+}
+
+// Source connection details.
+type MapperConnectionArgs struct {
+	// List of name/value pairs for connection properties.
+	CommonDslConnectorProperties MapperDslConnectorPropertiesArrayInput `pulumi:"commonDslConnectorProperties"`
+	// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
+	IsInlineDataset pulumi.BoolPtrInput `pulumi:"isInlineDataset"`
+	// Linked service reference.
+	LinkedService LinkedServiceReferencePtrInput `pulumi:"linkedService"`
+	// Type of the linked service e.g.: AzureBlobFS.
+	LinkedServiceType pulumi.StringPtrInput `pulumi:"linkedServiceType"`
+	// Type of connection via linked service or dataset.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MapperConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperConnection)(nil)).Elem()
+}
+
+func (i MapperConnectionArgs) ToMapperConnectionOutput() MapperConnectionOutput {
+	return i.ToMapperConnectionOutputWithContext(context.Background())
+}
+
+func (i MapperConnectionArgs) ToMapperConnectionOutputWithContext(ctx context.Context) MapperConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionOutput)
+}
+
+func (i MapperConnectionArgs) ToMapperConnectionPtrOutput() MapperConnectionPtrOutput {
+	return i.ToMapperConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i MapperConnectionArgs) ToMapperConnectionPtrOutputWithContext(ctx context.Context) MapperConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionOutput).ToMapperConnectionPtrOutputWithContext(ctx)
+}
+
+// MapperConnectionPtrInput is an input type that accepts MapperConnectionArgs, MapperConnectionPtr and MapperConnectionPtrOutput values.
+// You can construct a concrete instance of `MapperConnectionPtrInput` via:
+//
+//	        MapperConnectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MapperConnectionPtrInput interface {
+	pulumi.Input
+
+	ToMapperConnectionPtrOutput() MapperConnectionPtrOutput
+	ToMapperConnectionPtrOutputWithContext(context.Context) MapperConnectionPtrOutput
+}
+
+type mapperConnectionPtrType MapperConnectionArgs
+
+func MapperConnectionPtr(v *MapperConnectionArgs) MapperConnectionPtrInput {
+	return (*mapperConnectionPtrType)(v)
+}
+
+func (*mapperConnectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperConnection)(nil)).Elem()
+}
+
+func (i *mapperConnectionPtrType) ToMapperConnectionPtrOutput() MapperConnectionPtrOutput {
+	return i.ToMapperConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *mapperConnectionPtrType) ToMapperConnectionPtrOutputWithContext(ctx context.Context) MapperConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionPtrOutput)
+}
+
+// Source connection details.
+type MapperConnectionOutput struct{ *pulumi.OutputState }
+
+func (MapperConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperConnection)(nil)).Elem()
+}
+
+func (o MapperConnectionOutput) ToMapperConnectionOutput() MapperConnectionOutput {
+	return o
+}
+
+func (o MapperConnectionOutput) ToMapperConnectionOutputWithContext(ctx context.Context) MapperConnectionOutput {
+	return o
+}
+
+func (o MapperConnectionOutput) ToMapperConnectionPtrOutput() MapperConnectionPtrOutput {
+	return o.ToMapperConnectionPtrOutputWithContext(context.Background())
+}
+
+func (o MapperConnectionOutput) ToMapperConnectionPtrOutputWithContext(ctx context.Context) MapperConnectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MapperConnection) *MapperConnection {
+		return &v
+	}).(MapperConnectionPtrOutput)
+}
+
+// List of name/value pairs for connection properties.
+func (o MapperConnectionOutput) CommonDslConnectorProperties() MapperDslConnectorPropertiesArrayOutput {
+	return o.ApplyT(func(v MapperConnection) []MapperDslConnectorProperties { return v.CommonDslConnectorProperties }).(MapperDslConnectorPropertiesArrayOutput)
+}
+
+// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
+func (o MapperConnectionOutput) IsInlineDataset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MapperConnection) *bool { return v.IsInlineDataset }).(pulumi.BoolPtrOutput)
+}
+
+// Linked service reference.
+func (o MapperConnectionOutput) LinkedService() LinkedServiceReferencePtrOutput {
+	return o.ApplyT(func(v MapperConnection) *LinkedServiceReference { return v.LinkedService }).(LinkedServiceReferencePtrOutput)
+}
+
+// Type of the linked service e.g.: AzureBlobFS.
+func (o MapperConnectionOutput) LinkedServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperConnection) *string { return v.LinkedServiceType }).(pulumi.StringPtrOutput)
+}
+
+// Type of connection via linked service or dataset.
+func (o MapperConnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MapperConnection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MapperConnectionPtrOutput struct{ *pulumi.OutputState }
+
+func (MapperConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperConnection)(nil)).Elem()
+}
+
+func (o MapperConnectionPtrOutput) ToMapperConnectionPtrOutput() MapperConnectionPtrOutput {
+	return o
+}
+
+func (o MapperConnectionPtrOutput) ToMapperConnectionPtrOutputWithContext(ctx context.Context) MapperConnectionPtrOutput {
+	return o
+}
+
+func (o MapperConnectionPtrOutput) Elem() MapperConnectionOutput {
+	return o.ApplyT(func(v *MapperConnection) MapperConnection {
+		if v != nil {
+			return *v
+		}
+		var ret MapperConnection
+		return ret
+	}).(MapperConnectionOutput)
+}
+
+// List of name/value pairs for connection properties.
+func (o MapperConnectionPtrOutput) CommonDslConnectorProperties() MapperDslConnectorPropertiesArrayOutput {
+	return o.ApplyT(func(v *MapperConnection) []MapperDslConnectorProperties {
+		if v == nil {
+			return nil
+		}
+		return v.CommonDslConnectorProperties
+	}).(MapperDslConnectorPropertiesArrayOutput)
+}
+
+// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
+func (o MapperConnectionPtrOutput) IsInlineDataset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MapperConnection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsInlineDataset
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Linked service reference.
+func (o MapperConnectionPtrOutput) LinkedService() LinkedServiceReferencePtrOutput {
+	return o.ApplyT(func(v *MapperConnection) *LinkedServiceReference {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedService
+	}).(LinkedServiceReferencePtrOutput)
+}
+
+// Type of the linked service e.g.: AzureBlobFS.
+func (o MapperConnectionPtrOutput) LinkedServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of connection via linked service or dataset.
+func (o MapperConnectionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source or target connection reference details.
+type MapperConnectionReference struct {
+	// Name of the connection
+	ConnectionName *string `pulumi:"connectionName"`
+	// Type of connection via linked service or dataset.
+	Type *string `pulumi:"type"`
+}
+
+// MapperConnectionReferenceInput is an input type that accepts MapperConnectionReferenceArgs and MapperConnectionReferenceOutput values.
+// You can construct a concrete instance of `MapperConnectionReferenceInput` via:
+//
+//	MapperConnectionReferenceArgs{...}
+type MapperConnectionReferenceInput interface {
+	pulumi.Input
+
+	ToMapperConnectionReferenceOutput() MapperConnectionReferenceOutput
+	ToMapperConnectionReferenceOutputWithContext(context.Context) MapperConnectionReferenceOutput
+}
+
+// Source or target connection reference details.
+type MapperConnectionReferenceArgs struct {
+	// Name of the connection
+	ConnectionName pulumi.StringPtrInput `pulumi:"connectionName"`
+	// Type of connection via linked service or dataset.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MapperConnectionReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperConnectionReference)(nil)).Elem()
+}
+
+func (i MapperConnectionReferenceArgs) ToMapperConnectionReferenceOutput() MapperConnectionReferenceOutput {
+	return i.ToMapperConnectionReferenceOutputWithContext(context.Background())
+}
+
+func (i MapperConnectionReferenceArgs) ToMapperConnectionReferenceOutputWithContext(ctx context.Context) MapperConnectionReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionReferenceOutput)
+}
+
+func (i MapperConnectionReferenceArgs) ToMapperConnectionReferencePtrOutput() MapperConnectionReferencePtrOutput {
+	return i.ToMapperConnectionReferencePtrOutputWithContext(context.Background())
+}
+
+func (i MapperConnectionReferenceArgs) ToMapperConnectionReferencePtrOutputWithContext(ctx context.Context) MapperConnectionReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionReferenceOutput).ToMapperConnectionReferencePtrOutputWithContext(ctx)
+}
+
+// MapperConnectionReferencePtrInput is an input type that accepts MapperConnectionReferenceArgs, MapperConnectionReferencePtr and MapperConnectionReferencePtrOutput values.
+// You can construct a concrete instance of `MapperConnectionReferencePtrInput` via:
+//
+//	        MapperConnectionReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type MapperConnectionReferencePtrInput interface {
+	pulumi.Input
+
+	ToMapperConnectionReferencePtrOutput() MapperConnectionReferencePtrOutput
+	ToMapperConnectionReferencePtrOutputWithContext(context.Context) MapperConnectionReferencePtrOutput
+}
+
+type mapperConnectionReferencePtrType MapperConnectionReferenceArgs
+
+func MapperConnectionReferencePtr(v *MapperConnectionReferenceArgs) MapperConnectionReferencePtrInput {
+	return (*mapperConnectionReferencePtrType)(v)
+}
+
+func (*mapperConnectionReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperConnectionReference)(nil)).Elem()
+}
+
+func (i *mapperConnectionReferencePtrType) ToMapperConnectionReferencePtrOutput() MapperConnectionReferencePtrOutput {
+	return i.ToMapperConnectionReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *mapperConnectionReferencePtrType) ToMapperConnectionReferencePtrOutputWithContext(ctx context.Context) MapperConnectionReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionReferencePtrOutput)
+}
+
+// Source or target connection reference details.
+type MapperConnectionReferenceOutput struct{ *pulumi.OutputState }
+
+func (MapperConnectionReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperConnectionReference)(nil)).Elem()
+}
+
+func (o MapperConnectionReferenceOutput) ToMapperConnectionReferenceOutput() MapperConnectionReferenceOutput {
+	return o
+}
+
+func (o MapperConnectionReferenceOutput) ToMapperConnectionReferenceOutputWithContext(ctx context.Context) MapperConnectionReferenceOutput {
+	return o
+}
+
+func (o MapperConnectionReferenceOutput) ToMapperConnectionReferencePtrOutput() MapperConnectionReferencePtrOutput {
+	return o.ToMapperConnectionReferencePtrOutputWithContext(context.Background())
+}
+
+func (o MapperConnectionReferenceOutput) ToMapperConnectionReferencePtrOutputWithContext(ctx context.Context) MapperConnectionReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MapperConnectionReference) *MapperConnectionReference {
+		return &v
+	}).(MapperConnectionReferencePtrOutput)
+}
+
+// Name of the connection
+func (o MapperConnectionReferenceOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperConnectionReference) *string { return v.ConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// Type of connection via linked service or dataset.
+func (o MapperConnectionReferenceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperConnectionReference) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MapperConnectionReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (MapperConnectionReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperConnectionReference)(nil)).Elem()
+}
+
+func (o MapperConnectionReferencePtrOutput) ToMapperConnectionReferencePtrOutput() MapperConnectionReferencePtrOutput {
+	return o
+}
+
+func (o MapperConnectionReferencePtrOutput) ToMapperConnectionReferencePtrOutputWithContext(ctx context.Context) MapperConnectionReferencePtrOutput {
+	return o
+}
+
+func (o MapperConnectionReferencePtrOutput) Elem() MapperConnectionReferenceOutput {
+	return o.ApplyT(func(v *MapperConnectionReference) MapperConnectionReference {
+		if v != nil {
+			return *v
+		}
+		var ret MapperConnectionReference
+		return ret
+	}).(MapperConnectionReferenceOutput)
+}
+
+// Name of the connection
+func (o MapperConnectionReferencePtrOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperConnectionReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of connection via linked service or dataset.
+func (o MapperConnectionReferencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperConnectionReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source or target connection reference details.
+type MapperConnectionReferenceResponse struct {
+	// Name of the connection
+	ConnectionName *string `pulumi:"connectionName"`
+	// Type of connection via linked service or dataset.
+	Type *string `pulumi:"type"`
+}
+
+// Source or target connection reference details.
+type MapperConnectionReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperConnectionReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperConnectionReferenceResponse)(nil)).Elem()
+}
+
+func (o MapperConnectionReferenceResponseOutput) ToMapperConnectionReferenceResponseOutput() MapperConnectionReferenceResponseOutput {
+	return o
+}
+
+func (o MapperConnectionReferenceResponseOutput) ToMapperConnectionReferenceResponseOutputWithContext(ctx context.Context) MapperConnectionReferenceResponseOutput {
+	return o
+}
+
+// Name of the connection
+func (o MapperConnectionReferenceResponseOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperConnectionReferenceResponse) *string { return v.ConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// Type of connection via linked service or dataset.
+func (o MapperConnectionReferenceResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperConnectionReferenceResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MapperConnectionReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MapperConnectionReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperConnectionReferenceResponse)(nil)).Elem()
+}
+
+func (o MapperConnectionReferenceResponsePtrOutput) ToMapperConnectionReferenceResponsePtrOutput() MapperConnectionReferenceResponsePtrOutput {
+	return o
+}
+
+func (o MapperConnectionReferenceResponsePtrOutput) ToMapperConnectionReferenceResponsePtrOutputWithContext(ctx context.Context) MapperConnectionReferenceResponsePtrOutput {
+	return o
+}
+
+func (o MapperConnectionReferenceResponsePtrOutput) Elem() MapperConnectionReferenceResponseOutput {
+	return o.ApplyT(func(v *MapperConnectionReferenceResponse) MapperConnectionReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MapperConnectionReferenceResponse
+		return ret
+	}).(MapperConnectionReferenceResponseOutput)
+}
+
+// Name of the connection
+func (o MapperConnectionReferenceResponsePtrOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperConnectionReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of connection via linked service or dataset.
+func (o MapperConnectionReferenceResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperConnectionReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source connection details.
+type MapperConnectionResponse struct {
+	// List of name/value pairs for connection properties.
+	CommonDslConnectorProperties []MapperDslConnectorPropertiesResponse `pulumi:"commonDslConnectorProperties"`
+	// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
+	IsInlineDataset *bool `pulumi:"isInlineDataset"`
+	// Linked service reference.
+	LinkedService *LinkedServiceReferenceResponse `pulumi:"linkedService"`
+	// Type of the linked service e.g.: AzureBlobFS.
+	LinkedServiceType *string `pulumi:"linkedServiceType"`
+	// Type of connection via linked service or dataset.
+	Type string `pulumi:"type"`
+}
+
+// Source connection details.
+type MapperConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperConnectionResponse)(nil)).Elem()
+}
+
+func (o MapperConnectionResponseOutput) ToMapperConnectionResponseOutput() MapperConnectionResponseOutput {
+	return o
+}
+
+func (o MapperConnectionResponseOutput) ToMapperConnectionResponseOutputWithContext(ctx context.Context) MapperConnectionResponseOutput {
+	return o
+}
+
+// List of name/value pairs for connection properties.
+func (o MapperConnectionResponseOutput) CommonDslConnectorProperties() MapperDslConnectorPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v MapperConnectionResponse) []MapperDslConnectorPropertiesResponse {
+		return v.CommonDslConnectorProperties
+	}).(MapperDslConnectorPropertiesResponseArrayOutput)
+}
+
+// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
+func (o MapperConnectionResponseOutput) IsInlineDataset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MapperConnectionResponse) *bool { return v.IsInlineDataset }).(pulumi.BoolPtrOutput)
+}
+
+// Linked service reference.
+func (o MapperConnectionResponseOutput) LinkedService() LinkedServiceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v MapperConnectionResponse) *LinkedServiceReferenceResponse { return v.LinkedService }).(LinkedServiceReferenceResponsePtrOutput)
+}
+
+// Type of the linked service e.g.: AzureBlobFS.
+func (o MapperConnectionResponseOutput) LinkedServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperConnectionResponse) *string { return v.LinkedServiceType }).(pulumi.StringPtrOutput)
+}
+
+// Type of connection via linked service or dataset.
+func (o MapperConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MapperConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MapperConnectionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MapperConnectionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperConnectionResponse)(nil)).Elem()
+}
+
+func (o MapperConnectionResponsePtrOutput) ToMapperConnectionResponsePtrOutput() MapperConnectionResponsePtrOutput {
+	return o
+}
+
+func (o MapperConnectionResponsePtrOutput) ToMapperConnectionResponsePtrOutputWithContext(ctx context.Context) MapperConnectionResponsePtrOutput {
+	return o
+}
+
+func (o MapperConnectionResponsePtrOutput) Elem() MapperConnectionResponseOutput {
+	return o.ApplyT(func(v *MapperConnectionResponse) MapperConnectionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MapperConnectionResponse
+		return ret
+	}).(MapperConnectionResponseOutput)
+}
+
+// List of name/value pairs for connection properties.
+func (o MapperConnectionResponsePtrOutput) CommonDslConnectorProperties() MapperDslConnectorPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *MapperConnectionResponse) []MapperDslConnectorPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CommonDslConnectorProperties
+	}).(MapperDslConnectorPropertiesResponseArrayOutput)
+}
+
+// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
+func (o MapperConnectionResponsePtrOutput) IsInlineDataset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MapperConnectionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsInlineDataset
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Linked service reference.
+func (o MapperConnectionResponsePtrOutput) LinkedService() LinkedServiceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *MapperConnectionResponse) *LinkedServiceReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedService
+	}).(LinkedServiceReferenceResponsePtrOutput)
+}
+
+// Type of the linked service e.g.: AzureBlobFS.
+func (o MapperConnectionResponsePtrOutput) LinkedServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperConnectionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of connection via linked service or dataset.
+func (o MapperConnectionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperConnectionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector properties of a CDC table in terms of name / value pairs.
+type MapperDslConnectorProperties struct {
+	// Name of the property.
+	Name *string `pulumi:"name"`
+	// Value of the property.
+	Value interface{} `pulumi:"value"`
+}
+
+// MapperDslConnectorPropertiesInput is an input type that accepts MapperDslConnectorPropertiesArgs and MapperDslConnectorPropertiesOutput values.
+// You can construct a concrete instance of `MapperDslConnectorPropertiesInput` via:
+//
+//	MapperDslConnectorPropertiesArgs{...}
+type MapperDslConnectorPropertiesInput interface {
+	pulumi.Input
+
+	ToMapperDslConnectorPropertiesOutput() MapperDslConnectorPropertiesOutput
+	ToMapperDslConnectorPropertiesOutputWithContext(context.Context) MapperDslConnectorPropertiesOutput
+}
+
+// Connector properties of a CDC table in terms of name / value pairs.
+type MapperDslConnectorPropertiesArgs struct {
+	// Name of the property.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the property.
+	Value pulumi.Input `pulumi:"value"`
+}
+
+func (MapperDslConnectorPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperDslConnectorProperties)(nil)).Elem()
+}
+
+func (i MapperDslConnectorPropertiesArgs) ToMapperDslConnectorPropertiesOutput() MapperDslConnectorPropertiesOutput {
+	return i.ToMapperDslConnectorPropertiesOutputWithContext(context.Background())
+}
+
+func (i MapperDslConnectorPropertiesArgs) ToMapperDslConnectorPropertiesOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperDslConnectorPropertiesOutput)
+}
+
+// MapperDslConnectorPropertiesArrayInput is an input type that accepts MapperDslConnectorPropertiesArray and MapperDslConnectorPropertiesArrayOutput values.
+// You can construct a concrete instance of `MapperDslConnectorPropertiesArrayInput` via:
+//
+//	MapperDslConnectorPropertiesArray{ MapperDslConnectorPropertiesArgs{...} }
+type MapperDslConnectorPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToMapperDslConnectorPropertiesArrayOutput() MapperDslConnectorPropertiesArrayOutput
+	ToMapperDslConnectorPropertiesArrayOutputWithContext(context.Context) MapperDslConnectorPropertiesArrayOutput
+}
+
+type MapperDslConnectorPropertiesArray []MapperDslConnectorPropertiesInput
+
+func (MapperDslConnectorPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperDslConnectorProperties)(nil)).Elem()
+}
+
+func (i MapperDslConnectorPropertiesArray) ToMapperDslConnectorPropertiesArrayOutput() MapperDslConnectorPropertiesArrayOutput {
+	return i.ToMapperDslConnectorPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i MapperDslConnectorPropertiesArray) ToMapperDslConnectorPropertiesArrayOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperDslConnectorPropertiesArrayOutput)
+}
+
+// Connector properties of a CDC table in terms of name / value pairs.
+type MapperDslConnectorPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MapperDslConnectorPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperDslConnectorProperties)(nil)).Elem()
+}
+
+func (o MapperDslConnectorPropertiesOutput) ToMapperDslConnectorPropertiesOutput() MapperDslConnectorPropertiesOutput {
+	return o
+}
+
+func (o MapperDslConnectorPropertiesOutput) ToMapperDslConnectorPropertiesOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesOutput {
+	return o
+}
+
+// Name of the property.
+func (o MapperDslConnectorPropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperDslConnectorProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the property.
+func (o MapperDslConnectorPropertiesOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v MapperDslConnectorProperties) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type MapperDslConnectorPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperDslConnectorPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperDslConnectorProperties)(nil)).Elem()
+}
+
+func (o MapperDslConnectorPropertiesArrayOutput) ToMapperDslConnectorPropertiesArrayOutput() MapperDslConnectorPropertiesArrayOutput {
+	return o
+}
+
+func (o MapperDslConnectorPropertiesArrayOutput) ToMapperDslConnectorPropertiesArrayOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesArrayOutput {
+	return o
+}
+
+func (o MapperDslConnectorPropertiesArrayOutput) Index(i pulumi.IntInput) MapperDslConnectorPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperDslConnectorProperties {
+		return vs[0].([]MapperDslConnectorProperties)[vs[1].(int)]
+	}).(MapperDslConnectorPropertiesOutput)
+}
+
+// Connector properties of a CDC table in terms of name / value pairs.
+type MapperDslConnectorPropertiesResponse struct {
+	// Name of the property.
+	Name *string `pulumi:"name"`
+	// Value of the property.
+	Value interface{} `pulumi:"value"`
+}
+
+// Connector properties of a CDC table in terms of name / value pairs.
+type MapperDslConnectorPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperDslConnectorPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperDslConnectorPropertiesResponse)(nil)).Elem()
+}
+
+func (o MapperDslConnectorPropertiesResponseOutput) ToMapperDslConnectorPropertiesResponseOutput() MapperDslConnectorPropertiesResponseOutput {
+	return o
+}
+
+func (o MapperDslConnectorPropertiesResponseOutput) ToMapperDslConnectorPropertiesResponseOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesResponseOutput {
+	return o
+}
+
+// Name of the property.
+func (o MapperDslConnectorPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperDslConnectorPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the property.
+func (o MapperDslConnectorPropertiesResponseOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v MapperDslConnectorPropertiesResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type MapperDslConnectorPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperDslConnectorPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperDslConnectorPropertiesResponse)(nil)).Elem()
+}
+
+func (o MapperDslConnectorPropertiesResponseArrayOutput) ToMapperDslConnectorPropertiesResponseArrayOutput() MapperDslConnectorPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o MapperDslConnectorPropertiesResponseArrayOutput) ToMapperDslConnectorPropertiesResponseArrayOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o MapperDslConnectorPropertiesResponseArrayOutput) Index(i pulumi.IntInput) MapperDslConnectorPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperDslConnectorPropertiesResponse {
+		return vs[0].([]MapperDslConnectorPropertiesResponse)[vs[1].(int)]
+	}).(MapperDslConnectorPropertiesResponseOutput)
+}
+
+// CDC Policy.
+type MapperPolicy struct {
+	// Mode of running the CDC: batch vs continuous.
+	Mode *string `pulumi:"mode"`
+	// Defines the frequency and interval for running the CDC for batch mode.
+	Recurrence *MapperPolicyRecurrence `pulumi:"recurrence"`
+}
+
+// MapperPolicyInput is an input type that accepts MapperPolicyArgs and MapperPolicyOutput values.
+// You can construct a concrete instance of `MapperPolicyInput` via:
+//
+//	MapperPolicyArgs{...}
+type MapperPolicyInput interface {
+	pulumi.Input
+
+	ToMapperPolicyOutput() MapperPolicyOutput
+	ToMapperPolicyOutputWithContext(context.Context) MapperPolicyOutput
+}
+
+// CDC Policy.
+type MapperPolicyArgs struct {
+	// Mode of running the CDC: batch vs continuous.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Defines the frequency and interval for running the CDC for batch mode.
+	Recurrence MapperPolicyRecurrencePtrInput `pulumi:"recurrence"`
+}
+
+func (MapperPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperPolicy)(nil)).Elem()
+}
+
+func (i MapperPolicyArgs) ToMapperPolicyOutput() MapperPolicyOutput {
+	return i.ToMapperPolicyOutputWithContext(context.Background())
+}
+
+func (i MapperPolicyArgs) ToMapperPolicyOutputWithContext(ctx context.Context) MapperPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperPolicyOutput)
+}
+
+// CDC Policy.
+type MapperPolicyOutput struct{ *pulumi.OutputState }
+
+func (MapperPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperPolicy)(nil)).Elem()
+}
+
+func (o MapperPolicyOutput) ToMapperPolicyOutput() MapperPolicyOutput {
+	return o
+}
+
+func (o MapperPolicyOutput) ToMapperPolicyOutputWithContext(ctx context.Context) MapperPolicyOutput {
+	return o
+}
+
+// Mode of running the CDC: batch vs continuous.
+func (o MapperPolicyOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Defines the frequency and interval for running the CDC for batch mode.
+func (o MapperPolicyOutput) Recurrence() MapperPolicyRecurrencePtrOutput {
+	return o.ApplyT(func(v MapperPolicy) *MapperPolicyRecurrence { return v.Recurrence }).(MapperPolicyRecurrencePtrOutput)
+}
+
+// CDC policy recurrence details.
+type MapperPolicyRecurrence struct {
+	// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+	Frequency *string `pulumi:"frequency"`
+	// Actual interval value as per chosen frequency.
+	Interval *int `pulumi:"interval"`
+}
+
+// MapperPolicyRecurrenceInput is an input type that accepts MapperPolicyRecurrenceArgs and MapperPolicyRecurrenceOutput values.
+// You can construct a concrete instance of `MapperPolicyRecurrenceInput` via:
+//
+//	MapperPolicyRecurrenceArgs{...}
+type MapperPolicyRecurrenceInput interface {
+	pulumi.Input
+
+	ToMapperPolicyRecurrenceOutput() MapperPolicyRecurrenceOutput
+	ToMapperPolicyRecurrenceOutputWithContext(context.Context) MapperPolicyRecurrenceOutput
+}
+
+// CDC policy recurrence details.
+type MapperPolicyRecurrenceArgs struct {
+	// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// Actual interval value as per chosen frequency.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+}
+
+func (MapperPolicyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperPolicyRecurrence)(nil)).Elem()
+}
+
+func (i MapperPolicyRecurrenceArgs) ToMapperPolicyRecurrenceOutput() MapperPolicyRecurrenceOutput {
+	return i.ToMapperPolicyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i MapperPolicyRecurrenceArgs) ToMapperPolicyRecurrenceOutputWithContext(ctx context.Context) MapperPolicyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperPolicyRecurrenceOutput)
+}
+
+func (i MapperPolicyRecurrenceArgs) ToMapperPolicyRecurrencePtrOutput() MapperPolicyRecurrencePtrOutput {
+	return i.ToMapperPolicyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i MapperPolicyRecurrenceArgs) ToMapperPolicyRecurrencePtrOutputWithContext(ctx context.Context) MapperPolicyRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperPolicyRecurrenceOutput).ToMapperPolicyRecurrencePtrOutputWithContext(ctx)
+}
+
+// MapperPolicyRecurrencePtrInput is an input type that accepts MapperPolicyRecurrenceArgs, MapperPolicyRecurrencePtr and MapperPolicyRecurrencePtrOutput values.
+// You can construct a concrete instance of `MapperPolicyRecurrencePtrInput` via:
+//
+//	        MapperPolicyRecurrenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type MapperPolicyRecurrencePtrInput interface {
+	pulumi.Input
+
+	ToMapperPolicyRecurrencePtrOutput() MapperPolicyRecurrencePtrOutput
+	ToMapperPolicyRecurrencePtrOutputWithContext(context.Context) MapperPolicyRecurrencePtrOutput
+}
+
+type mapperPolicyRecurrencePtrType MapperPolicyRecurrenceArgs
+
+func MapperPolicyRecurrencePtr(v *MapperPolicyRecurrenceArgs) MapperPolicyRecurrencePtrInput {
+	return (*mapperPolicyRecurrencePtrType)(v)
+}
+
+func (*mapperPolicyRecurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperPolicyRecurrence)(nil)).Elem()
+}
+
+func (i *mapperPolicyRecurrencePtrType) ToMapperPolicyRecurrencePtrOutput() MapperPolicyRecurrencePtrOutput {
+	return i.ToMapperPolicyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *mapperPolicyRecurrencePtrType) ToMapperPolicyRecurrencePtrOutputWithContext(ctx context.Context) MapperPolicyRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperPolicyRecurrencePtrOutput)
+}
+
+// CDC policy recurrence details.
+type MapperPolicyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (MapperPolicyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperPolicyRecurrence)(nil)).Elem()
+}
+
+func (o MapperPolicyRecurrenceOutput) ToMapperPolicyRecurrenceOutput() MapperPolicyRecurrenceOutput {
+	return o
+}
+
+func (o MapperPolicyRecurrenceOutput) ToMapperPolicyRecurrenceOutputWithContext(ctx context.Context) MapperPolicyRecurrenceOutput {
+	return o
+}
+
+func (o MapperPolicyRecurrenceOutput) ToMapperPolicyRecurrencePtrOutput() MapperPolicyRecurrencePtrOutput {
+	return o.ToMapperPolicyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (o MapperPolicyRecurrenceOutput) ToMapperPolicyRecurrencePtrOutputWithContext(ctx context.Context) MapperPolicyRecurrencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MapperPolicyRecurrence) *MapperPolicyRecurrence {
+		return &v
+	}).(MapperPolicyRecurrencePtrOutput)
+}
+
+// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+func (o MapperPolicyRecurrenceOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperPolicyRecurrence) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// Actual interval value as per chosen frequency.
+func (o MapperPolicyRecurrenceOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MapperPolicyRecurrence) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+type MapperPolicyRecurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (MapperPolicyRecurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperPolicyRecurrence)(nil)).Elem()
+}
+
+func (o MapperPolicyRecurrencePtrOutput) ToMapperPolicyRecurrencePtrOutput() MapperPolicyRecurrencePtrOutput {
+	return o
+}
+
+func (o MapperPolicyRecurrencePtrOutput) ToMapperPolicyRecurrencePtrOutputWithContext(ctx context.Context) MapperPolicyRecurrencePtrOutput {
+	return o
+}
+
+func (o MapperPolicyRecurrencePtrOutput) Elem() MapperPolicyRecurrenceOutput {
+	return o.ApplyT(func(v *MapperPolicyRecurrence) MapperPolicyRecurrence {
+		if v != nil {
+			return *v
+		}
+		var ret MapperPolicyRecurrence
+		return ret
+	}).(MapperPolicyRecurrenceOutput)
+}
+
+// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+func (o MapperPolicyRecurrencePtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperPolicyRecurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Actual interval value as per chosen frequency.
+func (o MapperPolicyRecurrencePtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MapperPolicyRecurrence) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// CDC policy recurrence details.
+type MapperPolicyRecurrenceResponse struct {
+	// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+	Frequency *string `pulumi:"frequency"`
+	// Actual interval value as per chosen frequency.
+	Interval *int `pulumi:"interval"`
+}
+
+// CDC policy recurrence details.
+type MapperPolicyRecurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperPolicyRecurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperPolicyRecurrenceResponse)(nil)).Elem()
+}
+
+func (o MapperPolicyRecurrenceResponseOutput) ToMapperPolicyRecurrenceResponseOutput() MapperPolicyRecurrenceResponseOutput {
+	return o
+}
+
+func (o MapperPolicyRecurrenceResponseOutput) ToMapperPolicyRecurrenceResponseOutputWithContext(ctx context.Context) MapperPolicyRecurrenceResponseOutput {
+	return o
+}
+
+// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+func (o MapperPolicyRecurrenceResponseOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperPolicyRecurrenceResponse) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// Actual interval value as per chosen frequency.
+func (o MapperPolicyRecurrenceResponseOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MapperPolicyRecurrenceResponse) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+type MapperPolicyRecurrenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MapperPolicyRecurrenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MapperPolicyRecurrenceResponse)(nil)).Elem()
+}
+
+func (o MapperPolicyRecurrenceResponsePtrOutput) ToMapperPolicyRecurrenceResponsePtrOutput() MapperPolicyRecurrenceResponsePtrOutput {
+	return o
+}
+
+func (o MapperPolicyRecurrenceResponsePtrOutput) ToMapperPolicyRecurrenceResponsePtrOutputWithContext(ctx context.Context) MapperPolicyRecurrenceResponsePtrOutput {
+	return o
+}
+
+func (o MapperPolicyRecurrenceResponsePtrOutput) Elem() MapperPolicyRecurrenceResponseOutput {
+	return o.ApplyT(func(v *MapperPolicyRecurrenceResponse) MapperPolicyRecurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MapperPolicyRecurrenceResponse
+		return ret
+	}).(MapperPolicyRecurrenceResponseOutput)
+}
+
+// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+func (o MapperPolicyRecurrenceResponsePtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MapperPolicyRecurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Actual interval value as per chosen frequency.
+func (o MapperPolicyRecurrenceResponsePtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MapperPolicyRecurrenceResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// CDC Policy.
+type MapperPolicyResponse struct {
+	// Mode of running the CDC: batch vs continuous.
+	Mode *string `pulumi:"mode"`
+	// Defines the frequency and interval for running the CDC for batch mode.
+	Recurrence *MapperPolicyRecurrenceResponse `pulumi:"recurrence"`
+}
+
+// CDC Policy.
+type MapperPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperPolicyResponse)(nil)).Elem()
+}
+
+func (o MapperPolicyResponseOutput) ToMapperPolicyResponseOutput() MapperPolicyResponseOutput {
+	return o
+}
+
+func (o MapperPolicyResponseOutput) ToMapperPolicyResponseOutputWithContext(ctx context.Context) MapperPolicyResponseOutput {
+	return o
+}
+
+// Mode of running the CDC: batch vs continuous.
+func (o MapperPolicyResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperPolicyResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Defines the frequency and interval for running the CDC for batch mode.
+func (o MapperPolicyResponseOutput) Recurrence() MapperPolicyRecurrenceResponsePtrOutput {
+	return o.ApplyT(func(v MapperPolicyResponse) *MapperPolicyRecurrenceResponse { return v.Recurrence }).(MapperPolicyRecurrenceResponsePtrOutput)
+}
+
+// A object which contains list of tables and connection details for a source connection.
+type MapperSourceConnectionsInfo struct {
+	// Source connection details.
+	Connection *MapperConnection `pulumi:"connection"`
+	// List of source tables for a source connection.
+	SourceEntities []MapperTable `pulumi:"sourceEntities"`
+}
+
+// MapperSourceConnectionsInfoInput is an input type that accepts MapperSourceConnectionsInfoArgs and MapperSourceConnectionsInfoOutput values.
+// You can construct a concrete instance of `MapperSourceConnectionsInfoInput` via:
+//
+//	MapperSourceConnectionsInfoArgs{...}
+type MapperSourceConnectionsInfoInput interface {
+	pulumi.Input
+
+	ToMapperSourceConnectionsInfoOutput() MapperSourceConnectionsInfoOutput
+	ToMapperSourceConnectionsInfoOutputWithContext(context.Context) MapperSourceConnectionsInfoOutput
+}
+
+// A object which contains list of tables and connection details for a source connection.
+type MapperSourceConnectionsInfoArgs struct {
+	// Source connection details.
+	Connection MapperConnectionPtrInput `pulumi:"connection"`
+	// List of source tables for a source connection.
+	SourceEntities MapperTableArrayInput `pulumi:"sourceEntities"`
+}
+
+func (MapperSourceConnectionsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperSourceConnectionsInfo)(nil)).Elem()
+}
+
+func (i MapperSourceConnectionsInfoArgs) ToMapperSourceConnectionsInfoOutput() MapperSourceConnectionsInfoOutput {
+	return i.ToMapperSourceConnectionsInfoOutputWithContext(context.Background())
+}
+
+func (i MapperSourceConnectionsInfoArgs) ToMapperSourceConnectionsInfoOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperSourceConnectionsInfoOutput)
+}
+
+// MapperSourceConnectionsInfoArrayInput is an input type that accepts MapperSourceConnectionsInfoArray and MapperSourceConnectionsInfoArrayOutput values.
+// You can construct a concrete instance of `MapperSourceConnectionsInfoArrayInput` via:
+//
+//	MapperSourceConnectionsInfoArray{ MapperSourceConnectionsInfoArgs{...} }
+type MapperSourceConnectionsInfoArrayInput interface {
+	pulumi.Input
+
+	ToMapperSourceConnectionsInfoArrayOutput() MapperSourceConnectionsInfoArrayOutput
+	ToMapperSourceConnectionsInfoArrayOutputWithContext(context.Context) MapperSourceConnectionsInfoArrayOutput
+}
+
+type MapperSourceConnectionsInfoArray []MapperSourceConnectionsInfoInput
+
+func (MapperSourceConnectionsInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperSourceConnectionsInfo)(nil)).Elem()
+}
+
+func (i MapperSourceConnectionsInfoArray) ToMapperSourceConnectionsInfoArrayOutput() MapperSourceConnectionsInfoArrayOutput {
+	return i.ToMapperSourceConnectionsInfoArrayOutputWithContext(context.Background())
+}
+
+func (i MapperSourceConnectionsInfoArray) ToMapperSourceConnectionsInfoArrayOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperSourceConnectionsInfoArrayOutput)
+}
+
+// A object which contains list of tables and connection details for a source connection.
+type MapperSourceConnectionsInfoOutput struct{ *pulumi.OutputState }
+
+func (MapperSourceConnectionsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperSourceConnectionsInfo)(nil)).Elem()
+}
+
+func (o MapperSourceConnectionsInfoOutput) ToMapperSourceConnectionsInfoOutput() MapperSourceConnectionsInfoOutput {
+	return o
+}
+
+func (o MapperSourceConnectionsInfoOutput) ToMapperSourceConnectionsInfoOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoOutput {
+	return o
+}
+
+// Source connection details.
+func (o MapperSourceConnectionsInfoOutput) Connection() MapperConnectionPtrOutput {
+	return o.ApplyT(func(v MapperSourceConnectionsInfo) *MapperConnection { return v.Connection }).(MapperConnectionPtrOutput)
+}
+
+// List of source tables for a source connection.
+func (o MapperSourceConnectionsInfoOutput) SourceEntities() MapperTableArrayOutput {
+	return o.ApplyT(func(v MapperSourceConnectionsInfo) []MapperTable { return v.SourceEntities }).(MapperTableArrayOutput)
+}
+
+type MapperSourceConnectionsInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperSourceConnectionsInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperSourceConnectionsInfo)(nil)).Elem()
+}
+
+func (o MapperSourceConnectionsInfoArrayOutput) ToMapperSourceConnectionsInfoArrayOutput() MapperSourceConnectionsInfoArrayOutput {
+	return o
+}
+
+func (o MapperSourceConnectionsInfoArrayOutput) ToMapperSourceConnectionsInfoArrayOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoArrayOutput {
+	return o
+}
+
+func (o MapperSourceConnectionsInfoArrayOutput) Index(i pulumi.IntInput) MapperSourceConnectionsInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperSourceConnectionsInfo {
+		return vs[0].([]MapperSourceConnectionsInfo)[vs[1].(int)]
+	}).(MapperSourceConnectionsInfoOutput)
+}
+
+// A object which contains list of tables and connection details for a source connection.
+type MapperSourceConnectionsInfoResponse struct {
+	// Source connection details.
+	Connection *MapperConnectionResponse `pulumi:"connection"`
+	// List of source tables for a source connection.
+	SourceEntities []MapperTableResponse `pulumi:"sourceEntities"`
+}
+
+// A object which contains list of tables and connection details for a source connection.
+type MapperSourceConnectionsInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperSourceConnectionsInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperSourceConnectionsInfoResponse)(nil)).Elem()
+}
+
+func (o MapperSourceConnectionsInfoResponseOutput) ToMapperSourceConnectionsInfoResponseOutput() MapperSourceConnectionsInfoResponseOutput {
+	return o
+}
+
+func (o MapperSourceConnectionsInfoResponseOutput) ToMapperSourceConnectionsInfoResponseOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoResponseOutput {
+	return o
+}
+
+// Source connection details.
+func (o MapperSourceConnectionsInfoResponseOutput) Connection() MapperConnectionResponsePtrOutput {
+	return o.ApplyT(func(v MapperSourceConnectionsInfoResponse) *MapperConnectionResponse { return v.Connection }).(MapperConnectionResponsePtrOutput)
+}
+
+// List of source tables for a source connection.
+func (o MapperSourceConnectionsInfoResponseOutput) SourceEntities() MapperTableResponseArrayOutput {
+	return o.ApplyT(func(v MapperSourceConnectionsInfoResponse) []MapperTableResponse { return v.SourceEntities }).(MapperTableResponseArrayOutput)
+}
+
+type MapperSourceConnectionsInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperSourceConnectionsInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperSourceConnectionsInfoResponse)(nil)).Elem()
+}
+
+func (o MapperSourceConnectionsInfoResponseArrayOutput) ToMapperSourceConnectionsInfoResponseArrayOutput() MapperSourceConnectionsInfoResponseArrayOutput {
+	return o
+}
+
+func (o MapperSourceConnectionsInfoResponseArrayOutput) ToMapperSourceConnectionsInfoResponseArrayOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoResponseArrayOutput {
+	return o
+}
+
+func (o MapperSourceConnectionsInfoResponseArrayOutput) Index(i pulumi.IntInput) MapperSourceConnectionsInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperSourceConnectionsInfoResponse {
+		return vs[0].([]MapperSourceConnectionsInfoResponse)[vs[1].(int)]
+	}).(MapperSourceConnectionsInfoResponseOutput)
+}
+
+// CDC table details.
+type MapperTable struct {
+	// List of name/value pairs for connection properties.
+	DslConnectorProperties []MapperDslConnectorProperties `pulumi:"dslConnectorProperties"`
+	// Name of the table.
+	Name *string `pulumi:"name"`
+	// List of columns for the source table.
+	Schema []MapperTableSchema `pulumi:"schema"`
+}
+
+// MapperTableInput is an input type that accepts MapperTableArgs and MapperTableOutput values.
+// You can construct a concrete instance of `MapperTableInput` via:
+//
+//	MapperTableArgs{...}
+type MapperTableInput interface {
+	pulumi.Input
+
+	ToMapperTableOutput() MapperTableOutput
+	ToMapperTableOutputWithContext(context.Context) MapperTableOutput
+}
+
+// CDC table details.
+type MapperTableArgs struct {
+	// List of name/value pairs for connection properties.
+	DslConnectorProperties MapperDslConnectorPropertiesArrayInput `pulumi:"dslConnectorProperties"`
+	// Name of the table.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of columns for the source table.
+	Schema MapperTableSchemaArrayInput `pulumi:"schema"`
+}
+
+func (MapperTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTable)(nil)).Elem()
+}
+
+func (i MapperTableArgs) ToMapperTableOutput() MapperTableOutput {
+	return i.ToMapperTableOutputWithContext(context.Background())
+}
+
+func (i MapperTableArgs) ToMapperTableOutputWithContext(ctx context.Context) MapperTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperTableOutput)
+}
+
+// MapperTableArrayInput is an input type that accepts MapperTableArray and MapperTableArrayOutput values.
+// You can construct a concrete instance of `MapperTableArrayInput` via:
+//
+//	MapperTableArray{ MapperTableArgs{...} }
+type MapperTableArrayInput interface {
+	pulumi.Input
+
+	ToMapperTableArrayOutput() MapperTableArrayOutput
+	ToMapperTableArrayOutputWithContext(context.Context) MapperTableArrayOutput
+}
+
+type MapperTableArray []MapperTableInput
+
+func (MapperTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTable)(nil)).Elem()
+}
+
+func (i MapperTableArray) ToMapperTableArrayOutput() MapperTableArrayOutput {
+	return i.ToMapperTableArrayOutputWithContext(context.Background())
+}
+
+func (i MapperTableArray) ToMapperTableArrayOutputWithContext(ctx context.Context) MapperTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperTableArrayOutput)
+}
+
+// CDC table details.
+type MapperTableOutput struct{ *pulumi.OutputState }
+
+func (MapperTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTable)(nil)).Elem()
+}
+
+func (o MapperTableOutput) ToMapperTableOutput() MapperTableOutput {
+	return o
+}
+
+func (o MapperTableOutput) ToMapperTableOutputWithContext(ctx context.Context) MapperTableOutput {
+	return o
+}
+
+// List of name/value pairs for connection properties.
+func (o MapperTableOutput) DslConnectorProperties() MapperDslConnectorPropertiesArrayOutput {
+	return o.ApplyT(func(v MapperTable) []MapperDslConnectorProperties { return v.DslConnectorProperties }).(MapperDslConnectorPropertiesArrayOutput)
+}
+
+// Name of the table.
+func (o MapperTableOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperTable) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of columns for the source table.
+func (o MapperTableOutput) Schema() MapperTableSchemaArrayOutput {
+	return o.ApplyT(func(v MapperTable) []MapperTableSchema { return v.Schema }).(MapperTableSchemaArrayOutput)
+}
+
+type MapperTableArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTable)(nil)).Elem()
+}
+
+func (o MapperTableArrayOutput) ToMapperTableArrayOutput() MapperTableArrayOutput {
+	return o
+}
+
+func (o MapperTableArrayOutput) ToMapperTableArrayOutputWithContext(ctx context.Context) MapperTableArrayOutput {
+	return o
+}
+
+func (o MapperTableArrayOutput) Index(i pulumi.IntInput) MapperTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperTable {
+		return vs[0].([]MapperTable)[vs[1].(int)]
+	}).(MapperTableOutput)
+}
+
+// CDC table details.
+type MapperTableResponse struct {
+	// List of name/value pairs for connection properties.
+	DslConnectorProperties []MapperDslConnectorPropertiesResponse `pulumi:"dslConnectorProperties"`
+	// Name of the table.
+	Name *string `pulumi:"name"`
+	// List of columns for the source table.
+	Schema []MapperTableSchemaResponse `pulumi:"schema"`
+}
+
+// CDC table details.
+type MapperTableResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperTableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTableResponse)(nil)).Elem()
+}
+
+func (o MapperTableResponseOutput) ToMapperTableResponseOutput() MapperTableResponseOutput {
+	return o
+}
+
+func (o MapperTableResponseOutput) ToMapperTableResponseOutputWithContext(ctx context.Context) MapperTableResponseOutput {
+	return o
+}
+
+// List of name/value pairs for connection properties.
+func (o MapperTableResponseOutput) DslConnectorProperties() MapperDslConnectorPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v MapperTableResponse) []MapperDslConnectorPropertiesResponse { return v.DslConnectorProperties }).(MapperDslConnectorPropertiesResponseArrayOutput)
+}
+
+// Name of the table.
+func (o MapperTableResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperTableResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of columns for the source table.
+func (o MapperTableResponseOutput) Schema() MapperTableSchemaResponseArrayOutput {
+	return o.ApplyT(func(v MapperTableResponse) []MapperTableSchemaResponse { return v.Schema }).(MapperTableSchemaResponseArrayOutput)
+}
+
+type MapperTableResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperTableResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTableResponse)(nil)).Elem()
+}
+
+func (o MapperTableResponseArrayOutput) ToMapperTableResponseArrayOutput() MapperTableResponseArrayOutput {
+	return o
+}
+
+func (o MapperTableResponseArrayOutput) ToMapperTableResponseArrayOutputWithContext(ctx context.Context) MapperTableResponseArrayOutput {
+	return o
+}
+
+func (o MapperTableResponseArrayOutput) Index(i pulumi.IntInput) MapperTableResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperTableResponse {
+		return vs[0].([]MapperTableResponse)[vs[1].(int)]
+	}).(MapperTableResponseOutput)
+}
+
+// Schema of a CDC table in terms of column names and their corresponding data types.
+type MapperTableSchema struct {
+	// Data type of the column.
+	DataType *string `pulumi:"dataType"`
+	// Name of the column.
+	Name *string `pulumi:"name"`
+}
+
+// MapperTableSchemaInput is an input type that accepts MapperTableSchemaArgs and MapperTableSchemaOutput values.
+// You can construct a concrete instance of `MapperTableSchemaInput` via:
+//
+//	MapperTableSchemaArgs{...}
+type MapperTableSchemaInput interface {
+	pulumi.Input
+
+	ToMapperTableSchemaOutput() MapperTableSchemaOutput
+	ToMapperTableSchemaOutputWithContext(context.Context) MapperTableSchemaOutput
+}
+
+// Schema of a CDC table in terms of column names and their corresponding data types.
+type MapperTableSchemaArgs struct {
+	// Data type of the column.
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Name of the column.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (MapperTableSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTableSchema)(nil)).Elem()
+}
+
+func (i MapperTableSchemaArgs) ToMapperTableSchemaOutput() MapperTableSchemaOutput {
+	return i.ToMapperTableSchemaOutputWithContext(context.Background())
+}
+
+func (i MapperTableSchemaArgs) ToMapperTableSchemaOutputWithContext(ctx context.Context) MapperTableSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperTableSchemaOutput)
+}
+
+// MapperTableSchemaArrayInput is an input type that accepts MapperTableSchemaArray and MapperTableSchemaArrayOutput values.
+// You can construct a concrete instance of `MapperTableSchemaArrayInput` via:
+//
+//	MapperTableSchemaArray{ MapperTableSchemaArgs{...} }
+type MapperTableSchemaArrayInput interface {
+	pulumi.Input
+
+	ToMapperTableSchemaArrayOutput() MapperTableSchemaArrayOutput
+	ToMapperTableSchemaArrayOutputWithContext(context.Context) MapperTableSchemaArrayOutput
+}
+
+type MapperTableSchemaArray []MapperTableSchemaInput
+
+func (MapperTableSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTableSchema)(nil)).Elem()
+}
+
+func (i MapperTableSchemaArray) ToMapperTableSchemaArrayOutput() MapperTableSchemaArrayOutput {
+	return i.ToMapperTableSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i MapperTableSchemaArray) ToMapperTableSchemaArrayOutputWithContext(ctx context.Context) MapperTableSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperTableSchemaArrayOutput)
+}
+
+// Schema of a CDC table in terms of column names and their corresponding data types.
+type MapperTableSchemaOutput struct{ *pulumi.OutputState }
+
+func (MapperTableSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTableSchema)(nil)).Elem()
+}
+
+func (o MapperTableSchemaOutput) ToMapperTableSchemaOutput() MapperTableSchemaOutput {
+	return o
+}
+
+func (o MapperTableSchemaOutput) ToMapperTableSchemaOutputWithContext(ctx context.Context) MapperTableSchemaOutput {
+	return o
+}
+
+// Data type of the column.
+func (o MapperTableSchemaOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperTableSchema) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the column.
+func (o MapperTableSchemaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperTableSchema) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type MapperTableSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperTableSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTableSchema)(nil)).Elem()
+}
+
+func (o MapperTableSchemaArrayOutput) ToMapperTableSchemaArrayOutput() MapperTableSchemaArrayOutput {
+	return o
+}
+
+func (o MapperTableSchemaArrayOutput) ToMapperTableSchemaArrayOutputWithContext(ctx context.Context) MapperTableSchemaArrayOutput {
+	return o
+}
+
+func (o MapperTableSchemaArrayOutput) Index(i pulumi.IntInput) MapperTableSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperTableSchema {
+		return vs[0].([]MapperTableSchema)[vs[1].(int)]
+	}).(MapperTableSchemaOutput)
+}
+
+// Schema of a CDC table in terms of column names and their corresponding data types.
+type MapperTableSchemaResponse struct {
+	// Data type of the column.
+	DataType *string `pulumi:"dataType"`
+	// Name of the column.
+	Name *string `pulumi:"name"`
+}
+
+// Schema of a CDC table in terms of column names and their corresponding data types.
+type MapperTableSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperTableSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTableSchemaResponse)(nil)).Elem()
+}
+
+func (o MapperTableSchemaResponseOutput) ToMapperTableSchemaResponseOutput() MapperTableSchemaResponseOutput {
+	return o
+}
+
+func (o MapperTableSchemaResponseOutput) ToMapperTableSchemaResponseOutputWithContext(ctx context.Context) MapperTableSchemaResponseOutput {
+	return o
+}
+
+// Data type of the column.
+func (o MapperTableSchemaResponseOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperTableSchemaResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the column.
+func (o MapperTableSchemaResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MapperTableSchemaResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type MapperTableSchemaResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperTableSchemaResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTableSchemaResponse)(nil)).Elem()
+}
+
+func (o MapperTableSchemaResponseArrayOutput) ToMapperTableSchemaResponseArrayOutput() MapperTableSchemaResponseArrayOutput {
+	return o
+}
+
+func (o MapperTableSchemaResponseArrayOutput) ToMapperTableSchemaResponseArrayOutputWithContext(ctx context.Context) MapperTableSchemaResponseArrayOutput {
+	return o
+}
+
+func (o MapperTableSchemaResponseArrayOutput) Index(i pulumi.IntInput) MapperTableSchemaResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperTableSchemaResponse {
+		return vs[0].([]MapperTableSchemaResponse)[vs[1].(int)]
+	}).(MapperTableSchemaResponseOutput)
+}
+
+// A object which contains list of tables and connection details for a target connection.
+type MapperTargetConnectionsInfo struct {
+	// Source connection details.
+	Connection *MapperConnection `pulumi:"connection"`
+	// List of table mappings.
+	DataMapperMappings []DataMapperMapping `pulumi:"dataMapperMappings"`
+	// List of relationship info among the tables.
+	Relationships []interface{} `pulumi:"relationships"`
+	// List of source tables for a target connection.
+	TargetEntities []MapperTable `pulumi:"targetEntities"`
+}
+
+// MapperTargetConnectionsInfoInput is an input type that accepts MapperTargetConnectionsInfoArgs and MapperTargetConnectionsInfoOutput values.
+// You can construct a concrete instance of `MapperTargetConnectionsInfoInput` via:
+//
+//	MapperTargetConnectionsInfoArgs{...}
+type MapperTargetConnectionsInfoInput interface {
+	pulumi.Input
+
+	ToMapperTargetConnectionsInfoOutput() MapperTargetConnectionsInfoOutput
+	ToMapperTargetConnectionsInfoOutputWithContext(context.Context) MapperTargetConnectionsInfoOutput
+}
+
+// A object which contains list of tables and connection details for a target connection.
+type MapperTargetConnectionsInfoArgs struct {
+	// Source connection details.
+	Connection MapperConnectionPtrInput `pulumi:"connection"`
+	// List of table mappings.
+	DataMapperMappings DataMapperMappingArrayInput `pulumi:"dataMapperMappings"`
+	// List of relationship info among the tables.
+	Relationships pulumi.ArrayInput `pulumi:"relationships"`
+	// List of source tables for a target connection.
+	TargetEntities MapperTableArrayInput `pulumi:"targetEntities"`
+}
+
+func (MapperTargetConnectionsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTargetConnectionsInfo)(nil)).Elem()
+}
+
+func (i MapperTargetConnectionsInfoArgs) ToMapperTargetConnectionsInfoOutput() MapperTargetConnectionsInfoOutput {
+	return i.ToMapperTargetConnectionsInfoOutputWithContext(context.Background())
+}
+
+func (i MapperTargetConnectionsInfoArgs) ToMapperTargetConnectionsInfoOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperTargetConnectionsInfoOutput)
+}
+
+// MapperTargetConnectionsInfoArrayInput is an input type that accepts MapperTargetConnectionsInfoArray and MapperTargetConnectionsInfoArrayOutput values.
+// You can construct a concrete instance of `MapperTargetConnectionsInfoArrayInput` via:
+//
+//	MapperTargetConnectionsInfoArray{ MapperTargetConnectionsInfoArgs{...} }
+type MapperTargetConnectionsInfoArrayInput interface {
+	pulumi.Input
+
+	ToMapperTargetConnectionsInfoArrayOutput() MapperTargetConnectionsInfoArrayOutput
+	ToMapperTargetConnectionsInfoArrayOutputWithContext(context.Context) MapperTargetConnectionsInfoArrayOutput
+}
+
+type MapperTargetConnectionsInfoArray []MapperTargetConnectionsInfoInput
+
+func (MapperTargetConnectionsInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTargetConnectionsInfo)(nil)).Elem()
+}
+
+func (i MapperTargetConnectionsInfoArray) ToMapperTargetConnectionsInfoArrayOutput() MapperTargetConnectionsInfoArrayOutput {
+	return i.ToMapperTargetConnectionsInfoArrayOutputWithContext(context.Background())
+}
+
+func (i MapperTargetConnectionsInfoArray) ToMapperTargetConnectionsInfoArrayOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapperTargetConnectionsInfoArrayOutput)
+}
+
+// A object which contains list of tables and connection details for a target connection.
+type MapperTargetConnectionsInfoOutput struct{ *pulumi.OutputState }
+
+func (MapperTargetConnectionsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTargetConnectionsInfo)(nil)).Elem()
+}
+
+func (o MapperTargetConnectionsInfoOutput) ToMapperTargetConnectionsInfoOutput() MapperTargetConnectionsInfoOutput {
+	return o
+}
+
+func (o MapperTargetConnectionsInfoOutput) ToMapperTargetConnectionsInfoOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoOutput {
+	return o
+}
+
+// Source connection details.
+func (o MapperTargetConnectionsInfoOutput) Connection() MapperConnectionPtrOutput {
+	return o.ApplyT(func(v MapperTargetConnectionsInfo) *MapperConnection { return v.Connection }).(MapperConnectionPtrOutput)
+}
+
+// List of table mappings.
+func (o MapperTargetConnectionsInfoOutput) DataMapperMappings() DataMapperMappingArrayOutput {
+	return o.ApplyT(func(v MapperTargetConnectionsInfo) []DataMapperMapping { return v.DataMapperMappings }).(DataMapperMappingArrayOutput)
+}
+
+// List of relationship info among the tables.
+func (o MapperTargetConnectionsInfoOutput) Relationships() pulumi.ArrayOutput {
+	return o.ApplyT(func(v MapperTargetConnectionsInfo) []interface{} { return v.Relationships }).(pulumi.ArrayOutput)
+}
+
+// List of source tables for a target connection.
+func (o MapperTargetConnectionsInfoOutput) TargetEntities() MapperTableArrayOutput {
+	return o.ApplyT(func(v MapperTargetConnectionsInfo) []MapperTable { return v.TargetEntities }).(MapperTableArrayOutput)
+}
+
+type MapperTargetConnectionsInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperTargetConnectionsInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTargetConnectionsInfo)(nil)).Elem()
+}
+
+func (o MapperTargetConnectionsInfoArrayOutput) ToMapperTargetConnectionsInfoArrayOutput() MapperTargetConnectionsInfoArrayOutput {
+	return o
+}
+
+func (o MapperTargetConnectionsInfoArrayOutput) ToMapperTargetConnectionsInfoArrayOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoArrayOutput {
+	return o
+}
+
+func (o MapperTargetConnectionsInfoArrayOutput) Index(i pulumi.IntInput) MapperTargetConnectionsInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperTargetConnectionsInfo {
+		return vs[0].([]MapperTargetConnectionsInfo)[vs[1].(int)]
+	}).(MapperTargetConnectionsInfoOutput)
+}
+
+// A object which contains list of tables and connection details for a target connection.
+type MapperTargetConnectionsInfoResponse struct {
+	// Source connection details.
+	Connection *MapperConnectionResponse `pulumi:"connection"`
+	// List of table mappings.
+	DataMapperMappings []DataMapperMappingResponse `pulumi:"dataMapperMappings"`
+	// List of relationship info among the tables.
+	Relationships []interface{} `pulumi:"relationships"`
+	// List of source tables for a target connection.
+	TargetEntities []MapperTableResponse `pulumi:"targetEntities"`
+}
+
+// A object which contains list of tables and connection details for a target connection.
+type MapperTargetConnectionsInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (MapperTargetConnectionsInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapperTargetConnectionsInfoResponse)(nil)).Elem()
+}
+
+func (o MapperTargetConnectionsInfoResponseOutput) ToMapperTargetConnectionsInfoResponseOutput() MapperTargetConnectionsInfoResponseOutput {
+	return o
+}
+
+func (o MapperTargetConnectionsInfoResponseOutput) ToMapperTargetConnectionsInfoResponseOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoResponseOutput {
+	return o
+}
+
+// Source connection details.
+func (o MapperTargetConnectionsInfoResponseOutput) Connection() MapperConnectionResponsePtrOutput {
+	return o.ApplyT(func(v MapperTargetConnectionsInfoResponse) *MapperConnectionResponse { return v.Connection }).(MapperConnectionResponsePtrOutput)
+}
+
+// List of table mappings.
+func (o MapperTargetConnectionsInfoResponseOutput) DataMapperMappings() DataMapperMappingResponseArrayOutput {
+	return o.ApplyT(func(v MapperTargetConnectionsInfoResponse) []DataMapperMappingResponse { return v.DataMapperMappings }).(DataMapperMappingResponseArrayOutput)
+}
+
+// List of relationship info among the tables.
+func (o MapperTargetConnectionsInfoResponseOutput) Relationships() pulumi.ArrayOutput {
+	return o.ApplyT(func(v MapperTargetConnectionsInfoResponse) []interface{} { return v.Relationships }).(pulumi.ArrayOutput)
+}
+
+// List of source tables for a target connection.
+func (o MapperTargetConnectionsInfoResponseOutput) TargetEntities() MapperTableResponseArrayOutput {
+	return o.ApplyT(func(v MapperTargetConnectionsInfoResponse) []MapperTableResponse { return v.TargetEntities }).(MapperTableResponseArrayOutput)
+}
+
+type MapperTargetConnectionsInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MapperTargetConnectionsInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapperTargetConnectionsInfoResponse)(nil)).Elem()
+}
+
+func (o MapperTargetConnectionsInfoResponseArrayOutput) ToMapperTargetConnectionsInfoResponseArrayOutput() MapperTargetConnectionsInfoResponseArrayOutput {
+	return o
+}
+
+func (o MapperTargetConnectionsInfoResponseArrayOutput) ToMapperTargetConnectionsInfoResponseArrayOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoResponseArrayOutput {
+	return o
+}
+
+func (o MapperTargetConnectionsInfoResponseArrayOutput) Index(i pulumi.IntInput) MapperTargetConnectionsInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperTargetConnectionsInfoResponse {
+		return vs[0].([]MapperTargetConnectionsInfoResponse)[vs[1].(int)]
+	}).(MapperTargetConnectionsInfoResponseOutput)
 }
 
 // Mapping data flow.
@@ -4543,7 +7619,7 @@ type Office365Source struct {
 	EndTime interface{} `pulumi:"endTime"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The columns to be read out from the Office 365 table. Type: array of objects (or Expression with resultType array of objects). Example: [ { "name": "Id" }, { "name": "CreatedDateTime" } ]
+	// The columns to be read out from the Office 365 table. Type: array of objects (or Expression with resultType array of objects). itemType: OutputColumn. Example: [ { "name": "Id" }, { "name": "CreatedDateTime" } ]
 	OutputColumns interface{} `pulumi:"outputColumns"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
 	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
@@ -4570,7 +7646,7 @@ type Office365SourceResponse struct {
 	EndTime interface{} `pulumi:"endTime"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The columns to be read out from the Office 365 table. Type: array of objects (or Expression with resultType array of objects). Example: [ { "name": "Id" }, { "name": "CreatedDateTime" } ]
+	// The columns to be read out from the Office 365 table. Type: array of objects (or Expression with resultType array of objects). itemType: OutputColumn. Example: [ { "name": "Id" }, { "name": "CreatedDateTime" } ]
 	OutputColumns interface{} `pulumi:"outputColumns"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
 	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
@@ -10692,12 +13768,16 @@ type ScriptActivity struct {
 	LogSettings *ScriptActivityTypePropertiesLogSettings `pulumi:"logSettings"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	ScriptBlockExecutionTimeout interface{} `pulumi:"scriptBlockExecutionTimeout"`
 	// Array of script blocks. Type: array.
 	Scripts []ScriptActivityScriptBlock `pulumi:"scripts"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Script'.
 	Type string `pulumi:"type"`
@@ -10745,12 +13825,16 @@ type ScriptActivityResponse struct {
 	LogSettings *ScriptActivityTypePropertiesResponseLogSettings `pulumi:"logSettings"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	ScriptBlockExecutionTimeout interface{} `pulumi:"scriptBlockExecutionTimeout"`
 	// Array of script blocks. Type: array.
 	Scripts []ScriptActivityScriptBlockResponse `pulumi:"scripts"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Script'.
 	Type string `pulumi:"type"`
@@ -11105,8 +14189,12 @@ type SetVariableActivity struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// If set to true, it sets the pipeline run return value.
 	SetSystemVariable *bool `pulumi:"setSystemVariable"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'SetVariable'.
 	Type string `pulumi:"type"`
@@ -11126,8 +14214,12 @@ type SetVariableActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// If set to true, it sets the pipeline run return value.
 	SetSystemVariable *bool `pulumi:"setSystemVariable"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'SetVariable'.
 	Type string `pulumi:"type"`
@@ -11519,563 +14611,63 @@ type ShopifyLinkedServiceResponse struct {
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
 }
 
-// Shopify Service dataset.
-type ShopifyObjectDataset struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name. Type: string (or Expression with resultType string).
-	TableName interface{} `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'ShopifyObject'.
-	Type string `pulumi:"type"`
-}
-
-// Shopify Service dataset.
-type ShopifyObjectDatasetResponse struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name. Type: string (or Expression with resultType string).
-	TableName interface{} `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'ShopifyObject'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity Shopify Service source.
-type ShopifySource struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'ShopifySource'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity Shopify Service source.
-type ShopifySourceResponse struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'ShopifySource'.
-	Type string `pulumi:"type"`
-}
-
-// Skip error file.
-type SkipErrorFile struct {
-	// Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
-	DataInconsistency interface{} `pulumi:"dataInconsistency"`
-	// Skip if file is deleted by other client during copy. Default is true. Type: boolean (or Expression with resultType boolean).
-	FileMissing interface{} `pulumi:"fileMissing"`
-}
-
-// Skip error file.
-type SkipErrorFileResponse struct {
-	// Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
-	DataInconsistency interface{} `pulumi:"dataInconsistency"`
-	// Skip if file is deleted by other client during copy. Default is true. Type: boolean (or Expression with resultType boolean).
-	FileMissing interface{} `pulumi:"fileMissing"`
-}
-
-// Linked service for Smartsheet.
-type SmartsheetLinkedService struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The api token for the Smartsheet source.
-	ApiToken interface{} `pulumi:"apiToken"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Type of linked service.
-	// Expected value is 'Smartsheet'.
-	Type string `pulumi:"type"`
-}
-
-// Linked service for Smartsheet.
-type SmartsheetLinkedServiceResponse struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The api token for the Smartsheet source.
-	ApiToken interface{} `pulumi:"apiToken"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Type of linked service.
-	// Expected value is 'Smartsheet'.
-	Type string `pulumi:"type"`
-}
-
-// The snowflake dataset.
-type SnowflakeDataset struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name of the Snowflake database. Type: string (or Expression with resultType string).
-	Table interface{} `pulumi:"table"`
-	// Type of dataset.
-	// Expected value is 'SnowflakeTable'.
-	Type string `pulumi:"type"`
-}
-
-// The snowflake dataset.
-type SnowflakeDatasetResponse struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name of the Snowflake database. Type: string (or Expression with resultType string).
-	Table interface{} `pulumi:"table"`
-	// Type of dataset.
-	// Expected value is 'SnowflakeTable'.
-	Type string `pulumi:"type"`
-}
-
-// Snowflake export command settings.
-type SnowflakeExportCopyCommand struct {
-	// Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
-	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
-	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
-	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
-	// The export setting type.
-	// Expected value is 'SnowflakeExportCopyCommand'.
-	Type string `pulumi:"type"`
-}
-
-// Snowflake export command settings.
-type SnowflakeExportCopyCommandResponse struct {
-	// Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
-	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
-	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
-	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
-	// The export setting type.
-	// Expected value is 'SnowflakeExportCopyCommand'.
-	Type string `pulumi:"type"`
-}
-
-// Snowflake import command settings.
-type SnowflakeImportCopyCommand struct {
-	// Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
-	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
-	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
-	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
-	// The import setting type.
-	// Expected value is 'SnowflakeImportCopyCommand'.
-	Type string `pulumi:"type"`
-}
-
-// Snowflake import command settings.
-type SnowflakeImportCopyCommandResponse struct {
-	// Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
-	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
-	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
-	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
-	// The import setting type.
-	// Expected value is 'SnowflakeImportCopyCommand'.
-	Type string `pulumi:"type"`
-}
-
-// Snowflake linked service.
-type SnowflakeLinkedService struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// The connection string of snowflake. Type: string, SecureString.
-	ConnectionString interface{} `pulumi:"connectionString"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// The Azure key vault secret reference of password in connection string.
-	Password *AzureKeyVaultSecretReference `pulumi:"password"`
-	// Type of linked service.
-	// Expected value is 'Snowflake'.
-	Type string `pulumi:"type"`
-}
-
-// Snowflake linked service.
-type SnowflakeLinkedServiceResponse struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// The connection string of snowflake. Type: string, SecureString.
-	ConnectionString interface{} `pulumi:"connectionString"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// The Azure key vault secret reference of password in connection string.
-	Password *AzureKeyVaultSecretReferenceResponse `pulumi:"password"`
-	// Type of linked service.
-	// Expected value is 'Snowflake'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity snowflake sink.
-type SnowflakeSink struct {
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Snowflake import settings.
-	ImportSettings *SnowflakeImportCopyCommand `pulumi:"importSettings"`
-	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// SQL pre-copy script. Type: string (or Expression with resultType string).
-	PreCopyScript interface{} `pulumi:"preCopyScript"`
-	// Sink retry count. Type: integer (or Expression with resultType integer).
-	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
-	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
-	// Copy sink type.
-	// Expected value is 'SnowflakeSink'.
-	Type string `pulumi:"type"`
-	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
-	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-}
-
-// A copy activity snowflake sink.
-type SnowflakeSinkResponse struct {
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Snowflake import settings.
-	ImportSettings *SnowflakeImportCopyCommandResponse `pulumi:"importSettings"`
-	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// SQL pre-copy script. Type: string (or Expression with resultType string).
-	PreCopyScript interface{} `pulumi:"preCopyScript"`
-	// Sink retry count. Type: integer (or Expression with resultType integer).
-	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
-	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
-	// Copy sink type.
-	// Expected value is 'SnowflakeSink'.
-	Type string `pulumi:"type"`
-	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
-	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-}
-
-// A copy activity snowflake source.
-type SnowflakeSource struct {
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Snowflake export settings.
-	ExportSettings SnowflakeExportCopyCommand `pulumi:"exportSettings"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Snowflake Sql query. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SnowflakeSource'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity snowflake source.
-type SnowflakeSourceResponse struct {
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Snowflake export settings.
-	ExportSettings SnowflakeExportCopyCommandResponse `pulumi:"exportSettings"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Snowflake Sql query. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SnowflakeSource'.
-	Type string `pulumi:"type"`
-}
-
-// Spark configuration reference.
-type SparkConfigurationParametrizationReference struct {
-	// Reference spark configuration name. Type: string (or Expression with resultType string).
-	ReferenceName interface{} `pulumi:"referenceName"`
-	// Spark configuration reference type.
-	Type string `pulumi:"type"`
-}
-
-// Spark configuration reference.
-type SparkConfigurationParametrizationReferenceResponse struct {
-	// Reference spark configuration name. Type: string (or Expression with resultType string).
-	ReferenceName interface{} `pulumi:"referenceName"`
-	// Spark configuration reference type.
-	Type string `pulumi:"type"`
-}
-
-// Spark Server linked service.
-type SparkLinkedService struct {
-	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
-	AllowHostNameCNMismatch interface{} `pulumi:"allowHostNameCNMismatch"`
-	// Specifies whether to allow self-signed certificates from the server. The default value is false.
-	AllowSelfSignedServerCert interface{} `pulumi:"allowSelfSignedServerCert"`
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication method used to access the Spark server.
-	AuthenticationType string `pulumi:"authenticationType"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
-	EnableSsl interface{} `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// IP address or host name of the Spark server
-	Host interface{} `pulumi:"host"`
-	// The partial URL corresponding to the Spark server.
-	HttpPath interface{} `pulumi:"httpPath"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// The password corresponding to the user name that you provided in the Username field
-	Password interface{} `pulumi:"password"`
-	// The TCP port that the Spark server uses to listen for client connections.
-	Port interface{} `pulumi:"port"`
-	// The type of Spark server.
-	ServerType *string `pulumi:"serverType"`
-	// The transport protocol to use in the Thrift layer.
-	ThriftTransportProtocol *string `pulumi:"thriftTransportProtocol"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
-	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
-	// Type of linked service.
-	// Expected value is 'Spark'.
-	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
-	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
-	// The user name that you use to access Spark Server.
-	Username interface{} `pulumi:"username"`
-}
-
-// Spark Server linked service.
-type SparkLinkedServiceResponse struct {
-	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
-	AllowHostNameCNMismatch interface{} `pulumi:"allowHostNameCNMismatch"`
-	// Specifies whether to allow self-signed certificates from the server. The default value is false.
-	AllowSelfSignedServerCert interface{} `pulumi:"allowSelfSignedServerCert"`
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication method used to access the Spark server.
-	AuthenticationType string `pulumi:"authenticationType"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
-	EnableSsl interface{} `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// IP address or host name of the Spark server
-	Host interface{} `pulumi:"host"`
-	// The partial URL corresponding to the Spark server.
-	HttpPath interface{} `pulumi:"httpPath"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// The password corresponding to the user name that you provided in the Username field
-	Password interface{} `pulumi:"password"`
-	// The TCP port that the Spark server uses to listen for client connections.
-	Port interface{} `pulumi:"port"`
-	// The type of Spark server.
-	ServerType *string `pulumi:"serverType"`
-	// The transport protocol to use in the Thrift layer.
-	ThriftTransportProtocol *string `pulumi:"thriftTransportProtocol"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
-	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
-	// Type of linked service.
-	// Expected value is 'Spark'.
-	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
-	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
-	// The user name that you use to access Spark Server.
-	Username interface{} `pulumi:"username"`
-}
-
-// Spark Server dataset.
-type SparkObjectDataset struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name of the Spark. Type: string (or Expression with resultType string).
-	Table interface{} `pulumi:"table"`
-	// This property will be retired. Please consider using schema + table properties instead.
-	TableName interface{} `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'SparkObject'.
-	Type string `pulumi:"type"`
-}
-
-// Spark Server dataset.
-type SparkObjectDatasetResponse struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name of the Spark. Type: string (or Expression with resultType string).
-	Table interface{} `pulumi:"table"`
-	// This property will be retired. Please consider using schema + table properties instead.
-	TableName interface{} `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'SparkObject'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity Spark Server source.
-type SparkSource struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SparkSource'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity Spark Server source.
-type SparkSourceResponse struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SparkSource'.
-	Type string `pulumi:"type"`
-}
-
 func init() {
+	pulumi.RegisterOutputType(LinkedServiceReferenceOutput{})
+	pulumi.RegisterOutputType(LinkedServiceReferencePtrOutput{})
+	pulumi.RegisterOutputType(LinkedServiceReferenceResponseOutput{})
+	pulumi.RegisterOutputType(LinkedServiceReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityCredentialOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityCredentialResponseOutput{})
 	pulumi.RegisterOutputType(ManagedPrivateEndpointTypeOutput{})
 	pulumi.RegisterOutputType(ManagedPrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(MapperAttributeMappingOutput{})
+	pulumi.RegisterOutputType(MapperAttributeMappingArrayOutput{})
+	pulumi.RegisterOutputType(MapperAttributeMappingResponseOutput{})
+	pulumi.RegisterOutputType(MapperAttributeMappingResponseArrayOutput{})
+	pulumi.RegisterOutputType(MapperAttributeMappingsOutput{})
+	pulumi.RegisterOutputType(MapperAttributeMappingsPtrOutput{})
+	pulumi.RegisterOutputType(MapperAttributeMappingsResponseOutput{})
+	pulumi.RegisterOutputType(MapperAttributeMappingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(MapperAttributeReferenceOutput{})
+	pulumi.RegisterOutputType(MapperAttributeReferencePtrOutput{})
+	pulumi.RegisterOutputType(MapperAttributeReferenceArrayOutput{})
+	pulumi.RegisterOutputType(MapperAttributeReferenceResponseOutput{})
+	pulumi.RegisterOutputType(MapperAttributeReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(MapperAttributeReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(MapperConnectionOutput{})
+	pulumi.RegisterOutputType(MapperConnectionPtrOutput{})
+	pulumi.RegisterOutputType(MapperConnectionReferenceOutput{})
+	pulumi.RegisterOutputType(MapperConnectionReferencePtrOutput{})
+	pulumi.RegisterOutputType(MapperConnectionReferenceResponseOutput{})
+	pulumi.RegisterOutputType(MapperConnectionReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(MapperConnectionResponseOutput{})
+	pulumi.RegisterOutputType(MapperConnectionResponsePtrOutput{})
+	pulumi.RegisterOutputType(MapperDslConnectorPropertiesOutput{})
+	pulumi.RegisterOutputType(MapperDslConnectorPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(MapperDslConnectorPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MapperDslConnectorPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(MapperPolicyOutput{})
+	pulumi.RegisterOutputType(MapperPolicyRecurrenceOutput{})
+	pulumi.RegisterOutputType(MapperPolicyRecurrencePtrOutput{})
+	pulumi.RegisterOutputType(MapperPolicyRecurrenceResponseOutput{})
+	pulumi.RegisterOutputType(MapperPolicyRecurrenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(MapperPolicyResponseOutput{})
+	pulumi.RegisterOutputType(MapperSourceConnectionsInfoOutput{})
+	pulumi.RegisterOutputType(MapperSourceConnectionsInfoArrayOutput{})
+	pulumi.RegisterOutputType(MapperSourceConnectionsInfoResponseOutput{})
+	pulumi.RegisterOutputType(MapperSourceConnectionsInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(MapperTableOutput{})
+	pulumi.RegisterOutputType(MapperTableArrayOutput{})
+	pulumi.RegisterOutputType(MapperTableResponseOutput{})
+	pulumi.RegisterOutputType(MapperTableResponseArrayOutput{})
+	pulumi.RegisterOutputType(MapperTableSchemaOutput{})
+	pulumi.RegisterOutputType(MapperTableSchemaArrayOutput{})
+	pulumi.RegisterOutputType(MapperTableSchemaResponseOutput{})
+	pulumi.RegisterOutputType(MapperTableSchemaResponseArrayOutput{})
+	pulumi.RegisterOutputType(MapperTargetConnectionsInfoOutput{})
+	pulumi.RegisterOutputType(MapperTargetConnectionsInfoArrayOutput{})
+	pulumi.RegisterOutputType(MapperTargetConnectionsInfoResponseOutput{})
+	pulumi.RegisterOutputType(MapperTargetConnectionsInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ParameterSpecificationOutput{})
 	pulumi.RegisterOutputType(ParameterSpecificationMapOutput{})
 	pulumi.RegisterOutputType(ParameterSpecificationResponseOutput{})

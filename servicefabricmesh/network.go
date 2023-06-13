@@ -13,6 +13,7 @@ import (
 
 // This type describes a network resource.
 // API Version: 2018-09-01-preview.
+// Previous API Version: 2018-09-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Network struct {
 	pulumi.CustomResourceState
 
@@ -42,9 +43,6 @@ func NewNetwork(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:servicefabricmesh/v20180701preview:Network"),
-		},
 		{
 			Type: pulumi.String("azure-native:servicefabricmesh/v20180901preview:Network"),
 		},

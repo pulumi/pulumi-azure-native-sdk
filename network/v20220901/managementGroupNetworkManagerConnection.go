@@ -41,6 +41,9 @@ func NewManagementGroupNetworkManagerConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:network:ManagementGroupNetworkManagerConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20220101:ManagementGroupNetworkManagerConnection"),
 		},
 		{
@@ -54,6 +57,9 @@ func NewManagementGroupNetworkManagerConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:ManagementGroupNetworkManagerConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ManagementGroupNetworkManagerConnection"),
 		},
 	})
 	opts = append(opts, aliases)

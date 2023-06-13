@@ -56,18 +56,6 @@ func NewLinkedServer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cache:LinkedServer"),
 		},
 		{
-			Type: pulumi.String("azure-native:cache/v20170201:LinkedServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20171001:LinkedServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20180301:LinkedServer"),
-		},
-		{
-			Type: pulumi.String("azure-native:cache/v20190701:LinkedServer"),
-		},
-		{
 			Type: pulumi.String("azure-native:cache/v20201201:LinkedServer"),
 		},
 		{
@@ -78,6 +66,12 @@ func NewLinkedServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:LinkedServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:LinkedServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:LinkedServer"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -13,6 +13,7 @@ import (
 
 // The top level storage insight resource container.
 // API Version: 2020-08-01.
+// Previous API Version: 2020-08-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type StorageInsightConfig struct {
 	pulumi.CustomResourceState
 
@@ -51,9 +52,6 @@ func NewStorageInsightConfig(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:operationalinsights/v20150320:StorageInsightConfig"),
-		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200301preview:StorageInsightConfig"),
 		},

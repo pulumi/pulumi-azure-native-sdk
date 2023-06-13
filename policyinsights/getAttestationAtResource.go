@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an existing attestation at resource scope.
-// API Version: 2021-01-01.
+// API Version: 2022-09-01.
 func LookupAttestationAtResource(ctx *pulumi.Context, args *LookupAttestationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtResourceResult, error) {
 	var rv LookupAttestationAtResourceResult
 	err := ctx.Invoke("azure-native:policyinsights:getAttestationAtResource", args, &rv, opts...)
@@ -30,6 +30,8 @@ type LookupAttestationAtResourceArgs struct {
 
 // An attestation resource.
 type LookupAttestationAtResourceResult struct {
+	// The time the evidence was assessed
+	AssessmentDate *string `pulumi:"assessmentDate"`
 	// Comments describing why this attestation was created.
 	Comments *string `pulumi:"comments"`
 	// The compliance state that should be set on the resource.
@@ -42,6 +44,8 @@ type LookupAttestationAtResourceResult struct {
 	Id string `pulumi:"id"`
 	// The time the compliance state was last changed in this attestation.
 	LastComplianceStateChangeAt string `pulumi:"lastComplianceStateChangeAt"`
+	// Additional metadata for this attestation
+	Metadata interface{} `pulumi:"metadata"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID.
@@ -97,6 +101,11 @@ func (o LookupAttestationAtResourceResultOutput) ToLookupAttestationAtResourceRe
 	return o
 }
 
+// The time the evidence was assessed
+func (o LookupAttestationAtResourceResultOutput) AssessmentDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAttestationAtResourceResult) *string { return v.AssessmentDate }).(pulumi.StringPtrOutput)
+}
+
 // Comments describing why this attestation was created.
 func (o LookupAttestationAtResourceResultOutput) Comments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAttestationAtResourceResult) *string { return v.Comments }).(pulumi.StringPtrOutput)
@@ -125,6 +134,11 @@ func (o LookupAttestationAtResourceResultOutput) Id() pulumi.StringOutput {
 // The time the compliance state was last changed in this attestation.
 func (o LookupAttestationAtResourceResultOutput) LastComplianceStateChangeAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttestationAtResourceResult) string { return v.LastComplianceStateChangeAt }).(pulumi.StringOutput)
+}
+
+// Additional metadata for this attestation
+func (o LookupAttestationAtResourceResultOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupAttestationAtResourceResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // The name of the resource

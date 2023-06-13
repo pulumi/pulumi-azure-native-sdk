@@ -107,12 +107,6 @@ func NewAgentPool(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:containerservice:AgentPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:containerservice/v20190201:AgentPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20190401:AgentPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerservice/v20190601:AgentPool"),
 		},
 		{
@@ -237,6 +231,24 @@ func NewAgentPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230102preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230201:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230301:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230401:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230402preview:AgentPool"),
 		},
 	})
 	opts = append(opts, aliases)

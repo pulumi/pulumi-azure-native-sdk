@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about a specific offer.
-// API Version: 2021-12-01.
+// API Version: 2023-01-01.
 func LookupPrivateStoreCollectionOffer(ctx *pulumi.Context, args *LookupPrivateStoreCollectionOfferArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreCollectionOfferResult, error) {
 	var rv LookupPrivateStoreCollectionOfferResult
 	err := ctx.Invoke("azure-native:marketplace:getPrivateStoreCollectionOffer", args, &rv, opts...)

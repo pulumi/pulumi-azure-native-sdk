@@ -12,7 +12,8 @@ import (
 )
 
 // A workspace key
-// API Version: 2021-03-01.
+// API Version: 2021-06-01.
+// Previous API Version: 2021-03-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type Key struct {
 	pulumi.CustomResourceState
 
@@ -40,12 +41,6 @@ func NewKey(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:synapse/v20190601preview:Key"),
-		},
-		{
-			Type: pulumi.String("azure-native:synapse/v20201201:Key"),
-		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210301:Key"),
 		},
@@ -103,7 +98,7 @@ type keyArgs struct {
 	KeyVaultUrl *string `pulumi:"keyVaultUrl"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -117,7 +112,7 @@ type KeyArgs struct {
 	KeyVaultUrl pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 

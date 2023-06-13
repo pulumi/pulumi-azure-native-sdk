@@ -70,25 +70,10 @@ func NewEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network:Endpoint"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20151101:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170501:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180301:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:Endpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180801:Endpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20220401:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)

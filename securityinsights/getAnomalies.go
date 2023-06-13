@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a setting.
-// API Version: 2021-03-01-preview.
+// API Version: 2023-05-01-preview.
 func LookupAnomalies(ctx *pulumi.Context, args *LookupAnomaliesArgs, opts ...pulumi.InvokeOption) (*LookupAnomaliesResult, error) {
 	var rv LookupAnomaliesResult
 	err := ctx.Invoke("azure-native:securityinsights:getAnomalies", args, &rv, opts...)
@@ -22,8 +22,6 @@ func LookupAnomalies(ctx *pulumi.Context, args *LookupAnomaliesArgs, opts ...pul
 }
 
 type LookupAnomaliesArgs struct {
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -36,18 +34,18 @@ type LookupAnomaliesArgs struct {
 type LookupAnomaliesResult struct {
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Azure resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Determines whether the setting is enable or disabled.
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The kind of the setting
 	// Expected value is 'Anomalies'.
 	Kind string `pulumi:"kind"`
-	// Azure resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -65,8 +63,6 @@ func LookupAnomaliesOutput(ctx *pulumi.Context, args LookupAnomaliesOutputArgs, 
 }
 
 type LookupAnomaliesOutputArgs struct {
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -99,7 +95,7 @@ func (o LookupAnomaliesResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAnomaliesResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAnomaliesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnomaliesResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -115,7 +111,7 @@ func (o LookupAnomaliesResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnomaliesResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o LookupAnomaliesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnomaliesResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -125,7 +121,7 @@ func (o LookupAnomaliesResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAnomaliesResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAnomaliesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnomaliesResult) string { return v.Type }).(pulumi.StringOutput)
 }

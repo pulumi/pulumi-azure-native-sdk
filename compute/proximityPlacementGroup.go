@@ -12,7 +12,8 @@ import (
 )
 
 // Specifies information about the proximity placement group.
-// API Version: 2020-12-01.
+// API Version: 2023-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type ProximityPlacementGroup struct {
 	pulumi.CustomResourceState
 
@@ -20,11 +21,13 @@ type ProximityPlacementGroup struct {
 	AvailabilitySets SubResourceWithColocationStatusResponseArrayOutput `pulumi:"availabilitySets"`
 	// Describes colocation status of the Proximity Placement Group.
 	ColocationStatus InstanceViewStatusResponsePtrOutput `pulumi:"colocationStatus"`
+	// Specifies the user intent of the proximity placement group.
+	Intent ProximityPlacementGroupPropertiesResponseIntentPtrOutput `pulumi:"intent"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the type of the proximity placement group. <br><br> Possible values are: <br><br> **Standard** : Co-locate resources within an Azure region or Availability Zone. <br><br> **Ultra** : For future use.
+	// Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
 	ProximityPlacementGroupType pulumi.StringPtrOutput `pulumi:"proximityPlacementGroupType"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -34,6 +37,8 @@ type ProximityPlacementGroup struct {
 	VirtualMachineScaleSets SubResourceWithColocationStatusResponseArrayOutput `pulumi:"virtualMachineScaleSets"`
 	// A list of references to all virtual machines in the proximity placement group.
 	VirtualMachines SubResourceWithColocationStatusResponseArrayOutput `pulumi:"virtualMachines"`
+	// Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewProximityPlacementGroup registers a new resource with the given unique name, arguments, and options.
@@ -47,27 +52,6 @@ func NewProximityPlacementGroup(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:compute/v20180401:ProximityPlacementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20180601:ProximityPlacementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20181001:ProximityPlacementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190301:ProximityPlacementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20190701:ProximityPlacementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20191201:ProximityPlacementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:compute/v20200601:ProximityPlacementGroup"),
-		},
 		{
 			Type: pulumi.String("azure-native:compute/v20201201:ProximityPlacementGroup"),
 		},
@@ -131,32 +115,40 @@ func (ProximityPlacementGroupState) ElementType() reflect.Type {
 type proximityPlacementGroupArgs struct {
 	// Describes colocation status of the Proximity Placement Group.
 	ColocationStatus *InstanceViewStatus `pulumi:"colocationStatus"`
+	// Specifies the user intent of the proximity placement group.
+	Intent *ProximityPlacementGroupPropertiesIntent `pulumi:"intent"`
 	// Resource location
 	Location *string `pulumi:"location"`
 	// The name of the proximity placement group.
 	ProximityPlacementGroupName *string `pulumi:"proximityPlacementGroupName"`
-	// Specifies the type of the proximity placement group. <br><br> Possible values are: <br><br> **Standard** : Co-locate resources within an Azure region or Availability Zone. <br><br> **Ultra** : For future use.
+	// Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
 	ProximityPlacementGroupType *string `pulumi:"proximityPlacementGroupType"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
+	// Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
+	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a ProximityPlacementGroup resource.
 type ProximityPlacementGroupArgs struct {
 	// Describes colocation status of the Proximity Placement Group.
 	ColocationStatus InstanceViewStatusPtrInput
+	// Specifies the user intent of the proximity placement group.
+	Intent ProximityPlacementGroupPropertiesIntentPtrInput
 	// Resource location
 	Location pulumi.StringPtrInput
 	// The name of the proximity placement group.
 	ProximityPlacementGroupName pulumi.StringPtrInput
-	// Specifies the type of the proximity placement group. <br><br> Possible values are: <br><br> **Standard** : Co-locate resources within an Azure region or Availability Zone. <br><br> **Ultra** : For future use.
+	// Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
 	ProximityPlacementGroupType pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags
 	Tags pulumi.StringMapInput
+	// Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
+	Zones pulumi.StringArrayInput
 }
 
 func (ProximityPlacementGroupArgs) ElementType() reflect.Type {
@@ -208,6 +200,13 @@ func (o ProximityPlacementGroupOutput) ColocationStatus() InstanceViewStatusResp
 	return o.ApplyT(func(v *ProximityPlacementGroup) InstanceViewStatusResponsePtrOutput { return v.ColocationStatus }).(InstanceViewStatusResponsePtrOutput)
 }
 
+// Specifies the user intent of the proximity placement group.
+func (o ProximityPlacementGroupOutput) Intent() ProximityPlacementGroupPropertiesResponseIntentPtrOutput {
+	return o.ApplyT(func(v *ProximityPlacementGroup) ProximityPlacementGroupPropertiesResponseIntentPtrOutput {
+		return v.Intent
+	}).(ProximityPlacementGroupPropertiesResponseIntentPtrOutput)
+}
+
 // Resource location
 func (o ProximityPlacementGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProximityPlacementGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -218,7 +217,7 @@ func (o ProximityPlacementGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProximityPlacementGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the proximity placement group. <br><br> Possible values are: <br><br> **Standard** : Co-locate resources within an Azure region or Availability Zone. <br><br> **Ultra** : For future use.
+// Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
 func (o ProximityPlacementGroupOutput) ProximityPlacementGroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProximityPlacementGroup) pulumi.StringPtrOutput { return v.ProximityPlacementGroupType }).(pulumi.StringPtrOutput)
 }
@@ -245,6 +244,11 @@ func (o ProximityPlacementGroupOutput) VirtualMachines() SubResourceWithColocati
 	return o.ApplyT(func(v *ProximityPlacementGroup) SubResourceWithColocationStatusResponseArrayOutput {
 		return v.VirtualMachines
 	}).(SubResourceWithColocationStatusResponseArrayOutput)
+}
+
+// Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
+func (o ProximityPlacementGroupOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProximityPlacementGroup) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

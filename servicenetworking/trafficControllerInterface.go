@@ -12,16 +12,17 @@ import (
 )
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
-// API Version: 2022-10-01-preview.
+// API Version: 2023-05-01-preview.
+// Previous API Version: 2022-10-01-preview. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type TrafficControllerInterface struct {
 	pulumi.CustomResourceState
 
 	// Associations References List
-	Associations ResourceIDResponseArrayOutput `pulumi:"associations"`
+	Associations ResourceIdResponseArrayOutput `pulumi:"associations"`
 	// Configuration Endpoints.
 	ConfigurationEndpoints pulumi.StringArrayOutput `pulumi:"configurationEndpoints"`
 	// Frontends References List
-	Frontends ResourceIDResponseArrayOutput `pulumi:"frontends"`
+	Frontends ResourceIdResponseArrayOutput `pulumi:"frontends"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -49,6 +50,9 @@ func NewTrafficControllerInterface(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20221001preview:TrafficControllerInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:TrafficControllerInterface"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -144,8 +148,8 @@ func (o TrafficControllerInterfaceOutput) ToTrafficControllerInterfaceOutputWith
 }
 
 // Associations References List
-func (o TrafficControllerInterfaceOutput) Associations() ResourceIDResponseArrayOutput {
-	return o.ApplyT(func(v *TrafficControllerInterface) ResourceIDResponseArrayOutput { return v.Associations }).(ResourceIDResponseArrayOutput)
+func (o TrafficControllerInterfaceOutput) Associations() ResourceIdResponseArrayOutput {
+	return o.ApplyT(func(v *TrafficControllerInterface) ResourceIdResponseArrayOutput { return v.Associations }).(ResourceIdResponseArrayOutput)
 }
 
 // Configuration Endpoints.
@@ -154,8 +158,8 @@ func (o TrafficControllerInterfaceOutput) ConfigurationEndpoints() pulumi.String
 }
 
 // Frontends References List
-func (o TrafficControllerInterfaceOutput) Frontends() ResourceIDResponseArrayOutput {
-	return o.ApplyT(func(v *TrafficControllerInterface) ResourceIDResponseArrayOutput { return v.Frontends }).(ResourceIDResponseArrayOutput)
+func (o TrafficControllerInterfaceOutput) Frontends() ResourceIdResponseArrayOutput {
+	return o.ApplyT(func(v *TrafficControllerInterface) ResourceIdResponseArrayOutput { return v.Frontends }).(ResourceIdResponseArrayOutput)
 }
 
 // The geo-location where the resource lives

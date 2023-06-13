@@ -54,6 +54,15 @@ func NewHuntRelation(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:securityinsights:HuntRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:HuntRelation"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource HuntRelation
 	err := ctx.RegisterResource("azure-native:securityinsights/v20230401preview:HuntRelation", name, args, &resource, opts...)
 	if err != nil {

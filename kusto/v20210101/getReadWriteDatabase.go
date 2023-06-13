@@ -11,10 +11,8 @@ import (
 )
 
 // Returns a database.
-//
-// Deprecated: azure-native:kusto/v20210101:ReadWriteDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ReadWriteDatabase to guarantee forwards compatibility.
-func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
-	var rv LookupReadWriteDatabaseResult
+func GetReadWriteDatabase(ctx *pulumi.Context, args *GetReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*GetReadWriteDatabaseResult, error) {
+	var rv GetReadWriteDatabaseResult
 	err := ctx.Invoke("azure-native:kusto/v20210101:getReadWriteDatabase", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseA
 	return &rv, nil
 }
 
-type LookupReadWriteDatabaseArgs struct {
+type GetReadWriteDatabaseArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
@@ -32,7 +30,7 @@ type LookupReadWriteDatabaseArgs struct {
 }
 
 // Class representing a read write database.
-type LookupReadWriteDatabaseResult struct {
+type GetReadWriteDatabaseResult struct {
 	// The time the data should be kept in cache for fast queries in TimeSpan.
 	HotCachePeriod *string `pulumi:"hotCachePeriod"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -56,20 +54,20 @@ type LookupReadWriteDatabaseResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupReadWriteDatabaseOutput(ctx *pulumi.Context, args LookupReadWriteDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupReadWriteDatabaseResultOutput {
+func GetReadWriteDatabaseOutput(ctx *pulumi.Context, args GetReadWriteDatabaseOutputArgs, opts ...pulumi.InvokeOption) GetReadWriteDatabaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReadWriteDatabaseResult, error) {
-			args := v.(LookupReadWriteDatabaseArgs)
-			r, err := LookupReadWriteDatabase(ctx, &args, opts...)
-			var s LookupReadWriteDatabaseResult
+		ApplyT(func(v interface{}) (GetReadWriteDatabaseResult, error) {
+			args := v.(GetReadWriteDatabaseArgs)
+			r, err := GetReadWriteDatabase(ctx, &args, opts...)
+			var s GetReadWriteDatabaseResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupReadWriteDatabaseResultOutput)
+		}).(GetReadWriteDatabaseResultOutput)
 }
 
-type LookupReadWriteDatabaseOutputArgs struct {
+type GetReadWriteDatabaseOutputArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
@@ -78,76 +76,76 @@ type LookupReadWriteDatabaseOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
-func (LookupReadWriteDatabaseOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupReadWriteDatabaseArgs)(nil)).Elem()
+func (GetReadWriteDatabaseOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReadWriteDatabaseArgs)(nil)).Elem()
 }
 
 // Class representing a read write database.
-type LookupReadWriteDatabaseResultOutput struct{ *pulumi.OutputState }
+type GetReadWriteDatabaseResultOutput struct{ *pulumi.OutputState }
 
-func (LookupReadWriteDatabaseResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupReadWriteDatabaseResult)(nil)).Elem()
+func (GetReadWriteDatabaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReadWriteDatabaseResult)(nil)).Elem()
 }
 
-func (o LookupReadWriteDatabaseResultOutput) ToLookupReadWriteDatabaseResultOutput() LookupReadWriteDatabaseResultOutput {
+func (o GetReadWriteDatabaseResultOutput) ToGetReadWriteDatabaseResultOutput() GetReadWriteDatabaseResultOutput {
 	return o
 }
 
-func (o LookupReadWriteDatabaseResultOutput) ToLookupReadWriteDatabaseResultOutputWithContext(ctx context.Context) LookupReadWriteDatabaseResultOutput {
+func (o GetReadWriteDatabaseResultOutput) ToGetReadWriteDatabaseResultOutputWithContext(ctx context.Context) GetReadWriteDatabaseResultOutput {
 	return o
 }
 
 // The time the data should be kept in cache for fast queries in TimeSpan.
-func (o LookupReadWriteDatabaseResultOutput) HotCachePeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) *string { return v.HotCachePeriod }).(pulumi.StringPtrOutput)
+func (o GetReadWriteDatabaseResultOutput) HotCachePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) *string { return v.HotCachePeriod }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupReadWriteDatabaseResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetReadWriteDatabaseResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates whether the database is followed.
-func (o LookupReadWriteDatabaseResultOutput) IsFollowed() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) bool { return v.IsFollowed }).(pulumi.BoolOutput)
+func (o GetReadWriteDatabaseResultOutput) IsFollowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) bool { return v.IsFollowed }).(pulumi.BoolOutput)
 }
 
 // Kind of the database
 // Expected value is 'ReadWrite'.
-func (o LookupReadWriteDatabaseResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetReadWriteDatabaseResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Resource location.
-func (o LookupReadWriteDatabaseResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o GetReadWriteDatabaseResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
-func (o LookupReadWriteDatabaseResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetReadWriteDatabaseResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The provisioned state of the resource.
-func (o LookupReadWriteDatabaseResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetReadWriteDatabaseResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The time the data should be kept before it stops being accessible to queries in TimeSpan.
-func (o LookupReadWriteDatabaseResultOutput) SoftDeletePeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) *string { return v.SoftDeletePeriod }).(pulumi.StringPtrOutput)
+func (o GetReadWriteDatabaseResultOutput) SoftDeletePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) *string { return v.SoftDeletePeriod }).(pulumi.StringPtrOutput)
 }
 
 // The statistics of the database.
-func (o LookupReadWriteDatabaseResultOutput) Statistics() DatabaseStatisticsResponseOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) DatabaseStatisticsResponse { return v.Statistics }).(DatabaseStatisticsResponseOutput)
+func (o GetReadWriteDatabaseResultOutput) Statistics() DatabaseStatisticsResponseOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) DatabaseStatisticsResponse { return v.Statistics }).(DatabaseStatisticsResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupReadWriteDatabaseResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetReadWriteDatabaseResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReadWriteDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupReadWriteDatabaseResultOutput{})
+	pulumi.RegisterOutputType(GetReadWriteDatabaseResultOutput{})
 }

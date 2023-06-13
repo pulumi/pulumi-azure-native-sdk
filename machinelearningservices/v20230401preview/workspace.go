@@ -135,27 +135,6 @@ func NewWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices:Workspace"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20180301preview:Workspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20181119:Workspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20190501:Workspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20190601:Workspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20191101:Workspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20200101:Workspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20200218preview:Workspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20200301:Workspace"),
 		},
 		{
@@ -208,6 +187,12 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

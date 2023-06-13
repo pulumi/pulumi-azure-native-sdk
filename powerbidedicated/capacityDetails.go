@@ -13,6 +13,7 @@ import (
 
 // Represents an instance of a Dedicated Capacity resource.
 // API Version: 2021-01-01.
+// Previous API Version: 2021-01-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type CapacityDetails struct {
 	pulumi.CustomResourceState
 
@@ -56,9 +57,6 @@ func NewCapacityDetails(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:powerbidedicated/v20171001:CapacityDetails"),
-		},
 		{
 			Type: pulumi.String("azure-native:powerbidedicated/v20210101:CapacityDetails"),
 		},

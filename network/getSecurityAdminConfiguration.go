@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves a network manager security admin configuration.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-11-01.
 func LookupSecurityAdminConfiguration(ctx *pulumi.Context, args *LookupSecurityAdminConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSecurityAdminConfigurationResult, error) {
 	var rv LookupSecurityAdminConfigurationResult
 	err := ctx.Invoke("azure-native:network:getSecurityAdminConfiguration", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupSecurityAdminConfiguration(ctx *pulumi.Context, args *LookupSecurityA
 }
 
 type LookupSecurityAdminConfigurationArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
@@ -30,14 +30,12 @@ type LookupSecurityAdminConfigurationArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Defines the security configuration
+// Defines the security admin configuration
 type LookupSecurityAdminConfigurationResult struct {
-	// Flag if need to delete existing network security groups.
-	DeleteExistingNSGs *string `pulumi:"deleteExistingNSGs"`
+	// Enum list of network intent policy based services.
+	ApplyOnNetworkIntentPolicyBasedServices []string `pulumi:"applyOnNetworkIntentPolicyBasedServices"`
 	// A description of the security configuration.
 	Description *string `pulumi:"description"`
-	// A display name of the security configuration.
-	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -46,8 +44,6 @@ type LookupSecurityAdminConfigurationResult struct {
 	Name string `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Security Type.
-	SecurityType *string `pulumi:"securityType"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type.
@@ -68,7 +64,7 @@ func LookupSecurityAdminConfigurationOutput(ctx *pulumi.Context, args LookupSecu
 }
 
 type LookupSecurityAdminConfigurationOutputArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
@@ -80,7 +76,7 @@ func (LookupSecurityAdminConfigurationOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSecurityAdminConfigurationArgs)(nil)).Elem()
 }
 
-// Defines the security configuration
+// Defines the security admin configuration
 type LookupSecurityAdminConfigurationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSecurityAdminConfigurationResultOutput) ElementType() reflect.Type {
@@ -95,19 +91,16 @@ func (o LookupSecurityAdminConfigurationResultOutput) ToLookupSecurityAdminConfi
 	return o
 }
 
-// Flag if need to delete existing network security groups.
-func (o LookupSecurityAdminConfigurationResultOutput) DeleteExistingNSGs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) *string { return v.DeleteExistingNSGs }).(pulumi.StringPtrOutput)
+// Enum list of network intent policy based services.
+func (o LookupSecurityAdminConfigurationResultOutput) ApplyOnNetworkIntentPolicyBasedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) []string {
+		return v.ApplyOnNetworkIntentPolicyBasedServices
+	}).(pulumi.StringArrayOutput)
 }
 
 // A description of the security configuration.
 func (o LookupSecurityAdminConfigurationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A display name of the security configuration.
-func (o LookupSecurityAdminConfigurationResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -128,11 +121,6 @@ func (o LookupSecurityAdminConfigurationResultOutput) Name() pulumi.StringOutput
 // The provisioning state of the resource.
 func (o LookupSecurityAdminConfigurationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Security Type.
-func (o LookupSecurityAdminConfigurationResultOutput) SecurityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
 }
 
 // The system metadata related to this resource.

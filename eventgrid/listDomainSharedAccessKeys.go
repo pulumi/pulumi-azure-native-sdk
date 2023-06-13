@@ -11,7 +11,7 @@ import (
 )
 
 // List the two keys used to publish to a domain.
-// API Version: 2020-06-01.
+// API Version: 2022-06-15.
 func ListDomainSharedAccessKeys(ctx *pulumi.Context, args *ListDomainSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListDomainSharedAccessKeysResult, error) {
 	var rv ListDomainSharedAccessKeysResult
 	err := ctx.Invoke("azure-native:eventgrid:listDomainSharedAccessKeys", args, &rv, opts...)

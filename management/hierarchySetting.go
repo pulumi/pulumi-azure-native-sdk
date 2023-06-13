@@ -12,7 +12,8 @@ import (
 )
 
 // Settings defined at the Management Group scope.
-// API Version: 2020-05-01.
+// API Version: 2021-04-01.
+// Previous API Version: 2020-05-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type HierarchySetting struct {
 	pulumi.CustomResourceState
 
@@ -39,9 +40,6 @@ func NewHierarchySetting(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:management/v20200201:HierarchySetting"),
-		},
 		{
 			Type: pulumi.String("azure-native:management/v20200501:HierarchySetting"),
 		},

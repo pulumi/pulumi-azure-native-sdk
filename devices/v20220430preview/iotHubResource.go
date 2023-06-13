@@ -56,36 +56,6 @@ func NewIotHubResource(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devices:IotHubResource"),
 		},
 		{
-			Type: pulumi.String("azure-native:devices/v20160203:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20170119:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20170701:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20180122:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20180401:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20181201preview:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20190322:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20190322preview:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20190701preview:IotHubResource"),
-		},
-		{
-			Type: pulumi.String("azure-native:devices/v20191104:IotHubResource"),
-		},
-		{
 			Type: pulumi.String("azure-native:devices/v20200301:IotHubResource"),
 		},
 		{
@@ -126,6 +96,9 @@ func NewIotHubResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20210702preview:IotHubResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20221115preview:IotHubResource"),
 		},
 	})
 	opts = append(opts, aliases)

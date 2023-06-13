@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a specific role by name.
-//
-// Deprecated: azure-native:databoxedge/v20210201:KubernetesRole is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:KubernetesRole to guarantee forwards compatibility.
-func LookupKubernetesRole(ctx *pulumi.Context, args *LookupKubernetesRoleArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesRoleResult, error) {
-	var rv LookupKubernetesRoleResult
+func GetKubernetesRole(ctx *pulumi.Context, args *GetKubernetesRoleArgs, opts ...pulumi.InvokeOption) (*GetKubernetesRoleResult, error) {
+	var rv GetKubernetesRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20210201:getKubernetesRole", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupKubernetesRole(ctx *pulumi.Context, args *LookupKubernetesRoleArgs, o
 	return &rv, nil
 }
 
-type LookupKubernetesRoleArgs struct {
+type GetKubernetesRoleArgs struct {
 	// The device name.
 	DeviceName string `pulumi:"deviceName"`
 	// The role name.
@@ -39,7 +37,7 @@ type LookupKubernetesRoleArgs struct {
 //     For more information, refer to the document here: https://databoxupdatepackages.blob.core.windows.net/documentation/Microsoft-Azure-Stack-Edge-K8-Cloud-Management-20210323.pdf
 //     Or Demo: https://databoxupdatepackages.blob.core.windows.net/documentation/Microsoft-Azure-Stack-Edge-K8S-Cloud-Management-20210323.mp4
 //     By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/
-type LookupKubernetesRoleResult struct {
+type GetKubernetesRoleResult struct {
 	// Host OS supported by the Kubernetes role.
 	HostPlatform string `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -65,20 +63,20 @@ type LookupKubernetesRoleResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupKubernetesRoleOutput(ctx *pulumi.Context, args LookupKubernetesRoleOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesRoleResultOutput {
+func GetKubernetesRoleOutput(ctx *pulumi.Context, args GetKubernetesRoleOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesRoleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKubernetesRoleResult, error) {
-			args := v.(LookupKubernetesRoleArgs)
-			r, err := LookupKubernetesRole(ctx, &args, opts...)
-			var s LookupKubernetesRoleResult
+		ApplyT(func(v interface{}) (GetKubernetesRoleResult, error) {
+			args := v.(GetKubernetesRoleArgs)
+			r, err := GetKubernetesRole(ctx, &args, opts...)
+			var s GetKubernetesRoleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupKubernetesRoleResultOutput)
+		}).(GetKubernetesRoleResultOutput)
 }
 
-type LookupKubernetesRoleOutputArgs struct {
+type GetKubernetesRoleOutputArgs struct {
 	// The device name.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// The role name.
@@ -87,8 +85,8 @@ type LookupKubernetesRoleOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
-func (LookupKubernetesRoleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupKubernetesRoleArgs)(nil)).Elem()
+func (GetKubernetesRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesRoleArgs)(nil)).Elem()
 }
 
 // The limited preview of Kubernetes Cluster Management from the Azure supports:
@@ -99,76 +97,76 @@ func (LookupKubernetesRoleOutputArgs) ElementType() reflect.Type {
 //     For more information, refer to the document here: https://databoxupdatepackages.blob.core.windows.net/documentation/Microsoft-Azure-Stack-Edge-K8-Cloud-Management-20210323.pdf
 //     Or Demo: https://databoxupdatepackages.blob.core.windows.net/documentation/Microsoft-Azure-Stack-Edge-K8S-Cloud-Management-20210323.mp4
 //     By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/
-type LookupKubernetesRoleResultOutput struct{ *pulumi.OutputState }
+type GetKubernetesRoleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupKubernetesRoleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupKubernetesRoleResult)(nil)).Elem()
+func (GetKubernetesRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesRoleResult)(nil)).Elem()
 }
 
-func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutput() LookupKubernetesRoleResultOutput {
+func (o GetKubernetesRoleResultOutput) ToGetKubernetesRoleResultOutput() GetKubernetesRoleResultOutput {
 	return o
 }
 
-func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutputWithContext(ctx context.Context) LookupKubernetesRoleResultOutput {
+func (o GetKubernetesRoleResultOutput) ToGetKubernetesRoleResultOutputWithContext(ctx context.Context) GetKubernetesRoleResultOutput {
 	return o
 }
 
 // Host OS supported by the Kubernetes role.
-func (o LookupKubernetesRoleResultOutput) HostPlatform() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.HostPlatform }).(pulumi.StringOutput)
+func (o GetKubernetesRoleResultOutput) HostPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) string { return v.HostPlatform }).(pulumi.StringOutput)
 }
 
 // Platform where the runtime is hosted.
-func (o LookupKubernetesRoleResultOutput) HostPlatformType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.HostPlatformType }).(pulumi.StringOutput)
+func (o GetKubernetesRoleResultOutput) HostPlatformType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) string { return v.HostPlatformType }).(pulumi.StringOutput)
 }
 
 // The path ID that uniquely identifies the object.
-func (o LookupKubernetesRoleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetKubernetesRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Role type.
 // Expected value is 'Kubernetes'.
-func (o LookupKubernetesRoleResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetKubernetesRoleResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Kubernetes cluster configuration
-func (o LookupKubernetesRoleResultOutput) KubernetesClusterInfo() KubernetesClusterInfoResponseOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) KubernetesClusterInfoResponse { return v.KubernetesClusterInfo }).(KubernetesClusterInfoResponseOutput)
+func (o GetKubernetesRoleResultOutput) KubernetesClusterInfo() KubernetesClusterInfoResponseOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) KubernetesClusterInfoResponse { return v.KubernetesClusterInfo }).(KubernetesClusterInfoResponseOutput)
 }
 
 // Kubernetes role resources
-func (o LookupKubernetesRoleResultOutput) KubernetesRoleResources() KubernetesRoleResourcesResponseOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) KubernetesRoleResourcesResponse { return v.KubernetesRoleResources }).(KubernetesRoleResourcesResponseOutput)
+func (o GetKubernetesRoleResultOutput) KubernetesRoleResources() KubernetesRoleResourcesResponseOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) KubernetesRoleResourcesResponse { return v.KubernetesRoleResources }).(KubernetesRoleResourcesResponseOutput)
 }
 
 // The object name.
-func (o LookupKubernetesRoleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetKubernetesRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // State of Kubernetes deployment
-func (o LookupKubernetesRoleResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o GetKubernetesRoleResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Role status.
-func (o LookupKubernetesRoleResultOutput) RoleStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
+func (o GetKubernetesRoleResultOutput) RoleStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) string { return v.RoleStatus }).(pulumi.StringOutput)
 }
 
 // Role configured on ASE resource
-func (o LookupKubernetesRoleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetKubernetesRoleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.
-func (o LookupKubernetesRoleResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetKubernetesRoleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesRoleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupKubernetesRoleResultOutput{})
+	pulumi.RegisterOutputType(GetKubernetesRoleResultOutput{})
 }

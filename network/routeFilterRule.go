@@ -12,7 +12,8 @@ import (
 )
 
 // Route Filter Rule Resource.
-// API Version: 2020-11-01.
+// API Version: 2022-11-01.
+// Previous API Version: 2020-11-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type RouteFilterRule struct {
 	pulumi.CustomResourceState
 
@@ -55,36 +56,6 @@ func NewRouteFilterRule(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'RouteFilterRuleType'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:network/v20161201:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170301:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170601:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170801:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20170901:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171001:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20171101:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180101:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180201:RouteFilterRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20180401:RouteFilterRule"),
-		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:RouteFilterRule"),
 		},
@@ -171,6 +142,9 @@ func NewRouteFilterRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:RouteFilterRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:RouteFilterRule"),
 		},
 	})
 	opts = append(opts, aliases)

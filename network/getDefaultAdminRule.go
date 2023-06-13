@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a network manager security configuration admin rule.
-// API Version: 2021-02-01-preview.
+// API Version: 2022-11-01.
 func LookupDefaultAdminRule(ctx *pulumi.Context, args *LookupDefaultAdminRuleArgs, opts ...pulumi.InvokeOption) (*LookupDefaultAdminRuleResult, error) {
 	var rv LookupDefaultAdminRuleResult
 	err := ctx.Invoke("azure-native:network:getDefaultAdminRule", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupDefaultAdminRule(ctx *pulumi.Context, args *LookupDefaultAdminRuleArg
 }
 
 type LookupDefaultAdminRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
@@ -46,8 +46,6 @@ type LookupDefaultAdminRuleResult struct {
 	Destinations []AddressPrefixItemResponse `pulumi:"destinations"`
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction string `pulumi:"direction"`
-	// A friendly name for the rule.
-	DisplayName string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Default rule flag.
@@ -89,7 +87,7 @@ func LookupDefaultAdminRuleOutput(ctx *pulumi.Context, args LookupDefaultAdminRu
 }
 
 type LookupDefaultAdminRuleOutputArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
@@ -143,11 +141,6 @@ func (o LookupDefaultAdminRuleResultOutput) Destinations() AddressPrefixItemResp
 // Indicates if the traffic matched against the rule in inbound or outbound.
 func (o LookupDefaultAdminRuleResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// A friendly name for the rule.
-func (o LookupDefaultAdminRuleResultOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDefaultAdminRuleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

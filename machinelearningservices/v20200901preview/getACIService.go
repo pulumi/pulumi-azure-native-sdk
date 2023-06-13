@@ -11,10 +11,8 @@ import (
 )
 
 // Get a Service by name.
-//
-// Deprecated: azure-native:machinelearningservices/v20200901preview:ACIService is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20210401:ACIService to guarantee forwards compatibility.
-func LookupACIService(ctx *pulumi.Context, args *LookupACIServiceArgs, opts ...pulumi.InvokeOption) (*LookupACIServiceResult, error) {
-	var rv LookupACIServiceResult
+func GetACIService(ctx *pulumi.Context, args *GetACIServiceArgs, opts ...pulumi.InvokeOption) (*GetACIServiceResult, error) {
+	var rv GetACIServiceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200901preview:getACIService", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupACIService(ctx *pulumi.Context, args *LookupACIServiceArgs, opts ...p
 	return &rv, nil
 }
 
-type LookupACIServiceArgs struct {
+type GetACIServiceArgs struct {
 	// Set to True to include Model details.
 	Expand *bool `pulumi:"expand"`
 	// Name of the resource group in which workspace is located.
@@ -34,7 +32,7 @@ type LookupACIServiceArgs struct {
 }
 
 // Machine Learning service object wrapped into ARM resource envelope.
-type LookupACIServiceResult struct {
+type GetACIServiceResult struct {
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -53,20 +51,20 @@ type LookupACIServiceResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupACIServiceOutput(ctx *pulumi.Context, args LookupACIServiceOutputArgs, opts ...pulumi.InvokeOption) LookupACIServiceResultOutput {
+func GetACIServiceOutput(ctx *pulumi.Context, args GetACIServiceOutputArgs, opts ...pulumi.InvokeOption) GetACIServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupACIServiceResult, error) {
-			args := v.(LookupACIServiceArgs)
-			r, err := LookupACIService(ctx, &args, opts...)
-			var s LookupACIServiceResult
+		ApplyT(func(v interface{}) (GetACIServiceResult, error) {
+			args := v.(GetACIServiceArgs)
+			r, err := GetACIService(ctx, &args, opts...)
+			var s GetACIServiceResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupACIServiceResultOutput)
+		}).(GetACIServiceResultOutput)
 }
 
-type LookupACIServiceOutputArgs struct {
+type GetACIServiceOutputArgs struct {
 	// Set to True to include Model details.
 	Expand pulumi.BoolPtrInput `pulumi:"expand"`
 	// Name of the resource group in which workspace is located.
@@ -77,65 +75,65 @@ type LookupACIServiceOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupACIServiceOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupACIServiceArgs)(nil)).Elem()
+func (GetACIServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetACIServiceArgs)(nil)).Elem()
 }
 
 // Machine Learning service object wrapped into ARM resource envelope.
-type LookupACIServiceResultOutput struct{ *pulumi.OutputState }
+type GetACIServiceResultOutput struct{ *pulumi.OutputState }
 
-func (LookupACIServiceResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupACIServiceResult)(nil)).Elem()
+func (GetACIServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetACIServiceResult)(nil)).Elem()
 }
 
-func (o LookupACIServiceResultOutput) ToLookupACIServiceResultOutput() LookupACIServiceResultOutput {
+func (o GetACIServiceResultOutput) ToGetACIServiceResultOutput() GetACIServiceResultOutput {
 	return o
 }
 
-func (o LookupACIServiceResultOutput) ToLookupACIServiceResultOutputWithContext(ctx context.Context) LookupACIServiceResultOutput {
+func (o GetACIServiceResultOutput) ToGetACIServiceResultOutputWithContext(ctx context.Context) GetACIServiceResultOutput {
 	return o
 }
 
 // Specifies the resource ID.
-func (o LookupACIServiceResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupACIServiceResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetACIServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetACIServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.
-func (o LookupACIServiceResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupACIServiceResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+func (o GetACIServiceResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v GetACIServiceResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Specifies the location of the resource.
-func (o LookupACIServiceResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupACIServiceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o GetACIServiceResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetACIServiceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the name of the resource.
-func (o LookupACIServiceResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupACIServiceResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetACIServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetACIServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Service properties
-func (o LookupACIServiceResultOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupACIServiceResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
+func (o GetACIServiceResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v GetACIServiceResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // The sku of the workspace.
-func (o LookupACIServiceResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupACIServiceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o GetACIServiceResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v GetACIServiceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Contains resource tags defined as key/value pairs.
-func (o LookupACIServiceResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupACIServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+func (o GetACIServiceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetACIServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Specifies the type of the resource.
-func (o LookupACIServiceResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupACIServiceResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetACIServiceResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetACIServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupACIServiceResultOutput{})
+	pulumi.RegisterOutputType(GetACIServiceResultOutput{})
 }

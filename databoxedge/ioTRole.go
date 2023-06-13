@@ -12,7 +12,8 @@ import (
 )
 
 // Compute role.
-// API Version: 2020-12-01.
+// API Version: 2022-03-01.
+// Previous API Version: 2020-12-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type IoTRole struct {
 	pulumi.CustomResourceState
 
@@ -37,7 +38,7 @@ type IoTRole struct {
 	RoleStatus pulumi.StringOutput `pulumi:"roleStatus"`
 	// Mount points of shares in role(s).
 	ShareMappings MountPointMapResponseArrayOutput `pulumi:"shareMappings"`
-	// Role configured on ASE resource
+	// Metadata pertaining to creation and last modification of Role
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -73,24 +74,6 @@ func NewIoTRole(ctx *pulumi.Context,
 	}
 	args.Kind = pulumi.String("IOT")
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190301:IoTRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190701:IoTRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20190801:IoTRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200501preview:IoTRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901:IoTRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20200901preview:IoTRole"),
-		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20201201:IoTRole"),
 		},
@@ -292,7 +275,7 @@ func (o IoTRoleOutput) ShareMappings() MountPointMapResponseArrayOutput {
 	return o.ApplyT(func(v *IoTRole) MountPointMapResponseArrayOutput { return v.ShareMappings }).(MountPointMapResponseArrayOutput)
 }
 
-// Role configured on ASE resource
+// Metadata pertaining to creation and last modification of Role
 func (o IoTRoleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *IoTRole) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

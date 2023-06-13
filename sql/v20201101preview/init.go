@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -113,8 +113,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SyncGroup{}
 	case "azure-native:sql/v20201101preview:SyncMember":
 		r = &SyncMember{}
-	case "azure-native:sql/v20201101preview:TransparentDataEncryption":
-		r = &TransparentDataEncryption{}
 	case "azure-native:sql/v20201101preview:VirtualNetworkRule":
 		r = &VirtualNetworkRule{}
 	case "azure-native:sql/v20201101preview:WorkloadClassifier":

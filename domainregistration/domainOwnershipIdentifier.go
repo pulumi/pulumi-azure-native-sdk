@@ -12,7 +12,8 @@ import (
 )
 
 // Domain ownership Identifier.
-// API Version: 2020-10-01.
+// API Version: 2022-09-01.
+// Previous API Version: 2020-10-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type DomainOwnershipIdentifier struct {
 	pulumi.CustomResourceState
 
@@ -22,8 +23,6 @@ type DomainOwnershipIdentifier struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Ownership Id.
 	OwnershipId pulumi.StringPtrOutput `pulumi:"ownershipId"`
-	// The system metadata relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -42,21 +41,6 @@ func NewDomainOwnershipIdentifier(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:domainregistration/v20150401:DomainOwnershipIdentifier"),
-		},
-		{
-			Type: pulumi.String("azure-native:domainregistration/v20180201:DomainOwnershipIdentifier"),
-		},
-		{
-			Type: pulumi.String("azure-native:domainregistration/v20190801:DomainOwnershipIdentifier"),
-		},
-		{
-			Type: pulumi.String("azure-native:domainregistration/v20200601:DomainOwnershipIdentifier"),
-		},
-		{
-			Type: pulumi.String("azure-native:domainregistration/v20200901:DomainOwnershipIdentifier"),
-		},
 		{
 			Type: pulumi.String("azure-native:domainregistration/v20201001:DomainOwnershipIdentifier"),
 		},
@@ -191,11 +175,6 @@ func (o DomainOwnershipIdentifierOutput) Name() pulumi.StringOutput {
 // Ownership Id.
 func (o DomainOwnershipIdentifierOutput) OwnershipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainOwnershipIdentifier) pulumi.StringPtrOutput { return v.OwnershipId }).(pulumi.StringPtrOutput)
-}
-
-// The system metadata relating to this resource.
-func (o DomainOwnershipIdentifierOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DomainOwnershipIdentifier) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource type.

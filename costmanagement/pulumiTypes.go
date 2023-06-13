@@ -10,6 +10,999 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The comparison expression to be used in the budgets.
+type BudgetComparisonExpression struct {
+	// The name of the column to use in comparison.
+	Name string `pulumi:"name"`
+	// The operator to use for comparison.
+	Operator string `pulumi:"operator"`
+	// Array of values to use for comparison
+	Values []string `pulumi:"values"`
+}
+
+// BudgetComparisonExpressionInput is an input type that accepts BudgetComparisonExpressionArgs and BudgetComparisonExpressionOutput values.
+// You can construct a concrete instance of `BudgetComparisonExpressionInput` via:
+//
+//	BudgetComparisonExpressionArgs{...}
+type BudgetComparisonExpressionInput interface {
+	pulumi.Input
+
+	ToBudgetComparisonExpressionOutput() BudgetComparisonExpressionOutput
+	ToBudgetComparisonExpressionOutputWithContext(context.Context) BudgetComparisonExpressionOutput
+}
+
+// The comparison expression to be used in the budgets.
+type BudgetComparisonExpressionArgs struct {
+	// The name of the column to use in comparison.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The operator to use for comparison.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Array of values to use for comparison
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (BudgetComparisonExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetComparisonExpression)(nil)).Elem()
+}
+
+func (i BudgetComparisonExpressionArgs) ToBudgetComparisonExpressionOutput() BudgetComparisonExpressionOutput {
+	return i.ToBudgetComparisonExpressionOutputWithContext(context.Background())
+}
+
+func (i BudgetComparisonExpressionArgs) ToBudgetComparisonExpressionOutputWithContext(ctx context.Context) BudgetComparisonExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetComparisonExpressionOutput)
+}
+
+func (i BudgetComparisonExpressionArgs) ToBudgetComparisonExpressionPtrOutput() BudgetComparisonExpressionPtrOutput {
+	return i.ToBudgetComparisonExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i BudgetComparisonExpressionArgs) ToBudgetComparisonExpressionPtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetComparisonExpressionOutput).ToBudgetComparisonExpressionPtrOutputWithContext(ctx)
+}
+
+// BudgetComparisonExpressionPtrInput is an input type that accepts BudgetComparisonExpressionArgs, BudgetComparisonExpressionPtr and BudgetComparisonExpressionPtrOutput values.
+// You can construct a concrete instance of `BudgetComparisonExpressionPtrInput` via:
+//
+//	        BudgetComparisonExpressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type BudgetComparisonExpressionPtrInput interface {
+	pulumi.Input
+
+	ToBudgetComparisonExpressionPtrOutput() BudgetComparisonExpressionPtrOutput
+	ToBudgetComparisonExpressionPtrOutputWithContext(context.Context) BudgetComparisonExpressionPtrOutput
+}
+
+type budgetComparisonExpressionPtrType BudgetComparisonExpressionArgs
+
+func BudgetComparisonExpressionPtr(v *BudgetComparisonExpressionArgs) BudgetComparisonExpressionPtrInput {
+	return (*budgetComparisonExpressionPtrType)(v)
+}
+
+func (*budgetComparisonExpressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetComparisonExpression)(nil)).Elem()
+}
+
+func (i *budgetComparisonExpressionPtrType) ToBudgetComparisonExpressionPtrOutput() BudgetComparisonExpressionPtrOutput {
+	return i.ToBudgetComparisonExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i *budgetComparisonExpressionPtrType) ToBudgetComparisonExpressionPtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetComparisonExpressionPtrOutput)
+}
+
+// The comparison expression to be used in the budgets.
+type BudgetComparisonExpressionOutput struct{ *pulumi.OutputState }
+
+func (BudgetComparisonExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetComparisonExpression)(nil)).Elem()
+}
+
+func (o BudgetComparisonExpressionOutput) ToBudgetComparisonExpressionOutput() BudgetComparisonExpressionOutput {
+	return o
+}
+
+func (o BudgetComparisonExpressionOutput) ToBudgetComparisonExpressionOutputWithContext(ctx context.Context) BudgetComparisonExpressionOutput {
+	return o
+}
+
+func (o BudgetComparisonExpressionOutput) ToBudgetComparisonExpressionPtrOutput() BudgetComparisonExpressionPtrOutput {
+	return o.ToBudgetComparisonExpressionPtrOutputWithContext(context.Background())
+}
+
+func (o BudgetComparisonExpressionOutput) ToBudgetComparisonExpressionPtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetComparisonExpression) *BudgetComparisonExpression {
+		return &v
+	}).(BudgetComparisonExpressionPtrOutput)
+}
+
+// The name of the column to use in comparison.
+func (o BudgetComparisonExpressionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetComparisonExpression) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operator to use for comparison.
+func (o BudgetComparisonExpressionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetComparisonExpression) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Array of values to use for comparison
+func (o BudgetComparisonExpressionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetComparisonExpression) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type BudgetComparisonExpressionPtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetComparisonExpressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetComparisonExpression)(nil)).Elem()
+}
+
+func (o BudgetComparisonExpressionPtrOutput) ToBudgetComparisonExpressionPtrOutput() BudgetComparisonExpressionPtrOutput {
+	return o
+}
+
+func (o BudgetComparisonExpressionPtrOutput) ToBudgetComparisonExpressionPtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionPtrOutput {
+	return o
+}
+
+func (o BudgetComparisonExpressionPtrOutput) Elem() BudgetComparisonExpressionOutput {
+	return o.ApplyT(func(v *BudgetComparisonExpression) BudgetComparisonExpression {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetComparisonExpression
+		return ret
+	}).(BudgetComparisonExpressionOutput)
+}
+
+// The name of the column to use in comparison.
+func (o BudgetComparisonExpressionPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BudgetComparisonExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The operator to use for comparison.
+func (o BudgetComparisonExpressionPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BudgetComparisonExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of values to use for comparison
+func (o BudgetComparisonExpressionPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BudgetComparisonExpression) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+// The comparison expression to be used in the budgets.
+type BudgetComparisonExpressionResponse struct {
+	// The name of the column to use in comparison.
+	Name string `pulumi:"name"`
+	// The operator to use for comparison.
+	Operator string `pulumi:"operator"`
+	// Array of values to use for comparison
+	Values []string `pulumi:"values"`
+}
+
+// The comparison expression to be used in the budgets.
+type BudgetComparisonExpressionResponseOutput struct{ *pulumi.OutputState }
+
+func (BudgetComparisonExpressionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetComparisonExpressionResponse)(nil)).Elem()
+}
+
+func (o BudgetComparisonExpressionResponseOutput) ToBudgetComparisonExpressionResponseOutput() BudgetComparisonExpressionResponseOutput {
+	return o
+}
+
+func (o BudgetComparisonExpressionResponseOutput) ToBudgetComparisonExpressionResponseOutputWithContext(ctx context.Context) BudgetComparisonExpressionResponseOutput {
+	return o
+}
+
+// The name of the column to use in comparison.
+func (o BudgetComparisonExpressionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetComparisonExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operator to use for comparison.
+func (o BudgetComparisonExpressionResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetComparisonExpressionResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Array of values to use for comparison
+func (o BudgetComparisonExpressionResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetComparisonExpressionResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type BudgetComparisonExpressionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetComparisonExpressionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetComparisonExpressionResponse)(nil)).Elem()
+}
+
+func (o BudgetComparisonExpressionResponsePtrOutput) ToBudgetComparisonExpressionResponsePtrOutput() BudgetComparisonExpressionResponsePtrOutput {
+	return o
+}
+
+func (o BudgetComparisonExpressionResponsePtrOutput) ToBudgetComparisonExpressionResponsePtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionResponsePtrOutput {
+	return o
+}
+
+func (o BudgetComparisonExpressionResponsePtrOutput) Elem() BudgetComparisonExpressionResponseOutput {
+	return o.ApplyT(func(v *BudgetComparisonExpressionResponse) BudgetComparisonExpressionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetComparisonExpressionResponse
+		return ret
+	}).(BudgetComparisonExpressionResponseOutput)
+}
+
+// The name of the column to use in comparison.
+func (o BudgetComparisonExpressionResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BudgetComparisonExpressionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The operator to use for comparison.
+func (o BudgetComparisonExpressionResponsePtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BudgetComparisonExpressionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of values to use for comparison
+func (o BudgetComparisonExpressionResponsePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BudgetComparisonExpressionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+// May be used to filter budgets by user-specified dimensions and/or tags.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilter struct {
+	// The logical "AND" expression. Must have at least 2 items.
+	//
+	//  Supported for CategoryType(s): Cost.
+	And []BudgetFilterProperties `pulumi:"and"`
+	// Has comparison expression for a dimension.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	// Supported dimension names for **CategoryType: ReservationUtilization**
+	// - ReservationId
+	// - ReservedResourceType
+	Dimensions *BudgetComparisonExpression `pulumi:"dimensions"`
+	// Has comparison expression for a tag.
+	//
+	//  Supported for CategoryType(s): Cost.
+	Tags *BudgetComparisonExpression `pulumi:"tags"`
+}
+
+// BudgetFilterInput is an input type that accepts BudgetFilterArgs and BudgetFilterOutput values.
+// You can construct a concrete instance of `BudgetFilterInput` via:
+//
+//	BudgetFilterArgs{...}
+type BudgetFilterInput interface {
+	pulumi.Input
+
+	ToBudgetFilterOutput() BudgetFilterOutput
+	ToBudgetFilterOutputWithContext(context.Context) BudgetFilterOutput
+}
+
+// May be used to filter budgets by user-specified dimensions and/or tags.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterArgs struct {
+	// The logical "AND" expression. Must have at least 2 items.
+	//
+	//  Supported for CategoryType(s): Cost.
+	And BudgetFilterPropertiesArrayInput `pulumi:"and"`
+	// Has comparison expression for a dimension.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	// Supported dimension names for **CategoryType: ReservationUtilization**
+	// - ReservationId
+	// - ReservedResourceType
+	Dimensions BudgetComparisonExpressionPtrInput `pulumi:"dimensions"`
+	// Has comparison expression for a tag.
+	//
+	//  Supported for CategoryType(s): Cost.
+	Tags BudgetComparisonExpressionPtrInput `pulumi:"tags"`
+}
+
+func (BudgetFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetFilter)(nil)).Elem()
+}
+
+func (i BudgetFilterArgs) ToBudgetFilterOutput() BudgetFilterOutput {
+	return i.ToBudgetFilterOutputWithContext(context.Background())
+}
+
+func (i BudgetFilterArgs) ToBudgetFilterOutputWithContext(ctx context.Context) BudgetFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterOutput)
+}
+
+func (i BudgetFilterArgs) ToBudgetFilterPtrOutput() BudgetFilterPtrOutput {
+	return i.ToBudgetFilterPtrOutputWithContext(context.Background())
+}
+
+func (i BudgetFilterArgs) ToBudgetFilterPtrOutputWithContext(ctx context.Context) BudgetFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterOutput).ToBudgetFilterPtrOutputWithContext(ctx)
+}
+
+// BudgetFilterPtrInput is an input type that accepts BudgetFilterArgs, BudgetFilterPtr and BudgetFilterPtrOutput values.
+// You can construct a concrete instance of `BudgetFilterPtrInput` via:
+//
+//	        BudgetFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type BudgetFilterPtrInput interface {
+	pulumi.Input
+
+	ToBudgetFilterPtrOutput() BudgetFilterPtrOutput
+	ToBudgetFilterPtrOutputWithContext(context.Context) BudgetFilterPtrOutput
+}
+
+type budgetFilterPtrType BudgetFilterArgs
+
+func BudgetFilterPtr(v *BudgetFilterArgs) BudgetFilterPtrInput {
+	return (*budgetFilterPtrType)(v)
+}
+
+func (*budgetFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetFilter)(nil)).Elem()
+}
+
+func (i *budgetFilterPtrType) ToBudgetFilterPtrOutput() BudgetFilterPtrOutput {
+	return i.ToBudgetFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *budgetFilterPtrType) ToBudgetFilterPtrOutputWithContext(ctx context.Context) BudgetFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPtrOutput)
+}
+
+// May be used to filter budgets by user-specified dimensions and/or tags.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterOutput struct{ *pulumi.OutputState }
+
+func (BudgetFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetFilter)(nil)).Elem()
+}
+
+func (o BudgetFilterOutput) ToBudgetFilterOutput() BudgetFilterOutput {
+	return o
+}
+
+func (o BudgetFilterOutput) ToBudgetFilterOutputWithContext(ctx context.Context) BudgetFilterOutput {
+	return o
+}
+
+func (o BudgetFilterOutput) ToBudgetFilterPtrOutput() BudgetFilterPtrOutput {
+	return o.ToBudgetFilterPtrOutputWithContext(context.Background())
+}
+
+func (o BudgetFilterOutput) ToBudgetFilterPtrOutputWithContext(ctx context.Context) BudgetFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetFilter) *BudgetFilter {
+		return &v
+	}).(BudgetFilterPtrOutput)
+}
+
+// The logical "AND" expression. Must have at least 2 items.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterOutput) And() BudgetFilterPropertiesArrayOutput {
+	return o.ApplyT(func(v BudgetFilter) []BudgetFilterProperties { return v.And }).(BudgetFilterPropertiesArrayOutput)
+}
+
+// Has comparison expression for a dimension.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+// Supported dimension names for **CategoryType: ReservationUtilization**
+// - ReservationId
+// - ReservedResourceType
+func (o BudgetFilterOutput) Dimensions() BudgetComparisonExpressionPtrOutput {
+	return o.ApplyT(func(v BudgetFilter) *BudgetComparisonExpression { return v.Dimensions }).(BudgetComparisonExpressionPtrOutput)
+}
+
+// Has comparison expression for a tag.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterOutput) Tags() BudgetComparisonExpressionPtrOutput {
+	return o.ApplyT(func(v BudgetFilter) *BudgetComparisonExpression { return v.Tags }).(BudgetComparisonExpressionPtrOutput)
+}
+
+type BudgetFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetFilter)(nil)).Elem()
+}
+
+func (o BudgetFilterPtrOutput) ToBudgetFilterPtrOutput() BudgetFilterPtrOutput {
+	return o
+}
+
+func (o BudgetFilterPtrOutput) ToBudgetFilterPtrOutputWithContext(ctx context.Context) BudgetFilterPtrOutput {
+	return o
+}
+
+func (o BudgetFilterPtrOutput) Elem() BudgetFilterOutput {
+	return o.ApplyT(func(v *BudgetFilter) BudgetFilter {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetFilter
+		return ret
+	}).(BudgetFilterOutput)
+}
+
+// The logical "AND" expression. Must have at least 2 items.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterPtrOutput) And() BudgetFilterPropertiesArrayOutput {
+	return o.ApplyT(func(v *BudgetFilter) []BudgetFilterProperties {
+		if v == nil {
+			return nil
+		}
+		return v.And
+	}).(BudgetFilterPropertiesArrayOutput)
+}
+
+// Has comparison expression for a dimension.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+// Supported dimension names for **CategoryType: ReservationUtilization**
+// - ReservationId
+// - ReservedResourceType
+func (o BudgetFilterPtrOutput) Dimensions() BudgetComparisonExpressionPtrOutput {
+	return o.ApplyT(func(v *BudgetFilter) *BudgetComparisonExpression {
+		if v == nil {
+			return nil
+		}
+		return v.Dimensions
+	}).(BudgetComparisonExpressionPtrOutput)
+}
+
+// Has comparison expression for a tag.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterPtrOutput) Tags() BudgetComparisonExpressionPtrOutput {
+	return o.ApplyT(func(v *BudgetFilter) *BudgetComparisonExpression {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(BudgetComparisonExpressionPtrOutput)
+}
+
+// The Dimensions or Tags to filter a budget by.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterProperties struct {
+	// Has comparison expression for a dimension.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	// Supported dimension names for **CategoryType: ReservationUtilization**
+	// - ReservationId
+	// - ReservedResourceType
+	Dimensions *BudgetComparisonExpression `pulumi:"dimensions"`
+	// Has comparison expression for a tag.
+	//
+	//  Supported for CategoryType(s): Cost.
+	Tags *BudgetComparisonExpression `pulumi:"tags"`
+}
+
+// BudgetFilterPropertiesInput is an input type that accepts BudgetFilterPropertiesArgs and BudgetFilterPropertiesOutput values.
+// You can construct a concrete instance of `BudgetFilterPropertiesInput` via:
+//
+//	BudgetFilterPropertiesArgs{...}
+type BudgetFilterPropertiesInput interface {
+	pulumi.Input
+
+	ToBudgetFilterPropertiesOutput() BudgetFilterPropertiesOutput
+	ToBudgetFilterPropertiesOutputWithContext(context.Context) BudgetFilterPropertiesOutput
+}
+
+// The Dimensions or Tags to filter a budget by.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterPropertiesArgs struct {
+	// Has comparison expression for a dimension.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	// Supported dimension names for **CategoryType: ReservationUtilization**
+	// - ReservationId
+	// - ReservedResourceType
+	Dimensions BudgetComparisonExpressionPtrInput `pulumi:"dimensions"`
+	// Has comparison expression for a tag.
+	//
+	//  Supported for CategoryType(s): Cost.
+	Tags BudgetComparisonExpressionPtrInput `pulumi:"tags"`
+}
+
+func (BudgetFilterPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetFilterProperties)(nil)).Elem()
+}
+
+func (i BudgetFilterPropertiesArgs) ToBudgetFilterPropertiesOutput() BudgetFilterPropertiesOutput {
+	return i.ToBudgetFilterPropertiesOutputWithContext(context.Background())
+}
+
+func (i BudgetFilterPropertiesArgs) ToBudgetFilterPropertiesOutputWithContext(ctx context.Context) BudgetFilterPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPropertiesOutput)
+}
+
+// BudgetFilterPropertiesArrayInput is an input type that accepts BudgetFilterPropertiesArray and BudgetFilterPropertiesArrayOutput values.
+// You can construct a concrete instance of `BudgetFilterPropertiesArrayInput` via:
+//
+//	BudgetFilterPropertiesArray{ BudgetFilterPropertiesArgs{...} }
+type BudgetFilterPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToBudgetFilterPropertiesArrayOutput() BudgetFilterPropertiesArrayOutput
+	ToBudgetFilterPropertiesArrayOutputWithContext(context.Context) BudgetFilterPropertiesArrayOutput
+}
+
+type BudgetFilterPropertiesArray []BudgetFilterPropertiesInput
+
+func (BudgetFilterPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetFilterProperties)(nil)).Elem()
+}
+
+func (i BudgetFilterPropertiesArray) ToBudgetFilterPropertiesArrayOutput() BudgetFilterPropertiesArrayOutput {
+	return i.ToBudgetFilterPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i BudgetFilterPropertiesArray) ToBudgetFilterPropertiesArrayOutputWithContext(ctx context.Context) BudgetFilterPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPropertiesArrayOutput)
+}
+
+// The Dimensions or Tags to filter a budget by.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterPropertiesOutput struct{ *pulumi.OutputState }
+
+func (BudgetFilterPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetFilterProperties)(nil)).Elem()
+}
+
+func (o BudgetFilterPropertiesOutput) ToBudgetFilterPropertiesOutput() BudgetFilterPropertiesOutput {
+	return o
+}
+
+func (o BudgetFilterPropertiesOutput) ToBudgetFilterPropertiesOutputWithContext(ctx context.Context) BudgetFilterPropertiesOutput {
+	return o
+}
+
+// Has comparison expression for a dimension.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+// Supported dimension names for **CategoryType: ReservationUtilization**
+// - ReservationId
+// - ReservedResourceType
+func (o BudgetFilterPropertiesOutput) Dimensions() BudgetComparisonExpressionPtrOutput {
+	return o.ApplyT(func(v BudgetFilterProperties) *BudgetComparisonExpression { return v.Dimensions }).(BudgetComparisonExpressionPtrOutput)
+}
+
+// Has comparison expression for a tag.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterPropertiesOutput) Tags() BudgetComparisonExpressionPtrOutput {
+	return o.ApplyT(func(v BudgetFilterProperties) *BudgetComparisonExpression { return v.Tags }).(BudgetComparisonExpressionPtrOutput)
+}
+
+type BudgetFilterPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (BudgetFilterPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetFilterProperties)(nil)).Elem()
+}
+
+func (o BudgetFilterPropertiesArrayOutput) ToBudgetFilterPropertiesArrayOutput() BudgetFilterPropertiesArrayOutput {
+	return o
+}
+
+func (o BudgetFilterPropertiesArrayOutput) ToBudgetFilterPropertiesArrayOutputWithContext(ctx context.Context) BudgetFilterPropertiesArrayOutput {
+	return o
+}
+
+func (o BudgetFilterPropertiesArrayOutput) Index(i pulumi.IntInput) BudgetFilterPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BudgetFilterProperties {
+		return vs[0].([]BudgetFilterProperties)[vs[1].(int)]
+	}).(BudgetFilterPropertiesOutput)
+}
+
+// The Dimensions or Tags to filter a budget by.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterPropertiesResponse struct {
+	// Has comparison expression for a dimension.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	// Supported dimension names for **CategoryType: ReservationUtilization**
+	// - ReservationId
+	// - ReservedResourceType
+	Dimensions *BudgetComparisonExpressionResponse `pulumi:"dimensions"`
+	// Has comparison expression for a tag.
+	//
+	//  Supported for CategoryType(s): Cost.
+	Tags *BudgetComparisonExpressionResponse `pulumi:"tags"`
+}
+
+// The Dimensions or Tags to filter a budget by.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (BudgetFilterPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetFilterPropertiesResponse)(nil)).Elem()
+}
+
+func (o BudgetFilterPropertiesResponseOutput) ToBudgetFilterPropertiesResponseOutput() BudgetFilterPropertiesResponseOutput {
+	return o
+}
+
+func (o BudgetFilterPropertiesResponseOutput) ToBudgetFilterPropertiesResponseOutputWithContext(ctx context.Context) BudgetFilterPropertiesResponseOutput {
+	return o
+}
+
+// Has comparison expression for a dimension.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+// Supported dimension names for **CategoryType: ReservationUtilization**
+// - ReservationId
+// - ReservedResourceType
+func (o BudgetFilterPropertiesResponseOutput) Dimensions() BudgetComparisonExpressionResponsePtrOutput {
+	return o.ApplyT(func(v BudgetFilterPropertiesResponse) *BudgetComparisonExpressionResponse { return v.Dimensions }).(BudgetComparisonExpressionResponsePtrOutput)
+}
+
+// Has comparison expression for a tag.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterPropertiesResponseOutput) Tags() BudgetComparisonExpressionResponsePtrOutput {
+	return o.ApplyT(func(v BudgetFilterPropertiesResponse) *BudgetComparisonExpressionResponse { return v.Tags }).(BudgetComparisonExpressionResponsePtrOutput)
+}
+
+type BudgetFilterPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BudgetFilterPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetFilterPropertiesResponse)(nil)).Elem()
+}
+
+func (o BudgetFilterPropertiesResponseArrayOutput) ToBudgetFilterPropertiesResponseArrayOutput() BudgetFilterPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o BudgetFilterPropertiesResponseArrayOutput) ToBudgetFilterPropertiesResponseArrayOutputWithContext(ctx context.Context) BudgetFilterPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o BudgetFilterPropertiesResponseArrayOutput) Index(i pulumi.IntInput) BudgetFilterPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BudgetFilterPropertiesResponse {
+		return vs[0].([]BudgetFilterPropertiesResponse)[vs[1].(int)]
+	}).(BudgetFilterPropertiesResponseOutput)
+}
+
+// May be used to filter budgets by user-specified dimensions and/or tags.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterResponse struct {
+	// The logical "AND" expression. Must have at least 2 items.
+	//
+	//  Supported for CategoryType(s): Cost.
+	And []BudgetFilterPropertiesResponse `pulumi:"and"`
+	// Has comparison expression for a dimension.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	// Supported dimension names for **CategoryType: ReservationUtilization**
+	// - ReservationId
+	// - ReservedResourceType
+	Dimensions *BudgetComparisonExpressionResponse `pulumi:"dimensions"`
+	// Has comparison expression for a tag.
+	//
+	//  Supported for CategoryType(s): Cost.
+	Tags *BudgetComparisonExpressionResponse `pulumi:"tags"`
+}
+
+// May be used to filter budgets by user-specified dimensions and/or tags.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type BudgetFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (BudgetFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetFilterResponse)(nil)).Elem()
+}
+
+func (o BudgetFilterResponseOutput) ToBudgetFilterResponseOutput() BudgetFilterResponseOutput {
+	return o
+}
+
+func (o BudgetFilterResponseOutput) ToBudgetFilterResponseOutputWithContext(ctx context.Context) BudgetFilterResponseOutput {
+	return o
+}
+
+// The logical "AND" expression. Must have at least 2 items.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterResponseOutput) And() BudgetFilterPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v BudgetFilterResponse) []BudgetFilterPropertiesResponse { return v.And }).(BudgetFilterPropertiesResponseArrayOutput)
+}
+
+// Has comparison expression for a dimension.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+// Supported dimension names for **CategoryType: ReservationUtilization**
+// - ReservationId
+// - ReservedResourceType
+func (o BudgetFilterResponseOutput) Dimensions() BudgetComparisonExpressionResponsePtrOutput {
+	return o.ApplyT(func(v BudgetFilterResponse) *BudgetComparisonExpressionResponse { return v.Dimensions }).(BudgetComparisonExpressionResponsePtrOutput)
+}
+
+// Has comparison expression for a tag.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterResponseOutput) Tags() BudgetComparisonExpressionResponsePtrOutput {
+	return o.ApplyT(func(v BudgetFilterResponse) *BudgetComparisonExpressionResponse { return v.Tags }).(BudgetComparisonExpressionResponsePtrOutput)
+}
+
+type BudgetFilterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetFilterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetFilterResponse)(nil)).Elem()
+}
+
+func (o BudgetFilterResponsePtrOutput) ToBudgetFilterResponsePtrOutput() BudgetFilterResponsePtrOutput {
+	return o
+}
+
+func (o BudgetFilterResponsePtrOutput) ToBudgetFilterResponsePtrOutputWithContext(ctx context.Context) BudgetFilterResponsePtrOutput {
+	return o
+}
+
+func (o BudgetFilterResponsePtrOutput) Elem() BudgetFilterResponseOutput {
+	return o.ApplyT(func(v *BudgetFilterResponse) BudgetFilterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetFilterResponse
+		return ret
+	}).(BudgetFilterResponseOutput)
+}
+
+// The logical "AND" expression. Must have at least 2 items.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterResponsePtrOutput) And() BudgetFilterPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *BudgetFilterResponse) []BudgetFilterPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.And
+	}).(BudgetFilterPropertiesResponseArrayOutput)
+}
+
+// Has comparison expression for a dimension.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+// Supported dimension names for **CategoryType: ReservationUtilization**
+// - ReservationId
+// - ReservedResourceType
+func (o BudgetFilterResponsePtrOutput) Dimensions() BudgetComparisonExpressionResponsePtrOutput {
+	return o.ApplyT(func(v *BudgetFilterResponse) *BudgetComparisonExpressionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Dimensions
+	}).(BudgetComparisonExpressionResponsePtrOutput)
+}
+
+// Has comparison expression for a tag.
+//
+//	Supported for CategoryType(s): Cost.
+func (o BudgetFilterResponsePtrOutput) Tags() BudgetComparisonExpressionResponsePtrOutput {
+	return o.ApplyT(func(v *BudgetFilterResponse) *BudgetComparisonExpressionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(BudgetComparisonExpressionResponsePtrOutput)
+}
+
+// The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Required for CategoryType(s): Cost, ReservationUtilization.
+type BudgetTimePeriod struct {
+	// The end date for the budget.
+	//
+	// - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
+	//
+	// - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
+	EndDate *string `pulumi:"endDate"`
+	// The start date for the budget.
+	//
+	// - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
+	//
+	// - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
+	StartDate string `pulumi:"startDate"`
+}
+
+// BudgetTimePeriodInput is an input type that accepts BudgetTimePeriodArgs and BudgetTimePeriodOutput values.
+// You can construct a concrete instance of `BudgetTimePeriodInput` via:
+//
+//	BudgetTimePeriodArgs{...}
+type BudgetTimePeriodInput interface {
+	pulumi.Input
+
+	ToBudgetTimePeriodOutput() BudgetTimePeriodOutput
+	ToBudgetTimePeriodOutputWithContext(context.Context) BudgetTimePeriodOutput
+}
+
+// The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Required for CategoryType(s): Cost, ReservationUtilization.
+type BudgetTimePeriodArgs struct {
+	// The end date for the budget.
+	//
+	// - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
+	//
+	// - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
+	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
+	// The start date for the budget.
+	//
+	// - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
+	//
+	// - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+}
+
+func (BudgetTimePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetTimePeriod)(nil)).Elem()
+}
+
+func (i BudgetTimePeriodArgs) ToBudgetTimePeriodOutput() BudgetTimePeriodOutput {
+	return i.ToBudgetTimePeriodOutputWithContext(context.Background())
+}
+
+func (i BudgetTimePeriodArgs) ToBudgetTimePeriodOutputWithContext(ctx context.Context) BudgetTimePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetTimePeriodOutput)
+}
+
+// The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Required for CategoryType(s): Cost, ReservationUtilization.
+type BudgetTimePeriodOutput struct{ *pulumi.OutputState }
+
+func (BudgetTimePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetTimePeriod)(nil)).Elem()
+}
+
+func (o BudgetTimePeriodOutput) ToBudgetTimePeriodOutput() BudgetTimePeriodOutput {
+	return o
+}
+
+func (o BudgetTimePeriodOutput) ToBudgetTimePeriodOutputWithContext(ctx context.Context) BudgetTimePeriodOutput {
+	return o
+}
+
+// The end date for the budget.
+//
+// - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
+//
+// - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
+func (o BudgetTimePeriodOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BudgetTimePeriod) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// The start date for the budget.
+//
+// - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
+//
+// - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
+func (o BudgetTimePeriodOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetTimePeriod) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+// The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Required for CategoryType(s): Cost, ReservationUtilization.
+type BudgetTimePeriodResponse struct {
+	// The end date for the budget.
+	//
+	// - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
+	//
+	// - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
+	EndDate *string `pulumi:"endDate"`
+	// The start date for the budget.
+	//
+	// - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
+	//
+	// - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
+	StartDate string `pulumi:"startDate"`
+}
+
+// The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Required for CategoryType(s): Cost, ReservationUtilization.
+type BudgetTimePeriodResponseOutput struct{ *pulumi.OutputState }
+
+func (BudgetTimePeriodResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetTimePeriodResponse)(nil)).Elem()
+}
+
+func (o BudgetTimePeriodResponseOutput) ToBudgetTimePeriodResponseOutput() BudgetTimePeriodResponseOutput {
+	return o
+}
+
+func (o BudgetTimePeriodResponseOutput) ToBudgetTimePeriodResponseOutputWithContext(ctx context.Context) BudgetTimePeriodResponseOutput {
+	return o
+}
+
+// The end date for the budget.
+//
+// - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
+//
+// - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
+func (o BudgetTimePeriodResponseOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BudgetTimePeriodResponse) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// The start date for the budget.
+//
+// - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
+//
+// - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
+func (o BudgetTimePeriodResponseOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetTimePeriodResponse) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
 // The common properties of the export.
 type CommonExportPropertiesResponse struct {
 	// Has the definition for the export.
@@ -18,9 +1011,11 @@ type CommonExportPropertiesResponse struct {
 	DeliveryInfo ExportDeliveryInfoResponse `pulumi:"deliveryInfo"`
 	// The format of the export being delivered. Currently only 'Csv' is supported.
 	Format *string `pulumi:"format"`
-	// If the export has an active schedule, provides an estimate of the next execution time.
+	// If the export has an active schedule, provides an estimate of the next run time.
 	NextRunTimeEstimate string `pulumi:"nextRunTimeEstimate"`
-	// If requested, has the most recent execution history for the export.
+	// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
+	PartitionData *bool `pulumi:"partitionData"`
+	// If requested, has the most recent run history for the export.
 	RunHistory *ExportExecutionListResultResponse `pulumi:"runHistory"`
 }
 
@@ -54,12 +1049,17 @@ func (o CommonExportPropertiesResponseOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CommonExportPropertiesResponse) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// If the export has an active schedule, provides an estimate of the next execution time.
+// If the export has an active schedule, provides an estimate of the next run time.
 func (o CommonExportPropertiesResponseOutput) NextRunTimeEstimate() pulumi.StringOutput {
 	return o.ApplyT(func(v CommonExportPropertiesResponse) string { return v.NextRunTimeEstimate }).(pulumi.StringOutput)
 }
 
-// If requested, has the most recent execution history for the export.
+// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
+func (o CommonExportPropertiesResponseOutput) PartitionData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CommonExportPropertiesResponse) *bool { return v.PartitionData }).(pulumi.BoolPtrOutput)
+}
+
+// If requested, has the most recent run history for the export.
 func (o CommonExportPropertiesResponseOutput) RunHistory() ExportExecutionListResultResponsePtrOutput {
 	return o.ApplyT(func(v CommonExportPropertiesResponse) *ExportExecutionListResultResponse { return v.RunHistory }).(ExportExecutionListResultResponsePtrOutput)
 }
@@ -118,7 +1118,7 @@ func (o CommonExportPropertiesResponsePtrOutput) Format() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// If the export has an active schedule, provides an estimate of the next execution time.
+// If the export has an active schedule, provides an estimate of the next run time.
 func (o CommonExportPropertiesResponsePtrOutput) NextRunTimeEstimate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommonExportPropertiesResponse) *string {
 		if v == nil {
@@ -128,7 +1128,17 @@ func (o CommonExportPropertiesResponsePtrOutput) NextRunTimeEstimate() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// If requested, has the most recent execution history for the export.
+// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
+func (o CommonExportPropertiesResponsePtrOutput) PartitionData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CommonExportPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionData
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If requested, has the most recent run history for the export.
 func (o CommonExportPropertiesResponsePtrOutput) RunHistory() ExportExecutionListResultResponsePtrOutput {
 	return o.ApplyT(func(v *CommonExportPropertiesResponse) *ExportExecutionListResultResponse {
 		if v == nil {
@@ -140,13 +1150,13 @@ func (o CommonExportPropertiesResponsePtrOutput) RunHistory() ExportExecutionLis
 
 // Details of any error encountered on last collection attempt
 type ConnectorCollectionErrorInfoResponse struct {
-	// Short error code
+	// Short error message
 	ErrorCode string `pulumi:"errorCode"`
 	// External Provider error message
-	ErrorInnerMessage string `pulumi:"errorInnerMessage"`
+	ErrorInnerMessage *string `pulumi:"errorInnerMessage"`
 	// Detailed error message
 	ErrorMessage string `pulumi:"errorMessage"`
-	// Time the error started occurring (Last time error occurred in lastChecked)
+	// Time the error started occurring (Last time error occurred in lastRun)
 	ErrorStartTime string `pulumi:"errorStartTime"`
 }
 
@@ -165,14 +1175,14 @@ func (o ConnectorCollectionErrorInfoResponseOutput) ToConnectorCollectionErrorIn
 	return o
 }
 
-// Short error code
+// Short error message
 func (o ConnectorCollectionErrorInfoResponseOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
 }
 
 // External Provider error message
-func (o ConnectorCollectionErrorInfoResponseOutput) ErrorInnerMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorInnerMessage }).(pulumi.StringOutput)
+func (o ConnectorCollectionErrorInfoResponseOutput) ErrorInnerMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) *string { return v.ErrorInnerMessage }).(pulumi.StringPtrOutput)
 }
 
 // Detailed error message
@@ -180,7 +1190,7 @@ func (o ConnectorCollectionErrorInfoResponseOutput) ErrorMessage() pulumi.String
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
-// Time the error started occurring (Last time error occurred in lastChecked)
+// Time the error started occurring (Last time error occurred in lastRun)
 func (o ConnectorCollectionErrorInfoResponseOutput) ErrorStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorStartTime }).(pulumi.StringOutput)
 }
@@ -209,7 +1219,7 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) Elem() ConnectorCollectio
 	}).(ConnectorCollectionErrorInfoResponseOutput)
 }
 
-// Short error code
+// Short error message
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponse) *string {
 		if v == nil {
@@ -225,7 +1235,7 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorInnerMessage() pulum
 		if v == nil {
 			return nil
 		}
-		return &v.ErrorInnerMessage
+		return v.ErrorInnerMessage
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -239,7 +1249,7 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorMessage() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Time the error started occurring (Last time error occurred in lastChecked)
+// Time the error started occurring (Last time error occurred in lastRun)
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponse) *string {
 		if v == nil {
@@ -254,7 +1264,9 @@ type ConnectorCollectionInfoResponse struct {
 	// Error information of last collection
 	Error *ConnectorCollectionErrorInfoResponse `pulumi:"error"`
 	// Last time the data acquisition process initiated connecting to the external provider
-	LastChecked string `pulumi:"lastChecked"`
+	LastChecked *string `pulumi:"lastChecked"`
+	// Last time the data acquisition process completed (even if no new data was found)
+	LastRun string `pulumi:"lastRun"`
 	// Last time the external data was updated into Azure
 	LastUpdated string `pulumi:"lastUpdated"`
 	// Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
@@ -282,8 +1294,13 @@ func (o ConnectorCollectionInfoResponseOutput) Error() ConnectorCollectionErrorI
 }
 
 // Last time the data acquisition process initiated connecting to the external provider
-func (o ConnectorCollectionInfoResponseOutput) LastChecked() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionInfoResponse) string { return v.LastChecked }).(pulumi.StringOutput)
+func (o ConnectorCollectionInfoResponseOutput) LastChecked() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponse) *string { return v.LastChecked }).(pulumi.StringPtrOutput)
+}
+
+// Last time the data acquisition process completed (even if no new data was found)
+func (o ConnectorCollectionInfoResponseOutput) LastRun() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponse) string { return v.LastRun }).(pulumi.StringOutput)
 }
 
 // Last time the external data was updated into Azure
@@ -884,6 +1901,140 @@ func (o CostAllocationRulePropertiesResponseOutput) Status() pulumi.StringOutput
 // Time at which the rule was last updated.
 func (o CostAllocationRulePropertiesResponseOutput) UpdatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v CostAllocationRulePropertiesResponse) string { return v.UpdatedDate }).(pulumi.StringOutput)
+}
+
+// The current amount of cost which is being tracked for a budget.
+//
+//	Supported for CategoryType(s): Cost.
+type CurrentSpendResponse struct {
+	// The total amount of cost which is being tracked by the budget.
+	Amount float64 `pulumi:"amount"`
+	// The unit of measure for the budget amount.
+	Unit string `pulumi:"unit"`
+}
+
+// The current amount of cost which is being tracked for a budget.
+//
+//	Supported for CategoryType(s): Cost.
+type CurrentSpendResponseOutput struct{ *pulumi.OutputState }
+
+func (CurrentSpendResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CurrentSpendResponse)(nil)).Elem()
+}
+
+func (o CurrentSpendResponseOutput) ToCurrentSpendResponseOutput() CurrentSpendResponseOutput {
+	return o
+}
+
+func (o CurrentSpendResponseOutput) ToCurrentSpendResponseOutputWithContext(ctx context.Context) CurrentSpendResponseOutput {
+	return o
+}
+
+// The total amount of cost which is being tracked by the budget.
+func (o CurrentSpendResponseOutput) Amount() pulumi.Float64Output {
+	return o.ApplyT(func(v CurrentSpendResponse) float64 { return v.Amount }).(pulumi.Float64Output)
+}
+
+// The unit of measure for the budget amount.
+func (o CurrentSpendResponseOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v CurrentSpendResponse) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+// The customer billing metadata
+type CustomerMetadata struct {
+	// Customer billing account id
+	BillingAccountId string `pulumi:"billingAccountId"`
+	// Customer billing profile id
+	BillingProfileId string `pulumi:"billingProfileId"`
+}
+
+// CustomerMetadataInput is an input type that accepts CustomerMetadataArgs and CustomerMetadataOutput values.
+// You can construct a concrete instance of `CustomerMetadataInput` via:
+//
+//	CustomerMetadataArgs{...}
+type CustomerMetadataInput interface {
+	pulumi.Input
+
+	ToCustomerMetadataOutput() CustomerMetadataOutput
+	ToCustomerMetadataOutputWithContext(context.Context) CustomerMetadataOutput
+}
+
+// The customer billing metadata
+type CustomerMetadataArgs struct {
+	// Customer billing account id
+	BillingAccountId pulumi.StringInput `pulumi:"billingAccountId"`
+	// Customer billing profile id
+	BillingProfileId pulumi.StringInput `pulumi:"billingProfileId"`
+}
+
+func (CustomerMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerMetadata)(nil)).Elem()
+}
+
+func (i CustomerMetadataArgs) ToCustomerMetadataOutput() CustomerMetadataOutput {
+	return i.ToCustomerMetadataOutputWithContext(context.Background())
+}
+
+func (i CustomerMetadataArgs) ToCustomerMetadataOutputWithContext(ctx context.Context) CustomerMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerMetadataOutput)
+}
+
+// The customer billing metadata
+type CustomerMetadataOutput struct{ *pulumi.OutputState }
+
+func (CustomerMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerMetadata)(nil)).Elem()
+}
+
+func (o CustomerMetadataOutput) ToCustomerMetadataOutput() CustomerMetadataOutput {
+	return o
+}
+
+func (o CustomerMetadataOutput) ToCustomerMetadataOutputWithContext(ctx context.Context) CustomerMetadataOutput {
+	return o
+}
+
+// Customer billing account id
+func (o CustomerMetadataOutput) BillingAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomerMetadata) string { return v.BillingAccountId }).(pulumi.StringOutput)
+}
+
+// Customer billing profile id
+func (o CustomerMetadataOutput) BillingProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomerMetadata) string { return v.BillingProfileId }).(pulumi.StringOutput)
+}
+
+// The customer billing metadata
+type CustomerMetadataResponse struct {
+	// Customer billing account id
+	BillingAccountId string `pulumi:"billingAccountId"`
+	// Customer billing profile id
+	BillingProfileId string `pulumi:"billingProfileId"`
+}
+
+// The customer billing metadata
+type CustomerMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomerMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerMetadataResponse)(nil)).Elem()
+}
+
+func (o CustomerMetadataResponseOutput) ToCustomerMetadataResponseOutput() CustomerMetadataResponseOutput {
+	return o
+}
+
+func (o CustomerMetadataResponseOutput) ToCustomerMetadataResponseOutputWithContext(ctx context.Context) CustomerMetadataResponseOutput {
+	return o
+}
+
+// Customer billing account id
+func (o CustomerMetadataResponseOutput) BillingAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomerMetadataResponse) string { return v.BillingAccountId }).(pulumi.StringOutput)
+}
+
+// Customer billing profile id
+func (o CustomerMetadataResponseOutput) BillingProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomerMetadataResponse) string { return v.BillingProfileId }).(pulumi.StringOutput)
 }
 
 // The details of the error.
@@ -1592,14 +2743,18 @@ func (o ExportDefinitionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The destination information for the delivery of the export. To allow access to a storage account, you must register the account's subscription with the Microsoft.CostManagementExports resource provider. This is required once per subscription. When creating an export in the Azure portal, it is done automatically, however API users need to register the subscription. For more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services .
+// This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
 type ExportDeliveryDestination struct {
-	// The name of the container where exports will be uploaded.
+	// The name of the container where exports will be uploaded. If the container does not exist it will be created.
 	Container string `pulumi:"container"`
-	// The resource id of the storage account where exports will be delivered.
-	ResourceId string `pulumi:"resourceId"`
+	// The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
+	ResourceId *string `pulumi:"resourceId"`
 	// The name of the directory where exports will be uploaded.
 	RootFolderPath *string `pulumi:"rootFolderPath"`
+	// A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
+	SasToken *string `pulumi:"sasToken"`
+	// The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+	StorageAccount *string `pulumi:"storageAccount"`
 }
 
 // ExportDeliveryDestinationInput is an input type that accepts ExportDeliveryDestinationArgs and ExportDeliveryDestinationOutput values.
@@ -1613,14 +2768,18 @@ type ExportDeliveryDestinationInput interface {
 	ToExportDeliveryDestinationOutputWithContext(context.Context) ExportDeliveryDestinationOutput
 }
 
-// The destination information for the delivery of the export. To allow access to a storage account, you must register the account's subscription with the Microsoft.CostManagementExports resource provider. This is required once per subscription. When creating an export in the Azure portal, it is done automatically, however API users need to register the subscription. For more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services .
+// This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
 type ExportDeliveryDestinationArgs struct {
-	// The name of the container where exports will be uploaded.
+	// The name of the container where exports will be uploaded. If the container does not exist it will be created.
 	Container pulumi.StringInput `pulumi:"container"`
-	// The resource id of the storage account where exports will be delivered.
-	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 	// The name of the directory where exports will be uploaded.
 	RootFolderPath pulumi.StringPtrInput `pulumi:"rootFolderPath"`
+	// A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
+	SasToken pulumi.StringPtrInput `pulumi:"sasToken"`
+	// The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+	StorageAccount pulumi.StringPtrInput `pulumi:"storageAccount"`
 }
 
 func (ExportDeliveryDestinationArgs) ElementType() reflect.Type {
@@ -1635,7 +2794,7 @@ func (i ExportDeliveryDestinationArgs) ToExportDeliveryDestinationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDeliveryDestinationOutput)
 }
 
-// The destination information for the delivery of the export. To allow access to a storage account, you must register the account's subscription with the Microsoft.CostManagementExports resource provider. This is required once per subscription. When creating an export in the Azure portal, it is done automatically, however API users need to register the subscription. For more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services .
+// This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
 type ExportDeliveryDestinationOutput struct{ *pulumi.OutputState }
 
 func (ExportDeliveryDestinationOutput) ElementType() reflect.Type {
@@ -1650,14 +2809,14 @@ func (o ExportDeliveryDestinationOutput) ToExportDeliveryDestinationOutputWithCo
 	return o
 }
 
-// The name of the container where exports will be uploaded.
+// The name of the container where exports will be uploaded. If the container does not exist it will be created.
 func (o ExportDeliveryDestinationOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportDeliveryDestination) string { return v.Container }).(pulumi.StringOutput)
 }
 
-// The resource id of the storage account where exports will be delivered.
-func (o ExportDeliveryDestinationOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v ExportDeliveryDestination) string { return v.ResourceId }).(pulumi.StringOutput)
+// The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
+func (o ExportDeliveryDestinationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportDeliveryDestination) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the directory where exports will be uploaded.
@@ -1665,17 +2824,31 @@ func (o ExportDeliveryDestinationOutput) RootFolderPath() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ExportDeliveryDestination) *string { return v.RootFolderPath }).(pulumi.StringPtrOutput)
 }
 
-// The destination information for the delivery of the export. To allow access to a storage account, you must register the account's subscription with the Microsoft.CostManagementExports resource provider. This is required once per subscription. When creating an export in the Azure portal, it is done automatically, however API users need to register the subscription. For more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services .
-type ExportDeliveryDestinationResponse struct {
-	// The name of the container where exports will be uploaded.
-	Container string `pulumi:"container"`
-	// The resource id of the storage account where exports will be delivered.
-	ResourceId string `pulumi:"resourceId"`
-	// The name of the directory where exports will be uploaded.
-	RootFolderPath *string `pulumi:"rootFolderPath"`
+// A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
+func (o ExportDeliveryDestinationOutput) SasToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportDeliveryDestination) *string { return v.SasToken }).(pulumi.StringPtrOutput)
 }
 
-// The destination information for the delivery of the export. To allow access to a storage account, you must register the account's subscription with the Microsoft.CostManagementExports resource provider. This is required once per subscription. When creating an export in the Azure portal, it is done automatically, however API users need to register the subscription. For more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services .
+// The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+func (o ExportDeliveryDestinationOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportDeliveryDestination) *string { return v.StorageAccount }).(pulumi.StringPtrOutput)
+}
+
+// This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
+type ExportDeliveryDestinationResponse struct {
+	// The name of the container where exports will be uploaded. If the container does not exist it will be created.
+	Container string `pulumi:"container"`
+	// The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
+	ResourceId *string `pulumi:"resourceId"`
+	// The name of the directory where exports will be uploaded.
+	RootFolderPath *string `pulumi:"rootFolderPath"`
+	// A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
+	SasToken *string `pulumi:"sasToken"`
+	// The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+	StorageAccount *string `pulumi:"storageAccount"`
+}
+
+// This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
 type ExportDeliveryDestinationResponseOutput struct{ *pulumi.OutputState }
 
 func (ExportDeliveryDestinationResponseOutput) ElementType() reflect.Type {
@@ -1690,19 +2863,29 @@ func (o ExportDeliveryDestinationResponseOutput) ToExportDeliveryDestinationResp
 	return o
 }
 
-// The name of the container where exports will be uploaded.
+// The name of the container where exports will be uploaded. If the container does not exist it will be created.
 func (o ExportDeliveryDestinationResponseOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportDeliveryDestinationResponse) string { return v.Container }).(pulumi.StringOutput)
 }
 
-// The resource id of the storage account where exports will be delivered.
-func (o ExportDeliveryDestinationResponseOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v ExportDeliveryDestinationResponse) string { return v.ResourceId }).(pulumi.StringOutput)
+// The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
+func (o ExportDeliveryDestinationResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportDeliveryDestinationResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the directory where exports will be uploaded.
 func (o ExportDeliveryDestinationResponseOutput) RootFolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExportDeliveryDestinationResponse) *string { return v.RootFolderPath }).(pulumi.StringPtrOutput)
+}
+
+// A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
+func (o ExportDeliveryDestinationResponseOutput) SasToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportDeliveryDestinationResponse) *string { return v.SasToken }).(pulumi.StringPtrOutput)
+}
+
+// The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+func (o ExportDeliveryDestinationResponseOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportDeliveryDestinationResponse) *string { return v.StorageAccount }).(pulumi.StringPtrOutput)
 }
 
 type ExportDeliveryDestinationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1729,7 +2912,7 @@ func (o ExportDeliveryDestinationResponsePtrOutput) Elem() ExportDeliveryDestina
 	}).(ExportDeliveryDestinationResponseOutput)
 }
 
-// The name of the container where exports will be uploaded.
+// The name of the container where exports will be uploaded. If the container does not exist it will be created.
 func (o ExportDeliveryDestinationResponsePtrOutput) Container() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExportDeliveryDestinationResponse) *string {
 		if v == nil {
@@ -1739,13 +2922,13 @@ func (o ExportDeliveryDestinationResponsePtrOutput) Container() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource id of the storage account where exports will be delivered.
+// The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
 func (o ExportDeliveryDestinationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExportDeliveryDestinationResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ResourceId
+		return v.ResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1756,6 +2939,26 @@ func (o ExportDeliveryDestinationResponsePtrOutput) RootFolderPath() pulumi.Stri
 			return nil
 		}
 		return v.RootFolderPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
+func (o ExportDeliveryDestinationResponsePtrOutput) SasToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportDeliveryDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SasToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+func (o ExportDeliveryDestinationResponsePtrOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportDeliveryDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1874,13 +3077,13 @@ func (o ExportDeliveryInfoResponsePtrOutput) Destination() ExportDeliveryDestina
 	}).(ExportDeliveryDestinationResponsePtrOutput)
 }
 
-// Result of listing the execution history of an export.
+// Result of listing the run history of an export.
 type ExportExecutionListResultResponse struct {
-	// A list of export executions.
-	Value []ExportExecutionResponse `pulumi:"value"`
+	// A list of export runs.
+	Value []ExportRunResponse `pulumi:"value"`
 }
 
-// Result of listing the execution history of an export.
+// Result of listing the run history of an export.
 type ExportExecutionListResultResponseOutput struct{ *pulumi.OutputState }
 
 func (ExportExecutionListResultResponseOutput) ElementType() reflect.Type {
@@ -1895,9 +3098,9 @@ func (o ExportExecutionListResultResponseOutput) ToExportExecutionListResultResp
 	return o
 }
 
-// A list of export executions.
-func (o ExportExecutionListResultResponseOutput) Value() ExportExecutionResponseArrayOutput {
-	return o.ApplyT(func(v ExportExecutionListResultResponse) []ExportExecutionResponse { return v.Value }).(ExportExecutionResponseArrayOutput)
+// A list of export runs.
+func (o ExportExecutionListResultResponseOutput) Value() ExportRunResponseArrayOutput {
+	return o.ApplyT(func(v ExportExecutionListResultResponse) []ExportRunResponse { return v.Value }).(ExportRunResponseArrayOutput)
 }
 
 type ExportExecutionListResultResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1924,144 +3127,14 @@ func (o ExportExecutionListResultResponsePtrOutput) Elem() ExportExecutionListRe
 	}).(ExportExecutionListResultResponseOutput)
 }
 
-// A list of export executions.
-func (o ExportExecutionListResultResponsePtrOutput) Value() ExportExecutionResponseArrayOutput {
-	return o.ApplyT(func(v *ExportExecutionListResultResponse) []ExportExecutionResponse {
+// A list of export runs.
+func (o ExportExecutionListResultResponsePtrOutput) Value() ExportRunResponseArrayOutput {
+	return o.ApplyT(func(v *ExportExecutionListResultResponse) []ExportRunResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Value
-	}).(ExportExecutionResponseArrayOutput)
-}
-
-// An export execution.
-type ExportExecutionResponse struct {
-	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-	ETag *string `pulumi:"eTag"`
-	// The details of any error.
-	Error *ErrorDetailsResponse `pulumi:"error"`
-	// The type of the export execution.
-	ExecutionType *string `pulumi:"executionType"`
-	// The name of the exported file.
-	FileName *string `pulumi:"fileName"`
-	// Resource Id.
-	Id string `pulumi:"id"`
-	// Resource name.
-	Name string `pulumi:"name"`
-	// The time when the export execution finished.
-	ProcessingEndTime *string `pulumi:"processingEndTime"`
-	// The time when export was picked up to be executed.
-	ProcessingStartTime *string `pulumi:"processingStartTime"`
-	// The export settings that were in effect for this execution.
-	RunSettings *CommonExportPropertiesResponse `pulumi:"runSettings"`
-	// The last known status of the export execution.
-	Status *string `pulumi:"status"`
-	// The identifier for the entity that executed the export. For OnDemand executions it is the user email. For scheduled executions it is 'System'.
-	SubmittedBy *string `pulumi:"submittedBy"`
-	// The time when export was queued to be executed.
-	SubmittedTime *string `pulumi:"submittedTime"`
-	// Resource type.
-	Type string `pulumi:"type"`
-}
-
-// An export execution.
-type ExportExecutionResponseOutput struct{ *pulumi.OutputState }
-
-func (ExportExecutionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExportExecutionResponse)(nil)).Elem()
-}
-
-func (o ExportExecutionResponseOutput) ToExportExecutionResponseOutput() ExportExecutionResponseOutput {
-	return o
-}
-
-func (o ExportExecutionResponseOutput) ToExportExecutionResponseOutputWithContext(ctx context.Context) ExportExecutionResponseOutput {
-	return o
-}
-
-// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-func (o ExportExecutionResponseOutput) ETag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *string { return v.ETag }).(pulumi.StringPtrOutput)
-}
-
-// The details of any error.
-func (o ExportExecutionResponseOutput) Error() ErrorDetailsResponsePtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *ErrorDetailsResponse { return v.Error }).(ErrorDetailsResponsePtrOutput)
-}
-
-// The type of the export execution.
-func (o ExportExecutionResponseOutput) ExecutionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *string { return v.ExecutionType }).(pulumi.StringPtrOutput)
-}
-
-// The name of the exported file.
-func (o ExportExecutionResponseOutput) FileName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *string { return v.FileName }).(pulumi.StringPtrOutput)
-}
-
-// Resource Id.
-func (o ExportExecutionResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource name.
-func (o ExportExecutionResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The time when the export execution finished.
-func (o ExportExecutionResponseOutput) ProcessingEndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *string { return v.ProcessingEndTime }).(pulumi.StringPtrOutput)
-}
-
-// The time when export was picked up to be executed.
-func (o ExportExecutionResponseOutput) ProcessingStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *string { return v.ProcessingStartTime }).(pulumi.StringPtrOutput)
-}
-
-// The export settings that were in effect for this execution.
-func (o ExportExecutionResponseOutput) RunSettings() CommonExportPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *CommonExportPropertiesResponse { return v.RunSettings }).(CommonExportPropertiesResponsePtrOutput)
-}
-
-// The last known status of the export execution.
-func (o ExportExecutionResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// The identifier for the entity that executed the export. For OnDemand executions it is the user email. For scheduled executions it is 'System'.
-func (o ExportExecutionResponseOutput) SubmittedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *string { return v.SubmittedBy }).(pulumi.StringPtrOutput)
-}
-
-// The time when export was queued to be executed.
-func (o ExportExecutionResponseOutput) SubmittedTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) *string { return v.SubmittedTime }).(pulumi.StringPtrOutput)
-}
-
-// Resource type.
-func (o ExportExecutionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ExportExecutionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type ExportExecutionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ExportExecutionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExportExecutionResponse)(nil)).Elem()
-}
-
-func (o ExportExecutionResponseArrayOutput) ToExportExecutionResponseArrayOutput() ExportExecutionResponseArrayOutput {
-	return o
-}
-
-func (o ExportExecutionResponseArrayOutput) ToExportExecutionResponseArrayOutputWithContext(ctx context.Context) ExportExecutionResponseArrayOutput {
-	return o
-}
-
-func (o ExportExecutionResponseArrayOutput) Index(i pulumi.IntInput) ExportExecutionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportExecutionResponse {
-		return vs[0].([]ExportExecutionResponse)[vs[1].(int)]
-	}).(ExportExecutionResponseOutput)
+	}).(ExportRunResponseArrayOutput)
 }
 
 // The start and end date for recurrence schedule.
@@ -2298,6 +3371,136 @@ func (o ExportRecurrencePeriodResponsePtrOutput) To() pulumi.StringPtrOutput {
 		}
 		return v.To
 	}).(pulumi.StringPtrOutput)
+}
+
+// An export run.
+type ExportRunResponse struct {
+	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+	ETag *string `pulumi:"eTag"`
+	// The details of any error.
+	Error *ErrorDetailsResponse `pulumi:"error"`
+	// The type of the export run.
+	ExecutionType *string `pulumi:"executionType"`
+	// The name of the exported file.
+	FileName *string `pulumi:"fileName"`
+	// Resource Id.
+	Id string `pulumi:"id"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The time when the export run finished.
+	ProcessingEndTime *string `pulumi:"processingEndTime"`
+	// The time when export was picked up to be run.
+	ProcessingStartTime *string `pulumi:"processingStartTime"`
+	// The export settings that were in effect for this run.
+	RunSettings *CommonExportPropertiesResponse `pulumi:"runSettings"`
+	// The last known status of the export run.
+	Status *string `pulumi:"status"`
+	// The identifier for the entity that triggered the export. For on-demand runs it is the user email. For scheduled runs it is 'System'.
+	SubmittedBy *string `pulumi:"submittedBy"`
+	// The time when export was queued to be run.
+	SubmittedTime *string `pulumi:"submittedTime"`
+	// Resource type.
+	Type string `pulumi:"type"`
+}
+
+// An export run.
+type ExportRunResponseOutput struct{ *pulumi.OutputState }
+
+func (ExportRunResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportRunResponse)(nil)).Elem()
+}
+
+func (o ExportRunResponseOutput) ToExportRunResponseOutput() ExportRunResponseOutput {
+	return o
+}
+
+func (o ExportRunResponseOutput) ToExportRunResponseOutputWithContext(ctx context.Context) ExportRunResponseOutput {
+	return o
+}
+
+// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+func (o ExportRunResponseOutput) ETag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *string { return v.ETag }).(pulumi.StringPtrOutput)
+}
+
+// The details of any error.
+func (o ExportRunResponseOutput) Error() ErrorDetailsResponsePtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *ErrorDetailsResponse { return v.Error }).(ErrorDetailsResponsePtrOutput)
+}
+
+// The type of the export run.
+func (o ExportRunResponseOutput) ExecutionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *string { return v.ExecutionType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the exported file.
+func (o ExportRunResponseOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id.
+func (o ExportRunResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ExportRunResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource name.
+func (o ExportRunResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExportRunResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time when the export run finished.
+func (o ExportRunResponseOutput) ProcessingEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *string { return v.ProcessingEndTime }).(pulumi.StringPtrOutput)
+}
+
+// The time when export was picked up to be run.
+func (o ExportRunResponseOutput) ProcessingStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *string { return v.ProcessingStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The export settings that were in effect for this run.
+func (o ExportRunResponseOutput) RunSettings() CommonExportPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *CommonExportPropertiesResponse { return v.RunSettings }).(CommonExportPropertiesResponsePtrOutput)
+}
+
+// The last known status of the export run.
+func (o ExportRunResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for the entity that triggered the export. For on-demand runs it is the user email. For scheduled runs it is 'System'.
+func (o ExportRunResponseOutput) SubmittedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *string { return v.SubmittedBy }).(pulumi.StringPtrOutput)
+}
+
+// The time when export was queued to be run.
+func (o ExportRunResponseOutput) SubmittedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRunResponse) *string { return v.SubmittedTime }).(pulumi.StringPtrOutput)
+}
+
+// Resource type.
+func (o ExportRunResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExportRunResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExportRunResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ExportRunResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExportRunResponse)(nil)).Elem()
+}
+
+func (o ExportRunResponseArrayOutput) ToExportRunResponseArrayOutput() ExportRunResponseArrayOutput {
+	return o
+}
+
+func (o ExportRunResponseArrayOutput) ToExportRunResponseArrayOutputWithContext(ctx context.Context) ExportRunResponseArrayOutput {
+	return o
+}
+
+func (o ExportRunResponseArrayOutput) Index(i pulumi.IntInput) ExportRunResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportRunResponse {
+		return vs[0].([]ExportRunResponse)[vs[1].(int)]
+	}).(ExportRunResponseOutput)
 }
 
 // The schedule associated with the export.
@@ -2808,9 +4011,9 @@ func (o ExportTimePeriodResponsePtrOutput) To() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. This is optional. Currently only CSV format is supported.
 type FileDestination struct {
-	// Destination of the view data. Currently only csv format is supported.
+	// Destination of the view data. Currently only CSV format is supported.
 	FileFormats []string `pulumi:"fileFormats"`
 }
 
@@ -2825,9 +4028,9 @@ type FileDestinationInput interface {
 	ToFileDestinationOutputWithContext(context.Context) FileDestinationOutput
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. This is optional. Currently only CSV format is supported.
 type FileDestinationArgs struct {
-	// Destination of the view data. Currently only csv format is supported.
+	// Destination of the view data. Currently only CSV format is supported.
 	FileFormats pulumi.StringArrayInput `pulumi:"fileFormats"`
 }
 
@@ -2884,7 +4087,7 @@ func (i *fileDestinationPtrType) ToFileDestinationPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(FileDestinationPtrOutput)
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. This is optional. Currently only CSV format is supported.
 type FileDestinationOutput struct{ *pulumi.OutputState }
 
 func (FileDestinationOutput) ElementType() reflect.Type {
@@ -2909,7 +4112,7 @@ func (o FileDestinationOutput) ToFileDestinationPtrOutputWithContext(ctx context
 	}).(FileDestinationPtrOutput)
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. Currently only CSV format is supported.
 func (o FileDestinationOutput) FileFormats() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FileDestination) []string { return v.FileFormats }).(pulumi.StringArrayOutput)
 }
@@ -2938,7 +4141,7 @@ func (o FileDestinationPtrOutput) Elem() FileDestinationOutput {
 	}).(FileDestinationOutput)
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. Currently only CSV format is supported.
 func (o FileDestinationPtrOutput) FileFormats() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FileDestination) []string {
 		if v == nil {
@@ -2948,13 +4151,13 @@ func (o FileDestinationPtrOutput) FileFormats() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. This is optional. Currently only CSV format is supported.
 type FileDestinationResponse struct {
-	// Destination of the view data. Currently only csv format is supported.
+	// Destination of the view data. Currently only CSV format is supported.
 	FileFormats []string `pulumi:"fileFormats"`
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. This is optional. Currently only CSV format is supported.
 type FileDestinationResponseOutput struct{ *pulumi.OutputState }
 
 func (FileDestinationResponseOutput) ElementType() reflect.Type {
@@ -2969,7 +4172,7 @@ func (o FileDestinationResponseOutput) ToFileDestinationResponseOutputWithContex
 	return o
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. Currently only CSV format is supported.
 func (o FileDestinationResponseOutput) FileFormats() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FileDestinationResponse) []string { return v.FileFormats }).(pulumi.StringArrayOutput)
 }
@@ -2998,7 +4201,7 @@ func (o FileDestinationResponsePtrOutput) Elem() FileDestinationResponseOutput {
 	}).(FileDestinationResponseOutput)
 }
 
-// Destination of the view data. Currently only csv format is supported.
+// Destination of the view data. Currently only CSV format is supported.
 func (o FileDestinationResponsePtrOutput) FileFormats() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FileDestinationResponse) []string {
 		if v == nil {
@@ -3006,6 +4209,43 @@ func (o FileDestinationResponsePtrOutput) FileFormats() pulumi.StringArrayOutput
 		}
 		return v.FileFormats
 	}).(pulumi.StringArrayOutput)
+}
+
+// The forecasted cost which is being tracked for a budget.
+//
+//	Supported for CategoryType(s): Cost.
+type ForecastSpendResponse struct {
+	// The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
+	Amount float64 `pulumi:"amount"`
+	// The unit of measure for the budget amount.
+	Unit string `pulumi:"unit"`
+}
+
+// The forecasted cost which is being tracked for a budget.
+//
+//	Supported for CategoryType(s): Cost.
+type ForecastSpendResponseOutput struct{ *pulumi.OutputState }
+
+func (ForecastSpendResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForecastSpendResponse)(nil)).Elem()
+}
+
+func (o ForecastSpendResponseOutput) ToForecastSpendResponseOutput() ForecastSpendResponseOutput {
+	return o
+}
+
+func (o ForecastSpendResponseOutput) ToForecastSpendResponseOutputWithContext(ctx context.Context) ForecastSpendResponseOutput {
+	return o
+}
+
+// The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
+func (o ForecastSpendResponseOutput) Amount() pulumi.Float64Output {
+	return o.ApplyT(func(v ForecastSpendResponse) float64 { return v.Amount }).(pulumi.Float64Output)
+}
+
+// The unit of measure for the budget amount.
+func (o ForecastSpendResponseOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v ForecastSpendResponse) string { return v.Unit }).(pulumi.StringOutput)
 }
 
 // Each KPI must contain a 'type' and 'enabled' key.
@@ -3186,10 +4426,305 @@ func (o KpiPropertiesResponseArrayOutput) Index(i pulumi.IntInput) KpiProperties
 	}).(KpiPropertiesResponseOutput)
 }
 
+// The notification associated with a budget.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type Notification struct {
+	// Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	ContactEmails []string `pulumi:"contactEmails"`
+	// Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ContactGroups []string `pulumi:"contactGroups"`
+	// Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ContactRoles []string `pulumi:"contactRoles"`
+	// The notification is enabled or not.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	Enabled bool `pulumi:"enabled"`
+	// Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+	//
+	//  Supported for CategoryType(s): ReservationUtilization.
+	Frequency *string `pulumi:"frequency"`
+	// Language in which the recipient will receive the notification,
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	Locale *string `pulumi:"locale"`
+	// The comparison operator.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	//  Supported operators for **CategoryType: Cost**
+	// - GreaterThan
+	// - GreaterThanOrEqualTo
+	//
+	//  Supported operators for **CategoryType: ReservationUtilization**
+	// - LessThan
+	Operator string `pulumi:"operator"`
+	// Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	//  **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
+	//
+	//  **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
+	Threshold float64 `pulumi:"threshold"`
+	// The type of threshold.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ThresholdType *string `pulumi:"thresholdType"`
+}
+
+// Defaults sets the appropriate defaults for Notification
+func (val *Notification) Defaults() *Notification {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ThresholdType == nil {
+		thresholdType_ := "Actual"
+		tmp.ThresholdType = &thresholdType_
+	}
+	return &tmp
+}
+
+// NotificationInput is an input type that accepts NotificationArgs and NotificationOutput values.
+// You can construct a concrete instance of `NotificationInput` via:
+//
+//	NotificationArgs{...}
+type NotificationInput interface {
+	pulumi.Input
+
+	ToNotificationOutput() NotificationOutput
+	ToNotificationOutputWithContext(context.Context) NotificationOutput
+}
+
+// The notification associated with a budget.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type NotificationArgs struct {
+	// Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	ContactEmails pulumi.StringArrayInput `pulumi:"contactEmails"`
+	// Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ContactGroups pulumi.StringArrayInput `pulumi:"contactGroups"`
+	// Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ContactRoles pulumi.StringArrayInput `pulumi:"contactRoles"`
+	// The notification is enabled or not.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+	//
+	//  Supported for CategoryType(s): ReservationUtilization.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// Language in which the recipient will receive the notification,
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	Locale pulumi.StringPtrInput `pulumi:"locale"`
+	// The comparison operator.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	//  Supported operators for **CategoryType: Cost**
+	// - GreaterThan
+	// - GreaterThanOrEqualTo
+	//
+	//  Supported operators for **CategoryType: ReservationUtilization**
+	// - LessThan
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	//  **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
+	//
+	//  **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The type of threshold.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ThresholdType pulumi.StringPtrInput `pulumi:"thresholdType"`
+}
+
+// Defaults sets the appropriate defaults for NotificationArgs
+func (val *NotificationArgs) Defaults() *NotificationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ThresholdType == nil {
+		tmp.ThresholdType = pulumi.StringPtr("Actual")
+	}
+	return &tmp
+}
+func (NotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Notification)(nil)).Elem()
+}
+
+func (i NotificationArgs) ToNotificationOutput() NotificationOutput {
+	return i.ToNotificationOutputWithContext(context.Background())
+}
+
+func (i NotificationArgs) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
+}
+
+// NotificationMapInput is an input type that accepts NotificationMap and NotificationMapOutput values.
+// You can construct a concrete instance of `NotificationMapInput` via:
+//
+//	NotificationMap{ "key": NotificationArgs{...} }
+type NotificationMapInput interface {
+	pulumi.Input
+
+	ToNotificationMapOutput() NotificationMapOutput
+	ToNotificationMapOutputWithContext(context.Context) NotificationMapOutput
+}
+
+type NotificationMap map[string]NotificationInput
+
+func (NotificationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Notification)(nil)).Elem()
+}
+
+func (i NotificationMap) ToNotificationMapOutput() NotificationMapOutput {
+	return i.ToNotificationMapOutputWithContext(context.Background())
+}
+
+func (i NotificationMap) ToNotificationMapOutputWithContext(ctx context.Context) NotificationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationMapOutput)
+}
+
+// The notification associated with a budget.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type NotificationOutput struct{ *pulumi.OutputState }
+
+func (NotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Notification)(nil)).Elem()
+}
+
+func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
+	return o
+}
+
+func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
+	return o
+}
+
+// Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+func (o NotificationOutput) ContactEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Notification) []string { return v.ContactEmails }).(pulumi.StringArrayOutput)
+}
+
+// Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
+//
+//	Supported for CategoryType(s): Cost.
+func (o NotificationOutput) ContactGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Notification) []string { return v.ContactGroups }).(pulumi.StringArrayOutput)
+}
+
+// Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
+//
+//	Supported for CategoryType(s): Cost.
+func (o NotificationOutput) ContactRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Notification) []string { return v.ContactRoles }).(pulumi.StringArrayOutput)
+}
+
+// The notification is enabled or not.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+func (o NotificationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v Notification) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+//
+//	Supported for CategoryType(s): ReservationUtilization.
+func (o NotificationOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Notification) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// Language in which the recipient will receive the notification,
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+func (o NotificationOutput) Locale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Notification) *string { return v.Locale }).(pulumi.StringPtrOutput)
+}
+
+// The comparison operator.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Supported operators for **CategoryType: Cost**
+//
+// - GreaterThan
+// - GreaterThanOrEqualTo
+//
+//	Supported operators for **CategoryType: ReservationUtilization**
+//
+// - LessThan
+func (o NotificationOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v Notification) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	**CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
+//
+//	**CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
+func (o NotificationOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v Notification) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// The type of threshold.
+//
+//	Supported for CategoryType(s): Cost.
+func (o NotificationOutput) ThresholdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Notification) *string { return v.ThresholdType }).(pulumi.StringPtrOutput)
+}
+
+type NotificationMapOutput struct{ *pulumi.OutputState }
+
+func (NotificationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Notification)(nil)).Elem()
+}
+
+func (o NotificationMapOutput) ToNotificationMapOutput() NotificationMapOutput {
+	return o
+}
+
+func (o NotificationMapOutput) ToNotificationMapOutputWithContext(ctx context.Context) NotificationMapOutput {
+	return o
+}
+
+func (o NotificationMapOutput) MapIndex(k pulumi.StringInput) NotificationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Notification {
+		return vs[0].(map[string]Notification)[vs[1].(string)]
+	}).(NotificationOutput)
+}
+
 // The properties of the scheduled action notification.
 type NotificationProperties struct {
+	// Locale of the email.
+	Language *string `pulumi:"language"`
 	// Optional message to be added in the email. Length is limited to 250 characters.
 	Message *string `pulumi:"message"`
+	// Regional format used for formatting date/time and currency values in the email.
+	RegionalFormat *string `pulumi:"regionalFormat"`
 	// Subject of the email. Length is limited to 70 characters.
 	Subject string `pulumi:"subject"`
 	// Array of email addresses.
@@ -3209,8 +4744,12 @@ type NotificationPropertiesInput interface {
 
 // The properties of the scheduled action notification.
 type NotificationPropertiesArgs struct {
+	// Locale of the email.
+	Language pulumi.StringPtrInput `pulumi:"language"`
 	// Optional message to be added in the email. Length is limited to 250 characters.
 	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Regional format used for formatting date/time and currency values in the email.
+	RegionalFormat pulumi.StringPtrInput `pulumi:"regionalFormat"`
 	// Subject of the email. Length is limited to 70 characters.
 	Subject pulumi.StringInput `pulumi:"subject"`
 	// Array of email addresses.
@@ -3244,9 +4783,19 @@ func (o NotificationPropertiesOutput) ToNotificationPropertiesOutputWithContext(
 	return o
 }
 
+// Locale of the email.
+func (o NotificationPropertiesOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationProperties) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
 // Optional message to be added in the email. Length is limited to 250 characters.
 func (o NotificationPropertiesOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationProperties) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Regional format used for formatting date/time and currency values in the email.
+func (o NotificationPropertiesOutput) RegionalFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationProperties) *string { return v.RegionalFormat }).(pulumi.StringPtrOutput)
 }
 
 // Subject of the email. Length is limited to 70 characters.
@@ -3261,8 +4810,12 @@ func (o NotificationPropertiesOutput) To() pulumi.StringArrayOutput {
 
 // The properties of the scheduled action notification.
 type NotificationPropertiesResponse struct {
+	// Locale of the email.
+	Language *string `pulumi:"language"`
 	// Optional message to be added in the email. Length is limited to 250 characters.
 	Message *string `pulumi:"message"`
+	// Regional format used for formatting date/time and currency values in the email.
+	RegionalFormat *string `pulumi:"regionalFormat"`
 	// Subject of the email. Length is limited to 70 characters.
 	Subject string `pulumi:"subject"`
 	// Array of email addresses.
@@ -3284,9 +4837,19 @@ func (o NotificationPropertiesResponseOutput) ToNotificationPropertiesResponseOu
 	return o
 }
 
+// Locale of the email.
+func (o NotificationPropertiesResponseOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPropertiesResponse) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
 // Optional message to be added in the email. Length is limited to 250 characters.
 func (o NotificationPropertiesResponseOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationPropertiesResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Regional format used for formatting date/time and currency values in the email.
+func (o NotificationPropertiesResponseOutput) RegionalFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPropertiesResponse) *string { return v.RegionalFormat }).(pulumi.StringPtrOutput)
 }
 
 // Subject of the email. Length is limited to 70 characters.
@@ -3297,6 +4860,185 @@ func (o NotificationPropertiesResponseOutput) Subject() pulumi.StringOutput {
 // Array of email addresses.
 func (o NotificationPropertiesResponseOutput) To() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPropertiesResponse) []string { return v.To }).(pulumi.StringArrayOutput)
+}
+
+// The notification associated with a budget.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type NotificationResponse struct {
+	// Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	ContactEmails []string `pulumi:"contactEmails"`
+	// Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ContactGroups []string `pulumi:"contactGroups"`
+	// Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ContactRoles []string `pulumi:"contactRoles"`
+	// The notification is enabled or not.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	Enabled bool `pulumi:"enabled"`
+	// Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+	//
+	//  Supported for CategoryType(s): ReservationUtilization.
+	Frequency *string `pulumi:"frequency"`
+	// Language in which the recipient will receive the notification,
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	Locale *string `pulumi:"locale"`
+	// The comparison operator.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	//  Supported operators for **CategoryType: Cost**
+	// - GreaterThan
+	// - GreaterThanOrEqualTo
+	//
+	//  Supported operators for **CategoryType: ReservationUtilization**
+	// - LessThan
+	Operator string `pulumi:"operator"`
+	// Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
+	//
+	//  Supported for CategoryType(s): Cost, ReservationUtilization.
+	//
+	//  **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
+	//
+	//  **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
+	Threshold float64 `pulumi:"threshold"`
+	// The type of threshold.
+	//
+	//  Supported for CategoryType(s): Cost.
+	ThresholdType *string `pulumi:"thresholdType"`
+}
+
+// Defaults sets the appropriate defaults for NotificationResponse
+func (val *NotificationResponse) Defaults() *NotificationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ThresholdType == nil {
+		thresholdType_ := "Actual"
+		tmp.ThresholdType = &thresholdType_
+	}
+	return &tmp
+}
+
+// The notification associated with a budget.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+type NotificationResponseOutput struct{ *pulumi.OutputState }
+
+func (NotificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationResponse)(nil)).Elem()
+}
+
+func (o NotificationResponseOutput) ToNotificationResponseOutput() NotificationResponseOutput {
+	return o
+}
+
+func (o NotificationResponseOutput) ToNotificationResponseOutputWithContext(ctx context.Context) NotificationResponseOutput {
+	return o
+}
+
+// Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+func (o NotificationResponseOutput) ContactEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationResponse) []string { return v.ContactEmails }).(pulumi.StringArrayOutput)
+}
+
+// Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
+//
+//	Supported for CategoryType(s): Cost.
+func (o NotificationResponseOutput) ContactGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationResponse) []string { return v.ContactGroups }).(pulumi.StringArrayOutput)
+}
+
+// Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
+//
+//	Supported for CategoryType(s): Cost.
+func (o NotificationResponseOutput) ContactRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationResponse) []string { return v.ContactRoles }).(pulumi.StringArrayOutput)
+}
+
+// The notification is enabled or not.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+func (o NotificationResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NotificationResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+//
+//	Supported for CategoryType(s): ReservationUtilization.
+func (o NotificationResponseOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationResponse) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// Language in which the recipient will receive the notification,
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+func (o NotificationResponseOutput) Locale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationResponse) *string { return v.Locale }).(pulumi.StringPtrOutput)
+}
+
+// The comparison operator.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	Supported operators for **CategoryType: Cost**
+//
+// - GreaterThan
+// - GreaterThanOrEqualTo
+//
+//	Supported operators for **CategoryType: ReservationUtilization**
+//
+// - LessThan
+func (o NotificationResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
+//
+//	Supported for CategoryType(s): Cost, ReservationUtilization.
+//
+//	**CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
+//
+//	**CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
+func (o NotificationResponseOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v NotificationResponse) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// The type of threshold.
+//
+//	Supported for CategoryType(s): Cost.
+func (o NotificationResponseOutput) ThresholdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationResponse) *string { return v.ThresholdType }).(pulumi.StringPtrOutput)
+}
+
+type NotificationResponseMapOutput struct{ *pulumi.OutputState }
+
+func (NotificationResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NotificationResponse)(nil)).Elem()
+}
+
+func (o NotificationResponseMapOutput) ToNotificationResponseMapOutput() NotificationResponseMapOutput {
+	return o
+}
+
+func (o NotificationResponseMapOutput) ToNotificationResponseMapOutputWithContext(ctx context.Context) NotificationResponseMapOutput {
+	return o
+}
+
+func (o NotificationResponseMapOutput) MapIndex(k pulumi.StringInput) NotificationResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NotificationResponse {
+		return vs[0].(map[string]NotificationResponse)[vs[1].(string)]
+	}).(NotificationResponseOutput)
 }
 
 // Each pivot must contain a 'type' and 'name'.
@@ -4917,10 +6659,6 @@ type ReportConfigFilter struct {
 	Dimensions *ReportConfigComparisonExpression `pulumi:"dimensions"`
 	// The logical "OR" expression. Must have at least 2 items.
 	Or []ReportConfigFilter `pulumi:"or"`
-	// Has comparison expression for a tag key
-	TagKey *ReportConfigComparisonExpression `pulumi:"tagKey"`
-	// Has comparison expression for a tag value
-	TagValue *ReportConfigComparisonExpression `pulumi:"tagValue"`
 	// Has comparison expression for a tag
 	Tags *ReportConfigComparisonExpression `pulumi:"tags"`
 }
@@ -4944,10 +6682,6 @@ type ReportConfigFilterArgs struct {
 	Dimensions ReportConfigComparisonExpressionPtrInput `pulumi:"dimensions"`
 	// The logical "OR" expression. Must have at least 2 items.
 	Or ReportConfigFilterArrayInput `pulumi:"or"`
-	// Has comparison expression for a tag key
-	TagKey ReportConfigComparisonExpressionPtrInput `pulumi:"tagKey"`
-	// Has comparison expression for a tag value
-	TagValue ReportConfigComparisonExpressionPtrInput `pulumi:"tagValue"`
 	// Has comparison expression for a tag
 	Tags ReportConfigComparisonExpressionPtrInput `pulumi:"tags"`
 }
@@ -5070,16 +6804,6 @@ func (o ReportConfigFilterOutput) Or() ReportConfigFilterArrayOutput {
 	return o.ApplyT(func(v ReportConfigFilter) []ReportConfigFilter { return v.Or }).(ReportConfigFilterArrayOutput)
 }
 
-// Has comparison expression for a tag key
-func (o ReportConfigFilterOutput) TagKey() ReportConfigComparisonExpressionPtrOutput {
-	return o.ApplyT(func(v ReportConfigFilter) *ReportConfigComparisonExpression { return v.TagKey }).(ReportConfigComparisonExpressionPtrOutput)
-}
-
-// Has comparison expression for a tag value
-func (o ReportConfigFilterOutput) TagValue() ReportConfigComparisonExpressionPtrOutput {
-	return o.ApplyT(func(v ReportConfigFilter) *ReportConfigComparisonExpression { return v.TagValue }).(ReportConfigComparisonExpressionPtrOutput)
-}
-
 // Has comparison expression for a tag
 func (o ReportConfigFilterOutput) Tags() ReportConfigComparisonExpressionPtrOutput {
 	return o.ApplyT(func(v ReportConfigFilter) *ReportConfigComparisonExpression { return v.Tags }).(ReportConfigComparisonExpressionPtrOutput)
@@ -5139,26 +6863,6 @@ func (o ReportConfigFilterPtrOutput) Or() ReportConfigFilterArrayOutput {
 	}).(ReportConfigFilterArrayOutput)
 }
 
-// Has comparison expression for a tag key
-func (o ReportConfigFilterPtrOutput) TagKey() ReportConfigComparisonExpressionPtrOutput {
-	return o.ApplyT(func(v *ReportConfigFilter) *ReportConfigComparisonExpression {
-		if v == nil {
-			return nil
-		}
-		return v.TagKey
-	}).(ReportConfigComparisonExpressionPtrOutput)
-}
-
-// Has comparison expression for a tag value
-func (o ReportConfigFilterPtrOutput) TagValue() ReportConfigComparisonExpressionPtrOutput {
-	return o.ApplyT(func(v *ReportConfigFilter) *ReportConfigComparisonExpression {
-		if v == nil {
-			return nil
-		}
-		return v.TagValue
-	}).(ReportConfigComparisonExpressionPtrOutput)
-}
-
 // Has comparison expression for a tag
 func (o ReportConfigFilterPtrOutput) Tags() ReportConfigComparisonExpressionPtrOutput {
 	return o.ApplyT(func(v *ReportConfigFilter) *ReportConfigComparisonExpression {
@@ -5197,10 +6901,6 @@ type ReportConfigFilterResponse struct {
 	Dimensions *ReportConfigComparisonExpressionResponse `pulumi:"dimensions"`
 	// The logical "OR" expression. Must have at least 2 items.
 	Or []ReportConfigFilterResponse `pulumi:"or"`
-	// Has comparison expression for a tag key
-	TagKey *ReportConfigComparisonExpressionResponse `pulumi:"tagKey"`
-	// Has comparison expression for a tag value
-	TagValue *ReportConfigComparisonExpressionResponse `pulumi:"tagValue"`
 	// Has comparison expression for a tag
 	Tags *ReportConfigComparisonExpressionResponse `pulumi:"tags"`
 }
@@ -5233,16 +6933,6 @@ func (o ReportConfigFilterResponseOutput) Dimensions() ReportConfigComparisonExp
 // The logical "OR" expression. Must have at least 2 items.
 func (o ReportConfigFilterResponseOutput) Or() ReportConfigFilterResponseArrayOutput {
 	return o.ApplyT(func(v ReportConfigFilterResponse) []ReportConfigFilterResponse { return v.Or }).(ReportConfigFilterResponseArrayOutput)
-}
-
-// Has comparison expression for a tag key
-func (o ReportConfigFilterResponseOutput) TagKey() ReportConfigComparisonExpressionResponsePtrOutput {
-	return o.ApplyT(func(v ReportConfigFilterResponse) *ReportConfigComparisonExpressionResponse { return v.TagKey }).(ReportConfigComparisonExpressionResponsePtrOutput)
-}
-
-// Has comparison expression for a tag value
-func (o ReportConfigFilterResponseOutput) TagValue() ReportConfigComparisonExpressionResponsePtrOutput {
-	return o.ApplyT(func(v ReportConfigFilterResponse) *ReportConfigComparisonExpressionResponse { return v.TagValue }).(ReportConfigComparisonExpressionResponsePtrOutput)
 }
 
 // Has comparison expression for a tag
@@ -5302,26 +6992,6 @@ func (o ReportConfigFilterResponsePtrOutput) Or() ReportConfigFilterResponseArra
 		}
 		return v.Or
 	}).(ReportConfigFilterResponseArrayOutput)
-}
-
-// Has comparison expression for a tag key
-func (o ReportConfigFilterResponsePtrOutput) TagKey() ReportConfigComparisonExpressionResponsePtrOutput {
-	return o.ApplyT(func(v *ReportConfigFilterResponse) *ReportConfigComparisonExpressionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.TagKey
-	}).(ReportConfigComparisonExpressionResponsePtrOutput)
-}
-
-// Has comparison expression for a tag value
-func (o ReportConfigFilterResponsePtrOutput) TagValue() ReportConfigComparisonExpressionResponsePtrOutput {
-	return o.ApplyT(func(v *ReportConfigFilterResponse) *ReportConfigComparisonExpressionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.TagValue
-	}).(ReportConfigComparisonExpressionResponsePtrOutput)
 }
 
 // Has comparison expression for a tag
@@ -8733,6 +10403,172 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// The properties of the tag inheritance setting.
+type TagInheritanceProperties struct {
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	PreferContainerTags bool `pulumi:"preferContainerTags"`
+}
+
+// TagInheritancePropertiesInput is an input type that accepts TagInheritancePropertiesArgs and TagInheritancePropertiesOutput values.
+// You can construct a concrete instance of `TagInheritancePropertiesInput` via:
+//
+//	TagInheritancePropertiesArgs{...}
+type TagInheritancePropertiesInput interface {
+	pulumi.Input
+
+	ToTagInheritancePropertiesOutput() TagInheritancePropertiesOutput
+	ToTagInheritancePropertiesOutputWithContext(context.Context) TagInheritancePropertiesOutput
+}
+
+// The properties of the tag inheritance setting.
+type TagInheritancePropertiesArgs struct {
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	PreferContainerTags pulumi.BoolInput `pulumi:"preferContainerTags"`
+}
+
+func (TagInheritancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagInheritanceProperties)(nil)).Elem()
+}
+
+func (i TagInheritancePropertiesArgs) ToTagInheritancePropertiesOutput() TagInheritancePropertiesOutput {
+	return i.ToTagInheritancePropertiesOutputWithContext(context.Background())
+}
+
+func (i TagInheritancePropertiesArgs) ToTagInheritancePropertiesOutputWithContext(ctx context.Context) TagInheritancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagInheritancePropertiesOutput)
+}
+
+func (i TagInheritancePropertiesArgs) ToTagInheritancePropertiesPtrOutput() TagInheritancePropertiesPtrOutput {
+	return i.ToTagInheritancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i TagInheritancePropertiesArgs) ToTagInheritancePropertiesPtrOutputWithContext(ctx context.Context) TagInheritancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagInheritancePropertiesOutput).ToTagInheritancePropertiesPtrOutputWithContext(ctx)
+}
+
+// TagInheritancePropertiesPtrInput is an input type that accepts TagInheritancePropertiesArgs, TagInheritancePropertiesPtr and TagInheritancePropertiesPtrOutput values.
+// You can construct a concrete instance of `TagInheritancePropertiesPtrInput` via:
+//
+//	        TagInheritancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type TagInheritancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToTagInheritancePropertiesPtrOutput() TagInheritancePropertiesPtrOutput
+	ToTagInheritancePropertiesPtrOutputWithContext(context.Context) TagInheritancePropertiesPtrOutput
+}
+
+type tagInheritancePropertiesPtrType TagInheritancePropertiesArgs
+
+func TagInheritancePropertiesPtr(v *TagInheritancePropertiesArgs) TagInheritancePropertiesPtrInput {
+	return (*tagInheritancePropertiesPtrType)(v)
+}
+
+func (*tagInheritancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagInheritanceProperties)(nil)).Elem()
+}
+
+func (i *tagInheritancePropertiesPtrType) ToTagInheritancePropertiesPtrOutput() TagInheritancePropertiesPtrOutput {
+	return i.ToTagInheritancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *tagInheritancePropertiesPtrType) ToTagInheritancePropertiesPtrOutputWithContext(ctx context.Context) TagInheritancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagInheritancePropertiesPtrOutput)
+}
+
+// The properties of the tag inheritance setting.
+type TagInheritancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (TagInheritancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagInheritanceProperties)(nil)).Elem()
+}
+
+func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesOutput() TagInheritancePropertiesOutput {
+	return o
+}
+
+func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesOutputWithContext(ctx context.Context) TagInheritancePropertiesOutput {
+	return o
+}
+
+func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesPtrOutput() TagInheritancePropertiesPtrOutput {
+	return o.ToTagInheritancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesPtrOutputWithContext(ctx context.Context) TagInheritancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagInheritanceProperties) *TagInheritanceProperties {
+		return &v
+	}).(TagInheritancePropertiesPtrOutput)
+}
+
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+func (o TagInheritancePropertiesOutput) PreferContainerTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v TagInheritanceProperties) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
+}
+
+type TagInheritancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (TagInheritancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagInheritanceProperties)(nil)).Elem()
+}
+
+func (o TagInheritancePropertiesPtrOutput) ToTagInheritancePropertiesPtrOutput() TagInheritancePropertiesPtrOutput {
+	return o
+}
+
+func (o TagInheritancePropertiesPtrOutput) ToTagInheritancePropertiesPtrOutputWithContext(ctx context.Context) TagInheritancePropertiesPtrOutput {
+	return o
+}
+
+func (o TagInheritancePropertiesPtrOutput) Elem() TagInheritancePropertiesOutput {
+	return o.ApplyT(func(v *TagInheritanceProperties) TagInheritanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret TagInheritanceProperties
+		return ret
+	}).(TagInheritancePropertiesOutput)
+}
+
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TagInheritanceProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.PreferContainerTags
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The properties of the tag inheritance setting.
+type TagInheritancePropertiesResponse struct {
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	PreferContainerTags bool `pulumi:"preferContainerTags"`
+}
+
+// The properties of the tag inheritance setting.
+type TagInheritancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (TagInheritancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagInheritancePropertiesResponse)(nil)).Elem()
+}
+
+func (o TagInheritancePropertiesResponseOutput) ToTagInheritancePropertiesResponseOutput() TagInheritancePropertiesResponseOutput {
+	return o
+}
+
+func (o TagInheritancePropertiesResponseOutput) ToTagInheritancePropertiesResponseOutputWithContext(ctx context.Context) TagInheritancePropertiesResponseOutput {
+	return o
+}
+
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+func (o TagInheritancePropertiesResponseOutput) PreferContainerTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v TagInheritancePropertiesResponse) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
+}
+
 // Target resources for cost allocation.
 type TargetCostAllocationResource struct {
 	// If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
@@ -8928,6 +10764,20 @@ func (o TargetCostAllocationResourceResponseArrayOutput) Index(i pulumi.IntInput
 }
 
 func init() {
+	pulumi.RegisterOutputType(BudgetComparisonExpressionOutput{})
+	pulumi.RegisterOutputType(BudgetComparisonExpressionPtrOutput{})
+	pulumi.RegisterOutputType(BudgetComparisonExpressionResponseOutput{})
+	pulumi.RegisterOutputType(BudgetComparisonExpressionResponsePtrOutput{})
+	pulumi.RegisterOutputType(BudgetFilterOutput{})
+	pulumi.RegisterOutputType(BudgetFilterPtrOutput{})
+	pulumi.RegisterOutputType(BudgetFilterPropertiesOutput{})
+	pulumi.RegisterOutputType(BudgetFilterPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(BudgetFilterPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(BudgetFilterPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(BudgetFilterResponseOutput{})
+	pulumi.RegisterOutputType(BudgetFilterResponsePtrOutput{})
+	pulumi.RegisterOutputType(BudgetTimePeriodOutput{})
+	pulumi.RegisterOutputType(BudgetTimePeriodResponseOutput{})
 	pulumi.RegisterOutputType(CommonExportPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CommonExportPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponseOutput{})
@@ -8943,6 +10793,9 @@ func init() {
 	pulumi.RegisterOutputType(CostAllocationRulePropertiesOutput{})
 	pulumi.RegisterOutputType(CostAllocationRulePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CostAllocationRulePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CurrentSpendResponseOutput{})
+	pulumi.RegisterOutputType(CustomerMetadataOutput{})
+	pulumi.RegisterOutputType(CustomerMetadataResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExportDatasetOutput{})
@@ -8964,12 +10817,12 @@ func init() {
 	pulumi.RegisterOutputType(ExportDeliveryInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExportExecutionListResultResponseOutput{})
 	pulumi.RegisterOutputType(ExportExecutionListResultResponsePtrOutput{})
-	pulumi.RegisterOutputType(ExportExecutionResponseOutput{})
-	pulumi.RegisterOutputType(ExportExecutionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExportRecurrencePeriodOutput{})
 	pulumi.RegisterOutputType(ExportRecurrencePeriodPtrOutput{})
 	pulumi.RegisterOutputType(ExportRecurrencePeriodResponseOutput{})
 	pulumi.RegisterOutputType(ExportRecurrencePeriodResponsePtrOutput{})
+	pulumi.RegisterOutputType(ExportRunResponseOutput{})
+	pulumi.RegisterOutputType(ExportRunResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExportScheduleOutput{})
 	pulumi.RegisterOutputType(ExportSchedulePtrOutput{})
 	pulumi.RegisterOutputType(ExportScheduleResponseOutput{})
@@ -8982,12 +10835,17 @@ func init() {
 	pulumi.RegisterOutputType(FileDestinationPtrOutput{})
 	pulumi.RegisterOutputType(FileDestinationResponseOutput{})
 	pulumi.RegisterOutputType(FileDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ForecastSpendResponseOutput{})
 	pulumi.RegisterOutputType(KpiPropertiesOutput{})
 	pulumi.RegisterOutputType(KpiPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(KpiPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(KpiPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(NotificationOutput{})
+	pulumi.RegisterOutputType(NotificationMapOutput{})
 	pulumi.RegisterOutputType(NotificationPropertiesOutput{})
 	pulumi.RegisterOutputType(NotificationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NotificationResponseOutput{})
+	pulumi.RegisterOutputType(NotificationResponseMapOutput{})
 	pulumi.RegisterOutputType(PivotPropertiesOutput{})
 	pulumi.RegisterOutputType(PivotPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(PivotPropertiesResponseOutput{})
@@ -9081,6 +10939,9 @@ func init() {
 	pulumi.RegisterOutputType(SourceCostAllocationResourceResponseOutput{})
 	pulumi.RegisterOutputType(SourceCostAllocationResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TagInheritancePropertiesOutput{})
+	pulumi.RegisterOutputType(TagInheritancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(TagInheritancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(TargetCostAllocationResourceOutput{})
 	pulumi.RegisterOutputType(TargetCostAllocationResourceArrayOutput{})
 	pulumi.RegisterOutputType(TargetCostAllocationResourceResponseOutput{})

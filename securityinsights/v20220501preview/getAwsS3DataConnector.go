@@ -11,10 +11,8 @@ import (
 )
 
 // Gets a data connector.
-//
-// Deprecated: azure-native:securityinsights/v20220501preview:AwsS3DataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AwsS3DataConnector to guarantee forwards compatibility.
-func LookupAwsS3DataConnector(ctx *pulumi.Context, args *LookupAwsS3DataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsS3DataConnectorResult, error) {
-	var rv LookupAwsS3DataConnectorResult
+func GetAwsS3DataConnector(ctx *pulumi.Context, args *GetAwsS3DataConnectorArgs, opts ...pulumi.InvokeOption) (*GetAwsS3DataConnectorResult, error) {
+	var rv GetAwsS3DataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getAwsS3DataConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +20,7 @@ func LookupAwsS3DataConnector(ctx *pulumi.Context, args *LookupAwsS3DataConnecto
 	return &rv, nil
 }
 
-type LookupAwsS3DataConnectorArgs struct {
+type GetAwsS3DataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId string `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -32,7 +30,7 @@ type LookupAwsS3DataConnectorArgs struct {
 }
 
 // Represents Amazon Web Services S3 data connector.
-type LookupAwsS3DataConnectorResult struct {
+type GetAwsS3DataConnectorResult struct {
 	// The available data types for the connector.
 	DataTypes AwsS3DataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// The logs destination table name in LogAnalytics.
@@ -56,20 +54,20 @@ type LookupAwsS3DataConnectorResult struct {
 	Type string `pulumi:"type"`
 }
 
-func LookupAwsS3DataConnectorOutput(ctx *pulumi.Context, args LookupAwsS3DataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsS3DataConnectorResultOutput {
+func GetAwsS3DataConnectorOutput(ctx *pulumi.Context, args GetAwsS3DataConnectorOutputArgs, opts ...pulumi.InvokeOption) GetAwsS3DataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAwsS3DataConnectorResult, error) {
-			args := v.(LookupAwsS3DataConnectorArgs)
-			r, err := LookupAwsS3DataConnector(ctx, &args, opts...)
-			var s LookupAwsS3DataConnectorResult
+		ApplyT(func(v interface{}) (GetAwsS3DataConnectorResult, error) {
+			args := v.(GetAwsS3DataConnectorArgs)
+			r, err := GetAwsS3DataConnector(ctx, &args, opts...)
+			var s GetAwsS3DataConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupAwsS3DataConnectorResultOutput)
+		}).(GetAwsS3DataConnectorResultOutput)
 }
 
-type LookupAwsS3DataConnectorOutputArgs struct {
+type GetAwsS3DataConnectorOutputArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringInput `pulumi:"dataConnectorId"`
 	// The name of the resource group. The name is case insensitive.
@@ -78,76 +76,76 @@ type LookupAwsS3DataConnectorOutputArgs struct {
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (LookupAwsS3DataConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAwsS3DataConnectorArgs)(nil)).Elem()
+func (GetAwsS3DataConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsS3DataConnectorArgs)(nil)).Elem()
 }
 
 // Represents Amazon Web Services S3 data connector.
-type LookupAwsS3DataConnectorResultOutput struct{ *pulumi.OutputState }
+type GetAwsS3DataConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (LookupAwsS3DataConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupAwsS3DataConnectorResult)(nil)).Elem()
+func (GetAwsS3DataConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsS3DataConnectorResult)(nil)).Elem()
 }
 
-func (o LookupAwsS3DataConnectorResultOutput) ToLookupAwsS3DataConnectorResultOutput() LookupAwsS3DataConnectorResultOutput {
+func (o GetAwsS3DataConnectorResultOutput) ToGetAwsS3DataConnectorResultOutput() GetAwsS3DataConnectorResultOutput {
 	return o
 }
 
-func (o LookupAwsS3DataConnectorResultOutput) ToLookupAwsS3DataConnectorResultOutputWithContext(ctx context.Context) LookupAwsS3DataConnectorResultOutput {
+func (o GetAwsS3DataConnectorResultOutput) ToGetAwsS3DataConnectorResultOutputWithContext(ctx context.Context) GetAwsS3DataConnectorResultOutput {
 	return o
 }
 
 // The available data types for the connector.
-func (o LookupAwsS3DataConnectorResultOutput) DataTypes() AwsS3DataConnectorDataTypesResponseOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) AwsS3DataConnectorDataTypesResponse { return v.DataTypes }).(AwsS3DataConnectorDataTypesResponseOutput)
+func (o GetAwsS3DataConnectorResultOutput) DataTypes() AwsS3DataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) AwsS3DataConnectorDataTypesResponse { return v.DataTypes }).(AwsS3DataConnectorDataTypesResponseOutput)
 }
 
 // The logs destination table name in LogAnalytics.
-func (o LookupAwsS3DataConnectorResultOutput) DestinationTable() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) string { return v.DestinationTable }).(pulumi.StringOutput)
+func (o GetAwsS3DataConnectorResultOutput) DestinationTable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) string { return v.DestinationTable }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource
-func (o LookupAwsS3DataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GetAwsS3DataConnectorResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LookupAwsS3DataConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetAwsS3DataConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of the data connector
 // Expected value is 'AmazonWebServicesS3'.
-func (o LookupAwsS3DataConnectorResultOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetAwsS3DataConnectorResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the resource
-func (o LookupAwsS3DataConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetAwsS3DataConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The Aws Role Arn that is used to access the Aws account.
-func (o LookupAwsS3DataConnectorResultOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) string { return v.RoleArn }).(pulumi.StringOutput)
+func (o GetAwsS3DataConnectorResultOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
 // The AWS sqs urls for the connector.
-func (o LookupAwsS3DataConnectorResultOutput) SqsUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) []string { return v.SqsUrls }).(pulumi.StringArrayOutput)
+func (o GetAwsS3DataConnectorResultOutput) SqsUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) []string { return v.SqsUrls }).(pulumi.StringArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAwsS3DataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetAwsS3DataConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupAwsS3DataConnectorResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAwsS3DataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
+func (o GetAwsS3DataConnectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsS3DataConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupAwsS3DataConnectorResultOutput{})
+	pulumi.RegisterOutputType(GetAwsS3DataConnectorResultOutput{})
 }

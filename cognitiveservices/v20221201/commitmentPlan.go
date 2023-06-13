@@ -42,9 +42,30 @@ func NewCommitmentPlan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:cognitiveservices:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20211001:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20220301:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20221001:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20230501:CommitmentPlan"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource CommitmentPlan
 	err := ctx.RegisterResource("azure-native:cognitiveservices/v20221201:CommitmentPlan", name, args, &resource, opts...)
 	if err != nil {
@@ -77,6 +98,8 @@ func (CommitmentPlanState) ElementType() reflect.Type {
 }
 
 type commitmentPlanArgs struct {
+	// The name of Cognitive Services account.
+	AccountName string `pulumi:"accountName"`
 	// The name of the commitmentPlan associated with the Cognitive Services Account
 	CommitmentPlanName *string `pulumi:"commitmentPlanName"`
 	// The Kind of the resource.
@@ -95,6 +118,8 @@ type commitmentPlanArgs struct {
 
 // The set of arguments for constructing a CommitmentPlan resource.
 type CommitmentPlanArgs struct {
+	// The name of Cognitive Services account.
+	AccountName pulumi.StringInput
 	// The name of the commitmentPlan associated with the Cognitive Services Account
 	CommitmentPlanName pulumi.StringPtrInput
 	// The Kind of the resource.

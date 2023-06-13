@@ -13,6 +13,7 @@ import (
 
 // Template Spec Version object.
 // API Version: 2022-02-01.
+// Previous API Version: 2022-02-01. See https://github.com/pulumi/pulumi-azure-native/discussions/1834 for information on migrating from v1 to v2 of the provider.
 type TemplateSpecVersion struct {
 	pulumi.CustomResourceState
 

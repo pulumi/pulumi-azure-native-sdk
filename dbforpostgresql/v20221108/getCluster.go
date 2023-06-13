@@ -38,9 +38,9 @@ type LookupClusterResult struct {
 	// The edition of a coordinator server (default: GeneralPurpose). Required for creation.
 	CoordinatorServerEdition *string `pulumi:"coordinatorServerEdition"`
 	// The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	CoordinatorStorageQuotaInMb *float64 `pulumi:"coordinatorStorageQuotaInMb"`
+	CoordinatorStorageQuotaInMb *int `pulumi:"coordinatorStorageQuotaInMb"`
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	CoordinatorVCores *float64 `pulumi:"coordinatorVCores"`
+	CoordinatorVCores *int `pulumi:"coordinatorVCores"`
 	// The earliest restore point time (ISO8601 format) for the cluster.
 	EarliestRestoreTime string `pulumi:"earliestRestoreTime"`
 	// If high availability (HA) is enabled or not for the cluster.
@@ -56,15 +56,15 @@ type LookupClusterResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
-	NodeCount *float64 `pulumi:"nodeCount"`
+	NodeCount *int `pulumi:"nodeCount"`
 	// If public access is enabled on worker nodes.
 	NodeEnablePublicIpAccess *bool `pulumi:"nodeEnablePublicIpAccess"`
 	// The edition of a node server (default: MemoryOptimized).
 	NodeServerEdition *string `pulumi:"nodeServerEdition"`
 	// The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	NodeStorageQuotaInMb *float64 `pulumi:"nodeStorageQuotaInMb"`
+	NodeStorageQuotaInMb *int `pulumi:"nodeStorageQuotaInMb"`
 	// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	NodeVCores *float64 `pulumi:"nodeVCores"`
+	NodeVCores *int `pulumi:"nodeVCores"`
 	// Date and time in UTC (ISO8601 format) for cluster restore.
 	PointInTimeUTC *string `pulumi:"pointInTimeUTC"`
 	// The major PostgreSQL version on all cluster servers.
@@ -153,13 +153,13 @@ func (o LookupClusterResultOutput) CoordinatorServerEdition() pulumi.StringPtrOu
 }
 
 // The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-func (o LookupClusterResultOutput) CoordinatorStorageQuotaInMb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupClusterResult) *float64 { return v.CoordinatorStorageQuotaInMb }).(pulumi.Float64PtrOutput)
+func (o LookupClusterResultOutput) CoordinatorStorageQuotaInMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *int { return v.CoordinatorStorageQuotaInMb }).(pulumi.IntPtrOutput)
 }
 
 // The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-func (o LookupClusterResultOutput) CoordinatorVCores() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupClusterResult) *float64 { return v.CoordinatorVCores }).(pulumi.Float64PtrOutput)
+func (o LookupClusterResultOutput) CoordinatorVCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *int { return v.CoordinatorVCores }).(pulumi.IntPtrOutput)
 }
 
 // The earliest restore point time (ISO8601 format) for the cluster.
@@ -198,8 +198,8 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 }
 
 // Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
-func (o LookupClusterResultOutput) NodeCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupClusterResult) *float64 { return v.NodeCount }).(pulumi.Float64PtrOutput)
+func (o LookupClusterResultOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
 // If public access is enabled on worker nodes.
@@ -213,13 +213,13 @@ func (o LookupClusterResultOutput) NodeServerEdition() pulumi.StringPtrOutput {
 }
 
 // The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-func (o LookupClusterResultOutput) NodeStorageQuotaInMb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupClusterResult) *float64 { return v.NodeStorageQuotaInMb }).(pulumi.Float64PtrOutput)
+func (o LookupClusterResultOutput) NodeStorageQuotaInMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *int { return v.NodeStorageQuotaInMb }).(pulumi.IntPtrOutput)
 }
 
 // The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-func (o LookupClusterResultOutput) NodeVCores() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupClusterResult) *float64 { return v.NodeVCores }).(pulumi.Float64PtrOutput)
+func (o LookupClusterResultOutput) NodeVCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *int { return v.NodeVCores }).(pulumi.IntPtrOutput)
 }
 
 // Date and time in UTC (ISO8601 format) for cluster restore.
