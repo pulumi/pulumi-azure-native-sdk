@@ -5351,7 +5351,10 @@ type StatelessServicePropertiesResponse struct {
 
 // Azure resource identifier.
 type SubResource struct {
-	// Azure resource identifier.
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 	Id *string `pulumi:"id"`
 }
 
@@ -5368,7 +5371,10 @@ type SubResourceInput interface {
 
 // Azure resource identifier.
 type SubResourceArgs struct {
-	// Azure resource identifier.
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -5399,7 +5405,10 @@ func (o SubResourceOutput) ToSubResourceOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// Azure resource identifier.
+// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 func (o SubResourceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResource) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
