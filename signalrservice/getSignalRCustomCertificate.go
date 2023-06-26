@@ -11,7 +11,7 @@ import (
 )
 
 // Get a custom certificate.
-// API Version: 2022-02-01.
+// Azure REST API version: 2023-02-01.
 func LookupSignalRCustomCertificate(ctx *pulumi.Context, args *LookupSignalRCustomCertificateArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomCertificateResult, error) {
 	var rv LookupSignalRCustomCertificateResult
 	err := ctx.Invoke("azure-native:signalrservice:getSignalRCustomCertificate", args, &rv, opts...)

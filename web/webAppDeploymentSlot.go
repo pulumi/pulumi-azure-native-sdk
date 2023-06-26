@@ -12,7 +12,7 @@ import (
 )
 
 // User credentials used for publishing activity.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01
 type WebAppDeploymentSlot struct {
 	pulumi.CustomResourceState
 

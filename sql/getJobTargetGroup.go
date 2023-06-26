@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a target group.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupJobTargetGroup(ctx *pulumi.Context, args *LookupJobTargetGroupArgs, opts ...pulumi.InvokeOption) (*LookupJobTargetGroupResult, error) {
 	var rv LookupJobTargetGroupResult
 	err := ctx.Invoke("azure-native:sql:getJobTargetGroup", args, &rv, opts...)

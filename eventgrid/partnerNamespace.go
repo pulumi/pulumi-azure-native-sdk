@@ -12,7 +12,7 @@ import (
 )
 
 // EventGrid Partner Namespace.
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-06-01-preview
 type PartnerNamespace struct {
 	pulumi.CustomResourceState
 
@@ -28,8 +28,11 @@ type PartnerNamespace struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
 	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
-	PartnerRegistrationFullyQualifiedId pulumi.StringPtrOutput                       `pulumi:"partnerRegistrationFullyQualifiedId"`
-	PrivateEndpointConnections          PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PartnerRegistrationFullyQualifiedId pulumi.StringPtrOutput `pulumi:"partnerRegistrationFullyQualifiedId"`
+	// This determines if events published to this partner namespace should use the source attribute in the event payload
+	// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
+	PartnerTopicRoutingMode    pulumi.StringPtrOutput                       `pulumi:"partnerTopicRoutingMode"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the partner namespace.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
@@ -56,6 +59,9 @@ func NewPartnerNamespace(ctx *pulumi.Context,
 	if args.DisableLocalAuth == nil {
 		args.DisableLocalAuth = pulumi.BoolPtr(false)
 	}
+	if args.PartnerTopicRoutingMode == nil {
+		args.PartnerTopicRoutingMode = pulumi.StringPtr("SourceEventAttribute")
+	}
 	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
@@ -74,6 +80,9 @@ func NewPartnerNamespace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20220615:PartnerNamespace"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:PartnerNamespace"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -120,6 +129,9 @@ type partnerNamespaceArgs struct {
 	// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
 	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
 	PartnerRegistrationFullyQualifiedId *string `pulumi:"partnerRegistrationFullyQualifiedId"`
+	// This determines if events published to this partner namespace should use the source attribute in the event payload
+	// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
+	PartnerTopicRoutingMode *string `pulumi:"partnerTopicRoutingMode"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" />
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -142,6 +154,9 @@ type PartnerNamespaceArgs struct {
 	// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
 	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
 	PartnerRegistrationFullyQualifiedId pulumi.StringPtrInput
+	// This determines if events published to this partner namespace should use the source attribute in the event payload
+	// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
+	PartnerTopicRoutingMode pulumi.StringPtrInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" />
 	PublicNetworkAccess pulumi.StringPtrInput
@@ -217,6 +232,12 @@ func (o PartnerNamespaceOutput) Name() pulumi.StringOutput {
 // /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
 func (o PartnerNamespaceOutput) PartnerRegistrationFullyQualifiedId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PartnerNamespace) pulumi.StringPtrOutput { return v.PartnerRegistrationFullyQualifiedId }).(pulumi.StringPtrOutput)
+}
+
+// This determines if events published to this partner namespace should use the source attribute in the event payload
+// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
+func (o PartnerNamespaceOutput) PartnerTopicRoutingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerNamespace) pulumi.StringPtrOutput { return v.PartnerTopicRoutingMode }).(pulumi.StringPtrOutput)
 }
 
 func (o PartnerNamespaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {

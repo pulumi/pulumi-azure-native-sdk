@@ -12,7 +12,7 @@ import (
 )
 
 // An IPv6 server firewall rule.
-// API Version: 2021-08-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2021-08-01-preview
 type IPv6FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,9 @@ func NewIPv6FirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:IPv6FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:IPv6FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

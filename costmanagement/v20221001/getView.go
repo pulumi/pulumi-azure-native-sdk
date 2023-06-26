@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the view by view name.
-//
-// Deprecated: azure-native:costmanagement/v20221001:View is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221005preview:View to guarantee forwards compatibility.
 func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.InvokeOption) (*LookupViewResult, error) {
 	var rv LookupViewResult
 	err := ctx.Invoke("azure-native:costmanagement/v20221001:getView", args, &rv, opts...)
@@ -40,7 +38,7 @@ type LookupViewResult struct {
 	// Has definition for data in this report config.
 	DataSet *ReportConfigDatasetResponse `pulumi:"dataSet"`
 	// Date range of the current view.
-	DateRange string `pulumi:"dateRange"`
+	DateRange *string `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName *string `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -132,8 +130,8 @@ func (o LookupViewResultOutput) DataSet() ReportConfigDatasetResponsePtrOutput {
 }
 
 // Date range of the current view.
-func (o LookupViewResultOutput) DateRange() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupViewResult) string { return v.DateRange }).(pulumi.StringOutput)
+func (o LookupViewResultOutput) DateRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupViewResult) *string { return v.DateRange }).(pulumi.StringPtrOutput)
 }
 
 // User input name of the view. Required.

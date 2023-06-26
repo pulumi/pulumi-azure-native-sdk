@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a project environment type.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2023-04-01.
 func LookupProjectEnvironmentType(ctx *pulumi.Context, args *LookupProjectEnvironmentTypeArgs, opts ...pulumi.InvokeOption) (*LookupProjectEnvironmentTypeResult, error) {
 	var rv LookupProjectEnvironmentTypeResult
 	err := ctx.Invoke("azure-native:devcenter:getProjectEnvironmentType", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupProjectEnvironmentTypeArgs struct {
 	EnvironmentTypeName string `pulumi:"environmentTypeName"`
 	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -76,7 +76,7 @@ type LookupProjectEnvironmentTypeOutputArgs struct {
 	EnvironmentTypeName pulumi.StringInput `pulumi:"environmentTypeName"`
 	// The name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

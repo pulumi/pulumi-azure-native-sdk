@@ -12,7 +12,7 @@ import (
 )
 
 // The endpoint for the target resource.
-// API Version: 2022-05-01-preview.
+// Azure REST API version: 2023-03-15. Prior API version in Azure Native 1.x: 2022-05-01-preview
 type Endpoint struct {
 	pulumi.CustomResourceState
 
@@ -30,10 +30,10 @@ type Endpoint struct {
 	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource provisioning state.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The resource Id of the connectivity endpoint (optional).
-	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
+	// The endpoint properties.
+	Properties EndpointPropertiesResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -48,15 +48,15 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args.ResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceUri'")
 	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity/v20211006preview:Endpoint"),
 		},
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity/v20220501preview:Endpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridconnectivity/v20230315:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -106,12 +106,10 @@ type endpointArgs struct {
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
 	// The type of identity that last modified the resource.
 	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-	// The resource Id of the connectivity endpoint (optional).
-	ResourceId *string `pulumi:"resourceId"`
+	// The endpoint properties.
+	Properties *EndpointProperties `pulumi:"properties"`
 	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri string `pulumi:"resourceUri"`
-	// The type of endpoint.
-	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Endpoint resource.
@@ -130,12 +128,10 @@ type EndpointArgs struct {
 	LastModifiedBy pulumi.StringPtrInput
 	// The type of identity that last modified the resource.
 	LastModifiedByType pulumi.StringPtrInput
-	// The resource Id of the connectivity endpoint (optional).
-	ResourceId pulumi.StringPtrInput
+	// The endpoint properties.
+	Properties EndpointPropertiesPtrInput
 	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri pulumi.StringInput
-	// The type of endpoint.
-	Type pulumi.StringInput
 }
 
 func (EndpointArgs) ElementType() reflect.Type {
@@ -210,14 +206,14 @@ func (o EndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource provisioning state.
-func (o EndpointOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+// The endpoint properties.
+func (o EndpointOutput) Properties() EndpointPropertiesResponseOutput {
+	return o.ApplyT(func(v *Endpoint) EndpointPropertiesResponseOutput { return v.Properties }).(EndpointPropertiesResponseOutput)
 }
 
-// The resource Id of the connectivity endpoint (optional).
-func (o EndpointOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.ResourceId }).(pulumi.StringPtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o EndpointOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Endpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

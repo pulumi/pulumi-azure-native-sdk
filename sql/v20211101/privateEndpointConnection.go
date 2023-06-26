@@ -12,8 +12,6 @@ import (
 )
 
 // A private endpoint connection
-//
-// Deprecated: azure-native:sql/v20211101:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +78,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

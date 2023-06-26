@@ -12,7 +12,7 @@ import (
 )
 
 // Provider details.
-// API Version: 2018-07-10.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10
 type ReplicationRecoveryServicesProvider struct {
 	pulumi.CustomResourceState
 
@@ -108,6 +108,9 @@ func NewReplicationRecoveryServicesProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ReplicationRecoveryServicesProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:ReplicationRecoveryServicesProvider"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -2635,79 +2635,12 @@ func (o FieldDefinitionResponseMapOutput) MapIndex(k pulumi.StringInput) FieldDe
 	}).(FieldDefinitionResponseOutput)
 }
 
-// Definition of hybrid runbook worker Legacy.
-type HybridRunbookWorkerLegacyResponse struct {
-	// Gets or sets the assigned machine IP address.
-	Ip *string `pulumi:"ip"`
-	// Last Heartbeat from the Worker
-	LastSeenDateTime *string `pulumi:"lastSeenDateTime"`
-	// Gets or sets the worker machine name.
-	Name *string `pulumi:"name"`
-	// Gets or sets the registration time of the worker machine.
-	RegistrationTime *string `pulumi:"registrationTime"`
-}
-
-// Definition of hybrid runbook worker Legacy.
-type HybridRunbookWorkerLegacyResponseOutput struct{ *pulumi.OutputState }
-
-func (HybridRunbookWorkerLegacyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridRunbookWorkerLegacyResponse)(nil)).Elem()
-}
-
-func (o HybridRunbookWorkerLegacyResponseOutput) ToHybridRunbookWorkerLegacyResponseOutput() HybridRunbookWorkerLegacyResponseOutput {
-	return o
-}
-
-func (o HybridRunbookWorkerLegacyResponseOutput) ToHybridRunbookWorkerLegacyResponseOutputWithContext(ctx context.Context) HybridRunbookWorkerLegacyResponseOutput {
-	return o
-}
-
-// Gets or sets the assigned machine IP address.
-func (o HybridRunbookWorkerLegacyResponseOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HybridRunbookWorkerLegacyResponse) *string { return v.Ip }).(pulumi.StringPtrOutput)
-}
-
-// Last Heartbeat from the Worker
-func (o HybridRunbookWorkerLegacyResponseOutput) LastSeenDateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HybridRunbookWorkerLegacyResponse) *string { return v.LastSeenDateTime }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the worker machine name.
-func (o HybridRunbookWorkerLegacyResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HybridRunbookWorkerLegacyResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the registration time of the worker machine.
-func (o HybridRunbookWorkerLegacyResponseOutput) RegistrationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HybridRunbookWorkerLegacyResponse) *string { return v.RegistrationTime }).(pulumi.StringPtrOutput)
-}
-
-type HybridRunbookWorkerLegacyResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (HybridRunbookWorkerLegacyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HybridRunbookWorkerLegacyResponse)(nil)).Elem()
-}
-
-func (o HybridRunbookWorkerLegacyResponseArrayOutput) ToHybridRunbookWorkerLegacyResponseArrayOutput() HybridRunbookWorkerLegacyResponseArrayOutput {
-	return o
-}
-
-func (o HybridRunbookWorkerLegacyResponseArrayOutput) ToHybridRunbookWorkerLegacyResponseArrayOutputWithContext(ctx context.Context) HybridRunbookWorkerLegacyResponseArrayOutput {
-	return o
-}
-
-func (o HybridRunbookWorkerLegacyResponseArrayOutput) Index(i pulumi.IntInput) HybridRunbookWorkerLegacyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HybridRunbookWorkerLegacyResponse {
-		return vs[0].([]HybridRunbookWorkerLegacyResponse)[vs[1].(int)]
-	}).(HybridRunbookWorkerLegacyResponseOutput)
-}
-
 // Identity for the resource.
 type Identity struct {
 	// The identity type.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -2726,7 +2659,7 @@ type IdentityArgs struct {
 	// The identity type.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -2813,8 +2746,8 @@ func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -2852,13 +2785,13 @@ func (o IdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the resource.
@@ -2870,7 +2803,7 @@ type IdentityResponse struct {
 	// The identity type.
 	Type *string `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]IdentityResponseUserAssignedIdentities `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]UserAssignedIdentitiesPropertiesResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Identity for the resource.
@@ -2904,10 +2837,10 @@ func (o IdentityResponseOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityResponseOutput) UserAssignedIdentities() IdentityResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v IdentityResponse) map[string]IdentityResponseUserAssignedIdentities {
+func (o IdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentitiesPropertiesResponseMapOutput {
+	return o.ApplyT(func(v IdentityResponse) map[string]UserAssignedIdentitiesPropertiesResponse {
 		return v.UserAssignedIdentities
-	}).(IdentityResponseUserAssignedIdentitiesMapOutput)
+	}).(UserAssignedIdentitiesPropertiesResponseMapOutput)
 }
 
 type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2965,64 +2898,13 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityResponsePtrOutput) UserAssignedIdentities() IdentityResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v *IdentityResponse) map[string]IdentityResponseUserAssignedIdentities {
+func (o IdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentitiesPropertiesResponseMapOutput {
+	return o.ApplyT(func(v *IdentityResponse) map[string]UserAssignedIdentitiesPropertiesResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(IdentityResponseUserAssignedIdentitiesMapOutput)
-}
-
-type IdentityResponseUserAssignedIdentities struct {
-	// The client id of user assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal id of user assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-type IdentityResponseUserAssignedIdentitiesOutput struct{ *pulumi.OutputState }
-
-func (IdentityResponseUserAssignedIdentitiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityResponseUserAssignedIdentities)(nil)).Elem()
-}
-
-func (o IdentityResponseUserAssignedIdentitiesOutput) ToIdentityResponseUserAssignedIdentitiesOutput() IdentityResponseUserAssignedIdentitiesOutput {
-	return o
-}
-
-func (o IdentityResponseUserAssignedIdentitiesOutput) ToIdentityResponseUserAssignedIdentitiesOutputWithContext(ctx context.Context) IdentityResponseUserAssignedIdentitiesOutput {
-	return o
-}
-
-// The client id of user assigned identity.
-func (o IdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal id of user assigned identity.
-func (o IdentityResponseUserAssignedIdentitiesOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityResponseUserAssignedIdentities) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type IdentityResponseUserAssignedIdentitiesMapOutput struct{ *pulumi.OutputState }
-
-func (IdentityResponseUserAssignedIdentitiesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IdentityResponseUserAssignedIdentities)(nil)).Elem()
-}
-
-func (o IdentityResponseUserAssignedIdentitiesMapOutput) ToIdentityResponseUserAssignedIdentitiesMapOutput() IdentityResponseUserAssignedIdentitiesMapOutput {
-	return o
-}
-
-func (o IdentityResponseUserAssignedIdentitiesMapOutput) ToIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) IdentityResponseUserAssignedIdentitiesMapOutput {
-	return o
-}
-
-func (o IdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) IdentityResponseUserAssignedIdentitiesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IdentityResponseUserAssignedIdentities {
-		return vs[0].(map[string]IdentityResponseUserAssignedIdentities)[vs[1].(string)]
-	}).(IdentityResponseUserAssignedIdentitiesOutput)
+	}).(UserAssignedIdentitiesPropertiesResponseMapOutput)
 }
 
 // Automation key which is used to register a DSC Node
@@ -7470,6 +7352,57 @@ func (o UpdateConfigurationResponseOutput) Windows() WindowsPropertiesResponsePt
 	return o.ApplyT(func(v UpdateConfigurationResponse) *WindowsPropertiesResponse { return v.Windows }).(WindowsPropertiesResponsePtrOutput)
 }
 
+type UserAssignedIdentitiesPropertiesResponse struct {
+	// The client id of user assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal id of user assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+type UserAssignedIdentitiesPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentitiesPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentitiesPropertiesResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseOutput) ToUserAssignedIdentitiesPropertiesResponseOutput() UserAssignedIdentitiesPropertiesResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseOutput) ToUserAssignedIdentitiesPropertiesResponseOutputWithContext(ctx context.Context) UserAssignedIdentitiesPropertiesResponseOutput {
+	return o
+}
+
+// The client id of user assigned identity.
+func (o UserAssignedIdentitiesPropertiesResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentitiesPropertiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal id of user assigned identity.
+func (o UserAssignedIdentitiesPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentitiesPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentitiesPropertiesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentitiesPropertiesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentitiesPropertiesResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseMapOutput) ToUserAssignedIdentitiesPropertiesResponseMapOutput() UserAssignedIdentitiesPropertiesResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseMapOutput) ToUserAssignedIdentitiesPropertiesResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentitiesPropertiesResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentitiesPropertiesResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentitiesPropertiesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentitiesPropertiesResponse {
+		return vs[0].(map[string]UserAssignedIdentitiesPropertiesResponse)[vs[1].(string)]
+	}).(UserAssignedIdentitiesPropertiesResponseOutput)
+}
+
 // Windows specific update configuration.
 type WindowsProperties struct {
 	// KB numbers excluded from the software update configuration.
@@ -7828,14 +7761,10 @@ func init() {
 	pulumi.RegisterOutputType(FieldDefinitionMapOutput{})
 	pulumi.RegisterOutputType(FieldDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(FieldDefinitionResponseMapOutput{})
-	pulumi.RegisterOutputType(HybridRunbookWorkerLegacyResponseOutput{})
-	pulumi.RegisterOutputType(HybridRunbookWorkerLegacyResponseArrayOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesOutput{})
-	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(KeyResponseOutput{})
 	pulumi.RegisterOutputType(KeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesOutput{})
@@ -7908,6 +7837,8 @@ func init() {
 	pulumi.RegisterOutputType(TaskPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(UpdateConfigurationOutput{})
 	pulumi.RegisterOutputType(UpdateConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentitiesPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentitiesPropertiesResponseMapOutput{})
 	pulumi.RegisterOutputType(WindowsPropertiesOutput{})
 	pulumi.RegisterOutputType(WindowsPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(WindowsPropertiesResponseOutput{})

@@ -69,6 +69,12 @@ func NewDatastore(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:Datastore"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:Datastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Datastore"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Datastore

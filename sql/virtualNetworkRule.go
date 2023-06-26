@@ -12,7 +12,7 @@ import (
 )
 
 // A virtual network rule.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +80,9 @@ func NewVirtualNetworkRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:VirtualNetworkRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:VirtualNetworkRule"),
 		},
 	})
 	opts = append(opts, aliases)

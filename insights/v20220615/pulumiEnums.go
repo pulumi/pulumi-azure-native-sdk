@@ -10,44 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The criteria operator. Relevant and required only for rules of the kind LogAlert.
-type ConditionOperator string
-
-const (
-	ConditionOperatorEquals             = ConditionOperator("Equals")
-	ConditionOperatorGreaterThan        = ConditionOperator("GreaterThan")
-	ConditionOperatorGreaterThanOrEqual = ConditionOperator("GreaterThanOrEqual")
-	ConditionOperatorLessThan           = ConditionOperator("LessThan")
-	ConditionOperatorLessThanOrEqual    = ConditionOperator("LessThanOrEqual")
-)
-
-// Operator for dimension values
-type DimensionOperator string
-
-const (
-	DimensionOperatorInclude = DimensionOperator("Include")
-	DimensionOperatorExclude = DimensionOperator("Exclude")
-)
-
-// Indicates the type of scheduled query rule. The default is LogAlert.
-type Kind string
-
-const (
-	KindLogAlert    = Kind("LogAlert")
-	KindLogToMetric = Kind("LogToMetric")
-)
-
-// Aggregation type. Relevant and required only for rules of the kind LogAlert.
-type TimeAggregation string
-
-const (
-	TimeAggregationCount   = TimeAggregation("Count")
-	TimeAggregationAverage = TimeAggregation("Average")
-	TimeAggregationMinimum = TimeAggregation("Minimum")
-	TimeAggregationMaximum = TimeAggregation("Maximum")
-	TimeAggregationTotal   = TimeAggregation("Total")
-)
-
 // The kind of web test this is, valid choices are ping, multistep and standard.
 type WebTestKind string
 

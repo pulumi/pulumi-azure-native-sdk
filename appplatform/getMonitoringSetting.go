@@ -11,7 +11,7 @@ import (
 )
 
 // Get the Monitoring Setting and its properties.
-// API Version: 2020-07-01.
+// Azure REST API version: 2022-12-01.
 func LookupMonitoringSetting(ctx *pulumi.Context, args *LookupMonitoringSettingArgs, opts ...pulumi.InvokeOption) (*LookupMonitoringSettingResult, error) {
 	var rv LookupMonitoringSettingResult
 	err := ctx.Invoke("azure-native:appplatform:getMonitoringSetting", args, &rv, opts...)
@@ -36,6 +36,8 @@ type LookupMonitoringSettingResult struct {
 	Name string `pulumi:"name"`
 	// Properties of the Monitoring Setting resource
 	Properties MonitoringSettingPropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -92,6 +94,11 @@ func (o LookupMonitoringSettingResultOutput) Name() pulumi.StringOutput {
 // Properties of the Monitoring Setting resource
 func (o LookupMonitoringSettingResultOutput) Properties() MonitoringSettingPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMonitoringSettingResult) MonitoringSettingPropertiesResponse { return v.Properties }).(MonitoringSettingPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupMonitoringSettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMonitoringSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

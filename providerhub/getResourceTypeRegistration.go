@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a resource type details in the given subscription and provider.
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview.
 func LookupResourceTypeRegistration(ctx *pulumi.Context, args *LookupResourceTypeRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupResourceTypeRegistrationResult, error) {
 	var rv LookupResourceTypeRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub:getResourceTypeRegistration", args, &rv, opts...)
@@ -34,6 +34,8 @@ type LookupResourceTypeRegistrationResult struct {
 	// The name of the resource
 	Name       string                                     `pulumi:"name"`
 	Properties ResourceTypeRegistrationResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -90,6 +92,11 @@ func (o LookupResourceTypeRegistrationResultOutput) Properties() ResourceTypeReg
 	return o.ApplyT(func(v LookupResourceTypeRegistrationResult) ResourceTypeRegistrationResponseProperties {
 		return v.Properties
 	}).(ResourceTypeRegistrationResponsePropertiesOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupResourceTypeRegistrationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupResourceTypeRegistrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

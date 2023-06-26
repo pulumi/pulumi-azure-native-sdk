@@ -11,7 +11,7 @@ import (
 )
 
 // Get a KPack builder.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2022-12-01.
 func LookupBuildServiceBuilder(ctx *pulumi.Context, args *LookupBuildServiceBuilderArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceBuilderResult, error) {
 	var rv LookupBuildServiceBuilderResult
 	err := ctx.Invoke("azure-native:appplatform:getBuildServiceBuilder", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 )
 
 // Spring Cloud Gateway resource
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2022-01-01-preview
 type Gateway struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +44,9 @@ func NewGateway(ctx *pulumi.Context,
 	if args.Properties != nil {
 		args.Properties = args.Properties.ToGatewayPropertiesPtrOutput().ApplyT(func(v *GatewayProperties) *GatewayProperties { return v.Defaults() }).(GatewayPropertiesPtrOutput)
 	}
+	if args.Sku != nil {
+		args.Sku = args.Sku.ToSkuPtrOutput().ApplyT(func(v *Sku) *Sku { return v.Defaults() }).(SkuPtrOutput)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:appplatform/v20220101preview:Gateway"),
@@ -65,6 +68,12 @@ func NewGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:Gateway"),
 		},
 	})
 	opts = append(opts, aliases)

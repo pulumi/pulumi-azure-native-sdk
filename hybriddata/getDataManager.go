@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified data manager resource.
-// API Version: 2019-06-01.
+// Azure REST API version: 2019-06-01.
 func LookupDataManager(ctx *pulumi.Context, args *LookupDataManagerArgs, opts ...pulumi.InvokeOption) (*LookupDataManagerResult, error) {
 	var rv LookupDataManagerResult
 	err := ctx.Invoke("azure-native:hybriddata:getDataManager", args, &rv, opts...)

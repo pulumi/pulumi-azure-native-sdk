@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure SQL Database sync member.
-//
-// Deprecated: azure-native:sql/v20211101:SyncMember is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:SyncMember to guarantee forwards compatibility.
 type SyncMember struct {
 	pulumi.CustomResourceState
 
@@ -103,6 +101,9 @@ func NewSyncMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:SyncMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:SyncMember"),
 		},
 	})
 	opts = append(opts, aliases)

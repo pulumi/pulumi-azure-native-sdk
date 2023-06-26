@@ -12,8 +12,6 @@ import (
 )
 
 // Storage resource payload.
-//
-// Deprecated: azure-native:appplatform/v20221201:Storage is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Storage to guarantee forwards compatibility.
 type Storage struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +62,12 @@ func NewStorage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:Storage"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:Storage"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:Storage"),
 		},
 	})
 	opts = append(opts, aliases)

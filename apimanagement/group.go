@@ -12,7 +12,7 @@ import (
 )
 
 // Contract details.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01
 type Group struct {
 	pulumi.CustomResourceState
 
@@ -24,9 +24,9 @@ type Group struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// For external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -95,6 +95,9 @@ func NewGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Group"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Group"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Group
@@ -137,7 +140,7 @@ type groupArgs struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Group identifier. Must be unique in the current API Management service instance.
 	GroupId *string `pulumi:"groupId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -155,7 +158,7 @@ type GroupArgs struct {
 	ExternalId pulumi.StringPtrInput
 	// Group identifier. Must be unique in the current API Management service instance.
 	GroupId pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -220,12 +223,12 @@ func (o GroupOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o GroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

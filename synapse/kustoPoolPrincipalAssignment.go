@@ -12,10 +12,12 @@ import (
 )
 
 // Class representing a cluster principal assignment.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2021-06-01-preview. Prior API version in Azure Native 1.x: 2021-04-01-preview
 type KustoPoolPrincipalAssignment struct {
 	pulumi.CustomResourceState
 
+	// The service principal object id in AAD (Azure active directory)
+	AadObjectId pulumi.StringOutput `pulumi:"aadObjectId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name.
@@ -118,7 +120,7 @@ type kustoPoolPrincipalAssignmentArgs struct {
 	Role string `pulumi:"role"`
 	// The tenant id of the principal
 	TenantId *string `pulumi:"tenantId"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -138,7 +140,7 @@ type KustoPoolPrincipalAssignmentArgs struct {
 	Role pulumi.StringInput
 	// The tenant id of the principal
 	TenantId pulumi.StringPtrInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -177,6 +179,11 @@ func (o KustoPoolPrincipalAssignmentOutput) ToKustoPoolPrincipalAssignmentOutput
 
 func (o KustoPoolPrincipalAssignmentOutput) ToKustoPoolPrincipalAssignmentOutputWithContext(ctx context.Context) KustoPoolPrincipalAssignmentOutput {
 	return o
+}
+
+// The service principal object id in AAD (Azure active directory)
+func (o KustoPoolPrincipalAssignmentOutput) AadObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KustoPoolPrincipalAssignment) pulumi.StringOutput { return v.AadObjectId }).(pulumi.StringOutput)
 }
 
 // The name of the resource

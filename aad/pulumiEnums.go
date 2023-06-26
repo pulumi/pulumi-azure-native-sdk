@@ -3,6 +3,14 @@
 
 package aad
 
+// A flag to determine whether or not ChannelBinding is enabled or disabled.
+type ChannelBinding string
+
+const (
+	ChannelBindingEnabled  = ChannelBinding("Enabled")
+	ChannelBindingDisabled = ChannelBinding("Disabled")
+)
+
 // A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
 type ExternalAccess string
 
@@ -33,6 +41,14 @@ type KerberosRc4Encryption string
 const (
 	KerberosRc4EncryptionEnabled  = KerberosRc4Encryption("Enabled")
 	KerberosRc4EncryptionDisabled = KerberosRc4Encryption("Disabled")
+)
+
+// A flag to determine whether or not LdapSigning is enabled or disabled.
+type LdapSigning string
+
+const (
+	LdapSigningEnabled  = LdapSigning("Enabled")
+	LdapSigningDisabled = LdapSigning("Disabled")
 )
 
 // A flag to determine whether or not Secure LDAP is enabled or disabled.
@@ -67,6 +83,18 @@ const (
 	NtlmV1Disabled = NtlmV1("Disabled")
 )
 
+// Status for individual validator after running diagnostics.
+type Status string
+
+const (
+	StatusNone    = Status("None")
+	StatusRunning = Status("Running")
+	StatusOK      = Status("OK")
+	StatusFailure = Status("Failure")
+	StatusWarning = Status("Warning")
+	StatusSkipped = Status("Skipped")
+)
+
 // A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
 type SyncKerberosPasswords string
 
@@ -89,6 +117,14 @@ type SyncOnPremPasswords string
 const (
 	SyncOnPremPasswordsEnabled  = SyncOnPremPasswords("Enabled")
 	SyncOnPremPasswordsDisabled = SyncOnPremPasswords("Disabled")
+)
+
+// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
+type SyncScope string
+
+const (
+	SyncScopeAll       = SyncScope("All")
+	SyncScopeCloudOnly = SyncScope("CloudOnly")
 )
 
 // A flag to determine whether or not TlsV1 is enabled or disabled.

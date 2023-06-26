@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a container on the  Data Box Edge/Gateway device.
-//
-// Deprecated: azure-native:databoxedge/v20220301:Container is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:Container to guarantee forwards compatibility.
 type Container struct {
 	pulumi.CustomResourceState
 

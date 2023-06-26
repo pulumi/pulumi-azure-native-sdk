@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the list of query API keys for the given Azure Cognitive Search service.
-// API Version: 2020-08-01.
+// Azure REST API version: 2022-09-01.
 func ListQueryKeyBySearchService(ctx *pulumi.Context, args *ListQueryKeyBySearchServiceArgs, opts ...pulumi.InvokeOption) (*ListQueryKeyBySearchServiceResult, error) {
 	var rv ListQueryKeyBySearchServiceResult
 	err := ctx.Invoke("azure-native:search:listQueryKeyBySearchService", args, &rv, opts...)

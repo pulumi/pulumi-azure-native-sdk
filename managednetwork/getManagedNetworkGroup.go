@@ -11,7 +11,7 @@ import (
 )
 
 // The Get ManagedNetworkGroups operation gets a Managed Network Group specified by the resource group, Managed Network name, and group name
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func LookupManagedNetworkGroup(ctx *pulumi.Context, args *LookupManagedNetworkGroupArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkGroupResult, error) {
 	var rv LookupManagedNetworkGroupResult
 	err := ctx.Invoke("azure-native:managednetwork:getManagedNetworkGroup", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Lists DNS forwarding ruleset resource IDs attached to a virtual network.
-// API Version: 2020-04-01-preview.
+// Azure REST API version: 2022-07-01.
 func ListDnsForwardingRulesetByVirtualNetwork(ctx *pulumi.Context, args *ListDnsForwardingRulesetByVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*ListDnsForwardingRulesetByVirtualNetworkResult, error) {
 	var rv ListDnsForwardingRulesetByVirtualNetworkResult
 	err := ctx.Invoke("azure-native:network:listDnsForwardingRulesetByVirtualNetwork", args, &rv, opts...)

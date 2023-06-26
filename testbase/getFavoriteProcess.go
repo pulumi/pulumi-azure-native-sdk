@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a favorite process for a Test Base Package.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-04-01-preview.
 func LookupFavoriteProcess(ctx *pulumi.Context, args *LookupFavoriteProcessArgs, opts ...pulumi.InvokeOption) (*LookupFavoriteProcessResult, error) {
 	var rv LookupFavoriteProcessResult
 	err := ctx.Invoke("azure-native:testbase:getFavoriteProcess", args, &rv, opts...)

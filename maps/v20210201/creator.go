@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure resource which represents Maps Creator product and provides ability to manage private location data.
-//
-// Deprecated: azure-native:maps/v20210201:Creator is being removed in the next major version of this provider. Upgrade to at least azure-native:maps/v20211201preview:Creator to guarantee forwards compatibility.
 type Creator struct {
 	pulumi.CustomResourceState
 

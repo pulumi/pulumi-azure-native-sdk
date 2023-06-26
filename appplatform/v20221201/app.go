@@ -12,8 +12,6 @@ import (
 )
 
 // App resource payload
-//
-// Deprecated: azure-native:appplatform/v20221201:App is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:App to guarantee forwards compatibility.
 type App struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +81,12 @@ func NewApp(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:App"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:App"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:App"),
 		},
 	})
 	opts = append(opts, aliases)

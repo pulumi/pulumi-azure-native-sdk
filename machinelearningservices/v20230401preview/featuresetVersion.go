@@ -45,6 +45,15 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	args.FeaturesetVersionProperties = args.FeaturesetVersionProperties.ToFeaturesetVersionTypeOutput().ApplyT(func(v FeaturesetVersionType) FeaturesetVersionType { return *v.Defaults() }).(FeaturesetVersionTypeOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturesetVersion"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource FeaturesetVersion
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20230401preview:FeaturesetVersion", name, args, &resource, opts...)
 	if err != nil {

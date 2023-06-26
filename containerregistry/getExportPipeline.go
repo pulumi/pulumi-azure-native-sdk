@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the export pipeline.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2023-01-01-preview.
 func LookupExportPipeline(ctx *pulumi.Context, args *LookupExportPipelineArgs, opts ...pulumi.InvokeOption) (*LookupExportPipelineResult, error) {
 	var rv LookupExportPipelineResult
 	err := ctx.Invoke("azure-native:containerregistry:getExportPipeline", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupExportPipelineArgs struct {
 	ExportPipelineName string `pulumi:"exportPipelineName"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -70,7 +70,7 @@ type LookupExportPipelineOutputArgs struct {
 	ExportPipelineName pulumi.StringInput `pulumi:"exportPipelineName"`
 	// The name of the container registry.
 	RegistryName pulumi.StringInput `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

@@ -11,8 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// CloudEdgeManagementRole role.
-// API Version: 2020-12-01.
+// The preview of Virtual Machine Cloud Management from the Azure supports deploying and managing VMs on your Azure Stack Edge device from Azure Portal.
+// For more information, refer to: https://docs.microsoft.com/en-us/azure/databox-online/azure-stack-edge-gpu-virtual-machine-overview
+// By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/ for additional details.
+// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01
 type CloudEdgeManagementRole struct {
 	pulumi.CustomResourceState
 
@@ -27,7 +29,7 @@ type CloudEdgeManagementRole struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Role status.
 	RoleStatus pulumi.StringOutput `pulumi:"roleStatus"`
-	// Role configured on ASE resource
+	// Metadata pertaining to creation and last modification of Role
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -224,7 +226,7 @@ func (o CloudEdgeManagementRoleOutput) RoleStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudEdgeManagementRole) pulumi.StringOutput { return v.RoleStatus }).(pulumi.StringOutput)
 }
 
-// Role configured on ASE resource
+// Metadata pertaining to creation and last modification of Role
 func (o CloudEdgeManagementRoleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *CloudEdgeManagementRole) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of the provided volume.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:networkcloud:getVolume", args, &rv, opts...)
@@ -37,7 +37,7 @@ type LookupVolumeResult struct {
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -115,7 +115,7 @@ func (o LookupVolumeResultOutput) ExtendedLocation() ExtendedLocationResponseOut
 	return o.ApplyT(func(v LookupVolumeResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Id }).(pulumi.StringOutput)
 }

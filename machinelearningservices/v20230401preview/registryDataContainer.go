@@ -42,6 +42,18 @@ func NewRegistryDataContainer(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.DataContainerProperties = args.DataContainerProperties.ToDataContainerTypeOutput().ApplyT(func(v DataContainerType) DataContainerType { return *v.Defaults() }).(DataContainerTypeOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:RegistryDataContainer"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource RegistryDataContainer
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20230401preview:RegistryDataContainer", name, args, &resource, opts...)
 	if err != nil {

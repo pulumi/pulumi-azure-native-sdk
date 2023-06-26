@@ -11,7 +11,7 @@ import (
 )
 
 // List service SAS credentials of a specific resource.
-// API Version: 2021-02-01.
+// Azure REST API version: 2022-09-01.
 func ListStorageAccountServiceSAS(ctx *pulumi.Context, args *ListStorageAccountServiceSASArgs, opts ...pulumi.InvokeOption) (*ListStorageAccountServiceSASResult, error) {
 	var rv ListStorageAccountServiceSASResult
 	err := ctx.Invoke("azure-native:storage:listStorageAccountServiceSAS", args, &rv, opts...)

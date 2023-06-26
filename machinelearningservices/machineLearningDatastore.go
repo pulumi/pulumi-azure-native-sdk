@@ -12,7 +12,7 @@ import (
 )
 
 // Machine Learning datastore object wrapped into ARM resource envelope.
-// API Version: 2020-05-01-preview.
+// Azure REST API version: 2020-05-01-preview. Prior API version in Azure Native 1.x: 2020-05-01-preview
 type MachineLearningDatastore struct {
 	pulumi.CustomResourceState
 
@@ -78,6 +78,12 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:MachineLearningDatastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:MachineLearningDatastore"),

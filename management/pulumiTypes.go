@@ -614,6 +614,10 @@ func (o ManagementGroupChildInfoResponseArrayOutput) Index(i pulumi.IntInput) Ma
 
 // The details of a management group.
 type ManagementGroupDetailsResponse struct {
+	// The ancestors of the management group.
+	ManagementGroupAncestors []string `pulumi:"managementGroupAncestors"`
+	// The ancestors of the management group displayed in reversed order, from immediate parent to the root.
+	ManagementGroupAncestorsChain []ManagementGroupPathElementResponse `pulumi:"managementGroupAncestorsChain"`
 	// (Optional) The ID of the parent management group.
 	Parent *ParentGroupInfoResponse `pulumi:"parent"`
 	// The path from the root to the current group.
@@ -639,6 +643,18 @@ func (o ManagementGroupDetailsResponseOutput) ToManagementGroupDetailsResponseOu
 
 func (o ManagementGroupDetailsResponseOutput) ToManagementGroupDetailsResponseOutputWithContext(ctx context.Context) ManagementGroupDetailsResponseOutput {
 	return o
+}
+
+// The ancestors of the management group.
+func (o ManagementGroupDetailsResponseOutput) ManagementGroupAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagementGroupDetailsResponse) []string { return v.ManagementGroupAncestors }).(pulumi.StringArrayOutput)
+}
+
+// The ancestors of the management group displayed in reversed order, from immediate parent to the root.
+func (o ManagementGroupDetailsResponseOutput) ManagementGroupAncestorsChain() ManagementGroupPathElementResponseArrayOutput {
+	return o.ApplyT(func(v ManagementGroupDetailsResponse) []ManagementGroupPathElementResponse {
+		return v.ManagementGroupAncestorsChain
+	}).(ManagementGroupPathElementResponseArrayOutput)
 }
 
 // (Optional) The ID of the parent management group.
@@ -688,6 +704,26 @@ func (o ManagementGroupDetailsResponsePtrOutput) Elem() ManagementGroupDetailsRe
 		var ret ManagementGroupDetailsResponse
 		return ret
 	}).(ManagementGroupDetailsResponseOutput)
+}
+
+// The ancestors of the management group.
+func (o ManagementGroupDetailsResponsePtrOutput) ManagementGroupAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagementGroupDetailsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementGroupAncestors
+	}).(pulumi.StringArrayOutput)
+}
+
+// The ancestors of the management group displayed in reversed order, from immediate parent to the root.
+func (o ManagementGroupDetailsResponsePtrOutput) ManagementGroupAncestorsChain() ManagementGroupPathElementResponseArrayOutput {
+	return o.ApplyT(func(v *ManagementGroupDetailsResponse) []ManagementGroupPathElementResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementGroupAncestorsChain
+	}).(ManagementGroupPathElementResponseArrayOutput)
 }
 
 // (Optional) The ID of the parent management group.

@@ -39,14 +39,16 @@ type Server struct {
 	MinorVersion pulumi.StringOutput `pulumi:"minorVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Network properties of a server.
+	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 	Network NetworkResponsePtrOutput `pulumi:"network"`
 	// Replicas allowed for a server.
-	ReplicaCapacity pulumi.IntPtrOutput `pulumi:"replicaCapacity"`
+	ReplicaCapacity pulumi.IntOutput `pulumi:"replicaCapacity"`
 	// Replication role of the server
 	ReplicationRole pulumi.StringPtrOutput `pulumi:"replicationRole"`
 	// The SKU (pricing tier) of the server.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+	SourceServerResourceId pulumi.StringPtrOutput `pulumi:"sourceServerResourceId"`
 	// A state of a server that is visible to user.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Storage properties of a server.
@@ -86,10 +88,10 @@ func NewServer(ctx *pulumi.Context,
 	if args.MaintenanceWindow != nil {
 		args.MaintenanceWindow = args.MaintenanceWindow.ToMaintenanceWindowPtrOutput().ApplyT(func(v *MaintenanceWindow) *MaintenanceWindow { return v.Defaults() }).(MaintenanceWindowPtrOutput)
 	}
-	if args.Network != nil {
-		args.Network = args.Network.ToNetworkPtrOutput().ApplyT(func(v *Network) *Network { return v.Defaults() }).(NetworkPtrOutput)
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Server"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:Server"),
 		},
@@ -113,6 +115,9 @@ func NewServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20220308preview:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:Server"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -170,12 +175,10 @@ type serverArgs struct {
 	Location *string `pulumi:"location"`
 	// Maintenance window properties of a server.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
-	// Network properties of a server.
+	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 	Network *Network `pulumi:"network"`
 	// Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore'.
 	PointInTimeUTC *string `pulumi:"pointInTimeUTC"`
-	// Replicas allowed for a server.
-	ReplicaCapacity *int `pulumi:"replicaCapacity"`
 	// Replication role of the server
 	ReplicationRole *string `pulumi:"replicationRole"`
 	// The name of the resource group. The name is case insensitive.
@@ -184,7 +187,7 @@ type serverArgs struct {
 	ServerName *string `pulumi:"serverName"`
 	// The SKU (pricing tier) of the server.
 	Sku *Sku `pulumi:"sku"`
-	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'.
+	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
 	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
 	// Storage properties of a server.
 	Storage *Storage `pulumi:"storage"`
@@ -218,12 +221,10 @@ type ServerArgs struct {
 	Location pulumi.StringPtrInput
 	// Maintenance window properties of a server.
 	MaintenanceWindow MaintenanceWindowPtrInput
-	// Network properties of a server.
+	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 	Network NetworkPtrInput
 	// Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore'.
 	PointInTimeUTC pulumi.StringPtrInput
-	// Replicas allowed for a server.
-	ReplicaCapacity pulumi.IntPtrInput
 	// Replication role of the server
 	ReplicationRole pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -232,7 +233,7 @@ type ServerArgs struct {
 	ServerName pulumi.StringPtrInput
 	// The SKU (pricing tier) of the server.
 	Sku SkuPtrInput
-	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'.
+	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
 	SourceServerResourceId pulumi.StringPtrInput
 	// Storage properties of a server.
 	Storage StoragePtrInput
@@ -339,14 +340,14 @@ func (o ServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network properties of a server.
+// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 func (o ServerOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v *Server) NetworkResponsePtrOutput { return v.Network }).(NetworkResponsePtrOutput)
 }
 
 // Replicas allowed for a server.
-func (o ServerOutput) ReplicaCapacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Server) pulumi.IntPtrOutput { return v.ReplicaCapacity }).(pulumi.IntPtrOutput)
+func (o ServerOutput) ReplicaCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *Server) pulumi.IntOutput { return v.ReplicaCapacity }).(pulumi.IntOutput)
 }
 
 // Replication role of the server
@@ -357,6 +358,11 @@ func (o ServerOutput) ReplicationRole() pulumi.StringPtrOutput {
 // The SKU (pricing tier) of the server.
 func (o ServerOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *Server) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+}
+
+// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+func (o ServerOutput) SourceServerResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.SourceServerResourceId }).(pulumi.StringPtrOutput)
 }
 
 // A state of a server that is visible to user.

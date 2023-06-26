@@ -12,7 +12,7 @@ import (
 )
 
 // NamedValue details.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01
 type NamedValue struct {
 	pulumi.CustomResourceState
 
@@ -20,13 +20,13 @@ type NamedValue struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// KeyVault location details of the namedValue.
 	KeyVault KeyVaultContractPropertiesResponsePtrOutput `pulumi:"keyVault"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Determines whether the value is a secret and should be encrypted or not. Default value is false.
 	Secret pulumi.BoolPtrOutput `pulumi:"secret"`
 	// Optional tags that when provided can be used to filter the NamedValue list.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
 	Value pulumi.StringPtrOutput `pulumi:"value"`
@@ -79,6 +79,9 @@ func NewNamedValue(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:NamedValue"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:NamedValue"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NamedValue
@@ -119,7 +122,7 @@ type namedValueArgs struct {
 	KeyVault *KeyVaultContractCreateProperties `pulumi:"keyVault"`
 	// Identifier of the NamedValue.
 	NamedValueId *string `pulumi:"namedValueId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Determines whether the value is a secret and should be encrypted or not. Default value is false.
 	Secret *bool `pulumi:"secret"`
@@ -139,7 +142,7 @@ type NamedValueArgs struct {
 	KeyVault KeyVaultContractCreatePropertiesPtrInput
 	// Identifier of the NamedValue.
 	NamedValueId pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Determines whether the value is a secret and should be encrypted or not. Default value is false.
 	Secret pulumi.BoolPtrInput
@@ -198,7 +201,7 @@ func (o NamedValueOutput) KeyVault() KeyVaultContractPropertiesResponsePtrOutput
 	return o.ApplyT(func(v *NamedValue) KeyVaultContractPropertiesResponsePtrOutput { return v.KeyVault }).(KeyVaultContractPropertiesResponsePtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o NamedValueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NamedValue) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -213,7 +216,7 @@ func (o NamedValueOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NamedValue) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o NamedValueOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NamedValue) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

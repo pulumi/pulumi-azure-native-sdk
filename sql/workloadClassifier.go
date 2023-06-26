@@ -12,7 +12,7 @@ import (
 )
 
 // Workload classifier operations for a data warehouse
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type WorkloadClassifier struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +92,9 @@ func NewWorkloadClassifier(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:WorkloadClassifier"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:WorkloadClassifier"),
 		},
 	})
 	opts = append(opts, aliases)

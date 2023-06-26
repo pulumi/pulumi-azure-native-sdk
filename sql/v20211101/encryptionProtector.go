@@ -12,8 +12,6 @@ import (
 )
 
 // The server encryption protector.
-//
-// Deprecated: azure-native:sql/v20211101:EncryptionProtector is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:EncryptionProtector to guarantee forwards compatibility.
 type EncryptionProtector struct {
 	pulumi.CustomResourceState
 
@@ -91,6 +89,9 @@ func NewEncryptionProtector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:EncryptionProtector"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:EncryptionProtector"),
 		},
 	})
 	opts = append(opts, aliases)

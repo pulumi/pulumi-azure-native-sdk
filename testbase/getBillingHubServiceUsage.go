@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-04-01-preview.
 func GetBillingHubServiceUsage(ctx *pulumi.Context, args *GetBillingHubServiceUsageArgs, opts ...pulumi.InvokeOption) (*GetBillingHubServiceUsageResult, error) {
 	var rv GetBillingHubServiceUsageResult
 	err := ctx.Invoke("azure-native:testbase:getBillingHubServiceUsage", args, &rv, opts...)

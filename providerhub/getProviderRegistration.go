@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the provider registration details.
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview.
 func LookupProviderRegistration(ctx *pulumi.Context, args *LookupProviderRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupProviderRegistrationResult, error) {
 	var rv LookupProviderRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub:getProviderRegistration", args, &rv, opts...)
@@ -32,6 +32,8 @@ type LookupProviderRegistrationResult struct {
 	// The name of the resource
 	Name       string                                 `pulumi:"name"`
 	Properties ProviderRegistrationResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -84,6 +86,11 @@ func (o LookupProviderRegistrationResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupProviderRegistrationResultOutput) Properties() ProviderRegistrationResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupProviderRegistrationResult) ProviderRegistrationResponseProperties { return v.Properties }).(ProviderRegistrationResponsePropertiesOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupProviderRegistrationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupProviderRegistrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

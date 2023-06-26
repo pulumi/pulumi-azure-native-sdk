@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the named value specified by its identifier.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func LookupNamedValue(ctx *pulumi.Context, args *LookupNamedValueArgs, opts ...pulumi.InvokeOption) (*LookupNamedValueResult, error) {
 	var rv LookupNamedValueResult
 	err := ctx.Invoke("azure-native:apimanagement:getNamedValue", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupNamedValue(ctx *pulumi.Context, args *LookupNamedValueArgs, opts ...p
 type LookupNamedValueArgs struct {
 	// Identifier of the NamedValue.
 	NamedValueId string `pulumi:"namedValueId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -34,17 +34,17 @@ type LookupNamedValueArgs struct {
 type LookupNamedValueResult struct {
 	// Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.
 	DisplayName string `pulumi:"displayName"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// KeyVault location details of the namedValue.
 	KeyVault *KeyVaultContractPropertiesResponse `pulumi:"keyVault"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Determines whether the value is a secret and should be encrypted or not. Default value is false.
 	Secret *bool `pulumi:"secret"`
 	// Optional tags that when provided can be used to filter the NamedValue list.
 	Tags []string `pulumi:"tags"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
 	Value *string `pulumi:"value"`
@@ -66,7 +66,7 @@ func LookupNamedValueOutput(ctx *pulumi.Context, args LookupNamedValueOutputArgs
 type LookupNamedValueOutputArgs struct {
 	// Identifier of the NamedValue.
 	NamedValueId pulumi.StringInput `pulumi:"namedValueId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -96,7 +96,7 @@ func (o LookupNamedValueResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNamedValueResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -106,7 +106,7 @@ func (o LookupNamedValueResultOutput) KeyVault() KeyVaultContractPropertiesRespo
 	return o.ApplyT(func(v LookupNamedValueResult) *KeyVaultContractPropertiesResponse { return v.KeyVault }).(KeyVaultContractPropertiesResponsePtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupNamedValueResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -121,7 +121,7 @@ func (o LookupNamedValueResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNamedValueResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedValueResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Azure Firewall.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupAzureFirewall(ctx *pulumi.Context, args *LookupAzureFirewallArgs, opts ...pulumi.InvokeOption) (*LookupAzureFirewallResult, error) {
 	var rv LookupAzureFirewallResult
 	err := ctx.Invoke("azure-native:network:getAzureFirewall", args, &rv, opts...)

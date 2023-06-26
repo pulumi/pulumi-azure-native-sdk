@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a database.
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-12-29.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
 	var rv LookupReadWriteDatabaseResult
 	err := ctx.Invoke("azure-native:kusto:getReadWriteDatabase", args, &rv, opts...)

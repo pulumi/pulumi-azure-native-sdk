@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the user specified by its identifier.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("azure-native:apimanagement:getUser", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 }
 
 type LookupUserArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -38,13 +38,13 @@ type LookupUserResult struct {
 	FirstName *string `pulumi:"firstName"`
 	// Collection of groups user is part of.
 	Groups []GroupContractPropertiesResponse `pulumi:"groups"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Collection of user identities.
 	Identities []UserIdentityContractResponse `pulumi:"identities"`
 	// Last name.
 	LastName *string `pulumi:"lastName"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Optional note about a user set by the administrator.
 	Note *string `pulumi:"note"`
@@ -52,7 +52,7 @@ type LookupUserResult struct {
 	RegistrationDate *string `pulumi:"registrationDate"`
 	// Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
 	State *string `pulumi:"state"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -83,7 +83,7 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 }
 
 type LookupUserOutputArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -125,7 +125,7 @@ func (o LookupUserResultOutput) Groups() GroupContractPropertiesResponseArrayOut
 	return o.ApplyT(func(v LookupUserResult) []GroupContractPropertiesResponse { return v.Groups }).(GroupContractPropertiesResponseArrayOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -140,7 +140,7 @@ func (o LookupUserResultOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -160,7 +160,7 @@ func (o LookupUserResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Type }).(pulumi.StringOutput)
 }

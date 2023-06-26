@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a comment for a given incident.
-//
-// Deprecated: azure-native:securityinsights/v20230201:IncidentComment is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IncidentComment to guarantee forwards compatibility.
 func LookupIncidentComment(ctx *pulumi.Context, args *LookupIncidentCommentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentCommentResult, error) {
 	var rv LookupIncidentCommentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201:getIncidentComment", args, &rv, opts...)

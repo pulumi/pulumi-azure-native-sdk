@@ -11,7 +11,7 @@ import (
 )
 
 // Migrate Project REST Resource.
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview.
 func LookupMigrateProject(ctx *pulumi.Context, args *LookupMigrateProjectArgs, opts ...pulumi.InvokeOption) (*LookupMigrateProjectResult, error) {
 	var rv LookupMigrateProjectResult
 	err := ctx.Invoke("azure-native:migrate:getMigrateProject", args, &rv, opts...)

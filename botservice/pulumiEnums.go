@@ -3,38 +3,6 @@
 
 package botservice
 
-// The current state of the Enterprise Channel Node.
-type EnterpriseChannelNodeState string
-
-const (
-	EnterpriseChannelNodeStateCreating     = EnterpriseChannelNodeState("Creating")
-	EnterpriseChannelNodeStateCreateFailed = EnterpriseChannelNodeState("CreateFailed")
-	EnterpriseChannelNodeStateStarted      = EnterpriseChannelNodeState("Started")
-	EnterpriseChannelNodeStateStarting     = EnterpriseChannelNodeState("Starting")
-	EnterpriseChannelNodeStateStartFailed  = EnterpriseChannelNodeState("StartFailed")
-	EnterpriseChannelNodeStateStopped      = EnterpriseChannelNodeState("Stopped")
-	EnterpriseChannelNodeStateStopping     = EnterpriseChannelNodeState("Stopping")
-	EnterpriseChannelNodeStateStopFailed   = EnterpriseChannelNodeState("StopFailed")
-	EnterpriseChannelNodeStateDeleting     = EnterpriseChannelNodeState("Deleting")
-	EnterpriseChannelNodeStateDeleteFailed = EnterpriseChannelNodeState("DeleteFailed")
-)
-
-// The current state of the Enterprise Channel.
-type EnterpriseChannelStateEnum string
-
-const (
-	EnterpriseChannelStateEnumCreating     = EnterpriseChannelStateEnum("Creating")
-	EnterpriseChannelStateEnumCreateFailed = EnterpriseChannelStateEnum("CreateFailed")
-	EnterpriseChannelStateEnumStarted      = EnterpriseChannelStateEnum("Started")
-	EnterpriseChannelStateEnumStarting     = EnterpriseChannelStateEnum("Starting")
-	EnterpriseChannelStateEnumStartFailed  = EnterpriseChannelStateEnum("StartFailed")
-	EnterpriseChannelStateEnumStopped      = EnterpriseChannelStateEnum("Stopped")
-	EnterpriseChannelStateEnumStopping     = EnterpriseChannelStateEnum("Stopping")
-	EnterpriseChannelStateEnumStopFailed   = EnterpriseChannelStateEnum("StopFailed")
-	EnterpriseChannelStateEnumDeleting     = EnterpriseChannelStateEnum("Deleting")
-	EnterpriseChannelStateEnumDeleteFailed = EnterpriseChannelStateEnum("DeleteFailed")
-)
-
 // Required. Gets or sets the Kind of the resource.
 type Kind string
 
@@ -43,6 +11,7 @@ const (
 	KindDesigner = Kind("designer")
 	KindBot      = Kind("bot")
 	KindFunction = Kind("function")
+	KindAzurebot = Kind("azurebot")
 )
 
 // Microsoft App Type for the bot

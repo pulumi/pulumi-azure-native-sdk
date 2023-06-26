@@ -11,7 +11,7 @@ import (
 )
 
 // List disk images available for custom image creation.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func ListLabVhds(ctx *pulumi.Context, args *ListLabVhdsArgs, opts ...pulumi.InvokeOption) (*ListLabVhdsResult, error) {
 	var rv ListLabVhdsResult
 	err := ctx.Invoke("azure-native:devtestlab:listLabVhds", args, &rv, opts...)

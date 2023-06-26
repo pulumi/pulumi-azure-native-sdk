@@ -11,8 +11,6 @@ import (
 )
 
 // Get the Spring Cloud Gateway and its properties.
-//
-// Deprecated: azure-native:appplatform/v20221201:Gateway is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Gateway to guarantee forwards compatibility.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	var rv LookupGatewayResult
 	err := ctx.Invoke("azure-native:appplatform/v20221201:getGateway", args, &rv, opts...)

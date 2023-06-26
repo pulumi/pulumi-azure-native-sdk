@@ -48,6 +48,9 @@ func NewProvisionedCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice:ProvisionedCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:ProvisionedCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ProvisionedCluster

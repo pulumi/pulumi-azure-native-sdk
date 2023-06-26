@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-04-01-preview.
 func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHubServiceFreeHourBalanceArgs, opts ...pulumi.InvokeOption) (*GetBillingHubServiceFreeHourBalanceResult, error) {
 	var rv GetBillingHubServiceFreeHourBalanceResult
 	err := ctx.Invoke("azure-native:testbase:getBillingHubServiceFreeHourBalance", args, &rv, opts...)

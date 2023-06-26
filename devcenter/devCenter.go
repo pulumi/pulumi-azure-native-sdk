@@ -12,10 +12,12 @@ import (
 )
 
 // Represents a devcenter resource.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview
 type DevCenter struct {
 	pulumi.CustomResourceState
 
+	// The URI of the Dev Center.
+	DevCenterUri pulumi.StringOutput `pulumi:"devCenterUri"`
 	// Managed identity properties
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -54,6 +56,12 @@ func NewDevCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:DevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:DevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:DevCenter"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -95,7 +103,7 @@ type devCenterArgs struct {
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -109,7 +117,7 @@ type DevCenterArgs struct {
 	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -150,6 +158,11 @@ func (o DevCenterOutput) ToDevCenterOutput() DevCenterOutput {
 
 func (o DevCenterOutput) ToDevCenterOutputWithContext(ctx context.Context) DevCenterOutput {
 	return o
+}
+
+// The URI of the Dev Center.
+func (o DevCenterOutput) DevCenterUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevCenter) pulumi.StringOutput { return v.DevCenterUri }).(pulumi.StringOutput)
 }
 
 // Managed identity properties

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get site extension information by its ID for a web site, or a deployment slot.
-// API Version: 2020-12-01.
+// Description for Get site extension information by its ID for a web site, or a deployment slot.
+// Azure REST API version: 2022-09-01.
 func LookupWebAppSiteExtension(ctx *pulumi.Context, args *LookupWebAppSiteExtensionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteExtensionResult, error) {
 	var rv LookupWebAppSiteExtensionResult
 	err := ctx.Invoke("azure-native:web:getWebAppSiteExtension", args, &rv, opts...)

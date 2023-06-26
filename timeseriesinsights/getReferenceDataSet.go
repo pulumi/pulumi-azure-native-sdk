@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the reference data set with the specified name in the specified environment.
-// API Version: 2020-05-15.
+// Azure REST API version: 2020-05-15.
 func LookupReferenceDataSet(ctx *pulumi.Context, args *LookupReferenceDataSetArgs, opts ...pulumi.InvokeOption) (*LookupReferenceDataSetResult, error) {
 	var rv LookupReferenceDataSetResult
 	err := ctx.Invoke("azure-native:timeseriesinsights:getReferenceDataSet", args, &rv, opts...)

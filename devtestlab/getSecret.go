@@ -11,7 +11,7 @@ import (
 )
 
 // Get secret.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
 	var rv LookupSecretResult
 	err := ctx.Invoke("azure-native:devtestlab:getSecret", args, &rv, opts...)

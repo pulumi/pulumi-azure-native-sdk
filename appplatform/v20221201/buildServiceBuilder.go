@@ -12,8 +12,6 @@ import (
 )
 
 // KPack Builder resource
-//
-// Deprecated: azure-native:appplatform/v20221201:BuildServiceBuilder is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildServiceBuilder to guarantee forwards compatibility.
 type BuildServiceBuilder struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +65,12 @@ func NewBuildServiceBuilder(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:BuildServiceBuilder"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:BuildServiceBuilder"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:BuildServiceBuilder"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a label in the given workspace.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2023-04-01-preview.
 func LookupLabelByWorkspace(ctx *pulumi.Context, args *LookupLabelByWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLabelByWorkspaceResult, error) {
 	var rv LookupLabelByWorkspaceResult
 	err := ctx.Invoke("azure-native:easm:getLabelByWorkspace", args, &rv, opts...)

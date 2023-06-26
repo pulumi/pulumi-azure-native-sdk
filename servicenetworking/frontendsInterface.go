@@ -12,22 +12,18 @@ import (
 )
 
 // Frontend Subresource of Traffic Controller.
-// API Version: 2022-10-01-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-10-01-preview
 type FrontendsInterface struct {
 	pulumi.CustomResourceState
 
-	// Frontend IP Address Version (Optional).
-	IpAddressVersion pulumi.StringPtrOutput `pulumi:"ipAddressVersion"`
+	// The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
+	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Frontend Mode (Optional).
-	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// test doc
+	// Provisioning State of Traffic Controller Frontend Resource
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Frontend Public IP Address (Optional).
-	PublicIPAddress FrontendPropertiesIPAddressResponsePtrOutput `pulumi:"publicIPAddress"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -52,6 +48,9 @@ func NewFrontendsInterface(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20221001preview:FrontendsInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:FrontendsInterface"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -89,14 +88,8 @@ func (FrontendsInterfaceState) ElementType() reflect.Type {
 type frontendsInterfaceArgs struct {
 	// Frontends
 	FrontendName *string `pulumi:"frontendName"`
-	// Frontend IP Address Version (Optional).
-	IpAddressVersion *FrontendIPAddressVersion `pulumi:"ipAddressVersion"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Frontend Mode (Optional).
-	Mode *FrontendMode `pulumi:"mode"`
-	// Frontend Public IP Address (Optional).
-	PublicIPAddress *FrontendPropertiesIPAddress `pulumi:"publicIPAddress"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -109,14 +102,8 @@ type frontendsInterfaceArgs struct {
 type FrontendsInterfaceArgs struct {
 	// Frontends
 	FrontendName pulumi.StringPtrInput
-	// Frontend IP Address Version (Optional).
-	IpAddressVersion FrontendIPAddressVersionPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Frontend Mode (Optional).
-	Mode FrontendModePtrInput
-	// Frontend Public IP Address (Optional).
-	PublicIPAddress FrontendPropertiesIPAddressPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -162,9 +149,9 @@ func (o FrontendsInterfaceOutput) ToFrontendsInterfaceOutputWithContext(ctx cont
 	return o
 }
 
-// Frontend IP Address Version (Optional).
-func (o FrontendsInterfaceOutput) IpAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FrontendsInterface) pulumi.StringPtrOutput { return v.IpAddressVersion }).(pulumi.StringPtrOutput)
+// The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
+func (o FrontendsInterfaceOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v *FrontendsInterface) pulumi.StringOutput { return v.Fqdn }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives
@@ -172,24 +159,14 @@ func (o FrontendsInterfaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FrontendsInterface) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Frontend Mode (Optional).
-func (o FrontendsInterfaceOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FrontendsInterface) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
 // The name of the resource
 func (o FrontendsInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FrontendsInterface) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// test doc
+// Provisioning State of Traffic Controller Frontend Resource
 func (o FrontendsInterfaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *FrontendsInterface) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Frontend Public IP Address (Optional).
-func (o FrontendsInterfaceOutput) PublicIPAddress() FrontendPropertiesIPAddressResponsePtrOutput {
-	return o.ApplyT(func(v *FrontendsInterface) FrontendPropertiesIPAddressResponsePtrOutput { return v.PublicIPAddress }).(FrontendPropertiesIPAddressResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

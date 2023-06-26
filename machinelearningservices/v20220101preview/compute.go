@@ -123,6 +123,12 @@ func NewCompute(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:Compute"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:Compute"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Compute"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:Compute"),
 		},
 	})

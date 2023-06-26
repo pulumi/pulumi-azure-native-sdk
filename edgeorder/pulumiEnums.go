@@ -15,6 +15,15 @@ const (
 	AddressTypeCommercial = AddressType("Commercial")
 )
 
+type ChildConfigurationType string
+
+const (
+	// Child configuration is a device configuration.
+	ChildConfigurationTypeDeviceConfiguration = ChildConfigurationType("DeviceConfiguration")
+	// Child configuration is an additional configuration.
+	ChildConfigurationTypeAdditionalConfiguration = ChildConfigurationType("AdditionalConfiguration")
+)
+
 // Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
 type DoubleEncryptionStatus string
 
@@ -45,13 +54,23 @@ const (
 	OrderItemTypeRental = OrderItemType("Rental")
 )
 
+// Defines the mode of the Order item.
+type OrderMode string
+
+const (
+	// Default Order mode.
+	OrderModeDefault = OrderMode("Default")
+	// Mode in which the Order will not be fulfilled.
+	OrderModeDoNotFulfill = OrderMode("DoNotFulfill")
+)
+
 // Type of product filter.
 type SupportedFilterTypes string
 
 const (
-	// Ship to country
+	// Ship to country.
 	SupportedFilterTypesShipToCountries = SupportedFilterTypes("ShipToCountries")
-	// Double encryption status
+	// Double encryption status.
 	SupportedFilterTypesDoubleEncryptionStatus = SupportedFilterTypes("DoubleEncryptionStatus")
 )
 

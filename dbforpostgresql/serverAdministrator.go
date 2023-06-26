@@ -12,7 +12,7 @@ import (
 )
 
 // Represents a and external administrator to be created.
-// API Version: 2017-12-01.
+// Azure REST API version: 2017-12-01-preview. Prior API version in Azure Native 1.x: 2017-12-01
 type ServerAdministrator struct {
 	pulumi.CustomResourceState
 
@@ -100,7 +100,7 @@ type serverAdministratorArgs struct {
 	AdministratorType string `pulumi:"administratorType"`
 	// The server administrator login account name.
 	Login string `pulumi:"login"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
@@ -116,7 +116,7 @@ type ServerAdministratorArgs struct {
 	AdministratorType pulumi.StringInput
 	// The server administrator login account name.
 	Login pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringInput

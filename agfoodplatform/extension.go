@@ -12,10 +12,12 @@ import (
 )
 
 // Extension resource.
-// API Version: 2020-05-12-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2020-05-12-preview
 type Extension struct {
 	pulumi.CustomResourceState
 
+	// Additional Api Properties.
+	AdditionalApiProperties ApiPropertiesResponseMapOutput `pulumi:"additionalApiProperties"`
 	// The ETag value to implement optimistic concurrency.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// Extension api docs link.
@@ -30,7 +32,7 @@ type Extension struct {
 	InstalledExtensionVersion pulumi.StringOutput `pulumi:"installedExtensionVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -43,8 +45,8 @@ func NewExtension(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FarmBeatsResourceName == nil {
-		return nil, errors.New("invalid value for required argument 'FarmBeatsResourceName'")
+	if args.DataManagerForAgricultureResourceName == nil {
+		return nil, errors.New("invalid value for required argument 'DataManagerForAgricultureResourceName'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -55,6 +57,9 @@ func NewExtension(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:Extension"),
+		},
+		{
+			Type: pulumi.String("azure-native:agfoodplatform/v20230601preview:Extension"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -90,20 +95,28 @@ func (ExtensionState) ElementType() reflect.Type {
 }
 
 type extensionArgs struct {
+	// Additional Api Properties.
+	AdditionalApiProperties map[string]ApiProperties `pulumi:"additionalApiProperties"`
+	// DataManagerForAgriculture resource name.
+	DataManagerForAgricultureResourceName string `pulumi:"dataManagerForAgricultureResourceName"`
 	// Id of extension resource.
 	ExtensionId *string `pulumi:"extensionId"`
-	// FarmBeats resource name.
-	FarmBeatsResourceName string `pulumi:"farmBeatsResourceName"`
+	// Extension Version.
+	ExtensionVersion *string `pulumi:"extensionVersion"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The set of arguments for constructing a Extension resource.
 type ExtensionArgs struct {
+	// Additional Api Properties.
+	AdditionalApiProperties ApiPropertiesMapInput
+	// DataManagerForAgriculture resource name.
+	DataManagerForAgricultureResourceName pulumi.StringInput
 	// Id of extension resource.
 	ExtensionId pulumi.StringPtrInput
-	// FarmBeats resource name.
-	FarmBeatsResourceName pulumi.StringInput
+	// Extension Version.
+	ExtensionVersion pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -145,6 +158,11 @@ func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) Exten
 	return o
 }
 
+// Additional Api Properties.
+func (o ExtensionOutput) AdditionalApiProperties() ApiPropertiesResponseMapOutput {
+	return o.ApplyT(func(v *Extension) ApiPropertiesResponseMapOutput { return v.AdditionalApiProperties }).(ApiPropertiesResponseMapOutput)
+}
+
 // The ETag value to implement optimistic concurrency.
 func (o ExtensionOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
@@ -180,7 +198,7 @@ func (o ExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ExtensionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Extension) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

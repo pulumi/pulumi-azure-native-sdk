@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a server communication link.
-// API Version: 2014-04-01.
+// Azure REST API version: 2014-04-01.
 func LookupServerCommunicationLink(ctx *pulumi.Context, args *LookupServerCommunicationLinkArgs, opts ...pulumi.InvokeOption) (*LookupServerCommunicationLinkResult, error) {
 	var rv LookupServerCommunicationLinkResult
 	err := ctx.Invoke("azure-native:sql:getServerCommunicationLink", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 )
 
 // Network security default user rule.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type DefaultUserRule struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +24,6 @@ type DefaultUserRule struct {
 	Destinations AddressPrefixItemResponseArrayOutput `pulumi:"destinations"`
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// A friendly name for the rule.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Default rule flag.
@@ -119,7 +117,7 @@ func (DefaultUserRuleState) ElementType() reflect.Type {
 }
 
 type defaultUserRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// Default rule flag.
 	Flag *string `pulumi:"flag"`
@@ -138,7 +136,7 @@ type defaultUserRuleArgs struct {
 
 // The set of arguments for constructing a DefaultUserRule resource.
 type DefaultUserRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput
 	// Default rule flag.
 	Flag pulumi.StringPtrInput
@@ -210,11 +208,6 @@ func (o DefaultUserRuleOutput) Destinations() AddressPrefixItemResponseArrayOutp
 // Indicates if the traffic matched against the rule in inbound or outbound.
 func (o DefaultUserRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultUserRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
-}
-
-// A friendly name for the rule.
-func (o DefaultUserRuleOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *DefaultUserRule) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

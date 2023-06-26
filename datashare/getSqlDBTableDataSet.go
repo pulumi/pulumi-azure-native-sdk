@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSet in a share
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupSqlDBTableDataSet(ctx *pulumi.Context, args *LookupSqlDBTableDataSetArgs, opts ...pulumi.InvokeOption) (*LookupSqlDBTableDataSetResult, error) {
 	var rv LookupSqlDBTableDataSetResult
 	err := ctx.Invoke("azure-native:datashare:getSqlDBTableDataSet", args, &rv, opts...)

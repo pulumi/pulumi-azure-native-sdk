@@ -11,7 +11,7 @@ import (
 )
 
 // Given a list of volume containers to be failed over from a source device, this method returns the eligibility result, as a failover target, for all devices under that resource.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func ListDeviceFailoverTars(ctx *pulumi.Context, args *ListDeviceFailoverTarsArgs, opts ...pulumi.InvokeOption) (*ListDeviceFailoverTarsResult, error) {
 	var rv ListDeviceFailoverTarsResult
 	err := ctx.Invoke("azure-native:storsimple:listDeviceFailoverTars", args, &rv, opts...)

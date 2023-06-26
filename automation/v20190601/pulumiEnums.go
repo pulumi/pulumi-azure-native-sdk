@@ -10,14 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets or sets the content source type.
-type ContentSourceType string
-
-const (
-	ContentSourceTypeEmbeddedContent = ContentSourceType("embeddedContent")
-	ContentSourceTypeUri             = ContentSourceType("uri")
-)
-
 // Update classifications included in the software update configuration.
 type LinuxUpdateClasses string
 
@@ -193,20 +185,6 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
 }
 
-// Gets or sets the type of the runbook.
-type RunbookTypeEnum string
-
-const (
-	RunbookTypeEnumScript                  = RunbookTypeEnum("Script")
-	RunbookTypeEnumGraph                   = RunbookTypeEnum("Graph")
-	RunbookTypeEnumPowerShellWorkflow      = RunbookTypeEnum("PowerShellWorkflow")
-	RunbookTypeEnumPowerShell              = RunbookTypeEnum("PowerShell")
-	RunbookTypeEnumGraphPowerShellWorkflow = RunbookTypeEnum("GraphPowerShellWorkflow")
-	RunbookTypeEnumGraphPowerShell         = RunbookTypeEnum("GraphPowerShell")
-	RunbookTypeEnumPython2                 = RunbookTypeEnum("Python2")
-	RunbookTypeEnumPython3                 = RunbookTypeEnum("Python3")
-)
-
 // Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
 type ScheduleDay string
 
@@ -231,23 +209,6 @@ const (
 	ScheduleFrequencyMonth   = ScheduleFrequency("Month")
 	// The minimum allowed interval for Minute schedules is 15 minutes.
 	ScheduleFrequencyMinute = ScheduleFrequency("Minute")
-)
-
-// Gets or sets the SKU name of the account.
-type SkuNameEnum string
-
-const (
-	SkuNameEnumFree  = SkuNameEnum("Free")
-	SkuNameEnumBasic = SkuNameEnum("Basic")
-)
-
-// The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
-type SourceType string
-
-const (
-	SourceTypeVsoGit  = SourceType("VsoGit")
-	SourceTypeVsoTfvc = SourceType("VsoTfvc")
-	SourceTypeGitHub  = SourceType("GitHub")
 )
 
 // Filter VMs by Any or All specified tags.
@@ -414,14 +375,6 @@ func (in *tagOperatorsPtr) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagOperatorsPtrOutput)
 }
-
-// The token type. Must be either PersonalAccessToken or Oauth.
-type TokenType string
-
-const (
-	TokenTypePersonalAccessToken = TokenType("PersonalAccessToken")
-	TokenTypeOauth               = TokenType("Oauth")
-)
 
 // Update classification included in the software update configuration. A comma separated string with required values
 type WindowsUpdateClasses string

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a specific security standard for the requested scope
-// API Version: 2021-08-01-preview.
+// Azure REST API version: 2021-08-01-preview.
 func LookupStandard(ctx *pulumi.Context, args *LookupStandardArgs, opts ...pulumi.InvokeOption) (*LookupStandardResult, error) {
 	var rv LookupStandardResult
 	err := ctx.Invoke("azure-native:security:getStandard", args, &rv, opts...)

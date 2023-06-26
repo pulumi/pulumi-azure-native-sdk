@@ -3535,7 +3535,10 @@ func (o StorageProfileResponsePtrOutput) OsDisk() OsDiskResponsePtrOutput {
 
 // Reference to another sub resource.
 type SubResource struct {
-	// Resource ID.
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 	Id *string `pulumi:"id"`
 }
 
@@ -3552,7 +3555,10 @@ type SubResourceInput interface {
 
 // Reference to another sub resource.
 type SubResourceArgs struct {
-	// Resource ID.
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -3634,7 +3640,10 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
-// Resource ID.
+// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 func (o SubResourceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResource) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -3663,7 +3672,10 @@ func (o SubResourcePtrOutput) Elem() SubResourceOutput {
 	}).(SubResourceOutput)
 }
 
-// Resource ID.
+// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 func (o SubResourcePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubResource) *string {
 		if v == nil {
@@ -3751,6 +3763,67 @@ func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubResourceResponse {
 		return vs[0].([]SubResourceResponse)[vs[1].(int)]
 	}).(SubResourceResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // Describes the uri of a disk.
@@ -3959,6 +4032,7 @@ func init() {
 	pulumi.RegisterOutputType(SubResourceResponseOutput{})
 	pulumi.RegisterOutputType(SubResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskPtrOutput{})
 }

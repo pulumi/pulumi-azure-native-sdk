@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an authorization rule for a NotificationHub by name.
-// API Version: 2017-04-01.
+// Azure REST API version: 2017-04-01.
 func LookupNotificationHubAuthorizationRule(ctx *pulumi.Context, args *LookupNotificationHubAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubAuthorizationRuleResult, error) {
 	var rv LookupNotificationHubAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNotificationHubAuthorizationRule", args, &rv, opts...)

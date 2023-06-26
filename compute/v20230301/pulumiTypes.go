@@ -17382,7 +17382,10 @@ func (o StorageProfileResponsePtrOutput) OsDisk() OSDiskResponsePtrOutput {
 }
 
 type SubResource struct {
-	// Resource Id
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 	Id *string `pulumi:"id"`
 }
 
@@ -17398,7 +17401,10 @@ type SubResourceInput interface {
 }
 
 type SubResourceArgs struct {
-	// Resource Id
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -17504,7 +17510,10 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
-// Resource Id
+// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 func (o SubResourceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResource) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -17533,7 +17542,10 @@ func (o SubResourcePtrOutput) Elem() SubResourceOutput {
 	}).(SubResourceOutput)
 }
 
-// Resource Id
+// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 func (o SubResourcePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubResource) *string {
 		if v == nil {
@@ -20680,7 +20692,7 @@ type VirtualMachineIdentity struct {
 	// The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // VirtualMachineIdentityInput is an input type that accepts VirtualMachineIdentityArgs and VirtualMachineIdentityOutput values.
@@ -20699,7 +20711,7 @@ type VirtualMachineIdentityArgs struct {
 	// The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (VirtualMachineIdentityArgs) ElementType() reflect.Type {
@@ -20786,8 +20798,8 @@ func (o VirtualMachineIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o VirtualMachineIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v VirtualMachineIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o VirtualMachineIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type VirtualMachineIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -20825,13 +20837,13 @@ func (o VirtualMachineIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o VirtualMachineIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *VirtualMachineIdentity) map[string]interface{} {
+func (o VirtualMachineIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the virtual machine.
@@ -24587,7 +24599,7 @@ type VirtualMachineScaleSetIdentity struct {
 	// The type of identity used for the virtual machine scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine scale set.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // VirtualMachineScaleSetIdentityInput is an input type that accepts VirtualMachineScaleSetIdentityArgs and VirtualMachineScaleSetIdentityOutput values.
@@ -24606,7 +24618,7 @@ type VirtualMachineScaleSetIdentityArgs struct {
 	// The type of identity used for the virtual machine scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine scale set.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (VirtualMachineScaleSetIdentityArgs) ElementType() reflect.Type {
@@ -24693,8 +24705,8 @@ func (o VirtualMachineScaleSetIdentityOutput) Type() ResourceIdentityTypePtrOutp
 }
 
 // The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o VirtualMachineScaleSetIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o VirtualMachineScaleSetIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type VirtualMachineScaleSetIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -24732,13 +24744,13 @@ func (o VirtualMachineScaleSetIdentityPtrOutput) Type() ResourceIdentityTypePtrO
 }
 
 // The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o VirtualMachineScaleSetIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetIdentity) map[string]interface{} {
+func (o VirtualMachineScaleSetIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the virtual machine scale set.

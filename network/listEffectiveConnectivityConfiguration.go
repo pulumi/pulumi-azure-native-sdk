@@ -11,7 +11,7 @@ import (
 )
 
 // List all effective connectivity configurations applied on a virtual network.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func ListEffectiveConnectivityConfiguration(ctx *pulumi.Context, args *ListEffectiveConnectivityConfigurationArgs, opts ...pulumi.InvokeOption) (*ListEffectiveConnectivityConfigurationResult, error) {
 	var rv ListEffectiveConnectivityConfigurationResult
 	err := ctx.Invoke("azure-native:network:listEffectiveConnectivityConfiguration", args, &rv, opts...)

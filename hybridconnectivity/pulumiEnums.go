@@ -13,6 +13,14 @@ const (
 	CreatedByTypeKey             = CreatedByType("Key")
 )
 
+// The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
+type ServiceName string
+
+const (
+	ServiceNameSSH = ServiceName("SSH")
+	ServiceNameWAC = ServiceName("WAC")
+)
+
 // The type of endpoint.
 type Type string
 

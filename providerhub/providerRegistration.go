@@ -10,13 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20
 type ProviderRegistration struct {
 	pulumi.CustomResourceState
 
 	// The name of the resource
 	Name       pulumi.StringOutput                          `pulumi:"name"`
 	Properties ProviderRegistrationResponsePropertiesOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -131,6 +133,11 @@ func (o ProviderRegistrationOutput) Name() pulumi.StringOutput {
 
 func (o ProviderRegistrationOutput) Properties() ProviderRegistrationResponsePropertiesOutput {
 	return o.ApplyT(func(v *ProviderRegistration) ProviderRegistrationResponsePropertiesOutput { return v.Properties }).(ProviderRegistrationResponsePropertiesOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ProviderRegistrationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ProviderRegistration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

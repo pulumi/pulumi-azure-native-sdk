@@ -11,7 +11,7 @@ import (
 )
 
 // Gets cluster user credentials of the connected cluster with a specified resource group and name.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2021-04-01-preview.
 func ListConnectedClusterUserCredentials(ctx *pulumi.Context, args *ListConnectedClusterUserCredentialsArgs, opts ...pulumi.InvokeOption) (*ListConnectedClusterUserCredentialsResult, error) {
 	var rv ListConnectedClusterUserCredentialsResult
 	err := ctx.Invoke("azure-native:kubernetes:listConnectedClusterUserCredentials", args, &rv, opts...)

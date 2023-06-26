@@ -12,8 +12,6 @@ import (
 )
 
 // Azure Active Directory only authentication.
-//
-// Deprecated: azure-native:sql/v20211101:ServerAzureADOnlyAuthentication is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerAzureADOnlyAuthentication to guarantee forwards compatibility.
 type ServerAzureADOnlyAuthentication struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +72,9 @@ func NewServerAzureADOnlyAuthentication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ServerAzureADOnlyAuthentication"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ServerAzureADOnlyAuthentication"),
 		},
 	})
 	opts = append(opts, aliases)

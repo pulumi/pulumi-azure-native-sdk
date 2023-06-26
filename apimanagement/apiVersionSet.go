@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Api Version Set Contract details.
-// API Version: 2020-12-01.
+// API Version Set Contract details.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01
 type ApiVersionSet struct {
 	pulumi.CustomResourceState
 
@@ -20,9 +20,9 @@ type ApiVersionSet struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of API Version Set
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`.
 	VersionHeaderName pulumi.StringPtrOutput `pulumi:"versionHeaderName"`
@@ -94,6 +94,9 @@ func NewApiVersionSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiVersionSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiVersionSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiVersionSet
@@ -132,7 +135,7 @@ type apiVersionSetArgs struct {
 	Description *string `pulumi:"description"`
 	// Name of API Version Set
 	DisplayName string `pulumi:"displayName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -152,7 +155,7 @@ type ApiVersionSetArgs struct {
 	Description pulumi.StringPtrInput
 	// Name of API Version Set
 	DisplayName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -213,12 +216,12 @@ func (o ApiVersionSetOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiVersionSet) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ApiVersionSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiVersionSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApiVersionSetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiVersionSet) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

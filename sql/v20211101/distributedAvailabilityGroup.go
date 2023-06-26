@@ -12,8 +12,6 @@ import (
 )
 
 // Distributed availability group between box and Sql Managed Instance.
-//
-// Deprecated: azure-native:sql/v20211101:DistributedAvailabilityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:DistributedAvailabilityGroup to guarantee forwards compatibility.
 type DistributedAvailabilityGroup struct {
 	pulumi.CustomResourceState
 
@@ -77,6 +75,9 @@ func NewDistributedAvailabilityGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:DistributedAvailabilityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:DistributedAvailabilityGroup"),
 		},
 	})
 	opts = append(opts, aliases)

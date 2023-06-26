@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB SQL database.
-// API Version: 2021-03-15.
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-15
 type SqlResourceSqlDatabase struct {
 	pulumi.CustomResourceState
 
@@ -130,7 +130,19 @@ func NewSqlResourceSqlDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

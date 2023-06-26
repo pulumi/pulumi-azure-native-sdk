@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a server firewall rule.
-// API Version: 2017-12-01.
+// List all the firewall rules in a given server.
+// Azure REST API version: 2022-12-01.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	var rv LookupFirewallRuleResult
 	err := ctx.Invoke("azure-native:dbforpostgresql:getFirewallRule", args, &rv, opts...)
@@ -40,6 +40,8 @@ type LookupFirewallRuleResult struct {
 	Name string `pulumi:"name"`
 	// The start IP address of the server firewall rule. Must be IPv4 format.
 	StartIpAddress string `pulumi:"startIpAddress"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -103,6 +105,11 @@ func (o LookupFirewallRuleResultOutput) Name() pulumi.StringOutput {
 // The start IP address of the server firewall rule. Must be IPv4 format.
 func (o LookupFirewallRuleResultOutput) StartIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.StartIpAddress }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupFirewallRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFirewallRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

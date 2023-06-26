@@ -12,8 +12,6 @@ import (
 )
 
 // Monitoring Setting resource
-//
-// Deprecated: azure-native:appplatform/v20221201:MonitoringSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:MonitoringSetting to guarantee forwards compatibility.
 type MonitoringSetting struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +74,12 @@ func NewMonitoringSetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:MonitoringSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:MonitoringSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:MonitoringSetting"),
 		},
 	})
 	opts = append(opts, aliases)

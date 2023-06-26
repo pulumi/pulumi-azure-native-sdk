@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves a specific pipeline topology by name. If a topology with that name has been previously created, the call will return the JSON representation of that topology.
-// API Version: 2021-11-01-preview.
+// Azure REST API version: 2021-11-01-preview.
 func LookupPipelineTopology(ctx *pulumi.Context, args *LookupPipelineTopologyArgs, opts ...pulumi.InvokeOption) (*LookupPipelineTopologyResult, error) {
 	var rv LookupPipelineTopologyResult
 	err := ctx.Invoke("azure-native:videoanalyzer:getPipelineTopology", args, &rv, opts...)

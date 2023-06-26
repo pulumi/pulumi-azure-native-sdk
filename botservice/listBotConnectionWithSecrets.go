@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Connection Setting registration for a Bot Service
-// API Version: 2021-03-01.
+// Azure REST API version: 2022-09-15.
 func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWithSecretsArgs, opts ...pulumi.InvokeOption) (*ListBotConnectionWithSecretsResult, error) {
 	var rv ListBotConnectionWithSecretsResult
 	err := ctx.Invoke("azure-native:botservice:listBotConnectionWithSecrets", args, &rv, opts...)
@@ -32,7 +32,7 @@ type ListBotConnectionWithSecretsArgs struct {
 
 // Bot channel resource definition
 type ListBotConnectionWithSecretsResult struct {
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -106,7 +106,7 @@ func (o ListBotConnectionWithSecretsResultOutput) ToListBotConnectionWithSecrets
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o ListBotConnectionWithSecretsResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

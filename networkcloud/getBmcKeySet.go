@@ -11,7 +11,7 @@ import (
 )
 
 // Get baseboard management controller key set of the provided cluster.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupBmcKeySet(ctx *pulumi.Context, args *LookupBmcKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBmcKeySetResult, error) {
 	var rv LookupBmcKeySetResult
 	err := ctx.Invoke("azure-native:networkcloud:getBmcKeySet", args, &rv, opts...)
@@ -41,7 +41,7 @@ type LookupBmcKeySetResult struct {
 	Expiration string `pulumi:"expiration"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The last time this key set was validated.
 	LastValidation string `pulumi:"lastValidation"`
@@ -130,7 +130,7 @@ func (o LookupBmcKeySetResultOutput) ExtendedLocation() ExtendedLocationResponse
 	return o.ApplyT(func(v LookupBmcKeySetResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBmcKeySetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.Id }).(pulumi.StringOutput)
 }

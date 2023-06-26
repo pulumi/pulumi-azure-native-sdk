@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the WordPress instance resource.
-// API Version: 2021-12-01-preview.
+// Azure REST API version: 2021-12-01-preview.
 func LookupWordpressInstance(ctx *pulumi.Context, args *LookupWordpressInstanceArgs, opts ...pulumi.InvokeOption) (*LookupWordpressInstanceResult, error) {
 	var rv LookupWordpressInstanceResult
 	err := ctx.Invoke("azure-native:workloads:getWordpressInstance", args, &rv, opts...)

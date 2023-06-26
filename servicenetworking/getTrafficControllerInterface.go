@@ -11,7 +11,7 @@ import (
 )
 
 // Get a TrafficController
-// API Version: 2022-10-01-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupTrafficControllerInterface(ctx *pulumi.Context, args *LookupTrafficControllerInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupTrafficControllerInterfaceResult, error) {
 	var rv LookupTrafficControllerInterfaceResult
 	err := ctx.Invoke("azure-native:servicenetworking:getTrafficControllerInterface", args, &rv, opts...)
@@ -31,11 +31,11 @@ type LookupTrafficControllerInterfaceArgs struct {
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupTrafficControllerInterfaceResult struct {
 	// Associations References List
-	Associations []ResourceIDResponse `pulumi:"associations"`
+	Associations []ResourceIdResponse `pulumi:"associations"`
 	// Configuration Endpoints.
 	ConfigurationEndpoints []string `pulumi:"configurationEndpoints"`
 	// Frontends References List
-	Frontends []ResourceIDResponse `pulumi:"frontends"`
+	Frontends []ResourceIdResponse `pulumi:"frontends"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -92,8 +92,8 @@ func (o LookupTrafficControllerInterfaceResultOutput) ToLookupTrafficControllerI
 }
 
 // Associations References List
-func (o LookupTrafficControllerInterfaceResultOutput) Associations() ResourceIDResponseArrayOutput {
-	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) []ResourceIDResponse { return v.Associations }).(ResourceIDResponseArrayOutput)
+func (o LookupTrafficControllerInterfaceResultOutput) Associations() ResourceIdResponseArrayOutput {
+	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) []ResourceIdResponse { return v.Associations }).(ResourceIdResponseArrayOutput)
 }
 
 // Configuration Endpoints.
@@ -102,8 +102,8 @@ func (o LookupTrafficControllerInterfaceResultOutput) ConfigurationEndpoints() p
 }
 
 // Frontends References List
-func (o LookupTrafficControllerInterfaceResultOutput) Frontends() ResourceIDResponseArrayOutput {
-	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) []ResourceIDResponse { return v.Frontends }).(ResourceIDResponseArrayOutput)
+func (o LookupTrafficControllerInterfaceResultOutput) Frontends() ResourceIdResponseArrayOutput {
+	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) []ResourceIdResponse { return v.Frontends }).(ResourceIdResponseArrayOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

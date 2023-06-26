@@ -11,7 +11,7 @@ import (
 )
 
 // Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
-// API Version: 2019-01-01-preview.
+// Azure REST API version: 2019-01-01-preview.
 func LookupAlertsSuppressionRule(ctx *pulumi.Context, args *LookupAlertsSuppressionRuleArgs, opts ...pulumi.InvokeOption) (*LookupAlertsSuppressionRuleResult, error) {
 	var rv LookupAlertsSuppressionRuleResult
 	err := ctx.Invoke("azure-native:security:getAlertsSuppressionRule", args, &rv, opts...)

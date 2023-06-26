@@ -11,7 +11,7 @@ import (
 )
 
 // List Environments for the user
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15.
 func ListGlobalUserEnvironments(ctx *pulumi.Context, args *ListGlobalUserEnvironmentsArgs, opts ...pulumi.InvokeOption) (*ListGlobalUserEnvironmentsResult, error) {
 	var rv ListGlobalUserEnvironmentsResult
 	err := ctx.Invoke("azure-native:labservices:listGlobalUserEnvironments", args, &rv, opts...)

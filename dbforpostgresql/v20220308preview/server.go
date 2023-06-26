@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a server.
-//
-// Deprecated: azure-native:dbforpostgresql/v20220308preview:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20221201:Server to guarantee forwards compatibility.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -93,6 +91,9 @@ func NewServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Server"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:Server"),
 		},
 		{
@@ -115,6 +116,9 @@ func NewServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20221201:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:Server"),
 		},
 	})
 	opts = append(opts, aliases)

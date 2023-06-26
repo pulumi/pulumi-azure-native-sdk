@@ -12,7 +12,7 @@ import (
 )
 
 // Protection profile details.
-// API Version: 2018-07-10.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10
 type ReplicationPolicy struct {
 	pulumi.CustomResourceState
 
@@ -106,6 +106,9 @@ func NewReplicationPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ReplicationPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:ReplicationPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ReplicationPolicy
@@ -140,7 +143,7 @@ func (ReplicationPolicyState) ElementType() reflect.Type {
 }
 
 type replicationPolicyArgs struct {
-	// Replication policy name
+	// Replication policy name.
 	PolicyName *string `pulumi:"policyName"`
 	// Policy creation properties.
 	Properties *CreatePolicyInputProperties `pulumi:"properties"`
@@ -152,7 +155,7 @@ type replicationPolicyArgs struct {
 
 // The set of arguments for constructing a ReplicationPolicy resource.
 type ReplicationPolicyArgs struct {
-	// Replication policy name
+	// Replication policy name.
 	PolicyName pulumi.StringPtrInput
 	// Policy creation properties.
 	Properties CreatePolicyInputPropertiesPtrInput

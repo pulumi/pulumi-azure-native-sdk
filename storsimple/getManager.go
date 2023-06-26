@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the properties of the specified manager name.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func LookupManager(ctx *pulumi.Context, args *LookupManagerArgs, opts ...pulumi.InvokeOption) (*LookupManagerResult, error) {
 	var rv LookupManagerResult
 	err := ctx.Invoke("azure-native:storsimple:getManager", args, &rv, opts...)

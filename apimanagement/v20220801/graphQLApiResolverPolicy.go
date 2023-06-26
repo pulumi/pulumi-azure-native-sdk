@@ -50,6 +50,15 @@ func NewGraphQLApiResolverPolicy(ctx *pulumi.Context,
 	if args.Format == nil {
 		args.Format = pulumi.StringPtr("xml")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement:GraphQLApiResolverPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GraphQLApiResolverPolicy"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource GraphQLApiResolverPolicy
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:GraphQLApiResolverPolicy", name, args, &resource, opts...)
 	if err != nil {

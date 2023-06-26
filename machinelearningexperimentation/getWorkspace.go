@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified machine learning workspace.
-// API Version: 2017-05-01-preview.
+// Azure REST API version: 2017-05-01-preview.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:machinelearningexperimentation:getWorkspace", args, &rv, opts...)

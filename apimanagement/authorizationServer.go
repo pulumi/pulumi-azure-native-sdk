@@ -12,7 +12,7 @@ import (
 )
 
 // External OAuth authorization server settings.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01
 type AuthorizationServer struct {
 	pulumi.CustomResourceState
 
@@ -38,7 +38,7 @@ type AuthorizationServer struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Form of an authorization grant, which the client uses to request the access token.
 	GrantTypes pulumi.StringArrayOutput `pulumi:"grantTypes"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner password.
 	ResourceOwnerPassword pulumi.StringPtrOutput `pulumi:"resourceOwnerPassword"`
@@ -50,8 +50,12 @@ type AuthorizationServer struct {
 	TokenBodyParameters TokenBodyParameterContractResponseArrayOutput `pulumi:"tokenBodyParameters"`
 	// OAuth token endpoint. Contains absolute URI to entity being referenced.
 	TokenEndpoint pulumi.StringPtrOutput `pulumi:"tokenEndpoint"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// If true, the authorization server will be used in the API documentation in the developer portal. False by default if no value is provided.
+	UseInApiDocumentation pulumi.BoolPtrOutput `pulumi:"useInApiDocumentation"`
+	// If true, the authorization server may be used in the developer portal test console. True by default if no value is provided.
+	UseInTestConsole pulumi.BoolPtrOutput `pulumi:"useInTestConsole"`
 }
 
 // NewAuthorizationServer registers a new resource with the given unique name, arguments, and options.
@@ -131,6 +135,9 @@ func NewAuthorizationServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:AuthorizationServer"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:AuthorizationServer"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AuthorizationServer
@@ -189,7 +196,7 @@ type authorizationServerArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Form of an authorization grant, which the client uses to request the access token.
 	GrantTypes []string `pulumi:"grantTypes"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner password.
 	ResourceOwnerPassword *string `pulumi:"resourceOwnerPassword"`
@@ -203,6 +210,10 @@ type authorizationServerArgs struct {
 	TokenBodyParameters []TokenBodyParameterContract `pulumi:"tokenBodyParameters"`
 	// OAuth token endpoint. Contains absolute URI to entity being referenced.
 	TokenEndpoint *string `pulumi:"tokenEndpoint"`
+	// If true, the authorization server will be used in the API documentation in the developer portal. False by default if no value is provided.
+	UseInApiDocumentation *bool `pulumi:"useInApiDocumentation"`
+	// If true, the authorization server may be used in the developer portal test console. True by default if no value is provided.
+	UseInTestConsole *bool `pulumi:"useInTestConsole"`
 }
 
 // The set of arguments for constructing a AuthorizationServer resource.
@@ -231,7 +242,7 @@ type AuthorizationServerArgs struct {
 	DisplayName pulumi.StringInput
 	// Form of an authorization grant, which the client uses to request the access token.
 	GrantTypes pulumi.StringArrayInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner password.
 	ResourceOwnerPassword pulumi.StringPtrInput
@@ -245,6 +256,10 @@ type AuthorizationServerArgs struct {
 	TokenBodyParameters TokenBodyParameterContractArrayInput
 	// OAuth token endpoint. Contains absolute URI to entity being referenced.
 	TokenEndpoint pulumi.StringPtrInput
+	// If true, the authorization server will be used in the API documentation in the developer portal. False by default if no value is provided.
+	UseInApiDocumentation pulumi.BoolPtrInput
+	// If true, the authorization server may be used in the developer portal test console. True by default if no value is provided.
+	UseInTestConsole pulumi.BoolPtrInput
 }
 
 func (AuthorizationServerArgs) ElementType() reflect.Type {
@@ -339,7 +354,7 @@ func (o AuthorizationServerOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AuthorizationServer) pulumi.StringArrayOutput { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o AuthorizationServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -371,9 +386,19 @@ func (o AuthorizationServerOutput) TokenEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorizationServer) pulumi.StringPtrOutput { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AuthorizationServerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationServer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// If true, the authorization server will be used in the API documentation in the developer portal. False by default if no value is provided.
+func (o AuthorizationServerOutput) UseInApiDocumentation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthorizationServer) pulumi.BoolPtrOutput { return v.UseInApiDocumentation }).(pulumi.BoolPtrOutput)
+}
+
+// If true, the authorization server may be used in the developer portal test console. True by default if no value is provided.
+func (o AuthorizationServerOutput) UseInTestConsole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthorizationServer) pulumi.BoolPtrOutput { return v.UseInTestConsole }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

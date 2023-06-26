@@ -8,7 +8,7 @@ import (
 )
 
 // Lists the available Service Providers for creating Connection Settings
-// API Version: 2021-03-01.
+// Azure REST API version: 2022-09-15.
 func ListBotConnectionServiceProviders(ctx *pulumi.Context, args *ListBotConnectionServiceProvidersArgs, opts ...pulumi.InvokeOption) (*ListBotConnectionServiceProvidersResult, error) {
 	var rv ListBotConnectionServiceProvidersResult
 	err := ctx.Invoke("azure-native:botservice:listBotConnectionServiceProviders", args, &rv, opts...)

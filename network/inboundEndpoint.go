@@ -12,7 +12,7 @@ import (
 )
 
 // Describes an inbound endpoint for a DNS resolver.
-// API Version: 2020-04-01-preview.
+// Azure REST API version: 2022-07-01. Prior API version in Azure Native 1.x: 2020-04-01-preview
 type InboundEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +45,9 @@ func NewInboundEndpoint(ctx *pulumi.Context,
 
 	if args.DnsResolverName == nil {
 		return nil, errors.New("invalid value for required argument 'DnsResolverName'")
+	}
+	if args.IpConfigurations == nil {
+		return nil, errors.New("invalid value for required argument 'IpConfigurations'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")

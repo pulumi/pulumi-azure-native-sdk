@@ -11,14 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
 type Cluster struct {
 	pulumi.CustomResourceState
 
 	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinitionResponseOutput `pulumi:"aggregatorOrSingleRackDefinition"`
 	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
-	AnalyticsWorkspaceId pulumi.StringOutput `pulumi:"analyticsWorkspaceId"`
+	AnalyticsWorkspaceId pulumi.StringPtrOutput `pulumi:"analyticsWorkspaceId"`
 	// The list of cluster runtime version upgrades available for this cluster.
 	AvailableUpgradeVersions ClusterAvailableUpgradeVersionResponseArrayOutput `pulumi:"availableUpgradeVersions"`
 	// The capacity supported by this cluster.
@@ -50,7 +50,7 @@ type Cluster struct {
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster manager associated with the cluster.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
-	// The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
+	// Field Deprecated. This field will not be populated in an upcoming version. The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
 	HybridAksExtendedLocation ExtendedLocationResponseOutput `pulumi:"hybridAksExtendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -86,9 +86,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args.AggregatorOrSingleRackDefinition == nil {
 		return nil, errors.New("invalid value for required argument 'AggregatorOrSingleRackDefinition'")
 	}
-	if args.AnalyticsWorkspaceId == nil {
-		return nil, errors.New("invalid value for required argument 'AnalyticsWorkspaceId'")
-	}
 	if args.ClusterType == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterType'")
 	}
@@ -107,6 +104,9 @@ func NewCluster(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230501preview:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -145,7 +145,7 @@ type clusterArgs struct {
 	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinition `pulumi:"aggregatorOrSingleRackDefinition"`
 	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
-	AnalyticsWorkspaceId string `pulumi:"analyticsWorkspaceId"`
+	AnalyticsWorkspaceId *string `pulumi:"analyticsWorkspaceId"`
 	// The customer-provided location information to identify where the cluster resides.
 	ClusterLocation *string `pulumi:"clusterLocation"`
 	// The name of the cluster.
@@ -180,7 +180,7 @@ type ClusterArgs struct {
 	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinitionInput
 	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
-	AnalyticsWorkspaceId pulumi.StringInput
+	AnalyticsWorkspaceId pulumi.StringPtrInput
 	// The customer-provided location information to identify where the cluster resides.
 	ClusterLocation pulumi.StringPtrInput
 	// The name of the cluster.
@@ -253,8 +253,8 @@ func (o ClusterOutput) AggregatorOrSingleRackDefinition() RackDefinitionResponse
 }
 
 // The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
-func (o ClusterOutput) AnalyticsWorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AnalyticsWorkspaceId }).(pulumi.StringOutput)
+func (o ClusterOutput) AnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 // The list of cluster runtime version upgrades available for this cluster.
@@ -333,7 +333,7 @@ func (o ClusterOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *Cluster) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
+// Field Deprecated. This field will not be populated in an upcoming version. The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
 func (o ClusterOutput) HybridAksExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *Cluster) ExtendedLocationResponseOutput { return v.HybridAksExtendedLocation }).(ExtendedLocationResponseOutput)
 }

@@ -356,6 +356,242 @@ func (o DiagnosticStoragePropertiesResponsePtrOutput) ResourceId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The CMK encryption settings on the Device Update account.
+type Encryption struct {
+	// The URI of the key vault
+	KeyVaultKeyUri *string `pulumi:"keyVaultKeyUri"`
+	// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// EncryptionInput is an input type that accepts EncryptionArgs and EncryptionOutput values.
+// You can construct a concrete instance of `EncryptionInput` via:
+//
+//	EncryptionArgs{...}
+type EncryptionInput interface {
+	pulumi.Input
+
+	ToEncryptionOutput() EncryptionOutput
+	ToEncryptionOutputWithContext(context.Context) EncryptionOutput
+}
+
+// The CMK encryption settings on the Device Update account.
+type EncryptionArgs struct {
+	// The URI of the key vault
+	KeyVaultKeyUri pulumi.StringPtrInput `pulumi:"keyVaultKeyUri"`
+	// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (EncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Encryption)(nil)).Elem()
+}
+
+func (i EncryptionArgs) ToEncryptionOutput() EncryptionOutput {
+	return i.ToEncryptionOutputWithContext(context.Background())
+}
+
+func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
+}
+
+func (i EncryptionArgs) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return i.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionArgs) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput).ToEncryptionPtrOutputWithContext(ctx)
+}
+
+// EncryptionPtrInput is an input type that accepts EncryptionArgs, EncryptionPtr and EncryptionPtrOutput values.
+// You can construct a concrete instance of `EncryptionPtrInput` via:
+//
+//	        EncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionPtrOutput() EncryptionPtrOutput
+	ToEncryptionPtrOutputWithContext(context.Context) EncryptionPtrOutput
+}
+
+type encryptionPtrType EncryptionArgs
+
+func EncryptionPtr(v *EncryptionArgs) EncryptionPtrInput {
+	return (*encryptionPtrType)(v)
+}
+
+func (*encryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Encryption)(nil)).Elem()
+}
+
+func (i *encryptionPtrType) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return i.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionPtrType) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPtrOutput)
+}
+
+// The CMK encryption settings on the Device Update account.
+type EncryptionOutput struct{ *pulumi.OutputState }
+
+func (EncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Encryption)(nil)).Elem()
+}
+
+func (o EncryptionOutput) ToEncryptionOutput() EncryptionOutput {
+	return o
+}
+
+func (o EncryptionOutput) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+	return o
+}
+
+func (o EncryptionOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return o.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Encryption) *Encryption {
+		return &v
+	}).(EncryptionPtrOutput)
+}
+
+// The URI of the key vault
+func (o EncryptionOutput) KeyVaultKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Encryption) *string { return v.KeyVaultKeyUri }).(pulumi.StringPtrOutput)
+}
+
+// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
+func (o EncryptionOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Encryption) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Encryption)(nil)).Elem()
+}
+
+func (o EncryptionPtrOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return o
+}
+
+func (o EncryptionPtrOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return o
+}
+
+func (o EncryptionPtrOutput) Elem() EncryptionOutput {
+	return o.ApplyT(func(v *Encryption) Encryption {
+		if v != nil {
+			return *v
+		}
+		var ret Encryption
+		return ret
+	}).(EncryptionOutput)
+}
+
+// The URI of the key vault
+func (o EncryptionPtrOutput) KeyVaultKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Encryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
+func (o EncryptionPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Encryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CMK encryption settings on the Device Update account.
+type EncryptionResponse struct {
+	// The URI of the key vault
+	KeyVaultKeyUri *string `pulumi:"keyVaultKeyUri"`
+	// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// The CMK encryption settings on the Device Update account.
+type EncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionResponse)(nil)).Elem()
+}
+
+func (o EncryptionResponseOutput) ToEncryptionResponseOutput() EncryptionResponseOutput {
+	return o
+}
+
+func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx context.Context) EncryptionResponseOutput {
+	return o
+}
+
+// The URI of the key vault
+func (o EncryptionResponseOutput) KeyVaultKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionResponse) *string { return v.KeyVaultKeyUri }).(pulumi.StringPtrOutput)
+}
+
+// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
+func (o EncryptionResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionResponse)(nil)).Elem()
+}
+
+func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutput() EncryptionResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutputWithContext(ctx context.Context) EncryptionResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionResponsePtrOutput) Elem() EncryptionResponseOutput {
+	return o.ApplyT(func(v *EncryptionResponse) EncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionResponse
+		return ret
+	}).(EncryptionResponseOutput)
+}
+
+// The URI of the key vault
+func (o EncryptionResponsePtrOutput) KeyVaultKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
+func (o EncryptionResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Group connectivity details.
 type GroupConnectivityInformation struct {
 	// List of customer visible FQDNs.
@@ -557,10 +793,6 @@ func (o GroupConnectivityInformationResponseArrayOutput) Index(i pulumi.IntInput
 
 // Device Update account integration with IoT Hub settings.
 type IotHubSettings struct {
-	// EventHub connection string.
-	EventHubConnectionString *string `pulumi:"eventHubConnectionString"`
-	// IoTHub connection string.
-	IoTHubConnectionString *string `pulumi:"ioTHubConnectionString"`
 	// IoTHub resource ID
 	ResourceId string `pulumi:"resourceId"`
 }
@@ -578,10 +810,6 @@ type IotHubSettingsInput interface {
 
 // Device Update account integration with IoT Hub settings.
 type IotHubSettingsArgs struct {
-	// EventHub connection string.
-	EventHubConnectionString pulumi.StringPtrInput `pulumi:"eventHubConnectionString"`
-	// IoTHub connection string.
-	IoTHubConnectionString pulumi.StringPtrInput `pulumi:"ioTHubConnectionString"`
 	// IoTHub resource ID
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 }
@@ -638,16 +866,6 @@ func (o IotHubSettingsOutput) ToIotHubSettingsOutputWithContext(ctx context.Cont
 	return o
 }
 
-// EventHub connection string.
-func (o IotHubSettingsOutput) EventHubConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IotHubSettings) *string { return v.EventHubConnectionString }).(pulumi.StringPtrOutput)
-}
-
-// IoTHub connection string.
-func (o IotHubSettingsOutput) IoTHubConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IotHubSettings) *string { return v.IoTHubConnectionString }).(pulumi.StringPtrOutput)
-}
-
 // IoTHub resource ID
 func (o IotHubSettingsOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v IotHubSettings) string { return v.ResourceId }).(pulumi.StringOutput)
@@ -675,10 +893,6 @@ func (o IotHubSettingsArrayOutput) Index(i pulumi.IntInput) IotHubSettingsOutput
 
 // Device Update account integration with IoT Hub settings.
 type IotHubSettingsResponse struct {
-	// EventHub connection string.
-	EventHubConnectionString *string `pulumi:"eventHubConnectionString"`
-	// IoTHub connection string.
-	IoTHubConnectionString *string `pulumi:"ioTHubConnectionString"`
 	// IoTHub resource ID
 	ResourceId string `pulumi:"resourceId"`
 }
@@ -696,16 +910,6 @@ func (o IotHubSettingsResponseOutput) ToIotHubSettingsResponseOutput() IotHubSet
 
 func (o IotHubSettingsResponseOutput) ToIotHubSettingsResponseOutputWithContext(ctx context.Context) IotHubSettingsResponseOutput {
 	return o
-}
-
-// EventHub connection string.
-func (o IotHubSettingsResponseOutput) EventHubConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IotHubSettingsResponse) *string { return v.EventHubConnectionString }).(pulumi.StringPtrOutput)
-}
-
-// IoTHub connection string.
-func (o IotHubSettingsResponseOutput) IoTHubConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IotHubSettingsResponse) *string { return v.IoTHubConnectionString }).(pulumi.StringPtrOutput)
 }
 
 // IoTHub resource ID
@@ -733,12 +937,74 @@ func (o IotHubSettingsResponseArrayOutput) Index(i pulumi.IntInput) IotHubSettin
 	}).(IotHubSettingsResponseOutput)
 }
 
+type LocationResponse struct {
+	Name *string `pulumi:"name"`
+	// Whether the location is primary or failover
+	Role *string `pulumi:"role"`
+}
+
+// Defaults sets the appropriate defaults for LocationResponse
+func (val *LocationResponse) Defaults() *LocationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Role == nil {
+		role_ := "Primary"
+		tmp.Role = &role_
+	}
+	return &tmp
+}
+
+type LocationResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
+	return o
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
+	return o
+}
+
+func (o LocationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether the location is primary or failover
+func (o LocationResponseOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationResponse) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type LocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponseArrayOutput) ToLocationResponseArrayOutput() LocationResponseArrayOutput {
+	return o
+}
+
+func (o LocationResponseArrayOutput) ToLocationResponseArrayOutputWithContext(ctx context.Context) LocationResponseArrayOutput {
+	return o
+}
+
+func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationResponse {
+		return vs[0].([]LocationResponse)[vs[1].(int)]
+	}).(LocationResponseOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
@@ -757,7 +1023,7 @@ type ManagedServiceIdentityArgs struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -844,8 +1110,8 @@ func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -883,13 +1149,13 @@ func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -2574,6 +2840,10 @@ func init() {
 	pulumi.RegisterOutputType(DiagnosticStoragePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DiagnosticStoragePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DiagnosticStoragePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionOutput{})
+	pulumi.RegisterOutputType(EncryptionPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(GroupConnectivityInformationOutput{})
 	pulumi.RegisterOutputType(GroupConnectivityInformationArrayOutput{})
 	pulumi.RegisterOutputType(GroupConnectivityInformationResponseOutput{})
@@ -2582,6 +2852,8 @@ func init() {
 	pulumi.RegisterOutputType(IotHubSettingsArrayOutput{})
 	pulumi.RegisterOutputType(IotHubSettingsResponseOutput{})
 	pulumi.RegisterOutputType(IotHubSettingsResponseArrayOutput{})
+	pulumi.RegisterOutputType(LocationResponseOutput{})
+	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})

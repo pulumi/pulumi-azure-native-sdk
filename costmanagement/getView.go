@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the view by view name.
-// API Version: 2019-11-01.
+// Azure REST API version: 2023-03-01.
 func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.InvokeOption) (*LookupViewResult, error) {
 	var rv LookupViewResult
 	err := ctx.Invoke("azure-native:costmanagement:getView", args, &rv, opts...)
@@ -34,26 +34,26 @@ type LookupViewResult struct {
 	Chart *string `pulumi:"chart"`
 	// Date the user created this view.
 	CreatedOn string `pulumi:"createdOn"`
-	// Selected currency.
+	// Currency of the current view.
 	Currency string `pulumi:"currency"`
 	// Has definition for data in this report config.
 	DataSet *ReportConfigDatasetResponse `pulumi:"dataSet"`
-	// Selected date range for viewing cost in.
-	DateRange string `pulumi:"dateRange"`
+	// Date range of the current view.
+	DateRange *string `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName *string `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id.
 	Id string `pulumi:"id"`
-	// Include monetary commitment
-	IncludeMonetaryCommitment bool `pulumi:"includeMonetaryCommitment"`
+	// If true, report includes monetary commitment.
+	IncludeMonetaryCommitment *bool `pulumi:"includeMonetaryCommitment"`
 	// List of KPIs to show in Cost Analysis UI.
 	Kpis []KpiPropertiesResponse `pulumi:"kpis"`
 	// Metric to use when displaying costs.
 	Metric *string `pulumi:"metric"`
 	// Date when the user last modified this view.
-	ModifiedOn string `pulumi:"modifiedOn"`
+	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Resource name.
 	Name string `pulumi:"name"`
 	// Configuration of 3 sub-views in the Cost Analysis UI.
@@ -120,7 +120,7 @@ func (o LookupViewResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Selected currency.
+// Currency of the current view.
 func (o LookupViewResultOutput) Currency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Currency }).(pulumi.StringOutput)
 }
@@ -130,9 +130,9 @@ func (o LookupViewResultOutput) DataSet() ReportConfigDatasetResponsePtrOutput {
 	return o.ApplyT(func(v LookupViewResult) *ReportConfigDatasetResponse { return v.DataSet }).(ReportConfigDatasetResponsePtrOutput)
 }
 
-// Selected date range for viewing cost in.
-func (o LookupViewResultOutput) DateRange() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupViewResult) string { return v.DateRange }).(pulumi.StringOutput)
+// Date range of the current view.
+func (o LookupViewResultOutput) DateRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupViewResult) *string { return v.DateRange }).(pulumi.StringPtrOutput)
 }
 
 // User input name of the view. Required.
@@ -150,9 +150,9 @@ func (o LookupViewResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Include monetary commitment
-func (o LookupViewResultOutput) IncludeMonetaryCommitment() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupViewResult) bool { return v.IncludeMonetaryCommitment }).(pulumi.BoolOutput)
+// If true, report includes monetary commitment.
+func (o LookupViewResultOutput) IncludeMonetaryCommitment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupViewResult) *bool { return v.IncludeMonetaryCommitment }).(pulumi.BoolPtrOutput)
 }
 
 // List of KPIs to show in Cost Analysis UI.
@@ -166,8 +166,8 @@ func (o LookupViewResultOutput) Metric() pulumi.StringPtrOutput {
 }
 
 // Date when the user last modified this view.
-func (o LookupViewResultOutput) ModifiedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupViewResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+func (o LookupViewResultOutput) ModifiedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupViewResult) *string { return v.ModifiedOn }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of the provided cluster.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("azure-native:networkcloud:getCluster", args, &rv, opts...)
@@ -32,7 +32,7 @@ type LookupClusterResult struct {
 	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinitionResponse `pulumi:"aggregatorOrSingleRackDefinition"`
 	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
-	AnalyticsWorkspaceId string `pulumi:"analyticsWorkspaceId"`
+	AnalyticsWorkspaceId *string `pulumi:"analyticsWorkspaceId"`
 	// The list of cluster runtime version upgrades available for this cluster.
 	AvailableUpgradeVersions []ClusterAvailableUpgradeVersionResponse `pulumi:"availableUpgradeVersions"`
 	// The capacity supported by this cluster.
@@ -64,9 +64,9 @@ type LookupClusterResult struct {
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster manager associated with the cluster.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
+	// Field Deprecated. This field will not be populated in an upcoming version. The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
 	HybridAksExtendedLocation ExtendedLocationResponse `pulumi:"hybridAksExtendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -136,8 +136,8 @@ func (o LookupClusterResultOutput) AggregatorOrSingleRackDefinition() RackDefini
 }
 
 // The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
-func (o LookupClusterResultOutput) AnalyticsWorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterResult) string { return v.AnalyticsWorkspaceId }).(pulumi.StringOutput)
+func (o LookupClusterResultOutput) AnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *string { return v.AnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 // The list of cluster runtime version upgrades available for this cluster.
@@ -218,12 +218,12 @@ func (o LookupClusterResultOutput) ExtendedLocation() ExtendedLocationResponseOu
 	return o.ApplyT(func(v LookupClusterResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
+// Field Deprecated. This field will not be populated in an upcoming version. The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
 func (o LookupClusterResultOutput) HybridAksExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ExtendedLocationResponse { return v.HybridAksExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Lists active connectivity configurations in a network manager.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func ListActiveConnectivityConfiguration(ctx *pulumi.Context, args *ListActiveConnectivityConfigurationArgs, opts ...pulumi.InvokeOption) (*ListActiveConnectivityConfigurationResult, error) {
 	var rv ListActiveConnectivityConfigurationResult
 	err := ctx.Invoke("azure-native:network:listActiveConnectivityConfiguration", args, &rv, opts...)

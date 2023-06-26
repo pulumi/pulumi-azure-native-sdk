@@ -12,8 +12,6 @@ import (
 )
 
 // API portal resource
-//
-// Deprecated: azure-native:appplatform/v20221201:ApiPortal is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ApiPortal to guarantee forwards compatibility.
 type ApiPortal struct {
 	pulumi.CustomResourceState
 
@@ -69,6 +67,12 @@ func NewApiPortal(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:ApiPortal"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ApiPortal"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ApiPortal"),
 		},
 	})
 	opts = append(opts, aliases)

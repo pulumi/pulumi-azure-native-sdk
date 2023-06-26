@@ -357,32 +357,6 @@ func (o DatabasePrincipalResponseArrayOutput) Index(i pulumi.IntInput) DatabaseP
 	}).(DatabasePrincipalResponseOutput)
 }
 
-// A class that contains database statistics information.
-type DatabaseStatisticsResponse struct {
-	// The database size - the total size of compressed data and index in bytes.
-	Size *float64 `pulumi:"size"`
-}
-
-// A class that contains database statistics information.
-type DatabaseStatisticsResponseOutput struct{ *pulumi.OutputState }
-
-func (DatabaseStatisticsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseStatisticsResponse)(nil)).Elem()
-}
-
-func (o DatabaseStatisticsResponseOutput) ToDatabaseStatisticsResponseOutput() DatabaseStatisticsResponseOutput {
-	return o
-}
-
-func (o DatabaseStatisticsResponseOutput) ToDatabaseStatisticsResponseOutputWithContext(ctx context.Context) DatabaseStatisticsResponseOutput {
-	return o
-}
-
-// The database size - the total size of compressed data and index in bytes.
-func (o DatabaseStatisticsResponseOutput) Size() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v DatabaseStatisticsResponse) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
-}
-
 // A class representing follower database request.
 type FollowerDatabaseDefinitionResponse struct {
 	// Resource name of the attached database configuration in the follower cluster.
@@ -464,7 +438,7 @@ type Identity struct {
 	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
 	Type string `pulumi:"type"`
 	// The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -483,7 +457,7 @@ type IdentityArgs struct {
 	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -570,8 +544,8 @@ func (o IdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -609,13 +583,13 @@ func (o IdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the resource.
@@ -1594,70 +1568,6 @@ func (o PrivateEndpointPropertyResponseOutput) Id() pulumi.StringOutput {
 }
 
 // Connection State of the Private Endpoint Connection.
-type PrivateLinkServiceConnectionStateProperty struct {
-	// The private link service connection description.
-	Description *string `pulumi:"description"`
-	// The private link service connection status.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStatePropertyInput is an input type that accepts PrivateLinkServiceConnectionStatePropertyArgs and PrivateLinkServiceConnectionStatePropertyOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePropertyInput` via:
-//
-//	PrivateLinkServiceConnectionStatePropertyArgs{...}
-type PrivateLinkServiceConnectionStatePropertyInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStatePropertyOutput() PrivateLinkServiceConnectionStatePropertyOutput
-	ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePropertyOutput
-}
-
-// Connection State of the Private Endpoint Connection.
-type PrivateLinkServiceConnectionStatePropertyArgs struct {
-	// The private link service connection description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The private link service connection status.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStatePropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateProperty)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStatePropertyArgs) ToPrivateLinkServiceConnectionStatePropertyOutput() PrivateLinkServiceConnectionStatePropertyOutput {
-	return i.ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStatePropertyArgs) ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePropertyOutput)
-}
-
-// Connection State of the Private Endpoint Connection.
-type PrivateLinkServiceConnectionStatePropertyOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStatePropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateProperty)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyOutput) ToPrivateLinkServiceConnectionStatePropertyOutput() PrivateLinkServiceConnectionStatePropertyOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyOutput) ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyOutput {
-	return o
-}
-
-// The private link service connection description.
-func (o PrivateLinkServiceConnectionStatePropertyOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateProperty) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The private link service connection status.
-func (o PrivateLinkServiceConnectionStatePropertyOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateProperty) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Connection State of the Private Endpoint Connection.
 type PrivateLinkServiceConnectionStatePropertyResponse struct {
 	// Any action that is required beyond basic workflow (approve/ reject/ disconnect)
 	ActionsRequired string `pulumi:"actionsRequired"`
@@ -1759,241 +1669,6 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 // Tables that will be included and excluded in the follower database
-type TableLevelSharingProperties struct {
-	// List of external tables exclude from the follower database
-	ExternalTablesToExclude []string `pulumi:"externalTablesToExclude"`
-	// List of external tables to include in the follower database
-	ExternalTablesToInclude []string `pulumi:"externalTablesToInclude"`
-	// List of materialized views exclude from the follower database
-	MaterializedViewsToExclude []string `pulumi:"materializedViewsToExclude"`
-	// List of materialized views to include in the follower database
-	MaterializedViewsToInclude []string `pulumi:"materializedViewsToInclude"`
-	// List of tables to exclude from the follower database
-	TablesToExclude []string `pulumi:"tablesToExclude"`
-	// List of tables to include in the follower database
-	TablesToInclude []string `pulumi:"tablesToInclude"`
-}
-
-// TableLevelSharingPropertiesInput is an input type that accepts TableLevelSharingPropertiesArgs and TableLevelSharingPropertiesOutput values.
-// You can construct a concrete instance of `TableLevelSharingPropertiesInput` via:
-//
-//	TableLevelSharingPropertiesArgs{...}
-type TableLevelSharingPropertiesInput interface {
-	pulumi.Input
-
-	ToTableLevelSharingPropertiesOutput() TableLevelSharingPropertiesOutput
-	ToTableLevelSharingPropertiesOutputWithContext(context.Context) TableLevelSharingPropertiesOutput
-}
-
-// Tables that will be included and excluded in the follower database
-type TableLevelSharingPropertiesArgs struct {
-	// List of external tables exclude from the follower database
-	ExternalTablesToExclude pulumi.StringArrayInput `pulumi:"externalTablesToExclude"`
-	// List of external tables to include in the follower database
-	ExternalTablesToInclude pulumi.StringArrayInput `pulumi:"externalTablesToInclude"`
-	// List of materialized views exclude from the follower database
-	MaterializedViewsToExclude pulumi.StringArrayInput `pulumi:"materializedViewsToExclude"`
-	// List of materialized views to include in the follower database
-	MaterializedViewsToInclude pulumi.StringArrayInput `pulumi:"materializedViewsToInclude"`
-	// List of tables to exclude from the follower database
-	TablesToExclude pulumi.StringArrayInput `pulumi:"tablesToExclude"`
-	// List of tables to include in the follower database
-	TablesToInclude pulumi.StringArrayInput `pulumi:"tablesToInclude"`
-}
-
-func (TableLevelSharingPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableLevelSharingProperties)(nil)).Elem()
-}
-
-func (i TableLevelSharingPropertiesArgs) ToTableLevelSharingPropertiesOutput() TableLevelSharingPropertiesOutput {
-	return i.ToTableLevelSharingPropertiesOutputWithContext(context.Background())
-}
-
-func (i TableLevelSharingPropertiesArgs) ToTableLevelSharingPropertiesOutputWithContext(ctx context.Context) TableLevelSharingPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableLevelSharingPropertiesOutput)
-}
-
-func (i TableLevelSharingPropertiesArgs) ToTableLevelSharingPropertiesPtrOutput() TableLevelSharingPropertiesPtrOutput {
-	return i.ToTableLevelSharingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i TableLevelSharingPropertiesArgs) ToTableLevelSharingPropertiesPtrOutputWithContext(ctx context.Context) TableLevelSharingPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableLevelSharingPropertiesOutput).ToTableLevelSharingPropertiesPtrOutputWithContext(ctx)
-}
-
-// TableLevelSharingPropertiesPtrInput is an input type that accepts TableLevelSharingPropertiesArgs, TableLevelSharingPropertiesPtr and TableLevelSharingPropertiesPtrOutput values.
-// You can construct a concrete instance of `TableLevelSharingPropertiesPtrInput` via:
-//
-//	        TableLevelSharingPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type TableLevelSharingPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToTableLevelSharingPropertiesPtrOutput() TableLevelSharingPropertiesPtrOutput
-	ToTableLevelSharingPropertiesPtrOutputWithContext(context.Context) TableLevelSharingPropertiesPtrOutput
-}
-
-type tableLevelSharingPropertiesPtrType TableLevelSharingPropertiesArgs
-
-func TableLevelSharingPropertiesPtr(v *TableLevelSharingPropertiesArgs) TableLevelSharingPropertiesPtrInput {
-	return (*tableLevelSharingPropertiesPtrType)(v)
-}
-
-func (*tableLevelSharingPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableLevelSharingProperties)(nil)).Elem()
-}
-
-func (i *tableLevelSharingPropertiesPtrType) ToTableLevelSharingPropertiesPtrOutput() TableLevelSharingPropertiesPtrOutput {
-	return i.ToTableLevelSharingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *tableLevelSharingPropertiesPtrType) ToTableLevelSharingPropertiesPtrOutputWithContext(ctx context.Context) TableLevelSharingPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableLevelSharingPropertiesPtrOutput)
-}
-
-// Tables that will be included and excluded in the follower database
-type TableLevelSharingPropertiesOutput struct{ *pulumi.OutputState }
-
-func (TableLevelSharingPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableLevelSharingProperties)(nil)).Elem()
-}
-
-func (o TableLevelSharingPropertiesOutput) ToTableLevelSharingPropertiesOutput() TableLevelSharingPropertiesOutput {
-	return o
-}
-
-func (o TableLevelSharingPropertiesOutput) ToTableLevelSharingPropertiesOutputWithContext(ctx context.Context) TableLevelSharingPropertiesOutput {
-	return o
-}
-
-func (o TableLevelSharingPropertiesOutput) ToTableLevelSharingPropertiesPtrOutput() TableLevelSharingPropertiesPtrOutput {
-	return o.ToTableLevelSharingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o TableLevelSharingPropertiesOutput) ToTableLevelSharingPropertiesPtrOutputWithContext(ctx context.Context) TableLevelSharingPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableLevelSharingProperties) *TableLevelSharingProperties {
-		return &v
-	}).(TableLevelSharingPropertiesPtrOutput)
-}
-
-// List of external tables exclude from the follower database
-func (o TableLevelSharingPropertiesOutput) ExternalTablesToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableLevelSharingProperties) []string { return v.ExternalTablesToExclude }).(pulumi.StringArrayOutput)
-}
-
-// List of external tables to include in the follower database
-func (o TableLevelSharingPropertiesOutput) ExternalTablesToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableLevelSharingProperties) []string { return v.ExternalTablesToInclude }).(pulumi.StringArrayOutput)
-}
-
-// List of materialized views exclude from the follower database
-func (o TableLevelSharingPropertiesOutput) MaterializedViewsToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableLevelSharingProperties) []string { return v.MaterializedViewsToExclude }).(pulumi.StringArrayOutput)
-}
-
-// List of materialized views to include in the follower database
-func (o TableLevelSharingPropertiesOutput) MaterializedViewsToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableLevelSharingProperties) []string { return v.MaterializedViewsToInclude }).(pulumi.StringArrayOutput)
-}
-
-// List of tables to exclude from the follower database
-func (o TableLevelSharingPropertiesOutput) TablesToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableLevelSharingProperties) []string { return v.TablesToExclude }).(pulumi.StringArrayOutput)
-}
-
-// List of tables to include in the follower database
-func (o TableLevelSharingPropertiesOutput) TablesToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableLevelSharingProperties) []string { return v.TablesToInclude }).(pulumi.StringArrayOutput)
-}
-
-type TableLevelSharingPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (TableLevelSharingPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableLevelSharingProperties)(nil)).Elem()
-}
-
-func (o TableLevelSharingPropertiesPtrOutput) ToTableLevelSharingPropertiesPtrOutput() TableLevelSharingPropertiesPtrOutput {
-	return o
-}
-
-func (o TableLevelSharingPropertiesPtrOutput) ToTableLevelSharingPropertiesPtrOutputWithContext(ctx context.Context) TableLevelSharingPropertiesPtrOutput {
-	return o
-}
-
-func (o TableLevelSharingPropertiesPtrOutput) Elem() TableLevelSharingPropertiesOutput {
-	return o.ApplyT(func(v *TableLevelSharingProperties) TableLevelSharingProperties {
-		if v != nil {
-			return *v
-		}
-		var ret TableLevelSharingProperties
-		return ret
-	}).(TableLevelSharingPropertiesOutput)
-}
-
-// List of external tables exclude from the follower database
-func (o TableLevelSharingPropertiesPtrOutput) ExternalTablesToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalTablesToExclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of external tables to include in the follower database
-func (o TableLevelSharingPropertiesPtrOutput) ExternalTablesToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalTablesToInclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of materialized views exclude from the follower database
-func (o TableLevelSharingPropertiesPtrOutput) MaterializedViewsToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.MaterializedViewsToExclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of materialized views to include in the follower database
-func (o TableLevelSharingPropertiesPtrOutput) MaterializedViewsToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.MaterializedViewsToInclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of tables to exclude from the follower database
-func (o TableLevelSharingPropertiesPtrOutput) TablesToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.TablesToExclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of tables to include in the follower database
-func (o TableLevelSharingPropertiesPtrOutput) TablesToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.TablesToInclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// Tables that will be included and excluded in the follower database
 type TableLevelSharingPropertiesResponse struct {
 	// List of external tables exclude from the follower database
 	ExternalTablesToExclude []string `pulumi:"externalTablesToExclude"`
@@ -2052,90 +1727,6 @@ func (o TableLevelSharingPropertiesResponseOutput) TablesToExclude() pulumi.Stri
 // List of tables to include in the follower database
 func (o TableLevelSharingPropertiesResponseOutput) TablesToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TableLevelSharingPropertiesResponse) []string { return v.TablesToInclude }).(pulumi.StringArrayOutput)
-}
-
-type TableLevelSharingPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TableLevelSharingPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableLevelSharingPropertiesResponse)(nil)).Elem()
-}
-
-func (o TableLevelSharingPropertiesResponsePtrOutput) ToTableLevelSharingPropertiesResponsePtrOutput() TableLevelSharingPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o TableLevelSharingPropertiesResponsePtrOutput) ToTableLevelSharingPropertiesResponsePtrOutputWithContext(ctx context.Context) TableLevelSharingPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o TableLevelSharingPropertiesResponsePtrOutput) Elem() TableLevelSharingPropertiesResponseOutput {
-	return o.ApplyT(func(v *TableLevelSharingPropertiesResponse) TableLevelSharingPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TableLevelSharingPropertiesResponse
-		return ret
-	}).(TableLevelSharingPropertiesResponseOutput)
-}
-
-// List of external tables exclude from the follower database
-func (o TableLevelSharingPropertiesResponsePtrOutput) ExternalTablesToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalTablesToExclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of external tables to include in the follower database
-func (o TableLevelSharingPropertiesResponsePtrOutput) ExternalTablesToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalTablesToInclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of materialized views exclude from the follower database
-func (o TableLevelSharingPropertiesResponsePtrOutput) MaterializedViewsToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.MaterializedViewsToExclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of materialized views to include in the follower database
-func (o TableLevelSharingPropertiesResponsePtrOutput) MaterializedViewsToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.MaterializedViewsToInclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of tables to exclude from the follower database
-func (o TableLevelSharingPropertiesResponsePtrOutput) TablesToExclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.TablesToExclude
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of tables to include in the follower database
-func (o TableLevelSharingPropertiesResponsePtrOutput) TablesToInclude() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableLevelSharingPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.TablesToInclude
-	}).(pulumi.StringArrayOutput)
 }
 
 // Represents a tenant ID that is trusted by the cluster.
@@ -2565,7 +2156,6 @@ func init() {
 	pulumi.RegisterOutputType(AzureSkuResponseOutput{})
 	pulumi.RegisterOutputType(DatabasePrincipalResponseOutput{})
 	pulumi.RegisterOutputType(DatabasePrincipalResponseArrayOutput{})
-	pulumi.RegisterOutputType(DatabaseStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(FollowerDatabaseDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(FollowerDatabaseDefinitionResponseArrayOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
@@ -2588,13 +2178,9 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPropertyResponseOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(TableLevelSharingPropertiesOutput{})
-	pulumi.RegisterOutputType(TableLevelSharingPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TableLevelSharingPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(TableLevelSharingPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(TrustedExternalTenantOutput{})
 	pulumi.RegisterOutputType(TrustedExternalTenantArrayOutput{})
 	pulumi.RegisterOutputType(TrustedExternalTenantResponseOutput{})

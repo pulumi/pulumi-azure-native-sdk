@@ -11,7 +11,7 @@ import (
 )
 
 // Solution REST Resource.
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview.
 func LookupSolution(ctx *pulumi.Context, args *LookupSolutionArgs, opts ...pulumi.InvokeOption) (*LookupSolutionResult, error) {
 	var rv LookupSolutionResult
 	err := ctx.Invoke("azure-native:migrate:getSolution", args, &rv, opts...)

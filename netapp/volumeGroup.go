@@ -12,7 +12,7 @@ import (
 )
 
 // Volume group resource for create
-// API Version: 2021-10-01.
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2021-10-01
 type VolumeGroup struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +24,6 @@ type VolumeGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 	// List of volumes from group
@@ -63,6 +61,9 @@ func NewVolumeGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20220901:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20221101:VolumeGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -104,10 +105,8 @@ type volumeGroupArgs struct {
 	GroupMetaData *VolumeGroupMetaData `pulumi:"groupMetaData"`
 	// Resource location
 	Location *string `pulumi:"location"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags
-	Tags map[string]string `pulumi:"tags"`
 	// The name of the volumeGroup
 	VolumeGroupName *string `pulumi:"volumeGroupName"`
 	// List of volumes from group
@@ -122,10 +121,8 @@ type VolumeGroupArgs struct {
 	GroupMetaData VolumeGroupMetaDataPtrInput
 	// Resource location
 	Location pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags
-	Tags pulumi.StringMapInput
 	// The name of the volumeGroup
 	VolumeGroupName pulumi.StringPtrInput
 	// List of volumes from group
@@ -187,11 +184,6 @@ func (o VolumeGroupOutput) Name() pulumi.StringOutput {
 // Azure lifecycle management
 func (o VolumeGroupOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeGroup) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Resource tags
-func (o VolumeGroupOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *VolumeGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Resource type

@@ -12,8 +12,6 @@ import (
 )
 
 // Service Registry resource
-//
-// Deprecated: azure-native:appplatform/v20221201:ServiceRegistry is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ServiceRegistry to guarantee forwards compatibility.
 type ServiceRegistry struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +62,12 @@ func NewServiceRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:ServiceRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ServiceRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ServiceRegistry"),
 		},
 	})
 	opts = append(opts, aliases)

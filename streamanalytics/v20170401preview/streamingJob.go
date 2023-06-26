@@ -149,11 +149,11 @@ type streamingJobArgs struct {
 	// The storage account where the custom code artifacts are located.
 	Externals *External `pulumi:"externals"`
 	// A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
-	Functions []FunctionType `pulumi:"functions"`
+	Functions []Function `pulumi:"functions"`
 	// Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs.
 	Identity *Identity `pulumi:"identity"`
 	// A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input.
-	Inputs []InputType `pulumi:"inputs"`
+	Inputs []Input `pulumi:"inputs"`
 	// The name of the streaming job.
 	JobName *string `pulumi:"jobName"`
 	// The properties that are associated with an Azure Storage account with MSI
@@ -169,7 +169,7 @@ type streamingJobArgs struct {
 	// Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime.
 	OutputStartTime *string `pulumi:"outputStartTime"`
 	// A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output.
-	Outputs []OutputType `pulumi:"outputs"`
+	Outputs []Output `pulumi:"outputs"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests.
@@ -199,11 +199,11 @@ type StreamingJobArgs struct {
 	// The storage account where the custom code artifacts are located.
 	Externals ExternalPtrInput
 	// A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
-	Functions FunctionTypeArrayInput
+	Functions FunctionArrayInput
 	// Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs.
 	Identity IdentityPtrInput
 	// A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input.
-	Inputs InputTypeArrayInput
+	Inputs InputArrayInput
 	// The name of the streaming job.
 	JobName pulumi.StringPtrInput
 	// The properties that are associated with an Azure Storage account with MSI
@@ -219,7 +219,7 @@ type StreamingJobArgs struct {
 	// Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime.
 	OutputStartTime pulumi.StringPtrInput
 	// A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output.
-	Outputs OutputTypeArrayInput
+	Outputs OutputArrayInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests.

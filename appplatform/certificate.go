@@ -12,14 +12,16 @@ import (
 )
 
 // Certificate resource payload.
-// API Version: 2020-07-01.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-07-01
 type Certificate struct {
 	pulumi.CustomResourceState
 
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the certificate resource payload.
-	Properties CertificatePropertiesResponseOutput `pulumi:"properties"`
+	Properties pulumi.AnyOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -74,6 +76,12 @@ func NewCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:Certificate"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:Certificate"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Certificate
@@ -111,7 +119,7 @@ type certificateArgs struct {
 	// The name of the certificate resource.
 	CertificateName *string `pulumi:"certificateName"`
 	// Properties of the certificate resource payload.
-	Properties *CertificateProperties `pulumi:"properties"`
+	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Service resource.
@@ -123,7 +131,7 @@ type CertificateArgs struct {
 	// The name of the certificate resource.
 	CertificateName pulumi.StringPtrInput
 	// Properties of the certificate resource payload.
-	Properties CertificatePropertiesPtrInput
+	Properties pulumi.Input
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Service resource.
@@ -173,8 +181,13 @@ func (o CertificateOutput) Name() pulumi.StringOutput {
 }
 
 // Properties of the certificate resource payload.
-func (o CertificateOutput) Properties() CertificatePropertiesResponseOutput {
-	return o.ApplyT(func(v *Certificate) CertificatePropertiesResponseOutput { return v.Properties }).(CertificatePropertiesResponseOutput)
+func (o CertificateOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o CertificateOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Certificate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

@@ -11,7 +11,7 @@ import (
 )
 
 // Get information about an EnterprisePolicy
-// API Version: 2020-10-30-preview.
+// Azure REST API version: 2020-10-30-preview.
 func LookupEnterprisePolicy(ctx *pulumi.Context, args *LookupEnterprisePolicyArgs, opts ...pulumi.InvokeOption) (*LookupEnterprisePolicyResult, error) {
 	var rv LookupEnterprisePolicyResult
 	err := ctx.Invoke("azure-native:powerplatform:getEnterprisePolicy", args, &rv, opts...)

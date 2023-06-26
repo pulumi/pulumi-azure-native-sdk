@@ -18,15 +18,6 @@ const (
 	AzureFrontDoorEnabledDisabled = AzureFrontDoorEnabled("Disabled")
 )
 
-// The type of file share config.
-type ConfigurationType string
-
-const (
-	ConfigurationTypeSkip           = ConfigurationType("Skip")
-	ConfigurationTypeCreateAndMount = ConfigurationType("CreateAndMount")
-	ConfigurationTypeMount          = ConfigurationType("Mount")
-)
-
 // Tier of the server SKU
 type DatabaseTier string
 
@@ -198,19 +189,6 @@ type DatabaseType string
 
 const (
 	DatabaseTypeMySql = DatabaseType("MySql")
-)
-
-// Defines the disk sku name.
-type DiskSkuName string
-
-const (
-	DiskSkuName_Standard_LRS    = DiskSkuName("Standard_LRS")
-	DiskSkuName_Premium_LRS     = DiskSkuName("Premium_LRS")
-	DiskSkuName_StandardSSD_LRS = DiskSkuName("StandardSSD_LRS")
-	DiskSkuName_UltraSSD_LRS    = DiskSkuName("UltraSSD_LRS")
-	DiskSkuName_Premium_ZRS     = DiskSkuName("Premium_ZRS")
-	DiskSkuName_StandardSSD_ZRS = DiskSkuName("StandardSSD_ZRS")
-	DiskSkuName_PremiumV2_LRS   = DiskSkuName("PremiumV2_LRS")
 )
 
 // Storage type
@@ -466,14 +444,6 @@ const (
 	OSImageVersionLatest = OSImageVersion("latest")
 )
 
-// The OS Type
-type OSType string
-
-const (
-	OSTypeLinux   = OSType("Linux")
-	OSTypeWindows = OSType("Windows")
-)
-
 // PHP version
 type PHPVersion string
 
@@ -489,23 +459,6 @@ type RedisCacheFamily string
 const (
 	RedisCacheFamilyC = RedisCacheFamily("C")
 	RedisCacheFamilyP = RedisCacheFamily("P")
-)
-
-// Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
-type RoutingPreference string
-
-const (
-	RoutingPreferenceDefault  = RoutingPreference("Default")
-	RoutingPreferenceRouteAll = RoutingPreference("RouteAll")
-)
-
-// The configuration Type.
-type SAPConfigurationType string
-
-const (
-	SAPConfigurationTypeDeployment             = SAPConfigurationType("Deployment")
-	SAPConfigurationTypeDiscovery              = SAPConfigurationType("Discovery")
-	SAPConfigurationTypeDeploymentWithOSConfig = SAPConfigurationType("DeploymentWithOSConfig")
 )
 
 // The DB scale method.
@@ -554,15 +507,6 @@ const (
 	SAPProductTypeECC    = SAPProductType("ECC")
 	SAPProductTypeS4HANA = SAPProductType("S4HANA")
 	SAPProductTypeOther  = SAPProductType("Other")
-)
-
-// The SAP software installation Type.
-type SAPSoftwareInstallationType string
-
-const (
-	SAPSoftwareInstallationTypeServiceInitiated          = SAPSoftwareInstallationType("ServiceInitiated")
-	SAPSoftwareInstallationTypeSAPInstallWithoutOSConfig = SAPSoftwareInstallationType("SAPInstallWithoutOSConfig")
-	SAPSoftwareInstallationTypeExternal                  = SAPSoftwareInstallationType("External")
 )
 
 // Search type
@@ -738,15 +682,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
-
-// Gets or sets certificate preference if secure communication is enabled.
-type SslPreference string
-
-const (
-	SslPreferenceDisabled          = SslPreference("Disabled")
-	SslPreferenceRootCertificate   = SslPreference("RootCertificate")
-	SslPreferenceServerCertificate = SslPreference("ServerCertificate")
-)
 
 // Application version
 type WordpressVersions string

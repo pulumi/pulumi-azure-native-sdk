@@ -11,7 +11,7 @@ import (
 )
 
 // Base definition for datastore secrets.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-04-01.
 func ListDatastoreSecrets(ctx *pulumi.Context, args *ListDatastoreSecretsArgs, opts ...pulumi.InvokeOption) (*ListDatastoreSecretsResult, error) {
 	var rv ListDatastoreSecretsResult
 	err := ctx.Invoke("azure-native:machinelearningservices:listDatastoreSecrets", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 )
 
 // An device group resource belonging to a product resource.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview
 type DeviceGroup struct {
 	pulumi.CustomResourceState
 

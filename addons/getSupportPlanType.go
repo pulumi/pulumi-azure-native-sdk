@@ -11,7 +11,7 @@ import (
 )
 
 // Returns whether or not the canonical support plan of type {type} is enabled for the subscription.
-// API Version: 2018-03-01.
+// Azure REST API version: 2018-03-01.
 func LookupSupportPlanType(ctx *pulumi.Context, args *LookupSupportPlanTypeArgs, opts ...pulumi.InvokeOption) (*LookupSupportPlanTypeResult, error) {
 	var rv LookupSupportPlanTypeResult
 	err := ctx.Invoke("azure-native:addons:getSupportPlanType", args, &rv, opts...)

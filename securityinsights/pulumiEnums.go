@@ -10,6 +10,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The type of the automation rule action.
+type ActionType string
+
+const (
+	// Modify an object's properties
+	ActionTypeModifyProperties = ActionType("ModifyProperties")
+	// Run a playbook on an object
+	ActionTypeRunPlaybook = ActionType("RunPlaybook")
+)
+
+// Alert detail
+type AlertDetail string
+
+const (
+	// Alert display name
+	AlertDetailDisplayName = AlertDetail("DisplayName")
+	// Alert severity
+	AlertDetailSeverity = AlertDetail("Severity")
+)
+
+// The V3 alert property
+type AlertProperty string
+
+const (
+	// Alert's link
+	AlertPropertyAlertLink = AlertProperty("AlertLink")
+	// Confidence level property
+	AlertPropertyConfidenceLevel = AlertProperty("ConfidenceLevel")
+	// Confidence score
+	AlertPropertyConfidenceScore = AlertProperty("ConfidenceScore")
+	// Extended links to the alert
+	AlertPropertyExtendedLinks = AlertProperty("ExtendedLinks")
+	// Product name alert property
+	AlertPropertyProductName = AlertProperty("ProductName")
+	// Provider name alert property
+	AlertPropertyProviderName = AlertProperty("ProviderName")
+	// Product component name alert property
+	AlertPropertyProductComponentName = AlertProperty("ProductComponentName")
+	// Remediation steps alert property
+	AlertPropertyRemediationSteps = AlertProperty("RemediationSteps")
+	// Techniques alert property
+	AlertPropertyTechniques = AlertProperty("Techniques")
+)
+
 // The alert rule kind
 type AlertRuleKind string
 
@@ -56,25 +100,46 @@ const (
 	AttackTacticInhibitResponseFunction = AttackTactic("InhibitResponseFunction")
 )
 
-// The type of the automation rule action
-type AutomationRuleActionType string
+type AutomationRulePropertyArrayChangedConditionSupportedArrayType string
 
 const (
-	// Modify an object's properties
-	AutomationRuleActionTypeModifyProperties = AutomationRuleActionType("ModifyProperties")
-	// Run a playbook on an object
-	AutomationRuleActionTypeRunPlaybook = AutomationRuleActionType("RunPlaybook")
+	// Evaluate the condition on the alerts
+	AutomationRulePropertyArrayChangedConditionSupportedArrayTypeAlerts = AutomationRulePropertyArrayChangedConditionSupportedArrayType("Alerts")
+	// Evaluate the condition on the labels
+	AutomationRulePropertyArrayChangedConditionSupportedArrayTypeLabels = AutomationRulePropertyArrayChangedConditionSupportedArrayType("Labels")
+	// Evaluate the condition on the tactics
+	AutomationRulePropertyArrayChangedConditionSupportedArrayTypeTactics = AutomationRulePropertyArrayChangedConditionSupportedArrayType("Tactics")
+	// Evaluate the condition on the comments
+	AutomationRulePropertyArrayChangedConditionSupportedArrayTypeComments = AutomationRulePropertyArrayChangedConditionSupportedArrayType("Comments")
 )
 
-// The type of the automation rule condition
-type AutomationRuleConditionType string
+type AutomationRulePropertyArrayChangedConditionSupportedChangeType string
 
 const (
-	// Evaluate an object property value
-	AutomationRuleConditionTypeProperty = AutomationRuleConditionType("Property")
+	// Evaluate the condition on items added to the array
+	AutomationRulePropertyArrayChangedConditionSupportedChangeTypeAdded = AutomationRulePropertyArrayChangedConditionSupportedChangeType("Added")
 )
 
-// The operator to use for evaluation the condition
+type AutomationRulePropertyChangedConditionSupportedChangedType string
+
+const (
+	// Evaluate the condition on the previous value of the property
+	AutomationRulePropertyChangedConditionSupportedChangedTypeChangedFrom = AutomationRulePropertyChangedConditionSupportedChangedType("ChangedFrom")
+	// Evaluate the condition on the updated value of the property
+	AutomationRulePropertyChangedConditionSupportedChangedTypeChangedTo = AutomationRulePropertyChangedConditionSupportedChangedType("ChangedTo")
+)
+
+type AutomationRulePropertyChangedConditionSupportedPropertyType string
+
+const (
+	// Evaluate the condition on the incident severity
+	AutomationRulePropertyChangedConditionSupportedPropertyTypeIncidentSeverity = AutomationRulePropertyChangedConditionSupportedPropertyType("IncidentSeverity")
+	// Evaluate the condition on the incident status
+	AutomationRulePropertyChangedConditionSupportedPropertyTypeIncidentStatus = AutomationRulePropertyChangedConditionSupportedPropertyType("IncidentStatus")
+	// Evaluate the condition on the incident owner
+	AutomationRulePropertyChangedConditionSupportedPropertyTypeIncidentOwner = AutomationRulePropertyChangedConditionSupportedPropertyType("IncidentOwner")
+)
+
 type AutomationRulePropertyConditionSupportedOperator string
 
 const (
@@ -96,7 +161,7 @@ const (
 	AutomationRulePropertyConditionSupportedOperatorNotEndsWith = AutomationRulePropertyConditionSupportedOperator("NotEndsWith")
 )
 
-// The property to evaluate
+// The property to evaluate in an automation rule property condition.
 type AutomationRulePropertyConditionSupportedProperty string
 
 const (
@@ -108,15 +173,19 @@ const (
 	AutomationRulePropertyConditionSupportedPropertyIncidentSeverity = AutomationRulePropertyConditionSupportedProperty("IncidentSeverity")
 	// The status of the incident
 	AutomationRulePropertyConditionSupportedPropertyIncidentStatus = AutomationRulePropertyConditionSupportedProperty("IncidentStatus")
-	// The tactics of the incident
-	AutomationRulePropertyConditionSupportedPropertyIncidentTactics = AutomationRulePropertyConditionSupportedProperty("IncidentTactics")
 	// The related Analytic rule ids of the incident
 	AutomationRulePropertyConditionSupportedPropertyIncidentRelatedAnalyticRuleIds = AutomationRulePropertyConditionSupportedProperty("IncidentRelatedAnalyticRuleIds")
+	// The tactics of the incident
+	AutomationRulePropertyConditionSupportedPropertyIncidentTactics = AutomationRulePropertyConditionSupportedProperty("IncidentTactics")
+	// The labels of the incident
+	AutomationRulePropertyConditionSupportedPropertyIncidentLabel = AutomationRulePropertyConditionSupportedProperty("IncidentLabel")
 	// The provider name of the incident
 	AutomationRulePropertyConditionSupportedPropertyIncidentProviderName = AutomationRulePropertyConditionSupportedProperty("IncidentProviderName")
+	// The update source of the incident
+	AutomationRulePropertyConditionSupportedPropertyIncidentUpdatedBySource = AutomationRulePropertyConditionSupportedProperty("IncidentUpdatedBySource")
 	// The account Azure Active Directory tenant id
 	AutomationRulePropertyConditionSupportedPropertyAccountAadTenantId = AutomationRulePropertyConditionSupportedProperty("AccountAadTenantId")
-	// The account Azure Active Directory user id.
+	// The account Azure Active Directory user id
 	AutomationRulePropertyConditionSupportedPropertyAccountAadUserId = AutomationRulePropertyConditionSupportedProperty("AccountAadUserId")
 	// The account name
 	AutomationRulePropertyConditionSupportedPropertyAccountName = AutomationRulePropertyConditionSupportedProperty("AccountName")
@@ -130,6 +199,10 @@ const (
 	AutomationRulePropertyConditionSupportedPropertyAccountObjectGuid = AutomationRulePropertyConditionSupportedProperty("AccountObjectGuid")
 	// The account user principal name suffix
 	AutomationRulePropertyConditionSupportedPropertyAccountUPNSuffix = AutomationRulePropertyConditionSupportedProperty("AccountUPNSuffix")
+	// The name of the product of the alert
+	AutomationRulePropertyConditionSupportedPropertyAlertProductNames = AutomationRulePropertyConditionSupportedProperty("AlertProductNames")
+	// The analytic rule ids of the alert
+	AutomationRulePropertyConditionSupportedPropertyAlertAnalyticRuleIds = AutomationRulePropertyConditionSupportedProperty("AlertAnalyticRuleIds")
 	// The Azure resource id
 	AutomationRulePropertyConditionSupportedPropertyAzureResourceResourceId = AutomationRulePropertyConditionSupportedProperty("AzureResourceResourceId")
 	// The Azure resource subscription id
@@ -156,7 +229,7 @@ const (
 	AutomationRulePropertyConditionSupportedPropertyHostNTDomain = AutomationRulePropertyConditionSupportedProperty("HostNTDomain")
 	// The host operating system
 	AutomationRulePropertyConditionSupportedPropertyHostOSVersion = AutomationRulePropertyConditionSupportedProperty("HostOSVersion")
-	// The IoT device id
+	// "The IoT device id
 	AutomationRulePropertyConditionSupportedPropertyIoTDeviceId = AutomationRulePropertyConditionSupportedProperty("IoTDeviceId")
 	// The IoT device name
 	AutomationRulePropertyConditionSupportedPropertyIoTDeviceName = AutomationRulePropertyConditionSupportedProperty("IoTDeviceName")
@@ -206,22 +279,23 @@ const (
 	AutomationRulePropertyConditionSupportedPropertyUrl = AutomationRulePropertyConditionSupportedProperty("Url")
 )
 
+type ConditionType string
+
+const (
+	// Evaluate an object property value
+	ConditionTypeProperty = ConditionType("Property")
+	// Evaluate an object property changed value
+	ConditionTypePropertyChanged = ConditionType("PropertyChanged")
+	// Evaluate an object array property changed value
+	ConditionTypePropertyArrayChanged = ConditionType("PropertyArrayChanged")
+)
+
 // Content type.
 type ContentType string
 
 const (
 	ContentTypeAnalyticRule = ContentType("AnalyticRule")
 	ContentTypeWorkbook     = ContentType("Workbook")
-)
-
-// The type of identity that last modified the resource.
-type CreatedByType string
-
-const (
-	CreatedByTypeUser            = CreatedByType("User")
-	CreatedByTypeApplication     = CreatedByType("Application")
-	CreatedByTypeManagedIdentity = CreatedByType("ManagedIdentity")
-	CreatedByTypeKey             = CreatedByType("Key")
 )
 
 // the entity query kind
@@ -253,6 +327,84 @@ const (
 	DataTypeStateDisabled = DataTypeState("Disabled")
 )
 
+// Status while fetching the last deployment.
+type DeploymentFetchStatus string
+
+const (
+	DeploymentFetchStatusSuccess      = DeploymentFetchStatus("Success")
+	DeploymentFetchStatusUnauthorized = DeploymentFetchStatus("Unauthorized")
+	DeploymentFetchStatusNotFound     = DeploymentFetchStatus("NotFound")
+)
+
+// The outcome of the deployment.
+type DeploymentResult string
+
+const (
+	DeploymentResultSuccess  = DeploymentResult("Success")
+	DeploymentResultCanceled = DeploymentResult("Canceled")
+	DeploymentResultFailed   = DeploymentResult("Failed")
+)
+
+// Current status of the deployment.
+type DeploymentState string
+
+const (
+	DeploymentState_In_Progress = DeploymentState("In_Progress")
+	DeploymentStateCompleted    = DeploymentState("Completed")
+	DeploymentStateQueued       = DeploymentState("Queued")
+	DeploymentStateCanceling    = DeploymentState("Canceling")
+)
+
+// The V3 type of the mapped entity
+type EntityMappingType string
+
+const (
+	// User account entity type
+	EntityMappingTypeAccount = EntityMappingType("Account")
+	// Host entity type
+	EntityMappingTypeHost = EntityMappingType("Host")
+	// IP address entity type
+	EntityMappingTypeIP = EntityMappingType("IP")
+	// Malware entity type
+	EntityMappingTypeMalware = EntityMappingType("Malware")
+	// System file entity type
+	EntityMappingTypeFile = EntityMappingType("File")
+	// Process entity type
+	EntityMappingTypeProcess = EntityMappingType("Process")
+	// Cloud app entity type
+	EntityMappingTypeCloudApplication = EntityMappingType("CloudApplication")
+	// DNS entity type
+	EntityMappingTypeDNS = EntityMappingType("DNS")
+	// Azure resource entity type
+	EntityMappingTypeAzureResource = EntityMappingType("AzureResource")
+	// File-hash entity type
+	EntityMappingTypeFileHash = EntityMappingType("FileHash")
+	// Registry key entity type
+	EntityMappingTypeRegistryKey = EntityMappingType("RegistryKey")
+	// Registry value entity type
+	EntityMappingTypeRegistryValue = EntityMappingType("RegistryValue")
+	// Security group entity type
+	EntityMappingTypeSecurityGroup = EntityMappingType("SecurityGroup")
+	// URL entity type
+	EntityMappingTypeURL = EntityMappingType("URL")
+	// Mailbox entity type
+	EntityMappingTypeMailbox = EntityMappingType("Mailbox")
+	// Mail cluster entity type
+	EntityMappingTypeMailCluster = EntityMappingType("MailCluster")
+	// Mail message entity type
+	EntityMappingTypeMailMessage = EntityMappingType("MailMessage")
+	// Submission mail entity type
+	EntityMappingTypeSubmissionMail = EntityMappingType("SubmissionMail")
+)
+
+// The entity provider that is synced.
+type EntityProviders string
+
+const (
+	EntityProvidersActiveDirectory      = EntityProviders("ActiveDirectory")
+	EntityProvidersAzureActiveDirectory = EntityProviders("AzureActiveDirectory")
+)
+
 // The entity query kind
 type EntityTimelineKind string
 
@@ -263,6 +415,8 @@ const (
 	EntityTimelineKindBookmark = EntityTimelineKind("Bookmark")
 	// security alerts
 	EntityTimelineKindSecurityAlert = EntityTimelineKind("SecurityAlert")
+	// anomaly
+	EntityTimelineKindAnomaly = EntityTimelineKind("Anomaly")
 )
 
 // The type of the query's source entity
@@ -311,6 +465,57 @@ const (
 	EntityTypeMailbox = EntityType("Mailbox")
 	// Entity represents submission mail in the system.
 	EntityTypeSubmissionMail = EntityType("SubmissionMail")
+	// Entity represents network interface in the system.
+	EntityTypeNic = EntityType("Nic")
+)
+
+// The event grouping aggregation kinds
+type EventGroupingAggregationKind string
+
+const (
+	EventGroupingAggregationKindSingleAlert    = EventGroupingAggregationKind("SingleAlert")
+	EventGroupingAggregationKindAlertPerResult = EventGroupingAggregationKind("AlertPerResult")
+)
+
+// The format of the file
+type FileFormat string
+
+const (
+	// A CSV file.
+	FileFormatCSV = FileFormat("CSV")
+	// A JSON file.
+	FileFormatJSON = FileFormat("JSON")
+	// A file of other format.
+	FileFormatUnspecified = FileFormat("Unspecified")
+)
+
+// The content type of this file.
+type FileImportContentType string
+
+const (
+	// File containing records with the core fields of an indicator, plus the observables to construct the STIX pattern.
+	FileImportContentTypeBasicIndicator = FileImportContentType("BasicIndicator")
+	// File containing STIX indicators.
+	FileImportContentTypeStixIndicator = FileImportContentType("StixIndicator")
+	// File containing other records.
+	FileImportContentTypeUnspecified = FileImportContentType("Unspecified")
+)
+
+// Flag indicates if this package is in preview.
+type Flag string
+
+const (
+	FlagTrue  = Flag("true")
+	FlagFalse = Flag("false")
+)
+
+// The hypothesis status of the hunt.
+type HypothesisStatus string
+
+const (
+	HypothesisStatusUnknown     = HypothesisStatus("Unknown")
+	HypothesisStatusInvalidated = HypothesisStatus("Invalidated")
+	HypothesisStatusValidated   = HypothesisStatus("Validated")
 )
 
 // The reason the incident was closed
@@ -367,24 +572,60 @@ const (
 	IncidentStatusClosed = IncidentStatus("Closed")
 )
 
-// The kind of content the metadata is for.
+type IncidentTaskStatus string
+
+const (
+	// A new task
+	IncidentTaskStatusNew = IncidentTaskStatus("New")
+	// A completed task
+	IncidentTaskStatusCompleted = IncidentTaskStatus("Completed")
+)
+
+// Describes how to ingest the records in the file.
+type IngestionMode string
+
+const (
+	// No records should be ingested when invalid records are detected.
+	IngestionModeIngestOnlyIfAllAreValid = IngestionMode("IngestOnlyIfAllAreValid")
+	// Valid records should still be ingested when invalid records are detected.
+	IngestionModeIngestAnyValidRecords = IngestionMode("IngestAnyValidRecords")
+	// Unspecified
+	IngestionModeUnspecified = IngestionMode("Unspecified")
+)
+
+// Type of the content item we depend on
 type Kind string
 
 const (
-	KindDataConnector         = Kind("DataConnector")
-	KindDataType              = Kind("DataType")
-	KindWorkbook              = Kind("Workbook")
-	KindWorkbookTemplate      = Kind("WorkbookTemplate")
-	KindPlaybook              = Kind("Playbook")
-	KindPlaybookTemplate      = Kind("PlaybookTemplate")
-	KindAnalyticsRuleTemplate = Kind("AnalyticsRuleTemplate")
-	KindAnalyticsRule         = Kind("AnalyticsRule")
-	KindHuntingQuery          = Kind("HuntingQuery")
-	KindInvestigationQuery    = Kind("InvestigationQuery")
-	KindParser                = Kind("Parser")
-	KindWatchlist             = Kind("Watchlist")
-	KindWatchlistTemplate     = Kind("WatchlistTemplate")
-	KindSolution              = Kind("Solution")
+	KindDataConnector            = Kind("DataConnector")
+	KindDataType                 = Kind("DataType")
+	KindWorkbook                 = Kind("Workbook")
+	KindWorkbookTemplate         = Kind("WorkbookTemplate")
+	KindPlaybook                 = Kind("Playbook")
+	KindPlaybookTemplate         = Kind("PlaybookTemplate")
+	KindAnalyticsRuleTemplate    = Kind("AnalyticsRuleTemplate")
+	KindAnalyticsRule            = Kind("AnalyticsRule")
+	KindHuntingQuery             = Kind("HuntingQuery")
+	KindInvestigationQuery       = Kind("InvestigationQuery")
+	KindParser                   = Kind("Parser")
+	KindWatchlist                = Kind("Watchlist")
+	KindWatchlistTemplate        = Kind("WatchlistTemplate")
+	KindSolution                 = Kind("Solution")
+	KindAzureFunction            = Kind("AzureFunction")
+	KindLogicAppsCustomConnector = Kind("LogicAppsCustomConnector")
+	KindAutomationRule           = Kind("AutomationRule")
+)
+
+// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+type MatchingMethod string
+
+const (
+	// Grouping alerts into a single incident if all the entities match
+	MatchingMethodAllEntities = MatchingMethod("AllEntities")
+	// Grouping any alerts triggered by this rule into a single incident
+	MatchingMethodAnyAlert = MatchingMethod("AnyAlert")
+	// Grouping alerts into a single incident if the selected entities, custom details and alert details match
+	MatchingMethodSelected = MatchingMethod("Selected")
 )
 
 // The alerts' productName on which the cases will be generated
@@ -398,12 +639,42 @@ const (
 	MicrosoftSecurityProductName_Azure_Security_Center_for_IoT              = MicrosoftSecurityProductName("Azure Security Center for IoT")
 )
 
+// The current mode of the workspace manager configuration
+type Mode string
+
+const (
+	// The workspace manager configuration is enabled
+	ModeEnabled = Mode("Enabled")
+	// The workspace manager configuration is disabled
+	ModeDisabled = Mode("Disabled")
+)
+
 // Operator used for list of dependencies in criteria array.
 type Operator string
 
 const (
 	OperatorAND = Operator("AND")
 	OperatorOR  = Operator("OR")
+)
+
+// The type of the owner the incident is assigned to.
+type OwnerType string
+
+const (
+	// The incident owner type is unknown
+	OwnerTypeUnknown = OwnerType("Unknown")
+	// The incident owner type is an AAD user
+	OwnerTypeUser = OwnerType("User")
+	// The incident owner type is an AAD group
+	OwnerTypeGroup = OwnerType("Group")
+)
+
+// the packageKind of the package contains this template
+type PackageKind string
+
+const (
+	PackageKindSolution   = PackageKind("Solution")
+	PackageKindStandalone = PackageKind("Standalone")
 )
 
 // The repository type of the source control
@@ -459,6 +730,15 @@ const (
 	SourceKindSourceRepository = SourceKind("SourceRepository")
 )
 
+// The status of the hunt.
+type Status string
+
+const (
+	StatusNew    = Status("New")
+	StatusActive = Status("Active")
+	StatusClosed = Status("Closed")
+)
+
 // Type of support for content item
 type SupportTier string
 
@@ -469,11 +749,11 @@ const (
 )
 
 // The kind of the entity.
-type ThreatIntelligenceResourceKind string
+type ThreatIntelligenceResourceInnerKind string
 
 const (
 	// Entity represents threat intelligence indicator in the system.
-	ThreatIntelligenceResourceKindIndicator = ThreatIntelligenceResourceKind("indicator")
+	ThreatIntelligenceResourceInnerKindIndicator = ThreatIntelligenceResourceInnerKind("indicator")
 )
 
 // The operation against the threshold that triggers alert rule.
@@ -643,20 +923,22 @@ func (in *triggerOperatorPtr) ToTriggerOperatorPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerOperatorPtrOutput)
 }
 
-// The type of object the automation rule triggers on
 type TriggersOn string
 
 const (
 	// Trigger on Incidents
 	TriggersOnIncidents = TriggersOn("Incidents")
+	// Trigger on Alerts
+	TriggersOnAlerts = TriggersOn("Alerts")
 )
 
-// The type of event the automation rule triggers on
 type TriggersWhen string
 
 const (
 	// Trigger on created objects
 	TriggersWhenCreated = TriggersWhen("Created")
+	// Trigger on updated objects
+	TriggersWhenUpdated = TriggersWhen("Updated")
 )
 
 // The data source that enriched by ueba.
@@ -667,6 +949,14 @@ const (
 	UebaDataSourcesAzureActivity = UebaDataSources("AzureActivity")
 	UebaDataSourcesSecurityEvent = UebaDataSources("SecurityEvent")
 	UebaDataSourcesSigninLogs    = UebaDataSources("SigninLogs")
+)
+
+// The version number associated with the source control
+type Version string
+
+const (
+	VersionV1 = Version("V1")
+	VersionV2 = Version("V2")
 )
 
 func init() {

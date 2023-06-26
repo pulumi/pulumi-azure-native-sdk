@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Primary and Secondary ConnectionStrings to the NotificationHub
-// API Version: 2017-04-01.
+// Azure REST API version: 2017-04-01.
 func ListNotificationHubKeys(ctx *pulumi.Context, args *ListNotificationHubKeysArgs, opts ...pulumi.InvokeOption) (*ListNotificationHubKeysResult, error) {
 	var rv ListNotificationHubKeysResult
 	err := ctx.Invoke("azure-native:notificationhubs:listNotificationHubKeys", args, &rv, opts...)

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a description for the specified Private Endpoint Connection name.
-//
-// Deprecated: azure-native:eventhub/v20211101:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:eventhub/v20211101:getPrivateEndpointConnection", args, &rv, opts...)

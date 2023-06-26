@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
-// API Version: 2021-03-01.
+// Azure REST API version: 2022-05-01-preview.
 func LookupConnectedCluster(ctx *pulumi.Context, args *LookupConnectedClusterArgs, opts ...pulumi.InvokeOption) (*LookupConnectedClusterResult, error) {
 	var rv LookupConnectedClusterResult
 	err := ctx.Invoke("azure-native:kubernetes:getConnectedCluster", args, &rv, opts...)
@@ -56,6 +56,10 @@ type LookupConnectedClusterResult struct {
 	Name string `pulumi:"name"`
 	// Connected cluster offering
 	Offering string `pulumi:"offering"`
+	// The resource id of the private link scope this connected cluster is assigned to, if any.
+	PrivateLinkScopeResourceId *string `pulumi:"privateLinkScopeResourceId"`
+	// Property which describes the state of private link on a connected cluster resource.
+	PrivateLinkState *string `pulumi:"privateLinkState"`
 	// Provisioning state of the connected cluster resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource
@@ -78,6 +82,10 @@ func (val *LookupConnectedClusterResult) Defaults() *LookupConnectedClusterResul
 	tmp := *val
 	tmp.Identity = *tmp.Identity.Defaults()
 
+	if tmp.PrivateLinkState == nil {
+		privateLinkState_ := "Disabled"
+		tmp.PrivateLinkState = &privateLinkState_
+	}
 	return &tmp
 }
 
@@ -183,6 +191,16 @@ func (o LookupConnectedClusterResultOutput) Name() pulumi.StringOutput {
 // Connected cluster offering
 func (o LookupConnectedClusterResultOutput) Offering() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectedClusterResult) string { return v.Offering }).(pulumi.StringOutput)
+}
+
+// The resource id of the private link scope this connected cluster is assigned to, if any.
+func (o LookupConnectedClusterResultOutput) PrivateLinkScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) *string { return v.PrivateLinkScopeResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Property which describes the state of private link on a connected cluster resource.
+func (o LookupConnectedClusterResultOutput) PrivateLinkState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) *string { return v.PrivateLinkState }).(pulumi.StringPtrOutput)
 }
 
 // Provisioning state of the connected cluster resource.

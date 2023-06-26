@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an authorization rule for a namespace by name.
-// API Version: 2017-04-01.
+// Azure REST API version: 2017-04-01.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	var rv LookupNamespaceAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNamespaceAuthorizationRule", args, &rv, opts...)

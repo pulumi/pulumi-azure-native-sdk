@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the configuration details of the identity Provider configured in specified service instance.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func LookupIdentityProvider(ctx *pulumi.Context, args *LookupIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupIdentityProviderResult, error) {
 	var rv LookupIdentityProviderResult
 	err := ctx.Invoke("azure-native:apimanagement:getIdentityProvider", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupIdentityProvider(ctx *pulumi.Context, args *LookupIdentityProviderArg
 type LookupIdentityProviderArgs struct {
 	// Identity Provider Type identifier.
 	IdentityProviderName string `pulumi:"identityProviderName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -38,11 +38,13 @@ type LookupIdentityProviderResult struct {
 	Authority *string `pulumi:"authority"`
 	// Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
 	ClientId string `pulumi:"clientId"`
+	// The client library to be used in the developer portal. Only applies to AAD and AAD B2C Identity Provider.
+	ClientLibrary *string `pulumi:"clientLibrary"`
 	// Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
 	PasswordResetPolicyName *string `pulumi:"passwordResetPolicyName"`
@@ -54,7 +56,7 @@ type LookupIdentityProviderResult struct {
 	SigninTenant *string `pulumi:"signinTenant"`
 	// Signup Policy Name. Only applies to AAD B2C Identity Provider.
 	SignupPolicyName *string `pulumi:"signupPolicyName"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -74,7 +76,7 @@ func LookupIdentityProviderOutput(ctx *pulumi.Context, args LookupIdentityProvid
 type LookupIdentityProviderOutputArgs struct {
 	// Identity Provider Type identifier.
 	IdentityProviderName pulumi.StringInput `pulumi:"identityProviderName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -114,17 +116,22 @@ func (o LookupIdentityProviderResultOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIdentityProviderResult) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// The client library to be used in the developer portal. Only applies to AAD and AAD B2C Identity Provider.
+func (o LookupIdentityProviderResultOutput) ClientLibrary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupIdentityProviderResult) *string { return v.ClientLibrary }).(pulumi.StringPtrOutput)
+}
+
 // Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
 func (o LookupIdentityProviderResultOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIdentityProviderResult) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupIdentityProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIdentityProviderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupIdentityProviderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIdentityProviderResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -154,7 +161,7 @@ func (o LookupIdentityProviderResultOutput) SignupPolicyName() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupIdentityProviderResult) *string { return v.SignupPolicyName }).(pulumi.StringPtrOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupIdentityProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIdentityProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }

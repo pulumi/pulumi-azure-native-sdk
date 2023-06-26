@@ -11,7 +11,7 @@ import (
 )
 
 // Get a ScalingPlanPooledSchedule.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-09-09.
 func LookupScalingPlanPooledSchedule(ctx *pulumi.Context, args *LookupScalingPlanPooledScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanPooledScheduleResult, error) {
 	var rv LookupScalingPlanPooledScheduleResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getScalingPlanPooledSchedule", args, &rv, opts...)

@@ -12,8 +12,6 @@ import (
 )
 
 // Certificate resource payload.
-//
-// Deprecated: azure-native:appplatform/v20221201:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Certificate to guarantee forwards compatibility.
 type Certificate struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +74,12 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)

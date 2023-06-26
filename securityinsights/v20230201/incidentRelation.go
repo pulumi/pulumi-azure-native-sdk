@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a relation between two resources
-//
-// Deprecated: azure-native:securityinsights/v20230201:IncidentRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IncidentRelation to guarantee forwards compatibility.
 type IncidentRelation struct {
 	pulumi.CustomResourceState
 
@@ -116,7 +114,16 @@ func NewIncidentRelation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:IncidentRelation"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:IncidentRelation"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:IncidentRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:IncidentRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:IncidentRelation"),
 		},
 	})
 	opts = append(opts, aliases)

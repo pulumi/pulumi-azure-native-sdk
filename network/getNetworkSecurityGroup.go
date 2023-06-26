@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified network security group.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupNetworkSecurityGroup(ctx *pulumi.Context, args *LookupNetworkSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityGroupResult, error) {
 	var rv LookupNetworkSecurityGroupResult
 	err := ctx.Invoke("azure-native:network:getNetworkSecurityGroup", args, &rv, opts...)
@@ -38,6 +38,8 @@ type LookupNetworkSecurityGroupResult struct {
 	Etag string `pulumi:"etag"`
 	// A collection of references to flow log resources.
 	FlowLogs []FlowLogResponse `pulumi:"flowLogs"`
+	// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
+	FlushConnection *bool `pulumi:"flushConnection"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
@@ -114,6 +116,11 @@ func (o LookupNetworkSecurityGroupResultOutput) Etag() pulumi.StringOutput {
 // A collection of references to flow log resources.
 func (o LookupNetworkSecurityGroupResultOutput) FlowLogs() FlowLogResponseArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []FlowLogResponse { return v.FlowLogs }).(FlowLogResponseArrayOutput)
+}
+
+// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
+func (o LookupNetworkSecurityGroupResultOutput) FlushConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) *bool { return v.FlushConnection }).(pulumi.BoolPtrOutput)
 }
 
 // Resource ID.

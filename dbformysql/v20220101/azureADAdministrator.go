@@ -48,6 +48,9 @@ func NewAzureADAdministrator(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dbformysql:AzureADAdministrator"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbformysql/v20211201preview:AzureADAdministrator"),
 		},
 	})

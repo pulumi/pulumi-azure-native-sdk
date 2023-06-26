@@ -29,8 +29,8 @@ const (
 type CleanupPolicyRetentionDescription string
 
 const (
-	CleanupPolicyRetentionDescriptionDelete     = CleanupPolicyRetentionDescription("Delete")
-	CleanupPolicyRetentionDescriptionCompaction = CleanupPolicyRetentionDescription("Compaction")
+	CleanupPolicyRetentionDescriptionDelete  = CleanupPolicyRetentionDescription("Delete")
+	CleanupPolicyRetentionDescriptionCompact = CleanupPolicyRetentionDescription("Compact")
 )
 
 // Name of this SKU.

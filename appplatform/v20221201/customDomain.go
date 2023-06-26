@@ -12,8 +12,6 @@ import (
 )
 
 // Custom domain resource payload.
-//
-// Deprecated: azure-native:appplatform/v20221201:CustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:CustomDomain to guarantee forwards compatibility.
 type CustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +77,12 @@ func NewCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:CustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:CustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:CustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

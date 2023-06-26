@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a job.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:sql:getJob", args, &rv, opts...)

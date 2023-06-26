@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a ApplicationGroup definition.
-//
-// Deprecated: azure-native:desktopvirtualization/v20220909:ApplicationGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:ApplicationGroup to guarantee forwards compatibility.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 

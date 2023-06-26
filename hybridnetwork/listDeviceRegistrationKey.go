@@ -11,7 +11,7 @@ import (
 )
 
 // List the registration key for the device.
-// API Version: 2020-01-01-preview.
+// Azure REST API version: 2022-01-01-preview.
 func ListDeviceRegistrationKey(ctx *pulumi.Context, args *ListDeviceRegistrationKeyArgs, opts ...pulumi.InvokeOption) (*ListDeviceRegistrationKeyResult, error) {
 	var rv ListDeviceRegistrationKeyResult
 	err := ctx.Invoke("azure-native:hybridnetwork:listDeviceRegistrationKey", args, &rv, opts...)

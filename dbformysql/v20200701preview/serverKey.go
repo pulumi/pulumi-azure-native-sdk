@@ -12,8 +12,6 @@ import (
 )
 
 // A MySQL Server key.
-//
-// Deprecated: azure-native:dbformysql/v20200701preview:ServerKey is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20200701privatepreview:ServerKey to guarantee forwards compatibility.
 type ServerKey struct {
 	pulumi.CustomResourceState
 
@@ -48,6 +46,9 @@ func NewServerKey(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql:ServerKey"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20200701privatepreview:ServerKey"),
 		},

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:cache/v20230301preview:Database":
 		r = &Database{}
-	case "azure-native:cache/v20230301preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
+	case "azure-native:cache/v20230301preview:EnterprisePrivateEndpointConnection":
+		r = &EnterprisePrivateEndpointConnection{}
 	case "azure-native:cache/v20230301preview:RedisEnterprise":
 		r = &RedisEnterprise{}
 	default:

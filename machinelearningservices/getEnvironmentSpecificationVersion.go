@@ -11,7 +11,7 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2021-03-01-preview.
 func LookupEnvironmentSpecificationVersion(ctx *pulumi.Context, args *LookupEnvironmentSpecificationVersionArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentSpecificationVersionResult, error) {
 	var rv LookupEnvironmentSpecificationVersionResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getEnvironmentSpecificationVersion", args, &rv, opts...)

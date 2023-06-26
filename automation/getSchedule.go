@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the schedule identified by schedule name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2022-08-08.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:automation:getSchedule", args, &rv, opts...)

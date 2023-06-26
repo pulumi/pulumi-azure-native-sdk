@@ -11,7 +11,7 @@ import (
 )
 
 // Get on-premise IoT sensor
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func LookupOnPremiseSensor(ctx *pulumi.Context, args *LookupOnPremiseSensorArgs, opts ...pulumi.InvokeOption) (*LookupOnPremiseSensorResult, error) {
 	var rv LookupOnPremiseSensorResult
 	err := ctx.Invoke("azure-native:iotsecurity:getOnPremiseSensor", args, &rv, opts...)

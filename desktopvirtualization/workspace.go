@@ -12,7 +12,7 @@ import (
 )
 
 // Represents a Workspace definition.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -39,6 +39,8 @@ type Workspace struct {
 	ObjectId pulumi.StringOutput                                      `pulumi:"objectId"`
 	Plan     ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
 	Sku      ResourceModelWithAllowedPropertySetResponseSkuPtrOutput  `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -286,6 +288,11 @@ func (o WorkspaceOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanP
 
 func (o WorkspaceOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
 	return o.ApplyT(func(v *Workspace) ResourceModelWithAllowedPropertySetResponseSkuPtrOutput { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

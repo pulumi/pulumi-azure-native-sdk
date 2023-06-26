@@ -12,12 +12,16 @@ import (
 )
 
 // A pool of Virtual Machines.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview
 type Pool struct {
 	pulumi.CustomResourceState
 
 	// Name of a Dev Box definition in parent Project of this Pool
 	DevBoxDefinitionName pulumi.StringOutput `pulumi:"devBoxDefinitionName"`
+	// Overall health status of the Pool. Indicates whether or not the Pool is available to create Dev Boxes.
+	HealthStatus pulumi.StringOutput `pulumi:"healthStatus"`
+	// Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
+	HealthStatusDetails HealthStatusDetailResponseArrayOutput `pulumi:"healthStatusDetails"`
 	// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
 	LicenseType pulumi.StringOutput `pulumi:"licenseType"`
 	// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
@@ -30,6 +34,8 @@ type Pool struct {
 	NetworkConnectionName pulumi.StringOutput `pulumi:"networkConnectionName"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+	StopOnDisconnect StopOnDisconnectConfigurationResponsePtrOutput `pulumi:"stopOnDisconnect"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -75,6 +81,12 @@ func NewPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:Pool"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:Pool"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:Pool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -124,8 +136,10 @@ type poolArgs struct {
 	PoolName *string `pulumi:"poolName"`
 	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+	StopOnDisconnect *StopOnDisconnectConfiguration `pulumi:"stopOnDisconnect"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -146,8 +160,10 @@ type PoolArgs struct {
 	PoolName pulumi.StringPtrInput
 	// The name of the project.
 	ProjectName pulumi.StringInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+	StopOnDisconnect StopOnDisconnectConfigurationPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -194,6 +210,16 @@ func (o PoolOutput) DevBoxDefinitionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.DevBoxDefinitionName }).(pulumi.StringOutput)
 }
 
+// Overall health status of the Pool. Indicates whether or not the Pool is available to create Dev Boxes.
+func (o PoolOutput) HealthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.HealthStatus }).(pulumi.StringOutput)
+}
+
+// Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
+func (o PoolOutput) HealthStatusDetails() HealthStatusDetailResponseArrayOutput {
+	return o.ApplyT(func(v *Pool) HealthStatusDetailResponseArrayOutput { return v.HealthStatusDetails }).(HealthStatusDetailResponseArrayOutput)
+}
+
 // Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
 func (o PoolOutput) LicenseType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.LicenseType }).(pulumi.StringOutput)
@@ -222,6 +248,11 @@ func (o PoolOutput) NetworkConnectionName() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o PoolOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+func (o PoolOutput) StopOnDisconnect() StopOnDisconnectConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *Pool) StopOnDisconnectConfigurationResponsePtrOutput { return v.StopOnDisconnect }).(StopOnDisconnectConfigurationResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

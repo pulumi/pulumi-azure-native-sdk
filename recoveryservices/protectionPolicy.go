@@ -12,7 +12,7 @@ import (
 )
 
 // Base class for backup policy. Workload-specific backup policies are derived from this class.
-// API Version: 2021-02-01.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01
 type ProtectionPolicy struct {
 	pulumi.CustomResourceState
 
@@ -115,6 +115,9 @@ func NewProtectionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ProtectionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:ProtectionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

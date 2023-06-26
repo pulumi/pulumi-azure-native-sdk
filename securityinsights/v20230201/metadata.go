@@ -12,8 +12,6 @@ import (
 )
 
 // Metadata resource definition.
-//
-// Deprecated: azure-native:securityinsights/v20230201:Metadata is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201preview:Metadata to guarantee forwards compatibility.
 type Metadata struct {
 	pulumi.CustomResourceState
 
@@ -131,7 +129,16 @@ func NewMetadata(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:Metadata"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:Metadata"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:Metadata"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Metadata"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Metadata"),
 		},
 	})
 	opts = append(opts, aliases)

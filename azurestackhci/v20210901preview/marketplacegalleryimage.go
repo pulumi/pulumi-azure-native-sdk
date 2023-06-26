@@ -57,8 +57,26 @@ func NewMarketplacegalleryimage(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:marketplacegalleryimage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:Marketplacegalleryimage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:marketplacegalleryimage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:Marketplacegalleryimage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:marketplacegalleryimage"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Marketplacegalleryimage
-	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:marketplacegalleryimage", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:Marketplacegalleryimage", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +88,7 @@ func NewMarketplacegalleryimage(ctx *pulumi.Context,
 func GetMarketplacegalleryimage(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MarketplacegalleryimageState, opts ...pulumi.ResourceOption) (*Marketplacegalleryimage, error) {
 	var resource Marketplacegalleryimage
-	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:marketplacegalleryimage", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:Marketplacegalleryimage", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

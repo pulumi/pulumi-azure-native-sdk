@@ -12,7 +12,7 @@ import (
 )
 
 // The build service agent pool resource
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2022-01-01-preview
 type BuildServiceAgentPool struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,12 @@ func NewBuildServiceAgentPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:BuildServiceAgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:BuildServiceAgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:BuildServiceAgentPool"),
 		},
 	})
 	opts = append(opts, aliases)

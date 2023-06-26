@@ -11,7 +11,7 @@ import (
 )
 
 // Get custom image.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupCustomImage(ctx *pulumi.Context, args *LookupCustomImageArgs, opts ...pulumi.InvokeOption) (*LookupCustomImageResult, error) {
 	var rv LookupCustomImageResult
 	err := ctx.Invoke("azure-native:devtestlab:getCustomImage", args, &rv, opts...)

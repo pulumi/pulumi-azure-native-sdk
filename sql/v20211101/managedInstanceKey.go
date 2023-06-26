@@ -12,8 +12,6 @@ import (
 )
 
 // A managed instance key.
-//
-// Deprecated: azure-native:sql/v20211101:ManagedInstanceKey is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedInstanceKey to guarantee forwards compatibility.
 type ManagedInstanceKey struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +81,9 @@ func NewManagedInstanceKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedInstanceKey"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedInstanceKey"),
 		},
 	})
 	opts = append(opts, aliases)

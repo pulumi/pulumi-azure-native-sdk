@@ -12,8 +12,6 @@ import (
 )
 
 // A server security alert policy.
-//
-// Deprecated: azure-native:sql/v20211101:ServerSecurityAlertPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerSecurityAlertPolicy to guarantee forwards compatibility.
 type ServerSecurityAlertPolicy struct {
 	pulumi.CustomResourceState
 
@@ -93,6 +91,9 @@ func NewServerSecurityAlertPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ServerSecurityAlertPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ServerSecurityAlertPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

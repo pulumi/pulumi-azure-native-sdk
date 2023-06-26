@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:dbforpostgresql/v20210410privatepreview:Configuration":
-		r = &Configuration{}
-	case "azure-native:dbforpostgresql/v20210410privatepreview:FirewallRule":
-		r = &FirewallRule{}
 	case "azure-native:dbforpostgresql/v20210410privatepreview:Server":
 		r = &Server{}
 	default:

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about a database.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("azure-native:dbformariadb:getDatabase", args, &rv, opts...)

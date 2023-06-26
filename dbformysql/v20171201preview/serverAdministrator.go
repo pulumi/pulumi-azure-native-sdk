@@ -61,6 +61,9 @@ func NewServerAdministrator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20171201:ServerAdministrator"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:ServerAdministrator"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ServerAdministrator

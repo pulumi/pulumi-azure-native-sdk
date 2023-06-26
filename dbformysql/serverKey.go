@@ -12,7 +12,7 @@ import (
 )
 
 // A MySQL Server key.
-// API Version: 2020-01-01.
+// Azure REST API version: 2020-07-01-preview. Prior API version in Azure Native 1.x: 2020-01-01
 type ServerKey struct {
 	pulumi.CustomResourceState
 
@@ -48,10 +48,10 @@ func NewServerKey(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbformysql/v20200101:ServerKey"),
+			Type: pulumi.String("azure-native:dbformysql/v20200701preview:ServerKey"),
 		},
 		{
-			Type: pulumi.String("azure-native:dbformysql/v20200101privatepreview:ServerKey"),
+			Type: pulumi.String("azure-native:dbformysql/v20200701privatepreview:ServerKey"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -87,7 +87,7 @@ func (ServerKeyState) ElementType() reflect.Type {
 }
 
 type serverKeyArgs struct {
-	// The name of the MySQL Server key to be operated on (updated or created).
+	// The name of the server key.
 	KeyName *string `pulumi:"keyName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -101,7 +101,7 @@ type serverKeyArgs struct {
 
 // The set of arguments for constructing a ServerKey resource.
 type ServerKeyArgs struct {
-	// The name of the MySQL Server key to be operated on (updated or created).
+	// The name of the server key.
 	KeyName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput

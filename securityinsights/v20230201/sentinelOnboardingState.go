@@ -12,8 +12,6 @@ import (
 )
 
 // Sentinel onboarding state
-//
-// Deprecated: azure-native:securityinsights/v20230201:SentinelOnboardingState is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:SentinelOnboardingState to guarantee forwards compatibility.
 type SentinelOnboardingState struct {
 	pulumi.CustomResourceState
 
@@ -98,7 +96,16 @@ func NewSentinelOnboardingState(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:SentinelOnboardingState"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:SentinelOnboardingState"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:SentinelOnboardingState"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:SentinelOnboardingState"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:SentinelOnboardingState"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Container App.
-// API Version: 2022-03-01.
+// Azure REST API version: 2022-10-01.
 func LookupContainerApp(ctx *pulumi.Context, args *LookupContainerAppArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppResult, error) {
 	var rv LookupContainerAppResult
 	err := ctx.Invoke("azure-native:app:getContainerApp", args, &rv, opts...)
@@ -34,17 +34,25 @@ type LookupContainerAppResult struct {
 	Configuration *ConfigurationResponse `pulumi:"configuration"`
 	// Id used to verify domain name ownership
 	CustomDomainVerificationId string `pulumi:"customDomainVerificationId"`
+	// Resource ID of environment.
+	EnvironmentId *string `pulumi:"environmentId"`
+	// The endpoint of the eventstream of the container app.
+	EventStreamEndpoint string `pulumi:"eventStreamEndpoint"`
+	// The complex type of the extended location.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// Name of the latest ready revision of the Container App.
+	LatestReadyRevisionName string `pulumi:"latestReadyRevisionName"`
 	// Fully Qualified Domain Name of the latest revision of the Container App.
 	LatestRevisionFqdn string `pulumi:"latestRevisionFqdn"`
 	// Name of the latest revision of the Container App.
 	LatestRevisionName string `pulumi:"latestRevisionName"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Resource ID of the Container App's environment.
+	// Deprecated. Resource ID of the Container App's environment.
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -60,6 +68,8 @@ type LookupContainerAppResult struct {
 	Template *TemplateResponse `pulumi:"template"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Workload profile type to pin for container app execution.
+	WorkloadProfileType *string `pulumi:"workloadProfileType"`
 }
 
 // Defaults sets the appropriate defaults for LookupContainerAppResult
@@ -124,6 +134,21 @@ func (o LookupContainerAppResultOutput) CustomDomainVerificationId() pulumi.Stri
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.CustomDomainVerificationId }).(pulumi.StringOutput)
 }
 
+// Resource ID of environment.
+func (o LookupContainerAppResultOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint of the eventstream of the container app.
+func (o LookupContainerAppResultOutput) EventStreamEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) string { return v.EventStreamEndpoint }).(pulumi.StringOutput)
+}
+
+// The complex type of the extended location.
+func (o LookupContainerAppResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupContainerAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Id }).(pulumi.StringOutput)
@@ -132,6 +157,11 @@ func (o LookupContainerAppResultOutput) Id() pulumi.StringOutput {
 // managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 func (o LookupContainerAppResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Name of the latest ready revision of the Container App.
+func (o LookupContainerAppResultOutput) LatestReadyRevisionName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) string { return v.LatestReadyRevisionName }).(pulumi.StringOutput)
 }
 
 // Fully Qualified Domain Name of the latest revision of the Container App.
@@ -149,7 +179,7 @@ func (o LookupContainerAppResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource ID of the Container App's environment.
+// Deprecated. Resource ID of the Container App's environment.
 func (o LookupContainerAppResultOutput) ManagedEnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.ManagedEnvironmentId }).(pulumi.StringPtrOutput)
 }
@@ -187,6 +217,11 @@ func (o LookupContainerAppResultOutput) Template() TemplateResponsePtrOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupContainerAppResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Workload profile type to pin for container app execution.
+func (o LookupContainerAppResultOutput) WorkloadProfileType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.WorkloadProfileType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

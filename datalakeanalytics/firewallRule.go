@@ -12,7 +12,7 @@ import (
 )
 
 // Data Lake Analytics firewall rule information.
-// API Version: 2016-11-01.
+// Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 1.x: 2016-11-01
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

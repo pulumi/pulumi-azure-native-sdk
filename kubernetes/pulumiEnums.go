@@ -18,6 +18,14 @@ const (
 	AuthenticationMethodAAD   = AuthenticationMethod("AAD")
 )
 
+// Property which describes the state of private link on a connected cluster resource.
+type PrivateLinkState string
+
+const (
+	PrivateLinkStateEnabled  = PrivateLinkState("Enabled")
+	PrivateLinkStateDisabled = PrivateLinkState("Disabled")
+)
+
 // Provisioning state of the connected cluster resource.
 type ProvisioningState string
 

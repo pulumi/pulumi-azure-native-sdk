@@ -627,6 +627,115 @@ func (o DependencyResponseArrayOutput) Index(i pulumi.IntInput) DependencyRespon
 	}).(DependencyResponseOutput)
 }
 
+// Deployment parameter for the template.
+type DeploymentParameter struct {
+	// Azure Key Vault parameter reference.
+	Reference *KeyVaultParameterReference `pulumi:"reference"`
+	// Input value to the parameter .
+	Value interface{} `pulumi:"value"`
+}
+
+// DeploymentParameterInput is an input type that accepts DeploymentParameterArgs and DeploymentParameterOutput values.
+// You can construct a concrete instance of `DeploymentParameterInput` via:
+//
+//	DeploymentParameterArgs{...}
+type DeploymentParameterInput interface {
+	pulumi.Input
+
+	ToDeploymentParameterOutput() DeploymentParameterOutput
+	ToDeploymentParameterOutputWithContext(context.Context) DeploymentParameterOutput
+}
+
+// Deployment parameter for the template.
+type DeploymentParameterArgs struct {
+	// Azure Key Vault parameter reference.
+	Reference KeyVaultParameterReferencePtrInput `pulumi:"reference"`
+	// Input value to the parameter .
+	Value pulumi.Input `pulumi:"value"`
+}
+
+func (DeploymentParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentParameter)(nil)).Elem()
+}
+
+func (i DeploymentParameterArgs) ToDeploymentParameterOutput() DeploymentParameterOutput {
+	return i.ToDeploymentParameterOutputWithContext(context.Background())
+}
+
+func (i DeploymentParameterArgs) ToDeploymentParameterOutputWithContext(ctx context.Context) DeploymentParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentParameterOutput)
+}
+
+// DeploymentParameterMapInput is an input type that accepts DeploymentParameterMap and DeploymentParameterMapOutput values.
+// You can construct a concrete instance of `DeploymentParameterMapInput` via:
+//
+//	DeploymentParameterMap{ "key": DeploymentParameterArgs{...} }
+type DeploymentParameterMapInput interface {
+	pulumi.Input
+
+	ToDeploymentParameterMapOutput() DeploymentParameterMapOutput
+	ToDeploymentParameterMapOutputWithContext(context.Context) DeploymentParameterMapOutput
+}
+
+type DeploymentParameterMap map[string]DeploymentParameterInput
+
+func (DeploymentParameterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentParameter)(nil)).Elem()
+}
+
+func (i DeploymentParameterMap) ToDeploymentParameterMapOutput() DeploymentParameterMapOutput {
+	return i.ToDeploymentParameterMapOutputWithContext(context.Background())
+}
+
+func (i DeploymentParameterMap) ToDeploymentParameterMapOutputWithContext(ctx context.Context) DeploymentParameterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentParameterMapOutput)
+}
+
+// Deployment parameter for the template.
+type DeploymentParameterOutput struct{ *pulumi.OutputState }
+
+func (DeploymentParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentParameter)(nil)).Elem()
+}
+
+func (o DeploymentParameterOutput) ToDeploymentParameterOutput() DeploymentParameterOutput {
+	return o
+}
+
+func (o DeploymentParameterOutput) ToDeploymentParameterOutputWithContext(ctx context.Context) DeploymentParameterOutput {
+	return o
+}
+
+// Azure Key Vault parameter reference.
+func (o DeploymentParameterOutput) Reference() KeyVaultParameterReferencePtrOutput {
+	return o.ApplyT(func(v DeploymentParameter) *KeyVaultParameterReference { return v.Reference }).(KeyVaultParameterReferencePtrOutput)
+}
+
+// Input value to the parameter .
+func (o DeploymentParameterOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentParameter) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type DeploymentParameterMapOutput struct{ *pulumi.OutputState }
+
+func (DeploymentParameterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentParameter)(nil)).Elem()
+}
+
+func (o DeploymentParameterMapOutput) ToDeploymentParameterMapOutput() DeploymentParameterMapOutput {
+	return o
+}
+
+func (o DeploymentParameterMapOutput) ToDeploymentParameterMapOutputWithContext(ctx context.Context) DeploymentParameterMapOutput {
+	return o
+}
+
+func (o DeploymentParameterMapOutput) MapIndex(k pulumi.StringInput) DeploymentParameterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentParameter {
+		return vs[0].(map[string]DeploymentParameter)[vs[1].(string)]
+	}).(DeploymentParameterOutput)
+}
+
 // Deployment properties.
 type DeploymentProperties struct {
 	// The debug setting of the deployment.
@@ -638,7 +747,7 @@ type DeploymentProperties struct {
 	// The deployment on error behavior.
 	OnErrorDeployment *OnErrorDeployment `pulumi:"onErrorDeployment"`
 	// Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-	Parameters interface{} `pulumi:"parameters"`
+	Parameters map[string]DeploymentParameter `pulumi:"parameters"`
 	// The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
 	ParametersLink *ParametersLink `pulumi:"parametersLink"`
 	// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
@@ -669,7 +778,7 @@ type DeploymentPropertiesArgs struct {
 	// The deployment on error behavior.
 	OnErrorDeployment OnErrorDeploymentPtrInput `pulumi:"onErrorDeployment"`
 	// Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-	Parameters pulumi.Input `pulumi:"parameters"`
+	Parameters DeploymentParameterMapInput `pulumi:"parameters"`
 	// The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
 	ParametersLink ParametersLinkPtrInput `pulumi:"parametersLink"`
 	// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
@@ -726,8 +835,8 @@ func (o DeploymentPropertiesOutput) OnErrorDeployment() OnErrorDeploymentPtrOutp
 }
 
 // Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-func (o DeploymentPropertiesOutput) Parameters() pulumi.AnyOutput {
-	return o.ApplyT(func(v DeploymentProperties) interface{} { return v.Parameters }).(pulumi.AnyOutput)
+func (o DeploymentPropertiesOutput) Parameters() DeploymentParameterMapOutput {
+	return o.ApplyT(func(v DeploymentProperties) map[string]DeploymentParameter { return v.Parameters }).(DeploymentParameterMapOutput)
 }
 
 // The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
@@ -1393,7 +1502,7 @@ type Identity struct {
 	// The identity type.
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -1412,7 +1521,7 @@ type IdentityArgs struct {
 	// The identity type.
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -1499,8 +1608,8 @@ func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1538,13 +1647,13 @@ func (o IdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 }
 
 // The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *Identity) map[string]interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Identity for the resource.
@@ -1709,6 +1818,324 @@ func (o IdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.Strin
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IdentityResponseUserAssignedIdentities {
 		return vs[0].(map[string]IdentityResponseUserAssignedIdentities)[vs[1].(string)]
 	}).(IdentityResponseUserAssignedIdentitiesOutput)
+}
+
+// Azure Key Vault parameter reference.
+type KeyVaultParameterReference struct {
+	// Azure Key Vault reference.
+	KeyVault KeyVaultReference `pulumi:"keyVault"`
+	// Azure Key Vault secret name.
+	SecretName string `pulumi:"secretName"`
+	// Azure Key Vault secret version.
+	SecretVersion *string `pulumi:"secretVersion"`
+}
+
+// KeyVaultParameterReferenceInput is an input type that accepts KeyVaultParameterReferenceArgs and KeyVaultParameterReferenceOutput values.
+// You can construct a concrete instance of `KeyVaultParameterReferenceInput` via:
+//
+//	KeyVaultParameterReferenceArgs{...}
+type KeyVaultParameterReferenceInput interface {
+	pulumi.Input
+
+	ToKeyVaultParameterReferenceOutput() KeyVaultParameterReferenceOutput
+	ToKeyVaultParameterReferenceOutputWithContext(context.Context) KeyVaultParameterReferenceOutput
+}
+
+// Azure Key Vault parameter reference.
+type KeyVaultParameterReferenceArgs struct {
+	// Azure Key Vault reference.
+	KeyVault KeyVaultReferenceInput `pulumi:"keyVault"`
+	// Azure Key Vault secret name.
+	SecretName pulumi.StringInput `pulumi:"secretName"`
+	// Azure Key Vault secret version.
+	SecretVersion pulumi.StringPtrInput `pulumi:"secretVersion"`
+}
+
+func (KeyVaultParameterReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultParameterReference)(nil)).Elem()
+}
+
+func (i KeyVaultParameterReferenceArgs) ToKeyVaultParameterReferenceOutput() KeyVaultParameterReferenceOutput {
+	return i.ToKeyVaultParameterReferenceOutputWithContext(context.Background())
+}
+
+func (i KeyVaultParameterReferenceArgs) ToKeyVaultParameterReferenceOutputWithContext(ctx context.Context) KeyVaultParameterReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultParameterReferenceOutput)
+}
+
+func (i KeyVaultParameterReferenceArgs) ToKeyVaultParameterReferencePtrOutput() KeyVaultParameterReferencePtrOutput {
+	return i.ToKeyVaultParameterReferencePtrOutputWithContext(context.Background())
+}
+
+func (i KeyVaultParameterReferenceArgs) ToKeyVaultParameterReferencePtrOutputWithContext(ctx context.Context) KeyVaultParameterReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultParameterReferenceOutput).ToKeyVaultParameterReferencePtrOutputWithContext(ctx)
+}
+
+// KeyVaultParameterReferencePtrInput is an input type that accepts KeyVaultParameterReferenceArgs, KeyVaultParameterReferencePtr and KeyVaultParameterReferencePtrOutput values.
+// You can construct a concrete instance of `KeyVaultParameterReferencePtrInput` via:
+//
+//	        KeyVaultParameterReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyVaultParameterReferencePtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultParameterReferencePtrOutput() KeyVaultParameterReferencePtrOutput
+	ToKeyVaultParameterReferencePtrOutputWithContext(context.Context) KeyVaultParameterReferencePtrOutput
+}
+
+type keyVaultParameterReferencePtrType KeyVaultParameterReferenceArgs
+
+func KeyVaultParameterReferencePtr(v *KeyVaultParameterReferenceArgs) KeyVaultParameterReferencePtrInput {
+	return (*keyVaultParameterReferencePtrType)(v)
+}
+
+func (*keyVaultParameterReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultParameterReference)(nil)).Elem()
+}
+
+func (i *keyVaultParameterReferencePtrType) ToKeyVaultParameterReferencePtrOutput() KeyVaultParameterReferencePtrOutput {
+	return i.ToKeyVaultParameterReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *keyVaultParameterReferencePtrType) ToKeyVaultParameterReferencePtrOutputWithContext(ctx context.Context) KeyVaultParameterReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultParameterReferencePtrOutput)
+}
+
+// Azure Key Vault parameter reference.
+type KeyVaultParameterReferenceOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultParameterReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultParameterReference)(nil)).Elem()
+}
+
+func (o KeyVaultParameterReferenceOutput) ToKeyVaultParameterReferenceOutput() KeyVaultParameterReferenceOutput {
+	return o
+}
+
+func (o KeyVaultParameterReferenceOutput) ToKeyVaultParameterReferenceOutputWithContext(ctx context.Context) KeyVaultParameterReferenceOutput {
+	return o
+}
+
+func (o KeyVaultParameterReferenceOutput) ToKeyVaultParameterReferencePtrOutput() KeyVaultParameterReferencePtrOutput {
+	return o.ToKeyVaultParameterReferencePtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultParameterReferenceOutput) ToKeyVaultParameterReferencePtrOutputWithContext(ctx context.Context) KeyVaultParameterReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultParameterReference) *KeyVaultParameterReference {
+		return &v
+	}).(KeyVaultParameterReferencePtrOutput)
+}
+
+// Azure Key Vault reference.
+func (o KeyVaultParameterReferenceOutput) KeyVault() KeyVaultReferenceOutput {
+	return o.ApplyT(func(v KeyVaultParameterReference) KeyVaultReference { return v.KeyVault }).(KeyVaultReferenceOutput)
+}
+
+// Azure Key Vault secret name.
+func (o KeyVaultParameterReferenceOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultParameterReference) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+// Azure Key Vault secret version.
+func (o KeyVaultParameterReferenceOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultParameterReference) *string { return v.SecretVersion }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultParameterReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultParameterReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultParameterReference)(nil)).Elem()
+}
+
+func (o KeyVaultParameterReferencePtrOutput) ToKeyVaultParameterReferencePtrOutput() KeyVaultParameterReferencePtrOutput {
+	return o
+}
+
+func (o KeyVaultParameterReferencePtrOutput) ToKeyVaultParameterReferencePtrOutputWithContext(ctx context.Context) KeyVaultParameterReferencePtrOutput {
+	return o
+}
+
+func (o KeyVaultParameterReferencePtrOutput) Elem() KeyVaultParameterReferenceOutput {
+	return o.ApplyT(func(v *KeyVaultParameterReference) KeyVaultParameterReference {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultParameterReference
+		return ret
+	}).(KeyVaultParameterReferenceOutput)
+}
+
+// Azure Key Vault reference.
+func (o KeyVaultParameterReferencePtrOutput) KeyVault() KeyVaultReferencePtrOutput {
+	return o.ApplyT(func(v *KeyVaultParameterReference) *KeyVaultReference {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVault
+	}).(KeyVaultReferencePtrOutput)
+}
+
+// Azure Key Vault secret name.
+func (o KeyVaultParameterReferencePtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultParameterReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Key Vault secret version.
+func (o KeyVaultParameterReferencePtrOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultParameterReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Key Vault reference.
+type KeyVaultReference struct {
+	// Azure Key Vault resource id.
+	Id string `pulumi:"id"`
+}
+
+// KeyVaultReferenceInput is an input type that accepts KeyVaultReferenceArgs and KeyVaultReferenceOutput values.
+// You can construct a concrete instance of `KeyVaultReferenceInput` via:
+//
+//	KeyVaultReferenceArgs{...}
+type KeyVaultReferenceInput interface {
+	pulumi.Input
+
+	ToKeyVaultReferenceOutput() KeyVaultReferenceOutput
+	ToKeyVaultReferenceOutputWithContext(context.Context) KeyVaultReferenceOutput
+}
+
+// Azure Key Vault reference.
+type KeyVaultReferenceArgs struct {
+	// Azure Key Vault resource id.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (KeyVaultReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultReference)(nil)).Elem()
+}
+
+func (i KeyVaultReferenceArgs) ToKeyVaultReferenceOutput() KeyVaultReferenceOutput {
+	return i.ToKeyVaultReferenceOutputWithContext(context.Background())
+}
+
+func (i KeyVaultReferenceArgs) ToKeyVaultReferenceOutputWithContext(ctx context.Context) KeyVaultReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultReferenceOutput)
+}
+
+func (i KeyVaultReferenceArgs) ToKeyVaultReferencePtrOutput() KeyVaultReferencePtrOutput {
+	return i.ToKeyVaultReferencePtrOutputWithContext(context.Background())
+}
+
+func (i KeyVaultReferenceArgs) ToKeyVaultReferencePtrOutputWithContext(ctx context.Context) KeyVaultReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultReferenceOutput).ToKeyVaultReferencePtrOutputWithContext(ctx)
+}
+
+// KeyVaultReferencePtrInput is an input type that accepts KeyVaultReferenceArgs, KeyVaultReferencePtr and KeyVaultReferencePtrOutput values.
+// You can construct a concrete instance of `KeyVaultReferencePtrInput` via:
+//
+//	        KeyVaultReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyVaultReferencePtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultReferencePtrOutput() KeyVaultReferencePtrOutput
+	ToKeyVaultReferencePtrOutputWithContext(context.Context) KeyVaultReferencePtrOutput
+}
+
+type keyVaultReferencePtrType KeyVaultReferenceArgs
+
+func KeyVaultReferencePtr(v *KeyVaultReferenceArgs) KeyVaultReferencePtrInput {
+	return (*keyVaultReferencePtrType)(v)
+}
+
+func (*keyVaultReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultReference)(nil)).Elem()
+}
+
+func (i *keyVaultReferencePtrType) ToKeyVaultReferencePtrOutput() KeyVaultReferencePtrOutput {
+	return i.ToKeyVaultReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *keyVaultReferencePtrType) ToKeyVaultReferencePtrOutputWithContext(ctx context.Context) KeyVaultReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultReferencePtrOutput)
+}
+
+// Azure Key Vault reference.
+type KeyVaultReferenceOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultReference)(nil)).Elem()
+}
+
+func (o KeyVaultReferenceOutput) ToKeyVaultReferenceOutput() KeyVaultReferenceOutput {
+	return o
+}
+
+func (o KeyVaultReferenceOutput) ToKeyVaultReferenceOutputWithContext(ctx context.Context) KeyVaultReferenceOutput {
+	return o
+}
+
+func (o KeyVaultReferenceOutput) ToKeyVaultReferencePtrOutput() KeyVaultReferencePtrOutput {
+	return o.ToKeyVaultReferencePtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultReferenceOutput) ToKeyVaultReferencePtrOutputWithContext(ctx context.Context) KeyVaultReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultReference) *KeyVaultReference {
+		return &v
+	}).(KeyVaultReferencePtrOutput)
+}
+
+// Azure Key Vault resource id.
+func (o KeyVaultReferenceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultReference) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type KeyVaultReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultReference)(nil)).Elem()
+}
+
+func (o KeyVaultReferencePtrOutput) ToKeyVaultReferencePtrOutput() KeyVaultReferencePtrOutput {
+	return o
+}
+
+func (o KeyVaultReferencePtrOutput) ToKeyVaultReferencePtrOutputWithContext(ctx context.Context) KeyVaultReferencePtrOutput {
+	return o
+}
+
+func (o KeyVaultReferencePtrOutput) Elem() KeyVaultReferenceOutput {
+	return o.ApplyT(func(v *KeyVaultReference) KeyVaultReference {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultReference
+		return ret
+	}).(KeyVaultReferenceOutput)
+}
+
+// Azure Key Vault resource id.
+func (o KeyVaultReferencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 // Deployment on error behavior.
@@ -3558,6 +3985,8 @@ func init() {
 	pulumi.RegisterOutputType(DebugSettingResponseOutput{})
 	pulumi.RegisterOutputType(DependencyResponseOutput{})
 	pulumi.RegisterOutputType(DependencyResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentParameterOutput{})
+	pulumi.RegisterOutputType(DeploymentParameterMapOutput{})
 	pulumi.RegisterOutputType(DeploymentPropertiesOutput{})
 	pulumi.RegisterOutputType(DeploymentPropertiesExtendedResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
@@ -3576,6 +4005,10 @@ func init() {
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesOutput{})
 	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesMapOutput{})
+	pulumi.RegisterOutputType(KeyVaultParameterReferenceOutput{})
+	pulumi.RegisterOutputType(KeyVaultParameterReferencePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultReferenceOutput{})
+	pulumi.RegisterOutputType(KeyVaultReferencePtrOutput{})
 	pulumi.RegisterOutputType(OnErrorDeploymentOutput{})
 	pulumi.RegisterOutputType(OnErrorDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(OnErrorDeploymentExtendedResponseOutput{})

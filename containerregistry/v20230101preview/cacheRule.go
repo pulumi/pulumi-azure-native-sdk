@@ -47,6 +47,12 @@ func NewCacheRule(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:containerregistry:CacheRule"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource CacheRule
 	err := ctx.RegisterResource("azure-native:containerregistry/v20230101preview:CacheRule", name, args, &resource, opts...)
 	if err != nil {

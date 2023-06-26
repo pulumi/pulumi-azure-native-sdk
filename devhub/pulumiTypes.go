@@ -947,11 +947,150 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+type WorkflowRun struct {
+	// Describes the status of the workflow run
+	WorkflowRunStatus *string `pulumi:"workflowRunStatus"`
+}
+
+// WorkflowRunInput is an input type that accepts WorkflowRunArgs and WorkflowRunOutput values.
+// You can construct a concrete instance of `WorkflowRunInput` via:
+//
+//	WorkflowRunArgs{...}
+type WorkflowRunInput interface {
+	pulumi.Input
+
+	ToWorkflowRunOutput() WorkflowRunOutput
+	ToWorkflowRunOutputWithContext(context.Context) WorkflowRunOutput
+}
+
+type WorkflowRunArgs struct {
+	// Describes the status of the workflow run
+	WorkflowRunStatus pulumi.StringPtrInput `pulumi:"workflowRunStatus"`
+}
+
+func (WorkflowRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowRun)(nil)).Elem()
+}
+
+func (i WorkflowRunArgs) ToWorkflowRunOutput() WorkflowRunOutput {
+	return i.ToWorkflowRunOutputWithContext(context.Background())
+}
+
+func (i WorkflowRunArgs) ToWorkflowRunOutputWithContext(ctx context.Context) WorkflowRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowRunOutput)
+}
+
+func (i WorkflowRunArgs) ToWorkflowRunPtrOutput() WorkflowRunPtrOutput {
+	return i.ToWorkflowRunPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowRunArgs) ToWorkflowRunPtrOutputWithContext(ctx context.Context) WorkflowRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowRunOutput).ToWorkflowRunPtrOutputWithContext(ctx)
+}
+
+// WorkflowRunPtrInput is an input type that accepts WorkflowRunArgs, WorkflowRunPtr and WorkflowRunPtrOutput values.
+// You can construct a concrete instance of `WorkflowRunPtrInput` via:
+//
+//	        WorkflowRunArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowRunPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowRunPtrOutput() WorkflowRunPtrOutput
+	ToWorkflowRunPtrOutputWithContext(context.Context) WorkflowRunPtrOutput
+}
+
+type workflowRunPtrType WorkflowRunArgs
+
+func WorkflowRunPtr(v *WorkflowRunArgs) WorkflowRunPtrInput {
+	return (*workflowRunPtrType)(v)
+}
+
+func (*workflowRunPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowRun)(nil)).Elem()
+}
+
+func (i *workflowRunPtrType) ToWorkflowRunPtrOutput() WorkflowRunPtrOutput {
+	return i.ToWorkflowRunPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowRunPtrType) ToWorkflowRunPtrOutputWithContext(ctx context.Context) WorkflowRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowRunPtrOutput)
+}
+
+type WorkflowRunOutput struct{ *pulumi.OutputState }
+
+func (WorkflowRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowRun)(nil)).Elem()
+}
+
+func (o WorkflowRunOutput) ToWorkflowRunOutput() WorkflowRunOutput {
+	return o
+}
+
+func (o WorkflowRunOutput) ToWorkflowRunOutputWithContext(ctx context.Context) WorkflowRunOutput {
+	return o
+}
+
+func (o WorkflowRunOutput) ToWorkflowRunPtrOutput() WorkflowRunPtrOutput {
+	return o.ToWorkflowRunPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowRunOutput) ToWorkflowRunPtrOutputWithContext(ctx context.Context) WorkflowRunPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowRun) *WorkflowRun {
+		return &v
+	}).(WorkflowRunPtrOutput)
+}
+
+// Describes the status of the workflow run
+func (o WorkflowRunOutput) WorkflowRunStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowRun) *string { return v.WorkflowRunStatus }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowRunPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowRunPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowRun)(nil)).Elem()
+}
+
+func (o WorkflowRunPtrOutput) ToWorkflowRunPtrOutput() WorkflowRunPtrOutput {
+	return o
+}
+
+func (o WorkflowRunPtrOutput) ToWorkflowRunPtrOutputWithContext(ctx context.Context) WorkflowRunPtrOutput {
+	return o
+}
+
+func (o WorkflowRunPtrOutput) Elem() WorkflowRunOutput {
+	return o.ApplyT(func(v *WorkflowRun) WorkflowRun {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowRun
+		return ret
+	}).(WorkflowRunOutput)
+}
+
+// Describes the status of the workflow run
+func (o WorkflowRunPtrOutput) WorkflowRunStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowRun) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkflowRunStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowRunResponse struct {
 	// The timestamp of the last workflow run.
 	LastRunAt string `pulumi:"lastRunAt"`
 	// Describes if the workflow run succeeded.
 	Succeeded bool `pulumi:"succeeded"`
+	// Describes the status of the workflow run
+	WorkflowRunStatus *string `pulumi:"workflowRunStatus"`
 	// URL to the run of the workflow.
 	WorkflowRunURL string `pulumi:"workflowRunURL"`
 }
@@ -978,6 +1117,11 @@ func (o WorkflowRunResponseOutput) LastRunAt() pulumi.StringOutput {
 // Describes if the workflow run succeeded.
 func (o WorkflowRunResponseOutput) Succeeded() pulumi.BoolOutput {
 	return o.ApplyT(func(v WorkflowRunResponse) bool { return v.Succeeded }).(pulumi.BoolOutput)
+}
+
+// Describes the status of the workflow run
+func (o WorkflowRunResponseOutput) WorkflowRunStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowRunResponse) *string { return v.WorkflowRunStatus }).(pulumi.StringPtrOutput)
 }
 
 // URL to the run of the workflow.
@@ -1029,6 +1173,16 @@ func (o WorkflowRunResponsePtrOutput) Succeeded() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Describes the status of the workflow run
+func (o WorkflowRunResponsePtrOutput) WorkflowRunStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowRunResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkflowRunStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // URL to the run of the workflow.
 func (o WorkflowRunResponsePtrOutput) WorkflowRunURL() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowRunResponse) *string {
@@ -1053,6 +1207,8 @@ func init() {
 	pulumi.RegisterOutputType(GitHubWorkflowProfileResponseOidcCredentialsOutput{})
 	pulumi.RegisterOutputType(GitHubWorkflowProfileResponseOidcCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(WorkflowRunOutput{})
+	pulumi.RegisterOutputType(WorkflowRunPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowRunResponseOutput{})
 	pulumi.RegisterOutputType(WorkflowRunResponsePtrOutput{})
 }

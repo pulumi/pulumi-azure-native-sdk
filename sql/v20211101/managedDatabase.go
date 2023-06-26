@@ -12,8 +12,6 @@ import (
 )
 
 // A managed database resource.
-//
-// Deprecated: azure-native:sql/v20211101:ManagedDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedDatabase to guarantee forwards compatibility.
 type ManagedDatabase struct {
 	pulumi.CustomResourceState
 
@@ -96,6 +94,9 @@ func NewManagedDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

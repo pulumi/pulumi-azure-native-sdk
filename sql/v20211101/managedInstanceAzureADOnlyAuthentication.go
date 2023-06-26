@@ -12,8 +12,6 @@ import (
 )
 
 // Azure Active Directory only authentication.
-//
-// Deprecated: azure-native:sql/v20211101:ManagedInstanceAzureADOnlyAuthentication is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedInstanceAzureADOnlyAuthentication to guarantee forwards compatibility.
 type ManagedInstanceAzureADOnlyAuthentication struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +72,9 @@ func NewManagedInstanceAzureADOnlyAuthentication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedInstanceAzureADOnlyAuthentication"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedInstanceAzureADOnlyAuthentication"),
 		},
 	})
 	opts = append(opts, aliases)

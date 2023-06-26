@@ -11,25 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Network slice resource.
-// API Version: 2022-04-01-preview.
+// Network slice resource. Must be created in the same location as its parent mobile network.
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2022-04-01-preview
 type Slice struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
 	// An optional description for this network slice.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -106,20 +94,8 @@ func (SliceState) ElementType() reflect.Type {
 }
 
 type sliceArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
 	// An optional description for this network slice.
 	Description *string `pulumi:"description"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the mobile network.
@@ -136,20 +112,8 @@ type sliceArgs struct {
 
 // The set of arguments for constructing a Slice resource.
 type SliceArgs struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrInput
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrInput
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrInput
 	// An optional description for this network slice.
 	Description pulumi.StringPtrInput
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrInput
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the mobile network.
@@ -201,39 +165,9 @@ func (o SliceOutput) ToSliceOutputWithContext(ctx context.Context) SliceOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SliceOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Slice) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SliceOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Slice) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SliceOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Slice) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
 // An optional description for this network slice.
 func (o SliceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Slice) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SliceOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Slice) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SliceOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Slice) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SliceOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Slice) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a link to download the run logs.
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func ListRunLogSasUrl(ctx *pulumi.Context, args *ListRunLogSasUrlArgs, opts ...pulumi.InvokeOption) (*ListRunLogSasUrlResult, error) {
 	var rv ListRunLogSasUrlResult
 	err := ctx.Invoke("azure-native:containerregistry:listRunLogSasUrl", args, &rv, opts...)

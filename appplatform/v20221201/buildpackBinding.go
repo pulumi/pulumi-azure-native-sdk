@@ -12,8 +12,6 @@ import (
 )
 
 // Buildpack Binding Resource object
-//
-// Deprecated: azure-native:appplatform/v20221201:BuildpackBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildpackBinding to guarantee forwards compatibility.
 type BuildpackBinding struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +68,12 @@ func NewBuildpackBinding(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:BuildpackBinding"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:BuildpackBinding"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:BuildpackBinding"),
 		},
 	})
 	opts = append(opts, aliases)

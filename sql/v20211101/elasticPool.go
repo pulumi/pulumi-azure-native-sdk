@@ -12,8 +12,6 @@ import (
 )
 
 // An elastic pool.
-//
-// Deprecated: azure-native:sql/v20211101:ElasticPool is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ElasticPool to guarantee forwards compatibility.
 type ElasticPool struct {
 	pulumi.CustomResourceState
 
@@ -103,6 +101,9 @@ func NewElasticPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ElasticPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ElasticPool"),
 		},
 	})
 	opts = append(opts, aliases)

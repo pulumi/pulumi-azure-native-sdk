@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,14 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:avs/v20200320:Authorization":
-		r = &Authorization{}
 	case "azure-native:avs/v20200320:Cluster":
 		r = &Cluster{}
-	case "azure-native:avs/v20200320:HcxEnterpriseSite":
-		r = &HcxEnterpriseSite{}
-	case "azure-native:avs/v20200320:PrivateCloud":
-		r = &PrivateCloud{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

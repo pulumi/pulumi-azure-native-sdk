@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified network slice.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-11-01.
 func LookupSlice(ctx *pulumi.Context, args *LookupSliceArgs, opts ...pulumi.InvokeOption) (*LookupSliceResult, error) {
 	var rv LookupSliceResult
 	err := ctx.Invoke("azure-native:mobilenetwork:getSlice", args, &rv, opts...)
@@ -30,24 +30,12 @@ type LookupSliceArgs struct {
 	SliceName string `pulumi:"sliceName"`
 }
 
-// Network slice resource.
+// Network slice resource. Must be created in the same location as its parent mobile network.
 type LookupSliceResult struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
 	// An optional description for this network slice.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -90,7 +78,7 @@ func (LookupSliceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSliceArgs)(nil)).Elem()
 }
 
-// Network slice resource.
+// Network slice resource. Must be created in the same location as its parent mobile network.
 type LookupSliceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSliceResultOutput) ElementType() reflect.Type {
@@ -105,21 +93,6 @@ func (o LookupSliceResultOutput) ToLookupSliceResultOutputWithContext(ctx contex
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o LookupSliceResultOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSliceResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o LookupSliceResultOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSliceResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o LookupSliceResultOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSliceResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
 // An optional description for this network slice.
 func (o LookupSliceResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSliceResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -128,21 +101,6 @@ func (o LookupSliceResultOutput) Description() pulumi.StringPtrOutput {
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSliceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSliceResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o LookupSliceResultOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSliceResult) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o LookupSliceResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSliceResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o LookupSliceResultOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSliceResult) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives

@@ -11,7 +11,7 @@ import (
 )
 
 // Represents an ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupGitHubConnector(ctx *pulumi.Context, args *LookupGitHubConnectorArgs, opts ...pulumi.InvokeOption) (*LookupGitHubConnectorResult, error) {
 	var rv LookupGitHubConnectorResult
 	err := ctx.Invoke("azure-native:securitydevops:getGitHubConnector", args, &rv, opts...)

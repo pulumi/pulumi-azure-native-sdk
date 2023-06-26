@@ -115,6 +115,12 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:PrivateEndpointConnection"),
 		},
 	})

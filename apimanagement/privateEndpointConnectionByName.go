@@ -12,7 +12,7 @@ import (
 )
 
 // The Private Endpoint Connection resource.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-04-01-preview
 type PrivateEndpointConnectionByName struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,9 @@ func NewPrivateEndpointConnectionByName(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:PrivateEndpointConnectionByName"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:PrivateEndpointConnectionByName"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateEndpointConnectionByName
@@ -97,7 +100,7 @@ type privateEndpointConnectionByNameArgs struct {
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// The connection state of the private endpoint connection.
 	Properties *PrivateEndpointConnectionRequestProperties `pulumi:"properties"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -111,7 +114,7 @@ type PrivateEndpointConnectionByNameArgs struct {
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// The connection state of the private endpoint connection.
 	Properties PrivateEndpointConnectionRequestPropertiesPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput

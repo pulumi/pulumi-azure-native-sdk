@@ -11,7 +11,7 @@ import (
 )
 
 // Implements VirtualMachine GET method.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:scvmm:getVirtualMachine", args, &rv, opts...)
@@ -42,12 +42,18 @@ type LookupVirtualMachineResult struct {
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Gets or sets the generation for the vm.
 	Generation *int `pulumi:"generation"`
+	// Guest agent status properties.
+	GuestAgentProfile *GuestAgentProfileResponse `pulumi:"guestAgentProfile"`
 	// Hardware properties.
 	HardwareProfile *HardwareProfileResponse `pulumi:"hardwareProfile"`
 	// Resource Id
 	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
 	// Gets or sets the inventory Item ID for the resource.
 	InventoryItemId *string `pulumi:"inventoryItemId"`
+	// Last restored checkpoint in the vm.
+	LastRestoredVMCheckpoint CheckpointResponse `pulumi:"lastRestoredVMCheckpoint"`
 	// Gets or sets the location.
 	Location string `pulumi:"location"`
 	// Resource Name
@@ -149,6 +155,11 @@ func (o LookupVirtualMachineResultOutput) Generation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
+// Guest agent status properties.
+func (o LookupVirtualMachineResultOutput) GuestAgentProfile() GuestAgentProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *GuestAgentProfileResponse { return v.GuestAgentProfile }).(GuestAgentProfileResponsePtrOutput)
+}
+
 // Hardware properties.
 func (o LookupVirtualMachineResultOutput) HardwareProfile() HardwareProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *HardwareProfileResponse { return v.HardwareProfile }).(HardwareProfileResponsePtrOutput)
@@ -159,9 +170,19 @@ func (o LookupVirtualMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identity of the resource.
+func (o LookupVirtualMachineResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+}
+
 // Gets or sets the inventory Item ID for the resource.
 func (o LookupVirtualMachineResultOutput) InventoryItemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.InventoryItemId }).(pulumi.StringPtrOutput)
+}
+
+// Last restored checkpoint in the vm.
+func (o LookupVirtualMachineResultOutput) LastRestoredVMCheckpoint() CheckpointResponseOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) CheckpointResponse { return v.LastRestoredVMCheckpoint }).(CheckpointResponseOutput)
 }
 
 // Gets or sets the location.

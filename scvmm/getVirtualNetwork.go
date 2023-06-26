@@ -11,7 +11,7 @@ import (
 )
 
 // Implements VirtualNetwork GET method.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	var rv LookupVirtualNetworkResult
 	err := ctx.Invoke("azure-native:scvmm:getVirtualNetwork", args, &rv, opts...)

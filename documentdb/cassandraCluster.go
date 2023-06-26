@@ -12,12 +12,12 @@ import (
 )
 
 // Representation of a managed Cassandra cluster.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type CassandraCluster struct {
 	pulumi.CustomResourceState
 
 	// Identity for the resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedCassandraManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The location of the resource group to which the resource belongs.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the ARM resource.
@@ -78,7 +78,19 @@ func NewCassandraCluster(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:CassandraCluster"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:CassandraCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:CassandraCluster"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:CassandraCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:CassandraCluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -117,7 +129,7 @@ type cassandraClusterArgs struct {
 	// Managed Cassandra cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// Identity for the resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedCassandraManagedServiceIdentity `pulumi:"identity"`
 	// The location of the resource group to which the resource belongs.
 	Location *string `pulumi:"location"`
 	// Properties of a managed Cassandra cluster.
@@ -133,7 +145,7 @@ type CassandraClusterArgs struct {
 	// Managed Cassandra cluster name.
 	ClusterName pulumi.StringPtrInput
 	// Identity for the resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity ManagedCassandraManagedServiceIdentityPtrInput
 	// The location of the resource group to which the resource belongs.
 	Location pulumi.StringPtrInput
 	// Properties of a managed Cassandra cluster.
@@ -182,8 +194,8 @@ func (o CassandraClusterOutput) ToCassandraClusterOutputWithContext(ctx context.
 }
 
 // Identity for the resource.
-func (o CassandraClusterOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *CassandraCluster) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o CassandraClusterOutput) Identity() ManagedCassandraManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *CassandraCluster) ManagedCassandraManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedCassandraManagedServiceIdentityResponsePtrOutput)
 }
 
 // The location of the resource group to which the resource belongs.

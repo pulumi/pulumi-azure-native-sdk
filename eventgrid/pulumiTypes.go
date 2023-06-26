@@ -10,322 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Active Directory Partner Client Authentication
-type AzureADPartnerClientAuthentication struct {
-	// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
-	AzureActiveDirectoryApplicationIdOrUri *string `pulumi:"azureActiveDirectoryApplicationIdOrUri"`
-	// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
-	AzureActiveDirectoryTenantId *string `pulumi:"azureActiveDirectoryTenantId"`
-	// Type of client authentication
-	// Expected value is 'AzureAD'.
-	ClientAuthenticationType string `pulumi:"clientAuthenticationType"`
-}
-
-// Defaults sets the appropriate defaults for AzureADPartnerClientAuthentication
-func (val *AzureADPartnerClientAuthentication) Defaults() *AzureADPartnerClientAuthentication {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.ClientAuthenticationType) {
-		tmp.ClientAuthenticationType = "AzureAD"
-	}
-	return &tmp
-}
-
-// AzureADPartnerClientAuthenticationInput is an input type that accepts AzureADPartnerClientAuthenticationArgs and AzureADPartnerClientAuthenticationOutput values.
-// You can construct a concrete instance of `AzureADPartnerClientAuthenticationInput` via:
-//
-//	AzureADPartnerClientAuthenticationArgs{...}
-type AzureADPartnerClientAuthenticationInput interface {
-	pulumi.Input
-
-	ToAzureADPartnerClientAuthenticationOutput() AzureADPartnerClientAuthenticationOutput
-	ToAzureADPartnerClientAuthenticationOutputWithContext(context.Context) AzureADPartnerClientAuthenticationOutput
-}
-
-// Azure Active Directory Partner Client Authentication
-type AzureADPartnerClientAuthenticationArgs struct {
-	// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
-	AzureActiveDirectoryApplicationIdOrUri pulumi.StringPtrInput `pulumi:"azureActiveDirectoryApplicationIdOrUri"`
-	// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
-	AzureActiveDirectoryTenantId pulumi.StringPtrInput `pulumi:"azureActiveDirectoryTenantId"`
-	// Type of client authentication
-	// Expected value is 'AzureAD'.
-	ClientAuthenticationType pulumi.StringInput `pulumi:"clientAuthenticationType"`
-}
-
-// Defaults sets the appropriate defaults for AzureADPartnerClientAuthenticationArgs
-func (val *AzureADPartnerClientAuthenticationArgs) Defaults() *AzureADPartnerClientAuthenticationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ClientAuthenticationType == nil {
-		tmp.ClientAuthenticationType = pulumi.String("AzureAD")
-	}
-	return &tmp
-}
-func (AzureADPartnerClientAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureADPartnerClientAuthentication)(nil)).Elem()
-}
-
-func (i AzureADPartnerClientAuthenticationArgs) ToAzureADPartnerClientAuthenticationOutput() AzureADPartnerClientAuthenticationOutput {
-	return i.ToAzureADPartnerClientAuthenticationOutputWithContext(context.Background())
-}
-
-func (i AzureADPartnerClientAuthenticationArgs) ToAzureADPartnerClientAuthenticationOutputWithContext(ctx context.Context) AzureADPartnerClientAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureADPartnerClientAuthenticationOutput)
-}
-
-func (i AzureADPartnerClientAuthenticationArgs) ToAzureADPartnerClientAuthenticationPtrOutput() AzureADPartnerClientAuthenticationPtrOutput {
-	return i.ToAzureADPartnerClientAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i AzureADPartnerClientAuthenticationArgs) ToAzureADPartnerClientAuthenticationPtrOutputWithContext(ctx context.Context) AzureADPartnerClientAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureADPartnerClientAuthenticationOutput).ToAzureADPartnerClientAuthenticationPtrOutputWithContext(ctx)
-}
-
-// AzureADPartnerClientAuthenticationPtrInput is an input type that accepts AzureADPartnerClientAuthenticationArgs, AzureADPartnerClientAuthenticationPtr and AzureADPartnerClientAuthenticationPtrOutput values.
-// You can construct a concrete instance of `AzureADPartnerClientAuthenticationPtrInput` via:
-//
-//	        AzureADPartnerClientAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type AzureADPartnerClientAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToAzureADPartnerClientAuthenticationPtrOutput() AzureADPartnerClientAuthenticationPtrOutput
-	ToAzureADPartnerClientAuthenticationPtrOutputWithContext(context.Context) AzureADPartnerClientAuthenticationPtrOutput
-}
-
-type azureADPartnerClientAuthenticationPtrType AzureADPartnerClientAuthenticationArgs
-
-func AzureADPartnerClientAuthenticationPtr(v *AzureADPartnerClientAuthenticationArgs) AzureADPartnerClientAuthenticationPtrInput {
-	return (*azureADPartnerClientAuthenticationPtrType)(v)
-}
-
-func (*azureADPartnerClientAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureADPartnerClientAuthentication)(nil)).Elem()
-}
-
-func (i *azureADPartnerClientAuthenticationPtrType) ToAzureADPartnerClientAuthenticationPtrOutput() AzureADPartnerClientAuthenticationPtrOutput {
-	return i.ToAzureADPartnerClientAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *azureADPartnerClientAuthenticationPtrType) ToAzureADPartnerClientAuthenticationPtrOutputWithContext(ctx context.Context) AzureADPartnerClientAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureADPartnerClientAuthenticationPtrOutput)
-}
-
-// Azure Active Directory Partner Client Authentication
-type AzureADPartnerClientAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (AzureADPartnerClientAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureADPartnerClientAuthentication)(nil)).Elem()
-}
-
-func (o AzureADPartnerClientAuthenticationOutput) ToAzureADPartnerClientAuthenticationOutput() AzureADPartnerClientAuthenticationOutput {
-	return o
-}
-
-func (o AzureADPartnerClientAuthenticationOutput) ToAzureADPartnerClientAuthenticationOutputWithContext(ctx context.Context) AzureADPartnerClientAuthenticationOutput {
-	return o
-}
-
-func (o AzureADPartnerClientAuthenticationOutput) ToAzureADPartnerClientAuthenticationPtrOutput() AzureADPartnerClientAuthenticationPtrOutput {
-	return o.ToAzureADPartnerClientAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o AzureADPartnerClientAuthenticationOutput) ToAzureADPartnerClientAuthenticationPtrOutputWithContext(ctx context.Context) AzureADPartnerClientAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureADPartnerClientAuthentication) *AzureADPartnerClientAuthentication {
-		return &v
-	}).(AzureADPartnerClientAuthenticationPtrOutput)
-}
-
-// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
-func (o AzureADPartnerClientAuthenticationOutput) AzureActiveDirectoryApplicationIdOrUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureADPartnerClientAuthentication) *string { return v.AzureActiveDirectoryApplicationIdOrUri }).(pulumi.StringPtrOutput)
-}
-
-// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
-func (o AzureADPartnerClientAuthenticationOutput) AzureActiveDirectoryTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureADPartnerClientAuthentication) *string { return v.AzureActiveDirectoryTenantId }).(pulumi.StringPtrOutput)
-}
-
-// Type of client authentication
-// Expected value is 'AzureAD'.
-func (o AzureADPartnerClientAuthenticationOutput) ClientAuthenticationType() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureADPartnerClientAuthentication) string { return v.ClientAuthenticationType }).(pulumi.StringOutput)
-}
-
-type AzureADPartnerClientAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (AzureADPartnerClientAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureADPartnerClientAuthentication)(nil)).Elem()
-}
-
-func (o AzureADPartnerClientAuthenticationPtrOutput) ToAzureADPartnerClientAuthenticationPtrOutput() AzureADPartnerClientAuthenticationPtrOutput {
-	return o
-}
-
-func (o AzureADPartnerClientAuthenticationPtrOutput) ToAzureADPartnerClientAuthenticationPtrOutputWithContext(ctx context.Context) AzureADPartnerClientAuthenticationPtrOutput {
-	return o
-}
-
-func (o AzureADPartnerClientAuthenticationPtrOutput) Elem() AzureADPartnerClientAuthenticationOutput {
-	return o.ApplyT(func(v *AzureADPartnerClientAuthentication) AzureADPartnerClientAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret AzureADPartnerClientAuthentication
-		return ret
-	}).(AzureADPartnerClientAuthenticationOutput)
-}
-
-// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
-func (o AzureADPartnerClientAuthenticationPtrOutput) AzureActiveDirectoryApplicationIdOrUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureADPartnerClientAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureActiveDirectoryApplicationIdOrUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
-func (o AzureADPartnerClientAuthenticationPtrOutput) AzureActiveDirectoryTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureADPartnerClientAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureActiveDirectoryTenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of client authentication
-// Expected value is 'AzureAD'.
-func (o AzureADPartnerClientAuthenticationPtrOutput) ClientAuthenticationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureADPartnerClientAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientAuthenticationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Active Directory Partner Client Authentication
-type AzureADPartnerClientAuthenticationResponse struct {
-	// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
-	AzureActiveDirectoryApplicationIdOrUri *string `pulumi:"azureActiveDirectoryApplicationIdOrUri"`
-	// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
-	AzureActiveDirectoryTenantId *string `pulumi:"azureActiveDirectoryTenantId"`
-	// Type of client authentication
-	// Expected value is 'AzureAD'.
-	ClientAuthenticationType string `pulumi:"clientAuthenticationType"`
-}
-
-// Defaults sets the appropriate defaults for AzureADPartnerClientAuthenticationResponse
-func (val *AzureADPartnerClientAuthenticationResponse) Defaults() *AzureADPartnerClientAuthenticationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if isZero(tmp.ClientAuthenticationType) {
-		tmp.ClientAuthenticationType = "AzureAD"
-	}
-	return &tmp
-}
-
-// Azure Active Directory Partner Client Authentication
-type AzureADPartnerClientAuthenticationResponseOutput struct{ *pulumi.OutputState }
-
-func (AzureADPartnerClientAuthenticationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureADPartnerClientAuthenticationResponse)(nil)).Elem()
-}
-
-func (o AzureADPartnerClientAuthenticationResponseOutput) ToAzureADPartnerClientAuthenticationResponseOutput() AzureADPartnerClientAuthenticationResponseOutput {
-	return o
-}
-
-func (o AzureADPartnerClientAuthenticationResponseOutput) ToAzureADPartnerClientAuthenticationResponseOutputWithContext(ctx context.Context) AzureADPartnerClientAuthenticationResponseOutput {
-	return o
-}
-
-// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
-func (o AzureADPartnerClientAuthenticationResponseOutput) AzureActiveDirectoryApplicationIdOrUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureADPartnerClientAuthenticationResponse) *string {
-		return v.AzureActiveDirectoryApplicationIdOrUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
-func (o AzureADPartnerClientAuthenticationResponseOutput) AzureActiveDirectoryTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureADPartnerClientAuthenticationResponse) *string { return v.AzureActiveDirectoryTenantId }).(pulumi.StringPtrOutput)
-}
-
-// Type of client authentication
-// Expected value is 'AzureAD'.
-func (o AzureADPartnerClientAuthenticationResponseOutput) ClientAuthenticationType() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureADPartnerClientAuthenticationResponse) string { return v.ClientAuthenticationType }).(pulumi.StringOutput)
-}
-
-type AzureADPartnerClientAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AzureADPartnerClientAuthenticationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureADPartnerClientAuthenticationResponse)(nil)).Elem()
-}
-
-func (o AzureADPartnerClientAuthenticationResponsePtrOutput) ToAzureADPartnerClientAuthenticationResponsePtrOutput() AzureADPartnerClientAuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o AzureADPartnerClientAuthenticationResponsePtrOutput) ToAzureADPartnerClientAuthenticationResponsePtrOutputWithContext(ctx context.Context) AzureADPartnerClientAuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o AzureADPartnerClientAuthenticationResponsePtrOutput) Elem() AzureADPartnerClientAuthenticationResponseOutput {
-	return o.ApplyT(func(v *AzureADPartnerClientAuthenticationResponse) AzureADPartnerClientAuthenticationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AzureADPartnerClientAuthenticationResponse
-		return ret
-	}).(AzureADPartnerClientAuthenticationResponseOutput)
-}
-
-// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
-func (o AzureADPartnerClientAuthenticationResponsePtrOutput) AzureActiveDirectoryApplicationIdOrUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureADPartnerClientAuthenticationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureActiveDirectoryApplicationIdOrUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
-func (o AzureADPartnerClientAuthenticationResponsePtrOutput) AzureActiveDirectoryTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureADPartnerClientAuthenticationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureActiveDirectoryTenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of client authentication
-// Expected value is 'AzureAD'.
-func (o AzureADPartnerClientAuthenticationResponsePtrOutput) ClientAuthenticationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureADPartnerClientAuthenticationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientAuthenticationType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Information about the azure function destination for an event subscription.
 type AzureFunctionEventSubscriptionDestination struct {
 	// Delivery attribute details.
@@ -410,6 +94,1253 @@ type BoolEqualsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The boolean filter value.
 	Value *bool `pulumi:"value"`
+}
+
+// BoolEquals Filter.
+type BoolEqualsFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'BoolEquals'.
+	OperatorType string `pulumi:"operatorType"`
+	// The boolean filter value.
+	Value *bool `pulumi:"value"`
+}
+
+// BoolEquals Filter.
+type BoolEqualsFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'BoolEquals'.
+	OperatorType string `pulumi:"operatorType"`
+	// The boolean filter value.
+	Value *bool `pulumi:"value"`
+}
+
+// The Authentication properties for the client.
+type ClientAuthentication struct {
+	// The CA certificate subject name used for authentication.
+	CertificateSubject *ClientCertificateSubjectDistinguishedName `pulumi:"certificateSubject"`
+	// The self signed certificate's thumbprints data used for authentication.
+	CertificateThumbprint *ClientCertificateThumbprint `pulumi:"certificateThumbprint"`
+}
+
+// ClientAuthenticationInput is an input type that accepts ClientAuthenticationArgs and ClientAuthenticationOutput values.
+// You can construct a concrete instance of `ClientAuthenticationInput` via:
+//
+//	ClientAuthenticationArgs{...}
+type ClientAuthenticationInput interface {
+	pulumi.Input
+
+	ToClientAuthenticationOutput() ClientAuthenticationOutput
+	ToClientAuthenticationOutputWithContext(context.Context) ClientAuthenticationOutput
+}
+
+// The Authentication properties for the client.
+type ClientAuthenticationArgs struct {
+	// The CA certificate subject name used for authentication.
+	CertificateSubject ClientCertificateSubjectDistinguishedNamePtrInput `pulumi:"certificateSubject"`
+	// The self signed certificate's thumbprints data used for authentication.
+	CertificateThumbprint ClientCertificateThumbprintPtrInput `pulumi:"certificateThumbprint"`
+}
+
+func (ClientAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAuthentication)(nil)).Elem()
+}
+
+func (i ClientAuthenticationArgs) ToClientAuthenticationOutput() ClientAuthenticationOutput {
+	return i.ToClientAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ClientAuthenticationArgs) ToClientAuthenticationOutputWithContext(ctx context.Context) ClientAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationOutput)
+}
+
+func (i ClientAuthenticationArgs) ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput {
+	return i.ToClientAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAuthenticationArgs) ToClientAuthenticationPtrOutputWithContext(ctx context.Context) ClientAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationOutput).ToClientAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ClientAuthenticationPtrInput is an input type that accepts ClientAuthenticationArgs, ClientAuthenticationPtr and ClientAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ClientAuthenticationPtrInput` via:
+//
+//	        ClientAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput
+	ToClientAuthenticationPtrOutputWithContext(context.Context) ClientAuthenticationPtrOutput
+}
+
+type clientAuthenticationPtrType ClientAuthenticationArgs
+
+func ClientAuthenticationPtr(v *ClientAuthenticationArgs) ClientAuthenticationPtrInput {
+	return (*clientAuthenticationPtrType)(v)
+}
+
+func (*clientAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAuthentication)(nil)).Elem()
+}
+
+func (i *clientAuthenticationPtrType) ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput {
+	return i.ToClientAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAuthenticationPtrType) ToClientAuthenticationPtrOutputWithContext(ctx context.Context) ClientAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationPtrOutput)
+}
+
+// The Authentication properties for the client.
+type ClientAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ClientAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAuthentication)(nil)).Elem()
+}
+
+func (o ClientAuthenticationOutput) ToClientAuthenticationOutput() ClientAuthenticationOutput {
+	return o
+}
+
+func (o ClientAuthenticationOutput) ToClientAuthenticationOutputWithContext(ctx context.Context) ClientAuthenticationOutput {
+	return o
+}
+
+func (o ClientAuthenticationOutput) ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput {
+	return o.ToClientAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAuthenticationOutput) ToClientAuthenticationPtrOutputWithContext(ctx context.Context) ClientAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAuthentication) *ClientAuthentication {
+		return &v
+	}).(ClientAuthenticationPtrOutput)
+}
+
+// The CA certificate subject name used for authentication.
+func (o ClientAuthenticationOutput) CertificateSubject() ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return o.ApplyT(func(v ClientAuthentication) *ClientCertificateSubjectDistinguishedName { return v.CertificateSubject }).(ClientCertificateSubjectDistinguishedNamePtrOutput)
+}
+
+// The self signed certificate's thumbprints data used for authentication.
+func (o ClientAuthenticationOutput) CertificateThumbprint() ClientCertificateThumbprintPtrOutput {
+	return o.ApplyT(func(v ClientAuthentication) *ClientCertificateThumbprint { return v.CertificateThumbprint }).(ClientCertificateThumbprintPtrOutput)
+}
+
+type ClientAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAuthentication)(nil)).Elem()
+}
+
+func (o ClientAuthenticationPtrOutput) ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput {
+	return o
+}
+
+func (o ClientAuthenticationPtrOutput) ToClientAuthenticationPtrOutputWithContext(ctx context.Context) ClientAuthenticationPtrOutput {
+	return o
+}
+
+func (o ClientAuthenticationPtrOutput) Elem() ClientAuthenticationOutput {
+	return o.ApplyT(func(v *ClientAuthentication) ClientAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAuthentication
+		return ret
+	}).(ClientAuthenticationOutput)
+}
+
+// The CA certificate subject name used for authentication.
+func (o ClientAuthenticationPtrOutput) CertificateSubject() ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return o.ApplyT(func(v *ClientAuthentication) *ClientCertificateSubjectDistinguishedName {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateSubject
+	}).(ClientCertificateSubjectDistinguishedNamePtrOutput)
+}
+
+// The self signed certificate's thumbprints data used for authentication.
+func (o ClientAuthenticationPtrOutput) CertificateThumbprint() ClientCertificateThumbprintPtrOutput {
+	return o.ApplyT(func(v *ClientAuthentication) *ClientCertificateThumbprint {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateThumbprint
+	}).(ClientCertificateThumbprintPtrOutput)
+}
+
+// The Authentication properties for the client.
+type ClientAuthenticationResponse struct {
+	// The CA certificate subject name used for authentication.
+	CertificateSubject *ClientCertificateSubjectDistinguishedNameResponse `pulumi:"certificateSubject"`
+	// The self signed certificate's thumbprints data used for authentication.
+	CertificateThumbprint *ClientCertificateThumbprintResponse `pulumi:"certificateThumbprint"`
+}
+
+// The Authentication properties for the client.
+type ClientAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAuthenticationResponse)(nil)).Elem()
+}
+
+func (o ClientAuthenticationResponseOutput) ToClientAuthenticationResponseOutput() ClientAuthenticationResponseOutput {
+	return o
+}
+
+func (o ClientAuthenticationResponseOutput) ToClientAuthenticationResponseOutputWithContext(ctx context.Context) ClientAuthenticationResponseOutput {
+	return o
+}
+
+// The CA certificate subject name used for authentication.
+func (o ClientAuthenticationResponseOutput) CertificateSubject() ClientCertificateSubjectDistinguishedNameResponsePtrOutput {
+	return o.ApplyT(func(v ClientAuthenticationResponse) *ClientCertificateSubjectDistinguishedNameResponse {
+		return v.CertificateSubject
+	}).(ClientCertificateSubjectDistinguishedNameResponsePtrOutput)
+}
+
+// The self signed certificate's thumbprints data used for authentication.
+func (o ClientAuthenticationResponseOutput) CertificateThumbprint() ClientCertificateThumbprintResponsePtrOutput {
+	return o.ApplyT(func(v ClientAuthenticationResponse) *ClientCertificateThumbprintResponse {
+		return v.CertificateThumbprint
+	}).(ClientCertificateThumbprintResponsePtrOutput)
+}
+
+type ClientAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAuthenticationResponse)(nil)).Elem()
+}
+
+func (o ClientAuthenticationResponsePtrOutput) ToClientAuthenticationResponsePtrOutput() ClientAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o ClientAuthenticationResponsePtrOutput) ToClientAuthenticationResponsePtrOutputWithContext(ctx context.Context) ClientAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o ClientAuthenticationResponsePtrOutput) Elem() ClientAuthenticationResponseOutput {
+	return o.ApplyT(func(v *ClientAuthenticationResponse) ClientAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAuthenticationResponse
+		return ret
+	}).(ClientAuthenticationResponseOutput)
+}
+
+// The CA certificate subject name used for authentication.
+func (o ClientAuthenticationResponsePtrOutput) CertificateSubject() ClientCertificateSubjectDistinguishedNameResponsePtrOutput {
+	return o.ApplyT(func(v *ClientAuthenticationResponse) *ClientCertificateSubjectDistinguishedNameResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateSubject
+	}).(ClientCertificateSubjectDistinguishedNameResponsePtrOutput)
+}
+
+// The self signed certificate's thumbprints data used for authentication.
+func (o ClientAuthenticationResponsePtrOutput) CertificateThumbprint() ClientCertificateThumbprintResponsePtrOutput {
+	return o.ApplyT(func(v *ClientAuthenticationResponse) *ClientCertificateThumbprintResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateThumbprint
+	}).(ClientCertificateThumbprintResponsePtrOutput)
+}
+
+// Client authentication settings for namespace resource.
+type ClientAuthenticationSettings struct {
+	// Alternative authentication name sources related to client authentication settings for namespace resource.
+	AlternativeAuthenticationNameSources []string `pulumi:"alternativeAuthenticationNameSources"`
+}
+
+// ClientAuthenticationSettingsInput is an input type that accepts ClientAuthenticationSettingsArgs and ClientAuthenticationSettingsOutput values.
+// You can construct a concrete instance of `ClientAuthenticationSettingsInput` via:
+//
+//	ClientAuthenticationSettingsArgs{...}
+type ClientAuthenticationSettingsInput interface {
+	pulumi.Input
+
+	ToClientAuthenticationSettingsOutput() ClientAuthenticationSettingsOutput
+	ToClientAuthenticationSettingsOutputWithContext(context.Context) ClientAuthenticationSettingsOutput
+}
+
+// Client authentication settings for namespace resource.
+type ClientAuthenticationSettingsArgs struct {
+	// Alternative authentication name sources related to client authentication settings for namespace resource.
+	AlternativeAuthenticationNameSources pulumi.StringArrayInput `pulumi:"alternativeAuthenticationNameSources"`
+}
+
+func (ClientAuthenticationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAuthenticationSettings)(nil)).Elem()
+}
+
+func (i ClientAuthenticationSettingsArgs) ToClientAuthenticationSettingsOutput() ClientAuthenticationSettingsOutput {
+	return i.ToClientAuthenticationSettingsOutputWithContext(context.Background())
+}
+
+func (i ClientAuthenticationSettingsArgs) ToClientAuthenticationSettingsOutputWithContext(ctx context.Context) ClientAuthenticationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationSettingsOutput)
+}
+
+func (i ClientAuthenticationSettingsArgs) ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput {
+	return i.ToClientAuthenticationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAuthenticationSettingsArgs) ToClientAuthenticationSettingsPtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationSettingsOutput).ToClientAuthenticationSettingsPtrOutputWithContext(ctx)
+}
+
+// ClientAuthenticationSettingsPtrInput is an input type that accepts ClientAuthenticationSettingsArgs, ClientAuthenticationSettingsPtr and ClientAuthenticationSettingsPtrOutput values.
+// You can construct a concrete instance of `ClientAuthenticationSettingsPtrInput` via:
+//
+//	        ClientAuthenticationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAuthenticationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput
+	ToClientAuthenticationSettingsPtrOutputWithContext(context.Context) ClientAuthenticationSettingsPtrOutput
+}
+
+type clientAuthenticationSettingsPtrType ClientAuthenticationSettingsArgs
+
+func ClientAuthenticationSettingsPtr(v *ClientAuthenticationSettingsArgs) ClientAuthenticationSettingsPtrInput {
+	return (*clientAuthenticationSettingsPtrType)(v)
+}
+
+func (*clientAuthenticationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAuthenticationSettings)(nil)).Elem()
+}
+
+func (i *clientAuthenticationSettingsPtrType) ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput {
+	return i.ToClientAuthenticationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAuthenticationSettingsPtrType) ToClientAuthenticationSettingsPtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationSettingsPtrOutput)
+}
+
+// Client authentication settings for namespace resource.
+type ClientAuthenticationSettingsOutput struct{ *pulumi.OutputState }
+
+func (ClientAuthenticationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAuthenticationSettings)(nil)).Elem()
+}
+
+func (o ClientAuthenticationSettingsOutput) ToClientAuthenticationSettingsOutput() ClientAuthenticationSettingsOutput {
+	return o
+}
+
+func (o ClientAuthenticationSettingsOutput) ToClientAuthenticationSettingsOutputWithContext(ctx context.Context) ClientAuthenticationSettingsOutput {
+	return o
+}
+
+func (o ClientAuthenticationSettingsOutput) ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput {
+	return o.ToClientAuthenticationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAuthenticationSettingsOutput) ToClientAuthenticationSettingsPtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAuthenticationSettings) *ClientAuthenticationSettings {
+		return &v
+	}).(ClientAuthenticationSettingsPtrOutput)
+}
+
+// Alternative authentication name sources related to client authentication settings for namespace resource.
+func (o ClientAuthenticationSettingsOutput) AlternativeAuthenticationNameSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientAuthenticationSettings) []string { return v.AlternativeAuthenticationNameSources }).(pulumi.StringArrayOutput)
+}
+
+type ClientAuthenticationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAuthenticationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAuthenticationSettings)(nil)).Elem()
+}
+
+func (o ClientAuthenticationSettingsPtrOutput) ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput {
+	return o
+}
+
+func (o ClientAuthenticationSettingsPtrOutput) ToClientAuthenticationSettingsPtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsPtrOutput {
+	return o
+}
+
+func (o ClientAuthenticationSettingsPtrOutput) Elem() ClientAuthenticationSettingsOutput {
+	return o.ApplyT(func(v *ClientAuthenticationSettings) ClientAuthenticationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAuthenticationSettings
+		return ret
+	}).(ClientAuthenticationSettingsOutput)
+}
+
+// Alternative authentication name sources related to client authentication settings for namespace resource.
+func (o ClientAuthenticationSettingsPtrOutput) AlternativeAuthenticationNameSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientAuthenticationSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AlternativeAuthenticationNameSources
+	}).(pulumi.StringArrayOutput)
+}
+
+// Client authentication settings for namespace resource.
+type ClientAuthenticationSettingsResponse struct {
+	// Alternative authentication name sources related to client authentication settings for namespace resource.
+	AlternativeAuthenticationNameSources []string `pulumi:"alternativeAuthenticationNameSources"`
+}
+
+// Client authentication settings for namespace resource.
+type ClientAuthenticationSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientAuthenticationSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAuthenticationSettingsResponse)(nil)).Elem()
+}
+
+func (o ClientAuthenticationSettingsResponseOutput) ToClientAuthenticationSettingsResponseOutput() ClientAuthenticationSettingsResponseOutput {
+	return o
+}
+
+func (o ClientAuthenticationSettingsResponseOutput) ToClientAuthenticationSettingsResponseOutputWithContext(ctx context.Context) ClientAuthenticationSettingsResponseOutput {
+	return o
+}
+
+// Alternative authentication name sources related to client authentication settings for namespace resource.
+func (o ClientAuthenticationSettingsResponseOutput) AlternativeAuthenticationNameSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientAuthenticationSettingsResponse) []string { return v.AlternativeAuthenticationNameSources }).(pulumi.StringArrayOutput)
+}
+
+type ClientAuthenticationSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAuthenticationSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAuthenticationSettingsResponse)(nil)).Elem()
+}
+
+func (o ClientAuthenticationSettingsResponsePtrOutput) ToClientAuthenticationSettingsResponsePtrOutput() ClientAuthenticationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ClientAuthenticationSettingsResponsePtrOutput) ToClientAuthenticationSettingsResponsePtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ClientAuthenticationSettingsResponsePtrOutput) Elem() ClientAuthenticationSettingsResponseOutput {
+	return o.ApplyT(func(v *ClientAuthenticationSettingsResponse) ClientAuthenticationSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAuthenticationSettingsResponse
+		return ret
+	}).(ClientAuthenticationSettingsResponseOutput)
+}
+
+// Alternative authentication name sources related to client authentication settings for namespace resource.
+func (o ClientAuthenticationSettingsResponsePtrOutput) AlternativeAuthenticationNameSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientAuthenticationSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AlternativeAuthenticationNameSources
+	}).(pulumi.StringArrayOutput)
+}
+
+// The certificate authentication properties for the client.
+type ClientCertificateAuthentication struct {
+	// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
+	AllowedThumbprints []string `pulumi:"allowedThumbprints"`
+	// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
+	ValidationScheme *string `pulumi:"validationScheme"`
+}
+
+// ClientCertificateAuthenticationInput is an input type that accepts ClientCertificateAuthenticationArgs and ClientCertificateAuthenticationOutput values.
+// You can construct a concrete instance of `ClientCertificateAuthenticationInput` via:
+//
+//	ClientCertificateAuthenticationArgs{...}
+type ClientCertificateAuthenticationInput interface {
+	pulumi.Input
+
+	ToClientCertificateAuthenticationOutput() ClientCertificateAuthenticationOutput
+	ToClientCertificateAuthenticationOutputWithContext(context.Context) ClientCertificateAuthenticationOutput
+}
+
+// The certificate authentication properties for the client.
+type ClientCertificateAuthenticationArgs struct {
+	// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
+	AllowedThumbprints pulumi.StringArrayInput `pulumi:"allowedThumbprints"`
+	// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
+	ValidationScheme pulumi.StringPtrInput `pulumi:"validationScheme"`
+}
+
+func (ClientCertificateAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateAuthentication)(nil)).Elem()
+}
+
+func (i ClientCertificateAuthenticationArgs) ToClientCertificateAuthenticationOutput() ClientCertificateAuthenticationOutput {
+	return i.ToClientCertificateAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ClientCertificateAuthenticationArgs) ToClientCertificateAuthenticationOutputWithContext(ctx context.Context) ClientCertificateAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateAuthenticationOutput)
+}
+
+func (i ClientCertificateAuthenticationArgs) ToClientCertificateAuthenticationPtrOutput() ClientCertificateAuthenticationPtrOutput {
+	return i.ToClientCertificateAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCertificateAuthenticationArgs) ToClientCertificateAuthenticationPtrOutputWithContext(ctx context.Context) ClientCertificateAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateAuthenticationOutput).ToClientCertificateAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ClientCertificateAuthenticationPtrInput is an input type that accepts ClientCertificateAuthenticationArgs, ClientCertificateAuthenticationPtr and ClientCertificateAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ClientCertificateAuthenticationPtrInput` via:
+//
+//	        ClientCertificateAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCertificateAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToClientCertificateAuthenticationPtrOutput() ClientCertificateAuthenticationPtrOutput
+	ToClientCertificateAuthenticationPtrOutputWithContext(context.Context) ClientCertificateAuthenticationPtrOutput
+}
+
+type clientCertificateAuthenticationPtrType ClientCertificateAuthenticationArgs
+
+func ClientCertificateAuthenticationPtr(v *ClientCertificateAuthenticationArgs) ClientCertificateAuthenticationPtrInput {
+	return (*clientCertificateAuthenticationPtrType)(v)
+}
+
+func (*clientCertificateAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateAuthentication)(nil)).Elem()
+}
+
+func (i *clientCertificateAuthenticationPtrType) ToClientCertificateAuthenticationPtrOutput() ClientCertificateAuthenticationPtrOutput {
+	return i.ToClientCertificateAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCertificateAuthenticationPtrType) ToClientCertificateAuthenticationPtrOutputWithContext(ctx context.Context) ClientCertificateAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateAuthenticationPtrOutput)
+}
+
+// The certificate authentication properties for the client.
+type ClientCertificateAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateAuthentication)(nil)).Elem()
+}
+
+func (o ClientCertificateAuthenticationOutput) ToClientCertificateAuthenticationOutput() ClientCertificateAuthenticationOutput {
+	return o
+}
+
+func (o ClientCertificateAuthenticationOutput) ToClientCertificateAuthenticationOutputWithContext(ctx context.Context) ClientCertificateAuthenticationOutput {
+	return o
+}
+
+func (o ClientCertificateAuthenticationOutput) ToClientCertificateAuthenticationPtrOutput() ClientCertificateAuthenticationPtrOutput {
+	return o.ToClientCertificateAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCertificateAuthenticationOutput) ToClientCertificateAuthenticationPtrOutputWithContext(ctx context.Context) ClientCertificateAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCertificateAuthentication) *ClientCertificateAuthentication {
+		return &v
+	}).(ClientCertificateAuthenticationPtrOutput)
+}
+
+// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
+func (o ClientCertificateAuthenticationOutput) AllowedThumbprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientCertificateAuthentication) []string { return v.AllowedThumbprints }).(pulumi.StringArrayOutput)
+}
+
+// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
+func (o ClientCertificateAuthenticationOutput) ValidationScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateAuthentication) *string { return v.ValidationScheme }).(pulumi.StringPtrOutput)
+}
+
+type ClientCertificateAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateAuthentication)(nil)).Elem()
+}
+
+func (o ClientCertificateAuthenticationPtrOutput) ToClientCertificateAuthenticationPtrOutput() ClientCertificateAuthenticationPtrOutput {
+	return o
+}
+
+func (o ClientCertificateAuthenticationPtrOutput) ToClientCertificateAuthenticationPtrOutputWithContext(ctx context.Context) ClientCertificateAuthenticationPtrOutput {
+	return o
+}
+
+func (o ClientCertificateAuthenticationPtrOutput) Elem() ClientCertificateAuthenticationOutput {
+	return o.ApplyT(func(v *ClientCertificateAuthentication) ClientCertificateAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCertificateAuthentication
+		return ret
+	}).(ClientCertificateAuthenticationOutput)
+}
+
+// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
+func (o ClientCertificateAuthenticationPtrOutput) AllowedThumbprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientCertificateAuthentication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedThumbprints
+	}).(pulumi.StringArrayOutput)
+}
+
+// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
+func (o ClientCertificateAuthenticationPtrOutput) ValidationScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidationScheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate authentication properties for the client.
+type ClientCertificateAuthenticationResponse struct {
+	// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
+	AllowedThumbprints []string `pulumi:"allowedThumbprints"`
+	// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
+	ValidationScheme *string `pulumi:"validationScheme"`
+}
+
+// The certificate authentication properties for the client.
+type ClientCertificateAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateAuthenticationResponse)(nil)).Elem()
+}
+
+func (o ClientCertificateAuthenticationResponseOutput) ToClientCertificateAuthenticationResponseOutput() ClientCertificateAuthenticationResponseOutput {
+	return o
+}
+
+func (o ClientCertificateAuthenticationResponseOutput) ToClientCertificateAuthenticationResponseOutputWithContext(ctx context.Context) ClientCertificateAuthenticationResponseOutput {
+	return o
+}
+
+// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
+func (o ClientCertificateAuthenticationResponseOutput) AllowedThumbprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientCertificateAuthenticationResponse) []string { return v.AllowedThumbprints }).(pulumi.StringArrayOutput)
+}
+
+// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
+func (o ClientCertificateAuthenticationResponseOutput) ValidationScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateAuthenticationResponse) *string { return v.ValidationScheme }).(pulumi.StringPtrOutput)
+}
+
+type ClientCertificateAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateAuthenticationResponse)(nil)).Elem()
+}
+
+func (o ClientCertificateAuthenticationResponsePtrOutput) ToClientCertificateAuthenticationResponsePtrOutput() ClientCertificateAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o ClientCertificateAuthenticationResponsePtrOutput) ToClientCertificateAuthenticationResponsePtrOutputWithContext(ctx context.Context) ClientCertificateAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o ClientCertificateAuthenticationResponsePtrOutput) Elem() ClientCertificateAuthenticationResponseOutput {
+	return o.ApplyT(func(v *ClientCertificateAuthenticationResponse) ClientCertificateAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCertificateAuthenticationResponse
+		return ret
+	}).(ClientCertificateAuthenticationResponseOutput)
+}
+
+// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
+func (o ClientCertificateAuthenticationResponsePtrOutput) AllowedThumbprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientCertificateAuthenticationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedThumbprints
+	}).(pulumi.StringArrayOutput)
+}
+
+// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
+func (o ClientCertificateAuthenticationResponsePtrOutput) ValidationScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidationScheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// CA certificate subject distinguished name information used by service to authenticate clients.
+// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
+type ClientCertificateSubjectDistinguishedName struct {
+	// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
+	CommonName *string `pulumi:"commonName"`
+	// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
+	CountryCode *string `pulumi:"countryCode"`
+	// The organization field in the subject name. If present, the allowed limit is 64 characters.
+	Organization *string `pulumi:"organization"`
+	// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
+	OrganizationUnit *string `pulumi:"organizationUnit"`
+}
+
+// ClientCertificateSubjectDistinguishedNameInput is an input type that accepts ClientCertificateSubjectDistinguishedNameArgs and ClientCertificateSubjectDistinguishedNameOutput values.
+// You can construct a concrete instance of `ClientCertificateSubjectDistinguishedNameInput` via:
+//
+//	ClientCertificateSubjectDistinguishedNameArgs{...}
+type ClientCertificateSubjectDistinguishedNameInput interface {
+	pulumi.Input
+
+	ToClientCertificateSubjectDistinguishedNameOutput() ClientCertificateSubjectDistinguishedNameOutput
+	ToClientCertificateSubjectDistinguishedNameOutputWithContext(context.Context) ClientCertificateSubjectDistinguishedNameOutput
+}
+
+// CA certificate subject distinguished name information used by service to authenticate clients.
+// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
+type ClientCertificateSubjectDistinguishedNameArgs struct {
+	// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
+	// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
+	CountryCode pulumi.StringPtrInput `pulumi:"countryCode"`
+	// The organization field in the subject name. If present, the allowed limit is 64 characters.
+	Organization pulumi.StringPtrInput `pulumi:"organization"`
+	// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
+	OrganizationUnit pulumi.StringPtrInput `pulumi:"organizationUnit"`
+}
+
+func (ClientCertificateSubjectDistinguishedNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateSubjectDistinguishedName)(nil)).Elem()
+}
+
+func (i ClientCertificateSubjectDistinguishedNameArgs) ToClientCertificateSubjectDistinguishedNameOutput() ClientCertificateSubjectDistinguishedNameOutput {
+	return i.ToClientCertificateSubjectDistinguishedNameOutputWithContext(context.Background())
+}
+
+func (i ClientCertificateSubjectDistinguishedNameArgs) ToClientCertificateSubjectDistinguishedNameOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateSubjectDistinguishedNameOutput)
+}
+
+func (i ClientCertificateSubjectDistinguishedNameArgs) ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return i.ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(context.Background())
+}
+
+func (i ClientCertificateSubjectDistinguishedNameArgs) ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateSubjectDistinguishedNameOutput).ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx)
+}
+
+// ClientCertificateSubjectDistinguishedNamePtrInput is an input type that accepts ClientCertificateSubjectDistinguishedNameArgs, ClientCertificateSubjectDistinguishedNamePtr and ClientCertificateSubjectDistinguishedNamePtrOutput values.
+// You can construct a concrete instance of `ClientCertificateSubjectDistinguishedNamePtrInput` via:
+//
+//	        ClientCertificateSubjectDistinguishedNameArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCertificateSubjectDistinguishedNamePtrInput interface {
+	pulumi.Input
+
+	ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput
+	ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput
+}
+
+type clientCertificateSubjectDistinguishedNamePtrType ClientCertificateSubjectDistinguishedNameArgs
+
+func ClientCertificateSubjectDistinguishedNamePtr(v *ClientCertificateSubjectDistinguishedNameArgs) ClientCertificateSubjectDistinguishedNamePtrInput {
+	return (*clientCertificateSubjectDistinguishedNamePtrType)(v)
+}
+
+func (*clientCertificateSubjectDistinguishedNamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateSubjectDistinguishedName)(nil)).Elem()
+}
+
+func (i *clientCertificateSubjectDistinguishedNamePtrType) ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return i.ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(context.Background())
+}
+
+func (i *clientCertificateSubjectDistinguishedNamePtrType) ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateSubjectDistinguishedNamePtrOutput)
+}
+
+// CA certificate subject distinguished name information used by service to authenticate clients.
+// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
+type ClientCertificateSubjectDistinguishedNameOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateSubjectDistinguishedNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateSubjectDistinguishedName)(nil)).Elem()
+}
+
+func (o ClientCertificateSubjectDistinguishedNameOutput) ToClientCertificateSubjectDistinguishedNameOutput() ClientCertificateSubjectDistinguishedNameOutput {
+	return o
+}
+
+func (o ClientCertificateSubjectDistinguishedNameOutput) ToClientCertificateSubjectDistinguishedNameOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNameOutput {
+	return o
+}
+
+func (o ClientCertificateSubjectDistinguishedNameOutput) ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return o.ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(context.Background())
+}
+
+func (o ClientCertificateSubjectDistinguishedNameOutput) ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCertificateSubjectDistinguishedName) *ClientCertificateSubjectDistinguishedName {
+		return &v
+	}).(ClientCertificateSubjectDistinguishedNamePtrOutput)
+}
+
+// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
+func (o ClientCertificateSubjectDistinguishedNameOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedName) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
+func (o ClientCertificateSubjectDistinguishedNameOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedName) *string { return v.CountryCode }).(pulumi.StringPtrOutput)
+}
+
+// The organization field in the subject name. If present, the allowed limit is 64 characters.
+func (o ClientCertificateSubjectDistinguishedNameOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedName) *string { return v.Organization }).(pulumi.StringPtrOutput)
+}
+
+// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
+func (o ClientCertificateSubjectDistinguishedNameOutput) OrganizationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedName) *string { return v.OrganizationUnit }).(pulumi.StringPtrOutput)
+}
+
+type ClientCertificateSubjectDistinguishedNamePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateSubjectDistinguishedNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateSubjectDistinguishedName)(nil)).Elem()
+}
+
+func (o ClientCertificateSubjectDistinguishedNamePtrOutput) ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return o
+}
+
+func (o ClientCertificateSubjectDistinguishedNamePtrOutput) ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput {
+	return o
+}
+
+func (o ClientCertificateSubjectDistinguishedNamePtrOutput) Elem() ClientCertificateSubjectDistinguishedNameOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) ClientCertificateSubjectDistinguishedName {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCertificateSubjectDistinguishedName
+		return ret
+	}).(ClientCertificateSubjectDistinguishedNameOutput)
+}
+
+// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
+func (o ClientCertificateSubjectDistinguishedNamePtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
+func (o ClientCertificateSubjectDistinguishedNamePtrOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization field in the subject name. If present, the allowed limit is 64 characters.
+func (o ClientCertificateSubjectDistinguishedNamePtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Organization
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
+func (o ClientCertificateSubjectDistinguishedNamePtrOutput) OrganizationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// CA certificate subject distinguished name information used by service to authenticate clients.
+// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
+type ClientCertificateSubjectDistinguishedNameResponse struct {
+	// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
+	CommonName *string `pulumi:"commonName"`
+	// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
+	CountryCode *string `pulumi:"countryCode"`
+	// The organization field in the subject name. If present, the allowed limit is 64 characters.
+	Organization *string `pulumi:"organization"`
+	// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
+	OrganizationUnit *string `pulumi:"organizationUnit"`
+}
+
+// CA certificate subject distinguished name information used by service to authenticate clients.
+// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
+type ClientCertificateSubjectDistinguishedNameResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateSubjectDistinguishedNameResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateSubjectDistinguishedNameResponse)(nil)).Elem()
+}
+
+func (o ClientCertificateSubjectDistinguishedNameResponseOutput) ToClientCertificateSubjectDistinguishedNameResponseOutput() ClientCertificateSubjectDistinguishedNameResponseOutput {
+	return o
+}
+
+func (o ClientCertificateSubjectDistinguishedNameResponseOutput) ToClientCertificateSubjectDistinguishedNameResponseOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNameResponseOutput {
+	return o
+}
+
+// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
+func (o ClientCertificateSubjectDistinguishedNameResponseOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedNameResponse) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
+func (o ClientCertificateSubjectDistinguishedNameResponseOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedNameResponse) *string { return v.CountryCode }).(pulumi.StringPtrOutput)
+}
+
+// The organization field in the subject name. If present, the allowed limit is 64 characters.
+func (o ClientCertificateSubjectDistinguishedNameResponseOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedNameResponse) *string { return v.Organization }).(pulumi.StringPtrOutput)
+}
+
+// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
+func (o ClientCertificateSubjectDistinguishedNameResponseOutput) OrganizationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedNameResponse) *string { return v.OrganizationUnit }).(pulumi.StringPtrOutput)
+}
+
+type ClientCertificateSubjectDistinguishedNameResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateSubjectDistinguishedNameResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateSubjectDistinguishedNameResponse)(nil)).Elem()
+}
+
+func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) ToClientCertificateSubjectDistinguishedNameResponsePtrOutput() ClientCertificateSubjectDistinguishedNameResponsePtrOutput {
+	return o
+}
+
+func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) ToClientCertificateSubjectDistinguishedNameResponsePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNameResponsePtrOutput {
+	return o
+}
+
+func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) Elem() ClientCertificateSubjectDistinguishedNameResponseOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) ClientCertificateSubjectDistinguishedNameResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCertificateSubjectDistinguishedNameResponse
+		return ret
+	}).(ClientCertificateSubjectDistinguishedNameResponseOutput)
+}
+
+// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
+func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
+func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization field in the subject name. If present, the allowed limit is 64 characters.
+func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Organization
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
+func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) OrganizationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
+type ClientCertificateThumbprint struct {
+	// The primary thumbprint used for validation.
+	Primary *string `pulumi:"primary"`
+	// The secondary thumbprint used for validation.
+	Secondary *string `pulumi:"secondary"`
+}
+
+// ClientCertificateThumbprintInput is an input type that accepts ClientCertificateThumbprintArgs and ClientCertificateThumbprintOutput values.
+// You can construct a concrete instance of `ClientCertificateThumbprintInput` via:
+//
+//	ClientCertificateThumbprintArgs{...}
+type ClientCertificateThumbprintInput interface {
+	pulumi.Input
+
+	ToClientCertificateThumbprintOutput() ClientCertificateThumbprintOutput
+	ToClientCertificateThumbprintOutputWithContext(context.Context) ClientCertificateThumbprintOutput
+}
+
+// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
+type ClientCertificateThumbprintArgs struct {
+	// The primary thumbprint used for validation.
+	Primary pulumi.StringPtrInput `pulumi:"primary"`
+	// The secondary thumbprint used for validation.
+	Secondary pulumi.StringPtrInput `pulumi:"secondary"`
+}
+
+func (ClientCertificateThumbprintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateThumbprint)(nil)).Elem()
+}
+
+func (i ClientCertificateThumbprintArgs) ToClientCertificateThumbprintOutput() ClientCertificateThumbprintOutput {
+	return i.ToClientCertificateThumbprintOutputWithContext(context.Background())
+}
+
+func (i ClientCertificateThumbprintArgs) ToClientCertificateThumbprintOutputWithContext(ctx context.Context) ClientCertificateThumbprintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateThumbprintOutput)
+}
+
+func (i ClientCertificateThumbprintArgs) ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput {
+	return i.ToClientCertificateThumbprintPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCertificateThumbprintArgs) ToClientCertificateThumbprintPtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateThumbprintOutput).ToClientCertificateThumbprintPtrOutputWithContext(ctx)
+}
+
+// ClientCertificateThumbprintPtrInput is an input type that accepts ClientCertificateThumbprintArgs, ClientCertificateThumbprintPtr and ClientCertificateThumbprintPtrOutput values.
+// You can construct a concrete instance of `ClientCertificateThumbprintPtrInput` via:
+//
+//	        ClientCertificateThumbprintArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCertificateThumbprintPtrInput interface {
+	pulumi.Input
+
+	ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput
+	ToClientCertificateThumbprintPtrOutputWithContext(context.Context) ClientCertificateThumbprintPtrOutput
+}
+
+type clientCertificateThumbprintPtrType ClientCertificateThumbprintArgs
+
+func ClientCertificateThumbprintPtr(v *ClientCertificateThumbprintArgs) ClientCertificateThumbprintPtrInput {
+	return (*clientCertificateThumbprintPtrType)(v)
+}
+
+func (*clientCertificateThumbprintPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateThumbprint)(nil)).Elem()
+}
+
+func (i *clientCertificateThumbprintPtrType) ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput {
+	return i.ToClientCertificateThumbprintPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCertificateThumbprintPtrType) ToClientCertificateThumbprintPtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateThumbprintPtrOutput)
+}
+
+// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
+type ClientCertificateThumbprintOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateThumbprintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateThumbprint)(nil)).Elem()
+}
+
+func (o ClientCertificateThumbprintOutput) ToClientCertificateThumbprintOutput() ClientCertificateThumbprintOutput {
+	return o
+}
+
+func (o ClientCertificateThumbprintOutput) ToClientCertificateThumbprintOutputWithContext(ctx context.Context) ClientCertificateThumbprintOutput {
+	return o
+}
+
+func (o ClientCertificateThumbprintOutput) ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput {
+	return o.ToClientCertificateThumbprintPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCertificateThumbprintOutput) ToClientCertificateThumbprintPtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCertificateThumbprint) *ClientCertificateThumbprint {
+		return &v
+	}).(ClientCertificateThumbprintPtrOutput)
+}
+
+// The primary thumbprint used for validation.
+func (o ClientCertificateThumbprintOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateThumbprint) *string { return v.Primary }).(pulumi.StringPtrOutput)
+}
+
+// The secondary thumbprint used for validation.
+func (o ClientCertificateThumbprintOutput) Secondary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateThumbprint) *string { return v.Secondary }).(pulumi.StringPtrOutput)
+}
+
+type ClientCertificateThumbprintPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateThumbprintPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateThumbprint)(nil)).Elem()
+}
+
+func (o ClientCertificateThumbprintPtrOutput) ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput {
+	return o
+}
+
+func (o ClientCertificateThumbprintPtrOutput) ToClientCertificateThumbprintPtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintPtrOutput {
+	return o
+}
+
+func (o ClientCertificateThumbprintPtrOutput) Elem() ClientCertificateThumbprintOutput {
+	return o.ApplyT(func(v *ClientCertificateThumbprint) ClientCertificateThumbprint {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCertificateThumbprint
+		return ret
+	}).(ClientCertificateThumbprintOutput)
+}
+
+// The primary thumbprint used for validation.
+func (o ClientCertificateThumbprintPtrOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateThumbprint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secondary thumbprint used for validation.
+func (o ClientCertificateThumbprintPtrOutput) Secondary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateThumbprint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secondary
+	}).(pulumi.StringPtrOutput)
+}
+
+// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
+type ClientCertificateThumbprintResponse struct {
+	// The primary thumbprint used for validation.
+	Primary *string `pulumi:"primary"`
+	// The secondary thumbprint used for validation.
+	Secondary *string `pulumi:"secondary"`
+}
+
+// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
+type ClientCertificateThumbprintResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateThumbprintResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateThumbprintResponse)(nil)).Elem()
+}
+
+func (o ClientCertificateThumbprintResponseOutput) ToClientCertificateThumbprintResponseOutput() ClientCertificateThumbprintResponseOutput {
+	return o
+}
+
+func (o ClientCertificateThumbprintResponseOutput) ToClientCertificateThumbprintResponseOutputWithContext(ctx context.Context) ClientCertificateThumbprintResponseOutput {
+	return o
+}
+
+// The primary thumbprint used for validation.
+func (o ClientCertificateThumbprintResponseOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateThumbprintResponse) *string { return v.Primary }).(pulumi.StringPtrOutput)
+}
+
+// The secondary thumbprint used for validation.
+func (o ClientCertificateThumbprintResponseOutput) Secondary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCertificateThumbprintResponse) *string { return v.Secondary }).(pulumi.StringPtrOutput)
+}
+
+type ClientCertificateThumbprintResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCertificateThumbprintResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCertificateThumbprintResponse)(nil)).Elem()
+}
+
+func (o ClientCertificateThumbprintResponsePtrOutput) ToClientCertificateThumbprintResponsePtrOutput() ClientCertificateThumbprintResponsePtrOutput {
+	return o
+}
+
+func (o ClientCertificateThumbprintResponsePtrOutput) ToClientCertificateThumbprintResponsePtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintResponsePtrOutput {
+	return o
+}
+
+func (o ClientCertificateThumbprintResponsePtrOutput) Elem() ClientCertificateThumbprintResponseOutput {
+	return o.ApplyT(func(v *ClientCertificateThumbprintResponse) ClientCertificateThumbprintResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCertificateThumbprintResponse
+		return ret
+	}).(ClientCertificateThumbprintResponseOutput)
+}
+
+// The primary thumbprint used for validation.
+func (o ClientCertificateThumbprintResponsePtrOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateThumbprintResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secondary thumbprint used for validation.
+func (o ClientCertificateThumbprintResponsePtrOutput) Secondary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCertificateThumbprintResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secondary
+	}).(pulumi.StringPtrOutput)
 }
 
 // ConnectionState information.
@@ -931,6 +1862,242 @@ func (o DeadLetterWithResourceIdentityResponsePtrOutput) Identity() EventSubscri
 	}).(EventSubscriptionIdentityResponsePtrOutput)
 }
 
+// Properties of the delivery configuration information of the event subscription.
+type DeliveryConfiguration struct {
+	// Delivery mode of the event subscription.
+	DeliveryMode *string `pulumi:"deliveryMode"`
+	// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
+	Queue *QueueInfo `pulumi:"queue"`
+}
+
+// DeliveryConfigurationInput is an input type that accepts DeliveryConfigurationArgs and DeliveryConfigurationOutput values.
+// You can construct a concrete instance of `DeliveryConfigurationInput` via:
+//
+//	DeliveryConfigurationArgs{...}
+type DeliveryConfigurationInput interface {
+	pulumi.Input
+
+	ToDeliveryConfigurationOutput() DeliveryConfigurationOutput
+	ToDeliveryConfigurationOutputWithContext(context.Context) DeliveryConfigurationOutput
+}
+
+// Properties of the delivery configuration information of the event subscription.
+type DeliveryConfigurationArgs struct {
+	// Delivery mode of the event subscription.
+	DeliveryMode pulumi.StringPtrInput `pulumi:"deliveryMode"`
+	// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
+	Queue QueueInfoPtrInput `pulumi:"queue"`
+}
+
+func (DeliveryConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryConfiguration)(nil)).Elem()
+}
+
+func (i DeliveryConfigurationArgs) ToDeliveryConfigurationOutput() DeliveryConfigurationOutput {
+	return i.ToDeliveryConfigurationOutputWithContext(context.Background())
+}
+
+func (i DeliveryConfigurationArgs) ToDeliveryConfigurationOutputWithContext(ctx context.Context) DeliveryConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryConfigurationOutput)
+}
+
+func (i DeliveryConfigurationArgs) ToDeliveryConfigurationPtrOutput() DeliveryConfigurationPtrOutput {
+	return i.ToDeliveryConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryConfigurationArgs) ToDeliveryConfigurationPtrOutputWithContext(ctx context.Context) DeliveryConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryConfigurationOutput).ToDeliveryConfigurationPtrOutputWithContext(ctx)
+}
+
+// DeliveryConfigurationPtrInput is an input type that accepts DeliveryConfigurationArgs, DeliveryConfigurationPtr and DeliveryConfigurationPtrOutput values.
+// You can construct a concrete instance of `DeliveryConfigurationPtrInput` via:
+//
+//	        DeliveryConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryConfigurationPtrOutput() DeliveryConfigurationPtrOutput
+	ToDeliveryConfigurationPtrOutputWithContext(context.Context) DeliveryConfigurationPtrOutput
+}
+
+type deliveryConfigurationPtrType DeliveryConfigurationArgs
+
+func DeliveryConfigurationPtr(v *DeliveryConfigurationArgs) DeliveryConfigurationPtrInput {
+	return (*deliveryConfigurationPtrType)(v)
+}
+
+func (*deliveryConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryConfiguration)(nil)).Elem()
+}
+
+func (i *deliveryConfigurationPtrType) ToDeliveryConfigurationPtrOutput() DeliveryConfigurationPtrOutput {
+	return i.ToDeliveryConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryConfigurationPtrType) ToDeliveryConfigurationPtrOutputWithContext(ctx context.Context) DeliveryConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryConfigurationPtrOutput)
+}
+
+// Properties of the delivery configuration information of the event subscription.
+type DeliveryConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DeliveryConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryConfiguration)(nil)).Elem()
+}
+
+func (o DeliveryConfigurationOutput) ToDeliveryConfigurationOutput() DeliveryConfigurationOutput {
+	return o
+}
+
+func (o DeliveryConfigurationOutput) ToDeliveryConfigurationOutputWithContext(ctx context.Context) DeliveryConfigurationOutput {
+	return o
+}
+
+func (o DeliveryConfigurationOutput) ToDeliveryConfigurationPtrOutput() DeliveryConfigurationPtrOutput {
+	return o.ToDeliveryConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryConfigurationOutput) ToDeliveryConfigurationPtrOutputWithContext(ctx context.Context) DeliveryConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryConfiguration) *DeliveryConfiguration {
+		return &v
+	}).(DeliveryConfigurationPtrOutput)
+}
+
+// Delivery mode of the event subscription.
+func (o DeliveryConfigurationOutput) DeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryConfiguration) *string { return v.DeliveryMode }).(pulumi.StringPtrOutput)
+}
+
+// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
+func (o DeliveryConfigurationOutput) Queue() QueueInfoPtrOutput {
+	return o.ApplyT(func(v DeliveryConfiguration) *QueueInfo { return v.Queue }).(QueueInfoPtrOutput)
+}
+
+type DeliveryConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryConfiguration)(nil)).Elem()
+}
+
+func (o DeliveryConfigurationPtrOutput) ToDeliveryConfigurationPtrOutput() DeliveryConfigurationPtrOutput {
+	return o
+}
+
+func (o DeliveryConfigurationPtrOutput) ToDeliveryConfigurationPtrOutputWithContext(ctx context.Context) DeliveryConfigurationPtrOutput {
+	return o
+}
+
+func (o DeliveryConfigurationPtrOutput) Elem() DeliveryConfigurationOutput {
+	return o.ApplyT(func(v *DeliveryConfiguration) DeliveryConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryConfiguration
+		return ret
+	}).(DeliveryConfigurationOutput)
+}
+
+// Delivery mode of the event subscription.
+func (o DeliveryConfigurationPtrOutput) DeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
+func (o DeliveryConfigurationPtrOutput) Queue() QueueInfoPtrOutput {
+	return o.ApplyT(func(v *DeliveryConfiguration) *QueueInfo {
+		if v == nil {
+			return nil
+		}
+		return v.Queue
+	}).(QueueInfoPtrOutput)
+}
+
+// Properties of the delivery configuration information of the event subscription.
+type DeliveryConfigurationResponse struct {
+	// Delivery mode of the event subscription.
+	DeliveryMode *string `pulumi:"deliveryMode"`
+	// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
+	Queue *QueueInfoResponse `pulumi:"queue"`
+}
+
+// Properties of the delivery configuration information of the event subscription.
+type DeliveryConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DeliveryConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryConfigurationResponse)(nil)).Elem()
+}
+
+func (o DeliveryConfigurationResponseOutput) ToDeliveryConfigurationResponseOutput() DeliveryConfigurationResponseOutput {
+	return o
+}
+
+func (o DeliveryConfigurationResponseOutput) ToDeliveryConfigurationResponseOutputWithContext(ctx context.Context) DeliveryConfigurationResponseOutput {
+	return o
+}
+
+// Delivery mode of the event subscription.
+func (o DeliveryConfigurationResponseOutput) DeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryConfigurationResponse) *string { return v.DeliveryMode }).(pulumi.StringPtrOutput)
+}
+
+// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
+func (o DeliveryConfigurationResponseOutput) Queue() QueueInfoResponsePtrOutput {
+	return o.ApplyT(func(v DeliveryConfigurationResponse) *QueueInfoResponse { return v.Queue }).(QueueInfoResponsePtrOutput)
+}
+
+type DeliveryConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryConfigurationResponse)(nil)).Elem()
+}
+
+func (o DeliveryConfigurationResponsePtrOutput) ToDeliveryConfigurationResponsePtrOutput() DeliveryConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DeliveryConfigurationResponsePtrOutput) ToDeliveryConfigurationResponsePtrOutputWithContext(ctx context.Context) DeliveryConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DeliveryConfigurationResponsePtrOutput) Elem() DeliveryConfigurationResponseOutput {
+	return o.ApplyT(func(v *DeliveryConfigurationResponse) DeliveryConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryConfigurationResponse
+		return ret
+	}).(DeliveryConfigurationResponseOutput)
+}
+
+// Delivery mode of the event subscription.
+func (o DeliveryConfigurationResponsePtrOutput) DeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
+func (o DeliveryConfigurationResponsePtrOutput) Queue() QueueInfoResponsePtrOutput {
+	return o.ApplyT(func(v *DeliveryConfigurationResponse) *QueueInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Queue
+	}).(QueueInfoResponsePtrOutput)
+}
+
 // Information about the delivery for an event subscription with resource identity.
 type DeliveryWithResourceIdentity struct {
 	// Information about the destination where events have to be delivered for the event subscription.
@@ -1194,6 +2361,163 @@ type DynamicDeliveryAttributeMappingResponse struct {
 	// Type of the delivery attribute or header name.
 	// Expected value is 'Dynamic'.
 	Type string `pulumi:"type"`
+}
+
+type DynamicRoutingEnrichment struct {
+	// Dynamic routing enrichment key.
+	Key *string `pulumi:"key"`
+	// Dynamic routing enrichment value.
+	Value *string `pulumi:"value"`
+}
+
+// DynamicRoutingEnrichmentInput is an input type that accepts DynamicRoutingEnrichmentArgs and DynamicRoutingEnrichmentOutput values.
+// You can construct a concrete instance of `DynamicRoutingEnrichmentInput` via:
+//
+//	DynamicRoutingEnrichmentArgs{...}
+type DynamicRoutingEnrichmentInput interface {
+	pulumi.Input
+
+	ToDynamicRoutingEnrichmentOutput() DynamicRoutingEnrichmentOutput
+	ToDynamicRoutingEnrichmentOutputWithContext(context.Context) DynamicRoutingEnrichmentOutput
+}
+
+type DynamicRoutingEnrichmentArgs struct {
+	// Dynamic routing enrichment key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Dynamic routing enrichment value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DynamicRoutingEnrichmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicRoutingEnrichment)(nil)).Elem()
+}
+
+func (i DynamicRoutingEnrichmentArgs) ToDynamicRoutingEnrichmentOutput() DynamicRoutingEnrichmentOutput {
+	return i.ToDynamicRoutingEnrichmentOutputWithContext(context.Background())
+}
+
+func (i DynamicRoutingEnrichmentArgs) ToDynamicRoutingEnrichmentOutputWithContext(ctx context.Context) DynamicRoutingEnrichmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicRoutingEnrichmentOutput)
+}
+
+// DynamicRoutingEnrichmentArrayInput is an input type that accepts DynamicRoutingEnrichmentArray and DynamicRoutingEnrichmentArrayOutput values.
+// You can construct a concrete instance of `DynamicRoutingEnrichmentArrayInput` via:
+//
+//	DynamicRoutingEnrichmentArray{ DynamicRoutingEnrichmentArgs{...} }
+type DynamicRoutingEnrichmentArrayInput interface {
+	pulumi.Input
+
+	ToDynamicRoutingEnrichmentArrayOutput() DynamicRoutingEnrichmentArrayOutput
+	ToDynamicRoutingEnrichmentArrayOutputWithContext(context.Context) DynamicRoutingEnrichmentArrayOutput
+}
+
+type DynamicRoutingEnrichmentArray []DynamicRoutingEnrichmentInput
+
+func (DynamicRoutingEnrichmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicRoutingEnrichment)(nil)).Elem()
+}
+
+func (i DynamicRoutingEnrichmentArray) ToDynamicRoutingEnrichmentArrayOutput() DynamicRoutingEnrichmentArrayOutput {
+	return i.ToDynamicRoutingEnrichmentArrayOutputWithContext(context.Background())
+}
+
+func (i DynamicRoutingEnrichmentArray) ToDynamicRoutingEnrichmentArrayOutputWithContext(ctx context.Context) DynamicRoutingEnrichmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicRoutingEnrichmentArrayOutput)
+}
+
+type DynamicRoutingEnrichmentOutput struct{ *pulumi.OutputState }
+
+func (DynamicRoutingEnrichmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicRoutingEnrichment)(nil)).Elem()
+}
+
+func (o DynamicRoutingEnrichmentOutput) ToDynamicRoutingEnrichmentOutput() DynamicRoutingEnrichmentOutput {
+	return o
+}
+
+func (o DynamicRoutingEnrichmentOutput) ToDynamicRoutingEnrichmentOutputWithContext(ctx context.Context) DynamicRoutingEnrichmentOutput {
+	return o
+}
+
+// Dynamic routing enrichment key.
+func (o DynamicRoutingEnrichmentOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicRoutingEnrichment) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Dynamic routing enrichment value.
+func (o DynamicRoutingEnrichmentOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicRoutingEnrichment) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DynamicRoutingEnrichmentArrayOutput struct{ *pulumi.OutputState }
+
+func (DynamicRoutingEnrichmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicRoutingEnrichment)(nil)).Elem()
+}
+
+func (o DynamicRoutingEnrichmentArrayOutput) ToDynamicRoutingEnrichmentArrayOutput() DynamicRoutingEnrichmentArrayOutput {
+	return o
+}
+
+func (o DynamicRoutingEnrichmentArrayOutput) ToDynamicRoutingEnrichmentArrayOutputWithContext(ctx context.Context) DynamicRoutingEnrichmentArrayOutput {
+	return o
+}
+
+func (o DynamicRoutingEnrichmentArrayOutput) Index(i pulumi.IntInput) DynamicRoutingEnrichmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamicRoutingEnrichment {
+		return vs[0].([]DynamicRoutingEnrichment)[vs[1].(int)]
+	}).(DynamicRoutingEnrichmentOutput)
+}
+
+type DynamicRoutingEnrichmentResponse struct {
+	// Dynamic routing enrichment key.
+	Key *string `pulumi:"key"`
+	// Dynamic routing enrichment value.
+	Value *string `pulumi:"value"`
+}
+
+type DynamicRoutingEnrichmentResponseOutput struct{ *pulumi.OutputState }
+
+func (DynamicRoutingEnrichmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicRoutingEnrichmentResponse)(nil)).Elem()
+}
+
+func (o DynamicRoutingEnrichmentResponseOutput) ToDynamicRoutingEnrichmentResponseOutput() DynamicRoutingEnrichmentResponseOutput {
+	return o
+}
+
+func (o DynamicRoutingEnrichmentResponseOutput) ToDynamicRoutingEnrichmentResponseOutputWithContext(ctx context.Context) DynamicRoutingEnrichmentResponseOutput {
+	return o
+}
+
+// Dynamic routing enrichment key.
+func (o DynamicRoutingEnrichmentResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicRoutingEnrichmentResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Dynamic routing enrichment value.
+func (o DynamicRoutingEnrichmentResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicRoutingEnrichmentResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DynamicRoutingEnrichmentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DynamicRoutingEnrichmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicRoutingEnrichmentResponse)(nil)).Elem()
+}
+
+func (o DynamicRoutingEnrichmentResponseArrayOutput) ToDynamicRoutingEnrichmentResponseArrayOutput() DynamicRoutingEnrichmentResponseArrayOutput {
+	return o
+}
+
+func (o DynamicRoutingEnrichmentResponseArrayOutput) ToDynamicRoutingEnrichmentResponseArrayOutputWithContext(ctx context.Context) DynamicRoutingEnrichmentResponseArrayOutput {
+	return o
+}
+
+func (o DynamicRoutingEnrichmentResponseArrayOutput) Index(i pulumi.IntInput) DynamicRoutingEnrichmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamicRoutingEnrichmentResponse {
+		return vs[0].([]DynamicRoutingEnrichmentResponse)[vs[1].(int)]
+	}).(DynamicRoutingEnrichmentResponseOutput)
 }
 
 // Properties of the destination of an event channel.
@@ -2915,6 +4239,242 @@ func (o EventTypeInfoResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Filters configuration for the Event Subscription.
+type FiltersConfiguration struct {
+	// An array of filters that are used for filtering event subscriptions.
+	Filters []interface{} `pulumi:"filters"`
+	// A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+	IncludedEventTypes []string `pulumi:"includedEventTypes"`
+}
+
+// FiltersConfigurationInput is an input type that accepts FiltersConfigurationArgs and FiltersConfigurationOutput values.
+// You can construct a concrete instance of `FiltersConfigurationInput` via:
+//
+//	FiltersConfigurationArgs{...}
+type FiltersConfigurationInput interface {
+	pulumi.Input
+
+	ToFiltersConfigurationOutput() FiltersConfigurationOutput
+	ToFiltersConfigurationOutputWithContext(context.Context) FiltersConfigurationOutput
+}
+
+// Filters configuration for the Event Subscription.
+type FiltersConfigurationArgs struct {
+	// An array of filters that are used for filtering event subscriptions.
+	Filters pulumi.ArrayInput `pulumi:"filters"`
+	// A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+	IncludedEventTypes pulumi.StringArrayInput `pulumi:"includedEventTypes"`
+}
+
+func (FiltersConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FiltersConfiguration)(nil)).Elem()
+}
+
+func (i FiltersConfigurationArgs) ToFiltersConfigurationOutput() FiltersConfigurationOutput {
+	return i.ToFiltersConfigurationOutputWithContext(context.Background())
+}
+
+func (i FiltersConfigurationArgs) ToFiltersConfigurationOutputWithContext(ctx context.Context) FiltersConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FiltersConfigurationOutput)
+}
+
+func (i FiltersConfigurationArgs) ToFiltersConfigurationPtrOutput() FiltersConfigurationPtrOutput {
+	return i.ToFiltersConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i FiltersConfigurationArgs) ToFiltersConfigurationPtrOutputWithContext(ctx context.Context) FiltersConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FiltersConfigurationOutput).ToFiltersConfigurationPtrOutputWithContext(ctx)
+}
+
+// FiltersConfigurationPtrInput is an input type that accepts FiltersConfigurationArgs, FiltersConfigurationPtr and FiltersConfigurationPtrOutput values.
+// You can construct a concrete instance of `FiltersConfigurationPtrInput` via:
+//
+//	        FiltersConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type FiltersConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToFiltersConfigurationPtrOutput() FiltersConfigurationPtrOutput
+	ToFiltersConfigurationPtrOutputWithContext(context.Context) FiltersConfigurationPtrOutput
+}
+
+type filtersConfigurationPtrType FiltersConfigurationArgs
+
+func FiltersConfigurationPtr(v *FiltersConfigurationArgs) FiltersConfigurationPtrInput {
+	return (*filtersConfigurationPtrType)(v)
+}
+
+func (*filtersConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FiltersConfiguration)(nil)).Elem()
+}
+
+func (i *filtersConfigurationPtrType) ToFiltersConfigurationPtrOutput() FiltersConfigurationPtrOutput {
+	return i.ToFiltersConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *filtersConfigurationPtrType) ToFiltersConfigurationPtrOutputWithContext(ctx context.Context) FiltersConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FiltersConfigurationPtrOutput)
+}
+
+// Filters configuration for the Event Subscription.
+type FiltersConfigurationOutput struct{ *pulumi.OutputState }
+
+func (FiltersConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FiltersConfiguration)(nil)).Elem()
+}
+
+func (o FiltersConfigurationOutput) ToFiltersConfigurationOutput() FiltersConfigurationOutput {
+	return o
+}
+
+func (o FiltersConfigurationOutput) ToFiltersConfigurationOutputWithContext(ctx context.Context) FiltersConfigurationOutput {
+	return o
+}
+
+func (o FiltersConfigurationOutput) ToFiltersConfigurationPtrOutput() FiltersConfigurationPtrOutput {
+	return o.ToFiltersConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o FiltersConfigurationOutput) ToFiltersConfigurationPtrOutputWithContext(ctx context.Context) FiltersConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FiltersConfiguration) *FiltersConfiguration {
+		return &v
+	}).(FiltersConfigurationPtrOutput)
+}
+
+// An array of filters that are used for filtering event subscriptions.
+func (o FiltersConfigurationOutput) Filters() pulumi.ArrayOutput {
+	return o.ApplyT(func(v FiltersConfiguration) []interface{} { return v.Filters }).(pulumi.ArrayOutput)
+}
+
+// A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+func (o FiltersConfigurationOutput) IncludedEventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FiltersConfiguration) []string { return v.IncludedEventTypes }).(pulumi.StringArrayOutput)
+}
+
+type FiltersConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (FiltersConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FiltersConfiguration)(nil)).Elem()
+}
+
+func (o FiltersConfigurationPtrOutput) ToFiltersConfigurationPtrOutput() FiltersConfigurationPtrOutput {
+	return o
+}
+
+func (o FiltersConfigurationPtrOutput) ToFiltersConfigurationPtrOutputWithContext(ctx context.Context) FiltersConfigurationPtrOutput {
+	return o
+}
+
+func (o FiltersConfigurationPtrOutput) Elem() FiltersConfigurationOutput {
+	return o.ApplyT(func(v *FiltersConfiguration) FiltersConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret FiltersConfiguration
+		return ret
+	}).(FiltersConfigurationOutput)
+}
+
+// An array of filters that are used for filtering event subscriptions.
+func (o FiltersConfigurationPtrOutput) Filters() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *FiltersConfiguration) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Filters
+	}).(pulumi.ArrayOutput)
+}
+
+// A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+func (o FiltersConfigurationPtrOutput) IncludedEventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FiltersConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedEventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Filters configuration for the Event Subscription.
+type FiltersConfigurationResponse struct {
+	// An array of filters that are used for filtering event subscriptions.
+	Filters []interface{} `pulumi:"filters"`
+	// A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+	IncludedEventTypes []string `pulumi:"includedEventTypes"`
+}
+
+// Filters configuration for the Event Subscription.
+type FiltersConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (FiltersConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FiltersConfigurationResponse)(nil)).Elem()
+}
+
+func (o FiltersConfigurationResponseOutput) ToFiltersConfigurationResponseOutput() FiltersConfigurationResponseOutput {
+	return o
+}
+
+func (o FiltersConfigurationResponseOutput) ToFiltersConfigurationResponseOutputWithContext(ctx context.Context) FiltersConfigurationResponseOutput {
+	return o
+}
+
+// An array of filters that are used for filtering event subscriptions.
+func (o FiltersConfigurationResponseOutput) Filters() pulumi.ArrayOutput {
+	return o.ApplyT(func(v FiltersConfigurationResponse) []interface{} { return v.Filters }).(pulumi.ArrayOutput)
+}
+
+// A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+func (o FiltersConfigurationResponseOutput) IncludedEventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FiltersConfigurationResponse) []string { return v.IncludedEventTypes }).(pulumi.StringArrayOutput)
+}
+
+type FiltersConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FiltersConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FiltersConfigurationResponse)(nil)).Elem()
+}
+
+func (o FiltersConfigurationResponsePtrOutput) ToFiltersConfigurationResponsePtrOutput() FiltersConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o FiltersConfigurationResponsePtrOutput) ToFiltersConfigurationResponsePtrOutputWithContext(ctx context.Context) FiltersConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o FiltersConfigurationResponsePtrOutput) Elem() FiltersConfigurationResponseOutput {
+	return o.ApplyT(func(v *FiltersConfigurationResponse) FiltersConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FiltersConfigurationResponse
+		return ret
+	}).(FiltersConfigurationResponseOutput)
+}
+
+// An array of filters that are used for filtering event subscriptions.
+func (o FiltersConfigurationResponsePtrOutput) Filters() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *FiltersConfigurationResponse) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Filters
+	}).(pulumi.ArrayOutput)
+}
+
+// A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+func (o FiltersConfigurationResponsePtrOutput) IncludedEventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FiltersConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedEventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 // Information about the HybridConnection destination for an event subscription.
 type HybridConnectionEventSubscriptionDestination struct {
 	// Delivery attribute details.
@@ -3424,6 +4984,8 @@ type InlineEventProperties struct {
 	DataSchemaUrl *string `pulumi:"dataSchemaUrl"`
 	// The description for the inline event.
 	Description *string `pulumi:"description"`
+	// The displayName for the inline event.
+	DisplayName *string `pulumi:"displayName"`
 	// The documentationUrl for the inline event.
 	DocumentationUrl *string `pulumi:"documentationUrl"`
 }
@@ -3445,6 +5007,8 @@ type InlineEventPropertiesArgs struct {
 	DataSchemaUrl pulumi.StringPtrInput `pulumi:"dataSchemaUrl"`
 	// The description for the inline event.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The displayName for the inline event.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The documentationUrl for the inline event.
 	DocumentationUrl pulumi.StringPtrInput `pulumi:"documentationUrl"`
 }
@@ -3511,6 +5075,11 @@ func (o InlineEventPropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InlineEventProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The displayName for the inline event.
+func (o InlineEventPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InlineEventProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
 // The documentationUrl for the inline event.
 func (o InlineEventPropertiesOutput) DocumentationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InlineEventProperties) *string { return v.DocumentationUrl }).(pulumi.StringPtrOutput)
@@ -3542,6 +5111,8 @@ type InlineEventPropertiesResponse struct {
 	DataSchemaUrl *string `pulumi:"dataSchemaUrl"`
 	// The description for the inline event.
 	Description *string `pulumi:"description"`
+	// The displayName for the inline event.
+	DisplayName *string `pulumi:"displayName"`
 	// The documentationUrl for the inline event.
 	DocumentationUrl *string `pulumi:"documentationUrl"`
 }
@@ -3569,6 +5140,11 @@ func (o InlineEventPropertiesResponseOutput) DataSchemaUrl() pulumi.StringPtrOut
 // The description for the inline event.
 func (o InlineEventPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InlineEventPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The displayName for the inline event.
+func (o InlineEventPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InlineEventPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // The documentationUrl for the inline event.
@@ -3614,6 +5190,24 @@ type IsNotNullAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 }
 
+// IsNotNull Filter.
+type IsNotNullFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'IsNotNull'.
+	OperatorType string `pulumi:"operatorType"`
+}
+
+// IsNotNull Filter.
+type IsNotNullFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'IsNotNull'.
+	OperatorType string `pulumi:"operatorType"`
+}
+
 // IsNullOrUndefined Advanced Filter.
 type IsNullOrUndefinedAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -3625,6 +5219,24 @@ type IsNullOrUndefinedAdvancedFilter struct {
 
 // IsNullOrUndefined Advanced Filter.
 type IsNullOrUndefinedAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'IsNullOrUndefined'.
+	OperatorType string `pulumi:"operatorType"`
+}
+
+// IsNullOrUndefined Filter.
+type IsNullOrUndefinedFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'IsNullOrUndefined'.
+	OperatorType string `pulumi:"operatorType"`
+}
+
+// IsNullOrUndefined Filter.
+type IsNullOrUndefinedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -4506,6 +6118,256 @@ func (o JsonInputSchemaMappingResponsePtrOutput) Topic() JsonFieldResponsePtrOut
 	}).(JsonFieldResponsePtrOutput)
 }
 
+// Represents available Sku pricing tiers.
+type NamespaceSku struct {
+	// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+	// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
+	// max allowed capacity is 20.
+	Capacity *int `pulumi:"capacity"`
+	// The name of the SKU.
+	Name *string `pulumi:"name"`
+}
+
+// NamespaceSkuInput is an input type that accepts NamespaceSkuArgs and NamespaceSkuOutput values.
+// You can construct a concrete instance of `NamespaceSkuInput` via:
+//
+//	NamespaceSkuArgs{...}
+type NamespaceSkuInput interface {
+	pulumi.Input
+
+	ToNamespaceSkuOutput() NamespaceSkuOutput
+	ToNamespaceSkuOutputWithContext(context.Context) NamespaceSkuOutput
+}
+
+// Represents available Sku pricing tiers.
+type NamespaceSkuArgs struct {
+	// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+	// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
+	// max allowed capacity is 20.
+	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
+	// The name of the SKU.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (NamespaceSkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceSku)(nil)).Elem()
+}
+
+func (i NamespaceSkuArgs) ToNamespaceSkuOutput() NamespaceSkuOutput {
+	return i.ToNamespaceSkuOutputWithContext(context.Background())
+}
+
+func (i NamespaceSkuArgs) ToNamespaceSkuOutputWithContext(ctx context.Context) NamespaceSkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceSkuOutput)
+}
+
+func (i NamespaceSkuArgs) ToNamespaceSkuPtrOutput() NamespaceSkuPtrOutput {
+	return i.ToNamespaceSkuPtrOutputWithContext(context.Background())
+}
+
+func (i NamespaceSkuArgs) ToNamespaceSkuPtrOutputWithContext(ctx context.Context) NamespaceSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceSkuOutput).ToNamespaceSkuPtrOutputWithContext(ctx)
+}
+
+// NamespaceSkuPtrInput is an input type that accepts NamespaceSkuArgs, NamespaceSkuPtr and NamespaceSkuPtrOutput values.
+// You can construct a concrete instance of `NamespaceSkuPtrInput` via:
+//
+//	        NamespaceSkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type NamespaceSkuPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceSkuPtrOutput() NamespaceSkuPtrOutput
+	ToNamespaceSkuPtrOutputWithContext(context.Context) NamespaceSkuPtrOutput
+}
+
+type namespaceSkuPtrType NamespaceSkuArgs
+
+func NamespaceSkuPtr(v *NamespaceSkuArgs) NamespaceSkuPtrInput {
+	return (*namespaceSkuPtrType)(v)
+}
+
+func (*namespaceSkuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceSku)(nil)).Elem()
+}
+
+func (i *namespaceSkuPtrType) ToNamespaceSkuPtrOutput() NamespaceSkuPtrOutput {
+	return i.ToNamespaceSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceSkuPtrType) ToNamespaceSkuPtrOutputWithContext(ctx context.Context) NamespaceSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceSkuPtrOutput)
+}
+
+// Represents available Sku pricing tiers.
+type NamespaceSkuOutput struct{ *pulumi.OutputState }
+
+func (NamespaceSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceSku)(nil)).Elem()
+}
+
+func (o NamespaceSkuOutput) ToNamespaceSkuOutput() NamespaceSkuOutput {
+	return o
+}
+
+func (o NamespaceSkuOutput) ToNamespaceSkuOutputWithContext(ctx context.Context) NamespaceSkuOutput {
+	return o
+}
+
+func (o NamespaceSkuOutput) ToNamespaceSkuPtrOutput() NamespaceSkuPtrOutput {
+	return o.ToNamespaceSkuPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceSkuOutput) ToNamespaceSkuPtrOutputWithContext(ctx context.Context) NamespaceSkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceSku) *NamespaceSku {
+		return &v
+	}).(NamespaceSkuPtrOutput)
+}
+
+// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
+// max allowed capacity is 20.
+func (o NamespaceSkuOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// The name of the SKU.
+func (o NamespaceSkuOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceSku) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceSku)(nil)).Elem()
+}
+
+func (o NamespaceSkuPtrOutput) ToNamespaceSkuPtrOutput() NamespaceSkuPtrOutput {
+	return o
+}
+
+func (o NamespaceSkuPtrOutput) ToNamespaceSkuPtrOutputWithContext(ctx context.Context) NamespaceSkuPtrOutput {
+	return o
+}
+
+func (o NamespaceSkuPtrOutput) Elem() NamespaceSkuOutput {
+	return o.ApplyT(func(v *NamespaceSku) NamespaceSku {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceSku
+		return ret
+	}).(NamespaceSkuOutput)
+}
+
+// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
+// max allowed capacity is 20.
+func (o NamespaceSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NamespaceSku) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the SKU.
+func (o NamespaceSkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents available Sku pricing tiers.
+type NamespaceSkuResponse struct {
+	// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+	// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
+	// max allowed capacity is 20.
+	Capacity *int `pulumi:"capacity"`
+	// The name of the SKU.
+	Name *string `pulumi:"name"`
+}
+
+// Represents available Sku pricing tiers.
+type NamespaceSkuResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceSkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceSkuResponse)(nil)).Elem()
+}
+
+func (o NamespaceSkuResponseOutput) ToNamespaceSkuResponseOutput() NamespaceSkuResponseOutput {
+	return o
+}
+
+func (o NamespaceSkuResponseOutput) ToNamespaceSkuResponseOutputWithContext(ctx context.Context) NamespaceSkuResponseOutput {
+	return o
+}
+
+// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
+// max allowed capacity is 20.
+func (o NamespaceSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// The name of the SKU.
+func (o NamespaceSkuResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceSkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceSkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceSkuResponse)(nil)).Elem()
+}
+
+func (o NamespaceSkuResponsePtrOutput) ToNamespaceSkuResponsePtrOutput() NamespaceSkuResponsePtrOutput {
+	return o
+}
+
+func (o NamespaceSkuResponsePtrOutput) ToNamespaceSkuResponsePtrOutputWithContext(ctx context.Context) NamespaceSkuResponsePtrOutput {
+	return o
+}
+
+func (o NamespaceSkuResponsePtrOutput) Elem() NamespaceSkuResponseOutput {
+	return o.ApplyT(func(v *NamespaceSkuResponse) NamespaceSkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceSkuResponse
+		return ret
+	}).(NamespaceSkuResponseOutput)
+}
+
+// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
+// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
+// max allowed capacity is 20.
+func (o NamespaceSkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NamespaceSkuResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the SKU.
+func (o NamespaceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // NumberGreaterThan Advanced Filter.
 type NumberGreaterThanAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -4519,6 +6381,28 @@ type NumberGreaterThanAdvancedFilter struct {
 
 // NumberGreaterThan Advanced Filter.
 type NumberGreaterThanAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberGreaterThan'.
+	OperatorType string `pulumi:"operatorType"`
+	// The filter value.
+	Value *float64 `pulumi:"value"`
+}
+
+// NumberGreaterThan Filter.
+type NumberGreaterThanFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberGreaterThan'.
+	OperatorType string `pulumi:"operatorType"`
+	// The filter value.
+	Value *float64 `pulumi:"value"`
+}
+
+// NumberGreaterThan Filter.
+type NumberGreaterThanFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -4550,6 +6434,28 @@ type NumberGreaterThanOrEqualsAdvancedFilterResponse struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberGreaterThanOrEquals Filter.
+type NumberGreaterThanOrEqualsFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberGreaterThanOrEquals'.
+	OperatorType string `pulumi:"operatorType"`
+	// The filter value.
+	Value *float64 `pulumi:"value"`
+}
+
+// NumberGreaterThanOrEquals Filter.
+type NumberGreaterThanOrEqualsFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberGreaterThanOrEquals'.
+	OperatorType string `pulumi:"operatorType"`
+	// The filter value.
+	Value *float64 `pulumi:"value"`
+}
+
 // NumberIn Advanced Filter.
 type NumberInAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -4563,6 +6469,28 @@ type NumberInAdvancedFilter struct {
 
 // NumberIn Advanced Filter.
 type NumberInAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberIn'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []float64 `pulumi:"values"`
+}
+
+// NumberIn Filter.
+type NumberInFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberIn'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []float64 `pulumi:"values"`
+}
+
+// NumberIn Filter.
+type NumberInFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -4594,6 +6522,28 @@ type NumberInRangeAdvancedFilterResponse struct {
 	Values [][]float64 `pulumi:"values"`
 }
 
+// NumberInRange Filter.
+type NumberInRangeFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberInRange'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values [][]float64 `pulumi:"values"`
+}
+
+// NumberInRange Filter.
+type NumberInRangeFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberInRange'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values [][]float64 `pulumi:"values"`
+}
+
 // NumberLessThan Advanced Filter.
 type NumberLessThanAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -4607,6 +6557,28 @@ type NumberLessThanAdvancedFilter struct {
 
 // NumberLessThan Advanced Filter.
 type NumberLessThanAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberLessThan'.
+	OperatorType string `pulumi:"operatorType"`
+	// The filter value.
+	Value *float64 `pulumi:"value"`
+}
+
+// NumberLessThan Filter.
+type NumberLessThanFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberLessThan'.
+	OperatorType string `pulumi:"operatorType"`
+	// The filter value.
+	Value *float64 `pulumi:"value"`
+}
+
+// NumberLessThan Filter.
+type NumberLessThanFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -4638,6 +6610,28 @@ type NumberLessThanOrEqualsAdvancedFilterResponse struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberLessThanOrEquals Filter.
+type NumberLessThanOrEqualsFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberLessThanOrEquals'.
+	OperatorType string `pulumi:"operatorType"`
+	// The filter value.
+	Value *float64 `pulumi:"value"`
+}
+
+// NumberLessThanOrEquals Filter.
+type NumberLessThanOrEqualsFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberLessThanOrEquals'.
+	OperatorType string `pulumi:"operatorType"`
+	// The filter value.
+	Value *float64 `pulumi:"value"`
+}
+
 // NumberNotIn Advanced Filter.
 type NumberNotInAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -4660,6 +6654,28 @@ type NumberNotInAdvancedFilterResponse struct {
 	Values []float64 `pulumi:"values"`
 }
 
+// NumberNotIn Filter.
+type NumberNotInFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberNotIn'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []float64 `pulumi:"values"`
+}
+
+// NumberNotIn Filter.
+type NumberNotInFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberNotIn'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []float64 `pulumi:"values"`
+}
+
 // NumberNotInRange Advanced Filter.
 type NumberNotInRangeAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -4673,6 +6689,28 @@ type NumberNotInRangeAdvancedFilter struct {
 
 // NumberNotInRange Advanced Filter.
 type NumberNotInRangeAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberNotInRange'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values [][]float64 `pulumi:"values"`
+}
+
+// NumberNotInRange Filter.
+type NumberNotInRangeFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberNotInRange'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values [][]float64 `pulumi:"values"`
+}
+
+// NumberNotInRange Filter.
+type NumberNotInRangeFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -5047,22 +7085,6 @@ func (o PartnerAuthorizationResponsePtrOutput) DefaultMaximumExpirationTimeInDay
 		}
 		return v.DefaultMaximumExpirationTimeInDays
 	}).(pulumi.IntPtrOutput)
-}
-
-type PartnerEventSubscriptionDestination struct {
-	// Type of the endpoint for the event subscription destination.
-	// Expected value is 'PartnerDestination'.
-	EndpointType string `pulumi:"endpointType"`
-	// The Azure Resource Id that represents the endpoint of a Partner Destination of an event subscription.
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-type PartnerEventSubscriptionDestinationResponse struct {
-	// Type of the endpoint for the event subscription destination.
-	// Expected value is 'PartnerDestination'.
-	EndpointType string `pulumi:"endpointType"`
-	// The Azure Resource Id that represents the endpoint of a Partner Destination of an event subscription.
-	ResourceId *string `pulumi:"resourceId"`
 }
 
 // Information about the partner.
@@ -5648,6 +7670,130 @@ func (o PrivateEndpointPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PrivateEndpointConnectionType struct {
+	// GroupIds from the private link service resource.
+	GroupIds []string `pulumi:"groupIds"`
+	// The Private Endpoint resource for this Connection.
+	PrivateEndpoint *PrivateEndpoint `pulumi:"privateEndpoint"`
+	// Details about the state of the connection.
+	PrivateLinkServiceConnectionState *ConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	// Provisioning state of the Private Endpoint Connection.
+	ProvisioningState *string `pulumi:"provisioningState"`
+}
+
+// PrivateEndpointConnectionTypeInput is an input type that accepts PrivateEndpointConnectionTypeArgs and PrivateEndpointConnectionTypeOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionTypeInput` via:
+//
+//	PrivateEndpointConnectionTypeArgs{...}
+type PrivateEndpointConnectionTypeInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput
+	ToPrivateEndpointConnectionTypeOutputWithContext(context.Context) PrivateEndpointConnectionTypeOutput
+}
+
+type PrivateEndpointConnectionTypeArgs struct {
+	// GroupIds from the private link service resource.
+	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
+	// The Private Endpoint resource for this Connection.
+	PrivateEndpoint PrivateEndpointPtrInput `pulumi:"privateEndpoint"`
+	// Details about the state of the connection.
+	PrivateLinkServiceConnectionState ConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
+	// Provisioning state of the Private Endpoint Connection.
+	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+}
+
+func (PrivateEndpointConnectionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionType)(nil)).Elem()
+}
+
+func (i PrivateEndpointConnectionTypeArgs) ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput {
+	return i.ToPrivateEndpointConnectionTypeOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointConnectionTypeArgs) ToPrivateEndpointConnectionTypeOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeOutput)
+}
+
+// PrivateEndpointConnectionTypeArrayInput is an input type that accepts PrivateEndpointConnectionTypeArray and PrivateEndpointConnectionTypeArrayOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionTypeArrayInput` via:
+//
+//	PrivateEndpointConnectionTypeArray{ PrivateEndpointConnectionTypeArgs{...} }
+type PrivateEndpointConnectionTypeArrayInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput
+	ToPrivateEndpointConnectionTypeArrayOutputWithContext(context.Context) PrivateEndpointConnectionTypeArrayOutput
+}
+
+type PrivateEndpointConnectionTypeArray []PrivateEndpointConnectionTypeInput
+
+func (PrivateEndpointConnectionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionType)(nil)).Elem()
+}
+
+func (i PrivateEndpointConnectionTypeArray) ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput {
+	return i.ToPrivateEndpointConnectionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointConnectionTypeArray) ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeArrayOutput)
+}
+
+type PrivateEndpointConnectionTypeOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionType)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutput() PrivateEndpointConnectionTypeOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeOutput {
+	return o
+}
+
+// GroupIds from the private link service resource.
+func (o PrivateEndpointConnectionTypeOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionType) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The Private Endpoint resource for this Connection.
+func (o PrivateEndpointConnectionTypeOutput) PrivateEndpoint() PrivateEndpointPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionType) *PrivateEndpoint { return v.PrivateEndpoint }).(PrivateEndpointPtrOutput)
+}
+
+// Details about the state of the connection.
+func (o PrivateEndpointConnectionTypeOutput) PrivateLinkServiceConnectionState() ConnectionStatePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionType) *ConnectionState { return v.PrivateLinkServiceConnectionState }).(ConnectionStatePtrOutput)
+}
+
+// Provisioning state of the Private Endpoint Connection.
+func (o PrivateEndpointConnectionTypeOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionType) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointConnectionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionType)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTypeArrayOutput() PrivateEndpointConnectionTypeArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionTypeArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionType {
+		return vs[0].([]PrivateEndpointConnectionType)[vs[1].(int)]
+	}).(PrivateEndpointConnectionTypeOutput)
+}
+
 type PrivateEndpointConnectionResponse struct {
 	// GroupIds from the private link service resource.
 	GroupIds []string `pulumi:"groupIds"`
@@ -5796,182 +7942,444 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The change history of the resource move.
-type ResourceMoveChangeHistory struct {
-	// Azure subscription ID of the resource.
-	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
-	// UTC timestamp of when the resource was changed.
-	ChangedTimeUtc *string `pulumi:"changedTimeUtc"`
-	// Azure Resource Group of the resource.
-	ResourceGroupName *string `pulumi:"resourceGroupName"`
+// Properties of the Queue info for event subscription.
+type QueueInfo struct {
+	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+	// Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
+	DeadLetterDestinationWithResourceIdentity *DeadLetterWithResourceIdentity `pulumi:"deadLetterDestinationWithResourceIdentity"`
+	// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+	// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+	//     - (n) is replaced by the value of each time element that follows the (n).
+	//     - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+	//     - Y is the year designator, and it follows the value for the number of years.
+	//     - M is the month designator, and it follows the value for the number of months.
+	//     - W is the week designator, and it follows the value for the number of weeks.
+	//     - D is the day designator, and it follows the value for the number of days.
+	//     - T is the time designator, and it precedes the time components.
+	//     - H is the hour designator, and it follows the value for the number of hours.
+	//     - M is the minute designator, and it follows the value for the number of minutes.
+	//     - S is the second designator, and it follows the value for the number of seconds.
+	// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+	// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+	//     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+	//     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+	EventTimeToLive *string `pulumi:"eventTimeToLive"`
+	// The maximum delivery count of the events.
+	MaxDeliveryCount *int `pulumi:"maxDeliveryCount"`
+	// Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
+	// If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
+	// the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
+	ReceiveLockDurationInSeconds *int `pulumi:"receiveLockDurationInSeconds"`
 }
 
-// ResourceMoveChangeHistoryInput is an input type that accepts ResourceMoveChangeHistoryArgs and ResourceMoveChangeHistoryOutput values.
-// You can construct a concrete instance of `ResourceMoveChangeHistoryInput` via:
+// QueueInfoInput is an input type that accepts QueueInfoArgs and QueueInfoOutput values.
+// You can construct a concrete instance of `QueueInfoInput` via:
 //
-//	ResourceMoveChangeHistoryArgs{...}
-type ResourceMoveChangeHistoryInput interface {
+//	QueueInfoArgs{...}
+type QueueInfoInput interface {
 	pulumi.Input
 
-	ToResourceMoveChangeHistoryOutput() ResourceMoveChangeHistoryOutput
-	ToResourceMoveChangeHistoryOutputWithContext(context.Context) ResourceMoveChangeHistoryOutput
+	ToQueueInfoOutput() QueueInfoOutput
+	ToQueueInfoOutputWithContext(context.Context) QueueInfoOutput
 }
 
-// The change history of the resource move.
-type ResourceMoveChangeHistoryArgs struct {
-	// Azure subscription ID of the resource.
-	AzureSubscriptionId pulumi.StringPtrInput `pulumi:"azureSubscriptionId"`
-	// UTC timestamp of when the resource was changed.
-	ChangedTimeUtc pulumi.StringPtrInput `pulumi:"changedTimeUtc"`
-	// Azure Resource Group of the resource.
-	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
+// Properties of the Queue info for event subscription.
+type QueueInfoArgs struct {
+	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+	// Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
+	DeadLetterDestinationWithResourceIdentity DeadLetterWithResourceIdentityPtrInput `pulumi:"deadLetterDestinationWithResourceIdentity"`
+	// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+	// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+	//     - (n) is replaced by the value of each time element that follows the (n).
+	//     - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+	//     - Y is the year designator, and it follows the value for the number of years.
+	//     - M is the month designator, and it follows the value for the number of months.
+	//     - W is the week designator, and it follows the value for the number of weeks.
+	//     - D is the day designator, and it follows the value for the number of days.
+	//     - T is the time designator, and it precedes the time components.
+	//     - H is the hour designator, and it follows the value for the number of hours.
+	//     - M is the minute designator, and it follows the value for the number of minutes.
+	//     - S is the second designator, and it follows the value for the number of seconds.
+	// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+	// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+	//     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+	//     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+	EventTimeToLive pulumi.StringPtrInput `pulumi:"eventTimeToLive"`
+	// The maximum delivery count of the events.
+	MaxDeliveryCount pulumi.IntPtrInput `pulumi:"maxDeliveryCount"`
+	// Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
+	// If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
+	// the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
+	ReceiveLockDurationInSeconds pulumi.IntPtrInput `pulumi:"receiveLockDurationInSeconds"`
 }
 
-func (ResourceMoveChangeHistoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceMoveChangeHistory)(nil)).Elem()
+func (QueueInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueInfo)(nil)).Elem()
 }
 
-func (i ResourceMoveChangeHistoryArgs) ToResourceMoveChangeHistoryOutput() ResourceMoveChangeHistoryOutput {
-	return i.ToResourceMoveChangeHistoryOutputWithContext(context.Background())
+func (i QueueInfoArgs) ToQueueInfoOutput() QueueInfoOutput {
+	return i.ToQueueInfoOutputWithContext(context.Background())
 }
 
-func (i ResourceMoveChangeHistoryArgs) ToResourceMoveChangeHistoryOutputWithContext(ctx context.Context) ResourceMoveChangeHistoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceMoveChangeHistoryOutput)
+func (i QueueInfoArgs) ToQueueInfoOutputWithContext(ctx context.Context) QueueInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueInfoOutput)
 }
 
-// ResourceMoveChangeHistoryArrayInput is an input type that accepts ResourceMoveChangeHistoryArray and ResourceMoveChangeHistoryArrayOutput values.
-// You can construct a concrete instance of `ResourceMoveChangeHistoryArrayInput` via:
+func (i QueueInfoArgs) ToQueueInfoPtrOutput() QueueInfoPtrOutput {
+	return i.ToQueueInfoPtrOutputWithContext(context.Background())
+}
+
+func (i QueueInfoArgs) ToQueueInfoPtrOutputWithContext(ctx context.Context) QueueInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueInfoOutput).ToQueueInfoPtrOutputWithContext(ctx)
+}
+
+// QueueInfoPtrInput is an input type that accepts QueueInfoArgs, QueueInfoPtr and QueueInfoPtrOutput values.
+// You can construct a concrete instance of `QueueInfoPtrInput` via:
 //
-//	ResourceMoveChangeHistoryArray{ ResourceMoveChangeHistoryArgs{...} }
-type ResourceMoveChangeHistoryArrayInput interface {
+//	        QueueInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueInfoPtrInput interface {
 	pulumi.Input
 
-	ToResourceMoveChangeHistoryArrayOutput() ResourceMoveChangeHistoryArrayOutput
-	ToResourceMoveChangeHistoryArrayOutputWithContext(context.Context) ResourceMoveChangeHistoryArrayOutput
+	ToQueueInfoPtrOutput() QueueInfoPtrOutput
+	ToQueueInfoPtrOutputWithContext(context.Context) QueueInfoPtrOutput
 }
 
-type ResourceMoveChangeHistoryArray []ResourceMoveChangeHistoryInput
+type queueInfoPtrType QueueInfoArgs
 
-func (ResourceMoveChangeHistoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceMoveChangeHistory)(nil)).Elem()
+func QueueInfoPtr(v *QueueInfoArgs) QueueInfoPtrInput {
+	return (*queueInfoPtrType)(v)
 }
 
-func (i ResourceMoveChangeHistoryArray) ToResourceMoveChangeHistoryArrayOutput() ResourceMoveChangeHistoryArrayOutput {
-	return i.ToResourceMoveChangeHistoryArrayOutputWithContext(context.Background())
+func (*queueInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueInfo)(nil)).Elem()
 }
 
-func (i ResourceMoveChangeHistoryArray) ToResourceMoveChangeHistoryArrayOutputWithContext(ctx context.Context) ResourceMoveChangeHistoryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceMoveChangeHistoryArrayOutput)
+func (i *queueInfoPtrType) ToQueueInfoPtrOutput() QueueInfoPtrOutput {
+	return i.ToQueueInfoPtrOutputWithContext(context.Background())
 }
 
-// The change history of the resource move.
-type ResourceMoveChangeHistoryOutput struct{ *pulumi.OutputState }
-
-func (ResourceMoveChangeHistoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceMoveChangeHistory)(nil)).Elem()
+func (i *queueInfoPtrType) ToQueueInfoPtrOutputWithContext(ctx context.Context) QueueInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueInfoPtrOutput)
 }
 
-func (o ResourceMoveChangeHistoryOutput) ToResourceMoveChangeHistoryOutput() ResourceMoveChangeHistoryOutput {
+// Properties of the Queue info for event subscription.
+type QueueInfoOutput struct{ *pulumi.OutputState }
+
+func (QueueInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueInfo)(nil)).Elem()
+}
+
+func (o QueueInfoOutput) ToQueueInfoOutput() QueueInfoOutput {
 	return o
 }
 
-func (o ResourceMoveChangeHistoryOutput) ToResourceMoveChangeHistoryOutputWithContext(ctx context.Context) ResourceMoveChangeHistoryOutput {
+func (o QueueInfoOutput) ToQueueInfoOutputWithContext(ctx context.Context) QueueInfoOutput {
 	return o
 }
 
-// Azure subscription ID of the resource.
-func (o ResourceMoveChangeHistoryOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMoveChangeHistory) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
+func (o QueueInfoOutput) ToQueueInfoPtrOutput() QueueInfoPtrOutput {
+	return o.ToQueueInfoPtrOutputWithContext(context.Background())
 }
 
-// UTC timestamp of when the resource was changed.
-func (o ResourceMoveChangeHistoryOutput) ChangedTimeUtc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMoveChangeHistory) *string { return v.ChangedTimeUtc }).(pulumi.StringPtrOutput)
+func (o QueueInfoOutput) ToQueueInfoPtrOutputWithContext(ctx context.Context) QueueInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueInfo) *QueueInfo {
+		return &v
+	}).(QueueInfoPtrOutput)
 }
 
-// Azure Resource Group of the resource.
-func (o ResourceMoveChangeHistoryOutput) ResourceGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMoveChangeHistory) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
+func (o QueueInfoOutput) DeadLetterDestinationWithResourceIdentity() DeadLetterWithResourceIdentityPtrOutput {
+	return o.ApplyT(func(v QueueInfo) *DeadLetterWithResourceIdentity { return v.DeadLetterDestinationWithResourceIdentity }).(DeadLetterWithResourceIdentityPtrOutput)
 }
 
-type ResourceMoveChangeHistoryArrayOutput struct{ *pulumi.OutputState }
-
-func (ResourceMoveChangeHistoryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceMoveChangeHistory)(nil)).Elem()
+// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+//   - (n) is replaced by the value of each time element that follows the (n).
+//   - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+//   - Y is the year designator, and it follows the value for the number of years.
+//   - M is the month designator, and it follows the value for the number of months.
+//   - W is the week designator, and it follows the value for the number of weeks.
+//   - D is the day designator, and it follows the value for the number of days.
+//   - T is the time designator, and it precedes the time components.
+//   - H is the hour designator, and it follows the value for the number of hours.
+//   - M is the minute designator, and it follows the value for the number of minutes.
+//   - S is the second designator, and it follows the value for the number of seconds.
+//
+// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+//   - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+//   - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+func (o QueueInfoOutput) EventTimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueInfo) *string { return v.EventTimeToLive }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceMoveChangeHistoryArrayOutput) ToResourceMoveChangeHistoryArrayOutput() ResourceMoveChangeHistoryArrayOutput {
+// The maximum delivery count of the events.
+func (o QueueInfoOutput) MaxDeliveryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QueueInfo) *int { return v.MaxDeliveryCount }).(pulumi.IntPtrOutput)
+}
+
+// Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
+// If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
+// the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
+func (o QueueInfoOutput) ReceiveLockDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QueueInfo) *int { return v.ReceiveLockDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type QueueInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueInfo)(nil)).Elem()
+}
+
+func (o QueueInfoPtrOutput) ToQueueInfoPtrOutput() QueueInfoPtrOutput {
 	return o
 }
 
-func (o ResourceMoveChangeHistoryArrayOutput) ToResourceMoveChangeHistoryArrayOutputWithContext(ctx context.Context) ResourceMoveChangeHistoryArrayOutput {
+func (o QueueInfoPtrOutput) ToQueueInfoPtrOutputWithContext(ctx context.Context) QueueInfoPtrOutput {
 	return o
 }
 
-func (o ResourceMoveChangeHistoryArrayOutput) Index(i pulumi.IntInput) ResourceMoveChangeHistoryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceMoveChangeHistory {
-		return vs[0].([]ResourceMoveChangeHistory)[vs[1].(int)]
-	}).(ResourceMoveChangeHistoryOutput)
+func (o QueueInfoPtrOutput) Elem() QueueInfoOutput {
+	return o.ApplyT(func(v *QueueInfo) QueueInfo {
+		if v != nil {
+			return *v
+		}
+		var ret QueueInfo
+		return ret
+	}).(QueueInfoOutput)
 }
 
-// The change history of the resource move.
-type ResourceMoveChangeHistoryResponse struct {
-	// Azure subscription ID of the resource.
-	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
-	// UTC timestamp of when the resource was changed.
-	ChangedTimeUtc *string `pulumi:"changedTimeUtc"`
-	// Azure Resource Group of the resource.
-	ResourceGroupName *string `pulumi:"resourceGroupName"`
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
+func (o QueueInfoPtrOutput) DeadLetterDestinationWithResourceIdentity() DeadLetterWithResourceIdentityPtrOutput {
+	return o.ApplyT(func(v *QueueInfo) *DeadLetterWithResourceIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterDestinationWithResourceIdentity
+	}).(DeadLetterWithResourceIdentityPtrOutput)
 }
 
-// The change history of the resource move.
-type ResourceMoveChangeHistoryResponseOutput struct{ *pulumi.OutputState }
-
-func (ResourceMoveChangeHistoryResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceMoveChangeHistoryResponse)(nil)).Elem()
+// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+//   - (n) is replaced by the value of each time element that follows the (n).
+//   - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+//   - Y is the year designator, and it follows the value for the number of years.
+//   - M is the month designator, and it follows the value for the number of months.
+//   - W is the week designator, and it follows the value for the number of weeks.
+//   - D is the day designator, and it follows the value for the number of days.
+//   - T is the time designator, and it precedes the time components.
+//   - H is the hour designator, and it follows the value for the number of hours.
+//   - M is the minute designator, and it follows the value for the number of minutes.
+//   - S is the second designator, and it follows the value for the number of seconds.
+//
+// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+//   - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+//   - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+func (o QueueInfoPtrOutput) EventTimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTimeToLive
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceMoveChangeHistoryResponseOutput) ToResourceMoveChangeHistoryResponseOutput() ResourceMoveChangeHistoryResponseOutput {
+// The maximum delivery count of the events.
+func (o QueueInfoPtrOutput) MaxDeliveryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QueueInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDeliveryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
+// If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
+// the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
+func (o QueueInfoPtrOutput) ReceiveLockDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QueueInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReceiveLockDurationInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Properties of the Queue info for event subscription.
+type QueueInfoResponse struct {
+	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+	// Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
+	DeadLetterDestinationWithResourceIdentity *DeadLetterWithResourceIdentityResponse `pulumi:"deadLetterDestinationWithResourceIdentity"`
+	// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+	// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+	//     - (n) is replaced by the value of each time element that follows the (n).
+	//     - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+	//     - Y is the year designator, and it follows the value for the number of years.
+	//     - M is the month designator, and it follows the value for the number of months.
+	//     - W is the week designator, and it follows the value for the number of weeks.
+	//     - D is the day designator, and it follows the value for the number of days.
+	//     - T is the time designator, and it precedes the time components.
+	//     - H is the hour designator, and it follows the value for the number of hours.
+	//     - M is the minute designator, and it follows the value for the number of minutes.
+	//     - S is the second designator, and it follows the value for the number of seconds.
+	// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+	// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+	//     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+	//     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+	EventTimeToLive *string `pulumi:"eventTimeToLive"`
+	// The maximum delivery count of the events.
+	MaxDeliveryCount *int `pulumi:"maxDeliveryCount"`
+	// Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
+	// If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
+	// the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
+	ReceiveLockDurationInSeconds *int `pulumi:"receiveLockDurationInSeconds"`
+}
+
+// Properties of the Queue info for event subscription.
+type QueueInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (QueueInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueInfoResponse)(nil)).Elem()
+}
+
+func (o QueueInfoResponseOutput) ToQueueInfoResponseOutput() QueueInfoResponseOutput {
 	return o
 }
 
-func (o ResourceMoveChangeHistoryResponseOutput) ToResourceMoveChangeHistoryResponseOutputWithContext(ctx context.Context) ResourceMoveChangeHistoryResponseOutput {
+func (o QueueInfoResponseOutput) ToQueueInfoResponseOutputWithContext(ctx context.Context) QueueInfoResponseOutput {
 	return o
 }
 
-// Azure subscription ID of the resource.
-func (o ResourceMoveChangeHistoryResponseOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMoveChangeHistoryResponse) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
+func (o QueueInfoResponseOutput) DeadLetterDestinationWithResourceIdentity() DeadLetterWithResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v QueueInfoResponse) *DeadLetterWithResourceIdentityResponse {
+		return v.DeadLetterDestinationWithResourceIdentity
+	}).(DeadLetterWithResourceIdentityResponsePtrOutput)
 }
 
-// UTC timestamp of when the resource was changed.
-func (o ResourceMoveChangeHistoryResponseOutput) ChangedTimeUtc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMoveChangeHistoryResponse) *string { return v.ChangedTimeUtc }).(pulumi.StringPtrOutput)
+// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+//   - (n) is replaced by the value of each time element that follows the (n).
+//   - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+//   - Y is the year designator, and it follows the value for the number of years.
+//   - M is the month designator, and it follows the value for the number of months.
+//   - W is the week designator, and it follows the value for the number of weeks.
+//   - D is the day designator, and it follows the value for the number of days.
+//   - T is the time designator, and it precedes the time components.
+//   - H is the hour designator, and it follows the value for the number of hours.
+//   - M is the minute designator, and it follows the value for the number of minutes.
+//   - S is the second designator, and it follows the value for the number of seconds.
+//
+// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+//   - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+//   - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+func (o QueueInfoResponseOutput) EventTimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueInfoResponse) *string { return v.EventTimeToLive }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Group of the resource.
-func (o ResourceMoveChangeHistoryResponseOutput) ResourceGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMoveChangeHistoryResponse) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+// The maximum delivery count of the events.
+func (o QueueInfoResponseOutput) MaxDeliveryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QueueInfoResponse) *int { return v.MaxDeliveryCount }).(pulumi.IntPtrOutput)
 }
 
-type ResourceMoveChangeHistoryResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ResourceMoveChangeHistoryResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceMoveChangeHistoryResponse)(nil)).Elem()
+// Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
+// If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
+// the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
+func (o QueueInfoResponseOutput) ReceiveLockDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QueueInfoResponse) *int { return v.ReceiveLockDurationInSeconds }).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceMoveChangeHistoryResponseArrayOutput) ToResourceMoveChangeHistoryResponseArrayOutput() ResourceMoveChangeHistoryResponseArrayOutput {
+type QueueInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (QueueInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueInfoResponse)(nil)).Elem()
+}
+
+func (o QueueInfoResponsePtrOutput) ToQueueInfoResponsePtrOutput() QueueInfoResponsePtrOutput {
 	return o
 }
 
-func (o ResourceMoveChangeHistoryResponseArrayOutput) ToResourceMoveChangeHistoryResponseArrayOutputWithContext(ctx context.Context) ResourceMoveChangeHistoryResponseArrayOutput {
+func (o QueueInfoResponsePtrOutput) ToQueueInfoResponsePtrOutputWithContext(ctx context.Context) QueueInfoResponsePtrOutput {
 	return o
 }
 
-func (o ResourceMoveChangeHistoryResponseArrayOutput) Index(i pulumi.IntInput) ResourceMoveChangeHistoryResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceMoveChangeHistoryResponse {
-		return vs[0].([]ResourceMoveChangeHistoryResponse)[vs[1].(int)]
-	}).(ResourceMoveChangeHistoryResponseOutput)
+func (o QueueInfoResponsePtrOutput) Elem() QueueInfoResponseOutput {
+	return o.ApplyT(func(v *QueueInfoResponse) QueueInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QueueInfoResponse
+		return ret
+	}).(QueueInfoResponseOutput)
+}
+
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
+func (o QueueInfoResponsePtrOutput) DeadLetterDestinationWithResourceIdentity() DeadLetterWithResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *QueueInfoResponse) *DeadLetterWithResourceIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterDestinationWithResourceIdentity
+	}).(DeadLetterWithResourceIdentityResponsePtrOutput)
+}
+
+// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+//   - (n) is replaced by the value of each time element that follows the (n).
+//   - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+//   - Y is the year designator, and it follows the value for the number of years.
+//   - M is the month designator, and it follows the value for the number of months.
+//   - W is the week designator, and it follows the value for the number of weeks.
+//   - D is the day designator, and it follows the value for the number of days.
+//   - T is the time designator, and it precedes the time components.
+//   - H is the hour designator, and it follows the value for the number of hours.
+//   - M is the minute designator, and it follows the value for the number of minutes.
+//   - S is the second designator, and it follows the value for the number of seconds.
+//
+// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+//   - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+//   - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+func (o QueueInfoResponsePtrOutput) EventTimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTimeToLive
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum delivery count of the events.
+func (o QueueInfoResponsePtrOutput) MaxDeliveryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QueueInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDeliveryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
+// If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
+// the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
+func (o QueueInfoResponsePtrOutput) ReceiveLockDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QueueInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReceiveLockDurationInSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // Information about the retry policy for an event subscription.
@@ -6258,6 +8666,445 @@ func (o RetryPolicyResponsePtrOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+type RoutingEnrichments struct {
+	Dynamic []DynamicRoutingEnrichment `pulumi:"dynamic"`
+	Static  []StaticRoutingEnrichment  `pulumi:"static"`
+}
+
+// RoutingEnrichmentsInput is an input type that accepts RoutingEnrichmentsArgs and RoutingEnrichmentsOutput values.
+// You can construct a concrete instance of `RoutingEnrichmentsInput` via:
+//
+//	RoutingEnrichmentsArgs{...}
+type RoutingEnrichmentsInput interface {
+	pulumi.Input
+
+	ToRoutingEnrichmentsOutput() RoutingEnrichmentsOutput
+	ToRoutingEnrichmentsOutputWithContext(context.Context) RoutingEnrichmentsOutput
+}
+
+type RoutingEnrichmentsArgs struct {
+	Dynamic DynamicRoutingEnrichmentArrayInput `pulumi:"dynamic"`
+	Static  StaticRoutingEnrichmentArrayInput  `pulumi:"static"`
+}
+
+func (RoutingEnrichmentsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingEnrichments)(nil)).Elem()
+}
+
+func (i RoutingEnrichmentsArgs) ToRoutingEnrichmentsOutput() RoutingEnrichmentsOutput {
+	return i.ToRoutingEnrichmentsOutputWithContext(context.Background())
+}
+
+func (i RoutingEnrichmentsArgs) ToRoutingEnrichmentsOutputWithContext(ctx context.Context) RoutingEnrichmentsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingEnrichmentsOutput)
+}
+
+func (i RoutingEnrichmentsArgs) ToRoutingEnrichmentsPtrOutput() RoutingEnrichmentsPtrOutput {
+	return i.ToRoutingEnrichmentsPtrOutputWithContext(context.Background())
+}
+
+func (i RoutingEnrichmentsArgs) ToRoutingEnrichmentsPtrOutputWithContext(ctx context.Context) RoutingEnrichmentsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingEnrichmentsOutput).ToRoutingEnrichmentsPtrOutputWithContext(ctx)
+}
+
+// RoutingEnrichmentsPtrInput is an input type that accepts RoutingEnrichmentsArgs, RoutingEnrichmentsPtr and RoutingEnrichmentsPtrOutput values.
+// You can construct a concrete instance of `RoutingEnrichmentsPtrInput` via:
+//
+//	        RoutingEnrichmentsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoutingEnrichmentsPtrInput interface {
+	pulumi.Input
+
+	ToRoutingEnrichmentsPtrOutput() RoutingEnrichmentsPtrOutput
+	ToRoutingEnrichmentsPtrOutputWithContext(context.Context) RoutingEnrichmentsPtrOutput
+}
+
+type routingEnrichmentsPtrType RoutingEnrichmentsArgs
+
+func RoutingEnrichmentsPtr(v *RoutingEnrichmentsArgs) RoutingEnrichmentsPtrInput {
+	return (*routingEnrichmentsPtrType)(v)
+}
+
+func (*routingEnrichmentsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingEnrichments)(nil)).Elem()
+}
+
+func (i *routingEnrichmentsPtrType) ToRoutingEnrichmentsPtrOutput() RoutingEnrichmentsPtrOutput {
+	return i.ToRoutingEnrichmentsPtrOutputWithContext(context.Background())
+}
+
+func (i *routingEnrichmentsPtrType) ToRoutingEnrichmentsPtrOutputWithContext(ctx context.Context) RoutingEnrichmentsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingEnrichmentsPtrOutput)
+}
+
+type RoutingEnrichmentsOutput struct{ *pulumi.OutputState }
+
+func (RoutingEnrichmentsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingEnrichments)(nil)).Elem()
+}
+
+func (o RoutingEnrichmentsOutput) ToRoutingEnrichmentsOutput() RoutingEnrichmentsOutput {
+	return o
+}
+
+func (o RoutingEnrichmentsOutput) ToRoutingEnrichmentsOutputWithContext(ctx context.Context) RoutingEnrichmentsOutput {
+	return o
+}
+
+func (o RoutingEnrichmentsOutput) ToRoutingEnrichmentsPtrOutput() RoutingEnrichmentsPtrOutput {
+	return o.ToRoutingEnrichmentsPtrOutputWithContext(context.Background())
+}
+
+func (o RoutingEnrichmentsOutput) ToRoutingEnrichmentsPtrOutputWithContext(ctx context.Context) RoutingEnrichmentsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingEnrichments) *RoutingEnrichments {
+		return &v
+	}).(RoutingEnrichmentsPtrOutput)
+}
+
+func (o RoutingEnrichmentsOutput) Dynamic() DynamicRoutingEnrichmentArrayOutput {
+	return o.ApplyT(func(v RoutingEnrichments) []DynamicRoutingEnrichment { return v.Dynamic }).(DynamicRoutingEnrichmentArrayOutput)
+}
+
+func (o RoutingEnrichmentsOutput) Static() StaticRoutingEnrichmentArrayOutput {
+	return o.ApplyT(func(v RoutingEnrichments) []StaticRoutingEnrichment { return v.Static }).(StaticRoutingEnrichmentArrayOutput)
+}
+
+type RoutingEnrichmentsPtrOutput struct{ *pulumi.OutputState }
+
+func (RoutingEnrichmentsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingEnrichments)(nil)).Elem()
+}
+
+func (o RoutingEnrichmentsPtrOutput) ToRoutingEnrichmentsPtrOutput() RoutingEnrichmentsPtrOutput {
+	return o
+}
+
+func (o RoutingEnrichmentsPtrOutput) ToRoutingEnrichmentsPtrOutputWithContext(ctx context.Context) RoutingEnrichmentsPtrOutput {
+	return o
+}
+
+func (o RoutingEnrichmentsPtrOutput) Elem() RoutingEnrichmentsOutput {
+	return o.ApplyT(func(v *RoutingEnrichments) RoutingEnrichments {
+		if v != nil {
+			return *v
+		}
+		var ret RoutingEnrichments
+		return ret
+	}).(RoutingEnrichmentsOutput)
+}
+
+func (o RoutingEnrichmentsPtrOutput) Dynamic() DynamicRoutingEnrichmentArrayOutput {
+	return o.ApplyT(func(v *RoutingEnrichments) []DynamicRoutingEnrichment {
+		if v == nil {
+			return nil
+		}
+		return v.Dynamic
+	}).(DynamicRoutingEnrichmentArrayOutput)
+}
+
+func (o RoutingEnrichmentsPtrOutput) Static() StaticRoutingEnrichmentArrayOutput {
+	return o.ApplyT(func(v *RoutingEnrichments) []StaticRoutingEnrichment {
+		if v == nil {
+			return nil
+		}
+		return v.Static
+	}).(StaticRoutingEnrichmentArrayOutput)
+}
+
+type RoutingEnrichmentsResponse struct {
+	Dynamic []DynamicRoutingEnrichmentResponse `pulumi:"dynamic"`
+	Static  []StaticRoutingEnrichmentResponse  `pulumi:"static"`
+}
+
+type RoutingEnrichmentsResponseOutput struct{ *pulumi.OutputState }
+
+func (RoutingEnrichmentsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingEnrichmentsResponse)(nil)).Elem()
+}
+
+func (o RoutingEnrichmentsResponseOutput) ToRoutingEnrichmentsResponseOutput() RoutingEnrichmentsResponseOutput {
+	return o
+}
+
+func (o RoutingEnrichmentsResponseOutput) ToRoutingEnrichmentsResponseOutputWithContext(ctx context.Context) RoutingEnrichmentsResponseOutput {
+	return o
+}
+
+func (o RoutingEnrichmentsResponseOutput) Dynamic() DynamicRoutingEnrichmentResponseArrayOutput {
+	return o.ApplyT(func(v RoutingEnrichmentsResponse) []DynamicRoutingEnrichmentResponse { return v.Dynamic }).(DynamicRoutingEnrichmentResponseArrayOutput)
+}
+
+func (o RoutingEnrichmentsResponseOutput) Static() StaticRoutingEnrichmentResponseArrayOutput {
+	return o.ApplyT(func(v RoutingEnrichmentsResponse) []StaticRoutingEnrichmentResponse { return v.Static }).(StaticRoutingEnrichmentResponseArrayOutput)
+}
+
+type RoutingEnrichmentsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RoutingEnrichmentsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingEnrichmentsResponse)(nil)).Elem()
+}
+
+func (o RoutingEnrichmentsResponsePtrOutput) ToRoutingEnrichmentsResponsePtrOutput() RoutingEnrichmentsResponsePtrOutput {
+	return o
+}
+
+func (o RoutingEnrichmentsResponsePtrOutput) ToRoutingEnrichmentsResponsePtrOutputWithContext(ctx context.Context) RoutingEnrichmentsResponsePtrOutput {
+	return o
+}
+
+func (o RoutingEnrichmentsResponsePtrOutput) Elem() RoutingEnrichmentsResponseOutput {
+	return o.ApplyT(func(v *RoutingEnrichmentsResponse) RoutingEnrichmentsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RoutingEnrichmentsResponse
+		return ret
+	}).(RoutingEnrichmentsResponseOutput)
+}
+
+func (o RoutingEnrichmentsResponsePtrOutput) Dynamic() DynamicRoutingEnrichmentResponseArrayOutput {
+	return o.ApplyT(func(v *RoutingEnrichmentsResponse) []DynamicRoutingEnrichmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Dynamic
+	}).(DynamicRoutingEnrichmentResponseArrayOutput)
+}
+
+func (o RoutingEnrichmentsResponsePtrOutput) Static() StaticRoutingEnrichmentResponseArrayOutput {
+	return o.ApplyT(func(v *RoutingEnrichmentsResponse) []StaticRoutingEnrichmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Static
+	}).(StaticRoutingEnrichmentResponseArrayOutput)
+}
+
+// Routing identity info for topic spaces configuration.
+type RoutingIdentityInfo struct {
+	Type                 *string `pulumi:"type"`
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// RoutingIdentityInfoInput is an input type that accepts RoutingIdentityInfoArgs and RoutingIdentityInfoOutput values.
+// You can construct a concrete instance of `RoutingIdentityInfoInput` via:
+//
+//	RoutingIdentityInfoArgs{...}
+type RoutingIdentityInfoInput interface {
+	pulumi.Input
+
+	ToRoutingIdentityInfoOutput() RoutingIdentityInfoOutput
+	ToRoutingIdentityInfoOutputWithContext(context.Context) RoutingIdentityInfoOutput
+}
+
+// Routing identity info for topic spaces configuration.
+type RoutingIdentityInfoArgs struct {
+	Type                 pulumi.StringPtrInput `pulumi:"type"`
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (RoutingIdentityInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingIdentityInfo)(nil)).Elem()
+}
+
+func (i RoutingIdentityInfoArgs) ToRoutingIdentityInfoOutput() RoutingIdentityInfoOutput {
+	return i.ToRoutingIdentityInfoOutputWithContext(context.Background())
+}
+
+func (i RoutingIdentityInfoArgs) ToRoutingIdentityInfoOutputWithContext(ctx context.Context) RoutingIdentityInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingIdentityInfoOutput)
+}
+
+func (i RoutingIdentityInfoArgs) ToRoutingIdentityInfoPtrOutput() RoutingIdentityInfoPtrOutput {
+	return i.ToRoutingIdentityInfoPtrOutputWithContext(context.Background())
+}
+
+func (i RoutingIdentityInfoArgs) ToRoutingIdentityInfoPtrOutputWithContext(ctx context.Context) RoutingIdentityInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingIdentityInfoOutput).ToRoutingIdentityInfoPtrOutputWithContext(ctx)
+}
+
+// RoutingIdentityInfoPtrInput is an input type that accepts RoutingIdentityInfoArgs, RoutingIdentityInfoPtr and RoutingIdentityInfoPtrOutput values.
+// You can construct a concrete instance of `RoutingIdentityInfoPtrInput` via:
+//
+//	        RoutingIdentityInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoutingIdentityInfoPtrInput interface {
+	pulumi.Input
+
+	ToRoutingIdentityInfoPtrOutput() RoutingIdentityInfoPtrOutput
+	ToRoutingIdentityInfoPtrOutputWithContext(context.Context) RoutingIdentityInfoPtrOutput
+}
+
+type routingIdentityInfoPtrType RoutingIdentityInfoArgs
+
+func RoutingIdentityInfoPtr(v *RoutingIdentityInfoArgs) RoutingIdentityInfoPtrInput {
+	return (*routingIdentityInfoPtrType)(v)
+}
+
+func (*routingIdentityInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingIdentityInfo)(nil)).Elem()
+}
+
+func (i *routingIdentityInfoPtrType) ToRoutingIdentityInfoPtrOutput() RoutingIdentityInfoPtrOutput {
+	return i.ToRoutingIdentityInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *routingIdentityInfoPtrType) ToRoutingIdentityInfoPtrOutputWithContext(ctx context.Context) RoutingIdentityInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingIdentityInfoPtrOutput)
+}
+
+// Routing identity info for topic spaces configuration.
+type RoutingIdentityInfoOutput struct{ *pulumi.OutputState }
+
+func (RoutingIdentityInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingIdentityInfo)(nil)).Elem()
+}
+
+func (o RoutingIdentityInfoOutput) ToRoutingIdentityInfoOutput() RoutingIdentityInfoOutput {
+	return o
+}
+
+func (o RoutingIdentityInfoOutput) ToRoutingIdentityInfoOutputWithContext(ctx context.Context) RoutingIdentityInfoOutput {
+	return o
+}
+
+func (o RoutingIdentityInfoOutput) ToRoutingIdentityInfoPtrOutput() RoutingIdentityInfoPtrOutput {
+	return o.ToRoutingIdentityInfoPtrOutputWithContext(context.Background())
+}
+
+func (o RoutingIdentityInfoOutput) ToRoutingIdentityInfoPtrOutputWithContext(ctx context.Context) RoutingIdentityInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingIdentityInfo) *RoutingIdentityInfo {
+		return &v
+	}).(RoutingIdentityInfoPtrOutput)
+}
+
+func (o RoutingIdentityInfoOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutingIdentityInfo) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o RoutingIdentityInfoOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutingIdentityInfo) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type RoutingIdentityInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (RoutingIdentityInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingIdentityInfo)(nil)).Elem()
+}
+
+func (o RoutingIdentityInfoPtrOutput) ToRoutingIdentityInfoPtrOutput() RoutingIdentityInfoPtrOutput {
+	return o
+}
+
+func (o RoutingIdentityInfoPtrOutput) ToRoutingIdentityInfoPtrOutputWithContext(ctx context.Context) RoutingIdentityInfoPtrOutput {
+	return o
+}
+
+func (o RoutingIdentityInfoPtrOutput) Elem() RoutingIdentityInfoOutput {
+	return o.ApplyT(func(v *RoutingIdentityInfo) RoutingIdentityInfo {
+		if v != nil {
+			return *v
+		}
+		var ret RoutingIdentityInfo
+		return ret
+	}).(RoutingIdentityInfoOutput)
+}
+
+func (o RoutingIdentityInfoPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutingIdentityInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RoutingIdentityInfoPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutingIdentityInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Routing identity info for topic spaces configuration.
+type RoutingIdentityInfoResponse struct {
+	Type                 *string `pulumi:"type"`
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// Routing identity info for topic spaces configuration.
+type RoutingIdentityInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (RoutingIdentityInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingIdentityInfoResponse)(nil)).Elem()
+}
+
+func (o RoutingIdentityInfoResponseOutput) ToRoutingIdentityInfoResponseOutput() RoutingIdentityInfoResponseOutput {
+	return o
+}
+
+func (o RoutingIdentityInfoResponseOutput) ToRoutingIdentityInfoResponseOutputWithContext(ctx context.Context) RoutingIdentityInfoResponseOutput {
+	return o
+}
+
+func (o RoutingIdentityInfoResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutingIdentityInfoResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o RoutingIdentityInfoResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutingIdentityInfoResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type RoutingIdentityInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RoutingIdentityInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingIdentityInfoResponse)(nil)).Elem()
+}
+
+func (o RoutingIdentityInfoResponsePtrOutput) ToRoutingIdentityInfoResponsePtrOutput() RoutingIdentityInfoResponsePtrOutput {
+	return o
+}
+
+func (o RoutingIdentityInfoResponsePtrOutput) ToRoutingIdentityInfoResponsePtrOutputWithContext(ctx context.Context) RoutingIdentityInfoResponsePtrOutput {
+	return o
+}
+
+func (o RoutingIdentityInfoResponsePtrOutput) Elem() RoutingIdentityInfoResponseOutput {
+	return o.ApplyT(func(v *RoutingIdentityInfoResponse) RoutingIdentityInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RoutingIdentityInfoResponse
+		return ret
+	}).(RoutingIdentityInfoResponseOutput)
+}
+
+func (o RoutingIdentityInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutingIdentityInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RoutingIdentityInfoResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutingIdentityInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the service bus destination for an event subscription.
 type ServiceBusQueueEventSubscriptionDestination struct {
 	// Delivery attribute details.
@@ -6352,6 +9199,163 @@ func (val *StaticDeliveryAttributeMappingResponse) Defaults() *StaticDeliveryAtt
 		tmp.IsSecret = &isSecret_
 	}
 	return &tmp
+}
+
+type StaticRoutingEnrichment struct {
+	// Static routing enrichment key.
+	Key *string `pulumi:"key"`
+	// Static routing enrichment value type. For e.g. this property value can be 'String'.
+	ValueType *string `pulumi:"valueType"`
+}
+
+// StaticRoutingEnrichmentInput is an input type that accepts StaticRoutingEnrichmentArgs and StaticRoutingEnrichmentOutput values.
+// You can construct a concrete instance of `StaticRoutingEnrichmentInput` via:
+//
+//	StaticRoutingEnrichmentArgs{...}
+type StaticRoutingEnrichmentInput interface {
+	pulumi.Input
+
+	ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput
+	ToStaticRoutingEnrichmentOutputWithContext(context.Context) StaticRoutingEnrichmentOutput
+}
+
+type StaticRoutingEnrichmentArgs struct {
+	// Static routing enrichment key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Static routing enrichment value type. For e.g. this property value can be 'String'.
+	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+}
+
+func (StaticRoutingEnrichmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticRoutingEnrichment)(nil)).Elem()
+}
+
+func (i StaticRoutingEnrichmentArgs) ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput {
+	return i.ToStaticRoutingEnrichmentOutputWithContext(context.Background())
+}
+
+func (i StaticRoutingEnrichmentArgs) ToStaticRoutingEnrichmentOutputWithContext(ctx context.Context) StaticRoutingEnrichmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutingEnrichmentOutput)
+}
+
+// StaticRoutingEnrichmentArrayInput is an input type that accepts StaticRoutingEnrichmentArray and StaticRoutingEnrichmentArrayOutput values.
+// You can construct a concrete instance of `StaticRoutingEnrichmentArrayInput` via:
+//
+//	StaticRoutingEnrichmentArray{ StaticRoutingEnrichmentArgs{...} }
+type StaticRoutingEnrichmentArrayInput interface {
+	pulumi.Input
+
+	ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput
+	ToStaticRoutingEnrichmentArrayOutputWithContext(context.Context) StaticRoutingEnrichmentArrayOutput
+}
+
+type StaticRoutingEnrichmentArray []StaticRoutingEnrichmentInput
+
+func (StaticRoutingEnrichmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticRoutingEnrichment)(nil)).Elem()
+}
+
+func (i StaticRoutingEnrichmentArray) ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput {
+	return i.ToStaticRoutingEnrichmentArrayOutputWithContext(context.Background())
+}
+
+func (i StaticRoutingEnrichmentArray) ToStaticRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutingEnrichmentArrayOutput)
+}
+
+type StaticRoutingEnrichmentOutput struct{ *pulumi.OutputState }
+
+func (StaticRoutingEnrichmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticRoutingEnrichment)(nil)).Elem()
+}
+
+func (o StaticRoutingEnrichmentOutput) ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput {
+	return o
+}
+
+func (o StaticRoutingEnrichmentOutput) ToStaticRoutingEnrichmentOutputWithContext(ctx context.Context) StaticRoutingEnrichmentOutput {
+	return o
+}
+
+// Static routing enrichment key.
+func (o StaticRoutingEnrichmentOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticRoutingEnrichment) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Static routing enrichment value type. For e.g. this property value can be 'String'.
+func (o StaticRoutingEnrichmentOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticRoutingEnrichment) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+type StaticRoutingEnrichmentArrayOutput struct{ *pulumi.OutputState }
+
+func (StaticRoutingEnrichmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticRoutingEnrichment)(nil)).Elem()
+}
+
+func (o StaticRoutingEnrichmentArrayOutput) ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput {
+	return o
+}
+
+func (o StaticRoutingEnrichmentArrayOutput) ToStaticRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentArrayOutput {
+	return o
+}
+
+func (o StaticRoutingEnrichmentArrayOutput) Index(i pulumi.IntInput) StaticRoutingEnrichmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticRoutingEnrichment {
+		return vs[0].([]StaticRoutingEnrichment)[vs[1].(int)]
+	}).(StaticRoutingEnrichmentOutput)
+}
+
+type StaticRoutingEnrichmentResponse struct {
+	// Static routing enrichment key.
+	Key *string `pulumi:"key"`
+	// Static routing enrichment value type. For e.g. this property value can be 'String'.
+	ValueType *string `pulumi:"valueType"`
+}
+
+type StaticRoutingEnrichmentResponseOutput struct{ *pulumi.OutputState }
+
+func (StaticRoutingEnrichmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticRoutingEnrichmentResponse)(nil)).Elem()
+}
+
+func (o StaticRoutingEnrichmentResponseOutput) ToStaticRoutingEnrichmentResponseOutput() StaticRoutingEnrichmentResponseOutput {
+	return o
+}
+
+func (o StaticRoutingEnrichmentResponseOutput) ToStaticRoutingEnrichmentResponseOutputWithContext(ctx context.Context) StaticRoutingEnrichmentResponseOutput {
+	return o
+}
+
+// Static routing enrichment key.
+func (o StaticRoutingEnrichmentResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticRoutingEnrichmentResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Static routing enrichment value type. For e.g. this property value can be 'String'.
+func (o StaticRoutingEnrichmentResponseOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticRoutingEnrichmentResponse) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+type StaticRoutingEnrichmentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StaticRoutingEnrichmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticRoutingEnrichmentResponse)(nil)).Elem()
+}
+
+func (o StaticRoutingEnrichmentResponseArrayOutput) ToStaticRoutingEnrichmentResponseArrayOutput() StaticRoutingEnrichmentResponseArrayOutput {
+	return o
+}
+
+func (o StaticRoutingEnrichmentResponseArrayOutput) ToStaticRoutingEnrichmentResponseArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentResponseArrayOutput {
+	return o
+}
+
+func (o StaticRoutingEnrichmentResponseArrayOutput) Index(i pulumi.IntInput) StaticRoutingEnrichmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticRoutingEnrichmentResponse {
+		return vs[0].([]StaticRoutingEnrichmentResponse)[vs[1].(int)]
+	}).(StaticRoutingEnrichmentResponseOutput)
 }
 
 // Information about the storage blob based dead letter destination.
@@ -6681,6 +9685,28 @@ type StringBeginsWithAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringBeginsWith Filter.
+type StringBeginsWithFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringBeginsWith'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringBeginsWith Filter.
+type StringBeginsWithFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringBeginsWith'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
 // StringContains Advanced Filter.
 type StringContainsAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -6694,6 +9720,28 @@ type StringContainsAdvancedFilter struct {
 
 // StringContains Advanced Filter.
 type StringContainsAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringContains'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringContains Filter.
+type StringContainsFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringContains'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringContains Filter.
+type StringContainsFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -6725,6 +9773,28 @@ type StringEndsWithAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringEndsWith Filter.
+type StringEndsWithFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringEndsWith'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringEndsWith Filter.
+type StringEndsWithFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringEndsWith'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
 // StringIn Advanced Filter.
 type StringInAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -6738,6 +9808,28 @@ type StringInAdvancedFilter struct {
 
 // StringIn Advanced Filter.
 type StringInAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringIn'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringIn Filter.
+type StringInFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringIn'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringIn Filter.
+type StringInFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -6769,6 +9861,28 @@ type StringNotBeginsWithAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotBeginsWith Filter.
+type StringNotBeginsWithFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotBeginsWith'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringNotBeginsWith Filter.
+type StringNotBeginsWithFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotBeginsWith'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
 // StringNotContains Advanced Filter.
 type StringNotContainsAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -6782,6 +9896,28 @@ type StringNotContainsAdvancedFilter struct {
 
 // StringNotContains Advanced Filter.
 type StringNotContainsAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotContains'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringNotContains Filter.
+type StringNotContainsFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotContains'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringNotContains Filter.
+type StringNotContainsFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -6813,6 +9949,28 @@ type StringNotEndsWithAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotEndsWith Filter.
+type StringNotEndsWithFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotEndsWith'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringNotEndsWith Filter.
+type StringNotEndsWithFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotEndsWith'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
 // StringNotIn Advanced Filter.
 type StringNotInAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -6826,6 +9984,28 @@ type StringNotInAdvancedFilter struct {
 
 // StringNotIn Advanced Filter.
 type StringNotInAdvancedFilterResponse struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotIn'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringNotIn Filter.
+type StringNotInFilter struct {
+	// The field/property in the event based on which you want to filter.
+	Key *string `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotIn'.
+	OperatorType string `pulumi:"operatorType"`
+	// The set of filter values.
+	Values []string `pulumi:"values"`
+}
+
+// StringNotIn Filter.
+type StringNotInFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
 	Key *string `pulumi:"key"`
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -6894,6 +10074,566 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Properties of the Topic Spaces Configuration.
+type TopicSpacesConfiguration struct {
+	// Client authentication settings for topic spaces configuration.
+	ClientAuthentication *ClientAuthenticationSettings `pulumi:"clientAuthentication"`
+	// The maximum number of sessions per authentication name. The property default value is 1.
+	// Min allowed value is 1 and max allowed value is 100.
+	MaximumClientSessionsPerAuthenticationName *int `pulumi:"maximumClientSessionsPerAuthenticationName"`
+	// The maximum session expiry in hours. The property default value is 1 hour.
+	// Min allowed value is 1 hour and max allowed value is 8 hours.
+	MaximumSessionExpiryInHours *int `pulumi:"maximumSessionExpiryInHours"`
+	// Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
+	// This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
+	// This topic should reside in the same region where namespace is located.
+	RouteTopicResourceId *string `pulumi:"routeTopicResourceId"`
+	// Routing enrichments for topic spaces configuration
+	RoutingEnrichments *RoutingEnrichments `pulumi:"routingEnrichments"`
+	// Routing identity info for topic spaces configuration.
+	RoutingIdentityInfo *RoutingIdentityInfo `pulumi:"routingIdentityInfo"`
+	// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
+	State *string `pulumi:"state"`
+}
+
+// Defaults sets the appropriate defaults for TopicSpacesConfiguration
+func (val *TopicSpacesConfiguration) Defaults() *TopicSpacesConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.State == nil {
+		state_ := "Disabled"
+		tmp.State = &state_
+	}
+	return &tmp
+}
+
+// TopicSpacesConfigurationInput is an input type that accepts TopicSpacesConfigurationArgs and TopicSpacesConfigurationOutput values.
+// You can construct a concrete instance of `TopicSpacesConfigurationInput` via:
+//
+//	TopicSpacesConfigurationArgs{...}
+type TopicSpacesConfigurationInput interface {
+	pulumi.Input
+
+	ToTopicSpacesConfigurationOutput() TopicSpacesConfigurationOutput
+	ToTopicSpacesConfigurationOutputWithContext(context.Context) TopicSpacesConfigurationOutput
+}
+
+// Properties of the Topic Spaces Configuration.
+type TopicSpacesConfigurationArgs struct {
+	// Client authentication settings for topic spaces configuration.
+	ClientAuthentication ClientAuthenticationSettingsPtrInput `pulumi:"clientAuthentication"`
+	// The maximum number of sessions per authentication name. The property default value is 1.
+	// Min allowed value is 1 and max allowed value is 100.
+	MaximumClientSessionsPerAuthenticationName pulumi.IntPtrInput `pulumi:"maximumClientSessionsPerAuthenticationName"`
+	// The maximum session expiry in hours. The property default value is 1 hour.
+	// Min allowed value is 1 hour and max allowed value is 8 hours.
+	MaximumSessionExpiryInHours pulumi.IntPtrInput `pulumi:"maximumSessionExpiryInHours"`
+	// Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
+	// This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
+	// This topic should reside in the same region where namespace is located.
+	RouteTopicResourceId pulumi.StringPtrInput `pulumi:"routeTopicResourceId"`
+	// Routing enrichments for topic spaces configuration
+	RoutingEnrichments RoutingEnrichmentsPtrInput `pulumi:"routingEnrichments"`
+	// Routing identity info for topic spaces configuration.
+	RoutingIdentityInfo RoutingIdentityInfoPtrInput `pulumi:"routingIdentityInfo"`
+	// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+// Defaults sets the appropriate defaults for TopicSpacesConfigurationArgs
+func (val *TopicSpacesConfigurationArgs) Defaults() *TopicSpacesConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.State == nil {
+		tmp.State = pulumi.StringPtr("Disabled")
+	}
+	return &tmp
+}
+func (TopicSpacesConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSpacesConfiguration)(nil)).Elem()
+}
+
+func (i TopicSpacesConfigurationArgs) ToTopicSpacesConfigurationOutput() TopicSpacesConfigurationOutput {
+	return i.ToTopicSpacesConfigurationOutputWithContext(context.Background())
+}
+
+func (i TopicSpacesConfigurationArgs) ToTopicSpacesConfigurationOutputWithContext(ctx context.Context) TopicSpacesConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSpacesConfigurationOutput)
+}
+
+func (i TopicSpacesConfigurationArgs) ToTopicSpacesConfigurationPtrOutput() TopicSpacesConfigurationPtrOutput {
+	return i.ToTopicSpacesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i TopicSpacesConfigurationArgs) ToTopicSpacesConfigurationPtrOutputWithContext(ctx context.Context) TopicSpacesConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSpacesConfigurationOutput).ToTopicSpacesConfigurationPtrOutputWithContext(ctx)
+}
+
+// TopicSpacesConfigurationPtrInput is an input type that accepts TopicSpacesConfigurationArgs, TopicSpacesConfigurationPtr and TopicSpacesConfigurationPtrOutput values.
+// You can construct a concrete instance of `TopicSpacesConfigurationPtrInput` via:
+//
+//	        TopicSpacesConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicSpacesConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToTopicSpacesConfigurationPtrOutput() TopicSpacesConfigurationPtrOutput
+	ToTopicSpacesConfigurationPtrOutputWithContext(context.Context) TopicSpacesConfigurationPtrOutput
+}
+
+type topicSpacesConfigurationPtrType TopicSpacesConfigurationArgs
+
+func TopicSpacesConfigurationPtr(v *TopicSpacesConfigurationArgs) TopicSpacesConfigurationPtrInput {
+	return (*topicSpacesConfigurationPtrType)(v)
+}
+
+func (*topicSpacesConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicSpacesConfiguration)(nil)).Elem()
+}
+
+func (i *topicSpacesConfigurationPtrType) ToTopicSpacesConfigurationPtrOutput() TopicSpacesConfigurationPtrOutput {
+	return i.ToTopicSpacesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *topicSpacesConfigurationPtrType) ToTopicSpacesConfigurationPtrOutputWithContext(ctx context.Context) TopicSpacesConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSpacesConfigurationPtrOutput)
+}
+
+// Properties of the Topic Spaces Configuration.
+type TopicSpacesConfigurationOutput struct{ *pulumi.OutputState }
+
+func (TopicSpacesConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSpacesConfiguration)(nil)).Elem()
+}
+
+func (o TopicSpacesConfigurationOutput) ToTopicSpacesConfigurationOutput() TopicSpacesConfigurationOutput {
+	return o
+}
+
+func (o TopicSpacesConfigurationOutput) ToTopicSpacesConfigurationOutputWithContext(ctx context.Context) TopicSpacesConfigurationOutput {
+	return o
+}
+
+func (o TopicSpacesConfigurationOutput) ToTopicSpacesConfigurationPtrOutput() TopicSpacesConfigurationPtrOutput {
+	return o.ToTopicSpacesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o TopicSpacesConfigurationOutput) ToTopicSpacesConfigurationPtrOutputWithContext(ctx context.Context) TopicSpacesConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicSpacesConfiguration) *TopicSpacesConfiguration {
+		return &v
+	}).(TopicSpacesConfigurationPtrOutput)
+}
+
+// Client authentication settings for topic spaces configuration.
+func (o TopicSpacesConfigurationOutput) ClientAuthentication() ClientAuthenticationSettingsPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfiguration) *ClientAuthenticationSettings { return v.ClientAuthentication }).(ClientAuthenticationSettingsPtrOutput)
+}
+
+// The maximum number of sessions per authentication name. The property default value is 1.
+// Min allowed value is 1 and max allowed value is 100.
+func (o TopicSpacesConfigurationOutput) MaximumClientSessionsPerAuthenticationName() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfiguration) *int { return v.MaximumClientSessionsPerAuthenticationName }).(pulumi.IntPtrOutput)
+}
+
+// The maximum session expiry in hours. The property default value is 1 hour.
+// Min allowed value is 1 hour and max allowed value is 8 hours.
+func (o TopicSpacesConfigurationOutput) MaximumSessionExpiryInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfiguration) *int { return v.MaximumSessionExpiryInHours }).(pulumi.IntPtrOutput)
+}
+
+// Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
+// This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
+// This topic should reside in the same region where namespace is located.
+func (o TopicSpacesConfigurationOutput) RouteTopicResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfiguration) *string { return v.RouteTopicResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Routing enrichments for topic spaces configuration
+func (o TopicSpacesConfigurationOutput) RoutingEnrichments() RoutingEnrichmentsPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfiguration) *RoutingEnrichments { return v.RoutingEnrichments }).(RoutingEnrichmentsPtrOutput)
+}
+
+// Routing identity info for topic spaces configuration.
+func (o TopicSpacesConfigurationOutput) RoutingIdentityInfo() RoutingIdentityInfoPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfiguration) *RoutingIdentityInfo { return v.RoutingIdentityInfo }).(RoutingIdentityInfoPtrOutput)
+}
+
+// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
+func (o TopicSpacesConfigurationOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfiguration) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type TopicSpacesConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicSpacesConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicSpacesConfiguration)(nil)).Elem()
+}
+
+func (o TopicSpacesConfigurationPtrOutput) ToTopicSpacesConfigurationPtrOutput() TopicSpacesConfigurationPtrOutput {
+	return o
+}
+
+func (o TopicSpacesConfigurationPtrOutput) ToTopicSpacesConfigurationPtrOutputWithContext(ctx context.Context) TopicSpacesConfigurationPtrOutput {
+	return o
+}
+
+func (o TopicSpacesConfigurationPtrOutput) Elem() TopicSpacesConfigurationOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) TopicSpacesConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TopicSpacesConfiguration
+		return ret
+	}).(TopicSpacesConfigurationOutput)
+}
+
+// Client authentication settings for topic spaces configuration.
+func (o TopicSpacesConfigurationPtrOutput) ClientAuthentication() ClientAuthenticationSettingsPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) *ClientAuthenticationSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ClientAuthentication
+	}).(ClientAuthenticationSettingsPtrOutput)
+}
+
+// The maximum number of sessions per authentication name. The property default value is 1.
+// Min allowed value is 1 and max allowed value is 100.
+func (o TopicSpacesConfigurationPtrOutput) MaximumClientSessionsPerAuthenticationName() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumClientSessionsPerAuthenticationName
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum session expiry in hours. The property default value is 1 hour.
+// Min allowed value is 1 hour and max allowed value is 8 hours.
+func (o TopicSpacesConfigurationPtrOutput) MaximumSessionExpiryInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumSessionExpiryInHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
+// This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
+// This topic should reside in the same region where namespace is located.
+func (o TopicSpacesConfigurationPtrOutput) RouteTopicResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTopicResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Routing enrichments for topic spaces configuration
+func (o TopicSpacesConfigurationPtrOutput) RoutingEnrichments() RoutingEnrichmentsPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) *RoutingEnrichments {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingEnrichments
+	}).(RoutingEnrichmentsPtrOutput)
+}
+
+// Routing identity info for topic spaces configuration.
+func (o TopicSpacesConfigurationPtrOutput) RoutingIdentityInfo() RoutingIdentityInfoPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) *RoutingIdentityInfo {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingIdentityInfo
+	}).(RoutingIdentityInfoPtrOutput)
+}
+
+// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
+func (o TopicSpacesConfigurationPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of the Topic Spaces Configuration.
+type TopicSpacesConfigurationResponse struct {
+	// Client authentication settings for topic spaces configuration.
+	ClientAuthentication *ClientAuthenticationSettingsResponse `pulumi:"clientAuthentication"`
+	// The endpoint for the topic spaces configuration. This is a read-only property.
+	Hostname string `pulumi:"hostname"`
+	// The maximum number of sessions per authentication name. The property default value is 1.
+	// Min allowed value is 1 and max allowed value is 100.
+	MaximumClientSessionsPerAuthenticationName *int `pulumi:"maximumClientSessionsPerAuthenticationName"`
+	// The maximum session expiry in hours. The property default value is 1 hour.
+	// Min allowed value is 1 hour and max allowed value is 8 hours.
+	MaximumSessionExpiryInHours *int `pulumi:"maximumSessionExpiryInHours"`
+	// Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
+	// This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
+	// This topic should reside in the same region where namespace is located.
+	RouteTopicResourceId *string `pulumi:"routeTopicResourceId"`
+	// Routing enrichments for topic spaces configuration
+	RoutingEnrichments *RoutingEnrichmentsResponse `pulumi:"routingEnrichments"`
+	// Routing identity info for topic spaces configuration.
+	RoutingIdentityInfo *RoutingIdentityInfoResponse `pulumi:"routingIdentityInfo"`
+	// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
+	State *string `pulumi:"state"`
+}
+
+// Defaults sets the appropriate defaults for TopicSpacesConfigurationResponse
+func (val *TopicSpacesConfigurationResponse) Defaults() *TopicSpacesConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.State == nil {
+		state_ := "Disabled"
+		tmp.State = &state_
+	}
+	return &tmp
+}
+
+// Properties of the Topic Spaces Configuration.
+type TopicSpacesConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (TopicSpacesConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSpacesConfigurationResponse)(nil)).Elem()
+}
+
+func (o TopicSpacesConfigurationResponseOutput) ToTopicSpacesConfigurationResponseOutput() TopicSpacesConfigurationResponseOutput {
+	return o
+}
+
+func (o TopicSpacesConfigurationResponseOutput) ToTopicSpacesConfigurationResponseOutputWithContext(ctx context.Context) TopicSpacesConfigurationResponseOutput {
+	return o
+}
+
+// Client authentication settings for topic spaces configuration.
+func (o TopicSpacesConfigurationResponseOutput) ClientAuthentication() ClientAuthenticationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) *ClientAuthenticationSettingsResponse {
+		return v.ClientAuthentication
+	}).(ClientAuthenticationSettingsResponsePtrOutput)
+}
+
+// The endpoint for the topic spaces configuration. This is a read-only property.
+func (o TopicSpacesConfigurationResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The maximum number of sessions per authentication name. The property default value is 1.
+// Min allowed value is 1 and max allowed value is 100.
+func (o TopicSpacesConfigurationResponseOutput) MaximumClientSessionsPerAuthenticationName() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) *int { return v.MaximumClientSessionsPerAuthenticationName }).(pulumi.IntPtrOutput)
+}
+
+// The maximum session expiry in hours. The property default value is 1 hour.
+// Min allowed value is 1 hour and max allowed value is 8 hours.
+func (o TopicSpacesConfigurationResponseOutput) MaximumSessionExpiryInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) *int { return v.MaximumSessionExpiryInHours }).(pulumi.IntPtrOutput)
+}
+
+// Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
+// This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
+// This topic should reside in the same region where namespace is located.
+func (o TopicSpacesConfigurationResponseOutput) RouteTopicResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) *string { return v.RouteTopicResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Routing enrichments for topic spaces configuration
+func (o TopicSpacesConfigurationResponseOutput) RoutingEnrichments() RoutingEnrichmentsResponsePtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) *RoutingEnrichmentsResponse { return v.RoutingEnrichments }).(RoutingEnrichmentsResponsePtrOutput)
+}
+
+// Routing identity info for topic spaces configuration.
+func (o TopicSpacesConfigurationResponseOutput) RoutingIdentityInfo() RoutingIdentityInfoResponsePtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) *RoutingIdentityInfoResponse { return v.RoutingIdentityInfo }).(RoutingIdentityInfoResponsePtrOutput)
+}
+
+// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
+func (o TopicSpacesConfigurationResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type TopicSpacesConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TopicSpacesConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicSpacesConfigurationResponse)(nil)).Elem()
+}
+
+func (o TopicSpacesConfigurationResponsePtrOutput) ToTopicSpacesConfigurationResponsePtrOutput() TopicSpacesConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o TopicSpacesConfigurationResponsePtrOutput) ToTopicSpacesConfigurationResponsePtrOutputWithContext(ctx context.Context) TopicSpacesConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o TopicSpacesConfigurationResponsePtrOutput) Elem() TopicSpacesConfigurationResponseOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) TopicSpacesConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TopicSpacesConfigurationResponse
+		return ret
+	}).(TopicSpacesConfigurationResponseOutput)
+}
+
+// Client authentication settings for topic spaces configuration.
+func (o TopicSpacesConfigurationResponsePtrOutput) ClientAuthentication() ClientAuthenticationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *ClientAuthenticationSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ClientAuthentication
+	}).(ClientAuthenticationSettingsResponsePtrOutput)
+}
+
+// The endpoint for the topic spaces configuration. This is a read-only property.
+func (o TopicSpacesConfigurationResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of sessions per authentication name. The property default value is 1.
+// Min allowed value is 1 and max allowed value is 100.
+func (o TopicSpacesConfigurationResponsePtrOutput) MaximumClientSessionsPerAuthenticationName() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumClientSessionsPerAuthenticationName
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum session expiry in hours. The property default value is 1 hour.
+// Min allowed value is 1 hour and max allowed value is 8 hours.
+func (o TopicSpacesConfigurationResponsePtrOutput) MaximumSessionExpiryInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumSessionExpiryInHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
+// This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
+// This topic should reside in the same region where namespace is located.
+func (o TopicSpacesConfigurationResponsePtrOutput) RouteTopicResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTopicResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Routing enrichments for topic spaces configuration
+func (o TopicSpacesConfigurationResponsePtrOutput) RoutingEnrichments() RoutingEnrichmentsResponsePtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *RoutingEnrichmentsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingEnrichments
+	}).(RoutingEnrichmentsResponsePtrOutput)
+}
+
+// Routing identity info for topic spaces configuration.
+func (o TopicSpacesConfigurationResponsePtrOutput) RoutingIdentityInfo() RoutingIdentityInfoResponsePtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *RoutingIdentityInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingIdentityInfo
+	}).(RoutingIdentityInfoResponsePtrOutput)
+}
+
+// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
+func (o TopicSpacesConfigurationResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of the Topics Configuration.
+type TopicsConfigurationResponse struct {
+	// The hostname for the topics configuration. This is a read-only property.
+	Hostname string `pulumi:"hostname"`
+}
+
+// Properties of the Topics Configuration.
+type TopicsConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (TopicsConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsConfigurationResponse)(nil)).Elem()
+}
+
+func (o TopicsConfigurationResponseOutput) ToTopicsConfigurationResponseOutput() TopicsConfigurationResponseOutput {
+	return o
+}
+
+func (o TopicsConfigurationResponseOutput) ToTopicsConfigurationResponseOutputWithContext(ctx context.Context) TopicsConfigurationResponseOutput {
+	return o
+}
+
+// The hostname for the topics configuration. This is a read-only property.
+func (o TopicsConfigurationResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicsConfigurationResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+type TopicsConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TopicsConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicsConfigurationResponse)(nil)).Elem()
+}
+
+func (o TopicsConfigurationResponsePtrOutput) ToTopicsConfigurationResponsePtrOutput() TopicsConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o TopicsConfigurationResponsePtrOutput) ToTopicsConfigurationResponsePtrOutputWithContext(ctx context.Context) TopicsConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o TopicsConfigurationResponsePtrOutput) Elem() TopicsConfigurationResponseOutput {
+	return o.ApplyT(func(v *TopicsConfigurationResponse) TopicsConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TopicsConfigurationResponse
+		return ret
+	}).(TopicsConfigurationResponseOutput)
+}
+
+// The hostname for the topics configuration. This is a read-only property.
+func (o TopicsConfigurationResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicsConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
 }
 
 // The information about the user identity.
@@ -7131,567 +10871,27 @@ func (val *WebHookEventSubscriptionDestinationResponse) Defaults() *WebHookEvent
 	}
 	return &tmp
 }
-
-// Information about the WebHook of the partner destination.
-type WebhookPartnerDestinationInfo struct {
-	// Azure subscription ID of the subscriber. The partner destination associated with the channel will be
-	// created under this Azure subscription.
-	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
-	// Partner client authentication
-	ClientAuthentication *AzureADPartnerClientAuthentication `pulumi:"clientAuthentication"`
-	// The base URL that represents the endpoint of the partner destination.
-	EndpointBaseUrl *string `pulumi:"endpointBaseUrl"`
-	// Additional context of the partner destination endpoint.
-	EndpointServiceContext *string `pulumi:"endpointServiceContext"`
-	// Type of the endpoint for the partner destination
-	// Expected value is 'WebHook'.
-	EndpointType string `pulumi:"endpointType"`
-	// The URL that represents the endpoint of the partner destination.
-	EndpointUrl *string `pulumi:"endpointUrl"`
-	// Name of the partner destination associated with the channel.
-	Name *string `pulumi:"name"`
-	// Azure Resource Group of the subscriber. The partner destination associated with the channel will be
-	// created under this resource group.
-	ResourceGroupName *string `pulumi:"resourceGroupName"`
-	// Change history of the resource move.
-	ResourceMoveChangeHistory []ResourceMoveChangeHistory `pulumi:"resourceMoveChangeHistory"`
-}
-
-// Defaults sets the appropriate defaults for WebhookPartnerDestinationInfo
-func (val *WebhookPartnerDestinationInfo) Defaults() *WebhookPartnerDestinationInfo {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.ClientAuthentication = tmp.ClientAuthentication.Defaults()
-
-	if isZero(tmp.EndpointType) {
-		tmp.EndpointType = "WebHook"
-	}
-	return &tmp
-}
-
-// WebhookPartnerDestinationInfoInput is an input type that accepts WebhookPartnerDestinationInfoArgs and WebhookPartnerDestinationInfoOutput values.
-// You can construct a concrete instance of `WebhookPartnerDestinationInfoInput` via:
-//
-//	WebhookPartnerDestinationInfoArgs{...}
-type WebhookPartnerDestinationInfoInput interface {
-	pulumi.Input
-
-	ToWebhookPartnerDestinationInfoOutput() WebhookPartnerDestinationInfoOutput
-	ToWebhookPartnerDestinationInfoOutputWithContext(context.Context) WebhookPartnerDestinationInfoOutput
-}
-
-// Information about the WebHook of the partner destination.
-type WebhookPartnerDestinationInfoArgs struct {
-	// Azure subscription ID of the subscriber. The partner destination associated with the channel will be
-	// created under this Azure subscription.
-	AzureSubscriptionId pulumi.StringPtrInput `pulumi:"azureSubscriptionId"`
-	// Partner client authentication
-	ClientAuthentication AzureADPartnerClientAuthenticationPtrInput `pulumi:"clientAuthentication"`
-	// The base URL that represents the endpoint of the partner destination.
-	EndpointBaseUrl pulumi.StringPtrInput `pulumi:"endpointBaseUrl"`
-	// Additional context of the partner destination endpoint.
-	EndpointServiceContext pulumi.StringPtrInput `pulumi:"endpointServiceContext"`
-	// Type of the endpoint for the partner destination
-	// Expected value is 'WebHook'.
-	EndpointType pulumi.StringInput `pulumi:"endpointType"`
-	// The URL that represents the endpoint of the partner destination.
-	EndpointUrl pulumi.StringPtrInput `pulumi:"endpointUrl"`
-	// Name of the partner destination associated with the channel.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Azure Resource Group of the subscriber. The partner destination associated with the channel will be
-	// created under this resource group.
-	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
-	// Change history of the resource move.
-	ResourceMoveChangeHistory ResourceMoveChangeHistoryArrayInput `pulumi:"resourceMoveChangeHistory"`
-}
-
-// Defaults sets the appropriate defaults for WebhookPartnerDestinationInfoArgs
-func (val *WebhookPartnerDestinationInfoArgs) Defaults() *WebhookPartnerDestinationInfoArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	if tmp.EndpointType == nil {
-		tmp.EndpointType = pulumi.String("WebHook")
-	}
-	return &tmp
-}
-func (WebhookPartnerDestinationInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookPartnerDestinationInfo)(nil)).Elem()
-}
-
-func (i WebhookPartnerDestinationInfoArgs) ToWebhookPartnerDestinationInfoOutput() WebhookPartnerDestinationInfoOutput {
-	return i.ToWebhookPartnerDestinationInfoOutputWithContext(context.Background())
-}
-
-func (i WebhookPartnerDestinationInfoArgs) ToWebhookPartnerDestinationInfoOutputWithContext(ctx context.Context) WebhookPartnerDestinationInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookPartnerDestinationInfoOutput)
-}
-
-func (i WebhookPartnerDestinationInfoArgs) ToWebhookPartnerDestinationInfoPtrOutput() WebhookPartnerDestinationInfoPtrOutput {
-	return i.ToWebhookPartnerDestinationInfoPtrOutputWithContext(context.Background())
-}
-
-func (i WebhookPartnerDestinationInfoArgs) ToWebhookPartnerDestinationInfoPtrOutputWithContext(ctx context.Context) WebhookPartnerDestinationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookPartnerDestinationInfoOutput).ToWebhookPartnerDestinationInfoPtrOutputWithContext(ctx)
-}
-
-// WebhookPartnerDestinationInfoPtrInput is an input type that accepts WebhookPartnerDestinationInfoArgs, WebhookPartnerDestinationInfoPtr and WebhookPartnerDestinationInfoPtrOutput values.
-// You can construct a concrete instance of `WebhookPartnerDestinationInfoPtrInput` via:
-//
-//	        WebhookPartnerDestinationInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type WebhookPartnerDestinationInfoPtrInput interface {
-	pulumi.Input
-
-	ToWebhookPartnerDestinationInfoPtrOutput() WebhookPartnerDestinationInfoPtrOutput
-	ToWebhookPartnerDestinationInfoPtrOutputWithContext(context.Context) WebhookPartnerDestinationInfoPtrOutput
-}
-
-type webhookPartnerDestinationInfoPtrType WebhookPartnerDestinationInfoArgs
-
-func WebhookPartnerDestinationInfoPtr(v *WebhookPartnerDestinationInfoArgs) WebhookPartnerDestinationInfoPtrInput {
-	return (*webhookPartnerDestinationInfoPtrType)(v)
-}
-
-func (*webhookPartnerDestinationInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebhookPartnerDestinationInfo)(nil)).Elem()
-}
-
-func (i *webhookPartnerDestinationInfoPtrType) ToWebhookPartnerDestinationInfoPtrOutput() WebhookPartnerDestinationInfoPtrOutput {
-	return i.ToWebhookPartnerDestinationInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *webhookPartnerDestinationInfoPtrType) ToWebhookPartnerDestinationInfoPtrOutputWithContext(ctx context.Context) WebhookPartnerDestinationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookPartnerDestinationInfoPtrOutput)
-}
-
-// Information about the WebHook of the partner destination.
-type WebhookPartnerDestinationInfoOutput struct{ *pulumi.OutputState }
-
-func (WebhookPartnerDestinationInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookPartnerDestinationInfo)(nil)).Elem()
-}
-
-func (o WebhookPartnerDestinationInfoOutput) ToWebhookPartnerDestinationInfoOutput() WebhookPartnerDestinationInfoOutput {
-	return o
-}
-
-func (o WebhookPartnerDestinationInfoOutput) ToWebhookPartnerDestinationInfoOutputWithContext(ctx context.Context) WebhookPartnerDestinationInfoOutput {
-	return o
-}
-
-func (o WebhookPartnerDestinationInfoOutput) ToWebhookPartnerDestinationInfoPtrOutput() WebhookPartnerDestinationInfoPtrOutput {
-	return o.ToWebhookPartnerDestinationInfoPtrOutputWithContext(context.Background())
-}
-
-func (o WebhookPartnerDestinationInfoOutput) ToWebhookPartnerDestinationInfoPtrOutputWithContext(ctx context.Context) WebhookPartnerDestinationInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookPartnerDestinationInfo) *WebhookPartnerDestinationInfo {
-		return &v
-	}).(WebhookPartnerDestinationInfoPtrOutput)
-}
-
-// Azure subscription ID of the subscriber. The partner destination associated with the channel will be
-// created under this Azure subscription.
-func (o WebhookPartnerDestinationInfoOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Partner client authentication
-func (o WebhookPartnerDestinationInfoOutput) ClientAuthentication() AzureADPartnerClientAuthenticationPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) *AzureADPartnerClientAuthentication {
-		return v.ClientAuthentication
-	}).(AzureADPartnerClientAuthenticationPtrOutput)
-}
-
-// The base URL that represents the endpoint of the partner destination.
-func (o WebhookPartnerDestinationInfoOutput) EndpointBaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) *string { return v.EndpointBaseUrl }).(pulumi.StringPtrOutput)
-}
-
-// Additional context of the partner destination endpoint.
-func (o WebhookPartnerDestinationInfoOutput) EndpointServiceContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) *string { return v.EndpointServiceContext }).(pulumi.StringPtrOutput)
-}
-
-// Type of the endpoint for the partner destination
-// Expected value is 'WebHook'.
-func (o WebhookPartnerDestinationInfoOutput) EndpointType() pulumi.StringOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) string { return v.EndpointType }).(pulumi.StringOutput)
-}
-
-// The URL that represents the endpoint of the partner destination.
-func (o WebhookPartnerDestinationInfoOutput) EndpointUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
-}
-
-// Name of the partner destination associated with the channel.
-func (o WebhookPartnerDestinationInfoOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Group of the subscriber. The partner destination associated with the channel will be
-// created under this resource group.
-func (o WebhookPartnerDestinationInfoOutput) ResourceGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
-}
-
-// Change history of the resource move.
-func (o WebhookPartnerDestinationInfoOutput) ResourceMoveChangeHistory() ResourceMoveChangeHistoryArrayOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfo) []ResourceMoveChangeHistory { return v.ResourceMoveChangeHistory }).(ResourceMoveChangeHistoryArrayOutput)
-}
-
-type WebhookPartnerDestinationInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (WebhookPartnerDestinationInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebhookPartnerDestinationInfo)(nil)).Elem()
-}
-
-func (o WebhookPartnerDestinationInfoPtrOutput) ToWebhookPartnerDestinationInfoPtrOutput() WebhookPartnerDestinationInfoPtrOutput {
-	return o
-}
-
-func (o WebhookPartnerDestinationInfoPtrOutput) ToWebhookPartnerDestinationInfoPtrOutputWithContext(ctx context.Context) WebhookPartnerDestinationInfoPtrOutput {
-	return o
-}
-
-func (o WebhookPartnerDestinationInfoPtrOutput) Elem() WebhookPartnerDestinationInfoOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) WebhookPartnerDestinationInfo {
-		if v != nil {
-			return *v
-		}
-		var ret WebhookPartnerDestinationInfo
-		return ret
-	}).(WebhookPartnerDestinationInfoOutput)
-}
-
-// Azure subscription ID of the subscriber. The partner destination associated with the channel will be
-// created under this Azure subscription.
-func (o WebhookPartnerDestinationInfoPtrOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureSubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Partner client authentication
-func (o WebhookPartnerDestinationInfoPtrOutput) ClientAuthentication() AzureADPartnerClientAuthenticationPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) *AzureADPartnerClientAuthentication {
-		if v == nil {
-			return nil
-		}
-		return v.ClientAuthentication
-	}).(AzureADPartnerClientAuthenticationPtrOutput)
-}
-
-// The base URL that represents the endpoint of the partner destination.
-func (o WebhookPartnerDestinationInfoPtrOutput) EndpointBaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndpointBaseUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Additional context of the partner destination endpoint.
-func (o WebhookPartnerDestinationInfoPtrOutput) EndpointServiceContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndpointServiceContext
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the endpoint for the partner destination
-// Expected value is 'WebHook'.
-func (o WebhookPartnerDestinationInfoPtrOutput) EndpointType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndpointType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL that represents the endpoint of the partner destination.
-func (o WebhookPartnerDestinationInfoPtrOutput) EndpointUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndpointUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the partner destination associated with the channel.
-func (o WebhookPartnerDestinationInfoPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Group of the subscriber. The partner destination associated with the channel will be
-// created under this resource group.
-func (o WebhookPartnerDestinationInfoPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroupName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Change history of the resource move.
-func (o WebhookPartnerDestinationInfoPtrOutput) ResourceMoveChangeHistory() ResourceMoveChangeHistoryArrayOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfo) []ResourceMoveChangeHistory {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceMoveChangeHistory
-	}).(ResourceMoveChangeHistoryArrayOutput)
-}
-
-// Information about the WebHook of the partner destination.
-type WebhookPartnerDestinationInfoResponse struct {
-	// Azure subscription ID of the subscriber. The partner destination associated with the channel will be
-	// created under this Azure subscription.
-	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
-	// Partner client authentication
-	ClientAuthentication *AzureADPartnerClientAuthenticationResponse `pulumi:"clientAuthentication"`
-	// The base URL that represents the endpoint of the partner destination.
-	EndpointBaseUrl *string `pulumi:"endpointBaseUrl"`
-	// Additional context of the partner destination endpoint.
-	EndpointServiceContext *string `pulumi:"endpointServiceContext"`
-	// Type of the endpoint for the partner destination
-	// Expected value is 'WebHook'.
-	EndpointType string `pulumi:"endpointType"`
-	// The URL that represents the endpoint of the partner destination.
-	EndpointUrl *string `pulumi:"endpointUrl"`
-	// Name of the partner destination associated with the channel.
-	Name *string `pulumi:"name"`
-	// Azure Resource Group of the subscriber. The partner destination associated with the channel will be
-	// created under this resource group.
-	ResourceGroupName *string `pulumi:"resourceGroupName"`
-	// Change history of the resource move.
-	ResourceMoveChangeHistory []ResourceMoveChangeHistoryResponse `pulumi:"resourceMoveChangeHistory"`
-}
-
-// Defaults sets the appropriate defaults for WebhookPartnerDestinationInfoResponse
-func (val *WebhookPartnerDestinationInfoResponse) Defaults() *WebhookPartnerDestinationInfoResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.ClientAuthentication = tmp.ClientAuthentication.Defaults()
-
-	if isZero(tmp.EndpointType) {
-		tmp.EndpointType = "WebHook"
-	}
-	return &tmp
-}
-
-// Information about the WebHook of the partner destination.
-type WebhookPartnerDestinationInfoResponseOutput struct{ *pulumi.OutputState }
-
-func (WebhookPartnerDestinationInfoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookPartnerDestinationInfoResponse)(nil)).Elem()
-}
-
-func (o WebhookPartnerDestinationInfoResponseOutput) ToWebhookPartnerDestinationInfoResponseOutput() WebhookPartnerDestinationInfoResponseOutput {
-	return o
-}
-
-func (o WebhookPartnerDestinationInfoResponseOutput) ToWebhookPartnerDestinationInfoResponseOutputWithContext(ctx context.Context) WebhookPartnerDestinationInfoResponseOutput {
-	return o
-}
-
-// Azure subscription ID of the subscriber. The partner destination associated with the channel will be
-// created under this Azure subscription.
-func (o WebhookPartnerDestinationInfoResponseOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Partner client authentication
-func (o WebhookPartnerDestinationInfoResponseOutput) ClientAuthentication() AzureADPartnerClientAuthenticationResponsePtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) *AzureADPartnerClientAuthenticationResponse {
-		return v.ClientAuthentication
-	}).(AzureADPartnerClientAuthenticationResponsePtrOutput)
-}
-
-// The base URL that represents the endpoint of the partner destination.
-func (o WebhookPartnerDestinationInfoResponseOutput) EndpointBaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) *string { return v.EndpointBaseUrl }).(pulumi.StringPtrOutput)
-}
-
-// Additional context of the partner destination endpoint.
-func (o WebhookPartnerDestinationInfoResponseOutput) EndpointServiceContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) *string { return v.EndpointServiceContext }).(pulumi.StringPtrOutput)
-}
-
-// Type of the endpoint for the partner destination
-// Expected value is 'WebHook'.
-func (o WebhookPartnerDestinationInfoResponseOutput) EndpointType() pulumi.StringOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) string { return v.EndpointType }).(pulumi.StringOutput)
-}
-
-// The URL that represents the endpoint of the partner destination.
-func (o WebhookPartnerDestinationInfoResponseOutput) EndpointUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
-}
-
-// Name of the partner destination associated with the channel.
-func (o WebhookPartnerDestinationInfoResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Group of the subscriber. The partner destination associated with the channel will be
-// created under this resource group.
-func (o WebhookPartnerDestinationInfoResponseOutput) ResourceGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
-}
-
-// Change history of the resource move.
-func (o WebhookPartnerDestinationInfoResponseOutput) ResourceMoveChangeHistory() ResourceMoveChangeHistoryResponseArrayOutput {
-	return o.ApplyT(func(v WebhookPartnerDestinationInfoResponse) []ResourceMoveChangeHistoryResponse {
-		return v.ResourceMoveChangeHistory
-	}).(ResourceMoveChangeHistoryResponseArrayOutput)
-}
-
-type WebhookPartnerDestinationInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WebhookPartnerDestinationInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebhookPartnerDestinationInfoResponse)(nil)).Elem()
-}
-
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) ToWebhookPartnerDestinationInfoResponsePtrOutput() WebhookPartnerDestinationInfoResponsePtrOutput {
-	return o
-}
-
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) ToWebhookPartnerDestinationInfoResponsePtrOutputWithContext(ctx context.Context) WebhookPartnerDestinationInfoResponsePtrOutput {
-	return o
-}
-
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) Elem() WebhookPartnerDestinationInfoResponseOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) WebhookPartnerDestinationInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WebhookPartnerDestinationInfoResponse
-		return ret
-	}).(WebhookPartnerDestinationInfoResponseOutput)
-}
-
-// Azure subscription ID of the subscriber. The partner destination associated with the channel will be
-// created under this Azure subscription.
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureSubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Partner client authentication
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) ClientAuthentication() AzureADPartnerClientAuthenticationResponsePtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) *AzureADPartnerClientAuthenticationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ClientAuthentication
-	}).(AzureADPartnerClientAuthenticationResponsePtrOutput)
-}
-
-// The base URL that represents the endpoint of the partner destination.
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) EndpointBaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndpointBaseUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Additional context of the partner destination endpoint.
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) EndpointServiceContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndpointServiceContext
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the endpoint for the partner destination
-// Expected value is 'WebHook'.
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndpointType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL that represents the endpoint of the partner destination.
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) EndpointUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndpointUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the partner destination associated with the channel.
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Group of the subscriber. The partner destination associated with the channel will be
-// created under this resource group.
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroupName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Change history of the resource move.
-func (o WebhookPartnerDestinationInfoResponsePtrOutput) ResourceMoveChangeHistory() ResourceMoveChangeHistoryResponseArrayOutput {
-	return o.ApplyT(func(v *WebhookPartnerDestinationInfoResponse) []ResourceMoveChangeHistoryResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceMoveChangeHistory
-	}).(ResourceMoveChangeHistoryResponseArrayOutput)
-}
-
 func init() {
-	pulumi.RegisterOutputType(AzureADPartnerClientAuthenticationOutput{})
-	pulumi.RegisterOutputType(AzureADPartnerClientAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(AzureADPartnerClientAuthenticationResponseOutput{})
-	pulumi.RegisterOutputType(AzureADPartnerClientAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClientAuthenticationOutput{})
+	pulumi.RegisterOutputType(ClientAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ClientAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(ClientAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClientAuthenticationSettingsOutput{})
+	pulumi.RegisterOutputType(ClientAuthenticationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ClientAuthenticationSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ClientAuthenticationSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClientCertificateAuthenticationOutput{})
+	pulumi.RegisterOutputType(ClientCertificateAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ClientCertificateAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(ClientCertificateAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClientCertificateSubjectDistinguishedNameOutput{})
+	pulumi.RegisterOutputType(ClientCertificateSubjectDistinguishedNamePtrOutput{})
+	pulumi.RegisterOutputType(ClientCertificateSubjectDistinguishedNameResponseOutput{})
+	pulumi.RegisterOutputType(ClientCertificateSubjectDistinguishedNameResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClientCertificateThumbprintOutput{})
+	pulumi.RegisterOutputType(ClientCertificateThumbprintPtrOutput{})
+	pulumi.RegisterOutputType(ClientCertificateThumbprintResponseOutput{})
+	pulumi.RegisterOutputType(ClientCertificateThumbprintResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStateOutput{})
 	pulumi.RegisterOutputType(ConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStateResponseOutput{})
@@ -7700,10 +10900,18 @@ func init() {
 	pulumi.RegisterOutputType(DeadLetterWithResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(DeadLetterWithResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(DeadLetterWithResourceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeliveryConfigurationOutput{})
+	pulumi.RegisterOutputType(DeliveryConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DeliveryConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityOutput{})
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(DynamicRoutingEnrichmentOutput{})
+	pulumi.RegisterOutputType(DynamicRoutingEnrichmentArrayOutput{})
+	pulumi.RegisterOutputType(DynamicRoutingEnrichmentResponseOutput{})
+	pulumi.RegisterOutputType(DynamicRoutingEnrichmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(EventChannelDestinationOutput{})
 	pulumi.RegisterOutputType(EventChannelDestinationPtrOutput{})
 	pulumi.RegisterOutputType(EventChannelDestinationResponseOutput{})
@@ -7728,6 +10936,10 @@ func init() {
 	pulumi.RegisterOutputType(EventTypeInfoPtrOutput{})
 	pulumi.RegisterOutputType(EventTypeInfoResponseOutput{})
 	pulumi.RegisterOutputType(EventTypeInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(FiltersConfigurationOutput{})
+	pulumi.RegisterOutputType(FiltersConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(FiltersConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(FiltersConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityInfoOutput{})
 	pulumi.RegisterOutputType(IdentityInfoPtrOutput{})
 	pulumi.RegisterOutputType(IdentityInfoResponseOutput{})
@@ -7752,6 +10964,10 @@ func init() {
 	pulumi.RegisterOutputType(JsonInputSchemaMappingPtrOutput{})
 	pulumi.RegisterOutputType(JsonInputSchemaMappingResponseOutput{})
 	pulumi.RegisterOutputType(JsonInputSchemaMappingResponsePtrOutput{})
+	pulumi.RegisterOutputType(NamespaceSkuOutput{})
+	pulumi.RegisterOutputType(NamespaceSkuPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceSkuResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceSkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(PartnerOutput{})
 	pulumi.RegisterOutputType(PartnerArrayOutput{})
 	pulumi.RegisterOutputType(PartnerAuthorizationOutput{})
@@ -7766,29 +10982,45 @@ func init() {
 	pulumi.RegisterOutputType(PartnerTopicInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(ResourceMoveChangeHistoryOutput{})
-	pulumi.RegisterOutputType(ResourceMoveChangeHistoryArrayOutput{})
-	pulumi.RegisterOutputType(ResourceMoveChangeHistoryResponseOutput{})
-	pulumi.RegisterOutputType(ResourceMoveChangeHistoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(QueueInfoOutput{})
+	pulumi.RegisterOutputType(QueueInfoPtrOutput{})
+	pulumi.RegisterOutputType(QueueInfoResponseOutput{})
+	pulumi.RegisterOutputType(QueueInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(RetryPolicyOutput{})
 	pulumi.RegisterOutputType(RetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RetryPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RetryPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(RoutingEnrichmentsOutput{})
+	pulumi.RegisterOutputType(RoutingEnrichmentsPtrOutput{})
+	pulumi.RegisterOutputType(RoutingEnrichmentsResponseOutput{})
+	pulumi.RegisterOutputType(RoutingEnrichmentsResponsePtrOutput{})
+	pulumi.RegisterOutputType(RoutingIdentityInfoOutput{})
+	pulumi.RegisterOutputType(RoutingIdentityInfoPtrOutput{})
+	pulumi.RegisterOutputType(RoutingIdentityInfoResponseOutput{})
+	pulumi.RegisterOutputType(RoutingIdentityInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(StaticRoutingEnrichmentOutput{})
+	pulumi.RegisterOutputType(StaticRoutingEnrichmentArrayOutput{})
+	pulumi.RegisterOutputType(StaticRoutingEnrichmentResponseOutput{})
+	pulumi.RegisterOutputType(StaticRoutingEnrichmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationPtrOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationResponseOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TopicSpacesConfigurationOutput{})
+	pulumi.RegisterOutputType(TopicSpacesConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TopicSpacesConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(TopicSpacesConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(TopicsConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(TopicsConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesMapOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesResponseMapOutput{})
-	pulumi.RegisterOutputType(WebhookPartnerDestinationInfoOutput{})
-	pulumi.RegisterOutputType(WebhookPartnerDestinationInfoPtrOutput{})
-	pulumi.RegisterOutputType(WebhookPartnerDestinationInfoResponseOutput{})
-	pulumi.RegisterOutputType(WebhookPartnerDestinationInfoResponsePtrOutput{})
 }

@@ -3,38 +3,6 @@
 
 package v20210501preview
 
-// Elliptical curve algorithm to be used: ES256, ES384 or ES512.
-type AccessPolicyEccAlgo string
-
-const (
-	// ES265
-	AccessPolicyEccAlgoES256 = AccessPolicyEccAlgo("ES256")
-	// ES384
-	AccessPolicyEccAlgoES384 = AccessPolicyEccAlgo("ES384")
-	// ES512
-	AccessPolicyEccAlgoES512 = AccessPolicyEccAlgo("ES512")
-)
-
-// Defines the access level granted by this policy.
-type AccessPolicyRole string
-
-const (
-	// Reader role allows for read-only operations to be performed through the client APIs.
-	AccessPolicyRoleReader = AccessPolicyRole("Reader")
-)
-
-// RSA algorithm to be used: RS256, RS384 or RS512.
-type AccessPolicyRsaAlgo string
-
-const (
-	// RS256
-	AccessPolicyRsaAlgoRS256 = AccessPolicyRsaAlgo("RS256")
-	// RS384
-	AccessPolicyRsaAlgoRS384 = AccessPolicyRsaAlgo("RS384")
-	// RS512
-	AccessPolicyRsaAlgoRS512 = AccessPolicyRsaAlgo("RS512")
-)
-
 // The type of key used to encrypt the Account Key.
 type AccountEncryptionKeyType string
 

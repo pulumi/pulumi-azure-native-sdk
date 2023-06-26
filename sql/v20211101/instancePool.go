@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure SQL instance pool.
-//
-// Deprecated: azure-native:sql/v20211101:InstancePool is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:InstancePool to guarantee forwards compatibility.
 type InstancePool struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +88,9 @@ func NewInstancePool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:InstancePool"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:InstancePool"),
 		},
 	})
 	opts = append(opts, aliases)

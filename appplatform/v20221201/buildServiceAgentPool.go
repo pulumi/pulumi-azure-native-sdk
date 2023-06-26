@@ -12,8 +12,6 @@ import (
 )
 
 // The build service agent pool resource
-//
-// Deprecated: azure-native:appplatform/v20221201:BuildServiceAgentPool is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildServiceAgentPool to guarantee forwards compatibility.
 type BuildServiceAgentPool struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +65,12 @@ func NewBuildServiceAgentPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:BuildServiceAgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:BuildServiceAgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:BuildServiceAgentPool"),
 		},
 	})
 	opts = append(opts, aliases)

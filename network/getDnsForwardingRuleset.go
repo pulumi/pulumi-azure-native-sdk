@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a DNS forwarding ruleset properties.
-// API Version: 2020-04-01-preview.
+// Azure REST API version: 2022-07-01.
 func LookupDnsForwardingRuleset(ctx *pulumi.Context, args *LookupDnsForwardingRulesetArgs, opts ...pulumi.InvokeOption) (*LookupDnsForwardingRulesetResult, error) {
 	var rv LookupDnsForwardingRulesetResult
 	err := ctx.Invoke("azure-native:network:getDnsForwardingRuleset", args, &rv, opts...)

@@ -12,8 +12,6 @@ import (
 )
 
 // Custom domain of the Spring Cloud Gateway
-//
-// Deprecated: azure-native:appplatform/v20221201:GatewayCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:GatewayCustomDomain to guarantee forwards compatibility.
 type GatewayCustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +62,12 @@ func NewGatewayCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:GatewayCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:GatewayCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:GatewayCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

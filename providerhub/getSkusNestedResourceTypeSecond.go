@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the sku details for the given resource type and sku name.
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview.
 func LookupSkusNestedResourceTypeSecond(ctx *pulumi.Context, args *LookupSkusNestedResourceTypeSecondArgs, opts ...pulumi.InvokeOption) (*LookupSkusNestedResourceTypeSecondResult, error) {
 	var rv LookupSkusNestedResourceTypeSecondResult
 	err := ctx.Invoke("azure-native:providerhub:getSkusNestedResourceTypeSecond", args, &rv, opts...)
@@ -40,6 +40,8 @@ type LookupSkusNestedResourceTypeSecondResult struct {
 	// The name of the resource
 	Name       string                        `pulumi:"name"`
 	Properties SkuResourceResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -100,6 +102,11 @@ func (o LookupSkusNestedResourceTypeSecondResultOutput) Name() pulumi.StringOutp
 
 func (o LookupSkusNestedResourceTypeSecondResultOutput) Properties() SkuResourceResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeSecondResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupSkusNestedResourceTypeSecondResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSkusNestedResourceTypeSecondResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

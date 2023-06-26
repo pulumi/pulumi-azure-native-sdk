@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a data flow.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func LookupDataFlow(ctx *pulumi.Context, args *LookupDataFlowArgs, opts ...pulumi.InvokeOption) (*LookupDataFlowResult, error) {
 	var rv LookupDataFlowResult
 	err := ctx.Invoke("azure-native:datafactory:getDataFlow", args, &rv, opts...)

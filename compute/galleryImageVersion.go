@@ -12,7 +12,7 @@ import (
 )
 
 // Specifies information about the gallery image version that you want to create or update.
-// API Version: 2020-09-30.
+// Azure REST API version: 2022-03-03. Prior API version in Azure Native 1.x: 2020-09-30
 type GalleryImageVersion struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,8 @@ type GalleryImageVersion struct {
 	PublishingProfile GalleryImageVersionPublishingProfileResponsePtrOutput `pulumi:"publishingProfile"`
 	// This is the replication status of the gallery image version.
 	ReplicationStatus ReplicationStatusResponseOutput `pulumi:"replicationStatus"`
+	// This is the safety profile of the Gallery Image Version.
+	SafetyProfile GalleryImageVersionSafetyProfileResponsePtrOutput `pulumi:"safetyProfile"`
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfileResponseOutput `pulumi:"storageProfile"`
 	// Resource tags
@@ -127,6 +129,8 @@ type galleryImageVersionArgs struct {
 	PublishingProfile *GalleryImageVersionPublishingProfile `pulumi:"publishingProfile"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// This is the safety profile of the Gallery Image Version.
+	SafetyProfile *GalleryImageVersionSafetyProfile `pulumi:"safetyProfile"`
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfile `pulumi:"storageProfile"`
 	// Resource tags
@@ -147,6 +151,8 @@ type GalleryImageVersionArgs struct {
 	PublishingProfile GalleryImageVersionPublishingProfilePtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// This is the safety profile of the Gallery Image Version.
+	SafetyProfile GalleryImageVersionSafetyProfilePtrInput
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfileInput
 	// Resource tags
@@ -215,6 +221,11 @@ func (o GalleryImageVersionOutput) PublishingProfile() GalleryImageVersionPublis
 // This is the replication status of the gallery image version.
 func (o GalleryImageVersionOutput) ReplicationStatus() ReplicationStatusResponseOutput {
 	return o.ApplyT(func(v *GalleryImageVersion) ReplicationStatusResponseOutput { return v.ReplicationStatus }).(ReplicationStatusResponseOutput)
+}
+
+// This is the safety profile of the Gallery Image Version.
+func (o GalleryImageVersionOutput) SafetyProfile() GalleryImageVersionSafetyProfileResponsePtrOutput {
+	return o.ApplyT(func(v *GalleryImageVersion) GalleryImageVersionSafetyProfileResponsePtrOutput { return v.SafetyProfile }).(GalleryImageVersionSafetyProfileResponsePtrOutput)
 }
 
 // This is the storage profile of a Gallery Image Version.

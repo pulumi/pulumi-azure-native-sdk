@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure SQL DB Server Outbound Firewall Rule.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type OutboundFirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewOutboundFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:OutboundFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:OutboundFirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

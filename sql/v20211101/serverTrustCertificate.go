@@ -12,8 +12,6 @@ import (
 )
 
 // Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
-//
-// Deprecated: azure-native:sql/v20211101:ServerTrustCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerTrustCertificate to guarantee forwards compatibility.
 type ServerTrustCertificate struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +61,9 @@ func NewServerTrustCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ServerTrustCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ServerTrustCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

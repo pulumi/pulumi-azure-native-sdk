@@ -46,7 +46,13 @@ func NewAdministrator(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Administrator"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20220308preview:Administrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:Administrator"),
 		},
 	})
 	opts = append(opts, aliases)

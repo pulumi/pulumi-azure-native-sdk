@@ -12,8 +12,6 @@ import (
 )
 
 // A SQL virtual machine group.
-//
-// Deprecated: azure-native:sqlvirtualmachine/v20220201:SqlVirtualMachineGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachineGroup to guarantee forwards compatibility.
 type SqlVirtualMachineGroup struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +69,9 @@ func NewSqlVirtualMachineGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachineGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine/v20230101preview:SqlVirtualMachineGroup"),
 		},
 	})
 	opts = append(opts, aliases)

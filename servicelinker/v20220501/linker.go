@@ -12,8 +12,6 @@ import (
 )
 
 // Linker of source and target resource
-//
-// Deprecated: azure-native:servicelinker/v20220501:Linker is being removed in the next major version of this provider. Upgrade to at least azure-native:servicelinker/v20221101preview:Linker to guarantee forwards compatibility.
 type Linker struct {
 	pulumi.CustomResourceState
 

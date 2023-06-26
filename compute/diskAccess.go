@@ -12,10 +12,12 @@ import (
 )
 
 // disk access resource.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-07-02. Prior API version in Azure Native 1.x: 2020-12-01
 type DiskAccess struct {
 	pulumi.CustomResourceState
 
+	// The extended location where the disk access will be created. Extended location cannot be changed.
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name
@@ -104,8 +106,10 @@ func (DiskAccessState) ElementType() reflect.Type {
 }
 
 type diskAccessArgs struct {
-	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskAccessName *string `pulumi:"diskAccessName"`
+	// The extended location where the disk access will be created. Extended location cannot be changed.
+	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Resource location
 	Location *string `pulumi:"location"`
 	// The name of the resource group.
@@ -116,8 +120,10 @@ type diskAccessArgs struct {
 
 // The set of arguments for constructing a DiskAccess resource.
 type DiskAccessArgs struct {
-	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskAccessName pulumi.StringPtrInput
+	// The extended location where the disk access will be created. Extended location cannot be changed.
+	ExtendedLocation ExtendedLocationPtrInput
 	// Resource location
 	Location pulumi.StringPtrInput
 	// The name of the resource group.
@@ -161,6 +167,11 @@ func (o DiskAccessOutput) ToDiskAccessOutput() DiskAccessOutput {
 
 func (o DiskAccessOutput) ToDiskAccessOutputWithContext(ctx context.Context) DiskAccessOutput {
 	return o
+}
+
+// The extended location where the disk access will be created. Extended location cannot be changed.
+func (o DiskAccessOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *DiskAccess) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
 // Resource location

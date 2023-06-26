@@ -44,10 +44,19 @@ func NewRegistryEnvironmentContainer(ctx *pulumi.Context,
 	args.EnvironmentContainerProperties = args.EnvironmentContainerProperties.ToEnvironmentContainerTypeOutput().ApplyT(func(v EnvironmentContainerType) EnvironmentContainerType { return *v.Defaults() }).(EnvironmentContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryEnvironmentContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryEnvironmentContainer"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:RegistryEnvironmentContainer"),
 		},
 	})
 	opts = append(opts, aliases)

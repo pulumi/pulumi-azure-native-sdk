@@ -12,8 +12,6 @@ import (
 )
 
 // A sensitivity label.
-//
-// Deprecated: azure-native:sql/v20211101:ManagedDatabaseSensitivityLabel is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedDatabaseSensitivityLabel to guarantee forwards compatibility.
 type ManagedDatabaseSensitivityLabel struct {
 	pulumi.CustomResourceState
 
@@ -103,6 +101,9 @@ func NewManagedDatabaseSensitivityLabel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedDatabaseSensitivityLabel"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedDatabaseSensitivityLabel"),
 		},
 	})
 	opts = append(opts, aliases)

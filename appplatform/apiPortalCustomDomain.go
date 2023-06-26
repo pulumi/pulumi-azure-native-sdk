@@ -12,7 +12,7 @@ import (
 )
 
 // Custom domain of the API portal
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2022-01-01-preview
 type ApiPortalCustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,12 @@ func NewApiPortalCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:ApiPortalCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ApiPortalCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ApiPortalCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Datastore by name.
-// API Version: 2020-05-01-preview.
+// Azure REST API version: 2020-05-01-preview.
 func LookupMachineLearningDatastore(ctx *pulumi.Context, args *LookupMachineLearningDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupMachineLearningDatastoreResult, error) {
 	var rv LookupMachineLearningDatastoreResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getMachineLearningDatastore", args, &rv, opts...)

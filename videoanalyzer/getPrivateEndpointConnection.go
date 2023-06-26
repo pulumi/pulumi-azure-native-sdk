@@ -11,7 +11,7 @@ import (
 )
 
 // Get private endpoint connection under video analyzer account.
-// API Version: 2021-11-01-preview.
+// Azure REST API version: 2021-11-01-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:videoanalyzer:getPrivateEndpointConnection", args, &rv, opts...)

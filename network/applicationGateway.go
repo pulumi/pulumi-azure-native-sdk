@@ -12,7 +12,7 @@ import (
 )
 
 // Application gateway resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type ApplicationGateway struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +24,12 @@ type ApplicationGateway struct {
 	BackendAddressPools ApplicationGatewayBackendAddressPoolResponseArrayOutput `pulumi:"backendAddressPools"`
 	// Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	BackendHttpSettingsCollection ApplicationGatewayBackendHttpSettingsResponseArrayOutput `pulumi:"backendHttpSettingsCollection"`
+	// Backend settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+	BackendSettingsCollection ApplicationGatewayBackendSettingsResponseArrayOutput `pulumi:"backendSettingsCollection"`
 	// Custom error configurations of the application gateway resource.
 	CustomErrorConfigurations ApplicationGatewayCustomErrorResponseArrayOutput `pulumi:"customErrorConfigurations"`
+	// The default predefined SSL Policy applied on the application gateway resource.
+	DefaultPredefinedSslPolicy pulumi.StringOutput `pulumi:"defaultPredefinedSslPolicy"`
 	// Whether FIPS is enabled on the application gateway resource.
 	EnableFips pulumi.BoolPtrOutput `pulumi:"enableFips"`
 	// Whether HTTP2 is enabled on the application gateway resource.
@@ -42,10 +46,16 @@ type ApplicationGateway struct {
 	FrontendPorts ApplicationGatewayFrontendPortResponseArrayOutput `pulumi:"frontendPorts"`
 	// Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	GatewayIPConfigurations ApplicationGatewayIPConfigurationResponseArrayOutput `pulumi:"gatewayIPConfigurations"`
+	// Global Configuration.
+	GlobalConfiguration ApplicationGatewayGlobalConfigurationResponsePtrOutput `pulumi:"globalConfiguration"`
 	// Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	HttpListeners ApplicationGatewayHttpListenerResponseArrayOutput `pulumi:"httpListeners"`
 	// The identity of the application gateway, if configured.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// Listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+	Listeners ApplicationGatewayListenerResponseArrayOutput `pulumi:"listeners"`
+	// Load distribution policies of the application gateway resource.
+	LoadDistributionPolicies ApplicationGatewayLoadDistributionPolicyResponseArrayOutput `pulumi:"loadDistributionPolicies"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
@@ -68,6 +78,8 @@ type ApplicationGateway struct {
 	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// Rewrite rules for the application gateway resource.
 	RewriteRuleSets ApplicationGatewayRewriteRuleSetResponseArrayOutput `pulumi:"rewriteRuleSets"`
+	// Routing rules of the application gateway resource.
+	RoutingRules ApplicationGatewayRoutingRuleResponseArrayOutput `pulumi:"routingRules"`
 	// SKU of the application gateway resource.
 	Sku ApplicationGatewaySkuResponsePtrOutput `pulumi:"sku"`
 	// SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -235,6 +247,12 @@ func NewApplicationGateway(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ApplicationGateway"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ApplicationGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:ApplicationGateway"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApplicationGateway
@@ -279,6 +297,8 @@ type applicationGatewayArgs struct {
 	BackendAddressPools []ApplicationGatewayBackendAddressPool `pulumi:"backendAddressPools"`
 	// Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	BackendHttpSettingsCollection []ApplicationGatewayBackendHttpSettings `pulumi:"backendHttpSettingsCollection"`
+	// Backend settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+	BackendSettingsCollection []ApplicationGatewayBackendSettings `pulumi:"backendSettingsCollection"`
 	// Custom error configurations of the application gateway resource.
 	CustomErrorConfigurations []ApplicationGatewayCustomError `pulumi:"customErrorConfigurations"`
 	// Whether FIPS is enabled on the application gateway resource.
@@ -295,12 +315,18 @@ type applicationGatewayArgs struct {
 	FrontendPorts []ApplicationGatewayFrontendPort `pulumi:"frontendPorts"`
 	// Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	GatewayIPConfigurations []ApplicationGatewayIPConfiguration `pulumi:"gatewayIPConfigurations"`
+	// Global Configuration.
+	GlobalConfiguration *ApplicationGatewayGlobalConfiguration `pulumi:"globalConfiguration"`
 	// Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	HttpListeners []ApplicationGatewayHttpListener `pulumi:"httpListeners"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The identity of the application gateway, if configured.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	// Listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+	Listeners []ApplicationGatewayListener `pulumi:"listeners"`
+	// Load distribution policies of the application gateway resource.
+	LoadDistributionPolicies []ApplicationGatewayLoadDistributionPolicy `pulumi:"loadDistributionPolicies"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// PrivateLink configurations on application gateway.
@@ -315,6 +341,8 @@ type applicationGatewayArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Rewrite rules for the application gateway resource.
 	RewriteRuleSets []ApplicationGatewayRewriteRuleSet `pulumi:"rewriteRuleSets"`
+	// Routing rules of the application gateway resource.
+	RoutingRules []ApplicationGatewayRoutingRule `pulumi:"routingRules"`
 	// SKU of the application gateway resource.
 	Sku *ApplicationGatewaySku `pulumi:"sku"`
 	// SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -349,6 +377,8 @@ type ApplicationGatewayArgs struct {
 	BackendAddressPools ApplicationGatewayBackendAddressPoolArrayInput
 	// Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	BackendHttpSettingsCollection ApplicationGatewayBackendHttpSettingsArrayInput
+	// Backend settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+	BackendSettingsCollection ApplicationGatewayBackendSettingsArrayInput
 	// Custom error configurations of the application gateway resource.
 	CustomErrorConfigurations ApplicationGatewayCustomErrorArrayInput
 	// Whether FIPS is enabled on the application gateway resource.
@@ -365,12 +395,18 @@ type ApplicationGatewayArgs struct {
 	FrontendPorts ApplicationGatewayFrontendPortArrayInput
 	// Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	GatewayIPConfigurations ApplicationGatewayIPConfigurationArrayInput
+	// Global Configuration.
+	GlobalConfiguration ApplicationGatewayGlobalConfigurationPtrInput
 	// Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	HttpListeners ApplicationGatewayHttpListenerArrayInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// The identity of the application gateway, if configured.
 	Identity ManagedServiceIdentityPtrInput
+	// Listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+	Listeners ApplicationGatewayListenerArrayInput
+	// Load distribution policies of the application gateway resource.
+	LoadDistributionPolicies ApplicationGatewayLoadDistributionPolicyArrayInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// PrivateLink configurations on application gateway.
@@ -385,6 +421,8 @@ type ApplicationGatewayArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Rewrite rules for the application gateway resource.
 	RewriteRuleSets ApplicationGatewayRewriteRuleSetArrayInput
+	// Routing rules of the application gateway resource.
+	RoutingRules ApplicationGatewayRoutingRuleArrayInput
 	// SKU of the application gateway resource.
 	Sku ApplicationGatewaySkuPtrInput
 	// SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -472,11 +510,23 @@ func (o ApplicationGatewayOutput) BackendHttpSettingsCollection() ApplicationGat
 	}).(ApplicationGatewayBackendHttpSettingsResponseArrayOutput)
 }
 
+// Backend settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+func (o ApplicationGatewayOutput) BackendSettingsCollection() ApplicationGatewayBackendSettingsResponseArrayOutput {
+	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayBackendSettingsResponseArrayOutput {
+		return v.BackendSettingsCollection
+	}).(ApplicationGatewayBackendSettingsResponseArrayOutput)
+}
+
 // Custom error configurations of the application gateway resource.
 func (o ApplicationGatewayOutput) CustomErrorConfigurations() ApplicationGatewayCustomErrorResponseArrayOutput {
 	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayCustomErrorResponseArrayOutput {
 		return v.CustomErrorConfigurations
 	}).(ApplicationGatewayCustomErrorResponseArrayOutput)
+}
+
+// The default predefined SSL Policy applied on the application gateway resource.
+func (o ApplicationGatewayOutput) DefaultPredefinedSslPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGateway) pulumi.StringOutput { return v.DefaultPredefinedSslPolicy }).(pulumi.StringOutput)
 }
 
 // Whether FIPS is enabled on the application gateway resource.
@@ -523,6 +573,13 @@ func (o ApplicationGatewayOutput) GatewayIPConfigurations() ApplicationGatewayIP
 	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
 }
 
+// Global Configuration.
+func (o ApplicationGatewayOutput) GlobalConfiguration() ApplicationGatewayGlobalConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayGlobalConfigurationResponsePtrOutput {
+		return v.GlobalConfiguration
+	}).(ApplicationGatewayGlobalConfigurationResponsePtrOutput)
+}
+
 // Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 func (o ApplicationGatewayOutput) HttpListeners() ApplicationGatewayHttpListenerResponseArrayOutput {
 	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayHttpListenerResponseArrayOutput { return v.HttpListeners }).(ApplicationGatewayHttpListenerResponseArrayOutput)
@@ -531,6 +588,18 @@ func (o ApplicationGatewayOutput) HttpListeners() ApplicationGatewayHttpListener
 // The identity of the application gateway, if configured.
 func (o ApplicationGatewayOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *ApplicationGateway) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+func (o ApplicationGatewayOutput) Listeners() ApplicationGatewayListenerResponseArrayOutput {
+	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayListenerResponseArrayOutput { return v.Listeners }).(ApplicationGatewayListenerResponseArrayOutput)
+}
+
+// Load distribution policies of the application gateway resource.
+func (o ApplicationGatewayOutput) LoadDistributionPolicies() ApplicationGatewayLoadDistributionPolicyResponseArrayOutput {
+	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayLoadDistributionPolicyResponseArrayOutput {
+		return v.LoadDistributionPolicies
+	}).(ApplicationGatewayLoadDistributionPolicyResponseArrayOutput)
 }
 
 // Resource location.
@@ -596,6 +665,11 @@ func (o ApplicationGatewayOutput) RewriteRuleSets() ApplicationGatewayRewriteRul
 	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayRewriteRuleSetResponseArrayOutput {
 		return v.RewriteRuleSets
 	}).(ApplicationGatewayRewriteRuleSetResponseArrayOutput)
+}
+
+// Routing rules of the application gateway resource.
+func (o ApplicationGatewayOutput) RoutingRules() ApplicationGatewayRoutingRuleResponseArrayOutput {
+	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayRoutingRuleResponseArrayOutput { return v.RoutingRules }).(ApplicationGatewayRoutingRuleResponseArrayOutput)
 }
 
 // SKU of the application gateway resource.

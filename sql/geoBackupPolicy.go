@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A database geo backup policy.
-// API Version: 2014-04-01.
+// A Geo backup policy.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2014-04-01
 type GeoBackupPolicy struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +65,9 @@ func NewGeoBackupPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:GeoBackupPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:GeoBackupPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource GeoBackupPolicy
@@ -101,7 +104,7 @@ func (GeoBackupPolicyState) ElementType() reflect.Type {
 type geoBackupPolicyArgs struct {
 	// The name of the database.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the geo backup policy.
+	// The name of the Geo backup policy. This should always be 'Default'.
 	GeoBackupPolicyName *string `pulumi:"geoBackupPolicyName"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -115,7 +118,7 @@ type geoBackupPolicyArgs struct {
 type GeoBackupPolicyArgs struct {
 	// The name of the database.
 	DatabaseName pulumi.StringInput
-	// The name of the geo backup policy.
+	// The name of the Geo backup policy. This should always be 'Default'.
 	GeoBackupPolicyName pulumi.StringPtrInput
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput

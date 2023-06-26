@@ -12,7 +12,7 @@ import (
 )
 
 // A private endpoint connection class.
-// API Version: 2020-12-01-preview.
+// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2020-12-01-preview
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the PNS Credentials associated with a notification hub .
-// API Version: 2017-04-01.
+// Azure REST API version: 2017-04-01.
 func GetNotificationHubPnsCredentials(ctx *pulumi.Context, args *GetNotificationHubPnsCredentialsArgs, opts ...pulumi.InvokeOption) (*GetNotificationHubPnsCredentialsResult, error) {
 	var rv GetNotificationHubPnsCredentialsResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNotificationHubPnsCredentials", args, &rv, opts...)

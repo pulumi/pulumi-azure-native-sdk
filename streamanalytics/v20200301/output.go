@@ -12,8 +12,6 @@ import (
 )
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
-//
-// Deprecated: azure-native:streamanalytics/v20200301:Output is being removed in the next major version of this provider. Upgrade to at least azure-native:streamanalytics/v20211001preview:Output to guarantee forwards compatibility.
 type Output struct {
 	pulumi.CustomResourceState
 

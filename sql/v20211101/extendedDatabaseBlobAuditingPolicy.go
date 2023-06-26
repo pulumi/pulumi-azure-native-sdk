@@ -12,8 +12,6 @@ import (
 )
 
 // An extended database blob auditing policy.
-//
-// Deprecated: azure-native:sql/v20211101:ExtendedDatabaseBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ExtendedDatabaseBlobAuditingPolicy to guarantee forwards compatibility.
 type ExtendedDatabaseBlobAuditingPolicy struct {
 	pulumi.CustomResourceState
 
@@ -169,6 +167,9 @@ func NewExtendedDatabaseBlobAuditingPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ExtendedDatabaseBlobAuditingPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ExtendedDatabaseBlobAuditingPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

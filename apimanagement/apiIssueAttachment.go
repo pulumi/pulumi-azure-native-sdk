@@ -12,7 +12,7 @@ import (
 )
 
 // Issue Attachment Contract details.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01
 type ApiIssueAttachment struct {
 	pulumi.CustomResourceState
 
@@ -20,11 +20,11 @@ type ApiIssueAttachment struct {
 	Content pulumi.StringOutput `pulumi:"content"`
 	// Either 'link' if content is provided via an HTTP link or the MIME type of the Base64-encoded binary data provided in the 'content' property.
 	ContentFormat pulumi.StringOutput `pulumi:"contentFormat"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Filename by which the binary data will be saved.
 	Title pulumi.StringOutput `pulumi:"title"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -99,6 +99,9 @@ func NewApiIssueAttachment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiIssueAttachment"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiIssueAttachment"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiIssueAttachment
@@ -143,7 +146,7 @@ type apiIssueAttachmentArgs struct {
 	ContentFormat string `pulumi:"contentFormat"`
 	// Issue identifier. Must be unique in the current API Management service instance.
 	IssueId string `pulumi:"issueId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -163,7 +166,7 @@ type ApiIssueAttachmentArgs struct {
 	ContentFormat pulumi.StringInput
 	// Issue identifier. Must be unique in the current API Management service instance.
 	IssueId pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -218,7 +221,7 @@ func (o ApiIssueAttachmentOutput) ContentFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiIssueAttachment) pulumi.StringOutput { return v.ContentFormat }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ApiIssueAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiIssueAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -228,7 +231,7 @@ func (o ApiIssueAttachmentOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiIssueAttachment) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApiIssueAttachmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiIssueAttachment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

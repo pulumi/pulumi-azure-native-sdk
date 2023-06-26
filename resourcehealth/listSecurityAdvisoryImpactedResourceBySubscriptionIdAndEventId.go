@@ -11,7 +11,7 @@ import (
 )
 
 // Lists impacted resources in the subscription by an event (Security Advisory).
-// API Version: 2022-10-01-preview.
+// Azure REST API version: 2022-10-01.
 func ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId(ctx *pulumi.Context, args *ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs, opts ...pulumi.InvokeOption) (*ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult, error) {
 	var rv ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult
 	err := ctx.Invoke("azure-native:resourcehealth:listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId", args, &rv, opts...)

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the named public certificate for an app (or deployment slot, if specified).
-// API Version: 2020-12-01.
+// Description for Get the named public certificate for an app (or deployment slot, if specified).
+// Azure REST API version: 2022-09-01.
 func LookupWebAppPublicCertificateSlot(ctx *pulumi.Context, args *LookupWebAppPublicCertificateSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPublicCertificateSlotResult, error) {
 	var rv LookupWebAppPublicCertificateSlotResult
 	err := ctx.Invoke("azure-native:web:getWebAppPublicCertificateSlot", args, &rv, opts...)

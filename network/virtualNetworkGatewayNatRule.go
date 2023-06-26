@@ -12,7 +12,7 @@ import (
 )
 
 // VirtualNetworkGatewayNatRule Resource.
-// API Version: 2021-03-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01
 type VirtualNetworkGatewayNatRule struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +71,12 @@ func NewVirtualNetworkGatewayNatRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualNetworkGatewayNatRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualNetworkGatewayNatRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:VirtualNetworkGatewayNatRule"),
 		},
 	})
 	opts = append(opts, aliases)

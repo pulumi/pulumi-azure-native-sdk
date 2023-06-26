@@ -37,7 +37,7 @@ type GlobalSchedule struct {
 	TargetResourceId pulumi.StringPtrOutput `pulumi:"targetResourceId"`
 	// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
 	TaskType pulumi.StringPtrOutput `pulumi:"taskType"`
-	// The time zone ID (e.g. Pacific Standard time).
+	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId pulumi.StringPtrOutput `pulumi:"timeZoneId"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -124,7 +124,7 @@ type globalScheduleArgs struct {
 	TargetResourceId *string `pulumi:"targetResourceId"`
 	// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
 	TaskType *string `pulumi:"taskType"`
-	// The time zone ID (e.g. Pacific Standard time).
+	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
 	// If the schedule will occur only some days of the week, specify the weekly recurrence.
 	WeeklyRecurrence *WeekDetails `pulumi:"weeklyRecurrence"`
@@ -152,7 +152,7 @@ type GlobalScheduleArgs struct {
 	TargetResourceId pulumi.StringPtrInput
 	// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
 	TaskType pulumi.StringPtrInput
-	// The time zone ID (e.g. Pacific Standard time).
+	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId pulumi.StringPtrInput
 	// If the schedule will occur only some days of the week, specify the weekly recurrence.
 	WeeklyRecurrence WeekDetailsPtrInput
@@ -250,7 +250,7 @@ func (o GlobalScheduleOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalSchedule) pulumi.StringPtrOutput { return v.TaskType }).(pulumi.StringPtrOutput)
 }
 
-// The time zone ID (e.g. Pacific Standard time).
+// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 func (o GlobalScheduleOutput) TimeZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalSchedule) pulumi.StringPtrOutput { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }

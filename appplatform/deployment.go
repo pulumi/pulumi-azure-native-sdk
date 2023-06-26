@@ -12,7 +12,7 @@ import (
 )
 
 // Deployment resource payload
-// API Version: 2020-07-01.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-07-01
 type Deployment struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type Deployment struct {
 	Properties DeploymentResourcePropertiesResponseOutput `pulumi:"properties"`
 	// Sku of the Deployment resource
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -44,6 +46,9 @@ func NewDeployment(ctx *pulumi.Context,
 	}
 	if args.Properties != nil {
 		args.Properties = args.Properties.ToDeploymentResourcePropertiesPtrOutput().ApplyT(func(v *DeploymentResourceProperties) *DeploymentResourceProperties { return v.Defaults() }).(DeploymentResourcePropertiesPtrOutput)
+	}
+	if args.Sku != nil {
+		args.Sku = args.Sku.ToSkuPtrOutput().ApplyT(func(v *Sku) *Sku { return v.Defaults() }).(SkuPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -81,6 +86,12 @@ func NewDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:Deployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:Deployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:Deployment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -196,6 +207,11 @@ func (o DeploymentOutput) Properties() DeploymentResourcePropertiesResponseOutpu
 // Sku of the Deployment resource
 func (o DeploymentOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *Deployment) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o DeploymentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Deployment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

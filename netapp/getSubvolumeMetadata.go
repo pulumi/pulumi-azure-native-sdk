@@ -11,7 +11,7 @@ import (
 )
 
 // Get details of the specified subvolume
-// API Version: 2021-10-01.
+// Azure REST API version: 2022-11-01.
 func GetSubvolumeMetadata(ctx *pulumi.Context, args *GetSubvolumeMetadataArgs, opts ...pulumi.InvokeOption) (*GetSubvolumeMetadataResult, error) {
 	var rv GetSubvolumeMetadataResult
 	err := ctx.Invoke("azure-native:netapp:getSubvolumeMetadata", args, &rv, opts...)
@@ -26,7 +26,7 @@ type GetSubvolumeMetadataArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// The name of the capacity pool
 	PoolName string `pulumi:"poolName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the subvolume.
 	SubvolumeName string `pulumi:"subvolumeName"`
@@ -82,7 +82,7 @@ type GetSubvolumeMetadataOutputArgs struct {
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the capacity pool
 	PoolName pulumi.StringInput `pulumi:"poolName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the subvolume.
 	SubvolumeName pulumi.StringInput `pulumi:"subvolumeName"`

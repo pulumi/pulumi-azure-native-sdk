@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the details of the user provided function app registered with a static site build
-// API Version: 2020-12-01.
+// Description for Gets the details of the user provided function app registered with a static site build
+// Azure REST API version: 2022-09-01.
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Context, args *LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult, error) {
 	var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult
 	err := ctx.Invoke("azure-native:web:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Implements virtual machine template GET method.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview.
 func LookupVirtualMachineTemplate(ctx *pulumi.Context, args *LookupVirtualMachineTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineTemplateResult, error) {
 	var rv LookupVirtualMachineTemplateResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getVirtualMachineTemplate", args, &rv, opts...)

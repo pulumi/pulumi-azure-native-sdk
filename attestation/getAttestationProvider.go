@@ -11,7 +11,7 @@ import (
 )
 
 // Get the status of Attestation Provider.
-// API Version: 2020-10-01.
+// Azure REST API version: 2021-06-01.
 func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAttestationProviderResult, error) {
 	var rv LookupAttestationProviderResult
 	err := ctx.Invoke("azure-native:attestation:getAttestationProvider", args, &rv, opts...)
@@ -40,12 +40,16 @@ type LookupAttestationProviderResult struct {
 	Name string `pulumi:"name"`
 	// List of private endpoint connections associated with the attestation provider.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Status of attestation service.
 	Status *string `pulumi:"status"`
 	// The system metadata relating to this resource
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
+	TpmAttestationAuthentication *string `pulumi:"tpmAttestationAuthentication"`
 	// Trust model for the attestation provider.
 	TrustModel *string `pulumi:"trustModel"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -118,6 +122,11 @@ func (o LookupAttestationProviderResultOutput) PrivateEndpointConnections() Priv
 	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
+// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
+func (o LookupAttestationProviderResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAttestationProviderResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
 // Status of attestation service.
 func (o LookupAttestationProviderResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -131,6 +140,11 @@ func (o LookupAttestationProviderResultOutput) SystemData() SystemDataResponseOu
 // Resource tags.
 func (o LookupAttestationProviderResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
+func (o LookupAttestationProviderResultOutput) TpmAttestationAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAttestationProviderResult) *string { return v.TpmAttestationAuthentication }).(pulumi.StringPtrOutput)
 }
 
 // Trust model for the attestation provider.

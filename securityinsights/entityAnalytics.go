@@ -12,22 +12,22 @@ import (
 )
 
 // Settings with single toggle.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type EntityAnalytics struct {
 	pulumi.CustomResourceState
 
+	// The relevant entity providers that are synced
+	EntityProviders pulumi.StringArrayOutput `pulumi:"entityProviders"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
-	// Determines whether the setting is enable or disabled.
-	IsEnabled pulumi.BoolOutput `pulumi:"isEnabled"`
 	// The kind of the setting
 	// Expected value is 'EntityAnalytics'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -40,9 +40,6 @@ func NewEntityAnalytics(ctx *pulumi.Context,
 
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
-	}
-	if args.OperationalInsightsResourceProvider == nil {
-		return nil, errors.New("invalid value for required argument 'OperationalInsightsResourceProvider'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -98,7 +95,16 @@ func NewEntityAnalytics(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:EntityAnalytics"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:EntityAnalytics"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:EntityAnalytics"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:EntityAnalytics"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:EntityAnalytics"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -134,11 +140,11 @@ func (EntityAnalyticsState) ElementType() reflect.Type {
 }
 
 type entityAnalyticsArgs struct {
+	// The relevant entity providers that are synced
+	EntityProviders []string `pulumi:"entityProviders"`
 	// The kind of the setting
 	// Expected value is 'EntityAnalytics'.
 	Kind string `pulumi:"kind"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -149,11 +155,11 @@ type entityAnalyticsArgs struct {
 
 // The set of arguments for constructing a EntityAnalytics resource.
 type EntityAnalyticsArgs struct {
+	// The relevant entity providers that are synced
+	EntityProviders pulumi.StringArrayInput
 	// The kind of the setting
 	// Expected value is 'EntityAnalytics'.
 	Kind pulumi.StringInput
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
@@ -199,14 +205,14 @@ func (o EntityAnalyticsOutput) ToEntityAnalyticsOutputWithContext(ctx context.Co
 	return o
 }
 
+// The relevant entity providers that are synced
+func (o EntityAnalyticsOutput) EntityProviders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EntityAnalytics) pulumi.StringArrayOutput { return v.EntityProviders }).(pulumi.StringArrayOutput)
+}
+
 // Etag of the azure resource
 func (o EntityAnalyticsOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EntityAnalytics) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
-}
-
-// Determines whether the setting is enable or disabled.
-func (o EntityAnalyticsOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *EntityAnalytics) pulumi.BoolOutput { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
 // The kind of the setting
@@ -215,7 +221,7 @@ func (o EntityAnalyticsOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityAnalytics) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o EntityAnalyticsOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityAnalytics) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -225,7 +231,7 @@ func (o EntityAnalyticsOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *EntityAnalytics) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o EntityAnalyticsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityAnalytics) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

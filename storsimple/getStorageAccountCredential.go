@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified storage account credential name.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func LookupStorageAccountCredential(ctx *pulumi.Context, args *LookupStorageAccountCredentialArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountCredentialResult, error) {
 	var rv LookupStorageAccountCredentialResult
 	err := ctx.Invoke("azure-native:storsimple:getStorageAccountCredential", args, &rv, opts...)

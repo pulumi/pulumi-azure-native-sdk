@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the notification hubs associated with a namespace.
-// API Version: 2017-04-01.
+// Azure REST API version: 2017-04-01.
 func LookupNotificationHub(ctx *pulumi.Context, args *LookupNotificationHubArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubResult, error) {
 	var rv LookupNotificationHubResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNotificationHub", args, &rv, opts...)

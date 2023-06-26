@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the information about the volume resource with the given name. The information include the description and other properties of the volume.
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:servicefabricmesh:getVolume", args, &rv, opts...)

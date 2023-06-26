@@ -11,7 +11,7 @@ import (
 )
 
 // Response of a list operation.
-// API Version: 2021-03-01.
+// Azure REST API version: 2022-06-01.
 func ListMonitorLinkedResources(ctx *pulumi.Context, args *ListMonitorLinkedResourcesArgs, opts ...pulumi.InvokeOption) (*ListMonitorLinkedResourcesResult, error) {
 	var rv ListMonitorLinkedResourcesResult
 	err := ctx.Invoke("azure-native:datadog:listMonitorLinkedResources", args, &rv, opts...)

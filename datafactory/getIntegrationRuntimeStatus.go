@@ -11,7 +11,7 @@ import (
 )
 
 // Gets detailed status information for an integration runtime.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func GetIntegrationRuntimeStatus(ctx *pulumi.Context, args *GetIntegrationRuntimeStatusArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeStatusResult, error) {
 	var rv GetIntegrationRuntimeStatusResult
 	err := ctx.Invoke("azure-native:datafactory:getIntegrationRuntimeStatus", args, &rv, opts...)

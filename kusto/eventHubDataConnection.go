@@ -12,7 +12,7 @@ import (
 )
 
 // Class representing an event hub data connection.
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01
 type EventHubDataConnection struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type EventHubDataConnection struct {
 	ConsumerGroup pulumi.StringOutput `pulumi:"consumerGroup"`
 	// The data format of the message. Optionally the data format can be added to each message.
 	DataFormat pulumi.StringPtrOutput `pulumi:"dataFormat"`
+	// Indication for database routing information from the data connection, by default only database routing information is allowed
+	DatabaseRouting pulumi.StringPtrOutput `pulumi:"databaseRouting"`
 	// The resource ID of the event hub to be used to create a data connection.
 	EventHubResourceId pulumi.StringOutput `pulumi:"eventHubResourceId"`
 	// System properties of the event hub
@@ -31,6 +33,8 @@ type EventHubDataConnection struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// The object ID of the managedIdentityResourceId
+	ManagedIdentityObjectId pulumi.StringOutput `pulumi:"managedIdentityObjectId"`
 	// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
 	ManagedIdentityResourceId pulumi.StringPtrOutput `pulumi:"managedIdentityResourceId"`
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
@@ -39,6 +43,8 @@ type EventHubDataConnection struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioned state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
+	RetrievalStartDate pulumi.StringPtrOutput `pulumi:"retrievalStartDate"`
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName pulumi.StringPtrOutput `pulumi:"tableName"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -69,6 +75,9 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.DatabaseRouting == nil {
+		args.DatabaseRouting = pulumi.StringPtr("Single")
 	}
 	args.Kind = pulumi.String("EventHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
@@ -157,6 +166,8 @@ type eventHubDataConnectionArgs struct {
 	DataFormat *string `pulumi:"dataFormat"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
+	// Indication for database routing information from the data connection, by default only database routing information is allowed
+	DatabaseRouting *string `pulumi:"databaseRouting"`
 	// The resource ID of the event hub to be used to create a data connection.
 	EventHubResourceId string `pulumi:"eventHubResourceId"`
 	// System properties of the event hub
@@ -172,6 +183,8 @@ type eventHubDataConnectionArgs struct {
 	MappingRuleName *string `pulumi:"mappingRuleName"`
 	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
+	RetrievalStartDate *string `pulumi:"retrievalStartDate"`
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName *string `pulumi:"tableName"`
 }
@@ -190,6 +203,8 @@ type EventHubDataConnectionArgs struct {
 	DataFormat pulumi.StringPtrInput
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput
+	// Indication for database routing information from the data connection, by default only database routing information is allowed
+	DatabaseRouting pulumi.StringPtrInput
 	// The resource ID of the event hub to be used to create a data connection.
 	EventHubResourceId pulumi.StringInput
 	// System properties of the event hub
@@ -205,6 +220,8 @@ type EventHubDataConnectionArgs struct {
 	MappingRuleName pulumi.StringPtrInput
 	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput
+	// When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
+	RetrievalStartDate pulumi.StringPtrInput
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName pulumi.StringPtrInput
 }
@@ -261,6 +278,11 @@ func (o EventHubDataConnectionOutput) DataFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringPtrOutput { return v.DataFormat }).(pulumi.StringPtrOutput)
 }
 
+// Indication for database routing information from the data connection, by default only database routing information is allowed
+func (o EventHubDataConnectionOutput) DatabaseRouting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringPtrOutput { return v.DatabaseRouting }).(pulumi.StringPtrOutput)
+}
+
 // The resource ID of the event hub to be used to create a data connection.
 func (o EventHubDataConnectionOutput) EventHubResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringOutput { return v.EventHubResourceId }).(pulumi.StringOutput)
@@ -282,6 +304,11 @@ func (o EventHubDataConnectionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The object ID of the managedIdentityResourceId
+func (o EventHubDataConnectionOutput) ManagedIdentityObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringOutput { return v.ManagedIdentityObjectId }).(pulumi.StringOutput)
+}
+
 // The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
 func (o EventHubDataConnectionOutput) ManagedIdentityResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringPtrOutput { return v.ManagedIdentityResourceId }).(pulumi.StringPtrOutput)
@@ -300,6 +327,11 @@ func (o EventHubDataConnectionOutput) Name() pulumi.StringOutput {
 // The provisioned state of the resource.
 func (o EventHubDataConnectionOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
+func (o EventHubDataConnectionOutput) RetrievalStartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringPtrOutput { return v.RetrievalStartDate }).(pulumi.StringPtrOutput)
 }
 
 // The table where the data should be ingested. Optionally the table information can be added to each message.

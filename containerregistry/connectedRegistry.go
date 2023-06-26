@@ -12,7 +12,7 @@ import (
 )
 
 // An object that represents a connected registry for a container registry.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type ConnectedRegistry struct {
 	pulumi.CustomResourceState
 
@@ -32,6 +32,8 @@ type ConnectedRegistry struct {
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The list of notifications subscription information for the connected registry.
+	NotificationsList pulumi.StringArrayOutput `pulumi:"notificationsList"`
 	// The parent of the connected registry.
 	Parent ParentPropertiesResponseOutput `pulumi:"parent"`
 	// Provisioning state of the resource.
@@ -129,11 +131,13 @@ type connectedRegistryArgs struct {
 	Logging *LoggingProperties `pulumi:"logging"`
 	// The mode of the connected registry resource that indicates the permissions of the registry.
 	Mode string `pulumi:"mode"`
+	// The list of notifications subscription information for the connected registry.
+	NotificationsList []string `pulumi:"notificationsList"`
 	// The parent of the connected registry.
 	Parent ParentProperties `pulumi:"parent"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -147,11 +151,13 @@ type ConnectedRegistryArgs struct {
 	Logging LoggingPropertiesPtrInput
 	// The mode of the connected registry resource that indicates the permissions of the registry.
 	Mode pulumi.StringInput
+	// The list of notifications subscription information for the connected registry.
+	NotificationsList pulumi.StringArrayInput
 	// The parent of the connected registry.
 	Parent ParentPropertiesInput
 	// The name of the container registry.
 	RegistryName pulumi.StringInput
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -230,6 +236,11 @@ func (o ConnectedRegistryOutput) Mode() pulumi.StringOutput {
 // The name of the resource.
 func (o ConnectedRegistryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectedRegistry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of notifications subscription information for the connected registry.
+func (o ConnectedRegistryOutput) NotificationsList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectedRegistry) pulumi.StringArrayOutput { return v.NotificationsList }).(pulumi.StringArrayOutput)
 }
 
 // The parent of the connected registry.

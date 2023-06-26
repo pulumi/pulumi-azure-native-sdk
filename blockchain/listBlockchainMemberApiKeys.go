@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the API keys for a blockchain member.
-// API Version: 2018-06-01-preview.
+// Azure REST API version: 2018-06-01-preview.
 func ListBlockchainMemberApiKeys(ctx *pulumi.Context, args *ListBlockchainMemberApiKeysArgs, opts ...pulumi.InvokeOption) (*ListBlockchainMemberApiKeysResult, error) {
 	var rv ListBlockchainMemberApiKeysResult
 	err := ctx.Invoke("azure-native:blockchain:listBlockchainMemberApiKeys", args, &rv, opts...)

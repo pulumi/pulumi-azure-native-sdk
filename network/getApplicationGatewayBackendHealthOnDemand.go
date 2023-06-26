@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func GetApplicationGatewayBackendHealthOnDemand(ctx *pulumi.Context, args *GetApplicationGatewayBackendHealthOnDemandArgs, opts ...pulumi.InvokeOption) (*GetApplicationGatewayBackendHealthOnDemandResult, error) {
 	var rv GetApplicationGatewayBackendHealthOnDemandResult
 	err := ctx.Invoke("azure-native:network:getApplicationGatewayBackendHealthOnDemand", args, &rv, opts...)

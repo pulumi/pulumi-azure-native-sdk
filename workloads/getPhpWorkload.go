@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the PHP workload resource.
-// API Version: 2021-12-01-preview.
+// Azure REST API version: 2021-12-01-preview.
 func LookupPhpWorkload(ctx *pulumi.Context, args *LookupPhpWorkloadArgs, opts ...pulumi.InvokeOption) (*LookupPhpWorkloadResult, error) {
 	var rv LookupPhpWorkloadResult
 	err := ctx.Invoke("azure-native:workloads:getPhpWorkload", args, &rv, opts...)

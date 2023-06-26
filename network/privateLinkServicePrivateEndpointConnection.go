@@ -12,7 +12,7 @@ import (
 )
 
 // PrivateEndpointConnection resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type PrivateLinkServicePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type PrivateLinkServicePrivateEndpointConnection struct {
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// The resource of private end point.
 	PrivateEndpoint PrivateEndpointResponseOutput `pulumi:"privateEndpoint"`
+	// The location of the private endpoint.
+	PrivateEndpointLocation pulumi.StringOutput `pulumi:"privateEndpointLocation"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponsePtrOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
@@ -99,6 +101,12 @@ func NewPrivateLinkServicePrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:PrivateLinkServicePrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:PrivateLinkServicePrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:PrivateLinkServicePrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -221,6 +229,13 @@ func (o PrivateLinkServicePrivateEndpointConnectionOutput) PrivateEndpoint() Pri
 	return o.ApplyT(func(v *PrivateLinkServicePrivateEndpointConnection) PrivateEndpointResponseOutput {
 		return v.PrivateEndpoint
 	}).(PrivateEndpointResponseOutput)
+}
+
+// The location of the private endpoint.
+func (o PrivateLinkServicePrivateEndpointConnectionOutput) PrivateEndpointLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLinkServicePrivateEndpointConnection) pulumi.StringOutput {
+		return v.PrivateEndpointLocation
+	}).(pulumi.StringOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.

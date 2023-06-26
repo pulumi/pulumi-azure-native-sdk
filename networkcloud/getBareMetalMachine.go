@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of the provided bare metal machine.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupBareMetalMachine(ctx *pulumi.Context, args *LookupBareMetalMachineArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalMachineResult, error) {
 	var rv LookupBareMetalMachineResult
 	err := ctx.Invoke("azure-native:networkcloud:getBareMetalMachine", args, &rv, opts...)
@@ -29,6 +29,8 @@ type LookupBareMetalMachineArgs struct {
 }
 
 type LookupBareMetalMachineResult struct {
+	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+	AssociatedResourceIds []string `pulumi:"associatedResourceIds"`
 	// The connection string for the baseboard management controller including IP address and protocol.
 	BmcConnectionString string `pulumi:"bmcConnectionString"`
 	// The credentials of the baseboard management controller on this bare metal machine.
@@ -51,9 +53,9 @@ type LookupBareMetalMachineResult struct {
 	HardwareInventory HardwareInventoryResponse `pulumi:"hardwareInventory"`
 	// The details of the latest hardware validation performed for this bare metal machine.
 	HardwareValidationStatus HardwareValidationStatusResponse `pulumi:"hardwareValidationStatus"`
-	// The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
+	// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
 	HybridAksClustersAssociatedIds []string `pulumi:"hybridAksClustersAssociatedIds"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of this machine represented by the host object in the Cluster's Kubernetes control plane.
 	KubernetesNodeName string `pulumi:"kubernetesNodeName"`
@@ -95,7 +97,7 @@ type LookupBareMetalMachineResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
+	// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
 	VirtualMachinesAssociatedIds []string `pulumi:"virtualMachinesAssociatedIds"`
 }
 
@@ -135,6 +137,11 @@ func (o LookupBareMetalMachineResultOutput) ToLookupBareMetalMachineResultOutput
 
 func (o LookupBareMetalMachineResultOutput) ToLookupBareMetalMachineResultOutputWithContext(ctx context.Context) LookupBareMetalMachineResultOutput {
 	return o
+}
+
+// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+func (o LookupBareMetalMachineResultOutput) AssociatedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBareMetalMachineResult) []string { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
 }
 
 // The connection string for the baseboard management controller including IP address and protocol.
@@ -194,12 +201,12 @@ func (o LookupBareMetalMachineResultOutput) HardwareValidationStatus() HardwareV
 	}).(HardwareValidationStatusResponseOutput)
 }
 
-// The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
+// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
 func (o LookupBareMetalMachineResultOutput) HybridAksClustersAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBareMetalMachineResult) []string { return v.HybridAksClustersAssociatedIds }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBareMetalMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -304,7 +311,7 @@ func (o LookupBareMetalMachineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalMachineResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
+// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
 func (o LookupBareMetalMachineResultOutput) VirtualMachinesAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBareMetalMachineResult) []string { return v.VirtualMachinesAssociatedIds }).(pulumi.StringArrayOutput)
 }

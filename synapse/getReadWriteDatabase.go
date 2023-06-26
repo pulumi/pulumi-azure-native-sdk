@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a database.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2021-06-01-preview.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
 	var rv LookupReadWriteDatabaseResult
 	err := ctx.Invoke("azure-native:synapse:getReadWriteDatabase", args, &rv, opts...)
@@ -28,7 +28,7 @@ type LookupReadWriteDatabaseArgs struct {
 	KustoPoolName string `pulumi:"kustoPoolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -79,7 +79,7 @@ type LookupReadWriteDatabaseOutputArgs struct {
 	KustoPoolName pulumi.StringInput `pulumi:"kustoPoolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 

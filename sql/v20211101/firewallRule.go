@@ -12,8 +12,6 @@ import (
 )
 
 // A server firewall rule.
-//
-// Deprecated: azure-native:sql/v20211101:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +77,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

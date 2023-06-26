@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of a partner destination.
-// API Version: 2021-10-15-preview.
+// Azure REST API version: 2023-06-01-preview.
 func LookupPartnerDestination(ctx *pulumi.Context, args *LookupPartnerDestinationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerDestinationResult, error) {
 	var rv LookupPartnerDestinationResult
 	err := ctx.Invoke("azure-native:eventgrid:getPartnerDestination", args, &rv, opts...)
@@ -50,7 +50,7 @@ type LookupPartnerDestinationResult struct {
 	// The immutable Id of the corresponding partner registration.
 	PartnerRegistrationImmutableId *string `pulumi:"partnerRegistrationImmutableId"`
 	// Provisioning state of the partner destination.
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// The system metadata relating to Partner Destination resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
@@ -145,8 +145,8 @@ func (o LookupPartnerDestinationResultOutput) PartnerRegistrationImmutableId() p
 }
 
 // Provisioning state of the partner destination.
-func (o LookupPartnerDestinationResultOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPartnerDestinationResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o LookupPartnerDestinationResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPartnerDestinationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The system metadata relating to Partner Destination resource.

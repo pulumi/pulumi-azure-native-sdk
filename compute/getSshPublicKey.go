@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about an SSH public key.
-// API Version: 2020-12-01.
+// Azure REST API version: 2023-03-01.
 func LookupSshPublicKey(ctx *pulumi.Context, args *LookupSshPublicKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshPublicKeyResult, error) {
 	var rv LookupSshPublicKeyResult
 	err := ctx.Invoke("azure-native:compute:getSshPublicKey", args, &rv, opts...)

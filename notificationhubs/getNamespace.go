@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the description for the specified namespace.
-// API Version: 2017-04-01.
+// Azure REST API version: 2017-04-01.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	var rv LookupNamespaceResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNamespace", args, &rv, opts...)

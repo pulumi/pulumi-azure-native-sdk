@@ -12,8 +12,6 @@ import (
 )
 
 // Config Server resource
-//
-// Deprecated: azure-native:appplatform/v20221201:ConfigServer is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ConfigServer to guarantee forwards compatibility.
 type ConfigServer struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +74,12 @@ func NewConfigServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:ConfigServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ConfigServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ConfigServer"),
 		},
 	})
 	opts = append(opts, aliases)

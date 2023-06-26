@@ -22,54 +22,11 @@ const (
 	ChartTypeTable         = ChartType("Table")
 )
 
-// Days of Week.
-type DaysOfWeek string
-
-const (
-	DaysOfWeekMonday    = DaysOfWeek("Monday")
-	DaysOfWeekTuesday   = DaysOfWeek("Tuesday")
-	DaysOfWeekWednesday = DaysOfWeek("Wednesday")
-	DaysOfWeekThursday  = DaysOfWeek("Thursday")
-	DaysOfWeekFriday    = DaysOfWeek("Friday")
-	DaysOfWeekSaturday  = DaysOfWeek("Saturday")
-	DaysOfWeekSunday    = DaysOfWeek("Sunday")
-)
-
-// The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
-type ExportType string
-
-const (
-	ExportTypeUsage         = ExportType("Usage")
-	ExportTypeActualCost    = ExportType("ActualCost")
-	ExportTypeAmortizedCost = ExportType("AmortizedCost")
-)
-
-// Destination of the view data. Currently only CSV format is supported.
-type FileFormat string
-
-const (
-	FileFormatCsv = FileFormat("Csv")
-)
-
-// The format of the export being delivered. Currently only 'Csv' is supported.
-type FormatType string
-
-const (
-	FormatTypeCsv = FormatType("Csv")
-)
-
 // The name of the aggregation function to use.
 type FunctionType string
 
 const (
 	FunctionTypeSum = FunctionType("Sum")
-)
-
-// The granularity of rows in the export. Currently only 'Daily' is supported.
-type GranularityType string
-
-const (
-	GranularityTypeDaily = GranularityType("Daily")
 )
 
 // KPI type (Forecast, Budget).
@@ -115,16 +72,6 @@ const (
 	QueryColumnTypeDimension = QueryColumnType("Dimension")
 )
 
-// The schedule recurrence.
-type RecurrenceType string
-
-const (
-	RecurrenceTypeDaily    = RecurrenceType("Daily")
-	RecurrenceTypeWeekly   = RecurrenceType("Weekly")
-	RecurrenceTypeMonthly  = RecurrenceType("Monthly")
-	RecurrenceTypeAnnually = RecurrenceType("Annually")
-)
-
 // Direction of sort.
 type ReportConfigSortingType string
 
@@ -156,71 +103,6 @@ type ReportType string
 
 const (
 	ReportTypeUsage = ReportType("Usage")
-)
-
-// Frequency of the schedule.
-type ScheduleFrequency string
-
-const (
-	// Cost analysis data will be emailed every day.
-	ScheduleFrequencyDaily = ScheduleFrequency("Daily")
-	// Cost analysis data will be emailed every week.
-	ScheduleFrequencyWeekly = ScheduleFrequency("Weekly")
-	// Cost analysis data will be emailed every month.
-	ScheduleFrequencyMonthly = ScheduleFrequency("Monthly")
-)
-
-// Kind of the scheduled action.
-type ScheduledActionKind string
-
-const (
-	// Cost analysis data will be emailed.
-	ScheduledActionKindEmail = ScheduledActionKind("Email")
-	// Cost anomaly information will be emailed. Available only on subscription scope at daily frequency. If no anomaly is detected on the resource, an email won't be sent.
-	ScheduledActionKindInsightAlert = ScheduledActionKind("InsightAlert")
-)
-
-// Status of the scheduled action.
-type ScheduledActionStatus string
-
-const (
-	// Scheduled action is saved but will not be run.
-	ScheduledActionStatusDisabled = ScheduledActionStatus("Disabled")
-	// Scheduled action is saved and will be run.
-	ScheduledActionStatusEnabled = ScheduledActionStatus("Enabled")
-	// Scheduled action is expired.
-	ScheduledActionStatusExpired = ScheduledActionStatus("Expired")
-)
-
-// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-type StatusType string
-
-const (
-	StatusTypeActive   = StatusType("Active")
-	StatusTypeInactive = StatusType("Inactive")
-)
-
-// The time frame for pulling data for the export. If custom, then a specific time period must be provided.
-type TimeframeType string
-
-const (
-	TimeframeTypeMonthToDate         = TimeframeType("MonthToDate")
-	TimeframeTypeBillingMonthToDate  = TimeframeType("BillingMonthToDate")
-	TimeframeTypeTheLastMonth        = TimeframeType("TheLastMonth")
-	TimeframeTypeTheLastBillingMonth = TimeframeType("TheLastBillingMonth")
-	TimeframeTypeWeekToDate          = TimeframeType("WeekToDate")
-	TimeframeTypeCustom              = TimeframeType("Custom")
-)
-
-// Weeks of month.
-type WeeksOfMonth string
-
-const (
-	WeeksOfMonthFirst  = WeeksOfMonth("First")
-	WeeksOfMonthSecond = WeeksOfMonth("Second")
-	WeeksOfMonthThird  = WeeksOfMonth("Third")
-	WeeksOfMonthFourth = WeeksOfMonth("Fourth")
-	WeeksOfMonthLast   = WeeksOfMonth("Last")
 )
 
 func init() {

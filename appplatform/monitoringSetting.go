@@ -12,7 +12,7 @@ import (
 )
 
 // Monitoring Setting resource
-// API Version: 2020-07-01.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-07-01
 type MonitoringSetting struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +20,8 @@ type MonitoringSetting struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the Monitoring Setting resource
 	Properties MonitoringSettingPropertiesResponseOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -73,6 +75,12 @@ func NewMonitoringSetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:MonitoringSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:MonitoringSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:MonitoringSetting"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -171,6 +179,11 @@ func (o MonitoringSettingOutput) Name() pulumi.StringOutput {
 // Properties of the Monitoring Setting resource
 func (o MonitoringSettingOutput) Properties() MonitoringSettingPropertiesResponseOutput {
 	return o.ApplyT(func(v *MonitoringSetting) MonitoringSettingPropertiesResponseOutput { return v.Properties }).(MonitoringSettingPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o MonitoringSettingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MonitoringSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

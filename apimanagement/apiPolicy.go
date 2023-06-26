@@ -12,15 +12,15 @@ import (
 )
 
 // Policy Contract details.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01
 type ApiPolicy struct {
 	pulumi.CustomResourceState
 
 	// Format of the policyContent.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Contents of the Policy as defined by the format.
 	Value pulumi.StringOutput `pulumi:"value"`
@@ -91,6 +91,9 @@ func NewApiPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:ApiPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ApiPolicy
@@ -131,7 +134,7 @@ type apiPolicyArgs struct {
 	Format *string `pulumi:"format"`
 	// The identifier of the Policy.
 	PolicyId *string `pulumi:"policyId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -147,7 +150,7 @@ type ApiPolicyArgs struct {
 	Format pulumi.StringPtrInput
 	// The identifier of the Policy.
 	PolicyId pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -197,12 +200,12 @@ func (o ApiPolicyOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiPolicy) pulumi.StringPtrOutput { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ApiPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApiPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiPolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure SQL Database sync agent.
-//
-// Deprecated: azure-native:sql/v20211101:SyncAgent is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:SyncAgent to guarantee forwards compatibility.
 type SyncAgent struct {
 	pulumi.CustomResourceState
 
@@ -84,6 +82,9 @@ func NewSyncAgent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:SyncAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:SyncAgent"),
 		},
 	})
 	opts = append(opts, aliases)

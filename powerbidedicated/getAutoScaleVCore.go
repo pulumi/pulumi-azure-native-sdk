@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details about the specified auto scale v-core.
-// API Version: 2021-01-01.
+// Azure REST API version: 2021-01-01.
 func LookupAutoScaleVCore(ctx *pulumi.Context, args *LookupAutoScaleVCoreArgs, opts ...pulumi.InvokeOption) (*LookupAutoScaleVCoreResult, error) {
 	var rv LookupAutoScaleVCoreResult
 	err := ctx.Invoke("azure-native:powerbidedicated:getAutoScaleVCore", args, &rv, opts...)

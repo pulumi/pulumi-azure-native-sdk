@@ -12,8 +12,6 @@ import (
 )
 
 // A failover group.
-//
-// Deprecated: azure-native:sql/v20211101:FailoverGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:FailoverGroup to guarantee forwards compatibility.
 type FailoverGroup struct {
 	pulumi.CustomResourceState
 
@@ -94,6 +92,9 @@ func NewFailoverGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:FailoverGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:FailoverGroup"),
 		},
 	})
 	opts = append(opts, aliases)

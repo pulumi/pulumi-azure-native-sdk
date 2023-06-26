@@ -12,8 +12,6 @@ import (
 )
 
 // An IPv6 server firewall rule.
-//
-// Deprecated: azure-native:sql/v20211101:IPv6FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:IPv6FirewallRule to guarantee forwards compatibility.
 type IPv6FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +56,9 @@ func NewIPv6FirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:IPv6FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:IPv6FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

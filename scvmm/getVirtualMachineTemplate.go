@@ -11,7 +11,7 @@ import (
 )
 
 // Implements VirtualMachineTemplate GET method.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview.
 func LookupVirtualMachineTemplate(ctx *pulumi.Context, args *LookupVirtualMachineTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineTemplateResult, error) {
 	var rv LookupVirtualMachineTemplateResult
 	err := ctx.Invoke("azure-native:scvmm:getVirtualMachineTemplate", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 )
 
 // The storageSpaces resource definition.
-// API Version: 2022-05-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-05-01-preview
 type StorageSpaceRetrieve struct {
 	pulumi.CustomResourceState
 
@@ -43,12 +43,24 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:storageSpaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:StorageSpaceRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:storageSpaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:StorageSpaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:storageSpaceRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageSpaceRetrieve
-	err := ctx.RegisterResource("azure-native:hybridcontainerservice:storageSpaceRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:hybridcontainerservice:StorageSpaceRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +72,7 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 func GetStorageSpaceRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *StorageSpaceRetrieveState, opts ...pulumi.ResourceOption) (*StorageSpaceRetrieve, error) {
 	var resource StorageSpaceRetrieve
-	err := ctx.ReadResource("azure-native:hybridcontainerservice:storageSpaceRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:hybridcontainerservice:StorageSpaceRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

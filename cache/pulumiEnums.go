@@ -26,6 +26,14 @@ const (
 	ClusteringPolicyOSSCluster        = ClusteringPolicy("OSSCluster")
 )
 
+// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
+type CmkIdentityType string
+
+const (
+	CmkIdentityTypeSystemAssignedIdentity = CmkIdentityType("systemAssignedIdentity")
+	CmkIdentityTypeUserAssignedIdentity   = CmkIdentityType("userAssignedIdentity")
+)
+
 // Day of the week when a cache can be patched.
 type DayOfWeek string
 
@@ -210,6 +218,16 @@ const (
 	EvictionPolicyVolatileTTL    = EvictionPolicy("VolatileTTL")
 	EvictionPolicyVolatileRandom = EvictionPolicy("VolatileRandom")
 	EvictionPolicyNoEviction     = EvictionPolicy("NoEviction")
+)
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+type ManagedServiceIdentityType string
+
+const (
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned, UserAssigned")
 )
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.

@@ -11,7 +11,7 @@ import (
 )
 
 // Get the API portal and its properties.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2022-12-01.
 func LookupApiPortal(ctx *pulumi.Context, args *LookupApiPortalArgs, opts ...pulumi.InvokeOption) (*LookupApiPortalResult, error) {
 	var rv LookupApiPortalResult
 	err := ctx.Invoke("azure-native:appplatform:getApiPortal", args, &rv, opts...)
@@ -53,6 +53,8 @@ func (val *LookupApiPortalResult) Defaults() *LookupApiPortalResult {
 	}
 	tmp := *val
 	tmp.Properties = *tmp.Properties.Defaults()
+
+	tmp.Sku = tmp.Sku.Defaults()
 
 	return &tmp
 }

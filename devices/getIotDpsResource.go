@@ -11,7 +11,7 @@ import (
 )
 
 // Get the metadata of the provisioning service without SAS keys.
-// API Version: 2020-03-01.
+// Azure REST API version: 2022-12-12.
 func LookupIotDpsResource(ctx *pulumi.Context, args *LookupIotDpsResourceArgs, opts ...pulumi.InvokeOption) (*LookupIotDpsResourceResult, error) {
 	var rv LookupIotDpsResourceResult
 	err := ctx.Invoke("azure-native:devices:getIotDpsResource", args, &rv, opts...)
@@ -40,8 +40,14 @@ type LookupIotDpsResourceResult struct {
 	Name string `pulumi:"name"`
 	// Service specific properties for a provisioning service
 	Properties IotDpsPropertiesDescriptionResponse `pulumi:"properties"`
+	// The resource group of the resource.
+	Resourcegroup *string `pulumi:"resourcegroup"`
 	// Sku info for a provisioning Service.
 	Sku IotDpsSkuInfoResponse `pulumi:"sku"`
+	// The subscription id of the resource.
+	Subscriptionid *string `pulumi:"subscriptionid"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -112,9 +118,24 @@ func (o LookupIotDpsResourceResultOutput) Properties() IotDpsPropertiesDescripti
 	return o.ApplyT(func(v LookupIotDpsResourceResult) IotDpsPropertiesDescriptionResponse { return v.Properties }).(IotDpsPropertiesDescriptionResponseOutput)
 }
 
+// The resource group of the resource.
+func (o LookupIotDpsResourceResultOutput) Resourcegroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupIotDpsResourceResult) *string { return v.Resourcegroup }).(pulumi.StringPtrOutput)
+}
+
 // Sku info for a provisioning Service.
 func (o LookupIotDpsResourceResultOutput) Sku() IotDpsSkuInfoResponseOutput {
 	return o.ApplyT(func(v LookupIotDpsResourceResult) IotDpsSkuInfoResponse { return v.Sku }).(IotDpsSkuInfoResponseOutput)
+}
+
+// The subscription id of the resource.
+func (o LookupIotDpsResourceResultOutput) Subscriptionid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupIotDpsResourceResult) *string { return v.Subscriptionid }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupIotDpsResourceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIotDpsResourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

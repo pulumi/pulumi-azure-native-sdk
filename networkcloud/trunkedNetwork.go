@@ -11,10 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
 type TrunkedNetwork struct {
 	pulumi.CustomResourceState
 
+	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+	AssociatedResourceIds pulumi.StringArrayOutput `pulumi:"associatedResourceIds"`
 	// The resource ID of the Network Cloud cluster this trunked network is associated with.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The more detailed status of the trunked network.
@@ -23,9 +25,9 @@ type TrunkedNetwork struct {
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
-	// The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
+	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
 	HybridAksClustersAssociatedIds pulumi.StringArrayOutput `pulumi:"hybridAksClustersAssociatedIds"`
-	// The network plugin type for Hybrid AKS.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 	HybridAksPluginType pulumi.StringPtrOutput `pulumi:"hybridAksPluginType"`
 	// The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
 	InterfaceName pulumi.StringPtrOutput `pulumi:"interfaceName"`
@@ -43,7 +45,7 @@ type TrunkedNetwork struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
+	// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
 	VirtualMachinesAssociatedIds pulumi.StringArrayOutput `pulumi:"virtualMachinesAssociatedIds"`
 	// The list of vlans that are selected from the isolation domains for trunking.
 	Vlans pulumi.Float64ArrayOutput `pulumi:"vlans"`
@@ -74,6 +76,9 @@ func NewTrunkedNetwork(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:TrunkedNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230501preview:TrunkedNetwork"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -111,7 +116,7 @@ func (TrunkedNetworkState) ElementType() reflect.Type {
 type trunkedNetworkArgs struct {
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
-	// The network plugin type for Hybrid AKS.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 	HybridAksPluginType *string `pulumi:"hybridAksPluginType"`
 	// The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
 	InterfaceName *string `pulumi:"interfaceName"`
@@ -133,7 +138,7 @@ type trunkedNetworkArgs struct {
 type TrunkedNetworkArgs struct {
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationInput
-	// The network plugin type for Hybrid AKS.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 	HybridAksPluginType pulumi.StringPtrInput
 	// The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
 	InterfaceName pulumi.StringPtrInput
@@ -188,6 +193,11 @@ func (o TrunkedNetworkOutput) ToTrunkedNetworkOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+func (o TrunkedNetworkOutput) AssociatedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringArrayOutput { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
+}
+
 // The resource ID of the Network Cloud cluster this trunked network is associated with.
 func (o TrunkedNetworkOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
@@ -208,12 +218,12 @@ func (o TrunkedNetworkOutput) ExtendedLocation() ExtendedLocationResponseOutput 
 	return o.ApplyT(func(v *TrunkedNetwork) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
+// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
 func (o TrunkedNetworkOutput) HybridAksClustersAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringArrayOutput { return v.HybridAksClustersAssociatedIds }).(pulumi.StringArrayOutput)
 }
 
-// The network plugin type for Hybrid AKS.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 func (o TrunkedNetworkOutput) HybridAksPluginType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringPtrOutput { return v.HybridAksPluginType }).(pulumi.StringPtrOutput)
 }
@@ -258,7 +268,7 @@ func (o TrunkedNetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
+// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
 func (o TrunkedNetworkOutput) VirtualMachinesAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringArrayOutput { return v.VirtualMachinesAssociatedIds }).(pulumi.StringArrayOutput)
 }
