@@ -67,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppDomainOwnershipIdentifier{}
 	case "azure-native:web/v20200601:WebAppDomainOwnershipIdentifierSlot":
 		r = &WebAppDomainOwnershipIdentifierSlot{}
+	case "azure-native:web/v20200601:WebAppFtpAllowed":
+		r = &WebAppFtpAllowed{}
 	case "azure-native:web/v20200601:WebAppFunction":
 		r = &WebAppFunction{}
 	case "azure-native:web/v20200601:WebAppHostNameBinding":
@@ -97,6 +99,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppRelayServiceConnection{}
 	case "azure-native:web/v20200601:WebAppRelayServiceConnectionSlot":
 		r = &WebAppRelayServiceConnectionSlot{}
+	case "azure-native:web/v20200601:WebAppScmAllowed":
+		r = &WebAppScmAllowed{}
 	case "azure-native:web/v20200601:WebAppSiteExtension":
 		r = &WebAppSiteExtension{}
 	case "azure-native:web/v20200601:WebAppSiteExtensionSlot":
