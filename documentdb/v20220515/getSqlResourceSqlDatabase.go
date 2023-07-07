@@ -12,7 +12,7 @@ import (
 
 // Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
 //
-// Deprecated: azure-native:documentdb/v20220515:SqlResourceSqlDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:SqlResourceSqlDatabase to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20220515:SqlResourceSqlDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:SqlResourceSqlDatabase to guarantee forwards compatibility.
 func LookupSqlResourceSqlDatabase(ctx *pulumi.Context, args *LookupSqlResourceSqlDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlDatabaseResult, error) {
 	var rv LookupSqlResourceSqlDatabaseResult
 	err := ctx.Invoke("azure-native:documentdb/v20220515:getSqlResourceSqlDatabase", args, &rv, opts...)

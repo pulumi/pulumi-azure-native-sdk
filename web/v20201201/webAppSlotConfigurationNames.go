@@ -12,6 +12,8 @@ import (
 )
 
 // Slot Config names azure resource.
+//
+// Deprecated: azure-native:web/v20201201:WebAppSlotConfigurationNames is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSlotConfigurationNames to guarantee forwards compatibility.
 type WebAppSlotConfigurationNames struct {
 	pulumi.CustomResourceState
 

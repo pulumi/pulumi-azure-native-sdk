@@ -11,6 +11,8 @@ import (
 )
 
 // This operation retrieves a single policy exemption, given its name and the scope it was created at.
+//
+// Deprecated: azure-native:authorization/v20200701preview:PolicyExemption is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20220701preview:PolicyExemption to guarantee forwards compatibility.
 func LookupPolicyExemption(ctx *pulumi.Context, args *LookupPolicyExemptionArgs, opts ...pulumi.InvokeOption) (*LookupPolicyExemptionResult, error) {
 	var rv LookupPolicyExemptionResult
 	err := ctx.Invoke("azure-native:authorization/v20200701preview:getPolicyExemption", args, &rv, opts...)

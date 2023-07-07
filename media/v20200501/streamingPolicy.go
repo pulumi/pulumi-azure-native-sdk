@@ -12,6 +12,8 @@ import (
 )
 
 // A Streaming Policy resource
+//
+// Deprecated: azure-native:media/v20200501:StreamingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:StreamingPolicy to guarantee forwards compatibility.
 type StreamingPolicy struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Role Assignments
+//
+// Deprecated: azure-native:authorization/v20201001preview:RoleAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20220401:RoleAssignment to guarantee forwards compatibility.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 

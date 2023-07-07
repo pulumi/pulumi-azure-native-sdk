@@ -12,7 +12,7 @@ import (
 
 // A node pool snapshot resource.
 //
-// Deprecated: azure-native:containerservice/v20220702preview:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:Snapshot to guarantee forwards compatibility.
+// Deprecated: azure-native:containerservice/v20220702preview:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:Snapshot to guarantee forwards compatibility.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("azure-native:containerservice/v20220702preview:getSnapshot", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Registered Server resource.
+//
+// Deprecated: azure-native:storagesync/v20200301:RegisteredServer is being removed in the next major version of this provider. Upgrade to at least azure-native:storagesync/v20220601:RegisteredServer to guarantee forwards compatibility.
 type RegisteredServer struct {
 	pulumi.CustomResourceState
 

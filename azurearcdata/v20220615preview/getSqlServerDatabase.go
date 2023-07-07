@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves an Arc Sql Server database.
+//
+// Deprecated: azure-native:azurearcdata/v20220615preview:SqlServerDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20230115preview:SqlServerDatabase to guarantee forwards compatibility.
 func LookupSqlServerDatabase(ctx *pulumi.Context, args *LookupSqlServerDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerDatabaseResult, error) {
 	var rv LookupSqlServerDatabaseResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20220615preview:getSqlServerDatabase", args, &rv, opts...)

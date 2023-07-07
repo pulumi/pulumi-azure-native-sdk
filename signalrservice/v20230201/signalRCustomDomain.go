@@ -12,6 +12,8 @@ import (
 )
 
 // A custom domain
+//
+// Deprecated: azure-native:signalrservice/v20230201:SignalRCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRCustomDomain to guarantee forwards compatibility.
 type SignalRCustomDomain struct {
 	pulumi.CustomResourceState
 

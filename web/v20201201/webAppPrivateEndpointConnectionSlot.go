@@ -12,6 +12,8 @@ import (
 )
 
 // Remote Private Endpoint Connection ARM resource.
+//
+// Deprecated: azure-native:web/v20201201:WebAppPrivateEndpointConnectionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppPrivateEndpointConnectionSlot to guarantee forwards compatibility.
 type WebAppPrivateEndpointConnectionSlot struct {
 	pulumi.CustomResourceState
 

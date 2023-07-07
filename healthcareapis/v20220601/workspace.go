@@ -13,7 +13,7 @@ import (
 
 // Workspace resource.
 //
-// Deprecated: azure-native:healthcareapis/v20220601:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:Workspace to guarantee forwards compatibility.
+// Deprecated: azure-native:healthcareapis/v20220601:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 

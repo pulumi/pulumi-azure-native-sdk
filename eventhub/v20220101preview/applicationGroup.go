@@ -12,6 +12,8 @@ import (
 )
 
 // The Application Group object
+//
+// Deprecated: azure-native:eventhub/v20220101preview:ApplicationGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:ApplicationGroup to guarantee forwards compatibility.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 

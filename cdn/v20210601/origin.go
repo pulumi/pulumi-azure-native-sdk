@@ -13,7 +13,7 @@ import (
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 //
-// Deprecated: azure-native:cdn/v20210601:Origin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Origin to guarantee forwards compatibility.
+// Deprecated: azure-native:cdn/v20210601:Origin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Origin to guarantee forwards compatibility.
 type Origin struct {
 	pulumi.CustomResourceState
 

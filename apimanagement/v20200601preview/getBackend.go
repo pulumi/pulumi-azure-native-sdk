@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the backend specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20200601preview:Backend is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Backend to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20200601preview:Backend is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Backend to guarantee forwards compatibility.
 func LookupBackend(ctx *pulumi.Context, args *LookupBackendArgs, opts ...pulumi.InvokeOption) (*LookupBackendResult, error) {
 	var rv LookupBackendResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:getBackend", args, &rv, opts...)

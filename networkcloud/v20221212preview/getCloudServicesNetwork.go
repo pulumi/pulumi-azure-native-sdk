@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided cloud services network.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:CloudServicesNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:CloudServicesNetwork to guarantee forwards compatibility.
 func LookupCloudServicesNetwork(ctx *pulumi.Context, args *LookupCloudServicesNetworkArgs, opts ...pulumi.InvokeOption) (*LookupCloudServicesNetworkResult, error) {
 	var rv LookupCloudServicesNetworkResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getCloudServicesNetwork", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Registration definition.
+//
+// Deprecated: azure-native:managedservices/v20190901:RegistrationDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:managedservices/v20221001:RegistrationDefinition to guarantee forwards compatibility.
 type RegistrationDefinition struct {
 	pulumi.CustomResourceState
 

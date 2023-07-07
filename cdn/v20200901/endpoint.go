@@ -12,6 +12,8 @@ import (
 )
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
+//
+// Deprecated: azure-native:cdn/v20200901:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Endpoint to guarantee forwards compatibility.
 type Endpoint struct {
 	pulumi.CustomResourceState
 

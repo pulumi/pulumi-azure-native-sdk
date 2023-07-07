@@ -12,6 +12,8 @@ import (
 )
 
 // The response to an extension resource GET request.
+//
+// Deprecated: azure-native:visualstudio/v20140401preview:Extension is being removed in the next major version of this provider. Upgrade to at least azure-native:visualstudio/v20171101preview:Extension to guarantee forwards compatibility.
 type Extension struct {
 	pulumi.CustomResourceState
 

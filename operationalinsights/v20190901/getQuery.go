@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
+//
+// Deprecated: azure-native:operationalinsights/v20190901:Query is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20190901preview:Query to guarantee forwards compatibility.
 func LookupQuery(ctx *pulumi.Context, args *LookupQueryArgs, opts ...pulumi.InvokeOption) (*LookupQueryResult, error) {
 	var rv LookupQueryResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20190901:getQuery", args, &rv, opts...)

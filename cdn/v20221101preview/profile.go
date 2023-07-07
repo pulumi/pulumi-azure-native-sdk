@@ -12,6 +12,8 @@ import (
 )
 
 // A profile is a logical grouping of endpoints that share the same settings.
+//
+// Deprecated: azure-native:cdn/v20221101preview:Profile is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Profile to guarantee forwards compatibility.
 type Profile struct {
 	pulumi.CustomResourceState
 

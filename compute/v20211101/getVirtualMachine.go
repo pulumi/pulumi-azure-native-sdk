@@ -12,7 +12,7 @@ import (
 
 // Retrieves information about the model view or the instance view of a virtual machine.
 //
-// Deprecated: azure-native:compute/v20211101:VirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachine to guarantee forwards compatibility.
+// Deprecated: azure-native:compute/v20211101:VirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:VirtualMachine to guarantee forwards compatibility.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:compute/v20211101:getVirtualMachine", args, &rv, opts...)

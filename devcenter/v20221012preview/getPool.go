@@ -12,7 +12,7 @@ import (
 
 // Gets a machine pool
 //
-// Deprecated: azure-native:devcenter/v20221012preview:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:Pool to guarantee forwards compatibility.
+// Deprecated: azure-native:devcenter/v20221012preview:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:Pool to guarantee forwards compatibility.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:devcenter/v20221012preview:getPool", args, &rv, opts...)

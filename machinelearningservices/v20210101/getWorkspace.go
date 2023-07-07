@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified machine learning workspace.
+//
+// Deprecated: azure-native:machinelearningservices/v20210101:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20220101preview:Workspace to guarantee forwards compatibility.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20210101:getWorkspace", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Get the specified service endpoint policy definitions from service endpoint policy.
 //
-// Deprecated: azure-native:network/v20181201:ServiceEndpointPolicyDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ServiceEndpointPolicyDefinition to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20181201:ServiceEndpointPolicyDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ServiceEndpointPolicyDefinition to guarantee forwards compatibility.
 func LookupServiceEndpointPolicyDefinition(ctx *pulumi.Context, args *LookupServiceEndpointPolicyDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointPolicyDefinitionResult, error) {
 	var rv LookupServiceEndpointPolicyDefinitionResult
 	err := ctx.Invoke("azure-native:network/v20181201:getServiceEndpointPolicyDefinition", args, &rv, opts...)

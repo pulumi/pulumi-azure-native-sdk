@@ -13,7 +13,7 @@ import (
 
 // Authorization access policy contract.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:AuthorizationAccessPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:AuthorizationAccessPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:AuthorizationAccessPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:AuthorizationAccessPolicy to guarantee forwards compatibility.
 type AuthorizationAccessPolicy struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // The operation returns properties of a OpenShift cluster.
+//
+// Deprecated: azure-native:redhatopenshift/v20200430:OpenShiftCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:redhatopenshift/v20220904:OpenShiftCluster to guarantee forwards compatibility.
 func LookupOpenShiftCluster(ctx *pulumi.Context, args *LookupOpenShiftClusterArgs, opts ...pulumi.InvokeOption) (*LookupOpenShiftClusterResult, error) {
 	var rv LookupOpenShiftClusterResult
 	err := ctx.Invoke("azure-native:redhatopenshift/v20200430:getOpenShiftCluster", args, &rv, opts...)

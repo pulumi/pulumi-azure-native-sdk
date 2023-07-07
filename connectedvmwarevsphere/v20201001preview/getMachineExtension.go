@@ -11,6 +11,8 @@ import (
 )
 
 // The operation to get the extension.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20201001preview:MachineExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220110preview:MachineExtension to guarantee forwards compatibility.
 func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupMachineExtensionResult, error) {
 	var rv LookupMachineExtensionResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20201001preview:getMachineExtension", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Implements Cloud GET method.
+//
+// Deprecated: azure-native:scvmm/v20200605preview:Cloud is being removed in the next major version of this provider. Upgrade to at least azure-native:scvmm/v20220521preview:Cloud to guarantee forwards compatibility.
 func LookupCloud(ctx *pulumi.Context, args *LookupCloudArgs, opts ...pulumi.InvokeOption) (*LookupCloudResult, error) {
 	var rv LookupCloudResult
 	err := ctx.Invoke("azure-native:scvmm/v20200605preview:getCloud", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // The peering service prefix class.
+//
+// Deprecated: azure-native:peering/v20210101:Prefix is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:Prefix to guarantee forwards compatibility.
 type Prefix struct {
 	pulumi.CustomResourceState
 

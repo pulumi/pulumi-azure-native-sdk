@@ -12,7 +12,7 @@ import (
 
 // Get build service agent pool.
 //
-// Deprecated: azure-native:appplatform/v20220401:BuildServiceAgentPool is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildServiceAgentPool to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220401:BuildServiceAgentPool is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:BuildServiceAgentPool to guarantee forwards compatibility.
 func LookupBuildServiceAgentPool(ctx *pulumi.Context, args *LookupBuildServiceAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceAgentPoolResult, error) {
 	var rv LookupBuildServiceAgentPoolResult
 	err := ctx.Invoke("azure-native:appplatform/v20220401:getBuildServiceAgentPool", args, &rv, opts...)

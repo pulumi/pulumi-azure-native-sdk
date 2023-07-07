@@ -12,6 +12,8 @@ import (
 )
 
 // Define the datastore.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20201001preview:Datastore is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:Datastore to guarantee forwards compatibility.
 type Datastore struct {
 	pulumi.CustomResourceState
 

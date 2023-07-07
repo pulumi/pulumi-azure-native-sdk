@@ -12,6 +12,8 @@ import (
 )
 
 // Attestation service response message.
+//
+// Deprecated: azure-native:attestation/v20201001:AttestationProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:attestation/v20210601:AttestationProvider to guarantee forwards compatibility.
 type AttestationProvider struct {
 	pulumi.CustomResourceState
 

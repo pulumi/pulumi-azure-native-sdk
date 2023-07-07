@@ -12,6 +12,8 @@ import (
 )
 
 // The workspace manager assignment
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:WorkspaceManagerAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:WorkspaceManagerAssignment to guarantee forwards compatibility.
 type WorkspaceManagerAssignment struct {
 	pulumi.CustomResourceState
 

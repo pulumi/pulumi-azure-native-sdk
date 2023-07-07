@@ -12,6 +12,8 @@ import (
 )
 
 // Dapr Component.
+//
+// Deprecated: azure-native:app/v20221001:ConnectedEnvironmentsDaprComponent is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ConnectedEnvironmentsDaprComponent to guarantee forwards compatibility.
 type ConnectedEnvironmentsDaprComponent struct {
 	pulumi.CustomResourceState
 

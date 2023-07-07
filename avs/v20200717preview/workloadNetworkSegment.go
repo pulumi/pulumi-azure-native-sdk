@@ -12,6 +12,8 @@ import (
 )
 
 // NSX Segment
+//
+// Deprecated: azure-native:avs/v20200717preview:WorkloadNetworkSegment is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkSegment to guarantee forwards compatibility.
 type WorkloadNetworkSegment struct {
 	pulumi.CustomResourceState
 

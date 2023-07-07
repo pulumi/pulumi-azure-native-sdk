@@ -12,6 +12,8 @@ import (
 )
 
 // A class representing a SenderUsername resource.
+//
+// Deprecated: azure-native:communication/v20230331:SenderUsername is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230401preview:SenderUsername to guarantee forwards compatibility.
 type SenderUsername struct {
 	pulumi.CustomResourceState
 

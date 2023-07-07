@@ -12,7 +12,7 @@ import (
 
 // Get the API portal custom domain.
 //
-// Deprecated: azure-native:appplatform/v20220901preview:ApiPortalCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ApiPortalCustomDomain to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220901preview:ApiPortalCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ApiPortalCustomDomain to guarantee forwards compatibility.
 func LookupApiPortalCustomDomain(ctx *pulumi.Context, args *LookupApiPortalCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupApiPortalCustomDomainResult, error) {
 	var rv LookupApiPortalCustomDomainResult
 	err := ctx.Invoke("azure-native:appplatform/v20220901preview:getApiPortalCustomDomain", args, &rv, opts...)

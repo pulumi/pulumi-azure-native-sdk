@@ -12,7 +12,7 @@ import (
 
 // Get a HealthBot.
 //
-// Deprecated: azure-native:healthbot/v20210610:Bot is being removed in the next major version of this provider. Upgrade to at least azure-native:healthbot/v20220808:Bot to guarantee forwards compatibility.
+// Deprecated: azure-native:healthbot/v20210610:Bot is being removed in the next major version of this provider. Upgrade to at least azure-native:healthbot/v20230501:Bot to guarantee forwards compatibility.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
 	var rv LookupBotResult
 	err := ctx.Invoke("azure-native:healthbot/v20210610:getBot", args, &rv, opts...)

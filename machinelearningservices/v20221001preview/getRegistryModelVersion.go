@@ -12,7 +12,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Deprecated: azure-native:machinelearningservices/v20221001preview:RegistryModelVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:RegistryModelVersion to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20221001preview:RegistryModelVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:RegistryModelVersion to guarantee forwards compatibility.
 func LookupRegistryModelVersion(ctx *pulumi.Context, args *LookupRegistryModelVersionArgs, opts ...pulumi.InvokeOption) (*LookupRegistryModelVersionResult, error) {
 	var rv LookupRegistryModelVersionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getRegistryModelVersion", args, &rv, opts...)

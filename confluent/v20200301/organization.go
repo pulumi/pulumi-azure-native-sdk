@@ -12,6 +12,8 @@ import (
 )
 
 // Organization resource.
+//
+// Deprecated: azure-native:confluent/v20200301:Organization is being removed in the next major version of this provider. Upgrade to at least azure-native:confluent/v20200301preview:Organization to guarantee forwards compatibility.
 type Organization struct {
 	pulumi.CustomResourceState
 

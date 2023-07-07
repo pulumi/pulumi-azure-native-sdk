@@ -13,7 +13,7 @@ import (
 
 // VirtualRouter Resource.
 //
-// Deprecated: azure-native:network/v20200501:VirtualRouter is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualRouter to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200501:VirtualRouter is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualRouter to guarantee forwards compatibility.
 type VirtualRouter struct {
 	pulumi.CustomResourceState
 

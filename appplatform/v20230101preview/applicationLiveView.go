@@ -12,6 +12,8 @@ import (
 )
 
 // Application Live View resource
+//
+// Deprecated: azure-native:appplatform/v20230101preview:ApplicationLiveView is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ApplicationLiveView to guarantee forwards compatibility.
 type ApplicationLiveView struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the Private Endpoint Connection specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20210401preview:PrivateEndpointConnectionByName is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:PrivateEndpointConnectionByName to guarantee forwards compatibility.
 func LookupPrivateEndpointConnectionByName(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByNameArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByNameResult, error) {
 	var rv LookupPrivateEndpointConnectionByNameResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210401preview:getPrivateEndpointConnectionByName", args, &rv, opts...)

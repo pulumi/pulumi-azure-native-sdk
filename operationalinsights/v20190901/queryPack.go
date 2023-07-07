@@ -12,6 +12,8 @@ import (
 )
 
 // An Log Analytics QueryPack definition.
+//
+// Deprecated: azure-native:operationalinsights/v20190901:QueryPack is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20190901preview:QueryPack to guarantee forwards compatibility.
 type QueryPack struct {
 	pulumi.CustomResourceState
 

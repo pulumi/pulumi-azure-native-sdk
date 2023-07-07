@@ -12,7 +12,7 @@ import (
 
 // Gets a server Administrator.
 //
-// Deprecated: azure-native:sql/v20180601preview:ServerAzureADAdministrator is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerAzureADAdministrator to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20180601preview:ServerAzureADAdministrator is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ServerAzureADAdministrator to guarantee forwards compatibility.
 func LookupServerAzureADAdministrator(ctx *pulumi.Context, args *LookupServerAzureADAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupServerAzureADAdministratorResult, error) {
 	var rv LookupServerAzureADAdministratorResult
 	err := ctx.Invoke("azure-native:sql/v20180601preview:getServerAzureADAdministrator", args, &rv, opts...)

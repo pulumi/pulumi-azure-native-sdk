@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a project resource.
+//
+// Deprecated: azure-native:devcenter/v20221111preview:Project is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:Project to guarantee forwards compatibility.
 type Project struct {
 	pulumi.CustomResourceState
 

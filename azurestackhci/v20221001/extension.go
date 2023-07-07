@@ -12,6 +12,8 @@ import (
 )
 
 // Details of a particular extension in HCI Cluster.
+//
+// Deprecated: azure-native:azurestackhci/v20221001:Extension is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20221215preview:Extension to guarantee forwards compatibility.
 type Extension struct {
 	pulumi.CustomResourceState
 

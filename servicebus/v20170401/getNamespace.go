@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a description for the specified namespace.
+//
+// Deprecated: azure-native:servicebus/v20170401:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:Namespace to guarantee forwards compatibility.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	var rv LookupNamespaceResult
 	err := ctx.Invoke("azure-native:servicebus/v20170401:getNamespace", args, &rv, opts...)

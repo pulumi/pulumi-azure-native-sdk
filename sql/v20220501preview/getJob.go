@@ -12,7 +12,7 @@ import (
 
 // Gets a job.
 //
-// Deprecated: azure-native:sql/v20220501preview:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:Job to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20220501preview:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:Job to guarantee forwards compatibility.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getJob", args, &rv, opts...)

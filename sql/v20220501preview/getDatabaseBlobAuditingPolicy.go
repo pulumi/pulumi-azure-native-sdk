@@ -12,7 +12,7 @@ import (
 
 // Gets a database's blob auditing policy.
 //
-// Deprecated: azure-native:sql/v20220501preview:DatabaseBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:DatabaseBlobAuditingPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20220501preview:DatabaseBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:DatabaseBlobAuditingPolicy to guarantee forwards compatibility.
 func LookupDatabaseBlobAuditingPolicy(ctx *pulumi.Context, args *LookupDatabaseBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseBlobAuditingPolicyResult, error) {
 	var rv LookupDatabaseBlobAuditingPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getDatabaseBlobAuditingPolicy", args, &rv, opts...)

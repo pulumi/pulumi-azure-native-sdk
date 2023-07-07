@@ -13,7 +13,7 @@ import (
 
 // A long term retention policy.
 //
-// Deprecated: azure-native:sql/v20211101:LongTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:LongTermRetentionPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20211101:LongTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:LongTermRetentionPolicy to guarantee forwards compatibility.
 type LongTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 

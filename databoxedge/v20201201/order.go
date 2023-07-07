@@ -12,6 +12,8 @@ import (
 )
 
 // The order details.
+//
+// Deprecated: azure-native:databoxedge/v20201201:Order is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20220401preview:Order to guarantee forwards compatibility.
 type Order struct {
 	pulumi.CustomResourceState
 

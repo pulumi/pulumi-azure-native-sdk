@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the API specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20210101preview:Api is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Api to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210101preview:Api is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Api to guarantee forwards compatibility.
 func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOption) (*LookupApiResult, error) {
 	var rv LookupApiResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210101preview:getApi", args, &rv, opts...)

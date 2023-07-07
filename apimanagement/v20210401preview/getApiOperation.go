@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the API Operation specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20210401preview:ApiOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiOperation to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210401preview:ApiOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiOperation to guarantee forwards compatibility.
 func LookupApiOperation(ctx *pulumi.Context, args *LookupApiOperationArgs, opts ...pulumi.InvokeOption) (*LookupApiOperationResult, error) {
 	var rv LookupApiOperationResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210401preview:getApiOperation", args, &rv, opts...)

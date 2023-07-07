@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an instance pool.
+//
+// Deprecated: azure-native:sql/v20201101preview:InstancePool is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:InstancePool to guarantee forwards compatibility.
 func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts ...pulumi.InvokeOption) (*LookupInstancePoolResult, error) {
 	var rv LookupInstancePoolResult
 	err := ctx.Invoke("azure-native:sql/v20201101preview:getInstancePool", args, &rv, opts...)

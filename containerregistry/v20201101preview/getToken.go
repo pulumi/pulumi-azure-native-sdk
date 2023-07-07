@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of the specified token.
+//
+// Deprecated: azure-native:containerregistry/v20201101preview:Token is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Token to guarantee forwards compatibility.
 func LookupToken(ctx *pulumi.Context, args *LookupTokenArgs, opts ...pulumi.InvokeOption) (*LookupTokenResult, error) {
 	var rv LookupTokenResult
 	err := ctx.Invoke("azure-native:containerregistry/v20201101preview:getToken", args, &rv, opts...)

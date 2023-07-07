@@ -12,6 +12,8 @@ import (
 )
 
 // Class representing a cluster principal assignment.
+//
+// Deprecated: azure-native:synapse/v20210401preview:KustoPoolPrincipalAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:KustoPoolPrincipalAssignment to guarantee forwards compatibility.
 type KustoPoolPrincipalAssignment struct {
 	pulumi.CustomResourceState
 

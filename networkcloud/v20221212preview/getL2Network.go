@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided layer 2 (L2) network.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:L2Network is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:L2Network to guarantee forwards compatibility.
 func LookupL2Network(ctx *pulumi.Context, args *LookupL2NetworkArgs, opts ...pulumi.InvokeOption) (*LookupL2NetworkResult, error) {
 	var rv LookupL2NetworkResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getL2Network", args, &rv, opts...)

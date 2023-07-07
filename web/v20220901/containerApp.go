@@ -12,6 +12,8 @@ import (
 )
 
 // Container App.
+//
+// Deprecated: azure-native:web/v20220901:ContainerApp is being removed in the next major version of this provider. Upgrade to at least "" to guarantee forwards compatibility.
 type ContainerApp struct {
 	pulumi.CustomResourceState
 

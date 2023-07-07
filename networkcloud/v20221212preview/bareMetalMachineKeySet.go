@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:networkcloud/v20221212preview:BareMetalMachineKeySet is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:BareMetalMachineKeySet to guarantee forwards compatibility.
 type BareMetalMachineKeySet struct {
 	pulumi.CustomResourceState
 

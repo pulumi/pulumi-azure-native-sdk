@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a workspace
+//
+// Deprecated: azure-native:synapse/v20210301:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210501:Workspace to guarantee forwards compatibility.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:synapse/v20210301:getWorkspace", args, &rv, opts...)

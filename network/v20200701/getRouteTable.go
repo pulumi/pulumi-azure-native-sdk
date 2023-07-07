@@ -12,7 +12,7 @@ import (
 
 // Gets the specified route table.
 //
-// Deprecated: azure-native:network/v20200701:RouteTable is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:RouteTable to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200701:RouteTable is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:RouteTable to guarantee forwards compatibility.
 func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupRouteTableResult, error) {
 	var rv LookupRouteTableResult
 	err := ctx.Invoke("azure-native:network/v20200701:getRouteTable", args, &rv, opts...)

@@ -11,8 +11,6 @@ import (
 )
 
 // The virtualharddisks resource definition.
-//
-// Deprecated: azure-native:azurestackhci/v20210701preview:virtualharddiskRetrieve is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20210901preview:virtualharddiskRetrieve to guarantee forwards compatibility.
 func GetvirtualharddiskRetrieve(ctx *pulumi.Context, args *GetvirtualharddiskRetrieveArgs, opts ...pulumi.InvokeOption) (*GetvirtualharddiskRetrieveResult, error) {
 	var rv GetvirtualharddiskRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210701preview:getvirtualharddiskRetrieve", args, &rv, opts...)

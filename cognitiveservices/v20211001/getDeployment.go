@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified deployments associated with the Cognitive Services account.
+//
+// Deprecated: azure-native:cognitiveservices/v20211001:Deployment is being removed in the next major version of this provider. Upgrade to at least azure-native:cognitiveservices/v20230501:Deployment to guarantee forwards compatibility.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	var rv LookupDeploymentResult
 	err := ctx.Invoke("azure-native:cognitiveservices/v20211001:getDeployment", args, &rv, opts...)

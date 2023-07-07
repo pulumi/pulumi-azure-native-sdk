@@ -12,7 +12,7 @@ import (
 
 // Gets the details of maintenance configurations by managed cluster and resource group.
 //
-// Deprecated: azure-native:containerservice/v20201201:MaintenanceConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:MaintenanceConfiguration to guarantee forwards compatibility.
+// Deprecated: azure-native:containerservice/v20201201:MaintenanceConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:MaintenanceConfiguration to guarantee forwards compatibility.
 func LookupMaintenanceConfiguration(ctx *pulumi.Context, args *LookupMaintenanceConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupMaintenanceConfigurationResult, error) {
 	var rv LookupMaintenanceConfigurationResult
 	err := ctx.Invoke("azure-native:containerservice/v20201201:getMaintenanceConfiguration", args, &rv, opts...)

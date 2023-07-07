@@ -12,7 +12,7 @@ import (
 
 // Get a consumer group from the Event Hub-compatible device-to-cloud endpoint for an IoT hub.
 //
-// Deprecated: azure-native:devices/v20210702preview:IotHubResourceEventHubConsumerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20220430preview:IotHubResourceEventHubConsumerGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:devices/v20210702preview:IotHubResourceEventHubConsumerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20221115preview:IotHubResourceEventHubConsumerGroup to guarantee forwards compatibility.
 func LookupIotHubResourceEventHubConsumerGroup(ctx *pulumi.Context, args *LookupIotHubResourceEventHubConsumerGroupArgs, opts ...pulumi.InvokeOption) (*LookupIotHubResourceEventHubConsumerGroupResult, error) {
 	var rv LookupIotHubResourceEventHubConsumerGroupResult
 	err := ctx.Invoke("azure-native:devices/v20210702preview:getIotHubResourceEventHubConsumerGroup", args, &rv, opts...)

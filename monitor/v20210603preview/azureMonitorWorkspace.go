@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure Monitor Workspace definition
+//
+// Deprecated: azure-native:monitor/v20210603preview:AzureMonitorWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:monitor/v20230403:AzureMonitorWorkspace to guarantee forwards compatibility.
 type AzureMonitorWorkspace struct {
 	pulumi.CustomResourceState
 

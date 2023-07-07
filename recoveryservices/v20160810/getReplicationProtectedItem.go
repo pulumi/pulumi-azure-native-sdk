@@ -13,7 +13,7 @@ import (
 // Gets the details of an ASR replication protected item.
 //
 // Deprecated: Version 2016-08-10 will be removed in v2 of the provider.
-// azure-native:recoveryservices/v20160810:ReplicationProtectedItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationProtectedItem to guarantee forwards compatibility.
+// azure-native:recoveryservices/v20160810:ReplicationProtectedItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationProtectedItem to guarantee forwards compatibility.
 func LookupReplicationProtectedItem(ctx *pulumi.Context, args *LookupReplicationProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupReplicationProtectedItemResult, error) {
 	var rv LookupReplicationProtectedItemResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20160810:getReplicationProtectedItem", args, &rv, opts...)

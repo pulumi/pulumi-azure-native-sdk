@@ -13,7 +13,7 @@ import (
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 //
 // Deprecated: Version 2015-06-01 will be removed in v2 of the provider.
-// azure-native:cdn/v20150601:Origin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Origin to guarantee forwards compatibility.
+// azure-native:cdn/v20150601:Origin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Origin to guarantee forwards compatibility.
 func LookupOrigin(ctx *pulumi.Context, args *LookupOriginArgs, opts ...pulumi.InvokeOption) (*LookupOriginResult, error) {
 	var rv LookupOriginResult
 	err := ctx.Invoke("azure-native:cdn/v20150601:getOrigin", args, &rv, opts...)

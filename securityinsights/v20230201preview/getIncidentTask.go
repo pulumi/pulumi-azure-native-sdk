@@ -12,7 +12,7 @@ import (
 
 // Gets an incident task.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:IncidentTask is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IncidentTask to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:IncidentTask is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:IncidentTask to guarantee forwards compatibility.
 func LookupIncidentTask(ctx *pulumi.Context, args *LookupIncidentTaskArgs, opts ...pulumi.InvokeOption) (*LookupIncidentTaskResult, error) {
 	var rv LookupIncidentTaskResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getIncidentTask", args, &rv, opts...)

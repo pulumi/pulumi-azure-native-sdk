@@ -12,6 +12,8 @@ import (
 )
 
 // Information about managed application definition.
+//
+// Deprecated: azure-native:solutions/v20190701:ApplicationDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20210701:ApplicationDefinition to guarantee forwards compatibility.
 type ApplicationDefinition struct {
 	pulumi.CustomResourceState
 

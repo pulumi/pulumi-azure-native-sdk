@@ -13,7 +13,7 @@ import (
 
 // Represents MLBehaviorAnalytics alert rule.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:MLBehaviorAnalyticsAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MLBehaviorAnalyticsAlertRule to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:MLBehaviorAnalyticsAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:MLBehaviorAnalyticsAlertRule to guarantee forwards compatibility.
 type MLBehaviorAnalyticsAlertRule struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Server Endpoint object.
+//
+// Deprecated: azure-native:storagesync/v20200301:ServerEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:storagesync/v20220601:ServerEndpoint to guarantee forwards compatibility.
 type ServerEndpoint struct {
 	pulumi.CustomResourceState
 

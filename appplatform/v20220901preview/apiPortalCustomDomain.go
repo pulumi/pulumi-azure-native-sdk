@@ -13,7 +13,7 @@ import (
 
 // Custom domain of the API portal
 //
-// Deprecated: azure-native:appplatform/v20220901preview:ApiPortalCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ApiPortalCustomDomain to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220901preview:ApiPortalCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ApiPortalCustomDomain to guarantee forwards compatibility.
 type ApiPortalCustomDomain struct {
 	pulumi.CustomResourceState
 

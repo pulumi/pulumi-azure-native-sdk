@@ -12,6 +12,8 @@ import (
 )
 
 // The Private Endpoint Connection resource.
+//
+// Deprecated: azure-native:cognitiveservices/v20170418:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:cognitiveservices/v20230501:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

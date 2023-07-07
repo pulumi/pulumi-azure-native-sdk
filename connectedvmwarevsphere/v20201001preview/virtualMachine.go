@@ -12,6 +12,8 @@ import (
 )
 
 // Define the virtualMachine.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20201001preview:VirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:VirtualMachine to guarantee forwards compatibility.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 

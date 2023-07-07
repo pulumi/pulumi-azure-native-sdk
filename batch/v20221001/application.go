@@ -12,6 +12,8 @@ import (
 )
 
 // Contains information about an application in a Batch account.
+//
+// Deprecated: azure-native:batch/v20221001:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20230501:Application to guarantee forwards compatibility.
 type Application struct {
 	pulumi.CustomResourceState
 

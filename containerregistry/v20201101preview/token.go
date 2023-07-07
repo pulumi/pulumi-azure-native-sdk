@@ -12,6 +12,8 @@ import (
 )
 
 // An object that represents a token for a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20201101preview:Token is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Token to guarantee forwards compatibility.
 type Token struct {
 	pulumi.CustomResourceState
 

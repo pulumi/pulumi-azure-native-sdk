@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified sku.
+//
+// Deprecated: azure-native:hybridnetwork/v20200101preview:VendorSkus is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridnetwork/v20220101preview:VendorSkus to guarantee forwards compatibility.
 func LookupVendorSkus(ctx *pulumi.Context, args *LookupVendorSkusArgs, opts ...pulumi.InvokeOption) (*LookupVendorSkusResult, error) {
 	var rv LookupVendorSkusResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20200101preview:getVendorSkus", args, &rv, opts...)

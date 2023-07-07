@@ -12,6 +12,8 @@ import (
 )
 
 // Represents MCAS (Microsoft Cloud App Security) data connector.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:MCASDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:MCASDataConnector to guarantee forwards compatibility.
 type MCASDataConnector struct {
 	pulumi.CustomResourceState
 

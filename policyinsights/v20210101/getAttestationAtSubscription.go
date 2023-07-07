@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing attestation at subscription scope.
+//
+// Deprecated: azure-native:policyinsights/v20210101:AttestationAtSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:policyinsights/v20220901:AttestationAtSubscription to guarantee forwards compatibility.
 func LookupAttestationAtSubscription(ctx *pulumi.Context, args *LookupAttestationAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtSubscriptionResult, error) {
 	var rv LookupAttestationAtSubscriptionResult
 	err := ctx.Invoke("azure-native:policyinsights/v20210101:getAttestationAtSubscription", args, &rv, opts...)

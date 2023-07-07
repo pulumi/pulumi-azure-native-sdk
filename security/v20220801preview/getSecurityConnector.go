@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves details of a specific security connector
+//
+// Deprecated: azure-native:security/v20220801preview:SecurityConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20230301preview:SecurityConnector to guarantee forwards compatibility.
 func LookupSecurityConnector(ctx *pulumi.Context, args *LookupSecurityConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorResult, error) {
 	var rv LookupSecurityConnectorResult
 	err := ctx.Invoke("azure-native:security/v20220801preview:getSecurityConnector", args, &rv, opts...)

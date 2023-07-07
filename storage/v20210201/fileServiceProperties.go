@@ -12,6 +12,8 @@ import (
 )
 
 // The properties of File services in storage account.
+//
+// Deprecated: azure-native:storage/v20210201:FileServiceProperties is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:FileServiceProperties to guarantee forwards compatibility.
 type FileServiceProperties struct {
 	pulumi.CustomResourceState
 

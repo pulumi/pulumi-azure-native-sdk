@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve a hybrid runbook worker.
+//
+// Deprecated: azure-native:automation/v20210622:HybridRunbookWorker is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:HybridRunbookWorker to guarantee forwards compatibility.
 func LookupHybridRunbookWorker(ctx *pulumi.Context, args *LookupHybridRunbookWorkerArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerResult, error) {
 	var rv LookupHybridRunbookWorkerResult
 	err := ctx.Invoke("azure-native:automation/v20210622:getHybridRunbookWorker", args, &rv, opts...)

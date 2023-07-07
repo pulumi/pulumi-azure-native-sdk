@@ -13,7 +13,7 @@ import (
 
 // Workload group operations for a data warehouse
 //
-// Deprecated: azure-native:sql/v20190601preview:WorkloadGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:WorkloadGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20190601preview:WorkloadGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:WorkloadGroup to guarantee forwards compatibility.
 type WorkloadGroup struct {
 	pulumi.CustomResourceState
 

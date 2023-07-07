@@ -11,6 +11,8 @@ import (
 )
 
 // Get particular Arc Extension of HCI Cluster.
+//
+// Deprecated: azure-native:azurestackhci/v20230201:Extension is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230301:Extension to guarantee forwards compatibility.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20230201:getExtension", args, &rv, opts...)

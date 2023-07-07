@@ -13,7 +13,7 @@ import (
 
 // Represents office data connector.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:OfficeDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:OfficeDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:OfficeDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:OfficeDataConnector to guarantee forwards compatibility.
 type OfficeDataConnector struct {
 	pulumi.CustomResourceState
 

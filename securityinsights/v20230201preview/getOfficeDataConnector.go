@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:OfficeDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:OfficeDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:OfficeDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:OfficeDataConnector to guarantee forwards compatibility.
 func LookupOfficeDataConnector(ctx *pulumi.Context, args *LookupOfficeDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeDataConnectorResult, error) {
 	var rv LookupOfficeDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getOfficeDataConnector", args, &rv, opts...)

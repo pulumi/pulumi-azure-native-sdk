@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing origin within an origin group.
+//
+// Deprecated: azure-native:cdn/v20200901:AFDOrigin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:AFDOrigin to guarantee forwards compatibility.
 func LookupAFDOrigin(ctx *pulumi.Context, args *LookupAFDOriginArgs, opts ...pulumi.InvokeOption) (*LookupAFDOriginResult, error) {
 	var rv LookupAFDOriginResult
 	err := ctx.Invoke("azure-native:cdn/v20200901:getAFDOrigin", args, &rv, opts...)

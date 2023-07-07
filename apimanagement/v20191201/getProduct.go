@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the product specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20191201:Product is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Product to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20191201:Product is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Product to guarantee forwards compatibility.
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
 	var rv LookupProductResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201:getProduct", args, &rv, opts...)

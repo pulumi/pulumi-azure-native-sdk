@@ -12,6 +12,8 @@ import (
 )
 
 // IoT Connector FHIR destination definition.
+//
+// Deprecated: azure-native:healthcareapis/v20221201:IotConnectorFhirDestination is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:IotConnectorFhirDestination to guarantee forwards compatibility.
 type IotConnectorFhirDestination struct {
 	pulumi.CustomResourceState
 

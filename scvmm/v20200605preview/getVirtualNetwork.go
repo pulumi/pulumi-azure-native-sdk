@@ -11,6 +11,8 @@ import (
 )
 
 // Implements VirtualNetwork GET method.
+//
+// Deprecated: azure-native:scvmm/v20200605preview:VirtualNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:scvmm/v20220521preview:VirtualNetwork to guarantee forwards compatibility.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	var rv LookupVirtualNetworkResult
 	err := ctx.Invoke("azure-native:scvmm/v20200605preview:getVirtualNetwork", args, &rv, opts...)

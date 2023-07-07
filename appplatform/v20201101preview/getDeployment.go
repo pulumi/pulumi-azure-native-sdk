@@ -12,7 +12,7 @@ import (
 
 // Get a Deployment and its properties.
 //
-// Deprecated: azure-native:appplatform/v20201101preview:Deployment is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Deployment to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20201101preview:Deployment is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:Deployment to guarantee forwards compatibility.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	var rv LookupDeploymentResult
 	err := ctx.Invoke("azure-native:appplatform/v20201101preview:getDeployment", args, &rv, opts...)

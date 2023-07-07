@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Data Lake Analytics compute policy.
+//
+// Deprecated: azure-native:datalakeanalytics/v20161101:ComputePolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:datalakeanalytics/v20191101preview:ComputePolicy to guarantee forwards compatibility.
 func LookupComputePolicy(ctx *pulumi.Context, args *LookupComputePolicyArgs, opts ...pulumi.InvokeOption) (*LookupComputePolicyResult, error) {
 	var rv LookupComputePolicyResult
 	err := ctx.Invoke("azure-native:datalakeanalytics/v20161101:getComputePolicy", args, &rv, opts...)

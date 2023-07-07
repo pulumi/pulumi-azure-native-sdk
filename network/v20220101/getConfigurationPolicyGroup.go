@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the details of a ConfigurationPolicyGroup.
+//
+// Deprecated: azure-native:network/v20220101:ConfigurationPolicyGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ConfigurationPolicyGroup to guarantee forwards compatibility.
 func LookupConfigurationPolicyGroup(ctx *pulumi.Context, args *LookupConfigurationPolicyGroupArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationPolicyGroupResult, error) {
 	var rv LookupConfigurationPolicyGroupResult
 	err := ctx.Invoke("azure-native:network/v20220101:getConfigurationPolicyGroup", args, &rv, opts...)

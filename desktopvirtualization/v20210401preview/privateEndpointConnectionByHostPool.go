@@ -12,6 +12,8 @@ import (
 )
 
 // The Private Endpoint Connection resource.
+//
+// Deprecated: azure-native:desktopvirtualization/v20210401preview:PrivateEndpointConnectionByHostPool is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:PrivateEndpointConnectionByHostPool to guarantee forwards compatibility.
 type PrivateEndpointConnectionByHostPool struct {
 	pulumi.CustomResourceState
 

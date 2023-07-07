@@ -13,7 +13,7 @@ import (
 
 // An Azure Cosmos DB Role Assignment
 //
-// Deprecated: azure-native:documentdb/v20221115:SqlResourceSqlRoleAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:SqlResourceSqlRoleAssignment to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20221115:SqlResourceSqlRoleAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230415:SqlResourceSqlRoleAssignment to guarantee forwards compatibility.
 type SqlResourceSqlRoleAssignment struct {
 	pulumi.CustomResourceState
 

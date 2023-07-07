@@ -11,6 +11,8 @@ import (
 )
 
 // Get access review history definition by definition Id
+//
+// Deprecated: azure-native:authorization/v20211116preview:AccessReviewHistoryDefinitionById is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20211201preview:AccessReviewHistoryDefinitionById to guarantee forwards compatibility.
 func LookupAccessReviewHistoryDefinitionById(ctx *pulumi.Context, args *LookupAccessReviewHistoryDefinitionByIdArgs, opts ...pulumi.InvokeOption) (*LookupAccessReviewHistoryDefinitionByIdResult, error) {
 	var rv LookupAccessReviewHistoryDefinitionByIdResult
 	err := ctx.Invoke("azure-native:authorization/v20211116preview:getAccessReviewHistoryDefinitionById", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Definition of hybrid runbook worker.
+//
+// Deprecated: azure-native:automation/v20210622:HybridRunbookWorker is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:HybridRunbookWorker to guarantee forwards compatibility.
 type HybridRunbookWorker struct {
 	pulumi.CustomResourceState
 

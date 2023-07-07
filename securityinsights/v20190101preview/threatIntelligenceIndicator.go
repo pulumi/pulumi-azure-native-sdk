@@ -12,6 +12,8 @@ import (
 )
 
 // Threat intelligence information object.
+//
+// Deprecated: azure-native:securityinsights/v20190101preview:ThreatIntelligenceIndicator is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210401:ThreatIntelligenceIndicator to guarantee forwards compatibility.
 type ThreatIntelligenceIndicator struct {
 	pulumi.CustomResourceState
 

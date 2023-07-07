@@ -13,7 +13,7 @@ import (
 // Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
 //
 // Deprecated: Version 2017-10-01 will be removed in v2 of the provider.
-// azure-native:network/v20171001:Zone is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20180501:Zone to guarantee forwards compatibility.
+// azure-native:network/v20171001:Zone is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230701preview:Zone to guarantee forwards compatibility.
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
 	var rv LookupZoneResult
 	err := ctx.Invoke("azure-native:network/v20171001:getZone", args, &rv, opts...)

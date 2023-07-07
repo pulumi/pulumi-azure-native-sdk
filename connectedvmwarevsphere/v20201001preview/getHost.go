@@ -11,6 +11,8 @@ import (
 )
 
 // Implements host GET method.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20201001preview:Host is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:Host to guarantee forwards compatibility.
 func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.InvokeOption) (*LookupHostResult, error) {
 	var rv LookupHostResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20201001preview:getHost", args, &rv, opts...)

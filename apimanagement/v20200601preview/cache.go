@@ -13,7 +13,7 @@ import (
 
 // Cache details.
 //
-// Deprecated: azure-native:apimanagement/v20200601preview:Cache is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Cache to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20200601preview:Cache is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Cache to guarantee forwards compatibility.
 type Cache struct {
 	pulumi.CustomResourceState
 

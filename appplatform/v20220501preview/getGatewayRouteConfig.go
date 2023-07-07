@@ -12,7 +12,7 @@ import (
 
 // Get the Spring Cloud Gateway route configs.
 //
-// Deprecated: azure-native:appplatform/v20220501preview:GatewayRouteConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:GatewayRouteConfig to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220501preview:GatewayRouteConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:GatewayRouteConfig to guarantee forwards compatibility.
 func LookupGatewayRouteConfig(ctx *pulumi.Context, args *LookupGatewayRouteConfigArgs, opts ...pulumi.InvokeOption) (*LookupGatewayRouteConfigResult, error) {
 	var rv LookupGatewayRouteConfigResult
 	err := ctx.Invoke("azure-native:appplatform/v20220501preview:getGatewayRouteConfig", args, &rv, opts...)

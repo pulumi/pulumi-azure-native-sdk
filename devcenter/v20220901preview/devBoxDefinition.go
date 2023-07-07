@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a definition for a Developer Machine.
+//
+// Deprecated: azure-native:devcenter/v20220901preview:DevBoxDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:DevBoxDefinition to guarantee forwards compatibility.
 type DevBoxDefinition struct {
 	pulumi.CustomResourceState
 

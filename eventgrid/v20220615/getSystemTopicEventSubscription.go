@@ -11,6 +11,8 @@ import (
 )
 
 // Get an event subscription.
+//
+// Deprecated: azure-native:eventgrid/v20220615:SystemTopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:SystemTopicEventSubscription to guarantee forwards compatibility.
 func LookupSystemTopicEventSubscription(ctx *pulumi.Context, args *LookupSystemTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSystemTopicEventSubscriptionResult, error) {
 	var rv LookupSystemTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getSystemTopicEventSubscription", args, &rv, opts...)

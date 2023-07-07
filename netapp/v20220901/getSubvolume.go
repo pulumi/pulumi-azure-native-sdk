@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the path associated with the subvolumeName provided
+//
+// Deprecated: azure-native:netapp/v20220901:Subvolume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:Subvolume to guarantee forwards compatibility.
 func LookupSubvolume(ctx *pulumi.Context, args *LookupSubvolumeArgs, opts ...pulumi.InvokeOption) (*LookupSubvolumeResult, error) {
 	var rv LookupSubvolumeResult
 	err := ctx.Invoke("azure-native:netapp/v20220901:getSubvolume", args, &rv, opts...)

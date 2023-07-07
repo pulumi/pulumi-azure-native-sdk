@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves a network manager security admin configuration.
+//
+// Deprecated: azure-native:network/v20210201preview:SecurityAdminConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210501preview:SecurityAdminConfiguration to guarantee forwards compatibility.
 func LookupSecurityAdminConfiguration(ctx *pulumi.Context, args *LookupSecurityAdminConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSecurityAdminConfigurationResult, error) {
 	var rv LookupSecurityAdminConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getSecurityAdminConfiguration", args, &rv, opts...)

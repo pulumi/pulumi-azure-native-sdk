@@ -11,6 +11,8 @@ import (
 )
 
 // Implements VMMServer GET method.
+//
+// Deprecated: azure-native:scvmm/v20200605preview:VmmServer is being removed in the next major version of this provider. Upgrade to at least azure-native:scvmm/v20220521preview:VmmServer to guarantee forwards compatibility.
 func LookupVmmServer(ctx *pulumi.Context, args *LookupVmmServerArgs, opts ...pulumi.InvokeOption) (*LookupVmmServerResult, error) {
 	var rv LookupVmmServerResult
 	err := ctx.Invoke("azure-native:scvmm/v20200605preview:getVmmServer", args, &rv, opts...)

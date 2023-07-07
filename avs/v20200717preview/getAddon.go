@@ -11,6 +11,8 @@ import (
 )
 
 // An addon resource
+//
+// Deprecated: azure-native:avs/v20200717preview:Addon is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20210101preview:Addon to guarantee forwards compatibility.
 func LookupAddon(ctx *pulumi.Context, args *LookupAddonArgs, opts ...pulumi.InvokeOption) (*LookupAddonResult, error) {
 	var rv LookupAddonResult
 	err := ctx.Invoke("azure-native:avs/v20200717preview:getAddon", args, &rv, opts...)

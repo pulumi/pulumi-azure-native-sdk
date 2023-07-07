@@ -14,7 +14,7 @@ import (
 // An Azure Cosmos DB MongoDB collection.
 //
 // Deprecated: Version 2020-04-01 will be removed in v2 of the provider.
-// azure-native:documentdb/v20200401:MongoDBResourceMongoDBCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:MongoDBResourceMongoDBCollection to guarantee forwards compatibility.
+// azure-native:documentdb/v20200401:MongoDBResourceMongoDBCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:MongoDBResourceMongoDBCollection to guarantee forwards compatibility.
 type MongoDBResourceMongoDBCollection struct {
 	pulumi.CustomResourceState
 

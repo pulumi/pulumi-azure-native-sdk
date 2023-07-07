@@ -12,6 +12,8 @@ import (
 )
 
 // Resource information, as returned by the resource provider.
+//
+// Deprecated: azure-native:recoveryservices/v20210101:Vault is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:Vault to guarantee forwards compatibility.
 type Vault struct {
 	pulumi.CustomResourceState
 

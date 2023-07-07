@@ -12,7 +12,7 @@ import (
 
 // Gets the configuration details of the identity Provider configured in specified service instance.
 //
-// Deprecated: azure-native:apimanagement/v20191201preview:IdentityProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:IdentityProvider to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20191201preview:IdentityProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:IdentityProvider to guarantee forwards compatibility.
 func LookupIdentityProvider(ctx *pulumi.Context, args *LookupIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupIdentityProviderResult, error) {
 	var rv LookupIdentityProviderResult
 	err := ctx.Invoke("azure-native:apimanagement/v20191201preview:getIdentityProvider", args, &rv, opts...)

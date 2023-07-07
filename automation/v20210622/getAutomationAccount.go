@@ -11,6 +11,8 @@ import (
 )
 
 // Get information about an Automation Account.
+//
+// Deprecated: azure-native:automation/v20210622:AutomationAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:AutomationAccount to guarantee forwards compatibility.
 func LookupAutomationAccount(ctx *pulumi.Context, args *LookupAutomationAccountArgs, opts ...pulumi.InvokeOption) (*LookupAutomationAccountResult, error) {
 	var rv LookupAutomationAccountResult
 	err := ctx.Invoke("azure-native:automation/v20210622:getAutomationAccount", args, &rv, opts...)

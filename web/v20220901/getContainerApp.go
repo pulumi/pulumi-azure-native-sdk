@@ -11,6 +11,8 @@ import (
 )
 
 // Container App.
+//
+// Deprecated: azure-native:web/v20220901:ContainerApp is being removed in the next major version of this provider. Upgrade to at least "" to guarantee forwards compatibility.
 func LookupContainerApp(ctx *pulumi.Context, args *LookupContainerAppArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppResult, error) {
 	var rv LookupContainerAppResult
 	err := ctx.Invoke("azure-native:web/v20220901:getContainerApp", args, &rv, opts...)

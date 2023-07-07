@@ -12,7 +12,7 @@ import (
 
 // Gets the specified authorization from the specified express route port.
 //
-// Deprecated: azure-native:network/v20210801:ExpressRoutePortAuthorization is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ExpressRoutePortAuthorization to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20210801:ExpressRoutePortAuthorization is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ExpressRoutePortAuthorization to guarantee forwards compatibility.
 func LookupExpressRoutePortAuthorization(ctx *pulumi.Context, args *LookupExpressRoutePortAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortAuthorizationResult, error) {
 	var rv LookupExpressRoutePortAuthorizationResult
 	err := ctx.Invoke("azure-native:network/v20210801:getExpressRoutePortAuthorization", args, &rv, opts...)

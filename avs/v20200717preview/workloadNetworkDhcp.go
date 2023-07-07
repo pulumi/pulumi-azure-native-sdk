@@ -12,6 +12,8 @@ import (
 )
 
 // NSX DHCP
+//
+// Deprecated: azure-native:avs/v20200717preview:WorkloadNetworkDhcp is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20210101preview:WorkloadNetworkDhcp to guarantee forwards compatibility.
 type WorkloadNetworkDhcp struct {
 	pulumi.CustomResourceState
 

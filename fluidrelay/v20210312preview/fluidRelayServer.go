@@ -12,6 +12,8 @@ import (
 )
 
 // A FluidRelay Server.
+//
+// Deprecated: azure-native:fluidrelay/v20210312preview:FluidRelayServer is being removed in the next major version of this provider. Upgrade to at least azure-native:fluidrelay/v20210615preview:FluidRelayServer to guarantee forwards compatibility.
 type FluidRelayServer struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 
 // Represents MTP (Microsoft Threat Protection) data connector.
 //
-// Deprecated: azure-native:securityinsights/v20220601preview:MTPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MTPDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220601preview:MTPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:MTPDataConnector to guarantee forwards compatibility.
 type MTPDataConnector struct {
 	pulumi.CustomResourceState
 

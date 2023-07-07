@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Graph resource.
+//
+// Deprecated: azure-native:documentdb/v20210701preview:GraphResourceGraph is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:GraphResourceGraph to guarantee forwards compatibility.
 type GraphResourceGraph struct {
 	pulumi.CustomResourceState
 

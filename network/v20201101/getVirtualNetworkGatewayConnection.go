@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified virtual network gateway connection by resource group.
+//
+// Deprecated: azure-native:network/v20201101:VirtualNetworkGatewayConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualNetworkGatewayConnection to guarantee forwards compatibility.
 func LookupVirtualNetworkGatewayConnection(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayConnectionResult, error) {
 	var rv LookupVirtualNetworkGatewayConnectionResult
 	err := ctx.Invoke("azure-native:network/v20201101:getVirtualNetworkGatewayConnection", args, &rv, opts...)

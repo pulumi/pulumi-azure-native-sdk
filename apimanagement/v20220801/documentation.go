@@ -12,6 +12,8 @@ import (
 )
 
 // Markdown documentation details.
+//
+// Deprecated: azure-native:apimanagement/v20220801:Documentation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Documentation to guarantee forwards compatibility.
 type Documentation struct {
 	pulumi.CustomResourceState
 

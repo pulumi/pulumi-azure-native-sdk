@@ -12,7 +12,7 @@ import (
 
 // Get the properties of a managed Cassandra cluster.
 //
-// Deprecated: azure-native:documentdb/v20211015:CassandraCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:CassandraCluster to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20211015:CassandraCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230415:CassandraCluster to guarantee forwards compatibility.
 func LookupCassandraCluster(ctx *pulumi.Context, args *LookupCassandraClusterArgs, opts ...pulumi.InvokeOption) (*LookupCassandraClusterResult, error) {
 	var rv LookupCassandraClusterResult
 	err := ctx.Invoke("azure-native:documentdb/v20211015:getCassandraCluster", args, &rv, opts...)

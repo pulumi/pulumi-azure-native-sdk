@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB MongoDB database.
+//
+// Deprecated: azure-native:documentdb/v20210315:MongoDBResourceMongoDBDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:MongoDBResourceMongoDBDatabase to guarantee forwards compatibility.
 type MongoDBResourceMongoDBDatabase struct {
 	pulumi.CustomResourceState
 

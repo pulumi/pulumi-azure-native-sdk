@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of a partner configuration.
+//
+// Deprecated: azure-native:eventgrid/v20211015preview:PartnerConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerConfiguration to guarantee forwards compatibility.
 func LookupPartnerConfiguration(ctx *pulumi.Context, args *LookupPartnerConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerConfigurationResult, error) {
 	var rv LookupPartnerConfigurationResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getPartnerConfiguration", args, &rv, opts...)

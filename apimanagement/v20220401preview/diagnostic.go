@@ -13,7 +13,7 @@ import (
 
 // Diagnostic details.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:Diagnostic is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Diagnostic to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:Diagnostic is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Diagnostic to guarantee forwards compatibility.
 type Diagnostic struct {
 	pulumi.CustomResourceState
 

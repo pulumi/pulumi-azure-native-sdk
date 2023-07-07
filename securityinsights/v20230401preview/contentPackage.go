@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Package in Azure Security Insights.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:ContentPackage is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ContentPackage to guarantee forwards compatibility.
 type ContentPackage struct {
 	pulumi.CustomResourceState
 

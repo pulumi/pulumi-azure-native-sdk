@@ -12,6 +12,8 @@ import (
 )
 
 // Customer subscription which can use a sku.
+//
+// Deprecated: azure-native:hybridnetwork/v20200101preview:VendorSkuPreview is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridnetwork/v20220101preview:VendorSkuPreview to guarantee forwards compatibility.
 type VendorSkuPreview struct {
 	pulumi.CustomResourceState
 

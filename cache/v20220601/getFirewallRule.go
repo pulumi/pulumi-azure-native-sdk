@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a single firewall rule in a specified redis cache.
+//
+// Deprecated: azure-native:cache/v20220601:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20230501preview:FirewallRule to guarantee forwards compatibility.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	var rv LookupFirewallRuleResult
 	err := ctx.Invoke("azure-native:cache/v20220601:getFirewallRule", args, &rv, opts...)

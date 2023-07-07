@@ -12,6 +12,8 @@ import (
 )
 
 // Lab Plans act as a permission container for creating labs via labs.azure.com. Additionally, they can provide a set of default configurations that will apply at the time of creating a lab, but these defaults can still be overwritten.
+//
+// Deprecated: azure-native:labservices/v20211001preview:LabPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:labservices/v20220801:LabPlan to guarantee forwards compatibility.
 type LabPlan struct {
 	pulumi.CustomResourceState
 

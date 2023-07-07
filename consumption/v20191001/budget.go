@@ -12,6 +12,8 @@ import (
 )
 
 // A budget resource.
+//
+// Deprecated: azure-native:consumption/v20191001:Budget is being removed in the next major version of this provider. Upgrade to at least azure-native:consumption/v20230501:Budget to guarantee forwards compatibility.
 type Budget struct {
 	pulumi.CustomResourceState
 

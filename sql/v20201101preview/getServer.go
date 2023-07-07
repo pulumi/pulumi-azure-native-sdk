@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a server.
+//
+// Deprecated: azure-native:sql/v20201101preview:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:Server to guarantee forwards compatibility.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	var rv LookupServerResult
 	err := ctx.Invoke("azure-native:sql/v20201101preview:getServer", args, &rv, opts...)

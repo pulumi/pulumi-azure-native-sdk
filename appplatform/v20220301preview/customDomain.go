@@ -13,7 +13,7 @@ import (
 
 // Custom domain resource payload.
 //
-// Deprecated: azure-native:appplatform/v20220301preview:CustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:CustomDomain to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220301preview:CustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:CustomDomain to guarantee forwards compatibility.
 type CustomDomain struct {
 	pulumi.CustomResourceState
 

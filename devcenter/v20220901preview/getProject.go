@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a specific project.
+//
+// Deprecated: azure-native:devcenter/v20220901preview:Project is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:Project to guarantee forwards compatibility.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("azure-native:devcenter/v20220901preview:getProject", args, &rv, opts...)

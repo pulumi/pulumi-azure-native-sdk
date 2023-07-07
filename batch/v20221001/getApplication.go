@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about the specified application.
+//
+// Deprecated: azure-native:batch/v20221001:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20230501:Application to guarantee forwards compatibility.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:batch/v20221001:getApplication", args, &rv, opts...)

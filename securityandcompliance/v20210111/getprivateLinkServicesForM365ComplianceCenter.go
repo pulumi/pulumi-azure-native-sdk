@@ -11,8 +11,6 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForM365ComplianceCenter resource.
-//
-// Deprecated: azure-native:securityandcompliance/v20210111:privateLinkServicesForM365ComplianceCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:securityandcompliance/v20210308:privateLinkServicesForM365ComplianceCenter to guarantee forwards compatibility.
 func GetprivateLinkServicesForM365ComplianceCenter(ctx *pulumi.Context, args *GetprivateLinkServicesForM365ComplianceCenterArgs, opts ...pulumi.InvokeOption) (*GetprivateLinkServicesForM365ComplianceCenterResult, error) {
 	var rv GetprivateLinkServicesForM365ComplianceCenterResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210111:getprivateLinkServicesForM365ComplianceCenter", args, &rv, opts...)

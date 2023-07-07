@@ -12,6 +12,8 @@ import (
 )
 
 // Network security user rule.
+//
+// Deprecated: azure-native:network/v20210201preview:UserRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210501preview:UserRule to guarantee forwards compatibility.
 type UserRule struct {
 	pulumi.CustomResourceState
 

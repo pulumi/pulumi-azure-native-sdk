@@ -11,6 +11,8 @@ import (
 )
 
 // Gets details about the specified streaming job.
+//
+// Deprecated: azure-native:streamanalytics/v20160301:StreamingJob is being removed in the next major version of this provider. Upgrade to at least azure-native:streamanalytics/v20170401preview:StreamingJob to guarantee forwards compatibility.
 func LookupStreamingJob(ctx *pulumi.Context, args *LookupStreamingJobArgs, opts ...pulumi.InvokeOption) (*LookupStreamingJobResult, error) {
 	var rv LookupStreamingJobResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20160301:getStreamingJob", args, &rv, opts...)

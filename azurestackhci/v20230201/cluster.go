@@ -12,6 +12,8 @@ import (
 )
 
 // Cluster details.
+//
+// Deprecated: azure-native:azurestackhci/v20230201:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230301:Cluster to guarantee forwards compatibility.
 type Cluster struct {
 	pulumi.CustomResourceState
 

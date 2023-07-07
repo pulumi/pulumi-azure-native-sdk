@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the specific Azure Monitor workspace
+//
+// Deprecated: azure-native:monitor/v20210603preview:AzureMonitorWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:monitor/v20230403:AzureMonitorWorkspace to guarantee forwards compatibility.
 func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAzureMonitorWorkspaceResult, error) {
 	var rv LookupAzureMonitorWorkspaceResult
 	err := ctx.Invoke("azure-native:monitor/v20210603preview:getAzureMonitorWorkspace", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Single item in List or Get Migration Config operation
+//
+// Deprecated: azure-native:servicebus/v20170401:MigrationConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:MigrationConfig to guarantee forwards compatibility.
 type MigrationConfig struct {
 	pulumi.CustomResourceState
 

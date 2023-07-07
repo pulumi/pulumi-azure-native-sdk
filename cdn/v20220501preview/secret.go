@@ -13,7 +13,7 @@ import (
 
 // Friendly Secret name mapping to the any Secret or secret related information.
 //
-// Deprecated: azure-native:cdn/v20220501preview:Secret is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Secret to guarantee forwards compatibility.
+// Deprecated: azure-native:cdn/v20220501preview:Secret is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Secret to guarantee forwards compatibility.
 type Secret struct {
 	pulumi.CustomResourceState
 

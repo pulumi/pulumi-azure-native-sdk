@@ -12,6 +12,8 @@ import (
 )
 
 // Define the Virtual Instance for SAP solutions resource.
+//
+// Deprecated: azure-native:workloads/v20211201preview:SAPVirtualInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SAPVirtualInstance to guarantee forwards compatibility.
 type SAPVirtualInstance struct {
 	pulumi.CustomResourceState
 

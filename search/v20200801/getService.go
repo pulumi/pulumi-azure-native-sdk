@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the search service with the given name in the given resource group.
+//
+// Deprecated: azure-native:search/v20200801:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:search/v20210401preview:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:search/v20200801:getService", args, &rv, opts...)

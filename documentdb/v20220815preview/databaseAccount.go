@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB database account.
+//
+// Deprecated: azure-native:documentdb/v20220815preview:DatabaseAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:DatabaseAccount to guarantee forwards compatibility.
 type DatabaseAccount struct {
 	pulumi.CustomResourceState
 

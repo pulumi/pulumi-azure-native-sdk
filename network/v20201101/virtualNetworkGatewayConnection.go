@@ -12,6 +12,8 @@ import (
 )
 
 // A common class for general resource information.
+//
+// Deprecated: azure-native:network/v20201101:VirtualNetworkGatewayConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualNetworkGatewayConnection to guarantee forwards compatibility.
 type VirtualNetworkGatewayConnection struct {
 	pulumi.CustomResourceState
 

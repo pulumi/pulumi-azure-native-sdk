@@ -12,6 +12,8 @@ import (
 )
 
 // Private dns zone group resource.
+//
+// Deprecated: azure-native:network/v20201101:PrivateDnsZoneGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210201:PrivateDnsZoneGroup to guarantee forwards compatibility.
 type PrivateDnsZoneGroup struct {
 	pulumi.CustomResourceState
 

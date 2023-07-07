@@ -13,7 +13,7 @@ import (
 
 // Represents Dynamics365 data connector.
 //
-// Deprecated: azure-native:securityinsights/v20211001preview:Dynamics365DataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Dynamics365DataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20211001preview:Dynamics365DataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Dynamics365DataConnector to guarantee forwards compatibility.
 type Dynamics365DataConnector struct {
 	pulumi.CustomResourceState
 

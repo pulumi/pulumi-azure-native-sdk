@@ -12,6 +12,8 @@ import (
 )
 
 // An Account Filter.
+//
+// Deprecated: azure-native:media/v20200501:AccountFilter is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:AccountFilter to guarantee forwards compatibility.
 type AccountFilter struct {
 	pulumi.CustomResourceState
 

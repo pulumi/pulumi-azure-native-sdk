@@ -12,6 +12,8 @@ import (
 )
 
 // A Database Migration Service resource
+//
+// Deprecated: azure-native:datamigration/v20180419:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20210630:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

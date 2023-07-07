@@ -12,6 +12,8 @@ import (
 )
 
 // Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there.
+//
+// Deprecated: azure-native:network/v20200501:FrontDoor is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210601:FrontDoor to guarantee forwards compatibility.
 type FrontDoor struct {
 	pulumi.CustomResourceState
 

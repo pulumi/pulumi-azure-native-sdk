@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an elastic pool.
+//
+// Deprecated: azure-native:sql/v20220801preview:ElasticPool is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ElasticPool to guarantee forwards compatibility.
 func LookupElasticPool(ctx *pulumi.Context, args *LookupElasticPoolArgs, opts ...pulumi.InvokeOption) (*LookupElasticPoolResult, error) {
 	var rv LookupElasticPoolResult
 	err := ctx.Invoke("azure-native:sql/v20220801preview:getElasticPool", args, &rv, opts...)

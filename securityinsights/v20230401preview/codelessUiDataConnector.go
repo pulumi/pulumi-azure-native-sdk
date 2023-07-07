@@ -12,6 +12,8 @@ import (
 )
 
 // Represents Codeless UI data connector.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:CodelessUiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:CodelessUiDataConnector to guarantee forwards compatibility.
 type CodelessUiDataConnector struct {
 	pulumi.CustomResourceState
 

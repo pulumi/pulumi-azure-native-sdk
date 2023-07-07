@@ -12,6 +12,8 @@ import (
 )
 
 // The application type name resource
+//
+// Deprecated: azure-native:servicefabric/v20200301:ApplicationType is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20210601:ApplicationType to guarantee forwards compatibility.
 type ApplicationType struct {
 	pulumi.CustomResourceState
 

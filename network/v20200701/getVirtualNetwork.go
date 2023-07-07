@@ -12,7 +12,7 @@ import (
 
 // Gets the specified virtual network by resource group.
 //
-// Deprecated: azure-native:network/v20200701:VirtualNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualNetwork to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200701:VirtualNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualNetwork to guarantee forwards compatibility.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	var rv LookupVirtualNetworkResult
 	err := ctx.Invoke("azure-native:network/v20200701:getVirtualNetwork", args, &rv, opts...)

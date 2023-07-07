@@ -12,7 +12,7 @@ import (
 
 // Get the application accelerator.
 //
-// Deprecated: azure-native:appplatform/v20221101preview:ApplicationAccelerator is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ApplicationAccelerator to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20221101preview:ApplicationAccelerator is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ApplicationAccelerator to guarantee forwards compatibility.
 func LookupApplicationAccelerator(ctx *pulumi.Context, args *LookupApplicationAcceleratorArgs, opts ...pulumi.InvokeOption) (*LookupApplicationAcceleratorResult, error) {
 	var rv LookupApplicationAcceleratorResult
 	err := ctx.Invoke("azure-native:appplatform/v20221101preview:getApplicationAccelerator", args, &rv, opts...)

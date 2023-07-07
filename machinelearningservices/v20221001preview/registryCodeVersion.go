@@ -13,7 +13,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Deprecated: azure-native:machinelearningservices/v20221001preview:RegistryCodeVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:RegistryCodeVersion to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20221001preview:RegistryCodeVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:RegistryCodeVersion to guarantee forwards compatibility.
 type RegistryCodeVersion struct {
 	pulumi.CustomResourceState
 

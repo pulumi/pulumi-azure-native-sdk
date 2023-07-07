@@ -13,7 +13,7 @@ import (
 
 // The build service agent pool resource
 //
-// Deprecated: azure-native:appplatform/v20220501preview:BuildServiceAgentPool is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildServiceAgentPool to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220501preview:BuildServiceAgentPool is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:BuildServiceAgentPool to guarantee forwards compatibility.
 type BuildServiceAgentPool struct {
 	pulumi.CustomResourceState
 

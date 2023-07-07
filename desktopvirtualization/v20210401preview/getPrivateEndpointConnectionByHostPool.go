@@ -11,6 +11,8 @@ import (
 )
 
 // Get a private endpoint connection.
+//
+// Deprecated: azure-native:desktopvirtualization/v20210401preview:PrivateEndpointConnectionByHostPool is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:PrivateEndpointConnectionByHostPool to guarantee forwards compatibility.
 func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByHostPoolResult, error) {
 	var rv LookupPrivateEndpointConnectionByHostPoolResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20210401preview:getPrivateEndpointConnectionByHostPool", args, &rv, opts...)

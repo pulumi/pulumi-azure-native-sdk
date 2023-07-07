@@ -13,7 +13,7 @@ import (
 
 // Service Registry resource
 //
-// Deprecated: azure-native:appplatform/v20220301preview:ServiceRegistry is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ServiceRegistry to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220301preview:ServiceRegistry is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ServiceRegistry to guarantee forwards compatibility.
 type ServiceRegistry struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Get the API portal and its properties.
+//
+// Deprecated: azure-native:appplatform/v20230101preview:ApiPortal is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ApiPortal to guarantee forwards compatibility.
 func LookupApiPortal(ctx *pulumi.Context, args *LookupApiPortalArgs, opts ...pulumi.InvokeOption) (*LookupApiPortalResult, error) {
 	var rv LookupApiPortalResult
 	err := ctx.Invoke("azure-native:appplatform/v20230101preview:getApiPortal", args, &rv, opts...)

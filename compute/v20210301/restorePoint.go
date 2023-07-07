@@ -12,6 +12,8 @@ import (
 )
 
 // Restore Point details.
+//
+// Deprecated: azure-native:compute/v20210301:RestorePoint is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20211101:RestorePoint to guarantee forwards compatibility.
 type RestorePoint struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Get information about a guest configuration assignment
+//
+// Deprecated: azure-native:guestconfiguration/v20200625:GuestConfigurationConnectedVMwarevSphereAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:guestconfiguration/v20220125:GuestConfigurationConnectedVMwarevSphereAssignment to guarantee forwards compatibility.
 func LookupGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Context, args *LookupGuestConfigurationConnectedVMwarevSphereAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult, error) {
 	var rv LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult
 	err := ctx.Invoke("azure-native:guestconfiguration/v20200625:getGuestConfigurationConnectedVMwarevSphereAssignment", args, &rv, opts...)

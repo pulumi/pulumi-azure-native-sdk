@@ -11,6 +11,8 @@ import (
 )
 
 // Get a specified connection created by this subscription.
+//
+// Deprecated: azure-native:network/v20220901:SubscriptionNetworkManagerConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:SubscriptionNetworkManagerConnection to guarantee forwards compatibility.
 func LookupSubscriptionNetworkManagerConnection(ctx *pulumi.Context, args *LookupSubscriptionNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionNetworkManagerConnectionResult, error) {
 	var rv LookupSubscriptionNetworkManagerConnectionResult
 	err := ctx.Invoke("azure-native:network/v20220901:getSubscriptionNetworkManagerConnection", args, &rv, opts...)

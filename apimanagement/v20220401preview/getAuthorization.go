@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the authorization specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:Authorization is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Authorization to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:Authorization is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Authorization to guarantee forwards compatibility.
 func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationResult, error) {
 	var rv LookupAuthorizationResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getAuthorization", args, &rv, opts...)

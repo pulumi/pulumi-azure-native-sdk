@@ -12,6 +12,8 @@ import (
 )
 
 // Represents an incident in Azure Security Insights.
+//
+// Deprecated: azure-native:securityinsights/v20200101:Incident is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:Incident to guarantee forwards compatibility.
 type Incident struct {
 	pulumi.CustomResourceState
 

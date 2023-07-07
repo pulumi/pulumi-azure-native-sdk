@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a watchlist, without its watchlist items.
+//
+// Deprecated: azure-native:securityinsights/v20210301preview:WatchlistItem is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210401:WatchlistItem to guarantee forwards compatibility.
 func LookupWatchlistItem(ctx *pulumi.Context, args *LookupWatchlistItemArgs, opts ...pulumi.InvokeOption) (*LookupWatchlistItemResult, error) {
 	var rv LookupWatchlistItemResult
 	err := ctx.Invoke("azure-native:securityinsights/v20210301preview:getWatchlistItem", args, &rv, opts...)

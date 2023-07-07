@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the schedule identified by schedule name.
+//
+// Deprecated: azure-native:automation/v20190601:Schedule is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Schedule to guarantee forwards compatibility.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:automation/v20190601:getSchedule", args, &rv, opts...)

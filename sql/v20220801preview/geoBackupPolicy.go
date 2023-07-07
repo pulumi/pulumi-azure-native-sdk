@@ -12,6 +12,8 @@ import (
 )
 
 // A Geo backup policy.
+//
+// Deprecated: azure-native:sql/v20220801preview:GeoBackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:GeoBackupPolicy to guarantee forwards compatibility.
 type GeoBackupPolicy struct {
 	pulumi.CustomResourceState
 

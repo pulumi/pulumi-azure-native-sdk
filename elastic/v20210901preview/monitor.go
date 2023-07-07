@@ -13,7 +13,7 @@ import (
 
 // Monitor resource.
 //
-// Deprecated: azure-native:elastic/v20210901preview:Monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:elastic/v20220901preview:Monitor to guarantee forwards compatibility.
+// Deprecated: azure-native:elastic/v20210901preview:Monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:elastic/v20230615preview:Monitor to guarantee forwards compatibility.
 type Monitor struct {
 	pulumi.CustomResourceState
 

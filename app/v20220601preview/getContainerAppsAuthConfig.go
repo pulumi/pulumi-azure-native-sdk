@@ -12,7 +12,7 @@ import (
 
 // Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
 //
-// Deprecated: azure-native:app/v20220601preview:ContainerAppsAuthConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20221001:ContainerAppsAuthConfig to guarantee forwards compatibility.
+// Deprecated: azure-native:app/v20220601preview:ContainerAppsAuthConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ContainerAppsAuthConfig to guarantee forwards compatibility.
 func LookupContainerAppsAuthConfig(ctx *pulumi.Context, args *LookupContainerAppsAuthConfigArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppsAuthConfigResult, error) {
 	var rv LookupContainerAppsAuthConfigResult
 	err := ctx.Invoke("azure-native:app/v20220601preview:getContainerAppsAuthConfig", args, &rv, opts...)

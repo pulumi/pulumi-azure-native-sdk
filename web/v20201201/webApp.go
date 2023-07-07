@@ -12,6 +12,8 @@ import (
 )
 
 // A web app, a mobile app backend, or an API app.
+//
+// Deprecated: azure-native:web/v20201201:WebApp is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebApp to guarantee forwards compatibility.
 type WebApp struct {
 	pulumi.CustomResourceState
 

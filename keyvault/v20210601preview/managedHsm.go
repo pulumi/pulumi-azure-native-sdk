@@ -12,6 +12,8 @@ import (
 )
 
 // Resource information with extended details.
+//
+// Deprecated: azure-native:keyvault/v20210601preview:ManagedHsm is being removed in the next major version of this provider. Upgrade to at least azure-native:keyvault/v20230201:ManagedHsm to guarantee forwards compatibility.
 type ManagedHsm struct {
 	pulumi.CustomResourceState
 

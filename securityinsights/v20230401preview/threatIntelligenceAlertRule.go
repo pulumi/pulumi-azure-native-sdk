@@ -12,6 +12,8 @@ import (
 )
 
 // Represents Threat Intelligence alert rule.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:ThreatIntelligenceAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ThreatIntelligenceAlertRule to guarantee forwards compatibility.
 type ThreatIntelligenceAlertRule struct {
 	pulumi.CustomResourceState
 

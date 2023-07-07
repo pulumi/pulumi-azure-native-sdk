@@ -12,6 +12,8 @@ import (
 )
 
 // A SQL virtual machine.
+//
+// Deprecated: azure-native:sqlvirtualmachine/v20170301preview:SqlVirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20230101preview:SqlVirtualMachine to guarantee forwards compatibility.
 type SqlVirtualMachine struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Retrieves the details of a Virtual Hub Bgp Connection.
 //
-// Deprecated: azure-native:network/v20200701:VirtualHubBgpConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualHubBgpConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200701:VirtualHubBgpConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualHubBgpConnection to guarantee forwards compatibility.
 func LookupVirtualHubBgpConnection(ctx *pulumi.Context, args *LookupVirtualHubBgpConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualHubBgpConnectionResult, error) {
 	var rv LookupVirtualHubBgpConnectionResult
 	err := ctx.Invoke("azure-native:network/v20200701:getVirtualHubBgpConnection", args, &rv, opts...)

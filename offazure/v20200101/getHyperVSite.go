@@ -11,6 +11,8 @@ import (
 )
 
 // Site REST Resource.
+//
+// Deprecated: azure-native:offazure/v20200101:HyperVSite is being removed in the next major version of this provider. Upgrade to at least azure-native:offazure/v20200707:HyperVSite to guarantee forwards compatibility.
 func LookupHyperVSite(ctx *pulumi.Context, args *LookupHyperVSiteArgs, opts ...pulumi.InvokeOption) (*LookupHyperVSiteResult, error) {
 	var rv LookupHyperVSiteResult
 	err := ctx.Invoke("azure-native:offazure/v20200101:getHyperVSite", args, &rv, opts...)

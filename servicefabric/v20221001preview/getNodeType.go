@@ -12,7 +12,7 @@ import (
 
 // Get a Service Fabric node type of a given managed cluster.
 //
-// Deprecated: azure-native:servicefabric/v20221001preview:NodeType is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20230201preview:NodeType to guarantee forwards compatibility.
+// Deprecated: azure-native:servicefabric/v20221001preview:NodeType is being removed in the next major version of this provider. Upgrade to at least azure-native:servicefabric/v20230301preview:NodeType to guarantee forwards compatibility.
 func LookupNodeType(ctx *pulumi.Context, args *LookupNodeTypeArgs, opts ...pulumi.InvokeOption) (*LookupNodeTypeResult, error) {
 	var rv LookupNodeTypeResult
 	err := ctx.Invoke("azure-native:servicefabric/v20221001preview:getNodeType", args, &rv, opts...)

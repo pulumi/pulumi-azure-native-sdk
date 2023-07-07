@@ -12,6 +12,8 @@ import (
 )
 
 // The Connection Monitor Test class.
+//
+// Deprecated: azure-native:peering/v20210601:ConnectionMonitorTest is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:ConnectionMonitorTest to guarantee forwards compatibility.
 type ConnectionMonitorTest struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Virtual Instance for SAP solutions resource
+//
+// Deprecated: azure-native:workloads/v20211201preview:SAPVirtualInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SAPVirtualInstance to guarantee forwards compatibility.
 func LookupSAPVirtualInstance(ctx *pulumi.Context, args *LookupSAPVirtualInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPVirtualInstanceResult, error) {
 	var rv LookupSAPVirtualInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getSAPVirtualInstance", args, &rv, opts...)

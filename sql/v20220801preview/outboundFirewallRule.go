@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure SQL DB Server Outbound Firewall Rule.
+//
+// Deprecated: azure-native:sql/v20220801preview:OutboundFirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:OutboundFirewallRule to guarantee forwards compatibility.
 type OutboundFirewallRule struct {
 	pulumi.CustomResourceState
 

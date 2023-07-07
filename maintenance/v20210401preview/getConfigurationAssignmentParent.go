@@ -11,6 +11,8 @@ import (
 )
 
 // Get configuration for resource.
+//
+// Deprecated: azure-native:maintenance/v20210401preview:ConfigurationAssignmentParent is being removed in the next major version of this provider. Upgrade to at least azure-native:maintenance/v20221101preview:ConfigurationAssignmentParent to guarantee forwards compatibility.
 func LookupConfigurationAssignmentParent(ctx *pulumi.Context, args *LookupConfigurationAssignmentParentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentParentResult, error) {
 	var rv LookupConfigurationAssignmentParentResult
 	err := ctx.Invoke("azure-native:maintenance/v20210401preview:getConfigurationAssignmentParent", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // A DDoS custom policy in a resource group.
+//
+// Deprecated: azure-native:network/v20201101:DdosCustomPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220101:DdosCustomPolicy to guarantee forwards compatibility.
 type DdosCustomPolicy struct {
 	pulumi.CustomResourceState
 

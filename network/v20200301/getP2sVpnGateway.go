@@ -12,7 +12,7 @@ import (
 
 // Retrieves the details of a virtual wan p2s vpn gateway.
 //
-// Deprecated: azure-native:network/v20200301:P2sVpnGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:P2sVpnGateway to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200301:P2sVpnGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:P2sVpnGateway to guarantee forwards compatibility.
 func LookupP2sVpnGateway(ctx *pulumi.Context, args *LookupP2sVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupP2sVpnGatewayResult, error) {
 	var rv LookupP2sVpnGatewayResult
 	err := ctx.Invoke("azure-native:network/v20200301:getP2sVpnGateway", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Definition of the credential.
+//
+// Deprecated: azure-native:automation/v20190601:Credential is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Credential to guarantee forwards compatibility.
 type Credential struct {
 	pulumi.CustomResourceState
 

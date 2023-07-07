@@ -11,6 +11,8 @@ import (
 )
 
 // Get specified Update
+//
+// Deprecated: azure-native:azurestackhci/v20230201:Update is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230301:Update to guarantee forwards compatibility.
 func LookupUpdate(ctx *pulumi.Context, args *LookupUpdateArgs, opts ...pulumi.InvokeOption) (*LookupUpdateResult, error) {
 	var rv LookupUpdateResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20230201:getUpdate", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Specifies information about the gallery image version that you want to create or update.
+//
+// Deprecated: azure-native:compute/v20200930:GalleryImageVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220303:GalleryImageVersion to guarantee forwards compatibility.
 type GalleryImageVersion struct {
 	pulumi.CustomResourceState
 

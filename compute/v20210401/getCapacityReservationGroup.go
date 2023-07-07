@@ -11,6 +11,8 @@ import (
 )
 
 // The operation that retrieves information about a capacity reservation group.
+//
+// Deprecated: azure-native:compute/v20210401:CapacityReservationGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:CapacityReservationGroup to guarantee forwards compatibility.
 func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityReservationGroupArgs, opts ...pulumi.InvokeOption) (*LookupCapacityReservationGroupResult, error) {
 	var rv LookupCapacityReservationGroupResult
 	err := ctx.Invoke("azure-native:compute/v20210401:getCapacityReservationGroup", args, &rv, opts...)

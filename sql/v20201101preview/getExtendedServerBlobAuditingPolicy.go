@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an extended server's blob auditing policy.
+//
+// Deprecated: azure-native:sql/v20201101preview:ExtendedServerBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ExtendedServerBlobAuditingPolicy to guarantee forwards compatibility.
 func LookupExtendedServerBlobAuditingPolicy(ctx *pulumi.Context, args *LookupExtendedServerBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupExtendedServerBlobAuditingPolicyResult, error) {
 	var rv LookupExtendedServerBlobAuditingPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20201101preview:getExtendedServerBlobAuditingPolicy", args, &rv, opts...)

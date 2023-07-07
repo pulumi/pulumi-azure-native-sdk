@@ -12,7 +12,7 @@ import (
 
 // Gets the specified IpAllocation by resource group.
 //
-// Deprecated: azure-native:network/v20210801:IpAllocation is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:IpAllocation to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20210801:IpAllocation is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:IpAllocation to guarantee forwards compatibility.
 func LookupIpAllocation(ctx *pulumi.Context, args *LookupIpAllocationArgs, opts ...pulumi.InvokeOption) (*LookupIpAllocationResult, error) {
 	var rv LookupIpAllocationResult
 	err := ctx.Invoke("azure-native:network/v20210801:getIpAllocation", args, &rv, opts...)

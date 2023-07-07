@@ -13,7 +13,7 @@ import (
 
 // Describes a VMSS VM Extension.
 //
-// Deprecated: azure-native:compute/v20220801:VirtualMachineScaleSetVMExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachineScaleSetVMExtension to guarantee forwards compatibility.
+// Deprecated: azure-native:compute/v20220801:VirtualMachineScaleSetVMExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:VirtualMachineScaleSetVMExtension to guarantee forwards compatibility.
 type VirtualMachineScaleSetVMExtension struct {
 	pulumi.CustomResourceState
 

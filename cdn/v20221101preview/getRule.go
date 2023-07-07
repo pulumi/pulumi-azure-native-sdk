@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing delivery rule within a rule set.
+//
+// Deprecated: azure-native:cdn/v20221101preview:Rule is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Rule to guarantee forwards compatibility.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	var rv LookupRuleResult
 	err := ctx.Invoke("azure-native:cdn/v20221101preview:getRule", args, &rv, opts...)

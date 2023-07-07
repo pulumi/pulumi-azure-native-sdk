@@ -12,6 +12,8 @@ import (
 )
 
 // Network watcher in a resource group.
+//
+// Deprecated: azure-native:network/v20201101:NetworkWatcher is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220501:NetworkWatcher to guarantee forwards compatibility.
 type NetworkWatcher struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Defines web application firewall policy.
+//
+// Deprecated: azure-native:network/v20201101:Policy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210601:Policy to guarantee forwards compatibility.
 type Policy struct {
 	pulumi.CustomResourceState
 

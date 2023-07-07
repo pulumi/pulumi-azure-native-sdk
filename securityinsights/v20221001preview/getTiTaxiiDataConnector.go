@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20221001preview:TiTaxiiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:TiTaxiiDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20221001preview:TiTaxiiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:TiTaxiiDataConnector to guarantee forwards compatibility.
 func LookupTiTaxiiDataConnector(ctx *pulumi.Context, args *LookupTiTaxiiDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupTiTaxiiDataConnectorResult, error) {
 	var rv LookupTiTaxiiDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221001preview:getTiTaxiiDataConnector", args, &rv, opts...)

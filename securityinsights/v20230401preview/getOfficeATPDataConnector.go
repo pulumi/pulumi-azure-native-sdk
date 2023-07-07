@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a data connector.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:OfficeATPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:OfficeATPDataConnector to guarantee forwards compatibility.
 func LookupOfficeATPDataConnector(ctx *pulumi.Context, args *LookupOfficeATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeATPDataConnectorResult, error) {
 	var rv LookupOfficeATPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getOfficeATPDataConnector", args, &rv, opts...)

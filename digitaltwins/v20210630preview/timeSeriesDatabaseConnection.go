@@ -12,6 +12,8 @@ import (
 )
 
 // Describes a time series database connection resource.
+//
+// Deprecated: azure-native:digitaltwins/v20210630preview:TimeSeriesDatabaseConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:digitaltwins/v20230131:TimeSeriesDatabaseConnection to guarantee forwards compatibility.
 type TimeSeriesDatabaseConnection struct {
 	pulumi.CustomResourceState
 

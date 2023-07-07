@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the alert rule.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:MicrosoftSecurityIncidentCreationAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:MicrosoftSecurityIncidentCreationAlertRule to guarantee forwards compatibility.
 func LookupMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context, args *LookupMicrosoftSecurityIncidentCreationAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupMicrosoftSecurityIncidentCreationAlertRuleResult, error) {
 	var rv LookupMicrosoftSecurityIncidentCreationAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getMicrosoftSecurityIncidentCreationAlertRule", args, &rv, opts...)

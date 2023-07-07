@@ -12,7 +12,7 @@ import (
 
 // Gets the alert rule.
 //
-// Deprecated: azure-native:securityinsights/v20220801preview:ThreatIntelligenceAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:ThreatIntelligenceAlertRule to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220801preview:ThreatIntelligenceAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ThreatIntelligenceAlertRule to guarantee forwards compatibility.
 func LookupThreatIntelligenceAlertRule(ctx *pulumi.Context, args *LookupThreatIntelligenceAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupThreatIntelligenceAlertRuleResult, error) {
 	var rv LookupThreatIntelligenceAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220801preview:getThreatIntelligenceAlertRule", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // KPack Builder resource
 //
-// Deprecated: azure-native:appplatform/v20221101preview:BuildServiceBuilder is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildServiceBuilder to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20221101preview:BuildServiceBuilder is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:BuildServiceBuilder to guarantee forwards compatibility.
 type BuildServiceBuilder struct {
 	pulumi.CustomResourceState
 

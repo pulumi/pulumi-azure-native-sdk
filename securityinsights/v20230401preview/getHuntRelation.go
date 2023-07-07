@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a hunt relation
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:HuntRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:HuntRelation to guarantee forwards compatibility.
 func LookupHuntRelation(ctx *pulumi.Context, args *LookupHuntRelationArgs, opts ...pulumi.InvokeOption) (*LookupHuntRelationResult, error) {
 	var rv LookupHuntRelationResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getHuntRelation", args, &rv, opts...)

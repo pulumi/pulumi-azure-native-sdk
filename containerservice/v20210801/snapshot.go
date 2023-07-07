@@ -12,6 +12,8 @@ import (
 )
 
 // A node pool snapshot resource.
+//
+// Deprecated: azure-native:containerservice/v20210801:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:Snapshot to guarantee forwards compatibility.
 type Snapshot struct {
 	pulumi.CustomResourceState
 

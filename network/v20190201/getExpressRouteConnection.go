@@ -12,7 +12,7 @@ import (
 
 // Gets the specified ExpressRouteConnection.
 //
-// Deprecated: azure-native:network/v20190201:ExpressRouteConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ExpressRouteConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20190201:ExpressRouteConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ExpressRouteConnection to guarantee forwards compatibility.
 func LookupExpressRouteConnection(ctx *pulumi.Context, args *LookupExpressRouteConnectionArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteConnectionResult, error) {
 	var rv LookupExpressRouteConnectionResult
 	err := ctx.Invoke("azure-native:network/v20190201:getExpressRouteConnection", args, &rv, opts...)

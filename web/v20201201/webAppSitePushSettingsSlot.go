@@ -12,6 +12,8 @@ import (
 )
 
 // Push settings for the App.
+//
+// Deprecated: azure-native:web/v20201201:WebAppSitePushSettingsSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSitePushSettingsSlot to guarantee forwards compatibility.
 type WebAppSitePushSettingsSlot struct {
 	pulumi.CustomResourceState
 

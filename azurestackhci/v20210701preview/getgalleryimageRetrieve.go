@@ -11,8 +11,6 @@ import (
 )
 
 // Lists all galleryimages under the resource group.
-//
-// Deprecated: azure-native:azurestackhci/v20210701preview:galleryimageRetrieve is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20210901preview:galleryimageRetrieve to guarantee forwards compatibility.
 func GetgalleryimageRetrieve(ctx *pulumi.Context, args *GetgalleryimageRetrieveArgs, opts ...pulumi.InvokeOption) (*GetgalleryimageRetrieveResult, error) {
 	var rv GetgalleryimageRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210701preview:getgalleryimageRetrieve", args, &rv, opts...)

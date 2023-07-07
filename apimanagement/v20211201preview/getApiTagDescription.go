@@ -12,7 +12,7 @@ import (
 
 // Get Tag description in scope of API
 //
-// Deprecated: azure-native:apimanagement/v20211201preview:ApiTagDescription is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiTagDescription to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20211201preview:ApiTagDescription is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiTagDescription to guarantee forwards compatibility.
 func LookupApiTagDescription(ctx *pulumi.Context, args *LookupApiTagDescriptionArgs, opts ...pulumi.InvokeOption) (*LookupApiTagDescriptionResult, error) {
 	var rv LookupApiTagDescriptionResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:getApiTagDescription", args, &rv, opts...)

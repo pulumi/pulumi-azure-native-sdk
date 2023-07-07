@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the properties of an Azure Stack registration.
+//
+// Deprecated: azure-native:azurestack/v20170601:Registration is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestack/v20200601preview:Registration to guarantee forwards compatibility.
 func LookupRegistration(ctx *pulumi.Context, args *LookupRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationResult, error) {
 	var rv LookupRegistrationResult
 	err := ctx.Invoke("azure-native:azurestack/v20170601:getRegistration", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the detailed information for a given pipeline run.
+//
+// Deprecated: azure-native:containerregistry/v20201101preview:PipelineRun is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:PipelineRun to guarantee forwards compatibility.
 func LookupPipelineRun(ctx *pulumi.Context, args *LookupPipelineRunArgs, opts ...pulumi.InvokeOption) (*LookupPipelineRunResult, error) {
 	var rv LookupPipelineRunResult
 	err := ctx.Invoke("azure-native:containerregistry/v20201101preview:getPipelineRun", args, &rv, opts...)

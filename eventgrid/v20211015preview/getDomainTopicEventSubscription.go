@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of a nested event subscription for a domain topic.
+//
+// Deprecated: azure-native:eventgrid/v20211015preview:DomainTopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:DomainTopicEventSubscription to guarantee forwards compatibility.
 func LookupDomainTopicEventSubscription(ctx *pulumi.Context, args *LookupDomainTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupDomainTopicEventSubscriptionResult, error) {
 	var rv LookupDomainTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getDomainTopicEventSubscription", args, &rv, opts...)

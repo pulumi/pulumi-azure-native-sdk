@@ -13,7 +13,7 @@ import (
 
 // User details.
 //
-// Deprecated: azure-native:apimanagement/v20180601preview:GroupUser is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:GroupUser to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20180601preview:GroupUser is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GroupUser to guarantee forwards compatibility.
 type GroupUser struct {
 	pulumi.CustomResourceState
 

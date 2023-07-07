@@ -12,7 +12,7 @@ import (
 
 // Retrieves the details of a VirtualHub.
 //
-// Deprecated: azure-native:network/v20200701:VirtualHub is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualHub to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200701:VirtualHub is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualHub to guarantee forwards compatibility.
 func LookupVirtualHub(ctx *pulumi.Context, args *LookupVirtualHubArgs, opts ...pulumi.InvokeOption) (*LookupVirtualHubResult, error) {
 	var rv LookupVirtualHubResult
 	err := ctx.Invoke("azure-native:network/v20200701:getVirtualHub", args, &rv, opts...)

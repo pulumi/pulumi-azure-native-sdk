@@ -12,6 +12,8 @@ import (
 )
 
 // Definition of the watcher type.
+//
+// Deprecated: azure-native:automation/v20190601:Watcher is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20200113preview:Watcher to guarantee forwards compatibility.
 type Watcher struct {
 	pulumi.CustomResourceState
 

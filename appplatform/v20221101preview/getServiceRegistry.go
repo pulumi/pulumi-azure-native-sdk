@@ -12,7 +12,7 @@ import (
 
 // Get the Service Registry and its properties.
 //
-// Deprecated: azure-native:appplatform/v20221101preview:ServiceRegistry is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ServiceRegistry to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20221101preview:ServiceRegistry is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ServiceRegistry to guarantee forwards compatibility.
 func LookupServiceRegistry(ctx *pulumi.Context, args *LookupServiceRegistryArgs, opts ...pulumi.InvokeOption) (*LookupServiceRegistryResult, error) {
 	var rv LookupServiceRegistryResult
 	err := ctx.Invoke("azure-native:appplatform/v20221101preview:getServiceRegistry", args, &rv, opts...)

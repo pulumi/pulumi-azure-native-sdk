@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20220701preview:Dynamics365DataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Dynamics365DataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220701preview:Dynamics365DataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Dynamics365DataConnector to guarantee forwards compatibility.
 func LookupDynamics365DataConnector(ctx *pulumi.Context, args *LookupDynamics365DataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupDynamics365DataConnectorResult, error) {
 	var rv LookupDynamics365DataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getDynamics365DataConnector", args, &rv, opts...)

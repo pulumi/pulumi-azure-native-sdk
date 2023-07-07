@@ -12,6 +12,8 @@ import (
 )
 
 // disk encryption set resource.
+//
+// Deprecated: azure-native:compute/v20201201:DiskEncryptionSet is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220702:DiskEncryptionSet to guarantee forwards compatibility.
 type DiskEncryptionSet struct {
 	pulumi.CustomResourceState
 

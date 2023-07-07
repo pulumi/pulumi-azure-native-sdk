@@ -13,7 +13,7 @@ import (
 
 // Settings with single toggle.
 //
-// Deprecated: azure-native:securityinsights/v20221101preview:EntityAnalytics is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:EntityAnalytics to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20221101preview:EntityAnalytics is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:EntityAnalytics to guarantee forwards compatibility.
 type EntityAnalytics struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Get a custom domain.
 //
-// Deprecated: azure-native:signalrservice/v20220801preview:SignalRCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230201:SignalRCustomDomain to guarantee forwards compatibility.
+// Deprecated: azure-native:signalrservice/v20220801preview:SignalRCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRCustomDomain to guarantee forwards compatibility.
 func LookupSignalRCustomDomain(ctx *pulumi.Context, args *LookupSignalRCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomDomainResult, error) {
 	var rv LookupSignalRCustomDomainResult
 	err := ctx.Invoke("azure-native:signalrservice/v20220801preview:getSignalRCustomDomain", args, &rv, opts...)

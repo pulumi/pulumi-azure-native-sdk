@@ -13,7 +13,7 @@ import (
 
 // Dev Tool Portal resource
 //
-// Deprecated: azure-native:appplatform/v20221101preview:DevToolPortal is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:DevToolPortal to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20221101preview:DevToolPortal is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:DevToolPortal to guarantee forwards compatibility.
 type DevToolPortal struct {
 	pulumi.CustomResourceState
 

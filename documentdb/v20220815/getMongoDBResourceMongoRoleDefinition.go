@@ -12,7 +12,7 @@ import (
 
 // Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
 //
-// Deprecated: azure-native:documentdb/v20220815:MongoDBResourceMongoRoleDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:MongoDBResourceMongoRoleDefinition to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20220815:MongoDBResourceMongoRoleDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230301preview:MongoDBResourceMongoRoleDefinition to guarantee forwards compatibility.
 func LookupMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context, args *LookupMongoDBResourceMongoRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoRoleDefinitionResult, error) {
 	var rv LookupMongoDBResourceMongoRoleDefinitionResult
 	err := ctx.Invoke("azure-native:documentdb/v20220815:getMongoDBResourceMongoRoleDefinition", args, &rv, opts...)

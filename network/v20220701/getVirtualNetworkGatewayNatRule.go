@@ -12,7 +12,7 @@ import (
 
 // Retrieves the details of a nat rule.
 //
-// Deprecated: azure-native:network/v20220701:VirtualNetworkGatewayNatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualNetworkGatewayNatRule to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220701:VirtualNetworkGatewayNatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualNetworkGatewayNatRule to guarantee forwards compatibility.
 func LookupVirtualNetworkGatewayNatRule(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayNatRuleResult, error) {
 	var rv LookupVirtualNetworkGatewayNatRuleResult
 	err := ctx.Invoke("azure-native:network/v20220701:getVirtualNetworkGatewayNatRule", args, &rv, opts...)

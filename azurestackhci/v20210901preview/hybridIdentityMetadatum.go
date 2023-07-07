@@ -12,6 +12,8 @@ import (
 )
 
 // Defines the HybridIdentityMetadata.
+//
+// Deprecated: azure-native:azurestackhci/v20210901preview:HybridIdentityMetadatum is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20221215preview:HybridIdentityMetadatum to guarantee forwards compatibility.
 type HybridIdentityMetadatum struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // A SQL Server availability group listener.
+//
+// Deprecated: azure-native:sqlvirtualmachine/v20220801preview:AvailabilityGroupListener is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20230101preview:AvailabilityGroupListener to guarantee forwards compatibility.
 type AvailabilityGroupListener struct {
 	pulumi.CustomResourceState
 

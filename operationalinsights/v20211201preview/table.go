@@ -12,6 +12,8 @@ import (
 )
 
 // Workspace data table definition.
+//
+// Deprecated: azure-native:operationalinsights/v20211201preview:Table is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20221001:Table to guarantee forwards compatibility.
 type Table struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Specifies information about the SSH public key.
+//
+// Deprecated: azure-native:compute/v20201201:SshPublicKey is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:SshPublicKey to guarantee forwards compatibility.
 type SshPublicKey struct {
 	pulumi.CustomResourceState
 

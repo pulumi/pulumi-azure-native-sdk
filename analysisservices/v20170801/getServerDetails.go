@@ -11,6 +11,8 @@ import (
 )
 
 // Gets details about the specified Analysis Services server.
+//
+// Deprecated: azure-native:analysisservices/v20170801:ServerDetails is being removed in the next major version of this provider. Upgrade to at least azure-native:analysisservices/v20170801beta:ServerDetails to guarantee forwards compatibility.
 func LookupServerDetails(ctx *pulumi.Context, args *LookupServerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupServerDetailsResult, error) {
 	var rv LookupServerDetailsResult
 	err := ctx.Invoke("azure-native:analysisservices/v20170801:getServerDetails", args, &rv, opts...)

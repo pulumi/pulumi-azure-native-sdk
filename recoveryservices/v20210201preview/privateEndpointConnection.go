@@ -13,7 +13,7 @@ import (
 
 // Private Endpoint Connection Response Properties
 //
-// Deprecated: azure-native:recoveryservices/v20210201preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:PrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20210201preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

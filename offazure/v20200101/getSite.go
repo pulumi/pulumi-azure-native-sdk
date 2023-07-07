@@ -11,6 +11,8 @@ import (
 )
 
 // Site REST Resource.
+//
+// Deprecated: azure-native:offazure/v20200101:Site is being removed in the next major version of this provider. Upgrade to at least azure-native:offazure/v20200707:Site to guarantee forwards compatibility.
 func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.InvokeOption) (*LookupSiteResult, error) {
 	var rv LookupSiteResult
 	err := ctx.Invoke("azure-native:offazure/v20200101:getSite", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // An Application Insights workbook template definition.
+//
+// Deprecated: azure-native:insights/v20191017preview:WorkbookTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20201120:WorkbookTemplate to guarantee forwards compatibility.
 type WorkbookTemplate struct {
 	pulumi.CustomResourceState
 

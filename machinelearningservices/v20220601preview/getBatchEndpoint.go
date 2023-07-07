@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Deprecated: azure-native:machinelearningservices/v20220601preview:BatchEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:BatchEndpoint to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20220601preview:BatchEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:BatchEndpoint to guarantee forwards compatibility.
 func LookupBatchEndpoint(ctx *pulumi.Context, args *LookupBatchEndpointArgs, opts ...pulumi.InvokeOption) (*LookupBatchEndpointResult, error) {
 	var rv LookupBatchEndpointResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220601preview:getBatchEndpoint", args, &rv, opts...)

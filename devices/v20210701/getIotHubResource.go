@@ -12,7 +12,7 @@ import (
 
 // Get the non-security related metadata of an IoT hub.
 //
-// Deprecated: azure-native:devices/v20210701:IotHubResource is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20220430preview:IotHubResource to guarantee forwards compatibility.
+// Deprecated: azure-native:devices/v20210701:IotHubResource is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20221115preview:IotHubResource to guarantee forwards compatibility.
 func LookupIotHubResource(ctx *pulumi.Context, args *LookupIotHubResourceArgs, opts ...pulumi.InvokeOption) (*LookupIotHubResourceResult, error) {
 	var rv LookupIotHubResourceResult
 	err := ctx.Invoke("azure-native:devices/v20210701:getIotHubResource", args, &rv, opts...)

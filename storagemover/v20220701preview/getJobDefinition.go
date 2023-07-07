@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Job Definition resource.
+//
+// Deprecated: azure-native:storagemover/v20220701preview:JobDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:storagemover/v20230301:JobDefinition to guarantee forwards compatibility.
 func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupJobDefinitionResult, error) {
 	var rv LookupJobDefinitionResult
 	err := ctx.Invoke("azure-native:storagemover/v20220701preview:getJobDefinition", args, &rv, opts...)

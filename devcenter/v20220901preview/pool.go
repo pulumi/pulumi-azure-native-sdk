@@ -12,6 +12,8 @@ import (
 )
 
 // A pool of Virtual Machines.
+//
+// Deprecated: azure-native:devcenter/v20220901preview:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:Pool to guarantee forwards compatibility.
 type Pool struct {
 	pulumi.CustomResourceState
 

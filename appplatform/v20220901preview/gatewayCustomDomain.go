@@ -13,7 +13,7 @@ import (
 
 // Custom domain of the Spring Cloud Gateway
 //
-// Deprecated: azure-native:appplatform/v20220901preview:GatewayCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:GatewayCustomDomain to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220901preview:GatewayCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:GatewayCustomDomain to guarantee forwards compatibility.
 type GatewayCustomDomain struct {
 	pulumi.CustomResourceState
 

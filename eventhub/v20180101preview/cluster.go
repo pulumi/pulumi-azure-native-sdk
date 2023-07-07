@@ -12,6 +12,8 @@ import (
 )
 
 // Single Event Hubs Cluster resource in List or Get operations.
+//
+// Deprecated: azure-native:eventhub/v20180101preview:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:Cluster to guarantee forwards compatibility.
 type Cluster struct {
 	pulumi.CustomResourceState
 

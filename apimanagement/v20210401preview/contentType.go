@@ -13,7 +13,7 @@ import (
 
 // Content type contract details.
 //
-// Deprecated: azure-native:apimanagement/v20210401preview:ContentType is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ContentType to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210401preview:ContentType is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ContentType to guarantee forwards compatibility.
 type ContentType struct {
 	pulumi.CustomResourceState
 

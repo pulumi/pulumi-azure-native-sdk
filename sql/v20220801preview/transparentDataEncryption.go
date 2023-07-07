@@ -12,6 +12,8 @@ import (
 )
 
 // A logical database transparent data encryption state.
+//
+// Deprecated: azure-native:sql/v20220801preview:TransparentDataEncryption is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:TransparentDataEncryption to guarantee forwards compatibility.
 type TransparentDataEncryption struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Description of a namespace authorization rule.
+//
+// Deprecated: azure-native:servicebus/v20170401:NamespaceAuthorizationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20220101preview:NamespaceAuthorizationRule to guarantee forwards compatibility.
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 

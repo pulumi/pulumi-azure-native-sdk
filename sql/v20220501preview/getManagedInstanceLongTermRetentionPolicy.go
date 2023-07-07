@@ -12,7 +12,7 @@ import (
 
 // Gets a managed database's long term retention policy.
 //
-// Deprecated: azure-native:sql/v20220501preview:ManagedInstanceLongTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedInstanceLongTermRetentionPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20220501preview:ManagedInstanceLongTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedInstanceLongTermRetentionPolicy to guarantee forwards compatibility.
 func LookupManagedInstanceLongTermRetentionPolicy(ctx *pulumi.Context, args *LookupManagedInstanceLongTermRetentionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceLongTermRetentionPolicyResult, error) {
 	var rv LookupManagedInstanceLongTermRetentionPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getManagedInstanceLongTermRetentionPolicy", args, &rv, opts...)

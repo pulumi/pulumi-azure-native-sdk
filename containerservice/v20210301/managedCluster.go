@@ -12,6 +12,8 @@ import (
 )
 
 // Managed cluster.
+//
+// Deprecated: azure-native:containerservice/v20210301:ManagedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20210501:ManagedCluster to guarantee forwards compatibility.
 type ManagedCluster struct {
 	pulumi.CustomResourceState
 

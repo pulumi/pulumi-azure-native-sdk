@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:machinelearningservices/v20221201preview:BatchEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:BatchEndpoint to guarantee forwards compatibility.
 type BatchEndpoint struct {
 	pulumi.CustomResourceState
 

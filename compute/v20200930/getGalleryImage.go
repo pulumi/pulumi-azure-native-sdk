@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves information about a gallery image definition.
+//
+// Deprecated: azure-native:compute/v20200930:GalleryImage is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220303:GalleryImage to guarantee forwards compatibility.
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {
 	var rv LookupGalleryImageResult
 	err := ctx.Invoke("azure-native:compute/v20200930:getGalleryImage", args, &rv, opts...)

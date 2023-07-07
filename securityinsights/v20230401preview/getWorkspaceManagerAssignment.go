@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a workspace manager assignment
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:WorkspaceManagerAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:WorkspaceManagerAssignment to guarantee forwards compatibility.
 func LookupWorkspaceManagerAssignment(ctx *pulumi.Context, args *LookupWorkspaceManagerAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerAssignmentResult, error) {
 	var rv LookupWorkspaceManagerAssignmentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getWorkspaceManagerAssignment", args, &rv, opts...)

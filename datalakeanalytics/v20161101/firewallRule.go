@@ -12,6 +12,8 @@ import (
 )
 
 // Data Lake Analytics firewall rule information.
+//
+// Deprecated: azure-native:datalakeanalytics/v20161101:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:datalakeanalytics/v20191101preview:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

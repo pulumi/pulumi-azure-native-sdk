@@ -12,6 +12,8 @@ import (
 )
 
 // A hostname binding object.
+//
+// Deprecated: azure-native:web/v20201201:WebAppHostNameBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppHostNameBinding to guarantee forwards compatibility.
 type WebAppHostNameBinding struct {
 	pulumi.CustomResourceState
 

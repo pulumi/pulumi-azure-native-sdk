@@ -12,6 +12,8 @@ import (
 )
 
 // Job Resource.
+//
+// Deprecated: azure-native:databox/v20201101:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:databox/v20221201:Job to guarantee forwards compatibility.
 type Job struct {
 	pulumi.CustomResourceState
 

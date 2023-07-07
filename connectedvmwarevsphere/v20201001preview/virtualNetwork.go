@@ -12,6 +12,8 @@ import (
 )
 
 // Define the virtualNetwork.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20201001preview:VirtualNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:VirtualNetwork to guarantee forwards compatibility.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 

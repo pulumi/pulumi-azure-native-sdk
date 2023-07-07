@@ -12,6 +12,8 @@ import (
 )
 
 // A Invitation data transfer object.
+//
+// Deprecated: azure-native:datashare/v20200901:Invitation is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:Invitation to guarantee forwards compatibility.
 type Invitation struct {
 	pulumi.CustomResourceState
 

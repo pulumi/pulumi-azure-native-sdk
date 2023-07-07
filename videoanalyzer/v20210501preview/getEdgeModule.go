@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves a specific existing edge module resource in the given Video Analyzer account.
+//
+// Deprecated: azure-native:videoanalyzer/v20210501preview:EdgeModule is being removed in the next major version of this provider. Upgrade to at least azure-native:videoanalyzer/v20211101preview:EdgeModule to guarantee forwards compatibility.
 func LookupEdgeModule(ctx *pulumi.Context, args *LookupEdgeModuleArgs, opts ...pulumi.InvokeOption) (*LookupEdgeModuleResult, error) {
 	var rv LookupEdgeModuleResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20210501preview:getEdgeModule", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Defines the security configuration
+//
+// Deprecated: azure-native:network/v20210201preview:SecurityUserConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210501preview:SecurityUserConfiguration to guarantee forwards compatibility.
 type SecurityUserConfiguration struct {
 	pulumi.CustomResourceState
 

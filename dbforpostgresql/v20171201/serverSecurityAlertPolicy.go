@@ -12,6 +12,8 @@ import (
 )
 
 // A server security alert policy.
+//
+// Deprecated: azure-native:dbforpostgresql/v20171201:ServerSecurityAlertPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20171201preview:ServerSecurityAlertPolicy to guarantee forwards compatibility.
 type ServerSecurityAlertPolicy struct {
 	pulumi.CustomResourceState
 

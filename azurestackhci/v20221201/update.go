@@ -13,7 +13,7 @@ import (
 
 // Update details
 //
-// Deprecated: azure-native:azurestackhci/v20221201:Update is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230201:Update to guarantee forwards compatibility.
+// Deprecated: azure-native:azurestackhci/v20221201:Update is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20221215preview:Update to guarantee forwards compatibility.
 type Update struct {
 	pulumi.CustomResourceState
 

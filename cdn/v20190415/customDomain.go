@@ -14,7 +14,7 @@ import (
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
 //
 // Deprecated: Version 2019-04-15 will be removed in v2 of the provider.
-// azure-native:cdn/v20190415:CustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:CustomDomain to guarantee forwards compatibility.
+// azure-native:cdn/v20190415:CustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:CustomDomain to guarantee forwards compatibility.
 type CustomDomain struct {
 	pulumi.CustomResourceState
 

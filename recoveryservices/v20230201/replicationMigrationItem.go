@@ -12,6 +12,8 @@ import (
 )
 
 // Migration item.
+//
+// Deprecated: azure-native:recoveryservices/v20230201:ReplicationMigrationItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationMigrationItem to guarantee forwards compatibility.
 type ReplicationMigrationItem struct {
 	pulumi.CustomResourceState
 

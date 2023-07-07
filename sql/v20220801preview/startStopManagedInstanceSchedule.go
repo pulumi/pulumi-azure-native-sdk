@@ -12,6 +12,8 @@ import (
 )
 
 // Managed instance's Start/Stop schedule.
+//
+// Deprecated: azure-native:sql/v20220801preview:StartStopManagedInstanceSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:StartStopManagedInstanceSchedule to guarantee forwards compatibility.
 type StartStopManagedInstanceSchedule struct {
 	pulumi.CustomResourceState
 

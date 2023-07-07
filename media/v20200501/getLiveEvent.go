@@ -11,6 +11,8 @@ import (
 )
 
 // Gets properties of a live event.
+//
+// Deprecated: azure-native:media/v20200501:LiveEvent is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20221101:LiveEvent to guarantee forwards compatibility.
 func LookupLiveEvent(ctx *pulumi.Context, args *LookupLiveEventArgs, opts ...pulumi.InvokeOption) (*LookupLiveEventResult, error) {
 	var rv LookupLiveEventResult
 	err := ctx.Invoke("azure-native:media/v20200501:getLiveEvent", args, &rv, opts...)

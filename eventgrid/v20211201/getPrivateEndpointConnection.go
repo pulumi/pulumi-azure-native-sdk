@@ -12,7 +12,7 @@ import (
 
 // Get a specific private endpoint connection under a topic or domain.
 //
-// Deprecated: azure-native:eventgrid/v20211201:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:PrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:eventgrid/v20211201:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211201:getPrivateEndpointConnection", args, &rv, opts...)

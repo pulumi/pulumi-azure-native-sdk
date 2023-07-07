@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an ApplicationGroup for a Namespace.
+//
+// Deprecated: azure-native:eventhub/v20220101preview:ApplicationGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:ApplicationGroup to guarantee forwards compatibility.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	var rv LookupApplicationGroupResult
 	err := ctx.Invoke("azure-native:eventhub/v20220101preview:getApplicationGroup", args, &rv, opts...)

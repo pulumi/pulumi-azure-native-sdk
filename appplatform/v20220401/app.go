@@ -13,7 +13,7 @@ import (
 
 // App resource payload
 //
-// Deprecated: azure-native:appplatform/v20220401:App is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:App to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220401:App is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:App to guarantee forwards compatibility.
 type App struct {
 	pulumi.CustomResourceState
 

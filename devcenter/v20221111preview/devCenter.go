@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a devcenter resource.
+//
+// Deprecated: azure-native:devcenter/v20221111preview:DevCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:DevCenter to guarantee forwards compatibility.
 type DevCenter struct {
 	pulumi.CustomResourceState
 

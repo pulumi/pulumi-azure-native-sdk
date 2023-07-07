@@ -12,6 +12,8 @@ import (
 )
 
 // Description of topic resource.
+//
+// Deprecated: azure-native:servicebus/v20170401:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:Topic to guarantee forwards compatibility.
 type Topic struct {
 	pulumi.CustomResourceState
 

@@ -12,8 +12,6 @@ import (
 )
 
 // The Fleet resource which contains multiple Kubernetes clusters as its members.
-//
-// Deprecated: azure-native:containerservice/v20220702preview:Fleet is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20220902preview:Fleet to guarantee forwards compatibility.
 type Fleet struct {
 	pulumi.CustomResourceState
 

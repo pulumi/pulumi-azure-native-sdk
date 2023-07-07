@@ -12,6 +12,8 @@ import (
 )
 
 // Event Subscription
+//
+// Deprecated: azure-native:eventgrid/v20220615:PartnerTopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerTopicEventSubscription to guarantee forwards compatibility.
 type PartnerTopicEventSubscription struct {
 	pulumi.CustomResourceState
 

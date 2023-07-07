@@ -14,7 +14,7 @@ import (
 // Contains information about a pool.
 //
 // Deprecated: Version 2020-09-01 will be removed in v2 of the provider.
-// azure-native:batch/v20200901:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20221001:Pool to guarantee forwards compatibility.
+// azure-native:batch/v20200901:Pool is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20230501:Pool to guarantee forwards compatibility.
 type Pool struct {
 	pulumi.CustomResourceState
 

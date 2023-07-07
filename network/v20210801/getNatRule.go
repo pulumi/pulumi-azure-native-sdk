@@ -12,7 +12,7 @@ import (
 
 // Retrieves the details of a nat ruleGet.
 //
-// Deprecated: azure-native:network/v20210801:NatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:NatRule to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20210801:NatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:NatRule to guarantee forwards compatibility.
 func LookupNatRule(ctx *pulumi.Context, args *LookupNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupNatRuleResult, error) {
 	var rv LookupNatRuleResult
 	err := ctx.Invoke("azure-native:network/v20210801:getNatRule", args, &rv, opts...)

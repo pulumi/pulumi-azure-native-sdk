@@ -13,7 +13,7 @@ import (
 
 // Settings with single toggle.
 //
-// Deprecated: azure-native:securityinsights/v20220501preview:Anomalies is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Anomalies to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220501preview:Anomalies is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Anomalies to guarantee forwards compatibility.
 type Anomalies struct {
 	pulumi.CustomResourceState
 

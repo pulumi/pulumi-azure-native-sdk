@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of the specified volume
+//
+// Deprecated: azure-native:netapp/v20220901:Volume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:Volume to guarantee forwards compatibility.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:netapp/v20220901:getVolume", args, &rv, opts...)

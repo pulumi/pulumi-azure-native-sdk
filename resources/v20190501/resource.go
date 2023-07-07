@@ -12,6 +12,8 @@ import (
 )
 
 // Resource information.
+//
+// Deprecated: azure-native:resources/v20190501:Resource is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:Resource to guarantee forwards compatibility.
 type Resource struct {
 	pulumi.CustomResourceState
 

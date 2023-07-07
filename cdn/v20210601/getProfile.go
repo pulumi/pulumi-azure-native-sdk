@@ -12,7 +12,7 @@ import (
 
 // Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 //
-// Deprecated: azure-native:cdn/v20210601:Profile is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Profile to guarantee forwards compatibility.
+// Deprecated: azure-native:cdn/v20210601:Profile is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Profile to guarantee forwards compatibility.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
 	var rv LookupProfileResult
 	err := ctx.Invoke("azure-native:cdn/v20210601:getProfile", args, &rv, opts...)

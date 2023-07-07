@@ -12,6 +12,8 @@ import (
 )
 
 // A Postgres Instance.
+//
+// Deprecated: azure-native:azurearcdata/v20210601preview:PostgresInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20230115preview:PostgresInstance to guarantee forwards compatibility.
 type PostgresInstance struct {
 	pulumi.CustomResourceState
 

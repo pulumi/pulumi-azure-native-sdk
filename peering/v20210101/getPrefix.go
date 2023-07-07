@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
+//
+// Deprecated: azure-native:peering/v20210101:Prefix is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:Prefix to guarantee forwards compatibility.
 func LookupPrefix(ctx *pulumi.Context, args *LookupPrefixArgs, opts ...pulumi.InvokeOption) (*LookupPrefixResult, error) {
 	var rv LookupPrefixResult
 	err := ctx.Invoke("azure-native:peering/v20210101:getPrefix", args, &rv, opts...)

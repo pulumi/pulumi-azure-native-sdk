@@ -12,6 +12,8 @@ import (
 )
 
 // Virtual Network information contract.
+//
+// Deprecated: azure-native:web/v20201201:WebAppVnetConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppVnetConnection to guarantee forwards compatibility.
 type WebAppVnetConnection struct {
 	pulumi.CustomResourceState
 

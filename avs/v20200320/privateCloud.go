@@ -12,6 +12,8 @@ import (
 )
 
 // A private cloud resource
+//
+// Deprecated: azure-native:avs/v20200320:PrivateCloud is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:PrivateCloud to guarantee forwards compatibility.
 type PrivateCloud struct {
 	pulumi.CustomResourceState
 

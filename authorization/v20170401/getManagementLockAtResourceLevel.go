@@ -11,6 +11,8 @@ import (
 )
 
 // Get the management lock of a resource or any level below resource.
+//
+// Deprecated: azure-native:authorization/v20170401:ManagementLockAtResourceLevel is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20200501:ManagementLockAtResourceLevel to guarantee forwards compatibility.
 func LookupManagementLockAtResourceLevel(ctx *pulumi.Context, args *LookupManagementLockAtResourceLevelArgs, opts ...pulumi.InvokeOption) (*LookupManagementLockAtResourceLevelResult, error) {
 	var rv LookupManagementLockAtResourceLevelResult
 	err := ctx.Invoke("azure-native:authorization/v20170401:getManagementLockAtResourceLevel", args, &rv, opts...)

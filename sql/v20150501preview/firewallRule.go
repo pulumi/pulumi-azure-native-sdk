@@ -13,7 +13,7 @@ import (
 
 // A server firewall rule.
 //
-// Deprecated: azure-native:sql/v20150501preview:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:FirewallRule to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20150501preview:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:eventgrid/v20200601:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

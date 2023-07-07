@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:providerhub/v20201120:ResourceTypeRegistration is being removed in the next major version of this provider. Upgrade to at least azure-native:providerhub/v20210901preview:ResourceTypeRegistration to guarantee forwards compatibility.
 type ResourceTypeRegistration struct {
 	pulumi.CustomResourceState
 

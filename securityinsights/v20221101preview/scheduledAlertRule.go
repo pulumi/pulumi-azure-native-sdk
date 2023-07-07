@@ -13,7 +13,7 @@ import (
 
 // Represents scheduled alert rule.
 //
-// Deprecated: azure-native:securityinsights/v20221101preview:ScheduledAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:ScheduledAlertRule to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20221101preview:ScheduledAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ScheduledAlertRule to guarantee forwards compatibility.
 type ScheduledAlertRule struct {
 	pulumi.CustomResourceState
 

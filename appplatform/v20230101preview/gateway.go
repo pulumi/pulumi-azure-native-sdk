@@ -12,6 +12,8 @@ import (
 )
 
 // Spring Cloud Gateway resource
+//
+// Deprecated: azure-native:appplatform/v20230101preview:Gateway is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:Gateway to guarantee forwards compatibility.
 type Gateway struct {
 	pulumi.CustomResourceState
 

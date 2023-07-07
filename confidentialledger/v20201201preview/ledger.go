@@ -12,6 +12,8 @@ import (
 )
 
 // Confidential Ledger. Contains the properties of Confidential Ledger Resource.
+//
+// Deprecated: azure-native:confidentialledger/v20201201preview:Ledger is being removed in the next major version of this provider. Upgrade to at least azure-native:confidentialledger/v20230126preview:Ledger to guarantee forwards compatibility.
 type Ledger struct {
 	pulumi.CustomResourceState
 

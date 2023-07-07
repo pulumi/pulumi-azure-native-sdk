@@ -11,6 +11,8 @@ import (
 )
 
 // Implements HybridIdentityMetadata GET method.
+//
+// Deprecated: azure-native:azurestackhci/v20210901preview:HybridIdentityMetadatum is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20221215preview:HybridIdentityMetadatum to guarantee forwards compatibility.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
 	var rv LookupHybridIdentityMetadatumResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getHybridIdentityMetadatum", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Deployment resource payload
+//
+// Deprecated: azure-native:appplatform/v20200701:Deployment is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:Deployment to guarantee forwards compatibility.
 type Deployment struct {
 	pulumi.CustomResourceState
 

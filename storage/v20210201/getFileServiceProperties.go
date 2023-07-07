@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
+//
+// Deprecated: azure-native:storage/v20210201:FileServiceProperties is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:FileServiceProperties to guarantee forwards compatibility.
 func LookupFileServiceProperties(ctx *pulumi.Context, args *LookupFileServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupFileServicePropertiesResult, error) {
 	var rv LookupFileServicePropertiesResult
 	err := ctx.Invoke("azure-native:storage/v20210201:getFileServiceProperties", args, &rv, opts...)

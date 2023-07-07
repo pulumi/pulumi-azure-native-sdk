@@ -11,6 +11,8 @@ import (
 )
 
 // Get a workload classifier of Sql pool's workload group.
+//
+// Deprecated: azure-native:synapse/v20210301:SqlPoolWorkloadClassifier is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:SqlPoolWorkloadClassifier to guarantee forwards compatibility.
 func LookupSqlPoolWorkloadClassifier(ctx *pulumi.Context, args *LookupSqlPoolWorkloadClassifierArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolWorkloadClassifierResult, error) {
 	var rv LookupSqlPoolWorkloadClassifierResult
 	err := ctx.Invoke("azure-native:synapse/v20210301:getSqlPoolWorkloadClassifier", args, &rv, opts...)

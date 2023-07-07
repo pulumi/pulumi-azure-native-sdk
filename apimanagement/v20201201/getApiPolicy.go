@@ -11,6 +11,8 @@ import (
 )
 
 // Get the policy configuration at the API level.
+//
+// Deprecated: azure-native:apimanagement/v20201201:ApiPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiPolicy to guarantee forwards compatibility.
 func LookupApiPolicy(ctx *pulumi.Context, args *LookupApiPolicyArgs, opts ...pulumi.InvokeOption) (*LookupApiPolicyResult, error) {
 	var rv LookupApiPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20201201:getApiPolicy", args, &rv, opts...)

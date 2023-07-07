@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an Agent resource.
+//
+// Deprecated: azure-native:storagemover/v20220701preview:Agent is being removed in the next major version of this provider. Upgrade to at least azure-native:storagemover/v20230301:Agent to guarantee forwards compatibility.
 func LookupAgent(ctx *pulumi.Context, args *LookupAgentArgs, opts ...pulumi.InvokeOption) (*LookupAgentResult, error) {
 	var rv LookupAgentResult
 	err := ctx.Invoke("azure-native:storagemover/v20220701preview:getAgent", args, &rv, opts...)

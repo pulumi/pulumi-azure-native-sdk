@@ -12,7 +12,7 @@ import (
 
 // Gets the properties of the specified FHIR Service.
 //
-// Deprecated: azure-native:healthcareapis/v20211101:FhirService is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:FhirService to guarantee forwards compatibility.
+// Deprecated: azure-native:healthcareapis/v20211101:FhirService is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:FhirService to guarantee forwards compatibility.
 func LookupFhirService(ctx *pulumi.Context, args *LookupFhirServiceArgs, opts ...pulumi.InvokeOption) (*LookupFhirServiceResult, error) {
 	var rv LookupFhirServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20211101:getFhirService", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Hybrid Connection contract. This is used to configure a Hybrid Connection.
+//
+// Deprecated: azure-native:web/v20201201:WebAppHybridConnectionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppHybridConnectionSlot to guarantee forwards compatibility.
 type WebAppHybridConnectionSlot struct {
 	pulumi.CustomResourceState
 

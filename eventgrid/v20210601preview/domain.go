@@ -13,7 +13,7 @@ import (
 
 // EventGrid Domain.
 //
-// Deprecated: azure-native:eventgrid/v20210601preview:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20211015preview:Domain to guarantee forwards compatibility.
+// Deprecated: azure-native:eventgrid/v20210601preview:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:Domain to guarantee forwards compatibility.
 type Domain struct {
 	pulumi.CustomResourceState
 

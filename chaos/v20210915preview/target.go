@@ -12,6 +12,8 @@ import (
 )
 
 // Model that represents a Target resource.
+//
+// Deprecated: azure-native:chaos/v20210915preview:Target is being removed in the next major version of this provider. Upgrade to at least azure-native:chaos/v20230415preview:Target to guarantee forwards compatibility.
 type Target struct {
 	pulumi.CustomResourceState
 

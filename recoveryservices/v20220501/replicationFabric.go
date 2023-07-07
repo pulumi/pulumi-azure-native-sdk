@@ -13,7 +13,7 @@ import (
 
 // Fabric definition.
 //
-// Deprecated: azure-native:recoveryservices/v20220501:ReplicationFabric is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationFabric to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20220501:ReplicationFabric is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationFabric to guarantee forwards compatibility.
 type ReplicationFabric struct {
 	pulumi.CustomResourceState
 

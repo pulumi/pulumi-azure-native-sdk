@@ -12,6 +12,8 @@ import (
 )
 
 // The private endpoint connection of an IotHub
+//
+// Deprecated: azure-native:devices/v20200831:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20221115preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

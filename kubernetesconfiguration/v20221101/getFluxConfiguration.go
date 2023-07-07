@@ -11,6 +11,8 @@ import (
 )
 
 // Gets details of the Flux Configuration.
+//
+// Deprecated: azure-native:kubernetesconfiguration/v20221101:FluxConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20230501:FluxConfiguration to guarantee forwards compatibility.
 func LookupFluxConfiguration(ctx *pulumi.Context, args *LookupFluxConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupFluxConfigurationResult, error) {
 	var rv LookupFluxConfigurationResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20221101:getFluxConfiguration", args, &rv, opts...)

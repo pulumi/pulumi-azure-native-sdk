@@ -13,7 +13,7 @@ import (
 
 // Represents an automation rule.
 //
-// Deprecated: azure-native:securityinsights/v20210901preview:AutomationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AutomationRule to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20210901preview:AutomationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:AutomationRule to guarantee forwards compatibility.
 type AutomationRule struct {
 	pulumi.CustomResourceState
 

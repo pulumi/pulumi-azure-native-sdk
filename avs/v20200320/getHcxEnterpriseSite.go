@@ -11,6 +11,8 @@ import (
 )
 
 // An HCX Enterprise Site resource
+//
+// Deprecated: azure-native:avs/v20200320:HcxEnterpriseSite is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:HcxEnterpriseSite to guarantee forwards compatibility.
 func LookupHcxEnterpriseSite(ctx *pulumi.Context, args *LookupHcxEnterpriseSiteArgs, opts ...pulumi.InvokeOption) (*LookupHcxEnterpriseSiteResult, error) {
 	var rv LookupHcxEnterpriseSiteResult
 	err := ctx.Invoke("azure-native:avs/v20200320:getHcxEnterpriseSite", args, &rv, opts...)

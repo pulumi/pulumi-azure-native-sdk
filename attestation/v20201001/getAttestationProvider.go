@@ -11,6 +11,8 @@ import (
 )
 
 // Get the status of Attestation Provider.
+//
+// Deprecated: azure-native:attestation/v20201001:AttestationProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:attestation/v20210601:AttestationProvider to guarantee forwards compatibility.
 func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAttestationProviderResult, error) {
 	var rv LookupAttestationProviderResult
 	err := ctx.Invoke("azure-native:attestation/v20201001:getAttestationProvider", args, &rv, opts...)

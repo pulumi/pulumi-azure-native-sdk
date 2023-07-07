@@ -12,7 +12,7 @@ import (
 
 // Get assigned Gateway Certificate Authority details.
 //
-// Deprecated: azure-native:apimanagement/v20210101preview:GatewayCertificateAuthority is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:GatewayCertificateAuthority to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210101preview:GatewayCertificateAuthority is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GatewayCertificateAuthority to guarantee forwards compatibility.
 func LookupGatewayCertificateAuthority(ctx *pulumi.Context, args *LookupGatewayCertificateAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCertificateAuthorityResult, error) {
 	var rv LookupGatewayCertificateAuthorityResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210101preview:getGatewayCertificateAuthority", args, &rv, opts...)

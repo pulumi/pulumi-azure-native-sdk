@@ -12,7 +12,7 @@ import (
 
 // Get a snapshot Policy
 //
-// Deprecated: azure-native:netapp/v20210601:SnapshotPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:SnapshotPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:netapp/v20210601:SnapshotPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:SnapshotPolicy to guarantee forwards compatibility.
 func LookupSnapshotPolicy(ctx *pulumi.Context, args *LookupSnapshotPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotPolicyResult, error) {
 	var rv LookupSnapshotPolicyResult
 	err := ctx.Invoke("azure-native:netapp/v20210601:getSnapshotPolicy", args, &rv, opts...)

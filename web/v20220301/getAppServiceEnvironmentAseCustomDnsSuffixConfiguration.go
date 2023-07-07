@@ -11,6 +11,8 @@ import (
 )
 
 // Full view of the custom domain suffix configuration for ASEv3.
+//
+// Deprecated: azure-native:web/v20220301:AppServiceEnvironmentAseCustomDnsSuffixConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:AppServiceEnvironmentAseCustomDnsSuffixConfiguration to guarantee forwards compatibility.
 func LookupAppServiceEnvironmentAseCustomDnsSuffixConfiguration(ctx *pulumi.Context, args *LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult, error) {
 	var rv LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult
 	err := ctx.Invoke("azure-native:web/v20220301:getAppServiceEnvironmentAseCustomDnsSuffixConfiguration", args, &rv, opts...)

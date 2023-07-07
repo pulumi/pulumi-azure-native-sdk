@@ -12,6 +12,8 @@ import (
 )
 
 // A managed cluster snapshot resource.
+//
+// Deprecated: azure-native:containerservice/v20230102preview:ManagedClusterSnapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:ManagedClusterSnapshot to guarantee forwards compatibility.
 type ManagedClusterSnapshot struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // API portal resource
+//
+// Deprecated: azure-native:appplatform/v20230101preview:ApiPortal is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ApiPortal to guarantee forwards compatibility.
 type ApiPortal struct {
 	pulumi.CustomResourceState
 

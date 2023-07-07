@@ -12,7 +12,7 @@ import (
 
 // Gets a distributed availability group info.
 //
-// Deprecated: azure-native:sql/v20210801preview:DistributedAvailabilityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:DistributedAvailabilityGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20210801preview:DistributedAvailabilityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:DistributedAvailabilityGroup to guarantee forwards compatibility.
 func LookupDistributedAvailabilityGroup(ctx *pulumi.Context, args *LookupDistributedAvailabilityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDistributedAvailabilityGroupResult, error) {
 	var rv LookupDistributedAvailabilityGroupResult
 	err := ctx.Invoke("azure-native:sql/v20210801preview:getDistributedAvailabilityGroup", args, &rv, opts...)

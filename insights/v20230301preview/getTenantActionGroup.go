@@ -11,6 +11,8 @@ import (
 )
 
 // Get a tenant action group.
+//
+// Deprecated: azure-native:insights/v20230301preview:TenantActionGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20230501preview:TenantActionGroup to guarantee forwards compatibility.
 func LookupTenantActionGroup(ctx *pulumi.Context, args *LookupTenantActionGroupArgs, opts ...pulumi.InvokeOption) (*LookupTenantActionGroupResult, error) {
 	var rv LookupTenantActionGroupResult
 	err := ctx.Invoke("azure-native:insights/v20230301preview:getTenantActionGroup", args, &rv, opts...)

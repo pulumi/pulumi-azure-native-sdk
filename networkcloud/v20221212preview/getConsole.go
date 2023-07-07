@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided virtual machine console.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:Console is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:Console to guarantee forwards compatibility.
 func LookupConsole(ctx *pulumi.Context, args *LookupConsoleArgs, opts ...pulumi.InvokeOption) (*LookupConsoleResult, error) {
 	var rv LookupConsoleResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getConsole", args, &rv, opts...)

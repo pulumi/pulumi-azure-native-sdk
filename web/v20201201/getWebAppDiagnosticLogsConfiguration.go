@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the logging configuration of an app.
+//
+// Deprecated: azure-native:web/v20201201:WebAppDiagnosticLogsConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppDiagnosticLogsConfiguration to guarantee forwards compatibility.
 func LookupWebAppDiagnosticLogsConfiguration(ctx *pulumi.Context, args *LookupWebAppDiagnosticLogsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDiagnosticLogsConfigurationResult, error) {
 	var rv LookupWebAppDiagnosticLogsConfigurationResult
 	err := ctx.Invoke("azure-native:web/v20201201:getWebAppDiagnosticLogsConfiguration", args, &rv, opts...)

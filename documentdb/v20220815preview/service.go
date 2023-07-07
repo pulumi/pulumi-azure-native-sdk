@@ -13,7 +13,7 @@ import (
 
 // Properties for the database account.
 //
-// Deprecated: azure-native:documentdb/v20220815preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:Service to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20220815preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230415:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

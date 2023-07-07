@@ -12,7 +12,7 @@ import (
 
 // Retrieves a postgres Instance resource
 //
-// Deprecated: azure-native:azurearcdata/v20210701preview:PostgresInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20220615preview:PostgresInstance to guarantee forwards compatibility.
+// Deprecated: azure-native:azurearcdata/v20210701preview:PostgresInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20230115preview:PostgresInstance to guarantee forwards compatibility.
 func LookupPostgresInstance(ctx *pulumi.Context, args *LookupPostgresInstanceArgs, opts ...pulumi.InvokeOption) (*LookupPostgresInstanceResult, error) {
 	var rv LookupPostgresInstanceResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20210701preview:getPostgresInstance", args, &rv, opts...)

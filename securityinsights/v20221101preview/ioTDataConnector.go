@@ -13,7 +13,7 @@ import (
 
 // Represents IoT data connector.
 //
-// Deprecated: azure-native:securityinsights/v20221101preview:IoTDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IoTDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20221101preview:IoTDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:IoTDataConnector to guarantee forwards compatibility.
 type IoTDataConnector struct {
 	pulumi.CustomResourceState
 

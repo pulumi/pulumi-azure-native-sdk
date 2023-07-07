@@ -11,6 +11,8 @@ import (
 )
 
 // Returns account details for the given account name.
+//
+// Deprecated: azure-native:deviceupdate/v20200301preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20230701:Account to guarantee forwards compatibility.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:deviceupdate/v20200301preview:getAccount", args, &rv, opts...)

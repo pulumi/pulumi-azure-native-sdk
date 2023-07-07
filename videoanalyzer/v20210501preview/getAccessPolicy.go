@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves an existing access policy resource from an account by name.
+//
+// Deprecated: azure-native:videoanalyzer/v20210501preview:AccessPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:videoanalyzer/v20211101preview:AccessPolicy to guarantee forwards compatibility.
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	var rv LookupAccessPolicyResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20210501preview:getAccessPolicy", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Gets the details of registered recovery services provider.
 //
-// Deprecated: azure-native:recoveryservices/v20220301:ReplicationRecoveryServicesProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationRecoveryServicesProvider to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20220301:ReplicationRecoveryServicesProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationRecoveryServicesProvider to guarantee forwards compatibility.
 func LookupReplicationRecoveryServicesProvider(ctx *pulumi.Context, args *LookupReplicationRecoveryServicesProviderArgs, opts ...pulumi.InvokeOption) (*LookupReplicationRecoveryServicesProviderResult, error) {
 	var rv LookupReplicationRecoveryServicesProviderResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20220301:getReplicationRecoveryServicesProvider", args, &rv, opts...)

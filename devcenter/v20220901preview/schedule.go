@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Schedule to execute a task.
+//
+// Deprecated: azure-native:devcenter/v20220901preview:Schedule is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:Schedule to guarantee forwards compatibility.
 type Schedule struct {
 	pulumi.CustomResourceState
 

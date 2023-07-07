@@ -12,6 +12,8 @@ import (
 )
 
 // Define the SAP Central Services Instance resource.
+//
+// Deprecated: azure-native:workloads/v20211201preview:SAPCentralInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SAPCentralInstance to guarantee forwards compatibility.
 type SAPCentralInstance struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Gets API Management content type details.
 //
-// Deprecated: azure-native:apimanagement/v20200601preview:ContentType is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ContentType to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20200601preview:ContentType is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ContentType to guarantee forwards compatibility.
 func LookupContentType(ctx *pulumi.Context, args *LookupContentTypeArgs, opts ...pulumi.InvokeOption) (*LookupContentTypeResult, error) {
 	var rv LookupContentTypeResult
 	err := ctx.Invoke("azure-native:apimanagement/v20200601preview:getContentType", args, &rv, opts...)

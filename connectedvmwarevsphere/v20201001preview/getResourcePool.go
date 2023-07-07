@@ -11,6 +11,8 @@ import (
 )
 
 // Implements resourcePool GET method.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20201001preview:ResourcePool is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:ResourcePool to guarantee forwards compatibility.
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
 	var rv LookupResourcePoolResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20201001preview:getResourcePool", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Gets the specified custom IP prefix in a specified resource group.
 //
-// Deprecated: azure-native:network/v20210801:CustomIPPrefix is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:CustomIPPrefix to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20210801:CustomIPPrefix is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:CustomIPPrefix to guarantee forwards compatibility.
 func LookupCustomIPPrefix(ctx *pulumi.Context, args *LookupCustomIPPrefixArgs, opts ...pulumi.InvokeOption) (*LookupCustomIPPrefixResult, error) {
 	var rv LookupCustomIPPrefixResult
 	err := ctx.Invoke("azure-native:network/v20210801:getCustomIPPrefix", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // NetworkVirtualAppliance Resource.
+//
+// Deprecated: azure-native:network/v20220901:NetworkVirtualAppliance is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:NetworkVirtualAppliance to guarantee forwards compatibility.
 type NetworkVirtualAppliance struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure SQL job agent.
+//
+// Deprecated: azure-native:sql/v20201101preview:JobAgent is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:JobAgent to guarantee forwards compatibility.
 type JobAgent struct {
 	pulumi.CustomResourceState
 

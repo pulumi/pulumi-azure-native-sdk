@@ -12,7 +12,7 @@ import (
 
 // Gets a sync agent.
 //
-// Deprecated: azure-native:sql/v20200801preview:SyncAgent is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:SyncAgent to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20200801preview:SyncAgent is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:SyncAgent to guarantee forwards compatibility.
 func LookupSyncAgent(ctx *pulumi.Context, args *LookupSyncAgentArgs, opts ...pulumi.InvokeOption) (*LookupSyncAgentResult, error) {
 	var rv LookupSyncAgentResult
 	err := ctx.Invoke("azure-native:sql/v20200801preview:getSyncAgent", args, &rv, opts...)

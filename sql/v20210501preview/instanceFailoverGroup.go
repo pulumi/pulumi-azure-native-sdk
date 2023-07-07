@@ -13,7 +13,7 @@ import (
 
 // An instance failover group.
 //
-// Deprecated: azure-native:sql/v20210501preview:InstanceFailoverGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:InstanceFailoverGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20210501preview:InstanceFailoverGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:InstanceFailoverGroup to guarantee forwards compatibility.
 type InstanceFailoverGroup struct {
 	pulumi.CustomResourceState
 

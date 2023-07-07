@@ -12,7 +12,7 @@ import (
 
 // To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
 //
-// Deprecated: azure-native:containerservice/v20210901:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:PrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:containerservice/v20210901:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:containerservice/v20210901:getPrivateEndpointConnection", args, &rv, opts...)

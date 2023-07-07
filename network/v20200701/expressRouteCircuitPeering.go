@@ -13,7 +13,7 @@ import (
 
 // Peering in an ExpressRouteCircuit resource.
 //
-// Deprecated: azure-native:network/v20200701:ExpressRouteCircuitPeering is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ExpressRouteCircuitPeering to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200701:ExpressRouteCircuitPeering is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ExpressRouteCircuitPeering to guarantee forwards compatibility.
 type ExpressRouteCircuitPeering struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Get a custom certificate.
 //
-// Deprecated: azure-native:signalrservice/v20220801preview:SignalRCustomCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230201:SignalRCustomCertificate to guarantee forwards compatibility.
+// Deprecated: azure-native:signalrservice/v20220801preview:SignalRCustomCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRCustomCertificate to guarantee forwards compatibility.
 func LookupSignalRCustomCertificate(ctx *pulumi.Context, args *LookupSignalRCustomCertificateArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomCertificateResult, error) {
 	var rv LookupSignalRCustomCertificateResult
 	err := ctx.Invoke("azure-native:signalrservice/v20220801preview:getSignalRCustomCertificate", args, &rv, opts...)

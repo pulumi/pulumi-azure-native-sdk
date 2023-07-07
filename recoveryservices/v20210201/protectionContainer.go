@@ -12,6 +12,8 @@ import (
 )
 
 // Base class for container with backup items. Containers with specific workloads are derived from this class.
+//
+// Deprecated: azure-native:recoveryservices/v20210201:ProtectionContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ProtectionContainer to guarantee forwards compatibility.
 type ProtectionContainer struct {
 	pulumi.CustomResourceState
 

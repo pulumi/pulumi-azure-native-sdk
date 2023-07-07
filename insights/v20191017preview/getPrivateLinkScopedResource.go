@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a scoped resource in a private link scope.
+//
+// Deprecated: azure-native:insights/v20191017preview:PrivateLinkScopedResource is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20210701preview:PrivateLinkScopedResource to guarantee forwards compatibility.
 func LookupPrivateLinkScopedResource(ctx *pulumi.Context, args *LookupPrivateLinkScopedResourceArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopedResourceResult, error) {
 	var rv LookupPrivateLinkScopedResourceResult
 	err := ctx.Invoke("azure-native:insights/v20191017preview:getPrivateLinkScopedResource", args, &rv, opts...)

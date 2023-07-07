@@ -13,7 +13,7 @@ import (
 
 // Private Endpoint connection on an application gateway.
 //
-// Deprecated: azure-native:network/v20200701:ApplicationGatewayPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ApplicationGatewayPrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200701:ApplicationGatewayPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ApplicationGatewayPrivateEndpointConnection to guarantee forwards compatibility.
 type ApplicationGatewayPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

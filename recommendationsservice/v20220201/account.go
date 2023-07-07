@@ -12,6 +12,8 @@ import (
 )
 
 // Account resource details.
+//
+// Deprecated: azure-native:recommendationsservice/v20220201:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:recommendationsservice/v20220301preview:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

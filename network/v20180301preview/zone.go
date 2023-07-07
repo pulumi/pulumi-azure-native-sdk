@@ -14,7 +14,7 @@ import (
 // Describes a DNS zone.
 //
 // Deprecated: Version 2018-03-01-preview will be removed in v2 of the provider.
-// azure-native:network/v20180301preview:Zone is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20180501:Zone to guarantee forwards compatibility.
+// azure-native:network/v20180301preview:Zone is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230701preview:Zone to guarantee forwards compatibility.
 type Zone struct {
 	pulumi.CustomResourceState
 

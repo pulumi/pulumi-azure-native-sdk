@@ -15,6 +15,8 @@ import (
 // represented in the status of this resource. All resources associated with this cloud services network will be part
 // of the same layer 2 (L2) isolation domain. At least one service network must be created but may be reused across many
 // virtual machines and/or Hybrid AKS clusters.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:CloudServicesNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:CloudServicesNetwork to guarantee forwards compatibility.
 type CloudServicesNetwork struct {
 	pulumi.CustomResourceState
 

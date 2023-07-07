@@ -11,6 +11,8 @@ import (
 )
 
 // Gets properties of a DNS resolver.
+//
+// Deprecated: azure-native:network/v20200401preview:DnsResolver is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220701:DnsResolver to guarantee forwards compatibility.
 func LookupDnsResolver(ctx *pulumi.Context, args *LookupDnsResolverArgs, opts ...pulumi.InvokeOption) (*LookupDnsResolverResult, error) {
 	var rv LookupDnsResolverResult
 	err := ctx.Invoke("azure-native:network/v20200401preview:getDnsResolver", args, &rv, opts...)

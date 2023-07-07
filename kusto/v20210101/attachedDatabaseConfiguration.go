@@ -12,6 +12,8 @@ import (
 )
 
 // Class representing an attached database configuration.
+//
+// Deprecated: azure-native:kusto/v20210101:AttachedDatabaseConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:AttachedDatabaseConfiguration to guarantee forwards compatibility.
 type AttachedDatabaseConfiguration struct {
 	pulumi.CustomResourceState
 

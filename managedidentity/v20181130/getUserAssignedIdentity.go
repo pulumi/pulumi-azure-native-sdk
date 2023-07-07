@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the identity.
+//
+// Deprecated: azure-native:managedidentity/v20181130:UserAssignedIdentity is being removed in the next major version of this provider. Upgrade to at least azure-native:managedidentity/v20230131:UserAssignedIdentity to guarantee forwards compatibility.
 func LookupUserAssignedIdentity(ctx *pulumi.Context, args *LookupUserAssignedIdentityArgs, opts ...pulumi.InvokeOption) (*LookupUserAssignedIdentityResult, error) {
 	var rv LookupUserAssignedIdentityResult
 	err := ctx.Invoke("azure-native:managedidentity/v20181130:getUserAssignedIdentity", args, &rv, opts...)

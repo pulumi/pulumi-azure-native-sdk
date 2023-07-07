@@ -12,6 +12,8 @@ import (
 )
 
 // Private endpoint connection proxy details.
+//
+// Deprecated: azure-native:deviceupdate/v20221201preview:PrivateEndpointConnectionProxy is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20230701:PrivateEndpointConnectionProxy to guarantee forwards compatibility.
 type PrivateEndpointConnectionProxy struct {
 	pulumi.CustomResourceState
 

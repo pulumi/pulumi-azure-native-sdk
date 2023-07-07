@@ -12,6 +12,8 @@ import (
 )
 
 // Information about managed application.
+//
+// Deprecated: azure-native:solutions/v20190701:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20210701:Application to guarantee forwards compatibility.
 type Application struct {
 	pulumi.CustomResourceState
 

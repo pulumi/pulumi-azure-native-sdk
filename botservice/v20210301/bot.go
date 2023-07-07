@@ -12,6 +12,8 @@ import (
 )
 
 // Bot resource definition
+//
+// Deprecated: azure-native:botservice/v20210301:Bot is being removed in the next major version of this provider. Upgrade to at least azure-native:botservice/v20220915:Bot to guarantee forwards compatibility.
 type Bot struct {
 	pulumi.CustomResourceState
 

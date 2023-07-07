@@ -13,7 +13,7 @@ import (
 
 // Describes a hybrid machine.
 //
-// Deprecated: azure-native:hybridcompute/v20221110:Machine is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20221227preview:Machine to guarantee forwards compatibility.
+// Deprecated: azure-native:hybridcompute/v20221110:Machine is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20230425preview:Machine to guarantee forwards compatibility.
 type Machine struct {
 	pulumi.CustomResourceState
 

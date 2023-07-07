@@ -13,7 +13,7 @@ import (
 // Retrieve protection policy with specified name within a resource group.
 //
 // Deprecated: Version 2019-06-15-preview will be removed in v2 of the provider.
-// azure-native:cdn/v20190615preview:Policy is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Policy to guarantee forwards compatibility.
+// azure-native:cdn/v20190615preview:Policy is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Policy to guarantee forwards compatibility.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	var rv LookupPolicyResult
 	err := ctx.Invoke("azure-native:cdn/v20190615preview:getPolicy", args, &rv, opts...)

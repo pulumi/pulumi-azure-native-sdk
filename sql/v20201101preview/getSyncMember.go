@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a sync member.
+//
+// Deprecated: azure-native:sql/v20201101preview:SyncMember is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:SyncMember to guarantee forwards compatibility.
 func LookupSyncMember(ctx *pulumi.Context, args *LookupSyncMemberArgs, opts ...pulumi.InvokeOption) (*LookupSyncMemberResult, error) {
 	var rv LookupSyncMemberResult
 	err := ctx.Invoke("azure-native:sql/v20201101preview:getSyncMember", args, &rv, opts...)

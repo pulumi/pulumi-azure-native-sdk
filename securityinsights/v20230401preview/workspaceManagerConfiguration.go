@@ -12,6 +12,8 @@ import (
 )
 
 // The workspace manager configuration
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:WorkspaceManagerConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:WorkspaceManagerConfiguration to guarantee forwards compatibility.
 type WorkspaceManagerConfiguration struct {
 	pulumi.CustomResourceState
 

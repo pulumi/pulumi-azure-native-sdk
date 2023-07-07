@@ -12,7 +12,7 @@ import (
 
 // Get the Application Configuration Service and its properties.
 //
-// Deprecated: azure-native:appplatform/v20220501preview:ConfigurationService is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ConfigurationService to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220501preview:ConfigurationService is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ConfigurationService to guarantee forwards compatibility.
 func LookupConfigurationService(ctx *pulumi.Context, args *LookupConfigurationServiceArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationServiceResult, error) {
 	var rv LookupConfigurationServiceResult
 	err := ctx.Invoke("azure-native:appplatform/v20220501preview:getConfigurationService", args, &rv, opts...)

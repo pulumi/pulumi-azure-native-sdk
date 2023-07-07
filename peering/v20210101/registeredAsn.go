@@ -12,6 +12,8 @@ import (
 )
 
 // The customer's ASN that is registered by the peering service provider.
+//
+// Deprecated: azure-native:peering/v20210101:RegisteredAsn is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:RegisteredAsn to guarantee forwards compatibility.
 type RegisteredAsn struct {
 	pulumi.CustomResourceState
 

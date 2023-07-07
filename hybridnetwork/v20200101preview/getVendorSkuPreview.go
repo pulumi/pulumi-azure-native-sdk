@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the preview information of a vendor sku.
+//
+// Deprecated: azure-native:hybridnetwork/v20200101preview:VendorSkuPreview is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridnetwork/v20220101preview:VendorSkuPreview to guarantee forwards compatibility.
 func LookupVendorSkuPreview(ctx *pulumi.Context, args *LookupVendorSkuPreviewArgs, opts ...pulumi.InvokeOption) (*LookupVendorSkuPreviewResult, error) {
 	var rv LookupVendorSkuPreviewResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20200101preview:getVendorSkuPreview", args, &rv, opts...)

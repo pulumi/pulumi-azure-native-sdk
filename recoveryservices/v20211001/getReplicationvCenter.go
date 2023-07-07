@@ -12,7 +12,7 @@ import (
 
 // Gets the details of a registered vCenter server(Add vCenter server).
 //
-// Deprecated: azure-native:recoveryservices/v20211001:ReplicationvCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationvCenter to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20211001:ReplicationvCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationvCenter to guarantee forwards compatibility.
 func LookupReplicationvCenter(ctx *pulumi.Context, args *LookupReplicationvCenterArgs, opts ...pulumi.InvokeOption) (*LookupReplicationvCenterResult, error) {
 	var rv LookupReplicationvCenterResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20211001:getReplicationvCenter", args, &rv, opts...)

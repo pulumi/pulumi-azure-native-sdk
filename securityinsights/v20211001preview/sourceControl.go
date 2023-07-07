@@ -13,7 +13,7 @@ import (
 
 // Represents a SourceControl in Azure Security Insights.
 //
-// Deprecated: azure-native:securityinsights/v20211001preview:SourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:SourceControl to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20211001preview:SourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230501preview:SourceControl to guarantee forwards compatibility.
 type SourceControl struct {
 	pulumi.CustomResourceState
 

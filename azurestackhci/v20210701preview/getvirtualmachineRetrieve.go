@@ -11,8 +11,6 @@ import (
 )
 
 // The virtualmachines resource definition.
-//
-// Deprecated: azure-native:azurestackhci/v20210701preview:virtualmachineRetrieve is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20210901preview:virtualmachineRetrieve to guarantee forwards compatibility.
 func GetvirtualmachineRetrieve(ctx *pulumi.Context, args *GetvirtualmachineRetrieveArgs, opts ...pulumi.InvokeOption) (*GetvirtualmachineRetrieveResult, error) {
 	var rv GetvirtualmachineRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210701preview:getvirtualmachineRetrieve", args, &rv, opts...)

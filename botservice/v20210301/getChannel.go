@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a BotService Channel registration specified by the parameters.
+//
+// Deprecated: azure-native:botservice/v20210301:Channel is being removed in the next major version of this provider. Upgrade to at least azure-native:botservice/v20220915:Channel to guarantee forwards compatibility.
 func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.InvokeOption) (*LookupChannelResult, error) {
 	var rv LookupChannelResult
 	err := ctx.Invoke("azure-native:botservice/v20210301:getChannel", args, &rv, opts...)

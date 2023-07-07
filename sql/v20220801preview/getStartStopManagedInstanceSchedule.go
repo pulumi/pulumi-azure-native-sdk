@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the managed instance's Start/Stop schedule.
+//
+// Deprecated: azure-native:sql/v20220801preview:StartStopManagedInstanceSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:StartStopManagedInstanceSchedule to guarantee forwards compatibility.
 func LookupStartStopManagedInstanceSchedule(ctx *pulumi.Context, args *LookupStartStopManagedInstanceScheduleArgs, opts ...pulumi.InvokeOption) (*LookupStartStopManagedInstanceScheduleResult, error) {
 	var rv LookupStartStopManagedInstanceScheduleResult
 	err := ctx.Invoke("azure-native:sql/v20220801preview:getStartStopManagedInstanceSchedule", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Deprecated: azure-native:machinelearningservices/v20221001:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:Job to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20221001:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:Job to guarantee forwards compatibility.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001:getJob", args, &rv, opts...)

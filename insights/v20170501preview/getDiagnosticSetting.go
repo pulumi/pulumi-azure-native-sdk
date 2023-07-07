@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the active diagnostic settings for the specified resource.
+//
+// Deprecated: azure-native:insights/v20170501preview:DiagnosticSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20210501preview:DiagnosticSetting to guarantee forwards compatibility.
 func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticSettingResult, error) {
 	var rv LookupDiagnosticSettingResult
 	err := ctx.Invoke("azure-native:insights/v20170501preview:getDiagnosticSetting", args, &rv, opts...)

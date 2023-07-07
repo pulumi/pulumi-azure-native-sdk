@@ -12,7 +12,7 @@ import (
 
 // Gets a failover group.
 //
-// Deprecated: azure-native:sql/v20200801preview:InstanceFailoverGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:InstanceFailoverGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20200801preview:InstanceFailoverGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:InstanceFailoverGroup to guarantee forwards compatibility.
 func LookupInstanceFailoverGroup(ctx *pulumi.Context, args *LookupInstanceFailoverGroupArgs, opts ...pulumi.InvokeOption) (*LookupInstanceFailoverGroupResult, error) {
 	var rv LookupInstanceFailoverGroupResult
 	err := ctx.Invoke("azure-native:sql/v20200801preview:getInstanceFailoverGroup", args, &rv, opts...)

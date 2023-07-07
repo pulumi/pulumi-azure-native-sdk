@@ -12,6 +12,8 @@ import (
 )
 
 // Hybrid Connection for an App Service app.
+//
+// Deprecated: azure-native:web/v20201201:WebAppRelayServiceConnectionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppRelayServiceConnectionSlot to guarantee forwards compatibility.
 type WebAppRelayServiceConnectionSlot struct {
 	pulumi.CustomResourceState
 

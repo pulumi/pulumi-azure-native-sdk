@@ -12,6 +12,8 @@ import (
 )
 
 // The Encryption Scope resource.
+//
+// Deprecated: azure-native:storage/v20210201:EncryptionScope is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:EncryptionScope to guarantee forwards compatibility.
 type EncryptionScope struct {
 	pulumi.CustomResourceState
 

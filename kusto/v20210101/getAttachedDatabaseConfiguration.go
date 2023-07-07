@@ -11,6 +11,8 @@ import (
 )
 
 // Returns an attached database configuration.
+//
+// Deprecated: azure-native:kusto/v20210101:AttachedDatabaseConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:AttachedDatabaseConfiguration to guarantee forwards compatibility.
 func LookupAttachedDatabaseConfiguration(ctx *pulumi.Context, args *LookupAttachedDatabaseConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAttachedDatabaseConfigurationResult, error) {
 	var rv LookupAttachedDatabaseConfigurationResult
 	err := ctx.Invoke("azure-native:kusto/v20210101:getAttachedDatabaseConfiguration", args, &rv, opts...)

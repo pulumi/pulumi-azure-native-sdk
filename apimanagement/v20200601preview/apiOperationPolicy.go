@@ -13,7 +13,7 @@ import (
 
 // Policy Contract details.
 //
-// Deprecated: azure-native:apimanagement/v20200601preview:ApiOperationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiOperationPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20200601preview:ApiOperationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiOperationPolicy to guarantee forwards compatibility.
 type ApiOperationPolicy struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 
 // User details.
 //
-// Deprecated: azure-native:apimanagement/v20200601preview:User is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:User to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20200601preview:User is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:User to guarantee forwards compatibility.
 type User struct {
 	pulumi.CustomResourceState
 

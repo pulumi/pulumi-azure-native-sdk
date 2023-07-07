@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing attestation at resource group scope.
+//
+// Deprecated: azure-native:policyinsights/v20210101:AttestationAtResourceGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:policyinsights/v20220901:AttestationAtResourceGroup to guarantee forwards compatibility.
 func LookupAttestationAtResourceGroup(ctx *pulumi.Context, args *LookupAttestationAtResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtResourceGroupResult, error) {
 	var rv LookupAttestationAtResourceGroupResult
 	err := ctx.Invoke("azure-native:policyinsights/v20210101:getAttestationAtResourceGroup", args, &rv, opts...)

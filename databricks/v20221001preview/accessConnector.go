@@ -12,6 +12,8 @@ import (
 )
 
 // Information about azure databricks accessConnector.
+//
+// Deprecated: azure-native:databricks/v20221001preview:AccessConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:databricks/v20230501:AccessConnector to guarantee forwards compatibility.
 type AccessConnector struct {
 	pulumi.CustomResourceState
 

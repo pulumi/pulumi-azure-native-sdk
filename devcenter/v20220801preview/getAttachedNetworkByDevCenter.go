@@ -12,7 +12,7 @@ import (
 
 // Gets an attached NetworkConnection.
 //
-// Deprecated: azure-native:devcenter/v20220801preview:AttachedNetworkByDevCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:AttachedNetworkByDevCenter to guarantee forwards compatibility.
+// Deprecated: azure-native:devcenter/v20220801preview:AttachedNetworkByDevCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:AttachedNetworkByDevCenter to guarantee forwards compatibility.
 func LookupAttachedNetworkByDevCenter(ctx *pulumi.Context, args *LookupAttachedNetworkByDevCenterArgs, opts ...pulumi.InvokeOption) (*LookupAttachedNetworkByDevCenterResult, error) {
 	var rv LookupAttachedNetworkByDevCenterResult
 	err := ctx.Invoke("azure-native:devcenter/v20220801preview:getAttachedNetworkByDevCenter", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Class representing a Traffic Manager endpoint.
+//
+// Deprecated: azure-native:network/v20180801:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220401preview:Endpoint to guarantee forwards compatibility.
 type Endpoint struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Retrieves the properties of an existing Azure Cosmos DB database account.
 //
-// Deprecated: azure-native:documentdb/v20220215preview:DatabaseAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:DatabaseAccount to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20220215preview:DatabaseAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:DatabaseAccount to guarantee forwards compatibility.
 func LookupDatabaseAccount(ctx *pulumi.Context, args *LookupDatabaseAccountArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAccountResult, error) {
 	var rv LookupDatabaseAccountResult
 	err := ctx.Invoke("azure-native:documentdb/v20220215preview:getDatabaseAccount", args, &rv, opts...)

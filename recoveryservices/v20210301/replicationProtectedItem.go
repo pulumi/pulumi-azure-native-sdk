@@ -13,7 +13,7 @@ import (
 
 // Replication protected item.
 //
-// Deprecated: azure-native:recoveryservices/v20210301:ReplicationProtectedItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationProtectedItem to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20210301:ReplicationProtectedItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationProtectedItem to guarantee forwards compatibility.
 type ReplicationProtectedItem struct {
 	pulumi.CustomResourceState
 

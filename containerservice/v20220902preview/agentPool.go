@@ -13,7 +13,7 @@ import (
 
 // Agent Pool.
 //
-// Deprecated: azure-native:containerservice/v20220902preview:AgentPool is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:AgentPool to guarantee forwards compatibility.
+// Deprecated: azure-native:containerservice/v20220902preview:AgentPool is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:AgentPool to guarantee forwards compatibility.
 type AgentPool struct {
 	pulumi.CustomResourceState
 

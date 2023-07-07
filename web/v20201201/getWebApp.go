@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of a web, mobile, or API app.
+//
+// Deprecated: azure-native:web/v20201201:WebApp is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebApp to guarantee forwards compatibility.
 func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.InvokeOption) (*LookupWebAppResult, error) {
 	var rv LookupWebAppResult
 	err := ctx.Invoke("azure-native:web/v20201201:getWebApp", args, &rv, opts...)

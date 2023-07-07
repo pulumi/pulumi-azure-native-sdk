@@ -13,7 +13,7 @@ import (
 
 // The IpGroups resource information.
 //
-// Deprecated: azure-native:network/v20191101:IpGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:IpGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20191101:IpGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:IpGroup to guarantee forwards compatibility.
 type IpGroup struct {
 	pulumi.CustomResourceState
 

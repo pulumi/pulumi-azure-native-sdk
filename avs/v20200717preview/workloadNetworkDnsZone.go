@@ -12,6 +12,8 @@ import (
 )
 
 // NSX DNS Zone
+//
+// Deprecated: azure-native:avs/v20200717preview:WorkloadNetworkDnsZone is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkDnsZone to guarantee forwards compatibility.
 type WorkloadNetworkDnsZone struct {
 	pulumi.CustomResourceState
 

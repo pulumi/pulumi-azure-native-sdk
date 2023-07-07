@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Azure dedicated HSM.
+//
+// Deprecated: azure-native:hardwaresecuritymodules/v20181031preview:DedicatedHsm is being removed in the next major version of this provider. Upgrade to at least azure-native:hardwaresecuritymodules/v20211130:DedicatedHsm to guarantee forwards compatibility.
 func LookupDedicatedHsm(ctx *pulumi.Context, args *LookupDedicatedHsmArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHsmResult, error) {
 	var rv LookupDedicatedHsmResult
 	err := ctx.Invoke("azure-native:hardwaresecuritymodules/v20181031preview:getDedicatedHsm", args, &rv, opts...)

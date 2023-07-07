@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Kusto cluster database script.
+//
+// Deprecated: azure-native:kusto/v20210101:Script is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20210827:Script to guarantee forwards compatibility.
 func LookupScript(ctx *pulumi.Context, args *LookupScriptArgs, opts ...pulumi.InvokeOption) (*LookupScriptResult, error) {
 	var rv LookupScriptResult
 	err := ctx.Invoke("azure-native:kusto/v20210101:getScript", args, &rv, opts...)

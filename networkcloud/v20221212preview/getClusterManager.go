@@ -11,6 +11,8 @@ import (
 )
 
 // Get the properties of the provided cluster manager.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:ClusterManager is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:ClusterManager to guarantee forwards compatibility.
 func LookupClusterManager(ctx *pulumi.Context, args *LookupClusterManagerArgs, opts ...pulumi.InvokeOption) (*LookupClusterManagerResult, error) {
 	var rv LookupClusterManagerResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getClusterManager", args, &rv, opts...)

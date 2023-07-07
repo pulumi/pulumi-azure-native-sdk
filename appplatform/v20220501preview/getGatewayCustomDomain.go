@@ -12,7 +12,7 @@ import (
 
 // Get the Spring Cloud Gateway custom domain.
 //
-// Deprecated: azure-native:appplatform/v20220501preview:GatewayCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:GatewayCustomDomain to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220501preview:GatewayCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:GatewayCustomDomain to guarantee forwards compatibility.
 func LookupGatewayCustomDomain(ctx *pulumi.Context, args *LookupGatewayCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCustomDomainResult, error) {
 	var rv LookupGatewayCustomDomainResult
 	err := ctx.Invoke("azure-native:appplatform/v20220501preview:getGatewayCustomDomain", args, &rv, opts...)

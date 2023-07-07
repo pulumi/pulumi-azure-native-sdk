@@ -11,6 +11,8 @@ import (
 )
 
 // Returns an Application Insights component.
+//
+// Deprecated: azure-native:insights/v20150501:Component is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20200202:Component to guarantee forwards compatibility.
 func LookupComponent(ctx *pulumi.Context, args *LookupComponentArgs, opts ...pulumi.InvokeOption) (*LookupComponentResult, error) {
 	var rv LookupComponentResult
 	err := ctx.Invoke("azure-native:insights/v20150501:getComponent", args, &rv, opts...)

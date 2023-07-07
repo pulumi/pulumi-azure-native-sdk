@@ -12,6 +12,8 @@ import (
 )
 
 // Arc Sql Server database
+//
+// Deprecated: azure-native:azurearcdata/v20220615preview:SqlServerDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20230115preview:SqlServerDatabase to guarantee forwards compatibility.
 type SqlServerDatabase struct {
 	pulumi.CustomResourceState
 

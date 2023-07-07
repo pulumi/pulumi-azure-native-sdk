@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Hunt Comment in Azure Security Insights
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:HuntComment is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:HuntComment to guarantee forwards compatibility.
 type HuntComment struct {
 	pulumi.CustomResourceState
 

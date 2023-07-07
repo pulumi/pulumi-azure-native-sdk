@@ -12,6 +12,8 @@ import (
 )
 
 // The policy exemption.
+//
+// Deprecated: azure-native:authorization/v20200701preview:PolicyExemption is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20220701preview:PolicyExemption to guarantee forwards compatibility.
 type PolicyExemption struct {
 	pulumi.CustomResourceState
 

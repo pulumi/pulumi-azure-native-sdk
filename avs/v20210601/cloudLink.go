@@ -12,6 +12,8 @@ import (
 )
 
 // A cloud link resource
+//
+// Deprecated: azure-native:avs/v20210601:CloudLink is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:CloudLink to guarantee forwards compatibility.
 type CloudLink struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 
 // PrivateEndpointConnection resource.
 //
-// Deprecated: azure-native:network/v20200801:PrivateLinkServicePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:PrivateLinkServicePrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200801:PrivateLinkServicePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:PrivateLinkServicePrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateLinkServicePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Workspace details.
+//
+// Deprecated: azure-native:easm/v20220401preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:easm/v20230401preview:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 

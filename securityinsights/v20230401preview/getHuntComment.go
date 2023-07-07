@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a hunt comment
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:HuntComment is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:HuntComment to guarantee forwards compatibility.
 func LookupHuntComment(ctx *pulumi.Context, args *LookupHuntCommentArgs, opts ...pulumi.InvokeOption) (*LookupHuntCommentResult, error) {
 	var rv LookupHuntCommentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getHuntComment", args, &rv, opts...)

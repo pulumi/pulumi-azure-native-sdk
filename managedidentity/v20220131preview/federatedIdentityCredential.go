@@ -12,6 +12,8 @@ import (
 )
 
 // Describes a federated identity credential.
+//
+// Deprecated: azure-native:managedidentity/v20220131preview:FederatedIdentityCredential is being removed in the next major version of this provider. Upgrade to at least azure-native:managedidentity/v20230131:FederatedIdentityCredential to guarantee forwards compatibility.
 type FederatedIdentityCredential struct {
 	pulumi.CustomResourceState
 

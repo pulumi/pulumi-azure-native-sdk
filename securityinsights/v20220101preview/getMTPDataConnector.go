@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20220101preview:MTPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MTPDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220101preview:MTPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:MTPDataConnector to guarantee forwards compatibility.
 func LookupMTPDataConnector(ctx *pulumi.Context, args *LookupMTPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMTPDataConnectorResult, error) {
 	var rv LookupMTPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220101preview:getMTPDataConnector", args, &rv, opts...)

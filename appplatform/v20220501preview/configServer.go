@@ -13,7 +13,7 @@ import (
 
 // Config Server resource
 //
-// Deprecated: azure-native:appplatform/v20220501preview:ConfigServer is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ConfigServer to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220501preview:ConfigServer is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ConfigServer to guarantee forwards compatibility.
 type ConfigServer struct {
 	pulumi.CustomResourceState
 

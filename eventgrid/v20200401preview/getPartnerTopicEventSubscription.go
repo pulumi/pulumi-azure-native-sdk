@@ -11,6 +11,8 @@ import (
 )
 
 // Get an event subscription of a partner topic.
+//
+// Deprecated: azure-native:eventgrid/v20200401preview:PartnerTopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerTopicEventSubscription to guarantee forwards compatibility.
 func LookupPartnerTopicEventSubscription(ctx *pulumi.Context, args *LookupPartnerTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupPartnerTopicEventSubscriptionResult, error) {
 	var rv LookupPartnerTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20200401preview:getPartnerTopicEventSubscription", args, &rv, opts...)

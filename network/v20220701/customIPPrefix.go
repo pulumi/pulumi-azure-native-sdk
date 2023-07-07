@@ -13,7 +13,7 @@ import (
 
 // Custom IP prefix resource.
 //
-// Deprecated: azure-native:network/v20220701:CustomIPPrefix is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:CustomIPPrefix to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220701:CustomIPPrefix is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:CustomIPPrefix to guarantee forwards compatibility.
 type CustomIPPrefix struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Configuration settings for the Azure App Service Authentication / Authorization feature.
+//
+// Deprecated: azure-native:web/v20201201:WebAppAuthSettingsSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppAuthSettingsSlot to guarantee forwards compatibility.
 type WebAppAuthSettingsSlot struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 // Get properties of an event subscription
 //
 // Deprecated: Version 2020-01-01-preview will be removed in v2 of the provider.
-// azure-native:eventgrid/v20200101preview:EventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:EventSubscription to guarantee forwards compatibility.
+// azure-native:eventgrid/v20200101preview:EventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:EventSubscription to guarantee forwards compatibility.
 func LookupEventSubscription(ctx *pulumi.Context, args *LookupEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupEventSubscriptionResult, error) {
 	var rv LookupEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20200101preview:getEventSubscription", args, &rv, opts...)

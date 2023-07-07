@@ -13,7 +13,7 @@ import (
 
 // A managed server DNS alias.
 //
-// Deprecated: azure-native:sql/v20220201preview:ManagedServerDnsAlias is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedServerDnsAlias to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20220201preview:ManagedServerDnsAlias is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedServerDnsAlias to guarantee forwards compatibility.
 type ManagedServerDnsAlias struct {
 	pulumi.CustomResourceState
 

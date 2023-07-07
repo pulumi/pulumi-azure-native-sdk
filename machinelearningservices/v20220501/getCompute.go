@@ -12,7 +12,7 @@ import (
 
 // Gets compute definition by its name. Any secrets (storage keys, service credentials, etc) are not returned - use 'keys' nested resource to get them.
 //
-// Deprecated: azure-native:machinelearningservices/v20220501:Compute is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:Compute to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20220501:Compute is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:Compute to guarantee forwards compatibility.
 func LookupCompute(ctx *pulumi.Context, args *LookupComputeArgs, opts ...pulumi.InvokeOption) (*LookupComputeResult, error) {
 	var rv LookupComputeResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220501:getCompute", args, &rv, opts...)

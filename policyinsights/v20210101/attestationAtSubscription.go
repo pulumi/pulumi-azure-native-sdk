@@ -12,6 +12,8 @@ import (
 )
 
 // An attestation resource.
+//
+// Deprecated: azure-native:policyinsights/v20210101:AttestationAtSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:policyinsights/v20220901:AttestationAtSubscription to guarantee forwards compatibility.
 type AttestationAtSubscription struct {
 	pulumi.CustomResourceState
 

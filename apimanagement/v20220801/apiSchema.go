@@ -12,6 +12,8 @@ import (
 )
 
 // API Schema Contract details.
+//
+// Deprecated: azure-native:apimanagement/v20220801:ApiSchema is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiSchema to guarantee forwards compatibility.
 type ApiSchema struct {
 	pulumi.CustomResourceState
 

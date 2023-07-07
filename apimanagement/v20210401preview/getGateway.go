@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the Gateway specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20210401preview:Gateway is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Gateway to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210401preview:Gateway is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Gateway to guarantee forwards compatibility.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	var rv LookupGatewayResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210401preview:getGateway", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // A custom certificate.
+//
+// Deprecated: azure-native:signalrservice/v20230201:SignalRCustomCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRCustomCertificate to guarantee forwards compatibility.
 type SignalRCustomCertificate struct {
 	pulumi.CustomResourceState
 

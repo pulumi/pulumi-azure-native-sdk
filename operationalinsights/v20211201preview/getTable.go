@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Log Analytics workspace table.
+//
+// Deprecated: azure-native:operationalinsights/v20211201preview:Table is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20221001:Table to guarantee forwards compatibility.
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {
 	var rv LookupTableResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20211201preview:getTable", args, &rv, opts...)

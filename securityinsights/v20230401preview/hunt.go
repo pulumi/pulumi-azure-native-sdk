@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Hunt in Azure Security Insights.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:Hunt is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Hunt to guarantee forwards compatibility.
 type Hunt struct {
 	pulumi.CustomResourceState
 

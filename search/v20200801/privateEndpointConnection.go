@@ -12,6 +12,8 @@ import (
 )
 
 // Describes an existing Private Endpoint connection to the Azure Cognitive Search service.
+//
+// Deprecated: azure-native:search/v20200801:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:search/v20220901:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

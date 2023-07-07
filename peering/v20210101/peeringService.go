@@ -12,6 +12,8 @@ import (
 )
 
 // Peering Service
+//
+// Deprecated: azure-native:peering/v20210101:PeeringService is being removed in the next major version of this provider. Upgrade to at least azure-native:peering/v20221001:PeeringService to guarantee forwards compatibility.
 type PeeringService struct {
 	pulumi.CustomResourceState
 

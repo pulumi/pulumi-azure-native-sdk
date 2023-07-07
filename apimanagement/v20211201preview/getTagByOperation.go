@@ -12,7 +12,7 @@ import (
 
 // Get tag associated with the Operation.
 //
-// Deprecated: azure-native:apimanagement/v20211201preview:TagByOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:TagByOperation to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20211201preview:TagByOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:TagByOperation to guarantee forwards compatibility.
 func LookupTagByOperation(ctx *pulumi.Context, args *LookupTagByOperationArgs, opts ...pulumi.InvokeOption) (*LookupTagByOperationResult, error) {
 	var rv LookupTagByOperationResult
 	err := ctx.Invoke("azure-native:apimanagement/v20211201preview:getTagByOperation", args, &rv, opts...)

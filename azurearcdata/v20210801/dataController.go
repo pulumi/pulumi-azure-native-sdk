@@ -13,7 +13,7 @@ import (
 
 // Data controller resource
 //
-// Deprecated: azure-native:azurearcdata/v20210801:DataController is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20220615preview:DataController to guarantee forwards compatibility.
+// Deprecated: azure-native:azurearcdata/v20210801:DataController is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20230115preview:DataController to guarantee forwards compatibility.
 type DataController struct {
 	pulumi.CustomResourceState
 

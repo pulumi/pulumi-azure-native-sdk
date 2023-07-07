@@ -11,6 +11,8 @@ import (
 )
 
 // Get a host pool.
+//
+// Deprecated: azure-native:desktopvirtualization/v20210201preview:HostPool is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20220401preview:HostPool to guarantee forwards compatibility.
 func LookupHostPool(ctx *pulumi.Context, args *LookupHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupHostPoolResult, error) {
 	var rv LookupHostPoolResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20210201preview:getHostPool", args, &rv, opts...)

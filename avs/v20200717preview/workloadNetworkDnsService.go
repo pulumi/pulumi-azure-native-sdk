@@ -12,6 +12,8 @@ import (
 )
 
 // NSX DNS Service
+//
+// Deprecated: azure-native:avs/v20200717preview:WorkloadNetworkDnsService is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkDnsService to guarantee forwards compatibility.
 type WorkloadNetworkDnsService struct {
 	pulumi.CustomResourceState
 

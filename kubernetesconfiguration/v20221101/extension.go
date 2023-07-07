@@ -12,6 +12,8 @@ import (
 )
 
 // The Extension object.
+//
+// Deprecated: azure-native:kubernetesconfiguration/v20221101:Extension is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20230501:Extension to guarantee forwards compatibility.
 type Extension struct {
 	pulumi.CustomResourceState
 

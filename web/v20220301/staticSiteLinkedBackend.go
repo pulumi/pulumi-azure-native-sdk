@@ -12,6 +12,8 @@ import (
 )
 
 // Static Site Linked Backend ARM resource.
+//
+// Deprecated: azure-native:web/v20220301:StaticSiteLinkedBackend is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:StaticSiteLinkedBackend to guarantee forwards compatibility.
 type StaticSiteLinkedBackend struct {
 	pulumi.CustomResourceState
 

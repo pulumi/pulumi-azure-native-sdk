@@ -12,6 +12,8 @@ import (
 )
 
 // Scheduled action definition.
+//
+// Deprecated: azure-native:costmanagement/v20221001:ScheduledActionByScope is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20230401preview:ScheduledActionByScope to guarantee forwards compatibility.
 type ScheduledActionByScope struct {
 	pulumi.CustomResourceState
 

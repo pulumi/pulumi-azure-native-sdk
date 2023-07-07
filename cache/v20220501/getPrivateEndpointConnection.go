@@ -12,7 +12,7 @@ import (
 
 // Gets the specified private endpoint connection associated with the redis cache.
 //
-// Deprecated: azure-native:cache/v20220501:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20220601:PrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:cache/v20220501:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20230501preview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:cache/v20220501:getPrivateEndpointConnection", args, &rv, opts...)

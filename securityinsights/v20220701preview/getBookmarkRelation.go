@@ -12,7 +12,7 @@ import (
 
 // Gets a bookmark relation.
 //
-// Deprecated: azure-native:securityinsights/v20220701preview:BookmarkRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:BookmarkRelation to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220701preview:BookmarkRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:BookmarkRelation to guarantee forwards compatibility.
 func LookupBookmarkRelation(ctx *pulumi.Context, args *LookupBookmarkRelationArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkRelationResult, error) {
 	var rv LookupBookmarkRelationResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getBookmarkRelation", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // A domain specific resource identifier.
+//
+// Deprecated: azure-native:web/v20201201:WebAppDomainOwnershipIdentifierSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppDomainOwnershipIdentifierSlot to guarantee forwards compatibility.
 type WebAppDomainOwnershipIdentifierSlot struct {
 	pulumi.CustomResourceState
 

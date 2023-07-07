@@ -13,7 +13,7 @@ import (
 
 // ApiRelease details.
 //
-// Deprecated: azure-native:apimanagement/v20211201preview:ApiRelease is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiRelease to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20211201preview:ApiRelease is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiRelease to guarantee forwards compatibility.
 type ApiRelease struct {
 	pulumi.CustomResourceState
 

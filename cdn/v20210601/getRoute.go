@@ -12,7 +12,7 @@ import (
 
 // Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 //
-// Deprecated: azure-native:cdn/v20210601:Route is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Route to guarantee forwards compatibility.
+// Deprecated: azure-native:cdn/v20210601:Route is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Route to guarantee forwards compatibility.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
 	var rv LookupRouteResult
 	err := ctx.Invoke("azure-native:cdn/v20210601:getRoute", args, &rv, opts...)

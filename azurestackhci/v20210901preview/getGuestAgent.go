@@ -11,6 +11,8 @@ import (
 )
 
 // Implements GuestAgent GET method.
+//
+// Deprecated: azure-native:azurestackhci/v20210901preview:GuestAgent is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20221215preview:GuestAgent to guarantee forwards compatibility.
 func LookupGuestAgent(ctx *pulumi.Context, args *LookupGuestAgentArgs, opts ...pulumi.InvokeOption) (*LookupGuestAgentResult, error) {
 	var rv LookupGuestAgentResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getGuestAgent", args, &rv, opts...)

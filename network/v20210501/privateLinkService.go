@@ -13,7 +13,7 @@ import (
 
 // Private link service resource.
 //
-// Deprecated: azure-native:network/v20210501:PrivateLinkService is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:PrivateLinkService to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20210501:PrivateLinkService is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:PrivateLinkService to guarantee forwards compatibility.
 type PrivateLinkService struct {
 	pulumi.CustomResourceState
 

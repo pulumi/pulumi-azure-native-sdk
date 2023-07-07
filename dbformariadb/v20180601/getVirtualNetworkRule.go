@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a virtual network rule.
+//
+// Deprecated: azure-native:dbformariadb/v20180601:VirtualNetworkRule is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformariadb/v20180601preview:VirtualNetworkRule to guarantee forwards compatibility.
 func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRuleResult, error) {
 	var rv LookupVirtualNetworkRuleResult
 	err := ctx.Invoke("azure-native:dbformariadb/v20180601:getVirtualNetworkRule", args, &rv, opts...)

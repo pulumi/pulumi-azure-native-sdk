@@ -12,6 +12,8 @@ import (
 )
 
 // Specifies information about the Dedicated host.
+//
+// Deprecated: azure-native:compute/v20201201:DedicatedHost is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:DedicatedHost to guarantee forwards compatibility.
 type DedicatedHost struct {
 	pulumi.CustomResourceState
 

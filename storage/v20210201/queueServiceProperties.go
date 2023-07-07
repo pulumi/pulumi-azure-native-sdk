@@ -12,6 +12,8 @@ import (
 )
 
 // The properties of a storage account’s Queue service.
+//
+// Deprecated: azure-native:storage/v20210201:QueueServiceProperties is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:QueueServiceProperties to guarantee forwards compatibility.
 type QueueServiceProperties struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Configuration.
+//
+// Deprecated: azure-native:dbformariadb/v20180601:Configuration is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformariadb/v20180601preview:Configuration to guarantee forwards compatibility.
 type Configuration struct {
 	pulumi.CustomResourceState
 

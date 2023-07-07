@@ -12,7 +12,7 @@ import (
 
 // Gets a sync group.
 //
-// Deprecated: azure-native:sql/v20150501preview:SyncGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:SyncGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20150501preview:SyncGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:SyncGroup to guarantee forwards compatibility.
 func LookupSyncGroup(ctx *pulumi.Context, args *LookupSyncGroupArgs, opts ...pulumi.InvokeOption) (*LookupSyncGroupResult, error) {
 	var rv LookupSyncGroupResult
 	err := ctx.Invoke("azure-native:sql/v20150501preview:getSyncGroup", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // A private link scoped resource
+//
+// Deprecated: azure-native:insights/v20191017preview:PrivateLinkScopedResource is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20210701preview:PrivateLinkScopedResource to guarantee forwards compatibility.
 type PrivateLinkScopedResource struct {
 	pulumi.CustomResourceState
 

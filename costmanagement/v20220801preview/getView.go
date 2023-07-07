@@ -12,7 +12,7 @@ import (
 
 // Gets the view by view name.
 //
-// Deprecated: azure-native:costmanagement/v20220801preview:View is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221005preview:View to guarantee forwards compatibility.
+// Deprecated: azure-native:costmanagement/v20220801preview:View is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221001:View to guarantee forwards compatibility.
 func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.InvokeOption) (*LookupViewResult, error) {
 	var rv LookupViewResult
 	err := ctx.Invoke("azure-native:costmanagement/v20220801preview:getView", args, &rv, opts...)

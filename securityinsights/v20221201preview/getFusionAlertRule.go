@@ -12,7 +12,7 @@ import (
 
 // Gets the alert rule.
 //
-// Deprecated: azure-native:securityinsights/v20221201preview:FusionAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:FusionAlertRule to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20221201preview:FusionAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:FusionAlertRule to guarantee forwards compatibility.
 func LookupFusionAlertRule(ctx *pulumi.Context, args *LookupFusionAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupFusionAlertRuleResult, error) {
 	var rv LookupFusionAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221201preview:getFusionAlertRule", args, &rv, opts...)

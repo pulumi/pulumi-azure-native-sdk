@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided virtual machine.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:VirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:VirtualMachine to guarantee forwards compatibility.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getVirtualMachine", args, &rv, opts...)

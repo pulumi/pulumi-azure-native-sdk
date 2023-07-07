@@ -12,6 +12,8 @@ import (
 )
 
 // Volume group resource for create
+//
+// Deprecated: azure-native:netapp/v20220901:VolumeGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:VolumeGroup to guarantee forwards compatibility.
 type VolumeGroup struct {
 	pulumi.CustomResourceState
 

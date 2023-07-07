@@ -13,7 +13,7 @@ import (
 
 // Capture logs and metrics of Azure resources based on ARM tags.
 //
-// Deprecated: azure-native:elastic/v20211001preview:TagRule is being removed in the next major version of this provider. Upgrade to at least azure-native:elastic/v20220901preview:TagRule to guarantee forwards compatibility.
+// Deprecated: azure-native:elastic/v20211001preview:TagRule is being removed in the next major version of this provider. Upgrade to at least azure-native:elastic/v20230615preview:TagRule to guarantee forwards compatibility.
 type TagRule struct {
 	pulumi.CustomResourceState
 

@@ -8,6 +8,8 @@ import (
 )
 
 // Get the subscription-level key used for Real User Metrics collection.
+//
+// Deprecated: azure-native:network/v20180801:TrafficManagerUserMetricsKey is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220401preview:TrafficManagerUserMetricsKey to guarantee forwards compatibility.
 func LookupTrafficManagerUserMetricsKey(ctx *pulumi.Context, args *LookupTrafficManagerUserMetricsKeyArgs, opts ...pulumi.InvokeOption) (*LookupTrafficManagerUserMetricsKeyResult, error) {
 	var rv LookupTrafficManagerUserMetricsKeyResult
 	err := ctx.Invoke("azure-native:network/v20180801:getTrafficManagerUserMetricsKey", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Configuration of App Service site logs.
+//
+// Deprecated: azure-native:web/v20201201:WebAppDiagnosticLogsConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppDiagnosticLogsConfiguration to guarantee forwards compatibility.
 type WebAppDiagnosticLogsConfiguration struct {
 	pulumi.CustomResourceState
 

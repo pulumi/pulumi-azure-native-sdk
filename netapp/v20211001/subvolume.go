@@ -12,6 +12,8 @@ import (
 )
 
 // Subvolume Information properties
+//
+// Deprecated: azure-native:netapp/v20211001:Subvolume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:Subvolume to guarantee forwards compatibility.
 type Subvolume struct {
 	pulumi.CustomResourceState
 

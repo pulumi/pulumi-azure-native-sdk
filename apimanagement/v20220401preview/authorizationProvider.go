@@ -13,7 +13,7 @@ import (
 
 // Authorization Provider contract.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:AuthorizationProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:AuthorizationProvider to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:AuthorizationProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:AuthorizationProvider to guarantee forwards compatibility.
 type AuthorizationProvider struct {
 	pulumi.CustomResourceState
 

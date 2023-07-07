@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+//
+// Deprecated: azure-native:cdn/v20221101preview:AFDEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:AFDEndpoint to guarantee forwards compatibility.
 func LookupAFDEndpoint(ctx *pulumi.Context, args *LookupAFDEndpointArgs, opts ...pulumi.InvokeOption) (*LookupAFDEndpointResult, error) {
 	var rv LookupAFDEndpointResult
 	err := ctx.Invoke("azure-native:cdn/v20221101preview:getAFDEndpoint", args, &rv, opts...)

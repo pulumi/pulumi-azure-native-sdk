@@ -11,6 +11,8 @@ import (
 )
 
 // Get a TestLine
+//
+// Deprecated: azure-native:voiceservices/v20230131:TestLine is being removed in the next major version of this provider. Upgrade to at least azure-native:voiceservices/v20230403:TestLine to guarantee forwards compatibility.
 func LookupTestLine(ctx *pulumi.Context, args *LookupTestLineArgs, opts ...pulumi.InvokeOption) (*LookupTestLineResult, error) {
 	var rv LookupTestLineResult
 	err := ctx.Invoke("azure-native:voiceservices/v20230131:getTestLine", args, &rv, opts...)

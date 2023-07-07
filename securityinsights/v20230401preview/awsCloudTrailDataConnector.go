@@ -12,6 +12,8 @@ import (
 )
 
 // Represents Amazon Web Services CloudTrail data connector.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:AwsCloudTrailDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:AwsCloudTrailDataConnector to guarantee forwards compatibility.
 type AwsCloudTrailDataConnector struct {
 	pulumi.CustomResourceState
 

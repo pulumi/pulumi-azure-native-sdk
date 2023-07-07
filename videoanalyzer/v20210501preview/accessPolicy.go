@@ -12,6 +12,8 @@ import (
 )
 
 // Policy that determines how a video can be accessed.
+//
+// Deprecated: azure-native:videoanalyzer/v20210501preview:AccessPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:videoanalyzer/v20211101preview:AccessPolicy to guarantee forwards compatibility.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 

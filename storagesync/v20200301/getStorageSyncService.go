@@ -11,6 +11,8 @@ import (
 )
 
 // Get a given StorageSyncService.
+//
+// Deprecated: azure-native:storagesync/v20200301:StorageSyncService is being removed in the next major version of this provider. Upgrade to at least azure-native:storagesync/v20220601:StorageSyncService to guarantee forwards compatibility.
 func LookupStorageSyncService(ctx *pulumi.Context, args *LookupStorageSyncServiceArgs, opts ...pulumi.InvokeOption) (*LookupStorageSyncServiceResult, error) {
 	var rv LookupStorageSyncServiceResult
 	err := ctx.Invoke("azure-native:storagesync/v20200301:getStorageSyncService", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // Azure Active Directory only authentication.
 //
-// Deprecated: azure-native:sql/v20200801preview:ManagedInstanceAzureADOnlyAuthentication is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedInstanceAzureADOnlyAuthentication to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20200801preview:ManagedInstanceAzureADOnlyAuthentication is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedInstanceAzureADOnlyAuthentication to guarantee forwards compatibility.
 type ManagedInstanceAzureADOnlyAuthentication struct {
 	pulumi.CustomResourceState
 

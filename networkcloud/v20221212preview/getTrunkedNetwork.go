@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided trunked network.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:TrunkedNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:TrunkedNetwork to guarantee forwards compatibility.
 func LookupTrunkedNetwork(ctx *pulumi.Context, args *LookupTrunkedNetworkArgs, opts ...pulumi.InvokeOption) (*LookupTrunkedNetworkResult, error) {
 	var rv LookupTrunkedNetworkResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getTrunkedNetwork", args, &rv, opts...)

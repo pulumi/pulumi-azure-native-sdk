@@ -11,6 +11,8 @@ import (
 )
 
 // Get the Update run for a specified update
+//
+// Deprecated: azure-native:azurestackhci/v20230201:UpdateRun is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230301:UpdateRun to guarantee forwards compatibility.
 func LookupUpdateRun(ctx *pulumi.Context, args *LookupUpdateRunArgs, opts ...pulumi.InvokeOption) (*LookupUpdateRunResult, error) {
 	var rv LookupUpdateRunResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20230201:getUpdateRun", args, &rv, opts...)

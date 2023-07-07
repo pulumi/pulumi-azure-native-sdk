@@ -13,7 +13,7 @@ import (
 
 // Virtual Network resource.
 //
-// Deprecated: azure-native:network/v20190901:VirtualNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualNetwork to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20190901:VirtualNetwork is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualNetwork to guarantee forwards compatibility.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 

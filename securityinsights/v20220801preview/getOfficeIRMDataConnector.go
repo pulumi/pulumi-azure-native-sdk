@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20220801preview:OfficeIRMDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:OfficeIRMDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220801preview:OfficeIRMDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:OfficeIRMDataConnector to guarantee forwards compatibility.
 func LookupOfficeIRMDataConnector(ctx *pulumi.Context, args *LookupOfficeIRMDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeIRMDataConnectorResult, error) {
 	var rv LookupOfficeIRMDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220801preview:getOfficeIRMDataConnector", args, &rv, opts...)

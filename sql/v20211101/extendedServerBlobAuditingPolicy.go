@@ -13,7 +13,7 @@ import (
 
 // An extended server blob auditing policy.
 //
-// Deprecated: azure-native:sql/v20211101:ExtendedServerBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ExtendedServerBlobAuditingPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20211101:ExtendedServerBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ExtendedServerBlobAuditingPolicy to guarantee forwards compatibility.
 type ExtendedServerBlobAuditingPolicy struct {
 	pulumi.CustomResourceState
 

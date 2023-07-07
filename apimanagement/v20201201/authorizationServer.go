@@ -12,6 +12,8 @@ import (
 )
 
 // External OAuth authorization server settings.
+//
+// Deprecated: azure-native:apimanagement/v20201201:AuthorizationServer is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:AuthorizationServer to guarantee forwards compatibility.
 type AuthorizationServer struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Gets a server trust certificate that was uploaded from box to Sql Managed Instance.
 //
-// Deprecated: azure-native:sql/v20220501preview:ServerTrustCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerTrustCertificate to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20220501preview:ServerTrustCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ServerTrustCertificate to guarantee forwards compatibility.
 func LookupServerTrustCertificate(ctx *pulumi.Context, args *LookupServerTrustCertificateArgs, opts ...pulumi.InvokeOption) (*LookupServerTrustCertificateResult, error) {
 	var rv LookupServerTrustCertificateResult
 	err := ctx.Invoke("azure-native:sql/v20220501preview:getServerTrustCertificate", args, &rv, opts...)

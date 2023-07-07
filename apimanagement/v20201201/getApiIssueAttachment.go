@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the issue Attachment for an API specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20201201:ApiIssueAttachment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiIssueAttachment to guarantee forwards compatibility.
 func LookupApiIssueAttachment(ctx *pulumi.Context, args *LookupApiIssueAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueAttachmentResult, error) {
 	var rv LookupApiIssueAttachmentResult
 	err := ctx.Invoke("azure-native:apimanagement/v20201201:getApiIssueAttachment", args, &rv, opts...)

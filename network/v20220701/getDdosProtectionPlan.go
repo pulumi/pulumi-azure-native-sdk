@@ -12,7 +12,7 @@ import (
 
 // Gets information about the specified DDoS protection plan.
 //
-// Deprecated: azure-native:network/v20220701:DdosProtectionPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:DdosProtectionPlan to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220701:DdosProtectionPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:DdosProtectionPlan to guarantee forwards compatibility.
 func LookupDdosProtectionPlan(ctx *pulumi.Context, args *LookupDdosProtectionPlanArgs, opts ...pulumi.InvokeOption) (*LookupDdosProtectionPlanResult, error) {
 	var rv LookupDdosProtectionPlanResult
 	err := ctx.Invoke("azure-native:network/v20220701:getDdosProtectionPlan", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Gets information about the specified DDoS custom policy.
 //
-// Deprecated: azure-native:network/v20220501:DdosCustomPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:DdosCustomPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220501:DdosCustomPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:DdosCustomPolicy to guarantee forwards compatibility.
 func LookupDdosCustomPolicy(ctx *pulumi.Context, args *LookupDdosCustomPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDdosCustomPolicyResult, error) {
 	var rv LookupDdosCustomPolicyResult
 	err := ctx.Invoke("azure-native:network/v20220501:getDdosCustomPolicy", args, &rv, opts...)

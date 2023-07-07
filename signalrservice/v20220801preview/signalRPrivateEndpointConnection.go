@@ -13,7 +13,7 @@ import (
 
 // A private endpoint connection to an azure resource
 //
-// Deprecated: azure-native:signalrservice/v20220801preview:SignalRPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230201:SignalRPrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:signalrservice/v20220801preview:SignalRPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRPrivateEndpointConnection to guarantee forwards compatibility.
 type SignalRPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

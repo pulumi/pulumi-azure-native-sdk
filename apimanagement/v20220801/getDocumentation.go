@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of the Documentation specified by its identifier.
+//
+// Deprecated: azure-native:apimanagement/v20220801:Documentation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Documentation to guarantee forwards compatibility.
 func LookupDocumentation(ctx *pulumi.Context, args *LookupDocumentationArgs, opts ...pulumi.InvokeOption) (*LookupDocumentationResult, error) {
 	var rv LookupDocumentationResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getDocumentation", args, &rv, opts...)

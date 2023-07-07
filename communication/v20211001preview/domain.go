@@ -12,6 +12,8 @@ import (
 )
 
 // A class representing a Domains resource.
+//
+// Deprecated: azure-native:communication/v20211001preview:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20220701preview:Domain to guarantee forwards compatibility.
 type Domain struct {
 	pulumi.CustomResourceState
 

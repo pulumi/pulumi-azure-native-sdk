@@ -12,6 +12,8 @@ import (
 )
 
 // Network admin rule.
+//
+// Deprecated: azure-native:network/v20220901:AdminRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:AdminRule to guarantee forwards compatibility.
 type AdminRule struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // The properties of the EventHubConsumerGroupInfo object.
+//
+// Deprecated: azure-native:devices/v20200831:IotHubResourceEventHubConsumerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20210303preview:IotHubResourceEventHubConsumerGroup to guarantee forwards compatibility.
 type IotHubResourceEventHubConsumerGroup struct {
 	pulumi.CustomResourceState
 

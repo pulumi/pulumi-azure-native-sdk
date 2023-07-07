@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:dataprotection/v20211001preview:ResourceGuard is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20221101preview:ResourceGuard to guarantee forwards compatibility.
 type ResourceGuard struct {
 	pulumi.CustomResourceState
 

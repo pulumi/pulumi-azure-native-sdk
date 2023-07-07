@@ -12,6 +12,8 @@ import (
 )
 
 // Class representing a managed private endpoint.
+//
+// Deprecated: azure-native:kusto/v20210827:ManagedPrivateEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:ManagedPrivateEndpoint to guarantee forwards compatibility.
 type ManagedPrivateEndpoint struct {
 	pulumi.CustomResourceState
 

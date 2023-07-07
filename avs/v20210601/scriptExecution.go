@@ -12,6 +12,8 @@ import (
 )
 
 // An instance of a script executed by a user - custom or AVS
+//
+// Deprecated: azure-native:avs/v20210601:ScriptExecution is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:ScriptExecution to guarantee forwards compatibility.
 type ScriptExecution struct {
 	pulumi.CustomResourceState
 

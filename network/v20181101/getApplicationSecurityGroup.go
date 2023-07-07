@@ -12,7 +12,7 @@ import (
 
 // Gets information about the specified application security group.
 //
-// Deprecated: azure-native:network/v20181101:ApplicationSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ApplicationSecurityGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20181101:ApplicationSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ApplicationSecurityGroup to guarantee forwards compatibility.
 func LookupApplicationSecurityGroup(ctx *pulumi.Context, args *LookupApplicationSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationSecurityGroupResult, error) {
 	var rv LookupApplicationSecurityGroupResult
 	err := ctx.Invoke("azure-native:network/v20181101:getApplicationSecurityGroup", args, &rv, opts...)

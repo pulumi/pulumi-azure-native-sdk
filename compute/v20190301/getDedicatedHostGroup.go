@@ -13,7 +13,7 @@ import (
 // Retrieves information about a dedicated host group.
 //
 // Deprecated: Version 2019-03-01 will be removed in v2 of the provider.
-// azure-native:compute/v20190301:DedicatedHostGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:DedicatedHostGroup to guarantee forwards compatibility.
+// azure-native:compute/v20190301:DedicatedHostGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:DedicatedHostGroup to guarantee forwards compatibility.
 func LookupDedicatedHostGroup(ctx *pulumi.Context, args *LookupDedicatedHostGroupArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostGroupResult, error) {
 	var rv LookupDedicatedHostGroupResult
 	err := ctx.Invoke("azure-native:compute/v20190301:getDedicatedHostGroup", args, &rv, opts...)

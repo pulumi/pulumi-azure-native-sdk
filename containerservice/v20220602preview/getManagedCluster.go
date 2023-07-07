@@ -12,7 +12,7 @@ import (
 
 // Managed cluster.
 //
-// Deprecated: azure-native:containerservice/v20220602preview:ManagedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:ManagedCluster to guarantee forwards compatibility.
+// Deprecated: azure-native:containerservice/v20220602preview:ManagedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:ManagedCluster to guarantee forwards compatibility.
 func LookupManagedCluster(ctx *pulumi.Context, args *LookupManagedClusterArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterResult, error) {
 	var rv LookupManagedClusterResult
 	err := ctx.Invoke("azure-native:containerservice/v20220602preview:getManagedCluster", args, &rv, opts...)

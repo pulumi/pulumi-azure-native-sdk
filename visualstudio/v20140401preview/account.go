@@ -12,6 +12,8 @@ import (
 )
 
 // The response to an account resource GET request.
+//
+// Deprecated: azure-native:visualstudio/v20140401preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:visualstudio/v20171101preview:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

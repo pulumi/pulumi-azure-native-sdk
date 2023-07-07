@@ -13,7 +13,7 @@ import (
 
 // API Operation details.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:ApiOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiOperation to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:ApiOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiOperation to guarantee forwards compatibility.
 type ApiOperation struct {
 	pulumi.CustomResourceState
 

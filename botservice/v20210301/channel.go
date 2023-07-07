@@ -12,6 +12,8 @@ import (
 )
 
 // Bot channel resource definition
+//
+// Deprecated: azure-native:botservice/v20210301:Channel is being removed in the next major version of this provider. Upgrade to at least azure-native:botservice/v20220915:Channel to guarantee forwards compatibility.
 type Channel struct {
 	pulumi.CustomResourceState
 

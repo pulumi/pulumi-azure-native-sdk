@@ -11,6 +11,8 @@ import (
 )
 
 // Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+//
+// Deprecated: azure-native:workloads/v20211201preview:ProviderInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:ProviderInstance to guarantee forwards compatibility.
 func LookupProviderInstance(ctx *pulumi.Context, args *LookupProviderInstanceArgs, opts ...pulumi.InvokeOption) (*LookupProviderInstanceResult, error) {
 	var rv LookupProviderInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getProviderInstance", args, &rv, opts...)

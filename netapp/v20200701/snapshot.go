@@ -14,7 +14,7 @@ import (
 // Snapshot of a Volume
 //
 // Deprecated: Version 2020-07-01 will be removed in v2 of the provider.
-// azure-native:netapp/v20200701:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Snapshot to guarantee forwards compatibility.
+// azure-native:netapp/v20200701:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:Snapshot to guarantee forwards compatibility.
 type Snapshot struct {
 	pulumi.CustomResourceState
 

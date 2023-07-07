@@ -12,6 +12,8 @@ import (
 )
 
 // Define the move collection.
+//
+// Deprecated: azure-native:migrate/v20210101:MoveCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:migrate/v20220801:MoveCollection to guarantee forwards compatibility.
 type MoveCollection struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // The AvailabilitySets resource definition.
+//
+// Deprecated: azure-native:scvmm/v20200605preview:AvailabilitySet is being removed in the next major version of this provider. Upgrade to at least azure-native:scvmm/v20220521preview:AvailabilitySet to guarantee forwards compatibility.
 type AvailabilitySet struct {
 	pulumi.CustomResourceState
 

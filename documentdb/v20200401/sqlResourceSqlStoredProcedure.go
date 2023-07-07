@@ -14,7 +14,7 @@ import (
 // An Azure Cosmos DB storedProcedure.
 //
 // Deprecated: Version 2020-04-01 will be removed in v2 of the provider.
-// azure-native:documentdb/v20200401:SqlResourceSqlStoredProcedure is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:SqlResourceSqlStoredProcedure to guarantee forwards compatibility.
+// azure-native:documentdb/v20200401:SqlResourceSqlStoredProcedure is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:SqlResourceSqlStoredProcedure to guarantee forwards compatibility.
 type SqlResourceSqlStoredProcedure struct {
 	pulumi.CustomResourceState
 

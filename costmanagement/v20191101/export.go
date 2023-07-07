@@ -13,7 +13,7 @@ import (
 
 // A export resource.
 //
-// Deprecated: azure-native:costmanagement/v20191101:Export is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221001:Export to guarantee forwards compatibility.
+// Deprecated: azure-native:costmanagement/v20191101:Export is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20230401preview:Export to guarantee forwards compatibility.
 type Export struct {
 	pulumi.CustomResourceState
 

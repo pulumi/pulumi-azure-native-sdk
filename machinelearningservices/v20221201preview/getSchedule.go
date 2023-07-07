@@ -11,6 +11,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
+//
+// Deprecated: azure-native:machinelearningservices/v20221201preview:Schedule is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:Schedule to guarantee forwards compatibility.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221201preview:getSchedule", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Gets an incident relation.
 //
-// Deprecated: azure-native:securityinsights/v20220701preview:IncidentRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IncidentRelation to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220701preview:IncidentRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:IncidentRelation to guarantee forwards compatibility.
 func LookupIncidentRelation(ctx *pulumi.Context, args *LookupIncidentRelationArgs, opts ...pulumi.InvokeOption) (*LookupIncidentRelationResult, error) {
 	var rv LookupIncidentRelationResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getIncidentRelation", args, &rv, opts...)

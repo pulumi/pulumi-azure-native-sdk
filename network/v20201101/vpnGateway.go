@@ -12,6 +12,8 @@ import (
 )
 
 // VpnGateway Resource.
+//
+// Deprecated: azure-native:network/v20201101:VpnGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VpnGateway to guarantee forwards compatibility.
 type VpnGateway struct {
 	pulumi.CustomResourceState
 

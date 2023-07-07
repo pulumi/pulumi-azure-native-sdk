@@ -12,7 +12,7 @@ import (
 
 // Get a Service and its properties.
 //
-// Deprecated: azure-native:appplatform/v20220401:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Service to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220401:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:Service to guarantee forwards compatibility.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:appplatform/v20220401:getService", args, &rv, opts...)

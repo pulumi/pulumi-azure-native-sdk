@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure Video Analyzer for Media account.
+//
+// Deprecated: azure-native:videoindexer/v20211018preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:videoindexer/v20220801:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

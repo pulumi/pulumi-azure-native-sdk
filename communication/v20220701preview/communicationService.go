@@ -13,7 +13,7 @@ import (
 
 // A class representing a CommunicationService resource.
 //
-// Deprecated: azure-native:communication/v20220701preview:CommunicationService is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230331:CommunicationService to guarantee forwards compatibility.
+// Deprecated: azure-native:communication/v20220701preview:CommunicationService is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230401preview:CommunicationService to guarantee forwards compatibility.
 type CommunicationService struct {
 	pulumi.CustomResourceState
 

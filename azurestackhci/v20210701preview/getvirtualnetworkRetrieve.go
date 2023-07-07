@@ -11,8 +11,6 @@ import (
 )
 
 // The virtualnetworks resource definition.
-//
-// Deprecated: azure-native:azurestackhci/v20210701preview:virtualnetworkRetrieve is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20210901preview:virtualnetworkRetrieve to guarantee forwards compatibility.
 func GetvirtualnetworkRetrieve(ctx *pulumi.Context, args *GetvirtualnetworkRetrieveArgs, opts ...pulumi.InvokeOption) (*GetvirtualnetworkRetrieveResult, error) {
 	var rv GetvirtualnetworkRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210701preview:getvirtualnetworkRetrieve", args, &rv, opts...)

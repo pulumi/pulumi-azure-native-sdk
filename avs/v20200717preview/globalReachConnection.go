@@ -12,6 +12,8 @@ import (
 )
 
 // A global reach connection resource
+//
+// Deprecated: azure-native:avs/v20200717preview:GlobalReachConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:GlobalReachConnection to guarantee forwards compatibility.
 type GlobalReachConnection struct {
 	pulumi.CustomResourceState
 

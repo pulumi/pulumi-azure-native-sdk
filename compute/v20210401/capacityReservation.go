@@ -12,6 +12,8 @@ import (
 )
 
 // Specifies information about the capacity reservation.
+//
+// Deprecated: azure-native:compute/v20210401:CapacityReservation is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:CapacityReservation to guarantee forwards compatibility.
 type CapacityReservation struct {
 	pulumi.CustomResourceState
 

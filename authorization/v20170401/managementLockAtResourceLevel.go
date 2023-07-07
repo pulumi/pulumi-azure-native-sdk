@@ -12,6 +12,8 @@ import (
 )
 
 // The lock information.
+//
+// Deprecated: azure-native:authorization/v20170401:ManagementLockAtResourceLevel is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20200501:ManagementLockAtResourceLevel to guarantee forwards compatibility.
 type ManagementLockAtResourceLevel struct {
 	pulumi.CustomResourceState
 

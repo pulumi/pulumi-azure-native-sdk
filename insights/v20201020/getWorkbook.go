@@ -11,6 +11,8 @@ import (
 )
 
 // Get a single workbook by its resourceName.
+//
+// Deprecated: azure-native:insights/v20201020:Workbook is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20210308:Workbook to guarantee forwards compatibility.
 func LookupWorkbook(ctx *pulumi.Context, args *LookupWorkbookArgs, opts ...pulumi.InvokeOption) (*LookupWorkbookResult, error) {
 	var rv LookupWorkbookResult
 	err := ctx.Invoke("azure-native:insights/v20201020:getWorkbook", args, &rv, opts...)

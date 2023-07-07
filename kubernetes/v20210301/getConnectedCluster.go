@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
+//
+// Deprecated: azure-native:kubernetes/v20210301:ConnectedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetes/v20221001preview:ConnectedCluster to guarantee forwards compatibility.
 func LookupConnectedCluster(ctx *pulumi.Context, args *LookupConnectedClusterArgs, opts ...pulumi.InvokeOption) (*LookupConnectedClusterResult, error) {
 	var rv LookupConnectedClusterResult
 	err := ctx.Invoke("azure-native:kubernetes/v20210301:getConnectedCluster", args, &rv, opts...)

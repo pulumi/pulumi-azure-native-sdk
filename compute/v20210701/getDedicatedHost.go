@@ -12,7 +12,7 @@ import (
 
 // Retrieves information about a dedicated host.
 //
-// Deprecated: azure-native:compute/v20210701:DedicatedHost is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:DedicatedHost to guarantee forwards compatibility.
+// Deprecated: azure-native:compute/v20210701:DedicatedHost is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:DedicatedHost to guarantee forwards compatibility.
 func LookupDedicatedHost(ctx *pulumi.Context, args *LookupDedicatedHostArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostResult, error) {
 	var rv LookupDedicatedHostResult
 	err := ctx.Invoke("azure-native:compute/v20210701:getDedicatedHost", args, &rv, opts...)

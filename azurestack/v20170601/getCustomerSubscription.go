@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the specified product.
+//
+// Deprecated: azure-native:azurestack/v20170601:CustomerSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestack/v20200601preview:CustomerSubscription to guarantee forwards compatibility.
 func LookupCustomerSubscription(ctx *pulumi.Context, args *LookupCustomerSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupCustomerSubscriptionResult, error) {
 	var rv LookupCustomerSubscriptionResult
 	err := ctx.Invoke("azure-native:azurestack/v20170601:getCustomerSubscription", args, &rv, opts...)

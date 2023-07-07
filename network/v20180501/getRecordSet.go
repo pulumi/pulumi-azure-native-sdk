@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a record set.
+//
+// Deprecated: azure-native:network/v20180501:RecordSet is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230701preview:RecordSet to guarantee forwards compatibility.
 func LookupRecordSet(ctx *pulumi.Context, args *LookupRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupRecordSetResult, error) {
 	var rv LookupRecordSetResult
 	err := ctx.Invoke("azure-native:network/v20180501:getRecordSet", args, &rv, opts...)

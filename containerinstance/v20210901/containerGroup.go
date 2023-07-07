@@ -13,7 +13,7 @@ import (
 
 // A container group.
 //
-// Deprecated: azure-native:containerinstance/v20210901:ContainerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:containerinstance/v20230501:ContainerGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:containerinstance/v20210901:ContainerGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:containerinstance/v20230201preview:ContainerGroup to guarantee forwards compatibility.
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an image.
+//
+// Deprecated: azure-native:compute/v20201201:Image is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:Image to guarantee forwards compatibility.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	var rv LookupImageResult
 	err := ctx.Invoke("azure-native:compute/v20201201:getImage", args, &rv, opts...)

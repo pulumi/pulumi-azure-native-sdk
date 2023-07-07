@@ -12,7 +12,7 @@ import (
 
 // Get the specified shared private link resource
 //
-// Deprecated: azure-native:webpubsub/v20210601preview:WebPubSubSharedPrivateLinkResource is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230201:WebPubSubSharedPrivateLinkResource to guarantee forwards compatibility.
+// Deprecated: azure-native:webpubsub/v20210601preview:WebPubSubSharedPrivateLinkResource is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230301preview:WebPubSubSharedPrivateLinkResource to guarantee forwards compatibility.
 func LookupWebPubSubSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupWebPubSubSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubSharedPrivateLinkResourceResult, error) {
 	var rv LookupWebPubSubSharedPrivateLinkResourceResult
 	err := ctx.Invoke("azure-native:webpubsub/v20210601preview:getWebPubSubSharedPrivateLinkResource", args, &rv, opts...)

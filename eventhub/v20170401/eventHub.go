@@ -12,6 +12,8 @@ import (
 )
 
 // Single item in List or Get Event Hub operation
+//
+// Deprecated: azure-native:eventhub/v20170401:EventHub is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:EventHub to guarantee forwards compatibility.
 type EventHub struct {
 	pulumi.CustomResourceState
 

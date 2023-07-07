@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a workspace manager configuration
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:WorkspaceManagerConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:WorkspaceManagerConfiguration to guarantee forwards compatibility.
 func LookupWorkspaceManagerConfiguration(ctx *pulumi.Context, args *LookupWorkspaceManagerConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerConfigurationResult, error) {
 	var rv LookupWorkspaceManagerConfigurationResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getWorkspaceManagerConfiguration", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a given plan ID
+//
+// Deprecated: azure-native:softwareplan/v20190601preview:HybridUseBenefit is being removed in the next major version of this provider. Upgrade to at least azure-native:softwareplan/v20191201:HybridUseBenefit to guarantee forwards compatibility.
 func LookupHybridUseBenefit(ctx *pulumi.Context, args *LookupHybridUseBenefitArgs, opts ...pulumi.InvokeOption) (*LookupHybridUseBenefitResult, error) {
 	var rv LookupHybridUseBenefitResult
 	err := ctx.Invoke("azure-native:softwareplan/v20190601preview:getHybridUseBenefit", args, &rv, opts...)

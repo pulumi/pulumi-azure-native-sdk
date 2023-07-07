@@ -12,6 +12,8 @@ import (
 )
 
 // A database blob auditing policy.
+//
+// Deprecated: azure-native:sql/v20220801preview:DatabaseBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:DatabaseBlobAuditingPolicy to guarantee forwards compatibility.
 type DatabaseBlobAuditingPolicy struct {
 	pulumi.CustomResourceState
 

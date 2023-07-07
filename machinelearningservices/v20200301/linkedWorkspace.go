@@ -12,6 +12,8 @@ import (
 )
 
 // Linked workspace.
+//
+// Deprecated: azure-native:machinelearningservices/v20200301:LinkedWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20200515preview:LinkedWorkspace to guarantee forwards compatibility.
 type LinkedWorkspace struct {
 	pulumi.CustomResourceState
 

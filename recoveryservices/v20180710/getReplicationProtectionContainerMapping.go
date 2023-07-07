@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of a protection container mapping.
+//
+// Deprecated: azure-native:recoveryservices/v20180710:ReplicationProtectionContainerMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationProtectionContainerMapping to guarantee forwards compatibility.
 func LookupReplicationProtectionContainerMapping(ctx *pulumi.Context, args *LookupReplicationProtectionContainerMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationProtectionContainerMappingResult, error) {
 	var rv LookupReplicationProtectionContainerMappingResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20180710:getReplicationProtectionContainerMapping", args, &rv, opts...)

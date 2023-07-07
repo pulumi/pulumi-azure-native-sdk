@@ -6942,7 +6942,10 @@ func (o SnssaiResponseOutput) Sst() pulumi.IntOutput {
 
 // Reference to another sub resource.
 type SubResource struct {
-	// Resource ID.
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 	Id string `pulumi:"id"`
 }
 
@@ -6959,7 +6962,10 @@ type SubResourceInput interface {
 
 // Reference to another sub resource.
 type SubResourceArgs struct {
-	// Resource ID.
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -7015,7 +7021,10 @@ func (o SubResourceOutput) ToSubResourceOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// Resource ID.
+// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
 func (o SubResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SubResource) string { return v.Id }).(pulumi.StringOutput)
 }

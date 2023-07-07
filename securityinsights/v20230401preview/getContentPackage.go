@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an installed packages by its id.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:ContentPackage is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ContentPackage to guarantee forwards compatibility.
 func LookupContentPackage(ctx *pulumi.Context, args *LookupContentPackageArgs, opts ...pulumi.InvokeOption) (*LookupContentPackageResult, error) {
 	var rv LookupContentPackageResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getContentPackage", args, &rv, opts...)

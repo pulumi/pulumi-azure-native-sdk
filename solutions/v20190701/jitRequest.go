@@ -12,6 +12,8 @@ import (
 )
 
 // Information about JIT request definition.
+//
+// Deprecated: azure-native:solutions/v20190701:JitRequest is being removed in the next major version of this provider. Upgrade to at least azure-native:solutions/v20210701:JitRequest to guarantee forwards compatibility.
 type JitRequest struct {
 	pulumi.CustomResourceState
 

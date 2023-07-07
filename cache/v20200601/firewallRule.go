@@ -12,6 +12,8 @@ import (
 )
 
 // A firewall rule on a redis cache has a name, and describes a contiguous range of IP addresses permitted to connect
+//
+// Deprecated: azure-native:cache/v20200601:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20230501preview:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

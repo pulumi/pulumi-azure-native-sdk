@@ -12,6 +12,8 @@ import (
 )
 
 // NSX VM Group
+//
+// Deprecated: azure-native:avs/v20200717preview:WorkloadNetworkVMGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:WorkloadNetworkVMGroup to guarantee forwards compatibility.
 type WorkloadNetworkVMGroup struct {
 	pulumi.CustomResourceState
 

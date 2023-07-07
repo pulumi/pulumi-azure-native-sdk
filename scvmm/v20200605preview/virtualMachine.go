@@ -12,6 +12,8 @@ import (
 )
 
 // The VirtualMachines resource definition.
+//
+// Deprecated: azure-native:scvmm/v20200605preview:VirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:scvmm/v20220521preview:VirtualMachine to guarantee forwards compatibility.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 

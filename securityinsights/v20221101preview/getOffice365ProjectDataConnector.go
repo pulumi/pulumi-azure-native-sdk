@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20221101preview:Office365ProjectDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Office365ProjectDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20221101preview:Office365ProjectDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Office365ProjectDataConnector to guarantee forwards compatibility.
 func LookupOffice365ProjectDataConnector(ctx *pulumi.Context, args *LookupOffice365ProjectDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOffice365ProjectDataConnectorResult, error) {
 	var rv LookupOffice365ProjectDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221101preview:getOffice365ProjectDataConnector", args, &rv, opts...)

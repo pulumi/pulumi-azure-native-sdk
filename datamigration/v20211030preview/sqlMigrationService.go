@@ -12,6 +12,8 @@ import (
 )
 
 // A SQL Migration Service.
+//
+// Deprecated: azure-native:datamigration/v20211030preview:SqlMigrationService is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:SqlMigrationService to guarantee forwards compatibility.
 type SqlMigrationService struct {
 	pulumi.CustomResourceState
 

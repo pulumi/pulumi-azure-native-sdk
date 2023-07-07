@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a and external administrator to be created.
+//
+// Deprecated: azure-native:dbformysql/v20171201preview:ServerAdministrator is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20180601privatepreview:ServerAdministrator to guarantee forwards compatibility.
 type ServerAdministrator struct {
 	pulumi.CustomResourceState
 

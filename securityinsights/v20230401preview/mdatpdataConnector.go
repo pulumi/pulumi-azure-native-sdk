@@ -12,6 +12,8 @@ import (
 )
 
 // Represents MDATP (Microsoft Defender Advanced Threat Protection) data connector.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:MDATPDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:MDATPDataConnector to guarantee forwards compatibility.
 type MDATPDataConnector struct {
 	pulumi.CustomResourceState
 

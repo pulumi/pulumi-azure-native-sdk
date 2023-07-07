@@ -11,6 +11,8 @@ import (
 )
 
 // Get details of the specified quota rule
+//
+// Deprecated: azure-native:netapp/v20220101:VolumeQuotaRule is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:VolumeQuotaRule to guarantee forwards compatibility.
 func LookupVolumeQuotaRule(ctx *pulumi.Context, args *LookupVolumeQuotaRuleArgs, opts ...pulumi.InvokeOption) (*LookupVolumeQuotaRuleResult, error) {
 	var rv LookupVolumeQuotaRuleResult
 	err := ctx.Invoke("azure-native:netapp/v20220101:getVolumeQuotaRule", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Get information about a guest configuration assignment
+//
+// Deprecated: azure-native:guestconfiguration/v20200625:GuestConfigurationHCRPAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:guestconfiguration/v20220125:GuestConfigurationHCRPAssignment to guarantee forwards compatibility.
 func LookupGuestConfigurationHCRPAssignment(ctx *pulumi.Context, args *LookupGuestConfigurationHCRPAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationHCRPAssignmentResult, error) {
 	var rv LookupGuestConfigurationHCRPAssignmentResult
 	err := ctx.Invoke("azure-native:guestconfiguration/v20200625:getGuestConfigurationHCRPAssignment", args, &rv, opts...)

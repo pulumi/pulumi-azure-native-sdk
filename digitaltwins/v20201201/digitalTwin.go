@@ -12,6 +12,8 @@ import (
 )
 
 // The description of the DigitalTwins service.
+//
+// Deprecated: azure-native:digitaltwins/v20201201:DigitalTwin is being removed in the next major version of this provider. Upgrade to at least azure-native:digitaltwins/v20230131:DigitalTwin to guarantee forwards compatibility.
 type DigitalTwin struct {
 	pulumi.CustomResourceState
 

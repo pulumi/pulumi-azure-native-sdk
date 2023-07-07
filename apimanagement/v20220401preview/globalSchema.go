@@ -13,7 +13,7 @@ import (
 
 // Global Schema Contract details.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:GlobalSchema is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:GlobalSchema to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:GlobalSchema is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GlobalSchema to guarantee forwards compatibility.
 type GlobalSchema struct {
 	pulumi.CustomResourceState
 

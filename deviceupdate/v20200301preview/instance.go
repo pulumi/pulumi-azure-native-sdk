@@ -12,6 +12,8 @@ import (
 )
 
 // Device Update instance details.
+//
+// Deprecated: azure-native:deviceupdate/v20200301preview:Instance is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20230701:Instance to guarantee forwards compatibility.
 type Instance struct {
 	pulumi.CustomResourceState
 

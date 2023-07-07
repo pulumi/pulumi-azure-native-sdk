@@ -12,7 +12,7 @@ import (
 
 // Gets the specified ipGroups.
 //
-// Deprecated: azure-native:network/v20210501:IpGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:IpGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20210501:IpGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:IpGroup to guarantee forwards compatibility.
 func LookupIpGroup(ctx *pulumi.Context, args *LookupIpGroupArgs, opts ...pulumi.InvokeOption) (*LookupIpGroupResult, error) {
 	var rv LookupIpGroupResult
 	err := ctx.Invoke("azure-native:network/v20210501:getIpGroup", args, &rv, opts...)

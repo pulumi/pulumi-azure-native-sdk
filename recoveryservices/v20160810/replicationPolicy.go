@@ -14,7 +14,7 @@ import (
 // Protection profile details.
 //
 // Deprecated: Version 2016-08-10 will be removed in v2 of the provider.
-// azure-native:recoveryservices/v20160810:ReplicationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationPolicy to guarantee forwards compatibility.
+// azure-native:recoveryservices/v20160810:ReplicationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationPolicy to guarantee forwards compatibility.
 type ReplicationPolicy struct {
 	pulumi.CustomResourceState
 

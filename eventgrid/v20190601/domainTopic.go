@@ -14,7 +14,7 @@ import (
 // Domain Topic.
 //
 // Deprecated: Version 2019-06-01 will be removed in v2 of the provider.
-// azure-native:eventgrid/v20190601:DomainTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:DomainTopic to guarantee forwards compatibility.
+// azure-native:eventgrid/v20190601:DomainTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:DomainTopic to guarantee forwards compatibility.
 type DomainTopic struct {
 	pulumi.CustomResourceState
 

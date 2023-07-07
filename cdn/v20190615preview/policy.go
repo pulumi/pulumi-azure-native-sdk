@@ -14,7 +14,7 @@ import (
 // Defines web application firewall policy for Azure CDN.
 //
 // Deprecated: Version 2019-06-15-preview will be removed in v2 of the provider.
-// azure-native:cdn/v20190615preview:Policy is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Policy to guarantee forwards compatibility.
+// azure-native:cdn/v20190615preview:Policy is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Policy to guarantee forwards compatibility.
 type Policy struct {
 	pulumi.CustomResourceState
 

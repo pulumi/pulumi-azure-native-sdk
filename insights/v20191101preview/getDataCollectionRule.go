@@ -11,6 +11,8 @@ import (
 )
 
 // Definition of ARM tracked top level resource.
+//
+// Deprecated: azure-native:insights/v20191101preview:DataCollectionRule is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20220601:DataCollectionRule to guarantee forwards compatibility.
 func LookupDataCollectionRule(ctx *pulumi.Context, args *LookupDataCollectionRuleArgs, opts ...pulumi.InvokeOption) (*LookupDataCollectionRuleResult, error) {
 	var rv LookupDataCollectionRuleResult
 	err := ctx.Invoke("azure-native:insights/v20191101preview:getDataCollectionRule", args, &rv, opts...)

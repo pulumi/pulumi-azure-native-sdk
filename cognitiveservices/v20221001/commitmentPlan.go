@@ -12,6 +12,8 @@ import (
 )
 
 // Cognitive Services account commitment plan.
+//
+// Deprecated: azure-native:cognitiveservices/v20221001:CommitmentPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:cognitiveservices/v20230501:CommitmentPlan to guarantee forwards compatibility.
 type CommitmentPlan struct {
 	pulumi.CustomResourceState
 

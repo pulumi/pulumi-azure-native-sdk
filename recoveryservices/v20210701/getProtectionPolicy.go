@@ -13,7 +13,7 @@ import (
 // Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
 // operation. Status of the operation can be fetched using GetPolicyOperationResult API.
 //
-// Deprecated: azure-native:recoveryservices/v20210701:ProtectionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ProtectionPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20210701:ProtectionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ProtectionPolicy to guarantee forwards compatibility.
 func LookupProtectionPolicy(ctx *pulumi.Context, args *LookupProtectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProtectionPolicyResult, error) {
 	var rv LookupProtectionPolicyResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20210701:getProtectionPolicy", args, &rv, opts...)

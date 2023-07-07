@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:MicrosoftPurviewInformationProtectionDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MicrosoftPurviewInformationProtectionDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:MicrosoftPurviewInformationProtectionDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:MicrosoftPurviewInformationProtectionDataConnector to guarantee forwards compatibility.
 func LookupMicrosoftPurviewInformationProtectionDataConnector(ctx *pulumi.Context, args *LookupMicrosoftPurviewInformationProtectionDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMicrosoftPurviewInformationProtectionDataConnectorResult, error) {
 	var rv LookupMicrosoftPurviewInformationProtectionDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getMicrosoftPurviewInformationProtectionDataConnector", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Resource information with extended details.
+//
+// Deprecated: azure-native:keyvault/v20190901:Secret is being removed in the next major version of this provider. Upgrade to at least azure-native:keyvault/v20230201:Secret to guarantee forwards compatibility.
 type Secret struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided rack.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:Rack is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:Rack to guarantee forwards compatibility.
 func LookupRack(ctx *pulumi.Context, args *LookupRackArgs, opts ...pulumi.InvokeOption) (*LookupRackResult, error) {
 	var rv LookupRackResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getRack", args, &rv, opts...)

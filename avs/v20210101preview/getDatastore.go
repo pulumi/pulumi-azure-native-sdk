@@ -11,6 +11,8 @@ import (
 )
 
 // A datastore resource
+//
+// Deprecated: azure-native:avs/v20210101preview:Datastore is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:Datastore to guarantee forwards compatibility.
 func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreResult, error) {
 	var rv LookupDatastoreResult
 	err := ctx.Invoke("azure-native:avs/v20210101preview:getDatastore", args, &rv, opts...)

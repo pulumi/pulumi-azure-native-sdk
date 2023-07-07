@@ -12,6 +12,8 @@ import (
 )
 
 // A Kubernetes cluster specialized for web workloads by Azure App Service
+//
+// Deprecated: azure-native:web/v20210101:KubeEnvironment is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:KubeEnvironment to guarantee forwards compatibility.
 type KubeEnvironment struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the Schema specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:GlobalSchema is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:GlobalSchema to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:GlobalSchema is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GlobalSchema to guarantee forwards compatibility.
 func LookupGlobalSchema(ctx *pulumi.Context, args *LookupGlobalSchemaArgs, opts ...pulumi.InvokeOption) (*LookupGlobalSchemaResult, error) {
 	var rv LookupGlobalSchemaResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getGlobalSchema", args, &rv, opts...)

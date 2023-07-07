@@ -11,6 +11,8 @@ import (
 )
 
 // Get specified scope connection created by this Network Manager.
+//
+// Deprecated: azure-native:network/v20220901:ScopeConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ScopeConnection to guarantee forwards compatibility.
 func LookupScopeConnection(ctx *pulumi.Context, args *LookupScopeConnectionArgs, opts ...pulumi.InvokeOption) (*LookupScopeConnectionResult, error) {
 	var rv LookupScopeConnectionResult
 	err := ctx.Invoke("azure-native:network/v20220901:getScopeConnection", args, &rv, opts...)

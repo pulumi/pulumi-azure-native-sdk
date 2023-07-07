@@ -12,6 +12,8 @@ import (
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
+//
+// Deprecated: azure-native:logz/v20201001:SubAccountTagRule is being removed in the next major version of this provider. Upgrade to at least azure-native:logz/v20220101preview:SubAccountTagRule to guarantee forwards compatibility.
 type SubAccountTagRule struct {
 	pulumi.CustomResourceState
 

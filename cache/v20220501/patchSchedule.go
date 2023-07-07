@@ -13,7 +13,7 @@ import (
 
 // Response to put/get patch schedules for Redis cache.
 //
-// Deprecated: azure-native:cache/v20220501:PatchSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20220601:PatchSchedule to guarantee forwards compatibility.
+// Deprecated: azure-native:cache/v20220501:PatchSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20230501preview:PatchSchedule to guarantee forwards compatibility.
 type PatchSchedule struct {
 	pulumi.CustomResourceState
 

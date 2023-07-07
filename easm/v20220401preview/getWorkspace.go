@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a workspace with the given name.
+//
+// Deprecated: azure-native:easm/v20220401preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:easm/v20230401preview:Workspace to guarantee forwards compatibility.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:easm/v20220401preview:getWorkspace", args, &rv, opts...)

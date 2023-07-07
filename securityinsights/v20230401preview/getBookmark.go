@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a bookmark.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:Bookmark is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Bookmark to guarantee forwards compatibility.
 func LookupBookmark(ctx *pulumi.Context, args *LookupBookmarkArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkResult, error) {
 	var rv LookupBookmarkResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getBookmark", args, &rv, opts...)

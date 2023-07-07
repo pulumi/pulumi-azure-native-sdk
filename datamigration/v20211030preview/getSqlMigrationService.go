@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the Migration Service.
+//
+// Deprecated: azure-native:datamigration/v20211030preview:SqlMigrationService is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:SqlMigrationService to guarantee forwards compatibility.
 func LookupSqlMigrationService(ctx *pulumi.Context, args *LookupSqlMigrationServiceArgs, opts ...pulumi.InvokeOption) (*LookupSqlMigrationServiceResult, error) {
 	var rv LookupSqlMigrationServiceResult
 	err := ctx.Invoke("azure-native:datamigration/v20211030preview:getSqlMigrationService", args, &rv, opts...)

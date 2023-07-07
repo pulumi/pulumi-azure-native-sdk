@@ -13,7 +13,7 @@ import (
 
 // Type of the Storage Target.
 //
-// Deprecated: azure-native:storagecache/v20210501:StorageTarget is being removed in the next major version of this provider. Upgrade to at least azure-native:storagecache/v20230301preview:StorageTarget to guarantee forwards compatibility.
+// Deprecated: azure-native:storagecache/v20210501:StorageTarget is being removed in the next major version of this provider. Upgrade to at least azure-native:storagecache/v20230501:StorageTarget to guarantee forwards compatibility.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 

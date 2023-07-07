@@ -12,6 +12,8 @@ import (
 )
 
 // The policy set definition.
+//
+// Deprecated: azure-native:authorization/v20200901:PolicySetDefinitionAtManagementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20210601:PolicySetDefinitionAtManagementGroup to guarantee forwards compatibility.
 type PolicySetDefinitionAtManagementGroup struct {
 	pulumi.CustomResourceState
 

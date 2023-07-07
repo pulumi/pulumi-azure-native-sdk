@@ -11,6 +11,8 @@ import (
 )
 
 // Implements virtual machine GET method.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20201001preview:VirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:VirtualMachine to guarantee forwards compatibility.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20201001preview:getVirtualMachine", args, &rv, opts...)

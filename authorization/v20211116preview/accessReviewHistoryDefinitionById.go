@@ -11,6 +11,8 @@ import (
 )
 
 // Access Review History Definition.
+//
+// Deprecated: azure-native:authorization/v20211116preview:AccessReviewHistoryDefinitionById is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20211201preview:AccessReviewHistoryDefinitionById to guarantee forwards compatibility.
 type AccessReviewHistoryDefinitionById struct {
 	pulumi.CustomResourceState
 

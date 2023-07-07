@@ -12,6 +12,8 @@ import (
 )
 
 // Represents an instance of an Analysis Services resource.
+//
+// Deprecated: azure-native:analysisservices/v20170801:ServerDetails is being removed in the next major version of this provider. Upgrade to at least azure-native:analysisservices/v20170801beta:ServerDetails to guarantee forwards compatibility.
 type ServerDetails struct {
 	pulumi.CustomResourceState
 

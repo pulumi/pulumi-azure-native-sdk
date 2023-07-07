@@ -12,6 +12,8 @@ import (
 )
 
 // The private endpoint connection of a provisioning service
+//
+// Deprecated: azure-native:devices/v20200301:IotDpsResourcePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20230301preview:IotDpsResourcePrivateEndpointConnection to guarantee forwards compatibility.
 type IotDpsResourcePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

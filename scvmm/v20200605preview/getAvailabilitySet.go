@@ -11,6 +11,8 @@ import (
 )
 
 // Implements AvailabilitySet GET method.
+//
+// Deprecated: azure-native:scvmm/v20200605preview:AvailabilitySet is being removed in the next major version of this provider. Upgrade to at least azure-native:scvmm/v20220521preview:AvailabilitySet to guarantee forwards compatibility.
 func LookupAvailabilitySet(ctx *pulumi.Context, args *LookupAvailabilitySetArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilitySetResult, error) {
 	var rv LookupAvailabilitySetResult
 	err := ctx.Invoke("azure-native:scvmm/v20200605preview:getAvailabilitySet", args, &rv, opts...)

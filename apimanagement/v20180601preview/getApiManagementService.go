@@ -12,7 +12,7 @@ import (
 
 // Gets an API Management service resource description.
 //
-// Deprecated: azure-native:apimanagement/v20180601preview:ApiManagementService is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiManagementService to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20180601preview:ApiManagementService is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiManagementService to guarantee forwards compatibility.
 func LookupApiManagementService(ctx *pulumi.Context, args *LookupApiManagementServiceArgs, opts ...pulumi.InvokeOption) (*LookupApiManagementServiceResult, error) {
 	var rv LookupApiManagementServiceResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180601preview:getApiManagementService", args, &rv, opts...)

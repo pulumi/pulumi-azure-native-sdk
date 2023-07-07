@@ -12,7 +12,7 @@ import (
 
 // Gets a project environment type.
 //
-// Deprecated: azure-native:devcenter/v20220801preview:ProjectEnvironmentType is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:ProjectEnvironmentType to guarantee forwards compatibility.
+// Deprecated: azure-native:devcenter/v20220801preview:ProjectEnvironmentType is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:ProjectEnvironmentType to guarantee forwards compatibility.
 func LookupProjectEnvironmentType(ctx *pulumi.Context, args *LookupProjectEnvironmentTypeArgs, opts ...pulumi.InvokeOption) (*LookupProjectEnvironmentTypeResult, error) {
 	var rv LookupProjectEnvironmentTypeResult
 	err := ctx.Invoke("azure-native:devcenter/v20220801preview:getProjectEnvironmentType", args, &rv, opts...)

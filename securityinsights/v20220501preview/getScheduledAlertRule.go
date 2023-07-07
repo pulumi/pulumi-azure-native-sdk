@@ -12,7 +12,7 @@ import (
 
 // Gets the alert rule.
 //
-// Deprecated: azure-native:securityinsights/v20220501preview:ScheduledAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:ScheduledAlertRule to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220501preview:ScheduledAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ScheduledAlertRule to guarantee forwards compatibility.
 func LookupScheduledAlertRule(ctx *pulumi.Context, args *LookupScheduledAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupScheduledAlertRuleResult, error) {
 	var rv LookupScheduledAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220501preview:getScheduledAlertRule", args, &rv, opts...)

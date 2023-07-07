@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20220701preview:OfficePowerBIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:OfficePowerBIDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220701preview:OfficePowerBIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:OfficePowerBIDataConnector to guarantee forwards compatibility.
 func LookupOfficePowerBIDataConnector(ctx *pulumi.Context, args *LookupOfficePowerBIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficePowerBIDataConnectorResult, error) {
 	var rv LookupOfficePowerBIDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getOfficePowerBIDataConnector", args, &rv, opts...)

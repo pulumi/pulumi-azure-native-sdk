@@ -12,6 +12,8 @@ import (
 )
 
 // Recovery plan details.
+//
+// Deprecated: azure-native:recoveryservices/v20180710:ReplicationRecoveryPlan is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationRecoveryPlan to guarantee forwards compatibility.
 type ReplicationRecoveryPlan struct {
 	pulumi.CustomResourceState
 

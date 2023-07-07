@@ -13,7 +13,7 @@ import (
 
 // Subscription details.
 //
-// Deprecated: azure-native:apimanagement/v20211201preview:Subscription is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Subscription to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20211201preview:Subscription is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Subscription to guarantee forwards compatibility.
 type Subscription struct {
 	pulumi.CustomResourceState
 

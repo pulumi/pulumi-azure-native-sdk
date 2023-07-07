@@ -14,7 +14,7 @@ import (
 // The Private Endpoint Connection resource.
 //
 // Deprecated: Version 2020-03-30 will be removed in v2 of the provider.
-// azure-native:healthcareapis/v20200330:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:PrivateEndpointConnection to guarantee forwards compatibility.
+// azure-native:healthcareapis/v20200330:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

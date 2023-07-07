@@ -12,7 +12,7 @@ import (
 
 // View a threat intelligence indicator by name.
 //
-// Deprecated: azure-native:securityinsights/v20211001:ThreatIntelligenceIndicator is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:ThreatIntelligenceIndicator to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20211001:ThreatIntelligenceIndicator is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ThreatIntelligenceIndicator to guarantee forwards compatibility.
 func LookupThreatIntelligenceIndicator(ctx *pulumi.Context, args *LookupThreatIntelligenceIndicatorArgs, opts ...pulumi.InvokeOption) (*LookupThreatIntelligenceIndicatorResult, error) {
 	var rv LookupThreatIntelligenceIndicatorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20211001:getThreatIntelligenceIndicator", args, &rv, opts...)

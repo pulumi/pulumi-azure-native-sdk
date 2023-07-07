@@ -12,7 +12,7 @@ import (
 
 // The Fleet resource which contains multiple Kubernetes clusters as its members.
 //
-// Deprecated: azure-native:containerservice/v20220602preview:Fleet is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20220902preview:Fleet to guarantee forwards compatibility.
+// Deprecated: azure-native:containerservice/v20220602preview:Fleet is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20220702preview:Fleet to guarantee forwards compatibility.
 func LookupFleet(ctx *pulumi.Context, args *LookupFleetArgs, opts ...pulumi.InvokeOption) (*LookupFleetResult, error) {
 	var rv LookupFleetResult
 	err := ctx.Invoke("azure-native:containerservice/v20220602preview:getFleet", args, &rv, opts...)

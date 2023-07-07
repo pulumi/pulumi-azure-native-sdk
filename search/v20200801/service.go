@@ -12,6 +12,8 @@ import (
 )
 
 // Describes an Azure Cognitive Search service and its current state.
+//
+// Deprecated: azure-native:search/v20200801:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:search/v20210401preview:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

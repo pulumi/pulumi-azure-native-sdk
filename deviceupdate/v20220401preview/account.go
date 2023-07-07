@@ -13,7 +13,7 @@ import (
 
 // Device Update account details.
 //
-// Deprecated: azure-native:deviceupdate/v20220401preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20221201preview:Account to guarantee forwards compatibility.
+// Deprecated: azure-native:deviceupdate/v20220401preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20230701:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

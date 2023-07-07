@@ -11,6 +11,8 @@ import (
 )
 
 // Get metadata information on an assessment type in a specific subscription
+//
+// Deprecated: azure-native:security/v20200101:AssessmentMetadataInSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20210601:AssessmentMetadataInSubscription to guarantee forwards compatibility.
 func LookupAssessmentMetadataInSubscription(ctx *pulumi.Context, args *LookupAssessmentMetadataInSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentMetadataInSubscriptionResult, error) {
 	var rv LookupAssessmentMetadataInSubscriptionResult
 	err := ctx.Invoke("azure-native:security/v20200101:getAssessmentMetadataInSubscription", args, &rv, opts...)

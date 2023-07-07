@@ -12,7 +12,7 @@ import (
 
 // Retrieves the details of a RouteTable.
 //
-// Deprecated: azure-native:network/v20200601:HubRouteTable is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:HubRouteTable to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200601:HubRouteTable is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:HubRouteTable to guarantee forwards compatibility.
 func LookupHubRouteTable(ctx *pulumi.Context, args *LookupHubRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupHubRouteTableResult, error) {
 	var rv LookupHubRouteTableResult
 	err := ctx.Invoke("azure-native:network/v20200601:getHubRouteTable", args, &rv, opts...)

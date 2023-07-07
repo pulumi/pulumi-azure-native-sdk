@@ -12,6 +12,8 @@ import (
 )
 
 // Properties of the file share, including Id, resource name, resource type, Etag.
+//
+// Deprecated: azure-native:storage/v20210201:FileShare is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:FileShare to guarantee forwards compatibility.
 type FileShare struct {
 	pulumi.CustomResourceState
 

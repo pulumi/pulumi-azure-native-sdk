@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a private endpoint connection.
+//
+// Deprecated: azure-native:kusto/v20210827:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:kusto/v20210827:getPrivateEndpointConnection", args, &rv, opts...)

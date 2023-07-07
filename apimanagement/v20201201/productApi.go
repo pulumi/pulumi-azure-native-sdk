@@ -12,6 +12,8 @@ import (
 )
 
 // Api details.
+//
+// Deprecated: azure-native:apimanagement/v20201201:ProductApi is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ProductApi to guarantee forwards compatibility.
 type ProductApi struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // Source control configuration for an app.
+//
+// Deprecated: azure-native:web/v20201201:WebAppSourceControlSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSourceControlSlot to guarantee forwards compatibility.
 type WebAppSourceControlSlot struct {
 	pulumi.CustomResourceState
 

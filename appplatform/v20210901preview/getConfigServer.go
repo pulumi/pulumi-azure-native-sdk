@@ -12,7 +12,7 @@ import (
 
 // Get the config server and its properties.
 //
-// Deprecated: azure-native:appplatform/v20210901preview:ConfigServer is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ConfigServer to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20210901preview:ConfigServer is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ConfigServer to guarantee forwards compatibility.
 func LookupConfigServer(ctx *pulumi.Context, args *LookupConfigServerArgs, opts ...pulumi.InvokeOption) (*LookupConfigServerResult, error) {
 	var rv LookupConfigServerResult
 	err := ctx.Invoke("azure-native:appplatform/v20210901preview:getConfigServer", args, &rv, opts...)

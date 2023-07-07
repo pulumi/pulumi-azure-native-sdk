@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing attestation at resource scope.
+//
+// Deprecated: azure-native:policyinsights/v20210101:AttestationAtResource is being removed in the next major version of this provider. Upgrade to at least azure-native:policyinsights/v20220901:AttestationAtResource to guarantee forwards compatibility.
 func LookupAttestationAtResource(ctx *pulumi.Context, args *LookupAttestationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtResourceResult, error) {
 	var rv LookupAttestationAtResourceResult
 	err := ctx.Invoke("azure-native:policyinsights/v20210101:getAttestationAtResource", args, &rv, opts...)

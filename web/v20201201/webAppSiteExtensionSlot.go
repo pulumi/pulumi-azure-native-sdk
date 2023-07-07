@@ -12,6 +12,8 @@ import (
 )
 
 // Site Extension Information.
+//
+// Deprecated: azure-native:web/v20201201:WebAppSiteExtensionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSiteExtensionSlot to guarantee forwards compatibility.
 type WebAppSiteExtensionSlot struct {
 	pulumi.CustomResourceState
 

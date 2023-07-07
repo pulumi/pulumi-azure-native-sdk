@@ -13,7 +13,7 @@ import (
 
 // Friendly RuleSet name mapping to the any RuleSet or secret related information.
 //
-// Deprecated: azure-native:cdn/v20220501preview:RuleSet is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:RuleSet to guarantee forwards compatibility.
+// Deprecated: azure-native:cdn/v20220501preview:RuleSet is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:RuleSet to guarantee forwards compatibility.
 type RuleSet struct {
 	pulumi.CustomResourceState
 

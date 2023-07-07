@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a workspace manager member
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:WorkspaceManagerMember is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:WorkspaceManagerMember to guarantee forwards compatibility.
 func LookupWorkspaceManagerMember(ctx *pulumi.Context, args *LookupWorkspaceManagerMemberArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerMemberResult, error) {
 	var rv LookupWorkspaceManagerMemberResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getWorkspaceManagerMember", args, &rv, opts...)

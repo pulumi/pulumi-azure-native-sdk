@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided volume.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:Volume is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:Volume to guarantee forwards compatibility.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getVolume", args, &rv, opts...)

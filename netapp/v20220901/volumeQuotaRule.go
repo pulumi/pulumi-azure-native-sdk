@@ -12,6 +12,8 @@ import (
 )
 
 // Quota Rule of a Volume
+//
+// Deprecated: azure-native:netapp/v20220901:VolumeQuotaRule is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:VolumeQuotaRule to guarantee forwards compatibility.
 type VolumeQuotaRule struct {
 	pulumi.CustomResourceState
 

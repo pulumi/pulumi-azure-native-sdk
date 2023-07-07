@@ -13,7 +13,7 @@ import (
 
 // The SourceControl Configuration object returned in Get & Put response.
 //
-// Deprecated: azure-native:kubernetesconfiguration/v20211101preview:SourceControlConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20221101:SourceControlConfiguration to guarantee forwards compatibility.
+// Deprecated: azure-native:kubernetesconfiguration/v20211101preview:SourceControlConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20230501:SourceControlConfiguration to guarantee forwards compatibility.
 type SourceControlConfiguration struct {
 	pulumi.CustomResourceState
 

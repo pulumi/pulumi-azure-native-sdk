@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing origin group within a profile.
+//
+// Deprecated: azure-native:cdn/v20221101preview:AFDOriginGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:AFDOriginGroup to guarantee forwards compatibility.
 func LookupAFDOriginGroup(ctx *pulumi.Context, args *LookupAFDOriginGroupArgs, opts ...pulumi.InvokeOption) (*LookupAFDOriginGroupResult, error) {
 	var rv LookupAFDOriginGroupResult
 	err := ctx.Invoke("azure-native:cdn/v20221101preview:getAFDOriginGroup", args, &rv, opts...)

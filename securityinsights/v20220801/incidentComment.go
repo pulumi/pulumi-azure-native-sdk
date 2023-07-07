@@ -13,7 +13,7 @@ import (
 
 // Represents an incident comment
 //
-// Deprecated: azure-native:securityinsights/v20220801:IncidentComment is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:IncidentComment to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220801:IncidentComment is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:IncidentComment to guarantee forwards compatibility.
 type IncidentComment struct {
 	pulumi.CustomResourceState
 

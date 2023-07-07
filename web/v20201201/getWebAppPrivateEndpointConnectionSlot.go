@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a private endpoint connection
+//
+// Deprecated: azure-native:web/v20201201:WebAppPrivateEndpointConnectionSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppPrivateEndpointConnectionSlot to guarantee forwards compatibility.
 func LookupWebAppPrivateEndpointConnectionSlot(ctx *pulumi.Context, args *LookupWebAppPrivateEndpointConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPrivateEndpointConnectionSlotResult, error) {
 	var rv LookupWebAppPrivateEndpointConnectionSlotResult
 	err := ctx.Invoke("azure-native:web/v20201201:getWebAppPrivateEndpointConnectionSlot", args, &rv, opts...)

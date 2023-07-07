@@ -12,8 +12,6 @@ import (
 )
 
 // The virtualmachines resource definition.
-//
-// Deprecated: azure-native:azurestackhci/v20210701preview:virtualmachineRetrieve is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20210901preview:virtualmachineRetrieve to guarantee forwards compatibility.
 type VirtualmachineRetrieve struct {
 	pulumi.CustomResourceState
 

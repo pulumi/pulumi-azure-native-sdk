@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a server.
+//
+// Deprecated: azure-native:dbforpostgresql/v20221201:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20230301preview:Server to guarantee forwards compatibility.
 type Server struct {
 	pulumi.CustomResourceState
 

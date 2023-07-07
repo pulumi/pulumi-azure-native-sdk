@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Configuration.
+//
+// Deprecated: azure-native:dbformysql/v20171201:Configuration is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20200701privatepreview:Configuration to guarantee forwards compatibility.
 type Configuration struct {
 	pulumi.CustomResourceState
 

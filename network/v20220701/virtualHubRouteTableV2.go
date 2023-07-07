@@ -13,7 +13,7 @@ import (
 
 // VirtualHubRouteTableV2 Resource.
 //
-// Deprecated: azure-native:network/v20220701:VirtualHubRouteTableV2 is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VirtualHubRouteTableV2 to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220701:VirtualHubRouteTableV2 is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualHubRouteTableV2 to guarantee forwards compatibility.
 type VirtualHubRouteTableV2 struct {
 	pulumi.CustomResourceState
 

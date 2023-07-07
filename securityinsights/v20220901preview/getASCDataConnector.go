@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20220901preview:ASCDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:ASCDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220901preview:ASCDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ASCDataConnector to guarantee forwards compatibility.
 func LookupASCDataConnector(ctx *pulumi.Context, args *LookupASCDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupASCDataConnectorResult, error) {
 	var rv LookupASCDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220901preview:getASCDataConnector", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Static Site Linked Backend ARM resource.
+//
+// Deprecated: azure-native:web/v20220301:StaticSiteLinkedBackendForBuild is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:StaticSiteLinkedBackendForBuild to guarantee forwards compatibility.
 func LookupStaticSiteLinkedBackendForBuild(ctx *pulumi.Context, args *LookupStaticSiteLinkedBackendForBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteLinkedBackendForBuildResult, error) {
 	var rv LookupStaticSiteLinkedBackendForBuildResult
 	err := ctx.Invoke("azure-native:web/v20220301:getStaticSiteLinkedBackendForBuild", args, &rv, opts...)

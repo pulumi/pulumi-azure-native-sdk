@@ -12,6 +12,8 @@ import (
 )
 
 // Resource for OuContainer.
+//
+// Deprecated: azure-native:aad/v20210301:OuContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:aad/v20221201:OuContainer to guarantee forwards compatibility.
 type OuContainer struct {
 	pulumi.CustomResourceState
 

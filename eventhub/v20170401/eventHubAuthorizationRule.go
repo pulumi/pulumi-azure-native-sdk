@@ -12,6 +12,8 @@ import (
 )
 
 // Single item in a List or Get AuthorizationRule operation
+//
+// Deprecated: azure-native:eventhub/v20170401:EventHubAuthorizationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:EventHubAuthorizationRule to guarantee forwards compatibility.
 type EventHubAuthorizationRule struct {
 	pulumi.CustomResourceState
 

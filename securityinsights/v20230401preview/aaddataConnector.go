@@ -12,6 +12,8 @@ import (
 )
 
 // Represents AADIP (Azure Active Directory Identity Protection) data connector.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:AADDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:AADDataConnector to guarantee forwards compatibility.
 type AADDataConnector struct {
 	pulumi.CustomResourceState
 

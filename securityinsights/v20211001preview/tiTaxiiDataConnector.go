@@ -13,7 +13,7 @@ import (
 
 // Data connector to pull Threat intelligence data from TAXII 2.0/2.1 server
 //
-// Deprecated: azure-native:securityinsights/v20211001preview:TiTaxiiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:TiTaxiiDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20211001preview:TiTaxiiDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:TiTaxiiDataConnector to guarantee forwards compatibility.
 type TiTaxiiDataConnector struct {
 	pulumi.CustomResourceState
 

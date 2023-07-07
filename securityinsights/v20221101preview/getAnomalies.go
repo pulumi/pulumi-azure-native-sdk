@@ -12,7 +12,7 @@ import (
 
 // Gets a setting.
 //
-// Deprecated: azure-native:securityinsights/v20221101preview:Anomalies is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Anomalies to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20221101preview:Anomalies is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Anomalies to guarantee forwards compatibility.
 func LookupAnomalies(ctx *pulumi.Context, args *LookupAnomaliesArgs, opts ...pulumi.InvokeOption) (*LookupAnomaliesResult, error) {
 	var rv LookupAnomaliesResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221101preview:getAnomalies", args, &rv, opts...)

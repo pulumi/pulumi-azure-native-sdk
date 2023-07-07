@@ -14,7 +14,7 @@ import (
 // An Azure Cosmos DB SQL database.
 //
 // Deprecated: Version 2020-06-01-preview will be removed in v2 of the provider.
-// azure-native:documentdb/v20200601preview:SqlResourceSqlDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:SqlResourceSqlDatabase to guarantee forwards compatibility.
+// azure-native:documentdb/v20200601preview:SqlResourceSqlDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:SqlResourceSqlDatabase to guarantee forwards compatibility.
 type SqlResourceSqlDatabase struct {
 	pulumi.CustomResourceState
 

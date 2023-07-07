@@ -13,7 +13,7 @@ import (
 
 // The description of the IoT hub.
 //
-// Deprecated: azure-native:devices/v20210702:IotHubResource is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20220430preview:IotHubResource to guarantee forwards compatibility.
+// Deprecated: azure-native:devices/v20210702:IotHubResource is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20221115preview:IotHubResource to guarantee forwards compatibility.
 type IotHubResource struct {
 	pulumi.CustomResourceState
 

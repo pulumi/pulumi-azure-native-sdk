@@ -12,6 +12,8 @@ import (
 )
 
 // Schema for Application properties.
+//
+// Deprecated: azure-native:desktopvirtualization/v20210201preview:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:Application to guarantee forwards compatibility.
 type Application struct {
 	pulumi.CustomResourceState
 

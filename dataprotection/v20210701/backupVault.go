@@ -13,7 +13,7 @@ import (
 
 // Backup Vault Resource
 //
-// Deprecated: azure-native:dataprotection/v20210701:BackupVault is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230101:BackupVault to guarantee forwards compatibility.
+// Deprecated: azure-native:dataprotection/v20210701:BackupVault is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230401preview:BackupVault to guarantee forwards compatibility.
 type BackupVault struct {
 	pulumi.CustomResourceState
 

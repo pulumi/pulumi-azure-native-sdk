@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of a domain.
+//
+// Deprecated: azure-native:eventgrid/v20220615:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:Domain to guarantee forwards compatibility.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	var rv LookupDomainResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getDomain", args, &rv, opts...)

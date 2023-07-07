@@ -12,6 +12,8 @@ import (
 )
 
 // Maintenance configuration record type
+//
+// Deprecated: azure-native:maintenance/v20200401:MaintenanceConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:maintenance/v20221101preview:MaintenanceConfiguration to guarantee forwards compatibility.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // A private endpoint connection class.
+//
+// Deprecated: azure-native:purview/v20201201preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:purview/v20210701:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // An object that represents a machine learning workspace.
+//
+// Deprecated: azure-native:machinelearning/v20160401:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearning/v20191001:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 

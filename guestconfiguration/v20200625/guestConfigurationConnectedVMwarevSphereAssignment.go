@@ -12,6 +12,8 @@ import (
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
+//
+// Deprecated: azure-native:guestconfiguration/v20200625:GuestConfigurationConnectedVMwarevSphereAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:guestconfiguration/v20220125:GuestConfigurationConnectedVMwarevSphereAssignment to guarantee forwards compatibility.
 type GuestConfigurationConnectedVMwarevSphereAssignment struct {
 	pulumi.CustomResourceState
 

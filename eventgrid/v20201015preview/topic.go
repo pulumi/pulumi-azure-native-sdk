@@ -13,7 +13,7 @@ import (
 
 // EventGrid Topic
 //
-// Deprecated: azure-native:eventgrid/v20201015preview:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20211015preview:Topic to guarantee forwards compatibility.
+// Deprecated: azure-native:eventgrid/v20201015preview:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:Topic to guarantee forwards compatibility.
 type Topic struct {
 	pulumi.CustomResourceState
 

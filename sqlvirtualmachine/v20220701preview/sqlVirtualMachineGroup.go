@@ -13,7 +13,7 @@ import (
 
 // A SQL virtual machine group.
 //
-// Deprecated: azure-native:sqlvirtualmachine/v20220701preview:SqlVirtualMachineGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachineGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:sqlvirtualmachine/v20220701preview:SqlVirtualMachineGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sqlvirtualmachine/v20230101preview:SqlVirtualMachineGroup to guarantee forwards compatibility.
 type SqlVirtualMachineGroup struct {
 	pulumi.CustomResourceState
 

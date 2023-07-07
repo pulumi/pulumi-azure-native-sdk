@@ -12,6 +12,8 @@ import (
 )
 
 // An Application Insights web test definition.
+//
+// Deprecated: azure-native:insights/v20150501:WebTest is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20201005preview:WebTest to guarantee forwards compatibility.
 type WebTest struct {
 	pulumi.CustomResourceState
 

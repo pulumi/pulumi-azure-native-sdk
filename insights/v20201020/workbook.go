@@ -12,6 +12,8 @@ import (
 )
 
 // An Application Insights workbook definition.
+//
+// Deprecated: azure-native:insights/v20201020:Workbook is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20210308:Workbook to guarantee forwards compatibility.
 type Workbook struct {
 	pulumi.CustomResourceState
 

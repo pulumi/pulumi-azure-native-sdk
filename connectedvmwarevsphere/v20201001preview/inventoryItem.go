@@ -12,6 +12,8 @@ import (
 )
 
 // Defines the inventory item.
+//
+// Deprecated: azure-native:connectedvmwarevsphere/v20201001preview:InventoryItem is being removed in the next major version of this provider. Upgrade to at least azure-native:connectedvmwarevsphere/v20220715preview:InventoryItem to guarantee forwards compatibility.
 type InventoryItem struct {
 	pulumi.CustomResourceState
 

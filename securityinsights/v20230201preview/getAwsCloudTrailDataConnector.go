@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:AwsCloudTrailDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AwsCloudTrailDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:AwsCloudTrailDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:AwsCloudTrailDataConnector to guarantee forwards compatibility.
 func LookupAwsCloudTrailDataConnector(ctx *pulumi.Context, args *LookupAwsCloudTrailDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsCloudTrailDataConnectorResult, error) {
 	var rv LookupAwsCloudTrailDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getAwsCloudTrailDataConnector", args, &rv, opts...)

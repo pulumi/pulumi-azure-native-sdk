@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a database data masking policy.
+//
+// Deprecated: azure-native:sql/v20140401:DataMaskingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:DataMaskingPolicy to guarantee forwards compatibility.
 func LookupDataMaskingPolicy(ctx *pulumi.Context, args *LookupDataMaskingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDataMaskingPolicyResult, error) {
 	var rv LookupDataMaskingPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20140401:getDataMaskingPolicy", args, &rv, opts...)

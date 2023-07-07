@@ -13,7 +13,7 @@ import (
 // Gets the SQL trigger under an existing Azure Cosmos DB database account.
 //
 // Deprecated: Version 2020-03-01 will be removed in v2 of the provider.
-// azure-native:documentdb/v20200301:SqlResourceSqlTrigger is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:SqlResourceSqlTrigger to guarantee forwards compatibility.
+// azure-native:documentdb/v20200301:SqlResourceSqlTrigger is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:SqlResourceSqlTrigger to guarantee forwards compatibility.
 func LookupSqlResourceSqlTrigger(ctx *pulumi.Context, args *LookupSqlResourceSqlTriggerArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlTriggerResult, error) {
 	var rv LookupSqlResourceSqlTriggerResult
 	err := ctx.Invoke("azure-native:documentdb/v20200301:getSqlResourceSqlTrigger", args, &rv, opts...)

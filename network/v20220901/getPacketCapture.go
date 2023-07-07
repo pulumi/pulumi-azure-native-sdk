@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a packet capture session by name.
+//
+// Deprecated: azure-native:network/v20220901:PacketCapture is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:PacketCapture to guarantee forwards compatibility.
 func LookupPacketCapture(ctx *pulumi.Context, args *LookupPacketCaptureArgs, opts ...pulumi.InvokeOption) (*LookupPacketCaptureResult, error) {
 	var rv LookupPacketCaptureResult
 	err := ctx.Invoke("azure-native:network/v20220901:getPacketCapture", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided bare metal machine.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:BareMetalMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:BareMetalMachine to guarantee forwards compatibility.
 func LookupBareMetalMachine(ctx *pulumi.Context, args *LookupBareMetalMachineArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalMachineResult, error) {
 	var rv LookupBareMetalMachineResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getBareMetalMachine", args, &rv, opts...)

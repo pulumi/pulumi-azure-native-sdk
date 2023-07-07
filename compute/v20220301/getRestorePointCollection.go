@@ -12,7 +12,7 @@ import (
 
 // The operation to get the restore point collection.
 //
-// Deprecated: azure-native:compute/v20220301:RestorePointCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:RestorePointCollection to guarantee forwards compatibility.
+// Deprecated: azure-native:compute/v20220301:RestorePointCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:RestorePointCollection to guarantee forwards compatibility.
 func LookupRestorePointCollection(ctx *pulumi.Context, args *LookupRestorePointCollectionArgs, opts ...pulumi.InvokeOption) (*LookupRestorePointCollectionResult, error) {
 	var rv LookupRestorePointCollectionResult
 	err := ctx.Invoke("azure-native:compute/v20220301:getRestorePointCollection", args, &rv, opts...)

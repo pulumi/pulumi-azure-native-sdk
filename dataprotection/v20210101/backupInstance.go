@@ -12,6 +12,8 @@ import (
 )
 
 // BackupInstance Resource
+//
+// Deprecated: azure-native:dataprotection/v20210101:BackupInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230401preview:BackupInstance to guarantee forwards compatibility.
 type BackupInstance struct {
 	pulumi.CustomResourceState
 

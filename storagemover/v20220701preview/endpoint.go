@@ -12,6 +12,8 @@ import (
 )
 
 // The Endpoint resource, which contains information about file sources and targets.
+//
+// Deprecated: azure-native:storagemover/v20220701preview:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:storagemover/v20230301:Endpoint to guarantee forwards compatibility.
 type Endpoint struct {
 	pulumi.CustomResourceState
 

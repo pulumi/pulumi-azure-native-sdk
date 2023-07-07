@@ -12,6 +12,8 @@ import (
 )
 
 // A workspace
+//
+// Deprecated: azure-native:synapse/v20210301:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210501:Workspace to guarantee forwards compatibility.
 type Workspace struct {
 	pulumi.CustomResourceState
 

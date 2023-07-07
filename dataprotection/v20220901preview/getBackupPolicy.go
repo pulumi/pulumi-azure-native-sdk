@@ -12,7 +12,7 @@ import (
 
 // Gets a backup policy belonging to a backup vault
 //
-// Deprecated: azure-native:dataprotection/v20220901preview:BackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230101:BackupPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:dataprotection/v20220901preview:BackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230401preview:BackupPolicy to guarantee forwards compatibility.
 func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPolicyResult, error) {
 	var rv LookupBackupPolicyResult
 	err := ctx.Invoke("azure-native:dataprotection/v20220901preview:getBackupPolicy", args, &rv, opts...)

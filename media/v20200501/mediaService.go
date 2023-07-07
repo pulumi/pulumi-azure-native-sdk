@@ -12,6 +12,8 @@ import (
 )
 
 // A Media Services account.
+//
+// Deprecated: azure-native:media/v20200501:MediaService is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:MediaService to guarantee forwards compatibility.
 type MediaService struct {
 	pulumi.CustomResourceState
 

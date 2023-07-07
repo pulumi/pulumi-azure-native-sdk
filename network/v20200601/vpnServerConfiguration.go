@@ -13,7 +13,7 @@ import (
 
 // VpnServerConfiguration Resource.
 //
-// Deprecated: azure-native:network/v20200601:VpnServerConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VpnServerConfiguration to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200601:VpnServerConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VpnServerConfiguration to guarantee forwards compatibility.
 type VpnServerConfiguration struct {
 	pulumi.CustomResourceState
 

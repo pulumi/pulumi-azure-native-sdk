@@ -11,8 +11,6 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForSCCPowershell resource.
-//
-// Deprecated: azure-native:securityandcompliance/v20210111:privateLinkServicesForSCCPowershell is being removed in the next major version of this provider. Upgrade to at least azure-native:securityandcompliance/v20210308:privateLinkServicesForSCCPowershell to guarantee forwards compatibility.
 func GetprivateLinkServicesForSCCPowershell(ctx *pulumi.Context, args *GetprivateLinkServicesForSCCPowershellArgs, opts ...pulumi.InvokeOption) (*GetprivateLinkServicesForSCCPowershellResult, error) {
 	var rv GetprivateLinkServicesForSCCPowershellResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210111:getprivateLinkServicesForSCCPowershell", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Vendor resource.
+//
+// Deprecated: azure-native:hybridnetwork/v20200101preview:Vendor is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridnetwork/v20220101preview:Vendor to guarantee forwards compatibility.
 type Vendor struct {
 	pulumi.CustomResourceState
 

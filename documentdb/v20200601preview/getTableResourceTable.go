@@ -13,7 +13,7 @@ import (
 // Gets the Tables under an existing Azure Cosmos DB database account with the provided name.
 //
 // Deprecated: Version 2020-06-01-preview will be removed in v2 of the provider.
-// azure-native:documentdb/v20200601preview:TableResourceTable is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:TableResourceTable to guarantee forwards compatibility.
+// azure-native:documentdb/v20200601preview:TableResourceTable is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:TableResourceTable to guarantee forwards compatibility.
 func LookupTableResourceTable(ctx *pulumi.Context, args *LookupTableResourceTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResourceTableResult, error) {
 	var rv LookupTableResourceTableResult
 	err := ctx.Invoke("azure-native:documentdb/v20200601preview:getTableResourceTable", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Gets a file import.
 //
-// Deprecated: azure-native:securityinsights/v20220801preview:FileImport is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:FileImport to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220801preview:FileImport is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:FileImport to guarantee forwards compatibility.
 func LookupFileImport(ctx *pulumi.Context, args *LookupFileImportArgs, opts ...pulumi.InvokeOption) (*LookupFileImportResult, error) {
 	var rv LookupFileImportResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220801preview:getFileImport", args, &rv, opts...)

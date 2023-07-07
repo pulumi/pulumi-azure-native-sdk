@@ -12,7 +12,7 @@ import (
 
 // Get the Application Live  and its properties.
 //
-// Deprecated: azure-native:appplatform/v20221101preview:DevToolPortal is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:DevToolPortal to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20221101preview:DevToolPortal is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:DevToolPortal to guarantee forwards compatibility.
 func LookupDevToolPortal(ctx *pulumi.Context, args *LookupDevToolPortalArgs, opts ...pulumi.InvokeOption) (*LookupDevToolPortalResult, error) {
 	var rv LookupDevToolPortalResult
 	err := ctx.Invoke("azure-native:appplatform/v20221101preview:getDevToolPortal", args, &rv, opts...)

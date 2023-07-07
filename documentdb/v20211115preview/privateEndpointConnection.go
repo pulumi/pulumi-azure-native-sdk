@@ -13,7 +13,7 @@ import (
 
 // A private endpoint connection
 //
-// Deprecated: azure-native:documentdb/v20211115preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:PrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20211115preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230415:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

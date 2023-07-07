@@ -12,6 +12,8 @@ import (
 )
 
 // The key-value resource along with all resource properties.
+//
+// Deprecated: azure-native:appconfiguration/v20200701preview:KeyValue is being removed in the next major version of this provider. Upgrade to at least azure-native:appconfiguration/v20230301:KeyValue to guarantee forwards compatibility.
 type KeyValue struct {
 	pulumi.CustomResourceState
 

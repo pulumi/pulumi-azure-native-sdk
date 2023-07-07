@@ -11,6 +11,8 @@ import (
 )
 
 // Get the details of the management group.
+//
+// Deprecated: azure-native:management/v20200501:ManagementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:management/v20210401:ManagementGroup to guarantee forwards compatibility.
 func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupResult, error) {
 	var rv LookupManagementGroupResult
 	err := ctx.Invoke("azure-native:management/v20200501:getManagementGroup", args, &rv, opts...)

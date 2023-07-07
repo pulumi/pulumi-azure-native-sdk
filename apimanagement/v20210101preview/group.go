@@ -13,7 +13,7 @@ import (
 
 // Contract details.
 //
-// Deprecated: azure-native:apimanagement/v20210101preview:Group is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Group to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210101preview:Group is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Group to guarantee forwards compatibility.
 type Group struct {
 	pulumi.CustomResourceState
 

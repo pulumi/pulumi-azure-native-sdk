@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves the requested ExpressRoutePort resource.
+//
+// Deprecated: azure-native:network/v20220901:ExpressRoutePort is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ExpressRoutePort to guarantee forwards compatibility.
 func LookupExpressRoutePort(ctx *pulumi.Context, args *LookupExpressRoutePortArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortResult, error) {
 	var rv LookupExpressRoutePortResult
 	err := ctx.Invoke("azure-native:network/v20220901:getExpressRoutePort", args, &rv, opts...)

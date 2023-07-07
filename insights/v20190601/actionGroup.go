@@ -12,6 +12,8 @@ import (
 )
 
 // An action group resource.
+//
+// Deprecated: azure-native:insights/v20190601:ActionGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20230101:ActionGroup to guarantee forwards compatibility.
 type ActionGroup struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 // Gets the details of the specified storage classification mapping.
 //
 // Deprecated: Version 2016-08-10 will be removed in v2 of the provider.
-// azure-native:recoveryservices/v20160810:ReplicationStorageClassificationMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationStorageClassificationMapping to guarantee forwards compatibility.
+// azure-native:recoveryservices/v20160810:ReplicationStorageClassificationMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationStorageClassificationMapping to guarantee forwards compatibility.
 func LookupReplicationStorageClassificationMapping(ctx *pulumi.Context, args *LookupReplicationStorageClassificationMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationStorageClassificationMappingResult, error) {
 	var rv LookupReplicationStorageClassificationMappingResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20160810:getReplicationStorageClassificationMapping", args, &rv, opts...)

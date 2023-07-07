@@ -12,6 +12,8 @@ import (
 )
 
 // An account data transfer object.
+//
+// Deprecated: azure-native:datashare/v20200901:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:datashare/v20210801:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

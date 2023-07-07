@@ -12,7 +12,7 @@ import (
 
 // Get the Monitoring Setting and its properties.
 //
-// Deprecated: azure-native:appplatform/v20221201:MonitoringSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:MonitoringSetting to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20221201:MonitoringSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:MonitoringSetting to guarantee forwards compatibility.
 func LookupMonitoringSetting(ctx *pulumi.Context, args *LookupMonitoringSettingArgs, opts ...pulumi.InvokeOption) (*LookupMonitoringSettingResult, error) {
 	var rv LookupMonitoringSettingResult
 	err := ctx.Invoke("azure-native:appplatform/v20221201:getMonitoringSetting", args, &rv, opts...)

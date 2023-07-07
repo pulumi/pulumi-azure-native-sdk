@@ -12,7 +12,7 @@ import (
 
 // Container App SourceControl.
 //
-// Deprecated: azure-native:app/v20220601preview:ContainerAppsSourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20221001:ContainerAppsSourceControl to guarantee forwards compatibility.
+// Deprecated: azure-native:app/v20220601preview:ContainerAppsSourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ContainerAppsSourceControl to guarantee forwards compatibility.
 func LookupContainerAppsSourceControl(ctx *pulumi.Context, args *LookupContainerAppsSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppsSourceControlResult, error) {
 	var rv LookupContainerAppsSourceControlResult
 	err := ctx.Invoke("azure-native:app/v20220601preview:getContainerAppsSourceControl", args, &rv, opts...)

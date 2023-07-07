@@ -13,7 +13,7 @@ import (
 
 // Specifies information about the proximity placement group.
 //
-// Deprecated: azure-native:compute/v20211101:ProximityPlacementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:ProximityPlacementGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:compute/v20211101:ProximityPlacementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:ProximityPlacementGroup to guarantee forwards compatibility.
 type ProximityPlacementGroup struct {
 	pulumi.CustomResourceState
 

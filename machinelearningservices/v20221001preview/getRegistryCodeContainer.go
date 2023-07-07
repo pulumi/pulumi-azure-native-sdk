@@ -12,7 +12,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Deprecated: azure-native:machinelearningservices/v20221001preview:RegistryCodeContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:RegistryCodeContainer to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20221001preview:RegistryCodeContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:RegistryCodeContainer to guarantee forwards compatibility.
 func LookupRegistryCodeContainer(ctx *pulumi.Context, args *LookupRegistryCodeContainerArgs, opts ...pulumi.InvokeOption) (*LookupRegistryCodeContainerResult, error) {
 	var rv LookupRegistryCodeContainerResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20221001preview:getRegistryCodeContainer", args, &rv, opts...)

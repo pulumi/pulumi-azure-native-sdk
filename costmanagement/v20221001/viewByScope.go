@@ -12,8 +12,6 @@ import (
 )
 
 // States and configurations of Cost Analysis.
-//
-// Deprecated: azure-native:costmanagement/v20221001:ViewByScope is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221005preview:ViewByScope to guarantee forwards compatibility.
 type ViewByScope struct {
 	pulumi.CustomResourceState
 

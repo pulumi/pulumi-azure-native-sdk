@@ -13,7 +13,7 @@ import (
 
 // Backup of a Volume
 //
-// Deprecated: azure-native:netapp/v20220501:Backup is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Backup to guarantee forwards compatibility.
+// Deprecated: azure-native:netapp/v20220501:Backup is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:Backup to guarantee forwards compatibility.
 type Backup struct {
 	pulumi.CustomResourceState
 

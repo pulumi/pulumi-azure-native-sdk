@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:datadog/v20210301:Monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:datadog/v20220601:Monitor to guarantee forwards compatibility.
 type Monitor struct {
 	pulumi.CustomResourceState
 

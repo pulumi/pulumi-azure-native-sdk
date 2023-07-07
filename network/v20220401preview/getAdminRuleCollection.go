@@ -12,7 +12,7 @@ import (
 
 // Gets a network manager security admin configuration rule collection.
 //
-// Deprecated: azure-native:network/v20220401preview:AdminRuleCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:AdminRuleCollection to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220401preview:AdminRuleCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:AdminRuleCollection to guarantee forwards compatibility.
 func LookupAdminRuleCollection(ctx *pulumi.Context, args *LookupAdminRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupAdminRuleCollectionResult, error) {
 	var rv LookupAdminRuleCollectionResult
 	err := ctx.Invoke("azure-native:network/v20220401preview:getAdminRuleCollection", args, &rv, opts...)

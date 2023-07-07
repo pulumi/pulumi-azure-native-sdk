@@ -12,7 +12,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Deprecated: azure-native:machinelearningservices/v20220501:Datastore is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:Datastore to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20220501:Datastore is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:Datastore to guarantee forwards compatibility.
 func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreResult, error) {
 	var rv LookupDatastoreResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220501:getDatastore", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // Protection container mapping object.
 //
-// Deprecated: azure-native:recoveryservices/v20221001:ReplicationProtectionContainerMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationProtectionContainerMapping to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20221001:ReplicationProtectionContainerMapping is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationProtectionContainerMapping to guarantee forwards compatibility.
 type ReplicationProtectionContainerMapping struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieve the configuration identified by configuration name.
+//
+// Deprecated: azure-native:automation/v20190601:DscConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:DscConfiguration to guarantee forwards compatibility.
 func LookupDscConfiguration(ctx *pulumi.Context, args *LookupDscConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscConfigurationResult, error) {
 	var rv LookupDscConfigurationResult
 	err := ctx.Invoke("azure-native:automation/v20190601:getDscConfiguration", args, &rv, opts...)

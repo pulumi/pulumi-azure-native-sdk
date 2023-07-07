@@ -11,6 +11,8 @@ import (
 )
 
 // Get installed extension details by extension id.
+//
+// Deprecated: azure-native:agfoodplatform/v20200512preview:Extension is being removed in the next major version of this provider. Upgrade to at least azure-native:agfoodplatform/v20210901preview:Extension to guarantee forwards compatibility.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:agfoodplatform/v20200512preview:getExtension", args, &rv, opts...)

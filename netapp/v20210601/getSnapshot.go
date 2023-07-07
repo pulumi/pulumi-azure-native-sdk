@@ -12,7 +12,7 @@ import (
 
 // Get details of the specified snapshot
 //
-// Deprecated: azure-native:netapp/v20210601:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Snapshot to guarantee forwards compatibility.
+// Deprecated: azure-native:netapp/v20210601:Snapshot is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:Snapshot to guarantee forwards compatibility.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("azure-native:netapp/v20210601:getSnapshot", args, &rv, opts...)

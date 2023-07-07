@@ -12,6 +12,8 @@ import (
 )
 
 // Defines binding between a resource and role
+//
+// Deprecated: azure-native:containerservice/v20230102preview:TrustedAccessRoleBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:TrustedAccessRoleBinding to guarantee forwards compatibility.
 type TrustedAccessRoleBinding struct {
 	pulumi.CustomResourceState
 

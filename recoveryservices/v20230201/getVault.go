@@ -11,6 +11,8 @@ import (
 )
 
 // Get the Vault details.
+//
+// Deprecated: azure-native:recoveryservices/v20230201:Vault is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:Vault to guarantee forwards compatibility.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	var rv LookupVaultResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20230201:getVault", args, &rv, opts...)

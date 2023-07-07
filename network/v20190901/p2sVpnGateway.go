@@ -13,7 +13,7 @@ import (
 
 // P2SVpnGateway Resource.
 //
-// Deprecated: azure-native:network/v20190901:P2sVpnGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:P2sVpnGateway to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20190901:P2sVpnGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:P2sVpnGateway to guarantee forwards compatibility.
 type P2sVpnGateway struct {
 	pulumi.CustomResourceState
 

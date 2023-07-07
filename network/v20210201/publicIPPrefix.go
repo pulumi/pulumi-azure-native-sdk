@@ -13,7 +13,7 @@ import (
 
 // Public IP prefix resource.
 //
-// Deprecated: azure-native:network/v20210201:PublicIPPrefix is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:PublicIPPrefix to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20210201:PublicIPPrefix is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:PublicIPPrefix to guarantee forwards compatibility.
 type PublicIPPrefix struct {
 	pulumi.CustomResourceState
 

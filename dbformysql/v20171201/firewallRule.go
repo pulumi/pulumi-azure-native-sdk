@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a server firewall rule.
+//
+// Deprecated: azure-native:dbformysql/v20171201:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20220101:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

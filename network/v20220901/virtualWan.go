@@ -12,6 +12,8 @@ import (
 )
 
 // VirtualWAN Resource.
+//
+// Deprecated: azure-native:network/v20220901:VirtualWan is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VirtualWan to guarantee forwards compatibility.
 type VirtualWan struct {
 	pulumi.CustomResourceState
 

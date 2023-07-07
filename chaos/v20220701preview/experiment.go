@@ -13,7 +13,7 @@ import (
 
 // Model that represents a Experiment resource.
 //
-// Deprecated: azure-native:chaos/v20220701preview:Experiment is being removed in the next major version of this provider. Upgrade to at least azure-native:chaos/v20230401preview:Experiment to guarantee forwards compatibility.
+// Deprecated: azure-native:chaos/v20220701preview:Experiment is being removed in the next major version of this provider. Upgrade to at least azure-native:chaos/v20230415preview:Experiment to guarantee forwards compatibility.
 type Experiment struct {
 	pulumi.CustomResourceState
 

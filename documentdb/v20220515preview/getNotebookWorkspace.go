@@ -12,7 +12,7 @@ import (
 
 // Gets the notebook workspace for a Cosmos DB account.
 //
-// Deprecated: azure-native:documentdb/v20220515preview:NotebookWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:NotebookWorkspace to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20220515preview:NotebookWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230415:NotebookWorkspace to guarantee forwards compatibility.
 func LookupNotebookWorkspace(ctx *pulumi.Context, args *LookupNotebookWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupNotebookWorkspaceResult, error) {
 	var rv LookupNotebookWorkspaceResult
 	err := ctx.Invoke("azure-native:documentdb/v20220515preview:getNotebookWorkspace", args, &rv, opts...)

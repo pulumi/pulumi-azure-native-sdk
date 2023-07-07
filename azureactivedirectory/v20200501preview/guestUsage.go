@@ -12,6 +12,8 @@ import (
 )
 
 // Guest Usages Resource
+//
+// Deprecated: azure-native:azureactivedirectory/v20200501preview:GuestUsage is being removed in the next major version of this provider. Upgrade to at least azure-native:azureactivedirectory/v20230118preview:GuestUsage to guarantee forwards compatibility.
 type GuestUsage struct {
 	pulumi.CustomResourceState
 

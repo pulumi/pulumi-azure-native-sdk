@@ -13,7 +13,7 @@ import (
 
 // Recipient Email details.
 //
-// Deprecated: azure-native:apimanagement/v20190101:NotificationRecipientEmail is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:NotificationRecipientEmail to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20190101:NotificationRecipientEmail is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:NotificationRecipientEmail to guarantee forwards compatibility.
 type NotificationRecipientEmail struct {
 	pulumi.CustomResourceState
 

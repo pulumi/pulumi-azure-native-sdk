@@ -12,6 +12,8 @@ import (
 )
 
 // A file resource
+//
+// Deprecated: azure-native:datamigration/v20180715preview:File is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:File to guarantee forwards compatibility.
 type File struct {
 	pulumi.CustomResourceState
 

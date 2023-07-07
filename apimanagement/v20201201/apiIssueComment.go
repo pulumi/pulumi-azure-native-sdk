@@ -12,6 +12,8 @@ import (
 )
 
 // Issue Comment Contract details.
+//
+// Deprecated: azure-native:apimanagement/v20201201:ApiIssueComment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiIssueComment to guarantee forwards compatibility.
 type ApiIssueComment struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 
 // Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
 //
-// Deprecated: azure-native:network/v20191201:ExpressRouteCircuitConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ExpressRouteCircuitConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20191201:ExpressRouteCircuitConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ExpressRouteCircuitConnection to guarantee forwards compatibility.
 type ExpressRouteCircuitConnection struct {
 	pulumi.CustomResourceState
 

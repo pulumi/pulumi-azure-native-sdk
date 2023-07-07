@@ -11,6 +11,8 @@ import (
 )
 
 // Get the storage resource.
+//
+// Deprecated: azure-native:appplatform/v20210901preview:Storage is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:Storage to guarantee forwards compatibility.
 func LookupStorage(ctx *pulumi.Context, args *LookupStorageArgs, opts ...pulumi.InvokeOption) (*LookupStorageResult, error) {
 	var rv LookupStorageResult
 	err := ctx.Invoke("azure-native:appplatform/v20210901preview:getStorage", args, &rv, opts...)

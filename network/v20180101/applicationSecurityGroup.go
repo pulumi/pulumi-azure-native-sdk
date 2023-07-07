@@ -14,7 +14,7 @@ import (
 // An application security group in a resource group.
 //
 // Deprecated: Version 2018-01-01 will be removed in v2 of the provider.
-// azure-native:network/v20180101:ApplicationSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ApplicationSecurityGroup to guarantee forwards compatibility.
+// azure-native:network/v20180101:ApplicationSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ApplicationSecurityGroup to guarantee forwards compatibility.
 type ApplicationSecurityGroup struct {
 	pulumi.CustomResourceState
 

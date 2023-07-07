@@ -11,6 +11,8 @@ import (
 )
 
 // Get the policy configuration at the GraphQL API Resolver level.
+//
+// Deprecated: azure-native:apimanagement/v20220801:GraphQLApiResolverPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GraphQLApiResolverPolicy to guarantee forwards compatibility.
 func LookupGraphQLApiResolverPolicy(ctx *pulumi.Context, args *LookupGraphQLApiResolverPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGraphQLApiResolverPolicyResult, error) {
 	var rv LookupGraphQLApiResolverPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getGraphQLApiResolverPolicy", args, &rv, opts...)

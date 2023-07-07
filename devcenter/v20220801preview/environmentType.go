@@ -13,7 +13,7 @@ import (
 
 // Represents an environment type.
 //
-// Deprecated: azure-native:devcenter/v20220801preview:EnvironmentType is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:EnvironmentType to guarantee forwards compatibility.
+// Deprecated: azure-native:devcenter/v20220801preview:EnvironmentType is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:EnvironmentType to guarantee forwards compatibility.
 type EnvironmentType struct {
 	pulumi.CustomResourceState
 

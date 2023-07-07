@@ -12,6 +12,8 @@ import (
 )
 
 // A notebook workspace resource
+//
+// Deprecated: azure-native:documentdb/v20210315:NotebookWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230415:NotebookWorkspace to guarantee forwards compatibility.
 type NotebookWorkspace struct {
 	pulumi.CustomResourceState
 

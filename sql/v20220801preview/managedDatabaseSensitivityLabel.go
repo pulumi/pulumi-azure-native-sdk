@@ -12,6 +12,8 @@ import (
 )
 
 // A sensitivity label.
+//
+// Deprecated: azure-native:sql/v20220801preview:ManagedDatabaseSensitivityLabel is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedDatabaseSensitivityLabel to guarantee forwards compatibility.
 type ManagedDatabaseSensitivityLabel struct {
 	pulumi.CustomResourceState
 

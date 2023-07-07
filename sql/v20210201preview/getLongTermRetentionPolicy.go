@@ -12,7 +12,7 @@ import (
 
 // Gets a database's long term retention policy.
 //
-// Deprecated: azure-native:sql/v20210201preview:LongTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:LongTermRetentionPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20210201preview:LongTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:LongTermRetentionPolicy to guarantee forwards compatibility.
 func LookupLongTermRetentionPolicy(ctx *pulumi.Context, args *LookupLongTermRetentionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupLongTermRetentionPolicyResult, error) {
 	var rv LookupLongTermRetentionPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20210201preview:getLongTermRetentionPolicy", args, &rv, opts...)

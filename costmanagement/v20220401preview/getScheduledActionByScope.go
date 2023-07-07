@@ -11,6 +11,8 @@ import (
 )
 
 // Get the shared scheduled action from the given scope by name.
+//
+// Deprecated: azure-native:costmanagement/v20220401preview:ScheduledActionByScope is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20230401preview:ScheduledActionByScope to guarantee forwards compatibility.
 func LookupScheduledActionByScope(ctx *pulumi.Context, args *LookupScheduledActionByScopeArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionByScopeResult, error) {
 	var rv LookupScheduledActionByScopeResult
 	err := ctx.Invoke("azure-native:costmanagement/v20220401preview:getScheduledActionByScope", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // Volume resource
 //
-// Deprecated: azure-native:netapp/v20220101:Volume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:Volume to guarantee forwards compatibility.
+// Deprecated: azure-native:netapp/v20220101:Volume is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:Volume to guarantee forwards compatibility.
 type Volume struct {
 	pulumi.CustomResourceState
 

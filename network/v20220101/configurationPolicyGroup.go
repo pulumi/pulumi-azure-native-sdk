@@ -12,6 +12,8 @@ import (
 )
 
 // VpnServerConfigurationPolicyGroup Resource.
+//
+// Deprecated: azure-native:network/v20220101:ConfigurationPolicyGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ConfigurationPolicyGroup to guarantee forwards compatibility.
 type ConfigurationPolicyGroup struct {
 	pulumi.CustomResourceState
 

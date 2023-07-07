@@ -12,6 +12,8 @@ import (
 )
 
 // Azure Traffic Collector resource.
+//
+// Deprecated: azure-native:networkfunction/v20220501:AzureTrafficCollector is being removed in the next major version of this provider. Upgrade to at least azure-native:networkfunction/v20220801:AzureTrafficCollector to guarantee forwards compatibility.
 type AzureTrafficCollector struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Implements VirtualMachine GET method.
+//
+// Deprecated: azure-native:scvmm/v20200605preview:VirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:scvmm/v20220521preview:VirtualMachine to guarantee forwards compatibility.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:scvmm/v20200605preview:getVirtualMachine", args, &rv, opts...)

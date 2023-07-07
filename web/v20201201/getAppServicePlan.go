@@ -11,6 +11,8 @@ import (
 )
 
 // Get an App Service plan.
+//
+// Deprecated: azure-native:web/v20201201:AppServicePlan is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:AppServicePlan to guarantee forwards compatibility.
 func LookupAppServicePlan(ctx *pulumi.Context, args *LookupAppServicePlanArgs, opts ...pulumi.InvokeOption) (*LookupAppServicePlanResult, error) {
 	var rv LookupAppServicePlanResult
 	err := ctx.Invoke("azure-native:web/v20201201:getAppServicePlan", args, &rv, opts...)

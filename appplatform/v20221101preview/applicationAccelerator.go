@@ -13,7 +13,7 @@ import (
 
 // Application accelerator resource
 //
-// Deprecated: azure-native:appplatform/v20221101preview:ApplicationAccelerator is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:ApplicationAccelerator to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20221101preview:ApplicationAccelerator is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:ApplicationAccelerator to guarantee forwards compatibility.
 type ApplicationAccelerator struct {
 	pulumi.CustomResourceState
 

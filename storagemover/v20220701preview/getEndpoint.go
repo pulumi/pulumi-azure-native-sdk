@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an Endpoint resource.
+//
+// Deprecated: azure-native:storagemover/v20220701preview:Endpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:storagemover/v20230301:Endpoint to guarantee forwards compatibility.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	var rv LookupEndpointResult
 	err := ctx.Invoke("azure-native:storagemover/v20220701preview:getEndpoint", args, &rv, opts...)

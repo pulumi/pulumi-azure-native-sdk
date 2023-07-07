@@ -11,6 +11,8 @@ import (
 )
 
 // Monitor resource.
+//
+// Deprecated: azure-native:elastic/v20200701:Monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:elastic/v20230615preview:Monitor to guarantee forwards compatibility.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	var rv LookupMonitorResult
 	err := ctx.Invoke("azure-native:elastic/v20200701:getMonitor", args, &rv, opts...)

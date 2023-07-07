@@ -12,6 +12,8 @@ import (
 )
 
 // A provider instance associated with SAP monitor.
+//
+// Deprecated: azure-native:workloads/v20211201preview:ProviderInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:ProviderInstance to guarantee forwards compatibility.
 type ProviderInstance struct {
 	pulumi.CustomResourceState
 

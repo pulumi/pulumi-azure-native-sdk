@@ -13,7 +13,7 @@ import (
 
 // An Azure Cosmos DB container.
 //
-// Deprecated: azure-native:documentdb/v20221115:SqlResourceSqlContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:SqlResourceSqlContainer to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20221115:SqlResourceSqlContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:SqlResourceSqlContainer to guarantee forwards compatibility.
 type SqlResourceSqlContainer struct {
 	pulumi.CustomResourceState
 

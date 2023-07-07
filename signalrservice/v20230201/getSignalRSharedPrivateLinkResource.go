@@ -11,6 +11,8 @@ import (
 )
 
 // Get the specified shared private link resource
+//
+// Deprecated: azure-native:signalrservice/v20230201:SignalRSharedPrivateLinkResource is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRSharedPrivateLinkResource to guarantee forwards compatibility.
 func LookupSignalRSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSignalRSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupSignalRSharedPrivateLinkResourceResult, error) {
 	var rv LookupSignalRSharedPrivateLinkResourceResult
 	err := ctx.Invoke("azure-native:signalrservice/v20230201:getSignalRSharedPrivateLinkResource", args, &rv, opts...)

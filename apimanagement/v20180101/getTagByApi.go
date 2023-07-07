@@ -12,7 +12,7 @@ import (
 
 // Get tag associated with the API.
 //
-// Deprecated: azure-native:apimanagement/v20180101:TagByApi is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:TagByApi to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20180101:TagByApi is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:TagByApi to guarantee forwards compatibility.
 func LookupTagByApi(ctx *pulumi.Context, args *LookupTagByApiArgs, opts ...pulumi.InvokeOption) (*LookupTagByApiResult, error) {
 	var rv LookupTagByApiResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getTagByApi", args, &rv, opts...)

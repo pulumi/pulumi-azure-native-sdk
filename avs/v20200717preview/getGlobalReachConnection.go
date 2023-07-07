@@ -11,6 +11,8 @@ import (
 )
 
 // A global reach connection resource
+//
+// Deprecated: azure-native:avs/v20200717preview:GlobalReachConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:GlobalReachConnection to guarantee forwards compatibility.
 func LookupGlobalReachConnection(ctx *pulumi.Context, args *LookupGlobalReachConnectionArgs, opts ...pulumi.InvokeOption) (*LookupGlobalReachConnectionResult, error) {
 	var rv LookupGlobalReachConnectionResult
 	err := ctx.Invoke("azure-native:avs/v20200717preview:getGlobalReachConnection", args, &rv, opts...)

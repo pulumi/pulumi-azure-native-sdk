@@ -13,7 +13,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Deprecated: azure-native:machinelearningservices/v20220601preview:EnvironmentContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:EnvironmentContainer to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20220601preview:EnvironmentContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:EnvironmentContainer to guarantee forwards compatibility.
 type EnvironmentContainer struct {
 	pulumi.CustomResourceState
 

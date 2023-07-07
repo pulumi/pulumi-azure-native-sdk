@@ -12,6 +12,8 @@ import (
 )
 
 // Represents ASC (Azure Security Center) data connector.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:ASCDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ASCDataConnector to guarantee forwards compatibility.
 type ASCDataConnector struct {
 	pulumi.CustomResourceState
 

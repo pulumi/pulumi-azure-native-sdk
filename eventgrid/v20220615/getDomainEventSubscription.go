@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of an event subscription of a domain.
+//
+// Deprecated: azure-native:eventgrid/v20220615:DomainEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:DomainEventSubscription to guarantee forwards compatibility.
 func LookupDomainEventSubscription(ctx *pulumi.Context, args *LookupDomainEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupDomainEventSubscriptionResult, error) {
 	var rv LookupDomainEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getDomainEventSubscription", args, &rv, opts...)

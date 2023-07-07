@@ -12,6 +12,8 @@ import (
 )
 
 // Security assessment metadata
+//
+// Deprecated: azure-native:security/v20200101:AssessmentMetadataInSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:security/v20210601:AssessmentMetadataInSubscription to guarantee forwards compatibility.
 type AssessmentMetadataInSubscription struct {
 	pulumi.CustomResourceState
 

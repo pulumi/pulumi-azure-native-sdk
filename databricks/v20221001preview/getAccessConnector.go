@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an azure databricks accessConnector.
+//
+// Deprecated: azure-native:databricks/v20221001preview:AccessConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:databricks/v20230501:AccessConnector to guarantee forwards compatibility.
 func LookupAccessConnector(ctx *pulumi.Context, args *LookupAccessConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAccessConnectorResult, error) {
 	var rv LookupAccessConnectorResult
 	err := ctx.Invoke("azure-native:databricks/v20221001preview:getAccessConnector", args, &rv, opts...)

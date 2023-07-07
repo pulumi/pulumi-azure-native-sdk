@@ -12,6 +12,8 @@ import (
 )
 
 // Base class for backup ProtectionIntent.
+//
+// Deprecated: azure-native:recoveryservices/v20230201:ProtectionIntent is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ProtectionIntent to guarantee forwards compatibility.
 type ProtectionIntent struct {
 	pulumi.CustomResourceState
 

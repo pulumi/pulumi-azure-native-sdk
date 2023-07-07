@@ -12,6 +12,8 @@ import (
 )
 
 // A class represent a resource.
+//
+// Deprecated: azure-native:webpubsub/v20230201:WebPubSub is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230301preview:WebPubSub to guarantee forwards compatibility.
 type WebPubSub struct {
 	pulumi.CustomResourceState
 

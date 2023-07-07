@@ -11,6 +11,8 @@ import (
 )
 
 // Resource representation of a workflow
+//
+// Deprecated: azure-native:devhub/v20220401preview:Workflow is being removed in the next major version of this provider. Upgrade to at least azure-native:devhub/v20221011preview:Workflow to guarantee forwards compatibility.
 func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowResult, error) {
 	var rv LookupWorkflowResult
 	err := ctx.Invoke("azure-native:devhub/v20220401preview:getWorkflow", args, &rv, opts...)

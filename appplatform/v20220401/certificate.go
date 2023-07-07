@@ -13,7 +13,7 @@ import (
 
 // Certificate resource payload.
 //
-// Deprecated: azure-native:appplatform/v20220401:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Certificate to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20220401:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:Certificate to guarantee forwards compatibility.
 type Certificate struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Get the specified private endpoint connection associated with a SignalR resource.
+//
+// Deprecated: azure-native:signalrservice/v20200501:SignalRPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRPrivateEndpointConnection to guarantee forwards compatibility.
 func LookupSignalRPrivateEndpointConnection(ctx *pulumi.Context, args *LookupSignalRPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupSignalRPrivateEndpointConnectionResult, error) {
 	var rv LookupSignalRPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:signalrservice/v20200501:getSignalRPrivateEndpointConnection", args, &rv, opts...)

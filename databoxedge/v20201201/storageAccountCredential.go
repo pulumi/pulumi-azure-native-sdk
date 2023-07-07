@@ -12,6 +12,8 @@ import (
 )
 
 // The storage account credential.
+//
+// Deprecated: azure-native:databoxedge/v20201201:StorageAccountCredential is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:StorageAccountCredential to guarantee forwards compatibility.
 type StorageAccountCredential struct {
 	pulumi.CustomResourceState
 

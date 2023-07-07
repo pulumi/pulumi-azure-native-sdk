@@ -13,7 +13,7 @@ import (
 
 // Recipient User details.
 //
-// Deprecated: azure-native:apimanagement/v20190101:NotificationRecipientUser is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:NotificationRecipientUser to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20190101:NotificationRecipientUser is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:NotificationRecipientUser to guarantee forwards compatibility.
 type NotificationRecipientUser struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 
 // Represents a Watchlist in Azure Security Insights.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:Watchlist is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Watchlist to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:Watchlist is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Watchlist to guarantee forwards compatibility.
 type Watchlist struct {
 	pulumi.CustomResourceState
 

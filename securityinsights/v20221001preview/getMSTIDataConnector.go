@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20221001preview:MSTIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:MSTIDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20221001preview:MSTIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:MSTIDataConnector to guarantee forwards compatibility.
 func LookupMSTIDataConnector(ctx *pulumi.Context, args *LookupMSTIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMSTIDataConnectorResult, error) {
 	var rv LookupMSTIDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20221001preview:getMSTIDataConnector", args, &rv, opts...)

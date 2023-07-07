@@ -12,6 +12,8 @@ import (
 )
 
 // Buildpack Binding Resource object
+//
+// Deprecated: azure-native:appplatform/v20220101preview:BuildpackBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:BuildpackBinding to guarantee forwards compatibility.
 type BuildpackBinding struct {
 	pulumi.CustomResourceState
 

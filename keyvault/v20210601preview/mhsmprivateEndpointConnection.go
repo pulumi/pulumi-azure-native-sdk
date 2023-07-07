@@ -12,6 +12,8 @@ import (
 )
 
 // Private endpoint connection resource.
+//
+// Deprecated: azure-native:keyvault/v20210601preview:MHSMPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:keyvault/v20230201:MHSMPrivateEndpointConnection to guarantee forwards compatibility.
 type MHSMPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

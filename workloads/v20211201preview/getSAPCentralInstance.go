@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the SAP Central Services Instance resource.
+//
+// Deprecated: azure-native:workloads/v20211201preview:SAPCentralInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:SAPCentralInstance to guarantee forwards compatibility.
 func LookupSAPCentralInstance(ctx *pulumi.Context, args *LookupSAPCentralInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPCentralInstanceResult, error) {
 	var rv LookupSAPCentralInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20211201preview:getSAPCentralInstance", args, &rv, opts...)

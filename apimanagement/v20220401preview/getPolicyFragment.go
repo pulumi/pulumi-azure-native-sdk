@@ -12,7 +12,7 @@ import (
 
 // Gets a policy fragment.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:PolicyFragment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:PolicyFragment to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:PolicyFragment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:PolicyFragment to guarantee forwards compatibility.
 func LookupPolicyFragment(ctx *pulumi.Context, args *LookupPolicyFragmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyFragmentResult, error) {
 	var rv LookupPolicyFragmentResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getPolicyFragment", args, &rv, opts...)

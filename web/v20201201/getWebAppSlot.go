@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of a web, mobile, or API app.
+//
+// Deprecated: azure-native:web/v20201201:WebAppSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppSlot to guarantee forwards compatibility.
 func LookupWebAppSlot(ctx *pulumi.Context, args *LookupWebAppSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSlotResult, error) {
 	var rv LookupWebAppSlotResult
 	err := ctx.Invoke("azure-native:web/v20201201:getWebAppSlot", args, &rv, opts...)

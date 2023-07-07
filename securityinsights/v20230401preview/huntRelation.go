@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Hunt Relation in Azure Security Insights.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:HuntRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:HuntRelation to guarantee forwards compatibility.
 type HuntRelation struct {
 	pulumi.CustomResourceState
 

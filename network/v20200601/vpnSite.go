@@ -13,7 +13,7 @@ import (
 
 // VpnSite Resource.
 //
-// Deprecated: azure-native:network/v20200601:VpnSite is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:VpnSite to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200601:VpnSite is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:VpnSite to guarantee forwards compatibility.
 type VpnSite struct {
 	pulumi.CustomResourceState
 

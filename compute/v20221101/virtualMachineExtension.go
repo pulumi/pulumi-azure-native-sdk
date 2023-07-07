@@ -12,6 +12,8 @@ import (
 )
 
 // Describes a Virtual Machine Extension.
+//
+// Deprecated: azure-native:compute/v20221101:VirtualMachineExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:VirtualMachineExtension to guarantee forwards compatibility.
 type VirtualMachineExtension struct {
 	pulumi.CustomResourceState
 

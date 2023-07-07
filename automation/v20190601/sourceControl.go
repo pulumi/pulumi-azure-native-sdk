@@ -12,6 +12,8 @@ import (
 )
 
 // Definition of the source control.
+//
+// Deprecated: azure-native:automation/v20190601:SourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:SourceControl to guarantee forwards compatibility.
 type SourceControl struct {
 	pulumi.CustomResourceState
 

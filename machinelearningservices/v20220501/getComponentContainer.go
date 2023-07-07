@@ -12,7 +12,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Deprecated: azure-native:machinelearningservices/v20220501:ComponentContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:ComponentContainer to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20220501:ComponentContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:ComponentContainer to guarantee forwards compatibility.
 func LookupComponentContainer(ctx *pulumi.Context, args *LookupComponentContainerArgs, opts ...pulumi.InvokeOption) (*LookupComponentContainerResult, error) {
 	var rv LookupComponentContainerResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220501:getComponentContainer", args, &rv, opts...)

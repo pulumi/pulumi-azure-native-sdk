@@ -13,7 +13,7 @@ import (
 
 // Inbound NAT rule of the load balancer.
 //
-// Deprecated: azure-native:network/v20200701:InboundNatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:InboundNatRule to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200701:InboundNatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:InboundNatRule to guarantee forwards compatibility.
 type InboundNatRule struct {
 	pulumi.CustomResourceState
 

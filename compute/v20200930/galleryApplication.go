@@ -12,6 +12,8 @@ import (
 )
 
 // Specifies information about the gallery Application Definition that you want to create or update.
+//
+// Deprecated: azure-native:compute/v20200930:GalleryApplication is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220303:GalleryApplication to guarantee forwards compatibility.
 type GalleryApplication struct {
 	pulumi.CustomResourceState
 

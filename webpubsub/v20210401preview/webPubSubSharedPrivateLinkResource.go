@@ -12,6 +12,8 @@ import (
 )
 
 // Describes a Shared Private Link Resource
+//
+// Deprecated: azure-native:webpubsub/v20210401preview:WebPubSubSharedPrivateLinkResource is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230301preview:WebPubSubSharedPrivateLinkResource to guarantee forwards compatibility.
 type WebPubSubSharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 

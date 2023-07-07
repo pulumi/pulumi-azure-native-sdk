@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of a partner topic.
+//
+// Deprecated: azure-native:eventgrid/v20211015preview:PartnerTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerTopic to guarantee forwards compatibility.
 func LookupPartnerTopic(ctx *pulumi.Context, args *LookupPartnerTopicArgs, opts ...pulumi.InvokeOption) (*LookupPartnerTopicResult, error) {
 	var rv LookupPartnerTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getPartnerTopic", args, &rv, opts...)

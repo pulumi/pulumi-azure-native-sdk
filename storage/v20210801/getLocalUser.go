@@ -11,6 +11,8 @@ import (
 )
 
 // Get the local user of the storage account by username.
+//
+// Deprecated: azure-native:storage/v20210801:LocalUser is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:LocalUser to guarantee forwards compatibility.
 func LookupLocalUser(ctx *pulumi.Context, args *LookupLocalUserArgs, opts ...pulumi.InvokeOption) (*LookupLocalUserResult, error) {
 	var rv LookupLocalUserResult
 	err := ctx.Invoke("azure-native:storage/v20210801:getLocalUser", args, &rv, opts...)

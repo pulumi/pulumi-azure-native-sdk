@@ -14,7 +14,7 @@ import (
 // An Azure Cosmos DB Cassandra keyspace.
 //
 // Deprecated: Version 2019-12-12 will be removed in v2 of the provider.
-// azure-native:documentdb/v20191212:CassandraResourceCassandraKeyspace is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:CassandraResourceCassandraKeyspace to guarantee forwards compatibility.
+// azure-native:documentdb/v20191212:CassandraResourceCassandraKeyspace is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:CassandraResourceCassandraKeyspace to guarantee forwards compatibility.
 type CassandraResourceCassandraKeyspace struct {
 	pulumi.CustomResourceState
 

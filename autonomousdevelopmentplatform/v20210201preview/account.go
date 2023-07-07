@@ -12,6 +12,8 @@ import (
 )
 
 // ADP account
+//
+// Deprecated: azure-native:autonomousdevelopmentplatform/v20210201preview:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:autonomousdevelopmentplatform/v20211101preview:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

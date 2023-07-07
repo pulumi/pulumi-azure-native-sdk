@@ -12,6 +12,8 @@ import (
 )
 
 // A Content Key Policy resource.
+//
+// Deprecated: azure-native:media/v20200501:ContentKeyPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:ContentKeyPolicy to guarantee forwards compatibility.
 type ContentKeyPolicy struct {
 	pulumi.CustomResourceState
 

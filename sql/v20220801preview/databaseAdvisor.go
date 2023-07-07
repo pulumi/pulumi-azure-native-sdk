@@ -12,6 +12,8 @@ import (
 )
 
 // Database, Server or Elastic Pool Advisor.
+//
+// Deprecated: azure-native:sql/v20220801preview:DatabaseAdvisor is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:DatabaseAdvisor to guarantee forwards compatibility.
 type DatabaseAdvisor struct {
 	pulumi.CustomResourceState
 

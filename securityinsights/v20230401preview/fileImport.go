@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a file import in Azure Security Insights.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:FileImport is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:FileImport to guarantee forwards compatibility.
 type FileImport struct {
 	pulumi.CustomResourceState
 

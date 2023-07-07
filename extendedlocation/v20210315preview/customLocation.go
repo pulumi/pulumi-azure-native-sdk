@@ -12,6 +12,8 @@ import (
 )
 
 // Custom Locations definition.
+//
+// Deprecated: azure-native:extendedlocation/v20210315preview:CustomLocation is being removed in the next major version of this provider. Upgrade to at least azure-native:extendedlocation/v20210831preview:CustomLocation to guarantee forwards compatibility.
 type CustomLocation struct {
 	pulumi.CustomResourceState
 

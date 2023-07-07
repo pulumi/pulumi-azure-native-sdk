@@ -13,7 +13,7 @@ import (
 
 // Settings with single toggle.
 //
-// Deprecated: azure-native:securityinsights/v20220901preview:Ueba is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Ueba to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220901preview:Ueba is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Ueba to guarantee forwards compatibility.
 type Ueba struct {
 	pulumi.CustomResourceState
 

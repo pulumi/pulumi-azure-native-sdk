@@ -12,6 +12,8 @@ import (
 )
 
 // Azure Health Bot resource definition
+//
+// Deprecated: azure-native:healthbot/v20220808:Bot is being removed in the next major version of this provider. Upgrade to at least azure-native:healthbot/v20230501:Bot to guarantee forwards compatibility.
 type Bot struct {
 	pulumi.CustomResourceState
 

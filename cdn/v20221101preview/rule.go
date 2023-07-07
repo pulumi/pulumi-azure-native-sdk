@@ -12,6 +12,8 @@ import (
 )
 
 // Friendly Rules name mapping to the any Rules or secret related information.
+//
+// Deprecated: azure-native:cdn/v20221101preview:Rule is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Rule to guarantee forwards compatibility.
 type Rule struct {
 	pulumi.CustomResourceState
 

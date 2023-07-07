@@ -12,6 +12,8 @@ import (
 )
 
 // A MySQL Server key.
+//
+// Deprecated: azure-native:dbformysql/v20200101:ServerKey is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20200701privatepreview:ServerKey to guarantee forwards compatibility.
 type ServerKey struct {
 	pulumi.CustomResourceState
 

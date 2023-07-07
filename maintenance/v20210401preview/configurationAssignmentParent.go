@@ -12,6 +12,8 @@ import (
 )
 
 // Configuration Assignment
+//
+// Deprecated: azure-native:maintenance/v20210401preview:ConfigurationAssignmentParent is being removed in the next major version of this provider. Upgrade to at least azure-native:maintenance/v20221101preview:ConfigurationAssignmentParent to guarantee forwards compatibility.
 type ConfigurationAssignmentParent struct {
 	pulumi.CustomResourceState
 

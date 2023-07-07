@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the storage account.
+//
+// Deprecated: azure-native:storage/v20210201:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:storage/v20210201:getPrivateEndpointConnection", args, &rv, opts...)

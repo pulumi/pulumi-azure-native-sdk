@@ -13,7 +13,7 @@ import (
 
 // Describes a Virtual Machine Scale Set Extension.
 //
-// Deprecated: azure-native:compute/v20220801:VirtualMachineScaleSetExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachineScaleSetExtension to guarantee forwards compatibility.
+// Deprecated: azure-native:compute/v20220801:VirtualMachineScaleSetExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:VirtualMachineScaleSetExtension to guarantee forwards compatibility.
 type VirtualMachineScaleSetExtension struct {
 	pulumi.CustomResourceState
 

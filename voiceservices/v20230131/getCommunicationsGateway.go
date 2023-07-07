@@ -11,6 +11,8 @@ import (
 )
 
 // Get a CommunicationsGateway
+//
+// Deprecated: azure-native:voiceservices/v20230131:CommunicationsGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:voiceservices/v20230403:CommunicationsGateway to guarantee forwards compatibility.
 func LookupCommunicationsGateway(ctx *pulumi.Context, args *LookupCommunicationsGatewayArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationsGatewayResult, error) {
 	var rv LookupCommunicationsGatewayResult
 	err := ctx.Invoke("azure-native:voiceservices/v20230131:getCommunicationsGateway", args, &rv, opts...)

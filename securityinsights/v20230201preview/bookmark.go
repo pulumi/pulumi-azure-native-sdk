@@ -13,7 +13,7 @@ import (
 
 // Represents a bookmark in Azure Security Insights.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:Bookmark is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:Bookmark to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:Bookmark is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Bookmark to guarantee forwards compatibility.
 type Bookmark struct {
 	pulumi.CustomResourceState
 

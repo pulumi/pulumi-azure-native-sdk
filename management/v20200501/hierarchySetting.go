@@ -12,6 +12,8 @@ import (
 )
 
 // Settings defined at the Management Group scope.
+//
+// Deprecated: azure-native:management/v20200501:HierarchySetting is being removed in the next major version of this provider. Upgrade to at least azure-native:management/v20210401:HierarchySetting to guarantee forwards compatibility.
 type HierarchySetting struct {
 	pulumi.CustomResourceState
 

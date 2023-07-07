@@ -12,6 +12,8 @@ import (
 )
 
 // The description of the service.
+//
+// Deprecated: azure-native:healthcareapis/v20220515:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

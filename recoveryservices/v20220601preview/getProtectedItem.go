@@ -13,7 +13,7 @@ import (
 // Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
 // call the GetItemOperationResult API.
 //
-// Deprecated: azure-native:recoveryservices/v20220601preview:ProtectedItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ProtectedItem to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20220601preview:ProtectedItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ProtectedItem to guarantee forwards compatibility.
 func LookupProtectedItem(ctx *pulumi.Context, args *LookupProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupProtectedItemResult, error) {
 	var rv LookupProtectedItemResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20220601preview:getProtectedItem", args, &rv, opts...)

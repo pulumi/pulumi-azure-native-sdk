@@ -12,6 +12,8 @@ import (
 )
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
+//
+// Deprecated: azure-native:automanage/v20200630preview:ConfigurationProfileAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:automanage/v20220504:ConfigurationProfileAssignment to guarantee forwards compatibility.
 type ConfigurationProfileAssignment struct {
 	pulumi.CustomResourceState
 

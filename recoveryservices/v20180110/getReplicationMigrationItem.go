@@ -13,7 +13,7 @@ import (
 // Migration item.
 //
 // Deprecated: Version 2018-01-10 will be removed in v2 of the provider.
-// azure-native:recoveryservices/v20180110:ReplicationMigrationItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ReplicationMigrationItem to guarantee forwards compatibility.
+// azure-native:recoveryservices/v20180110:ReplicationMigrationItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ReplicationMigrationItem to guarantee forwards compatibility.
 func LookupReplicationMigrationItem(ctx *pulumi.Context, args *LookupReplicationMigrationItemArgs, opts ...pulumi.InvokeOption) (*LookupReplicationMigrationItemResult, error) {
 	var rv LookupReplicationMigrationItemResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20180110:getReplicationMigrationItem", args, &rv, opts...)

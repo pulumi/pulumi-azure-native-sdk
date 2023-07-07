@@ -13,7 +13,7 @@ import (
 // Gets the specified Express Route Circuit Connection from the specified express route circuit.
 //
 // Deprecated: Version 2018-02-01 will be removed in v2 of the provider.
-// azure-native:network/v20180201:ExpressRouteCircuitConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ExpressRouteCircuitConnection to guarantee forwards compatibility.
+// azure-native:network/v20180201:ExpressRouteCircuitConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ExpressRouteCircuitConnection to guarantee forwards compatibility.
 func LookupExpressRouteCircuitConnection(ctx *pulumi.Context, args *LookupExpressRouteCircuitConnectionArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitConnectionResult, error) {
 	var rv LookupExpressRouteCircuitConnectionResult
 	err := ctx.Invoke("azure-native:network/v20180201:getExpressRouteCircuitConnection", args, &rv, opts...)

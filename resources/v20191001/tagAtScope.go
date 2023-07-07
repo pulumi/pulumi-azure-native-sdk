@@ -12,6 +12,8 @@ import (
 )
 
 // Wrapper resource for tags API requests and responses.
+//
+// Deprecated: azure-native:resources/v20191001:TagAtScope is being removed in the next major version of this provider. Upgrade to at least azure-native:resources/v20220901:TagAtScope to guarantee forwards compatibility.
 type TagAtScope struct {
 	pulumi.CustomResourceState
 

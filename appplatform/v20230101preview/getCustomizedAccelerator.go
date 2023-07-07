@@ -11,6 +11,8 @@ import (
 )
 
 // Get the customized accelerator.
+//
+// Deprecated: azure-native:appplatform/v20230101preview:CustomizedAccelerator is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:CustomizedAccelerator to guarantee forwards compatibility.
 func LookupCustomizedAccelerator(ctx *pulumi.Context, args *LookupCustomizedAcceleratorArgs, opts ...pulumi.InvokeOption) (*LookupCustomizedAcceleratorResult, error) {
 	var rv LookupCustomizedAcceleratorResult
 	err := ctx.Invoke("azure-native:appplatform/v20230101preview:getCustomizedAccelerator", args, &rv, opts...)

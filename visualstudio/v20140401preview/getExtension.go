@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the details of an extension associated with a Visual Studio Team Services account resource.
+//
+// Deprecated: azure-native:visualstudio/v20140401preview:Extension is being removed in the next major version of this provider. Upgrade to at least azure-native:visualstudio/v20171101preview:Extension to guarantee forwards compatibility.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:visualstudio/v20140401preview:getExtension", args, &rv, opts...)

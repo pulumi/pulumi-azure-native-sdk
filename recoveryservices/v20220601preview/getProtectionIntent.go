@@ -13,7 +13,7 @@ import (
 // Provides the details of the protection intent up item. This is an asynchronous operation. To know the status of the operation,
 // call the GetItemOperationResult API.
 //
-// Deprecated: azure-native:recoveryservices/v20220601preview:ProtectionIntent is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230201:ProtectionIntent to guarantee forwards compatibility.
+// Deprecated: azure-native:recoveryservices/v20220601preview:ProtectionIntent is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ProtectionIntent to guarantee forwards compatibility.
 func LookupProtectionIntent(ctx *pulumi.Context, args *LookupProtectionIntentArgs, opts ...pulumi.InvokeOption) (*LookupProtectionIntentResult, error) {
 	var rv LookupProtectionIntentResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20220601preview:getProtectionIntent", args, &rv, opts...)

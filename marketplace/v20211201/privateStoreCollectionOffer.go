@@ -12,6 +12,8 @@ import (
 )
 
 // The privateStore offer data structure.
+//
+// Deprecated: azure-native:marketplace/v20211201:PrivateStoreCollectionOffer is being removed in the next major version of this provider. Upgrade to at least azure-native:marketplace/v20230101:PrivateStoreCollectionOffer to guarantee forwards compatibility.
 type PrivateStoreCollectionOffer struct {
 	pulumi.CustomResourceState
 

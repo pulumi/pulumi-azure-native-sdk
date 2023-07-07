@@ -11,6 +11,8 @@ import (
 )
 
 // Get HCI cluster.
+//
+// Deprecated: azure-native:azurestackhci/v20201001:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20220101:Cluster to guarantee forwards compatibility.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20201001:getCluster", args, &rv, opts...)

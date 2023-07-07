@@ -13,7 +13,7 @@ import (
 
 // A managed Cassandra data center.
 //
-// Deprecated: azure-native:documentdb/v20220515preview:CassandraDataCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315:CassandraDataCenter to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20220515preview:CassandraDataCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230415:CassandraDataCenter to guarantee forwards compatibility.
 type CassandraDataCenter struct {
 	pulumi.CustomResourceState
 

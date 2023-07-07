@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Project resource.
+//
+// Deprecated: azure-native:storagemover/v20220701preview:Project is being removed in the next major version of this provider. Upgrade to at least azure-native:storagemover/v20230301:Project to guarantee forwards compatibility.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("azure-native:storagemover/v20220701preview:getProject", args, &rv, opts...)

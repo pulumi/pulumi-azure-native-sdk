@@ -12,6 +12,8 @@ import (
 )
 
 // Authorization in an ExpressRouteCircuit resource.
+//
+// Deprecated: azure-native:network/v20201101:ExpressRouteCircuitAuthorization is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ExpressRouteCircuitAuthorization to guarantee forwards compatibility.
 type ExpressRouteCircuitAuthorization struct {
 	pulumi.CustomResourceState
 

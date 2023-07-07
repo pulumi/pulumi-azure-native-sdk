@@ -12,7 +12,7 @@ import (
 
 // (INTERNAL - DO NOT USE) Get the specified private endpoint connection proxy associated with the device update account.
 //
-// Deprecated: azure-native:deviceupdate/v20220401preview:PrivateEndpointConnectionProxy is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20221201preview:PrivateEndpointConnectionProxy to guarantee forwards compatibility.
+// Deprecated: azure-native:deviceupdate/v20220401preview:PrivateEndpointConnectionProxy is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20230701:PrivateEndpointConnectionProxy to guarantee forwards compatibility.
 func LookupPrivateEndpointConnectionProxy(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionProxyArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionProxyResult, error) {
 	var rv LookupPrivateEndpointConnectionProxyResult
 	err := ctx.Invoke("azure-native:deviceupdate/v20220401preview:getPrivateEndpointConnectionProxy", args, &rv, opts...)

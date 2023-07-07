@@ -12,6 +12,8 @@ import (
 )
 
 // EventGrid Partner Namespace.
+//
+// Deprecated: azure-native:eventgrid/v20220615:PartnerNamespace is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerNamespace to guarantee forwards compatibility.
 type PartnerNamespace struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // User credentials used for publishing activity.
+//
+// Deprecated: azure-native:web/v20201201:WebAppDeployment is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppDeployment to guarantee forwards compatibility.
 type WebAppDeployment struct {
 	pulumi.CustomResourceState
 

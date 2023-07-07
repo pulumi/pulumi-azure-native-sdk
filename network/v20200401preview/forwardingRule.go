@@ -12,6 +12,8 @@ import (
 )
 
 // Describes a forwarding rule within a DNS forwarding ruleset.
+//
+// Deprecated: azure-native:network/v20200401preview:ForwardingRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220701:ForwardingRule to guarantee forwards compatibility.
 type ForwardingRule struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 
 // A custom certificate.
 //
-// Deprecated: azure-native:webpubsub/v20220801preview:WebPubSubCustomCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230201:WebPubSubCustomCertificate to guarantee forwards compatibility.
+// Deprecated: azure-native:webpubsub/v20220801preview:WebPubSubCustomCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230301preview:WebPubSubCustomCertificate to guarantee forwards compatibility.
 type WebPubSubCustomCertificate struct {
 	pulumi.CustomResourceState
 

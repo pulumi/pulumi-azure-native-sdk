@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves details about given subscription which is associated with the management group.
+//
+// Deprecated: azure-native:management/v20200501:ManagementGroupSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:management/v20210401:ManagementGroupSubscription to guarantee forwards compatibility.
 func LookupManagementGroupSubscription(ctx *pulumi.Context, args *LookupManagementGroupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupSubscriptionResult, error) {
 	var rv LookupManagementGroupSubscriptionResult
 	err := ctx.Invoke("azure-native:management/v20200501:getManagementGroupSubscription", args, &rv, opts...)

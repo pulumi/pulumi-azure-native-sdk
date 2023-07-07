@@ -13,7 +13,7 @@ import (
 
 // An environment for Kubernetes cluster specialized for web workloads by Azure App Service
 //
-// Deprecated: azure-native:app/v20220601preview:ConnectedEnvironment is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20221001:ConnectedEnvironment to guarantee forwards compatibility.
+// Deprecated: azure-native:app/v20220601preview:ConnectedEnvironment is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ConnectedEnvironment to guarantee forwards compatibility.
 type ConnectedEnvironment struct {
 	pulumi.CustomResourceState
 

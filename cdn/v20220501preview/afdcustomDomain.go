@@ -13,7 +13,7 @@ import (
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
 //
-// Deprecated: azure-native:cdn/v20220501preview:AFDCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:AFDCustomDomain to guarantee forwards compatibility.
+// Deprecated: azure-native:cdn/v20220501preview:AFDCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:AFDCustomDomain to guarantee forwards compatibility.
 type AFDCustomDomain struct {
 	pulumi.CustomResourceState
 

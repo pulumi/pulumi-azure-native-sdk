@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of an event subscription of a topic.
+//
+// Deprecated: azure-native:eventgrid/v20211015preview:TopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:TopicEventSubscription to guarantee forwards compatibility.
 func LookupTopicEventSubscription(ctx *pulumi.Context, args *LookupTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupTopicEventSubscriptionResult, error) {
 	var rv LookupTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getTopicEventSubscription", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // Backup policy information
 //
-// Deprecated: azure-native:netapp/v20210801:BackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20220901:BackupPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:netapp/v20210801:BackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:netapp/v20221101:BackupPolicy to guarantee forwards compatibility.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 

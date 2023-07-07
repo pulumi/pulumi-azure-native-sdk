@@ -11,6 +11,8 @@ import (
 )
 
 // Returns the Workspace resource associated with the given name.
+//
+// Deprecated: azure-native:quantum/v20191104preview:Workspace is being removed in the next major version of this provider. Upgrade to at least azure-native:quantum/v20220110preview:Workspace to guarantee forwards compatibility.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:quantum/v20191104preview:getWorkspace", args, &rv, opts...)

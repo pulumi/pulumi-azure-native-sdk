@@ -12,7 +12,7 @@ import (
 
 // Defines binding between a resource and role
 //
-// Deprecated: azure-native:containerservice/v20220702preview:TrustedAccessRoleBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230102preview:TrustedAccessRoleBinding to guarantee forwards compatibility.
+// Deprecated: azure-native:containerservice/v20220702preview:TrustedAccessRoleBinding is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230502preview:TrustedAccessRoleBinding to guarantee forwards compatibility.
 func LookupTrustedAccessRoleBinding(ctx *pulumi.Context, args *LookupTrustedAccessRoleBindingArgs, opts ...pulumi.InvokeOption) (*LookupTrustedAccessRoleBindingResult, error) {
 	var rv LookupTrustedAccessRoleBindingResult
 	err := ctx.Invoke("azure-native:containerservice/v20220702preview:getTrustedAccessRoleBinding", args, &rv, opts...)

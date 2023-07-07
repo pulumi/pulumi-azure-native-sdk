@@ -12,7 +12,7 @@ import (
 
 // Monitor resource.
 //
-// Deprecated: azure-native:elastic/v20211001preview:Monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:elastic/v20220901preview:Monitor to guarantee forwards compatibility.
+// Deprecated: azure-native:elastic/v20211001preview:Monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:elastic/v20230615preview:Monitor to guarantee forwards compatibility.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	var rv LookupMonitorResult
 	err := ctx.Invoke("azure-native:elastic/v20211001preview:getMonitor", args, &rv, opts...)

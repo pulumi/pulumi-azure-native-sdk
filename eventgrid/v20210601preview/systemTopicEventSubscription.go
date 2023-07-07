@@ -13,7 +13,7 @@ import (
 
 // Event Subscription
 //
-// Deprecated: azure-native:eventgrid/v20210601preview:SystemTopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:SystemTopicEventSubscription to guarantee forwards compatibility.
+// Deprecated: azure-native:eventgrid/v20210601preview:SystemTopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:SystemTopicEventSubscription to guarantee forwards compatibility.
 type SystemTopicEventSubscription struct {
 	pulumi.CustomResourceState
 

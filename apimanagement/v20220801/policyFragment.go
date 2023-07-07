@@ -12,6 +12,8 @@ import (
 )
 
 // Policy fragment contract details.
+//
+// Deprecated: azure-native:apimanagement/v20220801:PolicyFragment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:PolicyFragment to guarantee forwards compatibility.
 type PolicyFragment struct {
 	pulumi.CustomResourceState
 

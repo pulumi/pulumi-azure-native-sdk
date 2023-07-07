@@ -11,6 +11,8 @@ import (
 )
 
 // Retrieves information about a gallery Application Version.
+//
+// Deprecated: azure-native:compute/v20200930:GalleryApplicationVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20220303:GalleryApplicationVersion to guarantee forwards compatibility.
 func LookupGalleryApplicationVersion(ctx *pulumi.Context, args *LookupGalleryApplicationVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationVersionResult, error) {
 	var rv LookupGalleryApplicationVersionResult
 	err := ctx.Invoke("azure-native:compute/v20200930:getGalleryApplicationVersion", args, &rv, opts...)

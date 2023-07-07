@@ -12,7 +12,7 @@ import (
 
 // Get an alert processing rule by name.
 //
-// Deprecated: azure-native:alertsmanagement/v20210808:AlertProcessingRuleByName is being removed in the next major version of this provider. Upgrade to at least azure-native:alertsmanagement/v20210808preview:AlertProcessingRuleByName to guarantee forwards compatibility.
+// Deprecated: azure-native:alertsmanagement/v20210808:AlertProcessingRuleByName is being removed in the next major version of this provider. Upgrade to at least azure-native:alertsmanagement/v20230501preview:AlertProcessingRuleByName to guarantee forwards compatibility.
 func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProcessingRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupAlertProcessingRuleByNameResult, error) {
 	var rv LookupAlertProcessingRuleByNameResult
 	err := ctx.Invoke("azure-native:alertsmanagement/v20210808:getAlertProcessingRuleByName", args, &rv, opts...)

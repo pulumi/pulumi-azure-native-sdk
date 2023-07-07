@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Rules Engine Configuration with the specified name within the specified Front Door.
+//
+// Deprecated: azure-native:network/v20200501:RulesEngine is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20210601:RulesEngine to guarantee forwards compatibility.
 func LookupRulesEngine(ctx *pulumi.Context, args *LookupRulesEngineArgs, opts ...pulumi.InvokeOption) (*LookupRulesEngineResult, error) {
 	var rv LookupRulesEngineResult
 	err := ctx.Invoke("azure-native:network/v20200501:getRulesEngine", args, &rv, opts...)

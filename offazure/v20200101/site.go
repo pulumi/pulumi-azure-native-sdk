@@ -12,6 +12,8 @@ import (
 )
 
 // Site REST Resource.
+//
+// Deprecated: azure-native:offazure/v20200101:Site is being removed in the next major version of this provider. Upgrade to at least azure-native:offazure/v20200707:Site to guarantee forwards compatibility.
 type Site struct {
 	pulumi.CustomResourceState
 

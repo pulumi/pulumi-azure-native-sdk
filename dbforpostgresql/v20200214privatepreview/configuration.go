@@ -13,7 +13,7 @@ import (
 
 // Represents a Configuration.
 //
-// Deprecated: azure-native:dbforpostgresql/v20200214privatepreview:Configuration is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20221201:Configuration to guarantee forwards compatibility.
+// Deprecated: azure-native:dbforpostgresql/v20200214privatepreview:Configuration is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20230301preview:Configuration to guarantee forwards compatibility.
 type Configuration struct {
 	pulumi.CustomResourceState
 

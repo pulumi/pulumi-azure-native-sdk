@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the Move Resource.
+//
+// Deprecated: azure-native:migrate/v20210101:MoveResource is being removed in the next major version of this provider. Upgrade to at least azure-native:migrate/v20220801:MoveResource to guarantee forwards compatibility.
 func LookupMoveResource(ctx *pulumi.Context, args *LookupMoveResourceArgs, opts ...pulumi.InvokeOption) (*LookupMoveResourceResult, error) {
 	var rv LookupMoveResourceResult
 	err := ctx.Invoke("azure-native:migrate/v20210101:getMoveResource", args, &rv, opts...)

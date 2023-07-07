@@ -12,7 +12,7 @@ import (
 
 // Retrieves the details of a RouteMap.
 //
-// Deprecated: azure-native:network/v20220701:RouteMap is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:RouteMap to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220701:RouteMap is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:RouteMap to guarantee forwards compatibility.
 func LookupRouteMap(ctx *pulumi.Context, args *LookupRouteMapArgs, opts ...pulumi.InvokeOption) (*LookupRouteMapResult, error) {
 	var rv LookupRouteMapResult
 	err := ctx.Invoke("azure-native:network/v20220701:getRouteMap", args, &rv, opts...)

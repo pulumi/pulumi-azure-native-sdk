@@ -11,6 +11,8 @@ import (
 )
 
 // Get the properties of an connectedEnvironment.
+//
+// Deprecated: azure-native:app/v20221001:ConnectedEnvironment is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ConnectedEnvironment to guarantee forwards compatibility.
 func LookupConnectedEnvironment(ctx *pulumi.Context, args *LookupConnectedEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentResult, error) {
 	var rv LookupConnectedEnvironmentResult
 	err := ctx.Invoke("azure-native:app/v20221001:getConnectedEnvironment", args, &rv, opts...)

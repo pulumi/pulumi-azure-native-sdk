@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a AAD server administrator.
+//
+// Deprecated: azure-native:dbformysql/v20171201:ServerAdministrator is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20180601privatepreview:ServerAdministrator to guarantee forwards compatibility.
 func LookupServerAdministrator(ctx *pulumi.Context, args *LookupServerAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupServerAdministratorResult, error) {
 	var rv LookupServerAdministratorResult
 	err := ctx.Invoke("azure-native:dbformysql/v20171201:getServerAdministrator", args, &rv, opts...)

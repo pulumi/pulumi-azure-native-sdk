@@ -12,6 +12,8 @@ import (
 )
 
 // A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure.
+//
+// Deprecated: azure-native:containerservice/v20220902preview:FleetMember is being removed in the next major version of this provider. Upgrade to at least azure-native:containerservice/v20230315preview:FleetMember to guarantee forwards compatibility.
 type FleetMember struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a target group.
+//
+// Deprecated: azure-native:sql/v20201101preview:JobTargetGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:JobTargetGroup to guarantee forwards compatibility.
 func LookupJobTargetGroup(ctx *pulumi.Context, args *LookupJobTargetGroupArgs, opts ...pulumi.InvokeOption) (*LookupJobTargetGroupResult, error) {
 	var rv LookupJobTargetGroupResult
 	err := ctx.Invoke("azure-native:sql/v20201101preview:getJobTargetGroup", args, &rv, opts...)

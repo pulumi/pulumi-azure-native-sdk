@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a Azure Arc PrivateLinkScope.
+//
+// Deprecated: azure-native:hybridcompute/v20221227:PrivateLinkScope is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20230425preview:PrivateLinkScope to guarantee forwards compatibility.
 func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopeResult, error) {
 	var rv LookupPrivateLinkScopeResult
 	err := ctx.Invoke("azure-native:hybridcompute/v20221227:getPrivateLinkScope", args, &rv, opts...)

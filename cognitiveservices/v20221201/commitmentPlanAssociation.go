@@ -12,6 +12,8 @@ import (
 )
 
 // The commitment plan association.
+//
+// Deprecated: azure-native:cognitiveservices/v20221201:CommitmentPlanAssociation is being removed in the next major version of this provider. Upgrade to at least azure-native:cognitiveservices/v20230501:CommitmentPlanAssociation to guarantee forwards compatibility.
 type CommitmentPlanAssociation struct {
 	pulumi.CustomResourceState
 

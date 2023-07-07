@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Database.
+//
+// Deprecated: azure-native:dbformariadb/v20180601:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformariadb/v20180601preview:Database to guarantee forwards compatibility.
 type Database struct {
 	pulumi.CustomResourceState
 

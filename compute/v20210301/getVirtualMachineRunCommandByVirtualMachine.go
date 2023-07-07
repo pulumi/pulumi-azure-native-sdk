@@ -11,6 +11,8 @@ import (
 )
 
 // The operation to get the run command.
+//
+// Deprecated: azure-native:compute/v20210301:VirtualMachineRunCommandByVirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:VirtualMachineRunCommandByVirtualMachine to guarantee forwards compatibility.
 func LookupVirtualMachineRunCommandByVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineRunCommandByVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineRunCommandByVirtualMachineResult, error) {
 	var rv LookupVirtualMachineRunCommandByVirtualMachineResult
 	err := ctx.Invoke("azure-native:compute/v20210301:getVirtualMachineRunCommandByVirtualMachine", args, &rv, opts...)

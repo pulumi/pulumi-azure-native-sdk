@@ -12,6 +12,8 @@ import (
 )
 
 // A vSphere Distributed Resource Scheduler (DRS) placement policy
+//
+// Deprecated: azure-native:avs/v20211201:PlacementPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:avs/v20220501:PlacementPolicy to guarantee forwards compatibility.
 type PlacementPolicy struct {
 	pulumi.CustomResourceState
 

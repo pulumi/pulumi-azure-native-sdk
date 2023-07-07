@@ -13,7 +13,7 @@ import (
 
 // Tag Contract details.
 //
-// Deprecated: azure-native:apimanagement/v20210101preview:TagByOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:TagByOperation to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210101preview:TagByOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:TagByOperation to guarantee forwards compatibility.
 type TagByOperation struct {
 	pulumi.CustomResourceState
 

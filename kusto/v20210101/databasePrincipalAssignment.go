@@ -12,6 +12,8 @@ import (
 )
 
 // Class representing a database principal assignment.
+//
+// Deprecated: azure-native:kusto/v20210101:DatabasePrincipalAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:DatabasePrincipalAssignment to guarantee forwards compatibility.
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 

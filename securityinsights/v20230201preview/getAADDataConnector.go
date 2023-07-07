@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:AADDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AADDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:AADDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:AADDataConnector to guarantee forwards compatibility.
 func LookupAADDataConnector(ctx *pulumi.Context, args *LookupAADDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAADDataConnectorResult, error) {
 	var rv LookupAADDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getAADDataConnector", args, &rv, opts...)

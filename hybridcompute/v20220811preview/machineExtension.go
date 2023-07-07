@@ -13,7 +13,7 @@ import (
 
 // Describes a Machine Extension.
 //
-// Deprecated: azure-native:hybridcompute/v20220811preview:MachineExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20221227preview:MachineExtension to guarantee forwards compatibility.
+// Deprecated: azure-native:hybridcompute/v20220811preview:MachineExtension is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20230425preview:MachineExtension to guarantee forwards compatibility.
 type MachineExtension struct {
 	pulumi.CustomResourceState
 

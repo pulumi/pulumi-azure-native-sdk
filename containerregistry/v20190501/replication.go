@@ -12,6 +12,8 @@ import (
 )
 
 // An object that represents a replication for a container registry.
+//
+// Deprecated: azure-native:containerregistry/v20190501:Replication is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Replication to guarantee forwards compatibility.
 type Replication struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // VpnGatewayNatRule Resource.
+//
+// Deprecated: azure-native:network/v20220901:NatRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:NatRule to guarantee forwards compatibility.
 type NatRule struct {
 	pulumi.CustomResourceState
 

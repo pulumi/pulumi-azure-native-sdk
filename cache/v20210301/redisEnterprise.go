@@ -12,6 +12,8 @@ import (
 )
 
 // Describes the RedisEnterprise cluster
+//
+// Deprecated: azure-native:cache/v20210301:RedisEnterprise is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20230301preview:RedisEnterprise to guarantee forwards compatibility.
 type RedisEnterprise struct {
 	pulumi.CustomResourceState
 

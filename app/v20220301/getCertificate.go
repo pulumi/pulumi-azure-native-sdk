@@ -11,6 +11,8 @@ import (
 )
 
 // Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
+//
+// Deprecated: azure-native:app/v20220301:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:Certificate to guarantee forwards compatibility.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:app/v20220301:getCertificate", args, &rv, opts...)

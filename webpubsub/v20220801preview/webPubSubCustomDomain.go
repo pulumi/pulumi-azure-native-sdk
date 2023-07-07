@@ -13,7 +13,7 @@ import (
 
 // A custom domain
 //
-// Deprecated: azure-native:webpubsub/v20220801preview:WebPubSubCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230201:WebPubSubCustomDomain to guarantee forwards compatibility.
+// Deprecated: azure-native:webpubsub/v20220801preview:WebPubSubCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230301preview:WebPubSubCustomDomain to guarantee forwards compatibility.
 type WebPubSubCustomDomain struct {
 	pulumi.CustomResourceState
 

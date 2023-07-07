@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided storage appliance.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:StorageAppliance is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:StorageAppliance to guarantee forwards compatibility.
 func LookupStorageAppliance(ctx *pulumi.Context, args *LookupStorageApplianceArgs, opts ...pulumi.InvokeOption) (*LookupStorageApplianceResult, error) {
 	var rv LookupStorageApplianceResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getStorageAppliance", args, &rv, opts...)

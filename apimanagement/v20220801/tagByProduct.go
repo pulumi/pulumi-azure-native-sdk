@@ -12,6 +12,8 @@ import (
 )
 
 // Tag Contract details.
+//
+// Deprecated: azure-native:apimanagement/v20220801:TagByProduct is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:TagByProduct to guarantee forwards compatibility.
 type TagByProduct struct {
 	pulumi.CustomResourceState
 

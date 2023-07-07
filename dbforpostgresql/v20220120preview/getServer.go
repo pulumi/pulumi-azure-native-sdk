@@ -12,7 +12,7 @@ import (
 
 // Gets information about a server.
 //
-// Deprecated: azure-native:dbforpostgresql/v20220120preview:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20221201:Server to guarantee forwards compatibility.
+// Deprecated: azure-native:dbforpostgresql/v20220120preview:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20220308preview:Server to guarantee forwards compatibility.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	var rv LookupServerResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20220120preview:getServer", args, &rv, opts...)

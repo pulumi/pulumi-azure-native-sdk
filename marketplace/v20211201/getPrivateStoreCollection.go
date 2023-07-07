@@ -11,6 +11,8 @@ import (
 )
 
 // Gets private store collection
+//
+// Deprecated: azure-native:marketplace/v20211201:PrivateStoreCollection is being removed in the next major version of this provider. Upgrade to at least azure-native:marketplace/v20230101:PrivateStoreCollection to guarantee forwards compatibility.
 func LookupPrivateStoreCollection(ctx *pulumi.Context, args *LookupPrivateStoreCollectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreCollectionResult, error) {
 	var rv LookupPrivateStoreCollectionResult
 	err := ctx.Invoke("azure-native:marketplace/v20211201:getPrivateStoreCollection", args, &rv, opts...)

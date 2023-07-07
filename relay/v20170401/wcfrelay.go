@@ -12,6 +12,8 @@ import (
 )
 
 // Description of the WCF relay resource.
+//
+// Deprecated: azure-native:relay/v20170401:WCFRelay is being removed in the next major version of this provider. Upgrade to at least azure-native:relay/v20211101:WCFRelay to guarantee forwards compatibility.
 type WCFRelay struct {
 	pulumi.CustomResourceState
 

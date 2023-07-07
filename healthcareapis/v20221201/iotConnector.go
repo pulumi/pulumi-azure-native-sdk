@@ -12,6 +12,8 @@ import (
 )
 
 // IoT Connector definition.
+//
+// Deprecated: azure-native:healthcareapis/v20221201:IotConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:IotConnector to guarantee forwards compatibility.
 type IotConnector struct {
 	pulumi.CustomResourceState
 

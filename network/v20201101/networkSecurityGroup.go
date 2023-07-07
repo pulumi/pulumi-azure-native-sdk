@@ -12,6 +12,8 @@ import (
 )
 
 // NetworkSecurityGroup resource.
+//
+// Deprecated: azure-native:network/v20201101:NetworkSecurityGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:NetworkSecurityGroup to guarantee forwards compatibility.
 type NetworkSecurityGroup struct {
 	pulumi.CustomResourceState
 

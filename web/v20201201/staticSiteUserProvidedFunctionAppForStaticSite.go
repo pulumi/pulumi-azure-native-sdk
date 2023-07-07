@@ -12,6 +12,8 @@ import (
 )
 
 // Static Site User Provided Function App ARM resource.
+//
+// Deprecated: azure-native:web/v20201201:StaticSiteUserProvidedFunctionAppForStaticSite is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:StaticSiteUserProvidedFunctionAppForStaticSite to guarantee forwards compatibility.
 type StaticSiteUserProvidedFunctionAppForStaticSite struct {
 	pulumi.CustomResourceState
 

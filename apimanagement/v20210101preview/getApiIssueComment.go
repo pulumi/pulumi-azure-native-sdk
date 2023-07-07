@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the issue Comment for an API specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20210101preview:ApiIssueComment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiIssueComment to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210101preview:ApiIssueComment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiIssueComment to guarantee forwards compatibility.
 func LookupApiIssueComment(ctx *pulumi.Context, args *LookupApiIssueCommentArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueCommentResult, error) {
 	var rv LookupApiIssueCommentResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210101preview:getApiIssueComment", args, &rv, opts...)

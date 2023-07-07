@@ -12,6 +12,8 @@ import (
 )
 
 // Properties of the PrivateEndpointConnection.
+//
+// Deprecated: azure-native:eventhub/v20180101preview:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

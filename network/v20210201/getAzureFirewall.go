@@ -12,7 +12,7 @@ import (
 
 // Gets the specified Azure Firewall.
 //
-// Deprecated: azure-native:network/v20210201:AzureFirewall is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:AzureFirewall to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20210201:AzureFirewall is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:AzureFirewall to guarantee forwards compatibility.
 func LookupAzureFirewall(ctx *pulumi.Context, args *LookupAzureFirewallArgs, opts ...pulumi.InvokeOption) (*LookupAzureFirewallResult, error) {
 	var rv LookupAzureFirewallResult
 	err := ctx.Invoke("azure-native:network/v20210201:getAzureFirewall", args, &rv, opts...)

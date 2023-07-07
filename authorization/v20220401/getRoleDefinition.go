@@ -11,6 +11,8 @@ import (
 )
 
 // Get role definition by name (GUID).
+//
+// Deprecated: azure-native:authorization/v20220401:RoleDefinition is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20220501preview:RoleDefinition to guarantee forwards compatibility.
 func LookupRoleDefinition(ctx *pulumi.Context, args *LookupRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupRoleDefinitionResult, error) {
 	var rv LookupRoleDefinitionResult
 	err := ctx.Invoke("azure-native:authorization/v20220401:getRoleDefinition", args, &rv, opts...)

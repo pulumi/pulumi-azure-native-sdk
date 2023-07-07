@@ -12,6 +12,8 @@ import (
 )
 
 // Service End point policy resource.
+//
+// Deprecated: azure-native:network/v20220901:ServiceEndpointPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ServiceEndpointPolicy to guarantee forwards compatibility.
 type ServiceEndpointPolicy struct {
 	pulumi.CustomResourceState
 

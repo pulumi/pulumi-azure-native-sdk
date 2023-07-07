@@ -12,6 +12,8 @@ import (
 )
 
 // The X509 Certificate.
+//
+// Deprecated: azure-native:devices/v20200831:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20221115preview:Certificate to guarantee forwards compatibility.
 type Certificate struct {
 	pulumi.CustomResourceState
 

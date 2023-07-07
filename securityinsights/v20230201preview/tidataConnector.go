@@ -13,7 +13,7 @@ import (
 
 // Represents threat intelligence data connector.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:TIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:TIDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:TIDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:TIDataConnector to guarantee forwards compatibility.
 type TIDataConnector struct {
 	pulumi.CustomResourceState
 

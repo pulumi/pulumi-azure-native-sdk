@@ -11,6 +11,8 @@ import (
 )
 
 // Get a single workbook template by its resourceName.
+//
+// Deprecated: azure-native:insights/v20191017preview:WorkbookTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20201120:WorkbookTemplate to guarantee forwards compatibility.
 func LookupWorkbookTemplate(ctx *pulumi.Context, args *LookupWorkbookTemplateArgs, opts ...pulumi.InvokeOption) (*LookupWorkbookTemplateResult, error) {
 	var rv LookupWorkbookTemplateResult
 	err := ctx.Invoke("azure-native:insights/v20191017preview:getWorkbookTemplate", args, &rv, opts...)

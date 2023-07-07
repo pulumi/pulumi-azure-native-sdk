@@ -12,6 +12,8 @@ import (
 )
 
 // ExpressRoutePort Authorization resource definition.
+//
+// Deprecated: azure-native:network/v20220101:ExpressRoutePortAuthorization is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ExpressRoutePortAuthorization to guarantee forwards compatibility.
 type ExpressRoutePortAuthorization struct {
 	pulumi.CustomResourceState
 

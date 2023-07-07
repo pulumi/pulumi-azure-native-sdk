@@ -12,6 +12,8 @@ import (
 )
 
 // ArcSetting details.
+//
+// Deprecated: azure-native:azurestackhci/v20230201:ArcSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230301:ArcSetting to guarantee forwards compatibility.
 type ArcSetting struct {
 	pulumi.CustomResourceState
 

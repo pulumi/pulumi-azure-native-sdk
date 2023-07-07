@@ -12,6 +12,8 @@ import (
 )
 
 // The description of Fhir Service
+//
+// Deprecated: azure-native:healthcareapis/v20221201:FhirService is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:FhirService to guarantee forwards compatibility.
 type FhirService struct {
 	pulumi.CustomResourceState
 

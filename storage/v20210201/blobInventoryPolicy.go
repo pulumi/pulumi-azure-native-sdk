@@ -12,6 +12,8 @@ import (
 )
 
 // The storage account blob inventory policy.
+//
+// Deprecated: azure-native:storage/v20210201:BlobInventoryPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:BlobInventoryPolicy to guarantee forwards compatibility.
 type BlobInventoryPolicy struct {
 	pulumi.CustomResourceState
 

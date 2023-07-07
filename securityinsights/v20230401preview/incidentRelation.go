@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a relation between two resources
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:IncidentRelation is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:IncidentRelation to guarantee forwards compatibility.
 type IncidentRelation struct {
 	pulumi.CustomResourceState
 

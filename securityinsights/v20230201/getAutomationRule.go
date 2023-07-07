@@ -12,7 +12,7 @@ import (
 
 // Gets the automation rule.
 //
-// Deprecated: azure-native:securityinsights/v20230201:AutomationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AutomationRule to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201:AutomationRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:AutomationRule to guarantee forwards compatibility.
 func LookupAutomationRule(ctx *pulumi.Context, args *LookupAutomationRuleArgs, opts ...pulumi.InvokeOption) (*LookupAutomationRuleResult, error) {
 	var rv LookupAutomationRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201:getAutomationRule", args, &rv, opts...)

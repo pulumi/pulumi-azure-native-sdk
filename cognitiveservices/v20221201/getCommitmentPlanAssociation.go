@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the association of the Cognitive Services commitment plan.
+//
+// Deprecated: azure-native:cognitiveservices/v20221201:CommitmentPlanAssociation is being removed in the next major version of this provider. Upgrade to at least azure-native:cognitiveservices/v20230501:CommitmentPlanAssociation to guarantee forwards compatibility.
 func LookupCommitmentPlanAssociation(ctx *pulumi.Context, args *LookupCommitmentPlanAssociationArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanAssociationResult, error) {
 	var rv LookupCommitmentPlanAssociationResult
 	err := ctx.Invoke("azure-native:cognitiveservices/v20221201:getCommitmentPlanAssociation", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // Bastion Host resource.
 //
-// Deprecated: azure-native:network/v20200501:BastionHost is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:BastionHost to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200501:BastionHost is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:BastionHost to guarantee forwards compatibility.
 type BastionHost struct {
 	pulumi.CustomResourceState
 

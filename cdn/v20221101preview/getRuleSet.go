@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
+//
+// Deprecated: azure-native:cdn/v20221101preview:RuleSet is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:RuleSet to guarantee forwards compatibility.
 func LookupRuleSet(ctx *pulumi.Context, args *LookupRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupRuleSetResult, error) {
 	var rv LookupRuleSetResult
 	err := ctx.Invoke("azure-native:cdn/v20221101preview:getRuleSet", args, &rv, opts...)

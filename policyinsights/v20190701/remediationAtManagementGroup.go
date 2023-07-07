@@ -12,6 +12,8 @@ import (
 )
 
 // The remediation definition.
+//
+// Deprecated: azure-native:policyinsights/v20190701:RemediationAtManagementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:policyinsights/v20211001:RemediationAtManagementGroup to guarantee forwards compatibility.
 type RemediationAtManagementGroup struct {
 	pulumi.CustomResourceState
 

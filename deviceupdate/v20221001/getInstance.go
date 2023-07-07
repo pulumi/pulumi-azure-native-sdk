@@ -12,7 +12,7 @@ import (
 
 // Returns instance details for the given instance and account name.
 //
-// Deprecated: azure-native:deviceupdate/v20221001:Instance is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20221201preview:Instance to guarantee forwards compatibility.
+// Deprecated: azure-native:deviceupdate/v20221001:Instance is being removed in the next major version of this provider. Upgrade to at least azure-native:deviceupdate/v20230701:Instance to guarantee forwards compatibility.
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	var rv LookupInstanceResult
 	err := ctx.Invoke("azure-native:deviceupdate/v20221001:getInstance", args, &rv, opts...)

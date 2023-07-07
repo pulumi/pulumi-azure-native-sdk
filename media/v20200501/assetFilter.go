@@ -12,6 +12,8 @@ import (
 )
 
 // An Asset Filter.
+//
+// Deprecated: azure-native:media/v20200501:AssetFilter is being removed in the next major version of this provider. Upgrade to at least azure-native:media/v20230101:AssetFilter to guarantee forwards compatibility.
 type AssetFilter struct {
 	pulumi.CustomResourceState
 

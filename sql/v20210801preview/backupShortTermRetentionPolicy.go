@@ -13,7 +13,7 @@ import (
 
 // A short term retention policy.
 //
-// Deprecated: azure-native:sql/v20210801preview:BackupShortTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:BackupShortTermRetentionPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20210801preview:BackupShortTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:BackupShortTermRetentionPolicy to guarantee forwards compatibility.
 type BackupShortTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 

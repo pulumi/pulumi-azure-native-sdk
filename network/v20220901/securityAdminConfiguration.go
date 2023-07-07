@@ -12,6 +12,8 @@ import (
 )
 
 // Defines the security admin configuration
+//
+// Deprecated: azure-native:network/v20220901:SecurityAdminConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:SecurityAdminConfiguration to guarantee forwards compatibility.
 type SecurityAdminConfiguration struct {
 	pulumi.CustomResourceState
 

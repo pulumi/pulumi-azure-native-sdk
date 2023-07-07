@@ -12,6 +12,8 @@ import (
 )
 
 // Binding resource payload
+//
+// Deprecated: azure-native:appplatform/v20200701:Binding is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:Binding to guarantee forwards compatibility.
 type Binding struct {
 	pulumi.CustomResourceState
 

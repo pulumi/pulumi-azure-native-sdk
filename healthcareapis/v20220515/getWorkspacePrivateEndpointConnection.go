@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the workspace.
+//
+// Deprecated: azure-native:healthcareapis/v20220515:WorkspacePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:WorkspacePrivateEndpointConnection to guarantee forwards compatibility.
 func LookupWorkspacePrivateEndpointConnection(ctx *pulumi.Context, args *LookupWorkspacePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspacePrivateEndpointConnectionResult, error) {
 	var rv LookupWorkspacePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20220515:getWorkspacePrivateEndpointConnection", args, &rv, opts...)

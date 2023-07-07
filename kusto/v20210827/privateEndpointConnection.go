@@ -12,6 +12,8 @@ import (
 )
 
 // A private endpoint connection
+//
+// Deprecated: azure-native:kusto/v20210827:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20221229:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

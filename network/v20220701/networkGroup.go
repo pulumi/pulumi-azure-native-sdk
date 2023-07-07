@@ -13,7 +13,7 @@ import (
 
 // The network group resource
 //
-// Deprecated: azure-native:network/v20220701:NetworkGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:NetworkGroup to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220701:NetworkGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:NetworkGroup to guarantee forwards compatibility.
 type NetworkGroup struct {
 	pulumi.CustomResourceState
 

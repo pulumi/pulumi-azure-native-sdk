@@ -11,6 +11,8 @@ import (
 )
 
 // Get baseboard management controller key set of the provided cluster.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:BmcKeySet is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:BmcKeySet to guarantee forwards compatibility.
 func LookupBmcKeySet(ctx *pulumi.Context, args *LookupBmcKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBmcKeySetResult, error) {
 	var rv LookupBmcKeySetResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getBmcKeySet", args, &rv, opts...)

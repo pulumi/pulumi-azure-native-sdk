@@ -13,7 +13,7 @@ import (
 
 // An application package which represents a particular version of an application.
 //
-// Deprecated: azure-native:batch/v20210601:ApplicationPackage is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20221001:ApplicationPackage to guarantee forwards compatibility.
+// Deprecated: azure-native:batch/v20210601:ApplicationPackage is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20230501:ApplicationPackage to guarantee forwards compatibility.
 type ApplicationPackage struct {
 	pulumi.CustomResourceState
 

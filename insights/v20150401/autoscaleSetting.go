@@ -12,6 +12,8 @@ import (
 )
 
 // The autoscale setting resource.
+//
+// Deprecated: azure-native:insights/v20150401:AutoscaleSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20221001:AutoscaleSetting to guarantee forwards compatibility.
 type AutoscaleSetting struct {
 	pulumi.CustomResourceState
 

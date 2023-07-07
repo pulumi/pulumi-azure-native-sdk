@@ -12,7 +12,7 @@ import (
 
 // Get the policy configuration at the API Operation level.
 //
-// Deprecated: azure-native:apimanagement/v20220401preview:ApiOperationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiOperationPolicy to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20220401preview:ApiOperationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiOperationPolicy to guarantee forwards compatibility.
 func LookupApiOperationPolicy(ctx *pulumi.Context, args *LookupApiOperationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupApiOperationPolicyResult, error) {
 	var rv LookupApiOperationPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220401preview:getApiOperationPolicy", args, &rv, opts...)

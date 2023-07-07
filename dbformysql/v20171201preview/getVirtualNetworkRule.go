@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a virtual network rule.
+//
+// Deprecated: azure-native:dbformysql/v20171201preview:VirtualNetworkRule is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20180601privatepreview:VirtualNetworkRule to guarantee forwards compatibility.
 func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRuleResult, error) {
 	var rv LookupVirtualNetworkRuleResult
 	err := ctx.Invoke("azure-native:dbformysql/v20171201preview:getVirtualNetworkRule", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // An Azure Cosmos DB Gremlin database.
 //
-// Deprecated: azure-native:documentdb/v20210615:GremlinResourceGremlinDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:GremlinResourceGremlinDatabase to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20210615:GremlinResourceGremlinDatabase is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:GremlinResourceGremlinDatabase to guarantee forwards compatibility.
 type GremlinResourceGremlinDatabase struct {
 	pulumi.CustomResourceState
 

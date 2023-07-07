@@ -12,6 +12,8 @@ import (
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
+//
+// Deprecated: azure-native:guestconfiguration/v20200625:GuestConfigurationAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:guestconfiguration/v20220125:GuestConfigurationAssignment to guarantee forwards compatibility.
 type GuestConfigurationAssignment struct {
 	pulumi.CustomResourceState
 

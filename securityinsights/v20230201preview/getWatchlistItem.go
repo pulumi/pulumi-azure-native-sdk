@@ -12,7 +12,7 @@ import (
 
 // Gets a watchlist, without its watchlist items.
 //
-// Deprecated: azure-native:securityinsights/v20230201preview:WatchlistItem is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:WatchlistItem to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20230201preview:WatchlistItem is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:WatchlistItem to guarantee forwards compatibility.
 func LookupWatchlistItem(ctx *pulumi.Context, args *LookupWatchlistItemArgs, opts ...pulumi.InvokeOption) (*LookupWatchlistItemResult, error) {
 	var rv LookupWatchlistItemResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getWatchlistItem", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // Service resource
 //
-// Deprecated: azure-native:appplatform/v20201101preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:Service to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20201101preview:Service is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:Service to guarantee forwards compatibility.
 type Service struct {
 	pulumi.CustomResourceState
 

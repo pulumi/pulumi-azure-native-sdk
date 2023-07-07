@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Database.
+//
+// Deprecated: azure-native:dbforpostgresql/v20171201:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20230301preview:Database to guarantee forwards compatibility.
 type Database struct {
 	pulumi.CustomResourceState
 

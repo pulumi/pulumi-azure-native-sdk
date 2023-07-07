@@ -12,6 +12,8 @@ import (
 )
 
 // Definition of ARM tracked top level resource.
+//
+// Deprecated: azure-native:insights/v20210901preview:DataCollectionEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:insights/v20220601:DataCollectionEndpoint to guarantee forwards compatibility.
 type DataCollectionEndpoint struct {
 	pulumi.CustomResourceState
 

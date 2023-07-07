@@ -14,7 +14,7 @@ import (
 // Response to put/get linked server (with properties) for Redis cache.
 //
 // Deprecated: Version 2017-10-01 will be removed in v2 of the provider.
-// azure-native:cache/v20171001:LinkedServer is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20220601:LinkedServer to guarantee forwards compatibility.
+// azure-native:cache/v20171001:LinkedServer is being removed in the next major version of this provider. Upgrade to at least azure-native:cache/v20230501preview:LinkedServer to guarantee forwards compatibility.
 type LinkedServer struct {
 	pulumi.CustomResourceState
 

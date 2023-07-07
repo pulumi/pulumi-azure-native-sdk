@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a template byt its identifier.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:ContentTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:ContentTemplate to guarantee forwards compatibility.
 func LookupContentTemplate(ctx *pulumi.Context, args *LookupContentTemplateArgs, opts ...pulumi.InvokeOption) (*LookupContentTemplateResult, error) {
 	var rv LookupContentTemplateResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getContentTemplate", args, &rv, opts...)

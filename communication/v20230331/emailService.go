@@ -12,6 +12,8 @@ import (
 )
 
 // A class representing an EmailService resource.
+//
+// Deprecated: azure-native:communication/v20230331:EmailService is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230401preview:EmailService to guarantee forwards compatibility.
 type EmailService struct {
 	pulumi.CustomResourceState
 

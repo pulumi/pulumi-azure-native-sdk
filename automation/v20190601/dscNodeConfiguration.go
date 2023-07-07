@@ -12,6 +12,8 @@ import (
 )
 
 // Definition of the dsc node configuration.
+//
+// Deprecated: azure-native:automation/v20190601:DscNodeConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:DscNodeConfiguration to guarantee forwards compatibility.
 type DscNodeConfiguration struct {
 	pulumi.CustomResourceState
 

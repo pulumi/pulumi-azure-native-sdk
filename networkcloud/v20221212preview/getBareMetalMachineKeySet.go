@@ -11,6 +11,8 @@ import (
 )
 
 // Get bare metal machine key set of the provided cluster.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:BareMetalMachineKeySet is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:BareMetalMachineKeySet to guarantee forwards compatibility.
 func LookupBareMetalMachineKeySet(ctx *pulumi.Context, args *LookupBareMetalMachineKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalMachineKeySetResult, error) {
 	var rv LookupBareMetalMachineKeySetResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getBareMetalMachineKeySet", args, &rv, opts...)

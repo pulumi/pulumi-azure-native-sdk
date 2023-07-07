@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a management lock at the resource group level.
+//
+// Deprecated: azure-native:authorization/v20170401:ManagementLockAtResourceGroupLevel is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20200501:ManagementLockAtResourceGroupLevel to guarantee forwards compatibility.
 func LookupManagementLockAtResourceGroupLevel(ctx *pulumi.Context, args *LookupManagementLockAtResourceGroupLevelArgs, opts ...pulumi.InvokeOption) (*LookupManagementLockAtResourceGroupLevelResult, error) {
 	var rv LookupManagementLockAtResourceGroupLevelResult
 	err := ctx.Invoke("azure-native:authorization/v20170401:getManagementLockAtResourceGroupLevel", args, &rv, opts...)

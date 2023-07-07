@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Gremlin graph.
+//
+// Deprecated: azure-native:documentdb/v20210315:GremlinResourceGremlinGraph is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:GremlinResourceGremlinGraph to guarantee forwards compatibility.
 type GremlinResourceGremlinGraph struct {
 	pulumi.CustomResourceState
 

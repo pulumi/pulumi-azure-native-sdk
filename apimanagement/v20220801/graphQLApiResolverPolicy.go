@@ -12,6 +12,8 @@ import (
 )
 
 // Policy Contract details.
+//
+// Deprecated: azure-native:apimanagement/v20220801:GraphQLApiResolverPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GraphQLApiResolverPolicy to guarantee forwards compatibility.
 type GraphQLApiResolverPolicy struct {
 	pulumi.CustomResourceState
 

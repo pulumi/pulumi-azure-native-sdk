@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: azure-native:logz/v20201001:Monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:logz/v20220101preview:Monitor to guarantee forwards compatibility.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	var rv LookupMonitorResult
 	err := ctx.Invoke("azure-native:logz/v20201001:getMonitor", args, &rv, opts...)

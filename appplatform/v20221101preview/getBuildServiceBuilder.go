@@ -12,7 +12,7 @@ import (
 
 // Get a KPack builder.
 //
-// Deprecated: azure-native:appplatform/v20221101preview:BuildServiceBuilder is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230101preview:BuildServiceBuilder to guarantee forwards compatibility.
+// Deprecated: azure-native:appplatform/v20221101preview:BuildServiceBuilder is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:BuildServiceBuilder to guarantee forwards compatibility.
 func LookupBuildServiceBuilder(ctx *pulumi.Context, args *LookupBuildServiceBuilderArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceBuilderResult, error) {
 	var rv LookupBuildServiceBuilderResult
 	err := ctx.Invoke("azure-native:appplatform/v20221101preview:getBuildServiceBuilder", args, &rv, opts...)

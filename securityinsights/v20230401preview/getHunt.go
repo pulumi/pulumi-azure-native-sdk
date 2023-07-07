@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a hunt, without relations and comments.
+//
+// Deprecated: azure-native:securityinsights/v20230401preview:Hunt is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:Hunt to guarantee forwards compatibility.
 func LookupHunt(ctx *pulumi.Context, args *LookupHuntArgs, opts ...pulumi.InvokeOption) (*LookupHuntResult, error) {
 	var rv LookupHuntResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230401preview:getHunt", args, &rv, opts...)

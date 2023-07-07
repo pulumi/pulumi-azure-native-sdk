@@ -12,6 +12,8 @@ import (
 )
 
 // A SqlServerInstance.
+//
+// Deprecated: azure-native:azurearcdata/v20210601preview:SqlServerInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20230115preview:SqlServerInstance to guarantee forwards compatibility.
 type SqlServerInstance struct {
 	pulumi.CustomResourceState
 

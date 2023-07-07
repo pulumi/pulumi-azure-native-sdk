@@ -12,6 +12,8 @@ import (
 )
 
 // The Private Endpoint Connection resource.
+//
+// Deprecated: azure-native:storage/v20210201:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:storage/v20220901:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

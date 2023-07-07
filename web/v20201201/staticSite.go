@@ -12,6 +12,8 @@ import (
 )
 
 // Static Site ARM resource.
+//
+// Deprecated: azure-native:web/v20201201:StaticSite is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20210201:StaticSite to guarantee forwards compatibility.
 type StaticSite struct {
 	pulumi.CustomResourceState
 

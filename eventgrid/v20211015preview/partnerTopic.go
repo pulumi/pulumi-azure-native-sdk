@@ -12,6 +12,8 @@ import (
 )
 
 // Event Grid Partner Topic.
+//
+// Deprecated: azure-native:eventgrid/v20211015preview:PartnerTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerTopic to guarantee forwards compatibility.
 type PartnerTopic struct {
 	pulumi.CustomResourceState
 

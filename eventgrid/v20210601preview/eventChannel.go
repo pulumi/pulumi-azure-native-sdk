@@ -12,6 +12,8 @@ import (
 )
 
 // Event Channel.
+//
+// Deprecated: azure-native:eventgrid/v20210601preview:EventChannel is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20211015preview:EventChannel to guarantee forwards compatibility.
 type EventChannel struct {
 	pulumi.CustomResourceState
 

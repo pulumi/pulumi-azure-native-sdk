@@ -12,7 +12,7 @@ import (
 
 // Gets the details of the email template specified by its identifier.
 //
-// Deprecated: azure-native:apimanagement/v20210801:EmailTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:EmailTemplate to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210801:EmailTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:EmailTemplate to guarantee forwards compatibility.
 func LookupEmailTemplate(ctx *pulumi.Context, args *LookupEmailTemplateArgs, opts ...pulumi.InvokeOption) (*LookupEmailTemplateResult, error) {
 	var rv LookupEmailTemplateResult
 	err := ctx.Invoke("azure-native:apimanagement/v20210801:getEmailTemplate", args, &rv, opts...)

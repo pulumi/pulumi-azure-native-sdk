@@ -13,7 +13,7 @@ import (
 
 // A single API Management service resource in List or Get response.
 //
-// Deprecated: azure-native:apimanagement/v20210101preview:ApiManagementService is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:ApiManagementService to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20210101preview:ApiManagementService is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiManagementService to guarantee forwards compatibility.
 type ApiManagementService struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ import (
 
 // Represents OfficeIRM (Microsoft Insider Risk Management) data connector.
 //
-// Deprecated: azure-native:securityinsights/v20220401preview:OfficeIRMDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:OfficeIRMDataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220401preview:OfficeIRMDataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:OfficeIRMDataConnector to guarantee forwards compatibility.
 type OfficeIRMDataConnector struct {
 	pulumi.CustomResourceState
 

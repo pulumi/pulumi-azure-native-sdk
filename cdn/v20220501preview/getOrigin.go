@@ -12,7 +12,7 @@ import (
 
 // Gets an existing origin within an endpoint.
 //
-// Deprecated: azure-native:cdn/v20220501preview:Origin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:Origin to guarantee forwards compatibility.
+// Deprecated: azure-native:cdn/v20220501preview:Origin is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Origin to guarantee forwards compatibility.
 func LookupOrigin(ctx *pulumi.Context, args *LookupOriginArgs, opts ...pulumi.InvokeOption) (*LookupOriginResult, error) {
 	var rv LookupOriginResult
 	err := ctx.Invoke("azure-native:cdn/v20220501preview:getOrigin", args, &rv, opts...)

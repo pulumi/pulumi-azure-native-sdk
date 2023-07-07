@@ -12,6 +12,8 @@ import (
 )
 
 // Description of queue Resource.
+//
+// Deprecated: azure-native:servicebus/v20170401:Queue is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:Queue to guarantee forwards compatibility.
 type Queue struct {
 	pulumi.CustomResourceState
 

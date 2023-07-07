@@ -12,6 +12,8 @@ import (
 )
 
 // The HDInsight cluster.
+//
+// Deprecated: azure-native:hdinsight/v20180601preview:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:hdinsight/v20230415preview:Cluster to guarantee forwards compatibility.
 type Cluster struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,8 @@ import (
 )
 
 // A long term retention policy.
+//
+// Deprecated: azure-native:sql/v20220801preview:ManagedInstanceLongTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedInstanceLongTermRetentionPolicy to guarantee forwards compatibility.
 type ManagedInstanceLongTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 

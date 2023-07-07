@@ -12,7 +12,7 @@ import (
 
 // Gets a server encryption protector.
 //
-// Deprecated: azure-native:sql/v20220201preview:EncryptionProtector is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:EncryptionProtector to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20220201preview:EncryptionProtector is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:EncryptionProtector to guarantee forwards compatibility.
 func LookupEncryptionProtector(ctx *pulumi.Context, args *LookupEncryptionProtectorArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionProtectorResult, error) {
 	var rv LookupEncryptionProtectorResult
 	err := ctx.Invoke("azure-native:sql/v20220201preview:getEncryptionProtector", args, &rv, opts...)

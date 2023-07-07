@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a gallery.
+//
+// Deprecated: azure-native:devcenter/v20220901preview:Gallery is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:Gallery to guarantee forwards compatibility.
 type Gallery struct {
 	pulumi.CustomResourceState
 

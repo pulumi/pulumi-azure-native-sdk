@@ -11,6 +11,8 @@ import (
 )
 
 // Returns a label in the given workspace.
+//
+// Deprecated: azure-native:easm/v20220401preview:LabelByWorkspace is being removed in the next major version of this provider. Upgrade to at least azure-native:easm/v20230401preview:LabelByWorkspace to guarantee forwards compatibility.
 func LookupLabelByWorkspace(ctx *pulumi.Context, args *LookupLabelByWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLabelByWorkspaceResult, error) {
 	var rv LookupLabelByWorkspaceResult
 	err := ctx.Invoke("azure-native:easm/v20220401preview:getLabelByWorkspace", args, &rv, opts...)

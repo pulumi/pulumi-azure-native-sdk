@@ -11,6 +11,8 @@ import (
 )
 
 // Gets information about a configuration of server.
+//
+// Deprecated: azure-native:dbformariadb/v20180601:Configuration is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformariadb/v20180601preview:Configuration to guarantee forwards compatibility.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	var rv LookupConfigurationResult
 	err := ctx.Invoke("azure-native:dbformariadb/v20180601:getConfiguration", args, &rv, opts...)

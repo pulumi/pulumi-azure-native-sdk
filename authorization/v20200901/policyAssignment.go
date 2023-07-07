@@ -12,6 +12,8 @@ import (
 )
 
 // The policy assignment.
+//
+// Deprecated: azure-native:authorization/v20200901:PolicyAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:authorization/v20220601:PolicyAssignment to guarantee forwards compatibility.
 type PolicyAssignment struct {
 	pulumi.CustomResourceState
 

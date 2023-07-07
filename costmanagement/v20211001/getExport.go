@@ -12,7 +12,7 @@ import (
 
 // The operation to get the export for the defined scope by export name.
 //
-// Deprecated: azure-native:costmanagement/v20211001:Export is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20221001:Export to guarantee forwards compatibility.
+// Deprecated: azure-native:costmanagement/v20211001:Export is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20230401preview:Export to guarantee forwards compatibility.
 func LookupExport(ctx *pulumi.Context, args *LookupExportArgs, opts ...pulumi.InvokeOption) (*LookupExportResult, error) {
 	var rv LookupExportResult
 	err := ctx.Invoke("azure-native:costmanagement/v20211001:getExport", args, &rv, opts...)

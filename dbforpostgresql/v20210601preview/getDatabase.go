@@ -12,7 +12,7 @@ import (
 
 // Gets information about a database.
 //
-// Deprecated: azure-native:dbforpostgresql/v20210601preview:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20221201:Database to guarantee forwards compatibility.
+// Deprecated: azure-native:dbforpostgresql/v20210601preview:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20230301preview:Database to guarantee forwards compatibility.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20210601preview:getDatabase", args, &rv, opts...)

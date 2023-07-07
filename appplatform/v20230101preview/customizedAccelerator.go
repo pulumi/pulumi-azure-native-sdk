@@ -12,6 +12,8 @@ import (
 )
 
 // Customized accelerator resource
+//
+// Deprecated: azure-native:appplatform/v20230101preview:CustomizedAccelerator is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:CustomizedAccelerator to guarantee forwards compatibility.
 type CustomizedAccelerator struct {
 	pulumi.CustomResourceState
 

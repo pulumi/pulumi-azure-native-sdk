@@ -12,7 +12,7 @@ import (
 
 // Gets the properties of the specified DICOM Service.
 //
-// Deprecated: azure-native:healthcareapis/v20210601preview:DicomService is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20221201:DicomService to guarantee forwards compatibility.
+// Deprecated: azure-native:healthcareapis/v20210601preview:DicomService is being removed in the next major version of this provider. Upgrade to at least azure-native:healthcareapis/v20230228:DicomService to guarantee forwards compatibility.
 func LookupDicomService(ctx *pulumi.Context, args *LookupDicomServiceArgs, opts ...pulumi.InvokeOption) (*LookupDicomServiceResult, error) {
 	var rv LookupDicomServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20210601preview:getDicomService", args, &rv, opts...)

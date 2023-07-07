@@ -12,6 +12,8 @@ import (
 )
 
 // Defines the GuestAgent.
+//
+// Deprecated: azure-native:azurestackhci/v20210901preview:GuestAgent is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20221215preview:GuestAgent to guarantee forwards compatibility.
 type GuestAgent struct {
 	pulumi.CustomResourceState
 

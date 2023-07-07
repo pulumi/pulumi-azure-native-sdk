@@ -12,6 +12,8 @@ import (
 )
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
+//
+// Deprecated: azure-native:databoxedge/v20201201:StorageAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:StorageAccount to guarantee forwards compatibility.
 type StorageAccount struct {
 	pulumi.CustomResourceState
 

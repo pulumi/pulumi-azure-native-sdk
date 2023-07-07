@@ -12,7 +12,7 @@ import (
 
 // Retrieves a dataController resource
 //
-// Deprecated: azure-native:azurearcdata/v20211101:DataController is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20220615preview:DataController to guarantee forwards compatibility.
+// Deprecated: azure-native:azurearcdata/v20211101:DataController is being removed in the next major version of this provider. Upgrade to at least azure-native:azurearcdata/v20230115preview:DataController to guarantee forwards compatibility.
 func LookupDataController(ctx *pulumi.Context, args *LookupDataControllerArgs, opts ...pulumi.InvokeOption) (*LookupDataControllerResult, error) {
 	var rv LookupDataControllerResult
 	err := ctx.Invoke("azure-native:azurearcdata/v20211101:getDataController", args, &rv, opts...)

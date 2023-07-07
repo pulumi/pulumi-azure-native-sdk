@@ -12,6 +12,8 @@ import (
 )
 
 // Friendly Routes name mapping to the any Routes or secret related information.
+//
+// Deprecated: azure-native:cdn/v20221101preview:Route is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Route to guarantee forwards compatibility.
 type Route struct {
 	pulumi.CustomResourceState
 

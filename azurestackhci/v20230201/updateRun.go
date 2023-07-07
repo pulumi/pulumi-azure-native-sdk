@@ -12,6 +12,8 @@ import (
 )
 
 // Details of an Update run
+//
+// Deprecated: azure-native:azurestackhci/v20230201:UpdateRun is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230301:UpdateRun to guarantee forwards compatibility.
 type UpdateRun struct {
 	pulumi.CustomResourceState
 

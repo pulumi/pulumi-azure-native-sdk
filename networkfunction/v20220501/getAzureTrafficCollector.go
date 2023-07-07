@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the specified Azure Traffic Collector in a specified resource group
+//
+// Deprecated: azure-native:networkfunction/v20220501:AzureTrafficCollector is being removed in the next major version of this provider. Upgrade to at least azure-native:networkfunction/v20220801:AzureTrafficCollector to guarantee forwards compatibility.
 func LookupAzureTrafficCollector(ctx *pulumi.Context, args *LookupAzureTrafficCollectorArgs, opts ...pulumi.InvokeOption) (*LookupAzureTrafficCollectorResult, error) {
 	var rv LookupAzureTrafficCollectorResult
 	err := ctx.Invoke("azure-native:networkfunction/v20220501:getAzureTrafficCollector", args, &rv, opts...)

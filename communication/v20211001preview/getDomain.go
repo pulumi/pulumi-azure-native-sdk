@@ -11,6 +11,8 @@ import (
 )
 
 // Get the Domains resource and its properties.
+//
+// Deprecated: azure-native:communication/v20211001preview:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20220701preview:Domain to guarantee forwards compatibility.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	var rv LookupDomainResult
 	err := ctx.Invoke("azure-native:communication/v20211001preview:getDomain", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure SQL managed instance.
+//
+// Deprecated: azure-native:sql/v20201101preview:ManagedInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20210201preview:ManagedInstance to guarantee forwards compatibility.
 type ManagedInstance struct {
 	pulumi.CustomResourceState
 

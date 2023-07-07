@@ -12,6 +12,8 @@ import (
 )
 
 // Single Namespace item in List or Get Operation
+//
+// Deprecated: azure-native:eventhub/v20170401:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:eventhub/v20221001preview:Namespace to guarantee forwards compatibility.
 type Namespace struct {
 	pulumi.CustomResourceState
 

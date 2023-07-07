@@ -12,6 +12,8 @@ import (
 )
 
 // Network security rule.
+//
+// Deprecated: azure-native:network/v20220901:SecurityRule is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:SecurityRule to guarantee forwards compatibility.
 type SecurityRule struct {
 	pulumi.CustomResourceState
 

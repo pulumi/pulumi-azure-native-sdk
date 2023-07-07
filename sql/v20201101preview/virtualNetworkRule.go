@@ -12,6 +12,8 @@ import (
 )
 
 // A virtual network rule.
+//
+// Deprecated: azure-native:sql/v20201101preview:VirtualNetworkRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:VirtualNetworkRule to guarantee forwards compatibility.
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Gets a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name
 //
-// Deprecated: azure-native:network/v20220501:ConnectivityConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:ConnectivityConfiguration to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220501:ConnectivityConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:ConnectivityConfiguration to guarantee forwards compatibility.
 func LookupConnectivityConfiguration(ctx *pulumi.Context, args *LookupConnectivityConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConnectivityConfigurationResult, error) {
 	var rv LookupConnectivityConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20220501:getConnectivityConfiguration", args, &rv, opts...)

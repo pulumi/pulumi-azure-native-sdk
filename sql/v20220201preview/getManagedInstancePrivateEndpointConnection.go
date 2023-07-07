@@ -12,7 +12,7 @@ import (
 
 // Gets a private endpoint connection.
 //
-// Deprecated: azure-native:sql/v20220201preview:ManagedInstancePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ManagedInstancePrivateEndpointConnection to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20220201preview:ManagedInstancePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedInstancePrivateEndpointConnection to guarantee forwards compatibility.
 func LookupManagedInstancePrivateEndpointConnection(ctx *pulumi.Context, args *LookupManagedInstancePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstancePrivateEndpointConnectionResult, error) {
 	var rv LookupManagedInstancePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:sql/v20220201preview:getManagedInstancePrivateEndpointConnection", args, &rv, opts...)

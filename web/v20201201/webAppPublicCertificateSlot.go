@@ -12,6 +12,8 @@ import (
 )
 
 // Public certificate object
+//
+// Deprecated: azure-native:web/v20201201:WebAppPublicCertificateSlot is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:WebAppPublicCertificateSlot to guarantee forwards compatibility.
 type WebAppPublicCertificateSlot struct {
 	pulumi.CustomResourceState
 

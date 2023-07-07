@@ -12,6 +12,8 @@ import (
 )
 
 // IP firewall rule
+//
+// Deprecated: azure-native:synapse/v20210301:IpFirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:IpFirewallRule to guarantee forwards compatibility.
 type IpFirewallRule struct {
 	pulumi.CustomResourceState
 

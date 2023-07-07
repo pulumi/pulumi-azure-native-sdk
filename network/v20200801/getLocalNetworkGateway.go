@@ -12,7 +12,7 @@ import (
 
 // Gets the specified local network gateway in a resource group.
 //
-// Deprecated: azure-native:network/v20200801:LocalNetworkGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:LocalNetworkGateway to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20200801:LocalNetworkGateway is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:LocalNetworkGateway to guarantee forwards compatibility.
 func LookupLocalNetworkGateway(ctx *pulumi.Context, args *LookupLocalNetworkGatewayArgs, opts ...pulumi.InvokeOption) (*LookupLocalNetworkGatewayResult, error) {
 	var rv LookupLocalNetworkGatewayResult
 	err := ctx.Invoke("azure-native:network/v20200801:getLocalNetworkGateway", args, &rv, opts...)

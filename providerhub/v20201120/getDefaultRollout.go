@@ -11,6 +11,8 @@ import (
 )
 
 // Gets the default rollout details.
+//
+// Deprecated: azure-native:providerhub/v20201120:DefaultRollout is being removed in the next major version of this provider. Upgrade to at least azure-native:providerhub/v20210901preview:DefaultRollout to guarantee forwards compatibility.
 func LookupDefaultRollout(ctx *pulumi.Context, args *LookupDefaultRolloutArgs, opts ...pulumi.InvokeOption) (*LookupDefaultRolloutResult, error) {
 	var rv LookupDefaultRolloutResult
 	err := ctx.Invoke("azure-native:providerhub/v20201120:getDefaultRollout", args, &rv, opts...)

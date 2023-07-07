@@ -12,6 +12,8 @@ import (
 )
 
 // Description of a namespace resource.
+//
+// Deprecated: azure-native:relay/v20170401:Namespace is being removed in the next major version of this provider. Upgrade to at least azure-native:relay/v20211101:Namespace to guarantee forwards compatibility.
 type Namespace struct {
 	pulumi.CustomResourceState
 

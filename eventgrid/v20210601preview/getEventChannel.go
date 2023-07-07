@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of an event channel.
+//
+// Deprecated: azure-native:eventgrid/v20210601preview:EventChannel is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20211015preview:EventChannel to guarantee forwards compatibility.
 func LookupEventChannel(ctx *pulumi.Context, args *LookupEventChannelArgs, opts ...pulumi.InvokeOption) (*LookupEventChannelResult, error) {
 	var rv LookupEventChannelResult
 	err := ctx.Invoke("azure-native:eventgrid/v20210601preview:getEventChannel", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Deprecated: azure-native:machinelearningservices/v20220501:EnvironmentVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20221201preview:EnvironmentVersion to guarantee forwards compatibility.
+// Deprecated: azure-native:machinelearningservices/v20220501:EnvironmentVersion is being removed in the next major version of this provider. Upgrade to at least azure-native:machinelearningservices/v20230401preview:EnvironmentVersion to guarantee forwards compatibility.
 func LookupEnvironmentVersion(ctx *pulumi.Context, args *LookupEnvironmentVersionArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentVersionResult, error) {
 	var rv LookupEnvironmentVersionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220501:getEnvironmentVersion", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Gets a database.
 //
-// Deprecated: azure-native:sql/v20210501preview:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:Database to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20210501preview:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:Database to guarantee forwards compatibility.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("azure-native:sql/v20210501preview:getDatabase", args, &rv, opts...)

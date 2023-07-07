@@ -13,7 +13,7 @@ import (
 
 // Describes a Virtual Machine run command.
 //
-// Deprecated: azure-native:compute/v20210701:VirtualMachineRunCommandByVirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20221101:VirtualMachineRunCommandByVirtualMachine to guarantee forwards compatibility.
+// Deprecated: azure-native:compute/v20210701:VirtualMachineRunCommandByVirtualMachine is being removed in the next major version of this provider. Upgrade to at least azure-native:compute/v20230301:VirtualMachineRunCommandByVirtualMachine to guarantee forwards compatibility.
 type VirtualMachineRunCommandByVirtualMachine struct {
 	pulumi.CustomResourceState
 

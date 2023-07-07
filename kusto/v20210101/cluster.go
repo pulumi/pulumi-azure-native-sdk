@@ -12,6 +12,8 @@ import (
 )
 
 // Class representing a Kusto cluster.
+//
+// Deprecated: azure-native:kusto/v20210101:Cluster is being removed in the next major version of this provider. Upgrade to at least azure-native:kusto/v20220707:Cluster to guarantee forwards compatibility.
 type Cluster struct {
 	pulumi.CustomResourceState
 

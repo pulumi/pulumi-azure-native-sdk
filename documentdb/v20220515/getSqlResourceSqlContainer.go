@@ -12,7 +12,7 @@ import (
 
 // Gets the SQL container under an existing Azure Cosmos DB database account.
 //
-// Deprecated: azure-native:documentdb/v20220515:SqlResourceSqlContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20220815preview:SqlResourceSqlContainer to guarantee forwards compatibility.
+// Deprecated: azure-native:documentdb/v20220515:SqlResourceSqlContainer is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:SqlResourceSqlContainer to guarantee forwards compatibility.
 func LookupSqlResourceSqlContainer(ctx *pulumi.Context, args *LookupSqlResourceSqlContainerArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlContainerResult, error) {
 	var rv LookupSqlResourceSqlContainerResult
 	err := ctx.Invoke("azure-native:documentdb/v20220515:getSqlResourceSqlContainer", args, &rv, opts...)

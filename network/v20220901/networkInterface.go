@@ -12,6 +12,8 @@ import (
 )
 
 // A network interface in a resource group.
+//
+// Deprecated: azure-native:network/v20220901:NetworkInterface is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:NetworkInterface to guarantee forwards compatibility.
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 

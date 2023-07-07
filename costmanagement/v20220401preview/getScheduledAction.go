@@ -11,6 +11,8 @@ import (
 )
 
 // Get the private scheduled action by name.
+//
+// Deprecated: azure-native:costmanagement/v20220401preview:ScheduledAction is being removed in the next major version of this provider. Upgrade to at least azure-native:costmanagement/v20230401preview:ScheduledAction to guarantee forwards compatibility.
 func LookupScheduledAction(ctx *pulumi.Context, args *LookupScheduledActionArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionResult, error) {
 	var rv LookupScheduledActionResult
 	err := ctx.Invoke("azure-native:costmanagement/v20220401preview:getScheduledAction", args, &rv, opts...)

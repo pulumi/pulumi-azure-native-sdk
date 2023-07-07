@@ -12,6 +12,8 @@ import (
 )
 
 // Get the update summaries for the cluster
+//
+// Deprecated: azure-native:azurestackhci/v20230201:UpdateSummary is being removed in the next major version of this provider. Upgrade to at least azure-native:azurestackhci/v20230301:UpdateSummary to guarantee forwards compatibility.
 type UpdateSummary struct {
 	pulumi.CustomResourceState
 

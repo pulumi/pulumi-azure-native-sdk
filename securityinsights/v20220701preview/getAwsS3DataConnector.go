@@ -12,7 +12,7 @@ import (
 
 // Gets a data connector.
 //
-// Deprecated: azure-native:securityinsights/v20220701preview:AwsS3DataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:AwsS3DataConnector to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220701preview:AwsS3DataConnector is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:AwsS3DataConnector to guarantee forwards compatibility.
 func LookupAwsS3DataConnector(ctx *pulumi.Context, args *LookupAwsS3DataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsS3DataConnectorResult, error) {
 	var rv LookupAwsS3DataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220701preview:getAwsS3DataConnector", args, &rv, opts...)

@@ -11,6 +11,8 @@ import (
 )
 
 // Get the resource and its properties.
+//
+// Deprecated: azure-native:webpubsub/v20230201:WebPubSub is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230301preview:WebPubSub to guarantee forwards compatibility.
 func LookupWebPubSub(ctx *pulumi.Context, args *LookupWebPubSubArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubResult, error) {
 	var rv LookupWebPubSubResult
 	err := ctx.Invoke("azure-native:webpubsub/v20230201:getWebPubSub", args, &rv, opts...)

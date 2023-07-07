@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing remediation at management group scope.
+//
+// Deprecated: azure-native:policyinsights/v20190701:RemediationAtManagementGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:policyinsights/v20211001:RemediationAtManagementGroup to guarantee forwards compatibility.
 func LookupRemediationAtManagementGroup(ctx *pulumi.Context, args *LookupRemediationAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtManagementGroupResult, error) {
 	var rv LookupRemediationAtManagementGroupResult
 	err := ctx.Invoke("azure-native:policyinsights/v20190701:getRemediationAtManagementGroup", args, &rv, opts...)

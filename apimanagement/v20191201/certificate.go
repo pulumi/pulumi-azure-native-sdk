@@ -13,7 +13,7 @@ import (
 
 // Certificate details.
 //
-// Deprecated: azure-native:apimanagement/v20191201:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220801:Certificate to guarantee forwards compatibility.
+// Deprecated: azure-native:apimanagement/v20191201:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Certificate to guarantee forwards compatibility.
 type Certificate struct {
 	pulumi.CustomResourceState
 

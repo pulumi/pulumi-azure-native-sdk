@@ -12,6 +12,8 @@ import (
 )
 
 // Contains information about a certificate.
+//
+// Deprecated: azure-native:batch/v20210101:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:batch/v20220601:Certificate to guarantee forwards compatibility.
 type Certificate struct {
 	pulumi.CustomResourceState
 

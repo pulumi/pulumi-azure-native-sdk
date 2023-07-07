@@ -12,6 +12,8 @@ import (
 )
 
 // Remote Private Endpoint Connection ARM resource.
+//
+// Deprecated: azure-native:web/v20201201:AppServiceEnvironmentPrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:web/v20220901:AppServiceEnvironmentPrivateEndpointConnection to guarantee forwards compatibility.
 type AppServiceEnvironmentPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 
 // Gets details of the Source Control Configuration.
 //
-// Deprecated: azure-native:kubernetesconfiguration/v20200701preview:SourceControlConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20221101:SourceControlConfiguration to guarantee forwards compatibility.
+// Deprecated: azure-native:kubernetesconfiguration/v20200701preview:SourceControlConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20230501:SourceControlConfiguration to guarantee forwards compatibility.
 func LookupSourceControlConfiguration(ctx *pulumi.Context, args *LookupSourceControlConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlConfigurationResult, error) {
 	var rv LookupSourceControlConfigurationResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20200701preview:getSourceControlConfiguration", args, &rv, opts...)

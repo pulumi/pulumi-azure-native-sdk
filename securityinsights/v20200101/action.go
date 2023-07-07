@@ -12,6 +12,8 @@ import (
 )
 
 // Action for alert rule.
+//
+// Deprecated: azure-native:securityinsights/v20200101:Action is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20210301preview:Action to guarantee forwards compatibility.
 type Action struct {
 	pulumi.CustomResourceState
 

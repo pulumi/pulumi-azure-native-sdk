@@ -12,7 +12,7 @@ import (
 
 // Gets a devcenter.
 //
-// Deprecated: azure-native:devcenter/v20221012preview:DevCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20221111preview:DevCenter to guarantee forwards compatibility.
+// Deprecated: azure-native:devcenter/v20221012preview:DevCenter is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:DevCenter to guarantee forwards compatibility.
 func LookupDevCenter(ctx *pulumi.Context, args *LookupDevCenterArgs, opts ...pulumi.InvokeOption) (*LookupDevCenterResult, error) {
 	var rv LookupDevCenterResult
 	err := ctx.Invoke("azure-native:devcenter/v20221012preview:getDevCenter", args, &rv, opts...)

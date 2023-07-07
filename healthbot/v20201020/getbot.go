@@ -14,7 +14,6 @@ import (
 // Bot resource definition
 //
 // Deprecated: Version 2020-10-20 will be removed in v2 of the provider.
-// azure-native:healthbot/v20201020:getbot is being removed in the next major version of this provider. Upgrade to at least azure-native:healthbot/v20201020preview:getbot to guarantee forwards compatibility.
 type Getbot struct {
 	pulumi.CustomResourceState
 

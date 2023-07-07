@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a gallery
+//
+// Deprecated: azure-native:devcenter/v20220901preview:Gallery is being removed in the next major version of this provider. Upgrade to at least azure-native:devcenter/v20230401:Gallery to guarantee forwards compatibility.
 func LookupGallery(ctx *pulumi.Context, args *LookupGalleryArgs, opts ...pulumi.InvokeOption) (*LookupGalleryResult, error) {
 	var rv LookupGalleryResult
 	err := ctx.Invoke("azure-native:devcenter/v20220901preview:getGallery", args, &rv, opts...)

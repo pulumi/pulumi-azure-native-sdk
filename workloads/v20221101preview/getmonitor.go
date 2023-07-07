@@ -11,8 +11,6 @@ import (
 )
 
 // Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
-//
-// Deprecated: azure-native:workloads/v20221101preview:monitor is being removed in the next major version of this provider. Upgrade to at least azure-native:workloads/v20230401:monitor to guarantee forwards compatibility.
 func Getmonitor(ctx *pulumi.Context, args *GetmonitorArgs, opts ...pulumi.InvokeOption) (*GetmonitorResult, error) {
 	var rv GetmonitorResult
 	err := ctx.Invoke("azure-native:workloads/v20221101preview:getmonitor", args, &rv, opts...)

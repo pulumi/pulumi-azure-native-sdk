@@ -12,6 +12,8 @@ import (
 )
 
 // Contract details.
+//
+// Deprecated: azure-native:apimanagement/v20220801:ApiTagDescription is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiTagDescription to guarantee forwards compatibility.
 type ApiTagDescription struct {
 	pulumi.CustomResourceState
 

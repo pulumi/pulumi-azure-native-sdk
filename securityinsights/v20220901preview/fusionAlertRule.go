@@ -13,7 +13,7 @@ import (
 
 // Represents Fusion alert rule.
 //
-// Deprecated: azure-native:securityinsights/v20220901preview:FusionAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230401preview:FusionAlertRule to guarantee forwards compatibility.
+// Deprecated: azure-native:securityinsights/v20220901preview:FusionAlertRule is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:FusionAlertRule to guarantee forwards compatibility.
 type FusionAlertRule struct {
 	pulumi.CustomResourceState
 

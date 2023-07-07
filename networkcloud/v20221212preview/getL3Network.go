@@ -11,6 +11,8 @@ import (
 )
 
 // Get properties of the provided layer 3 (L3) network.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:L3Network is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:L3Network to guarantee forwards compatibility.
 func LookupL3Network(ctx *pulumi.Context, args *LookupL3NetworkArgs, opts ...pulumi.InvokeOption) (*LookupL3NetworkResult, error) {
 	var rv LookupL3NetworkResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getL3Network", args, &rv, opts...)

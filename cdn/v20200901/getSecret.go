@@ -11,6 +11,8 @@ import (
 )
 
 // Gets an existing Secret within a profile.
+//
+// Deprecated: azure-native:cdn/v20200901:Secret is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:Secret to guarantee forwards compatibility.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
 	var rv LookupSecretResult
 	err := ctx.Invoke("azure-native:cdn/v20200901:getSecret", args, &rv, opts...)

@@ -12,6 +12,8 @@ import (
 )
 
 // Definition of the connection.
+//
+// Deprecated: azure-native:automation/v20190601:Connection is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Connection to guarantee forwards compatibility.
 type Connection struct {
 	pulumi.CustomResourceState
 

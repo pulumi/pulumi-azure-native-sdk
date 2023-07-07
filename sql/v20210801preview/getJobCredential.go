@@ -12,7 +12,7 @@ import (
 
 // Gets a jobs credential.
 //
-// Deprecated: azure-native:sql/v20210801preview:JobCredential is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:JobCredential to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20210801preview:JobCredential is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:JobCredential to guarantee forwards compatibility.
 func LookupJobCredential(ctx *pulumi.Context, args *LookupJobCredentialArgs, opts ...pulumi.InvokeOption) (*LookupJobCredentialResult, error) {
 	var rv LookupJobCredentialResult
 	err := ctx.Invoke("azure-native:sql/v20210801preview:getJobCredential", args, &rv, opts...)

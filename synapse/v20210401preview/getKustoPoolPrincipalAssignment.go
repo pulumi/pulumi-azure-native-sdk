@@ -11,6 +11,8 @@ import (
 )
 
 // Gets a Kusto pool principalAssignment.
+//
+// Deprecated: azure-native:synapse/v20210401preview:KustoPoolPrincipalAssignment is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:KustoPoolPrincipalAssignment to guarantee forwards compatibility.
 func LookupKustoPoolPrincipalAssignment(ctx *pulumi.Context, args *LookupKustoPoolPrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupKustoPoolPrincipalAssignmentResult, error) {
 	var rv LookupKustoPoolPrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:synapse/v20210401preview:getKustoPoolPrincipalAssignment", args, &rv, opts...)

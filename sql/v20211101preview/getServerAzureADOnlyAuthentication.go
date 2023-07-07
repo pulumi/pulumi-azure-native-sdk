@@ -12,7 +12,7 @@ import (
 
 // Gets a specific Azure Active Directory only authentication property.
 //
-// Deprecated: azure-native:sql/v20211101preview:ServerAzureADOnlyAuthentication is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20220801preview:ServerAzureADOnlyAuthentication to guarantee forwards compatibility.
+// Deprecated: azure-native:sql/v20211101preview:ServerAzureADOnlyAuthentication is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ServerAzureADOnlyAuthentication to guarantee forwards compatibility.
 func LookupServerAzureADOnlyAuthentication(ctx *pulumi.Context, args *LookupServerAzureADOnlyAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupServerAzureADOnlyAuthenticationResult, error) {
 	var rv LookupServerAzureADOnlyAuthenticationResult
 	err := ctx.Invoke("azure-native:sql/v20211101preview:getServerAzureADOnlyAuthentication", args, &rv, opts...)

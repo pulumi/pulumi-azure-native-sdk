@@ -12,6 +12,8 @@ import (
 )
 
 // An Azure Cosmos DB Cassandra table.
+//
+// Deprecated: azure-native:documentdb/v20210315:CassandraResourceCassandraTable is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20230315preview:CassandraResourceCassandraTable to guarantee forwards compatibility.
 type CassandraResourceCassandraTable struct {
 	pulumi.CustomResourceState
 

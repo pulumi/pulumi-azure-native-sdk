@@ -13,7 +13,7 @@ import (
 
 // Dapr Component.
 //
-// Deprecated: azure-native:app/v20220601preview:DaprComponent is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20221001:DaprComponent to guarantee forwards compatibility.
+// Deprecated: azure-native:app/v20220601preview:DaprComponent is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:DaprComponent to guarantee forwards compatibility.
 type DaprComponent struct {
 	pulumi.CustomResourceState
 

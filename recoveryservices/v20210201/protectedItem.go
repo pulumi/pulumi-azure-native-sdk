@@ -12,6 +12,8 @@ import (
 )
 
 // Base class for backup items.
+//
+// Deprecated: azure-native:recoveryservices/v20210201:ProtectedItem is being removed in the next major version of this provider. Upgrade to at least azure-native:recoveryservices/v20230401:ProtectedItem to guarantee forwards compatibility.
 type ProtectedItem struct {
 	pulumi.CustomResourceState
 

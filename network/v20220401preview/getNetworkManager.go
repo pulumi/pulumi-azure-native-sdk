@@ -12,7 +12,7 @@ import (
 
 // Gets the specified Network Manager.
 //
-// Deprecated: azure-native:network/v20220401preview:NetworkManager is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20220901:NetworkManager to guarantee forwards compatibility.
+// Deprecated: azure-native:network/v20220401preview:NetworkManager is being removed in the next major version of this provider. Upgrade to at least azure-native:network/v20230201:NetworkManager to guarantee forwards compatibility.
 func LookupNetworkManager(ctx *pulumi.Context, args *LookupNetworkManagerArgs, opts ...pulumi.InvokeOption) (*LookupNetworkManagerResult, error) {
 	var rv LookupNetworkManagerResult
 	err := ctx.Invoke("azure-native:network/v20220401preview:getNetworkManager", args, &rv, opts...)

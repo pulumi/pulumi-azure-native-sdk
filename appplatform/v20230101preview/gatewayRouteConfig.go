@@ -12,6 +12,8 @@ import (
 )
 
 // Spring Cloud Gateway route config resource
+//
+// Deprecated: azure-native:appplatform/v20230101preview:GatewayRouteConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:appplatform/v20230501preview:GatewayRouteConfig to guarantee forwards compatibility.
 type GatewayRouteConfig struct {
 	pulumi.CustomResourceState
 

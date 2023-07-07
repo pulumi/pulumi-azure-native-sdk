@@ -13,7 +13,7 @@ import (
 // Gets an existing origin group within an endpoint.
 //
 // Deprecated: Version 2020-03-31 will be removed in v2 of the provider.
-// azure-native:cdn/v20200331:OriginGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20221101preview:OriginGroup to guarantee forwards compatibility.
+// azure-native:cdn/v20200331:OriginGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:cdn/v20230501:OriginGroup to guarantee forwards compatibility.
 func LookupOriginGroup(ctx *pulumi.Context, args *LookupOriginGroupArgs, opts ...pulumi.InvokeOption) (*LookupOriginGroupResult, error) {
 	var rv LookupOriginGroupResult
 	err := ctx.Invoke("azure-native:cdn/v20200331:getOriginGroup", args, &rv, opts...)

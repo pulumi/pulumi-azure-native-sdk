@@ -11,6 +11,8 @@ import (
 )
 
 // Get metrics configuration of the provided cluster.
+//
+// Deprecated: azure-native:networkcloud/v20221212preview:MetricsConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:networkcloud/v20230501preview:MetricsConfiguration to guarantee forwards compatibility.
 func LookupMetricsConfiguration(ctx *pulumi.Context, args *LookupMetricsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupMetricsConfigurationResult, error) {
 	var rv LookupMetricsConfigurationResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getMetricsConfiguration", args, &rv, opts...)

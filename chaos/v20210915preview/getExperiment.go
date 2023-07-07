@@ -11,6 +11,8 @@ import (
 )
 
 // Get a Experiment resource.
+//
+// Deprecated: azure-native:chaos/v20210915preview:Experiment is being removed in the next major version of this provider. Upgrade to at least azure-native:chaos/v20230415preview:Experiment to guarantee forwards compatibility.
 func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...pulumi.InvokeOption) (*LookupExperimentResult, error) {
 	var rv LookupExperimentResult
 	err := ctx.Invoke("azure-native:chaos/v20210915preview:getExperiment", args, &rv, opts...)

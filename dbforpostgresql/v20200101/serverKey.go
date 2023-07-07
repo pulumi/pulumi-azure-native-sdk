@@ -12,6 +12,8 @@ import (
 )
 
 // A PostgreSQL Server key.
+//
+// Deprecated: azure-native:dbforpostgresql/v20200101:ServerKey is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20200214privatepreview:ServerKey to guarantee forwards compatibility.
 type ServerKey struct {
 	pulumi.CustomResourceState
 

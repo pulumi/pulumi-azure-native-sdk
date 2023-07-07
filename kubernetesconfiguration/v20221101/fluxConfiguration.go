@@ -12,6 +12,8 @@ import (
 )
 
 // The Flux Configuration object returned in Get & Put response.
+//
+// Deprecated: azure-native:kubernetesconfiguration/v20221101:FluxConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetesconfiguration/v20230501:FluxConfiguration to guarantee forwards compatibility.
 type FluxConfiguration struct {
 	pulumi.CustomResourceState
 

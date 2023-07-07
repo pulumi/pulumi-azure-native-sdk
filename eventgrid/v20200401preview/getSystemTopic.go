@@ -12,7 +12,7 @@ import (
 
 // Get properties of a system topic.
 //
-// Deprecated: azure-native:eventgrid/v20200401preview:SystemTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20220615:SystemTopic to guarantee forwards compatibility.
+// Deprecated: azure-native:eventgrid/v20200401preview:SystemTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:SystemTopic to guarantee forwards compatibility.
 func LookupSystemTopic(ctx *pulumi.Context, args *LookupSystemTopicArgs, opts ...pulumi.InvokeOption) (*LookupSystemTopicResult, error) {
 	var rv LookupSystemTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20200401preview:getSystemTopic", args, &rv, opts...)

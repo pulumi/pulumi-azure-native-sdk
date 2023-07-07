@@ -12,6 +12,8 @@ import (
 )
 
 // Representation of a managed Cassandra cluster.
+//
+// Deprecated: azure-native:documentdb/v20210301preview:CassandraCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:documentdb/v20210701preview:CassandraCluster to guarantee forwards compatibility.
 type CassandraCluster struct {
 	pulumi.CustomResourceState
 

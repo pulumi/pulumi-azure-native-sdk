@@ -12,6 +12,8 @@ import (
 )
 
 // Definition of the variable.
+//
+// Deprecated: azure-native:automation/v20190601:Variable is being removed in the next major version of this provider. Upgrade to at least azure-native:automation/v20220808:Variable to guarantee forwards compatibility.
 type Variable struct {
 	pulumi.CustomResourceState
 
