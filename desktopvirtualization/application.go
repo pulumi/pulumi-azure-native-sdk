@@ -12,7 +12,7 @@ import (
 )
 
 // Schema for Application properties.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +46,8 @@ type Application struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// Specifies whether to show the RemoteApp program in the RD Web Access server.
 	ShowInPortal pulumi.BoolPtrOutput `pulumi:"showInPortal"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -324,6 +326,11 @@ func (o ApplicationOutput) ObjectId() pulumi.StringOutput {
 // Specifies whether to show the RemoteApp program in the RD Web Access server.
 func (o ApplicationOutput) ShowInPortal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.ShowInPortal }).(pulumi.BoolPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ApplicationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Application) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

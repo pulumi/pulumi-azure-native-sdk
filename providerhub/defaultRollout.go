@@ -12,7 +12,7 @@ import (
 )
 
 // Default rollout definition.
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20
 type DefaultRollout struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +20,8 @@ type DefaultRollout struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the rollout.
 	Properties DefaultRolloutResponsePropertiesOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -144,6 +146,11 @@ func (o DefaultRolloutOutput) Name() pulumi.StringOutput {
 // Properties of the rollout.
 func (o DefaultRolloutOutput) Properties() DefaultRolloutResponsePropertiesOutput {
 	return o.ApplyT(func(v *DefaultRollout) DefaultRolloutResponsePropertiesOutput { return v.Properties }).(DefaultRolloutResponsePropertiesOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o DefaultRolloutOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DefaultRollout) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

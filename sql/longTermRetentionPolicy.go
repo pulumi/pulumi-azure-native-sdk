@@ -12,7 +12,7 @@ import (
 )
 
 // A long term retention policy.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type LongTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +82,9 @@ func NewLongTermRetentionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:LongTermRetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:LongTermRetentionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

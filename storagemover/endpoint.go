@@ -12,7 +12,7 @@ import (
 )
 
 // The Endpoint resource, which contains information about file sources and targets.
-// API Version: 2022-07-01-preview.
+// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2022-07-01-preview
 type Endpoint struct {
 	pulumi.CustomResourceState
 

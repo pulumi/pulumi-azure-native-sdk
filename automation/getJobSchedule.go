@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the job schedule identified by job schedule name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2022-08-08.
 func LookupJobSchedule(ctx *pulumi.Context, args *LookupJobScheduleArgs, opts ...pulumi.InvokeOption) (*LookupJobScheduleResult, error) {
 	var rv LookupJobScheduleResult
 	err := ctx.Invoke("azure-native:automation:getJobSchedule", args, &rv, opts...)

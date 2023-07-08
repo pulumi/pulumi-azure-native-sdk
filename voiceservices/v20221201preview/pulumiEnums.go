@@ -10,44 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Available platform types.
-type CommunicationsPlatform string
-
-const (
-	CommunicationsPlatformOperatorConnect  = CommunicationsPlatform("OperatorConnect")
-	CommunicationsPlatformTeamsPhoneMobile = CommunicationsPlatform("TeamsPhoneMobile")
-)
-
-// How to connect back to the operator network, e.g. MAPS
-type Connectivity string
-
-const (
-	// This deployment connects to the operator network using a Public IP address, e.g. when using MAPS
-	ConnectivityPublicAddress = Connectivity("PublicAddress")
-)
-
-// How to handle 911 calls
-type E911Type string
-
-const (
-	// Emergency calls are not handled different from other calls
-	E911TypeStandard = E911Type("Standard")
-	// Emergency calls are routed directly to the ESRP
-	E911TypeDirectToEsrp = E911Type("DirectToEsrp")
-)
-
-// The voice codecs expected for communication with Teams.
-type TeamsCodecs string
-
-const (
-	TeamsCodecsPCMA     = TeamsCodecs("PCMA")
-	TeamsCodecsPCMU     = TeamsCodecs("PCMU")
-	TeamsCodecsG722     = TeamsCodecs("G722")
-	TeamsCodecs_G722_2  = TeamsCodecs("G722_2")
-	TeamsCodecs_SILK_8  = TeamsCodecs("SILK_8")
-	TeamsCodecs_SILK_16 = TeamsCodecs("SILK_16")
-)
-
 // Purpose of this test line, e.g. automated or manual testing
 type TestLinePurpose string
 

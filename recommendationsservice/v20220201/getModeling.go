@@ -11,8 +11,6 @@ import (
 )
 
 // Returns Modeling resources for a given name.
-//
-// Deprecated: azure-native:recommendationsservice/v20220201:Modeling is being removed in the next major version of this provider. Upgrade to at least azure-native:recommendationsservice/v20220301preview:Modeling to guarantee forwards compatibility.
 func LookupModeling(ctx *pulumi.Context, args *LookupModelingArgs, opts ...pulumi.InvokeOption) (*LookupModelingResult, error) {
 	var rv LookupModelingResult
 	err := ctx.Invoke("azure-native:recommendationsservice/v20220201:getModeling", args, &rv, opts...)

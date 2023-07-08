@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the information about the network resource with the given name. The information include the description and other properties of the network.
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview.
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
 	var rv LookupNetworkResult
 	err := ctx.Invoke("azure-native:servicefabricmesh:getNetwork", args, &rv, opts...)

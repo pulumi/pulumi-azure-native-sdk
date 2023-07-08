@@ -11,7 +11,7 @@ import (
 )
 
 // List the two keys used to publish to a topic.
-// API Version: 2020-06-01.
+// Azure REST API version: 2022-06-15.
 func ListTopicSharedAccessKeys(ctx *pulumi.Context, args *ListTopicSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListTopicSharedAccessKeysResult, error) {
 	var rv ListTopicSharedAccessKeysResult
 	err := ctx.Invoke("azure-native:eventgrid:listTopicSharedAccessKeys", args, &rv, opts...)

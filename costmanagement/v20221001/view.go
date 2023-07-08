@@ -26,7 +26,7 @@ type View struct {
 	// Has definition for data in this report config.
 	DataSet ReportConfigDatasetResponsePtrOutput `pulumi:"dataSet"`
 	// Date range of the current view.
-	DateRange pulumi.StringOutput `pulumi:"dateRange"`
+	DateRange pulumi.StringPtrOutput `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -91,6 +91,12 @@ func NewView(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20221005preview:View"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230301:View"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230401preview:View"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource View
@@ -131,6 +137,8 @@ type viewArgs struct {
 	Chart *string `pulumi:"chart"`
 	// Has definition for data in this report config.
 	DataSet *ReportConfigDataset `pulumi:"dataSet"`
+	// Date range of the current view.
+	DateRange *string `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName *string `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -163,6 +171,8 @@ type ViewArgs struct {
 	Chart pulumi.StringPtrInput
 	// Has definition for data in this report config.
 	DataSet ReportConfigDatasetPtrInput
+	// Date range of the current view.
+	DateRange pulumi.StringPtrInput
 	// User input name of the view. Required.
 	DisplayName pulumi.StringPtrInput
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -250,8 +260,8 @@ func (o ViewOutput) DataSet() ReportConfigDatasetResponsePtrOutput {
 }
 
 // Date range of the current view.
-func (o ViewOutput) DateRange() pulumi.StringOutput {
-	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.DateRange }).(pulumi.StringOutput)
+func (o ViewOutput) DateRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.DateRange }).(pulumi.StringPtrOutput)
 }
 
 // User input name of the view. Required.

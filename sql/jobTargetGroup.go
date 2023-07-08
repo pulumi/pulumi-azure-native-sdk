@@ -12,7 +12,7 @@ import (
 )
 
 // A group of job targets.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type JobTargetGroup struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +79,9 @@ func NewJobTargetGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:JobTargetGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:JobTargetGroup"),
 		},
 	})
 	opts = append(opts, aliases)

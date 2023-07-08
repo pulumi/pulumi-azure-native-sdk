@@ -18,12 +18,20 @@ const (
 	DomainJoinTypeAzureADJoin       = DomainJoinType("AzureADJoin")
 )
 
-// Indicates whether or not this scheduled task is enabled.
-type EnableStatus string
+// Defines whether this Environment Type can be used in this Project.
+type EnvironmentTypeEnableStatus string
 
 const (
-	EnableStatusEnabled  = EnableStatus("Enabled")
-	EnableStatusDisabled = EnableStatus("Disabled")
+	EnvironmentTypeEnableStatusEnabled  = EnvironmentTypeEnableStatus("Enabled")
+	EnvironmentTypeEnableStatusDisabled = EnvironmentTypeEnableStatus("Disabled")
+)
+
+// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
+type HibernateSupport string
+
+const (
+	HibernateSupportDisabled = HibernateSupport("Disabled")
+	HibernateSupportEnabled  = HibernateSupport("Enabled")
 )
 
 // Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
@@ -49,6 +57,14 @@ const (
 	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
 	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
 	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned, UserAssigned")
+)
+
+// Indicates whether or not this scheduled task is enabled.
+type ScheduleEnableStatus string
+
+const (
+	ScheduleEnableStatusEnabled  = ScheduleEnableStatus("Enabled")
+	ScheduleEnableStatusDisabled = ScheduleEnableStatus("Disabled")
 )
 
 // The frequency of this scheduled task.
@@ -231,6 +247,14 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
+
+// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+type StopOnDisconnectEnableStatus string
+
+const (
+	StopOnDisconnectEnableStatusEnabled  = StopOnDisconnectEnableStatus("Enabled")
+	StopOnDisconnectEnableStatusDisabled = StopOnDisconnectEnableStatus("Disabled")
+)
 
 func init() {
 	pulumi.RegisterOutputType(SkuTierOutput{})

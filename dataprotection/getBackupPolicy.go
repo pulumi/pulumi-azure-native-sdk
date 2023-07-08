@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a backup policy belonging to a backup vault
-// API Version: 2021-01-01.
+// Azure REST API version: 2023-01-01.
 func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPolicyResult, error) {
 	var rv LookupBackupPolicyResult
 	err := ctx.Invoke("azure-native:dataprotection:getBackupPolicy", args, &rv, opts...)
@@ -23,7 +23,7 @@ func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts 
 
 type LookupBackupPolicyArgs struct {
 	BackupPolicyName string `pulumi:"backupPolicyName"`
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the backup vault.
 	VaultName string `pulumi:"vaultName"`
@@ -58,7 +58,7 @@ func LookupBackupPolicyOutput(ctx *pulumi.Context, args LookupBackupPolicyOutput
 
 type LookupBackupPolicyOutputArgs struct {
 	BackupPolicyName pulumi.StringInput `pulumi:"backupPolicyName"`
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the backup vault.
 	VaultName pulumi.StringInput `pulumi:"vaultName"`

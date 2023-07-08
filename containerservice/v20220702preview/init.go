@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,24 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:containerservice/v20220702preview:AgentPool":
-		r = &AgentPool{}
 	case "azure-native:containerservice/v20220702preview:Fleet":
 		r = &Fleet{}
 	case "azure-native:containerservice/v20220702preview:FleetMember":
 		r = &FleetMember{}
-	case "azure-native:containerservice/v20220702preview:MaintenanceConfiguration":
-		r = &MaintenanceConfiguration{}
-	case "azure-native:containerservice/v20220702preview:ManagedCluster":
-		r = &ManagedCluster{}
-	case "azure-native:containerservice/v20220702preview:ManagedClusterSnapshot":
-		r = &ManagedClusterSnapshot{}
-	case "azure-native:containerservice/v20220702preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:containerservice/v20220702preview:Snapshot":
-		r = &Snapshot{}
-	case "azure-native:containerservice/v20220702preview:TrustedAccessRoleBinding":
-		r = &TrustedAccessRoleBinding{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

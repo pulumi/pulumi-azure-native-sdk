@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified virtual network gateway by resource group.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupVirtualNetworkGateway(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayResult, error) {
 	var rv LookupVirtualNetworkGatewayResult
 	err := ctx.Invoke("azure-native:network:getVirtualNetworkGateway", args, &rv, opts...)
@@ -32,12 +32,22 @@ type LookupVirtualNetworkGatewayArgs struct {
 type LookupVirtualNetworkGatewayResult struct {
 	// ActiveActive flag.
 	ActiveActive *bool `pulumi:"activeActive"`
+	// Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet
+	AdminState *string `pulumi:"adminState"`
+	// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
+	AllowRemoteVnetTraffic *bool `pulumi:"allowRemoteVnetTraffic"`
+	// Configures this gateway to accept traffic from remote Virtual WAN networks.
+	AllowVirtualWanTraffic *bool `pulumi:"allowVirtualWanTraffic"`
 	// Virtual network gateway's BGP speaker settings.
 	BgpSettings *BgpSettingsResponse `pulumi:"bgpSettings"`
 	// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
 	CustomRoutes *AddressSpaceResponse `pulumi:"customRoutes"`
+	// disableIPSecReplayProtection flag.
+	DisableIPSecReplayProtection *bool `pulumi:"disableIPSecReplayProtection"`
 	// Whether BGP is enabled for this virtual network gateway or not.
 	EnableBgp *bool `pulumi:"enableBgp"`
+	// EnableBgpRouteTranslationForNat flag.
+	EnableBgpRouteTranslationForNat *bool `pulumi:"enableBgpRouteTranslationForNat"`
 	// Whether dns forwarding is enabled or not.
 	EnableDnsForwarding *bool `pulumi:"enableDnsForwarding"`
 	// Whether private IP needs to be enabled on this gateway for connections or not.
@@ -60,6 +70,8 @@ type LookupVirtualNetworkGatewayResult struct {
 	Location *string `pulumi:"location"`
 	// Resource name.
 	Name string `pulumi:"name"`
+	// NatRules for virtual network gateway.
+	NatRules []VirtualNetworkGatewayNatRuleResponse `pulumi:"natRules"`
 	// The provisioning state of the virtual network gateway resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource GUID property of the virtual network gateway resource.
@@ -72,6 +84,8 @@ type LookupVirtualNetworkGatewayResult struct {
 	Type string `pulumi:"type"`
 	// Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
 	VNetExtendedLocationResourceId *string `pulumi:"vNetExtendedLocationResourceId"`
+	// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
+	VirtualNetworkGatewayPolicyGroups []VirtualNetworkGatewayPolicyGroupResponse `pulumi:"virtualNetworkGatewayPolicyGroups"`
 	// The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
 	VpnClientConfiguration *VpnClientConfigurationResponse `pulumi:"vpnClientConfiguration"`
 	// The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
@@ -124,6 +138,21 @@ func (o LookupVirtualNetworkGatewayResultOutput) ActiveActive() pulumi.BoolPtrOu
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *bool { return v.ActiveActive }).(pulumi.BoolPtrOutput)
 }
 
+// Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet
+func (o LookupVirtualNetworkGatewayResultOutput) AdminState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *string { return v.AdminState }).(pulumi.StringPtrOutput)
+}
+
+// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
+func (o LookupVirtualNetworkGatewayResultOutput) AllowRemoteVnetTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *bool { return v.AllowRemoteVnetTraffic }).(pulumi.BoolPtrOutput)
+}
+
+// Configures this gateway to accept traffic from remote Virtual WAN networks.
+func (o LookupVirtualNetworkGatewayResultOutput) AllowVirtualWanTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *bool { return v.AllowVirtualWanTraffic }).(pulumi.BoolPtrOutput)
+}
+
 // Virtual network gateway's BGP speaker settings.
 func (o LookupVirtualNetworkGatewayResultOutput) BgpSettings() BgpSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *BgpSettingsResponse { return v.BgpSettings }).(BgpSettingsResponsePtrOutput)
@@ -134,9 +163,19 @@ func (o LookupVirtualNetworkGatewayResultOutput) CustomRoutes() AddressSpaceResp
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *AddressSpaceResponse { return v.CustomRoutes }).(AddressSpaceResponsePtrOutput)
 }
 
+// disableIPSecReplayProtection flag.
+func (o LookupVirtualNetworkGatewayResultOutput) DisableIPSecReplayProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *bool { return v.DisableIPSecReplayProtection }).(pulumi.BoolPtrOutput)
+}
+
 // Whether BGP is enabled for this virtual network gateway or not.
 func (o LookupVirtualNetworkGatewayResultOutput) EnableBgp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *bool { return v.EnableBgp }).(pulumi.BoolPtrOutput)
+}
+
+// EnableBgpRouteTranslationForNat flag.
+func (o LookupVirtualNetworkGatewayResultOutput) EnableBgpRouteTranslationForNat() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *bool { return v.EnableBgpRouteTranslationForNat }).(pulumi.BoolPtrOutput)
 }
 
 // Whether dns forwarding is enabled or not.
@@ -196,6 +235,11 @@ func (o LookupVirtualNetworkGatewayResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// NatRules for virtual network gateway.
+func (o LookupVirtualNetworkGatewayResultOutput) NatRules() VirtualNetworkGatewayNatRuleResponseArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) []VirtualNetworkGatewayNatRuleResponse { return v.NatRules }).(VirtualNetworkGatewayNatRuleResponseArrayOutput)
+}
+
 // The provisioning state of the virtual network gateway resource.
 func (o LookupVirtualNetworkGatewayResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -224,6 +268,13 @@ func (o LookupVirtualNetworkGatewayResultOutput) Type() pulumi.StringOutput {
 // Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
 func (o LookupVirtualNetworkGatewayResultOutput) VNetExtendedLocationResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *string { return v.VNetExtendedLocationResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
+func (o LookupVirtualNetworkGatewayResultOutput) VirtualNetworkGatewayPolicyGroups() VirtualNetworkGatewayPolicyGroupResponseArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) []VirtualNetworkGatewayPolicyGroupResponse {
+		return v.VirtualNetworkGatewayPolicyGroups
+	}).(VirtualNetworkGatewayPolicyGroupResponseArrayOutput)
 }
 
 // The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.

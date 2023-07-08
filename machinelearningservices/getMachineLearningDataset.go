@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Dataset by name.
-// API Version: 2020-05-01-preview.
+// Azure REST API version: 2020-05-01-preview.
 func LookupMachineLearningDataset(ctx *pulumi.Context, args *LookupMachineLearningDatasetArgs, opts ...pulumi.InvokeOption) (*LookupMachineLearningDatasetResult, error) {
 	var rv LookupMachineLearningDatasetResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getMachineLearningDataset", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the managed OpenShift cluster with a specified resource group and name.
-// API Version: 2019-04-30.
+// Azure REST API version: 2019-10-27-preview.
 func LookupOpenShiftManagedCluster(ctx *pulumi.Context, args *LookupOpenShiftManagedClusterArgs, opts ...pulumi.InvokeOption) (*LookupOpenShiftManagedClusterResult, error) {
 	var rv LookupOpenShiftManagedClusterResult
 	err := ctx.Invoke("azure-native:containerservice:getOpenShiftManagedCluster", args, &rv, opts...)
@@ -44,6 +44,8 @@ type LookupOpenShiftManagedClusterResult struct {
 	Location string `pulumi:"location"`
 	// Configuration for OpenShift master VMs.
 	MasterPoolProfile *OpenShiftManagedClusterMasterPoolProfileResponse `pulumi:"masterPoolProfile"`
+	// Configures Log Analytics integration.
+	MonitorProfile *OpenShiftManagedClusterMonitorProfileResponse `pulumi:"monitorProfile"`
 	// Resource name
 	Name string `pulumi:"name"`
 	// Configuration for OpenShift networking.
@@ -54,8 +56,10 @@ type LookupOpenShiftManagedClusterResult struct {
 	Plan *PurchasePlanResponse `pulumi:"plan"`
 	// The current deployment or provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Service generated FQDN for OpenShift API server.
+	// Service generated FQDN or private IP for OpenShift API server.
 	PublicHostname string `pulumi:"publicHostname"`
+	// Allows node rotation
+	RefreshCluster *bool `pulumi:"refreshCluster"`
 	// Configuration for OpenShift router(s).
 	RouterProfiles []OpenShiftRouterProfileResponse `pulumi:"routerProfiles"`
 	// Resource tags
@@ -155,6 +159,13 @@ func (o LookupOpenShiftManagedClusterResultOutput) MasterPoolProfile() OpenShift
 	}).(OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput)
 }
 
+// Configures Log Analytics integration.
+func (o LookupOpenShiftManagedClusterResultOutput) MonitorProfile() OpenShiftManagedClusterMonitorProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupOpenShiftManagedClusterResult) *OpenShiftManagedClusterMonitorProfileResponse {
+		return v.MonitorProfile
+	}).(OpenShiftManagedClusterMonitorProfileResponsePtrOutput)
+}
+
 // Resource name
 func (o LookupOpenShiftManagedClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenShiftManagedClusterResult) string { return v.Name }).(pulumi.StringOutput)
@@ -180,9 +191,14 @@ func (o LookupOpenShiftManagedClusterResultOutput) ProvisioningState() pulumi.St
 	return o.ApplyT(func(v LookupOpenShiftManagedClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Service generated FQDN for OpenShift API server.
+// Service generated FQDN or private IP for OpenShift API server.
 func (o LookupOpenShiftManagedClusterResultOutput) PublicHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenShiftManagedClusterResult) string { return v.PublicHostname }).(pulumi.StringOutput)
+}
+
+// Allows node rotation
+func (o LookupOpenShiftManagedClusterResultOutput) RefreshCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupOpenShiftManagedClusterResult) *bool { return v.RefreshCluster }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration for OpenShift router(s).

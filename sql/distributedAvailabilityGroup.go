@@ -12,7 +12,7 @@ import (
 )
 
 // Distributed availability group between box and Sql Managed Instance.
-// API Version: 2021-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2021-05-01-preview
 type DistributedAvailabilityGroup struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +76,9 @@ func NewDistributedAvailabilityGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:DistributedAvailabilityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:DistributedAvailabilityGroup"),
 		},
 	})
 	opts = append(opts, aliases)

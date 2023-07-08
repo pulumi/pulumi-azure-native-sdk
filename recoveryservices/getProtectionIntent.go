@@ -12,7 +12,7 @@ import (
 
 // Provides the details of the protection intent up item. This is an asynchronous operation. To know the status of the operation,
 // call the GetItemOperationResult API.
-// API Version: 2021-02-01.
+// Azure REST API version: 2023-04-01.
 func LookupProtectionIntent(ctx *pulumi.Context, args *LookupProtectionIntentArgs, opts ...pulumi.InvokeOption) (*LookupProtectionIntentResult, error) {
 	var rv LookupProtectionIntentResult
 	err := ctx.Invoke("azure-native:recoveryservices:getProtectionIntent", args, &rv, opts...)

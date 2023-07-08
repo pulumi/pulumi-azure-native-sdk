@@ -11,7 +11,7 @@ import (
 )
 
 // Get the details for a specific student in the specified lab by student alias
-// API Version: 2021-12-01-preview.
+// Azure REST API version: 2021-12-01-preview.
 func LookupStudent(ctx *pulumi.Context, args *LookupStudentArgs, opts ...pulumi.InvokeOption) (*LookupStudentResult, error) {
 	var rv LookupStudentResult
 	err := ctx.Invoke("azure-native:education:getStudent", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a server DNS alias.
-// API Version: 2021-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupManagedServerDnsAlias(ctx *pulumi.Context, args *LookupManagedServerDnsAliasArgs, opts ...pulumi.InvokeOption) (*LookupManagedServerDnsAliasResult, error) {
 	var rv LookupManagedServerDnsAliasResult
 	err := ctx.Invoke("azure-native:sql:getManagedServerDnsAlias", args, &rv, opts...)

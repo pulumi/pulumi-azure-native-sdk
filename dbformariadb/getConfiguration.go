@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about a configuration of server.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	var rv LookupConfigurationResult
 	err := ctx.Invoke("azure-native:dbformariadb:getConfiguration", args, &rv, opts...)

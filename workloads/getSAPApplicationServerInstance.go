@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
-// API Version: 2021-12-01-preview.
+// Azure REST API version: 2023-04-01.
 func LookupSAPApplicationServerInstance(ctx *pulumi.Context, args *LookupSAPApplicationServerInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPApplicationServerInstanceResult, error) {
 	var rv LookupSAPApplicationServerInstanceResult
 	err := ctx.Invoke("azure-native:workloads:getSAPApplicationServerInstance", args, &rv, opts...)
@@ -54,6 +54,8 @@ type LookupSAPApplicationServerInstanceResult struct {
 	KernelPatch string `pulumi:"kernelPatch"`
 	//  Application server instance SAP Kernel Version.
 	KernelVersion string `pulumi:"kernelVersion"`
+	// The Load Balancer details such as LoadBalancer ID attached to Application Server Virtual Machines
+	LoadBalancerDetails LoadBalancerDetailsResponse `pulumi:"loadBalancerDetails"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -62,8 +64,6 @@ type LookupSAPApplicationServerInstanceResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Defines the SAP Instance status.
 	Status string `pulumi:"status"`
-	// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
-	StorageDetails []StorageInformationResponse `pulumi:"storageDetails"`
 	// Application server Subnet.
 	Subnet string `pulumi:"subnet"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -72,8 +72,8 @@ type LookupSAPApplicationServerInstanceResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// The virtual machine.
-	VirtualMachineId string `pulumi:"virtualMachineId"`
+	// The list of virtual machines.
+	VmDetails []ApplicationServerVmDetailsResponse `pulumi:"vmDetails"`
 }
 
 func LookupSAPApplicationServerInstanceOutput(ctx *pulumi.Context, args LookupSAPApplicationServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSAPApplicationServerInstanceResultOutput {
@@ -172,6 +172,13 @@ func (o LookupSAPApplicationServerInstanceResultOutput) KernelVersion() pulumi.S
 	return o.ApplyT(func(v LookupSAPApplicationServerInstanceResult) string { return v.KernelVersion }).(pulumi.StringOutput)
 }
 
+// The Load Balancer details such as LoadBalancer ID attached to Application Server Virtual Machines
+func (o LookupSAPApplicationServerInstanceResultOutput) LoadBalancerDetails() LoadBalancerDetailsResponseOutput {
+	return o.ApplyT(func(v LookupSAPApplicationServerInstanceResult) LoadBalancerDetailsResponse {
+		return v.LoadBalancerDetails
+	}).(LoadBalancerDetailsResponseOutput)
+}
+
 // The geo-location where the resource lives
 func (o LookupSAPApplicationServerInstanceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPApplicationServerInstanceResult) string { return v.Location }).(pulumi.StringOutput)
@@ -190,11 +197,6 @@ func (o LookupSAPApplicationServerInstanceResultOutput) ProvisioningState() pulu
 // Defines the SAP Instance status.
 func (o LookupSAPApplicationServerInstanceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPApplicationServerInstanceResult) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
-func (o LookupSAPApplicationServerInstanceResultOutput) StorageDetails() StorageInformationResponseArrayOutput {
-	return o.ApplyT(func(v LookupSAPApplicationServerInstanceResult) []StorageInformationResponse { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
 }
 
 // Application server Subnet.
@@ -217,9 +219,11 @@ func (o LookupSAPApplicationServerInstanceResultOutput) Type() pulumi.StringOutp
 	return o.ApplyT(func(v LookupSAPApplicationServerInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The virtual machine.
-func (o LookupSAPApplicationServerInstanceResultOutput) VirtualMachineId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSAPApplicationServerInstanceResult) string { return v.VirtualMachineId }).(pulumi.StringOutput)
+// The list of virtual machines.
+func (o LookupSAPApplicationServerInstanceResultOutput) VmDetails() ApplicationServerVmDetailsResponseArrayOutput {
+	return o.ApplyT(func(v LookupSAPApplicationServerInstanceResult) []ApplicationServerVmDetailsResponse {
+		return v.VmDetails
+	}).(ApplicationServerVmDetailsResponseArrayOutput)
 }
 
 func init() {

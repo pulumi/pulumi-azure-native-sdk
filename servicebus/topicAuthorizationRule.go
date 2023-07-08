@@ -12,15 +12,19 @@ import (
 )
 
 // Description of a namespace authorization rule.
-// API Version: 2017-04-01.
+// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01
 type TopicAuthorizationRule struct {
 	pulumi.CustomResourceState
 
-	// Resource name
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The rights associated with the rule.
 	Rights pulumi.StringArrayOutput `pulumi:"rights"`
-	// Resource type
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -112,7 +116,7 @@ type topicAuthorizationRuleArgs struct {
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The rights associated with the rule.
-	Rights []AccessRights `pulumi:"rights"`
+	Rights []string `pulumi:"rights"`
 	// The topic name.
 	TopicName string `pulumi:"topicName"`
 }
@@ -126,7 +130,7 @@ type TopicAuthorizationRuleArgs struct {
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// The rights associated with the rule.
-	Rights AccessRightsArrayInput
+	Rights pulumi.StringArrayInput
 	// The topic name.
 	TopicName pulumi.StringInput
 }
@@ -168,7 +172,12 @@ func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutputWithContext(
 	return o
 }
 
-// Resource name
+// The geo-location where the resource lives
+func (o TopicAuthorizationRuleOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicAuthorizationRule) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o TopicAuthorizationRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TopicAuthorizationRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -178,7 +187,12 @@ func (o TopicAuthorizationRuleOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TopicAuthorizationRule) pulumi.StringArrayOutput { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
-// Resource type
+// The system meta data relating to this resource.
+func (o TopicAuthorizationRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *TopicAuthorizationRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o TopicAuthorizationRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TopicAuthorizationRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a buildpack binding by name.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupBuildpackBinding(ctx *pulumi.Context, args *LookupBuildpackBindingArgs, opts ...pulumi.InvokeOption) (*LookupBuildpackBindingResult, error) {
 	var rv LookupBuildpackBindingResult
 	err := ctx.Invoke("azure-native:appplatform:getBuildpackBinding", args, &rv, opts...)

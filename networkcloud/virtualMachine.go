@@ -11,12 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
 	// The name of the administrator to which the ssh public keys will be added into the authorized keys.
 	AdminUsername pulumi.StringOutput `pulumi:"adminUsername"`
+	// The cluster availability zone containing this virtual machine.
+	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The resource ID of the bare metal machine the virtual machine has landed to.
 	BareMetalMachineId pulumi.StringOutput `pulumi:"bareMetalMachineId"`
 	// Selects the boot method for the virtual machine.
@@ -122,6 +124,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:VirtualMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230501preview:VirtualMachine"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -287,6 +292,11 @@ func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Cont
 // The name of the administrator to which the ssh public keys will be added into the authorized keys.
 func (o VirtualMachineOutput) AdminUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AdminUsername }).(pulumi.StringOutput)
+}
+
+// The cluster availability zone containing this virtual machine.
+func (o VirtualMachineOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // The resource ID of the bare metal machine the virtual machine has landed to.

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a VirtualWAN.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupVirtualWan(ctx *pulumi.Context, args *LookupVirtualWanArgs, opts ...pulumi.InvokeOption) (*LookupVirtualWanResult, error) {
 	var rv LookupVirtualWanResult
 	err := ctx.Invoke("azure-native:network:getVirtualWan", args, &rv, opts...)

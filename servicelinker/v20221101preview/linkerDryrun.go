@@ -41,6 +41,12 @@ func NewLinkerDryrun(ctx *pulumi.Context,
 	if args.ResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceUri'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:servicelinker:LinkerDryrun"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource LinkerDryrun
 	err := ctx.RegisterResource("azure-native:servicelinker/v20221101preview:LinkerDryrun", name, args, &resource, opts...)
 	if err != nil {

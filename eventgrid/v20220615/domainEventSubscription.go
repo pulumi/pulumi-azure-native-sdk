@@ -12,8 +12,6 @@ import (
 )
 
 // Event Subscription
-//
-// Deprecated: azure-native:eventgrid/v20220615:DomainEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:DomainEventSubscription to guarantee forwards compatibility.
 type DomainEventSubscription struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +77,9 @@ func NewDomainEventSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:DomainEventSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:DomainEventSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

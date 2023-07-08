@@ -12,7 +12,7 @@ import (
 )
 
 // An image resource belonging to a catalog resource.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview
 type Image struct {
 	pulumi.CustomResourceState
 

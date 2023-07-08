@@ -11,7 +11,7 @@ import (
 )
 
 // List labs for the user.
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15.
 func ListGlobalUserLabs(ctx *pulumi.Context, args *ListGlobalUserLabsArgs, opts ...pulumi.InvokeOption) (*ListGlobalUserLabsResult, error) {
 	var rv ListGlobalUserLabsResult
 	err := ctx.Invoke("azure-native:labservices:listGlobalUserLabs", args, &rv, opts...)

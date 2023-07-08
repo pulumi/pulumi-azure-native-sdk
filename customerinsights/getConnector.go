@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a connector in the hub.
-// API Version: 2017-04-26.
+// Azure REST API version: 2017-04-26.
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	var rv LookupConnectorResult
 	err := ctx.Invoke("azure-native:customerinsights:getConnector", args, &rv, opts...)

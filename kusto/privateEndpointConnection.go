@@ -12,7 +12,7 @@ import (
 )
 
 // A private endpoint connection
-// API Version: 2021-08-27.
+// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-08-27
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20221229:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230502:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

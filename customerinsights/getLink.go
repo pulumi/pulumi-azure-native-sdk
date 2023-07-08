@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a link in the hub.
-// API Version: 2017-04-26.
+// Azure REST API version: 2017-04-26.
 func LookupLink(ctx *pulumi.Context, args *LookupLinkArgs, opts ...pulumi.InvokeOption) (*LookupLinkResult, error) {
 	var rv LookupLinkResult
 	err := ctx.Invoke("azure-native:customerinsights:getLink", args, &rv, opts...)

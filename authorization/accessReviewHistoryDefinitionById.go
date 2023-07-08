@@ -11,7 +11,7 @@ import (
 )
 
 // Access Review History Definition.
-// API Version: 2021-11-16-preview.
+// Azure REST API version: 2021-12-01-preview. Prior API version in Azure Native 1.x: 2021-11-16-preview
 type AccessReviewHistoryDefinitionById struct {
 	pulumi.CustomResourceState
 

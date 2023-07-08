@@ -12,7 +12,7 @@ import (
 )
 
 // Resource representation of a workflow
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-10-11-preview. Prior API version in Azure Native 1.x: 2022-04-01-preview
 type Workflow struct {
 	pulumi.CustomResourceState
 
@@ -20,24 +20,48 @@ type Workflow struct {
 	Acr ACRResponsePtrOutput `pulumi:"acr"`
 	// The Azure Kubernetes Cluster Resource the application will be deployed to.
 	AksResourceId pulumi.StringPtrOutput `pulumi:"aksResourceId"`
+	// The name of the app.
+	AppName pulumi.StringPtrOutput `pulumi:"appName"`
 	// Determines the authorization status of requests.
 	AuthStatus pulumi.StringOutput `pulumi:"authStatus"`
 	// Repository Branch Name
-	BranchName           pulumi.StringPtrOutput                `pulumi:"branchName"`
+	BranchName pulumi.StringPtrOutput `pulumi:"branchName"`
+	// The version of the language image used for building the code in the generated dockerfile.
+	BuilderVersion       pulumi.StringPtrOutput                `pulumi:"builderVersion"`
 	DeploymentProperties DeploymentPropertiesResponsePtrOutput `pulumi:"deploymentProperties"`
 	// Path to Dockerfile Build Context within the repository.
 	DockerBuildContext pulumi.StringPtrOutput `pulumi:"dockerBuildContext"`
 	// Path to the Dockerfile within the repository.
-	Dockerfile      pulumi.StringPtrOutput       `pulumi:"dockerfile"`
+	Dockerfile pulumi.StringPtrOutput `pulumi:"dockerfile"`
+	// The mode of generation to be used for generating Dockerfiles.
+	DockerfileGenerationMode pulumi.StringPtrOutput `pulumi:"dockerfileGenerationMode"`
+	// The directory to output the generated Dockerfile to.
+	DockerfileOutputDirectory pulumi.StringPtrOutput `pulumi:"dockerfileOutputDirectory"`
+	// The programming language used.
+	GenerationLanguage pulumi.StringPtrOutput `pulumi:"generationLanguage"`
+	// The name of the image to be generated.
+	ImageName pulumi.StringPtrOutput `pulumi:"imageName"`
+	// The tag to apply to the generated image.
+	ImageTag pulumi.StringPtrOutput `pulumi:"imageTag"`
+	// The version of the language image used for execution in the generated dockerfile.
+	LanguageVersion pulumi.StringPtrOutput       `pulumi:"languageVersion"`
 	LastWorkflowRun WorkflowRunResponsePtrOutput `pulumi:"lastWorkflowRun"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The mode of generation to be used for generating Manifest.
+	ManifestGenerationMode pulumi.StringPtrOutput `pulumi:"manifestGenerationMode"`
+	// The directory to output the generated manifests to.
+	ManifestOutputDirectory pulumi.StringPtrOutput `pulumi:"manifestOutputDirectory"`
+	// Determines the type of manifests to be generated.
+	ManifestType pulumi.StringPtrOutput `pulumi:"manifestType"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Kubernetes namespace the application is deployed to.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The fields needed for OIDC with GitHub.
 	OidcCredentials GitHubWorkflowProfileResponseOidcCredentialsPtrOutput `pulumi:"oidcCredentials"`
+	// The port the application is exposed on.
+	Port pulumi.StringPtrOutput `pulumi:"port"`
 	// The status of the Pull Request submitted against the users repository.
 	PrStatus pulumi.StringOutput `pulumi:"prStatus"`
 	// The URL to the Pull Request submitted against the users repository.
@@ -111,19 +135,44 @@ type workflowArgs struct {
 	Acr *ACR `pulumi:"acr"`
 	// The Azure Kubernetes Cluster Resource the application will be deployed to.
 	AksResourceId *string `pulumi:"aksResourceId"`
+	// The name of the app.
+	AppName *string `pulumi:"appName"`
 	// Repository Branch Name
-	BranchName           *string               `pulumi:"branchName"`
+	BranchName *string `pulumi:"branchName"`
+	// The version of the language image used for building the code in the generated dockerfile.
+	BuilderVersion       *string               `pulumi:"builderVersion"`
 	DeploymentProperties *DeploymentProperties `pulumi:"deploymentProperties"`
 	// Path to Dockerfile Build Context within the repository.
 	DockerBuildContext *string `pulumi:"dockerBuildContext"`
 	// Path to the Dockerfile within the repository.
 	Dockerfile *string `pulumi:"dockerfile"`
+	// The mode of generation to be used for generating Dockerfiles.
+	DockerfileGenerationMode *string `pulumi:"dockerfileGenerationMode"`
+	// The directory to output the generated Dockerfile to.
+	DockerfileOutputDirectory *string `pulumi:"dockerfileOutputDirectory"`
+	// The programming language used.
+	GenerationLanguage *string `pulumi:"generationLanguage"`
+	// The name of the image to be generated.
+	ImageName *string `pulumi:"imageName"`
+	// The tag to apply to the generated image.
+	ImageTag *string `pulumi:"imageTag"`
+	// The version of the language image used for execution in the generated dockerfile.
+	LanguageVersion *string      `pulumi:"languageVersion"`
+	LastWorkflowRun *WorkflowRun `pulumi:"lastWorkflowRun"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// The mode of generation to be used for generating Manifest.
+	ManifestGenerationMode *string `pulumi:"manifestGenerationMode"`
+	// The directory to output the generated manifests to.
+	ManifestOutputDirectory *string `pulumi:"manifestOutputDirectory"`
+	// Determines the type of manifests to be generated.
+	ManifestType *string `pulumi:"manifestType"`
 	// Kubernetes namespace the application is deployed to.
 	Namespace *string `pulumi:"namespace"`
 	// The fields needed for OIDC with GitHub.
 	OidcCredentials *GitHubWorkflowProfileOidcCredentials `pulumi:"oidcCredentials"`
+	// The port the application is exposed on.
+	Port *string `pulumi:"port"`
 	// Repository Name
 	RepositoryName *string `pulumi:"repositoryName"`
 	// Repository Owner
@@ -142,19 +191,44 @@ type WorkflowArgs struct {
 	Acr ACRPtrInput
 	// The Azure Kubernetes Cluster Resource the application will be deployed to.
 	AksResourceId pulumi.StringPtrInput
+	// The name of the app.
+	AppName pulumi.StringPtrInput
 	// Repository Branch Name
-	BranchName           pulumi.StringPtrInput
+	BranchName pulumi.StringPtrInput
+	// The version of the language image used for building the code in the generated dockerfile.
+	BuilderVersion       pulumi.StringPtrInput
 	DeploymentProperties DeploymentPropertiesPtrInput
 	// Path to Dockerfile Build Context within the repository.
 	DockerBuildContext pulumi.StringPtrInput
 	// Path to the Dockerfile within the repository.
 	Dockerfile pulumi.StringPtrInput
+	// The mode of generation to be used for generating Dockerfiles.
+	DockerfileGenerationMode pulumi.StringPtrInput
+	// The directory to output the generated Dockerfile to.
+	DockerfileOutputDirectory pulumi.StringPtrInput
+	// The programming language used.
+	GenerationLanguage pulumi.StringPtrInput
+	// The name of the image to be generated.
+	ImageName pulumi.StringPtrInput
+	// The tag to apply to the generated image.
+	ImageTag pulumi.StringPtrInput
+	// The version of the language image used for execution in the generated dockerfile.
+	LanguageVersion pulumi.StringPtrInput
+	LastWorkflowRun WorkflowRunPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// The mode of generation to be used for generating Manifest.
+	ManifestGenerationMode pulumi.StringPtrInput
+	// The directory to output the generated manifests to.
+	ManifestOutputDirectory pulumi.StringPtrInput
+	// Determines the type of manifests to be generated.
+	ManifestType pulumi.StringPtrInput
 	// Kubernetes namespace the application is deployed to.
 	Namespace pulumi.StringPtrInput
 	// The fields needed for OIDC with GitHub.
 	OidcCredentials GitHubWorkflowProfileOidcCredentialsPtrInput
+	// The port the application is exposed on.
+	Port pulumi.StringPtrInput
 	// Repository Name
 	RepositoryName pulumi.StringPtrInput
 	// Repository Owner
@@ -214,6 +288,11 @@ func (o WorkflowOutput) AksResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.AksResourceId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the app.
+func (o WorkflowOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
 // Determines the authorization status of requests.
 func (o WorkflowOutput) AuthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.AuthStatus }).(pulumi.StringOutput)
@@ -222,6 +301,11 @@ func (o WorkflowOutput) AuthStatus() pulumi.StringOutput {
 // Repository Branch Name
 func (o WorkflowOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.BranchName }).(pulumi.StringPtrOutput)
+}
+
+// The version of the language image used for building the code in the generated dockerfile.
+func (o WorkflowOutput) BuilderVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.BuilderVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkflowOutput) DeploymentProperties() DeploymentPropertiesResponsePtrOutput {
@@ -238,6 +322,36 @@ func (o WorkflowOutput) Dockerfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.Dockerfile }).(pulumi.StringPtrOutput)
 }
 
+// The mode of generation to be used for generating Dockerfiles.
+func (o WorkflowOutput) DockerfileGenerationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.DockerfileGenerationMode }).(pulumi.StringPtrOutput)
+}
+
+// The directory to output the generated Dockerfile to.
+func (o WorkflowOutput) DockerfileOutputDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.DockerfileOutputDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The programming language used.
+func (o WorkflowOutput) GenerationLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.GenerationLanguage }).(pulumi.StringPtrOutput)
+}
+
+// The name of the image to be generated.
+func (o WorkflowOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// The tag to apply to the generated image.
+func (o WorkflowOutput) ImageTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.ImageTag }).(pulumi.StringPtrOutput)
+}
+
+// The version of the language image used for execution in the generated dockerfile.
+func (o WorkflowOutput) LanguageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.LanguageVersion }).(pulumi.StringPtrOutput)
+}
+
 func (o WorkflowOutput) LastWorkflowRun() WorkflowRunResponsePtrOutput {
 	return o.ApplyT(func(v *Workflow) WorkflowRunResponsePtrOutput { return v.LastWorkflowRun }).(WorkflowRunResponsePtrOutput)
 }
@@ -245,6 +359,21 @@ func (o WorkflowOutput) LastWorkflowRun() WorkflowRunResponsePtrOutput {
 // The geo-location where the resource lives
 func (o WorkflowOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The mode of generation to be used for generating Manifest.
+func (o WorkflowOutput) ManifestGenerationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.ManifestGenerationMode }).(pulumi.StringPtrOutput)
+}
+
+// The directory to output the generated manifests to.
+func (o WorkflowOutput) ManifestOutputDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.ManifestOutputDirectory }).(pulumi.StringPtrOutput)
+}
+
+// Determines the type of manifests to be generated.
+func (o WorkflowOutput) ManifestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.ManifestType }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -260,6 +389,11 @@ func (o WorkflowOutput) Namespace() pulumi.StringPtrOutput {
 // The fields needed for OIDC with GitHub.
 func (o WorkflowOutput) OidcCredentials() GitHubWorkflowProfileResponseOidcCredentialsPtrOutput {
 	return o.ApplyT(func(v *Workflow) GitHubWorkflowProfileResponseOidcCredentialsPtrOutput { return v.OidcCredentials }).(GitHubWorkflowProfileResponseOidcCredentialsPtrOutput)
+}
+
+// The port the application is exposed on.
+func (o WorkflowOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // The status of the Pull Request submitted against the users repository.

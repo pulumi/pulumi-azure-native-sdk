@@ -11,14 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2021-10-01-preview.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2021-10-01-preview
 type ResourceGuard struct {
 	pulumi.CustomResourceState
 
 	// Optional ETag.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
-	// Input Managed Identity Details
-	Identity DppIdentityDetailsResponsePtrOutput `pulumi:"identity"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name associated with the resource.
@@ -86,6 +84,12 @@ func NewResourceGuard(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230101:ResourceGuard"),
 		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:ResourceGuard"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230501:ResourceGuard"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ResourceGuard
@@ -122,11 +126,11 @@ func (ResourceGuardState) ElementType() reflect.Type {
 type resourceGuardArgs struct {
 	// Optional ETag.
 	ETag *string `pulumi:"eTag"`
-	// Input Managed Identity Details
-	Identity *DppIdentityDetails `pulumi:"identity"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// The name of the resource group where the backup vault is present.
+	// ResourceGuardResource properties
+	Properties *ResourceGuardType `pulumi:"properties"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of ResourceGuard
 	ResourceGuardsName *string `pulumi:"resourceGuardsName"`
@@ -138,11 +142,11 @@ type resourceGuardArgs struct {
 type ResourceGuardArgs struct {
 	// Optional ETag.
 	ETag pulumi.StringPtrInput
-	// Input Managed Identity Details
-	Identity DppIdentityDetailsPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// The name of the resource group where the backup vault is present.
+	// ResourceGuardResource properties
+	Properties ResourceGuardTypePtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of ResourceGuard
 	ResourceGuardsName pulumi.StringPtrInput
@@ -190,11 +194,6 @@ func (o ResourceGuardOutput) ToResourceGuardOutputWithContext(ctx context.Contex
 // Optional ETag.
 func (o ResourceGuardOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGuard) pulumi.StringPtrOutput { return v.ETag }).(pulumi.StringPtrOutput)
-}
-
-// Input Managed Identity Details
-func (o ResourceGuardOutput) Identity() DppIdentityDetailsResponsePtrOutput {
-	return o.ApplyT(func(v *ResourceGuard) DppIdentityDetailsResponsePtrOutput { return v.Identity }).(DppIdentityDetailsResponsePtrOutput)
 }
 
 // Resource location.

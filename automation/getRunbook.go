@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the runbook identified by runbook name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2022-08-08.
 func LookupRunbook(ctx *pulumi.Context, args *LookupRunbookArgs, opts ...pulumi.InvokeOption) (*LookupRunbookResult, error) {
 	var rv LookupRunbookResult
 	err := ctx.Invoke("azure-native:automation:getRunbook", args, &rv, opts...)

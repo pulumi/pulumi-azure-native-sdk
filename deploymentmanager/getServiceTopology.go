@@ -11,7 +11,7 @@ import (
 )
 
 // The resource representation of a service topology.
-// API Version: 2019-11-01-preview.
+// Azure REST API version: 2019-11-01-preview.
 func LookupServiceTopology(ctx *pulumi.Context, args *LookupServiceTopologyArgs, opts ...pulumi.InvokeOption) (*LookupServiceTopologyResult, error) {
 	var rv LookupServiceTopologyResult
 	err := ctx.Invoke("azure-native:deploymentmanager:getServiceTopology", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a custom domain.
-// API Version: 2022-02-01.
+// Azure REST API version: 2023-02-01.
 func LookupSignalRCustomDomain(ctx *pulumi.Context, args *LookupSignalRCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomDomainResult, error) {
 	var rv LookupSignalRCustomDomainResult
 	err := ctx.Invoke("azure-native:signalrservice:getSignalRCustomDomain", args, &rv, opts...)

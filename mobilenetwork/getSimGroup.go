@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified SIM group.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2023-06-01.
 func LookupSimGroup(ctx *pulumi.Context, args *LookupSimGroupArgs, opts ...pulumi.InvokeOption) (*LookupSimGroupResult, error) {
 	var rv LookupSimGroupResult
 	err := ctx.Invoke("azure-native:mobilenetwork:getSimGroup", args, &rv, opts...)
@@ -30,27 +30,15 @@ type LookupSimGroupArgs struct {
 
 // SIM group resource.
 type LookupSimGroupResult struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
 	// A key to encrypt the SIM data that belongs to this SIM group.
 	EncryptionKey *KeyVaultKeyResponse `pulumi:"encryptionKey"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The identity used to retrieve the encryption key from Azure key vault.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Mobile network that this SIM belongs to
+	// Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
 	MobileNetwork *MobileNetworkResourceIdResponse `pulumi:"mobileNetwork"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -103,27 +91,12 @@ func (o LookupSimGroupResultOutput) ToLookupSimGroupResultOutputWithContext(ctx 
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o LookupSimGroupResultOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimGroupResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o LookupSimGroupResultOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimGroupResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o LookupSimGroupResultOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimGroupResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
 // A key to encrypt the SIM data that belongs to this SIM group.
 func (o LookupSimGroupResultOutput) EncryptionKey() KeyVaultKeyResponsePtrOutput {
 	return o.ApplyT(func(v LookupSimGroupResult) *KeyVaultKeyResponse { return v.EncryptionKey }).(KeyVaultKeyResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSimGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSimGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -133,27 +106,12 @@ func (o LookupSimGroupResultOutput) Identity() ManagedServiceIdentityResponsePtr
 	return o.ApplyT(func(v LookupSimGroupResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o LookupSimGroupResultOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimGroupResult) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o LookupSimGroupResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimGroupResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o LookupSimGroupResultOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimGroupResult) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // The geo-location where the resource lives
 func (o LookupSimGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSimGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Mobile network that this SIM belongs to
+// Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
 func (o LookupSimGroupResultOutput) MobileNetwork() MobileNetworkResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v LookupSimGroupResult) *MobileNetworkResourceIdResponse { return v.MobileNetwork }).(MobileNetworkResourceIdResponsePtrOutput)
 }

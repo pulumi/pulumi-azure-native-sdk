@@ -11,7 +11,7 @@ import (
 )
 
 // Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
-// API Version: 2020-02-07-preview.
+// Azure REST API version: 2020-02-07-preview.
 func LookupSapMonitor(ctx *pulumi.Context, args *LookupSapMonitorArgs, opts ...pulumi.InvokeOption) (*LookupSapMonitorResult, error) {
 	var rv LookupSapMonitorResult
 	err := ctx.Invoke("azure-native:hanaonazure:getSapMonitor", args, &rv, opts...)

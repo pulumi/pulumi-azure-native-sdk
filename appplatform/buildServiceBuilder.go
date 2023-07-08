@@ -12,7 +12,7 @@ import (
 )
 
 // KPack Builder resource
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview
 type BuildServiceBuilder struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,12 @@ func NewBuildServiceBuilder(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:BuildServiceBuilder"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:BuildServiceBuilder"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:BuildServiceBuilder"),
 		},
 	})
 	opts = append(opts, aliases)

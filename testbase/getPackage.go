@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Test Base Package.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-04-01-preview.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {
 	var rv LookupPackageResult
 	err := ctx.Invoke("azure-native:testbase:getPackage", args, &rv, opts...)

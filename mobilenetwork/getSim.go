@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified SIM.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2023-06-01.
 func LookupSim(ctx *pulumi.Context, args *LookupSimArgs, opts ...pulumi.InvokeOption) (*LookupSimResult, error) {
 	var rv LookupSimResult
 	err := ctx.Invoke("azure-native:mobilenetwork:getSim", args, &rv, opts...)
@@ -32,40 +32,34 @@ type LookupSimArgs struct {
 
 // SIM resource.
 type LookupSimResult struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
 	// An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
 	DeviceType *string `pulumi:"deviceType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The integrated circuit card ID (ICCID) for the SIM.
 	IntegratedCircuitCardIdentifier *string `pulumi:"integratedCircuitCardIdentifier"`
 	// The international mobile subscriber identity (IMSI) for the SIM.
 	InternationalMobileSubscriberIdentity string `pulumi:"internationalMobileSubscriberIdentity"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state of the SIM resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The SIM policy used by this SIM.
+	// The SIM policy used by this SIM. The SIM policy must be in the same location as the SIM.
 	SimPolicy *SimPolicyResourceIdResponse `pulumi:"simPolicy"`
 	// The state of the SIM resource.
 	SimState string `pulumi:"simState"`
+	// A dictionary of sites to the provisioning state of this SIM on that site.
+	SiteProvisioningState map[string]string `pulumi:"siteProvisioningState"`
 	// A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
 	StaticIpConfiguration []SimStaticIpPropertiesResponse `pulumi:"staticIpConfiguration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// The public key fingerprint of the SIM vendor who provided this SIM, if any.
+	VendorKeyFingerprint string `pulumi:"vendorKeyFingerprint"`
+	// The name of the SIM vendor who provided this SIM, if any.
+	VendorName string `pulumi:"vendorName"`
 }
 
 func LookupSimOutput(ctx *pulumi.Context, args LookupSimOutputArgs, opts ...pulumi.InvokeOption) LookupSimResultOutput {
@@ -109,27 +103,12 @@ func (o LookupSimResultOutput) ToLookupSimResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o LookupSimResultOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o LookupSimResultOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o LookupSimResultOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
 // An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
 func (o LookupSimResultOutput) DeviceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSimResult) *string { return v.DeviceType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSimResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSimResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -144,21 +123,6 @@ func (o LookupSimResultOutput) InternationalMobileSubscriberIdentity() pulumi.St
 	return o.ApplyT(func(v LookupSimResult) string { return v.InternationalMobileSubscriberIdentity }).(pulumi.StringOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o LookupSimResultOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimResult) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o LookupSimResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o LookupSimResultOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSimResult) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // The name of the resource
 func (o LookupSimResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSimResult) string { return v.Name }).(pulumi.StringOutput)
@@ -169,7 +133,7 @@ func (o LookupSimResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSimResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The SIM policy used by this SIM.
+// The SIM policy used by this SIM. The SIM policy must be in the same location as the SIM.
 func (o LookupSimResultOutput) SimPolicy() SimPolicyResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v LookupSimResult) *SimPolicyResourceIdResponse { return v.SimPolicy }).(SimPolicyResourceIdResponsePtrOutput)
 }
@@ -177,6 +141,11 @@ func (o LookupSimResultOutput) SimPolicy() SimPolicyResourceIdResponsePtrOutput 
 // The state of the SIM resource.
 func (o LookupSimResultOutput) SimState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSimResult) string { return v.SimState }).(pulumi.StringOutput)
+}
+
+// A dictionary of sites to the provisioning state of this SIM on that site.
+func (o LookupSimResultOutput) SiteProvisioningState() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSimResult) map[string]string { return v.SiteProvisioningState }).(pulumi.StringMapOutput)
 }
 
 // A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
@@ -192,6 +161,16 @@ func (o LookupSimResultOutput) SystemData() SystemDataResponseOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSimResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSimResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The public key fingerprint of the SIM vendor who provided this SIM, if any.
+func (o LookupSimResultOutput) VendorKeyFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSimResult) string { return v.VendorKeyFingerprint }).(pulumi.StringOutput)
+}
+
+// The name of the SIM vendor who provided this SIM, if any.
+func (o LookupSimResultOutput) VendorName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSimResult) string { return v.VendorName }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Experiment resource.
-// API Version: 2021-09-15-preview.
+// Azure REST API version: 2023-04-15-preview.
 func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...pulumi.InvokeOption) (*LookupExperimentResult, error) {
 	var rv LookupExperimentResult
 	err := ctx.Invoke("azure-native:chaos:getExperiment", args, &rv, opts...)

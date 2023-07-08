@@ -12,8 +12,6 @@ import (
 )
 
 // Gateway details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Gateway is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Gateway to guarantee forwards compatibility.
 type Gateway struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +68,12 @@ func NewGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Gateway"),
 		},
 	})
 	opts = append(opts, aliases)

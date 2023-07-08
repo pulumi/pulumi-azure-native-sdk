@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Content Key Policy including secret values
-// API Version: 2020-05-01.
+// Azure REST API version: 2023-01-01.
 func GetContentKeyPolicyPropertiesWithSecrets(ctx *pulumi.Context, args *GetContentKeyPolicyPropertiesWithSecretsArgs, opts ...pulumi.InvokeOption) (*GetContentKeyPolicyPropertiesWithSecretsResult, error) {
 	var rv GetContentKeyPolicyPropertiesWithSecretsResult
 	err := ctx.Invoke("azure-native:media:getContentKeyPolicyPropertiesWithSecrets", args, &rv, opts...)

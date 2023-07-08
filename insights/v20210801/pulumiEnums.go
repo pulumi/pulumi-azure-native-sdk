@@ -3,25 +3,6 @@
 
 package v20210801
 
-// The criteria operator. Relevant and required only for rules of the kind LogAlert.
-type ConditionOperator string
-
-const (
-	ConditionOperatorEquals             = ConditionOperator("Equals")
-	ConditionOperatorGreaterThan        = ConditionOperator("GreaterThan")
-	ConditionOperatorGreaterThanOrEqual = ConditionOperator("GreaterThanOrEqual")
-	ConditionOperatorLessThan           = ConditionOperator("LessThan")
-	ConditionOperatorLessThanOrEqual    = ConditionOperator("LessThanOrEqual")
-)
-
-// Operator for dimension values
-type DimensionOperator string
-
-const (
-	DimensionOperatorInclude = DimensionOperator("Include")
-	DimensionOperatorExclude = DimensionOperator("Exclude")
-)
-
 // The kind of workbook. Only valid value is shared.
 type Kind string
 
@@ -38,17 +19,6 @@ const (
 	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
 	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
 	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
-)
-
-// Aggregation type. Relevant and required only for rules of the kind LogAlert.
-type TimeAggregation string
-
-const (
-	TimeAggregationCount   = TimeAggregation("Count")
-	TimeAggregationAverage = TimeAggregation("Average")
-	TimeAggregationMinimum = TimeAggregation("Minimum")
-	TimeAggregationMaximum = TimeAggregation("Maximum")
-	TimeAggregationTotal   = TimeAggregation("Total")
 )
 
 func init() {

@@ -3,6 +3,23 @@
 
 package v20180601
 
+// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+type ActivityOnInactiveMarkAs string
+
+const (
+	ActivityOnInactiveMarkAsSucceeded = ActivityOnInactiveMarkAs("Succeeded")
+	ActivityOnInactiveMarkAsFailed    = ActivityOnInactiveMarkAs("Failed")
+	ActivityOnInactiveMarkAsSkipped   = ActivityOnInactiveMarkAs("Skipped")
+)
+
+// Activity state. This is an optional property and if not provided, the state will be Active by default.
+type ActivityState string
+
+const (
+	ActivityStateActive   = ActivityState("Active")
+	ActivityStateInactive = ActivityState("Inactive")
+)
+
 // Rest API method for target endpoint.
 type AzureFunctionActivityMethod string
 
@@ -72,6 +89,13 @@ const (
 	ConfigurationTypeDefault    = ConfigurationType("Default")
 	ConfigurationTypeCustomized = ConfigurationType("Customized")
 	ConfigurationTypeArtifact   = ConfigurationType("Artifact")
+)
+
+// Type of connection via linked service or dataset.
+type ConnectionType string
+
+const (
+	ConnectionTypeLinkedservicetype = ConnectionType("linkedservicetype")
 )
 
 // The connection mode used to access CosmosDB account. Type: string.
@@ -160,6 +184,15 @@ const (
 	FactoryIdentityTypeSystemAssigned               = FactoryIdentityType("SystemAssigned")
 	FactoryIdentityTypeUserAssigned                 = FactoryIdentityType("UserAssigned")
 	FactoryIdentityType_SystemAssigned_UserAssigned = FactoryIdentityType("SystemAssigned,UserAssigned")
+)
+
+// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+type FrequencyType string
+
+const (
+	FrequencyTypeHour   = FrequencyType("Hour")
+	FrequencyTypeMinute = FrequencyType("Minute")
+	FrequencyTypeSecond = FrequencyType("Second")
 )
 
 // The authentication type to be used to connect to the FTP server.
@@ -312,6 +345,15 @@ const (
 	ManagedVirtualNetworkReferenceTypeManagedVirtualNetworkReference = ManagedVirtualNetworkReferenceType("ManagedVirtualNetworkReference")
 )
 
+// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
+type MappingType string
+
+const (
+	MappingTypeDirect    = MappingType("Direct")
+	MappingTypeDerived   = MappingType("Derived")
+	MappingTypeAggregate = MappingType("Aggregate")
+)
+
 // The authentication type to be used to connect to the MongoDB database.
 type MongoDbAuthenticationType string
 
@@ -432,14 +474,6 @@ type SalesforceSinkWriteBehavior string
 const (
 	SalesforceSinkWriteBehaviorInsert = SalesforceSinkWriteBehavior("Insert")
 	SalesforceSinkWriteBehaviorUpsert = SalesforceSinkWriteBehavior("Upsert")
-)
-
-// The read behavior for the operation. Default is Query.
-type SalesforceSourceReadBehavior string
-
-const (
-	SalesforceSourceReadBehaviorQuery    = SalesforceSourceReadBehavior("Query")
-	SalesforceSourceReadBehaviorQueryAll = SalesforceSourceReadBehavior("QueryAll")
 )
 
 // The write behavior for the operation. Default is 'Insert'.

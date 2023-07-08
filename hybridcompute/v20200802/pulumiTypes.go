@@ -580,119 +580,6 @@ func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Time() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The machine extension instance view.
-type MachineExtensionPropertiesResponseInstanceView struct {
-	// The machine extension name.
-	Name string `pulumi:"name"`
-	// Instance view status.
-	Status *MachineExtensionInstanceViewResponseStatus `pulumi:"status"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion string `pulumi:"typeHandlerVersion"`
-}
-
-// The machine extension instance view.
-type MachineExtensionPropertiesResponseInstanceViewOutput struct{ *pulumi.OutputState }
-
-func (MachineExtensionPropertiesResponseInstanceViewOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineExtensionPropertiesResponseInstanceView)(nil)).Elem()
-}
-
-func (o MachineExtensionPropertiesResponseInstanceViewOutput) ToMachineExtensionPropertiesResponseInstanceViewOutput() MachineExtensionPropertiesResponseInstanceViewOutput {
-	return o
-}
-
-func (o MachineExtensionPropertiesResponseInstanceViewOutput) ToMachineExtensionPropertiesResponseInstanceViewOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponseInstanceViewOutput {
-	return o
-}
-
-// The machine extension name.
-func (o MachineExtensionPropertiesResponseInstanceViewOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Instance view status.
-func (o MachineExtensionPropertiesResponseInstanceViewOutput) Status() MachineExtensionInstanceViewResponseStatusPtrOutput {
-	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) *MachineExtensionInstanceViewResponseStatus {
-		return v.Status
-	}).(MachineExtensionInstanceViewResponseStatusPtrOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o MachineExtensionPropertiesResponseInstanceViewOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Specifies the version of the script handler.
-func (o MachineExtensionPropertiesResponseInstanceViewOutput) TypeHandlerVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) string { return v.TypeHandlerVersion }).(pulumi.StringOutput)
-}
-
-type MachineExtensionPropertiesResponseInstanceViewPtrOutput struct{ *pulumi.OutputState }
-
-func (MachineExtensionPropertiesResponseInstanceViewPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MachineExtensionPropertiesResponseInstanceView)(nil)).Elem()
-}
-
-func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToMachineExtensionPropertiesResponseInstanceViewPtrOutput() MachineExtensionPropertiesResponseInstanceViewPtrOutput {
-	return o
-}
-
-func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToMachineExtensionPropertiesResponseInstanceViewPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponseInstanceViewPtrOutput {
-	return o
-}
-
-func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Elem() MachineExtensionPropertiesResponseInstanceViewOutput {
-	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) MachineExtensionPropertiesResponseInstanceView {
-		if v != nil {
-			return *v
-		}
-		var ret MachineExtensionPropertiesResponseInstanceView
-		return ret
-	}).(MachineExtensionPropertiesResponseInstanceViewOutput)
-}
-
-// The machine extension name.
-func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Instance view status.
-func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Status() MachineExtensionInstanceViewResponseStatusPtrOutput {
-	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) *MachineExtensionInstanceViewResponseStatus {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(MachineExtensionInstanceViewResponseStatusPtrOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the version of the script handler.
-func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MachineExtensionPropertiesResponseInstanceView) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TypeHandlerVersion
-	}).(pulumi.StringPtrOutput)
-}
-
 type MachineIdentity struct {
 	// The identity type.
 	Type *string `pulumi:"type"`
@@ -993,8 +880,6 @@ func init() {
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseArrayOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusPtrOutput{})
-	pulumi.RegisterOutputType(MachineExtensionPropertiesResponseInstanceViewOutput{})
-	pulumi.RegisterOutputType(MachineExtensionPropertiesResponseInstanceViewPtrOutput{})
 	pulumi.RegisterOutputType(MachineIdentityOutput{})
 	pulumi.RegisterOutputType(MachineIdentityPtrOutput{})
 	pulumi.RegisterOutputType(MachinePropertiesResponseOsProfileOutput{})

@@ -10,6 +10,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets or sets the status of the account.
+type AccountPropertiesResponseAccountStatus struct {
+	// Gets the account status code.
+	AccountProvisioningState string `pulumi:"accountProvisioningState"`
+	// Gets the account error details.
+	ErrorDetails AccountStatusResponseErrorDetails `pulumi:"errorDetails"`
+}
+
+// Gets or sets the status of the account.
+type AccountPropertiesResponseAccountStatusOutput struct{ *pulumi.OutputState }
+
+func (AccountPropertiesResponseAccountStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountPropertiesResponseAccountStatus)(nil)).Elem()
+}
+
+func (o AccountPropertiesResponseAccountStatusOutput) ToAccountPropertiesResponseAccountStatusOutput() AccountPropertiesResponseAccountStatusOutput {
+	return o
+}
+
+func (o AccountPropertiesResponseAccountStatusOutput) ToAccountPropertiesResponseAccountStatusOutputWithContext(ctx context.Context) AccountPropertiesResponseAccountStatusOutput {
+	return o
+}
+
+// Gets the account status code.
+func (o AccountPropertiesResponseAccountStatusOutput) AccountProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountPropertiesResponseAccountStatus) string { return v.AccountProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets the account error details.
+func (o AccountPropertiesResponseAccountStatusOutput) ErrorDetails() AccountStatusResponseErrorDetailsOutput {
+	return o.ApplyT(func(v AccountPropertiesResponseAccountStatus) AccountStatusResponseErrorDetails {
+		return v.ErrorDetails
+	}).(AccountStatusResponseErrorDetailsOutput)
+}
+
 // The URIs that are the public endpoints of the account.
 type AccountPropertiesResponseEndpoints struct {
 	// Gets the catalog endpoint.
@@ -90,67 +125,6 @@ func (o AccountPropertiesResponseManagedResourcesOutput) StorageAccount() pulumi
 	return o.ApplyT(func(v AccountPropertiesResponseManagedResources) string { return v.StorageAccount }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type AccountPropertiesResponseSystemData struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType string `pulumi:"createdByType"`
-	// The timestamp of the last modification the resource (UTC).
-	LastModifiedAt string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type AccountPropertiesResponseSystemDataOutput struct{ *pulumi.OutputState }
-
-func (AccountPropertiesResponseSystemDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountPropertiesResponseSystemData)(nil)).Elem()
-}
-
-func (o AccountPropertiesResponseSystemDataOutput) ToAccountPropertiesResponseSystemDataOutput() AccountPropertiesResponseSystemDataOutput {
-	return o
-}
-
-func (o AccountPropertiesResponseSystemDataOutput) ToAccountPropertiesResponseSystemDataOutputWithContext(ctx context.Context) AccountPropertiesResponseSystemDataOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o AccountPropertiesResponseSystemDataOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountPropertiesResponseSystemData) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The identity that created the resource.
-func (o AccountPropertiesResponseSystemDataOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountPropertiesResponseSystemData) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// The type of identity that created the resource.
-func (o AccountPropertiesResponseSystemDataOutput) CreatedByType() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountPropertiesResponseSystemData) string { return v.CreatedByType }).(pulumi.StringOutput)
-}
-
-// The timestamp of the last modification the resource (UTC).
-func (o AccountPropertiesResponseSystemDataOutput) LastModifiedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountPropertiesResponseSystemData) string { return v.LastModifiedAt }).(pulumi.StringOutput)
-}
-
-// The identity that last modified the resource.
-func (o AccountPropertiesResponseSystemDataOutput) LastModifiedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountPropertiesResponseSystemData) string { return v.LastModifiedBy }).(pulumi.StringOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o AccountPropertiesResponseSystemDataOutput) LastModifiedByType() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountPropertiesResponseSystemData) string { return v.LastModifiedByType }).(pulumi.StringOutput)
-}
-
 // Gets or sets the Sku.
 type AccountResponseSku struct {
 	// Gets or sets the sku capacity.
@@ -184,12 +158,61 @@ func (o AccountResponseSkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountResponseSku) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Gets the account error details.
+type AccountStatusResponseErrorDetails struct {
+	// Gets or sets the code.
+	Code string `pulumi:"code"`
+	// Gets or sets the details.
+	Details []ErrorModelResponse `pulumi:"details"`
+	// Gets or sets the messages.
+	Message string `pulumi:"message"`
+	// Gets or sets the target.
+	Target string `pulumi:"target"`
+}
+
+// Gets the account error details.
+type AccountStatusResponseErrorDetailsOutput struct{ *pulumi.OutputState }
+
+func (AccountStatusResponseErrorDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountStatusResponseErrorDetails)(nil)).Elem()
+}
+
+func (o AccountStatusResponseErrorDetailsOutput) ToAccountStatusResponseErrorDetailsOutput() AccountStatusResponseErrorDetailsOutput {
+	return o
+}
+
+func (o AccountStatusResponseErrorDetailsOutput) ToAccountStatusResponseErrorDetailsOutputWithContext(ctx context.Context) AccountStatusResponseErrorDetailsOutput {
+	return o
+}
+
+// Gets or sets the code.
+func (o AccountStatusResponseErrorDetailsOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountStatusResponseErrorDetails) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Gets or sets the details.
+func (o AccountStatusResponseErrorDetailsOutput) Details() ErrorModelResponseArrayOutput {
+	return o.ApplyT(func(v AccountStatusResponseErrorDetails) []ErrorModelResponse { return v.Details }).(ErrorModelResponseArrayOutput)
+}
+
+// Gets or sets the messages.
+func (o AccountStatusResponseErrorDetailsOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountStatusResponseErrorDetails) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target.
+func (o AccountStatusResponseErrorDetailsOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountStatusResponseErrorDetails) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// External Cloud Service connectors
 type CloudConnectorsResponse struct {
 	// AWS external identifier.
 	// Configured in AWS to allow use of the role arn used for scanning
 	AwsExternalId string `pulumi:"awsExternalId"`
 }
 
+// External Cloud Service connectors
 type CloudConnectorsResponseOutput struct{ *pulumi.OutputState }
 
 func (CloudConnectorsResponseOutput) ElementType() reflect.Type {
@@ -245,10 +268,315 @@ func (o CloudConnectorsResponsePtrOutput) AwsExternalId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Credentials to access the event streaming service attached to the purview account.
+type Credentials struct {
+	// Identity identifier for UserAssign type.
+	IdentityId *string `pulumi:"identityId"`
+	// Identity Type.
+	Type *string `pulumi:"type"`
+}
+
+// CredentialsInput is an input type that accepts CredentialsArgs and CredentialsOutput values.
+// You can construct a concrete instance of `CredentialsInput` via:
+//
+//	CredentialsArgs{...}
+type CredentialsInput interface {
+	pulumi.Input
+
+	ToCredentialsOutput() CredentialsOutput
+	ToCredentialsOutputWithContext(context.Context) CredentialsOutput
+}
+
+// Credentials to access the event streaming service attached to the purview account.
+type CredentialsArgs struct {
+	// Identity identifier for UserAssign type.
+	IdentityId pulumi.StringPtrInput `pulumi:"identityId"`
+	// Identity Type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Credentials)(nil)).Elem()
+}
+
+func (i CredentialsArgs) ToCredentialsOutput() CredentialsOutput {
+	return i.ToCredentialsOutputWithContext(context.Background())
+}
+
+func (i CredentialsArgs) ToCredentialsOutputWithContext(ctx context.Context) CredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CredentialsOutput)
+}
+
+func (i CredentialsArgs) ToCredentialsPtrOutput() CredentialsPtrOutput {
+	return i.ToCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i CredentialsArgs) ToCredentialsPtrOutputWithContext(ctx context.Context) CredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CredentialsOutput).ToCredentialsPtrOutputWithContext(ctx)
+}
+
+// CredentialsPtrInput is an input type that accepts CredentialsArgs, CredentialsPtr and CredentialsPtrOutput values.
+// You can construct a concrete instance of `CredentialsPtrInput` via:
+//
+//	        CredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CredentialsPtrInput interface {
+	pulumi.Input
+
+	ToCredentialsPtrOutput() CredentialsPtrOutput
+	ToCredentialsPtrOutputWithContext(context.Context) CredentialsPtrOutput
+}
+
+type credentialsPtrType CredentialsArgs
+
+func CredentialsPtr(v *CredentialsArgs) CredentialsPtrInput {
+	return (*credentialsPtrType)(v)
+}
+
+func (*credentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Credentials)(nil)).Elem()
+}
+
+func (i *credentialsPtrType) ToCredentialsPtrOutput() CredentialsPtrOutput {
+	return i.ToCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *credentialsPtrType) ToCredentialsPtrOutputWithContext(ctx context.Context) CredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CredentialsPtrOutput)
+}
+
+// Credentials to access the event streaming service attached to the purview account.
+type CredentialsOutput struct{ *pulumi.OutputState }
+
+func (CredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Credentials)(nil)).Elem()
+}
+
+func (o CredentialsOutput) ToCredentialsOutput() CredentialsOutput {
+	return o
+}
+
+func (o CredentialsOutput) ToCredentialsOutputWithContext(ctx context.Context) CredentialsOutput {
+	return o
+}
+
+func (o CredentialsOutput) ToCredentialsPtrOutput() CredentialsPtrOutput {
+	return o.ToCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o CredentialsOutput) ToCredentialsPtrOutputWithContext(ctx context.Context) CredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Credentials) *Credentials {
+		return &v
+	}).(CredentialsPtrOutput)
+}
+
+// Identity identifier for UserAssign type.
+func (o CredentialsOutput) IdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Credentials) *string { return v.IdentityId }).(pulumi.StringPtrOutput)
+}
+
+// Identity Type.
+func (o CredentialsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Credentials) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (CredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Credentials)(nil)).Elem()
+}
+
+func (o CredentialsPtrOutput) ToCredentialsPtrOutput() CredentialsPtrOutput {
+	return o
+}
+
+func (o CredentialsPtrOutput) ToCredentialsPtrOutputWithContext(ctx context.Context) CredentialsPtrOutput {
+	return o
+}
+
+func (o CredentialsPtrOutput) Elem() CredentialsOutput {
+	return o.ApplyT(func(v *Credentials) Credentials {
+		if v != nil {
+			return *v
+		}
+		var ret Credentials
+		return ret
+	}).(CredentialsOutput)
+}
+
+// Identity identifier for UserAssign type.
+func (o CredentialsPtrOutput) IdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Credentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity Type.
+func (o CredentialsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Credentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credentials to access the event streaming service attached to the purview account.
+type CredentialsResponse struct {
+	// Identity identifier for UserAssign type.
+	IdentityId *string `pulumi:"identityId"`
+	// Identity Type.
+	Type *string `pulumi:"type"`
+}
+
+// Credentials to access the event streaming service attached to the purview account.
+type CredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (CredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CredentialsResponse)(nil)).Elem()
+}
+
+func (o CredentialsResponseOutput) ToCredentialsResponseOutput() CredentialsResponseOutput {
+	return o
+}
+
+func (o CredentialsResponseOutput) ToCredentialsResponseOutputWithContext(ctx context.Context) CredentialsResponseOutput {
+	return o
+}
+
+// Identity identifier for UserAssign type.
+func (o CredentialsResponseOutput) IdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CredentialsResponse) *string { return v.IdentityId }).(pulumi.StringPtrOutput)
+}
+
+// Identity Type.
+func (o CredentialsResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CredentialsResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CredentialsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CredentialsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CredentialsResponse)(nil)).Elem()
+}
+
+func (o CredentialsResponsePtrOutput) ToCredentialsResponsePtrOutput() CredentialsResponsePtrOutput {
+	return o
+}
+
+func (o CredentialsResponsePtrOutput) ToCredentialsResponsePtrOutputWithContext(ctx context.Context) CredentialsResponsePtrOutput {
+	return o
+}
+
+func (o CredentialsResponsePtrOutput) Elem() CredentialsResponseOutput {
+	return o.ApplyT(func(v *CredentialsResponse) CredentialsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CredentialsResponse
+		return ret
+	}).(CredentialsResponseOutput)
+}
+
+// Identity identifier for UserAssign type.
+func (o CredentialsResponsePtrOutput) IdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity Type.
+func (o CredentialsResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default error model
+type ErrorModelResponse struct {
+	// Gets or sets the code.
+	Code string `pulumi:"code"`
+	// Gets or sets the details.
+	Details []ErrorModelResponse `pulumi:"details"`
+	// Gets or sets the messages.
+	Message string `pulumi:"message"`
+	// Gets or sets the target.
+	Target string `pulumi:"target"`
+}
+
+// Default error model
+type ErrorModelResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorModelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorModelResponse)(nil)).Elem()
+}
+
+func (o ErrorModelResponseOutput) ToErrorModelResponseOutput() ErrorModelResponseOutput {
+	return o
+}
+
+func (o ErrorModelResponseOutput) ToErrorModelResponseOutputWithContext(ctx context.Context) ErrorModelResponseOutput {
+	return o
+}
+
+// Gets or sets the code.
+func (o ErrorModelResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorModelResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Gets or sets the details.
+func (o ErrorModelResponseOutput) Details() ErrorModelResponseArrayOutput {
+	return o.ApplyT(func(v ErrorModelResponse) []ErrorModelResponse { return v.Details }).(ErrorModelResponseArrayOutput)
+}
+
+// Gets or sets the messages.
+func (o ErrorModelResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorModelResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target.
+func (o ErrorModelResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorModelResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorModelResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorModelResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorModelResponse)(nil)).Elem()
+}
+
+func (o ErrorModelResponseArrayOutput) ToErrorModelResponseArrayOutput() ErrorModelResponseArrayOutput {
+	return o
+}
+
+func (o ErrorModelResponseArrayOutput) ToErrorModelResponseArrayOutputWithContext(ctx context.Context) ErrorModelResponseArrayOutput {
+	return o
+}
+
+func (o ErrorModelResponseArrayOutput) Index(i pulumi.IntInput) ErrorModelResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorModelResponse {
+		return vs[0].([]ErrorModelResponse)[vs[1].(int)]
+	}).(ErrorModelResponseOutput)
+}
+
 // The Managed Identity of the resource
 type Identity struct {
 	// Identity Type
 	Type *string `pulumi:"type"`
+	// User Assigned Identities
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -266,6 +594,8 @@ type IdentityInput interface {
 type IdentityArgs struct {
 	// Identity Type
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// User Assigned Identities
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -351,6 +681,11 @@ func (o IdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Identity) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// User Assigned Identities
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
 type IdentityPtrOutput struct{ *pulumi.OutputState }
 
 func (IdentityPtrOutput) ElementType() reflect.Type {
@@ -385,6 +720,16 @@ func (o IdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// User Assigned Identities
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
 // The Managed Identity of the resource
 type IdentityResponse struct {
 	// Service principal object Id
@@ -393,6 +738,8 @@ type IdentityResponse struct {
 	TenantId string `pulumi:"tenantId"`
 	// Identity Type
 	Type *string `pulumi:"type"`
+	// User Assigned Identities
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // The Managed Identity of the resource
@@ -423,6 +770,11 @@ func (o IdentityResponseOutput) TenantId() pulumi.StringOutput {
 // Identity Type
 func (o IdentityResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// User Assigned Identities
+func (o IdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v IdentityResponse) map[string]UserAssignedIdentityResponse { return v.UserAssignedIdentities }).(UserAssignedIdentityResponseMapOutput)
 }
 
 type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -477,6 +829,16 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// User Assigned Identities
+func (o IdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *IdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // A private endpoint class.
@@ -631,6 +993,8 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData ProxyResourceResponseSystemData `pulumi:"systemData"`
 	// Gets or sets the type.
 	Type string `pulumi:"type"`
 }
@@ -675,6 +1039,11 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 // The provisioning state.
 func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() ProxyResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) ProxyResourceResponseSystemData { return v.SystemData }).(ProxyResourceResponseSystemDataOutput)
 }
 
 // Gets or sets the type.
@@ -1034,13 +1403,195 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type ProxyResourceResponseSystemData struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType string `pulumi:"createdByType"`
+	// The timestamp of the last modification the resource (UTC).
+	LastModifiedAt string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type ProxyResourceResponseSystemDataOutput struct{ *pulumi.OutputState }
+
+func (ProxyResourceResponseSystemDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyResourceResponseSystemData)(nil)).Elem()
+}
+
+func (o ProxyResourceResponseSystemDataOutput) ToProxyResourceResponseSystemDataOutput() ProxyResourceResponseSystemDataOutput {
+	return o
+}
+
+func (o ProxyResourceResponseSystemDataOutput) ToProxyResourceResponseSystemDataOutputWithContext(ctx context.Context) ProxyResourceResponseSystemDataOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o ProxyResourceResponseSystemDataOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyResourceResponseSystemData) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The identity that created the resource.
+func (o ProxyResourceResponseSystemDataOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyResourceResponseSystemData) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The type of identity that created the resource.
+func (o ProxyResourceResponseSystemDataOutput) CreatedByType() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyResourceResponseSystemData) string { return v.CreatedByType }).(pulumi.StringOutput)
+}
+
+// The timestamp of the last modification the resource (UTC).
+func (o ProxyResourceResponseSystemDataOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyResourceResponseSystemData) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// The identity that last modified the resource.
+func (o ProxyResourceResponseSystemDataOutput) LastModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyResourceResponseSystemData) string { return v.LastModifiedBy }).(pulumi.StringOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o ProxyResourceResponseSystemDataOutput) LastModifiedByType() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyResourceResponseSystemData) string { return v.LastModifiedByType }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type TrackedResourceResponseSystemData struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType string `pulumi:"createdByType"`
+	// The timestamp of the last modification the resource (UTC).
+	LastModifiedAt string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type TrackedResourceResponseSystemDataOutput struct{ *pulumi.OutputState }
+
+func (TrackedResourceResponseSystemDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackedResourceResponseSystemData)(nil)).Elem()
+}
+
+func (o TrackedResourceResponseSystemDataOutput) ToTrackedResourceResponseSystemDataOutput() TrackedResourceResponseSystemDataOutput {
+	return o
+}
+
+func (o TrackedResourceResponseSystemDataOutput) ToTrackedResourceResponseSystemDataOutputWithContext(ctx context.Context) TrackedResourceResponseSystemDataOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o TrackedResourceResponseSystemDataOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackedResourceResponseSystemData) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The identity that created the resource.
+func (o TrackedResourceResponseSystemDataOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackedResourceResponseSystemData) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The type of identity that created the resource.
+func (o TrackedResourceResponseSystemDataOutput) CreatedByType() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackedResourceResponseSystemData) string { return v.CreatedByType }).(pulumi.StringOutput)
+}
+
+// The timestamp of the last modification the resource (UTC).
+func (o TrackedResourceResponseSystemDataOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackedResourceResponseSystemData) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// The identity that last modified the resource.
+func (o TrackedResourceResponseSystemDataOutput) LastModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackedResourceResponseSystemData) string { return v.LastModifiedBy }).(pulumi.StringOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o TrackedResourceResponseSystemDataOutput) LastModifiedByType() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackedResourceResponseSystemData) string { return v.LastModifiedByType }).(pulumi.StringOutput)
+}
+
+// Uses client ID and Principal ID
+type UserAssignedIdentityResponse struct {
+	// Gets or Sets Client ID
+	ClientId string `pulumi:"clientId"`
+	// Gets or Sets Principal ID
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// Uses client ID and Principal ID
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// Gets or Sets Client ID
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Gets or Sets Principal ID
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AccountPropertiesResponseAccountStatusOutput{})
 	pulumi.RegisterOutputType(AccountPropertiesResponseEndpointsOutput{})
 	pulumi.RegisterOutputType(AccountPropertiesResponseManagedResourcesOutput{})
-	pulumi.RegisterOutputType(AccountPropertiesResponseSystemDataOutput{})
 	pulumi.RegisterOutputType(AccountResponseSkuOutput{})
+	pulumi.RegisterOutputType(AccountStatusResponseErrorDetailsOutput{})
 	pulumi.RegisterOutputType(CloudConnectorsResponseOutput{})
 	pulumi.RegisterOutputType(CloudConnectorsResponsePtrOutput{})
+	pulumi.RegisterOutputType(CredentialsOutput{})
+	pulumi.RegisterOutputType(CredentialsPtrOutput{})
+	pulumi.RegisterOutputType(CredentialsResponseOutput{})
+	pulumi.RegisterOutputType(CredentialsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorModelResponseOutput{})
+	pulumi.RegisterOutputType(ErrorModelResponseArrayOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
@@ -1055,4 +1606,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(ProxyResourceResponseSystemDataOutput{})
+	pulumi.RegisterOutputType(TrackedResourceResponseSystemDataOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

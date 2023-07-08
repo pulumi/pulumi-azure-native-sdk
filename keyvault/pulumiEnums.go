@@ -225,6 +225,7 @@ const (
 	JsonWebKeyOperationWrapKey   = JsonWebKeyOperation("wrapKey")
 	JsonWebKeyOperationUnwrapKey = JsonWebKeyOperation("unwrapKey")
 	JsonWebKeyOperationImport    = JsonWebKeyOperation("import")
+	JsonWebKeyOperationRelease   = JsonWebKeyOperation("release")
 )
 
 // The type of the key. For valid values, see JsonWebKeyType.
@@ -240,24 +241,193 @@ const (
 type KeyPermissions string
 
 const (
-	KeyPermissionsAll       = KeyPermissions("all")
-	KeyPermissionsEncrypt   = KeyPermissions("encrypt")
-	KeyPermissionsDecrypt   = KeyPermissions("decrypt")
-	KeyPermissionsWrapKey   = KeyPermissions("wrapKey")
-	KeyPermissionsUnwrapKey = KeyPermissions("unwrapKey")
-	KeyPermissionsSign      = KeyPermissions("sign")
-	KeyPermissionsVerify    = KeyPermissions("verify")
-	KeyPermissionsGet       = KeyPermissions("get")
-	KeyPermissionsList      = KeyPermissions("list")
-	KeyPermissionsCreate    = KeyPermissions("create")
-	KeyPermissionsUpdate    = KeyPermissions("update")
-	KeyPermissionsImport    = KeyPermissions("import")
-	KeyPermissionsDelete    = KeyPermissions("delete")
-	KeyPermissionsBackup    = KeyPermissions("backup")
-	KeyPermissionsRestore   = KeyPermissions("restore")
-	KeyPermissionsRecover   = KeyPermissions("recover")
-	KeyPermissionsPurge     = KeyPermissions("purge")
+	KeyPermissionsAll               = KeyPermissions("all")
+	KeyPermissionsEncrypt           = KeyPermissions("encrypt")
+	KeyPermissionsDecrypt           = KeyPermissions("decrypt")
+	KeyPermissionsWrapKey           = KeyPermissions("wrapKey")
+	KeyPermissionsUnwrapKey         = KeyPermissions("unwrapKey")
+	KeyPermissionsSign              = KeyPermissions("sign")
+	KeyPermissionsVerify            = KeyPermissions("verify")
+	KeyPermissionsGet               = KeyPermissions("get")
+	KeyPermissionsList              = KeyPermissions("list")
+	KeyPermissionsCreate            = KeyPermissions("create")
+	KeyPermissionsUpdate            = KeyPermissions("update")
+	KeyPermissionsImport            = KeyPermissions("import")
+	KeyPermissionsDelete            = KeyPermissions("delete")
+	KeyPermissionsBackup            = KeyPermissions("backup")
+	KeyPermissionsRestore           = KeyPermissions("restore")
+	KeyPermissionsRecover           = KeyPermissions("recover")
+	KeyPermissionsPurge             = KeyPermissions("purge")
+	KeyPermissionsRelease           = KeyPermissions("release")
+	KeyPermissionsRotate            = KeyPermissions("rotate")
+	KeyPermissionsGetrotationpolicy = KeyPermissions("getrotationpolicy")
+	KeyPermissionsSetrotationpolicy = KeyPermissions("setrotationpolicy")
 )
+
+// The type of action.
+type KeyRotationPolicyActionType string
+
+const (
+	KeyRotationPolicyActionTypeRotate = KeyRotationPolicyActionType("rotate")
+	KeyRotationPolicyActionTypeNotify = KeyRotationPolicyActionType("notify")
+)
+
+func (KeyRotationPolicyActionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRotationPolicyActionType)(nil)).Elem()
+}
+
+func (e KeyRotationPolicyActionType) ToKeyRotationPolicyActionTypeOutput() KeyRotationPolicyActionTypeOutput {
+	return pulumi.ToOutput(e).(KeyRotationPolicyActionTypeOutput)
+}
+
+func (e KeyRotationPolicyActionType) ToKeyRotationPolicyActionTypeOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KeyRotationPolicyActionTypeOutput)
+}
+
+func (e KeyRotationPolicyActionType) ToKeyRotationPolicyActionTypePtrOutput() KeyRotationPolicyActionTypePtrOutput {
+	return e.ToKeyRotationPolicyActionTypePtrOutputWithContext(context.Background())
+}
+
+func (e KeyRotationPolicyActionType) ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypePtrOutput {
+	return KeyRotationPolicyActionType(e).ToKeyRotationPolicyActionTypeOutputWithContext(ctx).ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx)
+}
+
+func (e KeyRotationPolicyActionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyRotationPolicyActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyRotationPolicyActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e KeyRotationPolicyActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type KeyRotationPolicyActionTypeOutput struct{ *pulumi.OutputState }
+
+func (KeyRotationPolicyActionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRotationPolicyActionType)(nil)).Elem()
+}
+
+func (o KeyRotationPolicyActionTypeOutput) ToKeyRotationPolicyActionTypeOutput() KeyRotationPolicyActionTypeOutput {
+	return o
+}
+
+func (o KeyRotationPolicyActionTypeOutput) ToKeyRotationPolicyActionTypeOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypeOutput {
+	return o
+}
+
+func (o KeyRotationPolicyActionTypeOutput) ToKeyRotationPolicyActionTypePtrOutput() KeyRotationPolicyActionTypePtrOutput {
+	return o.ToKeyRotationPolicyActionTypePtrOutputWithContext(context.Background())
+}
+
+func (o KeyRotationPolicyActionTypeOutput) ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRotationPolicyActionType) *KeyRotationPolicyActionType {
+		return &v
+	}).(KeyRotationPolicyActionTypePtrOutput)
+}
+
+func (o KeyRotationPolicyActionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KeyRotationPolicyActionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyRotationPolicyActionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KeyRotationPolicyActionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyRotationPolicyActionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyRotationPolicyActionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyRotationPolicyActionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyRotationPolicyActionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRotationPolicyActionType)(nil)).Elem()
+}
+
+func (o KeyRotationPolicyActionTypePtrOutput) ToKeyRotationPolicyActionTypePtrOutput() KeyRotationPolicyActionTypePtrOutput {
+	return o
+}
+
+func (o KeyRotationPolicyActionTypePtrOutput) ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypePtrOutput {
+	return o
+}
+
+func (o KeyRotationPolicyActionTypePtrOutput) Elem() KeyRotationPolicyActionTypeOutput {
+	return o.ApplyT(func(v *KeyRotationPolicyActionType) KeyRotationPolicyActionType {
+		if v != nil {
+			return *v
+		}
+		var ret KeyRotationPolicyActionType
+		return ret
+	}).(KeyRotationPolicyActionTypeOutput)
+}
+
+func (o KeyRotationPolicyActionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyRotationPolicyActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KeyRotationPolicyActionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// KeyRotationPolicyActionTypeInput is an input type that accepts KeyRotationPolicyActionTypeArgs and KeyRotationPolicyActionTypeOutput values.
+// You can construct a concrete instance of `KeyRotationPolicyActionTypeInput` via:
+//
+//	KeyRotationPolicyActionTypeArgs{...}
+type KeyRotationPolicyActionTypeInput interface {
+	pulumi.Input
+
+	ToKeyRotationPolicyActionTypeOutput() KeyRotationPolicyActionTypeOutput
+	ToKeyRotationPolicyActionTypeOutputWithContext(context.Context) KeyRotationPolicyActionTypeOutput
+}
+
+var keyRotationPolicyActionTypePtrType = reflect.TypeOf((**KeyRotationPolicyActionType)(nil)).Elem()
+
+type KeyRotationPolicyActionTypePtrInput interface {
+	pulumi.Input
+
+	ToKeyRotationPolicyActionTypePtrOutput() KeyRotationPolicyActionTypePtrOutput
+	ToKeyRotationPolicyActionTypePtrOutputWithContext(context.Context) KeyRotationPolicyActionTypePtrOutput
+}
+
+type keyRotationPolicyActionTypePtr string
+
+func KeyRotationPolicyActionTypePtr(v string) KeyRotationPolicyActionTypePtrInput {
+	return (*keyRotationPolicyActionTypePtr)(&v)
+}
+
+func (*keyRotationPolicyActionTypePtr) ElementType() reflect.Type {
+	return keyRotationPolicyActionTypePtrType
+}
+
+func (in *keyRotationPolicyActionTypePtr) ToKeyRotationPolicyActionTypePtrOutput() KeyRotationPolicyActionTypePtrOutput {
+	return pulumi.ToOutput(in).(KeyRotationPolicyActionTypePtrOutput)
+}
+
+func (in *keyRotationPolicyActionTypePtr) ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KeyRotationPolicyActionTypePtrOutput)
+}
 
 // SKU Family of the managed HSM Pool
 type ManagedHsmSkuFamily string
@@ -683,6 +853,8 @@ const (
 func init() {
 	pulumi.RegisterOutputType(CreateModeOutput{})
 	pulumi.RegisterOutputType(CreateModePtrOutput{})
+	pulumi.RegisterOutputType(KeyRotationPolicyActionTypeOutput{})
+	pulumi.RegisterOutputType(KeyRotationPolicyActionTypePtrOutput{})
 	pulumi.RegisterOutputType(ManagedHsmSkuNameOutput{})
 	pulumi.RegisterOutputType(ManagedHsmSkuNamePtrOutput{})
 	pulumi.RegisterOutputType(SkuNameOutput{})

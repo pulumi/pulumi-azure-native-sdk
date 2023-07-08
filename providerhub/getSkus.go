@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the sku details for the given resource type and sku name.
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview.
 func LookupSkus(ctx *pulumi.Context, args *LookupSkusArgs, opts ...pulumi.InvokeOption) (*LookupSkusResult, error) {
 	var rv LookupSkusResult
 	err := ctx.Invoke("azure-native:providerhub:getSkus", args, &rv, opts...)
@@ -36,6 +36,8 @@ type LookupSkusResult struct {
 	// The name of the resource
 	Name       string                        `pulumi:"name"`
 	Properties SkuResourceResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -92,6 +94,11 @@ func (o LookupSkusResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupSkusResultOutput) Properties() SkuResourceResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupSkusResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupSkusResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSkusResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

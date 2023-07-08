@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a string that represents the contents of the RDP file for the virtual machine
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func GetVirtualMachineRdpFileContents(ctx *pulumi.Context, args *GetVirtualMachineRdpFileContentsArgs, opts ...pulumi.InvokeOption) (*GetVirtualMachineRdpFileContentsResult, error) {
 	var rv GetVirtualMachineRdpFileContentsResult
 	err := ctx.Invoke("azure-native:devtestlab:getVirtualMachineRdpFileContents", args, &rv, opts...)

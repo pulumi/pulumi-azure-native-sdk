@@ -8,7 +8,7 @@ import (
 )
 
 // Get IoT Defender Settings
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func LookupDefenderSetting(ctx *pulumi.Context, args *LookupDefenderSettingArgs, opts ...pulumi.InvokeOption) (*LookupDefenderSettingResult, error) {
 	var rv LookupDefenderSettingResult
 	err := ctx.Invoke("azure-native:iotsecurity:getDefenderSetting", args, &rv, opts...)

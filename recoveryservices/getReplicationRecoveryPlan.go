@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the recovery plan.
-// API Version: 2018-07-10.
+// Azure REST API version: 2023-04-01.
 func LookupReplicationRecoveryPlan(ctx *pulumi.Context, args *LookupReplicationRecoveryPlanArgs, opts ...pulumi.InvokeOption) (*LookupReplicationRecoveryPlanResult, error) {
 	var rv LookupReplicationRecoveryPlanResult
 	err := ctx.Invoke("azure-native:recoveryservices:getReplicationRecoveryPlan", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 )
 
 // Object model for the Azure PowerShell script.
-// API Version: 2020-10-01.
+// Azure REST API version: 2020-10-01. Prior API version in Azure Native 1.x: 2020-10-01
 type AzurePowerShellScript struct {
 	pulumi.CustomResourceState
 

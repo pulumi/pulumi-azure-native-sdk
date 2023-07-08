@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified NSP profile.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func LookupNspProfile(ctx *pulumi.Context, args *LookupNspProfileArgs, opts ...pulumi.InvokeOption) (*LookupNspProfileResult, error) {
 	var rv LookupNspProfileResult
 	err := ctx.Invoke("azure-native:network:getNspProfile", args, &rv, opts...)

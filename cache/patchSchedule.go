@@ -12,15 +12,17 @@ import (
 )
 
 // Response to put/get patch schedules for Redis cache.
-// API Version: 2020-06-01.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2020-06-01
 type PatchSchedule struct {
 	pulumi.CustomResourceState
 
-	// Resource name.
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of patch schedules for a Redis cache.
 	ScheduleEntries ScheduleEntryResponseArrayOutput `pulumi:"scheduleEntries"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -64,6 +66,12 @@ func NewPatchSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:PatchSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:PatchSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:PatchSchedule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,7 +166,12 @@ func (o PatchScheduleOutput) ToPatchScheduleOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Resource name.
+// The geo-location where the resource lives
+func (o PatchScheduleOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchSchedule) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o PatchScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchSchedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -168,7 +181,7 @@ func (o PatchScheduleOutput) ScheduleEntries() ScheduleEntryResponseArrayOutput 
 	return o.ApplyT(func(v *PatchSchedule) ScheduleEntryResponseArrayOutput { return v.ScheduleEntries }).(ScheduleEntryResponseArrayOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PatchScheduleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchSchedule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

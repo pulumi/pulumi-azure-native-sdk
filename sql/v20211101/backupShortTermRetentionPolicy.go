@@ -12,8 +12,6 @@ import (
 )
 
 // A short term retention policy.
-//
-// Deprecated: azure-native:sql/v20211101:BackupShortTermRetentionPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:BackupShortTermRetentionPolicy to guarantee forwards compatibility.
 type BackupShortTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +77,9 @@ func NewBackupShortTermRetentionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:BackupShortTermRetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:BackupShortTermRetentionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

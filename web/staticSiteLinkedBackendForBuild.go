@@ -12,7 +12,7 @@ import (
 )
 
 // Static Site Linked Backend ARM resource.
-// API Version: 2022-03-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2022-03-01
 type StaticSiteLinkedBackendForBuild struct {
 	pulumi.CustomResourceState
 

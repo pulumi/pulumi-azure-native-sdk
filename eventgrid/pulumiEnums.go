@@ -28,24 +28,62 @@ const (
 	AdvancedFilterOperatorTypeIsNotNull                 = AdvancedFilterOperatorType("IsNotNull")
 )
 
+type AlternativeAuthenticationNameSource string
+
+const (
+	AlternativeAuthenticationNameSourceClientCertificateSubject = AlternativeAuthenticationNameSource("ClientCertificateSubject")
+	AlternativeAuthenticationNameSourceClientCertificateDns     = AlternativeAuthenticationNameSource("ClientCertificateDns")
+	AlternativeAuthenticationNameSourceClientCertificateUri     = AlternativeAuthenticationNameSource("ClientCertificateUri")
+	AlternativeAuthenticationNameSourceClientCertificateIp      = AlternativeAuthenticationNameSource("ClientCertificateIp")
+	AlternativeAuthenticationNameSourceClientCertificateEmail   = AlternativeAuthenticationNameSource("ClientCertificateEmail")
+)
+
 // Provisioning state of the channel.
 type ChannelProvisioningState string
 
 const (
-	ChannelProvisioningStateCreating  = ChannelProvisioningState("Creating")
-	ChannelProvisioningStateUpdating  = ChannelProvisioningState("Updating")
-	ChannelProvisioningStateDeleting  = ChannelProvisioningState("Deleting")
-	ChannelProvisioningStateSucceeded = ChannelProvisioningState("Succeeded")
-	ChannelProvisioningStateCanceled  = ChannelProvisioningState("Canceled")
-	ChannelProvisioningStateFailed    = ChannelProvisioningState("Failed")
+	ChannelProvisioningStateCreating                              = ChannelProvisioningState("Creating")
+	ChannelProvisioningStateUpdating                              = ChannelProvisioningState("Updating")
+	ChannelProvisioningStateDeleting                              = ChannelProvisioningState("Deleting")
+	ChannelProvisioningStateSucceeded                             = ChannelProvisioningState("Succeeded")
+	ChannelProvisioningStateCanceled                              = ChannelProvisioningState("Canceled")
+	ChannelProvisioningStateFailed                                = ChannelProvisioningState("Failed")
+	ChannelProvisioningStateIdleDueToMirroredPartnerTopicDeletion = ChannelProvisioningState("IdleDueToMirroredPartnerTopicDeletion")
 )
 
-// The type of the event channel which represents the  direction flow of events.
+// The type of the event channel which represents the direction flow of events.
 type ChannelType string
 
 const (
-	ChannelTypePartnerTopic       = ChannelType("PartnerTopic")
-	ChannelTypePartnerDestination = ChannelType("PartnerDestination")
+	ChannelTypePartnerTopic = ChannelType("PartnerTopic")
+)
+
+// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
+type ClientCertificateValidationScheme string
+
+const (
+	ClientCertificateValidationSchemeSubjectMatchesAuthenticationName = ClientCertificateValidationScheme("SubjectMatchesAuthenticationName")
+	ClientCertificateValidationSchemeDnsMatchesAuthenticationName     = ClientCertificateValidationScheme("DnsMatchesAuthenticationName")
+	ClientCertificateValidationSchemeUriMatchesAuthenticationName     = ClientCertificateValidationScheme("UriMatchesAuthenticationName")
+	ClientCertificateValidationSchemeIpMatchesAuthenticationName      = ClientCertificateValidationScheme("IpMatchesAuthenticationName")
+	ClientCertificateValidationSchemeEmailMatchesAuthenticationName   = ClientCertificateValidationScheme("EmailMatchesAuthenticationName")
+	ClientCertificateValidationSchemeThumbprintMatch                  = ClientCertificateValidationScheme("ThumbprintMatch")
+)
+
+// Indicates if the client is enabled or not. Default value is Enabled.
+type ClientStateEnum string
+
+const (
+	ClientStateEnumEnabled  = ClientStateEnum("Enabled")
+	ClientStateEnumDisabled = ClientStateEnum("Disabled")
+)
+
+// Data Residency Boundary of the resource.
+type DataResidencyBoundary string
+
+const (
+	DataResidencyBoundaryWithinGeopair = DataResidencyBoundary("WithinGeopair")
+	DataResidencyBoundaryWithinRegion  = DataResidencyBoundary("WithinRegion")
 )
 
 // Type of the endpoint for the dead letter destination
@@ -63,18 +101,31 @@ const (
 	DeliveryAttributeMappingTypeDynamic = DeliveryAttributeMappingType("Dynamic")
 )
 
+// Delivery mode of the event subscription.
+type DeliveryMode string
+
+const (
+	DeliveryModeQueue = DeliveryMode("Queue")
+)
+
+// The event delivery schema for the event subscription.
+type DeliverySchema string
+
+const (
+	DeliverySchema_CloudEventSchemaV1_0 = DeliverySchema("CloudEventSchemaV1_0")
+)
+
 // Type of the endpoint for the event subscription destination.
 type EndpointType string
 
 const (
-	EndpointTypeWebHook            = EndpointType("WebHook")
-	EndpointTypeEventHub           = EndpointType("EventHub")
-	EndpointTypeStorageQueue       = EndpointType("StorageQueue")
-	EndpointTypeHybridConnection   = EndpointType("HybridConnection")
-	EndpointTypeServiceBusQueue    = EndpointType("ServiceBusQueue")
-	EndpointTypeServiceBusTopic    = EndpointType("ServiceBusTopic")
-	EndpointTypeAzureFunction      = EndpointType("AzureFunction")
-	EndpointTypePartnerDestination = EndpointType("PartnerDestination")
+	EndpointTypeWebHook          = EndpointType("WebHook")
+	EndpointTypeEventHub         = EndpointType("EventHub")
+	EndpointTypeStorageQueue     = EndpointType("StorageQueue")
+	EndpointTypeHybridConnection = EndpointType("HybridConnection")
+	EndpointTypeServiceBusQueue  = EndpointType("ServiceBusQueue")
+	EndpointTypeServiceBusTopic  = EndpointType("ServiceBusTopic")
+	EndpointTypeAzureFunction    = EndpointType("AzureFunction")
 )
 
 // The kind of event type used.
@@ -93,12 +144,44 @@ const (
 	EventDeliverySchema_CloudEventSchemaV1_0 = EventDeliverySchema("CloudEventSchemaV1_0")
 )
 
+// This determines the format that is expected for incoming events published to the topic.
+type EventInputSchema string
+
+const (
+	EventInputSchema_CloudEventSchemaV1_0 = EventInputSchema("CloudEventSchemaV1_0")
+)
+
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
 type EventSubscriptionIdentityType string
 
 const (
 	EventSubscriptionIdentityTypeSystemAssigned = EventSubscriptionIdentityType("SystemAssigned")
 	EventSubscriptionIdentityTypeUserAssigned   = EventSubscriptionIdentityType("UserAssigned")
+)
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+type FilterOperatorType string
+
+const (
+	FilterOperatorTypeNumberIn                  = FilterOperatorType("NumberIn")
+	FilterOperatorTypeNumberNotIn               = FilterOperatorType("NumberNotIn")
+	FilterOperatorTypeNumberLessThan            = FilterOperatorType("NumberLessThan")
+	FilterOperatorTypeNumberGreaterThan         = FilterOperatorType("NumberGreaterThan")
+	FilterOperatorTypeNumberLessThanOrEquals    = FilterOperatorType("NumberLessThanOrEquals")
+	FilterOperatorTypeNumberGreaterThanOrEquals = FilterOperatorType("NumberGreaterThanOrEquals")
+	FilterOperatorTypeBoolEquals                = FilterOperatorType("BoolEquals")
+	FilterOperatorTypeStringIn                  = FilterOperatorType("StringIn")
+	FilterOperatorTypeStringNotIn               = FilterOperatorType("StringNotIn")
+	FilterOperatorTypeStringBeginsWith          = FilterOperatorType("StringBeginsWith")
+	FilterOperatorTypeStringEndsWith            = FilterOperatorType("StringEndsWith")
+	FilterOperatorTypeStringContains            = FilterOperatorType("StringContains")
+	FilterOperatorTypeNumberInRange             = FilterOperatorType("NumberInRange")
+	FilterOperatorTypeNumberNotInRange          = FilterOperatorType("NumberNotInRange")
+	FilterOperatorTypeStringNotBeginsWith       = FilterOperatorType("StringNotBeginsWith")
+	FilterOperatorTypeStringNotEndsWith         = FilterOperatorType("StringNotEndsWith")
+	FilterOperatorTypeStringNotContains         = FilterOperatorType("StringNotContains")
+	FilterOperatorTypeIsNullOrUndefined         = FilterOperatorType("IsNullOrUndefined")
+	FilterOperatorTypeIsNotNull                 = FilterOperatorType("IsNotNull")
 )
 
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
@@ -134,13 +217,6 @@ const (
 	IpActionTypeAllow = IpActionType("Allow")
 )
 
-// Type of client authentication
-type PartnerClientAuthenticationType string
-
-const (
-	PartnerClientAuthenticationTypeAzureAD = PartnerClientAuthenticationType("AzureAD")
-)
-
 // Provisioning state of the partner configuration.
 type PartnerConfigurationProvisioningState string
 
@@ -161,34 +237,6 @@ const (
 	PartnerDestinationActivationStateActivated      = PartnerDestinationActivationState("Activated")
 )
 
-// Provisioning state of the partner destination.
-type PartnerDestinationProvisioningState string
-
-const (
-	PartnerDestinationProvisioningStateCreating  = PartnerDestinationProvisioningState("Creating")
-	PartnerDestinationProvisioningStateUpdating  = PartnerDestinationProvisioningState("Updating")
-	PartnerDestinationProvisioningStateDeleting  = PartnerDestinationProvisioningState("Deleting")
-	PartnerDestinationProvisioningStateSucceeded = PartnerDestinationProvisioningState("Succeeded")
-	PartnerDestinationProvisioningStateCanceled  = PartnerDestinationProvisioningState("Canceled")
-	PartnerDestinationProvisioningStateFailed    = PartnerDestinationProvisioningState("Failed")
-)
-
-// Type of the endpoint for the partner destination
-type PartnerEndpointType string
-
-const (
-	PartnerEndpointTypeWebHook = PartnerEndpointType("WebHook")
-)
-
-// Visibility state of the partner registration.
-type PartnerRegistrationVisibilityState string
-
-const (
-	PartnerRegistrationVisibilityStateHidden             = PartnerRegistrationVisibilityState("Hidden")
-	PartnerRegistrationVisibilityStatePublicPreview      = PartnerRegistrationVisibilityState("PublicPreview")
-	PartnerRegistrationVisibilityStateGenerallyAvailable = PartnerRegistrationVisibilityState("GenerallyAvailable")
-)
-
 // Activation state of the partner topic.
 type PartnerTopicActivationState string
 
@@ -196,6 +244,23 @@ const (
 	PartnerTopicActivationStateNeverActivated = PartnerTopicActivationState("NeverActivated")
 	PartnerTopicActivationStateActivated      = PartnerTopicActivationState("Activated")
 	PartnerTopicActivationStateDeactivated    = PartnerTopicActivationState("Deactivated")
+)
+
+// This determines if events published to this partner namespace should use the source attribute in the event payload
+// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
+type PartnerTopicRoutingMode string
+
+const (
+	PartnerTopicRoutingModeSourceEventAttribute = PartnerTopicRoutingMode("SourceEventAttribute")
+	PartnerTopicRoutingModeChannelNameHeader    = PartnerTopicRoutingMode("ChannelNameHeader")
+)
+
+// The allowed permission.
+type PermissionType string
+
+const (
+	PermissionTypePublisher  = PermissionType("Publisher")
+	PermissionTypeSubscriber = PermissionType("Subscriber")
 )
 
 // Status of the connection.
@@ -217,6 +282,13 @@ const (
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
+// Publisher type of the namespace topic.
+type PublisherType string
+
+const (
+	PublisherTypeCustom = PublisherType("Custom")
+)
+
 // The readiness state of the corresponding partner topic.
 type ReadinessState string
 
@@ -235,6 +307,45 @@ const (
 	ResourceProvisioningStateSucceeded = ResourceProvisioningState("Succeeded")
 	ResourceProvisioningStateCanceled  = ResourceProvisioningState("Canceled")
 	ResourceProvisioningStateFailed    = ResourceProvisioningState("Failed")
+)
+
+type RoutingIdentityType string
+
+const (
+	RoutingIdentityTypeNone           = RoutingIdentityType("None")
+	RoutingIdentityTypeSystemAssigned = RoutingIdentityType("SystemAssigned")
+	RoutingIdentityTypeUserAssigned   = RoutingIdentityType("UserAssigned")
+)
+
+// The name of the SKU.
+type SkuName string
+
+const (
+	SkuNameStandard = SkuName("Standard")
+)
+
+// Static routing enrichment value type. For e.g. this property value can be 'String'.
+type StaticRoutingEnrichmentType string
+
+const (
+	StaticRoutingEnrichmentTypeString = StaticRoutingEnrichmentType("String")
+)
+
+// Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
+type TlsVersion string
+
+const (
+	TlsVersion_1_0 = TlsVersion("1.0")
+	TlsVersion_1_1 = TlsVersion("1.1")
+	TlsVersion_1_2 = TlsVersion("1.2")
+)
+
+// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
+type TopicSpacesConfigurationState string
+
+const (
+	TopicSpacesConfigurationStateDisabled = TopicSpacesConfigurationState("Disabled")
+	TopicSpacesConfigurationStateEnabled  = TopicSpacesConfigurationState("Enabled")
 )
 
 func init() {

@@ -12,7 +12,7 @@ import (
 )
 
 // The Scope Connections resource
-// API Version: 2022-02-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-02-01-preview
 type ScopeConnection struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,12 @@ func NewScopeConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ScopeConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ScopeConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:ScopeConnection"),
 		},
 	})
 	opts = append(opts, aliases)

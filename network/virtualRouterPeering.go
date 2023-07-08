@@ -12,7 +12,7 @@ import (
 )
 
 // Virtual Router Peering resource.
-// API Version: 2022-01-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-01-01
 type VirtualRouterPeering struct {
 	pulumi.CustomResourceState
 
@@ -103,6 +103,12 @@ func NewVirtualRouterPeering(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualRouterPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualRouterPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:VirtualRouterPeering"),
 		},
 	})
 	opts = append(opts, aliases)

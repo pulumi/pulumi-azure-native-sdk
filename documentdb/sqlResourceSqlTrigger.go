@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB trigger.
-// API Version: 2021-03-15.
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-15
 type SqlResourceSqlTrigger struct {
 	pulumi.CustomResourceState
 
@@ -120,7 +120,19 @@ func NewSqlResourceSqlTrigger(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlTrigger"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlTrigger"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlTrigger"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets information about a server.
-//
-// Deprecated: azure-native:dbforpostgresql/v20221201:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20230301preview:Server to guarantee forwards compatibility.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	var rv LookupServerResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20221201:getServer", args, &rv, opts...)
@@ -57,14 +55,16 @@ type LookupServerResult struct {
 	MinorVersion string `pulumi:"minorVersion"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Network properties of a server.
+	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 	Network *NetworkResponse `pulumi:"network"`
 	// Replicas allowed for a server.
-	ReplicaCapacity *int `pulumi:"replicaCapacity"`
+	ReplicaCapacity int `pulumi:"replicaCapacity"`
 	// Replication role of the server
 	ReplicationRole *string `pulumi:"replicationRole"`
 	// The SKU (pricing tier) of the server.
 	Sku *SkuResponse `pulumi:"sku"`
+	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
 	// A state of a server that is visible to user.
 	State string `pulumi:"state"`
 	// Storage properties of a server.
@@ -96,8 +96,6 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 	tmp.HighAvailability = tmp.HighAvailability.Defaults()
 
 	tmp.MaintenanceWindow = tmp.MaintenanceWindow.Defaults()
-
-	tmp.Network = tmp.Network.Defaults()
 
 	return &tmp
 }
@@ -206,14 +204,14 @@ func (o LookupServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network properties of a server.
+// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 func (o LookupServerResultOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *NetworkResponse { return v.Network }).(NetworkResponsePtrOutput)
 }
 
 // Replicas allowed for a server.
-func (o LookupServerResultOutput) ReplicaCapacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupServerResult) *int { return v.ReplicaCapacity }).(pulumi.IntPtrOutput)
+func (o LookupServerResultOutput) ReplicaCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServerResult) int { return v.ReplicaCapacity }).(pulumi.IntOutput)
 }
 
 // Replication role of the server
@@ -224,6 +222,11 @@ func (o LookupServerResultOutput) ReplicationRole() pulumi.StringPtrOutput {
 // The SKU (pricing tier) of the server.
 func (o LookupServerResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+}
+
+// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+func (o LookupServerResultOutput) SourceServerResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServerResult) *string { return v.SourceServerResourceId }).(pulumi.StringPtrOutput)
 }
 
 // A state of a server that is visible to user.

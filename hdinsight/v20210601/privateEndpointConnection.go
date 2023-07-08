@@ -12,8 +12,6 @@ import (
 )
 
 // The private endpoint connection.
-//
-// Deprecated: azure-native:hdinsight/v20210601:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:hdinsight/v20230415preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +50,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hdinsight:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20230415preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

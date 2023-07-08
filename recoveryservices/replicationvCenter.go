@@ -12,7 +12,7 @@ import (
 )
 
 // vCenter definition.
-// API Version: 2018-07-10.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10
 type ReplicationvCenter struct {
 	pulumi.CustomResourceState
 
@@ -109,6 +109,9 @@ func NewReplicationvCenter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ReplicationvCenter"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:ReplicationvCenter"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ReplicationvCenter
@@ -151,8 +154,8 @@ type replicationvCenterArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the recovery services vault.
 	ResourceName string `pulumi:"resourceName"`
-	// vCenter name.
-	VCenterName *string `pulumi:"vCenterName"`
+	// vcenter name.
+	VcenterName *string `pulumi:"vcenterName"`
 }
 
 // The set of arguments for constructing a ReplicationvCenter resource.
@@ -165,8 +168,8 @@ type ReplicationvCenterArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The name of the recovery services vault.
 	ResourceName pulumi.StringInput
-	// vCenter name.
-	VCenterName pulumi.StringPtrInput
+	// vcenter name.
+	VcenterName pulumi.StringPtrInput
 }
 
 func (ReplicationvCenterArgs) ElementType() reflect.Type {

@@ -12,7 +12,7 @@ import (
 )
 
 // Role management policy
-// API Version: 2020-10-01.
+// Azure REST API version: 2020-10-01. Prior API version in Azure Native 1.x: 2020-10-01
 type RoleManagementPolicyAssignment struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,7 @@ import (
 )
 
 // Route table resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type RouteTable struct {
 	pulumi.CustomResourceState
 
@@ -180,6 +180,12 @@ func NewRouteTable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:RouteTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:RouteTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:RouteTable"),
 		},
 	})
 	opts = append(opts, aliases)

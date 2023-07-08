@@ -12,7 +12,7 @@ import (
 )
 
 // Information about JIT request definition.
-// API Version: 2019-07-01.
+// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01
 type JitRequest struct {
 	pulumi.CustomResourceState
 
@@ -34,6 +34,8 @@ type JitRequest struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The publisher tenant id.
 	PublisherTenantId pulumi.StringOutput `pulumi:"publisherTenantId"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -231,6 +233,11 @@ func (o JitRequestOutput) ProvisioningState() pulumi.StringOutput {
 // The publisher tenant id.
 func (o JitRequestOutput) PublisherTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *JitRequest) pulumi.StringOutput { return v.PublisherTenantId }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o JitRequestOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *JitRequest) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

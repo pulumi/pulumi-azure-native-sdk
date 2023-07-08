@@ -11,7 +11,7 @@ import (
 )
 
 // Tenant configuration.
-// API Version: 2020-09-01-preview.
+// Azure REST API version: 2020-09-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview
 type TenantConfiguration struct {
 	pulumi.CustomResourceState
 

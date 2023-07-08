@@ -11,7 +11,7 @@ import (
 )
 
 // Get a specific connection
-// API Version: 2016-06-01.
+// Azure REST API version: 2016-06-01.
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	var rv LookupConnectionResult
 	err := ctx.Invoke("azure-native:web:getConnection", args, &rv, opts...)

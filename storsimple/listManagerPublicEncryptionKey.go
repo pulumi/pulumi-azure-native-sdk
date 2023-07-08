@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the symmetric encrypted public encryption key of the manager.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func ListManagerPublicEncryptionKey(ctx *pulumi.Context, args *ListManagerPublicEncryptionKeyArgs, opts ...pulumi.InvokeOption) (*ListManagerPublicEncryptionKeyResult, error) {
 	var rv ListManagerPublicEncryptionKeyResult
 	err := ctx.Invoke("azure-native:storsimple:listManagerPublicEncryptionKey", args, &rv, opts...)

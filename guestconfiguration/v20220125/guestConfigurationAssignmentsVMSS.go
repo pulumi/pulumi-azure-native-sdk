@@ -40,6 +40,12 @@ func NewGuestConfigurationAssignmentsVMSS(ctx *pulumi.Context,
 	if args.VmssName == nil {
 		return nil, errors.New("invalid value for required argument 'VmssName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:guestconfiguration:GuestConfigurationAssignmentsVMSS"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource GuestConfigurationAssignmentsVMSS
 	err := ctx.RegisterResource("azure-native:guestconfiguration/v20220125:GuestConfigurationAssignmentsVMSS", name, args, &resource, opts...)
 	if err != nil {

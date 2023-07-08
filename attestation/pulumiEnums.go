@@ -12,5 +12,25 @@ const (
 	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
 )
 
+// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
+type PublicNetworkAccessType string
+
+const (
+	// Enables public network connectivity to the Attestation Provider REST APIs.
+	PublicNetworkAccessTypeEnabled = PublicNetworkAccessType("Enabled")
+	// Disables public network connectivity to the Attestation Provider REST APIs.
+	PublicNetworkAccessTypeDisabled = PublicNetworkAccessType("Disabled")
+)
+
+// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
+type TpmAttestationAuthenticationType string
+
+const (
+	// Enables the requirement of authentication for TPM Attestation REST APIs.
+	TpmAttestationAuthenticationTypeEnabled = TpmAttestationAuthenticationType("Enabled")
+	// Disables the requirement of authentication for TPM Attestation REST APIs.
+	TpmAttestationAuthenticationTypeDisabled = TpmAttestationAuthenticationType("Disabled")
+)
+
 func init() {
 }

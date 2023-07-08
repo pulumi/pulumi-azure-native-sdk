@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Test Base CustomerEvent.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-04-01-preview.
 func LookupCustomerEvent(ctx *pulumi.Context, args *LookupCustomerEventArgs, opts ...pulumi.InvokeOption) (*LookupCustomerEventResult, error) {
 	var rv LookupCustomerEventResult
 	err := ctx.Invoke("azure-native:testbase:getCustomerEvent", args, &rv, opts...)

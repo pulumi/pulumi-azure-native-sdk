@@ -12,7 +12,7 @@ import (
 )
 
 // Workload group operations for a data warehouse
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type WorkloadGroup struct {
 	pulumi.CustomResourceState
 
@@ -95,6 +95,9 @@ func NewWorkloadGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:WorkloadGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:WorkloadGroup"),
 		},
 	})
 	opts = append(opts, aliases)

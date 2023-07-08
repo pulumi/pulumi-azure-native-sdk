@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified DDoS protection plan.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupDdosProtectionPlan(ctx *pulumi.Context, args *LookupDdosProtectionPlanArgs, opts ...pulumi.InvokeOption) (*LookupDdosProtectionPlanResult, error) {
 	var rv LookupDdosProtectionPlanResult
 	err := ctx.Invoke("azure-native:network:getDdosProtectionPlan", args, &rv, opts...)
@@ -40,6 +40,8 @@ type LookupDdosProtectionPlanResult struct {
 	Name string `pulumi:"name"`
 	// The provisioning state of the DDoS protection plan resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
+	PublicIPAddresses []SubResourceResponse `pulumi:"publicIPAddresses"`
 	// The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
 	ResourceGuid string `pulumi:"resourceGuid"`
 	// Resource tags.
@@ -112,6 +114,11 @@ func (o LookupDdosProtectionPlanResultOutput) Name() pulumi.StringOutput {
 // The provisioning state of the DDoS protection plan resource.
 func (o LookupDdosProtectionPlanResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDdosProtectionPlanResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
+func (o LookupDdosProtectionPlanResultOutput) PublicIPAddresses() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v LookupDdosProtectionPlanResult) []SubResourceResponse { return v.PublicIPAddresses }).(SubResourceResponseArrayOutput)
 }
 
 // The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.

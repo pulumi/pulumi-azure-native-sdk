@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the cluster customer user credentials for the dedicated appliance.
-// API Version: 2022-04-15-preview.
+// Azure REST API version: 2022-04-15-preview.
 func ListApplianceClusterCustomerUserCredential(ctx *pulumi.Context, args *ListApplianceClusterCustomerUserCredentialArgs, opts ...pulumi.InvokeOption) (*ListApplianceClusterCustomerUserCredentialResult, error) {
 	var rv ListApplianceClusterCustomerUserCredentialResult
 	err := ctx.Invoke("azure-native:resourceconnector:listApplianceClusterCustomerUserCredential", args, &rv, opts...)

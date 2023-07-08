@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,12 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:databricks/v20220401preview:AccessConnector":
 		r = &AccessConnector{}
-	case "azure-native:databricks/v20220401preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:databricks/v20220401preview:Workspace":
-		r = &Workspace{}
-	case "azure-native:databricks/v20220401preview:vNetPeering":
-		r = &VNetPeering{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

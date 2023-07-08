@@ -10,67 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// AAD Join type.
-type DomainJoinType string
-
-const (
-	DomainJoinTypeHybridAzureADJoin = DomainJoinType("HybridAzureADJoin")
-	DomainJoinTypeAzureADJoin       = DomainJoinType("AzureADJoin")
-)
-
-// Indicates whether or not this scheduled task is enabled.
-type EnableStatus string
-
-const (
-	EnableStatusEnabled  = EnableStatus("Enabled")
-	EnableStatusDisabled = EnableStatus("Disabled")
-)
-
 // Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
 type HibernateSupport string
 
 const (
 	HibernateSupportDisabled = HibernateSupport("Disabled")
 	HibernateSupportEnabled  = HibernateSupport("Enabled")
-)
-
-// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
-type LicenseType string
-
-const (
-	LicenseType_Windows_Client = LicenseType("Windows_Client")
-)
-
-// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
-type LocalAdminStatus string
-
-const (
-	LocalAdminStatusDisabled = LocalAdminStatus("Disabled")
-	LocalAdminStatusEnabled  = LocalAdminStatus("Enabled")
-)
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-type ManagedServiceIdentityType string
-
-const (
-	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
-	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
-	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
-	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned, UserAssigned")
-)
-
-// The frequency of this scheduled task.
-type ScheduledFrequency string
-
-const (
-	ScheduledFrequencyDaily = ScheduledFrequency("Daily")
-)
-
-// Supported type this scheduled task represents.
-type ScheduledType string
-
-const (
-	ScheduledTypeStopDevBox = ScheduledType("StopDevBox")
 )
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.

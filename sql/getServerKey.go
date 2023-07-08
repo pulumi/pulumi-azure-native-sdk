@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a server key.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pulumi.InvokeOption) (*LookupServerKeyResult, error) {
 	var rv LookupServerKeyResult
 	err := ctx.Invoke("azure-native:sql:getServerKey", args, &rv, opts...)

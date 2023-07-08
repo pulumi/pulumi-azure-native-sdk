@@ -11,7 +11,7 @@ import (
 )
 
 // List Both of the 2 Keys of a Spatial Anchors Account
-// API Version: 2021-01-01.
+// Azure REST API version: 2021-01-01.
 func ListSpatialAnchorsAccountKeys(ctx *pulumi.Context, args *ListSpatialAnchorsAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListSpatialAnchorsAccountKeysResult, error) {
 	var rv ListSpatialAnchorsAccountKeysResult
 	err := ctx.Invoke("azure-native:mixedreality:listSpatialAnchorsAccountKeys", args, &rv, opts...)

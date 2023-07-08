@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the import pipeline.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2023-01-01-preview.
 func LookupImportPipeline(ctx *pulumi.Context, args *LookupImportPipelineArgs, opts ...pulumi.InvokeOption) (*LookupImportPipelineResult, error) {
 	var rv LookupImportPipelineResult
 	err := ctx.Invoke("azure-native:containerregistry:getImportPipeline", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupImportPipelineArgs struct {
 	ImportPipelineName string `pulumi:"importPipelineName"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -85,7 +85,7 @@ type LookupImportPipelineOutputArgs struct {
 	ImportPipelineName pulumi.StringInput `pulumi:"importPipelineName"`
 	// The name of the container registry.
 	RegistryName pulumi.StringInput `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

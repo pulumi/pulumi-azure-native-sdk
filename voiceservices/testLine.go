@@ -12,7 +12,7 @@ import (
 )
 
 // A TestLine resource
-// API Version: 2022-12-01-preview.
+// Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2022-12-01-preview
 type TestLine struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +60,9 @@ func NewTestLine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:voiceservices/v20230131:TestLine"),
 		},
+		{
+			Type: pulumi.String("azure-native:voiceservices/v20230403:TestLine"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource TestLine
@@ -101,7 +104,7 @@ type testLineArgs struct {
 	// The phone number
 	PhoneNumber string `pulumi:"phoneNumber"`
 	// Purpose of this test line, e.g. automated or manual testing
-	Purpose TestLinePurpose `pulumi:"purpose"`
+	Purpose string `pulumi:"purpose"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -119,7 +122,7 @@ type TestLineArgs struct {
 	// The phone number
 	PhoneNumber pulumi.StringInput
 	// Purpose of this test line, e.g. automated or manual testing
-	Purpose TestLinePurposeInput
+	Purpose pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.

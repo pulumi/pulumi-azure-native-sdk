@@ -47,6 +47,12 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	if args.ServerName == nil {
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql:PrivateEndpointConnection"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource PrivateEndpointConnection
 	err := ctx.RegisterResource("azure-native:dbformysql/v20220930preview:PrivateEndpointConnection", name, args, &resource, opts...)
 	if err != nil {

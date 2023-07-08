@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Deprecated: azure-native:dataprotection/v20230101:ResourceGuard is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230401preview:ResourceGuard to guarantee forwards compatibility.
 type ResourceGuard struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +82,12 @@ func NewResourceGuard(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20221201:ResourceGuard"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:ResourceGuard"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230501:ResourceGuard"),
 		},
 	})
 	opts = append(opts, aliases)

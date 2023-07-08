@@ -12,21 +12,25 @@ import (
 )
 
 // Response to put/get linked server (with properties) for Redis cache.
-// API Version: 2020-06-01.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2020-06-01
 type LinkedServer struct {
 	pulumi.CustomResourceState
 
+	// The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.
+	GeoReplicatedPrimaryHostName pulumi.StringOutput `pulumi:"geoReplicatedPrimaryHostName"`
 	// Fully qualified resourceId of the linked redis cache.
 	LinkedRedisCacheId pulumi.StringOutput `pulumi:"linkedRedisCacheId"`
 	// Location of the linked redis cache.
 	LinkedRedisCacheLocation pulumi.StringOutput `pulumi:"linkedRedisCacheLocation"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The changing DNS name that resolves to the current geo-primary cache among the linked redis caches before or after the Geo Failover.
+	PrimaryHostName pulumi.StringOutput `pulumi:"primaryHostName"`
 	// Terminal state of the link between primary and secondary redis cache.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Role of the linked server.
 	ServerRole pulumi.StringOutput `pulumi:"serverRole"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -79,6 +83,12 @@ func NewLinkedServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20220601:LinkedServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230401:LinkedServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230501preview:LinkedServer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -181,6 +191,11 @@ func (o LinkedServerOutput) ToLinkedServerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.
+func (o LinkedServerOutput) GeoReplicatedPrimaryHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LinkedServer) pulumi.StringOutput { return v.GeoReplicatedPrimaryHostName }).(pulumi.StringOutput)
+}
+
 // Fully qualified resourceId of the linked redis cache.
 func (o LinkedServerOutput) LinkedRedisCacheId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LinkedServer) pulumi.StringOutput { return v.LinkedRedisCacheId }).(pulumi.StringOutput)
@@ -191,9 +206,14 @@ func (o LinkedServerOutput) LinkedRedisCacheLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *LinkedServer) pulumi.StringOutput { return v.LinkedRedisCacheLocation }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LinkedServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LinkedServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The changing DNS name that resolves to the current geo-primary cache among the linked redis caches before or after the Geo Failover.
+func (o LinkedServerOutput) PrimaryHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LinkedServer) pulumi.StringOutput { return v.PrimaryHostName }).(pulumi.StringOutput)
 }
 
 // Terminal state of the link between primary and secondary redis cache.
@@ -206,7 +226,7 @@ func (o LinkedServerOutput) ServerRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *LinkedServer) pulumi.StringOutput { return v.ServerRole }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LinkedServerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *LinkedServer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the Authentication/Authorization settings of an app.
-// API Version: 2020-12-01.
+// Description for Gets the Authentication/Authorization settings of an app.
+// Azure REST API version: 2022-09-01.
 func ListWebAppAuthSettingsSlot(ctx *pulumi.Context, args *ListWebAppAuthSettingsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppAuthSettingsSlotResult, error) {
 	var rv ListWebAppAuthSettingsSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppAuthSettingsSlot", args, &rv, opts...)
@@ -37,7 +37,7 @@ type ListWebAppAuthSettingsSlotResult struct {
 	// Login parameters to send to the OpenID Connect authorization endpoint when
 	// a user logs in. Each parameter must be in the form "key=value".
 	AdditionalLoginParams []string `pulumi:"additionalLoginParams"`
-	// Allowed audience values to consider when validating JWTs issued by
+	// Allowed audience values to consider when validating JSON Web Tokens issued by
 	// Azure Active Directory. Note that the <code>ClientID</code> value is always considered an
 	// allowed audience, regardless of this setting.
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
@@ -222,7 +222,7 @@ func (o ListWebAppAuthSettingsSlotResultOutput) AdditionalLoginParams() pulumi.S
 	return o.ApplyT(func(v ListWebAppAuthSettingsSlotResult) []string { return v.AdditionalLoginParams }).(pulumi.StringArrayOutput)
 }
 
-// Allowed audience values to consider when validating JWTs issued by
+// Allowed audience values to consider when validating JSON Web Tokens issued by
 // Azure Active Directory. Note that the <code>ClientID</code> value is always considered an
 // allowed audience, regardless of this setting.
 func (o ListWebAppAuthSettingsSlotResultOutput) AllowedAudiences() pulumi.StringArrayOutput {

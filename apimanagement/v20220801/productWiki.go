@@ -12,8 +12,6 @@ import (
 )
 
 // Wiki properties
-//
-// Deprecated: azure-native:apimanagement/v20220801:ProductWiki is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ProductWiki to guarantee forwards compatibility.
 type ProductWiki struct {
 	pulumi.CustomResourceState
 
@@ -41,6 +39,18 @@ func NewProductWiki(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement:ProductWiki"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ProductWiki"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ProductWiki"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ProductWiki
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:ProductWiki", name, args, &resource, opts...)
 	if err != nil {

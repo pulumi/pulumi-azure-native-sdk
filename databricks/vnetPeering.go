@@ -12,7 +12,7 @@ import (
 )
 
 // Peerings in a VirtualNetwork resource
-// API Version: 2018-04-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2018-04-01
 type VNetPeering struct {
 	pulumi.CustomResourceState
 
@@ -60,13 +60,28 @@ func NewVNetPeering(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:databricks:vNetPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20180401:VNetPeering"),
+		},
+		{
 			Type: pulumi.String("azure-native:databricks/v20180401:vNetPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20210401preview:VNetPeering"),
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20210401preview:vNetPeering"),
 		},
 		{
+			Type: pulumi.String("azure-native:databricks/v20220401preview:VNetPeering"),
+		},
+		{
 			Type: pulumi.String("azure-native:databricks/v20220401preview:vNetPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20230201:VNetPeering"),
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20230201:vNetPeering"),
@@ -74,7 +89,7 @@ func NewVNetPeering(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource VNetPeering
-	err := ctx.RegisterResource("azure-native:databricks:vNetPeering", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:databricks:VNetPeering", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -86,7 +101,7 @@ func NewVNetPeering(ctx *pulumi.Context,
 func GetVNetPeering(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VNetPeeringState, opts ...pulumi.ResourceOption) (*VNetPeering, error) {
 	var resource VNetPeering
-	err := ctx.ReadResource("azure-native:databricks:vNetPeering", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:databricks:VNetPeering", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -11,7 +11,7 @@ import (
 )
 
 // Lists a Channel registration for a Bot Service including secrets
-// API Version: 2021-03-01.
+// Azure REST API version: 2022-09-15.
 func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opts ...pulumi.InvokeOption) (*ListChannelWithKeysResult, error) {
 	var rv ListChannelWithKeysResult
 	err := ctx.Invoke("azure-native:botservice:listChannelWithKeys", args, &rv, opts...)
@@ -36,7 +36,7 @@ type ListChannelWithKeysResult struct {
 	ChangedTime *string `pulumi:"changedTime"`
 	// Entity tag of the resource
 	EntityTag *string `pulumi:"entityTag"`
-	// Entity Tag
+	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
@@ -126,7 +126,7 @@ func (o ListChannelWithKeysResultOutput) EntityTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *string { return v.EntityTag }).(pulumi.StringPtrOutput)
 }
 
-// Entity Tag
+// Entity Tag.
 func (o ListChannelWithKeysResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

@@ -12,8 +12,6 @@ import (
 )
 
 // Workload classifier operations for a data warehouse
-//
-// Deprecated: azure-native:sql/v20211101:WorkloadClassifier is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:WorkloadClassifier to guarantee forwards compatibility.
 type WorkloadClassifier struct {
 	pulumi.CustomResourceState
 
@@ -93,6 +91,9 @@ func NewWorkloadClassifier(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:WorkloadClassifier"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:WorkloadClassifier"),
 		},
 	})
 	opts = append(opts, aliases)

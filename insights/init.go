@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ExportConfiguration{}
 	case "azure-native:insights:Favorite":
 		r = &Favorite{}
+	case "azure-native:insights:GuestDiagnosticsSetting":
+		r = &GuestDiagnosticsSetting{}
 	case "azure-native:insights:GuestDiagnosticsSettingsAssociation":
 		r = &GuestDiagnosticsSettingsAssociation{}
 	case "azure-native:insights:LogProfile":
@@ -71,14 +73,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScheduledQueryRule{}
 	case "azure-native:insights:SubscriptionDiagnosticSetting":
 		r = &SubscriptionDiagnosticSetting{}
+	case "azure-native:insights:TenantActionGroup":
+		r = &TenantActionGroup{}
 	case "azure-native:insights:WebTest":
 		r = &WebTest{}
 	case "azure-native:insights:Workbook":
 		r = &Workbook{}
 	case "azure-native:insights:WorkbookTemplate":
 		r = &WorkbookTemplate{}
-	case "azure-native:insights:guestDiagnosticsSetting":
-		r = &GuestDiagnosticsSetting{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets properties of the specified application.
-//
-// Deprecated: azure-native:hdinsight/v20210601:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:hdinsight/v20230415preview:Application to guarantee forwards compatibility.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:hdinsight/v20210601:getApplication", args, &rv, opts...)

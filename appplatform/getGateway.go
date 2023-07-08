@@ -11,7 +11,7 @@ import (
 )
 
 // Get the Spring Cloud Gateway and its properties.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	var rv LookupGatewayResult
 	err := ctx.Invoke("azure-native:appplatform:getGateway", args, &rv, opts...)
@@ -53,6 +53,8 @@ func (val *LookupGatewayResult) Defaults() *LookupGatewayResult {
 	}
 	tmp := *val
 	tmp.Properties = *tmp.Properties.Defaults()
+
+	tmp.Sku = tmp.Sku.Defaults()
 
 	return &tmp
 }

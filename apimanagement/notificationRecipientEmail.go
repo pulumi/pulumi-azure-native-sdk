@@ -12,15 +12,15 @@ import (
 )
 
 // Recipient Email details.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01
 type NotificationRecipientEmail struct {
 	pulumi.CustomResourceState
 
 	// User Email subscribed to notification.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -83,6 +83,12 @@ func NewNotificationRecipientEmail(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:NotificationRecipientEmail"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:NotificationRecipientEmail"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:NotificationRecipientEmail"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NotificationRecipientEmail
@@ -121,7 +127,7 @@ type notificationRecipientEmailArgs struct {
 	Email *string `pulumi:"email"`
 	// Notification Name Identifier.
 	NotificationName string `pulumi:"notificationName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -133,7 +139,7 @@ type NotificationRecipientEmailArgs struct {
 	Email pulumi.StringPtrInput
 	// Notification Name Identifier.
 	NotificationName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput
@@ -181,12 +187,12 @@ func (o NotificationRecipientEmailOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationRecipientEmail) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o NotificationRecipientEmailOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationRecipientEmail) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o NotificationRecipientEmailOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationRecipientEmail) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

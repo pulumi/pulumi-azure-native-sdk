@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details about the specified output.
-// API Version: 2016-03-01.
+// Azure REST API version: 2020-03-01.
 func LookupOutput(ctx *pulumi.Context, args *LookupOutputArgs, opts ...pulumi.InvokeOption) (*LookupOutputResult, error) {
 	var rv LookupOutputResult
 	err := ctx.Invoke("azure-native:streamanalytics:getOutput", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupOutputArgs struct {
 	JobName string `pulumi:"jobName"`
 	// The name of the output.
 	OutputName string `pulumi:"outputName"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -44,6 +44,10 @@ type LookupOutputResult struct {
 	Name *string `pulumi:"name"`
 	// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 	Serialization interface{} `pulumi:"serialization"`
+	// The size window to constrain a Stream Analytics output to.
+	SizeWindow *int `pulumi:"sizeWindow"`
+	// The time frame for filtering Stream Analytics job outputs.
+	TimeWindow *string `pulumi:"timeWindow"`
 	// Resource type
 	Type string `pulumi:"type"`
 }
@@ -66,7 +70,7 @@ type LookupOutputOutputArgs struct {
 	JobName pulumi.StringInput `pulumi:"jobName"`
 	// The name of the output.
 	OutputName pulumi.StringInput `pulumi:"outputName"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -117,6 +121,16 @@ func (o LookupOutputResultOutput) Name() pulumi.StringPtrOutput {
 // Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
 func (o LookupOutputResultOutput) Serialization() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupOutputResult) interface{} { return v.Serialization }).(pulumi.AnyOutput)
+}
+
+// The size window to constrain a Stream Analytics output to.
+func (o LookupOutputResultOutput) SizeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupOutputResult) *int { return v.SizeWindow }).(pulumi.IntPtrOutput)
+}
+
+// The time frame for filtering Stream Analytics job outputs.
+func (o LookupOutputResultOutput) TimeWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOutputResult) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
 }
 
 // Resource type

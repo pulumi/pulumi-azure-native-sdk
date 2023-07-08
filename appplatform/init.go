@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,12 +25,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiPortal{}
 	case "azure-native:appplatform:ApiPortalCustomDomain":
 		r = &ApiPortalCustomDomain{}
+	case "azure-native:appplatform:Apm":
+		r = &Apm{}
 	case "azure-native:appplatform:App":
 		r = &App{}
+	case "azure-native:appplatform:ApplicationAccelerator":
+		r = &ApplicationAccelerator{}
+	case "azure-native:appplatform:ApplicationLiveView":
+		r = &ApplicationLiveView{}
 	case "azure-native:appplatform:Binding":
 		r = &Binding{}
 	case "azure-native:appplatform:BuildServiceAgentPool":
 		r = &BuildServiceAgentPool{}
+	case "azure-native:appplatform:BuildServiceBuild":
+		r = &BuildServiceBuild{}
 	case "azure-native:appplatform:BuildServiceBuilder":
 		r = &BuildServiceBuilder{}
 	case "azure-native:appplatform:BuildpackBinding":
@@ -41,10 +49,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConfigServer{}
 	case "azure-native:appplatform:ConfigurationService":
 		r = &ConfigurationService{}
+	case "azure-native:appplatform:ContainerRegistry":
+		r = &ContainerRegistry{}
 	case "azure-native:appplatform:CustomDomain":
 		r = &CustomDomain{}
+	case "azure-native:appplatform:CustomizedAccelerator":
+		r = &CustomizedAccelerator{}
 	case "azure-native:appplatform:Deployment":
 		r = &Deployment{}
+	case "azure-native:appplatform:DevToolPortal":
+		r = &DevToolPortal{}
 	case "azure-native:appplatform:Gateway":
 		r = &Gateway{}
 	case "azure-native:appplatform:GatewayCustomDomain":

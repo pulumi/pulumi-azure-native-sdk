@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure ML commitment plan resource.
-// API Version: 2016-05-01-preview.
+// Azure REST API version: 2016-05-01-preview. Prior API version in Azure Native 1.x: 2016-05-01-preview
 type CommitmentPlan struct {
 	pulumi.CustomResourceState
 

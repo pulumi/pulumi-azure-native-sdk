@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a Database.
-//
-// Deprecated: azure-native:dbforpostgresql/v20221201:Database is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20230301preview:Database to guarantee forwards compatibility.
 type Database struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +42,9 @@ func NewDatabase(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Database"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20201105preview:Database"),
 		},
 		{
@@ -57,6 +58,9 @@ func NewDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20220308preview:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:Database"),
 		},
 	})
 	opts = append(opts, aliases)

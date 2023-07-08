@@ -12,7 +12,7 @@ import (
 )
 
 // Fabric definition.
-// API Version: 2018-07-10.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10
 type ReplicationFabric struct {
 	pulumi.CustomResourceState
 
@@ -105,6 +105,9 @@ func NewReplicationFabric(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ReplicationFabric"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:ReplicationFabric"),
 		},
 	})
 	opts = append(opts, aliases)

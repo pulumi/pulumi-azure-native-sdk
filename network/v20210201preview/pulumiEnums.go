@@ -53,14 +53,6 @@ const (
 	ConnectivityTopologyMesh        = ConnectivityTopology("Mesh")
 )
 
-// Flag if need to delete existing network security groups.
-type DeleteExistingNSGs string
-
-const (
-	DeleteExistingNSGsFalse = DeleteExistingNSGs("False")
-	DeleteExistingNSGsTrue  = DeleteExistingNSGs("True")
-)
-
 // Flag if need to remove current existing peerings.
 type DeleteExistingPeering string
 
@@ -114,28 +106,12 @@ const (
 	SecurityConfigurationRuleProtocolAh   = SecurityConfigurationRuleProtocol("Ah")
 )
 
-// Security Type.
-type SecurityType string
-
-const (
-	SecurityTypeAdminPolicy = SecurityType("AdminPolicy")
-	SecurityTypeUserPolicy  = SecurityType("UserPolicy")
-)
-
 // Flag if need to use hub gateway.
 type UseHubGateway string
 
 const (
 	UseHubGatewayFalse = UseHubGateway("False")
 	UseHubGatewayTrue  = UseHubGateway("True")
-)
-
-// Whether the rule is custom or default.
-type UserRuleKind string
-
-const (
-	UserRuleKindCustom  = UserRuleKind("Custom")
-	UserRuleKindDefault = UserRuleKind("Default")
 )
 
 func init() {

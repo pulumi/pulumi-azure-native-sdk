@@ -11,7 +11,7 @@ import (
 )
 
 // Get synchronization settings set on a share
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func ListShareSubscriptionSourceShareSynchronizationSettings(ctx *pulumi.Context, args *ListShareSubscriptionSourceShareSynchronizationSettingsArgs, opts ...pulumi.InvokeOption) (*ListShareSubscriptionSourceShareSynchronizationSettingsResult, error) {
 	var rv ListShareSubscriptionSourceShareSynchronizationSettingsResult
 	err := ctx.Invoke("azure-native:datashare:listShareSubscriptionSourceShareSynchronizationSettings", args, &rv, opts...)

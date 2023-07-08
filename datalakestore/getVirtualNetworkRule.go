@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Data Lake Store virtual network rule.
-// API Version: 2016-11-01.
+// Azure REST API version: 2016-11-01.
 func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRuleResult, error) {
 	var rv LookupVirtualNetworkRuleResult
 	err := ctx.Invoke("azure-native:datalakestore:getVirtualNetworkRule", args, &rv, opts...)

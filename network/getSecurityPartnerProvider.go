@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Security Partner Provider.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupSecurityPartnerProvider(ctx *pulumi.Context, args *LookupSecurityPartnerProviderArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPartnerProviderResult, error) {
 	var rv LookupSecurityPartnerProviderResult
 	err := ctx.Invoke("azure-native:network:getSecurityPartnerProvider", args, &rv, opts...)

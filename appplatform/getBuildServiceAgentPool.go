@@ -11,7 +11,7 @@ import (
 )
 
 // Get build service agent pool.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupBuildServiceAgentPool(ctx *pulumi.Context, args *LookupBuildServiceAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceAgentPoolResult, error) {
 	var rv LookupBuildServiceAgentPoolResult
 	err := ctx.Invoke("azure-native:appplatform:getBuildServiceAgentPool", args, &rv, opts...)

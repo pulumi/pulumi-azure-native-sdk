@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about the model view or the instance view of a hybrid machine.
-// API Version: 2020-08-02.
+// Azure REST API version: 2022-12-27.
 func LookupMachine(ctx *pulumi.Context, args *LookupMachineArgs, opts ...pulumi.InvokeOption) (*LookupMachineResult, error) {
 	var rv LookupMachineResult
 	err := ctx.Invoke("azure-native:hybridcompute:getMachine", args, &rv, opts...)
@@ -25,8 +25,8 @@ type LookupMachineArgs struct {
 	// The expand expression to apply on the operation.
 	Expand *string `pulumi:"expand"`
 	// The name of the hybrid machine.
-	Name string `pulumi:"name"`
-	// The name of the resource group.
+	MachineName string `pulumi:"machineName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -34,10 +34,18 @@ type LookupMachineArgs struct {
 type LookupMachineResult struct {
 	// Specifies the AD fully qualified display name.
 	AdFqdn string `pulumi:"adFqdn"`
+	// Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM.
+	AgentConfiguration AgentConfigurationResponse `pulumi:"agentConfiguration"`
+	// The info of the machine w.r.t Agent Upgrade
+	AgentUpgrade *AgentUpgradeResponse `pulumi:"agentUpgrade"`
 	// The hybrid machine agent full version.
 	AgentVersion string `pulumi:"agentVersion"`
 	// Public Key that the client provides to be used during initial resource onboarding
 	ClientPublicKey *string `pulumi:"clientPublicKey"`
+	// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
+	CloudMetadata *CloudMetadataResponse `pulumi:"cloudMetadata"`
+	// Detected properties from the machine.
+	DetectedProperties map[string]string `pulumi:"detectedProperties"`
 	// Specifies the hybrid machine display name.
 	DisplayName string `pulumi:"displayName"`
 	// Specifies the DNS fully qualified display name.
@@ -46,11 +54,12 @@ type LookupMachineResult struct {
 	DomainName string `pulumi:"domainName"`
 	// Details about the error state.
 	ErrorDetails []ErrorDetailResponse `pulumi:"errorDetails"`
-	// Machine Extensions information
+	// Machine Extensions information (deprecated field)
 	Extensions []MachineExtensionInstanceViewResponse `pulumi:"extensions"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id       string                   `pulumi:"id"`
-	Identity *MachineResponseIdentity `pulumi:"identity"`
+	Id string `pulumi:"id"`
+	// Identity for the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
 	// The time of the last status change.
 	LastStatusChange string `pulumi:"lastStatusChange"`
 	// The geo-location where the resource lives
@@ -59,20 +68,34 @@ type LookupMachineResult struct {
 	LocationData *LocationDataResponse `pulumi:"locationData"`
 	// Specifies the hybrid machine FQDN.
 	MachineFqdn string `pulumi:"machineFqdn"`
+	// Specifies whether any MS SQL instance is discovered on the machine.
+	MssqlDiscovered *string `pulumi:"mssqlDiscovered"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The Operating System running on the hybrid machine.
 	OsName string `pulumi:"osName"`
 	// Specifies the operating system settings for the hybrid machine.
-	OsProfile *MachinePropertiesResponseOsProfile `pulumi:"osProfile"`
+	OsProfile *OSProfileResponse `pulumi:"osProfile"`
 	// Specifies the Operating System product SKU.
 	OsSku string `pulumi:"osSku"`
+	// The type of Operating System (windows/linux).
+	OsType *string `pulumi:"osType"`
 	// The version of Operating System running on the hybrid machine.
 	OsVersion string `pulumi:"osVersion"`
+	// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+	ParentClusterResourceId *string `pulumi:"parentClusterResourceId"`
+	// The resource id of the private link scope this machine is assigned to, if any.
+	PrivateLinkScopeResourceId *string `pulumi:"privateLinkScopeResourceId"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The list of extensions affiliated to the machine
+	Resources []MachineExtensionResponse `pulumi:"resources"`
+	// Statuses of dependent services that are reported back to ARM.
+	ServiceStatuses *ServiceStatusesResponse `pulumi:"serviceStatuses"`
 	// The status of the hybrid machine agent.
 	Status string `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -100,8 +123,8 @@ type LookupMachineOutputArgs struct {
 	// The expand expression to apply on the operation.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the hybrid machine.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	MachineName pulumi.StringInput `pulumi:"machineName"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -129,6 +152,16 @@ func (o LookupMachineResultOutput) AdFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.AdFqdn }).(pulumi.StringOutput)
 }
 
+// Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM.
+func (o LookupMachineResultOutput) AgentConfiguration() AgentConfigurationResponseOutput {
+	return o.ApplyT(func(v LookupMachineResult) AgentConfigurationResponse { return v.AgentConfiguration }).(AgentConfigurationResponseOutput)
+}
+
+// The info of the machine w.r.t Agent Upgrade
+func (o LookupMachineResultOutput) AgentUpgrade() AgentUpgradeResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *AgentUpgradeResponse { return v.AgentUpgrade }).(AgentUpgradeResponsePtrOutput)
+}
+
 // The hybrid machine agent full version.
 func (o LookupMachineResultOutput) AgentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.AgentVersion }).(pulumi.StringOutput)
@@ -137,6 +170,16 @@ func (o LookupMachineResultOutput) AgentVersion() pulumi.StringOutput {
 // Public Key that the client provides to be used during initial resource onboarding
 func (o LookupMachineResultOutput) ClientPublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMachineResult) *string { return v.ClientPublicKey }).(pulumi.StringPtrOutput)
+}
+
+// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
+func (o LookupMachineResultOutput) CloudMetadata() CloudMetadataResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *CloudMetadataResponse { return v.CloudMetadata }).(CloudMetadataResponsePtrOutput)
+}
+
+// Detected properties from the machine.
+func (o LookupMachineResultOutput) DetectedProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMachineResult) map[string]string { return v.DetectedProperties }).(pulumi.StringMapOutput)
 }
 
 // Specifies the hybrid machine display name.
@@ -159,7 +202,7 @@ func (o LookupMachineResultOutput) ErrorDetails() ErrorDetailResponseArrayOutput
 	return o.ApplyT(func(v LookupMachineResult) []ErrorDetailResponse { return v.ErrorDetails }).(ErrorDetailResponseArrayOutput)
 }
 
-// Machine Extensions information
+// Machine Extensions information (deprecated field)
 func (o LookupMachineResultOutput) Extensions() MachineExtensionInstanceViewResponseArrayOutput {
 	return o.ApplyT(func(v LookupMachineResult) []MachineExtensionInstanceViewResponse { return v.Extensions }).(MachineExtensionInstanceViewResponseArrayOutput)
 }
@@ -169,8 +212,9 @@ func (o LookupMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupMachineResultOutput) Identity() MachineResponseIdentityPtrOutput {
-	return o.ApplyT(func(v LookupMachineResult) *MachineResponseIdentity { return v.Identity }).(MachineResponseIdentityPtrOutput)
+// Identity for the resource.
+func (o LookupMachineResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // The time of the last status change.
@@ -193,6 +237,11 @@ func (o LookupMachineResultOutput) MachineFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.MachineFqdn }).(pulumi.StringOutput)
 }
 
+// Specifies whether any MS SQL instance is discovered on the machine.
+func (o LookupMachineResultOutput) MssqlDiscovered() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *string { return v.MssqlDiscovered }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o LookupMachineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.Name }).(pulumi.StringOutput)
@@ -204,8 +253,8 @@ func (o LookupMachineResultOutput) OsName() pulumi.StringOutput {
 }
 
 // Specifies the operating system settings for the hybrid machine.
-func (o LookupMachineResultOutput) OsProfile() MachinePropertiesResponseOsProfilePtrOutput {
-	return o.ApplyT(func(v LookupMachineResult) *MachinePropertiesResponseOsProfile { return v.OsProfile }).(MachinePropertiesResponseOsProfilePtrOutput)
+func (o LookupMachineResultOutput) OsProfile() OSProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *OSProfileResponse { return v.OsProfile }).(OSProfileResponsePtrOutput)
 }
 
 // Specifies the Operating System product SKU.
@@ -213,9 +262,24 @@ func (o LookupMachineResultOutput) OsSku() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.OsSku }).(pulumi.StringOutput)
 }
 
+// The type of Operating System (windows/linux).
+func (o LookupMachineResultOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
 // The version of Operating System running on the hybrid machine.
 func (o LookupMachineResultOutput) OsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+func (o LookupMachineResultOutput) ParentClusterResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *string { return v.ParentClusterResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The resource id of the private link scope this machine is assigned to, if any.
+func (o LookupMachineResultOutput) PrivateLinkScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *string { return v.PrivateLinkScopeResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The provisioning state, which only appears in the response.
@@ -223,9 +287,24 @@ func (o LookupMachineResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The list of extensions affiliated to the machine
+func (o LookupMachineResultOutput) Resources() MachineExtensionResponseArrayOutput {
+	return o.ApplyT(func(v LookupMachineResult) []MachineExtensionResponse { return v.Resources }).(MachineExtensionResponseArrayOutput)
+}
+
+// Statuses of dependent services that are reported back to ARM.
+func (o LookupMachineResultOutput) ServiceStatuses() ServiceStatusesResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *ServiceStatusesResponse { return v.ServiceStatuses }).(ServiceStatusesResponsePtrOutput)
+}
+
 // The status of the hybrid machine agent.
 func (o LookupMachineResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupMachineResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMachineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

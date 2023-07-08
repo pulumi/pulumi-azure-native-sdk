@@ -11,7 +11,7 @@ import (
 )
 
 // Returns Linker resource for a given name.
-// API Version: 2021-11-01-preview.
+// Azure REST API version: 2022-11-01-preview.
 func LookupLinker(ctx *pulumi.Context, args *LookupLinkerArgs, opts ...pulumi.InvokeOption) (*LookupLinkerResult, error) {
 	var rv LookupLinkerResult
 	err := ctx.Invoke("azure-native:servicelinker:getLinker", args, &rv, opts...)
@@ -34,18 +34,24 @@ type LookupLinkerResult struct {
 	AuthInfo interface{} `pulumi:"authInfo"`
 	// The application client type
 	ClientType *string `pulumi:"clientType"`
+	// The connection information consumed by applications, including secrets, connection strings.
+	ConfigurationInfo *ConfigurationInfoResponse `pulumi:"configurationInfo"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The network solution.
+	PublicNetworkSolution *PublicNetworkSolutionResponse `pulumi:"publicNetworkSolution"`
+	// connection scope in source service.
+	Scope *string `pulumi:"scope"`
 	// An option to store secret value in secure place
 	SecretStore *SecretStoreResponse `pulumi:"secretStore"`
-	// The system data.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The resource Id of target service.
-	TargetId *string `pulumi:"targetId"`
+	// The target service properties
+	TargetService interface{} `pulumi:"targetService"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The VNet solution.
@@ -101,6 +107,11 @@ func (o LookupLinkerResultOutput) ClientType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLinkerResult) *string { return v.ClientType }).(pulumi.StringPtrOutput)
 }
 
+// The connection information consumed by applications, including secrets, connection strings.
+func (o LookupLinkerResultOutput) ConfigurationInfo() ConfigurationInfoResponsePtrOutput {
+	return o.ApplyT(func(v LookupLinkerResult) *ConfigurationInfoResponse { return v.ConfigurationInfo }).(ConfigurationInfoResponsePtrOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupLinkerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkerResult) string { return v.Id }).(pulumi.StringOutput)
@@ -116,19 +127,29 @@ func (o LookupLinkerResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkerResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The network solution.
+func (o LookupLinkerResultOutput) PublicNetworkSolution() PublicNetworkSolutionResponsePtrOutput {
+	return o.ApplyT(func(v LookupLinkerResult) *PublicNetworkSolutionResponse { return v.PublicNetworkSolution }).(PublicNetworkSolutionResponsePtrOutput)
+}
+
+// connection scope in source service.
+func (o LookupLinkerResultOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLinkerResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
 // An option to store secret value in secure place
 func (o LookupLinkerResultOutput) SecretStore() SecretStoreResponsePtrOutput {
 	return o.ApplyT(func(v LookupLinkerResult) *SecretStoreResponse { return v.SecretStore }).(SecretStoreResponsePtrOutput)
 }
 
-// The system data.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupLinkerResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupLinkerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The resource Id of target service.
-func (o LookupLinkerResultOutput) TargetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupLinkerResult) *string { return v.TargetId }).(pulumi.StringPtrOutput)
+// The target service properties
+func (o LookupLinkerResultOutput) TargetService() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupLinkerResult) interface{} { return v.TargetService }).(pulumi.AnyOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

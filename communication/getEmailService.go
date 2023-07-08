@@ -11,7 +11,7 @@ import (
 )
 
 // Get the EmailService and its properties.
-// API Version: 2021-10-01-preview.
+// Azure REST API version: 2023-03-31.
 func LookupEmailService(ctx *pulumi.Context, args *LookupEmailServiceArgs, opts ...pulumi.InvokeOption) (*LookupEmailServiceResult, error) {
 	var rv LookupEmailServiceResult
 	err := ctx.Invoke("azure-native:communication:getEmailService", args, &rv, opts...)
@@ -32,7 +32,7 @@ type LookupEmailServiceArgs struct {
 type LookupEmailServiceResult struct {
 	// The location where the email service stores its data at rest.
 	DataLocation string `pulumi:"dataLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -92,7 +92,7 @@ func (o LookupEmailServiceResultOutput) DataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.DataLocation }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupEmailServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }

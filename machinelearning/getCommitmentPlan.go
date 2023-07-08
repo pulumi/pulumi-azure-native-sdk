@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve an Azure ML commitment plan by its subscription, resource group and name.
-// API Version: 2016-05-01-preview.
+// Azure REST API version: 2016-05-01-preview.
 func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanResult, error) {
 	var rv LookupCommitmentPlanResult
 	err := ctx.Invoke("azure-native:machinelearning:getCommitmentPlan", args, &rv, opts...)

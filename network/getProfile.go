@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Traffic Manager profile.
-// API Version: 2018-08-01.
+// Azure REST API version: 2022-04-01.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
 	var rv LookupProfileResult
 	err := ctx.Invoke("azure-native:network:getProfile", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.
 type LookupProfileArgs struct {
 	// The name of the Traffic Manager profile.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group containing the Traffic Manager profile.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -74,7 +74,7 @@ func LookupProfileOutput(ctx *pulumi.Context, args LookupProfileOutputArgs, opts
 type LookupProfileOutputArgs struct {
 	// The name of the Traffic Manager profile.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// The name of the resource group containing the Traffic Manager profile.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

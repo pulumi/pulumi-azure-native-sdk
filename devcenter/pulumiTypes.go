@@ -371,16 +371,63 @@ func (o GitCatalogResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Pool health status detail.
+type HealthStatusDetailResponse struct {
+	// An identifier for the issue.
+	Code string `pulumi:"code"`
+	// A message describing the issue, intended to be suitable for display in a user interface
+	Message string `pulumi:"message"`
+}
+
+// Pool health status detail.
+type HealthStatusDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (HealthStatusDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthStatusDetailResponse)(nil)).Elem()
+}
+
+func (o HealthStatusDetailResponseOutput) ToHealthStatusDetailResponseOutput() HealthStatusDetailResponseOutput {
+	return o
+}
+
+func (o HealthStatusDetailResponseOutput) ToHealthStatusDetailResponseOutputWithContext(ctx context.Context) HealthStatusDetailResponseOutput {
+	return o
+}
+
+// An identifier for the issue.
+func (o HealthStatusDetailResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthStatusDetailResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// A message describing the issue, intended to be suitable for display in a user interface
+func (o HealthStatusDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthStatusDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type HealthStatusDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HealthStatusDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HealthStatusDetailResponse)(nil)).Elem()
+}
+
+func (o HealthStatusDetailResponseArrayOutput) ToHealthStatusDetailResponseArrayOutput() HealthStatusDetailResponseArrayOutput {
+	return o
+}
+
+func (o HealthStatusDetailResponseArrayOutput) ToHealthStatusDetailResponseArrayOutputWithContext(ctx context.Context) HealthStatusDetailResponseArrayOutput {
+	return o
+}
+
+func (o HealthStatusDetailResponseArrayOutput) Index(i pulumi.IntInput) HealthStatusDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthStatusDetailResponse {
+		return vs[0].([]HealthStatusDetailResponse)[vs[1].(int)]
+	}).(HealthStatusDetailResponseOutput)
+}
+
 // Image reference information
 type ImageReference struct {
 	// Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
 	Id *string `pulumi:"id"`
-	// The image offer.
-	Offer *string `pulumi:"offer"`
-	// The image publisher.
-	Publisher *string `pulumi:"publisher"`
-	// The image sku.
-	Sku *string `pulumi:"sku"`
 }
 
 // ImageReferenceInput is an input type that accepts ImageReferenceArgs and ImageReferenceOutput values.
@@ -398,12 +445,6 @@ type ImageReferenceInput interface {
 type ImageReferenceArgs struct {
 	// Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The image offer.
-	Offer pulumi.StringPtrInput `pulumi:"offer"`
-	// The image publisher.
-	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
-	// The image sku.
-	Sku pulumi.StringPtrInput `pulumi:"sku"`
 }
 
 func (ImageReferenceArgs) ElementType() reflect.Type {
@@ -438,33 +479,12 @@ func (o ImageReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The image offer.
-func (o ImageReferenceOutput) Offer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageReference) *string { return v.Offer }).(pulumi.StringPtrOutput)
-}
-
-// The image publisher.
-func (o ImageReferenceOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageReference) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// The image sku.
-func (o ImageReferenceOutput) Sku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageReference) *string { return v.Sku }).(pulumi.StringPtrOutput)
-}
-
 // Image reference information
 type ImageReferenceResponse struct {
 	// The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use.
 	ExactVersion string `pulumi:"exactVersion"`
 	// Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
 	Id *string `pulumi:"id"`
-	// The image offer.
-	Offer *string `pulumi:"offer"`
-	// The image publisher.
-	Publisher *string `pulumi:"publisher"`
-	// The image sku.
-	Sku *string `pulumi:"sku"`
 }
 
 // Image reference information
@@ -490,21 +510,6 @@ func (o ImageReferenceResponseOutput) ExactVersion() pulumi.StringOutput {
 // Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
 func (o ImageReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The image offer.
-func (o ImageReferenceResponseOutput) Offer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Offer }).(pulumi.StringPtrOutput)
-}
-
-// The image publisher.
-func (o ImageReferenceResponseOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// The image sku.
-func (o ImageReferenceResponseOutput) Sku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
 // Image validation error details
@@ -545,7 +550,7 @@ type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
@@ -564,7 +569,7 @@ type ManagedServiceIdentityArgs struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -651,8 +656,8 @@ func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -690,13 +695,13 @@ func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -815,7 +820,7 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 // The role definition assigned to the environment creator on backing resources.
 type ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment struct {
 	// A map of roles to assign to the environment creator.
-	Roles map[string]interface{} `pulumi:"roles"`
+	Roles []string `pulumi:"roles"`
 }
 
 // ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentInput is an input type that accepts ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs and ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput values.
@@ -832,7 +837,7 @@ type ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentInput interface 
 // The role definition assigned to the environment creator on backing resources.
 type ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs struct {
 	// A map of roles to assign to the environment creator.
-	Roles pulumi.MapInput `pulumi:"roles"`
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs) ElementType() reflect.Type {
@@ -914,10 +919,8 @@ func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput) ToPro
 }
 
 // A map of roles to assign to the environment creator.
-func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput) Roles() pulumi.MapOutput {
-	return o.ApplyT(func(v ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment) map[string]interface{} {
-		return v.Roles
-	}).(pulumi.MapOutput)
+func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 type ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput struct{ *pulumi.OutputState }
@@ -945,13 +948,13 @@ func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput) El
 }
 
 // A map of roles to assign to the environment creator.
-func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput) Roles() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment) map[string]interface{} {
+func (o ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment) []string {
 		if v == nil {
 			return nil
 		}
 		return v.Roles
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The role definition assigned to the environment creator on backing resources.
@@ -1161,6 +1164,242 @@ func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
+// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+type StopOnDisconnectConfiguration struct {
+	// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+	GracePeriodMinutes *int `pulumi:"gracePeriodMinutes"`
+	// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+	Status *string `pulumi:"status"`
+}
+
+// StopOnDisconnectConfigurationInput is an input type that accepts StopOnDisconnectConfigurationArgs and StopOnDisconnectConfigurationOutput values.
+// You can construct a concrete instance of `StopOnDisconnectConfigurationInput` via:
+//
+//	StopOnDisconnectConfigurationArgs{...}
+type StopOnDisconnectConfigurationInput interface {
+	pulumi.Input
+
+	ToStopOnDisconnectConfigurationOutput() StopOnDisconnectConfigurationOutput
+	ToStopOnDisconnectConfigurationOutputWithContext(context.Context) StopOnDisconnectConfigurationOutput
+}
+
+// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+type StopOnDisconnectConfigurationArgs struct {
+	// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+	GracePeriodMinutes pulumi.IntPtrInput `pulumi:"gracePeriodMinutes"`
+	// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (StopOnDisconnectConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StopOnDisconnectConfiguration)(nil)).Elem()
+}
+
+func (i StopOnDisconnectConfigurationArgs) ToStopOnDisconnectConfigurationOutput() StopOnDisconnectConfigurationOutput {
+	return i.ToStopOnDisconnectConfigurationOutputWithContext(context.Background())
+}
+
+func (i StopOnDisconnectConfigurationArgs) ToStopOnDisconnectConfigurationOutputWithContext(ctx context.Context) StopOnDisconnectConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StopOnDisconnectConfigurationOutput)
+}
+
+func (i StopOnDisconnectConfigurationArgs) ToStopOnDisconnectConfigurationPtrOutput() StopOnDisconnectConfigurationPtrOutput {
+	return i.ToStopOnDisconnectConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i StopOnDisconnectConfigurationArgs) ToStopOnDisconnectConfigurationPtrOutputWithContext(ctx context.Context) StopOnDisconnectConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StopOnDisconnectConfigurationOutput).ToStopOnDisconnectConfigurationPtrOutputWithContext(ctx)
+}
+
+// StopOnDisconnectConfigurationPtrInput is an input type that accepts StopOnDisconnectConfigurationArgs, StopOnDisconnectConfigurationPtr and StopOnDisconnectConfigurationPtrOutput values.
+// You can construct a concrete instance of `StopOnDisconnectConfigurationPtrInput` via:
+//
+//	        StopOnDisconnectConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StopOnDisconnectConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToStopOnDisconnectConfigurationPtrOutput() StopOnDisconnectConfigurationPtrOutput
+	ToStopOnDisconnectConfigurationPtrOutputWithContext(context.Context) StopOnDisconnectConfigurationPtrOutput
+}
+
+type stopOnDisconnectConfigurationPtrType StopOnDisconnectConfigurationArgs
+
+func StopOnDisconnectConfigurationPtr(v *StopOnDisconnectConfigurationArgs) StopOnDisconnectConfigurationPtrInput {
+	return (*stopOnDisconnectConfigurationPtrType)(v)
+}
+
+func (*stopOnDisconnectConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StopOnDisconnectConfiguration)(nil)).Elem()
+}
+
+func (i *stopOnDisconnectConfigurationPtrType) ToStopOnDisconnectConfigurationPtrOutput() StopOnDisconnectConfigurationPtrOutput {
+	return i.ToStopOnDisconnectConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *stopOnDisconnectConfigurationPtrType) ToStopOnDisconnectConfigurationPtrOutputWithContext(ctx context.Context) StopOnDisconnectConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StopOnDisconnectConfigurationPtrOutput)
+}
+
+// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+type StopOnDisconnectConfigurationOutput struct{ *pulumi.OutputState }
+
+func (StopOnDisconnectConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StopOnDisconnectConfiguration)(nil)).Elem()
+}
+
+func (o StopOnDisconnectConfigurationOutput) ToStopOnDisconnectConfigurationOutput() StopOnDisconnectConfigurationOutput {
+	return o
+}
+
+func (o StopOnDisconnectConfigurationOutput) ToStopOnDisconnectConfigurationOutputWithContext(ctx context.Context) StopOnDisconnectConfigurationOutput {
+	return o
+}
+
+func (o StopOnDisconnectConfigurationOutput) ToStopOnDisconnectConfigurationPtrOutput() StopOnDisconnectConfigurationPtrOutput {
+	return o.ToStopOnDisconnectConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o StopOnDisconnectConfigurationOutput) ToStopOnDisconnectConfigurationPtrOutputWithContext(ctx context.Context) StopOnDisconnectConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StopOnDisconnectConfiguration) *StopOnDisconnectConfiguration {
+		return &v
+	}).(StopOnDisconnectConfigurationPtrOutput)
+}
+
+// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+func (o StopOnDisconnectConfigurationOutput) GracePeriodMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StopOnDisconnectConfiguration) *int { return v.GracePeriodMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+func (o StopOnDisconnectConfigurationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StopOnDisconnectConfiguration) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type StopOnDisconnectConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (StopOnDisconnectConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StopOnDisconnectConfiguration)(nil)).Elem()
+}
+
+func (o StopOnDisconnectConfigurationPtrOutput) ToStopOnDisconnectConfigurationPtrOutput() StopOnDisconnectConfigurationPtrOutput {
+	return o
+}
+
+func (o StopOnDisconnectConfigurationPtrOutput) ToStopOnDisconnectConfigurationPtrOutputWithContext(ctx context.Context) StopOnDisconnectConfigurationPtrOutput {
+	return o
+}
+
+func (o StopOnDisconnectConfigurationPtrOutput) Elem() StopOnDisconnectConfigurationOutput {
+	return o.ApplyT(func(v *StopOnDisconnectConfiguration) StopOnDisconnectConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret StopOnDisconnectConfiguration
+		return ret
+	}).(StopOnDisconnectConfigurationOutput)
+}
+
+// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+func (o StopOnDisconnectConfigurationPtrOutput) GracePeriodMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StopOnDisconnectConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+func (o StopOnDisconnectConfigurationPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StopOnDisconnectConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+type StopOnDisconnectConfigurationResponse struct {
+	// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+	GracePeriodMinutes *int `pulumi:"gracePeriodMinutes"`
+	// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+	Status *string `pulumi:"status"`
+}
+
+// Stop on disconnect configuration settings for Dev Boxes created in this pool.
+type StopOnDisconnectConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (StopOnDisconnectConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StopOnDisconnectConfigurationResponse)(nil)).Elem()
+}
+
+func (o StopOnDisconnectConfigurationResponseOutput) ToStopOnDisconnectConfigurationResponseOutput() StopOnDisconnectConfigurationResponseOutput {
+	return o
+}
+
+func (o StopOnDisconnectConfigurationResponseOutput) ToStopOnDisconnectConfigurationResponseOutputWithContext(ctx context.Context) StopOnDisconnectConfigurationResponseOutput {
+	return o
+}
+
+// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+func (o StopOnDisconnectConfigurationResponseOutput) GracePeriodMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StopOnDisconnectConfigurationResponse) *int { return v.GracePeriodMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+func (o StopOnDisconnectConfigurationResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StopOnDisconnectConfigurationResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type StopOnDisconnectConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StopOnDisconnectConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StopOnDisconnectConfigurationResponse)(nil)).Elem()
+}
+
+func (o StopOnDisconnectConfigurationResponsePtrOutput) ToStopOnDisconnectConfigurationResponsePtrOutput() StopOnDisconnectConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StopOnDisconnectConfigurationResponsePtrOutput) ToStopOnDisconnectConfigurationResponsePtrOutputWithContext(ctx context.Context) StopOnDisconnectConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StopOnDisconnectConfigurationResponsePtrOutput) Elem() StopOnDisconnectConfigurationResponseOutput {
+	return o.ApplyT(func(v *StopOnDisconnectConfigurationResponse) StopOnDisconnectConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StopOnDisconnectConfigurationResponse
+		return ret
+	}).(StopOnDisconnectConfigurationResponseOutput)
+}
+
+// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+func (o StopOnDisconnectConfigurationResponsePtrOutput) GracePeriodMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StopOnDisconnectConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+func (o StopOnDisconnectConfigurationResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StopOnDisconnectConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1278,7 +1517,7 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 // Mapping of user object ID to role assignments.
 type UserRoleAssignment struct {
 	// A map of roles to assign to the parent user.
-	Roles map[string]interface{} `pulumi:"roles"`
+	Roles []string `pulumi:"roles"`
 }
 
 // UserRoleAssignmentInput is an input type that accepts UserRoleAssignmentArgs and UserRoleAssignmentOutput values.
@@ -1295,7 +1534,7 @@ type UserRoleAssignmentInput interface {
 // Mapping of user object ID to role assignments.
 type UserRoleAssignmentArgs struct {
 	// A map of roles to assign to the parent user.
-	Roles pulumi.MapInput `pulumi:"roles"`
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (UserRoleAssignmentArgs) ElementType() reflect.Type {
@@ -1351,8 +1590,8 @@ func (o UserRoleAssignmentOutput) ToUserRoleAssignmentOutputWithContext(ctx cont
 }
 
 // A map of roles to assign to the parent user.
-func (o UserRoleAssignmentOutput) Roles() pulumi.MapOutput {
-	return o.ApplyT(func(v UserRoleAssignment) map[string]interface{} { return v.Roles }).(pulumi.MapOutput)
+func (o UserRoleAssignmentOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserRoleAssignment) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 type UserRoleAssignmentMapOutput struct{ *pulumi.OutputState }
@@ -1428,6 +1667,8 @@ func init() {
 	pulumi.RegisterOutputType(GitCatalogPtrOutput{})
 	pulumi.RegisterOutputType(GitCatalogResponseOutput{})
 	pulumi.RegisterOutputType(GitCatalogResponsePtrOutput{})
+	pulumi.RegisterOutputType(HealthStatusDetailResponseOutput{})
+	pulumi.RegisterOutputType(HealthStatusDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ImageReferenceOutput{})
 	pulumi.RegisterOutputType(ImageReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ImageValidationErrorDetailsResponseOutput{})
@@ -1441,6 +1682,10 @@ func init() {
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(StopOnDisconnectConfigurationOutput{})
+	pulumi.RegisterOutputType(StopOnDisconnectConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

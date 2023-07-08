@@ -430,6 +430,8 @@ type AmazonRdsForSqlServerSource struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -461,6 +463,8 @@ type AmazonRdsForSqlServerSourceResponse struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -1094,6 +1098,10 @@ type AppendVariableActivity struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AppendVariable'.
 	Type string `pulumi:"type"`
@@ -1113,6 +1121,10 @@ type AppendVariableActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AppendVariable'.
 	Type string `pulumi:"type"`
@@ -2109,8 +2121,12 @@ type AzureDataExplorerCommandActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AzureDataExplorerCommand'.
 	Type string `pulumi:"type"`
@@ -2132,8 +2148,12 @@ type AzureDataExplorerCommandActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AzureDataExplorerCommand'.
 	Type string `pulumi:"type"`
@@ -3261,8 +3281,12 @@ type AzureFunctionActivity struct {
 	Method string `pulumi:"method"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AzureFunctionActivity'.
 	Type string `pulumi:"type"`
@@ -3288,8 +3312,12 @@ type AzureFunctionActivityResponse struct {
 	Method string `pulumi:"method"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AzureFunctionActivity'.
 	Type string `pulumi:"type"`
@@ -3427,8 +3455,12 @@ type AzureMLBatchExecutionActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AzureMLBatchExecution'.
 	Type string `pulumi:"type"`
@@ -3452,8 +3484,12 @@ type AzureMLBatchExecutionActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AzureMLBatchExecution'.
 	Type string `pulumi:"type"`
@@ -3489,8 +3525,12 @@ type AzureMLExecutePipelineActivity struct {
 	MlPipelineParameters interface{} `pulumi:"mlPipelineParameters"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AzureMLExecutePipeline'.
 	Type string `pulumi:"type"`
@@ -3524,8 +3564,12 @@ type AzureMLExecutePipelineActivityResponse struct {
 	MlPipelineParameters interface{} `pulumi:"mlPipelineParameters"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'AzureMLExecutePipeline'.
 	Type string `pulumi:"type"`
@@ -3601,6 +3645,8 @@ type AzureMLLinkedServiceResponse struct {
 type AzureMLServiceLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Type of authentication (Required to specify MSI) used to connect to AzureML. Type: string (or Expression with resultType string).
+	Authentication interface{} `pulumi:"authentication"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
@@ -3630,6 +3676,8 @@ type AzureMLServiceLinkedService struct {
 type AzureMLServiceLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Type of authentication (Required to specify MSI) used to connect to AzureML. Type: string (or Expression with resultType string).
+	Authentication interface{} `pulumi:"authentication"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
@@ -3665,8 +3713,12 @@ type AzureMLUpdateResourceActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// The relative file path in trainedModelLinkedService to represent the .ilearner file that will be uploaded by the update operation.  Type: string (or Expression with resultType string).
 	TrainedModelFilePath interface{} `pulumi:"trainedModelFilePath"`
 	// Name of Azure Storage linked service holding the .ilearner file that will be uploaded by the update operation.
@@ -3690,8 +3742,12 @@ type AzureMLUpdateResourceActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// The relative file path in trainedModelLinkedService to represent the .ilearner file that will be uploaded by the update operation.  Type: string (or Expression with resultType string).
 	TrainedModelFilePath interface{} `pulumi:"trainedModelFilePath"`
 	// Name of Azure Storage linked service holding the .ilearner file that will be uploaded by the update operation.
@@ -4745,6 +4801,8 @@ type AzureSqlSource struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -4776,6 +4834,8 @@ type AzureSqlSourceResponse struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -5877,6 +5937,206 @@ type ChainingTriggerResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// The folder that this CDC is in. If not specified, CDC will appear at the root level.
+type ChangeDataCaptureFolder struct {
+	// The name of the folder that this CDC is in.
+	Name *string `pulumi:"name"`
+}
+
+// ChangeDataCaptureFolderInput is an input type that accepts ChangeDataCaptureFolderArgs and ChangeDataCaptureFolderOutput values.
+// You can construct a concrete instance of `ChangeDataCaptureFolderInput` via:
+//
+//	ChangeDataCaptureFolderArgs{...}
+type ChangeDataCaptureFolderInput interface {
+	pulumi.Input
+
+	ToChangeDataCaptureFolderOutput() ChangeDataCaptureFolderOutput
+	ToChangeDataCaptureFolderOutputWithContext(context.Context) ChangeDataCaptureFolderOutput
+}
+
+// The folder that this CDC is in. If not specified, CDC will appear at the root level.
+type ChangeDataCaptureFolderArgs struct {
+	// The name of the folder that this CDC is in.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ChangeDataCaptureFolderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeDataCaptureFolder)(nil)).Elem()
+}
+
+func (i ChangeDataCaptureFolderArgs) ToChangeDataCaptureFolderOutput() ChangeDataCaptureFolderOutput {
+	return i.ToChangeDataCaptureFolderOutputWithContext(context.Background())
+}
+
+func (i ChangeDataCaptureFolderArgs) ToChangeDataCaptureFolderOutputWithContext(ctx context.Context) ChangeDataCaptureFolderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeDataCaptureFolderOutput)
+}
+
+func (i ChangeDataCaptureFolderArgs) ToChangeDataCaptureFolderPtrOutput() ChangeDataCaptureFolderPtrOutput {
+	return i.ToChangeDataCaptureFolderPtrOutputWithContext(context.Background())
+}
+
+func (i ChangeDataCaptureFolderArgs) ToChangeDataCaptureFolderPtrOutputWithContext(ctx context.Context) ChangeDataCaptureFolderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeDataCaptureFolderOutput).ToChangeDataCaptureFolderPtrOutputWithContext(ctx)
+}
+
+// ChangeDataCaptureFolderPtrInput is an input type that accepts ChangeDataCaptureFolderArgs, ChangeDataCaptureFolderPtr and ChangeDataCaptureFolderPtrOutput values.
+// You can construct a concrete instance of `ChangeDataCaptureFolderPtrInput` via:
+//
+//	        ChangeDataCaptureFolderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ChangeDataCaptureFolderPtrInput interface {
+	pulumi.Input
+
+	ToChangeDataCaptureFolderPtrOutput() ChangeDataCaptureFolderPtrOutput
+	ToChangeDataCaptureFolderPtrOutputWithContext(context.Context) ChangeDataCaptureFolderPtrOutput
+}
+
+type changeDataCaptureFolderPtrType ChangeDataCaptureFolderArgs
+
+func ChangeDataCaptureFolderPtr(v *ChangeDataCaptureFolderArgs) ChangeDataCaptureFolderPtrInput {
+	return (*changeDataCaptureFolderPtrType)(v)
+}
+
+func (*changeDataCaptureFolderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeDataCaptureFolder)(nil)).Elem()
+}
+
+func (i *changeDataCaptureFolderPtrType) ToChangeDataCaptureFolderPtrOutput() ChangeDataCaptureFolderPtrOutput {
+	return i.ToChangeDataCaptureFolderPtrOutputWithContext(context.Background())
+}
+
+func (i *changeDataCaptureFolderPtrType) ToChangeDataCaptureFolderPtrOutputWithContext(ctx context.Context) ChangeDataCaptureFolderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeDataCaptureFolderPtrOutput)
+}
+
+// The folder that this CDC is in. If not specified, CDC will appear at the root level.
+type ChangeDataCaptureFolderOutput struct{ *pulumi.OutputState }
+
+func (ChangeDataCaptureFolderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeDataCaptureFolder)(nil)).Elem()
+}
+
+func (o ChangeDataCaptureFolderOutput) ToChangeDataCaptureFolderOutput() ChangeDataCaptureFolderOutput {
+	return o
+}
+
+func (o ChangeDataCaptureFolderOutput) ToChangeDataCaptureFolderOutputWithContext(ctx context.Context) ChangeDataCaptureFolderOutput {
+	return o
+}
+
+func (o ChangeDataCaptureFolderOutput) ToChangeDataCaptureFolderPtrOutput() ChangeDataCaptureFolderPtrOutput {
+	return o.ToChangeDataCaptureFolderPtrOutputWithContext(context.Background())
+}
+
+func (o ChangeDataCaptureFolderOutput) ToChangeDataCaptureFolderPtrOutputWithContext(ctx context.Context) ChangeDataCaptureFolderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChangeDataCaptureFolder) *ChangeDataCaptureFolder {
+		return &v
+	}).(ChangeDataCaptureFolderPtrOutput)
+}
+
+// The name of the folder that this CDC is in.
+func (o ChangeDataCaptureFolderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChangeDataCaptureFolder) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ChangeDataCaptureFolderPtrOutput struct{ *pulumi.OutputState }
+
+func (ChangeDataCaptureFolderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeDataCaptureFolder)(nil)).Elem()
+}
+
+func (o ChangeDataCaptureFolderPtrOutput) ToChangeDataCaptureFolderPtrOutput() ChangeDataCaptureFolderPtrOutput {
+	return o
+}
+
+func (o ChangeDataCaptureFolderPtrOutput) ToChangeDataCaptureFolderPtrOutputWithContext(ctx context.Context) ChangeDataCaptureFolderPtrOutput {
+	return o
+}
+
+func (o ChangeDataCaptureFolderPtrOutput) Elem() ChangeDataCaptureFolderOutput {
+	return o.ApplyT(func(v *ChangeDataCaptureFolder) ChangeDataCaptureFolder {
+		if v != nil {
+			return *v
+		}
+		var ret ChangeDataCaptureFolder
+		return ret
+	}).(ChangeDataCaptureFolderOutput)
+}
+
+// The name of the folder that this CDC is in.
+func (o ChangeDataCaptureFolderPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeDataCaptureFolder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The folder that this CDC is in. If not specified, CDC will appear at the root level.
+type ChangeDataCaptureResponseFolder struct {
+	// The name of the folder that this CDC is in.
+	Name *string `pulumi:"name"`
+}
+
+// The folder that this CDC is in. If not specified, CDC will appear at the root level.
+type ChangeDataCaptureResponseFolderOutput struct{ *pulumi.OutputState }
+
+func (ChangeDataCaptureResponseFolderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeDataCaptureResponseFolder)(nil)).Elem()
+}
+
+func (o ChangeDataCaptureResponseFolderOutput) ToChangeDataCaptureResponseFolderOutput() ChangeDataCaptureResponseFolderOutput {
+	return o
+}
+
+func (o ChangeDataCaptureResponseFolderOutput) ToChangeDataCaptureResponseFolderOutputWithContext(ctx context.Context) ChangeDataCaptureResponseFolderOutput {
+	return o
+}
+
+// The name of the folder that this CDC is in.
+func (o ChangeDataCaptureResponseFolderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChangeDataCaptureResponseFolder) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ChangeDataCaptureResponseFolderPtrOutput struct{ *pulumi.OutputState }
+
+func (ChangeDataCaptureResponseFolderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeDataCaptureResponseFolder)(nil)).Elem()
+}
+
+func (o ChangeDataCaptureResponseFolderPtrOutput) ToChangeDataCaptureResponseFolderPtrOutput() ChangeDataCaptureResponseFolderPtrOutput {
+	return o
+}
+
+func (o ChangeDataCaptureResponseFolderPtrOutput) ToChangeDataCaptureResponseFolderPtrOutputWithContext(ctx context.Context) ChangeDataCaptureResponseFolderPtrOutput {
+	return o
+}
+
+func (o ChangeDataCaptureResponseFolderPtrOutput) Elem() ChangeDataCaptureResponseFolderOutput {
+	return o.ApplyT(func(v *ChangeDataCaptureResponseFolder) ChangeDataCaptureResponseFolder {
+		if v != nil {
+			return *v
+		}
+		var ret ChangeDataCaptureResponseFolder
+		return ret
+	}).(ChangeDataCaptureResponseFolderOutput)
+}
+
+// The name of the folder that this CDC is in.
+func (o ChangeDataCaptureResponseFolderPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeDataCaptureResponseFolder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // The custom setup of running cmdkey commands.
 type CmdkeySetup struct {
 	// The password of data source access.
@@ -6389,6 +6649,10 @@ type ControlActivity struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Container'.
 	Type string `pulumi:"type"`
@@ -6404,6 +6668,10 @@ type ControlActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Container'.
 	Type string `pulumi:"type"`
@@ -6433,6 +6701,8 @@ type CopyActivity struct {
 	LogStorageSettings *LogStorageSettings `pulumi:"logStorageSettings"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// List of outputs for the activity.
 	Outputs []DatasetReference `pulumi:"outputs"`
 	// Maximum number of concurrent sessions opened on the source or sink to avoid overloading the data store. Type: integer (or Expression with resultType integer), minimum: 0.
@@ -6453,6 +6723,8 @@ type CopyActivity struct {
 	Source interface{} `pulumi:"source"`
 	// Specifies interim staging settings when EnableStaging is true.
 	StagingSettings *StagingSettings `pulumi:"stagingSettings"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Copy activity translator. If not specified, tabular translator is used.
 	Translator interface{} `pulumi:"translator"`
 	// Type of activity.
@@ -6502,6 +6774,8 @@ type CopyActivityResponse struct {
 	LogStorageSettings *LogStorageSettingsResponse `pulumi:"logStorageSettings"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// List of outputs for the activity.
 	Outputs []DatasetReferenceResponse `pulumi:"outputs"`
 	// Maximum number of concurrent sessions opened on the source or sink to avoid overloading the data store. Type: integer (or Expression with resultType integer), minimum: 0.
@@ -6522,6 +6796,8 @@ type CopyActivityResponse struct {
 	Source interface{} `pulumi:"source"`
 	// Specifies interim staging settings when EnableStaging is true.
 	StagingSettings *StagingSettingsResponse `pulumi:"stagingSettings"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Copy activity translator. If not specified, tabular translator is used.
 	Translator interface{} `pulumi:"translator"`
 	// Type of activity.
@@ -7109,6 +7385,8 @@ type CustomActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Reference objects
@@ -7117,6 +7395,8 @@ type CustomActivity struct {
 	ResourceLinkedService *LinkedServiceReference `pulumi:"resourceLinkedService"`
 	// The retention time for the files submitted for custom activity. Type: double (or Expression with resultType double).
 	RetentionTimeInDays interface{} `pulumi:"retentionTimeInDays"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Custom'.
 	Type string `pulumi:"type"`
@@ -7158,6 +7438,8 @@ type CustomActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Reference objects
@@ -7166,6 +7448,8 @@ type CustomActivityResponse struct {
 	ResourceLinkedService *LinkedServiceReferenceResponse `pulumi:"resourceLinkedService"`
 	// The retention time for the files submitted for custom activity. Type: double (or Expression with resultType double).
 	RetentionTimeInDays interface{} `pulumi:"retentionTimeInDays"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Custom'.
 	Type string `pulumi:"type"`
@@ -7455,6 +7739,8 @@ type DataLakeAnalyticsUSQLActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Parameters for U-SQL job request.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// Activity policy.
@@ -7467,6 +7753,8 @@ type DataLakeAnalyticsUSQLActivity struct {
 	ScriptLinkedService LinkedServiceReference `pulumi:"scriptLinkedService"`
 	// Case-sensitive path to folder that contains the U-SQL script. Type: string (or Expression with resultType string).
 	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'DataLakeAnalyticsU-SQL'.
 	Type string `pulumi:"type"`
@@ -7488,6 +7776,8 @@ type DataLakeAnalyticsUSQLActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Parameters for U-SQL job request.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// Activity policy.
@@ -7500,11 +7790,225 @@ type DataLakeAnalyticsUSQLActivityResponse struct {
 	ScriptLinkedService LinkedServiceReferenceResponse `pulumi:"scriptLinkedService"`
 	// Case-sensitive path to folder that contains the U-SQL script. Type: string (or Expression with resultType string).
 	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'DataLakeAnalyticsU-SQL'.
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
+}
+
+// Source and target table mapping details.
+type DataMapperMapping struct {
+	// This holds the user provided attribute mapping information.
+	AttributeMappingInfo *MapperAttributeMappings `pulumi:"attributeMappingInfo"`
+	// The connection reference for the source connection.
+	SourceConnectionReference *MapperConnectionReference `pulumi:"sourceConnectionReference"`
+	// This holds the source denormalization information used while joining multiple sources.
+	SourceDenormalizeInfo interface{} `pulumi:"sourceDenormalizeInfo"`
+	// Name of the source table
+	SourceEntityName *string `pulumi:"sourceEntityName"`
+	// Name of the target table
+	TargetEntityName *string `pulumi:"targetEntityName"`
+}
+
+// DataMapperMappingInput is an input type that accepts DataMapperMappingArgs and DataMapperMappingOutput values.
+// You can construct a concrete instance of `DataMapperMappingInput` via:
+//
+//	DataMapperMappingArgs{...}
+type DataMapperMappingInput interface {
+	pulumi.Input
+
+	ToDataMapperMappingOutput() DataMapperMappingOutput
+	ToDataMapperMappingOutputWithContext(context.Context) DataMapperMappingOutput
+}
+
+// Source and target table mapping details.
+type DataMapperMappingArgs struct {
+	// This holds the user provided attribute mapping information.
+	AttributeMappingInfo MapperAttributeMappingsPtrInput `pulumi:"attributeMappingInfo"`
+	// The connection reference for the source connection.
+	SourceConnectionReference MapperConnectionReferencePtrInput `pulumi:"sourceConnectionReference"`
+	// This holds the source denormalization information used while joining multiple sources.
+	SourceDenormalizeInfo pulumi.Input `pulumi:"sourceDenormalizeInfo"`
+	// Name of the source table
+	SourceEntityName pulumi.StringPtrInput `pulumi:"sourceEntityName"`
+	// Name of the target table
+	TargetEntityName pulumi.StringPtrInput `pulumi:"targetEntityName"`
+}
+
+func (DataMapperMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataMapperMapping)(nil)).Elem()
+}
+
+func (i DataMapperMappingArgs) ToDataMapperMappingOutput() DataMapperMappingOutput {
+	return i.ToDataMapperMappingOutputWithContext(context.Background())
+}
+
+func (i DataMapperMappingArgs) ToDataMapperMappingOutputWithContext(ctx context.Context) DataMapperMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataMapperMappingOutput)
+}
+
+// DataMapperMappingArrayInput is an input type that accepts DataMapperMappingArray and DataMapperMappingArrayOutput values.
+// You can construct a concrete instance of `DataMapperMappingArrayInput` via:
+//
+//	DataMapperMappingArray{ DataMapperMappingArgs{...} }
+type DataMapperMappingArrayInput interface {
+	pulumi.Input
+
+	ToDataMapperMappingArrayOutput() DataMapperMappingArrayOutput
+	ToDataMapperMappingArrayOutputWithContext(context.Context) DataMapperMappingArrayOutput
+}
+
+type DataMapperMappingArray []DataMapperMappingInput
+
+func (DataMapperMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataMapperMapping)(nil)).Elem()
+}
+
+func (i DataMapperMappingArray) ToDataMapperMappingArrayOutput() DataMapperMappingArrayOutput {
+	return i.ToDataMapperMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DataMapperMappingArray) ToDataMapperMappingArrayOutputWithContext(ctx context.Context) DataMapperMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataMapperMappingArrayOutput)
+}
+
+// Source and target table mapping details.
+type DataMapperMappingOutput struct{ *pulumi.OutputState }
+
+func (DataMapperMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataMapperMapping)(nil)).Elem()
+}
+
+func (o DataMapperMappingOutput) ToDataMapperMappingOutput() DataMapperMappingOutput {
+	return o
+}
+
+func (o DataMapperMappingOutput) ToDataMapperMappingOutputWithContext(ctx context.Context) DataMapperMappingOutput {
+	return o
+}
+
+// This holds the user provided attribute mapping information.
+func (o DataMapperMappingOutput) AttributeMappingInfo() MapperAttributeMappingsPtrOutput {
+	return o.ApplyT(func(v DataMapperMapping) *MapperAttributeMappings { return v.AttributeMappingInfo }).(MapperAttributeMappingsPtrOutput)
+}
+
+// The connection reference for the source connection.
+func (o DataMapperMappingOutput) SourceConnectionReference() MapperConnectionReferencePtrOutput {
+	return o.ApplyT(func(v DataMapperMapping) *MapperConnectionReference { return v.SourceConnectionReference }).(MapperConnectionReferencePtrOutput)
+}
+
+// This holds the source denormalization information used while joining multiple sources.
+func (o DataMapperMappingOutput) SourceDenormalizeInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataMapperMapping) interface{} { return v.SourceDenormalizeInfo }).(pulumi.AnyOutput)
+}
+
+// Name of the source table
+func (o DataMapperMappingOutput) SourceEntityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataMapperMapping) *string { return v.SourceEntityName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the target table
+func (o DataMapperMappingOutput) TargetEntityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataMapperMapping) *string { return v.TargetEntityName }).(pulumi.StringPtrOutput)
+}
+
+type DataMapperMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DataMapperMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataMapperMapping)(nil)).Elem()
+}
+
+func (o DataMapperMappingArrayOutput) ToDataMapperMappingArrayOutput() DataMapperMappingArrayOutput {
+	return o
+}
+
+func (o DataMapperMappingArrayOutput) ToDataMapperMappingArrayOutputWithContext(ctx context.Context) DataMapperMappingArrayOutput {
+	return o
+}
+
+func (o DataMapperMappingArrayOutput) Index(i pulumi.IntInput) DataMapperMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataMapperMapping {
+		return vs[0].([]DataMapperMapping)[vs[1].(int)]
+	}).(DataMapperMappingOutput)
+}
+
+// Source and target table mapping details.
+type DataMapperMappingResponse struct {
+	// This holds the user provided attribute mapping information.
+	AttributeMappingInfo *MapperAttributeMappingsResponse `pulumi:"attributeMappingInfo"`
+	// The connection reference for the source connection.
+	SourceConnectionReference *MapperConnectionReferenceResponse `pulumi:"sourceConnectionReference"`
+	// This holds the source denormalization information used while joining multiple sources.
+	SourceDenormalizeInfo interface{} `pulumi:"sourceDenormalizeInfo"`
+	// Name of the source table
+	SourceEntityName *string `pulumi:"sourceEntityName"`
+	// Name of the target table
+	TargetEntityName *string `pulumi:"targetEntityName"`
+}
+
+// Source and target table mapping details.
+type DataMapperMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (DataMapperMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataMapperMappingResponse)(nil)).Elem()
+}
+
+func (o DataMapperMappingResponseOutput) ToDataMapperMappingResponseOutput() DataMapperMappingResponseOutput {
+	return o
+}
+
+func (o DataMapperMappingResponseOutput) ToDataMapperMappingResponseOutputWithContext(ctx context.Context) DataMapperMappingResponseOutput {
+	return o
+}
+
+// This holds the user provided attribute mapping information.
+func (o DataMapperMappingResponseOutput) AttributeMappingInfo() MapperAttributeMappingsResponsePtrOutput {
+	return o.ApplyT(func(v DataMapperMappingResponse) *MapperAttributeMappingsResponse { return v.AttributeMappingInfo }).(MapperAttributeMappingsResponsePtrOutput)
+}
+
+// The connection reference for the source connection.
+func (o DataMapperMappingResponseOutput) SourceConnectionReference() MapperConnectionReferenceResponsePtrOutput {
+	return o.ApplyT(func(v DataMapperMappingResponse) *MapperConnectionReferenceResponse {
+		return v.SourceConnectionReference
+	}).(MapperConnectionReferenceResponsePtrOutput)
+}
+
+// This holds the source denormalization information used while joining multiple sources.
+func (o DataMapperMappingResponseOutput) SourceDenormalizeInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataMapperMappingResponse) interface{} { return v.SourceDenormalizeInfo }).(pulumi.AnyOutput)
+}
+
+// Name of the source table
+func (o DataMapperMappingResponseOutput) SourceEntityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataMapperMappingResponse) *string { return v.SourceEntityName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the target table
+func (o DataMapperMappingResponseOutput) TargetEntityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataMapperMappingResponse) *string { return v.TargetEntityName }).(pulumi.StringPtrOutput)
+}
+
+type DataMapperMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DataMapperMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataMapperMappingResponse)(nil)).Elem()
+}
+
+func (o DataMapperMappingResponseArrayOutput) ToDataMapperMappingResponseArrayOutput() DataMapperMappingResponseArrayOutput {
+	return o
+}
+
+func (o DataMapperMappingResponseArrayOutput) ToDataMapperMappingResponseArrayOutputWithContext(ctx context.Context) DataMapperMappingResponseArrayOutput {
+	return o
+}
+
+func (o DataMapperMappingResponseArrayOutput) Index(i pulumi.IntInput) DataMapperMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataMapperMappingResponse {
+		return vs[0].([]DataMapperMappingResponse)[vs[1].(int)]
+	}).(DataMapperMappingResponseOutput)
 }
 
 // DatabricksNotebook activity.
@@ -7523,8 +8027,12 @@ type DatabricksNotebookActivity struct {
 	Name string `pulumi:"name"`
 	// The absolute path of the notebook to be run in the Databricks Workspace. This path must begin with a slash. Type: string (or Expression with resultType string).
 	NotebookPath interface{} `pulumi:"notebookPath"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'DatabricksNotebook'.
 	Type string `pulumi:"type"`
@@ -7548,8 +8056,12 @@ type DatabricksNotebookActivityResponse struct {
 	Name string `pulumi:"name"`
 	// The absolute path of the notebook to be run in the Databricks Workspace. This path must begin with a slash. Type: string (or Expression with resultType string).
 	NotebookPath interface{} `pulumi:"notebookPath"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'DatabricksNotebook'.
 	Type string `pulumi:"type"`
@@ -7571,10 +8083,14 @@ type DatabricksSparkJarActivity struct {
 	MainClassName interface{} `pulumi:"mainClassName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Parameters that will be passed to the main method.
 	Parameters []interface{} `pulumi:"parameters"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'DatabricksSparkJar'.
 	Type string `pulumi:"type"`
@@ -7596,10 +8112,14 @@ type DatabricksSparkJarActivityResponse struct {
 	MainClassName interface{} `pulumi:"mainClassName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Parameters that will be passed to the main method.
 	Parameters []interface{} `pulumi:"parameters"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'DatabricksSparkJar'.
 	Type string `pulumi:"type"`
@@ -7619,12 +8139,16 @@ type DatabricksSparkPythonActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Command line parameters that will be passed to the Python file.
 	Parameters []interface{} `pulumi:"parameters"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// The URI of the Python file to be executed. DBFS paths are supported. Type: string (or Expression with resultType string).
 	PythonFile interface{} `pulumi:"pythonFile"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'DatabricksSparkPython'.
 	Type string `pulumi:"type"`
@@ -7644,12 +8168,16 @@ type DatabricksSparkPythonActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Command line parameters that will be passed to the Python file.
 	Parameters []interface{} `pulumi:"parameters"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// The URI of the Python file to be executed. DBFS paths are supported. Type: string (or Expression with resultType string).
 	PythonFile interface{} `pulumi:"pythonFile"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'DatabricksSparkPython'.
 	Type string `pulumi:"type"`
@@ -7919,10 +8447,14 @@ type DeleteActivity struct {
 	MaxConcurrentConnections *int `pulumi:"maxConcurrentConnections"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// If true, files or sub-folders under current folder path will be deleted recursively. Default is false. Type: boolean (or Expression with resultType boolean).
 	Recursive interface{} `pulumi:"recursive"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Delete activity store settings.
 	StoreSettings interface{} `pulumi:"storeSettings"`
 	// Type of activity.
@@ -7950,10 +8482,14 @@ type DeleteActivityResponse struct {
 	MaxConcurrentConnections *int `pulumi:"maxConcurrentConnections"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// If true, files or sub-folders under current folder path will be deleted recursively. Default is false. Type: boolean (or Expression with resultType boolean).
 	Recursive interface{} `pulumi:"recursive"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Delete activity store settings.
 	StoreSettings interface{} `pulumi:"storeSettings"`
 	// Type of activity.
@@ -9669,6 +10205,8 @@ type ExecuteDataFlowActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Concurrent run setting used for data flow execution. Allows sinks with the same save order to be processed concurrently. Type: boolean (or Expression with resultType boolean)
@@ -9677,6 +10215,8 @@ type ExecuteDataFlowActivity struct {
 	SourceStagingConcurrency interface{} `pulumi:"sourceStagingConcurrency"`
 	// Staging info for execute data flow activity.
 	Staging *DataFlowStagingInfo `pulumi:"staging"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Trace level setting used for data flow monitoring output. Supported values are: 'coarse', 'fine', and 'none'. Type: string (or Expression with resultType string)
 	TraceLevel interface{} `pulumi:"traceLevel"`
 	// Type of activity.
@@ -9704,6 +10244,8 @@ type ExecuteDataFlowActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Concurrent run setting used for data flow execution. Allows sinks with the same save order to be processed concurrently. Type: boolean (or Expression with resultType boolean)
@@ -9712,6 +10254,8 @@ type ExecuteDataFlowActivityResponse struct {
 	SourceStagingConcurrency interface{} `pulumi:"sourceStagingConcurrency"`
 	// Staging info for execute data flow activity.
 	Staging *DataFlowStagingInfoResponse `pulumi:"staging"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Trace level setting used for data flow monitoring output. Supported values are: 'coarse', 'fine', and 'none'. Type: string (or Expression with resultType string)
 	TraceLevel interface{} `pulumi:"traceLevel"`
 	// Type of activity.
@@ -9745,12 +10289,16 @@ type ExecutePipelineActivity struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Pipeline parameters.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// Pipeline reference.
 	Pipeline PipelineReference `pulumi:"pipeline"`
 	// Execute pipeline activity policy.
 	Policy *ExecutePipelineActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'ExecutePipeline'.
 	Type string `pulumi:"type"`
@@ -9780,12 +10328,16 @@ type ExecutePipelineActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Pipeline parameters.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// Pipeline reference.
 	Pipeline PipelineReferenceResponse `pulumi:"pipeline"`
 	// Execute pipeline activity policy.
 	Policy *ExecutePipelineActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'ExecutePipeline'.
 	Type string `pulumi:"type"`
@@ -9815,6 +10367,8 @@ type ExecuteSSISPackageActivity struct {
 	LoggingLevel interface{} `pulumi:"loggingLevel"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// The package level connection managers to execute the SSIS package.
 	PackageConnectionManagers map[string]map[string]SSISExecutionParameter `pulumi:"packageConnectionManagers"`
 	// SSIS package location.
@@ -9831,6 +10385,8 @@ type ExecuteSSISPackageActivity struct {
 	PropertyOverrides map[string]SSISPropertyOverride `pulumi:"propertyOverrides"`
 	// Specifies the runtime to execute SSIS package. The value should be "x86" or "x64". Type: string (or Expression with resultType string).
 	Runtime interface{} `pulumi:"runtime"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'ExecuteSSISPackage'.
 	Type string `pulumi:"type"`
@@ -9858,6 +10414,8 @@ type ExecuteSSISPackageActivityResponse struct {
 	LoggingLevel interface{} `pulumi:"loggingLevel"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// The package level connection managers to execute the SSIS package.
 	PackageConnectionManagers map[string]map[string]SSISExecutionParameterResponse `pulumi:"packageConnectionManagers"`
 	// SSIS package location.
@@ -9874,6 +10432,8 @@ type ExecuteSSISPackageActivityResponse struct {
 	PropertyOverrides map[string]SSISPropertyOverrideResponse `pulumi:"propertyOverrides"`
 	// Specifies the runtime to execute SSIS package. The value should be "x86" or "x64". Type: string (or Expression with resultType string).
 	Runtime interface{} `pulumi:"runtime"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'ExecuteSSISPackage'.
 	Type string `pulumi:"type"`
@@ -9897,6 +10457,8 @@ type ExecuteWranglingDataflowActivity struct {
 	IntegrationRuntime *IntegrationRuntimeReference `pulumi:"integrationRuntime"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// List of mapping for Power Query mashup query to sink dataset(s).
@@ -9909,6 +10471,8 @@ type ExecuteWranglingDataflowActivity struct {
 	SourceStagingConcurrency interface{} `pulumi:"sourceStagingConcurrency"`
 	// Staging info for execute data flow activity.
 	Staging *DataFlowStagingInfo `pulumi:"staging"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Trace level setting used for data flow monitoring output. Supported values are: 'coarse', 'fine', and 'none'. Type: string (or Expression with resultType string)
 	TraceLevel interface{} `pulumi:"traceLevel"`
 	// Type of activity.
@@ -9934,6 +10498,8 @@ type ExecuteWranglingDataflowActivityResponse struct {
 	IntegrationRuntime *IntegrationRuntimeReferenceResponse `pulumi:"integrationRuntime"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// List of mapping for Power Query mashup query to sink dataset(s).
@@ -9946,6 +10512,8 @@ type ExecuteWranglingDataflowActivityResponse struct {
 	SourceStagingConcurrency interface{} `pulumi:"sourceStagingConcurrency"`
 	// Staging info for execute data flow activity.
 	Staging *DataFlowStagingInfoResponse `pulumi:"staging"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Trace level setting used for data flow monitoring output. Supported values are: 'coarse', 'fine', and 'none'. Type: string (or Expression with resultType string)
 	TraceLevel interface{} `pulumi:"traceLevel"`
 	// Type of activity.
@@ -9965,8 +10533,12 @@ type ExecutionActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Execution'.
 	Type string `pulumi:"type"`
@@ -9984,8 +10556,12 @@ type ExecutionActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Execution'.
 	Type string `pulumi:"type"`
@@ -10387,6 +10963,10 @@ type FailActivity struct {
 	Message interface{} `pulumi:"message"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Fail'.
 	Type string `pulumi:"type"`
@@ -10406,6 +10986,10 @@ type FailActivityResponse struct {
 	Message interface{} `pulumi:"message"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Fail'.
 	Type string `pulumi:"type"`
@@ -10731,6 +11315,10 @@ type FilterActivity struct {
 	Items Expression `pulumi:"items"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Filter'.
 	Type string `pulumi:"type"`
@@ -10750,6 +11338,10 @@ type FilterActivityResponse struct {
 	Items ExpressionResponse `pulumi:"items"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Filter'.
 	Type string `pulumi:"type"`
@@ -10819,6 +11411,10 @@ type ForEachActivity struct {
 	Items Expression `pulumi:"items"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'ForEach'.
 	Type string `pulumi:"type"`
@@ -10842,6 +11438,10 @@ type ForEachActivityResponse struct {
 	Items ExpressionResponse `pulumi:"items"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'ForEach'.
 	Type string `pulumi:"type"`
@@ -11007,8 +11607,12 @@ type GetMetadataActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// GetMetadata activity store settings.
 	StoreSettings interface{} `pulumi:"storeSettings"`
 	// Type of activity.
@@ -11034,8 +11638,12 @@ type GetMetadataActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// GetMetadata activity store settings.
 	StoreSettings interface{} `pulumi:"storeSettings"`
 	// Type of activity.
@@ -12202,6 +12810,8 @@ type HDInsightHiveActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
@@ -12210,6 +12820,8 @@ type HDInsightHiveActivity struct {
 	ScriptLinkedService *LinkedServiceReference `pulumi:"scriptLinkedService"`
 	// Script path. Type: string (or Expression with resultType string).
 	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Storage linked service references.
 	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
 	// Type of activity.
@@ -12237,6 +12849,8 @@ type HDInsightHiveActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
@@ -12245,6 +12859,8 @@ type HDInsightHiveActivityResponse struct {
 	ScriptLinkedService *LinkedServiceReferenceResponse `pulumi:"scriptLinkedService"`
 	// Script path. Type: string (or Expression with resultType string).
 	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Storage linked service references.
 	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
 	// Type of activity.
@@ -12318,242 +12934,6 @@ type HDInsightLinkedServiceResponse struct {
 	UserName interface{} `pulumi:"userName"`
 }
 
-// HDInsight MapReduce activity type.
-type HDInsightMapReduceActivity struct {
-	// User specified arguments to HDInsightActivity.
-	Arguments []interface{} `pulumi:"arguments"`
-	// Class name. Type: string (or Expression with resultType string).
-	ClassName interface{} `pulumi:"className"`
-	// Allows user to specify defines for the MapReduce job request.
-	Defines map[string]interface{} `pulumi:"defines"`
-	// Activity depends on condition.
-	DependsOn []ActivityDependency `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Debug info option.
-	GetDebugInfo *string `pulumi:"getDebugInfo"`
-	// Jar path. Type: string (or Expression with resultType string).
-	JarFilePath interface{} `pulumi:"jarFilePath"`
-	// Jar libs.
-	JarLibs []interface{} `pulumi:"jarLibs"`
-	// Jar linked service reference.
-	JarLinkedService *LinkedServiceReference `pulumi:"jarLinkedService"`
-	// Linked service reference.
-	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Activity policy.
-	Policy *ActivityPolicy `pulumi:"policy"`
-	// Storage linked service references.
-	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
-	// Type of activity.
-	// Expected value is 'HDInsightMapReduce'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserProperty `pulumi:"userProperties"`
-}
-
-// HDInsight MapReduce activity type.
-type HDInsightMapReduceActivityResponse struct {
-	// User specified arguments to HDInsightActivity.
-	Arguments []interface{} `pulumi:"arguments"`
-	// Class name. Type: string (or Expression with resultType string).
-	ClassName interface{} `pulumi:"className"`
-	// Allows user to specify defines for the MapReduce job request.
-	Defines map[string]interface{} `pulumi:"defines"`
-	// Activity depends on condition.
-	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Debug info option.
-	GetDebugInfo *string `pulumi:"getDebugInfo"`
-	// Jar path. Type: string (or Expression with resultType string).
-	JarFilePath interface{} `pulumi:"jarFilePath"`
-	// Jar libs.
-	JarLibs []interface{} `pulumi:"jarLibs"`
-	// Jar linked service reference.
-	JarLinkedService *LinkedServiceReferenceResponse `pulumi:"jarLinkedService"`
-	// Linked service reference.
-	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Activity policy.
-	Policy *ActivityPolicyResponse `pulumi:"policy"`
-	// Storage linked service references.
-	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
-	// Type of activity.
-	// Expected value is 'HDInsightMapReduce'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
-}
-
-// HDInsight ondemand linked service.
-type HDInsightOnDemandLinkedService struct {
-	// Specifies additional storage accounts for the HDInsight linked service so that the Data Factory service can register them on your behalf.
-	AdditionalLinkedServiceNames []LinkedServiceReference `pulumi:"additionalLinkedServiceNames"`
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The prefix of cluster name, postfix will be distinct with timestamp. Type: string (or Expression with resultType string).
-	ClusterNamePrefix interface{} `pulumi:"clusterNamePrefix"`
-	// The password to access the cluster.
-	ClusterPassword interface{} `pulumi:"clusterPassword"`
-	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
-	ClusterResourceGroup interface{} `pulumi:"clusterResourceGroup"`
-	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: string (or Expression with resultType string).
-	ClusterSize interface{} `pulumi:"clusterSize"`
-	// The password to SSH remotely connect cluster’s node (for Linux).
-	ClusterSshPassword interface{} `pulumi:"clusterSshPassword"`
-	// The username to SSH remotely connect to cluster’s node (for Linux). Type: string (or Expression with resultType string).
-	ClusterSshUserName interface{} `pulumi:"clusterSshUserName"`
-	// The cluster type. Type: string (or Expression with resultType string).
-	ClusterType interface{} `pulumi:"clusterType"`
-	// The username to access the cluster. Type: string (or Expression with resultType string).
-	ClusterUserName interface{} `pulumi:"clusterUserName"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Specifies the core configuration parameters (as in core-site.xml) for the HDInsight cluster to be created.
-	CoreConfiguration interface{} `pulumi:"coreConfiguration"`
-	// The credential reference containing authentication information.
-	Credential *CredentialReference `pulumi:"credential"`
-	// Specifies the size of the data node for the HDInsight cluster.
-	DataNodeSize interface{} `pulumi:"dataNodeSize"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Specifies the HBase configuration parameters (hbase-site.xml) for the HDInsight cluster.
-	HBaseConfiguration interface{} `pulumi:"hBaseConfiguration"`
-	// The name of Azure SQL linked service that point to the HCatalog database. The on-demand HDInsight cluster is created by using the Azure SQL database as the metastore.
-	HcatalogLinkedServiceName *LinkedServiceReference `pulumi:"hcatalogLinkedServiceName"`
-	// Specifies the HDFS configuration parameters (hdfs-site.xml) for the HDInsight cluster.
-	HdfsConfiguration interface{} `pulumi:"hdfsConfiguration"`
-	// Specifies the size of the head node for the HDInsight cluster.
-	HeadNodeSize interface{} `pulumi:"headNodeSize"`
-	// Specifies the hive configuration parameters (hive-site.xml) for the HDInsight cluster.
-	HiveConfiguration interface{} `pulumi:"hiveConfiguration"`
-	// The customer’s subscription to host the cluster. Type: string (or Expression with resultType string).
-	HostSubscriptionId interface{} `pulumi:"hostSubscriptionId"`
-	// Azure Storage linked service to be used by the on-demand cluster for storing and processing data.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Specifies the MapReduce configuration parameters (mapred-site.xml) for the HDInsight cluster.
-	MapReduceConfiguration interface{} `pulumi:"mapReduceConfiguration"`
-	// Specifies the Oozie configuration parameters (oozie-site.xml) for the HDInsight cluster.
-	OozieConfiguration interface{} `pulumi:"oozieConfiguration"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Custom script actions to run on HDI ondemand cluster once it's up. Please refer to https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
-	ScriptActions []ScriptAction `pulumi:"scriptActions"`
-	// The service principal id for the hostSubscriptionId. Type: string (or Expression with resultType string).
-	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
-	// The key for the service principal id.
-	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
-	// The version of spark if the cluster type is 'spark'. Type: string (or Expression with resultType string).
-	SparkVersion interface{} `pulumi:"sparkVersion"`
-	// Specifies the Storm configuration parameters (storm-site.xml) for the HDInsight cluster.
-	StormConfiguration interface{} `pulumi:"stormConfiguration"`
-	// The ARM resource ID for the subnet in the vNet. If virtualNetworkId was specified, then this property is required. Type: string (or Expression with resultType string).
-	SubnetName interface{} `pulumi:"subnetName"`
-	// The Tenant id/name to which the service principal belongs. Type: string (or Expression with resultType string).
-	Tenant interface{} `pulumi:"tenant"`
-	// The allowed idle time for the on-demand HDInsight cluster. Specifies how long the on-demand HDInsight cluster stays alive after completion of an activity run if there are no other active jobs in the cluster. The minimum value is 5 mins. Type: string (or Expression with resultType string).
-	TimeToLive interface{} `pulumi:"timeToLive"`
-	// Type of linked service.
-	// Expected value is 'HDInsightOnDemand'.
-	Type string `pulumi:"type"`
-	// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
-	Version interface{} `pulumi:"version"`
-	// The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
-	VirtualNetworkId interface{} `pulumi:"virtualNetworkId"`
-	// Specifies the Yarn configuration parameters (yarn-site.xml) for the HDInsight cluster.
-	YarnConfiguration interface{} `pulumi:"yarnConfiguration"`
-	// Specifies the size of the Zoo Keeper node for the HDInsight cluster.
-	ZookeeperNodeSize interface{} `pulumi:"zookeeperNodeSize"`
-}
-
-// HDInsight ondemand linked service.
-type HDInsightOnDemandLinkedServiceResponse struct {
-	// Specifies additional storage accounts for the HDInsight linked service so that the Data Factory service can register them on your behalf.
-	AdditionalLinkedServiceNames []LinkedServiceReferenceResponse `pulumi:"additionalLinkedServiceNames"`
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The prefix of cluster name, postfix will be distinct with timestamp. Type: string (or Expression with resultType string).
-	ClusterNamePrefix interface{} `pulumi:"clusterNamePrefix"`
-	// The password to access the cluster.
-	ClusterPassword interface{} `pulumi:"clusterPassword"`
-	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
-	ClusterResourceGroup interface{} `pulumi:"clusterResourceGroup"`
-	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: string (or Expression with resultType string).
-	ClusterSize interface{} `pulumi:"clusterSize"`
-	// The password to SSH remotely connect cluster’s node (for Linux).
-	ClusterSshPassword interface{} `pulumi:"clusterSshPassword"`
-	// The username to SSH remotely connect to cluster’s node (for Linux). Type: string (or Expression with resultType string).
-	ClusterSshUserName interface{} `pulumi:"clusterSshUserName"`
-	// The cluster type. Type: string (or Expression with resultType string).
-	ClusterType interface{} `pulumi:"clusterType"`
-	// The username to access the cluster. Type: string (or Expression with resultType string).
-	ClusterUserName interface{} `pulumi:"clusterUserName"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Specifies the core configuration parameters (as in core-site.xml) for the HDInsight cluster to be created.
-	CoreConfiguration interface{} `pulumi:"coreConfiguration"`
-	// The credential reference containing authentication information.
-	Credential *CredentialReferenceResponse `pulumi:"credential"`
-	// Specifies the size of the data node for the HDInsight cluster.
-	DataNodeSize interface{} `pulumi:"dataNodeSize"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Specifies the HBase configuration parameters (hbase-site.xml) for the HDInsight cluster.
-	HBaseConfiguration interface{} `pulumi:"hBaseConfiguration"`
-	// The name of Azure SQL linked service that point to the HCatalog database. The on-demand HDInsight cluster is created by using the Azure SQL database as the metastore.
-	HcatalogLinkedServiceName *LinkedServiceReferenceResponse `pulumi:"hcatalogLinkedServiceName"`
-	// Specifies the HDFS configuration parameters (hdfs-site.xml) for the HDInsight cluster.
-	HdfsConfiguration interface{} `pulumi:"hdfsConfiguration"`
-	// Specifies the size of the head node for the HDInsight cluster.
-	HeadNodeSize interface{} `pulumi:"headNodeSize"`
-	// Specifies the hive configuration parameters (hive-site.xml) for the HDInsight cluster.
-	HiveConfiguration interface{} `pulumi:"hiveConfiguration"`
-	// The customer’s subscription to host the cluster. Type: string (or Expression with resultType string).
-	HostSubscriptionId interface{} `pulumi:"hostSubscriptionId"`
-	// Azure Storage linked service to be used by the on-demand cluster for storing and processing data.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Specifies the MapReduce configuration parameters (mapred-site.xml) for the HDInsight cluster.
-	MapReduceConfiguration interface{} `pulumi:"mapReduceConfiguration"`
-	// Specifies the Oozie configuration parameters (oozie-site.xml) for the HDInsight cluster.
-	OozieConfiguration interface{} `pulumi:"oozieConfiguration"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Custom script actions to run on HDI ondemand cluster once it's up. Please refer to https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
-	ScriptActions []ScriptActionResponse `pulumi:"scriptActions"`
-	// The service principal id for the hostSubscriptionId. Type: string (or Expression with resultType string).
-	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
-	// The key for the service principal id.
-	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
-	// The version of spark if the cluster type is 'spark'. Type: string (or Expression with resultType string).
-	SparkVersion interface{} `pulumi:"sparkVersion"`
-	// Specifies the Storm configuration parameters (storm-site.xml) for the HDInsight cluster.
-	StormConfiguration interface{} `pulumi:"stormConfiguration"`
-	// The ARM resource ID for the subnet in the vNet. If virtualNetworkId was specified, then this property is required. Type: string (or Expression with resultType string).
-	SubnetName interface{} `pulumi:"subnetName"`
-	// The Tenant id/name to which the service principal belongs. Type: string (or Expression with resultType string).
-	Tenant interface{} `pulumi:"tenant"`
-	// The allowed idle time for the on-demand HDInsight cluster. Specifies how long the on-demand HDInsight cluster stays alive after completion of an activity run if there are no other active jobs in the cluster. The minimum value is 5 mins. Type: string (or Expression with resultType string).
-	TimeToLive interface{} `pulumi:"timeToLive"`
-	// Type of linked service.
-	// Expected value is 'HDInsightOnDemand'.
-	Type string `pulumi:"type"`
-	// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
-	Version interface{} `pulumi:"version"`
-	// The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
-	VirtualNetworkId interface{} `pulumi:"virtualNetworkId"`
-	// Specifies the Yarn configuration parameters (yarn-site.xml) for the HDInsight cluster.
-	YarnConfiguration interface{} `pulumi:"yarnConfiguration"`
-	// Specifies the size of the Zoo Keeper node for the HDInsight cluster.
-	ZookeeperNodeSize interface{} `pulumi:"zookeeperNodeSize"`
-}
-
 func init() {
 	pulumi.RegisterOutputType(ArmIdWrapperResponseOutput{})
 	pulumi.RegisterOutputType(ArmIdWrapperResponsePtrOutput{})
@@ -12561,8 +12941,16 @@ func init() {
 	pulumi.RegisterOutputType(CMKIdentityDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(CMKIdentityDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(CMKIdentityDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ChangeDataCaptureFolderOutput{})
+	pulumi.RegisterOutputType(ChangeDataCaptureFolderPtrOutput{})
+	pulumi.RegisterOutputType(ChangeDataCaptureResponseFolderOutput{})
+	pulumi.RegisterOutputType(ChangeDataCaptureResponseFolderPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStatePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStatePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataMapperMappingOutput{})
+	pulumi.RegisterOutputType(DataMapperMappingArrayOutput{})
+	pulumi.RegisterOutputType(DataMapperMappingResponseOutput{})
+	pulumi.RegisterOutputType(DataMapperMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationResponseOutput{})

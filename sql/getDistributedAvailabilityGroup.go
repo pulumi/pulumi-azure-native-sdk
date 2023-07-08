@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a distributed availability group info.
-// API Version: 2021-05-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupDistributedAvailabilityGroup(ctx *pulumi.Context, args *LookupDistributedAvailabilityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDistributedAvailabilityGroupResult, error) {
 	var rv LookupDistributedAvailabilityGroupResult
 	err := ctx.Invoke("azure-native:sql:getDistributedAvailabilityGroup", args, &rv, opts...)

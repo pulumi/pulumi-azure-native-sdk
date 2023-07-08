@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,24 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:logic/v20180701preview:IntegrationAccount":
-		r = &IntegrationAccount{}
-	case "azure-native:logic/v20180701preview:IntegrationAccountAgreement":
-		r = &IntegrationAccountAgreement{}
-	case "azure-native:logic/v20180701preview:IntegrationAccountAssembly":
-		r = &IntegrationAccountAssembly{}
-	case "azure-native:logic/v20180701preview:IntegrationAccountBatchConfiguration":
-		r = &IntegrationAccountBatchConfiguration{}
-	case "azure-native:logic/v20180701preview:IntegrationAccountCertificate":
-		r = &IntegrationAccountCertificate{}
-	case "azure-native:logic/v20180701preview:IntegrationAccountMap":
-		r = &IntegrationAccountMap{}
-	case "azure-native:logic/v20180701preview:IntegrationAccountPartner":
-		r = &IntegrationAccountPartner{}
-	case "azure-native:logic/v20180701preview:IntegrationAccountSchema":
-		r = &IntegrationAccountSchema{}
-	case "azure-native:logic/v20180701preview:IntegrationAccountSession":
-		r = &IntegrationAccountSession{}
 	case "azure-native:logic/v20180701preview:Workflow":
 		r = &Workflow{}
 	default:

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified network group.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2023-02-01.
 func LookupNetworkGroup(ctx *pulumi.Context, args *LookupNetworkGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkGroupResult, error) {
 	var rv LookupNetworkGroupResult
 	err := ctx.Invoke("azure-native:network:getNetworkGroup", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupNetworkGroup(ctx *pulumi.Context, args *LookupNetworkGroupArgs, opts 
 }
 
 type LookupNetworkGroupArgs struct {
-	// The name of the network group to get.
+	// The name of the network group.
 	NetworkGroupName string `pulumi:"networkGroupName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
@@ -32,24 +32,18 @@ type LookupNetworkGroupArgs struct {
 
 // The network group resource
 type LookupNetworkGroupResult struct {
-	// Network group conditional filter.
-	ConditionalMembership *string `pulumi:"conditionalMembership"`
 	// A description of the network group.
 	Description *string `pulumi:"description"`
-	// A friendly name for the network group.
-	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
-	// Group members of network group.
-	GroupMembers []GroupMembersItemResponse `pulumi:"groupMembers"`
 	// Resource ID.
 	Id string `pulumi:"id"`
-	// Group member type.
-	MemberType *string `pulumi:"memberType"`
 	// Resource name.
 	Name string `pulumi:"name"`
 	// The provisioning state of the scope assignment resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Unique identifier for this resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type.
@@ -70,7 +64,7 @@ func LookupNetworkGroupOutput(ctx *pulumi.Context, args LookupNetworkGroupOutput
 }
 
 type LookupNetworkGroupOutputArgs struct {
-	// The name of the network group to get.
+	// The name of the network group.
 	NetworkGroupName pulumi.StringInput `pulumi:"networkGroupName"`
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
@@ -97,19 +91,9 @@ func (o LookupNetworkGroupResultOutput) ToLookupNetworkGroupResultOutputWithCont
 	return o
 }
 
-// Network group conditional filter.
-func (o LookupNetworkGroupResultOutput) ConditionalMembership() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNetworkGroupResult) *string { return v.ConditionalMembership }).(pulumi.StringPtrOutput)
-}
-
 // A description of the network group.
 func (o LookupNetworkGroupResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A friendly name for the network group.
-func (o LookupNetworkGroupResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNetworkGroupResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -117,19 +101,9 @@ func (o LookupNetworkGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Group members of network group.
-func (o LookupNetworkGroupResultOutput) GroupMembers() GroupMembersItemResponseArrayOutput {
-	return o.ApplyT(func(v LookupNetworkGroupResult) []GroupMembersItemResponse { return v.GroupMembers }).(GroupMembersItemResponseArrayOutput)
-}
-
 // Resource ID.
 func (o LookupNetworkGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkGroupResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Group member type.
-func (o LookupNetworkGroupResultOutput) MemberType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNetworkGroupResult) *string { return v.MemberType }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.
@@ -140,6 +114,11 @@ func (o LookupNetworkGroupResultOutput) Name() pulumi.StringOutput {
 // The provisioning state of the scope assignment resource.
 func (o LookupNetworkGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Unique identifier for this resource.
+func (o LookupNetworkGroupResultOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkGroupResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The system metadata related to this resource.

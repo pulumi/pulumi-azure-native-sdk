@@ -11,7 +11,7 @@ import (
 )
 
 // Get a MAK key.
-// API Version: 2019-09-16-preview.
+// Azure REST API version: 2019-09-16-preview.
 func LookupMultipleActivationKey(ctx *pulumi.Context, args *LookupMultipleActivationKeyArgs, opts ...pulumi.InvokeOption) (*LookupMultipleActivationKeyResult, error) {
 	var rv LookupMultipleActivationKeyResult
 	err := ctx.Invoke("azure-native:windowsesu:getMultipleActivationKey", args, &rv, opts...)

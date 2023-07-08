@@ -11,7 +11,7 @@ import (
 )
 
 // Implements HybridIdentityMetadata GET method.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
 	var rv LookupHybridIdentityMetadatumResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getHybridIdentityMetadatum", args, &rv, opts...)

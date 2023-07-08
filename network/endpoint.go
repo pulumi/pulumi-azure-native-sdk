@@ -12,10 +12,12 @@ import (
 )
 
 // Class representing a Traffic Manager endpoint.
-// API Version: 2018-08-01.
+// Azure REST API version: 2022-04-01. Prior API version in Azure Native 1.x: 2018-08-01
 type Endpoint struct {
 	pulumi.CustomResourceState
 
+	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
+	AlwaysServe pulumi.StringPtrOutput `pulumi:"alwaysServe"`
 	// List of custom headers.
 	CustomHeaders EndpointPropertiesResponseCustomHeadersArrayOutput `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -87,6 +89,9 @@ func NewEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20180801:Endpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20220401:Endpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20220401preview:Endpoint"),
 		},
 	})
@@ -123,6 +128,8 @@ func (EndpointState) ElementType() reflect.Type {
 }
 
 type endpointArgs struct {
+	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
+	AlwaysServe *string `pulumi:"alwaysServe"`
 	// List of custom headers.
 	CustomHeaders []EndpointPropertiesCustomHeaders `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -151,7 +158,7 @@ type endpointArgs struct {
 	Priority *float64 `pulumi:"priority"`
 	// The name of the Traffic Manager profile.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group containing the Traffic Manager endpoint to be created or updated.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
 	Subnets []EndpointPropertiesSubnets `pulumi:"subnets"`
@@ -167,6 +174,8 @@ type endpointArgs struct {
 
 // The set of arguments for constructing a Endpoint resource.
 type EndpointArgs struct {
+	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
+	AlwaysServe pulumi.StringPtrInput
 	// List of custom headers.
 	CustomHeaders EndpointPropertiesCustomHeadersArrayInput
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -195,7 +204,7 @@ type EndpointArgs struct {
 	Priority pulumi.Float64PtrInput
 	// The name of the Traffic Manager profile.
 	ProfileName pulumi.StringInput
-	// The name of the resource group containing the Traffic Manager endpoint to be created or updated.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
 	Subnets EndpointPropertiesSubnetsArrayInput
@@ -244,6 +253,11 @@ func (o EndpointOutput) ToEndpointOutput() EndpointOutput {
 
 func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
 	return o
+}
+
+// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
+func (o EndpointOutput) AlwaysServe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.AlwaysServe }).(pulumi.StringPtrOutput)
 }
 
 // List of custom headers.

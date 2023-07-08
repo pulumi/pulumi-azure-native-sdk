@@ -11,7 +11,7 @@ import (
 )
 
 // Shows an inventory item.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview.
 func LookupInventoryItem(ctx *pulumi.Context, args *LookupInventoryItemArgs, opts ...pulumi.InvokeOption) (*LookupInventoryItemResult, error) {
 	var rv LookupInventoryItemResult
 	err := ctx.Invoke("azure-native:scvmm:getInventoryItem", args, &rv, opts...)
@@ -46,7 +46,7 @@ type LookupInventoryItemResult struct {
 	Name string `pulumi:"name"`
 	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system data.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -130,7 +130,7 @@ func (o LookupInventoryItemResultOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system data.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupInventoryItemResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

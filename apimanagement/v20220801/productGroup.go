@@ -12,8 +12,6 @@ import (
 )
 
 // Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ProductGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ProductGroup to guarantee forwards compatibility.
 type ProductGroup struct {
 	pulumi.CustomResourceState
 
@@ -89,6 +87,12 @@ func NewProductGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ProductGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ProductGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ProductGroup"),
 		},
 	})
 	opts = append(opts, aliases)

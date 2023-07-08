@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a privateLinkHub
-// API Version: 2021-03-01.
+// Azure REST API version: 2021-06-01.
 func LookupPrivateLinkHub(ctx *pulumi.Context, args *LookupPrivateLinkHubArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkHubResult, error) {
 	var rv LookupPrivateLinkHubResult
 	err := ctx.Invoke("azure-native:synapse:getPrivateLinkHub", args, &rv, opts...)

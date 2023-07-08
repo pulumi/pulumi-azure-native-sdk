@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified cloud connector in a specified resource group.
-// API Version: 2023-01-01-preview.
+// Azure REST API version: 2023-01-01-preview.
 func LookupCloudConnector(ctx *pulumi.Context, args *LookupCloudConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCloudConnectorResult, error) {
 	var rv LookupCloudConnectorResult
 	err := ctx.Invoke("azure-native:hybridcloud:getCloudConnector", args, &rv, opts...)

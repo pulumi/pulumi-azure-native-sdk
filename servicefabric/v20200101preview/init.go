@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:servicefabric/v20200101preview:ManagedCluster":
 		r = &ManagedCluster{}
-	case "azure-native:servicefabric/v20200101preview:NodeType":
-		r = &NodeType{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

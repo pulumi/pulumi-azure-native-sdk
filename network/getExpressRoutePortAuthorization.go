@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified authorization from the specified express route port.
-// API Version: 2022-01-01.
+// Azure REST API version: 2023-02-01.
 func LookupExpressRoutePortAuthorization(ctx *pulumi.Context, args *LookupExpressRoutePortAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortAuthorizationResult, error) {
 	var rv LookupExpressRoutePortAuthorizationResult
 	err := ctx.Invoke("azure-native:network:getExpressRoutePortAuthorization", args, &rv, opts...)

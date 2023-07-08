@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupSqlDBTableDataSetMapping(ctx *pulumi.Context, args *LookupSqlDBTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupSqlDBTableDataSetMappingResult, error) {
 	var rv LookupSqlDBTableDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare:getSqlDBTableDataSetMapping", args, &rv, opts...)

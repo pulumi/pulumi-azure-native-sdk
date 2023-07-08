@@ -12,8 +12,6 @@ import (
 )
 
 // A job.
-//
-// Deprecated: azure-native:sql/v20211101:Job is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:Job to guarantee forwards compatibility.
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -87,6 +85,9 @@ func NewJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:Job"),
 		},
 	})
 	opts = append(opts, aliases)

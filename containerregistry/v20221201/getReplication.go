@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the properties of the specified replication.
-//
-// Deprecated: azure-native:containerregistry/v20221201:Replication is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Replication to guarantee forwards compatibility.
 func LookupReplication(ctx *pulumi.Context, args *LookupReplicationArgs, opts ...pulumi.InvokeOption) (*LookupReplicationResult, error) {
 	var rv LookupReplicationResult
 	err := ctx.Invoke("azure-native:containerregistry/v20221201:getReplication", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Lists devices for catalog.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func ListCatalogDevices(ctx *pulumi.Context, args *ListCatalogDevicesArgs, opts ...pulumi.InvokeOption) (*ListCatalogDevicesResult, error) {
 	var rv ListCatalogDevicesResult
 	err := ctx.Invoke("azure-native:azuresphere:listCatalogDevices", args, &rv, opts...)

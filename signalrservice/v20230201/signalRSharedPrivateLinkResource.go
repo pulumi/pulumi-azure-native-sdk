@@ -12,8 +12,6 @@ import (
 )
 
 // Describes a Shared Private Link Resource
-//
-// Deprecated: azure-native:signalrservice/v20230201:SignalRSharedPrivateLinkResource is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRSharedPrivateLinkResource to guarantee forwards compatibility.
 type SignalRSharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +73,12 @@ func NewSignalRSharedPrivateLinkResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20220801preview:SignalRSharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230301preview:SignalRSharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230601preview:SignalRSharedPrivateLinkResource"),
 		},
 	})
 	opts = append(opts, aliases)

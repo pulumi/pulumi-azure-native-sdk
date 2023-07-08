@@ -11,7 +11,7 @@ import (
 )
 
 // This method provides the list of configurations for the given product family, product line and product under subscription.
-// API Version: 2021-12-01.
+// Azure REST API version: 2021-12-01.
 func ListConfigurations(ctx *pulumi.Context, args *ListConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListConfigurationsResult, error) {
 	var rv ListConfigurationsResult
 	err := ctx.Invoke("azure-native:edgeorder:listConfigurations", args, &rv, opts...)

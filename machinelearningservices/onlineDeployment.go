@@ -11,12 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type OnlineDeployment struct {
 	pulumi.CustomResourceState
 
-	// Service identity associated with a resource.
-	Identity ResourceIdentityResponsePtrOutput `pulumi:"identity"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -24,8 +24,10 @@ type OnlineDeployment struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// System data associated with resource provider
+	OnlineDeploymentProperties pulumi.AnyOutput `pulumi:"onlineDeploymentProperties"`
+	// Sku details required for ARM contract for Autoscaling.
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -43,8 +45,8 @@ func NewOnlineDeployment(ctx *pulumi.Context,
 	if args.EndpointName == nil {
 		return nil, errors.New("invalid value for required argument 'EndpointName'")
 	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.OnlineDeploymentProperties == nil {
+		return nil, errors.New("invalid value for required argument 'OnlineDeploymentProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -75,7 +77,16 @@ func NewOnlineDeployment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:OnlineDeployment"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:OnlineDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:OnlineDeployment"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:OnlineDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:OnlineDeployment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -115,16 +126,18 @@ type onlineDeploymentArgs struct {
 	DeploymentName *string `pulumi:"deploymentName"`
 	// Inference endpoint name.
 	EndpointName string `pulumi:"endpointName"`
-	// Service identity associated with a resource.
-	Identity *ResourceIdentity `pulumi:"identity"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// [Required] Additional attributes of the entity.
-	Properties interface{} `pulumi:"properties"`
+	OnlineDeploymentProperties interface{} `pulumi:"onlineDeploymentProperties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Sku details required for ARM contract for Autoscaling.
+	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Name of Azure Machine Learning workspace.
@@ -137,16 +150,18 @@ type OnlineDeploymentArgs struct {
 	DeploymentName pulumi.StringPtrInput
 	// Inference endpoint name.
 	EndpointName pulumi.StringInput
-	// Service identity associated with a resource.
-	Identity ResourceIdentityPtrInput
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity ManagedServiceIdentityPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// [Required] Additional attributes of the entity.
-	Properties pulumi.Input
+	OnlineDeploymentProperties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Sku details required for ARM contract for Autoscaling.
+	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Name of Azure Machine Learning workspace.
@@ -190,9 +205,9 @@ func (o OnlineDeploymentOutput) ToOnlineDeploymentOutputWithContext(ctx context.
 	return o
 }
 
-// Service identity associated with a resource.
-func (o OnlineDeploymentOutput) Identity() ResourceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *OnlineDeployment) ResourceIdentityResponsePtrOutput { return v.Identity }).(ResourceIdentityResponsePtrOutput)
+// Managed service identity (system assigned and/or user assigned identities)
+func (o OnlineDeploymentOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *OnlineDeployment) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -211,11 +226,16 @@ func (o OnlineDeploymentOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o OnlineDeploymentOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *OnlineDeployment) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+func (o OnlineDeploymentOutput) OnlineDeploymentProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *OnlineDeployment) pulumi.AnyOutput { return v.OnlineDeploymentProperties }).(pulumi.AnyOutput)
 }
 
-// System data associated with resource provider
+// Sku details required for ARM contract for Autoscaling.
+func (o OnlineDeploymentOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *OnlineDeployment) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o OnlineDeploymentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *OnlineDeployment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

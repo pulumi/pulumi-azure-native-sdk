@@ -12,14 +12,16 @@ import (
 )
 
 // An Azure SQL Database server.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type Server struct {
 	pulumi.CustomResourceState
 
 	// Administrator username for the server. Once created it cannot be changed.
 	AdministratorLogin pulumi.StringPtrOutput `pulumi:"administratorLogin"`
-	// The Azure Active Directory identity of the server.
+	// The Azure Active Directory administrator of the server.
 	Administrators ServerExternalAdministratorResponsePtrOutput `pulumi:"administrators"`
+	// The Client id used for cross tenant CMK scenario
+	FederatedClientId pulumi.StringPtrOutput `pulumi:"federatedClientId"`
 	// The fully qualified domain name of the server.
 	FullyQualifiedDomainName pulumi.StringOutput `pulumi:"fullyQualifiedDomainName"`
 	// The Azure Active Directory identity of the server.
@@ -40,6 +42,8 @@ type Server struct {
 	PrivateEndpointConnections ServerPrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
+	// Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+	RestrictOutboundNetworkAccess pulumi.StringPtrOutput `pulumi:"restrictOutboundNetworkAccess"`
 	// The state of the server.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Resource tags.
@@ -105,6 +109,9 @@ func NewServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:Server"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:Server"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Server
@@ -143,8 +150,10 @@ type serverArgs struct {
 	AdministratorLogin *string `pulumi:"administratorLogin"`
 	// The administrator login password (required for server creation).
 	AdministratorLoginPassword *string `pulumi:"administratorLoginPassword"`
-	// The Azure Active Directory identity of the server.
+	// The Azure Active Directory administrator of the server.
 	Administrators *ServerExternalAdministrator `pulumi:"administrators"`
+	// The Client id used for cross tenant CMK scenario
+	FederatedClientId *string `pulumi:"federatedClientId"`
 	// The Azure Active Directory identity of the server.
 	Identity *ResourceIdentity `pulumi:"identity"`
 	// A CMK URI of the key to use for encryption.
@@ -159,6 +168,8 @@ type serverArgs struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+	RestrictOutboundNetworkAccess *string `pulumi:"restrictOutboundNetworkAccess"`
 	// The name of the server.
 	ServerName *string `pulumi:"serverName"`
 	// Resource tags.
@@ -173,8 +184,10 @@ type ServerArgs struct {
 	AdministratorLogin pulumi.StringPtrInput
 	// The administrator login password (required for server creation).
 	AdministratorLoginPassword pulumi.StringPtrInput
-	// The Azure Active Directory identity of the server.
+	// The Azure Active Directory administrator of the server.
 	Administrators ServerExternalAdministratorPtrInput
+	// The Client id used for cross tenant CMK scenario
+	FederatedClientId pulumi.StringPtrInput
 	// The Azure Active Directory identity of the server.
 	Identity ResourceIdentityPtrInput
 	// A CMK URI of the key to use for encryption.
@@ -189,6 +202,8 @@ type ServerArgs struct {
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
+	// Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+	RestrictOutboundNetworkAccess pulumi.StringPtrInput
 	// The name of the server.
 	ServerName pulumi.StringPtrInput
 	// Resource tags.
@@ -239,9 +254,14 @@ func (o ServerOutput) AdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
 }
 
-// The Azure Active Directory identity of the server.
+// The Azure Active Directory administrator of the server.
 func (o ServerOutput) Administrators() ServerExternalAdministratorResponsePtrOutput {
 	return o.ApplyT(func(v *Server) ServerExternalAdministratorResponsePtrOutput { return v.Administrators }).(ServerExternalAdministratorResponsePtrOutput)
+}
+
+// The Client id used for cross tenant CMK scenario
+func (o ServerOutput) FederatedClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.FederatedClientId }).(pulumi.StringPtrOutput)
 }
 
 // The fully qualified domain name of the server.
@@ -294,6 +314,11 @@ func (o ServerOutput) PrivateEndpointConnections() ServerPrivateEndpointConnecti
 // Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 func (o ServerOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+func (o ServerOutput) RestrictOutboundNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.RestrictOutboundNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // The state of the server.

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets entity type (profile or interaction) image upload URL.
-// API Version: 2017-04-26.
+// Azure REST API version: 2017-04-26.
 func GetImageUploadUrlForEntityType(ctx *pulumi.Context, args *GetImageUploadUrlForEntityTypeArgs, opts ...pulumi.InvokeOption) (*GetImageUploadUrlForEntityTypeResult, error) {
 	var rv GetImageUploadUrlForEntityTypeResult
 	err := ctx.Invoke("azure-native:customerinsights:getImageUploadUrlForEntityType", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a RouteTable.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupHubRouteTable(ctx *pulumi.Context, args *LookupHubRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupHubRouteTableResult, error) {
 	var rv LookupHubRouteTableResult
 	err := ctx.Invoke("azure-native:network:getHubRouteTable", args, &rv, opts...)

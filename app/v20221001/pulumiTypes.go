@@ -448,9 +448,9 @@ func (o AllowedPrincipalsResponsePtrOutput) Identities() pulumi.StringArrayOutpu
 
 // Configuration of application logs
 type AppLogsConfiguration struct {
-	// Logs destination
+	// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
 	Destination *string `pulumi:"destination"`
-	// Log Analytics configuration
+	// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 	LogAnalyticsConfiguration *LogAnalyticsConfiguration `pulumi:"logAnalyticsConfiguration"`
 }
 
@@ -467,9 +467,9 @@ type AppLogsConfigurationInput interface {
 
 // Configuration of application logs
 type AppLogsConfigurationArgs struct {
-	// Logs destination
+	// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
-	// Log Analytics configuration
+	// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 	LogAnalyticsConfiguration LogAnalyticsConfigurationPtrInput `pulumi:"logAnalyticsConfiguration"`
 }
 
@@ -551,12 +551,12 @@ func (o AppLogsConfigurationOutput) ToAppLogsConfigurationPtrOutputWithContext(c
 	}).(AppLogsConfigurationPtrOutput)
 }
 
-// Logs destination
+// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
 func (o AppLogsConfigurationOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppLogsConfiguration) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
-// Log Analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 func (o AppLogsConfigurationOutput) LogAnalyticsConfiguration() LogAnalyticsConfigurationPtrOutput {
 	return o.ApplyT(func(v AppLogsConfiguration) *LogAnalyticsConfiguration { return v.LogAnalyticsConfiguration }).(LogAnalyticsConfigurationPtrOutput)
 }
@@ -585,7 +585,7 @@ func (o AppLogsConfigurationPtrOutput) Elem() AppLogsConfigurationOutput {
 	}).(AppLogsConfigurationOutput)
 }
 
-// Logs destination
+// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
 func (o AppLogsConfigurationPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppLogsConfiguration) *string {
 		if v == nil {
@@ -595,7 +595,7 @@ func (o AppLogsConfigurationPtrOutput) Destination() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Log Analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 func (o AppLogsConfigurationPtrOutput) LogAnalyticsConfiguration() LogAnalyticsConfigurationPtrOutput {
 	return o.ApplyT(func(v *AppLogsConfiguration) *LogAnalyticsConfiguration {
 		if v == nil {
@@ -607,9 +607,9 @@ func (o AppLogsConfigurationPtrOutput) LogAnalyticsConfiguration() LogAnalyticsC
 
 // Configuration of application logs
 type AppLogsConfigurationResponse struct {
-	// Logs destination
+	// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
 	Destination *string `pulumi:"destination"`
-	// Log Analytics configuration
+	// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 	LogAnalyticsConfiguration *LogAnalyticsConfigurationResponse `pulumi:"logAnalyticsConfiguration"`
 }
 
@@ -628,12 +628,12 @@ func (o AppLogsConfigurationResponseOutput) ToAppLogsConfigurationResponseOutput
 	return o
 }
 
-// Logs destination
+// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
 func (o AppLogsConfigurationResponseOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppLogsConfigurationResponse) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
-// Log Analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 func (o AppLogsConfigurationResponseOutput) LogAnalyticsConfiguration() LogAnalyticsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v AppLogsConfigurationResponse) *LogAnalyticsConfigurationResponse {
 		return v.LogAnalyticsConfiguration
@@ -664,7 +664,7 @@ func (o AppLogsConfigurationResponsePtrOutput) Elem() AppLogsConfigurationRespon
 	}).(AppLogsConfigurationResponseOutput)
 }
 
-// Logs destination
+// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
 func (o AppLogsConfigurationResponsePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppLogsConfigurationResponse) *string {
 		if v == nil {
@@ -674,7 +674,7 @@ func (o AppLogsConfigurationResponsePtrOutput) Destination() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Log Analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 func (o AppLogsConfigurationResponsePtrOutput) LogAnalyticsConfiguration() LogAnalyticsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *AppLogsConfigurationResponse) *LogAnalyticsConfigurationResponse {
 		if v == nil {
@@ -14278,7 +14278,7 @@ func (o JwtClaimChecksResponsePtrOutput) AllowedGroups() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Log analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 type LogAnalyticsConfiguration struct {
 	// Log analytics customer id
 	CustomerId *string `pulumi:"customerId"`
@@ -14297,7 +14297,7 @@ type LogAnalyticsConfigurationInput interface {
 	ToLogAnalyticsConfigurationOutputWithContext(context.Context) LogAnalyticsConfigurationOutput
 }
 
-// Log analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 type LogAnalyticsConfigurationArgs struct {
 	// Log analytics customer id
 	CustomerId pulumi.StringPtrInput `pulumi:"customerId"`
@@ -14358,7 +14358,7 @@ func (i *logAnalyticsConfigurationPtrType) ToLogAnalyticsConfigurationPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsConfigurationPtrOutput)
 }
 
-// Log analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 type LogAnalyticsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (LogAnalyticsConfigurationOutput) ElementType() reflect.Type {
@@ -14437,13 +14437,13 @@ func (o LogAnalyticsConfigurationPtrOutput) SharedKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Log analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 type LogAnalyticsConfigurationResponse struct {
 	// Log analytics customer id
 	CustomerId *string `pulumi:"customerId"`
 }
 
-// Log analytics configuration
+// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 type LogAnalyticsConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (LogAnalyticsConfigurationResponseOutput) ElementType() reflect.Type {
@@ -15662,7 +15662,7 @@ type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
@@ -15681,7 +15681,7 @@ type ManagedServiceIdentityArgs struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -15768,8 +15768,8 @@ func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -15807,13 +15807,13 @@ func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

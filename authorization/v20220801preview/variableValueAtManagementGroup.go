@@ -41,6 +41,12 @@ func NewVariableValueAtManagementGroup(ctx *pulumi.Context,
 	if args.VariableName == nil {
 		return nil, errors.New("invalid value for required argument 'VariableName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:authorization:VariableValueAtManagementGroup"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource VariableValueAtManagementGroup
 	err := ctx.RegisterResource("azure-native:authorization/v20220801preview:VariableValueAtManagementGroup", name, args, &resource, opts...)
 	if err != nil {

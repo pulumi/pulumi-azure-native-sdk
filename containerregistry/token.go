@@ -12,7 +12,7 @@ import (
 )
 
 // An object that represents a token for a container registry.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type Token struct {
 	pulumi.CustomResourceState
 
@@ -110,7 +110,7 @@ type tokenArgs struct {
 	Credentials *TokenCredentialsProperties `pulumi:"credentials"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource ID of the scope map to which the token will be associated with.
 	ScopeMapId *string `pulumi:"scopeMapId"`
@@ -126,7 +126,7 @@ type TokenArgs struct {
 	Credentials TokenCredentialsPropertiesPtrInput
 	// The name of the container registry.
 	RegistryName pulumi.StringInput
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The resource ID of the scope map to which the token will be associated with.
 	ScopeMapId pulumi.StringPtrInput

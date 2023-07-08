@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DnsForwardingRuleset{}
 	case "azure-native:network:DnsResolver":
 		r = &DnsResolver{}
+	case "azure-native:network:DnssecConfig":
+		r = &DnssecConfig{}
 	case "azure-native:network:DscpConfiguration":
 		r = &DscpConfiguration{}
 	case "azure-native:network:Endpoint":
@@ -99,6 +101,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InboundEndpoint{}
 	case "azure-native:network:InboundNatRule":
 		r = &InboundNatRule{}
+	case "azure-native:network:InterfaceEndpoint":
+		r = &InterfaceEndpoint{}
 	case "azure-native:network:IpAllocation":
 		r = &IpAllocation{}
 	case "azure-native:network:IpGroup":
@@ -133,12 +137,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkSecurityPerimeter{}
 	case "azure-native:network:NetworkVirtualAppliance":
 		r = &NetworkVirtualAppliance{}
+	case "azure-native:network:NetworkVirtualApplianceConnection":
+		r = &NetworkVirtualApplianceConnection{}
 	case "azure-native:network:NetworkWatcher":
 		r = &NetworkWatcher{}
 	case "azure-native:network:NspAccessRule":
 		r = &NspAccessRule{}
 	case "azure-native:network:NspAssociation":
 		r = &NspAssociation{}
+	case "azure-native:network:NspLink":
+		r = &NspLink{}
 	case "azure-native:network:NspProfile":
 		r = &NspProfile{}
 	case "azure-native:network:OutboundEndpoint":
@@ -161,6 +169,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateLinkServicePrivateEndpointConnection{}
 	case "azure-native:network:PrivateRecordSet":
 		r = &PrivateRecordSet{}
+	case "azure-native:network:PrivateResolverVirtualNetworkLink":
+		r = &PrivateResolverVirtualNetworkLink{}
 	case "azure-native:network:PrivateZone":
 		r = &PrivateZone{}
 	case "azure-native:network:Profile":
@@ -177,6 +187,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RouteFilter{}
 	case "azure-native:network:RouteFilterRule":
 		r = &RouteFilterRule{}
+	case "azure-native:network:RouteMap":
+		r = &RouteMap{}
 	case "azure-native:network:RouteTable":
 		r = &RouteTable{}
 	case "azure-native:network:RoutingIntent":

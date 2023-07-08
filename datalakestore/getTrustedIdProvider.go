@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Data Lake Store trusted identity provider.
-// API Version: 2016-11-01.
+// Azure REST API version: 2016-11-01.
 func LookupTrustedIdProvider(ctx *pulumi.Context, args *LookupTrustedIdProviderArgs, opts ...pulumi.InvokeOption) (*LookupTrustedIdProviderResult, error) {
 	var rv LookupTrustedIdProviderResult
 	err := ctx.Invoke("azure-native:datalakestore:getTrustedIdProvider", args, &rv, opts...)

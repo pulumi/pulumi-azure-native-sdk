@@ -12,7 +12,7 @@ import (
 
 // Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
 // call the GetItemOperationResult API.
-// API Version: 2021-02-01.
+// Azure REST API version: 2023-04-01.
 func LookupProtectedItem(ctx *pulumi.Context, args *LookupProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupProtectedItemResult, error) {
 	var rv LookupProtectedItemResult
 	err := ctx.Invoke("azure-native:recoveryservices:getProtectedItem", args, &rv, opts...)

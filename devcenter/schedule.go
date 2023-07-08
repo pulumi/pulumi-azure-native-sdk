@@ -12,7 +12,7 @@ import (
 )
 
 // Represents a Schedule to execute a task.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview
 type Schedule struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +75,12 @@ func NewSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:Schedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:Schedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:Schedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Schedule
@@ -115,7 +121,7 @@ type scheduleArgs struct {
 	PoolName string `pulumi:"poolName"`
 	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the schedule that uniquely identifies it.
 	ScheduleName *string `pulumi:"scheduleName"`
@@ -139,7 +145,7 @@ type ScheduleArgs struct {
 	PoolName pulumi.StringInput
 	// The name of the project.
 	ProjectName pulumi.StringInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the schedule that uniquely identifies it.
 	ScheduleName pulumi.StringPtrInput

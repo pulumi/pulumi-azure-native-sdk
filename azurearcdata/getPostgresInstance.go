@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves a postgres Instance resource
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2023-01-15-preview.
 func LookupPostgresInstance(ctx *pulumi.Context, args *LookupPostgresInstanceArgs, opts ...pulumi.InvokeOption) (*LookupPostgresInstanceResult, error) {
 	var rv LookupPostgresInstanceResult
 	err := ctx.Invoke("azure-native:azurearcdata:getPostgresInstance", args, &rv, opts...)
@@ -32,7 +32,7 @@ type LookupPostgresInstanceArgs struct {
 type LookupPostgresInstanceResult struct {
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -42,11 +42,11 @@ type LookupPostgresInstanceResult struct {
 	Properties PostgresInstancePropertiesResponse `pulumi:"properties"`
 	// Resource sku.
 	Sku *PostgresInstanceSkuResponse `pulumi:"sku"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -105,7 +105,7 @@ func (o LookupPostgresInstanceResultOutput) ExtendedLocation() ExtendedLocationR
 	return o.ApplyT(func(v LookupPostgresInstanceResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
-// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPostgresInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -130,7 +130,7 @@ func (o LookupPostgresInstanceResultOutput) Sku() PostgresInstanceSkuResponsePtr
 	return o.ApplyT(func(v LookupPostgresInstanceResult) *PostgresInstanceSkuResponse { return v.Sku }).(PostgresInstanceSkuResponsePtrOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPostgresInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -140,7 +140,7 @@ func (o LookupPostgresInstanceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPostgresInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }

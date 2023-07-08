@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified webhook.
-// API Version: 2019-05-01.
+// Azure REST API version: 2022-12-01.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	var rv LookupWebhookResult
 	err := ctx.Invoke("azure-native:containerregistry:getWebhook", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.
 type LookupWebhookArgs struct {
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the webhook.
 	WebhookName string `pulumi:"webhookName"`
@@ -46,6 +46,8 @@ type LookupWebhookResult struct {
 	Scope *string `pulumi:"scope"`
 	// The status of the webhook at the time the operation was called.
 	Status *string `pulumi:"status"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource.
@@ -68,7 +70,7 @@ func LookupWebhookOutput(ctx *pulumi.Context, args LookupWebhookOutputArgs, opts
 type LookupWebhookOutputArgs struct {
 	// The name of the container registry.
 	RegistryName pulumi.StringInput `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the webhook.
 	WebhookName pulumi.StringInput `pulumi:"webhookName"`
@@ -126,6 +128,11 @@ func (o LookupWebhookResultOutput) Scope() pulumi.StringPtrOutput {
 // The status of the webhook at the time the operation was called.
 func (o LookupWebhookResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebhookResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupWebhookResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebhookResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tags of the resource.

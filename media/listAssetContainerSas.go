@@ -11,7 +11,7 @@ import (
 )
 
 // Lists storage container URLs with shared access signatures (SAS) for uploading and downloading Asset content. The signatures are derived from the storage account keys.
-// API Version: 2020-05-01.
+// Azure REST API version: 2023-01-01.
 func ListAssetContainerSas(ctx *pulumi.Context, args *ListAssetContainerSasArgs, opts ...pulumi.InvokeOption) (*ListAssetContainerSasResult, error) {
 	var rv ListAssetContainerSasResult
 	err := ctx.Invoke("azure-native:media:listAssetContainerSas", args, &rv, opts...)

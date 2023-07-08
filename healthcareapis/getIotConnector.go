@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified IoT Connector.
-// API Version: 2022-05-15.
+// Azure REST API version: 2023-02-28.
 func LookupIotConnector(ctx *pulumi.Context, args *LookupIotConnectorArgs, opts ...pulumi.InvokeOption) (*LookupIotConnectorResult, error) {
 	var rv LookupIotConnectorResult
 	err := ctx.Invoke("azure-native:healthcareapis:getIotConnector", args, &rv, opts...)

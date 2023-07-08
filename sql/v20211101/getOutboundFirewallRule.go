@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an outbound firewall rule.
-//
-// Deprecated: azure-native:sql/v20211101:OutboundFirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:OutboundFirewallRule to guarantee forwards compatibility.
 func LookupOutboundFirewallRule(ctx *pulumi.Context, args *LookupOutboundFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupOutboundFirewallRuleResult, error) {
 	var rv LookupOutboundFirewallRuleResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getOutboundFirewallRule", args, &rv, opts...)

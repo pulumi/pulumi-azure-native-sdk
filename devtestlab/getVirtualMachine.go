@@ -11,7 +11,7 @@ import (
 )
 
 // Get virtual machine.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:devtestlab:getVirtualMachine", args, &rv, opts...)

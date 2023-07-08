@@ -11,7 +11,7 @@ import (
 )
 
 // Get the Continuous Export configuration for this export id.
-// API Version: 2015-05-01.
+// Azure REST API version: 2015-05-01.
 func LookupExportConfiguration(ctx *pulumi.Context, args *LookupExportConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupExportConfigurationResult, error) {
 	var rv LookupExportConfigurationResult
 	err := ctx.Invoke("azure-native:insights:getExportConfiguration", args, &rv, opts...)

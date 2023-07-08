@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure SQL Database sync member.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type SyncMember struct {
 	pulumi.CustomResourceState
 
@@ -102,6 +102,9 @@ func NewSyncMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:SyncMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:SyncMember"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,7 @@ import (
 )
 
 // Represents a bookmark in Azure Security Insights.
-// API Version: 2020-01-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01
 type Bookmark struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +30,7 @@ type Bookmark struct {
 	IncidentInfo IncidentInfoResponsePtrOutput `pulumi:"incidentInfo"`
 	// List of labels relevant to this bookmark
 	Labels pulumi.StringArrayOutput `pulumi:"labels"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The notes of the bookmark
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
@@ -42,7 +42,9 @@ type Bookmark struct {
 	QueryResult pulumi.StringPtrOutput `pulumi:"queryResult"`
 	// The start time for the query
 	QueryStartTime pulumi.StringPtrOutput `pulumi:"queryStartTime"`
-	// Azure resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The last time the bookmark was updated
 	Updated pulumi.StringPtrOutput `pulumi:"updated"`
@@ -128,7 +130,16 @@ func NewBookmark(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:Bookmark"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:Bookmark"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:Bookmark"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Bookmark"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Bookmark"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -188,7 +199,7 @@ type bookmarkArgs struct {
 	QueryResult *string `pulumi:"queryResult"`
 	// The start time for the query
 	QueryStartTime *string `pulumi:"queryStartTime"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The last time the bookmark was updated
 	Updated *string `pulumi:"updated"`
@@ -224,7 +235,7 @@ type BookmarkArgs struct {
 	QueryResult pulumi.StringPtrInput
 	// The start time for the query
 	QueryStartTime pulumi.StringPtrInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The last time the bookmark was updated
 	Updated pulumi.StringPtrInput
@@ -306,7 +317,7 @@ func (o BookmarkOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Bookmark) pulumi.StringArrayOutput { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o BookmarkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bookmark) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -336,7 +347,12 @@ func (o BookmarkOutput) QueryStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bookmark) pulumi.StringPtrOutput { return v.QueryStartTime }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o BookmarkOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Bookmark) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o BookmarkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bookmark) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a blueprint assignment.
-// API Version: 2018-11-01-preview.
+// Azure REST API version: 2018-11-01-preview.
 func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupAssignmentResult, error) {
 	var rv LookupAssignmentResult
 	err := ctx.Invoke("azure-native:blueprint:getAssignment", args, &rv, opts...)

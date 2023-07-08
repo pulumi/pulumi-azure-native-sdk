@@ -12,8 +12,6 @@ import (
 )
 
 // A custom certificate.
-//
-// Deprecated: azure-native:signalrservice/v20230201:SignalRCustomCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalRCustomCertificate to guarantee forwards compatibility.
 type SignalRCustomCertificate struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +59,12 @@ func NewSignalRCustomCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20220801preview:SignalRCustomCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230301preview:SignalRCustomCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230601preview:SignalRCustomCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

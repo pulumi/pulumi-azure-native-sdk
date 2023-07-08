@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the keys for a Media Service.
-// API Version: 2015-10-01.
+// Azure REST API version: 2015-10-01.
 func ListMediaServiceKeys(ctx *pulumi.Context, args *ListMediaServiceKeysArgs, opts ...pulumi.InvokeOption) (*ListMediaServiceKeysResult, error) {
 	var rv ListMediaServiceKeysResult
 	err := ctx.Invoke("azure-native:media:listMediaServiceKeys", args, &rv, opts...)

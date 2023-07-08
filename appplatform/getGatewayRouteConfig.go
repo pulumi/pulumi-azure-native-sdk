@@ -11,14 +11,14 @@ import (
 )
 
 // Get the Spring Cloud Gateway route configs.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupGatewayRouteConfig(ctx *pulumi.Context, args *LookupGatewayRouteConfigArgs, opts ...pulumi.InvokeOption) (*LookupGatewayRouteConfigResult, error) {
 	var rv LookupGatewayRouteConfigResult
 	err := ctx.Invoke("azure-native:appplatform:getGatewayRouteConfig", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupGatewayRouteConfigArgs struct {
@@ -44,6 +44,17 @@ type LookupGatewayRouteConfigResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupGatewayRouteConfigResult
+func (val *LookupGatewayRouteConfigResult) Defaults() *LookupGatewayRouteConfigResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
 }
 
 func LookupGatewayRouteConfigOutput(ctx *pulumi.Context, args LookupGatewayRouteConfigOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayRouteConfigResultOutput {

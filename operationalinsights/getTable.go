@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Log Analytics workspace table.
-// API Version: 2021-12-01-preview.
+// Azure REST API version: 2022-10-01.
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {
 	var rv LookupTableResult
 	err := ctx.Invoke("azure-native:operationalinsights:getTable", args, &rv, opts...)
@@ -47,9 +47,11 @@ type LookupTableResult struct {
 	// Parameters of the restore operation that initiated this table.
 	RestoredLogs *RestoredLogsResponse `pulumi:"restoredLogs"`
 	// Search job execution statistics.
-	ResultStatistics *ResultStatisticsResponse `pulumi:"resultStatistics"`
+	ResultStatistics ResultStatisticsResponse `pulumi:"resultStatistics"`
 	// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
 	RetentionInDays *int `pulumi:"retentionInDays"`
+	// True - Value originates from workspace retention in days, False - Customer specific.
+	RetentionInDaysAsDefault bool `pulumi:"retentionInDaysAsDefault"`
 	// Table schema.
 	Schema *SchemaResponse `pulumi:"schema"`
 	// Parameters of the search job that initiated this table.
@@ -58,6 +60,8 @@ type LookupTableResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays *int `pulumi:"totalRetentionInDays"`
+	// True - Value originates from retention in days, False - Customer specific.
+	TotalRetentionInDaysAsDefault bool `pulumi:"totalRetentionInDaysAsDefault"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -139,13 +143,18 @@ func (o LookupTableResultOutput) RestoredLogs() RestoredLogsResponsePtrOutput {
 }
 
 // Search job execution statistics.
-func (o LookupTableResultOutput) ResultStatistics() ResultStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v LookupTableResult) *ResultStatisticsResponse { return v.ResultStatistics }).(ResultStatisticsResponsePtrOutput)
+func (o LookupTableResultOutput) ResultStatistics() ResultStatisticsResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) ResultStatisticsResponse { return v.ResultStatistics }).(ResultStatisticsResponseOutput)
 }
 
 // The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
 func (o LookupTableResultOutput) RetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupTableResult) *int { return v.RetentionInDays }).(pulumi.IntPtrOutput)
+}
+
+// True - Value originates from workspace retention in days, False - Customer specific.
+func (o LookupTableResultOutput) RetentionInDaysAsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTableResult) bool { return v.RetentionInDaysAsDefault }).(pulumi.BoolOutput)
 }
 
 // Table schema.
@@ -166,6 +175,11 @@ func (o LookupTableResultOutput) SystemData() SystemDataResponseOutput {
 // The table total retention in days, between 4 and 2555. Setting this property to -1 will default to table retention.
 func (o LookupTableResultOutput) TotalRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupTableResult) *int { return v.TotalRetentionInDays }).(pulumi.IntPtrOutput)
+}
+
+// True - Value originates from retention in days, False - Customer specific.
+func (o LookupTableResultOutput) TotalRetentionInDaysAsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTableResult) bool { return v.TotalRetentionInDaysAsDefault }).(pulumi.BoolOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

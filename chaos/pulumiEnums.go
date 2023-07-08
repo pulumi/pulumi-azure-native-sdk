@@ -10,12 +10,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+type FilterType string
+
+const (
+	FilterTypeSimple = FilterType("Simple")
+)
+
 // String of the resource identity type.
 type ResourceIdentityType string
 
 const (
 	ResourceIdentityTypeNone           = ResourceIdentityType("None")
 	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
+	ResourceIdentityTypeUserAssigned   = ResourceIdentityType("UserAssigned")
 )
 
 func (ResourceIdentityType) ElementType() reflect.Type {
@@ -179,168 +187,9 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 type SelectorType string
 
 const (
-	SelectorTypePercent = SelectorType("Percent")
-	SelectorTypeRandom  = SelectorType("Random")
-	SelectorTypeTag     = SelectorType("Tag")
-	SelectorTypeList    = SelectorType("List")
+	SelectorTypeList  = SelectorType("List")
+	SelectorTypeQuery = SelectorType("Query")
 )
-
-func (SelectorType) ElementType() reflect.Type {
-	return reflect.TypeOf((*SelectorType)(nil)).Elem()
-}
-
-func (e SelectorType) ToSelectorTypeOutput() SelectorTypeOutput {
-	return pulumi.ToOutput(e).(SelectorTypeOutput)
-}
-
-func (e SelectorType) ToSelectorTypeOutputWithContext(ctx context.Context) SelectorTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(SelectorTypeOutput)
-}
-
-func (e SelectorType) ToSelectorTypePtrOutput() SelectorTypePtrOutput {
-	return e.ToSelectorTypePtrOutputWithContext(context.Background())
-}
-
-func (e SelectorType) ToSelectorTypePtrOutputWithContext(ctx context.Context) SelectorTypePtrOutput {
-	return SelectorType(e).ToSelectorTypeOutputWithContext(ctx).ToSelectorTypePtrOutputWithContext(ctx)
-}
-
-func (e SelectorType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SelectorType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SelectorType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SelectorType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type SelectorTypeOutput struct{ *pulumi.OutputState }
-
-func (SelectorTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SelectorType)(nil)).Elem()
-}
-
-func (o SelectorTypeOutput) ToSelectorTypeOutput() SelectorTypeOutput {
-	return o
-}
-
-func (o SelectorTypeOutput) ToSelectorTypeOutputWithContext(ctx context.Context) SelectorTypeOutput {
-	return o
-}
-
-func (o SelectorTypeOutput) ToSelectorTypePtrOutput() SelectorTypePtrOutput {
-	return o.ToSelectorTypePtrOutputWithContext(context.Background())
-}
-
-func (o SelectorTypeOutput) ToSelectorTypePtrOutputWithContext(ctx context.Context) SelectorTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SelectorType) *SelectorType {
-		return &v
-	}).(SelectorTypePtrOutput)
-}
-
-func (o SelectorTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o SelectorTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SelectorType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o SelectorTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o SelectorTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SelectorType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type SelectorTypePtrOutput struct{ *pulumi.OutputState }
-
-func (SelectorTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SelectorType)(nil)).Elem()
-}
-
-func (o SelectorTypePtrOutput) ToSelectorTypePtrOutput() SelectorTypePtrOutput {
-	return o
-}
-
-func (o SelectorTypePtrOutput) ToSelectorTypePtrOutputWithContext(ctx context.Context) SelectorTypePtrOutput {
-	return o
-}
-
-func (o SelectorTypePtrOutput) Elem() SelectorTypeOutput {
-	return o.ApplyT(func(v *SelectorType) SelectorType {
-		if v != nil {
-			return *v
-		}
-		var ret SelectorType
-		return ret
-	}).(SelectorTypeOutput)
-}
-
-func (o SelectorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o SelectorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SelectorType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// SelectorTypeInput is an input type that accepts SelectorTypeArgs and SelectorTypeOutput values.
-// You can construct a concrete instance of `SelectorTypeInput` via:
-//
-//	SelectorTypeArgs{...}
-type SelectorTypeInput interface {
-	pulumi.Input
-
-	ToSelectorTypeOutput() SelectorTypeOutput
-	ToSelectorTypeOutputWithContext(context.Context) SelectorTypeOutput
-}
-
-var selectorTypePtrType = reflect.TypeOf((**SelectorType)(nil)).Elem()
-
-type SelectorTypePtrInput interface {
-	pulumi.Input
-
-	ToSelectorTypePtrOutput() SelectorTypePtrOutput
-	ToSelectorTypePtrOutputWithContext(context.Context) SelectorTypePtrOutput
-}
-
-type selectorTypePtr string
-
-func SelectorTypePtr(v string) SelectorTypePtrInput {
-	return (*selectorTypePtr)(&v)
-}
-
-func (*selectorTypePtr) ElementType() reflect.Type {
-	return selectorTypePtrType
-}
-
-func (in *selectorTypePtr) ToSelectorTypePtrOutput() SelectorTypePtrOutput {
-	return pulumi.ToOutput(in).(SelectorTypePtrOutput)
-}
-
-func (in *selectorTypePtr) ToSelectorTypePtrOutputWithContext(ctx context.Context) SelectorTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(SelectorTypePtrOutput)
-}
 
 // Enum of the Target reference type.
 type TargetReferenceType string
@@ -349,168 +198,7 @@ const (
 	TargetReferenceTypeChaosTarget = TargetReferenceType("ChaosTarget")
 )
 
-func (TargetReferenceType) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetReferenceType)(nil)).Elem()
-}
-
-func (e TargetReferenceType) ToTargetReferenceTypeOutput() TargetReferenceTypeOutput {
-	return pulumi.ToOutput(e).(TargetReferenceTypeOutput)
-}
-
-func (e TargetReferenceType) ToTargetReferenceTypeOutputWithContext(ctx context.Context) TargetReferenceTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(TargetReferenceTypeOutput)
-}
-
-func (e TargetReferenceType) ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput {
-	return e.ToTargetReferenceTypePtrOutputWithContext(context.Background())
-}
-
-func (e TargetReferenceType) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
-	return TargetReferenceType(e).ToTargetReferenceTypeOutputWithContext(ctx).ToTargetReferenceTypePtrOutputWithContext(ctx)
-}
-
-func (e TargetReferenceType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TargetReferenceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TargetReferenceType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e TargetReferenceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type TargetReferenceTypeOutput struct{ *pulumi.OutputState }
-
-func (TargetReferenceTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetReferenceType)(nil)).Elem()
-}
-
-func (o TargetReferenceTypeOutput) ToTargetReferenceTypeOutput() TargetReferenceTypeOutput {
-	return o
-}
-
-func (o TargetReferenceTypeOutput) ToTargetReferenceTypeOutputWithContext(ctx context.Context) TargetReferenceTypeOutput {
-	return o
-}
-
-func (o TargetReferenceTypeOutput) ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput {
-	return o.ToTargetReferenceTypePtrOutputWithContext(context.Background())
-}
-
-func (o TargetReferenceTypeOutput) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetReferenceType) *TargetReferenceType {
-		return &v
-	}).(TargetReferenceTypePtrOutput)
-}
-
-func (o TargetReferenceTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o TargetReferenceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetReferenceType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o TargetReferenceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o TargetReferenceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetReferenceType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type TargetReferenceTypePtrOutput struct{ *pulumi.OutputState }
-
-func (TargetReferenceTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetReferenceType)(nil)).Elem()
-}
-
-func (o TargetReferenceTypePtrOutput) ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput {
-	return o
-}
-
-func (o TargetReferenceTypePtrOutput) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
-	return o
-}
-
-func (o TargetReferenceTypePtrOutput) Elem() TargetReferenceTypeOutput {
-	return o.ApplyT(func(v *TargetReferenceType) TargetReferenceType {
-		if v != nil {
-			return *v
-		}
-		var ret TargetReferenceType
-		return ret
-	}).(TargetReferenceTypeOutput)
-}
-
-func (o TargetReferenceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o TargetReferenceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TargetReferenceType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// TargetReferenceTypeInput is an input type that accepts TargetReferenceTypeArgs and TargetReferenceTypeOutput values.
-// You can construct a concrete instance of `TargetReferenceTypeInput` via:
-//
-//	TargetReferenceTypeArgs{...}
-type TargetReferenceTypeInput interface {
-	pulumi.Input
-
-	ToTargetReferenceTypeOutput() TargetReferenceTypeOutput
-	ToTargetReferenceTypeOutputWithContext(context.Context) TargetReferenceTypeOutput
-}
-
-var targetReferenceTypePtrType = reflect.TypeOf((**TargetReferenceType)(nil)).Elem()
-
-type TargetReferenceTypePtrInput interface {
-	pulumi.Input
-
-	ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput
-	ToTargetReferenceTypePtrOutputWithContext(context.Context) TargetReferenceTypePtrOutput
-}
-
-type targetReferenceTypePtr string
-
-func TargetReferenceTypePtr(v string) TargetReferenceTypePtrInput {
-	return (*targetReferenceTypePtr)(&v)
-}
-
-func (*targetReferenceTypePtr) ElementType() reflect.Type {
-	return targetReferenceTypePtrType
-}
-
-func (in *targetReferenceTypePtr) ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput {
-	return pulumi.ToOutput(in).(TargetReferenceTypePtrOutput)
-}
-
-func (in *targetReferenceTypePtr) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(TargetReferenceTypePtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
-	pulumi.RegisterOutputType(SelectorTypeOutput{})
-	pulumi.RegisterOutputType(SelectorTypePtrOutput{})
-	pulumi.RegisterOutputType(TargetReferenceTypeOutput{})
-	pulumi.RegisterOutputType(TargetReferenceTypePtrOutput{})
 }

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +25,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AttachedDataNetwork{}
 	case "azure-native:mobilenetwork:DataNetwork":
 		r = &DataNetwork{}
+	case "azure-native:mobilenetwork:DiagnosticsPackage":
+		r = &DiagnosticsPackage{}
 	case "azure-native:mobilenetwork:MobileNetwork":
 		r = &MobileNetwork{}
+	case "azure-native:mobilenetwork:PacketCapture":
+		r = &PacketCapture{}
 	case "azure-native:mobilenetwork:PacketCoreControlPlane":
 		r = &PacketCoreControlPlane{}
 	case "azure-native:mobilenetwork:PacketCoreDataPlane":

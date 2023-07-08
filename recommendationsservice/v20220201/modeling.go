@@ -12,8 +12,6 @@ import (
 )
 
 // Modeling resource details.
-//
-// Deprecated: azure-native:recommendationsservice/v20220201:Modeling is being removed in the next major version of this provider. Upgrade to at least azure-native:recommendationsservice/v20220301preview:Modeling to guarantee forwards compatibility.
 type Modeling struct {
 	pulumi.CustomResourceState
 

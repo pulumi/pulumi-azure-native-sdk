@@ -12,7 +12,7 @@ import (
 )
 
 // Class representing an event hub data connection.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2021-06-01-preview.
 type EventHubDataConnection struct {
 	pulumi.CustomResourceState
 
@@ -31,6 +31,8 @@ type EventHubDataConnection struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
+	ManagedIdentityResourceId pulumi.StringPtrOutput `pulumi:"managedIdentityResourceId"`
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName pulumi.StringPtrOutput `pulumi:"mappingRuleName"`
 	// The name of the resource
@@ -136,13 +138,15 @@ type eventHubDataConnectionArgs struct {
 	KustoPoolName string `pulumi:"kustoPoolName"`
 	// Resource location.
 	Location *string `pulumi:"location"`
+	// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
+	ManagedIdentityResourceId *string `pulumi:"managedIdentityResourceId"`
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName *string `pulumi:"mappingRuleName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName *string `pulumi:"tableName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -169,13 +173,15 @@ type EventHubDataConnectionArgs struct {
 	KustoPoolName pulumi.StringInput
 	// Resource location.
 	Location pulumi.StringPtrInput
+	// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
+	ManagedIdentityResourceId pulumi.StringPtrInput
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName pulumi.StringPtrInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -250,6 +256,11 @@ func (o EventHubDataConnectionOutput) Kind() pulumi.StringOutput {
 // Resource location.
 func (o EventHubDataConnectionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
+func (o EventHubDataConnectionOutput) ManagedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringPtrOutput { return v.ManagedIdentityResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a view in the hub.
-// API Version: 2017-04-26.
+// Azure REST API version: 2017-04-26.
 func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.InvokeOption) (*LookupViewResult, error) {
 	var rv LookupViewResult
 	err := ctx.Invoke("azure-native:customerinsights:getView", args, &rv, opts...)

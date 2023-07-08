@@ -48,7 +48,7 @@ const (
 	HighAvailabilityModeSameZone      = HighAvailabilityMode("SameZone")
 )
 
-// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
+// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 type IdentityType string
 
 const (

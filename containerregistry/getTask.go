@@ -11,7 +11,7 @@ import (
 )
 
 // Get the properties of a specified task.
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func LookupTask(ctx *pulumi.Context, args *LookupTaskArgs, opts ...pulumi.InvokeOption) (*LookupTaskResult, error) {
 	var rv LookupTaskResult
 	err := ctx.Invoke("azure-native:containerregistry:getTask", args, &rv, opts...)

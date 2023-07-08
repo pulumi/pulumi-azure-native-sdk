@@ -12,7 +12,7 @@ import (
 )
 
 // A private endpoint connection class.
-// API Version: 2020-12-01-preview.
+// Azure REST API version: 2021-12-01. Prior API version in Azure Native 1.x: 2020-12-01-preview
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type PrivateEndpointConnection struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponsePtrOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData ProxyResourceResponseSystemDataOutput `pulumi:"systemData"`
 	// Gets or sets the type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -47,6 +49,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:purview/v20210701:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:purview/v20211201:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -165,6 +170,11 @@ func (o PrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() Pri
 // The provisioning state.
 func (o PrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o PrivateEndpointConnectionOutput) SystemData() ProxyResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) ProxyResourceResponseSystemDataOutput { return v.SystemData }).(ProxyResourceResponseSystemDataOutput)
 }
 
 // Gets or sets the type.

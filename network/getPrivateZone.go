@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Private DNS zone. Retrieves the zone properties, but not the virtual networks links or the record sets within the zone.
-// API Version: 2020-06-01.
+// Azure REST API version: 2020-06-01.
 func LookupPrivateZone(ctx *pulumi.Context, args *LookupPrivateZoneArgs, opts ...pulumi.InvokeOption) (*LookupPrivateZoneResult, error) {
 	var rv LookupPrivateZoneResult
 	err := ctx.Invoke("azure-native:network:getPrivateZone", args, &rv, opts...)

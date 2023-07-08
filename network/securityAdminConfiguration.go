@@ -11,25 +11,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the security configuration
-// API Version: 2021-02-01-preview.
+// Defines the security admin configuration
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type SecurityAdminConfiguration struct {
 	pulumi.CustomResourceState
 
-	// Flag if need to delete existing network security groups.
-	DeleteExistingNSGs pulumi.StringPtrOutput `pulumi:"deleteExistingNSGs"`
+	// Enum list of network intent policy based services.
+	ApplyOnNetworkIntentPolicyBasedServices pulumi.StringArrayOutput `pulumi:"applyOnNetworkIntentPolicyBasedServices"`
 	// A description of the security configuration.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A display name of the security configuration.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Security Type.
-	SecurityType pulumi.StringPtrOutput `pulumi:"securityType"`
+	// Unique identifier for this resource.
+	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
@@ -74,6 +72,12 @@ func NewSecurityAdminConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:SecurityAdminConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:SecurityAdminConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:SecurityAdminConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SecurityAdminConfiguration
@@ -108,38 +112,30 @@ func (SecurityAdminConfigurationState) ElementType() reflect.Type {
 }
 
 type securityAdminConfigurationArgs struct {
-	// The name of the network manager security Configuration.
+	// Enum list of network intent policy based services.
+	ApplyOnNetworkIntentPolicyBasedServices []string `pulumi:"applyOnNetworkIntentPolicyBasedServices"`
+	// The name of the network manager Security Configuration.
 	ConfigurationName *string `pulumi:"configurationName"`
-	// Flag if need to delete existing network security groups.
-	DeleteExistingNSGs *string `pulumi:"deleteExistingNSGs"`
 	// A description of the security configuration.
 	Description *string `pulumi:"description"`
-	// A display name of the security configuration.
-	DisplayName *string `pulumi:"displayName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Security Type.
-	SecurityType *string `pulumi:"securityType"`
 }
 
 // The set of arguments for constructing a SecurityAdminConfiguration resource.
 type SecurityAdminConfigurationArgs struct {
-	// The name of the network manager security Configuration.
+	// Enum list of network intent policy based services.
+	ApplyOnNetworkIntentPolicyBasedServices pulumi.StringArrayInput
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringPtrInput
-	// Flag if need to delete existing network security groups.
-	DeleteExistingNSGs pulumi.StringPtrInput
 	// A description of the security configuration.
 	Description pulumi.StringPtrInput
-	// A display name of the security configuration.
-	DisplayName pulumi.StringPtrInput
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// Security Type.
-	SecurityType pulumi.StringPtrInput
 }
 
 func (SecurityAdminConfigurationArgs) ElementType() reflect.Type {
@@ -179,19 +175,16 @@ func (o SecurityAdminConfigurationOutput) ToSecurityAdminConfigurationOutputWith
 	return o
 }
 
-// Flag if need to delete existing network security groups.
-func (o SecurityAdminConfigurationOutput) DeleteExistingNSGs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringPtrOutput { return v.DeleteExistingNSGs }).(pulumi.StringPtrOutput)
+// Enum list of network intent policy based services.
+func (o SecurityAdminConfigurationOutput) ApplyOnNetworkIntentPolicyBasedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringArrayOutput {
+		return v.ApplyOnNetworkIntentPolicyBasedServices
+	}).(pulumi.StringArrayOutput)
 }
 
 // A description of the security configuration.
 func (o SecurityAdminConfigurationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A display name of the security configuration.
-func (o SecurityAdminConfigurationOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -209,9 +202,9 @@ func (o SecurityAdminConfigurationOutput) ProvisioningState() pulumi.StringOutpu
 	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Security Type.
-func (o SecurityAdminConfigurationOutput) SecurityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringPtrOutput { return v.SecurityType }).(pulumi.StringPtrOutput)
+// Unique identifier for this resource.
+func (o SecurityAdminConfigurationOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringOutput { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The system metadata related to this resource.

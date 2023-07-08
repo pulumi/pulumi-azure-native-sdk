@@ -12,10 +12,12 @@ import (
 )
 
 // Class representing a database principal assignment.
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 
+	// The service principal object id in AAD (Azure active directory)
+	AadObjectId pulumi.StringOutput `pulumi:"aadObjectId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.
@@ -91,6 +93,9 @@ func NewDatabasePrincipalAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20221229:DatabasePrincipalAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230502:DatabasePrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -199,6 +204,11 @@ func (o DatabasePrincipalAssignmentOutput) ToDatabasePrincipalAssignmentOutput()
 
 func (o DatabasePrincipalAssignmentOutput) ToDatabasePrincipalAssignmentOutputWithContext(ctx context.Context) DatabasePrincipalAssignmentOutput {
 	return o
+}
+
+// The service principal object id in AAD (Azure active directory)
+func (o DatabasePrincipalAssignmentOutput) AadObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabasePrincipalAssignment) pulumi.StringOutput { return v.AadObjectId }).(pulumi.StringOutput)
 }
 
 // The name of the resource

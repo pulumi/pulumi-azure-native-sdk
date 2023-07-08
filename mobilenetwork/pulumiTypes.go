@@ -246,6 +246,66 @@ func (o AmbrResponsePtrOutput) Uplink() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to an Azure Async Operation ID.
+type AsyncOperationIdResponse struct {
+	// Azure Async Operation ID.
+	Id string `pulumi:"id"`
+}
+
+// Reference to an Azure Async Operation ID.
+type AsyncOperationIdResponseOutput struct{ *pulumi.OutputState }
+
+func (AsyncOperationIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AsyncOperationIdResponse)(nil)).Elem()
+}
+
+func (o AsyncOperationIdResponseOutput) ToAsyncOperationIdResponseOutput() AsyncOperationIdResponseOutput {
+	return o
+}
+
+func (o AsyncOperationIdResponseOutput) ToAsyncOperationIdResponseOutputWithContext(ctx context.Context) AsyncOperationIdResponseOutput {
+	return o
+}
+
+// Azure Async Operation ID.
+func (o AsyncOperationIdResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AsyncOperationIdResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type AsyncOperationIdResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AsyncOperationIdResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AsyncOperationIdResponse)(nil)).Elem()
+}
+
+func (o AsyncOperationIdResponsePtrOutput) ToAsyncOperationIdResponsePtrOutput() AsyncOperationIdResponsePtrOutput {
+	return o
+}
+
+func (o AsyncOperationIdResponsePtrOutput) ToAsyncOperationIdResponsePtrOutputWithContext(ctx context.Context) AsyncOperationIdResponsePtrOutput {
+	return o
+}
+
+func (o AsyncOperationIdResponsePtrOutput) Elem() AsyncOperationIdResponseOutput {
+	return o.ApplyT(func(v *AsyncOperationIdResponse) AsyncOperationIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AsyncOperationIdResponse
+		return ret
+	}).(AsyncOperationIdResponseOutput)
+}
+
+// Azure Async Operation ID.
+func (o AsyncOperationIdResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AsyncOperationIdResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // Reference to an attached data network resource.
 type AttachedDataNetworkResourceId struct {
 	// Attached data network resource ID.
@@ -446,7 +506,7 @@ func (o AttachedDataNetworkResourceIdResponsePtrOutput) Id() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reference to an Azure Arc custom location resource.
+// Reference to an Azure Stack Edge device resource.
 type AzureStackEdgeDeviceResourceId struct {
 	// Azure Stack Edge device resource ID.
 	Id string `pulumi:"id"`
@@ -463,7 +523,7 @@ type AzureStackEdgeDeviceResourceIdInput interface {
 	ToAzureStackEdgeDeviceResourceIdOutputWithContext(context.Context) AzureStackEdgeDeviceResourceIdOutput
 }
 
-// Reference to an Azure Arc custom location resource.
+// Reference to an Azure Stack Edge device resource.
 type AzureStackEdgeDeviceResourceIdArgs struct {
 	// Azure Stack Edge device resource ID.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -522,7 +582,7 @@ func (i *azureStackEdgeDeviceResourceIdPtrType) ToAzureStackEdgeDeviceResourceId
 	return pulumi.ToOutputWithContext(ctx, i).(AzureStackEdgeDeviceResourceIdPtrOutput)
 }
 
-// Reference to an Azure Arc custom location resource.
+// Reference to an Azure Stack Edge device resource.
 type AzureStackEdgeDeviceResourceIdOutput struct{ *pulumi.OutputState }
 
 func (AzureStackEdgeDeviceResourceIdOutput) ElementType() reflect.Type {
@@ -586,13 +646,13 @@ func (o AzureStackEdgeDeviceResourceIdPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reference to an Azure Arc custom location resource.
+// Reference to an Azure Stack Edge device resource.
 type AzureStackEdgeDeviceResourceIdResponse struct {
 	// Azure Stack Edge device resource ID.
 	Id string `pulumi:"id"`
 }
 
-// Reference to an Azure Arc custom location resource.
+// Reference to an Azure Stack Edge device resource.
 type AzureStackEdgeDeviceResourceIdResponseOutput struct{ *pulumi.OutputState }
 
 func (AzureStackEdgeDeviceResourceIdResponseOutput) ElementType() reflect.Type {
@@ -643,6 +703,303 @@ func (o AzureStackEdgeDeviceResourceIdResponsePtrOutput) Id() pulumi.StringPtrOu
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureStackEdgeDeviceResourceIdResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureStackEdgeDeviceResourceIdResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureStackEdgeDeviceResourceIdResponse)(nil)).Elem()
+}
+
+func (o AzureStackEdgeDeviceResourceIdResponseArrayOutput) ToAzureStackEdgeDeviceResourceIdResponseArrayOutput() AzureStackEdgeDeviceResourceIdResponseArrayOutput {
+	return o
+}
+
+func (o AzureStackEdgeDeviceResourceIdResponseArrayOutput) ToAzureStackEdgeDeviceResourceIdResponseArrayOutputWithContext(ctx context.Context) AzureStackEdgeDeviceResourceIdResponseArrayOutput {
+	return o
+}
+
+func (o AzureStackEdgeDeviceResourceIdResponseArrayOutput) Index(i pulumi.IntInput) AzureStackEdgeDeviceResourceIdResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureStackEdgeDeviceResourceIdResponse {
+		return vs[0].([]AzureStackEdgeDeviceResourceIdResponse)[vs[1].(int)]
+	}).(AzureStackEdgeDeviceResourceIdResponseOutput)
+}
+
+// Reference to an Azure Stack HCI cluster resource.
+type AzureStackHCIClusterResourceId struct {
+	// Azure Stack HCI cluster resource ID.
+	Id string `pulumi:"id"`
+}
+
+// AzureStackHCIClusterResourceIdInput is an input type that accepts AzureStackHCIClusterResourceIdArgs and AzureStackHCIClusterResourceIdOutput values.
+// You can construct a concrete instance of `AzureStackHCIClusterResourceIdInput` via:
+//
+//	AzureStackHCIClusterResourceIdArgs{...}
+type AzureStackHCIClusterResourceIdInput interface {
+	pulumi.Input
+
+	ToAzureStackHCIClusterResourceIdOutput() AzureStackHCIClusterResourceIdOutput
+	ToAzureStackHCIClusterResourceIdOutputWithContext(context.Context) AzureStackHCIClusterResourceIdOutput
+}
+
+// Reference to an Azure Stack HCI cluster resource.
+type AzureStackHCIClusterResourceIdArgs struct {
+	// Azure Stack HCI cluster resource ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (AzureStackHCIClusterResourceIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStackHCIClusterResourceId)(nil)).Elem()
+}
+
+func (i AzureStackHCIClusterResourceIdArgs) ToAzureStackHCIClusterResourceIdOutput() AzureStackHCIClusterResourceIdOutput {
+	return i.ToAzureStackHCIClusterResourceIdOutputWithContext(context.Background())
+}
+
+func (i AzureStackHCIClusterResourceIdArgs) ToAzureStackHCIClusterResourceIdOutputWithContext(ctx context.Context) AzureStackHCIClusterResourceIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureStackHCIClusterResourceIdOutput)
+}
+
+func (i AzureStackHCIClusterResourceIdArgs) ToAzureStackHCIClusterResourceIdPtrOutput() AzureStackHCIClusterResourceIdPtrOutput {
+	return i.ToAzureStackHCIClusterResourceIdPtrOutputWithContext(context.Background())
+}
+
+func (i AzureStackHCIClusterResourceIdArgs) ToAzureStackHCIClusterResourceIdPtrOutputWithContext(ctx context.Context) AzureStackHCIClusterResourceIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureStackHCIClusterResourceIdOutput).ToAzureStackHCIClusterResourceIdPtrOutputWithContext(ctx)
+}
+
+// AzureStackHCIClusterResourceIdPtrInput is an input type that accepts AzureStackHCIClusterResourceIdArgs, AzureStackHCIClusterResourceIdPtr and AzureStackHCIClusterResourceIdPtrOutput values.
+// You can construct a concrete instance of `AzureStackHCIClusterResourceIdPtrInput` via:
+//
+//	        AzureStackHCIClusterResourceIdArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureStackHCIClusterResourceIdPtrInput interface {
+	pulumi.Input
+
+	ToAzureStackHCIClusterResourceIdPtrOutput() AzureStackHCIClusterResourceIdPtrOutput
+	ToAzureStackHCIClusterResourceIdPtrOutputWithContext(context.Context) AzureStackHCIClusterResourceIdPtrOutput
+}
+
+type azureStackHCIClusterResourceIdPtrType AzureStackHCIClusterResourceIdArgs
+
+func AzureStackHCIClusterResourceIdPtr(v *AzureStackHCIClusterResourceIdArgs) AzureStackHCIClusterResourceIdPtrInput {
+	return (*azureStackHCIClusterResourceIdPtrType)(v)
+}
+
+func (*azureStackHCIClusterResourceIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureStackHCIClusterResourceId)(nil)).Elem()
+}
+
+func (i *azureStackHCIClusterResourceIdPtrType) ToAzureStackHCIClusterResourceIdPtrOutput() AzureStackHCIClusterResourceIdPtrOutput {
+	return i.ToAzureStackHCIClusterResourceIdPtrOutputWithContext(context.Background())
+}
+
+func (i *azureStackHCIClusterResourceIdPtrType) ToAzureStackHCIClusterResourceIdPtrOutputWithContext(ctx context.Context) AzureStackHCIClusterResourceIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureStackHCIClusterResourceIdPtrOutput)
+}
+
+// Reference to an Azure Stack HCI cluster resource.
+type AzureStackHCIClusterResourceIdOutput struct{ *pulumi.OutputState }
+
+func (AzureStackHCIClusterResourceIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStackHCIClusterResourceId)(nil)).Elem()
+}
+
+func (o AzureStackHCIClusterResourceIdOutput) ToAzureStackHCIClusterResourceIdOutput() AzureStackHCIClusterResourceIdOutput {
+	return o
+}
+
+func (o AzureStackHCIClusterResourceIdOutput) ToAzureStackHCIClusterResourceIdOutputWithContext(ctx context.Context) AzureStackHCIClusterResourceIdOutput {
+	return o
+}
+
+func (o AzureStackHCIClusterResourceIdOutput) ToAzureStackHCIClusterResourceIdPtrOutput() AzureStackHCIClusterResourceIdPtrOutput {
+	return o.ToAzureStackHCIClusterResourceIdPtrOutputWithContext(context.Background())
+}
+
+func (o AzureStackHCIClusterResourceIdOutput) ToAzureStackHCIClusterResourceIdPtrOutputWithContext(ctx context.Context) AzureStackHCIClusterResourceIdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureStackHCIClusterResourceId) *AzureStackHCIClusterResourceId {
+		return &v
+	}).(AzureStackHCIClusterResourceIdPtrOutput)
+}
+
+// Azure Stack HCI cluster resource ID.
+func (o AzureStackHCIClusterResourceIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStackHCIClusterResourceId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type AzureStackHCIClusterResourceIdPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureStackHCIClusterResourceIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureStackHCIClusterResourceId)(nil)).Elem()
+}
+
+func (o AzureStackHCIClusterResourceIdPtrOutput) ToAzureStackHCIClusterResourceIdPtrOutput() AzureStackHCIClusterResourceIdPtrOutput {
+	return o
+}
+
+func (o AzureStackHCIClusterResourceIdPtrOutput) ToAzureStackHCIClusterResourceIdPtrOutputWithContext(ctx context.Context) AzureStackHCIClusterResourceIdPtrOutput {
+	return o
+}
+
+func (o AzureStackHCIClusterResourceIdPtrOutput) Elem() AzureStackHCIClusterResourceIdOutput {
+	return o.ApplyT(func(v *AzureStackHCIClusterResourceId) AzureStackHCIClusterResourceId {
+		if v != nil {
+			return *v
+		}
+		var ret AzureStackHCIClusterResourceId
+		return ret
+	}).(AzureStackHCIClusterResourceIdOutput)
+}
+
+// Azure Stack HCI cluster resource ID.
+func (o AzureStackHCIClusterResourceIdPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureStackHCIClusterResourceId) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to an Azure Stack HCI cluster resource.
+type AzureStackHCIClusterResourceIdResponse struct {
+	// Azure Stack HCI cluster resource ID.
+	Id string `pulumi:"id"`
+}
+
+// Reference to an Azure Stack HCI cluster resource.
+type AzureStackHCIClusterResourceIdResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureStackHCIClusterResourceIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStackHCIClusterResourceIdResponse)(nil)).Elem()
+}
+
+func (o AzureStackHCIClusterResourceIdResponseOutput) ToAzureStackHCIClusterResourceIdResponseOutput() AzureStackHCIClusterResourceIdResponseOutput {
+	return o
+}
+
+func (o AzureStackHCIClusterResourceIdResponseOutput) ToAzureStackHCIClusterResourceIdResponseOutputWithContext(ctx context.Context) AzureStackHCIClusterResourceIdResponseOutput {
+	return o
+}
+
+// Azure Stack HCI cluster resource ID.
+func (o AzureStackHCIClusterResourceIdResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStackHCIClusterResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type AzureStackHCIClusterResourceIdResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureStackHCIClusterResourceIdResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureStackHCIClusterResourceIdResponse)(nil)).Elem()
+}
+
+func (o AzureStackHCIClusterResourceIdResponsePtrOutput) ToAzureStackHCIClusterResourceIdResponsePtrOutput() AzureStackHCIClusterResourceIdResponsePtrOutput {
+	return o
+}
+
+func (o AzureStackHCIClusterResourceIdResponsePtrOutput) ToAzureStackHCIClusterResourceIdResponsePtrOutputWithContext(ctx context.Context) AzureStackHCIClusterResourceIdResponsePtrOutput {
+	return o
+}
+
+func (o AzureStackHCIClusterResourceIdResponsePtrOutput) Elem() AzureStackHCIClusterResourceIdResponseOutput {
+	return o.ApplyT(func(v *AzureStackHCIClusterResourceIdResponse) AzureStackHCIClusterResourceIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureStackHCIClusterResourceIdResponse
+		return ret
+	}).(AzureStackHCIClusterResourceIdResponseOutput)
+}
+
+// Azure Stack HCI cluster resource ID.
+func (o AzureStackHCIClusterResourceIdResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureStackHCIClusterResourceIdResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate provisioning state
+type CertificateProvisioningResponse struct {
+	// Reason for certificate provisioning failure.
+	Reason string `pulumi:"reason"`
+	// The certificate's provisioning state
+	State string `pulumi:"state"`
+}
+
+// Certificate provisioning state
+type CertificateProvisioningResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateProvisioningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateProvisioningResponse)(nil)).Elem()
+}
+
+func (o CertificateProvisioningResponseOutput) ToCertificateProvisioningResponseOutput() CertificateProvisioningResponseOutput {
+	return o
+}
+
+func (o CertificateProvisioningResponseOutput) ToCertificateProvisioningResponseOutputWithContext(ctx context.Context) CertificateProvisioningResponseOutput {
+	return o
+}
+
+// Reason for certificate provisioning failure.
+func (o CertificateProvisioningResponseOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateProvisioningResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+// The certificate's provisioning state
+func (o CertificateProvisioningResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateProvisioningResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type CertificateProvisioningResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateProvisioningResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateProvisioningResponse)(nil)).Elem()
+}
+
+func (o CertificateProvisioningResponsePtrOutput) ToCertificateProvisioningResponsePtrOutput() CertificateProvisioningResponsePtrOutput {
+	return o
+}
+
+func (o CertificateProvisioningResponsePtrOutput) ToCertificateProvisioningResponsePtrOutputWithContext(ctx context.Context) CertificateProvisioningResponsePtrOutput {
+	return o
+}
+
+func (o CertificateProvisioningResponsePtrOutput) Elem() CertificateProvisioningResponseOutput {
+	return o.ApplyT(func(v *CertificateProvisioningResponse) CertificateProvisioningResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateProvisioningResponse
+		return ret
+	}).(CertificateProvisioningResponseOutput)
+}
+
+// Reason for certificate provisioning failure.
+func (o CertificateProvisioningResponsePtrOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateProvisioningResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Reason
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate's provisioning state
+func (o CertificateProvisioningResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateProvisioningResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1052,14 +1409,16 @@ type DataNetworkConfiguration struct {
 	AdditionalAllowedSessionTypes []string `pulumi:"additionalAllowedSessionTypes"`
 	// Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item.
+	// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
 	AllowedServices []ServiceResourceId `pulumi:"allowedServices"`
-	// A reference to the data network that these settings apply to
+	// A reference to the data network that these settings apply to. The data network must be in the same location as the SIM policy.
 	DataNetwork DataNetworkResourceId `pulumi:"dataNetwork"`
 	// The default PDU session type, which is used if the UE does not request a specific session type.
 	DefaultSessionType *string `pulumi:"defaultSessionType"`
-	// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
+	// The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
+	MaximumNumberOfBufferedPackets *int `pulumi:"maximumNumberOfBufferedPackets"`
 	// Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	PreemptionCapability *string `pulumi:"preemptionCapability"`
 	// Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
@@ -1085,6 +1444,10 @@ func (val *DataNetworkConfiguration) Defaults() *DataNetworkConfiguration {
 	if tmp.FiveQi == nil {
 		fiveQi_ := 9
 		tmp.FiveQi = &fiveQi_
+	}
+	if tmp.MaximumNumberOfBufferedPackets == nil {
+		maximumNumberOfBufferedPackets_ := 10
+		tmp.MaximumNumberOfBufferedPackets = &maximumNumberOfBufferedPackets_
 	}
 	if tmp.PreemptionCapability == nil {
 		preemptionCapability_ := "NotPreempt"
@@ -1114,14 +1477,16 @@ type DataNetworkConfigurationArgs struct {
 	AdditionalAllowedSessionTypes pulumi.StringArrayInput `pulumi:"additionalAllowedSessionTypes"`
 	// Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel pulumi.IntPtrInput `pulumi:"allocationAndRetentionPriorityLevel"`
-	// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item.
+	// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
 	AllowedServices ServiceResourceIdArrayInput `pulumi:"allowedServices"`
-	// A reference to the data network that these settings apply to
+	// A reference to the data network that these settings apply to. The data network must be in the same location as the SIM policy.
 	DataNetwork DataNetworkResourceIdInput `pulumi:"dataNetwork"`
 	// The default PDU session type, which is used if the UE does not request a specific session type.
 	DefaultSessionType pulumi.StringPtrInput `pulumi:"defaultSessionType"`
-	// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi pulumi.IntPtrInput `pulumi:"fiveQi"`
+	// The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
+	MaximumNumberOfBufferedPackets pulumi.IntPtrInput `pulumi:"maximumNumberOfBufferedPackets"`
 	// Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	PreemptionCapability pulumi.StringPtrInput `pulumi:"preemptionCapability"`
 	// Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
@@ -1144,6 +1509,9 @@ func (val *DataNetworkConfigurationArgs) Defaults() *DataNetworkConfigurationArg
 	}
 	if tmp.FiveQi == nil {
 		tmp.FiveQi = pulumi.IntPtr(9)
+	}
+	if tmp.MaximumNumberOfBufferedPackets == nil {
+		tmp.MaximumNumberOfBufferedPackets = pulumi.IntPtr(10)
 	}
 	if tmp.PreemptionCapability == nil {
 		tmp.PreemptionCapability = pulumi.StringPtr("NotPreempt")
@@ -1215,12 +1583,12 @@ func (o DataNetworkConfigurationOutput) AllocationAndRetentionPriorityLevel() pu
 	return o.ApplyT(func(v DataNetworkConfiguration) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item.
+// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
 func (o DataNetworkConfigurationOutput) AllowedServices() ServiceResourceIdArrayOutput {
 	return o.ApplyT(func(v DataNetworkConfiguration) []ServiceResourceId { return v.AllowedServices }).(ServiceResourceIdArrayOutput)
 }
 
-// A reference to the data network that these settings apply to
+// A reference to the data network that these settings apply to. The data network must be in the same location as the SIM policy.
 func (o DataNetworkConfigurationOutput) DataNetwork() DataNetworkResourceIdOutput {
 	return o.ApplyT(func(v DataNetworkConfiguration) DataNetworkResourceId { return v.DataNetwork }).(DataNetworkResourceIdOutput)
 }
@@ -1230,9 +1598,14 @@ func (o DataNetworkConfigurationOutput) DefaultSessionType() pulumi.StringPtrOut
 	return o.ApplyT(func(v DataNetworkConfiguration) *string { return v.DefaultSessionType }).(pulumi.StringPtrOutput)
 }
 
-// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o DataNetworkConfigurationOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DataNetworkConfiguration) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
+func (o DataNetworkConfigurationOutput) MaximumNumberOfBufferedPackets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataNetworkConfiguration) *int { return v.MaximumNumberOfBufferedPackets }).(pulumi.IntPtrOutput)
 }
 
 // Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
@@ -1276,14 +1649,16 @@ type DataNetworkConfigurationResponse struct {
 	AdditionalAllowedSessionTypes []string `pulumi:"additionalAllowedSessionTypes"`
 	// Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item.
+	// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
 	AllowedServices []ServiceResourceIdResponse `pulumi:"allowedServices"`
-	// A reference to the data network that these settings apply to
+	// A reference to the data network that these settings apply to. The data network must be in the same location as the SIM policy.
 	DataNetwork DataNetworkResourceIdResponse `pulumi:"dataNetwork"`
 	// The default PDU session type, which is used if the UE does not request a specific session type.
 	DefaultSessionType *string `pulumi:"defaultSessionType"`
-	// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
+	// The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
+	MaximumNumberOfBufferedPackets *int `pulumi:"maximumNumberOfBufferedPackets"`
 	// Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	PreemptionCapability *string `pulumi:"preemptionCapability"`
 	// Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
@@ -1309,6 +1684,10 @@ func (val *DataNetworkConfigurationResponse) Defaults() *DataNetworkConfiguratio
 	if tmp.FiveQi == nil {
 		fiveQi_ := 9
 		tmp.FiveQi = &fiveQi_
+	}
+	if tmp.MaximumNumberOfBufferedPackets == nil {
+		maximumNumberOfBufferedPackets_ := 10
+		tmp.MaximumNumberOfBufferedPackets = &maximumNumberOfBufferedPackets_
 	}
 	if tmp.PreemptionCapability == nil {
 		preemptionCapability_ := "NotPreempt"
@@ -1346,12 +1725,12 @@ func (o DataNetworkConfigurationResponseOutput) AllocationAndRetentionPriorityLe
 	return o.ApplyT(func(v DataNetworkConfigurationResponse) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item.
+// List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
 func (o DataNetworkConfigurationResponseOutput) AllowedServices() ServiceResourceIdResponseArrayOutput {
 	return o.ApplyT(func(v DataNetworkConfigurationResponse) []ServiceResourceIdResponse { return v.AllowedServices }).(ServiceResourceIdResponseArrayOutput)
 }
 
-// A reference to the data network that these settings apply to
+// A reference to the data network that these settings apply to. The data network must be in the same location as the SIM policy.
 func (o DataNetworkConfigurationResponseOutput) DataNetwork() DataNetworkResourceIdResponseOutput {
 	return o.ApplyT(func(v DataNetworkConfigurationResponse) DataNetworkResourceIdResponse { return v.DataNetwork }).(DataNetworkResourceIdResponseOutput)
 }
@@ -1361,9 +1740,14 @@ func (o DataNetworkConfigurationResponseOutput) DefaultSessionType() pulumi.Stri
 	return o.ApplyT(func(v DataNetworkConfigurationResponse) *string { return v.DefaultSessionType }).(pulumi.StringPtrOutput)
 }
 
-// Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o DataNetworkConfigurationResponseOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DataNetworkConfigurationResponse) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
+func (o DataNetworkConfigurationResponseOutput) MaximumNumberOfBufferedPackets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataNetworkConfigurationResponse) *int { return v.MaximumNumberOfBufferedPackets }).(pulumi.IntPtrOutput)
 }
 
 // Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
@@ -1480,6 +1864,728 @@ func (o DataNetworkResourceIdResponseOutput) ToDataNetworkResourceIdResponseOutp
 // Data network resource ID.
 func (o DataNetworkResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v DataNetworkResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Configuration for uploading packet core diagnostics.
+type DiagnosticsUploadConfiguration struct {
+	// The Storage Account Container URL to upload diagnostics to.
+	StorageAccountContainerUrl string `pulumi:"storageAccountContainerUrl"`
+}
+
+// DiagnosticsUploadConfigurationInput is an input type that accepts DiagnosticsUploadConfigurationArgs and DiagnosticsUploadConfigurationOutput values.
+// You can construct a concrete instance of `DiagnosticsUploadConfigurationInput` via:
+//
+//	DiagnosticsUploadConfigurationArgs{...}
+type DiagnosticsUploadConfigurationInput interface {
+	pulumi.Input
+
+	ToDiagnosticsUploadConfigurationOutput() DiagnosticsUploadConfigurationOutput
+	ToDiagnosticsUploadConfigurationOutputWithContext(context.Context) DiagnosticsUploadConfigurationOutput
+}
+
+// Configuration for uploading packet core diagnostics.
+type DiagnosticsUploadConfigurationArgs struct {
+	// The Storage Account Container URL to upload diagnostics to.
+	StorageAccountContainerUrl pulumi.StringInput `pulumi:"storageAccountContainerUrl"`
+}
+
+func (DiagnosticsUploadConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsUploadConfiguration)(nil)).Elem()
+}
+
+func (i DiagnosticsUploadConfigurationArgs) ToDiagnosticsUploadConfigurationOutput() DiagnosticsUploadConfigurationOutput {
+	return i.ToDiagnosticsUploadConfigurationOutputWithContext(context.Background())
+}
+
+func (i DiagnosticsUploadConfigurationArgs) ToDiagnosticsUploadConfigurationOutputWithContext(ctx context.Context) DiagnosticsUploadConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsUploadConfigurationOutput)
+}
+
+func (i DiagnosticsUploadConfigurationArgs) ToDiagnosticsUploadConfigurationPtrOutput() DiagnosticsUploadConfigurationPtrOutput {
+	return i.ToDiagnosticsUploadConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DiagnosticsUploadConfigurationArgs) ToDiagnosticsUploadConfigurationPtrOutputWithContext(ctx context.Context) DiagnosticsUploadConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsUploadConfigurationOutput).ToDiagnosticsUploadConfigurationPtrOutputWithContext(ctx)
+}
+
+// DiagnosticsUploadConfigurationPtrInput is an input type that accepts DiagnosticsUploadConfigurationArgs, DiagnosticsUploadConfigurationPtr and DiagnosticsUploadConfigurationPtrOutput values.
+// You can construct a concrete instance of `DiagnosticsUploadConfigurationPtrInput` via:
+//
+//	        DiagnosticsUploadConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiagnosticsUploadConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDiagnosticsUploadConfigurationPtrOutput() DiagnosticsUploadConfigurationPtrOutput
+	ToDiagnosticsUploadConfigurationPtrOutputWithContext(context.Context) DiagnosticsUploadConfigurationPtrOutput
+}
+
+type diagnosticsUploadConfigurationPtrType DiagnosticsUploadConfigurationArgs
+
+func DiagnosticsUploadConfigurationPtr(v *DiagnosticsUploadConfigurationArgs) DiagnosticsUploadConfigurationPtrInput {
+	return (*diagnosticsUploadConfigurationPtrType)(v)
+}
+
+func (*diagnosticsUploadConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiagnosticsUploadConfiguration)(nil)).Elem()
+}
+
+func (i *diagnosticsUploadConfigurationPtrType) ToDiagnosticsUploadConfigurationPtrOutput() DiagnosticsUploadConfigurationPtrOutput {
+	return i.ToDiagnosticsUploadConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *diagnosticsUploadConfigurationPtrType) ToDiagnosticsUploadConfigurationPtrOutputWithContext(ctx context.Context) DiagnosticsUploadConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsUploadConfigurationPtrOutput)
+}
+
+// Configuration for uploading packet core diagnostics.
+type DiagnosticsUploadConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsUploadConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsUploadConfiguration)(nil)).Elem()
+}
+
+func (o DiagnosticsUploadConfigurationOutput) ToDiagnosticsUploadConfigurationOutput() DiagnosticsUploadConfigurationOutput {
+	return o
+}
+
+func (o DiagnosticsUploadConfigurationOutput) ToDiagnosticsUploadConfigurationOutputWithContext(ctx context.Context) DiagnosticsUploadConfigurationOutput {
+	return o
+}
+
+func (o DiagnosticsUploadConfigurationOutput) ToDiagnosticsUploadConfigurationPtrOutput() DiagnosticsUploadConfigurationPtrOutput {
+	return o.ToDiagnosticsUploadConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DiagnosticsUploadConfigurationOutput) ToDiagnosticsUploadConfigurationPtrOutputWithContext(ctx context.Context) DiagnosticsUploadConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiagnosticsUploadConfiguration) *DiagnosticsUploadConfiguration {
+		return &v
+	}).(DiagnosticsUploadConfigurationPtrOutput)
+}
+
+// The Storage Account Container URL to upload diagnostics to.
+func (o DiagnosticsUploadConfigurationOutput) StorageAccountContainerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticsUploadConfiguration) string { return v.StorageAccountContainerUrl }).(pulumi.StringOutput)
+}
+
+type DiagnosticsUploadConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsUploadConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiagnosticsUploadConfiguration)(nil)).Elem()
+}
+
+func (o DiagnosticsUploadConfigurationPtrOutput) ToDiagnosticsUploadConfigurationPtrOutput() DiagnosticsUploadConfigurationPtrOutput {
+	return o
+}
+
+func (o DiagnosticsUploadConfigurationPtrOutput) ToDiagnosticsUploadConfigurationPtrOutputWithContext(ctx context.Context) DiagnosticsUploadConfigurationPtrOutput {
+	return o
+}
+
+func (o DiagnosticsUploadConfigurationPtrOutput) Elem() DiagnosticsUploadConfigurationOutput {
+	return o.ApplyT(func(v *DiagnosticsUploadConfiguration) DiagnosticsUploadConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DiagnosticsUploadConfiguration
+		return ret
+	}).(DiagnosticsUploadConfigurationOutput)
+}
+
+// The Storage Account Container URL to upload diagnostics to.
+func (o DiagnosticsUploadConfigurationPtrOutput) StorageAccountContainerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiagnosticsUploadConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageAccountContainerUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for uploading packet core diagnostics.
+type DiagnosticsUploadConfigurationResponse struct {
+	// The Storage Account Container URL to upload diagnostics to.
+	StorageAccountContainerUrl string `pulumi:"storageAccountContainerUrl"`
+}
+
+// Configuration for uploading packet core diagnostics.
+type DiagnosticsUploadConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsUploadConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsUploadConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiagnosticsUploadConfigurationResponseOutput) ToDiagnosticsUploadConfigurationResponseOutput() DiagnosticsUploadConfigurationResponseOutput {
+	return o
+}
+
+func (o DiagnosticsUploadConfigurationResponseOutput) ToDiagnosticsUploadConfigurationResponseOutputWithContext(ctx context.Context) DiagnosticsUploadConfigurationResponseOutput {
+	return o
+}
+
+// The Storage Account Container URL to upload diagnostics to.
+func (o DiagnosticsUploadConfigurationResponseOutput) StorageAccountContainerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticsUploadConfigurationResponse) string { return v.StorageAccountContainerUrl }).(pulumi.StringOutput)
+}
+
+type DiagnosticsUploadConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsUploadConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiagnosticsUploadConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiagnosticsUploadConfigurationResponsePtrOutput) ToDiagnosticsUploadConfigurationResponsePtrOutput() DiagnosticsUploadConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiagnosticsUploadConfigurationResponsePtrOutput) ToDiagnosticsUploadConfigurationResponsePtrOutputWithContext(ctx context.Context) DiagnosticsUploadConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiagnosticsUploadConfigurationResponsePtrOutput) Elem() DiagnosticsUploadConfigurationResponseOutput {
+	return o.ApplyT(func(v *DiagnosticsUploadConfigurationResponse) DiagnosticsUploadConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiagnosticsUploadConfigurationResponse
+		return ret
+	}).(DiagnosticsUploadConfigurationResponseOutput)
+}
+
+// The Storage Account Container URL to upload diagnostics to.
+func (o DiagnosticsUploadConfigurationResponsePtrOutput) StorageAccountContainerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiagnosticsUploadConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageAccountContainerUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTPS server certificate configuration.
+type HttpsServerCertificate struct {
+	// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
+	CertificateUrl string `pulumi:"certificateUrl"`
+}
+
+// HttpsServerCertificateInput is an input type that accepts HttpsServerCertificateArgs and HttpsServerCertificateOutput values.
+// You can construct a concrete instance of `HttpsServerCertificateInput` via:
+//
+//	HttpsServerCertificateArgs{...}
+type HttpsServerCertificateInput interface {
+	pulumi.Input
+
+	ToHttpsServerCertificateOutput() HttpsServerCertificateOutput
+	ToHttpsServerCertificateOutputWithContext(context.Context) HttpsServerCertificateOutput
+}
+
+// HTTPS server certificate configuration.
+type HttpsServerCertificateArgs struct {
+	// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
+	CertificateUrl pulumi.StringInput `pulumi:"certificateUrl"`
+}
+
+func (HttpsServerCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpsServerCertificate)(nil)).Elem()
+}
+
+func (i HttpsServerCertificateArgs) ToHttpsServerCertificateOutput() HttpsServerCertificateOutput {
+	return i.ToHttpsServerCertificateOutputWithContext(context.Background())
+}
+
+func (i HttpsServerCertificateArgs) ToHttpsServerCertificateOutputWithContext(ctx context.Context) HttpsServerCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpsServerCertificateOutput)
+}
+
+func (i HttpsServerCertificateArgs) ToHttpsServerCertificatePtrOutput() HttpsServerCertificatePtrOutput {
+	return i.ToHttpsServerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i HttpsServerCertificateArgs) ToHttpsServerCertificatePtrOutputWithContext(ctx context.Context) HttpsServerCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpsServerCertificateOutput).ToHttpsServerCertificatePtrOutputWithContext(ctx)
+}
+
+// HttpsServerCertificatePtrInput is an input type that accepts HttpsServerCertificateArgs, HttpsServerCertificatePtr and HttpsServerCertificatePtrOutput values.
+// You can construct a concrete instance of `HttpsServerCertificatePtrInput` via:
+//
+//	        HttpsServerCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpsServerCertificatePtrInput interface {
+	pulumi.Input
+
+	ToHttpsServerCertificatePtrOutput() HttpsServerCertificatePtrOutput
+	ToHttpsServerCertificatePtrOutputWithContext(context.Context) HttpsServerCertificatePtrOutput
+}
+
+type httpsServerCertificatePtrType HttpsServerCertificateArgs
+
+func HttpsServerCertificatePtr(v *HttpsServerCertificateArgs) HttpsServerCertificatePtrInput {
+	return (*httpsServerCertificatePtrType)(v)
+}
+
+func (*httpsServerCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpsServerCertificate)(nil)).Elem()
+}
+
+func (i *httpsServerCertificatePtrType) ToHttpsServerCertificatePtrOutput() HttpsServerCertificatePtrOutput {
+	return i.ToHttpsServerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *httpsServerCertificatePtrType) ToHttpsServerCertificatePtrOutputWithContext(ctx context.Context) HttpsServerCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpsServerCertificatePtrOutput)
+}
+
+// HTTPS server certificate configuration.
+type HttpsServerCertificateOutput struct{ *pulumi.OutputState }
+
+func (HttpsServerCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpsServerCertificate)(nil)).Elem()
+}
+
+func (o HttpsServerCertificateOutput) ToHttpsServerCertificateOutput() HttpsServerCertificateOutput {
+	return o
+}
+
+func (o HttpsServerCertificateOutput) ToHttpsServerCertificateOutputWithContext(ctx context.Context) HttpsServerCertificateOutput {
+	return o
+}
+
+func (o HttpsServerCertificateOutput) ToHttpsServerCertificatePtrOutput() HttpsServerCertificatePtrOutput {
+	return o.ToHttpsServerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o HttpsServerCertificateOutput) ToHttpsServerCertificatePtrOutputWithContext(ctx context.Context) HttpsServerCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpsServerCertificate) *HttpsServerCertificate {
+		return &v
+	}).(HttpsServerCertificatePtrOutput)
+}
+
+// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
+func (o HttpsServerCertificateOutput) CertificateUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpsServerCertificate) string { return v.CertificateUrl }).(pulumi.StringOutput)
+}
+
+type HttpsServerCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpsServerCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpsServerCertificate)(nil)).Elem()
+}
+
+func (o HttpsServerCertificatePtrOutput) ToHttpsServerCertificatePtrOutput() HttpsServerCertificatePtrOutput {
+	return o
+}
+
+func (o HttpsServerCertificatePtrOutput) ToHttpsServerCertificatePtrOutputWithContext(ctx context.Context) HttpsServerCertificatePtrOutput {
+	return o
+}
+
+func (o HttpsServerCertificatePtrOutput) Elem() HttpsServerCertificateOutput {
+	return o.ApplyT(func(v *HttpsServerCertificate) HttpsServerCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret HttpsServerCertificate
+		return ret
+	}).(HttpsServerCertificateOutput)
+}
+
+// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
+func (o HttpsServerCertificatePtrOutput) CertificateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpsServerCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTPS server certificate configuration.
+type HttpsServerCertificateResponse struct {
+	// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
+	CertificateUrl string `pulumi:"certificateUrl"`
+	// The provisioning state of the certificate.
+	Provisioning CertificateProvisioningResponse `pulumi:"provisioning"`
+}
+
+// HTTPS server certificate configuration.
+type HttpsServerCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpsServerCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpsServerCertificateResponse)(nil)).Elem()
+}
+
+func (o HttpsServerCertificateResponseOutput) ToHttpsServerCertificateResponseOutput() HttpsServerCertificateResponseOutput {
+	return o
+}
+
+func (o HttpsServerCertificateResponseOutput) ToHttpsServerCertificateResponseOutputWithContext(ctx context.Context) HttpsServerCertificateResponseOutput {
+	return o
+}
+
+// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
+func (o HttpsServerCertificateResponseOutput) CertificateUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpsServerCertificateResponse) string { return v.CertificateUrl }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the certificate.
+func (o HttpsServerCertificateResponseOutput) Provisioning() CertificateProvisioningResponseOutput {
+	return o.ApplyT(func(v HttpsServerCertificateResponse) CertificateProvisioningResponse { return v.Provisioning }).(CertificateProvisioningResponseOutput)
+}
+
+type HttpsServerCertificateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpsServerCertificateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpsServerCertificateResponse)(nil)).Elem()
+}
+
+func (o HttpsServerCertificateResponsePtrOutput) ToHttpsServerCertificateResponsePtrOutput() HttpsServerCertificateResponsePtrOutput {
+	return o
+}
+
+func (o HttpsServerCertificateResponsePtrOutput) ToHttpsServerCertificateResponsePtrOutputWithContext(ctx context.Context) HttpsServerCertificateResponsePtrOutput {
+	return o
+}
+
+func (o HttpsServerCertificateResponsePtrOutput) Elem() HttpsServerCertificateResponseOutput {
+	return o.ApplyT(func(v *HttpsServerCertificateResponse) HttpsServerCertificateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpsServerCertificateResponse
+		return ret
+	}).(HttpsServerCertificateResponseOutput)
+}
+
+// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
+func (o HttpsServerCertificateResponsePtrOutput) CertificateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpsServerCertificateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the certificate.
+func (o HttpsServerCertificateResponsePtrOutput) Provisioning() CertificateProvisioningResponsePtrOutput {
+	return o.ApplyT(func(v *HttpsServerCertificateResponse) *CertificateProvisioningResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Provisioning
+	}).(CertificateProvisioningResponsePtrOutput)
+}
+
+// The installation state of the packet core.
+type Installation struct {
+	// The desired installation state
+	DesiredState *string `pulumi:"desiredState"`
+}
+
+// Defaults sets the appropriate defaults for Installation
+func (val *Installation) Defaults() *Installation {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DesiredState == nil {
+		desiredState_ := "Installed"
+		tmp.DesiredState = &desiredState_
+	}
+	return &tmp
+}
+
+// InstallationInput is an input type that accepts InstallationArgs and InstallationOutput values.
+// You can construct a concrete instance of `InstallationInput` via:
+//
+//	InstallationArgs{...}
+type InstallationInput interface {
+	pulumi.Input
+
+	ToInstallationOutput() InstallationOutput
+	ToInstallationOutputWithContext(context.Context) InstallationOutput
+}
+
+// The installation state of the packet core.
+type InstallationArgs struct {
+	// The desired installation state
+	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
+}
+
+// Defaults sets the appropriate defaults for InstallationArgs
+func (val *InstallationArgs) Defaults() *InstallationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DesiredState == nil {
+		tmp.DesiredState = pulumi.StringPtr("Installed")
+	}
+	return &tmp
+}
+func (InstallationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Installation)(nil)).Elem()
+}
+
+func (i InstallationArgs) ToInstallationOutput() InstallationOutput {
+	return i.ToInstallationOutputWithContext(context.Background())
+}
+
+func (i InstallationArgs) ToInstallationOutputWithContext(ctx context.Context) InstallationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstallationOutput)
+}
+
+func (i InstallationArgs) ToInstallationPtrOutput() InstallationPtrOutput {
+	return i.ToInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i InstallationArgs) ToInstallationPtrOutputWithContext(ctx context.Context) InstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstallationOutput).ToInstallationPtrOutputWithContext(ctx)
+}
+
+// InstallationPtrInput is an input type that accepts InstallationArgs, InstallationPtr and InstallationPtrOutput values.
+// You can construct a concrete instance of `InstallationPtrInput` via:
+//
+//	        InstallationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstallationPtrInput interface {
+	pulumi.Input
+
+	ToInstallationPtrOutput() InstallationPtrOutput
+	ToInstallationPtrOutputWithContext(context.Context) InstallationPtrOutput
+}
+
+type installationPtrType InstallationArgs
+
+func InstallationPtr(v *InstallationArgs) InstallationPtrInput {
+	return (*installationPtrType)(v)
+}
+
+func (*installationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Installation)(nil)).Elem()
+}
+
+func (i *installationPtrType) ToInstallationPtrOutput() InstallationPtrOutput {
+	return i.ToInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i *installationPtrType) ToInstallationPtrOutputWithContext(ctx context.Context) InstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstallationPtrOutput)
+}
+
+// The installation state of the packet core.
+type InstallationOutput struct{ *pulumi.OutputState }
+
+func (InstallationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Installation)(nil)).Elem()
+}
+
+func (o InstallationOutput) ToInstallationOutput() InstallationOutput {
+	return o
+}
+
+func (o InstallationOutput) ToInstallationOutputWithContext(ctx context.Context) InstallationOutput {
+	return o
+}
+
+func (o InstallationOutput) ToInstallationPtrOutput() InstallationPtrOutput {
+	return o.ToInstallationPtrOutputWithContext(context.Background())
+}
+
+func (o InstallationOutput) ToInstallationPtrOutputWithContext(ctx context.Context) InstallationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Installation) *Installation {
+		return &v
+	}).(InstallationPtrOutput)
+}
+
+// The desired installation state
+func (o InstallationOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Installation) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
+}
+
+type InstallationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstallationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Installation)(nil)).Elem()
+}
+
+func (o InstallationPtrOutput) ToInstallationPtrOutput() InstallationPtrOutput {
+	return o
+}
+
+func (o InstallationPtrOutput) ToInstallationPtrOutputWithContext(ctx context.Context) InstallationPtrOutput {
+	return o
+}
+
+func (o InstallationPtrOutput) Elem() InstallationOutput {
+	return o.ApplyT(func(v *Installation) Installation {
+		if v != nil {
+			return *v
+		}
+		var ret Installation
+		return ret
+	}).(InstallationOutput)
+}
+
+// The desired installation state
+func (o InstallationPtrOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Installation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The installation state of the packet core.
+type InstallationResponse struct {
+	// The desired installation state
+	DesiredState *string `pulumi:"desiredState"`
+	// A reference to an in-progress installation operation
+	Operation AsyncOperationIdResponse `pulumi:"operation"`
+	// Reason(s) for the current installation state of the packet core.
+	Reasons []string `pulumi:"reasons"`
+	// Whether a reinstall of the packet core is required to pick up the latest configuration changes.
+	ReinstallRequired string `pulumi:"reinstallRequired"`
+	// Installation state
+	State string `pulumi:"state"`
+}
+
+// Defaults sets the appropriate defaults for InstallationResponse
+func (val *InstallationResponse) Defaults() *InstallationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DesiredState == nil {
+		desiredState_ := "Installed"
+		tmp.DesiredState = &desiredState_
+	}
+	return &tmp
+}
+
+// The installation state of the packet core.
+type InstallationResponseOutput struct{ *pulumi.OutputState }
+
+func (InstallationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstallationResponse)(nil)).Elem()
+}
+
+func (o InstallationResponseOutput) ToInstallationResponseOutput() InstallationResponseOutput {
+	return o
+}
+
+func (o InstallationResponseOutput) ToInstallationResponseOutputWithContext(ctx context.Context) InstallationResponseOutput {
+	return o
+}
+
+// The desired installation state
+func (o InstallationResponseOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstallationResponse) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
+}
+
+// A reference to an in-progress installation operation
+func (o InstallationResponseOutput) Operation() AsyncOperationIdResponseOutput {
+	return o.ApplyT(func(v InstallationResponse) AsyncOperationIdResponse { return v.Operation }).(AsyncOperationIdResponseOutput)
+}
+
+// Reason(s) for the current installation state of the packet core.
+func (o InstallationResponseOutput) Reasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstallationResponse) []string { return v.Reasons }).(pulumi.StringArrayOutput)
+}
+
+// Whether a reinstall of the packet core is required to pick up the latest configuration changes.
+func (o InstallationResponseOutput) ReinstallRequired() pulumi.StringOutput {
+	return o.ApplyT(func(v InstallationResponse) string { return v.ReinstallRequired }).(pulumi.StringOutput)
+}
+
+// Installation state
+func (o InstallationResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v InstallationResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type InstallationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstallationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstallationResponse)(nil)).Elem()
+}
+
+func (o InstallationResponsePtrOutput) ToInstallationResponsePtrOutput() InstallationResponsePtrOutput {
+	return o
+}
+
+func (o InstallationResponsePtrOutput) ToInstallationResponsePtrOutputWithContext(ctx context.Context) InstallationResponsePtrOutput {
+	return o
+}
+
+func (o InstallationResponsePtrOutput) Elem() InstallationResponseOutput {
+	return o.ApplyT(func(v *InstallationResponse) InstallationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InstallationResponse
+		return ret
+	}).(InstallationResponseOutput)
+}
+
+// The desired installation state
+func (o InstallationResponsePtrOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstallationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredState
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to an in-progress installation operation
+func (o InstallationResponsePtrOutput) Operation() AsyncOperationIdResponsePtrOutput {
+	return o.ApplyT(func(v *InstallationResponse) *AsyncOperationIdResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Operation
+	}).(AsyncOperationIdResponsePtrOutput)
+}
+
+// Reason(s) for the current installation state of the packet core.
+func (o InstallationResponsePtrOutput) Reasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstallationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Reasons
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether a reinstall of the packet core is required to pick up the latest configuration changes.
+func (o InstallationResponsePtrOutput) ReinstallRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstallationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReinstallRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// Installation state
+func (o InstallationResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstallationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(pulumi.StringPtrOutput)
 }
 
 // Interface properties
@@ -1609,206 +2715,6 @@ func (o InterfacePropertiesResponseOutput) Ipv4Subnet() pulumi.StringPtrOutput {
 // The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.
 func (o InterfacePropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterfacePropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// An Azure key vault certificate.
-type KeyVaultCertificate struct {
-	// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
-	CertificateUrl *string `pulumi:"certificateUrl"`
-}
-
-// KeyVaultCertificateInput is an input type that accepts KeyVaultCertificateArgs and KeyVaultCertificateOutput values.
-// You can construct a concrete instance of `KeyVaultCertificateInput` via:
-//
-//	KeyVaultCertificateArgs{...}
-type KeyVaultCertificateInput interface {
-	pulumi.Input
-
-	ToKeyVaultCertificateOutput() KeyVaultCertificateOutput
-	ToKeyVaultCertificateOutputWithContext(context.Context) KeyVaultCertificateOutput
-}
-
-// An Azure key vault certificate.
-type KeyVaultCertificateArgs struct {
-	// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
-	CertificateUrl pulumi.StringPtrInput `pulumi:"certificateUrl"`
-}
-
-func (KeyVaultCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVaultCertificate)(nil)).Elem()
-}
-
-func (i KeyVaultCertificateArgs) ToKeyVaultCertificateOutput() KeyVaultCertificateOutput {
-	return i.ToKeyVaultCertificateOutputWithContext(context.Background())
-}
-
-func (i KeyVaultCertificateArgs) ToKeyVaultCertificateOutputWithContext(ctx context.Context) KeyVaultCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCertificateOutput)
-}
-
-func (i KeyVaultCertificateArgs) ToKeyVaultCertificatePtrOutput() KeyVaultCertificatePtrOutput {
-	return i.ToKeyVaultCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i KeyVaultCertificateArgs) ToKeyVaultCertificatePtrOutputWithContext(ctx context.Context) KeyVaultCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCertificateOutput).ToKeyVaultCertificatePtrOutputWithContext(ctx)
-}
-
-// KeyVaultCertificatePtrInput is an input type that accepts KeyVaultCertificateArgs, KeyVaultCertificatePtr and KeyVaultCertificatePtrOutput values.
-// You can construct a concrete instance of `KeyVaultCertificatePtrInput` via:
-//
-//	        KeyVaultCertificateArgs{...}
-//
-//	or:
-//
-//	        nil
-type KeyVaultCertificatePtrInput interface {
-	pulumi.Input
-
-	ToKeyVaultCertificatePtrOutput() KeyVaultCertificatePtrOutput
-	ToKeyVaultCertificatePtrOutputWithContext(context.Context) KeyVaultCertificatePtrOutput
-}
-
-type keyVaultCertificatePtrType KeyVaultCertificateArgs
-
-func KeyVaultCertificatePtr(v *KeyVaultCertificateArgs) KeyVaultCertificatePtrInput {
-	return (*keyVaultCertificatePtrType)(v)
-}
-
-func (*keyVaultCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVaultCertificate)(nil)).Elem()
-}
-
-func (i *keyVaultCertificatePtrType) ToKeyVaultCertificatePtrOutput() KeyVaultCertificatePtrOutput {
-	return i.ToKeyVaultCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *keyVaultCertificatePtrType) ToKeyVaultCertificatePtrOutputWithContext(ctx context.Context) KeyVaultCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCertificatePtrOutput)
-}
-
-// An Azure key vault certificate.
-type KeyVaultCertificateOutput struct{ *pulumi.OutputState }
-
-func (KeyVaultCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVaultCertificate)(nil)).Elem()
-}
-
-func (o KeyVaultCertificateOutput) ToKeyVaultCertificateOutput() KeyVaultCertificateOutput {
-	return o
-}
-
-func (o KeyVaultCertificateOutput) ToKeyVaultCertificateOutputWithContext(ctx context.Context) KeyVaultCertificateOutput {
-	return o
-}
-
-func (o KeyVaultCertificateOutput) ToKeyVaultCertificatePtrOutput() KeyVaultCertificatePtrOutput {
-	return o.ToKeyVaultCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o KeyVaultCertificateOutput) ToKeyVaultCertificatePtrOutputWithContext(ctx context.Context) KeyVaultCertificatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultCertificate) *KeyVaultCertificate {
-		return &v
-	}).(KeyVaultCertificatePtrOutput)
-}
-
-// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
-func (o KeyVaultCertificateOutput) CertificateUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyVaultCertificate) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
-}
-
-type KeyVaultCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyVaultCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVaultCertificate)(nil)).Elem()
-}
-
-func (o KeyVaultCertificatePtrOutput) ToKeyVaultCertificatePtrOutput() KeyVaultCertificatePtrOutput {
-	return o
-}
-
-func (o KeyVaultCertificatePtrOutput) ToKeyVaultCertificatePtrOutputWithContext(ctx context.Context) KeyVaultCertificatePtrOutput {
-	return o
-}
-
-func (o KeyVaultCertificatePtrOutput) Elem() KeyVaultCertificateOutput {
-	return o.ApplyT(func(v *KeyVaultCertificate) KeyVaultCertificate {
-		if v != nil {
-			return *v
-		}
-		var ret KeyVaultCertificate
-		return ret
-	}).(KeyVaultCertificateOutput)
-}
-
-// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
-func (o KeyVaultCertificatePtrOutput) CertificateUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVaultCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// An Azure key vault certificate.
-type KeyVaultCertificateResponse struct {
-	// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
-	CertificateUrl *string `pulumi:"certificateUrl"`
-}
-
-// An Azure key vault certificate.
-type KeyVaultCertificateResponseOutput struct{ *pulumi.OutputState }
-
-func (KeyVaultCertificateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVaultCertificateResponse)(nil)).Elem()
-}
-
-func (o KeyVaultCertificateResponseOutput) ToKeyVaultCertificateResponseOutput() KeyVaultCertificateResponseOutput {
-	return o
-}
-
-func (o KeyVaultCertificateResponseOutput) ToKeyVaultCertificateResponseOutputWithContext(ctx context.Context) KeyVaultCertificateResponseOutput {
-	return o
-}
-
-// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
-func (o KeyVaultCertificateResponseOutput) CertificateUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyVaultCertificateResponse) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
-}
-
-type KeyVaultCertificateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyVaultCertificateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVaultCertificateResponse)(nil)).Elem()
-}
-
-func (o KeyVaultCertificateResponsePtrOutput) ToKeyVaultCertificateResponsePtrOutput() KeyVaultCertificateResponsePtrOutput {
-	return o
-}
-
-func (o KeyVaultCertificateResponsePtrOutput) ToKeyVaultCertificateResponsePtrOutputWithContext(ctx context.Context) KeyVaultCertificateResponsePtrOutput {
-	return o
-}
-
-func (o KeyVaultCertificateResponsePtrOutput) Elem() KeyVaultCertificateResponseOutput {
-	return o.ApplyT(func(v *KeyVaultCertificateResponse) KeyVaultCertificateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KeyVaultCertificateResponse
-		return ret
-	}).(KeyVaultCertificateResponseOutput)
-}
-
-// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
-func (o KeyVaultCertificateResponsePtrOutput) CertificateUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVaultCertificateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateUrl
-	}).(pulumi.StringPtrOutput)
 }
 
 // An Azure key vault key.
@@ -2013,8 +2919,10 @@ func (o KeyVaultKeyResponsePtrOutput) KeyUrl() pulumi.StringPtrOutput {
 
 // The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
 type LocalDiagnosticsAccessConfiguration struct {
+	// How to authenticate users who access local diagnostics APIs.
+	AuthenticationType string `pulumi:"authenticationType"`
 	// The HTTPS server TLS certificate used to secure local access to diagnostics.
-	HttpsServerCertificate *KeyVaultCertificate `pulumi:"httpsServerCertificate"`
+	HttpsServerCertificate *HttpsServerCertificate `pulumi:"httpsServerCertificate"`
 }
 
 // LocalDiagnosticsAccessConfigurationInput is an input type that accepts LocalDiagnosticsAccessConfigurationArgs and LocalDiagnosticsAccessConfigurationOutput values.
@@ -2030,8 +2938,10 @@ type LocalDiagnosticsAccessConfigurationInput interface {
 
 // The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
 type LocalDiagnosticsAccessConfigurationArgs struct {
+	// How to authenticate users who access local diagnostics APIs.
+	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
 	// The HTTPS server TLS certificate used to secure local access to diagnostics.
-	HttpsServerCertificate KeyVaultCertificatePtrInput `pulumi:"httpsServerCertificate"`
+	HttpsServerCertificate HttpsServerCertificatePtrInput `pulumi:"httpsServerCertificate"`
 }
 
 func (LocalDiagnosticsAccessConfigurationArgs) ElementType() reflect.Type {
@@ -2044,47 +2954,6 @@ func (i LocalDiagnosticsAccessConfigurationArgs) ToLocalDiagnosticsAccessConfigu
 
 func (i LocalDiagnosticsAccessConfigurationArgs) ToLocalDiagnosticsAccessConfigurationOutputWithContext(ctx context.Context) LocalDiagnosticsAccessConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocalDiagnosticsAccessConfigurationOutput)
-}
-
-func (i LocalDiagnosticsAccessConfigurationArgs) ToLocalDiagnosticsAccessConfigurationPtrOutput() LocalDiagnosticsAccessConfigurationPtrOutput {
-	return i.ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i LocalDiagnosticsAccessConfigurationArgs) ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(ctx context.Context) LocalDiagnosticsAccessConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocalDiagnosticsAccessConfigurationOutput).ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(ctx)
-}
-
-// LocalDiagnosticsAccessConfigurationPtrInput is an input type that accepts LocalDiagnosticsAccessConfigurationArgs, LocalDiagnosticsAccessConfigurationPtr and LocalDiagnosticsAccessConfigurationPtrOutput values.
-// You can construct a concrete instance of `LocalDiagnosticsAccessConfigurationPtrInput` via:
-//
-//	        LocalDiagnosticsAccessConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LocalDiagnosticsAccessConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToLocalDiagnosticsAccessConfigurationPtrOutput() LocalDiagnosticsAccessConfigurationPtrOutput
-	ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(context.Context) LocalDiagnosticsAccessConfigurationPtrOutput
-}
-
-type localDiagnosticsAccessConfigurationPtrType LocalDiagnosticsAccessConfigurationArgs
-
-func LocalDiagnosticsAccessConfigurationPtr(v *LocalDiagnosticsAccessConfigurationArgs) LocalDiagnosticsAccessConfigurationPtrInput {
-	return (*localDiagnosticsAccessConfigurationPtrType)(v)
-}
-
-func (*localDiagnosticsAccessConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocalDiagnosticsAccessConfiguration)(nil)).Elem()
-}
-
-func (i *localDiagnosticsAccessConfigurationPtrType) ToLocalDiagnosticsAccessConfigurationPtrOutput() LocalDiagnosticsAccessConfigurationPtrOutput {
-	return i.ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *localDiagnosticsAccessConfigurationPtrType) ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(ctx context.Context) LocalDiagnosticsAccessConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocalDiagnosticsAccessConfigurationPtrOutput)
 }
 
 // The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
@@ -2102,59 +2971,22 @@ func (o LocalDiagnosticsAccessConfigurationOutput) ToLocalDiagnosticsAccessConfi
 	return o
 }
 
-func (o LocalDiagnosticsAccessConfigurationOutput) ToLocalDiagnosticsAccessConfigurationPtrOutput() LocalDiagnosticsAccessConfigurationPtrOutput {
-	return o.ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o LocalDiagnosticsAccessConfigurationOutput) ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(ctx context.Context) LocalDiagnosticsAccessConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalDiagnosticsAccessConfiguration) *LocalDiagnosticsAccessConfiguration {
-		return &v
-	}).(LocalDiagnosticsAccessConfigurationPtrOutput)
+// How to authenticate users who access local diagnostics APIs.
+func (o LocalDiagnosticsAccessConfigurationOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalDiagnosticsAccessConfiguration) string { return v.AuthenticationType }).(pulumi.StringOutput)
 }
 
 // The HTTPS server TLS certificate used to secure local access to diagnostics.
-func (o LocalDiagnosticsAccessConfigurationOutput) HttpsServerCertificate() KeyVaultCertificatePtrOutput {
-	return o.ApplyT(func(v LocalDiagnosticsAccessConfiguration) *KeyVaultCertificate { return v.HttpsServerCertificate }).(KeyVaultCertificatePtrOutput)
-}
-
-type LocalDiagnosticsAccessConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (LocalDiagnosticsAccessConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocalDiagnosticsAccessConfiguration)(nil)).Elem()
-}
-
-func (o LocalDiagnosticsAccessConfigurationPtrOutput) ToLocalDiagnosticsAccessConfigurationPtrOutput() LocalDiagnosticsAccessConfigurationPtrOutput {
-	return o
-}
-
-func (o LocalDiagnosticsAccessConfigurationPtrOutput) ToLocalDiagnosticsAccessConfigurationPtrOutputWithContext(ctx context.Context) LocalDiagnosticsAccessConfigurationPtrOutput {
-	return o
-}
-
-func (o LocalDiagnosticsAccessConfigurationPtrOutput) Elem() LocalDiagnosticsAccessConfigurationOutput {
-	return o.ApplyT(func(v *LocalDiagnosticsAccessConfiguration) LocalDiagnosticsAccessConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret LocalDiagnosticsAccessConfiguration
-		return ret
-	}).(LocalDiagnosticsAccessConfigurationOutput)
-}
-
-// The HTTPS server TLS certificate used to secure local access to diagnostics.
-func (o LocalDiagnosticsAccessConfigurationPtrOutput) HttpsServerCertificate() KeyVaultCertificatePtrOutput {
-	return o.ApplyT(func(v *LocalDiagnosticsAccessConfiguration) *KeyVaultCertificate {
-		if v == nil {
-			return nil
-		}
-		return v.HttpsServerCertificate
-	}).(KeyVaultCertificatePtrOutput)
+func (o LocalDiagnosticsAccessConfigurationOutput) HttpsServerCertificate() HttpsServerCertificatePtrOutput {
+	return o.ApplyT(func(v LocalDiagnosticsAccessConfiguration) *HttpsServerCertificate { return v.HttpsServerCertificate }).(HttpsServerCertificatePtrOutput)
 }
 
 // The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
 type LocalDiagnosticsAccessConfigurationResponse struct {
+	// How to authenticate users who access local diagnostics APIs.
+	AuthenticationType string `pulumi:"authenticationType"`
 	// The HTTPS server TLS certificate used to secure local access to diagnostics.
-	HttpsServerCertificate *KeyVaultCertificateResponse `pulumi:"httpsServerCertificate"`
+	HttpsServerCertificate *HttpsServerCertificateResponse `pulumi:"httpsServerCertificate"`
 }
 
 // The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
@@ -2172,53 +3004,24 @@ func (o LocalDiagnosticsAccessConfigurationResponseOutput) ToLocalDiagnosticsAcc
 	return o
 }
 
-// The HTTPS server TLS certificate used to secure local access to diagnostics.
-func (o LocalDiagnosticsAccessConfigurationResponseOutput) HttpsServerCertificate() KeyVaultCertificateResponsePtrOutput {
-	return o.ApplyT(func(v LocalDiagnosticsAccessConfigurationResponse) *KeyVaultCertificateResponse {
-		return v.HttpsServerCertificate
-	}).(KeyVaultCertificateResponsePtrOutput)
-}
-
-type LocalDiagnosticsAccessConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LocalDiagnosticsAccessConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocalDiagnosticsAccessConfigurationResponse)(nil)).Elem()
-}
-
-func (o LocalDiagnosticsAccessConfigurationResponsePtrOutput) ToLocalDiagnosticsAccessConfigurationResponsePtrOutput() LocalDiagnosticsAccessConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o LocalDiagnosticsAccessConfigurationResponsePtrOutput) ToLocalDiagnosticsAccessConfigurationResponsePtrOutputWithContext(ctx context.Context) LocalDiagnosticsAccessConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o LocalDiagnosticsAccessConfigurationResponsePtrOutput) Elem() LocalDiagnosticsAccessConfigurationResponseOutput {
-	return o.ApplyT(func(v *LocalDiagnosticsAccessConfigurationResponse) LocalDiagnosticsAccessConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LocalDiagnosticsAccessConfigurationResponse
-		return ret
-	}).(LocalDiagnosticsAccessConfigurationResponseOutput)
+// How to authenticate users who access local diagnostics APIs.
+func (o LocalDiagnosticsAccessConfigurationResponseOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalDiagnosticsAccessConfigurationResponse) string { return v.AuthenticationType }).(pulumi.StringOutput)
 }
 
 // The HTTPS server TLS certificate used to secure local access to diagnostics.
-func (o LocalDiagnosticsAccessConfigurationResponsePtrOutput) HttpsServerCertificate() KeyVaultCertificateResponsePtrOutput {
-	return o.ApplyT(func(v *LocalDiagnosticsAccessConfigurationResponse) *KeyVaultCertificateResponse {
-		if v == nil {
-			return nil
-		}
+func (o LocalDiagnosticsAccessConfigurationResponseOutput) HttpsServerCertificate() HttpsServerCertificateResponsePtrOutput {
+	return o.ApplyT(func(v LocalDiagnosticsAccessConfigurationResponse) *HttpsServerCertificateResponse {
 		return v.HttpsServerCertificate
-	}).(KeyVaultCertificateResponsePtrOutput)
+	}).(HttpsServerCertificateResponsePtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// Managed service identity (User assigned identity)
 type ManagedServiceIdentity struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	// Type of managed service identity (currently only UserAssigned allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
@@ -2232,12 +3035,12 @@ type ManagedServiceIdentityInput interface {
 	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// Managed service identity (User assigned identity)
 type ManagedServiceIdentityArgs struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	// Type of managed service identity (currently only UserAssigned allowed).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -2293,7 +3096,7 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// Managed service identity (User assigned identity)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
@@ -2318,14 +3121,14 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+// Type of managed service identity (currently only UserAssigned allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -2352,7 +3155,7 @@ func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
 	}).(ManagedServiceIdentityOutput)
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+// Type of managed service identity (currently only UserAssigned allowed).
 func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
 		if v == nil {
@@ -2363,28 +3166,24 @@ func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) map[string]interface{} {
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// Managed service identity (User assigned identity)
 type ManagedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	// Type of managed service identity (currently only UserAssigned allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
 	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// Managed service identity (User assigned identity)
 type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
@@ -2399,17 +3198,7 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+// Type of managed service identity (currently only UserAssigned allowed).
 func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2445,27 +3234,7 @@ func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityRe
 	}).(ManagedServiceIdentityResponseOutput)
 }
 
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+// Type of managed service identity (currently only UserAssigned allowed).
 func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
 		if v == nil {
@@ -2697,7 +3466,7 @@ type NaptConfiguration struct {
 	// If not specified and NAPT is enabled, this range defaults to 1,024 - 49,999.
 	// (Ports under 1,024 should not be used because these are special purpose ports reserved by IANA. Ports 50,000 and above are reserved for non-NAPT use.)
 	PortRange *PortRange `pulumi:"portRange"`
-	// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be minimum 1 second.
+	// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be at least 1 second.
 	PortReuseHoldTime *PortReuseHoldTimes `pulumi:"portReuseHoldTime"`
 }
 
@@ -2743,7 +3512,7 @@ type NaptConfigurationArgs struct {
 	// If not specified and NAPT is enabled, this range defaults to 1,024 - 49,999.
 	// (Ports under 1,024 should not be used because these are special purpose ports reserved by IANA. Ports 50,000 and above are reserved for non-NAPT use.)
 	PortRange PortRangePtrInput `pulumi:"portRange"`
-	// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be minimum 1 second.
+	// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be at least 1 second.
 	PortReuseHoldTime PortReuseHoldTimesPtrInput `pulumi:"portReuseHoldTime"`
 }
 
@@ -2859,7 +3628,7 @@ func (o NaptConfigurationOutput) PortRange() PortRangePtrOutput {
 	return o.ApplyT(func(v NaptConfiguration) *PortRange { return v.PortRange }).(PortRangePtrOutput)
 }
 
-// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be minimum 1 second.
+// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be at least 1 second.
 func (o NaptConfigurationOutput) PortReuseHoldTime() PortReuseHoldTimesPtrOutput {
 	return o.ApplyT(func(v NaptConfiguration) *PortReuseHoldTimes { return v.PortReuseHoldTime }).(PortReuseHoldTimesPtrOutput)
 }
@@ -2930,7 +3699,7 @@ func (o NaptConfigurationPtrOutput) PortRange() PortRangePtrOutput {
 	}).(PortRangePtrOutput)
 }
 
-// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be minimum 1 second.
+// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be at least 1 second.
 func (o NaptConfigurationPtrOutput) PortReuseHoldTime() PortReuseHoldTimesPtrOutput {
 	return o.ApplyT(func(v *NaptConfiguration) *PortReuseHoldTimes {
 		if v == nil {
@@ -2952,7 +3721,7 @@ type NaptConfigurationResponse struct {
 	// If not specified and NAPT is enabled, this range defaults to 1,024 - 49,999.
 	// (Ports under 1,024 should not be used because these are special purpose ports reserved by IANA. Ports 50,000 and above are reserved for non-NAPT use.)
 	PortRange *PortRangeResponse `pulumi:"portRange"`
-	// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be minimum 1 second.
+	// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be at least 1 second.
 	PortReuseHoldTime *PortReuseHoldTimesResponse `pulumi:"portReuseHoldTime"`
 }
 
@@ -3012,7 +3781,7 @@ func (o NaptConfigurationResponseOutput) PortRange() PortRangeResponsePtrOutput 
 	return o.ApplyT(func(v NaptConfigurationResponse) *PortRangeResponse { return v.PortRange }).(PortRangeResponsePtrOutput)
 }
 
-// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be minimum 1 second.
+// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be at least 1 second.
 func (o NaptConfigurationResponseOutput) PortReuseHoldTime() PortReuseHoldTimesResponsePtrOutput {
 	return o.ApplyT(func(v NaptConfigurationResponse) *PortReuseHoldTimesResponse { return v.PortReuseHoldTime }).(PortReuseHoldTimesResponsePtrOutput)
 }
@@ -3083,7 +3852,7 @@ func (o NaptConfigurationResponsePtrOutput) PortRange() PortRangeResponsePtrOutp
 	}).(PortRangeResponsePtrOutput)
 }
 
-// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be minimum 1 second.
+// The minimum time (in seconds) that will pass before a port that was used by a closed pinhole can be recycled for use by another pinhole. All hold times must be at least 1 second.
 func (o NaptConfigurationResponsePtrOutput) PortReuseHoldTime() PortReuseHoldTimesResponsePtrOutput {
 	return o.ApplyT(func(v *NaptConfigurationResponse) *PortReuseHoldTimesResponse {
 		if v == nil {
@@ -3351,7 +4120,7 @@ func (o PccRuleConfigurationResponseArrayOutput) Index(i pulumi.IntInput) PccRul
 type PccRuleQosPolicy struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The guaranteed bit rate (GBR) for all service data flows that use this data flow policy rule. This is an optional setting. If you do not provide a value, there will be no GBR set for the data flow policy rule that uses this QoS definition.
 	GuaranteedBitRate *Ambr `pulumi:"guaranteedBitRate"`
@@ -3403,7 +4172,7 @@ type PccRuleQosPolicyInput interface {
 type PccRuleQosPolicyArgs struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel pulumi.IntPtrInput `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi pulumi.IntPtrInput `pulumi:"fiveQi"`
 	// The guaranteed bit rate (GBR) for all service data flows that use this data flow policy rule. This is an optional setting. If you do not provide a value, there will be no GBR set for the data flow policy rule that uses this QoS definition.
 	GuaranteedBitRate AmbrPtrInput `pulumi:"guaranteedBitRate"`
@@ -3518,7 +4287,7 @@ func (o PccRuleQosPolicyOutput) AllocationAndRetentionPriorityLevel() pulumi.Int
 	return o.ApplyT(func(v PccRuleQosPolicy) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o PccRuleQosPolicyOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PccRuleQosPolicy) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -3577,7 +4346,7 @@ func (o PccRuleQosPolicyPtrOutput) AllocationAndRetentionPriorityLevel() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o PccRuleQosPolicyPtrOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PccRuleQosPolicy) *int {
 		if v == nil {
@@ -3631,7 +4400,7 @@ func (o PccRuleQosPolicyPtrOutput) PreemptionVulnerability() pulumi.StringPtrOut
 type PccRuleQosPolicyResponse struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The guaranteed bit rate (GBR) for all service data flows that use this data flow policy rule. This is an optional setting. If you do not provide a value, there will be no GBR set for the data flow policy rule that uses this QoS definition.
 	GuaranteedBitRate *AmbrResponse `pulumi:"guaranteedBitRate"`
@@ -3688,7 +4457,7 @@ func (o PccRuleQosPolicyResponseOutput) AllocationAndRetentionPriorityLevel() pu
 	return o.ApplyT(func(v PccRuleQosPolicyResponse) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o PccRuleQosPolicyResponseOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PccRuleQosPolicyResponse) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -3747,7 +4516,7 @@ func (o PccRuleQosPolicyResponsePtrOutput) AllocationAndRetentionPriorityLevel()
 	}).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o PccRuleQosPolicyResponsePtrOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PccRuleQosPolicyResponse) *int {
 		if v == nil {
@@ -3799,11 +4568,11 @@ func (o PccRuleQosPolicyResponsePtrOutput) PreemptionVulnerability() pulumi.Stri
 
 // Expiry times of inactive NAPT pinholes, in seconds. All timers must be at least 1 second.
 type PinholeTimeouts struct {
-	// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 60 seconds, as per RFC 5508 section 3.2.
+	// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.
 	Icmp *int `pulumi:"icmp"`
-	// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 2 hours 4 minutes, as per RFC 5382 section 5.
+	// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.
 	Tcp *int `pulumi:"tcp"`
-	// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 5 minutes, as per RFC 4787 section 4.3.
+	// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.
 	Udp *int `pulumi:"udp"`
 }
 
@@ -3841,11 +4610,11 @@ type PinholeTimeoutsInput interface {
 
 // Expiry times of inactive NAPT pinholes, in seconds. All timers must be at least 1 second.
 type PinholeTimeoutsArgs struct {
-	// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 60 seconds, as per RFC 5508 section 3.2.
+	// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.
 	Icmp pulumi.IntPtrInput `pulumi:"icmp"`
-	// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 2 hours 4 minutes, as per RFC 5382 section 5.
+	// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.
 	Tcp pulumi.IntPtrInput `pulumi:"tcp"`
-	// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 5 minutes, as per RFC 4787 section 4.3.
+	// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.
 	Udp pulumi.IntPtrInput `pulumi:"udp"`
 }
 
@@ -3944,17 +4713,17 @@ func (o PinholeTimeoutsOutput) ToPinholeTimeoutsPtrOutputWithContext(ctx context
 	}).(PinholeTimeoutsPtrOutput)
 }
 
-// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 60 seconds, as per RFC 5508 section 3.2.
+// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.
 func (o PinholeTimeoutsOutput) Icmp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PinholeTimeouts) *int { return v.Icmp }).(pulumi.IntPtrOutput)
 }
 
-// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 2 hours 4 minutes, as per RFC 5382 section 5.
+// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.
 func (o PinholeTimeoutsOutput) Tcp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PinholeTimeouts) *int { return v.Tcp }).(pulumi.IntPtrOutput)
 }
 
-// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 5 minutes, as per RFC 4787 section 4.3.
+// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.
 func (o PinholeTimeoutsOutput) Udp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PinholeTimeouts) *int { return v.Udp }).(pulumi.IntPtrOutput)
 }
@@ -3983,7 +4752,7 @@ func (o PinholeTimeoutsPtrOutput) Elem() PinholeTimeoutsOutput {
 	}).(PinholeTimeoutsOutput)
 }
 
-// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 60 seconds, as per RFC 5508 section 3.2.
+// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.
 func (o PinholeTimeoutsPtrOutput) Icmp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PinholeTimeouts) *int {
 		if v == nil {
@@ -3993,7 +4762,7 @@ func (o PinholeTimeoutsPtrOutput) Icmp() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 2 hours 4 minutes, as per RFC 5382 section 5.
+// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.
 func (o PinholeTimeoutsPtrOutput) Tcp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PinholeTimeouts) *int {
 		if v == nil {
@@ -4003,7 +4772,7 @@ func (o PinholeTimeoutsPtrOutput) Tcp() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 5 minutes, as per RFC 4787 section 4.3.
+// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.
 func (o PinholeTimeoutsPtrOutput) Udp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PinholeTimeouts) *int {
 		if v == nil {
@@ -4015,11 +4784,11 @@ func (o PinholeTimeoutsPtrOutput) Udp() pulumi.IntPtrOutput {
 
 // Expiry times of inactive NAPT pinholes, in seconds. All timers must be at least 1 second.
 type PinholeTimeoutsResponse struct {
-	// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 60 seconds, as per RFC 5508 section 3.2.
+	// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.
 	Icmp *int `pulumi:"icmp"`
-	// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 2 hours 4 minutes, as per RFC 5382 section 5.
+	// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.
 	Tcp *int `pulumi:"tcp"`
-	// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 5 minutes, as per RFC 4787 section 4.3.
+	// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.
 	Udp *int `pulumi:"udp"`
 }
 
@@ -4059,17 +4828,17 @@ func (o PinholeTimeoutsResponseOutput) ToPinholeTimeoutsResponseOutputWithContex
 	return o
 }
 
-// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 60 seconds, as per RFC 5508 section 3.2.
+// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.
 func (o PinholeTimeoutsResponseOutput) Icmp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PinholeTimeoutsResponse) *int { return v.Icmp }).(pulumi.IntPtrOutput)
 }
 
-// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 2 hours 4 minutes, as per RFC 5382 section 5.
+// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.
 func (o PinholeTimeoutsResponseOutput) Tcp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PinholeTimeoutsResponse) *int { return v.Tcp }).(pulumi.IntPtrOutput)
 }
 
-// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 5 minutes, as per RFC 4787 section 4.3.
+// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.
 func (o PinholeTimeoutsResponseOutput) Udp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PinholeTimeoutsResponse) *int { return v.Udp }).(pulumi.IntPtrOutput)
 }
@@ -4098,7 +4867,7 @@ func (o PinholeTimeoutsResponsePtrOutput) Elem() PinholeTimeoutsResponseOutput {
 	}).(PinholeTimeoutsResponseOutput)
 }
 
-// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 60 seconds, as per RFC 5508 section 3.2.
+// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.
 func (o PinholeTimeoutsResponsePtrOutput) Icmp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PinholeTimeoutsResponse) *int {
 		if v == nil {
@@ -4108,7 +4877,7 @@ func (o PinholeTimeoutsResponsePtrOutput) Icmp() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 2 hours 4 minutes, as per RFC 5382 section 5.
+// Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.
 func (o PinholeTimeoutsResponsePtrOutput) Tcp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PinholeTimeoutsResponse) *int {
 		if v == nil {
@@ -4118,7 +4887,7 @@ func (o PinholeTimeoutsResponsePtrOutput) Tcp() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 5 minutes, as per RFC 4787 section 4.3.
+// Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.
 func (o PinholeTimeoutsResponsePtrOutput) Udp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PinholeTimeoutsResponse) *int {
 		if v == nil {
@@ -4130,8 +4899,10 @@ func (o PinholeTimeoutsResponsePtrOutput) Udp() pulumi.IntPtrOutput {
 
 // The platform where the packet core is deployed.
 type PlatformConfiguration struct {
-	// The Azure Stack Edge device where where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
+	// The Azure Stack Edge device where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
 	AzureStackEdgeDevice *AzureStackEdgeDeviceResourceId `pulumi:"azureStackEdgeDevice"`
+	// The Azure Stack HCI cluster where the packet core is deployed.
+	AzureStackHciCluster *AzureStackHCIClusterResourceId `pulumi:"azureStackHciCluster"`
 	// Azure Arc connected cluster where the packet core is deployed.
 	ConnectedCluster *ConnectedClusterResourceId `pulumi:"connectedCluster"`
 	// Azure Arc custom location where the packet core is deployed.
@@ -4153,8 +4924,10 @@ type PlatformConfigurationInput interface {
 
 // The platform where the packet core is deployed.
 type PlatformConfigurationArgs struct {
-	// The Azure Stack Edge device where where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
+	// The Azure Stack Edge device where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
 	AzureStackEdgeDevice AzureStackEdgeDeviceResourceIdPtrInput `pulumi:"azureStackEdgeDevice"`
+	// The Azure Stack HCI cluster where the packet core is deployed.
+	AzureStackHciCluster AzureStackHCIClusterResourceIdPtrInput `pulumi:"azureStackHciCluster"`
 	// Azure Arc connected cluster where the packet core is deployed.
 	ConnectedCluster ConnectedClusterResourceIdPtrInput `pulumi:"connectedCluster"`
 	// Azure Arc custom location where the packet core is deployed.
@@ -4175,47 +4948,6 @@ func (i PlatformConfigurationArgs) ToPlatformConfigurationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PlatformConfigurationOutput)
 }
 
-func (i PlatformConfigurationArgs) ToPlatformConfigurationPtrOutput() PlatformConfigurationPtrOutput {
-	return i.ToPlatformConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i PlatformConfigurationArgs) ToPlatformConfigurationPtrOutputWithContext(ctx context.Context) PlatformConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlatformConfigurationOutput).ToPlatformConfigurationPtrOutputWithContext(ctx)
-}
-
-// PlatformConfigurationPtrInput is an input type that accepts PlatformConfigurationArgs, PlatformConfigurationPtr and PlatformConfigurationPtrOutput values.
-// You can construct a concrete instance of `PlatformConfigurationPtrInput` via:
-//
-//	        PlatformConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type PlatformConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToPlatformConfigurationPtrOutput() PlatformConfigurationPtrOutput
-	ToPlatformConfigurationPtrOutputWithContext(context.Context) PlatformConfigurationPtrOutput
-}
-
-type platformConfigurationPtrType PlatformConfigurationArgs
-
-func PlatformConfigurationPtr(v *PlatformConfigurationArgs) PlatformConfigurationPtrInput {
-	return (*platformConfigurationPtrType)(v)
-}
-
-func (*platformConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PlatformConfiguration)(nil)).Elem()
-}
-
-func (i *platformConfigurationPtrType) ToPlatformConfigurationPtrOutput() PlatformConfigurationPtrOutput {
-	return i.ToPlatformConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *platformConfigurationPtrType) ToPlatformConfigurationPtrOutputWithContext(ctx context.Context) PlatformConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlatformConfigurationPtrOutput)
-}
-
 // The platform where the packet core is deployed.
 type PlatformConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -4231,19 +4963,14 @@ func (o PlatformConfigurationOutput) ToPlatformConfigurationOutputWithContext(ct
 	return o
 }
 
-func (o PlatformConfigurationOutput) ToPlatformConfigurationPtrOutput() PlatformConfigurationPtrOutput {
-	return o.ToPlatformConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o PlatformConfigurationOutput) ToPlatformConfigurationPtrOutputWithContext(ctx context.Context) PlatformConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlatformConfiguration) *PlatformConfiguration {
-		return &v
-	}).(PlatformConfigurationPtrOutput)
-}
-
-// The Azure Stack Edge device where where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
+// The Azure Stack Edge device where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
 func (o PlatformConfigurationOutput) AzureStackEdgeDevice() AzureStackEdgeDeviceResourceIdPtrOutput {
 	return o.ApplyT(func(v PlatformConfiguration) *AzureStackEdgeDeviceResourceId { return v.AzureStackEdgeDevice }).(AzureStackEdgeDeviceResourceIdPtrOutput)
+}
+
+// The Azure Stack HCI cluster where the packet core is deployed.
+func (o PlatformConfigurationOutput) AzureStackHciCluster() AzureStackHCIClusterResourceIdPtrOutput {
+	return o.ApplyT(func(v PlatformConfiguration) *AzureStackHCIClusterResourceId { return v.AzureStackHciCluster }).(AzureStackHCIClusterResourceIdPtrOutput)
 }
 
 // Azure Arc connected cluster where the packet core is deployed.
@@ -4261,74 +4988,14 @@ func (o PlatformConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PlatformConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type PlatformConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (PlatformConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PlatformConfiguration)(nil)).Elem()
-}
-
-func (o PlatformConfigurationPtrOutput) ToPlatformConfigurationPtrOutput() PlatformConfigurationPtrOutput {
-	return o
-}
-
-func (o PlatformConfigurationPtrOutput) ToPlatformConfigurationPtrOutputWithContext(ctx context.Context) PlatformConfigurationPtrOutput {
-	return o
-}
-
-func (o PlatformConfigurationPtrOutput) Elem() PlatformConfigurationOutput {
-	return o.ApplyT(func(v *PlatformConfiguration) PlatformConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret PlatformConfiguration
-		return ret
-	}).(PlatformConfigurationOutput)
-}
-
-// The Azure Stack Edge device where where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
-func (o PlatformConfigurationPtrOutput) AzureStackEdgeDevice() AzureStackEdgeDeviceResourceIdPtrOutput {
-	return o.ApplyT(func(v *PlatformConfiguration) *AzureStackEdgeDeviceResourceId {
-		if v == nil {
-			return nil
-		}
-		return v.AzureStackEdgeDevice
-	}).(AzureStackEdgeDeviceResourceIdPtrOutput)
-}
-
-// Azure Arc connected cluster where the packet core is deployed.
-func (o PlatformConfigurationPtrOutput) ConnectedCluster() ConnectedClusterResourceIdPtrOutput {
-	return o.ApplyT(func(v *PlatformConfiguration) *ConnectedClusterResourceId {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectedCluster
-	}).(ConnectedClusterResourceIdPtrOutput)
-}
-
-// Azure Arc custom location where the packet core is deployed.
-func (o PlatformConfigurationPtrOutput) CustomLocation() CustomLocationResourceIdPtrOutput {
-	return o.ApplyT(func(v *PlatformConfiguration) *CustomLocationResourceId {
-		if v == nil {
-			return nil
-		}
-		return v.CustomLocation
-	}).(CustomLocationResourceIdPtrOutput)
-}
-
-// The platform type where packet core is deployed.
-func (o PlatformConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlatformConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 // The platform where the packet core is deployed.
 type PlatformConfigurationResponse struct {
-	// The Azure Stack Edge device where where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
+	// The Azure Stack Edge device where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
 	AzureStackEdgeDevice *AzureStackEdgeDeviceResourceIdResponse `pulumi:"azureStackEdgeDevice"`
+	// The Azure Stack Edge devices where the packet core is deployed. If the packet core is deployed across multiple devices, all devices will appear in this list.
+	AzureStackEdgeDevices []AzureStackEdgeDeviceResourceIdResponse `pulumi:"azureStackEdgeDevices"`
+	// The Azure Stack HCI cluster where the packet core is deployed.
+	AzureStackHciCluster *AzureStackHCIClusterResourceIdResponse `pulumi:"azureStackHciCluster"`
 	// Azure Arc connected cluster where the packet core is deployed.
 	ConnectedCluster *ConnectedClusterResourceIdResponse `pulumi:"connectedCluster"`
 	// Azure Arc custom location where the packet core is deployed.
@@ -4352,11 +5019,25 @@ func (o PlatformConfigurationResponseOutput) ToPlatformConfigurationResponseOutp
 	return o
 }
 
-// The Azure Stack Edge device where where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
+// The Azure Stack Edge device where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
 func (o PlatformConfigurationResponseOutput) AzureStackEdgeDevice() AzureStackEdgeDeviceResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v PlatformConfigurationResponse) *AzureStackEdgeDeviceResourceIdResponse {
 		return v.AzureStackEdgeDevice
 	}).(AzureStackEdgeDeviceResourceIdResponsePtrOutput)
+}
+
+// The Azure Stack Edge devices where the packet core is deployed. If the packet core is deployed across multiple devices, all devices will appear in this list.
+func (o PlatformConfigurationResponseOutput) AzureStackEdgeDevices() AzureStackEdgeDeviceResourceIdResponseArrayOutput {
+	return o.ApplyT(func(v PlatformConfigurationResponse) []AzureStackEdgeDeviceResourceIdResponse {
+		return v.AzureStackEdgeDevices
+	}).(AzureStackEdgeDeviceResourceIdResponseArrayOutput)
+}
+
+// The Azure Stack HCI cluster where the packet core is deployed.
+func (o PlatformConfigurationResponseOutput) AzureStackHciCluster() AzureStackHCIClusterResourceIdResponsePtrOutput {
+	return o.ApplyT(func(v PlatformConfigurationResponse) *AzureStackHCIClusterResourceIdResponse {
+		return v.AzureStackHciCluster
+	}).(AzureStackHCIClusterResourceIdResponsePtrOutput)
 }
 
 // Azure Arc connected cluster where the packet core is deployed.
@@ -4372,70 +5053,6 @@ func (o PlatformConfigurationResponseOutput) CustomLocation() CustomLocationReso
 // The platform type where packet core is deployed.
 func (o PlatformConfigurationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PlatformConfigurationResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PlatformConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PlatformConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PlatformConfigurationResponse)(nil)).Elem()
-}
-
-func (o PlatformConfigurationResponsePtrOutput) ToPlatformConfigurationResponsePtrOutput() PlatformConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o PlatformConfigurationResponsePtrOutput) ToPlatformConfigurationResponsePtrOutputWithContext(ctx context.Context) PlatformConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o PlatformConfigurationResponsePtrOutput) Elem() PlatformConfigurationResponseOutput {
-	return o.ApplyT(func(v *PlatformConfigurationResponse) PlatformConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PlatformConfigurationResponse
-		return ret
-	}).(PlatformConfigurationResponseOutput)
-}
-
-// The Azure Stack Edge device where where the packet core is deployed. If the device is part of a fault tolerant pair, either device in the pair can be specified.
-func (o PlatformConfigurationResponsePtrOutput) AzureStackEdgeDevice() AzureStackEdgeDeviceResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v *PlatformConfigurationResponse) *AzureStackEdgeDeviceResourceIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AzureStackEdgeDevice
-	}).(AzureStackEdgeDeviceResourceIdResponsePtrOutput)
-}
-
-// Azure Arc connected cluster where the packet core is deployed.
-func (o PlatformConfigurationResponsePtrOutput) ConnectedCluster() ConnectedClusterResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v *PlatformConfigurationResponse) *ConnectedClusterResourceIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectedCluster
-	}).(ConnectedClusterResourceIdResponsePtrOutput)
-}
-
-// Azure Arc custom location where the packet core is deployed.
-func (o PlatformConfigurationResponsePtrOutput) CustomLocation() CustomLocationResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v *PlatformConfigurationResponse) *CustomLocationResourceIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CustomLocation
-	}).(CustomLocationResourceIdResponsePtrOutput)
-}
-
-// The platform type where packet core is deployed.
-func (o PlatformConfigurationResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlatformConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // Public land mobile network (PLMN) ID.
@@ -5117,7 +5734,7 @@ func (o PortReuseHoldTimesResponsePtrOutput) Udp() pulumi.IntPtrOutput {
 type QosPolicy struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The maximum bit rate (MBR) for all service data flows that use this data flow policy rule or service.
 	MaximumBitRate Ambr `pulumi:"maximumBitRate"`
@@ -5167,7 +5784,7 @@ type QosPolicyInput interface {
 type QosPolicyArgs struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel pulumi.IntPtrInput `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi pulumi.IntPtrInput `pulumi:"fiveQi"`
 	// The maximum bit rate (MBR) for all service data flows that use this data flow policy rule or service.
 	MaximumBitRate AmbrInput `pulumi:"maximumBitRate"`
@@ -5280,7 +5897,7 @@ func (o QosPolicyOutput) AllocationAndRetentionPriorityLevel() pulumi.IntPtrOutp
 	return o.ApplyT(func(v QosPolicy) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o QosPolicyOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QosPolicy) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -5334,7 +5951,7 @@ func (o QosPolicyPtrOutput) AllocationAndRetentionPriorityLevel() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o QosPolicyPtrOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *QosPolicy) *int {
 		if v == nil {
@@ -5378,7 +5995,7 @@ func (o QosPolicyPtrOutput) PreemptionVulnerability() pulumi.StringPtrOutput {
 type QosPolicyResponse struct {
 	// QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 	AllocationAndRetentionPriorityLevel *int `pulumi:"allocationAndRetentionPriorityLevel"`
-	// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+	// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 	FiveQi *int `pulumi:"fiveQi"`
 	// The maximum bit rate (MBR) for all service data flows that use this data flow policy rule or service.
 	MaximumBitRate AmbrResponse `pulumi:"maximumBitRate"`
@@ -5433,7 +6050,7 @@ func (o QosPolicyResponseOutput) AllocationAndRetentionPriorityLevel() pulumi.In
 	return o.ApplyT(func(v QosPolicyResponse) *int { return v.AllocationAndRetentionPriorityLevel }).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o QosPolicyResponseOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QosPolicyResponse) *int { return v.FiveQi }).(pulumi.IntPtrOutput)
 }
@@ -5487,7 +6104,7 @@ func (o QosPolicyResponsePtrOutput) AllocationAndRetentionPriorityLevel() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 func (o QosPolicyResponsePtrOutput) FiveQi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *QosPolicyResponse) *int {
 		if v == nil {
@@ -6085,9 +6702,9 @@ func (o SimPolicyResourceIdResponsePtrOutput) Id() pulumi.StringPtrOutput {
 
 // Static IP configuration for a SIM, scoped to a particular attached data network and slice.
 type SimStaticIpProperties struct {
-	// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+	// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The attached data network must be in the same location as the SIM.
 	AttachedDataNetwork *AttachedDataNetworkResourceId `pulumi:"attachedDataNetwork"`
-	// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+	// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The slice must be in the same location as the SIM.
 	Slice *SliceResourceId `pulumi:"slice"`
 	// The static IP configuration for the SIM to use at the defined network scope.
 	StaticIp *SimStaticIpPropertiesStaticIp `pulumi:"staticIp"`
@@ -6106,9 +6723,9 @@ type SimStaticIpPropertiesInput interface {
 
 // Static IP configuration for a SIM, scoped to a particular attached data network and slice.
 type SimStaticIpPropertiesArgs struct {
-	// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+	// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The attached data network must be in the same location as the SIM.
 	AttachedDataNetwork AttachedDataNetworkResourceIdPtrInput `pulumi:"attachedDataNetwork"`
-	// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+	// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The slice must be in the same location as the SIM.
 	Slice SliceResourceIdPtrInput `pulumi:"slice"`
 	// The static IP configuration for the SIM to use at the defined network scope.
 	StaticIp SimStaticIpPropertiesStaticIpPtrInput `pulumi:"staticIp"`
@@ -6166,12 +6783,12 @@ func (o SimStaticIpPropertiesOutput) ToSimStaticIpPropertiesOutputWithContext(ct
 	return o
 }
 
-// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The attached data network must be in the same location as the SIM.
 func (o SimStaticIpPropertiesOutput) AttachedDataNetwork() AttachedDataNetworkResourceIdPtrOutput {
 	return o.ApplyT(func(v SimStaticIpProperties) *AttachedDataNetworkResourceId { return v.AttachedDataNetwork }).(AttachedDataNetworkResourceIdPtrOutput)
 }
 
-// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The slice must be in the same location as the SIM.
 func (o SimStaticIpPropertiesOutput) Slice() SliceResourceIdPtrOutput {
 	return o.ApplyT(func(v SimStaticIpProperties) *SliceResourceId { return v.Slice }).(SliceResourceIdPtrOutput)
 }
@@ -6203,9 +6820,9 @@ func (o SimStaticIpPropertiesArrayOutput) Index(i pulumi.IntInput) SimStaticIpPr
 
 // Static IP configuration for a SIM, scoped to a particular attached data network and slice.
 type SimStaticIpPropertiesResponse struct {
-	// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+	// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The attached data network must be in the same location as the SIM.
 	AttachedDataNetwork *AttachedDataNetworkResourceIdResponse `pulumi:"attachedDataNetwork"`
-	// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+	// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The slice must be in the same location as the SIM.
 	Slice *SliceResourceIdResponse `pulumi:"slice"`
 	// The static IP configuration for the SIM to use at the defined network scope.
 	StaticIp *SimStaticIpPropertiesResponseStaticIp `pulumi:"staticIp"`
@@ -6226,14 +6843,14 @@ func (o SimStaticIpPropertiesResponseOutput) ToSimStaticIpPropertiesResponseOutp
 	return o
 }
 
-// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+// The attached data network on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The attached data network must be in the same location as the SIM.
 func (o SimStaticIpPropertiesResponseOutput) AttachedDataNetwork() AttachedDataNetworkResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v SimStaticIpPropertiesResponse) *AttachedDataNetworkResourceIdResponse {
 		return v.AttachedDataNetwork
 	}).(AttachedDataNetworkResourceIdResponsePtrOutput)
 }
 
-// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address.
+// The network slice on which the static IP address will be used. The combination of attached data network and slice defines the network scope of the IP address. The slice must be in the same location as the SIM.
 func (o SimStaticIpPropertiesResponseOutput) Slice() SliceResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v SimStaticIpPropertiesResponse) *SliceResourceIdResponse { return v.Slice }).(SliceResourceIdResponsePtrOutput)
 }
@@ -6463,13 +7080,159 @@ func (o SimStaticIpPropertiesStaticIpPtrOutput) Ipv4Address() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a site resource.
+type SiteResourceId struct {
+	// Site resource ID.
+	Id string `pulumi:"id"`
+}
+
+// SiteResourceIdInput is an input type that accepts SiteResourceIdArgs and SiteResourceIdOutput values.
+// You can construct a concrete instance of `SiteResourceIdInput` via:
+//
+//	SiteResourceIdArgs{...}
+type SiteResourceIdInput interface {
+	pulumi.Input
+
+	ToSiteResourceIdOutput() SiteResourceIdOutput
+	ToSiteResourceIdOutputWithContext(context.Context) SiteResourceIdOutput
+}
+
+// Reference to a site resource.
+type SiteResourceIdArgs struct {
+	// Site resource ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (SiteResourceIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteResourceId)(nil)).Elem()
+}
+
+func (i SiteResourceIdArgs) ToSiteResourceIdOutput() SiteResourceIdOutput {
+	return i.ToSiteResourceIdOutputWithContext(context.Background())
+}
+
+func (i SiteResourceIdArgs) ToSiteResourceIdOutputWithContext(ctx context.Context) SiteResourceIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteResourceIdOutput)
+}
+
+// SiteResourceIdArrayInput is an input type that accepts SiteResourceIdArray and SiteResourceIdArrayOutput values.
+// You can construct a concrete instance of `SiteResourceIdArrayInput` via:
+//
+//	SiteResourceIdArray{ SiteResourceIdArgs{...} }
+type SiteResourceIdArrayInput interface {
+	pulumi.Input
+
+	ToSiteResourceIdArrayOutput() SiteResourceIdArrayOutput
+	ToSiteResourceIdArrayOutputWithContext(context.Context) SiteResourceIdArrayOutput
+}
+
+type SiteResourceIdArray []SiteResourceIdInput
+
+func (SiteResourceIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteResourceId)(nil)).Elem()
+}
+
+func (i SiteResourceIdArray) ToSiteResourceIdArrayOutput() SiteResourceIdArrayOutput {
+	return i.ToSiteResourceIdArrayOutputWithContext(context.Background())
+}
+
+func (i SiteResourceIdArray) ToSiteResourceIdArrayOutputWithContext(ctx context.Context) SiteResourceIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteResourceIdArrayOutput)
+}
+
+// Reference to a site resource.
+type SiteResourceIdOutput struct{ *pulumi.OutputState }
+
+func (SiteResourceIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteResourceId)(nil)).Elem()
+}
+
+func (o SiteResourceIdOutput) ToSiteResourceIdOutput() SiteResourceIdOutput {
+	return o
+}
+
+func (o SiteResourceIdOutput) ToSiteResourceIdOutputWithContext(ctx context.Context) SiteResourceIdOutput {
+	return o
+}
+
+// Site resource ID.
+func (o SiteResourceIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteResourceId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type SiteResourceIdArrayOutput struct{ *pulumi.OutputState }
+
+func (SiteResourceIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteResourceId)(nil)).Elem()
+}
+
+func (o SiteResourceIdArrayOutput) ToSiteResourceIdArrayOutput() SiteResourceIdArrayOutput {
+	return o
+}
+
+func (o SiteResourceIdArrayOutput) ToSiteResourceIdArrayOutputWithContext(ctx context.Context) SiteResourceIdArrayOutput {
+	return o
+}
+
+func (o SiteResourceIdArrayOutput) Index(i pulumi.IntInput) SiteResourceIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteResourceId {
+		return vs[0].([]SiteResourceId)[vs[1].(int)]
+	}).(SiteResourceIdOutput)
+}
+
+// Reference to a site resource.
+type SiteResourceIdResponse struct {
+	// Site resource ID.
+	Id string `pulumi:"id"`
+}
+
+// Reference to a site resource.
+type SiteResourceIdResponseOutput struct{ *pulumi.OutputState }
+
+func (SiteResourceIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteResourceIdResponse)(nil)).Elem()
+}
+
+func (o SiteResourceIdResponseOutput) ToSiteResourceIdResponseOutput() SiteResourceIdResponseOutput {
+	return o
+}
+
+func (o SiteResourceIdResponseOutput) ToSiteResourceIdResponseOutputWithContext(ctx context.Context) SiteResourceIdResponseOutput {
+	return o
+}
+
+// Site resource ID.
+func (o SiteResourceIdResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type SiteResourceIdResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SiteResourceIdResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteResourceIdResponse)(nil)).Elem()
+}
+
+func (o SiteResourceIdResponseArrayOutput) ToSiteResourceIdResponseArrayOutput() SiteResourceIdResponseArrayOutput {
+	return o
+}
+
+func (o SiteResourceIdResponseArrayOutput) ToSiteResourceIdResponseArrayOutputWithContext(ctx context.Context) SiteResourceIdResponseArrayOutput {
+	return o
+}
+
+func (o SiteResourceIdResponseArrayOutput) Index(i pulumi.IntInput) SiteResourceIdResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteResourceIdResponse {
+		return vs[0].([]SiteResourceIdResponse)[vs[1].(int)]
+	}).(SiteResourceIdResponseOutput)
+}
+
 // Per-slice settings
 type SliceConfiguration struct {
 	// The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
 	DataNetworkConfigurations []DataNetworkConfiguration `pulumi:"dataNetworkConfigurations"`
-	// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map.
+	// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map. The data network must be in the same location as the SIM policy.
 	DefaultDataNetwork DataNetworkResourceId `pulumi:"defaultDataNetwork"`
-	// A reference to the slice that these settings apply to
+	// A reference to the slice that these settings apply to. The slice must be in the same location as the SIM policy.
 	Slice SliceResourceId `pulumi:"slice"`
 }
 
@@ -6488,9 +7251,9 @@ type SliceConfigurationInput interface {
 type SliceConfigurationArgs struct {
 	// The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
 	DataNetworkConfigurations DataNetworkConfigurationArrayInput `pulumi:"dataNetworkConfigurations"`
-	// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map.
+	// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map. The data network must be in the same location as the SIM policy.
 	DefaultDataNetwork DataNetworkResourceIdInput `pulumi:"defaultDataNetwork"`
-	// A reference to the slice that these settings apply to
+	// A reference to the slice that these settings apply to. The slice must be in the same location as the SIM policy.
 	Slice SliceResourceIdInput `pulumi:"slice"`
 }
 
@@ -6551,12 +7314,12 @@ func (o SliceConfigurationOutput) DataNetworkConfigurations() DataNetworkConfigu
 	return o.ApplyT(func(v SliceConfiguration) []DataNetworkConfiguration { return v.DataNetworkConfigurations }).(DataNetworkConfigurationArrayOutput)
 }
 
-// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map.
+// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map. The data network must be in the same location as the SIM policy.
 func (o SliceConfigurationOutput) DefaultDataNetwork() DataNetworkResourceIdOutput {
 	return o.ApplyT(func(v SliceConfiguration) DataNetworkResourceId { return v.DefaultDataNetwork }).(DataNetworkResourceIdOutput)
 }
 
-// A reference to the slice that these settings apply to
+// A reference to the slice that these settings apply to. The slice must be in the same location as the SIM policy.
 func (o SliceConfigurationOutput) Slice() SliceResourceIdOutput {
 	return o.ApplyT(func(v SliceConfiguration) SliceResourceId { return v.Slice }).(SliceResourceIdOutput)
 }
@@ -6585,9 +7348,9 @@ func (o SliceConfigurationArrayOutput) Index(i pulumi.IntInput) SliceConfigurati
 type SliceConfigurationResponse struct {
 	// The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
 	DataNetworkConfigurations []DataNetworkConfigurationResponse `pulumi:"dataNetworkConfigurations"`
-	// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map.
+	// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map. The data network must be in the same location as the SIM policy.
 	DefaultDataNetwork DataNetworkResourceIdResponse `pulumi:"defaultDataNetwork"`
-	// A reference to the slice that these settings apply to
+	// A reference to the slice that these settings apply to. The slice must be in the same location as the SIM policy.
 	Slice SliceResourceIdResponse `pulumi:"slice"`
 }
 
@@ -6613,12 +7376,12 @@ func (o SliceConfigurationResponseOutput) DataNetworkConfigurations() DataNetwor
 	}).(DataNetworkConfigurationResponseArrayOutput)
 }
 
-// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map.
+// The default data network to use if the UE does not explicitly specify it. Configuration for this object must exist in the `dataNetworkConfigurations` map. The data network must be in the same location as the SIM policy.
 func (o SliceConfigurationResponseOutput) DefaultDataNetwork() DataNetworkResourceIdResponseOutput {
 	return o.ApplyT(func(v SliceConfigurationResponse) DataNetworkResourceIdResponse { return v.DefaultDataNetwork }).(DataNetworkResourceIdResponseOutput)
 }
 
-// A reference to the slice that these settings apply to
+// A reference to the slice that these settings apply to. The slice must be in the same location as the SIM policy.
 func (o SliceConfigurationResponseOutput) Slice() SliceResourceIdResponseOutput {
 	return o.ApplyT(func(v SliceConfigurationResponse) SliceResourceIdResponse { return v.Slice }).(SliceResourceIdResponseOutput)
 }
@@ -6941,115 +7704,6 @@ func (o SnssaiResponseOutput) Sst() pulumi.IntOutput {
 }
 
 // Reference to another sub resource.
-type SubResource struct {
-	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
-	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
-	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
-	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
-	Id string `pulumi:"id"`
-}
-
-// SubResourceInput is an input type that accepts SubResourceArgs and SubResourceOutput values.
-// You can construct a concrete instance of `SubResourceInput` via:
-//
-//	SubResourceArgs{...}
-type SubResourceInput interface {
-	pulumi.Input
-
-	ToSubResourceOutput() SubResourceOutput
-	ToSubResourceOutputWithContext(context.Context) SubResourceOutput
-}
-
-// Reference to another sub resource.
-type SubResourceArgs struct {
-	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
-	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
-	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
-	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (SubResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubResource)(nil)).Elem()
-}
-
-func (i SubResourceArgs) ToSubResourceOutput() SubResourceOutput {
-	return i.ToSubResourceOutputWithContext(context.Background())
-}
-
-func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) SubResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
-}
-
-// SubResourceArrayInput is an input type that accepts SubResourceArray and SubResourceArrayOutput values.
-// You can construct a concrete instance of `SubResourceArrayInput` via:
-//
-//	SubResourceArray{ SubResourceArgs{...} }
-type SubResourceArrayInput interface {
-	pulumi.Input
-
-	ToSubResourceArrayOutput() SubResourceArrayOutput
-	ToSubResourceArrayOutputWithContext(context.Context) SubResourceArrayOutput
-}
-
-type SubResourceArray []SubResourceInput
-
-func (SubResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubResource)(nil)).Elem()
-}
-
-func (i SubResourceArray) ToSubResourceArrayOutput() SubResourceArrayOutput {
-	return i.ToSubResourceArrayOutputWithContext(context.Background())
-}
-
-func (i SubResourceArray) ToSubResourceArrayOutputWithContext(ctx context.Context) SubResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubResourceArrayOutput)
-}
-
-// Reference to another sub resource.
-type SubResourceOutput struct{ *pulumi.OutputState }
-
-func (SubResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubResource)(nil)).Elem()
-}
-
-func (o SubResourceOutput) ToSubResourceOutput() SubResourceOutput {
-	return o
-}
-
-func (o SubResourceOutput) ToSubResourceOutputWithContext(ctx context.Context) SubResourceOutput {
-	return o
-}
-
-// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
-// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
-// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
-// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
-func (o SubResourceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v SubResource) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type SubResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (SubResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubResource)(nil)).Elem()
-}
-
-func (o SubResourceArrayOutput) ToSubResourceArrayOutput() SubResourceArrayOutput {
-	return o
-}
-
-func (o SubResourceArrayOutput) ToSubResourceArrayOutputWithContext(ctx context.Context) SubResourceArrayOutput {
-	return o
-}
-
-func (o SubResourceArrayOutput) Index(i pulumi.IntInput) SubResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubResource {
-		return vs[0].([]SubResource)[vs[1].(int)]
-	}).(SubResourceOutput)
-}
-
-// Reference to another sub resource.
 type SubResourceResponse struct {
 	// Resource ID.
 	Id string `pulumi:"id"`
@@ -7214,6 +7868,8 @@ func init() {
 	pulumi.RegisterOutputType(AmbrPtrOutput{})
 	pulumi.RegisterOutputType(AmbrResponseOutput{})
 	pulumi.RegisterOutputType(AmbrResponsePtrOutput{})
+	pulumi.RegisterOutputType(AsyncOperationIdResponseOutput{})
+	pulumi.RegisterOutputType(AsyncOperationIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(AttachedDataNetworkResourceIdOutput{})
 	pulumi.RegisterOutputType(AttachedDataNetworkResourceIdPtrOutput{})
 	pulumi.RegisterOutputType(AttachedDataNetworkResourceIdResponseOutput{})
@@ -7222,6 +7878,13 @@ func init() {
 	pulumi.RegisterOutputType(AzureStackEdgeDeviceResourceIdPtrOutput{})
 	pulumi.RegisterOutputType(AzureStackEdgeDeviceResourceIdResponseOutput{})
 	pulumi.RegisterOutputType(AzureStackEdgeDeviceResourceIdResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureStackEdgeDeviceResourceIdResponseArrayOutput{})
+	pulumi.RegisterOutputType(AzureStackHCIClusterResourceIdOutput{})
+	pulumi.RegisterOutputType(AzureStackHCIClusterResourceIdPtrOutput{})
+	pulumi.RegisterOutputType(AzureStackHCIClusterResourceIdResponseOutput{})
+	pulumi.RegisterOutputType(AzureStackHCIClusterResourceIdResponsePtrOutput{})
+	pulumi.RegisterOutputType(CertificateProvisioningResponseOutput{})
+	pulumi.RegisterOutputType(CertificateProvisioningResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectedClusterResourceIdOutput{})
 	pulumi.RegisterOutputType(ConnectedClusterResourceIdPtrOutput{})
 	pulumi.RegisterOutputType(ConnectedClusterResourceIdResponseOutput{})
@@ -7236,20 +7899,26 @@ func init() {
 	pulumi.RegisterOutputType(DataNetworkConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(DataNetworkResourceIdOutput{})
 	pulumi.RegisterOutputType(DataNetworkResourceIdResponseOutput{})
+	pulumi.RegisterOutputType(DiagnosticsUploadConfigurationOutput{})
+	pulumi.RegisterOutputType(DiagnosticsUploadConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DiagnosticsUploadConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DiagnosticsUploadConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(HttpsServerCertificateOutput{})
+	pulumi.RegisterOutputType(HttpsServerCertificatePtrOutput{})
+	pulumi.RegisterOutputType(HttpsServerCertificateResponseOutput{})
+	pulumi.RegisterOutputType(HttpsServerCertificateResponsePtrOutput{})
+	pulumi.RegisterOutputType(InstallationOutput{})
+	pulumi.RegisterOutputType(InstallationPtrOutput{})
+	pulumi.RegisterOutputType(InstallationResponseOutput{})
+	pulumi.RegisterOutputType(InstallationResponsePtrOutput{})
 	pulumi.RegisterOutputType(InterfacePropertiesOutput{})
 	pulumi.RegisterOutputType(InterfacePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(KeyVaultCertificateOutput{})
-	pulumi.RegisterOutputType(KeyVaultCertificatePtrOutput{})
-	pulumi.RegisterOutputType(KeyVaultCertificateResponseOutput{})
-	pulumi.RegisterOutputType(KeyVaultCertificateResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyResponseOutput{})
 	pulumi.RegisterOutputType(KeyVaultKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(LocalDiagnosticsAccessConfigurationOutput{})
-	pulumi.RegisterOutputType(LocalDiagnosticsAccessConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(LocalDiagnosticsAccessConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(LocalDiagnosticsAccessConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
@@ -7275,9 +7944,7 @@ func init() {
 	pulumi.RegisterOutputType(PinholeTimeoutsResponseOutput{})
 	pulumi.RegisterOutputType(PinholeTimeoutsResponsePtrOutput{})
 	pulumi.RegisterOutputType(PlatformConfigurationOutput{})
-	pulumi.RegisterOutputType(PlatformConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(PlatformConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(PlatformConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PlmnIdOutput{})
 	pulumi.RegisterOutputType(PlmnIdResponseOutput{})
 	pulumi.RegisterOutputType(PortRangeOutput{})
@@ -7312,6 +7979,10 @@ func init() {
 	pulumi.RegisterOutputType(SimStaticIpPropertiesResponseStaticIpPtrOutput{})
 	pulumi.RegisterOutputType(SimStaticIpPropertiesStaticIpOutput{})
 	pulumi.RegisterOutputType(SimStaticIpPropertiesStaticIpPtrOutput{})
+	pulumi.RegisterOutputType(SiteResourceIdOutput{})
+	pulumi.RegisterOutputType(SiteResourceIdArrayOutput{})
+	pulumi.RegisterOutputType(SiteResourceIdResponseOutput{})
+	pulumi.RegisterOutputType(SiteResourceIdResponseArrayOutput{})
 	pulumi.RegisterOutputType(SliceConfigurationOutput{})
 	pulumi.RegisterOutputType(SliceConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(SliceConfigurationResponseOutput{})
@@ -7322,8 +7993,6 @@ func init() {
 	pulumi.RegisterOutputType(SliceResourceIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(SnssaiOutput{})
 	pulumi.RegisterOutputType(SnssaiResponseOutput{})
-	pulumi.RegisterOutputType(SubResourceOutput{})
-	pulumi.RegisterOutputType(SubResourceArrayOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})

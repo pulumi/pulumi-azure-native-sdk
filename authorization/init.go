@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +59,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScopeAccessReviewHistoryDefinitionById{}
 	case "azure-native:authorization:ScopeAccessReviewScheduleDefinitionById":
 		r = &ScopeAccessReviewScheduleDefinitionById{}
+	case "azure-native:authorization:Variable":
+		r = &Variable{}
+	case "azure-native:authorization:VariableAtManagementGroup":
+		r = &VariableAtManagementGroup{}
+	case "azure-native:authorization:VariableValue":
+		r = &VariableValue{}
+	case "azure-native:authorization:VariableValueAtManagementGroup":
+		r = &VariableValueAtManagementGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

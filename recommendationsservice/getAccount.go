@@ -11,7 +11,7 @@ import (
 )
 
 // Returns RecommendationsService Account resource for a given name.
-// API Version: 2022-02-01.
+// Azure REST API version: 2022-02-01.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:recommendationsservice:getAccount", args, &rv, opts...)

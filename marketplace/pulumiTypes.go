@@ -320,6 +320,55 @@ func (o PlanResponseArrayOutput) Index(i pulumi.IntInput) PlanResponseOutput {
 	}).(PlanResponseOutput)
 }
 
+type RuleResponse struct {
+	// Rule type
+	Type  *string  `pulumi:"type"`
+	Value []string `pulumi:"value"`
+}
+
+type RuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleResponse)(nil)).Elem()
+}
+
+func (o RuleResponseOutput) ToRuleResponseOutput() RuleResponseOutput {
+	return o
+}
+
+func (o RuleResponseOutput) ToRuleResponseOutputWithContext(ctx context.Context) RuleResponseOutput {
+	return o
+}
+
+// Rule type
+func (o RuleResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o RuleResponseOutput) Value() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleResponse) []string { return v.Value }).(pulumi.StringArrayOutput)
+}
+
+type RuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleResponse)(nil)).Elem()
+}
+
+func (o RuleResponseArrayOutput) ToRuleResponseArrayOutput() RuleResponseArrayOutput {
+	return o
+}
+
+func (o RuleResponseArrayOutput) ToRuleResponseArrayOutputWithContext(ctx context.Context) RuleResponseArrayOutput {
+	return o
+}
+
+func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleResponse {
+		return vs[0].([]RuleResponse)[vs[1].(int)]
+	}).(RuleResponseOutput)
+}
+
 // List of stop sell offers and plans notifications.
 type StopSellOffersPlansNotificationsListPropertiesResponse struct {
 	// The offer display name
@@ -487,6 +536,8 @@ func init() {
 	pulumi.RegisterOutputType(PlanNotificationDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(PlanResponseOutput{})
 	pulumi.RegisterOutputType(PlanResponseArrayOutput{})
+	pulumi.RegisterOutputType(RuleResponseOutput{})
+	pulumi.RegisterOutputType(RuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(StopSellOffersPlansNotificationsListPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StopSellOffersPlansNotificationsListPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})

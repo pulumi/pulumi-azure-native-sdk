@@ -12,15 +12,19 @@ import (
 )
 
 // Description of a namespace authorization rule.
-// API Version: 2017-04-01.
+// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01
 type QueueAuthorizationRule struct {
 	pulumi.CustomResourceState
 
-	// Resource name
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The rights associated with the rule.
 	Rights pulumi.StringArrayOutput `pulumi:"rights"`
-	// Resource type
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -114,7 +118,7 @@ type queueAuthorizationRuleArgs struct {
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The rights associated with the rule.
-	Rights []AccessRights `pulumi:"rights"`
+	Rights []string `pulumi:"rights"`
 }
 
 // The set of arguments for constructing a QueueAuthorizationRule resource.
@@ -128,7 +132,7 @@ type QueueAuthorizationRuleArgs struct {
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// The rights associated with the rule.
-	Rights AccessRightsArrayInput
+	Rights pulumi.StringArrayInput
 }
 
 func (QueueAuthorizationRuleArgs) ElementType() reflect.Type {
@@ -168,7 +172,12 @@ func (o QueueAuthorizationRuleOutput) ToQueueAuthorizationRuleOutputWithContext(
 	return o
 }
 
-// Resource name
+// The geo-location where the resource lives
+func (o QueueAuthorizationRuleOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o QueueAuthorizationRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -178,7 +187,12 @@ func (o QueueAuthorizationRuleOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringArrayOutput { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
-// Resource type
+// The system meta data relating to this resource.
+func (o QueueAuthorizationRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *QueueAuthorizationRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o QueueAuthorizationRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

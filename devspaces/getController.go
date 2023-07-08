@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties for an Azure Dev Spaces Controller.
-// API Version: 2019-04-01.
+// Azure REST API version: 2019-04-01.
 func LookupController(ctx *pulumi.Context, args *LookupControllerArgs, opts ...pulumi.InvokeOption) (*LookupControllerResult, error) {
 	var rv LookupControllerResult
 	err := ctx.Invoke("azure-native:devspaces:getController", args, &rv, opts...)

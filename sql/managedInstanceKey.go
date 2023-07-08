@@ -12,7 +12,7 @@ import (
 )
 
 // A managed instance key.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type ManagedInstanceKey struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +82,9 @@ func NewManagedInstanceKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedInstanceKey"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedInstanceKey"),
 		},
 	})
 	opts = append(opts, aliases)

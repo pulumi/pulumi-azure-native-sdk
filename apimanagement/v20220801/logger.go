@@ -12,8 +12,6 @@ import (
 )
 
 // Logger details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Logger is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Logger to guarantee forwards compatibility.
 type Logger struct {
 	pulumi.CustomResourceState
 
@@ -98,6 +96,12 @@ func NewLogger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Logger"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Logger"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Logger"),
 		},
 	})
 	opts = append(opts, aliases)

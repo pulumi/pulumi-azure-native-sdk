@@ -12,8 +12,6 @@ import (
 )
 
 // Global Schema Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:GlobalSchema is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GlobalSchema to guarantee forwards compatibility.
 type GlobalSchema struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +58,12 @@ func NewGlobalSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:GlobalSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GlobalSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:GlobalSchema"),
 		},
 	})
 	opts = append(opts, aliases)

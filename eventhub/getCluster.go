@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the resource description of the specified Event Hubs Cluster.
-// API Version: 2018-01-01-preview.
+// Azure REST API version: 2022-10-01-preview.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("azure-native:eventhub:getCluster", args, &rv, opts...)
@@ -44,6 +44,10 @@ type LookupClusterResult struct {
 	Sku *ClusterSkuResponse `pulumi:"sku"`
 	// Status of the Cluster resource
 	Status string `pulumi:"status"`
+	// A value that indicates whether Scaling is Supported.
+	SupportsScaling *bool `pulumi:"supportsScaling"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -124,6 +128,16 @@ func (o LookupClusterResultOutput) Sku() ClusterSkuResponsePtrOutput {
 // Status of the Cluster resource
 func (o LookupClusterResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A value that indicates whether Scaling is Supported.
+func (o LookupClusterResultOutput) SupportsScaling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *bool { return v.SupportsScaling }).(pulumi.BoolPtrOutput)
+}
+
+// The system meta data relating to this resource.
+func (o LookupClusterResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

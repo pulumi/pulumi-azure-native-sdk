@@ -50,7 +50,16 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForEDMUpload"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance:PrivateLinkServicesForEDMUpload"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForEDMUpload"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForEDMUpload"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForEDMUpload"),
@@ -58,7 +67,7 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForEDMUpload
-	err := ctx.RegisterResource("azure-native:securityandcompliance/v20210308:privateLinkServicesForEDMUpload", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForEDMUpload", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +79,7 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 func GetPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForEDMUploadState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForEDMUpload, error) {
 	var resource PrivateLinkServicesForEDMUpload
-	err := ctx.ReadResource("azure-native:securityandcompliance/v20210308:privateLinkServicesForEDMUpload", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForEDMUpload", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

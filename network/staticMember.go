@@ -12,7 +12,7 @@ import (
 )
 
 // StaticMember Item.
-// API Version: 2022-02-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-02-01-preview
 type StaticMember struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +20,10 @@ type StaticMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The provisioning state of the scope assignment resource.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Resource region.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// Resource Id.
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// The system metadata related to this resource.
@@ -65,6 +69,12 @@ func NewStaticMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:StaticMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:StaticMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:StaticMember"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -171,6 +181,16 @@ func (o StaticMemberOutput) Etag() pulumi.StringOutput {
 // Resource name.
 func (o StaticMemberOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticMember) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the scope assignment resource.
+func (o StaticMemberOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticMember) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Resource region.
+func (o StaticMemberOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Resource Id.

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the GraphQL API Resolver specified by its identifier.
-//
-// Deprecated: azure-native:apimanagement/v20220801:GraphQLApiResolver is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GraphQLApiResolver to guarantee forwards compatibility.
 func LookupGraphQLApiResolver(ctx *pulumi.Context, args *LookupGraphQLApiResolverArgs, opts ...pulumi.InvokeOption) (*LookupGraphQLApiResolverResult, error) {
 	var rv LookupGraphQLApiResolverResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getGraphQLApiResolver", args, &rv, opts...)

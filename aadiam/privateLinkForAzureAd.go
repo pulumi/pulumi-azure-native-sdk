@@ -12,7 +12,7 @@ import (
 )
 
 // PrivateLink Policy configuration object.
-// API Version: 2020-03-01.
+// Azure REST API version: 2020-03-01. Prior API version in Azure Native 1.x: 2020-03-01
 type PrivateLinkForAzureAd struct {
 	pulumi.CustomResourceState
 
@@ -48,7 +48,16 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:aadiam:privateLinkForAzureAd"),
+		},
+		{
+			Type: pulumi.String("azure-native:aadiam/v20200301:PrivateLinkForAzureAd"),
+		},
+		{
 			Type: pulumi.String("azure-native:aadiam/v20200301:privateLinkForAzureAd"),
+		},
+		{
+			Type: pulumi.String("azure-native:aadiam/v20200301preview:PrivateLinkForAzureAd"),
 		},
 		{
 			Type: pulumi.String("azure-native:aadiam/v20200301preview:privateLinkForAzureAd"),
@@ -56,7 +65,7 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkForAzureAd
-	err := ctx.RegisterResource("azure-native:aadiam:privateLinkForAzureAd", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:aadiam:PrivateLinkForAzureAd", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +77,7 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 func GetPrivateLinkForAzureAd(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkForAzureAdState, opts ...pulumi.ResourceOption) (*PrivateLinkForAzureAd, error) {
 	var resource PrivateLinkForAzureAd
-	err := ctx.ReadResource("azure-native:aadiam:privateLinkForAzureAd", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:aadiam:PrivateLinkForAzureAd", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

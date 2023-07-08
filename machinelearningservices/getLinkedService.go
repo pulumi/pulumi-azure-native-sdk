@@ -11,7 +11,7 @@ import (
 )
 
 // Get the detail of a linked service.
-// API Version: 2020-09-01-preview.
+// Azure REST API version: 2020-09-01-preview.
 func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServiceResult, error) {
 	var rv LookupLinkedServiceResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getLinkedService", args, &rv, opts...)

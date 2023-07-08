@@ -11,7 +11,7 @@ import (
 )
 
 // List Both of the 2 Keys of a Remote Rendering Account
-// API Version: 2021-01-01.
+// Azure REST API version: 2021-01-01.
 func ListRemoteRenderingAccountKeys(ctx *pulumi.Context, args *ListRemoteRenderingAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListRemoteRenderingAccountKeysResult, error) {
 	var rv ListRemoteRenderingAccountKeysResult
 	err := ctx.Invoke("azure-native:mixedreality:listRemoteRenderingAccountKeys", args, &rv, opts...)

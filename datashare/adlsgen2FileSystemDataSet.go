@@ -12,7 +12,7 @@ import (
 )
 
 // An ADLS Gen 2 file system data set.
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01. Prior API version in Azure Native 1.x: 2020-09-01
 type ADLSGen2FileSystemDataSet struct {
 	pulumi.CustomResourceState
 

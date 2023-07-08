@@ -12,7 +12,7 @@ import (
 )
 
 // Defines web application firewall policy for Azure CDN.
-// API Version: 2020-09-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01
 type Policy struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type Policy struct {
 	EndpointLinks CdnEndpointResponseArrayOutput `pulumi:"endpointLinks"`
 	// Gets a unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
+	// Key-Value pair representing additional properties for Web Application Firewall policy.
+	ExtendedProperties pulumi.StringMapOutput `pulumi:"extendedProperties"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Describes managed rules inside the policy.
@@ -83,6 +85,9 @@ func NewPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20221101preview:Policy"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230501:Policy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Policy
@@ -119,6 +124,8 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// Describes custom rules inside the policy.
 	CustomRules *CustomRuleList `pulumi:"customRules"`
+	// Key-Value pair representing additional properties for Web Application Firewall policy.
+	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// Describes managed rules inside the policy.
@@ -141,6 +148,8 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// Describes custom rules inside the policy.
 	CustomRules CustomRuleListPtrInput
+	// Key-Value pair representing additional properties for Web Application Firewall policy.
+	ExtendedProperties pulumi.StringMapInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// Describes managed rules inside the policy.
@@ -209,6 +218,11 @@ func (o PolicyOutput) EndpointLinks() CdnEndpointResponseArrayOutput {
 // Gets a unique read-only string that changes whenever the resource is updated.
 func (o PolicyOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Key-Value pair representing additional properties for Web Application Firewall policy.
+func (o PolicyOutput) ExtendedProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringMapOutput { return v.ExtendedProperties }).(pulumi.StringMapOutput)
 }
 
 // Resource location.

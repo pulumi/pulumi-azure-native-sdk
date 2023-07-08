@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Virtual Instance for SAP solutions resource
-// API Version: 2021-12-01-preview.
+// Azure REST API version: 2023-04-01.
 func LookupSAPVirtualInstance(ctx *pulumi.Context, args *LookupSAPVirtualInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPVirtualInstanceResult, error) {
 	var rv LookupSAPVirtualInstanceResult
 	err := ctx.Invoke("azure-native:workloads:getSAPVirtualInstance", args, &rv, opts...)
@@ -40,7 +40,7 @@ type LookupSAPVirtualInstanceResult struct {
 	Health string `pulumi:"health"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Managed service identity (user assigned identities)
+	// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 	Identity *UserAssignedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -128,7 +128,7 @@ func (o LookupSAPVirtualInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSAPVirtualInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Managed service identity (user assigned identities)
+// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 func (o LookupSAPVirtualInstanceResultOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupSAPVirtualInstanceResult) *UserAssignedServiceIdentityResponse { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
 }

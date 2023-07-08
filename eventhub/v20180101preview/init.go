@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,28 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:eventhub/v20180101preview:Cluster":
-		r = &Cluster{}
-	case "azure-native:eventhub/v20180101preview:ConsumerGroup":
-		r = &ConsumerGroup{}
-	case "azure-native:eventhub/v20180101preview:DisasterRecoveryConfig":
-		r = &DisasterRecoveryConfig{}
-	case "azure-native:eventhub/v20180101preview:EventHub":
-		r = &EventHub{}
-	case "azure-native:eventhub/v20180101preview:EventHubAuthorizationRule":
-		r = &EventHubAuthorizationRule{}
-	case "azure-native:eventhub/v20180101preview:Namespace":
-		r = &Namespace{}
-	case "azure-native:eventhub/v20180101preview:NamespaceAuthorizationRule":
-		r = &NamespaceAuthorizationRule{}
 	case "azure-native:eventhub/v20180101preview:NamespaceIpFilterRule":
 		r = &NamespaceIpFilterRule{}
-	case "azure-native:eventhub/v20180101preview:NamespaceNetworkRuleSet":
-		r = &NamespaceNetworkRuleSet{}
 	case "azure-native:eventhub/v20180101preview:NamespaceVirtualNetworkRule":
 		r = &NamespaceVirtualNetworkRule{}
-	case "azure-native:eventhub/v20180101preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

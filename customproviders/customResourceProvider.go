@@ -12,7 +12,7 @@ import (
 )
 
 // A manifest file that defines the custom resource provider resources.
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview
 type CustomResourceProvider struct {
 	pulumi.CustomResourceState
 

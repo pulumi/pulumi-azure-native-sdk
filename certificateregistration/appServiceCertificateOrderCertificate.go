@@ -12,7 +12,7 @@ import (
 )
 
 // Key Vault container ARM resource for a certificate that is purchased through Azure.
-// API Version: 2020-10-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01
 type AppServiceCertificateOrderCertificate struct {
 	pulumi.CustomResourceState
 
@@ -28,8 +28,6 @@ type AppServiceCertificateOrderCertificate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Status of the Key Vault secret.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
@@ -226,11 +224,6 @@ func (o AppServiceCertificateOrderCertificateOutput) Name() pulumi.StringOutput 
 // Status of the Key Vault secret.
 func (o AppServiceCertificateOrderCertificateOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppServiceCertificateOrderCertificate) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The system metadata relating to this resource.
-func (o AppServiceCertificateOrderCertificateOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AppServiceCertificateOrderCertificate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

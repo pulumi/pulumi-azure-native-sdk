@@ -10,6 +10,168 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Additional Configuration details.
+type AdditionalConfiguration struct {
+	// Hierarchy of the product which uniquely identifies the configuration.
+	HierarchyInformation HierarchyInformation `pulumi:"hierarchyInformation"`
+	// Quantity of the product.
+	Quantity int `pulumi:"quantity"`
+}
+
+// AdditionalConfigurationInput is an input type that accepts AdditionalConfigurationArgs and AdditionalConfigurationOutput values.
+// You can construct a concrete instance of `AdditionalConfigurationInput` via:
+//
+//	AdditionalConfigurationArgs{...}
+type AdditionalConfigurationInput interface {
+	pulumi.Input
+
+	ToAdditionalConfigurationOutput() AdditionalConfigurationOutput
+	ToAdditionalConfigurationOutputWithContext(context.Context) AdditionalConfigurationOutput
+}
+
+// Additional Configuration details.
+type AdditionalConfigurationArgs struct {
+	// Hierarchy of the product which uniquely identifies the configuration.
+	HierarchyInformation HierarchyInformationInput `pulumi:"hierarchyInformation"`
+	// Quantity of the product.
+	Quantity pulumi.IntInput `pulumi:"quantity"`
+}
+
+func (AdditionalConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalConfiguration)(nil)).Elem()
+}
+
+func (i AdditionalConfigurationArgs) ToAdditionalConfigurationOutput() AdditionalConfigurationOutput {
+	return i.ToAdditionalConfigurationOutputWithContext(context.Background())
+}
+
+func (i AdditionalConfigurationArgs) ToAdditionalConfigurationOutputWithContext(ctx context.Context) AdditionalConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalConfigurationOutput)
+}
+
+// AdditionalConfigurationArrayInput is an input type that accepts AdditionalConfigurationArray and AdditionalConfigurationArrayOutput values.
+// You can construct a concrete instance of `AdditionalConfigurationArrayInput` via:
+//
+//	AdditionalConfigurationArray{ AdditionalConfigurationArgs{...} }
+type AdditionalConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToAdditionalConfigurationArrayOutput() AdditionalConfigurationArrayOutput
+	ToAdditionalConfigurationArrayOutputWithContext(context.Context) AdditionalConfigurationArrayOutput
+}
+
+type AdditionalConfigurationArray []AdditionalConfigurationInput
+
+func (AdditionalConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalConfiguration)(nil)).Elem()
+}
+
+func (i AdditionalConfigurationArray) ToAdditionalConfigurationArrayOutput() AdditionalConfigurationArrayOutput {
+	return i.ToAdditionalConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i AdditionalConfigurationArray) ToAdditionalConfigurationArrayOutputWithContext(ctx context.Context) AdditionalConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalConfigurationArrayOutput)
+}
+
+// Additional Configuration details.
+type AdditionalConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AdditionalConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalConfiguration)(nil)).Elem()
+}
+
+func (o AdditionalConfigurationOutput) ToAdditionalConfigurationOutput() AdditionalConfigurationOutput {
+	return o
+}
+
+func (o AdditionalConfigurationOutput) ToAdditionalConfigurationOutputWithContext(ctx context.Context) AdditionalConfigurationOutput {
+	return o
+}
+
+// Hierarchy of the product which uniquely identifies the configuration.
+func (o AdditionalConfigurationOutput) HierarchyInformation() HierarchyInformationOutput {
+	return o.ApplyT(func(v AdditionalConfiguration) HierarchyInformation { return v.HierarchyInformation }).(HierarchyInformationOutput)
+}
+
+// Quantity of the product.
+func (o AdditionalConfigurationOutput) Quantity() pulumi.IntOutput {
+	return o.ApplyT(func(v AdditionalConfiguration) int { return v.Quantity }).(pulumi.IntOutput)
+}
+
+type AdditionalConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (AdditionalConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalConfiguration)(nil)).Elem()
+}
+
+func (o AdditionalConfigurationArrayOutput) ToAdditionalConfigurationArrayOutput() AdditionalConfigurationArrayOutput {
+	return o
+}
+
+func (o AdditionalConfigurationArrayOutput) ToAdditionalConfigurationArrayOutputWithContext(ctx context.Context) AdditionalConfigurationArrayOutput {
+	return o
+}
+
+func (o AdditionalConfigurationArrayOutput) Index(i pulumi.IntInput) AdditionalConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdditionalConfiguration {
+		return vs[0].([]AdditionalConfiguration)[vs[1].(int)]
+	}).(AdditionalConfigurationOutput)
+}
+
+// Additional Configuration details.
+type AdditionalConfigurationResponse struct {
+	// Hierarchy of the product which uniquely identifies the configuration.
+	HierarchyInformation HierarchyInformationResponse `pulumi:"hierarchyInformation"`
+	// Quantity of the product.
+	Quantity int `pulumi:"quantity"`
+}
+
+// Additional Configuration details.
+type AdditionalConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AdditionalConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalConfigurationResponse)(nil)).Elem()
+}
+
+func (o AdditionalConfigurationResponseOutput) ToAdditionalConfigurationResponseOutput() AdditionalConfigurationResponseOutput {
+	return o
+}
+
+func (o AdditionalConfigurationResponseOutput) ToAdditionalConfigurationResponseOutputWithContext(ctx context.Context) AdditionalConfigurationResponseOutput {
+	return o
+}
+
+// Hierarchy of the product which uniquely identifies the configuration.
+func (o AdditionalConfigurationResponseOutput) HierarchyInformation() HierarchyInformationResponseOutput {
+	return o.ApplyT(func(v AdditionalConfigurationResponse) HierarchyInformationResponse { return v.HierarchyInformation }).(HierarchyInformationResponseOutput)
+}
+
+// Quantity of the product.
+func (o AdditionalConfigurationResponseOutput) Quantity() pulumi.IntOutput {
+	return o.ApplyT(func(v AdditionalConfigurationResponse) int { return v.Quantity }).(pulumi.IntOutput)
+}
+
+type AdditionalConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AdditionalConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalConfigurationResponse)(nil)).Elem()
+}
+
+func (o AdditionalConfigurationResponseArrayOutput) ToAdditionalConfigurationResponseArrayOutput() AdditionalConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o AdditionalConfigurationResponseArrayOutput) ToAdditionalConfigurationResponseArrayOutputWithContext(ctx context.Context) AdditionalConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o AdditionalConfigurationResponseArrayOutput) Index(i pulumi.IntInput) AdditionalConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdditionalConfigurationResponse {
+		return vs[0].([]AdditionalConfigurationResponse)[vs[1].(int)]
+	}).(AdditionalConfigurationResponseOutput)
+}
+
 // Address details for an order item.
 type AddressDetails struct {
 	// Customer address and contact details. It should be address resource
@@ -204,7 +366,7 @@ func (o AddressPropertiesResponseOutput) ShippingAddress() ShippingAddressRespon
 
 // Availability information of a product system.
 type AvailabilityInformationResponse struct {
-	// Current availability stage of the product. Availability stage
+	// Current availability stage of the product.
 	AvailabilityStage string `pulumi:"availabilityStage"`
 	// Reason why the product is disabled.
 	DisabledReason string `pulumi:"disabledReason"`
@@ -227,7 +389,7 @@ func (o AvailabilityInformationResponseOutput) ToAvailabilityInformationResponse
 	return o
 }
 
-// Current availability stage of the product. Availability stage
+// Current availability stage of the product.
 func (o AvailabilityInformationResponseOutput) AvailabilityStage() pulumi.StringOutput {
 	return o.ApplyT(func(v AvailabilityInformationResponse) string { return v.AvailabilityStage }).(pulumi.StringOutput)
 }
@@ -242,19 +404,19 @@ func (o AvailabilityInformationResponseOutput) DisabledReasonMessage() pulumi.St
 	return o.ApplyT(func(v AvailabilityInformationResponse) string { return v.DisabledReasonMessage }).(pulumi.StringOutput)
 }
 
-// Holds billing meter details for each type of billing
+// Holds billing meter details for each type of billing.
 type BillingMeterDetailsResponse struct {
-	// Frequency of recurrence
+	// Frequency of recurrence.
 	Frequency string `pulumi:"frequency"`
-	// Represents MeterDetails
+	// Represents MeterDetails.
 	MeterDetails interface{} `pulumi:"meterDetails"`
-	// Represents Metering type (eg one-time or recurrent)
+	// Represents Metering type (eg one-time or recurrent).
 	MeteringType string `pulumi:"meteringType"`
-	// Represents Billing type name
+	// Represents Billing type name.
 	Name string `pulumi:"name"`
 }
 
-// Holds billing meter details for each type of billing
+// Holds billing meter details for each type of billing.
 type BillingMeterDetailsResponseOutput struct{ *pulumi.OutputState }
 
 func (BillingMeterDetailsResponseOutput) ElementType() reflect.Type {
@@ -269,22 +431,22 @@ func (o BillingMeterDetailsResponseOutput) ToBillingMeterDetailsResponseOutputWi
 	return o
 }
 
-// Frequency of recurrence
+// Frequency of recurrence.
 func (o BillingMeterDetailsResponseOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v BillingMeterDetailsResponse) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// Represents MeterDetails
+// Represents MeterDetails.
 func (o BillingMeterDetailsResponseOutput) MeterDetails() pulumi.AnyOutput {
 	return o.ApplyT(func(v BillingMeterDetailsResponse) interface{} { return v.MeterDetails }).(pulumi.AnyOutput)
 }
 
-// Represents Metering type (eg one-time or recurrent)
+// Represents Metering type (eg one-time or recurrent).
 func (o BillingMeterDetailsResponseOutput) MeteringType() pulumi.StringOutput {
 	return o.ApplyT(func(v BillingMeterDetailsResponse) string { return v.MeteringType }).(pulumi.StringOutput)
 }
 
-// Represents Billing type name
+// Represents Billing type name.
 func (o BillingMeterDetailsResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BillingMeterDetailsResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -307,6 +469,617 @@ func (o BillingMeterDetailsResponseArrayOutput) Index(i pulumi.IntInput) Billing
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingMeterDetailsResponse {
 		return vs[0].([]BillingMeterDetailsResponse)[vs[1].(int)]
 	}).(BillingMeterDetailsResponseOutput)
+}
+
+// Category related properties of a child configuration.
+type CategoryInformationResponse struct {
+	// Category display name of the child configuration.
+	CategoryDisplayName *string `pulumi:"categoryDisplayName"`
+	// Category name of the child configuration.
+	CategoryName *string `pulumi:"categoryName"`
+	// Description text for the category.
+	Description *string `pulumi:"description"`
+	// Links for the category.
+	Links []LinkResponse `pulumi:"links"`
+}
+
+// Category related properties of a child configuration.
+type CategoryInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (CategoryInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CategoryInformationResponse)(nil)).Elem()
+}
+
+func (o CategoryInformationResponseOutput) ToCategoryInformationResponseOutput() CategoryInformationResponseOutput {
+	return o
+}
+
+func (o CategoryInformationResponseOutput) ToCategoryInformationResponseOutputWithContext(ctx context.Context) CategoryInformationResponseOutput {
+	return o
+}
+
+// Category display name of the child configuration.
+func (o CategoryInformationResponseOutput) CategoryDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CategoryInformationResponse) *string { return v.CategoryDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Category name of the child configuration.
+func (o CategoryInformationResponseOutput) CategoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CategoryInformationResponse) *string { return v.CategoryName }).(pulumi.StringPtrOutput)
+}
+
+// Description text for the category.
+func (o CategoryInformationResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CategoryInformationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Links for the category.
+func (o CategoryInformationResponseOutput) Links() LinkResponseArrayOutput {
+	return o.ApplyT(func(v CategoryInformationResponse) []LinkResponse { return v.Links }).(LinkResponseArrayOutput)
+}
+
+// Child configuration filter.
+type ChildConfigurationFilter struct {
+	// Filter to fetch all child configurations belonging to the given list of configuration types.
+	ChildConfigurationTypes []string `pulumi:"childConfigurationTypes"`
+	// The list of child configuration hierarchy customer wants to filter for the given configuration.
+	HierarchyInformations []HierarchyInformation `pulumi:"hierarchyInformations"`
+}
+
+// ChildConfigurationFilterInput is an input type that accepts ChildConfigurationFilterArgs and ChildConfigurationFilterOutput values.
+// You can construct a concrete instance of `ChildConfigurationFilterInput` via:
+//
+//	ChildConfigurationFilterArgs{...}
+type ChildConfigurationFilterInput interface {
+	pulumi.Input
+
+	ToChildConfigurationFilterOutput() ChildConfigurationFilterOutput
+	ToChildConfigurationFilterOutputWithContext(context.Context) ChildConfigurationFilterOutput
+}
+
+// Child configuration filter.
+type ChildConfigurationFilterArgs struct {
+	// Filter to fetch all child configurations belonging to the given list of configuration types.
+	ChildConfigurationTypes pulumi.StringArrayInput `pulumi:"childConfigurationTypes"`
+	// The list of child configuration hierarchy customer wants to filter for the given configuration.
+	HierarchyInformations HierarchyInformationArrayInput `pulumi:"hierarchyInformations"`
+}
+
+func (ChildConfigurationFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChildConfigurationFilter)(nil)).Elem()
+}
+
+func (i ChildConfigurationFilterArgs) ToChildConfigurationFilterOutput() ChildConfigurationFilterOutput {
+	return i.ToChildConfigurationFilterOutputWithContext(context.Background())
+}
+
+func (i ChildConfigurationFilterArgs) ToChildConfigurationFilterOutputWithContext(ctx context.Context) ChildConfigurationFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChildConfigurationFilterOutput)
+}
+
+func (i ChildConfigurationFilterArgs) ToChildConfigurationFilterPtrOutput() ChildConfigurationFilterPtrOutput {
+	return i.ToChildConfigurationFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ChildConfigurationFilterArgs) ToChildConfigurationFilterPtrOutputWithContext(ctx context.Context) ChildConfigurationFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChildConfigurationFilterOutput).ToChildConfigurationFilterPtrOutputWithContext(ctx)
+}
+
+// ChildConfigurationFilterPtrInput is an input type that accepts ChildConfigurationFilterArgs, ChildConfigurationFilterPtr and ChildConfigurationFilterPtrOutput values.
+// You can construct a concrete instance of `ChildConfigurationFilterPtrInput` via:
+//
+//	        ChildConfigurationFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ChildConfigurationFilterPtrInput interface {
+	pulumi.Input
+
+	ToChildConfigurationFilterPtrOutput() ChildConfigurationFilterPtrOutput
+	ToChildConfigurationFilterPtrOutputWithContext(context.Context) ChildConfigurationFilterPtrOutput
+}
+
+type childConfigurationFilterPtrType ChildConfigurationFilterArgs
+
+func ChildConfigurationFilterPtr(v *ChildConfigurationFilterArgs) ChildConfigurationFilterPtrInput {
+	return (*childConfigurationFilterPtrType)(v)
+}
+
+func (*childConfigurationFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChildConfigurationFilter)(nil)).Elem()
+}
+
+func (i *childConfigurationFilterPtrType) ToChildConfigurationFilterPtrOutput() ChildConfigurationFilterPtrOutput {
+	return i.ToChildConfigurationFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *childConfigurationFilterPtrType) ToChildConfigurationFilterPtrOutputWithContext(ctx context.Context) ChildConfigurationFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChildConfigurationFilterPtrOutput)
+}
+
+// Child configuration filter.
+type ChildConfigurationFilterOutput struct{ *pulumi.OutputState }
+
+func (ChildConfigurationFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChildConfigurationFilter)(nil)).Elem()
+}
+
+func (o ChildConfigurationFilterOutput) ToChildConfigurationFilterOutput() ChildConfigurationFilterOutput {
+	return o
+}
+
+func (o ChildConfigurationFilterOutput) ToChildConfigurationFilterOutputWithContext(ctx context.Context) ChildConfigurationFilterOutput {
+	return o
+}
+
+func (o ChildConfigurationFilterOutput) ToChildConfigurationFilterPtrOutput() ChildConfigurationFilterPtrOutput {
+	return o.ToChildConfigurationFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ChildConfigurationFilterOutput) ToChildConfigurationFilterPtrOutputWithContext(ctx context.Context) ChildConfigurationFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChildConfigurationFilter) *ChildConfigurationFilter {
+		return &v
+	}).(ChildConfigurationFilterPtrOutput)
+}
+
+// Filter to fetch all child configurations belonging to the given list of configuration types.
+func (o ChildConfigurationFilterOutput) ChildConfigurationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ChildConfigurationFilter) []string { return v.ChildConfigurationTypes }).(pulumi.StringArrayOutput)
+}
+
+// The list of child configuration hierarchy customer wants to filter for the given configuration.
+func (o ChildConfigurationFilterOutput) HierarchyInformations() HierarchyInformationArrayOutput {
+	return o.ApplyT(func(v ChildConfigurationFilter) []HierarchyInformation { return v.HierarchyInformations }).(HierarchyInformationArrayOutput)
+}
+
+type ChildConfigurationFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ChildConfigurationFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChildConfigurationFilter)(nil)).Elem()
+}
+
+func (o ChildConfigurationFilterPtrOutput) ToChildConfigurationFilterPtrOutput() ChildConfigurationFilterPtrOutput {
+	return o
+}
+
+func (o ChildConfigurationFilterPtrOutput) ToChildConfigurationFilterPtrOutputWithContext(ctx context.Context) ChildConfigurationFilterPtrOutput {
+	return o
+}
+
+func (o ChildConfigurationFilterPtrOutput) Elem() ChildConfigurationFilterOutput {
+	return o.ApplyT(func(v *ChildConfigurationFilter) ChildConfigurationFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ChildConfigurationFilter
+		return ret
+	}).(ChildConfigurationFilterOutput)
+}
+
+// Filter to fetch all child configurations belonging to the given list of configuration types.
+func (o ChildConfigurationFilterPtrOutput) ChildConfigurationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ChildConfigurationFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ChildConfigurationTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of child configuration hierarchy customer wants to filter for the given configuration.
+func (o ChildConfigurationFilterPtrOutput) HierarchyInformations() HierarchyInformationArrayOutput {
+	return o.ApplyT(func(v *ChildConfigurationFilter) []HierarchyInformation {
+		if v == nil {
+			return nil
+		}
+		return v.HierarchyInformations
+	}).(HierarchyInformationArrayOutput)
+}
+
+// Child configuration object.
+type ChildConfigurationResponse struct {
+	// Availability information of the product system.
+	AvailabilityInformation AvailabilityInformationResponse `pulumi:"availabilityInformation"`
+	// Child configuration type.
+	ChildConfigurationType string `pulumi:"childConfigurationType"`
+	// Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter.
+	ChildConfigurationTypes []string `pulumi:"childConfigurationTypes"`
+	// Cost information for the product system.
+	CostInformation CostInformationResponse `pulumi:"costInformation"`
+	// Description related to the product system.
+	Description DescriptionResponse `pulumi:"description"`
+	// Dimensions of the configuration.
+	Dimensions DimensionsResponse `pulumi:"dimensions"`
+	// Display Name for the product system.
+	DisplayName string `pulumi:"displayName"`
+	// List of filters supported for a product.
+	FilterableProperties []FilterablePropertyResponse `pulumi:"filterableProperties"`
+	// The entity responsible for fulfillment of the item at the given hierarchy level.
+	FulfilledBy string `pulumi:"fulfilledBy"`
+	// Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration.
+	GroupedChildConfigurations []GroupedChildConfigurationsResponse `pulumi:"groupedChildConfigurations"`
+	// Hierarchy information of a product.
+	HierarchyInformation HierarchyInformationResponse `pulumi:"hierarchyInformation"`
+	// Image information for the product system.
+	ImageInformation []ImageInformationResponse `pulumi:"imageInformation"`
+	// Flag to indicate if the child configuration is part of the base configuration, which means the customer need not pass this configuration in OptInAdditionalConfigurations while placing an order, it will be shipped by default.
+	IsPartOfBaseConfiguration bool `pulumi:"isPartOfBaseConfiguration"`
+	// Maximum quantity a customer can order while choosing this configuration.
+	MaximumQuantity int `pulumi:"maximumQuantity"`
+	// Minimum quantity a customer can order while choosing this configuration.
+	MinimumQuantity int `pulumi:"minimumQuantity"`
+	// Specifications of the configuration.
+	Specifications []SpecificationResponse `pulumi:"specifications"`
+}
+
+// Child configuration object.
+type ChildConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ChildConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChildConfigurationResponse)(nil)).Elem()
+}
+
+func (o ChildConfigurationResponseOutput) ToChildConfigurationResponseOutput() ChildConfigurationResponseOutput {
+	return o
+}
+
+func (o ChildConfigurationResponseOutput) ToChildConfigurationResponseOutputWithContext(ctx context.Context) ChildConfigurationResponseOutput {
+	return o
+}
+
+// Availability information of the product system.
+func (o ChildConfigurationResponseOutput) AvailabilityInformation() AvailabilityInformationResponseOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) AvailabilityInformationResponse { return v.AvailabilityInformation }).(AvailabilityInformationResponseOutput)
+}
+
+// Child configuration type.
+func (o ChildConfigurationResponseOutput) ChildConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) string { return v.ChildConfigurationType }).(pulumi.StringOutput)
+}
+
+// Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter.
+func (o ChildConfigurationResponseOutput) ChildConfigurationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) []string { return v.ChildConfigurationTypes }).(pulumi.StringArrayOutput)
+}
+
+// Cost information for the product system.
+func (o ChildConfigurationResponseOutput) CostInformation() CostInformationResponseOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) CostInformationResponse { return v.CostInformation }).(CostInformationResponseOutput)
+}
+
+// Description related to the product system.
+func (o ChildConfigurationResponseOutput) Description() DescriptionResponseOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) DescriptionResponse { return v.Description }).(DescriptionResponseOutput)
+}
+
+// Dimensions of the configuration.
+func (o ChildConfigurationResponseOutput) Dimensions() DimensionsResponseOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) DimensionsResponse { return v.Dimensions }).(DimensionsResponseOutput)
+}
+
+// Display Name for the product system.
+func (o ChildConfigurationResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// List of filters supported for a product.
+func (o ChildConfigurationResponseOutput) FilterableProperties() FilterablePropertyResponseArrayOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) []FilterablePropertyResponse { return v.FilterableProperties }).(FilterablePropertyResponseArrayOutput)
+}
+
+// The entity responsible for fulfillment of the item at the given hierarchy level.
+func (o ChildConfigurationResponseOutput) FulfilledBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) string { return v.FulfilledBy }).(pulumi.StringOutput)
+}
+
+// Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration.
+func (o ChildConfigurationResponseOutput) GroupedChildConfigurations() GroupedChildConfigurationsResponseArrayOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) []GroupedChildConfigurationsResponse {
+		return v.GroupedChildConfigurations
+	}).(GroupedChildConfigurationsResponseArrayOutput)
+}
+
+// Hierarchy information of a product.
+func (o ChildConfigurationResponseOutput) HierarchyInformation() HierarchyInformationResponseOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) HierarchyInformationResponse { return v.HierarchyInformation }).(HierarchyInformationResponseOutput)
+}
+
+// Image information for the product system.
+func (o ChildConfigurationResponseOutput) ImageInformation() ImageInformationResponseArrayOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) []ImageInformationResponse { return v.ImageInformation }).(ImageInformationResponseArrayOutput)
+}
+
+// Flag to indicate if the child configuration is part of the base configuration, which means the customer need not pass this configuration in OptInAdditionalConfigurations while placing an order, it will be shipped by default.
+func (o ChildConfigurationResponseOutput) IsPartOfBaseConfiguration() pulumi.BoolOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) bool { return v.IsPartOfBaseConfiguration }).(pulumi.BoolOutput)
+}
+
+// Maximum quantity a customer can order while choosing this configuration.
+func (o ChildConfigurationResponseOutput) MaximumQuantity() pulumi.IntOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) int { return v.MaximumQuantity }).(pulumi.IntOutput)
+}
+
+// Minimum quantity a customer can order while choosing this configuration.
+func (o ChildConfigurationResponseOutput) MinimumQuantity() pulumi.IntOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) int { return v.MinimumQuantity }).(pulumi.IntOutput)
+}
+
+// Specifications of the configuration.
+func (o ChildConfigurationResponseOutput) Specifications() SpecificationResponseArrayOutput {
+	return o.ApplyT(func(v ChildConfigurationResponse) []SpecificationResponse { return v.Specifications }).(SpecificationResponseArrayOutput)
+}
+
+type ChildConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ChildConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChildConfigurationResponse)(nil)).Elem()
+}
+
+func (o ChildConfigurationResponseArrayOutput) ToChildConfigurationResponseArrayOutput() ChildConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o ChildConfigurationResponseArrayOutput) ToChildConfigurationResponseArrayOutputWithContext(ctx context.Context) ChildConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o ChildConfigurationResponseArrayOutput) Index(i pulumi.IntInput) ChildConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChildConfigurationResponse {
+		return vs[0].([]ChildConfigurationResponse)[vs[1].(int)]
+	}).(ChildConfigurationResponseOutput)
+}
+
+// Device details for configuration.
+type ConfigurationDeviceDetailsResponse struct {
+	// List of device details.
+	DeviceDetails []DeviceDetailsResponse `pulumi:"deviceDetails"`
+	// Display details of the product.
+	DisplayInfo *DisplayInfoResponse `pulumi:"displayInfo"`
+	// Hierarchy of the product which uniquely identifies the configuration.
+	HierarchyInformation HierarchyInformationResponse `pulumi:"hierarchyInformation"`
+	// Identification type of the configuration.
+	IdentificationType string `pulumi:"identificationType"`
+	// Quantity of the product.
+	Quantity int `pulumi:"quantity"`
+}
+
+// Device details for configuration.
+type ConfigurationDeviceDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationDeviceDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationDeviceDetailsResponse)(nil)).Elem()
+}
+
+func (o ConfigurationDeviceDetailsResponseOutput) ToConfigurationDeviceDetailsResponseOutput() ConfigurationDeviceDetailsResponseOutput {
+	return o
+}
+
+func (o ConfigurationDeviceDetailsResponseOutput) ToConfigurationDeviceDetailsResponseOutputWithContext(ctx context.Context) ConfigurationDeviceDetailsResponseOutput {
+	return o
+}
+
+// List of device details.
+func (o ConfigurationDeviceDetailsResponseOutput) DeviceDetails() DeviceDetailsResponseArrayOutput {
+	return o.ApplyT(func(v ConfigurationDeviceDetailsResponse) []DeviceDetailsResponse { return v.DeviceDetails }).(DeviceDetailsResponseArrayOutput)
+}
+
+// Display details of the product.
+func (o ConfigurationDeviceDetailsResponseOutput) DisplayInfo() DisplayInfoResponsePtrOutput {
+	return o.ApplyT(func(v ConfigurationDeviceDetailsResponse) *DisplayInfoResponse { return v.DisplayInfo }).(DisplayInfoResponsePtrOutput)
+}
+
+// Hierarchy of the product which uniquely identifies the configuration.
+func (o ConfigurationDeviceDetailsResponseOutput) HierarchyInformation() HierarchyInformationResponseOutput {
+	return o.ApplyT(func(v ConfigurationDeviceDetailsResponse) HierarchyInformationResponse { return v.HierarchyInformation }).(HierarchyInformationResponseOutput)
+}
+
+// Identification type of the configuration.
+func (o ConfigurationDeviceDetailsResponseOutput) IdentificationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationDeviceDetailsResponse) string { return v.IdentificationType }).(pulumi.StringOutput)
+}
+
+// Quantity of the product.
+func (o ConfigurationDeviceDetailsResponseOutput) Quantity() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigurationDeviceDetailsResponse) int { return v.Quantity }).(pulumi.IntOutput)
+}
+
+type ConfigurationDeviceDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationDeviceDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigurationDeviceDetailsResponse)(nil)).Elem()
+}
+
+func (o ConfigurationDeviceDetailsResponseArrayOutput) ToConfigurationDeviceDetailsResponseArrayOutput() ConfigurationDeviceDetailsResponseArrayOutput {
+	return o
+}
+
+func (o ConfigurationDeviceDetailsResponseArrayOutput) ToConfigurationDeviceDetailsResponseArrayOutputWithContext(ctx context.Context) ConfigurationDeviceDetailsResponseArrayOutput {
+	return o
+}
+
+func (o ConfigurationDeviceDetailsResponseArrayOutput) Index(i pulumi.IntInput) ConfigurationDeviceDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigurationDeviceDetailsResponse {
+		return vs[0].([]ConfigurationDeviceDetailsResponse)[vs[1].(int)]
+	}).(ConfigurationDeviceDetailsResponseOutput)
+}
+
+// Configuration filters.
+type ConfigurationFilter struct {
+	// Filter to fetch specific child configurations that exist in the configuration. This must be passed to either fetch a list of specific child configurations, or all child configurations of specific types of child configurations.
+	ChildConfigurationFilter *ChildConfigurationFilter `pulumi:"childConfigurationFilter"`
+	// Filters specific to product.
+	FilterableProperty []FilterableProperty `pulumi:"filterableProperty"`
+	// Product hierarchy information.
+	HierarchyInformation HierarchyInformation `pulumi:"hierarchyInformation"`
+}
+
+// ConfigurationFilterInput is an input type that accepts ConfigurationFilterArgs and ConfigurationFilterOutput values.
+// You can construct a concrete instance of `ConfigurationFilterInput` via:
+//
+//	ConfigurationFilterArgs{...}
+type ConfigurationFilterInput interface {
+	pulumi.Input
+
+	ToConfigurationFilterOutput() ConfigurationFilterOutput
+	ToConfigurationFilterOutputWithContext(context.Context) ConfigurationFilterOutput
+}
+
+// Configuration filters.
+type ConfigurationFilterArgs struct {
+	// Filter to fetch specific child configurations that exist in the configuration. This must be passed to either fetch a list of specific child configurations, or all child configurations of specific types of child configurations.
+	ChildConfigurationFilter ChildConfigurationFilterPtrInput `pulumi:"childConfigurationFilter"`
+	// Filters specific to product.
+	FilterableProperty FilterablePropertyArrayInput `pulumi:"filterableProperty"`
+	// Product hierarchy information.
+	HierarchyInformation HierarchyInformationInput `pulumi:"hierarchyInformation"`
+}
+
+func (ConfigurationFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationFilter)(nil)).Elem()
+}
+
+func (i ConfigurationFilterArgs) ToConfigurationFilterOutput() ConfigurationFilterOutput {
+	return i.ToConfigurationFilterOutputWithContext(context.Background())
+}
+
+func (i ConfigurationFilterArgs) ToConfigurationFilterOutputWithContext(ctx context.Context) ConfigurationFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationFilterOutput)
+}
+
+func (i ConfigurationFilterArgs) ToConfigurationFilterPtrOutput() ConfigurationFilterPtrOutput {
+	return i.ToConfigurationFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigurationFilterArgs) ToConfigurationFilterPtrOutputWithContext(ctx context.Context) ConfigurationFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationFilterOutput).ToConfigurationFilterPtrOutputWithContext(ctx)
+}
+
+// ConfigurationFilterPtrInput is an input type that accepts ConfigurationFilterArgs, ConfigurationFilterPtr and ConfigurationFilterPtrOutput values.
+// You can construct a concrete instance of `ConfigurationFilterPtrInput` via:
+//
+//	        ConfigurationFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigurationFilterPtrInput interface {
+	pulumi.Input
+
+	ToConfigurationFilterPtrOutput() ConfigurationFilterPtrOutput
+	ToConfigurationFilterPtrOutputWithContext(context.Context) ConfigurationFilterPtrOutput
+}
+
+type configurationFilterPtrType ConfigurationFilterArgs
+
+func ConfigurationFilterPtr(v *ConfigurationFilterArgs) ConfigurationFilterPtrInput {
+	return (*configurationFilterPtrType)(v)
+}
+
+func (*configurationFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationFilter)(nil)).Elem()
+}
+
+func (i *configurationFilterPtrType) ToConfigurationFilterPtrOutput() ConfigurationFilterPtrOutput {
+	return i.ToConfigurationFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *configurationFilterPtrType) ToConfigurationFilterPtrOutputWithContext(ctx context.Context) ConfigurationFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationFilterPtrOutput)
+}
+
+// Configuration filters.
+type ConfigurationFilterOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationFilter)(nil)).Elem()
+}
+
+func (o ConfigurationFilterOutput) ToConfigurationFilterOutput() ConfigurationFilterOutput {
+	return o
+}
+
+func (o ConfigurationFilterOutput) ToConfigurationFilterOutputWithContext(ctx context.Context) ConfigurationFilterOutput {
+	return o
+}
+
+func (o ConfigurationFilterOutput) ToConfigurationFilterPtrOutput() ConfigurationFilterPtrOutput {
+	return o.ToConfigurationFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationFilterOutput) ToConfigurationFilterPtrOutputWithContext(ctx context.Context) ConfigurationFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationFilter) *ConfigurationFilter {
+		return &v
+	}).(ConfigurationFilterPtrOutput)
+}
+
+// Filter to fetch specific child configurations that exist in the configuration. This must be passed to either fetch a list of specific child configurations, or all child configurations of specific types of child configurations.
+func (o ConfigurationFilterOutput) ChildConfigurationFilter() ChildConfigurationFilterPtrOutput {
+	return o.ApplyT(func(v ConfigurationFilter) *ChildConfigurationFilter { return v.ChildConfigurationFilter }).(ChildConfigurationFilterPtrOutput)
+}
+
+// Filters specific to product.
+func (o ConfigurationFilterOutput) FilterableProperty() FilterablePropertyArrayOutput {
+	return o.ApplyT(func(v ConfigurationFilter) []FilterableProperty { return v.FilterableProperty }).(FilterablePropertyArrayOutput)
+}
+
+// Product hierarchy information.
+func (o ConfigurationFilterOutput) HierarchyInformation() HierarchyInformationOutput {
+	return o.ApplyT(func(v ConfigurationFilter) HierarchyInformation { return v.HierarchyInformation }).(HierarchyInformationOutput)
+}
+
+type ConfigurationFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationFilter)(nil)).Elem()
+}
+
+func (o ConfigurationFilterPtrOutput) ToConfigurationFilterPtrOutput() ConfigurationFilterPtrOutput {
+	return o
+}
+
+func (o ConfigurationFilterPtrOutput) ToConfigurationFilterPtrOutputWithContext(ctx context.Context) ConfigurationFilterPtrOutput {
+	return o
+}
+
+func (o ConfigurationFilterPtrOutput) Elem() ConfigurationFilterOutput {
+	return o.ApplyT(func(v *ConfigurationFilter) ConfigurationFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationFilter
+		return ret
+	}).(ConfigurationFilterOutput)
+}
+
+// Filter to fetch specific child configurations that exist in the configuration. This must be passed to either fetch a list of specific child configurations, or all child configurations of specific types of child configurations.
+func (o ConfigurationFilterPtrOutput) ChildConfigurationFilter() ChildConfigurationFilterPtrOutput {
+	return o.ApplyT(func(v *ConfigurationFilter) *ChildConfigurationFilter {
+		if v == nil {
+			return nil
+		}
+		return v.ChildConfigurationFilter
+	}).(ChildConfigurationFilterPtrOutput)
+}
+
+// Filters specific to product.
+func (o ConfigurationFilterPtrOutput) FilterableProperty() FilterablePropertyArrayOutput {
+	return o.ApplyT(func(v *ConfigurationFilter) []FilterableProperty {
+		if v == nil {
+			return nil
+		}
+		return v.FilterableProperty
+	}).(FilterablePropertyArrayOutput)
+}
+
+// Product hierarchy information.
+func (o ConfigurationFilterPtrOutput) HierarchyInformation() HierarchyInformationPtrOutput {
+	return o.ApplyT(func(v *ConfigurationFilter) *HierarchyInformation {
+		if v == nil {
+			return nil
+		}
+		return &v.HierarchyInformation
+	}).(HierarchyInformationPtrOutput)
 }
 
 // Configuration filters
@@ -422,21 +1195,27 @@ func (o ConfigurationFiltersArrayOutput) Index(i pulumi.IntInput) ConfigurationF
 type ConfigurationResponse struct {
 	// Availability information of the product system.
 	AvailabilityInformation AvailabilityInformationResponse `pulumi:"availabilityInformation"`
+	// Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter.
+	ChildConfigurationTypes []string `pulumi:"childConfigurationTypes"`
 	// Cost information for the product system.
 	CostInformation CostInformationResponse `pulumi:"costInformation"`
 	// Description related to the product system.
 	Description DescriptionResponse `pulumi:"description"`
-	// Dimensions of the configuration
+	// Dimensions of the configuration.
 	Dimensions DimensionsResponse `pulumi:"dimensions"`
 	// Display Name for the product system.
 	DisplayName string `pulumi:"displayName"`
-	// list of filters supported for a product
+	// List of filters supported for a product.
 	FilterableProperties []FilterablePropertyResponse `pulumi:"filterableProperties"`
+	// The entity responsible for fulfillment of the item at the given hierarchy level.
+	FulfilledBy string `pulumi:"fulfilledBy"`
+	// Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration.
+	GroupedChildConfigurations []GroupedChildConfigurationsResponse `pulumi:"groupedChildConfigurations"`
 	// Hierarchy information of a product.
 	HierarchyInformation HierarchyInformationResponse `pulumi:"hierarchyInformation"`
 	// Image information for the product system.
 	ImageInformation []ImageInformationResponse `pulumi:"imageInformation"`
-	// Specifications of the configuration
+	// Specifications of the configuration.
 	Specifications []SpecificationResponse `pulumi:"specifications"`
 }
 
@@ -460,6 +1239,11 @@ func (o ConfigurationResponseOutput) AvailabilityInformation() AvailabilityInfor
 	return o.ApplyT(func(v ConfigurationResponse) AvailabilityInformationResponse { return v.AvailabilityInformation }).(AvailabilityInformationResponseOutput)
 }
 
+// Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter.
+func (o ConfigurationResponseOutput) ChildConfigurationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationResponse) []string { return v.ChildConfigurationTypes }).(pulumi.StringArrayOutput)
+}
+
 // Cost information for the product system.
 func (o ConfigurationResponseOutput) CostInformation() CostInformationResponseOutput {
 	return o.ApplyT(func(v ConfigurationResponse) CostInformationResponse { return v.CostInformation }).(CostInformationResponseOutput)
@@ -470,7 +1254,7 @@ func (o ConfigurationResponseOutput) Description() DescriptionResponseOutput {
 	return o.ApplyT(func(v ConfigurationResponse) DescriptionResponse { return v.Description }).(DescriptionResponseOutput)
 }
 
-// Dimensions of the configuration
+// Dimensions of the configuration.
 func (o ConfigurationResponseOutput) Dimensions() DimensionsResponseOutput {
 	return o.ApplyT(func(v ConfigurationResponse) DimensionsResponse { return v.Dimensions }).(DimensionsResponseOutput)
 }
@@ -480,9 +1264,21 @@ func (o ConfigurationResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigurationResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// list of filters supported for a product
+// List of filters supported for a product.
 func (o ConfigurationResponseOutput) FilterableProperties() FilterablePropertyResponseArrayOutput {
 	return o.ApplyT(func(v ConfigurationResponse) []FilterablePropertyResponse { return v.FilterableProperties }).(FilterablePropertyResponseArrayOutput)
+}
+
+// The entity responsible for fulfillment of the item at the given hierarchy level.
+func (o ConfigurationResponseOutput) FulfilledBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationResponse) string { return v.FulfilledBy }).(pulumi.StringOutput)
+}
+
+// Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration.
+func (o ConfigurationResponseOutput) GroupedChildConfigurations() GroupedChildConfigurationsResponseArrayOutput {
+	return o.ApplyT(func(v ConfigurationResponse) []GroupedChildConfigurationsResponse {
+		return v.GroupedChildConfigurations
+	}).(GroupedChildConfigurationsResponseArrayOutput)
 }
 
 // Hierarchy information of a product.
@@ -495,7 +1291,7 @@ func (o ConfigurationResponseOutput) ImageInformation() ImageInformationResponse
 	return o.ApplyT(func(v ConfigurationResponse) []ImageInformationResponse { return v.ImageInformation }).(ImageInformationResponseArrayOutput)
 }
 
-// Specifications of the configuration
+// Specifications of the configuration.
 func (o ConfigurationResponseOutput) Specifications() SpecificationResponseArrayOutput {
 	return o.ApplyT(func(v ConfigurationResponse) []SpecificationResponse { return v.Specifications }).(SpecificationResponseArrayOutput)
 }
@@ -665,15 +1461,15 @@ func (o ContactDetailsResponseOutput) PhoneExtension() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContactDetailsResponse) *string { return v.PhoneExtension }).(pulumi.StringPtrOutput)
 }
 
-// Cost information for the product system
+// Cost information for the product system.
 type CostInformationResponse struct {
-	// Default url to display billing information
+	// Default url to display billing information.
 	BillingInfoUrl string `pulumi:"billingInfoUrl"`
 	// Details on the various billing aspects for the product system.
 	BillingMeterDetails []BillingMeterDetailsResponse `pulumi:"billingMeterDetails"`
 }
 
-// Cost information for the product system
+// Cost information for the product system.
 type CostInformationResponseOutput struct{ *pulumi.OutputState }
 
 func (CostInformationResponseOutput) ElementType() reflect.Type {
@@ -688,7 +1484,7 @@ func (o CostInformationResponseOutput) ToCostInformationResponseOutputWithContex
 	return o
 }
 
-// Default url to display billing information
+// Default url to display billing information.
 func (o CostInformationResponseOutput) BillingInfoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v CostInformationResponse) string { return v.BillingInfoUrl }).(pulumi.StringOutput)
 }
@@ -698,13 +1494,13 @@ func (o CostInformationResponseOutput) BillingMeterDetails() BillingMeterDetails
 	return o.ApplyT(func(v CostInformationResponse) []BillingMeterDetailsResponse { return v.BillingMeterDetails }).(BillingMeterDetailsResponseArrayOutput)
 }
 
-// Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details
+// Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details.
 type CustomerSubscriptionDetails struct {
-	// Location placement Id of a subscription
+	// Location placement Id of a subscription.
 	LocationPlacementId *string `pulumi:"locationPlacementId"`
-	// Quota ID of a subscription
+	// Quota ID of a subscription.
 	QuotaId string `pulumi:"quotaId"`
-	// List of registered feature flags for subscription
+	// List of registered feature flags for subscription.
 	RegisteredFeatures []CustomerSubscriptionRegisteredFeatures `pulumi:"registeredFeatures"`
 }
 
@@ -719,13 +1515,13 @@ type CustomerSubscriptionDetailsInput interface {
 	ToCustomerSubscriptionDetailsOutputWithContext(context.Context) CustomerSubscriptionDetailsOutput
 }
 
-// Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details
+// Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details.
 type CustomerSubscriptionDetailsArgs struct {
-	// Location placement Id of a subscription
+	// Location placement Id of a subscription.
 	LocationPlacementId pulumi.StringPtrInput `pulumi:"locationPlacementId"`
-	// Quota ID of a subscription
+	// Quota ID of a subscription.
 	QuotaId pulumi.StringInput `pulumi:"quotaId"`
-	// List of registered feature flags for subscription
+	// List of registered feature flags for subscription.
 	RegisteredFeatures CustomerSubscriptionRegisteredFeaturesArrayInput `pulumi:"registeredFeatures"`
 }
 
@@ -782,7 +1578,7 @@ func (i *customerSubscriptionDetailsPtrType) ToCustomerSubscriptionDetailsPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerSubscriptionDetailsPtrOutput)
 }
 
-// Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details
+// Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details.
 type CustomerSubscriptionDetailsOutput struct{ *pulumi.OutputState }
 
 func (CustomerSubscriptionDetailsOutput) ElementType() reflect.Type {
@@ -807,17 +1603,17 @@ func (o CustomerSubscriptionDetailsOutput) ToCustomerSubscriptionDetailsPtrOutpu
 	}).(CustomerSubscriptionDetailsPtrOutput)
 }
 
-// Location placement Id of a subscription
+// Location placement Id of a subscription.
 func (o CustomerSubscriptionDetailsOutput) LocationPlacementId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerSubscriptionDetails) *string { return v.LocationPlacementId }).(pulumi.StringPtrOutput)
 }
 
-// Quota ID of a subscription
+// Quota ID of a subscription.
 func (o CustomerSubscriptionDetailsOutput) QuotaId() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerSubscriptionDetails) string { return v.QuotaId }).(pulumi.StringOutput)
 }
 
-// List of registered feature flags for subscription
+// List of registered feature flags for subscription.
 func (o CustomerSubscriptionDetailsOutput) RegisteredFeatures() CustomerSubscriptionRegisteredFeaturesArrayOutput {
 	return o.ApplyT(func(v CustomerSubscriptionDetails) []CustomerSubscriptionRegisteredFeatures {
 		return v.RegisteredFeatures
@@ -848,7 +1644,7 @@ func (o CustomerSubscriptionDetailsPtrOutput) Elem() CustomerSubscriptionDetails
 	}).(CustomerSubscriptionDetailsOutput)
 }
 
-// Location placement Id of a subscription
+// Location placement Id of a subscription.
 func (o CustomerSubscriptionDetailsPtrOutput) LocationPlacementId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerSubscriptionDetails) *string {
 		if v == nil {
@@ -858,7 +1654,7 @@ func (o CustomerSubscriptionDetailsPtrOutput) LocationPlacementId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Quota ID of a subscription
+// Quota ID of a subscription.
 func (o CustomerSubscriptionDetailsPtrOutput) QuotaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerSubscriptionDetails) *string {
 		if v == nil {
@@ -868,7 +1664,7 @@ func (o CustomerSubscriptionDetailsPtrOutput) QuotaId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of registered feature flags for subscription
+// List of registered feature flags for subscription.
 func (o CustomerSubscriptionDetailsPtrOutput) RegisteredFeatures() CustomerSubscriptionRegisteredFeaturesArrayOutput {
 	return o.ApplyT(func(v *CustomerSubscriptionDetails) []CustomerSubscriptionRegisteredFeatures {
 		if v == nil {
@@ -878,11 +1674,11 @@ func (o CustomerSubscriptionDetailsPtrOutput) RegisteredFeatures() CustomerSubsc
 	}).(CustomerSubscriptionRegisteredFeaturesArrayOutput)
 }
 
-// Represents subscription registered features
+// Represents subscription registered features.
 type CustomerSubscriptionRegisteredFeatures struct {
-	// Name of subscription registered feature
+	// Name of subscription registered feature.
 	Name *string `pulumi:"name"`
-	// State of subscription registered feature
+	// State of subscription registered feature.
 	State *string `pulumi:"state"`
 }
 
@@ -897,11 +1693,11 @@ type CustomerSubscriptionRegisteredFeaturesInput interface {
 	ToCustomerSubscriptionRegisteredFeaturesOutputWithContext(context.Context) CustomerSubscriptionRegisteredFeaturesOutput
 }
 
-// Represents subscription registered features
+// Represents subscription registered features.
 type CustomerSubscriptionRegisteredFeaturesArgs struct {
-	// Name of subscription registered feature
+	// Name of subscription registered feature.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// State of subscription registered feature
+	// State of subscription registered feature.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -942,7 +1738,7 @@ func (i CustomerSubscriptionRegisteredFeaturesArray) ToCustomerSubscriptionRegis
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerSubscriptionRegisteredFeaturesArrayOutput)
 }
 
-// Represents subscription registered features
+// Represents subscription registered features.
 type CustomerSubscriptionRegisteredFeaturesOutput struct{ *pulumi.OutputState }
 
 func (CustomerSubscriptionRegisteredFeaturesOutput) ElementType() reflect.Type {
@@ -957,12 +1753,12 @@ func (o CustomerSubscriptionRegisteredFeaturesOutput) ToCustomerSubscriptionRegi
 	return o
 }
 
-// Name of subscription registered feature
+// Name of subscription registered feature.
 func (o CustomerSubscriptionRegisteredFeaturesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerSubscriptionRegisteredFeatures) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// State of subscription registered feature
+// State of subscription registered feature.
 func (o CustomerSubscriptionRegisteredFeaturesOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerSubscriptionRegisteredFeatures) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -1086,6 +1882,60 @@ func (o DeviceDetailsResponseOutput) ManagementResourceTenantId() pulumi.StringO
 // device serial number
 func (o DeviceDetailsResponseOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceDetailsResponse) string { return v.SerialNumber }).(pulumi.StringOutput)
+}
+
+type DeviceDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceDetailsResponse)(nil)).Elem()
+}
+
+func (o DeviceDetailsResponsePtrOutput) ToDeviceDetailsResponsePtrOutput() DeviceDetailsResponsePtrOutput {
+	return o
+}
+
+func (o DeviceDetailsResponsePtrOutput) ToDeviceDetailsResponsePtrOutputWithContext(ctx context.Context) DeviceDetailsResponsePtrOutput {
+	return o
+}
+
+func (o DeviceDetailsResponsePtrOutput) Elem() DeviceDetailsResponseOutput {
+	return o.ApplyT(func(v *DeviceDetailsResponse) DeviceDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceDetailsResponse
+		return ret
+	}).(DeviceDetailsResponseOutput)
+}
+
+// Management Resource Id
+func (o DeviceDetailsResponsePtrOutput) ManagementResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagementResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Management Resource Tenant ID
+func (o DeviceDetailsResponsePtrOutput) ManagementResourceTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagementResourceTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// device serial number
+func (o DeviceDetailsResponsePtrOutput) SerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SerialNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type DeviceDetailsResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1789,15 +2639,68 @@ func (o ForwardShippingDetailsResponseOutput) TrackingUrl() pulumi.StringOutput 
 	return o.ApplyT(func(v ForwardShippingDetailsResponse) string { return v.TrackingUrl }).(pulumi.StringOutput)
 }
 
-// Holds details about product hierarchy information
+// Grouped child configuration object.
+type GroupedChildConfigurationsResponse struct {
+	// Category information.
+	CategoryInformation CategoryInformationResponse `pulumi:"categoryInformation"`
+	// List of child configurations.
+	ChildConfigurations []ChildConfigurationResponse `pulumi:"childConfigurations"`
+}
+
+// Grouped child configuration object.
+type GroupedChildConfigurationsResponseOutput struct{ *pulumi.OutputState }
+
+func (GroupedChildConfigurationsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupedChildConfigurationsResponse)(nil)).Elem()
+}
+
+func (o GroupedChildConfigurationsResponseOutput) ToGroupedChildConfigurationsResponseOutput() GroupedChildConfigurationsResponseOutput {
+	return o
+}
+
+func (o GroupedChildConfigurationsResponseOutput) ToGroupedChildConfigurationsResponseOutputWithContext(ctx context.Context) GroupedChildConfigurationsResponseOutput {
+	return o
+}
+
+// Category information.
+func (o GroupedChildConfigurationsResponseOutput) CategoryInformation() CategoryInformationResponseOutput {
+	return o.ApplyT(func(v GroupedChildConfigurationsResponse) CategoryInformationResponse { return v.CategoryInformation }).(CategoryInformationResponseOutput)
+}
+
+// List of child configurations.
+func (o GroupedChildConfigurationsResponseOutput) ChildConfigurations() ChildConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v GroupedChildConfigurationsResponse) []ChildConfigurationResponse { return v.ChildConfigurations }).(ChildConfigurationResponseArrayOutput)
+}
+
+type GroupedChildConfigurationsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupedChildConfigurationsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupedChildConfigurationsResponse)(nil)).Elem()
+}
+
+func (o GroupedChildConfigurationsResponseArrayOutput) ToGroupedChildConfigurationsResponseArrayOutput() GroupedChildConfigurationsResponseArrayOutput {
+	return o
+}
+
+func (o GroupedChildConfigurationsResponseArrayOutput) ToGroupedChildConfigurationsResponseArrayOutputWithContext(ctx context.Context) GroupedChildConfigurationsResponseArrayOutput {
+	return o
+}
+
+func (o GroupedChildConfigurationsResponseArrayOutput) Index(i pulumi.IntInput) GroupedChildConfigurationsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupedChildConfigurationsResponse {
+		return vs[0].([]GroupedChildConfigurationsResponse)[vs[1].(int)]
+	}).(GroupedChildConfigurationsResponseOutput)
+}
+
+// Holds details about product hierarchy information.
 type HierarchyInformation struct {
-	// Represents configuration name that uniquely identifies configuration
+	// Represents configuration name that uniquely identifies configuration.
 	ConfigurationName *string `pulumi:"configurationName"`
-	// Represents product family name that uniquely identifies product family
+	// Represents product family name that uniquely identifies product family.
 	ProductFamilyName *string `pulumi:"productFamilyName"`
-	// Represents product line name that uniquely identifies product line
+	// Represents product line name that uniquely identifies product line.
 	ProductLineName *string `pulumi:"productLineName"`
-	// Represents product name that uniquely identifies product
+	// Represents product name that uniquely identifies product.
 	ProductName *string `pulumi:"productName"`
 }
 
@@ -1812,15 +2715,15 @@ type HierarchyInformationInput interface {
 	ToHierarchyInformationOutputWithContext(context.Context) HierarchyInformationOutput
 }
 
-// Holds details about product hierarchy information
+// Holds details about product hierarchy information.
 type HierarchyInformationArgs struct {
-	// Represents configuration name that uniquely identifies configuration
+	// Represents configuration name that uniquely identifies configuration.
 	ConfigurationName pulumi.StringPtrInput `pulumi:"configurationName"`
-	// Represents product family name that uniquely identifies product family
+	// Represents product family name that uniquely identifies product family.
 	ProductFamilyName pulumi.StringPtrInput `pulumi:"productFamilyName"`
-	// Represents product line name that uniquely identifies product line
+	// Represents product line name that uniquely identifies product line.
 	ProductLineName pulumi.StringPtrInput `pulumi:"productLineName"`
-	// Represents product name that uniquely identifies product
+	// Represents product name that uniquely identifies product.
 	ProductName pulumi.StringPtrInput `pulumi:"productName"`
 }
 
@@ -1836,7 +2739,73 @@ func (i HierarchyInformationArgs) ToHierarchyInformationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HierarchyInformationOutput)
 }
 
-// Holds details about product hierarchy information
+func (i HierarchyInformationArgs) ToHierarchyInformationPtrOutput() HierarchyInformationPtrOutput {
+	return i.ToHierarchyInformationPtrOutputWithContext(context.Background())
+}
+
+func (i HierarchyInformationArgs) ToHierarchyInformationPtrOutputWithContext(ctx context.Context) HierarchyInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HierarchyInformationOutput).ToHierarchyInformationPtrOutputWithContext(ctx)
+}
+
+// HierarchyInformationPtrInput is an input type that accepts HierarchyInformationArgs, HierarchyInformationPtr and HierarchyInformationPtrOutput values.
+// You can construct a concrete instance of `HierarchyInformationPtrInput` via:
+//
+//	        HierarchyInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type HierarchyInformationPtrInput interface {
+	pulumi.Input
+
+	ToHierarchyInformationPtrOutput() HierarchyInformationPtrOutput
+	ToHierarchyInformationPtrOutputWithContext(context.Context) HierarchyInformationPtrOutput
+}
+
+type hierarchyInformationPtrType HierarchyInformationArgs
+
+func HierarchyInformationPtr(v *HierarchyInformationArgs) HierarchyInformationPtrInput {
+	return (*hierarchyInformationPtrType)(v)
+}
+
+func (*hierarchyInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HierarchyInformation)(nil)).Elem()
+}
+
+func (i *hierarchyInformationPtrType) ToHierarchyInformationPtrOutput() HierarchyInformationPtrOutput {
+	return i.ToHierarchyInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *hierarchyInformationPtrType) ToHierarchyInformationPtrOutputWithContext(ctx context.Context) HierarchyInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HierarchyInformationPtrOutput)
+}
+
+// HierarchyInformationArrayInput is an input type that accepts HierarchyInformationArray and HierarchyInformationArrayOutput values.
+// You can construct a concrete instance of `HierarchyInformationArrayInput` via:
+//
+//	HierarchyInformationArray{ HierarchyInformationArgs{...} }
+type HierarchyInformationArrayInput interface {
+	pulumi.Input
+
+	ToHierarchyInformationArrayOutput() HierarchyInformationArrayOutput
+	ToHierarchyInformationArrayOutputWithContext(context.Context) HierarchyInformationArrayOutput
+}
+
+type HierarchyInformationArray []HierarchyInformationInput
+
+func (HierarchyInformationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HierarchyInformation)(nil)).Elem()
+}
+
+func (i HierarchyInformationArray) ToHierarchyInformationArrayOutput() HierarchyInformationArrayOutput {
+	return i.ToHierarchyInformationArrayOutputWithContext(context.Background())
+}
+
+func (i HierarchyInformationArray) ToHierarchyInformationArrayOutputWithContext(ctx context.Context) HierarchyInformationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HierarchyInformationArrayOutput)
+}
+
+// Holds details about product hierarchy information.
 type HierarchyInformationOutput struct{ *pulumi.OutputState }
 
 func (HierarchyInformationOutput) ElementType() reflect.Type {
@@ -1851,39 +2820,133 @@ func (o HierarchyInformationOutput) ToHierarchyInformationOutputWithContext(ctx 
 	return o
 }
 
-// Represents configuration name that uniquely identifies configuration
+func (o HierarchyInformationOutput) ToHierarchyInformationPtrOutput() HierarchyInformationPtrOutput {
+	return o.ToHierarchyInformationPtrOutputWithContext(context.Background())
+}
+
+func (o HierarchyInformationOutput) ToHierarchyInformationPtrOutputWithContext(ctx context.Context) HierarchyInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyInformation) *HierarchyInformation {
+		return &v
+	}).(HierarchyInformationPtrOutput)
+}
+
+// Represents configuration name that uniquely identifies configuration.
 func (o HierarchyInformationOutput) ConfigurationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HierarchyInformation) *string { return v.ConfigurationName }).(pulumi.StringPtrOutput)
 }
 
-// Represents product family name that uniquely identifies product family
+// Represents product family name that uniquely identifies product family.
 func (o HierarchyInformationOutput) ProductFamilyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HierarchyInformation) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
 }
 
-// Represents product line name that uniquely identifies product line
+// Represents product line name that uniquely identifies product line.
 func (o HierarchyInformationOutput) ProductLineName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HierarchyInformation) *string { return v.ProductLineName }).(pulumi.StringPtrOutput)
 }
 
-// Represents product name that uniquely identifies product
+// Represents product name that uniquely identifies product.
 func (o HierarchyInformationOutput) ProductName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HierarchyInformation) *string { return v.ProductName }).(pulumi.StringPtrOutput)
 }
 
-// Holds details about product hierarchy information
+type HierarchyInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (HierarchyInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HierarchyInformation)(nil)).Elem()
+}
+
+func (o HierarchyInformationPtrOutput) ToHierarchyInformationPtrOutput() HierarchyInformationPtrOutput {
+	return o
+}
+
+func (o HierarchyInformationPtrOutput) ToHierarchyInformationPtrOutputWithContext(ctx context.Context) HierarchyInformationPtrOutput {
+	return o
+}
+
+func (o HierarchyInformationPtrOutput) Elem() HierarchyInformationOutput {
+	return o.ApplyT(func(v *HierarchyInformation) HierarchyInformation {
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyInformation
+		return ret
+	}).(HierarchyInformationOutput)
+}
+
+// Represents configuration name that uniquely identifies configuration.
+func (o HierarchyInformationPtrOutput) ConfigurationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HierarchyInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents product family name that uniquely identifies product family.
+func (o HierarchyInformationPtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HierarchyInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents product line name that uniquely identifies product line.
+func (o HierarchyInformationPtrOutput) ProductLineName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HierarchyInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductLineName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents product name that uniquely identifies product.
+func (o HierarchyInformationPtrOutput) ProductName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HierarchyInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductName
+	}).(pulumi.StringPtrOutput)
+}
+
+type HierarchyInformationArrayOutput struct{ *pulumi.OutputState }
+
+func (HierarchyInformationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HierarchyInformation)(nil)).Elem()
+}
+
+func (o HierarchyInformationArrayOutput) ToHierarchyInformationArrayOutput() HierarchyInformationArrayOutput {
+	return o
+}
+
+func (o HierarchyInformationArrayOutput) ToHierarchyInformationArrayOutputWithContext(ctx context.Context) HierarchyInformationArrayOutput {
+	return o
+}
+
+func (o HierarchyInformationArrayOutput) Index(i pulumi.IntInput) HierarchyInformationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HierarchyInformation {
+		return vs[0].([]HierarchyInformation)[vs[1].(int)]
+	}).(HierarchyInformationOutput)
+}
+
+// Holds details about product hierarchy information.
 type HierarchyInformationResponse struct {
-	// Represents configuration name that uniquely identifies configuration
+	// Represents configuration name that uniquely identifies configuration.
 	ConfigurationName *string `pulumi:"configurationName"`
-	// Represents product family name that uniquely identifies product family
+	// Represents product family name that uniquely identifies product family.
 	ProductFamilyName *string `pulumi:"productFamilyName"`
-	// Represents product line name that uniquely identifies product line
+	// Represents product line name that uniquely identifies product line.
 	ProductLineName *string `pulumi:"productLineName"`
-	// Represents product name that uniquely identifies product
+	// Represents product name that uniquely identifies product.
 	ProductName *string `pulumi:"productName"`
 }
 
-// Holds details about product hierarchy information
+// Holds details about product hierarchy information.
 type HierarchyInformationResponseOutput struct{ *pulumi.OutputState }
 
 func (HierarchyInformationResponseOutput) ElementType() reflect.Type {
@@ -1898,35 +2961,35 @@ func (o HierarchyInformationResponseOutput) ToHierarchyInformationResponseOutput
 	return o
 }
 
-// Represents configuration name that uniquely identifies configuration
+// Represents configuration name that uniquely identifies configuration.
 func (o HierarchyInformationResponseOutput) ConfigurationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HierarchyInformationResponse) *string { return v.ConfigurationName }).(pulumi.StringPtrOutput)
 }
 
-// Represents product family name that uniquely identifies product family
+// Represents product family name that uniquely identifies product family.
 func (o HierarchyInformationResponseOutput) ProductFamilyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HierarchyInformationResponse) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
 }
 
-// Represents product line name that uniquely identifies product line
+// Represents product line name that uniquely identifies product line.
 func (o HierarchyInformationResponseOutput) ProductLineName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HierarchyInformationResponse) *string { return v.ProductLineName }).(pulumi.StringPtrOutput)
 }
 
-// Represents product name that uniquely identifies product
+// Represents product name that uniquely identifies product.
 func (o HierarchyInformationResponseOutput) ProductName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HierarchyInformationResponse) *string { return v.ProductName }).(pulumi.StringPtrOutput)
 }
 
-// Image for the product
+// Image for the product.
 type ImageInformationResponse struct {
-	// Type of the image
+	// Type of the image.
 	ImageType string `pulumi:"imageType"`
-	// Url of the image
+	// Url of the image.
 	ImageUrl string `pulumi:"imageUrl"`
 }
 
-// Image for the product
+// Image for the product.
 type ImageInformationResponseOutput struct{ *pulumi.OutputState }
 
 func (ImageInformationResponseOutput) ElementType() reflect.Type {
@@ -1941,12 +3004,12 @@ func (o ImageInformationResponseOutput) ToImageInformationResponseOutputWithCont
 	return o
 }
 
-// Type of the image
+// Type of the image.
 func (o ImageInformationResponseOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageInformationResponse) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
-// Url of the image
+// Url of the image.
 func (o ImageInformationResponseOutput) ImageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageInformationResponse) string { return v.ImageUrl }).(pulumi.StringOutput)
 }
@@ -1971,15 +3034,15 @@ func (o ImageInformationResponseArrayOutput) Index(i pulumi.IntInput) ImageInfor
 	}).(ImageInformationResponseOutput)
 }
 
-// Returns link related to the product
+// Returns link related to the product.
 type LinkResponse struct {
-	// Type of link
+	// Type of link.
 	LinkType string `pulumi:"linkType"`
-	// Url of the link
+	// Url of the link.
 	LinkUrl string `pulumi:"linkUrl"`
 }
 
-// Returns link related to the product
+// Returns link related to the product.
 type LinkResponseOutput struct{ *pulumi.OutputState }
 
 func (LinkResponseOutput) ElementType() reflect.Type {
@@ -1994,12 +3057,12 @@ func (o LinkResponseOutput) ToLinkResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Type of link
+// Type of link.
 func (o LinkResponseOutput) LinkType() pulumi.StringOutput {
 	return o.ApplyT(func(v LinkResponse) string { return v.LinkType }).(pulumi.StringOutput)
 }
 
-// Url of the link
+// Url of the link.
 func (o LinkResponseOutput) LinkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LinkResponse) string { return v.LinkUrl }).(pulumi.StringOutput)
 }
@@ -2390,6 +3453,8 @@ func (o NotificationPreferenceResponseArrayOutput) Index(i pulumi.IntInput) Noti
 type OrderItemDetails struct {
 	// Additional notification email list
 	NotificationEmailList []string `pulumi:"notificationEmailList"`
+	// Defines the mode of the Order item.
+	OrderItemMode *string `pulumi:"orderItemMode"`
 	// Order item type.
 	OrderItemType string `pulumi:"orderItemType"`
 	// Customer notification Preferences
@@ -2413,6 +3478,8 @@ type OrderItemDetailsInput interface {
 type OrderItemDetailsArgs struct {
 	// Additional notification email list
 	NotificationEmailList pulumi.StringArrayInput `pulumi:"notificationEmailList"`
+	// Defines the mode of the Order item.
+	OrderItemMode pulumi.StringPtrInput `pulumi:"orderItemMode"`
 	// Order item type.
 	OrderItemType pulumi.StringInput `pulumi:"orderItemType"`
 	// Customer notification Preferences
@@ -2453,6 +3520,11 @@ func (o OrderItemDetailsOutput) NotificationEmailList() pulumi.StringArrayOutput
 	return o.ApplyT(func(v OrderItemDetails) []string { return v.NotificationEmailList }).(pulumi.StringArrayOutput)
 }
 
+// Defines the mode of the Order item.
+func (o OrderItemDetailsOutput) OrderItemMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrderItemDetails) *string { return v.OrderItemMode }).(pulumi.StringPtrOutput)
+}
+
 // Order item type.
 func (o OrderItemDetailsOutput) OrderItemType() pulumi.StringOutput {
 	return o.ApplyT(func(v OrderItemDetails) string { return v.OrderItemType }).(pulumi.StringOutput)
@@ -2488,6 +3560,8 @@ type OrderItemDetailsResponse struct {
 	ManagementRpDetailsList []ResourceProviderDetailsResponse `pulumi:"managementRpDetailsList"`
 	// Additional notification email list
 	NotificationEmailList []string `pulumi:"notificationEmailList"`
+	// Defines the mode of the Order item.
+	OrderItemMode *string `pulumi:"orderItemMode"`
 	// Order item status history
 	OrderItemStageHistory []StageDetailsResponse `pulumi:"orderItemStageHistory"`
 	// Order item type.
@@ -2564,6 +3638,11 @@ func (o OrderItemDetailsResponseOutput) NotificationEmailList() pulumi.StringArr
 	return o.ApplyT(func(v OrderItemDetailsResponse) []string { return v.NotificationEmailList }).(pulumi.StringArrayOutput)
 }
 
+// Defines the mode of the Order item.
+func (o OrderItemDetailsResponseOutput) OrderItemMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrderItemDetailsResponse) *string { return v.OrderItemMode }).(pulumi.StringPtrOutput)
+}
+
 // Order item status history
 func (o OrderItemDetailsResponseOutput) OrderItemStageHistory() StageDetailsResponseArrayOutput {
 	return o.ApplyT(func(v OrderItemDetailsResponse) []StageDetailsResponse { return v.OrderItemStageHistory }).(StageDetailsResponseArrayOutput)
@@ -2599,7 +3678,7 @@ func (o OrderItemDetailsResponseOutput) ReverseShippingDetails() ReverseShipping
 	return o.ApplyT(func(v OrderItemDetailsResponse) ReverseShippingDetailsResponse { return v.ReverseShippingDetails }).(ReverseShippingDetailsResponseOutput)
 }
 
-// Billing type PAV2 meter details
+// Billing type PAV2 meter details.
 type Pav2MeterDetailsResponse struct {
 	// Represents billing type.
 	// Expected value is 'Pav2'.
@@ -2608,7 +3687,7 @@ type Pav2MeterDetailsResponse struct {
 	ChargingType string `pulumi:"chargingType"`
 	// Validation status of requested data center and transport.
 	MeterGuid string `pulumi:"meterGuid"`
-	// Billing unit applicable for Pav2 billing
+	// Billing unit applicable for Pav2 billing.
 	Multiplier float64 `pulumi:"multiplier"`
 }
 
@@ -2926,6 +4005,8 @@ func (o PreferencesResponsePtrOutput) TransportPreferences() TransportPreference
 type ProductDetails struct {
 	// Hierarchy of the product which uniquely identifies the product
 	HierarchyInformation HierarchyInformation `pulumi:"hierarchyInformation"`
+	// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
+	OptInAdditionalConfigurations []AdditionalConfiguration `pulumi:"optInAdditionalConfigurations"`
 }
 
 // ProductDetailsInput is an input type that accepts ProductDetailsArgs and ProductDetailsOutput values.
@@ -2943,6 +4024,8 @@ type ProductDetailsInput interface {
 type ProductDetailsArgs struct {
 	// Hierarchy of the product which uniquely identifies the product
 	HierarchyInformation HierarchyInformationInput `pulumi:"hierarchyInformation"`
+	// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
+	OptInAdditionalConfigurations AdditionalConfigurationArrayInput `pulumi:"optInAdditionalConfigurations"`
 }
 
 func (ProductDetailsArgs) ElementType() reflect.Type {
@@ -2977,8 +4060,15 @@ func (o ProductDetailsOutput) HierarchyInformation() HierarchyInformationOutput 
 	return o.ApplyT(func(v ProductDetails) HierarchyInformation { return v.HierarchyInformation }).(HierarchyInformationOutput)
 }
 
+// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
+func (o ProductDetailsOutput) OptInAdditionalConfigurations() AdditionalConfigurationArrayOutput {
+	return o.ApplyT(func(v ProductDetails) []AdditionalConfiguration { return v.OptInAdditionalConfigurations }).(AdditionalConfigurationArrayOutput)
+}
+
 // Represents product details
 type ProductDetailsResponse struct {
+	// Details of all child configurations that are part of the order item.
+	ChildConfigurationDeviceDetails []ConfigurationDeviceDetailsResponse `pulumi:"childConfigurationDeviceDetails"`
 	// Quantity of the product
 	Count int `pulumi:"count"`
 	// list of device details
@@ -2987,6 +4077,12 @@ type ProductDetailsResponse struct {
 	DisplayInfo *DisplayInfoResponse `pulumi:"displayInfo"`
 	// Hierarchy of the product which uniquely identifies the product
 	HierarchyInformation HierarchyInformationResponse `pulumi:"hierarchyInformation"`
+	// Identification type of the configuration.
+	IdentificationType *string `pulumi:"identificationType"`
+	// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
+	OptInAdditionalConfigurations []AdditionalConfigurationResponse `pulumi:"optInAdditionalConfigurations"`
+	// Device details of the parent configuration.
+	ParentDeviceDetails *DeviceDetailsResponse `pulumi:"parentDeviceDetails"`
 	// Double encryption status of the configuration. Read-only field.
 	ProductDoubleEncryptionStatus string `pulumi:"productDoubleEncryptionStatus"`
 }
@@ -3004,6 +4100,13 @@ func (o ProductDetailsResponseOutput) ToProductDetailsResponseOutput() ProductDe
 
 func (o ProductDetailsResponseOutput) ToProductDetailsResponseOutputWithContext(ctx context.Context) ProductDetailsResponseOutput {
 	return o
+}
+
+// Details of all child configurations that are part of the order item.
+func (o ProductDetailsResponseOutput) ChildConfigurationDeviceDetails() ConfigurationDeviceDetailsResponseArrayOutput {
+	return o.ApplyT(func(v ProductDetailsResponse) []ConfigurationDeviceDetailsResponse {
+		return v.ChildConfigurationDeviceDetails
+	}).(ConfigurationDeviceDetailsResponseArrayOutput)
 }
 
 // Quantity of the product
@@ -3026,12 +4129,29 @@ func (o ProductDetailsResponseOutput) HierarchyInformation() HierarchyInformatio
 	return o.ApplyT(func(v ProductDetailsResponse) HierarchyInformationResponse { return v.HierarchyInformation }).(HierarchyInformationResponseOutput)
 }
 
+// Identification type of the configuration.
+func (o ProductDetailsResponseOutput) IdentificationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProductDetailsResponse) *string { return v.IdentificationType }).(pulumi.StringPtrOutput)
+}
+
+// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
+func (o ProductDetailsResponseOutput) OptInAdditionalConfigurations() AdditionalConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v ProductDetailsResponse) []AdditionalConfigurationResponse {
+		return v.OptInAdditionalConfigurations
+	}).(AdditionalConfigurationResponseArrayOutput)
+}
+
+// Device details of the parent configuration.
+func (o ProductDetailsResponseOutput) ParentDeviceDetails() DeviceDetailsResponsePtrOutput {
+	return o.ApplyT(func(v ProductDetailsResponse) *DeviceDetailsResponse { return v.ParentDeviceDetails }).(DeviceDetailsResponsePtrOutput)
+}
+
 // Double encryption status of the configuration. Read-only field.
 func (o ProductDetailsResponseOutput) ProductDoubleEncryptionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v ProductDetailsResponse) string { return v.ProductDoubleEncryptionStatus }).(pulumi.StringOutput)
 }
 
-// Product Family
+// Product Family.
 type ProductFamilyResponse struct {
 	// Availability information of the product system.
 	AvailabilityInformation AvailabilityInformationResponse `pulumi:"availabilityInformation"`
@@ -3041,19 +4161,21 @@ type ProductFamilyResponse struct {
 	Description DescriptionResponse `pulumi:"description"`
 	// Display Name for the product system.
 	DisplayName string `pulumi:"displayName"`
-	// list of filters supported for a product
+	// List of filters supported for a product.
 	FilterableProperties []FilterablePropertyResponse `pulumi:"filterableProperties"`
+	// The entity responsible for fulfillment of the item at the given hierarchy level.
+	FulfilledBy string `pulumi:"fulfilledBy"`
 	// Hierarchy information of a product.
 	HierarchyInformation HierarchyInformationResponse `pulumi:"hierarchyInformation"`
 	// Image information for the product system.
 	ImageInformation []ImageInformationResponse `pulumi:"imageInformation"`
-	// List of product lines supported in the product family
+	// List of product lines supported in the product family.
 	ProductLines []ProductLineResponse `pulumi:"productLines"`
-	// Contains details related to resource provider
+	// Contains details related to resource provider.
 	ResourceProviderDetails []ResourceProviderDetailsResponse `pulumi:"resourceProviderDetails"`
 }
 
-// Product Family
+// Product Family.
 type ProductFamilyResponseOutput struct{ *pulumi.OutputState }
 
 func (ProductFamilyResponseOutput) ElementType() reflect.Type {
@@ -3088,9 +4210,14 @@ func (o ProductFamilyResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProductFamilyResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// list of filters supported for a product
+// List of filters supported for a product.
 func (o ProductFamilyResponseOutput) FilterableProperties() FilterablePropertyResponseArrayOutput {
 	return o.ApplyT(func(v ProductFamilyResponse) []FilterablePropertyResponse { return v.FilterableProperties }).(FilterablePropertyResponseArrayOutput)
+}
+
+// The entity responsible for fulfillment of the item at the given hierarchy level.
+func (o ProductFamilyResponseOutput) FulfilledBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ProductFamilyResponse) string { return v.FulfilledBy }).(pulumi.StringOutput)
 }
 
 // Hierarchy information of a product.
@@ -3103,12 +4230,12 @@ func (o ProductFamilyResponseOutput) ImageInformation() ImageInformationResponse
 	return o.ApplyT(func(v ProductFamilyResponse) []ImageInformationResponse { return v.ImageInformation }).(ImageInformationResponseArrayOutput)
 }
 
-// List of product lines supported in the product family
+// List of product lines supported in the product family.
 func (o ProductFamilyResponseOutput) ProductLines() ProductLineResponseArrayOutput {
 	return o.ApplyT(func(v ProductFamilyResponse) []ProductLineResponse { return v.ProductLines }).(ProductLineResponseArrayOutput)
 }
 
-// Contains details related to resource provider
+// Contains details related to resource provider.
 func (o ProductFamilyResponseOutput) ResourceProviderDetails() ResourceProviderDetailsResponseArrayOutput {
 	return o.ApplyT(func(v ProductFamilyResponse) []ResourceProviderDetailsResponse { return v.ResourceProviderDetails }).(ResourceProviderDetailsResponseArrayOutput)
 }
@@ -3133,7 +4260,7 @@ func (o ProductFamilyResponseArrayOutput) Index(i pulumi.IntInput) ProductFamily
 	}).(ProductFamilyResponseOutput)
 }
 
-// Product line
+// Product line.
 type ProductLineResponse struct {
 	// Availability information of the product system.
 	AvailabilityInformation AvailabilityInformationResponse `pulumi:"availabilityInformation"`
@@ -3143,17 +4270,19 @@ type ProductLineResponse struct {
 	Description DescriptionResponse `pulumi:"description"`
 	// Display Name for the product system.
 	DisplayName string `pulumi:"displayName"`
-	// list of filters supported for a product
+	// List of filters supported for a product.
 	FilterableProperties []FilterablePropertyResponse `pulumi:"filterableProperties"`
+	// The entity responsible for fulfillment of the item at the given hierarchy level.
+	FulfilledBy string `pulumi:"fulfilledBy"`
 	// Hierarchy information of a product.
 	HierarchyInformation HierarchyInformationResponse `pulumi:"hierarchyInformation"`
 	// Image information for the product system.
 	ImageInformation []ImageInformationResponse `pulumi:"imageInformation"`
-	// List of products in the product line
+	// List of products in the product line.
 	Products []ProductResponse `pulumi:"products"`
 }
 
-// Product line
+// Product line.
 type ProductLineResponseOutput struct{ *pulumi.OutputState }
 
 func (ProductLineResponseOutput) ElementType() reflect.Type {
@@ -3188,9 +4317,14 @@ func (o ProductLineResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProductLineResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// list of filters supported for a product
+// List of filters supported for a product.
 func (o ProductLineResponseOutput) FilterableProperties() FilterablePropertyResponseArrayOutput {
 	return o.ApplyT(func(v ProductLineResponse) []FilterablePropertyResponse { return v.FilterableProperties }).(FilterablePropertyResponseArrayOutput)
+}
+
+// The entity responsible for fulfillment of the item at the given hierarchy level.
+func (o ProductLineResponseOutput) FulfilledBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ProductLineResponse) string { return v.FulfilledBy }).(pulumi.StringOutput)
 }
 
 // Hierarchy information of a product.
@@ -3203,7 +4337,7 @@ func (o ProductLineResponseOutput) ImageInformation() ImageInformationResponseAr
 	return o.ApplyT(func(v ProductLineResponse) []ImageInformationResponse { return v.ImageInformation }).(ImageInformationResponseArrayOutput)
 }
 
-// List of products in the product line
+// List of products in the product line.
 func (o ProductLineResponseOutput) Products() ProductResponseArrayOutput {
 	return o.ApplyT(func(v ProductLineResponse) []ProductResponse { return v.Products }).(ProductResponseArrayOutput)
 }
@@ -3228,11 +4362,11 @@ func (o ProductLineResponseArrayOutput) Index(i pulumi.IntInput) ProductLineResp
 	}).(ProductLineResponseOutput)
 }
 
-// List of Products
+// Represents a product.
 type ProductResponse struct {
 	// Availability information of the product system.
 	AvailabilityInformation AvailabilityInformationResponse `pulumi:"availabilityInformation"`
-	// List of configurations for the product
+	// List of configurations for the product.
 	Configurations []ConfigurationResponse `pulumi:"configurations"`
 	// Cost information for the product system.
 	CostInformation CostInformationResponse `pulumi:"costInformation"`
@@ -3240,15 +4374,17 @@ type ProductResponse struct {
 	Description DescriptionResponse `pulumi:"description"`
 	// Display Name for the product system.
 	DisplayName string `pulumi:"displayName"`
-	// list of filters supported for a product
+	// List of filters supported for a product.
 	FilterableProperties []FilterablePropertyResponse `pulumi:"filterableProperties"`
+	// The entity responsible for fulfillment of the item at the given hierarchy level.
+	FulfilledBy string `pulumi:"fulfilledBy"`
 	// Hierarchy information of a product.
 	HierarchyInformation HierarchyInformationResponse `pulumi:"hierarchyInformation"`
 	// Image information for the product system.
 	ImageInformation []ImageInformationResponse `pulumi:"imageInformation"`
 }
 
-// List of Products
+// Represents a product.
 type ProductResponseOutput struct{ *pulumi.OutputState }
 
 func (ProductResponseOutput) ElementType() reflect.Type {
@@ -3268,7 +4404,7 @@ func (o ProductResponseOutput) AvailabilityInformation() AvailabilityInformation
 	return o.ApplyT(func(v ProductResponse) AvailabilityInformationResponse { return v.AvailabilityInformation }).(AvailabilityInformationResponseOutput)
 }
 
-// List of configurations for the product
+// List of configurations for the product.
 func (o ProductResponseOutput) Configurations() ConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v ProductResponse) []ConfigurationResponse { return v.Configurations }).(ConfigurationResponseArrayOutput)
 }
@@ -3288,9 +4424,14 @@ func (o ProductResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProductResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// list of filters supported for a product
+// List of filters supported for a product.
 func (o ProductResponseOutput) FilterableProperties() FilterablePropertyResponseArrayOutput {
 	return o.ApplyT(func(v ProductResponse) []FilterablePropertyResponse { return v.FilterableProperties }).(FilterablePropertyResponseArrayOutput)
+}
+
+// The entity responsible for fulfillment of the item at the given hierarchy level.
+func (o ProductResponseOutput) FulfilledBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ProductResponse) string { return v.FulfilledBy }).(pulumi.StringOutput)
 }
 
 // Hierarchy information of a product.
@@ -3323,30 +4464,30 @@ func (o ProductResponseArrayOutput) Index(i pulumi.IntInput) ProductResponseOutp
 	}).(ProductResponseOutput)
 }
 
-// Billing type Purchase meter details
+// Billing type Purchase meter details.
 type PurchaseMeterDetailsResponse struct {
 	// Represents billing type.
 	// Expected value is 'Purchase'.
 	BillingType string `pulumi:"billingType"`
 	// Charging type.
 	ChargingType string `pulumi:"chargingType"`
-	// Billing unit applicable for Pav2 billing
+	// Billing unit applicable for Pav2 billing.
 	Multiplier float64 `pulumi:"multiplier"`
-	// Product Id
+	// Product Id.
 	ProductId string `pulumi:"productId"`
-	// Sku Id
+	// Sku Id.
 	SkuId string `pulumi:"skuId"`
-	// Term Id
+	// Term Id.
 	TermId string `pulumi:"termId"`
 }
 
-// Management RP details
+// Management RP details.
 type ResourceProviderDetailsResponse struct {
-	// Resource provider namespace
+	// Resource provider namespace.
 	ResourceProviderNamespace string `pulumi:"resourceProviderNamespace"`
 }
 
-// Management RP details
+// Management RP details.
 type ResourceProviderDetailsResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceProviderDetailsResponseOutput) ElementType() reflect.Type {
@@ -3361,7 +4502,7 @@ func (o ResourceProviderDetailsResponseOutput) ToResourceProviderDetailsResponse
 	return o
 }
 
-// Resource provider namespace
+// Resource provider namespace.
 func (o ResourceProviderDetailsResponseOutput) ResourceProviderNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceProviderDetailsResponse) string { return v.ResourceProviderNamespace }).(pulumi.StringOutput)
 }
@@ -3964,15 +5105,15 @@ func (o ShippingAddressResponsePtrOutput) ZipExtendedCode() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifications of the configurations
+// Specification of the configurations.
 type SpecificationResponse struct {
-	// Name of the specification
+	// Name of the specification.
 	Name string `pulumi:"name"`
-	// Value of the specification
+	// Value of the specification.
 	Value string `pulumi:"value"`
 }
 
-// Specifications of the configurations
+// Specification of the configurations.
 type SpecificationResponseOutput struct{ *pulumi.OutputState }
 
 func (SpecificationResponseOutput) ElementType() reflect.Type {
@@ -3987,12 +5128,12 @@ func (o SpecificationResponseOutput) ToSpecificationResponseOutputWithContext(ct
 	return o
 }
 
-// Name of the specification
+// Name of the specification.
 func (o SpecificationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SpecificationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Value of the specification
+// Value of the specification.
 func (o SpecificationResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SpecificationResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4391,6 +5532,10 @@ func (o FilterablePropertyArrayMapOutput) MapIndex(k pulumi.StringInput) Filtera
 }
 
 func init() {
+	pulumi.RegisterOutputType(AdditionalConfigurationOutput{})
+	pulumi.RegisterOutputType(AdditionalConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(AdditionalConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AdditionalConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(AddressDetailsOutput{})
 	pulumi.RegisterOutputType(AddressDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AddressPropertiesOutput{})
@@ -4398,6 +5543,15 @@ func init() {
 	pulumi.RegisterOutputType(AvailabilityInformationResponseOutput{})
 	pulumi.RegisterOutputType(BillingMeterDetailsResponseOutput{})
 	pulumi.RegisterOutputType(BillingMeterDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(CategoryInformationResponseOutput{})
+	pulumi.RegisterOutputType(ChildConfigurationFilterOutput{})
+	pulumi.RegisterOutputType(ChildConfigurationFilterPtrOutput{})
+	pulumi.RegisterOutputType(ChildConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ChildConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConfigurationDeviceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ConfigurationDeviceDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConfigurationFilterOutput{})
+	pulumi.RegisterOutputType(ConfigurationFilterPtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationFiltersOutput{})
 	pulumi.RegisterOutputType(ConfigurationFiltersArrayOutput{})
 	pulumi.RegisterOutputType(ConfigurationResponseOutput{})
@@ -4411,6 +5565,7 @@ func init() {
 	pulumi.RegisterOutputType(CustomerSubscriptionRegisteredFeaturesArrayOutput{})
 	pulumi.RegisterOutputType(DescriptionResponseOutput{})
 	pulumi.RegisterOutputType(DeviceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(DeviceDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeviceDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(DimensionsResponseOutput{})
 	pulumi.RegisterOutputType(DisplayInfoResponseOutput{})
@@ -4428,7 +5583,11 @@ func init() {
 	pulumi.RegisterOutputType(FilterablePropertyResponseOutput{})
 	pulumi.RegisterOutputType(FilterablePropertyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ForwardShippingDetailsResponseOutput{})
+	pulumi.RegisterOutputType(GroupedChildConfigurationsResponseOutput{})
+	pulumi.RegisterOutputType(GroupedChildConfigurationsResponseArrayOutput{})
 	pulumi.RegisterOutputType(HierarchyInformationOutput{})
+	pulumi.RegisterOutputType(HierarchyInformationPtrOutput{})
+	pulumi.RegisterOutputType(HierarchyInformationArrayOutput{})
 	pulumi.RegisterOutputType(HierarchyInformationResponseOutput{})
 	pulumi.RegisterOutputType(ImageInformationResponseOutput{})
 	pulumi.RegisterOutputType(ImageInformationResponseArrayOutput{})

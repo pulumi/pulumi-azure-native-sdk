@@ -11,8 +11,6 @@ import (
 )
 
 // Returns a Log Analytics QueryPack.
-//
-// Deprecated: azure-native:operationalinsights/v20190901:QueryPack is being removed in the next major version of this provider. Upgrade to at least azure-native:operationalinsights/v20190901preview:QueryPack to guarantee forwards compatibility.
 func LookupQueryPack(ctx *pulumi.Context, args *LookupQueryPackArgs, opts ...pulumi.InvokeOption) (*LookupQueryPackResult, error) {
 	var rv LookupQueryPackResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20190901:getQueryPack", args, &rv, opts...)

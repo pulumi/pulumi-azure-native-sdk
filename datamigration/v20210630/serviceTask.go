@@ -12,8 +12,6 @@ import (
 )
 
 // A task resource
-//
-// Deprecated: azure-native:datamigration/v20210630:ServiceTask is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:ServiceTask to guarantee forwards compatibility.
 type ServiceTask struct {
 	pulumi.CustomResourceState
 
@@ -43,6 +41,9 @@ func NewServiceTask(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:datamigration:ServiceTask"),
+		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20180715preview:ServiceTask"),
 		},

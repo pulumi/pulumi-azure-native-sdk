@@ -11,8 +11,6 @@ import (
 )
 
 // Get an application.
-//
-// Deprecated: azure-native:desktopvirtualization/v20220909:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:Application to guarantee forwards compatibility.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20220909:getApplication", args, &rv, opts...)
