@@ -11,14 +11,14 @@ import (
 )
 
 // Get a scaling plan.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2022-09-09.
 func LookupScalingPlan(ctx *pulumi.Context, args *LookupScalingPlanArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanResult, error) {
 	var rv LookupScalingPlanResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getScalingPlan", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupScalingPlanArgs struct {
@@ -56,17 +56,30 @@ type LookupScalingPlanResult struct {
 	// ObjectId of scaling plan. (internal use)
 	ObjectId string                                           `pulumi:"objectId"`
 	Plan     *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
-	// The ring number of scaling plan.
-	Ring *int `pulumi:"ring"`
-	// List of ScalingSchedule definitions.
+	// List of ScalingPlanPooledSchedule definitions.
 	Schedules []ScalingScheduleResponse                       `pulumi:"schedules"`
 	Sku       *ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Timezone of the scaling plan.
-	TimeZone *string `pulumi:"timeZone"`
+	TimeZone string `pulumi:"timeZone"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupScalingPlanResult
+func (val *LookupScalingPlanResult) Defaults() *LookupScalingPlanResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.HostPoolType == nil {
+		hostPoolType_ := "Pooled"
+		tmp.HostPoolType = &hostPoolType_
+	}
+	return &tmp
 }
 
 func LookupScalingPlanOutput(ctx *pulumi.Context, args LookupScalingPlanOutputArgs, opts ...pulumi.InvokeOption) LookupScalingPlanResultOutput {
@@ -178,12 +191,7 @@ func (o LookupScalingPlanResultOutput) Plan() ResourceModelWithAllowedPropertySe
 	return o.ApplyT(func(v LookupScalingPlanResult) *ResourceModelWithAllowedPropertySetResponsePlan { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
-// The ring number of scaling plan.
-func (o LookupScalingPlanResultOutput) Ring() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupScalingPlanResult) *int { return v.Ring }).(pulumi.IntPtrOutput)
-}
-
-// List of ScalingSchedule definitions.
+// List of ScalingPlanPooledSchedule definitions.
 func (o LookupScalingPlanResultOutput) Schedules() ScalingScheduleResponseArrayOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) []ScalingScheduleResponse { return v.Schedules }).(ScalingScheduleResponseArrayOutput)
 }
@@ -192,14 +200,19 @@ func (o LookupScalingPlanResultOutput) Sku() ResourceModelWithAllowedPropertySet
 	return o.ApplyT(func(v LookupScalingPlanResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupScalingPlanResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupScalingPlanResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o LookupScalingPlanResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Timezone of the scaling plan.
-func (o LookupScalingPlanResultOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScalingPlanResult) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+func (o LookupScalingPlanResultOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScalingPlanResult) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

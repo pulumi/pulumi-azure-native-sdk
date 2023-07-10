@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the client secret details of the authorization server.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func ListAuthorizationServerSecrets(ctx *pulumi.Context, args *ListAuthorizationServerSecretsArgs, opts ...pulumi.InvokeOption) (*ListAuthorizationServerSecretsResult, error) {
 	var rv ListAuthorizationServerSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement:listAuthorizationServerSecrets", args, &rv, opts...)
@@ -24,7 +24,7 @@ func ListAuthorizationServerSecrets(ctx *pulumi.Context, args *ListAuthorization
 type ListAuthorizationServerSecretsArgs struct {
 	// Identifier of the authorization server.
 	Authsid string `pulumi:"authsid"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -56,7 +56,7 @@ func ListAuthorizationServerSecretsOutput(ctx *pulumi.Context, args ListAuthoriz
 type ListAuthorizationServerSecretsOutputArgs struct {
 	// Identifier of the authorization server.
 	Authsid pulumi.StringInput `pulumi:"authsid"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

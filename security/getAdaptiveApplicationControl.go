@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an application control VM/server group.
-// API Version: 2020-01-01.
+// Azure REST API version: 2020-01-01.
 func LookupAdaptiveApplicationControl(ctx *pulumi.Context, args *LookupAdaptiveApplicationControlArgs, opts ...pulumi.InvokeOption) (*LookupAdaptiveApplicationControlResult, error) {
 	var rv LookupAdaptiveApplicationControlResult
 	err := ctx.Invoke("azure-native:security:getAdaptiveApplicationControl", args, &rv, opts...)

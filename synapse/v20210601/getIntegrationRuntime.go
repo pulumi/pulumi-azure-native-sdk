@@ -11,8 +11,6 @@ import (
 )
 
 // Get an integration runtime
-//
-// Deprecated: azure-native:synapse/v20210601:IntegrationRuntime is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:IntegrationRuntime to guarantee forwards compatibility.
 func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntimeArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationRuntimeResult, error) {
 	var rv LookupIntegrationRuntimeResult
 	err := ctx.Invoke("azure-native:synapse/v20210601:getIntegrationRuntime", args, &rv, opts...)

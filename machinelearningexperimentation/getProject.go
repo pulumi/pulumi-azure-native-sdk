@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified machine learning project.
-// API Version: 2017-05-01-preview.
+// Azure REST API version: 2017-05-01-preview.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("azure-native:machinelearningexperimentation:getProject", args, &rv, opts...)

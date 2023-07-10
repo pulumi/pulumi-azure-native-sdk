@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Pool
-// API Version: 2023-03-01-preview.
+// Azure REST API version: 2023-03-01-preview.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:containerstorage:getPool", args, &rv, opts...)

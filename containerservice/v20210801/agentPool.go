@@ -246,6 +246,30 @@ func NewAgentPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230102preview:AgentPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230201:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230301:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230401:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230402preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230501:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230502preview:AgentPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AgentPool

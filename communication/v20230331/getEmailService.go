@@ -11,8 +11,6 @@ import (
 )
 
 // Get the EmailService and its properties.
-//
-// Deprecated: azure-native:communication/v20230331:EmailService is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230401preview:EmailService to guarantee forwards compatibility.
 func LookupEmailService(ctx *pulumi.Context, args *LookupEmailServiceArgs, opts ...pulumi.InvokeOption) (*LookupEmailServiceResult, error) {
 	var rv LookupEmailServiceResult
 	err := ctx.Invoke("azure-native:communication/v20230331:getEmailService", args, &rv, opts...)

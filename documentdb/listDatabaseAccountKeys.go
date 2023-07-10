@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the access keys for the specified Azure Cosmos DB database account.
-// API Version: 2021-03-15.
+// Azure REST API version: 2023-04-15.
 func ListDatabaseAccountKeys(ctx *pulumi.Context, args *ListDatabaseAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListDatabaseAccountKeysResult, error) {
 	var rv ListDatabaseAccountKeysResult
 	err := ctx.Invoke("azure-native:documentdb:listDatabaseAccountKeys", args, &rv, opts...)

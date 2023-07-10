@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about the model of a security automation.
-// API Version: 2019-01-01-preview.
+// Azure REST API version: 2019-01-01-preview.
 func LookupAutomation(ctx *pulumi.Context, args *LookupAutomationArgs, opts ...pulumi.InvokeOption) (*LookupAutomationResult, error) {
 	var rv LookupAutomationResult
 	err := ctx.Invoke("azure-native:security:getAutomation", args, &rv, opts...)

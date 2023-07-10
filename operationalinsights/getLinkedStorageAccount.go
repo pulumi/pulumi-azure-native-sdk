@@ -11,7 +11,7 @@ import (
 )
 
 // Gets all linked storage account of a specific data source type associated with the specified workspace.
-// API Version: 2020-08-01.
+// Azure REST API version: 2020-08-01.
 func LookupLinkedStorageAccount(ctx *pulumi.Context, args *LookupLinkedStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupLinkedStorageAccountResult, error) {
 	var rv LookupLinkedStorageAccountResult
 	err := ctx.Invoke("azure-native:operationalinsights:getLinkedStorageAccount", args, &rv, opts...)

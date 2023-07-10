@@ -11,14 +11,14 @@ import (
 )
 
 // Get the Application Configuration Service and its properties.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupConfigurationService(ctx *pulumi.Context, args *LookupConfigurationServiceArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationServiceResult, error) {
 	var rv LookupConfigurationServiceResult
 	err := ctx.Invoke("azure-native:appplatform:getConfigurationService", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupConfigurationServiceArgs struct {
@@ -42,6 +42,17 @@ type LookupConfigurationServiceResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupConfigurationServiceResult
+func (val *LookupConfigurationServiceResult) Defaults() *LookupConfigurationServiceResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
 }
 
 func LookupConfigurationServiceOutput(ctx *pulumi.Context, args LookupConfigurationServiceOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationServiceResultOutput {

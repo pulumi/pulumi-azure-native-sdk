@@ -12,7 +12,7 @@ import (
 )
 
 // VirtualRouter Resource.
-// API Version: 2022-01-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-01-01
 type VirtualRouter struct {
 	pulumi.CustomResourceState
 
@@ -110,6 +110,12 @@ func NewVirtualRouter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualRouter"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualRouter"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:VirtualRouter"),
 		},
 	})
 	opts = append(opts, aliases)

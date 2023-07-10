@@ -12,7 +12,7 @@ import (
 )
 
 // Information about managed application definition.
-// API Version: 2019-07-01.
+// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01
 type ApplicationDefinition struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,8 @@ type ApplicationDefinition struct {
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// The storage account id for bring your own storage scenario.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -365,6 +367,11 @@ func (o ApplicationDefinitionOutput) Sku() SkuResponsePtrOutput {
 // The storage account id for bring your own storage scenario.
 func (o ApplicationDefinitionOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationDefinition) pulumi.StringPtrOutput { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ApplicationDefinitionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ApplicationDefinition) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

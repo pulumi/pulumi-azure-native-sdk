@@ -11,10 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
 type BareMetalMachine struct {
 	pulumi.CustomResourceState
 
+	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+	AssociatedResourceIds pulumi.StringArrayOutput `pulumi:"associatedResourceIds"`
 	// The connection string for the baseboard management controller including IP address and protocol.
 	BmcConnectionString pulumi.StringOutput `pulumi:"bmcConnectionString"`
 	// The credentials of the baseboard management controller on this bare metal machine.
@@ -37,7 +39,7 @@ type BareMetalMachine struct {
 	HardwareInventory HardwareInventoryResponseOutput `pulumi:"hardwareInventory"`
 	// The details of the latest hardware validation performed for this bare metal machine.
 	HardwareValidationStatus HardwareValidationStatusResponseOutput `pulumi:"hardwareValidationStatus"`
-	// The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
+	// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
 	HybridAksClustersAssociatedIds pulumi.StringArrayOutput `pulumi:"hybridAksClustersAssociatedIds"`
 	// The name of this machine represented by the host object in the Cluster's Kubernetes control plane.
 	KubernetesNodeName pulumi.StringOutput `pulumi:"kubernetesNodeName"`
@@ -79,7 +81,7 @@ type BareMetalMachine struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
+	// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
 	VirtualMachinesAssociatedIds pulumi.StringArrayOutput `pulumi:"virtualMachinesAssociatedIds"`
 }
 
@@ -129,6 +131,9 @@ func NewBareMetalMachine(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:BareMetalMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230501preview:BareMetalMachine"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -267,6 +272,11 @@ func (o BareMetalMachineOutput) ToBareMetalMachineOutputWithContext(ctx context.
 	return o
 }
 
+// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+func (o BareMetalMachineOutput) AssociatedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringArrayOutput { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
+}
+
 // The connection string for the baseboard management controller including IP address and protocol.
 func (o BareMetalMachineOutput) BmcConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.BmcConnectionString }).(pulumi.StringOutput)
@@ -322,7 +332,7 @@ func (o BareMetalMachineOutput) HardwareValidationStatus() HardwareValidationSta
 	return o.ApplyT(func(v *BareMetalMachine) HardwareValidationStatusResponseOutput { return v.HardwareValidationStatus }).(HardwareValidationStatusResponseOutput)
 }
 
-// The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
+// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
 func (o BareMetalMachineOutput) HybridAksClustersAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringArrayOutput { return v.HybridAksClustersAssociatedIds }).(pulumi.StringArrayOutput)
 }
@@ -427,7 +437,7 @@ func (o BareMetalMachineOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
+// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
 func (o BareMetalMachineOutput) VirtualMachinesAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringArrayOutput { return v.VirtualMachinesAssociatedIds }).(pulumi.StringArrayOutput)
 }

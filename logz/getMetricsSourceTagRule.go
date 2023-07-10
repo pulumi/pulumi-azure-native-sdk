@@ -11,7 +11,7 @@ import (
 )
 
 // Capture metrics of Azure resources based on ARM tags.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2022-01-01-preview.
 func LookupMetricsSourceTagRule(ctx *pulumi.Context, args *LookupMetricsSourceTagRuleArgs, opts ...pulumi.InvokeOption) (*LookupMetricsSourceTagRuleResult, error) {
 	var rv LookupMetricsSourceTagRuleResult
 	err := ctx.Invoke("azure-native:logz:getMetricsSourceTagRule", args, &rv, opts...)

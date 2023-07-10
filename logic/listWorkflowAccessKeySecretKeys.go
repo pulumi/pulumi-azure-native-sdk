@@ -11,7 +11,7 @@ import (
 )
 
 // Lists secret keys.
-// API Version: 2015-02-01-preview.
+// Azure REST API version: 2015-02-01-preview.
 func ListWorkflowAccessKeySecretKeys(ctx *pulumi.Context, args *ListWorkflowAccessKeySecretKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkflowAccessKeySecretKeysResult, error) {
 	var rv ListWorkflowAccessKeySecretKeysResult
 	err := ctx.Invoke("azure-native:logic:listWorkflowAccessKeySecretKeys", args, &rv, opts...)

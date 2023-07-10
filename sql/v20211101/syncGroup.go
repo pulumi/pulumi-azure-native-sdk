@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure SQL Database sync group.
-//
-// Deprecated: azure-native:sql/v20211101:SyncGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:SyncGroup to guarantee forwards compatibility.
 type SyncGroup struct {
 	pulumi.CustomResourceState
 
@@ -102,6 +100,9 @@ func NewSyncGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:SyncGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:SyncGroup"),
 		},
 	})
 	opts = append(opts, aliases)

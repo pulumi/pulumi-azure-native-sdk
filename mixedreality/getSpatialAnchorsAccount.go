@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve a Spatial Anchors Account.
-// API Version: 2021-01-01.
+// Azure REST API version: 2021-01-01.
 func LookupSpatialAnchorsAccount(ctx *pulumi.Context, args *LookupSpatialAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupSpatialAnchorsAccountResult, error) {
 	var rv LookupSpatialAnchorsAccountResult
 	err := ctx.Invoke("azure-native:mixedreality:getSpatialAnchorsAccount", args, &rv, opts...)

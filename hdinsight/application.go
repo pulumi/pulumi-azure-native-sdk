@@ -12,7 +12,7 @@ import (
 )
 
 // The HDInsight cluster application
-// API Version: 2018-06-01-preview.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2018-06-01-preview
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -22,9 +22,11 @@ type Application struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of the application.
 	Properties ApplicationPropertiesResponseOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tags for the application.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -50,6 +52,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20210601:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20230415preview:Application"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -163,12 +168,17 @@ func (o ApplicationOutput) Properties() ApplicationPropertiesResponseOutput {
 	return o.ApplyT(func(v *Application) ApplicationPropertiesResponseOutput { return v.Properties }).(ApplicationPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+func (o ApplicationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Application) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The tags for the application.
 func (o ApplicationOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApplicationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

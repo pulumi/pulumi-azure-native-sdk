@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an existing origin group within an endpoint.
-// API Version: 2020-09-01.
+// Azure REST API version: 2023-05-01.
 func LookupOriginGroup(ctx *pulumi.Context, args *LookupOriginGroupArgs, opts ...pulumi.InvokeOption) (*LookupOriginGroupResult, error) {
 	var rv LookupOriginGroupResult
 	err := ctx.Invoke("azure-native:cdn:getOriginGroup", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get all delivery attributes for an event subscription.
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2022-06-15.
 func GetSystemTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetSystemTopicEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetSystemTopicEventSubscriptionDeliveryAttributesResult, error) {
 	var rv GetSystemTopicEventSubscriptionDeliveryAttributesResult
 	err := ctx.Invoke("azure-native:eventgrid:getSystemTopicEventSubscriptionDeliveryAttributes", args, &rv, opts...)

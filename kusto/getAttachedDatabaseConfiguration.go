@@ -11,7 +11,7 @@ import (
 )
 
 // Returns an attached database configuration.
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-12-29.
 func LookupAttachedDatabaseConfiguration(ctx *pulumi.Context, args *LookupAttachedDatabaseConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAttachedDatabaseConfigurationResult, error) {
 	var rv LookupAttachedDatabaseConfigurationResult
 	err := ctx.Invoke("azure-native:kusto:getAttachedDatabaseConfiguration", args, &rv, opts...)
@@ -38,6 +38,10 @@ type LookupAttachedDatabaseConfigurationResult struct {
 	ClusterResourceId string `pulumi:"clusterResourceId"`
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 	DatabaseName string `pulumi:"databaseName"`
+	// Overrides the original database name. Relevant only when attaching to a specific database.
+	DatabaseNameOverride *string `pulumi:"databaseNameOverride"`
+	// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
+	DatabaseNamePrefix *string `pulumi:"databaseNamePrefix"`
 	// The default principals modification kind
 	DefaultPrincipalsModificationKind string `pulumi:"defaultPrincipalsModificationKind"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -108,6 +112,16 @@ func (o LookupAttachedDatabaseConfigurationResultOutput) ClusterResourceId() pul
 // The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 func (o LookupAttachedDatabaseConfigurationResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedDatabaseConfigurationResult) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// Overrides the original database name. Relevant only when attaching to a specific database.
+func (o LookupAttachedDatabaseConfigurationResultOutput) DatabaseNameOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAttachedDatabaseConfigurationResult) *string { return v.DatabaseNameOverride }).(pulumi.StringPtrOutput)
+}
+
+// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
+func (o LookupAttachedDatabaseConfigurationResultOutput) DatabaseNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAttachedDatabaseConfigurationResult) *string { return v.DatabaseNamePrefix }).(pulumi.StringPtrOutput)
 }
 
 // The default principals modification kind

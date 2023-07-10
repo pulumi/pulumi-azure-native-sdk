@@ -12,7 +12,7 @@ import (
 )
 
 // Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
-// API Version: 2022-03-01.
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01
 type ContainerAppsAuthConfig struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,12 @@ func NewContainerAppsAuthConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:ContainerAppsAuthConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ContainerAppsAuthConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:ContainerAppsAuthConfig"),
 		},
 	})
 	opts = append(opts, aliases)

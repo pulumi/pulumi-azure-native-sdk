@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a list of products.
-// API Version: 2017-06-01.
+// Azure REST API version: 2022-06-01.
 func ListProducts(ctx *pulumi.Context, args *ListProductsArgs, opts ...pulumi.InvokeOption) (*ListProductsResult, error) {
 	var rv ListProductsResult
 	err := ctx.Invoke("azure-native:azurestack:listProducts", args, &rv, opts...)

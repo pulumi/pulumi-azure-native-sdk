@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure SQL DB Server Outbound Firewall Rule.
-//
-// Deprecated: azure-native:sql/v20211101:OutboundFirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:OutboundFirewallRule to guarantee forwards compatibility.
 type OutboundFirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +60,9 @@ func NewOutboundFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:OutboundFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:OutboundFirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

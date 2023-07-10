@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,24 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:dbforpostgresql:Administrator":
+		r = &Administrator{}
+	case "azure-native:dbforpostgresql:Cluster":
+		r = &Cluster{}
 	case "azure-native:dbforpostgresql:Configuration":
 		r = &Configuration{}
 	case "azure-native:dbforpostgresql:Database":
 		r = &Database{}
 	case "azure-native:dbforpostgresql:FirewallRule":
 		r = &FirewallRule{}
+	case "azure-native:dbforpostgresql:Migration":
+		r = &Migration{}
 	case "azure-native:dbforpostgresql:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:dbforpostgresql:Role":
+		r = &Role{}
 	case "azure-native:dbforpostgresql:Server":
 		r = &Server{}
-	case "azure-native:dbforpostgresql:ServerAdministrator":
-		r = &ServerAdministrator{}
-	case "azure-native:dbforpostgresql:ServerKey":
-		r = &ServerKey{}
-	case "azure-native:dbforpostgresql:ServerSecurityAlertPolicy":
-		r = &ServerSecurityAlertPolicy{}
-	case "azure-native:dbforpostgresql:VirtualNetworkRule":
-		r = &VirtualNetworkRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -11,7 +11,7 @@ import (
 )
 
 // Resource representation of a workflow
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-10-11-preview.
 func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowResult, error) {
 	var rv LookupWorkflowResult
 	err := ctx.Invoke("azure-native:devhub:getWorkflow", args, &rv, opts...)
@@ -34,26 +34,50 @@ type LookupWorkflowResult struct {
 	Acr *ACRResponse `pulumi:"acr"`
 	// The Azure Kubernetes Cluster Resource the application will be deployed to.
 	AksResourceId *string `pulumi:"aksResourceId"`
+	// The name of the app.
+	AppName *string `pulumi:"appName"`
 	// Determines the authorization status of requests.
 	AuthStatus string `pulumi:"authStatus"`
 	// Repository Branch Name
-	BranchName           *string                       `pulumi:"branchName"`
+	BranchName *string `pulumi:"branchName"`
+	// The version of the language image used for building the code in the generated dockerfile.
+	BuilderVersion       *string                       `pulumi:"builderVersion"`
 	DeploymentProperties *DeploymentPropertiesResponse `pulumi:"deploymentProperties"`
 	// Path to Dockerfile Build Context within the repository.
 	DockerBuildContext *string `pulumi:"dockerBuildContext"`
 	// Path to the Dockerfile within the repository.
 	Dockerfile *string `pulumi:"dockerfile"`
+	// The mode of generation to be used for generating Dockerfiles.
+	DockerfileGenerationMode *string `pulumi:"dockerfileGenerationMode"`
+	// The directory to output the generated Dockerfile to.
+	DockerfileOutputDirectory *string `pulumi:"dockerfileOutputDirectory"`
+	// The programming language used.
+	GenerationLanguage *string `pulumi:"generationLanguage"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id              string               `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of the image to be generated.
+	ImageName *string `pulumi:"imageName"`
+	// The tag to apply to the generated image.
+	ImageTag *string `pulumi:"imageTag"`
+	// The version of the language image used for execution in the generated dockerfile.
+	LanguageVersion *string              `pulumi:"languageVersion"`
 	LastWorkflowRun *WorkflowRunResponse `pulumi:"lastWorkflowRun"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// The mode of generation to be used for generating Manifest.
+	ManifestGenerationMode *string `pulumi:"manifestGenerationMode"`
+	// The directory to output the generated manifests to.
+	ManifestOutputDirectory *string `pulumi:"manifestOutputDirectory"`
+	// Determines the type of manifests to be generated.
+	ManifestType *string `pulumi:"manifestType"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Kubernetes namespace the application is deployed to.
 	Namespace *string `pulumi:"namespace"`
 	// The fields needed for OIDC with GitHub.
 	OidcCredentials *GitHubWorkflowProfileResponseOidcCredentials `pulumi:"oidcCredentials"`
+	// The port the application is exposed on.
+	Port *string `pulumi:"port"`
 	// The status of the Pull Request submitted against the users repository.
 	PrStatus string `pulumi:"prStatus"`
 	// The URL to the Pull Request submitted against the users repository.
@@ -121,6 +145,11 @@ func (o LookupWorkflowResultOutput) AksResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.AksResourceId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the app.
+func (o LookupWorkflowResultOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
 // Determines the authorization status of requests.
 func (o LookupWorkflowResultOutput) AuthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.AuthStatus }).(pulumi.StringOutput)
@@ -129,6 +158,11 @@ func (o LookupWorkflowResultOutput) AuthStatus() pulumi.StringOutput {
 // Repository Branch Name
 func (o LookupWorkflowResultOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.BranchName }).(pulumi.StringPtrOutput)
+}
+
+// The version of the language image used for building the code in the generated dockerfile.
+func (o LookupWorkflowResultOutput) BuilderVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.BuilderVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupWorkflowResultOutput) DeploymentProperties() DeploymentPropertiesResponsePtrOutput {
@@ -145,9 +179,39 @@ func (o LookupWorkflowResultOutput) Dockerfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.Dockerfile }).(pulumi.StringPtrOutput)
 }
 
+// The mode of generation to be used for generating Dockerfiles.
+func (o LookupWorkflowResultOutput) DockerfileGenerationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.DockerfileGenerationMode }).(pulumi.StringPtrOutput)
+}
+
+// The directory to output the generated Dockerfile to.
+func (o LookupWorkflowResultOutput) DockerfileOutputDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.DockerfileOutputDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The programming language used.
+func (o LookupWorkflowResultOutput) GenerationLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.GenerationLanguage }).(pulumi.StringPtrOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkflowResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the image to be generated.
+func (o LookupWorkflowResultOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// The tag to apply to the generated image.
+func (o LookupWorkflowResultOutput) ImageTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.ImageTag }).(pulumi.StringPtrOutput)
+}
+
+// The version of the language image used for execution in the generated dockerfile.
+func (o LookupWorkflowResultOutput) LanguageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.LanguageVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupWorkflowResultOutput) LastWorkflowRun() WorkflowRunResponsePtrOutput {
@@ -157,6 +221,21 @@ func (o LookupWorkflowResultOutput) LastWorkflowRun() WorkflowRunResponsePtrOutp
 // The geo-location where the resource lives
 func (o LookupWorkflowResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The mode of generation to be used for generating Manifest.
+func (o LookupWorkflowResultOutput) ManifestGenerationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.ManifestGenerationMode }).(pulumi.StringPtrOutput)
+}
+
+// The directory to output the generated manifests to.
+func (o LookupWorkflowResultOutput) ManifestOutputDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.ManifestOutputDirectory }).(pulumi.StringPtrOutput)
+}
+
+// Determines the type of manifests to be generated.
+func (o LookupWorkflowResultOutput) ManifestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.ManifestType }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -172,6 +251,11 @@ func (o LookupWorkflowResultOutput) Namespace() pulumi.StringPtrOutput {
 // The fields needed for OIDC with GitHub.
 func (o LookupWorkflowResultOutput) OidcCredentials() GitHubWorkflowProfileResponseOidcCredentialsPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *GitHubWorkflowProfileResponseOidcCredentials { return v.OidcCredentials }).(GitHubWorkflowProfileResponseOidcCredentialsPtrOutput)
+}
+
+// The port the application is exposed on.
+func (o LookupWorkflowResultOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // The status of the Pull Request submitted against the users repository.

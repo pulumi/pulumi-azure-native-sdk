@@ -12,8 +12,6 @@ import (
 )
 
 // NamedValue details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:NamedValue is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:NamedValue to guarantee forwards compatibility.
 type NamedValue struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +77,12 @@ func NewNamedValue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:NamedValue"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:NamedValue"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:NamedValue"),
 		},
 	})
 	opts = append(opts, aliases)

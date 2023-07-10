@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified pool.
-// API Version: 2021-01-01.
+// Azure REST API version: 2023-05-01.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:batch:getPool", args, &rv, opts...)
@@ -41,10 +41,13 @@ type LookupPoolResult struct {
 	// This property is set only if the pool automatically scales, i.e. autoScaleSettings are used.
 	AutoScaleRun AutoScaleRunResponse `pulumi:"autoScaleRun"`
 	// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
-	Certificates            []CertificateReferenceResponse `pulumi:"certificates"`
-	CreationTime            string                         `pulumi:"creationTime"`
-	CurrentDedicatedNodes   int                            `pulumi:"currentDedicatedNodes"`
-	CurrentLowPriorityNodes int                            `pulumi:"currentLowPriorityNodes"`
+	//
+	// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
+	Certificates                 []CertificateReferenceResponse `pulumi:"certificates"`
+	CreationTime                 string                         `pulumi:"creationTime"`
+	CurrentDedicatedNodes        int                            `pulumi:"currentDedicatedNodes"`
+	CurrentLowPriorityNodes      int                            `pulumi:"currentLowPriorityNodes"`
+	CurrentNodeCommunicationMode string                         `pulumi:"currentNodeCommunicationMode"`
 	// Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
 	DeploymentConfiguration *DeploymentConfigurationResponse `pulumi:"deploymentConfiguration"`
 	// The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
@@ -75,6 +78,8 @@ type LookupPoolResult struct {
 	ScaleSettings *ScaleSettingsResponse `pulumi:"scaleSettings"`
 	// In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
 	StartTask *StartTaskResponse `pulumi:"startTask"`
+	// If omitted, the default value is Default.
+	TargetNodeCommunicationMode *string `pulumi:"targetNodeCommunicationMode"`
 	// If not specified, the default is spread.
 	TaskSchedulingPolicy *TaskSchedulingPolicyResponse `pulumi:"taskSchedulingPolicy"`
 	// The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
@@ -151,6 +156,8 @@ func (o LookupPoolResultOutput) AutoScaleRun() AutoScaleRunResponseOutput {
 }
 
 // For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+//
+// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
 func (o LookupPoolResultOutput) Certificates() CertificateReferenceResponseArrayOutput {
 	return o.ApplyT(func(v LookupPoolResult) []CertificateReferenceResponse { return v.Certificates }).(CertificateReferenceResponseArrayOutput)
 }
@@ -165,6 +172,10 @@ func (o LookupPoolResultOutput) CurrentDedicatedNodes() pulumi.IntOutput {
 
 func (o LookupPoolResultOutput) CurrentLowPriorityNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPoolResult) int { return v.CurrentLowPriorityNodes }).(pulumi.IntOutput)
+}
+
+func (o LookupPoolResultOutput) CurrentNodeCommunicationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.CurrentNodeCommunicationMode }).(pulumi.StringOutput)
 }
 
 // Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
@@ -243,6 +254,11 @@ func (o LookupPoolResultOutput) ScaleSettings() ScaleSettingsResponsePtrOutput {
 // In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
 func (o LookupPoolResultOutput) StartTask() StartTaskResponsePtrOutput {
 	return o.ApplyT(func(v LookupPoolResult) *StartTaskResponse { return v.StartTask }).(StartTaskResponsePtrOutput)
+}
+
+// If omitted, the default value is Default.
+func (o LookupPoolResultOutput) TargetNodeCommunicationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPoolResult) *string { return v.TargetNodeCommunicationMode }).(pulumi.StringPtrOutput)
 }
 
 // If not specified, the default is spread.

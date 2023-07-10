@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:costmanagement:Budget":
+		r = &Budget{}
 	case "azure-native:costmanagement:CloudConnector":
 		r = &CloudConnector{}
+	case "azure-native:costmanagement:Connector":
+		r = &Connector{}
 	case "azure-native:costmanagement:CostAllocationRule":
 		r = &CostAllocationRule{}
 	case "azure-native:costmanagement:Export":
 		r = &Export{}
+	case "azure-native:costmanagement:MarkupRule":
+		r = &MarkupRule{}
 	case "azure-native:costmanagement:Report":
 		r = &Report{}
 	case "azure-native:costmanagement:ReportByBillingAccount":
@@ -41,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScheduledActionByScope{}
 	case "azure-native:costmanagement:Setting":
 		r = &Setting{}
+	case "azure-native:costmanagement:TagInheritanceSetting":
+		r = &TagInheritanceSetting{}
 	case "azure-native:costmanagement:View":
 		r = &View{}
 	case "azure-native:costmanagement:ViewByScope":

@@ -12,8 +12,6 @@ import (
 )
 
 // Certificate details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Certificate to guarantee forwards compatibility.
 type Certificate struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +90,12 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)

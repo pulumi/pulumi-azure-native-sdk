@@ -12,7 +12,7 @@ import (
 )
 
 // Class representing an attached database configuration.
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview
 type KustoPoolAttachedDatabaseConfiguration struct {
 	pulumi.CustomResourceState
 

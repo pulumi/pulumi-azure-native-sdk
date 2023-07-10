@@ -12,14 +12,12 @@ import (
 )
 
 // The Managed Network resource
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type NetworkManager struct {
 	pulumi.CustomResourceState
 
 	// A description of the network manager.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A friendly name for the network manager.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource location.
@@ -29,9 +27,11 @@ type NetworkManager struct {
 	// Scope Access.
 	NetworkManagerScopeAccesses pulumi.StringArrayOutput `pulumi:"networkManagerScopeAccesses"`
 	// Scope of Network Manager.
-	NetworkManagerScopes NetworkManagerPropertiesResponseNetworkManagerScopesPtrOutput `pulumi:"networkManagerScopes"`
-	// The provisioning state of the scope assignment resource.
+	NetworkManagerScopes NetworkManagerPropertiesResponseNetworkManagerScopesOutput `pulumi:"networkManagerScopes"`
+	// The provisioning state of the network manager resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Unique identifier for this resource.
+	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -47,6 +47,12 @@ func NewNetworkManager(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.NetworkManagerScopeAccesses == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkManagerScopeAccesses'")
+	}
+	if args.NetworkManagerScopes == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkManagerScopes'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -74,6 +80,12 @@ func NewNetworkManager(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkManager"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkManager"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:NetworkManager"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -111,8 +123,6 @@ func (NetworkManagerState) ElementType() reflect.Type {
 type networkManagerArgs struct {
 	// A description of the network manager.
 	Description *string `pulumi:"description"`
-	// A friendly name for the network manager.
-	DisplayName *string `pulumi:"displayName"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
@@ -122,7 +132,7 @@ type networkManagerArgs struct {
 	// Scope Access.
 	NetworkManagerScopeAccesses []string `pulumi:"networkManagerScopeAccesses"`
 	// Scope of Network Manager.
-	NetworkManagerScopes *NetworkManagerPropertiesNetworkManagerScopes `pulumi:"networkManagerScopes"`
+	NetworkManagerScopes NetworkManagerPropertiesNetworkManagerScopes `pulumi:"networkManagerScopes"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -133,8 +143,6 @@ type networkManagerArgs struct {
 type NetworkManagerArgs struct {
 	// A description of the network manager.
 	Description pulumi.StringPtrInput
-	// A friendly name for the network manager.
-	DisplayName pulumi.StringPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Resource location.
@@ -144,7 +152,7 @@ type NetworkManagerArgs struct {
 	// Scope Access.
 	NetworkManagerScopeAccesses pulumi.StringArrayInput
 	// Scope of Network Manager.
-	NetworkManagerScopes NetworkManagerPropertiesNetworkManagerScopesPtrInput
+	NetworkManagerScopes NetworkManagerPropertiesNetworkManagerScopesInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -193,11 +201,6 @@ func (o NetworkManagerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkManager) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A friendly name for the network manager.
-func (o NetworkManagerOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkManager) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
 // A unique read-only string that changes whenever the resource is updated.
 func (o NetworkManagerOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkManager) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -219,15 +222,20 @@ func (o NetworkManagerOutput) NetworkManagerScopeAccesses() pulumi.StringArrayOu
 }
 
 // Scope of Network Manager.
-func (o NetworkManagerOutput) NetworkManagerScopes() NetworkManagerPropertiesResponseNetworkManagerScopesPtrOutput {
-	return o.ApplyT(func(v *NetworkManager) NetworkManagerPropertiesResponseNetworkManagerScopesPtrOutput {
+func (o NetworkManagerOutput) NetworkManagerScopes() NetworkManagerPropertiesResponseNetworkManagerScopesOutput {
+	return o.ApplyT(func(v *NetworkManager) NetworkManagerPropertiesResponseNetworkManagerScopesOutput {
 		return v.NetworkManagerScopes
-	}).(NetworkManagerPropertiesResponseNetworkManagerScopesPtrOutput)
+	}).(NetworkManagerPropertiesResponseNetworkManagerScopesOutput)
 }
 
-// The provisioning state of the scope assignment resource.
+// The provisioning state of the network manager resource.
 func (o NetworkManagerOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkManager) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Unique identifier for this resource.
+func (o NetworkManagerOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkManager) pulumi.StringOutput { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The system metadata related to this resource.

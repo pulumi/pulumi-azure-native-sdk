@@ -11,7 +11,7 @@ import (
 )
 
 // List primary and secondary keys for a specific key name
-// API Version: 2020-03-01.
+// Azure REST API version: 2022-12-12.
 func ListIotDpsResourceKeysForKeyName(ctx *pulumi.Context, args *ListIotDpsResourceKeysForKeyNameArgs, opts ...pulumi.InvokeOption) (*ListIotDpsResourceKeysForKeyNameResult, error) {
 	var rv ListIotDpsResourceKeysForKeyNameResult
 	err := ctx.Invoke("azure-native:devices:listIotDpsResourceKeysForKeyName", args, &rv, opts...)

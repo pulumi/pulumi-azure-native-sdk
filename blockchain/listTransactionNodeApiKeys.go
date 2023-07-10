@@ -11,7 +11,7 @@ import (
 )
 
 // List the API keys for the transaction node.
-// API Version: 2018-06-01-preview.
+// Azure REST API version: 2018-06-01-preview.
 func ListTransactionNodeApiKeys(ctx *pulumi.Context, args *ListTransactionNodeApiKeysArgs, opts ...pulumi.InvokeOption) (*ListTransactionNodeApiKeysResult, error) {
 	var rv ListTransactionNodeApiKeysResult
 	err := ctx.Invoke("azure-native:blockchain:listTransactionNodeApiKeys", args, &rv, opts...)

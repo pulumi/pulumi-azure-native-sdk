@@ -11,7 +11,7 @@ import (
 )
 
 // The EngagementFabric account
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:engagementfabric:getAccount", args, &rv, opts...)

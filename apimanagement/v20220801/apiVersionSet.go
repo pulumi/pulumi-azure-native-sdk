@@ -12,8 +12,6 @@ import (
 )
 
 // API Version Set Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiVersionSet is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiVersionSet to guarantee forwards compatibility.
 type ApiVersionSet struct {
 	pulumi.CustomResourceState
 
@@ -94,6 +92,12 @@ func NewApiVersionSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiVersionSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiVersionSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiVersionSet"),
 		},
 	})
 	opts = append(opts, aliases)

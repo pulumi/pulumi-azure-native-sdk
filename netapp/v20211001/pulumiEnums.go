@@ -38,16 +38,6 @@ const (
 	EnableSubvolumesDisabled = EnableSubvolumes("Disabled")
 )
 
-// Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
-type EncryptionType string
-
-const (
-	// EncryptionType Single, volumes will use single encryption at rest
-	EncryptionTypeSingle = EncryptionType("Single")
-	// EncryptionType Double, volumes will use double encryption at rest
-	EncryptionTypeDouble = EncryptionType("Double")
-)
-
 // Indicates whether the local volume is the source or destination for the Volume Replication
 type EndpointType string
 
@@ -64,16 +54,6 @@ const (
 	NetworkFeaturesBasic = NetworkFeatures("Basic")
 	// Standard network feature.
 	NetworkFeaturesStandard = NetworkFeatures("Standard")
-)
-
-// The qos type of the pool
-type QosType string
-
-const (
-	// qos type Auto
-	QosTypeAuto = QosType("Auto")
-	// qos type Manual
-	QosTypeManual = QosType("Manual")
 )
 
 // Schedule

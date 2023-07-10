@@ -12,7 +12,7 @@ import (
 )
 
 // A notebook workspace resource
-// API Version: 2021-03-15.
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-15
 type NotebookWorkspace struct {
 	pulumi.CustomResourceState
 
@@ -110,7 +110,19 @@ func NewNotebookWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:NotebookWorkspace"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:NotebookWorkspace"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:NotebookWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

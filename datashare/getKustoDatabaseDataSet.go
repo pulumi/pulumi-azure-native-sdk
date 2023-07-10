@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSet in a share
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupKustoDatabaseDataSet(ctx *pulumi.Context, args *LookupKustoDatabaseDataSetArgs, opts ...pulumi.InvokeOption) (*LookupKustoDatabaseDataSetResult, error) {
 	var rv LookupKustoDatabaseDataSetResult
 	err := ctx.Invoke("azure-native:datashare:getKustoDatabaseDataSet", args, &rv, opts...)

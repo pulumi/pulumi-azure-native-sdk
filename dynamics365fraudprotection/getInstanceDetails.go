@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details about the specified instances.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func LookupInstanceDetails(ctx *pulumi.Context, args *LookupInstanceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupInstanceDetailsResult, error) {
 	var rv LookupInstanceDetailsResult
 	err := ctx.Invoke("azure-native:dynamics365fraudprotection:getInstanceDetails", args, &rv, opts...)

@@ -72,6 +72,12 @@ func NewDeploymentStackAtSubscription(ctx *pulumi.Context,
 	if args.DenySettings == nil {
 		return nil, errors.New("invalid value for required argument 'DenySettings'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:resources:DeploymentStackAtSubscription"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource DeploymentStackAtSubscription
 	err := ctx.RegisterResource("azure-native:resources/v20220801preview:DeploymentStackAtSubscription", name, args, &resource, opts...)
 	if err != nil {

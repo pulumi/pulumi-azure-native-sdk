@@ -12,7 +12,7 @@ import (
 )
 
 // Configures where to store the OMS agent data for workspaces under a scope
-// API Version: 2017-08-01-preview.
+// Azure REST API version: 2017-08-01-preview. Prior API version in Azure Native 1.x: 2017-08-01-preview
 type WorkspaceSetting struct {
 	pulumi.CustomResourceState
 

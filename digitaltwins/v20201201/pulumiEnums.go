@@ -3,31 +3,6 @@
 
 package v20201201
 
-// Specifies the authentication type being used for connecting to the endpoint.
-type AuthenticationType string
-
-const (
-	AuthenticationTypeKeyBased      = AuthenticationType("KeyBased")
-	AuthenticationTypeIdentityBased = AuthenticationType("IdentityBased")
-)
-
-// The type of Managed Identity used by the DigitalTwinsInstance. Only SystemAssigned is supported.
-type DigitalTwinsIdentityType string
-
-const (
-	DigitalTwinsIdentityTypeNone           = DigitalTwinsIdentityType("None")
-	DigitalTwinsIdentityTypeSystemAssigned = DigitalTwinsIdentityType("SystemAssigned")
-)
-
-// The type of Digital Twins endpoint
-type EndpointType string
-
-const (
-	EndpointTypeEventHub   = EndpointType("EventHub")
-	EndpointTypeEventGrid  = EndpointType("EventGrid")
-	EndpointTypeServiceBus = EndpointType("ServiceBus")
-)
-
 // The status of a private endpoint connection.
 type PrivateLinkServiceConnectionStatus string
 
@@ -36,14 +11,6 @@ const (
 	PrivateLinkServiceConnectionStatusApproved     = PrivateLinkServiceConnectionStatus("Approved")
 	PrivateLinkServiceConnectionStatusRejected     = PrivateLinkServiceConnectionStatus("Rejected")
 	PrivateLinkServiceConnectionStatusDisconnected = PrivateLinkServiceConnectionStatus("Disconnected")
-)
-
-// Public network access for the DigitalTwinsInstance.
-type PublicNetworkAccess string
-
-const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
-	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
 func init() {

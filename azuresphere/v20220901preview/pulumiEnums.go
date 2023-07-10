@@ -7,7 +7,9 @@ package v20220901preview
 type AllowCrashDumpCollection string
 
 const (
-	AllowCrashDumpCollectionEnabled  = AllowCrashDumpCollection("Enabled")
+	// Crash dump collection enabled
+	AllowCrashDumpCollectionEnabled = AllowCrashDumpCollection("Enabled")
+	// Crash dump collection disabled
 	AllowCrashDumpCollectionDisabled = AllowCrashDumpCollection("Disabled")
 )
 
@@ -15,7 +17,9 @@ const (
 type OSFeedType string
 
 const (
-	OSFeedTypeRetail     = OSFeedType("Retail")
+	// Retail OS feed type.
+	OSFeedTypeRetail = OSFeedType("Retail")
+	// Retail evaluation OS feed type.
 	OSFeedTypeRetailEval = OSFeedType("RetailEval")
 )
 
@@ -23,15 +27,19 @@ const (
 type RegionalDataBoundary string
 
 const (
+	// No data boundary
 	RegionalDataBoundaryNone = RegionalDataBoundary("None")
-	RegionalDataBoundaryEU   = RegionalDataBoundary("EU")
+	// EU data boundary
+	RegionalDataBoundaryEU = RegionalDataBoundary("EU")
 )
 
 // Update policy of the device group.
 type UpdatePolicy string
 
 const (
-	UpdatePolicyUpdateAll            = UpdatePolicy("UpdateAll")
+	// Update all policy.
+	UpdatePolicyUpdateAll = UpdatePolicy("UpdateAll")
+	// No update for 3rd party app policy.
 	UpdatePolicyNo3rdPartyAppUpdates = UpdatePolicy("No3rdPartyAppUpdates")
 )
 

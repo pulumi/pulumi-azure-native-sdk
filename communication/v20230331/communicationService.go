@@ -12,8 +12,6 @@ import (
 )
 
 // A class representing a CommunicationService resource.
-//
-// Deprecated: azure-native:communication/v20230331:CommunicationService is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230401preview:CommunicationService to guarantee forwards compatibility.
 type CommunicationService struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +69,12 @@ func NewCommunicationService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20220701preview:CommunicationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230301preview:CommunicationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230401preview:CommunicationService"),
 		},
 	})
 	opts = append(opts, aliases)

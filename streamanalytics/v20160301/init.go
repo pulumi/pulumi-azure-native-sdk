@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,12 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:streamanalytics/v20160301:Function":
 		r = &Function{}
-	case "azure-native:streamanalytics/v20160301:Input":
-		r = &Input{}
-	case "azure-native:streamanalytics/v20160301:Output":
-		r = &Output{}
-	case "azure-native:streamanalytics/v20160301:StreamingJob":
-		r = &StreamingJob{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

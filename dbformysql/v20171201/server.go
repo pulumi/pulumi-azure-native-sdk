@@ -74,10 +74,10 @@ func NewServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbformysql:Server"),
+			Type: pulumi.String("azure-native:dbformysql/v20171201preview:Server"),
 		},
 		{
-			Type: pulumi.String("azure-native:dbformysql/v20171201preview:Server"),
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:Server"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Defines the properties of an Experiment
-// API Version: 2019-11-01.
+// Azure REST API version: 2019-11-01.
 func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...pulumi.InvokeOption) (*LookupExperimentResult, error) {
 	var rv LookupExperimentResult
 	err := ctx.Invoke("azure-native:network:getExperiment", args, &rv, opts...)

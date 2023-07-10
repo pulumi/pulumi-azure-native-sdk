@@ -12,7 +12,7 @@ import (
 )
 
 // Azure Active Directory only authentication.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type ServerAzureADOnlyAuthentication struct {
 	pulumi.CustomResourceState
 
@@ -73,6 +73,9 @@ func NewServerAzureADOnlyAuthentication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ServerAzureADOnlyAuthentication"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ServerAzureADOnlyAuthentication"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,7 @@ import (
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
-// API Version: 2020-07-01.
+// Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2020-07-01
 type TagRule struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +60,18 @@ func NewTagRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20220901preview:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230201preview:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230501preview:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230601:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230615preview:TagRule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Dev Box definition
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2023-04-01.
 func LookupDevBoxDefinition(ctx *pulumi.Context, args *LookupDevBoxDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupDevBoxDefinitionResult, error) {
 	var rv LookupDevBoxDefinitionResult
 	err := ctx.Invoke("azure-native:devcenter:getDevBoxDefinition", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupDevBoxDefinitionArgs struct {
 	DevBoxDefinitionName string `pulumi:"devBoxDefinitionName"`
 	// The name of the devcenter.
 	DevCenterName string `pulumi:"devCenterName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -34,6 +34,8 @@ type LookupDevBoxDefinitionArgs struct {
 type LookupDevBoxDefinitionResult struct {
 	// Image reference information for the currently active image (only populated during updates).
 	ActiveImageReference ImageReferenceResponse `pulumi:"activeImageReference"`
+	// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
+	HibernateSupport *string `pulumi:"hibernateSupport"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Image reference information.
@@ -47,7 +49,7 @@ type LookupDevBoxDefinitionResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The storage type used for the Operating System disk of Dev Boxes created using this definition.
-	OsStorageType string `pulumi:"osStorageType"`
+	OsStorageType *string `pulumi:"osStorageType"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The SKU for Dev Boxes created using this definition.
@@ -78,7 +80,7 @@ type LookupDevBoxDefinitionOutputArgs struct {
 	DevBoxDefinitionName pulumi.StringInput `pulumi:"devBoxDefinitionName"`
 	// The name of the devcenter.
 	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -104,6 +106,11 @@ func (o LookupDevBoxDefinitionResultOutput) ToLookupDevBoxDefinitionResultOutput
 // Image reference information for the currently active image (only populated during updates).
 func (o LookupDevBoxDefinitionResultOutput) ActiveImageReference() ImageReferenceResponseOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) ImageReferenceResponse { return v.ActiveImageReference }).(ImageReferenceResponseOutput)
+}
+
+// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
+func (o LookupDevBoxDefinitionResultOutput) HibernateSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDevBoxDefinitionResult) *string { return v.HibernateSupport }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -139,8 +146,8 @@ func (o LookupDevBoxDefinitionResultOutput) Name() pulumi.StringOutput {
 }
 
 // The storage type used for the Operating System disk of Dev Boxes created using this definition.
-func (o LookupDevBoxDefinitionResultOutput) OsStorageType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.OsStorageType }).(pulumi.StringOutput)
+func (o LookupDevBoxDefinitionResultOutput) OsStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDevBoxDefinitionResult) *string { return v.OsStorageType }).(pulumi.StringPtrOutput)
 }
 
 // The provisioning state of the resource.

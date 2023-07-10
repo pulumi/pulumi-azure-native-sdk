@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified volume container name.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func LookupVolumeContainer(ctx *pulumi.Context, args *LookupVolumeContainerArgs, opts ...pulumi.InvokeOption) (*LookupVolumeContainerResult, error) {
 	var rv LookupVolumeContainerResult
 	err := ctx.Invoke("azure-native:storsimple:getVolumeContainer", args, &rv, opts...)

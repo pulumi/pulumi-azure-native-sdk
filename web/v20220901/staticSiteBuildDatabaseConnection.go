@@ -55,6 +55,12 @@ func NewStaticSiteBuildDatabaseConnection(ctx *pulumi.Context,
 	if args.ResourceId == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:web:StaticSiteBuildDatabaseConnection"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource StaticSiteBuildDatabaseConnection
 	err := ctx.RegisterResource("azure-native:web/v20220901:StaticSiteBuildDatabaseConnection", name, args, &resource, opts...)
 	if err != nil {

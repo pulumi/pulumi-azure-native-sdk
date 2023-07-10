@@ -12,15 +12,15 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type DataContainer struct {
 	pulumi.CustomResourceState
 
+	// [Required] Additional attributes of the entity.
+	DataContainerProperties DataContainerResponseOutput `pulumi:"dataContainerProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties DataContainerResponseOutput `pulumi:"properties"`
-	// System data associated with resource provider
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -33,8 +33,8 @@ func NewDataContainer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.DataContainerProperties == nil {
+		return nil, errors.New("invalid value for required argument 'DataContainerProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -42,6 +42,7 @@ func NewDataContainer(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	args.DataContainerProperties = args.DataContainerProperties.ToDataContainerTypeOutput().ApplyT(func(v DataContainerType) DataContainerType { return *v.Defaults() }).(DataContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:DataContainer"),
@@ -65,7 +66,16 @@ func NewDataContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:DataContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:DataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:DataContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:DataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:DataContainer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -101,10 +111,10 @@ func (DataContainerState) ElementType() reflect.Type {
 }
 
 type dataContainerArgs struct {
+	// [Required] Additional attributes of the entity.
+	DataContainerProperties DataContainerType `pulumi:"dataContainerProperties"`
 	// Container name.
 	Name *string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties DataContainerType `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -113,10 +123,10 @@ type dataContainerArgs struct {
 
 // The set of arguments for constructing a DataContainer resource.
 type DataContainerArgs struct {
+	// [Required] Additional attributes of the entity.
+	DataContainerProperties DataContainerTypeInput
 	// Container name.
 	Name pulumi.StringPtrInput
-	// [Required] Additional attributes of the entity.
-	Properties DataContainerTypeInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of Azure Machine Learning workspace.
@@ -160,17 +170,17 @@ func (o DataContainerOutput) ToDataContainerOutputWithContext(ctx context.Contex
 	return o
 }
 
+// [Required] Additional attributes of the entity.
+func (o DataContainerOutput) DataContainerProperties() DataContainerResponseOutput {
+	return o.ApplyT(func(v *DataContainer) DataContainerResponseOutput { return v.DataContainerProperties }).(DataContainerResponseOutput)
+}
+
 // The name of the resource
 func (o DataContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o DataContainerOutput) Properties() DataContainerResponseOutput {
-	return o.ApplyT(func(v *DataContainer) DataContainerResponseOutput { return v.Properties }).(DataContainerResponseOutput)
-}
-
-// System data associated with resource provider
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o DataContainerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DataContainer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

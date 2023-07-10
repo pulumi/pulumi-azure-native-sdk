@@ -12,8 +12,6 @@ import (
 )
 
 // Diagnostic details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiDiagnostic is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiDiagnostic to guarantee forwards compatibility.
 type ApiDiagnostic struct {
 	pulumi.CustomResourceState
 
@@ -104,6 +102,12 @@ func NewApiDiagnostic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiDiagnostic"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiDiagnostic"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiDiagnostic"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -39,6 +39,12 @@ func NewMigrateAgent(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:migrate:MigrateAgent"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource MigrateAgent
 	err := ctx.RegisterResource("azure-native:migrate/v20220501preview:MigrateAgent", name, args, &resource, opts...)
 	if err != nil {

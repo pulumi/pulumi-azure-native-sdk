@@ -197,6 +197,12 @@ func NewSubnet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:Subnet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:Subnet"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:Subnet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Subnet
@@ -244,7 +250,7 @@ type subnetArgs struct {
 	// Nat gateway associated with this subnet.
 	NatGateway *SubResource `pulumi:"natGateway"`
 	// The reference of the NetworkSecurityGroup resource.
-	NetworkSecurityGroup *NetworkSecurityGroupType `pulumi:"networkSecurityGroup"`
+	NetworkSecurityGroup *NetworkSecurityGroup `pulumi:"networkSecurityGroup"`
 	// The provisioning state of the resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// The name of the resource group.
@@ -252,11 +258,11 @@ type subnetArgs struct {
 	// Gets an array of references to the external resources using subnet.
 	ResourceNavigationLinks []ResourceNavigationLink `pulumi:"resourceNavigationLinks"`
 	// The reference of the RouteTable resource.
-	RouteTable *RouteTableType `pulumi:"routeTable"`
+	RouteTable *RouteTable `pulumi:"routeTable"`
 	// Gets an array of references to services injecting into this subnet.
 	ServiceAssociationLinks []ServiceAssociationLink `pulumi:"serviceAssociationLinks"`
 	// An array of service endpoint policies.
-	ServiceEndpointPolicies []ServiceEndpointPolicyType `pulumi:"serviceEndpointPolicies"`
+	ServiceEndpointPolicies []ServiceEndpointPolicy `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints []ServiceEndpointPropertiesFormat `pulumi:"serviceEndpoints"`
 	// The name of the subnet.
@@ -280,7 +286,7 @@ type SubnetArgs struct {
 	// Nat gateway associated with this subnet.
 	NatGateway SubResourcePtrInput
 	// The reference of the NetworkSecurityGroup resource.
-	NetworkSecurityGroup NetworkSecurityGroupTypePtrInput
+	NetworkSecurityGroup NetworkSecurityGroupPtrInput
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringPtrInput
 	// The name of the resource group.
@@ -288,11 +294,11 @@ type SubnetArgs struct {
 	// Gets an array of references to the external resources using subnet.
 	ResourceNavigationLinks ResourceNavigationLinkArrayInput
 	// The reference of the RouteTable resource.
-	RouteTable RouteTableTypePtrInput
+	RouteTable RouteTablePtrInput
 	// Gets an array of references to services injecting into this subnet.
 	ServiceAssociationLinks ServiceAssociationLinkArrayInput
 	// An array of service endpoint policies.
-	ServiceEndpointPolicies ServiceEndpointPolicyTypeArrayInput
+	ServiceEndpointPolicies ServiceEndpointPolicyArrayInput
 	// An array of service endpoints.
 	ServiceEndpoints ServiceEndpointPropertiesFormatArrayInput
 	// The name of the subnet.

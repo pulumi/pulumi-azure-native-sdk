@@ -10,8 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Lists the PNS Credentials associated with a notification hub .
-// API Version: 2017-04-01.
+// Description of a NotificationHub PNS Credentials. This is a response of the POST requests that return namespace or hubs
+// PNS credentials.
+// Azure REST API version: 2023-01-01-preview.
 func GetNotificationHubPnsCredentials(ctx *pulumi.Context, args *GetNotificationHubPnsCredentialsArgs, opts ...pulumi.InvokeOption) (*GetNotificationHubPnsCredentialsResult, error) {
 	var rv GetNotificationHubPnsCredentialsResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNotificationHubPnsCredentials", args, &rv, opts...)
@@ -22,40 +23,31 @@ func GetNotificationHubPnsCredentials(ctx *pulumi.Context, args *GetNotification
 }
 
 type GetNotificationHubPnsCredentialsArgs struct {
-	// The namespace name.
+	// Namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// The notification hub name.
+	// Notification Hub name
 	NotificationHubName string `pulumi:"notificationHubName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Description of a NotificationHub PNS Credentials.
+// Description of a NotificationHub PNS Credentials. This is a response of the POST requests that return namespace or hubs
+// PNS credentials.
 type GetNotificationHubPnsCredentialsResult struct {
-	// The AdmCredential of the created NotificationHub
-	AdmCredential *AdmCredentialResponse `pulumi:"admCredential"`
-	// The ApnsCredential of the created NotificationHub
-	ApnsCredential *ApnsCredentialResponse `pulumi:"apnsCredential"`
-	// The BaiduCredential of the created NotificationHub
-	BaiduCredential *BaiduCredentialResponse `pulumi:"baiduCredential"`
-	// The GcmCredential of the created NotificationHub
-	GcmCredential *GcmCredentialResponse `pulumi:"gcmCredential"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource location
+	// Deprecated - only for compatibility.
 	Location *string `pulumi:"location"`
-	// The MpnsCredential of the created NotificationHub
-	MpnsCredential *MpnsCredentialResponse `pulumi:"mpnsCredential"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// The sku of the created namespace
-	Sku *SkuResponse `pulumi:"sku"`
-	// Resource tags
+	// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
+	Properties PnsCredentialsResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Deprecated - only for compatibility.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// The WnsCredential of the created NotificationHub
-	WnsCredential *WnsCredentialResponse `pulumi:"wnsCredential"`
 }
 
 func GetNotificationHubPnsCredentialsOutput(ctx *pulumi.Context, args GetNotificationHubPnsCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetNotificationHubPnsCredentialsResultOutput {
@@ -72,11 +64,11 @@ func GetNotificationHubPnsCredentialsOutput(ctx *pulumi.Context, args GetNotific
 }
 
 type GetNotificationHubPnsCredentialsOutputArgs struct {
-	// The namespace name.
+	// Namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// The notification hub name.
+	// Notification Hub name
 	NotificationHubName pulumi.StringInput `pulumi:"notificationHubName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -84,7 +76,8 @@ func (GetNotificationHubPnsCredentialsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetNotificationHubPnsCredentialsArgs)(nil)).Elem()
 }
 
-// Description of a NotificationHub PNS Credentials.
+// Description of a NotificationHub PNS Credentials. This is a response of the POST requests that return namespace or hubs
+// PNS credentials.
 type GetNotificationHubPnsCredentialsResultOutput struct{ *pulumi.OutputState }
 
 func (GetNotificationHubPnsCredentialsResultOutput) ElementType() reflect.Type {
@@ -99,64 +92,39 @@ func (o GetNotificationHubPnsCredentialsResultOutput) ToGetNotificationHubPnsCre
 	return o
 }
 
-// The AdmCredential of the created NotificationHub
-func (o GetNotificationHubPnsCredentialsResultOutput) AdmCredential() AdmCredentialResponsePtrOutput {
-	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *AdmCredentialResponse { return v.AdmCredential }).(AdmCredentialResponsePtrOutput)
-}
-
-// The ApnsCredential of the created NotificationHub
-func (o GetNotificationHubPnsCredentialsResultOutput) ApnsCredential() ApnsCredentialResponsePtrOutput {
-	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *ApnsCredentialResponse { return v.ApnsCredential }).(ApnsCredentialResponsePtrOutput)
-}
-
-// The BaiduCredential of the created NotificationHub
-func (o GetNotificationHubPnsCredentialsResultOutput) BaiduCredential() BaiduCredentialResponsePtrOutput {
-	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *BaiduCredentialResponse { return v.BaiduCredential }).(BaiduCredentialResponsePtrOutput)
-}
-
-// The GcmCredential of the created NotificationHub
-func (o GetNotificationHubPnsCredentialsResultOutput) GcmCredential() GcmCredentialResponsePtrOutput {
-	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *GcmCredentialResponse { return v.GcmCredential }).(GcmCredentialResponsePtrOutput)
-}
-
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o GetNotificationHubPnsCredentialsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource location
+// Deprecated - only for compatibility.
 func (o GetNotificationHubPnsCredentialsResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The MpnsCredential of the created NotificationHub
-func (o GetNotificationHubPnsCredentialsResultOutput) MpnsCredential() MpnsCredentialResponsePtrOutput {
-	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *MpnsCredentialResponse { return v.MpnsCredential }).(MpnsCredentialResponsePtrOutput)
-}
-
-// Resource name
+// The name of the resource
 func (o GetNotificationHubPnsCredentialsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The sku of the created namespace
-func (o GetNotificationHubPnsCredentialsResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
+func (o GetNotificationHubPnsCredentialsResultOutput) Properties() PnsCredentialsResponseOutput {
+	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) PnsCredentialsResponse { return v.Properties }).(PnsCredentialsResponseOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GetNotificationHubPnsCredentialsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Deprecated - only for compatibility.
 func (o GetNotificationHubPnsCredentialsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GetNotificationHubPnsCredentialsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The WnsCredential of the created NotificationHub
-func (o GetNotificationHubPnsCredentialsResultOutput) WnsCredential() WnsCredentialResponsePtrOutput {
-	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) *WnsCredentialResponse { return v.WnsCredential }).(WnsCredentialResponsePtrOutput)
 }
 
 func init() {

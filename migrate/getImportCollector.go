@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Import collector.
-// API Version: 2019-10-01.
+// Azure REST API version: 2019-10-01.
 func LookupImportCollector(ctx *pulumi.Context, args *LookupImportCollectorArgs, opts ...pulumi.InvokeOption) (*LookupImportCollectorResult, error) {
 	var rv LookupImportCollectorResult
 	err := ctx.Invoke("azure-native:migrate:getImportCollector", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the DNS records specified by the referencing targetResourceIds.
-// API Version: 2018-05-01.
+// Azure REST API version: 2023-07-01-preview.
 func GetDnsResourceReferenceByTarResources(ctx *pulumi.Context, args *GetDnsResourceReferenceByTarResourcesArgs, opts ...pulumi.InvokeOption) (*GetDnsResourceReferenceByTarResourcesResult, error) {
 	var rv GetDnsResourceReferenceByTarResourcesResult
 	err := ctx.Invoke("azure-native:network:getDnsResourceReferenceByTarResources", args, &rv, opts...)

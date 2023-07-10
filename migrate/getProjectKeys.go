@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Log Analytics Workspace ID and Primary Key for the specified project.
-// API Version: 2018-02-02.
+// Azure REST API version: 2018-02-02.
 func GetProjectKeys(ctx *pulumi.Context, args *GetProjectKeysArgs, opts ...pulumi.InvokeOption) (*GetProjectKeysResult, error) {
 	var rv GetProjectKeysResult
 	err := ctx.Invoke("azure-native:migrate:getProjectKeys", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a data export instance.
-// API Version: 2020-08-01.
+// Azure REST API version: 2020-08-01.
 func LookupDataExport(ctx *pulumi.Context, args *LookupDataExportArgs, opts ...pulumi.InvokeOption) (*LookupDataExportResult, error) {
 	var rv LookupDataExportResult
 	err := ctx.Invoke("azure-native:operationalinsights:getDataExport", args, &rv, opts...)

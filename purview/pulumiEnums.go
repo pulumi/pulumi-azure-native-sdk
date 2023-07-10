@@ -3,6 +3,58 @@
 
 package purview
 
+// Identity Type.
+type CredentialsType string
+
+const (
+	CredentialsTypeNone           = CredentialsType("None")
+	CredentialsTypeSystemAssigned = CredentialsType("SystemAssigned")
+	CredentialsTypeUserAssigned   = CredentialsType("UserAssigned")
+)
+
+// The event hub type.
+type EventHubType string
+
+const (
+	EventHubTypeNotification = EventHubType("Notification")
+	EventHubTypeHook         = EventHubType("Hook")
+)
+
+// The state of the event streaming service
+type EventStreamingState string
+
+const (
+	EventStreamingStateDisabled = EventStreamingState("Disabled")
+	EventStreamingStateEnabled  = EventStreamingState("Enabled")
+)
+
+// The event streaming service type
+type EventStreamingType string
+
+const (
+	EventStreamingTypeNone    = EventStreamingType("None")
+	EventStreamingTypeManaged = EventStreamingType("Managed")
+	EventStreamingTypeAzure   = EventStreamingType("Azure")
+)
+
+// Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
+type ManagedEventHubState string
+
+const (
+	ManagedEventHubStateNotSpecified = ManagedEventHubState("NotSpecified")
+	ManagedEventHubStateDisabled     = ManagedEventHubState("Disabled")
+	ManagedEventHubStateEnabled      = ManagedEventHubState("Enabled")
+)
+
+// Gets or sets the public network access for managed resources.
+type ManagedResourcesPublicNetworkAccess string
+
+const (
+	ManagedResourcesPublicNetworkAccessNotSpecified = ManagedResourcesPublicNetworkAccess("NotSpecified")
+	ManagedResourcesPublicNetworkAccessEnabled      = ManagedResourcesPublicNetworkAccess("Enabled")
+	ManagedResourcesPublicNetworkAccessDisabled     = ManagedResourcesPublicNetworkAccess("Disabled")
+)
+
 // Gets or sets the public network access.
 type PublicNetworkAccess string
 
@@ -27,7 +79,9 @@ const (
 type Type string
 
 const (
+	TypeNone           = Type("None")
 	TypeSystemAssigned = Type("SystemAssigned")
+	TypeUserAssigned   = Type("UserAssigned")
 )
 
 func init() {

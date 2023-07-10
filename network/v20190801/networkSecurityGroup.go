@@ -182,6 +182,12 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkSecurityGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkSecurityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:NetworkSecurityGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkSecurityGroup
@@ -217,7 +223,7 @@ func (NetworkSecurityGroupState) ElementType() reflect.Type {
 
 type networkSecurityGroupArgs struct {
 	// The default security rules of network security group.
-	DefaultSecurityRules []SecurityRuleType `pulumi:"defaultSecurityRules"`
+	DefaultSecurityRules []SecurityRule `pulumi:"defaultSecurityRules"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
@@ -229,7 +235,7 @@ type networkSecurityGroupArgs struct {
 	// The resource GUID property of the network security group resource.
 	ResourceGuid *string `pulumi:"resourceGuid"`
 	// A collection of security rules of the network security group.
-	SecurityRules []SecurityRuleType `pulumi:"securityRules"`
+	SecurityRules []SecurityRule `pulumi:"securityRules"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -237,7 +243,7 @@ type networkSecurityGroupArgs struct {
 // The set of arguments for constructing a NetworkSecurityGroup resource.
 type NetworkSecurityGroupArgs struct {
 	// The default security rules of network security group.
-	DefaultSecurityRules SecurityRuleTypeArrayInput
+	DefaultSecurityRules SecurityRuleArrayInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Resource location.
@@ -249,7 +255,7 @@ type NetworkSecurityGroupArgs struct {
 	// The resource GUID property of the network security group resource.
 	ResourceGuid pulumi.StringPtrInput
 	// A collection of security rules of the network security group.
-	SecurityRules SecurityRuleTypeArrayInput
+	SecurityRules SecurityRuleArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Device. Use '.unassigned' or '.default' for the device group and product names when a device does not belong to a device group and product.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {
 	var rv LookupDeviceResult
 	err := ctx.Invoke("azure-native:azuresphere:getDevice", args, &rv, opts...)

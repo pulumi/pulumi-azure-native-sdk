@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an IPv6 firewall rule.
-// API Version: 2021-08-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupIPv6FirewallRule(ctx *pulumi.Context, args *LookupIPv6FirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupIPv6FirewallRuleResult, error) {
 	var rv LookupIPv6FirewallRuleResult
 	err := ctx.Invoke("azure-native:sql:getIPv6FirewallRule", args, &rv, opts...)

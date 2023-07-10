@@ -12,7 +12,7 @@ import (
 )
 
 // Backup Vault Resource
-// API Version: 2021-01-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2021-01-01
 type BackupVault struct {
 	pulumi.CustomResourceState
 
@@ -99,6 +99,12 @@ func NewBackupVault(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230101:BackupVault"),
 		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:BackupVault"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230501:BackupVault"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource BackupVault
@@ -141,7 +147,7 @@ type backupVaultArgs struct {
 	Location *string `pulumi:"location"`
 	// BackupVaultResource properties
 	Properties BackupVaultType `pulumi:"properties"`
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -159,7 +165,7 @@ type BackupVaultArgs struct {
 	Location pulumi.StringPtrInput
 	// BackupVaultResource properties
 	Properties BackupVaultTypeInput
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput

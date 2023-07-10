@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the applicable start/stop schedules, if any.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func ListServiceFabricApplicableSchedules(ctx *pulumi.Context, args *ListServiceFabricApplicableSchedulesArgs, opts ...pulumi.InvokeOption) (*ListServiceFabricApplicableSchedulesResult, error) {
 	var rv ListServiceFabricApplicableSchedulesResult
 	err := ctx.Invoke("azure-native:devtestlab:listServiceFabricApplicableSchedules", args, &rv, opts...)

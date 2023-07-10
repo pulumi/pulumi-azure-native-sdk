@@ -12,8 +12,6 @@ import (
 )
 
 // A group of job targets.
-//
-// Deprecated: azure-native:sql/v20211101:JobTargetGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:JobTargetGroup to guarantee forwards compatibility.
 type JobTargetGroup struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +78,9 @@ func NewJobTargetGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:JobTargetGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:JobTargetGroup"),
 		},
 	})
 	opts = append(opts, aliases)

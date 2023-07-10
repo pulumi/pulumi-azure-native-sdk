@@ -3,13 +3,6 @@
 
 package v20230201
 
-import (
-	"context"
-	"reflect"
-
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-)
-
 // The type of the automation rule action.
 type ActionType string
 
@@ -18,86 +11,6 @@ const (
 	ActionTypeModifyProperties = ActionType("ModifyProperties")
 	// Run a playbook on an object
 	ActionTypeRunPlaybook = ActionType("RunPlaybook")
-)
-
-// Alert detail
-type AlertDetail string
-
-const (
-	// Alert display name
-	AlertDetailDisplayName = AlertDetail("DisplayName")
-	// Alert severity
-	AlertDetailSeverity = AlertDetail("Severity")
-)
-
-// The V3 alert property
-type AlertProperty string
-
-const (
-	// Alert's link
-	AlertPropertyAlertLink = AlertProperty("AlertLink")
-	// Confidence level property
-	AlertPropertyConfidenceLevel = AlertProperty("ConfidenceLevel")
-	// Confidence score
-	AlertPropertyConfidenceScore = AlertProperty("ConfidenceScore")
-	// Extended links to the alert
-	AlertPropertyExtendedLinks = AlertProperty("ExtendedLinks")
-	// Product name alert property
-	AlertPropertyProductName = AlertProperty("ProductName")
-	// Provider name alert property
-	AlertPropertyProviderName = AlertProperty("ProviderName")
-	// Product component name alert property
-	AlertPropertyProductComponentName = AlertProperty("ProductComponentName")
-	// Remediation steps alert property
-	AlertPropertyRemediationSteps = AlertProperty("RemediationSteps")
-	// Techniques alert property
-	AlertPropertyTechniques = AlertProperty("Techniques")
-)
-
-// The alert rule kind
-type AlertRuleKind string
-
-const (
-	AlertRuleKindScheduled                         = AlertRuleKind("Scheduled")
-	AlertRuleKindMicrosoftSecurityIncidentCreation = AlertRuleKind("MicrosoftSecurityIncidentCreation")
-	AlertRuleKindFusion                            = AlertRuleKind("Fusion")
-)
-
-// The severity for alerts created by this alert rule.
-type AlertSeverity string
-
-const (
-	// High severity
-	AlertSeverityHigh = AlertSeverity("High")
-	// Medium severity
-	AlertSeverityMedium = AlertSeverity("Medium")
-	// Low severity
-	AlertSeverityLow = AlertSeverity("Low")
-	// Informational severity
-	AlertSeverityInformational = AlertSeverity("Informational")
-)
-
-// The severity for alerts created by this alert rule.
-type AttackTactic string
-
-const (
-	AttackTacticReconnaissance          = AttackTactic("Reconnaissance")
-	AttackTacticResourceDevelopment     = AttackTactic("ResourceDevelopment")
-	AttackTacticInitialAccess           = AttackTactic("InitialAccess")
-	AttackTacticExecution               = AttackTactic("Execution")
-	AttackTacticPersistence             = AttackTactic("Persistence")
-	AttackTacticPrivilegeEscalation     = AttackTactic("PrivilegeEscalation")
-	AttackTacticDefenseEvasion          = AttackTactic("DefenseEvasion")
-	AttackTacticCredentialAccess        = AttackTactic("CredentialAccess")
-	AttackTacticDiscovery               = AttackTactic("Discovery")
-	AttackTacticLateralMovement         = AttackTactic("LateralMovement")
-	AttackTacticCollection              = AttackTactic("Collection")
-	AttackTacticExfiltration            = AttackTactic("Exfiltration")
-	AttackTacticCommandAndControl       = AttackTactic("CommandAndControl")
-	AttackTacticImpact                  = AttackTactic("Impact")
-	AttackTacticPreAttack               = AttackTactic("PreAttack")
-	AttackTacticImpairProcessControl    = AttackTactic("ImpairProcessControl")
-	AttackTacticInhibitResponseFunction = AttackTactic("InhibitResponseFunction")
 )
 
 type AutomationRulePropertyArrayChangedConditionSupportedArrayType string
@@ -312,56 +225,6 @@ const (
 	DataTypeStateDisabled = DataTypeState("Disabled")
 )
 
-// The V3 type of the mapped entity
-type EntityMappingType string
-
-const (
-	// User account entity type
-	EntityMappingTypeAccount = EntityMappingType("Account")
-	// Host entity type
-	EntityMappingTypeHost = EntityMappingType("Host")
-	// IP address entity type
-	EntityMappingTypeIP = EntityMappingType("IP")
-	// Malware entity type
-	EntityMappingTypeMalware = EntityMappingType("Malware")
-	// System file entity type
-	EntityMappingTypeFile = EntityMappingType("File")
-	// Process entity type
-	EntityMappingTypeProcess = EntityMappingType("Process")
-	// Cloud app entity type
-	EntityMappingTypeCloudApplication = EntityMappingType("CloudApplication")
-	// DNS entity type
-	EntityMappingTypeDNS = EntityMappingType("DNS")
-	// Azure resource entity type
-	EntityMappingTypeAzureResource = EntityMappingType("AzureResource")
-	// File-hash entity type
-	EntityMappingTypeFileHash = EntityMappingType("FileHash")
-	// Registry key entity type
-	EntityMappingTypeRegistryKey = EntityMappingType("RegistryKey")
-	// Registry value entity type
-	EntityMappingTypeRegistryValue = EntityMappingType("RegistryValue")
-	// Security group entity type
-	EntityMappingTypeSecurityGroup = EntityMappingType("SecurityGroup")
-	// URL entity type
-	EntityMappingTypeURL = EntityMappingType("URL")
-	// Mailbox entity type
-	EntityMappingTypeMailbox = EntityMappingType("Mailbox")
-	// Mail cluster entity type
-	EntityMappingTypeMailCluster = EntityMappingType("MailCluster")
-	// Mail message entity type
-	EntityMappingTypeMailMessage = EntityMappingType("MailMessage")
-	// Submission mail entity type
-	EntityMappingTypeSubmissionMail = EntityMappingType("SubmissionMail")
-)
-
-// The event grouping aggregation kinds
-type EventGroupingAggregationKind string
-
-const (
-	EventGroupingAggregationKindSingleAlert    = EventGroupingAggregationKind("SingleAlert")
-	EventGroupingAggregationKindAlertPerResult = EventGroupingAggregationKind("AlertPerResult")
-)
-
 // The reason the incident was closed
 type IncidentClassification string
 
@@ -416,29 +279,6 @@ const (
 	IncidentStatusClosed = IncidentStatus("Closed")
 )
 
-// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
-type MatchingMethod string
-
-const (
-	// Grouping alerts into a single incident if all the entities match
-	MatchingMethodAllEntities = MatchingMethod("AllEntities")
-	// Grouping any alerts triggered by this rule into a single incident
-	MatchingMethodAnyAlert = MatchingMethod("AnyAlert")
-	// Grouping alerts into a single incident if the selected entities, custom details and alert details match
-	MatchingMethodSelected = MatchingMethod("Selected")
-)
-
-// The alerts' productName on which the cases will be generated
-type MicrosoftSecurityProductName string
-
-const (
-	MicrosoftSecurityProductName_Microsoft_Cloud_App_Security               = MicrosoftSecurityProductName("Microsoft Cloud App Security")
-	MicrosoftSecurityProductName_Azure_Security_Center                      = MicrosoftSecurityProductName("Azure Security Center")
-	MicrosoftSecurityProductName_Azure_Advanced_Threat_Protection           = MicrosoftSecurityProductName("Azure Advanced Threat Protection")
-	MicrosoftSecurityProductName_Azure_Active_Directory_Identity_Protection = MicrosoftSecurityProductName("Azure Active Directory Identity Protection")
-	MicrosoftSecurityProductName_Azure_Security_Center_for_IoT              = MicrosoftSecurityProductName("Azure Security Center for IoT")
-)
-
 // Operator used for list of dependencies in criteria array.
 type Operator string
 
@@ -457,23 +297,6 @@ const (
 	OwnerTypeUser = OwnerType("User")
 	// The incident owner type is an AAD group
 	OwnerTypeGroup = OwnerType("Group")
-)
-
-// The kind of security ML Analytics Settings
-type SecurityMLAnalyticsSettingsKind string
-
-const (
-	SecurityMLAnalyticsSettingsKindAnomaly = SecurityMLAnalyticsSettingsKind("Anomaly")
-)
-
-// The anomaly SecurityMLAnalyticsSettings status
-type SettingsStatus string
-
-const (
-	// Anomaly settings status in Production mode
-	SettingsStatusProduction = SettingsStatus("Production")
-	// Anomaly settings status in Flighting mode
-	SettingsStatusFlighting = SettingsStatus("Flighting")
 )
 
 // The source of the watchlist
@@ -511,173 +334,6 @@ const (
 	ThreatIntelligenceResourceInnerKindIndicator = ThreatIntelligenceResourceInnerKind("indicator")
 )
 
-// The operation against the threshold that triggers alert rule.
-type TriggerOperator string
-
-const (
-	TriggerOperatorGreaterThan = TriggerOperator("GreaterThan")
-	TriggerOperatorLessThan    = TriggerOperator("LessThan")
-	TriggerOperatorEqual       = TriggerOperator("Equal")
-	TriggerOperatorNotEqual    = TriggerOperator("NotEqual")
-)
-
-func (TriggerOperator) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerOperator)(nil)).Elem()
-}
-
-func (e TriggerOperator) ToTriggerOperatorOutput() TriggerOperatorOutput {
-	return pulumi.ToOutput(e).(TriggerOperatorOutput)
-}
-
-func (e TriggerOperator) ToTriggerOperatorOutputWithContext(ctx context.Context) TriggerOperatorOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(TriggerOperatorOutput)
-}
-
-func (e TriggerOperator) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput {
-	return e.ToTriggerOperatorPtrOutputWithContext(context.Background())
-}
-
-func (e TriggerOperator) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
-	return TriggerOperator(e).ToTriggerOperatorOutputWithContext(ctx).ToTriggerOperatorPtrOutputWithContext(ctx)
-}
-
-func (e TriggerOperator) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TriggerOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TriggerOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e TriggerOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type TriggerOperatorOutput struct{ *pulumi.OutputState }
-
-func (TriggerOperatorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerOperator)(nil)).Elem()
-}
-
-func (o TriggerOperatorOutput) ToTriggerOperatorOutput() TriggerOperatorOutput {
-	return o
-}
-
-func (o TriggerOperatorOutput) ToTriggerOperatorOutputWithContext(ctx context.Context) TriggerOperatorOutput {
-	return o
-}
-
-func (o TriggerOperatorOutput) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput {
-	return o.ToTriggerOperatorPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerOperatorOutput) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerOperator) *TriggerOperator {
-		return &v
-	}).(TriggerOperatorPtrOutput)
-}
-
-func (o TriggerOperatorOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o TriggerOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerOperator) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o TriggerOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerOperator) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type TriggerOperatorPtrOutput struct{ *pulumi.OutputState }
-
-func (TriggerOperatorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerOperator)(nil)).Elem()
-}
-
-func (o TriggerOperatorPtrOutput) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput {
-	return o
-}
-
-func (o TriggerOperatorPtrOutput) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
-	return o
-}
-
-func (o TriggerOperatorPtrOutput) Elem() TriggerOperatorOutput {
-	return o.ApplyT(func(v *TriggerOperator) TriggerOperator {
-		if v != nil {
-			return *v
-		}
-		var ret TriggerOperator
-		return ret
-	}).(TriggerOperatorOutput)
-}
-
-func (o TriggerOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TriggerOperator) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// TriggerOperatorInput is an input type that accepts TriggerOperatorArgs and TriggerOperatorOutput values.
-// You can construct a concrete instance of `TriggerOperatorInput` via:
-//
-//	TriggerOperatorArgs{...}
-type TriggerOperatorInput interface {
-	pulumi.Input
-
-	ToTriggerOperatorOutput() TriggerOperatorOutput
-	ToTriggerOperatorOutputWithContext(context.Context) TriggerOperatorOutput
-}
-
-var triggerOperatorPtrType = reflect.TypeOf((**TriggerOperator)(nil)).Elem()
-
-type TriggerOperatorPtrInput interface {
-	pulumi.Input
-
-	ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput
-	ToTriggerOperatorPtrOutputWithContext(context.Context) TriggerOperatorPtrOutput
-}
-
-type triggerOperatorPtr string
-
-func TriggerOperatorPtr(v string) TriggerOperatorPtrInput {
-	return (*triggerOperatorPtr)(&v)
-}
-
-func (*triggerOperatorPtr) ElementType() reflect.Type {
-	return triggerOperatorPtrType
-}
-
-func (in *triggerOperatorPtr) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOutput {
-	return pulumi.ToOutput(in).(TriggerOperatorPtrOutput)
-}
-
-func (in *triggerOperatorPtr) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(TriggerOperatorPtrOutput)
-}
-
 type TriggersOn string
 
 const (
@@ -697,6 +353,4 @@ const (
 )
 
 func init() {
-	pulumi.RegisterOutputType(TriggerOperatorOutput{})
-	pulumi.RegisterOutputType(TriggerOperatorPtrOutput{})
 }

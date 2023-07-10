@@ -196,6 +196,12 @@ func NewNetworkInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:NetworkInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkInterface
@@ -247,7 +253,7 @@ type networkInterfaceArgs struct {
 	// The name of the network interface.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
 	// The reference of the NetworkSecurityGroup resource.
-	NetworkSecurityGroup *NetworkSecurityGroupType `pulumi:"networkSecurityGroup"`
+	NetworkSecurityGroup *NetworkSecurityGroup `pulumi:"networkSecurityGroup"`
 	// Gets whether this is a primary network interface on a virtual machine.
 	Primary *bool `pulumi:"primary"`
 	// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -259,7 +265,7 @@ type networkInterfaceArgs struct {
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// A list of TapConfigurations of the network interface.
-	TapConfigurations []NetworkInterfaceTapConfigurationType `pulumi:"tapConfigurations"`
+	TapConfigurations []NetworkInterfaceTapConfiguration `pulumi:"tapConfigurations"`
 }
 
 // The set of arguments for constructing a NetworkInterface resource.
@@ -281,7 +287,7 @@ type NetworkInterfaceArgs struct {
 	// The name of the network interface.
 	NetworkInterfaceName pulumi.StringPtrInput
 	// The reference of the NetworkSecurityGroup resource.
-	NetworkSecurityGroup NetworkSecurityGroupTypePtrInput
+	NetworkSecurityGroup NetworkSecurityGroupPtrInput
 	// Gets whether this is a primary network interface on a virtual machine.
 	Primary pulumi.BoolPtrInput
 	// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -293,7 +299,7 @@ type NetworkInterfaceArgs struct {
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// A list of TapConfigurations of the network interface.
-	TapConfigurations NetworkInterfaceTapConfigurationTypeArrayInput
+	TapConfigurations NetworkInterfaceTapConfigurationArrayInput
 }
 
 func (NetworkInterfaceArgs) ElementType() reflect.Type {

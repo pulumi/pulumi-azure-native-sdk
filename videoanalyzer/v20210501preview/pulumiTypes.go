@@ -130,36 +130,6 @@ func (o AccountEncryptionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountEncryptionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Required validation properties for tokens generated with Elliptical Curve algorithm.
-type EccTokenKey struct {
-	// Elliptical curve algorithm to be used: ES256, ES384 or ES512.
-	Alg string `pulumi:"alg"`
-	// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
-	Kid string `pulumi:"kid"`
-	// The discriminator for derived types.
-	// Expected value is '#Microsoft.VideoAnalyzer.EccTokenKey'.
-	Type string `pulumi:"type"`
-	// X coordinate.
-	X string `pulumi:"x"`
-	// Y coordinate.
-	Y string `pulumi:"y"`
-}
-
-// Required validation properties for tokens generated with Elliptical Curve algorithm.
-type EccTokenKeyResponse struct {
-	// Elliptical curve algorithm to be used: ES256, ES384 or ES512.
-	Alg string `pulumi:"alg"`
-	// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
-	Kid string `pulumi:"kid"`
-	// The discriminator for derived types.
-	// Expected value is '#Microsoft.VideoAnalyzer.EccTokenKey'.
-	Type string `pulumi:"type"`
-	// X coordinate.
-	X string `pulumi:"x"`
-	// Y coordinate.
-	Y string `pulumi:"y"`
-}
-
 // The endpoint details.
 type EndpointResponse struct {
 	// The URL of the endpoint.
@@ -211,357 +181,6 @@ func (o EndpointResponseArrayOutput) Index(i pulumi.IntInput) EndpointResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointResponse {
 		return vs[0].([]EndpointResponse)[vs[1].(int)]
 	}).(EndpointResponseOutput)
-}
-
-// Properties for access validation based on JSON Web Tokens (JWT).
-type JwtAuthentication struct {
-	// List of expected token audiences. Token audience is valid if it matches at least one of the given values.
-	Audiences []string `pulumi:"audiences"`
-	// List of additional token claims to be validated. Token must contains all claims and respective values for it to be valid.
-	Claims []TokenClaim `pulumi:"claims"`
-	// List of expected token issuers. Token issuer is valid if it matches at least one of the given values.
-	Issuers []string `pulumi:"issuers"`
-	// List of keys which can be used to validate access tokens. Having multiple keys allow for seamless key rotation of the token signing key. Token signature must match exactly one key.
-	Keys []interface{} `pulumi:"keys"`
-	// The discriminator for derived types.
-	// Expected value is '#Microsoft.VideoAnalyzer.JwtAuthentication'.
-	Type string `pulumi:"type"`
-}
-
-// JwtAuthenticationInput is an input type that accepts JwtAuthenticationArgs and JwtAuthenticationOutput values.
-// You can construct a concrete instance of `JwtAuthenticationInput` via:
-//
-//	JwtAuthenticationArgs{...}
-type JwtAuthenticationInput interface {
-	pulumi.Input
-
-	ToJwtAuthenticationOutput() JwtAuthenticationOutput
-	ToJwtAuthenticationOutputWithContext(context.Context) JwtAuthenticationOutput
-}
-
-// Properties for access validation based on JSON Web Tokens (JWT).
-type JwtAuthenticationArgs struct {
-	// List of expected token audiences. Token audience is valid if it matches at least one of the given values.
-	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
-	// List of additional token claims to be validated. Token must contains all claims and respective values for it to be valid.
-	Claims TokenClaimArrayInput `pulumi:"claims"`
-	// List of expected token issuers. Token issuer is valid if it matches at least one of the given values.
-	Issuers pulumi.StringArrayInput `pulumi:"issuers"`
-	// List of keys which can be used to validate access tokens. Having multiple keys allow for seamless key rotation of the token signing key. Token signature must match exactly one key.
-	Keys pulumi.ArrayInput `pulumi:"keys"`
-	// The discriminator for derived types.
-	// Expected value is '#Microsoft.VideoAnalyzer.JwtAuthentication'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (JwtAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JwtAuthentication)(nil)).Elem()
-}
-
-func (i JwtAuthenticationArgs) ToJwtAuthenticationOutput() JwtAuthenticationOutput {
-	return i.ToJwtAuthenticationOutputWithContext(context.Background())
-}
-
-func (i JwtAuthenticationArgs) ToJwtAuthenticationOutputWithContext(ctx context.Context) JwtAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtAuthenticationOutput)
-}
-
-func (i JwtAuthenticationArgs) ToJwtAuthenticationPtrOutput() JwtAuthenticationPtrOutput {
-	return i.ToJwtAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i JwtAuthenticationArgs) ToJwtAuthenticationPtrOutputWithContext(ctx context.Context) JwtAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtAuthenticationOutput).ToJwtAuthenticationPtrOutputWithContext(ctx)
-}
-
-// JwtAuthenticationPtrInput is an input type that accepts JwtAuthenticationArgs, JwtAuthenticationPtr and JwtAuthenticationPtrOutput values.
-// You can construct a concrete instance of `JwtAuthenticationPtrInput` via:
-//
-//	        JwtAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type JwtAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToJwtAuthenticationPtrOutput() JwtAuthenticationPtrOutput
-	ToJwtAuthenticationPtrOutputWithContext(context.Context) JwtAuthenticationPtrOutput
-}
-
-type jwtAuthenticationPtrType JwtAuthenticationArgs
-
-func JwtAuthenticationPtr(v *JwtAuthenticationArgs) JwtAuthenticationPtrInput {
-	return (*jwtAuthenticationPtrType)(v)
-}
-
-func (*jwtAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JwtAuthentication)(nil)).Elem()
-}
-
-func (i *jwtAuthenticationPtrType) ToJwtAuthenticationPtrOutput() JwtAuthenticationPtrOutput {
-	return i.ToJwtAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *jwtAuthenticationPtrType) ToJwtAuthenticationPtrOutputWithContext(ctx context.Context) JwtAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtAuthenticationPtrOutput)
-}
-
-// Properties for access validation based on JSON Web Tokens (JWT).
-type JwtAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (JwtAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JwtAuthentication)(nil)).Elem()
-}
-
-func (o JwtAuthenticationOutput) ToJwtAuthenticationOutput() JwtAuthenticationOutput {
-	return o
-}
-
-func (o JwtAuthenticationOutput) ToJwtAuthenticationOutputWithContext(ctx context.Context) JwtAuthenticationOutput {
-	return o
-}
-
-func (o JwtAuthenticationOutput) ToJwtAuthenticationPtrOutput() JwtAuthenticationPtrOutput {
-	return o.ToJwtAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o JwtAuthenticationOutput) ToJwtAuthenticationPtrOutputWithContext(ctx context.Context) JwtAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JwtAuthentication) *JwtAuthentication {
-		return &v
-	}).(JwtAuthenticationPtrOutput)
-}
-
-// List of expected token audiences. Token audience is valid if it matches at least one of the given values.
-func (o JwtAuthenticationOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JwtAuthentication) []string { return v.Audiences }).(pulumi.StringArrayOutput)
-}
-
-// List of additional token claims to be validated. Token must contains all claims and respective values for it to be valid.
-func (o JwtAuthenticationOutput) Claims() TokenClaimArrayOutput {
-	return o.ApplyT(func(v JwtAuthentication) []TokenClaim { return v.Claims }).(TokenClaimArrayOutput)
-}
-
-// List of expected token issuers. Token issuer is valid if it matches at least one of the given values.
-func (o JwtAuthenticationOutput) Issuers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JwtAuthentication) []string { return v.Issuers }).(pulumi.StringArrayOutput)
-}
-
-// List of keys which can be used to validate access tokens. Having multiple keys allow for seamless key rotation of the token signing key. Token signature must match exactly one key.
-func (o JwtAuthenticationOutput) Keys() pulumi.ArrayOutput {
-	return o.ApplyT(func(v JwtAuthentication) []interface{} { return v.Keys }).(pulumi.ArrayOutput)
-}
-
-// The discriminator for derived types.
-// Expected value is '#Microsoft.VideoAnalyzer.JwtAuthentication'.
-func (o JwtAuthenticationOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v JwtAuthentication) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type JwtAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (JwtAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JwtAuthentication)(nil)).Elem()
-}
-
-func (o JwtAuthenticationPtrOutput) ToJwtAuthenticationPtrOutput() JwtAuthenticationPtrOutput {
-	return o
-}
-
-func (o JwtAuthenticationPtrOutput) ToJwtAuthenticationPtrOutputWithContext(ctx context.Context) JwtAuthenticationPtrOutput {
-	return o
-}
-
-func (o JwtAuthenticationPtrOutput) Elem() JwtAuthenticationOutput {
-	return o.ApplyT(func(v *JwtAuthentication) JwtAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret JwtAuthentication
-		return ret
-	}).(JwtAuthenticationOutput)
-}
-
-// List of expected token audiences. Token audience is valid if it matches at least one of the given values.
-func (o JwtAuthenticationPtrOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JwtAuthentication) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Audiences
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of additional token claims to be validated. Token must contains all claims and respective values for it to be valid.
-func (o JwtAuthenticationPtrOutput) Claims() TokenClaimArrayOutput {
-	return o.ApplyT(func(v *JwtAuthentication) []TokenClaim {
-		if v == nil {
-			return nil
-		}
-		return v.Claims
-	}).(TokenClaimArrayOutput)
-}
-
-// List of expected token issuers. Token issuer is valid if it matches at least one of the given values.
-func (o JwtAuthenticationPtrOutput) Issuers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JwtAuthentication) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Issuers
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of keys which can be used to validate access tokens. Having multiple keys allow for seamless key rotation of the token signing key. Token signature must match exactly one key.
-func (o JwtAuthenticationPtrOutput) Keys() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *JwtAuthentication) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Keys
-	}).(pulumi.ArrayOutput)
-}
-
-// The discriminator for derived types.
-// Expected value is '#Microsoft.VideoAnalyzer.JwtAuthentication'.
-func (o JwtAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JwtAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties for access validation based on JSON Web Tokens (JWT).
-type JwtAuthenticationResponse struct {
-	// List of expected token audiences. Token audience is valid if it matches at least one of the given values.
-	Audiences []string `pulumi:"audiences"`
-	// List of additional token claims to be validated. Token must contains all claims and respective values for it to be valid.
-	Claims []TokenClaimResponse `pulumi:"claims"`
-	// List of expected token issuers. Token issuer is valid if it matches at least one of the given values.
-	Issuers []string `pulumi:"issuers"`
-	// List of keys which can be used to validate access tokens. Having multiple keys allow for seamless key rotation of the token signing key. Token signature must match exactly one key.
-	Keys []interface{} `pulumi:"keys"`
-	// The discriminator for derived types.
-	// Expected value is '#Microsoft.VideoAnalyzer.JwtAuthentication'.
-	Type string `pulumi:"type"`
-}
-
-// Properties for access validation based on JSON Web Tokens (JWT).
-type JwtAuthenticationResponseOutput struct{ *pulumi.OutputState }
-
-func (JwtAuthenticationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JwtAuthenticationResponse)(nil)).Elem()
-}
-
-func (o JwtAuthenticationResponseOutput) ToJwtAuthenticationResponseOutput() JwtAuthenticationResponseOutput {
-	return o
-}
-
-func (o JwtAuthenticationResponseOutput) ToJwtAuthenticationResponseOutputWithContext(ctx context.Context) JwtAuthenticationResponseOutput {
-	return o
-}
-
-// List of expected token audiences. Token audience is valid if it matches at least one of the given values.
-func (o JwtAuthenticationResponseOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JwtAuthenticationResponse) []string { return v.Audiences }).(pulumi.StringArrayOutput)
-}
-
-// List of additional token claims to be validated. Token must contains all claims and respective values for it to be valid.
-func (o JwtAuthenticationResponseOutput) Claims() TokenClaimResponseArrayOutput {
-	return o.ApplyT(func(v JwtAuthenticationResponse) []TokenClaimResponse { return v.Claims }).(TokenClaimResponseArrayOutput)
-}
-
-// List of expected token issuers. Token issuer is valid if it matches at least one of the given values.
-func (o JwtAuthenticationResponseOutput) Issuers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JwtAuthenticationResponse) []string { return v.Issuers }).(pulumi.StringArrayOutput)
-}
-
-// List of keys which can be used to validate access tokens. Having multiple keys allow for seamless key rotation of the token signing key. Token signature must match exactly one key.
-func (o JwtAuthenticationResponseOutput) Keys() pulumi.ArrayOutput {
-	return o.ApplyT(func(v JwtAuthenticationResponse) []interface{} { return v.Keys }).(pulumi.ArrayOutput)
-}
-
-// The discriminator for derived types.
-// Expected value is '#Microsoft.VideoAnalyzer.JwtAuthentication'.
-func (o JwtAuthenticationResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v JwtAuthenticationResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type JwtAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JwtAuthenticationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JwtAuthenticationResponse)(nil)).Elem()
-}
-
-func (o JwtAuthenticationResponsePtrOutput) ToJwtAuthenticationResponsePtrOutput() JwtAuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o JwtAuthenticationResponsePtrOutput) ToJwtAuthenticationResponsePtrOutputWithContext(ctx context.Context) JwtAuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o JwtAuthenticationResponsePtrOutput) Elem() JwtAuthenticationResponseOutput {
-	return o.ApplyT(func(v *JwtAuthenticationResponse) JwtAuthenticationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JwtAuthenticationResponse
-		return ret
-	}).(JwtAuthenticationResponseOutput)
-}
-
-// List of expected token audiences. Token audience is valid if it matches at least one of the given values.
-func (o JwtAuthenticationResponsePtrOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JwtAuthenticationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Audiences
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of additional token claims to be validated. Token must contains all claims and respective values for it to be valid.
-func (o JwtAuthenticationResponsePtrOutput) Claims() TokenClaimResponseArrayOutput {
-	return o.ApplyT(func(v *JwtAuthenticationResponse) []TokenClaimResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Claims
-	}).(TokenClaimResponseArrayOutput)
-}
-
-// List of expected token issuers. Token issuer is valid if it matches at least one of the given values.
-func (o JwtAuthenticationResponsePtrOutput) Issuers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JwtAuthenticationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Issuers
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of keys which can be used to validate access tokens. Having multiple keys allow for seamless key rotation of the token signing key. Token signature must match exactly one key.
-func (o JwtAuthenticationResponsePtrOutput) Keys() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *JwtAuthenticationResponse) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Keys
-	}).(pulumi.ArrayOutput)
-}
-
-// The discriminator for derived types.
-// Expected value is '#Microsoft.VideoAnalyzer.JwtAuthentication'.
-func (o JwtAuthenticationResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JwtAuthenticationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // The details for accessing the encryption keys in Key Vault.
@@ -981,36 +600,6 @@ func (o ResourceIdentityResponsePtrOutput) UserAssignedIdentity() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required validation properties for tokens generated with RSA algorithm.
-type RsaTokenKey struct {
-	// RSA algorithm to be used: RS256, RS384 or RS512.
-	Alg string `pulumi:"alg"`
-	// RSA public key exponent.
-	E string `pulumi:"e"`
-	// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
-	Kid string `pulumi:"kid"`
-	// RSA public key modulus.
-	N string `pulumi:"n"`
-	// The discriminator for derived types.
-	// Expected value is '#Microsoft.VideoAnalyzer.RsaTokenKey'.
-	Type string `pulumi:"type"`
-}
-
-// Required validation properties for tokens generated with RSA algorithm.
-type RsaTokenKeyResponse struct {
-	// RSA algorithm to be used: RS256, RS384 or RS512.
-	Alg string `pulumi:"alg"`
-	// RSA public key exponent.
-	E string `pulumi:"e"`
-	// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
-	Kid string `pulumi:"kid"`
-	// RSA public key modulus.
-	N string `pulumi:"n"`
-	// The discriminator for derived types.
-	// Expected value is '#Microsoft.VideoAnalyzer.RsaTokenKey'.
-	Type string `pulumi:"type"`
-}
-
 // The details about the associated storage account.
 type StorageAccount struct {
 	// The ID of the storage account resource. Video Analyzer relies on tables, queues, and blobs. The primary storage account must be a Standard Storage account (either Microsoft.ClassicStorage or Microsoft.Storage).
@@ -1241,168 +830,6 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Properties for expected token claims.
-type TokenClaim struct {
-	// Name of the claim which must be present on the token.
-	Name string `pulumi:"name"`
-	// Expected value of the claim to be present on the token.
-	Value string `pulumi:"value"`
-}
-
-// TokenClaimInput is an input type that accepts TokenClaimArgs and TokenClaimOutput values.
-// You can construct a concrete instance of `TokenClaimInput` via:
-//
-//	TokenClaimArgs{...}
-type TokenClaimInput interface {
-	pulumi.Input
-
-	ToTokenClaimOutput() TokenClaimOutput
-	ToTokenClaimOutputWithContext(context.Context) TokenClaimOutput
-}
-
-// Properties for expected token claims.
-type TokenClaimArgs struct {
-	// Name of the claim which must be present on the token.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Expected value of the claim to be present on the token.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (TokenClaimArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TokenClaim)(nil)).Elem()
-}
-
-func (i TokenClaimArgs) ToTokenClaimOutput() TokenClaimOutput {
-	return i.ToTokenClaimOutputWithContext(context.Background())
-}
-
-func (i TokenClaimArgs) ToTokenClaimOutputWithContext(ctx context.Context) TokenClaimOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TokenClaimOutput)
-}
-
-// TokenClaimArrayInput is an input type that accepts TokenClaimArray and TokenClaimArrayOutput values.
-// You can construct a concrete instance of `TokenClaimArrayInput` via:
-//
-//	TokenClaimArray{ TokenClaimArgs{...} }
-type TokenClaimArrayInput interface {
-	pulumi.Input
-
-	ToTokenClaimArrayOutput() TokenClaimArrayOutput
-	ToTokenClaimArrayOutputWithContext(context.Context) TokenClaimArrayOutput
-}
-
-type TokenClaimArray []TokenClaimInput
-
-func (TokenClaimArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TokenClaim)(nil)).Elem()
-}
-
-func (i TokenClaimArray) ToTokenClaimArrayOutput() TokenClaimArrayOutput {
-	return i.ToTokenClaimArrayOutputWithContext(context.Background())
-}
-
-func (i TokenClaimArray) ToTokenClaimArrayOutputWithContext(ctx context.Context) TokenClaimArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TokenClaimArrayOutput)
-}
-
-// Properties for expected token claims.
-type TokenClaimOutput struct{ *pulumi.OutputState }
-
-func (TokenClaimOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TokenClaim)(nil)).Elem()
-}
-
-func (o TokenClaimOutput) ToTokenClaimOutput() TokenClaimOutput {
-	return o
-}
-
-func (o TokenClaimOutput) ToTokenClaimOutputWithContext(ctx context.Context) TokenClaimOutput {
-	return o
-}
-
-// Name of the claim which must be present on the token.
-func (o TokenClaimOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v TokenClaim) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Expected value of the claim to be present on the token.
-func (o TokenClaimOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TokenClaim) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type TokenClaimArrayOutput struct{ *pulumi.OutputState }
-
-func (TokenClaimArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TokenClaim)(nil)).Elem()
-}
-
-func (o TokenClaimArrayOutput) ToTokenClaimArrayOutput() TokenClaimArrayOutput {
-	return o
-}
-
-func (o TokenClaimArrayOutput) ToTokenClaimArrayOutputWithContext(ctx context.Context) TokenClaimArrayOutput {
-	return o
-}
-
-func (o TokenClaimArrayOutput) Index(i pulumi.IntInput) TokenClaimOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TokenClaim {
-		return vs[0].([]TokenClaim)[vs[1].(int)]
-	}).(TokenClaimOutput)
-}
-
-// Properties for expected token claims.
-type TokenClaimResponse struct {
-	// Name of the claim which must be present on the token.
-	Name string `pulumi:"name"`
-	// Expected value of the claim to be present on the token.
-	Value string `pulumi:"value"`
-}
-
-// Properties for expected token claims.
-type TokenClaimResponseOutput struct{ *pulumi.OutputState }
-
-func (TokenClaimResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TokenClaimResponse)(nil)).Elem()
-}
-
-func (o TokenClaimResponseOutput) ToTokenClaimResponseOutput() TokenClaimResponseOutput {
-	return o
-}
-
-func (o TokenClaimResponseOutput) ToTokenClaimResponseOutputWithContext(ctx context.Context) TokenClaimResponseOutput {
-	return o
-}
-
-// Name of the claim which must be present on the token.
-func (o TokenClaimResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v TokenClaimResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Expected value of the claim to be present on the token.
-func (o TokenClaimResponseOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TokenClaimResponse) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type TokenClaimResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (TokenClaimResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TokenClaimResponse)(nil)).Elem()
-}
-
-func (o TokenClaimResponseArrayOutput) ToTokenClaimResponseArrayOutput() TokenClaimResponseArrayOutput {
-	return o
-}
-
-func (o TokenClaimResponseArrayOutput) ToTokenClaimResponseArrayOutputWithContext(ctx context.Context) TokenClaimResponseArrayOutput {
-	return o
-}
-
-func (o TokenClaimResponseArrayOutput) Index(i pulumi.IntInput) TokenClaimResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TokenClaimResponse {
-		return vs[0].([]TokenClaimResponse)[vs[1].(int)]
-	}).(TokenClaimResponseOutput)
-}
-
 // The details of the user assigned managed identity used by the Video Analyzer resource.
 type UserAssignedManagedIdentityResponse struct {
 	// The client ID.
@@ -1461,7 +888,7 @@ type VideoAnalyzerIdentity struct {
 	// The identity type.
 	Type string `pulumi:"type"`
 	// The User Assigned Managed Identities.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // VideoAnalyzerIdentityInput is an input type that accepts VideoAnalyzerIdentityArgs and VideoAnalyzerIdentityOutput values.
@@ -1480,7 +907,7 @@ type VideoAnalyzerIdentityArgs struct {
 	// The identity type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The User Assigned Managed Identities.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (VideoAnalyzerIdentityArgs) ElementType() reflect.Type {
@@ -1567,8 +994,8 @@ func (o VideoAnalyzerIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // The User Assigned Managed Identities.
-func (o VideoAnalyzerIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v VideoAnalyzerIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o VideoAnalyzerIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VideoAnalyzerIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type VideoAnalyzerIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1606,13 +1033,13 @@ func (o VideoAnalyzerIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The User Assigned Managed Identities.
-func (o VideoAnalyzerIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *VideoAnalyzerIdentity) map[string]interface{} {
+func (o VideoAnalyzerIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VideoAnalyzerIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // The managed identity for the Video Analyzer resource.
@@ -1803,10 +1230,6 @@ func init() {
 	pulumi.RegisterOutputType(AccountEncryptionResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
-	pulumi.RegisterOutputType(JwtAuthenticationOutput{})
-	pulumi.RegisterOutputType(JwtAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(JwtAuthenticationResponseOutput{})
-	pulumi.RegisterOutputType(JwtAuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponseOutput{})
@@ -1820,10 +1243,6 @@ func init() {
 	pulumi.RegisterOutputType(StorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(StorageAccountResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(TokenClaimOutput{})
-	pulumi.RegisterOutputType(TokenClaimArrayOutput{})
-	pulumi.RegisterOutputType(TokenClaimResponseOutput{})
-	pulumi.RegisterOutputType(TokenClaimResponseArrayOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VideoAnalyzerIdentityOutput{})

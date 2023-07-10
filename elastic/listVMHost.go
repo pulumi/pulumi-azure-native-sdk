@@ -11,7 +11,7 @@ import (
 )
 
 // Response of a list operation.
-// API Version: 2020-07-01.
+// Azure REST API version: 2023-06-01.
 func ListVMHost(ctx *pulumi.Context, args *ListVMHostArgs, opts ...pulumi.InvokeOption) (*ListVMHostResult, error) {
 	var rv ListVMHostResult
 	err := ctx.Invoke("azure-native:elastic:listVMHost", args, &rv, opts...)

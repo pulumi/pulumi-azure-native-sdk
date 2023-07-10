@@ -11,7 +11,7 @@ import (
 )
 
 // Get Default Security contact configurations for the subscription
-// API Version: 2020-01-01-preview.
+// Azure REST API version: 2020-01-01-preview.
 func LookupSecurityContact(ctx *pulumi.Context, args *LookupSecurityContactArgs, opts ...pulumi.InvokeOption) (*LookupSecurityContactResult, error) {
 	var rv LookupSecurityContactResult
 	err := ctx.Invoke("azure-native:security:getSecurityContact", args, &rv, opts...)

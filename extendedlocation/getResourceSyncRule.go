@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
-// API Version: 2021-08-31-preview.
+// Azure REST API version: 2021-08-31-preview.
 func LookupResourceSyncRule(ctx *pulumi.Context, args *LookupResourceSyncRuleArgs, opts ...pulumi.InvokeOption) (*LookupResourceSyncRuleResult, error) {
 	var rv LookupResourceSyncRuleResult
 	err := ctx.Invoke("azure-native:extendedlocation:getResourceSyncRule", args, &rv, opts...)

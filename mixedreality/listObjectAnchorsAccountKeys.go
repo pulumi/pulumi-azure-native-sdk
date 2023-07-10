@@ -11,7 +11,7 @@ import (
 )
 
 // List Both of the 2 Keys of an object anchors Account
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2021-03-01-preview.
 func ListObjectAnchorsAccountKeys(ctx *pulumi.Context, args *ListObjectAnchorsAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListObjectAnchorsAccountKeysResult, error) {
 	var rv ListObjectAnchorsAccountKeysResult
 	err := ctx.Invoke("azure-native:mixedreality:listObjectAnchorsAccountKeys", args, &rv, opts...)

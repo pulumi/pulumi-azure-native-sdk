@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a task with extended information that includes all secrets.
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func ListTaskDetails(ctx *pulumi.Context, args *ListTaskDetailsArgs, opts ...pulumi.InvokeOption) (*ListTaskDetailsResult, error) {
 	var rv ListTaskDetailsResult
 	err := ctx.Invoke("azure-native:containerregistry:listTaskDetails", args, &rv, opts...)

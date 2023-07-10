@@ -12,7 +12,7 @@ import (
 )
 
 // API portal resource
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview
 type ApiPortal struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +44,9 @@ func NewApiPortal(ctx *pulumi.Context,
 	if args.Properties != nil {
 		args.Properties = args.Properties.ToApiPortalPropertiesPtrOutput().ApplyT(func(v *ApiPortalProperties) *ApiPortalProperties { return v.Defaults() }).(ApiPortalPropertiesPtrOutput)
 	}
+	if args.Sku != nil {
+		args.Sku = args.Sku.ToSkuPtrOutput().ApplyT(func(v *Sku) *Sku { return v.Defaults() }).(SkuPtrOutput)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:appplatform/v20220101preview:ApiPortal"),
@@ -65,6 +68,12 @@ func NewApiPortal(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:ApiPortal"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ApiPortal"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ApiPortal"),
 		},
 	})
 	opts = append(opts, aliases)

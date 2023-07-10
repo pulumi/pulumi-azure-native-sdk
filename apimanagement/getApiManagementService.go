@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an API Management service resource description.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func LookupApiManagementService(ctx *pulumi.Context, args *LookupApiManagementServiceArgs, opts ...pulumi.InvokeOption) (*LookupApiManagementServiceResult, error) {
 	var rv LookupApiManagementServiceResult
 	err := ctx.Invoke("azure-native:apimanagement:getApiManagementService", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupApiManagementService(ctx *pulumi.Context, args *LookupApiManagementSe
 }
 
 type LookupApiManagementServiceArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -38,7 +38,7 @@ type LookupApiManagementServiceResult struct {
 	Certificates []CertificateConfigurationResponse `pulumi:"certificates"`
 	// Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 	CreatedAtUtc string `pulumi:"createdAtUtc"`
-	// Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1st 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of next ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.  Note: next ciphers can't be disabled since they are required by Azure CloudService internal components: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
+	// Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.</br> Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 	CustomProperties map[string]string `pulumi:"customProperties"`
 	// DEveloper Portal endpoint URL of the API Management service.
 	DeveloperPortalUrl string `pulumi:"developerPortalUrl"`
@@ -64,16 +64,28 @@ type LookupApiManagementServiceResult struct {
 	ManagementApiUrl string `pulumi:"managementApiUrl"`
 	// Resource name.
 	Name string `pulumi:"name"`
+	// Property can be used to enable NAT Gateway for this API Management service.
+	NatGatewayState *string `pulumi:"natGatewayState"`
 	// Email address from which the notification will be sent.
 	NotificationSenderEmail *string `pulumi:"notificationSenderEmail"`
+	// Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform.
+	OutboundPublicIPAddresses []string `pulumi:"outboundPublicIPAddresses"`
+	// Compute Platform Version running the service in this location.
+	PlatformVersion string `pulumi:"platformVersion"`
 	// Publisher portal endpoint Url of the API Management service.
 	PortalUrl string `pulumi:"portalUrl"`
+	// List of Private Endpoint Connections of this service.
+	PrivateEndpointConnections []RemotePrivateEndpointConnectionWrapperResponse `pulumi:"privateEndpointConnections"`
 	// Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU.
 	PrivateIPAddresses []string `pulumi:"privateIPAddresses"`
 	// The current provisioning state of the API Management service which can be one of the following: Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Public Static Load Balanced IP addresses of the API Management service in Primary region. Available only for Basic, Standard, Premium and Isolated SKU.
 	PublicIPAddresses []string `pulumi:"publicIPAddresses"`
+	// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the region. Supported only for Developer and Premium SKU being deployed in Virtual Network.
+	PublicIpAddressId *string `pulumi:"publicIpAddressId"`
+	// Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Publisher email.
 	PublisherEmail string `pulumi:"publisherEmail"`
 	// Publisher name.
@@ -84,6 +96,8 @@ type LookupApiManagementServiceResult struct {
 	ScmUrl string `pulumi:"scmUrl"`
 	// SKU properties of the API Management service.
 	Sku ApiManagementServiceSkuPropertiesResponse `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The provisioning state of the API Management service, which is targeted by the long running operation started on the service.
@@ -112,6 +126,10 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 		enableClientCertificate_ := false
 		tmp.EnableClientCertificate = &enableClientCertificate_
 	}
+	if tmp.NatGatewayState == nil {
+		natGatewayState_ := "Disabled"
+		tmp.NatGatewayState = &natGatewayState_
+	}
 	if tmp.Restore == nil {
 		restore_ := false
 		tmp.Restore = &restore_
@@ -137,7 +155,7 @@ func LookupApiManagementServiceOutput(ctx *pulumi.Context, args LookupApiManagem
 }
 
 type LookupApiManagementServiceOutputArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -182,7 +200,7 @@ func (o LookupApiManagementServiceResultOutput) CreatedAtUtc() pulumi.StringOutp
 	return o.ApplyT(func(v LookupApiManagementServiceResult) string { return v.CreatedAtUtc }).(pulumi.StringOutput)
 }
 
-// Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1st 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of next ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.  Note: next ciphers can't be disabled since they are required by Azure CloudService internal components: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
+// Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.</br> Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 func (o LookupApiManagementServiceResultOutput) CustomProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) map[string]string { return v.CustomProperties }).(pulumi.StringMapOutput)
 }
@@ -249,14 +267,36 @@ func (o LookupApiManagementServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Property can be used to enable NAT Gateway for this API Management service.
+func (o LookupApiManagementServiceResultOutput) NatGatewayState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) *string { return v.NatGatewayState }).(pulumi.StringPtrOutput)
+}
+
 // Email address from which the notification will be sent.
 func (o LookupApiManagementServiceResultOutput) NotificationSenderEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) *string { return v.NotificationSenderEmail }).(pulumi.StringPtrOutput)
 }
 
+// Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform.
+func (o LookupApiManagementServiceResultOutput) OutboundPublicIPAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) []string { return v.OutboundPublicIPAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Compute Platform Version running the service in this location.
+func (o LookupApiManagementServiceResultOutput) PlatformVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) string { return v.PlatformVersion }).(pulumi.StringOutput)
+}
+
 // Publisher portal endpoint Url of the API Management service.
 func (o LookupApiManagementServiceResultOutput) PortalUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) string { return v.PortalUrl }).(pulumi.StringOutput)
+}
+
+// List of Private Endpoint Connections of this service.
+func (o LookupApiManagementServiceResultOutput) PrivateEndpointConnections() RemotePrivateEndpointConnectionWrapperResponseArrayOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) []RemotePrivateEndpointConnectionWrapperResponse {
+		return v.PrivateEndpointConnections
+	}).(RemotePrivateEndpointConnectionWrapperResponseArrayOutput)
 }
 
 // Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU.
@@ -272,6 +312,16 @@ func (o LookupApiManagementServiceResultOutput) ProvisioningState() pulumi.Strin
 // Public Static Load Balanced IP addresses of the API Management service in Primary region. Available only for Basic, Standard, Premium and Isolated SKU.
 func (o LookupApiManagementServiceResultOutput) PublicIPAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) []string { return v.PublicIPAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the region. Supported only for Developer and Premium SKU being deployed in Virtual Network.
+func (o LookupApiManagementServiceResultOutput) PublicIpAddressId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) *string { return v.PublicIpAddressId }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+func (o LookupApiManagementServiceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Publisher email.
@@ -297,6 +347,11 @@ func (o LookupApiManagementServiceResultOutput) ScmUrl() pulumi.StringOutput {
 // SKU properties of the API Management service.
 func (o LookupApiManagementServiceResultOutput) Sku() ApiManagementServiceSkuPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) ApiManagementServiceSkuPropertiesResponse { return v.Sku }).(ApiManagementServiceSkuPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupApiManagementServiceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -11,7 +11,7 @@ import (
 )
 
 // Get an Volume.
-// API Version: 2021-11-20-preview.
+// Azure REST API version: 2021-11-20-preview.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:elasticsan:getVolume", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the console for the user.
-// API Version: 2018-10-01.
+// Azure REST API version: 2018-10-01.
 func LookupConsoleWithLocation(ctx *pulumi.Context, args *LookupConsoleWithLocationArgs, opts ...pulumi.InvokeOption) (*LookupConsoleWithLocationResult, error) {
 	var rv LookupConsoleWithLocationResult
 	err := ctx.Invoke("azure-native:portal:getConsoleWithLocation", args, &rv, opts...)

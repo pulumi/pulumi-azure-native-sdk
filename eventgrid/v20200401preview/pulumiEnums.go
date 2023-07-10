@@ -3,61 +3,6 @@
 
 package v20200401preview
 
-// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
-type AdvancedFilterOperatorType string
-
-const (
-	AdvancedFilterOperatorTypeNumberIn                  = AdvancedFilterOperatorType("NumberIn")
-	AdvancedFilterOperatorTypeNumberNotIn               = AdvancedFilterOperatorType("NumberNotIn")
-	AdvancedFilterOperatorTypeNumberLessThan            = AdvancedFilterOperatorType("NumberLessThan")
-	AdvancedFilterOperatorTypeNumberGreaterThan         = AdvancedFilterOperatorType("NumberGreaterThan")
-	AdvancedFilterOperatorTypeNumberLessThanOrEquals    = AdvancedFilterOperatorType("NumberLessThanOrEquals")
-	AdvancedFilterOperatorTypeNumberGreaterThanOrEquals = AdvancedFilterOperatorType("NumberGreaterThanOrEquals")
-	AdvancedFilterOperatorTypeBoolEquals                = AdvancedFilterOperatorType("BoolEquals")
-	AdvancedFilterOperatorTypeStringIn                  = AdvancedFilterOperatorType("StringIn")
-	AdvancedFilterOperatorTypeStringNotIn               = AdvancedFilterOperatorType("StringNotIn")
-	AdvancedFilterOperatorTypeStringBeginsWith          = AdvancedFilterOperatorType("StringBeginsWith")
-	AdvancedFilterOperatorTypeStringEndsWith            = AdvancedFilterOperatorType("StringEndsWith")
-	AdvancedFilterOperatorTypeStringContains            = AdvancedFilterOperatorType("StringContains")
-)
-
-// Type of the endpoint for the dead letter destination
-type DeadLetterEndPointType string
-
-const (
-	DeadLetterEndPointTypeStorageBlob = DeadLetterEndPointType("StorageBlob")
-)
-
-// Type of the endpoint for the event subscription destination.
-type EndpointType string
-
-const (
-	EndpointTypeWebHook          = EndpointType("WebHook")
-	EndpointTypeEventHub         = EndpointType("EventHub")
-	EndpointTypeStorageQueue     = EndpointType("StorageQueue")
-	EndpointTypeHybridConnection = EndpointType("HybridConnection")
-	EndpointTypeServiceBusQueue  = EndpointType("ServiceBusQueue")
-	EndpointTypeServiceBusTopic  = EndpointType("ServiceBusTopic")
-	EndpointTypeAzureFunction    = EndpointType("AzureFunction")
-)
-
-// The event delivery schema for the event subscription.
-type EventDeliverySchema string
-
-const (
-	EventDeliverySchemaEventGridSchema       = EventDeliverySchema("EventGridSchema")
-	EventDeliverySchemaCustomInputSchema     = EventDeliverySchema("CustomInputSchema")
-	EventDeliverySchema_CloudEventSchemaV1_0 = EventDeliverySchema("CloudEventSchemaV1_0")
-)
-
-// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
-type EventSubscriptionIdentityType string
-
-const (
-	EventSubscriptionIdentityTypeSystemAssigned = EventSubscriptionIdentityType("SystemAssigned")
-	EventSubscriptionIdentityTypeUserAssigned   = EventSubscriptionIdentityType("UserAssigned")
-)
-
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
 type IdentityType string
 
@@ -89,15 +34,6 @@ type IpActionType string
 
 const (
 	IpActionTypeAllow = IpActionType("Allow")
-)
-
-// Visibility state of the partner registration.
-type PartnerRegistrationVisibilityState string
-
-const (
-	PartnerRegistrationVisibilityStateHidden             = PartnerRegistrationVisibilityState("Hidden")
-	PartnerRegistrationVisibilityStatePublicPreview      = PartnerRegistrationVisibilityState("PublicPreview")
-	PartnerRegistrationVisibilityStateGenerallyAvailable = PartnerRegistrationVisibilityState("GenerallyAvailable")
 )
 
 // Status of the connection.

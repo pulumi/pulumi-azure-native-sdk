@@ -11,19 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20
 type OperationByProviderRegistration struct {
 	pulumi.CustomResourceState
 
-	ActionType pulumi.StringPtrOutput `pulumi:"actionType"`
-	// Display information of the operation.
-	Display OperationsDefinitionResponseDisplayOutput `pulumi:"display"`
-	// Indicates whether the operation applies to data-plane.
-	IsDataAction pulumi.BoolPtrOutput `pulumi:"isDataAction"`
 	// The name of the resource
-	Name       pulumi.StringOutput    `pulumi:"name"`
-	Origin     pulumi.StringPtrOutput `pulumi:"origin"`
-	Properties pulumi.AnyOutput       `pulumi:"properties"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -35,9 +28,6 @@ func NewOperationByProviderRegistration(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Contents == nil {
-		return nil, errors.New("invalid value for required argument 'Contents'")
-	}
 	if args.ProviderNamespace == nil {
 		return nil, errors.New("invalid value for required argument 'ProviderNamespace'")
 	}
@@ -88,14 +78,12 @@ func (OperationByProviderRegistrationState) ElementType() reflect.Type {
 }
 
 type operationByProviderRegistrationArgs struct {
-	Contents []OperationsDefinition `pulumi:"contents"`
 	// The name of the resource provider hosted within ProviderHub.
 	ProviderNamespace string `pulumi:"providerNamespace"`
 }
 
 // The set of arguments for constructing a OperationByProviderRegistration resource.
 type OperationByProviderRegistrationArgs struct {
-	Contents OperationsDefinitionArrayInput
 	// The name of the resource provider hosted within ProviderHub.
 	ProviderNamespace pulumi.StringInput
 }
@@ -137,31 +125,9 @@ func (o OperationByProviderRegistrationOutput) ToOperationByProviderRegistration
 	return o
 }
 
-func (o OperationByProviderRegistrationOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationByProviderRegistration) pulumi.StringPtrOutput { return v.ActionType }).(pulumi.StringPtrOutput)
-}
-
-// Display information of the operation.
-func (o OperationByProviderRegistrationOutput) Display() OperationsDefinitionResponseDisplayOutput {
-	return o.ApplyT(func(v *OperationByProviderRegistration) OperationsDefinitionResponseDisplayOutput { return v.Display }).(OperationsDefinitionResponseDisplayOutput)
-}
-
-// Indicates whether the operation applies to data-plane.
-func (o OperationByProviderRegistrationOutput) IsDataAction() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OperationByProviderRegistration) pulumi.BoolPtrOutput { return v.IsDataAction }).(pulumi.BoolPtrOutput)
-}
-
 // The name of the resource
 func (o OperationByProviderRegistrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OperationByProviderRegistration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o OperationByProviderRegistrationOutput) Origin() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationByProviderRegistration) pulumi.StringPtrOutput { return v.Origin }).(pulumi.StringPtrOutput)
-}
-
-func (o OperationByProviderRegistrationOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *OperationByProviderRegistration) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

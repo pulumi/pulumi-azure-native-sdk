@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the identity.
-// API Version: 2018-11-30.
+// Azure REST API version: 2023-01-31.
 func LookupUserAssignedIdentity(ctx *pulumi.Context, args *LookupUserAssignedIdentityArgs, opts ...pulumi.InvokeOption) (*LookupUserAssignedIdentityResult, error) {
 	var rv LookupUserAssignedIdentityResult
 	err := ctx.Invoke("azure-native:managedidentity:getUserAssignedIdentity", args, &rv, opts...)
@@ -32,7 +32,7 @@ type LookupUserAssignedIdentityArgs struct {
 type LookupUserAssignedIdentityResult struct {
 	// The id of the app associated with the identity. This is a random generated UUID by MSI.
 	ClientId string `pulumi:"clientId"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -40,6 +40,8 @@ type LookupUserAssignedIdentityResult struct {
 	Name string `pulumi:"name"`
 	// The id of the service principal object associated with the created identity.
 	PrincipalId string `pulumi:"principalId"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The id of the tenant which the identity belongs to.
@@ -92,7 +94,7 @@ func (o LookupUserAssignedIdentityResultOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupUserAssignedIdentityResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -110,6 +112,11 @@ func (o LookupUserAssignedIdentityResultOutput) Name() pulumi.StringOutput {
 // The id of the service principal object associated with the created identity.
 func (o LookupUserAssignedIdentityResultOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupUserAssignedIdentityResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

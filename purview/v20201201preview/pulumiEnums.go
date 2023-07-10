@@ -12,17 +12,6 @@ const (
 	PublicNetworkAccessDisabled     = PublicNetworkAccess("Disabled")
 )
 
-// The status.
-type Status string
-
-const (
-	StatusUnknown      = Status("Unknown")
-	StatusPending      = Status("Pending")
-	StatusApproved     = Status("Approved")
-	StatusRejected     = Status("Rejected")
-	StatusDisconnected = Status("Disconnected")
-)
-
 // Identity Type
 type Type string
 

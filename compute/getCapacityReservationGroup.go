@@ -11,7 +11,7 @@ import (
 )
 
 // The operation that retrieves information about a capacity reservation group.
-// API Version: 2021-04-01.
+// Azure REST API version: 2023-03-01.
 func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityReservationGroupArgs, opts ...pulumi.InvokeOption) (*LookupCapacityReservationGroupResult, error) {
 	var rv LookupCapacityReservationGroupResult
 	err := ctx.Invoke("azure-native:compute:getCapacityReservationGroup", args, &rv, opts...)
@@ -30,7 +30,7 @@ type LookupCapacityReservationGroupArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Specifies information about the capacity reservation group that the capacity reservations should be assigned to. <br><br> Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
+// Specifies information about the capacity reservation group that the capacity reservations should be assigned to. Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
 type LookupCapacityReservationGroupResult struct {
 	// A list of all capacity reservation resource ids that belong to capacity reservation group.
 	CapacityReservations []SubResourceReadOnlyResponse `pulumi:"capacityReservations"`
@@ -78,7 +78,7 @@ func (LookupCapacityReservationGroupOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupCapacityReservationGroupArgs)(nil)).Elem()
 }
 
-// Specifies information about the capacity reservation group that the capacity reservations should be assigned to. <br><br> Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
+// Specifies information about the capacity reservation group that the capacity reservations should be assigned to. Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
 type LookupCapacityReservationGroupResultOutput struct{ *pulumi.OutputState }
 
 func (LookupCapacityReservationGroupResultOutput) ElementType() reflect.Type {

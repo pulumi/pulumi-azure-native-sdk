@@ -12,40 +12,34 @@ import (
 )
 
 // Represents a SourceControl in Azure Security Insights.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type SourceControl struct {
 	pulumi.CustomResourceState
 
 	// Array of source control content types.
 	ContentTypes pulumi.StringArrayOutput `pulumi:"contentTypes"`
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
 	// A description of the source control
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the source control
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
-	// Azure resource name
+	// Information regarding the latest deployment for the source control.
+	LastDeploymentInfo DeploymentInfoResponsePtrOutput `pulumi:"lastDeploymentInfo"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The repository type of the source control
 	RepoType pulumi.StringOutput `pulumi:"repoType"`
 	// Repository metadata.
 	Repository RepositoryResponseOutput `pulumi:"repository"`
+	// Information regarding the resources created in user's repository.
+	RepositoryResourceInfo RepositoryResourceInfoResponsePtrOutput `pulumi:"repositoryResourceInfo"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The version number associated with the source control
+	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
 // NewSourceControl registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +54,6 @@ func NewSourceControl(ctx *pulumi.Context,
 	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
-	}
-	if args.OperationalInsightsResourceProvider == nil {
-		return nil, errors.New("invalid value for required argument 'OperationalInsightsResourceProvider'")
 	}
 	if args.RepoType == nil {
 		return nil, errors.New("invalid value for required argument 'RepoType'")
@@ -120,7 +111,13 @@ func NewSourceControl(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:SourceControl"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:SourceControl"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:SourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:SourceControl"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,34 +155,26 @@ func (SourceControlState) ElementType() reflect.Type {
 type sourceControlArgs struct {
 	// Array of source control content types.
 	ContentTypes []string `pulumi:"contentTypes"`
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
 	// A description of the source control
 	Description *string `pulumi:"description"`
 	// The display name of the source control
 	DisplayName string `pulumi:"displayName"`
 	// The id (a Guid) of the source control
 	Id *string `pulumi:"id"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
+	// Information regarding the latest deployment for the source control.
+	LastDeploymentInfo *DeploymentInfo `pulumi:"lastDeploymentInfo"`
 	// The repository type of the source control
 	RepoType string `pulumi:"repoType"`
 	// Repository metadata.
 	Repository Repository `pulumi:"repository"`
+	// Information regarding the resources created in user's repository.
+	RepositoryResourceInfo *RepositoryResourceInfo `pulumi:"repositoryResourceInfo"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Source control Id
 	SourceControlId *string `pulumi:"sourceControlId"`
+	// The version number associated with the source control
+	Version *string `pulumi:"version"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -194,34 +183,26 @@ type sourceControlArgs struct {
 type SourceControlArgs struct {
 	// Array of source control content types.
 	ContentTypes pulumi.StringArrayInput
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrInput
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrInput
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrInput
 	// A description of the source control
 	Description pulumi.StringPtrInput
 	// The display name of the source control
 	DisplayName pulumi.StringInput
 	// The id (a Guid) of the source control
 	Id pulumi.StringPtrInput
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrInput
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrInput
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput
+	// Information regarding the latest deployment for the source control.
+	LastDeploymentInfo DeploymentInfoPtrInput
 	// The repository type of the source control
 	RepoType pulumi.StringInput
 	// Repository metadata.
 	Repository RepositoryInput
+	// Information regarding the resources created in user's repository.
+	RepositoryResourceInfo RepositoryResourceInfoPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Source control Id
 	SourceControlId pulumi.StringPtrInput
+	// The version number associated with the source control
+	Version pulumi.StringPtrInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
@@ -268,21 +249,6 @@ func (o SourceControlOutput) ContentTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringArrayOutput { return v.ContentTypes }).(pulumi.StringArrayOutput)
 }
 
-// The timestamp of resource creation (UTC).
-func (o SourceControlOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SourceControlOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SourceControlOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
 // A description of the source control
 func (o SourceControlOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -298,22 +264,12 @@ func (o SourceControlOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SourceControlOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+// Information regarding the latest deployment for the source control.
+func (o SourceControlOutput) LastDeploymentInfo() DeploymentInfoResponsePtrOutput {
+	return o.ApplyT(func(v *SourceControl) DeploymentInfoResponsePtrOutput { return v.LastDeploymentInfo }).(DeploymentInfoResponsePtrOutput)
 }
 
-// The identity that last modified the resource.
-func (o SourceControlOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SourceControlOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-// Azure resource name
+// The name of the resource
 func (o SourceControlOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -328,14 +284,24 @@ func (o SourceControlOutput) Repository() RepositoryResponseOutput {
 	return o.ApplyT(func(v *SourceControl) RepositoryResponseOutput { return v.Repository }).(RepositoryResponseOutput)
 }
 
+// Information regarding the resources created in user's repository.
+func (o SourceControlOutput) RepositoryResourceInfo() RepositoryResourceInfoResponsePtrOutput {
+	return o.ApplyT(func(v *SourceControl) RepositoryResourceInfoResponsePtrOutput { return v.RepositoryResourceInfo }).(RepositoryResourceInfoResponsePtrOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SourceControlOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SourceControl) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SourceControlOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The version number associated with the source control
+func (o SourceControlOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 func init() {

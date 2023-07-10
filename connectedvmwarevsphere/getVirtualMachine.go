@@ -11,7 +11,7 @@ import (
 )
 
 // Implements virtual machine GET method.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getVirtualMachine", args, &rv, opts...)
@@ -73,6 +73,8 @@ type LookupVirtualMachineResult struct {
 	// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
 	// deploy.
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
+	// Gets the security profile.
+	SecurityProfile *SecurityProfileResponse `pulumi:"securityProfile"`
 	// Gets or sets the SMBIOS UUID of the vm.
 	SmbiosUuid *string `pulumi:"smbiosUuid"`
 	// The resource status information.
@@ -238,6 +240,11 @@ func (o LookupVirtualMachineResultOutput) ProvisioningState() pulumi.StringOutpu
 // deploy.
 func (o LookupVirtualMachineResultOutput) ResourcePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.ResourcePoolId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the security profile.
+func (o LookupVirtualMachineResultOutput) SecurityProfile() SecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *SecurityProfileResponse { return v.SecurityProfile }).(SecurityProfileResponsePtrOutput)
 }
 
 // Gets or sets the SMBIOS UUID of the vm.

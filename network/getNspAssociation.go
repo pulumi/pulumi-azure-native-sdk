@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified NSP association by name.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func LookupNspAssociation(ctx *pulumi.Context, args *LookupNspAssociationArgs, opts ...pulumi.InvokeOption) (*LookupNspAssociationResult, error) {
 	var rv LookupNspAssociationResult
 	err := ctx.Invoke("azure-native:network:getNspAssociation", args, &rv, opts...)

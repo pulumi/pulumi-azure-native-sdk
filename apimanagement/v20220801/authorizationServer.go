@@ -12,8 +12,6 @@ import (
 )
 
 // External OAuth authorization server settings.
-//
-// Deprecated: azure-native:apimanagement/v20220801:AuthorizationServer is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:AuthorizationServer to guarantee forwards compatibility.
 type AuthorizationServer struct {
 	pulumi.CustomResourceState
 
@@ -135,6 +133,12 @@ func NewAuthorizationServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:AuthorizationServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:AuthorizationServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:AuthorizationServer"),
 		},
 	})
 	opts = append(opts, aliases)

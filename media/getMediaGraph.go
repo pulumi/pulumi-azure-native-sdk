@@ -11,7 +11,7 @@ import (
 )
 
 // Get the details of a Media Graph in the Media Services account.
-// API Version: 2020-02-01-preview.
+// Azure REST API version: 2020-02-01-preview.
 func LookupMediaGraph(ctx *pulumi.Context, args *LookupMediaGraphArgs, opts ...pulumi.InvokeOption) (*LookupMediaGraphResult, error) {
 	var rv LookupMediaGraphResult
 	err := ctx.Invoke("azure-native:media:getMediaGraph", args, &rv, opts...)

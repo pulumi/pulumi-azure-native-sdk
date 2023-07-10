@@ -11,7 +11,7 @@ import (
 )
 
 // Obtains the details of a suppression.
-// API Version: 2020-01-01.
+// Azure REST API version: 2023-01-01.
 func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionResult, error) {
 	var rv LookupSuppressionResult
 	err := ctx.Invoke("azure-native:advisor:getSuppression", args, &rv, opts...)
@@ -34,15 +34,17 @@ type LookupSuppressionArgs struct {
 type LookupSuppressionResult struct {
 	// Gets or sets the expiration time stamp.
 	ExpirationTimeStamp string `pulumi:"expirationTimeStamp"`
-	// The resource ID.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The GUID of the suppression.
 	SuppressionId *string `pulumi:"suppressionId"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The duration for which the suppression is valid.
 	Ttl *string `pulumi:"ttl"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -92,12 +94,12 @@ func (o LookupSuppressionResultOutput) ExpirationTimeStamp() pulumi.StringOutput
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.ExpirationTimeStamp }).(pulumi.StringOutput)
 }
 
-// The resource ID.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSuppressionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupSuppressionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -107,12 +109,17 @@ func (o LookupSuppressionResultOutput) SuppressionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) *string { return v.SuppressionId }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupSuppressionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSuppressionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The duration for which the suppression is valid.
 func (o LookupSuppressionResultOutput) Ttl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) *string { return v.Ttl }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSuppressionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -11,8 +11,6 @@ import (
 )
 
 // Gets an IPv6 firewall rule.
-//
-// Deprecated: azure-native:sql/v20211101:IPv6FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:IPv6FirewallRule to guarantee forwards compatibility.
 func LookupIPv6FirewallRule(ctx *pulumi.Context, args *LookupIPv6FirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupIPv6FirewallRuleResult, error) {
 	var rv LookupIPv6FirewallRuleResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getIPv6FirewallRule", args, &rv, opts...)

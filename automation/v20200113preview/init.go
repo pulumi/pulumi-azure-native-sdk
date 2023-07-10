@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,32 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:automation/v20200113preview:AutomationAccount":
-		r = &AutomationAccount{}
-	case "azure-native:automation/v20200113preview:Certificate":
-		r = &Certificate{}
-	case "azure-native:automation/v20200113preview:Connection":
-		r = &Connection{}
-	case "azure-native:automation/v20200113preview:ConnectionType":
-		r = &ConnectionType{}
-	case "azure-native:automation/v20200113preview:Credential":
-		r = &Credential{}
-	case "azure-native:automation/v20200113preview:DscNodeConfiguration":
-		r = &DscNodeConfiguration{}
-	case "azure-native:automation/v20200113preview:JobSchedule":
-		r = &JobSchedule{}
-	case "azure-native:automation/v20200113preview:Module":
-		r = &Module{}
 	case "azure-native:automation/v20200113preview:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
-	case "azure-native:automation/v20200113preview:Python2Package":
-		r = &Python2Package{}
-	case "azure-native:automation/v20200113preview:Schedule":
-		r = &Schedule{}
-	case "azure-native:automation/v20200113preview:SourceControl":
-		r = &SourceControl{}
-	case "azure-native:automation/v20200113preview:Variable":
-		r = &Variable{}
 	case "azure-native:automation/v20200113preview:Watcher":
 		r = &Watcher{}
 	default:

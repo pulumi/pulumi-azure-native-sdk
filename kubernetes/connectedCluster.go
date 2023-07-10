@@ -12,7 +12,7 @@ import (
 )
 
 // Represents a connected cluster.
-// API Version: 2021-03-01.
+// Azure REST API version: 2022-05-01-preview. Prior API version in Azure Native 1.x: 2021-03-01
 type ConnectedCluster struct {
 	pulumi.CustomResourceState
 
@@ -40,6 +40,10 @@ type ConnectedCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Connected cluster offering
 	Offering pulumi.StringOutput `pulumi:"offering"`
+	// The resource id of the private link scope this connected cluster is assigned to, if any.
+	PrivateLinkScopeResourceId pulumi.StringPtrOutput `pulumi:"privateLinkScopeResourceId"`
+	// Property which describes the state of private link on a connected cluster resource.
+	PrivateLinkState pulumi.StringPtrOutput `pulumi:"privateLinkState"`
 	// Provisioning state of the connected cluster resource.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource
@@ -71,6 +75,9 @@ func NewConnectedCluster(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.Identity = args.Identity.ToConnectedClusterIdentityOutput().ApplyT(func(v ConnectedClusterIdentity) ConnectedClusterIdentity { return *v.Defaults() }).(ConnectedClusterIdentityOutput)
+	if args.PrivateLinkState == nil {
+		args.PrivateLinkState = pulumi.StringPtr("Disabled")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:kubernetes/v20200101preview:ConnectedCluster"),
@@ -136,6 +143,10 @@ type connectedClusterArgs struct {
 	Infrastructure *string `pulumi:"infrastructure"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// The resource id of the private link scope this connected cluster is assigned to, if any.
+	PrivateLinkScopeResourceId *string `pulumi:"privateLinkScopeResourceId"`
+	// Property which describes the state of private link on a connected cluster resource.
+	PrivateLinkState *string `pulumi:"privateLinkState"`
 	// Provisioning state of the connected cluster resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// The name of the resource group. The name is case insensitive.
@@ -158,6 +169,10 @@ type ConnectedClusterArgs struct {
 	Infrastructure pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// The resource id of the private link scope this connected cluster is assigned to, if any.
+	PrivateLinkScopeResourceId pulumi.StringPtrInput
+	// Property which describes the state of private link on a connected cluster resource.
+	PrivateLinkState pulumi.StringPtrInput
 	// Provisioning state of the connected cluster resource.
 	ProvisioningState pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -261,6 +276,16 @@ func (o ConnectedClusterOutput) Name() pulumi.StringOutput {
 // Connected cluster offering
 func (o ConnectedClusterOutput) Offering() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectedCluster) pulumi.StringOutput { return v.Offering }).(pulumi.StringOutput)
+}
+
+// The resource id of the private link scope this connected cluster is assigned to, if any.
+func (o ConnectedClusterOutput) PrivateLinkScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedCluster) pulumi.StringPtrOutput { return v.PrivateLinkScopeResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Property which describes the state of private link on a connected cluster resource.
+func (o ConnectedClusterOutput) PrivateLinkState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedCluster) pulumi.StringPtrOutput { return v.PrivateLinkState }).(pulumi.StringPtrOutput)
 }
 
 // Provisioning state of the connected cluster resource.

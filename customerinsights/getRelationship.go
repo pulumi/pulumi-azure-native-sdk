@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified relationship.
-// API Version: 2017-04-26.
+// Azure REST API version: 2017-04-26.
 func LookupRelationship(ctx *pulumi.Context, args *LookupRelationshipArgs, opts ...pulumi.InvokeOption) (*LookupRelationshipResult, error) {
 	var rv LookupRelationshipResult
 	err := ctx.Invoke("azure-native:customerinsights:getRelationship", args, &rv, opts...)

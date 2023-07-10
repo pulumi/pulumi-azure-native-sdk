@@ -871,6 +871,8 @@ type BotPropertiesResponse struct {
 	OpenWithHint *string `pulumi:"openWithHint"`
 	// Contains resource parameters defined as key/value pairs.
 	Parameters map[string]string `pulumi:"parameters"`
+	// List of Private Endpoint Connections configured for the bot
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the resource
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Whether the bot is in an isolated network
@@ -1063,6 +1065,11 @@ func (o BotPropertiesResponseOutput) OpenWithHint() pulumi.StringPtrOutput {
 // Contains resource parameters defined as key/value pairs.
 func (o BotPropertiesResponseOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BotPropertiesResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// List of Private Endpoint Connections configured for the bot
+func (o BotPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v BotPropertiesResponse) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Provisioning state of the resource
@@ -1493,6 +1500,10 @@ type ConnectionSettingProperties struct {
 	ClientId *string `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Id of the Connection Setting.
+	Id *string `pulumi:"id"`
+	// Name of the Connection Setting.
+	Name *string `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters []ConnectionSettingParameter `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1535,6 +1546,10 @@ type ConnectionSettingPropertiesArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Id of the Connection Setting.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the Connection Setting.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters ConnectionSettingParameterArrayInput `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1646,6 +1661,16 @@ func (o ConnectionSettingPropertiesOutput) ClientSecret() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Id of the Connection Setting.
+func (o ConnectionSettingPropertiesOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Connection Setting.
+func (o ConnectionSettingPropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSettingProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // Service Provider Parameters associated with the Connection Setting
 func (o ConnectionSettingPropertiesOutput) Parameters() ConnectionSettingParameterArrayOutput {
 	return o.ApplyT(func(v ConnectionSettingProperties) []ConnectionSettingParameter { return v.Parameters }).(ConnectionSettingParameterArrayOutput)
@@ -1715,6 +1740,26 @@ func (o ConnectionSettingPropertiesPtrOutput) ClientSecret() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Id of the Connection Setting.
+func (o ConnectionSettingPropertiesPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Connection Setting.
+func (o ConnectionSettingPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSettingProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // Service Provider Parameters associated with the Connection Setting
 func (o ConnectionSettingPropertiesPtrOutput) Parameters() ConnectionSettingParameterArrayOutput {
 	return o.ApplyT(func(v *ConnectionSettingProperties) []ConnectionSettingParameter {
@@ -1771,6 +1816,10 @@ type ConnectionSettingPropertiesResponse struct {
 	ClientId *string `pulumi:"clientId"`
 	// Client Secret associated with the Connection Setting
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Id of the Connection Setting.
+	Id *string `pulumi:"id"`
+	// Name of the Connection Setting.
+	Name *string `pulumi:"name"`
 	// Service Provider Parameters associated with the Connection Setting
 	Parameters []ConnectionSettingParameterResponse `pulumi:"parameters"`
 	// Provisioning state of the resource
@@ -1821,6 +1870,16 @@ func (o ConnectionSettingPropertiesResponseOutput) ClientId() pulumi.StringPtrOu
 // Client Secret associated with the Connection Setting
 func (o ConnectionSettingPropertiesResponseOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Id of the Connection Setting.
+func (o ConnectionSettingPropertiesResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Connection Setting.
+func (o ConnectionSettingPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSettingPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Service Provider Parameters associated with the Connection Setting
@@ -2249,399 +2308,6 @@ func (val *EmailChannelResponse) Defaults() *EmailChannelResponse {
 		tmp.Location = &location_
 	}
 	return &tmp
-}
-
-// The properties specific to an Enterprise Channel Node.
-type EnterpriseChannelNode struct {
-	// The location of the Enterprise Channel Node.
-	AzureLocation string `pulumi:"azureLocation"`
-	// The sku of the Enterprise Channel Node.
-	AzureSku string `pulumi:"azureSku"`
-	// The name of the Enterprise Channel Node.
-	Name string `pulumi:"name"`
-	// The current state of the Enterprise Channel Node.
-	State *string `pulumi:"state"`
-}
-
-// EnterpriseChannelNodeInput is an input type that accepts EnterpriseChannelNodeArgs and EnterpriseChannelNodeOutput values.
-// You can construct a concrete instance of `EnterpriseChannelNodeInput` via:
-//
-//	EnterpriseChannelNodeArgs{...}
-type EnterpriseChannelNodeInput interface {
-	pulumi.Input
-
-	ToEnterpriseChannelNodeOutput() EnterpriseChannelNodeOutput
-	ToEnterpriseChannelNodeOutputWithContext(context.Context) EnterpriseChannelNodeOutput
-}
-
-// The properties specific to an Enterprise Channel Node.
-type EnterpriseChannelNodeArgs struct {
-	// The location of the Enterprise Channel Node.
-	AzureLocation pulumi.StringInput `pulumi:"azureLocation"`
-	// The sku of the Enterprise Channel Node.
-	AzureSku pulumi.StringInput `pulumi:"azureSku"`
-	// The name of the Enterprise Channel Node.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The current state of the Enterprise Channel Node.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (EnterpriseChannelNodeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseChannelNode)(nil)).Elem()
-}
-
-func (i EnterpriseChannelNodeArgs) ToEnterpriseChannelNodeOutput() EnterpriseChannelNodeOutput {
-	return i.ToEnterpriseChannelNodeOutputWithContext(context.Background())
-}
-
-func (i EnterpriseChannelNodeArgs) ToEnterpriseChannelNodeOutputWithContext(ctx context.Context) EnterpriseChannelNodeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelNodeOutput)
-}
-
-// EnterpriseChannelNodeArrayInput is an input type that accepts EnterpriseChannelNodeArray and EnterpriseChannelNodeArrayOutput values.
-// You can construct a concrete instance of `EnterpriseChannelNodeArrayInput` via:
-//
-//	EnterpriseChannelNodeArray{ EnterpriseChannelNodeArgs{...} }
-type EnterpriseChannelNodeArrayInput interface {
-	pulumi.Input
-
-	ToEnterpriseChannelNodeArrayOutput() EnterpriseChannelNodeArrayOutput
-	ToEnterpriseChannelNodeArrayOutputWithContext(context.Context) EnterpriseChannelNodeArrayOutput
-}
-
-type EnterpriseChannelNodeArray []EnterpriseChannelNodeInput
-
-func (EnterpriseChannelNodeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnterpriseChannelNode)(nil)).Elem()
-}
-
-func (i EnterpriseChannelNodeArray) ToEnterpriseChannelNodeArrayOutput() EnterpriseChannelNodeArrayOutput {
-	return i.ToEnterpriseChannelNodeArrayOutputWithContext(context.Background())
-}
-
-func (i EnterpriseChannelNodeArray) ToEnterpriseChannelNodeArrayOutputWithContext(ctx context.Context) EnterpriseChannelNodeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelNodeArrayOutput)
-}
-
-// The properties specific to an Enterprise Channel Node.
-type EnterpriseChannelNodeOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseChannelNodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseChannelNode)(nil)).Elem()
-}
-
-func (o EnterpriseChannelNodeOutput) ToEnterpriseChannelNodeOutput() EnterpriseChannelNodeOutput {
-	return o
-}
-
-func (o EnterpriseChannelNodeOutput) ToEnterpriseChannelNodeOutputWithContext(ctx context.Context) EnterpriseChannelNodeOutput {
-	return o
-}
-
-// The location of the Enterprise Channel Node.
-func (o EnterpriseChannelNodeOutput) AzureLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v EnterpriseChannelNode) string { return v.AzureLocation }).(pulumi.StringOutput)
-}
-
-// The sku of the Enterprise Channel Node.
-func (o EnterpriseChannelNodeOutput) AzureSku() pulumi.StringOutput {
-	return o.ApplyT(func(v EnterpriseChannelNode) string { return v.AzureSku }).(pulumi.StringOutput)
-}
-
-// The name of the Enterprise Channel Node.
-func (o EnterpriseChannelNodeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v EnterpriseChannelNode) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The current state of the Enterprise Channel Node.
-func (o EnterpriseChannelNodeOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnterpriseChannelNode) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type EnterpriseChannelNodeArrayOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseChannelNodeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnterpriseChannelNode)(nil)).Elem()
-}
-
-func (o EnterpriseChannelNodeArrayOutput) ToEnterpriseChannelNodeArrayOutput() EnterpriseChannelNodeArrayOutput {
-	return o
-}
-
-func (o EnterpriseChannelNodeArrayOutput) ToEnterpriseChannelNodeArrayOutputWithContext(ctx context.Context) EnterpriseChannelNodeArrayOutput {
-	return o
-}
-
-func (o EnterpriseChannelNodeArrayOutput) Index(i pulumi.IntInput) EnterpriseChannelNodeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseChannelNode {
-		return vs[0].([]EnterpriseChannelNode)[vs[1].(int)]
-	}).(EnterpriseChannelNodeOutput)
-}
-
-// The properties specific to an Enterprise Channel Node.
-type EnterpriseChannelNodeResponse struct {
-	// The location of the Enterprise Channel Node.
-	AzureLocation string `pulumi:"azureLocation"`
-	// The sku of the Enterprise Channel Node.
-	AzureSku string `pulumi:"azureSku"`
-	// Id of Enterprise Channel Node. This is generated by the Bot Framework.
-	Id string `pulumi:"id"`
-	// The name of the Enterprise Channel Node.
-	Name string `pulumi:"name"`
-	// The current state of the Enterprise Channel Node.
-	State *string `pulumi:"state"`
-}
-
-// The properties specific to an Enterprise Channel Node.
-type EnterpriseChannelNodeResponseOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseChannelNodeResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseChannelNodeResponse)(nil)).Elem()
-}
-
-func (o EnterpriseChannelNodeResponseOutput) ToEnterpriseChannelNodeResponseOutput() EnterpriseChannelNodeResponseOutput {
-	return o
-}
-
-func (o EnterpriseChannelNodeResponseOutput) ToEnterpriseChannelNodeResponseOutputWithContext(ctx context.Context) EnterpriseChannelNodeResponseOutput {
-	return o
-}
-
-// The location of the Enterprise Channel Node.
-func (o EnterpriseChannelNodeResponseOutput) AzureLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v EnterpriseChannelNodeResponse) string { return v.AzureLocation }).(pulumi.StringOutput)
-}
-
-// The sku of the Enterprise Channel Node.
-func (o EnterpriseChannelNodeResponseOutput) AzureSku() pulumi.StringOutput {
-	return o.ApplyT(func(v EnterpriseChannelNodeResponse) string { return v.AzureSku }).(pulumi.StringOutput)
-}
-
-// Id of Enterprise Channel Node. This is generated by the Bot Framework.
-func (o EnterpriseChannelNodeResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v EnterpriseChannelNodeResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the Enterprise Channel Node.
-func (o EnterpriseChannelNodeResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v EnterpriseChannelNodeResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The current state of the Enterprise Channel Node.
-func (o EnterpriseChannelNodeResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnterpriseChannelNodeResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type EnterpriseChannelNodeResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseChannelNodeResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnterpriseChannelNodeResponse)(nil)).Elem()
-}
-
-func (o EnterpriseChannelNodeResponseArrayOutput) ToEnterpriseChannelNodeResponseArrayOutput() EnterpriseChannelNodeResponseArrayOutput {
-	return o
-}
-
-func (o EnterpriseChannelNodeResponseArrayOutput) ToEnterpriseChannelNodeResponseArrayOutputWithContext(ctx context.Context) EnterpriseChannelNodeResponseArrayOutput {
-	return o
-}
-
-func (o EnterpriseChannelNodeResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseChannelNodeResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseChannelNodeResponse {
-		return vs[0].([]EnterpriseChannelNodeResponse)[vs[1].(int)]
-	}).(EnterpriseChannelNodeResponseOutput)
-}
-
-// The parameters to provide for the Enterprise Channel.
-type EnterpriseChannelProperties struct {
-	// The nodes associated with the Enterprise Channel.
-	Nodes []EnterpriseChannelNode `pulumi:"nodes"`
-	// The current state of the Enterprise Channel.
-	State *string `pulumi:"state"`
-}
-
-// EnterpriseChannelPropertiesInput is an input type that accepts EnterpriseChannelPropertiesArgs and EnterpriseChannelPropertiesOutput values.
-// You can construct a concrete instance of `EnterpriseChannelPropertiesInput` via:
-//
-//	EnterpriseChannelPropertiesArgs{...}
-type EnterpriseChannelPropertiesInput interface {
-	pulumi.Input
-
-	ToEnterpriseChannelPropertiesOutput() EnterpriseChannelPropertiesOutput
-	ToEnterpriseChannelPropertiesOutputWithContext(context.Context) EnterpriseChannelPropertiesOutput
-}
-
-// The parameters to provide for the Enterprise Channel.
-type EnterpriseChannelPropertiesArgs struct {
-	// The nodes associated with the Enterprise Channel.
-	Nodes EnterpriseChannelNodeArrayInput `pulumi:"nodes"`
-	// The current state of the Enterprise Channel.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (EnterpriseChannelPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseChannelProperties)(nil)).Elem()
-}
-
-func (i EnterpriseChannelPropertiesArgs) ToEnterpriseChannelPropertiesOutput() EnterpriseChannelPropertiesOutput {
-	return i.ToEnterpriseChannelPropertiesOutputWithContext(context.Background())
-}
-
-func (i EnterpriseChannelPropertiesArgs) ToEnterpriseChannelPropertiesOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelPropertiesOutput)
-}
-
-func (i EnterpriseChannelPropertiesArgs) ToEnterpriseChannelPropertiesPtrOutput() EnterpriseChannelPropertiesPtrOutput {
-	return i.ToEnterpriseChannelPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i EnterpriseChannelPropertiesArgs) ToEnterpriseChannelPropertiesPtrOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelPropertiesOutput).ToEnterpriseChannelPropertiesPtrOutputWithContext(ctx)
-}
-
-// EnterpriseChannelPropertiesPtrInput is an input type that accepts EnterpriseChannelPropertiesArgs, EnterpriseChannelPropertiesPtr and EnterpriseChannelPropertiesPtrOutput values.
-// You can construct a concrete instance of `EnterpriseChannelPropertiesPtrInput` via:
-//
-//	        EnterpriseChannelPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type EnterpriseChannelPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToEnterpriseChannelPropertiesPtrOutput() EnterpriseChannelPropertiesPtrOutput
-	ToEnterpriseChannelPropertiesPtrOutputWithContext(context.Context) EnterpriseChannelPropertiesPtrOutput
-}
-
-type enterpriseChannelPropertiesPtrType EnterpriseChannelPropertiesArgs
-
-func EnterpriseChannelPropertiesPtr(v *EnterpriseChannelPropertiesArgs) EnterpriseChannelPropertiesPtrInput {
-	return (*enterpriseChannelPropertiesPtrType)(v)
-}
-
-func (*enterpriseChannelPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnterpriseChannelProperties)(nil)).Elem()
-}
-
-func (i *enterpriseChannelPropertiesPtrType) ToEnterpriseChannelPropertiesPtrOutput() EnterpriseChannelPropertiesPtrOutput {
-	return i.ToEnterpriseChannelPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *enterpriseChannelPropertiesPtrType) ToEnterpriseChannelPropertiesPtrOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelPropertiesPtrOutput)
-}
-
-// The parameters to provide for the Enterprise Channel.
-type EnterpriseChannelPropertiesOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseChannelPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseChannelProperties)(nil)).Elem()
-}
-
-func (o EnterpriseChannelPropertiesOutput) ToEnterpriseChannelPropertiesOutput() EnterpriseChannelPropertiesOutput {
-	return o
-}
-
-func (o EnterpriseChannelPropertiesOutput) ToEnterpriseChannelPropertiesOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesOutput {
-	return o
-}
-
-func (o EnterpriseChannelPropertiesOutput) ToEnterpriseChannelPropertiesPtrOutput() EnterpriseChannelPropertiesPtrOutput {
-	return o.ToEnterpriseChannelPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o EnterpriseChannelPropertiesOutput) ToEnterpriseChannelPropertiesPtrOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseChannelProperties) *EnterpriseChannelProperties {
-		return &v
-	}).(EnterpriseChannelPropertiesPtrOutput)
-}
-
-// The nodes associated with the Enterprise Channel.
-func (o EnterpriseChannelPropertiesOutput) Nodes() EnterpriseChannelNodeArrayOutput {
-	return o.ApplyT(func(v EnterpriseChannelProperties) []EnterpriseChannelNode { return v.Nodes }).(EnterpriseChannelNodeArrayOutput)
-}
-
-// The current state of the Enterprise Channel.
-func (o EnterpriseChannelPropertiesOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnterpriseChannelProperties) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type EnterpriseChannelPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseChannelPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnterpriseChannelProperties)(nil)).Elem()
-}
-
-func (o EnterpriseChannelPropertiesPtrOutput) ToEnterpriseChannelPropertiesPtrOutput() EnterpriseChannelPropertiesPtrOutput {
-	return o
-}
-
-func (o EnterpriseChannelPropertiesPtrOutput) ToEnterpriseChannelPropertiesPtrOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesPtrOutput {
-	return o
-}
-
-func (o EnterpriseChannelPropertiesPtrOutput) Elem() EnterpriseChannelPropertiesOutput {
-	return o.ApplyT(func(v *EnterpriseChannelProperties) EnterpriseChannelProperties {
-		if v != nil {
-			return *v
-		}
-		var ret EnterpriseChannelProperties
-		return ret
-	}).(EnterpriseChannelPropertiesOutput)
-}
-
-// The nodes associated with the Enterprise Channel.
-func (o EnterpriseChannelPropertiesPtrOutput) Nodes() EnterpriseChannelNodeArrayOutput {
-	return o.ApplyT(func(v *EnterpriseChannelProperties) []EnterpriseChannelNode {
-		if v == nil {
-			return nil
-		}
-		return v.Nodes
-	}).(EnterpriseChannelNodeArrayOutput)
-}
-
-// The current state of the Enterprise Channel.
-func (o EnterpriseChannelPropertiesPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnterpriseChannelProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// The parameters to provide for the Enterprise Channel.
-type EnterpriseChannelPropertiesResponse struct {
-	// The nodes associated with the Enterprise Channel.
-	Nodes []EnterpriseChannelNodeResponse `pulumi:"nodes"`
-	// The current state of the Enterprise Channel.
-	State *string `pulumi:"state"`
-}
-
-// The parameters to provide for the Enterprise Channel.
-type EnterpriseChannelPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseChannelPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseChannelPropertiesResponse)(nil)).Elem()
-}
-
-func (o EnterpriseChannelPropertiesResponseOutput) ToEnterpriseChannelPropertiesResponseOutput() EnterpriseChannelPropertiesResponseOutput {
-	return o
-}
-
-func (o EnterpriseChannelPropertiesResponseOutput) ToEnterpriseChannelPropertiesResponseOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesResponseOutput {
-	return o
-}
-
-// The nodes associated with the Enterprise Channel.
-func (o EnterpriseChannelPropertiesResponseOutput) Nodes() EnterpriseChannelNodeResponseArrayOutput {
-	return o.ApplyT(func(v EnterpriseChannelPropertiesResponse) []EnterpriseChannelNodeResponse { return v.Nodes }).(EnterpriseChannelNodeResponseArrayOutput)
-}
-
-// The current state of the Enterprise Channel.
-func (o EnterpriseChannelPropertiesResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnterpriseChannelPropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // Facebook channel definition
@@ -3180,6 +2846,96 @@ func (val *OutlookChannelResponse) Defaults() *OutlookChannelResponse {
 		tmp.Location = &location_
 	}
 	return &tmp
+}
+
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionResponse struct {
+	// Group ids
+	GroupIds []string `pulumi:"groupIds"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The resource of private end point.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+// Group ids
+func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource of private end point.
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
+		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionResponseOutput)
 }
 
 // The Private Endpoint resource.
@@ -4055,6 +3811,8 @@ type SlackChannelProperties struct {
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The Slack landing page Url
 	LandingPageUrl *string `pulumi:"landingPageUrl"`
+	// Whether to register the settings before OAuth validation is performed. Recommended to True.
+	RegisterBeforeOAuthFlow *bool `pulumi:"registerBeforeOAuthFlow"`
 	// The Slack permission scopes.
 	Scopes *string `pulumi:"scopes"`
 	// The Slack signing secret.
@@ -4080,7 +3838,7 @@ type SlackChannelPropertiesResponse struct {
 	// The Slack redirect action
 	RedirectAction string `pulumi:"redirectAction"`
 	// Whether to register the settings before OAuth validation is performed. Recommended to True.
-	RegisterBeforeOAuthFlow bool `pulumi:"registerBeforeOAuthFlow"`
+	RegisterBeforeOAuthFlow *bool `pulumi:"registerBeforeOAuthFlow"`
 	// The Slack permission scopes.
 	Scopes *string `pulumi:"scopes"`
 	// The Slack signing secret.
@@ -4631,13 +4389,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionSettingPropertiesOutput{})
 	pulumi.RegisterOutputType(ConnectionSettingPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionSettingPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(EnterpriseChannelNodeOutput{})
-	pulumi.RegisterOutputType(EnterpriseChannelNodeArrayOutput{})
-	pulumi.RegisterOutputType(EnterpriseChannelNodeResponseOutput{})
-	pulumi.RegisterOutputType(EnterpriseChannelNodeResponseArrayOutput{})
-	pulumi.RegisterOutputType(EnterpriseChannelPropertiesOutput{})
-	pulumi.RegisterOutputType(EnterpriseChannelPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(EnterpriseChannelPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})

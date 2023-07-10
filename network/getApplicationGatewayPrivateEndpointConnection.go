@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified private endpoint connection on application gateway.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupApplicationGatewayPrivateEndpointConnection(ctx *pulumi.Context, args *LookupApplicationGatewayPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGatewayPrivateEndpointConnectionResult, error) {
 	var rv LookupApplicationGatewayPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:network:getApplicationGatewayPrivateEndpointConnection", args, &rv, opts...)

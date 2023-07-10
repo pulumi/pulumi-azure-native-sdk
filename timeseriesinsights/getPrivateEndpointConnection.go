@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the private endpoint connection of the environment in the given resource group.
-// API Version: 2021-03-31-preview.
+// Azure REST API version: 2021-03-31-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:timeseriesinsights:getPrivateEndpointConnection", args, &rv, opts...)

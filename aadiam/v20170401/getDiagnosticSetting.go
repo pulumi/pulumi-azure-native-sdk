@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the active diagnostic setting for AadIam.
-//
-// Deprecated: azure-native:aadiam/v20170401:DiagnosticSetting is being removed in the next major version of this provider. Upgrade to at least azure-native:aadiam/v20170401preview:DiagnosticSetting to guarantee forwards compatibility.
 func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticSettingResult, error) {
 	var rv LookupDiagnosticSettingResult
 	err := ctx.Invoke("azure-native:aadiam/v20170401:getDiagnosticSetting", args, &rv, opts...)

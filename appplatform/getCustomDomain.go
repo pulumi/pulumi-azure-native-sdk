@@ -11,7 +11,7 @@ import (
 )
 
 // Get the custom domain of one lifecycle application.
-// API Version: 2020-07-01.
+// Azure REST API version: 2023-05-01-preview.
 func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
 	var rv LookupCustomDomainResult
 	err := ctx.Invoke("azure-native:appplatform:getCustomDomain", args, &rv, opts...)
@@ -40,6 +40,8 @@ type LookupCustomDomainResult struct {
 	Name string `pulumi:"name"`
 	// Properties of the custom domain resource.
 	Properties CustomDomainPropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -100,6 +102,11 @@ func (o LookupCustomDomainResultOutput) Name() pulumi.StringOutput {
 // Properties of the custom domain resource.
 func (o LookupCustomDomainResultOutput) Properties() CustomDomainPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) CustomDomainPropertiesResponse { return v.Properties }).(CustomDomainPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupCustomDomainResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

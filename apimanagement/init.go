@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Api{}
 	case "azure-native:apimanagement:ApiDiagnostic":
 		r = &ApiDiagnostic{}
-	case "azure-native:apimanagement:ApiDiagnosticLogger":
-		r = &ApiDiagnosticLogger{}
 	case "azure-native:apimanagement:ApiIssue":
 		r = &ApiIssue{}
 	case "azure-native:apimanagement:ApiIssueAttachment":
@@ -49,6 +47,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiTagDescription{}
 	case "azure-native:apimanagement:ApiVersionSet":
 		r = &ApiVersionSet{}
+	case "azure-native:apimanagement:ApiWiki":
+		r = &ApiWiki{}
+	case "azure-native:apimanagement:Authorization":
+		r = &Authorization{}
+	case "azure-native:apimanagement:AuthorizationAccessPolicy":
+		r = &AuthorizationAccessPolicy{}
+	case "azure-native:apimanagement:AuthorizationProvider":
+		r = &AuthorizationProvider{}
 	case "azure-native:apimanagement:AuthorizationServer":
 		r = &AuthorizationServer{}
 	case "azure-native:apimanagement:Backend":
@@ -63,8 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContentType{}
 	case "azure-native:apimanagement:Diagnostic":
 		r = &Diagnostic{}
-	case "azure-native:apimanagement:DiagnosticLogger":
-		r = &DiagnosticLogger{}
+	case "azure-native:apimanagement:Documentation":
+		r = &Documentation{}
 	case "azure-native:apimanagement:EmailTemplate":
 		r = &EmailTemplate{}
 	case "azure-native:apimanagement:Gateway":
@@ -75,6 +81,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GatewayCertificateAuthority{}
 	case "azure-native:apimanagement:GatewayHostnameConfiguration":
 		r = &GatewayHostnameConfiguration{}
+	case "azure-native:apimanagement:GlobalSchema":
+		r = &GlobalSchema{}
+	case "azure-native:apimanagement:GraphQLApiResolver":
+		r = &GraphQLApiResolver{}
+	case "azure-native:apimanagement:GraphQLApiResolverPolicy":
+		r = &GraphQLApiResolverPolicy{}
 	case "azure-native:apimanagement:Group":
 		r = &Group{}
 	case "azure-native:apimanagement:GroupUser":
@@ -101,26 +113,86 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Product{}
 	case "azure-native:apimanagement:ProductApi":
 		r = &ProductApi{}
+	case "azure-native:apimanagement:ProductApiLink":
+		r = &ProductApiLink{}
 	case "azure-native:apimanagement:ProductGroup":
 		r = &ProductGroup{}
+	case "azure-native:apimanagement:ProductGroupLink":
+		r = &ProductGroupLink{}
 	case "azure-native:apimanagement:ProductPolicy":
 		r = &ProductPolicy{}
-	case "azure-native:apimanagement:Property":
-		r = &Property{}
+	case "azure-native:apimanagement:ProductWiki":
+		r = &ProductWiki{}
 	case "azure-native:apimanagement:Schema":
 		r = &Schema{}
 	case "azure-native:apimanagement:Subscription":
 		r = &Subscription{}
 	case "azure-native:apimanagement:Tag":
 		r = &Tag{}
+	case "azure-native:apimanagement:TagApiLink":
+		r = &TagApiLink{}
 	case "azure-native:apimanagement:TagByApi":
 		r = &TagByApi{}
 	case "azure-native:apimanagement:TagByOperation":
 		r = &TagByOperation{}
 	case "azure-native:apimanagement:TagByProduct":
 		r = &TagByProduct{}
+	case "azure-native:apimanagement:TagOperationLink":
+		r = &TagOperationLink{}
+	case "azure-native:apimanagement:TagProductLink":
+		r = &TagProductLink{}
 	case "azure-native:apimanagement:User":
 		r = &User{}
+	case "azure-native:apimanagement:Workspace":
+		r = &Workspace{}
+	case "azure-native:apimanagement:WorkspaceApi":
+		r = &WorkspaceApi{}
+	case "azure-native:apimanagement:WorkspaceApiOperation":
+		r = &WorkspaceApiOperation{}
+	case "azure-native:apimanagement:WorkspaceApiOperationPolicy":
+		r = &WorkspaceApiOperationPolicy{}
+	case "azure-native:apimanagement:WorkspaceApiPolicy":
+		r = &WorkspaceApiPolicy{}
+	case "azure-native:apimanagement:WorkspaceApiRelease":
+		r = &WorkspaceApiRelease{}
+	case "azure-native:apimanagement:WorkspaceApiSchema":
+		r = &WorkspaceApiSchema{}
+	case "azure-native:apimanagement:WorkspaceApiVersionSet":
+		r = &WorkspaceApiVersionSet{}
+	case "azure-native:apimanagement:WorkspaceGlobalSchema":
+		r = &WorkspaceGlobalSchema{}
+	case "azure-native:apimanagement:WorkspaceGroup":
+		r = &WorkspaceGroup{}
+	case "azure-native:apimanagement:WorkspaceGroupUser":
+		r = &WorkspaceGroupUser{}
+	case "azure-native:apimanagement:WorkspaceNamedValue":
+		r = &WorkspaceNamedValue{}
+	case "azure-native:apimanagement:WorkspaceNotificationRecipientEmail":
+		r = &WorkspaceNotificationRecipientEmail{}
+	case "azure-native:apimanagement:WorkspaceNotificationRecipientUser":
+		r = &WorkspaceNotificationRecipientUser{}
+	case "azure-native:apimanagement:WorkspacePolicy":
+		r = &WorkspacePolicy{}
+	case "azure-native:apimanagement:WorkspacePolicyFragment":
+		r = &WorkspacePolicyFragment{}
+	case "azure-native:apimanagement:WorkspaceProduct":
+		r = &WorkspaceProduct{}
+	case "azure-native:apimanagement:WorkspaceProductApiLink":
+		r = &WorkspaceProductApiLink{}
+	case "azure-native:apimanagement:WorkspaceProductGroupLink":
+		r = &WorkspaceProductGroupLink{}
+	case "azure-native:apimanagement:WorkspaceProductPolicy":
+		r = &WorkspaceProductPolicy{}
+	case "azure-native:apimanagement:WorkspaceSubscription":
+		r = &WorkspaceSubscription{}
+	case "azure-native:apimanagement:WorkspaceTag":
+		r = &WorkspaceTag{}
+	case "azure-native:apimanagement:WorkspaceTagApiLink":
+		r = &WorkspaceTagApiLink{}
+	case "azure-native:apimanagement:WorkspaceTagOperationLink":
+		r = &WorkspaceTagOperationLink{}
+	case "azure-native:apimanagement:WorkspaceTagProductLink":
+		r = &WorkspaceTagProductLink{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

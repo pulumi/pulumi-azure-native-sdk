@@ -12,12 +12,18 @@ import (
 )
 
 // The Collection data structure.
-// API Version: 2021-12-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2021-12-01
 type PrivateStoreCollection struct {
 	pulumi.CustomResourceState
 
 	// Indicating whether all subscriptions are selected (=true) or not (=false).
 	AllSubscriptions pulumi.BoolPtrOutput `pulumi:"allSubscriptions"`
+	// Gets list of collection rules
+	AppliedRules RuleResponseArrayOutput `pulumi:"appliedRules"`
+	// Indicating whether all items are approved for this collection (=true) or not (=false).
+	ApproveAllItems pulumi.BoolOutput `pulumi:"approveAllItems"`
+	// Gets the modified date of all items approved.
+	ApproveAllItemsModifiedAt pulumi.StringOutput `pulumi:"approveAllItemsModifiedAt"`
 	// Gets or sets the association with Commercial's Billing Account.
 	Claim pulumi.StringPtrOutput `pulumi:"claim"`
 	// Gets collection Id.
@@ -172,6 +178,21 @@ func (o PrivateStoreCollectionOutput) ToPrivateStoreCollectionOutputWithContext(
 // Indicating whether all subscriptions are selected (=true) or not (=false).
 func (o PrivateStoreCollectionOutput) AllSubscriptions() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateStoreCollection) pulumi.BoolPtrOutput { return v.AllSubscriptions }).(pulumi.BoolPtrOutput)
+}
+
+// Gets list of collection rules
+func (o PrivateStoreCollectionOutput) AppliedRules() RuleResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateStoreCollection) RuleResponseArrayOutput { return v.AppliedRules }).(RuleResponseArrayOutput)
+}
+
+// Indicating whether all items are approved for this collection (=true) or not (=false).
+func (o PrivateStoreCollectionOutput) ApproveAllItems() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PrivateStoreCollection) pulumi.BoolOutput { return v.ApproveAllItems }).(pulumi.BoolOutput)
+}
+
+// Gets the modified date of all items approved.
+func (o PrivateStoreCollectionOutput) ApproveAllItemsModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateStoreCollection) pulumi.StringOutput { return v.ApproveAllItemsModifiedAt }).(pulumi.StringOutput)
 }
 
 // Gets or sets the association with Commercial's Billing Account.

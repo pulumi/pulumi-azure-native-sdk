@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:eventgrid:CaCertificate":
+		r = &CaCertificate{}
 	case "azure-native:eventgrid:Channel":
 		r = &Channel{}
+	case "azure-native:eventgrid:Client":
+		r = &Client{}
+	case "azure-native:eventgrid:ClientGroup":
+		r = &ClientGroup{}
 	case "azure-native:eventgrid:Domain":
 		r = &Domain{}
 	case "azure-native:eventgrid:DomainEventSubscription":
@@ -31,10 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainTopic{}
 	case "azure-native:eventgrid:DomainTopicEventSubscription":
 		r = &DomainTopicEventSubscription{}
-	case "azure-native:eventgrid:EventChannel":
-		r = &EventChannel{}
 	case "azure-native:eventgrid:EventSubscription":
 		r = &EventSubscription{}
+	case "azure-native:eventgrid:Namespace":
+		r = &Namespace{}
+	case "azure-native:eventgrid:NamespaceTopic":
+		r = &NamespaceTopic{}
+	case "azure-native:eventgrid:NamespaceTopicEventSubscription":
+		r = &NamespaceTopicEventSubscription{}
 	case "azure-native:eventgrid:PartnerConfiguration":
 		r = &PartnerConfiguration{}
 	case "azure-native:eventgrid:PartnerDestination":
@@ -47,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PartnerTopic{}
 	case "azure-native:eventgrid:PartnerTopicEventSubscription":
 		r = &PartnerTopicEventSubscription{}
+	case "azure-native:eventgrid:PermissionBinding":
+		r = &PermissionBinding{}
 	case "azure-native:eventgrid:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:eventgrid:SystemTopic":
@@ -57,6 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Topic{}
 	case "azure-native:eventgrid:TopicEventSubscription":
 		r = &TopicEventSubscription{}
+	case "azure-native:eventgrid:TopicSpace":
+		r = &TopicSpace{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

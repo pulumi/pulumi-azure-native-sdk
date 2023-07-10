@@ -91,35 +91,6 @@ const (
 	MsiIdentityTypeUserAssigned   = MsiIdentityType("UserAssigned")
 )
 
-// Host OS supported by the Kubernetes role.
-type PlatformType string
-
-const (
-	PlatformTypeWindows = PlatformType("Windows")
-	PlatformTypeLinux   = PlatformType("Linux")
-)
-
-// Role status.
-type RoleStatus string
-
-const (
-	RoleStatusEnabled  = RoleStatus("Enabled")
-	RoleStatusDisabled = RoleStatus("Disabled")
-)
-
-// Role type.
-type RoleTypes string
-
-const (
-	RoleTypesIOT                 = RoleTypes("IOT")
-	RoleTypesASA                 = RoleTypes("ASA")
-	RoleTypesFunctions           = RoleTypes("Functions")
-	RoleTypesCognitive           = RoleTypes("Cognitive")
-	RoleTypesMEC                 = RoleTypes("MEC")
-	RoleTypesCloudEdgeManagement = RoleTypes("CloudEdgeManagement")
-	RoleTypesKubernetes          = RoleTypes("Kubernetes")
-)
-
 // Signifies whether SSL needs to be enabled or not.
 type SSLStatus string
 
@@ -216,14 +187,6 @@ const (
 	StorageAccountStatusUnknown        = StorageAccountStatus("Unknown")
 	StorageAccountStatusUpdating       = StorageAccountStatus("Updating")
 	StorageAccountStatusNeedsAttention = StorageAccountStatus("NeedsAttention")
-)
-
-// Trigger Kind.
-type TriggerEventType string
-
-const (
-	TriggerEventTypeFileEvent          = TriggerEventType("FileEvent")
-	TriggerEventTypePeriodicTimerEvent = TriggerEventType("PeriodicTimerEvent")
 )
 
 // Type of the user.

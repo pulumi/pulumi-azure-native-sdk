@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the available consortiums for a subscription.
-// API Version: 2018-06-01-preview.
+// Azure REST API version: 2018-06-01-preview.
 func ListLocationConsortiums(ctx *pulumi.Context, args *ListLocationConsortiumsArgs, opts ...pulumi.InvokeOption) (*ListLocationConsortiumsResult, error) {
 	var rv ListLocationConsortiumsResult
 	err := ctx.Invoke("azure-native:blockchain:listLocationConsortiums", args, &rv, opts...)

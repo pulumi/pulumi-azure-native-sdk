@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	var rv LookupDeploymentResult
 	err := ctx.Invoke("azure-native:azuresphere:getDeployment", args, &rv, opts...)

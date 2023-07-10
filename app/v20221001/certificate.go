@@ -12,8 +12,6 @@ import (
 )
 
 // Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
-//
-// Deprecated: azure-native:app/v20221001:Certificate is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:Certificate to guarantee forwards compatibility.
 type Certificate struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +54,12 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20220601preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)

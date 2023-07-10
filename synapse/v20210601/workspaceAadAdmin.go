@@ -12,8 +12,6 @@ import (
 )
 
 // Workspace active directory administrator
-//
-// Deprecated: azure-native:synapse/v20210601:WorkspaceAadAdmin is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:WorkspaceAadAdmin to guarantee forwards compatibility.
 type WorkspaceAadAdmin struct {
 	pulumi.CustomResourceState
 

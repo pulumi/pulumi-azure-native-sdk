@@ -12,7 +12,7 @@ import (
 )
 
 // Describes a Shared Private Link Resource
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-04-01-preview
 type SignalRSharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +22,7 @@ type SignalRSharedPrivateLinkResource struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource id of the resource the shared private link resource is for
 	PrivateLinkResourceId pulumi.StringOutput `pulumi:"privateLinkResourceId"`
-	// Provisioning state of the shared private link resource
+	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The request message for requesting approval of the shared private link resource
 	RequestMessage pulumi.StringPtrOutput `pulumi:"requestMessage"`
@@ -74,6 +74,12 @@ func NewSignalRSharedPrivateLinkResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20230201:SignalRSharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230301preview:SignalRSharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230601preview:SignalRSharedPrivateLinkResource"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -191,7 +197,7 @@ func (o SignalRSharedPrivateLinkResourceOutput) PrivateLinkResourceId() pulumi.S
 	return o.ApplyT(func(v *SignalRSharedPrivateLinkResource) pulumi.StringOutput { return v.PrivateLinkResourceId }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the shared private link resource
+// Provisioning state of the resource.
 func (o SignalRSharedPrivateLinkResourceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *SignalRSharedPrivateLinkResource) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the automation keys for an account.
-// API Version: 2021-06-22.
+// Azure REST API version: 2022-08-08.
 func ListKeyByAutomationAccount(ctx *pulumi.Context, args *ListKeyByAutomationAccountArgs, opts ...pulumi.InvokeOption) (*ListKeyByAutomationAccountResult, error) {
 	var rv ListKeyByAutomationAccountResult
 	err := ctx.Invoke("azure-native:automation:listKeyByAutomationAccount", args, &rv, opts...)

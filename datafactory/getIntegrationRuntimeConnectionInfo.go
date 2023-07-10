@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the on-premises integration runtime connection information for encrypting the on-premises data source credentials.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func GetIntegrationRuntimeConnectionInfo(ctx *pulumi.Context, args *GetIntegrationRuntimeConnectionInfoArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeConnectionInfoResult, error) {
 	var rv GetIntegrationRuntimeConnectionInfoResult
 	err := ctx.Invoke("azure-native:datafactory:getIntegrationRuntimeConnectionInfo", args, &rv, opts...)

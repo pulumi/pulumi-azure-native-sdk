@@ -79,74 +79,12 @@ const (
 	AzureSkuTierStandard = AzureSkuTier("Standard")
 )
 
-// The name of blob storage event type to process.
-type BlobStorageEventType string
-
-const (
-	BlobStorageEventType_Microsoft_Storage_BlobCreated = BlobStorageEventType("Microsoft.Storage.BlobCreated")
-	BlobStorageEventType_Microsoft_Storage_BlobRenamed = BlobStorageEventType("Microsoft.Storage.BlobRenamed")
-)
-
 // Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 type ClusterNetworkAccessFlag string
 
 const (
 	ClusterNetworkAccessFlagEnabled  = ClusterNetworkAccessFlag("Enabled")
 	ClusterNetworkAccessFlagDisabled = ClusterNetworkAccessFlag("Disabled")
-)
-
-// Cluster principal role.
-type ClusterPrincipalRole string
-
-const (
-	ClusterPrincipalRoleAllDatabasesAdmin  = ClusterPrincipalRole("AllDatabasesAdmin")
-	ClusterPrincipalRoleAllDatabasesViewer = ClusterPrincipalRole("AllDatabasesViewer")
-)
-
-// The event hub messages compression type
-type Compression string
-
-const (
-	CompressionNone = Compression("None")
-	CompressionGZip = Compression("GZip")
-)
-
-// Kind of the endpoint for the data connection
-type DataConnectionKind string
-
-const (
-	DataConnectionKindEventHub  = DataConnectionKind("EventHub")
-	DataConnectionKindEventGrid = DataConnectionKind("EventGrid")
-	DataConnectionKindIotHub    = DataConnectionKind("IotHub")
-)
-
-// Database principal role.
-type DatabasePrincipalRole string
-
-const (
-	DatabasePrincipalRoleAdmin              = DatabasePrincipalRole("Admin")
-	DatabasePrincipalRoleIngestor           = DatabasePrincipalRole("Ingestor")
-	DatabasePrincipalRoleMonitor            = DatabasePrincipalRole("Monitor")
-	DatabasePrincipalRoleUser               = DatabasePrincipalRole("User")
-	DatabasePrincipalRoleUnrestrictedViewer = DatabasePrincipalRole("UnrestrictedViewer")
-	DatabasePrincipalRoleViewer             = DatabasePrincipalRole("Viewer")
-)
-
-// Indication for database routing information from the data connection, by default only database routing information is allowed
-type DatabaseRouting string
-
-const (
-	DatabaseRoutingSingle = DatabaseRouting("Single")
-	DatabaseRoutingMulti  = DatabaseRouting("Multi")
-)
-
-// The default principals modification kind
-type DefaultPrincipalsModificationKind string
-
-const (
-	DefaultPrincipalsModificationKindUnion   = DefaultPrincipalsModificationKind("Union")
-	DefaultPrincipalsModificationKindReplace = DefaultPrincipalsModificationKind("Replace")
-	DefaultPrincipalsModificationKindNone    = DefaultPrincipalsModificationKind("None")
 )
 
 // The engine type
@@ -157,50 +95,6 @@ const (
 	EngineTypeV3 = EngineType("V3")
 )
 
-// The data format of the message. Optionally the data format can be added to each message.
-type EventGridDataFormat string
-
-const (
-	EventGridDataFormatMULTIJSON  = EventGridDataFormat("MULTIJSON")
-	EventGridDataFormatJSON       = EventGridDataFormat("JSON")
-	EventGridDataFormatCSV        = EventGridDataFormat("CSV")
-	EventGridDataFormatTSV        = EventGridDataFormat("TSV")
-	EventGridDataFormatSCSV       = EventGridDataFormat("SCSV")
-	EventGridDataFormatSOHSV      = EventGridDataFormat("SOHSV")
-	EventGridDataFormatPSV        = EventGridDataFormat("PSV")
-	EventGridDataFormatTXT        = EventGridDataFormat("TXT")
-	EventGridDataFormatRAW        = EventGridDataFormat("RAW")
-	EventGridDataFormatSINGLEJSON = EventGridDataFormat("SINGLEJSON")
-	EventGridDataFormatAVRO       = EventGridDataFormat("AVRO")
-	EventGridDataFormatTSVE       = EventGridDataFormat("TSVE")
-	EventGridDataFormatPARQUET    = EventGridDataFormat("PARQUET")
-	EventGridDataFormatORC        = EventGridDataFormat("ORC")
-	EventGridDataFormatAPACHEAVRO = EventGridDataFormat("APACHEAVRO")
-	EventGridDataFormatW3CLOGFILE = EventGridDataFormat("W3CLOGFILE")
-)
-
-// The data format of the message. Optionally the data format can be added to each message.
-type EventHubDataFormat string
-
-const (
-	EventHubDataFormatMULTIJSON  = EventHubDataFormat("MULTIJSON")
-	EventHubDataFormatJSON       = EventHubDataFormat("JSON")
-	EventHubDataFormatCSV        = EventHubDataFormat("CSV")
-	EventHubDataFormatTSV        = EventHubDataFormat("TSV")
-	EventHubDataFormatSCSV       = EventHubDataFormat("SCSV")
-	EventHubDataFormatSOHSV      = EventHubDataFormat("SOHSV")
-	EventHubDataFormatPSV        = EventHubDataFormat("PSV")
-	EventHubDataFormatTXT        = EventHubDataFormat("TXT")
-	EventHubDataFormatRAW        = EventHubDataFormat("RAW")
-	EventHubDataFormatSINGLEJSON = EventHubDataFormat("SINGLEJSON")
-	EventHubDataFormatAVRO       = EventHubDataFormat("AVRO")
-	EventHubDataFormatTSVE       = EventHubDataFormat("TSVE")
-	EventHubDataFormatPARQUET    = EventHubDataFormat("PARQUET")
-	EventHubDataFormatORC        = EventHubDataFormat("ORC")
-	EventHubDataFormatAPACHEAVRO = EventHubDataFormat("APACHEAVRO")
-	EventHubDataFormatW3CLOGFILE = EventHubDataFormat("W3CLOGFILE")
-)
-
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
 type IdentityType string
 
@@ -209,45 +103,6 @@ const (
 	IdentityTypeSystemAssigned               = IdentityType("SystemAssigned")
 	IdentityTypeUserAssigned                 = IdentityType("UserAssigned")
 	IdentityType_SystemAssigned_UserAssigned = IdentityType("SystemAssigned, UserAssigned")
-)
-
-// The data format of the message. Optionally the data format can be added to each message.
-type IotHubDataFormat string
-
-const (
-	IotHubDataFormatMULTIJSON  = IotHubDataFormat("MULTIJSON")
-	IotHubDataFormatJSON       = IotHubDataFormat("JSON")
-	IotHubDataFormatCSV        = IotHubDataFormat("CSV")
-	IotHubDataFormatTSV        = IotHubDataFormat("TSV")
-	IotHubDataFormatSCSV       = IotHubDataFormat("SCSV")
-	IotHubDataFormatSOHSV      = IotHubDataFormat("SOHSV")
-	IotHubDataFormatPSV        = IotHubDataFormat("PSV")
-	IotHubDataFormatTXT        = IotHubDataFormat("TXT")
-	IotHubDataFormatRAW        = IotHubDataFormat("RAW")
-	IotHubDataFormatSINGLEJSON = IotHubDataFormat("SINGLEJSON")
-	IotHubDataFormatAVRO       = IotHubDataFormat("AVRO")
-	IotHubDataFormatTSVE       = IotHubDataFormat("TSVE")
-	IotHubDataFormatPARQUET    = IotHubDataFormat("PARQUET")
-	IotHubDataFormatORC        = IotHubDataFormat("ORC")
-	IotHubDataFormatAPACHEAVRO = IotHubDataFormat("APACHEAVRO")
-	IotHubDataFormatW3CLOGFILE = IotHubDataFormat("W3CLOGFILE")
-)
-
-// Kind of the database
-type Kind string
-
-const (
-	KindReadWrite         = Kind("ReadWrite")
-	KindReadOnlyFollowing = Kind("ReadOnlyFollowing")
-)
-
-// Principal type.
-type PrincipalType string
-
-const (
-	PrincipalTypeApp   = PrincipalType("App")
-	PrincipalTypeGroup = PrincipalType("Group")
-	PrincipalTypeUser  = PrincipalType("User")
 )
 
 // Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)

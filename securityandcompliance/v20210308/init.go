@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,17 +33,17 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateEndpointConnectionsForSCCPowershell{}
 	case "azure-native:securityandcompliance/v20210308:PrivateEndpointConnectionsSec":
 		r = &PrivateEndpointConnectionsSec{}
-	case "azure-native:securityandcompliance/v20210308:privateLinkServicesForEDMUpload":
+	case "azure-native:securityandcompliance/v20210308:PrivateLinkServicesForEDMUpload":
 		r = &PrivateLinkServicesForEDMUpload{}
-	case "azure-native:securityandcompliance/v20210308:privateLinkServicesForM365ComplianceCenter":
+	case "azure-native:securityandcompliance/v20210308:PrivateLinkServicesForM365ComplianceCenter":
 		r = &PrivateLinkServicesForM365ComplianceCenter{}
-	case "azure-native:securityandcompliance/v20210308:privateLinkServicesForM365SecurityCenter":
+	case "azure-native:securityandcompliance/v20210308:PrivateLinkServicesForM365SecurityCenter":
 		r = &PrivateLinkServicesForM365SecurityCenter{}
-	case "azure-native:securityandcompliance/v20210308:privateLinkServicesForMIPPolicySync":
+	case "azure-native:securityandcompliance/v20210308:PrivateLinkServicesForMIPPolicySync":
 		r = &PrivateLinkServicesForMIPPolicySync{}
-	case "azure-native:securityandcompliance/v20210308:privateLinkServicesForO365ManagementActivityAPI":
+	case "azure-native:securityandcompliance/v20210308:PrivateLinkServicesForO365ManagementActivityAPI":
 		r = &PrivateLinkServicesForO365ManagementActivityAPI{}
-	case "azure-native:securityandcompliance/v20210308:privateLinkServicesForSCCPowershell":
+	case "azure-native:securityandcompliance/v20210308:PrivateLinkServicesForSCCPowershell":
 		r = &PrivateLinkServicesForSCCPowershell{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)

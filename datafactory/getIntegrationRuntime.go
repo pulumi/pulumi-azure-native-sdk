@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an integration runtime.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntimeArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationRuntimeResult, error) {
 	var rv LookupIntegrationRuntimeResult
 	err := ctx.Invoke("azure-native:datafactory:getIntegrationRuntime", args, &rv, opts...)

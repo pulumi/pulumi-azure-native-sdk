@@ -11,7 +11,7 @@ import (
 )
 
 // Return the Bastion Shareable Links for all the VMs specified in the request.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func GetBastionShareableLink(ctx *pulumi.Context, args *GetBastionShareableLinkArgs, opts ...pulumi.InvokeOption) (*GetBastionShareableLinkResult, error) {
 	var rv GetBastionShareableLinkResult
 	err := ctx.Invoke("azure-native:network:getBastionShareableLink", args, &rv, opts...)

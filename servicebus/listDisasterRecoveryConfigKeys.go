@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the primary and secondary connection strings for the namespace.
-// API Version: 2017-04-01.
+// Azure REST API version: 2022-01-01-preview.
 func ListDisasterRecoveryConfigKeys(ctx *pulumi.Context, args *ListDisasterRecoveryConfigKeysArgs, opts ...pulumi.InvokeOption) (*ListDisasterRecoveryConfigKeysResult, error) {
 	var rv ListDisasterRecoveryConfigKeysResult
 	err := ctx.Invoke("azure-native:servicebus:listDisasterRecoveryConfigKeys", args, &rv, opts...)

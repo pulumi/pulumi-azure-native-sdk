@@ -11,8 +11,6 @@ import (
 )
 
 // Returns AndroidMAMPolicy with given name.
-//
-// Deprecated: azure-native:intune/v20150114preview:AndroidMAMPolicyByName is being removed in the next major version of this provider. Upgrade to at least azure-native:intune/v20150114privatepreview:AndroidMAMPolicyByName to guarantee forwards compatibility.
 func LookupAndroidMAMPolicyByName(ctx *pulumi.Context, args *LookupAndroidMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupAndroidMAMPolicyByNameResult, error) {
 	var rv LookupAndroidMAMPolicyByNameResult
 	err := ctx.Invoke("azure-native:intune/v20150114preview:getAndroidMAMPolicyByName", args, &rv, opts...)

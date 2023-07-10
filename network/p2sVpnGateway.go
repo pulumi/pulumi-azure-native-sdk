@@ -12,7 +12,7 @@ import (
 )
 
 // P2SVpnGateway Resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type P2sVpnGateway struct {
 	pulumi.CustomResourceState
 
@@ -135,6 +135,12 @@ func NewP2sVpnGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:P2sVpnGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:P2sVpnGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:P2sVpnGateway"),
 		},
 	})
 	opts = append(opts, aliases)

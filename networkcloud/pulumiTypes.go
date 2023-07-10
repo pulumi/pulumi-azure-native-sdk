@@ -10,6 +10,201 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AadConfiguration struct {
+	// The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
+	AdminGroupObjectIds []string `pulumi:"adminGroupObjectIds"`
+}
+
+// AadConfigurationInput is an input type that accepts AadConfigurationArgs and AadConfigurationOutput values.
+// You can construct a concrete instance of `AadConfigurationInput` via:
+//
+//	AadConfigurationArgs{...}
+type AadConfigurationInput interface {
+	pulumi.Input
+
+	ToAadConfigurationOutput() AadConfigurationOutput
+	ToAadConfigurationOutputWithContext(context.Context) AadConfigurationOutput
+}
+
+type AadConfigurationArgs struct {
+	// The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
+	AdminGroupObjectIds pulumi.StringArrayInput `pulumi:"adminGroupObjectIds"`
+}
+
+func (AadConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AadConfiguration)(nil)).Elem()
+}
+
+func (i AadConfigurationArgs) ToAadConfigurationOutput() AadConfigurationOutput {
+	return i.ToAadConfigurationOutputWithContext(context.Background())
+}
+
+func (i AadConfigurationArgs) ToAadConfigurationOutputWithContext(ctx context.Context) AadConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AadConfigurationOutput)
+}
+
+func (i AadConfigurationArgs) ToAadConfigurationPtrOutput() AadConfigurationPtrOutput {
+	return i.ToAadConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AadConfigurationArgs) ToAadConfigurationPtrOutputWithContext(ctx context.Context) AadConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AadConfigurationOutput).ToAadConfigurationPtrOutputWithContext(ctx)
+}
+
+// AadConfigurationPtrInput is an input type that accepts AadConfigurationArgs, AadConfigurationPtr and AadConfigurationPtrOutput values.
+// You can construct a concrete instance of `AadConfigurationPtrInput` via:
+//
+//	        AadConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AadConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAadConfigurationPtrOutput() AadConfigurationPtrOutput
+	ToAadConfigurationPtrOutputWithContext(context.Context) AadConfigurationPtrOutput
+}
+
+type aadConfigurationPtrType AadConfigurationArgs
+
+func AadConfigurationPtr(v *AadConfigurationArgs) AadConfigurationPtrInput {
+	return (*aadConfigurationPtrType)(v)
+}
+
+func (*aadConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AadConfiguration)(nil)).Elem()
+}
+
+func (i *aadConfigurationPtrType) ToAadConfigurationPtrOutput() AadConfigurationPtrOutput {
+	return i.ToAadConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *aadConfigurationPtrType) ToAadConfigurationPtrOutputWithContext(ctx context.Context) AadConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AadConfigurationPtrOutput)
+}
+
+type AadConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AadConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AadConfiguration)(nil)).Elem()
+}
+
+func (o AadConfigurationOutput) ToAadConfigurationOutput() AadConfigurationOutput {
+	return o
+}
+
+func (o AadConfigurationOutput) ToAadConfigurationOutputWithContext(ctx context.Context) AadConfigurationOutput {
+	return o
+}
+
+func (o AadConfigurationOutput) ToAadConfigurationPtrOutput() AadConfigurationPtrOutput {
+	return o.ToAadConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AadConfigurationOutput) ToAadConfigurationPtrOutputWithContext(ctx context.Context) AadConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AadConfiguration) *AadConfiguration {
+		return &v
+	}).(AadConfigurationPtrOutput)
+}
+
+// The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
+func (o AadConfigurationOutput) AdminGroupObjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AadConfiguration) []string { return v.AdminGroupObjectIds }).(pulumi.StringArrayOutput)
+}
+
+type AadConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AadConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AadConfiguration)(nil)).Elem()
+}
+
+func (o AadConfigurationPtrOutput) ToAadConfigurationPtrOutput() AadConfigurationPtrOutput {
+	return o
+}
+
+func (o AadConfigurationPtrOutput) ToAadConfigurationPtrOutputWithContext(ctx context.Context) AadConfigurationPtrOutput {
+	return o
+}
+
+func (o AadConfigurationPtrOutput) Elem() AadConfigurationOutput {
+	return o.ApplyT(func(v *AadConfiguration) AadConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AadConfiguration
+		return ret
+	}).(AadConfigurationOutput)
+}
+
+// The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
+func (o AadConfigurationPtrOutput) AdminGroupObjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AadConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminGroupObjectIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type AadConfigurationResponse struct {
+	// The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
+	AdminGroupObjectIds []string `pulumi:"adminGroupObjectIds"`
+}
+
+type AadConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AadConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AadConfigurationResponse)(nil)).Elem()
+}
+
+func (o AadConfigurationResponseOutput) ToAadConfigurationResponseOutput() AadConfigurationResponseOutput {
+	return o
+}
+
+func (o AadConfigurationResponseOutput) ToAadConfigurationResponseOutputWithContext(ctx context.Context) AadConfigurationResponseOutput {
+	return o
+}
+
+// The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
+func (o AadConfigurationResponseOutput) AdminGroupObjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AadConfigurationResponse) []string { return v.AdminGroupObjectIds }).(pulumi.StringArrayOutput)
+}
+
+type AadConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AadConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AadConfigurationResponse)(nil)).Elem()
+}
+
+func (o AadConfigurationResponsePtrOutput) ToAadConfigurationResponsePtrOutput() AadConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AadConfigurationResponsePtrOutput) ToAadConfigurationResponsePtrOutputWithContext(ctx context.Context) AadConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AadConfigurationResponsePtrOutput) Elem() AadConfigurationResponseOutput {
+	return o.ApplyT(func(v *AadConfigurationResponse) AadConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AadConfigurationResponse
+		return ret
+	}).(AadConfigurationResponseOutput)
+}
+
+// The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
+func (o AadConfigurationResponsePtrOutput) AdminGroupObjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AadConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminGroupObjectIds
+	}).(pulumi.StringArrayOutput)
+}
+
 type AdministrativeCredentials struct {
 	// The password of the administrator of the device used during initialization.
 	Password string `pulumi:"password"`
@@ -100,6 +295,1061 @@ func (o AdministrativeCredentialsResponseOutput) Password() pulumi.StringOutput 
 // The username of the administrator of the device used during initialization.
 func (o AdministrativeCredentialsResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v AdministrativeCredentialsResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type AdministratorConfiguration struct {
+	// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
+	SshPublicKeys []SshPublicKey `pulumi:"sshPublicKeys"`
+}
+
+// AdministratorConfigurationInput is an input type that accepts AdministratorConfigurationArgs and AdministratorConfigurationOutput values.
+// You can construct a concrete instance of `AdministratorConfigurationInput` via:
+//
+//	AdministratorConfigurationArgs{...}
+type AdministratorConfigurationInput interface {
+	pulumi.Input
+
+	ToAdministratorConfigurationOutput() AdministratorConfigurationOutput
+	ToAdministratorConfigurationOutputWithContext(context.Context) AdministratorConfigurationOutput
+}
+
+type AdministratorConfigurationArgs struct {
+	// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
+	SshPublicKeys SshPublicKeyArrayInput `pulumi:"sshPublicKeys"`
+}
+
+func (AdministratorConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdministratorConfiguration)(nil)).Elem()
+}
+
+func (i AdministratorConfigurationArgs) ToAdministratorConfigurationOutput() AdministratorConfigurationOutput {
+	return i.ToAdministratorConfigurationOutputWithContext(context.Background())
+}
+
+func (i AdministratorConfigurationArgs) ToAdministratorConfigurationOutputWithContext(ctx context.Context) AdministratorConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdministratorConfigurationOutput)
+}
+
+func (i AdministratorConfigurationArgs) ToAdministratorConfigurationPtrOutput() AdministratorConfigurationPtrOutput {
+	return i.ToAdministratorConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AdministratorConfigurationArgs) ToAdministratorConfigurationPtrOutputWithContext(ctx context.Context) AdministratorConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdministratorConfigurationOutput).ToAdministratorConfigurationPtrOutputWithContext(ctx)
+}
+
+// AdministratorConfigurationPtrInput is an input type that accepts AdministratorConfigurationArgs, AdministratorConfigurationPtr and AdministratorConfigurationPtrOutput values.
+// You can construct a concrete instance of `AdministratorConfigurationPtrInput` via:
+//
+//	        AdministratorConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AdministratorConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAdministratorConfigurationPtrOutput() AdministratorConfigurationPtrOutput
+	ToAdministratorConfigurationPtrOutputWithContext(context.Context) AdministratorConfigurationPtrOutput
+}
+
+type administratorConfigurationPtrType AdministratorConfigurationArgs
+
+func AdministratorConfigurationPtr(v *AdministratorConfigurationArgs) AdministratorConfigurationPtrInput {
+	return (*administratorConfigurationPtrType)(v)
+}
+
+func (*administratorConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdministratorConfiguration)(nil)).Elem()
+}
+
+func (i *administratorConfigurationPtrType) ToAdministratorConfigurationPtrOutput() AdministratorConfigurationPtrOutput {
+	return i.ToAdministratorConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *administratorConfigurationPtrType) ToAdministratorConfigurationPtrOutputWithContext(ctx context.Context) AdministratorConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdministratorConfigurationPtrOutput)
+}
+
+type AdministratorConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AdministratorConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdministratorConfiguration)(nil)).Elem()
+}
+
+func (o AdministratorConfigurationOutput) ToAdministratorConfigurationOutput() AdministratorConfigurationOutput {
+	return o
+}
+
+func (o AdministratorConfigurationOutput) ToAdministratorConfigurationOutputWithContext(ctx context.Context) AdministratorConfigurationOutput {
+	return o
+}
+
+func (o AdministratorConfigurationOutput) ToAdministratorConfigurationPtrOutput() AdministratorConfigurationPtrOutput {
+	return o.ToAdministratorConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AdministratorConfigurationOutput) ToAdministratorConfigurationPtrOutputWithContext(ctx context.Context) AdministratorConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdministratorConfiguration) *AdministratorConfiguration {
+		return &v
+	}).(AdministratorConfigurationPtrOutput)
+}
+
+// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
+func (o AdministratorConfigurationOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdministratorConfiguration) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
+func (o AdministratorConfigurationOutput) SshPublicKeys() SshPublicKeyArrayOutput {
+	return o.ApplyT(func(v AdministratorConfiguration) []SshPublicKey { return v.SshPublicKeys }).(SshPublicKeyArrayOutput)
+}
+
+type AdministratorConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AdministratorConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdministratorConfiguration)(nil)).Elem()
+}
+
+func (o AdministratorConfigurationPtrOutput) ToAdministratorConfigurationPtrOutput() AdministratorConfigurationPtrOutput {
+	return o
+}
+
+func (o AdministratorConfigurationPtrOutput) ToAdministratorConfigurationPtrOutputWithContext(ctx context.Context) AdministratorConfigurationPtrOutput {
+	return o
+}
+
+func (o AdministratorConfigurationPtrOutput) Elem() AdministratorConfigurationOutput {
+	return o.ApplyT(func(v *AdministratorConfiguration) AdministratorConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AdministratorConfiguration
+		return ret
+	}).(AdministratorConfigurationOutput)
+}
+
+// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
+func (o AdministratorConfigurationPtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdministratorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
+func (o AdministratorConfigurationPtrOutput) SshPublicKeys() SshPublicKeyArrayOutput {
+	return o.ApplyT(func(v *AdministratorConfiguration) []SshPublicKey {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKeys
+	}).(SshPublicKeyArrayOutput)
+}
+
+type AdministratorConfigurationResponse struct {
+	// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
+	SshPublicKeys []SshPublicKeyResponse `pulumi:"sshPublicKeys"`
+}
+
+type AdministratorConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AdministratorConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdministratorConfigurationResponse)(nil)).Elem()
+}
+
+func (o AdministratorConfigurationResponseOutput) ToAdministratorConfigurationResponseOutput() AdministratorConfigurationResponseOutput {
+	return o
+}
+
+func (o AdministratorConfigurationResponseOutput) ToAdministratorConfigurationResponseOutputWithContext(ctx context.Context) AdministratorConfigurationResponseOutput {
+	return o
+}
+
+// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
+func (o AdministratorConfigurationResponseOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdministratorConfigurationResponse) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
+func (o AdministratorConfigurationResponseOutput) SshPublicKeys() SshPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v AdministratorConfigurationResponse) []SshPublicKeyResponse { return v.SshPublicKeys }).(SshPublicKeyResponseArrayOutput)
+}
+
+type AdministratorConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AdministratorConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdministratorConfigurationResponse)(nil)).Elem()
+}
+
+func (o AdministratorConfigurationResponsePtrOutput) ToAdministratorConfigurationResponsePtrOutput() AdministratorConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AdministratorConfigurationResponsePtrOutput) ToAdministratorConfigurationResponsePtrOutputWithContext(ctx context.Context) AdministratorConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AdministratorConfigurationResponsePtrOutput) Elem() AdministratorConfigurationResponseOutput {
+	return o.ApplyT(func(v *AdministratorConfigurationResponse) AdministratorConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AdministratorConfigurationResponse
+		return ret
+	}).(AdministratorConfigurationResponseOutput)
+}
+
+// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
+func (o AdministratorConfigurationResponsePtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdministratorConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
+func (o AdministratorConfigurationResponsePtrOutput) SshPublicKeys() SshPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v *AdministratorConfigurationResponse) []SshPublicKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKeys
+	}).(SshPublicKeyResponseArrayOutput)
+}
+
+type AgentOptions struct {
+	// The number of hugepages to allocate.
+	HugepagesCount float64 `pulumi:"hugepagesCount"`
+	// The size of the hugepages to allocate.
+	HugepagesSize *string `pulumi:"hugepagesSize"`
+}
+
+// Defaults sets the appropriate defaults for AgentOptions
+func (val *AgentOptions) Defaults() *AgentOptions {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.HugepagesSize == nil {
+		hugepagesSize_ := "2M"
+		tmp.HugepagesSize = &hugepagesSize_
+	}
+	return &tmp
+}
+
+// AgentOptionsInput is an input type that accepts AgentOptionsArgs and AgentOptionsOutput values.
+// You can construct a concrete instance of `AgentOptionsInput` via:
+//
+//	AgentOptionsArgs{...}
+type AgentOptionsInput interface {
+	pulumi.Input
+
+	ToAgentOptionsOutput() AgentOptionsOutput
+	ToAgentOptionsOutputWithContext(context.Context) AgentOptionsOutput
+}
+
+type AgentOptionsArgs struct {
+	// The number of hugepages to allocate.
+	HugepagesCount pulumi.Float64Input `pulumi:"hugepagesCount"`
+	// The size of the hugepages to allocate.
+	HugepagesSize pulumi.StringPtrInput `pulumi:"hugepagesSize"`
+}
+
+// Defaults sets the appropriate defaults for AgentOptionsArgs
+func (val *AgentOptionsArgs) Defaults() *AgentOptionsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.HugepagesSize == nil {
+		tmp.HugepagesSize = pulumi.StringPtr("2M")
+	}
+	return &tmp
+}
+func (AgentOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentOptions)(nil)).Elem()
+}
+
+func (i AgentOptionsArgs) ToAgentOptionsOutput() AgentOptionsOutput {
+	return i.ToAgentOptionsOutputWithContext(context.Background())
+}
+
+func (i AgentOptionsArgs) ToAgentOptionsOutputWithContext(ctx context.Context) AgentOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentOptionsOutput)
+}
+
+func (i AgentOptionsArgs) ToAgentOptionsPtrOutput() AgentOptionsPtrOutput {
+	return i.ToAgentOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AgentOptionsArgs) ToAgentOptionsPtrOutputWithContext(ctx context.Context) AgentOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentOptionsOutput).ToAgentOptionsPtrOutputWithContext(ctx)
+}
+
+// AgentOptionsPtrInput is an input type that accepts AgentOptionsArgs, AgentOptionsPtr and AgentOptionsPtrOutput values.
+// You can construct a concrete instance of `AgentOptionsPtrInput` via:
+//
+//	        AgentOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAgentOptionsPtrOutput() AgentOptionsPtrOutput
+	ToAgentOptionsPtrOutputWithContext(context.Context) AgentOptionsPtrOutput
+}
+
+type agentOptionsPtrType AgentOptionsArgs
+
+func AgentOptionsPtr(v *AgentOptionsArgs) AgentOptionsPtrInput {
+	return (*agentOptionsPtrType)(v)
+}
+
+func (*agentOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentOptions)(nil)).Elem()
+}
+
+func (i *agentOptionsPtrType) ToAgentOptionsPtrOutput() AgentOptionsPtrOutput {
+	return i.ToAgentOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *agentOptionsPtrType) ToAgentOptionsPtrOutputWithContext(ctx context.Context) AgentOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentOptionsPtrOutput)
+}
+
+type AgentOptionsOutput struct{ *pulumi.OutputState }
+
+func (AgentOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentOptions)(nil)).Elem()
+}
+
+func (o AgentOptionsOutput) ToAgentOptionsOutput() AgentOptionsOutput {
+	return o
+}
+
+func (o AgentOptionsOutput) ToAgentOptionsOutputWithContext(ctx context.Context) AgentOptionsOutput {
+	return o
+}
+
+func (o AgentOptionsOutput) ToAgentOptionsPtrOutput() AgentOptionsPtrOutput {
+	return o.ToAgentOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AgentOptionsOutput) ToAgentOptionsPtrOutputWithContext(ctx context.Context) AgentOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentOptions) *AgentOptions {
+		return &v
+	}).(AgentOptionsPtrOutput)
+}
+
+// The number of hugepages to allocate.
+func (o AgentOptionsOutput) HugepagesCount() pulumi.Float64Output {
+	return o.ApplyT(func(v AgentOptions) float64 { return v.HugepagesCount }).(pulumi.Float64Output)
+}
+
+// The size of the hugepages to allocate.
+func (o AgentOptionsOutput) HugepagesSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentOptions) *string { return v.HugepagesSize }).(pulumi.StringPtrOutput)
+}
+
+type AgentOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentOptions)(nil)).Elem()
+}
+
+func (o AgentOptionsPtrOutput) ToAgentOptionsPtrOutput() AgentOptionsPtrOutput {
+	return o
+}
+
+func (o AgentOptionsPtrOutput) ToAgentOptionsPtrOutputWithContext(ctx context.Context) AgentOptionsPtrOutput {
+	return o
+}
+
+func (o AgentOptionsPtrOutput) Elem() AgentOptionsOutput {
+	return o.ApplyT(func(v *AgentOptions) AgentOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AgentOptions
+		return ret
+	}).(AgentOptionsOutput)
+}
+
+// The number of hugepages to allocate.
+func (o AgentOptionsPtrOutput) HugepagesCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AgentOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.HugepagesCount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The size of the hugepages to allocate.
+func (o AgentOptionsPtrOutput) HugepagesSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HugepagesSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentOptionsResponse struct {
+	// The number of hugepages to allocate.
+	HugepagesCount float64 `pulumi:"hugepagesCount"`
+	// The size of the hugepages to allocate.
+	HugepagesSize *string `pulumi:"hugepagesSize"`
+}
+
+// Defaults sets the appropriate defaults for AgentOptionsResponse
+func (val *AgentOptionsResponse) Defaults() *AgentOptionsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.HugepagesSize == nil {
+		hugepagesSize_ := "2M"
+		tmp.HugepagesSize = &hugepagesSize_
+	}
+	return &tmp
+}
+
+type AgentOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentOptionsResponse)(nil)).Elem()
+}
+
+func (o AgentOptionsResponseOutput) ToAgentOptionsResponseOutput() AgentOptionsResponseOutput {
+	return o
+}
+
+func (o AgentOptionsResponseOutput) ToAgentOptionsResponseOutputWithContext(ctx context.Context) AgentOptionsResponseOutput {
+	return o
+}
+
+// The number of hugepages to allocate.
+func (o AgentOptionsResponseOutput) HugepagesCount() pulumi.Float64Output {
+	return o.ApplyT(func(v AgentOptionsResponse) float64 { return v.HugepagesCount }).(pulumi.Float64Output)
+}
+
+// The size of the hugepages to allocate.
+func (o AgentOptionsResponseOutput) HugepagesSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentOptionsResponse) *string { return v.HugepagesSize }).(pulumi.StringPtrOutput)
+}
+
+type AgentOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AgentOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentOptionsResponse)(nil)).Elem()
+}
+
+func (o AgentOptionsResponsePtrOutput) ToAgentOptionsResponsePtrOutput() AgentOptionsResponsePtrOutput {
+	return o
+}
+
+func (o AgentOptionsResponsePtrOutput) ToAgentOptionsResponsePtrOutputWithContext(ctx context.Context) AgentOptionsResponsePtrOutput {
+	return o
+}
+
+func (o AgentOptionsResponsePtrOutput) Elem() AgentOptionsResponseOutput {
+	return o.ApplyT(func(v *AgentOptionsResponse) AgentOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AgentOptionsResponse
+		return ret
+	}).(AgentOptionsResponseOutput)
+}
+
+// The number of hugepages to allocate.
+func (o AgentOptionsResponsePtrOutput) HugepagesCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AgentOptionsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.HugepagesCount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The size of the hugepages to allocate.
+func (o AgentOptionsResponsePtrOutput) HugepagesSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HugepagesSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentPoolUpgradeSettings struct {
+	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+	MaxSurge *string `pulumi:"maxSurge"`
+}
+
+// Defaults sets the appropriate defaults for AgentPoolUpgradeSettings
+func (val *AgentPoolUpgradeSettings) Defaults() *AgentPoolUpgradeSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxSurge == nil {
+		maxSurge_ := "1"
+		tmp.MaxSurge = &maxSurge_
+	}
+	return &tmp
+}
+
+// AgentPoolUpgradeSettingsInput is an input type that accepts AgentPoolUpgradeSettingsArgs and AgentPoolUpgradeSettingsOutput values.
+// You can construct a concrete instance of `AgentPoolUpgradeSettingsInput` via:
+//
+//	AgentPoolUpgradeSettingsArgs{...}
+type AgentPoolUpgradeSettingsInput interface {
+	pulumi.Input
+
+	ToAgentPoolUpgradeSettingsOutput() AgentPoolUpgradeSettingsOutput
+	ToAgentPoolUpgradeSettingsOutputWithContext(context.Context) AgentPoolUpgradeSettingsOutput
+}
+
+type AgentPoolUpgradeSettingsArgs struct {
+	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+	MaxSurge pulumi.StringPtrInput `pulumi:"maxSurge"`
+}
+
+// Defaults sets the appropriate defaults for AgentPoolUpgradeSettingsArgs
+func (val *AgentPoolUpgradeSettingsArgs) Defaults() *AgentPoolUpgradeSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxSurge == nil {
+		tmp.MaxSurge = pulumi.StringPtr("1")
+	}
+	return &tmp
+}
+func (AgentPoolUpgradeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentPoolUpgradeSettings)(nil)).Elem()
+}
+
+func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsOutput() AgentPoolUpgradeSettingsOutput {
+	return i.ToAgentPoolUpgradeSettingsOutputWithContext(context.Background())
+}
+
+func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsOutput)
+}
+
+func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsPtrOutput() AgentPoolUpgradeSettingsPtrOutput {
+	return i.ToAgentPoolUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsOutput).ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx)
+}
+
+// AgentPoolUpgradeSettingsPtrInput is an input type that accepts AgentPoolUpgradeSettingsArgs, AgentPoolUpgradeSettingsPtr and AgentPoolUpgradeSettingsPtrOutput values.
+// You can construct a concrete instance of `AgentPoolUpgradeSettingsPtrInput` via:
+//
+//	        AgentPoolUpgradeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentPoolUpgradeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAgentPoolUpgradeSettingsPtrOutput() AgentPoolUpgradeSettingsPtrOutput
+	ToAgentPoolUpgradeSettingsPtrOutputWithContext(context.Context) AgentPoolUpgradeSettingsPtrOutput
+}
+
+type agentPoolUpgradeSettingsPtrType AgentPoolUpgradeSettingsArgs
+
+func AgentPoolUpgradeSettingsPtr(v *AgentPoolUpgradeSettingsArgs) AgentPoolUpgradeSettingsPtrInput {
+	return (*agentPoolUpgradeSettingsPtrType)(v)
+}
+
+func (*agentPoolUpgradeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentPoolUpgradeSettings)(nil)).Elem()
+}
+
+func (i *agentPoolUpgradeSettingsPtrType) ToAgentPoolUpgradeSettingsPtrOutput() AgentPoolUpgradeSettingsPtrOutput {
+	return i.ToAgentPoolUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *agentPoolUpgradeSettingsPtrType) ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsPtrOutput)
+}
+
+type AgentPoolUpgradeSettingsOutput struct{ *pulumi.OutputState }
+
+func (AgentPoolUpgradeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentPoolUpgradeSettings)(nil)).Elem()
+}
+
+func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsOutput() AgentPoolUpgradeSettingsOutput {
+	return o
+}
+
+func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsOutput {
+	return o
+}
+
+func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsPtrOutput() AgentPoolUpgradeSettingsPtrOutput {
+	return o.ToAgentPoolUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentPoolUpgradeSettings) *AgentPoolUpgradeSettings {
+		return &v
+	}).(AgentPoolUpgradeSettingsPtrOutput)
+}
+
+// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+func (o AgentPoolUpgradeSettingsOutput) MaxSurge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentPoolUpgradeSettings) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
+}
+
+type AgentPoolUpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentPoolUpgradeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentPoolUpgradeSettings)(nil)).Elem()
+}
+
+func (o AgentPoolUpgradeSettingsPtrOutput) ToAgentPoolUpgradeSettingsPtrOutput() AgentPoolUpgradeSettingsPtrOutput {
+	return o
+}
+
+func (o AgentPoolUpgradeSettingsPtrOutput) ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsPtrOutput {
+	return o
+}
+
+func (o AgentPoolUpgradeSettingsPtrOutput) Elem() AgentPoolUpgradeSettingsOutput {
+	return o.ApplyT(func(v *AgentPoolUpgradeSettings) AgentPoolUpgradeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AgentPoolUpgradeSettings
+		return ret
+	}).(AgentPoolUpgradeSettingsOutput)
+}
+
+// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+func (o AgentPoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentPoolUpgradeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentPoolUpgradeSettingsResponse struct {
+	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+	MaxSurge *string `pulumi:"maxSurge"`
+}
+
+// Defaults sets the appropriate defaults for AgentPoolUpgradeSettingsResponse
+func (val *AgentPoolUpgradeSettingsResponse) Defaults() *AgentPoolUpgradeSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxSurge == nil {
+		maxSurge_ := "1"
+		tmp.MaxSurge = &maxSurge_
+	}
+	return &tmp
+}
+
+type AgentPoolUpgradeSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentPoolUpgradeSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentPoolUpgradeSettingsResponse)(nil)).Elem()
+}
+
+func (o AgentPoolUpgradeSettingsResponseOutput) ToAgentPoolUpgradeSettingsResponseOutput() AgentPoolUpgradeSettingsResponseOutput {
+	return o
+}
+
+func (o AgentPoolUpgradeSettingsResponseOutput) ToAgentPoolUpgradeSettingsResponseOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsResponseOutput {
+	return o
+}
+
+// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+func (o AgentPoolUpgradeSettingsResponseOutput) MaxSurge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
+}
+
+type AgentPoolUpgradeSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AgentPoolUpgradeSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentPoolUpgradeSettingsResponse)(nil)).Elem()
+}
+
+func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToAgentPoolUpgradeSettingsResponsePtrOutput() AgentPoolUpgradeSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToAgentPoolUpgradeSettingsResponsePtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AgentPoolUpgradeSettingsResponsePtrOutput) Elem() AgentPoolUpgradeSettingsResponseOutput {
+	return o.ApplyT(func(v *AgentPoolUpgradeSettingsResponse) AgentPoolUpgradeSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AgentPoolUpgradeSettingsResponse
+		return ret
+	}).(AgentPoolUpgradeSettingsResponseOutput)
+}
+
+// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+func (o AgentPoolUpgradeSettingsResponsePtrOutput) MaxSurge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentPoolUpgradeSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttachedNetworkConfiguration struct {
+	// The list of Layer 2 Networks and related configuration for attachment.
+	L2Networks []L2NetworkAttachmentConfiguration `pulumi:"l2Networks"`
+	// The list of Layer 3 Networks and related configuration for attachment.
+	L3Networks []L3NetworkAttachmentConfiguration `pulumi:"l3Networks"`
+	// The list of Trunked Networks and related configuration for attachment.
+	TrunkedNetworks []TrunkedNetworkAttachmentConfiguration `pulumi:"trunkedNetworks"`
+}
+
+// AttachedNetworkConfigurationInput is an input type that accepts AttachedNetworkConfigurationArgs and AttachedNetworkConfigurationOutput values.
+// You can construct a concrete instance of `AttachedNetworkConfigurationInput` via:
+//
+//	AttachedNetworkConfigurationArgs{...}
+type AttachedNetworkConfigurationInput interface {
+	pulumi.Input
+
+	ToAttachedNetworkConfigurationOutput() AttachedNetworkConfigurationOutput
+	ToAttachedNetworkConfigurationOutputWithContext(context.Context) AttachedNetworkConfigurationOutput
+}
+
+type AttachedNetworkConfigurationArgs struct {
+	// The list of Layer 2 Networks and related configuration for attachment.
+	L2Networks L2NetworkAttachmentConfigurationArrayInput `pulumi:"l2Networks"`
+	// The list of Layer 3 Networks and related configuration for attachment.
+	L3Networks L3NetworkAttachmentConfigurationArrayInput `pulumi:"l3Networks"`
+	// The list of Trunked Networks and related configuration for attachment.
+	TrunkedNetworks TrunkedNetworkAttachmentConfigurationArrayInput `pulumi:"trunkedNetworks"`
+}
+
+func (AttachedNetworkConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedNetworkConfiguration)(nil)).Elem()
+}
+
+func (i AttachedNetworkConfigurationArgs) ToAttachedNetworkConfigurationOutput() AttachedNetworkConfigurationOutput {
+	return i.ToAttachedNetworkConfigurationOutputWithContext(context.Background())
+}
+
+func (i AttachedNetworkConfigurationArgs) ToAttachedNetworkConfigurationOutputWithContext(ctx context.Context) AttachedNetworkConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedNetworkConfigurationOutput)
+}
+
+func (i AttachedNetworkConfigurationArgs) ToAttachedNetworkConfigurationPtrOutput() AttachedNetworkConfigurationPtrOutput {
+	return i.ToAttachedNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedNetworkConfigurationArgs) ToAttachedNetworkConfigurationPtrOutputWithContext(ctx context.Context) AttachedNetworkConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedNetworkConfigurationOutput).ToAttachedNetworkConfigurationPtrOutputWithContext(ctx)
+}
+
+// AttachedNetworkConfigurationPtrInput is an input type that accepts AttachedNetworkConfigurationArgs, AttachedNetworkConfigurationPtr and AttachedNetworkConfigurationPtrOutput values.
+// You can construct a concrete instance of `AttachedNetworkConfigurationPtrInput` via:
+//
+//	        AttachedNetworkConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedNetworkConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAttachedNetworkConfigurationPtrOutput() AttachedNetworkConfigurationPtrOutput
+	ToAttachedNetworkConfigurationPtrOutputWithContext(context.Context) AttachedNetworkConfigurationPtrOutput
+}
+
+type attachedNetworkConfigurationPtrType AttachedNetworkConfigurationArgs
+
+func AttachedNetworkConfigurationPtr(v *AttachedNetworkConfigurationArgs) AttachedNetworkConfigurationPtrInput {
+	return (*attachedNetworkConfigurationPtrType)(v)
+}
+
+func (*attachedNetworkConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedNetworkConfiguration)(nil)).Elem()
+}
+
+func (i *attachedNetworkConfigurationPtrType) ToAttachedNetworkConfigurationPtrOutput() AttachedNetworkConfigurationPtrOutput {
+	return i.ToAttachedNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedNetworkConfigurationPtrType) ToAttachedNetworkConfigurationPtrOutputWithContext(ctx context.Context) AttachedNetworkConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedNetworkConfigurationPtrOutput)
+}
+
+type AttachedNetworkConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AttachedNetworkConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedNetworkConfiguration)(nil)).Elem()
+}
+
+func (o AttachedNetworkConfigurationOutput) ToAttachedNetworkConfigurationOutput() AttachedNetworkConfigurationOutput {
+	return o
+}
+
+func (o AttachedNetworkConfigurationOutput) ToAttachedNetworkConfigurationOutputWithContext(ctx context.Context) AttachedNetworkConfigurationOutput {
+	return o
+}
+
+func (o AttachedNetworkConfigurationOutput) ToAttachedNetworkConfigurationPtrOutput() AttachedNetworkConfigurationPtrOutput {
+	return o.ToAttachedNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedNetworkConfigurationOutput) ToAttachedNetworkConfigurationPtrOutputWithContext(ctx context.Context) AttachedNetworkConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedNetworkConfiguration) *AttachedNetworkConfiguration {
+		return &v
+	}).(AttachedNetworkConfigurationPtrOutput)
+}
+
+// The list of Layer 2 Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationOutput) L2Networks() L2NetworkAttachmentConfigurationArrayOutput {
+	return o.ApplyT(func(v AttachedNetworkConfiguration) []L2NetworkAttachmentConfiguration { return v.L2Networks }).(L2NetworkAttachmentConfigurationArrayOutput)
+}
+
+// The list of Layer 3 Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationOutput) L3Networks() L3NetworkAttachmentConfigurationArrayOutput {
+	return o.ApplyT(func(v AttachedNetworkConfiguration) []L3NetworkAttachmentConfiguration { return v.L3Networks }).(L3NetworkAttachmentConfigurationArrayOutput)
+}
+
+// The list of Trunked Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationOutput) TrunkedNetworks() TrunkedNetworkAttachmentConfigurationArrayOutput {
+	return o.ApplyT(func(v AttachedNetworkConfiguration) []TrunkedNetworkAttachmentConfiguration { return v.TrunkedNetworks }).(TrunkedNetworkAttachmentConfigurationArrayOutput)
+}
+
+type AttachedNetworkConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedNetworkConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedNetworkConfiguration)(nil)).Elem()
+}
+
+func (o AttachedNetworkConfigurationPtrOutput) ToAttachedNetworkConfigurationPtrOutput() AttachedNetworkConfigurationPtrOutput {
+	return o
+}
+
+func (o AttachedNetworkConfigurationPtrOutput) ToAttachedNetworkConfigurationPtrOutputWithContext(ctx context.Context) AttachedNetworkConfigurationPtrOutput {
+	return o
+}
+
+func (o AttachedNetworkConfigurationPtrOutput) Elem() AttachedNetworkConfigurationOutput {
+	return o.ApplyT(func(v *AttachedNetworkConfiguration) AttachedNetworkConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedNetworkConfiguration
+		return ret
+	}).(AttachedNetworkConfigurationOutput)
+}
+
+// The list of Layer 2 Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationPtrOutput) L2Networks() L2NetworkAttachmentConfigurationArrayOutput {
+	return o.ApplyT(func(v *AttachedNetworkConfiguration) []L2NetworkAttachmentConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.L2Networks
+	}).(L2NetworkAttachmentConfigurationArrayOutput)
+}
+
+// The list of Layer 3 Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationPtrOutput) L3Networks() L3NetworkAttachmentConfigurationArrayOutput {
+	return o.ApplyT(func(v *AttachedNetworkConfiguration) []L3NetworkAttachmentConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.L3Networks
+	}).(L3NetworkAttachmentConfigurationArrayOutput)
+}
+
+// The list of Trunked Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationPtrOutput) TrunkedNetworks() TrunkedNetworkAttachmentConfigurationArrayOutput {
+	return o.ApplyT(func(v *AttachedNetworkConfiguration) []TrunkedNetworkAttachmentConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.TrunkedNetworks
+	}).(TrunkedNetworkAttachmentConfigurationArrayOutput)
+}
+
+type AttachedNetworkConfigurationResponse struct {
+	// The list of Layer 2 Networks and related configuration for attachment.
+	L2Networks []L2NetworkAttachmentConfigurationResponse `pulumi:"l2Networks"`
+	// The list of Layer 3 Networks and related configuration for attachment.
+	L3Networks []L3NetworkAttachmentConfigurationResponse `pulumi:"l3Networks"`
+	// The list of Trunked Networks and related configuration for attachment.
+	TrunkedNetworks []TrunkedNetworkAttachmentConfigurationResponse `pulumi:"trunkedNetworks"`
+}
+
+type AttachedNetworkConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AttachedNetworkConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedNetworkConfigurationResponse)(nil)).Elem()
+}
+
+func (o AttachedNetworkConfigurationResponseOutput) ToAttachedNetworkConfigurationResponseOutput() AttachedNetworkConfigurationResponseOutput {
+	return o
+}
+
+func (o AttachedNetworkConfigurationResponseOutput) ToAttachedNetworkConfigurationResponseOutputWithContext(ctx context.Context) AttachedNetworkConfigurationResponseOutput {
+	return o
+}
+
+// The list of Layer 2 Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationResponseOutput) L2Networks() L2NetworkAttachmentConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v AttachedNetworkConfigurationResponse) []L2NetworkAttachmentConfigurationResponse {
+		return v.L2Networks
+	}).(L2NetworkAttachmentConfigurationResponseArrayOutput)
+}
+
+// The list of Layer 3 Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationResponseOutput) L3Networks() L3NetworkAttachmentConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v AttachedNetworkConfigurationResponse) []L3NetworkAttachmentConfigurationResponse {
+		return v.L3Networks
+	}).(L3NetworkAttachmentConfigurationResponseArrayOutput)
+}
+
+// The list of Trunked Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationResponseOutput) TrunkedNetworks() TrunkedNetworkAttachmentConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v AttachedNetworkConfigurationResponse) []TrunkedNetworkAttachmentConfigurationResponse {
+		return v.TrunkedNetworks
+	}).(TrunkedNetworkAttachmentConfigurationResponseArrayOutput)
+}
+
+type AttachedNetworkConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedNetworkConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedNetworkConfigurationResponse)(nil)).Elem()
+}
+
+func (o AttachedNetworkConfigurationResponsePtrOutput) ToAttachedNetworkConfigurationResponsePtrOutput() AttachedNetworkConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AttachedNetworkConfigurationResponsePtrOutput) ToAttachedNetworkConfigurationResponsePtrOutputWithContext(ctx context.Context) AttachedNetworkConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AttachedNetworkConfigurationResponsePtrOutput) Elem() AttachedNetworkConfigurationResponseOutput {
+	return o.ApplyT(func(v *AttachedNetworkConfigurationResponse) AttachedNetworkConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedNetworkConfigurationResponse
+		return ret
+	}).(AttachedNetworkConfigurationResponseOutput)
+}
+
+// The list of Layer 2 Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationResponsePtrOutput) L2Networks() L2NetworkAttachmentConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *AttachedNetworkConfigurationResponse) []L2NetworkAttachmentConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.L2Networks
+	}).(L2NetworkAttachmentConfigurationResponseArrayOutput)
+}
+
+// The list of Layer 3 Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationResponsePtrOutput) L3Networks() L3NetworkAttachmentConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *AttachedNetworkConfigurationResponse) []L3NetworkAttachmentConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.L3Networks
+	}).(L3NetworkAttachmentConfigurationResponseArrayOutput)
+}
+
+// The list of Trunked Networks and related configuration for attachment.
+func (o AttachedNetworkConfigurationResponsePtrOutput) TrunkedNetworks() TrunkedNetworkAttachmentConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *AttachedNetworkConfigurationResponse) []TrunkedNetworkAttachmentConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TrunkedNetworks
+	}).(TrunkedNetworkAttachmentConfigurationResponseArrayOutput)
+}
+
+type AvailableUpgradeResponse struct {
+	// The version lifecycle indicator.
+	AvailabilityLifecycle string `pulumi:"availabilityLifecycle"`
+	// The version available for upgrading.
+	Version string `pulumi:"version"`
+}
+
+type AvailableUpgradeResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailableUpgradeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailableUpgradeResponse)(nil)).Elem()
+}
+
+func (o AvailableUpgradeResponseOutput) ToAvailableUpgradeResponseOutput() AvailableUpgradeResponseOutput {
+	return o
+}
+
+func (o AvailableUpgradeResponseOutput) ToAvailableUpgradeResponseOutputWithContext(ctx context.Context) AvailableUpgradeResponseOutput {
+	return o
+}
+
+// The version lifecycle indicator.
+func (o AvailableUpgradeResponseOutput) AvailabilityLifecycle() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailableUpgradeResponse) string { return v.AvailabilityLifecycle }).(pulumi.StringOutput)
+}
+
+// The version available for upgrading.
+func (o AvailableUpgradeResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailableUpgradeResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type AvailableUpgradeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AvailableUpgradeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AvailableUpgradeResponse)(nil)).Elem()
+}
+
+func (o AvailableUpgradeResponseArrayOutput) ToAvailableUpgradeResponseArrayOutput() AvailableUpgradeResponseArrayOutput {
+	return o
+}
+
+func (o AvailableUpgradeResponseArrayOutput) ToAvailableUpgradeResponseArrayOutputWithContext(ctx context.Context) AvailableUpgradeResponseArrayOutput {
+	return o
+}
+
+func (o AvailableUpgradeResponseArrayOutput) Index(i pulumi.IntInput) AvailableUpgradeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AvailableUpgradeResponse {
+		return vs[0].([]AvailableUpgradeResponse)[vs[1].(int)]
+	}).(AvailableUpgradeResponseOutput)
 }
 
 type BareMetalMachineConfigurationData struct {
@@ -353,6 +1603,232 @@ func (o BareMetalMachineConfigurationDataResponseArrayOutput) Index(i pulumi.Int
 	}).(BareMetalMachineConfigurationDataResponseOutput)
 }
 
+type BgpAdvertisement struct {
+	// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+	AdvertiseToFabric *string `pulumi:"advertiseToFabric"`
+	// The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
+	Communities []string `pulumi:"communities"`
+	// The names of the IP address pools associated with this announcement.
+	IpAddressPools []string `pulumi:"ipAddressPools"`
+	// The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
+	Peers []string `pulumi:"peers"`
+}
+
+// Defaults sets the appropriate defaults for BgpAdvertisement
+func (val *BgpAdvertisement) Defaults() *BgpAdvertisement {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdvertiseToFabric == nil {
+		advertiseToFabric_ := "True"
+		tmp.AdvertiseToFabric = &advertiseToFabric_
+	}
+	return &tmp
+}
+
+// BgpAdvertisementInput is an input type that accepts BgpAdvertisementArgs and BgpAdvertisementOutput values.
+// You can construct a concrete instance of `BgpAdvertisementInput` via:
+//
+//	BgpAdvertisementArgs{...}
+type BgpAdvertisementInput interface {
+	pulumi.Input
+
+	ToBgpAdvertisementOutput() BgpAdvertisementOutput
+	ToBgpAdvertisementOutputWithContext(context.Context) BgpAdvertisementOutput
+}
+
+type BgpAdvertisementArgs struct {
+	// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+	AdvertiseToFabric pulumi.StringPtrInput `pulumi:"advertiseToFabric"`
+	// The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
+	Communities pulumi.StringArrayInput `pulumi:"communities"`
+	// The names of the IP address pools associated with this announcement.
+	IpAddressPools pulumi.StringArrayInput `pulumi:"ipAddressPools"`
+	// The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
+	Peers pulumi.StringArrayInput `pulumi:"peers"`
+}
+
+// Defaults sets the appropriate defaults for BgpAdvertisementArgs
+func (val *BgpAdvertisementArgs) Defaults() *BgpAdvertisementArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdvertiseToFabric == nil {
+		tmp.AdvertiseToFabric = pulumi.StringPtr("True")
+	}
+	return &tmp
+}
+func (BgpAdvertisementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpAdvertisement)(nil)).Elem()
+}
+
+func (i BgpAdvertisementArgs) ToBgpAdvertisementOutput() BgpAdvertisementOutput {
+	return i.ToBgpAdvertisementOutputWithContext(context.Background())
+}
+
+func (i BgpAdvertisementArgs) ToBgpAdvertisementOutputWithContext(ctx context.Context) BgpAdvertisementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpAdvertisementOutput)
+}
+
+// BgpAdvertisementArrayInput is an input type that accepts BgpAdvertisementArray and BgpAdvertisementArrayOutput values.
+// You can construct a concrete instance of `BgpAdvertisementArrayInput` via:
+//
+//	BgpAdvertisementArray{ BgpAdvertisementArgs{...} }
+type BgpAdvertisementArrayInput interface {
+	pulumi.Input
+
+	ToBgpAdvertisementArrayOutput() BgpAdvertisementArrayOutput
+	ToBgpAdvertisementArrayOutputWithContext(context.Context) BgpAdvertisementArrayOutput
+}
+
+type BgpAdvertisementArray []BgpAdvertisementInput
+
+func (BgpAdvertisementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpAdvertisement)(nil)).Elem()
+}
+
+func (i BgpAdvertisementArray) ToBgpAdvertisementArrayOutput() BgpAdvertisementArrayOutput {
+	return i.ToBgpAdvertisementArrayOutputWithContext(context.Background())
+}
+
+func (i BgpAdvertisementArray) ToBgpAdvertisementArrayOutputWithContext(ctx context.Context) BgpAdvertisementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpAdvertisementArrayOutput)
+}
+
+type BgpAdvertisementOutput struct{ *pulumi.OutputState }
+
+func (BgpAdvertisementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpAdvertisement)(nil)).Elem()
+}
+
+func (o BgpAdvertisementOutput) ToBgpAdvertisementOutput() BgpAdvertisementOutput {
+	return o
+}
+
+func (o BgpAdvertisementOutput) ToBgpAdvertisementOutputWithContext(ctx context.Context) BgpAdvertisementOutput {
+	return o
+}
+
+// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+func (o BgpAdvertisementOutput) AdvertiseToFabric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpAdvertisement) *string { return v.AdvertiseToFabric }).(pulumi.StringPtrOutput)
+}
+
+// The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
+func (o BgpAdvertisementOutput) Communities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BgpAdvertisement) []string { return v.Communities }).(pulumi.StringArrayOutput)
+}
+
+// The names of the IP address pools associated with this announcement.
+func (o BgpAdvertisementOutput) IpAddressPools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BgpAdvertisement) []string { return v.IpAddressPools }).(pulumi.StringArrayOutput)
+}
+
+// The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
+func (o BgpAdvertisementOutput) Peers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BgpAdvertisement) []string { return v.Peers }).(pulumi.StringArrayOutput)
+}
+
+type BgpAdvertisementArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpAdvertisementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpAdvertisement)(nil)).Elem()
+}
+
+func (o BgpAdvertisementArrayOutput) ToBgpAdvertisementArrayOutput() BgpAdvertisementArrayOutput {
+	return o
+}
+
+func (o BgpAdvertisementArrayOutput) ToBgpAdvertisementArrayOutputWithContext(ctx context.Context) BgpAdvertisementArrayOutput {
+	return o
+}
+
+func (o BgpAdvertisementArrayOutput) Index(i pulumi.IntInput) BgpAdvertisementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpAdvertisement {
+		return vs[0].([]BgpAdvertisement)[vs[1].(int)]
+	}).(BgpAdvertisementOutput)
+}
+
+type BgpAdvertisementResponse struct {
+	// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+	AdvertiseToFabric *string `pulumi:"advertiseToFabric"`
+	// The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
+	Communities []string `pulumi:"communities"`
+	// The names of the IP address pools associated with this announcement.
+	IpAddressPools []string `pulumi:"ipAddressPools"`
+	// The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
+	Peers []string `pulumi:"peers"`
+}
+
+// Defaults sets the appropriate defaults for BgpAdvertisementResponse
+func (val *BgpAdvertisementResponse) Defaults() *BgpAdvertisementResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdvertiseToFabric == nil {
+		advertiseToFabric_ := "True"
+		tmp.AdvertiseToFabric = &advertiseToFabric_
+	}
+	return &tmp
+}
+
+type BgpAdvertisementResponseOutput struct{ *pulumi.OutputState }
+
+func (BgpAdvertisementResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpAdvertisementResponse)(nil)).Elem()
+}
+
+func (o BgpAdvertisementResponseOutput) ToBgpAdvertisementResponseOutput() BgpAdvertisementResponseOutput {
+	return o
+}
+
+func (o BgpAdvertisementResponseOutput) ToBgpAdvertisementResponseOutputWithContext(ctx context.Context) BgpAdvertisementResponseOutput {
+	return o
+}
+
+// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+func (o BgpAdvertisementResponseOutput) AdvertiseToFabric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpAdvertisementResponse) *string { return v.AdvertiseToFabric }).(pulumi.StringPtrOutput)
+}
+
+// The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
+func (o BgpAdvertisementResponseOutput) Communities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BgpAdvertisementResponse) []string { return v.Communities }).(pulumi.StringArrayOutput)
+}
+
+// The names of the IP address pools associated with this announcement.
+func (o BgpAdvertisementResponseOutput) IpAddressPools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BgpAdvertisementResponse) []string { return v.IpAddressPools }).(pulumi.StringArrayOutput)
+}
+
+// The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
+func (o BgpAdvertisementResponseOutput) Peers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BgpAdvertisementResponse) []string { return v.Peers }).(pulumi.StringArrayOutput)
+}
+
+type BgpAdvertisementResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpAdvertisementResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpAdvertisementResponse)(nil)).Elem()
+}
+
+func (o BgpAdvertisementResponseArrayOutput) ToBgpAdvertisementResponseArrayOutput() BgpAdvertisementResponseArrayOutput {
+	return o
+}
+
+func (o BgpAdvertisementResponseArrayOutput) ToBgpAdvertisementResponseArrayOutputWithContext(ctx context.Context) BgpAdvertisementResponseArrayOutput {
+	return o
+}
+
+func (o BgpAdvertisementResponseArrayOutput) Index(i pulumi.IntInput) BgpAdvertisementResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpAdvertisementResponse {
+		return vs[0].([]BgpAdvertisementResponse)[vs[1].(int)]
+	}).(BgpAdvertisementResponseOutput)
+}
+
 type BgpPeer struct {
 	// The ASN (Autonomous System Number) of the BGP peer.
 	AsNumber float64 `pulumi:"asNumber"`
@@ -517,6 +1993,350 @@ func (o BgpPeerResponseArrayOutput) Index(i pulumi.IntInput) BgpPeerResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpPeerResponse {
 		return vs[0].([]BgpPeerResponse)[vs[1].(int)]
 	}).(BgpPeerResponseOutput)
+}
+
+type BgpServiceLoadBalancerConfiguration struct {
+	// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
+	BgpAdvertisements []BgpAdvertisement `pulumi:"bgpAdvertisements"`
+	// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
+	BgpPeers []ServiceLoadBalancerBgpPeer `pulumi:"bgpPeers"`
+	// The indicator to specify if the load balancer peers with the network fabric.
+	FabricPeeringEnabled *string `pulumi:"fabricPeeringEnabled"`
+	// The list of pools of IP addresses that can be allocated to Load Balancer services.
+	IpAddressPools []IpAddressPool `pulumi:"ipAddressPools"`
+}
+
+// Defaults sets the appropriate defaults for BgpServiceLoadBalancerConfiguration
+func (val *BgpServiceLoadBalancerConfiguration) Defaults() *BgpServiceLoadBalancerConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.FabricPeeringEnabled == nil {
+		fabricPeeringEnabled_ := "True"
+		tmp.FabricPeeringEnabled = &fabricPeeringEnabled_
+	}
+	return &tmp
+}
+
+// BgpServiceLoadBalancerConfigurationInput is an input type that accepts BgpServiceLoadBalancerConfigurationArgs and BgpServiceLoadBalancerConfigurationOutput values.
+// You can construct a concrete instance of `BgpServiceLoadBalancerConfigurationInput` via:
+//
+//	BgpServiceLoadBalancerConfigurationArgs{...}
+type BgpServiceLoadBalancerConfigurationInput interface {
+	pulumi.Input
+
+	ToBgpServiceLoadBalancerConfigurationOutput() BgpServiceLoadBalancerConfigurationOutput
+	ToBgpServiceLoadBalancerConfigurationOutputWithContext(context.Context) BgpServiceLoadBalancerConfigurationOutput
+}
+
+type BgpServiceLoadBalancerConfigurationArgs struct {
+	// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
+	BgpAdvertisements BgpAdvertisementArrayInput `pulumi:"bgpAdvertisements"`
+	// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
+	BgpPeers ServiceLoadBalancerBgpPeerArrayInput `pulumi:"bgpPeers"`
+	// The indicator to specify if the load balancer peers with the network fabric.
+	FabricPeeringEnabled pulumi.StringPtrInput `pulumi:"fabricPeeringEnabled"`
+	// The list of pools of IP addresses that can be allocated to Load Balancer services.
+	IpAddressPools IpAddressPoolArrayInput `pulumi:"ipAddressPools"`
+}
+
+// Defaults sets the appropriate defaults for BgpServiceLoadBalancerConfigurationArgs
+func (val *BgpServiceLoadBalancerConfigurationArgs) Defaults() *BgpServiceLoadBalancerConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.FabricPeeringEnabled == nil {
+		tmp.FabricPeeringEnabled = pulumi.StringPtr("True")
+	}
+	return &tmp
+}
+func (BgpServiceLoadBalancerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpServiceLoadBalancerConfiguration)(nil)).Elem()
+}
+
+func (i BgpServiceLoadBalancerConfigurationArgs) ToBgpServiceLoadBalancerConfigurationOutput() BgpServiceLoadBalancerConfigurationOutput {
+	return i.ToBgpServiceLoadBalancerConfigurationOutputWithContext(context.Background())
+}
+
+func (i BgpServiceLoadBalancerConfigurationArgs) ToBgpServiceLoadBalancerConfigurationOutputWithContext(ctx context.Context) BgpServiceLoadBalancerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpServiceLoadBalancerConfigurationOutput)
+}
+
+func (i BgpServiceLoadBalancerConfigurationArgs) ToBgpServiceLoadBalancerConfigurationPtrOutput() BgpServiceLoadBalancerConfigurationPtrOutput {
+	return i.ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BgpServiceLoadBalancerConfigurationArgs) ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(ctx context.Context) BgpServiceLoadBalancerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpServiceLoadBalancerConfigurationOutput).ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(ctx)
+}
+
+// BgpServiceLoadBalancerConfigurationPtrInput is an input type that accepts BgpServiceLoadBalancerConfigurationArgs, BgpServiceLoadBalancerConfigurationPtr and BgpServiceLoadBalancerConfigurationPtrOutput values.
+// You can construct a concrete instance of `BgpServiceLoadBalancerConfigurationPtrInput` via:
+//
+//	        BgpServiceLoadBalancerConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BgpServiceLoadBalancerConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBgpServiceLoadBalancerConfigurationPtrOutput() BgpServiceLoadBalancerConfigurationPtrOutput
+	ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(context.Context) BgpServiceLoadBalancerConfigurationPtrOutput
+}
+
+type bgpServiceLoadBalancerConfigurationPtrType BgpServiceLoadBalancerConfigurationArgs
+
+func BgpServiceLoadBalancerConfigurationPtr(v *BgpServiceLoadBalancerConfigurationArgs) BgpServiceLoadBalancerConfigurationPtrInput {
+	return (*bgpServiceLoadBalancerConfigurationPtrType)(v)
+}
+
+func (*bgpServiceLoadBalancerConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BgpServiceLoadBalancerConfiguration)(nil)).Elem()
+}
+
+func (i *bgpServiceLoadBalancerConfigurationPtrType) ToBgpServiceLoadBalancerConfigurationPtrOutput() BgpServiceLoadBalancerConfigurationPtrOutput {
+	return i.ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *bgpServiceLoadBalancerConfigurationPtrType) ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(ctx context.Context) BgpServiceLoadBalancerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpServiceLoadBalancerConfigurationPtrOutput)
+}
+
+type BgpServiceLoadBalancerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BgpServiceLoadBalancerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpServiceLoadBalancerConfiguration)(nil)).Elem()
+}
+
+func (o BgpServiceLoadBalancerConfigurationOutput) ToBgpServiceLoadBalancerConfigurationOutput() BgpServiceLoadBalancerConfigurationOutput {
+	return o
+}
+
+func (o BgpServiceLoadBalancerConfigurationOutput) ToBgpServiceLoadBalancerConfigurationOutputWithContext(ctx context.Context) BgpServiceLoadBalancerConfigurationOutput {
+	return o
+}
+
+func (o BgpServiceLoadBalancerConfigurationOutput) ToBgpServiceLoadBalancerConfigurationPtrOutput() BgpServiceLoadBalancerConfigurationPtrOutput {
+	return o.ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o BgpServiceLoadBalancerConfigurationOutput) ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(ctx context.Context) BgpServiceLoadBalancerConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BgpServiceLoadBalancerConfiguration) *BgpServiceLoadBalancerConfiguration {
+		return &v
+	}).(BgpServiceLoadBalancerConfigurationPtrOutput)
+}
+
+// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
+func (o BgpServiceLoadBalancerConfigurationOutput) BgpAdvertisements() BgpAdvertisementArrayOutput {
+	return o.ApplyT(func(v BgpServiceLoadBalancerConfiguration) []BgpAdvertisement { return v.BgpAdvertisements }).(BgpAdvertisementArrayOutput)
+}
+
+// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
+func (o BgpServiceLoadBalancerConfigurationOutput) BgpPeers() ServiceLoadBalancerBgpPeerArrayOutput {
+	return o.ApplyT(func(v BgpServiceLoadBalancerConfiguration) []ServiceLoadBalancerBgpPeer { return v.BgpPeers }).(ServiceLoadBalancerBgpPeerArrayOutput)
+}
+
+// The indicator to specify if the load balancer peers with the network fabric.
+func (o BgpServiceLoadBalancerConfigurationOutput) FabricPeeringEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpServiceLoadBalancerConfiguration) *string { return v.FabricPeeringEnabled }).(pulumi.StringPtrOutput)
+}
+
+// The list of pools of IP addresses that can be allocated to Load Balancer services.
+func (o BgpServiceLoadBalancerConfigurationOutput) IpAddressPools() IpAddressPoolArrayOutput {
+	return o.ApplyT(func(v BgpServiceLoadBalancerConfiguration) []IpAddressPool { return v.IpAddressPools }).(IpAddressPoolArrayOutput)
+}
+
+type BgpServiceLoadBalancerConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (BgpServiceLoadBalancerConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BgpServiceLoadBalancerConfiguration)(nil)).Elem()
+}
+
+func (o BgpServiceLoadBalancerConfigurationPtrOutput) ToBgpServiceLoadBalancerConfigurationPtrOutput() BgpServiceLoadBalancerConfigurationPtrOutput {
+	return o
+}
+
+func (o BgpServiceLoadBalancerConfigurationPtrOutput) ToBgpServiceLoadBalancerConfigurationPtrOutputWithContext(ctx context.Context) BgpServiceLoadBalancerConfigurationPtrOutput {
+	return o
+}
+
+func (o BgpServiceLoadBalancerConfigurationPtrOutput) Elem() BgpServiceLoadBalancerConfigurationOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfiguration) BgpServiceLoadBalancerConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BgpServiceLoadBalancerConfiguration
+		return ret
+	}).(BgpServiceLoadBalancerConfigurationOutput)
+}
+
+// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
+func (o BgpServiceLoadBalancerConfigurationPtrOutput) BgpAdvertisements() BgpAdvertisementArrayOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfiguration) []BgpAdvertisement {
+		if v == nil {
+			return nil
+		}
+		return v.BgpAdvertisements
+	}).(BgpAdvertisementArrayOutput)
+}
+
+// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
+func (o BgpServiceLoadBalancerConfigurationPtrOutput) BgpPeers() ServiceLoadBalancerBgpPeerArrayOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfiguration) []ServiceLoadBalancerBgpPeer {
+		if v == nil {
+			return nil
+		}
+		return v.BgpPeers
+	}).(ServiceLoadBalancerBgpPeerArrayOutput)
+}
+
+// The indicator to specify if the load balancer peers with the network fabric.
+func (o BgpServiceLoadBalancerConfigurationPtrOutput) FabricPeeringEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FabricPeeringEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of pools of IP addresses that can be allocated to Load Balancer services.
+func (o BgpServiceLoadBalancerConfigurationPtrOutput) IpAddressPools() IpAddressPoolArrayOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfiguration) []IpAddressPool {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddressPools
+	}).(IpAddressPoolArrayOutput)
+}
+
+type BgpServiceLoadBalancerConfigurationResponse struct {
+	// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
+	BgpAdvertisements []BgpAdvertisementResponse `pulumi:"bgpAdvertisements"`
+	// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
+	BgpPeers []ServiceLoadBalancerBgpPeerResponse `pulumi:"bgpPeers"`
+	// The indicator to specify if the load balancer peers with the network fabric.
+	FabricPeeringEnabled *string `pulumi:"fabricPeeringEnabled"`
+	// The list of pools of IP addresses that can be allocated to Load Balancer services.
+	IpAddressPools []IpAddressPoolResponse `pulumi:"ipAddressPools"`
+}
+
+// Defaults sets the appropriate defaults for BgpServiceLoadBalancerConfigurationResponse
+func (val *BgpServiceLoadBalancerConfigurationResponse) Defaults() *BgpServiceLoadBalancerConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.FabricPeeringEnabled == nil {
+		fabricPeeringEnabled_ := "True"
+		tmp.FabricPeeringEnabled = &fabricPeeringEnabled_
+	}
+	return &tmp
+}
+
+type BgpServiceLoadBalancerConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (BgpServiceLoadBalancerConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpServiceLoadBalancerConfigurationResponse)(nil)).Elem()
+}
+
+func (o BgpServiceLoadBalancerConfigurationResponseOutput) ToBgpServiceLoadBalancerConfigurationResponseOutput() BgpServiceLoadBalancerConfigurationResponseOutput {
+	return o
+}
+
+func (o BgpServiceLoadBalancerConfigurationResponseOutput) ToBgpServiceLoadBalancerConfigurationResponseOutputWithContext(ctx context.Context) BgpServiceLoadBalancerConfigurationResponseOutput {
+	return o
+}
+
+// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
+func (o BgpServiceLoadBalancerConfigurationResponseOutput) BgpAdvertisements() BgpAdvertisementResponseArrayOutput {
+	return o.ApplyT(func(v BgpServiceLoadBalancerConfigurationResponse) []BgpAdvertisementResponse {
+		return v.BgpAdvertisements
+	}).(BgpAdvertisementResponseArrayOutput)
+}
+
+// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
+func (o BgpServiceLoadBalancerConfigurationResponseOutput) BgpPeers() ServiceLoadBalancerBgpPeerResponseArrayOutput {
+	return o.ApplyT(func(v BgpServiceLoadBalancerConfigurationResponse) []ServiceLoadBalancerBgpPeerResponse {
+		return v.BgpPeers
+	}).(ServiceLoadBalancerBgpPeerResponseArrayOutput)
+}
+
+// The indicator to specify if the load balancer peers with the network fabric.
+func (o BgpServiceLoadBalancerConfigurationResponseOutput) FabricPeeringEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpServiceLoadBalancerConfigurationResponse) *string { return v.FabricPeeringEnabled }).(pulumi.StringPtrOutput)
+}
+
+// The list of pools of IP addresses that can be allocated to Load Balancer services.
+func (o BgpServiceLoadBalancerConfigurationResponseOutput) IpAddressPools() IpAddressPoolResponseArrayOutput {
+	return o.ApplyT(func(v BgpServiceLoadBalancerConfigurationResponse) []IpAddressPoolResponse { return v.IpAddressPools }).(IpAddressPoolResponseArrayOutput)
+}
+
+type BgpServiceLoadBalancerConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BgpServiceLoadBalancerConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BgpServiceLoadBalancerConfigurationResponse)(nil)).Elem()
+}
+
+func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) ToBgpServiceLoadBalancerConfigurationResponsePtrOutput() BgpServiceLoadBalancerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) ToBgpServiceLoadBalancerConfigurationResponsePtrOutputWithContext(ctx context.Context) BgpServiceLoadBalancerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) Elem() BgpServiceLoadBalancerConfigurationResponseOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfigurationResponse) BgpServiceLoadBalancerConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BgpServiceLoadBalancerConfigurationResponse
+		return ret
+	}).(BgpServiceLoadBalancerConfigurationResponseOutput)
+}
+
+// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
+func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) BgpAdvertisements() BgpAdvertisementResponseArrayOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfigurationResponse) []BgpAdvertisementResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BgpAdvertisements
+	}).(BgpAdvertisementResponseArrayOutput)
+}
+
+// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
+func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) BgpPeers() ServiceLoadBalancerBgpPeerResponseArrayOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfigurationResponse) []ServiceLoadBalancerBgpPeerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BgpPeers
+	}).(ServiceLoadBalancerBgpPeerResponseArrayOutput)
+}
+
+// The indicator to specify if the load balancer peers with the network fabric.
+func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) FabricPeeringEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FabricPeeringEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of pools of IP addresses that can be allocated to Load Balancer services.
+func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) IpAddressPools() IpAddressPoolResponseArrayOutput {
+	return o.ApplyT(func(v *BgpServiceLoadBalancerConfigurationResponse) []IpAddressPoolResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddressPools
+	}).(IpAddressPoolResponseArrayOutput)
 }
 
 type ClusterAvailableUpgradeVersionResponse struct {
@@ -1215,6 +3035,132 @@ func (o CommunityAdvertisementResponseArrayOutput) Index(i pulumi.IntInput) Comm
 	}).(CommunityAdvertisementResponseOutput)
 }
 
+type ControlPlaneNodeConfiguration struct {
+	// The administrator credentials to be used for the nodes in the control plane.
+	AdministratorConfiguration *AdministratorConfiguration `pulumi:"administratorConfiguration"`
+	// The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The number of virtual machines that use this configuration.
+	Count float64 `pulumi:"count"`
+	// The name of the VM SKU supplied during creation.
+	VmSkuName string `pulumi:"vmSkuName"`
+}
+
+// ControlPlaneNodeConfigurationInput is an input type that accepts ControlPlaneNodeConfigurationArgs and ControlPlaneNodeConfigurationOutput values.
+// You can construct a concrete instance of `ControlPlaneNodeConfigurationInput` via:
+//
+//	ControlPlaneNodeConfigurationArgs{...}
+type ControlPlaneNodeConfigurationInput interface {
+	pulumi.Input
+
+	ToControlPlaneNodeConfigurationOutput() ControlPlaneNodeConfigurationOutput
+	ToControlPlaneNodeConfigurationOutputWithContext(context.Context) ControlPlaneNodeConfigurationOutput
+}
+
+type ControlPlaneNodeConfigurationArgs struct {
+	// The administrator credentials to be used for the nodes in the control plane.
+	AdministratorConfiguration AdministratorConfigurationPtrInput `pulumi:"administratorConfiguration"`
+	// The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.
+	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
+	// The number of virtual machines that use this configuration.
+	Count pulumi.Float64Input `pulumi:"count"`
+	// The name of the VM SKU supplied during creation.
+	VmSkuName pulumi.StringInput `pulumi:"vmSkuName"`
+}
+
+func (ControlPlaneNodeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlPlaneNodeConfiguration)(nil)).Elem()
+}
+
+func (i ControlPlaneNodeConfigurationArgs) ToControlPlaneNodeConfigurationOutput() ControlPlaneNodeConfigurationOutput {
+	return i.ToControlPlaneNodeConfigurationOutputWithContext(context.Background())
+}
+
+func (i ControlPlaneNodeConfigurationArgs) ToControlPlaneNodeConfigurationOutputWithContext(ctx context.Context) ControlPlaneNodeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlPlaneNodeConfigurationOutput)
+}
+
+type ControlPlaneNodeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ControlPlaneNodeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlPlaneNodeConfiguration)(nil)).Elem()
+}
+
+func (o ControlPlaneNodeConfigurationOutput) ToControlPlaneNodeConfigurationOutput() ControlPlaneNodeConfigurationOutput {
+	return o
+}
+
+func (o ControlPlaneNodeConfigurationOutput) ToControlPlaneNodeConfigurationOutputWithContext(ctx context.Context) ControlPlaneNodeConfigurationOutput {
+	return o
+}
+
+// The administrator credentials to be used for the nodes in the control plane.
+func (o ControlPlaneNodeConfigurationOutput) AdministratorConfiguration() AdministratorConfigurationPtrOutput {
+	return o.ApplyT(func(v ControlPlaneNodeConfiguration) *AdministratorConfiguration { return v.AdministratorConfiguration }).(AdministratorConfigurationPtrOutput)
+}
+
+// The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.
+func (o ControlPlaneNodeConfigurationOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlPlaneNodeConfiguration) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// The number of virtual machines that use this configuration.
+func (o ControlPlaneNodeConfigurationOutput) Count() pulumi.Float64Output {
+	return o.ApplyT(func(v ControlPlaneNodeConfiguration) float64 { return v.Count }).(pulumi.Float64Output)
+}
+
+// The name of the VM SKU supplied during creation.
+func (o ControlPlaneNodeConfigurationOutput) VmSkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlPlaneNodeConfiguration) string { return v.VmSkuName }).(pulumi.StringOutput)
+}
+
+type ControlPlaneNodeConfigurationResponse struct {
+	// The administrator credentials to be used for the nodes in the control plane.
+	AdministratorConfiguration *AdministratorConfigurationResponse `pulumi:"administratorConfiguration"`
+	// The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The number of virtual machines that use this configuration.
+	Count float64 `pulumi:"count"`
+	// The name of the VM SKU supplied during creation.
+	VmSkuName string `pulumi:"vmSkuName"`
+}
+
+type ControlPlaneNodeConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ControlPlaneNodeConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlPlaneNodeConfigurationResponse)(nil)).Elem()
+}
+
+func (o ControlPlaneNodeConfigurationResponseOutput) ToControlPlaneNodeConfigurationResponseOutput() ControlPlaneNodeConfigurationResponseOutput {
+	return o
+}
+
+func (o ControlPlaneNodeConfigurationResponseOutput) ToControlPlaneNodeConfigurationResponseOutputWithContext(ctx context.Context) ControlPlaneNodeConfigurationResponseOutput {
+	return o
+}
+
+// The administrator credentials to be used for the nodes in the control plane.
+func (o ControlPlaneNodeConfigurationResponseOutput) AdministratorConfiguration() AdministratorConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ControlPlaneNodeConfigurationResponse) *AdministratorConfigurationResponse {
+		return v.AdministratorConfiguration
+	}).(AdministratorConfigurationResponsePtrOutput)
+}
+
+// The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.
+func (o ControlPlaneNodeConfigurationResponseOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlPlaneNodeConfigurationResponse) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// The number of virtual machines that use this configuration.
+func (o ControlPlaneNodeConfigurationResponseOutput) Count() pulumi.Float64Output {
+	return o.ApplyT(func(v ControlPlaneNodeConfigurationResponse) float64 { return v.Count }).(pulumi.Float64Output)
+}
+
+// The name of the VM SKU supplied during creation.
+func (o ControlPlaneNodeConfigurationResponseOutput) VmSkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlPlaneNodeConfigurationResponse) string { return v.VmSkuName }).(pulumi.StringOutput)
+}
+
 type EgressEndpoint struct {
 	// The descriptive category name of endpoints accessible by the AKS agent node. For example, azure-resource-management, API server, etc. The platform egress endpoints provided by default will use the category 'default'.
 	Category string `pulumi:"category"`
@@ -1566,6 +3512,47 @@ func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
 }
 
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput).ToExtendedLocationPtrOutputWithContext(ctx)
+}
+
+// ExtendedLocationPtrInput is an input type that accepts ExtendedLocationArgs, ExtendedLocationPtr and ExtendedLocationPtrOutput values.
+// You can construct a concrete instance of `ExtendedLocationPtrInput` via:
+//
+//	        ExtendedLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExtendedLocationPtrInput interface {
+	pulumi.Input
+
+	ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput
+	ToExtendedLocationPtrOutputWithContext(context.Context) ExtendedLocationPtrOutput
+}
+
+type extendedLocationPtrType ExtendedLocationArgs
+
+func ExtendedLocationPtr(v *ExtendedLocationArgs) ExtendedLocationPtrInput {
+	return (*extendedLocationPtrType)(v)
+}
+
+func (*extendedLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
+}
+
 type ExtendedLocationOutput struct{ *pulumi.OutputState }
 
 func (ExtendedLocationOutput) ElementType() reflect.Type {
@@ -1580,6 +3567,16 @@ func (o ExtendedLocationOutput) ToExtendedLocationOutputWithContext(ctx context.
 	return o
 }
 
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedLocation) *ExtendedLocation {
+		return &v
+	}).(ExtendedLocationPtrOutput)
+}
+
 // The resource ID of the extended location on which the resource will be created.
 func (o ExtendedLocationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocation) string { return v.Name }).(pulumi.StringOutput)
@@ -1588,6 +3585,50 @@ func (o ExtendedLocationOutput) Name() pulumi.StringOutput {
 // The extended location type, for example, CustomLocation.
 func (o ExtendedLocationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
+	return o.ApplyT(func(v *ExtendedLocation) ExtendedLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocation
+		return ret
+	}).(ExtendedLocationOutput)
+}
+
+// The resource ID of the extended location on which the resource will be created.
+func (o ExtendedLocationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location type, for example, CustomLocation.
+func (o ExtendedLocationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type ExtendedLocationResponse struct {
@@ -1619,6 +3660,115 @@ func (o ExtendedLocationResponseOutput) Name() pulumi.StringOutput {
 // The extended location type, for example, CustomLocation.
 func (o ExtendedLocationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput() ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) ExtendedLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocationResponse
+		return ret
+	}).(ExtendedLocationResponseOutput)
+}
+
+// The resource ID of the extended location on which the resource will be created.
+func (o ExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location type, for example, CustomLocation.
+func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureStatusResponse struct {
+	// The status representing the state of this feature.
+	DetailedStatus string `pulumi:"detailedStatus"`
+	// The descriptive message about the current detailed status.
+	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// The name of the feature.
+	Name string `pulumi:"name"`
+	// The version of the feature.
+	Version string `pulumi:"version"`
+}
+
+type FeatureStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (FeatureStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStatusResponse)(nil)).Elem()
+}
+
+func (o FeatureStatusResponseOutput) ToFeatureStatusResponseOutput() FeatureStatusResponseOutput {
+	return o
+}
+
+func (o FeatureStatusResponseOutput) ToFeatureStatusResponseOutputWithContext(ctx context.Context) FeatureStatusResponseOutput {
+	return o
+}
+
+// The status representing the state of this feature.
+func (o FeatureStatusResponseOutput) DetailedStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStatusResponse) string { return v.DetailedStatus }).(pulumi.StringOutput)
+}
+
+// The descriptive message about the current detailed status.
+func (o FeatureStatusResponseOutput) DetailedStatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStatusResponse) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// The name of the feature.
+func (o FeatureStatusResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStatusResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The version of the feature.
+func (o FeatureStatusResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStatusResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type FeatureStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureStatusResponse)(nil)).Elem()
+}
+
+func (o FeatureStatusResponseArrayOutput) ToFeatureStatusResponseArrayOutput() FeatureStatusResponseArrayOutput {
+	return o
+}
+
+func (o FeatureStatusResponseArrayOutput) ToFeatureStatusResponseArrayOutputWithContext(ctx context.Context) FeatureStatusResponseArrayOutput {
+	return o
+}
+
+func (o FeatureStatusResponseArrayOutput) Index(i pulumi.IntInput) FeatureStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureStatusResponse {
+		return vs[0].([]FeatureStatusResponse)[vs[1].(int)]
+	}).(FeatureStatusResponseOutput)
 }
 
 type HardwareInventoryNetworkInterfaceResponse struct {
@@ -2022,12 +4172,593 @@ func (o ImageRepositoryCredentialsResponsePtrOutput) Username() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type InitialAgentPoolConfiguration struct {
+	// The administrator credentials to be used for the nodes in this agent pool.
+	AdministratorConfiguration *AdministratorConfiguration `pulumi:"administratorConfiguration"`
+	// The configurations that will be applied to each agent in this agent pool.
+	AgentOptions *AgentOptions `pulumi:"agentOptions"`
+	// The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
+	AttachedNetworkConfiguration *AttachedNetworkConfiguration `pulumi:"attachedNetworkConfiguration"`
+	// The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The number of virtual machines that use this configuration.
+	Count float64 `pulumi:"count"`
+	// The labels applied to the nodes in this agent pool.
+	Labels []KubernetesLabel `pulumi:"labels"`
+	// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
+	Mode string `pulumi:"mode"`
+	// The name that will be used for the agent pool resource representing this agent pool.
+	Name string `pulumi:"name"`
+	// The taints applied to the nodes in this agent pool.
+	Taints []KubernetesLabel `pulumi:"taints"`
+	// The configuration of the agent pool.
+	UpgradeSettings *AgentPoolUpgradeSettings `pulumi:"upgradeSettings"`
+	// The name of the VM SKU that determines the size of resources allocated for node VMs.
+	VmSkuName string `pulumi:"vmSkuName"`
+}
+
+// Defaults sets the appropriate defaults for InitialAgentPoolConfiguration
+func (val *InitialAgentPoolConfiguration) Defaults() *InitialAgentPoolConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.AgentOptions = tmp.AgentOptions.Defaults()
+
+	tmp.UpgradeSettings = tmp.UpgradeSettings.Defaults()
+
+	return &tmp
+}
+
+// InitialAgentPoolConfigurationInput is an input type that accepts InitialAgentPoolConfigurationArgs and InitialAgentPoolConfigurationOutput values.
+// You can construct a concrete instance of `InitialAgentPoolConfigurationInput` via:
+//
+//	InitialAgentPoolConfigurationArgs{...}
+type InitialAgentPoolConfigurationInput interface {
+	pulumi.Input
+
+	ToInitialAgentPoolConfigurationOutput() InitialAgentPoolConfigurationOutput
+	ToInitialAgentPoolConfigurationOutputWithContext(context.Context) InitialAgentPoolConfigurationOutput
+}
+
+type InitialAgentPoolConfigurationArgs struct {
+	// The administrator credentials to be used for the nodes in this agent pool.
+	AdministratorConfiguration AdministratorConfigurationPtrInput `pulumi:"administratorConfiguration"`
+	// The configurations that will be applied to each agent in this agent pool.
+	AgentOptions AgentOptionsPtrInput `pulumi:"agentOptions"`
+	// The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
+	AttachedNetworkConfiguration AttachedNetworkConfigurationPtrInput `pulumi:"attachedNetworkConfiguration"`
+	// The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
+	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
+	// The number of virtual machines that use this configuration.
+	Count pulumi.Float64Input `pulumi:"count"`
+	// The labels applied to the nodes in this agent pool.
+	Labels KubernetesLabelArrayInput `pulumi:"labels"`
+	// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The name that will be used for the agent pool resource representing this agent pool.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The taints applied to the nodes in this agent pool.
+	Taints KubernetesLabelArrayInput `pulumi:"taints"`
+	// The configuration of the agent pool.
+	UpgradeSettings AgentPoolUpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
+	// The name of the VM SKU that determines the size of resources allocated for node VMs.
+	VmSkuName pulumi.StringInput `pulumi:"vmSkuName"`
+}
+
+// Defaults sets the appropriate defaults for InitialAgentPoolConfigurationArgs
+func (val *InitialAgentPoolConfigurationArgs) Defaults() *InitialAgentPoolConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (InitialAgentPoolConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InitialAgentPoolConfiguration)(nil)).Elem()
+}
+
+func (i InitialAgentPoolConfigurationArgs) ToInitialAgentPoolConfigurationOutput() InitialAgentPoolConfigurationOutput {
+	return i.ToInitialAgentPoolConfigurationOutputWithContext(context.Background())
+}
+
+func (i InitialAgentPoolConfigurationArgs) ToInitialAgentPoolConfigurationOutputWithContext(ctx context.Context) InitialAgentPoolConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InitialAgentPoolConfigurationOutput)
+}
+
+// InitialAgentPoolConfigurationArrayInput is an input type that accepts InitialAgentPoolConfigurationArray and InitialAgentPoolConfigurationArrayOutput values.
+// You can construct a concrete instance of `InitialAgentPoolConfigurationArrayInput` via:
+//
+//	InitialAgentPoolConfigurationArray{ InitialAgentPoolConfigurationArgs{...} }
+type InitialAgentPoolConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToInitialAgentPoolConfigurationArrayOutput() InitialAgentPoolConfigurationArrayOutput
+	ToInitialAgentPoolConfigurationArrayOutputWithContext(context.Context) InitialAgentPoolConfigurationArrayOutput
+}
+
+type InitialAgentPoolConfigurationArray []InitialAgentPoolConfigurationInput
+
+func (InitialAgentPoolConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InitialAgentPoolConfiguration)(nil)).Elem()
+}
+
+func (i InitialAgentPoolConfigurationArray) ToInitialAgentPoolConfigurationArrayOutput() InitialAgentPoolConfigurationArrayOutput {
+	return i.ToInitialAgentPoolConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i InitialAgentPoolConfigurationArray) ToInitialAgentPoolConfigurationArrayOutputWithContext(ctx context.Context) InitialAgentPoolConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InitialAgentPoolConfigurationArrayOutput)
+}
+
+type InitialAgentPoolConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InitialAgentPoolConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InitialAgentPoolConfiguration)(nil)).Elem()
+}
+
+func (o InitialAgentPoolConfigurationOutput) ToInitialAgentPoolConfigurationOutput() InitialAgentPoolConfigurationOutput {
+	return o
+}
+
+func (o InitialAgentPoolConfigurationOutput) ToInitialAgentPoolConfigurationOutputWithContext(ctx context.Context) InitialAgentPoolConfigurationOutput {
+	return o
+}
+
+// The administrator credentials to be used for the nodes in this agent pool.
+func (o InitialAgentPoolConfigurationOutput) AdministratorConfiguration() AdministratorConfigurationPtrOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) *AdministratorConfiguration { return v.AdministratorConfiguration }).(AdministratorConfigurationPtrOutput)
+}
+
+// The configurations that will be applied to each agent in this agent pool.
+func (o InitialAgentPoolConfigurationOutput) AgentOptions() AgentOptionsPtrOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) *AgentOptions { return v.AgentOptions }).(AgentOptionsPtrOutput)
+}
+
+// The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
+func (o InitialAgentPoolConfigurationOutput) AttachedNetworkConfiguration() AttachedNetworkConfigurationPtrOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) *AttachedNetworkConfiguration {
+		return v.AttachedNetworkConfiguration
+	}).(AttachedNetworkConfigurationPtrOutput)
+}
+
+// The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
+func (o InitialAgentPoolConfigurationOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// The number of virtual machines that use this configuration.
+func (o InitialAgentPoolConfigurationOutput) Count() pulumi.Float64Output {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) float64 { return v.Count }).(pulumi.Float64Output)
+}
+
+// The labels applied to the nodes in this agent pool.
+func (o InitialAgentPoolConfigurationOutput) Labels() KubernetesLabelArrayOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) []KubernetesLabel { return v.Labels }).(KubernetesLabelArrayOutput)
+}
+
+// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
+func (o InitialAgentPoolConfigurationOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The name that will be used for the agent pool resource representing this agent pool.
+func (o InitialAgentPoolConfigurationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The taints applied to the nodes in this agent pool.
+func (o InitialAgentPoolConfigurationOutput) Taints() KubernetesLabelArrayOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) []KubernetesLabel { return v.Taints }).(KubernetesLabelArrayOutput)
+}
+
+// The configuration of the agent pool.
+func (o InitialAgentPoolConfigurationOutput) UpgradeSettings() AgentPoolUpgradeSettingsPtrOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) *AgentPoolUpgradeSettings { return v.UpgradeSettings }).(AgentPoolUpgradeSettingsPtrOutput)
+}
+
+// The name of the VM SKU that determines the size of resources allocated for node VMs.
+func (o InitialAgentPoolConfigurationOutput) VmSkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfiguration) string { return v.VmSkuName }).(pulumi.StringOutput)
+}
+
+type InitialAgentPoolConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (InitialAgentPoolConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InitialAgentPoolConfiguration)(nil)).Elem()
+}
+
+func (o InitialAgentPoolConfigurationArrayOutput) ToInitialAgentPoolConfigurationArrayOutput() InitialAgentPoolConfigurationArrayOutput {
+	return o
+}
+
+func (o InitialAgentPoolConfigurationArrayOutput) ToInitialAgentPoolConfigurationArrayOutputWithContext(ctx context.Context) InitialAgentPoolConfigurationArrayOutput {
+	return o
+}
+
+func (o InitialAgentPoolConfigurationArrayOutput) Index(i pulumi.IntInput) InitialAgentPoolConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InitialAgentPoolConfiguration {
+		return vs[0].([]InitialAgentPoolConfiguration)[vs[1].(int)]
+	}).(InitialAgentPoolConfigurationOutput)
+}
+
+type InitialAgentPoolConfigurationResponse struct {
+	// The administrator credentials to be used for the nodes in this agent pool.
+	AdministratorConfiguration *AdministratorConfigurationResponse `pulumi:"administratorConfiguration"`
+	// The configurations that will be applied to each agent in this agent pool.
+	AgentOptions *AgentOptionsResponse `pulumi:"agentOptions"`
+	// The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
+	AttachedNetworkConfiguration *AttachedNetworkConfigurationResponse `pulumi:"attachedNetworkConfiguration"`
+	// The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The number of virtual machines that use this configuration.
+	Count float64 `pulumi:"count"`
+	// The labels applied to the nodes in this agent pool.
+	Labels []KubernetesLabelResponse `pulumi:"labels"`
+	// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
+	Mode string `pulumi:"mode"`
+	// The name that will be used for the agent pool resource representing this agent pool.
+	Name string `pulumi:"name"`
+	// The taints applied to the nodes in this agent pool.
+	Taints []KubernetesLabelResponse `pulumi:"taints"`
+	// The configuration of the agent pool.
+	UpgradeSettings *AgentPoolUpgradeSettingsResponse `pulumi:"upgradeSettings"`
+	// The name of the VM SKU that determines the size of resources allocated for node VMs.
+	VmSkuName string `pulumi:"vmSkuName"`
+}
+
+// Defaults sets the appropriate defaults for InitialAgentPoolConfigurationResponse
+func (val *InitialAgentPoolConfigurationResponse) Defaults() *InitialAgentPoolConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.AgentOptions = tmp.AgentOptions.Defaults()
+
+	tmp.UpgradeSettings = tmp.UpgradeSettings.Defaults()
+
+	return &tmp
+}
+
+type InitialAgentPoolConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (InitialAgentPoolConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InitialAgentPoolConfigurationResponse)(nil)).Elem()
+}
+
+func (o InitialAgentPoolConfigurationResponseOutput) ToInitialAgentPoolConfigurationResponseOutput() InitialAgentPoolConfigurationResponseOutput {
+	return o
+}
+
+func (o InitialAgentPoolConfigurationResponseOutput) ToInitialAgentPoolConfigurationResponseOutputWithContext(ctx context.Context) InitialAgentPoolConfigurationResponseOutput {
+	return o
+}
+
+// The administrator credentials to be used for the nodes in this agent pool.
+func (o InitialAgentPoolConfigurationResponseOutput) AdministratorConfiguration() AdministratorConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) *AdministratorConfigurationResponse {
+		return v.AdministratorConfiguration
+	}).(AdministratorConfigurationResponsePtrOutput)
+}
+
+// The configurations that will be applied to each agent in this agent pool.
+func (o InitialAgentPoolConfigurationResponseOutput) AgentOptions() AgentOptionsResponsePtrOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) *AgentOptionsResponse { return v.AgentOptions }).(AgentOptionsResponsePtrOutput)
+}
+
+// The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
+func (o InitialAgentPoolConfigurationResponseOutput) AttachedNetworkConfiguration() AttachedNetworkConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) *AttachedNetworkConfigurationResponse {
+		return v.AttachedNetworkConfiguration
+	}).(AttachedNetworkConfigurationResponsePtrOutput)
+}
+
+// The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
+func (o InitialAgentPoolConfigurationResponseOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// The number of virtual machines that use this configuration.
+func (o InitialAgentPoolConfigurationResponseOutput) Count() pulumi.Float64Output {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) float64 { return v.Count }).(pulumi.Float64Output)
+}
+
+// The labels applied to the nodes in this agent pool.
+func (o InitialAgentPoolConfigurationResponseOutput) Labels() KubernetesLabelResponseArrayOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) []KubernetesLabelResponse { return v.Labels }).(KubernetesLabelResponseArrayOutput)
+}
+
+// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
+func (o InitialAgentPoolConfigurationResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The name that will be used for the agent pool resource representing this agent pool.
+func (o InitialAgentPoolConfigurationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The taints applied to the nodes in this agent pool.
+func (o InitialAgentPoolConfigurationResponseOutput) Taints() KubernetesLabelResponseArrayOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) []KubernetesLabelResponse { return v.Taints }).(KubernetesLabelResponseArrayOutput)
+}
+
+// The configuration of the agent pool.
+func (o InitialAgentPoolConfigurationResponseOutput) UpgradeSettings() AgentPoolUpgradeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) *AgentPoolUpgradeSettingsResponse {
+		return v.UpgradeSettings
+	}).(AgentPoolUpgradeSettingsResponsePtrOutput)
+}
+
+// The name of the VM SKU that determines the size of resources allocated for node VMs.
+func (o InitialAgentPoolConfigurationResponseOutput) VmSkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v InitialAgentPoolConfigurationResponse) string { return v.VmSkuName }).(pulumi.StringOutput)
+}
+
+type InitialAgentPoolConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InitialAgentPoolConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InitialAgentPoolConfigurationResponse)(nil)).Elem()
+}
+
+func (o InitialAgentPoolConfigurationResponseArrayOutput) ToInitialAgentPoolConfigurationResponseArrayOutput() InitialAgentPoolConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o InitialAgentPoolConfigurationResponseArrayOutput) ToInitialAgentPoolConfigurationResponseArrayOutputWithContext(ctx context.Context) InitialAgentPoolConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o InitialAgentPoolConfigurationResponseArrayOutput) Index(i pulumi.IntInput) InitialAgentPoolConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InitialAgentPoolConfigurationResponse {
+		return vs[0].([]InitialAgentPoolConfigurationResponse)[vs[1].(int)]
+	}).(InitialAgentPoolConfigurationResponseOutput)
+}
+
+type IpAddressPool struct {
+	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+	Addresses []string `pulumi:"addresses"`
+	// The indicator to determine if automatic allocation from the pool should occur.
+	AutoAssign *string `pulumi:"autoAssign"`
+	// The name used to identify this IP address pool for association with a BGP advertisement.
+	Name string `pulumi:"name"`
+	// The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+	OnlyUseHostIps *string `pulumi:"onlyUseHostIps"`
+}
+
+// Defaults sets the appropriate defaults for IpAddressPool
+func (val *IpAddressPool) Defaults() *IpAddressPool {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AutoAssign == nil {
+		autoAssign_ := "True"
+		tmp.AutoAssign = &autoAssign_
+	}
+	if tmp.OnlyUseHostIps == nil {
+		onlyUseHostIps_ := "True"
+		tmp.OnlyUseHostIps = &onlyUseHostIps_
+	}
+	return &tmp
+}
+
+// IpAddressPoolInput is an input type that accepts IpAddressPoolArgs and IpAddressPoolOutput values.
+// You can construct a concrete instance of `IpAddressPoolInput` via:
+//
+//	IpAddressPoolArgs{...}
+type IpAddressPoolInput interface {
+	pulumi.Input
+
+	ToIpAddressPoolOutput() IpAddressPoolOutput
+	ToIpAddressPoolOutputWithContext(context.Context) IpAddressPoolOutput
+}
+
+type IpAddressPoolArgs struct {
+	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
+	// The indicator to determine if automatic allocation from the pool should occur.
+	AutoAssign pulumi.StringPtrInput `pulumi:"autoAssign"`
+	// The name used to identify this IP address pool for association with a BGP advertisement.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+	OnlyUseHostIps pulumi.StringPtrInput `pulumi:"onlyUseHostIps"`
+}
+
+// Defaults sets the appropriate defaults for IpAddressPoolArgs
+func (val *IpAddressPoolArgs) Defaults() *IpAddressPoolArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AutoAssign == nil {
+		tmp.AutoAssign = pulumi.StringPtr("True")
+	}
+	if tmp.OnlyUseHostIps == nil {
+		tmp.OnlyUseHostIps = pulumi.StringPtr("True")
+	}
+	return &tmp
+}
+func (IpAddressPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpAddressPool)(nil)).Elem()
+}
+
+func (i IpAddressPoolArgs) ToIpAddressPoolOutput() IpAddressPoolOutput {
+	return i.ToIpAddressPoolOutputWithContext(context.Background())
+}
+
+func (i IpAddressPoolArgs) ToIpAddressPoolOutputWithContext(ctx context.Context) IpAddressPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpAddressPoolOutput)
+}
+
+// IpAddressPoolArrayInput is an input type that accepts IpAddressPoolArray and IpAddressPoolArrayOutput values.
+// You can construct a concrete instance of `IpAddressPoolArrayInput` via:
+//
+//	IpAddressPoolArray{ IpAddressPoolArgs{...} }
+type IpAddressPoolArrayInput interface {
+	pulumi.Input
+
+	ToIpAddressPoolArrayOutput() IpAddressPoolArrayOutput
+	ToIpAddressPoolArrayOutputWithContext(context.Context) IpAddressPoolArrayOutput
+}
+
+type IpAddressPoolArray []IpAddressPoolInput
+
+func (IpAddressPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpAddressPool)(nil)).Elem()
+}
+
+func (i IpAddressPoolArray) ToIpAddressPoolArrayOutput() IpAddressPoolArrayOutput {
+	return i.ToIpAddressPoolArrayOutputWithContext(context.Background())
+}
+
+func (i IpAddressPoolArray) ToIpAddressPoolArrayOutputWithContext(ctx context.Context) IpAddressPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpAddressPoolArrayOutput)
+}
+
+type IpAddressPoolOutput struct{ *pulumi.OutputState }
+
+func (IpAddressPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpAddressPool)(nil)).Elem()
+}
+
+func (o IpAddressPoolOutput) ToIpAddressPoolOutput() IpAddressPoolOutput {
+	return o
+}
+
+func (o IpAddressPoolOutput) ToIpAddressPoolOutputWithContext(ctx context.Context) IpAddressPoolOutput {
+	return o
+}
+
+// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+func (o IpAddressPoolOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpAddressPool) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The indicator to determine if automatic allocation from the pool should occur.
+func (o IpAddressPoolOutput) AutoAssign() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpAddressPool) *string { return v.AutoAssign }).(pulumi.StringPtrOutput)
+}
+
+// The name used to identify this IP address pool for association with a BGP advertisement.
+func (o IpAddressPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IpAddressPool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+func (o IpAddressPoolOutput) OnlyUseHostIps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpAddressPool) *string { return v.OnlyUseHostIps }).(pulumi.StringPtrOutput)
+}
+
+type IpAddressPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (IpAddressPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpAddressPool)(nil)).Elem()
+}
+
+func (o IpAddressPoolArrayOutput) ToIpAddressPoolArrayOutput() IpAddressPoolArrayOutput {
+	return o
+}
+
+func (o IpAddressPoolArrayOutput) ToIpAddressPoolArrayOutputWithContext(ctx context.Context) IpAddressPoolArrayOutput {
+	return o
+}
+
+func (o IpAddressPoolArrayOutput) Index(i pulumi.IntInput) IpAddressPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpAddressPool {
+		return vs[0].([]IpAddressPool)[vs[1].(int)]
+	}).(IpAddressPoolOutput)
+}
+
+type IpAddressPoolResponse struct {
+	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+	Addresses []string `pulumi:"addresses"`
+	// The indicator to determine if automatic allocation from the pool should occur.
+	AutoAssign *string `pulumi:"autoAssign"`
+	// The name used to identify this IP address pool for association with a BGP advertisement.
+	Name string `pulumi:"name"`
+	// The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+	OnlyUseHostIps *string `pulumi:"onlyUseHostIps"`
+}
+
+// Defaults sets the appropriate defaults for IpAddressPoolResponse
+func (val *IpAddressPoolResponse) Defaults() *IpAddressPoolResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AutoAssign == nil {
+		autoAssign_ := "True"
+		tmp.AutoAssign = &autoAssign_
+	}
+	if tmp.OnlyUseHostIps == nil {
+		onlyUseHostIps_ := "True"
+		tmp.OnlyUseHostIps = &onlyUseHostIps_
+	}
+	return &tmp
+}
+
+type IpAddressPoolResponseOutput struct{ *pulumi.OutputState }
+
+func (IpAddressPoolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpAddressPoolResponse)(nil)).Elem()
+}
+
+func (o IpAddressPoolResponseOutput) ToIpAddressPoolResponseOutput() IpAddressPoolResponseOutput {
+	return o
+}
+
+func (o IpAddressPoolResponseOutput) ToIpAddressPoolResponseOutputWithContext(ctx context.Context) IpAddressPoolResponseOutput {
+	return o
+}
+
+// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+func (o IpAddressPoolResponseOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpAddressPoolResponse) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The indicator to determine if automatic allocation from the pool should occur.
+func (o IpAddressPoolResponseOutput) AutoAssign() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpAddressPoolResponse) *string { return v.AutoAssign }).(pulumi.StringPtrOutput)
+}
+
+// The name used to identify this IP address pool for association with a BGP advertisement.
+func (o IpAddressPoolResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IpAddressPoolResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+func (o IpAddressPoolResponseOutput) OnlyUseHostIps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpAddressPoolResponse) *string { return v.OnlyUseHostIps }).(pulumi.StringPtrOutput)
+}
+
+type IpAddressPoolResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IpAddressPoolResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpAddressPoolResponse)(nil)).Elem()
+}
+
+func (o IpAddressPoolResponseArrayOutput) ToIpAddressPoolResponseArrayOutput() IpAddressPoolResponseArrayOutput {
+	return o
+}
+
+func (o IpAddressPoolResponseArrayOutput) ToIpAddressPoolResponseArrayOutputWithContext(ctx context.Context) IpAddressPoolResponseArrayOutput {
+	return o
+}
+
+func (o IpAddressPoolResponseArrayOutput) Index(i pulumi.IntInput) IpAddressPoolResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpAddressPoolResponse {
+		return vs[0].([]IpAddressPoolResponse)[vs[1].(int)]
+	}).(IpAddressPoolResponseOutput)
+}
+
 type KeySetUser struct {
-	// The Azure Active Directory user name (email name).
+	// The user name that will be used for access.
 	AzureUserName string `pulumi:"azureUserName"`
 	// The free-form description for this user.
 	Description *string `pulumi:"description"`
-	// The SSH public key for this user.
+	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 	SshPublicKey SshPublicKey `pulumi:"sshPublicKey"`
 }
 
@@ -2043,11 +4774,11 @@ type KeySetUserInput interface {
 }
 
 type KeySetUserArgs struct {
-	// The Azure Active Directory user name (email name).
+	// The user name that will be used for access.
 	AzureUserName pulumi.StringInput `pulumi:"azureUserName"`
 	// The free-form description for this user.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The SSH public key for this user.
+	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 	SshPublicKey SshPublicKeyInput `pulumi:"sshPublicKey"`
 }
 
@@ -2102,7 +4833,7 @@ func (o KeySetUserOutput) ToKeySetUserOutputWithContext(ctx context.Context) Key
 	return o
 }
 
-// The Azure Active Directory user name (email name).
+// The user name that will be used for access.
 func (o KeySetUserOutput) AzureUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeySetUser) string { return v.AzureUserName }).(pulumi.StringOutput)
 }
@@ -2112,7 +4843,7 @@ func (o KeySetUserOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeySetUser) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The SSH public key for this user.
+// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 func (o KeySetUserOutput) SshPublicKey() SshPublicKeyOutput {
 	return o.ApplyT(func(v KeySetUser) SshPublicKey { return v.SshPublicKey }).(SshPublicKeyOutput)
 }
@@ -2138,11 +4869,11 @@ func (o KeySetUserArrayOutput) Index(i pulumi.IntInput) KeySetUserOutput {
 }
 
 type KeySetUserResponse struct {
-	// The Azure Active Directory user name (email name).
+	// The user name that will be used for access.
 	AzureUserName string `pulumi:"azureUserName"`
 	// The free-form description for this user.
 	Description *string `pulumi:"description"`
-	// The SSH public key for this user.
+	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 	SshPublicKey SshPublicKeyResponse `pulumi:"sshPublicKey"`
 }
 
@@ -2160,7 +4891,7 @@ func (o KeySetUserResponseOutput) ToKeySetUserResponseOutputWithContext(ctx cont
 	return o
 }
 
-// The Azure Active Directory user name (email name).
+// The user name that will be used for access.
 func (o KeySetUserResponseOutput) AzureUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeySetUserResponse) string { return v.AzureUserName }).(pulumi.StringOutput)
 }
@@ -2170,7 +4901,7 @@ func (o KeySetUserResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeySetUserResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The SSH public key for this user.
+// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 func (o KeySetUserResponseOutput) SshPublicKey() SshPublicKeyResponseOutput {
 	return o.ApplyT(func(v KeySetUserResponse) SshPublicKeyResponse { return v.SshPublicKey }).(SshPublicKeyResponseOutput)
 }
@@ -2196,7 +4927,7 @@ func (o KeySetUserResponseArrayOutput) Index(i pulumi.IntInput) KeySetUserRespon
 }
 
 type KeySetUserStatusResponse struct {
-	// The Azure Active Directory user name (email name).
+	// The user name that will be used for access.
 	AzureUserName string `pulumi:"azureUserName"`
 	// The indicator of whether the user is currently deployed for access.
 	Status string `pulumi:"status"`
@@ -2218,7 +4949,7 @@ func (o KeySetUserStatusResponseOutput) ToKeySetUserStatusResponseOutputWithCont
 	return o
 }
 
-// The Azure Active Directory user name (email name).
+// The user name that will be used for access.
 func (o KeySetUserStatusResponseOutput) AzureUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeySetUserStatusResponse) string { return v.AzureUserName }).(pulumi.StringOutput)
 }
@@ -2251,6 +4982,741 @@ func (o KeySetUserStatusResponseArrayOutput) Index(i pulumi.IntInput) KeySetUser
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeySetUserStatusResponse {
 		return vs[0].([]KeySetUserStatusResponse)[vs[1].(int)]
 	}).(KeySetUserStatusResponseOutput)
+}
+
+type KubernetesClusterNodeResponse struct {
+	// The resource ID of the agent pool that this node belongs to. This value is not represented on control plane nodes.
+	AgentPoolId string `pulumi:"agentPoolId"`
+	// The availability zone this node is running within.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// The resource ID of the bare metal machine that hosts this node.
+	BareMetalMachineId string `pulumi:"bareMetalMachineId"`
+	// The number of CPU cores configured for this node, derived from the VM SKU specified.
+	CpuCores float64 `pulumi:"cpuCores"`
+	// The detailed state of this node.
+	DetailedStatus string `pulumi:"detailedStatus"`
+	// The descriptive message about the current detailed status.
+	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// The size of the disk configured for this node.
+	DiskSizeGB float64 `pulumi:"diskSizeGB"`
+	// The machine image used to deploy this node.
+	Image string `pulumi:"image"`
+	// The currently running version of Kubernetes and bundled features running on this node.
+	KubernetesVersion string `pulumi:"kubernetesVersion"`
+	// The list of labels on this node that have been assigned to the agent pool containing this node.
+	Labels []KubernetesLabelResponse `pulumi:"labels"`
+	// The amount of memory configured for this node, derived from the vm SKU specified.
+	MemorySizeGB float64 `pulumi:"memorySizeGB"`
+	// The mode of the agent pool containing this node. Not applicable for control plane nodes.
+	Mode string `pulumi:"mode"`
+	// The name of this node, as realized in the Kubernetes cluster.
+	Name string `pulumi:"name"`
+	// The NetworkAttachments made to this node.
+	NetworkAttachments []NetworkAttachmentResponse `pulumi:"networkAttachments"`
+	// The power state of this node.
+	PowerState string `pulumi:"powerState"`
+	// The role of this node in the cluster.
+	Role string `pulumi:"role"`
+	// The list of taints that have been assigned to the agent pool containing this node.
+	Taints []KubernetesLabelResponse `pulumi:"taints"`
+	// The VM SKU name that was used to create this cluster node.
+	VmSkuName string `pulumi:"vmSkuName"`
+}
+
+type KubernetesClusterNodeResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNodeResponse)(nil)).Elem()
+}
+
+func (o KubernetesClusterNodeResponseOutput) ToKubernetesClusterNodeResponseOutput() KubernetesClusterNodeResponseOutput {
+	return o
+}
+
+func (o KubernetesClusterNodeResponseOutput) ToKubernetesClusterNodeResponseOutputWithContext(ctx context.Context) KubernetesClusterNodeResponseOutput {
+	return o
+}
+
+// The resource ID of the agent pool that this node belongs to. This value is not represented on control plane nodes.
+func (o KubernetesClusterNodeResponseOutput) AgentPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.AgentPoolId }).(pulumi.StringOutput)
+}
+
+// The availability zone this node is running within.
+func (o KubernetesClusterNodeResponseOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The resource ID of the bare metal machine that hosts this node.
+func (o KubernetesClusterNodeResponseOutput) BareMetalMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.BareMetalMachineId }).(pulumi.StringOutput)
+}
+
+// The number of CPU cores configured for this node, derived from the VM SKU specified.
+func (o KubernetesClusterNodeResponseOutput) CpuCores() pulumi.Float64Output {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) float64 { return v.CpuCores }).(pulumi.Float64Output)
+}
+
+// The detailed state of this node.
+func (o KubernetesClusterNodeResponseOutput) DetailedStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.DetailedStatus }).(pulumi.StringOutput)
+}
+
+// The descriptive message about the current detailed status.
+func (o KubernetesClusterNodeResponseOutput) DetailedStatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// The size of the disk configured for this node.
+func (o KubernetesClusterNodeResponseOutput) DiskSizeGB() pulumi.Float64Output {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) float64 { return v.DiskSizeGB }).(pulumi.Float64Output)
+}
+
+// The machine image used to deploy this node.
+func (o KubernetesClusterNodeResponseOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The currently running version of Kubernetes and bundled features running on this node.
+func (o KubernetesClusterNodeResponseOutput) KubernetesVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+// The list of labels on this node that have been assigned to the agent pool containing this node.
+func (o KubernetesClusterNodeResponseOutput) Labels() KubernetesLabelResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) []KubernetesLabelResponse { return v.Labels }).(KubernetesLabelResponseArrayOutput)
+}
+
+// The amount of memory configured for this node, derived from the vm SKU specified.
+func (o KubernetesClusterNodeResponseOutput) MemorySizeGB() pulumi.Float64Output {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) float64 { return v.MemorySizeGB }).(pulumi.Float64Output)
+}
+
+// The mode of the agent pool containing this node. Not applicable for control plane nodes.
+func (o KubernetesClusterNodeResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The name of this node, as realized in the Kubernetes cluster.
+func (o KubernetesClusterNodeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The NetworkAttachments made to this node.
+func (o KubernetesClusterNodeResponseOutput) NetworkAttachments() NetworkAttachmentResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) []NetworkAttachmentResponse { return v.NetworkAttachments }).(NetworkAttachmentResponseArrayOutput)
+}
+
+// The power state of this node.
+func (o KubernetesClusterNodeResponseOutput) PowerState() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.PowerState }).(pulumi.StringOutput)
+}
+
+// The role of this node in the cluster.
+func (o KubernetesClusterNodeResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The list of taints that have been assigned to the agent pool containing this node.
+func (o KubernetesClusterNodeResponseOutput) Taints() KubernetesLabelResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) []KubernetesLabelResponse { return v.Taints }).(KubernetesLabelResponseArrayOutput)
+}
+
+// The VM SKU name that was used to create this cluster node.
+func (o KubernetesClusterNodeResponseOutput) VmSkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.VmSkuName }).(pulumi.StringOutput)
+}
+
+type KubernetesClusterNodeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNodeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesClusterNodeResponse)(nil)).Elem()
+}
+
+func (o KubernetesClusterNodeResponseArrayOutput) ToKubernetesClusterNodeResponseArrayOutput() KubernetesClusterNodeResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesClusterNodeResponseArrayOutput) ToKubernetesClusterNodeResponseArrayOutputWithContext(ctx context.Context) KubernetesClusterNodeResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesClusterNodeResponseArrayOutput) Index(i pulumi.IntInput) KubernetesClusterNodeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesClusterNodeResponse {
+		return vs[0].([]KubernetesClusterNodeResponse)[vs[1].(int)]
+	}).(KubernetesClusterNodeResponseOutput)
+}
+
+type KubernetesLabel struct {
+	// The name of the label or taint.
+	Key string `pulumi:"key"`
+	// The value of the label or taint.
+	Value string `pulumi:"value"`
+}
+
+// KubernetesLabelInput is an input type that accepts KubernetesLabelArgs and KubernetesLabelOutput values.
+// You can construct a concrete instance of `KubernetesLabelInput` via:
+//
+//	KubernetesLabelArgs{...}
+type KubernetesLabelInput interface {
+	pulumi.Input
+
+	ToKubernetesLabelOutput() KubernetesLabelOutput
+	ToKubernetesLabelOutputWithContext(context.Context) KubernetesLabelOutput
+}
+
+type KubernetesLabelArgs struct {
+	// The name of the label or taint.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the label or taint.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (KubernetesLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesLabel)(nil)).Elem()
+}
+
+func (i KubernetesLabelArgs) ToKubernetesLabelOutput() KubernetesLabelOutput {
+	return i.ToKubernetesLabelOutputWithContext(context.Background())
+}
+
+func (i KubernetesLabelArgs) ToKubernetesLabelOutputWithContext(ctx context.Context) KubernetesLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesLabelOutput)
+}
+
+// KubernetesLabelArrayInput is an input type that accepts KubernetesLabelArray and KubernetesLabelArrayOutput values.
+// You can construct a concrete instance of `KubernetesLabelArrayInput` via:
+//
+//	KubernetesLabelArray{ KubernetesLabelArgs{...} }
+type KubernetesLabelArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesLabelArrayOutput() KubernetesLabelArrayOutput
+	ToKubernetesLabelArrayOutputWithContext(context.Context) KubernetesLabelArrayOutput
+}
+
+type KubernetesLabelArray []KubernetesLabelInput
+
+func (KubernetesLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesLabel)(nil)).Elem()
+}
+
+func (i KubernetesLabelArray) ToKubernetesLabelArrayOutput() KubernetesLabelArrayOutput {
+	return i.ToKubernetesLabelArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesLabelArray) ToKubernetesLabelArrayOutputWithContext(ctx context.Context) KubernetesLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesLabelArrayOutput)
+}
+
+type KubernetesLabelOutput struct{ *pulumi.OutputState }
+
+func (KubernetesLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesLabel)(nil)).Elem()
+}
+
+func (o KubernetesLabelOutput) ToKubernetesLabelOutput() KubernetesLabelOutput {
+	return o
+}
+
+func (o KubernetesLabelOutput) ToKubernetesLabelOutputWithContext(ctx context.Context) KubernetesLabelOutput {
+	return o
+}
+
+// The name of the label or taint.
+func (o KubernetesLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the label or taint.
+func (o KubernetesLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type KubernetesLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesLabel)(nil)).Elem()
+}
+
+func (o KubernetesLabelArrayOutput) ToKubernetesLabelArrayOutput() KubernetesLabelArrayOutput {
+	return o
+}
+
+func (o KubernetesLabelArrayOutput) ToKubernetesLabelArrayOutputWithContext(ctx context.Context) KubernetesLabelArrayOutput {
+	return o
+}
+
+func (o KubernetesLabelArrayOutput) Index(i pulumi.IntInput) KubernetesLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesLabel {
+		return vs[0].([]KubernetesLabel)[vs[1].(int)]
+	}).(KubernetesLabelOutput)
+}
+
+type KubernetesLabelResponse struct {
+	// The name of the label or taint.
+	Key string `pulumi:"key"`
+	// The value of the label or taint.
+	Value string `pulumi:"value"`
+}
+
+type KubernetesLabelResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesLabelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesLabelResponse)(nil)).Elem()
+}
+
+func (o KubernetesLabelResponseOutput) ToKubernetesLabelResponseOutput() KubernetesLabelResponseOutput {
+	return o
+}
+
+func (o KubernetesLabelResponseOutput) ToKubernetesLabelResponseOutputWithContext(ctx context.Context) KubernetesLabelResponseOutput {
+	return o
+}
+
+// The name of the label or taint.
+func (o KubernetesLabelResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesLabelResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the label or taint.
+func (o KubernetesLabelResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesLabelResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type KubernetesLabelResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesLabelResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesLabelResponse)(nil)).Elem()
+}
+
+func (o KubernetesLabelResponseArrayOutput) ToKubernetesLabelResponseArrayOutput() KubernetesLabelResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesLabelResponseArrayOutput) ToKubernetesLabelResponseArrayOutputWithContext(ctx context.Context) KubernetesLabelResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesLabelResponseArrayOutput) Index(i pulumi.IntInput) KubernetesLabelResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesLabelResponse {
+		return vs[0].([]KubernetesLabelResponse)[vs[1].(int)]
+	}).(KubernetesLabelResponseOutput)
+}
+
+type L2NetworkAttachmentConfiguration struct {
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId string `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType *string `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for L2NetworkAttachmentConfiguration
+func (val *L2NetworkAttachmentConfiguration) Defaults() *L2NetworkAttachmentConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PluginType == nil {
+		pluginType_ := "SRIOV"
+		tmp.PluginType = &pluginType_
+	}
+	return &tmp
+}
+
+// L2NetworkAttachmentConfigurationInput is an input type that accepts L2NetworkAttachmentConfigurationArgs and L2NetworkAttachmentConfigurationOutput values.
+// You can construct a concrete instance of `L2NetworkAttachmentConfigurationInput` via:
+//
+//	L2NetworkAttachmentConfigurationArgs{...}
+type L2NetworkAttachmentConfigurationInput interface {
+	pulumi.Input
+
+	ToL2NetworkAttachmentConfigurationOutput() L2NetworkAttachmentConfigurationOutput
+	ToL2NetworkAttachmentConfigurationOutputWithContext(context.Context) L2NetworkAttachmentConfigurationOutput
+}
+
+type L2NetworkAttachmentConfigurationArgs struct {
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType pulumi.StringPtrInput `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for L2NetworkAttachmentConfigurationArgs
+func (val *L2NetworkAttachmentConfigurationArgs) Defaults() *L2NetworkAttachmentConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PluginType == nil {
+		tmp.PluginType = pulumi.StringPtr("SRIOV")
+	}
+	return &tmp
+}
+func (L2NetworkAttachmentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2NetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (i L2NetworkAttachmentConfigurationArgs) ToL2NetworkAttachmentConfigurationOutput() L2NetworkAttachmentConfigurationOutput {
+	return i.ToL2NetworkAttachmentConfigurationOutputWithContext(context.Background())
+}
+
+func (i L2NetworkAttachmentConfigurationArgs) ToL2NetworkAttachmentConfigurationOutputWithContext(ctx context.Context) L2NetworkAttachmentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L2NetworkAttachmentConfigurationOutput)
+}
+
+// L2NetworkAttachmentConfigurationArrayInput is an input type that accepts L2NetworkAttachmentConfigurationArray and L2NetworkAttachmentConfigurationArrayOutput values.
+// You can construct a concrete instance of `L2NetworkAttachmentConfigurationArrayInput` via:
+//
+//	L2NetworkAttachmentConfigurationArray{ L2NetworkAttachmentConfigurationArgs{...} }
+type L2NetworkAttachmentConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToL2NetworkAttachmentConfigurationArrayOutput() L2NetworkAttachmentConfigurationArrayOutput
+	ToL2NetworkAttachmentConfigurationArrayOutputWithContext(context.Context) L2NetworkAttachmentConfigurationArrayOutput
+}
+
+type L2NetworkAttachmentConfigurationArray []L2NetworkAttachmentConfigurationInput
+
+func (L2NetworkAttachmentConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]L2NetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (i L2NetworkAttachmentConfigurationArray) ToL2NetworkAttachmentConfigurationArrayOutput() L2NetworkAttachmentConfigurationArrayOutput {
+	return i.ToL2NetworkAttachmentConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i L2NetworkAttachmentConfigurationArray) ToL2NetworkAttachmentConfigurationArrayOutputWithContext(ctx context.Context) L2NetworkAttachmentConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L2NetworkAttachmentConfigurationArrayOutput)
+}
+
+type L2NetworkAttachmentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (L2NetworkAttachmentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2NetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (o L2NetworkAttachmentConfigurationOutput) ToL2NetworkAttachmentConfigurationOutput() L2NetworkAttachmentConfigurationOutput {
+	return o
+}
+
+func (o L2NetworkAttachmentConfigurationOutput) ToL2NetworkAttachmentConfigurationOutputWithContext(ctx context.Context) L2NetworkAttachmentConfigurationOutput {
+	return o
+}
+
+// The resource ID of the network that is being configured for attachment.
+func (o L2NetworkAttachmentConfigurationOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v L2NetworkAttachmentConfiguration) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The indicator of how this network will be utilized by the Kubernetes cluster.
+func (o L2NetworkAttachmentConfigurationOutput) PluginType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L2NetworkAttachmentConfiguration) *string { return v.PluginType }).(pulumi.StringPtrOutput)
+}
+
+type L2NetworkAttachmentConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (L2NetworkAttachmentConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]L2NetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (o L2NetworkAttachmentConfigurationArrayOutput) ToL2NetworkAttachmentConfigurationArrayOutput() L2NetworkAttachmentConfigurationArrayOutput {
+	return o
+}
+
+func (o L2NetworkAttachmentConfigurationArrayOutput) ToL2NetworkAttachmentConfigurationArrayOutputWithContext(ctx context.Context) L2NetworkAttachmentConfigurationArrayOutput {
+	return o
+}
+
+func (o L2NetworkAttachmentConfigurationArrayOutput) Index(i pulumi.IntInput) L2NetworkAttachmentConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) L2NetworkAttachmentConfiguration {
+		return vs[0].([]L2NetworkAttachmentConfiguration)[vs[1].(int)]
+	}).(L2NetworkAttachmentConfigurationOutput)
+}
+
+type L2NetworkAttachmentConfigurationResponse struct {
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId string `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType *string `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for L2NetworkAttachmentConfigurationResponse
+func (val *L2NetworkAttachmentConfigurationResponse) Defaults() *L2NetworkAttachmentConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PluginType == nil {
+		pluginType_ := "SRIOV"
+		tmp.PluginType = &pluginType_
+	}
+	return &tmp
+}
+
+type L2NetworkAttachmentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (L2NetworkAttachmentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2NetworkAttachmentConfigurationResponse)(nil)).Elem()
+}
+
+func (o L2NetworkAttachmentConfigurationResponseOutput) ToL2NetworkAttachmentConfigurationResponseOutput() L2NetworkAttachmentConfigurationResponseOutput {
+	return o
+}
+
+func (o L2NetworkAttachmentConfigurationResponseOutput) ToL2NetworkAttachmentConfigurationResponseOutputWithContext(ctx context.Context) L2NetworkAttachmentConfigurationResponseOutput {
+	return o
+}
+
+// The resource ID of the network that is being configured for attachment.
+func (o L2NetworkAttachmentConfigurationResponseOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v L2NetworkAttachmentConfigurationResponse) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The indicator of how this network will be utilized by the Kubernetes cluster.
+func (o L2NetworkAttachmentConfigurationResponseOutput) PluginType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L2NetworkAttachmentConfigurationResponse) *string { return v.PluginType }).(pulumi.StringPtrOutput)
+}
+
+type L2NetworkAttachmentConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (L2NetworkAttachmentConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]L2NetworkAttachmentConfigurationResponse)(nil)).Elem()
+}
+
+func (o L2NetworkAttachmentConfigurationResponseArrayOutput) ToL2NetworkAttachmentConfigurationResponseArrayOutput() L2NetworkAttachmentConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o L2NetworkAttachmentConfigurationResponseArrayOutput) ToL2NetworkAttachmentConfigurationResponseArrayOutputWithContext(ctx context.Context) L2NetworkAttachmentConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o L2NetworkAttachmentConfigurationResponseArrayOutput) Index(i pulumi.IntInput) L2NetworkAttachmentConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) L2NetworkAttachmentConfigurationResponse {
+		return vs[0].([]L2NetworkAttachmentConfigurationResponse)[vs[1].(int)]
+	}).(L2NetworkAttachmentConfigurationResponseOutput)
+}
+
+type L3NetworkAttachmentConfiguration struct {
+	// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+	IpamEnabled *string `pulumi:"ipamEnabled"`
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId string `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType *string `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for L3NetworkAttachmentConfiguration
+func (val *L3NetworkAttachmentConfiguration) Defaults() *L3NetworkAttachmentConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IpamEnabled == nil {
+		ipamEnabled_ := "False"
+		tmp.IpamEnabled = &ipamEnabled_
+	}
+	if tmp.PluginType == nil {
+		pluginType_ := "SRIOV"
+		tmp.PluginType = &pluginType_
+	}
+	return &tmp
+}
+
+// L3NetworkAttachmentConfigurationInput is an input type that accepts L3NetworkAttachmentConfigurationArgs and L3NetworkAttachmentConfigurationOutput values.
+// You can construct a concrete instance of `L3NetworkAttachmentConfigurationInput` via:
+//
+//	L3NetworkAttachmentConfigurationArgs{...}
+type L3NetworkAttachmentConfigurationInput interface {
+	pulumi.Input
+
+	ToL3NetworkAttachmentConfigurationOutput() L3NetworkAttachmentConfigurationOutput
+	ToL3NetworkAttachmentConfigurationOutputWithContext(context.Context) L3NetworkAttachmentConfigurationOutput
+}
+
+type L3NetworkAttachmentConfigurationArgs struct {
+	// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+	IpamEnabled pulumi.StringPtrInput `pulumi:"ipamEnabled"`
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType pulumi.StringPtrInput `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for L3NetworkAttachmentConfigurationArgs
+func (val *L3NetworkAttachmentConfigurationArgs) Defaults() *L3NetworkAttachmentConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IpamEnabled == nil {
+		tmp.IpamEnabled = pulumi.StringPtr("False")
+	}
+	if tmp.PluginType == nil {
+		tmp.PluginType = pulumi.StringPtr("SRIOV")
+	}
+	return &tmp
+}
+func (L3NetworkAttachmentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3NetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (i L3NetworkAttachmentConfigurationArgs) ToL3NetworkAttachmentConfigurationOutput() L3NetworkAttachmentConfigurationOutput {
+	return i.ToL3NetworkAttachmentConfigurationOutputWithContext(context.Background())
+}
+
+func (i L3NetworkAttachmentConfigurationArgs) ToL3NetworkAttachmentConfigurationOutputWithContext(ctx context.Context) L3NetworkAttachmentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L3NetworkAttachmentConfigurationOutput)
+}
+
+// L3NetworkAttachmentConfigurationArrayInput is an input type that accepts L3NetworkAttachmentConfigurationArray and L3NetworkAttachmentConfigurationArrayOutput values.
+// You can construct a concrete instance of `L3NetworkAttachmentConfigurationArrayInput` via:
+//
+//	L3NetworkAttachmentConfigurationArray{ L3NetworkAttachmentConfigurationArgs{...} }
+type L3NetworkAttachmentConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToL3NetworkAttachmentConfigurationArrayOutput() L3NetworkAttachmentConfigurationArrayOutput
+	ToL3NetworkAttachmentConfigurationArrayOutputWithContext(context.Context) L3NetworkAttachmentConfigurationArrayOutput
+}
+
+type L3NetworkAttachmentConfigurationArray []L3NetworkAttachmentConfigurationInput
+
+func (L3NetworkAttachmentConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]L3NetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (i L3NetworkAttachmentConfigurationArray) ToL3NetworkAttachmentConfigurationArrayOutput() L3NetworkAttachmentConfigurationArrayOutput {
+	return i.ToL3NetworkAttachmentConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i L3NetworkAttachmentConfigurationArray) ToL3NetworkAttachmentConfigurationArrayOutputWithContext(ctx context.Context) L3NetworkAttachmentConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L3NetworkAttachmentConfigurationArrayOutput)
+}
+
+type L3NetworkAttachmentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (L3NetworkAttachmentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3NetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (o L3NetworkAttachmentConfigurationOutput) ToL3NetworkAttachmentConfigurationOutput() L3NetworkAttachmentConfigurationOutput {
+	return o
+}
+
+func (o L3NetworkAttachmentConfigurationOutput) ToL3NetworkAttachmentConfigurationOutputWithContext(ctx context.Context) L3NetworkAttachmentConfigurationOutput {
+	return o
+}
+
+// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+func (o L3NetworkAttachmentConfigurationOutput) IpamEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L3NetworkAttachmentConfiguration) *string { return v.IpamEnabled }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of the network that is being configured for attachment.
+func (o L3NetworkAttachmentConfigurationOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v L3NetworkAttachmentConfiguration) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The indicator of how this network will be utilized by the Kubernetes cluster.
+func (o L3NetworkAttachmentConfigurationOutput) PluginType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L3NetworkAttachmentConfiguration) *string { return v.PluginType }).(pulumi.StringPtrOutput)
+}
+
+type L3NetworkAttachmentConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (L3NetworkAttachmentConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]L3NetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (o L3NetworkAttachmentConfigurationArrayOutput) ToL3NetworkAttachmentConfigurationArrayOutput() L3NetworkAttachmentConfigurationArrayOutput {
+	return o
+}
+
+func (o L3NetworkAttachmentConfigurationArrayOutput) ToL3NetworkAttachmentConfigurationArrayOutputWithContext(ctx context.Context) L3NetworkAttachmentConfigurationArrayOutput {
+	return o
+}
+
+func (o L3NetworkAttachmentConfigurationArrayOutput) Index(i pulumi.IntInput) L3NetworkAttachmentConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) L3NetworkAttachmentConfiguration {
+		return vs[0].([]L3NetworkAttachmentConfiguration)[vs[1].(int)]
+	}).(L3NetworkAttachmentConfigurationOutput)
+}
+
+type L3NetworkAttachmentConfigurationResponse struct {
+	// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+	IpamEnabled *string `pulumi:"ipamEnabled"`
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId string `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType *string `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for L3NetworkAttachmentConfigurationResponse
+func (val *L3NetworkAttachmentConfigurationResponse) Defaults() *L3NetworkAttachmentConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IpamEnabled == nil {
+		ipamEnabled_ := "False"
+		tmp.IpamEnabled = &ipamEnabled_
+	}
+	if tmp.PluginType == nil {
+		pluginType_ := "SRIOV"
+		tmp.PluginType = &pluginType_
+	}
+	return &tmp
+}
+
+type L3NetworkAttachmentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (L3NetworkAttachmentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3NetworkAttachmentConfigurationResponse)(nil)).Elem()
+}
+
+func (o L3NetworkAttachmentConfigurationResponseOutput) ToL3NetworkAttachmentConfigurationResponseOutput() L3NetworkAttachmentConfigurationResponseOutput {
+	return o
+}
+
+func (o L3NetworkAttachmentConfigurationResponseOutput) ToL3NetworkAttachmentConfigurationResponseOutputWithContext(ctx context.Context) L3NetworkAttachmentConfigurationResponseOutput {
+	return o
+}
+
+// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+func (o L3NetworkAttachmentConfigurationResponseOutput) IpamEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L3NetworkAttachmentConfigurationResponse) *string { return v.IpamEnabled }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of the network that is being configured for attachment.
+func (o L3NetworkAttachmentConfigurationResponseOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v L3NetworkAttachmentConfigurationResponse) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The indicator of how this network will be utilized by the Kubernetes cluster.
+func (o L3NetworkAttachmentConfigurationResponseOutput) PluginType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L3NetworkAttachmentConfigurationResponse) *string { return v.PluginType }).(pulumi.StringPtrOutput)
+}
+
+type L3NetworkAttachmentConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (L3NetworkAttachmentConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]L3NetworkAttachmentConfigurationResponse)(nil)).Elem()
+}
+
+func (o L3NetworkAttachmentConfigurationResponseArrayOutput) ToL3NetworkAttachmentConfigurationResponseArrayOutput() L3NetworkAttachmentConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o L3NetworkAttachmentConfigurationResponseArrayOutput) ToL3NetworkAttachmentConfigurationResponseArrayOutputWithContext(ctx context.Context) L3NetworkAttachmentConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o L3NetworkAttachmentConfigurationResponseArrayOutput) Index(i pulumi.IntInput) L3NetworkAttachmentConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) L3NetworkAttachmentConfigurationResponse {
+		return vs[0].([]L3NetworkAttachmentConfigurationResponse)[vs[1].(int)]
+	}).(L3NetworkAttachmentConfigurationResponseOutput)
 }
 
 type LldpNeighborResponse struct {
@@ -2862,6 +6328,215 @@ func (o NetworkAttachmentResponseArrayOutput) Index(i pulumi.IntInput) NetworkAt
 	}).(NetworkAttachmentResponseOutput)
 }
 
+type NetworkConfiguration struct {
+	// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
+	AttachedNetworkConfiguration *AttachedNetworkConfiguration `pulumi:"attachedNetworkConfiguration"`
+	// The configuration of the BGP service load balancer for this Kubernetes cluster.
+	BgpServiceLoadBalancerConfiguration *BgpServiceLoadBalancerConfiguration `pulumi:"bgpServiceLoadBalancerConfiguration"`
+	// The resource ID of the associated Cloud Services network.
+	CloudServicesNetworkId string `pulumi:"cloudServicesNetworkId"`
+	// The resource ID of the Layer 3 network that is used for creation of the Container Networking Interface network.
+	CniNetworkId string `pulumi:"cniNetworkId"`
+	// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
+	DnsServiceIp *string `pulumi:"dnsServiceIp"`
+	// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+	PodCidrs []string `pulumi:"podCidrs"`
+	// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+	ServiceCidrs []string `pulumi:"serviceCidrs"`
+}
+
+// Defaults sets the appropriate defaults for NetworkConfiguration
+func (val *NetworkConfiguration) Defaults() *NetworkConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BgpServiceLoadBalancerConfiguration = tmp.BgpServiceLoadBalancerConfiguration.Defaults()
+
+	return &tmp
+}
+
+// NetworkConfigurationInput is an input type that accepts NetworkConfigurationArgs and NetworkConfigurationOutput values.
+// You can construct a concrete instance of `NetworkConfigurationInput` via:
+//
+//	NetworkConfigurationArgs{...}
+type NetworkConfigurationInput interface {
+	pulumi.Input
+
+	ToNetworkConfigurationOutput() NetworkConfigurationOutput
+	ToNetworkConfigurationOutputWithContext(context.Context) NetworkConfigurationOutput
+}
+
+type NetworkConfigurationArgs struct {
+	// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
+	AttachedNetworkConfiguration AttachedNetworkConfigurationPtrInput `pulumi:"attachedNetworkConfiguration"`
+	// The configuration of the BGP service load balancer for this Kubernetes cluster.
+	BgpServiceLoadBalancerConfiguration BgpServiceLoadBalancerConfigurationPtrInput `pulumi:"bgpServiceLoadBalancerConfiguration"`
+	// The resource ID of the associated Cloud Services network.
+	CloudServicesNetworkId pulumi.StringInput `pulumi:"cloudServicesNetworkId"`
+	// The resource ID of the Layer 3 network that is used for creation of the Container Networking Interface network.
+	CniNetworkId pulumi.StringInput `pulumi:"cniNetworkId"`
+	// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
+	DnsServiceIp pulumi.StringPtrInput `pulumi:"dnsServiceIp"`
+	// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+	PodCidrs pulumi.StringArrayInput `pulumi:"podCidrs"`
+	// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+	ServiceCidrs pulumi.StringArrayInput `pulumi:"serviceCidrs"`
+}
+
+// Defaults sets the appropriate defaults for NetworkConfigurationArgs
+func (val *NetworkConfigurationArgs) Defaults() *NetworkConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (NetworkConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfiguration)(nil)).Elem()
+}
+
+func (i NetworkConfigurationArgs) ToNetworkConfigurationOutput() NetworkConfigurationOutput {
+	return i.ToNetworkConfigurationOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigurationArgs) ToNetworkConfigurationOutputWithContext(ctx context.Context) NetworkConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigurationOutput)
+}
+
+type NetworkConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfiguration)(nil)).Elem()
+}
+
+func (o NetworkConfigurationOutput) ToNetworkConfigurationOutput() NetworkConfigurationOutput {
+	return o
+}
+
+func (o NetworkConfigurationOutput) ToNetworkConfigurationOutputWithContext(ctx context.Context) NetworkConfigurationOutput {
+	return o
+}
+
+// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
+func (o NetworkConfigurationOutput) AttachedNetworkConfiguration() AttachedNetworkConfigurationPtrOutput {
+	return o.ApplyT(func(v NetworkConfiguration) *AttachedNetworkConfiguration { return v.AttachedNetworkConfiguration }).(AttachedNetworkConfigurationPtrOutput)
+}
+
+// The configuration of the BGP service load balancer for this Kubernetes cluster.
+func (o NetworkConfigurationOutput) BgpServiceLoadBalancerConfiguration() BgpServiceLoadBalancerConfigurationPtrOutput {
+	return o.ApplyT(func(v NetworkConfiguration) *BgpServiceLoadBalancerConfiguration {
+		return v.BgpServiceLoadBalancerConfiguration
+	}).(BgpServiceLoadBalancerConfigurationPtrOutput)
+}
+
+// The resource ID of the associated Cloud Services network.
+func (o NetworkConfigurationOutput) CloudServicesNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfiguration) string { return v.CloudServicesNetworkId }).(pulumi.StringOutput)
+}
+
+// The resource ID of the Layer 3 network that is used for creation of the Container Networking Interface network.
+func (o NetworkConfigurationOutput) CniNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfiguration) string { return v.CniNetworkId }).(pulumi.StringOutput)
+}
+
+// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
+func (o NetworkConfigurationOutput) DnsServiceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkConfiguration) *string { return v.DnsServiceIp }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+func (o NetworkConfigurationOutput) PodCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkConfiguration) []string { return v.PodCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+func (o NetworkConfigurationOutput) ServiceCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkConfiguration) []string { return v.ServiceCidrs }).(pulumi.StringArrayOutput)
+}
+
+type NetworkConfigurationResponse struct {
+	// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
+	AttachedNetworkConfiguration *AttachedNetworkConfigurationResponse `pulumi:"attachedNetworkConfiguration"`
+	// The configuration of the BGP service load balancer for this Kubernetes cluster.
+	BgpServiceLoadBalancerConfiguration *BgpServiceLoadBalancerConfigurationResponse `pulumi:"bgpServiceLoadBalancerConfiguration"`
+	// The resource ID of the associated Cloud Services network.
+	CloudServicesNetworkId string `pulumi:"cloudServicesNetworkId"`
+	// The resource ID of the Layer 3 network that is used for creation of the Container Networking Interface network.
+	CniNetworkId string `pulumi:"cniNetworkId"`
+	// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
+	DnsServiceIp *string `pulumi:"dnsServiceIp"`
+	// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+	PodCidrs []string `pulumi:"podCidrs"`
+	// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+	ServiceCidrs []string `pulumi:"serviceCidrs"`
+}
+
+// Defaults sets the appropriate defaults for NetworkConfigurationResponse
+func (val *NetworkConfigurationResponse) Defaults() *NetworkConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BgpServiceLoadBalancerConfiguration = tmp.BgpServiceLoadBalancerConfiguration.Defaults()
+
+	return &tmp
+}
+
+type NetworkConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigurationResponse)(nil)).Elem()
+}
+
+func (o NetworkConfigurationResponseOutput) ToNetworkConfigurationResponseOutput() NetworkConfigurationResponseOutput {
+	return o
+}
+
+func (o NetworkConfigurationResponseOutput) ToNetworkConfigurationResponseOutputWithContext(ctx context.Context) NetworkConfigurationResponseOutput {
+	return o
+}
+
+// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
+func (o NetworkConfigurationResponseOutput) AttachedNetworkConfiguration() AttachedNetworkConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) *AttachedNetworkConfigurationResponse {
+		return v.AttachedNetworkConfiguration
+	}).(AttachedNetworkConfigurationResponsePtrOutput)
+}
+
+// The configuration of the BGP service load balancer for this Kubernetes cluster.
+func (o NetworkConfigurationResponseOutput) BgpServiceLoadBalancerConfiguration() BgpServiceLoadBalancerConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) *BgpServiceLoadBalancerConfigurationResponse {
+		return v.BgpServiceLoadBalancerConfiguration
+	}).(BgpServiceLoadBalancerConfigurationResponsePtrOutput)
+}
+
+// The resource ID of the associated Cloud Services network.
+func (o NetworkConfigurationResponseOutput) CloudServicesNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) string { return v.CloudServicesNetworkId }).(pulumi.StringOutput)
+}
+
+// The resource ID of the Layer 3 network that is used for creation of the Container Networking Interface network.
+func (o NetworkConfigurationResponseOutput) CniNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) string { return v.CniNetworkId }).(pulumi.StringOutput)
+}
+
+// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
+func (o NetworkConfigurationResponseOutput) DnsServiceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) *string { return v.DnsServiceIp }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+func (o NetworkConfigurationResponseOutput) PodCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) []string { return v.PodCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+func (o NetworkConfigurationResponseOutput) ServiceCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) []string { return v.ServiceCidrs }).(pulumi.StringArrayOutput)
+}
+
 type NicResponse struct {
 	// The information about the device connected to this NIC.
 	LldpNeighbor LldpNeighborResponse `pulumi:"lldpNeighbor"`
@@ -3249,7 +6924,7 @@ func (o OsDiskResponseOutput) DiskSizeGB() pulumi.Float64Output {
 }
 
 type RackDefinition struct {
-	// The zone name used for this rack when created.
+	// The zone name used for this rack when created. Availability zones are used for workload placement.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The unordered list of bare metal machine configuration.
 	BareMetalMachineConfigurationData []BareMetalMachineConfigurationData `pulumi:"bareMetalMachineConfigurationData"`
@@ -3277,7 +6952,7 @@ type RackDefinitionInput interface {
 }
 
 type RackDefinitionArgs struct {
-	// The zone name used for this rack when created.
+	// The zone name used for this rack when created. Availability zones are used for workload placement.
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
 	// The unordered list of bare metal machine configuration.
 	BareMetalMachineConfigurationData BareMetalMachineConfigurationDataArrayInput `pulumi:"bareMetalMachineConfigurationData"`
@@ -3344,7 +7019,7 @@ func (o RackDefinitionOutput) ToRackDefinitionOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The zone name used for this rack when created.
+// The zone name used for this rack when created. Availability zones are used for workload placement.
 func (o RackDefinitionOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RackDefinition) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
@@ -3400,7 +7075,7 @@ func (o RackDefinitionArrayOutput) Index(i pulumi.IntInput) RackDefinitionOutput
 }
 
 type RackDefinitionResponse struct {
-	// The zone name used for this rack when created.
+	// The zone name used for this rack when created. Availability zones are used for workload placement.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The unordered list of bare metal machine configuration.
 	BareMetalMachineConfigurationData []BareMetalMachineConfigurationDataResponse `pulumi:"bareMetalMachineConfigurationData"`
@@ -3430,7 +7105,7 @@ func (o RackDefinitionResponseOutput) ToRackDefinitionResponseOutputWithContext(
 	return o
 }
 
-// The zone name used for this rack when created.
+// The zone name used for this rack when created. Availability zones are used for workload placement.
 func (o RackDefinitionResponseOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RackDefinitionResponse) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
@@ -3487,6 +7162,343 @@ func (o RackDefinitionResponseArrayOutput) Index(i pulumi.IntInput) RackDefiniti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RackDefinitionResponse {
 		return vs[0].([]RackDefinitionResponse)[vs[1].(int)]
 	}).(RackDefinitionResponseOutput)
+}
+
+type ServiceLoadBalancerBgpPeer struct {
+	// The indicator of BFD enablement for this BgpPeer.
+	BfdEnabled *string `pulumi:"bfdEnabled"`
+	// The indicator to enable multi-hop peering support.
+	BgpMultiHop *string `pulumi:"bgpMultiHop"`
+	// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+	HoldTime *string `pulumi:"holdTime"`
+	// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+	KeepAliveTime *string `pulumi:"keepAliveTime"`
+	// The autonomous system number used for the local end of the BGP session.
+	MyAsn *float64 `pulumi:"myAsn"`
+	// The name used to identify this BGP peer for association with a BGP advertisement.
+	Name string `pulumi:"name"`
+	// The authentication password for routers enforcing TCP MD5 authenticated sessions.
+	Password *string `pulumi:"password"`
+	// The IPv4 or IPv6 address used to connect this BGP session.
+	PeerAddress string `pulumi:"peerAddress"`
+	// The autonomous system number expected from the remote end of the BGP session.
+	PeerAsn float64 `pulumi:"peerAsn"`
+	// The port used to connect this BGP session.
+	PeerPort *float64 `pulumi:"peerPort"`
+}
+
+// Defaults sets the appropriate defaults for ServiceLoadBalancerBgpPeer
+func (val *ServiceLoadBalancerBgpPeer) Defaults() *ServiceLoadBalancerBgpPeer {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BfdEnabled == nil {
+		bfdEnabled_ := "False"
+		tmp.BfdEnabled = &bfdEnabled_
+	}
+	if tmp.BgpMultiHop == nil {
+		bgpMultiHop_ := "False"
+		tmp.BgpMultiHop = &bgpMultiHop_
+	}
+	if tmp.PeerPort == nil {
+		peerPort_ := 179.0
+		tmp.PeerPort = &peerPort_
+	}
+	return &tmp
+}
+
+// ServiceLoadBalancerBgpPeerInput is an input type that accepts ServiceLoadBalancerBgpPeerArgs and ServiceLoadBalancerBgpPeerOutput values.
+// You can construct a concrete instance of `ServiceLoadBalancerBgpPeerInput` via:
+//
+//	ServiceLoadBalancerBgpPeerArgs{...}
+type ServiceLoadBalancerBgpPeerInput interface {
+	pulumi.Input
+
+	ToServiceLoadBalancerBgpPeerOutput() ServiceLoadBalancerBgpPeerOutput
+	ToServiceLoadBalancerBgpPeerOutputWithContext(context.Context) ServiceLoadBalancerBgpPeerOutput
+}
+
+type ServiceLoadBalancerBgpPeerArgs struct {
+	// The indicator of BFD enablement for this BgpPeer.
+	BfdEnabled pulumi.StringPtrInput `pulumi:"bfdEnabled"`
+	// The indicator to enable multi-hop peering support.
+	BgpMultiHop pulumi.StringPtrInput `pulumi:"bgpMultiHop"`
+	// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+	HoldTime pulumi.StringPtrInput `pulumi:"holdTime"`
+	// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+	KeepAliveTime pulumi.StringPtrInput `pulumi:"keepAliveTime"`
+	// The autonomous system number used for the local end of the BGP session.
+	MyAsn pulumi.Float64PtrInput `pulumi:"myAsn"`
+	// The name used to identify this BGP peer for association with a BGP advertisement.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The authentication password for routers enforcing TCP MD5 authenticated sessions.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The IPv4 or IPv6 address used to connect this BGP session.
+	PeerAddress pulumi.StringInput `pulumi:"peerAddress"`
+	// The autonomous system number expected from the remote end of the BGP session.
+	PeerAsn pulumi.Float64Input `pulumi:"peerAsn"`
+	// The port used to connect this BGP session.
+	PeerPort pulumi.Float64PtrInput `pulumi:"peerPort"`
+}
+
+// Defaults sets the appropriate defaults for ServiceLoadBalancerBgpPeerArgs
+func (val *ServiceLoadBalancerBgpPeerArgs) Defaults() *ServiceLoadBalancerBgpPeerArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BfdEnabled == nil {
+		tmp.BfdEnabled = pulumi.StringPtr("False")
+	}
+	if tmp.BgpMultiHop == nil {
+		tmp.BgpMultiHop = pulumi.StringPtr("False")
+	}
+	if tmp.PeerPort == nil {
+		tmp.PeerPort = pulumi.Float64Ptr(179.0)
+	}
+	return &tmp
+}
+func (ServiceLoadBalancerBgpPeerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadBalancerBgpPeer)(nil)).Elem()
+}
+
+func (i ServiceLoadBalancerBgpPeerArgs) ToServiceLoadBalancerBgpPeerOutput() ServiceLoadBalancerBgpPeerOutput {
+	return i.ToServiceLoadBalancerBgpPeerOutputWithContext(context.Background())
+}
+
+func (i ServiceLoadBalancerBgpPeerArgs) ToServiceLoadBalancerBgpPeerOutputWithContext(ctx context.Context) ServiceLoadBalancerBgpPeerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLoadBalancerBgpPeerOutput)
+}
+
+// ServiceLoadBalancerBgpPeerArrayInput is an input type that accepts ServiceLoadBalancerBgpPeerArray and ServiceLoadBalancerBgpPeerArrayOutput values.
+// You can construct a concrete instance of `ServiceLoadBalancerBgpPeerArrayInput` via:
+//
+//	ServiceLoadBalancerBgpPeerArray{ ServiceLoadBalancerBgpPeerArgs{...} }
+type ServiceLoadBalancerBgpPeerArrayInput interface {
+	pulumi.Input
+
+	ToServiceLoadBalancerBgpPeerArrayOutput() ServiceLoadBalancerBgpPeerArrayOutput
+	ToServiceLoadBalancerBgpPeerArrayOutputWithContext(context.Context) ServiceLoadBalancerBgpPeerArrayOutput
+}
+
+type ServiceLoadBalancerBgpPeerArray []ServiceLoadBalancerBgpPeerInput
+
+func (ServiceLoadBalancerBgpPeerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadBalancerBgpPeer)(nil)).Elem()
+}
+
+func (i ServiceLoadBalancerBgpPeerArray) ToServiceLoadBalancerBgpPeerArrayOutput() ServiceLoadBalancerBgpPeerArrayOutput {
+	return i.ToServiceLoadBalancerBgpPeerArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceLoadBalancerBgpPeerArray) ToServiceLoadBalancerBgpPeerArrayOutputWithContext(ctx context.Context) ServiceLoadBalancerBgpPeerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLoadBalancerBgpPeerArrayOutput)
+}
+
+type ServiceLoadBalancerBgpPeerOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadBalancerBgpPeerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadBalancerBgpPeer)(nil)).Elem()
+}
+
+func (o ServiceLoadBalancerBgpPeerOutput) ToServiceLoadBalancerBgpPeerOutput() ServiceLoadBalancerBgpPeerOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerBgpPeerOutput) ToServiceLoadBalancerBgpPeerOutputWithContext(ctx context.Context) ServiceLoadBalancerBgpPeerOutput {
+	return o
+}
+
+// The indicator of BFD enablement for this BgpPeer.
+func (o ServiceLoadBalancerBgpPeerOutput) BfdEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *string { return v.BfdEnabled }).(pulumi.StringPtrOutput)
+}
+
+// The indicator to enable multi-hop peering support.
+func (o ServiceLoadBalancerBgpPeerOutput) BgpMultiHop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *string { return v.BgpMultiHop }).(pulumi.StringPtrOutput)
+}
+
+// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+func (o ServiceLoadBalancerBgpPeerOutput) HoldTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *string { return v.HoldTime }).(pulumi.StringPtrOutput)
+}
+
+// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+func (o ServiceLoadBalancerBgpPeerOutput) KeepAliveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *string { return v.KeepAliveTime }).(pulumi.StringPtrOutput)
+}
+
+// The autonomous system number used for the local end of the BGP session.
+func (o ServiceLoadBalancerBgpPeerOutput) MyAsn() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *float64 { return v.MyAsn }).(pulumi.Float64PtrOutput)
+}
+
+// The name used to identify this BGP peer for association with a BGP advertisement.
+func (o ServiceLoadBalancerBgpPeerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The authentication password for routers enforcing TCP MD5 authenticated sessions.
+func (o ServiceLoadBalancerBgpPeerOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 or IPv6 address used to connect this BGP session.
+func (o ServiceLoadBalancerBgpPeerOutput) PeerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) string { return v.PeerAddress }).(pulumi.StringOutput)
+}
+
+// The autonomous system number expected from the remote end of the BGP session.
+func (o ServiceLoadBalancerBgpPeerOutput) PeerAsn() pulumi.Float64Output {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) float64 { return v.PeerAsn }).(pulumi.Float64Output)
+}
+
+// The port used to connect this BGP session.
+func (o ServiceLoadBalancerBgpPeerOutput) PeerPort() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *float64 { return v.PeerPort }).(pulumi.Float64PtrOutput)
+}
+
+type ServiceLoadBalancerBgpPeerArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadBalancerBgpPeerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadBalancerBgpPeer)(nil)).Elem()
+}
+
+func (o ServiceLoadBalancerBgpPeerArrayOutput) ToServiceLoadBalancerBgpPeerArrayOutput() ServiceLoadBalancerBgpPeerArrayOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerBgpPeerArrayOutput) ToServiceLoadBalancerBgpPeerArrayOutputWithContext(ctx context.Context) ServiceLoadBalancerBgpPeerArrayOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerBgpPeerArrayOutput) Index(i pulumi.IntInput) ServiceLoadBalancerBgpPeerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceLoadBalancerBgpPeer {
+		return vs[0].([]ServiceLoadBalancerBgpPeer)[vs[1].(int)]
+	}).(ServiceLoadBalancerBgpPeerOutput)
+}
+
+type ServiceLoadBalancerBgpPeerResponse struct {
+	// The indicator of BFD enablement for this BgpPeer.
+	BfdEnabled *string `pulumi:"bfdEnabled"`
+	// The indicator to enable multi-hop peering support.
+	BgpMultiHop *string `pulumi:"bgpMultiHop"`
+	// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+	HoldTime *string `pulumi:"holdTime"`
+	// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+	KeepAliveTime *string `pulumi:"keepAliveTime"`
+	// The autonomous system number used for the local end of the BGP session.
+	MyAsn *float64 `pulumi:"myAsn"`
+	// The name used to identify this BGP peer for association with a BGP advertisement.
+	Name string `pulumi:"name"`
+	// The IPv4 or IPv6 address used to connect this BGP session.
+	PeerAddress string `pulumi:"peerAddress"`
+	// The autonomous system number expected from the remote end of the BGP session.
+	PeerAsn float64 `pulumi:"peerAsn"`
+	// The port used to connect this BGP session.
+	PeerPort *float64 `pulumi:"peerPort"`
+}
+
+// Defaults sets the appropriate defaults for ServiceLoadBalancerBgpPeerResponse
+func (val *ServiceLoadBalancerBgpPeerResponse) Defaults() *ServiceLoadBalancerBgpPeerResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BfdEnabled == nil {
+		bfdEnabled_ := "False"
+		tmp.BfdEnabled = &bfdEnabled_
+	}
+	if tmp.BgpMultiHop == nil {
+		bgpMultiHop_ := "False"
+		tmp.BgpMultiHop = &bgpMultiHop_
+	}
+	if tmp.PeerPort == nil {
+		peerPort_ := 179.0
+		tmp.PeerPort = &peerPort_
+	}
+	return &tmp
+}
+
+type ServiceLoadBalancerBgpPeerResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadBalancerBgpPeerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadBalancerBgpPeerResponse)(nil)).Elem()
+}
+
+func (o ServiceLoadBalancerBgpPeerResponseOutput) ToServiceLoadBalancerBgpPeerResponseOutput() ServiceLoadBalancerBgpPeerResponseOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerBgpPeerResponseOutput) ToServiceLoadBalancerBgpPeerResponseOutputWithContext(ctx context.Context) ServiceLoadBalancerBgpPeerResponseOutput {
+	return o
+}
+
+// The indicator of BFD enablement for this BgpPeer.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) BfdEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *string { return v.BfdEnabled }).(pulumi.StringPtrOutput)
+}
+
+// The indicator to enable multi-hop peering support.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) BgpMultiHop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *string { return v.BgpMultiHop }).(pulumi.StringPtrOutput)
+}
+
+// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) HoldTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *string { return v.HoldTime }).(pulumi.StringPtrOutput)
+}
+
+// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) KeepAliveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *string { return v.KeepAliveTime }).(pulumi.StringPtrOutput)
+}
+
+// The autonomous system number used for the local end of the BGP session.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) MyAsn() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *float64 { return v.MyAsn }).(pulumi.Float64PtrOutput)
+}
+
+// The name used to identify this BGP peer for association with a BGP advertisement.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The IPv4 or IPv6 address used to connect this BGP session.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) PeerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) string { return v.PeerAddress }).(pulumi.StringOutput)
+}
+
+// The autonomous system number expected from the remote end of the BGP session.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) PeerAsn() pulumi.Float64Output {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) float64 { return v.PeerAsn }).(pulumi.Float64Output)
+}
+
+// The port used to connect this BGP session.
+func (o ServiceLoadBalancerBgpPeerResponseOutput) PeerPort() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *float64 { return v.PeerPort }).(pulumi.Float64PtrOutput)
+}
+
+type ServiceLoadBalancerBgpPeerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadBalancerBgpPeerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadBalancerBgpPeerResponse)(nil)).Elem()
+}
+
+func (o ServiceLoadBalancerBgpPeerResponseArrayOutput) ToServiceLoadBalancerBgpPeerResponseArrayOutput() ServiceLoadBalancerBgpPeerResponseArrayOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerBgpPeerResponseArrayOutput) ToServiceLoadBalancerBgpPeerResponseArrayOutputWithContext(ctx context.Context) ServiceLoadBalancerBgpPeerResponseArrayOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerBgpPeerResponseArrayOutput) Index(i pulumi.IntInput) ServiceLoadBalancerBgpPeerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceLoadBalancerBgpPeerResponse {
+		return vs[0].([]ServiceLoadBalancerBgpPeerResponse)[vs[1].(int)]
+	}).(ServiceLoadBalancerBgpPeerResponseOutput)
 }
 
 type ServicePrincipalInformation struct {
@@ -3793,7 +7805,7 @@ func (o ServicePrincipalInformationResponsePtrOutput) TenantId() pulumi.StringPt
 }
 
 type SshPublicKey struct {
-	// The public ssh key of the user.
+	// The SSH public key data.
 	KeyData string `pulumi:"keyData"`
 }
 
@@ -3809,7 +7821,7 @@ type SshPublicKeyInput interface {
 }
 
 type SshPublicKeyArgs struct {
-	// The public ssh key of the user.
+	// The SSH public key data.
 	KeyData pulumi.StringInput `pulumi:"keyData"`
 }
 
@@ -3864,7 +7876,7 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The public ssh key of the user.
+// The SSH public key data.
 func (o SshPublicKeyOutput) KeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v SshPublicKey) string { return v.KeyData }).(pulumi.StringOutput)
 }
@@ -3890,7 +7902,7 @@ func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
 }
 
 type SshPublicKeyResponse struct {
-	// The public ssh key of the user.
+	// The SSH public key data.
 	KeyData string `pulumi:"keyData"`
 }
 
@@ -3908,7 +7920,7 @@ func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx 
 	return o
 }
 
-// The public ssh key of the user.
+// The SSH public key data.
 func (o SshPublicKeyResponseOutput) KeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) string { return v.KeyData }).(pulumi.StringOutput)
 }
@@ -4306,6 +8318,200 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+type TrunkedNetworkAttachmentConfiguration struct {
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId string `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType *string `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for TrunkedNetworkAttachmentConfiguration
+func (val *TrunkedNetworkAttachmentConfiguration) Defaults() *TrunkedNetworkAttachmentConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PluginType == nil {
+		pluginType_ := "SRIOV"
+		tmp.PluginType = &pluginType_
+	}
+	return &tmp
+}
+
+// TrunkedNetworkAttachmentConfigurationInput is an input type that accepts TrunkedNetworkAttachmentConfigurationArgs and TrunkedNetworkAttachmentConfigurationOutput values.
+// You can construct a concrete instance of `TrunkedNetworkAttachmentConfigurationInput` via:
+//
+//	TrunkedNetworkAttachmentConfigurationArgs{...}
+type TrunkedNetworkAttachmentConfigurationInput interface {
+	pulumi.Input
+
+	ToTrunkedNetworkAttachmentConfigurationOutput() TrunkedNetworkAttachmentConfigurationOutput
+	ToTrunkedNetworkAttachmentConfigurationOutputWithContext(context.Context) TrunkedNetworkAttachmentConfigurationOutput
+}
+
+type TrunkedNetworkAttachmentConfigurationArgs struct {
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType pulumi.StringPtrInput `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for TrunkedNetworkAttachmentConfigurationArgs
+func (val *TrunkedNetworkAttachmentConfigurationArgs) Defaults() *TrunkedNetworkAttachmentConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PluginType == nil {
+		tmp.PluginType = pulumi.StringPtr("SRIOV")
+	}
+	return &tmp
+}
+func (TrunkedNetworkAttachmentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrunkedNetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (i TrunkedNetworkAttachmentConfigurationArgs) ToTrunkedNetworkAttachmentConfigurationOutput() TrunkedNetworkAttachmentConfigurationOutput {
+	return i.ToTrunkedNetworkAttachmentConfigurationOutputWithContext(context.Background())
+}
+
+func (i TrunkedNetworkAttachmentConfigurationArgs) ToTrunkedNetworkAttachmentConfigurationOutputWithContext(ctx context.Context) TrunkedNetworkAttachmentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrunkedNetworkAttachmentConfigurationOutput)
+}
+
+// TrunkedNetworkAttachmentConfigurationArrayInput is an input type that accepts TrunkedNetworkAttachmentConfigurationArray and TrunkedNetworkAttachmentConfigurationArrayOutput values.
+// You can construct a concrete instance of `TrunkedNetworkAttachmentConfigurationArrayInput` via:
+//
+//	TrunkedNetworkAttachmentConfigurationArray{ TrunkedNetworkAttachmentConfigurationArgs{...} }
+type TrunkedNetworkAttachmentConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToTrunkedNetworkAttachmentConfigurationArrayOutput() TrunkedNetworkAttachmentConfigurationArrayOutput
+	ToTrunkedNetworkAttachmentConfigurationArrayOutputWithContext(context.Context) TrunkedNetworkAttachmentConfigurationArrayOutput
+}
+
+type TrunkedNetworkAttachmentConfigurationArray []TrunkedNetworkAttachmentConfigurationInput
+
+func (TrunkedNetworkAttachmentConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrunkedNetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (i TrunkedNetworkAttachmentConfigurationArray) ToTrunkedNetworkAttachmentConfigurationArrayOutput() TrunkedNetworkAttachmentConfigurationArrayOutput {
+	return i.ToTrunkedNetworkAttachmentConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i TrunkedNetworkAttachmentConfigurationArray) ToTrunkedNetworkAttachmentConfigurationArrayOutputWithContext(ctx context.Context) TrunkedNetworkAttachmentConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrunkedNetworkAttachmentConfigurationArrayOutput)
+}
+
+type TrunkedNetworkAttachmentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (TrunkedNetworkAttachmentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrunkedNetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (o TrunkedNetworkAttachmentConfigurationOutput) ToTrunkedNetworkAttachmentConfigurationOutput() TrunkedNetworkAttachmentConfigurationOutput {
+	return o
+}
+
+func (o TrunkedNetworkAttachmentConfigurationOutput) ToTrunkedNetworkAttachmentConfigurationOutputWithContext(ctx context.Context) TrunkedNetworkAttachmentConfigurationOutput {
+	return o
+}
+
+// The resource ID of the network that is being configured for attachment.
+func (o TrunkedNetworkAttachmentConfigurationOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v TrunkedNetworkAttachmentConfiguration) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The indicator of how this network will be utilized by the Kubernetes cluster.
+func (o TrunkedNetworkAttachmentConfigurationOutput) PluginType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrunkedNetworkAttachmentConfiguration) *string { return v.PluginType }).(pulumi.StringPtrOutput)
+}
+
+type TrunkedNetworkAttachmentConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (TrunkedNetworkAttachmentConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrunkedNetworkAttachmentConfiguration)(nil)).Elem()
+}
+
+func (o TrunkedNetworkAttachmentConfigurationArrayOutput) ToTrunkedNetworkAttachmentConfigurationArrayOutput() TrunkedNetworkAttachmentConfigurationArrayOutput {
+	return o
+}
+
+func (o TrunkedNetworkAttachmentConfigurationArrayOutput) ToTrunkedNetworkAttachmentConfigurationArrayOutputWithContext(ctx context.Context) TrunkedNetworkAttachmentConfigurationArrayOutput {
+	return o
+}
+
+func (o TrunkedNetworkAttachmentConfigurationArrayOutput) Index(i pulumi.IntInput) TrunkedNetworkAttachmentConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrunkedNetworkAttachmentConfiguration {
+		return vs[0].([]TrunkedNetworkAttachmentConfiguration)[vs[1].(int)]
+	}).(TrunkedNetworkAttachmentConfigurationOutput)
+}
+
+type TrunkedNetworkAttachmentConfigurationResponse struct {
+	// The resource ID of the network that is being configured for attachment.
+	NetworkId string `pulumi:"networkId"`
+	// The indicator of how this network will be utilized by the Kubernetes cluster.
+	PluginType *string `pulumi:"pluginType"`
+}
+
+// Defaults sets the appropriate defaults for TrunkedNetworkAttachmentConfigurationResponse
+func (val *TrunkedNetworkAttachmentConfigurationResponse) Defaults() *TrunkedNetworkAttachmentConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PluginType == nil {
+		pluginType_ := "SRIOV"
+		tmp.PluginType = &pluginType_
+	}
+	return &tmp
+}
+
+type TrunkedNetworkAttachmentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (TrunkedNetworkAttachmentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrunkedNetworkAttachmentConfigurationResponse)(nil)).Elem()
+}
+
+func (o TrunkedNetworkAttachmentConfigurationResponseOutput) ToTrunkedNetworkAttachmentConfigurationResponseOutput() TrunkedNetworkAttachmentConfigurationResponseOutput {
+	return o
+}
+
+func (o TrunkedNetworkAttachmentConfigurationResponseOutput) ToTrunkedNetworkAttachmentConfigurationResponseOutputWithContext(ctx context.Context) TrunkedNetworkAttachmentConfigurationResponseOutput {
+	return o
+}
+
+// The resource ID of the network that is being configured for attachment.
+func (o TrunkedNetworkAttachmentConfigurationResponseOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v TrunkedNetworkAttachmentConfigurationResponse) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The indicator of how this network will be utilized by the Kubernetes cluster.
+func (o TrunkedNetworkAttachmentConfigurationResponseOutput) PluginType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrunkedNetworkAttachmentConfigurationResponse) *string { return v.PluginType }).(pulumi.StringPtrOutput)
+}
+
+type TrunkedNetworkAttachmentConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TrunkedNetworkAttachmentConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrunkedNetworkAttachmentConfigurationResponse)(nil)).Elem()
+}
+
+func (o TrunkedNetworkAttachmentConfigurationResponseArrayOutput) ToTrunkedNetworkAttachmentConfigurationResponseArrayOutput() TrunkedNetworkAttachmentConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o TrunkedNetworkAttachmentConfigurationResponseArrayOutput) ToTrunkedNetworkAttachmentConfigurationResponseArrayOutputWithContext(ctx context.Context) TrunkedNetworkAttachmentConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o TrunkedNetworkAttachmentConfigurationResponseArrayOutput) Index(i pulumi.IntInput) TrunkedNetworkAttachmentConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrunkedNetworkAttachmentConfigurationResponse {
+		return vs[0].([]TrunkedNetworkAttachmentConfigurationResponse)[vs[1].(int)]
+	}).(TrunkedNetworkAttachmentConfigurationResponseOutput)
 }
 
 type ValidationThreshold struct {
@@ -4765,16 +8971,46 @@ func (o VirtualMachinePlacementHintResponseArrayOutput) Index(i pulumi.IntInput)
 }
 
 func init() {
+	pulumi.RegisterOutputType(AadConfigurationOutput{})
+	pulumi.RegisterOutputType(AadConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AadConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AadConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AdministrativeCredentialsOutput{})
 	pulumi.RegisterOutputType(AdministrativeCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(AdministratorConfigurationOutput{})
+	pulumi.RegisterOutputType(AdministratorConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AdministratorConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AdministratorConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AgentOptionsOutput{})
+	pulumi.RegisterOutputType(AgentOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AgentOptionsResponseOutput{})
+	pulumi.RegisterOutputType(AgentOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsOutput{})
+	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AttachedNetworkConfigurationOutput{})
+	pulumi.RegisterOutputType(AttachedNetworkConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AttachedNetworkConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AttachedNetworkConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AvailableUpgradeResponseOutput{})
+	pulumi.RegisterOutputType(AvailableUpgradeResponseArrayOutput{})
 	pulumi.RegisterOutputType(BareMetalMachineConfigurationDataOutput{})
 	pulumi.RegisterOutputType(BareMetalMachineConfigurationDataArrayOutput{})
 	pulumi.RegisterOutputType(BareMetalMachineConfigurationDataResponseOutput{})
 	pulumi.RegisterOutputType(BareMetalMachineConfigurationDataResponseArrayOutput{})
+	pulumi.RegisterOutputType(BgpAdvertisementOutput{})
+	pulumi.RegisterOutputType(BgpAdvertisementArrayOutput{})
+	pulumi.RegisterOutputType(BgpAdvertisementResponseOutput{})
+	pulumi.RegisterOutputType(BgpAdvertisementResponseArrayOutput{})
 	pulumi.RegisterOutputType(BgpPeerOutput{})
 	pulumi.RegisterOutputType(BgpPeerArrayOutput{})
 	pulumi.RegisterOutputType(BgpPeerResponseOutput{})
 	pulumi.RegisterOutputType(BgpPeerResponseArrayOutput{})
+	pulumi.RegisterOutputType(BgpServiceLoadBalancerConfigurationOutput{})
+	pulumi.RegisterOutputType(BgpServiceLoadBalancerConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(BgpServiceLoadBalancerConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(BgpServiceLoadBalancerConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAvailableUpgradeVersionResponseOutput{})
 	pulumi.RegisterOutputType(ClusterAvailableUpgradeVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAvailableVersionResponseOutput{})
@@ -4788,6 +9024,8 @@ func init() {
 	pulumi.RegisterOutputType(CommunityAdvertisementArrayOutput{})
 	pulumi.RegisterOutputType(CommunityAdvertisementResponseOutput{})
 	pulumi.RegisterOutputType(CommunityAdvertisementResponseArrayOutput{})
+	pulumi.RegisterOutputType(ControlPlaneNodeConfigurationOutput{})
+	pulumi.RegisterOutputType(ControlPlaneNodeConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(EgressEndpointOutput{})
 	pulumi.RegisterOutputType(EgressEndpointArrayOutput{})
 	pulumi.RegisterOutputType(EgressEndpointResponseOutput{})
@@ -4797,7 +9035,11 @@ func init() {
 	pulumi.RegisterOutputType(EndpointDependencyResponseOutput{})
 	pulumi.RegisterOutputType(EndpointDependencyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(FeatureStatusResponseOutput{})
+	pulumi.RegisterOutputType(FeatureStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(HardwareInventoryNetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(HardwareInventoryNetworkInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(HardwareInventoryResponseOutput{})
@@ -4806,12 +9048,34 @@ func init() {
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsResponsePtrOutput{})
+	pulumi.RegisterOutputType(InitialAgentPoolConfigurationOutput{})
+	pulumi.RegisterOutputType(InitialAgentPoolConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(InitialAgentPoolConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(InitialAgentPoolConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(IpAddressPoolOutput{})
+	pulumi.RegisterOutputType(IpAddressPoolArrayOutput{})
+	pulumi.RegisterOutputType(IpAddressPoolResponseOutput{})
+	pulumi.RegisterOutputType(IpAddressPoolResponseArrayOutput{})
 	pulumi.RegisterOutputType(KeySetUserOutput{})
 	pulumi.RegisterOutputType(KeySetUserArrayOutput{})
 	pulumi.RegisterOutputType(KeySetUserResponseOutput{})
 	pulumi.RegisterOutputType(KeySetUserResponseArrayOutput{})
 	pulumi.RegisterOutputType(KeySetUserStatusResponseOutput{})
 	pulumi.RegisterOutputType(KeySetUserStatusResponseArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNodeResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNodeResponseArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesLabelOutput{})
+	pulumi.RegisterOutputType(KubernetesLabelArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesLabelResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesLabelResponseArrayOutput{})
+	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationOutput{})
+	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(L3NetworkAttachmentConfigurationOutput{})
+	pulumi.RegisterOutputType(L3NetworkAttachmentConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(L3NetworkAttachmentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(L3NetworkAttachmentConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(LldpNeighborResponseOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationPtrOutput{})
@@ -4821,6 +9085,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentResponseOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkConfigurationOutput{})
+	pulumi.RegisterOutputType(NetworkConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(NicResponseOutput{})
 	pulumi.RegisterOutputType(NicResponseArrayOutput{})
 	pulumi.RegisterOutputType(NodeConfigurationResponseOutput{})
@@ -4833,6 +9099,10 @@ func init() {
 	pulumi.RegisterOutputType(RackDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(RackDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(RackDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerOutput{})
+	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerArrayOutput{})
+	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerResponseOutput{})
+	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalInformationOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalInformationPtrOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalInformationResponseOutput{})
@@ -4848,6 +9118,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageProfileOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationOutput{})
+	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdPtrOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdResponseOutput{})

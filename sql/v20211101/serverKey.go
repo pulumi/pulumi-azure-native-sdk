@@ -12,8 +12,6 @@ import (
 )
 
 // A server key.
-//
-// Deprecated: azure-native:sql/v20211101:ServerKey is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ServerKey to guarantee forwards compatibility.
 type ServerKey struct {
 	pulumi.CustomResourceState
 
@@ -87,6 +85,9 @@ func NewServerKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ServerKey"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ServerKey"),
 		},
 	})
 	opts = append(opts, aliases)

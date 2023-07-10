@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Virtual Appliance Site.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupVirtualApplianceSite(ctx *pulumi.Context, args *LookupVirtualApplianceSiteArgs, opts ...pulumi.InvokeOption) (*LookupVirtualApplianceSiteResult, error) {
 	var rv LookupVirtualApplianceSiteResult
 	err := ctx.Invoke("azure-native:network:getVirtualApplianceSite", args, &rv, opts...)

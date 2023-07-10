@@ -11,7 +11,7 @@ import (
 )
 
 // NSX Public IP Block
-// API Version: 2021-06-01.
+// Azure REST API version: 2022-05-01.
 func LookupWorkloadNetworkPublicIP(ctx *pulumi.Context, args *LookupWorkloadNetworkPublicIPArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkPublicIPResult, error) {
 	var rv LookupWorkloadNetworkPublicIPResult
 	err := ctx.Invoke("azure-native:avs:getWorkloadNetworkPublicIP", args, &rv, opts...)

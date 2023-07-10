@@ -11,7 +11,7 @@ import (
 )
 
 // Get batch operation status
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15.
 func GetGlobalUserOperationBatchStatus(ctx *pulumi.Context, args *GetGlobalUserOperationBatchStatusArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserOperationBatchStatusResult, error) {
 	var rv GetGlobalUserOperationBatchStatusResult
 	err := ctx.Invoke("azure-native:labservices:getGlobalUserOperationBatchStatus", args, &rv, opts...)

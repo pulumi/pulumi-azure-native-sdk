@@ -43,12 +43,6 @@ func NewEnterpriseChannel(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:botservice:EnterpriseChannel"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource EnterpriseChannel
 	err := ctx.RegisterResource("azure-native:botservice/v20180712:EnterpriseChannel", name, args, &resource, opts...)
 	if err != nil {

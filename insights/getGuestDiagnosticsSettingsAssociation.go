@@ -11,7 +11,7 @@ import (
 )
 
 // Gets guest diagnostics association settings.
-// API Version: 2018-06-01-preview.
+// Azure REST API version: 2018-06-01-preview.
 func LookupGuestDiagnosticsSettingsAssociation(ctx *pulumi.Context, args *LookupGuestDiagnosticsSettingsAssociationArgs, opts ...pulumi.InvokeOption) (*LookupGuestDiagnosticsSettingsAssociationResult, error) {
 	var rv LookupGuestDiagnosticsSettingsAssociationResult
 	err := ctx.Invoke("azure-native:insights:getGuestDiagnosticsSettingsAssociation", args, &rv, opts...)

@@ -3,35 +3,6 @@
 
 package v20210101
 
-// The type of direct peering.
-type DirectPeeringType string
-
-const (
-	DirectPeeringTypeEdge     = DirectPeeringType("Edge")
-	DirectPeeringTypeTransit  = DirectPeeringType("Transit")
-	DirectPeeringTypeCdn      = DirectPeeringType("Cdn")
-	DirectPeeringTypeInternal = DirectPeeringType("Internal")
-	DirectPeeringTypeIx       = DirectPeeringType("Ix")
-	DirectPeeringTypeIxRs     = DirectPeeringType("IxRs")
-	DirectPeeringTypeVoice    = DirectPeeringType("Voice")
-)
-
-// The family of the peering SKU.
-type Family string
-
-const (
-	FamilyDirect   = Family("Direct")
-	FamilyExchange = Family("Exchange")
-)
-
-// The kind of the peering.
-type Kind string
-
-const (
-	KindDirect   = Kind("Direct")
-	KindExchange = Kind("Exchange")
-)
-
 // The role of the contact.
 type Role string
 
@@ -42,31 +13,6 @@ const (
 	RoleService    = Role("Service")
 	RoleEscalation = Role("Escalation")
 	RoleOther      = Role("Other")
-)
-
-// The field indicating if Microsoft provides session ip addresses.
-type SessionAddressProvider string
-
-const (
-	SessionAddressProviderMicrosoft = SessionAddressProvider("Microsoft")
-	SessionAddressProviderPeer      = SessionAddressProvider("Peer")
-)
-
-// The size of the peering SKU.
-type Size string
-
-const (
-	SizeFree      = Size("Free")
-	SizeMetered   = Size("Metered")
-	SizeUnlimited = Size("Unlimited")
-)
-
-// The tier of the peering SKU.
-type Tier string
-
-const (
-	TierBasic   = Tier("Basic")
-	TierPremium = Tier("Premium")
 )
 
 // The validation state of the ASN associated with the peer.

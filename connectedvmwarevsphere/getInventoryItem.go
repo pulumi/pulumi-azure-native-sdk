@@ -11,7 +11,7 @@ import (
 )
 
 // Implements InventoryItem GET method.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview.
 func LookupInventoryItem(ctx *pulumi.Context, args *LookupInventoryItemArgs, opts ...pulumi.InvokeOption) (*LookupInventoryItemResult, error) {
 	var rv LookupInventoryItemResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getInventoryItem", args, &rv, opts...)

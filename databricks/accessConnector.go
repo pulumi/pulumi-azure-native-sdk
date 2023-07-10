@@ -12,12 +12,12 @@ import (
 )
 
 // Information about azure databricks accessConnector.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2022-04-01-preview
 type AccessConnector struct {
 	pulumi.CustomResourceState
 
-	// Identity for the resource.
-	Identity IdentityDataResponsePtrOutput `pulumi:"identity"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -48,6 +48,9 @@ func NewAccessConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20221001preview:AccessConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20230501:AccessConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -85,8 +88,8 @@ func (AccessConnectorState) ElementType() reflect.Type {
 type accessConnectorArgs struct {
 	// The name of the azure databricks accessConnector.
 	ConnectorName *string `pulumi:"connectorName"`
-	// Identity for the resource.
-	Identity *IdentityData `pulumi:"identity"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -99,8 +102,8 @@ type accessConnectorArgs struct {
 type AccessConnectorArgs struct {
 	// The name of the azure databricks accessConnector.
 	ConnectorName pulumi.StringPtrInput
-	// Identity for the resource.
-	Identity IdentityDataPtrInput
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -146,9 +149,9 @@ func (o AccessConnectorOutput) ToAccessConnectorOutputWithContext(ctx context.Co
 	return o
 }
 
-// Identity for the resource.
-func (o AccessConnectorOutput) Identity() IdentityDataResponsePtrOutput {
-	return o.ApplyT(func(v *AccessConnector) IdentityDataResponsePtrOutput { return v.Identity }).(IdentityDataResponsePtrOutput)
+// Managed service identity (system assigned and/or user assigned identities)
+func (o AccessConnectorOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *AccessConnector) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

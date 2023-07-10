@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of the provided trunked network.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupTrunkedNetwork(ctx *pulumi.Context, args *LookupTrunkedNetworkArgs, opts ...pulumi.InvokeOption) (*LookupTrunkedNetworkResult, error) {
 	var rv LookupTrunkedNetworkResult
 	err := ctx.Invoke("azure-native:networkcloud:getTrunkedNetwork", args, &rv, opts...)
@@ -29,6 +29,8 @@ type LookupTrunkedNetworkArgs struct {
 }
 
 type LookupTrunkedNetworkResult struct {
+	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+	AssociatedResourceIds []string `pulumi:"associatedResourceIds"`
 	// The resource ID of the Network Cloud cluster this trunked network is associated with.
 	ClusterId string `pulumi:"clusterId"`
 	// The more detailed status of the trunked network.
@@ -37,11 +39,11 @@ type LookupTrunkedNetworkResult struct {
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
+	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
 	HybridAksClustersAssociatedIds []string `pulumi:"hybridAksClustersAssociatedIds"`
-	// The network plugin type for Hybrid AKS.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 	HybridAksPluginType *string `pulumi:"hybridAksPluginType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
 	InterfaceName *string `pulumi:"interfaceName"`
@@ -59,7 +61,7 @@ type LookupTrunkedNetworkResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
+	// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
 	VirtualMachinesAssociatedIds []string `pulumi:"virtualMachinesAssociatedIds"`
 	// The list of vlans that are selected from the isolation domains for trunking.
 	Vlans []float64 `pulumi:"vlans"`
@@ -116,6 +118,11 @@ func (o LookupTrunkedNetworkResultOutput) ToLookupTrunkedNetworkResultOutputWith
 	return o
 }
 
+// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+func (o LookupTrunkedNetworkResultOutput) AssociatedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTrunkedNetworkResult) []string { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
+}
+
 // The resource ID of the Network Cloud cluster this trunked network is associated with.
 func (o LookupTrunkedNetworkResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) string { return v.ClusterId }).(pulumi.StringOutput)
@@ -136,17 +143,17 @@ func (o LookupTrunkedNetworkResultOutput) ExtendedLocation() ExtendedLocationRes
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
+// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
 func (o LookupTrunkedNetworkResultOutput) HybridAksClustersAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) []string { return v.HybridAksClustersAssociatedIds }).(pulumi.StringArrayOutput)
 }
 
-// The network plugin type for Hybrid AKS.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 func (o LookupTrunkedNetworkResultOutput) HybridAksPluginType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) *string { return v.HybridAksPluginType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupTrunkedNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -191,7 +198,7 @@ func (o LookupTrunkedNetworkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
+// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
 func (o LookupTrunkedNetworkResultOutput) VirtualMachinesAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) []string { return v.VirtualMachinesAssociatedIds }).(pulumi.StringArrayOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Get service fabric.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupServiceFabric(ctx *pulumi.Context, args *LookupServiceFabricArgs, opts ...pulumi.InvokeOption) (*LookupServiceFabricResult, error) {
 	var rv LookupServiceFabricResult
 	err := ctx.Invoke("azure-native:devtestlab:getServiceFabric", args, &rv, opts...)

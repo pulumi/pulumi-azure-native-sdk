@@ -11,7 +11,7 @@ import (
 )
 
 // Returns AndroidMAMPolicy with given name.
-// API Version: 2015-01-14-preview.
+// Azure REST API version: 2015-01-14-preview.
 func LookupAndroidMAMPolicyByName(ctx *pulumi.Context, args *LookupAndroidMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupAndroidMAMPolicyByNameResult, error) {
 	var rv LookupAndroidMAMPolicyByNameResult
 	err := ctx.Invoke("azure-native:intune:getAndroidMAMPolicyByName", args, &rv, opts...)

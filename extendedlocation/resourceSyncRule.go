@@ -12,7 +12,7 @@ import (
 )
 
 // Resource Sync Rules definition.
-// API Version: 2021-08-31-preview.
+// Azure REST API version: 2021-08-31-preview. Prior API version in Azure Native 1.x: 2021-08-31-preview
 type ResourceSyncRule struct {
 	pulumi.CustomResourceState
 

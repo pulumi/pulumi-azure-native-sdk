@@ -11,7 +11,7 @@ import (
 )
 
 // Primary and secondary connection strings to the queue.
-// API Version: 2017-04-01.
+// Azure REST API version: 2022-01-01-preview.
 func ListQueueKeys(ctx *pulumi.Context, args *ListQueueKeysArgs, opts ...pulumi.InvokeOption) (*ListQueueKeysResult, error) {
 	var rv ListQueueKeysResult
 	err := ctx.Invoke("azure-native:servicebus:listQueueKeys", args, &rv, opts...)

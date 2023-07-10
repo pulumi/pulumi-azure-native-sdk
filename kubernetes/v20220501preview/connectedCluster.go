@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a connected cluster.
-//
-// Deprecated: azure-native:kubernetes/v20220501preview:ConnectedCluster is being removed in the next major version of this provider. Upgrade to at least azure-native:kubernetes/v20221001preview:ConnectedCluster to guarantee forwards compatibility.
 type ConnectedCluster struct {
 	pulumi.CustomResourceState
 

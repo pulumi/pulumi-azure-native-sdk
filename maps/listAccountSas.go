@@ -15,7 +15,7 @@ import (
 // Prerequisites:
 //  1. Create or have an existing User Assigned Managed Identity in the same Azure region as the account.
 //  2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed.
-//     API Version: 2021-12-01-preview.
+//     Azure REST API version: 2021-12-01-preview.
 func ListAccountSas(ctx *pulumi.Context, args *ListAccountSasArgs, opts ...pulumi.InvokeOption) (*ListAccountSasResult, error) {
 	var rv ListAccountSasResult
 	err := ctx.Invoke("azure-native:maps:listAccountSas", args.Defaults(), &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Contact
-// API Version: 2022-12-01-preview.
+// Azure REST API version: 2022-12-01-preview.
 func LookupContact(ctx *pulumi.Context, args *LookupContactArgs, opts ...pulumi.InvokeOption) (*LookupContactResult, error) {
 	var rv LookupContactResult
 	err := ctx.Invoke("azure-native:voiceservices:getContact", args, &rv, opts...)

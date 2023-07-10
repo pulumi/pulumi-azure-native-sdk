@@ -11,8 +11,6 @@ import (
 )
 
 // Get a Maps Creator resource.
-//
-// Deprecated: azure-native:maps/v20210201:Creator is being removed in the next major version of this provider. Upgrade to at least azure-native:maps/v20211201preview:Creator to guarantee forwards compatibility.
 func LookupCreator(ctx *pulumi.Context, args *LookupCreatorArgs, opts ...pulumi.InvokeOption) (*LookupCreatorResult, error) {
 	var rv LookupCreatorResult
 	err := ctx.Invoke("azure-native:maps/v20210201:getCreator", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified Subscription keys.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func ListSubscriptionSecrets(ctx *pulumi.Context, args *ListSubscriptionSecretsArgs, opts ...pulumi.InvokeOption) (*ListSubscriptionSecretsResult, error) {
 	var rv ListSubscriptionSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement:listSubscriptionSecrets", args, &rv, opts...)
@@ -22,7 +22,7 @@ func ListSubscriptionSecrets(ctx *pulumi.Context, args *ListSubscriptionSecretsA
 }
 
 type ListSubscriptionSecretsArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -52,7 +52,7 @@ func ListSubscriptionSecretsOutput(ctx *pulumi.Context, args ListSubscriptionSec
 }
 
 type ListSubscriptionSecretsOutputArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

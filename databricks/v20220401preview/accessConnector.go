@@ -48,6 +48,9 @@ func NewAccessConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databricks/v20221001preview:AccessConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20230501:AccessConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AccessConnector

@@ -12,7 +12,7 @@ import (
 )
 
 // The X509 Certificate.
-// API Version: 2020-08-31.
+// Azure REST API version: 2022-11-15-preview. Prior API version in Azure Native 1.x: 2020-08-31
 type Certificate struct {
 	pulumi.CustomResourceState
 
@@ -108,6 +108,9 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20220430preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20221115preview:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,7 @@ import (
 )
 
 // Rule Collection Group resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type FirewallPolicyRuleCollectionGroup struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +82,12 @@ func NewFirewallPolicyRuleCollectionGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:FirewallPolicyRuleCollectionGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:FirewallPolicyRuleCollectionGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:FirewallPolicyRuleCollectionGroup"),
 		},
 	})
 	opts = append(opts, aliases)

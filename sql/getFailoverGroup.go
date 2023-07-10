@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a failover group.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupFailoverGroup(ctx *pulumi.Context, args *LookupFailoverGroupArgs, opts ...pulumi.InvokeOption) (*LookupFailoverGroupResult, error) {
 	var rv LookupFailoverGroupResult
 	err := ctx.Invoke("azure-native:sql:getFailoverGroup", args, &rv, opts...)

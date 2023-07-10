@@ -11,7 +11,7 @@ import (
 )
 
 // Gets properties of an inbound endpoint for a DNS resolver.
-// API Version: 2020-04-01-preview.
+// Azure REST API version: 2022-07-01.
 func LookupInboundEndpoint(ctx *pulumi.Context, args *LookupInboundEndpointArgs, opts ...pulumi.InvokeOption) (*LookupInboundEndpointResult, error) {
 	var rv LookupInboundEndpointResult
 	err := ctx.Invoke("azure-native:network:getInboundEndpoint", args, &rv, opts...)

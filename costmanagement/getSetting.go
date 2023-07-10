@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the current value for a specific setting.
-// API Version: 2019-11-01.
+// Azure REST API version: 2019-11-01.
 func LookupSetting(ctx *pulumi.Context, args *LookupSettingArgs, opts ...pulumi.InvokeOption) (*LookupSettingResult, error) {
 	var rv LookupSettingResult
 	err := ctx.Invoke("azure-native:costmanagement:getSetting", args, &rv, opts...)

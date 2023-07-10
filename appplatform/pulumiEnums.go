@@ -3,6 +3,25 @@
 
 package appplatform
 
+// Type of application performance monitoring
+type ApmType string
+
+const (
+	ApmTypeApplicationInsights = ApmType("ApplicationInsights")
+	ApmTypeAppDynamics         = ApmType("AppDynamics")
+	ApmTypeDynatrace           = ApmType("Dynatrace")
+	ApmTypeNewRelic            = ApmType("NewRelic")
+	ApmTypeElasticAPM          = ApmType("ElasticAPM")
+)
+
+// How ingress should communicate with this app backend service.
+type BackendProtocol string
+
+const (
+	BackendProtocolGRPC    = BackendProtocol("GRPC")
+	BackendProtocolDefault = BackendProtocol("Default")
+)
+
 // Buildpack Binding Type
 type BindingType string
 
@@ -13,6 +32,73 @@ const (
 	BindingTypeDynatrace           = BindingType("Dynatrace")
 	BindingTypeNewRelic            = BindingType("NewRelic")
 	BindingTypeElasticAPM          = BindingType("ElasticAPM")
+	BindingTypeCACertificates      = BindingType("CACertificates")
+)
+
+// Enabled state of the config server. This is only used in Consumption tier.
+type ConfigServerEnabledState string
+
+const (
+	// Enable the config server.
+	ConfigServerEnabledStateEnabled = ConfigServerEnabledState("Enabled")
+	// Disable the config server.
+	ConfigServerEnabledStateDisabled = ConfigServerEnabledState("Disabled")
+)
+
+// The generation of the Application Configuration Service.
+type ConfigurationServiceGeneration string
+
+const (
+	ConfigurationServiceGenerationGen1 = ConfigurationServiceGeneration("Gen1")
+	ConfigurationServiceGenerationGen2 = ConfigurationServiceGeneration("Gen2")
+)
+
+// State of the plugin
+type DevToolPortalFeatureState string
+
+const (
+	// Enable the plugin in Dev Tool Portal.
+	DevToolPortalFeatureStateEnabled = DevToolPortalFeatureState("Enabled")
+	// Disable the plugin in Dev Tool Portal.
+	DevToolPortalFeatureStateDisabled = DevToolPortalFeatureState("Disabled")
+)
+
+// Whether to enable certificate verification or not
+type GatewayCertificateVerification string
+
+const (
+	// Enable certificate verification in Spring Cloud Gateway.
+	GatewayCertificateVerificationEnabled = GatewayCertificateVerification("Enabled")
+	// Disable certificate verification in Spring Cloud Gateway.
+	GatewayCertificateVerificationDisabled = GatewayCertificateVerification("Disabled")
+)
+
+// Protocol of routed Azure Spring Apps applications.
+type GatewayRouteConfigProtocol string
+
+const (
+	GatewayRouteConfigProtocolHTTP  = GatewayRouteConfigProtocol("HTTP")
+	GatewayRouteConfigProtocolHTTPS = GatewayRouteConfigProtocol("HTTPS")
+)
+
+// Git libraries used to support various repository providers
+type GitImplementation string
+
+const (
+	GitImplementation_Go_Git = GitImplementation("go-git")
+	GitImplementationLibgit2 = GitImplementation("libgit2")
+)
+
+// Scheme to use for connecting to the host. Defaults to HTTP.
+//
+// Possible enum values:
+//   - `"HTTP"` means that the scheme used will be http://
+//   - `"HTTPS"` means that the scheme used will be https://
+type HTTPSchemeType string
+
+const (
+	HTTPSchemeTypeHTTP  = HTTPSchemeType("HTTP")
+	HTTPSchemeTypeHTTPS = HTTPSchemeType("HTTPS")
 )
 
 // Type of the managed identity
@@ -25,13 +111,21 @@ const (
 	ManagedIdentityType_SystemAssigned_UserAssigned = ManagedIdentityType("SystemAssigned,UserAssigned")
 )
 
-// Runtime version
-type RuntimeVersion string
+// The type of the action to take to perform the health check.
+type ProbeActionType string
 
 const (
-	RuntimeVersion_Java_8     = RuntimeVersion("Java_8")
-	RuntimeVersion_Java_11    = RuntimeVersion("Java_11")
-	RuntimeVersion_NetCore_31 = RuntimeVersion("NetCore_31")
+	ProbeActionTypeHTTPGetAction   = ProbeActionType("HTTPGetAction")
+	ProbeActionTypeTCPSocketAction = ProbeActionType("TCPSocketAction")
+	ProbeActionTypeExecAction      = ProbeActionType("ExecAction")
+)
+
+// Type of the affinity, set this to Cookie to enable session affinity.
+type SessionAffinity string
+
+const (
+	SessionAffinityCookie = SessionAffinity("Cookie")
+	SessionAffinityNone   = SessionAffinity("None")
 )
 
 // The type of the storage.
@@ -41,13 +135,11 @@ const (
 	StorageTypeStorageAccount = StorageType("StorageAccount")
 )
 
-// Type of the source uploaded
-type UserSourceType string
+// The type of the underlying resource to mount as a persistent disk.
+type Type string
 
 const (
-	UserSourceTypeJar        = UserSourceType("Jar")
-	UserSourceTypeNetCoreZip = UserSourceType("NetCoreZip")
-	UserSourceTypeSource     = UserSourceType("Source")
+	TypeAzureFileVolume = Type("AzureFileVolume")
 )
 
 func init() {

@@ -79,12 +79,24 @@ func NewAgentPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:agentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:AgentPool"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice:agentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:agentPool"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource AgentPool
-	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20220501preview:agentPool", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20220501preview:AgentPool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +108,7 @@ func NewAgentPool(ctx *pulumi.Context,
 func GetAgentPool(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AgentPoolState, opts ...pulumi.ResourceOption) (*AgentPool, error) {
 	var resource AgentPool
-	err := ctx.ReadResource("azure-native:hybridcontainerservice/v20220501preview:agentPool", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:hybridcontainerservice/v20220501preview:AgentPool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

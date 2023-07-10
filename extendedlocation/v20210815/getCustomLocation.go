@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the customLocation with a specified resource group and name.
-//
-// Deprecated: azure-native:extendedlocation/v20210815:CustomLocation is being removed in the next major version of this provider. Upgrade to at least azure-native:extendedlocation/v20210831preview:CustomLocation to guarantee forwards compatibility.
 func LookupCustomLocation(ctx *pulumi.Context, args *LookupCustomLocationArgs, opts ...pulumi.InvokeOption) (*LookupCustomLocationResult, error) {
 	var rv LookupCustomLocationResult
 	err := ctx.Invoke("azure-native:extendedlocation/v20210815:getCustomLocation", args, &rv, opts...)

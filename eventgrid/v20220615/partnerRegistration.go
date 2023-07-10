@@ -12,8 +12,6 @@ import (
 )
 
 // Information about a partner registration.
-//
-// Deprecated: azure-native:eventgrid/v20220615:PartnerRegistration is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerRegistration to guarantee forwards compatibility.
 type PartnerRegistration struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +57,9 @@ func NewPartnerRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:PartnerRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:PartnerRegistration"),
 		},
 	})
 	opts = append(opts, aliases)

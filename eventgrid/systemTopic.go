@@ -12,7 +12,7 @@ import (
 )
 
 // EventGrid System Topic.
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-06-01-preview
 type SystemTopic struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,9 @@ func NewSystemTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20220615:SystemTopic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:SystemTopic"),
 		},
 	})
 	opts = append(opts, aliases)

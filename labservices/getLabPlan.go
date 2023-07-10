@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the properties of a Lab Plan.
-// API Version: 2021-10-01-preview.
+// Azure REST API version: 2022-08-01.
 func LookupLabPlan(ctx *pulumi.Context, args *LookupLabPlanArgs, opts ...pulumi.InvokeOption) (*LookupLabPlanResult, error) {
 	var rv LookupLabPlanResult
 	err := ctx.Invoke("azure-native:labservices:getLabPlan", args, &rv, opts...)
@@ -40,6 +40,8 @@ type LookupLabPlanResult struct {
 	DefaultNetworkProfile *LabPlanNetworkProfileResponse `pulumi:"defaultNetworkProfile"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// Managed Identity Information
+	Identity *IdentityResponse `pulumi:"identity"`
 	// Base Url of the lms instance this lab plan can link lab rosters against.
 	LinkedLmsInstance *string `pulumi:"linkedLmsInstance"`
 	// The geo-location where the resource lives
@@ -135,6 +137,11 @@ func (o LookupLabPlanResultOutput) DefaultNetworkProfile() LabPlanNetworkProfile
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupLabPlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabPlanResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Managed Identity Information
+func (o LookupLabPlanResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupLabPlanResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Base Url of the lms instance this lab plan can link lab rosters against.

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a geo backup policy.
-// API Version: 2014-04-01.
+// Gets a Geo backup policy for the given database resource.
+// Azure REST API version: 2021-11-01.
 func LookupGeoBackupPolicy(ctx *pulumi.Context, args *LookupGeoBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGeoBackupPolicyResult, error) {
 	var rv LookupGeoBackupPolicyResult
 	err := ctx.Invoke("azure-native:sql:getGeoBackupPolicy", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupGeoBackupPolicy(ctx *pulumi.Context, args *LookupGeoBackupPolicyArgs,
 type LookupGeoBackupPolicyArgs struct {
 	// The name of the database.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the geo backup policy.
+	// The name of the Geo backup policy. This should always be 'Default'.
 	GeoBackupPolicyName string `pulumi:"geoBackupPolicyName"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -32,7 +32,7 @@ type LookupGeoBackupPolicyArgs struct {
 	ServerName string `pulumi:"serverName"`
 }
 
-// A database geo backup policy.
+// A Geo backup policy.
 type LookupGeoBackupPolicyResult struct {
 	// Resource ID.
 	Id string `pulumi:"id"`
@@ -66,7 +66,7 @@ func LookupGeoBackupPolicyOutput(ctx *pulumi.Context, args LookupGeoBackupPolicy
 type LookupGeoBackupPolicyOutputArgs struct {
 	// The name of the database.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the geo backup policy.
+	// The name of the Geo backup policy. This should always be 'Default'.
 	GeoBackupPolicyName pulumi.StringInput `pulumi:"geoBackupPolicyName"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -78,7 +78,7 @@ func (LookupGeoBackupPolicyOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupGeoBackupPolicyArgs)(nil)).Elem()
 }
 
-// A database geo backup policy.
+// A Geo backup policy.
 type LookupGeoBackupPolicyResultOutput struct{ *pulumi.OutputState }
 
 func (LookupGeoBackupPolicyResultOutput) ElementType() reflect.Type {

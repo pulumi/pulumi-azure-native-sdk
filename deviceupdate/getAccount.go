@@ -11,7 +11,7 @@ import (
 )
 
 // Returns account details for the given account name.
-// API Version: 2020-03-01-preview.
+// Azure REST API version: 2023-07-01.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:deviceupdate:getAccount", args, &rv, opts...)
@@ -30,6 +30,8 @@ type LookupAccountArgs struct {
 
 // Device Update account details.
 type LookupAccountResult struct {
+	// CMK encryption at rest properties
+	Encryption *EncryptionResponse `pulumi:"encryption"`
 	// API host name.
 	HostName string `pulumi:"hostName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -38,6 +40,8 @@ type LookupAccountResult struct {
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// Device Update account primary and failover location details
+	Locations []LocationResponse `pulumi:"locations"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections associated with the account.
@@ -46,6 +50,8 @@ type LookupAccountResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Whether or not public network access is allowed for the account.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Device Update Sku
+	Sku *string `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -63,6 +69,10 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
+	if tmp.Sku == nil {
+		sku_ := "Standard"
+		tmp.Sku = &sku_
 	}
 	return &tmp
 }
@@ -106,6 +116,11 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
+// CMK encryption at rest properties
+func (o LookupAccountResultOutput) Encryption() EncryptionResponsePtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *EncryptionResponse { return v.Encryption }).(EncryptionResponsePtrOutput)
+}
+
 // API host name.
 func (o LookupAccountResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.HostName }).(pulumi.StringOutput)
@@ -126,6 +141,11 @@ func (o LookupAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Device Update account primary and failover location details
+func (o LookupAccountResultOutput) Locations() LocationResponseArrayOutput {
+	return o.ApplyT(func(v LookupAccountResult) []LocationResponse { return v.Locations }).(LocationResponseArrayOutput)
+}
+
 // The name of the resource
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
@@ -144,6 +164,11 @@ func (o LookupAccountResultOutput) ProvisioningState() pulumi.StringOutput {
 // Whether or not public network access is allowed for the account.
 func (o LookupAccountResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Device Update Sku
+func (o LookupAccountResultOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

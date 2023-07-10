@@ -11,7 +11,7 @@ import (
 )
 
 // Get the specified scope assignment.
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func LookupScopeAssignment(ctx *pulumi.Context, args *LookupScopeAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupScopeAssignmentResult, error) {
 	var rv LookupScopeAssignmentResult
 	err := ctx.Invoke("azure-native:managednetwork:getScopeAssignment", args, &rv, opts...)

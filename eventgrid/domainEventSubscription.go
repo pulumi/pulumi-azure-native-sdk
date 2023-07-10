@@ -12,7 +12,7 @@ import (
 )
 
 // Event Subscription
-// API Version: 2021-10-15-preview.
+// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-10-15-preview
 type DomainEventSubscription struct {
 	pulumi.CustomResourceState
 
@@ -78,6 +78,9 @@ func NewDomainEventSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20220615:DomainEventSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:DomainEventSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

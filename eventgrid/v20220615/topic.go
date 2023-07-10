@@ -12,8 +12,6 @@ import (
 )
 
 // EventGrid Topic
-//
-// Deprecated: azure-native:eventgrid/v20220615:Topic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:Topic to guarantee forwards compatibility.
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -118,6 +116,9 @@ func NewTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211201:Topic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:Topic"),
 		},
 	})
 	opts = append(opts, aliases)

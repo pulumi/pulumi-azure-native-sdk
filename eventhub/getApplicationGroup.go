@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an ApplicationGroup for a Namespace.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2022-10-01-preview.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	var rv LookupApplicationGroupResult
 	err := ctx.Invoke("azure-native:eventhub:getApplicationGroup", args, &rv, opts...)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2022-01-01-preview.
 func LookupMetricsSource(ctx *pulumi.Context, args *LookupMetricsSourceArgs, opts ...pulumi.InvokeOption) (*LookupMetricsSourceResult, error) {
 	var rv LookupMetricsSourceResult
 	err := ctx.Invoke("azure-native:logz:getMetricsSource", args, &rv, opts...)

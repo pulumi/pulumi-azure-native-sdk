@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an integration account.
-// API Version: 2019-05-01.
+// Azure REST API version: 2019-05-01.
 func LookupIntegrationAccount(ctx *pulumi.Context, args *LookupIntegrationAccountArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountResult, error) {
 	var rv LookupIntegrationAccountResult
 	err := ctx.Invoke("azure-native:logic:getIntegrationAccount", args, &rv, opts...)

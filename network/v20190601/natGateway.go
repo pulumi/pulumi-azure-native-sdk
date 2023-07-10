@@ -123,6 +123,12 @@ func NewNatGateway(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NatGateway"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NatGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:NatGateway"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NatGateway

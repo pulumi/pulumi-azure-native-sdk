@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the specified Subscription entity.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Subscription is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Subscription to guarantee forwards compatibility.
 func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionResult, error) {
 	var rv LookupSubscriptionResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getSubscription", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the role assignment in the hub.
-// API Version: 2017-04-26.
+// Azure REST API version: 2017-04-26.
 func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentResult, error) {
 	var rv LookupRoleAssignmentResult
 	err := ctx.Invoke("azure-native:customerinsights:getRoleAssignment", args, &rv, opts...)

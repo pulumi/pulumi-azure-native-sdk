@@ -11,8 +11,6 @@ import (
 )
 
 // Get storage for a connectedEnvironment.
-//
-// Deprecated: azure-native:app/v20221001:ConnectedEnvironmentsStorage is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ConnectedEnvironmentsStorage to guarantee forwards compatibility.
 func LookupConnectedEnvironmentsStorage(ctx *pulumi.Context, args *LookupConnectedEnvironmentsStorageArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsStorageResult, error) {
 	var rv LookupConnectedEnvironmentsStorageResult
 	err := ctx.Invoke("azure-native:app/v20221001:getConnectedEnvironmentsStorage", args, &rv, opts...)

@@ -12,8 +12,6 @@ import (
 )
 
 // Gateway certificate authority details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:GatewayCertificateAuthority is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GatewayCertificateAuthority to guarantee forwards compatibility.
 type GatewayCertificateAuthority struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +63,12 @@ func NewGatewayCertificateAuthority(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:GatewayCertificateAuthority"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GatewayCertificateAuthority"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:GatewayCertificateAuthority"),
 		},
 	})
 	opts = append(opts, aliases)

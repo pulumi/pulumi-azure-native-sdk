@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:networkcloud:AgentPool":
+		r = &AgentPool{}
 	case "azure-native:networkcloud:BareMetalMachine":
 		r = &BareMetalMachine{}
 	case "azure-native:networkcloud:BareMetalMachineKeySet":
@@ -39,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefaultCniNetwork{}
 	case "azure-native:networkcloud:HybridAksCluster":
 		r = &HybridAksCluster{}
+	case "azure-native:networkcloud:KubernetesCluster":
+		r = &KubernetesCluster{}
 	case "azure-native:networkcloud:L2Network":
 		r = &L2Network{}
 	case "azure-native:networkcloud:L3Network":

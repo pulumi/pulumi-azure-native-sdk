@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Prediction in the hub.
-// API Version: 2017-04-26.
+// Azure REST API version: 2017-04-26.
 func LookupPrediction(ctx *pulumi.Context, args *LookupPredictionArgs, opts ...pulumi.InvokeOption) (*LookupPredictionResult, error) {
 	var rv LookupPredictionResult
 	err := ctx.Invoke("azure-native:customerinsights:getPrediction", args, &rv, opts...)

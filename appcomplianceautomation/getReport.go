@@ -11,7 +11,7 @@ import (
 )
 
 // Get the AppComplianceAutomation report and its properties.
-// API Version: 2022-11-16-preview.
+// Azure REST API version: 2022-11-16-preview.
 func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.InvokeOption) (*LookupReportResult, error) {
 	var rv LookupReportResult
 	err := ctx.Invoke("azure-native:appcomplianceautomation:getReport", args, &rv, opts...)

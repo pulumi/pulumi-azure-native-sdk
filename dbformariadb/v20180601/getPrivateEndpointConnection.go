@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a private endpoint connection.
-//
-// Deprecated: azure-native:dbformariadb/v20180601:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformariadb/v20180601privatepreview:PrivateEndpointConnection to guarantee forwards compatibility.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:dbformariadb/v20180601:getPrivateEndpointConnection", args, &rv, opts...)

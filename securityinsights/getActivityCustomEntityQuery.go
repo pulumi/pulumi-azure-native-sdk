@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an entity query.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-06-01-preview.
 func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCustomEntityQueryArgs, opts ...pulumi.InvokeOption) (*LookupActivityCustomEntityQueryResult, error) {
 	var rv LookupActivityCustomEntityQueryResult
 	err := ctx.Invoke("azure-native:securityinsights:getActivityCustomEntityQuery", args, &rv, opts...)
@@ -24,8 +24,6 @@ func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCu
 type LookupActivityCustomEntityQueryArgs struct {
 	// entity query ID
 	EntityQueryId string `pulumi:"entityQueryId"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the workspace.
@@ -46,7 +44,7 @@ type LookupActivityCustomEntityQueryResult struct {
 	EntitiesFilter map[string][]string `pulumi:"entitiesFilter"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Azure resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The type of the query's source entity
 	InputEntityType *string `pulumi:"inputEntityType"`
@@ -55,7 +53,7 @@ type LookupActivityCustomEntityQueryResult struct {
 	Kind string `pulumi:"kind"`
 	// The last time the activity was updated
 	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
-	// Azure resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The Activity query definitions
 	QueryDefinitions *ActivityEntityQueriesPropertiesResponseQueryDefinitions `pulumi:"queryDefinitions"`
@@ -67,7 +65,7 @@ type LookupActivityCustomEntityQueryResult struct {
 	TemplateName *string `pulumi:"templateName"`
 	// The entity query title
 	Title *string `pulumi:"title"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -87,8 +85,6 @@ func LookupActivityCustomEntityQueryOutput(ctx *pulumi.Context, args LookupActiv
 type LookupActivityCustomEntityQueryOutputArgs struct {
 	// entity query ID
 	EntityQueryId pulumi.StringInput `pulumi:"entityQueryId"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the workspace.
@@ -144,7 +140,7 @@ func (o LookupActivityCustomEntityQueryResultOutput) Etag() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupActivityCustomEntityQueryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -165,7 +161,7 @@ func (o LookupActivityCustomEntityQueryResultOutput) LastModifiedTimeUtc() pulum
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o LookupActivityCustomEntityQueryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -197,7 +193,7 @@ func (o LookupActivityCustomEntityQueryResultOutput) Title() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupActivityCustomEntityQueryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Type }).(pulumi.StringOutput)
 }

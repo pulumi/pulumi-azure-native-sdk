@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a database.
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-12-29.
 func LookupReadOnlyFollowingDatabase(ctx *pulumi.Context, args *LookupReadOnlyFollowingDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadOnlyFollowingDatabaseResult, error) {
 	var rv LookupReadOnlyFollowingDatabaseResult
 	err := ctx.Invoke("azure-native:kusto:getReadOnlyFollowingDatabase", args, &rv, opts...)
@@ -34,6 +34,8 @@ type LookupReadOnlyFollowingDatabaseArgs struct {
 type LookupReadOnlyFollowingDatabaseResult struct {
 	// The name of the attached database configuration cluster
 	AttachedDatabaseConfigurationName string `pulumi:"attachedDatabaseConfigurationName"`
+	// The origin of the following setup.
+	DatabaseShareOrigin string `pulumi:"databaseShareOrigin"`
 	// The time the data should be kept in cache for fast queries in TimeSpan.
 	HotCachePeriod *string `pulumi:"hotCachePeriod"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -47,6 +49,8 @@ type LookupReadOnlyFollowingDatabaseResult struct {
 	Location *string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// The original database name, before databaseNameOverride or databaseNamePrefix where applied.
+	OriginalDatabaseName string `pulumi:"originalDatabaseName"`
 	// The principals modification kind of the database
 	PrincipalsModificationKind string `pulumi:"principalsModificationKind"`
 	// The provisioned state of the resource.
@@ -55,6 +59,8 @@ type LookupReadOnlyFollowingDatabaseResult struct {
 	SoftDeletePeriod string `pulumi:"softDeletePeriod"`
 	// The statistics of the database.
 	Statistics DatabaseStatisticsResponse `pulumi:"statistics"`
+	// Table level sharing specifications
+	TableLevelSharingProperties TableLevelSharingPropertiesResponse `pulumi:"tableLevelSharingProperties"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -105,6 +111,11 @@ func (o LookupReadOnlyFollowingDatabaseResultOutput) AttachedDatabaseConfigurati
 	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.AttachedDatabaseConfigurationName }).(pulumi.StringOutput)
 }
 
+// The origin of the following setup.
+func (o LookupReadOnlyFollowingDatabaseResultOutput) DatabaseShareOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.DatabaseShareOrigin }).(pulumi.StringOutput)
+}
+
 // The time the data should be kept in cache for fast queries in TimeSpan.
 func (o LookupReadOnlyFollowingDatabaseResultOutput) HotCachePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) *string { return v.HotCachePeriod }).(pulumi.StringPtrOutput)
@@ -136,6 +147,11 @@ func (o LookupReadOnlyFollowingDatabaseResultOutput) Name() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The original database name, before databaseNameOverride or databaseNamePrefix where applied.
+func (o LookupReadOnlyFollowingDatabaseResultOutput) OriginalDatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.OriginalDatabaseName }).(pulumi.StringOutput)
+}
+
 // The principals modification kind of the database
 func (o LookupReadOnlyFollowingDatabaseResultOutput) PrincipalsModificationKind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.PrincipalsModificationKind }).(pulumi.StringOutput)
@@ -154,6 +170,13 @@ func (o LookupReadOnlyFollowingDatabaseResultOutput) SoftDeletePeriod() pulumi.S
 // The statistics of the database.
 func (o LookupReadOnlyFollowingDatabaseResultOutput) Statistics() DatabaseStatisticsResponseOutput {
 	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) DatabaseStatisticsResponse { return v.Statistics }).(DatabaseStatisticsResponseOutput)
+}
+
+// Table level sharing specifications
+func (o LookupReadOnlyFollowingDatabaseResultOutput) TableLevelSharingProperties() TableLevelSharingPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) TableLevelSharingPropertiesResponse {
+		return v.TableLevelSharingProperties
+	}).(TableLevelSharingPropertiesResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

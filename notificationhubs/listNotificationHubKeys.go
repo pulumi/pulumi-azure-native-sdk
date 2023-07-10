@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the Primary and Secondary ConnectionStrings to the NotificationHub
-// API Version: 2017-04-01.
+// Response for the POST request that returns Namespace or NotificationHub access keys (connection strings).
+// Azure REST API version: 2023-01-01-preview.
 func ListNotificationHubKeys(ctx *pulumi.Context, args *ListNotificationHubKeysArgs, opts ...pulumi.InvokeOption) (*ListNotificationHubKeysResult, error) {
 	var rv ListNotificationHubKeysResult
 	err := ctx.Invoke("azure-native:notificationhubs:listNotificationHubKeys", args, &rv, opts...)
@@ -22,28 +22,29 @@ func ListNotificationHubKeys(ctx *pulumi.Context, args *ListNotificationHubKeysA
 }
 
 type ListNotificationHubKeysArgs struct {
-	// The connection string of the NotificationHub for the specified authorizationRule.
+	// Authorization Rule Name
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
-	// The namespace name.
+	// Namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// The notification hub name.
+	// Notification Hub name
 	NotificationHubName string `pulumi:"notificationHubName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Namespace/NotificationHub Connection String
+// Response for the POST request that returns Namespace or NotificationHub access keys (connection strings).
 type ListNotificationHubKeysResult struct {
-	// KeyName of the created AuthorizationRule
-	KeyName *string `pulumi:"keyName"`
-	// PrimaryConnectionString of the AuthorizationRule.
-	PrimaryConnectionString *string `pulumi:"primaryConnectionString"`
-	// PrimaryKey of the created AuthorizationRule.
-	PrimaryKey *string `pulumi:"primaryKey"`
-	// SecondaryConnectionString of the created AuthorizationRule
-	SecondaryConnectionString *string `pulumi:"secondaryConnectionString"`
-	// SecondaryKey of the created AuthorizationRule
-	SecondaryKey *string `pulumi:"secondaryKey"`
+	// Gets or sets keyName of the created AuthorizationRule
+	KeyName string `pulumi:"keyName"`
+	// Gets or sets primaryConnectionString of the AuthorizationRule.
+	PrimaryConnectionString string `pulumi:"primaryConnectionString"`
+	// Gets or sets primaryKey of the created AuthorizationRule.
+	PrimaryKey string `pulumi:"primaryKey"`
+	// Gets or sets secondaryConnectionString of the created
+	// AuthorizationRule
+	SecondaryConnectionString string `pulumi:"secondaryConnectionString"`
+	// Gets or sets secondaryKey of the created AuthorizationRule
+	SecondaryKey string `pulumi:"secondaryKey"`
 }
 
 func ListNotificationHubKeysOutput(ctx *pulumi.Context, args ListNotificationHubKeysOutputArgs, opts ...pulumi.InvokeOption) ListNotificationHubKeysResultOutput {
@@ -60,13 +61,13 @@ func ListNotificationHubKeysOutput(ctx *pulumi.Context, args ListNotificationHub
 }
 
 type ListNotificationHubKeysOutputArgs struct {
-	// The connection string of the NotificationHub for the specified authorizationRule.
+	// Authorization Rule Name
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
-	// The namespace name.
+	// Namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// The notification hub name.
+	// Notification Hub name
 	NotificationHubName pulumi.StringInput `pulumi:"notificationHubName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,7 +75,7 @@ func (ListNotificationHubKeysOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListNotificationHubKeysArgs)(nil)).Elem()
 }
 
-// Namespace/NotificationHub Connection String
+// Response for the POST request that returns Namespace or NotificationHub access keys (connection strings).
 type ListNotificationHubKeysResultOutput struct{ *pulumi.OutputState }
 
 func (ListNotificationHubKeysResultOutput) ElementType() reflect.Type {
@@ -89,29 +90,30 @@ func (o ListNotificationHubKeysResultOutput) ToListNotificationHubKeysResultOutp
 	return o
 }
 
-// KeyName of the created AuthorizationRule
-func (o ListNotificationHubKeysResultOutput) KeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+// Gets or sets keyName of the created AuthorizationRule
+func (o ListNotificationHubKeysResultOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ListNotificationHubKeysResult) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// PrimaryConnectionString of the AuthorizationRule.
-func (o ListNotificationHubKeysResultOutput) PrimaryConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.PrimaryConnectionString }).(pulumi.StringPtrOutput)
+// Gets or sets primaryConnectionString of the AuthorizationRule.
+func (o ListNotificationHubKeysResultOutput) PrimaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v ListNotificationHubKeysResult) string { return v.PrimaryConnectionString }).(pulumi.StringOutput)
 }
 
-// PrimaryKey of the created AuthorizationRule.
-func (o ListNotificationHubKeysResultOutput) PrimaryKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
+// Gets or sets primaryKey of the created AuthorizationRule.
+func (o ListNotificationHubKeysResultOutput) PrimaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ListNotificationHubKeysResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
 
-// SecondaryConnectionString of the created AuthorizationRule
-func (o ListNotificationHubKeysResultOutput) SecondaryConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.SecondaryConnectionString }).(pulumi.StringPtrOutput)
+// Gets or sets secondaryConnectionString of the created
+// AuthorizationRule
+func (o ListNotificationHubKeysResultOutput) SecondaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v ListNotificationHubKeysResult) string { return v.SecondaryConnectionString }).(pulumi.StringOutput)
 }
 
-// SecondaryKey of the created AuthorizationRule
-func (o ListNotificationHubKeysResultOutput) SecondaryKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListNotificationHubKeysResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
+// Gets or sets secondaryKey of the created AuthorizationRule
+func (o ListNotificationHubKeysResultOutput) SecondaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ListNotificationHubKeysResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -16,6 +16,10 @@ type AdditionalLocation struct {
 	DisableGateway *bool `pulumi:"disableGateway"`
 	// The location name of the additional region among Azure Data center regions.
 	Location string `pulumi:"location"`
+	// Property can be used to enable NAT Gateway for this API Management service.
+	NatGatewayState *string `pulumi:"natGatewayState"`
+	// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the location. Supported only for Premium SKU being deployed in Virtual Network.
+	PublicIpAddressId *string `pulumi:"publicIpAddressId"`
 	// SKU properties of the API Management service.
 	Sku ApiManagementServiceSkuProperties `pulumi:"sku"`
 	// Virtual network configuration for the location.
@@ -33,6 +37,10 @@ func (val *AdditionalLocation) Defaults() *AdditionalLocation {
 	if tmp.DisableGateway == nil {
 		disableGateway_ := false
 		tmp.DisableGateway = &disableGateway_
+	}
+	if tmp.NatGatewayState == nil {
+		natGatewayState_ := "Disabled"
+		tmp.NatGatewayState = &natGatewayState_
 	}
 	return &tmp
 }
@@ -54,6 +62,10 @@ type AdditionalLocationArgs struct {
 	DisableGateway pulumi.BoolPtrInput `pulumi:"disableGateway"`
 	// The location name of the additional region among Azure Data center regions.
 	Location pulumi.StringInput `pulumi:"location"`
+	// Property can be used to enable NAT Gateway for this API Management service.
+	NatGatewayState pulumi.StringPtrInput `pulumi:"natGatewayState"`
+	// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the location. Supported only for Premium SKU being deployed in Virtual Network.
+	PublicIpAddressId pulumi.StringPtrInput `pulumi:"publicIpAddressId"`
 	// SKU properties of the API Management service.
 	Sku ApiManagementServiceSkuPropertiesInput `pulumi:"sku"`
 	// Virtual network configuration for the location.
@@ -70,6 +82,9 @@ func (val *AdditionalLocationArgs) Defaults() *AdditionalLocationArgs {
 	tmp := *val
 	if tmp.DisableGateway == nil {
 		tmp.DisableGateway = pulumi.BoolPtr(false)
+	}
+	if tmp.NatGatewayState == nil {
+		tmp.NatGatewayState = pulumi.StringPtr("Disabled")
 	}
 	return &tmp
 }
@@ -135,6 +150,16 @@ func (o AdditionalLocationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v AdditionalLocation) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Property can be used to enable NAT Gateway for this API Management service.
+func (o AdditionalLocationOutput) NatGatewayState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalLocation) *string { return v.NatGatewayState }).(pulumi.StringPtrOutput)
+}
+
+// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the location. Supported only for Premium SKU being deployed in Virtual Network.
+func (o AdditionalLocationOutput) PublicIpAddressId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalLocation) *string { return v.PublicIpAddressId }).(pulumi.StringPtrOutput)
+}
+
 // SKU properties of the API Management service.
 func (o AdditionalLocationOutput) Sku() ApiManagementServiceSkuPropertiesOutput {
 	return o.ApplyT(func(v AdditionalLocation) ApiManagementServiceSkuProperties { return v.Sku }).(ApiManagementServiceSkuPropertiesOutput)
@@ -178,10 +203,18 @@ type AdditionalLocationResponse struct {
 	GatewayRegionalUrl string `pulumi:"gatewayRegionalUrl"`
 	// The location name of the additional region among Azure Data center regions.
 	Location string `pulumi:"location"`
+	// Property can be used to enable NAT Gateway for this API Management service.
+	NatGatewayState *string `pulumi:"natGatewayState"`
+	// Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform.
+	OutboundPublicIPAddresses []string `pulumi:"outboundPublicIPAddresses"`
+	// Compute Platform Version running the service.
+	PlatformVersion string `pulumi:"platformVersion"`
 	// Private Static Load Balanced IP addresses of the API Management service which is deployed in an Internal Virtual Network in a particular additional location. Available only for Basic, Standard, Premium and Isolated SKU.
 	PrivateIPAddresses []string `pulumi:"privateIPAddresses"`
 	// Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard, Premium and Isolated SKU.
 	PublicIPAddresses []string `pulumi:"publicIPAddresses"`
+	// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the location. Supported only for Premium SKU being deployed in Virtual Network.
+	PublicIpAddressId *string `pulumi:"publicIpAddressId"`
 	// SKU properties of the API Management service.
 	Sku ApiManagementServiceSkuPropertiesResponse `pulumi:"sku"`
 	// Virtual network configuration for the location.
@@ -199,6 +232,10 @@ func (val *AdditionalLocationResponse) Defaults() *AdditionalLocationResponse {
 	if tmp.DisableGateway == nil {
 		disableGateway_ := false
 		tmp.DisableGateway = &disableGateway_
+	}
+	if tmp.NatGatewayState == nil {
+		natGatewayState_ := "Disabled"
+		tmp.NatGatewayState = &natGatewayState_
 	}
 	return &tmp
 }
@@ -233,6 +270,21 @@ func (o AdditionalLocationResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v AdditionalLocationResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Property can be used to enable NAT Gateway for this API Management service.
+func (o AdditionalLocationResponseOutput) NatGatewayState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalLocationResponse) *string { return v.NatGatewayState }).(pulumi.StringPtrOutput)
+}
+
+// Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform.
+func (o AdditionalLocationResponseOutput) OutboundPublicIPAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AdditionalLocationResponse) []string { return v.OutboundPublicIPAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Compute Platform Version running the service.
+func (o AdditionalLocationResponseOutput) PlatformVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v AdditionalLocationResponse) string { return v.PlatformVersion }).(pulumi.StringOutput)
+}
+
 // Private Static Load Balanced IP addresses of the API Management service which is deployed in an Internal Virtual Network in a particular additional location. Available only for Basic, Standard, Premium and Isolated SKU.
 func (o AdditionalLocationResponseOutput) PrivateIPAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AdditionalLocationResponse) []string { return v.PrivateIPAddresses }).(pulumi.StringArrayOutput)
@@ -241,6 +293,11 @@ func (o AdditionalLocationResponseOutput) PrivateIPAddresses() pulumi.StringArra
 // Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard, Premium and Isolated SKU.
 func (o AdditionalLocationResponseOutput) PublicIPAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AdditionalLocationResponse) []string { return v.PublicIPAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the location. Supported only for Premium SKU being deployed in Virtual Network.
+func (o AdditionalLocationResponseOutput) PublicIpAddressId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalLocationResponse) *string { return v.PublicIpAddressId }).(pulumi.StringPtrOutput)
 }
 
 // SKU properties of the API Management service.
@@ -278,6 +335,278 @@ func (o AdditionalLocationResponseArrayOutput) Index(i pulumi.IntInput) Addition
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdditionalLocationResponse {
 		return vs[0].([]AdditionalLocationResponse)[vs[1].(int)]
 	}).(AdditionalLocationResponseOutput)
+}
+
+// API contact information
+type ApiContactInformation struct {
+	// The email address of the contact person/organization. MUST be in the format of an email address
+	Email *string `pulumi:"email"`
+	// The identifying name of the contact person/organization
+	Name *string `pulumi:"name"`
+	// The URL pointing to the contact information. MUST be in the format of a URL
+	Url *string `pulumi:"url"`
+}
+
+// ApiContactInformationInput is an input type that accepts ApiContactInformationArgs and ApiContactInformationOutput values.
+// You can construct a concrete instance of `ApiContactInformationInput` via:
+//
+//	ApiContactInformationArgs{...}
+type ApiContactInformationInput interface {
+	pulumi.Input
+
+	ToApiContactInformationOutput() ApiContactInformationOutput
+	ToApiContactInformationOutputWithContext(context.Context) ApiContactInformationOutput
+}
+
+// API contact information
+type ApiContactInformationArgs struct {
+	// The email address of the contact person/organization. MUST be in the format of an email address
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The identifying name of the contact person/organization
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The URL pointing to the contact information. MUST be in the format of a URL
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ApiContactInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiContactInformation)(nil)).Elem()
+}
+
+func (i ApiContactInformationArgs) ToApiContactInformationOutput() ApiContactInformationOutput {
+	return i.ToApiContactInformationOutputWithContext(context.Background())
+}
+
+func (i ApiContactInformationArgs) ToApiContactInformationOutputWithContext(ctx context.Context) ApiContactInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiContactInformationOutput)
+}
+
+func (i ApiContactInformationArgs) ToApiContactInformationPtrOutput() ApiContactInformationPtrOutput {
+	return i.ToApiContactInformationPtrOutputWithContext(context.Background())
+}
+
+func (i ApiContactInformationArgs) ToApiContactInformationPtrOutputWithContext(ctx context.Context) ApiContactInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiContactInformationOutput).ToApiContactInformationPtrOutputWithContext(ctx)
+}
+
+// ApiContactInformationPtrInput is an input type that accepts ApiContactInformationArgs, ApiContactInformationPtr and ApiContactInformationPtrOutput values.
+// You can construct a concrete instance of `ApiContactInformationPtrInput` via:
+//
+//	        ApiContactInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiContactInformationPtrInput interface {
+	pulumi.Input
+
+	ToApiContactInformationPtrOutput() ApiContactInformationPtrOutput
+	ToApiContactInformationPtrOutputWithContext(context.Context) ApiContactInformationPtrOutput
+}
+
+type apiContactInformationPtrType ApiContactInformationArgs
+
+func ApiContactInformationPtr(v *ApiContactInformationArgs) ApiContactInformationPtrInput {
+	return (*apiContactInformationPtrType)(v)
+}
+
+func (*apiContactInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiContactInformation)(nil)).Elem()
+}
+
+func (i *apiContactInformationPtrType) ToApiContactInformationPtrOutput() ApiContactInformationPtrOutput {
+	return i.ToApiContactInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *apiContactInformationPtrType) ToApiContactInformationPtrOutputWithContext(ctx context.Context) ApiContactInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiContactInformationPtrOutput)
+}
+
+// API contact information
+type ApiContactInformationOutput struct{ *pulumi.OutputState }
+
+func (ApiContactInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiContactInformation)(nil)).Elem()
+}
+
+func (o ApiContactInformationOutput) ToApiContactInformationOutput() ApiContactInformationOutput {
+	return o
+}
+
+func (o ApiContactInformationOutput) ToApiContactInformationOutputWithContext(ctx context.Context) ApiContactInformationOutput {
+	return o
+}
+
+func (o ApiContactInformationOutput) ToApiContactInformationPtrOutput() ApiContactInformationPtrOutput {
+	return o.ToApiContactInformationPtrOutputWithContext(context.Background())
+}
+
+func (o ApiContactInformationOutput) ToApiContactInformationPtrOutputWithContext(ctx context.Context) ApiContactInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiContactInformation) *ApiContactInformation {
+		return &v
+	}).(ApiContactInformationPtrOutput)
+}
+
+// The email address of the contact person/organization. MUST be in the format of an email address
+func (o ApiContactInformationOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiContactInformation) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The identifying name of the contact person/organization
+func (o ApiContactInformationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiContactInformation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL pointing to the contact information. MUST be in the format of a URL
+func (o ApiContactInformationOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiContactInformation) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ApiContactInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiContactInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiContactInformation)(nil)).Elem()
+}
+
+func (o ApiContactInformationPtrOutput) ToApiContactInformationPtrOutput() ApiContactInformationPtrOutput {
+	return o
+}
+
+func (o ApiContactInformationPtrOutput) ToApiContactInformationPtrOutputWithContext(ctx context.Context) ApiContactInformationPtrOutput {
+	return o
+}
+
+func (o ApiContactInformationPtrOutput) Elem() ApiContactInformationOutput {
+	return o.ApplyT(func(v *ApiContactInformation) ApiContactInformation {
+		if v != nil {
+			return *v
+		}
+		var ret ApiContactInformation
+		return ret
+	}).(ApiContactInformationOutput)
+}
+
+// The email address of the contact person/organization. MUST be in the format of an email address
+func (o ApiContactInformationPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiContactInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identifying name of the contact person/organization
+func (o ApiContactInformationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiContactInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL pointing to the contact information. MUST be in the format of a URL
+func (o ApiContactInformationPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiContactInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// API contact information
+type ApiContactInformationResponse struct {
+	// The email address of the contact person/organization. MUST be in the format of an email address
+	Email *string `pulumi:"email"`
+	// The identifying name of the contact person/organization
+	Name *string `pulumi:"name"`
+	// The URL pointing to the contact information. MUST be in the format of a URL
+	Url *string `pulumi:"url"`
+}
+
+// API contact information
+type ApiContactInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiContactInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiContactInformationResponse)(nil)).Elem()
+}
+
+func (o ApiContactInformationResponseOutput) ToApiContactInformationResponseOutput() ApiContactInformationResponseOutput {
+	return o
+}
+
+func (o ApiContactInformationResponseOutput) ToApiContactInformationResponseOutputWithContext(ctx context.Context) ApiContactInformationResponseOutput {
+	return o
+}
+
+// The email address of the contact person/organization. MUST be in the format of an email address
+func (o ApiContactInformationResponseOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiContactInformationResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The identifying name of the contact person/organization
+func (o ApiContactInformationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiContactInformationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL pointing to the contact information. MUST be in the format of a URL
+func (o ApiContactInformationResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiContactInformationResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ApiContactInformationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiContactInformationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiContactInformationResponse)(nil)).Elem()
+}
+
+func (o ApiContactInformationResponsePtrOutput) ToApiContactInformationResponsePtrOutput() ApiContactInformationResponsePtrOutput {
+	return o
+}
+
+func (o ApiContactInformationResponsePtrOutput) ToApiContactInformationResponsePtrOutputWithContext(ctx context.Context) ApiContactInformationResponsePtrOutput {
+	return o
+}
+
+func (o ApiContactInformationResponsePtrOutput) Elem() ApiContactInformationResponseOutput {
+	return o.ApplyT(func(v *ApiContactInformationResponse) ApiContactInformationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiContactInformationResponse
+		return ret
+	}).(ApiContactInformationResponseOutput)
+}
+
+// The email address of the contact person/organization. MUST be in the format of an email address
+func (o ApiContactInformationResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiContactInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identifying name of the contact person/organization
+func (o ApiContactInformationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiContactInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL pointing to the contact information. MUST be in the format of a URL
+func (o ApiContactInformationResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiContactInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 // Criteria to limit import of WSDL to a subset of the document.
@@ -436,6 +765,242 @@ func (o ApiCreateOrUpdatePropertiesWsdlSelectorPtrOutput) WsdlServiceName() pulu
 			return nil
 		}
 		return v.WsdlServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// API license information
+type ApiLicenseInformation struct {
+	// The license name used for the API
+	Name *string `pulumi:"name"`
+	// A URL to the license used for the API. MUST be in the format of a URL
+	Url *string `pulumi:"url"`
+}
+
+// ApiLicenseInformationInput is an input type that accepts ApiLicenseInformationArgs and ApiLicenseInformationOutput values.
+// You can construct a concrete instance of `ApiLicenseInformationInput` via:
+//
+//	ApiLicenseInformationArgs{...}
+type ApiLicenseInformationInput interface {
+	pulumi.Input
+
+	ToApiLicenseInformationOutput() ApiLicenseInformationOutput
+	ToApiLicenseInformationOutputWithContext(context.Context) ApiLicenseInformationOutput
+}
+
+// API license information
+type ApiLicenseInformationArgs struct {
+	// The license name used for the API
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A URL to the license used for the API. MUST be in the format of a URL
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ApiLicenseInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiLicenseInformation)(nil)).Elem()
+}
+
+func (i ApiLicenseInformationArgs) ToApiLicenseInformationOutput() ApiLicenseInformationOutput {
+	return i.ToApiLicenseInformationOutputWithContext(context.Background())
+}
+
+func (i ApiLicenseInformationArgs) ToApiLicenseInformationOutputWithContext(ctx context.Context) ApiLicenseInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiLicenseInformationOutput)
+}
+
+func (i ApiLicenseInformationArgs) ToApiLicenseInformationPtrOutput() ApiLicenseInformationPtrOutput {
+	return i.ToApiLicenseInformationPtrOutputWithContext(context.Background())
+}
+
+func (i ApiLicenseInformationArgs) ToApiLicenseInformationPtrOutputWithContext(ctx context.Context) ApiLicenseInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiLicenseInformationOutput).ToApiLicenseInformationPtrOutputWithContext(ctx)
+}
+
+// ApiLicenseInformationPtrInput is an input type that accepts ApiLicenseInformationArgs, ApiLicenseInformationPtr and ApiLicenseInformationPtrOutput values.
+// You can construct a concrete instance of `ApiLicenseInformationPtrInput` via:
+//
+//	        ApiLicenseInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiLicenseInformationPtrInput interface {
+	pulumi.Input
+
+	ToApiLicenseInformationPtrOutput() ApiLicenseInformationPtrOutput
+	ToApiLicenseInformationPtrOutputWithContext(context.Context) ApiLicenseInformationPtrOutput
+}
+
+type apiLicenseInformationPtrType ApiLicenseInformationArgs
+
+func ApiLicenseInformationPtr(v *ApiLicenseInformationArgs) ApiLicenseInformationPtrInput {
+	return (*apiLicenseInformationPtrType)(v)
+}
+
+func (*apiLicenseInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiLicenseInformation)(nil)).Elem()
+}
+
+func (i *apiLicenseInformationPtrType) ToApiLicenseInformationPtrOutput() ApiLicenseInformationPtrOutput {
+	return i.ToApiLicenseInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *apiLicenseInformationPtrType) ToApiLicenseInformationPtrOutputWithContext(ctx context.Context) ApiLicenseInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiLicenseInformationPtrOutput)
+}
+
+// API license information
+type ApiLicenseInformationOutput struct{ *pulumi.OutputState }
+
+func (ApiLicenseInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiLicenseInformation)(nil)).Elem()
+}
+
+func (o ApiLicenseInformationOutput) ToApiLicenseInformationOutput() ApiLicenseInformationOutput {
+	return o
+}
+
+func (o ApiLicenseInformationOutput) ToApiLicenseInformationOutputWithContext(ctx context.Context) ApiLicenseInformationOutput {
+	return o
+}
+
+func (o ApiLicenseInformationOutput) ToApiLicenseInformationPtrOutput() ApiLicenseInformationPtrOutput {
+	return o.ToApiLicenseInformationPtrOutputWithContext(context.Background())
+}
+
+func (o ApiLicenseInformationOutput) ToApiLicenseInformationPtrOutputWithContext(ctx context.Context) ApiLicenseInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiLicenseInformation) *ApiLicenseInformation {
+		return &v
+	}).(ApiLicenseInformationPtrOutput)
+}
+
+// The license name used for the API
+func (o ApiLicenseInformationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiLicenseInformation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A URL to the license used for the API. MUST be in the format of a URL
+func (o ApiLicenseInformationOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiLicenseInformation) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ApiLicenseInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiLicenseInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiLicenseInformation)(nil)).Elem()
+}
+
+func (o ApiLicenseInformationPtrOutput) ToApiLicenseInformationPtrOutput() ApiLicenseInformationPtrOutput {
+	return o
+}
+
+func (o ApiLicenseInformationPtrOutput) ToApiLicenseInformationPtrOutputWithContext(ctx context.Context) ApiLicenseInformationPtrOutput {
+	return o
+}
+
+func (o ApiLicenseInformationPtrOutput) Elem() ApiLicenseInformationOutput {
+	return o.ApplyT(func(v *ApiLicenseInformation) ApiLicenseInformation {
+		if v != nil {
+			return *v
+		}
+		var ret ApiLicenseInformation
+		return ret
+	}).(ApiLicenseInformationOutput)
+}
+
+// The license name used for the API
+func (o ApiLicenseInformationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiLicenseInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// A URL to the license used for the API. MUST be in the format of a URL
+func (o ApiLicenseInformationPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiLicenseInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// API license information
+type ApiLicenseInformationResponse struct {
+	// The license name used for the API
+	Name *string `pulumi:"name"`
+	// A URL to the license used for the API. MUST be in the format of a URL
+	Url *string `pulumi:"url"`
+}
+
+// API license information
+type ApiLicenseInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiLicenseInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiLicenseInformationResponse)(nil)).Elem()
+}
+
+func (o ApiLicenseInformationResponseOutput) ToApiLicenseInformationResponseOutput() ApiLicenseInformationResponseOutput {
+	return o
+}
+
+func (o ApiLicenseInformationResponseOutput) ToApiLicenseInformationResponseOutputWithContext(ctx context.Context) ApiLicenseInformationResponseOutput {
+	return o
+}
+
+// The license name used for the API
+func (o ApiLicenseInformationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiLicenseInformationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A URL to the license used for the API. MUST be in the format of a URL
+func (o ApiLicenseInformationResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiLicenseInformationResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ApiLicenseInformationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiLicenseInformationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiLicenseInformationResponse)(nil)).Elem()
+}
+
+func (o ApiLicenseInformationResponsePtrOutput) ToApiLicenseInformationResponsePtrOutput() ApiLicenseInformationResponsePtrOutput {
+	return o
+}
+
+func (o ApiLicenseInformationResponsePtrOutput) ToApiLicenseInformationResponsePtrOutputWithContext(ctx context.Context) ApiLicenseInformationResponsePtrOutput {
+	return o
+}
+
+func (o ApiLicenseInformationResponsePtrOutput) Elem() ApiLicenseInformationResponseOutput {
+	return o.ApplyT(func(v *ApiLicenseInformationResponse) ApiLicenseInformationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiLicenseInformationResponse
+		return ret
+	}).(ApiLicenseInformationResponseOutput)
+}
+
+// The license name used for the API
+func (o ApiLicenseInformationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiLicenseInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// A URL to the license used for the API. MUST be in the format of a URL
+func (o ApiLicenseInformationResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiLicenseInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1415,12 +1980,73 @@ func (o ApiVersionSetContractDetailsResponsePtrOutput) VersioningScheme() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// A wrapper for an ARM resource id
+type ArmIdWrapperResponse struct {
+	Id string `pulumi:"id"`
+}
+
+// A wrapper for an ARM resource id
+type ArmIdWrapperResponseOutput struct{ *pulumi.OutputState }
+
+func (ArmIdWrapperResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArmIdWrapperResponse)(nil)).Elem()
+}
+
+func (o ArmIdWrapperResponseOutput) ToArmIdWrapperResponseOutput() ArmIdWrapperResponseOutput {
+	return o
+}
+
+func (o ArmIdWrapperResponseOutput) ToArmIdWrapperResponseOutputWithContext(ctx context.Context) ArmIdWrapperResponseOutput {
+	return o
+}
+
+func (o ArmIdWrapperResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ArmIdWrapperResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ArmIdWrapperResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ArmIdWrapperResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArmIdWrapperResponse)(nil)).Elem()
+}
+
+func (o ArmIdWrapperResponsePtrOutput) ToArmIdWrapperResponsePtrOutput() ArmIdWrapperResponsePtrOutput {
+	return o
+}
+
+func (o ArmIdWrapperResponsePtrOutput) ToArmIdWrapperResponsePtrOutputWithContext(ctx context.Context) ArmIdWrapperResponsePtrOutput {
+	return o
+}
+
+func (o ArmIdWrapperResponsePtrOutput) Elem() ArmIdWrapperResponseOutput {
+	return o.ApplyT(func(v *ArmIdWrapperResponse) ArmIdWrapperResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ArmIdWrapperResponse
+		return ret
+	}).(ArmIdWrapperResponseOutput)
+}
+
+func (o ArmIdWrapperResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArmIdWrapperResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // API Authentication Settings.
 type AuthenticationSettingsContract struct {
 	// OAuth2 Authentication settings
 	OAuth2 *OAuth2AuthenticationSettingsContract `pulumi:"oAuth2"`
+	// Collection of OAuth2 authentication settings included into this API.
+	OAuth2AuthenticationSettings []OAuth2AuthenticationSettingsContract `pulumi:"oAuth2AuthenticationSettings"`
 	// OpenID Connect Authentication Settings
 	Openid *OpenIdAuthenticationSettingsContract `pulumi:"openid"`
+	// Collection of Open ID Connect authentication settings included into this API.
+	OpenidAuthenticationSettings []OpenIdAuthenticationSettingsContract `pulumi:"openidAuthenticationSettings"`
 }
 
 // AuthenticationSettingsContractInput is an input type that accepts AuthenticationSettingsContractArgs and AuthenticationSettingsContractOutput values.
@@ -1438,8 +2064,12 @@ type AuthenticationSettingsContractInput interface {
 type AuthenticationSettingsContractArgs struct {
 	// OAuth2 Authentication settings
 	OAuth2 OAuth2AuthenticationSettingsContractPtrInput `pulumi:"oAuth2"`
+	// Collection of OAuth2 authentication settings included into this API.
+	OAuth2AuthenticationSettings OAuth2AuthenticationSettingsContractArrayInput `pulumi:"oAuth2AuthenticationSettings"`
 	// OpenID Connect Authentication Settings
 	Openid OpenIdAuthenticationSettingsContractPtrInput `pulumi:"openid"`
+	// Collection of Open ID Connect authentication settings included into this API.
+	OpenidAuthenticationSettings OpenIdAuthenticationSettingsContractArrayInput `pulumi:"openidAuthenticationSettings"`
 }
 
 func (AuthenticationSettingsContractArgs) ElementType() reflect.Type {
@@ -1525,9 +2155,23 @@ func (o AuthenticationSettingsContractOutput) OAuth2() OAuth2AuthenticationSetti
 	return o.ApplyT(func(v AuthenticationSettingsContract) *OAuth2AuthenticationSettingsContract { return v.OAuth2 }).(OAuth2AuthenticationSettingsContractPtrOutput)
 }
 
+// Collection of OAuth2 authentication settings included into this API.
+func (o AuthenticationSettingsContractOutput) OAuth2AuthenticationSettings() OAuth2AuthenticationSettingsContractArrayOutput {
+	return o.ApplyT(func(v AuthenticationSettingsContract) []OAuth2AuthenticationSettingsContract {
+		return v.OAuth2AuthenticationSettings
+	}).(OAuth2AuthenticationSettingsContractArrayOutput)
+}
+
 // OpenID Connect Authentication Settings
 func (o AuthenticationSettingsContractOutput) Openid() OpenIdAuthenticationSettingsContractPtrOutput {
 	return o.ApplyT(func(v AuthenticationSettingsContract) *OpenIdAuthenticationSettingsContract { return v.Openid }).(OpenIdAuthenticationSettingsContractPtrOutput)
+}
+
+// Collection of Open ID Connect authentication settings included into this API.
+func (o AuthenticationSettingsContractOutput) OpenidAuthenticationSettings() OpenIdAuthenticationSettingsContractArrayOutput {
+	return o.ApplyT(func(v AuthenticationSettingsContract) []OpenIdAuthenticationSettingsContract {
+		return v.OpenidAuthenticationSettings
+	}).(OpenIdAuthenticationSettingsContractArrayOutput)
 }
 
 type AuthenticationSettingsContractPtrOutput struct{ *pulumi.OutputState }
@@ -1564,6 +2208,16 @@ func (o AuthenticationSettingsContractPtrOutput) OAuth2() OAuth2AuthenticationSe
 	}).(OAuth2AuthenticationSettingsContractPtrOutput)
 }
 
+// Collection of OAuth2 authentication settings included into this API.
+func (o AuthenticationSettingsContractPtrOutput) OAuth2AuthenticationSettings() OAuth2AuthenticationSettingsContractArrayOutput {
+	return o.ApplyT(func(v *AuthenticationSettingsContract) []OAuth2AuthenticationSettingsContract {
+		if v == nil {
+			return nil
+		}
+		return v.OAuth2AuthenticationSettings
+	}).(OAuth2AuthenticationSettingsContractArrayOutput)
+}
+
 // OpenID Connect Authentication Settings
 func (o AuthenticationSettingsContractPtrOutput) Openid() OpenIdAuthenticationSettingsContractPtrOutput {
 	return o.ApplyT(func(v *AuthenticationSettingsContract) *OpenIdAuthenticationSettingsContract {
@@ -1574,12 +2228,26 @@ func (o AuthenticationSettingsContractPtrOutput) Openid() OpenIdAuthenticationSe
 	}).(OpenIdAuthenticationSettingsContractPtrOutput)
 }
 
+// Collection of Open ID Connect authentication settings included into this API.
+func (o AuthenticationSettingsContractPtrOutput) OpenidAuthenticationSettings() OpenIdAuthenticationSettingsContractArrayOutput {
+	return o.ApplyT(func(v *AuthenticationSettingsContract) []OpenIdAuthenticationSettingsContract {
+		if v == nil {
+			return nil
+		}
+		return v.OpenidAuthenticationSettings
+	}).(OpenIdAuthenticationSettingsContractArrayOutput)
+}
+
 // API Authentication Settings.
 type AuthenticationSettingsContractResponse struct {
 	// OAuth2 Authentication settings
 	OAuth2 *OAuth2AuthenticationSettingsContractResponse `pulumi:"oAuth2"`
+	// Collection of OAuth2 authentication settings included into this API.
+	OAuth2AuthenticationSettings []OAuth2AuthenticationSettingsContractResponse `pulumi:"oAuth2AuthenticationSettings"`
 	// OpenID Connect Authentication Settings
 	Openid *OpenIdAuthenticationSettingsContractResponse `pulumi:"openid"`
+	// Collection of Open ID Connect authentication settings included into this API.
+	OpenidAuthenticationSettings []OpenIdAuthenticationSettingsContractResponse `pulumi:"openidAuthenticationSettings"`
 }
 
 // API Authentication Settings.
@@ -1604,11 +2272,25 @@ func (o AuthenticationSettingsContractResponseOutput) OAuth2() OAuth2Authenticat
 	}).(OAuth2AuthenticationSettingsContractResponsePtrOutput)
 }
 
+// Collection of OAuth2 authentication settings included into this API.
+func (o AuthenticationSettingsContractResponseOutput) OAuth2AuthenticationSettings() OAuth2AuthenticationSettingsContractResponseArrayOutput {
+	return o.ApplyT(func(v AuthenticationSettingsContractResponse) []OAuth2AuthenticationSettingsContractResponse {
+		return v.OAuth2AuthenticationSettings
+	}).(OAuth2AuthenticationSettingsContractResponseArrayOutput)
+}
+
 // OpenID Connect Authentication Settings
 func (o AuthenticationSettingsContractResponseOutput) Openid() OpenIdAuthenticationSettingsContractResponsePtrOutput {
 	return o.ApplyT(func(v AuthenticationSettingsContractResponse) *OpenIdAuthenticationSettingsContractResponse {
 		return v.Openid
 	}).(OpenIdAuthenticationSettingsContractResponsePtrOutput)
+}
+
+// Collection of Open ID Connect authentication settings included into this API.
+func (o AuthenticationSettingsContractResponseOutput) OpenidAuthenticationSettings() OpenIdAuthenticationSettingsContractResponseArrayOutput {
+	return o.ApplyT(func(v AuthenticationSettingsContractResponse) []OpenIdAuthenticationSettingsContractResponse {
+		return v.OpenidAuthenticationSettings
+	}).(OpenIdAuthenticationSettingsContractResponseArrayOutput)
 }
 
 type AuthenticationSettingsContractResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1645,6 +2327,16 @@ func (o AuthenticationSettingsContractResponsePtrOutput) OAuth2() OAuth2Authenti
 	}).(OAuth2AuthenticationSettingsContractResponsePtrOutput)
 }
 
+// Collection of OAuth2 authentication settings included into this API.
+func (o AuthenticationSettingsContractResponsePtrOutput) OAuth2AuthenticationSettings() OAuth2AuthenticationSettingsContractResponseArrayOutput {
+	return o.ApplyT(func(v *AuthenticationSettingsContractResponse) []OAuth2AuthenticationSettingsContractResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OAuth2AuthenticationSettings
+	}).(OAuth2AuthenticationSettingsContractResponseArrayOutput)
+}
+
 // OpenID Connect Authentication Settings
 func (o AuthenticationSettingsContractResponsePtrOutput) Openid() OpenIdAuthenticationSettingsContractResponsePtrOutput {
 	return o.ApplyT(func(v *AuthenticationSettingsContractResponse) *OpenIdAuthenticationSettingsContractResponse {
@@ -1653,6 +2345,728 @@ func (o AuthenticationSettingsContractResponsePtrOutput) Openid() OpenIdAuthenti
 		}
 		return v.Openid
 	}).(OpenIdAuthenticationSettingsContractResponsePtrOutput)
+}
+
+// Collection of Open ID Connect authentication settings included into this API.
+func (o AuthenticationSettingsContractResponsePtrOutput) OpenidAuthenticationSettings() OpenIdAuthenticationSettingsContractResponseArrayOutput {
+	return o.ApplyT(func(v *AuthenticationSettingsContractResponse) []OpenIdAuthenticationSettingsContractResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OpenidAuthenticationSettings
+	}).(OpenIdAuthenticationSettingsContractResponseArrayOutput)
+}
+
+// Authorization error details.
+type AuthorizationError struct {
+	// Error code
+	Code *string `pulumi:"code"`
+	// Error message
+	Message *string `pulumi:"message"`
+}
+
+// AuthorizationErrorInput is an input type that accepts AuthorizationErrorArgs and AuthorizationErrorOutput values.
+// You can construct a concrete instance of `AuthorizationErrorInput` via:
+//
+//	AuthorizationErrorArgs{...}
+type AuthorizationErrorInput interface {
+	pulumi.Input
+
+	ToAuthorizationErrorOutput() AuthorizationErrorOutput
+	ToAuthorizationErrorOutputWithContext(context.Context) AuthorizationErrorOutput
+}
+
+// Authorization error details.
+type AuthorizationErrorArgs struct {
+	// Error code
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// Error message
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AuthorizationErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationError)(nil)).Elem()
+}
+
+func (i AuthorizationErrorArgs) ToAuthorizationErrorOutput() AuthorizationErrorOutput {
+	return i.ToAuthorizationErrorOutputWithContext(context.Background())
+}
+
+func (i AuthorizationErrorArgs) ToAuthorizationErrorOutputWithContext(ctx context.Context) AuthorizationErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationErrorOutput)
+}
+
+func (i AuthorizationErrorArgs) ToAuthorizationErrorPtrOutput() AuthorizationErrorPtrOutput {
+	return i.ToAuthorizationErrorPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorizationErrorArgs) ToAuthorizationErrorPtrOutputWithContext(ctx context.Context) AuthorizationErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationErrorOutput).ToAuthorizationErrorPtrOutputWithContext(ctx)
+}
+
+// AuthorizationErrorPtrInput is an input type that accepts AuthorizationErrorArgs, AuthorizationErrorPtr and AuthorizationErrorPtrOutput values.
+// You can construct a concrete instance of `AuthorizationErrorPtrInput` via:
+//
+//	        AuthorizationErrorArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthorizationErrorPtrInput interface {
+	pulumi.Input
+
+	ToAuthorizationErrorPtrOutput() AuthorizationErrorPtrOutput
+	ToAuthorizationErrorPtrOutputWithContext(context.Context) AuthorizationErrorPtrOutput
+}
+
+type authorizationErrorPtrType AuthorizationErrorArgs
+
+func AuthorizationErrorPtr(v *AuthorizationErrorArgs) AuthorizationErrorPtrInput {
+	return (*authorizationErrorPtrType)(v)
+}
+
+func (*authorizationErrorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationError)(nil)).Elem()
+}
+
+func (i *authorizationErrorPtrType) ToAuthorizationErrorPtrOutput() AuthorizationErrorPtrOutput {
+	return i.ToAuthorizationErrorPtrOutputWithContext(context.Background())
+}
+
+func (i *authorizationErrorPtrType) ToAuthorizationErrorPtrOutputWithContext(ctx context.Context) AuthorizationErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationErrorPtrOutput)
+}
+
+// Authorization error details.
+type AuthorizationErrorOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationError)(nil)).Elem()
+}
+
+func (o AuthorizationErrorOutput) ToAuthorizationErrorOutput() AuthorizationErrorOutput {
+	return o
+}
+
+func (o AuthorizationErrorOutput) ToAuthorizationErrorOutputWithContext(ctx context.Context) AuthorizationErrorOutput {
+	return o
+}
+
+func (o AuthorizationErrorOutput) ToAuthorizationErrorPtrOutput() AuthorizationErrorPtrOutput {
+	return o.ToAuthorizationErrorPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizationErrorOutput) ToAuthorizationErrorPtrOutputWithContext(ctx context.Context) AuthorizationErrorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizationError) *AuthorizationError {
+		return &v
+	}).(AuthorizationErrorPtrOutput)
+}
+
+// Error code
+func (o AuthorizationErrorOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizationError) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Error message
+func (o AuthorizationErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizationError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AuthorizationErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationError)(nil)).Elem()
+}
+
+func (o AuthorizationErrorPtrOutput) ToAuthorizationErrorPtrOutput() AuthorizationErrorPtrOutput {
+	return o
+}
+
+func (o AuthorizationErrorPtrOutput) ToAuthorizationErrorPtrOutputWithContext(ctx context.Context) AuthorizationErrorPtrOutput {
+	return o
+}
+
+func (o AuthorizationErrorPtrOutput) Elem() AuthorizationErrorOutput {
+	return o.ApplyT(func(v *AuthorizationError) AuthorizationError {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationError
+		return ret
+	}).(AuthorizationErrorOutput)
+}
+
+// Error code
+func (o AuthorizationErrorPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorizationError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error message
+func (o AuthorizationErrorPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorizationError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authorization error details.
+type AuthorizationErrorResponse struct {
+	// Error code
+	Code *string `pulumi:"code"`
+	// Error message
+	Message *string `pulumi:"message"`
+}
+
+// Authorization error details.
+type AuthorizationErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationErrorResponse)(nil)).Elem()
+}
+
+func (o AuthorizationErrorResponseOutput) ToAuthorizationErrorResponseOutput() AuthorizationErrorResponseOutput {
+	return o
+}
+
+func (o AuthorizationErrorResponseOutput) ToAuthorizationErrorResponseOutputWithContext(ctx context.Context) AuthorizationErrorResponseOutput {
+	return o
+}
+
+// Error code
+func (o AuthorizationErrorResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizationErrorResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Error message
+func (o AuthorizationErrorResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizationErrorResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AuthorizationErrorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationErrorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationErrorResponse)(nil)).Elem()
+}
+
+func (o AuthorizationErrorResponsePtrOutput) ToAuthorizationErrorResponsePtrOutput() AuthorizationErrorResponsePtrOutput {
+	return o
+}
+
+func (o AuthorizationErrorResponsePtrOutput) ToAuthorizationErrorResponsePtrOutputWithContext(ctx context.Context) AuthorizationErrorResponsePtrOutput {
+	return o
+}
+
+func (o AuthorizationErrorResponsePtrOutput) Elem() AuthorizationErrorResponseOutput {
+	return o.ApplyT(func(v *AuthorizationErrorResponse) AuthorizationErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationErrorResponse
+		return ret
+	}).(AuthorizationErrorResponseOutput)
+}
+
+// Error code
+func (o AuthorizationErrorResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorizationErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error message
+func (o AuthorizationErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorizationErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authorization Provider oauth2 grant types settings
+type AuthorizationProviderOAuth2GrantTypes struct {
+	// OAuth2 authorization code grant parameters
+	AuthorizationCode map[string]string `pulumi:"authorizationCode"`
+	// OAuth2 client credential grant parameters
+	ClientCredentials map[string]string `pulumi:"clientCredentials"`
+}
+
+// AuthorizationProviderOAuth2GrantTypesInput is an input type that accepts AuthorizationProviderOAuth2GrantTypesArgs and AuthorizationProviderOAuth2GrantTypesOutput values.
+// You can construct a concrete instance of `AuthorizationProviderOAuth2GrantTypesInput` via:
+//
+//	AuthorizationProviderOAuth2GrantTypesArgs{...}
+type AuthorizationProviderOAuth2GrantTypesInput interface {
+	pulumi.Input
+
+	ToAuthorizationProviderOAuth2GrantTypesOutput() AuthorizationProviderOAuth2GrantTypesOutput
+	ToAuthorizationProviderOAuth2GrantTypesOutputWithContext(context.Context) AuthorizationProviderOAuth2GrantTypesOutput
+}
+
+// Authorization Provider oauth2 grant types settings
+type AuthorizationProviderOAuth2GrantTypesArgs struct {
+	// OAuth2 authorization code grant parameters
+	AuthorizationCode pulumi.StringMapInput `pulumi:"authorizationCode"`
+	// OAuth2 client credential grant parameters
+	ClientCredentials pulumi.StringMapInput `pulumi:"clientCredentials"`
+}
+
+func (AuthorizationProviderOAuth2GrantTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationProviderOAuth2GrantTypes)(nil)).Elem()
+}
+
+func (i AuthorizationProviderOAuth2GrantTypesArgs) ToAuthorizationProviderOAuth2GrantTypesOutput() AuthorizationProviderOAuth2GrantTypesOutput {
+	return i.ToAuthorizationProviderOAuth2GrantTypesOutputWithContext(context.Background())
+}
+
+func (i AuthorizationProviderOAuth2GrantTypesArgs) ToAuthorizationProviderOAuth2GrantTypesOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2GrantTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationProviderOAuth2GrantTypesOutput)
+}
+
+func (i AuthorizationProviderOAuth2GrantTypesArgs) ToAuthorizationProviderOAuth2GrantTypesPtrOutput() AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return i.ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorizationProviderOAuth2GrantTypesArgs) ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationProviderOAuth2GrantTypesOutput).ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(ctx)
+}
+
+// AuthorizationProviderOAuth2GrantTypesPtrInput is an input type that accepts AuthorizationProviderOAuth2GrantTypesArgs, AuthorizationProviderOAuth2GrantTypesPtr and AuthorizationProviderOAuth2GrantTypesPtrOutput values.
+// You can construct a concrete instance of `AuthorizationProviderOAuth2GrantTypesPtrInput` via:
+//
+//	        AuthorizationProviderOAuth2GrantTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthorizationProviderOAuth2GrantTypesPtrInput interface {
+	pulumi.Input
+
+	ToAuthorizationProviderOAuth2GrantTypesPtrOutput() AuthorizationProviderOAuth2GrantTypesPtrOutput
+	ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(context.Context) AuthorizationProviderOAuth2GrantTypesPtrOutput
+}
+
+type authorizationProviderOAuth2GrantTypesPtrType AuthorizationProviderOAuth2GrantTypesArgs
+
+func AuthorizationProviderOAuth2GrantTypesPtr(v *AuthorizationProviderOAuth2GrantTypesArgs) AuthorizationProviderOAuth2GrantTypesPtrInput {
+	return (*authorizationProviderOAuth2GrantTypesPtrType)(v)
+}
+
+func (*authorizationProviderOAuth2GrantTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationProviderOAuth2GrantTypes)(nil)).Elem()
+}
+
+func (i *authorizationProviderOAuth2GrantTypesPtrType) ToAuthorizationProviderOAuth2GrantTypesPtrOutput() AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return i.ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *authorizationProviderOAuth2GrantTypesPtrType) ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationProviderOAuth2GrantTypesPtrOutput)
+}
+
+// Authorization Provider oauth2 grant types settings
+type AuthorizationProviderOAuth2GrantTypesOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationProviderOAuth2GrantTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationProviderOAuth2GrantTypes)(nil)).Elem()
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesOutput) ToAuthorizationProviderOAuth2GrantTypesOutput() AuthorizationProviderOAuth2GrantTypesOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesOutput) ToAuthorizationProviderOAuth2GrantTypesOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2GrantTypesOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesOutput) ToAuthorizationProviderOAuth2GrantTypesPtrOutput() AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return o.ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesOutput) ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizationProviderOAuth2GrantTypes) *AuthorizationProviderOAuth2GrantTypes {
+		return &v
+	}).(AuthorizationProviderOAuth2GrantTypesPtrOutput)
+}
+
+// OAuth2 authorization code grant parameters
+func (o AuthorizationProviderOAuth2GrantTypesOutput) AuthorizationCode() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AuthorizationProviderOAuth2GrantTypes) map[string]string { return v.AuthorizationCode }).(pulumi.StringMapOutput)
+}
+
+// OAuth2 client credential grant parameters
+func (o AuthorizationProviderOAuth2GrantTypesOutput) ClientCredentials() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AuthorizationProviderOAuth2GrantTypes) map[string]string { return v.ClientCredentials }).(pulumi.StringMapOutput)
+}
+
+type AuthorizationProviderOAuth2GrantTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationProviderOAuth2GrantTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationProviderOAuth2GrantTypes)(nil)).Elem()
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesPtrOutput) ToAuthorizationProviderOAuth2GrantTypesPtrOutput() AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesPtrOutput) ToAuthorizationProviderOAuth2GrantTypesPtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesPtrOutput) Elem() AuthorizationProviderOAuth2GrantTypesOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2GrantTypes) AuthorizationProviderOAuth2GrantTypes {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationProviderOAuth2GrantTypes
+		return ret
+	}).(AuthorizationProviderOAuth2GrantTypesOutput)
+}
+
+// OAuth2 authorization code grant parameters
+func (o AuthorizationProviderOAuth2GrantTypesPtrOutput) AuthorizationCode() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2GrantTypes) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationCode
+	}).(pulumi.StringMapOutput)
+}
+
+// OAuth2 client credential grant parameters
+func (o AuthorizationProviderOAuth2GrantTypesPtrOutput) ClientCredentials() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2GrantTypes) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCredentials
+	}).(pulumi.StringMapOutput)
+}
+
+// Authorization Provider oauth2 grant types settings
+type AuthorizationProviderOAuth2GrantTypesResponse struct {
+	// OAuth2 authorization code grant parameters
+	AuthorizationCode map[string]string `pulumi:"authorizationCode"`
+	// OAuth2 client credential grant parameters
+	ClientCredentials map[string]string `pulumi:"clientCredentials"`
+}
+
+// Authorization Provider oauth2 grant types settings
+type AuthorizationProviderOAuth2GrantTypesResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationProviderOAuth2GrantTypesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationProviderOAuth2GrantTypesResponse)(nil)).Elem()
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesResponseOutput) ToAuthorizationProviderOAuth2GrantTypesResponseOutput() AuthorizationProviderOAuth2GrantTypesResponseOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesResponseOutput) ToAuthorizationProviderOAuth2GrantTypesResponseOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2GrantTypesResponseOutput {
+	return o
+}
+
+// OAuth2 authorization code grant parameters
+func (o AuthorizationProviderOAuth2GrantTypesResponseOutput) AuthorizationCode() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AuthorizationProviderOAuth2GrantTypesResponse) map[string]string { return v.AuthorizationCode }).(pulumi.StringMapOutput)
+}
+
+// OAuth2 client credential grant parameters
+func (o AuthorizationProviderOAuth2GrantTypesResponseOutput) ClientCredentials() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AuthorizationProviderOAuth2GrantTypesResponse) map[string]string { return v.ClientCredentials }).(pulumi.StringMapOutput)
+}
+
+type AuthorizationProviderOAuth2GrantTypesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationProviderOAuth2GrantTypesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationProviderOAuth2GrantTypesResponse)(nil)).Elem()
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesResponsePtrOutput) ToAuthorizationProviderOAuth2GrantTypesResponsePtrOutput() AuthorizationProviderOAuth2GrantTypesResponsePtrOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesResponsePtrOutput) ToAuthorizationProviderOAuth2GrantTypesResponsePtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2GrantTypesResponsePtrOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2GrantTypesResponsePtrOutput) Elem() AuthorizationProviderOAuth2GrantTypesResponseOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2GrantTypesResponse) AuthorizationProviderOAuth2GrantTypesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationProviderOAuth2GrantTypesResponse
+		return ret
+	}).(AuthorizationProviderOAuth2GrantTypesResponseOutput)
+}
+
+// OAuth2 authorization code grant parameters
+func (o AuthorizationProviderOAuth2GrantTypesResponsePtrOutput) AuthorizationCode() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2GrantTypesResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationCode
+	}).(pulumi.StringMapOutput)
+}
+
+// OAuth2 client credential grant parameters
+func (o AuthorizationProviderOAuth2GrantTypesResponsePtrOutput) ClientCredentials() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2GrantTypesResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCredentials
+	}).(pulumi.StringMapOutput)
+}
+
+// OAuth2 settings details
+type AuthorizationProviderOAuth2Settings struct {
+	// OAuth2 settings
+	GrantTypes *AuthorizationProviderOAuth2GrantTypes `pulumi:"grantTypes"`
+	// Redirect URL to be set in the OAuth application.
+	RedirectUrl *string `pulumi:"redirectUrl"`
+}
+
+// AuthorizationProviderOAuth2SettingsInput is an input type that accepts AuthorizationProviderOAuth2SettingsArgs and AuthorizationProviderOAuth2SettingsOutput values.
+// You can construct a concrete instance of `AuthorizationProviderOAuth2SettingsInput` via:
+//
+//	AuthorizationProviderOAuth2SettingsArgs{...}
+type AuthorizationProviderOAuth2SettingsInput interface {
+	pulumi.Input
+
+	ToAuthorizationProviderOAuth2SettingsOutput() AuthorizationProviderOAuth2SettingsOutput
+	ToAuthorizationProviderOAuth2SettingsOutputWithContext(context.Context) AuthorizationProviderOAuth2SettingsOutput
+}
+
+// OAuth2 settings details
+type AuthorizationProviderOAuth2SettingsArgs struct {
+	// OAuth2 settings
+	GrantTypes AuthorizationProviderOAuth2GrantTypesPtrInput `pulumi:"grantTypes"`
+	// Redirect URL to be set in the OAuth application.
+	RedirectUrl pulumi.StringPtrInput `pulumi:"redirectUrl"`
+}
+
+func (AuthorizationProviderOAuth2SettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationProviderOAuth2Settings)(nil)).Elem()
+}
+
+func (i AuthorizationProviderOAuth2SettingsArgs) ToAuthorizationProviderOAuth2SettingsOutput() AuthorizationProviderOAuth2SettingsOutput {
+	return i.ToAuthorizationProviderOAuth2SettingsOutputWithContext(context.Background())
+}
+
+func (i AuthorizationProviderOAuth2SettingsArgs) ToAuthorizationProviderOAuth2SettingsOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2SettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationProviderOAuth2SettingsOutput)
+}
+
+func (i AuthorizationProviderOAuth2SettingsArgs) ToAuthorizationProviderOAuth2SettingsPtrOutput() AuthorizationProviderOAuth2SettingsPtrOutput {
+	return i.ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorizationProviderOAuth2SettingsArgs) ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2SettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationProviderOAuth2SettingsOutput).ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(ctx)
+}
+
+// AuthorizationProviderOAuth2SettingsPtrInput is an input type that accepts AuthorizationProviderOAuth2SettingsArgs, AuthorizationProviderOAuth2SettingsPtr and AuthorizationProviderOAuth2SettingsPtrOutput values.
+// You can construct a concrete instance of `AuthorizationProviderOAuth2SettingsPtrInput` via:
+//
+//	        AuthorizationProviderOAuth2SettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthorizationProviderOAuth2SettingsPtrInput interface {
+	pulumi.Input
+
+	ToAuthorizationProviderOAuth2SettingsPtrOutput() AuthorizationProviderOAuth2SettingsPtrOutput
+	ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(context.Context) AuthorizationProviderOAuth2SettingsPtrOutput
+}
+
+type authorizationProviderOAuth2SettingsPtrType AuthorizationProviderOAuth2SettingsArgs
+
+func AuthorizationProviderOAuth2SettingsPtr(v *AuthorizationProviderOAuth2SettingsArgs) AuthorizationProviderOAuth2SettingsPtrInput {
+	return (*authorizationProviderOAuth2SettingsPtrType)(v)
+}
+
+func (*authorizationProviderOAuth2SettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationProviderOAuth2Settings)(nil)).Elem()
+}
+
+func (i *authorizationProviderOAuth2SettingsPtrType) ToAuthorizationProviderOAuth2SettingsPtrOutput() AuthorizationProviderOAuth2SettingsPtrOutput {
+	return i.ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *authorizationProviderOAuth2SettingsPtrType) ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2SettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationProviderOAuth2SettingsPtrOutput)
+}
+
+// OAuth2 settings details
+type AuthorizationProviderOAuth2SettingsOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationProviderOAuth2SettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationProviderOAuth2Settings)(nil)).Elem()
+}
+
+func (o AuthorizationProviderOAuth2SettingsOutput) ToAuthorizationProviderOAuth2SettingsOutput() AuthorizationProviderOAuth2SettingsOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2SettingsOutput) ToAuthorizationProviderOAuth2SettingsOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2SettingsOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2SettingsOutput) ToAuthorizationProviderOAuth2SettingsPtrOutput() AuthorizationProviderOAuth2SettingsPtrOutput {
+	return o.ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizationProviderOAuth2SettingsOutput) ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2SettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizationProviderOAuth2Settings) *AuthorizationProviderOAuth2Settings {
+		return &v
+	}).(AuthorizationProviderOAuth2SettingsPtrOutput)
+}
+
+// OAuth2 settings
+func (o AuthorizationProviderOAuth2SettingsOutput) GrantTypes() AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return o.ApplyT(func(v AuthorizationProviderOAuth2Settings) *AuthorizationProviderOAuth2GrantTypes {
+		return v.GrantTypes
+	}).(AuthorizationProviderOAuth2GrantTypesPtrOutput)
+}
+
+// Redirect URL to be set in the OAuth application.
+func (o AuthorizationProviderOAuth2SettingsOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizationProviderOAuth2Settings) *string { return v.RedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+type AuthorizationProviderOAuth2SettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationProviderOAuth2SettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationProviderOAuth2Settings)(nil)).Elem()
+}
+
+func (o AuthorizationProviderOAuth2SettingsPtrOutput) ToAuthorizationProviderOAuth2SettingsPtrOutput() AuthorizationProviderOAuth2SettingsPtrOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2SettingsPtrOutput) ToAuthorizationProviderOAuth2SettingsPtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2SettingsPtrOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2SettingsPtrOutput) Elem() AuthorizationProviderOAuth2SettingsOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2Settings) AuthorizationProviderOAuth2Settings {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationProviderOAuth2Settings
+		return ret
+	}).(AuthorizationProviderOAuth2SettingsOutput)
+}
+
+// OAuth2 settings
+func (o AuthorizationProviderOAuth2SettingsPtrOutput) GrantTypes() AuthorizationProviderOAuth2GrantTypesPtrOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2Settings) *AuthorizationProviderOAuth2GrantTypes {
+		if v == nil {
+			return nil
+		}
+		return v.GrantTypes
+	}).(AuthorizationProviderOAuth2GrantTypesPtrOutput)
+}
+
+// Redirect URL to be set in the OAuth application.
+func (o AuthorizationProviderOAuth2SettingsPtrOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2Settings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth2 settings details
+type AuthorizationProviderOAuth2SettingsResponse struct {
+	// OAuth2 settings
+	GrantTypes *AuthorizationProviderOAuth2GrantTypesResponse `pulumi:"grantTypes"`
+	// Redirect URL to be set in the OAuth application.
+	RedirectUrl *string `pulumi:"redirectUrl"`
+}
+
+// OAuth2 settings details
+type AuthorizationProviderOAuth2SettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationProviderOAuth2SettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationProviderOAuth2SettingsResponse)(nil)).Elem()
+}
+
+func (o AuthorizationProviderOAuth2SettingsResponseOutput) ToAuthorizationProviderOAuth2SettingsResponseOutput() AuthorizationProviderOAuth2SettingsResponseOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2SettingsResponseOutput) ToAuthorizationProviderOAuth2SettingsResponseOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2SettingsResponseOutput {
+	return o
+}
+
+// OAuth2 settings
+func (o AuthorizationProviderOAuth2SettingsResponseOutput) GrantTypes() AuthorizationProviderOAuth2GrantTypesResponsePtrOutput {
+	return o.ApplyT(func(v AuthorizationProviderOAuth2SettingsResponse) *AuthorizationProviderOAuth2GrantTypesResponse {
+		return v.GrantTypes
+	}).(AuthorizationProviderOAuth2GrantTypesResponsePtrOutput)
+}
+
+// Redirect URL to be set in the OAuth application.
+func (o AuthorizationProviderOAuth2SettingsResponseOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizationProviderOAuth2SettingsResponse) *string { return v.RedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+type AuthorizationProviderOAuth2SettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationProviderOAuth2SettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationProviderOAuth2SettingsResponse)(nil)).Elem()
+}
+
+func (o AuthorizationProviderOAuth2SettingsResponsePtrOutput) ToAuthorizationProviderOAuth2SettingsResponsePtrOutput() AuthorizationProviderOAuth2SettingsResponsePtrOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2SettingsResponsePtrOutput) ToAuthorizationProviderOAuth2SettingsResponsePtrOutputWithContext(ctx context.Context) AuthorizationProviderOAuth2SettingsResponsePtrOutput {
+	return o
+}
+
+func (o AuthorizationProviderOAuth2SettingsResponsePtrOutput) Elem() AuthorizationProviderOAuth2SettingsResponseOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2SettingsResponse) AuthorizationProviderOAuth2SettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationProviderOAuth2SettingsResponse
+		return ret
+	}).(AuthorizationProviderOAuth2SettingsResponseOutput)
+}
+
+// OAuth2 settings
+func (o AuthorizationProviderOAuth2SettingsResponsePtrOutput) GrantTypes() AuthorizationProviderOAuth2GrantTypesResponsePtrOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2SettingsResponse) *AuthorizationProviderOAuth2GrantTypesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GrantTypes
+	}).(AuthorizationProviderOAuth2GrantTypesResponsePtrOutput)
+}
+
+// Redirect URL to be set in the OAuth application.
+func (o AuthorizationProviderOAuth2SettingsResponsePtrOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorizationProviderOAuth2SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // Authorization header information.
@@ -4655,7 +6069,11 @@ type HostnameConfiguration struct {
 	Certificate *CertificateInformation `pulumi:"certificate"`
 	// Certificate Password.
 	CertificatePassword *string `pulumi:"certificatePassword"`
-	// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to Proxy Hostname Type.
+	// Certificate Source.
+	CertificateSource *string `pulumi:"certificateSource"`
+	// Certificate Status.
+	CertificateStatus *string `pulumi:"certificateStatus"`
+	// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to gateway Hostname Type.
 	DefaultSslBinding *bool `pulumi:"defaultSslBinding"`
 	// Base64 Encoded certificate.
 	EncodedCertificate *string `pulumi:"encodedCertificate"`
@@ -4705,7 +6123,11 @@ type HostnameConfigurationArgs struct {
 	Certificate CertificateInformationPtrInput `pulumi:"certificate"`
 	// Certificate Password.
 	CertificatePassword pulumi.StringPtrInput `pulumi:"certificatePassword"`
-	// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to Proxy Hostname Type.
+	// Certificate Source.
+	CertificateSource pulumi.StringPtrInput `pulumi:"certificateSource"`
+	// Certificate Status.
+	CertificateStatus pulumi.StringPtrInput `pulumi:"certificateStatus"`
+	// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to gateway Hostname Type.
 	DefaultSslBinding pulumi.BoolPtrInput `pulumi:"defaultSslBinding"`
 	// Base64 Encoded certificate.
 	EncodedCertificate pulumi.StringPtrInput `pulumi:"encodedCertificate"`
@@ -4797,7 +6219,17 @@ func (o HostnameConfigurationOutput) CertificatePassword() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v HostnameConfiguration) *string { return v.CertificatePassword }).(pulumi.StringPtrOutput)
 }
 
-// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to Proxy Hostname Type.
+// Certificate Source.
+func (o HostnameConfigurationOutput) CertificateSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostnameConfiguration) *string { return v.CertificateSource }).(pulumi.StringPtrOutput)
+}
+
+// Certificate Status.
+func (o HostnameConfigurationOutput) CertificateStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostnameConfiguration) *string { return v.CertificateStatus }).(pulumi.StringPtrOutput)
+}
+
+// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to gateway Hostname Type.
 func (o HostnameConfigurationOutput) DefaultSslBinding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HostnameConfiguration) *bool { return v.DefaultSslBinding }).(pulumi.BoolPtrOutput)
 }
@@ -4858,7 +6290,11 @@ type HostnameConfigurationResponse struct {
 	Certificate *CertificateInformationResponse `pulumi:"certificate"`
 	// Certificate Password.
 	CertificatePassword *string `pulumi:"certificatePassword"`
-	// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to Proxy Hostname Type.
+	// Certificate Source.
+	CertificateSource *string `pulumi:"certificateSource"`
+	// Certificate Status.
+	CertificateStatus *string `pulumi:"certificateStatus"`
+	// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to gateway Hostname Type.
 	DefaultSslBinding *bool `pulumi:"defaultSslBinding"`
 	// Base64 Encoded certificate.
 	EncodedCertificate *string `pulumi:"encodedCertificate"`
@@ -4916,7 +6352,17 @@ func (o HostnameConfigurationResponseOutput) CertificatePassword() pulumi.String
 	return o.ApplyT(func(v HostnameConfigurationResponse) *string { return v.CertificatePassword }).(pulumi.StringPtrOutput)
 }
 
-// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to Proxy Hostname Type.
+// Certificate Source.
+func (o HostnameConfigurationResponseOutput) CertificateSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostnameConfigurationResponse) *string { return v.CertificateSource }).(pulumi.StringPtrOutput)
+}
+
+// Certificate Status.
+func (o HostnameConfigurationResponseOutput) CertificateStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostnameConfigurationResponse) *string { return v.CertificateStatus }).(pulumi.StringPtrOutput)
+}
+
+// Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to gateway Hostname Type.
 func (o HostnameConfigurationResponseOutput) DefaultSslBinding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HostnameConfigurationResponse) *bool { return v.DefaultSslBinding }).(pulumi.BoolPtrOutput)
 }
@@ -5247,7 +6693,7 @@ func (o HttpMessageDiagnosticResponsePtrOutput) Headers() pulumi.StringArrayOutp
 type KeyVaultContractCreateProperties struct {
 	// Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
 	IdentityClientId *string `pulumi:"identityClientId"`
-	// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi
+	// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
 	SecretIdentifier *string `pulumi:"secretIdentifier"`
 }
 
@@ -5266,7 +6712,7 @@ type KeyVaultContractCreatePropertiesInput interface {
 type KeyVaultContractCreatePropertiesArgs struct {
 	// Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
 	IdentityClientId pulumi.StringPtrInput `pulumi:"identityClientId"`
-	// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi
+	// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
 	SecretIdentifier pulumi.StringPtrInput `pulumi:"secretIdentifier"`
 }
 
@@ -5353,7 +6799,7 @@ func (o KeyVaultContractCreatePropertiesOutput) IdentityClientId() pulumi.String
 	return o.ApplyT(func(v KeyVaultContractCreateProperties) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
 }
 
-// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi
+// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
 func (o KeyVaultContractCreatePropertiesOutput) SecretIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultContractCreateProperties) *string { return v.SecretIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -5392,7 +6838,7 @@ func (o KeyVaultContractCreatePropertiesPtrOutput) IdentityClientId() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi
+// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
 func (o KeyVaultContractCreatePropertiesPtrOutput) SecretIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultContractCreateProperties) *string {
 		if v == nil {
@@ -5408,7 +6854,7 @@ type KeyVaultContractPropertiesResponse struct {
 	IdentityClientId *string `pulumi:"identityClientId"`
 	// Last time sync and refresh status of secret from key vault.
 	LastStatus *KeyVaultLastAccessStatusContractPropertiesResponse `pulumi:"lastStatus"`
-	// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi
+	// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
 	SecretIdentifier *string `pulumi:"secretIdentifier"`
 }
 
@@ -5439,7 +6885,7 @@ func (o KeyVaultContractPropertiesResponseOutput) LastStatus() KeyVaultLastAcces
 	}).(KeyVaultLastAccessStatusContractPropertiesResponsePtrOutput)
 }
 
-// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi
+// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
 func (o KeyVaultContractPropertiesResponseOutput) SecretIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultContractPropertiesResponse) *string { return v.SecretIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -5488,7 +6934,7 @@ func (o KeyVaultContractPropertiesResponsePtrOutput) LastStatus() KeyVaultLastAc
 	}).(KeyVaultLastAccessStatusContractPropertiesResponsePtrOutput)
 }
 
-// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi
+// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
 func (o KeyVaultContractPropertiesResponsePtrOutput) SecretIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultContractPropertiesResponse) *string {
 		if v == nil {
@@ -5672,6 +7118,31 @@ func (i *oauth2AuthenticationSettingsContractPtrType) ToOAuth2AuthenticationSett
 	return pulumi.ToOutputWithContext(ctx, i).(OAuth2AuthenticationSettingsContractPtrOutput)
 }
 
+// OAuth2AuthenticationSettingsContractArrayInput is an input type that accepts OAuth2AuthenticationSettingsContractArray and OAuth2AuthenticationSettingsContractArrayOutput values.
+// You can construct a concrete instance of `OAuth2AuthenticationSettingsContractArrayInput` via:
+//
+//	OAuth2AuthenticationSettingsContractArray{ OAuth2AuthenticationSettingsContractArgs{...} }
+type OAuth2AuthenticationSettingsContractArrayInput interface {
+	pulumi.Input
+
+	ToOAuth2AuthenticationSettingsContractArrayOutput() OAuth2AuthenticationSettingsContractArrayOutput
+	ToOAuth2AuthenticationSettingsContractArrayOutputWithContext(context.Context) OAuth2AuthenticationSettingsContractArrayOutput
+}
+
+type OAuth2AuthenticationSettingsContractArray []OAuth2AuthenticationSettingsContractInput
+
+func (OAuth2AuthenticationSettingsContractArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OAuth2AuthenticationSettingsContract)(nil)).Elem()
+}
+
+func (i OAuth2AuthenticationSettingsContractArray) ToOAuth2AuthenticationSettingsContractArrayOutput() OAuth2AuthenticationSettingsContractArrayOutput {
+	return i.ToOAuth2AuthenticationSettingsContractArrayOutputWithContext(context.Background())
+}
+
+func (i OAuth2AuthenticationSettingsContractArray) ToOAuth2AuthenticationSettingsContractArrayOutputWithContext(ctx context.Context) OAuth2AuthenticationSettingsContractArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OAuth2AuthenticationSettingsContractArrayOutput)
+}
+
 // API OAuth2 Authentication settings details.
 type OAuth2AuthenticationSettingsContractOutput struct{ *pulumi.OutputState }
 
@@ -5751,6 +7222,26 @@ func (o OAuth2AuthenticationSettingsContractPtrOutput) Scope() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type OAuth2AuthenticationSettingsContractArrayOutput struct{ *pulumi.OutputState }
+
+func (OAuth2AuthenticationSettingsContractArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OAuth2AuthenticationSettingsContract)(nil)).Elem()
+}
+
+func (o OAuth2AuthenticationSettingsContractArrayOutput) ToOAuth2AuthenticationSettingsContractArrayOutput() OAuth2AuthenticationSettingsContractArrayOutput {
+	return o
+}
+
+func (o OAuth2AuthenticationSettingsContractArrayOutput) ToOAuth2AuthenticationSettingsContractArrayOutputWithContext(ctx context.Context) OAuth2AuthenticationSettingsContractArrayOutput {
+	return o
+}
+
+func (o OAuth2AuthenticationSettingsContractArrayOutput) Index(i pulumi.IntInput) OAuth2AuthenticationSettingsContractOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OAuth2AuthenticationSettingsContract {
+		return vs[0].([]OAuth2AuthenticationSettingsContract)[vs[1].(int)]
+	}).(OAuth2AuthenticationSettingsContractOutput)
+}
+
 // API OAuth2 Authentication settings details.
 type OAuth2AuthenticationSettingsContractResponse struct {
 	// OAuth authorization server identifier.
@@ -5826,6 +7317,26 @@ func (o OAuth2AuthenticationSettingsContractResponsePtrOutput) Scope() pulumi.St
 		}
 		return v.Scope
 	}).(pulumi.StringPtrOutput)
+}
+
+type OAuth2AuthenticationSettingsContractResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OAuth2AuthenticationSettingsContractResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OAuth2AuthenticationSettingsContractResponse)(nil)).Elem()
+}
+
+func (o OAuth2AuthenticationSettingsContractResponseArrayOutput) ToOAuth2AuthenticationSettingsContractResponseArrayOutput() OAuth2AuthenticationSettingsContractResponseArrayOutput {
+	return o
+}
+
+func (o OAuth2AuthenticationSettingsContractResponseArrayOutput) ToOAuth2AuthenticationSettingsContractResponseArrayOutputWithContext(ctx context.Context) OAuth2AuthenticationSettingsContractResponseArrayOutput {
+	return o
+}
+
+func (o OAuth2AuthenticationSettingsContractResponseArrayOutput) Index(i pulumi.IntInput) OAuth2AuthenticationSettingsContractResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OAuth2AuthenticationSettingsContractResponse {
+		return vs[0].([]OAuth2AuthenticationSettingsContractResponse)[vs[1].(int)]
+	}).(OAuth2AuthenticationSettingsContractResponseOutput)
 }
 
 // API OAuth2 Authentication settings details.
@@ -5908,6 +7419,31 @@ func (i *openIdAuthenticationSettingsContractPtrType) ToOpenIdAuthenticationSett
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdAuthenticationSettingsContractPtrOutput)
 }
 
+// OpenIdAuthenticationSettingsContractArrayInput is an input type that accepts OpenIdAuthenticationSettingsContractArray and OpenIdAuthenticationSettingsContractArrayOutput values.
+// You can construct a concrete instance of `OpenIdAuthenticationSettingsContractArrayInput` via:
+//
+//	OpenIdAuthenticationSettingsContractArray{ OpenIdAuthenticationSettingsContractArgs{...} }
+type OpenIdAuthenticationSettingsContractArrayInput interface {
+	pulumi.Input
+
+	ToOpenIdAuthenticationSettingsContractArrayOutput() OpenIdAuthenticationSettingsContractArrayOutput
+	ToOpenIdAuthenticationSettingsContractArrayOutputWithContext(context.Context) OpenIdAuthenticationSettingsContractArrayOutput
+}
+
+type OpenIdAuthenticationSettingsContractArray []OpenIdAuthenticationSettingsContractInput
+
+func (OpenIdAuthenticationSettingsContractArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenIdAuthenticationSettingsContract)(nil)).Elem()
+}
+
+func (i OpenIdAuthenticationSettingsContractArray) ToOpenIdAuthenticationSettingsContractArrayOutput() OpenIdAuthenticationSettingsContractArrayOutput {
+	return i.ToOpenIdAuthenticationSettingsContractArrayOutputWithContext(context.Background())
+}
+
+func (i OpenIdAuthenticationSettingsContractArray) ToOpenIdAuthenticationSettingsContractArrayOutputWithContext(ctx context.Context) OpenIdAuthenticationSettingsContractArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenIdAuthenticationSettingsContractArrayOutput)
+}
+
 // API OAuth2 Authentication settings details.
 type OpenIdAuthenticationSettingsContractOutput struct{ *pulumi.OutputState }
 
@@ -5987,6 +7523,26 @@ func (o OpenIdAuthenticationSettingsContractPtrOutput) OpenidProviderId() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type OpenIdAuthenticationSettingsContractArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenIdAuthenticationSettingsContractArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenIdAuthenticationSettingsContract)(nil)).Elem()
+}
+
+func (o OpenIdAuthenticationSettingsContractArrayOutput) ToOpenIdAuthenticationSettingsContractArrayOutput() OpenIdAuthenticationSettingsContractArrayOutput {
+	return o
+}
+
+func (o OpenIdAuthenticationSettingsContractArrayOutput) ToOpenIdAuthenticationSettingsContractArrayOutputWithContext(ctx context.Context) OpenIdAuthenticationSettingsContractArrayOutput {
+	return o
+}
+
+func (o OpenIdAuthenticationSettingsContractArrayOutput) Index(i pulumi.IntInput) OpenIdAuthenticationSettingsContractOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenIdAuthenticationSettingsContract {
+		return vs[0].([]OpenIdAuthenticationSettingsContract)[vs[1].(int)]
+	}).(OpenIdAuthenticationSettingsContractOutput)
+}
+
 // API OAuth2 Authentication settings details.
 type OpenIdAuthenticationSettingsContractResponse struct {
 	// How to send token to the server.
@@ -6064,18 +7620,44 @@ func (o OpenIdAuthenticationSettingsContractResponsePtrOutput) OpenidProviderId(
 	}).(pulumi.StringPtrOutput)
 }
 
+type OpenIdAuthenticationSettingsContractResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenIdAuthenticationSettingsContractResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenIdAuthenticationSettingsContractResponse)(nil)).Elem()
+}
+
+func (o OpenIdAuthenticationSettingsContractResponseArrayOutput) ToOpenIdAuthenticationSettingsContractResponseArrayOutput() OpenIdAuthenticationSettingsContractResponseArrayOutput {
+	return o
+}
+
+func (o OpenIdAuthenticationSettingsContractResponseArrayOutput) ToOpenIdAuthenticationSettingsContractResponseArrayOutputWithContext(ctx context.Context) OpenIdAuthenticationSettingsContractResponseArrayOutput {
+	return o
+}
+
+func (o OpenIdAuthenticationSettingsContractResponseArrayOutput) Index(i pulumi.IntInput) OpenIdAuthenticationSettingsContractResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenIdAuthenticationSettingsContractResponse {
+		return vs[0].([]OpenIdAuthenticationSettingsContractResponse)[vs[1].(int)]
+	}).(OpenIdAuthenticationSettingsContractResponseOutput)
+}
+
 // Operation parameters details.
 type ParameterContract struct {
 	// Default parameter value.
 	DefaultValue *string `pulumi:"defaultValue"`
 	// Parameter description.
 	Description *string `pulumi:"description"`
+	// Exampled defined for the parameter.
+	Examples map[string]ParameterExampleContract `pulumi:"examples"`
 	// Parameter name.
 	Name string `pulumi:"name"`
 	// Specifies whether parameter is required or not.
 	Required *bool `pulumi:"required"`
+	// Schema identifier.
+	SchemaId *string `pulumi:"schemaId"`
 	// Parameter type.
 	Type string `pulumi:"type"`
+	// Type name defined by the schema.
+	TypeName *string `pulumi:"typeName"`
 	// Parameter values.
 	Values []string `pulumi:"values"`
 }
@@ -6097,12 +7679,18 @@ type ParameterContractArgs struct {
 	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
 	// Parameter description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Exampled defined for the parameter.
+	Examples ParameterExampleContractMapInput `pulumi:"examples"`
 	// Parameter name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Specifies whether parameter is required or not.
 	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// Schema identifier.
+	SchemaId pulumi.StringPtrInput `pulumi:"schemaId"`
 	// Parameter type.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Type name defined by the schema.
+	TypeName pulumi.StringPtrInput `pulumi:"typeName"`
 	// Parameter values.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -6169,6 +7757,11 @@ func (o ParameterContractOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParameterContract) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Exampled defined for the parameter.
+func (o ParameterContractOutput) Examples() ParameterExampleContractMapOutput {
+	return o.ApplyT(func(v ParameterContract) map[string]ParameterExampleContract { return v.Examples }).(ParameterExampleContractMapOutput)
+}
+
 // Parameter name.
 func (o ParameterContractOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterContract) string { return v.Name }).(pulumi.StringOutput)
@@ -6179,9 +7772,19 @@ func (o ParameterContractOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ParameterContract) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// Schema identifier.
+func (o ParameterContractOutput) SchemaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterContract) *string { return v.SchemaId }).(pulumi.StringPtrOutput)
+}
+
 // Parameter type.
 func (o ParameterContractOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterContract) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Type name defined by the schema.
+func (o ParameterContractOutput) TypeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterContract) *string { return v.TypeName }).(pulumi.StringPtrOutput)
 }
 
 // Parameter values.
@@ -6215,12 +7818,18 @@ type ParameterContractResponse struct {
 	DefaultValue *string `pulumi:"defaultValue"`
 	// Parameter description.
 	Description *string `pulumi:"description"`
+	// Exampled defined for the parameter.
+	Examples map[string]ParameterExampleContractResponse `pulumi:"examples"`
 	// Parameter name.
 	Name string `pulumi:"name"`
 	// Specifies whether parameter is required or not.
 	Required *bool `pulumi:"required"`
+	// Schema identifier.
+	SchemaId *string `pulumi:"schemaId"`
 	// Parameter type.
 	Type string `pulumi:"type"`
+	// Type name defined by the schema.
+	TypeName *string `pulumi:"typeName"`
 	// Parameter values.
 	Values []string `pulumi:"values"`
 }
@@ -6250,6 +7859,11 @@ func (o ParameterContractResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParameterContractResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Exampled defined for the parameter.
+func (o ParameterContractResponseOutput) Examples() ParameterExampleContractResponseMapOutput {
+	return o.ApplyT(func(v ParameterContractResponse) map[string]ParameterExampleContractResponse { return v.Examples }).(ParameterExampleContractResponseMapOutput)
+}
+
 // Parameter name.
 func (o ParameterContractResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterContractResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6260,9 +7874,19 @@ func (o ParameterContractResponseOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ParameterContractResponse) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// Schema identifier.
+func (o ParameterContractResponseOutput) SchemaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterContractResponse) *string { return v.SchemaId }).(pulumi.StringPtrOutput)
+}
+
 // Parameter type.
 func (o ParameterContractResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterContractResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Type name defined by the schema.
+func (o ParameterContractResponseOutput) TypeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterContractResponse) *string { return v.TypeName }).(pulumi.StringPtrOutput)
 }
 
 // Parameter values.
@@ -6288,6 +7912,200 @@ func (o ParameterContractResponseArrayOutput) Index(i pulumi.IntInput) Parameter
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterContractResponse {
 		return vs[0].([]ParameterContractResponse)[vs[1].(int)]
 	}).(ParameterContractResponseOutput)
+}
+
+// Parameter example.
+type ParameterExampleContract struct {
+	// Long description for the example
+	Description *string `pulumi:"description"`
+	// A URL that points to the literal example
+	ExternalValue *string `pulumi:"externalValue"`
+	// Short description for the example
+	Summary *string `pulumi:"summary"`
+	// Example value. May be a primitive value, or an object.
+	Value interface{} `pulumi:"value"`
+}
+
+// ParameterExampleContractInput is an input type that accepts ParameterExampleContractArgs and ParameterExampleContractOutput values.
+// You can construct a concrete instance of `ParameterExampleContractInput` via:
+//
+//	ParameterExampleContractArgs{...}
+type ParameterExampleContractInput interface {
+	pulumi.Input
+
+	ToParameterExampleContractOutput() ParameterExampleContractOutput
+	ToParameterExampleContractOutputWithContext(context.Context) ParameterExampleContractOutput
+}
+
+// Parameter example.
+type ParameterExampleContractArgs struct {
+	// Long description for the example
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A URL that points to the literal example
+	ExternalValue pulumi.StringPtrInput `pulumi:"externalValue"`
+	// Short description for the example
+	Summary pulumi.StringPtrInput `pulumi:"summary"`
+	// Example value. May be a primitive value, or an object.
+	Value pulumi.Input `pulumi:"value"`
+}
+
+func (ParameterExampleContractArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterExampleContract)(nil)).Elem()
+}
+
+func (i ParameterExampleContractArgs) ToParameterExampleContractOutput() ParameterExampleContractOutput {
+	return i.ToParameterExampleContractOutputWithContext(context.Background())
+}
+
+func (i ParameterExampleContractArgs) ToParameterExampleContractOutputWithContext(ctx context.Context) ParameterExampleContractOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterExampleContractOutput)
+}
+
+// ParameterExampleContractMapInput is an input type that accepts ParameterExampleContractMap and ParameterExampleContractMapOutput values.
+// You can construct a concrete instance of `ParameterExampleContractMapInput` via:
+//
+//	ParameterExampleContractMap{ "key": ParameterExampleContractArgs{...} }
+type ParameterExampleContractMapInput interface {
+	pulumi.Input
+
+	ToParameterExampleContractMapOutput() ParameterExampleContractMapOutput
+	ToParameterExampleContractMapOutputWithContext(context.Context) ParameterExampleContractMapOutput
+}
+
+type ParameterExampleContractMap map[string]ParameterExampleContractInput
+
+func (ParameterExampleContractMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ParameterExampleContract)(nil)).Elem()
+}
+
+func (i ParameterExampleContractMap) ToParameterExampleContractMapOutput() ParameterExampleContractMapOutput {
+	return i.ToParameterExampleContractMapOutputWithContext(context.Background())
+}
+
+func (i ParameterExampleContractMap) ToParameterExampleContractMapOutputWithContext(ctx context.Context) ParameterExampleContractMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterExampleContractMapOutput)
+}
+
+// Parameter example.
+type ParameterExampleContractOutput struct{ *pulumi.OutputState }
+
+func (ParameterExampleContractOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterExampleContract)(nil)).Elem()
+}
+
+func (o ParameterExampleContractOutput) ToParameterExampleContractOutput() ParameterExampleContractOutput {
+	return o
+}
+
+func (o ParameterExampleContractOutput) ToParameterExampleContractOutputWithContext(ctx context.Context) ParameterExampleContractOutput {
+	return o
+}
+
+// Long description for the example
+func (o ParameterExampleContractOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterExampleContract) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A URL that points to the literal example
+func (o ParameterExampleContractOutput) ExternalValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterExampleContract) *string { return v.ExternalValue }).(pulumi.StringPtrOutput)
+}
+
+// Short description for the example
+func (o ParameterExampleContractOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterExampleContract) *string { return v.Summary }).(pulumi.StringPtrOutput)
+}
+
+// Example value. May be a primitive value, or an object.
+func (o ParameterExampleContractOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v ParameterExampleContract) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type ParameterExampleContractMapOutput struct{ *pulumi.OutputState }
+
+func (ParameterExampleContractMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ParameterExampleContract)(nil)).Elem()
+}
+
+func (o ParameterExampleContractMapOutput) ToParameterExampleContractMapOutput() ParameterExampleContractMapOutput {
+	return o
+}
+
+func (o ParameterExampleContractMapOutput) ToParameterExampleContractMapOutputWithContext(ctx context.Context) ParameterExampleContractMapOutput {
+	return o
+}
+
+func (o ParameterExampleContractMapOutput) MapIndex(k pulumi.StringInput) ParameterExampleContractOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ParameterExampleContract {
+		return vs[0].(map[string]ParameterExampleContract)[vs[1].(string)]
+	}).(ParameterExampleContractOutput)
+}
+
+// Parameter example.
+type ParameterExampleContractResponse struct {
+	// Long description for the example
+	Description *string `pulumi:"description"`
+	// A URL that points to the literal example
+	ExternalValue *string `pulumi:"externalValue"`
+	// Short description for the example
+	Summary *string `pulumi:"summary"`
+	// Example value. May be a primitive value, or an object.
+	Value interface{} `pulumi:"value"`
+}
+
+// Parameter example.
+type ParameterExampleContractResponseOutput struct{ *pulumi.OutputState }
+
+func (ParameterExampleContractResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterExampleContractResponse)(nil)).Elem()
+}
+
+func (o ParameterExampleContractResponseOutput) ToParameterExampleContractResponseOutput() ParameterExampleContractResponseOutput {
+	return o
+}
+
+func (o ParameterExampleContractResponseOutput) ToParameterExampleContractResponseOutputWithContext(ctx context.Context) ParameterExampleContractResponseOutput {
+	return o
+}
+
+// Long description for the example
+func (o ParameterExampleContractResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterExampleContractResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A URL that points to the literal example
+func (o ParameterExampleContractResponseOutput) ExternalValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterExampleContractResponse) *string { return v.ExternalValue }).(pulumi.StringPtrOutput)
+}
+
+// Short description for the example
+func (o ParameterExampleContractResponseOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterExampleContractResponse) *string { return v.Summary }).(pulumi.StringPtrOutput)
+}
+
+// Example value. May be a primitive value, or an object.
+func (o ParameterExampleContractResponseOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v ParameterExampleContractResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type ParameterExampleContractResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ParameterExampleContractResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ParameterExampleContractResponse)(nil)).Elem()
+}
+
+func (o ParameterExampleContractResponseMapOutput) ToParameterExampleContractResponseMapOutput() ParameterExampleContractResponseMapOutput {
+	return o
+}
+
+func (o ParameterExampleContractResponseMapOutput) ToParameterExampleContractResponseMapOutputWithContext(ctx context.Context) ParameterExampleContractResponseMapOutput {
+	return o
+}
+
+func (o ParameterExampleContractResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterExampleContractResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ParameterExampleContractResponse {
+		return vs[0].(map[string]ParameterExampleContractResponse)[vs[1].(string)]
+	}).(ParameterExampleContractResponseOutput)
 }
 
 // Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
@@ -6946,14 +8764,233 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringP
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Remote Private Endpoint Connection resource.
+type RemotePrivateEndpointConnectionWrapper struct {
+	// Private Endpoint connection resource id
+	Id *string `pulumi:"id"`
+	// Private Endpoint Connection Name
+	Name *string `pulumi:"name"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	// Private Endpoint Connection Resource Type
+	Type *string `pulumi:"type"`
+}
+
+// RemotePrivateEndpointConnectionWrapperInput is an input type that accepts RemotePrivateEndpointConnectionWrapperArgs and RemotePrivateEndpointConnectionWrapperOutput values.
+// You can construct a concrete instance of `RemotePrivateEndpointConnectionWrapperInput` via:
+//
+//	RemotePrivateEndpointConnectionWrapperArgs{...}
+type RemotePrivateEndpointConnectionWrapperInput interface {
+	pulumi.Input
+
+	ToRemotePrivateEndpointConnectionWrapperOutput() RemotePrivateEndpointConnectionWrapperOutput
+	ToRemotePrivateEndpointConnectionWrapperOutputWithContext(context.Context) RemotePrivateEndpointConnectionWrapperOutput
+}
+
+// Remote Private Endpoint Connection resource.
+type RemotePrivateEndpointConnectionWrapperArgs struct {
+	// Private Endpoint connection resource id
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Private Endpoint Connection Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput `pulumi:"privateLinkServiceConnectionState"`
+	// Private Endpoint Connection Resource Type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RemotePrivateEndpointConnectionWrapperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemotePrivateEndpointConnectionWrapper)(nil)).Elem()
+}
+
+func (i RemotePrivateEndpointConnectionWrapperArgs) ToRemotePrivateEndpointConnectionWrapperOutput() RemotePrivateEndpointConnectionWrapperOutput {
+	return i.ToRemotePrivateEndpointConnectionWrapperOutputWithContext(context.Background())
+}
+
+func (i RemotePrivateEndpointConnectionWrapperArgs) ToRemotePrivateEndpointConnectionWrapperOutputWithContext(ctx context.Context) RemotePrivateEndpointConnectionWrapperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemotePrivateEndpointConnectionWrapperOutput)
+}
+
+// RemotePrivateEndpointConnectionWrapperArrayInput is an input type that accepts RemotePrivateEndpointConnectionWrapperArray and RemotePrivateEndpointConnectionWrapperArrayOutput values.
+// You can construct a concrete instance of `RemotePrivateEndpointConnectionWrapperArrayInput` via:
+//
+//	RemotePrivateEndpointConnectionWrapperArray{ RemotePrivateEndpointConnectionWrapperArgs{...} }
+type RemotePrivateEndpointConnectionWrapperArrayInput interface {
+	pulumi.Input
+
+	ToRemotePrivateEndpointConnectionWrapperArrayOutput() RemotePrivateEndpointConnectionWrapperArrayOutput
+	ToRemotePrivateEndpointConnectionWrapperArrayOutputWithContext(context.Context) RemotePrivateEndpointConnectionWrapperArrayOutput
+}
+
+type RemotePrivateEndpointConnectionWrapperArray []RemotePrivateEndpointConnectionWrapperInput
+
+func (RemotePrivateEndpointConnectionWrapperArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemotePrivateEndpointConnectionWrapper)(nil)).Elem()
+}
+
+func (i RemotePrivateEndpointConnectionWrapperArray) ToRemotePrivateEndpointConnectionWrapperArrayOutput() RemotePrivateEndpointConnectionWrapperArrayOutput {
+	return i.ToRemotePrivateEndpointConnectionWrapperArrayOutputWithContext(context.Background())
+}
+
+func (i RemotePrivateEndpointConnectionWrapperArray) ToRemotePrivateEndpointConnectionWrapperArrayOutputWithContext(ctx context.Context) RemotePrivateEndpointConnectionWrapperArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemotePrivateEndpointConnectionWrapperArrayOutput)
+}
+
+// Remote Private Endpoint Connection resource.
+type RemotePrivateEndpointConnectionWrapperOutput struct{ *pulumi.OutputState }
+
+func (RemotePrivateEndpointConnectionWrapperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemotePrivateEndpointConnectionWrapper)(nil)).Elem()
+}
+
+func (o RemotePrivateEndpointConnectionWrapperOutput) ToRemotePrivateEndpointConnectionWrapperOutput() RemotePrivateEndpointConnectionWrapperOutput {
+	return o
+}
+
+func (o RemotePrivateEndpointConnectionWrapperOutput) ToRemotePrivateEndpointConnectionWrapperOutputWithContext(ctx context.Context) RemotePrivateEndpointConnectionWrapperOutput {
+	return o
+}
+
+// Private Endpoint connection resource id
+func (o RemotePrivateEndpointConnectionWrapperOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapper) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint Connection Name
+func (o RemotePrivateEndpointConnectionWrapperOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapper) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o RemotePrivateEndpointConnectionWrapperOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapper) PrivateLinkServiceConnectionState {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateOutput)
+}
+
+// Private Endpoint Connection Resource Type
+func (o RemotePrivateEndpointConnectionWrapperOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapper) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RemotePrivateEndpointConnectionWrapperArrayOutput struct{ *pulumi.OutputState }
+
+func (RemotePrivateEndpointConnectionWrapperArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemotePrivateEndpointConnectionWrapper)(nil)).Elem()
+}
+
+func (o RemotePrivateEndpointConnectionWrapperArrayOutput) ToRemotePrivateEndpointConnectionWrapperArrayOutput() RemotePrivateEndpointConnectionWrapperArrayOutput {
+	return o
+}
+
+func (o RemotePrivateEndpointConnectionWrapperArrayOutput) ToRemotePrivateEndpointConnectionWrapperArrayOutputWithContext(ctx context.Context) RemotePrivateEndpointConnectionWrapperArrayOutput {
+	return o
+}
+
+func (o RemotePrivateEndpointConnectionWrapperArrayOutput) Index(i pulumi.IntInput) RemotePrivateEndpointConnectionWrapperOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemotePrivateEndpointConnectionWrapper {
+		return vs[0].([]RemotePrivateEndpointConnectionWrapper)[vs[1].(int)]
+	}).(RemotePrivateEndpointConnectionWrapperOutput)
+}
+
+// Remote Private Endpoint Connection resource.
+type RemotePrivateEndpointConnectionWrapperResponse struct {
+	// All the Group ids.
+	GroupIds []string `pulumi:"groupIds"`
+	// Private Endpoint connection resource id
+	Id *string `pulumi:"id"`
+	// Private Endpoint Connection Name
+	Name *string `pulumi:"name"`
+	// The resource of private end point.
+	PrivateEndpoint *ArmIdWrapperResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Private Endpoint Connection Resource Type
+	Type *string `pulumi:"type"`
+}
+
+// Remote Private Endpoint Connection resource.
+type RemotePrivateEndpointConnectionWrapperResponseOutput struct{ *pulumi.OutputState }
+
+func (RemotePrivateEndpointConnectionWrapperResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemotePrivateEndpointConnectionWrapperResponse)(nil)).Elem()
+}
+
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) ToRemotePrivateEndpointConnectionWrapperResponseOutput() RemotePrivateEndpointConnectionWrapperResponseOutput {
+	return o
+}
+
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) ToRemotePrivateEndpointConnectionWrapperResponseOutputWithContext(ctx context.Context) RemotePrivateEndpointConnectionWrapperResponseOutput {
+	return o
+}
+
+// All the Group ids.
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Private Endpoint connection resource id
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint Connection Name
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The resource of private end point.
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) PrivateEndpoint() ArmIdWrapperResponsePtrOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) *ArmIdWrapperResponse { return v.PrivateEndpoint }).(ArmIdWrapperResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Private Endpoint Connection Resource Type
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RemotePrivateEndpointConnectionWrapperResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RemotePrivateEndpointConnectionWrapperResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemotePrivateEndpointConnectionWrapperResponse)(nil)).Elem()
+}
+
+func (o RemotePrivateEndpointConnectionWrapperResponseArrayOutput) ToRemotePrivateEndpointConnectionWrapperResponseArrayOutput() RemotePrivateEndpointConnectionWrapperResponseArrayOutput {
+	return o
+}
+
+func (o RemotePrivateEndpointConnectionWrapperResponseArrayOutput) ToRemotePrivateEndpointConnectionWrapperResponseArrayOutputWithContext(ctx context.Context) RemotePrivateEndpointConnectionWrapperResponseArrayOutput {
+	return o
+}
+
+func (o RemotePrivateEndpointConnectionWrapperResponseArrayOutput) Index(i pulumi.IntInput) RemotePrivateEndpointConnectionWrapperResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemotePrivateEndpointConnectionWrapperResponse {
+		return vs[0].([]RemotePrivateEndpointConnectionWrapperResponse)[vs[1].(int)]
+	}).(RemotePrivateEndpointConnectionWrapperResponseOutput)
+}
+
 // Operation request/response representation details.
 type RepresentationContract struct {
 	// Specifies a registered or custom content type for this representation, e.g. application/xml.
 	ContentType string `pulumi:"contentType"`
+	// Exampled defined for the representation.
+	Examples map[string]ParameterExampleContract `pulumi:"examples"`
 	// Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
 	FormParameters []ParameterContract `pulumi:"formParameters"`
-	// An example of the representation.
-	Sample *string `pulumi:"sample"`
 	// Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
 	SchemaId *string `pulumi:"schemaId"`
 	// Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
@@ -6975,10 +9012,10 @@ type RepresentationContractInput interface {
 type RepresentationContractArgs struct {
 	// Specifies a registered or custom content type for this representation, e.g. application/xml.
 	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// Exampled defined for the representation.
+	Examples ParameterExampleContractMapInput `pulumi:"examples"`
 	// Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
 	FormParameters ParameterContractArrayInput `pulumi:"formParameters"`
-	// An example of the representation.
-	Sample pulumi.StringPtrInput `pulumi:"sample"`
 	// Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
 	SchemaId pulumi.StringPtrInput `pulumi:"schemaId"`
 	// Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
@@ -7042,14 +9079,14 @@ func (o RepresentationContractOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v RepresentationContract) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
+// Exampled defined for the representation.
+func (o RepresentationContractOutput) Examples() ParameterExampleContractMapOutput {
+	return o.ApplyT(func(v RepresentationContract) map[string]ParameterExampleContract { return v.Examples }).(ParameterExampleContractMapOutput)
+}
+
 // Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
 func (o RepresentationContractOutput) FormParameters() ParameterContractArrayOutput {
 	return o.ApplyT(func(v RepresentationContract) []ParameterContract { return v.FormParameters }).(ParameterContractArrayOutput)
-}
-
-// An example of the representation.
-func (o RepresentationContractOutput) Sample() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepresentationContract) *string { return v.Sample }).(pulumi.StringPtrOutput)
 }
 
 // Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
@@ -7086,10 +9123,10 @@ func (o RepresentationContractArrayOutput) Index(i pulumi.IntInput) Representati
 type RepresentationContractResponse struct {
 	// Specifies a registered or custom content type for this representation, e.g. application/xml.
 	ContentType string `pulumi:"contentType"`
+	// Exampled defined for the representation.
+	Examples map[string]ParameterExampleContractResponse `pulumi:"examples"`
 	// Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
 	FormParameters []ParameterContractResponse `pulumi:"formParameters"`
-	// An example of the representation.
-	Sample *string `pulumi:"sample"`
 	// Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
 	SchemaId *string `pulumi:"schemaId"`
 	// Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
@@ -7116,14 +9153,14 @@ func (o RepresentationContractResponseOutput) ContentType() pulumi.StringOutput 
 	return o.ApplyT(func(v RepresentationContractResponse) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
+// Exampled defined for the representation.
+func (o RepresentationContractResponseOutput) Examples() ParameterExampleContractResponseMapOutput {
+	return o.ApplyT(func(v RepresentationContractResponse) map[string]ParameterExampleContractResponse { return v.Examples }).(ParameterExampleContractResponseMapOutput)
+}
+
 // Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
 func (o RepresentationContractResponseOutput) FormParameters() ParameterContractResponseArrayOutput {
 	return o.ApplyT(func(v RepresentationContractResponse) []ParameterContractResponse { return v.FormParameters }).(ParameterContractResponseArrayOutput)
-}
-
-// An example of the representation.
-func (o RepresentationContractResponseOutput) Sample() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepresentationContractResponse) *string { return v.Sample }).(pulumi.StringPtrOutput)
 }
 
 // Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
@@ -8496,6 +10533,67 @@ func (o SubscriptionKeyParameterNamesContractResponsePtrOutput) Query() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 // OAuth acquire token request body parameter (www-url-form-encoded).
 type TokenBodyParameterContract struct {
 	// body parameter name.
@@ -9211,6 +11309,152 @@ func (o VirtualNetworkConfigurationResponsePtrOutput) Vnetid() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Wiki documentation details.
+type WikiDocumentationContract struct {
+	// Documentation Identifier
+	DocumentationId *string `pulumi:"documentationId"`
+}
+
+// WikiDocumentationContractInput is an input type that accepts WikiDocumentationContractArgs and WikiDocumentationContractOutput values.
+// You can construct a concrete instance of `WikiDocumentationContractInput` via:
+//
+//	WikiDocumentationContractArgs{...}
+type WikiDocumentationContractInput interface {
+	pulumi.Input
+
+	ToWikiDocumentationContractOutput() WikiDocumentationContractOutput
+	ToWikiDocumentationContractOutputWithContext(context.Context) WikiDocumentationContractOutput
+}
+
+// Wiki documentation details.
+type WikiDocumentationContractArgs struct {
+	// Documentation Identifier
+	DocumentationId pulumi.StringPtrInput `pulumi:"documentationId"`
+}
+
+func (WikiDocumentationContractArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WikiDocumentationContract)(nil)).Elem()
+}
+
+func (i WikiDocumentationContractArgs) ToWikiDocumentationContractOutput() WikiDocumentationContractOutput {
+	return i.ToWikiDocumentationContractOutputWithContext(context.Background())
+}
+
+func (i WikiDocumentationContractArgs) ToWikiDocumentationContractOutputWithContext(ctx context.Context) WikiDocumentationContractOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WikiDocumentationContractOutput)
+}
+
+// WikiDocumentationContractArrayInput is an input type that accepts WikiDocumentationContractArray and WikiDocumentationContractArrayOutput values.
+// You can construct a concrete instance of `WikiDocumentationContractArrayInput` via:
+//
+//	WikiDocumentationContractArray{ WikiDocumentationContractArgs{...} }
+type WikiDocumentationContractArrayInput interface {
+	pulumi.Input
+
+	ToWikiDocumentationContractArrayOutput() WikiDocumentationContractArrayOutput
+	ToWikiDocumentationContractArrayOutputWithContext(context.Context) WikiDocumentationContractArrayOutput
+}
+
+type WikiDocumentationContractArray []WikiDocumentationContractInput
+
+func (WikiDocumentationContractArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WikiDocumentationContract)(nil)).Elem()
+}
+
+func (i WikiDocumentationContractArray) ToWikiDocumentationContractArrayOutput() WikiDocumentationContractArrayOutput {
+	return i.ToWikiDocumentationContractArrayOutputWithContext(context.Background())
+}
+
+func (i WikiDocumentationContractArray) ToWikiDocumentationContractArrayOutputWithContext(ctx context.Context) WikiDocumentationContractArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WikiDocumentationContractArrayOutput)
+}
+
+// Wiki documentation details.
+type WikiDocumentationContractOutput struct{ *pulumi.OutputState }
+
+func (WikiDocumentationContractOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WikiDocumentationContract)(nil)).Elem()
+}
+
+func (o WikiDocumentationContractOutput) ToWikiDocumentationContractOutput() WikiDocumentationContractOutput {
+	return o
+}
+
+func (o WikiDocumentationContractOutput) ToWikiDocumentationContractOutputWithContext(ctx context.Context) WikiDocumentationContractOutput {
+	return o
+}
+
+// Documentation Identifier
+func (o WikiDocumentationContractOutput) DocumentationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WikiDocumentationContract) *string { return v.DocumentationId }).(pulumi.StringPtrOutput)
+}
+
+type WikiDocumentationContractArrayOutput struct{ *pulumi.OutputState }
+
+func (WikiDocumentationContractArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WikiDocumentationContract)(nil)).Elem()
+}
+
+func (o WikiDocumentationContractArrayOutput) ToWikiDocumentationContractArrayOutput() WikiDocumentationContractArrayOutput {
+	return o
+}
+
+func (o WikiDocumentationContractArrayOutput) ToWikiDocumentationContractArrayOutputWithContext(ctx context.Context) WikiDocumentationContractArrayOutput {
+	return o
+}
+
+func (o WikiDocumentationContractArrayOutput) Index(i pulumi.IntInput) WikiDocumentationContractOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WikiDocumentationContract {
+		return vs[0].([]WikiDocumentationContract)[vs[1].(int)]
+	}).(WikiDocumentationContractOutput)
+}
+
+// Wiki documentation details.
+type WikiDocumentationContractResponse struct {
+	// Documentation Identifier
+	DocumentationId *string `pulumi:"documentationId"`
+}
+
+// Wiki documentation details.
+type WikiDocumentationContractResponseOutput struct{ *pulumi.OutputState }
+
+func (WikiDocumentationContractResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WikiDocumentationContractResponse)(nil)).Elem()
+}
+
+func (o WikiDocumentationContractResponseOutput) ToWikiDocumentationContractResponseOutput() WikiDocumentationContractResponseOutput {
+	return o
+}
+
+func (o WikiDocumentationContractResponseOutput) ToWikiDocumentationContractResponseOutputWithContext(ctx context.Context) WikiDocumentationContractResponseOutput {
+	return o
+}
+
+// Documentation Identifier
+func (o WikiDocumentationContractResponseOutput) DocumentationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WikiDocumentationContractResponse) *string { return v.DocumentationId }).(pulumi.StringPtrOutput)
+}
+
+type WikiDocumentationContractResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WikiDocumentationContractResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WikiDocumentationContractResponse)(nil)).Elem()
+}
+
+func (o WikiDocumentationContractResponseArrayOutput) ToWikiDocumentationContractResponseArrayOutput() WikiDocumentationContractResponseArrayOutput {
+	return o
+}
+
+func (o WikiDocumentationContractResponseArrayOutput) ToWikiDocumentationContractResponseArrayOutputWithContext(ctx context.Context) WikiDocumentationContractResponseArrayOutput {
+	return o
+}
+
+func (o WikiDocumentationContractResponseArrayOutput) Index(i pulumi.IntInput) WikiDocumentationContractResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WikiDocumentationContractResponse {
+		return vs[0].([]WikiDocumentationContractResponse)[vs[1].(int)]
+	}).(WikiDocumentationContractResponseOutput)
+}
+
 // Properties of server X509Names.
 type X509CertificateName struct {
 	// Thumbprint for the Issuer of the Certificate.
@@ -9378,8 +11622,16 @@ func init() {
 	pulumi.RegisterOutputType(AdditionalLocationArrayOutput{})
 	pulumi.RegisterOutputType(AdditionalLocationResponseOutput{})
 	pulumi.RegisterOutputType(AdditionalLocationResponseArrayOutput{})
+	pulumi.RegisterOutputType(ApiContactInformationOutput{})
+	pulumi.RegisterOutputType(ApiContactInformationPtrOutput{})
+	pulumi.RegisterOutputType(ApiContactInformationResponseOutput{})
+	pulumi.RegisterOutputType(ApiContactInformationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ApiCreateOrUpdatePropertiesWsdlSelectorOutput{})
 	pulumi.RegisterOutputType(ApiCreateOrUpdatePropertiesWsdlSelectorPtrOutput{})
+	pulumi.RegisterOutputType(ApiLicenseInformationOutput{})
+	pulumi.RegisterOutputType(ApiLicenseInformationPtrOutput{})
+	pulumi.RegisterOutputType(ApiLicenseInformationResponseOutput{})
+	pulumi.RegisterOutputType(ApiLicenseInformationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ApiManagementServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ApiManagementServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ApiManagementServiceIdentityResponseOutput{})
@@ -9394,10 +11646,24 @@ func init() {
 	pulumi.RegisterOutputType(ApiVersionSetContractDetailsPtrOutput{})
 	pulumi.RegisterOutputType(ApiVersionSetContractDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ApiVersionSetContractDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ArmIdWrapperResponseOutput{})
+	pulumi.RegisterOutputType(ArmIdWrapperResponsePtrOutput{})
 	pulumi.RegisterOutputType(AuthenticationSettingsContractOutput{})
 	pulumi.RegisterOutputType(AuthenticationSettingsContractPtrOutput{})
 	pulumi.RegisterOutputType(AuthenticationSettingsContractResponseOutput{})
 	pulumi.RegisterOutputType(AuthenticationSettingsContractResponsePtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationErrorOutput{})
+	pulumi.RegisterOutputType(AuthorizationErrorPtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationErrorResponseOutput{})
+	pulumi.RegisterOutputType(AuthorizationErrorResponsePtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationProviderOAuth2GrantTypesOutput{})
+	pulumi.RegisterOutputType(AuthorizationProviderOAuth2GrantTypesPtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationProviderOAuth2GrantTypesResponseOutput{})
+	pulumi.RegisterOutputType(AuthorizationProviderOAuth2GrantTypesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationProviderOAuth2SettingsOutput{})
+	pulumi.RegisterOutputType(AuthorizationProviderOAuth2SettingsPtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationProviderOAuth2SettingsResponseOutput{})
+	pulumi.RegisterOutputType(AuthorizationProviderOAuth2SettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackendAuthorizationHeaderCredentialsOutput{})
 	pulumi.RegisterOutputType(BackendAuthorizationHeaderCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(BackendAuthorizationHeaderCredentialsResponseOutput{})
@@ -9463,16 +11729,24 @@ func init() {
 	pulumi.RegisterOutputType(KeyVaultLastAccessStatusContractPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractPtrOutput{})
+	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractArrayOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractResponseOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractResponsePtrOutput{})
+	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractResponseArrayOutput{})
 	pulumi.RegisterOutputType(OpenIdAuthenticationSettingsContractOutput{})
 	pulumi.RegisterOutputType(OpenIdAuthenticationSettingsContractPtrOutput{})
+	pulumi.RegisterOutputType(OpenIdAuthenticationSettingsContractArrayOutput{})
 	pulumi.RegisterOutputType(OpenIdAuthenticationSettingsContractResponseOutput{})
 	pulumi.RegisterOutputType(OpenIdAuthenticationSettingsContractResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenIdAuthenticationSettingsContractResponseArrayOutput{})
 	pulumi.RegisterOutputType(ParameterContractOutput{})
 	pulumi.RegisterOutputType(ParameterContractArrayOutput{})
 	pulumi.RegisterOutputType(ParameterContractResponseOutput{})
 	pulumi.RegisterOutputType(ParameterContractResponseArrayOutput{})
+	pulumi.RegisterOutputType(ParameterExampleContractOutput{})
+	pulumi.RegisterOutputType(ParameterExampleContractMapOutput{})
+	pulumi.RegisterOutputType(ParameterExampleContractResponseOutput{})
+	pulumi.RegisterOutputType(ParameterExampleContractResponseMapOutput{})
 	pulumi.RegisterOutputType(PipelineDiagnosticSettingsOutput{})
 	pulumi.RegisterOutputType(PipelineDiagnosticSettingsPtrOutput{})
 	pulumi.RegisterOutputType(PipelineDiagnosticSettingsResponseOutput{})
@@ -9484,6 +11758,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(RemotePrivateEndpointConnectionWrapperOutput{})
+	pulumi.RegisterOutputType(RemotePrivateEndpointConnectionWrapperArrayOutput{})
+	pulumi.RegisterOutputType(RemotePrivateEndpointConnectionWrapperResponseOutput{})
+	pulumi.RegisterOutputType(RemotePrivateEndpointConnectionWrapperResponseArrayOutput{})
 	pulumi.RegisterOutputType(RepresentationContractOutput{})
 	pulumi.RegisterOutputType(RepresentationContractArrayOutput{})
 	pulumi.RegisterOutputType(RepresentationContractResponseOutput{})
@@ -9510,6 +11788,7 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionKeyParameterNamesContractPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionKeyParameterNamesContractResponseOutput{})
 	pulumi.RegisterOutputType(SubscriptionKeyParameterNamesContractResponsePtrOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TokenBodyParameterContractOutput{})
 	pulumi.RegisterOutputType(TokenBodyParameterContractArrayOutput{})
 	pulumi.RegisterOutputType(TokenBodyParameterContractResponseOutput{})
@@ -9526,6 +11805,10 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworkConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(WikiDocumentationContractOutput{})
+	pulumi.RegisterOutputType(WikiDocumentationContractArrayOutput{})
+	pulumi.RegisterOutputType(WikiDocumentationContractResponseOutput{})
+	pulumi.RegisterOutputType(WikiDocumentationContractResponseArrayOutput{})
 	pulumi.RegisterOutputType(X509CertificateNameOutput{})
 	pulumi.RegisterOutputType(X509CertificateNameArrayOutput{})
 	pulumi.RegisterOutputType(X509CertificateNameResponseOutput{})

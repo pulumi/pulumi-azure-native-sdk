@@ -11,7 +11,7 @@ import (
 )
 
 // List the build arguments for a step including the secret arguments.
-// API Version: 2018-02-01-preview.
+// Azure REST API version: 2018-02-01-preview.
 func ListBuildStepBuildArguments(ctx *pulumi.Context, args *ListBuildStepBuildArgumentsArgs, opts ...pulumi.InvokeOption) (*ListBuildStepBuildArgumentsResult, error) {
 	var rv ListBuildStepBuildArgumentsResult
 	err := ctx.Invoke("azure-native:containerregistry:listBuildStepBuildArguments", args, &rv, opts...)

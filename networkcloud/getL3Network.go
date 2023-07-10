@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of the provided layer 3 (L3) network.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupL3Network(ctx *pulumi.Context, args *LookupL3NetworkArgs, opts ...pulumi.InvokeOption) (*LookupL3NetworkResult, error) {
 	var rv LookupL3NetworkResult
 	err := ctx.Invoke("azure-native:networkcloud:getL3Network", args, &rv, opts...)
@@ -29,6 +29,8 @@ type LookupL3NetworkArgs struct {
 }
 
 type LookupL3NetworkResult struct {
+	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+	AssociatedResourceIds []string `pulumi:"associatedResourceIds"`
 	// The resource ID of the Network Cloud cluster this L3 network is associated with.
 	ClusterId string `pulumi:"clusterId"`
 	// The more detailed status of the L3 network.
@@ -37,13 +39,13 @@ type LookupL3NetworkResult struct {
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
+	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
 	HybridAksClustersAssociatedIds []string `pulumi:"hybridAksClustersAssociatedIds"`
-	// The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 	HybridAksIpamEnabled *string `pulumi:"hybridAksIpamEnabled"`
-	// The network plugin type for Hybrid AKS.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 	HybridAksPluginType *string `pulumi:"hybridAksPluginType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The default interface name for this L3 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
 	InterfaceName *string `pulumi:"interfaceName"`
@@ -69,7 +71,7 @@ type LookupL3NetworkResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
+	// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
 	VirtualMachinesAssociatedIds []string `pulumi:"virtualMachinesAssociatedIds"`
 	// The VLAN from the l3IsolationDomain that is used for this network.
 	Vlan float64 `pulumi:"vlan"`
@@ -134,6 +136,11 @@ func (o LookupL3NetworkResultOutput) ToLookupL3NetworkResultOutputWithContext(ct
 	return o
 }
 
+// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+func (o LookupL3NetworkResultOutput) AssociatedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupL3NetworkResult) []string { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
+}
+
 // The resource ID of the Network Cloud cluster this L3 network is associated with.
 func (o LookupL3NetworkResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) string { return v.ClusterId }).(pulumi.StringOutput)
@@ -154,22 +161,22 @@ func (o LookupL3NetworkResultOutput) ExtendedLocation() ExtendedLocationResponse
 	return o.ApplyT(func(v LookupL3NetworkResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
+// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
 func (o LookupL3NetworkResultOutput) HybridAksClustersAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) []string { return v.HybridAksClustersAssociatedIds }).(pulumi.StringArrayOutput)
 }
 
-// The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 func (o LookupL3NetworkResultOutput) HybridAksIpamEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) *string { return v.HybridAksIpamEnabled }).(pulumi.StringPtrOutput)
 }
 
-// The network plugin type for Hybrid AKS.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 func (o LookupL3NetworkResultOutput) HybridAksPluginType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) *string { return v.HybridAksPluginType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupL3NetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -231,7 +238,7 @@ func (o LookupL3NetworkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
+// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
 func (o LookupL3NetworkResultOutput) VirtualMachinesAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) []string { return v.VirtualMachinesAssociatedIds }).(pulumi.StringArrayOutput)
 }

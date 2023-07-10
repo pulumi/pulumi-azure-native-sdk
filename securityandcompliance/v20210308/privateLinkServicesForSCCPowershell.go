@@ -50,7 +50,16 @@ func NewPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForSCCPowershell"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance:PrivateLinkServicesForSCCPowershell"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForSCCPowershell"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForSCCPowershell"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForSCCPowershell"),
@@ -58,7 +67,7 @@ func NewPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForSCCPowershell
-	err := ctx.RegisterResource("azure-native:securityandcompliance/v20210308:privateLinkServicesForSCCPowershell", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForSCCPowershell", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +79,7 @@ func NewPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context,
 func GetPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForSCCPowershellState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForSCCPowershell, error) {
 	var resource PrivateLinkServicesForSCCPowershell
-	err := ctx.ReadResource("azure-native:securityandcompliance/v20210308:privateLinkServicesForSCCPowershell", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForSCCPowershell", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

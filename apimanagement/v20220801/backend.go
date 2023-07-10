@@ -12,8 +12,6 @@ import (
 )
 
 // Backend details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Backend is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Backend to guarantee forwards compatibility.
 type Backend struct {
 	pulumi.CustomResourceState
 
@@ -111,6 +109,12 @@ func NewBackend(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Backend"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Backend"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Backend"),
 		},
 	})
 	opts = append(opts, aliases)

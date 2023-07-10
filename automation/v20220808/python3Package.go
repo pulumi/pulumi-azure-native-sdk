@@ -65,6 +65,12 @@ func NewPython3Package(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:automation:Python3Package"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Python3Package
 	err := ctx.RegisterResource("azure-native:automation/v20220808:Python3Package", name, args, &resource, opts...)
 	if err != nil {
