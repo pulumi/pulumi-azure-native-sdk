@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the authorization provider specified by its identifier.
-//
-// Deprecated: azure-native:apimanagement/v20220801:AuthorizationProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:AuthorizationProvider to guarantee forwards compatibility.
 func LookupAuthorizationProvider(ctx *pulumi.Context, args *LookupAuthorizationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationProviderResult, error) {
 	var rv LookupAuthorizationProviderResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getAuthorizationProvider", args, &rv, opts...)

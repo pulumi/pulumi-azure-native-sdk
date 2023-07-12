@@ -12,8 +12,6 @@ import (
 )
 
 // Backup Vault Resource
-//
-// Deprecated: azure-native:dataprotection/v20230101:BackupVault is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230401preview:BackupVault to guarantee forwards compatibility.
 type BackupVault struct {
 	pulumi.CustomResourceState
 
@@ -99,6 +97,12 @@ func NewBackupVault(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20221201:BackupVault"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:BackupVault"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230501:BackupVault"),
 		},
 	})
 	opts = append(opts, aliases)

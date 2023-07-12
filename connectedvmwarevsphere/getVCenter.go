@@ -11,7 +11,7 @@ import (
 )
 
 // Implements vCenter GET method.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview.
 func LookupVCenter(ctx *pulumi.Context, args *LookupVCenterArgs, opts ...pulumi.InvokeOption) (*LookupVCenterResult, error) {
 	var rv LookupVCenterResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getVCenter", args, &rv, opts...)

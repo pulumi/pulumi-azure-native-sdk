@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an order item.
-// API Version: 2021-12-01.
+// Azure REST API version: 2021-12-01.
 func LookupOrderItemByName(ctx *pulumi.Context, args *LookupOrderItemByNameArgs, opts ...pulumi.InvokeOption) (*LookupOrderItemByNameResult, error) {
 	var rv LookupOrderItemByNameResult
 	err := ctx.Invoke("azure-native:edgeorder:getOrderItemByName", args, &rv, opts...)

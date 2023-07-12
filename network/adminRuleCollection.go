@@ -11,23 +11,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the rule collection.
-// API Version: 2021-02-01-preview.
+// Defines the admin rule collection.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type AdminRuleCollection struct {
 	pulumi.CustomResourceState
 
 	// Groups for configuration
 	AppliesToGroups NetworkManagerSecurityGroupItemResponseArrayOutput `pulumi:"appliesToGroups"`
-	// A description of the rule collection.
+	// A description of the admin rule collection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A display name of the rule collection.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Unique identifier for this resource.
+	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
@@ -41,6 +41,9 @@ func NewAdminRuleCollection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AppliesToGroups == nil {
+		return nil, errors.New("invalid value for required argument 'AppliesToGroups'")
+	}
 	if args.ConfigurationName == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigurationName'")
 	}
@@ -74,6 +77,12 @@ func NewAdminRuleCollection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:AdminRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:AdminRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:AdminRuleCollection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -111,12 +120,10 @@ func (AdminRuleCollectionState) ElementType() reflect.Type {
 type adminRuleCollectionArgs struct {
 	// Groups for configuration
 	AppliesToGroups []NetworkManagerSecurityGroupItem `pulumi:"appliesToGroups"`
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
-	// A description of the rule collection.
+	// A description of the admin rule collection.
 	Description *string `pulumi:"description"`
-	// A display name of the rule collection.
-	DisplayName *string `pulumi:"displayName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
 	// The name of the resource group.
@@ -129,12 +136,10 @@ type adminRuleCollectionArgs struct {
 type AdminRuleCollectionArgs struct {
 	// Groups for configuration
 	AppliesToGroups NetworkManagerSecurityGroupItemArrayInput
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput
-	// A description of the rule collection.
+	// A description of the admin rule collection.
 	Description pulumi.StringPtrInput
-	// A display name of the rule collection.
-	DisplayName pulumi.StringPtrInput
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput
 	// The name of the resource group.
@@ -187,14 +192,9 @@ func (o AdminRuleCollectionOutput) AppliesToGroups() NetworkManagerSecurityGroup
 	}).(NetworkManagerSecurityGroupItemResponseArrayOutput)
 }
 
-// A description of the rule collection.
+// A description of the admin rule collection.
 func (o AdminRuleCollectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AdminRuleCollection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A display name of the rule collection.
-func (o AdminRuleCollectionOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AdminRuleCollection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -210,6 +210,11 @@ func (o AdminRuleCollectionOutput) Name() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o AdminRuleCollectionOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdminRuleCollection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Unique identifier for this resource.
+func (o AdminRuleCollectionOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdminRuleCollection) pulumi.StringOutput { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The system metadata related to this resource.

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified packet core data plane.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2023-06-01.
 func LookupPacketCoreDataPlane(ctx *pulumi.Context, args *LookupPacketCoreDataPlaneArgs, opts ...pulumi.InvokeOption) (*LookupPacketCoreDataPlaneResult, error) {
 	var rv LookupPacketCoreDataPlaneResult
 	err := ctx.Invoke("azure-native:mobilenetwork:getPacketCoreDataPlane", args, &rv, opts...)
@@ -30,22 +30,10 @@ type LookupPacketCoreDataPlaneArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Packet core data plane resource.
+// Packet core data plane resource. Must be created in the same location as its parent packet core control plane.
 type LookupPacketCoreDataPlaneResult struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -88,7 +76,7 @@ func (LookupPacketCoreDataPlaneOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupPacketCoreDataPlaneArgs)(nil)).Elem()
 }
 
-// Packet core data plane resource.
+// Packet core data plane resource. Must be created in the same location as its parent packet core control plane.
 type LookupPacketCoreDataPlaneResultOutput struct{ *pulumi.OutputState }
 
 func (LookupPacketCoreDataPlaneResultOutput) ElementType() reflect.Type {
@@ -103,39 +91,9 @@ func (o LookupPacketCoreDataPlaneResultOutput) ToLookupPacketCoreDataPlaneResult
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o LookupPacketCoreDataPlaneResultOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPacketCoreDataPlaneResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o LookupPacketCoreDataPlaneResultOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPacketCoreDataPlaneResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o LookupPacketCoreDataPlaneResultOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPacketCoreDataPlaneResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPacketCoreDataPlaneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPacketCoreDataPlaneResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o LookupPacketCoreDataPlaneResultOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPacketCoreDataPlaneResult) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o LookupPacketCoreDataPlaneResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPacketCoreDataPlaneResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o LookupPacketCoreDataPlaneResultOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPacketCoreDataPlaneResult) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives

@@ -11,7 +11,7 @@ import (
 )
 
 // Get the specified role management policy assignment for a resource scope
-// API Version: 2020-10-01.
+// Azure REST API version: 2020-10-01.
 func LookupRoleManagementPolicyAssignment(ctx *pulumi.Context, args *LookupRoleManagementPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleManagementPolicyAssignmentResult, error) {
 	var rv LookupRoleManagementPolicyAssignmentResult
 	err := ctx.Invoke("azure-native:authorization:getRoleManagementPolicyAssignment", args, &rv, opts...)

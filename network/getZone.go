@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
-// API Version: 2018-05-01.
+// Azure REST API version: 2023-07-01-preview.
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
 	var rv LookupZoneResult
 	err := ctx.Invoke("azure-native:network:getZone", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.Invoke
 }
 
 type LookupZoneArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the DNS zone (without a terminating dot).
 	ZoneName string `pulumi:"zoneName"`
@@ -50,6 +50,10 @@ type LookupZoneResult struct {
 	RegistrationVirtualNetworks []SubResourceResponse `pulumi:"registrationVirtualNetworks"`
 	// A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
 	ResolutionVirtualNetworks []SubResourceResponse `pulumi:"resolutionVirtualNetworks"`
+	// The list of signing keys.
+	SigningKeys []SigningKeyResponse `pulumi:"signingKeys"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type.
@@ -85,7 +89,7 @@ func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pu
 }
 
 type LookupZoneOutputArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the DNS zone (without a terminating dot).
 	ZoneName pulumi.StringInput `pulumi:"zoneName"`
@@ -158,6 +162,16 @@ func (o LookupZoneResultOutput) RegistrationVirtualNetworks() SubResourceRespons
 // A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
 func (o LookupZoneResultOutput) ResolutionVirtualNetworks() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupZoneResult) []SubResourceResponse { return v.ResolutionVirtualNetworks }).(SubResourceResponseArrayOutput)
+}
+
+// The list of signing keys.
+func (o LookupZoneResultOutput) SigningKeys() SigningKeyResponseArrayOutput {
+	return o.ApplyT(func(v LookupZoneResult) []SigningKeyResponse { return v.SigningKeys }).(SigningKeyResponseArrayOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupZoneResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupZoneResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

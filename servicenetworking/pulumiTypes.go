@@ -210,250 +210,50 @@ func (o AssociationSubnetResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Frontend IP Address.
-type FrontendPropertiesIPAddress struct {
-	// IP Address.
-	Id string `pulumi:"id"`
-}
-
-// FrontendPropertiesIPAddressInput is an input type that accepts FrontendPropertiesIPAddressArgs and FrontendPropertiesIPAddressOutput values.
-// You can construct a concrete instance of `FrontendPropertiesIPAddressInput` via:
-//
-//	FrontendPropertiesIPAddressArgs{...}
-type FrontendPropertiesIPAddressInput interface {
-	pulumi.Input
-
-	ToFrontendPropertiesIPAddressOutput() FrontendPropertiesIPAddressOutput
-	ToFrontendPropertiesIPAddressOutputWithContext(context.Context) FrontendPropertiesIPAddressOutput
-}
-
-// Frontend IP Address.
-type FrontendPropertiesIPAddressArgs struct {
-	// IP Address.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (FrontendPropertiesIPAddressArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FrontendPropertiesIPAddress)(nil)).Elem()
-}
-
-func (i FrontendPropertiesIPAddressArgs) ToFrontendPropertiesIPAddressOutput() FrontendPropertiesIPAddressOutput {
-	return i.ToFrontendPropertiesIPAddressOutputWithContext(context.Background())
-}
-
-func (i FrontendPropertiesIPAddressArgs) ToFrontendPropertiesIPAddressOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontendPropertiesIPAddressOutput)
-}
-
-func (i FrontendPropertiesIPAddressArgs) ToFrontendPropertiesIPAddressPtrOutput() FrontendPropertiesIPAddressPtrOutput {
-	return i.ToFrontendPropertiesIPAddressPtrOutputWithContext(context.Background())
-}
-
-func (i FrontendPropertiesIPAddressArgs) ToFrontendPropertiesIPAddressPtrOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontendPropertiesIPAddressOutput).ToFrontendPropertiesIPAddressPtrOutputWithContext(ctx)
-}
-
-// FrontendPropertiesIPAddressPtrInput is an input type that accepts FrontendPropertiesIPAddressArgs, FrontendPropertiesIPAddressPtr and FrontendPropertiesIPAddressPtrOutput values.
-// You can construct a concrete instance of `FrontendPropertiesIPAddressPtrInput` via:
-//
-//	        FrontendPropertiesIPAddressArgs{...}
-//
-//	or:
-//
-//	        nil
-type FrontendPropertiesIPAddressPtrInput interface {
-	pulumi.Input
-
-	ToFrontendPropertiesIPAddressPtrOutput() FrontendPropertiesIPAddressPtrOutput
-	ToFrontendPropertiesIPAddressPtrOutputWithContext(context.Context) FrontendPropertiesIPAddressPtrOutput
-}
-
-type frontendPropertiesIPAddressPtrType FrontendPropertiesIPAddressArgs
-
-func FrontendPropertiesIPAddressPtr(v *FrontendPropertiesIPAddressArgs) FrontendPropertiesIPAddressPtrInput {
-	return (*frontendPropertiesIPAddressPtrType)(v)
-}
-
-func (*frontendPropertiesIPAddressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FrontendPropertiesIPAddress)(nil)).Elem()
-}
-
-func (i *frontendPropertiesIPAddressPtrType) ToFrontendPropertiesIPAddressPtrOutput() FrontendPropertiesIPAddressPtrOutput {
-	return i.ToFrontendPropertiesIPAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *frontendPropertiesIPAddressPtrType) ToFrontendPropertiesIPAddressPtrOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontendPropertiesIPAddressPtrOutput)
-}
-
-// Frontend IP Address.
-type FrontendPropertiesIPAddressOutput struct{ *pulumi.OutputState }
-
-func (FrontendPropertiesIPAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FrontendPropertiesIPAddress)(nil)).Elem()
-}
-
-func (o FrontendPropertiesIPAddressOutput) ToFrontendPropertiesIPAddressOutput() FrontendPropertiesIPAddressOutput {
-	return o
-}
-
-func (o FrontendPropertiesIPAddressOutput) ToFrontendPropertiesIPAddressOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressOutput {
-	return o
-}
-
-func (o FrontendPropertiesIPAddressOutput) ToFrontendPropertiesIPAddressPtrOutput() FrontendPropertiesIPAddressPtrOutput {
-	return o.ToFrontendPropertiesIPAddressPtrOutputWithContext(context.Background())
-}
-
-func (o FrontendPropertiesIPAddressOutput) ToFrontendPropertiesIPAddressPtrOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FrontendPropertiesIPAddress) *FrontendPropertiesIPAddress {
-		return &v
-	}).(FrontendPropertiesIPAddressPtrOutput)
-}
-
-// IP Address.
-func (o FrontendPropertiesIPAddressOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v FrontendPropertiesIPAddress) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type FrontendPropertiesIPAddressPtrOutput struct{ *pulumi.OutputState }
-
-func (FrontendPropertiesIPAddressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FrontendPropertiesIPAddress)(nil)).Elem()
-}
-
-func (o FrontendPropertiesIPAddressPtrOutput) ToFrontendPropertiesIPAddressPtrOutput() FrontendPropertiesIPAddressPtrOutput {
-	return o
-}
-
-func (o FrontendPropertiesIPAddressPtrOutput) ToFrontendPropertiesIPAddressPtrOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressPtrOutput {
-	return o
-}
-
-func (o FrontendPropertiesIPAddressPtrOutput) Elem() FrontendPropertiesIPAddressOutput {
-	return o.ApplyT(func(v *FrontendPropertiesIPAddress) FrontendPropertiesIPAddress {
-		if v != nil {
-			return *v
-		}
-		var ret FrontendPropertiesIPAddress
-		return ret
-	}).(FrontendPropertiesIPAddressOutput)
-}
-
-// IP Address.
-func (o FrontendPropertiesIPAddressPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FrontendPropertiesIPAddress) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Frontend IP Address.
-type FrontendPropertiesIPAddressResponse struct {
-	// IP Address.
-	Id string `pulumi:"id"`
-}
-
-// Frontend IP Address.
-type FrontendPropertiesIPAddressResponseOutput struct{ *pulumi.OutputState }
-
-func (FrontendPropertiesIPAddressResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FrontendPropertiesIPAddressResponse)(nil)).Elem()
-}
-
-func (o FrontendPropertiesIPAddressResponseOutput) ToFrontendPropertiesIPAddressResponseOutput() FrontendPropertiesIPAddressResponseOutput {
-	return o
-}
-
-func (o FrontendPropertiesIPAddressResponseOutput) ToFrontendPropertiesIPAddressResponseOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressResponseOutput {
-	return o
-}
-
-// IP Address.
-func (o FrontendPropertiesIPAddressResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v FrontendPropertiesIPAddressResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type FrontendPropertiesIPAddressResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FrontendPropertiesIPAddressResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FrontendPropertiesIPAddressResponse)(nil)).Elem()
-}
-
-func (o FrontendPropertiesIPAddressResponsePtrOutput) ToFrontendPropertiesIPAddressResponsePtrOutput() FrontendPropertiesIPAddressResponsePtrOutput {
-	return o
-}
-
-func (o FrontendPropertiesIPAddressResponsePtrOutput) ToFrontendPropertiesIPAddressResponsePtrOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressResponsePtrOutput {
-	return o
-}
-
-func (o FrontendPropertiesIPAddressResponsePtrOutput) Elem() FrontendPropertiesIPAddressResponseOutput {
-	return o.ApplyT(func(v *FrontendPropertiesIPAddressResponse) FrontendPropertiesIPAddressResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FrontendPropertiesIPAddressResponse
-		return ret
-	}).(FrontendPropertiesIPAddressResponseOutput)
-}
-
-// IP Address.
-func (o FrontendPropertiesIPAddressResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FrontendPropertiesIPAddressResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // Resource ID definition used by parent to reference child resources.
-type ResourceIDResponse struct {
+type ResourceIdResponse struct {
 	// Resource ID of child resource.
 	Id string `pulumi:"id"`
 }
 
 // Resource ID definition used by parent to reference child resources.
-type ResourceIDResponseOutput struct{ *pulumi.OutputState }
+type ResourceIdResponseOutput struct{ *pulumi.OutputState }
 
-func (ResourceIDResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIDResponse)(nil)).Elem()
+func (ResourceIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceIdResponse)(nil)).Elem()
 }
 
-func (o ResourceIDResponseOutput) ToResourceIDResponseOutput() ResourceIDResponseOutput {
+func (o ResourceIdResponseOutput) ToResourceIdResponseOutput() ResourceIdResponseOutput {
 	return o
 }
 
-func (o ResourceIDResponseOutput) ToResourceIDResponseOutputWithContext(ctx context.Context) ResourceIDResponseOutput {
+func (o ResourceIdResponseOutput) ToResourceIdResponseOutputWithContext(ctx context.Context) ResourceIdResponseOutput {
 	return o
 }
 
 // Resource ID of child resource.
-func (o ResourceIDResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceIDResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-type ResourceIDResponseArrayOutput struct{ *pulumi.OutputState }
+type ResourceIdResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (ResourceIDResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceIDResponse)(nil)).Elem()
+func (ResourceIdResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceIdResponse)(nil)).Elem()
 }
 
-func (o ResourceIDResponseArrayOutput) ToResourceIDResponseArrayOutput() ResourceIDResponseArrayOutput {
+func (o ResourceIdResponseArrayOutput) ToResourceIdResponseArrayOutput() ResourceIdResponseArrayOutput {
 	return o
 }
 
-func (o ResourceIDResponseArrayOutput) ToResourceIDResponseArrayOutputWithContext(ctx context.Context) ResourceIDResponseArrayOutput {
+func (o ResourceIdResponseArrayOutput) ToResourceIdResponseArrayOutputWithContext(ctx context.Context) ResourceIdResponseArrayOutput {
 	return o
 }
 
-func (o ResourceIDResponseArrayOutput) Index(i pulumi.IntInput) ResourceIDResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceIDResponse {
-		return vs[0].([]ResourceIDResponse)[vs[1].(int)]
-	}).(ResourceIDResponseOutput)
+func (o ResourceIdResponseArrayOutput) Index(i pulumi.IntInput) ResourceIdResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceIdResponse {
+		return vs[0].([]ResourceIdResponse)[vs[1].(int)]
+	}).(ResourceIdResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -522,11 +322,7 @@ func init() {
 	pulumi.RegisterOutputType(AssociationSubnetPtrOutput{})
 	pulumi.RegisterOutputType(AssociationSubnetResponseOutput{})
 	pulumi.RegisterOutputType(AssociationSubnetResponsePtrOutput{})
-	pulumi.RegisterOutputType(FrontendPropertiesIPAddressOutput{})
-	pulumi.RegisterOutputType(FrontendPropertiesIPAddressPtrOutput{})
-	pulumi.RegisterOutputType(FrontendPropertiesIPAddressResponseOutput{})
-	pulumi.RegisterOutputType(FrontendPropertiesIPAddressResponsePtrOutput{})
-	pulumi.RegisterOutputType(ResourceIDResponseOutput{})
-	pulumi.RegisterOutputType(ResourceIDResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
+	pulumi.RegisterOutputType(ResourceIdResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

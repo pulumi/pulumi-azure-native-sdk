@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified DICOM Service.
-// API Version: 2022-05-15.
+// Azure REST API version: 2023-02-28.
 func LookupDicomService(ctx *pulumi.Context, args *LookupDicomServiceArgs, opts ...pulumi.InvokeOption) (*LookupDicomServiceResult, error) {
 	var rv LookupDicomServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis:getDicomService", args, &rv, opts...)
@@ -38,6 +38,8 @@ type LookupDicomServiceResult struct {
 	CorsConfiguration *CorsConfigurationResponse `pulumi:"corsConfiguration"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
+	// DICOM Service event support status.
+	EventState string `pulumi:"eventState"`
 	// The resource identifier.
 	Id string `pulumi:"id"`
 	// Setting indicating whether the service has a managed identity associated with it.
@@ -118,6 +120,11 @@ func (o LookupDicomServiceResultOutput) CorsConfiguration() CorsConfigurationRes
 // An etag associated with the resource, used for optimistic concurrency when editing it.
 func (o LookupDicomServiceResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDicomServiceResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// DICOM Service event support status.
+func (o LookupDicomServiceResultOutput) EventState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDicomServiceResult) string { return v.EventState }).(pulumi.StringOutput)
 }
 
 // The resource identifier.

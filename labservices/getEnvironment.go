@@ -11,7 +11,7 @@ import (
 )
 
 // Get environment
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15.
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
 	var rv LookupEnvironmentResult
 	err := ctx.Invoke("azure-native:labservices:getEnvironment", args, &rv, opts...)

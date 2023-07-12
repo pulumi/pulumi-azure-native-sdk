@@ -12,16 +12,20 @@ import (
 )
 
 // The Network Security Perimeter resource
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-03-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type NetworkSecurityPerimeter struct {
 	pulumi.CustomResourceState
 
+	// A description of the network security perimeter.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// A friendly name for the network security perimeter.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// perimeter guid of the network security perimeter.
-	PerimeterGuid pulumi.StringOutput `pulumi:"perimeterGuid"`
 	// The provisioning state of the scope assignment resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Resource tags.
@@ -81,6 +85,10 @@ func (NetworkSecurityPerimeterState) ElementType() reflect.Type {
 }
 
 type networkSecurityPerimeterArgs struct {
+	// A description of the network security perimeter.
+	Description *string `pulumi:"description"`
+	// A friendly name for the network security perimeter.
+	DisplayName *string `pulumi:"displayName"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
@@ -97,6 +105,10 @@ type networkSecurityPerimeterArgs struct {
 
 // The set of arguments for constructing a NetworkSecurityPerimeter resource.
 type NetworkSecurityPerimeterArgs struct {
+	// A description of the network security perimeter.
+	Description pulumi.StringPtrInput
+	// A friendly name for the network security perimeter.
+	DisplayName pulumi.StringPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Resource location.
@@ -148,6 +160,21 @@ func (o NetworkSecurityPerimeterOutput) ToNetworkSecurityPerimeterOutputWithCont
 	return o
 }
 
+// A description of the network security perimeter.
+func (o NetworkSecurityPerimeterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A friendly name for the network security perimeter.
+func (o NetworkSecurityPerimeterOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeter) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o NetworkSecurityPerimeterOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeter) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
 // Resource location.
 func (o NetworkSecurityPerimeterOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkSecurityPerimeter) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
@@ -156,11 +183,6 @@ func (o NetworkSecurityPerimeterOutput) Location() pulumi.StringPtrOutput {
 // Resource name.
 func (o NetworkSecurityPerimeterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkSecurityPerimeter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// perimeter guid of the network security perimeter.
-func (o NetworkSecurityPerimeterOutput) PerimeterGuid() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkSecurityPerimeter) pulumi.StringOutput { return v.PerimeterGuid }).(pulumi.StringOutput)
 }
 
 // The provisioning state of the scope assignment resource.

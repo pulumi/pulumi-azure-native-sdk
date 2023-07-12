@@ -11,7 +11,7 @@ import (
 )
 
 // Returns current billing features for an Application Insights component.
-// API Version: 2015-05-01.
+// Azure REST API version: 2015-05-01.
 func LookupComponentCurrentBillingFeature(ctx *pulumi.Context, args *LookupComponentCurrentBillingFeatureArgs, opts ...pulumi.InvokeOption) (*LookupComponentCurrentBillingFeatureResult, error) {
 	var rv LookupComponentCurrentBillingFeatureResult
 	err := ctx.Invoke("azure-native:insights:getComponentCurrentBillingFeature", args, &rv, opts...)

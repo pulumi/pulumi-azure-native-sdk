@@ -12,7 +12,7 @@ import (
 )
 
 // Blueprint artifact that applies a Role assignment.
-// API Version: 2018-11-01-preview.
+// Azure REST API version: 2018-11-01-preview. Prior API version in Azure Native 1.x: 2018-11-01-preview
 type RoleAssignmentArtifact struct {
 	pulumi.CustomResourceState
 

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a scoped resource in a private link scope.
-// API Version: 2020-08-15-preview.
+// Azure REST API version: 2020-08-15-preview.
 func LookupPrivateLinkScopedResource(ctx *pulumi.Context, args *LookupPrivateLinkScopedResourceArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopedResourceResult, error) {
 	var rv LookupPrivateLinkScopedResourceResult
 	err := ctx.Invoke("azure-native:hybridcompute:getPrivateLinkScopedResource", args, &rv, opts...)

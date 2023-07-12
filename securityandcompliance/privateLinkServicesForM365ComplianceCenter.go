@@ -12,7 +12,7 @@ import (
 )
 
 // The description of the service.
-// API Version: 2021-03-08.
+// Azure REST API version: 2021-03-08. Prior API version in Azure Native 1.x: 2021-03-08
 type PrivateLinkServicesForM365ComplianceCenter struct {
 	pulumi.CustomResourceState
 
@@ -51,7 +51,16 @@ func NewPrivateLinkServicesForM365ComplianceCenter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForM365ComplianceCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForM365ComplianceCenter"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForM365ComplianceCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForM365ComplianceCenter"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForM365ComplianceCenter"),
@@ -59,7 +68,7 @@ func NewPrivateLinkServicesForM365ComplianceCenter(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForM365ComplianceCenter
-	err := ctx.RegisterResource("azure-native:securityandcompliance:privateLinkServicesForM365ComplianceCenter", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:securityandcompliance:PrivateLinkServicesForM365ComplianceCenter", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +80,7 @@ func NewPrivateLinkServicesForM365ComplianceCenter(ctx *pulumi.Context,
 func GetPrivateLinkServicesForM365ComplianceCenter(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForM365ComplianceCenterState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForM365ComplianceCenter, error) {
 	var resource PrivateLinkServicesForM365ComplianceCenter
-	err := ctx.ReadResource("azure-native:securityandcompliance:privateLinkServicesForM365ComplianceCenter", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:securityandcompliance:PrivateLinkServicesForM365ComplianceCenter", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

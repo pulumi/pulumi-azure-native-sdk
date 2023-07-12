@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the virtual machine details
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15.
 func GetGlobalUserEnvironment(ctx *pulumi.Context, args *GetGlobalUserEnvironmentArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserEnvironmentResult, error) {
 	var rv GetGlobalUserEnvironmentResult
 	err := ctx.Invoke("azure-native:labservices:getGlobalUserEnvironment", args, &rv, opts...)

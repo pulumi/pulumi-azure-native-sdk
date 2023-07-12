@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a record set.
-// API Version: 2020-06-01.
+// Azure REST API version: 2020-06-01.
 func LookupPrivateRecordSet(ctx *pulumi.Context, args *LookupPrivateRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupPrivateRecordSetResult, error) {
 	var rv LookupPrivateRecordSetResult
 	err := ctx.Invoke("azure-native:network:getPrivateRecordSet", args, &rv, opts...)

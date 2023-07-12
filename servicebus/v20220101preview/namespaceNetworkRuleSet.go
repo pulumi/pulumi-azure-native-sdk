@@ -12,8 +12,6 @@ import (
 )
 
 // Description of NetworkRuleSet resource.
-//
-// Deprecated: azure-native:servicebus/v20220101preview:NamespaceNetworkRuleSet is being removed in the next major version of this provider. Upgrade to at least azure-native:servicebus/v20221001preview:NamespaceNetworkRuleSet to guarantee forwards compatibility.
 type NamespaceNetworkRuleSet struct {
 	pulumi.CustomResourceState
 

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a synchronizationSetting in a share
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupScheduledSynchronizationSetting(ctx *pulumi.Context, args *LookupScheduledSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*LookupScheduledSynchronizationSettingResult, error) {
 	var rv LookupScheduledSynchronizationSettingResult
 	err := ctx.Invoke("azure-native:datashare:getScheduledSynchronizationSetting", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the Database Migration resource.
-// API Version: 2022-03-30-preview.
+// Azure REST API version: 2022-03-30-preview.
 func LookupDatabaseMigrationsSqlDb(ctx *pulumi.Context, args *LookupDatabaseMigrationsSqlDbArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMigrationsSqlDbResult, error) {
 	var rv LookupDatabaseMigrationsSqlDbResult
 	err := ctx.Invoke("azure-native:datamigration:getDatabaseMigrationsSqlDb", args, &rv, opts...)

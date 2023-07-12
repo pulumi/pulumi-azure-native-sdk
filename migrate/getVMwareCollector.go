@@ -11,7 +11,7 @@ import (
 )
 
 // Get a VMware collector.
-// API Version: 2019-10-01.
+// Azure REST API version: 2019-10-01.
 func LookupVMwareCollector(ctx *pulumi.Context, args *LookupVMwareCollectorArgs, opts ...pulumi.InvokeOption) (*LookupVMwareCollectorResult, error) {
 	var rv LookupVMwareCollectorResult
 	err := ctx.Invoke("azure-native:migrate:getVMwareCollector", args, &rv, opts...)

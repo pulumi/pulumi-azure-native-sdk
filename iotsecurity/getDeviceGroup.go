@@ -11,7 +11,7 @@ import (
 )
 
 // Get device group
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func LookupDeviceGroup(ctx *pulumi.Context, args *LookupDeviceGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceGroupResult, error) {
 	var rv LookupDeviceGroupResult
 	err := ctx.Invoke("azure-native:iotsecurity:getDeviceGroup", args, &rv, opts...)

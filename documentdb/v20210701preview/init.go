@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,48 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:documentdb/v20210701preview:CassandraCluster":
 		r = &CassandraCluster{}
-	case "azure-native:documentdb/v20210701preview:CassandraDataCenter":
-		r = &CassandraDataCenter{}
-	case "azure-native:documentdb/v20210701preview:CassandraResourceCassandraKeyspace":
-		r = &CassandraResourceCassandraKeyspace{}
-	case "azure-native:documentdb/v20210701preview:CassandraResourceCassandraTable":
-		r = &CassandraResourceCassandraTable{}
-	case "azure-native:documentdb/v20210701preview:CassandraResourceCassandraView":
-		r = &CassandraResourceCassandraView{}
-	case "azure-native:documentdb/v20210701preview:DatabaseAccount":
-		r = &DatabaseAccount{}
-	case "azure-native:documentdb/v20210701preview:GraphResourceGraph":
-		r = &GraphResourceGraph{}
-	case "azure-native:documentdb/v20210701preview:GremlinResourceGremlinDatabase":
-		r = &GremlinResourceGremlinDatabase{}
-	case "azure-native:documentdb/v20210701preview:GremlinResourceGremlinGraph":
-		r = &GremlinResourceGremlinGraph{}
-	case "azure-native:documentdb/v20210701preview:MongoDBResourceMongoDBCollection":
-		r = &MongoDBResourceMongoDBCollection{}
-	case "azure-native:documentdb/v20210701preview:MongoDBResourceMongoDBDatabase":
-		r = &MongoDBResourceMongoDBDatabase{}
-	case "azure-native:documentdb/v20210701preview:NotebookWorkspace":
-		r = &NotebookWorkspace{}
-	case "azure-native:documentdb/v20210701preview:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
-	case "azure-native:documentdb/v20210701preview:Service":
-		r = &Service{}
-	case "azure-native:documentdb/v20210701preview:SqlResourceSqlContainer":
-		r = &SqlResourceSqlContainer{}
-	case "azure-native:documentdb/v20210701preview:SqlResourceSqlDatabase":
-		r = &SqlResourceSqlDatabase{}
-	case "azure-native:documentdb/v20210701preview:SqlResourceSqlRoleAssignment":
-		r = &SqlResourceSqlRoleAssignment{}
-	case "azure-native:documentdb/v20210701preview:SqlResourceSqlRoleDefinition":
-		r = &SqlResourceSqlRoleDefinition{}
-	case "azure-native:documentdb/v20210701preview:SqlResourceSqlStoredProcedure":
-		r = &SqlResourceSqlStoredProcedure{}
-	case "azure-native:documentdb/v20210701preview:SqlResourceSqlTrigger":
-		r = &SqlResourceSqlTrigger{}
-	case "azure-native:documentdb/v20210701preview:SqlResourceSqlUserDefinedFunction":
-		r = &SqlResourceSqlUserDefinedFunction{}
-	case "azure-native:documentdb/v20210701preview:TableResourceTable":
-		r = &TableResourceTable{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

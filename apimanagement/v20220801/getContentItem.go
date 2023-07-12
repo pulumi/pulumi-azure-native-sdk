@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the developer portal's content item specified by its identifier.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ContentItem is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ContentItem to guarantee forwards compatibility.
 func LookupContentItem(ctx *pulumi.Context, args *LookupContentItemArgs, opts ...pulumi.InvokeOption) (*LookupContentItemResult, error) {
 	var rv LookupContentItemResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getContentItem", args, &rv, opts...)

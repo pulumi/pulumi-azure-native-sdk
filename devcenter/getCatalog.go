@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a catalog
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2023-04-01.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	var rv LookupCatalogResult
 	err := ctx.Invoke("azure-native:devcenter:getCatalog", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupCatalogArgs struct {
 	CatalogName string `pulumi:"catalogName"`
 	// The name of the devcenter.
 	DevCenterName string `pulumi:"devCenterName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -44,6 +44,8 @@ type LookupCatalogResult struct {
 	Name string `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The synchronization state of the catalog.
+	SyncState string `pulumi:"syncState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -68,7 +70,7 @@ type LookupCatalogOutputArgs struct {
 	CatalogName pulumi.StringInput `pulumi:"catalogName"`
 	// The name of the devcenter.
 	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -119,6 +121,11 @@ func (o LookupCatalogResultOutput) Name() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o LookupCatalogResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The synchronization state of the catalog.
+func (o LookupCatalogResultOutput) SyncState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.SyncState }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

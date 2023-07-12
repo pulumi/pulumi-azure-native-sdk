@@ -12,7 +12,7 @@ import (
 )
 
 // IoT Connector definition.
-// API Version: 2022-05-15.
+// Azure REST API version: 2023-02-28. Prior API version in Azure Native 1.x: 2022-05-15
 type IotConnector struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +72,9 @@ func NewIotConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:IotConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230228:IotConnector"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // NSX DNS Zone
-// API Version: 2020-07-17-preview.
+// Azure REST API version: 2022-05-01.
 func LookupWorkloadNetworkDnsZone(ctx *pulumi.Context, args *LookupWorkloadNetworkDnsZoneArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkDnsZoneResult, error) {
 	var rv LookupWorkloadNetworkDnsZoneResult
 	err := ctx.Invoke("azure-native:avs:getWorkloadNetworkDnsZone", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified scope map.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2022-12-01.
 func LookupScopeMap(ctx *pulumi.Context, args *LookupScopeMapArgs, opts ...pulumi.InvokeOption) (*LookupScopeMapResult, error) {
 	var rv LookupScopeMapResult
 	err := ctx.Invoke("azure-native:containerregistry:getScopeMap", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupScopeMap(ctx *pulumi.Context, args *LookupScopeMapArgs, opts ...pulum
 type LookupScopeMapArgs struct {
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the scope map.
 	ScopeMapName string `pulumi:"scopeMapName"`
@@ -68,7 +68,7 @@ func LookupScopeMapOutput(ctx *pulumi.Context, args LookupScopeMapOutputArgs, op
 type LookupScopeMapOutputArgs struct {
 	// The name of the container registry.
 	RegistryName pulumi.StringInput `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the scope map.
 	ScopeMapName pulumi.StringInput `pulumi:"scopeMapName"`

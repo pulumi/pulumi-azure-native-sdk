@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the integration account callback URL.
-// API Version: 2019-05-01.
+// Azure REST API version: 2019-05-01.
 func ListIntegrationAccountCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountCallbackUrlResult, error) {
 	var rv ListIntegrationAccountCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic:listIntegrationAccountCallbackUrl", args, &rv, opts...)

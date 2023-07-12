@@ -12,10 +12,12 @@ import (
 )
 
 // Specifies information about the gallery image definition that you want to create or update.
-// API Version: 2020-09-30.
+// Azure REST API version: 2022-03-03. Prior API version in Azure Native 1.x: 2020-09-30
 type GalleryImage struct {
 	pulumi.CustomResourceState
 
+	// The architecture of the image. Applicable to OS disks only.
+	Architecture pulumi.StringPtrOutput `pulumi:"architecture"`
 	// The description of this gallery image definition resource. This property is updatable.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Describes the disallowed disk types.
@@ -138,6 +140,8 @@ func (GalleryImageState) ElementType() reflect.Type {
 }
 
 type galleryImageArgs struct {
+	// The architecture of the image. Applicable to OS disks only.
+	Architecture *string `pulumi:"architecture"`
 	// The description of this gallery image definition resource. This property is updatable.
 	Description *string `pulumi:"description"`
 	// Describes the disallowed disk types.
@@ -178,6 +182,8 @@ type galleryImageArgs struct {
 
 // The set of arguments for constructing a GalleryImage resource.
 type GalleryImageArgs struct {
+	// The architecture of the image. Applicable to OS disks only.
+	Architecture pulumi.StringPtrInput
 	// The description of this gallery image definition resource. This property is updatable.
 	Description pulumi.StringPtrInput
 	// Describes the disallowed disk types.
@@ -251,6 +257,11 @@ func (o GalleryImageOutput) ToGalleryImageOutput() GalleryImageOutput {
 
 func (o GalleryImageOutput) ToGalleryImageOutputWithContext(ctx context.Context) GalleryImageOutput {
 	return o
+}
+
+// The architecture of the image. Applicable to OS disks only.
+func (o GalleryImageOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GalleryImage) pulumi.StringPtrOutput { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
 // The description of this gallery image definition resource. This property is updatable.

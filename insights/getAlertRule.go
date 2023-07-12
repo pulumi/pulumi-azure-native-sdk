@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a classic metric alert rule
-// API Version: 2016-03-01.
+// Azure REST API version: 2016-03-01.
 func LookupAlertRule(ctx *pulumi.Context, args *LookupAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupAlertRuleResult, error) {
 	var rv LookupAlertRuleResult
 	err := ctx.Invoke("azure-native:insights:getAlertRule", args, &rv, opts...)

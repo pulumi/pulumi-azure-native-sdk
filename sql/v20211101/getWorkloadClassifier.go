@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a workload classifier
-//
-// Deprecated: azure-native:sql/v20211101:WorkloadClassifier is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:WorkloadClassifier to guarantee forwards compatibility.
 func LookupWorkloadClassifier(ctx *pulumi.Context, args *LookupWorkloadClassifierArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadClassifierResult, error) {
 	var rv LookupWorkloadClassifierResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getWorkloadClassifier", args, &rv, opts...)

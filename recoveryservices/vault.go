@@ -12,7 +12,7 @@ import (
 )
 
 // Resource information, as returned by the resource provider.
-// API Version: 2021-01-01.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-01-01
 type Vault struct {
 	pulumi.CustomResourceState
 
@@ -119,6 +119,9 @@ func NewVault(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:Vault"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230401:Vault"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Vault
@@ -159,7 +162,7 @@ type vaultArgs struct {
 	Location *string `pulumi:"location"`
 	// Properties of the vault.
 	Properties *VaultProperties `pulumi:"properties"`
-	// The name of the resource group where the recovery services vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Identifies the unique system identifier for each Azure resource.
 	Sku *Sku `pulumi:"sku"`
@@ -177,7 +180,7 @@ type VaultArgs struct {
 	Location pulumi.StringPtrInput
 	// Properties of the vault.
 	Properties VaultPropertiesPtrInput
-	// The name of the resource group where the recovery services vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Identifies the unique system identifier for each Azure resource.
 	Sku SkuPtrInput

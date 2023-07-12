@@ -12,7 +12,7 @@ import (
 )
 
 // Container App SourceControl.
-// API Version: 2022-03-01.
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01
 type ContainerAppsSourceControl struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,12 @@ func NewContainerAppsSourceControl(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20221001:ContainerAppsSourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ContainerAppsSourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:ContainerAppsSourceControl"),
 		},
 	})
 	opts = append(opts, aliases)

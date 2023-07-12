@@ -45,6 +45,9 @@ func NewWebAppFtpAllowed(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:web:WebAppFtpAllowed"),
+		},
+		{
 			Type: pulumi.String("azure-native:web/v20190801:WebAppFtpAllowed"),
 		},
 		{

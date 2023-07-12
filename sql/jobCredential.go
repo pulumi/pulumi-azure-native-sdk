@@ -12,7 +12,7 @@ import (
 )
 
 // A stored credential that can be used by a job to connect to target databases.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type JobCredential struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +82,9 @@ func NewJobCredential(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:JobCredential"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:JobCredential"),
 		},
 	})
 	opts = append(opts, aliases)

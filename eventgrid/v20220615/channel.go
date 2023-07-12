@@ -12,8 +12,6 @@ import (
 )
 
 // Channel info.
-//
-// Deprecated: azure-native:eventgrid/v20220615:Channel is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:Channel to guarantee forwards compatibility.
 type Channel struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +55,9 @@ func NewChannel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:Channel"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:Channel"),
 		},
 	})
 	opts = append(opts, aliases)

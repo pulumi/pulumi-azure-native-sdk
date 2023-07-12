@@ -12,7 +12,7 @@ import (
 )
 
 // A private endpoint connection
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type ManagedInstancePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +74,9 @@ func NewManagedInstancePrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedInstancePrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedInstancePrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

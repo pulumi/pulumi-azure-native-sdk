@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:guestconfiguration:GuestConfigurationAssignment":
 		r = &GuestConfigurationAssignment{}
+	case "azure-native:guestconfiguration:GuestConfigurationAssignmentsVMSS":
+		r = &GuestConfigurationAssignmentsVMSS{}
 	case "azure-native:guestconfiguration:GuestConfigurationConnectedVMwarevSphereAssignment":
 		r = &GuestConfigurationConnectedVMwarevSphereAssignment{}
 	case "azure-native:guestconfiguration:GuestConfigurationHCRPAssignment":

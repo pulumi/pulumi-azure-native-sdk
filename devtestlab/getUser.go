@@ -11,7 +11,7 @@ import (
 )
 
 // Get user profile.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("azure-native:devtestlab:getUser", args, &rv, opts...)

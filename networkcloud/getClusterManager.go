@@ -11,7 +11,7 @@ import (
 )
 
 // Get the properties of the provided cluster manager.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupClusterManager(ctx *pulumi.Context, args *LookupClusterManagerArgs, opts ...pulumi.InvokeOption) (*LookupClusterManagerResult, error) {
 	var rv LookupClusterManagerResult
 	err := ctx.Invoke("azure-native:networkcloud:getClusterManager", args, &rv, opts...)
@@ -41,7 +41,7 @@ type LookupClusterManagerResult struct {
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 	FabricControllerId string `pulumi:"fabricControllerId"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -131,7 +131,7 @@ func (o LookupClusterManagerResultOutput) FabricControllerId() pulumi.StringOutp
 	return o.ApplyT(func(v LookupClusterManagerResult) string { return v.FabricControllerId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupClusterManagerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterManagerResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the shared private link resource managed by the search service in the given resource group.
-// API Version: 2020-08-01.
+// Azure REST API version: 2022-09-01.
 func LookupSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupSharedPrivateLinkResourceResult, error) {
 	var rv LookupSharedPrivateLinkResourceResult
 	err := ctx.Invoke("azure-native:search:getSharedPrivateLinkResource", args, &rv, opts...)

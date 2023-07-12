@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the properties of the specified bandwidth setting name.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func LookupBandwidthSetting(ctx *pulumi.Context, args *LookupBandwidthSettingArgs, opts ...pulumi.InvokeOption) (*LookupBandwidthSettingResult, error) {
 	var rv LookupBandwidthSettingResult
 	err := ctx.Invoke("azure-native:storsimple:getBandwidthSetting", args, &rv, opts...)

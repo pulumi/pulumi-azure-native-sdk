@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the specific Azure Monitor workspace
-// API Version: 2021-06-03-preview.
+// Azure REST API version: 2023-04-03.
 func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAzureMonitorWorkspaceResult, error) {
 	var rv LookupAzureMonitorWorkspaceResult
 	err := ctx.Invoke("azure-native:monitor:getAzureMonitorWorkspace", args, &rv, opts...)
@@ -44,8 +44,12 @@ type LookupAzureMonitorWorkspaceResult struct {
 	Metrics AzureMonitorWorkspaceResponseMetrics `pulumi:"metrics"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// List of private endpoint connections
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets allow or disallow public network access to workspace
+	PublicNetworkAccess string `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -130,9 +134,21 @@ func (o LookupAzureMonitorWorkspaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections
+func (o LookupAzureMonitorWorkspaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) []PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
 // The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
 func (o LookupAzureMonitorWorkspaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets or sets allow or disallow public network access to workspace
+func (o LookupAzureMonitorWorkspaceResultOutput) PublicNetworkAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.PublicNetworkAccess }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

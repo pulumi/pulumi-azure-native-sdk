@@ -10,6 +10,27 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Type of data destination.
+type AnalyticsConnectorDataDestinationType string
+
+const (
+	AnalyticsConnectorDataDestinationTypeDatalake = AnalyticsConnectorDataDestinationType("datalake")
+)
+
+// Type of data source.
+type AnalyticsConnectorDataSourceType string
+
+const (
+	AnalyticsConnectorDataSourceTypeFhirservice = AnalyticsConnectorDataSourceType("fhirservice")
+)
+
+// Type of data mapping.
+type AnalyticsConnectorMappingType string
+
+const (
+	AnalyticsConnectorMappingTypeFhirToParquet = AnalyticsConnectorMappingType("fhirToParquet")
+)
+
 // Controls how resources are versioned on the FHIR service
 type FhirResourceVersionPolicy string
 
@@ -25,6 +46,14 @@ type FhirServiceKind string
 const (
 	FhirServiceKind_Fhir_Stu3 = FhirServiceKind("fhir-Stu3")
 	FhirServiceKind_Fhir_R4   = FhirServiceKind("fhir-R4")
+)
+
+// The kind of FHIR Service.
+type FhirServiceVersion string
+
+const (
+	FhirServiceVersionSTU3 = FhirServiceVersion("STU3")
+	FhirServiceVersionR4   = FhirServiceVersion("R4")
 )
 
 // Determines how resource identity is resolved on the destination.

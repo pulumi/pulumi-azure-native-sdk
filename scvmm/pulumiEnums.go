@@ -27,6 +27,14 @@ const (
 	DynamicMemoryEnabledTrue  = DynamicMemoryEnabled("true")
 )
 
+// The type of managed service identity.
+type IdentityType string
+
+const (
+	IdentityTypeNone           = IdentityType("None")
+	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+)
+
 // They inventory type.
 type InventoryType string
 
@@ -43,6 +51,15 @@ type LimitCpuForMigration string
 const (
 	LimitCpuForMigrationFalse = LimitCpuForMigration("false")
 	LimitCpuForMigrationTrue  = LimitCpuForMigration("true")
+)
+
+// Gets or sets the guest agent provisioning action.
+type ProvisioningAction string
+
+const (
+	ProvisioningActionInstall   = ProvisioningAction("install")
+	ProvisioningActionUninstall = ProvisioningAction("uninstall")
+	ProvisioningActionRepair    = ProvisioningAction("repair")
 )
 
 func init() {

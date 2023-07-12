@@ -12,7 +12,7 @@ import (
 )
 
 // Template Spec object.
-// API Version: 2022-02-01.
+// Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2022-02-01
 type TemplateSpec struct {
 	pulumi.CustomResourceState
 

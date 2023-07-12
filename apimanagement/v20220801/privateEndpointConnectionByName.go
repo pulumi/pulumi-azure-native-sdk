@@ -12,8 +12,6 @@ import (
 )
 
 // The Private Endpoint Connection resource.
-//
-// Deprecated: azure-native:apimanagement/v20220801:PrivateEndpointConnectionByName is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:PrivateEndpointConnectionByName to guarantee forwards compatibility.
 type PrivateEndpointConnectionByName struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +55,12 @@ func NewPrivateEndpointConnectionByName(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:PrivateEndpointConnectionByName"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:PrivateEndpointConnectionByName"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:PrivateEndpointConnectionByName"),
 		},
 	})
 	opts = append(opts, aliases)

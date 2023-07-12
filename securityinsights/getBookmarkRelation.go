@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a bookmark relation.
-// API Version: 2019-01-01-preview.
+// Azure REST API version: 2023-06-01-preview.
 func LookupBookmarkRelation(ctx *pulumi.Context, args *LookupBookmarkRelationArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkRelationResult, error) {
 	var rv LookupBookmarkRelationResult
 	err := ctx.Invoke("azure-native:securityinsights:getBookmarkRelation", args, &rv, opts...)
@@ -24,11 +24,9 @@ func LookupBookmarkRelation(ctx *pulumi.Context, args *LookupBookmarkRelationArg
 type LookupBookmarkRelationArgs struct {
 	// Bookmark ID
 	BookmarkId string `pulumi:"bookmarkId"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// Relation Name
 	RelationName string `pulumi:"relationName"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
@@ -38,9 +36,9 @@ type LookupBookmarkRelationArgs struct {
 type LookupBookmarkRelationResult struct {
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Azure resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Azure resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The resource ID of the related resource
 	RelatedResourceId string `pulumi:"relatedResourceId"`
@@ -50,7 +48,9 @@ type LookupBookmarkRelationResult struct {
 	RelatedResourceName string `pulumi:"relatedResourceName"`
 	// The resource type of the related resource
 	RelatedResourceType string `pulumi:"relatedResourceType"`
-	// Azure resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -70,11 +70,9 @@ func LookupBookmarkRelationOutput(ctx *pulumi.Context, args LookupBookmarkRelati
 type LookupBookmarkRelationOutputArgs struct {
 	// Bookmark ID
 	BookmarkId pulumi.StringInput `pulumi:"bookmarkId"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput `pulumi:"operationalInsightsResourceProvider"`
 	// Relation Name
 	RelationName pulumi.StringInput `pulumi:"relationName"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
@@ -104,12 +102,12 @@ func (o LookupBookmarkRelationResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBookmarkRelationResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupBookmarkRelationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBookmarkRelationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o LookupBookmarkRelationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBookmarkRelationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -134,7 +132,12 @@ func (o LookupBookmarkRelationResultOutput) RelatedResourceType() pulumi.StringO
 	return o.ApplyT(func(v LookupBookmarkRelationResult) string { return v.RelatedResourceType }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupBookmarkRelationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBookmarkRelationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupBookmarkRelationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBookmarkRelationResult) string { return v.Type }).(pulumi.StringOutput)
 }

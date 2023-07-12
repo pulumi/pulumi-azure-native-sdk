@@ -12,13 +12,13 @@ import (
 )
 
 // A managed cluster snapshot resource.
-// API Version: 2022-02-02-preview.
+// Azure REST API version: 2023-05-02-preview. Prior API version in Azure Native 1.x: 2022-02-02-preview
 type ManagedClusterSnapshot struct {
 	pulumi.CustomResourceState
 
 	// CreationData to be used to specify the source resource ID to create this snapshot.
 	CreationData CreationDataResponsePtrOutput `pulumi:"creationData"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
 	ManagedClusterPropertiesReadOnly ManagedClusterPropertiesForSnapshotResponseOutput `pulumi:"managedClusterPropertiesReadOnly"`
@@ -28,7 +28,7 @@ type ManagedClusterSnapshot struct {
 	SnapshotType pulumi.StringPtrOutput `pulumi:"snapshotType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -81,6 +81,18 @@ func NewManagedClusterSnapshot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230102preview:ManagedClusterSnapshot"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230202preview:ManagedClusterSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230302preview:ManagedClusterSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230402preview:ManagedClusterSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230502preview:ManagedClusterSnapshot"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ManagedClusterSnapshot
@@ -117,7 +129,7 @@ func (ManagedClusterSnapshotState) ElementType() reflect.Type {
 type managedClusterSnapshotArgs struct {
 	// CreationData to be used to specify the source resource ID to create this snapshot.
 	CreationData *CreationData `pulumi:"creationData"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -125,7 +137,7 @@ type managedClusterSnapshotArgs struct {
 	ResourceName *string `pulumi:"resourceName"`
 	// The type of a snapshot. The default is NodePool.
 	SnapshotType *string `pulumi:"snapshotType"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -133,7 +145,7 @@ type managedClusterSnapshotArgs struct {
 type ManagedClusterSnapshotArgs struct {
 	// CreationData to be used to specify the source resource ID to create this snapshot.
 	CreationData CreationDataPtrInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -141,7 +153,7 @@ type ManagedClusterSnapshotArgs struct {
 	ResourceName pulumi.StringPtrInput
 	// The type of a snapshot. The default is NodePool.
 	SnapshotType pulumi.StringPtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -187,7 +199,7 @@ func (o ManagedClusterSnapshotOutput) CreationData() CreationDataResponsePtrOutp
 	return o.ApplyT(func(v *ManagedClusterSnapshot) CreationDataResponsePtrOutput { return v.CreationData }).(CreationDataResponsePtrOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o ManagedClusterSnapshotOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedClusterSnapshot) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -214,7 +226,7 @@ func (o ManagedClusterSnapshotOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ManagedClusterSnapshot) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags
+// Resource tags.
 func (o ManagedClusterSnapshotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedClusterSnapshot) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

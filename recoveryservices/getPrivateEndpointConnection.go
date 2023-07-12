@@ -11,7 +11,7 @@ import (
 )
 
 // Get Private Endpoint Connection. This call is made by Backup Admin.
-// API Version: 2021-02-01.
+// Azure REST API version: 2023-04-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:recoveryservices:getPrivateEndpointConnection", args, &rv, opts...)

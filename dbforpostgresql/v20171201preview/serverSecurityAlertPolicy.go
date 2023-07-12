@@ -53,9 +53,6 @@ func NewServerSecurityAlertPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql:ServerSecurityAlertPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:ServerSecurityAlertPolicy"),
 		},
 	})

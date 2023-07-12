@@ -3,12 +3,45 @@
 
 package networkcloud
 
+// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+type AdvertiseToFabric string
+
+const (
+	AdvertiseToFabricTrue  = AdvertiseToFabric("True")
+	AdvertiseToFabricFalse = AdvertiseToFabric("False")
+)
+
+// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
+type AgentPoolMode string
+
+const (
+	AgentPoolModeSystem        = AgentPoolMode("System")
+	AgentPoolModeUser          = AgentPoolMode("User")
+	AgentPoolModeNotApplicable = AgentPoolMode("NotApplicable")
+)
+
 // The access level allowed for the users in this key set.
 type BareMetalMachineKeySetPrivilegeLevel string
 
 const (
 	BareMetalMachineKeySetPrivilegeLevelStandard  = BareMetalMachineKeySetPrivilegeLevel("Standard")
 	BareMetalMachineKeySetPrivilegeLevelSuperuser = BareMetalMachineKeySetPrivilegeLevel("Superuser")
+)
+
+// The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+type BfdEnabled string
+
+const (
+	BfdEnabledTrue  = BfdEnabled("True")
+	BfdEnabledFalse = BfdEnabled("False")
+)
+
+// The indicator to enable multi-hop peering support.
+type BgpMultiHop string
+
+const (
+	BgpMultiHopTrue  = BgpMultiHop("True")
+	BgpMultiHopFalse = BgpMultiHop("False")
 )
 
 // The access level allowed for the users in this key set.
@@ -52,7 +85,23 @@ const (
 	DefaultGatewayFalse = DefaultGateway("False")
 )
 
-// The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
+// The indicator to specify if the load balancer peers with the network fabric.
+type FabricPeeringEnabled string
+
+const (
+	FabricPeeringEnabledTrue  = FabricPeeringEnabled("True")
+	FabricPeeringEnabledFalse = FabricPeeringEnabled("False")
+)
+
+// The size of the hugepages to allocate.
+type HugepagesSize string
+
+const (
+	HugepagesSize_2M = HugepagesSize("2M")
+	HugepagesSize_1G = HugepagesSize("1G")
+)
+
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 type HybridAksIpamEnabled string
 
 const (
@@ -60,7 +109,7 @@ const (
 	HybridAksIpamEnabledFalse = HybridAksIpamEnabled("False")
 )
 
-// The network plugin type for Hybrid AKS.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 type HybridAksPluginType string
 
 const (
@@ -76,6 +125,25 @@ const (
 	IpAllocationTypeIPV4      = IpAllocationType("IPV4")
 	IpAllocationTypeIPV6      = IpAllocationType("IPV6")
 	IpAllocationTypeDualStack = IpAllocationType("DualStack")
+)
+
+// The indicator of how this network will be utilized by the Kubernetes cluster.
+type KubernetesPluginType string
+
+const (
+	KubernetesPluginTypeDPDK     = KubernetesPluginType("DPDK")
+	KubernetesPluginTypeSRIOV    = KubernetesPluginType("SRIOV")
+	KubernetesPluginTypeOSDevice = KubernetesPluginType("OSDevice")
+	KubernetesPluginTypeMACVLAN  = KubernetesPluginType("MACVLAN")
+	KubernetesPluginTypeIPVLAN   = KubernetesPluginType("IPVLAN")
+)
+
+// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+type L3NetworkConfigurationIpamEnabled string
+
+const (
+	L3NetworkConfigurationIpamEnabledTrue  = L3NetworkConfigurationIpamEnabled("True")
+	L3NetworkConfigurationIpamEnabledFalse = L3NetworkConfigurationIpamEnabled("False")
 )
 
 // The strategy for creating the OS disk.

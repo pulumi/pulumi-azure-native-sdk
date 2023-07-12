@@ -12,7 +12,7 @@ import (
 )
 
 // Database, Server or Elastic Pool Advisor.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type ServerAdvisor struct {
 	pulumi.CustomResourceState
 
@@ -93,6 +93,9 @@ func NewServerAdvisor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ServerAdvisor"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ServerAdvisor"),
 		},
 	})
 	opts = append(opts, aliases)

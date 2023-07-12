@@ -12,8 +12,6 @@ import (
 )
 
 // A server trust group.
-//
-// Deprecated: azure-native:sql/v20211101:ServerTrustGroup is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ServerTrustGroup to guarantee forwards compatibility.
 type ServerTrustGroup struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +77,9 @@ func NewServerTrustGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ServerTrustGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ServerTrustGroup"),
 		},
 	})
 	opts = append(opts, aliases)

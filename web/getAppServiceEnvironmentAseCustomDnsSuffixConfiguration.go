@@ -11,7 +11,7 @@ import (
 )
 
 // Full view of the custom domain suffix configuration for ASEv3.
-// API Version: 2022-03-01.
+// Azure REST API version: 2022-09-01.
 func LookupAppServiceEnvironmentAseCustomDnsSuffixConfiguration(ctx *pulumi.Context, args *LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult, error) {
 	var rv LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult
 	err := ctx.Invoke("azure-native:web:getAppServiceEnvironmentAseCustomDnsSuffixConfiguration", args, &rv, opts...)

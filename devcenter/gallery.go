@@ -12,7 +12,7 @@ import (
 )
 
 // Represents a gallery.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview
 type Gallery struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,12 @@ func NewGallery(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20221111preview:Gallery"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230101preview:Gallery"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230401:Gallery"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Gallery
@@ -97,7 +103,7 @@ type galleryArgs struct {
 	GalleryName *string `pulumi:"galleryName"`
 	// The resource ID of the backing Azure Compute Gallery.
 	GalleryResourceId string `pulumi:"galleryResourceId"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -109,7 +115,7 @@ type GalleryArgs struct {
 	GalleryName pulumi.StringPtrInput
 	// The resource ID of the backing Azure Compute Gallery.
 	GalleryResourceId pulumi.StringInput
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 

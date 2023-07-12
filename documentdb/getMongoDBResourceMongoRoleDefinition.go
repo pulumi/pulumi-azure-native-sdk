@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
-// API Version: 2021-10-15-preview.
+// Azure REST API version: 2023-04-15.
 func LookupMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context, args *LookupMongoDBResourceMongoRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoRoleDefinitionResult, error) {
 	var rv LookupMongoDBResourceMongoRoleDefinitionResult
 	err := ctx.Invoke("azure-native:documentdb:getMongoDBResourceMongoRoleDefinition", args, &rv, opts...)

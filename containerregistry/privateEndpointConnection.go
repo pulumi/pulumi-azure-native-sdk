@@ -12,7 +12,7 @@ import (
 )
 
 // An object that represents a private endpoint connection for a container registry.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -113,7 +113,7 @@ type privateEndpointConnectionArgs struct {
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 	// The name of the container registry.
 	RegistryName string `pulumi:"registryName"`
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -127,7 +127,7 @@ type PrivateEndpointConnectionArgs struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePtrInput
 	// The name of the container registry.
 	RegistryName pulumi.StringInput
-	// The name of the resource group to which the container registry belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 

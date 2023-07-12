@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details about the orchestrator instance.
-// API Version: 2021-03-15.
+// Azure REST API version: 2021-03-15.
 func LookupOrchestratorInstanceServiceDetails(ctx *pulumi.Context, args *LookupOrchestratorInstanceServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupOrchestratorInstanceServiceDetailsResult, error) {
 	var rv LookupOrchestratorInstanceServiceDetailsResult
 	err := ctx.Invoke("azure-native:delegatednetwork:getOrchestratorInstanceServiceDetails", args, &rv, opts...)

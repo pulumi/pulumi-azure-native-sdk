@@ -11,7 +11,7 @@ import (
 )
 
 // Get information about a configuration profile preference
-// API Version: 2020-06-30-preview.
+// Azure REST API version: 2020-06-30-preview.
 func LookupConfigurationProfilePreference(ctx *pulumi.Context, args *LookupConfigurationProfilePreferenceArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfilePreferenceResult, error) {
 	var rv LookupConfigurationProfilePreferenceResult
 	err := ctx.Invoke("azure-native:automanage:getConfigurationProfilePreference", args, &rv, opts...)

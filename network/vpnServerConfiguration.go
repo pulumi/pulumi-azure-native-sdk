@@ -12,12 +12,14 @@ import (
 )
 
 // VpnServerConfiguration Resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type VpnServerConfiguration struct {
 	pulumi.CustomResourceState
 
 	// The set of aad vpn authentication parameters.
 	AadAuthenticationParameters AadAuthenticationParametersResponsePtrOutput `pulumi:"aadAuthenticationParameters"`
+	// List of all VpnServerConfigurationPolicyGroups.
+	ConfigurationPolicyGroups VpnServerConfigurationPolicyGroupResponseArrayOutput `pulumi:"configurationPolicyGroups"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource location.
@@ -122,6 +124,12 @@ func NewVpnServerConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VpnServerConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VpnServerConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:VpnServerConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VpnServerConfiguration
@@ -158,6 +166,8 @@ func (VpnServerConfigurationState) ElementType() reflect.Type {
 type vpnServerConfigurationArgs struct {
 	// The set of aad vpn authentication parameters.
 	AadAuthenticationParameters *AadAuthenticationParameters `pulumi:"aadAuthenticationParameters"`
+	// List of all VpnServerConfigurationPolicyGroups.
+	ConfigurationPolicyGroups []VpnServerConfigurationPolicyGroup `pulumi:"configurationPolicyGroups"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
@@ -196,6 +206,8 @@ type vpnServerConfigurationArgs struct {
 type VpnServerConfigurationArgs struct {
 	// The set of aad vpn authentication parameters.
 	AadAuthenticationParameters AadAuthenticationParametersPtrInput
+	// List of all VpnServerConfigurationPolicyGroups.
+	ConfigurationPolicyGroups VpnServerConfigurationPolicyGroupArrayInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Resource location.
@@ -272,6 +284,13 @@ func (o VpnServerConfigurationOutput) AadAuthenticationParameters() AadAuthentic
 	return o.ApplyT(func(v *VpnServerConfiguration) AadAuthenticationParametersResponsePtrOutput {
 		return v.AadAuthenticationParameters
 	}).(AadAuthenticationParametersResponsePtrOutput)
+}
+
+// List of all VpnServerConfigurationPolicyGroups.
+func (o VpnServerConfigurationOutput) ConfigurationPolicyGroups() VpnServerConfigurationPolicyGroupResponseArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfiguration) VpnServerConfigurationPolicyGroupResponseArrayOutput {
+		return v.ConfigurationPolicyGroups
+	}).(VpnServerConfigurationPolicyGroupResponseArrayOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

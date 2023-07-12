@@ -47,6 +47,12 @@ func NewCredentialSet(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:containerregistry:CredentialSet"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource CredentialSet
 	err := ctx.RegisterResource("azure-native:containerregistry/v20230101preview:CredentialSet", name, args, &resource, opts...)
 	if err != nil {

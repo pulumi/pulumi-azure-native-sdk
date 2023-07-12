@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the Schema specified by its identifier.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2021-04-01-preview.
 func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupSchemaResult, error) {
 	var rv LookupSchemaResult
 	err := ctx.Invoke("azure-native:apimanagement:getSchema", args, &rv, opts...)

@@ -10,17 +10,74 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type ErrorDetailResponse struct {
-	// The error's code.
-	Code string `pulumi:"code"`
-	// Additional error details.
-	Details []ErrorDetailResponse `pulumi:"details"`
-	// A human readable error message.
-	Message string `pulumi:"message"`
-	// Indicates which property in the request is responsible for the error.
-	Target *string `pulumi:"target"`
+// The resource management error additional info.
+type ErrorAdditionalInfoResponse struct {
+	// The additional info.
+	Info interface{} `pulumi:"info"`
+	// The additional info type.
+	Type string `pulumi:"type"`
 }
 
+// The resource management error additional info.
+type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+// The additional info.
+func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
+}
+
+// The additional info type.
+func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
+		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
+	}).(ErrorAdditionalInfoResponseOutput)
+}
+
+// The error detail.
+type ErrorDetailResponse struct {
+	// The error additional info.
+	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error details.
+	Details []ErrorDetailResponse `pulumi:"details"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target string `pulumi:"target"`
+}
+
+// The error detail.
 type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
 
 func (ErrorDetailResponseOutput) ElementType() reflect.Type {
@@ -35,24 +92,29 @@ func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx co
 	return o
 }
 
-// The error's code.
+// The error additional info.
+func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
 func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
-// Additional error details.
+// The error details.
 func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
 	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
 }
 
-// A human readable error message.
+// The error message.
 func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// Indicates which property in the request is responsible for the error.
-func (o ErrorDetailResponseOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorDetailResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+// The error target.
+func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
 }
 
 type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
@@ -311,21 +373,165 @@ func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the guest agent settings for the virtual machine.
+type GuestAgentProfile struct {
+	// Gets or sets the Public Key provided by the client for enabling guest management.
+	ClientPublicKey *string `pulumi:"clientPublicKey"`
+}
+
+// GuestAgentProfileInput is an input type that accepts GuestAgentProfileArgs and GuestAgentProfileOutput values.
+// You can construct a concrete instance of `GuestAgentProfileInput` via:
+//
+//	GuestAgentProfileArgs{...}
+type GuestAgentProfileInput interface {
+	pulumi.Input
+
+	ToGuestAgentProfileOutput() GuestAgentProfileOutput
+	ToGuestAgentProfileOutputWithContext(context.Context) GuestAgentProfileOutput
+}
+
+// Specifies the guest agent settings for the virtual machine.
+type GuestAgentProfileArgs struct {
+	// Gets or sets the Public Key provided by the client for enabling guest management.
+	ClientPublicKey pulumi.StringPtrInput `pulumi:"clientPublicKey"`
+}
+
+func (GuestAgentProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestAgentProfile)(nil)).Elem()
+}
+
+func (i GuestAgentProfileArgs) ToGuestAgentProfileOutput() GuestAgentProfileOutput {
+	return i.ToGuestAgentProfileOutputWithContext(context.Background())
+}
+
+func (i GuestAgentProfileArgs) ToGuestAgentProfileOutputWithContext(ctx context.Context) GuestAgentProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestAgentProfileOutput)
+}
+
+func (i GuestAgentProfileArgs) ToGuestAgentProfilePtrOutput() GuestAgentProfilePtrOutput {
+	return i.ToGuestAgentProfilePtrOutputWithContext(context.Background())
+}
+
+func (i GuestAgentProfileArgs) ToGuestAgentProfilePtrOutputWithContext(ctx context.Context) GuestAgentProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestAgentProfileOutput).ToGuestAgentProfilePtrOutputWithContext(ctx)
+}
+
+// GuestAgentProfilePtrInput is an input type that accepts GuestAgentProfileArgs, GuestAgentProfilePtr and GuestAgentProfilePtrOutput values.
+// You can construct a concrete instance of `GuestAgentProfilePtrInput` via:
+//
+//	        GuestAgentProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuestAgentProfilePtrInput interface {
+	pulumi.Input
+
+	ToGuestAgentProfilePtrOutput() GuestAgentProfilePtrOutput
+	ToGuestAgentProfilePtrOutputWithContext(context.Context) GuestAgentProfilePtrOutput
+}
+
+type guestAgentProfilePtrType GuestAgentProfileArgs
+
+func GuestAgentProfilePtr(v *GuestAgentProfileArgs) GuestAgentProfilePtrInput {
+	return (*guestAgentProfilePtrType)(v)
+}
+
+func (*guestAgentProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestAgentProfile)(nil)).Elem()
+}
+
+func (i *guestAgentProfilePtrType) ToGuestAgentProfilePtrOutput() GuestAgentProfilePtrOutput {
+	return i.ToGuestAgentProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *guestAgentProfilePtrType) ToGuestAgentProfilePtrOutputWithContext(ctx context.Context) GuestAgentProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestAgentProfilePtrOutput)
+}
+
+// Specifies the guest agent settings for the virtual machine.
+type GuestAgentProfileOutput struct{ *pulumi.OutputState }
+
+func (GuestAgentProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestAgentProfile)(nil)).Elem()
+}
+
+func (o GuestAgentProfileOutput) ToGuestAgentProfileOutput() GuestAgentProfileOutput {
+	return o
+}
+
+func (o GuestAgentProfileOutput) ToGuestAgentProfileOutputWithContext(ctx context.Context) GuestAgentProfileOutput {
+	return o
+}
+
+func (o GuestAgentProfileOutput) ToGuestAgentProfilePtrOutput() GuestAgentProfilePtrOutput {
+	return o.ToGuestAgentProfilePtrOutputWithContext(context.Background())
+}
+
+func (o GuestAgentProfileOutput) ToGuestAgentProfilePtrOutputWithContext(ctx context.Context) GuestAgentProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestAgentProfile) *GuestAgentProfile {
+		return &v
+	}).(GuestAgentProfilePtrOutput)
+}
+
+// Gets or sets the Public Key provided by the client for enabling guest management.
+func (o GuestAgentProfileOutput) ClientPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestAgentProfile) *string { return v.ClientPublicKey }).(pulumi.StringPtrOutput)
+}
+
+type GuestAgentProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (GuestAgentProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestAgentProfile)(nil)).Elem()
+}
+
+func (o GuestAgentProfilePtrOutput) ToGuestAgentProfilePtrOutput() GuestAgentProfilePtrOutput {
+	return o
+}
+
+func (o GuestAgentProfilePtrOutput) ToGuestAgentProfilePtrOutputWithContext(ctx context.Context) GuestAgentProfilePtrOutput {
+	return o
+}
+
+func (o GuestAgentProfilePtrOutput) Elem() GuestAgentProfileOutput {
+	return o.ApplyT(func(v *GuestAgentProfile) GuestAgentProfile {
+		if v != nil {
+			return *v
+		}
+		var ret GuestAgentProfile
+		return ret
+	}).(GuestAgentProfileOutput)
+}
+
+// Gets or sets the Public Key provided by the client for enabling guest management.
+func (o GuestAgentProfilePtrOutput) ClientPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestAgentProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientPublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the guest agent settings for the virtual machine.
 type GuestAgentProfileResponse struct {
 	// The hybrid machine agent full version.
 	AgentVersion string `pulumi:"agentVersion"`
+	// Gets or sets the Public Key provided by the client for enabling guest management.
+	ClientPublicKey *string `pulumi:"clientPublicKey"`
 	// Details about the error state.
 	ErrorDetails []ErrorDetailResponse `pulumi:"errorDetails"`
 	// The time of the last status change.
 	LastStatusChange string `pulumi:"lastStatusChange"`
+	// Specifies whether any MS SQL instance is discovered on the machine.
+	MssqlDiscovered string `pulumi:"mssqlDiscovered"`
 	// The status of the hybrid machine agent.
 	Status string `pulumi:"status"`
 	// Specifies the VM's unique SMBIOS ID.
 	VmUuid string `pulumi:"vmUuid"`
 }
 
-// Defines the resource properties.
+// Specifies the guest agent settings for the virtual machine.
 type GuestAgentProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (GuestAgentProfileResponseOutput) ElementType() reflect.Type {
@@ -345,6 +551,11 @@ func (o GuestAgentProfileResponseOutput) AgentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestAgentProfileResponse) string { return v.AgentVersion }).(pulumi.StringOutput)
 }
 
+// Gets or sets the Public Key provided by the client for enabling guest management.
+func (o GuestAgentProfileResponseOutput) ClientPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestAgentProfileResponse) *string { return v.ClientPublicKey }).(pulumi.StringPtrOutput)
+}
+
 // Details about the error state.
 func (o GuestAgentProfileResponseOutput) ErrorDetails() ErrorDetailResponseArrayOutput {
 	return o.ApplyT(func(v GuestAgentProfileResponse) []ErrorDetailResponse { return v.ErrorDetails }).(ErrorDetailResponseArrayOutput)
@@ -353,6 +564,11 @@ func (o GuestAgentProfileResponseOutput) ErrorDetails() ErrorDetailResponseArray
 // The time of the last status change.
 func (o GuestAgentProfileResponseOutput) LastStatusChange() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestAgentProfileResponse) string { return v.LastStatusChange }).(pulumi.StringOutput)
+}
+
+// Specifies whether any MS SQL instance is discovered on the machine.
+func (o GuestAgentProfileResponseOutput) MssqlDiscovered() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestAgentProfileResponse) string { return v.MssqlDiscovered }).(pulumi.StringOutput)
 }
 
 // The status of the hybrid machine agent.
@@ -399,6 +615,16 @@ func (o GuestAgentProfileResponsePtrOutput) AgentVersion() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the Public Key provided by the client for enabling guest management.
+func (o GuestAgentProfileResponsePtrOutput) ClientPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestAgentProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientPublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // Details about the error state.
 func (o GuestAgentProfileResponsePtrOutput) ErrorDetails() ErrorDetailResponseArrayOutput {
 	return o.ApplyT(func(v *GuestAgentProfileResponse) []ErrorDetailResponse {
@@ -416,6 +642,16 @@ func (o GuestAgentProfileResponsePtrOutput) LastStatusChange() pulumi.StringPtrO
 			return nil
 		}
 		return &v.LastStatusChange
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether any MS SQL instance is discovered on the machine.
+func (o GuestAgentProfileResponsePtrOutput) MssqlDiscovered() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestAgentProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MssqlDiscovered
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -658,7 +894,7 @@ func (o GuestCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the hardware settings for the virtual machine.
 type HardwareProfile struct {
 	// Gets or sets memory size in MBs for the vm.
 	MemorySizeMB *int `pulumi:"memorySizeMB"`
@@ -679,7 +915,7 @@ type HardwareProfileInput interface {
 	ToHardwareProfileOutputWithContext(context.Context) HardwareProfileOutput
 }
 
-// Defines the resource properties.
+// Specifies the hardware settings for the virtual machine.
 type HardwareProfileArgs struct {
 	// Gets or sets memory size in MBs for the vm.
 	MemorySizeMB pulumi.IntPtrInput `pulumi:"memorySizeMB"`
@@ -742,7 +978,7 @@ func (i *hardwareProfilePtrType) ToHardwareProfilePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(HardwareProfilePtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the hardware settings for the virtual machine.
 type HardwareProfileOutput struct{ *pulumi.OutputState }
 
 func (HardwareProfileOutput) ElementType() reflect.Type {
@@ -836,7 +1072,7 @@ func (o HardwareProfilePtrOutput) NumCoresPerSocket() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the hardware settings for the virtual machine.
 type HardwareProfileResponse struct {
 	// Gets or sets a value indicating whether virtual processors can be added while this virtual machine is running.
 	CpuHotAddEnabled bool `pulumi:"cpuHotAddEnabled"`
@@ -852,7 +1088,7 @@ type HardwareProfileResponse struct {
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 }
 
-// Defines the resource properties.
+// Specifies the hardware settings for the virtual machine.
 type HardwareProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (HardwareProfileResponseOutput) ElementType() reflect.Type {
@@ -1919,7 +2155,7 @@ func (o NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInt
 	}).(NetworkInterfaceResponseOutput)
 }
 
-// Defines the resource properties.
+// Specifies the network interfaces of the virtual machine.
 type NetworkProfile struct {
 	// Gets or sets the list of network interfaces associated with the virtual machine.
 	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
@@ -1936,7 +2172,7 @@ type NetworkProfileInput interface {
 	ToNetworkProfileOutputWithContext(context.Context) NetworkProfileOutput
 }
 
-// Defines the resource properties.
+// Specifies the network interfaces of the virtual machine.
 type NetworkProfileArgs struct {
 	// Gets or sets the list of network interfaces associated with the virtual machine.
 	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
@@ -1995,7 +2231,7 @@ func (i *networkProfilePtrType) ToNetworkProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfilePtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the network interfaces of the virtual machine.
 type NetworkProfileOutput struct{ *pulumi.OutputState }
 
 func (NetworkProfileOutput) ElementType() reflect.Type {
@@ -2059,13 +2295,13 @@ func (o NetworkProfilePtrOutput) NetworkInterfaces() NetworkInterfaceArrayOutput
 	}).(NetworkInterfaceArrayOutput)
 }
 
-// Defines the resource properties.
+// Specifies the network interfaces of the virtual machine.
 type NetworkProfileResponse struct {
 	// Gets or sets the list of network interfaces associated with the virtual machine.
 	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
 }
 
-// Defines the resource properties.
+// Specifies the network interfaces of the virtual machine.
 type NetworkProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (NetworkProfileResponseOutput) ElementType() reflect.Type {
@@ -2574,7 +2810,7 @@ func (o NicIPSettingsResponsePtrOutput) SubnetMask() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the operating system settings for the virtual machine.
 type OsProfile struct {
 	// Gets or sets administrator password.
 	AdminPassword *string `pulumi:"adminPassword"`
@@ -2582,8 +2818,14 @@ type OsProfile struct {
 	AdminUsername *string `pulumi:"adminUsername"`
 	// Gets or sets computer name.
 	ComputerName *string `pulumi:"computerName"`
+	// Gets or sets the guestId.
+	GuestId *string `pulumi:"guestId"`
+	// Specifies the linux configuration for update management.
+	LinuxConfiguration *OsProfileLinuxConfiguration `pulumi:"linuxConfiguration"`
 	// Gets or sets the type of the os.
 	OsType *string `pulumi:"osType"`
+	// Specifies the windows configuration for update management.
+	WindowsConfiguration *OsProfileWindowsConfiguration `pulumi:"windowsConfiguration"`
 }
 
 // OsProfileInput is an input type that accepts OsProfileArgs and OsProfileOutput values.
@@ -2597,7 +2839,7 @@ type OsProfileInput interface {
 	ToOsProfileOutputWithContext(context.Context) OsProfileOutput
 }
 
-// Defines the resource properties.
+// Specifies the operating system settings for the virtual machine.
 type OsProfileArgs struct {
 	// Gets or sets administrator password.
 	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
@@ -2605,8 +2847,14 @@ type OsProfileArgs struct {
 	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
 	// Gets or sets computer name.
 	ComputerName pulumi.StringPtrInput `pulumi:"computerName"`
+	// Gets or sets the guestId.
+	GuestId pulumi.StringPtrInput `pulumi:"guestId"`
+	// Specifies the linux configuration for update management.
+	LinuxConfiguration OsProfileLinuxConfigurationPtrInput `pulumi:"linuxConfiguration"`
 	// Gets or sets the type of the os.
 	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	// Specifies the windows configuration for update management.
+	WindowsConfiguration OsProfileWindowsConfigurationPtrInput `pulumi:"windowsConfiguration"`
 }
 
 func (OsProfileArgs) ElementType() reflect.Type {
@@ -2662,7 +2910,7 @@ func (i *osProfilePtrType) ToOsProfilePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OsProfilePtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the operating system settings for the virtual machine.
 type OsProfileOutput struct{ *pulumi.OutputState }
 
 func (OsProfileOutput) ElementType() reflect.Type {
@@ -2702,9 +2950,24 @@ func (o OsProfileOutput) ComputerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsProfile) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the guestId.
+func (o OsProfileOutput) GuestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfile) *string { return v.GuestId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the linux configuration for update management.
+func (o OsProfileOutput) LinuxConfiguration() OsProfileLinuxConfigurationPtrOutput {
+	return o.ApplyT(func(v OsProfile) *OsProfileLinuxConfiguration { return v.LinuxConfiguration }).(OsProfileLinuxConfigurationPtrOutput)
+}
+
 // Gets or sets the type of the os.
 func (o OsProfileOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsProfile) *string { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the windows configuration for update management.
+func (o OsProfileOutput) WindowsConfiguration() OsProfileWindowsConfigurationPtrOutput {
+	return o.ApplyT(func(v OsProfile) *OsProfileWindowsConfiguration { return v.WindowsConfiguration }).(OsProfileWindowsConfigurationPtrOutput)
 }
 
 type OsProfilePtrOutput struct{ *pulumi.OutputState }
@@ -2761,6 +3024,26 @@ func (o OsProfilePtrOutput) ComputerName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the guestId.
+func (o OsProfilePtrOutput) GuestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GuestId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the linux configuration for update management.
+func (o OsProfilePtrOutput) LinuxConfiguration() OsProfileLinuxConfigurationPtrOutput {
+	return o.ApplyT(func(v *OsProfile) *OsProfileLinuxConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxConfiguration
+	}).(OsProfileLinuxConfigurationPtrOutput)
+}
+
 // Gets or sets the type of the os.
 func (o OsProfilePtrOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsProfile) *string {
@@ -2771,12 +3054,187 @@ func (o OsProfilePtrOutput) OsType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the windows configuration for update management.
+func (o OsProfilePtrOutput) WindowsConfiguration() OsProfileWindowsConfigurationPtrOutput {
+	return o.ApplyT(func(v *OsProfile) *OsProfileWindowsConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsConfiguration
+	}).(OsProfileWindowsConfigurationPtrOutput)
+}
+
+// Specifies the linux configuration for update management.
+type OsProfileLinuxConfiguration struct {
+	// Specifies the assessment mode.
+	AssessmentMode *string `pulumi:"assessmentMode"`
+	// Specifies the patch mode.
+	PatchMode *string `pulumi:"patchMode"`
+}
+
+// OsProfileLinuxConfigurationInput is an input type that accepts OsProfileLinuxConfigurationArgs and OsProfileLinuxConfigurationOutput values.
+// You can construct a concrete instance of `OsProfileLinuxConfigurationInput` via:
+//
+//	OsProfileLinuxConfigurationArgs{...}
+type OsProfileLinuxConfigurationInput interface {
+	pulumi.Input
+
+	ToOsProfileLinuxConfigurationOutput() OsProfileLinuxConfigurationOutput
+	ToOsProfileLinuxConfigurationOutputWithContext(context.Context) OsProfileLinuxConfigurationOutput
+}
+
+// Specifies the linux configuration for update management.
+type OsProfileLinuxConfigurationArgs struct {
+	// Specifies the assessment mode.
+	AssessmentMode pulumi.StringPtrInput `pulumi:"assessmentMode"`
+	// Specifies the patch mode.
+	PatchMode pulumi.StringPtrInput `pulumi:"patchMode"`
+}
+
+func (OsProfileLinuxConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileLinuxConfiguration)(nil)).Elem()
+}
+
+func (i OsProfileLinuxConfigurationArgs) ToOsProfileLinuxConfigurationOutput() OsProfileLinuxConfigurationOutput {
+	return i.ToOsProfileLinuxConfigurationOutputWithContext(context.Background())
+}
+
+func (i OsProfileLinuxConfigurationArgs) ToOsProfileLinuxConfigurationOutputWithContext(ctx context.Context) OsProfileLinuxConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileLinuxConfigurationOutput)
+}
+
+func (i OsProfileLinuxConfigurationArgs) ToOsProfileLinuxConfigurationPtrOutput() OsProfileLinuxConfigurationPtrOutput {
+	return i.ToOsProfileLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i OsProfileLinuxConfigurationArgs) ToOsProfileLinuxConfigurationPtrOutputWithContext(ctx context.Context) OsProfileLinuxConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileLinuxConfigurationOutput).ToOsProfileLinuxConfigurationPtrOutputWithContext(ctx)
+}
+
+// OsProfileLinuxConfigurationPtrInput is an input type that accepts OsProfileLinuxConfigurationArgs, OsProfileLinuxConfigurationPtr and OsProfileLinuxConfigurationPtrOutput values.
+// You can construct a concrete instance of `OsProfileLinuxConfigurationPtrInput` via:
+//
+//	        OsProfileLinuxConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OsProfileLinuxConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToOsProfileLinuxConfigurationPtrOutput() OsProfileLinuxConfigurationPtrOutput
+	ToOsProfileLinuxConfigurationPtrOutputWithContext(context.Context) OsProfileLinuxConfigurationPtrOutput
+}
+
+type osProfileLinuxConfigurationPtrType OsProfileLinuxConfigurationArgs
+
+func OsProfileLinuxConfigurationPtr(v *OsProfileLinuxConfigurationArgs) OsProfileLinuxConfigurationPtrInput {
+	return (*osProfileLinuxConfigurationPtrType)(v)
+}
+
+func (*osProfileLinuxConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileLinuxConfiguration)(nil)).Elem()
+}
+
+func (i *osProfileLinuxConfigurationPtrType) ToOsProfileLinuxConfigurationPtrOutput() OsProfileLinuxConfigurationPtrOutput {
+	return i.ToOsProfileLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *osProfileLinuxConfigurationPtrType) ToOsProfileLinuxConfigurationPtrOutputWithContext(ctx context.Context) OsProfileLinuxConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileLinuxConfigurationPtrOutput)
+}
+
+// Specifies the linux configuration for update management.
+type OsProfileLinuxConfigurationOutput struct{ *pulumi.OutputState }
+
+func (OsProfileLinuxConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileLinuxConfiguration)(nil)).Elem()
+}
+
+func (o OsProfileLinuxConfigurationOutput) ToOsProfileLinuxConfigurationOutput() OsProfileLinuxConfigurationOutput {
+	return o
+}
+
+func (o OsProfileLinuxConfigurationOutput) ToOsProfileLinuxConfigurationOutputWithContext(ctx context.Context) OsProfileLinuxConfigurationOutput {
+	return o
+}
+
+func (o OsProfileLinuxConfigurationOutput) ToOsProfileLinuxConfigurationPtrOutput() OsProfileLinuxConfigurationPtrOutput {
+	return o.ToOsProfileLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o OsProfileLinuxConfigurationOutput) ToOsProfileLinuxConfigurationPtrOutputWithContext(ctx context.Context) OsProfileLinuxConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsProfileLinuxConfiguration) *OsProfileLinuxConfiguration {
+		return &v
+	}).(OsProfileLinuxConfigurationPtrOutput)
+}
+
+// Specifies the assessment mode.
+func (o OsProfileLinuxConfigurationOutput) AssessmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileLinuxConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the patch mode.
+func (o OsProfileLinuxConfigurationOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileLinuxConfiguration) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
+}
+
+type OsProfileLinuxConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (OsProfileLinuxConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileLinuxConfiguration)(nil)).Elem()
+}
+
+func (o OsProfileLinuxConfigurationPtrOutput) ToOsProfileLinuxConfigurationPtrOutput() OsProfileLinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o OsProfileLinuxConfigurationPtrOutput) ToOsProfileLinuxConfigurationPtrOutputWithContext(ctx context.Context) OsProfileLinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o OsProfileLinuxConfigurationPtrOutput) Elem() OsProfileLinuxConfigurationOutput {
+	return o.ApplyT(func(v *OsProfileLinuxConfiguration) OsProfileLinuxConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OsProfileLinuxConfiguration
+		return ret
+	}).(OsProfileLinuxConfigurationOutput)
+}
+
+// Specifies the assessment mode.
+func (o OsProfileLinuxConfigurationPtrOutput) AssessmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileLinuxConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssessmentMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the patch mode.
+func (o OsProfileLinuxConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileLinuxConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PatchMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the operating system settings for the virtual machine.
 type OsProfileResponse struct {
 	// Gets or sets administrator username.
 	AdminUsername *string `pulumi:"adminUsername"`
+	// Gets or sets a value indicating whether the VM is ready for extension operations.
+	AllowExtensionOperations bool `pulumi:"allowExtensionOperations"`
 	// Gets or sets computer name.
 	ComputerName *string `pulumi:"computerName"`
+	// Gets or sets the guestId.
+	GuestId *string `pulumi:"guestId"`
+	// Specifies the linux configuration for update management.
+	LinuxConfiguration *OsProfileResponseLinuxConfiguration `pulumi:"linuxConfiguration"`
 	// Gets or sets os name.
 	OsName string `pulumi:"osName"`
 	// Gets or sets the type of the os.
@@ -2787,9 +3245,11 @@ type OsProfileResponse struct {
 	ToolsVersion string `pulumi:"toolsVersion"`
 	// Gets or sets the current version status of VMware Tools installed in the guest operating system.
 	ToolsVersionStatus string `pulumi:"toolsVersionStatus"`
+	// Specifies the windows configuration for update management.
+	WindowsConfiguration *OsProfileResponseWindowsConfiguration `pulumi:"windowsConfiguration"`
 }
 
-// Defines the resource properties.
+// Specifies the operating system settings for the virtual machine.
 type OsProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (OsProfileResponseOutput) ElementType() reflect.Type {
@@ -2809,9 +3269,24 @@ func (o OsProfileResponseOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsProfileResponse) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets a value indicating whether the VM is ready for extension operations.
+func (o OsProfileResponseOutput) AllowExtensionOperations() pulumi.BoolOutput {
+	return o.ApplyT(func(v OsProfileResponse) bool { return v.AllowExtensionOperations }).(pulumi.BoolOutput)
+}
+
 // Gets or sets computer name.
 func (o OsProfileResponseOutput) ComputerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsProfileResponse) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the guestId.
+func (o OsProfileResponseOutput) GuestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileResponse) *string { return v.GuestId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the linux configuration for update management.
+func (o OsProfileResponseOutput) LinuxConfiguration() OsProfileResponseLinuxConfigurationPtrOutput {
+	return o.ApplyT(func(v OsProfileResponse) *OsProfileResponseLinuxConfiguration { return v.LinuxConfiguration }).(OsProfileResponseLinuxConfigurationPtrOutput)
 }
 
 // Gets or sets os name.
@@ -2837,6 +3312,11 @@ func (o OsProfileResponseOutput) ToolsVersion() pulumi.StringOutput {
 // Gets or sets the current version status of VMware Tools installed in the guest operating system.
 func (o OsProfileResponseOutput) ToolsVersionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v OsProfileResponse) string { return v.ToolsVersionStatus }).(pulumi.StringOutput)
+}
+
+// Specifies the windows configuration for update management.
+func (o OsProfileResponseOutput) WindowsConfiguration() OsProfileResponseWindowsConfigurationPtrOutput {
+	return o.ApplyT(func(v OsProfileResponse) *OsProfileResponseWindowsConfiguration { return v.WindowsConfiguration }).(OsProfileResponseWindowsConfigurationPtrOutput)
 }
 
 type OsProfileResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2873,6 +3353,16 @@ func (o OsProfileResponsePtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets a value indicating whether the VM is ready for extension operations.
+func (o OsProfileResponsePtrOutput) AllowExtensionOperations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsProfileResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowExtensionOperations
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Gets or sets computer name.
 func (o OsProfileResponsePtrOutput) ComputerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsProfileResponse) *string {
@@ -2881,6 +3371,26 @@ func (o OsProfileResponsePtrOutput) ComputerName() pulumi.StringPtrOutput {
 		}
 		return v.ComputerName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the guestId.
+func (o OsProfileResponsePtrOutput) GuestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GuestId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the linux configuration for update management.
+func (o OsProfileResponsePtrOutput) LinuxConfiguration() OsProfileResponseLinuxConfigurationPtrOutput {
+	return o.ApplyT(func(v *OsProfileResponse) *OsProfileResponseLinuxConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxConfiguration
+	}).(OsProfileResponseLinuxConfigurationPtrOutput)
 }
 
 // Gets or sets os name.
@@ -2933,7 +3443,330 @@ func (o OsProfileResponsePtrOutput) ToolsVersionStatus() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the windows configuration for update management.
+func (o OsProfileResponsePtrOutput) WindowsConfiguration() OsProfileResponseWindowsConfigurationPtrOutput {
+	return o.ApplyT(func(v *OsProfileResponse) *OsProfileResponseWindowsConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsConfiguration
+	}).(OsProfileResponseWindowsConfigurationPtrOutput)
+}
+
+// Specifies the linux configuration for update management.
+type OsProfileResponseLinuxConfiguration struct {
+	// Specifies the assessment mode.
+	AssessmentMode *string `pulumi:"assessmentMode"`
+	// Specifies the patch mode.
+	PatchMode *string `pulumi:"patchMode"`
+}
+
+// Specifies the linux configuration for update management.
+type OsProfileResponseLinuxConfigurationOutput struct{ *pulumi.OutputState }
+
+func (OsProfileResponseLinuxConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileResponseLinuxConfiguration)(nil)).Elem()
+}
+
+func (o OsProfileResponseLinuxConfigurationOutput) ToOsProfileResponseLinuxConfigurationOutput() OsProfileResponseLinuxConfigurationOutput {
+	return o
+}
+
+func (o OsProfileResponseLinuxConfigurationOutput) ToOsProfileResponseLinuxConfigurationOutputWithContext(ctx context.Context) OsProfileResponseLinuxConfigurationOutput {
+	return o
+}
+
+// Specifies the assessment mode.
+func (o OsProfileResponseLinuxConfigurationOutput) AssessmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileResponseLinuxConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the patch mode.
+func (o OsProfileResponseLinuxConfigurationOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileResponseLinuxConfiguration) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
+}
+
+type OsProfileResponseLinuxConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (OsProfileResponseLinuxConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileResponseLinuxConfiguration)(nil)).Elem()
+}
+
+func (o OsProfileResponseLinuxConfigurationPtrOutput) ToOsProfileResponseLinuxConfigurationPtrOutput() OsProfileResponseLinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o OsProfileResponseLinuxConfigurationPtrOutput) ToOsProfileResponseLinuxConfigurationPtrOutputWithContext(ctx context.Context) OsProfileResponseLinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o OsProfileResponseLinuxConfigurationPtrOutput) Elem() OsProfileResponseLinuxConfigurationOutput {
+	return o.ApplyT(func(v *OsProfileResponseLinuxConfiguration) OsProfileResponseLinuxConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OsProfileResponseLinuxConfiguration
+		return ret
+	}).(OsProfileResponseLinuxConfigurationOutput)
+}
+
+// Specifies the assessment mode.
+func (o OsProfileResponseLinuxConfigurationPtrOutput) AssessmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileResponseLinuxConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssessmentMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the patch mode.
+func (o OsProfileResponseLinuxConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileResponseLinuxConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PatchMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the windows configuration for update management.
+type OsProfileResponseWindowsConfiguration struct {
+	// Specifies the assessment mode.
+	AssessmentMode *string `pulumi:"assessmentMode"`
+	// Specifies the patch mode.
+	PatchMode *string `pulumi:"patchMode"`
+}
+
+// Specifies the windows configuration for update management.
+type OsProfileResponseWindowsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (OsProfileResponseWindowsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileResponseWindowsConfiguration)(nil)).Elem()
+}
+
+func (o OsProfileResponseWindowsConfigurationOutput) ToOsProfileResponseWindowsConfigurationOutput() OsProfileResponseWindowsConfigurationOutput {
+	return o
+}
+
+func (o OsProfileResponseWindowsConfigurationOutput) ToOsProfileResponseWindowsConfigurationOutputWithContext(ctx context.Context) OsProfileResponseWindowsConfigurationOutput {
+	return o
+}
+
+// Specifies the assessment mode.
+func (o OsProfileResponseWindowsConfigurationOutput) AssessmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileResponseWindowsConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the patch mode.
+func (o OsProfileResponseWindowsConfigurationOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileResponseWindowsConfiguration) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
+}
+
+type OsProfileResponseWindowsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (OsProfileResponseWindowsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileResponseWindowsConfiguration)(nil)).Elem()
+}
+
+func (o OsProfileResponseWindowsConfigurationPtrOutput) ToOsProfileResponseWindowsConfigurationPtrOutput() OsProfileResponseWindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o OsProfileResponseWindowsConfigurationPtrOutput) ToOsProfileResponseWindowsConfigurationPtrOutputWithContext(ctx context.Context) OsProfileResponseWindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o OsProfileResponseWindowsConfigurationPtrOutput) Elem() OsProfileResponseWindowsConfigurationOutput {
+	return o.ApplyT(func(v *OsProfileResponseWindowsConfiguration) OsProfileResponseWindowsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OsProfileResponseWindowsConfiguration
+		return ret
+	}).(OsProfileResponseWindowsConfigurationOutput)
+}
+
+// Specifies the assessment mode.
+func (o OsProfileResponseWindowsConfigurationPtrOutput) AssessmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileResponseWindowsConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssessmentMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the patch mode.
+func (o OsProfileResponseWindowsConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileResponseWindowsConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PatchMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the windows configuration for update management.
+type OsProfileWindowsConfiguration struct {
+	// Specifies the assessment mode.
+	AssessmentMode *string `pulumi:"assessmentMode"`
+	// Specifies the patch mode.
+	PatchMode *string `pulumi:"patchMode"`
+}
+
+// OsProfileWindowsConfigurationInput is an input type that accepts OsProfileWindowsConfigurationArgs and OsProfileWindowsConfigurationOutput values.
+// You can construct a concrete instance of `OsProfileWindowsConfigurationInput` via:
+//
+//	OsProfileWindowsConfigurationArgs{...}
+type OsProfileWindowsConfigurationInput interface {
+	pulumi.Input
+
+	ToOsProfileWindowsConfigurationOutput() OsProfileWindowsConfigurationOutput
+	ToOsProfileWindowsConfigurationOutputWithContext(context.Context) OsProfileWindowsConfigurationOutput
+}
+
+// Specifies the windows configuration for update management.
+type OsProfileWindowsConfigurationArgs struct {
+	// Specifies the assessment mode.
+	AssessmentMode pulumi.StringPtrInput `pulumi:"assessmentMode"`
+	// Specifies the patch mode.
+	PatchMode pulumi.StringPtrInput `pulumi:"patchMode"`
+}
+
+func (OsProfileWindowsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileWindowsConfiguration)(nil)).Elem()
+}
+
+func (i OsProfileWindowsConfigurationArgs) ToOsProfileWindowsConfigurationOutput() OsProfileWindowsConfigurationOutput {
+	return i.ToOsProfileWindowsConfigurationOutputWithContext(context.Background())
+}
+
+func (i OsProfileWindowsConfigurationArgs) ToOsProfileWindowsConfigurationOutputWithContext(ctx context.Context) OsProfileWindowsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileWindowsConfigurationOutput)
+}
+
+func (i OsProfileWindowsConfigurationArgs) ToOsProfileWindowsConfigurationPtrOutput() OsProfileWindowsConfigurationPtrOutput {
+	return i.ToOsProfileWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i OsProfileWindowsConfigurationArgs) ToOsProfileWindowsConfigurationPtrOutputWithContext(ctx context.Context) OsProfileWindowsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileWindowsConfigurationOutput).ToOsProfileWindowsConfigurationPtrOutputWithContext(ctx)
+}
+
+// OsProfileWindowsConfigurationPtrInput is an input type that accepts OsProfileWindowsConfigurationArgs, OsProfileWindowsConfigurationPtr and OsProfileWindowsConfigurationPtrOutput values.
+// You can construct a concrete instance of `OsProfileWindowsConfigurationPtrInput` via:
+//
+//	        OsProfileWindowsConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OsProfileWindowsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToOsProfileWindowsConfigurationPtrOutput() OsProfileWindowsConfigurationPtrOutput
+	ToOsProfileWindowsConfigurationPtrOutputWithContext(context.Context) OsProfileWindowsConfigurationPtrOutput
+}
+
+type osProfileWindowsConfigurationPtrType OsProfileWindowsConfigurationArgs
+
+func OsProfileWindowsConfigurationPtr(v *OsProfileWindowsConfigurationArgs) OsProfileWindowsConfigurationPtrInput {
+	return (*osProfileWindowsConfigurationPtrType)(v)
+}
+
+func (*osProfileWindowsConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileWindowsConfiguration)(nil)).Elem()
+}
+
+func (i *osProfileWindowsConfigurationPtrType) ToOsProfileWindowsConfigurationPtrOutput() OsProfileWindowsConfigurationPtrOutput {
+	return i.ToOsProfileWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *osProfileWindowsConfigurationPtrType) ToOsProfileWindowsConfigurationPtrOutputWithContext(ctx context.Context) OsProfileWindowsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileWindowsConfigurationPtrOutput)
+}
+
+// Specifies the windows configuration for update management.
+type OsProfileWindowsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (OsProfileWindowsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileWindowsConfiguration)(nil)).Elem()
+}
+
+func (o OsProfileWindowsConfigurationOutput) ToOsProfileWindowsConfigurationOutput() OsProfileWindowsConfigurationOutput {
+	return o
+}
+
+func (o OsProfileWindowsConfigurationOutput) ToOsProfileWindowsConfigurationOutputWithContext(ctx context.Context) OsProfileWindowsConfigurationOutput {
+	return o
+}
+
+func (o OsProfileWindowsConfigurationOutput) ToOsProfileWindowsConfigurationPtrOutput() OsProfileWindowsConfigurationPtrOutput {
+	return o.ToOsProfileWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o OsProfileWindowsConfigurationOutput) ToOsProfileWindowsConfigurationPtrOutputWithContext(ctx context.Context) OsProfileWindowsConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsProfileWindowsConfiguration) *OsProfileWindowsConfiguration {
+		return &v
+	}).(OsProfileWindowsConfigurationPtrOutput)
+}
+
+// Specifies the assessment mode.
+func (o OsProfileWindowsConfigurationOutput) AssessmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileWindowsConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the patch mode.
+func (o OsProfileWindowsConfigurationOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileWindowsConfiguration) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
+}
+
+type OsProfileWindowsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (OsProfileWindowsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileWindowsConfiguration)(nil)).Elem()
+}
+
+func (o OsProfileWindowsConfigurationPtrOutput) ToOsProfileWindowsConfigurationPtrOutput() OsProfileWindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o OsProfileWindowsConfigurationPtrOutput) ToOsProfileWindowsConfigurationPtrOutputWithContext(ctx context.Context) OsProfileWindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o OsProfileWindowsConfigurationPtrOutput) Elem() OsProfileWindowsConfigurationOutput {
+	return o.ApplyT(func(v *OsProfileWindowsConfiguration) OsProfileWindowsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OsProfileWindowsConfiguration
+		return ret
+	}).(OsProfileWindowsConfigurationOutput)
+}
+
+// Specifies the assessment mode.
+func (o OsProfileWindowsConfigurationPtrOutput) AssessmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileWindowsConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssessmentMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the patch mode.
+func (o OsProfileWindowsConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileWindowsConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PatchMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the compute and storage placement settings for the virtual machine.
 type PlacementProfile struct {
 	// Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
 	ClusterId *string `pulumi:"clusterId"`
@@ -2956,7 +3789,7 @@ type PlacementProfileInput interface {
 	ToPlacementProfileOutputWithContext(context.Context) PlacementProfileOutput
 }
 
-// Defines the resource properties.
+// Specifies the compute and storage placement settings for the virtual machine.
 type PlacementProfileArgs struct {
 	// Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
@@ -3021,7 +3854,7 @@ func (i *placementProfilePtrType) ToPlacementProfilePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PlacementProfilePtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the compute and storage placement settings for the virtual machine.
 type PlacementProfileOutput struct{ *pulumi.OutputState }
 
 func (PlacementProfileOutput) ElementType() reflect.Type {
@@ -3130,7 +3963,7 @@ func (o PlacementProfilePtrOutput) ResourcePoolId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the compute and storage placement settings for the virtual machine.
 type PlacementProfileResponse struct {
 	// Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
 	ClusterId *string `pulumi:"clusterId"`
@@ -3142,7 +3975,7 @@ type PlacementProfileResponse struct {
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
 }
 
-// Defines the resource properties.
+// Specifies the compute and storage placement settings for the virtual machine.
 type PlacementProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (PlacementProfileResponseOutput) ElementType() reflect.Type {
@@ -3322,7 +4155,207 @@ func (o ResourceStatusResponseArrayOutput) Index(i pulumi.IntInput) ResourceStat
 	}).(ResourceStatusResponseOutput)
 }
 
-// Defines the resource properties.
+// Specifies the Security profile settings for the virtual machine.
+type SecurityProfile struct {
+	// Specifies the security settings like secure boot used while creating the virtual machine.
+	UefiSettings *UefiSettings `pulumi:"uefiSettings"`
+}
+
+// SecurityProfileInput is an input type that accepts SecurityProfileArgs and SecurityProfileOutput values.
+// You can construct a concrete instance of `SecurityProfileInput` via:
+//
+//	SecurityProfileArgs{...}
+type SecurityProfileInput interface {
+	pulumi.Input
+
+	ToSecurityProfileOutput() SecurityProfileOutput
+	ToSecurityProfileOutputWithContext(context.Context) SecurityProfileOutput
+}
+
+// Specifies the Security profile settings for the virtual machine.
+type SecurityProfileArgs struct {
+	// Specifies the security settings like secure boot used while creating the virtual machine.
+	UefiSettings UefiSettingsPtrInput `pulumi:"uefiSettings"`
+}
+
+func (SecurityProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfile)(nil)).Elem()
+}
+
+func (i SecurityProfileArgs) ToSecurityProfileOutput() SecurityProfileOutput {
+	return i.ToSecurityProfileOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileArgs) ToSecurityProfileOutputWithContext(ctx context.Context) SecurityProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileOutput)
+}
+
+func (i SecurityProfileArgs) ToSecurityProfilePtrOutput() SecurityProfilePtrOutput {
+	return i.ToSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileArgs) ToSecurityProfilePtrOutputWithContext(ctx context.Context) SecurityProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileOutput).ToSecurityProfilePtrOutputWithContext(ctx)
+}
+
+// SecurityProfilePtrInput is an input type that accepts SecurityProfileArgs, SecurityProfilePtr and SecurityProfilePtrOutput values.
+// You can construct a concrete instance of `SecurityProfilePtrInput` via:
+//
+//	        SecurityProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfilePtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfilePtrOutput() SecurityProfilePtrOutput
+	ToSecurityProfilePtrOutputWithContext(context.Context) SecurityProfilePtrOutput
+}
+
+type securityProfilePtrType SecurityProfileArgs
+
+func SecurityProfilePtr(v *SecurityProfileArgs) SecurityProfilePtrInput {
+	return (*securityProfilePtrType)(v)
+}
+
+func (*securityProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfile)(nil)).Elem()
+}
+
+func (i *securityProfilePtrType) ToSecurityProfilePtrOutput() SecurityProfilePtrOutput {
+	return i.ToSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfilePtrType) ToSecurityProfilePtrOutputWithContext(ctx context.Context) SecurityProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfilePtrOutput)
+}
+
+// Specifies the Security profile settings for the virtual machine.
+type SecurityProfileOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileOutput) ToSecurityProfileOutput() SecurityProfileOutput {
+	return o
+}
+
+func (o SecurityProfileOutput) ToSecurityProfileOutputWithContext(ctx context.Context) SecurityProfileOutput {
+	return o
+}
+
+func (o SecurityProfileOutput) ToSecurityProfilePtrOutput() SecurityProfilePtrOutput {
+	return o.ToSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileOutput) ToSecurityProfilePtrOutputWithContext(ctx context.Context) SecurityProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfile) *SecurityProfile {
+		return &v
+	}).(SecurityProfilePtrOutput)
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+func (o SecurityProfileOutput) UefiSettings() UefiSettingsPtrOutput {
+	return o.ApplyT(func(v SecurityProfile) *UefiSettings { return v.UefiSettings }).(UefiSettingsPtrOutput)
+}
+
+type SecurityProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfile)(nil)).Elem()
+}
+
+func (o SecurityProfilePtrOutput) ToSecurityProfilePtrOutput() SecurityProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfilePtrOutput) ToSecurityProfilePtrOutputWithContext(ctx context.Context) SecurityProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfilePtrOutput) Elem() SecurityProfileOutput {
+	return o.ApplyT(func(v *SecurityProfile) SecurityProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfile
+		return ret
+	}).(SecurityProfileOutput)
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+func (o SecurityProfilePtrOutput) UefiSettings() UefiSettingsPtrOutput {
+	return o.ApplyT(func(v *SecurityProfile) *UefiSettings {
+		if v == nil {
+			return nil
+		}
+		return v.UefiSettings
+	}).(UefiSettingsPtrOutput)
+}
+
+// Specifies the Security profile settings for the virtual machine.
+type SecurityProfileResponse struct {
+	// Specifies the security settings like secure boot used while creating the virtual machine.
+	UefiSettings *UefiSettingsResponse `pulumi:"uefiSettings"`
+}
+
+// Specifies the Security profile settings for the virtual machine.
+type SecurityProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileResponse)(nil)).Elem()
+}
+
+func (o SecurityProfileResponseOutput) ToSecurityProfileResponseOutput() SecurityProfileResponseOutput {
+	return o
+}
+
+func (o SecurityProfileResponseOutput) ToSecurityProfileResponseOutputWithContext(ctx context.Context) SecurityProfileResponseOutput {
+	return o
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+func (o SecurityProfileResponseOutput) UefiSettings() UefiSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SecurityProfileResponse) *UefiSettingsResponse { return v.UefiSettings }).(UefiSettingsResponsePtrOutput)
+}
+
+type SecurityProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileResponse)(nil)).Elem()
+}
+
+func (o SecurityProfileResponsePtrOutput) ToSecurityProfileResponsePtrOutput() SecurityProfileResponsePtrOutput {
+	return o
+}
+
+func (o SecurityProfileResponsePtrOutput) ToSecurityProfileResponsePtrOutputWithContext(ctx context.Context) SecurityProfileResponsePtrOutput {
+	return o
+}
+
+func (o SecurityProfileResponsePtrOutput) Elem() SecurityProfileResponseOutput {
+	return o.ApplyT(func(v *SecurityProfileResponse) SecurityProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileResponse
+		return ret
+	}).(SecurityProfileResponseOutput)
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+func (o SecurityProfileResponsePtrOutput) UefiSettings() UefiSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *SecurityProfileResponse) *UefiSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UefiSettings
+	}).(UefiSettingsResponsePtrOutput)
+}
+
+// Specifies the storage settings for the virtual machine disks.
 type StorageProfile struct {
 	// Gets or sets the list of virtual disks associated with the virtual machine.
 	Disks []VirtualDisk `pulumi:"disks"`
@@ -3339,7 +4372,7 @@ type StorageProfileInput interface {
 	ToStorageProfileOutputWithContext(context.Context) StorageProfileOutput
 }
 
-// Defines the resource properties.
+// Specifies the storage settings for the virtual machine disks.
 type StorageProfileArgs struct {
 	// Gets or sets the list of virtual disks associated with the virtual machine.
 	Disks VirtualDiskArrayInput `pulumi:"disks"`
@@ -3398,7 +4431,7 @@ func (i *storageProfilePtrType) ToStorageProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(StorageProfilePtrOutput)
 }
 
-// Defines the resource properties.
+// Specifies the storage settings for the virtual machine disks.
 type StorageProfileOutput struct{ *pulumi.OutputState }
 
 func (StorageProfileOutput) ElementType() reflect.Type {
@@ -3462,7 +4495,7 @@ func (o StorageProfilePtrOutput) Disks() VirtualDiskArrayOutput {
 	}).(VirtualDiskArrayOutput)
 }
 
-// Defines the resource properties.
+// Specifies the storage settings for the virtual machine disks.
 type StorageProfileResponse struct {
 	// Gets or sets the list of virtual disks associated with the virtual machine.
 	Disks []VirtualDiskResponse `pulumi:"disks"`
@@ -3470,7 +4503,7 @@ type StorageProfileResponse struct {
 	ScsiControllers []VirtualSCSIControllerResponse `pulumi:"scsiControllers"`
 }
 
-// Defines the resource properties.
+// Specifies the storage settings for the virtual machine disks.
 type StorageProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (StorageProfileResponseOutput) ElementType() reflect.Type {
@@ -3598,6 +4631,206 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+type UefiSettings struct {
+	// Specifies whether secure boot should be enabled on the virtual machine.
+	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
+}
+
+// UefiSettingsInput is an input type that accepts UefiSettingsArgs and UefiSettingsOutput values.
+// You can construct a concrete instance of `UefiSettingsInput` via:
+//
+//	UefiSettingsArgs{...}
+type UefiSettingsInput interface {
+	pulumi.Input
+
+	ToUefiSettingsOutput() UefiSettingsOutput
+	ToUefiSettingsOutputWithContext(context.Context) UefiSettingsOutput
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+type UefiSettingsArgs struct {
+	// Specifies whether secure boot should be enabled on the virtual machine.
+	SecureBootEnabled pulumi.BoolPtrInput `pulumi:"secureBootEnabled"`
+}
+
+func (UefiSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UefiSettings)(nil)).Elem()
+}
+
+func (i UefiSettingsArgs) ToUefiSettingsOutput() UefiSettingsOutput {
+	return i.ToUefiSettingsOutputWithContext(context.Background())
+}
+
+func (i UefiSettingsArgs) ToUefiSettingsOutputWithContext(ctx context.Context) UefiSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UefiSettingsOutput)
+}
+
+func (i UefiSettingsArgs) ToUefiSettingsPtrOutput() UefiSettingsPtrOutput {
+	return i.ToUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i UefiSettingsArgs) ToUefiSettingsPtrOutputWithContext(ctx context.Context) UefiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UefiSettingsOutput).ToUefiSettingsPtrOutputWithContext(ctx)
+}
+
+// UefiSettingsPtrInput is an input type that accepts UefiSettingsArgs, UefiSettingsPtr and UefiSettingsPtrOutput values.
+// You can construct a concrete instance of `UefiSettingsPtrInput` via:
+//
+//	        UefiSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type UefiSettingsPtrInput interface {
+	pulumi.Input
+
+	ToUefiSettingsPtrOutput() UefiSettingsPtrOutput
+	ToUefiSettingsPtrOutputWithContext(context.Context) UefiSettingsPtrOutput
+}
+
+type uefiSettingsPtrType UefiSettingsArgs
+
+func UefiSettingsPtr(v *UefiSettingsArgs) UefiSettingsPtrInput {
+	return (*uefiSettingsPtrType)(v)
+}
+
+func (*uefiSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UefiSettings)(nil)).Elem()
+}
+
+func (i *uefiSettingsPtrType) ToUefiSettingsPtrOutput() UefiSettingsPtrOutput {
+	return i.ToUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *uefiSettingsPtrType) ToUefiSettingsPtrOutputWithContext(ctx context.Context) UefiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UefiSettingsPtrOutput)
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+type UefiSettingsOutput struct{ *pulumi.OutputState }
+
+func (UefiSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UefiSettings)(nil)).Elem()
+}
+
+func (o UefiSettingsOutput) ToUefiSettingsOutput() UefiSettingsOutput {
+	return o
+}
+
+func (o UefiSettingsOutput) ToUefiSettingsOutputWithContext(ctx context.Context) UefiSettingsOutput {
+	return o
+}
+
+func (o UefiSettingsOutput) ToUefiSettingsPtrOutput() UefiSettingsPtrOutput {
+	return o.ToUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o UefiSettingsOutput) ToUefiSettingsPtrOutputWithContext(ctx context.Context) UefiSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UefiSettings) *UefiSettings {
+		return &v
+	}).(UefiSettingsPtrOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine.
+func (o UefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type UefiSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (UefiSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UefiSettings)(nil)).Elem()
+}
+
+func (o UefiSettingsPtrOutput) ToUefiSettingsPtrOutput() UefiSettingsPtrOutput {
+	return o
+}
+
+func (o UefiSettingsPtrOutput) ToUefiSettingsPtrOutputWithContext(ctx context.Context) UefiSettingsPtrOutput {
+	return o
+}
+
+func (o UefiSettingsPtrOutput) Elem() UefiSettingsOutput {
+	return o.ApplyT(func(v *UefiSettings) UefiSettings {
+		if v != nil {
+			return *v
+		}
+		var ret UefiSettings
+		return ret
+	}).(UefiSettingsOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine.
+func (o UefiSettingsPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UefiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBootEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+type UefiSettingsResponse struct {
+	// Specifies whether secure boot should be enabled on the virtual machine.
+	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
+}
+
+// Specifies the security settings like secure boot used while creating the virtual machine.
+type UefiSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (UefiSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UefiSettingsResponse)(nil)).Elem()
+}
+
+func (o UefiSettingsResponseOutput) ToUefiSettingsResponseOutput() UefiSettingsResponseOutput {
+	return o
+}
+
+func (o UefiSettingsResponseOutput) ToUefiSettingsResponseOutputWithContext(ctx context.Context) UefiSettingsResponseOutput {
+	return o
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine.
+func (o UefiSettingsResponseOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UefiSettingsResponse) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type UefiSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UefiSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UefiSettingsResponse)(nil)).Elem()
+}
+
+func (o UefiSettingsResponsePtrOutput) ToUefiSettingsResponsePtrOutput() UefiSettingsResponsePtrOutput {
+	return o
+}
+
+func (o UefiSettingsResponsePtrOutput) ToUefiSettingsResponsePtrOutputWithContext(ctx context.Context) UefiSettingsResponsePtrOutput {
+	return o
+}
+
+func (o UefiSettingsResponsePtrOutput) Elem() UefiSettingsResponseOutput {
+	return o.ApplyT(func(v *UefiSettingsResponse) UefiSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UefiSettingsResponse
+		return ret
+	}).(UefiSettingsResponseOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine.
+func (o UefiSettingsResponsePtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UefiSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBootEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Username / Password Credentials to connect to vcenter.
@@ -4166,12 +5399,16 @@ func (o VirtualSCSIControllerResponseArrayOutput) Index(i pulumi.IntInput) Virtu
 }
 
 func init() {
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(GuestAgentProfileOutput{})
+	pulumi.RegisterOutputType(GuestAgentProfilePtrOutput{})
 	pulumi.RegisterOutputType(GuestAgentProfileResponseOutput{})
 	pulumi.RegisterOutputType(GuestAgentProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(GuestCredentialOutput{})
@@ -4210,19 +5447,35 @@ func init() {
 	pulumi.RegisterOutputType(NicIPSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(OsProfileOutput{})
 	pulumi.RegisterOutputType(OsProfilePtrOutput{})
+	pulumi.RegisterOutputType(OsProfileLinuxConfigurationOutput{})
+	pulumi.RegisterOutputType(OsProfileLinuxConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(OsProfileResponseOutput{})
 	pulumi.RegisterOutputType(OsProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(OsProfileResponseLinuxConfigurationOutput{})
+	pulumi.RegisterOutputType(OsProfileResponseLinuxConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(OsProfileResponseWindowsConfigurationOutput{})
+	pulumi.RegisterOutputType(OsProfileResponseWindowsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(OsProfileWindowsConfigurationOutput{})
+	pulumi.RegisterOutputType(OsProfileWindowsConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(PlacementProfileOutput{})
 	pulumi.RegisterOutputType(PlacementProfilePtrOutput{})
 	pulumi.RegisterOutputType(PlacementProfileResponseOutput{})
 	pulumi.RegisterOutputType(PlacementProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileOutput{})
+	pulumi.RegisterOutputType(SecurityProfilePtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileResponseOutput{})
+	pulumi.RegisterOutputType(SecurityProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageProfileOutput{})
 	pulumi.RegisterOutputType(StorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponseOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UefiSettingsOutput{})
+	pulumi.RegisterOutputType(UefiSettingsPtrOutput{})
+	pulumi.RegisterOutputType(UefiSettingsResponseOutput{})
+	pulumi.RegisterOutputType(UefiSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(VICredentialOutput{})
 	pulumi.RegisterOutputType(VICredentialPtrOutput{})
 	pulumi.RegisterOutputType(VICredentialResponseOutput{})

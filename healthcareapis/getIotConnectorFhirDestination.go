@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified Iot Connector FHIR destination.
-// API Version: 2022-05-15.
+// Azure REST API version: 2023-02-28.
 func LookupIotConnectorFhirDestination(ctx *pulumi.Context, args *LookupIotConnectorFhirDestinationArgs, opts ...pulumi.InvokeOption) (*LookupIotConnectorFhirDestinationResult, error) {
 	var rv LookupIotConnectorFhirDestinationResult
 	err := ctx.Invoke("azure-native:healthcareapis:getIotConnectorFhirDestination", args, &rv, opts...)

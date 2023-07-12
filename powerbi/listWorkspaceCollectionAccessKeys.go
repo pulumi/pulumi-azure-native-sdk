@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the primary and secondary access keys for the specified Power BI Workspace Collection.
-// API Version: 2016-01-29.
+// Azure REST API version: 2016-01-29.
 func ListWorkspaceCollectionAccessKeys(ctx *pulumi.Context, args *ListWorkspaceCollectionAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceCollectionAccessKeysResult, error) {
 	var rv ListWorkspaceCollectionAccessKeysResult
 	err := ctx.Invoke("azure-native:powerbi:listWorkspaceCollectionAccessKeys", args, &rv, opts...)

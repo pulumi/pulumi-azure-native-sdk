@@ -12,7 +12,7 @@ import (
 )
 
 // NetworkSecurityGroup resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type NetworkSecurityGroup struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type NetworkSecurityGroup struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A collection of references to flow log resources.
 	FlowLogs FlowLogResponseArrayOutput `pulumi:"flowLogs"`
+	// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
+	FlushConnection pulumi.BoolPtrOutput `pulumi:"flushConnection"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
@@ -185,6 +187,12 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkSecurityGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkSecurityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:NetworkSecurityGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkSecurityGroup
@@ -219,6 +227,8 @@ func (NetworkSecurityGroupState) ElementType() reflect.Type {
 }
 
 type networkSecurityGroupArgs struct {
+	// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
+	FlushConnection *bool `pulumi:"flushConnection"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
@@ -235,6 +245,8 @@ type networkSecurityGroupArgs struct {
 
 // The set of arguments for constructing a NetworkSecurityGroup resource.
 type NetworkSecurityGroupArgs struct {
+	// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
+	FlushConnection pulumi.BoolPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Resource location.
@@ -299,6 +311,11 @@ func (o NetworkSecurityGroupOutput) Etag() pulumi.StringOutput {
 // A collection of references to flow log resources.
 func (o NetworkSecurityGroupOutput) FlowLogs() FlowLogResponseArrayOutput {
 	return o.ApplyT(func(v *NetworkSecurityGroup) FlowLogResponseArrayOutput { return v.FlowLogs }).(FlowLogResponseArrayOutput)
+}
+
+// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
+func (o NetworkSecurityGroupOutput) FlushConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroup) pulumi.BoolPtrOutput { return v.FlushConnection }).(pulumi.BoolPtrOutput)
 }
 
 // Resource location.

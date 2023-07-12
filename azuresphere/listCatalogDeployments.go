@@ -11,7 +11,7 @@ import (
 )
 
 // Lists deployments for catalog.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func ListCatalogDeployments(ctx *pulumi.Context, args *ListCatalogDeploymentsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeploymentsResult, error) {
 	var rv ListCatalogDeploymentsResult
 	err := ctx.Invoke("azure-native:azuresphere:listCatalogDeployments", args, &rv, opts...)

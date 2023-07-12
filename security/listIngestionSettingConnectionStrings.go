@@ -11,7 +11,7 @@ import (
 )
 
 // Connection strings for ingesting security scan logs and data.
-// API Version: 2021-01-15-preview.
+// Azure REST API version: 2021-01-15-preview.
 func ListIngestionSettingConnectionStrings(ctx *pulumi.Context, args *ListIngestionSettingConnectionStringsArgs, opts ...pulumi.InvokeOption) (*ListIngestionSettingConnectionStringsResult, error) {
 	var rv ListIngestionSettingConnectionStringsResult
 	err := ctx.Invoke("azure-native:security:listIngestionSettingConnectionStrings", args, &rv, opts...)

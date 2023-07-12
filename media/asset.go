@@ -12,7 +12,7 @@ import (
 )
 
 // An Asset.
-// API Version: 2020-05-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-05-01
 type Asset struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,8 @@ type Asset struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The Asset description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The Asset container encryption scope in the storage account.
+	EncryptionScope pulumi.StringPtrOutput `pulumi:"encryptionScope"`
 	// The last modified date of the Asset.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
 	// The name of the resource
@@ -122,6 +124,8 @@ type assetArgs struct {
 	Container *string `pulumi:"container"`
 	// The Asset description.
 	Description *string `pulumi:"description"`
+	// The Asset container encryption scope in the storage account.
+	EncryptionScope *string `pulumi:"encryptionScope"`
 	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the storage account.
@@ -140,6 +144,8 @@ type AssetArgs struct {
 	Container pulumi.StringPtrInput
 	// The Asset description.
 	Description pulumi.StringPtrInput
+	// The Asset container encryption scope in the storage account.
+	EncryptionScope pulumi.StringPtrInput
 	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// The name of the storage account.
@@ -206,6 +212,11 @@ func (o AssetOutput) Created() pulumi.StringOutput {
 // The Asset description.
 func (o AssetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Asset container encryption scope in the storage account.
+func (o AssetOutput) EncryptionScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.EncryptionScope }).(pulumi.StringPtrOutput)
 }
 
 // The last modified date of the Asset.

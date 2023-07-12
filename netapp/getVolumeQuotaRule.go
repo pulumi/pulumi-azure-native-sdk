@@ -11,7 +11,7 @@ import (
 )
 
 // Get details of the specified quota rule
-// API Version: 2022-01-01.
+// Azure REST API version: 2022-11-01.
 func LookupVolumeQuotaRule(ctx *pulumi.Context, args *LookupVolumeQuotaRuleArgs, opts ...pulumi.InvokeOption) (*LookupVolumeQuotaRuleResult, error) {
 	var rv LookupVolumeQuotaRuleResult
 	err := ctx.Invoke("azure-native:netapp:getVolumeQuotaRule", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupVolumeQuotaRuleArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// The name of the capacity pool
 	PoolName string `pulumi:"poolName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the volume
 	VolumeName string `pulumi:"volumeName"`
@@ -76,7 +76,7 @@ type LookupVolumeQuotaRuleOutputArgs struct {
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the capacity pool
 	PoolName pulumi.StringInput `pulumi:"poolName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the volume
 	VolumeName pulumi.StringInput `pulumi:"volumeName"`

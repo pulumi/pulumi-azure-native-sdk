@@ -11,7 +11,7 @@ import (
 )
 
 // Get an existing assessment with the specified name. Returns a json object of type 'assessment' as specified in Models section.
-// API Version: 2019-10-01.
+// Azure REST API version: 2019-10-01.
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {
 	var rv LookupAssessmentResult
 	err := ctx.Invoke("azure-native:migrate:getAssessment", args, &rv, opts...)

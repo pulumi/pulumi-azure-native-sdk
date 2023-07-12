@@ -45,10 +45,16 @@ func NewFleet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:containerservice:Fleet"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerservice/v20220602preview:Fleet"),
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20220902preview:Fleet"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230315preview:Fleet"),
 		},
 	})
 	opts = append(opts, aliases)

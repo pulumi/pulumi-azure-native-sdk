@@ -12,20 +12,24 @@ import (
 )
 
 // MEC role.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01
 type MECRole struct {
 	pulumi.CustomResourceState
 
 	// Activation key of the MEC.
 	ConnectionString AsymmetricEncryptedSecretResponsePtrOutput `pulumi:"connectionString"`
+	// Controller Endpoint.
+	ControllerEndpoint pulumi.StringPtrOutput `pulumi:"controllerEndpoint"`
 	// Role type.
 	// Expected value is 'MEC'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The object name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Unique Id of the Resource.
+	ResourceUniqueId pulumi.StringPtrOutput `pulumi:"resourceUniqueId"`
 	// Role status.
 	RoleStatus pulumi.StringOutput `pulumi:"roleStatus"`
-	// Role configured on ASE resource
+	// Metadata pertaining to creation and last modification of Role
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -133,6 +137,8 @@ func (MECRoleState) ElementType() reflect.Type {
 type mecroleArgs struct {
 	// Activation key of the MEC.
 	ConnectionString *AsymmetricEncryptedSecret `pulumi:"connectionString"`
+	// Controller Endpoint.
+	ControllerEndpoint *string `pulumi:"controllerEndpoint"`
 	// The device name.
 	DeviceName string `pulumi:"deviceName"`
 	// Role type.
@@ -142,6 +148,8 @@ type mecroleArgs struct {
 	Name *string `pulumi:"name"`
 	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Unique Id of the Resource.
+	ResourceUniqueId *string `pulumi:"resourceUniqueId"`
 	// Role status.
 	RoleStatus string `pulumi:"roleStatus"`
 }
@@ -150,6 +158,8 @@ type mecroleArgs struct {
 type MECRoleArgs struct {
 	// Activation key of the MEC.
 	ConnectionString AsymmetricEncryptedSecretPtrInput
+	// Controller Endpoint.
+	ControllerEndpoint pulumi.StringPtrInput
 	// The device name.
 	DeviceName pulumi.StringInput
 	// Role type.
@@ -159,6 +169,8 @@ type MECRoleArgs struct {
 	Name pulumi.StringPtrInput
 	// The resource group name.
 	ResourceGroupName pulumi.StringInput
+	// Unique Id of the Resource.
+	ResourceUniqueId pulumi.StringPtrInput
 	// Role status.
 	RoleStatus pulumi.StringInput
 }
@@ -205,6 +217,11 @@ func (o MECRoleOutput) ConnectionString() AsymmetricEncryptedSecretResponsePtrOu
 	return o.ApplyT(func(v *MECRole) AsymmetricEncryptedSecretResponsePtrOutput { return v.ConnectionString }).(AsymmetricEncryptedSecretResponsePtrOutput)
 }
 
+// Controller Endpoint.
+func (o MECRoleOutput) ControllerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MECRole) pulumi.StringPtrOutput { return v.ControllerEndpoint }).(pulumi.StringPtrOutput)
+}
+
 // Role type.
 // Expected value is 'MEC'.
 func (o MECRoleOutput) Kind() pulumi.StringOutput {
@@ -216,12 +233,17 @@ func (o MECRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MECRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Unique Id of the Resource.
+func (o MECRoleOutput) ResourceUniqueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MECRole) pulumi.StringPtrOutput { return v.ResourceUniqueId }).(pulumi.StringPtrOutput)
+}
+
 // Role status.
 func (o MECRoleOutput) RoleStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *MECRole) pulumi.StringOutput { return v.RoleStatus }).(pulumi.StringOutput)
 }
 
-// Role configured on ASE resource
+// Metadata pertaining to creation and last modification of Role
 func (o MECRoleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *MECRole) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

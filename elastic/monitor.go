@@ -12,7 +12,7 @@ import (
 )
 
 // Monitor resource.
-// API Version: 2020-07-01.
+// Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2020-07-01
 type Monitor struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +65,18 @@ func NewMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20220901preview:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230201preview:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230501preview:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230601:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20230615preview:Monitor"),
 		},
 	})
 	opts = append(opts, aliases)

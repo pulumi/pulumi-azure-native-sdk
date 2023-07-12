@@ -73,6 +73,9 @@ func NewNamespace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20160301:Namespace"),
 		},
+		{
+			Type: pulumi.String("azure-native:notificationhubs/v20230101preview:Namespace"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Namespace

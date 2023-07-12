@@ -199,13 +199,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-// The key type like 'AzureKeyVault'.
-type ServerKeyType string
-
-const (
-	ServerKeyTypeAzureKeyVault = ServerKeyType("AzureKeyVault")
-)
-
 // Server version.
 type ServerVersion string
 

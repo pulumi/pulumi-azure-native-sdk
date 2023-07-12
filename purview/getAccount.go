@@ -11,7 +11,7 @@ import (
 )
 
 // Get an account
-// API Version: 2020-12-01-preview.
+// Azure REST API version: 2021-12-01.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:purview:getAccount", args, &rv, opts...)
@@ -30,6 +30,8 @@ type LookupAccountArgs struct {
 
 // Account resource
 type LookupAccountResult struct {
+	// Gets or sets the status of the account.
+	AccountStatus AccountPropertiesResponseAccountStatus `pulumi:"accountStatus"`
 	// Cloud connectors.
 	// External cloud identifier used as part of scanning configuration.
 	CloudConnectors *CloudConnectorsResponse `pulumi:"cloudConnectors"`
@@ -49,10 +51,14 @@ type LookupAccountResult struct {
 	Identity *IdentityResponse `pulumi:"identity"`
 	// Gets or sets the location.
 	Location *string `pulumi:"location"`
+	//  Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
+	ManagedEventHubState *string `pulumi:"managedEventHubState"`
 	// Gets or sets the managed resource group name
 	ManagedResourceGroupName *string `pulumi:"managedResourceGroupName"`
 	// Gets the resource identifiers of the managed resources.
 	ManagedResources AccountPropertiesResponseManagedResources `pulumi:"managedResources"`
+	// Gets or sets the public network access for managed resources.
+	ManagedResourcesPublicNetworkAccess *string `pulumi:"managedResourcesPublicNetworkAccess"`
 	// Gets or sets the name.
 	Name string `pulumi:"name"`
 	// Gets the private endpoint connections information.
@@ -64,7 +70,7 @@ type LookupAccountResult struct {
 	// Gets or sets the Sku.
 	Sku AccountResponseSku `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData AccountPropertiesResponseSystemData `pulumi:"systemData"`
+	SystemData TrackedResourceResponseSystemData `pulumi:"systemData"`
 	// Tags on the azure resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Gets or sets the type.
@@ -77,6 +83,14 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
+	if tmp.ManagedEventHubState == nil {
+		managedEventHubState_ := "NotSpecified"
+		tmp.ManagedEventHubState = &managedEventHubState_
+	}
+	if tmp.ManagedResourcesPublicNetworkAccess == nil {
+		managedResourcesPublicNetworkAccess_ := "NotSpecified"
+		tmp.ManagedResourcesPublicNetworkAccess = &managedResourcesPublicNetworkAccess_
+	}
 	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
@@ -121,6 +135,11 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountRe
 
 func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
 	return o
+}
+
+// Gets or sets the status of the account.
+func (o LookupAccountResultOutput) AccountStatus() AccountPropertiesResponseAccountStatusOutput {
+	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesResponseAccountStatus { return v.AccountStatus }).(AccountPropertiesResponseAccountStatusOutput)
 }
 
 // Cloud connectors.
@@ -169,6 +188,11 @@ func (o LookupAccountResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
+func (o LookupAccountResultOutput) ManagedEventHubState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.ManagedEventHubState }).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the managed resource group name
 func (o LookupAccountResultOutput) ManagedResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.ManagedResourceGroupName }).(pulumi.StringPtrOutput)
@@ -177,6 +201,11 @@ func (o LookupAccountResultOutput) ManagedResourceGroupName() pulumi.StringPtrOu
 // Gets the resource identifiers of the managed resources.
 func (o LookupAccountResultOutput) ManagedResources() AccountPropertiesResponseManagedResourcesOutput {
 	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesResponseManagedResources { return v.ManagedResources }).(AccountPropertiesResponseManagedResourcesOutput)
+}
+
+// Gets or sets the public network access for managed resources.
+func (o LookupAccountResultOutput) ManagedResourcesPublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.ManagedResourcesPublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the name.
@@ -205,8 +234,8 @@ func (o LookupAccountResultOutput) Sku() AccountResponseSkuOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupAccountResultOutput) SystemData() AccountPropertiesResponseSystemDataOutput {
-	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesResponseSystemData { return v.SystemData }).(AccountPropertiesResponseSystemDataOutput)
+func (o LookupAccountResultOutput) SystemData() TrackedResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v LookupAccountResult) TrackedResourceResponseSystemData { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
 }
 
 // Tags on the azure resource.

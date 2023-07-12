@@ -20,6 +20,14 @@ const (
 	AssessmentStageApproved    = AssessmentStage("Approved")
 )
 
+// Gets or sets the status of automation artifacts.
+type AutomationArtifactStatus string
+
+const (
+	AutomationArtifactStatusNotGenerated = AutomationArtifactStatus("NotGenerated")
+	AutomationArtifactStatusGenerated    = AutomationArtifactStatus("Generated")
+)
+
 // Storage type selected for this disk.
 type AzureDiskType string
 
@@ -176,6 +184,15 @@ const (
 	AzureVmFamily_DC_Series       = AzureVmFamily("DC_Series")
 )
 
+// Gets or sets the configuration type.
+type ConfigurationType string
+
+const (
+	ConfigurationTypeIISConnectionString         = ConfigurationType("IISConnectionString")
+	ConfigurationTypeIISAuthentication           = ConfigurationType("IISAuthentication")
+	ConfigurationTypeApacheTomcatContextResource = ConfigurationType("ApacheTomcatContextResource")
+)
+
 // Currency to report prices in.
 type Currency string
 
@@ -206,6 +223,21 @@ const (
 	CurrencyARS     = Currency("ARS")
 	CurrencyAUD     = Currency("AUD")
 	CurrencyCNY     = Currency("CNY")
+)
+
+// Gets or sets the load balancer type.
+type LoadBalancerType string
+
+const (
+	LoadBalancerTypePrivate = LoadBalancerType("Private")
+	LoadBalancerTypePublic  = LoadBalancerType("Public")
+)
+
+type OperatingSystemType string
+
+const (
+	OperatingSystemTypeWindows = OperatingSystemType("Windows")
+	OperatingSystemTypeLinux   = OperatingSystemType("Linux")
 )
 
 // Percentile of performance data used to recommend Azure size.
@@ -256,6 +288,33 @@ const (
 	ResourceIdentityTypeUserAssigned   = ResourceIdentityType("UserAssigned")
 )
 
+type ResourceIdentityTypes string
+
+const (
+	ResourceIdentityTypesNone           = ResourceIdentityTypes("None")
+	ResourceIdentityTypesSystemAssigned = ResourceIdentityTypes("SystemAssigned")
+	ResourceIdentityTypesUserAssigned   = ResourceIdentityTypes("UserAssigned")
+)
+
+type SecretStoreType string
+
+const (
+	SecretStoreTypeNone                  = SecretStoreType("None")
+	SecretStoreTypeKubeSecret            = SecretStoreType("KubeSecret")
+	SecretStoreTypeKeyVaultSecret        = SecretStoreType("KeyVaultSecret")
+	SecretStoreTypeAppServiceAppSettings = SecretStoreType("AppServiceAppSettings")
+)
+
+// Private link connection state.
+type Status string
+
+const (
+	StatusApproved     = Status("Approved")
+	StatusPending      = Status("Pending")
+	StatusRejected     = Status("Rejected")
+	StatusDisconnected = Status("Disconnected")
+)
+
 // Gets or sets the target availability zone.
 type TargetAvailabilityZone string
 
@@ -266,6 +325,30 @@ const (
 	TargetAvailabilityZoneNA    = TargetAvailabilityZone("NA")
 )
 
+// Gets or sets the storage provider type on the target.
+// Applicable when StorageProjectionType is not ContainerFileSystem.
+type TargetHydrationStorageProviderType string
+
+const (
+	TargetHydrationStorageProviderTypeAzureFileShare = TargetHydrationStorageProviderType("AzureFileShare")
+)
+
+// Gets or sets the target storage access type.
+type TargetStorageAccessType string
+
+const (
+	TargetStorageAccessTypeShared    = TargetStorageAccessType("Shared")
+	TargetStorageAccessTypeExclusive = TargetStorageAccessType("Exclusive")
+)
+
+// Gets or sets the target projection type.
+type TargetStorageProjectionType string
+
+const (
+	TargetStorageProjectionTypeContainerFileSystem = TargetStorageProjectionType("ContainerFileSystem")
+	TargetStorageProjectionTypePersistentVolume    = TargetStorageProjectionType("PersistentVolume")
+)
+
 // Time range of performance data used to recommend a size.
 type TimeRange string
 
@@ -274,6 +357,31 @@ const (
 	TimeRangeWeek   = TimeRange("Week")
 	TimeRangeMonth  = TimeRange("Month")
 	TimeRangeCustom = TimeRange("Custom")
+)
+
+// Gets or sets the deployment target platform.
+type WorkloadDeploymentTarget string
+
+const (
+	WorkloadDeploymentTargetAzureKubernetesService   = WorkloadDeploymentTarget("AzureKubernetesService")
+	WorkloadDeploymentTargetAzureAppServiceContainer = WorkloadDeploymentTarget("AzureAppServiceContainer")
+	WorkloadDeploymentTargetAzureAppServiceNative    = WorkloadDeploymentTarget("AzureAppServiceNative")
+)
+
+// Gets or sets the instance type.
+type WorkloadDeploymentType string
+
+const (
+	WorkloadDeploymentTypeIISAKSWorkloadDeployment          = WorkloadDeploymentType("IISAKSWorkloadDeployment")
+	WorkloadDeploymentTypeApacheTomcatAKSWorkloadDeployment = WorkloadDeploymentType("ApacheTomcatAKSWorkloadDeployment")
+)
+
+// Gets or sets the instance type.
+type WorkloadType string
+
+const (
+	WorkloadTypeIISWorkload          = WorkloadType("IISWorkload")
+	WorkloadTypeApacheTomcatWorkload = WorkloadType("ApacheTomcatWorkload")
 )
 
 // Defines the zone redundant resource setting.

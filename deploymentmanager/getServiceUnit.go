@@ -11,7 +11,7 @@ import (
 )
 
 // Represents the response of a service unit resource.
-// API Version: 2019-11-01-preview.
+// Azure REST API version: 2019-11-01-preview.
 func LookupServiceUnit(ctx *pulumi.Context, args *LookupServiceUnitArgs, opts ...pulumi.InvokeOption) (*LookupServiceUnitResult, error) {
 	var rv LookupServiceUnitResult
 	err := ctx.Invoke("azure-native:deploymentmanager:getServiceUnit", args, &rv, opts...)

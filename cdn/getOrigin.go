@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an existing origin within an endpoint.
-// API Version: 2020-09-01.
+// Azure REST API version: 2023-05-01.
 func LookupOrigin(ctx *pulumi.Context, args *LookupOriginArgs, opts ...pulumi.InvokeOption) (*LookupOriginResult, error) {
 	var rv LookupOriginResult
 	err := ctx.Invoke("azure-native:cdn:getOrigin", args, &rv, opts...)

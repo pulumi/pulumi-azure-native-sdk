@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Single-Sign-On token for the API Management Service which is valid for 5 Minutes.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func GetApiManagementServiceSsoToken(ctx *pulumi.Context, args *GetApiManagementServiceSsoTokenArgs, opts ...pulumi.InvokeOption) (*GetApiManagementServiceSsoTokenResult, error) {
 	var rv GetApiManagementServiceSsoTokenResult
 	err := ctx.Invoke("azure-native:apimanagement:getApiManagementServiceSsoToken", args, &rv, opts...)
@@ -22,7 +22,7 @@ func GetApiManagementServiceSsoToken(ctx *pulumi.Context, args *GetApiManagement
 }
 
 type GetApiManagementServiceSsoTokenArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -48,7 +48,7 @@ func GetApiManagementServiceSsoTokenOutput(ctx *pulumi.Context, args GetApiManag
 }
 
 type GetApiManagementServiceSsoTokenOutputArgs struct {
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

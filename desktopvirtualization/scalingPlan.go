@@ -12,7 +12,7 @@ import (
 )
 
 // Represents a scaling plan definition.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type ScalingPlan struct {
 	pulumi.CustomResourceState
 
@@ -40,15 +40,15 @@ type ScalingPlan struct {
 	// ObjectId of scaling plan. (internal use)
 	ObjectId pulumi.StringOutput                                      `pulumi:"objectId"`
 	Plan     ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
-	// The ring number of scaling plan.
-	Ring pulumi.IntPtrOutput `pulumi:"ring"`
-	// List of ScalingSchedule definitions.
+	// List of ScalingPlanPooledSchedule definitions.
 	Schedules ScalingScheduleResponseArrayOutput                      `pulumi:"schedules"`
 	Sku       ResourceModelWithAllowedPropertySetResponseSkuPtrOutput `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Timezone of the scaling plan.
-	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -62,6 +62,12 @@ func NewScalingPlan(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TimeZone == nil {
+		return nil, errors.New("invalid value for required argument 'TimeZone'")
+	}
+	if args.HostPoolType == nil {
+		args.HostPoolType = pulumi.StringPtr("Pooled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -151,17 +157,15 @@ type scalingPlanArgs struct {
 	Plan      *ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The ring number of scaling plan.
-	Ring *int `pulumi:"ring"`
 	// The name of the scaling plan.
 	ScalingPlanName *string `pulumi:"scalingPlanName"`
-	// List of ScalingSchedule definitions.
+	// List of ScalingPlanPooledSchedule definitions.
 	Schedules []ScalingSchedule                       `pulumi:"schedules"`
 	Sku       *ResourceModelWithAllowedPropertySetSku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Timezone of the scaling plan.
-	TimeZone *string `pulumi:"timeZone"`
+	TimeZone string `pulumi:"timeZone"`
 }
 
 // The set of arguments for constructing a ScalingPlan resource.
@@ -186,17 +190,15 @@ type ScalingPlanArgs struct {
 	Plan      ResourceModelWithAllowedPropertySetPlanPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The ring number of scaling plan.
-	Ring pulumi.IntPtrInput
 	// The name of the scaling plan.
 	ScalingPlanName pulumi.StringPtrInput
-	// List of ScalingSchedule definitions.
+	// List of ScalingPlanPooledSchedule definitions.
 	Schedules ScalingScheduleArrayInput
 	Sku       ResourceModelWithAllowedPropertySetSkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Timezone of the scaling plan.
-	TimeZone pulumi.StringPtrInput
+	TimeZone pulumi.StringInput
 }
 
 func (ScalingPlanArgs) ElementType() reflect.Type {
@@ -299,12 +301,7 @@ func (o ScalingPlanOutput) Plan() ResourceModelWithAllowedPropertySetResponsePla
 	return o.ApplyT(func(v *ScalingPlan) ResourceModelWithAllowedPropertySetResponsePlanPtrOutput { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
-// The ring number of scaling plan.
-func (o ScalingPlanOutput) Ring() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ScalingPlan) pulumi.IntPtrOutput { return v.Ring }).(pulumi.IntPtrOutput)
-}
-
-// List of ScalingSchedule definitions.
+// List of ScalingPlanPooledSchedule definitions.
 func (o ScalingPlanOutput) Schedules() ScalingScheduleResponseArrayOutput {
 	return o.ApplyT(func(v *ScalingPlan) ScalingScheduleResponseArrayOutput { return v.Schedules }).(ScalingScheduleResponseArrayOutput)
 }
@@ -313,14 +310,19 @@ func (o ScalingPlanOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuP
 	return o.ApplyT(func(v *ScalingPlan) ResourceModelWithAllowedPropertySetResponseSkuPtrOutput { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+func (o ScalingPlanOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ScalingPlan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o ScalingPlanOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Timezone of the scaling plan.
-func (o ScalingPlanOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScalingPlan) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
+func (o ScalingPlanOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingPlan) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

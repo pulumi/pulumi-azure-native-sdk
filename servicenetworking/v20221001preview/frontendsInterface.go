@@ -52,6 +52,9 @@ func NewFrontendsInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicenetworking:FrontendsInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:FrontendsInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FrontendsInterface

@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB Cassandra keyspace.
-// API Version: 2021-03-15.
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-15
 type CassandraResourceCassandraKeyspace struct {
 	pulumi.CustomResourceState
 
@@ -130,7 +130,19 @@ func NewCassandraResourceCassandraKeyspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:CassandraResourceCassandraKeyspace"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:CassandraResourceCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:CassandraResourceCassandraKeyspace"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:CassandraResourceCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraResourceCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:CassandraResourceCassandraKeyspace"),
 		},
 	})
 	opts = append(opts, aliases)

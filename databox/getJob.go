@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified job.
-// API Version: 2020-11-01.
+// Azure REST API version: 2022-12-01.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:databox:getJob", args, &rv, opts...)
@@ -60,6 +60,10 @@ type LookupJobResult struct {
 	Location string `pulumi:"location"`
 	// Name of the object.
 	Name string `pulumi:"name"`
+	// The Editable status for Reverse Shipping Address and Contact Info
+	ReverseShippingDetailsUpdate string `pulumi:"reverseShippingDetailsUpdate"`
+	// The Editable status for Reverse Transport preferences
+	ReverseTransportPreferenceUpdate string `pulumi:"reverseTransportPreferenceUpdate"`
 	// The sku type.
 	Sku SkuResponse `pulumi:"sku"`
 	// Time at which the job was started in UTC ISO 8601 format.
@@ -200,6 +204,16 @@ func (o LookupJobResultOutput) Location() pulumi.StringOutput {
 // Name of the object.
 func (o LookupJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Editable status for Reverse Shipping Address and Contact Info
+func (o LookupJobResultOutput) ReverseShippingDetailsUpdate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.ReverseShippingDetailsUpdate }).(pulumi.StringOutput)
+}
+
+// The Editable status for Reverse Transport preferences
+func (o LookupJobResultOutput) ReverseTransportPreferenceUpdate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.ReverseTransportPreferenceUpdate }).(pulumi.StringOutput)
 }
 
 // The sku type.

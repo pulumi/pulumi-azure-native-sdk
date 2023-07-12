@@ -231,6 +231,512 @@ type ActivityTimelineItemResponse struct {
 	Title string `pulumi:"title"`
 }
 
+// Settings for how to dynamically override alert static details
+type AlertDetailsOverride struct {
+	// the format containing columns name(s) to override the alert description
+	AlertDescriptionFormat *string `pulumi:"alertDescriptionFormat"`
+	// the format containing columns name(s) to override the alert name
+	AlertDisplayNameFormat *string `pulumi:"alertDisplayNameFormat"`
+	// List of additional dynamic properties to override
+	AlertDynamicProperties []AlertPropertyMapping `pulumi:"alertDynamicProperties"`
+	// the column name to take the alert severity from
+	AlertSeverityColumnName *string `pulumi:"alertSeverityColumnName"`
+	// the column name to take the alert tactics from
+	AlertTacticsColumnName *string `pulumi:"alertTacticsColumnName"`
+}
+
+// AlertDetailsOverrideInput is an input type that accepts AlertDetailsOverrideArgs and AlertDetailsOverrideOutput values.
+// You can construct a concrete instance of `AlertDetailsOverrideInput` via:
+//
+//	AlertDetailsOverrideArgs{...}
+type AlertDetailsOverrideInput interface {
+	pulumi.Input
+
+	ToAlertDetailsOverrideOutput() AlertDetailsOverrideOutput
+	ToAlertDetailsOverrideOutputWithContext(context.Context) AlertDetailsOverrideOutput
+}
+
+// Settings for how to dynamically override alert static details
+type AlertDetailsOverrideArgs struct {
+	// the format containing columns name(s) to override the alert description
+	AlertDescriptionFormat pulumi.StringPtrInput `pulumi:"alertDescriptionFormat"`
+	// the format containing columns name(s) to override the alert name
+	AlertDisplayNameFormat pulumi.StringPtrInput `pulumi:"alertDisplayNameFormat"`
+	// List of additional dynamic properties to override
+	AlertDynamicProperties AlertPropertyMappingArrayInput `pulumi:"alertDynamicProperties"`
+	// the column name to take the alert severity from
+	AlertSeverityColumnName pulumi.StringPtrInput `pulumi:"alertSeverityColumnName"`
+	// the column name to take the alert tactics from
+	AlertTacticsColumnName pulumi.StringPtrInput `pulumi:"alertTacticsColumnName"`
+}
+
+func (AlertDetailsOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertDetailsOverride)(nil)).Elem()
+}
+
+func (i AlertDetailsOverrideArgs) ToAlertDetailsOverrideOutput() AlertDetailsOverrideOutput {
+	return i.ToAlertDetailsOverrideOutputWithContext(context.Background())
+}
+
+func (i AlertDetailsOverrideArgs) ToAlertDetailsOverrideOutputWithContext(ctx context.Context) AlertDetailsOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertDetailsOverrideOutput)
+}
+
+func (i AlertDetailsOverrideArgs) ToAlertDetailsOverridePtrOutput() AlertDetailsOverridePtrOutput {
+	return i.ToAlertDetailsOverridePtrOutputWithContext(context.Background())
+}
+
+func (i AlertDetailsOverrideArgs) ToAlertDetailsOverridePtrOutputWithContext(ctx context.Context) AlertDetailsOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertDetailsOverrideOutput).ToAlertDetailsOverridePtrOutputWithContext(ctx)
+}
+
+// AlertDetailsOverridePtrInput is an input type that accepts AlertDetailsOverrideArgs, AlertDetailsOverridePtr and AlertDetailsOverridePtrOutput values.
+// You can construct a concrete instance of `AlertDetailsOverridePtrInput` via:
+//
+//	        AlertDetailsOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertDetailsOverridePtrInput interface {
+	pulumi.Input
+
+	ToAlertDetailsOverridePtrOutput() AlertDetailsOverridePtrOutput
+	ToAlertDetailsOverridePtrOutputWithContext(context.Context) AlertDetailsOverridePtrOutput
+}
+
+type alertDetailsOverridePtrType AlertDetailsOverrideArgs
+
+func AlertDetailsOverridePtr(v *AlertDetailsOverrideArgs) AlertDetailsOverridePtrInput {
+	return (*alertDetailsOverridePtrType)(v)
+}
+
+func (*alertDetailsOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertDetailsOverride)(nil)).Elem()
+}
+
+func (i *alertDetailsOverridePtrType) ToAlertDetailsOverridePtrOutput() AlertDetailsOverridePtrOutput {
+	return i.ToAlertDetailsOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *alertDetailsOverridePtrType) ToAlertDetailsOverridePtrOutputWithContext(ctx context.Context) AlertDetailsOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertDetailsOverridePtrOutput)
+}
+
+// Settings for how to dynamically override alert static details
+type AlertDetailsOverrideOutput struct{ *pulumi.OutputState }
+
+func (AlertDetailsOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertDetailsOverride)(nil)).Elem()
+}
+
+func (o AlertDetailsOverrideOutput) ToAlertDetailsOverrideOutput() AlertDetailsOverrideOutput {
+	return o
+}
+
+func (o AlertDetailsOverrideOutput) ToAlertDetailsOverrideOutputWithContext(ctx context.Context) AlertDetailsOverrideOutput {
+	return o
+}
+
+func (o AlertDetailsOverrideOutput) ToAlertDetailsOverridePtrOutput() AlertDetailsOverridePtrOutput {
+	return o.ToAlertDetailsOverridePtrOutputWithContext(context.Background())
+}
+
+func (o AlertDetailsOverrideOutput) ToAlertDetailsOverridePtrOutputWithContext(ctx context.Context) AlertDetailsOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertDetailsOverride) *AlertDetailsOverride {
+		return &v
+	}).(AlertDetailsOverridePtrOutput)
+}
+
+// the format containing columns name(s) to override the alert description
+func (o AlertDetailsOverrideOutput) AlertDescriptionFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertDetailsOverride) *string { return v.AlertDescriptionFormat }).(pulumi.StringPtrOutput)
+}
+
+// the format containing columns name(s) to override the alert name
+func (o AlertDetailsOverrideOutput) AlertDisplayNameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertDetailsOverride) *string { return v.AlertDisplayNameFormat }).(pulumi.StringPtrOutput)
+}
+
+// List of additional dynamic properties to override
+func (o AlertDetailsOverrideOutput) AlertDynamicProperties() AlertPropertyMappingArrayOutput {
+	return o.ApplyT(func(v AlertDetailsOverride) []AlertPropertyMapping { return v.AlertDynamicProperties }).(AlertPropertyMappingArrayOutput)
+}
+
+// the column name to take the alert severity from
+func (o AlertDetailsOverrideOutput) AlertSeverityColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertDetailsOverride) *string { return v.AlertSeverityColumnName }).(pulumi.StringPtrOutput)
+}
+
+// the column name to take the alert tactics from
+func (o AlertDetailsOverrideOutput) AlertTacticsColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertDetailsOverride) *string { return v.AlertTacticsColumnName }).(pulumi.StringPtrOutput)
+}
+
+type AlertDetailsOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertDetailsOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertDetailsOverride)(nil)).Elem()
+}
+
+func (o AlertDetailsOverridePtrOutput) ToAlertDetailsOverridePtrOutput() AlertDetailsOverridePtrOutput {
+	return o
+}
+
+func (o AlertDetailsOverridePtrOutput) ToAlertDetailsOverridePtrOutputWithContext(ctx context.Context) AlertDetailsOverridePtrOutput {
+	return o
+}
+
+func (o AlertDetailsOverridePtrOutput) Elem() AlertDetailsOverrideOutput {
+	return o.ApplyT(func(v *AlertDetailsOverride) AlertDetailsOverride {
+		if v != nil {
+			return *v
+		}
+		var ret AlertDetailsOverride
+		return ret
+	}).(AlertDetailsOverrideOutput)
+}
+
+// the format containing columns name(s) to override the alert description
+func (o AlertDetailsOverridePtrOutput) AlertDescriptionFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertDetailsOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertDescriptionFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// the format containing columns name(s) to override the alert name
+func (o AlertDetailsOverridePtrOutput) AlertDisplayNameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertDetailsOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertDisplayNameFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of additional dynamic properties to override
+func (o AlertDetailsOverridePtrOutput) AlertDynamicProperties() AlertPropertyMappingArrayOutput {
+	return o.ApplyT(func(v *AlertDetailsOverride) []AlertPropertyMapping {
+		if v == nil {
+			return nil
+		}
+		return v.AlertDynamicProperties
+	}).(AlertPropertyMappingArrayOutput)
+}
+
+// the column name to take the alert severity from
+func (o AlertDetailsOverridePtrOutput) AlertSeverityColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertDetailsOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertSeverityColumnName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the column name to take the alert tactics from
+func (o AlertDetailsOverridePtrOutput) AlertTacticsColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertDetailsOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertTacticsColumnName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings for how to dynamically override alert static details
+type AlertDetailsOverrideResponse struct {
+	// the format containing columns name(s) to override the alert description
+	AlertDescriptionFormat *string `pulumi:"alertDescriptionFormat"`
+	// the format containing columns name(s) to override the alert name
+	AlertDisplayNameFormat *string `pulumi:"alertDisplayNameFormat"`
+	// List of additional dynamic properties to override
+	AlertDynamicProperties []AlertPropertyMappingResponse `pulumi:"alertDynamicProperties"`
+	// the column name to take the alert severity from
+	AlertSeverityColumnName *string `pulumi:"alertSeverityColumnName"`
+	// the column name to take the alert tactics from
+	AlertTacticsColumnName *string `pulumi:"alertTacticsColumnName"`
+}
+
+// Settings for how to dynamically override alert static details
+type AlertDetailsOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (AlertDetailsOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertDetailsOverrideResponse)(nil)).Elem()
+}
+
+func (o AlertDetailsOverrideResponseOutput) ToAlertDetailsOverrideResponseOutput() AlertDetailsOverrideResponseOutput {
+	return o
+}
+
+func (o AlertDetailsOverrideResponseOutput) ToAlertDetailsOverrideResponseOutputWithContext(ctx context.Context) AlertDetailsOverrideResponseOutput {
+	return o
+}
+
+// the format containing columns name(s) to override the alert description
+func (o AlertDetailsOverrideResponseOutput) AlertDescriptionFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertDetailsOverrideResponse) *string { return v.AlertDescriptionFormat }).(pulumi.StringPtrOutput)
+}
+
+// the format containing columns name(s) to override the alert name
+func (o AlertDetailsOverrideResponseOutput) AlertDisplayNameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertDetailsOverrideResponse) *string { return v.AlertDisplayNameFormat }).(pulumi.StringPtrOutput)
+}
+
+// List of additional dynamic properties to override
+func (o AlertDetailsOverrideResponseOutput) AlertDynamicProperties() AlertPropertyMappingResponseArrayOutput {
+	return o.ApplyT(func(v AlertDetailsOverrideResponse) []AlertPropertyMappingResponse { return v.AlertDynamicProperties }).(AlertPropertyMappingResponseArrayOutput)
+}
+
+// the column name to take the alert severity from
+func (o AlertDetailsOverrideResponseOutput) AlertSeverityColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertDetailsOverrideResponse) *string { return v.AlertSeverityColumnName }).(pulumi.StringPtrOutput)
+}
+
+// the column name to take the alert tactics from
+func (o AlertDetailsOverrideResponseOutput) AlertTacticsColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertDetailsOverrideResponse) *string { return v.AlertTacticsColumnName }).(pulumi.StringPtrOutput)
+}
+
+type AlertDetailsOverrideResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertDetailsOverrideResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertDetailsOverrideResponse)(nil)).Elem()
+}
+
+func (o AlertDetailsOverrideResponsePtrOutput) ToAlertDetailsOverrideResponsePtrOutput() AlertDetailsOverrideResponsePtrOutput {
+	return o
+}
+
+func (o AlertDetailsOverrideResponsePtrOutput) ToAlertDetailsOverrideResponsePtrOutputWithContext(ctx context.Context) AlertDetailsOverrideResponsePtrOutput {
+	return o
+}
+
+func (o AlertDetailsOverrideResponsePtrOutput) Elem() AlertDetailsOverrideResponseOutput {
+	return o.ApplyT(func(v *AlertDetailsOverrideResponse) AlertDetailsOverrideResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AlertDetailsOverrideResponse
+		return ret
+	}).(AlertDetailsOverrideResponseOutput)
+}
+
+// the format containing columns name(s) to override the alert description
+func (o AlertDetailsOverrideResponsePtrOutput) AlertDescriptionFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertDetailsOverrideResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertDescriptionFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// the format containing columns name(s) to override the alert name
+func (o AlertDetailsOverrideResponsePtrOutput) AlertDisplayNameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertDetailsOverrideResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertDisplayNameFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of additional dynamic properties to override
+func (o AlertDetailsOverrideResponsePtrOutput) AlertDynamicProperties() AlertPropertyMappingResponseArrayOutput {
+	return o.ApplyT(func(v *AlertDetailsOverrideResponse) []AlertPropertyMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AlertDynamicProperties
+	}).(AlertPropertyMappingResponseArrayOutput)
+}
+
+// the column name to take the alert severity from
+func (o AlertDetailsOverrideResponsePtrOutput) AlertSeverityColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertDetailsOverrideResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertSeverityColumnName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the column name to take the alert tactics from
+func (o AlertDetailsOverrideResponsePtrOutput) AlertTacticsColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertDetailsOverrideResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertTacticsColumnName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A single alert property mapping to override
+type AlertPropertyMapping struct {
+	// The V3 alert property
+	AlertProperty *string `pulumi:"alertProperty"`
+	// the column name to use to override this property
+	Value *string `pulumi:"value"`
+}
+
+// AlertPropertyMappingInput is an input type that accepts AlertPropertyMappingArgs and AlertPropertyMappingOutput values.
+// You can construct a concrete instance of `AlertPropertyMappingInput` via:
+//
+//	AlertPropertyMappingArgs{...}
+type AlertPropertyMappingInput interface {
+	pulumi.Input
+
+	ToAlertPropertyMappingOutput() AlertPropertyMappingOutput
+	ToAlertPropertyMappingOutputWithContext(context.Context) AlertPropertyMappingOutput
+}
+
+// A single alert property mapping to override
+type AlertPropertyMappingArgs struct {
+	// The V3 alert property
+	AlertProperty pulumi.StringPtrInput `pulumi:"alertProperty"`
+	// the column name to use to override this property
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlertPropertyMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPropertyMapping)(nil)).Elem()
+}
+
+func (i AlertPropertyMappingArgs) ToAlertPropertyMappingOutput() AlertPropertyMappingOutput {
+	return i.ToAlertPropertyMappingOutputWithContext(context.Background())
+}
+
+func (i AlertPropertyMappingArgs) ToAlertPropertyMappingOutputWithContext(ctx context.Context) AlertPropertyMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPropertyMappingOutput)
+}
+
+// AlertPropertyMappingArrayInput is an input type that accepts AlertPropertyMappingArray and AlertPropertyMappingArrayOutput values.
+// You can construct a concrete instance of `AlertPropertyMappingArrayInput` via:
+//
+//	AlertPropertyMappingArray{ AlertPropertyMappingArgs{...} }
+type AlertPropertyMappingArrayInput interface {
+	pulumi.Input
+
+	ToAlertPropertyMappingArrayOutput() AlertPropertyMappingArrayOutput
+	ToAlertPropertyMappingArrayOutputWithContext(context.Context) AlertPropertyMappingArrayOutput
+}
+
+type AlertPropertyMappingArray []AlertPropertyMappingInput
+
+func (AlertPropertyMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPropertyMapping)(nil)).Elem()
+}
+
+func (i AlertPropertyMappingArray) ToAlertPropertyMappingArrayOutput() AlertPropertyMappingArrayOutput {
+	return i.ToAlertPropertyMappingArrayOutputWithContext(context.Background())
+}
+
+func (i AlertPropertyMappingArray) ToAlertPropertyMappingArrayOutputWithContext(ctx context.Context) AlertPropertyMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPropertyMappingArrayOutput)
+}
+
+// A single alert property mapping to override
+type AlertPropertyMappingOutput struct{ *pulumi.OutputState }
+
+func (AlertPropertyMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPropertyMapping)(nil)).Elem()
+}
+
+func (o AlertPropertyMappingOutput) ToAlertPropertyMappingOutput() AlertPropertyMappingOutput {
+	return o
+}
+
+func (o AlertPropertyMappingOutput) ToAlertPropertyMappingOutputWithContext(ctx context.Context) AlertPropertyMappingOutput {
+	return o
+}
+
+// The V3 alert property
+func (o AlertPropertyMappingOutput) AlertProperty() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPropertyMapping) *string { return v.AlertProperty }).(pulumi.StringPtrOutput)
+}
+
+// the column name to use to override this property
+func (o AlertPropertyMappingOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPropertyMapping) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlertPropertyMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertPropertyMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPropertyMapping)(nil)).Elem()
+}
+
+func (o AlertPropertyMappingArrayOutput) ToAlertPropertyMappingArrayOutput() AlertPropertyMappingArrayOutput {
+	return o
+}
+
+func (o AlertPropertyMappingArrayOutput) ToAlertPropertyMappingArrayOutputWithContext(ctx context.Context) AlertPropertyMappingArrayOutput {
+	return o
+}
+
+func (o AlertPropertyMappingArrayOutput) Index(i pulumi.IntInput) AlertPropertyMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPropertyMapping {
+		return vs[0].([]AlertPropertyMapping)[vs[1].(int)]
+	}).(AlertPropertyMappingOutput)
+}
+
+// A single alert property mapping to override
+type AlertPropertyMappingResponse struct {
+	// The V3 alert property
+	AlertProperty *string `pulumi:"alertProperty"`
+	// the column name to use to override this property
+	Value *string `pulumi:"value"`
+}
+
+// A single alert property mapping to override
+type AlertPropertyMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (AlertPropertyMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPropertyMappingResponse)(nil)).Elem()
+}
+
+func (o AlertPropertyMappingResponseOutput) ToAlertPropertyMappingResponseOutput() AlertPropertyMappingResponseOutput {
+	return o
+}
+
+func (o AlertPropertyMappingResponseOutput) ToAlertPropertyMappingResponseOutputWithContext(ctx context.Context) AlertPropertyMappingResponseOutput {
+	return o
+}
+
+// The V3 alert property
+func (o AlertPropertyMappingResponseOutput) AlertProperty() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPropertyMappingResponse) *string { return v.AlertProperty }).(pulumi.StringPtrOutput)
+}
+
+// the column name to use to override this property
+func (o AlertPropertyMappingResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPropertyMappingResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlertPropertyMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertPropertyMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPropertyMappingResponse)(nil)).Elem()
+}
+
+func (o AlertPropertyMappingResponseArrayOutput) ToAlertPropertyMappingResponseArrayOutput() AlertPropertyMappingResponseArrayOutput {
+	return o
+}
+
+func (o AlertPropertyMappingResponseArrayOutput) ToAlertPropertyMappingResponseArrayOutputWithContext(ctx context.Context) AlertPropertyMappingResponseArrayOutput {
+	return o
+}
+
+func (o AlertPropertyMappingResponseArrayOutput) Index(i pulumi.IntInput) AlertPropertyMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPropertyMappingResponse {
+		return vs[0].([]AlertPropertyMappingResponse)[vs[1].(int)]
+	}).(AlertPropertyMappingResponseOutput)
+}
+
 // Alerts data type for data connectors.
 type AlertsDataTypeOfDataConnector struct {
 	// Alerts data type connection.
@@ -431,401 +937,264 @@ func (o AlertsDataTypeOfDataConnectorResponsePtrOutput) Alerts() DataConnectorDa
 	}).(DataConnectorDataTypeCommonResponsePtrOutput)
 }
 
-// Describes an automation rule action to modify an object's properties
-type AutomationRuleModifyPropertiesAction struct {
-	// The configuration of the modify properties automation rule action
-	ActionConfiguration AutomationRuleModifyPropertiesActionActionConfiguration `pulumi:"actionConfiguration"`
-	// The type of the automation rule action
-	// Expected value is 'ModifyProperties'.
-	ActionType string `pulumi:"actionType"`
-	// The order of execution of the automation rule action
-	Order int `pulumi:"order"`
+// Represents anomaly timeline item.
+type AnomalyTimelineItemResponse struct {
+	// The anomaly azure resource id.
+	AzureResourceId string `pulumi:"azureResourceId"`
+	// The anomaly description.
+	Description *string `pulumi:"description"`
+	// The anomaly name.
+	DisplayName string `pulumi:"displayName"`
+	// The anomaly end time.
+	EndTimeUtc string `pulumi:"endTimeUtc"`
+	// The intent of the anomaly.
+	Intent *string `pulumi:"intent"`
+	// The entity query kind
+	// Expected value is 'Anomaly'.
+	Kind string `pulumi:"kind"`
+	// The anomaly product name.
+	ProductName *string `pulumi:"productName"`
+	// The reasons that cause the anomaly.
+	Reasons []string `pulumi:"reasons"`
+	// The anomaly start time.
+	StartTimeUtc string `pulumi:"startTimeUtc"`
+	// The techniques of the anomaly.
+	Techniques []string `pulumi:"techniques"`
+	// The anomaly generated time.
+	TimeGenerated string `pulumi:"timeGenerated"`
+	// The name of the anomaly vendor.
+	Vendor *string `pulumi:"vendor"`
 }
 
-// The configuration of the modify properties automation rule action
-type AutomationRuleModifyPropertiesActionActionConfiguration struct {
-	// The reason the incident was closed
-	Classification *string `pulumi:"classification"`
-	// Describes the reason the incident was closed
-	ClassificationComment *string `pulumi:"classificationComment"`
-	// The classification reason to close the incident with
-	ClassificationReason *string `pulumi:"classificationReason"`
-	// List of labels to add to the incident
-	Labels []IncidentLabel `pulumi:"labels"`
-	// Describes a user that the incident is assigned to
-	Owner *IncidentOwnerInfo `pulumi:"owner"`
-	// The severity of the incident
-	Severity *string `pulumi:"severity"`
-	// The status of the incident
-	Status *string `pulumi:"status"`
+// An entity describing a content item.
+type AssignmentItem struct {
+	// The resource id of the content item
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// AssignmentItemInput is an input type that accepts AssignmentItemArgs and AssignmentItemOutput values.
+// You can construct a concrete instance of `AssignmentItemInput` via:
+//
+//	AssignmentItemArgs{...}
+type AssignmentItemInput interface {
+	pulumi.Input
+
+	ToAssignmentItemOutput() AssignmentItemOutput
+	ToAssignmentItemOutputWithContext(context.Context) AssignmentItemOutput
+}
+
+// An entity describing a content item.
+type AssignmentItemArgs struct {
+	// The resource id of the content item
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (AssignmentItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentItem)(nil)).Elem()
+}
+
+func (i AssignmentItemArgs) ToAssignmentItemOutput() AssignmentItemOutput {
+	return i.ToAssignmentItemOutputWithContext(context.Background())
+}
+
+func (i AssignmentItemArgs) ToAssignmentItemOutputWithContext(ctx context.Context) AssignmentItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentItemOutput)
+}
+
+// AssignmentItemArrayInput is an input type that accepts AssignmentItemArray and AssignmentItemArrayOutput values.
+// You can construct a concrete instance of `AssignmentItemArrayInput` via:
+//
+//	AssignmentItemArray{ AssignmentItemArgs{...} }
+type AssignmentItemArrayInput interface {
+	pulumi.Input
+
+	ToAssignmentItemArrayOutput() AssignmentItemArrayOutput
+	ToAssignmentItemArrayOutputWithContext(context.Context) AssignmentItemArrayOutput
+}
+
+type AssignmentItemArray []AssignmentItemInput
+
+func (AssignmentItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssignmentItem)(nil)).Elem()
+}
+
+func (i AssignmentItemArray) ToAssignmentItemArrayOutput() AssignmentItemArrayOutput {
+	return i.ToAssignmentItemArrayOutputWithContext(context.Background())
+}
+
+func (i AssignmentItemArray) ToAssignmentItemArrayOutputWithContext(ctx context.Context) AssignmentItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentItemArrayOutput)
+}
+
+// An entity describing a content item.
+type AssignmentItemOutput struct{ *pulumi.OutputState }
+
+func (AssignmentItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentItem)(nil)).Elem()
+}
+
+func (o AssignmentItemOutput) ToAssignmentItemOutput() AssignmentItemOutput {
+	return o
+}
+
+func (o AssignmentItemOutput) ToAssignmentItemOutputWithContext(ctx context.Context) AssignmentItemOutput {
+	return o
+}
+
+// The resource id of the content item
+func (o AssignmentItemOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssignmentItem) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type AssignmentItemArrayOutput struct{ *pulumi.OutputState }
+
+func (AssignmentItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssignmentItem)(nil)).Elem()
+}
+
+func (o AssignmentItemArrayOutput) ToAssignmentItemArrayOutput() AssignmentItemArrayOutput {
+	return o
+}
+
+func (o AssignmentItemArrayOutput) ToAssignmentItemArrayOutputWithContext(ctx context.Context) AssignmentItemArrayOutput {
+	return o
+}
+
+func (o AssignmentItemArrayOutput) Index(i pulumi.IntInput) AssignmentItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssignmentItem {
+		return vs[0].([]AssignmentItem)[vs[1].(int)]
+	}).(AssignmentItemOutput)
+}
+
+// An entity describing a content item.
+type AssignmentItemResponse struct {
+	// The resource id of the content item
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// An entity describing a content item.
+type AssignmentItemResponseOutput struct{ *pulumi.OutputState }
+
+func (AssignmentItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentItemResponse)(nil)).Elem()
+}
+
+func (o AssignmentItemResponseOutput) ToAssignmentItemResponseOutput() AssignmentItemResponseOutput {
+	return o
+}
+
+func (o AssignmentItemResponseOutput) ToAssignmentItemResponseOutputWithContext(ctx context.Context) AssignmentItemResponseOutput {
+	return o
+}
+
+// The resource id of the content item
+func (o AssignmentItemResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssignmentItemResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type AssignmentItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssignmentItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssignmentItemResponse)(nil)).Elem()
+}
+
+func (o AssignmentItemResponseArrayOutput) ToAssignmentItemResponseArrayOutput() AssignmentItemResponseArrayOutput {
+	return o
+}
+
+func (o AssignmentItemResponseArrayOutput) ToAssignmentItemResponseArrayOutputWithContext(ctx context.Context) AssignmentItemResponseArrayOutput {
+	return o
+}
+
+func (o AssignmentItemResponseArrayOutput) Index(i pulumi.IntInput) AssignmentItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssignmentItemResponse {
+		return vs[0].([]AssignmentItemResponse)[vs[1].(int)]
+	}).(AssignmentItemResponseOutput)
+}
+
+// Describes an automation rule action to modify an object's properties
+type AutomationRuleModifyPropertiesAction struct {
+	ActionConfiguration *IncidentPropertiesAction `pulumi:"actionConfiguration"`
+	// The type of the automation rule action.
+	// Expected value is 'ModifyProperties'.
+	ActionType string `pulumi:"actionType"`
+	Order      int    `pulumi:"order"`
 }
 
 // Describes an automation rule action to modify an object's properties
 type AutomationRuleModifyPropertiesActionResponse struct {
-	// The configuration of the modify properties automation rule action
-	ActionConfiguration AutomationRuleModifyPropertiesActionResponseActionConfiguration `pulumi:"actionConfiguration"`
-	// The type of the automation rule action
+	ActionConfiguration *IncidentPropertiesActionResponse `pulumi:"actionConfiguration"`
+	// The type of the automation rule action.
 	// Expected value is 'ModifyProperties'.
 	ActionType string `pulumi:"actionType"`
-	// The order of execution of the automation rule action
-	Order int `pulumi:"order"`
+	Order      int    `pulumi:"order"`
 }
 
-// The configuration of the modify properties automation rule action
-type AutomationRuleModifyPropertiesActionResponseActionConfiguration struct {
-	// The reason the incident was closed
-	Classification *string `pulumi:"classification"`
-	// Describes the reason the incident was closed
-	ClassificationComment *string `pulumi:"classificationComment"`
-	// The classification reason to close the incident with
-	ClassificationReason *string `pulumi:"classificationReason"`
-	// List of labels to add to the incident
-	Labels []IncidentLabelResponse `pulumi:"labels"`
-	// Describes a user that the incident is assigned to
-	Owner *IncidentOwnerInfoResponse `pulumi:"owner"`
-	// The severity of the incident
-	Severity *string `pulumi:"severity"`
-	// The status of the incident
-	Status *string `pulumi:"status"`
+type AutomationRulePropertyArrayChangedValuesCondition struct {
+	ArrayType  *string `pulumi:"arrayType"`
+	ChangeType *string `pulumi:"changeType"`
 }
 
-// Describes an automation rule condition that evaluates a property's value
+type AutomationRulePropertyArrayChangedValuesConditionResponse struct {
+	ArrayType  *string `pulumi:"arrayType"`
+	ChangeType *string `pulumi:"changeType"`
+}
+
+type AutomationRulePropertyValuesChangedCondition struct {
+	ChangeType     *string  `pulumi:"changeType"`
+	Operator       *string  `pulumi:"operator"`
+	PropertyName   *string  `pulumi:"propertyName"`
+	PropertyValues []string `pulumi:"propertyValues"`
+}
+
+type AutomationRulePropertyValuesChangedConditionResponse struct {
+	ChangeType     *string  `pulumi:"changeType"`
+	Operator       *string  `pulumi:"operator"`
+	PropertyName   *string  `pulumi:"propertyName"`
+	PropertyValues []string `pulumi:"propertyValues"`
+}
+
 type AutomationRulePropertyValuesCondition struct {
-	// The configuration of the automation rule condition
-	ConditionProperties AutomationRulePropertyValuesConditionConditionProperties `pulumi:"conditionProperties"`
-	// The type of the automation rule condition
-	// Expected value is 'Property'.
-	ConditionType string `pulumi:"conditionType"`
-}
-
-// AutomationRulePropertyValuesConditionInput is an input type that accepts AutomationRulePropertyValuesConditionArgs and AutomationRulePropertyValuesConditionOutput values.
-// You can construct a concrete instance of `AutomationRulePropertyValuesConditionInput` via:
-//
-//	AutomationRulePropertyValuesConditionArgs{...}
-type AutomationRulePropertyValuesConditionInput interface {
-	pulumi.Input
-
-	ToAutomationRulePropertyValuesConditionOutput() AutomationRulePropertyValuesConditionOutput
-	ToAutomationRulePropertyValuesConditionOutputWithContext(context.Context) AutomationRulePropertyValuesConditionOutput
-}
-
-// Describes an automation rule condition that evaluates a property's value
-type AutomationRulePropertyValuesConditionArgs struct {
-	// The configuration of the automation rule condition
-	ConditionProperties AutomationRulePropertyValuesConditionConditionPropertiesInput `pulumi:"conditionProperties"`
-	// The type of the automation rule condition
-	// Expected value is 'Property'.
-	ConditionType pulumi.StringInput `pulumi:"conditionType"`
-}
-
-func (AutomationRulePropertyValuesConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyValuesCondition)(nil)).Elem()
-}
-
-func (i AutomationRulePropertyValuesConditionArgs) ToAutomationRulePropertyValuesConditionOutput() AutomationRulePropertyValuesConditionOutput {
-	return i.ToAutomationRulePropertyValuesConditionOutputWithContext(context.Background())
-}
-
-func (i AutomationRulePropertyValuesConditionArgs) ToAutomationRulePropertyValuesConditionOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyValuesConditionOutput)
-}
-
-// AutomationRulePropertyValuesConditionArrayInput is an input type that accepts AutomationRulePropertyValuesConditionArray and AutomationRulePropertyValuesConditionArrayOutput values.
-// You can construct a concrete instance of `AutomationRulePropertyValuesConditionArrayInput` via:
-//
-//	AutomationRulePropertyValuesConditionArray{ AutomationRulePropertyValuesConditionArgs{...} }
-type AutomationRulePropertyValuesConditionArrayInput interface {
-	pulumi.Input
-
-	ToAutomationRulePropertyValuesConditionArrayOutput() AutomationRulePropertyValuesConditionArrayOutput
-	ToAutomationRulePropertyValuesConditionArrayOutputWithContext(context.Context) AutomationRulePropertyValuesConditionArrayOutput
-}
-
-type AutomationRulePropertyValuesConditionArray []AutomationRulePropertyValuesConditionInput
-
-func (AutomationRulePropertyValuesConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AutomationRulePropertyValuesCondition)(nil)).Elem()
-}
-
-func (i AutomationRulePropertyValuesConditionArray) ToAutomationRulePropertyValuesConditionArrayOutput() AutomationRulePropertyValuesConditionArrayOutput {
-	return i.ToAutomationRulePropertyValuesConditionArrayOutputWithContext(context.Background())
-}
-
-func (i AutomationRulePropertyValuesConditionArray) ToAutomationRulePropertyValuesConditionArrayOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyValuesConditionArrayOutput)
-}
-
-// Describes an automation rule condition that evaluates a property's value
-type AutomationRulePropertyValuesConditionOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyValuesConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyValuesCondition)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyValuesConditionOutput) ToAutomationRulePropertyValuesConditionOutput() AutomationRulePropertyValuesConditionOutput {
-	return o
-}
-
-func (o AutomationRulePropertyValuesConditionOutput) ToAutomationRulePropertyValuesConditionOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionOutput {
-	return o
-}
-
-// The configuration of the automation rule condition
-func (o AutomationRulePropertyValuesConditionOutput) ConditionProperties() AutomationRulePropertyValuesConditionConditionPropertiesOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesCondition) AutomationRulePropertyValuesConditionConditionProperties {
-		return v.ConditionProperties
-	}).(AutomationRulePropertyValuesConditionConditionPropertiesOutput)
-}
-
-// The type of the automation rule condition
-// Expected value is 'Property'.
-func (o AutomationRulePropertyValuesConditionOutput) ConditionType() pulumi.StringOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesCondition) string { return v.ConditionType }).(pulumi.StringOutput)
-}
-
-type AutomationRulePropertyValuesConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyValuesConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AutomationRulePropertyValuesCondition)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyValuesConditionArrayOutput) ToAutomationRulePropertyValuesConditionArrayOutput() AutomationRulePropertyValuesConditionArrayOutput {
-	return o
-}
-
-func (o AutomationRulePropertyValuesConditionArrayOutput) ToAutomationRulePropertyValuesConditionArrayOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionArrayOutput {
-	return o
-}
-
-func (o AutomationRulePropertyValuesConditionArrayOutput) Index(i pulumi.IntInput) AutomationRulePropertyValuesConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationRulePropertyValuesCondition {
-		return vs[0].([]AutomationRulePropertyValuesCondition)[vs[1].(int)]
-	}).(AutomationRulePropertyValuesConditionOutput)
-}
-
-// The configuration of the automation rule condition
-type AutomationRulePropertyValuesConditionConditionProperties struct {
-	// The operator to use for evaluation the condition
 	Operator *string `pulumi:"operator"`
-	// The property to evaluate
-	PropertyName *string `pulumi:"propertyName"`
-	// The values to use for evaluating the condition
+	// The property to evaluate in an automation rule property condition.
+	PropertyName   *string  `pulumi:"propertyName"`
 	PropertyValues []string `pulumi:"propertyValues"`
 }
 
-// AutomationRulePropertyValuesConditionConditionPropertiesInput is an input type that accepts AutomationRulePropertyValuesConditionConditionPropertiesArgs and AutomationRulePropertyValuesConditionConditionPropertiesOutput values.
-// You can construct a concrete instance of `AutomationRulePropertyValuesConditionConditionPropertiesInput` via:
-//
-//	AutomationRulePropertyValuesConditionConditionPropertiesArgs{...}
-type AutomationRulePropertyValuesConditionConditionPropertiesInput interface {
-	pulumi.Input
-
-	ToAutomationRulePropertyValuesConditionConditionPropertiesOutput() AutomationRulePropertyValuesConditionConditionPropertiesOutput
-	ToAutomationRulePropertyValuesConditionConditionPropertiesOutputWithContext(context.Context) AutomationRulePropertyValuesConditionConditionPropertiesOutput
-}
-
-// The configuration of the automation rule condition
-type AutomationRulePropertyValuesConditionConditionPropertiesArgs struct {
-	// The operator to use for evaluation the condition
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property to evaluate
-	PropertyName pulumi.StringPtrInput `pulumi:"propertyName"`
-	// The values to use for evaluating the condition
-	PropertyValues pulumi.StringArrayInput `pulumi:"propertyValues"`
-}
-
-func (AutomationRulePropertyValuesConditionConditionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyValuesConditionConditionProperties)(nil)).Elem()
-}
-
-func (i AutomationRulePropertyValuesConditionConditionPropertiesArgs) ToAutomationRulePropertyValuesConditionConditionPropertiesOutput() AutomationRulePropertyValuesConditionConditionPropertiesOutput {
-	return i.ToAutomationRulePropertyValuesConditionConditionPropertiesOutputWithContext(context.Background())
-}
-
-func (i AutomationRulePropertyValuesConditionConditionPropertiesArgs) ToAutomationRulePropertyValuesConditionConditionPropertiesOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionConditionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyValuesConditionConditionPropertiesOutput)
-}
-
-// The configuration of the automation rule condition
-type AutomationRulePropertyValuesConditionConditionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyValuesConditionConditionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyValuesConditionConditionProperties)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyValuesConditionConditionPropertiesOutput) ToAutomationRulePropertyValuesConditionConditionPropertiesOutput() AutomationRulePropertyValuesConditionConditionPropertiesOutput {
-	return o
-}
-
-func (o AutomationRulePropertyValuesConditionConditionPropertiesOutput) ToAutomationRulePropertyValuesConditionConditionPropertiesOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionConditionPropertiesOutput {
-	return o
-}
-
-// The operator to use for evaluation the condition
-func (o AutomationRulePropertyValuesConditionConditionPropertiesOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesConditionConditionProperties) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-// The property to evaluate
-func (o AutomationRulePropertyValuesConditionConditionPropertiesOutput) PropertyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesConditionConditionProperties) *string { return v.PropertyName }).(pulumi.StringPtrOutput)
-}
-
-// The values to use for evaluating the condition
-func (o AutomationRulePropertyValuesConditionConditionPropertiesOutput) PropertyValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesConditionConditionProperties) []string { return v.PropertyValues }).(pulumi.StringArrayOutput)
-}
-
-// Describes an automation rule condition that evaluates a property's value
 type AutomationRulePropertyValuesConditionResponse struct {
-	// The configuration of the automation rule condition
-	ConditionProperties AutomationRulePropertyValuesConditionResponseConditionProperties `pulumi:"conditionProperties"`
-	// The type of the automation rule condition
-	// Expected value is 'Property'.
-	ConditionType string `pulumi:"conditionType"`
-}
-
-// Describes an automation rule condition that evaluates a property's value
-type AutomationRulePropertyValuesConditionResponseOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyValuesConditionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyValuesConditionResponse)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyValuesConditionResponseOutput) ToAutomationRulePropertyValuesConditionResponseOutput() AutomationRulePropertyValuesConditionResponseOutput {
-	return o
-}
-
-func (o AutomationRulePropertyValuesConditionResponseOutput) ToAutomationRulePropertyValuesConditionResponseOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionResponseOutput {
-	return o
-}
-
-// The configuration of the automation rule condition
-func (o AutomationRulePropertyValuesConditionResponseOutput) ConditionProperties() AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesConditionResponse) AutomationRulePropertyValuesConditionResponseConditionProperties {
-		return v.ConditionProperties
-	}).(AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput)
-}
-
-// The type of the automation rule condition
-// Expected value is 'Property'.
-func (o AutomationRulePropertyValuesConditionResponseOutput) ConditionType() pulumi.StringOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesConditionResponse) string { return v.ConditionType }).(pulumi.StringOutput)
-}
-
-type AutomationRulePropertyValuesConditionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyValuesConditionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AutomationRulePropertyValuesConditionResponse)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyValuesConditionResponseArrayOutput) ToAutomationRulePropertyValuesConditionResponseArrayOutput() AutomationRulePropertyValuesConditionResponseArrayOutput {
-	return o
-}
-
-func (o AutomationRulePropertyValuesConditionResponseArrayOutput) ToAutomationRulePropertyValuesConditionResponseArrayOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionResponseArrayOutput {
-	return o
-}
-
-func (o AutomationRulePropertyValuesConditionResponseArrayOutput) Index(i pulumi.IntInput) AutomationRulePropertyValuesConditionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationRulePropertyValuesConditionResponse {
-		return vs[0].([]AutomationRulePropertyValuesConditionResponse)[vs[1].(int)]
-	}).(AutomationRulePropertyValuesConditionResponseOutput)
-}
-
-// The configuration of the automation rule condition
-type AutomationRulePropertyValuesConditionResponseConditionProperties struct {
-	// The operator to use for evaluation the condition
 	Operator *string `pulumi:"operator"`
-	// The property to evaluate
-	PropertyName *string `pulumi:"propertyName"`
-	// The values to use for evaluating the condition
+	// The property to evaluate in an automation rule property condition.
+	PropertyName   *string  `pulumi:"propertyName"`
 	PropertyValues []string `pulumi:"propertyValues"`
-}
-
-// The configuration of the automation rule condition
-type AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyValuesConditionResponseConditionProperties)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) ToAutomationRulePropertyValuesConditionResponseConditionPropertiesOutput() AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput {
-	return o
-}
-
-func (o AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) ToAutomationRulePropertyValuesConditionResponseConditionPropertiesOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput {
-	return o
-}
-
-// The operator to use for evaluation the condition
-func (o AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesConditionResponseConditionProperties) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-// The property to evaluate
-func (o AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) PropertyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesConditionResponseConditionProperties) *string {
-		return v.PropertyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The values to use for evaluating the condition
-func (o AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) PropertyValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AutomationRulePropertyValuesConditionResponseConditionProperties) []string {
-		return v.PropertyValues
-	}).(pulumi.StringArrayOutput)
 }
 
 // Describes an automation rule action to run a playbook
 type AutomationRuleRunPlaybookAction struct {
-	// The configuration of the run playbook automation rule action
-	ActionConfiguration AutomationRuleRunPlaybookActionActionConfiguration `pulumi:"actionConfiguration"`
-	// The type of the automation rule action
+	ActionConfiguration *PlaybookActionProperties `pulumi:"actionConfiguration"`
+	// The type of the automation rule action.
 	// Expected value is 'RunPlaybook'.
 	ActionType string `pulumi:"actionType"`
-	// The order of execution of the automation rule action
-	Order int `pulumi:"order"`
-}
-
-// The configuration of the run playbook automation rule action
-type AutomationRuleRunPlaybookActionActionConfiguration struct {
-	// The resource id of the playbook resource
-	LogicAppResourceId *string `pulumi:"logicAppResourceId"`
-	// The tenant id of the playbook resource
-	TenantId *string `pulumi:"tenantId"`
+	Order      int    `pulumi:"order"`
 }
 
 // Describes an automation rule action to run a playbook
 type AutomationRuleRunPlaybookActionResponse struct {
-	// The configuration of the run playbook automation rule action
-	ActionConfiguration AutomationRuleRunPlaybookActionResponseActionConfiguration `pulumi:"actionConfiguration"`
-	// The type of the automation rule action
+	ActionConfiguration *PlaybookActionPropertiesResponse `pulumi:"actionConfiguration"`
+	// The type of the automation rule action.
 	// Expected value is 'RunPlaybook'.
 	ActionType string `pulumi:"actionType"`
-	// The order of execution of the automation rule action
-	Order int `pulumi:"order"`
+	Order      int    `pulumi:"order"`
 }
 
-// The configuration of the run playbook automation rule action
-type AutomationRuleRunPlaybookActionResponseActionConfiguration struct {
-	// The resource id of the playbook resource
-	LogicAppResourceId *string `pulumi:"logicAppResourceId"`
-	// The tenant id of the playbook resource
-	TenantId *string `pulumi:"tenantId"`
-}
-
-// Describes automation rule triggering logic
+// Describes automation rule triggering logic.
 type AutomationRuleTriggeringLogic struct {
-	// The conditions to evaluate to determine if the automation rule should be triggered on a given object
-	Conditions []AutomationRulePropertyValuesCondition `pulumi:"conditions"`
+	// The conditions to evaluate to determine if the automation rule should be triggered on a given object.
+	Conditions []interface{} `pulumi:"conditions"`
 	// Determines when the automation rule should automatically expire and be disabled.
 	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
 	// Determines whether the automation rule is enabled or disabled.
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The type of object the automation rule triggers on
-	TriggersOn string `pulumi:"triggersOn"`
-	// The type of event the automation rule triggers on
+	IsEnabled    bool   `pulumi:"isEnabled"`
+	TriggersOn   string `pulumi:"triggersOn"`
 	TriggersWhen string `pulumi:"triggersWhen"`
 }
 
@@ -840,17 +1209,15 @@ type AutomationRuleTriggeringLogicInput interface {
 	ToAutomationRuleTriggeringLogicOutputWithContext(context.Context) AutomationRuleTriggeringLogicOutput
 }
 
-// Describes automation rule triggering logic
+// Describes automation rule triggering logic.
 type AutomationRuleTriggeringLogicArgs struct {
-	// The conditions to evaluate to determine if the automation rule should be triggered on a given object
-	Conditions AutomationRulePropertyValuesConditionArrayInput `pulumi:"conditions"`
+	// The conditions to evaluate to determine if the automation rule should be triggered on a given object.
+	Conditions pulumi.ArrayInput `pulumi:"conditions"`
 	// Determines when the automation rule should automatically expire and be disabled.
 	ExpirationTimeUtc pulumi.StringPtrInput `pulumi:"expirationTimeUtc"`
 	// Determines whether the automation rule is enabled or disabled.
-	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// The type of object the automation rule triggers on
-	TriggersOn pulumi.StringInput `pulumi:"triggersOn"`
-	// The type of event the automation rule triggers on
+	IsEnabled    pulumi.BoolInput   `pulumi:"isEnabled"`
+	TriggersOn   pulumi.StringInput `pulumi:"triggersOn"`
 	TriggersWhen pulumi.StringInput `pulumi:"triggersWhen"`
 }
 
@@ -866,7 +1233,7 @@ func (i AutomationRuleTriggeringLogicArgs) ToAutomationRuleTriggeringLogicOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleTriggeringLogicOutput)
 }
 
-// Describes automation rule triggering logic
+// Describes automation rule triggering logic.
 type AutomationRuleTriggeringLogicOutput struct{ *pulumi.OutputState }
 
 func (AutomationRuleTriggeringLogicOutput) ElementType() reflect.Type {
@@ -881,9 +1248,9 @@ func (o AutomationRuleTriggeringLogicOutput) ToAutomationRuleTriggeringLogicOutp
 	return o
 }
 
-// The conditions to evaluate to determine if the automation rule should be triggered on a given object
-func (o AutomationRuleTriggeringLogicOutput) Conditions() AutomationRulePropertyValuesConditionArrayOutput {
-	return o.ApplyT(func(v AutomationRuleTriggeringLogic) []AutomationRulePropertyValuesCondition { return v.Conditions }).(AutomationRulePropertyValuesConditionArrayOutput)
+// The conditions to evaluate to determine if the automation rule should be triggered on a given object.
+func (o AutomationRuleTriggeringLogicOutput) Conditions() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AutomationRuleTriggeringLogic) []interface{} { return v.Conditions }).(pulumi.ArrayOutput)
 }
 
 // Determines when the automation rule should automatically expire and be disabled.
@@ -896,31 +1263,27 @@ func (o AutomationRuleTriggeringLogicOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v AutomationRuleTriggeringLogic) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
-// The type of object the automation rule triggers on
 func (o AutomationRuleTriggeringLogicOutput) TriggersOn() pulumi.StringOutput {
 	return o.ApplyT(func(v AutomationRuleTriggeringLogic) string { return v.TriggersOn }).(pulumi.StringOutput)
 }
 
-// The type of event the automation rule triggers on
 func (o AutomationRuleTriggeringLogicOutput) TriggersWhen() pulumi.StringOutput {
 	return o.ApplyT(func(v AutomationRuleTriggeringLogic) string { return v.TriggersWhen }).(pulumi.StringOutput)
 }
 
-// Describes automation rule triggering logic
+// Describes automation rule triggering logic.
 type AutomationRuleTriggeringLogicResponse struct {
-	// The conditions to evaluate to determine if the automation rule should be triggered on a given object
-	Conditions []AutomationRulePropertyValuesConditionResponse `pulumi:"conditions"`
+	// The conditions to evaluate to determine if the automation rule should be triggered on a given object.
+	Conditions []interface{} `pulumi:"conditions"`
 	// Determines when the automation rule should automatically expire and be disabled.
 	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
 	// Determines whether the automation rule is enabled or disabled.
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The type of object the automation rule triggers on
-	TriggersOn string `pulumi:"triggersOn"`
-	// The type of event the automation rule triggers on
+	IsEnabled    bool   `pulumi:"isEnabled"`
+	TriggersOn   string `pulumi:"triggersOn"`
 	TriggersWhen string `pulumi:"triggersWhen"`
 }
 
-// Describes automation rule triggering logic
+// Describes automation rule triggering logic.
 type AutomationRuleTriggeringLogicResponseOutput struct{ *pulumi.OutputState }
 
 func (AutomationRuleTriggeringLogicResponseOutput) ElementType() reflect.Type {
@@ -935,11 +1298,9 @@ func (o AutomationRuleTriggeringLogicResponseOutput) ToAutomationRuleTriggeringL
 	return o
 }
 
-// The conditions to evaluate to determine if the automation rule should be triggered on a given object
-func (o AutomationRuleTriggeringLogicResponseOutput) Conditions() AutomationRulePropertyValuesConditionResponseArrayOutput {
-	return o.ApplyT(func(v AutomationRuleTriggeringLogicResponse) []AutomationRulePropertyValuesConditionResponse {
-		return v.Conditions
-	}).(AutomationRulePropertyValuesConditionResponseArrayOutput)
+// The conditions to evaluate to determine if the automation rule should be triggered on a given object.
+func (o AutomationRuleTriggeringLogicResponseOutput) Conditions() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AutomationRuleTriggeringLogicResponse) []interface{} { return v.Conditions }).(pulumi.ArrayOutput)
 }
 
 // Determines when the automation rule should automatically expire and be disabled.
@@ -952,12 +1313,10 @@ func (o AutomationRuleTriggeringLogicResponseOutput) IsEnabled() pulumi.BoolOutp
 	return o.ApplyT(func(v AutomationRuleTriggeringLogicResponse) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
-// The type of object the automation rule triggers on
 func (o AutomationRuleTriggeringLogicResponseOutput) TriggersOn() pulumi.StringOutput {
 	return o.ApplyT(func(v AutomationRuleTriggeringLogicResponse) string { return v.TriggersOn }).(pulumi.StringOutput)
 }
 
-// The type of event the automation rule triggers on
 func (o AutomationRuleTriggeringLogicResponseOutput) TriggersWhen() pulumi.StringOutput {
 	return o.ApplyT(func(v AutomationRuleTriggeringLogicResponse) string { return v.TriggersWhen }).(pulumi.StringOutput)
 }
@@ -1364,6 +1723,242 @@ func (o AwsCloudTrailDataConnectorDataTypesResponseLogsPtrOutput) State() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Resources created in Azure DevOps repository.
+type AzureDevOpsResourceInfo struct {
+	// Id of the pipeline created for the source-control.
+	PipelineId *string `pulumi:"pipelineId"`
+	// Id of the service-connection created for the source-control.
+	ServiceConnectionId *string `pulumi:"serviceConnectionId"`
+}
+
+// AzureDevOpsResourceInfoInput is an input type that accepts AzureDevOpsResourceInfoArgs and AzureDevOpsResourceInfoOutput values.
+// You can construct a concrete instance of `AzureDevOpsResourceInfoInput` via:
+//
+//	AzureDevOpsResourceInfoArgs{...}
+type AzureDevOpsResourceInfoInput interface {
+	pulumi.Input
+
+	ToAzureDevOpsResourceInfoOutput() AzureDevOpsResourceInfoOutput
+	ToAzureDevOpsResourceInfoOutputWithContext(context.Context) AzureDevOpsResourceInfoOutput
+}
+
+// Resources created in Azure DevOps repository.
+type AzureDevOpsResourceInfoArgs struct {
+	// Id of the pipeline created for the source-control.
+	PipelineId pulumi.StringPtrInput `pulumi:"pipelineId"`
+	// Id of the service-connection created for the source-control.
+	ServiceConnectionId pulumi.StringPtrInput `pulumi:"serviceConnectionId"`
+}
+
+func (AzureDevOpsResourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsResourceInfo)(nil)).Elem()
+}
+
+func (i AzureDevOpsResourceInfoArgs) ToAzureDevOpsResourceInfoOutput() AzureDevOpsResourceInfoOutput {
+	return i.ToAzureDevOpsResourceInfoOutputWithContext(context.Background())
+}
+
+func (i AzureDevOpsResourceInfoArgs) ToAzureDevOpsResourceInfoOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsResourceInfoOutput)
+}
+
+func (i AzureDevOpsResourceInfoArgs) ToAzureDevOpsResourceInfoPtrOutput() AzureDevOpsResourceInfoPtrOutput {
+	return i.ToAzureDevOpsResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AzureDevOpsResourceInfoArgs) ToAzureDevOpsResourceInfoPtrOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsResourceInfoOutput).ToAzureDevOpsResourceInfoPtrOutputWithContext(ctx)
+}
+
+// AzureDevOpsResourceInfoPtrInput is an input type that accepts AzureDevOpsResourceInfoArgs, AzureDevOpsResourceInfoPtr and AzureDevOpsResourceInfoPtrOutput values.
+// You can construct a concrete instance of `AzureDevOpsResourceInfoPtrInput` via:
+//
+//	        AzureDevOpsResourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureDevOpsResourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToAzureDevOpsResourceInfoPtrOutput() AzureDevOpsResourceInfoPtrOutput
+	ToAzureDevOpsResourceInfoPtrOutputWithContext(context.Context) AzureDevOpsResourceInfoPtrOutput
+}
+
+type azureDevOpsResourceInfoPtrType AzureDevOpsResourceInfoArgs
+
+func AzureDevOpsResourceInfoPtr(v *AzureDevOpsResourceInfoArgs) AzureDevOpsResourceInfoPtrInput {
+	return (*azureDevOpsResourceInfoPtrType)(v)
+}
+
+func (*azureDevOpsResourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureDevOpsResourceInfo)(nil)).Elem()
+}
+
+func (i *azureDevOpsResourceInfoPtrType) ToAzureDevOpsResourceInfoPtrOutput() AzureDevOpsResourceInfoPtrOutput {
+	return i.ToAzureDevOpsResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *azureDevOpsResourceInfoPtrType) ToAzureDevOpsResourceInfoPtrOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsResourceInfoPtrOutput)
+}
+
+// Resources created in Azure DevOps repository.
+type AzureDevOpsResourceInfoOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsResourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsResourceInfo)(nil)).Elem()
+}
+
+func (o AzureDevOpsResourceInfoOutput) ToAzureDevOpsResourceInfoOutput() AzureDevOpsResourceInfoOutput {
+	return o
+}
+
+func (o AzureDevOpsResourceInfoOutput) ToAzureDevOpsResourceInfoOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoOutput {
+	return o
+}
+
+func (o AzureDevOpsResourceInfoOutput) ToAzureDevOpsResourceInfoPtrOutput() AzureDevOpsResourceInfoPtrOutput {
+	return o.ToAzureDevOpsResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AzureDevOpsResourceInfoOutput) ToAzureDevOpsResourceInfoPtrOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureDevOpsResourceInfo) *AzureDevOpsResourceInfo {
+		return &v
+	}).(AzureDevOpsResourceInfoPtrOutput)
+}
+
+// Id of the pipeline created for the source-control.
+func (o AzureDevOpsResourceInfoOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDevOpsResourceInfo) *string { return v.PipelineId }).(pulumi.StringPtrOutput)
+}
+
+// Id of the service-connection created for the source-control.
+func (o AzureDevOpsResourceInfoOutput) ServiceConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDevOpsResourceInfo) *string { return v.ServiceConnectionId }).(pulumi.StringPtrOutput)
+}
+
+type AzureDevOpsResourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsResourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureDevOpsResourceInfo)(nil)).Elem()
+}
+
+func (o AzureDevOpsResourceInfoPtrOutput) ToAzureDevOpsResourceInfoPtrOutput() AzureDevOpsResourceInfoPtrOutput {
+	return o
+}
+
+func (o AzureDevOpsResourceInfoPtrOutput) ToAzureDevOpsResourceInfoPtrOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoPtrOutput {
+	return o
+}
+
+func (o AzureDevOpsResourceInfoPtrOutput) Elem() AzureDevOpsResourceInfoOutput {
+	return o.ApplyT(func(v *AzureDevOpsResourceInfo) AzureDevOpsResourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AzureDevOpsResourceInfo
+		return ret
+	}).(AzureDevOpsResourceInfoOutput)
+}
+
+// Id of the pipeline created for the source-control.
+func (o AzureDevOpsResourceInfoPtrOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDevOpsResourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Id of the service-connection created for the source-control.
+func (o AzureDevOpsResourceInfoPtrOutput) ServiceConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDevOpsResourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resources created in Azure DevOps repository.
+type AzureDevOpsResourceInfoResponse struct {
+	// Id of the pipeline created for the source-control.
+	PipelineId *string `pulumi:"pipelineId"`
+	// Id of the service-connection created for the source-control.
+	ServiceConnectionId *string `pulumi:"serviceConnectionId"`
+}
+
+// Resources created in Azure DevOps repository.
+type AzureDevOpsResourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsResourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsResourceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureDevOpsResourceInfoResponseOutput) ToAzureDevOpsResourceInfoResponseOutput() AzureDevOpsResourceInfoResponseOutput {
+	return o
+}
+
+func (o AzureDevOpsResourceInfoResponseOutput) ToAzureDevOpsResourceInfoResponseOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoResponseOutput {
+	return o
+}
+
+// Id of the pipeline created for the source-control.
+func (o AzureDevOpsResourceInfoResponseOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDevOpsResourceInfoResponse) *string { return v.PipelineId }).(pulumi.StringPtrOutput)
+}
+
+// Id of the service-connection created for the source-control.
+func (o AzureDevOpsResourceInfoResponseOutput) ServiceConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureDevOpsResourceInfoResponse) *string { return v.ServiceConnectionId }).(pulumi.StringPtrOutput)
+}
+
+type AzureDevOpsResourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsResourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureDevOpsResourceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureDevOpsResourceInfoResponsePtrOutput) ToAzureDevOpsResourceInfoResponsePtrOutput() AzureDevOpsResourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureDevOpsResourceInfoResponsePtrOutput) ToAzureDevOpsResourceInfoResponsePtrOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureDevOpsResourceInfoResponsePtrOutput) Elem() AzureDevOpsResourceInfoResponseOutput {
+	return o.ApplyT(func(v *AzureDevOpsResourceInfoResponse) AzureDevOpsResourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureDevOpsResourceInfoResponse
+		return ret
+	}).(AzureDevOpsResourceInfoResponseOutput)
+}
+
+// Id of the pipeline created for the source-control.
+func (o AzureDevOpsResourceInfoResponsePtrOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDevOpsResourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Id of the service-connection created for the source-control.
+func (o AzureDevOpsResourceInfoResponsePtrOutput) ServiceConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDevOpsResourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents bookmark timeline item.
 type BookmarkTimelineItemResponse struct {
 	// The bookmark azure resource id.
@@ -1385,6 +1980,203 @@ type BookmarkTimelineItemResponse struct {
 	Notes *string `pulumi:"notes"`
 	// The bookmark start time.
 	StartTimeUtc *string `pulumi:"startTimeUtc"`
+}
+
+// Information on the client (user or application) that made some action
+type ClientInfo struct {
+	// The email of the client.
+	Email *string `pulumi:"email"`
+	// The name of the client.
+	Name *string `pulumi:"name"`
+	// The object id of the client.
+	ObjectId *string `pulumi:"objectId"`
+	// The user principal name of the client.
+	UserPrincipalName *string `pulumi:"userPrincipalName"`
+}
+
+// ClientInfoInput is an input type that accepts ClientInfoArgs and ClientInfoOutput values.
+// You can construct a concrete instance of `ClientInfoInput` via:
+//
+//	ClientInfoArgs{...}
+type ClientInfoInput interface {
+	pulumi.Input
+
+	ToClientInfoOutput() ClientInfoOutput
+	ToClientInfoOutputWithContext(context.Context) ClientInfoOutput
+}
+
+// Information on the client (user or application) that made some action
+type ClientInfoArgs struct {
+	// The email of the client.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The name of the client.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The object id of the client.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// The user principal name of the client.
+	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
+}
+
+func (ClientInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientInfo)(nil)).Elem()
+}
+
+func (i ClientInfoArgs) ToClientInfoOutput() ClientInfoOutput {
+	return i.ToClientInfoOutputWithContext(context.Background())
+}
+
+func (i ClientInfoArgs) ToClientInfoOutputWithContext(ctx context.Context) ClientInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoOutput)
+}
+
+func (i ClientInfoArgs) ToClientInfoPtrOutput() ClientInfoPtrOutput {
+	return i.ToClientInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ClientInfoArgs) ToClientInfoPtrOutputWithContext(ctx context.Context) ClientInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoOutput).ToClientInfoPtrOutputWithContext(ctx)
+}
+
+// ClientInfoPtrInput is an input type that accepts ClientInfoArgs, ClientInfoPtr and ClientInfoPtrOutput values.
+// You can construct a concrete instance of `ClientInfoPtrInput` via:
+//
+//	        ClientInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientInfoPtrInput interface {
+	pulumi.Input
+
+	ToClientInfoPtrOutput() ClientInfoPtrOutput
+	ToClientInfoPtrOutputWithContext(context.Context) ClientInfoPtrOutput
+}
+
+type clientInfoPtrType ClientInfoArgs
+
+func ClientInfoPtr(v *ClientInfoArgs) ClientInfoPtrInput {
+	return (*clientInfoPtrType)(v)
+}
+
+func (*clientInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientInfo)(nil)).Elem()
+}
+
+func (i *clientInfoPtrType) ToClientInfoPtrOutput() ClientInfoPtrOutput {
+	return i.ToClientInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *clientInfoPtrType) ToClientInfoPtrOutputWithContext(ctx context.Context) ClientInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoPtrOutput)
+}
+
+// Information on the client (user or application) that made some action
+type ClientInfoOutput struct{ *pulumi.OutputState }
+
+func (ClientInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientInfo)(nil)).Elem()
+}
+
+func (o ClientInfoOutput) ToClientInfoOutput() ClientInfoOutput {
+	return o
+}
+
+func (o ClientInfoOutput) ToClientInfoOutputWithContext(ctx context.Context) ClientInfoOutput {
+	return o
+}
+
+func (o ClientInfoOutput) ToClientInfoPtrOutput() ClientInfoPtrOutput {
+	return o.ToClientInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ClientInfoOutput) ToClientInfoPtrOutputWithContext(ctx context.Context) ClientInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientInfo) *ClientInfo {
+		return &v
+	}).(ClientInfoPtrOutput)
+}
+
+// The email of the client.
+func (o ClientInfoOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientInfo) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The name of the client.
+func (o ClientInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The object id of the client.
+func (o ClientInfoOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientInfo) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the client.
+func (o ClientInfoOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientInfo) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
+}
+
+type ClientInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientInfo)(nil)).Elem()
+}
+
+func (o ClientInfoPtrOutput) ToClientInfoPtrOutput() ClientInfoPtrOutput {
+	return o
+}
+
+func (o ClientInfoPtrOutput) ToClientInfoPtrOutputWithContext(ctx context.Context) ClientInfoPtrOutput {
+	return o
+}
+
+func (o ClientInfoPtrOutput) Elem() ClientInfoOutput {
+	return o.ApplyT(func(v *ClientInfo) ClientInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ClientInfo
+		return ret
+	}).(ClientInfoOutput)
+}
+
+// The email of the client.
+func (o ClientInfoPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the client.
+func (o ClientInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object id of the client.
+func (o ClientInfoPtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the client.
+func (o ClientInfoPtrOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserPrincipalName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Information on the client (user or application) that made some action
@@ -1432,6 +2224,70 @@ func (o ClientInfoResponseOutput) ObjectId() pulumi.StringPtrOutput {
 // The user principal name of the client.
 func (o ClientInfoResponseOutput) UserPrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientInfoResponse) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
+}
+
+type ClientInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientInfoResponse)(nil)).Elem()
+}
+
+func (o ClientInfoResponsePtrOutput) ToClientInfoResponsePtrOutput() ClientInfoResponsePtrOutput {
+	return o
+}
+
+func (o ClientInfoResponsePtrOutput) ToClientInfoResponsePtrOutputWithContext(ctx context.Context) ClientInfoResponsePtrOutput {
+	return o
+}
+
+func (o ClientInfoResponsePtrOutput) Elem() ClientInfoResponseOutput {
+	return o.ApplyT(func(v *ClientInfoResponse) ClientInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientInfoResponse
+		return ret
+	}).(ClientInfoResponseOutput)
+}
+
+// The email of the client.
+func (o ClientInfoResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the client.
+func (o ClientInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object id of the client.
+func (o ClientInfoResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the client.
+func (o ClientInfoResponsePtrOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserPrincipalName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The mapping of content type to a repo path.
@@ -1796,6 +2652,622 @@ func (o DataConnectorDataTypeCommonResponsePtrOutput) State() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Description about a deployment.
+type Deployment struct {
+	// Deployment identifier.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// Url to access repository action logs.
+	DeploymentLogsUrl *string `pulumi:"deploymentLogsUrl"`
+	// The outcome of the deployment.
+	DeploymentResult *string `pulumi:"deploymentResult"`
+	// Current status of the deployment.
+	DeploymentState *string `pulumi:"deploymentState"`
+	// The time when the deployment finished.
+	DeploymentTime *string `pulumi:"deploymentTime"`
+}
+
+// DeploymentInput is an input type that accepts DeploymentArgs and DeploymentOutput values.
+// You can construct a concrete instance of `DeploymentInput` via:
+//
+//	DeploymentArgs{...}
+type DeploymentInput interface {
+	pulumi.Input
+
+	ToDeploymentOutput() DeploymentOutput
+	ToDeploymentOutputWithContext(context.Context) DeploymentOutput
+}
+
+// Description about a deployment.
+type DeploymentArgs struct {
+	// Deployment identifier.
+	DeploymentId pulumi.StringPtrInput `pulumi:"deploymentId"`
+	// Url to access repository action logs.
+	DeploymentLogsUrl pulumi.StringPtrInput `pulumi:"deploymentLogsUrl"`
+	// The outcome of the deployment.
+	DeploymentResult pulumi.StringPtrInput `pulumi:"deploymentResult"`
+	// Current status of the deployment.
+	DeploymentState pulumi.StringPtrInput `pulumi:"deploymentState"`
+	// The time when the deployment finished.
+	DeploymentTime pulumi.StringPtrInput `pulumi:"deploymentTime"`
+}
+
+func (DeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Deployment)(nil)).Elem()
+}
+
+func (i DeploymentArgs) ToDeploymentOutput() DeploymentOutput {
+	return i.ToDeploymentOutputWithContext(context.Background())
+}
+
+func (i DeploymentArgs) ToDeploymentOutputWithContext(ctx context.Context) DeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOutput)
+}
+
+func (i DeploymentArgs) ToDeploymentPtrOutput() DeploymentPtrOutput {
+	return i.ToDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentArgs) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOutput).ToDeploymentPtrOutputWithContext(ctx)
+}
+
+// DeploymentPtrInput is an input type that accepts DeploymentArgs, DeploymentPtr and DeploymentPtrOutput values.
+// You can construct a concrete instance of `DeploymentPtrInput` via:
+//
+//	        DeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentPtrOutput() DeploymentPtrOutput
+	ToDeploymentPtrOutputWithContext(context.Context) DeploymentPtrOutput
+}
+
+type deploymentPtrType DeploymentArgs
+
+func DeploymentPtr(v *DeploymentArgs) DeploymentPtrInput {
+	return (*deploymentPtrType)(v)
+}
+
+func (*deploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Deployment)(nil)).Elem()
+}
+
+func (i *deploymentPtrType) ToDeploymentPtrOutput() DeploymentPtrOutput {
+	return i.ToDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentPtrType) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentPtrOutput)
+}
+
+// Description about a deployment.
+type DeploymentOutput struct{ *pulumi.OutputState }
+
+func (DeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Deployment)(nil)).Elem()
+}
+
+func (o DeploymentOutput) ToDeploymentOutput() DeploymentOutput {
+	return o
+}
+
+func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) DeploymentOutput {
+	return o
+}
+
+func (o DeploymentOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
+	return o.ToDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deployment) *Deployment {
+		return &v
+	}).(DeploymentPtrOutput)
+}
+
+// Deployment identifier.
+func (o DeploymentOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Deployment) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// Url to access repository action logs.
+func (o DeploymentOutput) DeploymentLogsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Deployment) *string { return v.DeploymentLogsUrl }).(pulumi.StringPtrOutput)
+}
+
+// The outcome of the deployment.
+func (o DeploymentOutput) DeploymentResult() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Deployment) *string { return v.DeploymentResult }).(pulumi.StringPtrOutput)
+}
+
+// Current status of the deployment.
+func (o DeploymentOutput) DeploymentState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Deployment) *string { return v.DeploymentState }).(pulumi.StringPtrOutput)
+}
+
+// The time when the deployment finished.
+func (o DeploymentOutput) DeploymentTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Deployment) *string { return v.DeploymentTime }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Deployment)(nil)).Elem()
+}
+
+func (o DeploymentPtrOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
+	return o
+}
+
+func (o DeploymentPtrOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
+	return o
+}
+
+func (o DeploymentPtrOutput) Elem() DeploymentOutput {
+	return o.ApplyT(func(v *Deployment) Deployment {
+		if v != nil {
+			return *v
+		}
+		var ret Deployment
+		return ret
+	}).(DeploymentOutput)
+}
+
+// Deployment identifier.
+func (o DeploymentPtrOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Deployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Url to access repository action logs.
+func (o DeploymentPtrOutput) DeploymentLogsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Deployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentLogsUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The outcome of the deployment.
+func (o DeploymentPtrOutput) DeploymentResult() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Deployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentResult
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current status of the deployment.
+func (o DeploymentPtrOutput) DeploymentState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Deployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when the deployment finished.
+func (o DeploymentPtrOutput) DeploymentTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Deployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information regarding a deployment.
+type DeploymentInfo struct {
+	// Deployment information.
+	Deployment *Deployment `pulumi:"deployment"`
+	// Status while fetching the last deployment.
+	DeploymentFetchStatus *string `pulumi:"deploymentFetchStatus"`
+	// Additional details about the deployment that can be shown to the user.
+	Message *string `pulumi:"message"`
+}
+
+// DeploymentInfoInput is an input type that accepts DeploymentInfoArgs and DeploymentInfoOutput values.
+// You can construct a concrete instance of `DeploymentInfoInput` via:
+//
+//	DeploymentInfoArgs{...}
+type DeploymentInfoInput interface {
+	pulumi.Input
+
+	ToDeploymentInfoOutput() DeploymentInfoOutput
+	ToDeploymentInfoOutputWithContext(context.Context) DeploymentInfoOutput
+}
+
+// Information regarding a deployment.
+type DeploymentInfoArgs struct {
+	// Deployment information.
+	Deployment DeploymentPtrInput `pulumi:"deployment"`
+	// Status while fetching the last deployment.
+	DeploymentFetchStatus pulumi.StringPtrInput `pulumi:"deploymentFetchStatus"`
+	// Additional details about the deployment that can be shown to the user.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (DeploymentInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentInfo)(nil)).Elem()
+}
+
+func (i DeploymentInfoArgs) ToDeploymentInfoOutput() DeploymentInfoOutput {
+	return i.ToDeploymentInfoOutputWithContext(context.Background())
+}
+
+func (i DeploymentInfoArgs) ToDeploymentInfoOutputWithContext(ctx context.Context) DeploymentInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentInfoOutput)
+}
+
+func (i DeploymentInfoArgs) ToDeploymentInfoPtrOutput() DeploymentInfoPtrOutput {
+	return i.ToDeploymentInfoPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentInfoArgs) ToDeploymentInfoPtrOutputWithContext(ctx context.Context) DeploymentInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentInfoOutput).ToDeploymentInfoPtrOutputWithContext(ctx)
+}
+
+// DeploymentInfoPtrInput is an input type that accepts DeploymentInfoArgs, DeploymentInfoPtr and DeploymentInfoPtrOutput values.
+// You can construct a concrete instance of `DeploymentInfoPtrInput` via:
+//
+//	        DeploymentInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentInfoPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentInfoPtrOutput() DeploymentInfoPtrOutput
+	ToDeploymentInfoPtrOutputWithContext(context.Context) DeploymentInfoPtrOutput
+}
+
+type deploymentInfoPtrType DeploymentInfoArgs
+
+func DeploymentInfoPtr(v *DeploymentInfoArgs) DeploymentInfoPtrInput {
+	return (*deploymentInfoPtrType)(v)
+}
+
+func (*deploymentInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentInfo)(nil)).Elem()
+}
+
+func (i *deploymentInfoPtrType) ToDeploymentInfoPtrOutput() DeploymentInfoPtrOutput {
+	return i.ToDeploymentInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentInfoPtrType) ToDeploymentInfoPtrOutputWithContext(ctx context.Context) DeploymentInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentInfoPtrOutput)
+}
+
+// Information regarding a deployment.
+type DeploymentInfoOutput struct{ *pulumi.OutputState }
+
+func (DeploymentInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentInfo)(nil)).Elem()
+}
+
+func (o DeploymentInfoOutput) ToDeploymentInfoOutput() DeploymentInfoOutput {
+	return o
+}
+
+func (o DeploymentInfoOutput) ToDeploymentInfoOutputWithContext(ctx context.Context) DeploymentInfoOutput {
+	return o
+}
+
+func (o DeploymentInfoOutput) ToDeploymentInfoPtrOutput() DeploymentInfoPtrOutput {
+	return o.ToDeploymentInfoPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentInfoOutput) ToDeploymentInfoPtrOutputWithContext(ctx context.Context) DeploymentInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentInfo) *DeploymentInfo {
+		return &v
+	}).(DeploymentInfoPtrOutput)
+}
+
+// Deployment information.
+func (o DeploymentInfoOutput) Deployment() DeploymentPtrOutput {
+	return o.ApplyT(func(v DeploymentInfo) *Deployment { return v.Deployment }).(DeploymentPtrOutput)
+}
+
+// Status while fetching the last deployment.
+func (o DeploymentInfoOutput) DeploymentFetchStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentInfo) *string { return v.DeploymentFetchStatus }).(pulumi.StringPtrOutput)
+}
+
+// Additional details about the deployment that can be shown to the user.
+func (o DeploymentInfoOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentInfo) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentInfo)(nil)).Elem()
+}
+
+func (o DeploymentInfoPtrOutput) ToDeploymentInfoPtrOutput() DeploymentInfoPtrOutput {
+	return o
+}
+
+func (o DeploymentInfoPtrOutput) ToDeploymentInfoPtrOutputWithContext(ctx context.Context) DeploymentInfoPtrOutput {
+	return o
+}
+
+func (o DeploymentInfoPtrOutput) Elem() DeploymentInfoOutput {
+	return o.ApplyT(func(v *DeploymentInfo) DeploymentInfo {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentInfo
+		return ret
+	}).(DeploymentInfoOutput)
+}
+
+// Deployment information.
+func (o DeploymentInfoPtrOutput) Deployment() DeploymentPtrOutput {
+	return o.ApplyT(func(v *DeploymentInfo) *Deployment {
+		if v == nil {
+			return nil
+		}
+		return v.Deployment
+	}).(DeploymentPtrOutput)
+}
+
+// Status while fetching the last deployment.
+func (o DeploymentInfoPtrOutput) DeploymentFetchStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentFetchStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional details about the deployment that can be shown to the user.
+func (o DeploymentInfoPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information regarding a deployment.
+type DeploymentInfoResponse struct {
+	// Deployment information.
+	Deployment *DeploymentResponse `pulumi:"deployment"`
+	// Status while fetching the last deployment.
+	DeploymentFetchStatus *string `pulumi:"deploymentFetchStatus"`
+	// Additional details about the deployment that can be shown to the user.
+	Message *string `pulumi:"message"`
+}
+
+// Information regarding a deployment.
+type DeploymentInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentInfoResponse)(nil)).Elem()
+}
+
+func (o DeploymentInfoResponseOutput) ToDeploymentInfoResponseOutput() DeploymentInfoResponseOutput {
+	return o
+}
+
+func (o DeploymentInfoResponseOutput) ToDeploymentInfoResponseOutputWithContext(ctx context.Context) DeploymentInfoResponseOutput {
+	return o
+}
+
+// Deployment information.
+func (o DeploymentInfoResponseOutput) Deployment() DeploymentResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentInfoResponse) *DeploymentResponse { return v.Deployment }).(DeploymentResponsePtrOutput)
+}
+
+// Status while fetching the last deployment.
+func (o DeploymentInfoResponseOutput) DeploymentFetchStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentInfoResponse) *string { return v.DeploymentFetchStatus }).(pulumi.StringPtrOutput)
+}
+
+// Additional details about the deployment that can be shown to the user.
+func (o DeploymentInfoResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentInfoResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentInfoResponse)(nil)).Elem()
+}
+
+func (o DeploymentInfoResponsePtrOutput) ToDeploymentInfoResponsePtrOutput() DeploymentInfoResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentInfoResponsePtrOutput) ToDeploymentInfoResponsePtrOutputWithContext(ctx context.Context) DeploymentInfoResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentInfoResponsePtrOutput) Elem() DeploymentInfoResponseOutput {
+	return o.ApplyT(func(v *DeploymentInfoResponse) DeploymentInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentInfoResponse
+		return ret
+	}).(DeploymentInfoResponseOutput)
+}
+
+// Deployment information.
+func (o DeploymentInfoResponsePtrOutput) Deployment() DeploymentResponsePtrOutput {
+	return o.ApplyT(func(v *DeploymentInfoResponse) *DeploymentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Deployment
+	}).(DeploymentResponsePtrOutput)
+}
+
+// Status while fetching the last deployment.
+func (o DeploymentInfoResponsePtrOutput) DeploymentFetchStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentFetchStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional details about the deployment that can be shown to the user.
+func (o DeploymentInfoResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description about a deployment.
+type DeploymentResponse struct {
+	// Deployment identifier.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// Url to access repository action logs.
+	DeploymentLogsUrl *string `pulumi:"deploymentLogsUrl"`
+	// The outcome of the deployment.
+	DeploymentResult *string `pulumi:"deploymentResult"`
+	// Current status of the deployment.
+	DeploymentState *string `pulumi:"deploymentState"`
+	// The time when the deployment finished.
+	DeploymentTime *string `pulumi:"deploymentTime"`
+}
+
+// Description about a deployment.
+type DeploymentResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentResponse)(nil)).Elem()
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponseOutput() DeploymentResponseOutput {
+	return o
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponseOutputWithContext(ctx context.Context) DeploymentResponseOutput {
+	return o
+}
+
+// Deployment identifier.
+func (o DeploymentResponseOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentResponse) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// Url to access repository action logs.
+func (o DeploymentResponseOutput) DeploymentLogsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentResponse) *string { return v.DeploymentLogsUrl }).(pulumi.StringPtrOutput)
+}
+
+// The outcome of the deployment.
+func (o DeploymentResponseOutput) DeploymentResult() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentResponse) *string { return v.DeploymentResult }).(pulumi.StringPtrOutput)
+}
+
+// Current status of the deployment.
+func (o DeploymentResponseOutput) DeploymentState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentResponse) *string { return v.DeploymentState }).(pulumi.StringPtrOutput)
+}
+
+// The time when the deployment finished.
+func (o DeploymentResponseOutput) DeploymentTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentResponse) *string { return v.DeploymentTime }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentResponse)(nil)).Elem()
+}
+
+func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentResponsePtrOutput) Elem() DeploymentResponseOutput {
+	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentResponse
+		return ret
+	}).(DeploymentResponseOutput)
+}
+
+// Deployment identifier.
+func (o DeploymentResponsePtrOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Url to access repository action logs.
+func (o DeploymentResponsePtrOutput) DeploymentLogsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentLogsUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The outcome of the deployment.
+func (o DeploymentResponsePtrOutput) DeploymentResult() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentResult
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current status of the deployment.
+func (o DeploymentResponsePtrOutput) DeploymentState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when the deployment finished.
+func (o DeploymentResponsePtrOutput) DeploymentTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // Entity insight Item.
 type EntityInsightItemResponse struct {
 	// Query results for table insights query.
@@ -1942,8 +3414,659 @@ func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) StartTime() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Single entity mapping for the alert rule
+type EntityMapping struct {
+	// The V3 type of the mapped entity
+	EntityType *string `pulumi:"entityType"`
+	// array of field mappings for the given entity mapping
+	FieldMappings []FieldMapping `pulumi:"fieldMappings"`
+}
+
+// EntityMappingInput is an input type that accepts EntityMappingArgs and EntityMappingOutput values.
+// You can construct a concrete instance of `EntityMappingInput` via:
+//
+//	EntityMappingArgs{...}
+type EntityMappingInput interface {
+	pulumi.Input
+
+	ToEntityMappingOutput() EntityMappingOutput
+	ToEntityMappingOutputWithContext(context.Context) EntityMappingOutput
+}
+
+// Single entity mapping for the alert rule
+type EntityMappingArgs struct {
+	// The V3 type of the mapped entity
+	EntityType pulumi.StringPtrInput `pulumi:"entityType"`
+	// array of field mappings for the given entity mapping
+	FieldMappings FieldMappingArrayInput `pulumi:"fieldMappings"`
+}
+
+func (EntityMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityMapping)(nil)).Elem()
+}
+
+func (i EntityMappingArgs) ToEntityMappingOutput() EntityMappingOutput {
+	return i.ToEntityMappingOutputWithContext(context.Background())
+}
+
+func (i EntityMappingArgs) ToEntityMappingOutputWithContext(ctx context.Context) EntityMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityMappingOutput)
+}
+
+// EntityMappingArrayInput is an input type that accepts EntityMappingArray and EntityMappingArrayOutput values.
+// You can construct a concrete instance of `EntityMappingArrayInput` via:
+//
+//	EntityMappingArray{ EntityMappingArgs{...} }
+type EntityMappingArrayInput interface {
+	pulumi.Input
+
+	ToEntityMappingArrayOutput() EntityMappingArrayOutput
+	ToEntityMappingArrayOutputWithContext(context.Context) EntityMappingArrayOutput
+}
+
+type EntityMappingArray []EntityMappingInput
+
+func (EntityMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntityMapping)(nil)).Elem()
+}
+
+func (i EntityMappingArray) ToEntityMappingArrayOutput() EntityMappingArrayOutput {
+	return i.ToEntityMappingArrayOutputWithContext(context.Background())
+}
+
+func (i EntityMappingArray) ToEntityMappingArrayOutputWithContext(ctx context.Context) EntityMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityMappingArrayOutput)
+}
+
+// Single entity mapping for the alert rule
+type EntityMappingOutput struct{ *pulumi.OutputState }
+
+func (EntityMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityMapping)(nil)).Elem()
+}
+
+func (o EntityMappingOutput) ToEntityMappingOutput() EntityMappingOutput {
+	return o
+}
+
+func (o EntityMappingOutput) ToEntityMappingOutputWithContext(ctx context.Context) EntityMappingOutput {
+	return o
+}
+
+// The V3 type of the mapped entity
+func (o EntityMappingOutput) EntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityMapping) *string { return v.EntityType }).(pulumi.StringPtrOutput)
+}
+
+// array of field mappings for the given entity mapping
+func (o EntityMappingOutput) FieldMappings() FieldMappingArrayOutput {
+	return o.ApplyT(func(v EntityMapping) []FieldMapping { return v.FieldMappings }).(FieldMappingArrayOutput)
+}
+
+type EntityMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (EntityMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntityMapping)(nil)).Elem()
+}
+
+func (o EntityMappingArrayOutput) ToEntityMappingArrayOutput() EntityMappingArrayOutput {
+	return o
+}
+
+func (o EntityMappingArrayOutput) ToEntityMappingArrayOutputWithContext(ctx context.Context) EntityMappingArrayOutput {
+	return o
+}
+
+func (o EntityMappingArrayOutput) Index(i pulumi.IntInput) EntityMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityMapping {
+		return vs[0].([]EntityMapping)[vs[1].(int)]
+	}).(EntityMappingOutput)
+}
+
+// Single entity mapping for the alert rule
+type EntityMappingResponse struct {
+	// The V3 type of the mapped entity
+	EntityType *string `pulumi:"entityType"`
+	// array of field mappings for the given entity mapping
+	FieldMappings []FieldMappingResponse `pulumi:"fieldMappings"`
+}
+
+// Single entity mapping for the alert rule
+type EntityMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityMappingResponse)(nil)).Elem()
+}
+
+func (o EntityMappingResponseOutput) ToEntityMappingResponseOutput() EntityMappingResponseOutput {
+	return o
+}
+
+func (o EntityMappingResponseOutput) ToEntityMappingResponseOutputWithContext(ctx context.Context) EntityMappingResponseOutput {
+	return o
+}
+
+// The V3 type of the mapped entity
+func (o EntityMappingResponseOutput) EntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityMappingResponse) *string { return v.EntityType }).(pulumi.StringPtrOutput)
+}
+
+// array of field mappings for the given entity mapping
+func (o EntityMappingResponseOutput) FieldMappings() FieldMappingResponseArrayOutput {
+	return o.ApplyT(func(v EntityMappingResponse) []FieldMappingResponse { return v.FieldMappings }).(FieldMappingResponseArrayOutput)
+}
+
+type EntityMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EntityMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntityMappingResponse)(nil)).Elem()
+}
+
+func (o EntityMappingResponseArrayOutput) ToEntityMappingResponseArrayOutput() EntityMappingResponseArrayOutput {
+	return o
+}
+
+func (o EntityMappingResponseArrayOutput) ToEntityMappingResponseArrayOutputWithContext(ctx context.Context) EntityMappingResponseArrayOutput {
+	return o
+}
+
+func (o EntityMappingResponseArrayOutput) Index(i pulumi.IntInput) EntityMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityMappingResponse {
+		return vs[0].([]EntityMappingResponse)[vs[1].(int)]
+	}).(EntityMappingResponseOutput)
+}
+
+// Event grouping settings property bag.
+type EventGroupingSettings struct {
+	// The event grouping aggregation kinds
+	AggregationKind *string `pulumi:"aggregationKind"`
+}
+
+// EventGroupingSettingsInput is an input type that accepts EventGroupingSettingsArgs and EventGroupingSettingsOutput values.
+// You can construct a concrete instance of `EventGroupingSettingsInput` via:
+//
+//	EventGroupingSettingsArgs{...}
+type EventGroupingSettingsInput interface {
+	pulumi.Input
+
+	ToEventGroupingSettingsOutput() EventGroupingSettingsOutput
+	ToEventGroupingSettingsOutputWithContext(context.Context) EventGroupingSettingsOutput
+}
+
+// Event grouping settings property bag.
+type EventGroupingSettingsArgs struct {
+	// The event grouping aggregation kinds
+	AggregationKind pulumi.StringPtrInput `pulumi:"aggregationKind"`
+}
+
+func (EventGroupingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventGroupingSettings)(nil)).Elem()
+}
+
+func (i EventGroupingSettingsArgs) ToEventGroupingSettingsOutput() EventGroupingSettingsOutput {
+	return i.ToEventGroupingSettingsOutputWithContext(context.Background())
+}
+
+func (i EventGroupingSettingsArgs) ToEventGroupingSettingsOutputWithContext(ctx context.Context) EventGroupingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventGroupingSettingsOutput)
+}
+
+func (i EventGroupingSettingsArgs) ToEventGroupingSettingsPtrOutput() EventGroupingSettingsPtrOutput {
+	return i.ToEventGroupingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EventGroupingSettingsArgs) ToEventGroupingSettingsPtrOutputWithContext(ctx context.Context) EventGroupingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventGroupingSettingsOutput).ToEventGroupingSettingsPtrOutputWithContext(ctx)
+}
+
+// EventGroupingSettingsPtrInput is an input type that accepts EventGroupingSettingsArgs, EventGroupingSettingsPtr and EventGroupingSettingsPtrOutput values.
+// You can construct a concrete instance of `EventGroupingSettingsPtrInput` via:
+//
+//	        EventGroupingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventGroupingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEventGroupingSettingsPtrOutput() EventGroupingSettingsPtrOutput
+	ToEventGroupingSettingsPtrOutputWithContext(context.Context) EventGroupingSettingsPtrOutput
+}
+
+type eventGroupingSettingsPtrType EventGroupingSettingsArgs
+
+func EventGroupingSettingsPtr(v *EventGroupingSettingsArgs) EventGroupingSettingsPtrInput {
+	return (*eventGroupingSettingsPtrType)(v)
+}
+
+func (*eventGroupingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventGroupingSettings)(nil)).Elem()
+}
+
+func (i *eventGroupingSettingsPtrType) ToEventGroupingSettingsPtrOutput() EventGroupingSettingsPtrOutput {
+	return i.ToEventGroupingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *eventGroupingSettingsPtrType) ToEventGroupingSettingsPtrOutputWithContext(ctx context.Context) EventGroupingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventGroupingSettingsPtrOutput)
+}
+
+// Event grouping settings property bag.
+type EventGroupingSettingsOutput struct{ *pulumi.OutputState }
+
+func (EventGroupingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventGroupingSettings)(nil)).Elem()
+}
+
+func (o EventGroupingSettingsOutput) ToEventGroupingSettingsOutput() EventGroupingSettingsOutput {
+	return o
+}
+
+func (o EventGroupingSettingsOutput) ToEventGroupingSettingsOutputWithContext(ctx context.Context) EventGroupingSettingsOutput {
+	return o
+}
+
+func (o EventGroupingSettingsOutput) ToEventGroupingSettingsPtrOutput() EventGroupingSettingsPtrOutput {
+	return o.ToEventGroupingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EventGroupingSettingsOutput) ToEventGroupingSettingsPtrOutputWithContext(ctx context.Context) EventGroupingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventGroupingSettings) *EventGroupingSettings {
+		return &v
+	}).(EventGroupingSettingsPtrOutput)
+}
+
+// The event grouping aggregation kinds
+func (o EventGroupingSettingsOutput) AggregationKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventGroupingSettings) *string { return v.AggregationKind }).(pulumi.StringPtrOutput)
+}
+
+type EventGroupingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EventGroupingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventGroupingSettings)(nil)).Elem()
+}
+
+func (o EventGroupingSettingsPtrOutput) ToEventGroupingSettingsPtrOutput() EventGroupingSettingsPtrOutput {
+	return o
+}
+
+func (o EventGroupingSettingsPtrOutput) ToEventGroupingSettingsPtrOutputWithContext(ctx context.Context) EventGroupingSettingsPtrOutput {
+	return o
+}
+
+func (o EventGroupingSettingsPtrOutput) Elem() EventGroupingSettingsOutput {
+	return o.ApplyT(func(v *EventGroupingSettings) EventGroupingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EventGroupingSettings
+		return ret
+	}).(EventGroupingSettingsOutput)
+}
+
+// The event grouping aggregation kinds
+func (o EventGroupingSettingsPtrOutput) AggregationKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventGroupingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AggregationKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Event grouping settings property bag.
+type EventGroupingSettingsResponse struct {
+	// The event grouping aggregation kinds
+	AggregationKind *string `pulumi:"aggregationKind"`
+}
+
+// Event grouping settings property bag.
+type EventGroupingSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (EventGroupingSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventGroupingSettingsResponse)(nil)).Elem()
+}
+
+func (o EventGroupingSettingsResponseOutput) ToEventGroupingSettingsResponseOutput() EventGroupingSettingsResponseOutput {
+	return o
+}
+
+func (o EventGroupingSettingsResponseOutput) ToEventGroupingSettingsResponseOutputWithContext(ctx context.Context) EventGroupingSettingsResponseOutput {
+	return o
+}
+
+// The event grouping aggregation kinds
+func (o EventGroupingSettingsResponseOutput) AggregationKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventGroupingSettingsResponse) *string { return v.AggregationKind }).(pulumi.StringPtrOutput)
+}
+
+type EventGroupingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EventGroupingSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventGroupingSettingsResponse)(nil)).Elem()
+}
+
+func (o EventGroupingSettingsResponsePtrOutput) ToEventGroupingSettingsResponsePtrOutput() EventGroupingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o EventGroupingSettingsResponsePtrOutput) ToEventGroupingSettingsResponsePtrOutputWithContext(ctx context.Context) EventGroupingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o EventGroupingSettingsResponsePtrOutput) Elem() EventGroupingSettingsResponseOutput {
+	return o.ApplyT(func(v *EventGroupingSettingsResponse) EventGroupingSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EventGroupingSettingsResponse
+		return ret
+	}).(EventGroupingSettingsResponseOutput)
+}
+
+// The event grouping aggregation kinds
+func (o EventGroupingSettingsResponsePtrOutput) AggregationKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventGroupingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AggregationKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// A single field mapping of the mapped entity
+type FieldMapping struct {
+	// the column name to be mapped to the identifier
+	ColumnName *string `pulumi:"columnName"`
+	// the V3 identifier of the entity
+	Identifier *string `pulumi:"identifier"`
+}
+
+// FieldMappingInput is an input type that accepts FieldMappingArgs and FieldMappingOutput values.
+// You can construct a concrete instance of `FieldMappingInput` via:
+//
+//	FieldMappingArgs{...}
+type FieldMappingInput interface {
+	pulumi.Input
+
+	ToFieldMappingOutput() FieldMappingOutput
+	ToFieldMappingOutputWithContext(context.Context) FieldMappingOutput
+}
+
+// A single field mapping of the mapped entity
+type FieldMappingArgs struct {
+	// the column name to be mapped to the identifier
+	ColumnName pulumi.StringPtrInput `pulumi:"columnName"`
+	// the V3 identifier of the entity
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+}
+
+func (FieldMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldMapping)(nil)).Elem()
+}
+
+func (i FieldMappingArgs) ToFieldMappingOutput() FieldMappingOutput {
+	return i.ToFieldMappingOutputWithContext(context.Background())
+}
+
+func (i FieldMappingArgs) ToFieldMappingOutputWithContext(ctx context.Context) FieldMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldMappingOutput)
+}
+
+// FieldMappingArrayInput is an input type that accepts FieldMappingArray and FieldMappingArrayOutput values.
+// You can construct a concrete instance of `FieldMappingArrayInput` via:
+//
+//	FieldMappingArray{ FieldMappingArgs{...} }
+type FieldMappingArrayInput interface {
+	pulumi.Input
+
+	ToFieldMappingArrayOutput() FieldMappingArrayOutput
+	ToFieldMappingArrayOutputWithContext(context.Context) FieldMappingArrayOutput
+}
+
+type FieldMappingArray []FieldMappingInput
+
+func (FieldMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldMapping)(nil)).Elem()
+}
+
+func (i FieldMappingArray) ToFieldMappingArrayOutput() FieldMappingArrayOutput {
+	return i.ToFieldMappingArrayOutputWithContext(context.Background())
+}
+
+func (i FieldMappingArray) ToFieldMappingArrayOutputWithContext(ctx context.Context) FieldMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldMappingArrayOutput)
+}
+
+// A single field mapping of the mapped entity
+type FieldMappingOutput struct{ *pulumi.OutputState }
+
+func (FieldMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldMapping)(nil)).Elem()
+}
+
+func (o FieldMappingOutput) ToFieldMappingOutput() FieldMappingOutput {
+	return o
+}
+
+func (o FieldMappingOutput) ToFieldMappingOutputWithContext(ctx context.Context) FieldMappingOutput {
+	return o
+}
+
+// the column name to be mapped to the identifier
+func (o FieldMappingOutput) ColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldMapping) *string { return v.ColumnName }).(pulumi.StringPtrOutput)
+}
+
+// the V3 identifier of the entity
+func (o FieldMappingOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldMapping) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+type FieldMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldMapping)(nil)).Elem()
+}
+
+func (o FieldMappingArrayOutput) ToFieldMappingArrayOutput() FieldMappingArrayOutput {
+	return o
+}
+
+func (o FieldMappingArrayOutput) ToFieldMappingArrayOutputWithContext(ctx context.Context) FieldMappingArrayOutput {
+	return o
+}
+
+func (o FieldMappingArrayOutput) Index(i pulumi.IntInput) FieldMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldMapping {
+		return vs[0].([]FieldMapping)[vs[1].(int)]
+	}).(FieldMappingOutput)
+}
+
+// A single field mapping of the mapped entity
+type FieldMappingResponse struct {
+	// the column name to be mapped to the identifier
+	ColumnName *string `pulumi:"columnName"`
+	// the V3 identifier of the entity
+	Identifier *string `pulumi:"identifier"`
+}
+
+// A single field mapping of the mapped entity
+type FieldMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (FieldMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldMappingResponse)(nil)).Elem()
+}
+
+func (o FieldMappingResponseOutput) ToFieldMappingResponseOutput() FieldMappingResponseOutput {
+	return o
+}
+
+func (o FieldMappingResponseOutput) ToFieldMappingResponseOutputWithContext(ctx context.Context) FieldMappingResponseOutput {
+	return o
+}
+
+// the column name to be mapped to the identifier
+func (o FieldMappingResponseOutput) ColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldMappingResponse) *string { return v.ColumnName }).(pulumi.StringPtrOutput)
+}
+
+// the V3 identifier of the entity
+func (o FieldMappingResponseOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldMappingResponse) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+type FieldMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldMappingResponse)(nil)).Elem()
+}
+
+func (o FieldMappingResponseArrayOutput) ToFieldMappingResponseArrayOutput() FieldMappingResponseArrayOutput {
+	return o
+}
+
+func (o FieldMappingResponseArrayOutput) ToFieldMappingResponseArrayOutputWithContext(ctx context.Context) FieldMappingResponseArrayOutput {
+	return o
+}
+
+func (o FieldMappingResponseArrayOutput) Index(i pulumi.IntInput) FieldMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldMappingResponse {
+		return vs[0].([]FieldMappingResponse)[vs[1].(int)]
+	}).(FieldMappingResponseOutput)
+}
+
+// Represents a file.
+type FileMetadata struct {
+	// The format of the file
+	FileFormat *string `pulumi:"fileFormat"`
+	// The name of the file.
+	FileName *string `pulumi:"fileName"`
+	// The size of the file.
+	FileSize *int `pulumi:"fileSize"`
+}
+
+// FileMetadataInput is an input type that accepts FileMetadataArgs and FileMetadataOutput values.
+// You can construct a concrete instance of `FileMetadataInput` via:
+//
+//	FileMetadataArgs{...}
+type FileMetadataInput interface {
+	pulumi.Input
+
+	ToFileMetadataOutput() FileMetadataOutput
+	ToFileMetadataOutputWithContext(context.Context) FileMetadataOutput
+}
+
+// Represents a file.
+type FileMetadataArgs struct {
+	// The format of the file
+	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
+	// The name of the file.
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// The size of the file.
+	FileSize pulumi.IntPtrInput `pulumi:"fileSize"`
+}
+
+func (FileMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileMetadata)(nil)).Elem()
+}
+
+func (i FileMetadataArgs) ToFileMetadataOutput() FileMetadataOutput {
+	return i.ToFileMetadataOutputWithContext(context.Background())
+}
+
+func (i FileMetadataArgs) ToFileMetadataOutputWithContext(ctx context.Context) FileMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileMetadataOutput)
+}
+
+// Represents a file.
+type FileMetadataOutput struct{ *pulumi.OutputState }
+
+func (FileMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileMetadata)(nil)).Elem()
+}
+
+func (o FileMetadataOutput) ToFileMetadataOutput() FileMetadataOutput {
+	return o
+}
+
+func (o FileMetadataOutput) ToFileMetadataOutputWithContext(ctx context.Context) FileMetadataOutput {
+	return o
+}
+
+// The format of the file
+func (o FileMetadataOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileMetadata) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
+}
+
+// The name of the file.
+func (o FileMetadataOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileMetadata) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// The size of the file.
+func (o FileMetadataOutput) FileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileMetadata) *int { return v.FileSize }).(pulumi.IntPtrOutput)
+}
+
+// Represents a file.
+type FileMetadataResponse struct {
+	// Indicates whether the file was deleted from the storage account.
+	DeleteStatus string `pulumi:"deleteStatus"`
+	// A URI with a valid SAS token to allow uploading / downloading the file.
+	FileContentUri string `pulumi:"fileContentUri"`
+	// The format of the file
+	FileFormat *string `pulumi:"fileFormat"`
+	// The name of the file.
+	FileName *string `pulumi:"fileName"`
+	// The size of the file.
+	FileSize *int `pulumi:"fileSize"`
+}
+
+// Represents a file.
+type FileMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (FileMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileMetadataResponse)(nil)).Elem()
+}
+
+func (o FileMetadataResponseOutput) ToFileMetadataResponseOutput() FileMetadataResponseOutput {
+	return o
+}
+
+func (o FileMetadataResponseOutput) ToFileMetadataResponseOutputWithContext(ctx context.Context) FileMetadataResponseOutput {
+	return o
+}
+
+// Indicates whether the file was deleted from the storage account.
+func (o FileMetadataResponseOutput) DeleteStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v FileMetadataResponse) string { return v.DeleteStatus }).(pulumi.StringOutput)
+}
+
+// A URI with a valid SAS token to allow uploading / downloading the file.
+func (o FileMetadataResponseOutput) FileContentUri() pulumi.StringOutput {
+	return o.ApplyT(func(v FileMetadataResponse) string { return v.FileContentUri }).(pulumi.StringOutput)
+}
+
+// The format of the file
+func (o FileMetadataResponseOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileMetadataResponse) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
+}
+
+// The name of the file.
+func (o FileMetadataResponseOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileMetadataResponse) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// The size of the file.
+func (o FileMetadataResponseOutput) FileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileMetadataResponse) *int { return v.FileSize }).(pulumi.IntPtrOutput)
+}
+
 // GetInsights Query Errors.
-type GetInsightsErrorResponse struct {
+type GetInsightsErrorKindResponse struct {
 	// the error message
 	ErrorMessage string `pulumi:"errorMessage"`
 	// the query kind
@@ -1953,59 +4076,59 @@ type GetInsightsErrorResponse struct {
 }
 
 // GetInsights Query Errors.
-type GetInsightsErrorResponseOutput struct{ *pulumi.OutputState }
+type GetInsightsErrorKindResponseOutput struct{ *pulumi.OutputState }
 
-func (GetInsightsErrorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInsightsErrorResponse)(nil)).Elem()
+func (GetInsightsErrorKindResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsErrorKindResponse)(nil)).Elem()
 }
 
-func (o GetInsightsErrorResponseOutput) ToGetInsightsErrorResponseOutput() GetInsightsErrorResponseOutput {
+func (o GetInsightsErrorKindResponseOutput) ToGetInsightsErrorKindResponseOutput() GetInsightsErrorKindResponseOutput {
 	return o
 }
 
-func (o GetInsightsErrorResponseOutput) ToGetInsightsErrorResponseOutputWithContext(ctx context.Context) GetInsightsErrorResponseOutput {
+func (o GetInsightsErrorKindResponseOutput) ToGetInsightsErrorKindResponseOutputWithContext(ctx context.Context) GetInsightsErrorKindResponseOutput {
 	return o
 }
 
 // the error message
-func (o GetInsightsErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInsightsErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+func (o GetInsightsErrorKindResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsErrorKindResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
 // the query kind
-func (o GetInsightsErrorResponseOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInsightsErrorResponse) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetInsightsErrorKindResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsErrorKindResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // the query id
-func (o GetInsightsErrorResponseOutput) QueryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInsightsErrorResponse) *string { return v.QueryId }).(pulumi.StringPtrOutput)
+func (o GetInsightsErrorKindResponseOutput) QueryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInsightsErrorKindResponse) *string { return v.QueryId }).(pulumi.StringPtrOutput)
 }
 
-type GetInsightsErrorResponseArrayOutput struct{ *pulumi.OutputState }
+type GetInsightsErrorKindResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (GetInsightsErrorResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInsightsErrorResponse)(nil)).Elem()
+func (GetInsightsErrorKindResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsErrorKindResponse)(nil)).Elem()
 }
 
-func (o GetInsightsErrorResponseArrayOutput) ToGetInsightsErrorResponseArrayOutput() GetInsightsErrorResponseArrayOutput {
+func (o GetInsightsErrorKindResponseArrayOutput) ToGetInsightsErrorKindResponseArrayOutput() GetInsightsErrorKindResponseArrayOutput {
 	return o
 }
 
-func (o GetInsightsErrorResponseArrayOutput) ToGetInsightsErrorResponseArrayOutputWithContext(ctx context.Context) GetInsightsErrorResponseArrayOutput {
+func (o GetInsightsErrorKindResponseArrayOutput) ToGetInsightsErrorKindResponseArrayOutputWithContext(ctx context.Context) GetInsightsErrorKindResponseArrayOutput {
 	return o
 }
 
-func (o GetInsightsErrorResponseArrayOutput) Index(i pulumi.IntInput) GetInsightsErrorResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsErrorResponse {
-		return vs[0].([]GetInsightsErrorResponse)[vs[1].(int)]
-	}).(GetInsightsErrorResponseOutput)
+func (o GetInsightsErrorKindResponseArrayOutput) Index(i pulumi.IntInput) GetInsightsErrorKindResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsErrorKindResponse {
+		return vs[0].([]GetInsightsErrorKindResponse)[vs[1].(int)]
+	}).(GetInsightsErrorKindResponseOutput)
 }
 
 // Get Insights result metadata.
 type GetInsightsResultsMetadataResponse struct {
 	// information about the failed queries
-	Errors []GetInsightsErrorResponse `pulumi:"errors"`
+	Errors []GetInsightsErrorKindResponse `pulumi:"errors"`
 	// the total items found for the insights request
 	TotalCount int `pulumi:"totalCount"`
 }
@@ -2026,8 +4149,8 @@ func (o GetInsightsResultsMetadataResponseOutput) ToGetInsightsResultsMetadataRe
 }
 
 // information about the failed queries
-func (o GetInsightsResultsMetadataResponseOutput) Errors() GetInsightsErrorResponseArrayOutput {
-	return o.ApplyT(func(v GetInsightsResultsMetadataResponse) []GetInsightsErrorResponse { return v.Errors }).(GetInsightsErrorResponseArrayOutput)
+func (o GetInsightsResultsMetadataResponseOutput) Errors() GetInsightsErrorKindResponseArrayOutput {
+	return o.ApplyT(func(v GetInsightsResultsMetadataResponse) []GetInsightsErrorKindResponse { return v.Errors }).(GetInsightsErrorKindResponseArrayOutput)
 }
 
 // the total items found for the insights request
@@ -2060,13 +4183,13 @@ func (o GetInsightsResultsMetadataResponsePtrOutput) Elem() GetInsightsResultsMe
 }
 
 // information about the failed queries
-func (o GetInsightsResultsMetadataResponsePtrOutput) Errors() GetInsightsErrorResponseArrayOutput {
-	return o.ApplyT(func(v *GetInsightsResultsMetadataResponse) []GetInsightsErrorResponse {
+func (o GetInsightsResultsMetadataResponsePtrOutput) Errors() GetInsightsErrorKindResponseArrayOutput {
+	return o.ApplyT(func(v *GetInsightsResultsMetadataResponse) []GetInsightsErrorKindResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Errors
-	}).(GetInsightsErrorResponseArrayOutput)
+	}).(GetInsightsErrorKindResponseArrayOutput)
 }
 
 // the total items found for the insights request
@@ -2079,6 +4202,966 @@ func (o GetInsightsResultsMetadataResponsePtrOutput) TotalCount() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+// Resources created in GitHub repository.
+type GitHubResourceInfo struct {
+	// GitHub application installation id.
+	AppInstallationId *string `pulumi:"appInstallationId"`
+}
+
+// GitHubResourceInfoInput is an input type that accepts GitHubResourceInfoArgs and GitHubResourceInfoOutput values.
+// You can construct a concrete instance of `GitHubResourceInfoInput` via:
+//
+//	GitHubResourceInfoArgs{...}
+type GitHubResourceInfoInput interface {
+	pulumi.Input
+
+	ToGitHubResourceInfoOutput() GitHubResourceInfoOutput
+	ToGitHubResourceInfoOutputWithContext(context.Context) GitHubResourceInfoOutput
+}
+
+// Resources created in GitHub repository.
+type GitHubResourceInfoArgs struct {
+	// GitHub application installation id.
+	AppInstallationId pulumi.StringPtrInput `pulumi:"appInstallationId"`
+}
+
+func (GitHubResourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubResourceInfo)(nil)).Elem()
+}
+
+func (i GitHubResourceInfoArgs) ToGitHubResourceInfoOutput() GitHubResourceInfoOutput {
+	return i.ToGitHubResourceInfoOutputWithContext(context.Background())
+}
+
+func (i GitHubResourceInfoArgs) ToGitHubResourceInfoOutputWithContext(ctx context.Context) GitHubResourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubResourceInfoOutput)
+}
+
+func (i GitHubResourceInfoArgs) ToGitHubResourceInfoPtrOutput() GitHubResourceInfoPtrOutput {
+	return i.ToGitHubResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GitHubResourceInfoArgs) ToGitHubResourceInfoPtrOutputWithContext(ctx context.Context) GitHubResourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubResourceInfoOutput).ToGitHubResourceInfoPtrOutputWithContext(ctx)
+}
+
+// GitHubResourceInfoPtrInput is an input type that accepts GitHubResourceInfoArgs, GitHubResourceInfoPtr and GitHubResourceInfoPtrOutput values.
+// You can construct a concrete instance of `GitHubResourceInfoPtrInput` via:
+//
+//	        GitHubResourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitHubResourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToGitHubResourceInfoPtrOutput() GitHubResourceInfoPtrOutput
+	ToGitHubResourceInfoPtrOutputWithContext(context.Context) GitHubResourceInfoPtrOutput
+}
+
+type gitHubResourceInfoPtrType GitHubResourceInfoArgs
+
+func GitHubResourceInfoPtr(v *GitHubResourceInfoArgs) GitHubResourceInfoPtrInput {
+	return (*gitHubResourceInfoPtrType)(v)
+}
+
+func (*gitHubResourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubResourceInfo)(nil)).Elem()
+}
+
+func (i *gitHubResourceInfoPtrType) ToGitHubResourceInfoPtrOutput() GitHubResourceInfoPtrOutput {
+	return i.ToGitHubResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *gitHubResourceInfoPtrType) ToGitHubResourceInfoPtrOutputWithContext(ctx context.Context) GitHubResourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubResourceInfoPtrOutput)
+}
+
+// Resources created in GitHub repository.
+type GitHubResourceInfoOutput struct{ *pulumi.OutputState }
+
+func (GitHubResourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubResourceInfo)(nil)).Elem()
+}
+
+func (o GitHubResourceInfoOutput) ToGitHubResourceInfoOutput() GitHubResourceInfoOutput {
+	return o
+}
+
+func (o GitHubResourceInfoOutput) ToGitHubResourceInfoOutputWithContext(ctx context.Context) GitHubResourceInfoOutput {
+	return o
+}
+
+func (o GitHubResourceInfoOutput) ToGitHubResourceInfoPtrOutput() GitHubResourceInfoPtrOutput {
+	return o.ToGitHubResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GitHubResourceInfoOutput) ToGitHubResourceInfoPtrOutputWithContext(ctx context.Context) GitHubResourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubResourceInfo) *GitHubResourceInfo {
+		return &v
+	}).(GitHubResourceInfoPtrOutput)
+}
+
+// GitHub application installation id.
+func (o GitHubResourceInfoOutput) AppInstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubResourceInfo) *string { return v.AppInstallationId }).(pulumi.StringPtrOutput)
+}
+
+type GitHubResourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GitHubResourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubResourceInfo)(nil)).Elem()
+}
+
+func (o GitHubResourceInfoPtrOutput) ToGitHubResourceInfoPtrOutput() GitHubResourceInfoPtrOutput {
+	return o
+}
+
+func (o GitHubResourceInfoPtrOutput) ToGitHubResourceInfoPtrOutputWithContext(ctx context.Context) GitHubResourceInfoPtrOutput {
+	return o
+}
+
+func (o GitHubResourceInfoPtrOutput) Elem() GitHubResourceInfoOutput {
+	return o.ApplyT(func(v *GitHubResourceInfo) GitHubResourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GitHubResourceInfo
+		return ret
+	}).(GitHubResourceInfoOutput)
+}
+
+// GitHub application installation id.
+func (o GitHubResourceInfoPtrOutput) AppInstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubResourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppInstallationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resources created in GitHub repository.
+type GitHubResourceInfoResponse struct {
+	// GitHub application installation id.
+	AppInstallationId *string `pulumi:"appInstallationId"`
+}
+
+// Resources created in GitHub repository.
+type GitHubResourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GitHubResourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubResourceInfoResponse)(nil)).Elem()
+}
+
+func (o GitHubResourceInfoResponseOutput) ToGitHubResourceInfoResponseOutput() GitHubResourceInfoResponseOutput {
+	return o
+}
+
+func (o GitHubResourceInfoResponseOutput) ToGitHubResourceInfoResponseOutputWithContext(ctx context.Context) GitHubResourceInfoResponseOutput {
+	return o
+}
+
+// GitHub application installation id.
+func (o GitHubResourceInfoResponseOutput) AppInstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubResourceInfoResponse) *string { return v.AppInstallationId }).(pulumi.StringPtrOutput)
+}
+
+type GitHubResourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GitHubResourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubResourceInfoResponse)(nil)).Elem()
+}
+
+func (o GitHubResourceInfoResponsePtrOutput) ToGitHubResourceInfoResponsePtrOutput() GitHubResourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o GitHubResourceInfoResponsePtrOutput) ToGitHubResourceInfoResponsePtrOutputWithContext(ctx context.Context) GitHubResourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o GitHubResourceInfoResponsePtrOutput) Elem() GitHubResourceInfoResponseOutput {
+	return o.ApplyT(func(v *GitHubResourceInfoResponse) GitHubResourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GitHubResourceInfoResponse
+		return ret
+	}).(GitHubResourceInfoResponseOutput)
+}
+
+// GitHub application installation id.
+func (o GitHubResourceInfoResponsePtrOutput) AppInstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubResourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppInstallationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Grouping configuration property bag.
+type GroupingConfiguration struct {
+	// Grouping enabled
+	Enabled bool `pulumi:"enabled"`
+	// A list of alert details to group by (when matchingMethod is Selected)
+	GroupByAlertDetails []string `pulumi:"groupByAlertDetails"`
+	// A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
+	GroupByCustomDetails []string `pulumi:"groupByCustomDetails"`
+	// A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
+	GroupByEntities []string `pulumi:"groupByEntities"`
+	// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
+	LookbackDuration string `pulumi:"lookbackDuration"`
+	// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+	MatchingMethod string `pulumi:"matchingMethod"`
+	// Re-open closed matching incidents
+	ReopenClosedIncident bool `pulumi:"reopenClosedIncident"`
+}
+
+// GroupingConfigurationInput is an input type that accepts GroupingConfigurationArgs and GroupingConfigurationOutput values.
+// You can construct a concrete instance of `GroupingConfigurationInput` via:
+//
+//	GroupingConfigurationArgs{...}
+type GroupingConfigurationInput interface {
+	pulumi.Input
+
+	ToGroupingConfigurationOutput() GroupingConfigurationOutput
+	ToGroupingConfigurationOutputWithContext(context.Context) GroupingConfigurationOutput
+}
+
+// Grouping configuration property bag.
+type GroupingConfigurationArgs struct {
+	// Grouping enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// A list of alert details to group by (when matchingMethod is Selected)
+	GroupByAlertDetails pulumi.StringArrayInput `pulumi:"groupByAlertDetails"`
+	// A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
+	GroupByCustomDetails pulumi.StringArrayInput `pulumi:"groupByCustomDetails"`
+	// A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
+	GroupByEntities pulumi.StringArrayInput `pulumi:"groupByEntities"`
+	// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
+	LookbackDuration pulumi.StringInput `pulumi:"lookbackDuration"`
+	// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+	MatchingMethod pulumi.StringInput `pulumi:"matchingMethod"`
+	// Re-open closed matching incidents
+	ReopenClosedIncident pulumi.BoolInput `pulumi:"reopenClosedIncident"`
+}
+
+func (GroupingConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupingConfiguration)(nil)).Elem()
+}
+
+func (i GroupingConfigurationArgs) ToGroupingConfigurationOutput() GroupingConfigurationOutput {
+	return i.ToGroupingConfigurationOutputWithContext(context.Background())
+}
+
+func (i GroupingConfigurationArgs) ToGroupingConfigurationOutputWithContext(ctx context.Context) GroupingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupingConfigurationOutput)
+}
+
+func (i GroupingConfigurationArgs) ToGroupingConfigurationPtrOutput() GroupingConfigurationPtrOutput {
+	return i.ToGroupingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GroupingConfigurationArgs) ToGroupingConfigurationPtrOutputWithContext(ctx context.Context) GroupingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupingConfigurationOutput).ToGroupingConfigurationPtrOutputWithContext(ctx)
+}
+
+// GroupingConfigurationPtrInput is an input type that accepts GroupingConfigurationArgs, GroupingConfigurationPtr and GroupingConfigurationPtrOutput values.
+// You can construct a concrete instance of `GroupingConfigurationPtrInput` via:
+//
+//	        GroupingConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGroupingConfigurationPtrOutput() GroupingConfigurationPtrOutput
+	ToGroupingConfigurationPtrOutputWithContext(context.Context) GroupingConfigurationPtrOutput
+}
+
+type groupingConfigurationPtrType GroupingConfigurationArgs
+
+func GroupingConfigurationPtr(v *GroupingConfigurationArgs) GroupingConfigurationPtrInput {
+	return (*groupingConfigurationPtrType)(v)
+}
+
+func (*groupingConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupingConfiguration)(nil)).Elem()
+}
+
+func (i *groupingConfigurationPtrType) ToGroupingConfigurationPtrOutput() GroupingConfigurationPtrOutput {
+	return i.ToGroupingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *groupingConfigurationPtrType) ToGroupingConfigurationPtrOutputWithContext(ctx context.Context) GroupingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupingConfigurationPtrOutput)
+}
+
+// Grouping configuration property bag.
+type GroupingConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GroupingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupingConfiguration)(nil)).Elem()
+}
+
+func (o GroupingConfigurationOutput) ToGroupingConfigurationOutput() GroupingConfigurationOutput {
+	return o
+}
+
+func (o GroupingConfigurationOutput) ToGroupingConfigurationOutputWithContext(ctx context.Context) GroupingConfigurationOutput {
+	return o
+}
+
+func (o GroupingConfigurationOutput) ToGroupingConfigurationPtrOutput() GroupingConfigurationPtrOutput {
+	return o.ToGroupingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GroupingConfigurationOutput) ToGroupingConfigurationPtrOutputWithContext(ctx context.Context) GroupingConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupingConfiguration) *GroupingConfiguration {
+		return &v
+	}).(GroupingConfigurationPtrOutput)
+}
+
+// Grouping enabled
+func (o GroupingConfigurationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GroupingConfiguration) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// A list of alert details to group by (when matchingMethod is Selected)
+func (o GroupingConfigurationOutput) GroupByAlertDetails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupingConfiguration) []string { return v.GroupByAlertDetails }).(pulumi.StringArrayOutput)
+}
+
+// A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
+func (o GroupingConfigurationOutput) GroupByCustomDetails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupingConfiguration) []string { return v.GroupByCustomDetails }).(pulumi.StringArrayOutput)
+}
+
+// A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
+func (o GroupingConfigurationOutput) GroupByEntities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupingConfiguration) []string { return v.GroupByEntities }).(pulumi.StringArrayOutput)
+}
+
+// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
+func (o GroupingConfigurationOutput) LookbackDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupingConfiguration) string { return v.LookbackDuration }).(pulumi.StringOutput)
+}
+
+// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+func (o GroupingConfigurationOutput) MatchingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupingConfiguration) string { return v.MatchingMethod }).(pulumi.StringOutput)
+}
+
+// Re-open closed matching incidents
+func (o GroupingConfigurationOutput) ReopenClosedIncident() pulumi.BoolOutput {
+	return o.ApplyT(func(v GroupingConfiguration) bool { return v.ReopenClosedIncident }).(pulumi.BoolOutput)
+}
+
+type GroupingConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupingConfiguration)(nil)).Elem()
+}
+
+func (o GroupingConfigurationPtrOutput) ToGroupingConfigurationPtrOutput() GroupingConfigurationPtrOutput {
+	return o
+}
+
+func (o GroupingConfigurationPtrOutput) ToGroupingConfigurationPtrOutputWithContext(ctx context.Context) GroupingConfigurationPtrOutput {
+	return o
+}
+
+func (o GroupingConfigurationPtrOutput) Elem() GroupingConfigurationOutput {
+	return o.ApplyT(func(v *GroupingConfiguration) GroupingConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GroupingConfiguration
+		return ret
+	}).(GroupingConfigurationOutput)
+}
+
+// Grouping enabled
+func (o GroupingConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupingConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of alert details to group by (when matchingMethod is Selected)
+func (o GroupingConfigurationPtrOutput) GroupByAlertDetails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupingConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupByAlertDetails
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
+func (o GroupingConfigurationPtrOutput) GroupByCustomDetails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupingConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupByCustomDetails
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
+func (o GroupingConfigurationPtrOutput) GroupByEntities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupingConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupByEntities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
+func (o GroupingConfigurationPtrOutput) LookbackDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupingConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LookbackDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+func (o GroupingConfigurationPtrOutput) MatchingMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupingConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MatchingMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Re-open closed matching incidents
+func (o GroupingConfigurationPtrOutput) ReopenClosedIncident() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupingConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ReopenClosedIncident
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Grouping configuration property bag.
+type GroupingConfigurationResponse struct {
+	// Grouping enabled
+	Enabled bool `pulumi:"enabled"`
+	// A list of alert details to group by (when matchingMethod is Selected)
+	GroupByAlertDetails []string `pulumi:"groupByAlertDetails"`
+	// A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
+	GroupByCustomDetails []string `pulumi:"groupByCustomDetails"`
+	// A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
+	GroupByEntities []string `pulumi:"groupByEntities"`
+	// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
+	LookbackDuration string `pulumi:"lookbackDuration"`
+	// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+	MatchingMethod string `pulumi:"matchingMethod"`
+	// Re-open closed matching incidents
+	ReopenClosedIncident bool `pulumi:"reopenClosedIncident"`
+}
+
+// Grouping configuration property bag.
+type GroupingConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (GroupingConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupingConfigurationResponse)(nil)).Elem()
+}
+
+func (o GroupingConfigurationResponseOutput) ToGroupingConfigurationResponseOutput() GroupingConfigurationResponseOutput {
+	return o
+}
+
+func (o GroupingConfigurationResponseOutput) ToGroupingConfigurationResponseOutputWithContext(ctx context.Context) GroupingConfigurationResponseOutput {
+	return o
+}
+
+// Grouping enabled
+func (o GroupingConfigurationResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GroupingConfigurationResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// A list of alert details to group by (when matchingMethod is Selected)
+func (o GroupingConfigurationResponseOutput) GroupByAlertDetails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupingConfigurationResponse) []string { return v.GroupByAlertDetails }).(pulumi.StringArrayOutput)
+}
+
+// A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
+func (o GroupingConfigurationResponseOutput) GroupByCustomDetails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupingConfigurationResponse) []string { return v.GroupByCustomDetails }).(pulumi.StringArrayOutput)
+}
+
+// A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
+func (o GroupingConfigurationResponseOutput) GroupByEntities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupingConfigurationResponse) []string { return v.GroupByEntities }).(pulumi.StringArrayOutput)
+}
+
+// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
+func (o GroupingConfigurationResponseOutput) LookbackDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupingConfigurationResponse) string { return v.LookbackDuration }).(pulumi.StringOutput)
+}
+
+// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+func (o GroupingConfigurationResponseOutput) MatchingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupingConfigurationResponse) string { return v.MatchingMethod }).(pulumi.StringOutput)
+}
+
+// Re-open closed matching incidents
+func (o GroupingConfigurationResponseOutput) ReopenClosedIncident() pulumi.BoolOutput {
+	return o.ApplyT(func(v GroupingConfigurationResponse) bool { return v.ReopenClosedIncident }).(pulumi.BoolOutput)
+}
+
+type GroupingConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GroupingConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupingConfigurationResponse)(nil)).Elem()
+}
+
+func (o GroupingConfigurationResponsePtrOutput) ToGroupingConfigurationResponsePtrOutput() GroupingConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o GroupingConfigurationResponsePtrOutput) ToGroupingConfigurationResponsePtrOutputWithContext(ctx context.Context) GroupingConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o GroupingConfigurationResponsePtrOutput) Elem() GroupingConfigurationResponseOutput {
+	return o.ApplyT(func(v *GroupingConfigurationResponse) GroupingConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GroupingConfigurationResponse
+		return ret
+	}).(GroupingConfigurationResponseOutput)
+}
+
+// Grouping enabled
+func (o GroupingConfigurationResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupingConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of alert details to group by (when matchingMethod is Selected)
+func (o GroupingConfigurationResponsePtrOutput) GroupByAlertDetails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupingConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupByAlertDetails
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
+func (o GroupingConfigurationResponsePtrOutput) GroupByCustomDetails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupingConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupByCustomDetails
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
+func (o GroupingConfigurationResponsePtrOutput) GroupByEntities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupingConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupByEntities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
+func (o GroupingConfigurationResponsePtrOutput) LookbackDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupingConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LookbackDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+func (o GroupingConfigurationResponsePtrOutput) MatchingMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupingConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MatchingMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Re-open closed matching incidents
+func (o GroupingConfigurationResponsePtrOutput) ReopenClosedIncident() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupingConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ReopenClosedIncident
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Describes a user that the hunt is assigned to
+type HuntOwner struct {
+	// The name of the user the hunt is assigned to.
+	AssignedTo *string `pulumi:"assignedTo"`
+	// The email of the user the hunt is assigned to.
+	Email *string `pulumi:"email"`
+	// The object id of the user the hunt is assigned to.
+	ObjectId *string `pulumi:"objectId"`
+	// The type of the owner the hunt is assigned to.
+	OwnerType *string `pulumi:"ownerType"`
+	// The user principal name of the user the hunt is assigned to.
+	UserPrincipalName *string `pulumi:"userPrincipalName"`
+}
+
+// HuntOwnerInput is an input type that accepts HuntOwnerArgs and HuntOwnerOutput values.
+// You can construct a concrete instance of `HuntOwnerInput` via:
+//
+//	HuntOwnerArgs{...}
+type HuntOwnerInput interface {
+	pulumi.Input
+
+	ToHuntOwnerOutput() HuntOwnerOutput
+	ToHuntOwnerOutputWithContext(context.Context) HuntOwnerOutput
+}
+
+// Describes a user that the hunt is assigned to
+type HuntOwnerArgs struct {
+	// The name of the user the hunt is assigned to.
+	AssignedTo pulumi.StringPtrInput `pulumi:"assignedTo"`
+	// The email of the user the hunt is assigned to.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The object id of the user the hunt is assigned to.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// The type of the owner the hunt is assigned to.
+	OwnerType pulumi.StringPtrInput `pulumi:"ownerType"`
+	// The user principal name of the user the hunt is assigned to.
+	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
+}
+
+func (HuntOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HuntOwner)(nil)).Elem()
+}
+
+func (i HuntOwnerArgs) ToHuntOwnerOutput() HuntOwnerOutput {
+	return i.ToHuntOwnerOutputWithContext(context.Background())
+}
+
+func (i HuntOwnerArgs) ToHuntOwnerOutputWithContext(ctx context.Context) HuntOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HuntOwnerOutput)
+}
+
+func (i HuntOwnerArgs) ToHuntOwnerPtrOutput() HuntOwnerPtrOutput {
+	return i.ToHuntOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i HuntOwnerArgs) ToHuntOwnerPtrOutputWithContext(ctx context.Context) HuntOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HuntOwnerOutput).ToHuntOwnerPtrOutputWithContext(ctx)
+}
+
+// HuntOwnerPtrInput is an input type that accepts HuntOwnerArgs, HuntOwnerPtr and HuntOwnerPtrOutput values.
+// You can construct a concrete instance of `HuntOwnerPtrInput` via:
+//
+//	        HuntOwnerArgs{...}
+//
+//	or:
+//
+//	        nil
+type HuntOwnerPtrInput interface {
+	pulumi.Input
+
+	ToHuntOwnerPtrOutput() HuntOwnerPtrOutput
+	ToHuntOwnerPtrOutputWithContext(context.Context) HuntOwnerPtrOutput
+}
+
+type huntOwnerPtrType HuntOwnerArgs
+
+func HuntOwnerPtr(v *HuntOwnerArgs) HuntOwnerPtrInput {
+	return (*huntOwnerPtrType)(v)
+}
+
+func (*huntOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HuntOwner)(nil)).Elem()
+}
+
+func (i *huntOwnerPtrType) ToHuntOwnerPtrOutput() HuntOwnerPtrOutput {
+	return i.ToHuntOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *huntOwnerPtrType) ToHuntOwnerPtrOutputWithContext(ctx context.Context) HuntOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HuntOwnerPtrOutput)
+}
+
+// Describes a user that the hunt is assigned to
+type HuntOwnerOutput struct{ *pulumi.OutputState }
+
+func (HuntOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HuntOwner)(nil)).Elem()
+}
+
+func (o HuntOwnerOutput) ToHuntOwnerOutput() HuntOwnerOutput {
+	return o
+}
+
+func (o HuntOwnerOutput) ToHuntOwnerOutputWithContext(ctx context.Context) HuntOwnerOutput {
+	return o
+}
+
+func (o HuntOwnerOutput) ToHuntOwnerPtrOutput() HuntOwnerPtrOutput {
+	return o.ToHuntOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o HuntOwnerOutput) ToHuntOwnerPtrOutputWithContext(ctx context.Context) HuntOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HuntOwner) *HuntOwner {
+		return &v
+	}).(HuntOwnerPtrOutput)
+}
+
+// The name of the user the hunt is assigned to.
+func (o HuntOwnerOutput) AssignedTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwner) *string { return v.AssignedTo }).(pulumi.StringPtrOutput)
+}
+
+// The email of the user the hunt is assigned to.
+func (o HuntOwnerOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwner) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user the hunt is assigned to.
+func (o HuntOwnerOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwner) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the owner the hunt is assigned to.
+func (o HuntOwnerOutput) OwnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwner) *string { return v.OwnerType }).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the user the hunt is assigned to.
+func (o HuntOwnerOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwner) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
+}
+
+type HuntOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (HuntOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HuntOwner)(nil)).Elem()
+}
+
+func (o HuntOwnerPtrOutput) ToHuntOwnerPtrOutput() HuntOwnerPtrOutput {
+	return o
+}
+
+func (o HuntOwnerPtrOutput) ToHuntOwnerPtrOutputWithContext(ctx context.Context) HuntOwnerPtrOutput {
+	return o
+}
+
+func (o HuntOwnerPtrOutput) Elem() HuntOwnerOutput {
+	return o.ApplyT(func(v *HuntOwner) HuntOwner {
+		if v != nil {
+			return *v
+		}
+		var ret HuntOwner
+		return ret
+	}).(HuntOwnerOutput)
+}
+
+// The name of the user the hunt is assigned to.
+func (o HuntOwnerPtrOutput) AssignedTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedTo
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email of the user the hunt is assigned to.
+func (o HuntOwnerPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user the hunt is assigned to.
+func (o HuntOwnerPtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the owner the hunt is assigned to.
+func (o HuntOwnerPtrOutput) OwnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the user the hunt is assigned to.
+func (o HuntOwnerPtrOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserPrincipalName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes a user that the hunt is assigned to
+type HuntOwnerResponse struct {
+	// The name of the user the hunt is assigned to.
+	AssignedTo *string `pulumi:"assignedTo"`
+	// The email of the user the hunt is assigned to.
+	Email *string `pulumi:"email"`
+	// The object id of the user the hunt is assigned to.
+	ObjectId *string `pulumi:"objectId"`
+	// The type of the owner the hunt is assigned to.
+	OwnerType *string `pulumi:"ownerType"`
+	// The user principal name of the user the hunt is assigned to.
+	UserPrincipalName *string `pulumi:"userPrincipalName"`
+}
+
+// Describes a user that the hunt is assigned to
+type HuntOwnerResponseOutput struct{ *pulumi.OutputState }
+
+func (HuntOwnerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HuntOwnerResponse)(nil)).Elem()
+}
+
+func (o HuntOwnerResponseOutput) ToHuntOwnerResponseOutput() HuntOwnerResponseOutput {
+	return o
+}
+
+func (o HuntOwnerResponseOutput) ToHuntOwnerResponseOutputWithContext(ctx context.Context) HuntOwnerResponseOutput {
+	return o
+}
+
+// The name of the user the hunt is assigned to.
+func (o HuntOwnerResponseOutput) AssignedTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwnerResponse) *string { return v.AssignedTo }).(pulumi.StringPtrOutput)
+}
+
+// The email of the user the hunt is assigned to.
+func (o HuntOwnerResponseOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwnerResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user the hunt is assigned to.
+func (o HuntOwnerResponseOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwnerResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the owner the hunt is assigned to.
+func (o HuntOwnerResponseOutput) OwnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwnerResponse) *string { return v.OwnerType }).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the user the hunt is assigned to.
+func (o HuntOwnerResponseOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HuntOwnerResponse) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
+}
+
+type HuntOwnerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HuntOwnerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HuntOwnerResponse)(nil)).Elem()
+}
+
+func (o HuntOwnerResponsePtrOutput) ToHuntOwnerResponsePtrOutput() HuntOwnerResponsePtrOutput {
+	return o
+}
+
+func (o HuntOwnerResponsePtrOutput) ToHuntOwnerResponsePtrOutputWithContext(ctx context.Context) HuntOwnerResponsePtrOutput {
+	return o
+}
+
+func (o HuntOwnerResponsePtrOutput) Elem() HuntOwnerResponseOutput {
+	return o.ApplyT(func(v *HuntOwnerResponse) HuntOwnerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HuntOwnerResponse
+		return ret
+	}).(HuntOwnerResponseOutput)
+}
+
+// The name of the user the hunt is assigned to.
+func (o HuntOwnerResponsePtrOutput) AssignedTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwnerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedTo
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email of the user the hunt is assigned to.
+func (o HuntOwnerResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwnerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user the hunt is assigned to.
+func (o HuntOwnerResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwnerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the owner the hunt is assigned to.
+func (o HuntOwnerResponsePtrOutput) OwnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwnerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the user the hunt is assigned to.
+func (o HuntOwnerResponsePtrOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HuntOwnerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserPrincipalName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Incident additional data property bag.
 type IncidentAdditionalDataResponse struct {
 	// List of product names of alerts in the incident
@@ -2089,6 +5172,8 @@ type IncidentAdditionalDataResponse struct {
 	BookmarksCount int `pulumi:"bookmarksCount"`
 	// The number of comments in the incident
 	CommentsCount int `pulumi:"commentsCount"`
+	// The provider incident url to the incident in Microsoft 365 Defender portal
+	ProviderIncidentUrl string `pulumi:"providerIncidentUrl"`
 	// The tactics associated with incident
 	Tactics []string `pulumi:"tactics"`
 }
@@ -2128,9 +5213,250 @@ func (o IncidentAdditionalDataResponseOutput) CommentsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v IncidentAdditionalDataResponse) int { return v.CommentsCount }).(pulumi.IntOutput)
 }
 
+// The provider incident url to the incident in Microsoft 365 Defender portal
+func (o IncidentAdditionalDataResponseOutput) ProviderIncidentUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v IncidentAdditionalDataResponse) string { return v.ProviderIncidentUrl }).(pulumi.StringOutput)
+}
+
 // The tactics associated with incident
 func (o IncidentAdditionalDataResponseOutput) Tactics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IncidentAdditionalDataResponse) []string { return v.Tactics }).(pulumi.StringArrayOutput)
+}
+
+// Incident Configuration property bag.
+type IncidentConfiguration struct {
+	// Create incidents from alerts triggered by this analytics rule
+	CreateIncident bool `pulumi:"createIncident"`
+	// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
+	GroupingConfiguration *GroupingConfiguration `pulumi:"groupingConfiguration"`
+}
+
+// IncidentConfigurationInput is an input type that accepts IncidentConfigurationArgs and IncidentConfigurationOutput values.
+// You can construct a concrete instance of `IncidentConfigurationInput` via:
+//
+//	IncidentConfigurationArgs{...}
+type IncidentConfigurationInput interface {
+	pulumi.Input
+
+	ToIncidentConfigurationOutput() IncidentConfigurationOutput
+	ToIncidentConfigurationOutputWithContext(context.Context) IncidentConfigurationOutput
+}
+
+// Incident Configuration property bag.
+type IncidentConfigurationArgs struct {
+	// Create incidents from alerts triggered by this analytics rule
+	CreateIncident pulumi.BoolInput `pulumi:"createIncident"`
+	// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
+	GroupingConfiguration GroupingConfigurationPtrInput `pulumi:"groupingConfiguration"`
+}
+
+func (IncidentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentConfiguration)(nil)).Elem()
+}
+
+func (i IncidentConfigurationArgs) ToIncidentConfigurationOutput() IncidentConfigurationOutput {
+	return i.ToIncidentConfigurationOutputWithContext(context.Background())
+}
+
+func (i IncidentConfigurationArgs) ToIncidentConfigurationOutputWithContext(ctx context.Context) IncidentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentConfigurationOutput)
+}
+
+func (i IncidentConfigurationArgs) ToIncidentConfigurationPtrOutput() IncidentConfigurationPtrOutput {
+	return i.ToIncidentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i IncidentConfigurationArgs) ToIncidentConfigurationPtrOutputWithContext(ctx context.Context) IncidentConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentConfigurationOutput).ToIncidentConfigurationPtrOutputWithContext(ctx)
+}
+
+// IncidentConfigurationPtrInput is an input type that accepts IncidentConfigurationArgs, IncidentConfigurationPtr and IncidentConfigurationPtrOutput values.
+// You can construct a concrete instance of `IncidentConfigurationPtrInput` via:
+//
+//	        IncidentConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type IncidentConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToIncidentConfigurationPtrOutput() IncidentConfigurationPtrOutput
+	ToIncidentConfigurationPtrOutputWithContext(context.Context) IncidentConfigurationPtrOutput
+}
+
+type incidentConfigurationPtrType IncidentConfigurationArgs
+
+func IncidentConfigurationPtr(v *IncidentConfigurationArgs) IncidentConfigurationPtrInput {
+	return (*incidentConfigurationPtrType)(v)
+}
+
+func (*incidentConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IncidentConfiguration)(nil)).Elem()
+}
+
+func (i *incidentConfigurationPtrType) ToIncidentConfigurationPtrOutput() IncidentConfigurationPtrOutput {
+	return i.ToIncidentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *incidentConfigurationPtrType) ToIncidentConfigurationPtrOutputWithContext(ctx context.Context) IncidentConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentConfigurationPtrOutput)
+}
+
+// Incident Configuration property bag.
+type IncidentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (IncidentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentConfiguration)(nil)).Elem()
+}
+
+func (o IncidentConfigurationOutput) ToIncidentConfigurationOutput() IncidentConfigurationOutput {
+	return o
+}
+
+func (o IncidentConfigurationOutput) ToIncidentConfigurationOutputWithContext(ctx context.Context) IncidentConfigurationOutput {
+	return o
+}
+
+func (o IncidentConfigurationOutput) ToIncidentConfigurationPtrOutput() IncidentConfigurationPtrOutput {
+	return o.ToIncidentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o IncidentConfigurationOutput) ToIncidentConfigurationPtrOutputWithContext(ctx context.Context) IncidentConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IncidentConfiguration) *IncidentConfiguration {
+		return &v
+	}).(IncidentConfigurationPtrOutput)
+}
+
+// Create incidents from alerts triggered by this analytics rule
+func (o IncidentConfigurationOutput) CreateIncident() pulumi.BoolOutput {
+	return o.ApplyT(func(v IncidentConfiguration) bool { return v.CreateIncident }).(pulumi.BoolOutput)
+}
+
+// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
+func (o IncidentConfigurationOutput) GroupingConfiguration() GroupingConfigurationPtrOutput {
+	return o.ApplyT(func(v IncidentConfiguration) *GroupingConfiguration { return v.GroupingConfiguration }).(GroupingConfigurationPtrOutput)
+}
+
+type IncidentConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (IncidentConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IncidentConfiguration)(nil)).Elem()
+}
+
+func (o IncidentConfigurationPtrOutput) ToIncidentConfigurationPtrOutput() IncidentConfigurationPtrOutput {
+	return o
+}
+
+func (o IncidentConfigurationPtrOutput) ToIncidentConfigurationPtrOutputWithContext(ctx context.Context) IncidentConfigurationPtrOutput {
+	return o
+}
+
+func (o IncidentConfigurationPtrOutput) Elem() IncidentConfigurationOutput {
+	return o.ApplyT(func(v *IncidentConfiguration) IncidentConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret IncidentConfiguration
+		return ret
+	}).(IncidentConfigurationOutput)
+}
+
+// Create incidents from alerts triggered by this analytics rule
+func (o IncidentConfigurationPtrOutput) CreateIncident() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IncidentConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateIncident
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
+func (o IncidentConfigurationPtrOutput) GroupingConfiguration() GroupingConfigurationPtrOutput {
+	return o.ApplyT(func(v *IncidentConfiguration) *GroupingConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.GroupingConfiguration
+	}).(GroupingConfigurationPtrOutput)
+}
+
+// Incident Configuration property bag.
+type IncidentConfigurationResponse struct {
+	// Create incidents from alerts triggered by this analytics rule
+	CreateIncident bool `pulumi:"createIncident"`
+	// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
+	GroupingConfiguration *GroupingConfigurationResponse `pulumi:"groupingConfiguration"`
+}
+
+// Incident Configuration property bag.
+type IncidentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (IncidentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentConfigurationResponse)(nil)).Elem()
+}
+
+func (o IncidentConfigurationResponseOutput) ToIncidentConfigurationResponseOutput() IncidentConfigurationResponseOutput {
+	return o
+}
+
+func (o IncidentConfigurationResponseOutput) ToIncidentConfigurationResponseOutputWithContext(ctx context.Context) IncidentConfigurationResponseOutput {
+	return o
+}
+
+// Create incidents from alerts triggered by this analytics rule
+func (o IncidentConfigurationResponseOutput) CreateIncident() pulumi.BoolOutput {
+	return o.ApplyT(func(v IncidentConfigurationResponse) bool { return v.CreateIncident }).(pulumi.BoolOutput)
+}
+
+// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
+func (o IncidentConfigurationResponseOutput) GroupingConfiguration() GroupingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v IncidentConfigurationResponse) *GroupingConfigurationResponse { return v.GroupingConfiguration }).(GroupingConfigurationResponsePtrOutput)
+}
+
+type IncidentConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IncidentConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IncidentConfigurationResponse)(nil)).Elem()
+}
+
+func (o IncidentConfigurationResponsePtrOutput) ToIncidentConfigurationResponsePtrOutput() IncidentConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o IncidentConfigurationResponsePtrOutput) ToIncidentConfigurationResponsePtrOutputWithContext(ctx context.Context) IncidentConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o IncidentConfigurationResponsePtrOutput) Elem() IncidentConfigurationResponseOutput {
+	return o.ApplyT(func(v *IncidentConfigurationResponse) IncidentConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IncidentConfigurationResponse
+		return ret
+	}).(IncidentConfigurationResponseOutput)
+}
+
+// Create incidents from alerts triggered by this analytics rule
+func (o IncidentConfigurationResponsePtrOutput) CreateIncident() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IncidentConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateIncident
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
+func (o IncidentConfigurationResponsePtrOutput) GroupingConfiguration() GroupingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *IncidentConfigurationResponse) *GroupingConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GroupingConfiguration
+	}).(GroupingConfigurationResponsePtrOutput)
 }
 
 // Describes related incident information for the bookmark
@@ -2602,6 +5928,8 @@ type IncidentOwnerInfo struct {
 	Email *string `pulumi:"email"`
 	// The object id of the user the incident is assigned to.
 	ObjectId *string `pulumi:"objectId"`
+	// The type of the owner the incident is assigned to.
+	OwnerType *string `pulumi:"ownerType"`
 	// The user principal name of the user the incident is assigned to.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
@@ -2625,6 +5953,8 @@ type IncidentOwnerInfoArgs struct {
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// The object id of the user the incident is assigned to.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// The type of the owner the incident is assigned to.
+	OwnerType pulumi.StringPtrInput `pulumi:"ownerType"`
 	// The user principal name of the user the incident is assigned to.
 	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
 }
@@ -2722,6 +6052,11 @@ func (o IncidentOwnerInfoOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IncidentOwnerInfo) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the owner the incident is assigned to.
+func (o IncidentOwnerInfoOutput) OwnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfo) *string { return v.OwnerType }).(pulumi.StringPtrOutput)
+}
+
 // The user principal name of the user the incident is assigned to.
 func (o IncidentOwnerInfoOutput) UserPrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IncidentOwnerInfo) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
@@ -2781,6 +6116,16 @@ func (o IncidentOwnerInfoPtrOutput) ObjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The type of the owner the incident is assigned to.
+func (o IncidentOwnerInfoPtrOutput) OwnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The user principal name of the user the incident is assigned to.
 func (o IncidentOwnerInfoPtrOutput) UserPrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IncidentOwnerInfo) *string {
@@ -2799,6 +6144,8 @@ type IncidentOwnerInfoResponse struct {
 	Email *string `pulumi:"email"`
 	// The object id of the user the incident is assigned to.
 	ObjectId *string `pulumi:"objectId"`
+	// The type of the owner the incident is assigned to.
+	OwnerType *string `pulumi:"ownerType"`
 	// The user principal name of the user the incident is assigned to.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
@@ -2831,6 +6178,11 @@ func (o IncidentOwnerInfoResponseOutput) Email() pulumi.StringPtrOutput {
 // The object id of the user the incident is assigned to.
 func (o IncidentOwnerInfoResponseOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IncidentOwnerInfoResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the owner the incident is assigned to.
+func (o IncidentOwnerInfoResponseOutput) OwnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfoResponse) *string { return v.OwnerType }).(pulumi.StringPtrOutput)
 }
 
 // The user principal name of the user the incident is assigned to.
@@ -2892,6 +6244,16 @@ func (o IncidentOwnerInfoResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The type of the owner the incident is assigned to.
+func (o IncidentOwnerInfoResponsePtrOutput) OwnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The user principal name of the user the incident is assigned to.
 func (o IncidentOwnerInfoResponsePtrOutput) UserPrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IncidentOwnerInfoResponse) *string {
@@ -2900,6 +6262,40 @@ func (o IncidentOwnerInfoResponsePtrOutput) UserPrincipalName() pulumi.StringPtr
 		}
 		return v.UserPrincipalName
 	}).(pulumi.StringPtrOutput)
+}
+
+type IncidentPropertiesAction struct {
+	// The reason the incident was closed
+	Classification *string `pulumi:"classification"`
+	// Describes the reason the incident was closed.
+	ClassificationComment *string `pulumi:"classificationComment"`
+	// The classification reason the incident was closed with
+	ClassificationReason *string `pulumi:"classificationReason"`
+	// List of labels to add to the incident.
+	Labels []IncidentLabel `pulumi:"labels"`
+	// Information on the user an incident is assigned to
+	Owner *IncidentOwnerInfo `pulumi:"owner"`
+	// The severity of the incident
+	Severity *string `pulumi:"severity"`
+	// The status of the incident
+	Status *string `pulumi:"status"`
+}
+
+type IncidentPropertiesActionResponse struct {
+	// The reason the incident was closed
+	Classification *string `pulumi:"classification"`
+	// Describes the reason the incident was closed.
+	ClassificationComment *string `pulumi:"classificationComment"`
+	// The classification reason the incident was closed with
+	ClassificationReason *string `pulumi:"classificationReason"`
+	// List of labels to add to the incident.
+	Labels []IncidentLabelResponse `pulumi:"labels"`
+	// Information on the user an incident is assigned to
+	Owner *IncidentOwnerInfoResponse `pulumi:"owner"`
+	// The severity of the incident
+	Severity *string `pulumi:"severity"`
+	// The status of the incident
+	Status *string `pulumi:"status"`
 }
 
 // Query results for table insights query.
@@ -5699,6 +9095,62 @@ func (o OfficeDataConnectorDataTypesTeamsPtrOutput) State() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type PlaybookActionProperties struct {
+	// The resource id of the playbook resource.
+	LogicAppResourceId string `pulumi:"logicAppResourceId"`
+	// The tenant id of the playbook resource.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+type PlaybookActionPropertiesResponse struct {
+	// The resource id of the playbook resource.
+	LogicAppResourceId string `pulumi:"logicAppResourceId"`
+	// The tenant id of the playbook resource.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// Describes an automation rule condition that evaluates an array property's value change
+type PropertyArrayChangedConditionProperties struct {
+	ConditionProperties *AutomationRulePropertyArrayChangedValuesCondition `pulumi:"conditionProperties"`
+	// Expected value is 'PropertyArrayChanged'.
+	ConditionType string `pulumi:"conditionType"`
+}
+
+// Describes an automation rule condition that evaluates an array property's value change
+type PropertyArrayChangedConditionPropertiesResponse struct {
+	ConditionProperties *AutomationRulePropertyArrayChangedValuesConditionResponse `pulumi:"conditionProperties"`
+	// Expected value is 'PropertyArrayChanged'.
+	ConditionType string `pulumi:"conditionType"`
+}
+
+// Describes an automation rule condition that evaluates a property's value change
+type PropertyChangedConditionProperties struct {
+	ConditionProperties *AutomationRulePropertyValuesChangedCondition `pulumi:"conditionProperties"`
+	// Expected value is 'PropertyChanged'.
+	ConditionType string `pulumi:"conditionType"`
+}
+
+// Describes an automation rule condition that evaluates a property's value change
+type PropertyChangedConditionPropertiesResponse struct {
+	ConditionProperties *AutomationRulePropertyValuesChangedConditionResponse `pulumi:"conditionProperties"`
+	// Expected value is 'PropertyChanged'.
+	ConditionType string `pulumi:"conditionType"`
+}
+
+// Describes an automation rule condition that evaluates a property's value
+type PropertyConditionProperties struct {
+	ConditionProperties *AutomationRulePropertyValuesCondition `pulumi:"conditionProperties"`
+	// Expected value is 'Property'.
+	ConditionType string `pulumi:"conditionType"`
+}
+
+// Describes an automation rule condition that evaluates a property's value
+type PropertyConditionPropertiesResponse struct {
+	ConditionProperties *AutomationRulePropertyValuesConditionResponse `pulumi:"conditionProperties"`
+	// Expected value is 'Property'.
+	ConditionType string `pulumi:"conditionType"`
+}
+
 // Represents a repository.
 type RepoResponse struct {
 	// Array of branches.
@@ -5850,6 +9302,280 @@ func (o RepositoryOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Repository) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
+// Resources created in user's repository for the source-control.
+type RepositoryResourceInfo struct {
+	// Resources created in Azure DevOps for this source-control.
+	AzureDevOpsResourceInfo *AzureDevOpsResourceInfo `pulumi:"azureDevOpsResourceInfo"`
+	// Resources created in GitHub for this source-control.
+	GitHubResourceInfo *GitHubResourceInfo `pulumi:"gitHubResourceInfo"`
+	// The webhook object created for the source-control.
+	Webhook *Webhook `pulumi:"webhook"`
+}
+
+// RepositoryResourceInfoInput is an input type that accepts RepositoryResourceInfoArgs and RepositoryResourceInfoOutput values.
+// You can construct a concrete instance of `RepositoryResourceInfoInput` via:
+//
+//	RepositoryResourceInfoArgs{...}
+type RepositoryResourceInfoInput interface {
+	pulumi.Input
+
+	ToRepositoryResourceInfoOutput() RepositoryResourceInfoOutput
+	ToRepositoryResourceInfoOutputWithContext(context.Context) RepositoryResourceInfoOutput
+}
+
+// Resources created in user's repository for the source-control.
+type RepositoryResourceInfoArgs struct {
+	// Resources created in Azure DevOps for this source-control.
+	AzureDevOpsResourceInfo AzureDevOpsResourceInfoPtrInput `pulumi:"azureDevOpsResourceInfo"`
+	// Resources created in GitHub for this source-control.
+	GitHubResourceInfo GitHubResourceInfoPtrInput `pulumi:"gitHubResourceInfo"`
+	// The webhook object created for the source-control.
+	Webhook WebhookPtrInput `pulumi:"webhook"`
+}
+
+func (RepositoryResourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryResourceInfo)(nil)).Elem()
+}
+
+func (i RepositoryResourceInfoArgs) ToRepositoryResourceInfoOutput() RepositoryResourceInfoOutput {
+	return i.ToRepositoryResourceInfoOutputWithContext(context.Background())
+}
+
+func (i RepositoryResourceInfoArgs) ToRepositoryResourceInfoOutputWithContext(ctx context.Context) RepositoryResourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryResourceInfoOutput)
+}
+
+func (i RepositoryResourceInfoArgs) ToRepositoryResourceInfoPtrOutput() RepositoryResourceInfoPtrOutput {
+	return i.ToRepositoryResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryResourceInfoArgs) ToRepositoryResourceInfoPtrOutputWithContext(ctx context.Context) RepositoryResourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryResourceInfoOutput).ToRepositoryResourceInfoPtrOutputWithContext(ctx)
+}
+
+// RepositoryResourceInfoPtrInput is an input type that accepts RepositoryResourceInfoArgs, RepositoryResourceInfoPtr and RepositoryResourceInfoPtrOutput values.
+// You can construct a concrete instance of `RepositoryResourceInfoPtrInput` via:
+//
+//	        RepositoryResourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryResourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryResourceInfoPtrOutput() RepositoryResourceInfoPtrOutput
+	ToRepositoryResourceInfoPtrOutputWithContext(context.Context) RepositoryResourceInfoPtrOutput
+}
+
+type repositoryResourceInfoPtrType RepositoryResourceInfoArgs
+
+func RepositoryResourceInfoPtr(v *RepositoryResourceInfoArgs) RepositoryResourceInfoPtrInput {
+	return (*repositoryResourceInfoPtrType)(v)
+}
+
+func (*repositoryResourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryResourceInfo)(nil)).Elem()
+}
+
+func (i *repositoryResourceInfoPtrType) ToRepositoryResourceInfoPtrOutput() RepositoryResourceInfoPtrOutput {
+	return i.ToRepositoryResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryResourceInfoPtrType) ToRepositoryResourceInfoPtrOutputWithContext(ctx context.Context) RepositoryResourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryResourceInfoPtrOutput)
+}
+
+// Resources created in user's repository for the source-control.
+type RepositoryResourceInfoOutput struct{ *pulumi.OutputState }
+
+func (RepositoryResourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryResourceInfo)(nil)).Elem()
+}
+
+func (o RepositoryResourceInfoOutput) ToRepositoryResourceInfoOutput() RepositoryResourceInfoOutput {
+	return o
+}
+
+func (o RepositoryResourceInfoOutput) ToRepositoryResourceInfoOutputWithContext(ctx context.Context) RepositoryResourceInfoOutput {
+	return o
+}
+
+func (o RepositoryResourceInfoOutput) ToRepositoryResourceInfoPtrOutput() RepositoryResourceInfoPtrOutput {
+	return o.ToRepositoryResourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryResourceInfoOutput) ToRepositoryResourceInfoPtrOutputWithContext(ctx context.Context) RepositoryResourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryResourceInfo) *RepositoryResourceInfo {
+		return &v
+	}).(RepositoryResourceInfoPtrOutput)
+}
+
+// Resources created in Azure DevOps for this source-control.
+func (o RepositoryResourceInfoOutput) AzureDevOpsResourceInfo() AzureDevOpsResourceInfoPtrOutput {
+	return o.ApplyT(func(v RepositoryResourceInfo) *AzureDevOpsResourceInfo { return v.AzureDevOpsResourceInfo }).(AzureDevOpsResourceInfoPtrOutput)
+}
+
+// Resources created in GitHub for this source-control.
+func (o RepositoryResourceInfoOutput) GitHubResourceInfo() GitHubResourceInfoPtrOutput {
+	return o.ApplyT(func(v RepositoryResourceInfo) *GitHubResourceInfo { return v.GitHubResourceInfo }).(GitHubResourceInfoPtrOutput)
+}
+
+// The webhook object created for the source-control.
+func (o RepositoryResourceInfoOutput) Webhook() WebhookPtrOutput {
+	return o.ApplyT(func(v RepositoryResourceInfo) *Webhook { return v.Webhook }).(WebhookPtrOutput)
+}
+
+type RepositoryResourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryResourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryResourceInfo)(nil)).Elem()
+}
+
+func (o RepositoryResourceInfoPtrOutput) ToRepositoryResourceInfoPtrOutput() RepositoryResourceInfoPtrOutput {
+	return o
+}
+
+func (o RepositoryResourceInfoPtrOutput) ToRepositoryResourceInfoPtrOutputWithContext(ctx context.Context) RepositoryResourceInfoPtrOutput {
+	return o
+}
+
+func (o RepositoryResourceInfoPtrOutput) Elem() RepositoryResourceInfoOutput {
+	return o.ApplyT(func(v *RepositoryResourceInfo) RepositoryResourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryResourceInfo
+		return ret
+	}).(RepositoryResourceInfoOutput)
+}
+
+// Resources created in Azure DevOps for this source-control.
+func (o RepositoryResourceInfoPtrOutput) AzureDevOpsResourceInfo() AzureDevOpsResourceInfoPtrOutput {
+	return o.ApplyT(func(v *RepositoryResourceInfo) *AzureDevOpsResourceInfo {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDevOpsResourceInfo
+	}).(AzureDevOpsResourceInfoPtrOutput)
+}
+
+// Resources created in GitHub for this source-control.
+func (o RepositoryResourceInfoPtrOutput) GitHubResourceInfo() GitHubResourceInfoPtrOutput {
+	return o.ApplyT(func(v *RepositoryResourceInfo) *GitHubResourceInfo {
+		if v == nil {
+			return nil
+		}
+		return v.GitHubResourceInfo
+	}).(GitHubResourceInfoPtrOutput)
+}
+
+// The webhook object created for the source-control.
+func (o RepositoryResourceInfoPtrOutput) Webhook() WebhookPtrOutput {
+	return o.ApplyT(func(v *RepositoryResourceInfo) *Webhook {
+		if v == nil {
+			return nil
+		}
+		return v.Webhook
+	}).(WebhookPtrOutput)
+}
+
+// Resources created in user's repository for the source-control.
+type RepositoryResourceInfoResponse struct {
+	// Resources created in Azure DevOps for this source-control.
+	AzureDevOpsResourceInfo *AzureDevOpsResourceInfoResponse `pulumi:"azureDevOpsResourceInfo"`
+	// Resources created in GitHub for this source-control.
+	GitHubResourceInfo *GitHubResourceInfoResponse `pulumi:"gitHubResourceInfo"`
+	// The webhook object created for the source-control.
+	Webhook *WebhookResponse `pulumi:"webhook"`
+}
+
+// Resources created in user's repository for the source-control.
+type RepositoryResourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (RepositoryResourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryResourceInfoResponse)(nil)).Elem()
+}
+
+func (o RepositoryResourceInfoResponseOutput) ToRepositoryResourceInfoResponseOutput() RepositoryResourceInfoResponseOutput {
+	return o
+}
+
+func (o RepositoryResourceInfoResponseOutput) ToRepositoryResourceInfoResponseOutputWithContext(ctx context.Context) RepositoryResourceInfoResponseOutput {
+	return o
+}
+
+// Resources created in Azure DevOps for this source-control.
+func (o RepositoryResourceInfoResponseOutput) AzureDevOpsResourceInfo() AzureDevOpsResourceInfoResponsePtrOutput {
+	return o.ApplyT(func(v RepositoryResourceInfoResponse) *AzureDevOpsResourceInfoResponse {
+		return v.AzureDevOpsResourceInfo
+	}).(AzureDevOpsResourceInfoResponsePtrOutput)
+}
+
+// Resources created in GitHub for this source-control.
+func (o RepositoryResourceInfoResponseOutput) GitHubResourceInfo() GitHubResourceInfoResponsePtrOutput {
+	return o.ApplyT(func(v RepositoryResourceInfoResponse) *GitHubResourceInfoResponse { return v.GitHubResourceInfo }).(GitHubResourceInfoResponsePtrOutput)
+}
+
+// The webhook object created for the source-control.
+func (o RepositoryResourceInfoResponseOutput) Webhook() WebhookResponsePtrOutput {
+	return o.ApplyT(func(v RepositoryResourceInfoResponse) *WebhookResponse { return v.Webhook }).(WebhookResponsePtrOutput)
+}
+
+type RepositoryResourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryResourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryResourceInfoResponse)(nil)).Elem()
+}
+
+func (o RepositoryResourceInfoResponsePtrOutput) ToRepositoryResourceInfoResponsePtrOutput() RepositoryResourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o RepositoryResourceInfoResponsePtrOutput) ToRepositoryResourceInfoResponsePtrOutputWithContext(ctx context.Context) RepositoryResourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o RepositoryResourceInfoResponsePtrOutput) Elem() RepositoryResourceInfoResponseOutput {
+	return o.ApplyT(func(v *RepositoryResourceInfoResponse) RepositoryResourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryResourceInfoResponse
+		return ret
+	}).(RepositoryResourceInfoResponseOutput)
+}
+
+// Resources created in Azure DevOps for this source-control.
+func (o RepositoryResourceInfoResponsePtrOutput) AzureDevOpsResourceInfo() AzureDevOpsResourceInfoResponsePtrOutput {
+	return o.ApplyT(func(v *RepositoryResourceInfoResponse) *AzureDevOpsResourceInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDevOpsResourceInfo
+	}).(AzureDevOpsResourceInfoResponsePtrOutput)
+}
+
+// Resources created in GitHub for this source-control.
+func (o RepositoryResourceInfoResponsePtrOutput) GitHubResourceInfo() GitHubResourceInfoResponsePtrOutput {
+	return o.ApplyT(func(v *RepositoryResourceInfoResponse) *GitHubResourceInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GitHubResourceInfo
+	}).(GitHubResourceInfoResponsePtrOutput)
+}
+
+// The webhook object created for the source-control.
+func (o RepositoryResourceInfoResponsePtrOutput) Webhook() WebhookResponsePtrOutput {
+	return o.ApplyT(func(v *RepositoryResourceInfoResponse) *WebhookResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Webhook
+	}).(WebhookResponsePtrOutput)
+}
+
 // metadata of a repository.
 type RepositoryResponse struct {
 	// Branch name of repository.
@@ -5916,6 +9642,8 @@ type SecurityAlertTimelineItemResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// The alert end time.
 	EndTimeUtc string `pulumi:"endTimeUtc"`
+	// The intent of the alert.
+	Intent string `pulumi:"intent"`
 	// The entity query kind
 	// Expected value is 'SecurityAlert'.
 	Kind string `pulumi:"kind"`
@@ -5925,6 +9653,8 @@ type SecurityAlertTimelineItemResponse struct {
 	Severity string `pulumi:"severity"`
 	// The alert start time.
 	StartTimeUtc string `pulumi:"startTimeUtc"`
+	// The techniques of the alert.
+	Techniques []string `pulumi:"techniques"`
 	// The alert generated time.
 	TimeGenerated string `pulumi:"timeGenerated"`
 }
@@ -7347,7 +11077,7 @@ func (o TimelineResultsMetadataResponsePtrOutput) TotalCount() pulumi.IntPtrOutp
 // User information that made some action
 type UserInfo struct {
 	// The object id of the user.
-	ObjectId string `pulumi:"objectId"`
+	ObjectId *string `pulumi:"objectId"`
 }
 
 // UserInfoInput is an input type that accepts UserInfoArgs and UserInfoOutput values.
@@ -7364,7 +11094,7 @@ type UserInfoInput interface {
 // User information that made some action
 type UserInfoArgs struct {
 	// The object id of the user.
-	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 
 func (UserInfoArgs) ElementType() reflect.Type {
@@ -7446,8 +11176,8 @@ func (o UserInfoOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) User
 }
 
 // The object id of the user.
-func (o UserInfoOutput) ObjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserInfo) string { return v.ObjectId }).(pulumi.StringOutput)
+func (o UserInfoOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserInfo) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
 type UserInfoPtrOutput struct{ *pulumi.OutputState }
@@ -7480,7 +11210,7 @@ func (o UserInfoPtrOutput) ObjectId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ObjectId
+		return v.ObjectId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7576,6 +11306,59 @@ func (o UserInfoResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
 		}
 		return v.ObjectId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Describes an error encountered in the file during validation.
+type ValidationErrorResponse struct {
+	// A list of descriptions of the error.
+	ErrorMessages []string `pulumi:"errorMessages"`
+	// The number of the record that has the error.
+	RecordIndex *int `pulumi:"recordIndex"`
+}
+
+// Describes an error encountered in the file during validation.
+type ValidationErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ValidationErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValidationErrorResponse)(nil)).Elem()
+}
+
+func (o ValidationErrorResponseOutput) ToValidationErrorResponseOutput() ValidationErrorResponseOutput {
+	return o
+}
+
+func (o ValidationErrorResponseOutput) ToValidationErrorResponseOutputWithContext(ctx context.Context) ValidationErrorResponseOutput {
+	return o
+}
+
+// A list of descriptions of the error.
+func (o ValidationErrorResponseOutput) ErrorMessages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValidationErrorResponse) []string { return v.ErrorMessages }).(pulumi.StringArrayOutput)
+}
+
+// The number of the record that has the error.
+func (o ValidationErrorResponseOutput) RecordIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValidationErrorResponse) *int { return v.RecordIndex }).(pulumi.IntPtrOutput)
+}
+
+type ValidationErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ValidationErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ValidationErrorResponse)(nil)).Elem()
+}
+
+func (o ValidationErrorResponseArrayOutput) ToValidationErrorResponseArrayOutput() ValidationErrorResponseArrayOutput {
+	return o
+}
+
+func (o ValidationErrorResponseArrayOutput) ToValidationErrorResponseArrayOutputWithContext(ctx context.Context) ValidationErrorResponseArrayOutput {
+	return o
+}
+
+func (o ValidationErrorResponseArrayOutput) Index(i pulumi.IntInput) ValidationErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ValidationErrorResponse {
+		return vs[0].([]ValidationErrorResponse)[vs[1].(int)]
+	}).(ValidationErrorResponseOutput)
 }
 
 // User information that made some action
@@ -7812,21 +11595,335 @@ func (o WatchlistUserInfoResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Detail about the webhook object.
+type Webhook struct {
+	// A flag to instruct the backend service to rotate webhook secret.
+	RotateWebhookSecret *bool `pulumi:"rotateWebhookSecret"`
+	// Unique identifier for the webhook.
+	WebhookId *string `pulumi:"webhookId"`
+	// Time when the webhook secret was updated.
+	WebhookSecretUpdateTime *string `pulumi:"webhookSecretUpdateTime"`
+	// URL that gets invoked by the webhook.
+	WebhookUrl *string `pulumi:"webhookUrl"`
+}
+
+// WebhookInput is an input type that accepts WebhookArgs and WebhookOutput values.
+// You can construct a concrete instance of `WebhookInput` via:
+//
+//	WebhookArgs{...}
+type WebhookInput interface {
+	pulumi.Input
+
+	ToWebhookOutput() WebhookOutput
+	ToWebhookOutputWithContext(context.Context) WebhookOutput
+}
+
+// Detail about the webhook object.
+type WebhookArgs struct {
+	// A flag to instruct the backend service to rotate webhook secret.
+	RotateWebhookSecret pulumi.BoolPtrInput `pulumi:"rotateWebhookSecret"`
+	// Unique identifier for the webhook.
+	WebhookId pulumi.StringPtrInput `pulumi:"webhookId"`
+	// Time when the webhook secret was updated.
+	WebhookSecretUpdateTime pulumi.StringPtrInput `pulumi:"webhookSecretUpdateTime"`
+	// URL that gets invoked by the webhook.
+	WebhookUrl pulumi.StringPtrInput `pulumi:"webhookUrl"`
+}
+
+func (WebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Webhook)(nil)).Elem()
+}
+
+func (i WebhookArgs) ToWebhookOutput() WebhookOutput {
+	return i.ToWebhookOutputWithContext(context.Background())
+}
+
+func (i WebhookArgs) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookOutput)
+}
+
+func (i WebhookArgs) ToWebhookPtrOutput() WebhookPtrOutput {
+	return i.ToWebhookPtrOutputWithContext(context.Background())
+}
+
+func (i WebhookArgs) ToWebhookPtrOutputWithContext(ctx context.Context) WebhookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookOutput).ToWebhookPtrOutputWithContext(ctx)
+}
+
+// WebhookPtrInput is an input type that accepts WebhookArgs, WebhookPtr and WebhookPtrOutput values.
+// You can construct a concrete instance of `WebhookPtrInput` via:
+//
+//	        WebhookArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebhookPtrInput interface {
+	pulumi.Input
+
+	ToWebhookPtrOutput() WebhookPtrOutput
+	ToWebhookPtrOutputWithContext(context.Context) WebhookPtrOutput
+}
+
+type webhookPtrType WebhookArgs
+
+func WebhookPtr(v *WebhookArgs) WebhookPtrInput {
+	return (*webhookPtrType)(v)
+}
+
+func (*webhookPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Webhook)(nil)).Elem()
+}
+
+func (i *webhookPtrType) ToWebhookPtrOutput() WebhookPtrOutput {
+	return i.ToWebhookPtrOutputWithContext(context.Background())
+}
+
+func (i *webhookPtrType) ToWebhookPtrOutputWithContext(ctx context.Context) WebhookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookPtrOutput)
+}
+
+// Detail about the webhook object.
+type WebhookOutput struct{ *pulumi.OutputState }
+
+func (WebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Webhook)(nil)).Elem()
+}
+
+func (o WebhookOutput) ToWebhookOutput() WebhookOutput {
+	return o
+}
+
+func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
+	return o
+}
+
+func (o WebhookOutput) ToWebhookPtrOutput() WebhookPtrOutput {
+	return o.ToWebhookPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookOutput) ToWebhookPtrOutputWithContext(ctx context.Context) WebhookPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Webhook) *Webhook {
+		return &v
+	}).(WebhookPtrOutput)
+}
+
+// A flag to instruct the backend service to rotate webhook secret.
+func (o WebhookOutput) RotateWebhookSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Webhook) *bool { return v.RotateWebhookSecret }).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier for the webhook.
+func (o WebhookOutput) WebhookId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Webhook) *string { return v.WebhookId }).(pulumi.StringPtrOutput)
+}
+
+// Time when the webhook secret was updated.
+func (o WebhookOutput) WebhookSecretUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Webhook) *string { return v.WebhookSecretUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// URL that gets invoked by the webhook.
+func (o WebhookOutput) WebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Webhook) *string { return v.WebhookUrl }).(pulumi.StringPtrOutput)
+}
+
+type WebhookPtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Webhook)(nil)).Elem()
+}
+
+func (o WebhookPtrOutput) ToWebhookPtrOutput() WebhookPtrOutput {
+	return o
+}
+
+func (o WebhookPtrOutput) ToWebhookPtrOutputWithContext(ctx context.Context) WebhookPtrOutput {
+	return o
+}
+
+func (o WebhookPtrOutput) Elem() WebhookOutput {
+	return o.ApplyT(func(v *Webhook) Webhook {
+		if v != nil {
+			return *v
+		}
+		var ret Webhook
+		return ret
+	}).(WebhookOutput)
+}
+
+// A flag to instruct the backend service to rotate webhook secret.
+func (o WebhookPtrOutput) RotateWebhookSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Webhook) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RotateWebhookSecret
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier for the webhook.
+func (o WebhookPtrOutput) WebhookId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Webhook) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time when the webhook secret was updated.
+func (o WebhookPtrOutput) WebhookSecretUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Webhook) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookSecretUpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL that gets invoked by the webhook.
+func (o WebhookPtrOutput) WebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Webhook) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Detail about the webhook object.
+type WebhookResponse struct {
+	// A flag to instruct the backend service to rotate webhook secret.
+	RotateWebhookSecret *bool `pulumi:"rotateWebhookSecret"`
+	// Unique identifier for the webhook.
+	WebhookId *string `pulumi:"webhookId"`
+	// Time when the webhook secret was updated.
+	WebhookSecretUpdateTime *string `pulumi:"webhookSecretUpdateTime"`
+	// URL that gets invoked by the webhook.
+	WebhookUrl *string `pulumi:"webhookUrl"`
+}
+
+// Detail about the webhook object.
+type WebhookResponseOutput struct{ *pulumi.OutputState }
+
+func (WebhookResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookResponse)(nil)).Elem()
+}
+
+func (o WebhookResponseOutput) ToWebhookResponseOutput() WebhookResponseOutput {
+	return o
+}
+
+func (o WebhookResponseOutput) ToWebhookResponseOutputWithContext(ctx context.Context) WebhookResponseOutput {
+	return o
+}
+
+// A flag to instruct the backend service to rotate webhook secret.
+func (o WebhookResponseOutput) RotateWebhookSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebhookResponse) *bool { return v.RotateWebhookSecret }).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier for the webhook.
+func (o WebhookResponseOutput) WebhookId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookResponse) *string { return v.WebhookId }).(pulumi.StringPtrOutput)
+}
+
+// Time when the webhook secret was updated.
+func (o WebhookResponseOutput) WebhookSecretUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookResponse) *string { return v.WebhookSecretUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// URL that gets invoked by the webhook.
+func (o WebhookResponseOutput) WebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookResponse) *string { return v.WebhookUrl }).(pulumi.StringPtrOutput)
+}
+
+type WebhookResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookResponse)(nil)).Elem()
+}
+
+func (o WebhookResponsePtrOutput) ToWebhookResponsePtrOutput() WebhookResponsePtrOutput {
+	return o
+}
+
+func (o WebhookResponsePtrOutput) ToWebhookResponsePtrOutputWithContext(ctx context.Context) WebhookResponsePtrOutput {
+	return o
+}
+
+func (o WebhookResponsePtrOutput) Elem() WebhookResponseOutput {
+	return o.ApplyT(func(v *WebhookResponse) WebhookResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WebhookResponse
+		return ret
+	}).(WebhookResponseOutput)
+}
+
+// A flag to instruct the backend service to rotate webhook secret.
+func (o WebhookResponsePtrOutput) RotateWebhookSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebhookResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RotateWebhookSecret
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier for the webhook.
+func (o WebhookResponsePtrOutput) WebhookId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time when the webhook secret was updated.
+func (o WebhookResponsePtrOutput) WebhookSecretUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookSecretUpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL that gets invoked by the webhook.
+func (o WebhookResponsePtrOutput) WebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesQueryDefinitionsOutput{})
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesQueryDefinitionsPtrOutput{})
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesResponseQueryDefinitionsOutput{})
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput{})
+	pulumi.RegisterOutputType(AlertDetailsOverrideOutput{})
+	pulumi.RegisterOutputType(AlertDetailsOverridePtrOutput{})
+	pulumi.RegisterOutputType(AlertDetailsOverrideResponseOutput{})
+	pulumi.RegisterOutputType(AlertDetailsOverrideResponsePtrOutput{})
+	pulumi.RegisterOutputType(AlertPropertyMappingOutput{})
+	pulumi.RegisterOutputType(AlertPropertyMappingArrayOutput{})
+	pulumi.RegisterOutputType(AlertPropertyMappingResponseOutput{})
+	pulumi.RegisterOutputType(AlertPropertyMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(AlertsDataTypeOfDataConnectorOutput{})
 	pulumi.RegisterOutputType(AlertsDataTypeOfDataConnectorPtrOutput{})
 	pulumi.RegisterOutputType(AlertsDataTypeOfDataConnectorResponseOutput{})
 	pulumi.RegisterOutputType(AlertsDataTypeOfDataConnectorResponsePtrOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionArrayOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionConditionPropertiesOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionResponseOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionResponseArrayOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput{})
+	pulumi.RegisterOutputType(AssignmentItemOutput{})
+	pulumi.RegisterOutputType(AssignmentItemArrayOutput{})
+	pulumi.RegisterOutputType(AssignmentItemResponseOutput{})
+	pulumi.RegisterOutputType(AssignmentItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(AutomationRuleTriggeringLogicOutput{})
 	pulumi.RegisterOutputType(AutomationRuleTriggeringLogicResponseOutput{})
 	pulumi.RegisterOutputType(AwsCloudTrailDataConnectorDataTypesOutput{})
@@ -7837,7 +11934,14 @@ func init() {
 	pulumi.RegisterOutputType(AwsCloudTrailDataConnectorDataTypesResponsePtrOutput{})
 	pulumi.RegisterOutputType(AwsCloudTrailDataConnectorDataTypesResponseLogsOutput{})
 	pulumi.RegisterOutputType(AwsCloudTrailDataConnectorDataTypesResponseLogsPtrOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsResourceInfoOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsResourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsResourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsResourceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClientInfoOutput{})
+	pulumi.RegisterOutputType(ClientInfoPtrOutput{})
 	pulumi.RegisterOutputType(ClientInfoResponseOutput{})
+	pulumi.RegisterOutputType(ClientInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContentPathMapOutput{})
 	pulumi.RegisterOutputType(ContentPathMapArrayOutput{})
 	pulumi.RegisterOutputType(ContentPathMapResponseOutput{})
@@ -7846,15 +11950,53 @@ func init() {
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonPtrOutput{})
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonResponseOutput{})
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentOutput{})
+	pulumi.RegisterOutputType(DeploymentPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentInfoOutput{})
+	pulumi.RegisterOutputType(DeploymentInfoPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentInfoResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentResponsePtrOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseQueryTimeIntervalOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseQueryTimeIntervalPtrOutput{})
-	pulumi.RegisterOutputType(GetInsightsErrorResponseOutput{})
-	pulumi.RegisterOutputType(GetInsightsErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(EntityMappingOutput{})
+	pulumi.RegisterOutputType(EntityMappingArrayOutput{})
+	pulumi.RegisterOutputType(EntityMappingResponseOutput{})
+	pulumi.RegisterOutputType(EntityMappingResponseArrayOutput{})
+	pulumi.RegisterOutputType(EventGroupingSettingsOutput{})
+	pulumi.RegisterOutputType(EventGroupingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EventGroupingSettingsResponseOutput{})
+	pulumi.RegisterOutputType(EventGroupingSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(FieldMappingOutput{})
+	pulumi.RegisterOutputType(FieldMappingArrayOutput{})
+	pulumi.RegisterOutputType(FieldMappingResponseOutput{})
+	pulumi.RegisterOutputType(FieldMappingResponseArrayOutput{})
+	pulumi.RegisterOutputType(FileMetadataOutput{})
+	pulumi.RegisterOutputType(FileMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GetInsightsErrorKindResponseOutput{})
+	pulumi.RegisterOutputType(GetInsightsErrorKindResponseArrayOutput{})
 	pulumi.RegisterOutputType(GetInsightsResultsMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GetInsightsResultsMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(GitHubResourceInfoOutput{})
+	pulumi.RegisterOutputType(GitHubResourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(GitHubResourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(GitHubResourceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(GroupingConfigurationOutput{})
+	pulumi.RegisterOutputType(GroupingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GroupingConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(GroupingConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(HuntOwnerOutput{})
+	pulumi.RegisterOutputType(HuntOwnerPtrOutput{})
+	pulumi.RegisterOutputType(HuntOwnerResponseOutput{})
+	pulumi.RegisterOutputType(HuntOwnerResponsePtrOutput{})
 	pulumi.RegisterOutputType(IncidentAdditionalDataResponseOutput{})
+	pulumi.RegisterOutputType(IncidentConfigurationOutput{})
+	pulumi.RegisterOutputType(IncidentConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(IncidentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(IncidentConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(IncidentInfoOutput{})
 	pulumi.RegisterOutputType(IncidentInfoPtrOutput{})
 	pulumi.RegisterOutputType(IncidentInfoResponseOutput{})
@@ -7917,6 +12059,10 @@ func init() {
 	pulumi.RegisterOutputType(RepoResponseOutput{})
 	pulumi.RegisterOutputType(RepoResponseArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryResourceInfoOutput{})
+	pulumi.RegisterOutputType(RepositoryResourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryResourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(RepositoryResourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(RepositoryResponseOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceArrayOutput{})
@@ -7951,8 +12097,14 @@ func init() {
 	pulumi.RegisterOutputType(UserInfoPtrOutput{})
 	pulumi.RegisterOutputType(UserInfoResponseOutput{})
 	pulumi.RegisterOutputType(UserInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ValidationErrorResponseOutput{})
+	pulumi.RegisterOutputType(ValidationErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(WatchlistUserInfoOutput{})
 	pulumi.RegisterOutputType(WatchlistUserInfoPtrOutput{})
 	pulumi.RegisterOutputType(WatchlistUserInfoResponseOutput{})
 	pulumi.RegisterOutputType(WatchlistUserInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(WebhookOutput{})
+	pulumi.RegisterOutputType(WebhookPtrOutput{})
+	pulumi.RegisterOutputType(WebhookResponseOutput{})
+	pulumi.RegisterOutputType(WebhookResponsePtrOutput{})
 }

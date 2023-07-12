@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This is to allow calling via powershell and ARM template.
-// API Version: 2020-12-01.
+// Description for This is to allow calling via powershell and ARM template.
+// Azure REST API version: 2022-09-01.
 func ListWebAppSyncFunctionTriggers(ctx *pulumi.Context, args *ListWebAppSyncFunctionTriggersArgs, opts ...pulumi.InvokeOption) (*ListWebAppSyncFunctionTriggersResult, error) {
 	var rv ListWebAppSyncFunctionTriggersResult
 	err := ctx.Invoke("azure-native:web:listWebAppSyncFunctionTriggers", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // List the authorization keys associated with this account.
-// API Version: 2020-12-01-preview.
+// Azure REST API version: 2021-12-01.
 func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListAccountKeysResult, error) {
 	var rv ListAccountKeysResult
 	err := ctx.Invoke("azure-native:purview:listAccountKeys", args, &rv, opts...)

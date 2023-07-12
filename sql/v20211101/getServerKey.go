@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a server key.
-//
-// Deprecated: azure-native:sql/v20211101:ServerKey is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ServerKey to guarantee forwards compatibility.
 func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pulumi.InvokeOption) (*LookupServerKeyResult, error) {
 	var rv LookupServerKeyResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getServerKey", args, &rv, opts...)

@@ -11,8 +11,6 @@ import (
 )
 
 // Returns Intune iOS policies.
-//
-// Deprecated: azure-native:intune/v20150114preview:IoMAMPolicyByName is being removed in the next major version of this provider. Upgrade to at least azure-native:intune/v20150114privatepreview:IoMAMPolicyByName to guarantee forwards compatibility.
 func LookupIoMAMPolicyByName(ctx *pulumi.Context, args *LookupIoMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupIoMAMPolicyByNameResult, error) {
 	var rv LookupIoMAMPolicyByNameResult
 	err := ctx.Invoke("azure-native:intune/v20150114preview:getIoMAMPolicyByName", args, &rv, opts...)

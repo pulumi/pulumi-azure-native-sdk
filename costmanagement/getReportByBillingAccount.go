@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the report for a billing account by report name.
-// API Version: 2018-08-01-preview.
+// Azure REST API version: 2018-08-01-preview.
 func LookupReportByBillingAccount(ctx *pulumi.Context, args *LookupReportByBillingAccountArgs, opts ...pulumi.InvokeOption) (*LookupReportByBillingAccountResult, error) {
 	var rv LookupReportByBillingAccountResult
 	err := ctx.Invoke("azure-native:costmanagement:getReportByBillingAccount", args, &rv, opts...)

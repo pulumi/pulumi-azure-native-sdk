@@ -293,13 +293,6 @@ const (
 	SshPublicAccessDisabled = SshPublicAccess("Disabled")
 )
 
-// format for the workspace connection value
-type ValueFormat string
-
-const (
-	ValueFormatJSON = ValueFormat("JSON")
-)
-
 // Virtual Machine priority
 type VmPriority string
 

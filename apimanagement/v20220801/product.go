@@ -12,8 +12,6 @@ import (
 )
 
 // Product details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Product is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Product to guarantee forwards compatibility.
 type Product struct {
 	pulumi.CustomResourceState
 
@@ -101,6 +99,12 @@ func NewProduct(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Product"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Product"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Product"),
 		},
 	})
 	opts = append(opts, aliases)

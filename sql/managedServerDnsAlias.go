@@ -12,7 +12,7 @@ import (
 )
 
 // A managed server DNS alias.
-// API Version: 2021-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2021-11-01-preview
 type ManagedServerDnsAlias struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,9 @@ func NewManagedServerDnsAlias(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedServerDnsAlias"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedServerDnsAlias"),
 		},
 	})
 	opts = append(opts, aliases)

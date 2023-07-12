@@ -530,26 +530,6 @@ const (
 	NfsAccessRuleScopeHost    = NfsAccessRuleScope("host")
 )
 
-// Storage target operational state.
-type OperationalStateType string
-
-const (
-	OperationalStateTypeReady     = OperationalStateType("Ready")
-	OperationalStateTypeBusy      = OperationalStateType("Busy")
-	OperationalStateTypeSuspended = OperationalStateType("Suspended")
-	OperationalStateTypeFlushing  = OperationalStateType("Flushing")
-)
-
-// Type of the Storage Target.
-type StorageTargetType string
-
-const (
-	StorageTargetTypeNfs3    = StorageTargetType("nfs3")
-	StorageTargetTypeClfs    = StorageTargetType("clfs")
-	StorageTargetTypeUnknown = StorageTargetType("unknown")
-	StorageTargetTypeBlobNfs = StorageTargetType("blobNfs")
-)
-
 // This setting determines how the cache gets username and group names for clients.
 type UsernameSource string
 

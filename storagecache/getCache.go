@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns a Cache.
-// API Version: 2021-03-01.
+// Returns a cache.
+// Azure REST API version: 2023-05-01.
 func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.InvokeOption) (*LookupCacheResult, error) {
 	var rv LookupCacheResult
 	err := ctx.Invoke("azure-native:storagecache:getCache", args, &rv, opts...)
@@ -22,13 +22,13 @@ func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.Invo
 }
 
 type LookupCacheArgs struct {
-	// Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+	// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
 	CacheName string `pulumi:"cacheName"`
-	// Target resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// A Cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
+// A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 type LookupCacheResult struct {
 	// The size of this Cache, in GB.
 	CacheSizeGB *int `pulumi:"cacheSizeGB"`
@@ -36,36 +36,44 @@ type LookupCacheResult struct {
 	DirectoryServicesSettings *CacheDirectorySettingsResponse `pulumi:"directoryServicesSettings"`
 	// Specifies encryption settings of the cache.
 	EncryptionSettings *CacheEncryptionSettingsResponse `pulumi:"encryptionSettings"`
-	// Health of the Cache.
+	// Health of the cache.
 	Health CacheHealthResponse `pulumi:"health"`
-	// Resource ID of the Cache.
+	// Resource ID of the cache.
 	Id string `pulumi:"id"`
 	// The identity of the cache, if configured.
 	Identity *CacheIdentityResponse `pulumi:"identity"`
 	// Region name string.
 	Location *string `pulumi:"location"`
-	// Array of IP addresses that can be used by clients mounting this Cache.
+	// Array of IPv4 addresses that can be used by clients mounting this cache.
 	MountAddresses []string `pulumi:"mountAddresses"`
-	// Name of Cache.
+	// Name of cache.
 	Name string `pulumi:"name"`
 	// Specifies network settings of the cache.
 	NetworkSettings *CacheNetworkSettingsResponse `pulumi:"networkSettings"`
+	// Specifies the priming jobs defined in the cache.
+	PrimingJobs []PrimingJobResponse `pulumi:"primingJobs"`
 	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Specifies security settings of the cache.
 	SecuritySettings *CacheSecuritySettingsResponse `pulumi:"securitySettings"`
-	// SKU for the Cache.
+	// SKU for the cache.
 	Sku *CacheResponseSku `pulumi:"sku"`
-	// Subnet used for the Cache.
+	// Specifies the space allocation percentage for each storage target in the cache.
+	SpaceAllocation []StorageTargetSpaceAllocationResponse `pulumi:"spaceAllocation"`
+	// Subnet used for the cache.
 	Subnet *string `pulumi:"subnet"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Type of the Cache; Microsoft.StorageCache/Cache
+	// Type of the cache; Microsoft.StorageCache/Cache
 	Type string `pulumi:"type"`
-	// Upgrade status of the Cache.
-	UpgradeStatus *CacheUpgradeStatusResponse `pulumi:"upgradeStatus"`
+	// Upgrade settings of the cache.
+	UpgradeSettings *CacheUpgradeSettingsResponse `pulumi:"upgradeSettings"`
+	// Upgrade status of the cache.
+	UpgradeStatus CacheUpgradeStatusResponse `pulumi:"upgradeStatus"`
+	// Availability zones for resources. This field should only contain a single element in the array.
+	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for LookupCacheResult
@@ -95,9 +103,9 @@ func LookupCacheOutput(ctx *pulumi.Context, args LookupCacheOutputArgs, opts ...
 }
 
 type LookupCacheOutputArgs struct {
-	// Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+	// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
 	CacheName pulumi.StringInput `pulumi:"cacheName"`
-	// Target resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -105,7 +113,7 @@ func (LookupCacheOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupCacheArgs)(nil)).Elem()
 }
 
-// A Cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
+// A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 type LookupCacheResultOutput struct{ *pulumi.OutputState }
 
 func (LookupCacheResultOutput) ElementType() reflect.Type {
@@ -135,12 +143,12 @@ func (o LookupCacheResultOutput) EncryptionSettings() CacheEncryptionSettingsRes
 	return o.ApplyT(func(v LookupCacheResult) *CacheEncryptionSettingsResponse { return v.EncryptionSettings }).(CacheEncryptionSettingsResponsePtrOutput)
 }
 
-// Health of the Cache.
+// Health of the cache.
 func (o LookupCacheResultOutput) Health() CacheHealthResponseOutput {
 	return o.ApplyT(func(v LookupCacheResult) CacheHealthResponse { return v.Health }).(CacheHealthResponseOutput)
 }
 
-// Resource ID of the Cache.
+// Resource ID of the cache.
 func (o LookupCacheResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCacheResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -155,12 +163,12 @@ func (o LookupCacheResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCacheResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Array of IP addresses that can be used by clients mounting this Cache.
+// Array of IPv4 addresses that can be used by clients mounting this cache.
 func (o LookupCacheResultOutput) MountAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCacheResult) []string { return v.MountAddresses }).(pulumi.StringArrayOutput)
 }
 
-// Name of Cache.
+// Name of cache.
 func (o LookupCacheResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCacheResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -170,9 +178,14 @@ func (o LookupCacheResultOutput) NetworkSettings() CacheNetworkSettingsResponseP
 	return o.ApplyT(func(v LookupCacheResult) *CacheNetworkSettingsResponse { return v.NetworkSettings }).(CacheNetworkSettingsResponsePtrOutput)
 }
 
+// Specifies the priming jobs defined in the cache.
+func (o LookupCacheResultOutput) PrimingJobs() PrimingJobResponseArrayOutput {
+	return o.ApplyT(func(v LookupCacheResult) []PrimingJobResponse { return v.PrimingJobs }).(PrimingJobResponseArrayOutput)
+}
+
 // ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-func (o LookupCacheResultOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCacheResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o LookupCacheResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCacheResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Specifies security settings of the cache.
@@ -180,12 +193,17 @@ func (o LookupCacheResultOutput) SecuritySettings() CacheSecuritySettingsRespons
 	return o.ApplyT(func(v LookupCacheResult) *CacheSecuritySettingsResponse { return v.SecuritySettings }).(CacheSecuritySettingsResponsePtrOutput)
 }
 
-// SKU for the Cache.
+// SKU for the cache.
 func (o LookupCacheResultOutput) Sku() CacheResponseSkuPtrOutput {
 	return o.ApplyT(func(v LookupCacheResult) *CacheResponseSku { return v.Sku }).(CacheResponseSkuPtrOutput)
 }
 
-// Subnet used for the Cache.
+// Specifies the space allocation percentage for each storage target in the cache.
+func (o LookupCacheResultOutput) SpaceAllocation() StorageTargetSpaceAllocationResponseArrayOutput {
+	return o.ApplyT(func(v LookupCacheResult) []StorageTargetSpaceAllocationResponse { return v.SpaceAllocation }).(StorageTargetSpaceAllocationResponseArrayOutput)
+}
+
+// Subnet used for the cache.
 func (o LookupCacheResultOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCacheResult) *string { return v.Subnet }).(pulumi.StringPtrOutput)
 }
@@ -200,14 +218,24 @@ func (o LookupCacheResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCacheResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Type of the Cache; Microsoft.StorageCache/Cache
+// Type of the cache; Microsoft.StorageCache/Cache
 func (o LookupCacheResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCacheResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Upgrade status of the Cache.
-func (o LookupCacheResultOutput) UpgradeStatus() CacheUpgradeStatusResponsePtrOutput {
-	return o.ApplyT(func(v LookupCacheResult) *CacheUpgradeStatusResponse { return v.UpgradeStatus }).(CacheUpgradeStatusResponsePtrOutput)
+// Upgrade settings of the cache.
+func (o LookupCacheResultOutput) UpgradeSettings() CacheUpgradeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LookupCacheResult) *CacheUpgradeSettingsResponse { return v.UpgradeSettings }).(CacheUpgradeSettingsResponsePtrOutput)
+}
+
+// Upgrade status of the cache.
+func (o LookupCacheResultOutput) UpgradeStatus() CacheUpgradeStatusResponseOutput {
+	return o.ApplyT(func(v LookupCacheResult) CacheUpgradeStatusResponse { return v.UpgradeStatus }).(CacheUpgradeStatusResponseOutput)
+}
+
+// Availability zones for resources. This field should only contain a single element in the array.
+func (o LookupCacheResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupCacheResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

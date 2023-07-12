@@ -12,7 +12,7 @@ import (
 )
 
 // The virtualNetworks resource definition.
-// API Version: 2022-05-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-05-01-preview
 type VirtualNetworkRetrieve struct {
 	pulumi.CustomResourceState
 
@@ -43,12 +43,24 @@ func NewVirtualNetworkRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:virtualNetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:VirtualNetworkRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:virtualNetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:VirtualNetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:virtualNetworkRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetworkRetrieve
-	err := ctx.RegisterResource("azure-native:hybridcontainerservice:virtualNetworkRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:hybridcontainerservice:VirtualNetworkRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +72,7 @@ func NewVirtualNetworkRetrieve(ctx *pulumi.Context,
 func GetVirtualNetworkRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VirtualNetworkRetrieveState, opts ...pulumi.ResourceOption) (*VirtualNetworkRetrieve, error) {
 	var resource VirtualNetworkRetrieve
-	err := ctx.ReadResource("azure-native:hybridcontainerservice:virtualNetworkRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:hybridcontainerservice:VirtualNetworkRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

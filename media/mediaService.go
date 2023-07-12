@@ -12,7 +12,7 @@ import (
 )
 
 // A Media Services account.
-// API Version: 2020-05-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-05-01
 type MediaService struct {
 	pulumi.CustomResourceState
 
@@ -20,12 +20,22 @@ type MediaService struct {
 	Encryption AccountEncryptionResponsePtrOutput `pulumi:"encryption"`
 	// The Managed Identity for the Media Services account.
 	Identity MediaServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// The Key Delivery properties for Media Services account.
+	KeyDelivery KeyDeliveryResponsePtrOutput `pulumi:"keyDelivery"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The Media Services account ID.
 	MediaServiceId pulumi.StringOutput `pulumi:"mediaServiceId"`
+	// The minimum TLS version allowed for this account's requests. This is an optional property. If unspecified, a secure default value will be used.
+	MinimumTlsVersion pulumi.StringPtrOutput `pulumi:"minimumTlsVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The Private Endpoint Connections created for the Media Service account.
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	// Provisioning state of the Media Services account.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Whether or not public network access is allowed for resources under the Media Services account.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// The storage accounts for this resource.
 	StorageAccounts       StorageAccountResponseArrayOutput `pulumi:"storageAccounts"`
 	StorageAuthentication pulumi.StringPtrOutput            `pulumi:"storageAuthentication"`
@@ -46,6 +56,9 @@ func NewMediaService(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.MinimumTlsVersion == nil {
+		args.MinimumTlsVersion = pulumi.StringPtr("Tls12")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -115,8 +128,14 @@ type mediaServiceArgs struct {
 	Encryption *AccountEncryption `pulumi:"encryption"`
 	// The Managed Identity for the Media Services account.
 	Identity *MediaServiceIdentity `pulumi:"identity"`
+	// The Key Delivery properties for Media Services account.
+	KeyDelivery *KeyDelivery `pulumi:"keyDelivery"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// The minimum TLS version allowed for this account's requests. This is an optional property. If unspecified, a secure default value will be used.
+	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
+	// Whether or not public network access is allowed for resources under the Media Services account.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The storage accounts for this resource.
@@ -134,8 +153,14 @@ type MediaServiceArgs struct {
 	Encryption AccountEncryptionPtrInput
 	// The Managed Identity for the Media Services account.
 	Identity MediaServiceIdentityPtrInput
+	// The Key Delivery properties for Media Services account.
+	KeyDelivery KeyDeliveryPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// The minimum TLS version allowed for this account's requests. This is an optional property. If unspecified, a secure default value will be used.
+	MinimumTlsVersion pulumi.StringPtrInput
+	// Whether or not public network access is allowed for resources under the Media Services account.
+	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// The storage accounts for this resource.
@@ -192,6 +217,11 @@ func (o MediaServiceOutput) Identity() MediaServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *MediaService) MediaServiceIdentityResponsePtrOutput { return v.Identity }).(MediaServiceIdentityResponsePtrOutput)
 }
 
+// The Key Delivery properties for Media Services account.
+func (o MediaServiceOutput) KeyDelivery() KeyDeliveryResponsePtrOutput {
+	return o.ApplyT(func(v *MediaService) KeyDeliveryResponsePtrOutput { return v.KeyDelivery }).(KeyDeliveryResponsePtrOutput)
+}
+
 // The geo-location where the resource lives
 func (o MediaServiceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MediaService) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -202,9 +232,31 @@ func (o MediaServiceOutput) MediaServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MediaService) pulumi.StringOutput { return v.MediaServiceId }).(pulumi.StringOutput)
 }
 
+// The minimum TLS version allowed for this account's requests. This is an optional property. If unspecified, a secure default value will be used.
+func (o MediaServiceOutput) MinimumTlsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MediaService) pulumi.StringPtrOutput { return v.MinimumTlsVersion }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o MediaServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MediaService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Private Endpoint Connections created for the Media Service account.
+func (o MediaServiceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *MediaService) PrivateEndpointConnectionResponseArrayOutput {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Provisioning state of the Media Services account.
+func (o MediaServiceOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *MediaService) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Whether or not public network access is allowed for resources under the Media Services account.
+func (o MediaServiceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MediaService) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // The storage accounts for this resource.

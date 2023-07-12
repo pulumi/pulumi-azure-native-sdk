@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the certificate.
-// API Version: 2020-08-31.
+// Azure REST API version: 2022-11-15-preview.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:devices:getCertificate", args, &rv, opts...)

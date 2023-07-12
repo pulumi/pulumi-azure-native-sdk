@@ -12,7 +12,7 @@ import (
 )
 
 // Push settings for the App.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01
 type WebAppSitePushSettingsSlot struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +24,7 @@ type WebAppSitePushSettingsSlot struct {
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
+	// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
 	TagWhitelistJson pulumi.StringPtrOutput `pulumi:"tagWhitelistJson"`
 	// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
 	// Tags can consist of alphanumeric characters and the following:
@@ -143,7 +143,7 @@ type webAppSitePushSettingsSlotArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of web app slot. If not specified then will default to production slot.
 	Slot string `pulumi:"slot"`
-	// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
+	// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
 	TagWhitelistJson *string `pulumi:"tagWhitelistJson"`
 	// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
 	// Tags can consist of alphanumeric characters and the following:
@@ -166,7 +166,7 @@ type WebAppSitePushSettingsSlotArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Name of web app slot. If not specified then will default to production slot.
 	Slot pulumi.StringInput
-	// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
+	// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
 	TagWhitelistJson pulumi.StringPtrInput
 	// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
 	// Tags can consist of alphanumeric characters and the following:
@@ -232,7 +232,7 @@ func (o WebAppSitePushSettingsSlotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSitePushSettingsSlot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
+// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
 func (o WebAppSitePushSettingsSlotOutput) TagWhitelistJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSitePushSettingsSlot) pulumi.StringPtrOutput { return v.TagWhitelistJson }).(pulumi.StringPtrOutput)
 }

@@ -41,6 +41,15 @@ func NewManagedNetworkSettingsRule(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:ManagedNetworkSettingsRule"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ManagedNetworkSettingsRule
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20230401preview:ManagedNetworkSettingsRule", name, args, &resource, opts...)
 	if err != nil {

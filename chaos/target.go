@@ -12,7 +12,7 @@ import (
 )
 
 // Model that represents a Target resource.
-// API Version: 2021-09-15-preview.
+// Azure REST API version: 2023-04-15-preview. Prior API version in Azure Native 1.x: 2021-09-15-preview
 type Target struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +62,9 @@ func NewTarget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:chaos/v20230401preview:Target"),
+		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20230415preview:Target"),
 		},
 	})
 	opts = append(opts, aliases)

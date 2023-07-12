@@ -43,23 +43,5 @@ const (
 	TrustPolicyTypeNotary = TrustPolicyType("Notary")
 )
 
-type WebhookAction string
-
-const (
-	WebhookActionPush          = WebhookAction("push")
-	WebhookActionDelete        = WebhookAction("delete")
-	WebhookActionQuarantine    = WebhookAction("quarantine")
-	WebhookAction_Chart_push   = WebhookAction("chart_push")
-	WebhookAction_Chart_delete = WebhookAction("chart_delete")
-)
-
-// The status of the webhook at the time the operation was called.
-type WebhookStatus string
-
-const (
-	WebhookStatusEnabled  = WebhookStatus("enabled")
-	WebhookStatusDisabled = WebhookStatus("disabled")
-)
-
 func init() {
 }

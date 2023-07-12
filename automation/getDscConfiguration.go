@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the configuration identified by configuration name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2022-08-08.
 func LookupDscConfiguration(ctx *pulumi.Context, args *LookupDscConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscConfigurationResult, error) {
 	var rv LookupDscConfigurationResult
 	err := ctx.Invoke("azure-native:automation:getDscConfiguration", args, &rv, opts...)

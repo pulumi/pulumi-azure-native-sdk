@@ -61,6 +61,12 @@ func NewAnalyticsConnector(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:healthcareapis:AnalyticsConnector"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource AnalyticsConnector
 	err := ctx.RegisterResource("azure-native:healthcareapis/v20221001preview:AnalyticsConnector", name, args, &resource, opts...)
 	if err != nil {

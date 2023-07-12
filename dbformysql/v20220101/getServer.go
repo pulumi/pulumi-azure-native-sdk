@@ -11,8 +11,6 @@ import (
 )
 
 // Gets information about a server.
-//
-// Deprecated: azure-native:dbformysql/v20220101:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20220930preview:Server to guarantee forwards compatibility.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	var rv LookupServerResult
 	err := ctx.Invoke("azure-native:dbformysql/v20220101:getServer", args, &rv, opts...)

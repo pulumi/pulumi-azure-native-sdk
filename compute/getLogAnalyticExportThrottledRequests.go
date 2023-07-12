@@ -11,7 +11,7 @@ import (
 )
 
 // Export logs that show total throttled Api requests for this subscription in the given time window.
-// API Version: 2020-12-01.
+// Azure REST API version: 2023-03-01.
 func GetLogAnalyticExportThrottledRequests(ctx *pulumi.Context, args *GetLogAnalyticExportThrottledRequestsArgs, opts ...pulumi.InvokeOption) (*GetLogAnalyticExportThrottledRequestsResult, error) {
 	var rv GetLogAnalyticExportThrottledRequestsResult
 	err := ctx.Invoke("azure-native:compute:getLogAnalyticExportThrottledRequests", args, &rv, opts...)

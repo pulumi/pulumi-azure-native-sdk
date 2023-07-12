@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a Traffic Controller Association
-// API Version: 2022-10-01-preview.
+// Get a Association
+// Azure REST API version: 2023-05-01-preview.
 func LookupAssociationsInterface(ctx *pulumi.Context, args *LookupAssociationsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupAssociationsInterfaceResult, error) {
 	var rv LookupAssociationsInterfaceResult
 	err := ctx.Invoke("azure-native:servicenetworking:getAssociationsInterface", args, &rv, opts...)
@@ -40,7 +40,7 @@ type LookupAssociationsInterfaceResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Provisioning State
+	// Provisioning State of Traffic Controller Association Resource
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Association Subnet
 	Subnet *AssociationSubnetResponse `pulumi:"subnet"`
@@ -113,7 +113,7 @@ func (o LookupAssociationsInterfaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssociationsInterfaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning State
+// Provisioning State of Traffic Controller Association Resource
 func (o LookupAssociationsInterfaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssociationsInterfaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

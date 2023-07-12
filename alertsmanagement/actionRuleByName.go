@@ -12,7 +12,7 @@ import (
 )
 
 // Action rule object containing target scope, conditions and suppression logic
-// API Version: 2019-05-05-preview.
+// Azure REST API version: 2019-05-05-preview. Prior API version in Azure Native 1.x: 2019-05-05-preview
 type ActionRuleByName struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +50,9 @@ func NewActionRuleByName(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20210808preview:ActionRuleByName"),
+		},
+		{
+			Type: pulumi.String("azure-native:alertsmanagement/v20230501preview:ActionRuleByName"),
 		},
 	})
 	opts = append(opts, aliases)

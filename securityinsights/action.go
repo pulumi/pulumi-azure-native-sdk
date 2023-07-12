@@ -12,7 +12,7 @@ import (
 )
 
 // Action for alert rule.
-// API Version: 2020-01-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01
 type Action struct {
 	pulumi.CustomResourceState
 
@@ -20,9 +20,11 @@ type Action struct {
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
 	LogicAppResourceId pulumi.StringOutput `pulumi:"logicAppResourceId"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Azure resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The name of the logic app's workflow.
 	WorkflowId pulumi.StringPtrOutput `pulumi:"workflowId"`
@@ -112,7 +114,16 @@ func NewAction(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:Action"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:Action"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:Action"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Action"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Action"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -152,7 +163,7 @@ type actionArgs struct {
 	ActionId *string `pulumi:"actionId"`
 	// Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
 	LogicAppResourceId string `pulumi:"logicAppResourceId"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Alert rule ID
 	RuleId string `pulumi:"ruleId"`
@@ -168,7 +179,7 @@ type ActionArgs struct {
 	ActionId pulumi.StringPtrInput
 	// Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
 	LogicAppResourceId pulumi.StringInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Alert rule ID
 	RuleId pulumi.StringInput
@@ -225,12 +236,17 @@ func (o ActionOutput) LogicAppResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.LogicAppResourceId }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o ActionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ActionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Action) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a sync group.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupSyncGroup(ctx *pulumi.Context, args *LookupSyncGroupArgs, opts ...pulumi.InvokeOption) (*LookupSyncGroupResult, error) {
 	var rv LookupSyncGroupResult
 	err := ctx.Invoke("azure-native:sql:getSyncGroup", args, &rv, opts...)

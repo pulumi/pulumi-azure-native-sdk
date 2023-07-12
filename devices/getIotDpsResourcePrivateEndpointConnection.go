@@ -11,7 +11,7 @@ import (
 )
 
 // Get private endpoint connection properties
-// API Version: 2020-03-01.
+// Azure REST API version: 2022-12-12.
 func LookupIotDpsResourcePrivateEndpointConnection(ctx *pulumi.Context, args *LookupIotDpsResourcePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotDpsResourcePrivateEndpointConnectionResult, error) {
 	var rv LookupIotDpsResourcePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:devices:getIotDpsResourcePrivateEndpointConnection", args, &rv, opts...)
@@ -38,6 +38,8 @@ type LookupIotDpsResourcePrivateEndpointConnectionResult struct {
 	Name string `pulumi:"name"`
 	// The properties of a private endpoint connection
 	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource type.
 	Type string `pulumi:"type"`
 }
@@ -98,6 +100,11 @@ func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) Properties() 
 	return o.ApplyT(func(v LookupIotDpsResourcePrivateEndpointConnectionResult) PrivateEndpointConnectionPropertiesResponse {
 		return v.Properties
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIotDpsResourcePrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource type.

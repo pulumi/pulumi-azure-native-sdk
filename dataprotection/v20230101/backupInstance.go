@@ -12,8 +12,6 @@ import (
 )
 
 // BackupInstance Resource
-//
-// Deprecated: azure-native:dataprotection/v20230101:BackupInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230401preview:BackupInstance to guarantee forwards compatibility.
 type BackupInstance struct {
 	pulumi.CustomResourceState
 
@@ -93,6 +91,12 @@ func NewBackupInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20221201:BackupInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:BackupInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230501:BackupInstance"),
 		},
 	})
 	opts = append(opts, aliases)

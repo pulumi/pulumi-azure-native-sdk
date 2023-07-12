@@ -12,8 +12,6 @@ import (
 )
 
 // API details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Api is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Api to guarantee forwards compatibility.
 type Api struct {
 	pulumi.CustomResourceState
 
@@ -129,6 +127,12 @@ func NewApi(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Api"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Api"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Api"),
 		},
 	})
 	opts = append(opts, aliases)

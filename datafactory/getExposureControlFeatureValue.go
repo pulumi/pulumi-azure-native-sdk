@@ -11,7 +11,7 @@ import (
 )
 
 // Get exposure control feature for specific location.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func GetExposureControlFeatureValue(ctx *pulumi.Context, args *GetExposureControlFeatureValueArgs, opts ...pulumi.InvokeOption) (*GetExposureControlFeatureValueResult, error) {
 	var rv GetExposureControlFeatureValueResult
 	err := ctx.Invoke("azure-native:datafactory:getExposureControlFeatureValue", args, &rv, opts...)

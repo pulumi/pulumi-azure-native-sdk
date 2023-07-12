@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of the provided rack.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupRack(ctx *pulumi.Context, args *LookupRackArgs, opts ...pulumi.InvokeOption) (*LookupRackResult, error) {
 	var rv LookupRackResult
 	err := ctx.Invoke("azure-native:networkcloud:getRack", args, &rv, opts...)
@@ -39,7 +39,7 @@ type LookupRackResult struct {
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -124,7 +124,7 @@ func (o LookupRackResultOutput) ExtendedLocation() ExtendedLocationResponseOutpu
 	return o.ApplyT(func(v LookupRackResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupRackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRackResult) string { return v.Id }).(pulumi.StringOutput)
 }

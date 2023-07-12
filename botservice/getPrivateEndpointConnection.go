@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the Bot.
-// API Version: 2021-05-01-preview.
+// Azure REST API version: 2022-09-15.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:botservice:getPrivateEndpointConnection", args, &rv, opts...)

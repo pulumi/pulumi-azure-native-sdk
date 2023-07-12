@@ -11,7 +11,7 @@ import (
 )
 
 // Get the additional details related to the provided Hybrid AKS provisioned cluster.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2022-12-12-preview.
 func LookupHybridAksCluster(ctx *pulumi.Context, args *LookupHybridAksClusterArgs, opts ...pulumi.InvokeOption) (*LookupHybridAksClusterResult, error) {
 	var rv LookupHybridAksClusterResult
 	err := ctx.Invoke("azure-native:networkcloud:getHybridAksCluster", args, &rv, opts...)

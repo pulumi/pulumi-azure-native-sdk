@@ -39,6 +39,12 @@ func NewBuildStep(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:containerregistry:BuildStep"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource BuildStep
 	err := ctx.RegisterResource("azure-native:containerregistry/v20180201preview:BuildStep", name, args, &resource, opts...)
 	if err != nil {

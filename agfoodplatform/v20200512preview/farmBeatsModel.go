@@ -50,6 +50,9 @@ func NewFarmBeatsModel(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:FarmBeatsModel"),
 		},
+		{
+			Type: pulumi.String("azure-native:agfoodplatform/v20230601preview:FarmBeatsModel"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FarmBeatsModel

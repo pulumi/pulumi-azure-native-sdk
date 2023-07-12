@@ -11,7 +11,7 @@ import (
 )
 
 // Get policy.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	var rv LookupPolicyResult
 	err := ctx.Invoke("azure-native:devtestlab:getPolicy", args, &rv, opts...)

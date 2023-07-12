@@ -82,6 +82,12 @@ func NewNotificationRecipientUser(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:NotificationRecipientUser"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:NotificationRecipientUser"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:NotificationRecipientUser"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NotificationRecipientUser

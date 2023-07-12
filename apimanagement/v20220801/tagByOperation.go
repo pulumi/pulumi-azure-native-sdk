@@ -12,8 +12,6 @@ import (
 )
 
 // Tag Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:TagByOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:TagByOperation to guarantee forwards compatibility.
 type TagByOperation struct {
 	pulumi.CustomResourceState
 
@@ -86,6 +84,12 @@ func NewTagByOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:TagByOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:TagByOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:TagByOperation"),
 		},
 	})
 	opts = append(opts, aliases)

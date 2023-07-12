@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details about the specified dedicated capacity.
-// API Version: 2021-01-01.
+// Azure REST API version: 2021-01-01.
 func LookupCapacityDetails(ctx *pulumi.Context, args *LookupCapacityDetailsArgs, opts ...pulumi.InvokeOption) (*LookupCapacityDetailsResult, error) {
 	var rv LookupCapacityDetailsResult
 	err := ctx.Invoke("azure-native:powerbidedicated:getCapacityDetails", args, &rv, opts...)

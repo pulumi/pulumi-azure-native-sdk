@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the Issue for an API specified by its identifier.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func LookupApiIssue(ctx *pulumi.Context, args *LookupApiIssueArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueResult, error) {
 	var rv LookupApiIssueResult
 	err := ctx.Invoke("azure-native:apimanagement:getApiIssue", args, &rv, opts...)
@@ -28,7 +28,7 @@ type LookupApiIssueArgs struct {
 	ExpandCommentsAttachments *bool `pulumi:"expandCommentsAttachments"`
 	// Issue identifier. Must be unique in the current API Management service instance.
 	IssueId string `pulumi:"issueId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -42,15 +42,15 @@ type LookupApiIssueResult struct {
 	CreatedDate *string `pulumi:"createdDate"`
 	// Text describing the issue.
 	Description string `pulumi:"description"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Status of the issue.
 	State *string `pulumi:"state"`
 	// The issue title.
 	Title string `pulumi:"title"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// A resource identifier for the user created the issue.
 	UserId string `pulumi:"userId"`
@@ -76,7 +76,7 @@ type LookupApiIssueOutputArgs struct {
 	ExpandCommentsAttachments pulumi.BoolPtrInput `pulumi:"expandCommentsAttachments"`
 	// Issue identifier. Must be unique in the current API Management service instance.
 	IssueId pulumi.StringInput `pulumi:"issueId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -116,12 +116,12 @@ func (o LookupApiIssueResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiIssueResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupApiIssueResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiIssueResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupApiIssueResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiIssueResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -136,7 +136,7 @@ func (o LookupApiIssueResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiIssueResult) string { return v.Title }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupApiIssueResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiIssueResult) string { return v.Type }).(pulumi.StringOutput)
 }

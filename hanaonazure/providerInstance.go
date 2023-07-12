@@ -12,7 +12,7 @@ import (
 )
 
 // A provider instance associated with a SAP monitor.
-// API Version: 2020-02-07-preview.
+// Azure REST API version: 2020-02-07-preview. Prior API version in Azure Native 1.x: 2020-02-07-preview
 type ProviderInstance struct {
 	pulumi.CustomResourceState
 

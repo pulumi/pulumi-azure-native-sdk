@@ -11,7 +11,7 @@ import (
 )
 
 // Get an application.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2022-09-09.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getApplication", args, &rv, opts...)
@@ -64,6 +64,8 @@ type LookupApplicationResult struct {
 	ObjectId string `pulumi:"objectId"`
 	// Specifies whether to show the RemoteApp program in the RD Web Access server.
 	ShowInPortal *bool `pulumi:"showInPortal"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -187,6 +189,11 @@ func (o LookupApplicationResultOutput) ObjectId() pulumi.StringOutput {
 // Specifies whether to show the RemoteApp program in the RD Web Access server.
 func (o LookupApplicationResultOutput) ShowInPortal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *bool { return v.ShowInPortal }).(pulumi.BoolPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupApplicationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApplicationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

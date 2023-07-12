@@ -103,6 +103,9 @@ func NewFluxConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20221101:FluxConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:kubernetesconfiguration/v20230501:FluxConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FluxConfiguration

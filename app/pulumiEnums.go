@@ -18,6 +18,14 @@ const (
 	AccessModeReadWrite = AccessMode("ReadWrite")
 )
 
+// Allow or Deny rules to determine for incoming IP. Note: Rules can only consist of ALL Allow or ALL Deny
+type Action string
+
+const (
+	ActionAllow = Action("Allow")
+	ActionDeny  = Action("Deny")
+)
+
 // ActiveRevisionsMode controls how active revisions are handled for the Container app:
 // <list><item>Multiple: multiple revisions can be active.</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode. If no value if provided, this is the default.</item></list>
 type ActiveRevisionsMode string
@@ -372,6 +380,13 @@ func (in *cookieExpirationConventionPtr) ToCookieExpirationConventionPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(CookieExpirationConventionPtrOutput)
 }
 
+// The type of the extended location.
+type ExtendedLocationTypes string
+
+const (
+	ExtendedLocationTypesCustomLocation = ExtendedLocationTypes("CustomLocation")
+)
+
 // The convention used to determine the url of the request made.
 type ForwardProxyConvention string
 
@@ -538,6 +553,15 @@ func (in *forwardProxyConventionPtr) ToForwardProxyConventionPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardProxyConventionPtrOutput)
 }
 
+// Client certificate mode for mTLS authentication. Ignore indicates server drops client certificate on forwarding. Accept indicates server forwards client certificate but does not require a client certificate. Require indicates server requires a client certificate.
+type IngressClientCertificateMode string
+
+const (
+	IngressClientCertificateModeIgnore  = IngressClientCertificateMode("ignore")
+	IngressClientCertificateModeAccept  = IngressClientCertificateMode("accept")
+	IngressClientCertificateModeRequire = IngressClientCertificateMode("require")
+)
+
 // Ingress transport protocol
 type IngressTransportMethod string
 
@@ -545,6 +569,34 @@ const (
 	IngressTransportMethodAuto  = IngressTransportMethod("auto")
 	IngressTransportMethodHttp  = IngressTransportMethod("http")
 	IngressTransportMethodHttp2 = IngressTransportMethod("http2")
+	IngressTransportMethodTcp   = IngressTransportMethod("tcp")
+)
+
+// Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
+type LogLevel string
+
+const (
+	LogLevelInfo  = LogLevel("info")
+	LogLevelDebug = LogLevel("debug")
+	LogLevelWarn  = LogLevel("warn")
+	LogLevelError = LogLevel("error")
+)
+
+// Selected type of domain control validation for managed certificates.
+type ManagedCertificateDomainControlValidation string
+
+const (
+	ManagedCertificateDomainControlValidationCNAME = ManagedCertificateDomainControlValidation("CNAME")
+	ManagedCertificateDomainControlValidationHTTP  = ManagedCertificateDomainControlValidation("HTTP")
+	ManagedCertificateDomainControlValidationTXT   = ManagedCertificateDomainControlValidation("TXT")
+)
+
+// Outbound type for the cluster
+type ManagedEnvironmentOutBoundType string
+
+const (
+	ManagedEnvironmentOutBoundTypeLoadBalancer       = ManagedEnvironmentOutBoundType("LoadBalancer")
+	ManagedEnvironmentOutBoundTypeUserDefinedRouting = ManagedEnvironmentOutBoundType("UserDefinedRouting")
 )
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -565,12 +617,32 @@ const (
 	SchemeHTTPS = Scheme("HTTPS")
 )
 
+// Name of the Sku.
+type SkuName string
+
+const (
+	// Consumption SKU of Managed Environment.
+	SkuNameConsumption = SkuName("Consumption")
+	// Premium SKU of Managed Environment.
+	SkuNamePremium = SkuName("Premium")
+)
+
 // Storage type for the volume. If not provided, use EmptyDir.
 type StorageType string
 
 const (
 	StorageTypeAzureFile = StorageType("AzureFile")
 	StorageTypeEmptyDir  = StorageType("EmptyDir")
+	StorageTypeSecret    = StorageType("Secret")
+)
+
+// Trigger type of the job
+type TriggerType string
+
+const (
+	TriggerTypeSchedule = TriggerType("Schedule")
+	TriggerTypeEvent    = TriggerType("Event")
+	TriggerTypeManual   = TriggerType("Manual")
 )
 
 // The type of probe.

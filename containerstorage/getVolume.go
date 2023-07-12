@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Volume
-// API Version: 2023-03-01-preview.
+// Azure REST API version: 2023-03-01-preview.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:containerstorage:getVolume", args, &rv, opts...)

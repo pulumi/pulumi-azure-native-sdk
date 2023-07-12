@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.
-// API Version: 2020-05-01.
+// Azure REST API version: 2020-05-01.
 func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermission(ctx *pulumi.Context, args *ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs, opts ...pulumi.InvokeOption) (*ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult, error) {
 	var rv ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult
 	err := ctx.Invoke("azure-native:billing:listBillingAccountInvoiceSectionsByCreateSubscriptionPermission", args, &rv, opts...)

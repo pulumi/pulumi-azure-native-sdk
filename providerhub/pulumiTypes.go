@@ -159,6 +159,7 @@ func (o AuthorizationActionMappingResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // Properties of the rollout.
 type DefaultRolloutProperties struct {
+	// The provisioned state of the resource.
 	ProvisioningState *string                                `pulumi:"provisioningState"`
 	Specification     *DefaultRolloutPropertiesSpecification `pulumi:"specification"`
 	Status            *DefaultRolloutPropertiesStatus        `pulumi:"status"`
@@ -177,6 +178,7 @@ type DefaultRolloutPropertiesInput interface {
 
 // Properties of the rollout.
 type DefaultRolloutPropertiesArgs struct {
+	// The provisioned state of the resource.
 	ProvisioningState pulumi.StringPtrInput                         `pulumi:"provisioningState"`
 	Specification     DefaultRolloutPropertiesSpecificationPtrInput `pulumi:"specification"`
 	Status            DefaultRolloutPropertiesStatusPtrInput        `pulumi:"status"`
@@ -260,6 +262,7 @@ func (o DefaultRolloutPropertiesOutput) ToDefaultRolloutPropertiesPtrOutputWithC
 	}).(DefaultRolloutPropertiesPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o DefaultRolloutPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultRolloutProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -296,6 +299,7 @@ func (o DefaultRolloutPropertiesPtrOutput) Elem() DefaultRolloutPropertiesOutput
 	}).(DefaultRolloutPropertiesOutput)
 }
 
+// The provisioned state of the resource.
 func (o DefaultRolloutPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefaultRolloutProperties) *string {
 		if v == nil {
@@ -325,6 +329,7 @@ func (o DefaultRolloutPropertiesPtrOutput) Status() DefaultRolloutPropertiesStat
 
 type DefaultRolloutPropertiesResponseSpecification struct {
 	Canary                    *DefaultRolloutSpecificationResponseCanary                 `pulumi:"canary"`
+	ExpeditedRollout          *DefaultRolloutSpecificationResponseExpeditedRollout       `pulumi:"expeditedRollout"`
 	HighTraffic               *DefaultRolloutSpecificationResponseHighTraffic            `pulumi:"highTraffic"`
 	LowTraffic                *DefaultRolloutSpecificationResponseLowTraffic             `pulumi:"lowTraffic"`
 	MediumTraffic             *DefaultRolloutSpecificationResponseMediumTraffic          `pulumi:"mediumTraffic"`
@@ -352,6 +357,12 @@ func (o DefaultRolloutPropertiesResponseSpecificationOutput) Canary() DefaultRol
 	return o.ApplyT(func(v DefaultRolloutPropertiesResponseSpecification) *DefaultRolloutSpecificationResponseCanary {
 		return v.Canary
 	}).(DefaultRolloutSpecificationResponseCanaryPtrOutput)
+}
+
+func (o DefaultRolloutPropertiesResponseSpecificationOutput) ExpeditedRollout() DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput {
+	return o.ApplyT(func(v DefaultRolloutPropertiesResponseSpecification) *DefaultRolloutSpecificationResponseExpeditedRollout {
+		return v.ExpeditedRollout
+	}).(DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput)
 }
 
 func (o DefaultRolloutPropertiesResponseSpecificationOutput) HighTraffic() DefaultRolloutSpecificationResponseHighTrafficPtrOutput {
@@ -427,6 +438,15 @@ func (o DefaultRolloutPropertiesResponseSpecificationPtrOutput) Canary() Default
 		}
 		return v.Canary
 	}).(DefaultRolloutSpecificationResponseCanaryPtrOutput)
+}
+
+func (o DefaultRolloutPropertiesResponseSpecificationPtrOutput) ExpeditedRollout() DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput {
+	return o.ApplyT(func(v *DefaultRolloutPropertiesResponseSpecification) *DefaultRolloutSpecificationResponseExpeditedRollout {
+		if v == nil {
+			return nil
+		}
+		return v.ExpeditedRollout
+	}).(DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput)
 }
 
 func (o DefaultRolloutPropertiesResponseSpecificationPtrOutput) HighTraffic() DefaultRolloutSpecificationResponseHighTrafficPtrOutput {
@@ -607,6 +627,7 @@ func (o DefaultRolloutPropertiesResponseStatusPtrOutput) SubscriptionReregistrat
 
 type DefaultRolloutPropertiesSpecification struct {
 	Canary                    *DefaultRolloutSpecificationCanary                 `pulumi:"canary"`
+	ExpeditedRollout          *DefaultRolloutSpecificationExpeditedRollout       `pulumi:"expeditedRollout"`
 	HighTraffic               *DefaultRolloutSpecificationHighTraffic            `pulumi:"highTraffic"`
 	LowTraffic                *DefaultRolloutSpecificationLowTraffic             `pulumi:"lowTraffic"`
 	MediumTraffic             *DefaultRolloutSpecificationMediumTraffic          `pulumi:"mediumTraffic"`
@@ -629,6 +650,7 @@ type DefaultRolloutPropertiesSpecificationInput interface {
 
 type DefaultRolloutPropertiesSpecificationArgs struct {
 	Canary                    DefaultRolloutSpecificationCanaryPtrInput                 `pulumi:"canary"`
+	ExpeditedRollout          DefaultRolloutSpecificationExpeditedRolloutPtrInput       `pulumi:"expeditedRollout"`
 	HighTraffic               DefaultRolloutSpecificationHighTrafficPtrInput            `pulumi:"highTraffic"`
 	LowTraffic                DefaultRolloutSpecificationLowTrafficPtrInput             `pulumi:"lowTraffic"`
 	MediumTraffic             DefaultRolloutSpecificationMediumTrafficPtrInput          `pulumi:"mediumTraffic"`
@@ -719,6 +741,12 @@ func (o DefaultRolloutPropertiesSpecificationOutput) Canary() DefaultRolloutSpec
 	return o.ApplyT(func(v DefaultRolloutPropertiesSpecification) *DefaultRolloutSpecificationCanary { return v.Canary }).(DefaultRolloutSpecificationCanaryPtrOutput)
 }
 
+func (o DefaultRolloutPropertiesSpecificationOutput) ExpeditedRollout() DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return o.ApplyT(func(v DefaultRolloutPropertiesSpecification) *DefaultRolloutSpecificationExpeditedRollout {
+		return v.ExpeditedRollout
+	}).(DefaultRolloutSpecificationExpeditedRolloutPtrOutput)
+}
+
 func (o DefaultRolloutPropertiesSpecificationOutput) HighTraffic() DefaultRolloutSpecificationHighTrafficPtrOutput {
 	return o.ApplyT(func(v DefaultRolloutPropertiesSpecification) *DefaultRolloutSpecificationHighTraffic {
 		return v.HighTraffic
@@ -792,6 +820,15 @@ func (o DefaultRolloutPropertiesSpecificationPtrOutput) Canary() DefaultRolloutS
 		}
 		return v.Canary
 	}).(DefaultRolloutSpecificationCanaryPtrOutput)
+}
+
+func (o DefaultRolloutPropertiesSpecificationPtrOutput) ExpeditedRollout() DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return o.ApplyT(func(v *DefaultRolloutPropertiesSpecification) *DefaultRolloutSpecificationExpeditedRollout {
+		if v == nil {
+			return nil
+		}
+		return v.ExpeditedRollout
+	}).(DefaultRolloutSpecificationExpeditedRolloutPtrOutput)
 }
 
 func (o DefaultRolloutPropertiesSpecificationPtrOutput) HighTraffic() DefaultRolloutSpecificationHighTrafficPtrOutput {
@@ -1052,6 +1089,7 @@ func (o DefaultRolloutPropertiesStatusPtrOutput) SubscriptionReregistrationResul
 
 // Properties of the rollout.
 type DefaultRolloutResponseProperties struct {
+	// The provisioned state of the resource.
 	ProvisioningState *string                                        `pulumi:"provisioningState"`
 	Specification     *DefaultRolloutPropertiesResponseSpecification `pulumi:"specification"`
 	Status            *DefaultRolloutPropertiesResponseStatus        `pulumi:"status"`
@@ -1072,6 +1110,7 @@ func (o DefaultRolloutResponsePropertiesOutput) ToDefaultRolloutResponseProperti
 	return o
 }
 
+// The provisioned state of the resource.
 func (o DefaultRolloutResponsePropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultRolloutResponseProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -1232,6 +1271,143 @@ func (o DefaultRolloutSpecificationCanaryPtrOutput) SkipRegions() pulumi.StringA
 		}
 		return v.SkipRegions
 	}).(pulumi.StringArrayOutput)
+}
+
+type DefaultRolloutSpecificationExpeditedRollout struct {
+	// Indicates whether expedited rollout is enabled/disabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefaultRolloutSpecificationExpeditedRolloutInput is an input type that accepts DefaultRolloutSpecificationExpeditedRolloutArgs and DefaultRolloutSpecificationExpeditedRolloutOutput values.
+// You can construct a concrete instance of `DefaultRolloutSpecificationExpeditedRolloutInput` via:
+//
+//	DefaultRolloutSpecificationExpeditedRolloutArgs{...}
+type DefaultRolloutSpecificationExpeditedRolloutInput interface {
+	pulumi.Input
+
+	ToDefaultRolloutSpecificationExpeditedRolloutOutput() DefaultRolloutSpecificationExpeditedRolloutOutput
+	ToDefaultRolloutSpecificationExpeditedRolloutOutputWithContext(context.Context) DefaultRolloutSpecificationExpeditedRolloutOutput
+}
+
+type DefaultRolloutSpecificationExpeditedRolloutArgs struct {
+	// Indicates whether expedited rollout is enabled/disabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefaultRolloutSpecificationExpeditedRolloutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultRolloutSpecificationExpeditedRollout)(nil)).Elem()
+}
+
+func (i DefaultRolloutSpecificationExpeditedRolloutArgs) ToDefaultRolloutSpecificationExpeditedRolloutOutput() DefaultRolloutSpecificationExpeditedRolloutOutput {
+	return i.ToDefaultRolloutSpecificationExpeditedRolloutOutputWithContext(context.Background())
+}
+
+func (i DefaultRolloutSpecificationExpeditedRolloutArgs) ToDefaultRolloutSpecificationExpeditedRolloutOutputWithContext(ctx context.Context) DefaultRolloutSpecificationExpeditedRolloutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultRolloutSpecificationExpeditedRolloutOutput)
+}
+
+func (i DefaultRolloutSpecificationExpeditedRolloutArgs) ToDefaultRolloutSpecificationExpeditedRolloutPtrOutput() DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return i.ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultRolloutSpecificationExpeditedRolloutArgs) ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(ctx context.Context) DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultRolloutSpecificationExpeditedRolloutOutput).ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(ctx)
+}
+
+// DefaultRolloutSpecificationExpeditedRolloutPtrInput is an input type that accepts DefaultRolloutSpecificationExpeditedRolloutArgs, DefaultRolloutSpecificationExpeditedRolloutPtr and DefaultRolloutSpecificationExpeditedRolloutPtrOutput values.
+// You can construct a concrete instance of `DefaultRolloutSpecificationExpeditedRolloutPtrInput` via:
+//
+//	        DefaultRolloutSpecificationExpeditedRolloutArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultRolloutSpecificationExpeditedRolloutPtrInput interface {
+	pulumi.Input
+
+	ToDefaultRolloutSpecificationExpeditedRolloutPtrOutput() DefaultRolloutSpecificationExpeditedRolloutPtrOutput
+	ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(context.Context) DefaultRolloutSpecificationExpeditedRolloutPtrOutput
+}
+
+type defaultRolloutSpecificationExpeditedRolloutPtrType DefaultRolloutSpecificationExpeditedRolloutArgs
+
+func DefaultRolloutSpecificationExpeditedRolloutPtr(v *DefaultRolloutSpecificationExpeditedRolloutArgs) DefaultRolloutSpecificationExpeditedRolloutPtrInput {
+	return (*defaultRolloutSpecificationExpeditedRolloutPtrType)(v)
+}
+
+func (*defaultRolloutSpecificationExpeditedRolloutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultRolloutSpecificationExpeditedRollout)(nil)).Elem()
+}
+
+func (i *defaultRolloutSpecificationExpeditedRolloutPtrType) ToDefaultRolloutSpecificationExpeditedRolloutPtrOutput() DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return i.ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultRolloutSpecificationExpeditedRolloutPtrType) ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(ctx context.Context) DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultRolloutSpecificationExpeditedRolloutPtrOutput)
+}
+
+type DefaultRolloutSpecificationExpeditedRolloutOutput struct{ *pulumi.OutputState }
+
+func (DefaultRolloutSpecificationExpeditedRolloutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultRolloutSpecificationExpeditedRollout)(nil)).Elem()
+}
+
+func (o DefaultRolloutSpecificationExpeditedRolloutOutput) ToDefaultRolloutSpecificationExpeditedRolloutOutput() DefaultRolloutSpecificationExpeditedRolloutOutput {
+	return o
+}
+
+func (o DefaultRolloutSpecificationExpeditedRolloutOutput) ToDefaultRolloutSpecificationExpeditedRolloutOutputWithContext(ctx context.Context) DefaultRolloutSpecificationExpeditedRolloutOutput {
+	return o
+}
+
+func (o DefaultRolloutSpecificationExpeditedRolloutOutput) ToDefaultRolloutSpecificationExpeditedRolloutPtrOutput() DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return o.ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultRolloutSpecificationExpeditedRolloutOutput) ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(ctx context.Context) DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultRolloutSpecificationExpeditedRollout) *DefaultRolloutSpecificationExpeditedRollout {
+		return &v
+	}).(DefaultRolloutSpecificationExpeditedRolloutPtrOutput)
+}
+
+// Indicates whether expedited rollout is enabled/disabled
+func (o DefaultRolloutSpecificationExpeditedRolloutOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefaultRolloutSpecificationExpeditedRollout) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefaultRolloutSpecificationExpeditedRolloutPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultRolloutSpecificationExpeditedRolloutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultRolloutSpecificationExpeditedRollout)(nil)).Elem()
+}
+
+func (o DefaultRolloutSpecificationExpeditedRolloutPtrOutput) ToDefaultRolloutSpecificationExpeditedRolloutPtrOutput() DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return o
+}
+
+func (o DefaultRolloutSpecificationExpeditedRolloutPtrOutput) ToDefaultRolloutSpecificationExpeditedRolloutPtrOutputWithContext(ctx context.Context) DefaultRolloutSpecificationExpeditedRolloutPtrOutput {
+	return o
+}
+
+func (o DefaultRolloutSpecificationExpeditedRolloutPtrOutput) Elem() DefaultRolloutSpecificationExpeditedRolloutOutput {
+	return o.ApplyT(func(v *DefaultRolloutSpecificationExpeditedRollout) DefaultRolloutSpecificationExpeditedRollout {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultRolloutSpecificationExpeditedRollout
+		return ret
+	}).(DefaultRolloutSpecificationExpeditedRolloutOutput)
+}
+
+// Indicates whether expedited rollout is enabled/disabled
+func (o DefaultRolloutSpecificationExpeditedRolloutPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefaultRolloutSpecificationExpeditedRollout) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DefaultRolloutSpecificationHighTraffic struct {
@@ -1882,6 +2058,64 @@ func (o DefaultRolloutSpecificationResponseCanaryPtrOutput) SkipRegions() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+type DefaultRolloutSpecificationResponseExpeditedRollout struct {
+	// Indicates whether expedited rollout is enabled/disabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type DefaultRolloutSpecificationResponseExpeditedRolloutOutput struct{ *pulumi.OutputState }
+
+func (DefaultRolloutSpecificationResponseExpeditedRolloutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultRolloutSpecificationResponseExpeditedRollout)(nil)).Elem()
+}
+
+func (o DefaultRolloutSpecificationResponseExpeditedRolloutOutput) ToDefaultRolloutSpecificationResponseExpeditedRolloutOutput() DefaultRolloutSpecificationResponseExpeditedRolloutOutput {
+	return o
+}
+
+func (o DefaultRolloutSpecificationResponseExpeditedRolloutOutput) ToDefaultRolloutSpecificationResponseExpeditedRolloutOutputWithContext(ctx context.Context) DefaultRolloutSpecificationResponseExpeditedRolloutOutput {
+	return o
+}
+
+// Indicates whether expedited rollout is enabled/disabled
+func (o DefaultRolloutSpecificationResponseExpeditedRolloutOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefaultRolloutSpecificationResponseExpeditedRollout) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultRolloutSpecificationResponseExpeditedRollout)(nil)).Elem()
+}
+
+func (o DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput) ToDefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput() DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput {
+	return o
+}
+
+func (o DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput) ToDefaultRolloutSpecificationResponseExpeditedRolloutPtrOutputWithContext(ctx context.Context) DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput {
+	return o
+}
+
+func (o DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput) Elem() DefaultRolloutSpecificationResponseExpeditedRolloutOutput {
+	return o.ApplyT(func(v *DefaultRolloutSpecificationResponseExpeditedRollout) DefaultRolloutSpecificationResponseExpeditedRollout {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultRolloutSpecificationResponseExpeditedRollout
+		return ret
+	}).(DefaultRolloutSpecificationResponseExpeditedRolloutOutput)
+}
+
+// Indicates whether expedited rollout is enabled/disabled
+func (o DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefaultRolloutSpecificationResponseExpeditedRollout) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DefaultRolloutSpecificationResponseHighTraffic struct {
 	Regions      []string `pulumi:"regions"`
 	WaitDuration *string  `pulumi:"waitDuration"`
@@ -2095,6 +2329,8 @@ type DefaultRolloutSpecificationResponseProviderRegistration struct {
 	// The name of the resource
 	Name       string                                  `pulumi:"name"`
 	Properties *ProviderRegistrationResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -2127,6 +2363,13 @@ func (o DefaultRolloutSpecificationResponseProviderRegistrationOutput) Propertie
 	return o.ApplyT(func(v DefaultRolloutSpecificationResponseProviderRegistration) *ProviderRegistrationResponseProperties {
 		return v.Properties
 	}).(ProviderRegistrationResponsePropertiesPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o DefaultRolloutSpecificationResponseProviderRegistrationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v DefaultRolloutSpecificationResponseProviderRegistration) SystemDataResponse {
+		return v.SystemData
+	}).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -2185,6 +2428,16 @@ func (o DefaultRolloutSpecificationResponseProviderRegistrationPtrOutput) Proper
 		}
 		return v.Properties
 	}).(ProviderRegistrationResponsePropertiesPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o DefaultRolloutSpecificationResponseProviderRegistrationPtrOutput) SystemData() SystemDataResponsePtrOutput {
+	return o.ApplyT(func(v *DefaultRolloutSpecificationResponseProviderRegistration) *SystemDataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SystemData
+	}).(SystemDataResponsePtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -3888,7 +4141,8 @@ type NotificationRegistrationProperties struct {
 	MessageScope          *string                `pulumi:"messageScope"`
 	NotificationEndpoints []NotificationEndpoint `pulumi:"notificationEndpoints"`
 	NotificationMode      *string                `pulumi:"notificationMode"`
-	ProvisioningState     *string                `pulumi:"provisioningState"`
+	// The provisioned state of the resource.
+	ProvisioningState *string `pulumi:"provisioningState"`
 }
 
 // NotificationRegistrationPropertiesInput is an input type that accepts NotificationRegistrationPropertiesArgs and NotificationRegistrationPropertiesOutput values.
@@ -3907,7 +4161,8 @@ type NotificationRegistrationPropertiesArgs struct {
 	MessageScope          pulumi.StringPtrInput          `pulumi:"messageScope"`
 	NotificationEndpoints NotificationEndpointArrayInput `pulumi:"notificationEndpoints"`
 	NotificationMode      pulumi.StringPtrInput          `pulumi:"notificationMode"`
-	ProvisioningState     pulumi.StringPtrInput          `pulumi:"provisioningState"`
+	// The provisioned state of the resource.
+	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 }
 
 func (NotificationRegistrationPropertiesArgs) ElementType() reflect.Type {
@@ -4003,6 +4258,7 @@ func (o NotificationRegistrationPropertiesOutput) NotificationMode() pulumi.Stri
 	return o.ApplyT(func(v NotificationRegistrationProperties) *string { return v.NotificationMode }).(pulumi.StringPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o NotificationRegistrationPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationRegistrationProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -4067,6 +4323,7 @@ func (o NotificationRegistrationPropertiesPtrOutput) NotificationMode() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o NotificationRegistrationPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationRegistrationProperties) *string {
 		if v == nil {
@@ -4081,7 +4338,8 @@ type NotificationRegistrationResponseProperties struct {
 	MessageScope          *string                        `pulumi:"messageScope"`
 	NotificationEndpoints []NotificationEndpointResponse `pulumi:"notificationEndpoints"`
 	NotificationMode      *string                        `pulumi:"notificationMode"`
-	ProvisioningState     *string                        `pulumi:"provisioningState"`
+	// The provisioned state of the resource.
+	ProvisioningState *string `pulumi:"provisioningState"`
 }
 
 type NotificationRegistrationResponsePropertiesOutput struct{ *pulumi.OutputState }
@@ -4116,253 +4374,392 @@ func (o NotificationRegistrationResponsePropertiesOutput) NotificationMode() pul
 	return o.ApplyT(func(v NotificationRegistrationResponseProperties) *string { return v.NotificationMode }).(pulumi.StringPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o NotificationRegistrationResponsePropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationRegistrationResponseProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// Properties of an Operation.
-type OperationsDefinition struct {
-	ActionType *string `pulumi:"actionType"`
-	// Display information of the operation.
-	Display OperationsDefinitionDisplay `pulumi:"display"`
-	// Indicates whether the operation applies to data-plane.
-	IsDataAction *bool `pulumi:"isDataAction"`
-	// Name of the operation.
-	Name       string      `pulumi:"name"`
-	Origin     *string     `pulumi:"origin"`
-	Properties interface{} `pulumi:"properties"`
+type OpenApiConfiguration struct {
+	Validation *OpenApiValidation `pulumi:"validation"`
 }
 
-// OperationsDefinitionInput is an input type that accepts OperationsDefinitionArgs and OperationsDefinitionOutput values.
-// You can construct a concrete instance of `OperationsDefinitionInput` via:
+// OpenApiConfigurationInput is an input type that accepts OpenApiConfigurationArgs and OpenApiConfigurationOutput values.
+// You can construct a concrete instance of `OpenApiConfigurationInput` via:
 //
-//	OperationsDefinitionArgs{...}
-type OperationsDefinitionInput interface {
+//	OpenApiConfigurationArgs{...}
+type OpenApiConfigurationInput interface {
 	pulumi.Input
 
-	ToOperationsDefinitionOutput() OperationsDefinitionOutput
-	ToOperationsDefinitionOutputWithContext(context.Context) OperationsDefinitionOutput
+	ToOpenApiConfigurationOutput() OpenApiConfigurationOutput
+	ToOpenApiConfigurationOutputWithContext(context.Context) OpenApiConfigurationOutput
 }
 
-// Properties of an Operation.
-type OperationsDefinitionArgs struct {
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	// Display information of the operation.
-	Display OperationsDefinitionDisplayInput `pulumi:"display"`
-	// Indicates whether the operation applies to data-plane.
-	IsDataAction pulumi.BoolPtrInput `pulumi:"isDataAction"`
-	// Name of the operation.
-	Name       pulumi.StringInput    `pulumi:"name"`
-	Origin     pulumi.StringPtrInput `pulumi:"origin"`
-	Properties pulumi.Input          `pulumi:"properties"`
+type OpenApiConfigurationArgs struct {
+	Validation OpenApiValidationPtrInput `pulumi:"validation"`
 }
 
-func (OperationsDefinitionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationsDefinition)(nil)).Elem()
+func (OpenApiConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiConfiguration)(nil)).Elem()
 }
 
-func (i OperationsDefinitionArgs) ToOperationsDefinitionOutput() OperationsDefinitionOutput {
-	return i.ToOperationsDefinitionOutputWithContext(context.Background())
+func (i OpenApiConfigurationArgs) ToOpenApiConfigurationOutput() OpenApiConfigurationOutput {
+	return i.ToOpenApiConfigurationOutputWithContext(context.Background())
 }
 
-func (i OperationsDefinitionArgs) ToOperationsDefinitionOutputWithContext(ctx context.Context) OperationsDefinitionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationsDefinitionOutput)
+func (i OpenApiConfigurationArgs) ToOpenApiConfigurationOutputWithContext(ctx context.Context) OpenApiConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiConfigurationOutput)
 }
 
-// OperationsDefinitionArrayInput is an input type that accepts OperationsDefinitionArray and OperationsDefinitionArrayOutput values.
-// You can construct a concrete instance of `OperationsDefinitionArrayInput` via:
+func (i OpenApiConfigurationArgs) ToOpenApiConfigurationPtrOutput() OpenApiConfigurationPtrOutput {
+	return i.ToOpenApiConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i OpenApiConfigurationArgs) ToOpenApiConfigurationPtrOutputWithContext(ctx context.Context) OpenApiConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiConfigurationOutput).ToOpenApiConfigurationPtrOutputWithContext(ctx)
+}
+
+// OpenApiConfigurationPtrInput is an input type that accepts OpenApiConfigurationArgs, OpenApiConfigurationPtr and OpenApiConfigurationPtrOutput values.
+// You can construct a concrete instance of `OpenApiConfigurationPtrInput` via:
 //
-//	OperationsDefinitionArray{ OperationsDefinitionArgs{...} }
-type OperationsDefinitionArrayInput interface {
+//	        OpenApiConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenApiConfigurationPtrInput interface {
 	pulumi.Input
 
-	ToOperationsDefinitionArrayOutput() OperationsDefinitionArrayOutput
-	ToOperationsDefinitionArrayOutputWithContext(context.Context) OperationsDefinitionArrayOutput
+	ToOpenApiConfigurationPtrOutput() OpenApiConfigurationPtrOutput
+	ToOpenApiConfigurationPtrOutputWithContext(context.Context) OpenApiConfigurationPtrOutput
 }
 
-type OperationsDefinitionArray []OperationsDefinitionInput
+type openApiConfigurationPtrType OpenApiConfigurationArgs
 
-func (OperationsDefinitionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationsDefinition)(nil)).Elem()
+func OpenApiConfigurationPtr(v *OpenApiConfigurationArgs) OpenApiConfigurationPtrInput {
+	return (*openApiConfigurationPtrType)(v)
 }
 
-func (i OperationsDefinitionArray) ToOperationsDefinitionArrayOutput() OperationsDefinitionArrayOutput {
-	return i.ToOperationsDefinitionArrayOutputWithContext(context.Background())
+func (*openApiConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenApiConfiguration)(nil)).Elem()
 }
 
-func (i OperationsDefinitionArray) ToOperationsDefinitionArrayOutputWithContext(ctx context.Context) OperationsDefinitionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationsDefinitionArrayOutput)
+func (i *openApiConfigurationPtrType) ToOpenApiConfigurationPtrOutput() OpenApiConfigurationPtrOutput {
+	return i.ToOpenApiConfigurationPtrOutputWithContext(context.Background())
 }
 
-// Properties of an Operation.
-type OperationsDefinitionOutput struct{ *pulumi.OutputState }
-
-func (OperationsDefinitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationsDefinition)(nil)).Elem()
+func (i *openApiConfigurationPtrType) ToOpenApiConfigurationPtrOutputWithContext(ctx context.Context) OpenApiConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiConfigurationPtrOutput)
 }
 
-func (o OperationsDefinitionOutput) ToOperationsDefinitionOutput() OperationsDefinitionOutput {
+type OpenApiConfigurationOutput struct{ *pulumi.OutputState }
+
+func (OpenApiConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiConfiguration)(nil)).Elem()
+}
+
+func (o OpenApiConfigurationOutput) ToOpenApiConfigurationOutput() OpenApiConfigurationOutput {
 	return o
 }
 
-func (o OperationsDefinitionOutput) ToOperationsDefinitionOutputWithContext(ctx context.Context) OperationsDefinitionOutput {
+func (o OpenApiConfigurationOutput) ToOpenApiConfigurationOutputWithContext(ctx context.Context) OpenApiConfigurationOutput {
 	return o
 }
 
-func (o OperationsDefinitionOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationsDefinition) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+func (o OpenApiConfigurationOutput) ToOpenApiConfigurationPtrOutput() OpenApiConfigurationPtrOutput {
+	return o.ToOpenApiConfigurationPtrOutputWithContext(context.Background())
 }
 
-// Display information of the operation.
-func (o OperationsDefinitionOutput) Display() OperationsDefinitionDisplayOutput {
-	return o.ApplyT(func(v OperationsDefinition) OperationsDefinitionDisplay { return v.Display }).(OperationsDefinitionDisplayOutput)
+func (o OpenApiConfigurationOutput) ToOpenApiConfigurationPtrOutputWithContext(ctx context.Context) OpenApiConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenApiConfiguration) *OpenApiConfiguration {
+		return &v
+	}).(OpenApiConfigurationPtrOutput)
 }
 
-// Indicates whether the operation applies to data-plane.
-func (o OperationsDefinitionOutput) IsDataAction() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OperationsDefinition) *bool { return v.IsDataAction }).(pulumi.BoolPtrOutput)
+func (o OpenApiConfigurationOutput) Validation() OpenApiValidationPtrOutput {
+	return o.ApplyT(func(v OpenApiConfiguration) *OpenApiValidation { return v.Validation }).(OpenApiValidationPtrOutput)
 }
 
-// Name of the operation.
-func (o OperationsDefinitionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinition) string { return v.Name }).(pulumi.StringOutput)
+type OpenApiConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenApiConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenApiConfiguration)(nil)).Elem()
 }
 
-func (o OperationsDefinitionOutput) Origin() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationsDefinition) *string { return v.Origin }).(pulumi.StringPtrOutput)
-}
-
-func (o OperationsDefinitionOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v OperationsDefinition) interface{} { return v.Properties }).(pulumi.AnyOutput)
-}
-
-type OperationsDefinitionArrayOutput struct{ *pulumi.OutputState }
-
-func (OperationsDefinitionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationsDefinition)(nil)).Elem()
-}
-
-func (o OperationsDefinitionArrayOutput) ToOperationsDefinitionArrayOutput() OperationsDefinitionArrayOutput {
+func (o OpenApiConfigurationPtrOutput) ToOpenApiConfigurationPtrOutput() OpenApiConfigurationPtrOutput {
 	return o
 }
 
-func (o OperationsDefinitionArrayOutput) ToOperationsDefinitionArrayOutputWithContext(ctx context.Context) OperationsDefinitionArrayOutput {
+func (o OpenApiConfigurationPtrOutput) ToOpenApiConfigurationPtrOutputWithContext(ctx context.Context) OpenApiConfigurationPtrOutput {
 	return o
 }
 
-func (o OperationsDefinitionArrayOutput) Index(i pulumi.IntInput) OperationsDefinitionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationsDefinition {
-		return vs[0].([]OperationsDefinition)[vs[1].(int)]
-	}).(OperationsDefinitionOutput)
+func (o OpenApiConfigurationPtrOutput) Elem() OpenApiConfigurationOutput {
+	return o.ApplyT(func(v *OpenApiConfiguration) OpenApiConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OpenApiConfiguration
+		return ret
+	}).(OpenApiConfigurationOutput)
 }
 
-// Display information of the operation.
-type OperationsDefinitionDisplay struct {
-	Description string `pulumi:"description"`
-	Operation   string `pulumi:"operation"`
-	Provider    string `pulumi:"provider"`
-	Resource    string `pulumi:"resource"`
+func (o OpenApiConfigurationPtrOutput) Validation() OpenApiValidationPtrOutput {
+	return o.ApplyT(func(v *OpenApiConfiguration) *OpenApiValidation {
+		if v == nil {
+			return nil
+		}
+		return v.Validation
+	}).(OpenApiValidationPtrOutput)
 }
 
-// OperationsDefinitionDisplayInput is an input type that accepts OperationsDefinitionDisplayArgs and OperationsDefinitionDisplayOutput values.
-// You can construct a concrete instance of `OperationsDefinitionDisplayInput` via:
+type OpenApiConfigurationResponse struct {
+	Validation *OpenApiValidationResponse `pulumi:"validation"`
+}
+
+type OpenApiConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenApiConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiConfigurationResponse)(nil)).Elem()
+}
+
+func (o OpenApiConfigurationResponseOutput) ToOpenApiConfigurationResponseOutput() OpenApiConfigurationResponseOutput {
+	return o
+}
+
+func (o OpenApiConfigurationResponseOutput) ToOpenApiConfigurationResponseOutputWithContext(ctx context.Context) OpenApiConfigurationResponseOutput {
+	return o
+}
+
+func (o OpenApiConfigurationResponseOutput) Validation() OpenApiValidationResponsePtrOutput {
+	return o.ApplyT(func(v OpenApiConfigurationResponse) *OpenApiValidationResponse { return v.Validation }).(OpenApiValidationResponsePtrOutput)
+}
+
+type OpenApiConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenApiConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenApiConfigurationResponse)(nil)).Elem()
+}
+
+func (o OpenApiConfigurationResponsePtrOutput) ToOpenApiConfigurationResponsePtrOutput() OpenApiConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o OpenApiConfigurationResponsePtrOutput) ToOpenApiConfigurationResponsePtrOutputWithContext(ctx context.Context) OpenApiConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o OpenApiConfigurationResponsePtrOutput) Elem() OpenApiConfigurationResponseOutput {
+	return o.ApplyT(func(v *OpenApiConfigurationResponse) OpenApiConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OpenApiConfigurationResponse
+		return ret
+	}).(OpenApiConfigurationResponseOutput)
+}
+
+func (o OpenApiConfigurationResponsePtrOutput) Validation() OpenApiValidationResponsePtrOutput {
+	return o.ApplyT(func(v *OpenApiConfigurationResponse) *OpenApiValidationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Validation
+	}).(OpenApiValidationResponsePtrOutput)
+}
+
+type OpenApiValidation struct {
+	// Indicates whether a non compliance response is allowed for a LIST call
+	AllowNoncompliantCollectionResponse *bool `pulumi:"allowNoncompliantCollectionResponse"`
+}
+
+// OpenApiValidationInput is an input type that accepts OpenApiValidationArgs and OpenApiValidationOutput values.
+// You can construct a concrete instance of `OpenApiValidationInput` via:
 //
-//	OperationsDefinitionDisplayArgs{...}
-type OperationsDefinitionDisplayInput interface {
+//	OpenApiValidationArgs{...}
+type OpenApiValidationInput interface {
 	pulumi.Input
 
-	ToOperationsDefinitionDisplayOutput() OperationsDefinitionDisplayOutput
-	ToOperationsDefinitionDisplayOutputWithContext(context.Context) OperationsDefinitionDisplayOutput
+	ToOpenApiValidationOutput() OpenApiValidationOutput
+	ToOpenApiValidationOutputWithContext(context.Context) OpenApiValidationOutput
 }
 
-// Display information of the operation.
-type OperationsDefinitionDisplayArgs struct {
-	Description pulumi.StringInput `pulumi:"description"`
-	Operation   pulumi.StringInput `pulumi:"operation"`
-	Provider    pulumi.StringInput `pulumi:"provider"`
-	Resource    pulumi.StringInput `pulumi:"resource"`
+type OpenApiValidationArgs struct {
+	// Indicates whether a non compliance response is allowed for a LIST call
+	AllowNoncompliantCollectionResponse pulumi.BoolPtrInput `pulumi:"allowNoncompliantCollectionResponse"`
 }
 
-func (OperationsDefinitionDisplayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationsDefinitionDisplay)(nil)).Elem()
+func (OpenApiValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiValidation)(nil)).Elem()
 }
 
-func (i OperationsDefinitionDisplayArgs) ToOperationsDefinitionDisplayOutput() OperationsDefinitionDisplayOutput {
-	return i.ToOperationsDefinitionDisplayOutputWithContext(context.Background())
+func (i OpenApiValidationArgs) ToOpenApiValidationOutput() OpenApiValidationOutput {
+	return i.ToOpenApiValidationOutputWithContext(context.Background())
 }
 
-func (i OperationsDefinitionDisplayArgs) ToOperationsDefinitionDisplayOutputWithContext(ctx context.Context) OperationsDefinitionDisplayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationsDefinitionDisplayOutput)
+func (i OpenApiValidationArgs) ToOpenApiValidationOutputWithContext(ctx context.Context) OpenApiValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiValidationOutput)
 }
 
-// Display information of the operation.
-type OperationsDefinitionDisplayOutput struct{ *pulumi.OutputState }
-
-func (OperationsDefinitionDisplayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationsDefinitionDisplay)(nil)).Elem()
+func (i OpenApiValidationArgs) ToOpenApiValidationPtrOutput() OpenApiValidationPtrOutput {
+	return i.ToOpenApiValidationPtrOutputWithContext(context.Background())
 }
 
-func (o OperationsDefinitionDisplayOutput) ToOperationsDefinitionDisplayOutput() OperationsDefinitionDisplayOutput {
+func (i OpenApiValidationArgs) ToOpenApiValidationPtrOutputWithContext(ctx context.Context) OpenApiValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiValidationOutput).ToOpenApiValidationPtrOutputWithContext(ctx)
+}
+
+// OpenApiValidationPtrInput is an input type that accepts OpenApiValidationArgs, OpenApiValidationPtr and OpenApiValidationPtrOutput values.
+// You can construct a concrete instance of `OpenApiValidationPtrInput` via:
+//
+//	        OpenApiValidationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenApiValidationPtrInput interface {
+	pulumi.Input
+
+	ToOpenApiValidationPtrOutput() OpenApiValidationPtrOutput
+	ToOpenApiValidationPtrOutputWithContext(context.Context) OpenApiValidationPtrOutput
+}
+
+type openApiValidationPtrType OpenApiValidationArgs
+
+func OpenApiValidationPtr(v *OpenApiValidationArgs) OpenApiValidationPtrInput {
+	return (*openApiValidationPtrType)(v)
+}
+
+func (*openApiValidationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenApiValidation)(nil)).Elem()
+}
+
+func (i *openApiValidationPtrType) ToOpenApiValidationPtrOutput() OpenApiValidationPtrOutput {
+	return i.ToOpenApiValidationPtrOutputWithContext(context.Background())
+}
+
+func (i *openApiValidationPtrType) ToOpenApiValidationPtrOutputWithContext(ctx context.Context) OpenApiValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiValidationPtrOutput)
+}
+
+type OpenApiValidationOutput struct{ *pulumi.OutputState }
+
+func (OpenApiValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiValidation)(nil)).Elem()
+}
+
+func (o OpenApiValidationOutput) ToOpenApiValidationOutput() OpenApiValidationOutput {
 	return o
 }
 
-func (o OperationsDefinitionDisplayOutput) ToOperationsDefinitionDisplayOutputWithContext(ctx context.Context) OperationsDefinitionDisplayOutput {
+func (o OpenApiValidationOutput) ToOpenApiValidationOutputWithContext(ctx context.Context) OpenApiValidationOutput {
 	return o
 }
 
-func (o OperationsDefinitionDisplayOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinitionDisplay) string { return v.Description }).(pulumi.StringOutput)
+func (o OpenApiValidationOutput) ToOpenApiValidationPtrOutput() OpenApiValidationPtrOutput {
+	return o.ToOpenApiValidationPtrOutputWithContext(context.Background())
 }
 
-func (o OperationsDefinitionDisplayOutput) Operation() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinitionDisplay) string { return v.Operation }).(pulumi.StringOutput)
+func (o OpenApiValidationOutput) ToOpenApiValidationPtrOutputWithContext(ctx context.Context) OpenApiValidationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenApiValidation) *OpenApiValidation {
+		return &v
+	}).(OpenApiValidationPtrOutput)
 }
 
-func (o OperationsDefinitionDisplayOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinitionDisplay) string { return v.Provider }).(pulumi.StringOutput)
+// Indicates whether a non compliance response is allowed for a LIST call
+func (o OpenApiValidationOutput) AllowNoncompliantCollectionResponse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenApiValidation) *bool { return v.AllowNoncompliantCollectionResponse }).(pulumi.BoolPtrOutput)
 }
 
-func (o OperationsDefinitionDisplayOutput) Resource() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinitionDisplay) string { return v.Resource }).(pulumi.StringOutput)
+type OpenApiValidationPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenApiValidationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenApiValidation)(nil)).Elem()
 }
 
-// Display information of the operation.
-type OperationsDefinitionResponseDisplay struct {
-	Description string `pulumi:"description"`
-	Operation   string `pulumi:"operation"`
-	Provider    string `pulumi:"provider"`
-	Resource    string `pulumi:"resource"`
-}
-
-// Display information of the operation.
-type OperationsDefinitionResponseDisplayOutput struct{ *pulumi.OutputState }
-
-func (OperationsDefinitionResponseDisplayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationsDefinitionResponseDisplay)(nil)).Elem()
-}
-
-func (o OperationsDefinitionResponseDisplayOutput) ToOperationsDefinitionResponseDisplayOutput() OperationsDefinitionResponseDisplayOutput {
+func (o OpenApiValidationPtrOutput) ToOpenApiValidationPtrOutput() OpenApiValidationPtrOutput {
 	return o
 }
 
-func (o OperationsDefinitionResponseDisplayOutput) ToOperationsDefinitionResponseDisplayOutputWithContext(ctx context.Context) OperationsDefinitionResponseDisplayOutput {
+func (o OpenApiValidationPtrOutput) ToOpenApiValidationPtrOutputWithContext(ctx context.Context) OpenApiValidationPtrOutput {
 	return o
 }
 
-func (o OperationsDefinitionResponseDisplayOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinitionResponseDisplay) string { return v.Description }).(pulumi.StringOutput)
+func (o OpenApiValidationPtrOutput) Elem() OpenApiValidationOutput {
+	return o.ApplyT(func(v *OpenApiValidation) OpenApiValidation {
+		if v != nil {
+			return *v
+		}
+		var ret OpenApiValidation
+		return ret
+	}).(OpenApiValidationOutput)
 }
 
-func (o OperationsDefinitionResponseDisplayOutput) Operation() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinitionResponseDisplay) string { return v.Operation }).(pulumi.StringOutput)
+// Indicates whether a non compliance response is allowed for a LIST call
+func (o OpenApiValidationPtrOutput) AllowNoncompliantCollectionResponse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenApiValidation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowNoncompliantCollectionResponse
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o OperationsDefinitionResponseDisplayOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinitionResponseDisplay) string { return v.Provider }).(pulumi.StringOutput)
+type OpenApiValidationResponse struct {
+	// Indicates whether a non compliance response is allowed for a LIST call
+	AllowNoncompliantCollectionResponse *bool `pulumi:"allowNoncompliantCollectionResponse"`
 }
 
-func (o OperationsDefinitionResponseDisplayOutput) Resource() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationsDefinitionResponseDisplay) string { return v.Resource }).(pulumi.StringOutput)
+type OpenApiValidationResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenApiValidationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiValidationResponse)(nil)).Elem()
+}
+
+func (o OpenApiValidationResponseOutput) ToOpenApiValidationResponseOutput() OpenApiValidationResponseOutput {
+	return o
+}
+
+func (o OpenApiValidationResponseOutput) ToOpenApiValidationResponseOutputWithContext(ctx context.Context) OpenApiValidationResponseOutput {
+	return o
+}
+
+// Indicates whether a non compliance response is allowed for a LIST call
+func (o OpenApiValidationResponseOutput) AllowNoncompliantCollectionResponse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenApiValidationResponse) *bool { return v.AllowNoncompliantCollectionResponse }).(pulumi.BoolPtrOutput)
+}
+
+type OpenApiValidationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenApiValidationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenApiValidationResponse)(nil)).Elem()
+}
+
+func (o OpenApiValidationResponsePtrOutput) ToOpenApiValidationResponsePtrOutput() OpenApiValidationResponsePtrOutput {
+	return o
+}
+
+func (o OpenApiValidationResponsePtrOutput) ToOpenApiValidationResponsePtrOutputWithContext(ctx context.Context) OpenApiValidationResponsePtrOutput {
+	return o
+}
+
+func (o OpenApiValidationResponsePtrOutput) Elem() OpenApiValidationResponseOutput {
+	return o.ApplyT(func(v *OpenApiValidationResponse) OpenApiValidationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OpenApiValidationResponse
+		return ret
+	}).(OpenApiValidationResponseOutput)
+}
+
+// Indicates whether a non compliance response is allowed for a LIST call
+func (o OpenApiValidationResponsePtrOutput) AllowNoncompliantCollectionResponse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenApiValidationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowNoncompliantCollectionResponse
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ProviderHubMetadataProviderAuthentication struct {
@@ -4775,16 +5172,17 @@ func (o ProviderHubMetadataThirdPartyProviderAuthorizationPtrOutput) ManagedByTe
 }
 
 type ProviderRegistrationProperties struct {
-	Capabilities                                    []ResourceProviderCapabilities                                                 `pulumi:"capabilities"`
-	FeaturesRule                                    *ResourceProviderManifestPropertiesFeaturesRule                                `pulumi:"featuresRule"`
-	Management                                      *ResourceProviderManifestPropertiesManagement                                  `pulumi:"management"`
-	Metadata                                        interface{}                                                                    `pulumi:"metadata"`
-	Namespace                                       *string                                                                        `pulumi:"namespace"`
-	ProviderAuthentication                          *ResourceProviderManifestPropertiesProviderAuthentication                      `pulumi:"providerAuthentication"`
-	ProviderAuthorizations                          []ResourceProviderAuthorization                                                `pulumi:"providerAuthorizations"`
-	ProviderHubMetadata                             *ProviderRegistrationPropertiesProviderHubMetadata                             `pulumi:"providerHubMetadata"`
-	ProviderType                                    *string                                                                        `pulumi:"providerType"`
-	ProviderVersion                                 *string                                                                        `pulumi:"providerVersion"`
+	Capabilities           []ResourceProviderCapabilities                            `pulumi:"capabilities"`
+	FeaturesRule           *ResourceProviderManifestPropertiesFeaturesRule           `pulumi:"featuresRule"`
+	Management             *ResourceProviderManifestPropertiesManagement             `pulumi:"management"`
+	Metadata               interface{}                                               `pulumi:"metadata"`
+	Namespace              *string                                                   `pulumi:"namespace"`
+	ProviderAuthentication *ResourceProviderManifestPropertiesProviderAuthentication `pulumi:"providerAuthentication"`
+	ProviderAuthorizations []ResourceProviderAuthorization                           `pulumi:"providerAuthorizations"`
+	ProviderHubMetadata    *ProviderRegistrationPropertiesProviderHubMetadata        `pulumi:"providerHubMetadata"`
+	ProviderType           *string                                                   `pulumi:"providerType"`
+	ProviderVersion        *string                                                   `pulumi:"providerVersion"`
+	// The provisioned state of the resource.
 	ProvisioningState                               *string                                                                        `pulumi:"provisioningState"`
 	RequestHeaderOptions                            *ResourceProviderManifestPropertiesRequestHeaderOptions                        `pulumi:"requestHeaderOptions"`
 	RequiredFeatures                                []string                                                                       `pulumi:"requiredFeatures"`
@@ -4804,16 +5202,17 @@ type ProviderRegistrationPropertiesInput interface {
 }
 
 type ProviderRegistrationPropertiesArgs struct {
-	Capabilities                                    ResourceProviderCapabilitiesArrayInput                                                `pulumi:"capabilities"`
-	FeaturesRule                                    ResourceProviderManifestPropertiesFeaturesRulePtrInput                                `pulumi:"featuresRule"`
-	Management                                      ResourceProviderManifestPropertiesManagementPtrInput                                  `pulumi:"management"`
-	Metadata                                        pulumi.Input                                                                          `pulumi:"metadata"`
-	Namespace                                       pulumi.StringPtrInput                                                                 `pulumi:"namespace"`
-	ProviderAuthentication                          ResourceProviderManifestPropertiesProviderAuthenticationPtrInput                      `pulumi:"providerAuthentication"`
-	ProviderAuthorizations                          ResourceProviderAuthorizationArrayInput                                               `pulumi:"providerAuthorizations"`
-	ProviderHubMetadata                             ProviderRegistrationPropertiesProviderHubMetadataPtrInput                             `pulumi:"providerHubMetadata"`
-	ProviderType                                    pulumi.StringPtrInput                                                                 `pulumi:"providerType"`
-	ProviderVersion                                 pulumi.StringPtrInput                                                                 `pulumi:"providerVersion"`
+	Capabilities           ResourceProviderCapabilitiesArrayInput                           `pulumi:"capabilities"`
+	FeaturesRule           ResourceProviderManifestPropertiesFeaturesRulePtrInput           `pulumi:"featuresRule"`
+	Management             ResourceProviderManifestPropertiesManagementPtrInput             `pulumi:"management"`
+	Metadata               pulumi.Input                                                     `pulumi:"metadata"`
+	Namespace              pulumi.StringPtrInput                                            `pulumi:"namespace"`
+	ProviderAuthentication ResourceProviderManifestPropertiesProviderAuthenticationPtrInput `pulumi:"providerAuthentication"`
+	ProviderAuthorizations ResourceProviderAuthorizationArrayInput                          `pulumi:"providerAuthorizations"`
+	ProviderHubMetadata    ProviderRegistrationPropertiesProviderHubMetadataPtrInput        `pulumi:"providerHubMetadata"`
+	ProviderType           pulumi.StringPtrInput                                            `pulumi:"providerType"`
+	ProviderVersion        pulumi.StringPtrInput                                            `pulumi:"providerVersion"`
+	// The provisioned state of the resource.
 	ProvisioningState                               pulumi.StringPtrInput                                                                 `pulumi:"provisioningState"`
 	RequestHeaderOptions                            ResourceProviderManifestPropertiesRequestHeaderOptionsPtrInput                        `pulumi:"requestHeaderOptions"`
 	RequiredFeatures                                pulumi.StringArrayInput                                                               `pulumi:"requiredFeatures"`
@@ -4948,6 +5347,7 @@ func (o ProviderRegistrationPropertiesOutput) ProviderVersion() pulumi.StringPtr
 	return o.ApplyT(func(v ProviderRegistrationProperties) *string { return v.ProviderVersion }).(pulumi.StringPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o ProviderRegistrationPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderRegistrationProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -5088,6 +5488,7 @@ func (o ProviderRegistrationPropertiesPtrOutput) ProviderVersion() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o ProviderRegistrationPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderRegistrationProperties) *string {
 		if v == nil {
@@ -5617,16 +6018,17 @@ func (o ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifica
 }
 
 type ProviderRegistrationResponseProperties struct {
-	Capabilities                                    []ResourceProviderCapabilitiesResponse                                                 `pulumi:"capabilities"`
-	FeaturesRule                                    *ResourceProviderManifestPropertiesResponseFeaturesRule                                `pulumi:"featuresRule"`
-	Management                                      *ResourceProviderManifestPropertiesResponseManagement                                  `pulumi:"management"`
-	Metadata                                        interface{}                                                                            `pulumi:"metadata"`
-	Namespace                                       *string                                                                                `pulumi:"namespace"`
-	ProviderAuthentication                          *ResourceProviderManifestPropertiesResponseProviderAuthentication                      `pulumi:"providerAuthentication"`
-	ProviderAuthorizations                          []ResourceProviderAuthorizationResponse                                                `pulumi:"providerAuthorizations"`
-	ProviderHubMetadata                             *ProviderRegistrationPropertiesResponseProviderHubMetadata                             `pulumi:"providerHubMetadata"`
-	ProviderType                                    *string                                                                                `pulumi:"providerType"`
-	ProviderVersion                                 *string                                                                                `pulumi:"providerVersion"`
+	Capabilities           []ResourceProviderCapabilitiesResponse                            `pulumi:"capabilities"`
+	FeaturesRule           *ResourceProviderManifestPropertiesResponseFeaturesRule           `pulumi:"featuresRule"`
+	Management             *ResourceProviderManifestPropertiesResponseManagement             `pulumi:"management"`
+	Metadata               interface{}                                                       `pulumi:"metadata"`
+	Namespace              *string                                                           `pulumi:"namespace"`
+	ProviderAuthentication *ResourceProviderManifestPropertiesResponseProviderAuthentication `pulumi:"providerAuthentication"`
+	ProviderAuthorizations []ResourceProviderAuthorizationResponse                           `pulumi:"providerAuthorizations"`
+	ProviderHubMetadata    *ProviderRegistrationPropertiesResponseProviderHubMetadata        `pulumi:"providerHubMetadata"`
+	ProviderType           *string                                                           `pulumi:"providerType"`
+	ProviderVersion        *string                                                           `pulumi:"providerVersion"`
+	// The provisioned state of the resource.
 	ProvisioningState                               *string                                                                                `pulumi:"provisioningState"`
 	RequestHeaderOptions                            *ResourceProviderManifestPropertiesResponseRequestHeaderOptions                        `pulumi:"requestHeaderOptions"`
 	RequiredFeatures                                []string                                                                               `pulumi:"requiredFeatures"`
@@ -5700,6 +6102,7 @@ func (o ProviderRegistrationResponsePropertiesOutput) ProviderVersion() pulumi.S
 	return o.ApplyT(func(v ProviderRegistrationResponseProperties) *string { return v.ProviderVersion }).(pulumi.StringPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o ProviderRegistrationResponsePropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderRegistrationResponseProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -5840,6 +6243,7 @@ func (o ProviderRegistrationResponsePropertiesPtrOutput) ProviderVersion() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o ProviderRegistrationResponsePropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderRegistrationResponseProperties) *string {
 		if v == nil {
@@ -5883,6 +6287,142 @@ func (o ProviderRegistrationResponsePropertiesPtrOutput) TemplateDeploymentOptio
 		}
 		return v.TemplateDeploymentOptions
 	}).(ResourceProviderManifestPropertiesResponseTemplateDeploymentOptionsPtrOutput)
+}
+
+type ResourceConcurrencyControlOption struct {
+	Policy *string `pulumi:"policy"`
+}
+
+// ResourceConcurrencyControlOptionInput is an input type that accepts ResourceConcurrencyControlOptionArgs and ResourceConcurrencyControlOptionOutput values.
+// You can construct a concrete instance of `ResourceConcurrencyControlOptionInput` via:
+//
+//	ResourceConcurrencyControlOptionArgs{...}
+type ResourceConcurrencyControlOptionInput interface {
+	pulumi.Input
+
+	ToResourceConcurrencyControlOptionOutput() ResourceConcurrencyControlOptionOutput
+	ToResourceConcurrencyControlOptionOutputWithContext(context.Context) ResourceConcurrencyControlOptionOutput
+}
+
+type ResourceConcurrencyControlOptionArgs struct {
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (ResourceConcurrencyControlOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceConcurrencyControlOption)(nil)).Elem()
+}
+
+func (i ResourceConcurrencyControlOptionArgs) ToResourceConcurrencyControlOptionOutput() ResourceConcurrencyControlOptionOutput {
+	return i.ToResourceConcurrencyControlOptionOutputWithContext(context.Background())
+}
+
+func (i ResourceConcurrencyControlOptionArgs) ToResourceConcurrencyControlOptionOutputWithContext(ctx context.Context) ResourceConcurrencyControlOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceConcurrencyControlOptionOutput)
+}
+
+// ResourceConcurrencyControlOptionMapInput is an input type that accepts ResourceConcurrencyControlOptionMap and ResourceConcurrencyControlOptionMapOutput values.
+// You can construct a concrete instance of `ResourceConcurrencyControlOptionMapInput` via:
+//
+//	ResourceConcurrencyControlOptionMap{ "key": ResourceConcurrencyControlOptionArgs{...} }
+type ResourceConcurrencyControlOptionMapInput interface {
+	pulumi.Input
+
+	ToResourceConcurrencyControlOptionMapOutput() ResourceConcurrencyControlOptionMapOutput
+	ToResourceConcurrencyControlOptionMapOutputWithContext(context.Context) ResourceConcurrencyControlOptionMapOutput
+}
+
+type ResourceConcurrencyControlOptionMap map[string]ResourceConcurrencyControlOptionInput
+
+func (ResourceConcurrencyControlOptionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ResourceConcurrencyControlOption)(nil)).Elem()
+}
+
+func (i ResourceConcurrencyControlOptionMap) ToResourceConcurrencyControlOptionMapOutput() ResourceConcurrencyControlOptionMapOutput {
+	return i.ToResourceConcurrencyControlOptionMapOutputWithContext(context.Background())
+}
+
+func (i ResourceConcurrencyControlOptionMap) ToResourceConcurrencyControlOptionMapOutputWithContext(ctx context.Context) ResourceConcurrencyControlOptionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceConcurrencyControlOptionMapOutput)
+}
+
+type ResourceConcurrencyControlOptionOutput struct{ *pulumi.OutputState }
+
+func (ResourceConcurrencyControlOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceConcurrencyControlOption)(nil)).Elem()
+}
+
+func (o ResourceConcurrencyControlOptionOutput) ToResourceConcurrencyControlOptionOutput() ResourceConcurrencyControlOptionOutput {
+	return o
+}
+
+func (o ResourceConcurrencyControlOptionOutput) ToResourceConcurrencyControlOptionOutputWithContext(ctx context.Context) ResourceConcurrencyControlOptionOutput {
+	return o
+}
+
+func (o ResourceConcurrencyControlOptionOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceConcurrencyControlOption) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type ResourceConcurrencyControlOptionMapOutput struct{ *pulumi.OutputState }
+
+func (ResourceConcurrencyControlOptionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ResourceConcurrencyControlOption)(nil)).Elem()
+}
+
+func (o ResourceConcurrencyControlOptionMapOutput) ToResourceConcurrencyControlOptionMapOutput() ResourceConcurrencyControlOptionMapOutput {
+	return o
+}
+
+func (o ResourceConcurrencyControlOptionMapOutput) ToResourceConcurrencyControlOptionMapOutputWithContext(ctx context.Context) ResourceConcurrencyControlOptionMapOutput {
+	return o
+}
+
+func (o ResourceConcurrencyControlOptionMapOutput) MapIndex(k pulumi.StringInput) ResourceConcurrencyControlOptionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourceConcurrencyControlOption {
+		return vs[0].(map[string]ResourceConcurrencyControlOption)[vs[1].(string)]
+	}).(ResourceConcurrencyControlOptionOutput)
+}
+
+type ResourceConcurrencyControlOptionResponse struct {
+	Policy *string `pulumi:"policy"`
+}
+
+type ResourceConcurrencyControlOptionResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceConcurrencyControlOptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceConcurrencyControlOptionResponse)(nil)).Elem()
+}
+
+func (o ResourceConcurrencyControlOptionResponseOutput) ToResourceConcurrencyControlOptionResponseOutput() ResourceConcurrencyControlOptionResponseOutput {
+	return o
+}
+
+func (o ResourceConcurrencyControlOptionResponseOutput) ToResourceConcurrencyControlOptionResponseOutputWithContext(ctx context.Context) ResourceConcurrencyControlOptionResponseOutput {
+	return o
+}
+
+func (o ResourceConcurrencyControlOptionResponseOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceConcurrencyControlOptionResponse) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type ResourceConcurrencyControlOptionResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ResourceConcurrencyControlOptionResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ResourceConcurrencyControlOptionResponse)(nil)).Elem()
+}
+
+func (o ResourceConcurrencyControlOptionResponseMapOutput) ToResourceConcurrencyControlOptionResponseMapOutput() ResourceConcurrencyControlOptionResponseMapOutput {
+	return o
+}
+
+func (o ResourceConcurrencyControlOptionResponseMapOutput) ToResourceConcurrencyControlOptionResponseMapOutputWithContext(ctx context.Context) ResourceConcurrencyControlOptionResponseMapOutput {
+	return o
+}
+
+func (o ResourceConcurrencyControlOptionResponseMapOutput) MapIndex(k pulumi.StringInput) ResourceConcurrencyControlOptionResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourceConcurrencyControlOptionResponse {
+		return vs[0].(map[string]ResourceConcurrencyControlOptionResponse)[vs[1].(string)]
+	}).(ResourceConcurrencyControlOptionResponseOutput)
 }
 
 type ResourceProviderAuthorization struct {
@@ -7388,6 +7928,7 @@ func (o ResourceProviderManifestPropertiesTemplateDeploymentOptionsPtrOutput) Pr
 type ResourceTypeEndpoint struct {
 	ApiVersions      []string                          `pulumi:"apiVersions"`
 	Enabled          *bool                             `pulumi:"enabled"`
+	EndpointType     *string                           `pulumi:"endpointType"`
 	Extensions       []ResourceTypeExtension           `pulumi:"extensions"`
 	FeaturesRule     *ResourceTypeEndpointFeaturesRule `pulumi:"featuresRule"`
 	Locations        []string                          `pulumi:"locations"`
@@ -7409,6 +7950,7 @@ type ResourceTypeEndpointInput interface {
 type ResourceTypeEndpointArgs struct {
 	ApiVersions      pulumi.StringArrayInput                  `pulumi:"apiVersions"`
 	Enabled          pulumi.BoolPtrInput                      `pulumi:"enabled"`
+	EndpointType     pulumi.StringPtrInput                    `pulumi:"endpointType"`
 	Extensions       ResourceTypeExtensionArrayInput          `pulumi:"extensions"`
 	FeaturesRule     ResourceTypeEndpointFeaturesRulePtrInput `pulumi:"featuresRule"`
 	Locations        pulumi.StringArrayInput                  `pulumi:"locations"`
@@ -7473,6 +8015,10 @@ func (o ResourceTypeEndpointOutput) ApiVersions() pulumi.StringArrayOutput {
 
 func (o ResourceTypeEndpointOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ResourceTypeEndpoint) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceTypeEndpointOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeEndpoint) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
 }
 
 func (o ResourceTypeEndpointOutput) Extensions() ResourceTypeExtensionArrayOutput {
@@ -7651,6 +8197,7 @@ func (o ResourceTypeEndpointFeaturesRulePtrOutput) RequiredFeaturesPolicy() pulu
 type ResourceTypeEndpointResponse struct {
 	ApiVersions      []string                                  `pulumi:"apiVersions"`
 	Enabled          *bool                                     `pulumi:"enabled"`
+	EndpointType     *string                                   `pulumi:"endpointType"`
 	Extensions       []ResourceTypeExtensionResponse           `pulumi:"extensions"`
 	FeaturesRule     *ResourceTypeEndpointResponseFeaturesRule `pulumi:"featuresRule"`
 	Locations        []string                                  `pulumi:"locations"`
@@ -7678,6 +8225,10 @@ func (o ResourceTypeEndpointResponseOutput) ApiVersions() pulumi.StringArrayOutp
 
 func (o ResourceTypeEndpointResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ResourceTypeEndpointResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceTypeEndpointResponseOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeEndpointResponse) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
 }
 
 func (o ResourceTypeEndpointResponseOutput) Extensions() ResourceTypeExtensionResponseArrayOutput {
@@ -8245,27 +8796,32 @@ func (o ResourceTypeRegistrationTypeArrayOutput) Index(i pulumi.IntInput) Resour
 }
 
 type ResourceTypeRegistrationProperties struct {
-	AllowedUnauthorizedActions                      []string                                                                           `pulumi:"allowedUnauthorizedActions"`
-	AuthorizationActionMappings                     []AuthorizationActionMapping                                                       `pulumi:"authorizationActionMappings"`
-	CheckNameAvailabilitySpecifications             *ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications             `pulumi:"checkNameAvailabilitySpecifications"`
-	DefaultApiVersion                               *string                                                                            `pulumi:"defaultApiVersion"`
-	DisallowedActionVerbs                           []string                                                                           `pulumi:"disallowedActionVerbs"`
-	EnableAsyncOperation                            *bool                                                                              `pulumi:"enableAsyncOperation"`
-	EnableThirdPartyS2S                             *bool                                                                              `pulumi:"enableThirdPartyS2S"`
-	Endpoints                                       []ResourceTypeEndpoint                                                             `pulumi:"endpoints"`
-	ExtendedLocations                               []ExtendedLocationOptions                                                          `pulumi:"extendedLocations"`
-	ExtensionOptions                                *ResourceTypeRegistrationPropertiesExtensionOptions                                `pulumi:"extensionOptions"`
-	FeaturesRule                                    *ResourceTypeRegistrationPropertiesFeaturesRule                                    `pulumi:"featuresRule"`
-	IdentityManagement                              *ResourceTypeRegistrationPropertiesIdentityManagement                              `pulumi:"identityManagement"`
-	IsPureProxy                                     *bool                                                                              `pulumi:"isPureProxy"`
-	LinkedAccessChecks                              []LinkedAccessCheck                                                                `pulumi:"linkedAccessChecks"`
-	LoggingRules                                    []LoggingRule                                                                      `pulumi:"loggingRules"`
-	MarketplaceType                                 *string                                                                            `pulumi:"marketplaceType"`
+	AllowedUnauthorizedActions          []string                                                               `pulumi:"allowedUnauthorizedActions"`
+	AuthorizationActionMappings         []AuthorizationActionMapping                                           `pulumi:"authorizationActionMappings"`
+	CheckNameAvailabilitySpecifications *ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications `pulumi:"checkNameAvailabilitySpecifications"`
+	DefaultApiVersion                   *string                                                                `pulumi:"defaultApiVersion"`
+	DisallowedActionVerbs               []string                                                               `pulumi:"disallowedActionVerbs"`
+	EnableAsyncOperation                *bool                                                                  `pulumi:"enableAsyncOperation"`
+	EnableThirdPartyS2S                 *bool                                                                  `pulumi:"enableThirdPartyS2S"`
+	Endpoints                           []ResourceTypeEndpoint                                                 `pulumi:"endpoints"`
+	ExtendedLocations                   []ExtendedLocationOptions                                              `pulumi:"extendedLocations"`
+	ExtensionOptions                    *ResourceTypeRegistrationPropertiesExtensionOptions                    `pulumi:"extensionOptions"`
+	FeaturesRule                        *ResourceTypeRegistrationPropertiesFeaturesRule                        `pulumi:"featuresRule"`
+	IdentityManagement                  *ResourceTypeRegistrationPropertiesIdentityManagement                  `pulumi:"identityManagement"`
+	IsPureProxy                         *bool                                                                  `pulumi:"isPureProxy"`
+	LinkedAccessChecks                  []LinkedAccessCheck                                                    `pulumi:"linkedAccessChecks"`
+	LoggingRules                        []LoggingRule                                                          `pulumi:"loggingRules"`
+	Management                          *ResourceTypeRegistrationPropertiesManagement                          `pulumi:"management"`
+	MarketplaceType                     *string                                                                `pulumi:"marketplaceType"`
+	OpenApiConfiguration                *OpenApiConfiguration                                                  `pulumi:"openApiConfiguration"`
+	// The provisioned state of the resource.
 	ProvisioningState                               *string                                                                            `pulumi:"provisioningState"`
 	Regionality                                     *string                                                                            `pulumi:"regionality"`
 	RequestHeaderOptions                            *ResourceTypeRegistrationPropertiesRequestHeaderOptions                            `pulumi:"requestHeaderOptions"`
 	RequiredFeatures                                []string                                                                           `pulumi:"requiredFeatures"`
+	ResourceConcurrencyControlOptions               map[string]ResourceConcurrencyControlOption                                        `pulumi:"resourceConcurrencyControlOptions"`
 	ResourceDeletionPolicy                          *string                                                                            `pulumi:"resourceDeletionPolicy"`
+	ResourceGraphConfiguration                      *ResourceTypeRegistrationPropertiesResourceGraphConfiguration                      `pulumi:"resourceGraphConfiguration"`
 	ResourceMovePolicy                              *ResourceTypeRegistrationPropertiesResourceMovePolicy                              `pulumi:"resourceMovePolicy"`
 	RoutingType                                     *string                                                                            `pulumi:"routingType"`
 	ServiceTreeInfos                                []ServiceTreeInfo                                                                  `pulumi:"serviceTreeInfos"`
@@ -8288,27 +8844,32 @@ type ResourceTypeRegistrationPropertiesInput interface {
 }
 
 type ResourceTypeRegistrationPropertiesArgs struct {
-	AllowedUnauthorizedActions                      pulumi.StringArrayInput                                                                   `pulumi:"allowedUnauthorizedActions"`
-	AuthorizationActionMappings                     AuthorizationActionMappingArrayInput                                                      `pulumi:"authorizationActionMappings"`
-	CheckNameAvailabilitySpecifications             ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsPtrInput             `pulumi:"checkNameAvailabilitySpecifications"`
-	DefaultApiVersion                               pulumi.StringPtrInput                                                                     `pulumi:"defaultApiVersion"`
-	DisallowedActionVerbs                           pulumi.StringArrayInput                                                                   `pulumi:"disallowedActionVerbs"`
-	EnableAsyncOperation                            pulumi.BoolPtrInput                                                                       `pulumi:"enableAsyncOperation"`
-	EnableThirdPartyS2S                             pulumi.BoolPtrInput                                                                       `pulumi:"enableThirdPartyS2S"`
-	Endpoints                                       ResourceTypeEndpointArrayInput                                                            `pulumi:"endpoints"`
-	ExtendedLocations                               ExtendedLocationOptionsArrayInput                                                         `pulumi:"extendedLocations"`
-	ExtensionOptions                                ResourceTypeRegistrationPropertiesExtensionOptionsPtrInput                                `pulumi:"extensionOptions"`
-	FeaturesRule                                    ResourceTypeRegistrationPropertiesFeaturesRulePtrInput                                    `pulumi:"featuresRule"`
-	IdentityManagement                              ResourceTypeRegistrationPropertiesIdentityManagementPtrInput                              `pulumi:"identityManagement"`
-	IsPureProxy                                     pulumi.BoolPtrInput                                                                       `pulumi:"isPureProxy"`
-	LinkedAccessChecks                              LinkedAccessCheckArrayInput                                                               `pulumi:"linkedAccessChecks"`
-	LoggingRules                                    LoggingRuleArrayInput                                                                     `pulumi:"loggingRules"`
-	MarketplaceType                                 pulumi.StringPtrInput                                                                     `pulumi:"marketplaceType"`
+	AllowedUnauthorizedActions          pulumi.StringArrayInput                                                       `pulumi:"allowedUnauthorizedActions"`
+	AuthorizationActionMappings         AuthorizationActionMappingArrayInput                                          `pulumi:"authorizationActionMappings"`
+	CheckNameAvailabilitySpecifications ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsPtrInput `pulumi:"checkNameAvailabilitySpecifications"`
+	DefaultApiVersion                   pulumi.StringPtrInput                                                         `pulumi:"defaultApiVersion"`
+	DisallowedActionVerbs               pulumi.StringArrayInput                                                       `pulumi:"disallowedActionVerbs"`
+	EnableAsyncOperation                pulumi.BoolPtrInput                                                           `pulumi:"enableAsyncOperation"`
+	EnableThirdPartyS2S                 pulumi.BoolPtrInput                                                           `pulumi:"enableThirdPartyS2S"`
+	Endpoints                           ResourceTypeEndpointArrayInput                                                `pulumi:"endpoints"`
+	ExtendedLocations                   ExtendedLocationOptionsArrayInput                                             `pulumi:"extendedLocations"`
+	ExtensionOptions                    ResourceTypeRegistrationPropertiesExtensionOptionsPtrInput                    `pulumi:"extensionOptions"`
+	FeaturesRule                        ResourceTypeRegistrationPropertiesFeaturesRulePtrInput                        `pulumi:"featuresRule"`
+	IdentityManagement                  ResourceTypeRegistrationPropertiesIdentityManagementPtrInput                  `pulumi:"identityManagement"`
+	IsPureProxy                         pulumi.BoolPtrInput                                                           `pulumi:"isPureProxy"`
+	LinkedAccessChecks                  LinkedAccessCheckArrayInput                                                   `pulumi:"linkedAccessChecks"`
+	LoggingRules                        LoggingRuleArrayInput                                                         `pulumi:"loggingRules"`
+	Management                          ResourceTypeRegistrationPropertiesManagementPtrInput                          `pulumi:"management"`
+	MarketplaceType                     pulumi.StringPtrInput                                                         `pulumi:"marketplaceType"`
+	OpenApiConfiguration                OpenApiConfigurationPtrInput                                                  `pulumi:"openApiConfiguration"`
+	// The provisioned state of the resource.
 	ProvisioningState                               pulumi.StringPtrInput                                                                     `pulumi:"provisioningState"`
 	Regionality                                     pulumi.StringPtrInput                                                                     `pulumi:"regionality"`
 	RequestHeaderOptions                            ResourceTypeRegistrationPropertiesRequestHeaderOptionsPtrInput                            `pulumi:"requestHeaderOptions"`
 	RequiredFeatures                                pulumi.StringArrayInput                                                                   `pulumi:"requiredFeatures"`
+	ResourceConcurrencyControlOptions               ResourceConcurrencyControlOptionMapInput                                                  `pulumi:"resourceConcurrencyControlOptions"`
 	ResourceDeletionPolicy                          pulumi.StringPtrInput                                                                     `pulumi:"resourceDeletionPolicy"`
+	ResourceGraphConfiguration                      ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrInput                      `pulumi:"resourceGraphConfiguration"`
 	ResourceMovePolicy                              ResourceTypeRegistrationPropertiesResourceMovePolicyPtrInput                              `pulumi:"resourceMovePolicy"`
 	RoutingType                                     pulumi.StringPtrInput                                                                     `pulumi:"routingType"`
 	ServiceTreeInfos                                ServiceTreeInfoArrayInput                                                                 `pulumi:"serviceTreeInfos"`
@@ -8466,10 +9027,21 @@ func (o ResourceTypeRegistrationPropertiesOutput) LoggingRules() LoggingRuleArra
 	return o.ApplyT(func(v ResourceTypeRegistrationProperties) []LoggingRule { return v.LoggingRules }).(LoggingRuleArrayOutput)
 }
 
+func (o ResourceTypeRegistrationPropertiesOutput) Management() ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationProperties) *ResourceTypeRegistrationPropertiesManagement {
+		return v.Management
+	}).(ResourceTypeRegistrationPropertiesManagementPtrOutput)
+}
+
 func (o ResourceTypeRegistrationPropertiesOutput) MarketplaceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTypeRegistrationProperties) *string { return v.MarketplaceType }).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceTypeRegistrationPropertiesOutput) OpenApiConfiguration() OpenApiConfigurationPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationProperties) *OpenApiConfiguration { return v.OpenApiConfiguration }).(OpenApiConfigurationPtrOutput)
+}
+
+// The provisioned state of the resource.
 func (o ResourceTypeRegistrationPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTypeRegistrationProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -8488,8 +9060,20 @@ func (o ResourceTypeRegistrationPropertiesOutput) RequiredFeatures() pulumi.Stri
 	return o.ApplyT(func(v ResourceTypeRegistrationProperties) []string { return v.RequiredFeatures }).(pulumi.StringArrayOutput)
 }
 
+func (o ResourceTypeRegistrationPropertiesOutput) ResourceConcurrencyControlOptions() ResourceConcurrencyControlOptionMapOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationProperties) map[string]ResourceConcurrencyControlOption {
+		return v.ResourceConcurrencyControlOptions
+	}).(ResourceConcurrencyControlOptionMapOutput)
+}
+
 func (o ResourceTypeRegistrationPropertiesOutput) ResourceDeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTypeRegistrationProperties) *string { return v.ResourceDeletionPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesOutput) ResourceGraphConfiguration() ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationProperties) *ResourceTypeRegistrationPropertiesResourceGraphConfiguration {
+		return v.ResourceGraphConfiguration
+	}).(ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput)
 }
 
 func (o ResourceTypeRegistrationPropertiesOutput) ResourceMovePolicy() ResourceTypeRegistrationPropertiesResourceMovePolicyPtrOutput {
@@ -8689,6 +9273,15 @@ func (o ResourceTypeRegistrationPropertiesPtrOutput) LoggingRules() LoggingRuleA
 	}).(LoggingRuleArrayOutput)
 }
 
+func (o ResourceTypeRegistrationPropertiesPtrOutput) Management() ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationProperties) *ResourceTypeRegistrationPropertiesManagement {
+		if v == nil {
+			return nil
+		}
+		return v.Management
+	}).(ResourceTypeRegistrationPropertiesManagementPtrOutput)
+}
+
 func (o ResourceTypeRegistrationPropertiesPtrOutput) MarketplaceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceTypeRegistrationProperties) *string {
 		if v == nil {
@@ -8698,6 +9291,16 @@ func (o ResourceTypeRegistrationPropertiesPtrOutput) MarketplaceType() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceTypeRegistrationPropertiesPtrOutput) OpenApiConfiguration() OpenApiConfigurationPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationProperties) *OpenApiConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.OpenApiConfiguration
+	}).(OpenApiConfigurationPtrOutput)
+}
+
+// The provisioned state of the resource.
 func (o ResourceTypeRegistrationPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceTypeRegistrationProperties) *string {
 		if v == nil {
@@ -8734,6 +9337,15 @@ func (o ResourceTypeRegistrationPropertiesPtrOutput) RequiredFeatures() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o ResourceTypeRegistrationPropertiesPtrOutput) ResourceConcurrencyControlOptions() ResourceConcurrencyControlOptionMapOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationProperties) map[string]ResourceConcurrencyControlOption {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceConcurrencyControlOptions
+	}).(ResourceConcurrencyControlOptionMapOutput)
+}
+
 func (o ResourceTypeRegistrationPropertiesPtrOutput) ResourceDeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceTypeRegistrationProperties) *string {
 		if v == nil {
@@ -8741,6 +9353,15 @@ func (o ResourceTypeRegistrationPropertiesPtrOutput) ResourceDeletionPolicy() pu
 		}
 		return v.ResourceDeletionPolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesPtrOutput) ResourceGraphConfiguration() ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationProperties) *ResourceTypeRegistrationPropertiesResourceGraphConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGraphConfiguration
+	}).(ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput)
 }
 
 func (o ResourceTypeRegistrationPropertiesPtrOutput) ResourceMovePolicy() ResourceTypeRegistrationPropertiesResourceMovePolicyPtrOutput {
@@ -9383,6 +10004,244 @@ func (o ResourceTypeRegistrationPropertiesIdentityManagementPtrOutput) Type() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceTypeRegistrationPropertiesManagement struct {
+	IncidentContactEmail   *string           `pulumi:"incidentContactEmail"`
+	IncidentRoutingService *string           `pulumi:"incidentRoutingService"`
+	IncidentRoutingTeam    *string           `pulumi:"incidentRoutingTeam"`
+	ManifestOwners         []string          `pulumi:"manifestOwners"`
+	ResourceAccessPolicy   *string           `pulumi:"resourceAccessPolicy"`
+	ResourceAccessRoles    []interface{}     `pulumi:"resourceAccessRoles"`
+	SchemaOwners           []string          `pulumi:"schemaOwners"`
+	ServiceTreeInfos       []ServiceTreeInfo `pulumi:"serviceTreeInfos"`
+}
+
+// ResourceTypeRegistrationPropertiesManagementInput is an input type that accepts ResourceTypeRegistrationPropertiesManagementArgs and ResourceTypeRegistrationPropertiesManagementOutput values.
+// You can construct a concrete instance of `ResourceTypeRegistrationPropertiesManagementInput` via:
+//
+//	ResourceTypeRegistrationPropertiesManagementArgs{...}
+type ResourceTypeRegistrationPropertiesManagementInput interface {
+	pulumi.Input
+
+	ToResourceTypeRegistrationPropertiesManagementOutput() ResourceTypeRegistrationPropertiesManagementOutput
+	ToResourceTypeRegistrationPropertiesManagementOutputWithContext(context.Context) ResourceTypeRegistrationPropertiesManagementOutput
+}
+
+type ResourceTypeRegistrationPropertiesManagementArgs struct {
+	IncidentContactEmail   pulumi.StringPtrInput     `pulumi:"incidentContactEmail"`
+	IncidentRoutingService pulumi.StringPtrInput     `pulumi:"incidentRoutingService"`
+	IncidentRoutingTeam    pulumi.StringPtrInput     `pulumi:"incidentRoutingTeam"`
+	ManifestOwners         pulumi.StringArrayInput   `pulumi:"manifestOwners"`
+	ResourceAccessPolicy   pulumi.StringPtrInput     `pulumi:"resourceAccessPolicy"`
+	ResourceAccessRoles    pulumi.ArrayInput         `pulumi:"resourceAccessRoles"`
+	SchemaOwners           pulumi.StringArrayInput   `pulumi:"schemaOwners"`
+	ServiceTreeInfos       ServiceTreeInfoArrayInput `pulumi:"serviceTreeInfos"`
+}
+
+func (ResourceTypeRegistrationPropertiesManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceTypeRegistrationPropertiesManagement)(nil)).Elem()
+}
+
+func (i ResourceTypeRegistrationPropertiesManagementArgs) ToResourceTypeRegistrationPropertiesManagementOutput() ResourceTypeRegistrationPropertiesManagementOutput {
+	return i.ToResourceTypeRegistrationPropertiesManagementOutputWithContext(context.Background())
+}
+
+func (i ResourceTypeRegistrationPropertiesManagementArgs) ToResourceTypeRegistrationPropertiesManagementOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceTypeRegistrationPropertiesManagementOutput)
+}
+
+func (i ResourceTypeRegistrationPropertiesManagementArgs) ToResourceTypeRegistrationPropertiesManagementPtrOutput() ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return i.ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceTypeRegistrationPropertiesManagementArgs) ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceTypeRegistrationPropertiesManagementOutput).ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(ctx)
+}
+
+// ResourceTypeRegistrationPropertiesManagementPtrInput is an input type that accepts ResourceTypeRegistrationPropertiesManagementArgs, ResourceTypeRegistrationPropertiesManagementPtr and ResourceTypeRegistrationPropertiesManagementPtrOutput values.
+// You can construct a concrete instance of `ResourceTypeRegistrationPropertiesManagementPtrInput` via:
+//
+//	        ResourceTypeRegistrationPropertiesManagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceTypeRegistrationPropertiesManagementPtrInput interface {
+	pulumi.Input
+
+	ToResourceTypeRegistrationPropertiesManagementPtrOutput() ResourceTypeRegistrationPropertiesManagementPtrOutput
+	ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(context.Context) ResourceTypeRegistrationPropertiesManagementPtrOutput
+}
+
+type resourceTypeRegistrationPropertiesManagementPtrType ResourceTypeRegistrationPropertiesManagementArgs
+
+func ResourceTypeRegistrationPropertiesManagementPtr(v *ResourceTypeRegistrationPropertiesManagementArgs) ResourceTypeRegistrationPropertiesManagementPtrInput {
+	return (*resourceTypeRegistrationPropertiesManagementPtrType)(v)
+}
+
+func (*resourceTypeRegistrationPropertiesManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceTypeRegistrationPropertiesManagement)(nil)).Elem()
+}
+
+func (i *resourceTypeRegistrationPropertiesManagementPtrType) ToResourceTypeRegistrationPropertiesManagementPtrOutput() ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return i.ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceTypeRegistrationPropertiesManagementPtrType) ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceTypeRegistrationPropertiesManagementPtrOutput)
+}
+
+type ResourceTypeRegistrationPropertiesManagementOutput struct{ *pulumi.OutputState }
+
+func (ResourceTypeRegistrationPropertiesManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceTypeRegistrationPropertiesManagement)(nil)).Elem()
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) ToResourceTypeRegistrationPropertiesManagementOutput() ResourceTypeRegistrationPropertiesManagementOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) ToResourceTypeRegistrationPropertiesManagementOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesManagementOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) ToResourceTypeRegistrationPropertiesManagementPtrOutput() ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return o.ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceTypeRegistrationPropertiesManagement) *ResourceTypeRegistrationPropertiesManagement {
+		return &v
+	}).(ResourceTypeRegistrationPropertiesManagementPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) IncidentContactEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesManagement) *string { return v.IncidentContactEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) IncidentRoutingService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesManagement) *string { return v.IncidentRoutingService }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) IncidentRoutingTeam() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesManagement) *string { return v.IncidentRoutingTeam }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) ManifestOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesManagement) []string { return v.ManifestOwners }).(pulumi.StringArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) ResourceAccessPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesManagement) *string { return v.ResourceAccessPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) ResourceAccessRoles() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesManagement) []interface{} { return v.ResourceAccessRoles }).(pulumi.ArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) SchemaOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesManagement) []string { return v.SchemaOwners }).(pulumi.StringArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementOutput) ServiceTreeInfos() ServiceTreeInfoArrayOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesManagement) []ServiceTreeInfo { return v.ServiceTreeInfos }).(ServiceTreeInfoArrayOutput)
+}
+
+type ResourceTypeRegistrationPropertiesManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceTypeRegistrationPropertiesManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceTypeRegistrationPropertiesManagement)(nil)).Elem()
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) ToResourceTypeRegistrationPropertiesManagementPtrOutput() ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) ToResourceTypeRegistrationPropertiesManagementPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesManagementPtrOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) Elem() ResourceTypeRegistrationPropertiesManagementOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) ResourceTypeRegistrationPropertiesManagement {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceTypeRegistrationPropertiesManagement
+		return ret
+	}).(ResourceTypeRegistrationPropertiesManagementOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) IncidentContactEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentContactEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) IncidentRoutingService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentRoutingService
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) IncidentRoutingTeam() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentRoutingTeam
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) ManifestOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ManifestOwners
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) ResourceAccessPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceAccessPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) ResourceAccessRoles() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceAccessRoles
+	}).(pulumi.ArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) SchemaOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaOwners
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesManagementPtrOutput) ServiceTreeInfos() ServiceTreeInfoArrayOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesManagement) []ServiceTreeInfo {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTreeInfos
+	}).(ServiceTreeInfoArrayOutput)
+}
+
 type ResourceTypeRegistrationPropertiesRequestHeaderOptions struct {
 	OptInHeaders *string `pulumi:"optInHeaders"`
 }
@@ -9514,6 +10373,154 @@ func (o ResourceTypeRegistrationPropertiesRequestHeaderOptionsPtrOutput) OptInHe
 		}
 		return v.OptInHeaders
 	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceTypeRegistrationPropertiesResourceGraphConfiguration struct {
+	ApiVersion *string `pulumi:"apiVersion"`
+	Enabled    *bool   `pulumi:"enabled"`
+}
+
+// ResourceTypeRegistrationPropertiesResourceGraphConfigurationInput is an input type that accepts ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs and ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput values.
+// You can construct a concrete instance of `ResourceTypeRegistrationPropertiesResourceGraphConfigurationInput` via:
+//
+//	ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs{...}
+type ResourceTypeRegistrationPropertiesResourceGraphConfigurationInput interface {
+	pulumi.Input
+
+	ToResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput() ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput
+	ToResourceTypeRegistrationPropertiesResourceGraphConfigurationOutputWithContext(context.Context) ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput
+}
+
+type ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs struct {
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	Enabled    pulumi.BoolPtrInput   `pulumi:"enabled"`
+}
+
+func (ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceTypeRegistrationPropertiesResourceGraphConfiguration)(nil)).Elem()
+}
+
+func (i ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput() ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput {
+	return i.ToResourceTypeRegistrationPropertiesResourceGraphConfigurationOutputWithContext(context.Background())
+}
+
+func (i ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput)
+}
+
+func (i ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput() ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return i.ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput).ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(ctx)
+}
+
+// ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrInput is an input type that accepts ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs, ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtr and ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput values.
+// You can construct a concrete instance of `ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrInput` via:
+//
+//	        ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput() ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput
+	ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(context.Context) ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput
+}
+
+type resourceTypeRegistrationPropertiesResourceGraphConfigurationPtrType ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs
+
+func ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtr(v *ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs) ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrInput {
+	return (*resourceTypeRegistrationPropertiesResourceGraphConfigurationPtrType)(v)
+}
+
+func (*resourceTypeRegistrationPropertiesResourceGraphConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceTypeRegistrationPropertiesResourceGraphConfiguration)(nil)).Elem()
+}
+
+func (i *resourceTypeRegistrationPropertiesResourceGraphConfigurationPtrType) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput() ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return i.ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceTypeRegistrationPropertiesResourceGraphConfigurationPtrType) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput)
+}
+
+type ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceTypeRegistrationPropertiesResourceGraphConfiguration)(nil)).Elem()
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput() ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput() ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return o.ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceTypeRegistrationPropertiesResourceGraphConfiguration) *ResourceTypeRegistrationPropertiesResourceGraphConfiguration {
+		return &v
+	}).(ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResourceGraphConfiguration) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResourceGraphConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceTypeRegistrationPropertiesResourceGraphConfiguration)(nil)).Elem()
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput() ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput) ToResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput) Elem() ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResourceGraphConfiguration) ResourceTypeRegistrationPropertiesResourceGraphConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceTypeRegistrationPropertiesResourceGraphConfiguration
+		return ret
+	}).(ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResourceGraphConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResourceGraphConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ResourceTypeRegistrationPropertiesResourceMovePolicy struct {
@@ -9937,6 +10944,163 @@ func (o ResourceTypeRegistrationPropertiesResponseIdentityManagementPtrOutput) T
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceTypeRegistrationPropertiesResponseManagement struct {
+	IncidentContactEmail   *string                   `pulumi:"incidentContactEmail"`
+	IncidentRoutingService *string                   `pulumi:"incidentRoutingService"`
+	IncidentRoutingTeam    *string                   `pulumi:"incidentRoutingTeam"`
+	ManifestOwners         []string                  `pulumi:"manifestOwners"`
+	ResourceAccessPolicy   *string                   `pulumi:"resourceAccessPolicy"`
+	ResourceAccessRoles    []interface{}             `pulumi:"resourceAccessRoles"`
+	SchemaOwners           []string                  `pulumi:"schemaOwners"`
+	ServiceTreeInfos       []ServiceTreeInfoResponse `pulumi:"serviceTreeInfos"`
+}
+
+type ResourceTypeRegistrationPropertiesResponseManagementOutput struct{ *pulumi.OutputState }
+
+func (ResourceTypeRegistrationPropertiesResponseManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceTypeRegistrationPropertiesResponseManagement)(nil)).Elem()
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) ToResourceTypeRegistrationPropertiesResponseManagementOutput() ResourceTypeRegistrationPropertiesResponseManagementOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) ToResourceTypeRegistrationPropertiesResponseManagementOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResponseManagementOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) IncidentContactEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseManagement) *string { return v.IncidentContactEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) IncidentRoutingService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseManagement) *string { return v.IncidentRoutingService }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) IncidentRoutingTeam() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseManagement) *string { return v.IncidentRoutingTeam }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) ManifestOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseManagement) []string { return v.ManifestOwners }).(pulumi.StringArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) ResourceAccessPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseManagement) *string { return v.ResourceAccessPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) ResourceAccessRoles() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseManagement) []interface{} {
+		return v.ResourceAccessRoles
+	}).(pulumi.ArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) SchemaOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseManagement) []string { return v.SchemaOwners }).(pulumi.StringArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementOutput) ServiceTreeInfos() ServiceTreeInfoResponseArrayOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseManagement) []ServiceTreeInfoResponse {
+		return v.ServiceTreeInfos
+	}).(ServiceTreeInfoResponseArrayOutput)
+}
+
+type ResourceTypeRegistrationPropertiesResponseManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceTypeRegistrationPropertiesResponseManagement)(nil)).Elem()
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) ToResourceTypeRegistrationPropertiesResponseManagementPtrOutput() ResourceTypeRegistrationPropertiesResponseManagementPtrOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) ToResourceTypeRegistrationPropertiesResponseManagementPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResponseManagementPtrOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) Elem() ResourceTypeRegistrationPropertiesResponseManagementOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) ResourceTypeRegistrationPropertiesResponseManagement {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceTypeRegistrationPropertiesResponseManagement
+		return ret
+	}).(ResourceTypeRegistrationPropertiesResponseManagementOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) IncidentContactEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentContactEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) IncidentRoutingService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentRoutingService
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) IncidentRoutingTeam() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentRoutingTeam
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) ManifestOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ManifestOwners
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) ResourceAccessPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceAccessPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) ResourceAccessRoles() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceAccessRoles
+	}).(pulumi.ArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) SchemaOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaOwners
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseManagementPtrOutput) ServiceTreeInfos() ServiceTreeInfoResponseArrayOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseManagement) []ServiceTreeInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTreeInfos
+	}).(ServiceTreeInfoResponseArrayOutput)
+}
+
 type ResourceTypeRegistrationPropertiesResponseRequestHeaderOptions struct {
 	OptInHeaders *string `pulumi:"optInHeaders"`
 }
@@ -9990,6 +11154,77 @@ func (o ResourceTypeRegistrationPropertiesResponseRequestHeaderOptionsPtrOutput)
 		}
 		return v.OptInHeaders
 	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration struct {
+	ApiVersion *string `pulumi:"apiVersion"`
+	Enabled    *bool   `pulumi:"enabled"`
+}
+
+type ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration)(nil)).Elem()
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput) ToResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput() ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput) ToResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration) *string {
+		return v.ApiVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration)(nil)).Elem()
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput) ToResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput() ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput) ToResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutputWithContext(ctx context.Context) ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput {
+	return o
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput) Elem() ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration) ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration
+		return ret
+	}).(ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ResourceTypeRegistrationPropertiesResponseResourceMovePolicy struct {
@@ -10535,6 +11770,8 @@ type ResourceTypeRegistrationResponse struct {
 	// The name of the resource
 	Name       string                                      `pulumi:"name"`
 	Properties *ResourceTypeRegistrationResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -10569,6 +11806,11 @@ func (o ResourceTypeRegistrationResponseOutput) Properties() ResourceTypeRegistr
 	}).(ResourceTypeRegistrationResponsePropertiesPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+func (o ResourceTypeRegistrationResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ResourceTypeRegistrationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceTypeRegistrationResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -10595,27 +11837,32 @@ func (o ResourceTypeRegistrationResponseArrayOutput) Index(i pulumi.IntInput) Re
 }
 
 type ResourceTypeRegistrationResponseProperties struct {
-	AllowedUnauthorizedActions                      []string                                                                                   `pulumi:"allowedUnauthorizedActions"`
-	AuthorizationActionMappings                     []AuthorizationActionMappingResponse                                                       `pulumi:"authorizationActionMappings"`
-	CheckNameAvailabilitySpecifications             *ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecifications             `pulumi:"checkNameAvailabilitySpecifications"`
-	DefaultApiVersion                               *string                                                                                    `pulumi:"defaultApiVersion"`
-	DisallowedActionVerbs                           []string                                                                                   `pulumi:"disallowedActionVerbs"`
-	EnableAsyncOperation                            *bool                                                                                      `pulumi:"enableAsyncOperation"`
-	EnableThirdPartyS2S                             *bool                                                                                      `pulumi:"enableThirdPartyS2S"`
-	Endpoints                                       []ResourceTypeEndpointResponse                                                             `pulumi:"endpoints"`
-	ExtendedLocations                               []ExtendedLocationOptionsResponse                                                          `pulumi:"extendedLocations"`
-	ExtensionOptions                                *ResourceTypeRegistrationPropertiesResponseExtensionOptions                                `pulumi:"extensionOptions"`
-	FeaturesRule                                    *ResourceTypeRegistrationPropertiesResponseFeaturesRule                                    `pulumi:"featuresRule"`
-	IdentityManagement                              *ResourceTypeRegistrationPropertiesResponseIdentityManagement                              `pulumi:"identityManagement"`
-	IsPureProxy                                     *bool                                                                                      `pulumi:"isPureProxy"`
-	LinkedAccessChecks                              []LinkedAccessCheckResponse                                                                `pulumi:"linkedAccessChecks"`
-	LoggingRules                                    []LoggingRuleResponse                                                                      `pulumi:"loggingRules"`
-	MarketplaceType                                 *string                                                                                    `pulumi:"marketplaceType"`
+	AllowedUnauthorizedActions          []string                                                                       `pulumi:"allowedUnauthorizedActions"`
+	AuthorizationActionMappings         []AuthorizationActionMappingResponse                                           `pulumi:"authorizationActionMappings"`
+	CheckNameAvailabilitySpecifications *ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecifications `pulumi:"checkNameAvailabilitySpecifications"`
+	DefaultApiVersion                   *string                                                                        `pulumi:"defaultApiVersion"`
+	DisallowedActionVerbs               []string                                                                       `pulumi:"disallowedActionVerbs"`
+	EnableAsyncOperation                *bool                                                                          `pulumi:"enableAsyncOperation"`
+	EnableThirdPartyS2S                 *bool                                                                          `pulumi:"enableThirdPartyS2S"`
+	Endpoints                           []ResourceTypeEndpointResponse                                                 `pulumi:"endpoints"`
+	ExtendedLocations                   []ExtendedLocationOptionsResponse                                              `pulumi:"extendedLocations"`
+	ExtensionOptions                    *ResourceTypeRegistrationPropertiesResponseExtensionOptions                    `pulumi:"extensionOptions"`
+	FeaturesRule                        *ResourceTypeRegistrationPropertiesResponseFeaturesRule                        `pulumi:"featuresRule"`
+	IdentityManagement                  *ResourceTypeRegistrationPropertiesResponseIdentityManagement                  `pulumi:"identityManagement"`
+	IsPureProxy                         *bool                                                                          `pulumi:"isPureProxy"`
+	LinkedAccessChecks                  []LinkedAccessCheckResponse                                                    `pulumi:"linkedAccessChecks"`
+	LoggingRules                        []LoggingRuleResponse                                                          `pulumi:"loggingRules"`
+	Management                          *ResourceTypeRegistrationPropertiesResponseManagement                          `pulumi:"management"`
+	MarketplaceType                     *string                                                                        `pulumi:"marketplaceType"`
+	OpenApiConfiguration                *OpenApiConfigurationResponse                                                  `pulumi:"openApiConfiguration"`
+	// The provisioned state of the resource.
 	ProvisioningState                               *string                                                                                    `pulumi:"provisioningState"`
 	Regionality                                     *string                                                                                    `pulumi:"regionality"`
 	RequestHeaderOptions                            *ResourceTypeRegistrationPropertiesResponseRequestHeaderOptions                            `pulumi:"requestHeaderOptions"`
 	RequiredFeatures                                []string                                                                                   `pulumi:"requiredFeatures"`
+	ResourceConcurrencyControlOptions               map[string]ResourceConcurrencyControlOptionResponse                                        `pulumi:"resourceConcurrencyControlOptions"`
 	ResourceDeletionPolicy                          *string                                                                                    `pulumi:"resourceDeletionPolicy"`
+	ResourceGraphConfiguration                      *ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration                      `pulumi:"resourceGraphConfiguration"`
 	ResourceMovePolicy                              *ResourceTypeRegistrationPropertiesResponseResourceMovePolicy                              `pulumi:"resourceMovePolicy"`
 	RoutingType                                     *string                                                                                    `pulumi:"routingType"`
 	ServiceTreeInfos                                []ServiceTreeInfoResponse                                                                  `pulumi:"serviceTreeInfos"`
@@ -10714,10 +11961,23 @@ func (o ResourceTypeRegistrationResponsePropertiesOutput) LoggingRules() Logging
 	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) []LoggingRuleResponse { return v.LoggingRules }).(LoggingRuleResponseArrayOutput)
 }
 
+func (o ResourceTypeRegistrationResponsePropertiesOutput) Management() ResourceTypeRegistrationPropertiesResponseManagementPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) *ResourceTypeRegistrationPropertiesResponseManagement {
+		return v.Management
+	}).(ResourceTypeRegistrationPropertiesResponseManagementPtrOutput)
+}
+
 func (o ResourceTypeRegistrationResponsePropertiesOutput) MarketplaceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) *string { return v.MarketplaceType }).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceTypeRegistrationResponsePropertiesOutput) OpenApiConfiguration() OpenApiConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) *OpenApiConfigurationResponse {
+		return v.OpenApiConfiguration
+	}).(OpenApiConfigurationResponsePtrOutput)
+}
+
+// The provisioned state of the resource.
 func (o ResourceTypeRegistrationResponsePropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -10736,8 +11996,20 @@ func (o ResourceTypeRegistrationResponsePropertiesOutput) RequiredFeatures() pul
 	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) []string { return v.RequiredFeatures }).(pulumi.StringArrayOutput)
 }
 
+func (o ResourceTypeRegistrationResponsePropertiesOutput) ResourceConcurrencyControlOptions() ResourceConcurrencyControlOptionResponseMapOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) map[string]ResourceConcurrencyControlOptionResponse {
+		return v.ResourceConcurrencyControlOptions
+	}).(ResourceConcurrencyControlOptionResponseMapOutput)
+}
+
 func (o ResourceTypeRegistrationResponsePropertiesOutput) ResourceDeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) *string { return v.ResourceDeletionPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationResponsePropertiesOutput) ResourceGraphConfiguration() ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationResponseProperties) *ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration {
+		return v.ResourceGraphConfiguration
+	}).(ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput)
 }
 
 func (o ResourceTypeRegistrationResponsePropertiesOutput) ResourceMovePolicy() ResourceTypeRegistrationPropertiesResponseResourceMovePolicyPtrOutput {
@@ -10943,6 +12215,15 @@ func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) LoggingRules() Logg
 	}).(LoggingRuleResponseArrayOutput)
 }
 
+func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) Management() ResourceTypeRegistrationPropertiesResponseManagementPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationResponseProperties) *ResourceTypeRegistrationPropertiesResponseManagement {
+		if v == nil {
+			return nil
+		}
+		return v.Management
+	}).(ResourceTypeRegistrationPropertiesResponseManagementPtrOutput)
+}
+
 func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) MarketplaceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceTypeRegistrationResponseProperties) *string {
 		if v == nil {
@@ -10952,6 +12233,16 @@ func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) MarketplaceType() p
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) OpenApiConfiguration() OpenApiConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationResponseProperties) *OpenApiConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OpenApiConfiguration
+	}).(OpenApiConfigurationResponsePtrOutput)
+}
+
+// The provisioned state of the resource.
 func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceTypeRegistrationResponseProperties) *string {
 		if v == nil {
@@ -10988,6 +12279,15 @@ func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) RequiredFeatures() 
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) ResourceConcurrencyControlOptions() ResourceConcurrencyControlOptionResponseMapOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationResponseProperties) map[string]ResourceConcurrencyControlOptionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceConcurrencyControlOptions
+	}).(ResourceConcurrencyControlOptionResponseMapOutput)
+}
+
 func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) ResourceDeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceTypeRegistrationResponseProperties) *string {
 		if v == nil {
@@ -10995,6 +12295,15 @@ func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) ResourceDeletionPol
 		}
 		return v.ResourceDeletionPolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) ResourceGraphConfiguration() ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput {
+	return o.ApplyT(func(v *ResourceTypeRegistrationResponseProperties) *ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGraphConfiguration
+	}).(ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput)
 }
 
 func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) ResourceMovePolicy() ResourceTypeRegistrationPropertiesResponseResourceMovePolicyPtrOutput {
@@ -11071,6 +12380,7 @@ func (o ResourceTypeRegistrationResponsePropertiesPtrOutput) ThrottlingRules() T
 
 type ServiceTreeInfo struct {
 	ComponentId *string `pulumi:"componentId"`
+	Readiness   *string `pulumi:"readiness"`
 	ServiceId   *string `pulumi:"serviceId"`
 }
 
@@ -11087,6 +12397,7 @@ type ServiceTreeInfoInput interface {
 
 type ServiceTreeInfoArgs struct {
 	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
+	Readiness   pulumi.StringPtrInput `pulumi:"readiness"`
 	ServiceId   pulumi.StringPtrInput `pulumi:"serviceId"`
 }
 
@@ -11145,6 +12456,10 @@ func (o ServiceTreeInfoOutput) ComponentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTreeInfo) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceTreeInfoOutput) Readiness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTreeInfo) *string { return v.Readiness }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceTreeInfoOutput) ServiceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTreeInfo) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
 }
@@ -11171,6 +12486,7 @@ func (o ServiceTreeInfoArrayOutput) Index(i pulumi.IntInput) ServiceTreeInfoOutp
 
 type ServiceTreeInfoResponse struct {
 	ComponentId *string `pulumi:"componentId"`
+	Readiness   *string `pulumi:"readiness"`
 	ServiceId   *string `pulumi:"serviceId"`
 }
 
@@ -11190,6 +12506,10 @@ func (o ServiceTreeInfoResponseOutput) ToServiceTreeInfoResponseOutputWithContex
 
 func (o ServiceTreeInfoResponseOutput) ComponentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTreeInfoResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTreeInfoResponseOutput) Readiness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTreeInfoResponse) *string { return v.Readiness }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTreeInfoResponseOutput) ServiceId() pulumi.StringPtrOutput {
@@ -11702,6 +13022,7 @@ func (o SkuLocationInfoResponseArrayOutput) Index(i pulumi.IntInput) SkuLocation
 }
 
 type SkuResourceProperties struct {
+	// The provisioned state of the resource.
 	ProvisioningState *string      `pulumi:"provisioningState"`
 	SkuSettings       []SkuSetting `pulumi:"skuSettings"`
 }
@@ -11718,6 +13039,7 @@ type SkuResourcePropertiesInput interface {
 }
 
 type SkuResourcePropertiesArgs struct {
+	// The provisioned state of the resource.
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	SkuSettings       SkuSettingArrayInput  `pulumi:"skuSettings"`
 }
@@ -11799,6 +13121,7 @@ func (o SkuResourcePropertiesOutput) ToSkuResourcePropertiesPtrOutputWithContext
 	}).(SkuResourcePropertiesPtrOutput)
 }
 
+// The provisioned state of the resource.
 func (o SkuResourcePropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResourceProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -11831,6 +13154,7 @@ func (o SkuResourcePropertiesPtrOutput) Elem() SkuResourcePropertiesOutput {
 	}).(SkuResourcePropertiesOutput)
 }
 
+// The provisioned state of the resource.
 func (o SkuResourcePropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SkuResourceProperties) *string {
 		if v == nil {
@@ -11850,6 +13174,7 @@ func (o SkuResourcePropertiesPtrOutput) SkuSettings() SkuSettingArrayOutput {
 }
 
 type SkuResourceResponseProperties struct {
+	// The provisioned state of the resource.
 	ProvisioningState *string              `pulumi:"provisioningState"`
 	SkuSettings       []SkuSettingResponse `pulumi:"skuSettings"`
 }
@@ -11868,6 +13193,7 @@ func (o SkuResourceResponsePropertiesOutput) ToSkuResourceResponsePropertiesOutp
 	return o
 }
 
+// The provisioned state of the resource.
 func (o SkuResourceResponsePropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResourceResponseProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -12996,6 +14322,151 @@ func (o SwaggerSpecificationResponseArrayOutput) Index(i pulumi.IntInput) Swagge
 	}).(SwaggerSpecificationResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+type SystemDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataResponsePtrOutput {
+	return o
+}
+
+func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
+	return o
+}
+
+func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SystemDataResponse) SystemDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SystemDataResponse
+		return ret
+	}).(SystemDataResponseOutput)
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponsePtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedByType
+	}).(pulumi.StringPtrOutput)
+}
+
 type ThrottlingMetric struct {
 	Interval *string `pulumi:"interval"`
 	Limit    float64 `pulumi:"limit"`
@@ -13471,6 +14942,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultRolloutResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationCanaryOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationCanaryPtrOutput{})
+	pulumi.RegisterOutputType(DefaultRolloutSpecificationExpeditedRolloutOutput{})
+	pulumi.RegisterOutputType(DefaultRolloutSpecificationExpeditedRolloutPtrOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationHighTrafficOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationHighTrafficPtrOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationLowTrafficOutput{})
@@ -13481,6 +14954,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationProviderRegistrationPtrOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationResponseCanaryOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationResponseCanaryPtrOutput{})
+	pulumi.RegisterOutputType(DefaultRolloutSpecificationResponseExpeditedRolloutOutput{})
+	pulumi.RegisterOutputType(DefaultRolloutSpecificationResponseExpeditedRolloutPtrOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationResponseHighTrafficOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationResponseHighTrafficPtrOutput{})
 	pulumi.RegisterOutputType(DefaultRolloutSpecificationResponseLowTrafficOutput{})
@@ -13530,10 +15005,14 @@ func init() {
 	pulumi.RegisterOutputType(NotificationRegistrationPropertiesOutput{})
 	pulumi.RegisterOutputType(NotificationRegistrationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(NotificationRegistrationResponsePropertiesOutput{})
-	pulumi.RegisterOutputType(OperationsDefinitionOutput{})
-	pulumi.RegisterOutputType(OperationsDefinitionArrayOutput{})
-	pulumi.RegisterOutputType(OperationsDefinitionDisplayOutput{})
-	pulumi.RegisterOutputType(OperationsDefinitionResponseDisplayOutput{})
+	pulumi.RegisterOutputType(OpenApiConfigurationOutput{})
+	pulumi.RegisterOutputType(OpenApiConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(OpenApiConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(OpenApiConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenApiValidationOutput{})
+	pulumi.RegisterOutputType(OpenApiValidationPtrOutput{})
+	pulumi.RegisterOutputType(OpenApiValidationResponseOutput{})
+	pulumi.RegisterOutputType(OpenApiValidationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProviderHubMetadataProviderAuthenticationOutput{})
 	pulumi.RegisterOutputType(ProviderHubMetadataProviderAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(ProviderHubMetadataResponseProviderAuthenticationOutput{})
@@ -13554,6 +15033,10 @@ func init() {
 	pulumi.RegisterOutputType(ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsPtrOutput{})
 	pulumi.RegisterOutputType(ProviderRegistrationResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(ProviderRegistrationResponsePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ResourceConcurrencyControlOptionOutput{})
+	pulumi.RegisterOutputType(ResourceConcurrencyControlOptionMapOutput{})
+	pulumi.RegisterOutputType(ResourceConcurrencyControlOptionResponseOutput{})
+	pulumi.RegisterOutputType(ResourceConcurrencyControlOptionResponseMapOutput{})
 	pulumi.RegisterOutputType(ResourceProviderAuthorizationOutput{})
 	pulumi.RegisterOutputType(ResourceProviderAuthorizationArrayOutput{})
 	pulumi.RegisterOutputType(ResourceProviderAuthorizationResponseOutput{})
@@ -13610,8 +15093,12 @@ func init() {
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesFeaturesRulePtrOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesIdentityManagementOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesIdentityManagementPtrOutput{})
+	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesManagementOutput{})
+	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesManagementPtrOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesRequestHeaderOptionsOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesRequestHeaderOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResourceGraphConfigurationOutput{})
+	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResourceGraphConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResourceMovePolicyOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResourceMovePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecificationsOutput{})
@@ -13622,8 +15109,12 @@ func init() {
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseFeaturesRulePtrOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseIdentityManagementOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseIdentityManagementPtrOutput{})
+	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseManagementOutput{})
+	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseManagementPtrOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseRequestHeaderOptionsOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseRequestHeaderOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationOutput{})
+	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseResourceGraphConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseResourceMovePolicyOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseResourceMovePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourceTypeRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecificationsOutput{})
@@ -13681,6 +15172,8 @@ func init() {
 	pulumi.RegisterOutputType(SwaggerSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(SwaggerSpecificationResponseOutput{})
 	pulumi.RegisterOutputType(SwaggerSpecificationResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(ThrottlingMetricOutput{})
 	pulumi.RegisterOutputType(ThrottlingMetricArrayOutput{})
 	pulumi.RegisterOutputType(ThrottlingMetricResponseOutput{})

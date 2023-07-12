@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified managed HSM Pool.
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2023-02-01.
 func LookupManagedHsm(ctx *pulumi.Context, args *LookupManagedHsmArgs, opts ...pulumi.InvokeOption) (*LookupManagedHsmResult, error) {
 	var rv LookupManagedHsmResult
 	err := ctx.Invoke("azure-native:keyvault:getManagedHsm", args, &rv, opts...)

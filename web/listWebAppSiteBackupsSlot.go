@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets existing backups of an app.
-// API Version: 2020-12-01.
+// Description for Gets existing backups of an app.
+// Azure REST API version: 2022-09-01.
 func ListWebAppSiteBackupsSlot(ctx *pulumi.Context, args *ListWebAppSiteBackupsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppSiteBackupsSlotResult, error) {
 	var rv ListWebAppSiteBackupsSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppSiteBackupsSlot", args, &rv, opts...)

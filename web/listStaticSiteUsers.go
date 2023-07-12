@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the list of users of a static site.
-// API Version: 2020-12-01.
+// Description for Gets the list of users of a static site.
+// Azure REST API version: 2022-09-01.
 func ListStaticSiteUsers(ctx *pulumi.Context, args *ListStaticSiteUsersArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteUsersResult, error) {
 	var rv ListStaticSiteUsersResult
 	err := ctx.Invoke("azure-native:web:listStaticSiteUsers", args, &rv, opts...)

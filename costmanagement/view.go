@@ -12,7 +12,7 @@ import (
 )
 
 // States and configurations of Cost Analysis.
-// API Version: 2019-11-01.
+// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2019-11-01
 type View struct {
 	pulumi.CustomResourceState
 
@@ -22,24 +22,24 @@ type View struct {
 	Chart pulumi.StringPtrOutput `pulumi:"chart"`
 	// Date the user created this view.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Selected currency.
+	// Currency of the current view.
 	Currency pulumi.StringOutput `pulumi:"currency"`
 	// Has definition for data in this report config.
 	DataSet ReportConfigDatasetResponsePtrOutput `pulumi:"dataSet"`
-	// Selected date range for viewing cost in.
-	DateRange pulumi.StringOutput `pulumi:"dateRange"`
+	// Date range of the current view.
+	DateRange pulumi.StringPtrOutput `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
-	// Include monetary commitment
-	IncludeMonetaryCommitment pulumi.BoolOutput `pulumi:"includeMonetaryCommitment"`
+	// If true, report includes monetary commitment.
+	IncludeMonetaryCommitment pulumi.BoolPtrOutput `pulumi:"includeMonetaryCommitment"`
 	// List of KPIs to show in Cost Analysis UI.
 	Kpis KpiPropertiesResponseArrayOutput `pulumi:"kpis"`
 	// Metric to use when displaying costs.
 	Metric pulumi.StringPtrOutput `pulumi:"metric"`
 	// Date when the user last modified this view.
-	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	ModifiedOn pulumi.StringPtrOutput `pulumi:"modifiedOn"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration of 3 sub-views in the Cost Analysis UI.
@@ -92,6 +92,12 @@ func NewView(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20221005preview:View"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230301:View"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230401preview:View"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource View
@@ -132,14 +138,20 @@ type viewArgs struct {
 	Chart *string `pulumi:"chart"`
 	// Has definition for data in this report config.
 	DataSet *ReportConfigDataset `pulumi:"dataSet"`
+	// Date range of the current view.
+	DateRange *string `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName *string `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
 	ETag *string `pulumi:"eTag"`
+	// If true, report includes monetary commitment.
+	IncludeMonetaryCommitment *bool `pulumi:"includeMonetaryCommitment"`
 	// List of KPIs to show in Cost Analysis UI.
 	Kpis []KpiProperties `pulumi:"kpis"`
 	// Metric to use when displaying costs.
 	Metric *string `pulumi:"metric"`
+	// Date when the user last modified this view.
+	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Configuration of 3 sub-views in the Cost Analysis UI.
 	Pivots []PivotProperties `pulumi:"pivots"`
 	// Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
@@ -162,14 +174,20 @@ type ViewArgs struct {
 	Chart pulumi.StringPtrInput
 	// Has definition for data in this report config.
 	DataSet ReportConfigDatasetPtrInput
+	// Date range of the current view.
+	DateRange pulumi.StringPtrInput
 	// User input name of the view. Required.
 	DisplayName pulumi.StringPtrInput
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
 	ETag pulumi.StringPtrInput
+	// If true, report includes monetary commitment.
+	IncludeMonetaryCommitment pulumi.BoolPtrInput
 	// List of KPIs to show in Cost Analysis UI.
 	Kpis KpiPropertiesArrayInput
 	// Metric to use when displaying costs.
 	Metric pulumi.StringPtrInput
+	// Date when the user last modified this view.
+	ModifiedOn pulumi.StringPtrInput
 	// Configuration of 3 sub-views in the Cost Analysis UI.
 	Pivots PivotPropertiesArrayInput
 	// Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
@@ -236,7 +254,7 @@ func (o ViewOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Selected currency.
+// Currency of the current view.
 func (o ViewOutput) Currency() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Currency }).(pulumi.StringOutput)
 }
@@ -246,9 +264,9 @@ func (o ViewOutput) DataSet() ReportConfigDatasetResponsePtrOutput {
 	return o.ApplyT(func(v *View) ReportConfigDatasetResponsePtrOutput { return v.DataSet }).(ReportConfigDatasetResponsePtrOutput)
 }
 
-// Selected date range for viewing cost in.
-func (o ViewOutput) DateRange() pulumi.StringOutput {
-	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.DateRange }).(pulumi.StringOutput)
+// Date range of the current view.
+func (o ViewOutput) DateRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.DateRange }).(pulumi.StringPtrOutput)
 }
 
 // User input name of the view. Required.
@@ -261,9 +279,9 @@ func (o ViewOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.ETag }).(pulumi.StringPtrOutput)
 }
 
-// Include monetary commitment
-func (o ViewOutput) IncludeMonetaryCommitment() pulumi.BoolOutput {
-	return o.ApplyT(func(v *View) pulumi.BoolOutput { return v.IncludeMonetaryCommitment }).(pulumi.BoolOutput)
+// If true, report includes monetary commitment.
+func (o ViewOutput) IncludeMonetaryCommitment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *View) pulumi.BoolPtrOutput { return v.IncludeMonetaryCommitment }).(pulumi.BoolPtrOutput)
 }
 
 // List of KPIs to show in Cost Analysis UI.
@@ -277,8 +295,8 @@ func (o ViewOutput) Metric() pulumi.StringPtrOutput {
 }
 
 // Date when the user last modified this view.
-func (o ViewOutput) ModifiedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+func (o ViewOutput) ModifiedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.ModifiedOn }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

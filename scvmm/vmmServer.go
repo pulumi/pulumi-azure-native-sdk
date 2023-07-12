@@ -12,7 +12,7 @@ import (
 )
 
 // The VmmServers resource definition.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview
 type VmmServer struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +65,9 @@ func NewVmmServer(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:VmmServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:VmmServer"),
 		},
 	})
 	opts = append(opts, aliases)

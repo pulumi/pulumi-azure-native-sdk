@@ -11,7 +11,7 @@ import (
 )
 
 // Get the metadata of a private endpoint connection for the IoT Central Application.
-// API Version: 2021-11-01-preview.
+// Azure REST API version: 2021-11-01-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:iotcentral:getPrivateEndpointConnection", args, &rv, opts...)

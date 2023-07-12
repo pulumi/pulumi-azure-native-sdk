@@ -11,7 +11,7 @@ import (
 )
 
 // The operation to get the extension.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview.
 func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupMachineExtensionResult, error) {
 	var rv LookupMachineExtensionResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getMachineExtension", args, &rv, opts...)
@@ -24,16 +24,18 @@ func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArg
 type LookupMachineExtensionArgs struct {
 	// The name of the machine extension.
 	ExtensionName string `pulumi:"extensionName"`
-	// The name of the machine containing the extension.
-	Name string `pulumi:"name"`
 	// The Resource Group Name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The name of the machine containing the extension.
+	VirtualMachineName string `pulumi:"virtualMachineName"`
 }
 
 // Describes a Machine Extension.
 type LookupMachineExtensionResult struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
+	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// Gets or sets the Id.
@@ -78,10 +80,10 @@ func LookupMachineExtensionOutput(ctx *pulumi.Context, args LookupMachineExtensi
 type LookupMachineExtensionOutputArgs struct {
 	// The name of the machine extension.
 	ExtensionName pulumi.StringInput `pulumi:"extensionName"`
-	// The name of the machine containing the extension.
-	Name pulumi.StringInput `pulumi:"name"`
 	// The Resource Group Name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the machine containing the extension.
+	VirtualMachineName pulumi.StringInput `pulumi:"virtualMachineName"`
 }
 
 func (LookupMachineExtensionOutputArgs) ElementType() reflect.Type {
@@ -106,6 +108,11 @@ func (o LookupMachineExtensionResultOutput) ToLookupMachineExtensionResultOutput
 // Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 func (o LookupMachineExtensionResultOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+func (o LookupMachineExtensionResultOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupMachineExtensionResult) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
 }
 
 // How the extension handler should be forced to update even if the extension configuration has not changed.

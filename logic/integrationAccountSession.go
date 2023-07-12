@@ -12,7 +12,7 @@ import (
 )
 
 // The integration account session.
-// API Version: 2019-05-01.
+// Azure REST API version: 2019-05-01. Prior API version in Azure Native 1.x: 2019-05-01
 type IntegrationAccountSession struct {
 	pulumi.CustomResourceState
 

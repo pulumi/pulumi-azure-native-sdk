@@ -44,6 +44,9 @@ func NewReplica(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:appconfiguration:Replica"),
+		},
+		{
 			Type: pulumi.String("azure-native:appconfiguration/v20220301preview:Replica"),
 		},
 	})

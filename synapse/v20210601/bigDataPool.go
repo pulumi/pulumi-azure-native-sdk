@@ -12,8 +12,6 @@ import (
 )
 
 // A Big Data pool
-//
-// Deprecated: azure-native:synapse/v20210601:BigDataPool is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:BigDataPool to guarantee forwards compatibility.
 type BigDataPool struct {
 	pulumi.CustomResourceState
 

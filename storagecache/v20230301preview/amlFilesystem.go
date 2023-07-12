@@ -77,8 +77,26 @@ func NewAmlFilesystem(ctx *pulumi.Context,
 	if args.Hsm != nil {
 		args.Hsm = args.Hsm.ToAmlFilesystemHsmPtrOutput().ApplyT(func(v *AmlFilesystemHsm) *AmlFilesystemHsm { return v.Defaults() }).(AmlFilesystemHsmPtrOutput)
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230301preview:amlFilesystem"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache:AmlFilesystem"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache:amlFilesystem"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:AmlFilesystem"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:amlFilesystem"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource AmlFilesystem
-	err := ctx.RegisterResource("azure-native:storagecache/v20230301preview:amlFilesystem", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:storagecache/v20230301preview:AmlFilesystem", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -90,7 +108,7 @@ func NewAmlFilesystem(ctx *pulumi.Context,
 func GetAmlFilesystem(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AmlFilesystemState, opts ...pulumi.ResourceOption) (*AmlFilesystem, error) {
 	var resource AmlFilesystem
-	err := ctx.ReadResource("azure-native:storagecache/v20230301preview:amlFilesystem", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:storagecache/v20230301preview:AmlFilesystem", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

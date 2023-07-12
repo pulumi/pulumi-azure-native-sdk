@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of an extension associated with a Visual Studio Team Services account resource.
-// API Version: 2014-04-01-preview.
+// Azure REST API version: 2017-11-01-preview.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:visualstudio:getExtension", args, &rv, opts...)

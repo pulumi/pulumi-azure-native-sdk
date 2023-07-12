@@ -26,7 +26,7 @@ type ViewByScope struct {
 	// Has definition for data in this report config.
 	DataSet ReportConfigDatasetResponsePtrOutput `pulumi:"dataSet"`
 	// Date range of the current view.
-	DateRange pulumi.StringOutput `pulumi:"dateRange"`
+	DateRange pulumi.StringPtrOutput `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -94,6 +94,12 @@ func NewViewByScope(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20221005preview:ViewByScope"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230301:ViewByScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230401preview:ViewByScope"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ViewByScope
@@ -134,6 +140,8 @@ type viewByScopeArgs struct {
 	Chart *string `pulumi:"chart"`
 	// Has definition for data in this report config.
 	DataSet *ReportConfigDataset `pulumi:"dataSet"`
+	// Date range of the current view.
+	DateRange *string `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName *string `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -166,6 +174,8 @@ type ViewByScopeArgs struct {
 	Chart pulumi.StringPtrInput
 	// Has definition for data in this report config.
 	DataSet ReportConfigDatasetPtrInput
+	// Date range of the current view.
+	DateRange pulumi.StringPtrInput
 	// User input name of the view. Required.
 	DisplayName pulumi.StringPtrInput
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -253,8 +263,8 @@ func (o ViewByScopeOutput) DataSet() ReportConfigDatasetResponsePtrOutput {
 }
 
 // Date range of the current view.
-func (o ViewByScopeOutput) DateRange() pulumi.StringOutput {
-	return o.ApplyT(func(v *ViewByScope) pulumi.StringOutput { return v.DateRange }).(pulumi.StringOutput)
+func (o ViewByScopeOutput) DateRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ViewByScope) pulumi.StringPtrOutput { return v.DateRange }).(pulumi.StringPtrOutput)
 }
 
 // User input name of the view. Required.

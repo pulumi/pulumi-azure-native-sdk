@@ -11,7 +11,7 @@ import (
 )
 
 // This method provides the list of product families for the given subscription.
-// API Version: 2021-12-01.
+// Azure REST API version: 2021-12-01.
 func ListProductFamilies(ctx *pulumi.Context, args *ListProductFamiliesArgs, opts ...pulumi.InvokeOption) (*ListProductFamiliesResult, error) {
 	var rv ListProductFamiliesResult
 	err := ctx.Invoke("azure-native:edgeorder:listProductFamilies", args, &rv, opts...)

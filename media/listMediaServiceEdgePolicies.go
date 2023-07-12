@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List the media edge policies associated with the Media Services account.
-// API Version: 2020-05-01.
+// List all the media edge policies associated with the Media Services account.
+// Azure REST API version: 2023-01-01.
 func ListMediaServiceEdgePolicies(ctx *pulumi.Context, args *ListMediaServiceEdgePoliciesArgs, opts ...pulumi.InvokeOption) (*ListMediaServiceEdgePoliciesResult, error) {
 	var rv ListMediaServiceEdgePoliciesResult
 	err := ctx.Invoke("azure-native:media:listMediaServiceEdgePolicies", args, &rv, opts...)

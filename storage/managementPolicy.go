@@ -12,7 +12,7 @@ import (
 )
 
 // The Get Storage Account ManagementPolicies operation response.
-// API Version: 2021-02-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01
 type ManagementPolicy struct {
 	pulumi.CustomResourceState
 

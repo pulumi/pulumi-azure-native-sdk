@@ -12,8 +12,6 @@ import (
 )
 
 // The HDInsight cluster application
-//
-// Deprecated: azure-native:hdinsight/v20210601:Application is being removed in the next major version of this provider. Upgrade to at least azure-native:hdinsight/v20230415preview:Application to guarantee forwards compatibility.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +51,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20180601preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20230415preview:Application"),
 		},
 	})
 	opts = append(opts, aliases)

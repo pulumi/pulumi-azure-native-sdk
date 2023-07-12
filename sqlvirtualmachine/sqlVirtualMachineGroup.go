@@ -12,7 +12,7 @@ import (
 )
 
 // A SQL virtual machine group.
-// API Version: 2017-03-01-preview.
+// Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2017-03-01-preview
 type SqlVirtualMachineGroup struct {
 	pulumi.CustomResourceState
 
@@ -32,6 +32,8 @@ type SqlVirtualMachineGroup struct {
 	SqlImageOffer pulumi.StringPtrOutput `pulumi:"sqlImageOffer"`
 	// SQL image sku.
 	SqlImageSku pulumi.StringPtrOutput `pulumi:"sqlImageSku"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
@@ -68,6 +70,9 @@ func NewSqlVirtualMachineGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachineGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine/v20230101preview:SqlVirtualMachineGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -212,6 +217,11 @@ func (o SqlVirtualMachineGroupOutput) SqlImageOffer() pulumi.StringPtrOutput {
 // SQL image sku.
 func (o SqlVirtualMachineGroupOutput) SqlImageSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringPtrOutput { return v.SqlImageSku }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o SqlVirtualMachineGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SqlVirtualMachineGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

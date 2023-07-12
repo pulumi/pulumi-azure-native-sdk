@@ -12,8 +12,6 @@ import (
 )
 
 // ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
-//
-// Deprecated: azure-native:dataprotection/v20230101:DppResourceGuardProxy is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230401preview:DppResourceGuardProxy to guarantee forwards compatibility.
 type DppResourceGuardProxy struct {
 	pulumi.CustomResourceState
 
@@ -42,6 +40,9 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dataprotection:DppResourceGuardProxy"),
+		},
+		{
 			Type: pulumi.String("azure-native:dataprotection/v20220901preview:DppResourceGuardProxy"),
 		},
 		{
@@ -49,6 +50,12 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20221101preview:DppResourceGuardProxy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:DppResourceGuardProxy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230501:DppResourceGuardProxy"),
 		},
 	})
 	opts = append(opts, aliases)

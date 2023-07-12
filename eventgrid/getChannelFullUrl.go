@@ -11,7 +11,7 @@ import (
 )
 
 // Get the full endpoint URL of a partner destination channel.
-// API Version: 2021-10-15-preview.
+// Azure REST API version: 2022-06-15.
 func GetChannelFullUrl(ctx *pulumi.Context, args *GetChannelFullUrlArgs, opts ...pulumi.InvokeOption) (*GetChannelFullUrlResult, error) {
 	var rv GetChannelFullUrlResult
 	err := ctx.Invoke("azure-native:eventgrid:getChannelFullUrl", args, &rv, opts...)

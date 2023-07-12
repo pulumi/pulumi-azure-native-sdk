@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the extended properties of a product.
-// API Version: 2017-06-01.
+// Azure REST API version: 2022-06-01.
 func ListProductDetails(ctx *pulumi.Context, args *ListProductDetailsArgs, opts ...pulumi.InvokeOption) (*ListProductDetailsResult, error) {
 	var rv ListProductDetailsResult
 	err := ctx.Invoke("azure-native:azurestack:listProductDetails", args, &rv, opts...)

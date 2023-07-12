@@ -11,7 +11,7 @@ import (
 )
 
 // Returns dedicated cloud node
-// API Version: 2019-04-01.
+// Azure REST API version: 2019-04-01.
 func LookupDedicatedCloudNode(ctx *pulumi.Context, args *LookupDedicatedCloudNodeArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedCloudNodeResult, error) {
 	var rv LookupDedicatedCloudNodeResult
 	err := ctx.Invoke("azure-native:vmwarecloudsimple:getDedicatedCloudNode", args, &rv, opts...)

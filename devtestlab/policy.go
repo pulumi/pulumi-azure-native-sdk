@@ -12,7 +12,7 @@ import (
 )
 
 // A Policy.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15
 type Policy struct {
 	pulumi.CustomResourceState
 

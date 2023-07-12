@@ -11,7 +11,7 @@ import (
 )
 
 // Get virtual network.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	var rv LookupVirtualNetworkResult
 	err := ctx.Invoke("azure-native:devtestlab:getVirtualNetwork", args, &rv, opts...)

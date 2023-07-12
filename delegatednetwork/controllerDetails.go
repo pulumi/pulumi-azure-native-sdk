@@ -12,7 +12,7 @@ import (
 )
 
 // Represents an instance of a DNC controller.
-// API Version: 2021-03-15.
+// Azure REST API version: 2021-03-15. Prior API version in Azure Native 1.x: 2021-03-15
 type ControllerDetails struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,9 @@ func NewControllerDetails(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:delegatednetwork/v20210315:ControllerDetails"),
+		},
+		{
+			Type: pulumi.String("azure-native:delegatednetwork/v20230518preview:ControllerDetails"),
 		},
 	})
 	opts = append(opts, aliases)

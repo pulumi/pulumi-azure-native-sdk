@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of the provided virtual machine.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:networkcloud:getVirtualMachine", args, &rv, opts...)
@@ -31,6 +31,8 @@ type LookupVirtualMachineArgs struct {
 type LookupVirtualMachineResult struct {
 	// The name of the administrator to which the ssh public keys will be added into the authorized keys.
 	AdminUsername string `pulumi:"adminUsername"`
+	// The cluster availability zone containing this virtual machine.
+	AvailabilityZone string `pulumi:"availabilityZone"`
 	// The resource ID of the bare metal machine the virtual machine has landed to.
 	BareMetalMachineId string `pulumi:"bareMetalMachineId"`
 	// Selects the boot method for the virtual machine.
@@ -47,7 +49,7 @@ type LookupVirtualMachineResult struct {
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
 	IsolateEmulatorThread *string `pulumi:"isolateEmulatorThread"`
@@ -161,6 +163,11 @@ func (o LookupVirtualMachineResultOutput) AdminUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AdminUsername }).(pulumi.StringOutput)
 }
 
+// The cluster availability zone containing this virtual machine.
+func (o LookupVirtualMachineResultOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
 // The resource ID of the bare metal machine the virtual machine has landed to.
 func (o LookupVirtualMachineResultOutput) BareMetalMachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.BareMetalMachineId }).(pulumi.StringOutput)
@@ -201,7 +208,7 @@ func (o LookupVirtualMachineResultOutput) ExtendedLocation() ExtendedLocationRes
 	return o.ApplyT(func(v LookupVirtualMachineResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupVirtualMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }

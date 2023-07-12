@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets an incident.
-// API Version: 2020-01-01.
+// Gets a given incident.
+// Azure REST API version: 2023-02-01.
 func LookupIncident(ctx *pulumi.Context, args *LookupIncidentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentResult, error) {
 	var rv LookupIncidentResult
 	err := ctx.Invoke("azure-native:securityinsights:getIncident", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupIncident(ctx *pulumi.Context, args *LookupIncidentArgs, opts ...pulum
 type LookupIncidentArgs struct {
 	// Incident ID
 	IncidentId string `pulumi:"incidentId"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
@@ -48,7 +48,7 @@ type LookupIncidentResult struct {
 	Etag *string `pulumi:"etag"`
 	// The time of the first activity in the incident
 	FirstActivityTimeUtc *string `pulumi:"firstActivityTimeUtc"`
-	// Azure resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// A sequential number
 	IncidentNumber int `pulumi:"incidentNumber"`
@@ -60,19 +60,25 @@ type LookupIncidentResult struct {
 	LastActivityTimeUtc *string `pulumi:"lastActivityTimeUtc"`
 	// The last time the incident was updated
 	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
-	// Azure resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Describes a user that the incident is assigned to
 	Owner *IncidentOwnerInfoResponse `pulumi:"owner"`
+	// The incident ID assigned by the incident provider
+	ProviderIncidentId string `pulumi:"providerIncidentId"`
+	// The name of the source provider that generated the incident
+	ProviderName string `pulumi:"providerName"`
 	// List of resource ids of Analytic rules related to the incident
 	RelatedAnalyticRuleIds []string `pulumi:"relatedAnalyticRuleIds"`
 	// The severity of the incident
 	Severity string `pulumi:"severity"`
 	// The status of the incident
 	Status string `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The title of the incident
 	Title string `pulumi:"title"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -92,7 +98,7 @@ func LookupIncidentOutput(ctx *pulumi.Context, args LookupIncidentOutputArgs, op
 type LookupIncidentOutputArgs struct {
 	// Incident ID
 	IncidentId pulumi.StringInput `pulumi:"incidentId"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
@@ -157,7 +163,7 @@ func (o LookupIncidentResultOutput) FirstActivityTimeUtc() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupIncidentResult) *string { return v.FirstActivityTimeUtc }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupIncidentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -187,7 +193,7 @@ func (o LookupIncidentResultOutput) LastModifiedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentResult) string { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o LookupIncidentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -195,6 +201,16 @@ func (o LookupIncidentResultOutput) Name() pulumi.StringOutput {
 // Describes a user that the incident is assigned to
 func (o LookupIncidentResultOutput) Owner() IncidentOwnerInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupIncidentResult) *IncidentOwnerInfoResponse { return v.Owner }).(IncidentOwnerInfoResponsePtrOutput)
+}
+
+// The incident ID assigned by the incident provider
+func (o LookupIncidentResultOutput) ProviderIncidentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIncidentResult) string { return v.ProviderIncidentId }).(pulumi.StringOutput)
+}
+
+// The name of the source provider that generated the incident
+func (o LookupIncidentResultOutput) ProviderName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIncidentResult) string { return v.ProviderName }).(pulumi.StringOutput)
 }
 
 // List of resource ids of Analytic rules related to the incident
@@ -212,12 +228,17 @@ func (o LookupIncidentResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupIncidentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIncidentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The title of the incident
 func (o LookupIncidentResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentResult) string { return v.Title }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupIncidentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentResult) string { return v.Type }).(pulumi.StringOutput)
 }

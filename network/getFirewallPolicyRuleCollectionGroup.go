@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified FirewallPolicyRuleCollectionGroup.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupFirewallPolicyRuleCollectionGroup(ctx *pulumi.Context, args *LookupFirewallPolicyRuleCollectionGroupArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyRuleCollectionGroupResult, error) {
 	var rv LookupFirewallPolicyRuleCollectionGroupResult
 	err := ctx.Invoke("azure-native:network:getFirewallPolicyRuleCollectionGroup", args, &rv, opts...)

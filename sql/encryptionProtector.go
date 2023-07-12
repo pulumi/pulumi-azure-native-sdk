@@ -12,7 +12,7 @@ import (
 )
 
 // The server encryption protector.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type EncryptionProtector struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +90,9 @@ func NewEncryptionProtector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:EncryptionProtector"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:EncryptionProtector"),
 		},
 	})
 	opts = append(opts, aliases)

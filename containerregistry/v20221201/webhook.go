@@ -12,8 +12,6 @@ import (
 )
 
 // An object that represents a webhook for a container registry.
-//
-// Deprecated: azure-native:containerregistry/v20221201:Webhook is being removed in the next major version of this provider. Upgrade to at least azure-native:containerregistry/v20230101preview:Webhook to guarantee forwards compatibility.
 type Webhook struct {
 	pulumi.CustomResourceState
 

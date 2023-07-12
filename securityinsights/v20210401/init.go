@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:securityinsights/v20210401:Incident":
-		r = &Incident{}
-	case "azure-native:securityinsights/v20210401:IncidentComment":
-		r = &IncidentComment{}
-	case "azure-native:securityinsights/v20210401:IncidentRelation":
-		r = &IncidentRelation{}
 	case "azure-native:securityinsights/v20210401:ThreatIntelligenceIndicator":
 		r = &ThreatIntelligenceIndicator{}
 	case "azure-native:securityinsights/v20210401:Watchlist":

@@ -10,6 +10,924 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+type ClusterPropertiesCustomerManagedKeyEncryption struct {
+	// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+	KeyEncryptionKeyIdentity *ClusterPropertiesKeyEncryptionKeyIdentity `pulumi:"keyEncryptionKeyIdentity"`
+	// Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
+	KeyEncryptionKeyUrl *string `pulumi:"keyEncryptionKeyUrl"`
+}
+
+// ClusterPropertiesCustomerManagedKeyEncryptionInput is an input type that accepts ClusterPropertiesCustomerManagedKeyEncryptionArgs and ClusterPropertiesCustomerManagedKeyEncryptionOutput values.
+// You can construct a concrete instance of `ClusterPropertiesCustomerManagedKeyEncryptionInput` via:
+//
+//	ClusterPropertiesCustomerManagedKeyEncryptionArgs{...}
+type ClusterPropertiesCustomerManagedKeyEncryptionInput interface {
+	pulumi.Input
+
+	ToClusterPropertiesCustomerManagedKeyEncryptionOutput() ClusterPropertiesCustomerManagedKeyEncryptionOutput
+	ToClusterPropertiesCustomerManagedKeyEncryptionOutputWithContext(context.Context) ClusterPropertiesCustomerManagedKeyEncryptionOutput
+}
+
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+type ClusterPropertiesCustomerManagedKeyEncryptionArgs struct {
+	// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+	KeyEncryptionKeyIdentity ClusterPropertiesKeyEncryptionKeyIdentityPtrInput `pulumi:"keyEncryptionKeyIdentity"`
+	// Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
+	KeyEncryptionKeyUrl pulumi.StringPtrInput `pulumi:"keyEncryptionKeyUrl"`
+}
+
+func (ClusterPropertiesCustomerManagedKeyEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesCustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (i ClusterPropertiesCustomerManagedKeyEncryptionArgs) ToClusterPropertiesCustomerManagedKeyEncryptionOutput() ClusterPropertiesCustomerManagedKeyEncryptionOutput {
+	return i.ToClusterPropertiesCustomerManagedKeyEncryptionOutputWithContext(context.Background())
+}
+
+func (i ClusterPropertiesCustomerManagedKeyEncryptionArgs) ToClusterPropertiesCustomerManagedKeyEncryptionOutputWithContext(ctx context.Context) ClusterPropertiesCustomerManagedKeyEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesCustomerManagedKeyEncryptionOutput)
+}
+
+func (i ClusterPropertiesCustomerManagedKeyEncryptionArgs) ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutput() ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return i.ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPropertiesCustomerManagedKeyEncryptionArgs) ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesCustomerManagedKeyEncryptionOutput).ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(ctx)
+}
+
+// ClusterPropertiesCustomerManagedKeyEncryptionPtrInput is an input type that accepts ClusterPropertiesCustomerManagedKeyEncryptionArgs, ClusterPropertiesCustomerManagedKeyEncryptionPtr and ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput values.
+// You can construct a concrete instance of `ClusterPropertiesCustomerManagedKeyEncryptionPtrInput` via:
+//
+//	        ClusterPropertiesCustomerManagedKeyEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPropertiesCustomerManagedKeyEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutput() ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput
+	ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(context.Context) ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput
+}
+
+type clusterPropertiesCustomerManagedKeyEncryptionPtrType ClusterPropertiesCustomerManagedKeyEncryptionArgs
+
+func ClusterPropertiesCustomerManagedKeyEncryptionPtr(v *ClusterPropertiesCustomerManagedKeyEncryptionArgs) ClusterPropertiesCustomerManagedKeyEncryptionPtrInput {
+	return (*clusterPropertiesCustomerManagedKeyEncryptionPtrType)(v)
+}
+
+func (*clusterPropertiesCustomerManagedKeyEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesCustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (i *clusterPropertiesCustomerManagedKeyEncryptionPtrType) ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutput() ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return i.ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPropertiesCustomerManagedKeyEncryptionPtrType) ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput)
+}
+
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+type ClusterPropertiesCustomerManagedKeyEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesCustomerManagedKeyEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesCustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (o ClusterPropertiesCustomerManagedKeyEncryptionOutput) ToClusterPropertiesCustomerManagedKeyEncryptionOutput() ClusterPropertiesCustomerManagedKeyEncryptionOutput {
+	return o
+}
+
+func (o ClusterPropertiesCustomerManagedKeyEncryptionOutput) ToClusterPropertiesCustomerManagedKeyEncryptionOutputWithContext(ctx context.Context) ClusterPropertiesCustomerManagedKeyEncryptionOutput {
+	return o
+}
+
+func (o ClusterPropertiesCustomerManagedKeyEncryptionOutput) ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutput() ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return o.ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPropertiesCustomerManagedKeyEncryptionOutput) ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPropertiesCustomerManagedKeyEncryption) *ClusterPropertiesCustomerManagedKeyEncryption {
+		return &v
+	}).(ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+func (o ClusterPropertiesCustomerManagedKeyEncryptionOutput) KeyEncryptionKeyIdentity() ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesCustomerManagedKeyEncryption) *ClusterPropertiesKeyEncryptionKeyIdentity {
+		return v.KeyEncryptionKeyIdentity
+	}).(ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
+func (o ClusterPropertiesCustomerManagedKeyEncryptionOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesCustomerManagedKeyEncryption) *string { return v.KeyEncryptionKeyUrl }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesCustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (o ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput) ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutput() ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput) ToClusterPropertiesCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput) Elem() ClusterPropertiesCustomerManagedKeyEncryptionOutput {
+	return o.ApplyT(func(v *ClusterPropertiesCustomerManagedKeyEncryption) ClusterPropertiesCustomerManagedKeyEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPropertiesCustomerManagedKeyEncryption
+		return ret
+	}).(ClusterPropertiesCustomerManagedKeyEncryptionOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+func (o ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput) KeyEncryptionKeyIdentity() ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesCustomerManagedKeyEncryption) *ClusterPropertiesKeyEncryptionKeyIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKeyIdentity
+	}).(ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
+func (o ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesCustomerManagedKeyEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKeyUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption-at-rest configuration for the cluster.
+type ClusterPropertiesEncryption struct {
+	// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+	CustomerManagedKeyEncryption *ClusterPropertiesCustomerManagedKeyEncryption `pulumi:"customerManagedKeyEncryption"`
+}
+
+// ClusterPropertiesEncryptionInput is an input type that accepts ClusterPropertiesEncryptionArgs and ClusterPropertiesEncryptionOutput values.
+// You can construct a concrete instance of `ClusterPropertiesEncryptionInput` via:
+//
+//	ClusterPropertiesEncryptionArgs{...}
+type ClusterPropertiesEncryptionInput interface {
+	pulumi.Input
+
+	ToClusterPropertiesEncryptionOutput() ClusterPropertiesEncryptionOutput
+	ToClusterPropertiesEncryptionOutputWithContext(context.Context) ClusterPropertiesEncryptionOutput
+}
+
+// Encryption-at-rest configuration for the cluster.
+type ClusterPropertiesEncryptionArgs struct {
+	// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+	CustomerManagedKeyEncryption ClusterPropertiesCustomerManagedKeyEncryptionPtrInput `pulumi:"customerManagedKeyEncryption"`
+}
+
+func (ClusterPropertiesEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesEncryption)(nil)).Elem()
+}
+
+func (i ClusterPropertiesEncryptionArgs) ToClusterPropertiesEncryptionOutput() ClusterPropertiesEncryptionOutput {
+	return i.ToClusterPropertiesEncryptionOutputWithContext(context.Background())
+}
+
+func (i ClusterPropertiesEncryptionArgs) ToClusterPropertiesEncryptionOutputWithContext(ctx context.Context) ClusterPropertiesEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesEncryptionOutput)
+}
+
+func (i ClusterPropertiesEncryptionArgs) ToClusterPropertiesEncryptionPtrOutput() ClusterPropertiesEncryptionPtrOutput {
+	return i.ToClusterPropertiesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPropertiesEncryptionArgs) ToClusterPropertiesEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesEncryptionOutput).ToClusterPropertiesEncryptionPtrOutputWithContext(ctx)
+}
+
+// ClusterPropertiesEncryptionPtrInput is an input type that accepts ClusterPropertiesEncryptionArgs, ClusterPropertiesEncryptionPtr and ClusterPropertiesEncryptionPtrOutput values.
+// You can construct a concrete instance of `ClusterPropertiesEncryptionPtrInput` via:
+//
+//	        ClusterPropertiesEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPropertiesEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToClusterPropertiesEncryptionPtrOutput() ClusterPropertiesEncryptionPtrOutput
+	ToClusterPropertiesEncryptionPtrOutputWithContext(context.Context) ClusterPropertiesEncryptionPtrOutput
+}
+
+type clusterPropertiesEncryptionPtrType ClusterPropertiesEncryptionArgs
+
+func ClusterPropertiesEncryptionPtr(v *ClusterPropertiesEncryptionArgs) ClusterPropertiesEncryptionPtrInput {
+	return (*clusterPropertiesEncryptionPtrType)(v)
+}
+
+func (*clusterPropertiesEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesEncryption)(nil)).Elem()
+}
+
+func (i *clusterPropertiesEncryptionPtrType) ToClusterPropertiesEncryptionPtrOutput() ClusterPropertiesEncryptionPtrOutput {
+	return i.ToClusterPropertiesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPropertiesEncryptionPtrType) ToClusterPropertiesEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesEncryptionPtrOutput)
+}
+
+// Encryption-at-rest configuration for the cluster.
+type ClusterPropertiesEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesEncryption)(nil)).Elem()
+}
+
+func (o ClusterPropertiesEncryptionOutput) ToClusterPropertiesEncryptionOutput() ClusterPropertiesEncryptionOutput {
+	return o
+}
+
+func (o ClusterPropertiesEncryptionOutput) ToClusterPropertiesEncryptionOutputWithContext(ctx context.Context) ClusterPropertiesEncryptionOutput {
+	return o
+}
+
+func (o ClusterPropertiesEncryptionOutput) ToClusterPropertiesEncryptionPtrOutput() ClusterPropertiesEncryptionPtrOutput {
+	return o.ToClusterPropertiesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPropertiesEncryptionOutput) ToClusterPropertiesEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPropertiesEncryption) *ClusterPropertiesEncryption {
+		return &v
+	}).(ClusterPropertiesEncryptionPtrOutput)
+}
+
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+func (o ClusterPropertiesEncryptionOutput) CustomerManagedKeyEncryption() ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesEncryption) *ClusterPropertiesCustomerManagedKeyEncryption {
+		return v.CustomerManagedKeyEncryption
+	}).(ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput)
+}
+
+type ClusterPropertiesEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesEncryption)(nil)).Elem()
+}
+
+func (o ClusterPropertiesEncryptionPtrOutput) ToClusterPropertiesEncryptionPtrOutput() ClusterPropertiesEncryptionPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesEncryptionPtrOutput) ToClusterPropertiesEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesEncryptionPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesEncryptionPtrOutput) Elem() ClusterPropertiesEncryptionOutput {
+	return o.ApplyT(func(v *ClusterPropertiesEncryption) ClusterPropertiesEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPropertiesEncryption
+		return ret
+	}).(ClusterPropertiesEncryptionOutput)
+}
+
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+func (o ClusterPropertiesEncryptionPtrOutput) CustomerManagedKeyEncryption() ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesEncryption) *ClusterPropertiesCustomerManagedKeyEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedKeyEncryption
+	}).(ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type ClusterPropertiesKeyEncryptionKeyIdentity struct {
+	// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
+	IdentityType *string `pulumi:"identityType"`
+	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
+}
+
+// ClusterPropertiesKeyEncryptionKeyIdentityInput is an input type that accepts ClusterPropertiesKeyEncryptionKeyIdentityArgs and ClusterPropertiesKeyEncryptionKeyIdentityOutput values.
+// You can construct a concrete instance of `ClusterPropertiesKeyEncryptionKeyIdentityInput` via:
+//
+//	ClusterPropertiesKeyEncryptionKeyIdentityArgs{...}
+type ClusterPropertiesKeyEncryptionKeyIdentityInput interface {
+	pulumi.Input
+
+	ToClusterPropertiesKeyEncryptionKeyIdentityOutput() ClusterPropertiesKeyEncryptionKeyIdentityOutput
+	ToClusterPropertiesKeyEncryptionKeyIdentityOutputWithContext(context.Context) ClusterPropertiesKeyEncryptionKeyIdentityOutput
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type ClusterPropertiesKeyEncryptionKeyIdentityArgs struct {
+	// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+	UserAssignedIdentityResourceId pulumi.StringPtrInput `pulumi:"userAssignedIdentityResourceId"`
+}
+
+func (ClusterPropertiesKeyEncryptionKeyIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (i ClusterPropertiesKeyEncryptionKeyIdentityArgs) ToClusterPropertiesKeyEncryptionKeyIdentityOutput() ClusterPropertiesKeyEncryptionKeyIdentityOutput {
+	return i.ToClusterPropertiesKeyEncryptionKeyIdentityOutputWithContext(context.Background())
+}
+
+func (i ClusterPropertiesKeyEncryptionKeyIdentityArgs) ToClusterPropertiesKeyEncryptionKeyIdentityOutputWithContext(ctx context.Context) ClusterPropertiesKeyEncryptionKeyIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesKeyEncryptionKeyIdentityOutput)
+}
+
+func (i ClusterPropertiesKeyEncryptionKeyIdentityArgs) ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutput() ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return i.ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPropertiesKeyEncryptionKeyIdentityArgs) ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesKeyEncryptionKeyIdentityOutput).ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(ctx)
+}
+
+// ClusterPropertiesKeyEncryptionKeyIdentityPtrInput is an input type that accepts ClusterPropertiesKeyEncryptionKeyIdentityArgs, ClusterPropertiesKeyEncryptionKeyIdentityPtr and ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput values.
+// You can construct a concrete instance of `ClusterPropertiesKeyEncryptionKeyIdentityPtrInput` via:
+//
+//	        ClusterPropertiesKeyEncryptionKeyIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPropertiesKeyEncryptionKeyIdentityPtrInput interface {
+	pulumi.Input
+
+	ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutput() ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput
+	ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(context.Context) ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput
+}
+
+type clusterPropertiesKeyEncryptionKeyIdentityPtrType ClusterPropertiesKeyEncryptionKeyIdentityArgs
+
+func ClusterPropertiesKeyEncryptionKeyIdentityPtr(v *ClusterPropertiesKeyEncryptionKeyIdentityArgs) ClusterPropertiesKeyEncryptionKeyIdentityPtrInput {
+	return (*clusterPropertiesKeyEncryptionKeyIdentityPtrType)(v)
+}
+
+func (*clusterPropertiesKeyEncryptionKeyIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (i *clusterPropertiesKeyEncryptionKeyIdentityPtrType) ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutput() ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return i.ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPropertiesKeyEncryptionKeyIdentityPtrType) ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type ClusterPropertiesKeyEncryptionKeyIdentityOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesKeyEncryptionKeyIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (o ClusterPropertiesKeyEncryptionKeyIdentityOutput) ToClusterPropertiesKeyEncryptionKeyIdentityOutput() ClusterPropertiesKeyEncryptionKeyIdentityOutput {
+	return o
+}
+
+func (o ClusterPropertiesKeyEncryptionKeyIdentityOutput) ToClusterPropertiesKeyEncryptionKeyIdentityOutputWithContext(ctx context.Context) ClusterPropertiesKeyEncryptionKeyIdentityOutput {
+	return o
+}
+
+func (o ClusterPropertiesKeyEncryptionKeyIdentityOutput) ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutput() ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return o.ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPropertiesKeyEncryptionKeyIdentityOutput) ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPropertiesKeyEncryptionKeyIdentity) *ClusterPropertiesKeyEncryptionKeyIdentity {
+		return &v
+	}).(ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
+func (o ClusterPropertiesKeyEncryptionKeyIdentityOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesKeyEncryptionKeyIdentity) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+func (o ClusterPropertiesKeyEncryptionKeyIdentityOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesKeyEncryptionKeyIdentity) *string { return v.UserAssignedIdentityResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (o ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput) ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutput() ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput) ToClusterPropertiesKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput) Elem() ClusterPropertiesKeyEncryptionKeyIdentityOutput {
+	return o.ApplyT(func(v *ClusterPropertiesKeyEncryptionKeyIdentity) ClusterPropertiesKeyEncryptionKeyIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPropertiesKeyEncryptionKeyIdentity
+		return ret
+	}).(ClusterPropertiesKeyEncryptionKeyIdentityOutput)
+}
+
+// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
+func (o ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+func (o ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+type ClusterPropertiesResponseCustomerManagedKeyEncryption struct {
+	// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+	KeyEncryptionKeyIdentity *ClusterPropertiesResponseKeyEncryptionKeyIdentity `pulumi:"keyEncryptionKeyIdentity"`
+	// Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
+	KeyEncryptionKeyUrl *string `pulumi:"keyEncryptionKeyUrl"`
+}
+
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+type ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesResponseCustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput) ToClusterPropertiesResponseCustomerManagedKeyEncryptionOutput() ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput) ToClusterPropertiesResponseCustomerManagedKeyEncryptionOutputWithContext(ctx context.Context) ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput {
+	return o
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput) KeyEncryptionKeyIdentity() ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesResponseCustomerManagedKeyEncryption) *ClusterPropertiesResponseKeyEncryptionKeyIdentity {
+		return v.KeyEncryptionKeyIdentity
+	}).(ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesResponseCustomerManagedKeyEncryption) *string { return v.KeyEncryptionKeyUrl }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesResponseCustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput) ToClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput() ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput) ToClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput) Elem() ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput {
+	return o.ApplyT(func(v *ClusterPropertiesResponseCustomerManagedKeyEncryption) ClusterPropertiesResponseCustomerManagedKeyEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPropertiesResponseCustomerManagedKeyEncryption
+		return ret
+	}).(ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput) KeyEncryptionKeyIdentity() ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesResponseCustomerManagedKeyEncryption) *ClusterPropertiesResponseKeyEncryptionKeyIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKeyIdentity
+	}).(ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
+func (o ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesResponseCustomerManagedKeyEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKeyUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption-at-rest configuration for the cluster.
+type ClusterPropertiesResponseEncryption struct {
+	// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+	CustomerManagedKeyEncryption *ClusterPropertiesResponseCustomerManagedKeyEncryption `pulumi:"customerManagedKeyEncryption"`
+}
+
+// Encryption-at-rest configuration for the cluster.
+type ClusterPropertiesResponseEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesResponseEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesResponseEncryption)(nil)).Elem()
+}
+
+func (o ClusterPropertiesResponseEncryptionOutput) ToClusterPropertiesResponseEncryptionOutput() ClusterPropertiesResponseEncryptionOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseEncryptionOutput) ToClusterPropertiesResponseEncryptionOutputWithContext(ctx context.Context) ClusterPropertiesResponseEncryptionOutput {
+	return o
+}
+
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+func (o ClusterPropertiesResponseEncryptionOutput) CustomerManagedKeyEncryption() ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesResponseEncryption) *ClusterPropertiesResponseCustomerManagedKeyEncryption {
+		return v.CustomerManagedKeyEncryption
+	}).(ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput)
+}
+
+type ClusterPropertiesResponseEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesResponseEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesResponseEncryption)(nil)).Elem()
+}
+
+func (o ClusterPropertiesResponseEncryptionPtrOutput) ToClusterPropertiesResponseEncryptionPtrOutput() ClusterPropertiesResponseEncryptionPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseEncryptionPtrOutput) ToClusterPropertiesResponseEncryptionPtrOutputWithContext(ctx context.Context) ClusterPropertiesResponseEncryptionPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseEncryptionPtrOutput) Elem() ClusterPropertiesResponseEncryptionOutput {
+	return o.ApplyT(func(v *ClusterPropertiesResponseEncryption) ClusterPropertiesResponseEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPropertiesResponseEncryption
+		return ret
+	}).(ClusterPropertiesResponseEncryptionOutput)
+}
+
+// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
+func (o ClusterPropertiesResponseEncryptionPtrOutput) CustomerManagedKeyEncryption() ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesResponseEncryption) *ClusterPropertiesResponseCustomerManagedKeyEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedKeyEncryption
+	}).(ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type ClusterPropertiesResponseKeyEncryptionKeyIdentity struct {
+	// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
+	IdentityType *string `pulumi:"identityType"`
+	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPropertiesResponseKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput) ToClusterPropertiesResponseKeyEncryptionKeyIdentityOutput() ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput) ToClusterPropertiesResponseKeyEncryptionKeyIdentityOutputWithContext(ctx context.Context) ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput {
+	return o
+}
+
+// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesResponseKeyEncryptionKeyIdentity) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPropertiesResponseKeyEncryptionKeyIdentity) *string {
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPropertiesResponseKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput) ToClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput() ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput) ToClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput {
+	return o
+}
+
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput) Elem() ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput {
+	return o.ApplyT(func(v *ClusterPropertiesResponseKeyEncryptionKeyIdentity) ClusterPropertiesResponseKeyEncryptionKeyIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPropertiesResponseKeyEncryptionKeyIdentity
+		return ret
+	}).(ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput)
+}
+
+// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesResponseKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+func (o ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPropertiesResponseKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional set of properties to configure geo replication for this database.
+type DatabasePropertiesGeoReplication struct {
+	// Name for the group of linked database resources
+	GroupNickname *string `pulumi:"groupNickname"`
+	// List of database resources to link with this database
+	LinkedDatabases []LinkedDatabase `pulumi:"linkedDatabases"`
+}
+
+// DatabasePropertiesGeoReplicationInput is an input type that accepts DatabasePropertiesGeoReplicationArgs and DatabasePropertiesGeoReplicationOutput values.
+// You can construct a concrete instance of `DatabasePropertiesGeoReplicationInput` via:
+//
+//	DatabasePropertiesGeoReplicationArgs{...}
+type DatabasePropertiesGeoReplicationInput interface {
+	pulumi.Input
+
+	ToDatabasePropertiesGeoReplicationOutput() DatabasePropertiesGeoReplicationOutput
+	ToDatabasePropertiesGeoReplicationOutputWithContext(context.Context) DatabasePropertiesGeoReplicationOutput
+}
+
+// Optional set of properties to configure geo replication for this database.
+type DatabasePropertiesGeoReplicationArgs struct {
+	// Name for the group of linked database resources
+	GroupNickname pulumi.StringPtrInput `pulumi:"groupNickname"`
+	// List of database resources to link with this database
+	LinkedDatabases LinkedDatabaseArrayInput `pulumi:"linkedDatabases"`
+}
+
+func (DatabasePropertiesGeoReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePropertiesGeoReplication)(nil)).Elem()
+}
+
+func (i DatabasePropertiesGeoReplicationArgs) ToDatabasePropertiesGeoReplicationOutput() DatabasePropertiesGeoReplicationOutput {
+	return i.ToDatabasePropertiesGeoReplicationOutputWithContext(context.Background())
+}
+
+func (i DatabasePropertiesGeoReplicationArgs) ToDatabasePropertiesGeoReplicationOutputWithContext(ctx context.Context) DatabasePropertiesGeoReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePropertiesGeoReplicationOutput)
+}
+
+func (i DatabasePropertiesGeoReplicationArgs) ToDatabasePropertiesGeoReplicationPtrOutput() DatabasePropertiesGeoReplicationPtrOutput {
+	return i.ToDatabasePropertiesGeoReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i DatabasePropertiesGeoReplicationArgs) ToDatabasePropertiesGeoReplicationPtrOutputWithContext(ctx context.Context) DatabasePropertiesGeoReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePropertiesGeoReplicationOutput).ToDatabasePropertiesGeoReplicationPtrOutputWithContext(ctx)
+}
+
+// DatabasePropertiesGeoReplicationPtrInput is an input type that accepts DatabasePropertiesGeoReplicationArgs, DatabasePropertiesGeoReplicationPtr and DatabasePropertiesGeoReplicationPtrOutput values.
+// You can construct a concrete instance of `DatabasePropertiesGeoReplicationPtrInput` via:
+//
+//	        DatabasePropertiesGeoReplicationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabasePropertiesGeoReplicationPtrInput interface {
+	pulumi.Input
+
+	ToDatabasePropertiesGeoReplicationPtrOutput() DatabasePropertiesGeoReplicationPtrOutput
+	ToDatabasePropertiesGeoReplicationPtrOutputWithContext(context.Context) DatabasePropertiesGeoReplicationPtrOutput
+}
+
+type databasePropertiesGeoReplicationPtrType DatabasePropertiesGeoReplicationArgs
+
+func DatabasePropertiesGeoReplicationPtr(v *DatabasePropertiesGeoReplicationArgs) DatabasePropertiesGeoReplicationPtrInput {
+	return (*databasePropertiesGeoReplicationPtrType)(v)
+}
+
+func (*databasePropertiesGeoReplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePropertiesGeoReplication)(nil)).Elem()
+}
+
+func (i *databasePropertiesGeoReplicationPtrType) ToDatabasePropertiesGeoReplicationPtrOutput() DatabasePropertiesGeoReplicationPtrOutput {
+	return i.ToDatabasePropertiesGeoReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *databasePropertiesGeoReplicationPtrType) ToDatabasePropertiesGeoReplicationPtrOutputWithContext(ctx context.Context) DatabasePropertiesGeoReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePropertiesGeoReplicationPtrOutput)
+}
+
+// Optional set of properties to configure geo replication for this database.
+type DatabasePropertiesGeoReplicationOutput struct{ *pulumi.OutputState }
+
+func (DatabasePropertiesGeoReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePropertiesGeoReplication)(nil)).Elem()
+}
+
+func (o DatabasePropertiesGeoReplicationOutput) ToDatabasePropertiesGeoReplicationOutput() DatabasePropertiesGeoReplicationOutput {
+	return o
+}
+
+func (o DatabasePropertiesGeoReplicationOutput) ToDatabasePropertiesGeoReplicationOutputWithContext(ctx context.Context) DatabasePropertiesGeoReplicationOutput {
+	return o
+}
+
+func (o DatabasePropertiesGeoReplicationOutput) ToDatabasePropertiesGeoReplicationPtrOutput() DatabasePropertiesGeoReplicationPtrOutput {
+	return o.ToDatabasePropertiesGeoReplicationPtrOutputWithContext(context.Background())
+}
+
+func (o DatabasePropertiesGeoReplicationOutput) ToDatabasePropertiesGeoReplicationPtrOutputWithContext(ctx context.Context) DatabasePropertiesGeoReplicationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabasePropertiesGeoReplication) *DatabasePropertiesGeoReplication {
+		return &v
+	}).(DatabasePropertiesGeoReplicationPtrOutput)
+}
+
+// Name for the group of linked database resources
+func (o DatabasePropertiesGeoReplicationOutput) GroupNickname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePropertiesGeoReplication) *string { return v.GroupNickname }).(pulumi.StringPtrOutput)
+}
+
+// List of database resources to link with this database
+func (o DatabasePropertiesGeoReplicationOutput) LinkedDatabases() LinkedDatabaseArrayOutput {
+	return o.ApplyT(func(v DatabasePropertiesGeoReplication) []LinkedDatabase { return v.LinkedDatabases }).(LinkedDatabaseArrayOutput)
+}
+
+type DatabasePropertiesGeoReplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabasePropertiesGeoReplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePropertiesGeoReplication)(nil)).Elem()
+}
+
+func (o DatabasePropertiesGeoReplicationPtrOutput) ToDatabasePropertiesGeoReplicationPtrOutput() DatabasePropertiesGeoReplicationPtrOutput {
+	return o
+}
+
+func (o DatabasePropertiesGeoReplicationPtrOutput) ToDatabasePropertiesGeoReplicationPtrOutputWithContext(ctx context.Context) DatabasePropertiesGeoReplicationPtrOutput {
+	return o
+}
+
+func (o DatabasePropertiesGeoReplicationPtrOutput) Elem() DatabasePropertiesGeoReplicationOutput {
+	return o.ApplyT(func(v *DatabasePropertiesGeoReplication) DatabasePropertiesGeoReplication {
+		if v != nil {
+			return *v
+		}
+		var ret DatabasePropertiesGeoReplication
+		return ret
+	}).(DatabasePropertiesGeoReplicationOutput)
+}
+
+// Name for the group of linked database resources
+func (o DatabasePropertiesGeoReplicationPtrOutput) GroupNickname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasePropertiesGeoReplication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupNickname
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of database resources to link with this database
+func (o DatabasePropertiesGeoReplicationPtrOutput) LinkedDatabases() LinkedDatabaseArrayOutput {
+	return o.ApplyT(func(v *DatabasePropertiesGeoReplication) []LinkedDatabase {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedDatabases
+	}).(LinkedDatabaseArrayOutput)
+}
+
+// Optional set of properties to configure geo replication for this database.
+type DatabasePropertiesResponseGeoReplication struct {
+	// Name for the group of linked database resources
+	GroupNickname *string `pulumi:"groupNickname"`
+	// List of database resources to link with this database
+	LinkedDatabases []LinkedDatabaseResponse `pulumi:"linkedDatabases"`
+}
+
+// Optional set of properties to configure geo replication for this database.
+type DatabasePropertiesResponseGeoReplicationOutput struct{ *pulumi.OutputState }
+
+func (DatabasePropertiesResponseGeoReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePropertiesResponseGeoReplication)(nil)).Elem()
+}
+
+func (o DatabasePropertiesResponseGeoReplicationOutput) ToDatabasePropertiesResponseGeoReplicationOutput() DatabasePropertiesResponseGeoReplicationOutput {
+	return o
+}
+
+func (o DatabasePropertiesResponseGeoReplicationOutput) ToDatabasePropertiesResponseGeoReplicationOutputWithContext(ctx context.Context) DatabasePropertiesResponseGeoReplicationOutput {
+	return o
+}
+
+// Name for the group of linked database resources
+func (o DatabasePropertiesResponseGeoReplicationOutput) GroupNickname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePropertiesResponseGeoReplication) *string { return v.GroupNickname }).(pulumi.StringPtrOutput)
+}
+
+// List of database resources to link with this database
+func (o DatabasePropertiesResponseGeoReplicationOutput) LinkedDatabases() LinkedDatabaseResponseArrayOutput {
+	return o.ApplyT(func(v DatabasePropertiesResponseGeoReplication) []LinkedDatabaseResponse { return v.LinkedDatabases }).(LinkedDatabaseResponseArrayOutput)
+}
+
+type DatabasePropertiesResponseGeoReplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabasePropertiesResponseGeoReplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePropertiesResponseGeoReplication)(nil)).Elem()
+}
+
+func (o DatabasePropertiesResponseGeoReplicationPtrOutput) ToDatabasePropertiesResponseGeoReplicationPtrOutput() DatabasePropertiesResponseGeoReplicationPtrOutput {
+	return o
+}
+
+func (o DatabasePropertiesResponseGeoReplicationPtrOutput) ToDatabasePropertiesResponseGeoReplicationPtrOutputWithContext(ctx context.Context) DatabasePropertiesResponseGeoReplicationPtrOutput {
+	return o
+}
+
+func (o DatabasePropertiesResponseGeoReplicationPtrOutput) Elem() DatabasePropertiesResponseGeoReplicationOutput {
+	return o.ApplyT(func(v *DatabasePropertiesResponseGeoReplication) DatabasePropertiesResponseGeoReplication {
+		if v != nil {
+			return *v
+		}
+		var ret DatabasePropertiesResponseGeoReplication
+		return ret
+	}).(DatabasePropertiesResponseGeoReplicationOutput)
+}
+
+// Name for the group of linked database resources
+func (o DatabasePropertiesResponseGeoReplicationPtrOutput) GroupNickname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasePropertiesResponseGeoReplication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupNickname
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of database resources to link with this database
+func (o DatabasePropertiesResponseGeoReplicationPtrOutput) LinkedDatabases() LinkedDatabaseResponseArrayOutput {
+	return o.ApplyT(func(v *DatabasePropertiesResponseGeoReplication) []LinkedDatabaseResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedDatabases
+	}).(LinkedDatabaseResponseArrayOutput)
+}
+
 // SKU parameters supplied to the create RedisEnterprise operation.
 type EnterpriseSku struct {
 	// The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
@@ -107,9 +1025,434 @@ func (o EnterpriseSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseSkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies details of a linked database resource.
+type LinkedDatabase struct {
+	// Resource ID of a database resource to link with this database.
+	Id *string `pulumi:"id"`
+}
+
+// LinkedDatabaseInput is an input type that accepts LinkedDatabaseArgs and LinkedDatabaseOutput values.
+// You can construct a concrete instance of `LinkedDatabaseInput` via:
+//
+//	LinkedDatabaseArgs{...}
+type LinkedDatabaseInput interface {
+	pulumi.Input
+
+	ToLinkedDatabaseOutput() LinkedDatabaseOutput
+	ToLinkedDatabaseOutputWithContext(context.Context) LinkedDatabaseOutput
+}
+
+// Specifies details of a linked database resource.
+type LinkedDatabaseArgs struct {
+	// Resource ID of a database resource to link with this database.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (LinkedDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedDatabase)(nil)).Elem()
+}
+
+func (i LinkedDatabaseArgs) ToLinkedDatabaseOutput() LinkedDatabaseOutput {
+	return i.ToLinkedDatabaseOutputWithContext(context.Background())
+}
+
+func (i LinkedDatabaseArgs) ToLinkedDatabaseOutputWithContext(ctx context.Context) LinkedDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatabaseOutput)
+}
+
+// LinkedDatabaseArrayInput is an input type that accepts LinkedDatabaseArray and LinkedDatabaseArrayOutput values.
+// You can construct a concrete instance of `LinkedDatabaseArrayInput` via:
+//
+//	LinkedDatabaseArray{ LinkedDatabaseArgs{...} }
+type LinkedDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToLinkedDatabaseArrayOutput() LinkedDatabaseArrayOutput
+	ToLinkedDatabaseArrayOutputWithContext(context.Context) LinkedDatabaseArrayOutput
+}
+
+type LinkedDatabaseArray []LinkedDatabaseInput
+
+func (LinkedDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedDatabase)(nil)).Elem()
+}
+
+func (i LinkedDatabaseArray) ToLinkedDatabaseArrayOutput() LinkedDatabaseArrayOutput {
+	return i.ToLinkedDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i LinkedDatabaseArray) ToLinkedDatabaseArrayOutputWithContext(ctx context.Context) LinkedDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatabaseArrayOutput)
+}
+
+// Specifies details of a linked database resource.
+type LinkedDatabaseOutput struct{ *pulumi.OutputState }
+
+func (LinkedDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedDatabase)(nil)).Elem()
+}
+
+func (o LinkedDatabaseOutput) ToLinkedDatabaseOutput() LinkedDatabaseOutput {
+	return o
+}
+
+func (o LinkedDatabaseOutput) ToLinkedDatabaseOutputWithContext(ctx context.Context) LinkedDatabaseOutput {
+	return o
+}
+
+// Resource ID of a database resource to link with this database.
+func (o LinkedDatabaseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LinkedDatabase) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type LinkedDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (LinkedDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedDatabase)(nil)).Elem()
+}
+
+func (o LinkedDatabaseArrayOutput) ToLinkedDatabaseArrayOutput() LinkedDatabaseArrayOutput {
+	return o
+}
+
+func (o LinkedDatabaseArrayOutput) ToLinkedDatabaseArrayOutputWithContext(ctx context.Context) LinkedDatabaseArrayOutput {
+	return o
+}
+
+func (o LinkedDatabaseArrayOutput) Index(i pulumi.IntInput) LinkedDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkedDatabase {
+		return vs[0].([]LinkedDatabase)[vs[1].(int)]
+	}).(LinkedDatabaseOutput)
+}
+
+// Specifies details of a linked database resource.
+type LinkedDatabaseResponse struct {
+	// Resource ID of a database resource to link with this database.
+	Id *string `pulumi:"id"`
+	// State of the link between the database resources.
+	State string `pulumi:"state"`
+}
+
+// Specifies details of a linked database resource.
+type LinkedDatabaseResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkedDatabaseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedDatabaseResponse)(nil)).Elem()
+}
+
+func (o LinkedDatabaseResponseOutput) ToLinkedDatabaseResponseOutput() LinkedDatabaseResponseOutput {
+	return o
+}
+
+func (o LinkedDatabaseResponseOutput) ToLinkedDatabaseResponseOutputWithContext(ctx context.Context) LinkedDatabaseResponseOutput {
+	return o
+}
+
+// Resource ID of a database resource to link with this database.
+func (o LinkedDatabaseResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LinkedDatabaseResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// State of the link between the database resources.
+func (o LinkedDatabaseResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedDatabaseResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type LinkedDatabaseResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LinkedDatabaseResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedDatabaseResponse)(nil)).Elem()
+}
+
+func (o LinkedDatabaseResponseArrayOutput) ToLinkedDatabaseResponseArrayOutput() LinkedDatabaseResponseArrayOutput {
+	return o
+}
+
+func (o LinkedDatabaseResponseArrayOutput) ToLinkedDatabaseResponseArrayOutputWithContext(ctx context.Context) LinkedDatabaseResponseArrayOutput {
+	return o
+}
+
+func (o LinkedDatabaseResponseArrayOutput) Index(i pulumi.IntInput) LinkedDatabaseResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkedDatabaseResponse {
+		return vs[0].([]LinkedDatabaseResponse)[vs[1].(int)]
+	}).(LinkedDatabaseResponseOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // Specifies configuration of a redis module
 type Module struct {
-	// Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+	// Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 	Args *string `pulumi:"args"`
 	// The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
 	Name string `pulumi:"name"`
@@ -128,7 +1471,7 @@ type ModuleInput interface {
 
 // Specifies configuration of a redis module
 type ModuleArgs struct {
-	// Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+	// Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 	Args pulumi.StringPtrInput `pulumi:"args"`
 	// The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
 	Name pulumi.StringInput `pulumi:"name"`
@@ -186,7 +1529,7 @@ func (o ModuleOutput) ToModuleOutputWithContext(ctx context.Context) ModuleOutpu
 	return o
 }
 
-// Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+// Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 func (o ModuleOutput) Args() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Module) *string { return v.Args }).(pulumi.StringPtrOutput)
 }
@@ -218,7 +1561,7 @@ func (o ModuleArrayOutput) Index(i pulumi.IntInput) ModuleOutput {
 
 // Specifies configuration of a redis module
 type ModuleResponse struct {
-	// Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+	// Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 	Args *string `pulumi:"args"`
 	// The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
 	Name string `pulumi:"name"`
@@ -241,7 +1584,7 @@ func (o ModuleResponseOutput) ToModuleResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+// Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 func (o ModuleResponseOutput) Args() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModuleResponse) *string { return v.Args }).(pulumi.StringPtrOutput)
 }
@@ -596,6 +1939,8 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -640,6 +1985,11 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 // The provisioning state of the private endpoint connection resource.
 func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -875,10 +2225,14 @@ func (o RedisAccessKeysResponseOutput) SecondaryKey() pulumi.StringOutput {
 
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
 type RedisCommonPropertiesRedisConfiguration struct {
+	// Specifies whether the aof backup is enabled
+	AofBackupEnabled *string `pulumi:"aofBackupEnabled"`
 	// First storage account connection string
 	AofStorageConnectionString0 *string `pulumi:"aofStorageConnectionString0"`
 	// Second storage account connection string
 	AofStorageConnectionString1 *string `pulumi:"aofStorageConnectionString1"`
+	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+	Authnotrequired *string `pulumi:"authnotrequired"`
 	// Value in megabytes reserved for fragmentation per shard
 	MaxfragmentationmemoryReserved *string `pulumi:"maxfragmentationmemoryReserved"`
 	// Value in megabytes reserved for non-cache usage per shard e.g. failover.
@@ -887,14 +2241,18 @@ type RedisCommonPropertiesRedisConfiguration struct {
 	MaxmemoryPolicy *string `pulumi:"maxmemoryPolicy"`
 	// Value in megabytes reserved for non-cache usage per shard e.g. failover.
 	MaxmemoryReserved *string `pulumi:"maxmemoryReserved"`
+	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
+	PreferredDataPersistenceAuthMethod *string `pulumi:"preferredDataPersistenceAuthMethod"`
 	// Specifies whether the rdb backup is enabled
 	RdbBackupEnabled *string `pulumi:"rdbBackupEnabled"`
-	// Specifies the frequency for creating rdb backup
+	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency *string `pulumi:"rdbBackupFrequency"`
 	// Specifies the maximum number of snapshots for rdb backup
 	RdbBackupMaxSnapshotCount *string `pulumi:"rdbBackupMaxSnapshotCount"`
 	// The storage account connection string for storing rdb file
 	RdbStorageConnectionString *string `pulumi:"rdbStorageConnectionString"`
+	// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
+	StorageSubscriptionId *string `pulumi:"storageSubscriptionId"`
 }
 
 // RedisCommonPropertiesRedisConfigurationInput is an input type that accepts RedisCommonPropertiesRedisConfigurationArgs and RedisCommonPropertiesRedisConfigurationOutput values.
@@ -910,10 +2268,14 @@ type RedisCommonPropertiesRedisConfigurationInput interface {
 
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
 type RedisCommonPropertiesRedisConfigurationArgs struct {
+	// Specifies whether the aof backup is enabled
+	AofBackupEnabled pulumi.StringPtrInput `pulumi:"aofBackupEnabled"`
 	// First storage account connection string
 	AofStorageConnectionString0 pulumi.StringPtrInput `pulumi:"aofStorageConnectionString0"`
 	// Second storage account connection string
 	AofStorageConnectionString1 pulumi.StringPtrInput `pulumi:"aofStorageConnectionString1"`
+	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+	Authnotrequired pulumi.StringPtrInput `pulumi:"authnotrequired"`
 	// Value in megabytes reserved for fragmentation per shard
 	MaxfragmentationmemoryReserved pulumi.StringPtrInput `pulumi:"maxfragmentationmemoryReserved"`
 	// Value in megabytes reserved for non-cache usage per shard e.g. failover.
@@ -922,14 +2284,18 @@ type RedisCommonPropertiesRedisConfigurationArgs struct {
 	MaxmemoryPolicy pulumi.StringPtrInput `pulumi:"maxmemoryPolicy"`
 	// Value in megabytes reserved for non-cache usage per shard e.g. failover.
 	MaxmemoryReserved pulumi.StringPtrInput `pulumi:"maxmemoryReserved"`
+	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
+	PreferredDataPersistenceAuthMethod pulumi.StringPtrInput `pulumi:"preferredDataPersistenceAuthMethod"`
 	// Specifies whether the rdb backup is enabled
 	RdbBackupEnabled pulumi.StringPtrInput `pulumi:"rdbBackupEnabled"`
-	// Specifies the frequency for creating rdb backup
+	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency pulumi.StringPtrInput `pulumi:"rdbBackupFrequency"`
 	// Specifies the maximum number of snapshots for rdb backup
 	RdbBackupMaxSnapshotCount pulumi.StringPtrInput `pulumi:"rdbBackupMaxSnapshotCount"`
 	// The storage account connection string for storing rdb file
 	RdbStorageConnectionString pulumi.StringPtrInput `pulumi:"rdbStorageConnectionString"`
+	// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
+	StorageSubscriptionId pulumi.StringPtrInput `pulumi:"storageSubscriptionId"`
 }
 
 func (RedisCommonPropertiesRedisConfigurationArgs) ElementType() reflect.Type {
@@ -1010,6 +2376,11 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) ToRedisCommonPropertiesRe
 	}).(RedisCommonPropertiesRedisConfigurationPtrOutput)
 }
 
+// Specifies whether the aof backup is enabled
+func (o RedisCommonPropertiesRedisConfigurationOutput) AofBackupEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.AofBackupEnabled }).(pulumi.StringPtrOutput)
+}
+
 // First storage account connection string
 func (o RedisCommonPropertiesRedisConfigurationOutput) AofStorageConnectionString0() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.AofStorageConnectionString0 }).(pulumi.StringPtrOutput)
@@ -1018,6 +2389,11 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) AofStorageConnectionStrin
 // Second storage account connection string
 func (o RedisCommonPropertiesRedisConfigurationOutput) AofStorageConnectionString1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.AofStorageConnectionString1 }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+func (o RedisCommonPropertiesRedisConfigurationOutput) Authnotrequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.Authnotrequired }).(pulumi.StringPtrOutput)
 }
 
 // Value in megabytes reserved for fragmentation per shard
@@ -1040,12 +2416,17 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) MaxmemoryReserved() pulum
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.MaxmemoryReserved }).(pulumi.StringPtrOutput)
 }
 
+// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
+func (o RedisCommonPropertiesRedisConfigurationOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.PreferredDataPersistenceAuthMethod }).(pulumi.StringPtrOutput)
+}
+
 // Specifies whether the rdb backup is enabled
 func (o RedisCommonPropertiesRedisConfigurationOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.RdbBackupEnabled }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the frequency for creating rdb backup
+// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 func (o RedisCommonPropertiesRedisConfigurationOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.RdbBackupFrequency }).(pulumi.StringPtrOutput)
 }
@@ -1058,6 +2439,11 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) RdbBackupMaxSnapshotCount
 // The storage account connection string for storing rdb file
 func (o RedisCommonPropertiesRedisConfigurationOutput) RdbStorageConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.RdbStorageConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
+func (o RedisCommonPropertiesRedisConfigurationOutput) StorageSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.StorageSubscriptionId }).(pulumi.StringPtrOutput)
 }
 
 type RedisCommonPropertiesRedisConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -1084,6 +2470,16 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) Elem() RedisCommonProp
 	}).(RedisCommonPropertiesRedisConfigurationOutput)
 }
 
+// Specifies whether the aof backup is enabled
+func (o RedisCommonPropertiesRedisConfigurationPtrOutput) AofBackupEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AofBackupEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
 // First storage account connection string
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) AofStorageConnectionString0() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
@@ -1101,6 +2497,16 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) AofStorageConnectionSt
 			return nil
 		}
 		return v.AofStorageConnectionString1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+func (o RedisCommonPropertiesRedisConfigurationPtrOutput) Authnotrequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authnotrequired
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1144,6 +2550,16 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) MaxmemoryReserved() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
+func (o RedisCommonPropertiesRedisConfigurationPtrOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredDataPersistenceAuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies whether the rdb backup is enabled
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
@@ -1154,7 +2570,7 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) RdbBackupEnabled() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the frequency for creating rdb backup
+// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
 		if v == nil {
@@ -1184,12 +2600,26 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) RdbStorageConnectionSt
 	}).(pulumi.StringPtrOutput)
 }
 
+// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
+func (o RedisCommonPropertiesRedisConfigurationPtrOutput) StorageSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageSubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
 type RedisCommonPropertiesResponseRedisConfiguration struct {
+	// Specifies whether the aof backup is enabled
+	AofBackupEnabled *string `pulumi:"aofBackupEnabled"`
 	// First storage account connection string
 	AofStorageConnectionString0 *string `pulumi:"aofStorageConnectionString0"`
 	// Second storage account connection string
 	AofStorageConnectionString1 *string `pulumi:"aofStorageConnectionString1"`
+	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+	Authnotrequired *string `pulumi:"authnotrequired"`
 	// The max clients config
 	Maxclients string `pulumi:"maxclients"`
 	// Value in megabytes reserved for fragmentation per shard
@@ -1200,14 +2630,22 @@ type RedisCommonPropertiesResponseRedisConfiguration struct {
 	MaxmemoryPolicy *string `pulumi:"maxmemoryPolicy"`
 	// Value in megabytes reserved for non-cache usage per shard e.g. failover.
 	MaxmemoryReserved *string `pulumi:"maxmemoryReserved"`
+	// Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
+	PreferredDataArchiveAuthMethod string `pulumi:"preferredDataArchiveAuthMethod"`
+	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
+	PreferredDataPersistenceAuthMethod *string `pulumi:"preferredDataPersistenceAuthMethod"`
 	// Specifies whether the rdb backup is enabled
 	RdbBackupEnabled *string `pulumi:"rdbBackupEnabled"`
-	// Specifies the frequency for creating rdb backup
+	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency *string `pulumi:"rdbBackupFrequency"`
 	// Specifies the maximum number of snapshots for rdb backup
 	RdbBackupMaxSnapshotCount *string `pulumi:"rdbBackupMaxSnapshotCount"`
 	// The storage account connection string for storing rdb file
 	RdbStorageConnectionString *string `pulumi:"rdbStorageConnectionString"`
+	// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
+	StorageSubscriptionId *string `pulumi:"storageSubscriptionId"`
+	// Zonal Configuration
+	ZonalConfiguration string `pulumi:"zonalConfiguration"`
 }
 
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
@@ -1225,6 +2663,11 @@ func (o RedisCommonPropertiesResponseRedisConfigurationOutput) ToRedisCommonProp
 	return o
 }
 
+// Specifies whether the aof backup is enabled
+func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AofBackupEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.AofBackupEnabled }).(pulumi.StringPtrOutput)
+}
+
 // First storage account connection string
 func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AofStorageConnectionString0() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.AofStorageConnectionString0 }).(pulumi.StringPtrOutput)
@@ -1233,6 +2676,11 @@ func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AofStorageConnect
 // Second storage account connection string
 func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AofStorageConnectionString1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.AofStorageConnectionString1 }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+func (o RedisCommonPropertiesResponseRedisConfigurationOutput) Authnotrequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.Authnotrequired }).(pulumi.StringPtrOutput)
 }
 
 // The max clients config
@@ -1262,12 +2710,26 @@ func (o RedisCommonPropertiesResponseRedisConfigurationOutput) MaxmemoryReserved
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.MaxmemoryReserved }).(pulumi.StringPtrOutput)
 }
 
+// Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
+func (o RedisCommonPropertiesResponseRedisConfigurationOutput) PreferredDataArchiveAuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) string {
+		return v.PreferredDataArchiveAuthMethod
+	}).(pulumi.StringOutput)
+}
+
+// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
+func (o RedisCommonPropertiesResponseRedisConfigurationOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string {
+		return v.PreferredDataPersistenceAuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies whether the rdb backup is enabled
 func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbBackupEnabled }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the frequency for creating rdb backup
+// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbBackupFrequency }).(pulumi.StringPtrOutput)
 }
@@ -1280,6 +2742,16 @@ func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbBackupMaxSnaps
 // The storage account connection string for storing rdb file
 func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbStorageConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbStorageConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
+func (o RedisCommonPropertiesResponseRedisConfigurationOutput) StorageSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.StorageSubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Zonal Configuration
+func (o RedisCommonPropertiesResponseRedisConfigurationOutput) ZonalConfiguration() pulumi.StringOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) string { return v.ZonalConfiguration }).(pulumi.StringOutput)
 }
 
 type RedisCommonPropertiesResponseRedisConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -1306,6 +2778,16 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Elem() RedisCo
 	}).(RedisCommonPropertiesResponseRedisConfigurationOutput)
 }
 
+// Specifies whether the aof backup is enabled
+func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofBackupEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AofBackupEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
 // First storage account connection string
 func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofStorageConnectionString0() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
@@ -1323,6 +2805,16 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofStorageConn
 			return nil
 		}
 		return v.AofStorageConnectionString1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Authnotrequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authnotrequired
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1376,6 +2868,26 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxmemoryReser
 	}).(pulumi.StringPtrOutput)
 }
 
+// Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
+func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) PreferredDataArchiveAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PreferredDataArchiveAuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
+func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredDataPersistenceAuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies whether the rdb backup is enabled
 func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
@@ -1386,7 +2898,7 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupEnabl
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the frequency for creating rdb backup
+// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
 		if v == nil {
@@ -1416,10 +2928,32 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbStorageConn
 	}).(pulumi.StringPtrOutput)
 }
 
+// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
+func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) StorageSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageSubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Zonal Configuration
+func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) ZonalConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ZonalConfiguration
+	}).(pulumi.StringPtrOutput)
+}
+
 // Details of single instance of redis.
 type RedisInstanceDetailsResponse struct {
-	// Specifies whether the instance is a master node.
+	// Specifies whether the instance is a primary node.
 	IsMaster bool `pulumi:"isMaster"`
+	// Specifies whether the instance is a primary node.
+	IsPrimary bool `pulumi:"isPrimary"`
 	// If enableNonSslPort is true, provides Redis instance Non-SSL port.
 	NonSslPort int `pulumi:"nonSslPort"`
 	// If clustering is enabled, the Shard ID of Redis Instance
@@ -1445,9 +2979,14 @@ func (o RedisInstanceDetailsResponseOutput) ToRedisInstanceDetailsResponseOutput
 	return o
 }
 
-// Specifies whether the instance is a master node.
+// Specifies whether the instance is a primary node.
 func (o RedisInstanceDetailsResponseOutput) IsMaster() pulumi.BoolOutput {
 	return o.ApplyT(func(v RedisInstanceDetailsResponse) bool { return v.IsMaster }).(pulumi.BoolOutput)
+}
+
+// Specifies whether the instance is a primary node.
+func (o RedisInstanceDetailsResponseOutput) IsPrimary() pulumi.BoolOutput {
+	return o.ApplyT(func(v RedisInstanceDetailsResponse) bool { return v.IsPrimary }).(pulumi.BoolOutput)
 }
 
 // If enableNonSslPort is true, provides Redis instance Non-SSL port.
@@ -1827,9 +3366,147 @@ func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(ClusterPropertiesCustomerManagedKeyEncryptionOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesCustomerManagedKeyEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesEncryptionOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesKeyEncryptionKeyIdentityOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesKeyEncryptionKeyIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesResponseCustomerManagedKeyEncryptionOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesResponseCustomerManagedKeyEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesResponseEncryptionOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesResponseEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesResponseKeyEncryptionKeyIdentityOutput{})
+	pulumi.RegisterOutputType(ClusterPropertiesResponseKeyEncryptionKeyIdentityPtrOutput{})
+	pulumi.RegisterOutputType(DatabasePropertiesGeoReplicationOutput{})
+	pulumi.RegisterOutputType(DatabasePropertiesGeoReplicationPtrOutput{})
+	pulumi.RegisterOutputType(DatabasePropertiesResponseGeoReplicationOutput{})
+	pulumi.RegisterOutputType(DatabasePropertiesResponseGeoReplicationPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseSkuOutput{})
 	pulumi.RegisterOutputType(EnterpriseSkuResponseOutput{})
+	pulumi.RegisterOutputType(LinkedDatabaseOutput{})
+	pulumi.RegisterOutputType(LinkedDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(LinkedDatabaseResponseOutput{})
+	pulumi.RegisterOutputType(LinkedDatabaseResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModuleOutput{})
 	pulumi.RegisterOutputType(ModuleArrayOutput{})
 	pulumi.RegisterOutputType(ModuleResponseOutput{})
@@ -1859,4 +3536,7 @@ func init() {
 	pulumi.RegisterOutputType(ScheduleEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a Azure Monitor PrivateLinkScope.
-// API Version: 2019-10-17-preview.
+// Azure REST API version: 2021-07-01-preview.
 func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopeResult, error) {
 	var rv LookupPrivateLinkScopeResult
 	err := ctx.Invoke("azure-native:insights:getPrivateLinkScope", args, &rv, opts...)
@@ -30,19 +30,23 @@ type LookupPrivateLinkScopeArgs struct {
 
 // An Azure Monitor PrivateLinkScope definition.
 type LookupPrivateLinkScopeResult struct {
-	// Azure resource Id
+	// Access mode settings
+	AccessModeSettings AccessModeSettingsResponse `pulumi:"accessModeSettings"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Azure resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Resource tags
+	// System data
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -85,17 +89,22 @@ func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutput
 	return o
 }
 
-// Azure resource Id
+// Access mode settings
+func (o LookupPrivateLinkScopeResultOutput) AccessModeSettings() AccessModeSettingsResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopeResult) AccessModeSettingsResponse { return v.AccessModeSettings }).(AccessModeSettingsResponseOutput)
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateLinkScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o LookupPrivateLinkScopeResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o LookupPrivateLinkScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -112,12 +121,17 @@ func (o LookupPrivateLinkScopeResultOutput) ProvisioningState() pulumi.StringOut
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// System data
+func (o LookupPrivateLinkScopeResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupPrivateLinkScopeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPrivateLinkScopeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Type }).(pulumi.StringOutput)
 }

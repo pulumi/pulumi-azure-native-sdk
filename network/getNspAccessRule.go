@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified NSP access rule by name.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-02-01-preview.
 func LookupNspAccessRule(ctx *pulumi.Context, args *LookupNspAccessRuleArgs, opts ...pulumi.InvokeOption) (*LookupNspAccessRuleResult, error) {
 	var rv LookupNspAccessRuleResult
 	err := ctx.Invoke("azure-native:network:getNspAccessRule", args, &rv, opts...)

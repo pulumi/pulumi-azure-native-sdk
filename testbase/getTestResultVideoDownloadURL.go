@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the download URL of the test execution screen recording.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-04-01-preview.
 func GetTestResultVideoDownloadURL(ctx *pulumi.Context, args *GetTestResultVideoDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultVideoDownloadURLResult, error) {
 	var rv GetTestResultVideoDownloadURLResult
 	err := ctx.Invoke("azure-native:testbase:getTestResultVideoDownloadURL", args, &rv, opts...)

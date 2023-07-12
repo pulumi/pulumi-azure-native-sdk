@@ -12,8 +12,6 @@ import (
 )
 
 // Schema for MSIX Package properties.
-//
-// Deprecated: azure-native:desktopvirtualization/v20220909:MSIXPackage is being removed in the next major version of this provider. Upgrade to at least azure-native:desktopvirtualization/v20221014preview:MSIXPackage to guarantee forwards compatibility.
 type MSIXPackage struct {
 	pulumi.CustomResourceState
 

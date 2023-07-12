@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified address.
-// API Version: 2021-12-01.
+// Azure REST API version: 2021-12-01.
 func LookupAddressByName(ctx *pulumi.Context, args *LookupAddressByNameArgs, opts ...pulumi.InvokeOption) (*LookupAddressByNameResult, error) {
 	var rv LookupAddressByNameResult
 	err := ctx.Invoke("azure-native:edgeorder:getAddressByName", args, &rv, opts...)

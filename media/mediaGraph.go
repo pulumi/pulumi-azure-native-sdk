@@ -12,7 +12,7 @@ import (
 )
 
 // The Media Graph.
-// API Version: 2020-02-01-preview.
+// Azure REST API version: 2020-02-01-preview. Prior API version in Azure Native 1.x: 2020-02-01-preview
 type MediaGraph struct {
 	pulumi.CustomResourceState
 

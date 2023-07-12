@@ -12,8 +12,6 @@ import (
 )
 
 // Policy fragment contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:PolicyFragment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:PolicyFragment to guarantee forwards compatibility.
 type PolicyFragment struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +55,12 @@ func NewPolicyFragment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:PolicyFragment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:PolicyFragment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:PolicyFragment"),
 		},
 	})
 	opts = append(opts, aliases)

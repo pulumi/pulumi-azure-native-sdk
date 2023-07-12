@@ -51,7 +51,7 @@ func parseEnvStringArray(v string) interface{} {
 
 func getEnvOrDefault(def interface{}, parser envParser, vars ...string) interface{} {
 	for _, v := range vars {
-		if value := os.Getenv(v); value != "" {
+		if value, ok := os.LookupEnv(v); ok {
 			if parser != nil {
 				return parser(value)
 			}
@@ -67,7 +67,7 @@ func getEnvOrDefault(def interface{}, parser envParser, vars ...string) interfac
 func PkgVersion() (semver.Version, error) {
 	type sentinal struct{}
 	pkgPath := reflect.TypeOf(sentinal{}).PkgPath()
-	re := regexp.MustCompile("^.*/pulumi-azure-native/sdk(/v\\d+)?")
+	re := regexp.MustCompile("^github.com/pulumi/pulumi-azure-native-sdk/v2(/v\\d+)?")
 	if match := re.FindStringSubmatch(pkgPath); match != nil {
 		vStr := match[1]
 		if len(vStr) == 0 { // If the version capture group was empty, default to v1.

@@ -12,12 +12,14 @@ import (
 )
 
 // Peering Service
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2021-01-01
 type PeeringService struct {
 	pulumi.CustomResourceState
 
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The Log Analytics Workspace Properties
+	LogAnalyticsWorkspaceProperties LogAnalyticsWorkspacePropertiesResponsePtrOutput `pulumi:"logAnalyticsWorkspaceProperties"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The location (state/province) of the customer.
@@ -195,6 +197,13 @@ func (o PeeringServiceOutput) ToPeeringServiceOutputWithContext(ctx context.Cont
 // The location of the resource.
 func (o PeeringServiceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringService) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The Log Analytics Workspace Properties
+func (o PeeringServiceOutput) LogAnalyticsWorkspaceProperties() LogAnalyticsWorkspacePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *PeeringService) LogAnalyticsWorkspacePropertiesResponsePtrOutput {
+		return v.LogAnalyticsWorkspaceProperties
+	}).(LogAnalyticsWorkspacePropertiesResponsePtrOutput)
 }
 
 // The name of the resource.

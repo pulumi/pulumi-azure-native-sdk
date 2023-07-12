@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
-// API Version: 2019-09-01.
+// Azure REST API version: 2019-09-01.
 func LookupQuery(ctx *pulumi.Context, args *LookupQueryArgs, opts ...pulumi.InvokeOption) (*LookupQueryResult, error) {
 	var rv LookupQueryResult
 	err := ctx.Invoke("azure-native:operationalinsights:getQuery", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the federated identity credential.
-// API Version: 2022-01-31-preview.
+// Azure REST API version: 2023-01-31.
 func LookupFederatedIdentityCredential(ctx *pulumi.Context, args *LookupFederatedIdentityCredentialArgs, opts ...pulumi.InvokeOption) (*LookupFederatedIdentityCredentialResult, error) {
 	var rv LookupFederatedIdentityCredentialResult
 	err := ctx.Invoke("azure-native:managedidentity:getFederatedIdentityCredential", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupFederatedIdentityCredential(ctx *pulumi.Context, args *LookupFederate
 type LookupFederatedIdentityCredentialArgs struct {
 	// The name of the federated identity credential resource.
 	FederatedIdentityCredentialResourceName string `pulumi:"federatedIdentityCredentialResourceName"`
-	// The name of the Resource Group to which the identity belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the identity resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -34,7 +34,7 @@ type LookupFederatedIdentityCredentialArgs struct {
 type LookupFederatedIdentityCredentialResult struct {
 	// The list of audiences that can appear in the issued token.
 	Audiences []string `pulumi:"audiences"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The URL of the issuer to be trusted.
 	Issuer string `pulumi:"issuer"`
@@ -42,6 +42,8 @@ type LookupFederatedIdentityCredentialResult struct {
 	Name string `pulumi:"name"`
 	// The identifier of the external identity.
 	Subject string `pulumi:"subject"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -62,7 +64,7 @@ func LookupFederatedIdentityCredentialOutput(ctx *pulumi.Context, args LookupFed
 type LookupFederatedIdentityCredentialOutputArgs struct {
 	// The name of the federated identity credential resource.
 	FederatedIdentityCredentialResourceName pulumi.StringInput `pulumi:"federatedIdentityCredentialResourceName"`
-	// The name of the Resource Group to which the identity belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the identity resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -92,7 +94,7 @@ func (o LookupFederatedIdentityCredentialResultOutput) Audiences() pulumi.String
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) []string { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFederatedIdentityCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -110,6 +112,11 @@ func (o LookupFederatedIdentityCredentialResultOutput) Name() pulumi.StringOutpu
 // The identifier of the external identity.
 func (o LookupFederatedIdentityCredentialResultOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupFederatedIdentityCredentialResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

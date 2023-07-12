@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the names of app settings and connection strings that stick to the slot (not swapped).
-// API Version: 2020-12-01.
+// Description for Gets the names of app settings and connection strings that stick to the slot (not swapped).
+// Azure REST API version: 2022-09-01.
 func LookupWebAppSlotConfigurationNames(ctx *pulumi.Context, args *LookupWebAppSlotConfigurationNamesArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSlotConfigurationNamesResult, error) {
 	var rv LookupWebAppSlotConfigurationNamesResult
 	err := ctx.Invoke("azure-native:web:getWebAppSlotConfigurationNames", args, &rv, opts...)

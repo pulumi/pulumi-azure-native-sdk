@@ -12,13 +12,13 @@ import (
 )
 
 // Represents a relation between two resources
-// API Version: 2019-01-01-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2019-01-01-preview
 type BookmarkRelation struct {
 	pulumi.CustomResourceState
 
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource ID of the related resource
 	RelatedResourceId pulumi.StringOutput `pulumi:"relatedResourceId"`
@@ -28,7 +28,9 @@ type BookmarkRelation struct {
 	RelatedResourceName pulumi.StringOutput `pulumi:"relatedResourceName"`
 	// The resource type of the related resource
 	RelatedResourceType pulumi.StringOutput `pulumi:"relatedResourceType"`
-	// Azure resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -41,9 +43,6 @@ func NewBookmarkRelation(ctx *pulumi.Context,
 
 	if args.BookmarkId == nil {
 		return nil, errors.New("invalid value for required argument 'BookmarkId'")
-	}
-	if args.OperationalInsightsResourceProvider == nil {
-		return nil, errors.New("invalid value for required argument 'OperationalInsightsResourceProvider'")
 	}
 	if args.RelatedResourceId == nil {
 		return nil, errors.New("invalid value for required argument 'RelatedResourceId'")
@@ -98,7 +97,16 @@ func NewBookmarkRelation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:BookmarkRelation"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:BookmarkRelation"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:BookmarkRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:BookmarkRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:BookmarkRelation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -136,13 +144,11 @@ func (BookmarkRelationState) ElementType() reflect.Type {
 type bookmarkRelationArgs struct {
 	// Bookmark ID
 	BookmarkId string `pulumi:"bookmarkId"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The resource ID of the related resource
 	RelatedResourceId string `pulumi:"relatedResourceId"`
 	// Relation Name
 	RelationName *string `pulumi:"relationName"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
@@ -152,13 +158,11 @@ type bookmarkRelationArgs struct {
 type BookmarkRelationArgs struct {
 	// Bookmark ID
 	BookmarkId pulumi.StringInput
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput
 	// The resource ID of the related resource
 	RelatedResourceId pulumi.StringInput
 	// Relation Name
 	RelationName pulumi.StringPtrInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
@@ -206,7 +210,7 @@ func (o BookmarkRelationOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BookmarkRelation) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o BookmarkRelationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BookmarkRelation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -231,7 +235,12 @@ func (o BookmarkRelationOutput) RelatedResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BookmarkRelation) pulumi.StringOutput { return v.RelatedResourceType }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o BookmarkRelationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *BookmarkRelation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o BookmarkRelationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *BookmarkRelation) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

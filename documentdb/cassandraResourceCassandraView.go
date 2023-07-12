@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB Cassandra view.
-// API Version: 2021-07-01-preview.
+// Azure REST API version: 2023-03-15-preview. Prior API version in Azure Native 1.x: 2021-07-01-preview
 type CassandraResourceCassandraView struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +67,15 @@ func NewCassandraResourceCassandraView(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20220815preview:CassandraResourceCassandraView"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:CassandraResourceCassandraView"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:CassandraResourceCassandraView"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraResourceCassandraView"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a private endpoint connection
-// API Version: 2020-12-01-preview.
+// Azure REST API version: 2021-12-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:purview:getPrivateEndpointConnection", args, &rv, opts...)
@@ -42,6 +42,8 @@ type LookupPrivateEndpointConnectionResult struct {
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData ProxyResourceResponseSystemData `pulumi:"systemData"`
 	// Gets or sets the type.
 	Type string `pulumi:"type"`
 }
@@ -112,6 +114,11 @@ func (o LookupPrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectio
 // The provisioning state.
 func (o LookupPrivateEndpointConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupPrivateEndpointConnectionResultOutput) SystemData() ProxyResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) ProxyResourceResponseSystemData { return v.SystemData }).(ProxyResourceResponseSystemDataOutput)
 }
 
 // Gets or sets the type.

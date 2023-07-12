@@ -12,8 +12,6 @@ import (
 )
 
 // Policy Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:GraphQLApiResolverPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GraphQLApiResolverPolicy to guarantee forwards compatibility.
 type GraphQLApiResolverPolicy struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +50,18 @@ func NewGraphQLApiResolverPolicy(ctx *pulumi.Context,
 	if args.Format == nil {
 		args.Format = pulumi.StringPtr("xml")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement:GraphQLApiResolverPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GraphQLApiResolverPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:GraphQLApiResolverPolicy"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource GraphQLApiResolverPolicy
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:GraphQLApiResolverPolicy", name, args, &resource, opts...)
 	if err != nil {

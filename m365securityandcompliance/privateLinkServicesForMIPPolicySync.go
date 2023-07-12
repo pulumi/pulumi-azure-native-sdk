@@ -12,7 +12,7 @@ import (
 )
 
 // The description of the service.
-// API Version: 2021-03-25-preview.
+// Azure REST API version: 2021-03-25-preview. Prior API version in Azure Native 1.x: 2021-03-25-preview
 type PrivateLinkServicesForMIPPolicySync struct {
 	pulumi.CustomResourceState
 
@@ -51,12 +51,18 @@ func NewPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:m365securityandcompliance:privateLinkServicesForMIPPolicySync"),
+		},
+		{
+			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForMIPPolicySync"),
+		},
+		{
 			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForMIPPolicySync"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForMIPPolicySync
-	err := ctx.RegisterResource("azure-native:m365securityandcompliance:privateLinkServicesForMIPPolicySync", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:m365securityandcompliance:PrivateLinkServicesForMIPPolicySync", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +74,7 @@ func NewPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context,
 func GetPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForMIPPolicySyncState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForMIPPolicySync, error) {
 	var resource PrivateLinkServicesForMIPPolicySync
-	err := ctx.ReadResource("azure-native:m365securityandcompliance:privateLinkServicesForMIPPolicySync", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:m365securityandcompliance:PrivateLinkServicesForMIPPolicySync", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

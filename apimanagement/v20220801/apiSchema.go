@@ -12,8 +12,6 @@ import (
 )
 
 // API Schema Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiSchema is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiSchema to guarantee forwards compatibility.
 type ApiSchema struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +90,12 @@ func NewApiSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiSchema"),
 		},
 	})
 	opts = append(opts, aliases)

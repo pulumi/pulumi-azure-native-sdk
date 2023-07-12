@@ -14,6 +14,10 @@ import (
 type AttestationServiceCreationSpecificParams struct {
 	// JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
 	PolicySigningCertificates *JSONWebKeySet `pulumi:"policySigningCertificates"`
+	// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
+	TpmAttestationAuthentication *string `pulumi:"tpmAttestationAuthentication"`
 }
 
 // AttestationServiceCreationSpecificParamsInput is an input type that accepts AttestationServiceCreationSpecificParamsArgs and AttestationServiceCreationSpecificParamsOutput values.
@@ -31,6 +35,10 @@ type AttestationServiceCreationSpecificParamsInput interface {
 type AttestationServiceCreationSpecificParamsArgs struct {
 	// JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
 	PolicySigningCertificates JSONWebKeySetPtrInput `pulumi:"policySigningCertificates"`
+	// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
+	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
+	// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
+	TpmAttestationAuthentication pulumi.StringPtrInput `pulumi:"tpmAttestationAuthentication"`
 }
 
 func (AttestationServiceCreationSpecificParamsArgs) ElementType() reflect.Type {
@@ -63,6 +71,16 @@ func (o AttestationServiceCreationSpecificParamsOutput) ToAttestationServiceCrea
 // JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
 func (o AttestationServiceCreationSpecificParamsOutput) PolicySigningCertificates() JSONWebKeySetPtrOutput {
 	return o.ApplyT(func(v AttestationServiceCreationSpecificParams) *JSONWebKeySet { return v.PolicySigningCertificates }).(JSONWebKeySetPtrOutput)
+}
+
+// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
+func (o AttestationServiceCreationSpecificParamsOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttestationServiceCreationSpecificParams) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
+func (o AttestationServiceCreationSpecificParamsOutput) TpmAttestationAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttestationServiceCreationSpecificParams) *string { return v.TpmAttestationAuthentication }).(pulumi.StringPtrOutput)
 }
 
 type JSONWebKey struct {

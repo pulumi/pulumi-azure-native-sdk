@@ -12,8 +12,6 @@ import (
 )
 
 // Authorization contract.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Authorization is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Authorization to guarantee forwards compatibility.
 type Authorization struct {
 	pulumi.CustomResourceState
 
@@ -51,7 +49,16 @@ func NewAuthorization(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:apimanagement:Authorization"),
+		},
+		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Authorization"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Authorization"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Authorization"),
 		},
 	})
 	opts = append(opts, aliases)

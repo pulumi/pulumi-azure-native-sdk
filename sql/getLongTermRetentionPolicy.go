@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a database's long term retention policy.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupLongTermRetentionPolicy(ctx *pulumi.Context, args *LookupLongTermRetentionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupLongTermRetentionPolicyResult, error) {
 	var rv LookupLongTermRetentionPolicyResult
 	err := ctx.Invoke("azure-native:sql:getLongTermRetentionPolicy", args, &rv, opts...)

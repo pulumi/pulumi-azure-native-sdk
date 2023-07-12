@@ -11,18 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Machine Learning labeling job object wrapped into ARM resource envelope.
-// API Version: 2020-09-01-preview.
+// Azure Resource Manager resource envelope.
+// Azure REST API version: 2023-04-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview
 type LabelingJob struct {
 	pulumi.CustomResourceState
 
-	// The name of the resource entity.
+	// [Required] Additional attributes of the entity.
+	LabelingJobProperties LabelingJobResponseOutput `pulumi:"labelingJobProperties"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Definition of a labeling job.
-	Properties LabelingJobPropertiesResponseOutput `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The resource provider and type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -33,12 +33,16 @@ func NewLabelingJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.LabelingJobProperties == nil {
+		return nil, errors.New("invalid value for required argument 'LabelingJobProperties'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	args.LabelingJobProperties = args.LabelingJobProperties.ToLabelingJobTypeOutput().ApplyT(func(v LabelingJobType) LabelingJobType { return *v.Defaults() }).(LabelingJobTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20200901preview:LabelingJob"),
@@ -56,7 +60,13 @@ func NewLabelingJob(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:LabelingJob"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:LabelingJob"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:LabelingJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:LabelingJob"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -92,11 +102,11 @@ func (LabelingJobState) ElementType() reflect.Type {
 }
 
 type labelingJobArgs struct {
-	// Name and identifier for LabelingJob.
-	LabelingJobId *string `pulumi:"labelingJobId"`
-	// Definition of a labeling job.
-	Properties *LabelingJobProperties `pulumi:"properties"`
-	// Name of the resource group in which workspace is located.
+	// The name and identifier for the LabelingJob.
+	Id *string `pulumi:"id"`
+	// [Required] Additional attributes of the entity.
+	LabelingJobProperties LabelingJobType `pulumi:"labelingJobProperties"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
@@ -104,11 +114,11 @@ type labelingJobArgs struct {
 
 // The set of arguments for constructing a LabelingJob resource.
 type LabelingJobArgs struct {
-	// Name and identifier for LabelingJob.
-	LabelingJobId pulumi.StringPtrInput
-	// Definition of a labeling job.
-	Properties LabelingJobPropertiesPtrInput
-	// Name of the resource group in which workspace is located.
+	// The name and identifier for the LabelingJob.
+	Id pulumi.StringPtrInput
+	// [Required] Additional attributes of the entity.
+	LabelingJobProperties LabelingJobTypeInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
@@ -151,22 +161,22 @@ func (o LabelingJobOutput) ToLabelingJobOutputWithContext(ctx context.Context) L
 	return o
 }
 
-// The name of the resource entity.
+// [Required] Additional attributes of the entity.
+func (o LabelingJobOutput) LabelingJobProperties() LabelingJobResponseOutput {
+	return o.ApplyT(func(v *LabelingJob) LabelingJobResponseOutput { return v.LabelingJobProperties }).(LabelingJobResponseOutput)
+}
+
+// The name of the resource
 func (o LabelingJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LabelingJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Definition of a labeling job.
-func (o LabelingJobOutput) Properties() LabelingJobPropertiesResponseOutput {
-	return o.ApplyT(func(v *LabelingJob) LabelingJobPropertiesResponseOutput { return v.Properties }).(LabelingJobPropertiesResponseOutput)
-}
-
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LabelingJobOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *LabelingJob) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The resource provider and type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LabelingJobOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *LabelingJob) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

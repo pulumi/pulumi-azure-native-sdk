@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure SQL Database server.
-//
-// Deprecated: azure-native:sql/v20211101:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:Server to guarantee forwards compatibility.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -109,6 +107,9 @@ func NewServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:Server"),
 		},
 	})
 	opts = append(opts, aliases)

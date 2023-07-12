@@ -12,7 +12,7 @@ import (
 )
 
 // Represents an incident comment
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type IncidentComment struct {
 	pulumi.CustomResourceState
 
@@ -26,11 +26,11 @@ type IncidentComment struct {
 	LastModifiedTimeUtc pulumi.StringOutput `pulumi:"lastModifiedTimeUtc"`
 	// The comment message
 	Message pulumi.StringOutput `pulumi:"message"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -46,9 +46,6 @@ func NewIncidentComment(ctx *pulumi.Context,
 	}
 	if args.Message == nil {
 		return nil, errors.New("invalid value for required argument 'Message'")
-	}
-	if args.OperationalInsightsResourceProvider == nil {
-		return nil, errors.New("invalid value for required argument 'OperationalInsightsResourceProvider'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -118,7 +115,16 @@ func NewIncidentComment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:IncidentComment"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:IncidentComment"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:IncidentComment"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:IncidentComment"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:IncidentComment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -160,8 +166,6 @@ type incidentCommentArgs struct {
 	IncidentId string `pulumi:"incidentId"`
 	// The comment message
 	Message string `pulumi:"message"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the workspace.
@@ -176,8 +180,6 @@ type IncidentCommentArgs struct {
 	IncidentId pulumi.StringInput
 	// The comment message
 	Message pulumi.StringInput
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the workspace.
@@ -246,7 +248,7 @@ func (o IncidentCommentOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentComment) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o IncidentCommentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentComment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -256,7 +258,7 @@ func (o IncidentCommentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *IncidentComment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o IncidentCommentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentComment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the credential identified by credential name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2022-08-08.
 func LookupCredential(ctx *pulumi.Context, args *LookupCredentialArgs, opts ...pulumi.InvokeOption) (*LookupCredentialResult, error) {
 	var rv LookupCredentialResult
 	err := ctx.Invoke("azure-native:automation:getCredential", args, &rv, opts...)

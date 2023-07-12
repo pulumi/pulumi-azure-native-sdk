@@ -11,7 +11,7 @@ import (
 )
 
 // Fetches the details of a ExpressRoute gateway in a resource group.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupExpressRouteGateway(ctx *pulumi.Context, args *LookupExpressRouteGatewayArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteGatewayResult, error) {
 	var rv LookupExpressRouteGatewayResult
 	err := ctx.Invoke("azure-native:network:getExpressRouteGateway", args, &rv, opts...)
@@ -30,6 +30,8 @@ type LookupExpressRouteGatewayArgs struct {
 
 // ExpressRoute gateway resource.
 type LookupExpressRouteGatewayResult struct {
+	// Configures this gateway to accept traffic from non Virtual WAN networks.
+	AllowNonVirtualWanTraffic *bool `pulumi:"allowNonVirtualWanTraffic"`
 	// Configuration for auto scaling.
 	AutoScaleConfiguration *ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration `pulumi:"autoScaleConfiguration"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -89,6 +91,11 @@ func (o LookupExpressRouteGatewayResultOutput) ToLookupExpressRouteGatewayResult
 
 func (o LookupExpressRouteGatewayResultOutput) ToLookupExpressRouteGatewayResultOutputWithContext(ctx context.Context) LookupExpressRouteGatewayResultOutput {
 	return o
+}
+
+// Configures this gateway to accept traffic from non Virtual WAN networks.
+func (o LookupExpressRouteGatewayResultOutput) AllowNonVirtualWanTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupExpressRouteGatewayResult) *bool { return v.AllowNonVirtualWanTraffic }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration for auto scaling.
