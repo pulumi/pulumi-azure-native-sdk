@@ -12,8 +12,6 @@ import (
 )
 
 // A server blob auditing policy.
-//
-// Deprecated: azure-native:sql/v20211101:ServerBlobAuditingPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ServerBlobAuditingPolicy to guarantee forwards compatibility.
 type ServerBlobAuditingPolicy struct {
 	pulumi.CustomResourceState
 
@@ -175,6 +173,9 @@ func NewServerBlobAuditingPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ServerBlobAuditingPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ServerBlobAuditingPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

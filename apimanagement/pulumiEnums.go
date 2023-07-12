@@ -22,8 +22,10 @@ const (
 type ApiType string
 
 const (
-	ApiTypeHttp = ApiType("http")
-	ApiTypeSoap = ApiType("soap")
+	ApiTypeHttp      = ApiType("http")
+	ApiTypeSoap      = ApiType("soap")
+	ApiTypeWebsocket = ApiType("websocket")
+	ApiTypeGraphql   = ApiType("graphql")
 )
 
 // The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
@@ -261,6 +263,14 @@ func (o AuthorizationMethodArrayOutput) Index(i pulumi.IntInput) AuthorizationMe
 	}).(AuthorizationMethodOutput)
 }
 
+// Authorization type options
+type AuthorizationType string
+
+const (
+	// OAuth2 authorization type
+	AuthorizationTypeOAuth2 = AuthorizationType("OAuth2")
+)
+
 // Backend communication protocol.
 type BackendProtocol string
 
@@ -286,6 +296,25 @@ const (
 	BearerTokenSendingMethodsAuthorizationHeader = BearerTokenSendingMethods("authorizationHeader")
 	// Access token will be transmitted as query parameters.
 	BearerTokenSendingMethodsQuery = BearerTokenSendingMethods("query")
+)
+
+// Certificate Source.
+type CertificateSource string
+
+const (
+	CertificateSourceManaged  = CertificateSource("Managed")
+	CertificateSourceKeyVault = CertificateSource("KeyVault")
+	CertificateSourceCustom   = CertificateSource("Custom")
+	CertificateSourceBuiltIn  = CertificateSource("BuiltIn")
+)
+
+// Certificate Status.
+type CertificateStatus string
+
+const (
+	CertificateStatusCompleted  = CertificateStatus("Completed")
+	CertificateStatusFailed     = CertificateStatus("Failed")
+	CertificateStatusInProgress = CertificateStatus("InProgress")
 )
 
 type ClientAuthenticationMethod string
@@ -331,6 +360,8 @@ const (
 	ContentFormat_Openapi_Link = ContentFormat("openapi-link")
 	// The OpenAPI 3.0 JSON document is hosted on a publicly accessible internet address.
 	ContentFormat_Openapi_json_Link = ContentFormat("openapi+json-link")
+	// The GraphQL API endpoint hosted on a publicly accessible internet address.
+	ContentFormat_Graphql_Link = ContentFormat("graphql-link")
 )
 
 // Data masking mode.
@@ -341,6 +372,14 @@ const (
 	DataMaskingModeMask = DataMaskingMode("Mask")
 	// Hide the presence of an entity.
 	DataMaskingModeHide = DataMaskingMode("Hide")
+)
+
+// Purpose of debug credential.
+type GatewayListDebugCredentialsContractPurpose string
+
+const (
+	// The tracing purpose.
+	GatewayListDebugCredentialsContractPurposeTracing = GatewayListDebugCredentialsContractPurpose("tracing")
 )
 
 type GrantType string
@@ -740,6 +779,26 @@ const (
 	LoggerTypeAzureMonitor = LoggerType("azureMonitor")
 )
 
+// Property can be used to enable NAT Gateway for this API Management service.
+type NatGatewayState string
+
+const (
+	// Nat Gateway is enabled for the service.
+	NatGatewayStateEnabled = NatGatewayState("Enabled")
+	// Nat Gateway is disabled for the service.
+	NatGatewayStateDisabled = NatGatewayState("Disabled")
+)
+
+// OAuth2 grant type options
+type OAuth2GrantType string
+
+const (
+	// Authorization Code grant
+	OAuth2GrantTypeAuthorizationCode = OAuth2GrantType("AuthorizationCode")
+	// Client Credential grant
+	OAuth2GrantTypeClientCredentials = OAuth2GrantType("ClientCredentials")
+)
+
 // The format of the Operation Name for Application Insights telemetries. Default is Name.
 type OperationNameFormat string
 
@@ -756,11 +815,11 @@ type PolicyContentFormat string
 const (
 	// The contents are inline and Content type is an XML document.
 	PolicyContentFormatXml = PolicyContentFormat("xml")
-	// The policy XML document is hosted on a http endpoint accessible from the API Management service.
+	// The policy XML document is hosted on a HTTP endpoint accessible from the API Management service.
 	PolicyContentFormat_Xml_Link = PolicyContentFormat("xml-link")
 	// The contents are inline and Content type is a non XML encoded policy document.
 	PolicyContentFormatRawxml = PolicyContentFormat("rawxml")
-	// The policy document is not Xml encoded and is hosted on a http endpoint accessible from the API Management service.
+	// The policy document is not XML encoded and is hosted on a HTTP endpoint accessible from the API Management service.
 	PolicyContentFormat_Rawxml_Link = PolicyContentFormat("rawxml-link")
 )
 
@@ -953,209 +1012,9 @@ type Protocol string
 const (
 	ProtocolHttp  = Protocol("http")
 	ProtocolHttps = Protocol("https")
+	ProtocolWs    = Protocol("ws")
+	ProtocolWss   = Protocol("wss")
 )
-
-func (Protocol) ElementType() reflect.Type {
-	return reflect.TypeOf((*Protocol)(nil)).Elem()
-}
-
-func (e Protocol) ToProtocolOutput() ProtocolOutput {
-	return pulumi.ToOutput(e).(ProtocolOutput)
-}
-
-func (e Protocol) ToProtocolOutputWithContext(ctx context.Context) ProtocolOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ProtocolOutput)
-}
-
-func (e Protocol) ToProtocolPtrOutput() ProtocolPtrOutput {
-	return e.ToProtocolPtrOutputWithContext(context.Background())
-}
-
-func (e Protocol) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
-	return Protocol(e).ToProtocolOutputWithContext(ctx).ToProtocolPtrOutputWithContext(ctx)
-}
-
-func (e Protocol) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e Protocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e Protocol) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e Protocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ProtocolOutput struct{ *pulumi.OutputState }
-
-func (ProtocolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Protocol)(nil)).Elem()
-}
-
-func (o ProtocolOutput) ToProtocolOutput() ProtocolOutput {
-	return o
-}
-
-func (o ProtocolOutput) ToProtocolOutputWithContext(ctx context.Context) ProtocolOutput {
-	return o
-}
-
-func (o ProtocolOutput) ToProtocolPtrOutput() ProtocolPtrOutput {
-	return o.ToProtocolPtrOutputWithContext(context.Background())
-}
-
-func (o ProtocolOutput) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Protocol) *Protocol {
-		return &v
-	}).(ProtocolPtrOutput)
-}
-
-func (o ProtocolOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e Protocol) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e Protocol) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ProtocolPtrOutput struct{ *pulumi.OutputState }
-
-func (ProtocolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Protocol)(nil)).Elem()
-}
-
-func (o ProtocolPtrOutput) ToProtocolPtrOutput() ProtocolPtrOutput {
-	return o
-}
-
-func (o ProtocolPtrOutput) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
-	return o
-}
-
-func (o ProtocolPtrOutput) Elem() ProtocolOutput {
-	return o.ApplyT(func(v *Protocol) Protocol {
-		if v != nil {
-			return *v
-		}
-		var ret Protocol
-		return ret
-	}).(ProtocolOutput)
-}
-
-func (o ProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Protocol) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ProtocolInput is an input type that accepts ProtocolArgs and ProtocolOutput values.
-// You can construct a concrete instance of `ProtocolInput` via:
-//
-//	ProtocolArgs{...}
-type ProtocolInput interface {
-	pulumi.Input
-
-	ToProtocolOutput() ProtocolOutput
-	ToProtocolOutputWithContext(context.Context) ProtocolOutput
-}
-
-var protocolPtrType = reflect.TypeOf((**Protocol)(nil)).Elem()
-
-type ProtocolPtrInput interface {
-	pulumi.Input
-
-	ToProtocolPtrOutput() ProtocolPtrOutput
-	ToProtocolPtrOutputWithContext(context.Context) ProtocolPtrOutput
-}
-
-type protocolPtr string
-
-func ProtocolPtr(v string) ProtocolPtrInput {
-	return (*protocolPtr)(&v)
-}
-
-func (*protocolPtr) ElementType() reflect.Type {
-	return protocolPtrType
-}
-
-func (in *protocolPtr) ToProtocolPtrOutput() ProtocolPtrOutput {
-	return pulumi.ToOutput(in).(ProtocolPtrOutput)
-}
-
-func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
-}
-
-// ProtocolArrayInput is an input type that accepts ProtocolArray and ProtocolArrayOutput values.
-// You can construct a concrete instance of `ProtocolArrayInput` via:
-//
-//	ProtocolArray{ ProtocolArgs{...} }
-type ProtocolArrayInput interface {
-	pulumi.Input
-
-	ToProtocolArrayOutput() ProtocolArrayOutput
-	ToProtocolArrayOutputWithContext(context.Context) ProtocolArrayOutput
-}
-
-type ProtocolArray []Protocol
-
-func (ProtocolArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Protocol)(nil)).Elem()
-}
-
-func (i ProtocolArray) ToProtocolArrayOutput() ProtocolArrayOutput {
-	return i.ToProtocolArrayOutputWithContext(context.Background())
-}
-
-func (i ProtocolArray) ToProtocolArrayOutputWithContext(ctx context.Context) ProtocolArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProtocolArrayOutput)
-}
-
-type ProtocolArrayOutput struct{ *pulumi.OutputState }
-
-func (ProtocolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Protocol)(nil)).Elem()
-}
-
-func (o ProtocolArrayOutput) ToProtocolArrayOutput() ProtocolArrayOutput {
-	return o
-}
-
-func (o ProtocolArrayOutput) ToProtocolArrayOutputWithContext(ctx context.Context) ProtocolArrayOutput {
-	return o
-}
-
-func (o ProtocolArrayOutput) Index(i pulumi.IntInput) ProtocolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Protocol {
-		return vs[0].([]Protocol)[vs[1].(int)]
-	}).(ProtocolOutput)
-}
 
 // Provisioning state.
 type ProvisioningState string
@@ -1321,6 +1180,14 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
 }
 
+// Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+type PublicNetworkAccess string
+
+const (
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
 // Sampling type.
 type SamplingType string
 
@@ -1333,7 +1200,7 @@ const (
 type SchemaType string
 
 const (
-	// Xml schema type.
+	// XML schema type.
 	SchemaTypeXml = SchemaType("xml")
 	// Json schema type.
 	SchemaTypeJson = SchemaType("json")
@@ -1357,16 +1224,22 @@ const (
 	SkuTypeIsolated = SkuType("Isolated")
 )
 
-// Type of Api to create.
-//   - `http` creates a SOAP to REST API
-//   - `soap` creates a SOAP pass-through API .
+// Type of API to create.
+//   - `http` creates a REST API
+//   - `soap` creates a SOAP pass-through API
+//   - `websocket` creates websocket API
+//   - `graphql` creates GraphQL API.
 type SoapApiType string
 
 const (
 	// Imports a SOAP API having a RESTful front end.
 	SoapApiTypeSoapToRest = SoapApiType("http")
-	// Imports the Soap API having a SOAP front end.
+	// Imports the SOAP API having a SOAP front end.
 	SoapApiTypeSoapPassThrough = SoapApiType("soap")
+	// Imports the API having a Websocket front end.
+	SoapApiTypeWebSocket = SoapApiType("websocket")
+	// Imports the API having a GraphQL front end.
+	SoapApiTypeGraphQL = SoapApiType("graphql")
 )
 
 // Status of the issue.
@@ -1554,6 +1427,16 @@ func (in *subscriptionStateEnumPtr) ToSubscriptionStateEnumPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionStateEnumPtrOutput)
 }
 
+// Strategy of translating required query parameters to template ones. By default has value 'template'. Possible values: 'template', 'query'
+type TranslateRequiredQueryParametersConduct string
+
+const (
+	// Translates required query parameters to template ones. Is a default value
+	TranslateRequiredQueryParametersConductTemplate = TranslateRequiredQueryParametersConduct("template")
+	// Leaves required query parameters as they are (no translation done).
+	TranslateRequiredQueryParametersConductQuery = TranslateRequiredQueryParametersConduct("query")
+)
+
 // Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
 type UserStateEnum string
 
@@ -1614,9 +1497,6 @@ func init() {
 	pulumi.RegisterOutputType(KeyTypePtrOutput{})
 	pulumi.RegisterOutputType(ProductStateEnumOutput{})
 	pulumi.RegisterOutputType(ProductStateEnumPtrOutput{})
-	pulumi.RegisterOutputType(ProtocolOutput{})
-	pulumi.RegisterOutputType(ProtocolPtrOutput{})
-	pulumi.RegisterOutputType(ProtocolArrayOutput{})
 	pulumi.RegisterOutputType(ProvisioningStateOutput{})
 	pulumi.RegisterOutputType(ProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionStateEnumOutput{})

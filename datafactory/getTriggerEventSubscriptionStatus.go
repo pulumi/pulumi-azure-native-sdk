@@ -11,7 +11,7 @@ import (
 )
 
 // Get a trigger's event subscription status.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func GetTriggerEventSubscriptionStatus(ctx *pulumi.Context, args *GetTriggerEventSubscriptionStatusArgs, opts ...pulumi.InvokeOption) (*GetTriggerEventSubscriptionStatusResult, error) {
 	var rv GetTriggerEventSubscriptionStatusResult
 	err := ctx.Invoke("azure-native:datafactory:getTriggerEventSubscriptionStatus", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Access Review Schedule Definition.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2021-12-01-preview. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type AccessReviewScheduleDefinitionById struct {
 	pulumi.CustomResourceState
 
@@ -33,8 +33,18 @@ type AccessReviewScheduleDefinitionById struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The DateTime when the review is scheduled to end. Required if type is endDate
 	EndDate pulumi.StringPtrOutput `pulumi:"endDate"`
+	// This is used to indicate the resource id(s) to exclude
+	ExcludeResourceId pulumi.StringPtrOutput `pulumi:"excludeResourceId"`
+	// This is used to indicate the role definition id(s) to exclude
+	ExcludeRoleDefinitionId pulumi.StringPtrOutput `pulumi:"excludeRoleDefinitionId"`
+	// Flag to indicate whether to expand nested memberships or not.
+	ExpandNestedMemberships pulumi.BoolPtrOutput `pulumi:"expandNestedMemberships"`
 	// Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
 	InactiveDuration pulumi.StringPtrOutput `pulumi:"inactiveDuration"`
+	// Flag to indicate whether to expand nested memberships or not.
+	IncludeAccessBelowResource pulumi.BoolPtrOutput `pulumi:"includeAccessBelowResource"`
+	// Flag to indicate whether to expand nested memberships or not.
+	IncludeInheritedAccess pulumi.BoolPtrOutput `pulumi:"includeInheritedAccess"`
 	// The duration in days for an instance.
 	InstanceDurationInDays pulumi.IntPtrOutput `pulumi:"instanceDurationInDays"`
 	// This is the collection of instances returned when one does an expand on it.
@@ -55,6 +65,8 @@ type AccessReviewScheduleDefinitionById struct {
 	PrincipalName pulumi.StringOutput `pulumi:"principalName"`
 	// The identity type user/servicePrincipal to review
 	PrincipalType pulumi.StringOutput `pulumi:"principalType"`
+	// Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
+	RecommendationLookBackDuration pulumi.StringPtrOutput `pulumi:"recommendationLookBackDuration"`
 	// Flag to indicate whether showing recommendations to reviewers is enabled.
 	RecommendationsEnabled pulumi.BoolPtrOutput `pulumi:"recommendationsEnabled"`
 	// Flag to indicate whether sending reminder emails to reviewers are enabled.
@@ -150,8 +162,18 @@ type accessReviewScheduleDefinitionByIdArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The DateTime when the review is scheduled to end. Required if type is endDate
 	EndDate *string `pulumi:"endDate"`
+	// This is used to indicate the resource id(s) to exclude
+	ExcludeResourceId *string `pulumi:"excludeResourceId"`
+	// This is used to indicate the role definition id(s) to exclude
+	ExcludeRoleDefinitionId *string `pulumi:"excludeRoleDefinitionId"`
+	// Flag to indicate whether to expand nested memberships or not.
+	ExpandNestedMemberships *bool `pulumi:"expandNestedMemberships"`
 	// Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
 	InactiveDuration *string `pulumi:"inactiveDuration"`
+	// Flag to indicate whether to expand nested memberships or not.
+	IncludeAccessBelowResource *bool `pulumi:"includeAccessBelowResource"`
+	// Flag to indicate whether to expand nested memberships or not.
+	IncludeInheritedAccess *bool `pulumi:"includeInheritedAccess"`
 	// The duration in days for an instance.
 	InstanceDurationInDays *int `pulumi:"instanceDurationInDays"`
 	// This is the collection of instances returned when one does an expand on it.
@@ -164,6 +186,8 @@ type accessReviewScheduleDefinitionByIdArgs struct {
 	MailNotificationsEnabled *bool `pulumi:"mailNotificationsEnabled"`
 	// The number of times to repeat the access review. Required and must be positive if type is numbered.
 	NumberOfOccurrences *int `pulumi:"numberOfOccurrences"`
+	// Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
+	RecommendationLookBackDuration *string `pulumi:"recommendationLookBackDuration"`
 	// Flag to indicate whether showing recommendations to reviewers is enabled.
 	RecommendationsEnabled *bool `pulumi:"recommendationsEnabled"`
 	// Flag to indicate whether sending reminder emails to reviewers are enabled.
@@ -196,8 +220,18 @@ type AccessReviewScheduleDefinitionByIdArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The DateTime when the review is scheduled to end. Required if type is endDate
 	EndDate pulumi.StringPtrInput
+	// This is used to indicate the resource id(s) to exclude
+	ExcludeResourceId pulumi.StringPtrInput
+	// This is used to indicate the role definition id(s) to exclude
+	ExcludeRoleDefinitionId pulumi.StringPtrInput
+	// Flag to indicate whether to expand nested memberships or not.
+	ExpandNestedMemberships pulumi.BoolPtrInput
 	// Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
 	InactiveDuration pulumi.StringPtrInput
+	// Flag to indicate whether to expand nested memberships or not.
+	IncludeAccessBelowResource pulumi.BoolPtrInput
+	// Flag to indicate whether to expand nested memberships or not.
+	IncludeInheritedAccess pulumi.BoolPtrInput
 	// The duration in days for an instance.
 	InstanceDurationInDays pulumi.IntPtrInput
 	// This is the collection of instances returned when one does an expand on it.
@@ -210,6 +244,8 @@ type AccessReviewScheduleDefinitionByIdArgs struct {
 	MailNotificationsEnabled pulumi.BoolPtrInput
 	// The number of times to repeat the access review. Required and must be positive if type is numbered.
 	NumberOfOccurrences pulumi.IntPtrInput
+	// Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
+	RecommendationLookBackDuration pulumi.StringPtrInput
 	// Flag to indicate whether showing recommendations to reviewers is enabled.
 	RecommendationsEnabled pulumi.BoolPtrInput
 	// Flag to indicate whether sending reminder emails to reviewers are enabled.
@@ -308,9 +344,34 @@ func (o AccessReviewScheduleDefinitionByIdOutput) EndDate() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.EndDate }).(pulumi.StringPtrOutput)
 }
 
+// This is used to indicate the resource id(s) to exclude
+func (o AccessReviewScheduleDefinitionByIdOutput) ExcludeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.ExcludeResourceId }).(pulumi.StringPtrOutput)
+}
+
+// This is used to indicate the role definition id(s) to exclude
+func (o AccessReviewScheduleDefinitionByIdOutput) ExcludeRoleDefinitionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.ExcludeRoleDefinitionId }).(pulumi.StringPtrOutput)
+}
+
+// Flag to indicate whether to expand nested memberships or not.
+func (o AccessReviewScheduleDefinitionByIdOutput) ExpandNestedMemberships() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.BoolPtrOutput { return v.ExpandNestedMemberships }).(pulumi.BoolPtrOutput)
+}
+
 // Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
 func (o AccessReviewScheduleDefinitionByIdOutput) InactiveDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.InactiveDuration }).(pulumi.StringPtrOutput)
+}
+
+// Flag to indicate whether to expand nested memberships or not.
+func (o AccessReviewScheduleDefinitionByIdOutput) IncludeAccessBelowResource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.BoolPtrOutput { return v.IncludeAccessBelowResource }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to indicate whether to expand nested memberships or not.
+func (o AccessReviewScheduleDefinitionByIdOutput) IncludeInheritedAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.BoolPtrOutput { return v.IncludeInheritedAccess }).(pulumi.BoolPtrOutput)
 }
 
 // The duration in days for an instance.
@@ -365,6 +426,13 @@ func (o AccessReviewScheduleDefinitionByIdOutput) PrincipalName() pulumi.StringO
 // The identity type user/servicePrincipal to review
 func (o AccessReviewScheduleDefinitionByIdOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
+func (o AccessReviewScheduleDefinitionByIdOutput) RecommendationLookBackDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput {
+		return v.RecommendationLookBackDuration
+	}).(pulumi.StringPtrOutput)
 }
 
 // Flag to indicate whether showing recommendations to reviewers is enabled.

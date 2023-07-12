@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the properties of the specified access control record name.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func LookupAccessControlRecord(ctx *pulumi.Context, args *LookupAccessControlRecordArgs, opts ...pulumi.InvokeOption) (*LookupAccessControlRecordResult, error) {
 	var rv LookupAccessControlRecordResult
 	err := ctx.Invoke("azure-native:storsimple:getAccessControlRecord", args, &rv, opts...)

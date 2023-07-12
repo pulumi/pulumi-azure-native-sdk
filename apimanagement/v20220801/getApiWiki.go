@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the Wiki for an API specified by its identifier.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiWiki is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiWiki to guarantee forwards compatibility.
 func LookupApiWiki(ctx *pulumi.Context, args *LookupApiWikiArgs, opts ...pulumi.InvokeOption) (*LookupApiWikiResult, error) {
 	var rv LookupApiWikiResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getApiWiki", args, &rv, opts...)

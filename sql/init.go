@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:sql:BackupLongTermRetentionPolicy":
+		r = &BackupLongTermRetentionPolicy{}
 	case "azure-native:sql:BackupShortTermRetentionPolicy":
 		r = &BackupShortTermRetentionPolicy{}
 	case "azure-native:sql:DataMaskingPolicy":
@@ -33,6 +35,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseBlobAuditingPolicy{}
 	case "azure-native:sql:DatabaseSecurityAlertPolicy":
 		r = &DatabaseSecurityAlertPolicy{}
+	case "azure-native:sql:DatabaseSqlVulnerabilityAssessmentRuleBaseline":
+		r = &DatabaseSqlVulnerabilityAssessmentRuleBaseline{}
+	case "azure-native:sql:DatabaseThreatDetectionPolicy":
+		r = &DatabaseThreatDetectionPolicy{}
 	case "azure-native:sql:DatabaseVulnerabilityAssessment":
 		r = &DatabaseVulnerabilityAssessment{}
 	case "azure-native:sql:DatabaseVulnerabilityAssessmentRuleBaseline":
@@ -89,6 +95,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ManagedInstanceAzureADOnlyAuthentication{}
 	case "azure-native:sql:ManagedInstanceKey":
 		r = &ManagedInstanceKey{}
+	case "azure-native:sql:ManagedInstanceLongTermRetentionPolicy":
+		r = &ManagedInstanceLongTermRetentionPolicy{}
 	case "azure-native:sql:ManagedInstancePrivateEndpointConnection":
 		r = &ManagedInstancePrivateEndpointConnection{}
 	case "azure-native:sql:ManagedInstanceVulnerabilityAssessment":
@@ -125,6 +133,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerTrustGroup{}
 	case "azure-native:sql:ServerVulnerabilityAssessment":
 		r = &ServerVulnerabilityAssessment{}
+	case "azure-native:sql:SqlVulnerabilityAssessmentRuleBaseline":
+		r = &SqlVulnerabilityAssessmentRuleBaseline{}
+	case "azure-native:sql:SqlVulnerabilityAssessmentsSetting":
+		r = &SqlVulnerabilityAssessmentsSetting{}
+	case "azure-native:sql:StartStopManagedInstanceSchedule":
+		r = &StartStopManagedInstanceSchedule{}
 	case "azure-native:sql:SyncAgent":
 		r = &SyncAgent{}
 	case "azure-native:sql:SyncGroup":

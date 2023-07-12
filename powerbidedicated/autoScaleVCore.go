@@ -12,7 +12,7 @@ import (
 )
 
 // Represents an instance of an auto scale v-core resource.
-// API Version: 2021-01-01.
+// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01
 type AutoScaleVCore struct {
 	pulumi.CustomResourceState
 

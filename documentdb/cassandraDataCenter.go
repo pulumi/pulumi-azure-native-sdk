@@ -12,7 +12,7 @@ import (
 )
 
 // A managed Cassandra data center.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type CassandraDataCenter struct {
 	pulumi.CustomResourceState
 
@@ -75,7 +75,19 @@ func NewCassandraDataCenter(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:CassandraDataCenter"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:CassandraDataCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:CassandraDataCenter"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:CassandraDataCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraDataCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:CassandraDataCenter"),
 		},
 	})
 	opts = append(opts, aliases)

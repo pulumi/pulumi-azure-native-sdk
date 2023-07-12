@@ -11,7 +11,7 @@ import (
 )
 
 // Returns ServiceEndpoint resources for a given name.
-// API Version: 2022-02-01.
+// Azure REST API version: 2022-02-01.
 func LookupServiceEndpoint(ctx *pulumi.Context, args *LookupServiceEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointResult, error) {
 	var rv LookupServiceEndpointResult
 	err := ctx.Invoke("azure-native:recommendationsservice:getServiceEndpoint", args, &rv, opts...)

@@ -12,8 +12,6 @@ import (
 )
 
 // EventGrid Domain.
-//
-// Deprecated: azure-native:eventgrid/v20220615:Domain is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:Domain to guarantee forwards compatibility.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -126,6 +124,9 @@ func NewDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211201:Domain"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:Domain"),
 		},
 	})
 	opts = append(opts, aliases)

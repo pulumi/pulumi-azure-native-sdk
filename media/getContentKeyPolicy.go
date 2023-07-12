@@ -11,7 +11,7 @@ import (
 )
 
 // Get the details of a Content Key Policy in the Media Services account
-// API Version: 2020-05-01.
+// Azure REST API version: 2023-01-01.
 func LookupContentKeyPolicy(ctx *pulumi.Context, args *LookupContentKeyPolicyArgs, opts ...pulumi.InvokeOption) (*LookupContentKeyPolicyResult, error) {
 	var rv LookupContentKeyPolicyResult
 	err := ctx.Invoke("azure-native:media:getContentKeyPolicy", args, &rv, opts...)

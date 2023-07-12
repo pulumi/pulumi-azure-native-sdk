@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the Api Version Set specified by its identifier.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiVersionSet is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiVersionSet to guarantee forwards compatibility.
 func LookupApiVersionSet(ctx *pulumi.Context, args *LookupApiVersionSetArgs, opts ...pulumi.InvokeOption) (*LookupApiVersionSetResult, error) {
 	var rv LookupApiVersionSetResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getApiVersionSet", args, &rv, opts...)

@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a server.
-//
-// Deprecated: azure-native:dbformysql/v20220101:Server is being removed in the next major version of this provider. Upgrade to at least azure-native:dbformysql/v20220930preview:Server to guarantee forwards compatibility.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -78,6 +76,9 @@ func NewServer(ctx *pulumi.Context,
 		args.Storage = args.Storage.ToStoragePtrOutput().ApplyT(func(v *Storage) *Storage { return v.Defaults() }).(StoragePtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql:Server"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20200701preview:Server"),
 		},

@@ -66,6 +66,9 @@ func NewNotificationHub(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20160301:NotificationHub"),
 		},
+		{
+			Type: pulumi.String("azure-native:notificationhubs/v20230101preview:NotificationHub"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NotificationHub

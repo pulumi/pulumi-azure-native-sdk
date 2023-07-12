@@ -11,7 +11,7 @@ import (
 )
 
 // Returns Dedicate Cloud Service
-// API Version: 2019-04-01.
+// Azure REST API version: 2019-04-01.
 func LookupDedicatedCloudService(ctx *pulumi.Context, args *LookupDedicatedCloudServiceArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedCloudServiceResult, error) {
 	var rv LookupDedicatedCloudServiceResult
 	err := ctx.Invoke("azure-native:vmwarecloudsimple:getDedicatedCloudService", args, &rv, opts...)

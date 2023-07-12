@@ -11,7 +11,7 @@ import (
 )
 
 // List of the EngagementFabric channel descriptions
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview.
 func ListAccountChannelTypes(ctx *pulumi.Context, args *ListAccountChannelTypesArgs, opts ...pulumi.InvokeOption) (*ListAccountChannelTypesResult, error) {
 	var rv ListAccountChannelTypesResult
 	err := ctx.Invoke("azure-native:engagementfabric:listAccountChannelTypes", args, &rv, opts...)

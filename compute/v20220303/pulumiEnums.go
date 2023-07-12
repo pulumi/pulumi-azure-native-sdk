@@ -27,6 +27,16 @@ const (
 	ConfidentialVMEncryptionTypeEncryptedWithCmk                 = ConfidentialVMEncryptionType("EncryptedWithCmk")
 )
 
+// Specifies the storage account type to be used to store the image. This property is not updatable.
+type EdgeZoneStorageAccountType string
+
+const (
+	EdgeZoneStorageAccountType_Standard_LRS    = EdgeZoneStorageAccountType("Standard_LRS")
+	EdgeZoneStorageAccountType_Standard_ZRS    = EdgeZoneStorageAccountType("Standard_ZRS")
+	EdgeZoneStorageAccountType_StandardSSD_LRS = EdgeZoneStorageAccountType("StandardSSD_LRS")
+	EdgeZoneStorageAccountType_Premium_LRS     = EdgeZoneStorageAccountType("Premium_LRS")
+)
+
 // Specifies the type of the custom action parameter. Possible values are: String, ConfigurationDataBlob or LogOutputBlob
 type GalleryApplicationCustomActionParameterType string
 

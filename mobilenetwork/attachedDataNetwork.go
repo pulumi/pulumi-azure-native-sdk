@@ -11,25 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Attached data network resource.
-// API Version: 2022-04-01-preview.
+// Attached data network resource. Must be created in the same location as its parent packet core data plane.
+// Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview
 type AttachedDataNetwork struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
-	// The DNS servers to signal to UEs to use for this attached data network.
+	// The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
 	DnsAddresses pulumi.StringArrayOutput `pulumi:"dnsAddresses"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -64,6 +52,9 @@ func NewAttachedDataNetwork(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DnsAddresses == nil {
+		return nil, errors.New("invalid value for required argument 'DnsAddresses'")
+	}
 	if args.PacketCoreControlPlaneName == nil {
 		return nil, errors.New("invalid value for required argument 'PacketCoreControlPlaneName'")
 	}
@@ -88,6 +79,9 @@ func NewAttachedDataNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20221101:AttachedDataNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20230601:AttachedDataNetwork"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -125,20 +119,8 @@ func (AttachedDataNetworkState) ElementType() reflect.Type {
 type attachedDataNetworkArgs struct {
 	// The name of the attached data network.
 	AttachedDataNetworkName *string `pulumi:"attachedDataNetworkName"`
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The DNS servers to signal to UEs to use for this attached data network.
+	// The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
 	DnsAddresses []string `pulumi:"dnsAddresses"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The network address and port translation (NAPT) configuration.
@@ -168,20 +150,8 @@ type attachedDataNetworkArgs struct {
 type AttachedDataNetworkArgs struct {
 	// The name of the attached data network.
 	AttachedDataNetworkName pulumi.StringPtrInput
-	// The timestamp of resource creation (UTC).
-	CreatedAt pulumi.StringPtrInput
-	// The identity that created the resource.
-	CreatedBy pulumi.StringPtrInput
-	// The type of identity that created the resource.
-	CreatedByType pulumi.StringPtrInput
-	// The DNS servers to signal to UEs to use for this attached data network.
+	// The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
 	DnsAddresses pulumi.StringArrayInput
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput
-	// The identity that last modified the resource.
-	LastModifiedBy pulumi.StringPtrInput
-	// The type of identity that last modified the resource.
-	LastModifiedByType pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The network address and port translation (NAPT) configuration.
@@ -244,39 +214,9 @@ func (o AttachedDataNetworkOutput) ToAttachedDataNetworkOutputWithContext(ctx co
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o AttachedDataNetworkOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttachedDataNetwork) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o AttachedDataNetworkOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttachedDataNetwork) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o AttachedDataNetworkOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttachedDataNetwork) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The DNS servers to signal to UEs to use for this attached data network.
+// The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
 func (o AttachedDataNetworkOutput) DnsAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttachedDataNetwork) pulumi.StringArrayOutput { return v.DnsAddresses }).(pulumi.StringArrayOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o AttachedDataNetworkOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttachedDataNetwork) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o AttachedDataNetworkOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttachedDataNetwork) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o AttachedDataNetworkOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttachedDataNetwork) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives

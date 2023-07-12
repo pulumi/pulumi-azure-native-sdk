@@ -12,7 +12,7 @@ import (
 )
 
 // Domain ownership Identifier.
-// API Version: 2020-10-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01
 type DomainOwnershipIdentifier struct {
 	pulumi.CustomResourceState
 
@@ -22,8 +22,6 @@ type DomainOwnershipIdentifier struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Ownership Id.
 	OwnershipId pulumi.StringPtrOutput `pulumi:"ownershipId"`
-	// The system metadata relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -191,11 +189,6 @@ func (o DomainOwnershipIdentifierOutput) Name() pulumi.StringOutput {
 // Ownership Id.
 func (o DomainOwnershipIdentifierOutput) OwnershipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainOwnershipIdentifier) pulumi.StringPtrOutput { return v.OwnershipId }).(pulumi.StringPtrOutput)
-}
-
-// The system metadata relating to this resource.
-func (o DomainOwnershipIdentifierOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DomainOwnershipIdentifier) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource type.

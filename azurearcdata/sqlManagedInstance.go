@@ -12,7 +12,7 @@ import (
 )
 
 // A SqlManagedInstance.
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview
 type SqlManagedInstance struct {
 	pulumi.CustomResourceState
 
@@ -26,11 +26,11 @@ type SqlManagedInstance struct {
 	Properties SqlManagedInstancePropertiesResponseOutput `pulumi:"properties"`
 	// Resource sku.
 	Sku SqlManagedInstanceSkuResponsePtrOutput `pulumi:"sku"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -47,6 +47,7 @@ func NewSqlManagedInstance(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	args.Properties = args.Properties.ToSqlManagedInstancePropertiesOutput().ApplyT(func(v SqlManagedInstanceProperties) SqlManagedInstanceProperties { return *v.Defaults() }).(SqlManagedInstancePropertiesOutput)
 	if args.Sku != nil {
 		args.Sku = args.Sku.ToSqlManagedInstanceSkuPtrOutput().ApplyT(func(v *SqlManagedInstanceSku) *SqlManagedInstanceSku { return v.Defaults() }).(SqlManagedInstanceSkuPtrOutput)
 	}
@@ -68,6 +69,9 @@ func NewSqlManagedInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:SqlManagedInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:SqlManagedInstance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -113,7 +117,7 @@ type sqlManagedInstanceArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource sku.
 	Sku *SqlManagedInstanceSku `pulumi:"sku"`
-	// The name of SQL Managed Instances
+	// Name of SQL Managed Instance
 	SqlManagedInstanceName *string `pulumi:"sqlManagedInstanceName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -131,7 +135,7 @@ type SqlManagedInstanceArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Resource sku.
 	Sku SqlManagedInstanceSkuPtrInput
-	// The name of SQL Managed Instances
+	// Name of SQL Managed Instance
 	SqlManagedInstanceName pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -199,7 +203,7 @@ func (o SqlManagedInstanceOutput) Sku() SqlManagedInstanceSkuResponsePtrOutput {
 	return o.ApplyT(func(v *SqlManagedInstance) SqlManagedInstanceSkuResponsePtrOutput { return v.Sku }).(SqlManagedInstanceSkuResponsePtrOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SqlManagedInstanceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SqlManagedInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -209,7 +213,7 @@ func (o SqlManagedInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlManagedInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SqlManagedInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlManagedInstance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

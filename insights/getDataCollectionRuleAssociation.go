@@ -11,7 +11,7 @@ import (
 )
 
 // Definition of generic ARM proxy resource.
-// API Version: 2019-11-01-preview.
+// Azure REST API version: 2022-06-01.
 func LookupDataCollectionRuleAssociation(ctx *pulumi.Context, args *LookupDataCollectionRuleAssociationArgs, opts ...pulumi.InvokeOption) (*LookupDataCollectionRuleAssociationResult, error) {
 	var rv LookupDataCollectionRuleAssociationResult
 	err := ctx.Invoke("azure-native:insights:getDataCollectionRuleAssociation", args, &rv, opts...)
@@ -30,6 +30,8 @@ type LookupDataCollectionRuleAssociationArgs struct {
 
 // Definition of generic ARM proxy resource.
 type LookupDataCollectionRuleAssociationResult struct {
+	// The resource ID of the data collection endpoint that is to be associated.
+	DataCollectionEndpointId *string `pulumi:"dataCollectionEndpointId"`
 	// The resource ID of the data collection rule that is to be associated.
 	DataCollectionRuleId *string `pulumi:"dataCollectionRuleId"`
 	// Description of the association.
@@ -38,10 +40,14 @@ type LookupDataCollectionRuleAssociationResult struct {
 	Etag string `pulumi:"etag"`
 	// Fully qualified ID of the resource.
 	Id string `pulumi:"id"`
+	// Metadata about the resource
+	Metadata DataCollectionRuleAssociationResponseMetadata `pulumi:"metadata"`
 	// The name of the resource.
 	Name string `pulumi:"name"`
 	// The resource provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -85,6 +91,11 @@ func (o LookupDataCollectionRuleAssociationResultOutput) ToLookupDataCollectionR
 	return o
 }
 
+// The resource ID of the data collection endpoint that is to be associated.
+func (o LookupDataCollectionRuleAssociationResultOutput) DataCollectionEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDataCollectionRuleAssociationResult) *string { return v.DataCollectionEndpointId }).(pulumi.StringPtrOutput)
+}
+
 // The resource ID of the data collection rule that is to be associated.
 func (o LookupDataCollectionRuleAssociationResultOutput) DataCollectionRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleAssociationResult) *string { return v.DataCollectionRuleId }).(pulumi.StringPtrOutput)
@@ -105,6 +116,13 @@ func (o LookupDataCollectionRuleAssociationResultOutput) Id() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupDataCollectionRuleAssociationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Metadata about the resource
+func (o LookupDataCollectionRuleAssociationResultOutput) Metadata() DataCollectionRuleAssociationResponseMetadataOutput {
+	return o.ApplyT(func(v LookupDataCollectionRuleAssociationResult) DataCollectionRuleAssociationResponseMetadata {
+		return v.Metadata
+	}).(DataCollectionRuleAssociationResponseMetadataOutput)
+}
+
 // The name of the resource.
 func (o LookupDataCollectionRuleAssociationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleAssociationResult) string { return v.Name }).(pulumi.StringOutput)
@@ -113,6 +131,13 @@ func (o LookupDataCollectionRuleAssociationResultOutput) Name() pulumi.StringOut
 // The resource provisioning state.
 func (o LookupDataCollectionRuleAssociationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataCollectionRuleAssociationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupDataCollectionRuleAssociationResultOutput) SystemData() DataCollectionRuleAssociationProxyOnlyResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v LookupDataCollectionRuleAssociationResult) DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData {
+		return v.SystemData
+	}).(DataCollectionRuleAssociationProxyOnlyResourceResponseSystemDataOutput)
 }
 
 // The type of the resource.

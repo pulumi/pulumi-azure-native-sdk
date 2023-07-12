@@ -11,17 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the rule collection.
-// API Version: 2021-02-01-preview.
+// Defines the user rule collection.
+// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type UserRuleCollection struct {
 	pulumi.CustomResourceState
 
 	// Groups for configuration
 	AppliesToGroups NetworkManagerSecurityGroupItemResponseArrayOutput `pulumi:"appliesToGroups"`
-	// A description of the rule collection.
+	// A description of the user rule collection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A display name of the rule collection.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
@@ -41,6 +39,9 @@ func NewUserRuleCollection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AppliesToGroups == nil {
+		return nil, errors.New("invalid value for required argument 'AppliesToGroups'")
+	}
 	if args.ConfigurationName == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigurationName'")
 	}
@@ -99,12 +100,10 @@ func (UserRuleCollectionState) ElementType() reflect.Type {
 type userRuleCollectionArgs struct {
 	// Groups for configuration
 	AppliesToGroups []NetworkManagerSecurityGroupItem `pulumi:"appliesToGroups"`
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
-	// A description of the rule collection.
+	// A description of the user rule collection.
 	Description *string `pulumi:"description"`
-	// A display name of the rule collection.
-	DisplayName *string `pulumi:"displayName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
 	// The name of the resource group.
@@ -117,12 +116,10 @@ type userRuleCollectionArgs struct {
 type UserRuleCollectionArgs struct {
 	// Groups for configuration
 	AppliesToGroups NetworkManagerSecurityGroupItemArrayInput
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput
-	// A description of the rule collection.
+	// A description of the user rule collection.
 	Description pulumi.StringPtrInput
-	// A display name of the rule collection.
-	DisplayName pulumi.StringPtrInput
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput
 	// The name of the resource group.
@@ -175,14 +172,9 @@ func (o UserRuleCollectionOutput) AppliesToGroups() NetworkManagerSecurityGroupI
 	}).(NetworkManagerSecurityGroupItemResponseArrayOutput)
 }
 
-// A description of the rule collection.
+// A description of the user rule collection.
 func (o UserRuleCollectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserRuleCollection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A display name of the rule collection.
-func (o UserRuleCollectionOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserRuleCollection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure resource which represents access to a suite of Maps REST APIs.
-//
-// Deprecated: azure-native:maps/v20210201:Account is being removed in the next major version of this provider. Upgrade to at least azure-native:maps/v20211201preview:Account to guarantee forwards compatibility.
 type Account struct {
 	pulumi.CustomResourceState
 

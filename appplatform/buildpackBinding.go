@@ -12,7 +12,7 @@ import (
 )
 
 // Buildpack Binding Resource object
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview
 type BuildpackBinding struct {
 	pulumi.CustomResourceState
 
@@ -69,6 +69,12 @@ func NewBuildpackBinding(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:BuildpackBinding"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:BuildpackBinding"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:BuildpackBinding"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Project resource.
-// API Version: 2022-07-01-preview.
+// Azure REST API version: 2023-03-01.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("azure-native:storagemover:getProject", args, &rv, opts...)

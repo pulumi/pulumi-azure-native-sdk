@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an integration account map.
-// API Version: 2019-05-01.
+// Azure REST API version: 2019-05-01.
 func LookupIntegrationAccountMap(ctx *pulumi.Context, args *LookupIntegrationAccountMapArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountMapResult, error) {
 	var rv LookupIntegrationAccountMapResult
 	err := ctx.Invoke("azure-native:logic:getIntegrationAccountMap", args, &rv, opts...)

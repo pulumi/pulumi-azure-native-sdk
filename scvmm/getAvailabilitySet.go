@@ -11,7 +11,7 @@ import (
 )
 
 // Implements AvailabilitySet GET method.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview.
 func LookupAvailabilitySet(ctx *pulumi.Context, args *LookupAvailabilitySetArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilitySetResult, error) {
 	var rv LookupAvailabilitySetResult
 	err := ctx.Invoke("azure-native:scvmm:getAvailabilitySet", args, &rv, opts...)

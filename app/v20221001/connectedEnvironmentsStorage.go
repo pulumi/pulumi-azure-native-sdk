@@ -12,8 +12,6 @@ import (
 )
 
 // Storage resource for connectedEnvironment.
-//
-// Deprecated: azure-native:app/v20221001:ConnectedEnvironmentsStorage is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ConnectedEnvironmentsStorage to guarantee forwards compatibility.
 type ConnectedEnvironmentsStorage struct {
 	pulumi.CustomResourceState
 
@@ -42,7 +40,16 @@ func NewConnectedEnvironmentsStorage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsStorage"),
+		},
+		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ConnectedEnvironmentsStorage"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ConnectedEnvironmentsStorage"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:ConnectedEnvironmentsStorage"),
 		},
 	})
 	opts = append(opts, aliases)

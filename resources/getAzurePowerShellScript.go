@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a deployment script with a given name.
-// API Version: 2020-10-01.
+// Azure REST API version: 2020-10-01.
 func LookupAzurePowerShellScript(ctx *pulumi.Context, args *LookupAzurePowerShellScriptArgs, opts ...pulumi.InvokeOption) (*LookupAzurePowerShellScriptResult, error) {
 	var rv LookupAzurePowerShellScriptResult
 	err := ctx.Invoke("azure-native:resources:getAzurePowerShellScript", args, &rv, opts...)

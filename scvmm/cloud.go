@@ -12,7 +12,7 @@ import (
 )
 
 // The Clouds resource definition.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview
 type Cloud struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +60,9 @@ func NewCloud(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:Cloud"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:Cloud"),
 		},
 	})
 	opts = append(opts, aliases)

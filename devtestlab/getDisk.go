@@ -11,7 +11,7 @@ import (
 )
 
 // Get disk.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	var rv LookupDiskResult
 	err := ctx.Invoke("azure-native:devtestlab:getDisk", args, &rv, opts...)

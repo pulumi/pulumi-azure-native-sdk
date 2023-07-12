@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a custom API by name for a specific subscription and resource group
-// API Version: 2016-06-01.
+// Azure REST API version: 2016-06-01.
 func LookupCustomApi(ctx *pulumi.Context, args *LookupCustomApiArgs, opts ...pulumi.InvokeOption) (*LookupCustomApiResult, error) {
 	var rv LookupCustomApiResult
 	err := ctx.Invoke("azure-native:web:getCustomApi", args, &rv, opts...)

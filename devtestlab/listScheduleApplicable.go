@@ -11,7 +11,7 @@ import (
 )
 
 // Lists all applicable schedules
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func ListScheduleApplicable(ctx *pulumi.Context, args *ListScheduleApplicableArgs, opts ...pulumi.InvokeOption) (*ListScheduleApplicableResult, error) {
 	var rv ListScheduleApplicableResult
 	err := ctx.Invoke("azure-native:devtestlab:listScheduleApplicable", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 )
 
 // Network security user rule.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type UserRule struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +24,6 @@ type UserRule struct {
 	Destinations AddressPrefixItemResponseArrayOutput `pulumi:"destinations"`
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// A friendly name for the rule.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Whether the rule is custom or default.
@@ -123,7 +121,7 @@ func (UserRuleState) ElementType() reflect.Type {
 }
 
 type userRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// A description for this rule.
 	Description *string `pulumi:"description"`
@@ -133,8 +131,6 @@ type userRuleArgs struct {
 	Destinations []AddressPrefixItem `pulumi:"destinations"`
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction string `pulumi:"direction"`
-	// A friendly name for the rule.
-	DisplayName *string `pulumi:"displayName"`
 	// Whether the rule is custom or default.
 	// Expected value is 'Custom'.
 	Kind string `pulumi:"kind"`
@@ -156,7 +152,7 @@ type userRuleArgs struct {
 
 // The set of arguments for constructing a UserRule resource.
 type UserRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput
 	// A description for this rule.
 	Description pulumi.StringPtrInput
@@ -166,8 +162,6 @@ type UserRuleArgs struct {
 	Destinations AddressPrefixItemArrayInput
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction pulumi.StringInput
-	// A friendly name for the rule.
-	DisplayName pulumi.StringPtrInput
 	// Whether the rule is custom or default.
 	// Expected value is 'Custom'.
 	Kind pulumi.StringInput
@@ -242,11 +236,6 @@ func (o UserRuleOutput) Destinations() AddressPrefixItemResponseArrayOutput {
 // Indicates if the traffic matched against the rule in inbound or outbound.
 func (o UserRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
-}
-
-// A friendly name for the rule.
-func (o UserRuleOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserRule) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

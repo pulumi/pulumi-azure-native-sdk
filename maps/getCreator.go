@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Maps Creator resource.
-// API Version: 2020-02-01-preview.
+// Azure REST API version: 2021-02-01.
 func LookupCreator(ctx *pulumi.Context, args *LookupCreatorArgs, opts ...pulumi.InvokeOption) (*LookupCreatorResult, error) {
 	var rv LookupCreatorResult
 	err := ctx.Invoke("azure-native:maps:getCreator", args, &rv, opts...)

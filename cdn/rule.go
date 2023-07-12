@@ -12,7 +12,7 @@ import (
 )
 
 // Friendly Rules name mapping to the any Rules or secret related information.
-// API Version: 2020-09-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01
 type Rule struct {
 	pulumi.CustomResourceState
 
@@ -29,6 +29,8 @@ type Rule struct {
 	Order pulumi.IntOutput `pulumi:"order"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The name of the rule set containing the rule.
+	RuleSetName pulumi.StringOutput `pulumi:"ruleSetName"`
 	// Read only system data
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
@@ -73,6 +75,9 @@ func NewRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20221101preview:Rule"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230501:Rule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Rule
@@ -115,7 +120,7 @@ type ruleArgs struct {
 	MatchProcessingBehavior *string `pulumi:"matchProcessingBehavior"`
 	// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
 	Order int `pulumi:"order"`
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -135,7 +140,7 @@ type RuleArgs struct {
 	MatchProcessingBehavior pulumi.StringPtrInput
 	// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
 	Order pulumi.IntInput
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
 	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
@@ -214,6 +219,11 @@ func (o RuleOutput) Order() pulumi.IntOutput {
 // Provisioning status
 func (o RuleOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of the rule set containing the rule.
+func (o RuleOutput) RuleSetName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.RuleSetName }).(pulumi.StringOutput)
 }
 
 // Read only system data

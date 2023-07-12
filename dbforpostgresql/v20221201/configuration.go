@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a Configuration.
-//
-// Deprecated: azure-native:dbforpostgresql/v20221201:Configuration is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20230301preview:Configuration to guarantee forwards compatibility.
 type Configuration struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +60,9 @@ func NewConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Configuration"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:Configuration"),
 		},
 		{
@@ -84,6 +85,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20220308preview:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:Configuration"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSet in a share
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupADLSGen2FileSystemDataSet(ctx *pulumi.Context, args *LookupADLSGen2FileSystemDataSetArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2FileSystemDataSetResult, error) {
 	var rv LookupADLSGen2FileSystemDataSetResult
 	err := ctx.Invoke("azure-native:datashare:getADLSGen2FileSystemDataSet", args, &rv, opts...)

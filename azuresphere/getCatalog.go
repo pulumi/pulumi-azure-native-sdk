@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Catalog
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	var rv LookupCatalogResult
 	err := ctx.Invoke("azure-native:azuresphere:getCatalog", args, &rv, opts...)

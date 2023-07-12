@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified backup schedule name.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func LookupBackupSchedule(ctx *pulumi.Context, args *LookupBackupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupBackupScheduleResult, error) {
 	var rv LookupBackupScheduleResult
 	err := ctx.Invoke("azure-native:storsimple:getBackupSchedule", args, &rv, opts...)

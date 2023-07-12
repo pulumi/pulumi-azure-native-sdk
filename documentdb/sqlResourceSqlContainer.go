@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB container.
-// API Version: 2021-03-15.
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-15
 type SqlResourceSqlContainer struct {
 	pulumi.CustomResourceState
 
@@ -134,7 +134,19 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:SqlResourceSqlContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:SqlResourceSqlContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlContainer"),
 		},
 	})
 	opts = append(opts, aliases)

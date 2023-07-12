@@ -12,7 +12,7 @@ import (
 )
 
 // Network default admin rule.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type DefaultAdminRule struct {
 	pulumi.CustomResourceState
 
@@ -26,8 +26,6 @@ type DefaultAdminRule struct {
 	Destinations AddressPrefixItemResponseArrayOutput `pulumi:"destinations"`
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// A friendly name for the rule.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Default rule flag.
@@ -43,6 +41,8 @@ type DefaultAdminRule struct {
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Unique identifier for this resource.
+	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// The source port ranges.
 	SourcePortRanges pulumi.StringArrayOutput `pulumi:"sourcePortRanges"`
 	// The CIDR or source IP ranges.
@@ -101,6 +101,12 @@ func NewDefaultAdminRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:DefaultAdminRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:DefaultAdminRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:DefaultAdminRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DefaultAdminRule
@@ -135,7 +141,7 @@ func (DefaultAdminRuleState) ElementType() reflect.Type {
 }
 
 type defaultAdminRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// Default rule flag.
 	Flag *string `pulumi:"flag"`
@@ -154,7 +160,7 @@ type defaultAdminRuleArgs struct {
 
 // The set of arguments for constructing a DefaultAdminRule resource.
 type DefaultAdminRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput
 	// Default rule flag.
 	Flag pulumi.StringPtrInput
@@ -233,11 +239,6 @@ func (o DefaultAdminRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
 
-// A friendly name for the rule.
-func (o DefaultAdminRuleOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
-}
-
 // A unique read-only string that changes whenever the resource is updated.
 func (o DefaultAdminRuleOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -272,6 +273,11 @@ func (o DefaultAdminRuleOutput) Protocol() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o DefaultAdminRuleOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Unique identifier for this resource.
+func (o DefaultAdminRuleOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The source port ranges.

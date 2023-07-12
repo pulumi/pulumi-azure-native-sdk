@@ -11,7 +11,7 @@ import (
 )
 
 // Get a hub setting.
-// API Version: 2021-10-01.
+// Azure REST API version: 2023-02-01.
 func LookupWebPubSubHub(ctx *pulumi.Context, args *LookupWebPubSubHubArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubHubResult, error) {
 	var rv LookupWebPubSubHubResult
 	err := ctx.Invoke("azure-native:webpubsub:getWebPubSubHub", args, &rv, opts...)

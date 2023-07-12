@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about a RedisEnterprise cluster
-// API Version: 2021-03-01.
+// Azure REST API version: 2023-03-01-preview.
 func LookupRedisEnterprise(ctx *pulumi.Context, args *LookupRedisEnterpriseArgs, opts ...pulumi.InvokeOption) (*LookupRedisEnterpriseResult, error) {
 	var rv LookupRedisEnterpriseResult
 	err := ctx.Invoke("azure-native:cache:getRedisEnterprise", args, &rv, opts...)
@@ -30,10 +30,14 @@ type LookupRedisEnterpriseArgs struct {
 
 // Describes the RedisEnterprise cluster
 type LookupRedisEnterpriseResult struct {
+	// Encryption-at-rest configuration for the cluster.
+	Encryption *ClusterPropertiesResponseEncryption `pulumi:"encryption"`
 	// DNS name of the cluster endpoint
 	HostName string `pulumi:"hostName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// The identity of the resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'
@@ -50,6 +54,8 @@ type LookupRedisEnterpriseResult struct {
 	ResourceState string `pulumi:"resourceState"`
 	// The SKU to create, which affects price, performance, and features.
 	Sku EnterpriseSkuResponse `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -97,6 +103,11 @@ func (o LookupRedisEnterpriseResultOutput) ToLookupRedisEnterpriseResultOutputWi
 	return o
 }
 
+// Encryption-at-rest configuration for the cluster.
+func (o LookupRedisEnterpriseResultOutput) Encryption() ClusterPropertiesResponseEncryptionPtrOutput {
+	return o.ApplyT(func(v LookupRedisEnterpriseResult) *ClusterPropertiesResponseEncryption { return v.Encryption }).(ClusterPropertiesResponseEncryptionPtrOutput)
+}
+
 // DNS name of the cluster endpoint
 func (o LookupRedisEnterpriseResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisEnterpriseResult) string { return v.HostName }).(pulumi.StringOutput)
@@ -105,6 +116,11 @@ func (o LookupRedisEnterpriseResultOutput) HostName() pulumi.StringOutput {
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupRedisEnterpriseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisEnterpriseResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity of the resource.
+func (o LookupRedisEnterpriseResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupRedisEnterpriseResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -147,6 +163,11 @@ func (o LookupRedisEnterpriseResultOutput) ResourceState() pulumi.StringOutput {
 // The SKU to create, which affects price, performance, and features.
 func (o LookupRedisEnterpriseResultOutput) Sku() EnterpriseSkuResponseOutput {
 	return o.ApplyT(func(v LookupRedisEnterpriseResult) EnterpriseSkuResponse { return v.Sku }).(EnterpriseSkuResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupRedisEnterpriseResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRedisEnterpriseResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

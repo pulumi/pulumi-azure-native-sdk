@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a private endpoint connection.
-// API Version: 2022-04-02-preview.
+// Azure REST API version: 2022-04-02-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration:getPrivateEndpointConnection", args, &rv, opts...)

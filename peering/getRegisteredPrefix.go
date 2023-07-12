@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an existing registered prefix with the specified name under the given subscription, resource group and peering.
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-10-01.
 func LookupRegisteredPrefix(ctx *pulumi.Context, args *LookupRegisteredPrefixArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredPrefixResult, error) {
 	var rv LookupRegisteredPrefixResult
 	err := ctx.Invoke("azure-native:peering:getRegisteredPrefix", args, &rv, opts...)

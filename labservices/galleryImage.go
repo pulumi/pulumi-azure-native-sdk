@@ -12,7 +12,7 @@ import (
 )
 
 // Represents an image from the Azure Marketplace
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15. Prior API version in Azure Native 1.x: 2018-10-15
 type GalleryImage struct {
 	pulumi.CustomResourceState
 

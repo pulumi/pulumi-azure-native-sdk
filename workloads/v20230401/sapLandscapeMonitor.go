@@ -44,6 +44,9 @@ func NewSapLandscapeMonitor(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:workloads:SapLandscapeMonitor"),
+		},
+		{
 			Type: pulumi.String("azure-native:workloads/v20221101preview:SapLandscapeMonitor"),
 		},
 	})

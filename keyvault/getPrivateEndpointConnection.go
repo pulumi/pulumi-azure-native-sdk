@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the key vault.
-// API Version: 2019-09-01.
+// Azure REST API version: 2023-02-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:keyvault:getPrivateEndpointConnection", args, &rv, opts...)

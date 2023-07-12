@@ -12,7 +12,7 @@ import (
 )
 
 // Virtual Appliance Site resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type VirtualHubBgpConnection struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +20,8 @@ type VirtualHubBgpConnection struct {
 	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The reference to the HubVirtualNetworkConnection resource.
+	HubVirtualNetworkConnection SubResourceResponsePtrOutput `pulumi:"hubVirtualNetworkConnection"`
 	// Name of the connection.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Peer ASN.
@@ -85,6 +87,12 @@ func NewVirtualHubBgpConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualHubBgpConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualHubBgpConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:VirtualHubBgpConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualHubBgpConnection
@@ -121,6 +129,8 @@ func (VirtualHubBgpConnectionState) ElementType() reflect.Type {
 type virtualHubBgpConnectionArgs struct {
 	// The name of the connection.
 	ConnectionName *string `pulumi:"connectionName"`
+	// The reference to the HubVirtualNetworkConnection resource.
+	HubVirtualNetworkConnection *SubResource `pulumi:"hubVirtualNetworkConnection"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Name of the connection.
@@ -139,6 +149,8 @@ type virtualHubBgpConnectionArgs struct {
 type VirtualHubBgpConnectionArgs struct {
 	// The name of the connection.
 	ConnectionName pulumi.StringPtrInput
+	// The reference to the HubVirtualNetworkConnection resource.
+	HubVirtualNetworkConnection SubResourcePtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Name of the connection.
@@ -198,6 +210,11 @@ func (o VirtualHubBgpConnectionOutput) ConnectionState() pulumi.StringOutput {
 // A unique read-only string that changes whenever the resource is updated.
 func (o VirtualHubBgpConnectionOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualHubBgpConnection) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The reference to the HubVirtualNetworkConnection resource.
+func (o VirtualHubBgpConnectionOutput) HubVirtualNetworkConnection() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualHubBgpConnection) SubResourceResponsePtrOutput { return v.HubVirtualNetworkConnection }).(SubResourceResponsePtrOutput)
 }
 
 // Name of the connection.

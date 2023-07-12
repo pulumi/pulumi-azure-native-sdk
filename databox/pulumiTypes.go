@@ -22,15 +22,15 @@ type AccountCredentialDetailsResponse struct {
 	ShareCredentialDetails []ShareCredentialDetailsResponse `pulumi:"shareCredentialDetails"`
 }
 
-// Additional error info.
+// This class represents additional info which Resource Providers pass when an error occurs.
 type AdditionalErrorInfoResponse struct {
-	// Additional error info.
+	// Additional information of the type of error.
 	Info interface{} `pulumi:"info"`
-	// Additional error type.
+	// Type of error (e.g. CustomerIntervention, PolicyViolation, SecurityViolation).
 	Type *string `pulumi:"type"`
 }
 
-// Additional error info.
+// This class represents additional info which Resource Providers pass when an error occurs.
 type AdditionalErrorInfoResponseOutput struct{ *pulumi.OutputState }
 
 func (AdditionalErrorInfoResponseOutput) ElementType() reflect.Type {
@@ -45,12 +45,12 @@ func (o AdditionalErrorInfoResponseOutput) ToAdditionalErrorInfoResponseOutputWi
 	return o
 }
 
-// Additional error info.
+// Additional information of the type of error.
 func (o AdditionalErrorInfoResponseOutput) Info() pulumi.AnyOutput {
 	return o.ApplyT(func(v AdditionalErrorInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
 }
 
-// Additional error type.
+// Type of error (e.g. CustomerIntervention, PolicyViolation, SecurityViolation).
 func (o AdditionalErrorInfoResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AdditionalErrorInfoResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -123,21 +123,21 @@ type BlobFilterDetailsResponse struct {
 	ContainerList []string `pulumi:"containerList"`
 }
 
-// Cloud error.
+// Provides additional information about an http error response.
 type CloudErrorResponse struct {
-	// Cloud error additional info.
+	// Gets or sets additional error info.
 	AdditionalInfo []AdditionalErrorInfoResponse `pulumi:"additionalInfo"`
-	// Cloud error code.
+	// Error code.
 	Code *string `pulumi:"code"`
-	// Cloud error details.
+	// Gets or sets details for the error.
 	Details []CloudErrorResponse `pulumi:"details"`
-	// Cloud error message.
+	// The error message parsed from the body of the http error response.
 	Message *string `pulumi:"message"`
-	// Cloud error target.
+	// Gets or sets the target of the error.
 	Target *string `pulumi:"target"`
 }
 
-// Cloud error.
+// Provides additional information about an http error response.
 type CloudErrorResponseOutput struct{ *pulumi.OutputState }
 
 func (CloudErrorResponseOutput) ElementType() reflect.Type {
@@ -152,27 +152,27 @@ func (o CloudErrorResponseOutput) ToCloudErrorResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Cloud error additional info.
+// Gets or sets additional error info.
 func (o CloudErrorResponseOutput) AdditionalInfo() AdditionalErrorInfoResponseArrayOutput {
 	return o.ApplyT(func(v CloudErrorResponse) []AdditionalErrorInfoResponse { return v.AdditionalInfo }).(AdditionalErrorInfoResponseArrayOutput)
 }
 
-// Cloud error code.
+// Error code.
 func (o CloudErrorResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudErrorResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
-// Cloud error details.
+// Gets or sets details for the error.
 func (o CloudErrorResponseOutput) Details() CloudErrorResponseArrayOutput {
 	return o.ApplyT(func(v CloudErrorResponse) []CloudErrorResponse { return v.Details }).(CloudErrorResponseArrayOutput)
 }
 
-// Cloud error message.
+// The error message parsed from the body of the http error response.
 func (o CloudErrorResponseOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudErrorResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// Cloud error target.
+// Gets or sets the target of the error.
 func (o CloudErrorResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudErrorResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -229,16 +229,44 @@ type ContactDetailsResponse struct {
 	PhoneExtension *string `pulumi:"phoneExtension"`
 }
 
+// Contact Info.
+type ContactInfo struct {
+	// Contact name of the person.
+	ContactName string `pulumi:"contactName"`
+	// Mobile number of the contact person.
+	Mobile *string `pulumi:"mobile"`
+	// Phone number of the contact person.
+	Phone string `pulumi:"phone"`
+	// Phone extension number of the contact person.
+	PhoneExtension *string `pulumi:"phoneExtension"`
+}
+
+// Contact Info.
+type ContactInfoResponse struct {
+	// Contact name of the person.
+	ContactName string `pulumi:"contactName"`
+	// Mobile number of the contact person.
+	Mobile *string `pulumi:"mobile"`
+	// Phone number of the contact person.
+	Phone string `pulumi:"phone"`
+	// Phone extension number of the contact person.
+	PhoneExtension *string `pulumi:"phoneExtension"`
+}
+
 // Copy progress.
 type CopyProgressResponse struct {
 	// Id of the account where the data needs to be uploaded.
 	AccountId string `pulumi:"accountId"`
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
 	// To indicate bytes transferred.
 	BytesProcessed float64 `pulumi:"bytesProcessed"`
 	// Data Account Type.
 	DataAccountType string `pulumi:"dataAccountType"`
 	// To indicate directories errored out in the job.
 	DirectoriesErroredOut float64 `pulumi:"directoriesErroredOut"`
+	// Error, if any, in the stage
+	Error CloudErrorResponse `pulumi:"error"`
 	// Number of files which could not be copied
 	FilesErroredOut float64 `pulumi:"filesErroredOut"`
 	// Number of files processed
@@ -264,6 +292,21 @@ type CopyProgressResponse struct {
 	TransferType string `pulumi:"transferType"`
 }
 
+// The secrets related to customer disk job.
+type CustomerDiskJobSecretsResponse struct {
+	// Carrier Account Number of the customer
+	CarrierAccountNumber string `pulumi:"carrierAccountNumber"`
+	// Dc Access Security Code for Customer Managed Shipping
+	DcAccessSecurityCode DcAccessSecurityCodeResponse `pulumi:"dcAccessSecurityCode"`
+	// Contains the list of secrets object for that device.
+	DiskSecrets []DiskSecretResponse `pulumi:"diskSecrets"`
+	// Error while fetching the secrets.
+	Error CloudErrorResponse `pulumi:"error"`
+	// Used to indicate what type of job secrets object.
+	// Expected value is 'DataBoxCustomerDisk'.
+	JobSecretsType string `pulumi:"jobSecretsType"`
+}
+
 // Copy log details for a storage account of a DataBox job
 type DataBoxAccountCopyLogDetailsResponse struct {
 	// Account name.
@@ -275,6 +318,190 @@ type DataBoxAccountCopyLogDetailsResponse struct {
 	CopyLogLink string `pulumi:"copyLogLink"`
 	// Link for copy verbose logs. This will be set only when LogCollectionLevel is set to Verbose.
 	CopyVerboseLogLink string `pulumi:"copyVerboseLogLink"`
+}
+
+// Copy Log Details for customer disk
+type DataBoxCustomerDiskCopyLogDetailsResponse struct {
+	// Indicates the type of job details.
+	// Expected value is 'DataBoxCustomerDisk'.
+	CopyLogDetailsType string `pulumi:"copyLogDetailsType"`
+	// Link for copy error logs.
+	ErrorLogLink string `pulumi:"errorLogLink"`
+	// Disk Serial Number.
+	SerialNumber string `pulumi:"serialNumber"`
+	// Link for copy verbose logs.
+	VerboseLogLink string `pulumi:"verboseLogLink"`
+}
+
+// DataBox CustomerDisk Copy Progress
+type DataBoxCustomerDiskCopyProgressResponse struct {
+	// Id of the account where the data needs to be uploaded.
+	AccountId string `pulumi:"accountId"`
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
+	// To indicate bytes transferred.
+	BytesProcessed float64 `pulumi:"bytesProcessed"`
+	// The Status of the copy
+	CopyStatus string `pulumi:"copyStatus"`
+	// Data Account Type.
+	DataAccountType string `pulumi:"dataAccountType"`
+	// To indicate directories errored out in the job.
+	DirectoriesErroredOut float64 `pulumi:"directoriesErroredOut"`
+	// Error, if any, in the stage
+	Error CloudErrorResponse `pulumi:"error"`
+	// Number of files which could not be copied
+	FilesErroredOut float64 `pulumi:"filesErroredOut"`
+	// Number of files processed
+	FilesProcessed float64 `pulumi:"filesProcessed"`
+	// To indicate directories renamed
+	InvalidDirectoriesProcessed float64 `pulumi:"invalidDirectoriesProcessed"`
+	// Total amount of data not adhering to azure naming conventions which were processed by automatic renaming
+	InvalidFileBytesUploaded float64 `pulumi:"invalidFileBytesUploaded"`
+	// Number of files not adhering to azure naming conventions which were processed by automatic renaming
+	InvalidFilesProcessed float64 `pulumi:"invalidFilesProcessed"`
+	// To indicate if enumeration of data is in progress.
+	// Until this is true, the TotalBytesToProcess may not be valid.
+	IsEnumerationInProgress bool `pulumi:"isEnumerationInProgress"`
+	// Number of folders not adhering to azure naming conventions which were processed by automatic renaming
+	RenamedContainerCount float64 `pulumi:"renamedContainerCount"`
+	// Disk Serial Number.
+	SerialNumber string `pulumi:"serialNumber"`
+	// Name of the storage account. This will be empty for data account types other than storage account.
+	StorageAccountName string `pulumi:"storageAccountName"`
+	// Total amount of data to be processed by the job.
+	TotalBytesToProcess float64 `pulumi:"totalBytesToProcess"`
+	// Total files to process
+	TotalFilesToProcess float64 `pulumi:"totalFilesToProcess"`
+	// Transfer type of data
+	TransferType string `pulumi:"transferType"`
+}
+
+// Customer disk job details.
+type DataBoxCustomerDiskJobDetails struct {
+	// Contact details for notification and shipping.
+	ContactDetails ContactDetails `pulumi:"contactDetails"`
+	// Details of the data to be exported from azure.
+	DataExportDetails []DataExportDetails `pulumi:"dataExportDetails"`
+	// Details of the data to be imported into azure.
+	DataImportDetails []DataImportDetails `pulumi:"dataImportDetails"`
+	// Flag to indicate if disk manifest should be backed-up in the Storage Account.
+	EnableManifestBackup *bool `pulumi:"enableManifestBackup"`
+	// The expected size of the data, which needs to be transferred in this job, in terabytes.
+	ExpectedDataSizeInTeraBytes *int `pulumi:"expectedDataSizeInTeraBytes"`
+	// Contains the map of disk serial number to the disk details for import jobs.
+	ImportDiskDetailsCollection map[string]ImportDiskDetails `pulumi:"importDiskDetailsCollection"`
+	// Indicates the type of job details.
+	// Expected value is 'DataBoxCustomerDisk'.
+	JobDetailsType string `pulumi:"jobDetailsType"`
+	// Details about which key encryption type is being used.
+	KeyEncryptionKey *KeyEncryptionKey `pulumi:"keyEncryptionKey"`
+	// Preferences for the order.
+	Preferences *Preferences `pulumi:"preferences"`
+	// Return package shipping details.
+	ReturnToCustomerPackageDetails PackageCarrierDetails `pulumi:"returnToCustomerPackageDetails"`
+	// Optional Reverse Shipping details for order.
+	ReverseShippingDetails *ReverseShippingDetails `pulumi:"reverseShippingDetails"`
+	// Shipping address of the customer.
+	ShippingAddress *ShippingAddress `pulumi:"shippingAddress"`
+}
+
+// Defaults sets the appropriate defaults for DataBoxCustomerDiskJobDetails
+func (val *DataBoxCustomerDiskJobDetails) Defaults() *DataBoxCustomerDiskJobDetails {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableManifestBackup == nil {
+		enableManifestBackup_ := false
+		tmp.EnableManifestBackup = &enableManifestBackup_
+	}
+	tmp.KeyEncryptionKey = tmp.KeyEncryptionKey.Defaults()
+
+	tmp.Preferences = tmp.Preferences.Defaults()
+
+	tmp.ReverseShippingDetails = tmp.ReverseShippingDetails.Defaults()
+
+	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
+
+	return &tmp
+}
+
+// Customer disk job details.
+type DataBoxCustomerDiskJobDetailsResponse struct {
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
+	// Shared access key to download the chain of custody logs
+	ChainOfCustodySasKey string `pulumi:"chainOfCustodySasKey"`
+	// Contact details for notification and shipping.
+	ContactDetails ContactDetailsResponse `pulumi:"contactDetails"`
+	// List of copy log details.
+	CopyLogDetails []interface{} `pulumi:"copyLogDetails"`
+	// Copy progress per disk.
+	CopyProgress []DataBoxCustomerDiskCopyProgressResponse `pulumi:"copyProgress"`
+	// DataCenter code.
+	DataCenterCode string `pulumi:"dataCenterCode"`
+	// Details of the data to be exported from azure.
+	DataExportDetails []DataExportDetailsResponse `pulumi:"dataExportDetails"`
+	// Details of the data to be imported into azure.
+	DataImportDetails []DataImportDetailsResponse `pulumi:"dataImportDetails"`
+	// Datacenter address to ship to, for the given sku and storage location.
+	DatacenterAddress interface{} `pulumi:"datacenterAddress"`
+	// Delivery package shipping details.
+	DeliverToDcPackageDetails PackageCarrierInfoResponse `pulumi:"deliverToDcPackageDetails"`
+	// Delivery package shipping details.
+	DeliveryPackage PackageShippingDetailsResponse `pulumi:"deliveryPackage"`
+	// Holds device data erasure details
+	DeviceErasureDetails DeviceErasureDetailsResponse `pulumi:"deviceErasureDetails"`
+	// Flag to indicate if disk manifest should be backed-up in the Storage Account.
+	EnableManifestBackup *bool `pulumi:"enableManifestBackup"`
+	// The expected size of the data, which needs to be transferred in this job, in terabytes.
+	ExpectedDataSizeInTeraBytes *int `pulumi:"expectedDataSizeInTeraBytes"`
+	// Contains the map of disk serial number to the disk details for export jobs.
+	ExportDiskDetailsCollection map[string]ExportDiskDetailsResponse `pulumi:"exportDiskDetailsCollection"`
+	// Contains the map of disk serial number to the disk details for import jobs.
+	ImportDiskDetailsCollection map[string]ImportDiskDetailsResponse `pulumi:"importDiskDetailsCollection"`
+	// Indicates the type of job details.
+	// Expected value is 'DataBoxCustomerDisk'.
+	JobDetailsType string `pulumi:"jobDetailsType"`
+	// List of stages that run in the job.
+	JobStages []JobStagesResponse `pulumi:"jobStages"`
+	// Details about which key encryption type is being used.
+	KeyEncryptionKey *KeyEncryptionKeyResponse `pulumi:"keyEncryptionKey"`
+	// Last mitigation action performed on the job.
+	LastMitigationActionOnJob LastMitigationActionOnJobResponse `pulumi:"lastMitigationActionOnJob"`
+	// Preferences for the order.
+	Preferences *PreferencesResponse `pulumi:"preferences"`
+	// Return package shipping details.
+	ReturnPackage PackageShippingDetailsResponse `pulumi:"returnPackage"`
+	// Return package shipping details.
+	ReturnToCustomerPackageDetails PackageCarrierDetailsResponse `pulumi:"returnToCustomerPackageDetails"`
+	// Shared access key to download the return shipment label
+	ReverseShipmentLabelSasKey string `pulumi:"reverseShipmentLabelSasKey"`
+	// Optional Reverse Shipping details for order.
+	ReverseShippingDetails *ReverseShippingDetailsResponse `pulumi:"reverseShippingDetails"`
+	// Shipping address of the customer.
+	ShippingAddress *ShippingAddressResponse `pulumi:"shippingAddress"`
+}
+
+// Defaults sets the appropriate defaults for DataBoxCustomerDiskJobDetailsResponse
+func (val *DataBoxCustomerDiskJobDetailsResponse) Defaults() *DataBoxCustomerDiskJobDetailsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableManifestBackup == nil {
+		enableManifestBackup_ := false
+		tmp.EnableManifestBackup = &enableManifestBackup_
+	}
+	tmp.KeyEncryptionKey = tmp.KeyEncryptionKey.Defaults()
+
+	tmp.Preferences = tmp.Preferences.Defaults()
+
+	tmp.ReverseShippingDetails = tmp.ReverseShippingDetails.Defaults()
+
+	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
+
+	return &tmp
 }
 
 // Copy Log Details for a disk
@@ -292,14 +519,76 @@ type DataBoxDiskCopyLogDetailsResponse struct {
 
 // DataBox Disk Copy Progress
 type DataBoxDiskCopyProgressResponse struct {
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
 	// Bytes copied during the copy of disk.
 	BytesCopied float64 `pulumi:"bytesCopied"`
+	// Error, if any, in the stage
+	Error CloudErrorResponse `pulumi:"error"`
 	// Indicates the percentage completed for the copy of the disk.
 	PercentComplete int `pulumi:"percentComplete"`
 	// The serial number of the disk
 	SerialNumber string `pulumi:"serialNumber"`
 	// The Status of the copy
 	Status string `pulumi:"status"`
+}
+
+// Granular Copy Log Details for customer disk
+type DataBoxDiskGranularCopyLogDetailsResponse struct {
+	// Account id.
+	AccountId string `pulumi:"accountId"`
+	// Indicates the type of job details.
+	// Expected value is 'DataBoxCustomerDisk'.
+	CopyLogDetailsType string `pulumi:"copyLogDetailsType"`
+	// Link for copy error logs.
+	ErrorLogLink string `pulumi:"errorLogLink"`
+	// Disk Serial Number.
+	SerialNumber string `pulumi:"serialNumber"`
+	// Link for copy verbose logs.
+	VerboseLogLink string `pulumi:"verboseLogLink"`
+}
+
+// DataBox Disk Granular Copy Progress
+type DataBoxDiskGranularCopyProgressResponse struct {
+	// Id of the account where the data needs to be uploaded.
+	AccountId string `pulumi:"accountId"`
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
+	// To indicate bytes transferred.
+	BytesProcessed float64 `pulumi:"bytesProcessed"`
+	// The Status of the copy
+	CopyStatus string `pulumi:"copyStatus"`
+	// Data Account Type.
+	DataAccountType string `pulumi:"dataAccountType"`
+	// To indicate directories errored out in the job.
+	DirectoriesErroredOut float64 `pulumi:"directoriesErroredOut"`
+	// Error, if any, in the stage
+	Error CloudErrorResponse `pulumi:"error"`
+	// Number of files which could not be copied
+	FilesErroredOut float64 `pulumi:"filesErroredOut"`
+	// Number of files processed
+	FilesProcessed float64 `pulumi:"filesProcessed"`
+	// To indicate directories renamed
+	InvalidDirectoriesProcessed float64 `pulumi:"invalidDirectoriesProcessed"`
+	// Total amount of data not adhering to azure naming conventions which were processed by automatic renaming
+	InvalidFileBytesUploaded float64 `pulumi:"invalidFileBytesUploaded"`
+	// Number of files not adhering to azure naming conventions which were processed by automatic renaming
+	InvalidFilesProcessed float64 `pulumi:"invalidFilesProcessed"`
+	// To indicate if enumeration of data is in progress.
+	// Until this is true, the TotalBytesToProcess may not be valid.
+	IsEnumerationInProgress bool `pulumi:"isEnumerationInProgress"`
+	// Number of folders not adhering to azure naming conventions which were processed by automatic renaming
+	RenamedContainerCount float64 `pulumi:"renamedContainerCount"`
+	// Disk Serial Number.
+	SerialNumber string `pulumi:"serialNumber"`
+	// Name of the storage account. This will be empty for data account types other than storage account.
+	StorageAccountName string `pulumi:"storageAccountName"`
+	// Total amount of data to be processed by the job.
+	TotalBytesToProcess float64 `pulumi:"totalBytesToProcess"`
+	// Total files to process
+	TotalFilesToProcess float64 `pulumi:"totalFilesToProcess"`
+	// Transfer type of data
+	TransferType string `pulumi:"transferType"`
 }
 
 // DataBox Disk Job Details.
@@ -323,6 +612,8 @@ type DataBoxDiskJobDetails struct {
 	Preferences *Preferences `pulumi:"preferences"`
 	// User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
 	PreferredDisks map[string]int `pulumi:"preferredDisks"`
+	// Optional Reverse Shipping details for order.
+	ReverseShippingDetails *ReverseShippingDetails `pulumi:"reverseShippingDetails"`
 	// Shipping address of the customer.
 	ShippingAddress *ShippingAddress `pulumi:"shippingAddress"`
 }
@@ -337,6 +628,8 @@ func (val *DataBoxDiskJobDetails) Defaults() *DataBoxDiskJobDetails {
 
 	tmp.Preferences = tmp.Preferences.Defaults()
 
+	tmp.ReverseShippingDetails = tmp.ReverseShippingDetails.Defaults()
+
 	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
 
 	return &tmp
@@ -344,6 +637,8 @@ func (val *DataBoxDiskJobDetails) Defaults() *DataBoxDiskJobDetails {
 
 // DataBox Disk Job Details.
 type DataBoxDiskJobDetailsResponse struct {
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
 	// Shared access key to download the chain of custody logs
 	ChainOfCustodySasKey string `pulumi:"chainOfCustodySasKey"`
 	// Contact details for notification and shipping.
@@ -352,16 +647,26 @@ type DataBoxDiskJobDetailsResponse struct {
 	CopyLogDetails []interface{} `pulumi:"copyLogDetails"`
 	// Copy progress per disk.
 	CopyProgress []DataBoxDiskCopyProgressResponse `pulumi:"copyProgress"`
+	// DataCenter code.
+	DataCenterCode string `pulumi:"dataCenterCode"`
 	// Details of the data to be exported from azure.
 	DataExportDetails []DataExportDetailsResponse `pulumi:"dataExportDetails"`
 	// Details of the data to be imported into azure.
 	DataImportDetails []DataImportDetailsResponse `pulumi:"dataImportDetails"`
+	// Datacenter address to ship to, for the given sku and storage location.
+	DatacenterAddress interface{} `pulumi:"datacenterAddress"`
 	// Delivery package shipping details.
 	DeliveryPackage PackageShippingDetailsResponse `pulumi:"deliveryPackage"`
+	// Holds device data erasure details
+	DeviceErasureDetails DeviceErasureDetailsResponse `pulumi:"deviceErasureDetails"`
 	// Contains the map of disk serial number to the disk size being used for the job. Is returned only after the disks are shipped to the customer.
 	DisksAndSizeDetails map[string]int `pulumi:"disksAndSizeDetails"`
 	// The expected size of the data, which needs to be transferred in this job, in terabytes.
 	ExpectedDataSizeInTeraBytes *int `pulumi:"expectedDataSizeInTeraBytes"`
+	// Copy progress per disk.
+	GranularCopyLogDetails []DataBoxDiskGranularCopyLogDetailsResponse `pulumi:"granularCopyLogDetails"`
+	// Copy progress per disk.
+	GranularCopyProgress []DataBoxDiskGranularCopyProgressResponse `pulumi:"granularCopyProgress"`
 	// Indicates the type of job details.
 	// Expected value is 'DataBoxDisk'.
 	JobDetailsType string `pulumi:"jobDetailsType"`
@@ -369,6 +674,8 @@ type DataBoxDiskJobDetailsResponse struct {
 	JobStages []JobStagesResponse `pulumi:"jobStages"`
 	// Details about which key encryption type is being used.
 	KeyEncryptionKey *KeyEncryptionKeyResponse `pulumi:"keyEncryptionKey"`
+	// Last mitigation action performed on the job.
+	LastMitigationActionOnJob LastMitigationActionOnJobResponse `pulumi:"lastMitigationActionOnJob"`
 	// User entered passkey for DataBox Disk job.
 	Passkey *string `pulumi:"passkey"`
 	// Preferences for the order.
@@ -379,6 +686,8 @@ type DataBoxDiskJobDetailsResponse struct {
 	ReturnPackage PackageShippingDetailsResponse `pulumi:"returnPackage"`
 	// Shared access key to download the return shipment label
 	ReverseShipmentLabelSasKey string `pulumi:"reverseShipmentLabelSasKey"`
+	// Optional Reverse Shipping details for order.
+	ReverseShippingDetails *ReverseShippingDetailsResponse `pulumi:"reverseShippingDetails"`
 	// Shipping address of the customer.
 	ShippingAddress *ShippingAddressResponse `pulumi:"shippingAddress"`
 }
@@ -392,6 +701,8 @@ func (val *DataBoxDiskJobDetailsResponse) Defaults() *DataBoxDiskJobDetailsRespo
 	tmp.KeyEncryptionKey = tmp.KeyEncryptionKey.Defaults()
 
 	tmp.Preferences = tmp.Preferences.Defaults()
+
+	tmp.ReverseShippingDetails = tmp.ReverseShippingDetails.Defaults()
 
 	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
 
@@ -447,6 +758,8 @@ type DataBoxHeavyJobDetails struct {
 	KeyEncryptionKey *KeyEncryptionKey `pulumi:"keyEncryptionKey"`
 	// Preferences for the order.
 	Preferences *Preferences `pulumi:"preferences"`
+	// Optional Reverse Shipping details for order.
+	ReverseShippingDetails *ReverseShippingDetails `pulumi:"reverseShippingDetails"`
 	// Shipping address of the customer.
 	ShippingAddress *ShippingAddress `pulumi:"shippingAddress"`
 }
@@ -461,6 +774,8 @@ func (val *DataBoxHeavyJobDetails) Defaults() *DataBoxHeavyJobDetails {
 
 	tmp.Preferences = tmp.Preferences.Defaults()
 
+	tmp.ReverseShippingDetails = tmp.ReverseShippingDetails.Defaults()
+
 	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
 
 	return &tmp
@@ -468,6 +783,8 @@ func (val *DataBoxHeavyJobDetails) Defaults() *DataBoxHeavyJobDetails {
 
 // Databox Heavy Device Job Details
 type DataBoxHeavyJobDetailsResponse struct {
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
 	// Shared access key to download the chain of custody logs
 	ChainOfCustodySasKey string `pulumi:"chainOfCustodySasKey"`
 	// Contact details for notification and shipping.
@@ -476,12 +793,18 @@ type DataBoxHeavyJobDetailsResponse struct {
 	CopyLogDetails []interface{} `pulumi:"copyLogDetails"`
 	// Copy progress per account.
 	CopyProgress []CopyProgressResponse `pulumi:"copyProgress"`
+	// DataCenter code.
+	DataCenterCode string `pulumi:"dataCenterCode"`
 	// Details of the data to be exported from azure.
 	DataExportDetails []DataExportDetailsResponse `pulumi:"dataExportDetails"`
 	// Details of the data to be imported into azure.
 	DataImportDetails []DataImportDetailsResponse `pulumi:"dataImportDetails"`
+	// Datacenter address to ship to, for the given sku and storage location.
+	DatacenterAddress interface{} `pulumi:"datacenterAddress"`
 	// Delivery package shipping details.
 	DeliveryPackage PackageShippingDetailsResponse `pulumi:"deliveryPackage"`
+	// Holds device data erasure details
+	DeviceErasureDetails DeviceErasureDetailsResponse `pulumi:"deviceErasureDetails"`
 	// Set Device password for unlocking Databox Heavy. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
 	DevicePassword *string `pulumi:"devicePassword"`
 	// The expected size of the data, which needs to be transferred in this job, in terabytes.
@@ -493,12 +816,16 @@ type DataBoxHeavyJobDetailsResponse struct {
 	JobStages []JobStagesResponse `pulumi:"jobStages"`
 	// Details about which key encryption type is being used.
 	KeyEncryptionKey *KeyEncryptionKeyResponse `pulumi:"keyEncryptionKey"`
+	// Last mitigation action performed on the job.
+	LastMitigationActionOnJob LastMitigationActionOnJobResponse `pulumi:"lastMitigationActionOnJob"`
 	// Preferences for the order.
 	Preferences *PreferencesResponse `pulumi:"preferences"`
 	// Return package shipping details.
 	ReturnPackage PackageShippingDetailsResponse `pulumi:"returnPackage"`
 	// Shared access key to download the return shipment label
 	ReverseShipmentLabelSasKey string `pulumi:"reverseShipmentLabelSasKey"`
+	// Optional Reverse Shipping details for order.
+	ReverseShippingDetails *ReverseShippingDetailsResponse `pulumi:"reverseShippingDetails"`
 	// Shipping address of the customer.
 	ShippingAddress *ShippingAddressResponse `pulumi:"shippingAddress"`
 }
@@ -512,6 +839,8 @@ func (val *DataBoxHeavyJobDetailsResponse) Defaults() *DataBoxHeavyJobDetailsRes
 	tmp.KeyEncryptionKey = tmp.KeyEncryptionKey.Defaults()
 
 	tmp.Preferences = tmp.Preferences.Defaults()
+
+	tmp.ReverseShippingDetails = tmp.ReverseShippingDetails.Defaults()
 
 	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
 
@@ -564,6 +893,8 @@ type DataBoxJobDetails struct {
 	KeyEncryptionKey *KeyEncryptionKey `pulumi:"keyEncryptionKey"`
 	// Preferences for the order.
 	Preferences *Preferences `pulumi:"preferences"`
+	// Optional Reverse Shipping details for order.
+	ReverseShippingDetails *ReverseShippingDetails `pulumi:"reverseShippingDetails"`
 	// Shipping address of the customer.
 	ShippingAddress *ShippingAddress `pulumi:"shippingAddress"`
 }
@@ -578,6 +909,8 @@ func (val *DataBoxJobDetails) Defaults() *DataBoxJobDetails {
 
 	tmp.Preferences = tmp.Preferences.Defaults()
 
+	tmp.ReverseShippingDetails = tmp.ReverseShippingDetails.Defaults()
+
 	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
 
 	return &tmp
@@ -585,6 +918,8 @@ func (val *DataBoxJobDetails) Defaults() *DataBoxJobDetails {
 
 // Databox Job Details
 type DataBoxJobDetailsResponse struct {
+	// Available actions on the job.
+	Actions []string `pulumi:"actions"`
 	// Shared access key to download the chain of custody logs
 	ChainOfCustodySasKey string `pulumi:"chainOfCustodySasKey"`
 	// Contact details for notification and shipping.
@@ -593,12 +928,18 @@ type DataBoxJobDetailsResponse struct {
 	CopyLogDetails []interface{} `pulumi:"copyLogDetails"`
 	// Copy progress per storage account.
 	CopyProgress []CopyProgressResponse `pulumi:"copyProgress"`
+	// DataCenter code.
+	DataCenterCode string `pulumi:"dataCenterCode"`
 	// Details of the data to be exported from azure.
 	DataExportDetails []DataExportDetailsResponse `pulumi:"dataExportDetails"`
 	// Details of the data to be imported into azure.
 	DataImportDetails []DataImportDetailsResponse `pulumi:"dataImportDetails"`
+	// Datacenter address to ship to, for the given sku and storage location.
+	DatacenterAddress interface{} `pulumi:"datacenterAddress"`
 	// Delivery package shipping details.
 	DeliveryPackage PackageShippingDetailsResponse `pulumi:"deliveryPackage"`
+	// Holds device data erasure details
+	DeviceErasureDetails DeviceErasureDetailsResponse `pulumi:"deviceErasureDetails"`
 	// Set Device password for unlocking Databox. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
 	DevicePassword *string `pulumi:"devicePassword"`
 	// The expected size of the data, which needs to be transferred in this job, in terabytes.
@@ -610,12 +951,16 @@ type DataBoxJobDetailsResponse struct {
 	JobStages []JobStagesResponse `pulumi:"jobStages"`
 	// Details about which key encryption type is being used.
 	KeyEncryptionKey *KeyEncryptionKeyResponse `pulumi:"keyEncryptionKey"`
+	// Last mitigation action performed on the job.
+	LastMitigationActionOnJob LastMitigationActionOnJobResponse `pulumi:"lastMitigationActionOnJob"`
 	// Preferences for the order.
 	Preferences *PreferencesResponse `pulumi:"preferences"`
 	// Return package shipping details.
 	ReturnPackage PackageShippingDetailsResponse `pulumi:"returnPackage"`
 	// Shared access key to download the return shipment label
 	ReverseShipmentLabelSasKey string `pulumi:"reverseShipmentLabelSasKey"`
+	// Optional Reverse Shipping details for order.
+	ReverseShippingDetails *ReverseShippingDetailsResponse `pulumi:"reverseShippingDetails"`
 	// Shipping address of the customer.
 	ShippingAddress *ShippingAddressResponse `pulumi:"shippingAddress"`
 }
@@ -629,6 +974,8 @@ func (val *DataBoxJobDetailsResponse) Defaults() *DataBoxJobDetailsResponse {
 	tmp.KeyEncryptionKey = tmp.KeyEncryptionKey.Defaults()
 
 	tmp.Preferences = tmp.Preferences.Defaults()
+
+	tmp.ReverseShippingDetails = tmp.ReverseShippingDetails.Defaults()
 
 	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
 
@@ -703,12 +1050,42 @@ func (val *DataExportDetailsResponse) Defaults() *DataExportDetailsResponse {
 type DataImportDetails struct {
 	// Account details of the data to be transferred
 	AccountDetails interface{} `pulumi:"accountDetails"`
+	// Level of the logs to be collected.
+	LogCollectionLevel *string `pulumi:"logCollectionLevel"`
+}
+
+// Defaults sets the appropriate defaults for DataImportDetails
+func (val *DataImportDetails) Defaults() *DataImportDetails {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.LogCollectionLevel == nil {
+		logCollectionLevel_ := "Error"
+		tmp.LogCollectionLevel = &logCollectionLevel_
+	}
+	return &tmp
 }
 
 // Details of the data to be used for importing data to azure.
 type DataImportDetailsResponse struct {
 	// Account details of the data to be transferred
 	AccountDetails interface{} `pulumi:"accountDetails"`
+	// Level of the logs to be collected.
+	LogCollectionLevel *string `pulumi:"logCollectionLevel"`
+}
+
+// Defaults sets the appropriate defaults for DataImportDetailsResponse
+func (val *DataImportDetailsResponse) Defaults() *DataImportDetailsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.LogCollectionLevel == nil {
+		logCollectionLevel_ := "Error"
+		tmp.LogCollectionLevel = &logCollectionLevel_
+	}
+	return &tmp
 }
 
 // The secrets related to a databox job.
@@ -724,12 +1101,70 @@ type DataboxJobSecretsResponse struct {
 	PodSecrets []DataBoxSecretResponse `pulumi:"podSecrets"`
 }
 
+// Datacenter instruction for given storage location.
+type DatacenterAddressInstructionResponseResponse struct {
+	// Data center communication instruction
+	CommunicationInstruction string `pulumi:"communicationInstruction"`
+	// Azure Location where the Data Center serves primarily.
+	DataCenterAzureLocation string `pulumi:"dataCenterAzureLocation"`
+	// Data center address type
+	// Expected value is 'DatacenterAddressInstruction'.
+	DatacenterAddressType string `pulumi:"datacenterAddressType"`
+	// List of supported carriers for return shipment.
+	SupportedCarriersForReturnShipment []string `pulumi:"supportedCarriersForReturnShipment"`
+}
+
+// Datacenter address for given storage location.
+type DatacenterAddressLocationResponseResponse struct {
+	// Special instruction for shipping
+	AdditionalShippingInformation string `pulumi:"additionalShippingInformation"`
+	// Address type
+	AddressType string `pulumi:"addressType"`
+	// City name
+	City string `pulumi:"city"`
+	// Company name
+	Company string `pulumi:"company"`
+	// Contact person name
+	ContactPersonName string `pulumi:"contactPersonName"`
+	// name of the country
+	Country string `pulumi:"country"`
+	// Azure Location where the Data Center serves primarily.
+	DataCenterAzureLocation string `pulumi:"dataCenterAzureLocation"`
+	// Data center address type
+	// Expected value is 'DatacenterAddressLocation'.
+	DatacenterAddressType string `pulumi:"datacenterAddressType"`
+	// Phone number
+	Phone string `pulumi:"phone"`
+	// Phone extension
+	PhoneExtension string `pulumi:"phoneExtension"`
+	// name of the state
+	State string `pulumi:"state"`
+	// Street address line 1
+	Street1 string `pulumi:"street1"`
+	// Street address line 2
+	Street2 string `pulumi:"street2"`
+	// Street address line 3
+	Street3 string `pulumi:"street3"`
+	// List of supported carriers for return shipment.
+	SupportedCarriersForReturnShipment []string `pulumi:"supportedCarriersForReturnShipment"`
+	// Zip code
+	Zip string `pulumi:"zip"`
+}
+
 // Dc access security code
 type DcAccessSecurityCodeResponse struct {
 	// Forward Dc access security code.
 	ForwardDCAccessCode *string `pulumi:"forwardDCAccessCode"`
 	// Reverse Dc access security code.
 	ReverseDCAccessCode *string `pulumi:"reverseDCAccessCode"`
+}
+
+// Device erasure details with erasure completion status and erasureordestructionlog sas key
+type DeviceErasureDetailsResponse struct {
+	// Holds the device erasure completion status
+	DeviceErasureStatus string `pulumi:"deviceErasureStatus"`
+	// Shared access key to download cleanup or destruction certificate for device
+	ErasureOrDestructionCertificateSasKey string `pulumi:"erasureOrDestructionCertificateSasKey"`
 }
 
 // Contains all the secrets of a Disk.
@@ -744,6 +1179,8 @@ type DiskSecretResponse struct {
 type EncryptionPreferences struct {
 	// Defines secondary layer of software-based encryption enablement.
 	DoubleEncryption *string `pulumi:"doubleEncryption"`
+	// Defines Hardware level encryption (Only for disk)
+	HardwareEncryption *string `pulumi:"hardwareEncryption"`
 }
 
 // Defaults sets the appropriate defaults for EncryptionPreferences
@@ -763,6 +1200,8 @@ func (val *EncryptionPreferences) Defaults() *EncryptionPreferences {
 type EncryptionPreferencesResponse struct {
 	// Defines secondary layer of software-based encryption enablement.
 	DoubleEncryption *string `pulumi:"doubleEncryption"`
+	// Defines Hardware level encryption (Only for disk)
+	HardwareEncryption *string `pulumi:"hardwareEncryption"`
 }
 
 // Defaults sets the appropriate defaults for EncryptionPreferencesResponse
@@ -776,6 +1215,16 @@ func (val *EncryptionPreferencesResponse) Defaults() *EncryptionPreferencesRespo
 		tmp.DoubleEncryption = &doubleEncryption_
 	}
 	return &tmp
+}
+
+// Export disk details
+type ExportDiskDetailsResponse struct {
+	// Path to backed up manifest, only returned if enableManifestBackup is true.
+	BackupManifestCloudPath string `pulumi:"backupManifestCloudPath"`
+	// The relative path of the manifest file on the disk.
+	ManifestFile string `pulumi:"manifestFile"`
+	// The Base16-encoded MD5 hash of the manifest file on the disk.
+	ManifestHash string `pulumi:"manifestHash"`
 }
 
 // Details of the filter files to be used for data transfer.
@@ -808,6 +1257,28 @@ type IdentityPropertiesResponse struct {
 	Type *string `pulumi:"type"`
 	// User assigned identity properties.
 	UserAssigned *UserAssignedPropertiesResponse `pulumi:"userAssigned"`
+}
+
+// Import disk details
+type ImportDiskDetails struct {
+	// BitLocker key used to encrypt the disk.
+	BitLockerKey string `pulumi:"bitLockerKey"`
+	// The relative path of the manifest file on the disk.
+	ManifestFile string `pulumi:"manifestFile"`
+	// The Base16-encoded MD5 hash of the manifest file on the disk.
+	ManifestHash string `pulumi:"manifestHash"`
+}
+
+// Import disk details
+type ImportDiskDetailsResponse struct {
+	// Path to backed up manifest, only returned if enableManifestBackup is true.
+	BackupManifestCloudPath string `pulumi:"backupManifestCloudPath"`
+	// BitLocker key used to encrypt the disk.
+	BitLockerKey string `pulumi:"bitLockerKey"`
+	// The relative path of the manifest file on the disk.
+	ManifestFile string `pulumi:"manifestFile"`
+	// The Base16-encoded MD5 hash of the manifest file on the disk.
+	ManifestHash string `pulumi:"manifestHash"`
 }
 
 // Additional delivery info.
@@ -1072,6 +1543,17 @@ func (val *KeyEncryptionKeyResponse) Defaults() *KeyEncryptionKeyResponse {
 	return &tmp
 }
 
+// Last Mitigation Action Performed On Job
+type LastMitigationActionOnJobResponse struct {
+	// Action performed date time
+	ActionDateTimeInUtc *string `pulumi:"actionDateTimeInUtc"`
+	// Resolution code provided by customer
+	CustomerResolution *string `pulumi:"customerResolution"`
+	// Action performed by customer,
+	// possibility is that mitigation might happen by customer or service or by ops
+	IsPerformedByCustomer *bool `pulumi:"isPerformedByCustomer"`
+}
+
 // Details of the managed disks.
 type ManagedDiskDetails struct {
 	// Account Type of the data to be transferred.
@@ -1160,7 +1642,35 @@ func (val *NotificationPreferenceResponse) Defaults() *NotificationPreferenceRes
 	return &tmp
 }
 
-// Shipping details.
+// Package carrier details.
+type PackageCarrierDetails struct {
+	// Carrier Account Number of customer for customer disk.
+	CarrierAccountNumber *string `pulumi:"carrierAccountNumber"`
+	// Name of the carrier.
+	CarrierName *string `pulumi:"carrierName"`
+	// Tracking Id of shipment.
+	TrackingId *string `pulumi:"trackingId"`
+}
+
+// Package carrier details.
+type PackageCarrierDetailsResponse struct {
+	// Carrier Account Number of customer for customer disk.
+	CarrierAccountNumber *string `pulumi:"carrierAccountNumber"`
+	// Name of the carrier.
+	CarrierName *string `pulumi:"carrierName"`
+	// Tracking Id of shipment.
+	TrackingId *string `pulumi:"trackingId"`
+}
+
+// package carrier info
+type PackageCarrierInfoResponse struct {
+	// Name of the carrier.
+	CarrierName *string `pulumi:"carrierName"`
+	// Tracking Id of shipment.
+	TrackingId *string `pulumi:"trackingId"`
+}
+
+// package shipping details
 type PackageShippingDetailsResponse struct {
 	// Name of the carrier.
 	CarrierName string `pulumi:"carrierName"`
@@ -1176,6 +1686,10 @@ type Preferences struct {
 	EncryptionPreferences *EncryptionPreferences `pulumi:"encryptionPreferences"`
 	// Preferred data center region.
 	PreferredDataCenterRegion []string `pulumi:"preferredDataCenterRegion"`
+	// Optional Preferences related to the reverse shipment logistics of the sku.
+	ReverseTransportPreferences *TransportPreferences `pulumi:"reverseTransportPreferences"`
+	// Preferences related to the Access Tier of storage accounts.
+	StorageAccountAccessTierPreferences []string `pulumi:"storageAccountAccessTierPreferences"`
 	// Preferences related to the shipment logistics of the sku.
 	TransportPreferences *TransportPreferences `pulumi:"transportPreferences"`
 }
@@ -1197,6 +1711,10 @@ type PreferencesResponse struct {
 	EncryptionPreferences *EncryptionPreferencesResponse `pulumi:"encryptionPreferences"`
 	// Preferred data center region.
 	PreferredDataCenterRegion []string `pulumi:"preferredDataCenterRegion"`
+	// Optional Preferences related to the reverse shipment logistics of the sku.
+	ReverseTransportPreferences *TransportPreferencesResponse `pulumi:"reverseTransportPreferences"`
+	// Preferences related to the Access Tier of storage accounts.
+	StorageAccountAccessTierPreferences []string `pulumi:"storageAccountAccessTierPreferences"`
 	// Preferences related to the shipment logistics of the sku.
 	TransportPreferences *TransportPreferencesResponse `pulumi:"transportPreferences"`
 }
@@ -1217,7 +1735,7 @@ type ResourceIdentity struct {
 	// Identity type
 	Type *string `pulumi:"type"`
 	// User Assigned Identities
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // Defaults sets the appropriate defaults for ResourceIdentity
@@ -1249,7 +1767,7 @@ type ResourceIdentityArgs struct {
 	// Identity type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// User Assigned Identities
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 // Defaults sets the appropriate defaults for ResourceIdentityArgs
@@ -1347,8 +1865,8 @@ func (o ResourceIdentityOutput) Type() pulumi.StringPtrOutput {
 }
 
 // User Assigned Identities
-func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v ResourceIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ResourceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1386,13 +1904,13 @@ func (o ResourceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // User Assigned Identities
-func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *ResourceIdentity) map[string]interface{} {
+func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceIdentity) []string {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Msi identity details of the resource
@@ -1521,6 +2039,47 @@ func (o ResourceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssigned
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
+// Reverse Shipping Address and contact details for a job.
+type ReverseShippingDetails struct {
+	// Contact Info.
+	ContactDetails *ContactInfo `pulumi:"contactDetails"`
+	// Shipping address where customer wishes to receive the device.
+	ShippingAddress *ShippingAddress `pulumi:"shippingAddress"`
+}
+
+// Defaults sets the appropriate defaults for ReverseShippingDetails
+func (val *ReverseShippingDetails) Defaults() *ReverseShippingDetails {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
+
+	return &tmp
+}
+
+// Reverse Shipping Address and contact details for a job.
+type ReverseShippingDetailsResponse struct {
+	// Contact Info.
+	ContactDetails *ContactInfoResponse `pulumi:"contactDetails"`
+	// A flag to indicate whether Reverse Shipping details are updated or not after device has been prepared.
+	// Read only field
+	IsUpdated bool `pulumi:"isUpdated"`
+	// Shipping address where customer wishes to receive the device.
+	ShippingAddress *ShippingAddressResponse `pulumi:"shippingAddress"`
+}
+
+// Defaults sets the appropriate defaults for ReverseShippingDetailsResponse
+func (val *ReverseShippingDetailsResponse) Defaults() *ReverseShippingDetailsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.ShippingAddress = tmp.ShippingAddress.Defaults()
+
+	return &tmp
+}
+
 // Credential details of the shares in account.
 type ShareCredentialDetailsResponse struct {
 	// Password for the share.
@@ -1547,6 +2106,8 @@ type ShippingAddress struct {
 	Country string `pulumi:"country"`
 	// Postal code.
 	PostalCode *string `pulumi:"postalCode"`
+	// Flag to indicate if customer has chosen to skip default address validation
+	SkipAddressValidation *bool `pulumi:"skipAddressValidation"`
 	// Name of the State or Province.
 	StateOrProvince *string `pulumi:"stateOrProvince"`
 	// Street Address line 1.
@@ -1555,6 +2116,8 @@ type ShippingAddress struct {
 	StreetAddress2 *string `pulumi:"streetAddress2"`
 	// Street Address line 3.
 	StreetAddress3 *string `pulumi:"streetAddress3"`
+	// Tax Identification Number
+	TaxIdentificationNumber *string `pulumi:"taxIdentificationNumber"`
 	// Extended Zip Code.
 	ZipExtendedCode *string `pulumi:"zipExtendedCode"`
 }
@@ -1584,6 +2147,8 @@ type ShippingAddressResponse struct {
 	Country string `pulumi:"country"`
 	// Postal code.
 	PostalCode *string `pulumi:"postalCode"`
+	// Flag to indicate if customer has chosen to skip default address validation
+	SkipAddressValidation *bool `pulumi:"skipAddressValidation"`
 	// Name of the State or Province.
 	StateOrProvince *string `pulumi:"stateOrProvince"`
 	// Street Address line 1.
@@ -1592,6 +2157,8 @@ type ShippingAddressResponse struct {
 	StreetAddress2 *string `pulumi:"streetAddress2"`
 	// Street Address line 3.
 	StreetAddress3 *string `pulumi:"streetAddress3"`
+	// Tax Identification Number
+	TaxIdentificationNumber *string `pulumi:"taxIdentificationNumber"`
 	// Extended Zip Code.
 	ZipExtendedCode *string `pulumi:"zipExtendedCode"`
 }
@@ -2041,6 +2608,8 @@ type TransportPreferences struct {
 
 // Preferences related to the shipment logistics of the sku
 type TransportPreferencesResponse struct {
+	// Read only property which indicates whether transport preferences has been updated or not after device is prepared.
+	IsUpdated bool `pulumi:"isUpdated"`
 	// Indicates Shipment Logistics type that the customer preferred.
 	PreferredShipmentType string `pulumi:"preferredShipmentType"`
 }

@@ -196,6 +196,12 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VirtualNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:VirtualNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetwork
@@ -257,7 +263,7 @@ type virtualNetworkArgs struct {
 	// The name of the virtual network.
 	VirtualNetworkName *string `pulumi:"virtualNetworkName"`
 	// A list of peerings in a Virtual Network.
-	VirtualNetworkPeerings []VirtualNetworkPeeringType `pulumi:"virtualNetworkPeerings"`
+	VirtualNetworkPeerings []VirtualNetworkPeering `pulumi:"virtualNetworkPeerings"`
 }
 
 // The set of arguments for constructing a VirtualNetwork resource.
@@ -289,7 +295,7 @@ type VirtualNetworkArgs struct {
 	// The name of the virtual network.
 	VirtualNetworkName pulumi.StringPtrInput
 	// A list of peerings in a Virtual Network.
-	VirtualNetworkPeerings VirtualNetworkPeeringTypeArrayInput
+	VirtualNetworkPeerings VirtualNetworkPeeringArrayInput
 }
 
 func (VirtualNetworkArgs) ElementType() reflect.Type {

@@ -12,7 +12,7 @@ import (
 )
 
 // Job Resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-11-01
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -42,6 +42,10 @@ type Job struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the object.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The Editable status for Reverse Shipping Address and Contact Info
+	ReverseShippingDetailsUpdate pulumi.StringOutput `pulumi:"reverseShippingDetailsUpdate"`
+	// The Editable status for Reverse Transport preferences
+	ReverseTransportPreferenceUpdate pulumi.StringOutput `pulumi:"reverseTransportPreferenceUpdate"`
 	// The sku type.
 	Sku SkuResponseOutput `pulumi:"sku"`
 	// Time at which the job was started in UTC ISO 8601 format.
@@ -297,6 +301,16 @@ func (o JobOutput) Location() pulumi.StringOutput {
 // Name of the object.
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Editable status for Reverse Shipping Address and Contact Info
+func (o JobOutput) ReverseShippingDetailsUpdate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ReverseShippingDetailsUpdate }).(pulumi.StringOutput)
+}
+
+// The Editable status for Reverse Transport preferences
+func (o JobOutput) ReverseTransportPreferenceUpdate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ReverseTransportPreferenceUpdate }).(pulumi.StringOutput)
 }
 
 // The sku type.

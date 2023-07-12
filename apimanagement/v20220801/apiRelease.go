@@ -12,8 +12,6 @@ import (
 )
 
 // ApiRelease details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiRelease is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiRelease to guarantee forwards compatibility.
 type ApiRelease struct {
 	pulumi.CustomResourceState
 
@@ -89,6 +87,12 @@ func NewApiRelease(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiRelease"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiRelease"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiRelease"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -10,20 +10,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// AgentPoolMode represents mode of an agent pool
+// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
 type AgentPoolMode string
 
 const (
+	// System agent pools are primarily for hosting critical system pods such as CoreDNS and metrics-server. System agent pools osType must be Linux. System agent pools VM SKU must have at least 2vCPUs and 4GB of memory.
 	AgentPoolModeSystem = AgentPoolMode("System")
-	AgentPoolModeUser   = AgentPoolMode("User")
+	// User agent pools are primarily for hosting your application pods.
+	AgentPoolModeUser = AgentPoolMode("User")
 )
 
-// AgentPoolType represents types of an agent pool
+// The type of Agent Pool.
 type AgentPoolType string
 
 const (
+	// Create an Agent Pool backed by a Virtual Machine Scale Set.
 	AgentPoolTypeVirtualMachineScaleSets = AgentPoolType("VirtualMachineScaleSets")
-	AgentPoolTypeAvailabilitySet         = AgentPoolType("AvailabilitySet")
+	// Use of this is strongly discouraged.
+	AgentPoolTypeAvailabilitySet = AgentPoolType("AvailabilitySet")
+)
+
+// Tells whether the cluster is Running or Stopped
+type Code string
+
+const (
+	// The cluster is running.
+	CodeRunning = Code("Running")
+	// The cluster is stopped.
+	CodeStopped = Code("Stopped")
 )
 
 // The private link service connection status.
@@ -36,13 +50,18 @@ const (
 	ConnectionStatusDisconnected = ConnectionStatus("Disconnected")
 )
 
+// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 type Expander string
 
 const (
+	// Selects the node group that will have the least idle CPU (if tied, unused memory) after scale-up. This is useful when you have different classes of nodes, for example, high CPU or high memory nodes, and only want to expand those when there are pending pods that need a lot of those resources.
 	Expander_Least_Waste = Expander("least-waste")
-	Expander_Most_Pods   = Expander("most-pods")
-	ExpanderPriority     = Expander("priority")
-	ExpanderRandom       = Expander("random")
+	// Selects the node group that would be able to schedule the most pods when scaling up. This is useful when you are using nodeSelector to make sure certain pods land on certain nodes. Note that this won't cause the autoscaler to select bigger nodes vs. smaller, as it can add multiple smaller nodes at once.
+	Expander_Most_Pods = Expander("most-pods")
+	// Selects the node group that has the highest priority assigned by the user. It's configuration is described in more details [here](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/expander/priority/readme.md).
+	ExpanderPriority = Expander("priority")
+	// Used when you don't have a particular need for the node groups to scale differently.
+	ExpanderRandom = Expander("random")
 )
 
 // The type of the extended location.
@@ -52,7 +71,7 @@ const (
 	ExtendedLocationTypesEdgeZone = ExtendedLocationTypes("EdgeZone")
 )
 
-// GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU. Supported values are MIG1g, MIG2g, MIG3g, MIG4g and MIG7g.
+// GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
 type GPUInstanceProfile string
 
 const (
@@ -63,83 +82,170 @@ const (
 	GPUInstanceProfileMIG7g = GPUInstanceProfile("MIG7g")
 )
 
-// KubeletDiskType determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. Currently allows one value, OS, resulting in Kubelet using the OS disk for data.
+// The IP version to use for cluster networking and IP assignment.
+type IpFamily string
+
+const (
+	IpFamilyIPv4 = IpFamily("IPv4")
+	IpFamilyIPv6 = IpFamily("IPv6")
+)
+
+// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.
+type KeyVaultNetworkAccessTypes string
+
+const (
+	KeyVaultNetworkAccessTypesPublic  = KeyVaultNetworkAccessTypes("Public")
+	KeyVaultNetworkAccessTypesPrivate = KeyVaultNetworkAccessTypes("Private")
+)
+
+// Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
 type KubeletDiskType string
 
 const (
-	KubeletDiskTypeOS        = KubeletDiskType("OS")
+	// Kubelet will use the OS disk for its data.
+	KubeletDiskTypeOS = KubeletDiskType("OS")
+	// Kubelet will use the temporary disk for its data.
 	KubeletDiskTypeTemporary = KubeletDiskType("Temporary")
 )
 
-// The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs.
+// The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
+type KubernetesSupportPlan string
+
+const (
+	// Support for the version is the same as for the open source Kubernetes offering. Official Kubernetes open source community support versions for 1 year after release.
+	KubernetesSupportPlanKubernetesOfficial = KubernetesSupportPlan("KubernetesOfficial")
+	// Support for the version extended past the KubernetesOfficial support of 1 year. AKS continues to patch CVEs for another 1 year, for a total of 2 years of support.
+	KubernetesSupportPlanAKSLongTermSupport = KubernetesSupportPlan("AKSLongTermSupport")
+)
+
+// The license type to use for Windows VMs. See [Azure Hybrid User Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) for more details.
 type LicenseType string
 
 const (
-	LicenseTypeNone            = LicenseType("None")
+	// No additional licensing is applied.
+	LicenseTypeNone = LicenseType("None")
+	// Enables Azure Hybrid User Benefits for Windows VMs.
 	LicenseType_Windows_Server = LicenseType("Windows_Server")
 )
 
-// The load balancer sku for the managed cluster.
+// The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.
 type LoadBalancerSku string
 
 const (
+	// Use a a standard Load Balancer. This is the recommended Load Balancer SKU. For more information about on working with the load balancer in the managed cluster, see the [standard Load Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard) article.
 	LoadBalancerSkuStandard = LoadBalancerSku("standard")
-	LoadBalancerSkuBasic    = LoadBalancerSku("basic")
+	// Use a basic Load Balancer with limited functionality.
+	LoadBalancerSkuBasic = LoadBalancerSku("basic")
 )
 
-// Name of a managed cluster SKU.
+// The name of a managed cluster SKU.
 type ManagedClusterSKUName string
 
 const (
-	ManagedClusterSKUNameBasic = ManagedClusterSKUName("Basic")
+	// Base option for the AKS control plane.
+	ManagedClusterSKUNameBase = ManagedClusterSKUName("Base")
 )
 
-// Tier of a managed cluster SKU.
+// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
 type ManagedClusterSKUTier string
 
 const (
-	ManagedClusterSKUTierPaid = ManagedClusterSKUTier("Paid")
+	// Cluster has premium capabilities in addition to all of the capabilities included in 'Standard'. Premium enables selection of LongTermSupport (aka.ms/aks/lts) for certain Kubernetes versions.
+	ManagedClusterSKUTierPremium = ManagedClusterSKUTier("Premium")
+	// Recommended for mission-critical and production workloads. Includes Kubernetes control plane autoscaling, workload-intensive testing, and up to 5,000 nodes per cluster. Guarantees 99.95% availability of the Kubernetes API server endpoint for clusters that use Availability Zones and 99.9% of availability for clusters that don't use Availability Zones.
+	ManagedClusterSKUTierStandard = ManagedClusterSKUTier("Standard")
+	// The cluster management is free, but charged for VM, storage, and networking usage. Best for experimenting, learning, simple testing, or workloads with fewer than 10 nodes. Not recommended for production use cases.
 	ManagedClusterSKUTierFree = ManagedClusterSKUTier("Free")
 )
 
-// Network mode used for building Kubernetes network.
+// The upgrade type.
+// Full requires the KubernetesVersion property to be set.
+// NodeImageOnly requires the KubernetesVersion property not to be set.
+type ManagedClusterUpgradeType string
+
+const (
+	// Full upgrades the control plane and all agent pools of the target ManagedClusters.
+	ManagedClusterUpgradeTypeFull = ManagedClusterUpgradeType("Full")
+	// NodeImageOnly upgrades only the node images of the target ManagedClusters.
+	ManagedClusterUpgradeTypeNodeImageOnly = ManagedClusterUpgradeType("NodeImageOnly")
+)
+
+// Network dataplane used in the Kubernetes cluster.
+type NetworkDataplane string
+
+const (
+	// Use Azure network dataplane.
+	NetworkDataplaneAzure = NetworkDataplane("azure")
+	// Use Cilium network dataplane. See [Azure CNI Powered by Cilium](https://learn.microsoft.com/azure/aks/azure-cni-powered-by-cilium) for more information.
+	NetworkDataplaneCilium = NetworkDataplane("cilium")
+)
+
+// This cannot be specified if networkPlugin is anything other than 'azure'.
 type NetworkMode string
 
 const (
+	// No bridge is created. Intra-VM Pod to Pod communication is through IP routes created by Azure CNI. See [Transparent Mode](https://docs.microsoft.com/azure/aks/faq#transparent-mode) for more information.
 	NetworkModeTransparent = NetworkMode("transparent")
-	NetworkModeBridge      = NetworkMode("bridge")
+	// This is no longer supported
+	NetworkModeBridge = NetworkMode("bridge")
 )
 
-// Network plugin used for building Kubernetes network.
+// Network plugin used for building the Kubernetes network.
 type NetworkPlugin string
 
 const (
-	NetworkPluginAzure   = NetworkPlugin("azure")
+	// Use the Azure CNI network plugin. See [Azure CNI (advanced) networking](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) for more information.
+	NetworkPluginAzure = NetworkPlugin("azure")
+	// Use the Kubenet network plugin. See [Kubenet (basic) networking](https://docs.microsoft.com/azure/aks/concepts-network#kubenet-basic-networking) for more information.
 	NetworkPluginKubenet = NetworkPlugin("kubenet")
+	// No CNI plugin is pre-installed. See [BYO CNI](https://docs.microsoft.com/en-us/azure/aks/use-byo-cni) for more information.
+	NetworkPluginNone = NetworkPlugin("none")
 )
 
-// Network policy used for building Kubernetes network.
+// The mode the network plugin should use.
+type NetworkPluginMode string
+
+const (
+	// Used with networkPlugin=azure, pods are given IPs from the PodCIDR address space but use Azure Routing Domains rather than Kubenet's method of route tables. For more information visit https://aka.ms/aks/azure-cni-overlay.
+	NetworkPluginModeOverlay = NetworkPluginMode("overlay")
+)
+
+// Network policy used for building the Kubernetes network.
 type NetworkPolicy string
 
 const (
+	// Use Calico network policies. See [differences between Azure and Calico policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more information.
 	NetworkPolicyCalico = NetworkPolicy("calico")
-	NetworkPolicyAzure  = NetworkPolicy("azure")
+	// Use Azure network policies. See [differences between Azure and Calico policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more information.
+	NetworkPolicyAzure = NetworkPolicy("azure")
+	// Use Cilium to enforce network policies. This requires networkDataplane to be 'cilium'.
+	NetworkPolicyCilium = NetworkPolicy("cilium")
 )
 
-// OS disk type to be used for machines in a given agent pool. Allowed values are 'Ephemeral' and 'Managed'. If unspecified, defaults to 'Ephemeral' when the VM supports ephemeral OS and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation.
+// The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
 type OSDiskType string
 
 const (
-	OSDiskTypeManaged   = OSDiskType("Managed")
+	// Azure replicates the operating system disk for a virtual machine to Azure storage to avoid data loss should the VM need to be relocated to another host. Since containers aren't designed to have local state persisted, this behavior offers limited value while providing some drawbacks, including slower node provisioning and higher read/write latency.
+	OSDiskTypeManaged = OSDiskType("Managed")
+	// Ephemeral OS disks are stored only on the host machine, just like a temporary disk. This provides lower read/write latency, along with faster node scaling and cluster upgrades.
 	OSDiskTypeEphemeral = OSDiskType("Ephemeral")
 )
 
-// OsSKU to be used to specify os sku. Choose from Ubuntu(default) and CBLMariner for Linux OSType. Not applicable to Windows OSType.
+// Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
 type OSSKU string
 
 const (
-	OSSKUUbuntu     = OSSKU("Ubuntu")
+	// Use Ubuntu as the OS for node images.
+	OSSKUUbuntu = OSSKU("Ubuntu")
+	// Use AzureLinux as the OS for node images. Azure Linux is a container-optimized Linux distro built by Microsoft, visit https://aka.ms/azurelinux for more information.
+	OSSKUAzureLinux = OSSKU("AzureLinux")
+	// Deprecated OSSKU. Microsoft recommends that new deployments choose 'AzureLinux' instead.
 	OSSKUCBLMariner = OSSKU("CBLMariner")
+	// Use Windows2019 as the OS for node images. Unsupported for system node pools. Windows2019 only supports Windows2019 containers; it cannot run Windows2022 containers and vice versa.
+	OSSKUWindows2019 = OSSKU("Windows2019")
+	// Use Windows2022 as the OS for node images. Unsupported for system node pools. Windows2022 only supports Windows2022 containers; it cannot run Windows2019 containers and vice versa.
+	OSSKUWindows2022 = OSSKU("Windows2022")
 )
 
 // OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
@@ -197,21 +303,38 @@ const (
 	OpenShiftContainerServiceVMSize_Standard_L32s    = OpenShiftContainerServiceVMSize("Standard_L32s")
 )
 
-// The outbound (egress) routing method.
+// This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
 type OutboundType string
 
 const (
-	OutboundTypeLoadBalancer       = OutboundType("loadBalancer")
+	// The load balancer is used for egress through an AKS assigned public IP. This supports Kubernetes services of type 'loadBalancer'. For more information see [outbound type loadbalancer](https://docs.microsoft.com/azure/aks/egress-outboundtype#outbound-type-of-loadbalancer).
+	OutboundTypeLoadBalancer = OutboundType("loadBalancer")
+	// Egress paths must be defined by the user. This is an advanced scenario and requires proper network configuration. For more information see [outbound type userDefinedRouting](https://docs.microsoft.com/azure/aks/egress-outboundtype#outbound-type-of-userdefinedrouting).
 	OutboundTypeUserDefinedRouting = OutboundType("userDefinedRouting")
+	// The AKS-managed NAT gateway is used for egress.
+	OutboundTypeManagedNATGateway = OutboundType("managedNATGateway")
+	// The user-assigned NAT gateway associated to the cluster subnet is used for egress. This is an advanced scenario and requires proper network configuration.
+	OutboundTypeUserAssignedNATGateway = OutboundType("userAssignedNATGateway")
 )
 
-// The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
+// Allow or deny public network access for AKS
+type PublicNetworkAccess string
+
+const (
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
+// For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
 type ResourceIdentityType string
 
 const (
+	// Use an implicitly created system assigned managed identity to manage cluster resources. Master components in the control plane such as kube-controller-manager will use the system assigned managed identity to manipulate Azure resources.
 	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeUserAssigned   = ResourceIdentityType("UserAssigned")
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
+	// Use a user-specified identity to manage cluster resources. Master components in the control plane such as kube-controller-manager will use the specified user assigned managed identity to manipulate Azure resources.
+	ResourceIdentityTypeUserAssigned = ResourceIdentityType("UserAssigned")
+	// Do not use a managed identity for the Managed Cluster, service principal will be used instead.
+	ResourceIdentityTypeNone = ResourceIdentityType("None")
 )
 
 func (ResourceIdentityType) ElementType() reflect.Type {
@@ -371,19 +494,33 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-// ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
+// This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
+type ScaleDownMode string
+
+const (
+	// Create new instances during scale up and remove instances during scale down.
+	ScaleDownModeDelete = ScaleDownMode("Delete")
+	// Attempt to start deallocated instances (if they exist) during scale up and deallocate instances during scale down.
+	ScaleDownModeDeallocate = ScaleDownMode("Deallocate")
+)
+
+// This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
 type ScaleSetEvictionPolicy string
 
 const (
-	ScaleSetEvictionPolicyDelete     = ScaleSetEvictionPolicy("Delete")
+	// Nodes in the underlying Scale Set of the node pool are deleted when they're evicted.
+	ScaleSetEvictionPolicyDelete = ScaleSetEvictionPolicy("Delete")
+	// Nodes in the underlying Scale Set of the node pool are set to the stopped-deallocated state upon eviction. Nodes in the stopped-deallocated state count against your compute quota and can cause issues with cluster scaling or upgrading.
 	ScaleSetEvictionPolicyDeallocate = ScaleSetEvictionPolicy("Deallocate")
 )
 
-// ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
+// The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
 type ScaleSetPriority string
 
 const (
-	ScaleSetPrioritySpot    = ScaleSetPriority("Spot")
+	// Spot priority VMs will be used. There is no SLA for spot nodes. See [spot on AKS](https://docs.microsoft.com/azure/aks/spot-node-pool) for more information.
+	ScaleSetPrioritySpot = ScaleSetPriority("Spot")
+	// Regular VMs will be used.
 	ScaleSetPriorityRegular = ScaleSetPriority("Regular")
 )
 
@@ -395,18 +532,23 @@ const (
 	SnapshotTypeNodePool = SnapshotType("NodePool")
 )
 
-// upgrade channel for auto upgrade.
+// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
 type UpgradeChannel string
 
 const (
-	UpgradeChannelRapid       = UpgradeChannel("rapid")
-	UpgradeChannelStable      = UpgradeChannel("stable")
-	UpgradeChannelPatch       = UpgradeChannel("patch")
+	// Automatically upgrade the cluster to the latest supported patch release on the latest supported minor version. In cases where the cluster is at a version of Kubernetes that is at an N-2 minor version where N is the latest supported minor version, the cluster first upgrades to the latest supported patch version on N-1 minor version. For example, if a cluster is running version 1.17.7 and versions 1.17.9, 1.18.4, 1.18.6, and 1.19.1 are available, your cluster first is upgraded to 1.18.6, then is upgraded to 1.19.1.
+	UpgradeChannelRapid = UpgradeChannel("rapid")
+	// Automatically upgrade the cluster to the latest supported patch release on minor version N-1, where N is the latest supported minor version. For example, if a cluster is running version 1.17.7 and versions 1.17.9, 1.18.4, 1.18.6, and 1.19.1 are available, your cluster is upgraded to 1.18.6.
+	UpgradeChannelStable = UpgradeChannel("stable")
+	// Automatically upgrade the cluster to the latest supported patch version when it becomes available while keeping the minor version the same. For example, if a cluster is running version 1.17.7 and versions 1.17.9, 1.18.4, 1.18.6, and 1.19.1 are available, your cluster is upgraded to 1.17.9.
+	UpgradeChannelPatch = UpgradeChannel("patch")
+	// Automatically upgrade the node image to the latest version available. Microsoft provides patches and new images for image nodes frequently (usually weekly), but your running nodes won't get the new images unless you do a node image upgrade. Turning on the node-image channel will automatically update your node images whenever a new version is available.
 	UpgradeChannel_Node_Image = UpgradeChannel("node-image")
-	UpgradeChannelNone        = UpgradeChannel("none")
+	// Disables auto-upgrades and keeps the cluster at its current version of Kubernetes.
+	UpgradeChannelNone = UpgradeChannel("none")
 )
 
-// A day in a week.
+// The day of the week.
 type WeekDay string
 
 const (
@@ -417,6 +559,16 @@ const (
 	WeekDayThursday  = WeekDay("Thursday")
 	WeekDayFriday    = WeekDay("Friday")
 	WeekDaySaturday  = WeekDay("Saturday")
+)
+
+// Determines the type of workload a node can run.
+type WorkloadRuntime string
+
+const (
+	// Nodes will use Kubelet to run standard OCI container workloads.
+	WorkloadRuntimeOCIContainer = WorkloadRuntime("OCIContainer")
+	// Nodes will use Krustlet to run WASM workloads using the WASI provider (Preview).
+	WorkloadRuntimeWasmWasi = WorkloadRuntime("WasmWasi")
 )
 
 func init() {

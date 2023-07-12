@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the Wiki for a Product specified by its identifier.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ProductWiki is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ProductWiki to guarantee forwards compatibility.
 func LookupProductWiki(ctx *pulumi.Context, args *LookupProductWikiArgs, opts ...pulumi.InvokeOption) (*LookupProductWikiResult, error) {
 	var rv LookupProductWikiResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getProductWiki", args, &rv, opts...)

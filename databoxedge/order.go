@@ -12,7 +12,7 @@ import (
 )
 
 // The order details.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01
 type Order struct {
 	pulumi.CustomResourceState
 
@@ -22,10 +22,14 @@ type Order struct {
 	CurrentStatus OrderStatusResponseOutput `pulumi:"currentStatus"`
 	// Tracking information for the package delivered to the customer whether it has an original or a replacement device.
 	DeliveryTrackingInfo TrackingInfoResponseArrayOutput `pulumi:"deliveryTrackingInfo"`
+	// It specify the order api version.
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The object name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of status changes in the order.
 	OrderHistory OrderStatusResponseArrayOutput `pulumi:"orderHistory"`
+	// It specify the order resource id.
+	OrderId pulumi.StringOutput `pulumi:"orderId"`
 	// Tracking information for the package returned from the customer whether it has an original or a replacement device.
 	ReturnTrackingInfo TrackingInfoResponseArrayOutput `pulumi:"returnTrackingInfo"`
 	// Serial number of the device.
@@ -34,6 +38,8 @@ type Order struct {
 	ShipmentType pulumi.StringPtrOutput `pulumi:"shipmentType"`
 	// The shipping address.
 	ShippingAddress AddressResponsePtrOutput `pulumi:"shippingAddress"`
+	// Metadata pertaining to creation and last modification of Order
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -212,6 +218,11 @@ func (o OrderOutput) DeliveryTrackingInfo() TrackingInfoResponseArrayOutput {
 	return o.ApplyT(func(v *Order) TrackingInfoResponseArrayOutput { return v.DeliveryTrackingInfo }).(TrackingInfoResponseArrayOutput)
 }
 
+// It specify the order api version.
+func (o OrderOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
 // The object name.
 func (o OrderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Order) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -220,6 +231,11 @@ func (o OrderOutput) Name() pulumi.StringOutput {
 // List of status changes in the order.
 func (o OrderOutput) OrderHistory() OrderStatusResponseArrayOutput {
 	return o.ApplyT(func(v *Order) OrderStatusResponseArrayOutput { return v.OrderHistory }).(OrderStatusResponseArrayOutput)
+}
+
+// It specify the order resource id.
+func (o OrderOutput) OrderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringOutput { return v.OrderId }).(pulumi.StringOutput)
 }
 
 // Tracking information for the package returned from the customer whether it has an original or a replacement device.
@@ -240,6 +256,11 @@ func (o OrderOutput) ShipmentType() pulumi.StringPtrOutput {
 // The shipping address.
 func (o OrderOutput) ShippingAddress() AddressResponsePtrOutput {
 	return o.ApplyT(func(v *Order) AddressResponsePtrOutput { return v.ShippingAddress }).(AddressResponsePtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of Order
+func (o OrderOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Order) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

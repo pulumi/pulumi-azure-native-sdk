@@ -12,7 +12,7 @@ import (
 )
 
 // The network manager connectivity configuration resource
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type ConnectivityConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +24,6 @@ type ConnectivityConfiguration struct {
 	DeleteExistingPeering pulumi.StringPtrOutput `pulumi:"deleteExistingPeering"`
 	// A description of the connectivity configuration.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A friendly name for the resource.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// List of hubItems
@@ -36,6 +34,8 @@ type ConnectivityConfiguration struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the connectivity configuration resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Unique identifier for this resource.
+	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
@@ -49,6 +49,9 @@ func NewConnectivityConfiguration(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AppliesToGroups == nil {
+		return nil, errors.New("invalid value for required argument 'AppliesToGroups'")
+	}
 	if args.ConnectivityTopology == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectivityTopology'")
 	}
@@ -82,6 +85,12 @@ func NewConnectivityConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:ConnectivityConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:ConnectivityConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:ConnectivityConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -127,8 +136,6 @@ type connectivityConfigurationArgs struct {
 	DeleteExistingPeering *string `pulumi:"deleteExistingPeering"`
 	// A description of the connectivity configuration.
 	Description *string `pulumi:"description"`
-	// A friendly name for the resource.
-	DisplayName *string `pulumi:"displayName"`
 	// List of hubItems
 	Hubs []Hub `pulumi:"hubs"`
 	// Flag if global mesh is supported.
@@ -151,8 +158,6 @@ type ConnectivityConfigurationArgs struct {
 	DeleteExistingPeering pulumi.StringPtrInput
 	// A description of the connectivity configuration.
 	Description pulumi.StringPtrInput
-	// A friendly name for the resource.
-	DisplayName pulumi.StringPtrInput
 	// List of hubItems
 	Hubs HubArrayInput
 	// Flag if global mesh is supported.
@@ -220,11 +225,6 @@ func (o ConnectivityConfigurationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A friendly name for the resource.
-func (o ConnectivityConfigurationOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityConfiguration) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
 // A unique read-only string that changes whenever the resource is updated.
 func (o ConnectivityConfigurationOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityConfiguration) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -248,6 +248,11 @@ func (o ConnectivityConfigurationOutput) Name() pulumi.StringOutput {
 // The provisioning state of the connectivity configuration resource.
 func (o ConnectivityConfigurationOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityConfiguration) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Unique identifier for this resource.
+func (o ConnectivityConfigurationOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectivityConfiguration) pulumi.StringOutput { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The system metadata related to this resource.

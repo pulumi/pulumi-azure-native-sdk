@@ -11,8 +11,6 @@ import (
 )
 
 // Get a valid sender username for a domains resource.
-//
-// Deprecated: azure-native:communication/v20230331:SenderUsername is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230401preview:SenderUsername to guarantee forwards compatibility.
 func LookupSenderUsername(ctx *pulumi.Context, args *LookupSenderUsernameArgs, opts ...pulumi.InvokeOption) (*LookupSenderUsernameResult, error) {
 	var rv LookupSenderUsernameResult
 	err := ctx.Invoke("azure-native:communication/v20230331:getSenderUsername", args, &rv, opts...)

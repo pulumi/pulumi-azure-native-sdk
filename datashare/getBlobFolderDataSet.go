@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSet in a share
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupBlobFolderDataSet(ctx *pulumi.Context, args *LookupBlobFolderDataSetArgs, opts ...pulumi.InvokeOption) (*LookupBlobFolderDataSetResult, error) {
 	var rv LookupBlobFolderDataSetResult
 	err := ctx.Invoke("azure-native:datashare:getBlobFolderDataSet", args, &rv, opts...)

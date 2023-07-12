@@ -3,12 +3,13 @@
 
 package providerhub
 
-type ExtendedLocationType string
+type EndpointType string
 
 const (
-	ExtendedLocationTypeNotSpecified = ExtendedLocationType("NotSpecified")
-	ExtendedLocationTypeEdgeZone     = ExtendedLocationType("EdgeZone")
-	ExtendedLocationTypeArcZone      = ExtendedLocationType("ArcZone")
+	EndpointTypeNotSpecified     = EndpointType("NotSpecified")
+	EndpointTypeCanary           = EndpointType("Canary")
+	EndpointTypeProduction       = EndpointType("Production")
+	EndpointTypeTestInProduction = EndpointType("TestInProduction")
 )
 
 type ExtensionCategory string
@@ -72,15 +73,6 @@ const (
 	LoggingDirectionsResponse = LoggingDirections("Response")
 )
 
-type MarketplaceType string
-
-const (
-	MarketplaceTypeNotSpecified = MarketplaceType("NotSpecified")
-	MarketplaceTypeAddOn        = MarketplaceType("AddOn")
-	MarketplaceTypeBypass       = MarketplaceType("Bypass")
-	MarketplaceTypeStore        = MarketplaceType("Store")
-)
-
 type MessageScope string
 
 const (
@@ -96,21 +88,6 @@ const (
 	NotificationModeWebHook      = NotificationMode("WebHook")
 )
 
-type OperationActionType string
-
-const (
-	OperationActionTypeNotSpecified = OperationActionType("NotSpecified")
-	OperationActionTypeInternal     = OperationActionType("Internal")
-)
-
-type OperationOrigins string
-
-const (
-	OperationOriginsNotSpecified = OperationOrigins("NotSpecified")
-	OperationOriginsUser         = OperationOrigins("User")
-	OperationOriginsSystem       = OperationOrigins("System")
-)
-
 type OptInHeaderType string
 
 const (
@@ -121,6 +98,13 @@ const (
 	OptInHeaderTypeUnboundedClientGroupMembership = OptInHeaderType("UnboundedClientGroupMembership")
 )
 
+type Policy string
+
+const (
+	PolicyNotSpecified              = Policy("NotSpecified")
+	PolicySynchronizeBeginExtension = Policy("SynchronizeBeginExtension")
+)
+
 type PreflightOption string
 
 const (
@@ -129,6 +113,7 @@ const (
 	PreflightOptionDefaultValidationOnly       = PreflightOption("DefaultValidationOnly")
 )
 
+// The provisioned state of the resource.
 type ProvisioningState string
 
 const (
@@ -147,20 +132,26 @@ const (
 	ProvisioningStateRolloutInProgress = ProvisioningState("RolloutInProgress")
 )
 
+type Readiness string
+
+const (
+	ReadinessClosingDown    = Readiness("ClosingDown")
+	ReadinessDeprecated     = Readiness("Deprecated")
+	ReadinessGA             = Readiness("GA")
+	ReadinessInDevelopment  = Readiness("InDevelopment")
+	ReadinessInternalOnly   = Readiness("InternalOnly")
+	ReadinessPrivatePreview = Readiness("PrivatePreview")
+	ReadinessPublicPreview  = Readiness("PublicPreview")
+	ReadinessRemovedFromARM = Readiness("RemovedFromARM")
+	ReadinessRetired        = Readiness("Retired")
+)
+
 type Regionality string
 
 const (
 	RegionalityNotSpecified = Regionality("NotSpecified")
 	RegionalityGlobal       = Regionality("Global")
 	RegionalityRegional     = Regionality("Regional")
-)
-
-type ResourceAccessPolicy string
-
-const (
-	ResourceAccessPolicyNotSpecified      = ResourceAccessPolicy("NotSpecified")
-	ResourceAccessPolicyAcisReadAllowed   = ResourceAccessPolicy("AcisReadAllowed")
-	ResourceAccessPolicyAcisActionAllowed = ResourceAccessPolicy("AcisActionAllowed")
 )
 
 type ResourceDeletionPolicy string

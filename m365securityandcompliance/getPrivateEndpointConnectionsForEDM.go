@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the service.
-// API Version: 2021-03-25-preview.
+// Azure REST API version: 2021-03-25-preview.
 func LookupPrivateEndpointConnectionsForEDM(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionsForEDMArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionsForEDMResult, error) {
 	var rv LookupPrivateEndpointConnectionsForEDMResult
 	err := ctx.Invoke("azure-native:m365securityandcompliance:getPrivateEndpointConnectionsForEDM", args, &rv, opts...)

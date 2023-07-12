@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2019-04-01.
+// Azure REST API version: 2019-04-01. Prior API version in Azure Native 1.x: 2019-04-01
 type Controller struct {
 	pulumi.CustomResourceState
 

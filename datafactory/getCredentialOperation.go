@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a credential.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func LookupCredentialOperation(ctx *pulumi.Context, args *LookupCredentialOperationArgs, opts ...pulumi.InvokeOption) (*LookupCredentialOperationResult, error) {
 	var rv LookupCredentialOperationResult
 	err := ctx.Invoke("azure-native:datafactory:getCredentialOperation", args, &rv, opts...)

@@ -11,38 +11,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description of a Namespace AuthorizationRules.
-// API Version: 2017-04-01.
+// Response for POST requests that return single SharedAccessAuthorizationRule.
+// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 
-	// A string that describes the claim type
-	ClaimType pulumi.StringOutput `pulumi:"claimType"`
-	// A string that describes the claim value
-	ClaimValue pulumi.StringOutput `pulumi:"claimValue"`
-	// The created time for this rule
-	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
-	// A string that describes the authorization rule.
-	KeyName pulumi.StringOutput `pulumi:"keyName"`
-	// Resource location
+	// Deprecated - only for compatibility.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The last modified time for this rule
-	ModifiedTime pulumi.StringOutput `pulumi:"modifiedTime"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A base64-encoded 256-bit primary key for signing and validating the SAS token.
-	PrimaryKey pulumi.StringOutput `pulumi:"primaryKey"`
-	// The revision number for the rule
-	Revision pulumi.IntOutput `pulumi:"revision"`
-	// The rights associated with the rule.
-	Rights pulumi.StringArrayOutput `pulumi:"rights"`
-	// A base64-encoded 256-bit primary key for signing and validating the SAS token.
-	SecondaryKey pulumi.StringOutput `pulumi:"secondaryKey"`
-	// The sku of the created namespace
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
-	// Resource tags
+	// SharedAccessAuthorizationRule properties.
+	Properties SharedAccessAuthorizationRulePropertiesResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Deprecated - only for compatibility.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -56,9 +40,6 @@ func NewNamespaceAuthorizationRule(ctx *pulumi.Context,
 	if args.NamespaceName == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceName'")
 	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -68,6 +49,9 @@ func NewNamespaceAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20170401:NamespaceAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:notificationhubs/v20230101preview:NamespaceAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -103,26 +87,34 @@ func (NamespaceAuthorizationRuleState) ElementType() reflect.Type {
 }
 
 type namespaceAuthorizationRuleArgs struct {
-	// Authorization Rule Name.
+	// Authorization Rule Name
 	AuthorizationRuleName *string `pulumi:"authorizationRuleName"`
-	// The namespace name.
+	// Deprecated - only for compatibility.
+	Location *string `pulumi:"location"`
+	// Namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Properties of the Namespace AuthorizationRules.
-	Properties SharedAccessAuthorizationRuleProperties `pulumi:"properties"`
-	// The name of the resource group.
+	// SharedAccessAuthorizationRule properties.
+	Properties *SharedAccessAuthorizationRuleProperties `pulumi:"properties"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Deprecated - only for compatibility.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a NamespaceAuthorizationRule resource.
 type NamespaceAuthorizationRuleArgs struct {
-	// Authorization Rule Name.
+	// Authorization Rule Name
 	AuthorizationRuleName pulumi.StringPtrInput
-	// The namespace name.
+	// Deprecated - only for compatibility.
+	Location pulumi.StringPtrInput
+	// Namespace name
 	NamespaceName pulumi.StringInput
-	// Properties of the Namespace AuthorizationRules.
-	Properties SharedAccessAuthorizationRulePropertiesInput
-	// The name of the resource group.
+	// SharedAccessAuthorizationRule properties.
+	Properties SharedAccessAuthorizationRulePropertiesPtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Deprecated - only for compatibility.
+	Tags pulumi.StringMapInput
 }
 
 func (NamespaceAuthorizationRuleArgs) ElementType() reflect.Type {
@@ -162,72 +154,34 @@ func (o NamespaceAuthorizationRuleOutput) ToNamespaceAuthorizationRuleOutputWith
 	return o
 }
 
-// A string that describes the claim type
-func (o NamespaceAuthorizationRuleOutput) ClaimType() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.ClaimType }).(pulumi.StringOutput)
-}
-
-// A string that describes the claim value
-func (o NamespaceAuthorizationRuleOutput) ClaimValue() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.ClaimValue }).(pulumi.StringOutput)
-}
-
-// The created time for this rule
-func (o NamespaceAuthorizationRuleOutput) CreatedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
-}
-
-// A string that describes the authorization rule.
-func (o NamespaceAuthorizationRuleOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
-}
-
-// Resource location
+// Deprecated - only for compatibility.
 func (o NamespaceAuthorizationRuleOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The last modified time for this rule
-func (o NamespaceAuthorizationRuleOutput) ModifiedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.ModifiedTime }).(pulumi.StringOutput)
-}
-
-// Resource name
+// The name of the resource
 func (o NamespaceAuthorizationRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A base64-encoded 256-bit primary key for signing and validating the SAS token.
-func (o NamespaceAuthorizationRuleOutput) PrimaryKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.PrimaryKey }).(pulumi.StringOutput)
+// SharedAccessAuthorizationRule properties.
+func (o NamespaceAuthorizationRuleOutput) Properties() SharedAccessAuthorizationRulePropertiesResponseOutput {
+	return o.ApplyT(func(v *NamespaceAuthorizationRule) SharedAccessAuthorizationRulePropertiesResponseOutput {
+		return v.Properties
+	}).(SharedAccessAuthorizationRulePropertiesResponseOutput)
 }
 
-// The revision number for the rule
-func (o NamespaceAuthorizationRuleOutput) Revision() pulumi.IntOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.IntOutput { return v.Revision }).(pulumi.IntOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o NamespaceAuthorizationRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *NamespaceAuthorizationRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The rights associated with the rule.
-func (o NamespaceAuthorizationRuleOutput) Rights() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringArrayOutput { return v.Rights }).(pulumi.StringArrayOutput)
-}
-
-// A base64-encoded 256-bit primary key for signing and validating the SAS token.
-func (o NamespaceAuthorizationRuleOutput) SecondaryKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.SecondaryKey }).(pulumi.StringOutput)
-}
-
-// The sku of the created namespace
-func (o NamespaceAuthorizationRuleOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
-}
-
-// Resource tags
+// Deprecated - only for compatibility.
 func (o NamespaceAuthorizationRuleOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o NamespaceAuthorizationRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

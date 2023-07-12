@@ -12,7 +12,7 @@ import (
 )
 
 // Specifies information about the capacity reservation.
-// API Version: 2021-04-01.
+// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-04-01
 type CapacityReservation struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type CapacityReservation struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Specifies the value of fault domain count that Capacity Reservation supports for requested VM size. **Note:** The fault domain count specified for a resource (like virtual machines scale set) must be less than or equal to this value if it deploys using capacity reservation. Minimum api-version: 2022-08-01.
+	PlatformFaultDomainCount pulumi.IntOutput `pulumi:"platformFaultDomainCount"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The date time when the capacity reservation was last updated.
@@ -32,6 +34,8 @@ type CapacityReservation struct {
 	Sku SkuResponseOutput `pulumi:"sku"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Specifies the time at which the Capacity Reservation resource was created. Minimum api-version: 2021-11-01.
+	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
 	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 	// A list of all virtual machine resource ids that are associated with the capacity reservation.
@@ -198,6 +202,11 @@ func (o CapacityReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies the value of fault domain count that Capacity Reservation supports for requested VM size. **Note:** The fault domain count specified for a resource (like virtual machines scale set) must be less than or equal to this value if it deploys using capacity reservation. Minimum api-version: 2022-08-01.
+func (o CapacityReservationOutput) PlatformFaultDomainCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *CapacityReservation) pulumi.IntOutput { return v.PlatformFaultDomainCount }).(pulumi.IntOutput)
+}
+
 // The provisioning state, which only appears in the response.
 func (o CapacityReservationOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -221,6 +230,11 @@ func (o CapacityReservationOutput) Sku() SkuResponseOutput {
 // Resource tags
 func (o CapacityReservationOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Specifies the time at which the Capacity Reservation resource was created. Minimum api-version: 2021-11-01.
+func (o CapacityReservationOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
 // Resource type

@@ -12,7 +12,7 @@ import (
 )
 
 // iOS Policy entity for Intune MAM.
-// API Version: 2015-01-14-preview.
+// Azure REST API version: 2015-01-14-preview. Prior API version in Azure Native 1.x: 2015-01-14-preview
 type IoMAMPolicyByName struct {
 	pulumi.CustomResourceState
 

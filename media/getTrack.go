@@ -11,7 +11,7 @@ import (
 )
 
 // Get the details of a Track in the Asset
-// API Version: 2021-11-01.
+// Azure REST API version: 2023-01-01.
 func LookupTrack(ctx *pulumi.Context, args *LookupTrackArgs, opts ...pulumi.InvokeOption) (*LookupTrackResult, error) {
 	var rv LookupTrackResult
 	err := ctx.Invoke("azure-native:media:getTrack", args, &rv, opts...)

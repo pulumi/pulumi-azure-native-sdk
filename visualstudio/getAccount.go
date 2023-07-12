@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Visual Studio Team Services account resource details.
-// API Version: 2014-04-01-preview.
+// Azure REST API version: 2017-11-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:visualstudio:getAccount", args, &rv, opts...)

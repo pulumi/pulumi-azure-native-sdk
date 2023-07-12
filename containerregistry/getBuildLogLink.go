@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a link to download the build logs.
-// API Version: 2018-02-01-preview.
+// Azure REST API version: 2018-02-01-preview.
 func GetBuildLogLink(ctx *pulumi.Context, args *GetBuildLogLinkArgs, opts ...pulumi.InvokeOption) (*GetBuildLogLinkResult, error) {
 	var rv GetBuildLogLinkResult
 	err := ctx.Invoke("azure-native:containerregistry:getBuildLogLink", args, &rv, opts...)

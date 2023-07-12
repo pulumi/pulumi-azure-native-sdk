@@ -11,7 +11,7 @@ import (
 )
 
 // List SAS credentials of a storage account.
-// API Version: 2021-02-01.
+// Azure REST API version: 2022-09-01.
 func ListStorageAccountSAS(ctx *pulumi.Context, args *ListStorageAccountSASArgs, opts ...pulumi.InvokeOption) (*ListStorageAccountSASResult, error) {
 	var rv ListStorageAccountSASResult
 	err := ctx.Invoke("azure-native:storage:listStorageAccountSAS", args, &rv, opts...)

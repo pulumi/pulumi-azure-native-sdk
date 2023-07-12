@@ -12,7 +12,7 @@ import (
 )
 
 // OpenShift Managed cluster.
-// API Version: 2019-04-30.
+// Azure REST API version: 2019-10-27-preview. Prior API version in Azure Native 1.x: 2019-04-30
 type OpenShiftManagedCluster struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +28,8 @@ type OpenShiftManagedCluster struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Configuration for OpenShift master VMs.
 	MasterPoolProfile OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput `pulumi:"masterPoolProfile"`
+	// Configures Log Analytics integration.
+	MonitorProfile OpenShiftManagedClusterMonitorProfileResponsePtrOutput `pulumi:"monitorProfile"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration for OpenShift networking.
@@ -38,8 +40,10 @@ type OpenShiftManagedCluster struct {
 	Plan PurchasePlanResponsePtrOutput `pulumi:"plan"`
 	// The current deployment or provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Service generated FQDN for OpenShift API server.
+	// Service generated FQDN or private IP for OpenShift API server.
 	PublicHostname pulumi.StringOutput `pulumi:"publicHostname"`
+	// Allows node rotation
+	RefreshCluster pulumi.BoolPtrOutput `pulumi:"refreshCluster"`
 	// Configuration for OpenShift router(s).
 	RouterProfiles OpenShiftRouterProfileResponseArrayOutput `pulumi:"routerProfiles"`
 	// Resource tags
@@ -119,12 +123,16 @@ type openShiftManagedClusterArgs struct {
 	Location *string `pulumi:"location"`
 	// Configuration for OpenShift master VMs.
 	MasterPoolProfile *OpenShiftManagedClusterMasterPoolProfile `pulumi:"masterPoolProfile"`
+	// Configures Log Analytics integration.
+	MonitorProfile *OpenShiftManagedClusterMonitorProfile `pulumi:"monitorProfile"`
 	// Configuration for OpenShift networking.
 	NetworkProfile *NetworkProfile `pulumi:"networkProfile"`
 	// Version of OpenShift specified when creating the cluster.
 	OpenShiftVersion string `pulumi:"openShiftVersion"`
 	// Define the resource plan as required by ARM for billing purposes
 	Plan *PurchasePlan `pulumi:"plan"`
+	// Allows node rotation
+	RefreshCluster *bool `pulumi:"refreshCluster"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the OpenShift managed cluster resource.
@@ -145,12 +153,16 @@ type OpenShiftManagedClusterArgs struct {
 	Location pulumi.StringPtrInput
 	// Configuration for OpenShift master VMs.
 	MasterPoolProfile OpenShiftManagedClusterMasterPoolProfilePtrInput
+	// Configures Log Analytics integration.
+	MonitorProfile OpenShiftManagedClusterMonitorProfilePtrInput
 	// Configuration for OpenShift networking.
 	NetworkProfile NetworkProfilePtrInput
 	// Version of OpenShift specified when creating the cluster.
 	OpenShiftVersion pulumi.StringInput
 	// Define the resource plan as required by ARM for billing purposes
 	Plan PurchasePlanPtrInput
+	// Allows node rotation
+	RefreshCluster pulumi.BoolPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The name of the OpenShift managed cluster resource.
@@ -234,6 +246,13 @@ func (o OpenShiftManagedClusterOutput) MasterPoolProfile() OpenShiftManagedClust
 	}).(OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput)
 }
 
+// Configures Log Analytics integration.
+func (o OpenShiftManagedClusterOutput) MonitorProfile() OpenShiftManagedClusterMonitorProfileResponsePtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedCluster) OpenShiftManagedClusterMonitorProfileResponsePtrOutput {
+		return v.MonitorProfile
+	}).(OpenShiftManagedClusterMonitorProfileResponsePtrOutput)
+}
+
 // Resource name
 func (o OpenShiftManagedClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenShiftManagedCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -259,9 +278,14 @@ func (o OpenShiftManagedClusterOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenShiftManagedCluster) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Service generated FQDN for OpenShift API server.
+// Service generated FQDN or private IP for OpenShift API server.
 func (o OpenShiftManagedClusterOutput) PublicHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenShiftManagedCluster) pulumi.StringOutput { return v.PublicHostname }).(pulumi.StringOutput)
+}
+
+// Allows node rotation
+func (o OpenShiftManagedClusterOutput) RefreshCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedCluster) pulumi.BoolPtrOutput { return v.RefreshCluster }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration for OpenShift router(s).

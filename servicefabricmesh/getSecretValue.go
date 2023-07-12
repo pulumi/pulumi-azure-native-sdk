@@ -11,7 +11,7 @@ import (
 )
 
 // Get the information about the specified named secret value resources. The information does not include the actual value of the secret.
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview.
 func LookupSecretValue(ctx *pulumi.Context, args *LookupSecretValueArgs, opts ...pulumi.InvokeOption) (*LookupSecretValueResult, error) {
 	var rv LookupSecretValueResult
 	err := ctx.Invoke("azure-native:servicefabricmesh:getSecretValue", args, &rv, opts...)

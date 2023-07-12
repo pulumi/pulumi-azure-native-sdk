@@ -11,7 +11,7 @@ import (
 )
 
 // Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
-// API Version: 2021-12-01-preview.
+// Azure REST API version: 2023-04-01.
 func LookupProviderInstance(ctx *pulumi.Context, args *LookupProviderInstanceArgs, opts ...pulumi.InvokeOption) (*LookupProviderInstanceResult, error) {
 	var rv LookupProviderInstanceResult
 	err := ctx.Invoke("azure-native:workloads:getProviderInstance", args, &rv, opts...)
@@ -36,11 +36,11 @@ type LookupProviderInstanceResult struct {
 	Errors ProviderInstancePropertiesResponseErrors `pulumi:"errors"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Managed service identity (user assigned identities)
+	// [currently not in use] Managed service identity(user assigned identities)
 	Identity *UserAssignedServiceIdentityResponse `pulumi:"identity"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Defines the provider instance errors.
+	// Defines the provider specific properties.
 	ProviderSettings interface{} `pulumi:"providerSettings"`
 	// State of provisioning of the provider instance
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -101,7 +101,7 @@ func (o LookupProviderInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Managed service identity (user assigned identities)
+// [currently not in use] Managed service identity(user assigned identities)
 func (o LookupProviderInstanceResultOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) *UserAssignedServiceIdentityResponse { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
 }
@@ -111,7 +111,7 @@ func (o LookupProviderInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Defines the provider instance errors.
+// Defines the provider specific properties.
 func (o LookupProviderInstanceResultOutput) ProviderSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) interface{} { return v.ProviderSettings }).(pulumi.AnyOutput)
 }

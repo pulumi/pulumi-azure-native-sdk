@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +27,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "azure-native:azurestackhci:Extension":
 		r = &Extension{}
+	case "azure-native:azurestackhci:GalleryImage":
+		r = &GalleryImage{}
+	case "azure-native:azurestackhci:GuestAgent":
+		r = &GuestAgent{}
+	case "azure-native:azurestackhci:HybridIdentityMetadatum":
+		r = &HybridIdentityMetadatum{}
+	case "azure-native:azurestackhci:MachineExtension":
+		r = &MachineExtension{}
+	case "azure-native:azurestackhci:MarketplaceGalleryImage":
+		r = &MarketplaceGalleryImage{}
+	case "azure-native:azurestackhci:NetworkInterface":
+		r = &NetworkInterface{}
+	case "azure-native:azurestackhci:StorageContainer":
+		r = &StorageContainer{}
+	case "azure-native:azurestackhci:Update":
+		r = &Update{}
+	case "azure-native:azurestackhci:UpdateRun":
+		r = &UpdateRun{}
+	case "azure-native:azurestackhci:UpdateSummary":
+		r = &UpdateSummary{}
+	case "azure-native:azurestackhci:VirtualHardDisk":
+		r = &VirtualHardDisk{}
+	case "azure-native:azurestackhci:VirtualMachine":
+		r = &VirtualMachine{}
+	case "azure-native:azurestackhci:VirtualNetwork":
+		r = &VirtualNetwork{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

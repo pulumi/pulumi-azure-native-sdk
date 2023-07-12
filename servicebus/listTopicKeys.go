@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the primary and secondary connection strings for the topic.
-// API Version: 2017-04-01.
+// Azure REST API version: 2022-01-01-preview.
 func ListTopicKeys(ctx *pulumi.Context, args *ListTopicKeysArgs, opts ...pulumi.InvokeOption) (*ListTopicKeysResult, error) {
 	var rv ListTopicKeysResult
 	err := ctx.Invoke("azure-native:servicebus:listTopicKeys", args, &rv, opts...)

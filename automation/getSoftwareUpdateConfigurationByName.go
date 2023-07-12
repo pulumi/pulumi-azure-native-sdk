@@ -11,7 +11,7 @@ import (
 )
 
 // Get a single software update configuration by name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2019-06-01.
 func LookupSoftwareUpdateConfigurationByName(ctx *pulumi.Context, args *LookupSoftwareUpdateConfigurationByNameArgs, opts ...pulumi.InvokeOption) (*LookupSoftwareUpdateConfigurationByNameResult, error) {
 	var rv LookupSoftwareUpdateConfigurationByNameResult
 	err := ctx.Invoke("azure-native:automation:getSoftwareUpdateConfigurationByName", args, &rv, opts...)

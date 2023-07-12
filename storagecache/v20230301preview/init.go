@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:storagecache/v20230301preview:AmlFilesystem":
+		r = &AmlFilesystem{}
 	case "azure-native:storagecache/v20230301preview:Cache":
 		r = &Cache{}
-	case "azure-native:storagecache/v20230301preview:StorageTarget":
-		r = &StorageTarget{}
-	case "azure-native:storagecache/v20230301preview:amlFilesystem":
-		r = &AmlFilesystem{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

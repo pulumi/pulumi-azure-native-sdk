@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a nat rule.
-// API Version: 2021-03-01.
+// Azure REST API version: 2023-02-01.
 func LookupVirtualNetworkGatewayNatRule(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayNatRuleResult, error) {
 	var rv LookupVirtualNetworkGatewayNatRuleResult
 	err := ctx.Invoke("azure-native:network:getVirtualNetworkGatewayNatRule", args, &rv, opts...)

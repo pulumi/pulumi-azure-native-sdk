@@ -11,7 +11,7 @@ import (
 )
 
 // Get notification channel.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChannelArgs, opts ...pulumi.InvokeOption) (*LookupNotificationChannelResult, error) {
 	var rv LookupNotificationChannelResult
 	err := ctx.Invoke("azure-native:devtestlab:getNotificationChannel", args, &rv, opts...)

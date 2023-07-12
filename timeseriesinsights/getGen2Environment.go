@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the environment with the specified name in the specified subscription and resource group.
-// API Version: 2020-05-15.
+// Azure REST API version: 2020-05-15.
 func LookupGen2Environment(ctx *pulumi.Context, args *LookupGen2EnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupGen2EnvironmentResult, error) {
 	var rv LookupGen2EnvironmentResult
 	err := ctx.Invoke("azure-native:timeseriesinsights:getGen2Environment", args, &rv, opts...)

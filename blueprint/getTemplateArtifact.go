@@ -11,7 +11,7 @@ import (
 )
 
 // Get a blueprint artifact.
-// API Version: 2018-11-01-preview.
+// Azure REST API version: 2018-11-01-preview.
 func LookupTemplateArtifact(ctx *pulumi.Context, args *LookupTemplateArtifactArgs, opts ...pulumi.InvokeOption) (*LookupTemplateArtifactResult, error) {
 	var rv LookupTemplateArtifactResult
 	err := ctx.Invoke("azure-native:blueprint:getTemplateArtifact", args, &rv, opts...)

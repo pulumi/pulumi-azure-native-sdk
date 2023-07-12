@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The action of virtual network rule.
+// The action of IP ACL rule.
 type Action string
 
 const (
@@ -56,8 +56,10 @@ const (
 type ConnectedRegistryMode string
 
 const (
-	ConnectedRegistryModeRegistry = ConnectedRegistryMode("Registry")
-	ConnectedRegistryModeMirror   = ConnectedRegistryMode("Mirror")
+	ConnectedRegistryModeReadWrite = ConnectedRegistryMode("ReadWrite")
+	ConnectedRegistryModeReadOnly  = ConnectedRegistryMode("ReadOnly")
+	ConnectedRegistryModeRegistry  = ConnectedRegistryMode("Registry")
+	ConnectedRegistryModeMirror    = ConnectedRegistryMode("Mirror")
 )
 
 // The private link service connection status.
@@ -70,12 +72,35 @@ const (
 	ConnectionStatusDisconnected = ConnectionStatus("Disconnected")
 )
 
+// The name of the credential.
+type CredentialName string
+
+const (
+	CredentialNameCredential1 = CredentialName("Credential1")
+)
+
 // The default action of allow or deny when no other rules match.
 type DefaultAction string
 
 const (
 	DefaultActionAllow = DefaultAction("Allow")
 	DefaultActionDeny  = DefaultAction("Deny")
+)
+
+// Indicates whether or not the encryption is enabled for container registry.
+type EncryptionStatus string
+
+const (
+	EncryptionStatusEnabled  = EncryptionStatus("enabled")
+	EncryptionStatusDisabled = EncryptionStatus("disabled")
+)
+
+// The value that indicates whether the policy is enabled or not.
+type ExportPolicyStatus string
+
+const (
+	ExportPolicyStatusEnabled  = ExportPolicyStatus("enabled")
+	ExportPolicyStatusDisabled = ExportPolicyStatus("disabled")
 )
 
 // The verbosity of logs persisted on the connected registry.
@@ -87,6 +112,14 @@ const (
 	LogLevelWarning     = LogLevel("Warning")
 	LogLevelError       = LogLevel("Error")
 	LogLevelNone        = LogLevel("None")
+)
+
+// Whether to allow trusted Azure services to access a network restricted registry.
+type NetworkRuleBypassOptions string
+
+const (
+	NetworkRuleBypassOptionsAzureServices = NetworkRuleBypassOptions("AzureServices")
+	NetworkRuleBypassOptionsNone          = NetworkRuleBypassOptions("None")
 )
 
 // The operating system type required for the run.
@@ -133,6 +166,14 @@ type PolicyStatus string
 const (
 	PolicyStatusEnabled  = PolicyStatus("enabled")
 	PolicyStatusDisabled = PolicyStatus("disabled")
+)
+
+// Whether or not public network access is allowed for the container registry.
+type PublicNetworkAccess string
+
+const (
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
 // The identity type.
@@ -442,6 +483,14 @@ type WebhookStatus string
 const (
 	WebhookStatusEnabled  = WebhookStatus("enabled")
 	WebhookStatusDisabled = WebhookStatus("disabled")
+)
+
+// Whether or not zone redundancy is enabled for this container registry replication
+type ZoneRedundancy string
+
+const (
+	ZoneRedundancyEnabled  = ZoneRedundancy("Enabled")
+	ZoneRedundancyDisabled = ZoneRedundancy("Disabled")
 )
 
 func init() {

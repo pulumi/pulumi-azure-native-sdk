@@ -11,7 +11,7 @@ import (
 )
 
 // Details of a specific cloud account connector
-// API Version: 2020-01-01-preview.
+// Azure REST API version: 2020-01-01-preview.
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	var rv LookupConnectorResult
 	err := ctx.Invoke("azure-native:security:getConnector", args, &rv, opts...)

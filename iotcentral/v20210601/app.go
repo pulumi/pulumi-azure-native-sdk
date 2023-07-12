@@ -12,8 +12,6 @@ import (
 )
 
 // The IoT Central application.
-//
-// Deprecated: azure-native:iotcentral/v20210601:App is being removed in the next major version of this provider. Upgrade to at least azure-native:iotcentral/v20211101preview:App to guarantee forwards compatibility.
 type App struct {
 	pulumi.CustomResourceState
 

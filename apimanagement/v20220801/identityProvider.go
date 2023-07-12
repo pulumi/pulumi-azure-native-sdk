@@ -12,8 +12,6 @@ import (
 )
 
 // Identity Provider details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:IdentityProvider is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:IdentityProvider to guarantee forwards compatibility.
 type IdentityProvider struct {
 	pulumi.CustomResourceState
 
@@ -110,6 +108,12 @@ func NewIdentityProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:IdentityProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:IdentityProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:IdentityProvider"),
 		},
 	})
 	opts = append(opts, aliases)

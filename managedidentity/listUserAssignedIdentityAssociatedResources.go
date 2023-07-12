@@ -11,7 +11,7 @@ import (
 )
 
 // Lists the associated resources for this identity.
-// API Version: 2022-01-31-preview.
+// Azure REST API version: 2022-01-31-preview.
 func ListUserAssignedIdentityAssociatedResources(ctx *pulumi.Context, args *ListUserAssignedIdentityAssociatedResourcesArgs, opts ...pulumi.InvokeOption) (*ListUserAssignedIdentityAssociatedResourcesResult, error) {
 	var rv ListUserAssignedIdentityAssociatedResourcesResult
 	err := ctx.Invoke("azure-native:managedidentity:listUserAssignedIdentityAssociatedResources", args, &rv, opts...)

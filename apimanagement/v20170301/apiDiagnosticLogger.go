@@ -53,9 +53,6 @@ func NewApiDiagnosticLogger(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ApiDiagnosticLogger"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20180101:ApiDiagnosticLogger"),
 		},
 	})

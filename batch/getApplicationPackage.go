@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified application package.
-// API Version: 2021-01-01.
+// Azure REST API version: 2023-05-01.
 func LookupApplicationPackage(ctx *pulumi.Context, args *LookupApplicationPackageArgs, opts ...pulumi.InvokeOption) (*LookupApplicationPackageResult, error) {
 	var rv LookupApplicationPackageResult
 	err := ctx.Invoke("azure-native:batch:getApplicationPackage", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of the group specified by its identifier.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	var rv LookupGroupResult
 	err := ctx.Invoke("azure-native:apimanagement:getGroup", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 type LookupGroupArgs struct {
 	// Group identifier. Must be unique in the current API Management service instance.
 	GroupId string `pulumi:"groupId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -40,11 +40,11 @@ type LookupGroupResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// For external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
 	ExternalId *string `pulumi:"externalId"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Resource type for API Management resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -64,7 +64,7 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 type LookupGroupOutputArgs struct {
 	// Group identifier. Must be unique in the current API Management service instance.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -109,17 +109,17 @@ func (o LookupGroupResultOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGroupResult) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type for API Management resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

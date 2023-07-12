@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a database data masking policy.
-// API Version: 2014-04-01.
+// Gets the database data masking policy.
+// Azure REST API version: 2021-11-01.
 func LookupDataMaskingPolicy(ctx *pulumi.Context, args *LookupDataMaskingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDataMaskingPolicyResult, error) {
 	var rv LookupDataMaskingPolicyResult
 	err := ctx.Invoke("azure-native:sql:getDataMaskingPolicy", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupDataMaskingPolicy(ctx *pulumi.Context, args *LookupDataMaskingPolicyA
 }
 
 type LookupDataMaskingPolicyArgs struct {
-	// The name of the database for which the data masking rule applies.
+	// The name of the database for which the data masking policy applies.
 	DataMaskingPolicyName string `pulumi:"dataMaskingPolicyName"`
 	// The name of the database.
 	DatabaseName string `pulumi:"databaseName"`
@@ -32,7 +32,7 @@ type LookupDataMaskingPolicyArgs struct {
 	ServerName string `pulumi:"serverName"`
 }
 
-// Represents a database data masking policy.
+// A database data masking policy.
 type LookupDataMaskingPolicyResult struct {
 	// The list of the application principals. This is a legacy parameter and is no longer used.
 	ApplicationPrincipals string `pulumi:"applicationPrincipals"`
@@ -42,7 +42,7 @@ type LookupDataMaskingPolicyResult struct {
 	ExemptPrincipals *string `pulumi:"exemptPrincipals"`
 	// Resource ID.
 	Id string `pulumi:"id"`
-	// The kind of data masking policy. Metadata, used for Azure portal.
+	// The kind of Data Masking Policy. Metadata, used for Azure portal.
 	Kind string `pulumi:"kind"`
 	// The location of the data masking policy.
 	Location string `pulumi:"location"`
@@ -68,7 +68,7 @@ func LookupDataMaskingPolicyOutput(ctx *pulumi.Context, args LookupDataMaskingPo
 }
 
 type LookupDataMaskingPolicyOutputArgs struct {
-	// The name of the database for which the data masking rule applies.
+	// The name of the database for which the data masking policy applies.
 	DataMaskingPolicyName pulumi.StringInput `pulumi:"dataMaskingPolicyName"`
 	// The name of the database.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
@@ -82,7 +82,7 @@ func (LookupDataMaskingPolicyOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupDataMaskingPolicyArgs)(nil)).Elem()
 }
 
-// Represents a database data masking policy.
+// A database data masking policy.
 type LookupDataMaskingPolicyResultOutput struct{ *pulumi.OutputState }
 
 func (LookupDataMaskingPolicyResultOutput) ElementType() reflect.Type {
@@ -117,7 +117,7 @@ func (o LookupDataMaskingPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The kind of data masking policy. Metadata, used for Azure portal.
+// The kind of Data Masking Policy. Metadata, used for Azure portal.
 func (o LookupDataMaskingPolicyResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.Kind }).(pulumi.StringOutput)
 }

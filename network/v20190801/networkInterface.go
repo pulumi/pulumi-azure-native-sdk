@@ -196,6 +196,12 @@ func NewNetworkInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:NetworkInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:NetworkInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:NetworkInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkInterface
@@ -257,7 +263,7 @@ type networkInterfaceArgs struct {
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// A list of TapConfigurations of the network interface.
-	TapConfigurations []NetworkInterfaceTapConfigurationType `pulumi:"tapConfigurations"`
+	TapConfigurations []NetworkInterfaceTapConfiguration `pulumi:"tapConfigurations"`
 }
 
 // The set of arguments for constructing a NetworkInterface resource.
@@ -289,7 +295,7 @@ type NetworkInterfaceArgs struct {
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// A list of TapConfigurations of the network interface.
-	TapConfigurations NetworkInterfaceTapConfigurationTypeArrayInput
+	TapConfigurations NetworkInterfaceTapConfigurationArrayInput
 }
 
 func (NetworkInterfaceArgs) ElementType() reflect.Type {

@@ -12,7 +12,7 @@ import (
 )
 
 // Represents Anomaly Security ML Analytics Settings
-// API Version: 2022-05-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-05-01-preview
 type AnomalySecurityMLAnalyticsSettings struct {
 	pulumi.CustomResourceState
 
@@ -127,7 +127,16 @@ func NewAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:AnomalySecurityMLAnalyticsSettings"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:AnomalySecurityMLAnalyticsSettings"),
 		},
 	})
 	opts = append(opts, aliases)

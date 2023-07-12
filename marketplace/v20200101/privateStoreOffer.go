@@ -53,12 +53,6 @@ func NewPrivateStoreOffer(ctx *pulumi.Context,
 	if args.PrivateStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateStoreId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:marketplace:PrivateStoreOffer"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource PrivateStoreOffer
 	err := ctx.RegisterResource("azure-native:marketplace/v20200101:PrivateStoreOffer", name, args, &resource, opts...)
 	if err != nil {

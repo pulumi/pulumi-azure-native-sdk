@@ -11,7 +11,7 @@ import (
 )
 
 // Get metrics configuration of the provided cluster.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupMetricsConfiguration(ctx *pulumi.Context, args *LookupMetricsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupMetricsConfigurationResult, error) {
 	var rv LookupMetricsConfigurationResult
 	err := ctx.Invoke("azure-native:networkcloud:getMetricsConfiguration", args, &rv, opts...)
@@ -43,7 +43,7 @@ type LookupMetricsConfigurationResult struct {
 	EnabledMetrics []string `pulumi:"enabledMetrics"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -129,7 +129,7 @@ func (o LookupMetricsConfigurationResultOutput) ExtendedLocation() ExtendedLocat
 	return o.ApplyT(func(v LookupMetricsConfigurationResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMetricsConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricsConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }

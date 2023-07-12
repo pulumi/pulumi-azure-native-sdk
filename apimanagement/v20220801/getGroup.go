@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the group specified by its identifier.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Group is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Group to guarantee forwards compatibility.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	var rv LookupGroupResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getGroup", args, &rv, opts...)

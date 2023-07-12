@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves an Active Directory connector resource
-// API Version: 2022-03-01-preview.
+// Azure REST API version: 2023-01-15-preview.
 func LookupActiveDirectoryConnector(ctx *pulumi.Context, args *LookupActiveDirectoryConnectorArgs, opts ...pulumi.InvokeOption) (*LookupActiveDirectoryConnectorResult, error) {
 	var rv LookupActiveDirectoryConnectorResult
 	err := ctx.Invoke("azure-native:azurearcdata:getActiveDirectoryConnector", args, &rv, opts...)

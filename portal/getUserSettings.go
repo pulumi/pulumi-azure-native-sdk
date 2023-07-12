@@ -11,7 +11,7 @@ import (
 )
 
 // Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.
-// API Version: 2018-10-01.
+// Azure REST API version: 2018-10-01.
 func LookupUserSettings(ctx *pulumi.Context, args *LookupUserSettingsArgs, opts ...pulumi.InvokeOption) (*LookupUserSettingsResult, error) {
 	var rv LookupUserSettingsResult
 	err := ctx.Invoke("azure-native:portal:getUserSettings", args, &rv, opts...)

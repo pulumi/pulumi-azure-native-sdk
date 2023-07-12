@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppServicePlanRouteForVnet{}
 	case "azure-native:web/v20220901:Certificate":
 		r = &Certificate{}
-	case "azure-native:web/v20220901:ContainerApp":
-		r = &ContainerApp{}
 	case "azure-native:web/v20220901:KubeEnvironment":
 		r = &KubeEnvironment{}
 	case "azure-native:web/v20220901:StaticSite":

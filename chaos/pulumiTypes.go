@@ -307,7 +307,7 @@ type DiscreteActionResponse struct {
 // Model that represents the Experiment properties model.
 type ExperimentProperties struct {
 	// List of selectors.
-	Selectors []Selector `pulumi:"selectors"`
+	Selectors []interface{} `pulumi:"selectors"`
 	// A boolean value that indicates if experiment should be started on creation or not.
 	StartOnCreation *bool `pulumi:"startOnCreation"`
 	// List of steps.
@@ -328,7 +328,7 @@ type ExperimentPropertiesInput interface {
 // Model that represents the Experiment properties model.
 type ExperimentPropertiesArgs struct {
 	// List of selectors.
-	Selectors SelectorArrayInput `pulumi:"selectors"`
+	Selectors pulumi.ArrayInput `pulumi:"selectors"`
 	// A boolean value that indicates if experiment should be started on creation or not.
 	StartOnCreation pulumi.BoolPtrInput `pulumi:"startOnCreation"`
 	// List of steps.
@@ -363,8 +363,8 @@ func (o ExperimentPropertiesOutput) ToExperimentPropertiesOutputWithContext(ctx 
 }
 
 // List of selectors.
-func (o ExperimentPropertiesOutput) Selectors() SelectorArrayOutput {
-	return o.ApplyT(func(v ExperimentProperties) []Selector { return v.Selectors }).(SelectorArrayOutput)
+func (o ExperimentPropertiesOutput) Selectors() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ExperimentProperties) []interface{} { return v.Selectors }).(pulumi.ArrayOutput)
 }
 
 // A boolean value that indicates if experiment should be started on creation or not.
@@ -380,7 +380,7 @@ func (o ExperimentPropertiesOutput) Steps() StepArrayOutput {
 // Model that represents the Experiment properties model.
 type ExperimentPropertiesResponse struct {
 	// List of selectors.
-	Selectors []SelectorResponse `pulumi:"selectors"`
+	Selectors []interface{} `pulumi:"selectors"`
 	// A boolean value that indicates if experiment should be started on creation or not.
 	StartOnCreation *bool `pulumi:"startOnCreation"`
 	// List of steps.
@@ -403,8 +403,8 @@ func (o ExperimentPropertiesResponseOutput) ToExperimentPropertiesResponseOutput
 }
 
 // List of selectors.
-func (o ExperimentPropertiesResponseOutput) Selectors() SelectorResponseArrayOutput {
-	return o.ApplyT(func(v ExperimentPropertiesResponse) []SelectorResponse { return v.Selectors }).(SelectorResponseArrayOutput)
+func (o ExperimentPropertiesResponseOutput) Selectors() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ExperimentPropertiesResponse) []interface{} { return v.Selectors }).(pulumi.ArrayOutput)
 }
 
 // A boolean value that indicates if experiment should be started on creation or not.
@@ -433,10 +433,68 @@ type KeyValuePairResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// The managed identity of a resource.
+// Model that represents a list selector.
+type ListSelector struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter *SimpleFilter `pulumi:"filter"`
+	// String of the selector ID.
+	Id string `pulumi:"id"`
+	// List of Target references.
+	Targets []TargetReference `pulumi:"targets"`
+	// Enum of the selector type.
+	// Expected value is 'List'.
+	Type string `pulumi:"type"`
+}
+
+// Model that represents a list selector.
+type ListSelectorResponse struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter *SimpleFilterResponse `pulumi:"filter"`
+	// String of the selector ID.
+	Id string `pulumi:"id"`
+	// List of Target references.
+	Targets []TargetReferenceResponse `pulumi:"targets"`
+	// Enum of the selector type.
+	// Expected value is 'List'.
+	Type string `pulumi:"type"`
+}
+
+// Model that represents a query selector.
+type QuerySelector struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter *SimpleFilter `pulumi:"filter"`
+	// String of the selector ID.
+	Id string `pulumi:"id"`
+	// Azure Resource Graph (ARG) Query Language query for target resources.
+	QueryString string `pulumi:"queryString"`
+	// Subscription id list to scope resource query.
+	SubscriptionIds []string `pulumi:"subscriptionIds"`
+	// Enum of the selector type.
+	// Expected value is 'Query'.
+	Type string `pulumi:"type"`
+}
+
+// Model that represents a query selector.
+type QuerySelectorResponse struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter *SimpleFilterResponse `pulumi:"filter"`
+	// String of the selector ID.
+	Id string `pulumi:"id"`
+	// Azure Resource Graph (ARG) Query Language query for target resources.
+	QueryString string `pulumi:"queryString"`
+	// Subscription id list to scope resource query.
+	SubscriptionIds []string `pulumi:"subscriptionIds"`
+	// Enum of the selector type.
+	// Expected value is 'Query'.
+	Type string `pulumi:"type"`
+}
+
+// The identity of a resource.
 type ResourceIdentity struct {
 	// String of the resource identity type.
 	Type ResourceIdentityType `pulumi:"type"`
+	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // ResourceIdentityInput is an input type that accepts ResourceIdentityArgs and ResourceIdentityOutput values.
@@ -450,10 +508,12 @@ type ResourceIdentityInput interface {
 	ToResourceIdentityOutputWithContext(context.Context) ResourceIdentityOutput
 }
 
-// The managed identity of a resource.
+// The identity of a resource.
 type ResourceIdentityArgs struct {
 	// String of the resource identity type.
 	Type ResourceIdentityTypeInput `pulumi:"type"`
+	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (ResourceIdentityArgs) ElementType() reflect.Type {
@@ -509,7 +569,7 @@ func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityPtrOutput)
 }
 
-// The managed identity of a resource.
+// The identity of a resource.
 type ResourceIdentityOutput struct{ *pulumi.OutputState }
 
 func (ResourceIdentityOutput) ElementType() reflect.Type {
@@ -537,6 +597,11 @@ func (o ResourceIdentityOutput) ToResourceIdentityPtrOutputWithContext(ctx conte
 // String of the resource identity type.
 func (o ResourceIdentityOutput) Type() ResourceIdentityTypeOutput {
 	return o.ApplyT(func(v ResourceIdentity) ResourceIdentityType { return v.Type }).(ResourceIdentityTypeOutput)
+}
+
+// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type ResourceIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -573,7 +638,17 @@ func (o ResourceIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-// The managed identity of a resource.
+// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// The identity of a resource.
 type ResourceIdentityResponse struct {
 	// GUID that represents the principal ID of this resource identity.
 	PrincipalId string `pulumi:"principalId"`
@@ -581,9 +656,11 @@ type ResourceIdentityResponse struct {
 	TenantId string `pulumi:"tenantId"`
 	// String of the resource identity type.
 	Type string `pulumi:"type"`
+	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
-// The managed identity of a resource.
+// The identity of a resource.
 type ResourceIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceIdentityResponseOutput) ElementType() reflect.Type {
@@ -611,6 +688,13 @@ func (o ResourceIdentityResponseOutput) TenantId() pulumi.StringOutput {
 // String of the resource identity type.
 func (o ResourceIdentityResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o ResourceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ResourceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 type ResourceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -667,182 +751,44 @@ func (o ResourceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Model that represents a selector in the Experiment resource.
-type Selector struct {
-	// String of the selector ID.
-	Id string `pulumi:"id"`
-	// List of Target references.
-	Targets []TargetReference `pulumi:"targets"`
-	// Enum of the selector type.
-	Type SelectorType `pulumi:"type"`
+// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o ResourceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ResourceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// SelectorInput is an input type that accepts SelectorArgs and SelectorOutput values.
-// You can construct a concrete instance of `SelectorInput` via:
-//
-//	SelectorArgs{...}
-type SelectorInput interface {
-	pulumi.Input
-
-	ToSelectorOutput() SelectorOutput
-	ToSelectorOutputWithContext(context.Context) SelectorOutput
-}
-
-// Model that represents a selector in the Experiment resource.
-type SelectorArgs struct {
-	// String of the selector ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// List of Target references.
-	Targets TargetReferenceArrayInput `pulumi:"targets"`
-	// Enum of the selector type.
-	Type SelectorTypeInput `pulumi:"type"`
-}
-
-func (SelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Selector)(nil)).Elem()
-}
-
-func (i SelectorArgs) ToSelectorOutput() SelectorOutput {
-	return i.ToSelectorOutputWithContext(context.Background())
-}
-
-func (i SelectorArgs) ToSelectorOutputWithContext(ctx context.Context) SelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SelectorOutput)
-}
-
-// SelectorArrayInput is an input type that accepts SelectorArray and SelectorArrayOutput values.
-// You can construct a concrete instance of `SelectorArrayInput` via:
-//
-//	SelectorArray{ SelectorArgs{...} }
-type SelectorArrayInput interface {
-	pulumi.Input
-
-	ToSelectorArrayOutput() SelectorArrayOutput
-	ToSelectorArrayOutputWithContext(context.Context) SelectorArrayOutput
-}
-
-type SelectorArray []SelectorInput
-
-func (SelectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Selector)(nil)).Elem()
-}
-
-func (i SelectorArray) ToSelectorArrayOutput() SelectorArrayOutput {
-	return i.ToSelectorArrayOutputWithContext(context.Background())
-}
-
-func (i SelectorArray) ToSelectorArrayOutputWithContext(ctx context.Context) SelectorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SelectorArrayOutput)
-}
-
-// Model that represents a selector in the Experiment resource.
-type SelectorOutput struct{ *pulumi.OutputState }
-
-func (SelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Selector)(nil)).Elem()
-}
-
-func (o SelectorOutput) ToSelectorOutput() SelectorOutput {
-	return o
-}
-
-func (o SelectorOutput) ToSelectorOutputWithContext(ctx context.Context) SelectorOutput {
-	return o
-}
-
-// String of the selector ID.
-func (o SelectorOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v Selector) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// List of Target references.
-func (o SelectorOutput) Targets() TargetReferenceArrayOutput {
-	return o.ApplyT(func(v Selector) []TargetReference { return v.Targets }).(TargetReferenceArrayOutput)
-}
-
-// Enum of the selector type.
-func (o SelectorOutput) Type() SelectorTypeOutput {
-	return o.ApplyT(func(v Selector) SelectorType { return v.Type }).(SelectorTypeOutput)
-}
-
-type SelectorArrayOutput struct{ *pulumi.OutputState }
-
-func (SelectorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Selector)(nil)).Elem()
-}
-
-func (o SelectorArrayOutput) ToSelectorArrayOutput() SelectorArrayOutput {
-	return o
-}
-
-func (o SelectorArrayOutput) ToSelectorArrayOutputWithContext(ctx context.Context) SelectorArrayOutput {
-	return o
-}
-
-func (o SelectorArrayOutput) Index(i pulumi.IntInput) SelectorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Selector {
-		return vs[0].([]Selector)[vs[1].(int)]
-	}).(SelectorOutput)
-}
-
-// Model that represents a selector in the Experiment resource.
-type SelectorResponse struct {
-	// String of the selector ID.
-	Id string `pulumi:"id"`
-	// List of Target references.
-	Targets []TargetReferenceResponse `pulumi:"targets"`
-	// Enum of the selector type.
+// Model that represents a simple target filter.
+type SimpleFilter struct {
+	// Model that represents the Simple filter parameters.
+	Parameters *SimpleFilterParameters `pulumi:"parameters"`
+	// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+	// Expected value is 'Simple'.
 	Type string `pulumi:"type"`
 }
 
-// Model that represents a selector in the Experiment resource.
-type SelectorResponseOutput struct{ *pulumi.OutputState }
-
-func (SelectorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SelectorResponse)(nil)).Elem()
+// Model that represents the Simple filter parameters.
+type SimpleFilterParameters struct {
+	// List of Azure availability zones to filter targets by.
+	Zones []string `pulumi:"zones"`
 }
 
-func (o SelectorResponseOutput) ToSelectorResponseOutput() SelectorResponseOutput {
-	return o
+// Model that represents the Simple filter parameters.
+type SimpleFilterParametersResponse struct {
+	// List of Azure availability zones to filter targets by.
+	Zones []string `pulumi:"zones"`
 }
 
-func (o SelectorResponseOutput) ToSelectorResponseOutputWithContext(ctx context.Context) SelectorResponseOutput {
-	return o
-}
-
-// String of the selector ID.
-func (o SelectorResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v SelectorResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// List of Target references.
-func (o SelectorResponseOutput) Targets() TargetReferenceResponseArrayOutput {
-	return o.ApplyT(func(v SelectorResponse) []TargetReferenceResponse { return v.Targets }).(TargetReferenceResponseArrayOutput)
-}
-
-// Enum of the selector type.
-func (o SelectorResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SelectorResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type SelectorResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SelectorResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SelectorResponse)(nil)).Elem()
-}
-
-func (o SelectorResponseArrayOutput) ToSelectorResponseArrayOutput() SelectorResponseArrayOutput {
-	return o
-}
-
-func (o SelectorResponseArrayOutput) ToSelectorResponseArrayOutputWithContext(ctx context.Context) SelectorResponseArrayOutput {
-	return o
-}
-
-func (o SelectorResponseArrayOutput) Index(i pulumi.IntInput) SelectorResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SelectorResponse {
-		return vs[0].([]SelectorResponse)[vs[1].(int)]
-	}).(SelectorResponseOutput)
+// Model that represents a simple target filter.
+type SimpleFilterResponse struct {
+	// Model that represents the Simple filter parameters.
+	Parameters *SimpleFilterParametersResponse `pulumi:"parameters"`
+	// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+	// Expected value is 'Simple'.
+	Type string `pulumi:"type"`
 }
 
 // Model that represents a step in the Experiment resource.
@@ -1073,108 +1019,7 @@ type TargetReference struct {
 	// String of the resource ID of a Target resource.
 	Id string `pulumi:"id"`
 	// Enum of the Target reference type.
-	Type TargetReferenceType `pulumi:"type"`
-}
-
-// TargetReferenceInput is an input type that accepts TargetReferenceArgs and TargetReferenceOutput values.
-// You can construct a concrete instance of `TargetReferenceInput` via:
-//
-//	TargetReferenceArgs{...}
-type TargetReferenceInput interface {
-	pulumi.Input
-
-	ToTargetReferenceOutput() TargetReferenceOutput
-	ToTargetReferenceOutputWithContext(context.Context) TargetReferenceOutput
-}
-
-// Model that represents a reference to a Target in the selector.
-type TargetReferenceArgs struct {
-	// String of the resource ID of a Target resource.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Enum of the Target reference type.
-	Type TargetReferenceTypeInput `pulumi:"type"`
-}
-
-func (TargetReferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetReference)(nil)).Elem()
-}
-
-func (i TargetReferenceArgs) ToTargetReferenceOutput() TargetReferenceOutput {
-	return i.ToTargetReferenceOutputWithContext(context.Background())
-}
-
-func (i TargetReferenceArgs) ToTargetReferenceOutputWithContext(ctx context.Context) TargetReferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetReferenceOutput)
-}
-
-// TargetReferenceArrayInput is an input type that accepts TargetReferenceArray and TargetReferenceArrayOutput values.
-// You can construct a concrete instance of `TargetReferenceArrayInput` via:
-//
-//	TargetReferenceArray{ TargetReferenceArgs{...} }
-type TargetReferenceArrayInput interface {
-	pulumi.Input
-
-	ToTargetReferenceArrayOutput() TargetReferenceArrayOutput
-	ToTargetReferenceArrayOutputWithContext(context.Context) TargetReferenceArrayOutput
-}
-
-type TargetReferenceArray []TargetReferenceInput
-
-func (TargetReferenceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetReference)(nil)).Elem()
-}
-
-func (i TargetReferenceArray) ToTargetReferenceArrayOutput() TargetReferenceArrayOutput {
-	return i.ToTargetReferenceArrayOutputWithContext(context.Background())
-}
-
-func (i TargetReferenceArray) ToTargetReferenceArrayOutputWithContext(ctx context.Context) TargetReferenceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetReferenceArrayOutput)
-}
-
-// Model that represents a reference to a Target in the selector.
-type TargetReferenceOutput struct{ *pulumi.OutputState }
-
-func (TargetReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetReference)(nil)).Elem()
-}
-
-func (o TargetReferenceOutput) ToTargetReferenceOutput() TargetReferenceOutput {
-	return o
-}
-
-func (o TargetReferenceOutput) ToTargetReferenceOutputWithContext(ctx context.Context) TargetReferenceOutput {
-	return o
-}
-
-// String of the resource ID of a Target resource.
-func (o TargetReferenceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetReference) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Enum of the Target reference type.
-func (o TargetReferenceOutput) Type() TargetReferenceTypeOutput {
-	return o.ApplyT(func(v TargetReference) TargetReferenceType { return v.Type }).(TargetReferenceTypeOutput)
-}
-
-type TargetReferenceArrayOutput struct{ *pulumi.OutputState }
-
-func (TargetReferenceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetReference)(nil)).Elem()
-}
-
-func (o TargetReferenceArrayOutput) ToTargetReferenceArrayOutput() TargetReferenceArrayOutput {
-	return o
-}
-
-func (o TargetReferenceArrayOutput) ToTargetReferenceArrayOutputWithContext(ctx context.Context) TargetReferenceArrayOutput {
-	return o
-}
-
-func (o TargetReferenceArrayOutput) Index(i pulumi.IntInput) TargetReferenceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetReference {
-		return vs[0].([]TargetReference)[vs[1].(int)]
-	}).(TargetReferenceOutput)
+	Type string `pulumi:"type"`
 }
 
 // Model that represents a reference to a Target in the selector.
@@ -1185,49 +1030,57 @@ type TargetReferenceResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Model that represents a reference to a Target in the selector.
-type TargetReferenceResponseOutput struct{ *pulumi.OutputState }
-
-func (TargetReferenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetReferenceResponse)(nil)).Elem()
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
 }
 
-func (o TargetReferenceResponseOutput) ToTargetReferenceResponseOutput() TargetReferenceResponseOutput {
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
 	return o
 }
 
-func (o TargetReferenceResponseOutput) ToTargetReferenceResponseOutputWithContext(ctx context.Context) TargetReferenceResponseOutput {
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
 	return o
 }
 
-// String of the resource ID of a Target resource.
-func (o TargetReferenceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// Enum of the Target reference type.
-func (o TargetReferenceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetReferenceResponse) string { return v.Type }).(pulumi.StringOutput)
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-type TargetReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
 
-func (TargetReferenceResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetReferenceResponse)(nil)).Elem()
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
 }
 
-func (o TargetReferenceResponseArrayOutput) ToTargetReferenceResponseArrayOutput() TargetReferenceResponseArrayOutput {
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
 	return o
 }
 
-func (o TargetReferenceResponseArrayOutput) ToTargetReferenceResponseArrayOutputWithContext(ctx context.Context) TargetReferenceResponseArrayOutput {
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
 }
 
-func (o TargetReferenceResponseArrayOutput) Index(i pulumi.IntInput) TargetReferenceResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetReferenceResponse {
-		return vs[0].([]TargetReferenceResponse)[vs[1].(int)]
-	}).(TargetReferenceResponseOutput)
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
 }
 
 func init() {
@@ -1242,17 +1095,11 @@ func init() {
 	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(SelectorOutput{})
-	pulumi.RegisterOutputType(SelectorArrayOutput{})
-	pulumi.RegisterOutputType(SelectorResponseOutput{})
-	pulumi.RegisterOutputType(SelectorResponseArrayOutput{})
 	pulumi.RegisterOutputType(StepOutput{})
 	pulumi.RegisterOutputType(StepArrayOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(TargetReferenceOutput{})
-	pulumi.RegisterOutputType(TargetReferenceArrayOutput{})
-	pulumi.RegisterOutputType(TargetReferenceResponseOutput{})
-	pulumi.RegisterOutputType(TargetReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

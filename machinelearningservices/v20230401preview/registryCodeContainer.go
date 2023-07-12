@@ -44,10 +44,22 @@ func NewRegistryCodeContainer(ctx *pulumi.Context,
 	args.CodeContainerProperties = args.CodeContainerProperties.ToCodeContainerTypeOutput().ApplyT(func(v CodeContainerType) CodeContainerType { return *v.Defaults() }).(CodeContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryCodeContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryCodeContainer"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221201preview:RegistryCodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryCodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:RegistryCodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:RegistryCodeContainer"),
 		},
 	})
 	opts = append(opts, aliases)

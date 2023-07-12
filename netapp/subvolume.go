@@ -12,7 +12,7 @@ import (
 )
 
 // Subvolume Information properties
-// API Version: 2021-10-01.
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2021-10-01
 type Subvolume struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +24,7 @@ type Subvolume struct {
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -64,6 +64,9 @@ func NewSubvolume(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20220901:Subvolume"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20221101:Subvolume"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -107,7 +110,7 @@ type subvolumeArgs struct {
 	Path *string `pulumi:"path"`
 	// The name of the capacity pool
 	PoolName string `pulumi:"poolName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Truncate subvolume to the provided size in bytes
 	Size *float64 `pulumi:"size"`
@@ -127,7 +130,7 @@ type SubvolumeArgs struct {
 	Path pulumi.StringPtrInput
 	// The name of the capacity pool
 	PoolName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Truncate subvolume to the provided size in bytes
 	Size pulumi.Float64PtrInput
@@ -194,7 +197,7 @@ func (o SubvolumeOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subvolume) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SubvolumeOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Subvolume) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

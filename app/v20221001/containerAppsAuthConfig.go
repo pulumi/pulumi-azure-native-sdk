@@ -12,8 +12,6 @@ import (
 )
 
 // Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
-//
-// Deprecated: azure-native:app/v20221001:ContainerAppsAuthConfig is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ContainerAppsAuthConfig to guarantee forwards compatibility.
 type ContainerAppsAuthConfig struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +58,12 @@ func NewContainerAppsAuthConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ContainerAppsAuthConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ContainerAppsAuthConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:ContainerAppsAuthConfig"),
 		},
 	})
 	opts = append(opts, aliases)

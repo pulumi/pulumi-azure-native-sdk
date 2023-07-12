@@ -12,13 +12,15 @@ import (
 )
 
 // Single item in List or Get Migration Config operation
-// API Version: 2017-04-01.
+// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01
 type MigrationConfig struct {
 	pulumi.CustomResourceState
 
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
 	// State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing, Active
 	MigrationState pulumi.StringOutput `pulumi:"migrationState"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of entities pending to be replicated.
 	PendingReplicationOperationsCount pulumi.Float64Output `pulumi:"pendingReplicationOperationsCount"`
@@ -26,9 +28,11 @@ type MigrationConfig struct {
 	PostMigrationName pulumi.StringOutput `pulumi:"postMigrationName"`
 	// Provisioning state of Migration Configuration
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Existing premium Namespace ARM Id name which has no entities, will be used for migration
 	TargetNamespace pulumi.StringOutput `pulumi:"targetNamespace"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -170,12 +174,17 @@ func (o MigrationConfigOutput) ToMigrationConfigOutputWithContext(ctx context.Co
 	return o
 }
 
+// The geo-location where the resource lives
+func (o MigrationConfigOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing, Active
 func (o MigrationConfigOutput) MigrationState() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.MigrationState }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o MigrationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -195,12 +204,17 @@ func (o MigrationConfigOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The system meta data relating to this resource.
+func (o MigrationConfigOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MigrationConfig) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Existing premium Namespace ARM Id name which has no entities, will be used for migration
 func (o MigrationConfigOutput) TargetNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.TargetNamespace }).(pulumi.StringOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o MigrationConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

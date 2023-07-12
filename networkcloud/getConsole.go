@@ -11,7 +11,7 @@ import (
 )
 
 // Get properties of the provided virtual machine console.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupConsole(ctx *pulumi.Context, args *LookupConsoleArgs, opts ...pulumi.InvokeOption) (*LookupConsoleResult, error) {
 	var rv LookupConsoleResult
 	err := ctx.Invoke("azure-native:networkcloud:getConsole", args, &rv, opts...)
@@ -41,7 +41,7 @@ type LookupConsoleResult struct {
 	Expiration *string `pulumi:"expiration"`
 	// The extended location of the cluster manager associated with the cluster this virtual machine is created on.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -128,7 +128,7 @@ func (o LookupConsoleResultOutput) ExtendedLocation() ExtendedLocationResponseOu
 	return o.ApplyT(func(v LookupConsoleResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupConsoleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsoleResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Get gallery image
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15.
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {
 	var rv LookupGalleryImageResult
 	err := ctx.Invoke("azure-native:labservices:getGalleryImage", args, &rv, opts...)

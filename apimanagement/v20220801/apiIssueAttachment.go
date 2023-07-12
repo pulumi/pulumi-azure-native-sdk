@@ -12,8 +12,6 @@ import (
 )
 
 // Issue Attachment Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiIssueAttachment is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiIssueAttachment to guarantee forwards compatibility.
 type ApiIssueAttachment struct {
 	pulumi.CustomResourceState
 
@@ -99,6 +97,12 @@ func NewApiIssueAttachment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiIssueAttachment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiIssueAttachment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiIssueAttachment"),
 		},
 	})
 	opts = append(opts, aliases)

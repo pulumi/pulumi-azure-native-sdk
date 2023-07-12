@@ -116,6 +116,12 @@ func NewSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Subscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Subscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Subscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Subscription

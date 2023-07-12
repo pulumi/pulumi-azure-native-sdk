@@ -12,7 +12,7 @@ import (
 )
 
 // A datastore resource
-// API Version: 2021-01-01-preview.
+// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2021-01-01-preview
 type Datastore struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type Datastore struct {
 	NetAppVolume NetAppVolumeResponsePtrOutput `pulumi:"netAppVolume"`
 	// The state of the datastore provisioning
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The operational status of the datastore
+	Status pulumi.StringOutput `pulumi:"status"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -43,6 +45,9 @@ func NewDatastore(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.DiskPoolVolume != nil {
+		args.DiskPoolVolume = args.DiskPoolVolume.ToDiskPoolVolumePtrOutput().ApplyT(func(v *DiskPoolVolume) *DiskPoolVolume { return v.Defaults() }).(DiskPoolVolumePtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -176,6 +181,11 @@ func (o DatastoreOutput) NetAppVolume() NetAppVolumeResponsePtrOutput {
 // The state of the datastore provisioning
 func (o DatastoreOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The operational status of the datastore
+func (o DatastoreOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // Resource type.

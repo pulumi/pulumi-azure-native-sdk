@@ -12,7 +12,7 @@ import (
 )
 
 // Event Subscription
-// API Version: 2020-04-01-preview.
+// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2020-04-01-preview
 type SystemTopicEventSubscription struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +90,9 @@ func NewSystemTopicEventSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20220615:SystemTopicEventSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:SystemTopicEventSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

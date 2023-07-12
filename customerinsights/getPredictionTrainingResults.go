@@ -11,7 +11,7 @@ import (
 )
 
 // Gets training results.
-// API Version: 2017-04-26.
+// Azure REST API version: 2017-04-26.
 func GetPredictionTrainingResults(ctx *pulumi.Context, args *GetPredictionTrainingResultsArgs, opts ...pulumi.InvokeOption) (*GetPredictionTrainingResultsResult, error) {
 	var rv GetPredictionTrainingResultsResult
 	err := ctx.Invoke("azure-native:customerinsights:getPredictionTrainingResults", args, &rv, opts...)

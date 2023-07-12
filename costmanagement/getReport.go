@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the report for a subscription by report name.
-// API Version: 2018-08-01-preview.
+// Azure REST API version: 2018-08-01-preview.
 func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.InvokeOption) (*LookupReportResult, error) {
 	var rv LookupReportResult
 	err := ctx.Invoke("azure-native:costmanagement:getReport", args, &rv, opts...)

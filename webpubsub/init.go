@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,10 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:webpubsub:WebPubSub":
 		r = &WebPubSub{}
+	case "azure-native:webpubsub:WebPubSubCustomCertificate":
+		r = &WebPubSubCustomCertificate{}
+	case "azure-native:webpubsub:WebPubSubCustomDomain":
+		r = &WebPubSubCustomDomain{}
 	case "azure-native:webpubsub:WebPubSubHub":
 		r = &WebPubSubHub{}
 	case "azure-native:webpubsub:WebPubSubPrivateEndpointConnection":
 		r = &WebPubSubPrivateEndpointConnection{}
+	case "azure-native:webpubsub:WebPubSubReplica":
+		r = &WebPubSubReplica{}
 	case "azure-native:webpubsub:WebPubSubSharedPrivateLinkResource":
 		r = &WebPubSubSharedPrivateLinkResource{}
 	default:

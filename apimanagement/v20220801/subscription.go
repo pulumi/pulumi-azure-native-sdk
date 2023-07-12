@@ -12,8 +12,6 @@ import (
 )
 
 // Subscription details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Subscription is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Subscription to guarantee forwards compatibility.
 type Subscription struct {
 	pulumi.CustomResourceState
 
@@ -116,6 +114,12 @@ func NewSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Subscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Subscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Subscription"),
 		},
 	})
 	opts = append(opts, aliases)

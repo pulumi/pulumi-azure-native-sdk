@@ -12,7 +12,7 @@ import (
 )
 
 // A Kubernetes cluster specialized for web workloads by Azure App Service
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-01-01
 type KubeEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -25,10 +25,14 @@ type KubeEnvironment struct {
 	// components types. Eg: Choosing between BuildService kind,
 	// FrontEnd Service ArtifactsStorageType etc.
 	ArcConfiguration ArcConfigurationResponsePtrOutput `pulumi:"arcConfiguration"`
+	// Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
+	ContainerAppsConfiguration ContainerAppsConfigurationResponsePtrOutput `pulumi:"containerAppsConfiguration"`
 	// Default Domain Name for the cluster
 	DefaultDomain pulumi.StringOutput `pulumi:"defaultDomain"`
 	// Any errors that occurred during deployment or deployment validation
 	DeploymentErrors pulumi.StringOutput `pulumi:"deploymentErrors"`
+	// Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
+	EnvironmentType pulumi.StringPtrOutput `pulumi:"environmentType"`
 	// Extended Location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Only visible within Vnet/Subnet
@@ -121,6 +125,10 @@ type kubeEnvironmentArgs struct {
 	// components types. Eg: Choosing between BuildService kind,
 	// FrontEnd Service ArtifactsStorageType etc.
 	ArcConfiguration *ArcConfiguration `pulumi:"arcConfiguration"`
+	// Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
+	ContainerAppsConfiguration *ContainerAppsConfiguration `pulumi:"containerAppsConfiguration"`
+	// Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
+	EnvironmentType *string `pulumi:"environmentType"`
 	// Extended Location.
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Only visible within Vnet/Subnet
@@ -150,6 +158,10 @@ type KubeEnvironmentArgs struct {
 	// components types. Eg: Choosing between BuildService kind,
 	// FrontEnd Service ArtifactsStorageType etc.
 	ArcConfiguration ArcConfigurationPtrInput
+	// Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
+	ContainerAppsConfiguration ContainerAppsConfigurationPtrInput
+	// Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
+	EnvironmentType pulumi.StringPtrInput
 	// Extended Location.
 	ExtendedLocation ExtendedLocationPtrInput
 	// Only visible within Vnet/Subnet
@@ -223,6 +235,13 @@ func (o KubeEnvironmentOutput) ArcConfiguration() ArcConfigurationResponsePtrOut
 	return o.ApplyT(func(v *KubeEnvironment) ArcConfigurationResponsePtrOutput { return v.ArcConfiguration }).(ArcConfigurationResponsePtrOutput)
 }
 
+// Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
+func (o KubeEnvironmentOutput) ContainerAppsConfiguration() ContainerAppsConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *KubeEnvironment) ContainerAppsConfigurationResponsePtrOutput {
+		return v.ContainerAppsConfiguration
+	}).(ContainerAppsConfigurationResponsePtrOutput)
+}
+
 // Default Domain Name for the cluster
 func (o KubeEnvironmentOutput) DefaultDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringOutput { return v.DefaultDomain }).(pulumi.StringOutput)
@@ -231,6 +250,11 @@ func (o KubeEnvironmentOutput) DefaultDomain() pulumi.StringOutput {
 // Any errors that occurred during deployment or deployment validation
 func (o KubeEnvironmentOutput) DeploymentErrors() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringOutput { return v.DeploymentErrors }).(pulumi.StringOutput)
+}
+
+// Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
+func (o KubeEnvironmentOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringPtrOutput { return v.EnvironmentType }).(pulumi.StringPtrOutput)
 }
 
 // Extended Location.

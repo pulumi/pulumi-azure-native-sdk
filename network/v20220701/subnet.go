@@ -213,6 +213,12 @@ func NewSubnet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220901:Subnet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:Subnet"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:Subnet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Subnet
@@ -264,7 +270,7 @@ type subnetArgs struct {
 	// Nat gateway associated with this subnet.
 	NatGateway *SubResource `pulumi:"natGateway"`
 	// The reference to the NetworkSecurityGroup resource.
-	NetworkSecurityGroup *NetworkSecurityGroupType `pulumi:"networkSecurityGroup"`
+	NetworkSecurityGroup *NetworkSecurityGroup `pulumi:"networkSecurityGroup"`
 	// Enable or Disable apply network policies on private end point in the subnet.
 	PrivateEndpointNetworkPolicies *string `pulumi:"privateEndpointNetworkPolicies"`
 	// Enable or Disable apply network policies on private link service in the subnet.
@@ -272,9 +278,9 @@ type subnetArgs struct {
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The reference to the RouteTable resource.
-	RouteTable *RouteTableType `pulumi:"routeTable"`
+	RouteTable *RouteTable `pulumi:"routeTable"`
 	// An array of service endpoint policies.
-	ServiceEndpointPolicies []ServiceEndpointPolicyType `pulumi:"serviceEndpointPolicies"`
+	ServiceEndpointPolicies []ServiceEndpointPolicy `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints []ServiceEndpointPropertiesFormat `pulumi:"serviceEndpoints"`
 	// The name of the subnet.
@@ -304,7 +310,7 @@ type SubnetArgs struct {
 	// Nat gateway associated with this subnet.
 	NatGateway SubResourcePtrInput
 	// The reference to the NetworkSecurityGroup resource.
-	NetworkSecurityGroup NetworkSecurityGroupTypePtrInput
+	NetworkSecurityGroup NetworkSecurityGroupPtrInput
 	// Enable or Disable apply network policies on private end point in the subnet.
 	PrivateEndpointNetworkPolicies pulumi.StringPtrInput
 	// Enable or Disable apply network policies on private link service in the subnet.
@@ -312,9 +318,9 @@ type SubnetArgs struct {
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The reference to the RouteTable resource.
-	RouteTable RouteTableTypePtrInput
+	RouteTable RouteTablePtrInput
 	// An array of service endpoint policies.
-	ServiceEndpointPolicies ServiceEndpointPolicyTypeArrayInput
+	ServiceEndpointPolicies ServiceEndpointPolicyArrayInput
 	// An array of service endpoints.
 	ServiceEndpoints ServiceEndpointPropertiesFormatArrayInput
 	// The name of the subnet.

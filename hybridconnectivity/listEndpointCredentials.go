@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the endpoint access credentials to the resource.
-// API Version: 2022-05-01-preview.
+// Azure REST API version: 2023-03-15.
 func ListEndpointCredentials(ctx *pulumi.Context, args *ListEndpointCredentialsArgs, opts ...pulumi.InvokeOption) (*ListEndpointCredentialsResult, error) {
 	var rv ListEndpointCredentialsResult
 	err := ctx.Invoke("azure-native:hybridconnectivity:listEndpointCredentials", args, &rv, opts...)
@@ -28,6 +28,8 @@ type ListEndpointCredentialsArgs struct {
 	Expiresin *int `pulumi:"expiresin"`
 	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri string `pulumi:"resourceUri"`
+	// The name of the service. If not provided, the request will by pass the generation of service configuration token
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The endpoint access for the target resource.
@@ -42,6 +44,8 @@ type ListEndpointCredentialsResult struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The suffix domain name of relay namespace.
 	NamespaceNameSuffix string `pulumi:"namespaceNameSuffix"`
+	// The token to access the enabled service.
+	ServiceConfigurationToken *string `pulumi:"serviceConfigurationToken"`
 }
 
 func ListEndpointCredentialsOutput(ctx *pulumi.Context, args ListEndpointCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListEndpointCredentialsResultOutput {
@@ -64,6 +68,8 @@ type ListEndpointCredentialsOutputArgs struct {
 	Expiresin pulumi.IntPtrInput `pulumi:"expiresin"`
 	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
+	// The name of the service. If not provided, the request will by pass the generation of service configuration token
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
 func (ListEndpointCredentialsOutputArgs) ElementType() reflect.Type {
@@ -108,6 +114,11 @@ func (o ListEndpointCredentialsResultOutput) NamespaceName() pulumi.StringOutput
 // The suffix domain name of relay namespace.
 func (o ListEndpointCredentialsResultOutput) NamespaceNameSuffix() pulumi.StringOutput {
 	return o.ApplyT(func(v ListEndpointCredentialsResult) string { return v.NamespaceNameSuffix }).(pulumi.StringOutput)
+}
+
+// The token to access the enabled service.
+func (o ListEndpointCredentialsResultOutput) ServiceConfigurationToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListEndpointCredentialsResult) *string { return v.ServiceConfigurationToken }).(pulumi.StringPtrOutput)
 }
 
 func init() {

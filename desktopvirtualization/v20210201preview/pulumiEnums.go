@@ -10,23 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource Type of ApplicationGroup.
-type ApplicationGroupType string
-
-const (
-	ApplicationGroupTypeRemoteApp = ApplicationGroupType("RemoteApp")
-	ApplicationGroupTypeDesktop   = ApplicationGroupType("Desktop")
-)
-
-// Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
-type CommandLineSetting string
-
-const (
-	CommandLineSettingDoNotAllow = CommandLineSetting("DoNotAllow")
-	CommandLineSettingAllow      = CommandLineSetting("Allow")
-	CommandLineSettingRequire    = CommandLineSetting("Require")
-)
-
 // HostPool type for desktop.
 type HostPoolType string
 
@@ -37,65 +20,6 @@ const (
 	HostPoolTypePooled = HostPoolType("Pooled")
 	// Users assign their own machines, load balancing logic remains the same as Personal. PersonalDesktopAssignmentType must be Direct.
 	HostPoolTypeBYODesktop = HostPoolType("BYODesktop")
-)
-
-// The type of the load balancer.
-type LoadBalancerType string
-
-const (
-	LoadBalancerTypeBreadthFirst = LoadBalancerType("BreadthFirst")
-	LoadBalancerTypeDepthFirst   = LoadBalancerType("DepthFirst")
-	LoadBalancerTypePersistent   = LoadBalancerType("Persistent")
-)
-
-// The type of operation for migration.
-type Operation string
-
-const (
-	// Start the migration.
-	OperationStart = Operation("Start")
-	// Revoke the migration.
-	OperationRevoke = Operation("Revoke")
-	// Complete the migration.
-	OperationComplete = Operation("Complete")
-	// Hide the hostpool.
-	OperationHide = Operation("Hide")
-	// Unhide the hostpool.
-	OperationUnhide = Operation("Unhide")
-)
-
-// PersonalDesktopAssignment type for HostPool.
-type PersonalDesktopAssignmentType string
-
-const (
-	PersonalDesktopAssignmentTypeAutomatic = PersonalDesktopAssignmentType("Automatic")
-	PersonalDesktopAssignmentTypeDirect    = PersonalDesktopAssignmentType("Direct")
-)
-
-// The type of preferred application group type, default to Desktop Application Group
-type PreferredAppGroupType string
-
-const (
-	PreferredAppGroupTypeNone             = PreferredAppGroupType("None")
-	PreferredAppGroupTypeDesktop          = PreferredAppGroupType("Desktop")
-	PreferredAppGroupTypeRailApplications = PreferredAppGroupType("RailApplications")
-)
-
-// The type of resetting the token.
-type RegistrationTokenOperation string
-
-const (
-	RegistrationTokenOperationDelete = RegistrationTokenOperation("Delete")
-	RegistrationTokenOperationNone   = RegistrationTokenOperation("None")
-	RegistrationTokenOperationUpdate = RegistrationTokenOperation("Update")
-)
-
-// Resource Type of Application.
-type RemoteApplicationType string
-
-const (
-	RemoteApplicationTypeInBuilt         = RemoteApplicationType("InBuilt")
-	RemoteApplicationTypeMsixApplication = RemoteApplicationType("MsixApplication")
 )
 
 // The identity type.
@@ -261,16 +185,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
-
-// The type of single sign on Secret Type.
-type SSOSecretType string
-
-const (
-	SSOSecretTypeSharedKey             = SSOSecretType("SharedKey")
-	SSOSecretTypeCertificate           = SSOSecretType("Certificate")
-	SSOSecretTypeSharedKeyInKeyVault   = SSOSecretType("SharedKeyInKeyVault")
-	SSOSecretTypeCertificateInKeyVault = SSOSecretType("CertificateInKeyVault")
-)
 
 // Load balancing algorithm for ramp up period.
 type SessionHostLoadBalancingAlgorithm string

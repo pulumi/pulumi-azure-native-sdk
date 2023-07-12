@@ -12,7 +12,7 @@ import (
 )
 
 // Linker of source and target resource
-// API Version: 2021-11-01-preview.
+// Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2021-11-01-preview
 type Linker struct {
 	pulumi.CustomResourceState
 
@@ -20,16 +20,22 @@ type Linker struct {
 	AuthInfo pulumi.AnyOutput `pulumi:"authInfo"`
 	// The application client type
 	ClientType pulumi.StringPtrOutput `pulumi:"clientType"`
+	// The connection information consumed by applications, including secrets, connection strings.
+	ConfigurationInfo ConfigurationInfoResponsePtrOutput `pulumi:"configurationInfo"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The network solution.
+	PublicNetworkSolution PublicNetworkSolutionResponsePtrOutput `pulumi:"publicNetworkSolution"`
+	// connection scope in source service.
+	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// An option to store secret value in secure place
 	SecretStore SecretStoreResponsePtrOutput `pulumi:"secretStore"`
-	// The system data.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The resource Id of target service.
-	TargetId pulumi.StringPtrOutput `pulumi:"targetId"`
+	// The target service properties
+	TargetService pulumi.AnyOutput `pulumi:"targetService"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The VNet solution.
@@ -97,14 +103,20 @@ type linkerArgs struct {
 	AuthInfo interface{} `pulumi:"authInfo"`
 	// The application client type
 	ClientType *string `pulumi:"clientType"`
+	// The connection information consumed by applications, including secrets, connection strings.
+	ConfigurationInfo *ConfigurationInfo `pulumi:"configurationInfo"`
 	// The name Linker resource.
 	LinkerName *string `pulumi:"linkerName"`
+	// The network solution.
+	PublicNetworkSolution *PublicNetworkSolution `pulumi:"publicNetworkSolution"`
 	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri string `pulumi:"resourceUri"`
+	// connection scope in source service.
+	Scope *string `pulumi:"scope"`
 	// An option to store secret value in secure place
 	SecretStore *SecretStore `pulumi:"secretStore"`
-	// The resource Id of target service.
-	TargetId *string `pulumi:"targetId"`
+	// The target service properties
+	TargetService interface{} `pulumi:"targetService"`
 	// The VNet solution.
 	VNetSolution *VNetSolution `pulumi:"vNetSolution"`
 }
@@ -115,14 +127,20 @@ type LinkerArgs struct {
 	AuthInfo pulumi.Input
 	// The application client type
 	ClientType pulumi.StringPtrInput
+	// The connection information consumed by applications, including secrets, connection strings.
+	ConfigurationInfo ConfigurationInfoPtrInput
 	// The name Linker resource.
 	LinkerName pulumi.StringPtrInput
+	// The network solution.
+	PublicNetworkSolution PublicNetworkSolutionPtrInput
 	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri pulumi.StringInput
+	// connection scope in source service.
+	Scope pulumi.StringPtrInput
 	// An option to store secret value in secure place
 	SecretStore SecretStorePtrInput
-	// The resource Id of target service.
-	TargetId pulumi.StringPtrInput
+	// The target service properties
+	TargetService pulumi.Input
 	// The VNet solution.
 	VNetSolution VNetSolutionPtrInput
 }
@@ -174,6 +192,11 @@ func (o LinkerOutput) ClientType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Linker) pulumi.StringPtrOutput { return v.ClientType }).(pulumi.StringPtrOutput)
 }
 
+// The connection information consumed by applications, including secrets, connection strings.
+func (o LinkerOutput) ConfigurationInfo() ConfigurationInfoResponsePtrOutput {
+	return o.ApplyT(func(v *Linker) ConfigurationInfoResponsePtrOutput { return v.ConfigurationInfo }).(ConfigurationInfoResponsePtrOutput)
+}
+
 // The name of the resource
 func (o LinkerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Linker) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -184,19 +207,29 @@ func (o LinkerOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Linker) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The network solution.
+func (o LinkerOutput) PublicNetworkSolution() PublicNetworkSolutionResponsePtrOutput {
+	return o.ApplyT(func(v *Linker) PublicNetworkSolutionResponsePtrOutput { return v.PublicNetworkSolution }).(PublicNetworkSolutionResponsePtrOutput)
+}
+
+// connection scope in source service.
+func (o LinkerOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Linker) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
 // An option to store secret value in secure place
 func (o LinkerOutput) SecretStore() SecretStoreResponsePtrOutput {
 	return o.ApplyT(func(v *Linker) SecretStoreResponsePtrOutput { return v.SecretStore }).(SecretStoreResponsePtrOutput)
 }
 
-// The system data.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LinkerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Linker) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The resource Id of target service.
-func (o LinkerOutput) TargetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Linker) pulumi.StringPtrOutput { return v.TargetId }).(pulumi.StringPtrOutput)
+// The target service properties
+func (o LinkerOutput) TargetService() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Linker) pulumi.AnyOutput { return v.TargetService }).(pulumi.AnyOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

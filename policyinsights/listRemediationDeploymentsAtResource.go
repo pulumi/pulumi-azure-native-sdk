@@ -11,7 +11,7 @@ import (
 )
 
 // Gets all deployments for a remediation at resource scope.
-// API Version: 2019-07-01.
+// Azure REST API version: 2021-10-01.
 func ListRemediationDeploymentsAtResource(ctx *pulumi.Context, args *ListRemediationDeploymentsAtResourceArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtResourceResult, error) {
 	var rv ListRemediationDeploymentsAtResourceResult
 	err := ctx.Invoke("azure-native:policyinsights:listRemediationDeploymentsAtResource", args, &rv, opts...)

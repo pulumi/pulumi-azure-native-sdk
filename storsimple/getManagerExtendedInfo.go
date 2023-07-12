@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the extended information of the specified manager name.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func LookupManagerExtendedInfo(ctx *pulumi.Context, args *LookupManagerExtendedInfoArgs, opts ...pulumi.InvokeOption) (*LookupManagerExtendedInfoResult, error) {
 	var rv LookupManagerExtendedInfoResult
 	err := ctx.Invoke("azure-native:storsimple:getManagerExtendedInfo", args, &rv, opts...)

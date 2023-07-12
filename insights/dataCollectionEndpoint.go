@@ -12,7 +12,7 @@ import (
 )
 
 // Definition of ARM tracked top level resource.
-// API Version: 2021-09-01-preview.
+// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2021-09-01-preview
 type DataCollectionEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,10 @@ type DataCollectionEndpoint struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource entity tag (ETag).
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Failover configuration on this endpoint. This property is READ-ONLY.
+	FailoverConfiguration DataCollectionEndpointResponseFailoverConfigurationOutput `pulumi:"failoverConfiguration"`
+	// Managed service identity of the resource.
+	Identity DataCollectionEndpointResourceResponseIdentityPtrOutput `pulumi:"identity"`
 	// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
 	ImmutableId pulumi.StringPtrOutput `pulumi:"immutableId"`
 	// The kind of the resource.
@@ -30,10 +34,16 @@ type DataCollectionEndpoint struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The endpoint used by clients to ingest logs.
 	LogsIngestion DataCollectionEndpointResponseLogsIngestionPtrOutput `pulumi:"logsIngestion"`
+	// Metadata for the resource. This property is READ-ONLY.
+	Metadata DataCollectionEndpointResponseMetadataOutput `pulumi:"metadata"`
+	// The endpoint used by clients to ingest metrics.
+	MetricsIngestion DataCollectionEndpointResponseMetricsIngestionPtrOutput `pulumi:"metricsIngestion"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network access control rules for the endpoints.
 	NetworkAcls DataCollectionEndpointResponseNetworkAclsPtrOutput `pulumi:"networkAcls"`
+	// List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
+	PrivateLinkScopedResources PrivateLinkScopedResourceResponseArrayOutput `pulumi:"privateLinkScopedResources"`
 	// The resource provisioning state. This property is READ-ONLY.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -102,6 +112,8 @@ type dataCollectionEndpointArgs struct {
 	DataCollectionEndpointName *string `pulumi:"dataCollectionEndpointName"`
 	// Description of the data collection endpoint.
 	Description *string `pulumi:"description"`
+	// Managed service identity of the resource.
+	Identity *DataCollectionEndpointResourceIdentity `pulumi:"identity"`
 	// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
 	ImmutableId *string `pulumi:"immutableId"`
 	// The kind of the resource.
@@ -122,6 +134,8 @@ type DataCollectionEndpointArgs struct {
 	DataCollectionEndpointName pulumi.StringPtrInput
 	// Description of the data collection endpoint.
 	Description pulumi.StringPtrInput
+	// Managed service identity of the resource.
+	Identity DataCollectionEndpointResourceIdentityPtrInput
 	// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
 	ImmutableId pulumi.StringPtrInput
 	// The kind of the resource.
@@ -190,6 +204,20 @@ func (o DataCollectionEndpointOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionEndpoint) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Failover configuration on this endpoint. This property is READ-ONLY.
+func (o DataCollectionEndpointOutput) FailoverConfiguration() DataCollectionEndpointResponseFailoverConfigurationOutput {
+	return o.ApplyT(func(v *DataCollectionEndpoint) DataCollectionEndpointResponseFailoverConfigurationOutput {
+		return v.FailoverConfiguration
+	}).(DataCollectionEndpointResponseFailoverConfigurationOutput)
+}
+
+// Managed service identity of the resource.
+func (o DataCollectionEndpointOutput) Identity() DataCollectionEndpointResourceResponseIdentityPtrOutput {
+	return o.ApplyT(func(v *DataCollectionEndpoint) DataCollectionEndpointResourceResponseIdentityPtrOutput {
+		return v.Identity
+	}).(DataCollectionEndpointResourceResponseIdentityPtrOutput)
+}
+
 // The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
 func (o DataCollectionEndpointOutput) ImmutableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataCollectionEndpoint) pulumi.StringPtrOutput { return v.ImmutableId }).(pulumi.StringPtrOutput)
@@ -212,6 +240,18 @@ func (o DataCollectionEndpointOutput) LogsIngestion() DataCollectionEndpointResp
 	}).(DataCollectionEndpointResponseLogsIngestionPtrOutput)
 }
 
+// Metadata for the resource. This property is READ-ONLY.
+func (o DataCollectionEndpointOutput) Metadata() DataCollectionEndpointResponseMetadataOutput {
+	return o.ApplyT(func(v *DataCollectionEndpoint) DataCollectionEndpointResponseMetadataOutput { return v.Metadata }).(DataCollectionEndpointResponseMetadataOutput)
+}
+
+// The endpoint used by clients to ingest metrics.
+func (o DataCollectionEndpointOutput) MetricsIngestion() DataCollectionEndpointResponseMetricsIngestionPtrOutput {
+	return o.ApplyT(func(v *DataCollectionEndpoint) DataCollectionEndpointResponseMetricsIngestionPtrOutput {
+		return v.MetricsIngestion
+	}).(DataCollectionEndpointResponseMetricsIngestionPtrOutput)
+}
+
 // The name of the resource.
 func (o DataCollectionEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollectionEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -222,6 +262,13 @@ func (o DataCollectionEndpointOutput) NetworkAcls() DataCollectionEndpointRespon
 	return o.ApplyT(func(v *DataCollectionEndpoint) DataCollectionEndpointResponseNetworkAclsPtrOutput {
 		return v.NetworkAcls
 	}).(DataCollectionEndpointResponseNetworkAclsPtrOutput)
+}
+
+// List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
+func (o DataCollectionEndpointOutput) PrivateLinkScopedResources() PrivateLinkScopedResourceResponseArrayOutput {
+	return o.ApplyT(func(v *DataCollectionEndpoint) PrivateLinkScopedResourceResponseArrayOutput {
+		return v.PrivateLinkScopedResources
+	}).(PrivateLinkScopedResourceResponseArrayOutput)
 }
 
 // The resource provisioning state. This property is READ-ONLY.

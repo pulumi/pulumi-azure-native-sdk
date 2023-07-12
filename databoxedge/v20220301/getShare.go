@@ -11,8 +11,6 @@ import (
 )
 
 // Represents a share on the  Data Box Edge/Gateway device.
-//
-// Deprecated: azure-native:databoxedge/v20220301:Share is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:Share to guarantee forwards compatibility.
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
 	var rv LookupShareResult
 	err := ctx.Invoke("azure-native:databoxedge/v20220301:getShare", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 )
 
 // The response to an account resource GET request.
-// API Version: 2014-04-01-preview.
+// Azure REST API version: 2017-11-01-preview. Prior API version in Azure Native 1.x: 2014-04-01-preview
 type Account struct {
 	pulumi.CustomResourceState
 

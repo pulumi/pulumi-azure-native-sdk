@@ -10,6 +10,612 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Shopify Service linked service.
+type ShopifyLinkedService struct {
+	// The API access token that can be used to access Shopify’s data. The token won't expire if it is offline mode.
+	AccessToken interface{} `pulumi:"accessToken"`
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The endpoint of the Shopify server. (i.e. mystore.myshopify.com)
+	Host interface{} `pulumi:"host"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Type of linked service.
+	// Expected value is 'Shopify'.
+	Type string `pulumi:"type"`
+	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+	UseEncryptedEndpoints interface{} `pulumi:"useEncryptedEndpoints"`
+	// Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
+	UseHostVerification interface{} `pulumi:"useHostVerification"`
+	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
+	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+}
+
+// Shopify Service linked service.
+type ShopifyLinkedServiceResponse struct {
+	// The API access token that can be used to access Shopify’s data. The token won't expire if it is offline mode.
+	AccessToken interface{} `pulumi:"accessToken"`
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The endpoint of the Shopify server. (i.e. mystore.myshopify.com)
+	Host interface{} `pulumi:"host"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Type of linked service.
+	// Expected value is 'Shopify'.
+	Type string `pulumi:"type"`
+	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+	UseEncryptedEndpoints interface{} `pulumi:"useEncryptedEndpoints"`
+	// Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
+	UseHostVerification interface{} `pulumi:"useHostVerification"`
+	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
+	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+}
+
+// Shopify Service dataset.
+type ShopifyObjectDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name. Type: string (or Expression with resultType string).
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'ShopifyObject'.
+	Type string `pulumi:"type"`
+}
+
+// Shopify Service dataset.
+type ShopifyObjectDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name. Type: string (or Expression with resultType string).
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'ShopifyObject'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity Shopify Service source.
+type ShopifySource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'ShopifySource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity Shopify Service source.
+type ShopifySourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'ShopifySource'.
+	Type string `pulumi:"type"`
+}
+
+// Skip error file.
+type SkipErrorFile struct {
+	// Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
+	DataInconsistency interface{} `pulumi:"dataInconsistency"`
+	// Skip if file is deleted by other client during copy. Default is true. Type: boolean (or Expression with resultType boolean).
+	FileMissing interface{} `pulumi:"fileMissing"`
+}
+
+// Skip error file.
+type SkipErrorFileResponse struct {
+	// Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
+	DataInconsistency interface{} `pulumi:"dataInconsistency"`
+	// Skip if file is deleted by other client during copy. Default is true. Type: boolean (or Expression with resultType boolean).
+	FileMissing interface{} `pulumi:"fileMissing"`
+}
+
+// Linked service for Smartsheet.
+type SmartsheetLinkedService struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The api token for the Smartsheet source.
+	ApiToken interface{} `pulumi:"apiToken"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Type of linked service.
+	// Expected value is 'Smartsheet'.
+	Type string `pulumi:"type"`
+}
+
+// Linked service for Smartsheet.
+type SmartsheetLinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The api token for the Smartsheet source.
+	ApiToken interface{} `pulumi:"apiToken"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Type of linked service.
+	// Expected value is 'Smartsheet'.
+	Type string `pulumi:"type"`
+}
+
+// The snowflake dataset.
+type SnowflakeDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Snowflake database. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'SnowflakeTable'.
+	Type string `pulumi:"type"`
+}
+
+// The snowflake dataset.
+type SnowflakeDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Snowflake database. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'SnowflakeTable'.
+	Type string `pulumi:"type"`
+}
+
+// Snowflake export command settings.
+type SnowflakeExportCopyCommand struct {
+	// Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
+	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
+	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
+	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
+	// The export setting type.
+	// Expected value is 'SnowflakeExportCopyCommand'.
+	Type string `pulumi:"type"`
+}
+
+// Snowflake export command settings.
+type SnowflakeExportCopyCommandResponse struct {
+	// Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
+	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
+	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
+	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
+	// The export setting type.
+	// Expected value is 'SnowflakeExportCopyCommand'.
+	Type string `pulumi:"type"`
+}
+
+// Snowflake import command settings.
+type SnowflakeImportCopyCommand struct {
+	// Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
+	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
+	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
+	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
+	// The import setting type.
+	// Expected value is 'SnowflakeImportCopyCommand'.
+	Type string `pulumi:"type"`
+}
+
+// Snowflake import command settings.
+type SnowflakeImportCopyCommandResponse struct {
+	// Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
+	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
+	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
+	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
+	// The import setting type.
+	// Expected value is 'SnowflakeImportCopyCommand'.
+	Type string `pulumi:"type"`
+}
+
+// Snowflake linked service.
+type SnowflakeLinkedService struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// The connection string of snowflake. Type: string, SecureString.
+	ConnectionString interface{} `pulumi:"connectionString"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string.
+	Password *AzureKeyVaultSecretReference `pulumi:"password"`
+	// Type of linked service.
+	// Expected value is 'Snowflake'.
+	Type string `pulumi:"type"`
+}
+
+// Snowflake linked service.
+type SnowflakeLinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// The connection string of snowflake. Type: string, SecureString.
+	ConnectionString interface{} `pulumi:"connectionString"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string.
+	Password *AzureKeyVaultSecretReferenceResponse `pulumi:"password"`
+	// Type of linked service.
+	// Expected value is 'Snowflake'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity snowflake sink.
+type SnowflakeSink struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Snowflake import settings.
+	ImportSettings *SnowflakeImportCopyCommand `pulumi:"importSettings"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// Copy sink type.
+	// Expected value is 'SnowflakeSink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+}
+
+// A copy activity snowflake sink.
+type SnowflakeSinkResponse struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Snowflake import settings.
+	ImportSettings *SnowflakeImportCopyCommandResponse `pulumi:"importSettings"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// Copy sink type.
+	// Expected value is 'SnowflakeSink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+}
+
+// A copy activity snowflake source.
+type SnowflakeSource struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Snowflake export settings.
+	ExportSettings SnowflakeExportCopyCommand `pulumi:"exportSettings"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Snowflake Sql query. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SnowflakeSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity snowflake source.
+type SnowflakeSourceResponse struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Snowflake export settings.
+	ExportSettings SnowflakeExportCopyCommandResponse `pulumi:"exportSettings"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Snowflake Sql query. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SnowflakeSource'.
+	Type string `pulumi:"type"`
+}
+
+// Spark configuration reference.
+type SparkConfigurationParametrizationReference struct {
+	// Reference spark configuration name. Type: string (or Expression with resultType string).
+	ReferenceName interface{} `pulumi:"referenceName"`
+	// Spark configuration reference type.
+	Type string `pulumi:"type"`
+}
+
+// Spark configuration reference.
+type SparkConfigurationParametrizationReferenceResponse struct {
+	// Reference spark configuration name. Type: string (or Expression with resultType string).
+	ReferenceName interface{} `pulumi:"referenceName"`
+	// Spark configuration reference type.
+	Type string `pulumi:"type"`
+}
+
+// Spark Server linked service.
+type SparkLinkedService struct {
+	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
+	AllowHostNameCNMismatch interface{} `pulumi:"allowHostNameCNMismatch"`
+	// Specifies whether to allow self-signed certificates from the server. The default value is false.
+	AllowSelfSignedServerCert interface{} `pulumi:"allowSelfSignedServerCert"`
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The authentication method used to access the Spark server.
+	AuthenticationType string `pulumi:"authenticationType"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
+	EnableSsl interface{} `pulumi:"enableSsl"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// IP address or host name of the Spark server
+	Host interface{} `pulumi:"host"`
+	// The partial URL corresponding to the Spark server.
+	HttpPath interface{} `pulumi:"httpPath"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The password corresponding to the user name that you provided in the Username field
+	Password interface{} `pulumi:"password"`
+	// The TCP port that the Spark server uses to listen for client connections.
+	Port interface{} `pulumi:"port"`
+	// The type of Spark server.
+	ServerType *string `pulumi:"serverType"`
+	// The transport protocol to use in the Thrift layer.
+	ThriftTransportProtocol *string `pulumi:"thriftTransportProtocol"`
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
+	// Type of linked service.
+	// Expected value is 'Spark'.
+	Type string `pulumi:"type"`
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
+	// The user name that you use to access Spark Server.
+	Username interface{} `pulumi:"username"`
+}
+
+// Spark Server linked service.
+type SparkLinkedServiceResponse struct {
+	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
+	AllowHostNameCNMismatch interface{} `pulumi:"allowHostNameCNMismatch"`
+	// Specifies whether to allow self-signed certificates from the server. The default value is false.
+	AllowSelfSignedServerCert interface{} `pulumi:"allowSelfSignedServerCert"`
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The authentication method used to access the Spark server.
+	AuthenticationType string `pulumi:"authenticationType"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
+	EnableSsl interface{} `pulumi:"enableSsl"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// IP address or host name of the Spark server
+	Host interface{} `pulumi:"host"`
+	// The partial URL corresponding to the Spark server.
+	HttpPath interface{} `pulumi:"httpPath"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The password corresponding to the user name that you provided in the Username field
+	Password interface{} `pulumi:"password"`
+	// The TCP port that the Spark server uses to listen for client connections.
+	Port interface{} `pulumi:"port"`
+	// The type of Spark server.
+	ServerType *string `pulumi:"serverType"`
+	// The transport protocol to use in the Thrift layer.
+	ThriftTransportProtocol *string `pulumi:"thriftTransportProtocol"`
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
+	// Type of linked service.
+	// Expected value is 'Spark'.
+	Type string `pulumi:"type"`
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
+	// The user name that you use to access Spark Server.
+	Username interface{} `pulumi:"username"`
+}
+
+// Spark Server dataset.
+type SparkObjectDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Spark. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// This property will be retired. Please consider using schema + table properties instead.
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'SparkObject'.
+	Type string `pulumi:"type"`
+}
+
+// Spark Server dataset.
+type SparkObjectDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Spark. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// This property will be retired. Please consider using schema + table properties instead.
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'SparkObject'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity Spark Server source.
+type SparkSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SparkSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity Spark Server source.
+type SparkSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SparkSource'.
+	Type string `pulumi:"type"`
+}
+
 // Sql always encrypted properties.
 type SqlAlwaysEncryptedProperties struct {
 	// Sql always encrypted AKV authentication type. Type: string.
@@ -114,6 +720,8 @@ type SqlDWSource struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -143,6 +751,8 @@ type SqlDWSourceResponse struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -262,6 +872,8 @@ type SqlMISource struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -293,6 +905,8 @@ type SqlMISourceResponse struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -468,6 +1082,8 @@ type SqlServerSource struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -499,6 +1115,8 @@ type SqlServerSourceResponse struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the SQL source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -534,8 +1152,12 @@ type SqlServerStoredProcedureActivity struct {
 	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Stored procedure name. Type: string (or Expression with resultType string).
 	StoredProcedureName interface{} `pulumi:"storedProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
@@ -557,8 +1179,12 @@ type SqlServerStoredProcedureActivityResponse struct {
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Stored procedure name. Type: string (or Expression with resultType string).
 	StoredProcedureName interface{} `pulumi:"storedProcedureName"`
 	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
@@ -1094,6 +1720,10 @@ type SwitchActivity struct {
 	Name string `pulumi:"name"`
 	// An expression that would evaluate to a string or integer. This is used to determine the block of activities in cases that will be executed.
 	On Expression `pulumi:"on"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Switch'.
 	Type string `pulumi:"type"`
@@ -1115,6 +1745,10 @@ type SwitchActivityResponse struct {
 	Name string `pulumi:"name"`
 	// An expression that would evaluate to a string or integer. This is used to determine the block of activities in cases that will be executed.
 	On ExpressionResponse `pulumi:"on"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Switch'.
 	Type string `pulumi:"type"`
@@ -1288,6 +1922,8 @@ type SybaseTableDatasetResponse struct {
 type SynapseNotebookActivity struct {
 	// Spark configuration properties, which will override the 'conf' of the notebook you provide.
 	Conf interface{} `pulumi:"conf"`
+	// The type of the spark config.
+	ConfigurationType *string `pulumi:"configurationType"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependency `pulumi:"dependsOn"`
 	// Activity description.
@@ -1304,12 +1940,20 @@ type SynapseNotebookActivity struct {
 	Notebook SynapseNotebookReference `pulumi:"notebook"`
 	// Number of executors to launch for this session, which will override the 'numExecutors' of the notebook you provide. Type: integer (or Expression with resultType integer).
 	NumExecutors interface{} `pulumi:"numExecutors"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Notebook parameters.
 	Parameters map[string]NotebookParameter `pulumi:"parameters"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Spark configuration property.
+	SparkConfig map[string]interface{} `pulumi:"sparkConfig"`
 	// The name of the big data pool which will be used to execute the notebook.
 	SparkPool *BigDataPoolParametrizationReference `pulumi:"sparkPool"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
+	// The spark configuration of the spark job.
+	TargetSparkConfiguration *SparkConfigurationParametrizationReference `pulumi:"targetSparkConfiguration"`
 	// Type of activity.
 	// Expected value is 'SynapseNotebook'.
 	Type string `pulumi:"type"`
@@ -1321,6 +1965,8 @@ type SynapseNotebookActivity struct {
 type SynapseNotebookActivityResponse struct {
 	// Spark configuration properties, which will override the 'conf' of the notebook you provide.
 	Conf interface{} `pulumi:"conf"`
+	// The type of the spark config.
+	ConfigurationType *string `pulumi:"configurationType"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
 	// Activity description.
@@ -1337,12 +1983,20 @@ type SynapseNotebookActivityResponse struct {
 	Notebook SynapseNotebookReferenceResponse `pulumi:"notebook"`
 	// Number of executors to launch for this session, which will override the 'numExecutors' of the notebook you provide. Type: integer (or Expression with resultType integer).
 	NumExecutors interface{} `pulumi:"numExecutors"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Notebook parameters.
 	Parameters map[string]NotebookParameterResponse `pulumi:"parameters"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Spark configuration property.
+	SparkConfig map[string]interface{} `pulumi:"sparkConfig"`
 	// The name of the big data pool which will be used to execute the notebook.
 	SparkPool *BigDataPoolParametrizationReferenceResponse `pulumi:"sparkPool"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
+	// The spark configuration of the spark job.
+	TargetSparkConfiguration *SparkConfigurationParametrizationReferenceResponse `pulumi:"targetSparkConfiguration"`
 	// Type of activity.
 	// Expected value is 'SynapseNotebook'.
 	Type string `pulumi:"type"`
@@ -1396,6 +2050,8 @@ type SynapseSparkJobDefinitionActivity struct {
 	Name string `pulumi:"name"`
 	// Number of executors to launch for this job, which will override the 'numExecutors' of the spark job definition you provide. Type: integer (or Expression with resultType integer).
 	NumExecutors interface{} `pulumi:"numExecutors"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Additional python code files used for reference in the main definition file, which will override the 'pyFiles' of the spark job definition you provide.
@@ -1406,6 +2062,8 @@ type SynapseSparkJobDefinitionActivity struct {
 	SparkConfig map[string]interface{} `pulumi:"sparkConfig"`
 	// Synapse spark job reference.
 	SparkJob SynapseSparkJobReference `pulumi:"sparkJob"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// The name of the big data pool which will be used to execute the spark batch job, which will override the 'targetBigDataPool' of the spark job definition you provide.
 	TargetBigDataPool *BigDataPoolParametrizationReference `pulumi:"targetBigDataPool"`
 	// The spark configuration of the spark job.
@@ -1447,6 +2105,8 @@ type SynapseSparkJobDefinitionActivityResponse struct {
 	Name string `pulumi:"name"`
 	// Number of executors to launch for this job, which will override the 'numExecutors' of the spark job definition you provide. Type: integer (or Expression with resultType integer).
 	NumExecutors interface{} `pulumi:"numExecutors"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Additional python code files used for reference in the main definition file, which will override the 'pyFiles' of the spark job definition you provide.
@@ -1457,6 +2117,8 @@ type SynapseSparkJobDefinitionActivityResponse struct {
 	SparkConfig map[string]interface{} `pulumi:"sparkConfig"`
 	// Synapse spark job reference.
 	SparkJob SynapseSparkJobReferenceResponse `pulumi:"sparkJob"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// The name of the big data pool which will be used to execute the spark batch job, which will override the 'targetBigDataPool' of the spark job definition you provide.
 	TargetBigDataPool *BigDataPoolParametrizationReferenceResponse `pulumi:"targetBigDataPool"`
 	// The spark configuration of the spark job.
@@ -2058,6 +2720,10 @@ type UntilActivity struct {
 	Expression Expression `pulumi:"expression"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	Timeout interface{} `pulumi:"timeout"`
 	// Type of activity.
@@ -2079,6 +2745,10 @@ type UntilActivityResponse struct {
 	Expression ExpressionResponse `pulumi:"expression"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	Timeout interface{} `pulumi:"timeout"`
 	// Type of activity.
@@ -2246,8 +2916,12 @@ type ValidationActivity struct {
 	MinimumSize interface{} `pulumi:"minimumSize"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// A delay in seconds between validation attempts. If no value is specified, 10 seconds will be used as the default. Type: integer (or Expression with resultType integer).
 	Sleep interface{} `pulumi:"sleep"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	Timeout interface{} `pulumi:"timeout"`
 	// Type of activity.
@@ -2271,8 +2945,12 @@ type ValidationActivityResponse struct {
 	MinimumSize interface{} `pulumi:"minimumSize"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// A delay in seconds between validation attempts. If no value is specified, 10 seconds will be used as the default. Type: integer (or Expression with resultType integer).
 	Sleep interface{} `pulumi:"sleep"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	Timeout interface{} `pulumi:"timeout"`
 	// Type of activity.
@@ -2586,6 +3264,10 @@ type WaitActivity struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Wait'.
 	Type string `pulumi:"type"`
@@ -2603,6 +3285,10 @@ type WaitActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'Wait'.
 	Type string `pulumi:"type"`
@@ -2638,8 +3324,12 @@ type WebActivity struct {
 	Method string `pulumi:"method"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'WebActivity'.
 	Type string `pulumi:"type"`
@@ -2711,8 +3401,12 @@ type WebActivityResponse struct {
 	Method string `pulumi:"method"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// Type of activity.
 	// Expected value is 'WebActivity'.
 	Type string `pulumi:"type"`
@@ -2808,8 +3502,12 @@ type WebHookActivity struct {
 	Method string `pulumi:"method"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode >= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
 	ReportStatusOnCallBack interface{} `pulumi:"reportStatusOnCallBack"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// The timeout within which the webhook should be called back. If there is no value specified, it defaults to 10 minutes. Type: string. Pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	Timeout *string `pulumi:"timeout"`
 	// Type of activity.
@@ -2837,8 +3535,12 @@ type WebHookActivityResponse struct {
 	Method string `pulumi:"method"`
 	// Activity name.
 	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode >= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
 	ReportStatusOnCallBack interface{} `pulumi:"reportStatusOnCallBack"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
 	// The timeout within which the webhook should be called back. If there is no value specified, it defaults to 10 minutes. Type: string. Pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	Timeout *string `pulumi:"timeout"`
 	// Type of activity.

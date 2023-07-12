@@ -11,7 +11,7 @@ import (
 )
 
 // Returns a Azure Arc PrivateLinkScope.
-// API Version: 2022-04-02-preview.
+// Azure REST API version: 2022-04-02-preview.
 func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopeResult, error) {
 	var rv LookupPrivateLinkScopeResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration:getPrivateLinkScope", args, &rv, opts...)

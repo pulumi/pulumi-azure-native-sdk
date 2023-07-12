@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a managed instance key.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupManagedInstanceKey(ctx *pulumi.Context, args *LookupManagedInstanceKeyArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceKeyResult, error) {
 	var rv LookupManagedInstanceKeyResult
 	err := ctx.Invoke("azure-native:sql:getManagedInstanceKey", args, &rv, opts...)

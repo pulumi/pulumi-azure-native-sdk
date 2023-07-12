@@ -39,6 +39,12 @@ func NewWorkloadDeployment(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:migrate:WorkloadDeployment"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource WorkloadDeployment
 	err := ctx.RegisterResource("azure-native:migrate/v20220501preview:WorkloadDeployment", name, args, &resource, opts...)
 	if err != nil {

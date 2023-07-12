@@ -12,7 +12,7 @@ import (
 )
 
 // Schedule for automatically turning virtual machines in a lab on and off at specified times.
-// API Version: 2021-10-01-preview.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-10-01-preview
 type Schedule struct {
 	pulumi.CustomResourceState
 
@@ -99,7 +99,7 @@ func (ScheduleState) ElementType() reflect.Type {
 }
 
 type scheduleArgs struct {
-	// The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+	// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
 	LabName string `pulumi:"labName"`
 	// Notes for this schedule.
 	Notes *string `pulumi:"notes"`
@@ -119,7 +119,7 @@ type scheduleArgs struct {
 
 // The set of arguments for constructing a Schedule resource.
 type ScheduleArgs struct {
-	// The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+	// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
 	LabName pulumi.StringInput
 	// Notes for this schedule.
 	Notes pulumi.StringPtrInput

@@ -12,8 +12,6 @@ import (
 )
 
 // A private endpoint connection
-//
-// Deprecated: azure-native:sql/v20211101:ManagedInstancePrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedInstancePrivateEndpointConnection to guarantee forwards compatibility.
 type ManagedInstancePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +73,9 @@ func NewManagedInstancePrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedInstancePrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedInstancePrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

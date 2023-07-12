@@ -12,7 +12,7 @@ import (
 )
 
 // An application package which represents a particular version of an application.
-// API Version: 2021-01-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-01-01
 type ApplicationPackage struct {
 	pulumi.CustomResourceState
 
@@ -95,6 +95,9 @@ func NewApplicationPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:batch/v20221001:ApplicationPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:batch/v20230501:ApplicationPackage"),
 		},
 	})
 	opts = append(opts, aliases)

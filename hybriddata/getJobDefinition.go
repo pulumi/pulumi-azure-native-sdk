@@ -11,7 +11,7 @@ import (
 )
 
 // This method gets job definition object by name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2019-06-01.
 func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupJobDefinitionResult, error) {
 	var rv LookupJobDefinitionResult
 	err := ctx.Invoke("azure-native:hybriddata:getJobDefinition", args, &rv, opts...)

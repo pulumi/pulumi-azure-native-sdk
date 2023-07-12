@@ -11,7 +11,7 @@ import (
 )
 
 // Use this method to get the device security group for the specified IoT Hub resource.
-// API Version: 2019-08-01.
+// Azure REST API version: 2019-08-01.
 func LookupDeviceSecurityGroup(ctx *pulumi.Context, args *LookupDeviceSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceSecurityGroupResult, error) {
 	var rv LookupDeviceSecurityGroupResult
 	err := ctx.Invoke("azure-native:security:getDeviceSecurityGroup", args, &rv, opts...)

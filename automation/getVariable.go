@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the variable identified by variable name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2022-08-08.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	var rv LookupVariableResult
 	err := ctx.Invoke("azure-native:automation:getVariable", args, &rv, opts...)

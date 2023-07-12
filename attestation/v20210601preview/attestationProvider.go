@@ -60,6 +60,9 @@ func NewAttestationProvider(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:attestation/v20201001:AttestationProvider"),
 		},
+		{
+			Type: pulumi.String("azure-native:attestation/v20210601:AttestationProvider"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AttestationProvider

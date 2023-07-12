@@ -11,7 +11,7 @@ import (
 )
 
 // Class representing Traffic Manager User Metrics.
-// API Version: 2018-08-01.
+// Azure REST API version: 2022-04-01. Prior API version in Azure Native 1.x: 2018-08-01
 type TrafficManagerUserMetricsKey struct {
 	pulumi.CustomResourceState
 
@@ -36,6 +36,9 @@ func NewTrafficManagerUserMetricsKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20180801:TrafficManagerUserMetricsKey"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20220401:TrafficManagerUserMetricsKey"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220401preview:TrafficManagerUserMetricsKey"),

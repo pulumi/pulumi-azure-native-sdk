@@ -11,8 +11,6 @@ import (
 )
 
 // Returns ServiceEndpoint resources for a given name.
-//
-// Deprecated: azure-native:recommendationsservice/v20220201:ServiceEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:recommendationsservice/v20220301preview:ServiceEndpoint to guarantee forwards compatibility.
 func LookupServiceEndpoint(ctx *pulumi.Context, args *LookupServiceEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointResult, error) {
 	var rv LookupServiceEndpointResult
 	err := ctx.Invoke("azure-native:recommendationsservice/v20220201:getServiceEndpoint", args, &rv, opts...)

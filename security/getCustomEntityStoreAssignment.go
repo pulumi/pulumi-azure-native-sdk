@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a single custom entity store assignment by name for the provided subscription and resource group.
-// API Version: 2021-07-01-preview.
+// Azure REST API version: 2021-07-01-preview.
 func LookupCustomEntityStoreAssignment(ctx *pulumi.Context, args *LookupCustomEntityStoreAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupCustomEntityStoreAssignmentResult, error) {
 	var rv LookupCustomEntityStoreAssignmentResult
 	err := ctx.Invoke("azure-native:security:getCustomEntityStoreAssignment", args, &rv, opts...)

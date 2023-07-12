@@ -11,7 +11,7 @@ import (
 )
 
 // Get the non-security related metadata of a Windows IoT Device Service.
-// API Version: 2019-06-01.
+// Azure REST API version: 2019-06-01.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:windowsiot:getService", args, &rv, opts...)

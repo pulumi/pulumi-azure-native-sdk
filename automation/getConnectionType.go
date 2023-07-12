@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the connection type identified by connection type name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2022-08-08.
 func LookupConnectionType(ctx *pulumi.Context, args *LookupConnectionTypeArgs, opts ...pulumi.InvokeOption) (*LookupConnectionTypeResult, error) {
 	var rv LookupConnectionTypeResult
 	err := ctx.Invoke("azure-native:automation:getConnectionType", args, &rv, opts...)

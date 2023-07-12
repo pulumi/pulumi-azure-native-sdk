@@ -11,7 +11,7 @@ import (
 )
 
 // Get a ElasticSan.
-// API Version: 2021-11-20-preview.
+// Azure REST API version: 2021-11-20-preview.
 func LookupElasticSan(ctx *pulumi.Context, args *LookupElasticSanArgs, opts ...pulumi.InvokeOption) (*LookupElasticSanResult, error) {
 	var rv LookupElasticSanResult
 	err := ctx.Invoke("azure-native:elasticsan:getElasticSan", args, &rv, opts...)

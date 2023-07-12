@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeploymentAtSubscriptionScope{}
 	case "azure-native:resources:DeploymentAtTenantScope":
 		r = &DeploymentAtTenantScope{}
+	case "azure-native:resources:DeploymentStackAtManagementGroup":
+		r = &DeploymentStackAtManagementGroup{}
+	case "azure-native:resources:DeploymentStackAtResourceGroup":
+		r = &DeploymentStackAtResourceGroup{}
+	case "azure-native:resources:DeploymentStackAtSubscription":
+		r = &DeploymentStackAtSubscription{}
 	case "azure-native:resources:Resource":
 		r = &Resource{}
 	case "azure-native:resources:ResourceGroup":

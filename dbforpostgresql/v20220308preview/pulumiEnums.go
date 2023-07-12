@@ -49,16 +49,6 @@ const (
 	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
 )
 
-// The principal type used to represent the type of Active Directory Administrator.
-type PrincipalType string
-
-const (
-	PrincipalTypeUnknown          = PrincipalType("Unknown")
-	PrincipalTypeUser             = PrincipalType("User")
-	PrincipalTypeGroup            = PrincipalType("Group")
-	PrincipalTypeServicePrincipal = PrincipalType("ServicePrincipal")
-)
-
 // Replication role of the server
 type ReplicationRole string
 

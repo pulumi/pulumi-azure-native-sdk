@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns a Storage Target from a Cache.
-// API Version: 2021-03-01.
+// Returns a Storage Target from a cache.
+// Azure REST API version: 2023-05-01.
 func LookupStorageTarget(ctx *pulumi.Context, args *LookupStorageTargetArgs, opts ...pulumi.InvokeOption) (*LookupStorageTargetResult, error) {
 	var rv LookupStorageTargetResult
 	err := ctx.Invoke("azure-native:storagecache:getStorageTarget", args, &rv, opts...)
@@ -22,9 +22,9 @@ func LookupStorageTarget(ctx *pulumi.Context, args *LookupStorageTargetArgs, opt
 }
 
 type LookupStorageTargetArgs struct {
-	// Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+	// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
 	CacheName string `pulumi:"cacheName"`
-	// Target resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Storage Target.
 	StorageTargetName string `pulumi:"storageTargetName"`
@@ -32,13 +32,15 @@ type LookupStorageTargetArgs struct {
 
 // Type of the Storage Target.
 type LookupStorageTargetResult struct {
+	// The percentage of cache space allocated for this storage target
+	AllocationPercentage int `pulumi:"allocationPercentage"`
 	// Properties when targetType is blobNfs.
 	BlobNfs *BlobNfsTargetResponse `pulumi:"blobNfs"`
 	// Properties when targetType is clfs.
 	Clfs *ClfsTargetResponse `pulumi:"clfs"`
 	// Resource ID of the Storage Target.
 	Id string `pulumi:"id"`
-	// List of Cache namespace junctions to target for namespace associations.
+	// List of cache namespace junctions to target for namespace associations.
 	Junctions []NamespaceJunctionResponse `pulumi:"junctions"`
 	// Region name string.
 	Location string `pulumi:"location"`
@@ -47,7 +49,9 @@ type LookupStorageTargetResult struct {
 	// Properties when targetType is nfs3.
 	Nfs3 *Nfs3TargetResponse `pulumi:"nfs3"`
 	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Storage target operational state.
+	State *string `pulumi:"state"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Type of the Storage Target.
@@ -72,9 +76,9 @@ func LookupStorageTargetOutput(ctx *pulumi.Context, args LookupStorageTargetOutp
 }
 
 type LookupStorageTargetOutputArgs struct {
-	// Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+	// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
 	CacheName pulumi.StringInput `pulumi:"cacheName"`
-	// Target resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of Storage Target.
 	StorageTargetName pulumi.StringInput `pulumi:"storageTargetName"`
@@ -99,6 +103,11 @@ func (o LookupStorageTargetResultOutput) ToLookupStorageTargetResultOutputWithCo
 	return o
 }
 
+// The percentage of cache space allocated for this storage target
+func (o LookupStorageTargetResultOutput) AllocationPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStorageTargetResult) int { return v.AllocationPercentage }).(pulumi.IntOutput)
+}
+
 // Properties when targetType is blobNfs.
 func (o LookupStorageTargetResultOutput) BlobNfs() BlobNfsTargetResponsePtrOutput {
 	return o.ApplyT(func(v LookupStorageTargetResult) *BlobNfsTargetResponse { return v.BlobNfs }).(BlobNfsTargetResponsePtrOutput)
@@ -114,7 +123,7 @@ func (o LookupStorageTargetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageTargetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of Cache namespace junctions to target for namespace associations.
+// List of cache namespace junctions to target for namespace associations.
 func (o LookupStorageTargetResultOutput) Junctions() NamespaceJunctionResponseArrayOutput {
 	return o.ApplyT(func(v LookupStorageTargetResult) []NamespaceJunctionResponse { return v.Junctions }).(NamespaceJunctionResponseArrayOutput)
 }
@@ -135,8 +144,13 @@ func (o LookupStorageTargetResultOutput) Nfs3() Nfs3TargetResponsePtrOutput {
 }
 
 // ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-func (o LookupStorageTargetResultOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupStorageTargetResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o LookupStorageTargetResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageTargetResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Storage target operational state.
+func (o LookupStorageTargetResultOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStorageTargetResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // The system meta data relating to this resource.

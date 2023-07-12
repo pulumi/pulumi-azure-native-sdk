@@ -11,8 +11,6 @@ import (
 )
 
 // Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
-//
-// Deprecated: azure-native:app/v20221001:ConnectedEnvironmentsCertificate is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ConnectedEnvironmentsCertificate to guarantee forwards compatibility.
 func LookupConnectedEnvironmentsCertificate(ctx *pulumi.Context, args *LookupConnectedEnvironmentsCertificateArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsCertificateResult, error) {
 	var rv LookupConnectedEnvironmentsCertificateResult
 	err := ctx.Invoke("azure-native:app/v20221001:getConnectedEnvironmentsCertificate", args, &rv, opts...)

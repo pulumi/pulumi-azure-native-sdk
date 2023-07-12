@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified backup policy name.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPolicyResult, error) {
 	var rv LookupBackupPolicyResult
 	err := ctx.Invoke("azure-native:storsimple:getBackupPolicy", args, &rv, opts...)

@@ -11,14 +11,14 @@ import (
 )
 
 // This operation retrieves a single policy exemption, given its name and the scope it was created at.
-// API Version: 2020-07-01-preview.
+// Azure REST API version: 2022-07-01-preview.
 func LookupPolicyExemption(ctx *pulumi.Context, args *LookupPolicyExemptionArgs, opts ...pulumi.InvokeOption) (*LookupPolicyExemptionResult, error) {
 	var rv LookupPolicyExemptionResult
 	err := ctx.Invoke("azure-native:authorization:getPolicyExemption", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupPolicyExemptionArgs struct {
@@ -30,6 +30,8 @@ type LookupPolicyExemptionArgs struct {
 
 // The policy exemption.
 type LookupPolicyExemptionResult struct {
+	// The option whether validate the exemption is at or under the assignment scope.
+	AssignmentScopeValidation *string `pulumi:"assignmentScopeValidation"`
 	// The description of the policy exemption.
 	Description *string `pulumi:"description"`
 	// The display name of the policy exemption.
@@ -48,10 +50,25 @@ type LookupPolicyExemptionResult struct {
 	PolicyAssignmentId string `pulumi:"policyAssignmentId"`
 	// The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
 	PolicyDefinitionReferenceIds []string `pulumi:"policyDefinitionReferenceIds"`
+	// The resource selector list to filter policies by resource properties.
+	ResourceSelectors []ResourceSelectorResponse `pulumi:"resourceSelectors"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policyExemptions).
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupPolicyExemptionResult
+func (val *LookupPolicyExemptionResult) Defaults() *LookupPolicyExemptionResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AssignmentScopeValidation == nil {
+		assignmentScopeValidation_ := "Default"
+		tmp.AssignmentScopeValidation = &assignmentScopeValidation_
+	}
+	return &tmp
 }
 
 func LookupPolicyExemptionOutput(ctx *pulumi.Context, args LookupPolicyExemptionOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyExemptionResultOutput {
@@ -91,6 +108,11 @@ func (o LookupPolicyExemptionResultOutput) ToLookupPolicyExemptionResultOutput()
 
 func (o LookupPolicyExemptionResultOutput) ToLookupPolicyExemptionResultOutputWithContext(ctx context.Context) LookupPolicyExemptionResultOutput {
 	return o
+}
+
+// The option whether validate the exemption is at or under the assignment scope.
+func (o LookupPolicyExemptionResultOutput) AssignmentScopeValidation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPolicyExemptionResult) *string { return v.AssignmentScopeValidation }).(pulumi.StringPtrOutput)
 }
 
 // The description of the policy exemption.
@@ -136,6 +158,11 @@ func (o LookupPolicyExemptionResultOutput) PolicyAssignmentId() pulumi.StringOut
 // The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
 func (o LookupPolicyExemptionResultOutput) PolicyDefinitionReferenceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyExemptionResult) []string { return v.PolicyDefinitionReferenceIds }).(pulumi.StringArrayOutput)
+}
+
+// The resource selector list to filter policies by resource properties.
+func (o LookupPolicyExemptionResultOutput) ResourceSelectors() ResourceSelectorResponseArrayOutput {
+	return o.ApplyT(func(v LookupPolicyExemptionResult) []ResourceSelectorResponse { return v.ResourceSelectors }).(ResourceSelectorResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

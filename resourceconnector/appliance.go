@@ -12,7 +12,7 @@ import (
 )
 
 // Appliances definition.
-// API Version: 2021-10-31-preview.
+// Azure REST API version: 2022-10-27. Prior API version in Azure Native 1.x: 2021-10-31-preview
 type Appliance struct {
 	pulumi.CustomResourceState
 
@@ -28,18 +28,18 @@ type Appliance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current deployment or provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Certificates pair used to download MSI certificate from HIS
+	// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// Appliance’s health and state of connection to on-prem
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Metadata pertaining to creation and last modification of the resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Version of the Appliance
-	Version pulumi.StringOutput `pulumi:"version"`
+	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
 // NewAppliance registers a new resource with the given unique name, arguments, and options.
@@ -107,7 +107,7 @@ type applianceArgs struct {
 	InfrastructureConfig *AppliancePropertiesInfrastructureConfig `pulumi:"infrastructureConfig"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Certificates pair used to download MSI certificate from HIS
+	// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 	PublicKey *string `pulumi:"publicKey"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -115,6 +115,8 @@ type applianceArgs struct {
 	ResourceName *string `pulumi:"resourceName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Version of the Appliance
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Appliance resource.
@@ -127,7 +129,7 @@ type ApplianceArgs struct {
 	InfrastructureConfig AppliancePropertiesInfrastructureConfigPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Certificates pair used to download MSI certificate from HIS
+	// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 	PublicKey pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -135,6 +137,8 @@ type ApplianceArgs struct {
 	ResourceName pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Version of the Appliance
+	Version pulumi.StringPtrInput
 }
 
 func (ApplianceArgs) ElementType() reflect.Type {
@@ -206,7 +210,7 @@ func (o ApplianceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Appliance) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Certificates pair used to download MSI certificate from HIS
+// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 func (o ApplianceOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Appliance) pulumi.StringPtrOutput { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
@@ -216,7 +220,7 @@ func (o ApplianceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Appliance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ApplianceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Appliance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -232,8 +236,8 @@ func (o ApplianceOutput) Type() pulumi.StringOutput {
 }
 
 // Version of the Appliance
-func (o ApplianceOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v *Appliance) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+func (o ApplianceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Appliance) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 func init() {

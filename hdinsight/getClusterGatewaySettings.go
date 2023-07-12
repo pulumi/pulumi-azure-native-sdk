@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the gateway settings for the specified cluster.
-// API Version: 2018-06-01-preview.
+// Azure REST API version: 2021-06-01.
 func GetClusterGatewaySettings(ctx *pulumi.Context, args *GetClusterGatewaySettingsArgs, opts ...pulumi.InvokeOption) (*GetClusterGatewaySettingsResult, error) {
 	var rv GetClusterGatewaySettingsResult
 	err := ctx.Invoke("azure-native:hdinsight:getClusterGatewaySettings", args, &rv, opts...)

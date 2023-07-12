@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the detailed information for a given agent pool.
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
 	var rv LookupAgentPoolResult
 	err := ctx.Invoke("azure-native:containerregistry:getAgentPool", args, &rv, opts...)

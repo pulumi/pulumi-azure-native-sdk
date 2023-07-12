@@ -12,7 +12,7 @@ import (
 )
 
 // The diagnostic setting resource.
-// API Version: 2017-05-01-preview.
+// Azure REST API version: 2021-05-01-preview. Prior API version in Azure Native 1.x: 2017-05-01-preview
 type DiagnosticSetting struct {
 	pulumi.CustomResourceState
 
@@ -24,15 +24,19 @@ type DiagnosticSetting struct {
 	LogAnalyticsDestinationType pulumi.StringPtrOutput `pulumi:"logAnalyticsDestinationType"`
 	// The list of logs settings.
 	Logs LogSettingsResponseArrayOutput `pulumi:"logs"`
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId pulumi.StringPtrOutput `pulumi:"marketplacePartnerId"`
 	// The list of metric settings.
 	Metrics MetricSettingsResponseArrayOutput `pulumi:"metrics"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 	ServiceBusRuleId pulumi.StringPtrOutput `pulumi:"serviceBusRuleId"`
 	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
-	// Azure resource type
+	// The system metadata related to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
 	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
@@ -97,6 +101,8 @@ type diagnosticSettingArgs struct {
 	LogAnalyticsDestinationType *string `pulumi:"logAnalyticsDestinationType"`
 	// The list of logs settings.
 	Logs []LogSettings `pulumi:"logs"`
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId *string `pulumi:"marketplacePartnerId"`
 	// The list of metric settings.
 	Metrics []MetricSettings `pulumi:"metrics"`
 	// The name of the diagnostic setting.
@@ -121,6 +127,8 @@ type DiagnosticSettingArgs struct {
 	LogAnalyticsDestinationType pulumi.StringPtrInput
 	// The list of logs settings.
 	Logs LogSettingsArrayInput
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId pulumi.StringPtrInput
 	// The list of metric settings.
 	Metrics MetricSettingsArrayInput
 	// The name of the diagnostic setting.
@@ -192,12 +200,17 @@ func (o DiagnosticSettingOutput) Logs() LogSettingsResponseArrayOutput {
 	return o.ApplyT(func(v *DiagnosticSetting) LogSettingsResponseArrayOutput { return v.Logs }).(LogSettingsResponseArrayOutput)
 }
 
+// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+func (o DiagnosticSettingOutput) MarketplacePartnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiagnosticSetting) pulumi.StringPtrOutput { return v.MarketplacePartnerId }).(pulumi.StringPtrOutput)
+}
+
 // The list of metric settings.
 func (o DiagnosticSettingOutput) Metrics() MetricSettingsResponseArrayOutput {
 	return o.ApplyT(func(v *DiagnosticSetting) MetricSettingsResponseArrayOutput { return v.Metrics }).(MetricSettingsResponseArrayOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o DiagnosticSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiagnosticSetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -212,7 +225,12 @@ func (o DiagnosticSettingOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiagnosticSetting) pulumi.StringPtrOutput { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// The system metadata related to this resource.
+func (o DiagnosticSettingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DiagnosticSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DiagnosticSettingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiagnosticSetting) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

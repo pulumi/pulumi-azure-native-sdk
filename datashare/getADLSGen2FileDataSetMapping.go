@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupADLSGen2FileDataSetMapping(ctx *pulumi.Context, args *LookupADLSGen2FileDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2FileDataSetMappingResult, error) {
 	var rv LookupADLSGen2FileDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare:getADLSGen2FileDataSetMapping", args, &rv, opts...)

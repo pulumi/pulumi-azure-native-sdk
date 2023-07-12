@@ -12,7 +12,7 @@ import (
 )
 
 // Wrapper resource for tags API requests and responses.
-// API Version: 2019-10-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2019-10-01
 type TagAtScope struct {
 	pulumi.CustomResourceState
 

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the download URL of the test result.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-04-01-preview.
 func GetTestResultDownloadURL(ctx *pulumi.Context, args *GetTestResultDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultDownloadURLResult, error) {
 	var rv GetTestResultDownloadURLResult
 	err := ctx.Invoke("azure-native:testbase:getTestResultDownloadURL", args, &rv, opts...)

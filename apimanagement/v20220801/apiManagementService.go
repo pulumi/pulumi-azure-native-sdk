@@ -12,8 +12,6 @@ import (
 )
 
 // A single API Management service resource in List or Get response.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiManagementService is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiManagementService to guarantee forwards compatibility.
 type ApiManagementService struct {
 	pulumi.CustomResourceState
 
@@ -179,6 +177,12 @@ func NewApiManagementService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiManagementService"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiManagementService"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiManagementService"),
 		},
 	})
 	opts = append(opts, aliases)

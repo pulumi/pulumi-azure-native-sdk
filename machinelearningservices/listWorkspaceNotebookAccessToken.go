@@ -11,7 +11,7 @@ import (
 )
 
 // return notebook access token and refresh token
-// API Version: 2021-01-01.
+// Azure REST API version: 2023-04-01.
 func ListWorkspaceNotebookAccessToken(ctx *pulumi.Context, args *ListWorkspaceNotebookAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceNotebookAccessTokenResult, error) {
 	var rv ListWorkspaceNotebookAccessTokenResult
 	err := ctx.Invoke("azure-native:machinelearningservices:listWorkspaceNotebookAccessToken", args, &rv, opts...)
@@ -22,7 +22,7 @@ func ListWorkspaceNotebookAccessToken(ctx *pulumi.Context, args *ListWorkspaceNo
 }
 
 type ListWorkspaceNotebookAccessTokenArgs struct {
-	// Name of the resource group in which workspace is located.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
@@ -53,7 +53,7 @@ func ListWorkspaceNotebookAccessTokenOutput(ctx *pulumi.Context, args ListWorksp
 }
 
 type ListWorkspaceNotebookAccessTokenOutputArgs struct {
-	// Name of the resource group in which workspace is located.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`

@@ -12,7 +12,7 @@ import (
 )
 
 // Event Grid Partner Destination.
-// API Version: 2021-10-15-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2021-10-15-preview
 type PartnerDestination struct {
 	pulumi.CustomResourceState
 
@@ -34,7 +34,7 @@ type PartnerDestination struct {
 	// The immutable Id of the corresponding partner registration.
 	PartnerRegistrationImmutableId pulumi.StringPtrOutput `pulumi:"partnerRegistrationImmutableId"`
 	// Provisioning state of the partner destination.
-	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The system metadata relating to Partner Destination resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
@@ -56,6 +56,9 @@ func NewPartnerDestination(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:PartnerDestination"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:PartnerDestination"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -108,8 +111,6 @@ type partnerDestinationArgs struct {
 	PartnerDestinationName *string `pulumi:"partnerDestinationName"`
 	// The immutable Id of the corresponding partner registration.
 	PartnerRegistrationImmutableId *string `pulumi:"partnerRegistrationImmutableId"`
-	// Provisioning state of the partner destination.
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Tags of the resource.
@@ -135,8 +136,6 @@ type PartnerDestinationArgs struct {
 	PartnerDestinationName pulumi.StringPtrInput
 	// The immutable Id of the corresponding partner registration.
 	PartnerRegistrationImmutableId pulumi.StringPtrInput
-	// Provisioning state of the partner destination.
-	ProvisioningState pulumi.StringPtrInput
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput
 	// Tags of the resource.
@@ -222,8 +221,8 @@ func (o PartnerDestinationOutput) PartnerRegistrationImmutableId() pulumi.String
 }
 
 // Provisioning state of the partner destination.
-func (o PartnerDestinationOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PartnerDestination) pulumi.StringPtrOutput { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o PartnerDestinationOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *PartnerDestination) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The system metadata relating to Partner Destination resource.

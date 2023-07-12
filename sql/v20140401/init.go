@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:sql/v20140401:DataMaskingPolicy":
-		r = &DataMaskingPolicy{}
 	case "azure-native:sql/v20140401:Database":
 		r = &Database{}
 	case "azure-native:sql/v20140401:DatabaseAdvisor":
@@ -35,8 +33,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ElasticPool{}
 	case "azure-native:sql/v20140401:FirewallRule":
 		r = &FirewallRule{}
-	case "azure-native:sql/v20140401:GeoBackupPolicy":
-		r = &GeoBackupPolicy{}
 	case "azure-native:sql/v20140401:Server":
 		r = &Server{}
 	case "azure-native:sql/v20140401:ServerAdvisor":

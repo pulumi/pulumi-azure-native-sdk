@@ -3,6 +3,14 @@
 
 package confidentialledger
 
+// Unique name for the Managed CCF.
+type LanguageRuntime string
+
+const (
+	LanguageRuntimeCPP = LanguageRuntime("CPP")
+	LanguageRuntimeJS  = LanguageRuntime("JS")
+)
+
 // LedgerRole associated with the Security Principal of Ledger
 type LedgerRoleName string
 

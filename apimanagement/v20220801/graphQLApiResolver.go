@@ -12,8 +12,6 @@ import (
 )
 
 // GraphQL API Resolver details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:GraphQLApiResolver is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:GraphQLApiResolver to guarantee forwards compatibility.
 type GraphQLApiResolver struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +43,18 @@ func NewGraphQLApiResolver(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement:GraphQLApiResolver"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GraphQLApiResolver"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:GraphQLApiResolver"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource GraphQLApiResolver
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:GraphQLApiResolver", name, args, &resource, opts...)
 	if err != nil {

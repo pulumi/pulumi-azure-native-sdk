@@ -12,8 +12,6 @@ import (
 )
 
 // BaseBackupPolicy resource
-//
-// Deprecated: azure-native:dataprotection/v20230101:BackupPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:dataprotection/v20230401preview:BackupPolicy to guarantee forwards compatibility.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
@@ -91,6 +89,12 @@ func NewBackupPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20221201:BackupPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230401preview:BackupPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230501:BackupPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

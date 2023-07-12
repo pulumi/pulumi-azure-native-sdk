@@ -12,8 +12,6 @@ import (
 )
 
 // A class represent a resource.
-//
-// Deprecated: azure-native:signalrservice/v20230201:SignalR is being removed in the next major version of this provider. Upgrade to at least azure-native:signalrservice/v20230301preview:SignalR to guarantee forwards compatibility.
 type SignalR struct {
 	pulumi.CustomResourceState
 
@@ -147,6 +145,12 @@ func NewSignalR(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20220801preview:SignalR"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230301preview:SignalR"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230601preview:SignalR"),
 		},
 	})
 	opts = append(opts, aliases)

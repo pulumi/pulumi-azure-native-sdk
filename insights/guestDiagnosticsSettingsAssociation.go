@@ -12,7 +12,7 @@ import (
 )
 
 // Virtual machine guest diagnostic settings resource.
-// API Version: 2018-06-01-preview.
+// Azure REST API version: 2018-06-01-preview. Prior API version in Azure Native 1.x: 2018-06-01-preview
 type GuestDiagnosticsSettingsAssociation struct {
 	pulumi.CustomResourceState
 

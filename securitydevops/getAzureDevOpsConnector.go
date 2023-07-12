@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupAzureDevOpsConnector(ctx *pulumi.Context, args *LookupAzureDevOpsConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAzureDevOpsConnectorResult, error) {
 	var rv LookupAzureDevOpsConnectorResult
 	err := ctx.Invoke("azure-native:securitydevops:getAzureDevOpsConnector", args, &rv, opts...)

@@ -12,8 +12,6 @@ import (
 )
 
 // Cache details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Cache is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Cache to guarantee forwards compatibility.
 type Cache struct {
 	pulumi.CustomResourceState
 
@@ -86,6 +84,12 @@ func NewCache(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Cache"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Cache"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Cache"),
 		},
 	})
 	opts = append(opts, aliases)

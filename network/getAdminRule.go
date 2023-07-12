@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a network manager security configuration admin rule.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2023-02-01.
 func LookupAdminRule(ctx *pulumi.Context, args *LookupAdminRuleArgs, opts ...pulumi.InvokeOption) (*LookupAdminRuleResult, error) {
 	var rv LookupAdminRuleResult
 	err := ctx.Invoke("azure-native:network:getAdminRule", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupAdminRule(ctx *pulumi.Context, args *LookupAdminRuleArgs, opts ...pul
 }
 
 type LookupAdminRuleArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName string `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
@@ -46,8 +46,6 @@ type LookupAdminRuleResult struct {
 	Destinations []AddressPrefixItemResponse `pulumi:"destinations"`
 	// Indicates if the traffic matched against the rule in inbound or outbound.
 	Direction string `pulumi:"direction"`
-	// A friendly name for the rule.
-	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -58,11 +56,13 @@ type LookupAdminRuleResult struct {
 	// Resource name.
 	Name string `pulumi:"name"`
 	// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-	Priority *int `pulumi:"priority"`
+	Priority int `pulumi:"priority"`
 	// Network protocol this rule applies to.
 	Protocol string `pulumi:"protocol"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Unique identifier for this resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
 	// The source port ranges.
 	SourcePortRanges []string `pulumi:"sourcePortRanges"`
 	// The CIDR or source IP ranges.
@@ -87,7 +87,7 @@ func LookupAdminRuleOutput(ctx *pulumi.Context, args LookupAdminRuleOutputArgs, 
 }
 
 type LookupAdminRuleOutputArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput `pulumi:"networkManagerName"`
@@ -143,11 +143,6 @@ func (o LookupAdminRuleResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Direction }).(pulumi.StringOutput)
 }
 
-// A friendly name for the rule.
-func (o LookupAdminRuleResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAdminRuleResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
 // A unique read-only string that changes whenever the resource is updated.
 func (o LookupAdminRuleResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -170,8 +165,8 @@ func (o LookupAdminRuleResultOutput) Name() pulumi.StringOutput {
 }
 
 // The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-func (o LookupAdminRuleResultOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupAdminRuleResult) *int { return v.Priority }).(pulumi.IntPtrOutput)
+func (o LookupAdminRuleResultOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 // Network protocol this rule applies to.
@@ -182,6 +177,11 @@ func (o LookupAdminRuleResultOutput) Protocol() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o LookupAdminRuleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Unique identifier for this resource.
+func (o LookupAdminRuleResultOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The source port ranges.

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified private link service by resource group.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupPrivateLinkService(ctx *pulumi.Context, args *LookupPrivateLinkServiceArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServiceResult, error) {
 	var rv LookupPrivateLinkServiceResult
 	err := ctx.Invoke("azure-native:network:getPrivateLinkService", args, &rv, opts...)

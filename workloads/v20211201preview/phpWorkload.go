@@ -89,12 +89,6 @@ func NewPhpWorkload(ctx *pulumi.Context,
 	if args.WebNodesProfile == nil {
 		return nil, errors.New("invalid value for required argument 'WebNodesProfile'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:workloads:PhpWorkload"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource PhpWorkload
 	err := ctx.RegisterResource("azure-native:workloads/v20211201preview:PhpWorkload", name, args, &resource, opts...)
 	if err != nil {

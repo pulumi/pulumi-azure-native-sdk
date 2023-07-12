@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the details of a VirtualHubRouteTableV2.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupVirtualHubRouteTableV2(ctx *pulumi.Context, args *LookupVirtualHubRouteTableV2Args, opts ...pulumi.InvokeOption) (*LookupVirtualHubRouteTableV2Result, error) {
 	var rv LookupVirtualHubRouteTableV2Result
 	err := ctx.Invoke("azure-native:network:getVirtualHubRouteTableV2", args, &rv, opts...)

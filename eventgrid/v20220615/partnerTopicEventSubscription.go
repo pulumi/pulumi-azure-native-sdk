@@ -12,8 +12,6 @@ import (
 )
 
 // Event Subscription
-//
-// Deprecated: azure-native:eventgrid/v20220615:PartnerTopicEventSubscription is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerTopicEventSubscription to guarantee forwards compatibility.
 type PartnerTopicEventSubscription struct {
 	pulumi.CustomResourceState
 
@@ -88,6 +86,9 @@ func NewPartnerTopicEventSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:PartnerTopicEventSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:PartnerTopicEventSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

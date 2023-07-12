@@ -11,7 +11,7 @@ import (
 )
 
 // Get service runner.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupServiceRunner(ctx *pulumi.Context, args *LookupServiceRunnerArgs, opts ...pulumi.InvokeOption) (*LookupServiceRunnerResult, error) {
 	var rv LookupServiceRunnerResult
 	err := ctx.Invoke("azure-native:devtestlab:getServiceRunner", args, &rv, opts...)

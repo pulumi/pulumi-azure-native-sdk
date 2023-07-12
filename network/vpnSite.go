@@ -12,7 +12,7 @@ import (
 )
 
 // VpnSite Resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type VpnSite struct {
 	pulumi.CustomResourceState
 
@@ -148,6 +148,12 @@ func NewVpnSite(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:VpnSite"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:VpnSite"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:VpnSite"),
 		},
 	})
 	opts = append(opts, aliases)

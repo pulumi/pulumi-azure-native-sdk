@@ -11,7 +11,7 @@ import (
 )
 
 // Gets information about the specified express route circuit.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupExpressRouteCircuit(ctx *pulumi.Context, args *LookupExpressRouteCircuitArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitResult, error) {
 	var rv LookupExpressRouteCircuitResult
 	err := ctx.Invoke("azure-native:network:getExpressRouteCircuit", args, &rv, opts...)
@@ -32,6 +32,10 @@ type LookupExpressRouteCircuitArgs struct {
 type LookupExpressRouteCircuitResult struct {
 	// Allow classic operations.
 	AllowClassicOperations *bool `pulumi:"allowClassicOperations"`
+	// The authorizationKey.
+	AuthorizationKey *string `pulumi:"authorizationKey"`
+	// The authorization status of the Circuit.
+	AuthorizationStatus string `pulumi:"authorizationStatus"`
 	// The list of authorizations.
 	Authorizations []ExpressRouteCircuitAuthorizationResponse `pulumi:"authorizations"`
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
@@ -116,6 +120,16 @@ func (o LookupExpressRouteCircuitResultOutput) ToLookupExpressRouteCircuitResult
 // Allow classic operations.
 func (o LookupExpressRouteCircuitResultOutput) AllowClassicOperations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *bool { return v.AllowClassicOperations }).(pulumi.BoolPtrOutput)
+}
+
+// The authorizationKey.
+func (o LookupExpressRouteCircuitResultOutput) AuthorizationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupExpressRouteCircuitResult) *string { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
+}
+
+// The authorization status of the Circuit.
+func (o LookupExpressRouteCircuitResultOutput) AuthorizationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRouteCircuitResult) string { return v.AuthorizationStatus }).(pulumi.StringOutput)
 }
 
 // The list of authorizations.

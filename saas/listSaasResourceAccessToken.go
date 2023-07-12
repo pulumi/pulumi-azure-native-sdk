@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the ISV access token for a SaaS resource.
-// API Version: 2018-03-01-beta.
+// Azure REST API version: 2018-03-01-beta.
 func ListSaasResourceAccessToken(ctx *pulumi.Context, args *ListSaasResourceAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListSaasResourceAccessTokenResult, error) {
 	var rv ListSaasResourceAccessTokenResult
 	err := ctx.Invoke("azure-native:saas:listSaasResourceAccessToken", args, &rv, opts...)

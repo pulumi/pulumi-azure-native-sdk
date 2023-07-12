@@ -24,14 +24,14 @@ type Cluster struct {
 	// The edition of a coordinator server (default: GeneralPurpose). Required for creation.
 	CoordinatorServerEdition pulumi.StringPtrOutput `pulumi:"coordinatorServerEdition"`
 	// The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	CoordinatorStorageQuotaInMb pulumi.Float64PtrOutput `pulumi:"coordinatorStorageQuotaInMb"`
+	CoordinatorStorageQuotaInMb pulumi.IntPtrOutput `pulumi:"coordinatorStorageQuotaInMb"`
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	CoordinatorVCores pulumi.Float64PtrOutput `pulumi:"coordinatorVCores"`
+	CoordinatorVCores pulumi.IntPtrOutput `pulumi:"coordinatorVCores"`
 	// The earliest restore point time (ISO8601 format) for the cluster.
 	EarliestRestoreTime pulumi.StringOutput `pulumi:"earliestRestoreTime"`
 	// If high availability (HA) is enabled or not for the cluster.
 	EnableHa pulumi.BoolPtrOutput `pulumi:"enableHa"`
-	// If shards on coordinator is enabled or not for the cluster.
+	// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
 	EnableShardsOnCoordinator pulumi.BoolPtrOutput `pulumi:"enableShardsOnCoordinator"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -40,15 +40,15 @@ type Cluster struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
-	NodeCount pulumi.Float64PtrOutput `pulumi:"nodeCount"`
+	NodeCount pulumi.IntPtrOutput `pulumi:"nodeCount"`
 	// If public access is enabled on worker nodes.
 	NodeEnablePublicIpAccess pulumi.BoolPtrOutput `pulumi:"nodeEnablePublicIpAccess"`
 	// The edition of a node server (default: MemoryOptimized).
 	NodeServerEdition pulumi.StringPtrOutput `pulumi:"nodeServerEdition"`
 	// The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	NodeStorageQuotaInMb pulumi.Float64PtrOutput `pulumi:"nodeStorageQuotaInMb"`
+	NodeStorageQuotaInMb pulumi.IntPtrOutput `pulumi:"nodeStorageQuotaInMb"`
 	// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	NodeVCores pulumi.Float64PtrOutput `pulumi:"nodeVCores"`
+	NodeVCores pulumi.IntPtrOutput `pulumi:"nodeVCores"`
 	// Date and time in UTC (ISO8601 format) for cluster restore.
 	PointInTimeUTC pulumi.StringPtrOutput `pulumi:"pointInTimeUTC"`
 	// The major PostgreSQL version on all cluster servers.
@@ -88,6 +88,9 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Cluster"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20201005privatepreview:Cluster"),
 		},
@@ -136,27 +139,27 @@ type clusterArgs struct {
 	// The edition of a coordinator server (default: GeneralPurpose). Required for creation.
 	CoordinatorServerEdition *string `pulumi:"coordinatorServerEdition"`
 	// The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	CoordinatorStorageQuotaInMb *float64 `pulumi:"coordinatorStorageQuotaInMb"`
+	CoordinatorStorageQuotaInMb *int `pulumi:"coordinatorStorageQuotaInMb"`
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	CoordinatorVCores *float64 `pulumi:"coordinatorVCores"`
+	CoordinatorVCores *int `pulumi:"coordinatorVCores"`
 	// If high availability (HA) is enabled or not for the cluster.
 	EnableHa *bool `pulumi:"enableHa"`
-	// If shards on coordinator is enabled or not for the cluster.
+	// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
 	EnableShardsOnCoordinator *bool `pulumi:"enableShardsOnCoordinator"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Maintenance window of a cluster.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
-	NodeCount *float64 `pulumi:"nodeCount"`
+	NodeCount *int `pulumi:"nodeCount"`
 	// If public access is enabled on worker nodes.
 	NodeEnablePublicIpAccess *bool `pulumi:"nodeEnablePublicIpAccess"`
 	// The edition of a node server (default: MemoryOptimized).
 	NodeServerEdition *string `pulumi:"nodeServerEdition"`
 	// The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	NodeStorageQuotaInMb *float64 `pulumi:"nodeStorageQuotaInMb"`
+	NodeStorageQuotaInMb *int `pulumi:"nodeStorageQuotaInMb"`
 	// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	NodeVCores *float64 `pulumi:"nodeVCores"`
+	NodeVCores *int `pulumi:"nodeVCores"`
 	// Date and time in UTC (ISO8601 format) for cluster restore.
 	PointInTimeUTC *string `pulumi:"pointInTimeUTC"`
 	// The major PostgreSQL version on all cluster servers.
@@ -186,27 +189,27 @@ type ClusterArgs struct {
 	// The edition of a coordinator server (default: GeneralPurpose). Required for creation.
 	CoordinatorServerEdition pulumi.StringPtrInput
 	// The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	CoordinatorStorageQuotaInMb pulumi.Float64PtrInput
+	CoordinatorStorageQuotaInMb pulumi.IntPtrInput
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	CoordinatorVCores pulumi.Float64PtrInput
+	CoordinatorVCores pulumi.IntPtrInput
 	// If high availability (HA) is enabled or not for the cluster.
 	EnableHa pulumi.BoolPtrInput
-	// If shards on coordinator is enabled or not for the cluster.
+	// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
 	EnableShardsOnCoordinator pulumi.BoolPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Maintenance window of a cluster.
 	MaintenanceWindow MaintenanceWindowPtrInput
 	// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
-	NodeCount pulumi.Float64PtrInput
+	NodeCount pulumi.IntPtrInput
 	// If public access is enabled on worker nodes.
 	NodeEnablePublicIpAccess pulumi.BoolPtrInput
 	// The edition of a node server (default: MemoryOptimized).
 	NodeServerEdition pulumi.StringPtrInput
 	// The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	NodeStorageQuotaInMb pulumi.Float64PtrInput
+	NodeStorageQuotaInMb pulumi.IntPtrInput
 	// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-	NodeVCores pulumi.Float64PtrInput
+	NodeVCores pulumi.IntPtrInput
 	// Date and time in UTC (ISO8601 format) for cluster restore.
 	PointInTimeUTC pulumi.StringPtrInput
 	// The major PostgreSQL version on all cluster servers.
@@ -281,13 +284,13 @@ func (o ClusterOutput) CoordinatorServerEdition() pulumi.StringPtrOutput {
 }
 
 // The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-func (o ClusterOutput) CoordinatorStorageQuotaInMb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.Float64PtrOutput { return v.CoordinatorStorageQuotaInMb }).(pulumi.Float64PtrOutput)
+func (o ClusterOutput) CoordinatorStorageQuotaInMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.CoordinatorStorageQuotaInMb }).(pulumi.IntPtrOutput)
 }
 
 // The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-func (o ClusterOutput) CoordinatorVCores() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.Float64PtrOutput { return v.CoordinatorVCores }).(pulumi.Float64PtrOutput)
+func (o ClusterOutput) CoordinatorVCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.CoordinatorVCores }).(pulumi.IntPtrOutput)
 }
 
 // The earliest restore point time (ISO8601 format) for the cluster.
@@ -300,7 +303,7 @@ func (o ClusterOutput) EnableHa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableHa }).(pulumi.BoolPtrOutput)
 }
 
-// If shards on coordinator is enabled or not for the cluster.
+// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
 func (o ClusterOutput) EnableShardsOnCoordinator() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableShardsOnCoordinator }).(pulumi.BoolPtrOutput)
 }
@@ -321,8 +324,8 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 }
 
 // Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
-func (o ClusterOutput) NodeCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.Float64PtrOutput { return v.NodeCount }).(pulumi.Float64PtrOutput)
+func (o ClusterOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
 // If public access is enabled on worker nodes.
@@ -336,13 +339,13 @@ func (o ClusterOutput) NodeServerEdition() pulumi.StringPtrOutput {
 }
 
 // The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-func (o ClusterOutput) NodeStorageQuotaInMb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.Float64PtrOutput { return v.NodeStorageQuotaInMb }).(pulumi.Float64PtrOutput)
+func (o ClusterOutput) NodeStorageQuotaInMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NodeStorageQuotaInMb }).(pulumi.IntPtrOutput)
 }
 
 // The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-func (o ClusterOutput) NodeVCores() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.Float64PtrOutput { return v.NodeVCores }).(pulumi.Float64PtrOutput)
+func (o ClusterOutput) NodeVCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NodeVCores }).(pulumi.IntPtrOutput)
 }
 
 // Date and time in UTC (ISO8601 format) for cluster restore.

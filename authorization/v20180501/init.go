@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,16 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:authorization/v20180501:PolicyAssignment":
-		r = &PolicyAssignment{}
 	case "azure-native:authorization/v20180501:PolicyDefinition":
 		r = &PolicyDefinition{}
 	case "azure-native:authorization/v20180501:PolicyDefinitionAtManagementGroup":
 		r = &PolicyDefinitionAtManagementGroup{}
-	case "azure-native:authorization/v20180501:PolicySetDefinition":
-		r = &PolicySetDefinition{}
-	case "azure-native:authorization/v20180501:PolicySetDefinitionAtManagementGroup":
-		r = &PolicySetDefinitionAtManagementGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

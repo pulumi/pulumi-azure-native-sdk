@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the tenant configuration.
-// API Version: 2020-09-01-preview.
+// Azure REST API version: 2020-09-01-preview.
 func LookupTenantConfiguration(ctx *pulumi.Context, args *LookupTenantConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupTenantConfigurationResult, error) {
 	var rv LookupTenantConfigurationResult
 	err := ctx.Invoke("azure-native:portal:getTenantConfiguration", args, &rv, opts...)

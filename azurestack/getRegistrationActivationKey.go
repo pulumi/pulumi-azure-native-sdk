@@ -11,7 +11,7 @@ import (
 )
 
 // Returns Azure Stack Activation Key.
-// API Version: 2017-06-01.
+// Azure REST API version: 2022-06-01.
 func GetRegistrationActivationKey(ctx *pulumi.Context, args *GetRegistrationActivationKeyArgs, opts ...pulumi.InvokeOption) (*GetRegistrationActivationKeyResult, error) {
 	var rv GetRegistrationActivationKeyResult
 	err := ctx.Invoke("azure-native:azurestack:getRegistrationActivationKey", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the report for a resource group under a subscription by report name.
-// API Version: 2018-08-01-preview.
+// Azure REST API version: 2018-08-01-preview.
 func LookupReportByResourceGroupName(ctx *pulumi.Context, args *LookupReportByResourceGroupNameArgs, opts ...pulumi.InvokeOption) (*LookupReportByResourceGroupNameResult, error) {
 	var rv LookupReportByResourceGroupNameResult
 	err := ctx.Invoke("azure-native:costmanagement:getReportByResourceGroupName", args, &rv, opts...)

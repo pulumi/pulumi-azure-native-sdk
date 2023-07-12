@@ -10,6 +10,2162 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
+type AccessKeyInfoBase struct {
+	// The authentication type.
+	// Expected value is 'accessKey'.
+	AuthType string `pulumi:"authType"`
+	// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+	Permissions []string `pulumi:"permissions"`
+}
+
+// The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
+type AccessKeyInfoBaseResponse struct {
+	// The authentication type.
+	// Expected value is 'accessKey'.
+	AuthType string `pulumi:"authType"`
+	// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+	Permissions []string `pulumi:"permissions"`
+}
+
+// The resource properties when type is Azure Key Vault
+type AzureKeyVaultProperties struct {
+	// True if connect via Kubernetes CSI Driver.
+	ConnectAsKubernetesCsiDriver *bool `pulumi:"connectAsKubernetesCsiDriver"`
+	// The azure resource type.
+	// Expected value is 'KeyVault'.
+	Type string `pulumi:"type"`
+}
+
+// The resource properties when type is Azure Key Vault
+type AzureKeyVaultPropertiesResponse struct {
+	// True if connect via Kubernetes CSI Driver.
+	ConnectAsKubernetesCsiDriver *bool `pulumi:"connectAsKubernetesCsiDriver"`
+	// The azure resource type.
+	// Expected value is 'KeyVault'.
+	Type string `pulumi:"type"`
+}
+
+// The azure resource info when target service type is AzureResource
+type AzureResource struct {
+	// The Id of azure resource.
+	Id *string `pulumi:"id"`
+	// The azure resource connection related properties.
+	ResourceProperties *AzureKeyVaultProperties `pulumi:"resourceProperties"`
+	// The target service type.
+	// Expected value is 'AzureResource'.
+	Type string `pulumi:"type"`
+}
+
+// The azure resource info when target service type is AzureResource
+type AzureResourceResponse struct {
+	// The Id of azure resource.
+	Id *string `pulumi:"id"`
+	// The azure resource connection related properties.
+	ResourceProperties *AzureKeyVaultPropertiesResponse `pulumi:"resourceProperties"`
+	// The target service type.
+	// Expected value is 'AzureResource'.
+	Type string `pulumi:"type"`
+}
+
+// The represent of basic error
+type BasicErrorDryrunPrerequisiteResultResponse struct {
+	// The error code.
+	Code *string `pulumi:"code"`
+	// The error message.
+	Message *string `pulumi:"message"`
+	// The type of dryrun result.
+	// Expected value is 'basicError'.
+	Type string `pulumi:"type"`
+}
+
+// The configuration information, used to generate configurations or save to applications
+type ConfigurationInfo struct {
+	// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+	Action *string `pulumi:"action"`
+	// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+	AdditionalConfigurations map[string]string `pulumi:"additionalConfigurations"`
+	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
+	CustomizedKeys map[string]string `pulumi:"customizedKeys"`
+	// Indicates some additional properties for dapr client type
+	DaprProperties *DaprProperties `pulumi:"daprProperties"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+}
+
+// ConfigurationInfoInput is an input type that accepts ConfigurationInfoArgs and ConfigurationInfoOutput values.
+// You can construct a concrete instance of `ConfigurationInfoInput` via:
+//
+//	ConfigurationInfoArgs{...}
+type ConfigurationInfoInput interface {
+	pulumi.Input
+
+	ToConfigurationInfoOutput() ConfigurationInfoOutput
+	ToConfigurationInfoOutputWithContext(context.Context) ConfigurationInfoOutput
+}
+
+// The configuration information, used to generate configurations or save to applications
+type ConfigurationInfoArgs struct {
+	// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+	AdditionalConfigurations pulumi.StringMapInput `pulumi:"additionalConfigurations"`
+	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
+	CustomizedKeys pulumi.StringMapInput `pulumi:"customizedKeys"`
+	// Indicates some additional properties for dapr client type
+	DaprProperties DaprPropertiesPtrInput `pulumi:"daprProperties"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
+}
+
+func (ConfigurationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationInfo)(nil)).Elem()
+}
+
+func (i ConfigurationInfoArgs) ToConfigurationInfoOutput() ConfigurationInfoOutput {
+	return i.ToConfigurationInfoOutputWithContext(context.Background())
+}
+
+func (i ConfigurationInfoArgs) ToConfigurationInfoOutputWithContext(ctx context.Context) ConfigurationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationInfoOutput)
+}
+
+func (i ConfigurationInfoArgs) ToConfigurationInfoPtrOutput() ConfigurationInfoPtrOutput {
+	return i.ToConfigurationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigurationInfoArgs) ToConfigurationInfoPtrOutputWithContext(ctx context.Context) ConfigurationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationInfoOutput).ToConfigurationInfoPtrOutputWithContext(ctx)
+}
+
+// ConfigurationInfoPtrInput is an input type that accepts ConfigurationInfoArgs, ConfigurationInfoPtr and ConfigurationInfoPtrOutput values.
+// You can construct a concrete instance of `ConfigurationInfoPtrInput` via:
+//
+//	        ConfigurationInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigurationInfoPtrInput interface {
+	pulumi.Input
+
+	ToConfigurationInfoPtrOutput() ConfigurationInfoPtrOutput
+	ToConfigurationInfoPtrOutputWithContext(context.Context) ConfigurationInfoPtrOutput
+}
+
+type configurationInfoPtrType ConfigurationInfoArgs
+
+func ConfigurationInfoPtr(v *ConfigurationInfoArgs) ConfigurationInfoPtrInput {
+	return (*configurationInfoPtrType)(v)
+}
+
+func (*configurationInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationInfo)(nil)).Elem()
+}
+
+func (i *configurationInfoPtrType) ToConfigurationInfoPtrOutput() ConfigurationInfoPtrOutput {
+	return i.ToConfigurationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *configurationInfoPtrType) ToConfigurationInfoPtrOutputWithContext(ctx context.Context) ConfigurationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationInfoPtrOutput)
+}
+
+// The configuration information, used to generate configurations or save to applications
+type ConfigurationInfoOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationInfo)(nil)).Elem()
+}
+
+func (o ConfigurationInfoOutput) ToConfigurationInfoOutput() ConfigurationInfoOutput {
+	return o
+}
+
+func (o ConfigurationInfoOutput) ToConfigurationInfoOutputWithContext(ctx context.Context) ConfigurationInfoOutput {
+	return o
+}
+
+func (o ConfigurationInfoOutput) ToConfigurationInfoPtrOutput() ConfigurationInfoPtrOutput {
+	return o.ToConfigurationInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationInfoOutput) ToConfigurationInfoPtrOutputWithContext(ctx context.Context) ConfigurationInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationInfo) *ConfigurationInfo {
+		return &v
+	}).(ConfigurationInfoPtrOutput)
+}
+
+// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+func (o ConfigurationInfoOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationInfo) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+func (o ConfigurationInfoOutput) AdditionalConfigurations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigurationInfo) map[string]string { return v.AdditionalConfigurations }).(pulumi.StringMapOutput)
+}
+
+// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
+func (o ConfigurationInfoOutput) CustomizedKeys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigurationInfo) map[string]string { return v.CustomizedKeys }).(pulumi.StringMapOutput)
+}
+
+// Indicates some additional properties for dapr client type
+func (o ConfigurationInfoOutput) DaprProperties() DaprPropertiesPtrOutput {
+	return o.ApplyT(func(v ConfigurationInfo) *DaprProperties { return v.DaprProperties }).(DaprPropertiesPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ConfigurationInfoOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationInfo) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+type ConfigurationInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationInfo)(nil)).Elem()
+}
+
+func (o ConfigurationInfoPtrOutput) ToConfigurationInfoPtrOutput() ConfigurationInfoPtrOutput {
+	return o
+}
+
+func (o ConfigurationInfoPtrOutput) ToConfigurationInfoPtrOutputWithContext(ctx context.Context) ConfigurationInfoPtrOutput {
+	return o
+}
+
+func (o ConfigurationInfoPtrOutput) Elem() ConfigurationInfoOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) ConfigurationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationInfo
+		return ret
+	}).(ConfigurationInfoOutput)
+}
+
+// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+func (o ConfigurationInfoPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+func (o ConfigurationInfoPtrOutput) AdditionalConfigurations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConfigurations
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
+func (o ConfigurationInfoPtrOutput) CustomizedKeys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomizedKeys
+	}).(pulumi.StringMapOutput)
+}
+
+// Indicates some additional properties for dapr client type
+func (o ConfigurationInfoPtrOutput) DaprProperties() DaprPropertiesPtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) *DaprProperties {
+		if v == nil {
+			return nil
+		}
+		return v.DaprProperties
+	}).(DaprPropertiesPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ConfigurationInfoPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration information, used to generate configurations or save to applications
+type ConfigurationInfoResponse struct {
+	// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+	Action *string `pulumi:"action"`
+	// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+	AdditionalConfigurations map[string]string `pulumi:"additionalConfigurations"`
+	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
+	CustomizedKeys map[string]string `pulumi:"customizedKeys"`
+	// Indicates some additional properties for dapr client type
+	DaprProperties *DaprPropertiesResponse `pulumi:"daprProperties"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+}
+
+// The configuration information, used to generate configurations or save to applications
+type ConfigurationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationInfoResponse)(nil)).Elem()
+}
+
+func (o ConfigurationInfoResponseOutput) ToConfigurationInfoResponseOutput() ConfigurationInfoResponseOutput {
+	return o
+}
+
+func (o ConfigurationInfoResponseOutput) ToConfigurationInfoResponseOutputWithContext(ctx context.Context) ConfigurationInfoResponseOutput {
+	return o
+}
+
+// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+func (o ConfigurationInfoResponseOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationInfoResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+func (o ConfigurationInfoResponseOutput) AdditionalConfigurations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigurationInfoResponse) map[string]string { return v.AdditionalConfigurations }).(pulumi.StringMapOutput)
+}
+
+// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
+func (o ConfigurationInfoResponseOutput) CustomizedKeys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigurationInfoResponse) map[string]string { return v.CustomizedKeys }).(pulumi.StringMapOutput)
+}
+
+// Indicates some additional properties for dapr client type
+func (o ConfigurationInfoResponseOutput) DaprProperties() DaprPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ConfigurationInfoResponse) *DaprPropertiesResponse { return v.DaprProperties }).(DaprPropertiesResponsePtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ConfigurationInfoResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationInfoResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+type ConfigurationInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationInfoResponse)(nil)).Elem()
+}
+
+func (o ConfigurationInfoResponsePtrOutput) ToConfigurationInfoResponsePtrOutput() ConfigurationInfoResponsePtrOutput {
+	return o
+}
+
+func (o ConfigurationInfoResponsePtrOutput) ToConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ConfigurationInfoResponsePtrOutput {
+	return o
+}
+
+func (o ConfigurationInfoResponsePtrOutput) Elem() ConfigurationInfoResponseOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) ConfigurationInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationInfoResponse
+		return ret
+	}).(ConfigurationInfoResponseOutput)
+}
+
+// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+func (o ConfigurationInfoResponsePtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+func (o ConfigurationInfoResponsePtrOutput) AdditionalConfigurations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConfigurations
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
+func (o ConfigurationInfoResponsePtrOutput) CustomizedKeys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomizedKeys
+	}).(pulumi.StringMapOutput)
+}
+
+// Indicates some additional properties for dapr client type
+func (o ConfigurationInfoResponsePtrOutput) DaprProperties() DaprPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) *DaprPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DaprProperties
+	}).(DaprPropertiesResponsePtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ConfigurationInfoResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service properties when target service type is ConfluentBootstrapServer
+type ConfluentBootstrapServer struct {
+	// The endpoint of service.
+	Endpoint *string `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'ConfluentBootstrapServer'.
+	Type string `pulumi:"type"`
+}
+
+// The service properties when target service type is ConfluentBootstrapServer
+type ConfluentBootstrapServerResponse struct {
+	// The endpoint of service.
+	Endpoint *string `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'ConfluentBootstrapServer'.
+	Type string `pulumi:"type"`
+}
+
+// The service properties when target service type is ConfluentSchemaRegistry
+type ConfluentSchemaRegistry struct {
+	// The endpoint of service.
+	Endpoint *string `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'ConfluentSchemaRegistry'.
+	Type string `pulumi:"type"`
+}
+
+// The service properties when target service type is ConfluentSchemaRegistry
+type ConfluentSchemaRegistryResponse struct {
+	// The endpoint of service.
+	Endpoint *string `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'ConfluentSchemaRegistry'.
+	Type string `pulumi:"type"`
+}
+
+// The dryrun parameters for creation or update a linker
+type CreateOrUpdateDryrunParameters struct {
+	// The name of action for you dryrun job.
+	// Expected value is 'createOrUpdate'.
+	ActionName string `pulumi:"actionName"`
+	// The authentication type.
+	AuthInfo interface{} `pulumi:"authInfo"`
+	// The application client type
+	ClientType *string `pulumi:"clientType"`
+	// The connection information consumed by applications, including secrets, connection strings.
+	ConfigurationInfo *ConfigurationInfo `pulumi:"configurationInfo"`
+	// The network solution.
+	PublicNetworkSolution *PublicNetworkSolution `pulumi:"publicNetworkSolution"`
+	// connection scope in source service.
+	Scope *string `pulumi:"scope"`
+	// An option to store secret value in secure place
+	SecretStore *SecretStore `pulumi:"secretStore"`
+	// The target service properties
+	TargetService interface{} `pulumi:"targetService"`
+	// The VNet solution.
+	VNetSolution *VNetSolution `pulumi:"vNetSolution"`
+}
+
+// CreateOrUpdateDryrunParametersInput is an input type that accepts CreateOrUpdateDryrunParametersArgs and CreateOrUpdateDryrunParametersOutput values.
+// You can construct a concrete instance of `CreateOrUpdateDryrunParametersInput` via:
+//
+//	CreateOrUpdateDryrunParametersArgs{...}
+type CreateOrUpdateDryrunParametersInput interface {
+	pulumi.Input
+
+	ToCreateOrUpdateDryrunParametersOutput() CreateOrUpdateDryrunParametersOutput
+	ToCreateOrUpdateDryrunParametersOutputWithContext(context.Context) CreateOrUpdateDryrunParametersOutput
+}
+
+// The dryrun parameters for creation or update a linker
+type CreateOrUpdateDryrunParametersArgs struct {
+	// The name of action for you dryrun job.
+	// Expected value is 'createOrUpdate'.
+	ActionName pulumi.StringInput `pulumi:"actionName"`
+	// The authentication type.
+	AuthInfo pulumi.Input `pulumi:"authInfo"`
+	// The application client type
+	ClientType pulumi.StringPtrInput `pulumi:"clientType"`
+	// The connection information consumed by applications, including secrets, connection strings.
+	ConfigurationInfo ConfigurationInfoPtrInput `pulumi:"configurationInfo"`
+	// The network solution.
+	PublicNetworkSolution PublicNetworkSolutionPtrInput `pulumi:"publicNetworkSolution"`
+	// connection scope in source service.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// An option to store secret value in secure place
+	SecretStore SecretStorePtrInput `pulumi:"secretStore"`
+	// The target service properties
+	TargetService pulumi.Input `pulumi:"targetService"`
+	// The VNet solution.
+	VNetSolution VNetSolutionPtrInput `pulumi:"vNetSolution"`
+}
+
+func (CreateOrUpdateDryrunParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateOrUpdateDryrunParameters)(nil)).Elem()
+}
+
+func (i CreateOrUpdateDryrunParametersArgs) ToCreateOrUpdateDryrunParametersOutput() CreateOrUpdateDryrunParametersOutput {
+	return i.ToCreateOrUpdateDryrunParametersOutputWithContext(context.Background())
+}
+
+func (i CreateOrUpdateDryrunParametersArgs) ToCreateOrUpdateDryrunParametersOutputWithContext(ctx context.Context) CreateOrUpdateDryrunParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreateOrUpdateDryrunParametersOutput)
+}
+
+func (i CreateOrUpdateDryrunParametersArgs) ToCreateOrUpdateDryrunParametersPtrOutput() CreateOrUpdateDryrunParametersPtrOutput {
+	return i.ToCreateOrUpdateDryrunParametersPtrOutputWithContext(context.Background())
+}
+
+func (i CreateOrUpdateDryrunParametersArgs) ToCreateOrUpdateDryrunParametersPtrOutputWithContext(ctx context.Context) CreateOrUpdateDryrunParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreateOrUpdateDryrunParametersOutput).ToCreateOrUpdateDryrunParametersPtrOutputWithContext(ctx)
+}
+
+// CreateOrUpdateDryrunParametersPtrInput is an input type that accepts CreateOrUpdateDryrunParametersArgs, CreateOrUpdateDryrunParametersPtr and CreateOrUpdateDryrunParametersPtrOutput values.
+// You can construct a concrete instance of `CreateOrUpdateDryrunParametersPtrInput` via:
+//
+//	        CreateOrUpdateDryrunParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type CreateOrUpdateDryrunParametersPtrInput interface {
+	pulumi.Input
+
+	ToCreateOrUpdateDryrunParametersPtrOutput() CreateOrUpdateDryrunParametersPtrOutput
+	ToCreateOrUpdateDryrunParametersPtrOutputWithContext(context.Context) CreateOrUpdateDryrunParametersPtrOutput
+}
+
+type createOrUpdateDryrunParametersPtrType CreateOrUpdateDryrunParametersArgs
+
+func CreateOrUpdateDryrunParametersPtr(v *CreateOrUpdateDryrunParametersArgs) CreateOrUpdateDryrunParametersPtrInput {
+	return (*createOrUpdateDryrunParametersPtrType)(v)
+}
+
+func (*createOrUpdateDryrunParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreateOrUpdateDryrunParameters)(nil)).Elem()
+}
+
+func (i *createOrUpdateDryrunParametersPtrType) ToCreateOrUpdateDryrunParametersPtrOutput() CreateOrUpdateDryrunParametersPtrOutput {
+	return i.ToCreateOrUpdateDryrunParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *createOrUpdateDryrunParametersPtrType) ToCreateOrUpdateDryrunParametersPtrOutputWithContext(ctx context.Context) CreateOrUpdateDryrunParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreateOrUpdateDryrunParametersPtrOutput)
+}
+
+// The dryrun parameters for creation or update a linker
+type CreateOrUpdateDryrunParametersOutput struct{ *pulumi.OutputState }
+
+func (CreateOrUpdateDryrunParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateOrUpdateDryrunParameters)(nil)).Elem()
+}
+
+func (o CreateOrUpdateDryrunParametersOutput) ToCreateOrUpdateDryrunParametersOutput() CreateOrUpdateDryrunParametersOutput {
+	return o
+}
+
+func (o CreateOrUpdateDryrunParametersOutput) ToCreateOrUpdateDryrunParametersOutputWithContext(ctx context.Context) CreateOrUpdateDryrunParametersOutput {
+	return o
+}
+
+func (o CreateOrUpdateDryrunParametersOutput) ToCreateOrUpdateDryrunParametersPtrOutput() CreateOrUpdateDryrunParametersPtrOutput {
+	return o.ToCreateOrUpdateDryrunParametersPtrOutputWithContext(context.Background())
+}
+
+func (o CreateOrUpdateDryrunParametersOutput) ToCreateOrUpdateDryrunParametersPtrOutputWithContext(ctx context.Context) CreateOrUpdateDryrunParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreateOrUpdateDryrunParameters) *CreateOrUpdateDryrunParameters {
+		return &v
+	}).(CreateOrUpdateDryrunParametersPtrOutput)
+}
+
+// The name of action for you dryrun job.
+// Expected value is 'createOrUpdate'.
+func (o CreateOrUpdateDryrunParametersOutput) ActionName() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) string { return v.ActionName }).(pulumi.StringOutput)
+}
+
+// The authentication type.
+func (o CreateOrUpdateDryrunParametersOutput) AuthInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) interface{} { return v.AuthInfo }).(pulumi.AnyOutput)
+}
+
+// The application client type
+func (o CreateOrUpdateDryrunParametersOutput) ClientType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) *string { return v.ClientType }).(pulumi.StringPtrOutput)
+}
+
+// The connection information consumed by applications, including secrets, connection strings.
+func (o CreateOrUpdateDryrunParametersOutput) ConfigurationInfo() ConfigurationInfoPtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) *ConfigurationInfo { return v.ConfigurationInfo }).(ConfigurationInfoPtrOutput)
+}
+
+// The network solution.
+func (o CreateOrUpdateDryrunParametersOutput) PublicNetworkSolution() PublicNetworkSolutionPtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) *PublicNetworkSolution { return v.PublicNetworkSolution }).(PublicNetworkSolutionPtrOutput)
+}
+
+// connection scope in source service.
+func (o CreateOrUpdateDryrunParametersOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// An option to store secret value in secure place
+func (o CreateOrUpdateDryrunParametersOutput) SecretStore() SecretStorePtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) *SecretStore { return v.SecretStore }).(SecretStorePtrOutput)
+}
+
+// The target service properties
+func (o CreateOrUpdateDryrunParametersOutput) TargetService() pulumi.AnyOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) interface{} { return v.TargetService }).(pulumi.AnyOutput)
+}
+
+// The VNet solution.
+func (o CreateOrUpdateDryrunParametersOutput) VNetSolution() VNetSolutionPtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParameters) *VNetSolution { return v.VNetSolution }).(VNetSolutionPtrOutput)
+}
+
+type CreateOrUpdateDryrunParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (CreateOrUpdateDryrunParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreateOrUpdateDryrunParameters)(nil)).Elem()
+}
+
+func (o CreateOrUpdateDryrunParametersPtrOutput) ToCreateOrUpdateDryrunParametersPtrOutput() CreateOrUpdateDryrunParametersPtrOutput {
+	return o
+}
+
+func (o CreateOrUpdateDryrunParametersPtrOutput) ToCreateOrUpdateDryrunParametersPtrOutputWithContext(ctx context.Context) CreateOrUpdateDryrunParametersPtrOutput {
+	return o
+}
+
+func (o CreateOrUpdateDryrunParametersPtrOutput) Elem() CreateOrUpdateDryrunParametersOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) CreateOrUpdateDryrunParameters {
+		if v != nil {
+			return *v
+		}
+		var ret CreateOrUpdateDryrunParameters
+		return ret
+	}).(CreateOrUpdateDryrunParametersOutput)
+}
+
+// The name of action for you dryrun job.
+// Expected value is 'createOrUpdate'.
+func (o CreateOrUpdateDryrunParametersPtrOutput) ActionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication type.
+func (o CreateOrUpdateDryrunParametersPtrOutput) AuthInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AuthInfo
+	}).(pulumi.AnyOutput)
+}
+
+// The application client type
+func (o CreateOrUpdateDryrunParametersPtrOutput) ClientType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connection information consumed by applications, including secrets, connection strings.
+func (o CreateOrUpdateDryrunParametersPtrOutput) ConfigurationInfo() ConfigurationInfoPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) *ConfigurationInfo {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationInfo
+	}).(ConfigurationInfoPtrOutput)
+}
+
+// The network solution.
+func (o CreateOrUpdateDryrunParametersPtrOutput) PublicNetworkSolution() PublicNetworkSolutionPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) *PublicNetworkSolution {
+		if v == nil {
+			return nil
+		}
+		return v.PublicNetworkSolution
+	}).(PublicNetworkSolutionPtrOutput)
+}
+
+// connection scope in source service.
+func (o CreateOrUpdateDryrunParametersPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// An option to store secret value in secure place
+func (o CreateOrUpdateDryrunParametersPtrOutput) SecretStore() SecretStorePtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) *SecretStore {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStore
+	}).(SecretStorePtrOutput)
+}
+
+// The target service properties
+func (o CreateOrUpdateDryrunParametersPtrOutput) TargetService() pulumi.AnyOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.TargetService
+	}).(pulumi.AnyOutput)
+}
+
+// The VNet solution.
+func (o CreateOrUpdateDryrunParametersPtrOutput) VNetSolution() VNetSolutionPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParameters) *VNetSolution {
+		if v == nil {
+			return nil
+		}
+		return v.VNetSolution
+	}).(VNetSolutionPtrOutput)
+}
+
+// The dryrun parameters for creation or update a linker
+type CreateOrUpdateDryrunParametersResponse struct {
+	// The name of action for you dryrun job.
+	// Expected value is 'createOrUpdate'.
+	ActionName string `pulumi:"actionName"`
+	// The authentication type.
+	AuthInfo interface{} `pulumi:"authInfo"`
+	// The application client type
+	ClientType *string `pulumi:"clientType"`
+	// The connection information consumed by applications, including secrets, connection strings.
+	ConfigurationInfo *ConfigurationInfoResponse `pulumi:"configurationInfo"`
+	// The provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The network solution.
+	PublicNetworkSolution *PublicNetworkSolutionResponse `pulumi:"publicNetworkSolution"`
+	// connection scope in source service.
+	Scope *string `pulumi:"scope"`
+	// An option to store secret value in secure place
+	SecretStore *SecretStoreResponse `pulumi:"secretStore"`
+	// The target service properties
+	TargetService interface{} `pulumi:"targetService"`
+	// The VNet solution.
+	VNetSolution *VNetSolutionResponse `pulumi:"vNetSolution"`
+}
+
+// The dryrun parameters for creation or update a linker
+type CreateOrUpdateDryrunParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (CreateOrUpdateDryrunParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateOrUpdateDryrunParametersResponse)(nil)).Elem()
+}
+
+func (o CreateOrUpdateDryrunParametersResponseOutput) ToCreateOrUpdateDryrunParametersResponseOutput() CreateOrUpdateDryrunParametersResponseOutput {
+	return o
+}
+
+func (o CreateOrUpdateDryrunParametersResponseOutput) ToCreateOrUpdateDryrunParametersResponseOutputWithContext(ctx context.Context) CreateOrUpdateDryrunParametersResponseOutput {
+	return o
+}
+
+// The name of action for you dryrun job.
+// Expected value is 'createOrUpdate'.
+func (o CreateOrUpdateDryrunParametersResponseOutput) ActionName() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) string { return v.ActionName }).(pulumi.StringOutput)
+}
+
+// The authentication type.
+func (o CreateOrUpdateDryrunParametersResponseOutput) AuthInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) interface{} { return v.AuthInfo }).(pulumi.AnyOutput)
+}
+
+// The application client type
+func (o CreateOrUpdateDryrunParametersResponseOutput) ClientType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) *string { return v.ClientType }).(pulumi.StringPtrOutput)
+}
+
+// The connection information consumed by applications, including secrets, connection strings.
+func (o CreateOrUpdateDryrunParametersResponseOutput) ConfigurationInfo() ConfigurationInfoResponsePtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) *ConfigurationInfoResponse { return v.ConfigurationInfo }).(ConfigurationInfoResponsePtrOutput)
+}
+
+// The provisioning state.
+func (o CreateOrUpdateDryrunParametersResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The network solution.
+func (o CreateOrUpdateDryrunParametersResponseOutput) PublicNetworkSolution() PublicNetworkSolutionResponsePtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) *PublicNetworkSolutionResponse {
+		return v.PublicNetworkSolution
+	}).(PublicNetworkSolutionResponsePtrOutput)
+}
+
+// connection scope in source service.
+func (o CreateOrUpdateDryrunParametersResponseOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// An option to store secret value in secure place
+func (o CreateOrUpdateDryrunParametersResponseOutput) SecretStore() SecretStoreResponsePtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) *SecretStoreResponse { return v.SecretStore }).(SecretStoreResponsePtrOutput)
+}
+
+// The target service properties
+func (o CreateOrUpdateDryrunParametersResponseOutput) TargetService() pulumi.AnyOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) interface{} { return v.TargetService }).(pulumi.AnyOutput)
+}
+
+// The VNet solution.
+func (o CreateOrUpdateDryrunParametersResponseOutput) VNetSolution() VNetSolutionResponsePtrOutput {
+	return o.ApplyT(func(v CreateOrUpdateDryrunParametersResponse) *VNetSolutionResponse { return v.VNetSolution }).(VNetSolutionResponsePtrOutput)
+}
+
+type CreateOrUpdateDryrunParametersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CreateOrUpdateDryrunParametersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreateOrUpdateDryrunParametersResponse)(nil)).Elem()
+}
+
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) ToCreateOrUpdateDryrunParametersResponsePtrOutput() CreateOrUpdateDryrunParametersResponsePtrOutput {
+	return o
+}
+
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) ToCreateOrUpdateDryrunParametersResponsePtrOutputWithContext(ctx context.Context) CreateOrUpdateDryrunParametersResponsePtrOutput {
+	return o
+}
+
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) Elem() CreateOrUpdateDryrunParametersResponseOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) CreateOrUpdateDryrunParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CreateOrUpdateDryrunParametersResponse
+		return ret
+	}).(CreateOrUpdateDryrunParametersResponseOutput)
+}
+
+// The name of action for you dryrun job.
+// Expected value is 'createOrUpdate'.
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) ActionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication type.
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) AuthInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AuthInfo
+	}).(pulumi.AnyOutput)
+}
+
+// The application client type
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) ClientType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connection information consumed by applications, including secrets, connection strings.
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) ConfigurationInfo() ConfigurationInfoResponsePtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) *ConfigurationInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationInfo
+	}).(ConfigurationInfoResponsePtrOutput)
+}
+
+// The provisioning state.
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network solution.
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) PublicNetworkSolution() PublicNetworkSolutionResponsePtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) *PublicNetworkSolutionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicNetworkSolution
+	}).(PublicNetworkSolutionResponsePtrOutput)
+}
+
+// connection scope in source service.
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// An option to store secret value in secure place
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) SecretStore() SecretStoreResponsePtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) *SecretStoreResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStore
+	}).(SecretStoreResponsePtrOutput)
+}
+
+// The target service properties
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) TargetService() pulumi.AnyOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.TargetService
+	}).(pulumi.AnyOutput)
+}
+
+// The VNet solution.
+func (o CreateOrUpdateDryrunParametersResponsePtrOutput) VNetSolution() VNetSolutionResponsePtrOutput {
+	return o.ApplyT(func(v *CreateOrUpdateDryrunParametersResponse) *VNetSolutionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VNetSolution
+	}).(VNetSolutionResponsePtrOutput)
+}
+
+// The dapr component metadata.
+type DaprMetadata struct {
+	// Metadata property name.
+	Name *string `pulumi:"name"`
+	// The secret name where dapr could get value
+	SecretRef *string `pulumi:"secretRef"`
+	// Metadata property value.
+	Value *string `pulumi:"value"`
+}
+
+// DaprMetadataInput is an input type that accepts DaprMetadataArgs and DaprMetadataOutput values.
+// You can construct a concrete instance of `DaprMetadataInput` via:
+//
+//	DaprMetadataArgs{...}
+type DaprMetadataInput interface {
+	pulumi.Input
+
+	ToDaprMetadataOutput() DaprMetadataOutput
+	ToDaprMetadataOutputWithContext(context.Context) DaprMetadataOutput
+}
+
+// The dapr component metadata.
+type DaprMetadataArgs struct {
+	// Metadata property name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The secret name where dapr could get value
+	SecretRef pulumi.StringPtrInput `pulumi:"secretRef"`
+	// Metadata property value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DaprMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprMetadata)(nil)).Elem()
+}
+
+func (i DaprMetadataArgs) ToDaprMetadataOutput() DaprMetadataOutput {
+	return i.ToDaprMetadataOutputWithContext(context.Background())
+}
+
+func (i DaprMetadataArgs) ToDaprMetadataOutputWithContext(ctx context.Context) DaprMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprMetadataOutput)
+}
+
+// DaprMetadataArrayInput is an input type that accepts DaprMetadataArray and DaprMetadataArrayOutput values.
+// You can construct a concrete instance of `DaprMetadataArrayInput` via:
+//
+//	DaprMetadataArray{ DaprMetadataArgs{...} }
+type DaprMetadataArrayInput interface {
+	pulumi.Input
+
+	ToDaprMetadataArrayOutput() DaprMetadataArrayOutput
+	ToDaprMetadataArrayOutputWithContext(context.Context) DaprMetadataArrayOutput
+}
+
+type DaprMetadataArray []DaprMetadataInput
+
+func (DaprMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprMetadata)(nil)).Elem()
+}
+
+func (i DaprMetadataArray) ToDaprMetadataArrayOutput() DaprMetadataArrayOutput {
+	return i.ToDaprMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i DaprMetadataArray) ToDaprMetadataArrayOutputWithContext(ctx context.Context) DaprMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprMetadataArrayOutput)
+}
+
+// The dapr component metadata.
+type DaprMetadataOutput struct{ *pulumi.OutputState }
+
+func (DaprMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprMetadata)(nil)).Elem()
+}
+
+func (o DaprMetadataOutput) ToDaprMetadataOutput() DaprMetadataOutput {
+	return o
+}
+
+func (o DaprMetadataOutput) ToDaprMetadataOutputWithContext(ctx context.Context) DaprMetadataOutput {
+	return o
+}
+
+// Metadata property name.
+func (o DaprMetadataOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The secret name where dapr could get value
+func (o DaprMetadataOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadata) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
+}
+
+// Metadata property value.
+func (o DaprMetadataOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadata) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DaprMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (DaprMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprMetadata)(nil)).Elem()
+}
+
+func (o DaprMetadataArrayOutput) ToDaprMetadataArrayOutput() DaprMetadataArrayOutput {
+	return o
+}
+
+func (o DaprMetadataArrayOutput) ToDaprMetadataArrayOutputWithContext(ctx context.Context) DaprMetadataArrayOutput {
+	return o
+}
+
+func (o DaprMetadataArrayOutput) Index(i pulumi.IntInput) DaprMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DaprMetadata {
+		return vs[0].([]DaprMetadata)[vs[1].(int)]
+	}).(DaprMetadataOutput)
+}
+
+// The dapr component metadata.
+type DaprMetadataResponse struct {
+	// Metadata property name.
+	Name *string `pulumi:"name"`
+	// The secret name where dapr could get value
+	SecretRef *string `pulumi:"secretRef"`
+	// Metadata property value.
+	Value *string `pulumi:"value"`
+}
+
+// The dapr component metadata.
+type DaprMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprMetadataResponse)(nil)).Elem()
+}
+
+func (o DaprMetadataResponseOutput) ToDaprMetadataResponseOutput() DaprMetadataResponseOutput {
+	return o
+}
+
+func (o DaprMetadataResponseOutput) ToDaprMetadataResponseOutputWithContext(ctx context.Context) DaprMetadataResponseOutput {
+	return o
+}
+
+// Metadata property name.
+func (o DaprMetadataResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The secret name where dapr could get value
+func (o DaprMetadataResponseOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
+}
+
+// Metadata property value.
+func (o DaprMetadataResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DaprMetadataResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DaprMetadataResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprMetadataResponse)(nil)).Elem()
+}
+
+func (o DaprMetadataResponseArrayOutput) ToDaprMetadataResponseArrayOutput() DaprMetadataResponseArrayOutput {
+	return o
+}
+
+func (o DaprMetadataResponseArrayOutput) ToDaprMetadataResponseArrayOutputWithContext(ctx context.Context) DaprMetadataResponseArrayOutput {
+	return o
+}
+
+func (o DaprMetadataResponseArrayOutput) Index(i pulumi.IntInput) DaprMetadataResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DaprMetadataResponse {
+		return vs[0].([]DaprMetadataResponse)[vs[1].(int)]
+	}).(DaprMetadataResponseOutput)
+}
+
+// Indicates some additional properties for dapr client type
+type DaprProperties struct {
+	// The dapr component type
+	ComponentType *string `pulumi:"componentType"`
+	// Additional dapr metadata
+	Metadata []DaprMetadata `pulumi:"metadata"`
+	// The dapr component scopes
+	Scopes []string `pulumi:"scopes"`
+	// The name of a secret store dapr to retrieve secret
+	SecretStoreComponent *string `pulumi:"secretStoreComponent"`
+	// The dapr component version
+	Version *string `pulumi:"version"`
+}
+
+// DaprPropertiesInput is an input type that accepts DaprPropertiesArgs and DaprPropertiesOutput values.
+// You can construct a concrete instance of `DaprPropertiesInput` via:
+//
+//	DaprPropertiesArgs{...}
+type DaprPropertiesInput interface {
+	pulumi.Input
+
+	ToDaprPropertiesOutput() DaprPropertiesOutput
+	ToDaprPropertiesOutputWithContext(context.Context) DaprPropertiesOutput
+}
+
+// Indicates some additional properties for dapr client type
+type DaprPropertiesArgs struct {
+	// The dapr component type
+	ComponentType pulumi.StringPtrInput `pulumi:"componentType"`
+	// Additional dapr metadata
+	Metadata DaprMetadataArrayInput `pulumi:"metadata"`
+	// The dapr component scopes
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The name of a secret store dapr to retrieve secret
+	SecretStoreComponent pulumi.StringPtrInput `pulumi:"secretStoreComponent"`
+	// The dapr component version
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (DaprPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprProperties)(nil)).Elem()
+}
+
+func (i DaprPropertiesArgs) ToDaprPropertiesOutput() DaprPropertiesOutput {
+	return i.ToDaprPropertiesOutputWithContext(context.Background())
+}
+
+func (i DaprPropertiesArgs) ToDaprPropertiesOutputWithContext(ctx context.Context) DaprPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprPropertiesOutput)
+}
+
+func (i DaprPropertiesArgs) ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput {
+	return i.ToDaprPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DaprPropertiesArgs) ToDaprPropertiesPtrOutputWithContext(ctx context.Context) DaprPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprPropertiesOutput).ToDaprPropertiesPtrOutputWithContext(ctx)
+}
+
+// DaprPropertiesPtrInput is an input type that accepts DaprPropertiesArgs, DaprPropertiesPtr and DaprPropertiesPtrOutput values.
+// You can construct a concrete instance of `DaprPropertiesPtrInput` via:
+//
+//	        DaprPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput
+	ToDaprPropertiesPtrOutputWithContext(context.Context) DaprPropertiesPtrOutput
+}
+
+type daprPropertiesPtrType DaprPropertiesArgs
+
+func DaprPropertiesPtr(v *DaprPropertiesArgs) DaprPropertiesPtrInput {
+	return (*daprPropertiesPtrType)(v)
+}
+
+func (*daprPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprProperties)(nil)).Elem()
+}
+
+func (i *daprPropertiesPtrType) ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput {
+	return i.ToDaprPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *daprPropertiesPtrType) ToDaprPropertiesPtrOutputWithContext(ctx context.Context) DaprPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprPropertiesPtrOutput)
+}
+
+// Indicates some additional properties for dapr client type
+type DaprPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DaprPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprProperties)(nil)).Elem()
+}
+
+func (o DaprPropertiesOutput) ToDaprPropertiesOutput() DaprPropertiesOutput {
+	return o
+}
+
+func (o DaprPropertiesOutput) ToDaprPropertiesOutputWithContext(ctx context.Context) DaprPropertiesOutput {
+	return o
+}
+
+func (o DaprPropertiesOutput) ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput {
+	return o.ToDaprPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DaprPropertiesOutput) ToDaprPropertiesPtrOutputWithContext(ctx context.Context) DaprPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprProperties) *DaprProperties {
+		return &v
+	}).(DaprPropertiesPtrOutput)
+}
+
+// The dapr component type
+func (o DaprPropertiesOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprProperties) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
+}
+
+// Additional dapr metadata
+func (o DaprPropertiesOutput) Metadata() DaprMetadataArrayOutput {
+	return o.ApplyT(func(v DaprProperties) []DaprMetadata { return v.Metadata }).(DaprMetadataArrayOutput)
+}
+
+// The dapr component scopes
+func (o DaprPropertiesOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DaprProperties) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The name of a secret store dapr to retrieve secret
+func (o DaprPropertiesOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprProperties) *string { return v.SecretStoreComponent }).(pulumi.StringPtrOutput)
+}
+
+// The dapr component version
+func (o DaprPropertiesOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprProperties) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DaprPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprProperties)(nil)).Elem()
+}
+
+func (o DaprPropertiesPtrOutput) ToDaprPropertiesPtrOutput() DaprPropertiesPtrOutput {
+	return o
+}
+
+func (o DaprPropertiesPtrOutput) ToDaprPropertiesPtrOutputWithContext(ctx context.Context) DaprPropertiesPtrOutput {
+	return o
+}
+
+func (o DaprPropertiesPtrOutput) Elem() DaprPropertiesOutput {
+	return o.ApplyT(func(v *DaprProperties) DaprProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DaprProperties
+		return ret
+	}).(DaprPropertiesOutput)
+}
+
+// The dapr component type
+func (o DaprPropertiesPtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional dapr metadata
+func (o DaprPropertiesPtrOutput) Metadata() DaprMetadataArrayOutput {
+	return o.ApplyT(func(v *DaprProperties) []DaprMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(DaprMetadataArrayOutput)
+}
+
+// The dapr component scopes
+func (o DaprPropertiesPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DaprProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of a secret store dapr to retrieve secret
+func (o DaprPropertiesPtrOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreComponent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dapr component version
+func (o DaprPropertiesPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates some additional properties for dapr client type
+type DaprPropertiesResponse struct {
+	// The dapr component type
+	ComponentType *string `pulumi:"componentType"`
+	// Additional dapr metadata
+	Metadata []DaprMetadataResponse `pulumi:"metadata"`
+	// The dapr component scopes
+	Scopes []string `pulumi:"scopes"`
+	// The name of a secret store dapr to retrieve secret
+	SecretStoreComponent *string `pulumi:"secretStoreComponent"`
+	// The dapr component version
+	Version *string `pulumi:"version"`
+}
+
+// Indicates some additional properties for dapr client type
+type DaprPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprPropertiesResponse)(nil)).Elem()
+}
+
+func (o DaprPropertiesResponseOutput) ToDaprPropertiesResponseOutput() DaprPropertiesResponseOutput {
+	return o
+}
+
+func (o DaprPropertiesResponseOutput) ToDaprPropertiesResponseOutputWithContext(ctx context.Context) DaprPropertiesResponseOutput {
+	return o
+}
+
+// The dapr component type
+func (o DaprPropertiesResponseOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
+}
+
+// Additional dapr metadata
+func (o DaprPropertiesResponseOutput) Metadata() DaprMetadataResponseArrayOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) []DaprMetadataResponse { return v.Metadata }).(DaprMetadataResponseArrayOutput)
+}
+
+// The dapr component scopes
+func (o DaprPropertiesResponseOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The name of a secret store dapr to retrieve secret
+func (o DaprPropertiesResponseOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) *string { return v.SecretStoreComponent }).(pulumi.StringPtrOutput)
+}
+
+// The dapr component version
+func (o DaprPropertiesResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DaprPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprPropertiesResponse)(nil)).Elem()
+}
+
+func (o DaprPropertiesResponsePtrOutput) ToDaprPropertiesResponsePtrOutput() DaprPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DaprPropertiesResponsePtrOutput) ToDaprPropertiesResponsePtrOutputWithContext(ctx context.Context) DaprPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DaprPropertiesResponsePtrOutput) Elem() DaprPropertiesResponseOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) DaprPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprPropertiesResponse
+		return ret
+	}).(DaprPropertiesResponseOutput)
+}
+
+// The dapr component type
+func (o DaprPropertiesResponsePtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional dapr metadata
+func (o DaprPropertiesResponsePtrOutput) Metadata() DaprMetadataResponseArrayOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) []DaprMetadataResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(DaprMetadataResponseArrayOutput)
+}
+
+// The dapr component scopes
+func (o DaprPropertiesResponsePtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of a secret store dapr to retrieve secret
+func (o DaprPropertiesResponsePtrOutput) SecretStoreComponent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreComponent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dapr component version
+func (o DaprPropertiesResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// The preview of the operations for creation
+type DryrunOperationPreviewResponse struct {
+	// The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
+	Action *string `pulumi:"action"`
+	// The description of the operation
+	Description *string `pulumi:"description"`
+	// The operation name
+	Name *string `pulumi:"name"`
+	// The operation type
+	OperationType *string `pulumi:"operationType"`
+	// The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
+	Scope *string `pulumi:"scope"`
+}
+
+// The preview of the operations for creation
+type DryrunOperationPreviewResponseOutput struct{ *pulumi.OutputState }
+
+func (DryrunOperationPreviewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DryrunOperationPreviewResponse)(nil)).Elem()
+}
+
+func (o DryrunOperationPreviewResponseOutput) ToDryrunOperationPreviewResponseOutput() DryrunOperationPreviewResponseOutput {
+	return o
+}
+
+func (o DryrunOperationPreviewResponseOutput) ToDryrunOperationPreviewResponseOutputWithContext(ctx context.Context) DryrunOperationPreviewResponseOutput {
+	return o
+}
+
+// The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
+func (o DryrunOperationPreviewResponseOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DryrunOperationPreviewResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The description of the operation
+func (o DryrunOperationPreviewResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DryrunOperationPreviewResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The operation name
+func (o DryrunOperationPreviewResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DryrunOperationPreviewResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The operation type
+func (o DryrunOperationPreviewResponseOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DryrunOperationPreviewResponse) *string { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
+// The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
+func (o DryrunOperationPreviewResponseOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DryrunOperationPreviewResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+type DryrunOperationPreviewResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DryrunOperationPreviewResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DryrunOperationPreviewResponse)(nil)).Elem()
+}
+
+func (o DryrunOperationPreviewResponseArrayOutput) ToDryrunOperationPreviewResponseArrayOutput() DryrunOperationPreviewResponseArrayOutput {
+	return o
+}
+
+func (o DryrunOperationPreviewResponseArrayOutput) ToDryrunOperationPreviewResponseArrayOutputWithContext(ctx context.Context) DryrunOperationPreviewResponseArrayOutput {
+	return o
+}
+
+func (o DryrunOperationPreviewResponseArrayOutput) Index(i pulumi.IntInput) DryrunOperationPreviewResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DryrunOperationPreviewResponse {
+		return vs[0].([]DryrunOperationPreviewResponse)[vs[1].(int)]
+	}).(DryrunOperationPreviewResponseOutput)
+}
+
+// Target service's firewall rules. to allow connections from source service.
+type FirewallRules struct {
+	// Allow Azure services to access the target service if true.
+	AzureServices *string `pulumi:"azureServices"`
+	// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
+	CallerClientIP *string `pulumi:"callerClientIP"`
+	// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+	IpRanges []string `pulumi:"ipRanges"`
+}
+
+// FirewallRulesInput is an input type that accepts FirewallRulesArgs and FirewallRulesOutput values.
+// You can construct a concrete instance of `FirewallRulesInput` via:
+//
+//	FirewallRulesArgs{...}
+type FirewallRulesInput interface {
+	pulumi.Input
+
+	ToFirewallRulesOutput() FirewallRulesOutput
+	ToFirewallRulesOutputWithContext(context.Context) FirewallRulesOutput
+}
+
+// Target service's firewall rules. to allow connections from source service.
+type FirewallRulesArgs struct {
+	// Allow Azure services to access the target service if true.
+	AzureServices pulumi.StringPtrInput `pulumi:"azureServices"`
+	// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
+	CallerClientIP pulumi.StringPtrInput `pulumi:"callerClientIP"`
+	// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+}
+
+func (FirewallRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRules)(nil)).Elem()
+}
+
+func (i FirewallRulesArgs) ToFirewallRulesOutput() FirewallRulesOutput {
+	return i.ToFirewallRulesOutputWithContext(context.Background())
+}
+
+func (i FirewallRulesArgs) ToFirewallRulesOutputWithContext(ctx context.Context) FirewallRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulesOutput)
+}
+
+func (i FirewallRulesArgs) ToFirewallRulesPtrOutput() FirewallRulesPtrOutput {
+	return i.ToFirewallRulesPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallRulesArgs) ToFirewallRulesPtrOutputWithContext(ctx context.Context) FirewallRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulesOutput).ToFirewallRulesPtrOutputWithContext(ctx)
+}
+
+// FirewallRulesPtrInput is an input type that accepts FirewallRulesArgs, FirewallRulesPtr and FirewallRulesPtrOutput values.
+// You can construct a concrete instance of `FirewallRulesPtrInput` via:
+//
+//	        FirewallRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallRulesPtrInput interface {
+	pulumi.Input
+
+	ToFirewallRulesPtrOutput() FirewallRulesPtrOutput
+	ToFirewallRulesPtrOutputWithContext(context.Context) FirewallRulesPtrOutput
+}
+
+type firewallRulesPtrType FirewallRulesArgs
+
+func FirewallRulesPtr(v *FirewallRulesArgs) FirewallRulesPtrInput {
+	return (*firewallRulesPtrType)(v)
+}
+
+func (*firewallRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRules)(nil)).Elem()
+}
+
+func (i *firewallRulesPtrType) ToFirewallRulesPtrOutput() FirewallRulesPtrOutput {
+	return i.ToFirewallRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallRulesPtrType) ToFirewallRulesPtrOutputWithContext(ctx context.Context) FirewallRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulesPtrOutput)
+}
+
+// Target service's firewall rules. to allow connections from source service.
+type FirewallRulesOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRules)(nil)).Elem()
+}
+
+func (o FirewallRulesOutput) ToFirewallRulesOutput() FirewallRulesOutput {
+	return o
+}
+
+func (o FirewallRulesOutput) ToFirewallRulesOutputWithContext(ctx context.Context) FirewallRulesOutput {
+	return o
+}
+
+func (o FirewallRulesOutput) ToFirewallRulesPtrOutput() FirewallRulesPtrOutput {
+	return o.ToFirewallRulesPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallRulesOutput) ToFirewallRulesPtrOutputWithContext(ctx context.Context) FirewallRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallRules) *FirewallRules {
+		return &v
+	}).(FirewallRulesPtrOutput)
+}
+
+// Allow Azure services to access the target service if true.
+func (o FirewallRulesOutput) AzureServices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallRules) *string { return v.AzureServices }).(pulumi.StringPtrOutput)
+}
+
+// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
+func (o FirewallRulesOutput) CallerClientIP() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallRules) *string { return v.CallerClientIP }).(pulumi.StringPtrOutput)
+}
+
+// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+func (o FirewallRulesOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallRules) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+type FirewallRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRules)(nil)).Elem()
+}
+
+func (o FirewallRulesPtrOutput) ToFirewallRulesPtrOutput() FirewallRulesPtrOutput {
+	return o
+}
+
+func (o FirewallRulesPtrOutput) ToFirewallRulesPtrOutputWithContext(ctx context.Context) FirewallRulesPtrOutput {
+	return o
+}
+
+func (o FirewallRulesPtrOutput) Elem() FirewallRulesOutput {
+	return o.ApplyT(func(v *FirewallRules) FirewallRules {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallRules
+		return ret
+	}).(FirewallRulesOutput)
+}
+
+// Allow Azure services to access the target service if true.
+func (o FirewallRulesPtrOutput) AzureServices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureServices
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
+func (o FirewallRulesPtrOutput) CallerClientIP() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CallerClientIP
+	}).(pulumi.StringPtrOutput)
+}
+
+// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+func (o FirewallRulesPtrOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallRules) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Target service's firewall rules. to allow connections from source service.
+type FirewallRulesResponse struct {
+	// Allow Azure services to access the target service if true.
+	AzureServices *string `pulumi:"azureServices"`
+	// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
+	CallerClientIP *string `pulumi:"callerClientIP"`
+	// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+	IpRanges []string `pulumi:"ipRanges"`
+}
+
+// Target service's firewall rules. to allow connections from source service.
+type FirewallRulesResponseOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRulesResponse)(nil)).Elem()
+}
+
+func (o FirewallRulesResponseOutput) ToFirewallRulesResponseOutput() FirewallRulesResponseOutput {
+	return o
+}
+
+func (o FirewallRulesResponseOutput) ToFirewallRulesResponseOutputWithContext(ctx context.Context) FirewallRulesResponseOutput {
+	return o
+}
+
+// Allow Azure services to access the target service if true.
+func (o FirewallRulesResponseOutput) AzureServices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallRulesResponse) *string { return v.AzureServices }).(pulumi.StringPtrOutput)
+}
+
+// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
+func (o FirewallRulesResponseOutput) CallerClientIP() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallRulesResponse) *string { return v.CallerClientIP }).(pulumi.StringPtrOutput)
+}
+
+// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+func (o FirewallRulesResponseOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallRulesResponse) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+type FirewallRulesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRulesResponse)(nil)).Elem()
+}
+
+func (o FirewallRulesResponsePtrOutput) ToFirewallRulesResponsePtrOutput() FirewallRulesResponsePtrOutput {
+	return o
+}
+
+func (o FirewallRulesResponsePtrOutput) ToFirewallRulesResponsePtrOutputWithContext(ctx context.Context) FirewallRulesResponsePtrOutput {
+	return o
+}
+
+func (o FirewallRulesResponsePtrOutput) Elem() FirewallRulesResponseOutput {
+	return o.ApplyT(func(v *FirewallRulesResponse) FirewallRulesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallRulesResponse
+		return ret
+	}).(FirewallRulesResponseOutput)
+}
+
+// Allow Azure services to access the target service if true.
+func (o FirewallRulesResponsePtrOutput) AzureServices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRulesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureServices
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
+func (o FirewallRulesResponsePtrOutput) CallerClientIP() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRulesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CallerClientIP
+	}).(pulumi.StringPtrOutput)
+}
+
+// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+func (o FirewallRulesResponsePtrOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallRulesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// The secret info when type is keyVaultSecretReference. It's for scenario that user provides a secret stored in user's keyvault and source is Azure Kubernetes. The key Vault's resource id is linked to secretStore.keyVaultId.
+type KeyVaultSecretReferenceSecretInfo struct {
+	// Name of the Key Vault secret.
+	Name *string `pulumi:"name"`
+	// The secret type.
+	// Expected value is 'keyVaultSecretReference'.
+	SecretType string `pulumi:"secretType"`
+	// Version of the Key Vault secret.
+	Version *string `pulumi:"version"`
+}
+
+// The secret info when type is keyVaultSecretReference. It's for scenario that user provides a secret stored in user's keyvault and source is Azure Kubernetes. The key Vault's resource id is linked to secretStore.keyVaultId.
+type KeyVaultSecretReferenceSecretInfoResponse struct {
+	// Name of the Key Vault secret.
+	Name *string `pulumi:"name"`
+	// The secret type.
+	// Expected value is 'keyVaultSecretReference'.
+	SecretType string `pulumi:"secretType"`
+	// Version of the Key Vault secret.
+	Version *string `pulumi:"version"`
+}
+
+// The secret info when type is keyVaultSecretUri. It's for scenario that user provides a secret stored in user's keyvault and source is Web App, Spring Cloud or Container App.
+type KeyVaultSecretUriSecretInfo struct {
+	// The secret type.
+	// Expected value is 'keyVaultSecretUri'.
+	SecretType string `pulumi:"secretType"`
+	// URI to the keyvault secret
+	Value *string `pulumi:"value"`
+}
+
+// The secret info when type is keyVaultSecretUri. It's for scenario that user provides a secret stored in user's keyvault and source is Web App, Spring Cloud or Container App.
+type KeyVaultSecretUriSecretInfoResponse struct {
+	// The secret type.
+	// Expected value is 'keyVaultSecretUri'.
+	SecretType string `pulumi:"secretType"`
+	// URI to the keyvault secret
+	Value *string `pulumi:"value"`
+}
+
+// The represent of missing permissions
+type PermissionsMissingDryrunPrerequisiteResultResponse struct {
+	// The permission list
+	Permissions []string `pulumi:"permissions"`
+	// The recommended role to resolve permissions missing
+	RecommendedRole *string `pulumi:"recommendedRole"`
+	// The permission scope
+	Scope *string `pulumi:"scope"`
+	// The type of dryrun result.
+	// Expected value is 'permissionsMissing'.
+	Type string `pulumi:"type"`
+}
+
+// Indicates public network solution, include firewall rules
+type PublicNetworkSolution struct {
+	// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
+	Action *string `pulumi:"action"`
+	// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Describe firewall rules of target service to make sure source application could connect to the target.
+	FirewallRules *FirewallRules `pulumi:"firewallRules"`
+}
+
+// PublicNetworkSolutionInput is an input type that accepts PublicNetworkSolutionArgs and PublicNetworkSolutionOutput values.
+// You can construct a concrete instance of `PublicNetworkSolutionInput` via:
+//
+//	PublicNetworkSolutionArgs{...}
+type PublicNetworkSolutionInput interface {
+	pulumi.Input
+
+	ToPublicNetworkSolutionOutput() PublicNetworkSolutionOutput
+	ToPublicNetworkSolutionOutputWithContext(context.Context) PublicNetworkSolutionOutput
+}
+
+// Indicates public network solution, include firewall rules
+type PublicNetworkSolutionArgs struct {
+	// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
+	// Describe firewall rules of target service to make sure source application could connect to the target.
+	FirewallRules FirewallRulesPtrInput `pulumi:"firewallRules"`
+}
+
+func (PublicNetworkSolutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkSolution)(nil)).Elem()
+}
+
+func (i PublicNetworkSolutionArgs) ToPublicNetworkSolutionOutput() PublicNetworkSolutionOutput {
+	return i.ToPublicNetworkSolutionOutputWithContext(context.Background())
+}
+
+func (i PublicNetworkSolutionArgs) ToPublicNetworkSolutionOutputWithContext(ctx context.Context) PublicNetworkSolutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicNetworkSolutionOutput)
+}
+
+func (i PublicNetworkSolutionArgs) ToPublicNetworkSolutionPtrOutput() PublicNetworkSolutionPtrOutput {
+	return i.ToPublicNetworkSolutionPtrOutputWithContext(context.Background())
+}
+
+func (i PublicNetworkSolutionArgs) ToPublicNetworkSolutionPtrOutputWithContext(ctx context.Context) PublicNetworkSolutionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicNetworkSolutionOutput).ToPublicNetworkSolutionPtrOutputWithContext(ctx)
+}
+
+// PublicNetworkSolutionPtrInput is an input type that accepts PublicNetworkSolutionArgs, PublicNetworkSolutionPtr and PublicNetworkSolutionPtrOutput values.
+// You can construct a concrete instance of `PublicNetworkSolutionPtrInput` via:
+//
+//	        PublicNetworkSolutionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublicNetworkSolutionPtrInput interface {
+	pulumi.Input
+
+	ToPublicNetworkSolutionPtrOutput() PublicNetworkSolutionPtrOutput
+	ToPublicNetworkSolutionPtrOutputWithContext(context.Context) PublicNetworkSolutionPtrOutput
+}
+
+type publicNetworkSolutionPtrType PublicNetworkSolutionArgs
+
+func PublicNetworkSolutionPtr(v *PublicNetworkSolutionArgs) PublicNetworkSolutionPtrInput {
+	return (*publicNetworkSolutionPtrType)(v)
+}
+
+func (*publicNetworkSolutionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkSolution)(nil)).Elem()
+}
+
+func (i *publicNetworkSolutionPtrType) ToPublicNetworkSolutionPtrOutput() PublicNetworkSolutionPtrOutput {
+	return i.ToPublicNetworkSolutionPtrOutputWithContext(context.Background())
+}
+
+func (i *publicNetworkSolutionPtrType) ToPublicNetworkSolutionPtrOutputWithContext(ctx context.Context) PublicNetworkSolutionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicNetworkSolutionPtrOutput)
+}
+
+// Indicates public network solution, include firewall rules
+type PublicNetworkSolutionOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkSolutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkSolution)(nil)).Elem()
+}
+
+func (o PublicNetworkSolutionOutput) ToPublicNetworkSolutionOutput() PublicNetworkSolutionOutput {
+	return o
+}
+
+func (o PublicNetworkSolutionOutput) ToPublicNetworkSolutionOutputWithContext(ctx context.Context) PublicNetworkSolutionOutput {
+	return o
+}
+
+func (o PublicNetworkSolutionOutput) ToPublicNetworkSolutionPtrOutput() PublicNetworkSolutionPtrOutput {
+	return o.ToPublicNetworkSolutionPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkSolutionOutput) ToPublicNetworkSolutionPtrOutputWithContext(ctx context.Context) PublicNetworkSolutionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkSolution) *PublicNetworkSolution {
+		return &v
+	}).(PublicNetworkSolutionPtrOutput)
+}
+
+// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
+func (o PublicNetworkSolutionOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkSolution) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
+func (o PublicNetworkSolutionOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkSolution) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Describe firewall rules of target service to make sure source application could connect to the target.
+func (o PublicNetworkSolutionOutput) FirewallRules() FirewallRulesPtrOutput {
+	return o.ApplyT(func(v PublicNetworkSolution) *FirewallRules { return v.FirewallRules }).(FirewallRulesPtrOutput)
+}
+
+type PublicNetworkSolutionPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkSolutionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkSolution)(nil)).Elem()
+}
+
+func (o PublicNetworkSolutionPtrOutput) ToPublicNetworkSolutionPtrOutput() PublicNetworkSolutionPtrOutput {
+	return o
+}
+
+func (o PublicNetworkSolutionPtrOutput) ToPublicNetworkSolutionPtrOutputWithContext(ctx context.Context) PublicNetworkSolutionPtrOutput {
+	return o
+}
+
+func (o PublicNetworkSolutionPtrOutput) Elem() PublicNetworkSolutionOutput {
+	return o.ApplyT(func(v *PublicNetworkSolution) PublicNetworkSolution {
+		if v != nil {
+			return *v
+		}
+		var ret PublicNetworkSolution
+		return ret
+	}).(PublicNetworkSolutionOutput)
+}
+
+// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
+func (o PublicNetworkSolutionPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicNetworkSolution) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
+func (o PublicNetworkSolutionPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicNetworkSolution) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describe firewall rules of target service to make sure source application could connect to the target.
+func (o PublicNetworkSolutionPtrOutput) FirewallRules() FirewallRulesPtrOutput {
+	return o.ApplyT(func(v *PublicNetworkSolution) *FirewallRules {
+		if v == nil {
+			return nil
+		}
+		return v.FirewallRules
+	}).(FirewallRulesPtrOutput)
+}
+
+// Indicates public network solution, include firewall rules
+type PublicNetworkSolutionResponse struct {
+	// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
+	Action *string `pulumi:"action"`
+	// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Describe firewall rules of target service to make sure source application could connect to the target.
+	FirewallRules *FirewallRulesResponse `pulumi:"firewallRules"`
+}
+
+// Indicates public network solution, include firewall rules
+type PublicNetworkSolutionResponseOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkSolutionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkSolutionResponse)(nil)).Elem()
+}
+
+func (o PublicNetworkSolutionResponseOutput) ToPublicNetworkSolutionResponseOutput() PublicNetworkSolutionResponseOutput {
+	return o
+}
+
+func (o PublicNetworkSolutionResponseOutput) ToPublicNetworkSolutionResponseOutputWithContext(ctx context.Context) PublicNetworkSolutionResponseOutput {
+	return o
+}
+
+// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
+func (o PublicNetworkSolutionResponseOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkSolutionResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
+func (o PublicNetworkSolutionResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkSolutionResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Describe firewall rules of target service to make sure source application could connect to the target.
+func (o PublicNetworkSolutionResponseOutput) FirewallRules() FirewallRulesResponsePtrOutput {
+	return o.ApplyT(func(v PublicNetworkSolutionResponse) *FirewallRulesResponse { return v.FirewallRules }).(FirewallRulesResponsePtrOutput)
+}
+
+type PublicNetworkSolutionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkSolutionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkSolutionResponse)(nil)).Elem()
+}
+
+func (o PublicNetworkSolutionResponsePtrOutput) ToPublicNetworkSolutionResponsePtrOutput() PublicNetworkSolutionResponsePtrOutput {
+	return o
+}
+
+func (o PublicNetworkSolutionResponsePtrOutput) ToPublicNetworkSolutionResponsePtrOutputWithContext(ctx context.Context) PublicNetworkSolutionResponsePtrOutput {
+	return o
+}
+
+func (o PublicNetworkSolutionResponsePtrOutput) Elem() PublicNetworkSolutionResponseOutput {
+	return o.ApplyT(func(v *PublicNetworkSolutionResponse) PublicNetworkSolutionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PublicNetworkSolutionResponse
+		return ret
+	}).(PublicNetworkSolutionResponseOutput)
+}
+
+// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
+func (o PublicNetworkSolutionResponsePtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicNetworkSolutionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
+func (o PublicNetworkSolutionResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicNetworkSolutionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describe firewall rules of target service to make sure source application could connect to the target.
+func (o PublicNetworkSolutionResponsePtrOutput) FirewallRules() FirewallRulesResponsePtrOutput {
+	return o.ApplyT(func(v *PublicNetworkSolutionResponse) *FirewallRulesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FirewallRules
+	}).(FirewallRulesResponsePtrOutput)
+}
+
 // The authentication info when authType is secret
 type SecretAuthInfo struct {
 	// The authentication type.
@@ -17,8 +2173,8 @@ type SecretAuthInfo struct {
 	AuthType string `pulumi:"authType"`
 	// Username or account name for secret auth.
 	Name *string `pulumi:"name"`
-	// Password or account key for secret auth.
-	Secret *string `pulumi:"secret"`
+	// Password or key vault secret for secret auth.
+	SecretInfo interface{} `pulumi:"secretInfo"`
 }
 
 // The authentication info when authType is secret
@@ -28,14 +2184,16 @@ type SecretAuthInfoResponse struct {
 	AuthType string `pulumi:"authType"`
 	// Username or account name for secret auth.
 	Name *string `pulumi:"name"`
-	// Password or account key for secret auth.
-	Secret *string `pulumi:"secret"`
+	// Password or key vault secret for secret auth.
+	SecretInfo interface{} `pulumi:"secretInfo"`
 }
 
 // An option to store secret value in secure place
 type SecretStore struct {
 	// The key vault id to store secret
 	KeyVaultId *string `pulumi:"keyVaultId"`
+	// The key vault secret name to store secret, only valid when storing one secret
+	KeyVaultSecretName *string `pulumi:"keyVaultSecretName"`
 }
 
 // SecretStoreInput is an input type that accepts SecretStoreArgs and SecretStoreOutput values.
@@ -53,6 +2211,8 @@ type SecretStoreInput interface {
 type SecretStoreArgs struct {
 	// The key vault id to store secret
 	KeyVaultId pulumi.StringPtrInput `pulumi:"keyVaultId"`
+	// The key vault secret name to store secret, only valid when storing one secret
+	KeyVaultSecretName pulumi.StringPtrInput `pulumi:"keyVaultSecretName"`
 }
 
 func (SecretStoreArgs) ElementType() reflect.Type {
@@ -138,6 +2298,11 @@ func (o SecretStoreOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretStore) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
 }
 
+// The key vault secret name to store secret, only valid when storing one secret
+func (o SecretStoreOutput) KeyVaultSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStore) *string { return v.KeyVaultSecretName }).(pulumi.StringPtrOutput)
+}
+
 type SecretStorePtrOutput struct{ *pulumi.OutputState }
 
 func (SecretStorePtrOutput) ElementType() reflect.Type {
@@ -172,10 +2337,22 @@ func (o SecretStorePtrOutput) KeyVaultId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The key vault secret name to store secret, only valid when storing one secret
+func (o SecretStorePtrOutput) KeyVaultSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
 // An option to store secret value in secure place
 type SecretStoreResponse struct {
 	// The key vault id to store secret
 	KeyVaultId *string `pulumi:"keyVaultId"`
+	// The key vault secret name to store secret, only valid when storing one secret
+	KeyVaultSecretName *string `pulumi:"keyVaultSecretName"`
 }
 
 // An option to store secret value in secure place
@@ -196,6 +2373,11 @@ func (o SecretStoreResponseOutput) ToSecretStoreResponseOutputWithContext(ctx co
 // The key vault id to store secret
 func (o SecretStoreResponseOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretStoreResponse) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
+}
+
+// The key vault secret name to store secret, only valid when storing one secret
+func (o SecretStoreResponseOutput) KeyVaultSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreResponse) *string { return v.KeyVaultSecretName }).(pulumi.StringPtrOutput)
 }
 
 type SecretStoreResponsePtrOutput struct{ *pulumi.OutputState }
@@ -232,6 +2414,34 @@ func (o SecretStoreResponsePtrOutput) KeyVaultId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The key vault secret name to store secret, only valid when storing one secret
+func (o SecretStoreResponsePtrOutput) KeyVaultSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service properties when target service type is SelfHostedServer
+type SelfHostedServer struct {
+	// The endpoint of service.
+	Endpoint *string `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'SelfHostedServer'.
+	Type string `pulumi:"type"`
+}
+
+// The service properties when target service type is SelfHostedServer
+type SelfHostedServerResponse struct {
+	// The endpoint of service.
+	Endpoint *string `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'SelfHostedServer'.
+	Type string `pulumi:"type"`
+}
+
 // The authentication info when authType is servicePrincipal certificate
 type ServicePrincipalCertificateAuthInfo struct {
 	// The authentication type.
@@ -241,8 +2451,12 @@ type ServicePrincipalCertificateAuthInfo struct {
 	Certificate string `pulumi:"certificate"`
 	// Application clientId for servicePrincipal auth.
 	ClientId string `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
 	// Principal Id for servicePrincipal auth.
 	PrincipalId string `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles []string `pulumi:"roles"`
 }
 
 // The authentication info when authType is servicePrincipal certificate
@@ -254,8 +2468,12 @@ type ServicePrincipalCertificateAuthInfoResponse struct {
 	Certificate string `pulumi:"certificate"`
 	// Application clientId for servicePrincipal auth.
 	ClientId string `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
 	// Principal Id for servicePrincipal auth.
 	PrincipalId string `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles []string `pulumi:"roles"`
 }
 
 // The authentication info when authType is servicePrincipal secret
@@ -265,10 +2483,16 @@ type ServicePrincipalSecretAuthInfo struct {
 	AuthType string `pulumi:"authType"`
 	// ServicePrincipal application clientId for servicePrincipal auth.
 	ClientId string `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
 	// Principal Id for servicePrincipal auth.
 	PrincipalId string `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles []string `pulumi:"roles"`
 	// Secret for servicePrincipal auth.
 	Secret string `pulumi:"secret"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName *string `pulumi:"userName"`
 }
 
 // The authentication info when authType is servicePrincipal secret
@@ -278,10 +2502,16 @@ type ServicePrincipalSecretAuthInfoResponse struct {
 	AuthType string `pulumi:"authType"`
 	// ServicePrincipal application clientId for servicePrincipal auth.
 	ClientId string `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
 	// Principal Id for servicePrincipal auth.
 	PrincipalId string `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles []string `pulumi:"roles"`
 	// Secret for servicePrincipal auth.
 	Secret string `pulumi:"secret"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName *string `pulumi:"userName"`
 }
 
 // A configuration item for source resource
@@ -342,6 +2572,12 @@ type SystemAssignedIdentityAuthInfo struct {
 	// The authentication type.
 	// Expected value is 'systemAssignedIdentity'.
 	AuthType string `pulumi:"authType"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Optional, this value specifies the Azure role to be assigned
+	Roles []string `pulumi:"roles"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName *string `pulumi:"userName"`
 }
 
 // The authentication info when authType is systemAssignedIdentity
@@ -349,6 +2585,12 @@ type SystemAssignedIdentityAuthInfoResponse struct {
 	// The authentication type.
 	// Expected value is 'systemAssignedIdentity'.
 	AuthType string `pulumi:"authType"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Optional, this value specifies the Azure role to be assigned
+	Roles []string `pulumi:"roles"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName *string `pulumi:"userName"`
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -412,15 +2654,51 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// The authentication info when authType is user account
+type UserAccountAuthInfo struct {
+	// The authentication type.
+	// Expected value is 'userAccount'.
+	AuthType string `pulumi:"authType"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Principal Id for user account.
+	PrincipalId *string `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles []string `pulumi:"roles"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName *string `pulumi:"userName"`
+}
+
+// The authentication info when authType is user account
+type UserAccountAuthInfoResponse struct {
+	// The authentication type.
+	// Expected value is 'userAccount'.
+	AuthType string `pulumi:"authType"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Principal Id for user account.
+	PrincipalId *string `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles []string `pulumi:"roles"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName *string `pulumi:"userName"`
+}
+
 // The authentication info when authType is userAssignedIdentity
 type UserAssignedIdentityAuthInfo struct {
 	// The authentication type.
 	// Expected value is 'userAssignedIdentity'.
 	AuthType string `pulumi:"authType"`
 	// Client Id for userAssignedIdentity.
-	ClientId string `pulumi:"clientId"`
+	ClientId *string `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Optional, this value specifies the Azure role to be assigned
+	Roles []string `pulumi:"roles"`
 	// Subscription id for userAssignedIdentity.
-	SubscriptionId string `pulumi:"subscriptionId"`
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName *string `pulumi:"userName"`
 }
 
 // The authentication info when authType is userAssignedIdentity
@@ -429,13 +2707,21 @@ type UserAssignedIdentityAuthInfoResponse struct {
 	// Expected value is 'userAssignedIdentity'.
 	AuthType string `pulumi:"authType"`
 	// Client Id for userAssignedIdentity.
-	ClientId string `pulumi:"clientId"`
+	ClientId *string `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Optional, this value specifies the Azure role to be assigned
+	Roles []string `pulumi:"roles"`
 	// Subscription id for userAssignedIdentity.
-	SubscriptionId string `pulumi:"subscriptionId"`
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName *string `pulumi:"userName"`
 }
 
 // The VNet solution for linker
 type VNetSolution struct {
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
 	// Type of VNet solution.
 	Type *string `pulumi:"type"`
 }
@@ -453,6 +2739,8 @@ type VNetSolutionInput interface {
 
 // The VNet solution for linker
 type VNetSolutionArgs struct {
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
 	// Type of VNet solution.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -535,6 +2823,11 @@ func (o VNetSolutionOutput) ToVNetSolutionPtrOutputWithContext(ctx context.Conte
 	}).(VNetSolutionPtrOutput)
 }
 
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o VNetSolutionOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VNetSolution) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
 // Type of VNet solution.
 func (o VNetSolutionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VNetSolution) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -564,6 +2857,16 @@ func (o VNetSolutionPtrOutput) Elem() VNetSolutionOutput {
 	}).(VNetSolutionOutput)
 }
 
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o VNetSolutionPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VNetSolution) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
 // Type of VNet solution.
 func (o VNetSolutionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VNetSolution) *string {
@@ -576,6 +2879,8 @@ func (o VNetSolutionPtrOutput) Type() pulumi.StringPtrOutput {
 
 // The VNet solution for linker
 type VNetSolutionResponse struct {
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
 	// Type of VNet solution.
 	Type *string `pulumi:"type"`
 }
@@ -593,6 +2898,11 @@ func (o VNetSolutionResponseOutput) ToVNetSolutionResponseOutput() VNetSolutionR
 
 func (o VNetSolutionResponseOutput) ToVNetSolutionResponseOutputWithContext(ctx context.Context) VNetSolutionResponseOutput {
 	return o
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o VNetSolutionResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VNetSolutionResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
 }
 
 // Type of VNet solution.
@@ -624,6 +2934,16 @@ func (o VNetSolutionResponsePtrOutput) Elem() VNetSolutionResponseOutput {
 	}).(VNetSolutionResponseOutput)
 }
 
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o VNetSolutionResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VNetSolutionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
 // Type of VNet solution.
 func (o VNetSolutionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VNetSolutionResponse) *string {
@@ -634,7 +2954,51 @@ func (o VNetSolutionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The secret info when type is rawValue. It's for scenarios that user input the secret.
+type ValueSecretInfo struct {
+	// The secret type.
+	// Expected value is 'rawValue'.
+	SecretType string `pulumi:"secretType"`
+	// The actual value of the secret.
+	Value *string `pulumi:"value"`
+}
+
+// The secret info when type is rawValue. It's for scenarios that user input the secret.
+type ValueSecretInfoResponse struct {
+	// The secret type.
+	// Expected value is 'rawValue'.
+	SecretType string `pulumi:"secretType"`
+	// The actual value of the secret.
+	Value *string `pulumi:"value"`
+}
+
 func init() {
+	pulumi.RegisterOutputType(ConfigurationInfoOutput{})
+	pulumi.RegisterOutputType(ConfigurationInfoPtrOutput{})
+	pulumi.RegisterOutputType(ConfigurationInfoResponseOutput{})
+	pulumi.RegisterOutputType(ConfigurationInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersOutput{})
+	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersPtrOutput{})
+	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersResponseOutput{})
+	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaprMetadataOutput{})
+	pulumi.RegisterOutputType(DaprMetadataArrayOutput{})
+	pulumi.RegisterOutputType(DaprMetadataResponseOutput{})
+	pulumi.RegisterOutputType(DaprMetadataResponseArrayOutput{})
+	pulumi.RegisterOutputType(DaprPropertiesOutput{})
+	pulumi.RegisterOutputType(DaprPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DaprPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DaprPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(DryrunOperationPreviewResponseOutput{})
+	pulumi.RegisterOutputType(DryrunOperationPreviewResponseArrayOutput{})
+	pulumi.RegisterOutputType(FirewallRulesOutput{})
+	pulumi.RegisterOutputType(FirewallRulesPtrOutput{})
+	pulumi.RegisterOutputType(FirewallRulesResponseOutput{})
+	pulumi.RegisterOutputType(FirewallRulesResponsePtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkSolutionOutput{})
+	pulumi.RegisterOutputType(PublicNetworkSolutionPtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkSolutionResponseOutput{})
+	pulumi.RegisterOutputType(PublicNetworkSolutionResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreOutput{})
 	pulumi.RegisterOutputType(SecretStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreResponseOutput{})

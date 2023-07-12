@@ -12,14 +12,18 @@ import (
 )
 
 // Define the datastore.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview
 type Datastore struct {
 	pulumi.CustomResourceState
 
+	// Gets or sets Maximum capacity of this datastore in GBs.
+	CapacityGB pulumi.Float64Output `pulumi:"capacityGB"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName pulumi.StringOutput `pulumi:"customResourceName"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
+	// Gets or sets Available space of this datastore in GBs.
+	FreeSpaceGB pulumi.Float64Output `pulumi:"freeSpaceGB"`
 	// Gets or sets the inventory Item ID for the datastore.
 	InventoryItemId pulumi.StringPtrOutput `pulumi:"inventoryItemId"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -181,6 +185,11 @@ func (o DatastoreOutput) ToDatastoreOutputWithContext(ctx context.Context) Datas
 	return o
 }
 
+// Gets or sets Maximum capacity of this datastore in GBs.
+func (o DatastoreOutput) CapacityGB() pulumi.Float64Output {
+	return o.ApplyT(func(v *Datastore) pulumi.Float64Output { return v.CapacityGB }).(pulumi.Float64Output)
+}
+
 // Gets the name of the corresponding resource in Kubernetes.
 func (o DatastoreOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.CustomResourceName }).(pulumi.StringOutput)
@@ -189,6 +198,11 @@ func (o DatastoreOutput) CustomResourceName() pulumi.StringOutput {
 // Gets or sets the extended location.
 func (o DatastoreOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *Datastore) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// Gets or sets Available space of this datastore in GBs.
+func (o DatastoreOutput) FreeSpaceGB() pulumi.Float64Output {
+	return o.ApplyT(func(v *Datastore) pulumi.Float64Output { return v.FreeSpaceGB }).(pulumi.Float64Output)
 }
 
 // Gets or sets the inventory Item ID for the datastore.

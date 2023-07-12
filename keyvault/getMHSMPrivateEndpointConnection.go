@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the managed HSM Pool.
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2023-02-01.
 func LookupMHSMPrivateEndpointConnection(ctx *pulumi.Context, args *LookupMHSMPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupMHSMPrivateEndpointConnectionResult, error) {
 	var rv LookupMHSMPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:keyvault:getMHSMPrivateEndpointConnection", args, &rv, opts...)

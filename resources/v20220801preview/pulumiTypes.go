@@ -19,7 +19,7 @@ type DenySettings struct {
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
 	// denySettings Mode.
-	Mode *string `pulumi:"mode"`
+	Mode string `pulumi:"mode"`
 }
 
 // DenySettingsInput is an input type that accepts DenySettingsArgs and DenySettingsOutput values.
@@ -42,7 +42,7 @@ type DenySettingsArgs struct {
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals pulumi.StringArrayInput `pulumi:"excludedPrincipals"`
 	// denySettings Mode.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
 func (DenySettingsArgs) ElementType() reflect.Type {
@@ -88,8 +88,8 @@ func (o DenySettingsOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
 }
 
 // denySettings Mode.
-func (o DenySettingsOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DenySettings) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o DenySettingsOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v DenySettings) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Defines how resources deployed by the deployment stack are locked.
@@ -101,7 +101,7 @@ type DenySettingsResponse struct {
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
 	// denySettings Mode.
-	Mode *string `pulumi:"mode"`
+	Mode string `pulumi:"mode"`
 }
 
 // Defines how resources deployed by the deployment stack are locked.
@@ -135,8 +135,8 @@ func (o DenySettingsResponseOutput) ExcludedPrincipals() pulumi.StringArrayOutpu
 }
 
 // denySettings Mode.
-func (o DenySettingsResponseOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DenySettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o DenySettingsResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v DenySettingsResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Defines the behavior of resources that are not managed immediately after the stack is updated.

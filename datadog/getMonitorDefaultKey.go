@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2021-03-01.
+// Azure REST API version: 2022-06-01.
 func GetMonitorDefaultKey(ctx *pulumi.Context, args *GetMonitorDefaultKeyArgs, opts ...pulumi.InvokeOption) (*GetMonitorDefaultKeyResult, error) {
 	var rv GetMonitorDefaultKeyResult
 	err := ctx.Invoke("azure-native:datadog:getMonitorDefaultKey", args, &rv, opts...)

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the application settings of a static site build.
-// API Version: 2020-12-01.
+// Description for Gets the application settings of a static site build.
+// Azure REST API version: 2022-09-01.
 func ListStaticSiteBuildFunctionAppSettings(ctx *pulumi.Context, args *ListStaticSiteBuildFunctionAppSettingsArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteBuildFunctionAppSettingsResult, error) {
 	var rv ListStaticSiteBuildFunctionAppSettingsResult
 	err := ctx.Invoke("azure-native:web:listStaticSiteBuildFunctionAppSettings", args, &rv, opts...)

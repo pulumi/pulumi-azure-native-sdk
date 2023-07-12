@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the status of long running operation
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15.
 func GetGlobalUserOperationStatus(ctx *pulumi.Context, args *GetGlobalUserOperationStatusArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserOperationStatusResult, error) {
 	var rv GetGlobalUserOperationStatusResult
 	err := ctx.Invoke("azure-native:labservices:getGlobalUserOperationStatus", args, &rv, opts...)

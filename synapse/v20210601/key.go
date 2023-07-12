@@ -12,8 +12,6 @@ import (
 )
 
 // A workspace key
-//
-// Deprecated: azure-native:synapse/v20210601:Key is being removed in the next major version of this provider. Upgrade to at least azure-native:synapse/v20210601preview:Key to guarantee forwards compatibility.
 type Key struct {
 	pulumi.CustomResourceState
 

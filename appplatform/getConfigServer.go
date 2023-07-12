@@ -11,7 +11,7 @@ import (
 )
 
 // Get the config server and its properties.
-// API Version: 2020-07-01.
+// Azure REST API version: 2023-05-01-preview.
 func LookupConfigServer(ctx *pulumi.Context, args *LookupConfigServerArgs, opts ...pulumi.InvokeOption) (*LookupConfigServerResult, error) {
 	var rv LookupConfigServerResult
 	err := ctx.Invoke("azure-native:appplatform:getConfigServer", args, &rv, opts...)
@@ -36,6 +36,8 @@ type LookupConfigServerResult struct {
 	Name string `pulumi:"name"`
 	// Properties of the Config Server resource
 	Properties ConfigServerPropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -92,6 +94,11 @@ func (o LookupConfigServerResultOutput) Name() pulumi.StringOutput {
 // Properties of the Config Server resource
 func (o LookupConfigServerResultOutput) Properties() ConfigServerPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupConfigServerResult) ConfigServerPropertiesResponse { return v.Properties }).(ConfigServerPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupConfigServerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupConfigServerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

@@ -12,8 +12,6 @@ import (
 )
 
 // EventGrid System Topic.
-//
-// Deprecated: azure-native:eventgrid/v20220615:SystemTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:SystemTopic to guarantee forwards compatibility.
 type SystemTopic struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +65,9 @@ func NewSystemTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211201:SystemTopic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:SystemTopic"),
 		},
 	})
 	opts = append(opts, aliases)

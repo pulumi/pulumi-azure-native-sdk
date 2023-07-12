@@ -12,17 +12,19 @@ import (
 )
 
 // A private link scoped resource
-// API Version: 2019-10-17-preview.
+// Azure REST API version: 2021-07-01-preview. Prior API version in Azure Native 1.x: 2019-10-17-preview
 type PrivateLinkScopedResource struct {
 	pulumi.CustomResourceState
 
 	// The resource id of the scoped Azure monitor resource.
 	LinkedResourceId pulumi.StringPtrOutput `pulumi:"linkedResourceId"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// State of the private endpoint connection.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Azure resource type
+	// System data
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -144,7 +146,7 @@ func (o PrivateLinkScopedResourceOutput) LinkedResourceId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *PrivateLinkScopedResource) pulumi.StringPtrOutput { return v.LinkedResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o PrivateLinkScopedResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLinkScopedResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -154,7 +156,12 @@ func (o PrivateLinkScopedResourceOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v *PrivateLinkScopedResource) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// System data
+func (o PrivateLinkScopedResourceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkScopedResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateLinkScopedResourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLinkScopedResource) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

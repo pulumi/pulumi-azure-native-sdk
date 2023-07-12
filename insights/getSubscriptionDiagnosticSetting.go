@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the active subscription diagnostic settings for the specified resource.
-// API Version: 2017-05-01-preview.
+// Azure REST API version: 2021-05-01-preview.
 func LookupSubscriptionDiagnosticSetting(ctx *pulumi.Context, args *LookupSubscriptionDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionDiagnosticSettingResult, error) {
 	var rv LookupSubscriptionDiagnosticSettingResult
 	err := ctx.Invoke("azure-native:insights:getSubscriptionDiagnosticSetting", args, &rv, opts...)
@@ -32,19 +32,21 @@ type LookupSubscriptionDiagnosticSettingResult struct {
 	EventHubAuthorizationRuleId *string `pulumi:"eventHubAuthorizationRuleId"`
 	// The name of the event hub. If none is specified, the default event hub will be selected.
 	EventHubName *string `pulumi:"eventHubName"`
-	// Azure resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Location of the resource
-	Location *string `pulumi:"location"`
 	// The list of logs settings.
 	Logs []SubscriptionLogSettingsResponse `pulumi:"logs"`
-	// Azure resource name
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId *string `pulumi:"marketplacePartnerId"`
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 	ServiceBusRuleId *string `pulumi:"serviceBusRuleId"`
 	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 	StorageAccountId *string `pulumi:"storageAccountId"`
-	// Azure resource type
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
 	WorkspaceId *string `pulumi:"workspaceId"`
@@ -97,14 +99,9 @@ func (o LookupSubscriptionDiagnosticSettingResultOutput) EventHubName() pulumi.S
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.EventHubName }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSubscriptionDiagnosticSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Location of the resource
-func (o LookupSubscriptionDiagnosticSettingResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The list of logs settings.
@@ -112,7 +109,12 @@ func (o LookupSubscriptionDiagnosticSettingResultOutput) Logs() SubscriptionLogS
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) []SubscriptionLogSettingsResponse { return v.Logs }).(SubscriptionLogSettingsResponseArrayOutput)
 }
 
-// Azure resource name
+// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+func (o LookupSubscriptionDiagnosticSettingResultOutput) MarketplacePartnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.MarketplacePartnerId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
 func (o LookupSubscriptionDiagnosticSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -127,7 +129,12 @@ func (o LookupSubscriptionDiagnosticSettingResultOutput) StorageAccountId() pulu
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// The system metadata related to this resource.
+func (o LookupSubscriptionDiagnosticSettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSubscriptionDiagnosticSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionDiagnosticSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

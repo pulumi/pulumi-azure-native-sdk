@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Server collector.
-// API Version: 2019-10-01.
+// Azure REST API version: 2019-10-01.
 func LookupServerCollector(ctx *pulumi.Context, args *LookupServerCollectorArgs, opts ...pulumi.InvokeOption) (*LookupServerCollectorResult, error) {
 	var rv LookupServerCollectorResult
 	err := ctx.Invoke("azure-native:migrate:getServerCollector", args, &rv, opts...)

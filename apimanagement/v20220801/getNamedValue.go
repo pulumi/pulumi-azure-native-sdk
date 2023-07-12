@@ -11,8 +11,6 @@ import (
 )
 
 // Gets the details of the named value specified by its identifier.
-//
-// Deprecated: azure-native:apimanagement/v20220801:NamedValue is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:NamedValue to guarantee forwards compatibility.
 func LookupNamedValue(ctx *pulumi.Context, args *LookupNamedValueArgs, opts ...pulumi.InvokeOption) (*LookupNamedValueResult, error) {
 	var rv LookupNamedValueResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getNamedValue", args, &rv, opts...)

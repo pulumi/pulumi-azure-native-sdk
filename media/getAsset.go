@@ -11,7 +11,7 @@ import (
 )
 
 // Get the details of an Asset in the Media Services account
-// API Version: 2020-05-01.
+// Azure REST API version: 2023-01-01.
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {
 	var rv LookupAssetResult
 	err := ctx.Invoke("azure-native:media:getAsset", args, &rv, opts...)
@@ -42,6 +42,8 @@ type LookupAssetResult struct {
 	Created string `pulumi:"created"`
 	// The Asset description.
 	Description *string `pulumi:"description"`
+	// The Asset container encryption scope in the storage account.
+	EncryptionScope *string `pulumi:"encryptionScope"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The last modified date of the Asset.
@@ -122,6 +124,11 @@ func (o LookupAssetResultOutput) Created() pulumi.StringOutput {
 // The Asset description.
 func (o LookupAssetResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssetResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Asset container encryption scope in the storage account.
+func (o LookupAssetResultOutput) EncryptionScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.EncryptionScope }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

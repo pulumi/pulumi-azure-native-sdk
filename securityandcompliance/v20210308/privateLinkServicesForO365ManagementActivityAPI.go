@@ -50,7 +50,16 @@ func NewPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForO365ManagementActivityAPI"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance:PrivateLinkServicesForO365ManagementActivityAPI"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForO365ManagementActivityAPI"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForO365ManagementActivityAPI"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForO365ManagementActivityAPI"),
@@ -58,7 +67,7 @@ func NewPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForO365ManagementActivityAPI
-	err := ctx.RegisterResource("azure-native:securityandcompliance/v20210308:privateLinkServicesForO365ManagementActivityAPI", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForO365ManagementActivityAPI", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +79,7 @@ func NewPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 func GetPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForO365ManagementActivityAPIState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForO365ManagementActivityAPI, error) {
 	var resource PrivateLinkServicesForO365ManagementActivityAPI
-	err := ctx.ReadResource("azure-native:securityandcompliance/v20210308:privateLinkServicesForO365ManagementActivityAPI", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForO365ManagementActivityAPI", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

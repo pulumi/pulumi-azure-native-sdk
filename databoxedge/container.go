@@ -12,7 +12,7 @@ import (
 )
 
 // Represents a container on the  Data Box Edge/Gateway device.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01
 type Container struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +26,7 @@ type Container struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Details of the refresh job on this container.
 	RefreshDetails RefreshDetailsResponseOutput `pulumi:"refreshDetails"`
-	// Container in DataBoxEdge Resource
+	// Metadata pertaining to creation and last modification of Container
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -213,7 +213,7 @@ func (o ContainerOutput) RefreshDetails() RefreshDetailsResponseOutput {
 	return o.ApplyT(func(v *Container) RefreshDetailsResponseOutput { return v.RefreshDetails }).(RefreshDetailsResponseOutput)
 }
 
-// Container in DataBoxEdge Resource
+// Metadata pertaining to creation and last modification of Container
 func (o ContainerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Container) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

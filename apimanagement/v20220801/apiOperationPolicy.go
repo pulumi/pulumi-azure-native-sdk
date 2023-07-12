@@ -12,8 +12,6 @@ import (
 )
 
 // Policy Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiOperationPolicy is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiOperationPolicy to guarantee forwards compatibility.
 type ApiOperationPolicy struct {
 	pulumi.CustomResourceState
 
@@ -94,6 +92,12 @@ func NewApiOperationPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiOperationPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiOperationPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiOperationPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

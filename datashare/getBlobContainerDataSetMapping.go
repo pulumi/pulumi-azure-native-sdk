@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupBlobContainerDataSetMapping(ctx *pulumi.Context, args *LookupBlobContainerDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerDataSetMappingResult, error) {
 	var rv LookupBlobContainerDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare:getBlobContainerDataSetMapping", args, &rv, opts...)

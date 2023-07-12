@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Hybrid AKS provisioned cluster
-// API Version: 2022-05-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupProvisionedCluster(ctx *pulumi.Context, args *LookupProvisionedClusterArgs, opts ...pulumi.InvokeOption) (*LookupProvisionedClusterResult, error) {
 	var rv LookupProvisionedClusterResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice:getProvisionedCluster", args, &rv, opts...)
@@ -22,10 +22,10 @@ func LookupProvisionedCluster(ctx *pulumi.Context, args *LookupProvisionedCluste
 }
 
 type LookupProvisionedClusterArgs struct {
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName string `pulumi:"provisionedClustersName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // The provisionedClusters resource definition.
@@ -73,10 +73,10 @@ func LookupProvisionedClusterOutput(ctx *pulumi.Context, args LookupProvisionedC
 }
 
 type LookupProvisionedClusterOutputArgs struct {
-	// Parameter for the name of the provisioned cluster
-	ProvisionedClustersName pulumi.StringInput `pulumi:"provisionedClustersName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Parameter for the name of the provisioned cluster
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (LookupProvisionedClusterOutputArgs) ElementType() reflect.Type {

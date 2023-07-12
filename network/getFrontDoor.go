@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
-// API Version: 2020-05-01.
+// Azure REST API version: 2021-06-01.
 func LookupFrontDoor(ctx *pulumi.Context, args *LookupFrontDoorArgs, opts ...pulumi.InvokeOption) (*LookupFrontDoorResult, error) {
 	var rv LookupFrontDoorResult
 	err := ctx.Invoke("azure-native:network:getFrontDoor", args, &rv, opts...)
@@ -38,6 +38,8 @@ type LookupFrontDoorResult struct {
 	Cname string `pulumi:"cname"`
 	// Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
 	EnabledState *string `pulumi:"enabledState"`
+	// Key-Value pair representing additional properties for frontdoor.
+	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// A friendly name for the frontDoor
 	FriendlyName *string `pulumi:"friendlyName"`
 	// The Id of the frontdoor.
@@ -136,6 +138,11 @@ func (o LookupFrontDoorResultOutput) Cname() pulumi.StringOutput {
 // Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
 func (o LookupFrontDoorResultOutput) EnabledState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFrontDoorResult) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
+}
+
+// Key-Value pair representing additional properties for frontdoor.
+func (o LookupFrontDoorResultOutput) ExtendedProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFrontDoorResult) map[string]string { return v.ExtendedProperties }).(pulumi.StringMapOutput)
 }
 
 // A friendly name for the frontDoor

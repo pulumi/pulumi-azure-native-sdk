@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get role definition by name (GUID).
-// API Version: 2018-01-01-preview.
+// Get role definition by ID (GUID).
+// Azure REST API version: 2022-05-01-preview.
 func LookupRoleDefinition(ctx *pulumi.Context, args *LookupRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupRoleDefinitionResult, error) {
 	var rv LookupRoleDefinitionResult
 	err := ctx.Invoke("azure-native:authorization:getRoleDefinition", args, &rv, opts...)
@@ -24,7 +24,7 @@ func LookupRoleDefinition(ctx *pulumi.Context, args *LookupRoleDefinitionArgs, o
 type LookupRoleDefinitionArgs struct {
 	// The ID of the role definition.
 	RoleDefinitionId string `pulumi:"roleDefinitionId"`
-	// The scope of the role definition.
+	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 	Scope string `pulumi:"scope"`
 }
 
@@ -32,6 +32,10 @@ type LookupRoleDefinitionArgs struct {
 type LookupRoleDefinitionResult struct {
 	// Role definition assignable scopes.
 	AssignableScopes []string `pulumi:"assignableScopes"`
+	// Id of the user who created the assignment
+	CreatedBy string `pulumi:"createdBy"`
+	// Time it was created
+	CreatedOn string `pulumi:"createdOn"`
 	// The role definition description.
 	Description *string `pulumi:"description"`
 	// The role definition ID.
@@ -46,6 +50,10 @@ type LookupRoleDefinitionResult struct {
 	RoleType *string `pulumi:"roleType"`
 	// The role definition type.
 	Type string `pulumi:"type"`
+	// Id of the user who updated the assignment
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Time it was updated
+	UpdatedOn string `pulumi:"updatedOn"`
 }
 
 func LookupRoleDefinitionOutput(ctx *pulumi.Context, args LookupRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupRoleDefinitionResultOutput {
@@ -64,7 +72,7 @@ func LookupRoleDefinitionOutput(ctx *pulumi.Context, args LookupRoleDefinitionOu
 type LookupRoleDefinitionOutputArgs struct {
 	// The ID of the role definition.
 	RoleDefinitionId pulumi.StringInput `pulumi:"roleDefinitionId"`
-	// The scope of the role definition.
+	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -90,6 +98,16 @@ func (o LookupRoleDefinitionResultOutput) ToLookupRoleDefinitionResultOutputWith
 // Role definition assignable scopes.
 func (o LookupRoleDefinitionResultOutput) AssignableScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) []string { return v.AssignableScopes }).(pulumi.StringArrayOutput)
+}
+
+// Id of the user who created the assignment
+func (o LookupRoleDefinitionResultOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Time it was created
+func (o LookupRoleDefinitionResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
 // The role definition description.
@@ -125,6 +143,16 @@ func (o LookupRoleDefinitionResultOutput) RoleType() pulumi.StringPtrOutput {
 // The role definition type.
 func (o LookupRoleDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Id of the user who updated the assignment
+func (o LookupRoleDefinitionResultOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Time it was updated
+func (o LookupRoleDefinitionResultOutput) UpdatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.UpdatedOn }).(pulumi.StringOutput)
 }
 
 func init() {

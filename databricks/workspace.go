@@ -12,7 +12,7 @@ import (
 )
 
 // Information about workspace.
-// API Version: 2018-04-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2018-04-01
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -22,20 +22,34 @@ type Workspace struct {
 	CreatedBy CreatedByResponsePtrOutput `pulumi:"createdBy"`
 	// Specifies the date and time when the workspace is created.
 	CreatedDateTime pulumi.StringOutput `pulumi:"createdDateTime"`
+	// The resource Id of the managed disk encryption set.
+	DiskEncryptionSetId pulumi.StringOutput `pulumi:"diskEncryptionSetId"`
+	// Encryption properties for databricks workspace
+	Encryption WorkspacePropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
+	ManagedDiskIdentity ManagedIdentityConfigurationResponsePtrOutput `pulumi:"managedDiskIdentity"`
 	// The managed resource group Id.
 	ManagedResourceGroupId pulumi.StringOutput `pulumi:"managedResourceGroupId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The workspace's custom parameters.
 	Parameters WorkspaceCustomParametersResponsePtrOutput `pulumi:"parameters"`
+	// Private endpoint connections created on the workspace
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The workspace provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
+	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+	RequiredNsgRules pulumi.StringPtrOutput `pulumi:"requiredNsgRules"`
 	// The SKU of the resource.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// The details of Managed Identity of Storage Account
 	StorageAccountIdentity ManagedIdentityConfigurationResponsePtrOutput `pulumi:"storageAccountIdentity"`
+	// The system metadata relating to this resource
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
@@ -115,12 +129,18 @@ func (WorkspaceState) ElementType() reflect.Type {
 type workspaceArgs struct {
 	// The workspace provider authorizations.
 	Authorizations []WorkspaceProviderAuthorization `pulumi:"authorizations"`
+	// Encryption properties for databricks workspace
+	Encryption *WorkspacePropertiesEncryption `pulumi:"encryption"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The managed resource group Id.
 	ManagedResourceGroupId string `pulumi:"managedResourceGroupId"`
 	// The workspace's custom parameters.
 	Parameters *WorkspaceCustomParameters `pulumi:"parameters"`
+	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+	RequiredNsgRules *string `pulumi:"requiredNsgRules"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU of the resource.
@@ -137,12 +157,18 @@ type workspaceArgs struct {
 type WorkspaceArgs struct {
 	// The workspace provider authorizations.
 	Authorizations WorkspaceProviderAuthorizationArrayInput
+	// Encryption properties for databricks workspace
+	Encryption WorkspacePropertiesEncryptionPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The managed resource group Id.
 	ManagedResourceGroupId pulumi.StringInput
 	// The workspace's custom parameters.
 	Parameters WorkspaceCustomParametersPtrInput
+	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+	PublicNetworkAccess pulumi.StringPtrInput
+	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+	RequiredNsgRules pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU of the resource.
@@ -207,9 +233,24 @@ func (o WorkspaceOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
+// The resource Id of the managed disk encryption set.
+func (o WorkspaceOutput) DiskEncryptionSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.DiskEncryptionSetId }).(pulumi.StringOutput)
+}
+
+// Encryption properties for databricks workspace
+func (o WorkspaceOutput) Encryption() WorkspacePropertiesResponseEncryptionPtrOutput {
+	return o.ApplyT(func(v *Workspace) WorkspacePropertiesResponseEncryptionPtrOutput { return v.Encryption }).(WorkspacePropertiesResponseEncryptionPtrOutput)
+}
+
 // The geo-location where the resource lives
 func (o WorkspaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
+func (o WorkspaceOutput) ManagedDiskIdentity() ManagedIdentityConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) ManagedIdentityConfigurationResponsePtrOutput { return v.ManagedDiskIdentity }).(ManagedIdentityConfigurationResponsePtrOutput)
 }
 
 // The managed resource group Id.
@@ -227,9 +268,24 @@ func (o WorkspaceOutput) Parameters() WorkspaceCustomParametersResponsePtrOutput
 	return o.ApplyT(func(v *Workspace) WorkspaceCustomParametersResponsePtrOutput { return v.Parameters }).(WorkspaceCustomParametersResponsePtrOutput)
 }
 
+// Private endpoint connections created on the workspace
+func (o WorkspaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *Workspace) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
 // The workspace provisioning state.
 func (o WorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+func (o WorkspaceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+func (o WorkspaceOutput) RequiredNsgRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RequiredNsgRules }).(pulumi.StringPtrOutput)
 }
 
 // The SKU of the resource.
@@ -240,6 +296,11 @@ func (o WorkspaceOutput) Sku() SkuResponsePtrOutput {
 // The details of Managed Identity of Storage Account
 func (o WorkspaceOutput) StorageAccountIdentity() ManagedIdentityConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) ManagedIdentityConfigurationResponsePtrOutput { return v.StorageAccountIdentity }).(ManagedIdentityConfigurationResponsePtrOutput)
+}
+
+// The system metadata relating to this resource
+func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

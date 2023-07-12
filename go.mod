@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk
+module github.com/pulumi/pulumi-azure-native-sdk/v2
 
 go 1.17
 

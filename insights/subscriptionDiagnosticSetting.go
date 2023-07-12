@@ -11,7 +11,7 @@ import (
 )
 
 // The subscription diagnostic setting resource.
-// API Version: 2017-05-01-preview.
+// Azure REST API version: 2021-05-01-preview. Prior API version in Azure Native 1.x: 2017-05-01-preview
 type SubscriptionDiagnosticSetting struct {
 	pulumi.CustomResourceState
 
@@ -19,17 +19,19 @@ type SubscriptionDiagnosticSetting struct {
 	EventHubAuthorizationRuleId pulumi.StringPtrOutput `pulumi:"eventHubAuthorizationRuleId"`
 	// The name of the event hub. If none is specified, the default event hub will be selected.
 	EventHubName pulumi.StringPtrOutput `pulumi:"eventHubName"`
-	// Location of the resource
-	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The list of logs settings.
 	Logs SubscriptionLogSettingsResponseArrayOutput `pulumi:"logs"`
-	// Azure resource name
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId pulumi.StringPtrOutput `pulumi:"marketplacePartnerId"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 	ServiceBusRuleId pulumi.StringPtrOutput `pulumi:"serviceBusRuleId"`
 	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
-	// Azure resource type
+	// The system metadata related to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
 	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
@@ -87,10 +89,10 @@ type subscriptionDiagnosticSettingArgs struct {
 	EventHubAuthorizationRuleId *string `pulumi:"eventHubAuthorizationRuleId"`
 	// The name of the event hub. If none is specified, the default event hub will be selected.
 	EventHubName *string `pulumi:"eventHubName"`
-	// Location of the resource
-	Location *string `pulumi:"location"`
 	// The list of logs settings.
 	Logs []SubscriptionLogSettings `pulumi:"logs"`
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId *string `pulumi:"marketplacePartnerId"`
 	// The name of the diagnostic setting.
 	Name *string `pulumi:"name"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
@@ -107,10 +109,10 @@ type SubscriptionDiagnosticSettingArgs struct {
 	EventHubAuthorizationRuleId pulumi.StringPtrInput
 	// The name of the event hub. If none is specified, the default event hub will be selected.
 	EventHubName pulumi.StringPtrInput
-	// Location of the resource
-	Location pulumi.StringPtrInput
 	// The list of logs settings.
 	Logs SubscriptionLogSettingsArrayInput
+	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+	MarketplacePartnerId pulumi.StringPtrInput
 	// The name of the diagnostic setting.
 	Name pulumi.StringPtrInput
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
@@ -168,17 +170,17 @@ func (o SubscriptionDiagnosticSettingOutput) EventHubName() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) pulumi.StringPtrOutput { return v.EventHubName }).(pulumi.StringPtrOutput)
 }
 
-// Location of the resource
-func (o SubscriptionDiagnosticSettingOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
-}
-
 // The list of logs settings.
 func (o SubscriptionDiagnosticSettingOutput) Logs() SubscriptionLogSettingsResponseArrayOutput {
 	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) SubscriptionLogSettingsResponseArrayOutput { return v.Logs }).(SubscriptionLogSettingsResponseArrayOutput)
 }
 
-// Azure resource name
+// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+func (o SubscriptionDiagnosticSettingOutput) MarketplacePartnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) pulumi.StringPtrOutput { return v.MarketplacePartnerId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
 func (o SubscriptionDiagnosticSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -193,7 +195,12 @@ func (o SubscriptionDiagnosticSettingOutput) StorageAccountId() pulumi.StringPtr
 	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) pulumi.StringPtrOutput { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// The system metadata related to this resource.
+func (o SubscriptionDiagnosticSettingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SubscriptionDiagnosticSettingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

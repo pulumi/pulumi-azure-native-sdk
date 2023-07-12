@@ -12,7 +12,7 @@ import (
 )
 
 // Security Application over a given scope
-// API Version: 2022-07-01-preview.
+// Azure REST API version: 2022-07-01-preview. Prior API version in Azure Native 1.x: 2022-07-01-preview
 type SecurityConnectorApplication struct {
 	pulumi.CustomResourceState
 

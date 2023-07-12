@@ -11,7 +11,7 @@ import (
 )
 
 // This method gets the data store/repository by name.
-// API Version: 2019-06-01.
+// Azure REST API version: 2019-06-01.
 func LookupDataStore(ctx *pulumi.Context, args *LookupDataStoreArgs, opts ...pulumi.InvokeOption) (*LookupDataStoreResult, error) {
 	var rv LookupDataStoreResult
 	err := ctx.Invoke("azure-native:hybriddata:getDataStore", args, &rv, opts...)

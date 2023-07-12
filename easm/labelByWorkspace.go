@@ -12,7 +12,7 @@ import (
 )
 
 // Label details
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2023-04-01-preview. Prior API version in Azure Native 1.x: 2022-04-01-preview
 type LabelByWorkspace struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +46,9 @@ func NewLabelByWorkspace(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:easm/v20220401preview:LabelByWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:easm/v20230401preview:LabelByWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

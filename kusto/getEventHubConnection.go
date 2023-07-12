@@ -11,7 +11,7 @@ import (
 )
 
 // Returns an Event Hub connection.
-// API Version: 2018-09-07-preview.
+// Azure REST API version: 2018-09-07-preview.
 func LookupEventHubConnection(ctx *pulumi.Context, args *LookupEventHubConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventHubConnectionResult, error) {
 	var rv LookupEventHubConnectionResult
 	err := ctx.Invoke("azure-native:kusto:getEventHubConnection", args, &rv, opts...)

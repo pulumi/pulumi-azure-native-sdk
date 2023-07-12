@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,20 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:servicefabric:Application":
-		r = &Application{}
-	case "azure-native:servicefabric:ApplicationType":
-		r = &ApplicationType{}
-	case "azure-native:servicefabric:ApplicationTypeVersion":
-		r = &ApplicationTypeVersion{}
-	case "azure-native:servicefabric:Cluster":
-		r = &Cluster{}
 	case "azure-native:servicefabric:ManagedCluster":
 		r = &ManagedCluster{}
+	case "azure-native:servicefabric:ManagedClusterApplication":
+		r = &ManagedClusterApplication{}
+	case "azure-native:servicefabric:ManagedClusterApplicationType":
+		r = &ManagedClusterApplicationType{}
+	case "azure-native:servicefabric:ManagedClusterApplicationTypeVersion":
+		r = &ManagedClusterApplicationTypeVersion{}
+	case "azure-native:servicefabric:ManagedClusterService":
+		r = &ManagedClusterService{}
 	case "azure-native:servicefabric:NodeType":
 		r = &NodeType{}
-	case "azure-native:servicefabric:Service":
-		r = &Service{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

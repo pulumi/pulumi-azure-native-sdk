@@ -12,7 +12,7 @@ import (
 )
 
 // The VirtualMachines resource definition.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -28,10 +28,16 @@ type VirtualMachine struct {
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// Gets or sets the generation for the vm.
 	Generation pulumi.IntPtrOutput `pulumi:"generation"`
+	// Guest agent status properties.
+	GuestAgentProfile GuestAgentProfileResponsePtrOutput `pulumi:"guestAgentProfile"`
 	// Hardware properties.
 	HardwareProfile HardwareProfileResponsePtrOutput `pulumi:"hardwareProfile"`
+	// The identity of the resource.
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Gets or sets the inventory Item ID for the resource.
 	InventoryItemId pulumi.StringPtrOutput `pulumi:"inventoryItemId"`
+	// Last restored checkpoint in the vm.
+	LastRestoredVMCheckpoint CheckpointResponseOutput `pulumi:"lastRestoredVMCheckpoint"`
 	// Gets or sets the location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource Name
@@ -79,6 +85,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:VirtualMachine"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:VirtualMachine"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualMachine
@@ -125,8 +134,12 @@ type virtualMachineArgs struct {
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
 	// Gets or sets the generation for the vm.
 	Generation *int `pulumi:"generation"`
+	// Guest agent status properties.
+	GuestAgentProfile *GuestAgentProfile `pulumi:"guestAgentProfile"`
 	// Hardware properties.
 	HardwareProfile *HardwareProfile `pulumi:"hardwareProfile"`
+	// The identity of the resource.
+	Identity *Identity `pulumi:"identity"`
 	// Gets or sets the inventory Item ID for the resource.
 	InventoryItemId *string `pulumi:"inventoryItemId"`
 	// Gets or sets the location.
@@ -167,8 +180,12 @@ type VirtualMachineArgs struct {
 	ExtendedLocation ExtendedLocationInput
 	// Gets or sets the generation for the vm.
 	Generation pulumi.IntPtrInput
+	// Guest agent status properties.
+	GuestAgentProfile GuestAgentProfilePtrInput
 	// Hardware properties.
 	HardwareProfile HardwareProfilePtrInput
+	// The identity of the resource.
+	Identity IdentityPtrInput
 	// Gets or sets the inventory Item ID for the resource.
 	InventoryItemId pulumi.StringPtrInput
 	// Gets or sets the location.
@@ -264,14 +281,29 @@ func (o VirtualMachineOutput) Generation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
+// Guest agent status properties.
+func (o VirtualMachineOutput) GuestAgentProfile() GuestAgentProfileResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) GuestAgentProfileResponsePtrOutput { return v.GuestAgentProfile }).(GuestAgentProfileResponsePtrOutput)
+}
+
 // Hardware properties.
 func (o VirtualMachineOutput) HardwareProfile() HardwareProfileResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) HardwareProfileResponsePtrOutput { return v.HardwareProfile }).(HardwareProfileResponsePtrOutput)
 }
 
+// The identity of the resource.
+func (o VirtualMachineOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+}
+
 // Gets or sets the inventory Item ID for the resource.
 func (o VirtualMachineOutput) InventoryItemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.InventoryItemId }).(pulumi.StringPtrOutput)
+}
+
+// Last restored checkpoint in the vm.
+func (o VirtualMachineOutput) LastRestoredVMCheckpoint() CheckpointResponseOutput {
+	return o.ApplyT(func(v *VirtualMachine) CheckpointResponseOutput { return v.LastRestoredVMCheckpoint }).(CheckpointResponseOutput)
 }
 
 // Gets or sets the location.

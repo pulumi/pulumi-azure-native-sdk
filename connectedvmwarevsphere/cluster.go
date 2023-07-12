@@ -12,7 +12,7 @@ import (
 )
 
 // Define the cluster.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview
 type Cluster struct {
 	pulumi.CustomResourceState
 

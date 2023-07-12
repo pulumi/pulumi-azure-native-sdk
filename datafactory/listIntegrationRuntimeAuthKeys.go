@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the authentication keys for an integration runtime.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func ListIntegrationRuntimeAuthKeys(ctx *pulumi.Context, args *ListIntegrationRuntimeAuthKeysArgs, opts ...pulumi.InvokeOption) (*ListIntegrationRuntimeAuthKeysResult, error) {
 	var rv ListIntegrationRuntimeAuthKeysResult
 	err := ctx.Invoke("azure-native:datafactory:listIntegrationRuntimeAuthKeys", args, &rv, opts...)

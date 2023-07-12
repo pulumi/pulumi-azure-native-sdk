@@ -12,8 +12,6 @@ import (
 )
 
 // RemoteRenderingAccount Response.
-//
-// Deprecated: azure-native:mixedreality/v20210101:RemoteRenderingAccount is being removed in the next major version of this provider. Upgrade to at least azure-native:mixedreality/v20210301preview:RemoteRenderingAccount to guarantee forwards compatibility.
 type RemoteRenderingAccount struct {
 	pulumi.CustomResourceState
 
