@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure SQL Database sync group.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type SyncGroup struct {
 	pulumi.CustomResourceState
 
@@ -101,6 +101,9 @@ func NewSyncGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:SyncGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:SyncGroup"),
 		},
 	})
 	opts = append(opts, aliases)

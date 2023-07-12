@@ -12,7 +12,7 @@ import (
 )
 
 // The description of the service.
-// API Version: 2021-03-25-preview.
+// Azure REST API version: 2021-03-25-preview. Prior API version in Azure Native 1.x: 2021-03-25-preview
 type PrivateLinkServicesForO365ManagementActivityAPI struct {
 	pulumi.CustomResourceState
 
@@ -51,12 +51,18 @@ func NewPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:m365securityandcompliance:privateLinkServicesForO365ManagementActivityAPI"),
+		},
+		{
+			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForO365ManagementActivityAPI"),
+		},
+		{
 			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForO365ManagementActivityAPI"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForO365ManagementActivityAPI
-	err := ctx.RegisterResource("azure-native:m365securityandcompliance:privateLinkServicesForO365ManagementActivityAPI", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:m365securityandcompliance:PrivateLinkServicesForO365ManagementActivityAPI", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +74,7 @@ func NewPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 func GetPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForO365ManagementActivityAPIState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForO365ManagementActivityAPI, error) {
 	var resource PrivateLinkServicesForO365ManagementActivityAPI
-	err := ctx.ReadResource("azure-native:m365securityandcompliance:privateLinkServicesForO365ManagementActivityAPI", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:m365securityandcompliance:PrivateLinkServicesForO365ManagementActivityAPI", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

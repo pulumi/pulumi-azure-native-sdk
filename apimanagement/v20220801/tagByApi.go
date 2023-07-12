@@ -12,8 +12,6 @@ import (
 )
 
 // Tag Contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:TagByApi is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:TagByApi to guarantee forwards compatibility.
 type TagByApi struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +81,12 @@ func NewTagByApi(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:TagByApi"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:TagByApi"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:TagByApi"),
 		},
 	})
 	opts = append(opts, aliases)

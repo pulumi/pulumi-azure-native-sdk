@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the access policy with the specified name in the specified environment.
-// API Version: 2020-05-15.
+// Azure REST API version: 2020-05-15.
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	var rv LookupAccessPolicyResult
 	err := ctx.Invoke("azure-native:timeseriesinsights:getAccessPolicy", args, &rv, opts...)

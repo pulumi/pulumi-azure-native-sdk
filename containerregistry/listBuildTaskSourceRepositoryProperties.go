@@ -11,7 +11,7 @@ import (
 )
 
 // Get the source control properties for a build task.
-// API Version: 2018-02-01-preview.
+// Azure REST API version: 2018-02-01-preview.
 func ListBuildTaskSourceRepositoryProperties(ctx *pulumi.Context, args *ListBuildTaskSourceRepositoryPropertiesArgs, opts ...pulumi.InvokeOption) (*ListBuildTaskSourceRepositoryPropertiesResult, error) {
 	var rv ListBuildTaskSourceRepositoryPropertiesResult
 	err := ctx.Invoke("azure-native:containerregistry:listBuildTaskSourceRepositoryProperties", args, &rv, opts...)

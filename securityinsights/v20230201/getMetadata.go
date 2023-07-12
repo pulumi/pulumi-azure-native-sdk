@@ -11,8 +11,6 @@ import (
 )
 
 // Get a Metadata.
-//
-// Deprecated: azure-native:securityinsights/v20230201:Metadata is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201preview:Metadata to guarantee forwards compatibility.
 func LookupMetadata(ctx *pulumi.Context, args *LookupMetadataArgs, opts ...pulumi.InvokeOption) (*LookupMetadataResult, error) {
 	var rv LookupMetadataResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201:getMetadata", args, &rv, opts...)

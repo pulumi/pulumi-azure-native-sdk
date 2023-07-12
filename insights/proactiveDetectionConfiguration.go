@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Properties that define a ProactiveDetection configuration.
-// API Version: 2015-05-01.
+// A ProactiveDetection configuration definition.
+// Azure REST API version: 2018-05-01-preview. Prior API version in Azure Native 1.x: 2015-05-01
 type ProactiveDetectionConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -21,13 +21,17 @@ type ProactiveDetectionConfiguration struct {
 	// A flag that indicates whether this rule is enabled by the user
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The last time this rule was updated
-	LastUpdatedTime pulumi.StringPtrOutput `pulumi:"lastUpdatedTime"`
+	LastUpdatedTime pulumi.StringOutput `pulumi:"lastUpdatedTime"`
+	// Resource location
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The rule name
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Static definitions of the ProactiveDetection configuration rule (same values for all components).
-	RuleDefinitions ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutput `pulumi:"ruleDefinitions"`
+	RuleDefinitions ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput `pulumi:"ruleDefinitions"`
 	// A flag that indicated whether notifications on this rule should be sent to subscription owners
 	SendEmailsToSubscriptionOwners pulumi.BoolPtrOutput `pulumi:"sendEmailsToSubscriptionOwners"`
+	// Azure resource type
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewProactiveDetectionConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -90,16 +94,16 @@ type proactiveDetectionConfigurationArgs struct {
 	CustomEmails []string `pulumi:"customEmails"`
 	// A flag that indicates whether this rule is enabled by the user
 	Enabled *bool `pulumi:"enabled"`
-	// The last time this rule was updated
-	LastUpdatedTime *string `pulumi:"lastUpdatedTime"`
-	// The rule name
+	// Resource location
+	Location *string `pulumi:"location"`
+	// Azure resource name
 	Name *string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Application Insights component resource.
 	ResourceName string `pulumi:"resourceName"`
 	// Static definitions of the ProactiveDetection configuration rule (same values for all components).
-	RuleDefinitions *ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions `pulumi:"ruleDefinitions"`
+	RuleDefinitions *ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions `pulumi:"ruleDefinitions"`
 	// A flag that indicated whether notifications on this rule should be sent to subscription owners
 	SendEmailsToSubscriptionOwners *bool `pulumi:"sendEmailsToSubscriptionOwners"`
 }
@@ -112,16 +116,16 @@ type ProactiveDetectionConfigurationArgs struct {
 	CustomEmails pulumi.StringArrayInput
 	// A flag that indicates whether this rule is enabled by the user
 	Enabled pulumi.BoolPtrInput
-	// The last time this rule was updated
-	LastUpdatedTime pulumi.StringPtrInput
-	// The rule name
+	// Resource location
+	Location pulumi.StringPtrInput
+	// Azure resource name
 	Name pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Application Insights component resource.
 	ResourceName pulumi.StringInput
 	// Static definitions of the ProactiveDetection configuration rule (same values for all components).
-	RuleDefinitions ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrInput
+	RuleDefinitions ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrInput
 	// A flag that indicated whether notifications on this rule should be sent to subscription owners
 	SendEmailsToSubscriptionOwners pulumi.BoolPtrInput
 }
@@ -174,25 +178,35 @@ func (o ProactiveDetectionConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // The last time this rule was updated
-func (o ProactiveDetectionConfigurationOutput) LastUpdatedTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProactiveDetectionConfiguration) pulumi.StringPtrOutput { return v.LastUpdatedTime }).(pulumi.StringPtrOutput)
+func (o ProactiveDetectionConfigurationOutput) LastUpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProactiveDetectionConfiguration) pulumi.StringOutput { return v.LastUpdatedTime }).(pulumi.StringOutput)
+}
+
+// Resource location
+func (o ProactiveDetectionConfigurationOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProactiveDetectionConfiguration) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The rule name
-func (o ProactiveDetectionConfigurationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProactiveDetectionConfiguration) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o ProactiveDetectionConfigurationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProactiveDetectionConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Static definitions of the ProactiveDetection configuration rule (same values for all components).
-func (o ProactiveDetectionConfigurationOutput) RuleDefinitions() ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutput {
-	return o.ApplyT(func(v *ProactiveDetectionConfiguration) ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutput {
+func (o ProactiveDetectionConfigurationOutput) RuleDefinitions() ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput {
+	return o.ApplyT(func(v *ProactiveDetectionConfiguration) ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput {
 		return v.RuleDefinitions
-	}).(ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutput)
+	}).(ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput)
 }
 
 // A flag that indicated whether notifications on this rule should be sent to subscription owners
 func (o ProactiveDetectionConfigurationOutput) SendEmailsToSubscriptionOwners() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProactiveDetectionConfiguration) pulumi.BoolPtrOutput { return v.SendEmailsToSubscriptionOwners }).(pulumi.BoolPtrOutput)
+}
+
+// Azure resource type
+func (o ProactiveDetectionConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProactiveDetectionConfiguration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

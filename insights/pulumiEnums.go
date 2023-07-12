@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Specifies the default access mode of queries through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
+type AccessMode string
+
+const (
+	AccessModeOpen        = AccessMode("Open")
+	AccessModePrivateOnly = AccessMode("PrivateOnly")
+)
+
 // the criteria time aggregation types.
 type AggregationTypeEnum string
 
@@ -19,17 +27,6 @@ const (
 	AggregationTypeEnumMinimum = AggregationTypeEnum("Minimum")
 	AggregationTypeEnumMaximum = AggregationTypeEnum("Maximum")
 	AggregationTypeEnumTotal   = AggregationTypeEnum("Total")
-)
-
-// Severity of the alert
-type AlertSeverity string
-
-const (
-	AlertSeverityZero  = AlertSeverity("0")
-	AlertSeverityOne   = AlertSeverity("1")
-	AlertSeverityTwo   = AlertSeverity("2")
-	AlertSeverityThree = AlertSeverity("3")
-	AlertSeverityFour  = AlertSeverity("4")
 )
 
 // Type of application being monitored.
@@ -209,25 +206,15 @@ func (in *comparisonOperationTypePtr) ToComparisonOperationTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ComparisonOperationTypePtrOutput)
 }
 
-// the operator used to compare the data and the threshold.
+// The criteria operator. Relevant and required only for rules of the kind LogAlert.
 type ConditionOperator string
 
 const (
+	ConditionOperatorEquals             = ConditionOperator("Equals")
 	ConditionOperatorGreaterThan        = ConditionOperator("GreaterThan")
 	ConditionOperatorGreaterThanOrEqual = ConditionOperator("GreaterThanOrEqual")
 	ConditionOperatorLessThan           = ConditionOperator("LessThan")
 	ConditionOperatorLessThanOrEqual    = ConditionOperator("LessThanOrEqual")
-)
-
-// Evaluation operation for rule - 'GreaterThan' or 'LessThan.
-type ConditionalOperator string
-
-const (
-	ConditionalOperatorGreaterThanOrEqual = ConditionalOperator("GreaterThanOrEqual")
-	ConditionalOperatorLessThanOrEqual    = ConditionalOperator("LessThanOrEqual")
-	ConditionalOperatorGreaterThan        = ConditionalOperator("GreaterThan")
-	ConditionalOperatorLessThan           = ConditionalOperator("LessThan")
-	ConditionalOperatorEqual              = ConditionalOperator("Equal")
 )
 
 // Specifies the type of threshold criteria
@@ -236,6 +223,14 @@ type CriterionType string
 const (
 	CriterionTypeStaticThresholdCriterion  = CriterionType("StaticThresholdCriterion")
 	CriterionTypeDynamicThresholdCriterion = CriterionType("DynamicThresholdCriterion")
+)
+
+// Operator for dimension values
+type DimensionOperator string
+
+const (
+	DimensionOperatorInclude = DimensionOperator("Include")
+	DimensionOperatorExclude = DimensionOperator("Exclude")
 )
 
 // The operator used to compare the metric value against the threshold.
@@ -254,14 +249,6 @@ const (
 	DynamicThresholdSensitivityLow    = DynamicThresholdSensitivity("Low")
 	DynamicThresholdSensitivityMedium = DynamicThresholdSensitivity("Medium")
 	DynamicThresholdSensitivityHigh   = DynamicThresholdSensitivity("High")
-)
-
-// The flag which indicates whether the Log Search rule is enabled. Value should be true or false
-type Enabled string
-
-const (
-	EnabledTrue  = Enabled("true")
-	EnabledFalse = Enabled("false")
 )
 
 // Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
@@ -436,6 +423,172 @@ const (
 	FlowTypeBluefield = FlowType("Bluefield")
 )
 
+// Type of managed service identity.
+type IdentityType string
+
+const (
+	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
+	IdentityTypeNone           = IdentityType("None")
+)
+
+func (IdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityType)(nil)).Elem()
+}
+
+func (e IdentityType) ToIdentityTypeOutput() IdentityTypeOutput {
+	return pulumi.ToOutput(e).(IdentityTypeOutput)
+}
+
+func (e IdentityType) ToIdentityTypeOutputWithContext(ctx context.Context) IdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IdentityTypeOutput)
+}
+
+func (e IdentityType) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return e.ToIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e IdentityType) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return IdentityType(e).ToIdentityTypeOutputWithContext(ctx).ToIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e IdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (IdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityType)(nil)).Elem()
+}
+
+func (o IdentityTypeOutput) ToIdentityTypeOutput() IdentityTypeOutput {
+	return o
+}
+
+func (o IdentityTypeOutput) ToIdentityTypeOutputWithContext(ctx context.Context) IdentityTypeOutput {
+	return o
+}
+
+func (o IdentityTypeOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return o.ToIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityType) *IdentityType {
+		return &v
+	}).(IdentityTypePtrOutput)
+}
+
+func (o IdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityType)(nil)).Elem()
+}
+
+func (o IdentityTypePtrOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return o
+}
+
+func (o IdentityTypePtrOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return o
+}
+
+func (o IdentityTypePtrOutput) Elem() IdentityTypeOutput {
+	return o.ApplyT(func(v *IdentityType) IdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityType
+		return ret
+	}).(IdentityTypeOutput)
+}
+
+func (o IdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IdentityTypeInput is an input type that accepts IdentityTypeArgs and IdentityTypeOutput values.
+// You can construct a concrete instance of `IdentityTypeInput` via:
+//
+//	IdentityTypeArgs{...}
+type IdentityTypeInput interface {
+	pulumi.Input
+
+	ToIdentityTypeOutput() IdentityTypeOutput
+	ToIdentityTypeOutputWithContext(context.Context) IdentityTypeOutput
+}
+
+var identityTypePtrType = reflect.TypeOf((**IdentityType)(nil)).Elem()
+
+type IdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToIdentityTypePtrOutput() IdentityTypePtrOutput
+	ToIdentityTypePtrOutputWithContext(context.Context) IdentityTypePtrOutput
+}
+
+type identityTypePtr string
+
+func IdentityTypePtr(v string) IdentityTypePtrInput {
+	return (*identityTypePtr)(&v)
+}
+
+func (*identityTypePtr) ElementType() reflect.Type {
+	return identityTypePtrType
+}
+
+func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(IdentityTypePtrOutput)
+}
+
+func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
+}
+
 // Indicates the flow of the ingestion.
 type IngestionMode string
 
@@ -463,12 +616,25 @@ const (
 	ItemTypeFunction = ItemType("function")
 )
 
-// The kind of workbook. Choices are user and shared.
+// Indicates the type of scheduled query rule. The default is LogAlert.
 type Kind string
 
 const (
-	KindUser   = Kind("user")
-	KindShared = Kind("shared")
+	KindLogAlert    = Kind("LogAlert")
+	KindLogToMetric = Kind("LogToMetric")
+)
+
+// The type of the column data.
+type KnownColumnDefinitionType string
+
+const (
+	KnownColumnDefinitionTypeString   = KnownColumnDefinitionType("string")
+	KnownColumnDefinitionTypeInt      = KnownColumnDefinitionType("int")
+	KnownColumnDefinitionTypeLong     = KnownColumnDefinitionType("long")
+	KnownColumnDefinitionTypeReal     = KnownColumnDefinitionType("real")
+	KnownColumnDefinitionTypeBoolean  = KnownColumnDefinitionType("boolean")
+	KnownColumnDefinitionTypeDatetime = KnownColumnDefinitionType("datetime")
+	KnownColumnDefinitionTypeDynamic  = KnownColumnDefinitionType("dynamic")
 )
 
 // The kind of the resource.
@@ -507,6 +673,28 @@ const (
 	KnownExtensionDataSourceStreams_Microsoft_WindowsEvent    = KnownExtensionDataSourceStreams("Microsoft-WindowsEvent")
 )
 
+// One of the supported timestamp formats
+type KnownLogFileTextSettingsRecordStartTimestampFormat string
+
+const (
+	KnownLogFileTextSettingsRecordStartTimestampFormat_ISO_8601                 = KnownLogFileTextSettingsRecordStartTimestampFormat("ISO 8601")
+	KnownLogFileTextSettingsRecordStartTimestampFormat_YYYY_MM_DD_HH_MM_SS      = KnownLogFileTextSettingsRecordStartTimestampFormat("YYYY-MM-DD HH:MM:SS")
+	KnownLogFileTextSettingsRecordStartTimestampFormat_M_D_YYYY_HH_MM_SS_AM_PM  = KnownLogFileTextSettingsRecordStartTimestampFormat("M/D/YYYY HH:MM:SS AM/PM")
+	KnownLogFileTextSettingsRecordStartTimestampFormat_Mon_DD_YYYY_HH_MM_SS     = KnownLogFileTextSettingsRecordStartTimestampFormat("Mon DD, YYYY HH:MM:SS")
+	KnownLogFileTextSettingsRecordStartTimestampFormat_YyMMdd_HH_mm_ss          = KnownLogFileTextSettingsRecordStartTimestampFormat("yyMMdd HH:mm:ss")
+	KnownLogFileTextSettingsRecordStartTimestampFormat_DdMMyy_HH_mm_ss          = KnownLogFileTextSettingsRecordStartTimestampFormat("ddMMyy HH:mm:ss")
+	KnownLogFileTextSettingsRecordStartTimestampFormat_MMM_d_hh_mm_ss           = KnownLogFileTextSettingsRecordStartTimestampFormat("MMM d hh:mm:ss")
+	KnownLogFileTextSettingsRecordStartTimestampFormat_Dd_MMM_yyyy_HH_mm_ss_zzz = KnownLogFileTextSettingsRecordStartTimestampFormat("dd/MMM/yyyy:HH:mm:ss zzz")
+	KnownLogFileTextSettingsRecordStartTimestampFormat_Yyyy_MM_DdTHH_mm_ssK     = KnownLogFileTextSettingsRecordStartTimestampFormat("yyyy-MM-ddTHH:mm:ssK")
+)
+
+// The data format of the log files
+type KnownLogFilesDataSourceFormat string
+
+const (
+	KnownLogFilesDataSourceFormatText = KnownLogFilesDataSourceFormat("text")
+)
+
 type KnownPerfCounterDataSourceStreams string
 
 const (
@@ -514,12 +702,19 @@ const (
 	KnownPerfCounterDataSourceStreams_Microsoft_InsightsMetrics = KnownPerfCounterDataSourceStreams("Microsoft-InsightsMetrics")
 )
 
+type KnownPrometheusForwarderDataSourceStreams string
+
+const (
+	KnownPrometheusForwarderDataSourceStreams_Microsoft_PrometheusMetrics = KnownPrometheusForwarderDataSourceStreams("Microsoft-PrometheusMetrics")
+)
+
 // The configuration to set whether network access from public internet to the endpoints are allowed.
 type KnownPublicNetworkAccessOptions string
 
 const (
-	KnownPublicNetworkAccessOptionsEnabled  = KnownPublicNetworkAccessOptions("Enabled")
-	KnownPublicNetworkAccessOptionsDisabled = KnownPublicNetworkAccessOptions("Disabled")
+	KnownPublicNetworkAccessOptionsEnabled            = KnownPublicNetworkAccessOptions("Enabled")
+	KnownPublicNetworkAccessOptionsDisabled           = KnownPublicNetworkAccessOptions("Disabled")
+	KnownPublicNetworkAccessOptionsSecuredByPerimeter = KnownPublicNetworkAccessOptions("SecuredByPerimeter")
 )
 
 type KnownSyslogDataSourceFacilityNames string
@@ -573,6 +768,16 @@ type KnownWindowsEventLogDataSourceStreams string
 const (
 	KnownWindowsEventLogDataSourceStreams_Microsoft_WindowsEvent = KnownWindowsEventLogDataSourceStreams("Microsoft-WindowsEvent")
 	KnownWindowsEventLogDataSourceStreams_Microsoft_Event        = KnownWindowsEventLogDataSourceStreams("Microsoft-Event")
+)
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+type ManagedServiceIdentityType string
+
+const (
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
 )
 
 // the metric statistic type. How the metrics from multiple instances are combined.
@@ -742,14 +947,6 @@ func (in *metricStatisticTypePtr) ToMetricStatisticTypePtrOutput() MetricStatist
 func (in *metricStatisticTypePtr) ToMetricStatisticTypePtrOutputWithContext(ctx context.Context) MetricStatisticTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricStatisticTypePtrOutput)
 }
-
-// Metric Trigger Type - 'Consecutive' or 'Total'
-type MetricTriggerType string
-
-const (
-	MetricTriggerTypeConsecutive = MetricTriggerType("Consecutive")
-	MetricTriggerTypeTotal       = MetricTriggerType("Total")
-)
 
 // specifies the type of the alert criteria.
 type Odatatype string
@@ -924,18 +1121,200 @@ func (in *operationTypePtr) ToOperationTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(OperationTypePtrOutput)
 }
 
-// Operator for dimension values
+// the criteria operator.
 type Operator string
 
 const (
-	OperatorInclude = Operator("Include")
+	OperatorEquals             = Operator("Equals")
+	OperatorGreaterThan        = Operator("GreaterThan")
+	OperatorGreaterThanOrEqual = Operator("GreaterThanOrEqual")
+	OperatorLessThan           = Operator("LessThan")
+	OperatorLessThanOrEqual    = Operator("LessThanOrEqual")
 )
 
-// Set value to 'ResultCount' .
-type QueryType string
+// the predictive autoscale mode
+type PredictiveAutoscalePolicyScaleMode string
 
 const (
-	QueryTypeResultCount = QueryType("ResultCount")
+	PredictiveAutoscalePolicyScaleModeDisabled     = PredictiveAutoscalePolicyScaleMode("Disabled")
+	PredictiveAutoscalePolicyScaleModeForecastOnly = PredictiveAutoscalePolicyScaleMode("ForecastOnly")
+	PredictiveAutoscalePolicyScaleModeEnabled      = PredictiveAutoscalePolicyScaleMode("Enabled")
+)
+
+func (PredictiveAutoscalePolicyScaleMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*PredictiveAutoscalePolicyScaleMode)(nil)).Elem()
+}
+
+func (e PredictiveAutoscalePolicyScaleMode) ToPredictiveAutoscalePolicyScaleModeOutput() PredictiveAutoscalePolicyScaleModeOutput {
+	return pulumi.ToOutput(e).(PredictiveAutoscalePolicyScaleModeOutput)
+}
+
+func (e PredictiveAutoscalePolicyScaleMode) ToPredictiveAutoscalePolicyScaleModeOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PredictiveAutoscalePolicyScaleModeOutput)
+}
+
+func (e PredictiveAutoscalePolicyScaleMode) ToPredictiveAutoscalePolicyScaleModePtrOutput() PredictiveAutoscalePolicyScaleModePtrOutput {
+	return e.ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(context.Background())
+}
+
+func (e PredictiveAutoscalePolicyScaleMode) ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModePtrOutput {
+	return PredictiveAutoscalePolicyScaleMode(e).ToPredictiveAutoscalePolicyScaleModeOutputWithContext(ctx).ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx)
+}
+
+func (e PredictiveAutoscalePolicyScaleMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PredictiveAutoscalePolicyScaleMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PredictiveAutoscalePolicyScaleMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PredictiveAutoscalePolicyScaleMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PredictiveAutoscalePolicyScaleModeOutput struct{ *pulumi.OutputState }
+
+func (PredictiveAutoscalePolicyScaleModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PredictiveAutoscalePolicyScaleMode)(nil)).Elem()
+}
+
+func (o PredictiveAutoscalePolicyScaleModeOutput) ToPredictiveAutoscalePolicyScaleModeOutput() PredictiveAutoscalePolicyScaleModeOutput {
+	return o
+}
+
+func (o PredictiveAutoscalePolicyScaleModeOutput) ToPredictiveAutoscalePolicyScaleModeOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModeOutput {
+	return o
+}
+
+func (o PredictiveAutoscalePolicyScaleModeOutput) ToPredictiveAutoscalePolicyScaleModePtrOutput() PredictiveAutoscalePolicyScaleModePtrOutput {
+	return o.ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(context.Background())
+}
+
+func (o PredictiveAutoscalePolicyScaleModeOutput) ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PredictiveAutoscalePolicyScaleMode) *PredictiveAutoscalePolicyScaleMode {
+		return &v
+	}).(PredictiveAutoscalePolicyScaleModePtrOutput)
+}
+
+func (o PredictiveAutoscalePolicyScaleModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PredictiveAutoscalePolicyScaleModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PredictiveAutoscalePolicyScaleMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PredictiveAutoscalePolicyScaleModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PredictiveAutoscalePolicyScaleModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PredictiveAutoscalePolicyScaleMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PredictiveAutoscalePolicyScaleModePtrOutput struct{ *pulumi.OutputState }
+
+func (PredictiveAutoscalePolicyScaleModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PredictiveAutoscalePolicyScaleMode)(nil)).Elem()
+}
+
+func (o PredictiveAutoscalePolicyScaleModePtrOutput) ToPredictiveAutoscalePolicyScaleModePtrOutput() PredictiveAutoscalePolicyScaleModePtrOutput {
+	return o
+}
+
+func (o PredictiveAutoscalePolicyScaleModePtrOutput) ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModePtrOutput {
+	return o
+}
+
+func (o PredictiveAutoscalePolicyScaleModePtrOutput) Elem() PredictiveAutoscalePolicyScaleModeOutput {
+	return o.ApplyT(func(v *PredictiveAutoscalePolicyScaleMode) PredictiveAutoscalePolicyScaleMode {
+		if v != nil {
+			return *v
+		}
+		var ret PredictiveAutoscalePolicyScaleMode
+		return ret
+	}).(PredictiveAutoscalePolicyScaleModeOutput)
+}
+
+func (o PredictiveAutoscalePolicyScaleModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PredictiveAutoscalePolicyScaleModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PredictiveAutoscalePolicyScaleMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PredictiveAutoscalePolicyScaleModeInput is an input type that accepts PredictiveAutoscalePolicyScaleModeArgs and PredictiveAutoscalePolicyScaleModeOutput values.
+// You can construct a concrete instance of `PredictiveAutoscalePolicyScaleModeInput` via:
+//
+//	PredictiveAutoscalePolicyScaleModeArgs{...}
+type PredictiveAutoscalePolicyScaleModeInput interface {
+	pulumi.Input
+
+	ToPredictiveAutoscalePolicyScaleModeOutput() PredictiveAutoscalePolicyScaleModeOutput
+	ToPredictiveAutoscalePolicyScaleModeOutputWithContext(context.Context) PredictiveAutoscalePolicyScaleModeOutput
+}
+
+var predictiveAutoscalePolicyScaleModePtrType = reflect.TypeOf((**PredictiveAutoscalePolicyScaleMode)(nil)).Elem()
+
+type PredictiveAutoscalePolicyScaleModePtrInput interface {
+	pulumi.Input
+
+	ToPredictiveAutoscalePolicyScaleModePtrOutput() PredictiveAutoscalePolicyScaleModePtrOutput
+	ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(context.Context) PredictiveAutoscalePolicyScaleModePtrOutput
+}
+
+type predictiveAutoscalePolicyScaleModePtr string
+
+func PredictiveAutoscalePolicyScaleModePtr(v string) PredictiveAutoscalePolicyScaleModePtrInput {
+	return (*predictiveAutoscalePolicyScaleModePtr)(&v)
+}
+
+func (*predictiveAutoscalePolicyScaleModePtr) ElementType() reflect.Type {
+	return predictiveAutoscalePolicyScaleModePtrType
+}
+
+func (in *predictiveAutoscalePolicyScaleModePtr) ToPredictiveAutoscalePolicyScaleModePtrOutput() PredictiveAutoscalePolicyScaleModePtrOutput {
+	return pulumi.ToOutput(in).(PredictiveAutoscalePolicyScaleModePtrOutput)
+}
+
+func (in *predictiveAutoscalePolicyScaleModePtr) ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PredictiveAutoscalePolicyScaleModePtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+type PrivateEndpointServiceConnectionStatus string
+
+const (
+	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
+	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
+	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
+)
+
+// The network access type for accessing Application Insights query.
+type PublicNetworkAccessType string
+
+const (
+	// Enables connectivity to Application Insights through public DNS.
+	PublicNetworkAccessTypeEnabled = PublicNetworkAccessType("Enabled")
+	// Disables public connectivity to Application Insights through public DNS.
+	PublicNetworkAccessTypeDisabled = PublicNetworkAccessType("Disabled")
 )
 
 // the recurrence frequency. How often the schedule profile should take effect. This value must be Week, meaning each week will have the same set of profiles. For example, to set a daily schedule, set **schedule** to every day of the week. The frequency property specifies that the schedule is repeated weekly.
@@ -1457,6 +1836,17 @@ func (in *scaleTypePtr) ToScaleTypePtrOutputWithContext(ctx context.Context) Sca
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleTypePtrOutput)
 }
 
+// Aggregation type. Relevant and required only for rules of the kind LogAlert.
+type TimeAggregation string
+
+const (
+	TimeAggregationCount   = TimeAggregation("Count")
+	TimeAggregationAverage = TimeAggregation("Average")
+	TimeAggregationMinimum = TimeAggregation("Minimum")
+	TimeAggregationMaximum = TimeAggregation("Maximum")
+	TimeAggregationTotal   = TimeAggregation("Total")
+)
+
 // the time aggregation operator. How the data that are collected should be combined over time. The default value is the PrimaryAggregationType of the Metric.
 type TimeAggregationOperator string
 
@@ -1637,12 +2027,13 @@ func (in *timeAggregationTypePtr) ToTimeAggregationTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(TimeAggregationTypePtrOutput)
 }
 
-// The kind of web test this is, valid choices are ping and multistep.
+// The kind of web test this is, valid choices are ping, multistep and standard.
 type WebTestKind string
 
 const (
 	WebTestKindPing      = WebTestKind("ping")
 	WebTestKindMultistep = WebTestKind("multistep")
+	WebTestKindStandard  = WebTestKind("standard")
 )
 
 func (WebTestKind) ElementType() reflect.Type {
@@ -1802,15 +2193,26 @@ func (in *webTestKindPtr) ToWebTestKindPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(WebTestKindPtrOutput)
 }
 
+// The kind of workbook. Only valid value is shared.
+type WorkbookSharedTypeKind string
+
+const (
+	WorkbookSharedTypeKindShared = WorkbookSharedTypeKind("shared")
+)
+
 func init() {
 	pulumi.RegisterOutputType(ComparisonOperationTypeOutput{})
 	pulumi.RegisterOutputType(ComparisonOperationTypePtrOutput{})
 	pulumi.RegisterOutputType(FavoriteTypeOutput{})
 	pulumi.RegisterOutputType(FavoriteTypePtrOutput{})
+	pulumi.RegisterOutputType(IdentityTypeOutput{})
+	pulumi.RegisterOutputType(IdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(MetricStatisticTypeOutput{})
 	pulumi.RegisterOutputType(MetricStatisticTypePtrOutput{})
 	pulumi.RegisterOutputType(OperationTypeOutput{})
 	pulumi.RegisterOutputType(OperationTypePtrOutput{})
+	pulumi.RegisterOutputType(PredictiveAutoscalePolicyScaleModeOutput{})
+	pulumi.RegisterOutputType(PredictiveAutoscalePolicyScaleModePtrOutput{})
 	pulumi.RegisterOutputType(RecurrenceFrequencyOutput{})
 	pulumi.RegisterOutputType(RecurrenceFrequencyPtrOutput{})
 	pulumi.RegisterOutputType(ScaleDirectionOutput{})

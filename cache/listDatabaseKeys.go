@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves the access keys for the RedisEnterprise database.
-// API Version: 2021-03-01.
+// Azure REST API version: 2023-03-01-preview.
 func ListDatabaseKeys(ctx *pulumi.Context, args *ListDatabaseKeysArgs, opts ...pulumi.InvokeOption) (*ListDatabaseKeysResult, error) {
 	var rv ListDatabaseKeysResult
 	err := ctx.Invoke("azure-native:cache:listDatabaseKeys", args, &rv, opts...)

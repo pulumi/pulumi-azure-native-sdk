@@ -11,7 +11,7 @@ import (
 )
 
 // Gets load balancer backend address pool.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01.
 func LookupLoadBalancerBackendAddressPool(ctx *pulumi.Context, args *LookupLoadBalancerBackendAddressPoolArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerBackendAddressPoolResult, error) {
 	var rv LookupLoadBalancerBackendAddressPoolResult
 	err := ctx.Invoke("azure-native:network:getLoadBalancerBackendAddressPool", args, &rv, opts...)
@@ -34,14 +34,20 @@ type LookupLoadBalancerBackendAddressPoolArgs struct {
 type LookupLoadBalancerBackendAddressPoolResult struct {
 	// An array of references to IP addresses defined in network interfaces.
 	BackendIPConfigurations []NetworkInterfaceIPConfigurationResponse `pulumi:"backendIPConfigurations"`
+	// Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
+	DrainPeriodInSeconds *int `pulumi:"drainPeriodInSeconds"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// An array of references to inbound NAT rules that use this backend address pool.
+	InboundNatRules []SubResourceResponse `pulumi:"inboundNatRules"`
 	// An array of backend addresses.
 	LoadBalancerBackendAddresses []LoadBalancerBackendAddressResponse `pulumi:"loadBalancerBackendAddresses"`
 	// An array of references to load balancing rules that use this backend address pool.
 	LoadBalancingRules []SubResourceResponse `pulumi:"loadBalancingRules"`
+	// The location of the backend address pool.
+	Location *string `pulumi:"location"`
 	// The name of the resource that is unique within the set of backend address pools used by the load balancer. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
 	// A reference to an outbound rule that uses this backend address pool.
@@ -50,8 +56,12 @@ type LookupLoadBalancerBackendAddressPoolResult struct {
 	OutboundRules []SubResourceResponse `pulumi:"outboundRules"`
 	// The provisioning state of the backend address pool resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// An array of gateway load balancer tunnel interfaces.
+	TunnelInterfaces []GatewayLoadBalancerTunnelInterfaceResponse `pulumi:"tunnelInterfaces"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
+	// A reference to a virtual network.
+	VirtualNetwork *SubResourceResponse `pulumi:"virtualNetwork"`
 }
 
 func LookupLoadBalancerBackendAddressPoolOutput(ctx *pulumi.Context, args LookupLoadBalancerBackendAddressPoolOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerBackendAddressPoolResultOutput {
@@ -102,6 +112,11 @@ func (o LookupLoadBalancerBackendAddressPoolResultOutput) BackendIPConfiguration
 	}).(NetworkInterfaceIPConfigurationResponseArrayOutput)
 }
 
+// Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
+func (o LookupLoadBalancerBackendAddressPoolResultOutput) DrainPeriodInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) *int { return v.DrainPeriodInSeconds }).(pulumi.IntPtrOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o LookupLoadBalancerBackendAddressPoolResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -110,6 +125,11 @@ func (o LookupLoadBalancerBackendAddressPoolResultOutput) Etag() pulumi.StringOu
 // Resource ID.
 func (o LookupLoadBalancerBackendAddressPoolResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// An array of references to inbound NAT rules that use this backend address pool.
+func (o LookupLoadBalancerBackendAddressPoolResultOutput) InboundNatRules() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) []SubResourceResponse { return v.InboundNatRules }).(SubResourceResponseArrayOutput)
 }
 
 // An array of backend addresses.
@@ -122,6 +142,11 @@ func (o LookupLoadBalancerBackendAddressPoolResultOutput) LoadBalancerBackendAdd
 // An array of references to load balancing rules that use this backend address pool.
 func (o LookupLoadBalancerBackendAddressPoolResultOutput) LoadBalancingRules() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) []SubResourceResponse { return v.LoadBalancingRules }).(SubResourceResponseArrayOutput)
+}
+
+// The location of the backend address pool.
+func (o LookupLoadBalancerBackendAddressPoolResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource that is unique within the set of backend address pools used by the load balancer. This name can be used to access the resource.
@@ -144,9 +169,21 @@ func (o LookupLoadBalancerBackendAddressPoolResultOutput) ProvisioningState() pu
 	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// An array of gateway load balancer tunnel interfaces.
+func (o LookupLoadBalancerBackendAddressPoolResultOutput) TunnelInterfaces() GatewayLoadBalancerTunnelInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) []GatewayLoadBalancerTunnelInterfaceResponse {
+		return v.TunnelInterfaces
+	}).(GatewayLoadBalancerTunnelInterfaceResponseArrayOutput)
+}
+
 // Type of the resource.
 func (o LookupLoadBalancerBackendAddressPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A reference to a virtual network.
+func (o LookupLoadBalancerBackendAddressPoolResultOutput) VirtualNetwork() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerBackendAddressPoolResult) *SubResourceResponse { return v.VirtualNetwork }).(SubResourceResponsePtrOutput)
 }
 
 func init() {

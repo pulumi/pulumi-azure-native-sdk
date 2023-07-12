@@ -12,8 +12,6 @@ import (
 )
 
 // A private endpoint connection
-//
-// Deprecated: azure-native:hybridcompute/v20221227:PrivateEndpointConnection is being removed in the next major version of this provider. Upgrade to at least azure-native:hybridcompute/v20230425preview:PrivateEndpointConnection to guarantee forwards compatibility.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +80,12 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20221227preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20230425preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

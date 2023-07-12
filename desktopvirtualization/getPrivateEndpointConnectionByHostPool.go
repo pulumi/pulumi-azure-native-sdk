@@ -11,7 +11,7 @@ import (
 )
 
 // Get a private endpoint connection.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2022-10-14-preview.
 func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByHostPoolResult, error) {
 	var rv LookupPrivateEndpointConnectionByHostPoolResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getPrivateEndpointConnectionByHostPool", args, &rv, opts...)

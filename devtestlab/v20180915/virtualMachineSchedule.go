@@ -37,7 +37,7 @@ type VirtualMachineSchedule struct {
 	TargetResourceId pulumi.StringPtrOutput `pulumi:"targetResourceId"`
 	// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
 	TaskType pulumi.StringPtrOutput `pulumi:"taskType"`
-	// The time zone ID (e.g. Pacific Standard time).
+	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId pulumi.StringPtrOutput `pulumi:"timeZoneId"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -132,7 +132,7 @@ type virtualMachineScheduleArgs struct {
 	TargetResourceId *string `pulumi:"targetResourceId"`
 	// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
 	TaskType *string `pulumi:"taskType"`
-	// The time zone ID (e.g. Pacific Standard time).
+	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
 	// The name of the virtual machine.
 	VirtualMachineName string `pulumi:"virtualMachineName"`
@@ -164,7 +164,7 @@ type VirtualMachineScheduleArgs struct {
 	TargetResourceId pulumi.StringPtrInput
 	// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
 	TaskType pulumi.StringPtrInput
-	// The time zone ID (e.g. Pacific Standard time).
+	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId pulumi.StringPtrInput
 	// The name of the virtual machine.
 	VirtualMachineName pulumi.StringInput
@@ -264,7 +264,7 @@ func (o VirtualMachineScheduleOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringPtrOutput { return v.TaskType }).(pulumi.StringPtrOutput)
 }
 
-// The time zone ID (e.g. Pacific Standard time).
+// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 func (o VirtualMachineScheduleOutput) TimeZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringPtrOutput { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }

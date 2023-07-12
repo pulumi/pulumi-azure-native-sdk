@@ -57,6 +57,9 @@ func NewPrometheusRuleGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:alertsmanagement:PrometheusRuleGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20210722preview:PrometheusRuleGroup"),
 		},
 	})

@@ -11,7 +11,7 @@ import (
 )
 
 // Get an resource upload URL for build service, which may be artifacts or source archive.
-// API Version: 2022-01-01-preview.
+// Azure REST API version: 2023-05-01-preview.
 func GetBuildServiceResourceUploadUrl(ctx *pulumi.Context, args *GetBuildServiceResourceUploadUrlArgs, opts ...pulumi.InvokeOption) (*GetBuildServiceResourceUploadUrlResult, error) {
 	var rv GetBuildServiceResourceUploadUrlResult
 	err := ctx.Invoke("azure-native:appplatform:getBuildServiceResourceUploadUrl", args, &rv, opts...)

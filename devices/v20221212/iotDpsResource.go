@@ -12,8 +12,6 @@ import (
 )
 
 // The description of the provisioning service.
-//
-// Deprecated: azure-native:devices/v20221212:IotDpsResource is being removed in the next major version of this provider. Upgrade to at least azure-native:devices/v20230301preview:IotDpsResource to guarantee forwards compatibility.
 type IotDpsResource struct {
 	pulumi.CustomResourceState
 

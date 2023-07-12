@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the properties of the specified machine learning team account.
-// API Version: 2017-05-01-preview.
+// Azure REST API version: 2017-05-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:machinelearningexperimentation:getAccount", args, &rv, opts...)

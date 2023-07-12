@@ -52,12 +52,30 @@ func NewNetworkinterfaceRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:networkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:NetworkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:networkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:NetworkinterfaceRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:networkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:NetworkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:networkinterfaceRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkinterfaceRetrieve
-	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:networkinterfaceRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:NetworkinterfaceRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +87,7 @@ func NewNetworkinterfaceRetrieve(ctx *pulumi.Context,
 func GetNetworkinterfaceRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *NetworkinterfaceRetrieveState, opts ...pulumi.ResourceOption) (*NetworkinterfaceRetrieve, error) {
 	var resource NetworkinterfaceRetrieve
-	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:networkinterfaceRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:NetworkinterfaceRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

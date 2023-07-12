@@ -12,8 +12,6 @@ import (
 )
 
 // Represents an incident in Azure Security Insights.
-//
-// Deprecated: azure-native:securityinsights/v20230201:Incident is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230201preview:Incident to guarantee forwards compatibility.
 type Incident struct {
 	pulumi.CustomResourceState
 
@@ -152,7 +150,16 @@ func NewIncident(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:Incident"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:Incident"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:Incident"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Incident"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Incident"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,8 +12,6 @@ import (
 )
 
 // A class representing a SenderUsername resource.
-//
-// Deprecated: azure-native:communication/v20230331:SenderUsername is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230401preview:SenderUsername to guarantee forwards compatibility.
 type SenderUsername struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +50,18 @@ func NewSenderUsername(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:communication:SenderUsername"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230301preview:SenderUsername"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230401preview:SenderUsername"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource SenderUsername
 	err := ctx.RegisterResource("azure-native:communication/v20230331:SenderUsername", name, args, &resource, opts...)
 	if err != nil {

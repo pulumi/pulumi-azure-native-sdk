@@ -12,7 +12,7 @@ import (
 )
 
 // Cloud Connector resource.
-// API Version: 2023-01-01-preview.
+// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2023-01-01-preview
 type CloudConnector struct {
 	pulumi.CustomResourceState
 

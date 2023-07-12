@@ -12,7 +12,7 @@ import (
 )
 
 // Represents Activity entity query.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type ActivityCustomEntityQuery struct {
 	pulumi.CustomResourceState
 
@@ -35,7 +35,7 @@ type ActivityCustomEntityQuery struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The last time the activity was updated
 	LastModifiedTimeUtc pulumi.StringOutput `pulumi:"lastModifiedTimeUtc"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Activity query definitions
 	QueryDefinitions ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput `pulumi:"queryDefinitions"`
@@ -47,7 +47,7 @@ type ActivityCustomEntityQuery struct {
 	TemplateName pulumi.StringPtrOutput `pulumi:"templateName"`
 	// The entity query title
 	Title pulumi.StringPtrOutput `pulumi:"title"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -60,9 +60,6 @@ func NewActivityCustomEntityQuery(ctx *pulumi.Context,
 
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
-	}
-	if args.OperationalInsightsResourceProvider == nil {
-		return nil, errors.New("invalid value for required argument 'OperationalInsightsResourceProvider'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -115,7 +112,16 @@ func NewActivityCustomEntityQuery(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:ActivityCustomEntityQuery"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:ActivityCustomEntityQuery"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:ActivityCustomEntityQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:ActivityCustomEntityQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:ActivityCustomEntityQuery"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -166,8 +172,6 @@ type activityCustomEntityQueryArgs struct {
 	// The kind of the entity query that supports put request.
 	// Expected value is 'Activity'.
 	Kind string `pulumi:"kind"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// The Activity query definitions
 	QueryDefinitions *ActivityEntityQueriesPropertiesQueryDefinitions `pulumi:"queryDefinitions"`
 	// List of the fields of the source entity that are required to run the query
@@ -199,8 +203,6 @@ type ActivityCustomEntityQueryArgs struct {
 	// The kind of the entity query that supports put request.
 	// Expected value is 'Activity'.
 	Kind pulumi.StringInput
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput
 	// The Activity query definitions
 	QueryDefinitions ActivityEntityQueriesPropertiesQueryDefinitionsPtrInput
 	// List of the fields of the source entity that are required to run the query
@@ -298,7 +300,7 @@ func (o ActivityCustomEntityQueryOutput) LastModifiedTimeUtc() pulumi.StringOutp
 	return o.ApplyT(func(v *ActivityCustomEntityQuery) pulumi.StringOutput { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o ActivityCustomEntityQueryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ActivityCustomEntityQuery) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -330,7 +332,7 @@ func (o ActivityCustomEntityQueryOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActivityCustomEntityQuery) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ActivityCustomEntityQueryOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ActivityCustomEntityQuery) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

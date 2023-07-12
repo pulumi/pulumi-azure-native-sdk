@@ -12,8 +12,6 @@ import (
 )
 
 // Container App SourceControl.
-//
-// Deprecated: azure-native:app/v20221001:ContainerAppsSourceControl is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ContainerAppsSourceControl to guarantee forwards compatibility.
 type ContainerAppsSourceControl struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +58,12 @@ func NewContainerAppsSourceControl(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ContainerAppsSourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ContainerAppsSourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:ContainerAppsSourceControl"),
 		},
 	})
 	opts = append(opts, aliases)

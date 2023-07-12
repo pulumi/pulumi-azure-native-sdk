@@ -12,11 +12,11 @@ import (
 )
 
 // Bot resource definition
-// API Version: 2021-03-01.
+// Azure REST API version: 2022-09-15. Prior API version in Azure Native 1.x: 2021-03-01
 type Bot struct {
 	pulumi.CustomResourceState
 
-	// Entity Tag
+	// Entity Tag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
@@ -176,7 +176,7 @@ func (o BotOutput) ToBotOutputWithContext(ctx context.Context) BotOutput {
 	return o
 }
 
-// Entity Tag
+// Entity Tag.
 func (o BotOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }

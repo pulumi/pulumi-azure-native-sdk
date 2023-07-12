@@ -12,12 +12,16 @@ import (
 )
 
 // Role definition.
-// API Version: 2018-01-01-preview.
+// Azure REST API version: 2022-05-01-preview. Prior API version in Azure Native 1.x: 2018-01-01-preview
 type RoleDefinition struct {
 	pulumi.CustomResourceState
 
 	// Role definition assignable scopes.
 	AssignableScopes pulumi.StringArrayOutput `pulumi:"assignableScopes"`
+	// Id of the user who created the assignment
+	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// Time it was created
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// The role definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The role definition name.
@@ -30,6 +34,10 @@ type RoleDefinition struct {
 	RoleType pulumi.StringPtrOutput `pulumi:"roleType"`
 	// The role definition type.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Id of the user who updated the assignment
+	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
+	// Time it was updated
+	UpdatedOn pulumi.StringOutput `pulumi:"updatedOn"`
 }
 
 // NewRoleDefinition registers a new resource with the given unique name, arguments, and options.
@@ -51,6 +59,9 @@ func NewRoleDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20220401:RoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20220501preview:RoleDefinition"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -98,7 +109,7 @@ type roleDefinitionArgs struct {
 	RoleName *string `pulumi:"roleName"`
 	// The role type.
 	RoleType *string `pulumi:"roleType"`
-	// The scope of the role definition.
+	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 	Scope string `pulumi:"scope"`
 }
 
@@ -116,7 +127,7 @@ type RoleDefinitionArgs struct {
 	RoleName pulumi.StringPtrInput
 	// The role type.
 	RoleType pulumi.StringPtrInput
-	// The scope of the role definition.
+	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 	Scope pulumi.StringInput
 }
 
@@ -162,6 +173,16 @@ func (o RoleDefinitionOutput) AssignableScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringArrayOutput { return v.AssignableScopes }).(pulumi.StringArrayOutput)
 }
 
+// Id of the user who created the assignment
+func (o RoleDefinitionOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Time it was created
+func (o RoleDefinitionOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
 // The role definition description.
 func (o RoleDefinitionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -190,6 +211,16 @@ func (o RoleDefinitionOutput) RoleType() pulumi.StringPtrOutput {
 // The role definition type.
 func (o RoleDefinitionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Id of the user who updated the assignment
+func (o RoleDefinitionOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Time it was updated
+func (o RoleDefinitionOutput) UpdatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.UpdatedOn }).(pulumi.StringOutput)
 }
 
 func init() {

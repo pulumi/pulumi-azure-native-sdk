@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the public encryption key of the device.
-// API Version: 2017-06-01.
+// Azure REST API version: 2017-06-01.
 func GetManagerDevicePublicEncryptionKey(ctx *pulumi.Context, args *GetManagerDevicePublicEncryptionKeyArgs, opts ...pulumi.InvokeOption) (*GetManagerDevicePublicEncryptionKeyResult, error) {
 	var rv GetManagerDevicePublicEncryptionKeyResult
 	err := ctx.Invoke("azure-native:storsimple:getManagerDevicePublicEncryptionKey", args, &rv, opts...)

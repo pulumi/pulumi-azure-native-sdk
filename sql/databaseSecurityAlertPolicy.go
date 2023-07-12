@@ -12,7 +12,7 @@ import (
 )
 
 // A database security alert policy.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview
 type DatabaseSecurityAlertPolicy struct {
 	pulumi.CustomResourceState
 
@@ -98,6 +98,9 @@ func NewDatabaseSecurityAlertPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:DatabaseSecurityAlertPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:DatabaseSecurityAlertPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

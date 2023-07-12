@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,38 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:automation/v20190601:AutomationAccount":
-		r = &AutomationAccount{}
-	case "azure-native:automation/v20190601:Certificate":
-		r = &Certificate{}
-	case "azure-native:automation/v20190601:Connection":
-		r = &Connection{}
-	case "azure-native:automation/v20190601:ConnectionType":
-		r = &ConnectionType{}
-	case "azure-native:automation/v20190601:Credential":
-		r = &Credential{}
-	case "azure-native:automation/v20190601:DscConfiguration":
-		r = &DscConfiguration{}
-	case "azure-native:automation/v20190601:DscNodeConfiguration":
-		r = &DscNodeConfiguration{}
-	case "azure-native:automation/v20190601:JobSchedule":
-		r = &JobSchedule{}
-	case "azure-native:automation/v20190601:Module":
-		r = &Module{}
-	case "azure-native:automation/v20190601:Python2Package":
-		r = &Python2Package{}
-	case "azure-native:automation/v20190601:Runbook":
-		r = &Runbook{}
-	case "azure-native:automation/v20190601:Schedule":
-		r = &Schedule{}
 	case "azure-native:automation/v20190601:SoftwareUpdateConfigurationByName":
 		r = &SoftwareUpdateConfigurationByName{}
-	case "azure-native:automation/v20190601:SourceControl":
-		r = &SourceControl{}
-	case "azure-native:automation/v20190601:Variable":
-		r = &Variable{}
-	case "azure-native:automation/v20190601:Watcher":
-		r = &Watcher{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// list source configurations for a linker.
-// API Version: 2021-11-01-preview.
+// list source configurations for a Linker.
+// Azure REST API version: 2022-11-01-preview.
 func ListLinkerConfigurations(ctx *pulumi.Context, args *ListLinkerConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListLinkerConfigurationsResult, error) {
 	var rv ListLinkerConfigurationsResult
 	err := ctx.Invoke("azure-native:servicelinker:listLinkerConfigurations", args, &rv, opts...)

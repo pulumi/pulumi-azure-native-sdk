@@ -11,7 +11,7 @@ import (
 )
 
 // List allowed upgrade plans for application.
-// API Version: 2021-07-01.
+// Azure REST API version: 2021-07-01.
 func ListApplicationAllowedUpgradePlans(ctx *pulumi.Context, args *ListApplicationAllowedUpgradePlansArgs, opts ...pulumi.InvokeOption) (*ListApplicationAllowedUpgradePlansResult, error) {
 	var rv ListApplicationAllowedUpgradePlansResult
 	err := ctx.Invoke("azure-native:solutions:listApplicationAllowedUpgradePlans", args, &rv, opts...)

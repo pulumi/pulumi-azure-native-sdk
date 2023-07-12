@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves gateway keys.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-08-01.
 func ListGatewayKeys(ctx *pulumi.Context, args *ListGatewayKeysArgs, opts ...pulumi.InvokeOption) (*ListGatewayKeysResult, error) {
 	var rv ListGatewayKeysResult
 	err := ctx.Invoke("azure-native:apimanagement:listGatewayKeys", args, &rv, opts...)
@@ -24,7 +24,7 @@ func ListGatewayKeys(ctx *pulumi.Context, args *ListGatewayKeysArgs, opts ...pul
 type ListGatewayKeysArgs struct {
 	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
 	GatewayId string `pulumi:"gatewayId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName string `pulumi:"serviceName"`
@@ -54,7 +54,7 @@ func ListGatewayKeysOutput(ctx *pulumi.Context, args ListGatewayKeysOutputArgs, 
 type ListGatewayKeysOutputArgs struct {
 	// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
 	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the API Management service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

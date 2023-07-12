@@ -3,283 +3,162 @@
 
 package dbforpostgresql
 
-import (
-	"context"
-	"reflect"
-
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-)
-
-// The type of administrator.
-type AdministratorType string
+// If Enabled, Azure Active Directory authentication is enabled.
+type ActiveDirectoryAuthEnum string
 
 const (
-	AdministratorTypeActiveDirectory = AdministratorType("ActiveDirectory")
+	ActiveDirectoryAuthEnumEnabled  = ActiveDirectoryAuthEnum("Enabled")
+	ActiveDirectoryAuthEnumDisabled = ActiveDirectoryAuthEnum("Disabled")
 )
 
-// The mode to create a new server.
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
+type ArmServerKeyType string
+
+const (
+	ArmServerKeyTypeSystemManaged = ArmServerKeyType("SystemManaged")
+	ArmServerKeyTypeAzureKeyVault = ArmServerKeyType("AzureKeyVault")
+)
+
+// To trigger cancel for entire migration we need to send this flag as True
+type CancelEnum string
+
+const (
+	CancelEnumTrue  = CancelEnum("True")
+	CancelEnumFalse = CancelEnum("False")
+)
+
+// The mode to create a new PostgreSQL server.
 type CreateMode string
 
 const (
 	CreateModeDefault            = CreateMode("Default")
+	CreateModeCreate             = CreateMode("Create")
+	CreateModeUpdate             = CreateMode("Update")
 	CreateModePointInTimeRestore = CreateMode("PointInTimeRestore")
 	CreateModeGeoRestore         = CreateMode("GeoRestore")
 	CreateModeReplica            = CreateMode("Replica")
 )
 
-// Enable Geo-redundant or not for server backup.
-type GeoRedundantBackup string
+// A value indicating whether Geo-Redundant backup is enabled on the server.
+type GeoRedundantBackupEnum string
 
 const (
-	GeoRedundantBackupEnabled  = GeoRedundantBackup("Enabled")
-	GeoRedundantBackupDisabled = GeoRedundantBackup("Disabled")
+	GeoRedundantBackupEnumEnabled  = GeoRedundantBackupEnum("Enabled")
+	GeoRedundantBackupEnumDisabled = GeoRedundantBackupEnum("Disabled")
 )
 
-// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+// The HA mode for the server.
+type HighAvailabilityMode string
+
+const (
+	HighAvailabilityModeDisabled      = HighAvailabilityMode("Disabled")
+	HighAvailabilityModeZoneRedundant = HighAvailabilityMode("ZoneRedundant")
+	HighAvailabilityModeSameZone      = HighAvailabilityMode("SameZone")
+)
+
+// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 type IdentityType string
 
 const (
-	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+	IdentityTypeNone         = IdentityType("None")
+	IdentityTypeUserAssigned = IdentityType("UserAssigned")
 )
 
-// Status showing whether the server enabled infrastructure encryption.
-type InfrastructureEncryption string
+// Indicates whether to setup LogicalReplicationOnSourceDb, if needed
+type LogicalReplicationOnSourceDbEnum string
 
 const (
-	// Default value for single layer of encryption for data at rest.
-	InfrastructureEncryptionEnabled = InfrastructureEncryption("Enabled")
-	// Additional (2nd) layer of encryption for data at rest
-	InfrastructureEncryptionDisabled = InfrastructureEncryption("Disabled")
+	LogicalReplicationOnSourceDbEnumTrue  = LogicalReplicationOnSourceDbEnum("True")
+	LogicalReplicationOnSourceDbEnumFalse = LogicalReplicationOnSourceDbEnum("False")
 )
 
-// Enforce a minimal Tls version for the server.
-type MinimalTlsVersionEnum string
+// There are two types of migration modes Online and Offline
+type MigrationMode string
 
 const (
-	MinimalTlsVersionEnum_TLS1_0                = MinimalTlsVersionEnum("TLS1_0")
-	MinimalTlsVersionEnum_TLS1_1                = MinimalTlsVersionEnum("TLS1_1")
-	MinimalTlsVersionEnum_TLS1_2                = MinimalTlsVersionEnum("TLS1_2")
-	MinimalTlsVersionEnumTLSEnforcementDisabled = MinimalTlsVersionEnum("TLSEnforcementDisabled")
+	MigrationModeOffline = MigrationMode("Offline")
+	MigrationModeOnline  = MigrationMode("Online")
 )
 
-// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
-type PublicNetworkAccessEnum string
+// Indicates whether the databases on the target server can be overwritten, if already present. If set to False, the migration workflow will wait for a confirmation, if it detects that the database already exists.
+type OverwriteDbsInTargetEnum string
 
 const (
-	PublicNetworkAccessEnumEnabled  = PublicNetworkAccessEnum("Enabled")
-	PublicNetworkAccessEnumDisabled = PublicNetworkAccessEnum("Disabled")
+	OverwriteDbsInTargetEnumTrue  = OverwriteDbsInTargetEnum("True")
+	OverwriteDbsInTargetEnumFalse = OverwriteDbsInTargetEnum("False")
 )
 
-// The key type like 'AzureKeyVault'.
-type ServerKeyType string
+// If Enabled, Password authentication is enabled.
+type PasswordAuthEnum string
 
 const (
-	ServerKeyTypeAzureKeyVault = ServerKeyType("AzureKeyVault")
+	PasswordAuthEnumEnabled  = PasswordAuthEnum("Enabled")
+	PasswordAuthEnumDisabled = PasswordAuthEnum("Disabled")
 )
 
-// Specifies the state of the policy, whether it is enabled or disabled.
-type ServerSecurityAlertPolicyStateEnum string
+// The principal type used to represent the type of Active Directory Administrator.
+type PrincipalType string
 
 const (
-	ServerSecurityAlertPolicyStateEnumEnabled  = ServerSecurityAlertPolicyStateEnum("Enabled")
-	ServerSecurityAlertPolicyStateEnumDisabled = ServerSecurityAlertPolicyStateEnum("Disabled")
+	PrincipalTypeUnknown          = PrincipalType("Unknown")
+	PrincipalTypeUser             = PrincipalType("User")
+	PrincipalTypeGroup            = PrincipalType("Group")
+	PrincipalTypeServicePrincipal = PrincipalType("ServicePrincipal")
 )
 
-func (ServerSecurityAlertPolicyStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerSecurityAlertPolicyStateEnum)(nil)).Elem()
-}
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+type PrivateEndpointServiceConnectionStatus string
 
-func (e ServerSecurityAlertPolicyStateEnum) ToServerSecurityAlertPolicyStateEnumOutput() ServerSecurityAlertPolicyStateEnumOutput {
-	return pulumi.ToOutput(e).(ServerSecurityAlertPolicyStateEnumOutput)
-}
+const (
+	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
+	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
+	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
+)
 
-func (e ServerSecurityAlertPolicyStateEnum) ToServerSecurityAlertPolicyStateEnumOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyStateEnumOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ServerSecurityAlertPolicyStateEnumOutput)
-}
+// Replication role of the server
+type ReplicationRole string
 
-func (e ServerSecurityAlertPolicyStateEnum) ToServerSecurityAlertPolicyStateEnumPtrOutput() ServerSecurityAlertPolicyStateEnumPtrOutput {
-	return e.ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(context.Background())
-}
+const (
+	ReplicationRoleNone            = ReplicationRole("None")
+	ReplicationRolePrimary         = ReplicationRole("Primary")
+	ReplicationRoleAsyncReplica    = ReplicationRole("AsyncReplica")
+	ReplicationRoleGeoAsyncReplica = ReplicationRole("GeoAsyncReplica")
+)
 
-func (e ServerSecurityAlertPolicyStateEnum) ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyStateEnumPtrOutput {
-	return ServerSecurityAlertPolicyStateEnum(e).ToServerSecurityAlertPolicyStateEnumOutputWithContext(ctx).ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(ctx)
-}
-
-func (e ServerSecurityAlertPolicyStateEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ServerSecurityAlertPolicyStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ServerSecurityAlertPolicyStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ServerSecurityAlertPolicyStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ServerSecurityAlertPolicyStateEnumOutput struct{ *pulumi.OutputState }
-
-func (ServerSecurityAlertPolicyStateEnumOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerSecurityAlertPolicyStateEnum)(nil)).Elem()
-}
-
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToServerSecurityAlertPolicyStateEnumOutput() ServerSecurityAlertPolicyStateEnumOutput {
-	return o
-}
-
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToServerSecurityAlertPolicyStateEnumOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyStateEnumOutput {
-	return o
-}
-
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToServerSecurityAlertPolicyStateEnumPtrOutput() ServerSecurityAlertPolicyStateEnumPtrOutput {
-	return o.ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(context.Background())
-}
-
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyStateEnumPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerSecurityAlertPolicyStateEnum) *ServerSecurityAlertPolicyStateEnum {
-		return &v
-	}).(ServerSecurityAlertPolicyStateEnumPtrOutput)
-}
-
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServerSecurityAlertPolicyStateEnum) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServerSecurityAlertPolicyStateEnum) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ServerSecurityAlertPolicyStateEnumPtrOutput struct{ *pulumi.OutputState }
-
-func (ServerSecurityAlertPolicyStateEnumPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerSecurityAlertPolicyStateEnum)(nil)).Elem()
-}
-
-func (o ServerSecurityAlertPolicyStateEnumPtrOutput) ToServerSecurityAlertPolicyStateEnumPtrOutput() ServerSecurityAlertPolicyStateEnumPtrOutput {
-	return o
-}
-
-func (o ServerSecurityAlertPolicyStateEnumPtrOutput) ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyStateEnumPtrOutput {
-	return o
-}
-
-func (o ServerSecurityAlertPolicyStateEnumPtrOutput) Elem() ServerSecurityAlertPolicyStateEnumOutput {
-	return o.ApplyT(func(v *ServerSecurityAlertPolicyStateEnum) ServerSecurityAlertPolicyStateEnum {
-		if v != nil {
-			return *v
-		}
-		var ret ServerSecurityAlertPolicyStateEnum
-		return ret
-	}).(ServerSecurityAlertPolicyStateEnumOutput)
-}
-
-func (o ServerSecurityAlertPolicyStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ServerSecurityAlertPolicyStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServerSecurityAlertPolicyStateEnum) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ServerSecurityAlertPolicyStateEnumInput is an input type that accepts ServerSecurityAlertPolicyStateEnumArgs and ServerSecurityAlertPolicyStateEnumOutput values.
-// You can construct a concrete instance of `ServerSecurityAlertPolicyStateEnumInput` via:
-//
-//	ServerSecurityAlertPolicyStateEnumArgs{...}
-type ServerSecurityAlertPolicyStateEnumInput interface {
-	pulumi.Input
-
-	ToServerSecurityAlertPolicyStateEnumOutput() ServerSecurityAlertPolicyStateEnumOutput
-	ToServerSecurityAlertPolicyStateEnumOutputWithContext(context.Context) ServerSecurityAlertPolicyStateEnumOutput
-}
-
-var serverSecurityAlertPolicyStateEnumPtrType = reflect.TypeOf((**ServerSecurityAlertPolicyStateEnum)(nil)).Elem()
-
-type ServerSecurityAlertPolicyStateEnumPtrInput interface {
-	pulumi.Input
-
-	ToServerSecurityAlertPolicyStateEnumPtrOutput() ServerSecurityAlertPolicyStateEnumPtrOutput
-	ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(context.Context) ServerSecurityAlertPolicyStateEnumPtrOutput
-}
-
-type serverSecurityAlertPolicyStateEnumPtr string
-
-func ServerSecurityAlertPolicyStateEnumPtr(v string) ServerSecurityAlertPolicyStateEnumPtrInput {
-	return (*serverSecurityAlertPolicyStateEnumPtr)(&v)
-}
-
-func (*serverSecurityAlertPolicyStateEnumPtr) ElementType() reflect.Type {
-	return serverSecurityAlertPolicyStateEnumPtrType
-}
-
-func (in *serverSecurityAlertPolicyStateEnumPtr) ToServerSecurityAlertPolicyStateEnumPtrOutput() ServerSecurityAlertPolicyStateEnumPtrOutput {
-	return pulumi.ToOutput(in).(ServerSecurityAlertPolicyStateEnumPtrOutput)
-}
-
-func (in *serverSecurityAlertPolicyStateEnumPtr) ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyStateEnumPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ServerSecurityAlertPolicyStateEnumPtrOutput)
-}
-
-// Server version.
+// PostgreSQL Server version.
 type ServerVersion string
 
 const (
-	ServerVersion_9_5  = ServerVersion("9.5")
-	ServerVersion_9_6  = ServerVersion("9.6")
-	ServerVersion_10   = ServerVersion("10")
-	ServerVersion_10_0 = ServerVersion("10.0")
-	ServerVersion_10_2 = ServerVersion("10.2")
-	ServerVersion_11   = ServerVersion("11")
+	ServerVersion_14 = ServerVersion("14")
+	ServerVersion_13 = ServerVersion("13")
+	ServerVersion_12 = ServerVersion("12")
+	ServerVersion_11 = ServerVersion("11")
 )
 
-// The tier of the particular SKU, e.g. Basic.
+// The tier of the particular SKU, e.g. Burstable.
 type SkuTier string
 
 const (
-	SkuTierBasic           = SkuTier("Basic")
+	SkuTierBurstable       = SkuTier("Burstable")
 	SkuTierGeneralPurpose  = SkuTier("GeneralPurpose")
 	SkuTierMemoryOptimized = SkuTier("MemoryOptimized")
 )
 
-// Enable ssl enforcement or not when connect to server.
-type SslEnforcementEnum string
+// Indicates whether the data migration should start right away
+type StartDataMigrationEnum string
 
 const (
-	SslEnforcementEnumEnabled  = SslEnforcementEnum("Enabled")
-	SslEnforcementEnumDisabled = SslEnforcementEnum("Disabled")
+	StartDataMigrationEnumTrue  = StartDataMigrationEnum("True")
+	StartDataMigrationEnumFalse = StartDataMigrationEnum("False")
 )
 
-// Enable Storage Auto Grow.
-type StorageAutogrow string
+// To trigger cutover for entire migration we need to send this flag as True
+type TriggerCutoverEnum string
 
 const (
-	StorageAutogrowEnabled  = StorageAutogrow("Enabled")
-	StorageAutogrowDisabled = StorageAutogrow("Disabled")
+	TriggerCutoverEnumTrue  = TriggerCutoverEnum("True")
+	TriggerCutoverEnumFalse = TriggerCutoverEnum("False")
 )
 
 func init() {
-	pulumi.RegisterOutputType(ServerSecurityAlertPolicyStateEnumOutput{})
-	pulumi.RegisterOutputType(ServerSecurityAlertPolicyStateEnumPtrOutput{})
 }

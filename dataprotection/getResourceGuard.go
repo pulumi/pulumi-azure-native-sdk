@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2021-10-01-preview.
+// Azure REST API version: 2023-01-01.
 func LookupResourceGuard(ctx *pulumi.Context, args *LookupResourceGuardArgs, opts ...pulumi.InvokeOption) (*LookupResourceGuardResult, error) {
 	var rv LookupResourceGuardResult
 	err := ctx.Invoke("azure-native:dataprotection:getResourceGuard", args, &rv, opts...)
@@ -21,7 +21,7 @@ func LookupResourceGuard(ctx *pulumi.Context, args *LookupResourceGuardArgs, opt
 }
 
 type LookupResourceGuardArgs struct {
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of ResourceGuard
 	ResourceGuardsName string `pulumi:"resourceGuardsName"`
@@ -32,8 +32,6 @@ type LookupResourceGuardResult struct {
 	ETag *string `pulumi:"eTag"`
 	// Resource Id represents the complete path to the resource.
 	Id string `pulumi:"id"`
-	// Input Managed Identity Details
-	Identity *DppIdentityDetailsResponse `pulumi:"identity"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// Resource name associated with the resource.
@@ -62,7 +60,7 @@ func LookupResourceGuardOutput(ctx *pulumi.Context, args LookupResourceGuardOutp
 }
 
 type LookupResourceGuardOutputArgs struct {
-	// The name of the resource group where the backup vault is present.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of ResourceGuard
 	ResourceGuardsName pulumi.StringInput `pulumi:"resourceGuardsName"`
@@ -94,11 +92,6 @@ func (o LookupResourceGuardResultOutput) ETag() pulumi.StringPtrOutput {
 // Resource Id represents the complete path to the resource.
 func (o LookupResourceGuardResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceGuardResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Input Managed Identity Details
-func (o LookupResourceGuardResultOutput) Identity() DppIdentityDetailsResponsePtrOutput {
-	return o.ApplyT(func(v LookupResourceGuardResult) *DppIdentityDetailsResponse { return v.Identity }).(DppIdentityDetailsResponsePtrOutput)
 }
 
 // Resource location.

@@ -11,8 +11,6 @@ import (
 )
 
 // Get the CommunicationService and its properties.
-//
-// Deprecated: azure-native:communication/v20230331:CommunicationService is being removed in the next major version of this provider. Upgrade to at least azure-native:communication/v20230401preview:CommunicationService to guarantee forwards compatibility.
 func LookupCommunicationService(ctx *pulumi.Context, args *LookupCommunicationServiceArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationServiceResult, error) {
 	var rv LookupCommunicationServiceResult
 	err := ctx.Invoke("azure-native:communication/v20230331:getCommunicationService", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB Table.
-// API Version: 2021-03-15.
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-15
 type TableResourceTable struct {
 	pulumi.CustomResourceState
 
@@ -130,7 +130,19 @@ func NewTableResourceTable(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:documentdb/v20221115:TableResourceTable"),
 		},
 		{
+			Type: pulumi.String("azure-native:documentdb/v20221115preview:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230301preview:TableResourceTable"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230315preview:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230415:TableResourceTable"),
 		},
 	})
 	opts = append(opts, aliases)

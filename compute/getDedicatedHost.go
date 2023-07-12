@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about a dedicated host.
-// API Version: 2020-12-01.
+// Azure REST API version: 2023-03-01.
 func LookupDedicatedHost(ctx *pulumi.Context, args *LookupDedicatedHostArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostResult, error) {
 	var rv LookupDedicatedHostResult
 	err := ctx.Invoke("azure-native:compute:getDedicatedHost", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupDedicatedHost(ctx *pulumi.Context, args *LookupDedicatedHostArgs, opt
 }
 
 type LookupDedicatedHostArgs struct {
-	// The expand expression to apply on the operation.
+	// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated host. 'UserData' is not supported for dedicated host.
 	Expand *string `pulumi:"expand"`
 	// The name of the dedicated host group.
 	HostGroupName string `pulumi:"hostGroupName"`
@@ -36,13 +36,13 @@ type LookupDedicatedHostArgs struct {
 type LookupDedicatedHostResult struct {
 	// Specifies whether the dedicated host should be replaced automatically in case of a failure. The value is defaulted to 'true' when not provided.
 	AutoReplaceOnFailure *bool `pulumi:"autoReplaceOnFailure"`
-	// A unique id generated and assigned to the dedicated host by the platform. <br><br> Does not change throughout the lifetime of the host.
+	// A unique id generated and assigned to the dedicated host by the platform. Does not change throughout the lifetime of the host.
 	HostId string `pulumi:"hostId"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// The dedicated host instance view.
 	InstanceView DedicatedHostInstanceViewResponse `pulumi:"instanceView"`
-	// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. <br><br> Possible values are: <br><br> **None** <br><br> **Windows_Server_Hybrid** <br><br> **Windows_Server_Perpetual** <br><br> Default: **None**
+	// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
 	LicenseType *string `pulumi:"licenseType"`
 	// Resource location
 	Location string `pulumi:"location"`
@@ -58,6 +58,8 @@ type LookupDedicatedHostResult struct {
 	Sku SkuResponse `pulumi:"sku"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
+	// Specifies the time at which the Dedicated Host resource was created. Minimum api-version: 2021-11-01.
+	TimeCreated string `pulumi:"timeCreated"`
 	// Resource type
 	Type string `pulumi:"type"`
 	// A list of references to all virtual machines in the Dedicated Host.
@@ -78,7 +80,7 @@ func LookupDedicatedHostOutput(ctx *pulumi.Context, args LookupDedicatedHostOutp
 }
 
 type LookupDedicatedHostOutputArgs struct {
-	// The expand expression to apply on the operation.
+	// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated host. 'UserData' is not supported for dedicated host.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the dedicated host group.
 	HostGroupName pulumi.StringInput `pulumi:"hostGroupName"`
@@ -112,7 +114,7 @@ func (o LookupDedicatedHostResultOutput) AutoReplaceOnFailure() pulumi.BoolPtrOu
 	return o.ApplyT(func(v LookupDedicatedHostResult) *bool { return v.AutoReplaceOnFailure }).(pulumi.BoolPtrOutput)
 }
 
-// A unique id generated and assigned to the dedicated host by the platform. <br><br> Does not change throughout the lifetime of the host.
+// A unique id generated and assigned to the dedicated host by the platform. Does not change throughout the lifetime of the host.
 func (o LookupDedicatedHostResultOutput) HostId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.HostId }).(pulumi.StringOutput)
 }
@@ -127,7 +129,7 @@ func (o LookupDedicatedHostResultOutput) InstanceView() DedicatedHostInstanceVie
 	return o.ApplyT(func(v LookupDedicatedHostResult) DedicatedHostInstanceViewResponse { return v.InstanceView }).(DedicatedHostInstanceViewResponseOutput)
 }
 
-// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. <br><br> Possible values are: <br><br> **None** <br><br> **Windows_Server_Hybrid** <br><br> **Windows_Server_Perpetual** <br><br> Default: **None**
+// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
 func (o LookupDedicatedHostResultOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDedicatedHostResult) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
@@ -165,6 +167,11 @@ func (o LookupDedicatedHostResultOutput) Sku() SkuResponseOutput {
 // Resource tags
 func (o LookupDedicatedHostResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDedicatedHostResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Specifies the time at which the Dedicated Host resource was created. Minimum api-version: 2021-11-01.
+func (o LookupDedicatedHostResultOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
 // Resource type

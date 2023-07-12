@@ -12,8 +12,6 @@ import (
 )
 
 // An Azure SQL managed instance.
-//
-// Deprecated: azure-native:sql/v20211101:ManagedInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedInstance to guarantee forwards compatibility.
 type ManagedInstance struct {
 	pulumi.CustomResourceState
 
@@ -132,6 +130,9 @@ func NewManagedInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:ManagedInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedInstance"),
 		},
 	})
 	opts = append(opts, aliases)

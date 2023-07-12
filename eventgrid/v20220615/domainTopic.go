@@ -12,8 +12,6 @@ import (
 )
 
 // Domain Topic.
-//
-// Deprecated: azure-native:eventgrid/v20220615:DomainTopic is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:DomainTopic to guarantee forwards compatibility.
 type DomainTopic struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +68,9 @@ func NewDomainTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211201:DomainTopic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:DomainTopic"),
 		},
 	})
 	opts = append(opts, aliases)

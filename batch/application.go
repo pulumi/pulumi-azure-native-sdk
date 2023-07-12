@@ -12,7 +12,7 @@ import (
 )
 
 // Contains information about an application in a Batch account.
-// API Version: 2021-01-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-01-01
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -88,6 +88,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:batch/v20221001:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:batch/v20230501:Application"),
 		},
 	})
 	opts = append(opts, aliases)

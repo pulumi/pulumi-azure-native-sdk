@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,20 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:insights/v20150501:AnalyticsItem":
 		r = &AnalyticsItem{}
-	case "azure-native:insights/v20150501:Component":
-		r = &Component{}
 	case "azure-native:insights/v20150501:ComponentCurrentBillingFeature":
 		r = &ComponentCurrentBillingFeature{}
 	case "azure-native:insights/v20150501:ExportConfiguration":
 		r = &ExportConfiguration{}
 	case "azure-native:insights/v20150501:Favorite":
 		r = &Favorite{}
-	case "azure-native:insights/v20150501:MyWorkbook":
-		r = &MyWorkbook{}
 	case "azure-native:insights/v20150501:ProactiveDetectionConfiguration":
 		r = &ProactiveDetectionConfiguration{}
-	case "azure-native:insights/v20150501:WebTest":
-		r = &WebTest{}
 	case "azure-native:insights/v20150501:Workbook":
 		r = &Workbook{}
 	default:

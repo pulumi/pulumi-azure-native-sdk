@@ -12,8 +12,6 @@ import (
 )
 
 // iOS Policy entity for Intune MAM.
-//
-// Deprecated: azure-native:intune/v20150114preview:IoMAMPolicyByName is being removed in the next major version of this provider. Upgrade to at least azure-native:intune/v20150114privatepreview:IoMAMPolicyByName to guarantee forwards compatibility.
 type IoMAMPolicyByName struct {
 	pulumi.CustomResourceState
 

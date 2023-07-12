@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a trigger.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
 	var rv LookupTriggerResult
 	err := ctx.Invoke("azure-native:datafactory:getTrigger", args, &rv, opts...)

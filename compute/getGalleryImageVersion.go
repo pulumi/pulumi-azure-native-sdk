@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about a gallery image version.
-// API Version: 2020-09-30.
+// Azure REST API version: 2022-03-03.
 func LookupGalleryImageVersion(ctx *pulumi.Context, args *LookupGalleryImageVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageVersionResult, error) {
 	var rv LookupGalleryImageVersionResult
 	err := ctx.Invoke("azure-native:compute:getGalleryImageVersion", args, &rv, opts...)
@@ -48,6 +48,8 @@ type LookupGalleryImageVersionResult struct {
 	PublishingProfile *GalleryImageVersionPublishingProfileResponse `pulumi:"publishingProfile"`
 	// This is the replication status of the gallery image version.
 	ReplicationStatus ReplicationStatusResponse `pulumi:"replicationStatus"`
+	// This is the safety profile of the Gallery Image Version.
+	SafetyProfile *GalleryImageVersionSafetyProfileResponse `pulumi:"safetyProfile"`
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfileResponse `pulumi:"storageProfile"`
 	// Resource tags
@@ -131,6 +133,13 @@ func (o LookupGalleryImageVersionResultOutput) PublishingProfile() GalleryImageV
 // This is the replication status of the gallery image version.
 func (o LookupGalleryImageVersionResultOutput) ReplicationStatus() ReplicationStatusResponseOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) ReplicationStatusResponse { return v.ReplicationStatus }).(ReplicationStatusResponseOutput)
+}
+
+// This is the safety profile of the Gallery Image Version.
+func (o LookupGalleryImageVersionResultOutput) SafetyProfile() GalleryImageVersionSafetyProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupGalleryImageVersionResult) *GalleryImageVersionSafetyProfileResponse {
+		return v.SafetyProfile
+	}).(GalleryImageVersionSafetyProfileResponsePtrOutput)
 }
 
 // This is the storage profile of a Gallery Image Version.

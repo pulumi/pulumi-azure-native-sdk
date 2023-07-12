@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the backup configuration of an app.
-// API Version: 2020-12-01.
+// Description for Gets the backup configuration of an app.
+// Azure REST API version: 2022-09-01.
 func ListWebAppBackupConfigurationSlot(ctx *pulumi.Context, args *ListWebAppBackupConfigurationSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppBackupConfigurationSlotResult, error) {
 	var rv ListWebAppBackupConfigurationSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppBackupConfigurationSlot", args, &rv, opts...)

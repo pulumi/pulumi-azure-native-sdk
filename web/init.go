@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,8 +43,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KubeEnvironment{}
 	case "azure-native:web:StaticSite":
 		r = &StaticSite{}
+	case "azure-native:web:StaticSiteBuildDatabaseConnection":
+		r = &StaticSiteBuildDatabaseConnection{}
 	case "azure-native:web:StaticSiteCustomDomain":
 		r = &StaticSiteCustomDomain{}
+	case "azure-native:web:StaticSiteDatabaseConnection":
+		r = &StaticSiteDatabaseConnection{}
 	case "azure-native:web:StaticSiteLinkedBackend":
 		r = &StaticSiteLinkedBackend{}
 	case "azure-native:web:StaticSiteLinkedBackendForBuild":
@@ -91,6 +95,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppDomainOwnershipIdentifier{}
 	case "azure-native:web:WebAppDomainOwnershipIdentifierSlot":
 		r = &WebAppDomainOwnershipIdentifierSlot{}
+	case "azure-native:web:WebAppFtpAllowed":
+		r = &WebAppFtpAllowed{}
 	case "azure-native:web:WebAppFunction":
 		r = &WebAppFunction{}
 	case "azure-native:web:WebAppHostNameBinding":
@@ -123,6 +129,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppRelayServiceConnection{}
 	case "azure-native:web:WebAppRelayServiceConnectionSlot":
 		r = &WebAppRelayServiceConnectionSlot{}
+	case "azure-native:web:WebAppScmAllowed":
+		r = &WebAppScmAllowed{}
 	case "azure-native:web:WebAppSiteExtension":
 		r = &WebAppSiteExtension{}
 	case "azure-native:web:WebAppSiteExtensionSlot":

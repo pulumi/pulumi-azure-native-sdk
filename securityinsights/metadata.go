@@ -12,7 +12,7 @@ import (
 )
 
 // Metadata resource definition.
-// API Version: 2021-03-01-preview.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview
 type Metadata struct {
 	pulumi.CustomResourceState
 
@@ -22,20 +22,30 @@ type Metadata struct {
 	Categories MetadataCategoriesResponsePtrOutput `pulumi:"categories"`
 	// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
 	ContentId pulumi.StringPtrOutput `pulumi:"contentId"`
+	// Schema version of the content. Can be used to distinguish between different flow based on the schema version
+	ContentSchemaVersion pulumi.StringPtrOutput `pulumi:"contentSchemaVersion"`
+	// The custom version of the content. A optional free text
+	CustomVersion pulumi.StringPtrOutput `pulumi:"customVersion"`
 	// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
 	Dependencies MetadataDependenciesResponsePtrOutput `pulumi:"dependencies"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// first publish date solution content item
 	FirstPublishDate pulumi.StringPtrOutput `pulumi:"firstPublishDate"`
+	// the icon identifier. this id can later be fetched from the solution template
+	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// The kind of content the metadata is for.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// last publish date for the solution content item
 	LastPublishDate pulumi.StringPtrOutput `pulumi:"lastPublishDate"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
+	// preview image file names. These will be taken from the solution artifacts
+	PreviewImages pulumi.StringArrayOutput `pulumi:"previewImages"`
+	// preview image file names. These will be taken from the solution artifacts. used for dark theme support
+	PreviewImagesDark pulumi.StringArrayOutput `pulumi:"previewImagesDark"`
 	// Providers for the solution content item
 	Providers pulumi.StringArrayOutput `pulumi:"providers"`
 	// Source of the content.  This is where/how it was created.
@@ -44,7 +54,11 @@ type Metadata struct {
 	Support MetadataSupportResponsePtrOutput `pulumi:"support"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Azure resource type
+	// the tactics the resource covers
+	ThreatAnalysisTactics pulumi.StringArrayOutput `pulumi:"threatAnalysisTactics"`
+	// the techniques the resource covers, these have to be aligned with the tactics being used
+	ThreatAnalysisTechniques pulumi.StringArrayOutput `pulumi:"threatAnalysisTechniques"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
 	Version pulumi.StringPtrOutput `pulumi:"version"`
@@ -59,9 +73,6 @@ func NewMetadata(ctx *pulumi.Context,
 
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
-	}
-	if args.OperationalInsightsResourceProvider == nil {
-		return nil, errors.New("invalid value for required argument 'OperationalInsightsResourceProvider'")
 	}
 	if args.ParentId == nil {
 		return nil, errors.New("invalid value for required argument 'ParentId'")
@@ -119,7 +130,16 @@ func NewMetadata(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:Metadata"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230301preview:Metadata"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:Metadata"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Metadata"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Metadata"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,20 +181,28 @@ type metadataArgs struct {
 	Categories *MetadataCategories `pulumi:"categories"`
 	// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
 	ContentId *string `pulumi:"contentId"`
+	// Schema version of the content. Can be used to distinguish between different flow based on the schema version
+	ContentSchemaVersion *string `pulumi:"contentSchemaVersion"`
+	// The custom version of the content. A optional free text
+	CustomVersion *string `pulumi:"customVersion"`
 	// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
 	Dependencies *MetadataDependencies `pulumi:"dependencies"`
 	// first publish date solution content item
 	FirstPublishDate *string `pulumi:"firstPublishDate"`
+	// the icon identifier. this id can later be fetched from the solution template
+	Icon *string `pulumi:"icon"`
 	// The kind of content the metadata is for.
 	Kind string `pulumi:"kind"`
 	// last publish date for the solution content item
 	LastPublishDate *string `pulumi:"lastPublishDate"`
 	// The Metadata name.
 	MetadataName *string `pulumi:"metadataName"`
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider string `pulumi:"operationalInsightsResourceProvider"`
 	// Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)
 	ParentId string `pulumi:"parentId"`
+	// preview image file names. These will be taken from the solution artifacts
+	PreviewImages []string `pulumi:"previewImages"`
+	// preview image file names. These will be taken from the solution artifacts. used for dark theme support
+	PreviewImagesDark []string `pulumi:"previewImagesDark"`
 	// Providers for the solution content item
 	Providers []string `pulumi:"providers"`
 	// The name of the resource group. The name is case insensitive.
@@ -183,6 +211,10 @@ type metadataArgs struct {
 	Source *MetadataSource `pulumi:"source"`
 	// Support information for the metadata - type, name, contact information
 	Support *MetadataSupport `pulumi:"support"`
+	// the tactics the resource covers
+	ThreatAnalysisTactics []string `pulumi:"threatAnalysisTactics"`
+	// the techniques the resource covers, these have to be aligned with the tactics being used
+	ThreatAnalysisTechniques []string `pulumi:"threatAnalysisTechniques"`
 	// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
 	Version *string `pulumi:"version"`
 	// The name of the workspace.
@@ -197,20 +229,28 @@ type MetadataArgs struct {
 	Categories MetadataCategoriesPtrInput
 	// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
 	ContentId pulumi.StringPtrInput
+	// Schema version of the content. Can be used to distinguish between different flow based on the schema version
+	ContentSchemaVersion pulumi.StringPtrInput
+	// The custom version of the content. A optional free text
+	CustomVersion pulumi.StringPtrInput
 	// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
 	Dependencies MetadataDependenciesPtrInput
 	// first publish date solution content item
 	FirstPublishDate pulumi.StringPtrInput
+	// the icon identifier. this id can later be fetched from the solution template
+	Icon pulumi.StringPtrInput
 	// The kind of content the metadata is for.
 	Kind pulumi.StringInput
 	// last publish date for the solution content item
 	LastPublishDate pulumi.StringPtrInput
 	// The Metadata name.
 	MetadataName pulumi.StringPtrInput
-	// The namespace of workspaces resource provider- Microsoft.OperationalInsights.
-	OperationalInsightsResourceProvider pulumi.StringInput
 	// Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)
 	ParentId pulumi.StringInput
+	// preview image file names. These will be taken from the solution artifacts
+	PreviewImages pulumi.StringArrayInput
+	// preview image file names. These will be taken from the solution artifacts. used for dark theme support
+	PreviewImagesDark pulumi.StringArrayInput
 	// Providers for the solution content item
 	Providers pulumi.StringArrayInput
 	// The name of the resource group. The name is case insensitive.
@@ -219,6 +259,10 @@ type MetadataArgs struct {
 	Source MetadataSourcePtrInput
 	// Support information for the metadata - type, name, contact information
 	Support MetadataSupportPtrInput
+	// the tactics the resource covers
+	ThreatAnalysisTactics pulumi.StringArrayInput
+	// the techniques the resource covers, these have to be aligned with the tactics being used
+	ThreatAnalysisTechniques pulumi.StringArrayInput
 	// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
 	Version pulumi.StringPtrInput
 	// The name of the workspace.
@@ -277,6 +321,16 @@ func (o MetadataOutput) ContentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metadata) pulumi.StringPtrOutput { return v.ContentId }).(pulumi.StringPtrOutput)
 }
 
+// Schema version of the content. Can be used to distinguish between different flow based on the schema version
+func (o MetadataOutput) ContentSchemaVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Metadata) pulumi.StringPtrOutput { return v.ContentSchemaVersion }).(pulumi.StringPtrOutput)
+}
+
+// The custom version of the content. A optional free text
+func (o MetadataOutput) CustomVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Metadata) pulumi.StringPtrOutput { return v.CustomVersion }).(pulumi.StringPtrOutput)
+}
+
 // Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
 func (o MetadataOutput) Dependencies() MetadataDependenciesResponsePtrOutput {
 	return o.ApplyT(func(v *Metadata) MetadataDependenciesResponsePtrOutput { return v.Dependencies }).(MetadataDependenciesResponsePtrOutput)
@@ -292,6 +346,11 @@ func (o MetadataOutput) FirstPublishDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metadata) pulumi.StringPtrOutput { return v.FirstPublishDate }).(pulumi.StringPtrOutput)
 }
 
+// the icon identifier. this id can later be fetched from the solution template
+func (o MetadataOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Metadata) pulumi.StringPtrOutput { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
 // The kind of content the metadata is for.
 func (o MetadataOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metadata) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
@@ -302,7 +361,7 @@ func (o MetadataOutput) LastPublishDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metadata) pulumi.StringPtrOutput { return v.LastPublishDate }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o MetadataOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metadata) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -310,6 +369,16 @@ func (o MetadataOutput) Name() pulumi.StringOutput {
 // Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)
 func (o MetadataOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metadata) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
+}
+
+// preview image file names. These will be taken from the solution artifacts
+func (o MetadataOutput) PreviewImages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Metadata) pulumi.StringArrayOutput { return v.PreviewImages }).(pulumi.StringArrayOutput)
+}
+
+// preview image file names. These will be taken from the solution artifacts. used for dark theme support
+func (o MetadataOutput) PreviewImagesDark() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Metadata) pulumi.StringArrayOutput { return v.PreviewImagesDark }).(pulumi.StringArrayOutput)
 }
 
 // Providers for the solution content item
@@ -332,7 +401,17 @@ func (o MetadataOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Metadata) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource type
+// the tactics the resource covers
+func (o MetadataOutput) ThreatAnalysisTactics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Metadata) pulumi.StringArrayOutput { return v.ThreatAnalysisTactics }).(pulumi.StringArrayOutput)
+}
+
+// the techniques the resource covers, these have to be aligned with the tactics being used
+func (o MetadataOutput) ThreatAnalysisTechniques() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Metadata) pulumi.StringArrayOutput { return v.ThreatAnalysisTechniques }).(pulumi.StringArrayOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o MetadataOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metadata) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

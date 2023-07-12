@@ -3,14 +3,6 @@
 
 package v20200401preview
 
-// The state of forwarding rule.
-type ForwardingRuleStateEnum string
-
-const (
-	ForwardingRuleStateEnumEnabled  = ForwardingRuleStateEnum("Enabled")
-	ForwardingRuleStateEnumDisabled = ForwardingRuleStateEnum("Disabled")
-)
-
 // Private IP address allocation method.
 type IpAllocationMethod string
 

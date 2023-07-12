@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
-//
-// Deprecated: azure-native:databoxedge/v20220301:User is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:User to guarantee forwards compatibility.
 type User struct {
 	pulumi.CustomResourceState
 

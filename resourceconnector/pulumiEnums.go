@@ -14,9 +14,11 @@ const (
 type Provider string
 
 const (
-	ProviderVMWare = Provider("VMWare")
-	ProviderHCI    = Provider("HCI")
-	ProviderSCVMM  = Provider("SCVMM")
+	ProviderVMWare    = Provider("VMWare")
+	ProviderHCI       = Provider("HCI")
+	ProviderSCVMM     = Provider("SCVMM")
+	ProviderKubeVirt  = Provider("KubeVirt")
+	ProviderOpenStack = Provider("OpenStack")
 )
 
 // The identity type.

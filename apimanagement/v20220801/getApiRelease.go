@@ -11,8 +11,6 @@ import (
 )
 
 // Returns the details of an API release.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiRelease is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiRelease to guarantee forwards compatibility.
 func LookupApiRelease(ctx *pulumi.Context, args *LookupApiReleaseArgs, opts ...pulumi.InvokeOption) (*LookupApiReleaseResult, error) {
 	var rv LookupApiReleaseResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getApiRelease", args, &rv, opts...)

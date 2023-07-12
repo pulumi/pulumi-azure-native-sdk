@@ -12,7 +12,7 @@ import (
 )
 
 // Lab Plans act as a permission container for creating labs via labs.azure.com. Additionally, they can provide a set of default configurations that will apply at the time of creating a lab, but these defaults can still be overwritten.
-// API Version: 2021-10-01-preview.
+// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-10-01-preview
 type LabPlan struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type LabPlan struct {
 	DefaultConnectionProfile ConnectionProfileResponsePtrOutput `pulumi:"defaultConnectionProfile"`
 	// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
 	DefaultNetworkProfile LabPlanNetworkProfileResponsePtrOutput `pulumi:"defaultNetworkProfile"`
+	// Managed Identity Information
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Base Url of the lms instance this lab plan can link lab rosters against.
 	LinkedLmsInstance pulumi.StringPtrOutput `pulumi:"linkedLmsInstance"`
 	// The geo-location where the resource lives
@@ -112,6 +114,8 @@ type labPlanArgs struct {
 	DefaultConnectionProfile *ConnectionProfile `pulumi:"defaultConnectionProfile"`
 	// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
 	DefaultNetworkProfile *LabPlanNetworkProfile `pulumi:"defaultNetworkProfile"`
+	// Managed Identity Information
+	Identity *Identity `pulumi:"identity"`
 	// The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
 	LabPlanName *string `pulumi:"labPlanName"`
 	// Base Url of the lms instance this lab plan can link lab rosters against.
@@ -138,6 +142,8 @@ type LabPlanArgs struct {
 	DefaultConnectionProfile ConnectionProfilePtrInput
 	// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
 	DefaultNetworkProfile LabPlanNetworkProfilePtrInput
+	// Managed Identity Information
+	Identity IdentityPtrInput
 	// The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
 	LabPlanName pulumi.StringPtrInput
 	// Base Url of the lms instance this lab plan can link lab rosters against.
@@ -209,6 +215,11 @@ func (o LabPlanOutput) DefaultConnectionProfile() ConnectionProfileResponsePtrOu
 // The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
 func (o LabPlanOutput) DefaultNetworkProfile() LabPlanNetworkProfileResponsePtrOutput {
 	return o.ApplyT(func(v *LabPlan) LabPlanNetworkProfileResponsePtrOutput { return v.DefaultNetworkProfile }).(LabPlanNetworkProfileResponsePtrOutput)
+}
+
+// Managed Identity Information
+func (o LabPlanOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *LabPlan) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Base Url of the lms instance this lab plan can link lab rosters against.

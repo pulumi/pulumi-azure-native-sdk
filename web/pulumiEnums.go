@@ -1705,6 +1705,24 @@ const (
 	DatabaseTypePostgreSql = DatabaseType("PostgreSql")
 )
 
+// Default action for scm access restriction if no rules are matched.
+type DefaultAction string
+
+const (
+	DefaultActionAllow = DefaultAction("Allow")
+	DefaultActionDeny  = DefaultAction("Deny")
+)
+
+// State indicating the status of the enterprise grade CDN serving traffic to the static web app.
+type EnterpriseGradeCdnStatus string
+
+const (
+	EnterpriseGradeCdnStatusEnabled   = EnterpriseGradeCdnStatus("Enabled")
+	EnterpriseGradeCdnStatusEnabling  = EnterpriseGradeCdnStatus("Enabling")
+	EnterpriseGradeCdnStatusDisabled  = EnterpriseGradeCdnStatus("Disabled")
+	EnterpriseGradeCdnStatusDisabling = EnterpriseGradeCdnStatus("Disabling")
+)
+
 // The convention used to determine the url of the request made.
 type ForwardProxyConvention string
 
@@ -4430,6 +4448,20 @@ func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOu
 func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOutputWithContext(ctx context.Context) UnauthenticatedClientActionV2PtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UnauthenticatedClientActionV2PtrOutput)
 }
+
+// Upgrade Preference
+type UpgradePreference string
+
+const (
+	// No preference on when this App Service Environment will be upgraded
+	UpgradePreferenceNone = UpgradePreference("None")
+	// This App Service Environment will be upgraded before others in the same region that have Upgrade Preference 'Late'
+	UpgradePreferenceEarly = UpgradePreference("Early")
+	// This App Service Environment will be upgraded after others in the same region that have Upgrade Preference 'Early'
+	UpgradePreferenceLate = UpgradePreference("Late")
+	// ASEv3 only. Once an upgrade is available, this App Service Environment will wait 10 days for the upgrade to be manually initiated. After 10 days the upgrade will begin automatically
+	UpgradePreferenceManual = UpgradePreference("Manual")
+)
 
 // The WSDL import method
 type WsdlImportMethod string

@@ -11,8 +11,6 @@ import (
 )
 
 // Get a custom domain.
-//
-// Deprecated: azure-native:webpubsub/v20230201:WebPubSubCustomDomain is being removed in the next major version of this provider. Upgrade to at least azure-native:webpubsub/v20230301preview:WebPubSubCustomDomain to guarantee forwards compatibility.
 func LookupWebPubSubCustomDomain(ctx *pulumi.Context, args *LookupWebPubSubCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubCustomDomainResult, error) {
 	var rv LookupWebPubSubCustomDomainResult
 	err := ctx.Invoke("azure-native:webpubsub/v20230201:getWebPubSubCustomDomain", args, &rv, opts...)

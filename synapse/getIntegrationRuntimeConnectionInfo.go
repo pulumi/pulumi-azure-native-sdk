@@ -11,7 +11,7 @@ import (
 )
 
 // Get connection info for an integration runtime
-// API Version: 2021-03-01.
+// Azure REST API version: 2021-06-01.
 func GetIntegrationRuntimeConnectionInfo(ctx *pulumi.Context, args *GetIntegrationRuntimeConnectionInfoArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeConnectionInfoResult, error) {
 	var rv GetIntegrationRuntimeConnectionInfoResult
 	err := ctx.Invoke("azure-native:synapse:getIntegrationRuntimeConnectionInfo", args, &rv, opts...)

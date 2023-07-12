@@ -11,7 +11,7 @@ import (
 )
 
 // Get an VolumeGroups.
-// API Version: 2021-11-20-preview.
+// Azure REST API version: 2021-11-20-preview.
 func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ...pulumi.InvokeOption) (*LookupVolumeGroupResult, error) {
 	var rv LookupVolumeGroupResult
 	err := ctx.Invoke("azure-native:elasticsan:getVolumeGroup", args, &rv, opts...)

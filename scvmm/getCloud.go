@@ -11,7 +11,7 @@ import (
 )
 
 // Implements Cloud GET method.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview.
 func LookupCloud(ctx *pulumi.Context, args *LookupCloudArgs, opts ...pulumi.InvokeOption) (*LookupCloudResult, error) {
 	var rv LookupCloudResult
 	err := ctx.Invoke("azure-native:scvmm:getCloud", args, &rv, opts...)

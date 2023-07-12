@@ -12,8 +12,6 @@ import (
 )
 
 // API Operation details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiOperation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiOperation to guarantee forwards compatibility.
 type ApiOperation struct {
 	pulumi.CustomResourceState
 
@@ -112,6 +110,12 @@ func NewApiOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ApiOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiOperation"),
 		},
 	})
 	opts = append(opts, aliases)

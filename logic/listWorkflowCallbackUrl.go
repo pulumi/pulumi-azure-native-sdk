@@ -11,7 +11,7 @@ import (
 )
 
 // Get the workflow callback Url.
-// API Version: 2019-05-01.
+// Azure REST API version: 2019-05-01.
 func ListWorkflowCallbackUrl(ctx *pulumi.Context, args *ListWorkflowCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListWorkflowCallbackUrlResult, error) {
 	var rv ListWorkflowCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic:listWorkflowCallbackUrl", args, &rv, opts...)

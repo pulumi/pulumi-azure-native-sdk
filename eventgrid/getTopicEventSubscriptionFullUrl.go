@@ -11,7 +11,7 @@ import (
 )
 
 // Get the full endpoint URL for an event subscription for topic.
-// API Version: 2021-10-15-preview.
+// Azure REST API version: 2022-06-15.
 func GetTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetTopicEventSubscriptionFullUrlArgs, opts ...pulumi.InvokeOption) (*GetTopicEventSubscriptionFullUrlResult, error) {
 	var rv GetTopicEventSubscriptionFullUrlResult
 	err := ctx.Invoke("azure-native:eventgrid:getTopicEventSubscriptionFullUrl", args, &rv, opts...)

@@ -11,7 +11,7 @@ import (
 )
 
 // Get a DataSetMapping in a shareSubscription
-// API Version: 2020-09-01.
+// Azure REST API version: 2021-08-01.
 func LookupKustoDatabaseDataSetMapping(ctx *pulumi.Context, args *LookupKustoDatabaseDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupKustoDatabaseDataSetMappingResult, error) {
 	var rv LookupKustoDatabaseDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare:getKustoDatabaseDataSetMapping", args, &rv, opts...)

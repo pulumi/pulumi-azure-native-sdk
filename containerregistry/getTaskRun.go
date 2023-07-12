@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the detailed information for a given task run.
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func LookupTaskRun(ctx *pulumi.Context, args *LookupTaskRunArgs, opts ...pulumi.InvokeOption) (*LookupTaskRunResult, error) {
 	var rv LookupTaskRunResult
 	err := ctx.Invoke("azure-native:containerregistry:getTaskRun", args, &rv, opts...)

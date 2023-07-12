@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Virtual Network information contract.
-// API Version: 2020-12-01.
+// Virtual Network information ARM resource.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01
 type WebAppVnetConnection struct {
 	pulumi.CustomResourceState
 

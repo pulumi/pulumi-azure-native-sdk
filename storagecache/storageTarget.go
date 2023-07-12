@@ -12,15 +12,17 @@ import (
 )
 
 // Type of the Storage Target.
-// API Version: 2021-03-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-03-01
 type StorageTarget struct {
 	pulumi.CustomResourceState
 
+	// The percentage of cache space allocated for this storage target
+	AllocationPercentage pulumi.IntOutput `pulumi:"allocationPercentage"`
 	// Properties when targetType is blobNfs.
 	BlobNfs BlobNfsTargetResponsePtrOutput `pulumi:"blobNfs"`
 	// Properties when targetType is clfs.
 	Clfs ClfsTargetResponsePtrOutput `pulumi:"clfs"`
-	// List of Cache namespace junctions to target for namespace associations.
+	// List of cache namespace junctions to target for namespace associations.
 	Junctions NamespaceJunctionResponseArrayOutput `pulumi:"junctions"`
 	// Region name string.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -29,7 +31,9 @@ type StorageTarget struct {
 	// Properties when targetType is nfs3.
 	Nfs3 Nfs3TargetResponsePtrOutput `pulumi:"nfs3"`
 	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Storage target operational state.
+	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the Storage Target.
@@ -90,6 +94,9 @@ func NewStorageTarget(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230301preview:StorageTarget"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:StorageTarget"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageTarget
@@ -126,18 +133,18 @@ func (StorageTargetState) ElementType() reflect.Type {
 type storageTargetArgs struct {
 	// Properties when targetType is blobNfs.
 	BlobNfs *BlobNfsTarget `pulumi:"blobNfs"`
-	// Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+	// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
 	CacheName string `pulumi:"cacheName"`
 	// Properties when targetType is clfs.
 	Clfs *ClfsTarget `pulumi:"clfs"`
-	// List of Cache namespace junctions to target for namespace associations.
+	// List of cache namespace junctions to target for namespace associations.
 	Junctions []NamespaceJunction `pulumi:"junctions"`
 	// Properties when targetType is nfs3.
 	Nfs3 *Nfs3Target `pulumi:"nfs3"`
-	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState *string `pulumi:"provisioningState"`
-	// Target resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Storage target operational state.
+	State *string `pulumi:"state"`
 	// Name of Storage Target.
 	StorageTargetName *string `pulumi:"storageTargetName"`
 	// Type of the Storage Target.
@@ -150,18 +157,18 @@ type storageTargetArgs struct {
 type StorageTargetArgs struct {
 	// Properties when targetType is blobNfs.
 	BlobNfs BlobNfsTargetPtrInput
-	// Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+	// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
 	CacheName pulumi.StringInput
 	// Properties when targetType is clfs.
 	Clfs ClfsTargetPtrInput
-	// List of Cache namespace junctions to target for namespace associations.
+	// List of cache namespace junctions to target for namespace associations.
 	Junctions NamespaceJunctionArrayInput
 	// Properties when targetType is nfs3.
 	Nfs3 Nfs3TargetPtrInput
-	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState pulumi.StringPtrInput
-	// Target resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Storage target operational state.
+	State pulumi.StringPtrInput
 	// Name of Storage Target.
 	StorageTargetName pulumi.StringPtrInput
 	// Type of the Storage Target.
@@ -207,6 +214,11 @@ func (o StorageTargetOutput) ToStorageTargetOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The percentage of cache space allocated for this storage target
+func (o StorageTargetOutput) AllocationPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v *StorageTarget) pulumi.IntOutput { return v.AllocationPercentage }).(pulumi.IntOutput)
+}
+
 // Properties when targetType is blobNfs.
 func (o StorageTargetOutput) BlobNfs() BlobNfsTargetResponsePtrOutput {
 	return o.ApplyT(func(v *StorageTarget) BlobNfsTargetResponsePtrOutput { return v.BlobNfs }).(BlobNfsTargetResponsePtrOutput)
@@ -217,7 +229,7 @@ func (o StorageTargetOutput) Clfs() ClfsTargetResponsePtrOutput {
 	return o.ApplyT(func(v *StorageTarget) ClfsTargetResponsePtrOutput { return v.Clfs }).(ClfsTargetResponsePtrOutput)
 }
 
-// List of Cache namespace junctions to target for namespace associations.
+// List of cache namespace junctions to target for namespace associations.
 func (o StorageTargetOutput) Junctions() NamespaceJunctionResponseArrayOutput {
 	return o.ApplyT(func(v *StorageTarget) NamespaceJunctionResponseArrayOutput { return v.Junctions }).(NamespaceJunctionResponseArrayOutput)
 }
@@ -238,8 +250,13 @@ func (o StorageTargetOutput) Nfs3() Nfs3TargetResponsePtrOutput {
 }
 
 // ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-func (o StorageTargetOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageTarget) pulumi.StringPtrOutput { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o StorageTargetOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageTarget) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Storage target operational state.
+func (o StorageTargetOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageTarget) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // The system meta data relating to this resource.

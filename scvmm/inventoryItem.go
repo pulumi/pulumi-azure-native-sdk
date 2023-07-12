@@ -12,7 +12,7 @@ import (
 )
 
 // Defines the inventory item.
-// API Version: 2020-06-05-preview.
+// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview
 type InventoryItem struct {
 	pulumi.CustomResourceState
 
@@ -28,7 +28,7 @@ type InventoryItem struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets the provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system data.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -55,6 +55,9 @@ func NewInventoryItem(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:InventoryItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:InventoryItem"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -183,7 +186,7 @@ func (o InventoryItemOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *InventoryItem) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system data.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o InventoryItemOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *InventoryItem) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

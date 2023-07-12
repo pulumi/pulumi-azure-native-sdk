@@ -12,8 +12,6 @@ import (
 )
 
 // Android Policy entity for Intune MAM.
-//
-// Deprecated: azure-native:intune/v20150114preview:AndroidMAMPolicyByName is being removed in the next major version of this provider. Upgrade to at least azure-native:intune/v20150114privatepreview:AndroidMAMPolicyByName to guarantee forwards compatibility.
 type AndroidMAMPolicyByName struct {
 	pulumi.CustomResourceState
 

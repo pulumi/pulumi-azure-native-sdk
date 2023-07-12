@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the notification registration details.
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview.
 func LookupNotificationRegistration(ctx *pulumi.Context, args *LookupNotificationRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupNotificationRegistrationResult, error) {
 	var rv LookupNotificationRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub:getNotificationRegistration", args, &rv, opts...)
@@ -35,6 +35,8 @@ type LookupNotificationRegistrationResult struct {
 	// The name of the resource
 	Name       string                                     `pulumi:"name"`
 	Properties NotificationRegistrationResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -92,6 +94,11 @@ func (o LookupNotificationRegistrationResultOutput) Properties() NotificationReg
 	return o.ApplyT(func(v LookupNotificationRegistrationResult) NotificationRegistrationResponseProperties {
 		return v.Properties
 	}).(NotificationRegistrationResponsePropertiesOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupNotificationRegistrationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupNotificationRegistrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

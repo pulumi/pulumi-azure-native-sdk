@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:app:Certificate":
 		r = &Certificate{}
+	case "azure-native:app:ConnectedEnvironment":
+		r = &ConnectedEnvironment{}
+	case "azure-native:app:ConnectedEnvironmentsCertificate":
+		r = &ConnectedEnvironmentsCertificate{}
+	case "azure-native:app:ConnectedEnvironmentsDaprComponent":
+		r = &ConnectedEnvironmentsDaprComponent{}
+	case "azure-native:app:ConnectedEnvironmentsStorage":
+		r = &ConnectedEnvironmentsStorage{}
 	case "azure-native:app:ContainerApp":
 		r = &ContainerApp{}
 	case "azure-native:app:ContainerAppsAuthConfig":
@@ -31,6 +39,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContainerAppsSourceControl{}
 	case "azure-native:app:DaprComponent":
 		r = &DaprComponent{}
+	case "azure-native:app:Job":
+		r = &Job{}
+	case "azure-native:app:ManagedCertificate":
+		r = &ManagedCertificate{}
 	case "azure-native:app:ManagedEnvironment":
 		r = &ManagedEnvironment{}
 	case "azure-native:app:ManagedEnvironmentsStorage":

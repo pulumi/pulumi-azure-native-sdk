@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details about the specified dnc controller.
-// API Version: 2021-03-15.
+// Azure REST API version: 2021-03-15.
 func LookupControllerDetails(ctx *pulumi.Context, args *LookupControllerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupControllerDetailsResult, error) {
 	var rv LookupControllerDetailsResult
 	err := ctx.Invoke("azure-native:delegatednetwork:getControllerDetails", args, &rv, opts...)

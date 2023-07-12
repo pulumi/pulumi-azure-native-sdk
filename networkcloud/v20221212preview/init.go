@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,40 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:networkcloud/v20221212preview:BareMetalMachine":
-		r = &BareMetalMachine{}
-	case "azure-native:networkcloud/v20221212preview:BareMetalMachineKeySet":
-		r = &BareMetalMachineKeySet{}
-	case "azure-native:networkcloud/v20221212preview:BmcKeySet":
-		r = &BmcKeySet{}
-	case "azure-native:networkcloud/v20221212preview:CloudServicesNetwork":
-		r = &CloudServicesNetwork{}
 	case "azure-native:networkcloud/v20221212preview:Cluster":
 		r = &Cluster{}
-	case "azure-native:networkcloud/v20221212preview:ClusterManager":
-		r = &ClusterManager{}
-	case "azure-native:networkcloud/v20221212preview:Console":
-		r = &Console{}
 	case "azure-native:networkcloud/v20221212preview:DefaultCniNetwork":
 		r = &DefaultCniNetwork{}
 	case "azure-native:networkcloud/v20221212preview:HybridAksCluster":
 		r = &HybridAksCluster{}
-	case "azure-native:networkcloud/v20221212preview:L2Network":
-		r = &L2Network{}
-	case "azure-native:networkcloud/v20221212preview:L3Network":
-		r = &L3Network{}
-	case "azure-native:networkcloud/v20221212preview:MetricsConfiguration":
-		r = &MetricsConfiguration{}
-	case "azure-native:networkcloud/v20221212preview:Rack":
-		r = &Rack{}
-	case "azure-native:networkcloud/v20221212preview:StorageAppliance":
-		r = &StorageAppliance{}
-	case "azure-native:networkcloud/v20221212preview:TrunkedNetwork":
-		r = &TrunkedNetwork{}
-	case "azure-native:networkcloud/v20221212preview:VirtualMachine":
-		r = &VirtualMachine{}
-	case "azure-native:networkcloud/v20221212preview:Volume":
-		r = &Volume{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

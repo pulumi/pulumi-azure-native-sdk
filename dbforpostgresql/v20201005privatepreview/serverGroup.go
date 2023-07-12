@@ -75,6 +75,9 @@ func NewServerGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dbforpostgresql:ServerGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20221108:ServerGroup"),
 		},
 	})

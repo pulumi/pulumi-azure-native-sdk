@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2023-02-01.
 func LookupConnectivityConfiguration(ctx *pulumi.Context, args *LookupConnectivityConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConnectivityConfigurationResult, error) {
 	var rv LookupConnectivityConfigurationResult
 	err := ctx.Invoke("azure-native:network:getConnectivityConfiguration", args, &rv, opts...)
@@ -40,8 +40,6 @@ type LookupConnectivityConfigurationResult struct {
 	DeleteExistingPeering *string `pulumi:"deleteExistingPeering"`
 	// A description of the connectivity configuration.
 	Description *string `pulumi:"description"`
-	// A friendly name for the resource.
-	DisplayName *string `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// List of hubItems
@@ -54,6 +52,8 @@ type LookupConnectivityConfigurationResult struct {
 	Name string `pulumi:"name"`
 	// The provisioning state of the connectivity configuration resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Unique identifier for this resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type.
@@ -123,11 +123,6 @@ func (o LookupConnectivityConfigurationResultOutput) Description() pulumi.String
 	return o.ApplyT(func(v LookupConnectivityConfigurationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A friendly name for the resource.
-func (o LookupConnectivityConfigurationResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupConnectivityConfigurationResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
 // A unique read-only string that changes whenever the resource is updated.
 func (o LookupConnectivityConfigurationResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectivityConfigurationResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -156,6 +151,11 @@ func (o LookupConnectivityConfigurationResultOutput) Name() pulumi.StringOutput 
 // The provisioning state of the connectivity configuration resource.
 func (o LookupConnectivityConfigurationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectivityConfigurationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Unique identifier for this resource.
+func (o LookupConnectivityConfigurationResultOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectivityConfigurationResult) string { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The system metadata related to this resource.

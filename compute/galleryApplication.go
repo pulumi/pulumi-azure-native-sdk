@@ -12,10 +12,12 @@ import (
 )
 
 // Specifies information about the gallery Application Definition that you want to create or update.
-// API Version: 2020-09-30.
+// Azure REST API version: 2022-03-03. Prior API version in Azure Native 1.x: 2020-09-30
 type GalleryApplication struct {
 	pulumi.CustomResourceState
 
+	// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
+	CustomActions GalleryApplicationCustomActionResponseArrayOutput `pulumi:"customActions"`
 	// The description of this gallery Application Definition resource. This property is updatable.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The end of life date of the gallery Application Definition. This property can be used for decommissioning purposes. This property is updatable.
@@ -113,6 +115,8 @@ func (GalleryApplicationState) ElementType() reflect.Type {
 }
 
 type galleryApplicationArgs struct {
+	// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
+	CustomActions []GalleryApplicationCustomAction `pulumi:"customActions"`
 	// The description of this gallery Application Definition resource. This property is updatable.
 	Description *string `pulumi:"description"`
 	// The end of life date of the gallery Application Definition. This property can be used for decommissioning purposes. This property is updatable.
@@ -139,6 +143,8 @@ type galleryApplicationArgs struct {
 
 // The set of arguments for constructing a GalleryApplication resource.
 type GalleryApplicationArgs struct {
+	// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
+	CustomActions GalleryApplicationCustomActionArrayInput
 	// The description of this gallery Application Definition resource. This property is updatable.
 	Description pulumi.StringPtrInput
 	// The end of life date of the gallery Application Definition. This property can be used for decommissioning purposes. This property is updatable.
@@ -198,6 +204,11 @@ func (o GalleryApplicationOutput) ToGalleryApplicationOutput() GalleryApplicatio
 
 func (o GalleryApplicationOutput) ToGalleryApplicationOutputWithContext(ctx context.Context) GalleryApplicationOutput {
 	return o
+}
+
+// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
+func (o GalleryApplicationOutput) CustomActions() GalleryApplicationCustomActionResponseArrayOutput {
+	return o.ApplyT(func(v *GalleryApplication) GalleryApplicationCustomActionResponseArrayOutput { return v.CustomActions }).(GalleryApplicationCustomActionResponseArrayOutput)
 }
 
 // The description of this gallery Application Definition resource. This property is updatable.

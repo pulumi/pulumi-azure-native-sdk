@@ -12,8 +12,6 @@ import (
 )
 
 // ServiceEndpoint resource details.
-//
-// Deprecated: azure-native:recommendationsservice/v20220201:ServiceEndpoint is being removed in the next major version of this provider. Upgrade to at least azure-native:recommendationsservice/v20220301preview:ServiceEndpoint to guarantee forwards compatibility.
 type ServiceEndpoint struct {
 	pulumi.CustomResourceState
 

@@ -12,16 +12,20 @@ import (
 )
 
 // Device Update account details.
-// API Version: 2020-03-01-preview.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 1.x: 2020-03-01-preview
 type Account struct {
 	pulumi.CustomResourceState
 
+	// CMK encryption at rest properties
+	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
 	// API host name.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The type of identity used for the resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Device Update account primary and failover location details
+	Locations LocationResponseArrayOutput `pulumi:"locations"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections associated with the account.
@@ -30,6 +34,8 @@ type Account struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Whether or not public network access is allowed for the account.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
+	// Device Update Sku
+	Sku pulumi.StringPtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -51,6 +57,9 @@ func NewAccount(ctx *pulumi.Context,
 	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
+	if args.Sku == nil {
+		args.Sku = pulumi.StringPtr("Standard")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:deviceupdate/v20200301preview:Account"),
@@ -63,6 +72,9 @@ func NewAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:deviceupdate/v20221201preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceupdate/v20230701:Account"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -100,6 +112,8 @@ func (AccountState) ElementType() reflect.Type {
 type accountArgs struct {
 	// Account name.
 	AccountName *string `pulumi:"accountName"`
+	// CMK encryption at rest properties
+	Encryption *Encryption `pulumi:"encryption"`
 	// The type of identity used for the resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -110,6 +124,8 @@ type accountArgs struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Device Update Sku
+	Sku *string `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -118,6 +134,8 @@ type accountArgs struct {
 type AccountArgs struct {
 	// Account name.
 	AccountName pulumi.StringPtrInput
+	// CMK encryption at rest properties
+	Encryption EncryptionPtrInput
 	// The type of identity used for the resource.
 	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
@@ -128,6 +146,8 @@ type AccountArgs struct {
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The resource group name.
 	ResourceGroupName pulumi.StringInput
+	// Device Update Sku
+	Sku pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -169,6 +189,11 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// CMK encryption at rest properties
+func (o AccountOutput) Encryption() EncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *Account) EncryptionResponsePtrOutput { return v.Encryption }).(EncryptionResponsePtrOutput)
+}
+
 // API host name.
 func (o AccountOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
@@ -182,6 +207,11 @@ func (o AccountOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 // The geo-location where the resource lives
 func (o AccountOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Device Update account primary and failover location details
+func (o AccountOutput) Locations() LocationResponseArrayOutput {
+	return o.ApplyT(func(v *Account) LocationResponseArrayOutput { return v.Locations }).(LocationResponseArrayOutput)
 }
 
 // The name of the resource
@@ -202,6 +232,11 @@ func (o AccountOutput) ProvisioningState() pulumi.StringOutput {
 // Whether or not public network access is allowed for the account.
 func (o AccountOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Device Update Sku
+func (o AccountOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

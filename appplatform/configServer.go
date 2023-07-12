@@ -12,7 +12,7 @@ import (
 )
 
 // Config Server resource
-// API Version: 2020-07-01.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2020-07-01
 type ConfigServer struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +20,8 @@ type ConfigServer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the Config Server resource
 	Properties ConfigServerPropertiesResponseOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -73,6 +75,12 @@ func NewConfigServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230101preview:ConfigServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230301preview:ConfigServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230501preview:ConfigServer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -171,6 +179,11 @@ func (o ConfigServerOutput) Name() pulumi.StringOutput {
 // Properties of the Config Server resource
 func (o ConfigServerOutput) Properties() ConfigServerPropertiesResponseOutput {
 	return o.ApplyT(func(v *ConfigServer) ConfigServerPropertiesResponseOutput { return v.Properties }).(ConfigServerPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ConfigServerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ConfigServer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

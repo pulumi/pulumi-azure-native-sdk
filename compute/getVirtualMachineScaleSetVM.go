@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a virtual machine from a VM scale set.
-// API Version: 2021-03-01.
+// Azure REST API version: 2023-03-01.
 func LookupVirtualMachineScaleSetVM(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMResult, error) {
 	var rv LookupVirtualMachineScaleSetVMResult
 	err := ctx.Invoke("azure-native:compute:getVirtualMachineScaleSetVM", args, &rv, opts...)
@@ -36,14 +36,16 @@ type LookupVirtualMachineScaleSetVMArgs struct {
 type LookupVirtualMachineScaleSetVMResult struct {
 	// Specifies additional capabilities enabled or disabled on the virtual machine in the scale set. For instance: whether the virtual machine has the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
 	AdditionalCapabilities *AdditionalCapabilitiesResponse `pulumi:"additionalCapabilities"`
-	// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). <br><br> For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates) <br><br> Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
+	// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
 	AvailabilitySet *SubResourceResponse `pulumi:"availabilitySet"`
-	// Specifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 	DiagnosticsProfile *DiagnosticsProfileResponse `pulumi:"diagnosticsProfile"`
 	// Specifies the hardware settings for the virtual machine.
 	HardwareProfile *HardwareProfileResponse `pulumi:"hardwareProfile"`
 	// Resource Id
 	Id string `pulumi:"id"`
+	// The identity of the virtual machine, if configured.
+	Identity *VirtualMachineIdentityResponse `pulumi:"identity"`
 	// The virtual machine instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// The virtual machine instance view.
@@ -140,12 +142,12 @@ func (o LookupVirtualMachineScaleSetVMResultOutput) AdditionalCapabilities() Add
 	}).(AdditionalCapabilitiesResponsePtrOutput)
 }
 
-// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). <br><br> For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates) <br><br> Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
+// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
 func (o LookupVirtualMachineScaleSetVMResultOutput) AvailabilitySet() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) *SubResourceResponse { return v.AvailabilitySet }).(SubResourceResponsePtrOutput)
 }
 
-// Specifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 func (o LookupVirtualMachineScaleSetVMResultOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) *DiagnosticsProfileResponse { return v.DiagnosticsProfile }).(DiagnosticsProfileResponsePtrOutput)
 }
@@ -158,6 +160,11 @@ func (o LookupVirtualMachineScaleSetVMResultOutput) HardwareProfile() HardwarePr
 // Resource Id
 func (o LookupVirtualMachineScaleSetVMResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity of the virtual machine, if configured.
+func (o LookupVirtualMachineScaleSetVMResultOutput) Identity() VirtualMachineIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) *VirtualMachineIdentityResponse { return v.Identity }).(VirtualMachineIdentityResponsePtrOutput)
 }
 
 // The virtual machine instance ID.

@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the Advanced Threat Protection settings for the specified resource.
-// API Version: 2019-01-01.
+// Azure REST API version: 2019-01-01.
 func LookupAdvancedThreatProtection(ctx *pulumi.Context, args *LookupAdvancedThreatProtectionArgs, opts ...pulumi.InvokeOption) (*LookupAdvancedThreatProtectionResult, error) {
 	var rv LookupAdvancedThreatProtectionResult
 	err := ctx.Invoke("azure-native:security:getAdvancedThreatProtection", args, &rv, opts...)

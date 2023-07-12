@@ -12,8 +12,6 @@ import (
 )
 
 // Email Template details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:EmailTemplate is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:EmailTemplate to guarantee forwards compatibility.
 type EmailTemplate struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +88,12 @@ func NewEmailTemplate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:EmailTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:EmailTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:EmailTemplate"),
 		},
 	})
 	opts = append(opts, aliases)

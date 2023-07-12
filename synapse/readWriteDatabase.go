@@ -12,7 +12,7 @@ import (
 )
 
 // Class representing a read write database.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2021-06-01-preview.
 type ReadWriteDatabase struct {
 	pulumi.CustomResourceState
 
@@ -115,7 +115,7 @@ type readWriteDatabaseArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The time the data should be kept before it stops being accessible to queries in TimeSpan.
 	SoftDeletePeriod *string `pulumi:"softDeletePeriod"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -136,7 +136,7 @@ type ReadWriteDatabaseArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The time the data should be kept before it stops being accessible to queries in TimeSpan.
 	SoftDeletePeriod pulumi.StringPtrInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 

@@ -12,7 +12,7 @@ import (
 )
 
 // Active directory connector resource
-// API Version: 2022-03-01-preview.
+// Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2022-03-01-preview
 type ActiveDirectoryConnector struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +49,9 @@ func NewActiveDirectoryConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:ActiveDirectoryConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:ActiveDirectoryConnector"),
 		},
 	})
 	opts = append(opts, aliases)

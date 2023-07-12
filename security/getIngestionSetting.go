@@ -11,7 +11,7 @@ import (
 )
 
 // Settings for ingesting security data and logs to correlate with resources associated with the subscription.
-// API Version: 2021-01-15-preview.
+// Azure REST API version: 2021-01-15-preview.
 func LookupIngestionSetting(ctx *pulumi.Context, args *LookupIngestionSettingArgs, opts ...pulumi.InvokeOption) (*LookupIngestionSettingResult, error) {
 	var rv LookupIngestionSettingResult
 	err := ctx.Invoke("azure-native:security:getIngestionSetting", args, &rv, opts...)

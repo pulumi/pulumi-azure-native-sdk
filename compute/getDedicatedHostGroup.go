@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about a dedicated host group.
-// API Version: 2020-12-01.
+// Azure REST API version: 2023-03-01.
 func LookupDedicatedHostGroup(ctx *pulumi.Context, args *LookupDedicatedHostGroupArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostGroupResult, error) {
 	var rv LookupDedicatedHostGroupResult
 	err := ctx.Invoke("azure-native:compute:getDedicatedHostGroup", args, &rv, opts...)
@@ -22,7 +22,7 @@ func LookupDedicatedHostGroup(ctx *pulumi.Context, args *LookupDedicatedHostGrou
 }
 
 type LookupDedicatedHostGroupArgs struct {
-	// The expand expression to apply on the operation. The response shows the list of instance view of the dedicated hosts under the dedicated host group.
+	// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated hosts under the dedicated host group. 'UserData' is not supported for dedicated host group.
 	Expand *string `pulumi:"expand"`
 	// The name of the dedicated host group.
 	HostGroupName string `pulumi:"hostGroupName"`
@@ -30,8 +30,10 @@ type LookupDedicatedHostGroupArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Specifies information about the dedicated host group that the dedicated hosts should be assigned to. <br><br> Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
+// Specifies information about the dedicated host group that the dedicated hosts should be assigned to. Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
 type LookupDedicatedHostGroupResult struct {
+	// Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
+	AdditionalCapabilities *DedicatedHostGroupPropertiesResponseAdditionalCapabilities `pulumi:"additionalCapabilities"`
 	// A list of references to all dedicated hosts in the dedicated host group.
 	Hosts []SubResourceReadOnlyResponse `pulumi:"hosts"`
 	// Resource Id
@@ -44,7 +46,7 @@ type LookupDedicatedHostGroupResult struct {
 	Name string `pulumi:"name"`
 	// Number of fault domains that the host group can span.
 	PlatformFaultDomainCount int `pulumi:"platformFaultDomainCount"`
-	// Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. <br><br>Minimum api-version: 2020-06-01.
+	// Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. Minimum api-version: 2020-06-01.
 	SupportAutomaticPlacement *bool `pulumi:"supportAutomaticPlacement"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
@@ -68,7 +70,7 @@ func LookupDedicatedHostGroupOutput(ctx *pulumi.Context, args LookupDedicatedHos
 }
 
 type LookupDedicatedHostGroupOutputArgs struct {
-	// The expand expression to apply on the operation. The response shows the list of instance view of the dedicated hosts under the dedicated host group.
+	// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated hosts under the dedicated host group. 'UserData' is not supported for dedicated host group.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the dedicated host group.
 	HostGroupName pulumi.StringInput `pulumi:"hostGroupName"`
@@ -80,7 +82,7 @@ func (LookupDedicatedHostGroupOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupDedicatedHostGroupArgs)(nil)).Elem()
 }
 
-// Specifies information about the dedicated host group that the dedicated hosts should be assigned to. <br><br> Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
+// Specifies information about the dedicated host group that the dedicated hosts should be assigned to. Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
 type LookupDedicatedHostGroupResultOutput struct{ *pulumi.OutputState }
 
 func (LookupDedicatedHostGroupResultOutput) ElementType() reflect.Type {
@@ -93,6 +95,13 @@ func (o LookupDedicatedHostGroupResultOutput) ToLookupDedicatedHostGroupResultOu
 
 func (o LookupDedicatedHostGroupResultOutput) ToLookupDedicatedHostGroupResultOutputWithContext(ctx context.Context) LookupDedicatedHostGroupResultOutput {
 	return o
+}
+
+// Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
+func (o LookupDedicatedHostGroupResultOutput) AdditionalCapabilities() DedicatedHostGroupPropertiesResponseAdditionalCapabilitiesPtrOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) *DedicatedHostGroupPropertiesResponseAdditionalCapabilities {
+		return v.AdditionalCapabilities
+	}).(DedicatedHostGroupPropertiesResponseAdditionalCapabilitiesPtrOutput)
 }
 
 // A list of references to all dedicated hosts in the dedicated host group.
@@ -125,7 +134,7 @@ func (o LookupDedicatedHostGroupResultOutput) PlatformFaultDomainCount() pulumi.
 	return o.ApplyT(func(v LookupDedicatedHostGroupResult) int { return v.PlatformFaultDomainCount }).(pulumi.IntOutput)
 }
 
-// Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. <br><br>Minimum api-version: 2020-06-01.
+// Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. Minimum api-version: 2020-06-01.
 func (o LookupDedicatedHostGroupResultOutput) SupportAutomaticPlacement() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDedicatedHostGroupResult) *bool { return v.SupportAutomaticPlacement }).(pulumi.BoolPtrOutput)
 }

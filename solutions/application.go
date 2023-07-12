@@ -12,7 +12,7 @@ import (
 )
 
 // Information about managed application.
-// API Version: 2019-07-01.
+// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +58,8 @@ type Application struct {
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// The read-only support URLs property that is retrieved from the application package.
 	SupportUrls ApplicationPackageSupportUrlsResponseOutput `pulumi:"supportUrls"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -345,6 +347,11 @@ func (o ApplicationOutput) Sku() SkuResponsePtrOutput {
 // The read-only support URLs property that is retrieved from the application package.
 func (o ApplicationOutput) SupportUrls() ApplicationPackageSupportUrlsResponseOutput {
 	return o.ApplyT(func(v *Application) ApplicationPackageSupportUrlsResponseOutput { return v.SupportUrls }).(ApplicationPackageSupportUrlsResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o ApplicationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Application) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

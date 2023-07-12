@@ -12,12 +12,16 @@ import (
 )
 
 // Describes the RedisEnterprise cluster
-// API Version: 2021-03-01.
+// Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2021-03-01
 type RedisEnterprise struct {
 	pulumi.CustomResourceState
 
+	// Encryption-at-rest configuration for the cluster.
+	Encryption ClusterPropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
 	// DNS name of the cluster endpoint
 	HostName pulumi.StringOutput `pulumi:"hostName"`
+	// The identity of the resource.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'
@@ -34,6 +38,8 @@ type RedisEnterprise struct {
 	ResourceState pulumi.StringOutput `pulumi:"resourceState"`
 	// The SKU to create, which affects price, performance, and features.
 	Sku EnterpriseSkuResponseOutput `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -113,6 +119,10 @@ func (RedisEnterpriseState) ElementType() reflect.Type {
 type redisEnterpriseArgs struct {
 	// The name of the RedisEnterprise cluster.
 	ClusterName *string `pulumi:"clusterName"`
+	// Encryption-at-rest configuration for the cluster.
+	Encryption *ClusterPropertiesEncryption `pulumi:"encryption"`
+	// The identity of the resource.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'
@@ -131,6 +141,10 @@ type redisEnterpriseArgs struct {
 type RedisEnterpriseArgs struct {
 	// The name of the RedisEnterprise cluster.
 	ClusterName pulumi.StringPtrInput
+	// Encryption-at-rest configuration for the cluster.
+	Encryption ClusterPropertiesEncryptionPtrInput
+	// The identity of the resource.
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The minimum TLS version for the cluster to support, e.g. '1.2'
@@ -182,9 +196,19 @@ func (o RedisEnterpriseOutput) ToRedisEnterpriseOutputWithContext(ctx context.Co
 	return o
 }
 
+// Encryption-at-rest configuration for the cluster.
+func (o RedisEnterpriseOutput) Encryption() ClusterPropertiesResponseEncryptionPtrOutput {
+	return o.ApplyT(func(v *RedisEnterprise) ClusterPropertiesResponseEncryptionPtrOutput { return v.Encryption }).(ClusterPropertiesResponseEncryptionPtrOutput)
+}
+
 // DNS name of the cluster endpoint
 func (o RedisEnterpriseOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
+}
+
+// The identity of the resource.
+func (o RedisEnterpriseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *RedisEnterprise) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -227,6 +251,11 @@ func (o RedisEnterpriseOutput) ResourceState() pulumi.StringOutput {
 // The SKU to create, which affects price, performance, and features.
 func (o RedisEnterpriseOutput) Sku() EnterpriseSkuResponseOutput {
 	return o.ApplyT(func(v *RedisEnterprise) EnterpriseSkuResponseOutput { return v.Sku }).(EnterpriseSkuResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o RedisEnterpriseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *RedisEnterprise) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

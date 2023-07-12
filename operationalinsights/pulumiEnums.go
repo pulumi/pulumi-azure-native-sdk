@@ -299,19 +299,6 @@ const (
 	TablePlanEnumAnalytics = TablePlanEnum("Analytics")
 )
 
-// The provisioning state of the workspace.
-type WorkspaceEntityStatus string
-
-const (
-	WorkspaceEntityStatusCreating            = WorkspaceEntityStatus("Creating")
-	WorkspaceEntityStatusSucceeded           = WorkspaceEntityStatus("Succeeded")
-	WorkspaceEntityStatusFailed              = WorkspaceEntityStatus("Failed")
-	WorkspaceEntityStatusCanceled            = WorkspaceEntityStatus("Canceled")
-	WorkspaceEntityStatusDeleting            = WorkspaceEntityStatus("Deleting")
-	WorkspaceEntityStatusProvisioningAccount = WorkspaceEntityStatus("ProvisioningAccount")
-	WorkspaceEntityStatusUpdating            = WorkspaceEntityStatus("Updating")
-)
-
 // The name of the SKU.
 type WorkspaceSkuNameEnum string
 

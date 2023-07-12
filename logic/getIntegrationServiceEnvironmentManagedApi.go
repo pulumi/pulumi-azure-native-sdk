@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the integration service environment managed Api.
-// API Version: 2019-05-01.
+// Azure REST API version: 2019-05-01.
 func LookupIntegrationServiceEnvironmentManagedApi(ctx *pulumi.Context, args *LookupIntegrationServiceEnvironmentManagedApiArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationServiceEnvironmentManagedApiResult, error) {
 	var rv LookupIntegrationServiceEnvironmentManagedApiResult
 	err := ctx.Invoke("azure-native:logic:getIntegrationServiceEnvironmentManagedApi", args, &rv, opts...)

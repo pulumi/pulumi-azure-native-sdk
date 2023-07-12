@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a Kusto pool database principalAssignment.
-// API Version: 2021-04-01-preview.
+// Azure REST API version: 2021-04-01-preview.
 func LookupDatabasePrincipalAssignment(ctx *pulumi.Context, args *LookupDatabasePrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupDatabasePrincipalAssignmentResult, error) {
 	var rv LookupDatabasePrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:synapse:getDatabasePrincipalAssignment", args, &rv, opts...)

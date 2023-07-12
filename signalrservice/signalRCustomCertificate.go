@@ -12,7 +12,7 @@ import (
 )
 
 // A custom certificate.
-// API Version: 2022-02-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-02-01
 type SignalRCustomCertificate struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +60,12 @@ func NewSignalRCustomCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20230201:SignalRCustomCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230301preview:SignalRCustomCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20230601preview:SignalRCustomCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,10 +12,12 @@ import (
 )
 
 // Account resource
-// API Version: 2020-12-01-preview.
+// Azure REST API version: 2021-12-01. Prior API version in Azure Native 1.x: 2020-12-01-preview
 type Account struct {
 	pulumi.CustomResourceState
 
+	// Gets or sets the status of the account.
+	AccountStatus AccountPropertiesResponseAccountStatusOutput `pulumi:"accountStatus"`
 	// Cloud connectors.
 	// External cloud identifier used as part of scanning configuration.
 	CloudConnectors CloudConnectorsResponsePtrOutput `pulumi:"cloudConnectors"`
@@ -33,10 +35,14 @@ type Account struct {
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Gets or sets the location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	//  Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
+	ManagedEventHubState pulumi.StringPtrOutput `pulumi:"managedEventHubState"`
 	// Gets or sets the managed resource group name
 	ManagedResourceGroupName pulumi.StringPtrOutput `pulumi:"managedResourceGroupName"`
 	// Gets the resource identifiers of the managed resources.
 	ManagedResources AccountPropertiesResponseManagedResourcesOutput `pulumi:"managedResources"`
+	// Gets or sets the public network access for managed resources.
+	ManagedResourcesPublicNetworkAccess pulumi.StringPtrOutput `pulumi:"managedResourcesPublicNetworkAccess"`
 	// Gets or sets the name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets the private endpoint connections information.
@@ -48,7 +54,7 @@ type Account struct {
 	// Gets or sets the Sku.
 	Sku AccountResponseSkuOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData AccountPropertiesResponseSystemDataOutput `pulumi:"systemData"`
+	SystemData TrackedResourceResponseSystemDataOutput `pulumi:"systemData"`
 	// Tags on the azure resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Gets or sets the type.
@@ -65,6 +71,12 @@ func NewAccount(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.ManagedEventHubState == nil {
+		args.ManagedEventHubState = pulumi.StringPtr("NotSpecified")
+	}
+	if args.ManagedResourcesPublicNetworkAccess == nil {
+		args.ManagedResourcesPublicNetworkAccess = pulumi.StringPtr("NotSpecified")
+	}
 	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
@@ -74,6 +86,9 @@ func NewAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:purview/v20210701:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:purview/v20211201:Account"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -115,8 +130,12 @@ type accountArgs struct {
 	Identity *Identity `pulumi:"identity"`
 	// Gets or sets the location.
 	Location *string `pulumi:"location"`
+	//  Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
+	ManagedEventHubState *string `pulumi:"managedEventHubState"`
 	// Gets or sets the managed resource group name
 	ManagedResourceGroupName *string `pulumi:"managedResourceGroupName"`
+	// Gets or sets the public network access for managed resources.
+	ManagedResourcesPublicNetworkAccess *string `pulumi:"managedResourcesPublicNetworkAccess"`
 	// Gets or sets the public network access.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The resource group name.
@@ -133,8 +152,12 @@ type AccountArgs struct {
 	Identity IdentityPtrInput
 	// Gets or sets the location.
 	Location pulumi.StringPtrInput
+	//  Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
+	ManagedEventHubState pulumi.StringPtrInput
 	// Gets or sets the managed resource group name
 	ManagedResourceGroupName pulumi.StringPtrInput
+	// Gets or sets the public network access for managed resources.
+	ManagedResourcesPublicNetworkAccess pulumi.StringPtrInput
 	// Gets or sets the public network access.
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The resource group name.
@@ -180,6 +203,11 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// Gets or sets the status of the account.
+func (o AccountOutput) AccountStatus() AccountPropertiesResponseAccountStatusOutput {
+	return o.ApplyT(func(v *Account) AccountPropertiesResponseAccountStatusOutput { return v.AccountStatus }).(AccountPropertiesResponseAccountStatusOutput)
+}
+
 // Cloud connectors.
 // External cloud identifier used as part of scanning configuration.
 func (o AccountOutput) CloudConnectors() CloudConnectorsResponsePtrOutput {
@@ -221,6 +249,11 @@ func (o AccountOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
+func (o AccountOutput) ManagedEventHubState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.ManagedEventHubState }).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the managed resource group name
 func (o AccountOutput) ManagedResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.ManagedResourceGroupName }).(pulumi.StringPtrOutput)
@@ -229,6 +262,11 @@ func (o AccountOutput) ManagedResourceGroupName() pulumi.StringPtrOutput {
 // Gets the resource identifiers of the managed resources.
 func (o AccountOutput) ManagedResources() AccountPropertiesResponseManagedResourcesOutput {
 	return o.ApplyT(func(v *Account) AccountPropertiesResponseManagedResourcesOutput { return v.ManagedResources }).(AccountPropertiesResponseManagedResourcesOutput)
+}
+
+// Gets or sets the public network access for managed resources.
+func (o AccountOutput) ManagedResourcesPublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.ManagedResourcesPublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the name.
@@ -257,8 +295,8 @@ func (o AccountOutput) Sku() AccountResponseSkuOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o AccountOutput) SystemData() AccountPropertiesResponseSystemDataOutput {
-	return o.ApplyT(func(v *Account) AccountPropertiesResponseSystemDataOutput { return v.SystemData }).(AccountPropertiesResponseSystemDataOutput)
+func (o AccountOutput) SystemData() TrackedResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v *Account) TrackedResourceResponseSystemDataOutput { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
 }
 
 // Tags on the azure resource.

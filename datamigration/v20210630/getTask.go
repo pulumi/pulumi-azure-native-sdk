@@ -11,8 +11,6 @@ import (
 )
 
 // The tasks resource is a nested, proxy-only resource representing work performed by a DMS instance. The GET method retrieves information about a task.
-//
-// Deprecated: azure-native:datamigration/v20210630:Task is being removed in the next major version of this provider. Upgrade to at least azure-native:datamigration/v20220330preview:Task to guarantee forwards compatibility.
 func LookupTask(ctx *pulumi.Context, args *LookupTaskArgs, opts ...pulumi.InvokeOption) (*LookupTaskResult, error) {
 	var rv LookupTaskResult
 	err := ctx.Invoke("azure-native:datamigration/v20210630:getTask", args, &rv, opts...)

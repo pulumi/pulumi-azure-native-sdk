@@ -12,7 +12,7 @@ import (
 )
 
 // The Private Endpoint Connection resource.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-07-02. Prior API version in Azure Native 1.x: 2020-12-01
 type DiskAccessAPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,9 @@ func NewDiskAccessAPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20220702:DiskAccessAPrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20230102:DiskAccessAPrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DiskAccessAPrivateEndpointConnection
@@ -100,9 +103,9 @@ func (DiskAccessAPrivateEndpointConnectionState) ElementType() reflect.Type {
 }
 
 type diskAccessAPrivateEndpointConnectionArgs struct {
-	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskAccessName string `pulumi:"diskAccessName"`
-	// The name of the private endpoint connection
+	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between DiskAccess and Virtual Network.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
@@ -112,9 +115,9 @@ type diskAccessAPrivateEndpointConnectionArgs struct {
 
 // The set of arguments for constructing a DiskAccessAPrivateEndpointConnection resource.
 type DiskAccessAPrivateEndpointConnectionArgs struct {
-	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskAccessName pulumi.StringInput
-	// The name of the private endpoint connection
+	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between DiskAccess and Virtual Network.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput

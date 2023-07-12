@@ -12,7 +12,7 @@ import (
 )
 
 // Describes a DNS forwarding ruleset.
-// API Version: 2020-04-01-preview.
+// Azure REST API version: 2022-07-01. Prior API version in Azure Native 1.x: 2020-04-01-preview
 type DnsForwardingRuleset struct {
 	pulumi.CustomResourceState
 
@@ -43,6 +43,9 @@ func NewDnsForwardingRuleset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DnsResolverOutboundEndpoints == nil {
+		return nil, errors.New("invalid value for required argument 'DnsResolverOutboundEndpoints'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}

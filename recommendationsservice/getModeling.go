@@ -11,7 +11,7 @@ import (
 )
 
 // Returns Modeling resources for a given name.
-// API Version: 2022-02-01.
+// Azure REST API version: 2022-02-01.
 func LookupModeling(ctx *pulumi.Context, args *LookupModelingArgs, opts ...pulumi.InvokeOption) (*LookupModelingResult, error) {
 	var rv LookupModelingResult
 	err := ctx.Invoke("azure-native:recommendationsservice:getModeling", args, &rv, opts...)

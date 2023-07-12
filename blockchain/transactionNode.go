@@ -12,7 +12,7 @@ import (
 )
 
 // Payload of the transaction node which is the request/response of the resource provider.
-// API Version: 2018-06-01-preview.
+// Azure REST API version: 2018-06-01-preview. Prior API version in Azure Native 1.x: 2018-06-01-preview
 type TransactionNode struct {
 	pulumi.CustomResourceState
 

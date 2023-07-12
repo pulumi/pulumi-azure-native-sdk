@@ -12,8 +12,6 @@ import (
 )
 
 // Represents a server firewall rule.
-//
-// Deprecated: azure-native:dbforpostgresql/v20221201:FirewallRule is being removed in the next major version of this provider. Upgrade to at least azure-native:dbforpostgresql/v20230301preview:FirewallRule to guarantee forwards compatibility.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +48,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dbforpostgresql:FirewallRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:FirewallRule"),
 		},
 		{
@@ -72,6 +73,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20220308preview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

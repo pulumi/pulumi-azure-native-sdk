@@ -11,7 +11,7 @@ import (
 )
 
 // Gets details about the specified dnc DelegatedSubnet Link.
-// API Version: 2021-03-15.
+// Azure REST API version: 2021-03-15.
 func LookupDelegatedSubnetServiceDetails(ctx *pulumi.Context, args *LookupDelegatedSubnetServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupDelegatedSubnetServiceDetailsResult, error) {
 	var rv LookupDelegatedSubnetServiceDetailsResult
 	err := ctx.Invoke("azure-native:delegatednetwork:getDelegatedSubnetServiceDetails", args, &rv, opts...)

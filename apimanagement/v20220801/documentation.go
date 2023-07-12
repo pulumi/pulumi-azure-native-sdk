@@ -12,8 +12,6 @@ import (
 )
 
 // Markdown documentation details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:Documentation is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:Documentation to guarantee forwards compatibility.
 type Documentation struct {
 	pulumi.CustomResourceState
 
@@ -40,6 +38,18 @@ func NewDocumentation(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement:Documentation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Documentation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Documentation"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource Documentation
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:Documentation", name, args, &resource, opts...)
 	if err != nil {

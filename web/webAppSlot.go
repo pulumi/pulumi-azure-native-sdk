@@ -12,7 +12,7 @@ import (
 )
 
 // A web app, a mobile app backend, or an API app.
-// API Version: 2020-12-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01
 type WebAppSlot struct {
 	pulumi.CustomResourceState
 
@@ -42,6 +42,8 @@ type WebAppSlot struct {
 	// Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled. Otherwise,
 	// the app is not served on those hostnames.
 	EnabledHostNames pulumi.StringArrayOutput `pulumi:"enabledHostNames"`
+	// Extended Location.
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 	HostNameSslStates HostNameSslStateResponseArrayOutput `pulumi:"hostNameSslStates"`
 	// Hostnames associated with the app.
@@ -72,6 +74,8 @@ type WebAppSlot struct {
 	LastModifiedTimeUtc pulumi.StringOutput `pulumi:"lastModifiedTimeUtc"`
 	// Resource Location.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+	ManagedEnvironmentId pulumi.StringPtrOutput `pulumi:"managedEnvironmentId"`
 	// Maximum number of workers.
 	// This only applies to Functions container.
 	MaxNumberOfWorkers pulumi.IntOutput `pulumi:"maxNumberOfWorkers"`
@@ -81,6 +85,8 @@ type WebAppSlot struct {
 	OutboundIpAddresses pulumi.StringOutput `pulumi:"outboundIpAddresses"`
 	// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
 	PossibleOutboundIpAddresses pulumi.StringOutput `pulumi:"possibleOutboundIpAddresses"`
+	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Site redundancy mode
 	RedundancyMode pulumi.StringPtrOutput `pulumi:"redundancyMode"`
 	// Name of the repository site.
@@ -116,6 +122,12 @@ type WebAppSlot struct {
 	// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
 	// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 	VirtualNetworkSubnetId pulumi.StringPtrOutput `pulumi:"virtualNetworkSubnetId"`
+	// To enable accessing content over virtual network
+	VnetContentShareEnabled pulumi.BoolPtrOutput `pulumi:"vnetContentShareEnabled"`
+	// To enable pulling image over Virtual Network
+	VnetImagePullEnabled pulumi.BoolPtrOutput `pulumi:"vnetImagePullEnabled"`
+	// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+	VnetRouteAllEnabled pulumi.BoolPtrOutput `pulumi:"vnetRouteAllEnabled"`
 }
 
 // NewWebAppSlot registers a new resource with the given unique name, arguments, and options.
@@ -247,6 +259,8 @@ type webAppSlotArgs struct {
 	DailyMemoryTimeQuota *int `pulumi:"dailyMemoryTimeQuota"`
 	// <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
 	Enabled *bool `pulumi:"enabled"`
+	// Extended Location.
+	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 	HostNameSslStates []HostNameSslState `pulumi:"hostNameSslStates"`
 	// <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
@@ -269,8 +283,12 @@ type webAppSlotArgs struct {
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location *string `pulumi:"location"`
+	// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// Unique name of the app to create or update. To create or update a deployment slot, use the {slot} parameter.
 	Name string `pulumi:"name"`
+	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Site redundancy mode
 	RedundancyMode *RedundancyMode `pulumi:"redundancyMode"`
 	// <code>true</code> if reserved; otherwise, <code>false</code>.
@@ -283,7 +301,7 @@ type webAppSlotArgs struct {
 	ServerFarmId *string `pulumi:"serverFarmId"`
 	// Configuration of the app.
 	SiteConfig *SiteConfig `pulumi:"siteConfig"`
-	// Name of the deployment slot to create or update. The name 'production' is reserved.
+	// Name of the deployment slot to create or update. By default, this API attempts to create or modify the production slot.
 	Slot *string `pulumi:"slot"`
 	// Checks if Customer provided storage account is required
 	StorageAccountRequired *bool `pulumi:"storageAccountRequired"`
@@ -292,6 +310,12 @@ type webAppSlotArgs struct {
 	// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
 	// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 	VirtualNetworkSubnetId *string `pulumi:"virtualNetworkSubnetId"`
+	// To enable accessing content over virtual network
+	VnetContentShareEnabled *bool `pulumi:"vnetContentShareEnabled"`
+	// To enable pulling image over Virtual Network
+	VnetImagePullEnabled *bool `pulumi:"vnetImagePullEnabled"`
+	// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+	VnetRouteAllEnabled *bool `pulumi:"vnetRouteAllEnabled"`
 }
 
 // The set of arguments for constructing a WebAppSlot resource.
@@ -317,6 +341,8 @@ type WebAppSlotArgs struct {
 	DailyMemoryTimeQuota pulumi.IntPtrInput
 	// <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
 	Enabled pulumi.BoolPtrInput
+	// Extended Location.
+	ExtendedLocation ExtendedLocationPtrInput
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 	HostNameSslStates HostNameSslStateArrayInput
 	// <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
@@ -339,8 +365,12 @@ type WebAppSlotArgs struct {
 	Kind pulumi.StringPtrInput
 	// Resource Location.
 	Location pulumi.StringPtrInput
+	// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+	ManagedEnvironmentId pulumi.StringPtrInput
 	// Unique name of the app to create or update. To create or update a deployment slot, use the {slot} parameter.
 	Name pulumi.StringInput
+	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
+	PublicNetworkAccess pulumi.StringPtrInput
 	// Site redundancy mode
 	RedundancyMode RedundancyModePtrInput
 	// <code>true</code> if reserved; otherwise, <code>false</code>.
@@ -353,7 +383,7 @@ type WebAppSlotArgs struct {
 	ServerFarmId pulumi.StringPtrInput
 	// Configuration of the app.
 	SiteConfig SiteConfigPtrInput
-	// Name of the deployment slot to create or update. The name 'production' is reserved.
+	// Name of the deployment slot to create or update. By default, this API attempts to create or modify the production slot.
 	Slot pulumi.StringPtrInput
 	// Checks if Customer provided storage account is required
 	StorageAccountRequired pulumi.BoolPtrInput
@@ -362,6 +392,12 @@ type WebAppSlotArgs struct {
 	// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
 	// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 	VirtualNetworkSubnetId pulumi.StringPtrInput
+	// To enable accessing content over virtual network
+	VnetContentShareEnabled pulumi.BoolPtrInput
+	// To enable pulling image over Virtual Network
+	VnetImagePullEnabled pulumi.BoolPtrInput
+	// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+	VnetRouteAllEnabled pulumi.BoolPtrInput
 }
 
 func (WebAppSlotArgs) ElementType() reflect.Type {
@@ -460,6 +496,11 @@ func (o WebAppSlotOutput) EnabledHostNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringArrayOutput { return v.EnabledHostNames }).(pulumi.StringArrayOutput)
 }
 
+// Extended Location.
+func (o WebAppSlotOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
 // Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 func (o WebAppSlotOutput) HostNameSslStates() HostNameSslStateResponseArrayOutput {
 	return o.ApplyT(func(v *WebAppSlot) HostNameSslStateResponseArrayOutput { return v.HostNameSslStates }).(HostNameSslStateResponseArrayOutput)
@@ -533,6 +574,11 @@ func (o WebAppSlotOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+func (o WebAppSlotOutput) ManagedEnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.StringPtrOutput { return v.ManagedEnvironmentId }).(pulumi.StringPtrOutput)
+}
+
 // Maximum number of workers.
 // This only applies to Functions container.
 func (o WebAppSlotOutput) MaxNumberOfWorkers() pulumi.IntOutput {
@@ -552,6 +598,11 @@ func (o WebAppSlotOutput) OutboundIpAddresses() pulumi.StringOutput {
 // List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
 func (o WebAppSlotOutput) PossibleOutboundIpAddresses() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringOutput { return v.PossibleOutboundIpAddresses }).(pulumi.StringOutput)
+}
+
+// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
+func (o WebAppSlotOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Site redundancy mode
@@ -638,6 +689,21 @@ func (o WebAppSlotOutput) UsageState() pulumi.StringOutput {
 // This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 func (o WebAppSlotOutput) VirtualNetworkSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringPtrOutput { return v.VirtualNetworkSubnetId }).(pulumi.StringPtrOutput)
+}
+
+// To enable accessing content over virtual network
+func (o WebAppSlotOutput) VnetContentShareEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.VnetContentShareEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// To enable pulling image over Virtual Network
+func (o WebAppSlotOutput) VnetImagePullEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.VnetImagePullEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+func (o WebAppSlotOutput) VnetRouteAllEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.VnetRouteAllEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

@@ -12,7 +12,7 @@ import (
 )
 
 // An Azure Monitor Workspace definition
-// API Version: 2021-06-03-preview.
+// Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2021-06-03-preview
 type AzureMonitorWorkspace struct {
 	pulumi.CustomResourceState
 
@@ -28,8 +28,12 @@ type AzureMonitorWorkspace struct {
 	Metrics AzureMonitorWorkspaceResponseMetricsOutput `pulumi:"metrics"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// List of private endpoint connections
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Gets or sets allow or disallow public network access to workspace
+	PublicNetworkAccess pulumi.StringOutput `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -180,9 +184,21 @@ func (o AzureMonitorWorkspaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections
+func (o AzureMonitorWorkspaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) PrivateEndpointConnectionResponseArrayOutput {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
 // The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
 func (o AzureMonitorWorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets or sets allow or disallow public network access to workspace
+func (o AzureMonitorWorkspaceOutput) PublicNetworkAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.PublicNetworkAccess }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

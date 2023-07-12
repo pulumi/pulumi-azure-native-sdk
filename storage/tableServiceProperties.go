@@ -12,7 +12,7 @@ import (
 )
 
 // The properties of a storage account’s Table service.
-// API Version: 2021-02-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01
 type TableServiceProperties struct {
 	pulumi.CustomResourceState
 

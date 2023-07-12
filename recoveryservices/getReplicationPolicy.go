@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the details of a replication policy.
-// API Version: 2018-07-10.
+// Azure REST API version: 2023-04-01.
 func LookupReplicationPolicy(ctx *pulumi.Context, args *LookupReplicationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupReplicationPolicyResult, error) {
 	var rv LookupReplicationPolicyResult
 	err := ctx.Invoke("azure-native:recoveryservices:getReplicationPolicy", args, &rv, opts...)

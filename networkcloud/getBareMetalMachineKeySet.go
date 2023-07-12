@@ -11,7 +11,7 @@ import (
 )
 
 // Get bare metal machine key set of the provided cluster.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview.
 func LookupBareMetalMachineKeySet(ctx *pulumi.Context, args *LookupBareMetalMachineKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalMachineKeySetResult, error) {
 	var rv LookupBareMetalMachineKeySetResult
 	err := ctx.Invoke("azure-native:networkcloud:getBareMetalMachineKeySet", args, &rv, opts...)
@@ -41,7 +41,7 @@ type LookupBareMetalMachineKeySetResult struct {
 	Expiration string `pulumi:"expiration"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users.
 	JumpHostsAllowed []string `pulumi:"jumpHostsAllowed"`
@@ -134,7 +134,7 @@ func (o LookupBareMetalMachineKeySetResultOutput) ExtendedLocation() ExtendedLoc
 	return o.ApplyT(func(v LookupBareMetalMachineKeySetResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBareMetalMachineKeySetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalMachineKeySetResult) string { return v.Id }).(pulumi.StringOutput)
 }

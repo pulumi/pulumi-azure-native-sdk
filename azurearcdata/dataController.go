@@ -12,7 +12,7 @@ import (
 )
 
 // Data controller resource
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview
 type DataController struct {
 	pulumi.CustomResourceState
 
@@ -24,11 +24,11 @@ type DataController struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The data controller's properties
 	Properties DataControllerPropertiesResponseOutput `pulumi:"properties"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -45,6 +45,7 @@ func NewDataController(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	args.Properties = args.Properties.ToDataControllerPropertiesOutput().ApplyT(func(v DataControllerProperties) DataControllerProperties { return *v.Defaults() }).(DataControllerPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20210601preview:DataController"),
@@ -63,6 +64,9 @@ func NewDataController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:DataController"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:DataController"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -98,6 +102,7 @@ func (DataControllerState) ElementType() reflect.Type {
 }
 
 type dataControllerArgs struct {
+	// The name of the data controller
 	DataControllerName *string `pulumi:"dataControllerName"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
@@ -113,6 +118,7 @@ type dataControllerArgs struct {
 
 // The set of arguments for constructing a DataController resource.
 type DataControllerArgs struct {
+	// The name of the data controller
 	DataControllerName pulumi.StringPtrInput
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationPtrInput
@@ -183,7 +189,7 @@ func (o DataControllerOutput) Properties() DataControllerPropertiesResponseOutpu
 	return o.ApplyT(func(v *DataController) DataControllerPropertiesResponseOutput { return v.Properties }).(DataControllerPropertiesResponseOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o DataControllerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DataController) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -193,7 +199,7 @@ func (o DataControllerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataController) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DataControllerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataController) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -12,7 +12,7 @@ import (
 )
 
 // Cognitive Services account deployment.
-// API Version: 2021-10-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-10-01
 type Deployment struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type Deployment struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of Cognitive Services account deployment.
 	Properties DeploymentPropertiesResponseOutput `pulumi:"properties"`
+	// The resource model definition representing SKU
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -53,6 +55,9 @@ func NewDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20221201:Deployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20230501:Deployment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -96,6 +101,8 @@ type deploymentArgs struct {
 	Properties *DeploymentProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The resource model definition representing SKU
+	Sku *Sku `pulumi:"sku"`
 }
 
 // The set of arguments for constructing a Deployment resource.
@@ -108,6 +115,8 @@ type DeploymentArgs struct {
 	Properties DeploymentPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// The resource model definition representing SKU
+	Sku SkuPtrInput
 }
 
 func (DeploymentArgs) ElementType() reflect.Type {
@@ -160,6 +169,11 @@ func (o DeploymentOutput) Name() pulumi.StringOutput {
 // Properties of Cognitive Services account deployment.
 func (o DeploymentOutput) Properties() DeploymentPropertiesResponseOutput {
 	return o.ApplyT(func(v *Deployment) DeploymentPropertiesResponseOutput { return v.Properties }).(DeploymentPropertiesResponseOutput)
+}
+
+// The resource model definition representing SKU
+func (o DeploymentOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Deployment) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

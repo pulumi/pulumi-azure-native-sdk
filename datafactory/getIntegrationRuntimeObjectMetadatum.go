@@ -11,7 +11,7 @@ import (
 )
 
 // Get a SSIS integration runtime object metadata by specified path. The return is pageable metadata list.
-// API Version: 2018-06-01.
+// Azure REST API version: 2018-06-01.
 func GetIntegrationRuntimeObjectMetadatum(ctx *pulumi.Context, args *GetIntegrationRuntimeObjectMetadatumArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeObjectMetadatumResult, error) {
 	var rv GetIntegrationRuntimeObjectMetadatumResult
 	err := ctx.Invoke("azure-native:datafactory:getIntegrationRuntimeObjectMetadatum", args, &rv, opts...)

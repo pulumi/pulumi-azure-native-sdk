@@ -11,7 +11,7 @@ import (
 )
 
 // Gets all deployments for a remediation at management group scope.
-// API Version: 2019-07-01.
+// Azure REST API version: 2021-10-01.
 func ListRemediationDeploymentsAtManagementGroup(ctx *pulumi.Context, args *ListRemediationDeploymentsAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtManagementGroupResult, error) {
 	var rv ListRemediationDeploymentsAtManagementGroupResult
 	err := ctx.Invoke("azure-native:policyinsights:listRemediationDeploymentsAtManagementGroup", args, &rv, opts...)

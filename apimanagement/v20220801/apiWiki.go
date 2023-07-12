@@ -12,8 +12,6 @@ import (
 )
 
 // Wiki properties
-//
-// Deprecated: azure-native:apimanagement/v20220801:ApiWiki is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ApiWiki to guarantee forwards compatibility.
 type ApiWiki struct {
 	pulumi.CustomResourceState
 
@@ -41,6 +39,18 @@ func NewApiWiki(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiWiki"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiWiki"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiWiki"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ApiWiki
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:ApiWiki", name, args, &resource, opts...)
 	if err != nil {

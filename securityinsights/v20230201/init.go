@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,20 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AADDataConnector{}
 	case "azure-native:securityinsights/v20230201:AATPDataConnector":
 		r = &AATPDataConnector{}
-	case "azure-native:securityinsights/v20230201:ASCDataConnector":
-		r = &ASCDataConnector{}
 	case "azure-native:securityinsights/v20230201:Action":
 		r = &Action{}
-	case "azure-native:securityinsights/v20230201:AnomalySecurityMLAnalyticsSettings":
-		r = &AnomalySecurityMLAnalyticsSettings{}
 	case "azure-native:securityinsights/v20230201:AutomationRule":
 		r = &AutomationRule{}
 	case "azure-native:securityinsights/v20230201:AwsCloudTrailDataConnector":
 		r = &AwsCloudTrailDataConnector{}
 	case "azure-native:securityinsights/v20230201:Bookmark":
 		r = &Bookmark{}
-	case "azure-native:securityinsights/v20230201:FusionAlertRule":
-		r = &FusionAlertRule{}
 	case "azure-native:securityinsights/v20230201:Incident":
 		r = &Incident{}
 	case "azure-native:securityinsights/v20230201:IncidentComment":
@@ -51,12 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MDATPDataConnector{}
 	case "azure-native:securityinsights/v20230201:Metadata":
 		r = &Metadata{}
-	case "azure-native:securityinsights/v20230201:MicrosoftSecurityIncidentCreationAlertRule":
-		r = &MicrosoftSecurityIncidentCreationAlertRule{}
 	case "azure-native:securityinsights/v20230201:OfficeDataConnector":
 		r = &OfficeDataConnector{}
-	case "azure-native:securityinsights/v20230201:ScheduledAlertRule":
-		r = &ScheduledAlertRule{}
 	case "azure-native:securityinsights/v20230201:SentinelOnboardingState":
 		r = &SentinelOnboardingState{}
 	case "azure-native:securityinsights/v20230201:TIDataConnector":

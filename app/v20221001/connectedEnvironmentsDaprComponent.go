@@ -12,8 +12,6 @@ import (
 )
 
 // Dapr Component.
-//
-// Deprecated: azure-native:app/v20221001:ConnectedEnvironmentsDaprComponent is being removed in the next major version of this provider. Upgrade to at least azure-native:app/v20230401preview:ConnectedEnvironmentsDaprComponent to guarantee forwards compatibility.
 type ConnectedEnvironmentsDaprComponent struct {
 	pulumi.CustomResourceState
 
@@ -59,7 +57,16 @@ func NewConnectedEnvironmentsDaprComponent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsDaprComponent"),
+		},
+		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ConnectedEnvironmentsDaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20221101preview:ConnectedEnvironmentsDaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230401preview:ConnectedEnvironmentsDaprComponent"),
 		},
 	})
 	opts = append(opts, aliases)

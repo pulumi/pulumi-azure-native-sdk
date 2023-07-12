@@ -19,45 +19,6 @@ const (
 	DataStringComparisonBehaviorOrdinalIgnoreCase = DataStringComparisonBehavior("OrdinalIgnoreCase")
 )
 
-// The kind of the environment.
-type EnvironmentKind string
-
-const (
-	EnvironmentKindGen1 = EnvironmentKind("Gen1")
-	EnvironmentKindGen2 = EnvironmentKind("Gen2")
-)
-
-// The kind of the event source.
-type EventSourceKind string
-
-const (
-	EventSourceKind_Microsoft_EventHub = EventSourceKind("Microsoft.EventHub")
-	EventSourceKind_Microsoft_IoTHub   = EventSourceKind("Microsoft.IoTHub")
-)
-
-// The type of the ingressStartAt, It can be "EarliestAvailable", "EventSourceCreationTime", "CustomEnqueuedTime".
-type IngressStartAtType string
-
-const (
-	IngressStartAtTypeEarliestAvailable       = IngressStartAtType("EarliestAvailable")
-	IngressStartAtTypeEventSourceCreationTime = IngressStartAtType("EventSourceCreationTime")
-	IngressStartAtTypeCustomEnqueuedTime      = IngressStartAtType("CustomEnqueuedTime")
-)
-
-// An enum that represents the format of the local timestamp property that needs to be set.
-type LocalTimestampFormat string
-
-const (
-	LocalTimestampFormatEmbedded = LocalTimestampFormat("Embedded")
-)
-
-// The type of the property.
-type PropertyType string
-
-const (
-	PropertyTypeString = PropertyType("String")
-)
-
 // The type of the key property.
 type ReferenceDataKeyPropertyType string
 
@@ -66,24 +27,6 @@ const (
 	ReferenceDataKeyPropertyTypeDouble   = ReferenceDataKeyPropertyType("Double")
 	ReferenceDataKeyPropertyTypeBool     = ReferenceDataKeyPropertyType("Bool")
 	ReferenceDataKeyPropertyTypeDateTime = ReferenceDataKeyPropertyType("DateTime")
-)
-
-// The name of this SKU.
-type SkuName string
-
-const (
-	SkuNameS1 = SkuName("S1")
-	SkuNameS2 = SkuName("S2")
-	SkuNameP1 = SkuName("P1")
-	SkuNameL1 = SkuName("L1")
-)
-
-// The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
-type StorageLimitExceededBehavior string
-
-const (
-	StorageLimitExceededBehaviorPurgeOldData = StorageLimitExceededBehavior("PurgeOldData")
-	StorageLimitExceededBehaviorPauseIngress = StorageLimitExceededBehavior("PauseIngress")
 )
 
 func init() {

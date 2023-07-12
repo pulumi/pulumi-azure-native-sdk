@@ -11,10 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
 type L3Network struct {
 	pulumi.CustomResourceState
 
+	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+	AssociatedResourceIds pulumi.StringArrayOutput `pulumi:"associatedResourceIds"`
 	// The resource ID of the Network Cloud cluster this L3 network is associated with.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The more detailed status of the L3 network.
@@ -23,11 +25,11 @@ type L3Network struct {
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
-	// The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
+	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
 	HybridAksClustersAssociatedIds pulumi.StringArrayOutput `pulumi:"hybridAksClustersAssociatedIds"`
-	// The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 	HybridAksIpamEnabled pulumi.StringPtrOutput `pulumi:"hybridAksIpamEnabled"`
-	// The network plugin type for Hybrid AKS.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 	HybridAksPluginType pulumi.StringPtrOutput `pulumi:"hybridAksPluginType"`
 	// The default interface name for this L3 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
 	InterfaceName pulumi.StringPtrOutput `pulumi:"interfaceName"`
@@ -53,7 +55,7 @@ type L3Network struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
+	// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
 	VirtualMachinesAssociatedIds pulumi.StringArrayOutput `pulumi:"virtualMachinesAssociatedIds"`
 	// The VLAN from the l3IsolationDomain that is used for this network.
 	Vlan pulumi.Float64Output `pulumi:"vlan"`
@@ -91,6 +93,9 @@ func NewL3Network(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:L3Network"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230501preview:L3Network"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource L3Network
@@ -127,9 +132,9 @@ func (L3NetworkState) ElementType() reflect.Type {
 type l3networkArgs struct {
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
-	// The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 	HybridAksIpamEnabled *string `pulumi:"hybridAksIpamEnabled"`
-	// The network plugin type for Hybrid AKS.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 	HybridAksPluginType *string `pulumi:"hybridAksPluginType"`
 	// The default interface name for this L3 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
 	InterfaceName *string `pulumi:"interfaceName"`
@@ -159,9 +164,9 @@ type l3networkArgs struct {
 type L3NetworkArgs struct {
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationInput
-	// The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 	HybridAksIpamEnabled pulumi.StringPtrInput
-	// The network plugin type for Hybrid AKS.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 	HybridAksPluginType pulumi.StringPtrInput
 	// The default interface name for this L3 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
 	InterfaceName pulumi.StringPtrInput
@@ -224,6 +229,11 @@ func (o L3NetworkOutput) ToL3NetworkOutputWithContext(ctx context.Context) L3Net
 	return o
 }
 
+// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+func (o L3NetworkOutput) AssociatedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *L3Network) pulumi.StringArrayOutput { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
+}
+
 // The resource ID of the Network Cloud cluster this L3 network is associated with.
 func (o L3NetworkOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *L3Network) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
@@ -244,17 +254,17 @@ func (o L3NetworkOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *L3Network) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
+// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
 func (o L3NetworkOutput) HybridAksClustersAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *L3Network) pulumi.StringArrayOutput { return v.HybridAksClustersAssociatedIds }).(pulumi.StringArrayOutput)
 }
 
-// The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 func (o L3NetworkOutput) HybridAksIpamEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *L3Network) pulumi.StringPtrOutput { return v.HybridAksIpamEnabled }).(pulumi.StringPtrOutput)
 }
 
-// The network plugin type for Hybrid AKS.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
 func (o L3NetworkOutput) HybridAksPluginType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *L3Network) pulumi.StringPtrOutput { return v.HybridAksPluginType }).(pulumi.StringPtrOutput)
 }
@@ -316,7 +326,7 @@ func (o L3NetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *L3Network) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
+// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
 func (o L3NetworkOutput) VirtualMachinesAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *L3Network) pulumi.StringArrayOutput { return v.VirtualMachinesAssociatedIds }).(pulumi.StringArrayOutput)
 }

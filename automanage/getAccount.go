@@ -11,7 +11,7 @@ import (
 )
 
 // Get information about a Automanage account
-// API Version: 2020-06-30-preview.
+// Azure REST API version: 2020-06-30-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure-native:automanage:getAccount", args, &rv, opts...)

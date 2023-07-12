@@ -38,12 +38,52 @@ const (
 	EnableSubvolumesDisabled = EnableSubvolumes("Disabled")
 )
 
+// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+type EncryptionKeySource string
+
+const (
+	// Microsoft-managed key encryption
+	EncryptionKeySource_Microsoft_NetApp = EncryptionKeySource("Microsoft.NetApp")
+	// Customer-managed key encryption
+	EncryptionKeySource_Microsoft_KeyVault = EncryptionKeySource("Microsoft.KeyVault")
+)
+
+// Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
+type EncryptionType string
+
+const (
+	// EncryptionType Single, volumes will use single encryption at rest
+	EncryptionTypeSingle = EncryptionType("Single")
+	// EncryptionType Double, volumes will use double encryption at rest
+	EncryptionTypeDouble = EncryptionType("Double")
+)
+
 // Indicates whether the local volume is the source or destination for the Volume Replication
 type EndpointType string
 
 const (
 	EndpointTypeSrc = EndpointType("src")
 	EndpointTypeDst = EndpointType("dst")
+)
+
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
+type KeySource string
+
+const (
+	// Microsoft-managed key encryption
+	KeySource_Microsoft_NetApp = KeySource("Microsoft.NetApp")
+	// Customer-managed key encryption
+	KeySource_Microsoft_KeyVault = KeySource("Microsoft.KeyVault")
+)
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+type ManagedServiceIdentityType string
+
+const (
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
 )
 
 // Basic network, or Standard features available to the volume.
@@ -95,6 +135,26 @@ const (
 	ServiceLevelUltra = ServiceLevel("Ultra")
 	// Zone redundant storage service level
 	ServiceLevelStandardZRS = ServiceLevel("StandardZRS")
+)
+
+// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+type SmbAccessBasedEnumeration string
+
+const (
+	// smbAccessBasedEnumeration share setting is disabled
+	SmbAccessBasedEnumerationDisabled = SmbAccessBasedEnumeration("Disabled")
+	// smbAccessBasedEnumeration share setting is enabled
+	SmbAccessBasedEnumerationEnabled = SmbAccessBasedEnumeration("Enabled")
+)
+
+// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+type SmbNonBrowsable string
+
+const (
+	// smbNonBrowsable share setting is disabled
+	SmbNonBrowsableDisabled = SmbNonBrowsable("Disabled")
+	// smbNonBrowsable share setting is enabled
+	SmbNonBrowsableEnabled = SmbNonBrowsable("Enabled")
 )
 
 // Type of quota

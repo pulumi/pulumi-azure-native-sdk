@@ -350,14 +350,394 @@ func (o CertBasedSecurityPrincipalResponseArrayOutput) Index(i pulumi.IntInput) 
 	}).(CertBasedSecurityPrincipalResponseOutput)
 }
 
+// Tags for Managed CCF Certificates
+type CertificateTags struct {
+	// Additional tags for Managed CCF Certificates
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// CertificateTagsInput is an input type that accepts CertificateTagsArgs and CertificateTagsOutput values.
+// You can construct a concrete instance of `CertificateTagsInput` via:
+//
+//	CertificateTagsArgs{...}
+type CertificateTagsInput interface {
+	pulumi.Input
+
+	ToCertificateTagsOutput() CertificateTagsOutput
+	ToCertificateTagsOutputWithContext(context.Context) CertificateTagsOutput
+}
+
+// Tags for Managed CCF Certificates
+type CertificateTagsArgs struct {
+	// Additional tags for Managed CCF Certificates
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (CertificateTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTags)(nil)).Elem()
+}
+
+func (i CertificateTagsArgs) ToCertificateTagsOutput() CertificateTagsOutput {
+	return i.ToCertificateTagsOutputWithContext(context.Background())
+}
+
+func (i CertificateTagsArgs) ToCertificateTagsOutputWithContext(ctx context.Context) CertificateTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTagsOutput)
+}
+
+// CertificateTagsArrayInput is an input type that accepts CertificateTagsArray and CertificateTagsArrayOutput values.
+// You can construct a concrete instance of `CertificateTagsArrayInput` via:
+//
+//	CertificateTagsArray{ CertificateTagsArgs{...} }
+type CertificateTagsArrayInput interface {
+	pulumi.Input
+
+	ToCertificateTagsArrayOutput() CertificateTagsArrayOutput
+	ToCertificateTagsArrayOutputWithContext(context.Context) CertificateTagsArrayOutput
+}
+
+type CertificateTagsArray []CertificateTagsInput
+
+func (CertificateTagsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTags)(nil)).Elem()
+}
+
+func (i CertificateTagsArray) ToCertificateTagsArrayOutput() CertificateTagsArrayOutput {
+	return i.ToCertificateTagsArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateTagsArray) ToCertificateTagsArrayOutputWithContext(ctx context.Context) CertificateTagsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTagsArrayOutput)
+}
+
+// Tags for Managed CCF Certificates
+type CertificateTagsOutput struct{ *pulumi.OutputState }
+
+func (CertificateTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTags)(nil)).Elem()
+}
+
+func (o CertificateTagsOutput) ToCertificateTagsOutput() CertificateTagsOutput {
+	return o
+}
+
+func (o CertificateTagsOutput) ToCertificateTagsOutputWithContext(ctx context.Context) CertificateTagsOutput {
+	return o
+}
+
+// Additional tags for Managed CCF Certificates
+func (o CertificateTagsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CertificateTags) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type CertificateTagsArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateTagsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTags)(nil)).Elem()
+}
+
+func (o CertificateTagsArrayOutput) ToCertificateTagsArrayOutput() CertificateTagsArrayOutput {
+	return o
+}
+
+func (o CertificateTagsArrayOutput) ToCertificateTagsArrayOutputWithContext(ctx context.Context) CertificateTagsArrayOutput {
+	return o
+}
+
+func (o CertificateTagsArrayOutput) Index(i pulumi.IntInput) CertificateTagsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateTags {
+		return vs[0].([]CertificateTags)[vs[1].(int)]
+	}).(CertificateTagsOutput)
+}
+
+// Tags for Managed CCF Certificates
+type CertificateTagsResponse struct {
+	// Additional tags for Managed CCF Certificates
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Tags for Managed CCF Certificates
+type CertificateTagsResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateTagsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTagsResponse)(nil)).Elem()
+}
+
+func (o CertificateTagsResponseOutput) ToCertificateTagsResponseOutput() CertificateTagsResponseOutput {
+	return o
+}
+
+func (o CertificateTagsResponseOutput) ToCertificateTagsResponseOutputWithContext(ctx context.Context) CertificateTagsResponseOutput {
+	return o
+}
+
+// Additional tags for Managed CCF Certificates
+func (o CertificateTagsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CertificateTagsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type CertificateTagsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateTagsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateTagsResponse)(nil)).Elem()
+}
+
+func (o CertificateTagsResponseArrayOutput) ToCertificateTagsResponseArrayOutput() CertificateTagsResponseArrayOutput {
+	return o
+}
+
+func (o CertificateTagsResponseArrayOutput) ToCertificateTagsResponseArrayOutputWithContext(ctx context.Context) CertificateTagsResponseArrayOutput {
+	return o
+}
+
+func (o CertificateTagsResponseArrayOutput) Index(i pulumi.IntInput) CertificateTagsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateTagsResponse {
+		return vs[0].([]CertificateTagsResponse)[vs[1].(int)]
+	}).(CertificateTagsResponseOutput)
+}
+
+// Object representing DeploymentType for Managed CCF.
+type DeploymentType struct {
+	// Source Uri containing ManagedCCF code
+	AppSourceUri *string `pulumi:"appSourceUri"`
+	// Unique name for the Managed CCF.
+	LanguageRuntime *string `pulumi:"languageRuntime"`
+}
+
+// DeploymentTypeInput is an input type that accepts DeploymentTypeArgs and DeploymentTypeOutput values.
+// You can construct a concrete instance of `DeploymentTypeInput` via:
+//
+//	DeploymentTypeArgs{...}
+type DeploymentTypeInput interface {
+	pulumi.Input
+
+	ToDeploymentTypeOutput() DeploymentTypeOutput
+	ToDeploymentTypeOutputWithContext(context.Context) DeploymentTypeOutput
+}
+
+// Object representing DeploymentType for Managed CCF.
+type DeploymentTypeArgs struct {
+	// Source Uri containing ManagedCCF code
+	AppSourceUri pulumi.StringPtrInput `pulumi:"appSourceUri"`
+	// Unique name for the Managed CCF.
+	LanguageRuntime pulumi.StringPtrInput `pulumi:"languageRuntime"`
+}
+
+func (DeploymentTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentType)(nil)).Elem()
+}
+
+func (i DeploymentTypeArgs) ToDeploymentTypeOutput() DeploymentTypeOutput {
+	return i.ToDeploymentTypeOutputWithContext(context.Background())
+}
+
+func (i DeploymentTypeArgs) ToDeploymentTypeOutputWithContext(ctx context.Context) DeploymentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTypeOutput)
+}
+
+func (i DeploymentTypeArgs) ToDeploymentTypePtrOutput() DeploymentTypePtrOutput {
+	return i.ToDeploymentTypePtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentTypeArgs) ToDeploymentTypePtrOutputWithContext(ctx context.Context) DeploymentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTypeOutput).ToDeploymentTypePtrOutputWithContext(ctx)
+}
+
+// DeploymentTypePtrInput is an input type that accepts DeploymentTypeArgs, DeploymentTypePtr and DeploymentTypePtrOutput values.
+// You can construct a concrete instance of `DeploymentTypePtrInput` via:
+//
+//	        DeploymentTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentTypePtrInput interface {
+	pulumi.Input
+
+	ToDeploymentTypePtrOutput() DeploymentTypePtrOutput
+	ToDeploymentTypePtrOutputWithContext(context.Context) DeploymentTypePtrOutput
+}
+
+type deploymentTypePtrType DeploymentTypeArgs
+
+func DeploymentTypePtr(v *DeploymentTypeArgs) DeploymentTypePtrInput {
+	return (*deploymentTypePtrType)(v)
+}
+
+func (*deploymentTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentType)(nil)).Elem()
+}
+
+func (i *deploymentTypePtrType) ToDeploymentTypePtrOutput() DeploymentTypePtrOutput {
+	return i.ToDeploymentTypePtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentTypePtrType) ToDeploymentTypePtrOutputWithContext(ctx context.Context) DeploymentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTypePtrOutput)
+}
+
+// Object representing DeploymentType for Managed CCF.
+type DeploymentTypeOutput struct{ *pulumi.OutputState }
+
+func (DeploymentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentType)(nil)).Elem()
+}
+
+func (o DeploymentTypeOutput) ToDeploymentTypeOutput() DeploymentTypeOutput {
+	return o
+}
+
+func (o DeploymentTypeOutput) ToDeploymentTypeOutputWithContext(ctx context.Context) DeploymentTypeOutput {
+	return o
+}
+
+func (o DeploymentTypeOutput) ToDeploymentTypePtrOutput() DeploymentTypePtrOutput {
+	return o.ToDeploymentTypePtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentTypeOutput) ToDeploymentTypePtrOutputWithContext(ctx context.Context) DeploymentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentType) *DeploymentType {
+		return &v
+	}).(DeploymentTypePtrOutput)
+}
+
+// Source Uri containing ManagedCCF code
+func (o DeploymentTypeOutput) AppSourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentType) *string { return v.AppSourceUri }).(pulumi.StringPtrOutput)
+}
+
+// Unique name for the Managed CCF.
+func (o DeploymentTypeOutput) LanguageRuntime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentType) *string { return v.LanguageRuntime }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentType)(nil)).Elem()
+}
+
+func (o DeploymentTypePtrOutput) ToDeploymentTypePtrOutput() DeploymentTypePtrOutput {
+	return o
+}
+
+func (o DeploymentTypePtrOutput) ToDeploymentTypePtrOutputWithContext(ctx context.Context) DeploymentTypePtrOutput {
+	return o
+}
+
+func (o DeploymentTypePtrOutput) Elem() DeploymentTypeOutput {
+	return o.ApplyT(func(v *DeploymentType) DeploymentType {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentType
+		return ret
+	}).(DeploymentTypeOutput)
+}
+
+// Source Uri containing ManagedCCF code
+func (o DeploymentTypePtrOutput) AppSourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppSourceUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique name for the Managed CCF.
+func (o DeploymentTypePtrOutput) LanguageRuntime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageRuntime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Object representing DeploymentType for Managed CCF.
+type DeploymentTypeResponse struct {
+	// Source Uri containing ManagedCCF code
+	AppSourceUri *string `pulumi:"appSourceUri"`
+	// Unique name for the Managed CCF.
+	LanguageRuntime *string `pulumi:"languageRuntime"`
+}
+
+// Object representing DeploymentType for Managed CCF.
+type DeploymentTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentTypeResponse)(nil)).Elem()
+}
+
+func (o DeploymentTypeResponseOutput) ToDeploymentTypeResponseOutput() DeploymentTypeResponseOutput {
+	return o
+}
+
+func (o DeploymentTypeResponseOutput) ToDeploymentTypeResponseOutputWithContext(ctx context.Context) DeploymentTypeResponseOutput {
+	return o
+}
+
+// Source Uri containing ManagedCCF code
+func (o DeploymentTypeResponseOutput) AppSourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentTypeResponse) *string { return v.AppSourceUri }).(pulumi.StringPtrOutput)
+}
+
+// Unique name for the Managed CCF.
+func (o DeploymentTypeResponseOutput) LanguageRuntime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentTypeResponse) *string { return v.LanguageRuntime }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentTypeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentTypeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentTypeResponse)(nil)).Elem()
+}
+
+func (o DeploymentTypeResponsePtrOutput) ToDeploymentTypeResponsePtrOutput() DeploymentTypeResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentTypeResponsePtrOutput) ToDeploymentTypeResponsePtrOutputWithContext(ctx context.Context) DeploymentTypeResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentTypeResponsePtrOutput) Elem() DeploymentTypeResponseOutput {
+	return o.ApplyT(func(v *DeploymentTypeResponse) DeploymentTypeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentTypeResponse
+		return ret
+	}).(DeploymentTypeResponseOutput)
+}
+
+// Source Uri containing ManagedCCF code
+func (o DeploymentTypeResponsePtrOutput) AppSourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentTypeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppSourceUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique name for the Managed CCF.
+func (o DeploymentTypeResponsePtrOutput) LanguageRuntime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentTypeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageRuntime
+	}).(pulumi.StringPtrOutput)
+}
+
 // Additional Confidential Ledger properties.
 type LedgerProperties struct {
 	// Array of all AAD based Security Principals.
 	AadBasedSecurityPrincipals []AADBasedSecurityPrincipal `pulumi:"aadBasedSecurityPrincipals"`
 	// Array of all cert based Security Principals.
 	CertBasedSecurityPrincipals []CertBasedSecurityPrincipal `pulumi:"certBasedSecurityPrincipals"`
-	// Name of the Blob Storage Account for saving ledger files
-	LedgerStorageAccount *string `pulumi:"ledgerStorageAccount"`
 	// Type of Confidential Ledger
 	LedgerType *string `pulumi:"ledgerType"`
 }
@@ -379,8 +759,6 @@ type LedgerPropertiesArgs struct {
 	AadBasedSecurityPrincipals AADBasedSecurityPrincipalArrayInput `pulumi:"aadBasedSecurityPrincipals"`
 	// Array of all cert based Security Principals.
 	CertBasedSecurityPrincipals CertBasedSecurityPrincipalArrayInput `pulumi:"certBasedSecurityPrincipals"`
-	// Name of the Blob Storage Account for saving ledger files
-	LedgerStorageAccount pulumi.StringPtrInput `pulumi:"ledgerStorageAccount"`
 	// Type of Confidential Ledger
 	LedgerType pulumi.StringPtrInput `pulumi:"ledgerType"`
 }
@@ -473,11 +851,6 @@ func (o LedgerPropertiesOutput) CertBasedSecurityPrincipals() CertBasedSecurityP
 	return o.ApplyT(func(v LedgerProperties) []CertBasedSecurityPrincipal { return v.CertBasedSecurityPrincipals }).(CertBasedSecurityPrincipalArrayOutput)
 }
 
-// Name of the Blob Storage Account for saving ledger files
-func (o LedgerPropertiesOutput) LedgerStorageAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LedgerProperties) *string { return v.LedgerStorageAccount }).(pulumi.StringPtrOutput)
-}
-
 // Type of Confidential Ledger
 func (o LedgerPropertiesOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LedgerProperties) *string { return v.LedgerType }).(pulumi.StringPtrOutput)
@@ -527,16 +900,6 @@ func (o LedgerPropertiesPtrOutput) CertBasedSecurityPrincipals() CertBasedSecuri
 	}).(CertBasedSecurityPrincipalArrayOutput)
 }
 
-// Name of the Blob Storage Account for saving ledger files
-func (o LedgerPropertiesPtrOutput) LedgerStorageAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LedgerProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LedgerStorageAccount
-	}).(pulumi.StringPtrOutput)
-}
-
 // Type of Confidential Ledger
 func (o LedgerPropertiesPtrOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LedgerProperties) *string {
@@ -559,8 +922,6 @@ type LedgerPropertiesResponse struct {
 	LedgerInternalNamespace string `pulumi:"ledgerInternalNamespace"`
 	// Unique name for the Confidential Ledger.
 	LedgerName string `pulumi:"ledgerName"`
-	// Name of the Blob Storage Account for saving ledger files
-	LedgerStorageAccount *string `pulumi:"ledgerStorageAccount"`
 	// Type of Confidential Ledger
 	LedgerType *string `pulumi:"ledgerType"`
 	// Endpoint for calling Ledger Service.
@@ -613,11 +974,6 @@ func (o LedgerPropertiesResponseOutput) LedgerName() pulumi.StringOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) string { return v.LedgerName }).(pulumi.StringOutput)
 }
 
-// Name of the Blob Storage Account for saving ledger files
-func (o LedgerPropertiesResponseOutput) LedgerStorageAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.LedgerStorageAccount }).(pulumi.StringPtrOutput)
-}
-
 // Type of Confidential Ledger
 func (o LedgerPropertiesResponseOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.LedgerType }).(pulumi.StringPtrOutput)
@@ -631,6 +987,427 @@ func (o LedgerPropertiesResponseOutput) LedgerUri() pulumi.StringOutput {
 // Provisioning state of Ledger Resource
 func (o LedgerPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Additional Managed CCF properties.
+type ManagedCCFProperties struct {
+	// Deployment Type of Managed CCF
+	DeploymentType *DeploymentType `pulumi:"deploymentType"`
+	// List of member identity certificates for  Managed CCF
+	MemberIdentityCertificates []MemberIdentityCertificate `pulumi:"memberIdentityCertificates"`
+	// Number of CCF nodes in the Managed CCF.
+	NodeCount *int `pulumi:"nodeCount"`
+}
+
+// ManagedCCFPropertiesInput is an input type that accepts ManagedCCFPropertiesArgs and ManagedCCFPropertiesOutput values.
+// You can construct a concrete instance of `ManagedCCFPropertiesInput` via:
+//
+//	ManagedCCFPropertiesArgs{...}
+type ManagedCCFPropertiesInput interface {
+	pulumi.Input
+
+	ToManagedCCFPropertiesOutput() ManagedCCFPropertiesOutput
+	ToManagedCCFPropertiesOutputWithContext(context.Context) ManagedCCFPropertiesOutput
+}
+
+// Additional Managed CCF properties.
+type ManagedCCFPropertiesArgs struct {
+	// Deployment Type of Managed CCF
+	DeploymentType DeploymentTypePtrInput `pulumi:"deploymentType"`
+	// List of member identity certificates for  Managed CCF
+	MemberIdentityCertificates MemberIdentityCertificateArrayInput `pulumi:"memberIdentityCertificates"`
+	// Number of CCF nodes in the Managed CCF.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+}
+
+func (ManagedCCFPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedCCFProperties)(nil)).Elem()
+}
+
+func (i ManagedCCFPropertiesArgs) ToManagedCCFPropertiesOutput() ManagedCCFPropertiesOutput {
+	return i.ToManagedCCFPropertiesOutputWithContext(context.Background())
+}
+
+func (i ManagedCCFPropertiesArgs) ToManagedCCFPropertiesOutputWithContext(ctx context.Context) ManagedCCFPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCCFPropertiesOutput)
+}
+
+func (i ManagedCCFPropertiesArgs) ToManagedCCFPropertiesPtrOutput() ManagedCCFPropertiesPtrOutput {
+	return i.ToManagedCCFPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedCCFPropertiesArgs) ToManagedCCFPropertiesPtrOutputWithContext(ctx context.Context) ManagedCCFPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCCFPropertiesOutput).ToManagedCCFPropertiesPtrOutputWithContext(ctx)
+}
+
+// ManagedCCFPropertiesPtrInput is an input type that accepts ManagedCCFPropertiesArgs, ManagedCCFPropertiesPtr and ManagedCCFPropertiesPtrOutput values.
+// You can construct a concrete instance of `ManagedCCFPropertiesPtrInput` via:
+//
+//	        ManagedCCFPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedCCFPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToManagedCCFPropertiesPtrOutput() ManagedCCFPropertiesPtrOutput
+	ToManagedCCFPropertiesPtrOutputWithContext(context.Context) ManagedCCFPropertiesPtrOutput
+}
+
+type managedCCFPropertiesPtrType ManagedCCFPropertiesArgs
+
+func ManagedCCFPropertiesPtr(v *ManagedCCFPropertiesArgs) ManagedCCFPropertiesPtrInput {
+	return (*managedCCFPropertiesPtrType)(v)
+}
+
+func (*managedCCFPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedCCFProperties)(nil)).Elem()
+}
+
+func (i *managedCCFPropertiesPtrType) ToManagedCCFPropertiesPtrOutput() ManagedCCFPropertiesPtrOutput {
+	return i.ToManagedCCFPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *managedCCFPropertiesPtrType) ToManagedCCFPropertiesPtrOutputWithContext(ctx context.Context) ManagedCCFPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCCFPropertiesPtrOutput)
+}
+
+// Additional Managed CCF properties.
+type ManagedCCFPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ManagedCCFPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedCCFProperties)(nil)).Elem()
+}
+
+func (o ManagedCCFPropertiesOutput) ToManagedCCFPropertiesOutput() ManagedCCFPropertiesOutput {
+	return o
+}
+
+func (o ManagedCCFPropertiesOutput) ToManagedCCFPropertiesOutputWithContext(ctx context.Context) ManagedCCFPropertiesOutput {
+	return o
+}
+
+func (o ManagedCCFPropertiesOutput) ToManagedCCFPropertiesPtrOutput() ManagedCCFPropertiesPtrOutput {
+	return o.ToManagedCCFPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedCCFPropertiesOutput) ToManagedCCFPropertiesPtrOutputWithContext(ctx context.Context) ManagedCCFPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedCCFProperties) *ManagedCCFProperties {
+		return &v
+	}).(ManagedCCFPropertiesPtrOutput)
+}
+
+// Deployment Type of Managed CCF
+func (o ManagedCCFPropertiesOutput) DeploymentType() DeploymentTypePtrOutput {
+	return o.ApplyT(func(v ManagedCCFProperties) *DeploymentType { return v.DeploymentType }).(DeploymentTypePtrOutput)
+}
+
+// List of member identity certificates for  Managed CCF
+func (o ManagedCCFPropertiesOutput) MemberIdentityCertificates() MemberIdentityCertificateArrayOutput {
+	return o.ApplyT(func(v ManagedCCFProperties) []MemberIdentityCertificate { return v.MemberIdentityCertificates }).(MemberIdentityCertificateArrayOutput)
+}
+
+// Number of CCF nodes in the Managed CCF.
+func (o ManagedCCFPropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedCCFProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+type ManagedCCFPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedCCFPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedCCFProperties)(nil)).Elem()
+}
+
+func (o ManagedCCFPropertiesPtrOutput) ToManagedCCFPropertiesPtrOutput() ManagedCCFPropertiesPtrOutput {
+	return o
+}
+
+func (o ManagedCCFPropertiesPtrOutput) ToManagedCCFPropertiesPtrOutputWithContext(ctx context.Context) ManagedCCFPropertiesPtrOutput {
+	return o
+}
+
+func (o ManagedCCFPropertiesPtrOutput) Elem() ManagedCCFPropertiesOutput {
+	return o.ApplyT(func(v *ManagedCCFProperties) ManagedCCFProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedCCFProperties
+		return ret
+	}).(ManagedCCFPropertiesOutput)
+}
+
+// Deployment Type of Managed CCF
+func (o ManagedCCFPropertiesPtrOutput) DeploymentType() DeploymentTypePtrOutput {
+	return o.ApplyT(func(v *ManagedCCFProperties) *DeploymentType {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentType
+	}).(DeploymentTypePtrOutput)
+}
+
+// List of member identity certificates for  Managed CCF
+func (o ManagedCCFPropertiesPtrOutput) MemberIdentityCertificates() MemberIdentityCertificateArrayOutput {
+	return o.ApplyT(func(v *ManagedCCFProperties) []MemberIdentityCertificate {
+		if v == nil {
+			return nil
+		}
+		return v.MemberIdentityCertificates
+	}).(MemberIdentityCertificateArrayOutput)
+}
+
+// Number of CCF nodes in the Managed CCF.
+func (o ManagedCCFPropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedCCFProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Additional Managed CCF properties.
+type ManagedCCFPropertiesResponse struct {
+	// Unique name for the Managed CCF.
+	AppName string `pulumi:"appName"`
+	// Endpoint for calling Managed CCF Service.
+	AppUri string `pulumi:"appUri"`
+	// Deployment Type of Managed CCF
+	DeploymentType *DeploymentTypeResponse `pulumi:"deploymentType"`
+	// Endpoint for accessing network identity.
+	IdentityServiceUri string `pulumi:"identityServiceUri"`
+	// List of member identity certificates for  Managed CCF
+	MemberIdentityCertificates []MemberIdentityCertificateResponse `pulumi:"memberIdentityCertificates"`
+	// Number of CCF nodes in the Managed CCF.
+	NodeCount *int `pulumi:"nodeCount"`
+	// Provisioning state of Ledger Resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Additional Managed CCF properties.
+type ManagedCCFPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedCCFPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedCCFPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedCCFPropertiesResponseOutput) ToManagedCCFPropertiesResponseOutput() ManagedCCFPropertiesResponseOutput {
+	return o
+}
+
+func (o ManagedCCFPropertiesResponseOutput) ToManagedCCFPropertiesResponseOutputWithContext(ctx context.Context) ManagedCCFPropertiesResponseOutput {
+	return o
+}
+
+// Unique name for the Managed CCF.
+func (o ManagedCCFPropertiesResponseOutput) AppName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCCFPropertiesResponse) string { return v.AppName }).(pulumi.StringOutput)
+}
+
+// Endpoint for calling Managed CCF Service.
+func (o ManagedCCFPropertiesResponseOutput) AppUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCCFPropertiesResponse) string { return v.AppUri }).(pulumi.StringOutput)
+}
+
+// Deployment Type of Managed CCF
+func (o ManagedCCFPropertiesResponseOutput) DeploymentType() DeploymentTypeResponsePtrOutput {
+	return o.ApplyT(func(v ManagedCCFPropertiesResponse) *DeploymentTypeResponse { return v.DeploymentType }).(DeploymentTypeResponsePtrOutput)
+}
+
+// Endpoint for accessing network identity.
+func (o ManagedCCFPropertiesResponseOutput) IdentityServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCCFPropertiesResponse) string { return v.IdentityServiceUri }).(pulumi.StringOutput)
+}
+
+// List of member identity certificates for  Managed CCF
+func (o ManagedCCFPropertiesResponseOutput) MemberIdentityCertificates() MemberIdentityCertificateResponseArrayOutput {
+	return o.ApplyT(func(v ManagedCCFPropertiesResponse) []MemberIdentityCertificateResponse {
+		return v.MemberIdentityCertificates
+	}).(MemberIdentityCertificateResponseArrayOutput)
+}
+
+// Number of CCF nodes in the Managed CCF.
+func (o ManagedCCFPropertiesResponseOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedCCFPropertiesResponse) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Provisioning state of Ledger Resource
+func (o ManagedCCFPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCCFPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Object representing MemberIdentityCertificate for Managed CCF.
+type MemberIdentityCertificate struct {
+	// Member Identity Certificate
+	Certificate *string `pulumi:"certificate"`
+	// Member Identity Certificate Encryption Key
+	Encryptionkey *string           `pulumi:"encryptionkey"`
+	Tags          []CertificateTags `pulumi:"tags"`
+}
+
+// MemberIdentityCertificateInput is an input type that accepts MemberIdentityCertificateArgs and MemberIdentityCertificateOutput values.
+// You can construct a concrete instance of `MemberIdentityCertificateInput` via:
+//
+//	MemberIdentityCertificateArgs{...}
+type MemberIdentityCertificateInput interface {
+	pulumi.Input
+
+	ToMemberIdentityCertificateOutput() MemberIdentityCertificateOutput
+	ToMemberIdentityCertificateOutputWithContext(context.Context) MemberIdentityCertificateOutput
+}
+
+// Object representing MemberIdentityCertificate for Managed CCF.
+type MemberIdentityCertificateArgs struct {
+	// Member Identity Certificate
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// Member Identity Certificate Encryption Key
+	Encryptionkey pulumi.StringPtrInput     `pulumi:"encryptionkey"`
+	Tags          CertificateTagsArrayInput `pulumi:"tags"`
+}
+
+func (MemberIdentityCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberIdentityCertificate)(nil)).Elem()
+}
+
+func (i MemberIdentityCertificateArgs) ToMemberIdentityCertificateOutput() MemberIdentityCertificateOutput {
+	return i.ToMemberIdentityCertificateOutputWithContext(context.Background())
+}
+
+func (i MemberIdentityCertificateArgs) ToMemberIdentityCertificateOutputWithContext(ctx context.Context) MemberIdentityCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberIdentityCertificateOutput)
+}
+
+// MemberIdentityCertificateArrayInput is an input type that accepts MemberIdentityCertificateArray and MemberIdentityCertificateArrayOutput values.
+// You can construct a concrete instance of `MemberIdentityCertificateArrayInput` via:
+//
+//	MemberIdentityCertificateArray{ MemberIdentityCertificateArgs{...} }
+type MemberIdentityCertificateArrayInput interface {
+	pulumi.Input
+
+	ToMemberIdentityCertificateArrayOutput() MemberIdentityCertificateArrayOutput
+	ToMemberIdentityCertificateArrayOutputWithContext(context.Context) MemberIdentityCertificateArrayOutput
+}
+
+type MemberIdentityCertificateArray []MemberIdentityCertificateInput
+
+func (MemberIdentityCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemberIdentityCertificate)(nil)).Elem()
+}
+
+func (i MemberIdentityCertificateArray) ToMemberIdentityCertificateArrayOutput() MemberIdentityCertificateArrayOutput {
+	return i.ToMemberIdentityCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i MemberIdentityCertificateArray) ToMemberIdentityCertificateArrayOutputWithContext(ctx context.Context) MemberIdentityCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberIdentityCertificateArrayOutput)
+}
+
+// Object representing MemberIdentityCertificate for Managed CCF.
+type MemberIdentityCertificateOutput struct{ *pulumi.OutputState }
+
+func (MemberIdentityCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberIdentityCertificate)(nil)).Elem()
+}
+
+func (o MemberIdentityCertificateOutput) ToMemberIdentityCertificateOutput() MemberIdentityCertificateOutput {
+	return o
+}
+
+func (o MemberIdentityCertificateOutput) ToMemberIdentityCertificateOutputWithContext(ctx context.Context) MemberIdentityCertificateOutput {
+	return o
+}
+
+// Member Identity Certificate
+func (o MemberIdentityCertificateOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MemberIdentityCertificate) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// Member Identity Certificate Encryption Key
+func (o MemberIdentityCertificateOutput) Encryptionkey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MemberIdentityCertificate) *string { return v.Encryptionkey }).(pulumi.StringPtrOutput)
+}
+
+func (o MemberIdentityCertificateOutput) Tags() CertificateTagsArrayOutput {
+	return o.ApplyT(func(v MemberIdentityCertificate) []CertificateTags { return v.Tags }).(CertificateTagsArrayOutput)
+}
+
+type MemberIdentityCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (MemberIdentityCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemberIdentityCertificate)(nil)).Elem()
+}
+
+func (o MemberIdentityCertificateArrayOutput) ToMemberIdentityCertificateArrayOutput() MemberIdentityCertificateArrayOutput {
+	return o
+}
+
+func (o MemberIdentityCertificateArrayOutput) ToMemberIdentityCertificateArrayOutputWithContext(ctx context.Context) MemberIdentityCertificateArrayOutput {
+	return o
+}
+
+func (o MemberIdentityCertificateArrayOutput) Index(i pulumi.IntInput) MemberIdentityCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemberIdentityCertificate {
+		return vs[0].([]MemberIdentityCertificate)[vs[1].(int)]
+	}).(MemberIdentityCertificateOutput)
+}
+
+// Object representing MemberIdentityCertificate for Managed CCF.
+type MemberIdentityCertificateResponse struct {
+	// Member Identity Certificate
+	Certificate *string `pulumi:"certificate"`
+	// Member Identity Certificate Encryption Key
+	Encryptionkey *string                   `pulumi:"encryptionkey"`
+	Tags          []CertificateTagsResponse `pulumi:"tags"`
+}
+
+// Object representing MemberIdentityCertificate for Managed CCF.
+type MemberIdentityCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (MemberIdentityCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberIdentityCertificateResponse)(nil)).Elem()
+}
+
+func (o MemberIdentityCertificateResponseOutput) ToMemberIdentityCertificateResponseOutput() MemberIdentityCertificateResponseOutput {
+	return o
+}
+
+func (o MemberIdentityCertificateResponseOutput) ToMemberIdentityCertificateResponseOutputWithContext(ctx context.Context) MemberIdentityCertificateResponseOutput {
+	return o
+}
+
+// Member Identity Certificate
+func (o MemberIdentityCertificateResponseOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MemberIdentityCertificateResponse) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// Member Identity Certificate Encryption Key
+func (o MemberIdentityCertificateResponseOutput) Encryptionkey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MemberIdentityCertificateResponse) *string { return v.Encryptionkey }).(pulumi.StringPtrOutput)
+}
+
+func (o MemberIdentityCertificateResponseOutput) Tags() CertificateTagsResponseArrayOutput {
+	return o.ApplyT(func(v MemberIdentityCertificateResponse) []CertificateTagsResponse { return v.Tags }).(CertificateTagsResponseArrayOutput)
+}
+
+type MemberIdentityCertificateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MemberIdentityCertificateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemberIdentityCertificateResponse)(nil)).Elem()
+}
+
+func (o MemberIdentityCertificateResponseArrayOutput) ToMemberIdentityCertificateResponseArrayOutput() MemberIdentityCertificateResponseArrayOutput {
+	return o
+}
+
+func (o MemberIdentityCertificateResponseArrayOutput) ToMemberIdentityCertificateResponseArrayOutputWithContext(ctx context.Context) MemberIdentityCertificateResponseArrayOutput {
+	return o
+}
+
+func (o MemberIdentityCertificateResponseArrayOutput) Index(i pulumi.IntInput) MemberIdentityCertificateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemberIdentityCertificateResponse {
+		return vs[0].([]MemberIdentityCertificateResponse)[vs[1].(int)]
+	}).(MemberIdentityCertificateResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -703,8 +1480,23 @@ func init() {
 	pulumi.RegisterOutputType(CertBasedSecurityPrincipalArrayOutput{})
 	pulumi.RegisterOutputType(CertBasedSecurityPrincipalResponseOutput{})
 	pulumi.RegisterOutputType(CertBasedSecurityPrincipalResponseArrayOutput{})
+	pulumi.RegisterOutputType(CertificateTagsOutput{})
+	pulumi.RegisterOutputType(CertificateTagsArrayOutput{})
+	pulumi.RegisterOutputType(CertificateTagsResponseOutput{})
+	pulumi.RegisterOutputType(CertificateTagsResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentTypeOutput{})
+	pulumi.RegisterOutputType(DeploymentTypePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentTypeResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentTypeResponsePtrOutput{})
 	pulumi.RegisterOutputType(LedgerPropertiesOutput{})
 	pulumi.RegisterOutputType(LedgerPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(LedgerPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ManagedCCFPropertiesOutput{})
+	pulumi.RegisterOutputType(ManagedCCFPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ManagedCCFPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MemberIdentityCertificateOutput{})
+	pulumi.RegisterOutputType(MemberIdentityCertificateArrayOutput{})
+	pulumi.RegisterOutputType(MemberIdentityCertificateResponseOutput{})
+	pulumi.RegisterOutputType(MemberIdentityCertificateResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

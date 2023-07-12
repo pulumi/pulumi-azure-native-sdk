@@ -1582,29 +1582,12 @@ func (o MaintenanceWindowResponsePtrOutput) StartMinute() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Network properties of a server
+// Network properties of a server.
 type Network struct {
-	// delegated subnet arm resource id.
+	// Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 	DelegatedSubnetResourceId *string `pulumi:"delegatedSubnetResourceId"`
-	// private dns zone arm resource id.
+	// Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 	PrivateDnsZoneArmResourceId *string `pulumi:"privateDnsZoneArmResourceId"`
-}
-
-// Defaults sets the appropriate defaults for Network
-func (val *Network) Defaults() *Network {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DelegatedSubnetResourceId == nil {
-		delegatedSubnetResourceId_ := ""
-		tmp.DelegatedSubnetResourceId = &delegatedSubnetResourceId_
-	}
-	if tmp.PrivateDnsZoneArmResourceId == nil {
-		privateDnsZoneArmResourceId_ := ""
-		tmp.PrivateDnsZoneArmResourceId = &privateDnsZoneArmResourceId_
-	}
-	return &tmp
 }
 
 // NetworkInput is an input type that accepts NetworkArgs and NetworkOutput values.
@@ -1618,28 +1601,14 @@ type NetworkInput interface {
 	ToNetworkOutputWithContext(context.Context) NetworkOutput
 }
 
-// Network properties of a server
+// Network properties of a server.
 type NetworkArgs struct {
-	// delegated subnet arm resource id.
+	// Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 	DelegatedSubnetResourceId pulumi.StringPtrInput `pulumi:"delegatedSubnetResourceId"`
-	// private dns zone arm resource id.
+	// Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 	PrivateDnsZoneArmResourceId pulumi.StringPtrInput `pulumi:"privateDnsZoneArmResourceId"`
 }
 
-// Defaults sets the appropriate defaults for NetworkArgs
-func (val *NetworkArgs) Defaults() *NetworkArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DelegatedSubnetResourceId == nil {
-		tmp.DelegatedSubnetResourceId = pulumi.StringPtr("")
-	}
-	if tmp.PrivateDnsZoneArmResourceId == nil {
-		tmp.PrivateDnsZoneArmResourceId = pulumi.StringPtr("")
-	}
-	return &tmp
-}
 func (NetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Network)(nil)).Elem()
 }
@@ -1693,7 +1662,7 @@ func (i *networkPtrType) ToNetworkPtrOutputWithContext(ctx context.Context) Netw
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPtrOutput)
 }
 
-// Network properties of a server
+// Network properties of a server.
 type NetworkOutput struct{ *pulumi.OutputState }
 
 func (NetworkOutput) ElementType() reflect.Type {
@@ -1718,12 +1687,12 @@ func (o NetworkOutput) ToNetworkPtrOutputWithContext(ctx context.Context) Networ
 	}).(NetworkPtrOutput)
 }
 
-// delegated subnet arm resource id.
+// Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 func (o NetworkOutput) DelegatedSubnetResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Network) *string { return v.DelegatedSubnetResourceId }).(pulumi.StringPtrOutput)
 }
 
-// private dns zone arm resource id.
+// Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 func (o NetworkOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Network) *string { return v.PrivateDnsZoneArmResourceId }).(pulumi.StringPtrOutput)
 }
@@ -1752,7 +1721,7 @@ func (o NetworkPtrOutput) Elem() NetworkOutput {
 	}).(NetworkOutput)
 }
 
-// delegated subnet arm resource id.
+// Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 func (o NetworkPtrOutput) DelegatedSubnetResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) *string {
 		if v == nil {
@@ -1762,7 +1731,7 @@ func (o NetworkPtrOutput) DelegatedSubnetResourceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// private dns zone arm resource id.
+// Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 func (o NetworkPtrOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) *string {
 		if v == nil {
@@ -1772,34 +1741,17 @@ func (o NetworkPtrOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Network properties of a server
+// Network properties of a server.
 type NetworkResponse struct {
-	// delegated subnet arm resource id.
+	// Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 	DelegatedSubnetResourceId *string `pulumi:"delegatedSubnetResourceId"`
-	// private dns zone arm resource id.
+	// Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 	PrivateDnsZoneArmResourceId *string `pulumi:"privateDnsZoneArmResourceId"`
 	// public network access is enabled or not
 	PublicNetworkAccess string `pulumi:"publicNetworkAccess"`
 }
 
-// Defaults sets the appropriate defaults for NetworkResponse
-func (val *NetworkResponse) Defaults() *NetworkResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DelegatedSubnetResourceId == nil {
-		delegatedSubnetResourceId_ := ""
-		tmp.DelegatedSubnetResourceId = &delegatedSubnetResourceId_
-	}
-	if tmp.PrivateDnsZoneArmResourceId == nil {
-		privateDnsZoneArmResourceId_ := ""
-		tmp.PrivateDnsZoneArmResourceId = &privateDnsZoneArmResourceId_
-	}
-	return &tmp
-}
-
-// Network properties of a server
+// Network properties of a server.
 type NetworkResponseOutput struct{ *pulumi.OutputState }
 
 func (NetworkResponseOutput) ElementType() reflect.Type {
@@ -1814,12 +1766,12 @@ func (o NetworkResponseOutput) ToNetworkResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// delegated subnet arm resource id.
+// Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 func (o NetworkResponseOutput) DelegatedSubnetResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkResponse) *string { return v.DelegatedSubnetResourceId }).(pulumi.StringPtrOutput)
 }
 
-// private dns zone arm resource id.
+// Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 func (o NetworkResponseOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkResponse) *string { return v.PrivateDnsZoneArmResourceId }).(pulumi.StringPtrOutput)
 }
@@ -1853,7 +1805,7 @@ func (o NetworkResponsePtrOutput) Elem() NetworkResponseOutput {
 	}).(NetworkResponseOutput)
 }
 
-// delegated subnet arm resource id.
+// Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 func (o NetworkResponsePtrOutput) DelegatedSubnetResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkResponse) *string {
 		if v == nil {
@@ -1863,7 +1815,7 @@ func (o NetworkResponsePtrOutput) DelegatedSubnetResourceId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// private dns zone arm resource id.
+// Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
 func (o NetworkResponsePtrOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkResponse) *string {
 		if v == nil {
@@ -2382,7 +2334,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 // Information describing the identities associated with this application.
 type UserAssignedIdentity struct {
-	// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
+	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 	Type string `pulumi:"type"`
 	// represents user assigned identities map.
 	UserAssignedIdentities map[string]UserIdentity `pulumi:"userAssignedIdentities"`
@@ -2401,7 +2353,7 @@ type UserAssignedIdentityInput interface {
 
 // Information describing the identities associated with this application.
 type UserAssignedIdentityArgs struct {
-	// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
+	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 	Type pulumi.StringInput `pulumi:"type"`
 	// represents user assigned identities map.
 	UserAssignedIdentities UserIdentityMapInput `pulumi:"userAssignedIdentities"`
@@ -2485,7 +2437,7 @@ func (o UserAssignedIdentityOutput) ToUserAssignedIdentityPtrOutputWithContext(c
 	}).(UserAssignedIdentityPtrOutput)
 }
 
-// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
+// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 func (o UserAssignedIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentity) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2519,7 +2471,7 @@ func (o UserAssignedIdentityPtrOutput) Elem() UserAssignedIdentityOutput {
 	}).(UserAssignedIdentityOutput)
 }
 
-// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
+// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 func (o UserAssignedIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAssignedIdentity) *string {
 		if v == nil {
@@ -2541,7 +2493,9 @@ func (o UserAssignedIdentityPtrOutput) UserAssignedIdentities() UserIdentityMapO
 
 // Information describing the identities associated with this application.
 type UserAssignedIdentityResponse struct {
-	// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
+	// Tenant id of the server.
+	TenantId string `pulumi:"tenantId"`
+	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 	Type string `pulumi:"type"`
 	// represents user assigned identities map.
 	UserAssignedIdentities map[string]UserIdentityResponse `pulumi:"userAssignedIdentities"`
@@ -2562,7 +2516,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
+// Tenant id of the server.
+func (o UserAssignedIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 func (o UserAssignedIdentityResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2596,7 +2555,17 @@ func (o UserAssignedIdentityResponsePtrOutput) Elem() UserAssignedIdentityRespon
 	}).(UserAssignedIdentityResponseOutput)
 }
 
-// the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
+// Tenant id of the server.
+func (o UserAssignedIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 func (o UserAssignedIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
 		if v == nil {

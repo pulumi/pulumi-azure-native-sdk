@@ -55,7 +55,7 @@ type LookupGlobalScheduleResult struct {
 	TargetResourceId *string `pulumi:"targetResourceId"`
 	// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
 	TaskType *string `pulumi:"taskType"`
-	// The time zone ID (e.g. Pacific Standard time).
+	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
@@ -181,7 +181,7 @@ func (o LookupGlobalScheduleResultOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
 
-// The time zone ID (e.g. Pacific Standard time).
+// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 func (o LookupGlobalScheduleResultOutput) TimeZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *string { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieve the Monitoring Data.
-// API Version: 2021-10-30-preview.
+// Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service.
+// Azure REST API version: 2022-03-30-preview.
 func ListSqlMigrationServiceMonitoringData(ctx *pulumi.Context, args *ListSqlMigrationServiceMonitoringDataArgs, opts ...pulumi.InvokeOption) (*ListSqlMigrationServiceMonitoringDataResult, error) {
 	var rv ListSqlMigrationServiceMonitoringDataResult
 	err := ctx.Invoke("azure-native:datamigration:listSqlMigrationServiceMonitoringData", args, &rv, opts...)

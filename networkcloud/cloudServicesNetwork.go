@@ -15,12 +15,14 @@ import (
 // represented in the status of this resource. All resources associated with this cloud services network will be part
 // of the same layer 2 (L2) isolation domain. At least one service network must be created but may be reused across many
 // virtual machines and/or Hybrid AKS clusters.
-// API Version: 2022-12-12-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
 type CloudServicesNetwork struct {
 	pulumi.CustomResourceState
 
 	// The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
 	AdditionalEgressEndpoints EgressEndpointResponseArrayOutput `pulumi:"additionalEgressEndpoints"`
+	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+	AssociatedResourceIds pulumi.StringArrayOutput `pulumi:"associatedResourceIds"`
 	// The resource ID of the Network Cloud cluster this cloud services network is associated with.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The more detailed status of the cloud services network.
@@ -33,7 +35,7 @@ type CloudServicesNetwork struct {
 	EnabledEgressEndpoints EgressEndpointResponseArrayOutput `pulumi:"enabledEgressEndpoints"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
-	// The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network.
+	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network.
 	HybridAksClustersAssociatedIds pulumi.StringArrayOutput `pulumi:"hybridAksClustersAssociatedIds"`
 	// The name of the interface that will be present in the virtual machine to represent this network.
 	InterfaceName pulumi.StringOutput `pulumi:"interfaceName"`
@@ -49,7 +51,7 @@ type CloudServicesNetwork struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this cloud services network.
+	// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this cloud services network.
 	VirtualMachinesAssociatedIds pulumi.StringArrayOutput `pulumi:"virtualMachinesAssociatedIds"`
 }
 
@@ -72,6 +74,9 @@ func NewCloudServicesNetwork(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:CloudServicesNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230501preview:CloudServicesNetwork"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -183,6 +188,11 @@ func (o CloudServicesNetworkOutput) AdditionalEgressEndpoints() EgressEndpointRe
 	return o.ApplyT(func(v *CloudServicesNetwork) EgressEndpointResponseArrayOutput { return v.AdditionalEgressEndpoints }).(EgressEndpointResponseArrayOutput)
 }
 
+// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
+func (o CloudServicesNetworkOutput) AssociatedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringArrayOutput { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
+}
+
 // The resource ID of the Network Cloud cluster this cloud services network is associated with.
 func (o CloudServicesNetworkOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
@@ -213,7 +223,7 @@ func (o CloudServicesNetworkOutput) ExtendedLocation() ExtendedLocationResponseO
 	return o.ApplyT(func(v *CloudServicesNetwork) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network.
+// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network.
 func (o CloudServicesNetworkOutput) HybridAksClustersAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringArrayOutput { return v.HybridAksClustersAssociatedIds }).(pulumi.StringArrayOutput)
 }
@@ -253,7 +263,7 @@ func (o CloudServicesNetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this cloud services network.
+// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this cloud services network.
 func (o CloudServicesNetworkOutput) VirtualMachinesAssociatedIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringArrayOutput { return v.VirtualMachinesAssociatedIds }).(pulumi.StringArrayOutput)
 }

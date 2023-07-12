@@ -12,12 +12,14 @@ import (
 )
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
-// API Version: 2020-09-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01
 type Endpoint struct {
 	pulumi.CustomResourceState
 
 	// List of content types on which compression applies. The value should be a valid MIME type.
 	ContentTypesToCompress pulumi.StringArrayOutput `pulumi:"contentTypesToCompress"`
+	// The custom domains under the endpoint.
+	CustomDomains DeepCreatedCustomDomainResponseArrayOutput `pulumi:"customDomains"`
 	// A reference to the origin group.
 	DefaultOriginGroup ResourceReferenceResponsePtrOutput `pulumi:"defaultOriginGroup"`
 	// A policy that specifies the delivery rules to be used for an endpoint.
@@ -136,6 +138,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20221101preview:Endpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230501:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -301,6 +306,11 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 // List of content types on which compression applies. The value should be a valid MIME type.
 func (o EndpointOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringArrayOutput { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
+}
+
+// The custom domains under the endpoint.
+func (o EndpointOutput) CustomDomains() DeepCreatedCustomDomainResponseArrayOutput {
+	return o.ApplyT(func(v *Endpoint) DeepCreatedCustomDomainResponseArrayOutput { return v.CustomDomains }).(DeepCreatedCustomDomainResponseArrayOutput)
 }
 
 // A reference to the origin group.

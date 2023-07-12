@@ -11,7 +11,7 @@ import (
 )
 
 // The Get ManagedNetworkPeeringPolicies operation gets a Managed Network Peering Policy resource, specified by the  resource group, Managed Network name, and peering policy name
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func LookupManagedNetworkPeeringPolicy(ctx *pulumi.Context, args *LookupManagedNetworkPeeringPolicyArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkPeeringPolicyResult, error) {
 	var rv LookupManagedNetworkPeeringPolicyResult
 	err := ctx.Invoke("azure-native:managednetwork:getManagedNetworkPeeringPolicy", args, &rv, opts...)

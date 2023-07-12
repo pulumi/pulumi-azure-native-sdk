@@ -11,7 +11,7 @@ import (
 )
 
 // Get a single workbook template by its resourceName.
-// API Version: 2019-10-17-preview.
+// Azure REST API version: 2020-11-20.
 func LookupWorkbookTemplate(ctx *pulumi.Context, args *LookupWorkbookTemplateArgs, opts ...pulumi.InvokeOption) (*LookupWorkbookTemplateResult, error) {
 	var rv LookupWorkbookTemplateResult
 	err := ctx.Invoke("azure-native:insights:getWorkbookTemplate", args, &rv, opts...)

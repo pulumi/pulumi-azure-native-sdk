@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an attached NetworkConnection.
-// API Version: 2022-09-01-preview.
+// Azure REST API version: 2023-04-01.
 func LookupAttachedNetworkByDevCenter(ctx *pulumi.Context, args *LookupAttachedNetworkByDevCenterArgs, opts ...pulumi.InvokeOption) (*LookupAttachedNetworkByDevCenterResult, error) {
 	var rv LookupAttachedNetworkByDevCenterResult
 	err := ctx.Invoke("azure-native:devcenter:getAttachedNetworkByDevCenter", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupAttachedNetworkByDevCenterArgs struct {
 	AttachedNetworkConnectionName string `pulumi:"attachedNetworkConnectionName"`
 	// The name of the devcenter.
 	DevCenterName string `pulumi:"devCenterName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -70,7 +70,7 @@ type LookupAttachedNetworkByDevCenterOutputArgs struct {
 	AttachedNetworkConnectionName pulumi.StringInput `pulumi:"attachedNetworkConnectionName"`
 	// The name of the devcenter.
 	DevCenterName pulumi.StringInput `pulumi:"devCenterName"`
-	// Name of the resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

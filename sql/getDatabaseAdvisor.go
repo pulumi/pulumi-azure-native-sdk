@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a database advisor.
-// API Version: 2020-11-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupDatabaseAdvisor(ctx *pulumi.Context, args *LookupDatabaseAdvisorArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAdvisorResult, error) {
 	var rv LookupDatabaseAdvisorResult
 	err := ctx.Invoke("azure-native:sql:getDatabaseAdvisor", args, &rv, opts...)

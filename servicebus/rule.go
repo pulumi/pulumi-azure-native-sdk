@@ -12,7 +12,7 @@ import (
 )
 
 // Description of Rule Resource.
-// API Version: 2017-04-01.
+// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01
 type Rule struct {
 	pulumi.CustomResourceState
 
@@ -22,11 +22,15 @@ type Rule struct {
 	CorrelationFilter CorrelationFilterResponsePtrOutput `pulumi:"correlationFilter"`
 	// Filter type that is evaluated against a BrokeredMessage.
 	FilterType pulumi.StringPtrOutput `pulumi:"filterType"`
-	// Resource name
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of sqlFilter
 	SqlFilter SqlFilterResponsePtrOutput `pulumi:"sqlFilter"`
-	// Resource type
+	// The system meta data relating to this resource.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -119,7 +123,7 @@ type ruleArgs struct {
 	// Properties of correlationFilter
 	CorrelationFilter *CorrelationFilter `pulumi:"correlationFilter"`
 	// Filter type that is evaluated against a BrokeredMessage.
-	FilterType *FilterType `pulumi:"filterType"`
+	FilterType *string `pulumi:"filterType"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
 	// Name of the Resource group within the Azure subscription.
@@ -141,7 +145,7 @@ type RuleArgs struct {
 	// Properties of correlationFilter
 	CorrelationFilter CorrelationFilterPtrInput
 	// Filter type that is evaluated against a BrokeredMessage.
-	FilterType FilterTypePtrInput
+	FilterType pulumi.StringPtrInput
 	// The namespace name
 	NamespaceName pulumi.StringInput
 	// Name of the Resource group within the Azure subscription.
@@ -208,7 +212,12 @@ func (o RuleOutput) FilterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.FilterType }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The geo-location where the resource lives
+func (o RuleOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o RuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -218,7 +227,12 @@ func (o RuleOutput) SqlFilter() SqlFilterResponsePtrOutput {
 	return o.ApplyT(func(v *Rule) SqlFilterResponsePtrOutput { return v.SqlFilter }).(SqlFilterResponsePtrOutput)
 }
 
-// Resource type
+// The system meta data relating to this resource.
+func (o RuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Rule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o RuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

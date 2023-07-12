@@ -11,7 +11,7 @@ import (
 )
 
 // Get lab account
-// API Version: 2018-10-15.
+// Azure REST API version: 2018-10-15.
 func LookupLabAccount(ctx *pulumi.Context, args *LookupLabAccountArgs, opts ...pulumi.InvokeOption) (*LookupLabAccountResult, error) {
 	var rv LookupLabAccountResult
 	err := ctx.Invoke("azure-native:labservices:getLabAccount", args, &rv, opts...)

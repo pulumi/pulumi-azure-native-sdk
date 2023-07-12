@@ -11,7 +11,7 @@ import (
 )
 
 // List the two keys used to publish to a partner namespace.
-// API Version: 2021-06-01-preview.
+// Azure REST API version: 2022-06-15.
 func ListPartnerNamespaceSharedAccessKeys(ctx *pulumi.Context, args *ListPartnerNamespaceSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListPartnerNamespaceSharedAccessKeysResult, error) {
 	var rv ListPartnerNamespaceSharedAccessKeysResult
 	err := ctx.Invoke("azure-native:eventgrid:listPartnerNamespaceSharedAccessKeys", args, &rv, opts...)

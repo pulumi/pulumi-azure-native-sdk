@@ -12,7 +12,7 @@ import (
 )
 
 // Represents an instance of a orchestrator.
-// API Version: 2021-03-15.
+// Azure REST API version: 2021-03-15. Prior API version in Azure Native 1.x: 2021-03-15
 type OrchestratorInstanceServiceDetails struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +68,9 @@ func NewOrchestratorInstanceServiceDetails(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:delegatednetwork/v20210315:OrchestratorInstanceServiceDetails"),
+		},
+		{
+			Type: pulumi.String("azure-native:delegatednetwork/v20230518preview:OrchestratorInstanceServiceDetails"),
 		},
 	})
 	opts = append(opts, aliases)

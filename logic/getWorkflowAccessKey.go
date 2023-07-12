@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a workflow access key.
-// API Version: 2015-02-01-preview.
+// Azure REST API version: 2015-02-01-preview.
 func LookupWorkflowAccessKey(ctx *pulumi.Context, args *LookupWorkflowAccessKeyArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowAccessKeyResult, error) {
 	var rv LookupWorkflowAccessKeyResult
 	err := ctx.Invoke("azure-native:logic:getWorkflowAccessKey", args, &rv, opts...)

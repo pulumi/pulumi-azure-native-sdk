@@ -61,12 +61,30 @@ func NewGalleryimageRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:galleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:GalleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:galleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:GalleryimageRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:galleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:GalleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:galleryimageRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource GalleryimageRetrieve
-	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:galleryimageRetrieve", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:GalleryimageRetrieve", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +96,7 @@ func NewGalleryimageRetrieve(ctx *pulumi.Context,
 func GetGalleryimageRetrieve(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *GalleryimageRetrieveState, opts ...pulumi.ResourceOption) (*GalleryimageRetrieve, error) {
 	var resource GalleryimageRetrieve
-	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:galleryimageRetrieve", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:azurestackhci/v20210901preview:GalleryimageRetrieve", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

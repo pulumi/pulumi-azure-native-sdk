@@ -11,7 +11,7 @@ import (
 )
 
 // Get single access review definition
-// API Version: 2021-12-01-preview.
+// Azure REST API version: 2021-12-01-preview.
 func LookupScopeAccessReviewScheduleDefinitionById(ctx *pulumi.Context, args *LookupScopeAccessReviewScheduleDefinitionByIdArgs, opts ...pulumi.InvokeOption) (*LookupScopeAccessReviewScheduleDefinitionByIdResult, error) {
 	var rv LookupScopeAccessReviewScheduleDefinitionByIdResult
 	err := ctx.Invoke("azure-native:authorization:getScopeAccessReviewScheduleDefinitionById", args, &rv, opts...)

@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a hybrid connection configuration by its name.
-// API Version: 2020-12-01.
+// Description for Gets a hybrid connection configuration by its name.
+// Azure REST API version: 2022-09-01.
 func LookupWebAppRelayServiceConnectionSlot(ctx *pulumi.Context, args *LookupWebAppRelayServiceConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppRelayServiceConnectionSlotResult, error) {
 	var rv LookupWebAppRelayServiceConnectionSlotResult
 	err := ctx.Invoke("azure-native:web:getWebAppRelayServiceConnectionSlot", args, &rv, opts...)

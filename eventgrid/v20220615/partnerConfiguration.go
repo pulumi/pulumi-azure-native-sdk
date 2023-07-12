@@ -12,8 +12,6 @@ import (
 )
 
 // Partner configuration information
-//
-// Deprecated: azure-native:eventgrid/v20220615:PartnerConfiguration is being removed in the next major version of this provider. Upgrade to at least azure-native:eventgrid/v20230601preview:PartnerConfiguration to guarantee forwards compatibility.
 type PartnerConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +47,9 @@ func NewPartnerConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:PartnerConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:PartnerConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

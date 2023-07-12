@@ -96,6 +96,9 @@ func NewDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20220615:Domain"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20230601preview:Domain"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Domain
@@ -143,7 +146,7 @@ type domainArgs struct {
 	// Location of the resource.
 	Location *string `pulumi:"location"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnection `pulumi:"privateEndpointConnections"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" />
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -170,7 +173,7 @@ type DomainArgs struct {
 	// Location of the resource.
 	Location pulumi.StringPtrInput
 	// List of private endpoint connections.
-	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
+	PrivateEndpointConnections PrivateEndpointConnectionArrayInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" />
 	PublicNetworkAccess pulumi.StringPtrInput

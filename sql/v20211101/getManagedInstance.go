@@ -11,8 +11,6 @@ import (
 )
 
 // Gets a managed instance.
-//
-// Deprecated: azure-native:sql/v20211101:ManagedInstance is being removed in the next major version of this provider. Upgrade to at least azure-native:sql/v20221101preview:ManagedInstance to guarantee forwards compatibility.
 func LookupManagedInstance(ctx *pulumi.Context, args *LookupManagedInstanceArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceResult, error) {
 	var rv LookupManagedInstanceResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getManagedInstance", args, &rv, opts...)

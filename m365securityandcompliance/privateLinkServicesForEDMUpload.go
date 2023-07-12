@@ -12,7 +12,7 @@ import (
 )
 
 // The description of the service.
-// API Version: 2021-03-25-preview.
+// Azure REST API version: 2021-03-25-preview. Prior API version in Azure Native 1.x: 2021-03-25-preview
 type PrivateLinkServicesForEDMUpload struct {
 	pulumi.CustomResourceState
 
@@ -51,12 +51,18 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:m365securityandcompliance:privateLinkServicesForEDMUpload"),
+		},
+		{
+			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForEDMUpload"),
+		},
+		{
 			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForEDMUpload"),
 		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateLinkServicesForEDMUpload
-	err := ctx.RegisterResource("azure-native:m365securityandcompliance:privateLinkServicesForEDMUpload", name, args, &resource, opts...)
+	err := ctx.RegisterResource("azure-native:m365securityandcompliance:PrivateLinkServicesForEDMUpload", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +74,7 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 func GetPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PrivateLinkServicesForEDMUploadState, opts ...pulumi.ResourceOption) (*PrivateLinkServicesForEDMUpload, error) {
 	var resource PrivateLinkServicesForEDMUpload
-	err := ctx.ReadResource("azure-native:m365securityandcompliance:privateLinkServicesForEDMUpload", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("azure-native:m365securityandcompliance:PrivateLinkServicesForEDMUpload", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

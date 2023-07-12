@@ -68,5 +68,7 @@ func GetUseMsi(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return false
+	var value bool
+	value = false
+	return value
 }

@@ -12,7 +12,7 @@ import (
 )
 
 // Database Migration Resource for SQL Database.
-// API Version: 2022-03-30-preview.
+// Azure REST API version: 2022-03-30-preview. Prior API version in Azure Native 1.x: 2022-03-30-preview
 type DatabaseMigrationsSqlDb struct {
 	pulumi.CustomResourceState
 

@@ -7,7 +7,9 @@ package containerstorage
 type ReclaimPolicy string
 
 const (
+	// Delete resource
 	ReclaimPolicyDelete = ReclaimPolicy("Delete")
+	// Retain resource
 	ReclaimPolicyRetain = ReclaimPolicy("Retain")
 )
 
@@ -15,8 +17,10 @@ const (
 type VolumeMode string
 
 const (
+	// FileSystem volume mode
 	VolumeModeFilesystem = VolumeMode("Filesystem")
-	VolumeModeRaw        = VolumeMode("Raw")
+	// Raw volume mode
+	VolumeModeRaw = VolumeMode("Raw")
 )
 
 func init() {

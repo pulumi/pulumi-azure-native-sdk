@@ -11,7 +11,7 @@ import (
 )
 
 // Implements resourcePool GET method.
-// API Version: 2020-10-01-preview.
+// Azure REST API version: 2022-07-15-preview.
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
 	var rv LookupResourcePoolResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getResourcePool", args, &rv, opts...)
@@ -41,6 +41,8 @@ type LookupResourcePoolResult struct {
 	CpuSharesLevel string `pulumi:"cpuSharesLevel"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
+	// Gets or sets the datastore ARM ids.
+	DatastoreIds []string `pulumi:"datastoreIds"`
 	// Gets or sets the extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Gets or sets the Id.
@@ -66,6 +68,8 @@ type LookupResourcePoolResult struct {
 	MoRefId *string `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name string `pulumi:"name"`
+	// Gets or sets the network ARM ids.
+	NetworkIds []string `pulumi:"networkIds"`
 	// Gets or sets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
@@ -144,6 +148,11 @@ func (o LookupResourcePoolResultOutput) CustomResourceName() pulumi.StringOutput
 	return o.ApplyT(func(v LookupResourcePoolResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
 }
 
+// Gets or sets the datastore ARM ids.
+func (o LookupResourcePoolResultOutput) DatastoreIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupResourcePoolResult) []string { return v.DatastoreIds }).(pulumi.StringArrayOutput)
+}
+
 // Gets or sets the extended location.
 func (o LookupResourcePoolResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupResourcePoolResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
@@ -200,6 +209,11 @@ func (o LookupResourcePoolResultOutput) MoRefId() pulumi.StringPtrOutput {
 // Gets or sets the name.
 func (o LookupResourcePoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcePoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Gets or sets the network ARM ids.
+func (o LookupResourcePoolResultOutput) NetworkIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupResourcePoolResult) []string { return v.NetworkIds }).(pulumi.StringArrayOutput)
 }
 
 // Gets or sets the provisioning state.

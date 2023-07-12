@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the default rollout details.
-// API Version: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview.
 func LookupDefaultRollout(ctx *pulumi.Context, args *LookupDefaultRolloutArgs, opts ...pulumi.InvokeOption) (*LookupDefaultRolloutResult, error) {
 	var rv LookupDefaultRolloutResult
 	err := ctx.Invoke("azure-native:providerhub:getDefaultRollout", args, &rv, opts...)
@@ -36,6 +36,8 @@ type LookupDefaultRolloutResult struct {
 	Name string `pulumi:"name"`
 	// Properties of the rollout.
 	Properties DefaultRolloutResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -92,6 +94,11 @@ func (o LookupDefaultRolloutResultOutput) Name() pulumi.StringOutput {
 // Properties of the rollout.
 func (o LookupDefaultRolloutResultOutput) Properties() DefaultRolloutResponsePropertiesOutput {
 	return o.ApplyT(func(v LookupDefaultRolloutResult) DefaultRolloutResponseProperties { return v.Properties }).(DefaultRolloutResponsePropertiesOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupDefaultRolloutResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDefaultRolloutResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

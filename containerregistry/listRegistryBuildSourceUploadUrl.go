@@ -11,7 +11,7 @@ import (
 )
 
 // Get the upload location for the user to be able to upload the source.
-// API Version: 2019-06-01-preview.
+// Azure REST API version: 2019-06-01-preview.
 func ListRegistryBuildSourceUploadUrl(ctx *pulumi.Context, args *ListRegistryBuildSourceUploadUrlArgs, opts ...pulumi.InvokeOption) (*ListRegistryBuildSourceUploadUrlResult, error) {
 	var rv ListRegistryBuildSourceUploadUrlResult
 	err := ctx.Invoke("azure-native:containerregistry:listRegistryBuildSourceUploadUrl", args, &rv, opts...)

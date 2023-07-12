@@ -50,6 +50,36 @@ type AvroSerializationResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Describes an Azure Data Explorer output data source.
+type AzureDataExplorerOutputDataSource struct {
+	// Authentication Mode.
+	AuthenticationMode *string `pulumi:"authenticationMode"`
+	// The name of the Azure Data Explorer cluster. Required on PUT (CreateOrReplace) requests.
+	Cluster *string `pulumi:"cluster"`
+	// The name of the Azure Data Explorer database. Required on PUT (CreateOrReplace) requests.
+	Database *string `pulumi:"database"`
+	// The name of the Azure Table. Required on PUT (CreateOrReplace) requests.
+	Table *string `pulumi:"table"`
+	// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
+	// Expected value is 'Microsoft.Kusto/clusters/databases'.
+	Type string `pulumi:"type"`
+}
+
+// Describes an Azure Data Explorer output data source.
+type AzureDataExplorerOutputDataSourceResponse struct {
+	// Authentication Mode.
+	AuthenticationMode *string `pulumi:"authenticationMode"`
+	// The name of the Azure Data Explorer cluster. Required on PUT (CreateOrReplace) requests.
+	Cluster *string `pulumi:"cluster"`
+	// The name of the Azure Data Explorer database. Required on PUT (CreateOrReplace) requests.
+	Database *string `pulumi:"database"`
+	// The name of the Azure Table. Required on PUT (CreateOrReplace) requests.
+	Table *string `pulumi:"table"`
+	// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
+	// Expected value is 'Microsoft.Kusto/clusters/databases'.
+	Type string `pulumi:"type"`
+}
+
 // Describes an Azure Data Lake Store output data source.
 type AzureDataLakeStoreOutputDataSource struct {
 	// The name of the Azure Data Lake Store account. Required on PUT (CreateOrReplace) requests.
@@ -1849,7 +1879,7 @@ type Identity struct {
 	// The type of identity, can be SystemAssigned or UserAssigned.
 	Type *string `pulumi:"type"`
 	// The user assigned identities associated with the streaming job resource.
-	UserAssignedIdentities interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
@@ -1868,7 +1898,7 @@ type IdentityArgs struct {
 	// The type of identity, can be SystemAssigned or UserAssigned.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The user assigned identities associated with the streaming job resource.
-	UserAssignedIdentities pulumi.Input `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityArgs) ElementType() reflect.Type {
@@ -1955,8 +1985,8 @@ func (o IdentityOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The user assigned identities associated with the streaming job resource.
-func (o IdentityOutput) UserAssignedIdentities() pulumi.AnyOutput {
-	return o.ApplyT(func(v Identity) interface{} { return v.UserAssignedIdentities }).(pulumi.AnyOutput)
+func (o IdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v Identity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
 }
 
 type IdentityPtrOutput struct{ *pulumi.OutputState }
@@ -1994,13 +2024,13 @@ func (o IdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The user assigned identities associated with the streaming job resource.
-func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.AnyOutput {
-	return o.ApplyT(func(v *Identity) interface{} {
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v *Identity) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.AnyOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Describes how identity is verified
@@ -2012,7 +2042,7 @@ type IdentityResponse struct {
 	// The type of identity, can be SystemAssigned or UserAssigned.
 	Type *string `pulumi:"type"`
 	// The user assigned identities associated with the streaming job resource.
-	UserAssignedIdentities interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
 }
 
 // Describes how identity is verified
@@ -2046,8 +2076,8 @@ func (o IdentityResponseOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The user assigned identities associated with the streaming job resource.
-func (o IdentityResponseOutput) UserAssignedIdentities() pulumi.AnyOutput {
-	return o.ApplyT(func(v IdentityResponse) interface{} { return v.UserAssignedIdentities }).(pulumi.AnyOutput)
+func (o IdentityResponseOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v IdentityResponse) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
 }
 
 type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2105,13 +2135,13 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The user assigned identities associated with the streaming job resource.
-func (o IdentityResponsePtrOutput) UserAssignedIdentities() pulumi.AnyOutput {
-	return o.ApplyT(func(v *IdentityResponse) interface{} {
+func (o IdentityResponsePtrOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v *IdentityResponse) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.AnyOutput)
+	}).(pulumi.MapOutput)
 }
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.

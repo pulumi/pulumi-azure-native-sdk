@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a workflow.
-// API Version: 2019-05-01.
+// Azure REST API version: 2019-05-01.
 func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowResult, error) {
 	var rv LookupWorkflowResult
 	err := ctx.Invoke("azure-native:logic:getWorkflow", args, &rv, opts...)

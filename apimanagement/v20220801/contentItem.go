@@ -12,8 +12,6 @@ import (
 )
 
 // Content type contract details.
-//
-// Deprecated: azure-native:apimanagement/v20220801:ContentItem is being removed in the next major version of this provider. Upgrade to at least azure-native:apimanagement/v20220901preview:ContentItem to guarantee forwards compatibility.
 type ContentItem struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +66,12 @@ func NewContentItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:ContentItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ContentItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ContentItem"),
 		},
 	})
 	opts = append(opts, aliases)

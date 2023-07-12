@@ -11,25 +11,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the security configuration
-// API Version: 2021-02-01-preview.
+// Defines the security user configuration
+// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview
 type SecurityUserConfiguration struct {
 	pulumi.CustomResourceState
 
 	// Flag if need to delete existing network security groups.
 	DeleteExistingNSGs pulumi.StringPtrOutput `pulumi:"deleteExistingNSGs"`
-	// A description of the security configuration.
+	// A description of the security user configuration.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A display name of the security configuration.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Security Type.
-	SecurityType pulumi.StringPtrOutput `pulumi:"securityType"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
@@ -96,38 +92,30 @@ func (SecurityUserConfigurationState) ElementType() reflect.Type {
 }
 
 type securityUserConfigurationArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName *string `pulumi:"configurationName"`
 	// Flag if need to delete existing network security groups.
 	DeleteExistingNSGs *string `pulumi:"deleteExistingNSGs"`
-	// A description of the security configuration.
+	// A description of the security user configuration.
 	Description *string `pulumi:"description"`
-	// A display name of the security configuration.
-	DisplayName *string `pulumi:"displayName"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Security Type.
-	SecurityType *string `pulumi:"securityType"`
 }
 
 // The set of arguments for constructing a SecurityUserConfiguration resource.
 type SecurityUserConfigurationArgs struct {
-	// The name of the network manager security Configuration.
+	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringPtrInput
 	// Flag if need to delete existing network security groups.
 	DeleteExistingNSGs pulumi.StringPtrInput
-	// A description of the security configuration.
+	// A description of the security user configuration.
 	Description pulumi.StringPtrInput
-	// A display name of the security configuration.
-	DisplayName pulumi.StringPtrInput
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// Security Type.
-	SecurityType pulumi.StringPtrInput
 }
 
 func (SecurityUserConfigurationArgs) ElementType() reflect.Type {
@@ -172,14 +160,9 @@ func (o SecurityUserConfigurationOutput) DeleteExistingNSGs() pulumi.StringPtrOu
 	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringPtrOutput { return v.DeleteExistingNSGs }).(pulumi.StringPtrOutput)
 }
 
-// A description of the security configuration.
+// A description of the security user configuration.
 func (o SecurityUserConfigurationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A display name of the security configuration.
-func (o SecurityUserConfigurationOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -195,11 +178,6 @@ func (o SecurityUserConfigurationOutput) Name() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o SecurityUserConfigurationOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Security Type.
-func (o SecurityUserConfigurationOutput) SecurityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringPtrOutput { return v.SecurityType }).(pulumi.StringPtrOutput)
 }
 
 // The system metadata related to this resource.

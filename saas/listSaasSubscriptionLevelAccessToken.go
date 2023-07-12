@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the ISV access token for a specified Subscription Level SaaS.
-// API Version: 2018-03-01-beta.
+// Azure REST API version: 2018-03-01-beta.
 func ListSaasSubscriptionLevelAccessToken(ctx *pulumi.Context, args *ListSaasSubscriptionLevelAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListSaasSubscriptionLevelAccessTokenResult, error) {
 	var rv ListSaasSubscriptionLevelAccessTokenResult
 	err := ctx.Invoke("azure-native:saas:listSaasSubscriptionLevelAccessToken", args, &rv, opts...)

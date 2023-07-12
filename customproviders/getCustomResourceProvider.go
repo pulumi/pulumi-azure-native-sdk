@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the custom resource provider manifest.
-// API Version: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview.
 func LookupCustomResourceProvider(ctx *pulumi.Context, args *LookupCustomResourceProviderArgs, opts ...pulumi.InvokeOption) (*LookupCustomResourceProviderResult, error) {
 	var rv LookupCustomResourceProviderResult
 	err := ctx.Invoke("azure-native:customproviders:getCustomResourceProvider", args, &rv, opts...)

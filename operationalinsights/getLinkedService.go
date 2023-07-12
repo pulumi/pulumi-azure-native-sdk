@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a linked service instance.
-// API Version: 2020-08-01.
+// Azure REST API version: 2020-08-01.
 func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServiceResult, error) {
 	var rv LookupLinkedServiceResult
 	err := ctx.Invoke("azure-native:operationalinsights:getLinkedService", args, &rv, opts...)

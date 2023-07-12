@@ -76,6 +76,9 @@ func NewProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20180801:Profile"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20220401:Profile"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Profile

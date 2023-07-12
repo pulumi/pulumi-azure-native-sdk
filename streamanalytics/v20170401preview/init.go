@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:streamanalytics/v20170401preview:Function":
-		r = &Function{}
-	case "azure-native:streamanalytics/v20170401preview:Input":
-		r = &Input{}
-	case "azure-native:streamanalytics/v20170401preview:Output":
-		r = &Output{}
 	case "azure-native:streamanalytics/v20170401preview:StreamingJob":
 		r = &StreamingJob{}
 	default:

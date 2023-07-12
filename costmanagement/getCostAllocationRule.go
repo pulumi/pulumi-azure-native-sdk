@@ -11,7 +11,7 @@ import (
 )
 
 // Get a cost allocation rule by rule name and billing account or enterprise enrollment.
-// API Version: 2020-03-01-preview.
+// Azure REST API version: 2020-03-01-preview.
 func LookupCostAllocationRule(ctx *pulumi.Context, args *LookupCostAllocationRuleArgs, opts ...pulumi.InvokeOption) (*LookupCostAllocationRuleResult, error) {
 	var rv LookupCostAllocationRuleResult
 	err := ctx.Invoke("azure-native:costmanagement:getCostAllocationRule", args, &rv, opts...)

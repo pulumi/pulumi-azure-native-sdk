@@ -12,7 +12,7 @@ import (
 )
 
 // Class representing a Traffic Manager profile.
-// API Version: 2018-08-01.
+// Azure REST API version: 2022-04-01. Prior API version in Azure Native 1.x: 2018-08-01
 type Profile struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +75,9 @@ func NewProfile(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20180801:Profile"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20220401:Profile"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20220401preview:Profile"),
 		},
 	})
@@ -131,7 +134,7 @@ type profileArgs struct {
 	ProfileName *string `pulumi:"profileName"`
 	// The status of the Traffic Manager profile.
 	ProfileStatus *string `pulumi:"profileStatus"`
-	// The name of the resource group containing the Traffic Manager profile.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -165,7 +168,7 @@ type ProfileArgs struct {
 	ProfileName pulumi.StringPtrInput
 	// The status of the Traffic Manager profile.
 	ProfileStatus pulumi.StringPtrInput
-	// The name of the resource group containing the Traffic Manager profile.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput

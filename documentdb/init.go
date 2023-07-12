@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +39,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GremlinResourceGremlinDatabase{}
 	case "azure-native:documentdb:GremlinResourceGremlinGraph":
 		r = &GremlinResourceGremlinGraph{}
+	case "azure-native:documentdb:MongoCluster":
+		r = &MongoCluster{}
+	case "azure-native:documentdb:MongoClusterFirewallRule":
+		r = &MongoClusterFirewallRule{}
 	case "azure-native:documentdb:MongoDBResourceMongoDBCollection":
 		r = &MongoDBResourceMongoDBCollection{}
 	case "azure-native:documentdb:MongoDBResourceMongoDBDatabase":

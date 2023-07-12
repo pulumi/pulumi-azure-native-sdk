@@ -11,7 +11,7 @@ import (
 )
 
 // Get a specified connection created by this subscription.
-// API Version: 2022-02-01-preview.
+// Azure REST API version: 2023-02-01.
 func LookupSubscriptionNetworkManagerConnection(ctx *pulumi.Context, args *LookupSubscriptionNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionNetworkManagerConnectionResult, error) {
 	var rv LookupSubscriptionNetworkManagerConnectionResult
 	err := ctx.Invoke("azure-native:network:getSubscriptionNetworkManagerConnection", args, &rv, opts...)
@@ -28,7 +28,7 @@ type LookupSubscriptionNetworkManagerConnectionArgs struct {
 
 // The Network Manager Connection resource
 type LookupSubscriptionNetworkManagerConnectionResult struct {
-	// A description of the scope connection.
+	// A description of the network manager connection.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
@@ -81,7 +81,7 @@ func (o LookupSubscriptionNetworkManagerConnectionResultOutput) ToLookupSubscrip
 	return o
 }
 
-// A description of the scope connection.
+// A description of the network manager connection.
 func (o LookupSubscriptionNetworkManagerConnectionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionNetworkManagerConnectionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

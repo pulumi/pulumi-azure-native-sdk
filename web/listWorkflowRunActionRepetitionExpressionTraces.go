@@ -11,7 +11,7 @@ import (
 )
 
 // Lists a workflow run expression trace.
-// API Version: 2022-03-01.
+// Azure REST API version: 2022-09-01.
 func ListWorkflowRunActionRepetitionExpressionTraces(ctx *pulumi.Context, args *ListWorkflowRunActionRepetitionExpressionTracesArgs, opts ...pulumi.InvokeOption) (*ListWorkflowRunActionRepetitionExpressionTracesResult, error) {
 	var rv ListWorkflowRunActionRepetitionExpressionTracesResult
 	err := ctx.Invoke("azure-native:web:listWorkflowRunActionRepetitionExpressionTraces", args, &rv, opts...)

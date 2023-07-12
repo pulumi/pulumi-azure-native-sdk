@@ -66,6 +66,9 @@ func NewSite(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20221101:Site"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20230601:Site"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Site

@@ -12,7 +12,7 @@ import (
 )
 
 // Security Partner Provider resource.
-// API Version: 2020-11-01.
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01
 type SecurityPartnerProvider struct {
 	pulumi.CustomResourceState
 
@@ -91,6 +91,12 @@ func NewSecurityPartnerProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220901:SecurityPartnerProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20221101:SecurityPartnerProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230201:SecurityPartnerProvider"),
 		},
 	})
 	opts = append(opts, aliases)

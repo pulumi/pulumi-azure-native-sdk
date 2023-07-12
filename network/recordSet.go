@@ -12,7 +12,7 @@ import (
 )
 
 // Describes a DNS record set (a collection of DNS records with the same name and type).
-// API Version: 2018-05-01.
+// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 1.x: 2018-05-01
 type RecordSet struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type RecordSet struct {
 	CaaRecords CaaRecordResponseArrayOutput `pulumi:"caaRecords"`
 	// The CNAME record in the  record set.
 	CnameRecord CnameRecordResponsePtrOutput `pulumi:"cnameRecord"`
+	// The list of DS records in the record set.
+	DsRecords DsRecordResponseArrayOutput `pulumi:"dsRecords"`
 	// The etag of the record set.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Fully qualified domain name of the record set.
@@ -34,6 +36,8 @@ type RecordSet struct {
 	MxRecords MxRecordResponseArrayOutput `pulumi:"mxRecords"`
 	// The name of the record set.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The list of NAPTR records in the record set.
+	NaptrRecords NaptrRecordResponseArrayOutput `pulumi:"naptrRecords"`
 	// The list of NS records in the record set.
 	NsRecords NsRecordResponseArrayOutput `pulumi:"nsRecords"`
 	// provisioning State of the record set.
@@ -46,6 +50,8 @@ type RecordSet struct {
 	SrvRecords SrvRecordResponseArrayOutput `pulumi:"srvRecords"`
 	// A reference to an azure resource from where the dns resource value is taken.
 	TargetResource SubResourceResponsePtrOutput `pulumi:"targetResource"`
+	// The list of TLSA records in the record set.
+	TlsaRecords TlsaRecordResponseArrayOutput `pulumi:"tlsaRecords"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl pulumi.Float64PtrOutput `pulumi:"ttl"`
 	// The list of TXT records in the record set.
@@ -89,6 +95,9 @@ func NewRecordSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20180501:RecordSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:RecordSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource RecordSet
@@ -131,19 +140,23 @@ type recordSetArgs struct {
 	CaaRecords []CaaRecord `pulumi:"caaRecords"`
 	// The CNAME record in the  record set.
 	CnameRecord *CnameRecord `pulumi:"cnameRecord"`
+	// The list of DS records in the record set.
+	DsRecords []DsRecord `pulumi:"dsRecords"`
 	// The metadata attached to the record set.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The list of MX records in the record set.
 	MxRecords []MxRecord `pulumi:"mxRecords"`
+	// The list of NAPTR records in the record set.
+	NaptrRecords []NaptrRecord `pulumi:"naptrRecords"`
 	// The list of NS records in the record set.
 	NsRecords []NsRecord `pulumi:"nsRecords"`
 	// The list of PTR records in the record set.
 	PtrRecords []PtrRecord `pulumi:"ptrRecords"`
-	// The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
+	// The type of DNS record in this record set.
 	RecordType string `pulumi:"recordType"`
 	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName *string `pulumi:"relativeRecordSetName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SOA record in the record set.
 	SoaRecord *SoaRecord `pulumi:"soaRecord"`
@@ -151,6 +164,8 @@ type recordSetArgs struct {
 	SrvRecords []SrvRecord `pulumi:"srvRecords"`
 	// A reference to an azure resource from where the dns resource value is taken.
 	TargetResource *SubResource `pulumi:"targetResource"`
+	// The list of TLSA records in the record set.
+	TlsaRecords []TlsaRecord `pulumi:"tlsaRecords"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl *float64 `pulumi:"ttl"`
 	// The list of TXT records in the record set.
@@ -169,19 +184,23 @@ type RecordSetArgs struct {
 	CaaRecords CaaRecordArrayInput
 	// The CNAME record in the  record set.
 	CnameRecord CnameRecordPtrInput
+	// The list of DS records in the record set.
+	DsRecords DsRecordArrayInput
 	// The metadata attached to the record set.
 	Metadata pulumi.StringMapInput
 	// The list of MX records in the record set.
 	MxRecords MxRecordArrayInput
+	// The list of NAPTR records in the record set.
+	NaptrRecords NaptrRecordArrayInput
 	// The list of NS records in the record set.
 	NsRecords NsRecordArrayInput
 	// The list of PTR records in the record set.
 	PtrRecords PtrRecordArrayInput
-	// The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
+	// The type of DNS record in this record set.
 	RecordType pulumi.StringInput
 	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SOA record in the record set.
 	SoaRecord SoaRecordPtrInput
@@ -189,6 +208,8 @@ type RecordSetArgs struct {
 	SrvRecords SrvRecordArrayInput
 	// A reference to an azure resource from where the dns resource value is taken.
 	TargetResource SubResourcePtrInput
+	// The list of TLSA records in the record set.
+	TlsaRecords TlsaRecordArrayInput
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl pulumi.Float64PtrInput
 	// The list of TXT records in the record set.
@@ -254,6 +275,11 @@ func (o RecordSetOutput) CnameRecord() CnameRecordResponsePtrOutput {
 	return o.ApplyT(func(v *RecordSet) CnameRecordResponsePtrOutput { return v.CnameRecord }).(CnameRecordResponsePtrOutput)
 }
 
+// The list of DS records in the record set.
+func (o RecordSetOutput) DsRecords() DsRecordResponseArrayOutput {
+	return o.ApplyT(func(v *RecordSet) DsRecordResponseArrayOutput { return v.DsRecords }).(DsRecordResponseArrayOutput)
+}
+
 // The etag of the record set.
 func (o RecordSetOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
@@ -277,6 +303,11 @@ func (o RecordSetOutput) MxRecords() MxRecordResponseArrayOutput {
 // The name of the record set.
 func (o RecordSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of NAPTR records in the record set.
+func (o RecordSetOutput) NaptrRecords() NaptrRecordResponseArrayOutput {
+	return o.ApplyT(func(v *RecordSet) NaptrRecordResponseArrayOutput { return v.NaptrRecords }).(NaptrRecordResponseArrayOutput)
 }
 
 // The list of NS records in the record set.
@@ -307,6 +338,11 @@ func (o RecordSetOutput) SrvRecords() SrvRecordResponseArrayOutput {
 // A reference to an azure resource from where the dns resource value is taken.
 func (o RecordSetOutput) TargetResource() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v *RecordSet) SubResourceResponsePtrOutput { return v.TargetResource }).(SubResourceResponsePtrOutput)
+}
+
+// The list of TLSA records in the record set.
+func (o RecordSetOutput) TlsaRecords() TlsaRecordResponseArrayOutput {
+	return o.ApplyT(func(v *RecordSet) TlsaRecordResponseArrayOutput { return v.TlsaRecords }).(TlsaRecordResponseArrayOutput)
 }
 
 // The TTL (time-to-live) of the records in the record set.

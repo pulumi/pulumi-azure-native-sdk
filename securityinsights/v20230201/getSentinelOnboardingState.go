@@ -11,8 +11,6 @@ import (
 )
 
 // Get Sentinel onboarding state
-//
-// Deprecated: azure-native:securityinsights/v20230201:SentinelOnboardingState is being removed in the next major version of this provider. Upgrade to at least azure-native:securityinsights/v20230601preview:SentinelOnboardingState to guarantee forwards compatibility.
 func LookupSentinelOnboardingState(ctx *pulumi.Context, args *LookupSentinelOnboardingStateArgs, opts ...pulumi.InvokeOption) (*LookupSentinelOnboardingStateResult, error) {
 	var rv LookupSentinelOnboardingStateResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201:getSentinelOnboardingState", args, &rv, opts...)

@@ -12,7 +12,7 @@ import (
 
 // Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
 // operation. Status of the operation can be fetched using GetPolicyOperationResult API.
-// API Version: 2021-02-01.
+// Azure REST API version: 2023-04-01.
 func LookupProtectionPolicy(ctx *pulumi.Context, args *LookupProtectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProtectionPolicyResult, error) {
 	var rv LookupProtectionPolicyResult
 	err := ctx.Invoke("azure-native:recoveryservices:getProtectionPolicy", args, &rv, opts...)

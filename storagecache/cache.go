@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
-// API Version: 2021-03-01.
+// A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-03-01
 type Cache struct {
 	pulumi.CustomResourceState
 
@@ -22,34 +22,42 @@ type Cache struct {
 	DirectoryServicesSettings CacheDirectorySettingsResponsePtrOutput `pulumi:"directoryServicesSettings"`
 	// Specifies encryption settings of the cache.
 	EncryptionSettings CacheEncryptionSettingsResponsePtrOutput `pulumi:"encryptionSettings"`
-	// Health of the Cache.
+	// Health of the cache.
 	Health CacheHealthResponseOutput `pulumi:"health"`
 	// The identity of the cache, if configured.
 	Identity CacheIdentityResponsePtrOutput `pulumi:"identity"`
 	// Region name string.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Array of IP addresses that can be used by clients mounting this Cache.
+	// Array of IPv4 addresses that can be used by clients mounting this cache.
 	MountAddresses pulumi.StringArrayOutput `pulumi:"mountAddresses"`
-	// Name of Cache.
+	// Name of cache.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies network settings of the cache.
 	NetworkSettings CacheNetworkSettingsResponsePtrOutput `pulumi:"networkSettings"`
+	// Specifies the priming jobs defined in the cache.
+	PrimingJobs PrimingJobResponseArrayOutput `pulumi:"primingJobs"`
 	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Specifies security settings of the cache.
 	SecuritySettings CacheSecuritySettingsResponsePtrOutput `pulumi:"securitySettings"`
-	// SKU for the Cache.
+	// SKU for the cache.
 	Sku CacheResponseSkuPtrOutput `pulumi:"sku"`
-	// Subnet used for the Cache.
+	// Specifies the space allocation percentage for each storage target in the cache.
+	SpaceAllocation StorageTargetSpaceAllocationResponseArrayOutput `pulumi:"spaceAllocation"`
+	// Subnet used for the cache.
 	Subnet pulumi.StringPtrOutput `pulumi:"subnet"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Type of the Cache; Microsoft.StorageCache/Cache
+	// Type of the cache; Microsoft.StorageCache/Cache
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Upgrade status of the Cache.
-	UpgradeStatus CacheUpgradeStatusResponsePtrOutput `pulumi:"upgradeStatus"`
+	// Upgrade settings of the cache.
+	UpgradeSettings CacheUpgradeSettingsResponsePtrOutput `pulumi:"upgradeSettings"`
+	// Upgrade status of the cache.
+	UpgradeStatus CacheUpgradeStatusResponseOutput `pulumi:"upgradeStatus"`
+	// Availability zones for resources. This field should only contain a single element in the array.
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewCache registers a new resource with the given unique name, arguments, and options.
@@ -102,6 +110,9 @@ func NewCache(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230301preview:Cache"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20230501:Cache"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Cache
@@ -136,7 +147,7 @@ func (CacheState) ElementType() reflect.Type {
 }
 
 type cacheArgs struct {
-	// Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+	// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
 	CacheName *string `pulumi:"cacheName"`
 	// The size of this Cache, in GB.
 	CacheSizeGB *int `pulumi:"cacheSizeGB"`
@@ -150,23 +161,25 @@ type cacheArgs struct {
 	Location *string `pulumi:"location"`
 	// Specifies network settings of the cache.
 	NetworkSettings *CacheNetworkSettings `pulumi:"networkSettings"`
-	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState *string `pulumi:"provisioningState"`
-	// Target resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Specifies security settings of the cache.
 	SecuritySettings *CacheSecuritySettings `pulumi:"securitySettings"`
-	// SKU for the Cache.
+	// SKU for the cache.
 	Sku *CacheSku `pulumi:"sku"`
-	// Subnet used for the Cache.
+	// Subnet used for the cache.
 	Subnet *string `pulumi:"subnet"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Upgrade settings of the cache.
+	UpgradeSettings *CacheUpgradeSettings `pulumi:"upgradeSettings"`
+	// Availability zones for resources. This field should only contain a single element in the array.
+	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a Cache resource.
 type CacheArgs struct {
-	// Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+	// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
 	CacheName pulumi.StringPtrInput
 	// The size of this Cache, in GB.
 	CacheSizeGB pulumi.IntPtrInput
@@ -180,18 +193,20 @@ type CacheArgs struct {
 	Location pulumi.StringPtrInput
 	// Specifies network settings of the cache.
 	NetworkSettings CacheNetworkSettingsPtrInput
-	// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-	ProvisioningState pulumi.StringPtrInput
-	// Target resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Specifies security settings of the cache.
 	SecuritySettings CacheSecuritySettingsPtrInput
-	// SKU for the Cache.
+	// SKU for the cache.
 	Sku CacheSkuPtrInput
-	// Subnet used for the Cache.
+	// Subnet used for the cache.
 	Subnet pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Upgrade settings of the cache.
+	UpgradeSettings CacheUpgradeSettingsPtrInput
+	// Availability zones for resources. This field should only contain a single element in the array.
+	Zones pulumi.StringArrayInput
 }
 
 func (CacheArgs) ElementType() reflect.Type {
@@ -246,7 +261,7 @@ func (o CacheOutput) EncryptionSettings() CacheEncryptionSettingsResponsePtrOutp
 	return o.ApplyT(func(v *Cache) CacheEncryptionSettingsResponsePtrOutput { return v.EncryptionSettings }).(CacheEncryptionSettingsResponsePtrOutput)
 }
 
-// Health of the Cache.
+// Health of the cache.
 func (o CacheOutput) Health() CacheHealthResponseOutput {
 	return o.ApplyT(func(v *Cache) CacheHealthResponseOutput { return v.Health }).(CacheHealthResponseOutput)
 }
@@ -261,12 +276,12 @@ func (o CacheOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Array of IP addresses that can be used by clients mounting this Cache.
+// Array of IPv4 addresses that can be used by clients mounting this cache.
 func (o CacheOutput) MountAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringArrayOutput { return v.MountAddresses }).(pulumi.StringArrayOutput)
 }
 
-// Name of Cache.
+// Name of cache.
 func (o CacheOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -276,9 +291,14 @@ func (o CacheOutput) NetworkSettings() CacheNetworkSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *Cache) CacheNetworkSettingsResponsePtrOutput { return v.NetworkSettings }).(CacheNetworkSettingsResponsePtrOutput)
 }
 
+// Specifies the priming jobs defined in the cache.
+func (o CacheOutput) PrimingJobs() PrimingJobResponseArrayOutput {
+	return o.ApplyT(func(v *Cache) PrimingJobResponseArrayOutput { return v.PrimingJobs }).(PrimingJobResponseArrayOutput)
+}
+
 // ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-func (o CacheOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Cache) pulumi.StringPtrOutput { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o CacheOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cache) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Specifies security settings of the cache.
@@ -286,12 +306,17 @@ func (o CacheOutput) SecuritySettings() CacheSecuritySettingsResponsePtrOutput {
 	return o.ApplyT(func(v *Cache) CacheSecuritySettingsResponsePtrOutput { return v.SecuritySettings }).(CacheSecuritySettingsResponsePtrOutput)
 }
 
-// SKU for the Cache.
+// SKU for the cache.
 func (o CacheOutput) Sku() CacheResponseSkuPtrOutput {
 	return o.ApplyT(func(v *Cache) CacheResponseSkuPtrOutput { return v.Sku }).(CacheResponseSkuPtrOutput)
 }
 
-// Subnet used for the Cache.
+// Specifies the space allocation percentage for each storage target in the cache.
+func (o CacheOutput) SpaceAllocation() StorageTargetSpaceAllocationResponseArrayOutput {
+	return o.ApplyT(func(v *Cache) StorageTargetSpaceAllocationResponseArrayOutput { return v.SpaceAllocation }).(StorageTargetSpaceAllocationResponseArrayOutput)
+}
+
+// Subnet used for the cache.
 func (o CacheOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringPtrOutput { return v.Subnet }).(pulumi.StringPtrOutput)
 }
@@ -306,14 +331,24 @@ func (o CacheOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Type of the Cache; Microsoft.StorageCache/Cache
+// Type of the cache; Microsoft.StorageCache/Cache
 func (o CacheOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cache) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Upgrade status of the Cache.
-func (o CacheOutput) UpgradeStatus() CacheUpgradeStatusResponsePtrOutput {
-	return o.ApplyT(func(v *Cache) CacheUpgradeStatusResponsePtrOutput { return v.UpgradeStatus }).(CacheUpgradeStatusResponsePtrOutput)
+// Upgrade settings of the cache.
+func (o CacheOutput) UpgradeSettings() CacheUpgradeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Cache) CacheUpgradeSettingsResponsePtrOutput { return v.UpgradeSettings }).(CacheUpgradeSettingsResponsePtrOutput)
+}
+
+// Upgrade status of the cache.
+func (o CacheOutput) UpgradeStatus() CacheUpgradeStatusResponseOutput {
+	return o.ApplyT(func(v *Cache) CacheUpgradeStatusResponseOutput { return v.UpgradeStatus }).(CacheUpgradeStatusResponseOutput)
+}
+
+// Availability zones for resources. This field should only contain a single element in the array.
+func (o CacheOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cache) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

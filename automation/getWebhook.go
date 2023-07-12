@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieve the webhook identified by webhook name.
-// API Version: 2015-10-31.
+// Azure REST API version: 2015-10-31.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	var rv LookupWebhookResult
 	err := ctx.Invoke("azure-native:automation:getWebhook", args, &rv, opts...)

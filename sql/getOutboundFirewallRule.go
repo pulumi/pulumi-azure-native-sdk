@@ -11,7 +11,7 @@ import (
 )
 
 // Gets an outbound firewall rule.
-// API Version: 2021-02-01-preview.
+// Azure REST API version: 2021-11-01.
 func LookupOutboundFirewallRule(ctx *pulumi.Context, args *LookupOutboundFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupOutboundFirewallRuleResult, error) {
 	var rv LookupOutboundFirewallRuleResult
 	err := ctx.Invoke("azure-native:sql:getOutboundFirewallRule", args, &rv, opts...)

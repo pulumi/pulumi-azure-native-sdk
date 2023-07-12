@@ -38,7 +38,7 @@ type LookupViewResult struct {
 	// Has definition for data in this report config.
 	DataSet *ReportConfigDatasetResponse `pulumi:"dataSet"`
 	// Date range of the current view.
-	DateRange string `pulumi:"dateRange"`
+	DateRange *string `pulumi:"dateRange"`
 	// User input name of the view. Required.
 	DisplayName *string `pulumi:"displayName"`
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -130,8 +130,8 @@ func (o LookupViewResultOutput) DataSet() ReportConfigDatasetResponsePtrOutput {
 }
 
 // Date range of the current view.
-func (o LookupViewResultOutput) DateRange() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupViewResult) string { return v.DateRange }).(pulumi.StringOutput)
+func (o LookupViewResultOutput) DateRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupViewResult) *string { return v.DateRange }).(pulumi.StringPtrOutput)
 }
 
 // User input name of the view. Required.

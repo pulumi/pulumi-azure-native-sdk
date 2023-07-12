@@ -12,8 +12,6 @@ import (
 )
 
 // The bandwidth schedule details.
-//
-// Deprecated: azure-native:databoxedge/v20220301:BandwidthSchedule is being removed in the next major version of this provider. Upgrade to at least azure-native:databoxedge/v20230101preview:BandwidthSchedule to guarantee forwards compatibility.
 type BandwidthSchedule struct {
 	pulumi.CustomResourceState
 

@@ -19,21 +19,6 @@ const (
 	LevelTypeInformation = LevelType("Information")
 )
 
-// Scope at which the operator will be installed.
-type OperatorScopeType string
-
-const (
-	OperatorScopeTypeCluster   = OperatorScopeType("cluster")
-	OperatorScopeTypeNamespace = OperatorScopeType("namespace")
-)
-
-// Type of the operator
-type OperatorType string
-
-const (
-	OperatorTypeFlux = OperatorType("Flux")
-)
-
 // The type of identity used for the configuration. Type 'SystemAssigned' will use an implicitly created identity. Type 'None' will not use Managed Identity for the configuration.
 type ResourceIdentityType string
 

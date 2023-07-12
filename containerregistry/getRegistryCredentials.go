@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the administrator login credentials for the specified container registry.
-// API Version: 2016-06-27-preview.
+// Azure REST API version: 2016-06-27-preview.
 func GetRegistryCredentials(ctx *pulumi.Context, args *GetRegistryCredentialsArgs, opts ...pulumi.InvokeOption) (*GetRegistryCredentialsResult, error) {
 	var rv GetRegistryCredentialsResult
 	err := ctx.Invoke("azure-native:containerregistry:getRegistryCredentials", args, &rv, opts...)

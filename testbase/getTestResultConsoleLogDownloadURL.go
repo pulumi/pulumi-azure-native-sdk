@@ -11,7 +11,7 @@ import (
 )
 
 // Gets the download URL of the test execution console log file.
-// API Version: 2022-04-01-preview.
+// Azure REST API version: 2022-04-01-preview.
 func GetTestResultConsoleLogDownloadURL(ctx *pulumi.Context, args *GetTestResultConsoleLogDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultConsoleLogDownloadURLResult, error) {
 	var rv GetTestResultConsoleLogDownloadURLResult
 	err := ctx.Invoke("azure-native:testbase:getTestResultConsoleLogDownloadURL", args, &rv, opts...)

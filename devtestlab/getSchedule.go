@@ -11,7 +11,7 @@ import (
 )
 
 // Get schedule.
-// API Version: 2018-09-15.
+// Azure REST API version: 2018-09-15.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:devtestlab:getSchedule", args, &rv, opts...)
@@ -58,7 +58,7 @@ type LookupScheduleResult struct {
 	TargetResourceId *string `pulumi:"targetResourceId"`
 	// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
 	TaskType *string `pulumi:"taskType"`
-	// The time zone ID (e.g. Pacific Standard time).
+	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
@@ -186,7 +186,7 @@ func (o LookupScheduleResultOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScheduleResult) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
 
-// The time zone ID (e.g. Pacific Standard time).
+// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 func (o LookupScheduleResultOutput) TimeZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScheduleResult) *string { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }

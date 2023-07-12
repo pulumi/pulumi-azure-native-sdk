@@ -11,7 +11,7 @@ import (
 )
 
 // Returns the current linked storage settings for an Application Insights component.
-// API Version: 2020-03-01-preview.
+// Azure REST API version: 2020-03-01-preview.
 func LookupComponentLinkedStorageAccount(ctx *pulumi.Context, args *LookupComponentLinkedStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupComponentLinkedStorageAccountResult, error) {
 	var rv LookupComponentLinkedStorageAccountResult
 	err := ctx.Invoke("azure-native:insights:getComponentLinkedStorageAccount", args, &rv, opts...)

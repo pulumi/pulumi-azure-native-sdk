@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a deployment.
-// API Version: 2021-01-01.
+// Azure REST API version: 2022-09-01.
 func LookupDeploymentAtScope(ctx *pulumi.Context, args *LookupDeploymentAtScopeArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentAtScopeResult, error) {
 	var rv LookupDeploymentAtScopeResult
 	err := ctx.Invoke("azure-native:resources:getDeploymentAtScope", args, &rv, opts...)

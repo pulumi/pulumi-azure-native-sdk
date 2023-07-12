@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a single custom assessment automation by name for the provided subscription and resource group.
-// API Version: 2021-07-01-preview.
+// Azure REST API version: 2021-07-01-preview.
 func LookupCustomAssessmentAutomation(ctx *pulumi.Context, args *LookupCustomAssessmentAutomationArgs, opts ...pulumi.InvokeOption) (*LookupCustomAssessmentAutomationResult, error) {
 	var rv LookupCustomAssessmentAutomationResult
 	err := ctx.Invoke("azure-native:security:getCustomAssessmentAutomation", args, &rv, opts...)

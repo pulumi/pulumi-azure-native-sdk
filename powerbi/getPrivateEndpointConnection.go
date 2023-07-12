@@ -11,7 +11,7 @@ import (
 )
 
 // Get a specific private endpoint connection for Power BI by private endpoint name.
-// API Version: 2020-06-01.
+// Azure REST API version: 2020-06-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:powerbi:getPrivateEndpointConnection", args, &rv, opts...)

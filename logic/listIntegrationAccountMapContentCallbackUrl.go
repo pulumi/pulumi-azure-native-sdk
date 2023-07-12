@@ -11,7 +11,7 @@ import (
 )
 
 // Get the content callback url.
-// API Version: 2019-05-01.
+// Azure REST API version: 2019-05-01.
 func ListIntegrationAccountMapContentCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountMapContentCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountMapContentCallbackUrlResult, error) {
 	var rv ListIntegrationAccountMapContentCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic:listIntegrationAccountMapContentCallbackUrl", args, &rv, opts...)

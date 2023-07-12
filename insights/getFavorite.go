@@ -11,7 +11,7 @@ import (
 )
 
 // Get a single favorite by its FavoriteId, defined within an Application Insights component.
-// API Version: 2015-05-01.
+// Azure REST API version: 2015-05-01.
 func LookupFavorite(ctx *pulumi.Context, args *LookupFavoriteArgs, opts ...pulumi.InvokeOption) (*LookupFavoriteResult, error) {
 	var rv LookupFavoriteResult
 	err := ctx.Invoke("azure-native:insights:getFavorite", args, &rv, opts...)

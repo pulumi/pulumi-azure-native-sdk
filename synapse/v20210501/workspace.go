@@ -148,7 +148,7 @@ type workspaceArgs struct {
 	// Managed Virtual Network Settings
 	ManagedVirtualNetworkSettings *ManagedVirtualNetworkSettings `pulumi:"managedVirtualNetworkSettings"`
 	// Private endpoint connections to the workspace
-	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnection `pulumi:"privateEndpointConnections"`
 	// Enable or Disable public network access to workspace
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Purview Configuration
@@ -190,7 +190,7 @@ type WorkspaceArgs struct {
 	// Managed Virtual Network Settings
 	ManagedVirtualNetworkSettings ManagedVirtualNetworkSettingsPtrInput
 	// Private endpoint connections to the workspace
-	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
+	PrivateEndpointConnections PrivateEndpointConnectionArrayInput
 	// Enable or Disable public network access to workspace
 	PublicNetworkAccess pulumi.StringPtrInput
 	// Purview Configuration

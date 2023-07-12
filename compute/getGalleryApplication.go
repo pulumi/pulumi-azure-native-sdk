@@ -11,7 +11,7 @@ import (
 )
 
 // Retrieves information about a gallery Application Definition.
-// API Version: 2020-09-30.
+// Azure REST API version: 2022-03-03.
 func LookupGalleryApplication(ctx *pulumi.Context, args *LookupGalleryApplicationArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationResult, error) {
 	var rv LookupGalleryApplicationResult
 	err := ctx.Invoke("azure-native:compute:getGalleryApplication", args, &rv, opts...)
@@ -32,6 +32,8 @@ type LookupGalleryApplicationArgs struct {
 
 // Specifies information about the gallery Application Definition that you want to create or update.
 type LookupGalleryApplicationResult struct {
+	// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
+	CustomActions []GalleryApplicationCustomActionResponse `pulumi:"customActions"`
 	// The description of this gallery Application Definition resource. This property is updatable.
 	Description *string `pulumi:"description"`
 	// The end of life date of the gallery Application Definition. This property can be used for decommissioning purposes. This property is updatable.
@@ -95,6 +97,13 @@ func (o LookupGalleryApplicationResultOutput) ToLookupGalleryApplicationResultOu
 
 func (o LookupGalleryApplicationResultOutput) ToLookupGalleryApplicationResultOutputWithContext(ctx context.Context) LookupGalleryApplicationResultOutput {
 	return o
+}
+
+// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
+func (o LookupGalleryApplicationResultOutput) CustomActions() GalleryApplicationCustomActionResponseArrayOutput {
+	return o.ApplyT(func(v LookupGalleryApplicationResult) []GalleryApplicationCustomActionResponse {
+		return v.CustomActions
+	}).(GalleryApplicationCustomActionResponseArrayOutput)
 }
 
 // The description of this gallery Application Definition resource. This property is updatable.

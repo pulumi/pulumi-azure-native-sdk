@@ -11,8 +11,6 @@ import (
 )
 
 // Gets details about the specified output.
-//
-// Deprecated: azure-native:streamanalytics/v20200301:Output is being removed in the next major version of this provider. Upgrade to at least azure-native:streamanalytics/v20211001preview:Output to guarantee forwards compatibility.
 func LookupOutput(ctx *pulumi.Context, args *LookupOutputArgs, opts ...pulumi.InvokeOption) (*LookupOutputResult, error) {
 	var rv LookupOutputResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20200301:getOutput", args, &rv, opts...)

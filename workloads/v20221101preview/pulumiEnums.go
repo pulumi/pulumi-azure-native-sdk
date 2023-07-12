@@ -3,68 +3,6 @@
 
 package v20221101preview
 
-// The type of file share config.
-type ConfigurationType string
-
-const (
-	ConfigurationTypeSkip           = ConfigurationType("Skip")
-	ConfigurationTypeCreateAndMount = ConfigurationType("CreateAndMount")
-	ConfigurationTypeMount          = ConfigurationType("Mount")
-)
-
-// Defines the disk sku name.
-type DiskSkuName string
-
-const (
-	DiskSkuName_Standard_LRS    = DiskSkuName("Standard_LRS")
-	DiskSkuName_Premium_LRS     = DiskSkuName("Premium_LRS")
-	DiskSkuName_StandardSSD_LRS = DiskSkuName("StandardSSD_LRS")
-	DiskSkuName_UltraSSD_LRS    = DiskSkuName("UltraSSD_LRS")
-	DiskSkuName_Premium_ZRS     = DiskSkuName("Premium_ZRS")
-	DiskSkuName_StandardSSD_ZRS = DiskSkuName("StandardSSD_ZRS")
-	DiskSkuName_PremiumV2_LRS   = DiskSkuName("PremiumV2_LRS")
-)
-
-// Type of manage identity
-type ManagedServiceIdentityType string
-
-const (
-	ManagedServiceIdentityTypeNone         = ManagedServiceIdentityType("None")
-	ManagedServiceIdentityTypeUserAssigned = ManagedServiceIdentityType("UserAssigned")
-)
-
-// The pattern type to be used for resource naming.
-type NamingPatternType string
-
-const (
-	NamingPatternTypeFullResourceName = NamingPatternType("FullResourceName")
-)
-
-// The OS Type
-type OSType string
-
-const (
-	OSTypeLinux   = OSType("Linux")
-	OSTypeWindows = OSType("Windows")
-)
-
-// Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
-type RoutingPreference string
-
-const (
-	RoutingPreferenceDefault  = RoutingPreference("Default")
-	RoutingPreferenceRouteAll = RoutingPreference("RouteAll")
-)
-
-// The configuration Type.
-type SAPConfigurationType string
-
-const (
-	SAPConfigurationTypeDeployment             = SAPConfigurationType("Deployment")
-	SAPConfigurationTypeDiscovery              = SAPConfigurationType("Discovery")
-	SAPConfigurationTypeDeploymentWithOSConfig = SAPConfigurationType("DeploymentWithOSConfig")
-)
-
 // The DB scale method.
 type SAPDatabaseScaleMethod string
 
@@ -111,24 +49,6 @@ const (
 	SAPProductTypeECC    = SAPProductType("ECC")
 	SAPProductTypeS4HANA = SAPProductType("S4HANA")
 	SAPProductTypeOther  = SAPProductType("Other")
-)
-
-// The SAP software installation Type.
-type SAPSoftwareInstallationType string
-
-const (
-	SAPSoftwareInstallationTypeServiceInitiated          = SAPSoftwareInstallationType("ServiceInitiated")
-	SAPSoftwareInstallationTypeSAPInstallWithoutOSConfig = SAPSoftwareInstallationType("SAPInstallWithoutOSConfig")
-	SAPSoftwareInstallationTypeExternal                  = SAPSoftwareInstallationType("External")
-)
-
-// Gets or sets certificate preference if secure communication is enabled.
-type SslPreference string
-
-const (
-	SslPreferenceDisabled          = SslPreference("Disabled")
-	SslPreferenceRootCertificate   = SslPreference("RootCertificate")
-	SslPreferenceServerCertificate = SslPreference("ServerCertificate")
 )
 
 func init() {
