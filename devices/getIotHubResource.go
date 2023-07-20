@@ -11,7 +11,7 @@ import (
 )
 
 // Get the non-security related metadata of an IoT hub.
-// Azure REST API version: 2022-11-15-preview.
+// Azure REST API version: 2022-04-30-preview.
 func LookupIotHubResource(ctx *pulumi.Context, args *LookupIotHubResourceArgs, opts ...pulumi.InvokeOption) (*LookupIotHubResourceResult, error) {
 	var rv LookupIotHubResourceResult
 	err := ctx.Invoke("azure-native:devices:getIotHubResource", args, &rv, opts...)

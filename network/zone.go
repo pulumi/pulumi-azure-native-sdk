@@ -12,7 +12,7 @@ import (
 )
 
 // Describes a DNS zone.
-// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 1.x: 2018-05-01
+// Azure REST API version: 2018-05-01. Prior API version in Azure Native 1.x: 2018-05-01
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -34,10 +34,6 @@ type Zone struct {
 	RegistrationVirtualNetworks SubResourceResponseArrayOutput `pulumi:"registrationVirtualNetworks"`
 	// A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
 	ResolutionVirtualNetworks SubResourceResponseArrayOutput `pulumi:"resolutionVirtualNetworks"`
-	// The list of signing keys.
-	SigningKeys SigningKeyResponseArrayOutput `pulumi:"signingKeys"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
@@ -121,7 +117,7 @@ type zoneArgs struct {
 	RegistrationVirtualNetworks []SubResource `pulumi:"registrationVirtualNetworks"`
 	// A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
 	ResolutionVirtualNetworks []SubResource `pulumi:"resolutionVirtualNetworks"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -139,7 +135,7 @@ type ZoneArgs struct {
 	RegistrationVirtualNetworks SubResourceArrayInput
 	// A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
 	ResolutionVirtualNetworks SubResourceArrayInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -229,16 +225,6 @@ func (o ZoneOutput) RegistrationVirtualNetworks() SubResourceResponseArrayOutput
 // A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
 func (o ZoneOutput) ResolutionVirtualNetworks() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v *Zone) SubResourceResponseArrayOutput { return v.ResolutionVirtualNetworks }).(SubResourceResponseArrayOutput)
-}
-
-// The list of signing keys.
-func (o ZoneOutput) SigningKeys() SigningKeyResponseArrayOutput {
-	return o.ApplyT(func(v *Zone) SigningKeyResponseArrayOutput { return v.SigningKeys }).(SigningKeyResponseArrayOutput)
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-func (o ZoneOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Zone) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

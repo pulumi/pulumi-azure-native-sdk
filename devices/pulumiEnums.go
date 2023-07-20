@@ -584,15 +584,6 @@ func (in *ipFilterTargetTypePtr) ToIpFilterTargetTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IpFilterTargetTypePtrOutput)
 }
 
-// This property specifies the IP Version the hub is currently utilizing.
-type IpVersion string
-
-const (
-	IpVersionIpv4     = IpVersion("ipv4")
-	IpVersionIpv6     = IpVersion("ipv6")
-	IpVersionIpv4ipv6 = IpVersion("ipv4ipv6")
-)
-
 // IP Filter Action
 type NetworkRuleIPAction string
 

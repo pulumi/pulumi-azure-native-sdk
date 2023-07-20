@@ -12,7 +12,7 @@ import (
 )
 
 // The properties of the EventHubConsumerGroupInfo object.
-// Azure REST API version: 2022-11-15-preview. Prior API version in Azure Native 1.x: 2020-08-31
+// Azure REST API version: 2022-04-30-preview. Prior API version in Azure Native 1.x: 2020-08-31
 type IotHubResourceEventHubConsumerGroup struct {
 	pulumi.CustomResourceState
 
