@@ -1849,6 +1849,184 @@ func (o BgpConfigurationResponsePtrOutput) PeerASN() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Dynamic match configuration object.
+type CommonDynamicMatchConfiguration struct {
+	// List of IP Groups.
+	IpGroups []IpGroupProperties `pulumi:"ipGroups"`
+	// List of the port group.
+	PortGroups []PortGroupProperties `pulumi:"portGroups"`
+	// List of vlan groups.
+	VlanGroups []VlanGroupProperties `pulumi:"vlanGroups"`
+}
+
+// CommonDynamicMatchConfigurationInput is an input type that accepts CommonDynamicMatchConfigurationArgs and CommonDynamicMatchConfigurationOutput values.
+// You can construct a concrete instance of `CommonDynamicMatchConfigurationInput` via:
+//
+//	CommonDynamicMatchConfigurationArgs{...}
+type CommonDynamicMatchConfigurationInput interface {
+	pulumi.Input
+
+	ToCommonDynamicMatchConfigurationOutput() CommonDynamicMatchConfigurationOutput
+	ToCommonDynamicMatchConfigurationOutputWithContext(context.Context) CommonDynamicMatchConfigurationOutput
+}
+
+// Dynamic match configuration object.
+type CommonDynamicMatchConfigurationArgs struct {
+	// List of IP Groups.
+	IpGroups IpGroupPropertiesArrayInput `pulumi:"ipGroups"`
+	// List of the port group.
+	PortGroups PortGroupPropertiesArrayInput `pulumi:"portGroups"`
+	// List of vlan groups.
+	VlanGroups VlanGroupPropertiesArrayInput `pulumi:"vlanGroups"`
+}
+
+func (CommonDynamicMatchConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonDynamicMatchConfiguration)(nil)).Elem()
+}
+
+func (i CommonDynamicMatchConfigurationArgs) ToCommonDynamicMatchConfigurationOutput() CommonDynamicMatchConfigurationOutput {
+	return i.ToCommonDynamicMatchConfigurationOutputWithContext(context.Background())
+}
+
+func (i CommonDynamicMatchConfigurationArgs) ToCommonDynamicMatchConfigurationOutputWithContext(ctx context.Context) CommonDynamicMatchConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonDynamicMatchConfigurationOutput)
+}
+
+// CommonDynamicMatchConfigurationArrayInput is an input type that accepts CommonDynamicMatchConfigurationArray and CommonDynamicMatchConfigurationArrayOutput values.
+// You can construct a concrete instance of `CommonDynamicMatchConfigurationArrayInput` via:
+//
+//	CommonDynamicMatchConfigurationArray{ CommonDynamicMatchConfigurationArgs{...} }
+type CommonDynamicMatchConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToCommonDynamicMatchConfigurationArrayOutput() CommonDynamicMatchConfigurationArrayOutput
+	ToCommonDynamicMatchConfigurationArrayOutputWithContext(context.Context) CommonDynamicMatchConfigurationArrayOutput
+}
+
+type CommonDynamicMatchConfigurationArray []CommonDynamicMatchConfigurationInput
+
+func (CommonDynamicMatchConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommonDynamicMatchConfiguration)(nil)).Elem()
+}
+
+func (i CommonDynamicMatchConfigurationArray) ToCommonDynamicMatchConfigurationArrayOutput() CommonDynamicMatchConfigurationArrayOutput {
+	return i.ToCommonDynamicMatchConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i CommonDynamicMatchConfigurationArray) ToCommonDynamicMatchConfigurationArrayOutputWithContext(ctx context.Context) CommonDynamicMatchConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonDynamicMatchConfigurationArrayOutput)
+}
+
+// Dynamic match configuration object.
+type CommonDynamicMatchConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CommonDynamicMatchConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonDynamicMatchConfiguration)(nil)).Elem()
+}
+
+func (o CommonDynamicMatchConfigurationOutput) ToCommonDynamicMatchConfigurationOutput() CommonDynamicMatchConfigurationOutput {
+	return o
+}
+
+func (o CommonDynamicMatchConfigurationOutput) ToCommonDynamicMatchConfigurationOutputWithContext(ctx context.Context) CommonDynamicMatchConfigurationOutput {
+	return o
+}
+
+// List of IP Groups.
+func (o CommonDynamicMatchConfigurationOutput) IpGroups() IpGroupPropertiesArrayOutput {
+	return o.ApplyT(func(v CommonDynamicMatchConfiguration) []IpGroupProperties { return v.IpGroups }).(IpGroupPropertiesArrayOutput)
+}
+
+// List of the port group.
+func (o CommonDynamicMatchConfigurationOutput) PortGroups() PortGroupPropertiesArrayOutput {
+	return o.ApplyT(func(v CommonDynamicMatchConfiguration) []PortGroupProperties { return v.PortGroups }).(PortGroupPropertiesArrayOutput)
+}
+
+// List of vlan groups.
+func (o CommonDynamicMatchConfigurationOutput) VlanGroups() VlanGroupPropertiesArrayOutput {
+	return o.ApplyT(func(v CommonDynamicMatchConfiguration) []VlanGroupProperties { return v.VlanGroups }).(VlanGroupPropertiesArrayOutput)
+}
+
+type CommonDynamicMatchConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (CommonDynamicMatchConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommonDynamicMatchConfiguration)(nil)).Elem()
+}
+
+func (o CommonDynamicMatchConfigurationArrayOutput) ToCommonDynamicMatchConfigurationArrayOutput() CommonDynamicMatchConfigurationArrayOutput {
+	return o
+}
+
+func (o CommonDynamicMatchConfigurationArrayOutput) ToCommonDynamicMatchConfigurationArrayOutputWithContext(ctx context.Context) CommonDynamicMatchConfigurationArrayOutput {
+	return o
+}
+
+func (o CommonDynamicMatchConfigurationArrayOutput) Index(i pulumi.IntInput) CommonDynamicMatchConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommonDynamicMatchConfiguration {
+		return vs[0].([]CommonDynamicMatchConfiguration)[vs[1].(int)]
+	}).(CommonDynamicMatchConfigurationOutput)
+}
+
+// Dynamic match configuration object.
+type CommonDynamicMatchConfigurationResponse struct {
+	// List of IP Groups.
+	IpGroups []IpGroupPropertiesResponse `pulumi:"ipGroups"`
+	// List of the port group.
+	PortGroups []PortGroupPropertiesResponse `pulumi:"portGroups"`
+	// List of vlan groups.
+	VlanGroups []VlanGroupPropertiesResponse `pulumi:"vlanGroups"`
+}
+
+// Dynamic match configuration object.
+type CommonDynamicMatchConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonDynamicMatchConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonDynamicMatchConfigurationResponse)(nil)).Elem()
+}
+
+func (o CommonDynamicMatchConfigurationResponseOutput) ToCommonDynamicMatchConfigurationResponseOutput() CommonDynamicMatchConfigurationResponseOutput {
+	return o
+}
+
+func (o CommonDynamicMatchConfigurationResponseOutput) ToCommonDynamicMatchConfigurationResponseOutputWithContext(ctx context.Context) CommonDynamicMatchConfigurationResponseOutput {
+	return o
+}
+
+// List of IP Groups.
+func (o CommonDynamicMatchConfigurationResponseOutput) IpGroups() IpGroupPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v CommonDynamicMatchConfigurationResponse) []IpGroupPropertiesResponse { return v.IpGroups }).(IpGroupPropertiesResponseArrayOutput)
+}
+
+// List of the port group.
+func (o CommonDynamicMatchConfigurationResponseOutput) PortGroups() PortGroupPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v CommonDynamicMatchConfigurationResponse) []PortGroupPropertiesResponse { return v.PortGroups }).(PortGroupPropertiesResponseArrayOutput)
+}
+
+// List of vlan groups.
+func (o CommonDynamicMatchConfigurationResponseOutput) VlanGroups() VlanGroupPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v CommonDynamicMatchConfigurationResponse) []VlanGroupPropertiesResponse { return v.VlanGroups }).(VlanGroupPropertiesResponseArrayOutput)
+}
+
+type CommonDynamicMatchConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CommonDynamicMatchConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommonDynamicMatchConfigurationResponse)(nil)).Elem()
+}
+
+func (o CommonDynamicMatchConfigurationResponseArrayOutput) ToCommonDynamicMatchConfigurationResponseArrayOutput() CommonDynamicMatchConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o CommonDynamicMatchConfigurationResponseArrayOutput) ToCommonDynamicMatchConfigurationResponseArrayOutputWithContext(ctx context.Context) CommonDynamicMatchConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o CommonDynamicMatchConfigurationResponseArrayOutput) Index(i pulumi.IntInput) CommonDynamicMatchConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommonDynamicMatchConfigurationResponse {
+		return vs[0].([]CommonDynamicMatchConfigurationResponse)[vs[1].(int)]
+	}).(CommonDynamicMatchConfigurationResponseOutput)
+}
+
 // Connected Subnet properties.
 type ConnectedSubnet struct {
 	// Switch configuration description.
@@ -2009,6 +2187,207 @@ func (o ConnectedSubnetResponseArrayOutput) Index(i pulumi.IntInput) ConnectedSu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectedSubnetResponse {
 		return vs[0].([]ConnectedSubnetResponse)[vs[1].(int)]
 	}).(ConnectedSubnetResponseOutput)
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponse struct {
+	// The additional info.
+	Info interface{} `pulumi:"info"`
+	// The additional info type.
+	Type string `pulumi:"type"`
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+// The additional info.
+func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
+}
+
+// The additional info type.
+func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
+		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
+	}).(ErrorAdditionalInfoResponseOutput)
+}
+
+// The error detail.
+type ErrorDetailResponse struct {
+	// The error additional info.
+	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error details.
+	Details []ErrorDetailResponse `pulumi:"details"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target string `pulumi:"target"`
+}
+
+// The error detail.
+type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResponseOutput {
+	return o
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
+	return o
+}
+
+// The error additional info.
+func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutput() ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutputWithContext(ctx context.Context) ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) Elem() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) ErrorDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorDetailResponse
+		return ret
+	}).(ErrorDetailResponseOutput)
+}
+
+// The error additional info.
+func (o ErrorDetailResponsePtrOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorAdditionalInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalInfo
+	}).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponsePtrOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
+		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
+	}).(ErrorDetailResponseOutput)
 }
 
 // The ExpressRoute circuit ID and the Auth Key are required for you to successfully deploy NFC service.
@@ -3408,6 +3787,492 @@ func (o IpExtendedCommunityIdListResponsePtrOutput) IpExtendedCommunityIds() pul
 	}).(pulumi.StringArrayOutput)
 }
 
+// IP Group properties.
+type IpGroupProperties struct {
+	// IP Address type.
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// List of IP Prefixes.
+	IpPrefixes []string `pulumi:"ipPrefixes"`
+	// IP Group name.
+	Name *string `pulumi:"name"`
+}
+
+// IpGroupPropertiesInput is an input type that accepts IpGroupPropertiesArgs and IpGroupPropertiesOutput values.
+// You can construct a concrete instance of `IpGroupPropertiesInput` via:
+//
+//	IpGroupPropertiesArgs{...}
+type IpGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToIpGroupPropertiesOutput() IpGroupPropertiesOutput
+	ToIpGroupPropertiesOutputWithContext(context.Context) IpGroupPropertiesOutput
+}
+
+// IP Group properties.
+type IpGroupPropertiesArgs struct {
+	// IP Address type.
+	IpAddressType pulumi.StringPtrInput `pulumi:"ipAddressType"`
+	// List of IP Prefixes.
+	IpPrefixes pulumi.StringArrayInput `pulumi:"ipPrefixes"`
+	// IP Group name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (IpGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpGroupProperties)(nil)).Elem()
+}
+
+func (i IpGroupPropertiesArgs) ToIpGroupPropertiesOutput() IpGroupPropertiesOutput {
+	return i.ToIpGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i IpGroupPropertiesArgs) ToIpGroupPropertiesOutputWithContext(ctx context.Context) IpGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpGroupPropertiesOutput)
+}
+
+// IpGroupPropertiesArrayInput is an input type that accepts IpGroupPropertiesArray and IpGroupPropertiesArrayOutput values.
+// You can construct a concrete instance of `IpGroupPropertiesArrayInput` via:
+//
+//	IpGroupPropertiesArray{ IpGroupPropertiesArgs{...} }
+type IpGroupPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToIpGroupPropertiesArrayOutput() IpGroupPropertiesArrayOutput
+	ToIpGroupPropertiesArrayOutputWithContext(context.Context) IpGroupPropertiesArrayOutput
+}
+
+type IpGroupPropertiesArray []IpGroupPropertiesInput
+
+func (IpGroupPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpGroupProperties)(nil)).Elem()
+}
+
+func (i IpGroupPropertiesArray) ToIpGroupPropertiesArrayOutput() IpGroupPropertiesArrayOutput {
+	return i.ToIpGroupPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i IpGroupPropertiesArray) ToIpGroupPropertiesArrayOutputWithContext(ctx context.Context) IpGroupPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpGroupPropertiesArrayOutput)
+}
+
+// IP Group properties.
+type IpGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IpGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpGroupProperties)(nil)).Elem()
+}
+
+func (o IpGroupPropertiesOutput) ToIpGroupPropertiesOutput() IpGroupPropertiesOutput {
+	return o
+}
+
+func (o IpGroupPropertiesOutput) ToIpGroupPropertiesOutputWithContext(ctx context.Context) IpGroupPropertiesOutput {
+	return o
+}
+
+// IP Address type.
+func (o IpGroupPropertiesOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpGroupProperties) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// List of IP Prefixes.
+func (o IpGroupPropertiesOutput) IpPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpGroupProperties) []string { return v.IpPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// IP Group name.
+func (o IpGroupPropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpGroupProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type IpGroupPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (IpGroupPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpGroupProperties)(nil)).Elem()
+}
+
+func (o IpGroupPropertiesArrayOutput) ToIpGroupPropertiesArrayOutput() IpGroupPropertiesArrayOutput {
+	return o
+}
+
+func (o IpGroupPropertiesArrayOutput) ToIpGroupPropertiesArrayOutputWithContext(ctx context.Context) IpGroupPropertiesArrayOutput {
+	return o
+}
+
+func (o IpGroupPropertiesArrayOutput) Index(i pulumi.IntInput) IpGroupPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpGroupProperties {
+		return vs[0].([]IpGroupProperties)[vs[1].(int)]
+	}).(IpGroupPropertiesOutput)
+}
+
+// IP Group properties.
+type IpGroupPropertiesResponse struct {
+	// IP Address type.
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// List of IP Prefixes.
+	IpPrefixes []string `pulumi:"ipPrefixes"`
+	// IP Group name.
+	Name *string `pulumi:"name"`
+}
+
+// IP Group properties.
+type IpGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IpGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o IpGroupPropertiesResponseOutput) ToIpGroupPropertiesResponseOutput() IpGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o IpGroupPropertiesResponseOutput) ToIpGroupPropertiesResponseOutputWithContext(ctx context.Context) IpGroupPropertiesResponseOutput {
+	return o
+}
+
+// IP Address type.
+func (o IpGroupPropertiesResponseOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpGroupPropertiesResponse) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// List of IP Prefixes.
+func (o IpGroupPropertiesResponseOutput) IpPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpGroupPropertiesResponse) []string { return v.IpPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// IP Group name.
+func (o IpGroupPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpGroupPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type IpGroupPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IpGroupPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o IpGroupPropertiesResponseArrayOutput) ToIpGroupPropertiesResponseArrayOutput() IpGroupPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o IpGroupPropertiesResponseArrayOutput) ToIpGroupPropertiesResponseArrayOutputWithContext(ctx context.Context) IpGroupPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o IpGroupPropertiesResponseArrayOutput) Index(i pulumi.IntInput) IpGroupPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpGroupPropertiesResponse {
+		return vs[0].([]IpGroupPropertiesResponse)[vs[1].(int)]
+	}).(IpGroupPropertiesResponseOutput)
+}
+
+// Defines the condition that can be filtered using the selected IPs.
+type IpMatchCondition struct {
+	// The List of IP Group Names that need to be matched.
+	IpGroupNames []string `pulumi:"ipGroupNames"`
+	// The list of IP Prefixes.
+	IpPrefixValues []string `pulumi:"ipPrefixValues"`
+	// IP Prefix Type.
+	PrefixType *string `pulumi:"prefixType"`
+	// IP Address type.
+	Type *string `pulumi:"type"`
+}
+
+// IpMatchConditionInput is an input type that accepts IpMatchConditionArgs and IpMatchConditionOutput values.
+// You can construct a concrete instance of `IpMatchConditionInput` via:
+//
+//	IpMatchConditionArgs{...}
+type IpMatchConditionInput interface {
+	pulumi.Input
+
+	ToIpMatchConditionOutput() IpMatchConditionOutput
+	ToIpMatchConditionOutputWithContext(context.Context) IpMatchConditionOutput
+}
+
+// Defines the condition that can be filtered using the selected IPs.
+type IpMatchConditionArgs struct {
+	// The List of IP Group Names that need to be matched.
+	IpGroupNames pulumi.StringArrayInput `pulumi:"ipGroupNames"`
+	// The list of IP Prefixes.
+	IpPrefixValues pulumi.StringArrayInput `pulumi:"ipPrefixValues"`
+	// IP Prefix Type.
+	PrefixType pulumi.StringPtrInput `pulumi:"prefixType"`
+	// IP Address type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (IpMatchConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpMatchCondition)(nil)).Elem()
+}
+
+func (i IpMatchConditionArgs) ToIpMatchConditionOutput() IpMatchConditionOutput {
+	return i.ToIpMatchConditionOutputWithContext(context.Background())
+}
+
+func (i IpMatchConditionArgs) ToIpMatchConditionOutputWithContext(ctx context.Context) IpMatchConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpMatchConditionOutput)
+}
+
+func (i IpMatchConditionArgs) ToIpMatchConditionPtrOutput() IpMatchConditionPtrOutput {
+	return i.ToIpMatchConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IpMatchConditionArgs) ToIpMatchConditionPtrOutputWithContext(ctx context.Context) IpMatchConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpMatchConditionOutput).ToIpMatchConditionPtrOutputWithContext(ctx)
+}
+
+// IpMatchConditionPtrInput is an input type that accepts IpMatchConditionArgs, IpMatchConditionPtr and IpMatchConditionPtrOutput values.
+// You can construct a concrete instance of `IpMatchConditionPtrInput` via:
+//
+//	        IpMatchConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpMatchConditionPtrInput interface {
+	pulumi.Input
+
+	ToIpMatchConditionPtrOutput() IpMatchConditionPtrOutput
+	ToIpMatchConditionPtrOutputWithContext(context.Context) IpMatchConditionPtrOutput
+}
+
+type ipMatchConditionPtrType IpMatchConditionArgs
+
+func IpMatchConditionPtr(v *IpMatchConditionArgs) IpMatchConditionPtrInput {
+	return (*ipMatchConditionPtrType)(v)
+}
+
+func (*ipMatchConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpMatchCondition)(nil)).Elem()
+}
+
+func (i *ipMatchConditionPtrType) ToIpMatchConditionPtrOutput() IpMatchConditionPtrOutput {
+	return i.ToIpMatchConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *ipMatchConditionPtrType) ToIpMatchConditionPtrOutputWithContext(ctx context.Context) IpMatchConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpMatchConditionPtrOutput)
+}
+
+// Defines the condition that can be filtered using the selected IPs.
+type IpMatchConditionOutput struct{ *pulumi.OutputState }
+
+func (IpMatchConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpMatchCondition)(nil)).Elem()
+}
+
+func (o IpMatchConditionOutput) ToIpMatchConditionOutput() IpMatchConditionOutput {
+	return o
+}
+
+func (o IpMatchConditionOutput) ToIpMatchConditionOutputWithContext(ctx context.Context) IpMatchConditionOutput {
+	return o
+}
+
+func (o IpMatchConditionOutput) ToIpMatchConditionPtrOutput() IpMatchConditionPtrOutput {
+	return o.ToIpMatchConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IpMatchConditionOutput) ToIpMatchConditionPtrOutputWithContext(ctx context.Context) IpMatchConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpMatchCondition) *IpMatchCondition {
+		return &v
+	}).(IpMatchConditionPtrOutput)
+}
+
+// The List of IP Group Names that need to be matched.
+func (o IpMatchConditionOutput) IpGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpMatchCondition) []string { return v.IpGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// The list of IP Prefixes.
+func (o IpMatchConditionOutput) IpPrefixValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpMatchCondition) []string { return v.IpPrefixValues }).(pulumi.StringArrayOutput)
+}
+
+// IP Prefix Type.
+func (o IpMatchConditionOutput) PrefixType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpMatchCondition) *string { return v.PrefixType }).(pulumi.StringPtrOutput)
+}
+
+// IP Address type.
+func (o IpMatchConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpMatchCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type IpMatchConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IpMatchConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpMatchCondition)(nil)).Elem()
+}
+
+func (o IpMatchConditionPtrOutput) ToIpMatchConditionPtrOutput() IpMatchConditionPtrOutput {
+	return o
+}
+
+func (o IpMatchConditionPtrOutput) ToIpMatchConditionPtrOutputWithContext(ctx context.Context) IpMatchConditionPtrOutput {
+	return o
+}
+
+func (o IpMatchConditionPtrOutput) Elem() IpMatchConditionOutput {
+	return o.ApplyT(func(v *IpMatchCondition) IpMatchCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IpMatchCondition
+		return ret
+	}).(IpMatchConditionOutput)
+}
+
+// The List of IP Group Names that need to be matched.
+func (o IpMatchConditionPtrOutput) IpGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IpMatchCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of IP Prefixes.
+func (o IpMatchConditionPtrOutput) IpPrefixValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IpMatchCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpPrefixValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// IP Prefix Type.
+func (o IpMatchConditionPtrOutput) PrefixType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpMatchCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixType
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP Address type.
+func (o IpMatchConditionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpMatchCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the condition that can be filtered using the selected IPs.
+type IpMatchConditionResponse struct {
+	// The List of IP Group Names that need to be matched.
+	IpGroupNames []string `pulumi:"ipGroupNames"`
+	// The list of IP Prefixes.
+	IpPrefixValues []string `pulumi:"ipPrefixValues"`
+	// IP Prefix Type.
+	PrefixType *string `pulumi:"prefixType"`
+	// IP Address type.
+	Type *string `pulumi:"type"`
+}
+
+// Defines the condition that can be filtered using the selected IPs.
+type IpMatchConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (IpMatchConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpMatchConditionResponse)(nil)).Elem()
+}
+
+func (o IpMatchConditionResponseOutput) ToIpMatchConditionResponseOutput() IpMatchConditionResponseOutput {
+	return o
+}
+
+func (o IpMatchConditionResponseOutput) ToIpMatchConditionResponseOutputWithContext(ctx context.Context) IpMatchConditionResponseOutput {
+	return o
+}
+
+// The List of IP Group Names that need to be matched.
+func (o IpMatchConditionResponseOutput) IpGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpMatchConditionResponse) []string { return v.IpGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// The list of IP Prefixes.
+func (o IpMatchConditionResponseOutput) IpPrefixValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpMatchConditionResponse) []string { return v.IpPrefixValues }).(pulumi.StringArrayOutput)
+}
+
+// IP Prefix Type.
+func (o IpMatchConditionResponseOutput) PrefixType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpMatchConditionResponse) *string { return v.PrefixType }).(pulumi.StringPtrOutput)
+}
+
+// IP Address type.
+func (o IpMatchConditionResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpMatchConditionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type IpMatchConditionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IpMatchConditionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpMatchConditionResponse)(nil)).Elem()
+}
+
+func (o IpMatchConditionResponsePtrOutput) ToIpMatchConditionResponsePtrOutput() IpMatchConditionResponsePtrOutput {
+	return o
+}
+
+func (o IpMatchConditionResponsePtrOutput) ToIpMatchConditionResponsePtrOutputWithContext(ctx context.Context) IpMatchConditionResponsePtrOutput {
+	return o
+}
+
+func (o IpMatchConditionResponsePtrOutput) Elem() IpMatchConditionResponseOutput {
+	return o.ApplyT(func(v *IpMatchConditionResponse) IpMatchConditionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IpMatchConditionResponse
+		return ret
+	}).(IpMatchConditionResponseOutput)
+}
+
+// The List of IP Group Names that need to be matched.
+func (o IpMatchConditionResponsePtrOutput) IpGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IpMatchConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of IP Prefixes.
+func (o IpMatchConditionResponsePtrOutput) IpPrefixValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IpMatchConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpPrefixValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// IP Prefix Type.
+func (o IpMatchConditionResponsePtrOutput) PrefixType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpMatchConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixType
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP Address type.
+func (o IpMatchConditionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpMatchConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type IpPrefixPropertiesIpPrefixRules struct {
 	// Action to be taken on the configuration. Example: Permit | Deny.
 	Action string `pulumi:"action"`
@@ -3611,6 +4476,242 @@ func (o IpPrefixPropertiesResponseIpPrefixRulesArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpPrefixPropertiesResponseIpPrefixRules {
 		return vs[0].([]IpPrefixPropertiesResponseIpPrefixRules)[vs[1].(int)]
 	}).(IpPrefixPropertiesResponseIpPrefixRulesOutput)
+}
+
+// Isolation Domain Properties.
+type IsolationDomainProperties struct {
+	// Type of encapsulation.
+	Encapsulation *string `pulumi:"encapsulation"`
+	// List of Neighbor Group IDs.
+	NeighborGroupIds []string `pulumi:"neighborGroupIds"`
+}
+
+// IsolationDomainPropertiesInput is an input type that accepts IsolationDomainPropertiesArgs and IsolationDomainPropertiesOutput values.
+// You can construct a concrete instance of `IsolationDomainPropertiesInput` via:
+//
+//	IsolationDomainPropertiesArgs{...}
+type IsolationDomainPropertiesInput interface {
+	pulumi.Input
+
+	ToIsolationDomainPropertiesOutput() IsolationDomainPropertiesOutput
+	ToIsolationDomainPropertiesOutputWithContext(context.Context) IsolationDomainPropertiesOutput
+}
+
+// Isolation Domain Properties.
+type IsolationDomainPropertiesArgs struct {
+	// Type of encapsulation.
+	Encapsulation pulumi.StringPtrInput `pulumi:"encapsulation"`
+	// List of Neighbor Group IDs.
+	NeighborGroupIds pulumi.StringArrayInput `pulumi:"neighborGroupIds"`
+}
+
+func (IsolationDomainPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsolationDomainProperties)(nil)).Elem()
+}
+
+func (i IsolationDomainPropertiesArgs) ToIsolationDomainPropertiesOutput() IsolationDomainPropertiesOutput {
+	return i.ToIsolationDomainPropertiesOutputWithContext(context.Background())
+}
+
+func (i IsolationDomainPropertiesArgs) ToIsolationDomainPropertiesOutputWithContext(ctx context.Context) IsolationDomainPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IsolationDomainPropertiesOutput)
+}
+
+func (i IsolationDomainPropertiesArgs) ToIsolationDomainPropertiesPtrOutput() IsolationDomainPropertiesPtrOutput {
+	return i.ToIsolationDomainPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IsolationDomainPropertiesArgs) ToIsolationDomainPropertiesPtrOutputWithContext(ctx context.Context) IsolationDomainPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IsolationDomainPropertiesOutput).ToIsolationDomainPropertiesPtrOutputWithContext(ctx)
+}
+
+// IsolationDomainPropertiesPtrInput is an input type that accepts IsolationDomainPropertiesArgs, IsolationDomainPropertiesPtr and IsolationDomainPropertiesPtrOutput values.
+// You can construct a concrete instance of `IsolationDomainPropertiesPtrInput` via:
+//
+//	        IsolationDomainPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IsolationDomainPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIsolationDomainPropertiesPtrOutput() IsolationDomainPropertiesPtrOutput
+	ToIsolationDomainPropertiesPtrOutputWithContext(context.Context) IsolationDomainPropertiesPtrOutput
+}
+
+type isolationDomainPropertiesPtrType IsolationDomainPropertiesArgs
+
+func IsolationDomainPropertiesPtr(v *IsolationDomainPropertiesArgs) IsolationDomainPropertiesPtrInput {
+	return (*isolationDomainPropertiesPtrType)(v)
+}
+
+func (*isolationDomainPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IsolationDomainProperties)(nil)).Elem()
+}
+
+func (i *isolationDomainPropertiesPtrType) ToIsolationDomainPropertiesPtrOutput() IsolationDomainPropertiesPtrOutput {
+	return i.ToIsolationDomainPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *isolationDomainPropertiesPtrType) ToIsolationDomainPropertiesPtrOutputWithContext(ctx context.Context) IsolationDomainPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IsolationDomainPropertiesPtrOutput)
+}
+
+// Isolation Domain Properties.
+type IsolationDomainPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IsolationDomainPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsolationDomainProperties)(nil)).Elem()
+}
+
+func (o IsolationDomainPropertiesOutput) ToIsolationDomainPropertiesOutput() IsolationDomainPropertiesOutput {
+	return o
+}
+
+func (o IsolationDomainPropertiesOutput) ToIsolationDomainPropertiesOutputWithContext(ctx context.Context) IsolationDomainPropertiesOutput {
+	return o
+}
+
+func (o IsolationDomainPropertiesOutput) ToIsolationDomainPropertiesPtrOutput() IsolationDomainPropertiesPtrOutput {
+	return o.ToIsolationDomainPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IsolationDomainPropertiesOutput) ToIsolationDomainPropertiesPtrOutputWithContext(ctx context.Context) IsolationDomainPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IsolationDomainProperties) *IsolationDomainProperties {
+		return &v
+	}).(IsolationDomainPropertiesPtrOutput)
+}
+
+// Type of encapsulation.
+func (o IsolationDomainPropertiesOutput) Encapsulation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsolationDomainProperties) *string { return v.Encapsulation }).(pulumi.StringPtrOutput)
+}
+
+// List of Neighbor Group IDs.
+func (o IsolationDomainPropertiesOutput) NeighborGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IsolationDomainProperties) []string { return v.NeighborGroupIds }).(pulumi.StringArrayOutput)
+}
+
+type IsolationDomainPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IsolationDomainPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IsolationDomainProperties)(nil)).Elem()
+}
+
+func (o IsolationDomainPropertiesPtrOutput) ToIsolationDomainPropertiesPtrOutput() IsolationDomainPropertiesPtrOutput {
+	return o
+}
+
+func (o IsolationDomainPropertiesPtrOutput) ToIsolationDomainPropertiesPtrOutputWithContext(ctx context.Context) IsolationDomainPropertiesPtrOutput {
+	return o
+}
+
+func (o IsolationDomainPropertiesPtrOutput) Elem() IsolationDomainPropertiesOutput {
+	return o.ApplyT(func(v *IsolationDomainProperties) IsolationDomainProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IsolationDomainProperties
+		return ret
+	}).(IsolationDomainPropertiesOutput)
+}
+
+// Type of encapsulation.
+func (o IsolationDomainPropertiesPtrOutput) Encapsulation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IsolationDomainProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encapsulation
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Neighbor Group IDs.
+func (o IsolationDomainPropertiesPtrOutput) NeighborGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IsolationDomainProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NeighborGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Isolation Domain Properties.
+type IsolationDomainPropertiesResponse struct {
+	// Type of encapsulation.
+	Encapsulation *string `pulumi:"encapsulation"`
+	// List of Neighbor Group IDs.
+	NeighborGroupIds []string `pulumi:"neighborGroupIds"`
+}
+
+// Isolation Domain Properties.
+type IsolationDomainPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IsolationDomainPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsolationDomainPropertiesResponse)(nil)).Elem()
+}
+
+func (o IsolationDomainPropertiesResponseOutput) ToIsolationDomainPropertiesResponseOutput() IsolationDomainPropertiesResponseOutput {
+	return o
+}
+
+func (o IsolationDomainPropertiesResponseOutput) ToIsolationDomainPropertiesResponseOutputWithContext(ctx context.Context) IsolationDomainPropertiesResponseOutput {
+	return o
+}
+
+// Type of encapsulation.
+func (o IsolationDomainPropertiesResponseOutput) Encapsulation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsolationDomainPropertiesResponse) *string { return v.Encapsulation }).(pulumi.StringPtrOutput)
+}
+
+// List of Neighbor Group IDs.
+func (o IsolationDomainPropertiesResponseOutput) NeighborGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IsolationDomainPropertiesResponse) []string { return v.NeighborGroupIds }).(pulumi.StringArrayOutput)
+}
+
+type IsolationDomainPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IsolationDomainPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IsolationDomainPropertiesResponse)(nil)).Elem()
+}
+
+func (o IsolationDomainPropertiesResponsePtrOutput) ToIsolationDomainPropertiesResponsePtrOutput() IsolationDomainPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IsolationDomainPropertiesResponsePtrOutput) ToIsolationDomainPropertiesResponsePtrOutputWithContext(ctx context.Context) IsolationDomainPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IsolationDomainPropertiesResponsePtrOutput) Elem() IsolationDomainPropertiesResponseOutput {
+	return o.ApplyT(func(v *IsolationDomainPropertiesResponse) IsolationDomainPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IsolationDomainPropertiesResponse
+		return ret
+	}).(IsolationDomainPropertiesResponseOutput)
+}
+
+// Type of encapsulation.
+func (o IsolationDomainPropertiesResponsePtrOutput) Encapsulation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IsolationDomainPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encapsulation
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Neighbor Group IDs.
+func (o IsolationDomainPropertiesResponsePtrOutput) NeighborGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IsolationDomainPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NeighborGroupIds
+	}).(pulumi.StringArrayOutput)
 }
 
 // Connected Subnet RoutePolicy
@@ -5120,6 +6221,986 @@ func (o NeighborAddressResponseArrayOutput) Index(i pulumi.IntInput) NeighborAdd
 	}).(NeighborAddressResponseOutput)
 }
 
+// An array of destination IPv4 Addresses or IPv6 Addresses.
+type NeighborGroupDestination struct {
+	// Array of IPv4 Addresses.
+	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
+	// Array of IPv6 Addresses.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
+}
+
+// NeighborGroupDestinationInput is an input type that accepts NeighborGroupDestinationArgs and NeighborGroupDestinationOutput values.
+// You can construct a concrete instance of `NeighborGroupDestinationInput` via:
+//
+//	NeighborGroupDestinationArgs{...}
+type NeighborGroupDestinationInput interface {
+	pulumi.Input
+
+	ToNeighborGroupDestinationOutput() NeighborGroupDestinationOutput
+	ToNeighborGroupDestinationOutputWithContext(context.Context) NeighborGroupDestinationOutput
+}
+
+// An array of destination IPv4 Addresses or IPv6 Addresses.
+type NeighborGroupDestinationArgs struct {
+	// Array of IPv4 Addresses.
+	Ipv4Addresses pulumi.StringArrayInput `pulumi:"ipv4Addresses"`
+	// Array of IPv6 Addresses.
+	Ipv6Addresses pulumi.StringArrayInput `pulumi:"ipv6Addresses"`
+}
+
+func (NeighborGroupDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NeighborGroupDestination)(nil)).Elem()
+}
+
+func (i NeighborGroupDestinationArgs) ToNeighborGroupDestinationOutput() NeighborGroupDestinationOutput {
+	return i.ToNeighborGroupDestinationOutputWithContext(context.Background())
+}
+
+func (i NeighborGroupDestinationArgs) ToNeighborGroupDestinationOutputWithContext(ctx context.Context) NeighborGroupDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NeighborGroupDestinationOutput)
+}
+
+// An array of destination IPv4 Addresses or IPv6 Addresses.
+type NeighborGroupDestinationOutput struct{ *pulumi.OutputState }
+
+func (NeighborGroupDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NeighborGroupDestination)(nil)).Elem()
+}
+
+func (o NeighborGroupDestinationOutput) ToNeighborGroupDestinationOutput() NeighborGroupDestinationOutput {
+	return o
+}
+
+func (o NeighborGroupDestinationOutput) ToNeighborGroupDestinationOutputWithContext(ctx context.Context) NeighborGroupDestinationOutput {
+	return o
+}
+
+// Array of IPv4 Addresses.
+func (o NeighborGroupDestinationOutput) Ipv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NeighborGroupDestination) []string { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Array of IPv6 Addresses.
+func (o NeighborGroupDestinationOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NeighborGroupDestination) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// An array of destination IPv4 Addresses or IPv6 Addresses.
+type NeighborGroupDestinationResponse struct {
+	// Array of IPv4 Addresses.
+	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
+	// Array of IPv6 Addresses.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
+}
+
+// An array of destination IPv4 Addresses or IPv6 Addresses.
+type NeighborGroupDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (NeighborGroupDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NeighborGroupDestinationResponse)(nil)).Elem()
+}
+
+func (o NeighborGroupDestinationResponseOutput) ToNeighborGroupDestinationResponseOutput() NeighborGroupDestinationResponseOutput {
+	return o
+}
+
+func (o NeighborGroupDestinationResponseOutput) ToNeighborGroupDestinationResponseOutputWithContext(ctx context.Context) NeighborGroupDestinationResponseOutput {
+	return o
+}
+
+// Array of IPv4 Addresses.
+func (o NeighborGroupDestinationResponseOutput) Ipv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NeighborGroupDestinationResponse) []string { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Array of IPv6 Addresses.
+func (o NeighborGroupDestinationResponseOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NeighborGroupDestinationResponse) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Destination.
+type NetworkTapPropertiesDestinations struct {
+	// The destination Id. ARM Resource ID of either NNI or Internal Networks.
+	DestinationId string `pulumi:"destinationId"`
+	// ARM Resource ID of destination Tap Rule that contains match configurations.
+	DestinationTapRuleId *string `pulumi:"destinationTapRuleId"`
+	// Type of destination. Input can be IsolationDomain or Direct.
+	DestinationType string `pulumi:"destinationType"`
+	// Isolation Domain Properties.
+	IsolationDomainProperties *IsolationDomainProperties `pulumi:"isolationDomainProperties"`
+	// Destination name.
+	Name string `pulumi:"name"`
+}
+
+// NetworkTapPropertiesDestinationsInput is an input type that accepts NetworkTapPropertiesDestinationsArgs and NetworkTapPropertiesDestinationsOutput values.
+// You can construct a concrete instance of `NetworkTapPropertiesDestinationsInput` via:
+//
+//	NetworkTapPropertiesDestinationsArgs{...}
+type NetworkTapPropertiesDestinationsInput interface {
+	pulumi.Input
+
+	ToNetworkTapPropertiesDestinationsOutput() NetworkTapPropertiesDestinationsOutput
+	ToNetworkTapPropertiesDestinationsOutputWithContext(context.Context) NetworkTapPropertiesDestinationsOutput
+}
+
+// Destination.
+type NetworkTapPropertiesDestinationsArgs struct {
+	// The destination Id. ARM Resource ID of either NNI or Internal Networks.
+	DestinationId pulumi.StringInput `pulumi:"destinationId"`
+	// ARM Resource ID of destination Tap Rule that contains match configurations.
+	DestinationTapRuleId pulumi.StringPtrInput `pulumi:"destinationTapRuleId"`
+	// Type of destination. Input can be IsolationDomain or Direct.
+	DestinationType pulumi.StringInput `pulumi:"destinationType"`
+	// Isolation Domain Properties.
+	IsolationDomainProperties IsolationDomainPropertiesPtrInput `pulumi:"isolationDomainProperties"`
+	// Destination name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (NetworkTapPropertiesDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapPropertiesDestinations)(nil)).Elem()
+}
+
+func (i NetworkTapPropertiesDestinationsArgs) ToNetworkTapPropertiesDestinationsOutput() NetworkTapPropertiesDestinationsOutput {
+	return i.ToNetworkTapPropertiesDestinationsOutputWithContext(context.Background())
+}
+
+func (i NetworkTapPropertiesDestinationsArgs) ToNetworkTapPropertiesDestinationsOutputWithContext(ctx context.Context) NetworkTapPropertiesDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapPropertiesDestinationsOutput)
+}
+
+// NetworkTapPropertiesDestinationsArrayInput is an input type that accepts NetworkTapPropertiesDestinationsArray and NetworkTapPropertiesDestinationsArrayOutput values.
+// You can construct a concrete instance of `NetworkTapPropertiesDestinationsArrayInput` via:
+//
+//	NetworkTapPropertiesDestinationsArray{ NetworkTapPropertiesDestinationsArgs{...} }
+type NetworkTapPropertiesDestinationsArrayInput interface {
+	pulumi.Input
+
+	ToNetworkTapPropertiesDestinationsArrayOutput() NetworkTapPropertiesDestinationsArrayOutput
+	ToNetworkTapPropertiesDestinationsArrayOutputWithContext(context.Context) NetworkTapPropertiesDestinationsArrayOutput
+}
+
+type NetworkTapPropertiesDestinationsArray []NetworkTapPropertiesDestinationsInput
+
+func (NetworkTapPropertiesDestinationsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapPropertiesDestinations)(nil)).Elem()
+}
+
+func (i NetworkTapPropertiesDestinationsArray) ToNetworkTapPropertiesDestinationsArrayOutput() NetworkTapPropertiesDestinationsArrayOutput {
+	return i.ToNetworkTapPropertiesDestinationsArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkTapPropertiesDestinationsArray) ToNetworkTapPropertiesDestinationsArrayOutputWithContext(ctx context.Context) NetworkTapPropertiesDestinationsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapPropertiesDestinationsArrayOutput)
+}
+
+// Destination.
+type NetworkTapPropertiesDestinationsOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapPropertiesDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapPropertiesDestinations)(nil)).Elem()
+}
+
+func (o NetworkTapPropertiesDestinationsOutput) ToNetworkTapPropertiesDestinationsOutput() NetworkTapPropertiesDestinationsOutput {
+	return o
+}
+
+func (o NetworkTapPropertiesDestinationsOutput) ToNetworkTapPropertiesDestinationsOutputWithContext(ctx context.Context) NetworkTapPropertiesDestinationsOutput {
+	return o
+}
+
+// The destination Id. ARM Resource ID of either NNI or Internal Networks.
+func (o NetworkTapPropertiesDestinationsOutput) DestinationId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesDestinations) string { return v.DestinationId }).(pulumi.StringOutput)
+}
+
+// ARM Resource ID of destination Tap Rule that contains match configurations.
+func (o NetworkTapPropertiesDestinationsOutput) DestinationTapRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesDestinations) *string { return v.DestinationTapRuleId }).(pulumi.StringPtrOutput)
+}
+
+// Type of destination. Input can be IsolationDomain or Direct.
+func (o NetworkTapPropertiesDestinationsOutput) DestinationType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesDestinations) string { return v.DestinationType }).(pulumi.StringOutput)
+}
+
+// Isolation Domain Properties.
+func (o NetworkTapPropertiesDestinationsOutput) IsolationDomainProperties() IsolationDomainPropertiesPtrOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesDestinations) *IsolationDomainProperties {
+		return v.IsolationDomainProperties
+	}).(IsolationDomainPropertiesPtrOutput)
+}
+
+// Destination name.
+func (o NetworkTapPropertiesDestinationsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesDestinations) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NetworkTapPropertiesDestinationsArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapPropertiesDestinationsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapPropertiesDestinations)(nil)).Elem()
+}
+
+func (o NetworkTapPropertiesDestinationsArrayOutput) ToNetworkTapPropertiesDestinationsArrayOutput() NetworkTapPropertiesDestinationsArrayOutput {
+	return o
+}
+
+func (o NetworkTapPropertiesDestinationsArrayOutput) ToNetworkTapPropertiesDestinationsArrayOutputWithContext(ctx context.Context) NetworkTapPropertiesDestinationsArrayOutput {
+	return o
+}
+
+func (o NetworkTapPropertiesDestinationsArrayOutput) Index(i pulumi.IntInput) NetworkTapPropertiesDestinationsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkTapPropertiesDestinations {
+		return vs[0].([]NetworkTapPropertiesDestinations)[vs[1].(int)]
+	}).(NetworkTapPropertiesDestinationsOutput)
+}
+
+// Destination.
+type NetworkTapPropertiesResponseDestinations struct {
+	// The destination Id. ARM Resource ID of either NNI or Internal Networks.
+	DestinationId string `pulumi:"destinationId"`
+	// ARM Resource ID of destination Tap Rule that contains match configurations.
+	DestinationTapRuleId *string `pulumi:"destinationTapRuleId"`
+	// Type of destination. Input can be IsolationDomain or Direct.
+	DestinationType string `pulumi:"destinationType"`
+	// Isolation Domain Properties.
+	IsolationDomainProperties *IsolationDomainPropertiesResponse `pulumi:"isolationDomainProperties"`
+	// Destination name.
+	Name string `pulumi:"name"`
+}
+
+// Destination.
+type NetworkTapPropertiesResponseDestinationsOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapPropertiesResponseDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapPropertiesResponseDestinations)(nil)).Elem()
+}
+
+func (o NetworkTapPropertiesResponseDestinationsOutput) ToNetworkTapPropertiesResponseDestinationsOutput() NetworkTapPropertiesResponseDestinationsOutput {
+	return o
+}
+
+func (o NetworkTapPropertiesResponseDestinationsOutput) ToNetworkTapPropertiesResponseDestinationsOutputWithContext(ctx context.Context) NetworkTapPropertiesResponseDestinationsOutput {
+	return o
+}
+
+// The destination Id. ARM Resource ID of either NNI or Internal Networks.
+func (o NetworkTapPropertiesResponseDestinationsOutput) DestinationId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesResponseDestinations) string { return v.DestinationId }).(pulumi.StringOutput)
+}
+
+// ARM Resource ID of destination Tap Rule that contains match configurations.
+func (o NetworkTapPropertiesResponseDestinationsOutput) DestinationTapRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesResponseDestinations) *string { return v.DestinationTapRuleId }).(pulumi.StringPtrOutput)
+}
+
+// Type of destination. Input can be IsolationDomain or Direct.
+func (o NetworkTapPropertiesResponseDestinationsOutput) DestinationType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesResponseDestinations) string { return v.DestinationType }).(pulumi.StringOutput)
+}
+
+// Isolation Domain Properties.
+func (o NetworkTapPropertiesResponseDestinationsOutput) IsolationDomainProperties() IsolationDomainPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesResponseDestinations) *IsolationDomainPropertiesResponse {
+		return v.IsolationDomainProperties
+	}).(IsolationDomainPropertiesResponsePtrOutput)
+}
+
+// Destination name.
+func (o NetworkTapPropertiesResponseDestinationsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkTapPropertiesResponseDestinations) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NetworkTapPropertiesResponseDestinationsArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapPropertiesResponseDestinationsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapPropertiesResponseDestinations)(nil)).Elem()
+}
+
+func (o NetworkTapPropertiesResponseDestinationsArrayOutput) ToNetworkTapPropertiesResponseDestinationsArrayOutput() NetworkTapPropertiesResponseDestinationsArrayOutput {
+	return o
+}
+
+func (o NetworkTapPropertiesResponseDestinationsArrayOutput) ToNetworkTapPropertiesResponseDestinationsArrayOutputWithContext(ctx context.Context) NetworkTapPropertiesResponseDestinationsArrayOutput {
+	return o
+}
+
+func (o NetworkTapPropertiesResponseDestinationsArrayOutput) Index(i pulumi.IntInput) NetworkTapPropertiesResponseDestinationsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkTapPropertiesResponseDestinations {
+		return vs[0].([]NetworkTapPropertiesResponseDestinations)[vs[1].(int)]
+	}).(NetworkTapPropertiesResponseDestinationsOutput)
+}
+
+// Action that need to performed.
+type NetworkTapRuleAction struct {
+	// Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup.
+	DestinationId *string `pulumi:"destinationId"`
+	// The parameter to enable or disable the timestamp.
+	IsTimestampEnabled *string `pulumi:"isTimestampEnabled"`
+	// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration name is provided. It goes to next configuration.
+	MatchConfigurationName *string `pulumi:"matchConfigurationName"`
+	// Truncate. 0 indicates do not truncate.
+	Truncate *string `pulumi:"truncate"`
+	// Type of actions that can be performed.
+	Type *string `pulumi:"type"`
+}
+
+// NetworkTapRuleActionInput is an input type that accepts NetworkTapRuleActionArgs and NetworkTapRuleActionOutput values.
+// You can construct a concrete instance of `NetworkTapRuleActionInput` via:
+//
+//	NetworkTapRuleActionArgs{...}
+type NetworkTapRuleActionInput interface {
+	pulumi.Input
+
+	ToNetworkTapRuleActionOutput() NetworkTapRuleActionOutput
+	ToNetworkTapRuleActionOutputWithContext(context.Context) NetworkTapRuleActionOutput
+}
+
+// Action that need to performed.
+type NetworkTapRuleActionArgs struct {
+	// Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup.
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	// The parameter to enable or disable the timestamp.
+	IsTimestampEnabled pulumi.StringPtrInput `pulumi:"isTimestampEnabled"`
+	// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration name is provided. It goes to next configuration.
+	MatchConfigurationName pulumi.StringPtrInput `pulumi:"matchConfigurationName"`
+	// Truncate. 0 indicates do not truncate.
+	Truncate pulumi.StringPtrInput `pulumi:"truncate"`
+	// Type of actions that can be performed.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NetworkTapRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleAction)(nil)).Elem()
+}
+
+func (i NetworkTapRuleActionArgs) ToNetworkTapRuleActionOutput() NetworkTapRuleActionOutput {
+	return i.ToNetworkTapRuleActionOutputWithContext(context.Background())
+}
+
+func (i NetworkTapRuleActionArgs) ToNetworkTapRuleActionOutputWithContext(ctx context.Context) NetworkTapRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapRuleActionOutput)
+}
+
+// NetworkTapRuleActionArrayInput is an input type that accepts NetworkTapRuleActionArray and NetworkTapRuleActionArrayOutput values.
+// You can construct a concrete instance of `NetworkTapRuleActionArrayInput` via:
+//
+//	NetworkTapRuleActionArray{ NetworkTapRuleActionArgs{...} }
+type NetworkTapRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToNetworkTapRuleActionArrayOutput() NetworkTapRuleActionArrayOutput
+	ToNetworkTapRuleActionArrayOutputWithContext(context.Context) NetworkTapRuleActionArrayOutput
+}
+
+type NetworkTapRuleActionArray []NetworkTapRuleActionInput
+
+func (NetworkTapRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleAction)(nil)).Elem()
+}
+
+func (i NetworkTapRuleActionArray) ToNetworkTapRuleActionArrayOutput() NetworkTapRuleActionArrayOutput {
+	return i.ToNetworkTapRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkTapRuleActionArray) ToNetworkTapRuleActionArrayOutputWithContext(ctx context.Context) NetworkTapRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapRuleActionArrayOutput)
+}
+
+// Action that need to performed.
+type NetworkTapRuleActionOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleAction)(nil)).Elem()
+}
+
+func (o NetworkTapRuleActionOutput) ToNetworkTapRuleActionOutput() NetworkTapRuleActionOutput {
+	return o
+}
+
+func (o NetworkTapRuleActionOutput) ToNetworkTapRuleActionOutputWithContext(ctx context.Context) NetworkTapRuleActionOutput {
+	return o
+}
+
+// Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup.
+func (o NetworkTapRuleActionOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleAction) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+// The parameter to enable or disable the timestamp.
+func (o NetworkTapRuleActionOutput) IsTimestampEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleAction) *string { return v.IsTimestampEnabled }).(pulumi.StringPtrOutput)
+}
+
+// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration name is provided. It goes to next configuration.
+func (o NetworkTapRuleActionOutput) MatchConfigurationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleAction) *string { return v.MatchConfigurationName }).(pulumi.StringPtrOutput)
+}
+
+// Truncate. 0 indicates do not truncate.
+func (o NetworkTapRuleActionOutput) Truncate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleAction) *string { return v.Truncate }).(pulumi.StringPtrOutput)
+}
+
+// Type of actions that can be performed.
+func (o NetworkTapRuleActionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleAction) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NetworkTapRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleAction)(nil)).Elem()
+}
+
+func (o NetworkTapRuleActionArrayOutput) ToNetworkTapRuleActionArrayOutput() NetworkTapRuleActionArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleActionArrayOutput) ToNetworkTapRuleActionArrayOutputWithContext(ctx context.Context) NetworkTapRuleActionArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleActionArrayOutput) Index(i pulumi.IntInput) NetworkTapRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkTapRuleAction {
+		return vs[0].([]NetworkTapRuleAction)[vs[1].(int)]
+	}).(NetworkTapRuleActionOutput)
+}
+
+// Action that need to performed.
+type NetworkTapRuleActionResponse struct {
+	// Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup.
+	DestinationId *string `pulumi:"destinationId"`
+	// The parameter to enable or disable the timestamp.
+	IsTimestampEnabled *string `pulumi:"isTimestampEnabled"`
+	// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration name is provided. It goes to next configuration.
+	MatchConfigurationName *string `pulumi:"matchConfigurationName"`
+	// Truncate. 0 indicates do not truncate.
+	Truncate *string `pulumi:"truncate"`
+	// Type of actions that can be performed.
+	Type *string `pulumi:"type"`
+}
+
+// Action that need to performed.
+type NetworkTapRuleActionResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleActionResponse)(nil)).Elem()
+}
+
+func (o NetworkTapRuleActionResponseOutput) ToNetworkTapRuleActionResponseOutput() NetworkTapRuleActionResponseOutput {
+	return o
+}
+
+func (o NetworkTapRuleActionResponseOutput) ToNetworkTapRuleActionResponseOutputWithContext(ctx context.Context) NetworkTapRuleActionResponseOutput {
+	return o
+}
+
+// Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup.
+func (o NetworkTapRuleActionResponseOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleActionResponse) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+// The parameter to enable or disable the timestamp.
+func (o NetworkTapRuleActionResponseOutput) IsTimestampEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleActionResponse) *string { return v.IsTimestampEnabled }).(pulumi.StringPtrOutput)
+}
+
+// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration name is provided. It goes to next configuration.
+func (o NetworkTapRuleActionResponseOutput) MatchConfigurationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleActionResponse) *string { return v.MatchConfigurationName }).(pulumi.StringPtrOutput)
+}
+
+// Truncate. 0 indicates do not truncate.
+func (o NetworkTapRuleActionResponseOutput) Truncate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleActionResponse) *string { return v.Truncate }).(pulumi.StringPtrOutput)
+}
+
+// Type of actions that can be performed.
+func (o NetworkTapRuleActionResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleActionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NetworkTapRuleActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleActionResponse)(nil)).Elem()
+}
+
+func (o NetworkTapRuleActionResponseArrayOutput) ToNetworkTapRuleActionResponseArrayOutput() NetworkTapRuleActionResponseArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleActionResponseArrayOutput) ToNetworkTapRuleActionResponseArrayOutputWithContext(ctx context.Context) NetworkTapRuleActionResponseArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleActionResponseArrayOutput) Index(i pulumi.IntInput) NetworkTapRuleActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkTapRuleActionResponse {
+		return vs[0].([]NetworkTapRuleActionResponse)[vs[1].(int)]
+	}).(NetworkTapRuleActionResponseOutput)
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type NetworkTapRuleMatchCondition struct {
+	// Encapsulation Type.
+	EncapsulationType *string `pulumi:"encapsulationType"`
+	// IP condition that needs to be matched.
+	IpCondition *IpMatchCondition `pulumi:"ipCondition"`
+	// Defines the port condition that needs to be matched.
+	PortCondition *PortCondition `pulumi:"portCondition"`
+	// List of the protocols that need to be matched.
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// Vlan match condition that needs to be matched.
+	VlanMatchCondition *VlanMatchCondition `pulumi:"vlanMatchCondition"`
+}
+
+// Defaults sets the appropriate defaults for NetworkTapRuleMatchCondition
+func (val *NetworkTapRuleMatchCondition) Defaults() *NetworkTapRuleMatchCondition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EncapsulationType == nil {
+		encapsulationType_ := "None"
+		tmp.EncapsulationType = &encapsulationType_
+	}
+	return &tmp
+}
+
+// NetworkTapRuleMatchConditionInput is an input type that accepts NetworkTapRuleMatchConditionArgs and NetworkTapRuleMatchConditionOutput values.
+// You can construct a concrete instance of `NetworkTapRuleMatchConditionInput` via:
+//
+//	NetworkTapRuleMatchConditionArgs{...}
+type NetworkTapRuleMatchConditionInput interface {
+	pulumi.Input
+
+	ToNetworkTapRuleMatchConditionOutput() NetworkTapRuleMatchConditionOutput
+	ToNetworkTapRuleMatchConditionOutputWithContext(context.Context) NetworkTapRuleMatchConditionOutput
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type NetworkTapRuleMatchConditionArgs struct {
+	// Encapsulation Type.
+	EncapsulationType pulumi.StringPtrInput `pulumi:"encapsulationType"`
+	// IP condition that needs to be matched.
+	IpCondition IpMatchConditionPtrInput `pulumi:"ipCondition"`
+	// Defines the port condition that needs to be matched.
+	PortCondition PortConditionPtrInput `pulumi:"portCondition"`
+	// List of the protocols that need to be matched.
+	ProtocolTypes pulumi.StringArrayInput `pulumi:"protocolTypes"`
+	// Vlan match condition that needs to be matched.
+	VlanMatchCondition VlanMatchConditionPtrInput `pulumi:"vlanMatchCondition"`
+}
+
+// Defaults sets the appropriate defaults for NetworkTapRuleMatchConditionArgs
+func (val *NetworkTapRuleMatchConditionArgs) Defaults() *NetworkTapRuleMatchConditionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EncapsulationType == nil {
+		tmp.EncapsulationType = pulumi.StringPtr("None")
+	}
+	return &tmp
+}
+func (NetworkTapRuleMatchConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleMatchCondition)(nil)).Elem()
+}
+
+func (i NetworkTapRuleMatchConditionArgs) ToNetworkTapRuleMatchConditionOutput() NetworkTapRuleMatchConditionOutput {
+	return i.ToNetworkTapRuleMatchConditionOutputWithContext(context.Background())
+}
+
+func (i NetworkTapRuleMatchConditionArgs) ToNetworkTapRuleMatchConditionOutputWithContext(ctx context.Context) NetworkTapRuleMatchConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapRuleMatchConditionOutput)
+}
+
+// NetworkTapRuleMatchConditionArrayInput is an input type that accepts NetworkTapRuleMatchConditionArray and NetworkTapRuleMatchConditionArrayOutput values.
+// You can construct a concrete instance of `NetworkTapRuleMatchConditionArrayInput` via:
+//
+//	NetworkTapRuleMatchConditionArray{ NetworkTapRuleMatchConditionArgs{...} }
+type NetworkTapRuleMatchConditionArrayInput interface {
+	pulumi.Input
+
+	ToNetworkTapRuleMatchConditionArrayOutput() NetworkTapRuleMatchConditionArrayOutput
+	ToNetworkTapRuleMatchConditionArrayOutputWithContext(context.Context) NetworkTapRuleMatchConditionArrayOutput
+}
+
+type NetworkTapRuleMatchConditionArray []NetworkTapRuleMatchConditionInput
+
+func (NetworkTapRuleMatchConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleMatchCondition)(nil)).Elem()
+}
+
+func (i NetworkTapRuleMatchConditionArray) ToNetworkTapRuleMatchConditionArrayOutput() NetworkTapRuleMatchConditionArrayOutput {
+	return i.ToNetworkTapRuleMatchConditionArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkTapRuleMatchConditionArray) ToNetworkTapRuleMatchConditionArrayOutputWithContext(ctx context.Context) NetworkTapRuleMatchConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapRuleMatchConditionArrayOutput)
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type NetworkTapRuleMatchConditionOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleMatchConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleMatchCondition)(nil)).Elem()
+}
+
+func (o NetworkTapRuleMatchConditionOutput) ToNetworkTapRuleMatchConditionOutput() NetworkTapRuleMatchConditionOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConditionOutput) ToNetworkTapRuleMatchConditionOutputWithContext(ctx context.Context) NetworkTapRuleMatchConditionOutput {
+	return o
+}
+
+// Encapsulation Type.
+func (o NetworkTapRuleMatchConditionOutput) EncapsulationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchCondition) *string { return v.EncapsulationType }).(pulumi.StringPtrOutput)
+}
+
+// IP condition that needs to be matched.
+func (o NetworkTapRuleMatchConditionOutput) IpCondition() IpMatchConditionPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchCondition) *IpMatchCondition { return v.IpCondition }).(IpMatchConditionPtrOutput)
+}
+
+// Defines the port condition that needs to be matched.
+func (o NetworkTapRuleMatchConditionOutput) PortCondition() PortConditionPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchCondition) *PortCondition { return v.PortCondition }).(PortConditionPtrOutput)
+}
+
+// List of the protocols that need to be matched.
+func (o NetworkTapRuleMatchConditionOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchCondition) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
+}
+
+// Vlan match condition that needs to be matched.
+func (o NetworkTapRuleMatchConditionOutput) VlanMatchCondition() VlanMatchConditionPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchCondition) *VlanMatchCondition { return v.VlanMatchCondition }).(VlanMatchConditionPtrOutput)
+}
+
+type NetworkTapRuleMatchConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleMatchConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleMatchCondition)(nil)).Elem()
+}
+
+func (o NetworkTapRuleMatchConditionArrayOutput) ToNetworkTapRuleMatchConditionArrayOutput() NetworkTapRuleMatchConditionArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConditionArrayOutput) ToNetworkTapRuleMatchConditionArrayOutputWithContext(ctx context.Context) NetworkTapRuleMatchConditionArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConditionArrayOutput) Index(i pulumi.IntInput) NetworkTapRuleMatchConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkTapRuleMatchCondition {
+		return vs[0].([]NetworkTapRuleMatchCondition)[vs[1].(int)]
+	}).(NetworkTapRuleMatchConditionOutput)
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type NetworkTapRuleMatchConditionResponse struct {
+	// Encapsulation Type.
+	EncapsulationType *string `pulumi:"encapsulationType"`
+	// IP condition that needs to be matched.
+	IpCondition *IpMatchConditionResponse `pulumi:"ipCondition"`
+	// Defines the port condition that needs to be matched.
+	PortCondition *PortConditionResponse `pulumi:"portCondition"`
+	// List of the protocols that need to be matched.
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// Vlan match condition that needs to be matched.
+	VlanMatchCondition *VlanMatchConditionResponse `pulumi:"vlanMatchCondition"`
+}
+
+// Defaults sets the appropriate defaults for NetworkTapRuleMatchConditionResponse
+func (val *NetworkTapRuleMatchConditionResponse) Defaults() *NetworkTapRuleMatchConditionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EncapsulationType == nil {
+		encapsulationType_ := "None"
+		tmp.EncapsulationType = &encapsulationType_
+	}
+	return &tmp
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type NetworkTapRuleMatchConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleMatchConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleMatchConditionResponse)(nil)).Elem()
+}
+
+func (o NetworkTapRuleMatchConditionResponseOutput) ToNetworkTapRuleMatchConditionResponseOutput() NetworkTapRuleMatchConditionResponseOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConditionResponseOutput) ToNetworkTapRuleMatchConditionResponseOutputWithContext(ctx context.Context) NetworkTapRuleMatchConditionResponseOutput {
+	return o
+}
+
+// Encapsulation Type.
+func (o NetworkTapRuleMatchConditionResponseOutput) EncapsulationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConditionResponse) *string { return v.EncapsulationType }).(pulumi.StringPtrOutput)
+}
+
+// IP condition that needs to be matched.
+func (o NetworkTapRuleMatchConditionResponseOutput) IpCondition() IpMatchConditionResponsePtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConditionResponse) *IpMatchConditionResponse { return v.IpCondition }).(IpMatchConditionResponsePtrOutput)
+}
+
+// Defines the port condition that needs to be matched.
+func (o NetworkTapRuleMatchConditionResponseOutput) PortCondition() PortConditionResponsePtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConditionResponse) *PortConditionResponse { return v.PortCondition }).(PortConditionResponsePtrOutput)
+}
+
+// List of the protocols that need to be matched.
+func (o NetworkTapRuleMatchConditionResponseOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConditionResponse) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
+}
+
+// Vlan match condition that needs to be matched.
+func (o NetworkTapRuleMatchConditionResponseOutput) VlanMatchCondition() VlanMatchConditionResponsePtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConditionResponse) *VlanMatchConditionResponse { return v.VlanMatchCondition }).(VlanMatchConditionResponsePtrOutput)
+}
+
+type NetworkTapRuleMatchConditionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleMatchConditionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleMatchConditionResponse)(nil)).Elem()
+}
+
+func (o NetworkTapRuleMatchConditionResponseArrayOutput) ToNetworkTapRuleMatchConditionResponseArrayOutput() NetworkTapRuleMatchConditionResponseArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConditionResponseArrayOutput) ToNetworkTapRuleMatchConditionResponseArrayOutputWithContext(ctx context.Context) NetworkTapRuleMatchConditionResponseArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConditionResponseArrayOutput) Index(i pulumi.IntInput) NetworkTapRuleMatchConditionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkTapRuleMatchConditionResponse {
+		return vs[0].([]NetworkTapRuleMatchConditionResponse)[vs[1].(int)]
+	}).(NetworkTapRuleMatchConditionResponseOutput)
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type NetworkTapRuleMatchConfiguration struct {
+	// List of actions that need to be performed for the matched conditions.
+	Actions []NetworkTapRuleAction `pulumi:"actions"`
+	// Type of IP Address. IPv4 or IPv6
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// List of the match conditions.
+	MatchConditions []NetworkTapRuleMatchCondition `pulumi:"matchConditions"`
+	// The name of the match configuration.
+	MatchConfigurationName *string `pulumi:"matchConfigurationName"`
+	// Sequence Number of the match configuration..
+	SequenceNumber *float64 `pulumi:"sequenceNumber"`
+}
+
+// NetworkTapRuleMatchConfigurationInput is an input type that accepts NetworkTapRuleMatchConfigurationArgs and NetworkTapRuleMatchConfigurationOutput values.
+// You can construct a concrete instance of `NetworkTapRuleMatchConfigurationInput` via:
+//
+//	NetworkTapRuleMatchConfigurationArgs{...}
+type NetworkTapRuleMatchConfigurationInput interface {
+	pulumi.Input
+
+	ToNetworkTapRuleMatchConfigurationOutput() NetworkTapRuleMatchConfigurationOutput
+	ToNetworkTapRuleMatchConfigurationOutputWithContext(context.Context) NetworkTapRuleMatchConfigurationOutput
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type NetworkTapRuleMatchConfigurationArgs struct {
+	// List of actions that need to be performed for the matched conditions.
+	Actions NetworkTapRuleActionArrayInput `pulumi:"actions"`
+	// Type of IP Address. IPv4 or IPv6
+	IpAddressType pulumi.StringPtrInput `pulumi:"ipAddressType"`
+	// List of the match conditions.
+	MatchConditions NetworkTapRuleMatchConditionArrayInput `pulumi:"matchConditions"`
+	// The name of the match configuration.
+	MatchConfigurationName pulumi.StringPtrInput `pulumi:"matchConfigurationName"`
+	// Sequence Number of the match configuration..
+	SequenceNumber pulumi.Float64PtrInput `pulumi:"sequenceNumber"`
+}
+
+func (NetworkTapRuleMatchConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleMatchConfiguration)(nil)).Elem()
+}
+
+func (i NetworkTapRuleMatchConfigurationArgs) ToNetworkTapRuleMatchConfigurationOutput() NetworkTapRuleMatchConfigurationOutput {
+	return i.ToNetworkTapRuleMatchConfigurationOutputWithContext(context.Background())
+}
+
+func (i NetworkTapRuleMatchConfigurationArgs) ToNetworkTapRuleMatchConfigurationOutputWithContext(ctx context.Context) NetworkTapRuleMatchConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapRuleMatchConfigurationOutput)
+}
+
+// NetworkTapRuleMatchConfigurationArrayInput is an input type that accepts NetworkTapRuleMatchConfigurationArray and NetworkTapRuleMatchConfigurationArrayOutput values.
+// You can construct a concrete instance of `NetworkTapRuleMatchConfigurationArrayInput` via:
+//
+//	NetworkTapRuleMatchConfigurationArray{ NetworkTapRuleMatchConfigurationArgs{...} }
+type NetworkTapRuleMatchConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToNetworkTapRuleMatchConfigurationArrayOutput() NetworkTapRuleMatchConfigurationArrayOutput
+	ToNetworkTapRuleMatchConfigurationArrayOutputWithContext(context.Context) NetworkTapRuleMatchConfigurationArrayOutput
+}
+
+type NetworkTapRuleMatchConfigurationArray []NetworkTapRuleMatchConfigurationInput
+
+func (NetworkTapRuleMatchConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleMatchConfiguration)(nil)).Elem()
+}
+
+func (i NetworkTapRuleMatchConfigurationArray) ToNetworkTapRuleMatchConfigurationArrayOutput() NetworkTapRuleMatchConfigurationArrayOutput {
+	return i.ToNetworkTapRuleMatchConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkTapRuleMatchConfigurationArray) ToNetworkTapRuleMatchConfigurationArrayOutputWithContext(ctx context.Context) NetworkTapRuleMatchConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapRuleMatchConfigurationArrayOutput)
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type NetworkTapRuleMatchConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleMatchConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleMatchConfiguration)(nil)).Elem()
+}
+
+func (o NetworkTapRuleMatchConfigurationOutput) ToNetworkTapRuleMatchConfigurationOutput() NetworkTapRuleMatchConfigurationOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConfigurationOutput) ToNetworkTapRuleMatchConfigurationOutputWithContext(ctx context.Context) NetworkTapRuleMatchConfigurationOutput {
+	return o
+}
+
+// List of actions that need to be performed for the matched conditions.
+func (o NetworkTapRuleMatchConfigurationOutput) Actions() NetworkTapRuleActionArrayOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfiguration) []NetworkTapRuleAction { return v.Actions }).(NetworkTapRuleActionArrayOutput)
+}
+
+// Type of IP Address. IPv4 or IPv6
+func (o NetworkTapRuleMatchConfigurationOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfiguration) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// List of the match conditions.
+func (o NetworkTapRuleMatchConfigurationOutput) MatchConditions() NetworkTapRuleMatchConditionArrayOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfiguration) []NetworkTapRuleMatchCondition { return v.MatchConditions }).(NetworkTapRuleMatchConditionArrayOutput)
+}
+
+// The name of the match configuration.
+func (o NetworkTapRuleMatchConfigurationOutput) MatchConfigurationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfiguration) *string { return v.MatchConfigurationName }).(pulumi.StringPtrOutput)
+}
+
+// Sequence Number of the match configuration..
+func (o NetworkTapRuleMatchConfigurationOutput) SequenceNumber() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfiguration) *float64 { return v.SequenceNumber }).(pulumi.Float64PtrOutput)
+}
+
+type NetworkTapRuleMatchConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleMatchConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleMatchConfiguration)(nil)).Elem()
+}
+
+func (o NetworkTapRuleMatchConfigurationArrayOutput) ToNetworkTapRuleMatchConfigurationArrayOutput() NetworkTapRuleMatchConfigurationArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConfigurationArrayOutput) ToNetworkTapRuleMatchConfigurationArrayOutputWithContext(ctx context.Context) NetworkTapRuleMatchConfigurationArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConfigurationArrayOutput) Index(i pulumi.IntInput) NetworkTapRuleMatchConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkTapRuleMatchConfiguration {
+		return vs[0].([]NetworkTapRuleMatchConfiguration)[vs[1].(int)]
+	}).(NetworkTapRuleMatchConfigurationOutput)
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type NetworkTapRuleMatchConfigurationResponse struct {
+	// List of actions that need to be performed for the matched conditions.
+	Actions []NetworkTapRuleActionResponse `pulumi:"actions"`
+	// Type of IP Address. IPv4 or IPv6
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// List of the match conditions.
+	MatchConditions []NetworkTapRuleMatchConditionResponse `pulumi:"matchConditions"`
+	// The name of the match configuration.
+	MatchConfigurationName *string `pulumi:"matchConfigurationName"`
+	// Sequence Number of the match configuration..
+	SequenceNumber *float64 `pulumi:"sequenceNumber"`
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type NetworkTapRuleMatchConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleMatchConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTapRuleMatchConfigurationResponse)(nil)).Elem()
+}
+
+func (o NetworkTapRuleMatchConfigurationResponseOutput) ToNetworkTapRuleMatchConfigurationResponseOutput() NetworkTapRuleMatchConfigurationResponseOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConfigurationResponseOutput) ToNetworkTapRuleMatchConfigurationResponseOutputWithContext(ctx context.Context) NetworkTapRuleMatchConfigurationResponseOutput {
+	return o
+}
+
+// List of actions that need to be performed for the matched conditions.
+func (o NetworkTapRuleMatchConfigurationResponseOutput) Actions() NetworkTapRuleActionResponseArrayOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfigurationResponse) []NetworkTapRuleActionResponse { return v.Actions }).(NetworkTapRuleActionResponseArrayOutput)
+}
+
+// Type of IP Address. IPv4 or IPv6
+func (o NetworkTapRuleMatchConfigurationResponseOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfigurationResponse) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// List of the match conditions.
+func (o NetworkTapRuleMatchConfigurationResponseOutput) MatchConditions() NetworkTapRuleMatchConditionResponseArrayOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfigurationResponse) []NetworkTapRuleMatchConditionResponse {
+		return v.MatchConditions
+	}).(NetworkTapRuleMatchConditionResponseArrayOutput)
+}
+
+// The name of the match configuration.
+func (o NetworkTapRuleMatchConfigurationResponseOutput) MatchConfigurationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfigurationResponse) *string { return v.MatchConfigurationName }).(pulumi.StringPtrOutput)
+}
+
+// Sequence Number of the match configuration..
+func (o NetworkTapRuleMatchConfigurationResponseOutput) SequenceNumber() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NetworkTapRuleMatchConfigurationResponse) *float64 { return v.SequenceNumber }).(pulumi.Float64PtrOutput)
+}
+
+type NetworkTapRuleMatchConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkTapRuleMatchConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkTapRuleMatchConfigurationResponse)(nil)).Elem()
+}
+
+func (o NetworkTapRuleMatchConfigurationResponseArrayOutput) ToNetworkTapRuleMatchConfigurationResponseArrayOutput() NetworkTapRuleMatchConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConfigurationResponseArrayOutput) ToNetworkTapRuleMatchConfigurationResponseArrayOutputWithContext(ctx context.Context) NetworkTapRuleMatchConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o NetworkTapRuleMatchConfigurationResponseArrayOutput) Index(i pulumi.IntInput) NetworkTapRuleMatchConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkTapRuleMatchConfigurationResponse {
+		return vs[0].([]NetworkTapRuleMatchConfigurationResponse)[vs[1].(int)]
+	}).(NetworkTapRuleMatchConfigurationResponseOutput)
+}
+
 // Peering optionA properties
 type OptionAProperties struct {
 	// MTU to use for option A peering.
@@ -5826,6 +7907,476 @@ func (o OptionBPropertiesResponsePtrOutput) ImportRouteTargets() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+// Port condition that needs to be matched.
+type PortCondition struct {
+	// Layer4 protocol type that needs to be matched.
+	Layer4Protocol string `pulumi:"layer4Protocol"`
+	// List of the port Group Names that to be matched.
+	PortGroupNames []string `pulumi:"portGroupNames"`
+	// Port type that needs to be matched.
+	PortType *string `pulumi:"portType"`
+	// List of the Ports that need to be matched.
+	Ports []string `pulumi:"ports"`
+}
+
+// PortConditionInput is an input type that accepts PortConditionArgs and PortConditionOutput values.
+// You can construct a concrete instance of `PortConditionInput` via:
+//
+//	PortConditionArgs{...}
+type PortConditionInput interface {
+	pulumi.Input
+
+	ToPortConditionOutput() PortConditionOutput
+	ToPortConditionOutputWithContext(context.Context) PortConditionOutput
+}
+
+// Port condition that needs to be matched.
+type PortConditionArgs struct {
+	// Layer4 protocol type that needs to be matched.
+	Layer4Protocol pulumi.StringInput `pulumi:"layer4Protocol"`
+	// List of the port Group Names that to be matched.
+	PortGroupNames pulumi.StringArrayInput `pulumi:"portGroupNames"`
+	// Port type that needs to be matched.
+	PortType pulumi.StringPtrInput `pulumi:"portType"`
+	// List of the Ports that need to be matched.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (PortConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortCondition)(nil)).Elem()
+}
+
+func (i PortConditionArgs) ToPortConditionOutput() PortConditionOutput {
+	return i.ToPortConditionOutputWithContext(context.Background())
+}
+
+func (i PortConditionArgs) ToPortConditionOutputWithContext(ctx context.Context) PortConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortConditionOutput)
+}
+
+func (i PortConditionArgs) ToPortConditionPtrOutput() PortConditionPtrOutput {
+	return i.ToPortConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PortConditionArgs) ToPortConditionPtrOutputWithContext(ctx context.Context) PortConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortConditionOutput).ToPortConditionPtrOutputWithContext(ctx)
+}
+
+// PortConditionPtrInput is an input type that accepts PortConditionArgs, PortConditionPtr and PortConditionPtrOutput values.
+// You can construct a concrete instance of `PortConditionPtrInput` via:
+//
+//	        PortConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortConditionPtrInput interface {
+	pulumi.Input
+
+	ToPortConditionPtrOutput() PortConditionPtrOutput
+	ToPortConditionPtrOutputWithContext(context.Context) PortConditionPtrOutput
+}
+
+type portConditionPtrType PortConditionArgs
+
+func PortConditionPtr(v *PortConditionArgs) PortConditionPtrInput {
+	return (*portConditionPtrType)(v)
+}
+
+func (*portConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortCondition)(nil)).Elem()
+}
+
+func (i *portConditionPtrType) ToPortConditionPtrOutput() PortConditionPtrOutput {
+	return i.ToPortConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *portConditionPtrType) ToPortConditionPtrOutputWithContext(ctx context.Context) PortConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortConditionPtrOutput)
+}
+
+// Port condition that needs to be matched.
+type PortConditionOutput struct{ *pulumi.OutputState }
+
+func (PortConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortCondition)(nil)).Elem()
+}
+
+func (o PortConditionOutput) ToPortConditionOutput() PortConditionOutput {
+	return o
+}
+
+func (o PortConditionOutput) ToPortConditionOutputWithContext(ctx context.Context) PortConditionOutput {
+	return o
+}
+
+func (o PortConditionOutput) ToPortConditionPtrOutput() PortConditionPtrOutput {
+	return o.ToPortConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PortConditionOutput) ToPortConditionPtrOutputWithContext(ctx context.Context) PortConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortCondition) *PortCondition {
+		return &v
+	}).(PortConditionPtrOutput)
+}
+
+// Layer4 protocol type that needs to be matched.
+func (o PortConditionOutput) Layer4Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v PortCondition) string { return v.Layer4Protocol }).(pulumi.StringOutput)
+}
+
+// List of the port Group Names that to be matched.
+func (o PortConditionOutput) PortGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PortCondition) []string { return v.PortGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// Port type that needs to be matched.
+func (o PortConditionOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortCondition) *string { return v.PortType }).(pulumi.StringPtrOutput)
+}
+
+// List of the Ports that need to be matched.
+func (o PortConditionOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PortCondition) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type PortConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PortConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortCondition)(nil)).Elem()
+}
+
+func (o PortConditionPtrOutput) ToPortConditionPtrOutput() PortConditionPtrOutput {
+	return o
+}
+
+func (o PortConditionPtrOutput) ToPortConditionPtrOutputWithContext(ctx context.Context) PortConditionPtrOutput {
+	return o
+}
+
+func (o PortConditionPtrOutput) Elem() PortConditionOutput {
+	return o.ApplyT(func(v *PortCondition) PortCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PortCondition
+		return ret
+	}).(PortConditionOutput)
+}
+
+// Layer4 protocol type that needs to be matched.
+func (o PortConditionPtrOutput) Layer4Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Layer4Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of the port Group Names that to be matched.
+func (o PortConditionPtrOutput) PortGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PortCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PortGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Port type that needs to be matched.
+func (o PortConditionPtrOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of the Ports that need to be matched.
+func (o PortConditionPtrOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PortCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(pulumi.StringArrayOutput)
+}
+
+// Port condition that needs to be matched.
+type PortConditionResponse struct {
+	// Layer4 protocol type that needs to be matched.
+	Layer4Protocol string `pulumi:"layer4Protocol"`
+	// List of the port Group Names that to be matched.
+	PortGroupNames []string `pulumi:"portGroupNames"`
+	// Port type that needs to be matched.
+	PortType *string `pulumi:"portType"`
+	// List of the Ports that need to be matched.
+	Ports []string `pulumi:"ports"`
+}
+
+// Port condition that needs to be matched.
+type PortConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (PortConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortConditionResponse)(nil)).Elem()
+}
+
+func (o PortConditionResponseOutput) ToPortConditionResponseOutput() PortConditionResponseOutput {
+	return o
+}
+
+func (o PortConditionResponseOutput) ToPortConditionResponseOutputWithContext(ctx context.Context) PortConditionResponseOutput {
+	return o
+}
+
+// Layer4 protocol type that needs to be matched.
+func (o PortConditionResponseOutput) Layer4Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v PortConditionResponse) string { return v.Layer4Protocol }).(pulumi.StringOutput)
+}
+
+// List of the port Group Names that to be matched.
+func (o PortConditionResponseOutput) PortGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PortConditionResponse) []string { return v.PortGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// Port type that needs to be matched.
+func (o PortConditionResponseOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortConditionResponse) *string { return v.PortType }).(pulumi.StringPtrOutput)
+}
+
+// List of the Ports that need to be matched.
+func (o PortConditionResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PortConditionResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type PortConditionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PortConditionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortConditionResponse)(nil)).Elem()
+}
+
+func (o PortConditionResponsePtrOutput) ToPortConditionResponsePtrOutput() PortConditionResponsePtrOutput {
+	return o
+}
+
+func (o PortConditionResponsePtrOutput) ToPortConditionResponsePtrOutputWithContext(ctx context.Context) PortConditionResponsePtrOutput {
+	return o
+}
+
+func (o PortConditionResponsePtrOutput) Elem() PortConditionResponseOutput {
+	return o.ApplyT(func(v *PortConditionResponse) PortConditionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PortConditionResponse
+		return ret
+	}).(PortConditionResponseOutput)
+}
+
+// Layer4 protocol type that needs to be matched.
+func (o PortConditionResponsePtrOutput) Layer4Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Layer4Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of the port Group Names that to be matched.
+func (o PortConditionResponsePtrOutput) PortGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PortConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PortGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Port type that needs to be matched.
+func (o PortConditionResponsePtrOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of the Ports that need to be matched.
+func (o PortConditionResponsePtrOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PortConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(pulumi.StringArrayOutput)
+}
+
+// Port Group properties.
+type PortGroupProperties struct {
+	// The name of the port group.
+	Name *string `pulumi:"name"`
+	// List of the ports that needs to be matched.
+	Ports []string `pulumi:"ports"`
+}
+
+// PortGroupPropertiesInput is an input type that accepts PortGroupPropertiesArgs and PortGroupPropertiesOutput values.
+// You can construct a concrete instance of `PortGroupPropertiesInput` via:
+//
+//	PortGroupPropertiesArgs{...}
+type PortGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToPortGroupPropertiesOutput() PortGroupPropertiesOutput
+	ToPortGroupPropertiesOutputWithContext(context.Context) PortGroupPropertiesOutput
+}
+
+// Port Group properties.
+type PortGroupPropertiesArgs struct {
+	// The name of the port group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of the ports that needs to be matched.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (PortGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortGroupProperties)(nil)).Elem()
+}
+
+func (i PortGroupPropertiesArgs) ToPortGroupPropertiesOutput() PortGroupPropertiesOutput {
+	return i.ToPortGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i PortGroupPropertiesArgs) ToPortGroupPropertiesOutputWithContext(ctx context.Context) PortGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortGroupPropertiesOutput)
+}
+
+// PortGroupPropertiesArrayInput is an input type that accepts PortGroupPropertiesArray and PortGroupPropertiesArrayOutput values.
+// You can construct a concrete instance of `PortGroupPropertiesArrayInput` via:
+//
+//	PortGroupPropertiesArray{ PortGroupPropertiesArgs{...} }
+type PortGroupPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToPortGroupPropertiesArrayOutput() PortGroupPropertiesArrayOutput
+	ToPortGroupPropertiesArrayOutputWithContext(context.Context) PortGroupPropertiesArrayOutput
+}
+
+type PortGroupPropertiesArray []PortGroupPropertiesInput
+
+func (PortGroupPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortGroupProperties)(nil)).Elem()
+}
+
+func (i PortGroupPropertiesArray) ToPortGroupPropertiesArrayOutput() PortGroupPropertiesArrayOutput {
+	return i.ToPortGroupPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i PortGroupPropertiesArray) ToPortGroupPropertiesArrayOutputWithContext(ctx context.Context) PortGroupPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortGroupPropertiesArrayOutput)
+}
+
+// Port Group properties.
+type PortGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (PortGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortGroupProperties)(nil)).Elem()
+}
+
+func (o PortGroupPropertiesOutput) ToPortGroupPropertiesOutput() PortGroupPropertiesOutput {
+	return o
+}
+
+func (o PortGroupPropertiesOutput) ToPortGroupPropertiesOutputWithContext(ctx context.Context) PortGroupPropertiesOutput {
+	return o
+}
+
+// The name of the port group.
+func (o PortGroupPropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortGroupProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of the ports that needs to be matched.
+func (o PortGroupPropertiesOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PortGroupProperties) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type PortGroupPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (PortGroupPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortGroupProperties)(nil)).Elem()
+}
+
+func (o PortGroupPropertiesArrayOutput) ToPortGroupPropertiesArrayOutput() PortGroupPropertiesArrayOutput {
+	return o
+}
+
+func (o PortGroupPropertiesArrayOutput) ToPortGroupPropertiesArrayOutputWithContext(ctx context.Context) PortGroupPropertiesArrayOutput {
+	return o
+}
+
+func (o PortGroupPropertiesArrayOutput) Index(i pulumi.IntInput) PortGroupPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortGroupProperties {
+		return vs[0].([]PortGroupProperties)[vs[1].(int)]
+	}).(PortGroupPropertiesOutput)
+}
+
+// Port Group properties.
+type PortGroupPropertiesResponse struct {
+	// The name of the port group.
+	Name *string `pulumi:"name"`
+	// List of the ports that needs to be matched.
+	Ports []string `pulumi:"ports"`
+}
+
+// Port Group properties.
+type PortGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PortGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o PortGroupPropertiesResponseOutput) ToPortGroupPropertiesResponseOutput() PortGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o PortGroupPropertiesResponseOutput) ToPortGroupPropertiesResponseOutputWithContext(ctx context.Context) PortGroupPropertiesResponseOutput {
+	return o
+}
+
+// The name of the port group.
+func (o PortGroupPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortGroupPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of the ports that needs to be matched.
+func (o PortGroupPropertiesResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PortGroupPropertiesResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type PortGroupPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PortGroupPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o PortGroupPropertiesResponseArrayOutput) ToPortGroupPropertiesResponseArrayOutput() PortGroupPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o PortGroupPropertiesResponseArrayOutput) ToPortGroupPropertiesResponseArrayOutputWithContext(ctx context.Context) PortGroupPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o PortGroupPropertiesResponseArrayOutput) Index(i pulumi.IntInput) PortGroupPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortGroupPropertiesResponse {
+		return vs[0].([]PortGroupPropertiesResponse)[vs[1].(int)]
+	}).(PortGroupPropertiesResponseOutput)
+}
+
 // Route Policy Statement properties..
 type RoutePolicyStatementProperties struct {
 	// Route policy action properties.
@@ -6020,6 +8571,103 @@ func (o RoutePolicyStatementPropertiesResponseArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutePolicyStatementPropertiesResponse {
 		return vs[0].([]RoutePolicyStatementPropertiesResponse)[vs[1].(int)]
 	}).(RoutePolicyStatementPropertiesResponseOutput)
+}
+
+// Rules for the InternetGateways
+type RuleProperties struct {
+	// Specify action.
+	Action string `pulumi:"action"`
+	// List of Addresses to be allowed or denied.
+	AddressList []string `pulumi:"addressList"`
+}
+
+// RulePropertiesInput is an input type that accepts RulePropertiesArgs and RulePropertiesOutput values.
+// You can construct a concrete instance of `RulePropertiesInput` via:
+//
+//	RulePropertiesArgs{...}
+type RulePropertiesInput interface {
+	pulumi.Input
+
+	ToRulePropertiesOutput() RulePropertiesOutput
+	ToRulePropertiesOutputWithContext(context.Context) RulePropertiesOutput
+}
+
+// Rules for the InternetGateways
+type RulePropertiesArgs struct {
+	// Specify action.
+	Action pulumi.StringInput `pulumi:"action"`
+	// List of Addresses to be allowed or denied.
+	AddressList pulumi.StringArrayInput `pulumi:"addressList"`
+}
+
+func (RulePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleProperties)(nil)).Elem()
+}
+
+func (i RulePropertiesArgs) ToRulePropertiesOutput() RulePropertiesOutput {
+	return i.ToRulePropertiesOutputWithContext(context.Background())
+}
+
+func (i RulePropertiesArgs) ToRulePropertiesOutputWithContext(ctx context.Context) RulePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulePropertiesOutput)
+}
+
+// Rules for the InternetGateways
+type RulePropertiesOutput struct{ *pulumi.OutputState }
+
+func (RulePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleProperties)(nil)).Elem()
+}
+
+func (o RulePropertiesOutput) ToRulePropertiesOutput() RulePropertiesOutput {
+	return o
+}
+
+func (o RulePropertiesOutput) ToRulePropertiesOutputWithContext(ctx context.Context) RulePropertiesOutput {
+	return o
+}
+
+// Specify action.
+func (o RulePropertiesOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleProperties) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// List of Addresses to be allowed or denied.
+func (o RulePropertiesOutput) AddressList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleProperties) []string { return v.AddressList }).(pulumi.StringArrayOutput)
+}
+
+// Rules for the InternetGateways
+type RulePropertiesResponse struct {
+	// Specify action.
+	Action string `pulumi:"action"`
+	// List of Addresses to be allowed or denied.
+	AddressList []string `pulumi:"addressList"`
+}
+
+// Rules for the InternetGateways
+type RulePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulePropertiesResponse)(nil)).Elem()
+}
+
+func (o RulePropertiesResponseOutput) ToRulePropertiesResponseOutput() RulePropertiesResponseOutput {
+	return o
+}
+
+func (o RulePropertiesResponseOutput) ToRulePropertiesResponseOutputWithContext(ctx context.Context) RulePropertiesResponseOutput {
+	return o
+}
+
+// Specify action.
+func (o RulePropertiesResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v RulePropertiesResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// List of Addresses to be allowed or denied.
+func (o RulePropertiesResponseOutput) AddressList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulePropertiesResponse) []string { return v.AddressList }).(pulumi.StringArrayOutput)
 }
 
 // Route policy action properties.
@@ -6930,6 +9578,440 @@ func (o TerminalServerConfigurationResponseOutput) Username() pulumi.StringOutpu
 	return o.ApplyT(func(v TerminalServerConfigurationResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Vlan group properties.
+type VlanGroupProperties struct {
+	// Vlan group name.
+	Name *string `pulumi:"name"`
+	// List of vlans.
+	Vlans []string `pulumi:"vlans"`
+}
+
+// VlanGroupPropertiesInput is an input type that accepts VlanGroupPropertiesArgs and VlanGroupPropertiesOutput values.
+// You can construct a concrete instance of `VlanGroupPropertiesInput` via:
+//
+//	VlanGroupPropertiesArgs{...}
+type VlanGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToVlanGroupPropertiesOutput() VlanGroupPropertiesOutput
+	ToVlanGroupPropertiesOutputWithContext(context.Context) VlanGroupPropertiesOutput
+}
+
+// Vlan group properties.
+type VlanGroupPropertiesArgs struct {
+	// Vlan group name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of vlans.
+	Vlans pulumi.StringArrayInput `pulumi:"vlans"`
+}
+
+func (VlanGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanGroupProperties)(nil)).Elem()
+}
+
+func (i VlanGroupPropertiesArgs) ToVlanGroupPropertiesOutput() VlanGroupPropertiesOutput {
+	return i.ToVlanGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i VlanGroupPropertiesArgs) ToVlanGroupPropertiesOutputWithContext(ctx context.Context) VlanGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanGroupPropertiesOutput)
+}
+
+// VlanGroupPropertiesArrayInput is an input type that accepts VlanGroupPropertiesArray and VlanGroupPropertiesArrayOutput values.
+// You can construct a concrete instance of `VlanGroupPropertiesArrayInput` via:
+//
+//	VlanGroupPropertiesArray{ VlanGroupPropertiesArgs{...} }
+type VlanGroupPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToVlanGroupPropertiesArrayOutput() VlanGroupPropertiesArrayOutput
+	ToVlanGroupPropertiesArrayOutputWithContext(context.Context) VlanGroupPropertiesArrayOutput
+}
+
+type VlanGroupPropertiesArray []VlanGroupPropertiesInput
+
+func (VlanGroupPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VlanGroupProperties)(nil)).Elem()
+}
+
+func (i VlanGroupPropertiesArray) ToVlanGroupPropertiesArrayOutput() VlanGroupPropertiesArrayOutput {
+	return i.ToVlanGroupPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i VlanGroupPropertiesArray) ToVlanGroupPropertiesArrayOutputWithContext(ctx context.Context) VlanGroupPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanGroupPropertiesArrayOutput)
+}
+
+// Vlan group properties.
+type VlanGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VlanGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanGroupProperties)(nil)).Elem()
+}
+
+func (o VlanGroupPropertiesOutput) ToVlanGroupPropertiesOutput() VlanGroupPropertiesOutput {
+	return o
+}
+
+func (o VlanGroupPropertiesOutput) ToVlanGroupPropertiesOutputWithContext(ctx context.Context) VlanGroupPropertiesOutput {
+	return o
+}
+
+// Vlan group name.
+func (o VlanGroupPropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VlanGroupProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of vlans.
+func (o VlanGroupPropertiesOutput) Vlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VlanGroupProperties) []string { return v.Vlans }).(pulumi.StringArrayOutput)
+}
+
+type VlanGroupPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (VlanGroupPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VlanGroupProperties)(nil)).Elem()
+}
+
+func (o VlanGroupPropertiesArrayOutput) ToVlanGroupPropertiesArrayOutput() VlanGroupPropertiesArrayOutput {
+	return o
+}
+
+func (o VlanGroupPropertiesArrayOutput) ToVlanGroupPropertiesArrayOutputWithContext(ctx context.Context) VlanGroupPropertiesArrayOutput {
+	return o
+}
+
+func (o VlanGroupPropertiesArrayOutput) Index(i pulumi.IntInput) VlanGroupPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VlanGroupProperties {
+		return vs[0].([]VlanGroupProperties)[vs[1].(int)]
+	}).(VlanGroupPropertiesOutput)
+}
+
+// Vlan group properties.
+type VlanGroupPropertiesResponse struct {
+	// Vlan group name.
+	Name *string `pulumi:"name"`
+	// List of vlans.
+	Vlans []string `pulumi:"vlans"`
+}
+
+// Vlan group properties.
+type VlanGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VlanGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o VlanGroupPropertiesResponseOutput) ToVlanGroupPropertiesResponseOutput() VlanGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o VlanGroupPropertiesResponseOutput) ToVlanGroupPropertiesResponseOutputWithContext(ctx context.Context) VlanGroupPropertiesResponseOutput {
+	return o
+}
+
+// Vlan group name.
+func (o VlanGroupPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VlanGroupPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of vlans.
+func (o VlanGroupPropertiesResponseOutput) Vlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VlanGroupPropertiesResponse) []string { return v.Vlans }).(pulumi.StringArrayOutput)
+}
+
+type VlanGroupPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VlanGroupPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VlanGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o VlanGroupPropertiesResponseArrayOutput) ToVlanGroupPropertiesResponseArrayOutput() VlanGroupPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VlanGroupPropertiesResponseArrayOutput) ToVlanGroupPropertiesResponseArrayOutputWithContext(ctx context.Context) VlanGroupPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VlanGroupPropertiesResponseArrayOutput) Index(i pulumi.IntInput) VlanGroupPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VlanGroupPropertiesResponse {
+		return vs[0].([]VlanGroupPropertiesResponse)[vs[1].(int)]
+	}).(VlanGroupPropertiesResponseOutput)
+}
+
+// The vlan match conditions that needs to be matched.
+type VlanMatchCondition struct {
+	// List of inner vlans that needs to be matched.
+	InnerVlans []string `pulumi:"innerVlans"`
+	// List of vlan group names that to be matched.
+	VlanGroupNames []string `pulumi:"vlanGroupNames"`
+	// List of vlans that needs to be matched.
+	Vlans []string `pulumi:"vlans"`
+}
+
+// VlanMatchConditionInput is an input type that accepts VlanMatchConditionArgs and VlanMatchConditionOutput values.
+// You can construct a concrete instance of `VlanMatchConditionInput` via:
+//
+//	VlanMatchConditionArgs{...}
+type VlanMatchConditionInput interface {
+	pulumi.Input
+
+	ToVlanMatchConditionOutput() VlanMatchConditionOutput
+	ToVlanMatchConditionOutputWithContext(context.Context) VlanMatchConditionOutput
+}
+
+// The vlan match conditions that needs to be matched.
+type VlanMatchConditionArgs struct {
+	// List of inner vlans that needs to be matched.
+	InnerVlans pulumi.StringArrayInput `pulumi:"innerVlans"`
+	// List of vlan group names that to be matched.
+	VlanGroupNames pulumi.StringArrayInput `pulumi:"vlanGroupNames"`
+	// List of vlans that needs to be matched.
+	Vlans pulumi.StringArrayInput `pulumi:"vlans"`
+}
+
+func (VlanMatchConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanMatchCondition)(nil)).Elem()
+}
+
+func (i VlanMatchConditionArgs) ToVlanMatchConditionOutput() VlanMatchConditionOutput {
+	return i.ToVlanMatchConditionOutputWithContext(context.Background())
+}
+
+func (i VlanMatchConditionArgs) ToVlanMatchConditionOutputWithContext(ctx context.Context) VlanMatchConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanMatchConditionOutput)
+}
+
+func (i VlanMatchConditionArgs) ToVlanMatchConditionPtrOutput() VlanMatchConditionPtrOutput {
+	return i.ToVlanMatchConditionPtrOutputWithContext(context.Background())
+}
+
+func (i VlanMatchConditionArgs) ToVlanMatchConditionPtrOutputWithContext(ctx context.Context) VlanMatchConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanMatchConditionOutput).ToVlanMatchConditionPtrOutputWithContext(ctx)
+}
+
+// VlanMatchConditionPtrInput is an input type that accepts VlanMatchConditionArgs, VlanMatchConditionPtr and VlanMatchConditionPtrOutput values.
+// You can construct a concrete instance of `VlanMatchConditionPtrInput` via:
+//
+//	        VlanMatchConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type VlanMatchConditionPtrInput interface {
+	pulumi.Input
+
+	ToVlanMatchConditionPtrOutput() VlanMatchConditionPtrOutput
+	ToVlanMatchConditionPtrOutputWithContext(context.Context) VlanMatchConditionPtrOutput
+}
+
+type vlanMatchConditionPtrType VlanMatchConditionArgs
+
+func VlanMatchConditionPtr(v *VlanMatchConditionArgs) VlanMatchConditionPtrInput {
+	return (*vlanMatchConditionPtrType)(v)
+}
+
+func (*vlanMatchConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VlanMatchCondition)(nil)).Elem()
+}
+
+func (i *vlanMatchConditionPtrType) ToVlanMatchConditionPtrOutput() VlanMatchConditionPtrOutput {
+	return i.ToVlanMatchConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *vlanMatchConditionPtrType) ToVlanMatchConditionPtrOutputWithContext(ctx context.Context) VlanMatchConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VlanMatchConditionPtrOutput)
+}
+
+// The vlan match conditions that needs to be matched.
+type VlanMatchConditionOutput struct{ *pulumi.OutputState }
+
+func (VlanMatchConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanMatchCondition)(nil)).Elem()
+}
+
+func (o VlanMatchConditionOutput) ToVlanMatchConditionOutput() VlanMatchConditionOutput {
+	return o
+}
+
+func (o VlanMatchConditionOutput) ToVlanMatchConditionOutputWithContext(ctx context.Context) VlanMatchConditionOutput {
+	return o
+}
+
+func (o VlanMatchConditionOutput) ToVlanMatchConditionPtrOutput() VlanMatchConditionPtrOutput {
+	return o.ToVlanMatchConditionPtrOutputWithContext(context.Background())
+}
+
+func (o VlanMatchConditionOutput) ToVlanMatchConditionPtrOutputWithContext(ctx context.Context) VlanMatchConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VlanMatchCondition) *VlanMatchCondition {
+		return &v
+	}).(VlanMatchConditionPtrOutput)
+}
+
+// List of inner vlans that needs to be matched.
+func (o VlanMatchConditionOutput) InnerVlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VlanMatchCondition) []string { return v.InnerVlans }).(pulumi.StringArrayOutput)
+}
+
+// List of vlan group names that to be matched.
+func (o VlanMatchConditionOutput) VlanGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VlanMatchCondition) []string { return v.VlanGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// List of vlans that needs to be matched.
+func (o VlanMatchConditionOutput) Vlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VlanMatchCondition) []string { return v.Vlans }).(pulumi.StringArrayOutput)
+}
+
+type VlanMatchConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (VlanMatchConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VlanMatchCondition)(nil)).Elem()
+}
+
+func (o VlanMatchConditionPtrOutput) ToVlanMatchConditionPtrOutput() VlanMatchConditionPtrOutput {
+	return o
+}
+
+func (o VlanMatchConditionPtrOutput) ToVlanMatchConditionPtrOutputWithContext(ctx context.Context) VlanMatchConditionPtrOutput {
+	return o
+}
+
+func (o VlanMatchConditionPtrOutput) Elem() VlanMatchConditionOutput {
+	return o.ApplyT(func(v *VlanMatchCondition) VlanMatchCondition {
+		if v != nil {
+			return *v
+		}
+		var ret VlanMatchCondition
+		return ret
+	}).(VlanMatchConditionOutput)
+}
+
+// List of inner vlans that needs to be matched.
+func (o VlanMatchConditionPtrOutput) InnerVlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VlanMatchCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InnerVlans
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of vlan group names that to be matched.
+func (o VlanMatchConditionPtrOutput) VlanGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VlanMatchCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VlanGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of vlans that needs to be matched.
+func (o VlanMatchConditionPtrOutput) Vlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VlanMatchCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Vlans
+	}).(pulumi.StringArrayOutput)
+}
+
+// The vlan match conditions that needs to be matched.
+type VlanMatchConditionResponse struct {
+	// List of inner vlans that needs to be matched.
+	InnerVlans []string `pulumi:"innerVlans"`
+	// List of vlan group names that to be matched.
+	VlanGroupNames []string `pulumi:"vlanGroupNames"`
+	// List of vlans that needs to be matched.
+	Vlans []string `pulumi:"vlans"`
+}
+
+// The vlan match conditions that needs to be matched.
+type VlanMatchConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (VlanMatchConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VlanMatchConditionResponse)(nil)).Elem()
+}
+
+func (o VlanMatchConditionResponseOutput) ToVlanMatchConditionResponseOutput() VlanMatchConditionResponseOutput {
+	return o
+}
+
+func (o VlanMatchConditionResponseOutput) ToVlanMatchConditionResponseOutputWithContext(ctx context.Context) VlanMatchConditionResponseOutput {
+	return o
+}
+
+// List of inner vlans that needs to be matched.
+func (o VlanMatchConditionResponseOutput) InnerVlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VlanMatchConditionResponse) []string { return v.InnerVlans }).(pulumi.StringArrayOutput)
+}
+
+// List of vlan group names that to be matched.
+func (o VlanMatchConditionResponseOutput) VlanGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VlanMatchConditionResponse) []string { return v.VlanGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// List of vlans that needs to be matched.
+func (o VlanMatchConditionResponseOutput) Vlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VlanMatchConditionResponse) []string { return v.Vlans }).(pulumi.StringArrayOutput)
+}
+
+type VlanMatchConditionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VlanMatchConditionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VlanMatchConditionResponse)(nil)).Elem()
+}
+
+func (o VlanMatchConditionResponsePtrOutput) ToVlanMatchConditionResponsePtrOutput() VlanMatchConditionResponsePtrOutput {
+	return o
+}
+
+func (o VlanMatchConditionResponsePtrOutput) ToVlanMatchConditionResponsePtrOutputWithContext(ctx context.Context) VlanMatchConditionResponsePtrOutput {
+	return o
+}
+
+func (o VlanMatchConditionResponsePtrOutput) Elem() VlanMatchConditionResponseOutput {
+	return o.ApplyT(func(v *VlanMatchConditionResponse) VlanMatchConditionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VlanMatchConditionResponse
+		return ret
+	}).(VlanMatchConditionResponseOutput)
+}
+
+// List of inner vlans that needs to be matched.
+func (o VlanMatchConditionResponsePtrOutput) InnerVlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VlanMatchConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InnerVlans
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of vlan group names that to be matched.
+func (o VlanMatchConditionResponsePtrOutput) VlanGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VlanMatchConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VlanGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of vlans that needs to be matched.
+func (o VlanMatchConditionResponsePtrOutput) Vlans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VlanMatchConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Vlans
+	}).(pulumi.StringArrayOutput)
+}
+
 // Configuration for infrastructure vpn.
 type VpnConfigurationProperties struct {
 	// option A properties
@@ -7150,10 +10232,19 @@ func init() {
 	pulumi.RegisterOutputType(BgpConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(BgpConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(BgpConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationOutput{})
+	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConnectedSubnetOutput{})
 	pulumi.RegisterOutputType(ConnectedSubnetArrayOutput{})
 	pulumi.RegisterOutputType(ConnectedSubnetResponseOutput{})
 	pulumi.RegisterOutputType(ConnectedSubnetResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExpressRouteConnectionInformationOutput{})
 	pulumi.RegisterOutputType(ExpressRouteConnectionInformationArrayOutput{})
 	pulumi.RegisterOutputType(ExpressRouteConnectionInformationResponseOutput{})
@@ -7177,10 +10268,22 @@ func init() {
 	pulumi.RegisterOutputType(IpExtendedCommunityIdListPtrOutput{})
 	pulumi.RegisterOutputType(IpExtendedCommunityIdListResponseOutput{})
 	pulumi.RegisterOutputType(IpExtendedCommunityIdListResponsePtrOutput{})
+	pulumi.RegisterOutputType(IpGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(IpGroupPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(IpGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IpGroupPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(IpMatchConditionOutput{})
+	pulumi.RegisterOutputType(IpMatchConditionPtrOutput{})
+	pulumi.RegisterOutputType(IpMatchConditionResponseOutput{})
+	pulumi.RegisterOutputType(IpMatchConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(IpPrefixPropertiesIpPrefixRulesOutput{})
 	pulumi.RegisterOutputType(IpPrefixPropertiesIpPrefixRulesArrayOutput{})
 	pulumi.RegisterOutputType(IpPrefixPropertiesResponseIpPrefixRulesOutput{})
 	pulumi.RegisterOutputType(IpPrefixPropertiesResponseIpPrefixRulesArrayOutput{})
+	pulumi.RegisterOutputType(IsolationDomainPropertiesOutput{})
+	pulumi.RegisterOutputType(IsolationDomainPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IsolationDomainPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IsolationDomainPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput{})
 	pulumi.RegisterOutputType(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput{})
 	pulumi.RegisterOutputType(L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput{})
@@ -7203,6 +10306,24 @@ func init() {
 	pulumi.RegisterOutputType(NeighborAddressArrayOutput{})
 	pulumi.RegisterOutputType(NeighborAddressResponseOutput{})
 	pulumi.RegisterOutputType(NeighborAddressResponseArrayOutput{})
+	pulumi.RegisterOutputType(NeighborGroupDestinationOutput{})
+	pulumi.RegisterOutputType(NeighborGroupDestinationResponseOutput{})
+	pulumi.RegisterOutputType(NetworkTapPropertiesDestinationsOutput{})
+	pulumi.RegisterOutputType(NetworkTapPropertiesDestinationsArrayOutput{})
+	pulumi.RegisterOutputType(NetworkTapPropertiesResponseDestinationsOutput{})
+	pulumi.RegisterOutputType(NetworkTapPropertiesResponseDestinationsArrayOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleActionOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleActionResponseOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleMatchConditionOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleMatchConditionArrayOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleMatchConditionResponseOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleMatchConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleMatchConfigurationOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleMatchConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleMatchConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(NetworkTapRuleMatchConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(OptionAPropertiesOutput{})
 	pulumi.RegisterOutputType(OptionAPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OptionAPropertiesResponseOutput{})
@@ -7211,10 +10332,20 @@ func init() {
 	pulumi.RegisterOutputType(OptionBPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OptionBPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(OptionBPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(PortConditionOutput{})
+	pulumi.RegisterOutputType(PortConditionPtrOutput{})
+	pulumi.RegisterOutputType(PortConditionResponseOutput{})
+	pulumi.RegisterOutputType(PortConditionResponsePtrOutput{})
+	pulumi.RegisterOutputType(PortGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(PortGroupPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(PortGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PortGroupPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(RoutePolicyStatementPropertiesOutput{})
 	pulumi.RegisterOutputType(RoutePolicyStatementPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(RoutePolicyStatementPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RoutePolicyStatementPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(RulePropertiesOutput{})
+	pulumi.RegisterOutputType(RulePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StatementActionPropertiesOutput{})
 	pulumi.RegisterOutputType(StatementActionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StatementConditionPropertiesOutput{})
@@ -7230,6 +10361,14 @@ func init() {
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TerminalServerConfigurationOutput{})
 	pulumi.RegisterOutputType(TerminalServerConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(VlanGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(VlanGroupPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(VlanGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VlanGroupPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(VlanMatchConditionOutput{})
+	pulumi.RegisterOutputType(VlanMatchConditionPtrOutput{})
+	pulumi.RegisterOutputType(VlanMatchConditionResponseOutput{})
+	pulumi.RegisterOutputType(VlanMatchConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(VpnConfigurationPropertiesOutput{})
 	pulumi.RegisterOutputType(VpnConfigurationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(WorkloadServicesResponseOutput{})

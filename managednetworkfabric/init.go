@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ExternalNetwork{}
 	case "azure-native:managednetworkfabric:InternalNetwork":
 		r = &InternalNetwork{}
+	case "azure-native:managednetworkfabric:InternetGateway":
+		r = &InternetGateway{}
+	case "azure-native:managednetworkfabric:InternetGatewayRule":
+		r = &InternetGatewayRule{}
 	case "azure-native:managednetworkfabric:IpCommunity":
 		r = &IpCommunity{}
 	case "azure-native:managednetworkfabric:IpExtendedCommunity":
@@ -37,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &L2IsolationDomain{}
 	case "azure-native:managednetworkfabric:L3IsolationDomain":
 		r = &L3IsolationDomain{}
+	case "azure-native:managednetworkfabric:NeighborGroup":
+		r = &NeighborGroup{}
 	case "azure-native:managednetworkfabric:NetworkDevice":
 		r = &NetworkDevice{}
 	case "azure-native:managednetworkfabric:NetworkFabric":
@@ -45,8 +51,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkFabricController{}
 	case "azure-native:managednetworkfabric:NetworkInterface":
 		r = &NetworkInterface{}
+	case "azure-native:managednetworkfabric:NetworkPacketBroker":
+		r = &NetworkPacketBroker{}
 	case "azure-native:managednetworkfabric:NetworkRack":
 		r = &NetworkRack{}
+	case "azure-native:managednetworkfabric:NetworkTap":
+		r = &NetworkTap{}
+	case "azure-native:managednetworkfabric:NetworkTapRule":
+		r = &NetworkTapRule{}
 	case "azure-native:managednetworkfabric:NetworkToNetworkInterconnect":
 		r = &NetworkToNetworkInterconnect{}
 	case "azure-native:managednetworkfabric:RoutePolicy":

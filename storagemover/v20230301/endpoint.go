@@ -48,6 +48,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagemover/v20220701preview:Endpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20230701preview:Endpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Endpoint

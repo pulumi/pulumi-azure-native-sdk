@@ -51,6 +51,9 @@ func NewRoutePolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:RoutePolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:RoutePolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource RoutePolicy

@@ -55,6 +55,9 @@ func NewIpExtendedCommunity(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric:IpExtendedCommunity"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:IpExtendedCommunity"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource IpExtendedCommunity

@@ -54,6 +54,9 @@ func NewVolume(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20211120preview:Volume"),
 		},
+		{
+			Type: pulumi.String("azure-native:elasticsan/v20221201preview:Volume"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Volume

@@ -3,6 +3,13 @@
 
 package maintenance
 
+import (
+	"context"
+	"reflect"
+
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
 // Gets or sets maintenanceScope of the configuration
 type MaintenanceScope string
 
@@ -32,6 +39,171 @@ const (
 	RebootOptionsAlways     = RebootOptions("Always")
 )
 
+// Filter VMs by Any or All specified tags.
+type TagOperators string
+
+const (
+	TagOperatorsAll = TagOperators("All")
+	TagOperatorsAny = TagOperators("Any")
+)
+
+func (TagOperators) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagOperators)(nil)).Elem()
+}
+
+func (e TagOperators) ToTagOperatorsOutput() TagOperatorsOutput {
+	return pulumi.ToOutput(e).(TagOperatorsOutput)
+}
+
+func (e TagOperators) ToTagOperatorsOutputWithContext(ctx context.Context) TagOperatorsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TagOperatorsOutput)
+}
+
+func (e TagOperators) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
+	return e.ToTagOperatorsPtrOutputWithContext(context.Background())
+}
+
+func (e TagOperators) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
+	return TagOperators(e).ToTagOperatorsOutputWithContext(ctx).ToTagOperatorsPtrOutputWithContext(ctx)
+}
+
+func (e TagOperators) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TagOperators) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TagOperators) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TagOperators) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TagOperatorsOutput struct{ *pulumi.OutputState }
+
+func (TagOperatorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagOperators)(nil)).Elem()
+}
+
+func (o TagOperatorsOutput) ToTagOperatorsOutput() TagOperatorsOutput {
+	return o
+}
+
+func (o TagOperatorsOutput) ToTagOperatorsOutputWithContext(ctx context.Context) TagOperatorsOutput {
+	return o
+}
+
+func (o TagOperatorsOutput) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
+	return o.ToTagOperatorsPtrOutputWithContext(context.Background())
+}
+
+func (o TagOperatorsOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagOperators) *TagOperators {
+		return &v
+	}).(TagOperatorsPtrOutput)
+}
+
+func (o TagOperatorsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TagOperatorsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TagOperators) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TagOperatorsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TagOperatorsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TagOperators) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TagOperatorsPtrOutput struct{ *pulumi.OutputState }
+
+func (TagOperatorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagOperators)(nil)).Elem()
+}
+
+func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
+	return o
+}
+
+func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
+	return o
+}
+
+func (o TagOperatorsPtrOutput) Elem() TagOperatorsOutput {
+	return o.ApplyT(func(v *TagOperators) TagOperators {
+		if v != nil {
+			return *v
+		}
+		var ret TagOperators
+		return ret
+	}).(TagOperatorsOutput)
+}
+
+func (o TagOperatorsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TagOperatorsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TagOperators) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TagOperatorsInput is an input type that accepts TagOperatorsArgs and TagOperatorsOutput values.
+// You can construct a concrete instance of `TagOperatorsInput` via:
+//
+//	TagOperatorsArgs{...}
+type TagOperatorsInput interface {
+	pulumi.Input
+
+	ToTagOperatorsOutput() TagOperatorsOutput
+	ToTagOperatorsOutputWithContext(context.Context) TagOperatorsOutput
+}
+
+var tagOperatorsPtrType = reflect.TypeOf((**TagOperators)(nil)).Elem()
+
+type TagOperatorsPtrInput interface {
+	pulumi.Input
+
+	ToTagOperatorsPtrOutput() TagOperatorsPtrOutput
+	ToTagOperatorsPtrOutputWithContext(context.Context) TagOperatorsPtrOutput
+}
+
+type tagOperatorsPtr string
+
+func TagOperatorsPtr(v string) TagOperatorsPtrInput {
+	return (*tagOperatorsPtr)(&v)
+}
+
+func (*tagOperatorsPtr) ElementType() reflect.Type {
+	return tagOperatorsPtrType
+}
+
+func (in *tagOperatorsPtr) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
+	return pulumi.ToOutput(in).(TagOperatorsPtrOutput)
+}
+
+func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TagOperatorsPtrOutput)
+}
+
 // Global Task execute once when schedule trigger. Resource task execute for each VM.
 type TaskScope string
 
@@ -51,4 +223,6 @@ const (
 )
 
 func init() {
+	pulumi.RegisterOutputType(TagOperatorsOutput{})
+	pulumi.RegisterOutputType(TagOperatorsPtrOutput{})
 }

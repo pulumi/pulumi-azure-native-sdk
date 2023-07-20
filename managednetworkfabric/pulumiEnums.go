@@ -3,6 +3,14 @@
 
 package managednetworkfabric
 
+// Specify action.
+type Action string
+
+const (
+	ActionAllow = Action("Allow")
+	ActionDeny  = Action("Deny")
+)
+
 // IP address family. Example: ipv4 | ipv6.
 type AddressFamily string
 
@@ -52,6 +60,62 @@ const (
 	ConditionActionTypeDeny  = ConditionActionType("deny")
 )
 
+// Input method to configure Network Tap Rule.
+type ConfigurationType string
+
+const (
+	ConfigurationTypeFile   = ConfigurationType("File")
+	ConfigurationTypeInline = ConfigurationType("Inline")
+)
+
+// Type of destination. Input can be IsolationDomain or Direct.
+type DestinationType string
+
+const (
+	DestinationTypeIsolationDomain = DestinationType("IsolationDomain")
+	DestinationTypeDirect          = DestinationType("Direct")
+)
+
+// Type of encapsulation.
+type Encapsulation string
+
+const (
+	EncapsulationNone = Encapsulation("None")
+	EncapsulationGRE  = Encapsulation("GRE")
+)
+
+// Encapsulation Type.
+type EncapsulationType string
+
+const (
+	EncapsulationTypeNone  = EncapsulationType("None")
+	EncapsulationTypeGTPv1 = EncapsulationType("GTPv1")
+)
+
+// Gateway Type of the resource.
+type GatewayType string
+
+const (
+	GatewayTypeInfrastructure = GatewayType("Infrastructure")
+	GatewayTypeWorkload       = GatewayType("Workload")
+)
+
+// Type of IP Address. IPv4 or IPv6
+type IPAddressType string
+
+const (
+	IPAddressTypeIPv4 = IPAddressType("IPv4")
+	IPAddressTypeIPv6 = IPAddressType("IPv6")
+)
+
+// Layer4 protocol type that needs to be matched.
+type Layer4Protocol string
+
+const (
+	Layer4ProtocolTCP = Layer4Protocol("TCP")
+	Layer4ProtocolUDP = Layer4Protocol("UDP")
+)
+
 // networkDeviceRole is the device role: Example: CE | ToR.
 type NetworkDeviceRoleTypes string
 
@@ -79,6 +143,30 @@ const (
 	PeeringOptionOptionB = PeeringOption("OptionB")
 )
 
+// Polling type.
+type PollingType string
+
+const (
+	PollingTypePull = PollingType("Pull")
+	PollingTypePush = PollingType("Push")
+)
+
+// Port type that needs to be matched.
+type PortType string
+
+const (
+	PortTypeSourcePort      = PortType("SourcePort")
+	PortTypeDestinationPort = PortType("DestinationPort")
+)
+
+// IP Prefix Type.
+type PrefixType string
+
+const (
+	PrefixTypePrefix        = PrefixType("Prefix")
+	PrefixTypeLongestPrefix = PrefixType("LongestPrefix")
+)
+
 // Advertise Connected Subnets. Ex: "True" | "False".
 type RedistributeConnectedSubnets string
 
@@ -93,6 +181,27 @@ type RedistributeStaticRoutes string
 const (
 	RedistributeStaticRoutesTrue  = RedistributeStaticRoutes("True")
 	RedistributeStaticRoutesFalse = RedistributeStaticRoutes("False")
+)
+
+// IP Address type.
+type SourceDestinationType string
+
+const (
+	SourceDestinationTypeSourceIP      = SourceDestinationType("SourceIP")
+	SourceDestinationTypeDestinationIP = SourceDestinationType("DestinationIP")
+)
+
+// Type of actions that can be performed.
+type TapRuleActionType string
+
+const (
+	TapRuleActionTypeDrop      = TapRuleActionType("Drop")
+	TapRuleActionTypeCount     = TapRuleActionType("Count")
+	TapRuleActionTypeLog       = TapRuleActionType("Log")
+	TapRuleActionTypeReplicate = TapRuleActionType("Replicate")
+	TapRuleActionTypeGoto      = TapRuleActionType("Goto")
+	TapRuleActionTypeRedirect  = TapRuleActionType("Redirect")
+	TapRuleActionTypeMirror    = TapRuleActionType("Mirror")
 )
 
 // `Internet` - Advertise routes to internet community.
