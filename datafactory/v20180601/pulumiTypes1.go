@@ -6337,8 +6337,8 @@ type MongoDbAtlasLinkedService struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The MongoDB Atlas Driver version that you want to choose. Allowed value are 2.10.4 and 2.19.0. Type: string (or Expression with resultType string).
-	MongoDbAtlasDriverVersion interface{} `pulumi:"mongoDbAtlasDriverVersion"`
+	// The driver version that you want to choose. Allowed value are v1 and v2. Type: string (or Expression with resultType string).
+	DriverVersion interface{} `pulumi:"driverVersion"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Type of linked service.
@@ -6358,8 +6358,8 @@ type MongoDbAtlasLinkedServiceResponse struct {
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// The MongoDB Atlas Driver version that you want to choose. Allowed value are 2.10.4 and 2.19.0. Type: string (or Expression with resultType string).
-	MongoDbAtlasDriverVersion interface{} `pulumi:"mongoDbAtlasDriverVersion"`
+	// The driver version that you want to choose. Allowed value are v1 and v2. Type: string (or Expression with resultType string).
+	DriverVersion interface{} `pulumi:"driverVersion"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Type of linked service.

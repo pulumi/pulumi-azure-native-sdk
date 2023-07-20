@@ -65,6 +65,9 @@ func NewNetworkFabricController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric:NetworkFabricController"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkFabricController"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkFabricController

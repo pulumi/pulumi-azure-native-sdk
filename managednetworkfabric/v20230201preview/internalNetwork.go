@@ -79,6 +79,9 @@ func NewInternalNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric:InternalNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:InternalNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource InternalNetwork

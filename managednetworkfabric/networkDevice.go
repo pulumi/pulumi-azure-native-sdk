@@ -67,6 +67,9 @@ func NewNetworkDevice(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkDevice"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkDevice"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkDevice

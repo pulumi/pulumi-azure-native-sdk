@@ -182,6 +182,16 @@ const (
 	EncryptionTypeEncryptionAtRestWithPlatformKey = EncryptionType("EncryptionAtRestWithPlatformKey")
 )
 
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+type PrivateEndpointServiceConnectionStatus string
+
+const (
+	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
+	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
+	PrivateEndpointServiceConnectionStatusFailed   = PrivateEndpointServiceConnectionStatus("Failed")
+	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
+)
+
 // The sku name.
 type SkuName string
 

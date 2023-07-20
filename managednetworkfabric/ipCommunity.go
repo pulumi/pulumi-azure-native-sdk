@@ -58,6 +58,9 @@ func NewIpCommunity(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:IpCommunity"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:IpCommunity"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource IpCommunity

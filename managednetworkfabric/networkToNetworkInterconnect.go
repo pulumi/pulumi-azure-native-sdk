@@ -67,6 +67,9 @@ func NewNetworkToNetworkInterconnect(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkToNetworkInterconnect"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkToNetworkInterconnect"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NetworkToNetworkInterconnect

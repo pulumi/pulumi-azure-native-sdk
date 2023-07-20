@@ -10,6 +10,352 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Azure query for the update configuration.
+type ConfigurationAssignmentFilterProperties struct {
+	// List of locations to scope the query to.
+	Locations []string `pulumi:"locations"`
+	// List of allowed operating systems.
+	OsTypes []string `pulumi:"osTypes"`
+	// List of allowed resource groups.
+	ResourceGroups []string `pulumi:"resourceGroups"`
+	// List of allowed resources.
+	ResourceTypes []string `pulumi:"resourceTypes"`
+	// Tag settings for the VM.
+	TagSettings *TagSettingsProperties `pulumi:"tagSettings"`
+}
+
+// ConfigurationAssignmentFilterPropertiesInput is an input type that accepts ConfigurationAssignmentFilterPropertiesArgs and ConfigurationAssignmentFilterPropertiesOutput values.
+// You can construct a concrete instance of `ConfigurationAssignmentFilterPropertiesInput` via:
+//
+//	ConfigurationAssignmentFilterPropertiesArgs{...}
+type ConfigurationAssignmentFilterPropertiesInput interface {
+	pulumi.Input
+
+	ToConfigurationAssignmentFilterPropertiesOutput() ConfigurationAssignmentFilterPropertiesOutput
+	ToConfigurationAssignmentFilterPropertiesOutputWithContext(context.Context) ConfigurationAssignmentFilterPropertiesOutput
+}
+
+// Azure query for the update configuration.
+type ConfigurationAssignmentFilterPropertiesArgs struct {
+	// List of locations to scope the query to.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+	// List of allowed operating systems.
+	OsTypes pulumi.StringArrayInput `pulumi:"osTypes"`
+	// List of allowed resource groups.
+	ResourceGroups pulumi.StringArrayInput `pulumi:"resourceGroups"`
+	// List of allowed resources.
+	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
+	// Tag settings for the VM.
+	TagSettings TagSettingsPropertiesPtrInput `pulumi:"tagSettings"`
+}
+
+func (ConfigurationAssignmentFilterPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationAssignmentFilterProperties)(nil)).Elem()
+}
+
+func (i ConfigurationAssignmentFilterPropertiesArgs) ToConfigurationAssignmentFilterPropertiesOutput() ConfigurationAssignmentFilterPropertiesOutput {
+	return i.ToConfigurationAssignmentFilterPropertiesOutputWithContext(context.Background())
+}
+
+func (i ConfigurationAssignmentFilterPropertiesArgs) ToConfigurationAssignmentFilterPropertiesOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAssignmentFilterPropertiesOutput)
+}
+
+func (i ConfigurationAssignmentFilterPropertiesArgs) ToConfigurationAssignmentFilterPropertiesPtrOutput() ConfigurationAssignmentFilterPropertiesPtrOutput {
+	return i.ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigurationAssignmentFilterPropertiesArgs) ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAssignmentFilterPropertiesOutput).ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(ctx)
+}
+
+// ConfigurationAssignmentFilterPropertiesPtrInput is an input type that accepts ConfigurationAssignmentFilterPropertiesArgs, ConfigurationAssignmentFilterPropertiesPtr and ConfigurationAssignmentFilterPropertiesPtrOutput values.
+// You can construct a concrete instance of `ConfigurationAssignmentFilterPropertiesPtrInput` via:
+//
+//	        ConfigurationAssignmentFilterPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigurationAssignmentFilterPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToConfigurationAssignmentFilterPropertiesPtrOutput() ConfigurationAssignmentFilterPropertiesPtrOutput
+	ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(context.Context) ConfigurationAssignmentFilterPropertiesPtrOutput
+}
+
+type configurationAssignmentFilterPropertiesPtrType ConfigurationAssignmentFilterPropertiesArgs
+
+func ConfigurationAssignmentFilterPropertiesPtr(v *ConfigurationAssignmentFilterPropertiesArgs) ConfigurationAssignmentFilterPropertiesPtrInput {
+	return (*configurationAssignmentFilterPropertiesPtrType)(v)
+}
+
+func (*configurationAssignmentFilterPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationAssignmentFilterProperties)(nil)).Elem()
+}
+
+func (i *configurationAssignmentFilterPropertiesPtrType) ToConfigurationAssignmentFilterPropertiesPtrOutput() ConfigurationAssignmentFilterPropertiesPtrOutput {
+	return i.ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *configurationAssignmentFilterPropertiesPtrType) ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAssignmentFilterPropertiesPtrOutput)
+}
+
+// Azure query for the update configuration.
+type ConfigurationAssignmentFilterPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationAssignmentFilterPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationAssignmentFilterProperties)(nil)).Elem()
+}
+
+func (o ConfigurationAssignmentFilterPropertiesOutput) ToConfigurationAssignmentFilterPropertiesOutput() ConfigurationAssignmentFilterPropertiesOutput {
+	return o
+}
+
+func (o ConfigurationAssignmentFilterPropertiesOutput) ToConfigurationAssignmentFilterPropertiesOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesOutput {
+	return o
+}
+
+func (o ConfigurationAssignmentFilterPropertiesOutput) ToConfigurationAssignmentFilterPropertiesPtrOutput() ConfigurationAssignmentFilterPropertiesPtrOutput {
+	return o.ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationAssignmentFilterPropertiesOutput) ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationAssignmentFilterProperties) *ConfigurationAssignmentFilterProperties {
+		return &v
+	}).(ConfigurationAssignmentFilterPropertiesPtrOutput)
+}
+
+// List of locations to scope the query to.
+func (o ConfigurationAssignmentFilterPropertiesOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterProperties) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed operating systems.
+func (o ConfigurationAssignmentFilterPropertiesOutput) OsTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterProperties) []string { return v.OsTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed resource groups.
+func (o ConfigurationAssignmentFilterPropertiesOutput) ResourceGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterProperties) []string { return v.ResourceGroups }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed resources.
+func (o ConfigurationAssignmentFilterPropertiesOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterProperties) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Tag settings for the VM.
+func (o ConfigurationAssignmentFilterPropertiesOutput) TagSettings() TagSettingsPropertiesPtrOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterProperties) *TagSettingsProperties { return v.TagSettings }).(TagSettingsPropertiesPtrOutput)
+}
+
+type ConfigurationAssignmentFilterPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationAssignmentFilterPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationAssignmentFilterProperties)(nil)).Elem()
+}
+
+func (o ConfigurationAssignmentFilterPropertiesPtrOutput) ToConfigurationAssignmentFilterPropertiesPtrOutput() ConfigurationAssignmentFilterPropertiesPtrOutput {
+	return o
+}
+
+func (o ConfigurationAssignmentFilterPropertiesPtrOutput) ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesPtrOutput {
+	return o
+}
+
+func (o ConfigurationAssignmentFilterPropertiesPtrOutput) Elem() ConfigurationAssignmentFilterPropertiesOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterProperties) ConfigurationAssignmentFilterProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationAssignmentFilterProperties
+		return ret
+	}).(ConfigurationAssignmentFilterPropertiesOutput)
+}
+
+// List of locations to scope the query to.
+func (o ConfigurationAssignmentFilterPropertiesPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of allowed operating systems.
+func (o ConfigurationAssignmentFilterPropertiesPtrOutput) OsTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OsTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of allowed resource groups.
+func (o ConfigurationAssignmentFilterPropertiesPtrOutput) ResourceGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of allowed resources.
+func (o ConfigurationAssignmentFilterPropertiesPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tag settings for the VM.
+func (o ConfigurationAssignmentFilterPropertiesPtrOutput) TagSettings() TagSettingsPropertiesPtrOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterProperties) *TagSettingsProperties {
+		if v == nil {
+			return nil
+		}
+		return v.TagSettings
+	}).(TagSettingsPropertiesPtrOutput)
+}
+
+// Azure query for the update configuration.
+type ConfigurationAssignmentFilterPropertiesResponse struct {
+	// List of locations to scope the query to.
+	Locations []string `pulumi:"locations"`
+	// List of allowed operating systems.
+	OsTypes []string `pulumi:"osTypes"`
+	// List of allowed resource groups.
+	ResourceGroups []string `pulumi:"resourceGroups"`
+	// List of allowed resources.
+	ResourceTypes []string `pulumi:"resourceTypes"`
+	// Tag settings for the VM.
+	TagSettings *TagSettingsPropertiesResponse `pulumi:"tagSettings"`
+}
+
+// Azure query for the update configuration.
+type ConfigurationAssignmentFilterPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationAssignmentFilterPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationAssignmentFilterPropertiesResponse)(nil)).Elem()
+}
+
+func (o ConfigurationAssignmentFilterPropertiesResponseOutput) ToConfigurationAssignmentFilterPropertiesResponseOutput() ConfigurationAssignmentFilterPropertiesResponseOutput {
+	return o
+}
+
+func (o ConfigurationAssignmentFilterPropertiesResponseOutput) ToConfigurationAssignmentFilterPropertiesResponseOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesResponseOutput {
+	return o
+}
+
+// List of locations to scope the query to.
+func (o ConfigurationAssignmentFilterPropertiesResponseOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterPropertiesResponse) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed operating systems.
+func (o ConfigurationAssignmentFilterPropertiesResponseOutput) OsTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterPropertiesResponse) []string { return v.OsTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed resource groups.
+func (o ConfigurationAssignmentFilterPropertiesResponseOutput) ResourceGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterPropertiesResponse) []string { return v.ResourceGroups }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed resources.
+func (o ConfigurationAssignmentFilterPropertiesResponseOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterPropertiesResponse) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Tag settings for the VM.
+func (o ConfigurationAssignmentFilterPropertiesResponseOutput) TagSettings() TagSettingsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ConfigurationAssignmentFilterPropertiesResponse) *TagSettingsPropertiesResponse {
+		return v.TagSettings
+	}).(TagSettingsPropertiesResponsePtrOutput)
+}
+
+type ConfigurationAssignmentFilterPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationAssignmentFilterPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationAssignmentFilterPropertiesResponse)(nil)).Elem()
+}
+
+func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) ToConfigurationAssignmentFilterPropertiesResponsePtrOutput() ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) ToConfigurationAssignmentFilterPropertiesResponsePtrOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) Elem() ConfigurationAssignmentFilterPropertiesResponseOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterPropertiesResponse) ConfigurationAssignmentFilterPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationAssignmentFilterPropertiesResponse
+		return ret
+	}).(ConfigurationAssignmentFilterPropertiesResponseOutput)
+}
+
+// List of locations to scope the query to.
+func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of allowed operating systems.
+func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) OsTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OsTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of allowed resource groups.
+func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) ResourceGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of allowed resources.
+func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tag settings for the VM.
+func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) TagSettings() TagSettingsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentFilterPropertiesResponse) *TagSettingsPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TagSettings
+	}).(TagSettingsPropertiesResponsePtrOutput)
+}
+
 // Input properties for patching a Linux machine.
 type InputLinuxParameters struct {
 	// Classification category of patches to be patched
@@ -1226,6 +1572,242 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Tag filter information for the VM.
+type TagSettingsProperties struct {
+	// Filter VMs by Any or All specified tags.
+	FilterOperator *TagOperators `pulumi:"filterOperator"`
+	// Dictionary of tags with its list of values.
+	Tags map[string][]string `pulumi:"tags"`
+}
+
+// TagSettingsPropertiesInput is an input type that accepts TagSettingsPropertiesArgs and TagSettingsPropertiesOutput values.
+// You can construct a concrete instance of `TagSettingsPropertiesInput` via:
+//
+//	TagSettingsPropertiesArgs{...}
+type TagSettingsPropertiesInput interface {
+	pulumi.Input
+
+	ToTagSettingsPropertiesOutput() TagSettingsPropertiesOutput
+	ToTagSettingsPropertiesOutputWithContext(context.Context) TagSettingsPropertiesOutput
+}
+
+// Tag filter information for the VM.
+type TagSettingsPropertiesArgs struct {
+	// Filter VMs by Any or All specified tags.
+	FilterOperator TagOperatorsPtrInput `pulumi:"filterOperator"`
+	// Dictionary of tags with its list of values.
+	Tags pulumi.StringArrayMapInput `pulumi:"tags"`
+}
+
+func (TagSettingsPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagSettingsProperties)(nil)).Elem()
+}
+
+func (i TagSettingsPropertiesArgs) ToTagSettingsPropertiesOutput() TagSettingsPropertiesOutput {
+	return i.ToTagSettingsPropertiesOutputWithContext(context.Background())
+}
+
+func (i TagSettingsPropertiesArgs) ToTagSettingsPropertiesOutputWithContext(ctx context.Context) TagSettingsPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagSettingsPropertiesOutput)
+}
+
+func (i TagSettingsPropertiesArgs) ToTagSettingsPropertiesPtrOutput() TagSettingsPropertiesPtrOutput {
+	return i.ToTagSettingsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i TagSettingsPropertiesArgs) ToTagSettingsPropertiesPtrOutputWithContext(ctx context.Context) TagSettingsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagSettingsPropertiesOutput).ToTagSettingsPropertiesPtrOutputWithContext(ctx)
+}
+
+// TagSettingsPropertiesPtrInput is an input type that accepts TagSettingsPropertiesArgs, TagSettingsPropertiesPtr and TagSettingsPropertiesPtrOutput values.
+// You can construct a concrete instance of `TagSettingsPropertiesPtrInput` via:
+//
+//	        TagSettingsPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type TagSettingsPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToTagSettingsPropertiesPtrOutput() TagSettingsPropertiesPtrOutput
+	ToTagSettingsPropertiesPtrOutputWithContext(context.Context) TagSettingsPropertiesPtrOutput
+}
+
+type tagSettingsPropertiesPtrType TagSettingsPropertiesArgs
+
+func TagSettingsPropertiesPtr(v *TagSettingsPropertiesArgs) TagSettingsPropertiesPtrInput {
+	return (*tagSettingsPropertiesPtrType)(v)
+}
+
+func (*tagSettingsPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagSettingsProperties)(nil)).Elem()
+}
+
+func (i *tagSettingsPropertiesPtrType) ToTagSettingsPropertiesPtrOutput() TagSettingsPropertiesPtrOutput {
+	return i.ToTagSettingsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *tagSettingsPropertiesPtrType) ToTagSettingsPropertiesPtrOutputWithContext(ctx context.Context) TagSettingsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagSettingsPropertiesPtrOutput)
+}
+
+// Tag filter information for the VM.
+type TagSettingsPropertiesOutput struct{ *pulumi.OutputState }
+
+func (TagSettingsPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagSettingsProperties)(nil)).Elem()
+}
+
+func (o TagSettingsPropertiesOutput) ToTagSettingsPropertiesOutput() TagSettingsPropertiesOutput {
+	return o
+}
+
+func (o TagSettingsPropertiesOutput) ToTagSettingsPropertiesOutputWithContext(ctx context.Context) TagSettingsPropertiesOutput {
+	return o
+}
+
+func (o TagSettingsPropertiesOutput) ToTagSettingsPropertiesPtrOutput() TagSettingsPropertiesPtrOutput {
+	return o.ToTagSettingsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o TagSettingsPropertiesOutput) ToTagSettingsPropertiesPtrOutputWithContext(ctx context.Context) TagSettingsPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagSettingsProperties) *TagSettingsProperties {
+		return &v
+	}).(TagSettingsPropertiesPtrOutput)
+}
+
+// Filter VMs by Any or All specified tags.
+func (o TagSettingsPropertiesOutput) FilterOperator() TagOperatorsPtrOutput {
+	return o.ApplyT(func(v TagSettingsProperties) *TagOperators { return v.FilterOperator }).(TagOperatorsPtrOutput)
+}
+
+// Dictionary of tags with its list of values.
+func (o TagSettingsPropertiesOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v TagSettingsProperties) map[string][]string { return v.Tags }).(pulumi.StringArrayMapOutput)
+}
+
+type TagSettingsPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (TagSettingsPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagSettingsProperties)(nil)).Elem()
+}
+
+func (o TagSettingsPropertiesPtrOutput) ToTagSettingsPropertiesPtrOutput() TagSettingsPropertiesPtrOutput {
+	return o
+}
+
+func (o TagSettingsPropertiesPtrOutput) ToTagSettingsPropertiesPtrOutputWithContext(ctx context.Context) TagSettingsPropertiesPtrOutput {
+	return o
+}
+
+func (o TagSettingsPropertiesPtrOutput) Elem() TagSettingsPropertiesOutput {
+	return o.ApplyT(func(v *TagSettingsProperties) TagSettingsProperties {
+		if v != nil {
+			return *v
+		}
+		var ret TagSettingsProperties
+		return ret
+	}).(TagSettingsPropertiesOutput)
+}
+
+// Filter VMs by Any or All specified tags.
+func (o TagSettingsPropertiesPtrOutput) FilterOperator() TagOperatorsPtrOutput {
+	return o.ApplyT(func(v *TagSettingsProperties) *TagOperators {
+		if v == nil {
+			return nil
+		}
+		return v.FilterOperator
+	}).(TagOperatorsPtrOutput)
+}
+
+// Dictionary of tags with its list of values.
+func (o TagSettingsPropertiesPtrOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *TagSettingsProperties) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayMapOutput)
+}
+
+// Tag filter information for the VM.
+type TagSettingsPropertiesResponse struct {
+	// Filter VMs by Any or All specified tags.
+	FilterOperator *string `pulumi:"filterOperator"`
+	// Dictionary of tags with its list of values.
+	Tags map[string][]string `pulumi:"tags"`
+}
+
+// Tag filter information for the VM.
+type TagSettingsPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (TagSettingsPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagSettingsPropertiesResponse)(nil)).Elem()
+}
+
+func (o TagSettingsPropertiesResponseOutput) ToTagSettingsPropertiesResponseOutput() TagSettingsPropertiesResponseOutput {
+	return o
+}
+
+func (o TagSettingsPropertiesResponseOutput) ToTagSettingsPropertiesResponseOutputWithContext(ctx context.Context) TagSettingsPropertiesResponseOutput {
+	return o
+}
+
+// Filter VMs by Any or All specified tags.
+func (o TagSettingsPropertiesResponseOutput) FilterOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagSettingsPropertiesResponse) *string { return v.FilterOperator }).(pulumi.StringPtrOutput)
+}
+
+// Dictionary of tags with its list of values.
+func (o TagSettingsPropertiesResponseOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v TagSettingsPropertiesResponse) map[string][]string { return v.Tags }).(pulumi.StringArrayMapOutput)
+}
+
+type TagSettingsPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TagSettingsPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagSettingsPropertiesResponse)(nil)).Elem()
+}
+
+func (o TagSettingsPropertiesResponsePtrOutput) ToTagSettingsPropertiesResponsePtrOutput() TagSettingsPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o TagSettingsPropertiesResponsePtrOutput) ToTagSettingsPropertiesResponsePtrOutputWithContext(ctx context.Context) TagSettingsPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o TagSettingsPropertiesResponsePtrOutput) Elem() TagSettingsPropertiesResponseOutput {
+	return o.ApplyT(func(v *TagSettingsPropertiesResponse) TagSettingsPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TagSettingsPropertiesResponse
+		return ret
+	}).(TagSettingsPropertiesResponseOutput)
+}
+
+// Filter VMs by Any or All specified tags.
+func (o TagSettingsPropertiesResponsePtrOutput) FilterOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagSettingsPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dictionary of tags with its list of values.
+func (o TagSettingsPropertiesResponsePtrOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *TagSettingsPropertiesResponse) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayMapOutput)
+}
+
 // Task properties of the software update configuration.
 type TaskProperties struct {
 	// Gets or sets the parameters of the task.
@@ -1442,6 +2024,10 @@ func (o TaskPropertiesResponseArrayOutput) Index(i pulumi.IntInput) TaskProperti
 }
 
 func init() {
+	pulumi.RegisterOutputType(ConfigurationAssignmentFilterPropertiesOutput{})
+	pulumi.RegisterOutputType(ConfigurationAssignmentFilterPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ConfigurationAssignmentFilterPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ConfigurationAssignmentFilterPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(InputLinuxParametersOutput{})
 	pulumi.RegisterOutputType(InputLinuxParametersPtrOutput{})
 	pulumi.RegisterOutputType(InputLinuxParametersResponseOutput{})
@@ -1459,6 +2045,10 @@ func init() {
 	pulumi.RegisterOutputType(MaintenanceOverridePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceOverridePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TagSettingsPropertiesOutput{})
+	pulumi.RegisterOutputType(TagSettingsPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(TagSettingsPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(TagSettingsPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(TaskPropertiesOutput{})
 	pulumi.RegisterOutputType(TaskPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(TaskPropertiesResponseOutput{})

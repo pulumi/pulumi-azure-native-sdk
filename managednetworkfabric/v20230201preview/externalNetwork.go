@@ -68,6 +68,9 @@ func NewExternalNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric:ExternalNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:ExternalNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExternalNetwork

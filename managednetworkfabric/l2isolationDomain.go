@@ -62,6 +62,9 @@ func NewL2IsolationDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:L2IsolationDomain"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:L2IsolationDomain"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource L2IsolationDomain

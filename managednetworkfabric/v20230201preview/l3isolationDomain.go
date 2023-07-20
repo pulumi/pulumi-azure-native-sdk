@@ -72,6 +72,9 @@ func NewL3IsolationDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric:L3IsolationDomain"),
 		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:L3IsolationDomain"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource L3IsolationDomain

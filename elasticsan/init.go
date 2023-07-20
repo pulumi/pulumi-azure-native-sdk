@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:elasticsan:ElasticSan":
 		r = &ElasticSan{}
+	case "azure-native:elasticsan:PrivateEndpointConnection":
+		r = &PrivateEndpointConnection{}
 	case "azure-native:elasticsan:Volume":
 		r = &Volume{}
 	case "azure-native:elasticsan:VolumeGroup":
