@@ -2731,8 +2731,6 @@ type IotHubProperties struct {
 	Features *string `pulumi:"features"`
 	// The IP filter rules.
 	IpFilterRules []IpFilterRule `pulumi:"ipFilterRules"`
-	// This property specifies the IP Version the hub is currently utilizing.
-	IpVersion *string `pulumi:"ipVersion"`
 	// The messaging endpoint properties for the file upload notification queue.
 	MessagingEndpoints map[string]MessagingEndpointProperties `pulumi:"messagingEndpoints"`
 	// Specifies the minimum TLS version to support for this hub. Can be set to "1.2" to have clients that use a TLS version below 1.2 to be rejected.
@@ -2805,8 +2803,6 @@ type IotHubPropertiesArgs struct {
 	Features pulumi.StringPtrInput `pulumi:"features"`
 	// The IP filter rules.
 	IpFilterRules IpFilterRuleArrayInput `pulumi:"ipFilterRules"`
-	// This property specifies the IP Version the hub is currently utilizing.
-	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
 	// The messaging endpoint properties for the file upload notification queue.
 	MessagingEndpoints MessagingEndpointPropertiesMapInput `pulumi:"messagingEndpoints"`
 	// Specifies the minimum TLS version to support for this hub. Can be set to "1.2" to have clients that use a TLS version below 1.2 to be rejected.
@@ -2982,11 +2978,6 @@ func (o IotHubPropertiesOutput) Features() pulumi.StringPtrOutput {
 // The IP filter rules.
 func (o IotHubPropertiesOutput) IpFilterRules() IpFilterRuleArrayOutput {
 	return o.ApplyT(func(v IotHubProperties) []IpFilterRule { return v.IpFilterRules }).(IpFilterRuleArrayOutput)
-}
-
-// This property specifies the IP Version the hub is currently utilizing.
-func (o IotHubPropertiesOutput) IpVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IotHubProperties) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
 // The messaging endpoint properties for the file upload notification queue.
@@ -3196,16 +3187,6 @@ func (o IotHubPropertiesPtrOutput) IpFilterRules() IpFilterRuleArrayOutput {
 		}
 		return v.IpFilterRules
 	}).(IpFilterRuleArrayOutput)
-}
-
-// This property specifies the IP Version the hub is currently utilizing.
-func (o IotHubPropertiesPtrOutput) IpVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IotHubProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 // The messaging endpoint properties for the file upload notification queue.
@@ -3470,8 +3451,6 @@ type IotHubPropertiesResponse struct {
 	HostName string `pulumi:"hostName"`
 	// The IP filter rules.
 	IpFilterRules []IpFilterRuleResponse `pulumi:"ipFilterRules"`
-	// This property specifies the IP Version the hub is currently utilizing.
-	IpVersion *string `pulumi:"ipVersion"`
 	// Primary and secondary location for iot hub
 	Locations []IotHubLocationDescriptionResponse `pulumi:"locations"`
 	// The messaging endpoint properties for the file upload notification queue.
@@ -3599,11 +3578,6 @@ func (o IotHubPropertiesResponseOutput) HostName() pulumi.StringOutput {
 // The IP filter rules.
 func (o IotHubPropertiesResponseOutput) IpFilterRules() IpFilterRuleResponseArrayOutput {
 	return o.ApplyT(func(v IotHubPropertiesResponse) []IpFilterRuleResponse { return v.IpFilterRules }).(IpFilterRuleResponseArrayOutput)
-}
-
-// This property specifies the IP Version the hub is currently utilizing.
-func (o IotHubPropertiesResponseOutput) IpVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IotHubPropertiesResponse) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
 // Primary and secondary location for iot hub

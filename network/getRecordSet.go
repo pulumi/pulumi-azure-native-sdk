@@ -11,7 +11,7 @@ import (
 )
 
 // Gets a record set.
-// Azure REST API version: 2023-07-01-preview.
+// Azure REST API version: 2018-05-01.
 func LookupRecordSet(ctx *pulumi.Context, args *LookupRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupRecordSetResult, error) {
 	var rv LookupRecordSetResult
 	err := ctx.Invoke("azure-native:network:getRecordSet", args, &rv, opts...)
@@ -26,7 +26,7 @@ type LookupRecordSetArgs struct {
 	RecordType string `pulumi:"recordType"`
 	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName string `pulumi:"relativeRecordSetName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the DNS zone (without a terminating dot).
 	ZoneName string `pulumi:"zoneName"`
@@ -42,8 +42,6 @@ type LookupRecordSetResult struct {
 	CaaRecords []CaaRecordResponse `pulumi:"caaRecords"`
 	// The CNAME record in the  record set.
 	CnameRecord *CnameRecordResponse `pulumi:"cnameRecord"`
-	// The list of DS records in the record set.
-	DsRecords []DsRecordResponse `pulumi:"dsRecords"`
 	// The etag of the record set.
 	Etag *string `pulumi:"etag"`
 	// Fully qualified domain name of the record set.
@@ -56,8 +54,6 @@ type LookupRecordSetResult struct {
 	MxRecords []MxRecordResponse `pulumi:"mxRecords"`
 	// The name of the record set.
 	Name string `pulumi:"name"`
-	// The list of NAPTR records in the record set.
-	NaptrRecords []NaptrRecordResponse `pulumi:"naptrRecords"`
 	// The list of NS records in the record set.
 	NsRecords []NsRecordResponse `pulumi:"nsRecords"`
 	// provisioning State of the record set.
@@ -70,8 +66,6 @@ type LookupRecordSetResult struct {
 	SrvRecords []SrvRecordResponse `pulumi:"srvRecords"`
 	// A reference to an azure resource from where the dns resource value is taken.
 	TargetResource *SubResourceResponse `pulumi:"targetResource"`
-	// The list of TLSA records in the record set.
-	TlsaRecords []TlsaRecordResponse `pulumi:"tlsaRecords"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl *float64 `pulumi:"ttl"`
 	// The list of TXT records in the record set.
@@ -98,7 +92,7 @@ type LookupRecordSetOutputArgs struct {
 	RecordType pulumi.StringInput `pulumi:"recordType"`
 	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName pulumi.StringInput `pulumi:"relativeRecordSetName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the DNS zone (without a terminating dot).
 	ZoneName pulumi.StringInput `pulumi:"zoneName"`
@@ -143,11 +137,6 @@ func (o LookupRecordSetResultOutput) CnameRecord() CnameRecordResponsePtrOutput 
 	return o.ApplyT(func(v LookupRecordSetResult) *CnameRecordResponse { return v.CnameRecord }).(CnameRecordResponsePtrOutput)
 }
 
-// The list of DS records in the record set.
-func (o LookupRecordSetResultOutput) DsRecords() DsRecordResponseArrayOutput {
-	return o.ApplyT(func(v LookupRecordSetResult) []DsRecordResponse { return v.DsRecords }).(DsRecordResponseArrayOutput)
-}
-
 // The etag of the record set.
 func (o LookupRecordSetResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
@@ -178,11 +167,6 @@ func (o LookupRecordSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of NAPTR records in the record set.
-func (o LookupRecordSetResultOutput) NaptrRecords() NaptrRecordResponseArrayOutput {
-	return o.ApplyT(func(v LookupRecordSetResult) []NaptrRecordResponse { return v.NaptrRecords }).(NaptrRecordResponseArrayOutput)
-}
-
 // The list of NS records in the record set.
 func (o LookupRecordSetResultOutput) NsRecords() NsRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []NsRecordResponse { return v.NsRecords }).(NsRecordResponseArrayOutput)
@@ -211,11 +195,6 @@ func (o LookupRecordSetResultOutput) SrvRecords() SrvRecordResponseArrayOutput {
 // A reference to an azure resource from where the dns resource value is taken.
 func (o LookupRecordSetResultOutput) TargetResource() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *SubResourceResponse { return v.TargetResource }).(SubResourceResponsePtrOutput)
-}
-
-// The list of TLSA records in the record set.
-func (o LookupRecordSetResultOutput) TlsaRecords() TlsaRecordResponseArrayOutput {
-	return o.ApplyT(func(v LookupRecordSetResult) []TlsaRecordResponse { return v.TlsaRecords }).(TlsaRecordResponseArrayOutput)
 }
 
 // The TTL (time-to-live) of the records in the record set.

@@ -12,7 +12,7 @@ import (
 )
 
 // The private endpoint connection of an IotHub
-// Azure REST API version: 2022-11-15-preview. Prior API version in Azure Native 1.x: 2020-08-31
+// Azure REST API version: 2022-04-30-preview. Prior API version in Azure Native 1.x: 2020-08-31
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
