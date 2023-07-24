@@ -93,6 +93,9 @@ func NewHubVirtualNetworkConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230201:HubVirtualNetworkConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230401:HubVirtualNetworkConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource HubVirtualNetworkConnection

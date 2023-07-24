@@ -195,6 +195,9 @@ func NewVirtualNetworkPeering(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230201:VirtualNetworkPeering"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230401:VirtualNetworkPeering"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetworkPeering
