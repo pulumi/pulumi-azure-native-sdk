@@ -88,6 +88,9 @@ func NewFirewallPolicyRuleCollectionGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20221101:FirewallPolicyRuleCollectionGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230401:FirewallPolicyRuleCollectionGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FirewallPolicyRuleCollectionGroup

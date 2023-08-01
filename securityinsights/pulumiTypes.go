@@ -2290,6 +2290,933 @@ func (o ClientInfoResponsePtrOutput) UserPrincipalName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The criteria by which we determine whether the connector is connected or not.
+// For Example, use a KQL query to check if  the expected data type is flowing).
+type ConnectivityCriterion struct {
+	// Gets or sets the type of connectivity.
+	Type string `pulumi:"type"`
+	// Gets or sets the queries for checking connectivity.
+	Value []string `pulumi:"value"`
+}
+
+// ConnectivityCriterionInput is an input type that accepts ConnectivityCriterionArgs and ConnectivityCriterionOutput values.
+// You can construct a concrete instance of `ConnectivityCriterionInput` via:
+//
+//	ConnectivityCriterionArgs{...}
+type ConnectivityCriterionInput interface {
+	pulumi.Input
+
+	ToConnectivityCriterionOutput() ConnectivityCriterionOutput
+	ToConnectivityCriterionOutputWithContext(context.Context) ConnectivityCriterionOutput
+}
+
+// The criteria by which we determine whether the connector is connected or not.
+// For Example, use a KQL query to check if  the expected data type is flowing).
+type ConnectivityCriterionArgs struct {
+	// Gets or sets the type of connectivity.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Gets or sets the queries for checking connectivity.
+	Value pulumi.StringArrayInput `pulumi:"value"`
+}
+
+func (ConnectivityCriterionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityCriterion)(nil)).Elem()
+}
+
+func (i ConnectivityCriterionArgs) ToConnectivityCriterionOutput() ConnectivityCriterionOutput {
+	return i.ToConnectivityCriterionOutputWithContext(context.Background())
+}
+
+func (i ConnectivityCriterionArgs) ToConnectivityCriterionOutputWithContext(ctx context.Context) ConnectivityCriterionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityCriterionOutput)
+}
+
+// ConnectivityCriterionArrayInput is an input type that accepts ConnectivityCriterionArray and ConnectivityCriterionArrayOutput values.
+// You can construct a concrete instance of `ConnectivityCriterionArrayInput` via:
+//
+//	ConnectivityCriterionArray{ ConnectivityCriterionArgs{...} }
+type ConnectivityCriterionArrayInput interface {
+	pulumi.Input
+
+	ToConnectivityCriterionArrayOutput() ConnectivityCriterionArrayOutput
+	ToConnectivityCriterionArrayOutputWithContext(context.Context) ConnectivityCriterionArrayOutput
+}
+
+type ConnectivityCriterionArray []ConnectivityCriterionInput
+
+func (ConnectivityCriterionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectivityCriterion)(nil)).Elem()
+}
+
+func (i ConnectivityCriterionArray) ToConnectivityCriterionArrayOutput() ConnectivityCriterionArrayOutput {
+	return i.ToConnectivityCriterionArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectivityCriterionArray) ToConnectivityCriterionArrayOutputWithContext(ctx context.Context) ConnectivityCriterionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityCriterionArrayOutput)
+}
+
+// The criteria by which we determine whether the connector is connected or not.
+// For Example, use a KQL query to check if  the expected data type is flowing).
+type ConnectivityCriterionOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityCriterionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityCriterion)(nil)).Elem()
+}
+
+func (o ConnectivityCriterionOutput) ToConnectivityCriterionOutput() ConnectivityCriterionOutput {
+	return o
+}
+
+func (o ConnectivityCriterionOutput) ToConnectivityCriterionOutputWithContext(ctx context.Context) ConnectivityCriterionOutput {
+	return o
+}
+
+// Gets or sets the type of connectivity.
+func (o ConnectivityCriterionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectivityCriterion) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Gets or sets the queries for checking connectivity.
+func (o ConnectivityCriterionOutput) Value() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectivityCriterion) []string { return v.Value }).(pulumi.StringArrayOutput)
+}
+
+type ConnectivityCriterionArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityCriterionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectivityCriterion)(nil)).Elem()
+}
+
+func (o ConnectivityCriterionArrayOutput) ToConnectivityCriterionArrayOutput() ConnectivityCriterionArrayOutput {
+	return o
+}
+
+func (o ConnectivityCriterionArrayOutput) ToConnectivityCriterionArrayOutputWithContext(ctx context.Context) ConnectivityCriterionArrayOutput {
+	return o
+}
+
+func (o ConnectivityCriterionArrayOutput) Index(i pulumi.IntInput) ConnectivityCriterionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectivityCriterion {
+		return vs[0].([]ConnectivityCriterion)[vs[1].(int)]
+	}).(ConnectivityCriterionOutput)
+}
+
+// The criteria by which we determine whether the connector is connected or not.
+// For Example, use a KQL query to check if  the expected data type is flowing).
+type ConnectivityCriterionResponse struct {
+	// Gets or sets the type of connectivity.
+	Type string `pulumi:"type"`
+	// Gets or sets the queries for checking connectivity.
+	Value []string `pulumi:"value"`
+}
+
+// The criteria by which we determine whether the connector is connected or not.
+// For Example, use a KQL query to check if  the expected data type is flowing).
+type ConnectivityCriterionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityCriterionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityCriterionResponse)(nil)).Elem()
+}
+
+func (o ConnectivityCriterionResponseOutput) ToConnectivityCriterionResponseOutput() ConnectivityCriterionResponseOutput {
+	return o
+}
+
+func (o ConnectivityCriterionResponseOutput) ToConnectivityCriterionResponseOutputWithContext(ctx context.Context) ConnectivityCriterionResponseOutput {
+	return o
+}
+
+// Gets or sets the type of connectivity.
+func (o ConnectivityCriterionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectivityCriterionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Gets or sets the queries for checking connectivity.
+func (o ConnectivityCriterionResponseOutput) Value() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectivityCriterionResponse) []string { return v.Value }).(pulumi.StringArrayOutput)
+}
+
+type ConnectivityCriterionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityCriterionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectivityCriterionResponse)(nil)).Elem()
+}
+
+func (o ConnectivityCriterionResponseArrayOutput) ToConnectivityCriterionResponseArrayOutput() ConnectivityCriterionResponseArrayOutput {
+	return o
+}
+
+func (o ConnectivityCriterionResponseArrayOutput) ToConnectivityCriterionResponseArrayOutputWithContext(ctx context.Context) ConnectivityCriterionResponseArrayOutput {
+	return o
+}
+
+func (o ConnectivityCriterionResponseArrayOutput) Index(i pulumi.IntInput) ConnectivityCriterionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectivityCriterionResponse {
+		return vs[0].([]ConnectivityCriterionResponse)[vs[1].(int)]
+	}).(ConnectivityCriterionResponseOutput)
+}
+
+// The data type which is created by the connector,
+// including a query indicated when was the last time that data type was received in the workspace.
+type ConnectorDataType struct {
+	// Gets or sets the query to indicate when relevant data was last received in the workspace.
+	LastDataReceivedQuery string `pulumi:"lastDataReceivedQuery"`
+	// Gets or sets the name of the data type to show in the graph.
+	Name string `pulumi:"name"`
+}
+
+// ConnectorDataTypeInput is an input type that accepts ConnectorDataTypeArgs and ConnectorDataTypeOutput values.
+// You can construct a concrete instance of `ConnectorDataTypeInput` via:
+//
+//	ConnectorDataTypeArgs{...}
+type ConnectorDataTypeInput interface {
+	pulumi.Input
+
+	ToConnectorDataTypeOutput() ConnectorDataTypeOutput
+	ToConnectorDataTypeOutputWithContext(context.Context) ConnectorDataTypeOutput
+}
+
+// The data type which is created by the connector,
+// including a query indicated when was the last time that data type was received in the workspace.
+type ConnectorDataTypeArgs struct {
+	// Gets or sets the query to indicate when relevant data was last received in the workspace.
+	LastDataReceivedQuery pulumi.StringInput `pulumi:"lastDataReceivedQuery"`
+	// Gets or sets the name of the data type to show in the graph.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ConnectorDataTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDataType)(nil)).Elem()
+}
+
+func (i ConnectorDataTypeArgs) ToConnectorDataTypeOutput() ConnectorDataTypeOutput {
+	return i.ToConnectorDataTypeOutputWithContext(context.Background())
+}
+
+func (i ConnectorDataTypeArgs) ToConnectorDataTypeOutputWithContext(ctx context.Context) ConnectorDataTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDataTypeOutput)
+}
+
+// ConnectorDataTypeArrayInput is an input type that accepts ConnectorDataTypeArray and ConnectorDataTypeArrayOutput values.
+// You can construct a concrete instance of `ConnectorDataTypeArrayInput` via:
+//
+//	ConnectorDataTypeArray{ ConnectorDataTypeArgs{...} }
+type ConnectorDataTypeArrayInput interface {
+	pulumi.Input
+
+	ToConnectorDataTypeArrayOutput() ConnectorDataTypeArrayOutput
+	ToConnectorDataTypeArrayOutputWithContext(context.Context) ConnectorDataTypeArrayOutput
+}
+
+type ConnectorDataTypeArray []ConnectorDataTypeInput
+
+func (ConnectorDataTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorDataType)(nil)).Elem()
+}
+
+func (i ConnectorDataTypeArray) ToConnectorDataTypeArrayOutput() ConnectorDataTypeArrayOutput {
+	return i.ToConnectorDataTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorDataTypeArray) ToConnectorDataTypeArrayOutputWithContext(ctx context.Context) ConnectorDataTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDataTypeArrayOutput)
+}
+
+// The data type which is created by the connector,
+// including a query indicated when was the last time that data type was received in the workspace.
+type ConnectorDataTypeOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDataTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDataType)(nil)).Elem()
+}
+
+func (o ConnectorDataTypeOutput) ToConnectorDataTypeOutput() ConnectorDataTypeOutput {
+	return o
+}
+
+func (o ConnectorDataTypeOutput) ToConnectorDataTypeOutputWithContext(ctx context.Context) ConnectorDataTypeOutput {
+	return o
+}
+
+// Gets or sets the query to indicate when relevant data was last received in the workspace.
+func (o ConnectorDataTypeOutput) LastDataReceivedQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDataType) string { return v.LastDataReceivedQuery }).(pulumi.StringOutput)
+}
+
+// Gets or sets the name of the data type to show in the graph.
+func (o ConnectorDataTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDataType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ConnectorDataTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDataTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorDataType)(nil)).Elem()
+}
+
+func (o ConnectorDataTypeArrayOutput) ToConnectorDataTypeArrayOutput() ConnectorDataTypeArrayOutput {
+	return o
+}
+
+func (o ConnectorDataTypeArrayOutput) ToConnectorDataTypeArrayOutputWithContext(ctx context.Context) ConnectorDataTypeArrayOutput {
+	return o
+}
+
+func (o ConnectorDataTypeArrayOutput) Index(i pulumi.IntInput) ConnectorDataTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorDataType {
+		return vs[0].([]ConnectorDataType)[vs[1].(int)]
+	}).(ConnectorDataTypeOutput)
+}
+
+// The data type which is created by the connector,
+// including a query indicated when was the last time that data type was received in the workspace.
+type ConnectorDataTypeResponse struct {
+	// Gets or sets the query to indicate when relevant data was last received in the workspace.
+	LastDataReceivedQuery string `pulumi:"lastDataReceivedQuery"`
+	// Gets or sets the name of the data type to show in the graph.
+	Name string `pulumi:"name"`
+}
+
+// The data type which is created by the connector,
+// including a query indicated when was the last time that data type was received in the workspace.
+type ConnectorDataTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDataTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDataTypeResponse)(nil)).Elem()
+}
+
+func (o ConnectorDataTypeResponseOutput) ToConnectorDataTypeResponseOutput() ConnectorDataTypeResponseOutput {
+	return o
+}
+
+func (o ConnectorDataTypeResponseOutput) ToConnectorDataTypeResponseOutputWithContext(ctx context.Context) ConnectorDataTypeResponseOutput {
+	return o
+}
+
+// Gets or sets the query to indicate when relevant data was last received in the workspace.
+func (o ConnectorDataTypeResponseOutput) LastDataReceivedQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDataTypeResponse) string { return v.LastDataReceivedQuery }).(pulumi.StringOutput)
+}
+
+// Gets or sets the name of the data type to show in the graph.
+func (o ConnectorDataTypeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDataTypeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ConnectorDataTypeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDataTypeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorDataTypeResponse)(nil)).Elem()
+}
+
+func (o ConnectorDataTypeResponseArrayOutput) ToConnectorDataTypeResponseArrayOutput() ConnectorDataTypeResponseArrayOutput {
+	return o
+}
+
+func (o ConnectorDataTypeResponseArrayOutput) ToConnectorDataTypeResponseArrayOutputWithContext(ctx context.Context) ConnectorDataTypeResponseArrayOutput {
+	return o
+}
+
+func (o ConnectorDataTypeResponseArrayOutput) Index(i pulumi.IntInput) ConnectorDataTypeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorDataTypeResponse {
+		return vs[0].([]ConnectorDataTypeResponse)[vs[1].(int)]
+	}).(ConnectorDataTypeResponseOutput)
+}
+
+// The exposure status of the connector to the customers.
+type ConnectorDefinitionsAvailability struct {
+	// Gets or sets a value indicating whether the connector is preview.
+	IsPreview *bool `pulumi:"isPreview"`
+	// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
+	Status *int `pulumi:"status"`
+}
+
+// ConnectorDefinitionsAvailabilityInput is an input type that accepts ConnectorDefinitionsAvailabilityArgs and ConnectorDefinitionsAvailabilityOutput values.
+// You can construct a concrete instance of `ConnectorDefinitionsAvailabilityInput` via:
+//
+//	ConnectorDefinitionsAvailabilityArgs{...}
+type ConnectorDefinitionsAvailabilityInput interface {
+	pulumi.Input
+
+	ToConnectorDefinitionsAvailabilityOutput() ConnectorDefinitionsAvailabilityOutput
+	ToConnectorDefinitionsAvailabilityOutputWithContext(context.Context) ConnectorDefinitionsAvailabilityOutput
+}
+
+// The exposure status of the connector to the customers.
+type ConnectorDefinitionsAvailabilityArgs struct {
+	// Gets or sets a value indicating whether the connector is preview.
+	IsPreview pulumi.BoolPtrInput `pulumi:"isPreview"`
+	// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
+	Status pulumi.IntPtrInput `pulumi:"status"`
+}
+
+func (ConnectorDefinitionsAvailabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsAvailability)(nil)).Elem()
+}
+
+func (i ConnectorDefinitionsAvailabilityArgs) ToConnectorDefinitionsAvailabilityOutput() ConnectorDefinitionsAvailabilityOutput {
+	return i.ToConnectorDefinitionsAvailabilityOutputWithContext(context.Background())
+}
+
+func (i ConnectorDefinitionsAvailabilityArgs) ToConnectorDefinitionsAvailabilityOutputWithContext(ctx context.Context) ConnectorDefinitionsAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDefinitionsAvailabilityOutput)
+}
+
+func (i ConnectorDefinitionsAvailabilityArgs) ToConnectorDefinitionsAvailabilityPtrOutput() ConnectorDefinitionsAvailabilityPtrOutput {
+	return i.ToConnectorDefinitionsAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorDefinitionsAvailabilityArgs) ToConnectorDefinitionsAvailabilityPtrOutputWithContext(ctx context.Context) ConnectorDefinitionsAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDefinitionsAvailabilityOutput).ToConnectorDefinitionsAvailabilityPtrOutputWithContext(ctx)
+}
+
+// ConnectorDefinitionsAvailabilityPtrInput is an input type that accepts ConnectorDefinitionsAvailabilityArgs, ConnectorDefinitionsAvailabilityPtr and ConnectorDefinitionsAvailabilityPtrOutput values.
+// You can construct a concrete instance of `ConnectorDefinitionsAvailabilityPtrInput` via:
+//
+//	        ConnectorDefinitionsAvailabilityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorDefinitionsAvailabilityPtrInput interface {
+	pulumi.Input
+
+	ToConnectorDefinitionsAvailabilityPtrOutput() ConnectorDefinitionsAvailabilityPtrOutput
+	ToConnectorDefinitionsAvailabilityPtrOutputWithContext(context.Context) ConnectorDefinitionsAvailabilityPtrOutput
+}
+
+type connectorDefinitionsAvailabilityPtrType ConnectorDefinitionsAvailabilityArgs
+
+func ConnectorDefinitionsAvailabilityPtr(v *ConnectorDefinitionsAvailabilityArgs) ConnectorDefinitionsAvailabilityPtrInput {
+	return (*connectorDefinitionsAvailabilityPtrType)(v)
+}
+
+func (*connectorDefinitionsAvailabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorDefinitionsAvailability)(nil)).Elem()
+}
+
+func (i *connectorDefinitionsAvailabilityPtrType) ToConnectorDefinitionsAvailabilityPtrOutput() ConnectorDefinitionsAvailabilityPtrOutput {
+	return i.ToConnectorDefinitionsAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorDefinitionsAvailabilityPtrType) ToConnectorDefinitionsAvailabilityPtrOutputWithContext(ctx context.Context) ConnectorDefinitionsAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDefinitionsAvailabilityPtrOutput)
+}
+
+// The exposure status of the connector to the customers.
+type ConnectorDefinitionsAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsAvailability)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsAvailabilityOutput) ToConnectorDefinitionsAvailabilityOutput() ConnectorDefinitionsAvailabilityOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsAvailabilityOutput) ToConnectorDefinitionsAvailabilityOutputWithContext(ctx context.Context) ConnectorDefinitionsAvailabilityOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsAvailabilityOutput) ToConnectorDefinitionsAvailabilityPtrOutput() ConnectorDefinitionsAvailabilityPtrOutput {
+	return o.ToConnectorDefinitionsAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorDefinitionsAvailabilityOutput) ToConnectorDefinitionsAvailabilityPtrOutputWithContext(ctx context.Context) ConnectorDefinitionsAvailabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorDefinitionsAvailability) *ConnectorDefinitionsAvailability {
+		return &v
+	}).(ConnectorDefinitionsAvailabilityPtrOutput)
+}
+
+// Gets or sets a value indicating whether the connector is preview.
+func (o ConnectorDefinitionsAvailabilityOutput) IsPreview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsAvailability) *bool { return v.IsPreview }).(pulumi.BoolPtrOutput)
+}
+
+// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
+func (o ConnectorDefinitionsAvailabilityOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsAvailability) *int { return v.Status }).(pulumi.IntPtrOutput)
+}
+
+type ConnectorDefinitionsAvailabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsAvailabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorDefinitionsAvailability)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsAvailabilityPtrOutput) ToConnectorDefinitionsAvailabilityPtrOutput() ConnectorDefinitionsAvailabilityPtrOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsAvailabilityPtrOutput) ToConnectorDefinitionsAvailabilityPtrOutputWithContext(ctx context.Context) ConnectorDefinitionsAvailabilityPtrOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsAvailabilityPtrOutput) Elem() ConnectorDefinitionsAvailabilityOutput {
+	return o.ApplyT(func(v *ConnectorDefinitionsAvailability) ConnectorDefinitionsAvailability {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorDefinitionsAvailability
+		return ret
+	}).(ConnectorDefinitionsAvailabilityOutput)
+}
+
+// Gets or sets a value indicating whether the connector is preview.
+func (o ConnectorDefinitionsAvailabilityPtrOutput) IsPreview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectorDefinitionsAvailability) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPreview
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
+func (o ConnectorDefinitionsAvailabilityPtrOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectorDefinitionsAvailability) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.IntPtrOutput)
+}
+
+// The exposure status of the connector to the customers.
+type ConnectorDefinitionsAvailabilityResponse struct {
+	// Gets or sets a value indicating whether the connector is preview.
+	IsPreview *bool `pulumi:"isPreview"`
+	// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
+	Status *int `pulumi:"status"`
+}
+
+// The exposure status of the connector to the customers.
+type ConnectorDefinitionsAvailabilityResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsAvailabilityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsAvailabilityResponse)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsAvailabilityResponseOutput) ToConnectorDefinitionsAvailabilityResponseOutput() ConnectorDefinitionsAvailabilityResponseOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsAvailabilityResponseOutput) ToConnectorDefinitionsAvailabilityResponseOutputWithContext(ctx context.Context) ConnectorDefinitionsAvailabilityResponseOutput {
+	return o
+}
+
+// Gets or sets a value indicating whether the connector is preview.
+func (o ConnectorDefinitionsAvailabilityResponseOutput) IsPreview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsAvailabilityResponse) *bool { return v.IsPreview }).(pulumi.BoolPtrOutput)
+}
+
+// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
+func (o ConnectorDefinitionsAvailabilityResponseOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsAvailabilityResponse) *int { return v.Status }).(pulumi.IntPtrOutput)
+}
+
+type ConnectorDefinitionsAvailabilityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsAvailabilityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorDefinitionsAvailabilityResponse)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsAvailabilityResponsePtrOutput) ToConnectorDefinitionsAvailabilityResponsePtrOutput() ConnectorDefinitionsAvailabilityResponsePtrOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsAvailabilityResponsePtrOutput) ToConnectorDefinitionsAvailabilityResponsePtrOutputWithContext(ctx context.Context) ConnectorDefinitionsAvailabilityResponsePtrOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsAvailabilityResponsePtrOutput) Elem() ConnectorDefinitionsAvailabilityResponseOutput {
+	return o.ApplyT(func(v *ConnectorDefinitionsAvailabilityResponse) ConnectorDefinitionsAvailabilityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorDefinitionsAvailabilityResponse
+		return ret
+	}).(ConnectorDefinitionsAvailabilityResponseOutput)
+}
+
+// Gets or sets a value indicating whether the connector is preview.
+func (o ConnectorDefinitionsAvailabilityResponsePtrOutput) IsPreview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectorDefinitionsAvailabilityResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPreview
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
+func (o ConnectorDefinitionsAvailabilityResponsePtrOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectorDefinitionsAvailabilityResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.IntPtrOutput)
+}
+
+// The required Permissions for the connector.
+type ConnectorDefinitionsPermissions struct {
+	// Gets or sets the customs permissions required for the user to create connections.
+	Customs []CustomPermissionDetails `pulumi:"customs"`
+	// Gets or sets the required licenses for the user to create connections.
+	Licenses []string `pulumi:"licenses"`
+	// Gets or sets the resource provider permissions required for the user to create connections.
+	ResourceProvider []ConnectorDefinitionsResourceProvider `pulumi:"resourceProvider"`
+	// Gets or sets the required tenant permissions for the connector.
+	Tenant []string `pulumi:"tenant"`
+}
+
+// ConnectorDefinitionsPermissionsInput is an input type that accepts ConnectorDefinitionsPermissionsArgs and ConnectorDefinitionsPermissionsOutput values.
+// You can construct a concrete instance of `ConnectorDefinitionsPermissionsInput` via:
+//
+//	ConnectorDefinitionsPermissionsArgs{...}
+type ConnectorDefinitionsPermissionsInput interface {
+	pulumi.Input
+
+	ToConnectorDefinitionsPermissionsOutput() ConnectorDefinitionsPermissionsOutput
+	ToConnectorDefinitionsPermissionsOutputWithContext(context.Context) ConnectorDefinitionsPermissionsOutput
+}
+
+// The required Permissions for the connector.
+type ConnectorDefinitionsPermissionsArgs struct {
+	// Gets or sets the customs permissions required for the user to create connections.
+	Customs CustomPermissionDetailsArrayInput `pulumi:"customs"`
+	// Gets or sets the required licenses for the user to create connections.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
+	// Gets or sets the resource provider permissions required for the user to create connections.
+	ResourceProvider ConnectorDefinitionsResourceProviderArrayInput `pulumi:"resourceProvider"`
+	// Gets or sets the required tenant permissions for the connector.
+	Tenant pulumi.StringArrayInput `pulumi:"tenant"`
+}
+
+func (ConnectorDefinitionsPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsPermissions)(nil)).Elem()
+}
+
+func (i ConnectorDefinitionsPermissionsArgs) ToConnectorDefinitionsPermissionsOutput() ConnectorDefinitionsPermissionsOutput {
+	return i.ToConnectorDefinitionsPermissionsOutputWithContext(context.Background())
+}
+
+func (i ConnectorDefinitionsPermissionsArgs) ToConnectorDefinitionsPermissionsOutputWithContext(ctx context.Context) ConnectorDefinitionsPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDefinitionsPermissionsOutput)
+}
+
+// The required Permissions for the connector.
+type ConnectorDefinitionsPermissionsOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsPermissions)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsPermissionsOutput) ToConnectorDefinitionsPermissionsOutput() ConnectorDefinitionsPermissionsOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsPermissionsOutput) ToConnectorDefinitionsPermissionsOutputWithContext(ctx context.Context) ConnectorDefinitionsPermissionsOutput {
+	return o
+}
+
+// Gets or sets the customs permissions required for the user to create connections.
+func (o ConnectorDefinitionsPermissionsOutput) Customs() CustomPermissionDetailsArrayOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsPermissions) []CustomPermissionDetails { return v.Customs }).(CustomPermissionDetailsArrayOutput)
+}
+
+// Gets or sets the required licenses for the user to create connections.
+func (o ConnectorDefinitionsPermissionsOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsPermissions) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the resource provider permissions required for the user to create connections.
+func (o ConnectorDefinitionsPermissionsOutput) ResourceProvider() ConnectorDefinitionsResourceProviderArrayOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsPermissions) []ConnectorDefinitionsResourceProvider {
+		return v.ResourceProvider
+	}).(ConnectorDefinitionsResourceProviderArrayOutput)
+}
+
+// Gets or sets the required tenant permissions for the connector.
+func (o ConnectorDefinitionsPermissionsOutput) Tenant() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsPermissions) []string { return v.Tenant }).(pulumi.StringArrayOutput)
+}
+
+// The required Permissions for the connector.
+type ConnectorDefinitionsPermissionsResponse struct {
+	// Gets or sets the customs permissions required for the user to create connections.
+	Customs []CustomPermissionDetailsResponse `pulumi:"customs"`
+	// Gets or sets the required licenses for the user to create connections.
+	Licenses []string `pulumi:"licenses"`
+	// Gets or sets the resource provider permissions required for the user to create connections.
+	ResourceProvider []ConnectorDefinitionsResourceProviderResponse `pulumi:"resourceProvider"`
+	// Gets or sets the required tenant permissions for the connector.
+	Tenant []string `pulumi:"tenant"`
+}
+
+// The required Permissions for the connector.
+type ConnectorDefinitionsPermissionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsPermissionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsPermissionsResponse)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsPermissionsResponseOutput) ToConnectorDefinitionsPermissionsResponseOutput() ConnectorDefinitionsPermissionsResponseOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsPermissionsResponseOutput) ToConnectorDefinitionsPermissionsResponseOutputWithContext(ctx context.Context) ConnectorDefinitionsPermissionsResponseOutput {
+	return o
+}
+
+// Gets or sets the customs permissions required for the user to create connections.
+func (o ConnectorDefinitionsPermissionsResponseOutput) Customs() CustomPermissionDetailsResponseArrayOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsPermissionsResponse) []CustomPermissionDetailsResponse { return v.Customs }).(CustomPermissionDetailsResponseArrayOutput)
+}
+
+// Gets or sets the required licenses for the user to create connections.
+func (o ConnectorDefinitionsPermissionsResponseOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsPermissionsResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the resource provider permissions required for the user to create connections.
+func (o ConnectorDefinitionsPermissionsResponseOutput) ResourceProvider() ConnectorDefinitionsResourceProviderResponseArrayOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsPermissionsResponse) []ConnectorDefinitionsResourceProviderResponse {
+		return v.ResourceProvider
+	}).(ConnectorDefinitionsResourceProviderResponseArrayOutput)
+}
+
+// Gets or sets the required tenant permissions for the connector.
+func (o ConnectorDefinitionsPermissionsResponseOutput) Tenant() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsPermissionsResponse) []string { return v.Tenant }).(pulumi.StringArrayOutput)
+}
+
+// The resource provider details include the required permissions for the user to create connections.
+// The user should have the required permissions(Read\Write, ..) in the specified scope ProviderPermissionsScope against the specified resource provider.
+type ConnectorDefinitionsResourceProvider struct {
+	// Gets or sets the permissions description text.
+	PermissionsDisplayText string `pulumi:"permissionsDisplayText"`
+	// Gets or sets the provider name.
+	Provider string `pulumi:"provider"`
+	// Gets or sets the permissions provider display name.
+	ProviderDisplayName string `pulumi:"providerDisplayName"`
+	// Required permissions for the connector resource provider that define in ResourceProviders.
+	// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+	RequiredPermissions ResourceProviderRequiredPermissions `pulumi:"requiredPermissions"`
+	// The scope on which the user should have permissions, in order to be able to create connections.
+	Scope string `pulumi:"scope"`
+}
+
+// ConnectorDefinitionsResourceProviderInput is an input type that accepts ConnectorDefinitionsResourceProviderArgs and ConnectorDefinitionsResourceProviderOutput values.
+// You can construct a concrete instance of `ConnectorDefinitionsResourceProviderInput` via:
+//
+//	ConnectorDefinitionsResourceProviderArgs{...}
+type ConnectorDefinitionsResourceProviderInput interface {
+	pulumi.Input
+
+	ToConnectorDefinitionsResourceProviderOutput() ConnectorDefinitionsResourceProviderOutput
+	ToConnectorDefinitionsResourceProviderOutputWithContext(context.Context) ConnectorDefinitionsResourceProviderOutput
+}
+
+// The resource provider details include the required permissions for the user to create connections.
+// The user should have the required permissions(Read\Write, ..) in the specified scope ProviderPermissionsScope against the specified resource provider.
+type ConnectorDefinitionsResourceProviderArgs struct {
+	// Gets or sets the permissions description text.
+	PermissionsDisplayText pulumi.StringInput `pulumi:"permissionsDisplayText"`
+	// Gets or sets the provider name.
+	Provider pulumi.StringInput `pulumi:"provider"`
+	// Gets or sets the permissions provider display name.
+	ProviderDisplayName pulumi.StringInput `pulumi:"providerDisplayName"`
+	// Required permissions for the connector resource provider that define in ResourceProviders.
+	// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+	RequiredPermissions ResourceProviderRequiredPermissionsInput `pulumi:"requiredPermissions"`
+	// The scope on which the user should have permissions, in order to be able to create connections.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (ConnectorDefinitionsResourceProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsResourceProvider)(nil)).Elem()
+}
+
+func (i ConnectorDefinitionsResourceProviderArgs) ToConnectorDefinitionsResourceProviderOutput() ConnectorDefinitionsResourceProviderOutput {
+	return i.ToConnectorDefinitionsResourceProviderOutputWithContext(context.Background())
+}
+
+func (i ConnectorDefinitionsResourceProviderArgs) ToConnectorDefinitionsResourceProviderOutputWithContext(ctx context.Context) ConnectorDefinitionsResourceProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDefinitionsResourceProviderOutput)
+}
+
+// ConnectorDefinitionsResourceProviderArrayInput is an input type that accepts ConnectorDefinitionsResourceProviderArray and ConnectorDefinitionsResourceProviderArrayOutput values.
+// You can construct a concrete instance of `ConnectorDefinitionsResourceProviderArrayInput` via:
+//
+//	ConnectorDefinitionsResourceProviderArray{ ConnectorDefinitionsResourceProviderArgs{...} }
+type ConnectorDefinitionsResourceProviderArrayInput interface {
+	pulumi.Input
+
+	ToConnectorDefinitionsResourceProviderArrayOutput() ConnectorDefinitionsResourceProviderArrayOutput
+	ToConnectorDefinitionsResourceProviderArrayOutputWithContext(context.Context) ConnectorDefinitionsResourceProviderArrayOutput
+}
+
+type ConnectorDefinitionsResourceProviderArray []ConnectorDefinitionsResourceProviderInput
+
+func (ConnectorDefinitionsResourceProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorDefinitionsResourceProvider)(nil)).Elem()
+}
+
+func (i ConnectorDefinitionsResourceProviderArray) ToConnectorDefinitionsResourceProviderArrayOutput() ConnectorDefinitionsResourceProviderArrayOutput {
+	return i.ToConnectorDefinitionsResourceProviderArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorDefinitionsResourceProviderArray) ToConnectorDefinitionsResourceProviderArrayOutputWithContext(ctx context.Context) ConnectorDefinitionsResourceProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDefinitionsResourceProviderArrayOutput)
+}
+
+// The resource provider details include the required permissions for the user to create connections.
+// The user should have the required permissions(Read\Write, ..) in the specified scope ProviderPermissionsScope against the specified resource provider.
+type ConnectorDefinitionsResourceProviderOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsResourceProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsResourceProvider)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsResourceProviderOutput) ToConnectorDefinitionsResourceProviderOutput() ConnectorDefinitionsResourceProviderOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsResourceProviderOutput) ToConnectorDefinitionsResourceProviderOutputWithContext(ctx context.Context) ConnectorDefinitionsResourceProviderOutput {
+	return o
+}
+
+// Gets or sets the permissions description text.
+func (o ConnectorDefinitionsResourceProviderOutput) PermissionsDisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProvider) string { return v.PermissionsDisplayText }).(pulumi.StringOutput)
+}
+
+// Gets or sets the provider name.
+func (o ConnectorDefinitionsResourceProviderOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProvider) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// Gets or sets the permissions provider display name.
+func (o ConnectorDefinitionsResourceProviderOutput) ProviderDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProvider) string { return v.ProviderDisplayName }).(pulumi.StringOutput)
+}
+
+// Required permissions for the connector resource provider that define in ResourceProviders.
+// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+func (o ConnectorDefinitionsResourceProviderOutput) RequiredPermissions() ResourceProviderRequiredPermissionsOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProvider) ResourceProviderRequiredPermissions {
+		return v.RequiredPermissions
+	}).(ResourceProviderRequiredPermissionsOutput)
+}
+
+// The scope on which the user should have permissions, in order to be able to create connections.
+func (o ConnectorDefinitionsResourceProviderOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProvider) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type ConnectorDefinitionsResourceProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsResourceProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorDefinitionsResourceProvider)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsResourceProviderArrayOutput) ToConnectorDefinitionsResourceProviderArrayOutput() ConnectorDefinitionsResourceProviderArrayOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsResourceProviderArrayOutput) ToConnectorDefinitionsResourceProviderArrayOutputWithContext(ctx context.Context) ConnectorDefinitionsResourceProviderArrayOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsResourceProviderArrayOutput) Index(i pulumi.IntInput) ConnectorDefinitionsResourceProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorDefinitionsResourceProvider {
+		return vs[0].([]ConnectorDefinitionsResourceProvider)[vs[1].(int)]
+	}).(ConnectorDefinitionsResourceProviderOutput)
+}
+
+// The resource provider details include the required permissions for the user to create connections.
+// The user should have the required permissions(Read\Write, ..) in the specified scope ProviderPermissionsScope against the specified resource provider.
+type ConnectorDefinitionsResourceProviderResponse struct {
+	// Gets or sets the permissions description text.
+	PermissionsDisplayText string `pulumi:"permissionsDisplayText"`
+	// Gets or sets the provider name.
+	Provider string `pulumi:"provider"`
+	// Gets or sets the permissions provider display name.
+	ProviderDisplayName string `pulumi:"providerDisplayName"`
+	// Required permissions for the connector resource provider that define in ResourceProviders.
+	// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+	RequiredPermissions ResourceProviderRequiredPermissionsResponse `pulumi:"requiredPermissions"`
+	// The scope on which the user should have permissions, in order to be able to create connections.
+	Scope string `pulumi:"scope"`
+}
+
+// The resource provider details include the required permissions for the user to create connections.
+// The user should have the required permissions(Read\Write, ..) in the specified scope ProviderPermissionsScope against the specified resource provider.
+type ConnectorDefinitionsResourceProviderResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsResourceProviderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDefinitionsResourceProviderResponse)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsResourceProviderResponseOutput) ToConnectorDefinitionsResourceProviderResponseOutput() ConnectorDefinitionsResourceProviderResponseOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsResourceProviderResponseOutput) ToConnectorDefinitionsResourceProviderResponseOutputWithContext(ctx context.Context) ConnectorDefinitionsResourceProviderResponseOutput {
+	return o
+}
+
+// Gets or sets the permissions description text.
+func (o ConnectorDefinitionsResourceProviderResponseOutput) PermissionsDisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProviderResponse) string { return v.PermissionsDisplayText }).(pulumi.StringOutput)
+}
+
+// Gets or sets the provider name.
+func (o ConnectorDefinitionsResourceProviderResponseOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProviderResponse) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// Gets or sets the permissions provider display name.
+func (o ConnectorDefinitionsResourceProviderResponseOutput) ProviderDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProviderResponse) string { return v.ProviderDisplayName }).(pulumi.StringOutput)
+}
+
+// Required permissions for the connector resource provider that define in ResourceProviders.
+// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+func (o ConnectorDefinitionsResourceProviderResponseOutput) RequiredPermissions() ResourceProviderRequiredPermissionsResponseOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProviderResponse) ResourceProviderRequiredPermissionsResponse {
+		return v.RequiredPermissions
+	}).(ResourceProviderRequiredPermissionsResponseOutput)
+}
+
+// The scope on which the user should have permissions, in order to be able to create connections.
+func (o ConnectorDefinitionsResourceProviderResponseOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorDefinitionsResourceProviderResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type ConnectorDefinitionsResourceProviderResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDefinitionsResourceProviderResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorDefinitionsResourceProviderResponse)(nil)).Elem()
+}
+
+func (o ConnectorDefinitionsResourceProviderResponseArrayOutput) ToConnectorDefinitionsResourceProviderResponseArrayOutput() ConnectorDefinitionsResourceProviderResponseArrayOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsResourceProviderResponseArrayOutput) ToConnectorDefinitionsResourceProviderResponseArrayOutputWithContext(ctx context.Context) ConnectorDefinitionsResourceProviderResponseArrayOutput {
+	return o
+}
+
+func (o ConnectorDefinitionsResourceProviderResponseArrayOutput) Index(i pulumi.IntInput) ConnectorDefinitionsResourceProviderResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorDefinitionsResourceProviderResponse {
+		return vs[0].([]ConnectorDefinitionsResourceProviderResponse)[vs[1].(int)]
+	}).(ConnectorDefinitionsResourceProviderResponseOutput)
+}
+
 // The mapping of content type to a repo path.
 type ContentPathMap struct {
 	// Content type.
@@ -2450,6 +3377,716 @@ func (o ContentPathMapResponseArrayOutput) Index(i pulumi.IntInput) ContentPathM
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentPathMapResponse {
 		return vs[0].([]ContentPathMapResponse)[vs[1].(int)]
 	}).(ContentPathMapResponseOutput)
+}
+
+// The Custom permissions required for the connector.
+type CustomPermissionDetails struct {
+	// Gets or sets the custom permissions description.
+	Description string `pulumi:"description"`
+	// Gets or sets the custom permissions name.
+	Name string `pulumi:"name"`
+}
+
+// CustomPermissionDetailsInput is an input type that accepts CustomPermissionDetailsArgs and CustomPermissionDetailsOutput values.
+// You can construct a concrete instance of `CustomPermissionDetailsInput` via:
+//
+//	CustomPermissionDetailsArgs{...}
+type CustomPermissionDetailsInput interface {
+	pulumi.Input
+
+	ToCustomPermissionDetailsOutput() CustomPermissionDetailsOutput
+	ToCustomPermissionDetailsOutputWithContext(context.Context) CustomPermissionDetailsOutput
+}
+
+// The Custom permissions required for the connector.
+type CustomPermissionDetailsArgs struct {
+	// Gets or sets the custom permissions description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Gets or sets the custom permissions name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (CustomPermissionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPermissionDetails)(nil)).Elem()
+}
+
+func (i CustomPermissionDetailsArgs) ToCustomPermissionDetailsOutput() CustomPermissionDetailsOutput {
+	return i.ToCustomPermissionDetailsOutputWithContext(context.Background())
+}
+
+func (i CustomPermissionDetailsArgs) ToCustomPermissionDetailsOutputWithContext(ctx context.Context) CustomPermissionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPermissionDetailsOutput)
+}
+
+// CustomPermissionDetailsArrayInput is an input type that accepts CustomPermissionDetailsArray and CustomPermissionDetailsArrayOutput values.
+// You can construct a concrete instance of `CustomPermissionDetailsArrayInput` via:
+//
+//	CustomPermissionDetailsArray{ CustomPermissionDetailsArgs{...} }
+type CustomPermissionDetailsArrayInput interface {
+	pulumi.Input
+
+	ToCustomPermissionDetailsArrayOutput() CustomPermissionDetailsArrayOutput
+	ToCustomPermissionDetailsArrayOutputWithContext(context.Context) CustomPermissionDetailsArrayOutput
+}
+
+type CustomPermissionDetailsArray []CustomPermissionDetailsInput
+
+func (CustomPermissionDetailsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomPermissionDetails)(nil)).Elem()
+}
+
+func (i CustomPermissionDetailsArray) ToCustomPermissionDetailsArrayOutput() CustomPermissionDetailsArrayOutput {
+	return i.ToCustomPermissionDetailsArrayOutputWithContext(context.Background())
+}
+
+func (i CustomPermissionDetailsArray) ToCustomPermissionDetailsArrayOutputWithContext(ctx context.Context) CustomPermissionDetailsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPermissionDetailsArrayOutput)
+}
+
+// The Custom permissions required for the connector.
+type CustomPermissionDetailsOutput struct{ *pulumi.OutputState }
+
+func (CustomPermissionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPermissionDetails)(nil)).Elem()
+}
+
+func (o CustomPermissionDetailsOutput) ToCustomPermissionDetailsOutput() CustomPermissionDetailsOutput {
+	return o
+}
+
+func (o CustomPermissionDetailsOutput) ToCustomPermissionDetailsOutputWithContext(ctx context.Context) CustomPermissionDetailsOutput {
+	return o
+}
+
+// Gets or sets the custom permissions description.
+func (o CustomPermissionDetailsOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomPermissionDetails) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Gets or sets the custom permissions name.
+func (o CustomPermissionDetailsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomPermissionDetails) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type CustomPermissionDetailsArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomPermissionDetailsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomPermissionDetails)(nil)).Elem()
+}
+
+func (o CustomPermissionDetailsArrayOutput) ToCustomPermissionDetailsArrayOutput() CustomPermissionDetailsArrayOutput {
+	return o
+}
+
+func (o CustomPermissionDetailsArrayOutput) ToCustomPermissionDetailsArrayOutputWithContext(ctx context.Context) CustomPermissionDetailsArrayOutput {
+	return o
+}
+
+func (o CustomPermissionDetailsArrayOutput) Index(i pulumi.IntInput) CustomPermissionDetailsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomPermissionDetails {
+		return vs[0].([]CustomPermissionDetails)[vs[1].(int)]
+	}).(CustomPermissionDetailsOutput)
+}
+
+// The Custom permissions required for the connector.
+type CustomPermissionDetailsResponse struct {
+	// Gets or sets the custom permissions description.
+	Description string `pulumi:"description"`
+	// Gets or sets the custom permissions name.
+	Name string `pulumi:"name"`
+}
+
+// The Custom permissions required for the connector.
+type CustomPermissionDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomPermissionDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPermissionDetailsResponse)(nil)).Elem()
+}
+
+func (o CustomPermissionDetailsResponseOutput) ToCustomPermissionDetailsResponseOutput() CustomPermissionDetailsResponseOutput {
+	return o
+}
+
+func (o CustomPermissionDetailsResponseOutput) ToCustomPermissionDetailsResponseOutputWithContext(ctx context.Context) CustomPermissionDetailsResponseOutput {
+	return o
+}
+
+// Gets or sets the custom permissions description.
+func (o CustomPermissionDetailsResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomPermissionDetailsResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Gets or sets the custom permissions name.
+func (o CustomPermissionDetailsResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomPermissionDetailsResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type CustomPermissionDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomPermissionDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomPermissionDetailsResponse)(nil)).Elem()
+}
+
+func (o CustomPermissionDetailsResponseArrayOutput) ToCustomPermissionDetailsResponseArrayOutput() CustomPermissionDetailsResponseArrayOutput {
+	return o
+}
+
+func (o CustomPermissionDetailsResponseArrayOutput) ToCustomPermissionDetailsResponseArrayOutputWithContext(ctx context.Context) CustomPermissionDetailsResponseArrayOutput {
+	return o
+}
+
+func (o CustomPermissionDetailsResponseArrayOutput) Index(i pulumi.IntInput) CustomPermissionDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomPermissionDetailsResponse {
+		return vs[0].([]CustomPermissionDetailsResponse)[vs[1].(int)]
+	}).(CustomPermissionDetailsResponseOutput)
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectionsConfig struct {
+	// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
+	TemplateSpecName string `pulumi:"templateSpecName"`
+	// Gets or sets the template version.
+	TemplateSpecVersion string `pulumi:"templateSpecVersion"`
+}
+
+// CustomizableConnectionsConfigInput is an input type that accepts CustomizableConnectionsConfigArgs and CustomizableConnectionsConfigOutput values.
+// You can construct a concrete instance of `CustomizableConnectionsConfigInput` via:
+//
+//	CustomizableConnectionsConfigArgs{...}
+type CustomizableConnectionsConfigInput interface {
+	pulumi.Input
+
+	ToCustomizableConnectionsConfigOutput() CustomizableConnectionsConfigOutput
+	ToCustomizableConnectionsConfigOutputWithContext(context.Context) CustomizableConnectionsConfigOutput
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectionsConfigArgs struct {
+	// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
+	TemplateSpecName pulumi.StringInput `pulumi:"templateSpecName"`
+	// Gets or sets the template version.
+	TemplateSpecVersion pulumi.StringInput `pulumi:"templateSpecVersion"`
+}
+
+func (CustomizableConnectionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomizableConnectionsConfig)(nil)).Elem()
+}
+
+func (i CustomizableConnectionsConfigArgs) ToCustomizableConnectionsConfigOutput() CustomizableConnectionsConfigOutput {
+	return i.ToCustomizableConnectionsConfigOutputWithContext(context.Background())
+}
+
+func (i CustomizableConnectionsConfigArgs) ToCustomizableConnectionsConfigOutputWithContext(ctx context.Context) CustomizableConnectionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomizableConnectionsConfigOutput)
+}
+
+func (i CustomizableConnectionsConfigArgs) ToCustomizableConnectionsConfigPtrOutput() CustomizableConnectionsConfigPtrOutput {
+	return i.ToCustomizableConnectionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CustomizableConnectionsConfigArgs) ToCustomizableConnectionsConfigPtrOutputWithContext(ctx context.Context) CustomizableConnectionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomizableConnectionsConfigOutput).ToCustomizableConnectionsConfigPtrOutputWithContext(ctx)
+}
+
+// CustomizableConnectionsConfigPtrInput is an input type that accepts CustomizableConnectionsConfigArgs, CustomizableConnectionsConfigPtr and CustomizableConnectionsConfigPtrOutput values.
+// You can construct a concrete instance of `CustomizableConnectionsConfigPtrInput` via:
+//
+//	        CustomizableConnectionsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomizableConnectionsConfigPtrInput interface {
+	pulumi.Input
+
+	ToCustomizableConnectionsConfigPtrOutput() CustomizableConnectionsConfigPtrOutput
+	ToCustomizableConnectionsConfigPtrOutputWithContext(context.Context) CustomizableConnectionsConfigPtrOutput
+}
+
+type customizableConnectionsConfigPtrType CustomizableConnectionsConfigArgs
+
+func CustomizableConnectionsConfigPtr(v *CustomizableConnectionsConfigArgs) CustomizableConnectionsConfigPtrInput {
+	return (*customizableConnectionsConfigPtrType)(v)
+}
+
+func (*customizableConnectionsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomizableConnectionsConfig)(nil)).Elem()
+}
+
+func (i *customizableConnectionsConfigPtrType) ToCustomizableConnectionsConfigPtrOutput() CustomizableConnectionsConfigPtrOutput {
+	return i.ToCustomizableConnectionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *customizableConnectionsConfigPtrType) ToCustomizableConnectionsConfigPtrOutputWithContext(ctx context.Context) CustomizableConnectionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomizableConnectionsConfigPtrOutput)
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectionsConfigOutput struct{ *pulumi.OutputState }
+
+func (CustomizableConnectionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomizableConnectionsConfig)(nil)).Elem()
+}
+
+func (o CustomizableConnectionsConfigOutput) ToCustomizableConnectionsConfigOutput() CustomizableConnectionsConfigOutput {
+	return o
+}
+
+func (o CustomizableConnectionsConfigOutput) ToCustomizableConnectionsConfigOutputWithContext(ctx context.Context) CustomizableConnectionsConfigOutput {
+	return o
+}
+
+func (o CustomizableConnectionsConfigOutput) ToCustomizableConnectionsConfigPtrOutput() CustomizableConnectionsConfigPtrOutput {
+	return o.ToCustomizableConnectionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CustomizableConnectionsConfigOutput) ToCustomizableConnectionsConfigPtrOutputWithContext(ctx context.Context) CustomizableConnectionsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomizableConnectionsConfig) *CustomizableConnectionsConfig {
+		return &v
+	}).(CustomizableConnectionsConfigPtrOutput)
+}
+
+// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
+func (o CustomizableConnectionsConfigOutput) TemplateSpecName() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectionsConfig) string { return v.TemplateSpecName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the template version.
+func (o CustomizableConnectionsConfigOutput) TemplateSpecVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectionsConfig) string { return v.TemplateSpecVersion }).(pulumi.StringOutput)
+}
+
+type CustomizableConnectionsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomizableConnectionsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomizableConnectionsConfig)(nil)).Elem()
+}
+
+func (o CustomizableConnectionsConfigPtrOutput) ToCustomizableConnectionsConfigPtrOutput() CustomizableConnectionsConfigPtrOutput {
+	return o
+}
+
+func (o CustomizableConnectionsConfigPtrOutput) ToCustomizableConnectionsConfigPtrOutputWithContext(ctx context.Context) CustomizableConnectionsConfigPtrOutput {
+	return o
+}
+
+func (o CustomizableConnectionsConfigPtrOutput) Elem() CustomizableConnectionsConfigOutput {
+	return o.ApplyT(func(v *CustomizableConnectionsConfig) CustomizableConnectionsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CustomizableConnectionsConfig
+		return ret
+	}).(CustomizableConnectionsConfigOutput)
+}
+
+// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
+func (o CustomizableConnectionsConfigPtrOutput) TemplateSpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomizableConnectionsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateSpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the template version.
+func (o CustomizableConnectionsConfigPtrOutput) TemplateSpecVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomizableConnectionsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateSpecVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectionsConfigResponse struct {
+	// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
+	TemplateSpecName string `pulumi:"templateSpecName"`
+	// Gets or sets the template version.
+	TemplateSpecVersion string `pulumi:"templateSpecVersion"`
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectionsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomizableConnectionsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomizableConnectionsConfigResponse)(nil)).Elem()
+}
+
+func (o CustomizableConnectionsConfigResponseOutput) ToCustomizableConnectionsConfigResponseOutput() CustomizableConnectionsConfigResponseOutput {
+	return o
+}
+
+func (o CustomizableConnectionsConfigResponseOutput) ToCustomizableConnectionsConfigResponseOutputWithContext(ctx context.Context) CustomizableConnectionsConfigResponseOutput {
+	return o
+}
+
+// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
+func (o CustomizableConnectionsConfigResponseOutput) TemplateSpecName() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectionsConfigResponse) string { return v.TemplateSpecName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the template version.
+func (o CustomizableConnectionsConfigResponseOutput) TemplateSpecVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectionsConfigResponse) string { return v.TemplateSpecVersion }).(pulumi.StringOutput)
+}
+
+type CustomizableConnectionsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomizableConnectionsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomizableConnectionsConfigResponse)(nil)).Elem()
+}
+
+func (o CustomizableConnectionsConfigResponsePtrOutput) ToCustomizableConnectionsConfigResponsePtrOutput() CustomizableConnectionsConfigResponsePtrOutput {
+	return o
+}
+
+func (o CustomizableConnectionsConfigResponsePtrOutput) ToCustomizableConnectionsConfigResponsePtrOutputWithContext(ctx context.Context) CustomizableConnectionsConfigResponsePtrOutput {
+	return o
+}
+
+func (o CustomizableConnectionsConfigResponsePtrOutput) Elem() CustomizableConnectionsConfigResponseOutput {
+	return o.ApplyT(func(v *CustomizableConnectionsConfigResponse) CustomizableConnectionsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomizableConnectionsConfigResponse
+		return ret
+	}).(CustomizableConnectionsConfigResponseOutput)
+}
+
+// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
+func (o CustomizableConnectionsConfigResponsePtrOutput) TemplateSpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomizableConnectionsConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateSpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the template version.
+func (o CustomizableConnectionsConfigResponsePtrOutput) TemplateSpecVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomizableConnectionsConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateSpecVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectorUiConfig struct {
+	// The exposure status of the connector to the customers.
+	Availability *ConnectorDefinitionsAvailability `pulumi:"availability"`
+	// Gets or sets the way the connector checks whether the connector is connected.
+	ConnectivityCriteria []ConnectivityCriterion `pulumi:"connectivityCriteria"`
+	// Gets or sets the data types to check for last data received.
+	DataTypes []ConnectorDataType `pulumi:"dataTypes"`
+	// Gets or sets the connector description in markdown format.
+	DescriptionMarkdown string `pulumi:"descriptionMarkdown"`
+	// Gets or sets the graph queries to show the current data volume over time.
+	GraphQueries []GraphQuery `pulumi:"graphQueries"`
+	// Gets or sets the name of the table the connector will insert the data to.
+	// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+	//  in Query and LastDataReceivedQuery values.
+	GraphQueriesTableName *string `pulumi:"graphQueriesTableName"`
+	// Gets or sets custom connector id. optional field.
+	Id *string `pulumi:"id"`
+	// Gets or sets the instruction steps to enable the connector.
+	InstructionSteps []InstructionStep `pulumi:"instructionSteps"`
+	// Gets or sets a value indicating whether to use 'OR'(SOME) or 'AND' between ConnectivityCriteria items.
+	IsConnectivityCriteriasMatchSome *bool `pulumi:"isConnectivityCriteriasMatchSome"`
+	// Gets or sets the connector logo to be used when displaying the connector within Azure Sentinel's connector's gallery.
+	// The logo value should be in SVG format.
+	Logo *string `pulumi:"logo"`
+	// The required Permissions for the connector.
+	Permissions ConnectorDefinitionsPermissions `pulumi:"permissions"`
+	// Gets or sets the connector publisher name.
+	Publisher string `pulumi:"publisher"`
+	// Gets or sets the sample queries for the connector.
+	SampleQueries []SampleQuery `pulumi:"sampleQueries"`
+	// Gets or sets the connector blade title.
+	Title string `pulumi:"title"`
+}
+
+// CustomizableConnectorUiConfigInput is an input type that accepts CustomizableConnectorUiConfigArgs and CustomizableConnectorUiConfigOutput values.
+// You can construct a concrete instance of `CustomizableConnectorUiConfigInput` via:
+//
+//	CustomizableConnectorUiConfigArgs{...}
+type CustomizableConnectorUiConfigInput interface {
+	pulumi.Input
+
+	ToCustomizableConnectorUiConfigOutput() CustomizableConnectorUiConfigOutput
+	ToCustomizableConnectorUiConfigOutputWithContext(context.Context) CustomizableConnectorUiConfigOutput
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectorUiConfigArgs struct {
+	// The exposure status of the connector to the customers.
+	Availability ConnectorDefinitionsAvailabilityPtrInput `pulumi:"availability"`
+	// Gets or sets the way the connector checks whether the connector is connected.
+	ConnectivityCriteria ConnectivityCriterionArrayInput `pulumi:"connectivityCriteria"`
+	// Gets or sets the data types to check for last data received.
+	DataTypes ConnectorDataTypeArrayInput `pulumi:"dataTypes"`
+	// Gets or sets the connector description in markdown format.
+	DescriptionMarkdown pulumi.StringInput `pulumi:"descriptionMarkdown"`
+	// Gets or sets the graph queries to show the current data volume over time.
+	GraphQueries GraphQueryArrayInput `pulumi:"graphQueries"`
+	// Gets or sets the name of the table the connector will insert the data to.
+	// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+	//  in Query and LastDataReceivedQuery values.
+	GraphQueriesTableName pulumi.StringPtrInput `pulumi:"graphQueriesTableName"`
+	// Gets or sets custom connector id. optional field.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Gets or sets the instruction steps to enable the connector.
+	InstructionSteps InstructionStepArrayInput `pulumi:"instructionSteps"`
+	// Gets or sets a value indicating whether to use 'OR'(SOME) or 'AND' between ConnectivityCriteria items.
+	IsConnectivityCriteriasMatchSome pulumi.BoolPtrInput `pulumi:"isConnectivityCriteriasMatchSome"`
+	// Gets or sets the connector logo to be used when displaying the connector within Azure Sentinel's connector's gallery.
+	// The logo value should be in SVG format.
+	Logo pulumi.StringPtrInput `pulumi:"logo"`
+	// The required Permissions for the connector.
+	Permissions ConnectorDefinitionsPermissionsInput `pulumi:"permissions"`
+	// Gets or sets the connector publisher name.
+	Publisher pulumi.StringInput `pulumi:"publisher"`
+	// Gets or sets the sample queries for the connector.
+	SampleQueries SampleQueryArrayInput `pulumi:"sampleQueries"`
+	// Gets or sets the connector blade title.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (CustomizableConnectorUiConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomizableConnectorUiConfig)(nil)).Elem()
+}
+
+func (i CustomizableConnectorUiConfigArgs) ToCustomizableConnectorUiConfigOutput() CustomizableConnectorUiConfigOutput {
+	return i.ToCustomizableConnectorUiConfigOutputWithContext(context.Background())
+}
+
+func (i CustomizableConnectorUiConfigArgs) ToCustomizableConnectorUiConfigOutputWithContext(ctx context.Context) CustomizableConnectorUiConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomizableConnectorUiConfigOutput)
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectorUiConfigOutput struct{ *pulumi.OutputState }
+
+func (CustomizableConnectorUiConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomizableConnectorUiConfig)(nil)).Elem()
+}
+
+func (o CustomizableConnectorUiConfigOutput) ToCustomizableConnectorUiConfigOutput() CustomizableConnectorUiConfigOutput {
+	return o
+}
+
+func (o CustomizableConnectorUiConfigOutput) ToCustomizableConnectorUiConfigOutputWithContext(ctx context.Context) CustomizableConnectorUiConfigOutput {
+	return o
+}
+
+// The exposure status of the connector to the customers.
+func (o CustomizableConnectorUiConfigOutput) Availability() ConnectorDefinitionsAvailabilityPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) *ConnectorDefinitionsAvailability { return v.Availability }).(ConnectorDefinitionsAvailabilityPtrOutput)
+}
+
+// Gets or sets the way the connector checks whether the connector is connected.
+func (o CustomizableConnectorUiConfigOutput) ConnectivityCriteria() ConnectivityCriterionArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) []ConnectivityCriterion { return v.ConnectivityCriteria }).(ConnectivityCriterionArrayOutput)
+}
+
+// Gets or sets the data types to check for last data received.
+func (o CustomizableConnectorUiConfigOutput) DataTypes() ConnectorDataTypeArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) []ConnectorDataType { return v.DataTypes }).(ConnectorDataTypeArrayOutput)
+}
+
+// Gets or sets the connector description in markdown format.
+func (o CustomizableConnectorUiConfigOutput) DescriptionMarkdown() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) string { return v.DescriptionMarkdown }).(pulumi.StringOutput)
+}
+
+// Gets or sets the graph queries to show the current data volume over time.
+func (o CustomizableConnectorUiConfigOutput) GraphQueries() GraphQueryArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) []GraphQuery { return v.GraphQueries }).(GraphQueryArrayOutput)
+}
+
+// Gets or sets the name of the table the connector will insert the data to.
+// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+//
+//	in Query and LastDataReceivedQuery values.
+func (o CustomizableConnectorUiConfigOutput) GraphQueriesTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) *string { return v.GraphQueriesTableName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets custom connector id. optional field.
+func (o CustomizableConnectorUiConfigOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the instruction steps to enable the connector.
+func (o CustomizableConnectorUiConfigOutput) InstructionSteps() InstructionStepArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) []InstructionStep { return v.InstructionSteps }).(InstructionStepArrayOutput)
+}
+
+// Gets or sets a value indicating whether to use 'OR'(SOME) or 'AND' between ConnectivityCriteria items.
+func (o CustomizableConnectorUiConfigOutput) IsConnectivityCriteriasMatchSome() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) *bool { return v.IsConnectivityCriteriasMatchSome }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the connector logo to be used when displaying the connector within Azure Sentinel's connector's gallery.
+// The logo value should be in SVG format.
+func (o CustomizableConnectorUiConfigOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) *string { return v.Logo }).(pulumi.StringPtrOutput)
+}
+
+// The required Permissions for the connector.
+func (o CustomizableConnectorUiConfigOutput) Permissions() ConnectorDefinitionsPermissionsOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) ConnectorDefinitionsPermissions { return v.Permissions }).(ConnectorDefinitionsPermissionsOutput)
+}
+
+// Gets or sets the connector publisher name.
+func (o CustomizableConnectorUiConfigOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+// Gets or sets the sample queries for the connector.
+func (o CustomizableConnectorUiConfigOutput) SampleQueries() SampleQueryArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) []SampleQuery { return v.SampleQueries }).(SampleQueryArrayOutput)
+}
+
+// Gets or sets the connector blade title.
+func (o CustomizableConnectorUiConfigOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectorUiConfigResponse struct {
+	// The exposure status of the connector to the customers.
+	Availability *ConnectorDefinitionsAvailabilityResponse `pulumi:"availability"`
+	// Gets or sets the way the connector checks whether the connector is connected.
+	ConnectivityCriteria []ConnectivityCriterionResponse `pulumi:"connectivityCriteria"`
+	// Gets or sets the data types to check for last data received.
+	DataTypes []ConnectorDataTypeResponse `pulumi:"dataTypes"`
+	// Gets or sets the connector description in markdown format.
+	DescriptionMarkdown string `pulumi:"descriptionMarkdown"`
+	// Gets or sets the graph queries to show the current data volume over time.
+	GraphQueries []GraphQueryResponse `pulumi:"graphQueries"`
+	// Gets or sets the name of the table the connector will insert the data to.
+	// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+	//  in Query and LastDataReceivedQuery values.
+	GraphQueriesTableName *string `pulumi:"graphQueriesTableName"`
+	// Gets or sets custom connector id. optional field.
+	Id *string `pulumi:"id"`
+	// Gets or sets the instruction steps to enable the connector.
+	InstructionSteps []InstructionStepResponse `pulumi:"instructionSteps"`
+	// Gets or sets a value indicating whether to use 'OR'(SOME) or 'AND' between ConnectivityCriteria items.
+	IsConnectivityCriteriasMatchSome *bool `pulumi:"isConnectivityCriteriasMatchSome"`
+	// Gets or sets the connector logo to be used when displaying the connector within Azure Sentinel's connector's gallery.
+	// The logo value should be in SVG format.
+	Logo *string `pulumi:"logo"`
+	// The required Permissions for the connector.
+	Permissions ConnectorDefinitionsPermissionsResponse `pulumi:"permissions"`
+	// Gets or sets the connector publisher name.
+	Publisher string `pulumi:"publisher"`
+	// Gets or sets the sample queries for the connector.
+	SampleQueries []SampleQueryResponse `pulumi:"sampleQueries"`
+	// Gets or sets the connector blade title.
+	Title string `pulumi:"title"`
+}
+
+// The UiConfig for 'Customizable' connector definition kind.
+type CustomizableConnectorUiConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomizableConnectorUiConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomizableConnectorUiConfigResponse)(nil)).Elem()
+}
+
+func (o CustomizableConnectorUiConfigResponseOutput) ToCustomizableConnectorUiConfigResponseOutput() CustomizableConnectorUiConfigResponseOutput {
+	return o
+}
+
+func (o CustomizableConnectorUiConfigResponseOutput) ToCustomizableConnectorUiConfigResponseOutputWithContext(ctx context.Context) CustomizableConnectorUiConfigResponseOutput {
+	return o
+}
+
+// The exposure status of the connector to the customers.
+func (o CustomizableConnectorUiConfigResponseOutput) Availability() ConnectorDefinitionsAvailabilityResponsePtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) *ConnectorDefinitionsAvailabilityResponse {
+		return v.Availability
+	}).(ConnectorDefinitionsAvailabilityResponsePtrOutput)
+}
+
+// Gets or sets the way the connector checks whether the connector is connected.
+func (o CustomizableConnectorUiConfigResponseOutput) ConnectivityCriteria() ConnectivityCriterionResponseArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) []ConnectivityCriterionResponse {
+		return v.ConnectivityCriteria
+	}).(ConnectivityCriterionResponseArrayOutput)
+}
+
+// Gets or sets the data types to check for last data received.
+func (o CustomizableConnectorUiConfigResponseOutput) DataTypes() ConnectorDataTypeResponseArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) []ConnectorDataTypeResponse { return v.DataTypes }).(ConnectorDataTypeResponseArrayOutput)
+}
+
+// Gets or sets the connector description in markdown format.
+func (o CustomizableConnectorUiConfigResponseOutput) DescriptionMarkdown() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) string { return v.DescriptionMarkdown }).(pulumi.StringOutput)
+}
+
+// Gets or sets the graph queries to show the current data volume over time.
+func (o CustomizableConnectorUiConfigResponseOutput) GraphQueries() GraphQueryResponseArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) []GraphQueryResponse { return v.GraphQueries }).(GraphQueryResponseArrayOutput)
+}
+
+// Gets or sets the name of the table the connector will insert the data to.
+// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+//
+//	in Query and LastDataReceivedQuery values.
+func (o CustomizableConnectorUiConfigResponseOutput) GraphQueriesTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) *string { return v.GraphQueriesTableName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets custom connector id. optional field.
+func (o CustomizableConnectorUiConfigResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the instruction steps to enable the connector.
+func (o CustomizableConnectorUiConfigResponseOutput) InstructionSteps() InstructionStepResponseArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) []InstructionStepResponse { return v.InstructionSteps }).(InstructionStepResponseArrayOutput)
+}
+
+// Gets or sets a value indicating whether to use 'OR'(SOME) or 'AND' between ConnectivityCriteria items.
+func (o CustomizableConnectorUiConfigResponseOutput) IsConnectivityCriteriasMatchSome() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) *bool { return v.IsConnectivityCriteriasMatchSome }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the connector logo to be used when displaying the connector within Azure Sentinel's connector's gallery.
+// The logo value should be in SVG format.
+func (o CustomizableConnectorUiConfigResponseOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) *string { return v.Logo }).(pulumi.StringPtrOutput)
+}
+
+// The required Permissions for the connector.
+func (o CustomizableConnectorUiConfigResponseOutput) Permissions() ConnectorDefinitionsPermissionsResponseOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) ConnectorDefinitionsPermissionsResponse {
+		return v.Permissions
+	}).(ConnectorDefinitionsPermissionsResponseOutput)
+}
+
+// Gets or sets the connector publisher name.
+func (o CustomizableConnectorUiConfigResponseOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+// Gets or sets the sample queries for the connector.
+func (o CustomizableConnectorUiConfigResponseOutput) SampleQueries() SampleQueryResponseArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) []SampleQueryResponse { return v.SampleQueries }).(SampleQueryResponseArrayOutput)
+}
+
+// Gets or sets the connector blade title.
+func (o CustomizableConnectorUiConfigResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
 // Common field for data type in data connectors.
@@ -4400,6 +6037,189 @@ func (o GitHubResourceInfoResponsePtrOutput) AppInstallationId() pulumi.StringPt
 		}
 		return v.AppInstallationId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The graph query to show the volume of data arriving into the workspace over time.
+type GraphQuery struct {
+	// Gets or sets the base query for the graph.
+	// The base query is wrapped by Sentinel UI infra with a KQL query, that measures the volume over time.
+	BaseQuery string `pulumi:"baseQuery"`
+	// Gets or sets the legend for the graph.
+	Legend string `pulumi:"legend"`
+	// Gets or sets the metric name that the query is checking. For example: 'Total data receive'.
+	MetricName string `pulumi:"metricName"`
+}
+
+// GraphQueryInput is an input type that accepts GraphQueryArgs and GraphQueryOutput values.
+// You can construct a concrete instance of `GraphQueryInput` via:
+//
+//	GraphQueryArgs{...}
+type GraphQueryInput interface {
+	pulumi.Input
+
+	ToGraphQueryOutput() GraphQueryOutput
+	ToGraphQueryOutputWithContext(context.Context) GraphQueryOutput
+}
+
+// The graph query to show the volume of data arriving into the workspace over time.
+type GraphQueryArgs struct {
+	// Gets or sets the base query for the graph.
+	// The base query is wrapped by Sentinel UI infra with a KQL query, that measures the volume over time.
+	BaseQuery pulumi.StringInput `pulumi:"baseQuery"`
+	// Gets or sets the legend for the graph.
+	Legend pulumi.StringInput `pulumi:"legend"`
+	// Gets or sets the metric name that the query is checking. For example: 'Total data receive'.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+}
+
+func (GraphQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQuery)(nil)).Elem()
+}
+
+func (i GraphQueryArgs) ToGraphQueryOutput() GraphQueryOutput {
+	return i.ToGraphQueryOutputWithContext(context.Background())
+}
+
+func (i GraphQueryArgs) ToGraphQueryOutputWithContext(ctx context.Context) GraphQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQueryOutput)
+}
+
+// GraphQueryArrayInput is an input type that accepts GraphQueryArray and GraphQueryArrayOutput values.
+// You can construct a concrete instance of `GraphQueryArrayInput` via:
+//
+//	GraphQueryArray{ GraphQueryArgs{...} }
+type GraphQueryArrayInput interface {
+	pulumi.Input
+
+	ToGraphQueryArrayOutput() GraphQueryArrayOutput
+	ToGraphQueryArrayOutputWithContext(context.Context) GraphQueryArrayOutput
+}
+
+type GraphQueryArray []GraphQueryInput
+
+func (GraphQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GraphQuery)(nil)).Elem()
+}
+
+func (i GraphQueryArray) ToGraphQueryArrayOutput() GraphQueryArrayOutput {
+	return i.ToGraphQueryArrayOutputWithContext(context.Background())
+}
+
+func (i GraphQueryArray) ToGraphQueryArrayOutputWithContext(ctx context.Context) GraphQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQueryArrayOutput)
+}
+
+// The graph query to show the volume of data arriving into the workspace over time.
+type GraphQueryOutput struct{ *pulumi.OutputState }
+
+func (GraphQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQuery)(nil)).Elem()
+}
+
+func (o GraphQueryOutput) ToGraphQueryOutput() GraphQueryOutput {
+	return o
+}
+
+func (o GraphQueryOutput) ToGraphQueryOutputWithContext(ctx context.Context) GraphQueryOutput {
+	return o
+}
+
+// Gets or sets the base query for the graph.
+// The base query is wrapped by Sentinel UI infra with a KQL query, that measures the volume over time.
+func (o GraphQueryOutput) BaseQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQuery) string { return v.BaseQuery }).(pulumi.StringOutput)
+}
+
+// Gets or sets the legend for the graph.
+func (o GraphQueryOutput) Legend() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQuery) string { return v.Legend }).(pulumi.StringOutput)
+}
+
+// Gets or sets the metric name that the query is checking. For example: 'Total data receive'.
+func (o GraphQueryOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQuery) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+type GraphQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (GraphQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GraphQuery)(nil)).Elem()
+}
+
+func (o GraphQueryArrayOutput) ToGraphQueryArrayOutput() GraphQueryArrayOutput {
+	return o
+}
+
+func (o GraphQueryArrayOutput) ToGraphQueryArrayOutputWithContext(ctx context.Context) GraphQueryArrayOutput {
+	return o
+}
+
+func (o GraphQueryArrayOutput) Index(i pulumi.IntInput) GraphQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GraphQuery {
+		return vs[0].([]GraphQuery)[vs[1].(int)]
+	}).(GraphQueryOutput)
+}
+
+// The graph query to show the volume of data arriving into the workspace over time.
+type GraphQueryResponse struct {
+	// Gets or sets the base query for the graph.
+	// The base query is wrapped by Sentinel UI infra with a KQL query, that measures the volume over time.
+	BaseQuery string `pulumi:"baseQuery"`
+	// Gets or sets the legend for the graph.
+	Legend string `pulumi:"legend"`
+	// Gets or sets the metric name that the query is checking. For example: 'Total data receive'.
+	MetricName string `pulumi:"metricName"`
+}
+
+// The graph query to show the volume of data arriving into the workspace over time.
+type GraphQueryResponseOutput struct{ *pulumi.OutputState }
+
+func (GraphQueryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQueryResponse)(nil)).Elem()
+}
+
+func (o GraphQueryResponseOutput) ToGraphQueryResponseOutput() GraphQueryResponseOutput {
+	return o
+}
+
+func (o GraphQueryResponseOutput) ToGraphQueryResponseOutputWithContext(ctx context.Context) GraphQueryResponseOutput {
+	return o
+}
+
+// Gets or sets the base query for the graph.
+// The base query is wrapped by Sentinel UI infra with a KQL query, that measures the volume over time.
+func (o GraphQueryResponseOutput) BaseQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQueryResponse) string { return v.BaseQuery }).(pulumi.StringOutput)
+}
+
+// Gets or sets the legend for the graph.
+func (o GraphQueryResponseOutput) Legend() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQueryResponse) string { return v.Legend }).(pulumi.StringOutput)
+}
+
+// Gets or sets the metric name that the query is checking. For example: 'Total data receive'.
+func (o GraphQueryResponseOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQueryResponse) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+type GraphQueryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GraphQueryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GraphQueryResponse)(nil)).Elem()
+}
+
+func (o GraphQueryResponseArrayOutput) ToGraphQueryResponseArrayOutput() GraphQueryResponseArrayOutput {
+	return o
+}
+
+func (o GraphQueryResponseArrayOutput) ToGraphQueryResponseArrayOutputWithContext(ctx context.Context) GraphQueryResponseArrayOutput {
+	return o
+}
+
+func (o GraphQueryResponseArrayOutput) Index(i pulumi.IntInput) GraphQueryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GraphQueryResponse {
+		return vs[0].([]GraphQueryResponse)[vs[1].(int)]
+	}).(GraphQueryResponseOutput)
 }
 
 // Grouping configuration property bag.
@@ -6444,6 +8264,367 @@ func (o InsightsTableResultResponseColumnsArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsTableResultResponseColumns {
 		return vs[0].([]InsightsTableResultResponseColumns)[vs[1].(int)]
 	}).(InsightsTableResultResponseColumnsOutput)
+}
+
+// Instruction steps to enable the connector.
+type InstructionStep struct {
+	// Gets or sets the instruction step description.
+	Description *string `pulumi:"description"`
+	// Gets or sets the inner instruction steps details.
+	// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+	InnerSteps []InstructionStep `pulumi:"innerSteps"`
+	// Gets or sets the instruction step details.
+	Instructions []InstructionStepDetails `pulumi:"instructions"`
+	// Gets or sets the instruction step title.
+	Title *string `pulumi:"title"`
+}
+
+// InstructionStepInput is an input type that accepts InstructionStepArgs and InstructionStepOutput values.
+// You can construct a concrete instance of `InstructionStepInput` via:
+//
+//	InstructionStepArgs{...}
+type InstructionStepInput interface {
+	pulumi.Input
+
+	ToInstructionStepOutput() InstructionStepOutput
+	ToInstructionStepOutputWithContext(context.Context) InstructionStepOutput
+}
+
+// Instruction steps to enable the connector.
+type InstructionStepArgs struct {
+	// Gets or sets the instruction step description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Gets or sets the inner instruction steps details.
+	// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+	InnerSteps InstructionStepArrayInput `pulumi:"innerSteps"`
+	// Gets or sets the instruction step details.
+	Instructions InstructionStepDetailsArrayInput `pulumi:"instructions"`
+	// Gets or sets the instruction step title.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (InstructionStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstructionStep)(nil)).Elem()
+}
+
+func (i InstructionStepArgs) ToInstructionStepOutput() InstructionStepOutput {
+	return i.ToInstructionStepOutputWithContext(context.Background())
+}
+
+func (i InstructionStepArgs) ToInstructionStepOutputWithContext(ctx context.Context) InstructionStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstructionStepOutput)
+}
+
+// InstructionStepArrayInput is an input type that accepts InstructionStepArray and InstructionStepArrayOutput values.
+// You can construct a concrete instance of `InstructionStepArrayInput` via:
+//
+//	InstructionStepArray{ InstructionStepArgs{...} }
+type InstructionStepArrayInput interface {
+	pulumi.Input
+
+	ToInstructionStepArrayOutput() InstructionStepArrayOutput
+	ToInstructionStepArrayOutputWithContext(context.Context) InstructionStepArrayOutput
+}
+
+type InstructionStepArray []InstructionStepInput
+
+func (InstructionStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstructionStep)(nil)).Elem()
+}
+
+func (i InstructionStepArray) ToInstructionStepArrayOutput() InstructionStepArrayOutput {
+	return i.ToInstructionStepArrayOutputWithContext(context.Background())
+}
+
+func (i InstructionStepArray) ToInstructionStepArrayOutputWithContext(ctx context.Context) InstructionStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstructionStepArrayOutput)
+}
+
+// Instruction steps to enable the connector.
+type InstructionStepOutput struct{ *pulumi.OutputState }
+
+func (InstructionStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstructionStep)(nil)).Elem()
+}
+
+func (o InstructionStepOutput) ToInstructionStepOutput() InstructionStepOutput {
+	return o
+}
+
+func (o InstructionStepOutput) ToInstructionStepOutputWithContext(ctx context.Context) InstructionStepOutput {
+	return o
+}
+
+// Gets or sets the instruction step description.
+func (o InstructionStepOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstructionStep) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the inner instruction steps details.
+// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+func (o InstructionStepOutput) InnerSteps() InstructionStepArrayOutput {
+	return o.ApplyT(func(v InstructionStep) []InstructionStep { return v.InnerSteps }).(InstructionStepArrayOutput)
+}
+
+// Gets or sets the instruction step details.
+func (o InstructionStepOutput) Instructions() InstructionStepDetailsArrayOutput {
+	return o.ApplyT(func(v InstructionStep) []InstructionStepDetails { return v.Instructions }).(InstructionStepDetailsArrayOutput)
+}
+
+// Gets or sets the instruction step title.
+func (o InstructionStepOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstructionStep) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type InstructionStepArrayOutput struct{ *pulumi.OutputState }
+
+func (InstructionStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstructionStep)(nil)).Elem()
+}
+
+func (o InstructionStepArrayOutput) ToInstructionStepArrayOutput() InstructionStepArrayOutput {
+	return o
+}
+
+func (o InstructionStepArrayOutput) ToInstructionStepArrayOutputWithContext(ctx context.Context) InstructionStepArrayOutput {
+	return o
+}
+
+func (o InstructionStepArrayOutput) Index(i pulumi.IntInput) InstructionStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstructionStep {
+		return vs[0].([]InstructionStep)[vs[1].(int)]
+	}).(InstructionStepOutput)
+}
+
+// Instruction step details, to be displayed in the Instructions steps section in the connector's page in Sentinel Portal.
+type InstructionStepDetails struct {
+	// Gets or sets the instruction type parameters settings.
+	Parameters interface{} `pulumi:"parameters"`
+	// Gets or sets the instruction type name.
+	Type string `pulumi:"type"`
+}
+
+// InstructionStepDetailsInput is an input type that accepts InstructionStepDetailsArgs and InstructionStepDetailsOutput values.
+// You can construct a concrete instance of `InstructionStepDetailsInput` via:
+//
+//	InstructionStepDetailsArgs{...}
+type InstructionStepDetailsInput interface {
+	pulumi.Input
+
+	ToInstructionStepDetailsOutput() InstructionStepDetailsOutput
+	ToInstructionStepDetailsOutputWithContext(context.Context) InstructionStepDetailsOutput
+}
+
+// Instruction step details, to be displayed in the Instructions steps section in the connector's page in Sentinel Portal.
+type InstructionStepDetailsArgs struct {
+	// Gets or sets the instruction type parameters settings.
+	Parameters pulumi.Input `pulumi:"parameters"`
+	// Gets or sets the instruction type name.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (InstructionStepDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstructionStepDetails)(nil)).Elem()
+}
+
+func (i InstructionStepDetailsArgs) ToInstructionStepDetailsOutput() InstructionStepDetailsOutput {
+	return i.ToInstructionStepDetailsOutputWithContext(context.Background())
+}
+
+func (i InstructionStepDetailsArgs) ToInstructionStepDetailsOutputWithContext(ctx context.Context) InstructionStepDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstructionStepDetailsOutput)
+}
+
+// InstructionStepDetailsArrayInput is an input type that accepts InstructionStepDetailsArray and InstructionStepDetailsArrayOutput values.
+// You can construct a concrete instance of `InstructionStepDetailsArrayInput` via:
+//
+//	InstructionStepDetailsArray{ InstructionStepDetailsArgs{...} }
+type InstructionStepDetailsArrayInput interface {
+	pulumi.Input
+
+	ToInstructionStepDetailsArrayOutput() InstructionStepDetailsArrayOutput
+	ToInstructionStepDetailsArrayOutputWithContext(context.Context) InstructionStepDetailsArrayOutput
+}
+
+type InstructionStepDetailsArray []InstructionStepDetailsInput
+
+func (InstructionStepDetailsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstructionStepDetails)(nil)).Elem()
+}
+
+func (i InstructionStepDetailsArray) ToInstructionStepDetailsArrayOutput() InstructionStepDetailsArrayOutput {
+	return i.ToInstructionStepDetailsArrayOutputWithContext(context.Background())
+}
+
+func (i InstructionStepDetailsArray) ToInstructionStepDetailsArrayOutputWithContext(ctx context.Context) InstructionStepDetailsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstructionStepDetailsArrayOutput)
+}
+
+// Instruction step details, to be displayed in the Instructions steps section in the connector's page in Sentinel Portal.
+type InstructionStepDetailsOutput struct{ *pulumi.OutputState }
+
+func (InstructionStepDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstructionStepDetails)(nil)).Elem()
+}
+
+func (o InstructionStepDetailsOutput) ToInstructionStepDetailsOutput() InstructionStepDetailsOutput {
+	return o
+}
+
+func (o InstructionStepDetailsOutput) ToInstructionStepDetailsOutputWithContext(ctx context.Context) InstructionStepDetailsOutput {
+	return o
+}
+
+// Gets or sets the instruction type parameters settings.
+func (o InstructionStepDetailsOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v InstructionStepDetails) interface{} { return v.Parameters }).(pulumi.AnyOutput)
+}
+
+// Gets or sets the instruction type name.
+func (o InstructionStepDetailsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstructionStepDetails) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InstructionStepDetailsArrayOutput struct{ *pulumi.OutputState }
+
+func (InstructionStepDetailsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstructionStepDetails)(nil)).Elem()
+}
+
+func (o InstructionStepDetailsArrayOutput) ToInstructionStepDetailsArrayOutput() InstructionStepDetailsArrayOutput {
+	return o
+}
+
+func (o InstructionStepDetailsArrayOutput) ToInstructionStepDetailsArrayOutputWithContext(ctx context.Context) InstructionStepDetailsArrayOutput {
+	return o
+}
+
+func (o InstructionStepDetailsArrayOutput) Index(i pulumi.IntInput) InstructionStepDetailsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstructionStepDetails {
+		return vs[0].([]InstructionStepDetails)[vs[1].(int)]
+	}).(InstructionStepDetailsOutput)
+}
+
+// Instruction step details, to be displayed in the Instructions steps section in the connector's page in Sentinel Portal.
+type InstructionStepDetailsResponse struct {
+	// Gets or sets the instruction type parameters settings.
+	Parameters interface{} `pulumi:"parameters"`
+	// Gets or sets the instruction type name.
+	Type string `pulumi:"type"`
+}
+
+// Instruction step details, to be displayed in the Instructions steps section in the connector's page in Sentinel Portal.
+type InstructionStepDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (InstructionStepDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstructionStepDetailsResponse)(nil)).Elem()
+}
+
+func (o InstructionStepDetailsResponseOutput) ToInstructionStepDetailsResponseOutput() InstructionStepDetailsResponseOutput {
+	return o
+}
+
+func (o InstructionStepDetailsResponseOutput) ToInstructionStepDetailsResponseOutputWithContext(ctx context.Context) InstructionStepDetailsResponseOutput {
+	return o
+}
+
+// Gets or sets the instruction type parameters settings.
+func (o InstructionStepDetailsResponseOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v InstructionStepDetailsResponse) interface{} { return v.Parameters }).(pulumi.AnyOutput)
+}
+
+// Gets or sets the instruction type name.
+func (o InstructionStepDetailsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstructionStepDetailsResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InstructionStepDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstructionStepDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstructionStepDetailsResponse)(nil)).Elem()
+}
+
+func (o InstructionStepDetailsResponseArrayOutput) ToInstructionStepDetailsResponseArrayOutput() InstructionStepDetailsResponseArrayOutput {
+	return o
+}
+
+func (o InstructionStepDetailsResponseArrayOutput) ToInstructionStepDetailsResponseArrayOutputWithContext(ctx context.Context) InstructionStepDetailsResponseArrayOutput {
+	return o
+}
+
+func (o InstructionStepDetailsResponseArrayOutput) Index(i pulumi.IntInput) InstructionStepDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstructionStepDetailsResponse {
+		return vs[0].([]InstructionStepDetailsResponse)[vs[1].(int)]
+	}).(InstructionStepDetailsResponseOutput)
+}
+
+// Instruction steps to enable the connector.
+type InstructionStepResponse struct {
+	// Gets or sets the instruction step description.
+	Description *string `pulumi:"description"`
+	// Gets or sets the inner instruction steps details.
+	// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+	InnerSteps []InstructionStepResponse `pulumi:"innerSteps"`
+	// Gets or sets the instruction step details.
+	Instructions []InstructionStepDetailsResponse `pulumi:"instructions"`
+	// Gets or sets the instruction step title.
+	Title *string `pulumi:"title"`
+}
+
+// Instruction steps to enable the connector.
+type InstructionStepResponseOutput struct{ *pulumi.OutputState }
+
+func (InstructionStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstructionStepResponse)(nil)).Elem()
+}
+
+func (o InstructionStepResponseOutput) ToInstructionStepResponseOutput() InstructionStepResponseOutput {
+	return o
+}
+
+func (o InstructionStepResponseOutput) ToInstructionStepResponseOutputWithContext(ctx context.Context) InstructionStepResponseOutput {
+	return o
+}
+
+// Gets or sets the instruction step description.
+func (o InstructionStepResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstructionStepResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the inner instruction steps details.
+// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+func (o InstructionStepResponseOutput) InnerSteps() InstructionStepResponseArrayOutput {
+	return o.ApplyT(func(v InstructionStepResponse) []InstructionStepResponse { return v.InnerSteps }).(InstructionStepResponseArrayOutput)
+}
+
+// Gets or sets the instruction step details.
+func (o InstructionStepResponseOutput) Instructions() InstructionStepDetailsResponseArrayOutput {
+	return o.ApplyT(func(v InstructionStepResponse) []InstructionStepDetailsResponse { return v.Instructions }).(InstructionStepDetailsResponseArrayOutput)
+}
+
+// Gets or sets the instruction step title.
+func (o InstructionStepResponseOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstructionStepResponse) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type InstructionStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstructionStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstructionStepResponse)(nil)).Elem()
+}
+
+func (o InstructionStepResponseArrayOutput) ToInstructionStepResponseArrayOutput() InstructionStepResponseArrayOutput {
+	return o
+}
+
+func (o InstructionStepResponseArrayOutput) ToInstructionStepResponseArrayOutputWithContext(ctx context.Context) InstructionStepResponseArrayOutput {
+	return o
+}
+
+func (o InstructionStepResponseArrayOutput) Index(i pulumi.IntInput) InstructionStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstructionStepResponse {
+		return vs[0].([]InstructionStepResponse)[vs[1].(int)]
+	}).(InstructionStepResponseOutput)
 }
 
 // The available data types for MCAS (Microsoft Cloud App Security) data connector.
@@ -9630,6 +11811,302 @@ func (o RepositoryResponseOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
+// Required permissions for the connector resource provider that define in ResourceProviders.
+// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+type ResourceProviderRequiredPermissions struct {
+	// Gets or sets a value indicating whether the permission is custom actions (POST).
+	Action *bool `pulumi:"action"`
+	// Gets or sets a value indicating whether the permission is delete action (DELETE).
+	Delete *bool `pulumi:"delete"`
+	// Gets or sets a value indicating whether the permission is read action (GET).
+	Read *bool `pulumi:"read"`
+	// Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
+	Write *bool `pulumi:"write"`
+}
+
+// ResourceProviderRequiredPermissionsInput is an input type that accepts ResourceProviderRequiredPermissionsArgs and ResourceProviderRequiredPermissionsOutput values.
+// You can construct a concrete instance of `ResourceProviderRequiredPermissionsInput` via:
+//
+//	ResourceProviderRequiredPermissionsArgs{...}
+type ResourceProviderRequiredPermissionsInput interface {
+	pulumi.Input
+
+	ToResourceProviderRequiredPermissionsOutput() ResourceProviderRequiredPermissionsOutput
+	ToResourceProviderRequiredPermissionsOutputWithContext(context.Context) ResourceProviderRequiredPermissionsOutput
+}
+
+// Required permissions for the connector resource provider that define in ResourceProviders.
+// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+type ResourceProviderRequiredPermissionsArgs struct {
+	// Gets or sets a value indicating whether the permission is custom actions (POST).
+	Action pulumi.BoolPtrInput `pulumi:"action"`
+	// Gets or sets a value indicating whether the permission is delete action (DELETE).
+	Delete pulumi.BoolPtrInput `pulumi:"delete"`
+	// Gets or sets a value indicating whether the permission is read action (GET).
+	Read pulumi.BoolPtrInput `pulumi:"read"`
+	// Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
+	Write pulumi.BoolPtrInput `pulumi:"write"`
+}
+
+func (ResourceProviderRequiredPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceProviderRequiredPermissions)(nil)).Elem()
+}
+
+func (i ResourceProviderRequiredPermissionsArgs) ToResourceProviderRequiredPermissionsOutput() ResourceProviderRequiredPermissionsOutput {
+	return i.ToResourceProviderRequiredPermissionsOutputWithContext(context.Background())
+}
+
+func (i ResourceProviderRequiredPermissionsArgs) ToResourceProviderRequiredPermissionsOutputWithContext(ctx context.Context) ResourceProviderRequiredPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceProviderRequiredPermissionsOutput)
+}
+
+// Required permissions for the connector resource provider that define in ResourceProviders.
+// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+type ResourceProviderRequiredPermissionsOutput struct{ *pulumi.OutputState }
+
+func (ResourceProviderRequiredPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceProviderRequiredPermissions)(nil)).Elem()
+}
+
+func (o ResourceProviderRequiredPermissionsOutput) ToResourceProviderRequiredPermissionsOutput() ResourceProviderRequiredPermissionsOutput {
+	return o
+}
+
+func (o ResourceProviderRequiredPermissionsOutput) ToResourceProviderRequiredPermissionsOutputWithContext(ctx context.Context) ResourceProviderRequiredPermissionsOutput {
+	return o
+}
+
+// Gets or sets a value indicating whether the permission is custom actions (POST).
+func (o ResourceProviderRequiredPermissionsOutput) Action() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceProviderRequiredPermissions) *bool { return v.Action }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether the permission is delete action (DELETE).
+func (o ResourceProviderRequiredPermissionsOutput) Delete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceProviderRequiredPermissions) *bool { return v.Delete }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether the permission is read action (GET).
+func (o ResourceProviderRequiredPermissionsOutput) Read() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceProviderRequiredPermissions) *bool { return v.Read }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
+func (o ResourceProviderRequiredPermissionsOutput) Write() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceProviderRequiredPermissions) *bool { return v.Write }).(pulumi.BoolPtrOutput)
+}
+
+// Required permissions for the connector resource provider that define in ResourceProviders.
+// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+type ResourceProviderRequiredPermissionsResponse struct {
+	// Gets or sets a value indicating whether the permission is custom actions (POST).
+	Action *bool `pulumi:"action"`
+	// Gets or sets a value indicating whether the permission is delete action (DELETE).
+	Delete *bool `pulumi:"delete"`
+	// Gets or sets a value indicating whether the permission is read action (GET).
+	Read *bool `pulumi:"read"`
+	// Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
+	Write *bool `pulumi:"write"`
+}
+
+// Required permissions for the connector resource provider that define in ResourceProviders.
+// For more information about the permissions see <see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format">here</see>.
+type ResourceProviderRequiredPermissionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceProviderRequiredPermissionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceProviderRequiredPermissionsResponse)(nil)).Elem()
+}
+
+func (o ResourceProviderRequiredPermissionsResponseOutput) ToResourceProviderRequiredPermissionsResponseOutput() ResourceProviderRequiredPermissionsResponseOutput {
+	return o
+}
+
+func (o ResourceProviderRequiredPermissionsResponseOutput) ToResourceProviderRequiredPermissionsResponseOutputWithContext(ctx context.Context) ResourceProviderRequiredPermissionsResponseOutput {
+	return o
+}
+
+// Gets or sets a value indicating whether the permission is custom actions (POST).
+func (o ResourceProviderRequiredPermissionsResponseOutput) Action() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceProviderRequiredPermissionsResponse) *bool { return v.Action }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether the permission is delete action (DELETE).
+func (o ResourceProviderRequiredPermissionsResponseOutput) Delete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceProviderRequiredPermissionsResponse) *bool { return v.Delete }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether the permission is read action (GET).
+func (o ResourceProviderRequiredPermissionsResponseOutput) Read() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceProviderRequiredPermissionsResponse) *bool { return v.Read }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
+func (o ResourceProviderRequiredPermissionsResponseOutput) Write() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceProviderRequiredPermissionsResponse) *bool { return v.Write }).(pulumi.BoolPtrOutput)
+}
+
+// The sample queries for the connector.
+type SampleQuery struct {
+	// Gets or sets the  sample query description.
+	Description string `pulumi:"description"`
+	// Gets or sets the KQL sample query.
+	Query string `pulumi:"query"`
+}
+
+// SampleQueryInput is an input type that accepts SampleQueryArgs and SampleQueryOutput values.
+// You can construct a concrete instance of `SampleQueryInput` via:
+//
+//	SampleQueryArgs{...}
+type SampleQueryInput interface {
+	pulumi.Input
+
+	ToSampleQueryOutput() SampleQueryOutput
+	ToSampleQueryOutputWithContext(context.Context) SampleQueryOutput
+}
+
+// The sample queries for the connector.
+type SampleQueryArgs struct {
+	// Gets or sets the  sample query description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Gets or sets the KQL sample query.
+	Query pulumi.StringInput `pulumi:"query"`
+}
+
+func (SampleQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleQuery)(nil)).Elem()
+}
+
+func (i SampleQueryArgs) ToSampleQueryOutput() SampleQueryOutput {
+	return i.ToSampleQueryOutputWithContext(context.Background())
+}
+
+func (i SampleQueryArgs) ToSampleQueryOutputWithContext(ctx context.Context) SampleQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SampleQueryOutput)
+}
+
+// SampleQueryArrayInput is an input type that accepts SampleQueryArray and SampleQueryArrayOutput values.
+// You can construct a concrete instance of `SampleQueryArrayInput` via:
+//
+//	SampleQueryArray{ SampleQueryArgs{...} }
+type SampleQueryArrayInput interface {
+	pulumi.Input
+
+	ToSampleQueryArrayOutput() SampleQueryArrayOutput
+	ToSampleQueryArrayOutputWithContext(context.Context) SampleQueryArrayOutput
+}
+
+type SampleQueryArray []SampleQueryInput
+
+func (SampleQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SampleQuery)(nil)).Elem()
+}
+
+func (i SampleQueryArray) ToSampleQueryArrayOutput() SampleQueryArrayOutput {
+	return i.ToSampleQueryArrayOutputWithContext(context.Background())
+}
+
+func (i SampleQueryArray) ToSampleQueryArrayOutputWithContext(ctx context.Context) SampleQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SampleQueryArrayOutput)
+}
+
+// The sample queries for the connector.
+type SampleQueryOutput struct{ *pulumi.OutputState }
+
+func (SampleQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleQuery)(nil)).Elem()
+}
+
+func (o SampleQueryOutput) ToSampleQueryOutput() SampleQueryOutput {
+	return o
+}
+
+func (o SampleQueryOutput) ToSampleQueryOutputWithContext(ctx context.Context) SampleQueryOutput {
+	return o
+}
+
+// Gets or sets the  sample query description.
+func (o SampleQueryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleQuery) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Gets or sets the KQL sample query.
+func (o SampleQueryOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleQuery) string { return v.Query }).(pulumi.StringOutput)
+}
+
+type SampleQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (SampleQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SampleQuery)(nil)).Elem()
+}
+
+func (o SampleQueryArrayOutput) ToSampleQueryArrayOutput() SampleQueryArrayOutput {
+	return o
+}
+
+func (o SampleQueryArrayOutput) ToSampleQueryArrayOutputWithContext(ctx context.Context) SampleQueryArrayOutput {
+	return o
+}
+
+func (o SampleQueryArrayOutput) Index(i pulumi.IntInput) SampleQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SampleQuery {
+		return vs[0].([]SampleQuery)[vs[1].(int)]
+	}).(SampleQueryOutput)
+}
+
+// The sample queries for the connector.
+type SampleQueryResponse struct {
+	// Gets or sets the  sample query description.
+	Description string `pulumi:"description"`
+	// Gets or sets the KQL sample query.
+	Query string `pulumi:"query"`
+}
+
+// The sample queries for the connector.
+type SampleQueryResponseOutput struct{ *pulumi.OutputState }
+
+func (SampleQueryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleQueryResponse)(nil)).Elem()
+}
+
+func (o SampleQueryResponseOutput) ToSampleQueryResponseOutput() SampleQueryResponseOutput {
+	return o
+}
+
+func (o SampleQueryResponseOutput) ToSampleQueryResponseOutputWithContext(ctx context.Context) SampleQueryResponseOutput {
+	return o
+}
+
+// Gets or sets the  sample query description.
+func (o SampleQueryResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleQueryResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Gets or sets the KQL sample query.
+func (o SampleQueryResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleQueryResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
+type SampleQueryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SampleQueryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SampleQueryResponse)(nil)).Elem()
+}
+
+func (o SampleQueryResponseArrayOutput) ToSampleQueryResponseArrayOutput() SampleQueryResponseArrayOutput {
+	return o
+}
+
+func (o SampleQueryResponseArrayOutput) ToSampleQueryResponseArrayOutputWithContext(ctx context.Context) SampleQueryResponseArrayOutput {
+	return o
+}
+
+func (o SampleQueryResponseArrayOutput) Index(i pulumi.IntInput) SampleQueryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SampleQueryResponse {
+		return vs[0].([]SampleQueryResponse)[vs[1].(int)]
+	}).(SampleQueryResponseOutput)
+}
+
 // Represents security alert timeline item.
 type SecurityAlertTimelineItemResponse struct {
 	// The name of the alert type.
@@ -11942,10 +14419,38 @@ func init() {
 	pulumi.RegisterOutputType(ClientInfoPtrOutput{})
 	pulumi.RegisterOutputType(ClientInfoResponseOutput{})
 	pulumi.RegisterOutputType(ClientInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectivityCriterionOutput{})
+	pulumi.RegisterOutputType(ConnectivityCriterionArrayOutput{})
+	pulumi.RegisterOutputType(ConnectivityCriterionResponseOutput{})
+	pulumi.RegisterOutputType(ConnectivityCriterionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorDataTypeOutput{})
+	pulumi.RegisterOutputType(ConnectorDataTypeArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorDataTypeResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorDataTypeResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsAvailabilityOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsAvailabilityPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsAvailabilityResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsAvailabilityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsPermissionsOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsPermissionsResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsResourceProviderOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsResourceProviderArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsResourceProviderResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorDefinitionsResourceProviderResponseArrayOutput{})
 	pulumi.RegisterOutputType(ContentPathMapOutput{})
 	pulumi.RegisterOutputType(ContentPathMapArrayOutput{})
 	pulumi.RegisterOutputType(ContentPathMapResponseOutput{})
 	pulumi.RegisterOutputType(ContentPathMapResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomPermissionDetailsOutput{})
+	pulumi.RegisterOutputType(CustomPermissionDetailsArrayOutput{})
+	pulumi.RegisterOutputType(CustomPermissionDetailsResponseOutput{})
+	pulumi.RegisterOutputType(CustomPermissionDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomizableConnectionsConfigOutput{})
+	pulumi.RegisterOutputType(CustomizableConnectionsConfigPtrOutput{})
+	pulumi.RegisterOutputType(CustomizableConnectionsConfigResponseOutput{})
+	pulumi.RegisterOutputType(CustomizableConnectionsConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomizableConnectorUiConfigOutput{})
+	pulumi.RegisterOutputType(CustomizableConnectorUiConfigResponseOutput{})
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonOutput{})
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonPtrOutput{})
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonResponseOutput{})
@@ -11984,6 +14489,10 @@ func init() {
 	pulumi.RegisterOutputType(GitHubResourceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GitHubResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(GitHubResourceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(GraphQueryOutput{})
+	pulumi.RegisterOutputType(GraphQueryArrayOutput{})
+	pulumi.RegisterOutputType(GraphQueryResponseOutput{})
+	pulumi.RegisterOutputType(GraphQueryResponseArrayOutput{})
 	pulumi.RegisterOutputType(GroupingConfigurationOutput{})
 	pulumi.RegisterOutputType(GroupingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GroupingConfigurationResponseOutput{})
@@ -12014,6 +14523,14 @@ func init() {
 	pulumi.RegisterOutputType(InsightsTableResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(InsightsTableResultResponseColumnsOutput{})
 	pulumi.RegisterOutputType(InsightsTableResultResponseColumnsArrayOutput{})
+	pulumi.RegisterOutputType(InstructionStepOutput{})
+	pulumi.RegisterOutputType(InstructionStepArrayOutput{})
+	pulumi.RegisterOutputType(InstructionStepDetailsOutput{})
+	pulumi.RegisterOutputType(InstructionStepDetailsArrayOutput{})
+	pulumi.RegisterOutputType(InstructionStepDetailsResponseOutput{})
+	pulumi.RegisterOutputType(InstructionStepDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstructionStepResponseOutput{})
+	pulumi.RegisterOutputType(InstructionStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesOutput{})
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesPtrOutput{})
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesResponseOutput{})
@@ -12064,6 +14581,12 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(RepositoryResourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(RepositoryResponseOutput{})
+	pulumi.RegisterOutputType(ResourceProviderRequiredPermissionsOutput{})
+	pulumi.RegisterOutputType(ResourceProviderRequiredPermissionsResponseOutput{})
+	pulumi.RegisterOutputType(SampleQueryOutput{})
+	pulumi.RegisterOutputType(SampleQueryArrayOutput{})
+	pulumi.RegisterOutputType(SampleQueryResponseOutput{})
+	pulumi.RegisterOutputType(SampleQueryResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceResponseOutput{})

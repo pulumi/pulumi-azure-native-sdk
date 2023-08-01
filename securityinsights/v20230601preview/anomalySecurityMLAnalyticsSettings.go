@@ -137,6 +137,9 @@ func NewAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230501preview:AnomalySecurityMLAnalyticsSettings"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:AnomalySecurityMLAnalyticsSettings"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AnomalySecurityMLAnalyticsSettings

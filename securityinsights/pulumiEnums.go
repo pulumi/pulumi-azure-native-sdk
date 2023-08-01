@@ -306,6 +306,13 @@ const (
 )
 
 // The data connector kind
+type DataConnectorDefinitionKind string
+
+const (
+	DataConnectorDefinitionKindCustomizable = DataConnectorDefinitionKind("Customizable")
+)
+
+// The data connector kind
 type DataConnectorKind string
 
 const (
@@ -675,6 +682,15 @@ type PackageKind string
 const (
 	PackageKindSolution   = PackageKind("Solution")
 	PackageKindStandalone = PackageKind("Standalone")
+)
+
+// The scope on which the user should have permissions, in order to be able to create connections.
+type ProviderPermissionsScope string
+
+const (
+	ProviderPermissionsScopeSubscription  = ProviderPermissionsScope("Subscription")
+	ProviderPermissionsScopeResourceGroup = ProviderPermissionsScope("ResourceGroup")
+	ProviderPermissionsScopeWorkspace     = ProviderPermissionsScope("Workspace")
 )
 
 // The repository type of the source control

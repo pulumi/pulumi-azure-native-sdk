@@ -51,6 +51,9 @@ func NewHierarchySetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:management/v20210401:HierarchySetting"),
 		},
+		{
+			Type: pulumi.String("azure-native:management/v20230401:HierarchySetting"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource HierarchySetting

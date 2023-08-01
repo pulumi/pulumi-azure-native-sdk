@@ -146,6 +146,9 @@ func NewMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230601preview:MicrosoftSecurityIncidentCreationAlertRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:MicrosoftSecurityIncidentCreationAlertRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource MicrosoftSecurityIncidentCreationAlertRule

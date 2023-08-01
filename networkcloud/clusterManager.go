@@ -67,6 +67,9 @@ func NewClusterManager(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230501preview:ClusterManager"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230701:ClusterManager"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ClusterManager

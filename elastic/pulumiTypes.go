@@ -226,6 +226,165 @@ func (o CompanyInfoPtrOutput) State() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Connected Partner Resource Properties
+type ConnectedPartnerResourcePropertiesResponse struct {
+	// The azure resource Id of the deployment.
+	AzureResourceId *string `pulumi:"azureResourceId"`
+	// The location of the deployment.
+	Location *string `pulumi:"location"`
+	// Elastic deployment name
+	PartnerDeploymentName *string `pulumi:"partnerDeploymentName"`
+	// Deployment URL of the elasticsearch in Elastic cloud deployment.
+	PartnerDeploymentUri *string `pulumi:"partnerDeploymentUri"`
+}
+
+// Connected Partner Resource Properties
+type ConnectedPartnerResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectedPartnerResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectedPartnerResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o ConnectedPartnerResourcePropertiesResponseOutput) ToConnectedPartnerResourcePropertiesResponseOutput() ConnectedPartnerResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o ConnectedPartnerResourcePropertiesResponseOutput) ToConnectedPartnerResourcePropertiesResponseOutputWithContext(ctx context.Context) ConnectedPartnerResourcePropertiesResponseOutput {
+	return o
+}
+
+// The azure resource Id of the deployment.
+func (o ConnectedPartnerResourcePropertiesResponseOutput) AzureResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectedPartnerResourcePropertiesResponse) *string { return v.AzureResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The location of the deployment.
+func (o ConnectedPartnerResourcePropertiesResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectedPartnerResourcePropertiesResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Elastic deployment name
+func (o ConnectedPartnerResourcePropertiesResponseOutput) PartnerDeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectedPartnerResourcePropertiesResponse) *string { return v.PartnerDeploymentName }).(pulumi.StringPtrOutput)
+}
+
+// Deployment URL of the elasticsearch in Elastic cloud deployment.
+func (o ConnectedPartnerResourcePropertiesResponseOutput) PartnerDeploymentUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectedPartnerResourcePropertiesResponse) *string { return v.PartnerDeploymentUri }).(pulumi.StringPtrOutput)
+}
+
+type ConnectedPartnerResourcePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectedPartnerResourcePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectedPartnerResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o ConnectedPartnerResourcePropertiesResponsePtrOutput) ToConnectedPartnerResourcePropertiesResponsePtrOutput() ConnectedPartnerResourcePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ConnectedPartnerResourcePropertiesResponsePtrOutput) ToConnectedPartnerResourcePropertiesResponsePtrOutputWithContext(ctx context.Context) ConnectedPartnerResourcePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ConnectedPartnerResourcePropertiesResponsePtrOutput) Elem() ConnectedPartnerResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v *ConnectedPartnerResourcePropertiesResponse) ConnectedPartnerResourcePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectedPartnerResourcePropertiesResponse
+		return ret
+	}).(ConnectedPartnerResourcePropertiesResponseOutput)
+}
+
+// The azure resource Id of the deployment.
+func (o ConnectedPartnerResourcePropertiesResponsePtrOutput) AzureResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedPartnerResourcePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of the deployment.
+func (o ConnectedPartnerResourcePropertiesResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedPartnerResourcePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elastic deployment name
+func (o ConnectedPartnerResourcePropertiesResponsePtrOutput) PartnerDeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedPartnerResourcePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerDeploymentName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deployment URL of the elasticsearch in Elastic cloud deployment.
+func (o ConnectedPartnerResourcePropertiesResponsePtrOutput) PartnerDeploymentUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedPartnerResourcePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerDeploymentUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connected Partner Resources List Format
+type ConnectedPartnerResourcesListFormatResponse struct {
+	// Connected Partner Resource Properties
+	Properties *ConnectedPartnerResourcePropertiesResponse `pulumi:"properties"`
+}
+
+// Connected Partner Resources List Format
+type ConnectedPartnerResourcesListFormatResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectedPartnerResourcesListFormatResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectedPartnerResourcesListFormatResponse)(nil)).Elem()
+}
+
+func (o ConnectedPartnerResourcesListFormatResponseOutput) ToConnectedPartnerResourcesListFormatResponseOutput() ConnectedPartnerResourcesListFormatResponseOutput {
+	return o
+}
+
+func (o ConnectedPartnerResourcesListFormatResponseOutput) ToConnectedPartnerResourcesListFormatResponseOutputWithContext(ctx context.Context) ConnectedPartnerResourcesListFormatResponseOutput {
+	return o
+}
+
+// Connected Partner Resource Properties
+func (o ConnectedPartnerResourcesListFormatResponseOutput) Properties() ConnectedPartnerResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ConnectedPartnerResourcesListFormatResponse) *ConnectedPartnerResourcePropertiesResponse {
+		return v.Properties
+	}).(ConnectedPartnerResourcePropertiesResponsePtrOutput)
+}
+
+type ConnectedPartnerResourcesListFormatResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectedPartnerResourcesListFormatResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectedPartnerResourcesListFormatResponse)(nil)).Elem()
+}
+
+func (o ConnectedPartnerResourcesListFormatResponseArrayOutput) ToConnectedPartnerResourcesListFormatResponseArrayOutput() ConnectedPartnerResourcesListFormatResponseArrayOutput {
+	return o
+}
+
+func (o ConnectedPartnerResourcesListFormatResponseArrayOutput) ToConnectedPartnerResourcesListFormatResponseArrayOutputWithContext(ctx context.Context) ConnectedPartnerResourcesListFormatResponseArrayOutput {
+	return o
+}
+
+func (o ConnectedPartnerResourcesListFormatResponseArrayOutput) Index(i pulumi.IntInput) ConnectedPartnerResourcesListFormatResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectedPartnerResourcesListFormatResponse {
+		return vs[0].([]ConnectedPartnerResourcesListFormatResponse)[vs[1].(int)]
+	}).(ConnectedPartnerResourcesListFormatResponseOutput)
+}
+
 // Details of the user's elastic deployment associated with the monitor resource.
 type ElasticCloudDeploymentResponse struct {
 	// Associated Azure subscription Id for the elastic deployment.
@@ -1455,6 +1614,8 @@ func (o LogRulesResponsePtrOutput) SendSubscriptionLogs() pulumi.BoolPtrOutput {
 
 // Marketplace SAAS Info of the resource.
 type MarketplaceSaaSInfoResponse struct {
+	// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
+	BilledAzureSubscriptionId *string `pulumi:"billedAzureSubscriptionId"`
 	// Marketplace Subscription Details: SAAS Name
 	MarketplaceName *string `pulumi:"marketplaceName"`
 	// Marketplace Subscription Details: Resource URI
@@ -1463,6 +1624,8 @@ type MarketplaceSaaSInfoResponse struct {
 	MarketplaceStatus *string `pulumi:"marketplaceStatus"`
 	// Marketplace Subscription
 	MarketplaceSubscription *MarketplaceSaaSInfoResponseMarketplaceSubscription `pulumi:"marketplaceSubscription"`
+	// Flag specifying if the Marketplace status is subscribed or not.
+	Subscribed *bool `pulumi:"subscribed"`
 }
 
 // Marketplace SAAS Info of the resource.
@@ -1478,6 +1641,11 @@ func (o MarketplaceSaaSInfoResponseOutput) ToMarketplaceSaaSInfoResponseOutput()
 
 func (o MarketplaceSaaSInfoResponseOutput) ToMarketplaceSaaSInfoResponseOutputWithContext(ctx context.Context) MarketplaceSaaSInfoResponseOutput {
 	return o
+}
+
+// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
+func (o MarketplaceSaaSInfoResponseOutput) BilledAzureSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *string { return v.BilledAzureSubscriptionId }).(pulumi.StringPtrOutput)
 }
 
 // Marketplace Subscription Details: SAAS Name
@@ -1500,6 +1668,95 @@ func (o MarketplaceSaaSInfoResponseOutput) MarketplaceSubscription() Marketplace
 	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *MarketplaceSaaSInfoResponseMarketplaceSubscription {
 		return v.MarketplaceSubscription
 	}).(MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput)
+}
+
+// Flag specifying if the Marketplace status is subscribed or not.
+func (o MarketplaceSaaSInfoResponseOutput) Subscribed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *bool { return v.Subscribed }).(pulumi.BoolPtrOutput)
+}
+
+type MarketplaceSaaSInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceSaaSInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarketplaceSaaSInfoResponse)(nil)).Elem()
+}
+
+func (o MarketplaceSaaSInfoResponsePtrOutput) ToMarketplaceSaaSInfoResponsePtrOutput() MarketplaceSaaSInfoResponsePtrOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponsePtrOutput) ToMarketplaceSaaSInfoResponsePtrOutputWithContext(ctx context.Context) MarketplaceSaaSInfoResponsePtrOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponsePtrOutput) Elem() MarketplaceSaaSInfoResponseOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) MarketplaceSaaSInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MarketplaceSaaSInfoResponse
+		return ret
+	}).(MarketplaceSaaSInfoResponseOutput)
+}
+
+// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
+func (o MarketplaceSaaSInfoResponsePtrOutput) BilledAzureSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BilledAzureSubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Details: SAAS Name
+func (o MarketplaceSaaSInfoResponsePtrOutput) MarketplaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Details: Resource URI
+func (o MarketplaceSaaSInfoResponsePtrOutput) MarketplaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Details: SaaS Subscription Status
+func (o MarketplaceSaaSInfoResponsePtrOutput) MarketplaceStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription
+func (o MarketplaceSaaSInfoResponsePtrOutput) MarketplaceSubscription() MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *MarketplaceSaaSInfoResponseMarketplaceSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceSubscription
+	}).(MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput)
+}
+
+// Flag specifying if the Marketplace status is subscribed or not.
+func (o MarketplaceSaaSInfoResponsePtrOutput) Subscribed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Subscribed
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Marketplace Subscription
@@ -2096,6 +2353,100 @@ func (o MonitoringTagRulesPropertiesResponseOutput) ProvisioningState() pulumi.S
 	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Partner Billing details associated with the resource.
+type PartnerBillingEntityResponse struct {
+	// The Elastic Organization Id.
+	Id *string `pulumi:"id"`
+	// The Elastic Organization Name.
+	Name *string `pulumi:"name"`
+	// Link to the elastic organization page
+	PartnerEntityUri *string `pulumi:"partnerEntityUri"`
+}
+
+// Partner Billing details associated with the resource.
+type PartnerBillingEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (PartnerBillingEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartnerBillingEntityResponse)(nil)).Elem()
+}
+
+func (o PartnerBillingEntityResponseOutput) ToPartnerBillingEntityResponseOutput() PartnerBillingEntityResponseOutput {
+	return o
+}
+
+func (o PartnerBillingEntityResponseOutput) ToPartnerBillingEntityResponseOutputWithContext(ctx context.Context) PartnerBillingEntityResponseOutput {
+	return o
+}
+
+// The Elastic Organization Id.
+func (o PartnerBillingEntityResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerBillingEntityResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The Elastic Organization Name.
+func (o PartnerBillingEntityResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerBillingEntityResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Link to the elastic organization page
+func (o PartnerBillingEntityResponseOutput) PartnerEntityUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerBillingEntityResponse) *string { return v.PartnerEntityUri }).(pulumi.StringPtrOutput)
+}
+
+type PartnerBillingEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PartnerBillingEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PartnerBillingEntityResponse)(nil)).Elem()
+}
+
+func (o PartnerBillingEntityResponsePtrOutput) ToPartnerBillingEntityResponsePtrOutput() PartnerBillingEntityResponsePtrOutput {
+	return o
+}
+
+func (o PartnerBillingEntityResponsePtrOutput) ToPartnerBillingEntityResponsePtrOutputWithContext(ctx context.Context) PartnerBillingEntityResponsePtrOutput {
+	return o
+}
+
+func (o PartnerBillingEntityResponsePtrOutput) Elem() PartnerBillingEntityResponseOutput {
+	return o.ApplyT(func(v *PartnerBillingEntityResponse) PartnerBillingEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PartnerBillingEntityResponse
+		return ret
+	}).(PartnerBillingEntityResponseOutput)
+}
+
+// The Elastic Organization Id.
+func (o PartnerBillingEntityResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerBillingEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Elastic Organization Name.
+func (o PartnerBillingEntityResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerBillingEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Link to the elastic organization page
+func (o PartnerBillingEntityResponsePtrOutput) PartnerEntityUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerBillingEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerEntityUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Microsoft.Elastic SKU.
 type ResourceSku struct {
 	// Name of the SKU.
@@ -2646,6 +2997,10 @@ func (o VMResourcesResponseArrayOutput) Index(i pulumi.IntInput) VMResourcesResp
 func init() {
 	pulumi.RegisterOutputType(CompanyInfoOutput{})
 	pulumi.RegisterOutputType(CompanyInfoPtrOutput{})
+	pulumi.RegisterOutputType(ConnectedPartnerResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ConnectedPartnerResourcePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectedPartnerResourcesListFormatResponseOutput{})
+	pulumi.RegisterOutputType(ConnectedPartnerResourcesListFormatResponseArrayOutput{})
 	pulumi.RegisterOutputType(ElasticCloudDeploymentResponseOutput{})
 	pulumi.RegisterOutputType(ElasticCloudDeploymentResponsePtrOutput{})
 	pulumi.RegisterOutputType(ElasticCloudUserResponseOutput{})
@@ -2669,6 +3024,7 @@ func init() {
 	pulumi.RegisterOutputType(LogRulesResponseOutput{})
 	pulumi.RegisterOutputType(LogRulesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponseOutput{})
+	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput{})
 	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesOutput{})
@@ -2679,6 +3035,8 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PartnerBillingEntityResponseOutput{})
+	pulumi.RegisterOutputType(PartnerBillingEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuOutput{})
 	pulumi.RegisterOutputType(ResourceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})

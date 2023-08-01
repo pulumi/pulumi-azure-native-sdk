@@ -127,6 +127,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:VirtualMachine"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230701:VirtualMachine"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualMachine

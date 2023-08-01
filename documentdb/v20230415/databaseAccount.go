@@ -75,7 +75,7 @@ type DatabaseAccount struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// An array that contains all of the locations enabled for the Cosmos DB account.
 	Locations LocationResponseArrayOutput `pulumi:"locations"`
-	// Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2.
+	// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
 	MinimalTlsVersion pulumi.StringPtrOutput `pulumi:"minimalTlsVersion"`
 	// The name of the ARM resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -315,7 +315,7 @@ type databaseAccountArgs struct {
 	Location *string `pulumi:"location"`
 	// An array that contains the georeplication locations enabled for the Cosmos DB account.
 	Locations []Location `pulumi:"locations"`
-	// Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2.
+	// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
 	MinimalTlsVersion *string `pulumi:"minimalTlsVersion"`
 	// Indicates what services are allowed to bypass firewall checks.
 	NetworkAclBypass *NetworkAclBypass `pulumi:"networkAclBypass"`
@@ -389,7 +389,7 @@ type DatabaseAccountArgs struct {
 	Location pulumi.StringPtrInput
 	// An array that contains the georeplication locations enabled for the Cosmos DB account.
 	Locations LocationArrayInput
-	// Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2.
+	// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
 	MinimalTlsVersion pulumi.StringPtrInput
 	// Indicates what services are allowed to bypass firewall checks.
 	NetworkAclBypass NetworkAclBypassPtrInput
@@ -596,7 +596,7 @@ func (o DatabaseAccountOutput) Locations() LocationResponseArrayOutput {
 	return o.ApplyT(func(v *DatabaseAccount) LocationResponseArrayOutput { return v.Locations }).(LocationResponseArrayOutput)
 }
 
-// Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2.
+// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
 func (o DatabaseAccountOutput) MinimalTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseAccount) pulumi.StringPtrOutput { return v.MinimalTlsVersion }).(pulumi.StringPtrOutput)
 }

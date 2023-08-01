@@ -106,6 +106,9 @@ func NewFileShare(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20220501:FileShare"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230101:FileShare"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FileShare

@@ -296,6 +296,242 @@ func (o AgentPropertiesResponsePtrOutput) Cpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The properties of the archive package source.
+type ArchivePackageSourceProperties struct {
+	// The type of package source for a archive.
+	Type *string `pulumi:"type"`
+	// The external repository url.
+	Url *string `pulumi:"url"`
+}
+
+// ArchivePackageSourcePropertiesInput is an input type that accepts ArchivePackageSourcePropertiesArgs and ArchivePackageSourcePropertiesOutput values.
+// You can construct a concrete instance of `ArchivePackageSourcePropertiesInput` via:
+//
+//	ArchivePackageSourcePropertiesArgs{...}
+type ArchivePackageSourcePropertiesInput interface {
+	pulumi.Input
+
+	ToArchivePackageSourcePropertiesOutput() ArchivePackageSourcePropertiesOutput
+	ToArchivePackageSourcePropertiesOutputWithContext(context.Context) ArchivePackageSourcePropertiesOutput
+}
+
+// The properties of the archive package source.
+type ArchivePackageSourcePropertiesArgs struct {
+	// The type of package source for a archive.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The external repository url.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ArchivePackageSourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArchivePackageSourceProperties)(nil)).Elem()
+}
+
+func (i ArchivePackageSourcePropertiesArgs) ToArchivePackageSourcePropertiesOutput() ArchivePackageSourcePropertiesOutput {
+	return i.ToArchivePackageSourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i ArchivePackageSourcePropertiesArgs) ToArchivePackageSourcePropertiesOutputWithContext(ctx context.Context) ArchivePackageSourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArchivePackageSourcePropertiesOutput)
+}
+
+func (i ArchivePackageSourcePropertiesArgs) ToArchivePackageSourcePropertiesPtrOutput() ArchivePackageSourcePropertiesPtrOutput {
+	return i.ToArchivePackageSourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ArchivePackageSourcePropertiesArgs) ToArchivePackageSourcePropertiesPtrOutputWithContext(ctx context.Context) ArchivePackageSourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArchivePackageSourcePropertiesOutput).ToArchivePackageSourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// ArchivePackageSourcePropertiesPtrInput is an input type that accepts ArchivePackageSourcePropertiesArgs, ArchivePackageSourcePropertiesPtr and ArchivePackageSourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `ArchivePackageSourcePropertiesPtrInput` via:
+//
+//	        ArchivePackageSourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ArchivePackageSourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToArchivePackageSourcePropertiesPtrOutput() ArchivePackageSourcePropertiesPtrOutput
+	ToArchivePackageSourcePropertiesPtrOutputWithContext(context.Context) ArchivePackageSourcePropertiesPtrOutput
+}
+
+type archivePackageSourcePropertiesPtrType ArchivePackageSourcePropertiesArgs
+
+func ArchivePackageSourcePropertiesPtr(v *ArchivePackageSourcePropertiesArgs) ArchivePackageSourcePropertiesPtrInput {
+	return (*archivePackageSourcePropertiesPtrType)(v)
+}
+
+func (*archivePackageSourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArchivePackageSourceProperties)(nil)).Elem()
+}
+
+func (i *archivePackageSourcePropertiesPtrType) ToArchivePackageSourcePropertiesPtrOutput() ArchivePackageSourcePropertiesPtrOutput {
+	return i.ToArchivePackageSourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *archivePackageSourcePropertiesPtrType) ToArchivePackageSourcePropertiesPtrOutputWithContext(ctx context.Context) ArchivePackageSourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArchivePackageSourcePropertiesPtrOutput)
+}
+
+// The properties of the archive package source.
+type ArchivePackageSourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ArchivePackageSourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArchivePackageSourceProperties)(nil)).Elem()
+}
+
+func (o ArchivePackageSourcePropertiesOutput) ToArchivePackageSourcePropertiesOutput() ArchivePackageSourcePropertiesOutput {
+	return o
+}
+
+func (o ArchivePackageSourcePropertiesOutput) ToArchivePackageSourcePropertiesOutputWithContext(ctx context.Context) ArchivePackageSourcePropertiesOutput {
+	return o
+}
+
+func (o ArchivePackageSourcePropertiesOutput) ToArchivePackageSourcePropertiesPtrOutput() ArchivePackageSourcePropertiesPtrOutput {
+	return o.ToArchivePackageSourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ArchivePackageSourcePropertiesOutput) ToArchivePackageSourcePropertiesPtrOutputWithContext(ctx context.Context) ArchivePackageSourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArchivePackageSourceProperties) *ArchivePackageSourceProperties {
+		return &v
+	}).(ArchivePackageSourcePropertiesPtrOutput)
+}
+
+// The type of package source for a archive.
+func (o ArchivePackageSourcePropertiesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArchivePackageSourceProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The external repository url.
+func (o ArchivePackageSourcePropertiesOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArchivePackageSourceProperties) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ArchivePackageSourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ArchivePackageSourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArchivePackageSourceProperties)(nil)).Elem()
+}
+
+func (o ArchivePackageSourcePropertiesPtrOutput) ToArchivePackageSourcePropertiesPtrOutput() ArchivePackageSourcePropertiesPtrOutput {
+	return o
+}
+
+func (o ArchivePackageSourcePropertiesPtrOutput) ToArchivePackageSourcePropertiesPtrOutputWithContext(ctx context.Context) ArchivePackageSourcePropertiesPtrOutput {
+	return o
+}
+
+func (o ArchivePackageSourcePropertiesPtrOutput) Elem() ArchivePackageSourcePropertiesOutput {
+	return o.ApplyT(func(v *ArchivePackageSourceProperties) ArchivePackageSourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ArchivePackageSourceProperties
+		return ret
+	}).(ArchivePackageSourcePropertiesOutput)
+}
+
+// The type of package source for a archive.
+func (o ArchivePackageSourcePropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArchivePackageSourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The external repository url.
+func (o ArchivePackageSourcePropertiesPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArchivePackageSourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the archive package source.
+type ArchivePackageSourcePropertiesResponse struct {
+	// The type of package source for a archive.
+	Type *string `pulumi:"type"`
+	// The external repository url.
+	Url *string `pulumi:"url"`
+}
+
+// The properties of the archive package source.
+type ArchivePackageSourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ArchivePackageSourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArchivePackageSourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o ArchivePackageSourcePropertiesResponseOutput) ToArchivePackageSourcePropertiesResponseOutput() ArchivePackageSourcePropertiesResponseOutput {
+	return o
+}
+
+func (o ArchivePackageSourcePropertiesResponseOutput) ToArchivePackageSourcePropertiesResponseOutputWithContext(ctx context.Context) ArchivePackageSourcePropertiesResponseOutput {
+	return o
+}
+
+// The type of package source for a archive.
+func (o ArchivePackageSourcePropertiesResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArchivePackageSourcePropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The external repository url.
+func (o ArchivePackageSourcePropertiesResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArchivePackageSourcePropertiesResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ArchivePackageSourcePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ArchivePackageSourcePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArchivePackageSourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o ArchivePackageSourcePropertiesResponsePtrOutput) ToArchivePackageSourcePropertiesResponsePtrOutput() ArchivePackageSourcePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ArchivePackageSourcePropertiesResponsePtrOutput) ToArchivePackageSourcePropertiesResponsePtrOutputWithContext(ctx context.Context) ArchivePackageSourcePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ArchivePackageSourcePropertiesResponsePtrOutput) Elem() ArchivePackageSourcePropertiesResponseOutput {
+	return o.ApplyT(func(v *ArchivePackageSourcePropertiesResponse) ArchivePackageSourcePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ArchivePackageSourcePropertiesResponse
+		return ret
+	}).(ArchivePackageSourcePropertiesResponseOutput)
+}
+
+// The type of package source for a archive.
+func (o ArchivePackageSourcePropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArchivePackageSourcePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The external repository url.
+func (o ArchivePackageSourcePropertiesResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArchivePackageSourcePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // The properties of a run argument.
 type Argument struct {
 	// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
@@ -13077,6 +13313,10 @@ func init() {
 	pulumi.RegisterOutputType(AgentPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AgentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AgentPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ArchivePackageSourcePropertiesOutput{})
+	pulumi.RegisterOutputType(ArchivePackageSourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ArchivePackageSourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ArchivePackageSourcePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArgumentResponseOutput{})
 	pulumi.RegisterOutputType(ArgumentResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuthCredentialOutput{})

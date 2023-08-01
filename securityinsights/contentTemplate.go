@@ -113,6 +113,9 @@ func NewContentTemplate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230601preview:ContentTemplate"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:ContentTemplate"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ContentTemplate

@@ -92,6 +92,9 @@ func NewManagedEnvironment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20221101preview:ManagedEnvironment"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20230501:ManagedEnvironment"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ManagedEnvironment

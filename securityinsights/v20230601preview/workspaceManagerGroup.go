@@ -60,6 +60,9 @@ func NewWorkspaceManagerGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230501preview:WorkspaceManagerGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:WorkspaceManagerGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource WorkspaceManagerGroup

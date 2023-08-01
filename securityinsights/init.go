@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContentPackage{}
 	case "azure-native:securityinsights:ContentTemplate":
 		r = &ContentTemplate{}
+	case "azure-native:securityinsights:CustomizableConnectorDefinition":
+		r = &CustomizableConnectorDefinition{}
 	case "azure-native:securityinsights:EntityAnalytics":
 		r = &EntityAnalytics{}
 	case "azure-native:securityinsights:EyesOn":

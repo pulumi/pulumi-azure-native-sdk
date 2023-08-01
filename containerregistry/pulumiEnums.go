@@ -130,6 +130,13 @@ const (
 	OSLinux   = OS("Linux")
 )
 
+// The type of package source for a archive.
+type PackageSourceType string
+
+const (
+	PackageSourceTypeRemote = PackageSourceType("remote")
+)
+
 type PipelineOptions string
 
 const (

@@ -41,6 +41,9 @@ func NewSyncIdentityProvider(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:redhatopenshift:SyncIdentityProvider"),
 		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift/v20230401:SyncIdentityProvider"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SyncIdentityProvider

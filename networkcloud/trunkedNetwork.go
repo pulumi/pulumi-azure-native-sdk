@@ -80,6 +80,9 @@ func NewTrunkedNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230501preview:TrunkedNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230701:TrunkedNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource TrunkedNetwork

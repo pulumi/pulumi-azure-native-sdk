@@ -41,7 +41,7 @@ type LookupSqlVirtualMachineResult struct {
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// Resource ID.
 	Id string `pulumi:"id"`
-	// Azure Active Directory identity of the server.
+	// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 	Identity *ResourceIdentityResponse `pulumi:"identity"`
 	// Key vault credential settings.
 	KeyVaultCredentialSettings *KeyVaultCredentialSettingsResponse `pulumi:"keyVaultCredentialSettings"`
@@ -89,6 +89,8 @@ func (val *LookupSqlVirtualMachineResult) Defaults() *LookupSqlVirtualMachineRes
 		return nil
 	}
 	tmp := *val
+	tmp.AutoPatchingSettings = tmp.AutoPatchingSettings.Defaults()
+
 	if tmp.EnableAutomaticUpgrade == nil {
 		enableAutomaticUpgrade_ := false
 		tmp.EnableAutomaticUpgrade = &enableAutomaticUpgrade_
@@ -168,7 +170,7 @@ func (o LookupSqlVirtualMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Azure Active Directory identity of the server.
+// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 func (o LookupSqlVirtualMachineResultOutput) Identity() ResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }

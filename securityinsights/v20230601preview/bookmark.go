@@ -146,6 +146,9 @@ func NewBookmark(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230501preview:Bookmark"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Bookmark"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Bookmark

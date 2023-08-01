@@ -92,7 +92,7 @@ type LookupDatabaseAccountResult struct {
 	Location *string `pulumi:"location"`
 	// An array that contains all of the locations enabled for the Cosmos DB account.
 	Locations []LocationResponse `pulumi:"locations"`
-	// Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2.
+	// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
 	MinimalTlsVersion *string `pulumi:"minimalTlsVersion"`
 	// The name of the ARM resource.
 	Name string `pulumi:"name"`
@@ -335,7 +335,7 @@ func (o LookupDatabaseAccountResultOutput) Locations() LocationResponseArrayOutp
 	return o.ApplyT(func(v LookupDatabaseAccountResult) []LocationResponse { return v.Locations }).(LocationResponseArrayOutput)
 }
 
-// Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2.
+// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
 func (o LookupDatabaseAccountResultOutput) MinimalTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountResult) *string { return v.MinimalTlsVersion }).(pulumi.StringPtrOutput)
 }

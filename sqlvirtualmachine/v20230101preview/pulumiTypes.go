@@ -1728,6 +1728,8 @@ func (o AutoBackupSettingsResponsePtrOutput) StorageContainerName() pulumi.Strin
 
 // Set a patching window during which Windows and SQL patches will be applied.
 type AutoPatchingSettings struct {
+	// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+	AdditionalVmPatch *string `pulumi:"additionalVmPatch"`
 	// Day of week to apply the patch on.
 	DayOfWeek *DayOfWeek `pulumi:"dayOfWeek"`
 	// Enable or disable autopatching on SQL virtual machine.
@@ -1736,6 +1738,19 @@ type AutoPatchingSettings struct {
 	MaintenanceWindowDuration *int `pulumi:"maintenanceWindowDuration"`
 	// Hour of the day when patching is initiated. Local VM time.
 	MaintenanceWindowStartingHour *int `pulumi:"maintenanceWindowStartingHour"`
+}
+
+// Defaults sets the appropriate defaults for AutoPatchingSettings
+func (val *AutoPatchingSettings) Defaults() *AutoPatchingSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdditionalVmPatch == nil {
+		additionalVmPatch_ := "NotSet"
+		tmp.AdditionalVmPatch = &additionalVmPatch_
+	}
+	return &tmp
 }
 
 // AutoPatchingSettingsInput is an input type that accepts AutoPatchingSettingsArgs and AutoPatchingSettingsOutput values.
@@ -1751,6 +1766,8 @@ type AutoPatchingSettingsInput interface {
 
 // Set a patching window during which Windows and SQL patches will be applied.
 type AutoPatchingSettingsArgs struct {
+	// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+	AdditionalVmPatch pulumi.StringPtrInput `pulumi:"additionalVmPatch"`
 	// Day of week to apply the patch on.
 	DayOfWeek DayOfWeekPtrInput `pulumi:"dayOfWeek"`
 	// Enable or disable autopatching on SQL virtual machine.
@@ -1761,6 +1778,17 @@ type AutoPatchingSettingsArgs struct {
 	MaintenanceWindowStartingHour pulumi.IntPtrInput `pulumi:"maintenanceWindowStartingHour"`
 }
 
+// Defaults sets the appropriate defaults for AutoPatchingSettingsArgs
+func (val *AutoPatchingSettingsArgs) Defaults() *AutoPatchingSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdditionalVmPatch == nil {
+		tmp.AdditionalVmPatch = pulumi.StringPtr("NotSet")
+	}
+	return &tmp
+}
 func (AutoPatchingSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*AutoPatchingSettings)(nil)).Elem()
 }
@@ -1839,6 +1867,11 @@ func (o AutoPatchingSettingsOutput) ToAutoPatchingSettingsPtrOutputWithContext(c
 	}).(AutoPatchingSettingsPtrOutput)
 }
 
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+func (o AutoPatchingSettingsOutput) AdditionalVmPatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoPatchingSettings) *string { return v.AdditionalVmPatch }).(pulumi.StringPtrOutput)
+}
+
 // Day of week to apply the patch on.
 func (o AutoPatchingSettingsOutput) DayOfWeek() DayOfWeekPtrOutput {
 	return o.ApplyT(func(v AutoPatchingSettings) *DayOfWeek { return v.DayOfWeek }).(DayOfWeekPtrOutput)
@@ -1883,6 +1916,16 @@ func (o AutoPatchingSettingsPtrOutput) Elem() AutoPatchingSettingsOutput {
 	}).(AutoPatchingSettingsOutput)
 }
 
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+func (o AutoPatchingSettingsPtrOutput) AdditionalVmPatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoPatchingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalVmPatch
+	}).(pulumi.StringPtrOutput)
+}
+
 // Day of week to apply the patch on.
 func (o AutoPatchingSettingsPtrOutput) DayOfWeek() DayOfWeekPtrOutput {
 	return o.ApplyT(func(v *AutoPatchingSettings) *DayOfWeek {
@@ -1925,6 +1968,8 @@ func (o AutoPatchingSettingsPtrOutput) MaintenanceWindowStartingHour() pulumi.In
 
 // Set a patching window during which Windows and SQL patches will be applied.
 type AutoPatchingSettingsResponse struct {
+	// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+	AdditionalVmPatch *string `pulumi:"additionalVmPatch"`
 	// Day of week to apply the patch on.
 	DayOfWeek *string `pulumi:"dayOfWeek"`
 	// Enable or disable autopatching on SQL virtual machine.
@@ -1933,6 +1978,19 @@ type AutoPatchingSettingsResponse struct {
 	MaintenanceWindowDuration *int `pulumi:"maintenanceWindowDuration"`
 	// Hour of the day when patching is initiated. Local VM time.
 	MaintenanceWindowStartingHour *int `pulumi:"maintenanceWindowStartingHour"`
+}
+
+// Defaults sets the appropriate defaults for AutoPatchingSettingsResponse
+func (val *AutoPatchingSettingsResponse) Defaults() *AutoPatchingSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdditionalVmPatch == nil {
+		additionalVmPatch_ := "NotSet"
+		tmp.AdditionalVmPatch = &additionalVmPatch_
+	}
+	return &tmp
 }
 
 // Set a patching window during which Windows and SQL patches will be applied.
@@ -1948,6 +2006,11 @@ func (o AutoPatchingSettingsResponseOutput) ToAutoPatchingSettingsResponseOutput
 
 func (o AutoPatchingSettingsResponseOutput) ToAutoPatchingSettingsResponseOutputWithContext(ctx context.Context) AutoPatchingSettingsResponseOutput {
 	return o
+}
+
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+func (o AutoPatchingSettingsResponseOutput) AdditionalVmPatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoPatchingSettingsResponse) *string { return v.AdditionalVmPatch }).(pulumi.StringPtrOutput)
 }
 
 // Day of week to apply the patch on.
@@ -1992,6 +2055,16 @@ func (o AutoPatchingSettingsResponsePtrOutput) Elem() AutoPatchingSettingsRespon
 		var ret AutoPatchingSettingsResponse
 		return ret
 	}).(AutoPatchingSettingsResponseOutput)
+}
+
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+func (o AutoPatchingSettingsResponsePtrOutput) AdditionalVmPatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoPatchingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalVmPatch
+	}).(pulumi.StringPtrOutput)
 }
 
 // Day of week to apply the patch on.
