@@ -54369,106 +54369,9 @@ func (o PeerExpressRouteCircuitConnectionResponseArrayOutput) Index(i pulumi.Int
 	}).(PeerExpressRouteCircuitConnectionResponseOutput)
 }
 
-type PerimeterBasedAccessRule struct {
-	// NSP id in the ARM id format.
-	Id *string `pulumi:"id"`
-}
-
-// PerimeterBasedAccessRuleInput is an input type that accepts PerimeterBasedAccessRuleArgs and PerimeterBasedAccessRuleOutput values.
-// You can construct a concrete instance of `PerimeterBasedAccessRuleInput` via:
-//
-//	PerimeterBasedAccessRuleArgs{...}
-type PerimeterBasedAccessRuleInput interface {
-	pulumi.Input
-
-	ToPerimeterBasedAccessRuleOutput() PerimeterBasedAccessRuleOutput
-	ToPerimeterBasedAccessRuleOutputWithContext(context.Context) PerimeterBasedAccessRuleOutput
-}
-
-type PerimeterBasedAccessRuleArgs struct {
-	// NSP id in the ARM id format.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (PerimeterBasedAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PerimeterBasedAccessRule)(nil)).Elem()
-}
-
-func (i PerimeterBasedAccessRuleArgs) ToPerimeterBasedAccessRuleOutput() PerimeterBasedAccessRuleOutput {
-	return i.ToPerimeterBasedAccessRuleOutputWithContext(context.Background())
-}
-
-func (i PerimeterBasedAccessRuleArgs) ToPerimeterBasedAccessRuleOutputWithContext(ctx context.Context) PerimeterBasedAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PerimeterBasedAccessRuleOutput)
-}
-
-// PerimeterBasedAccessRuleArrayInput is an input type that accepts PerimeterBasedAccessRuleArray and PerimeterBasedAccessRuleArrayOutput values.
-// You can construct a concrete instance of `PerimeterBasedAccessRuleArrayInput` via:
-//
-//	PerimeterBasedAccessRuleArray{ PerimeterBasedAccessRuleArgs{...} }
-type PerimeterBasedAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToPerimeterBasedAccessRuleArrayOutput() PerimeterBasedAccessRuleArrayOutput
-	ToPerimeterBasedAccessRuleArrayOutputWithContext(context.Context) PerimeterBasedAccessRuleArrayOutput
-}
-
-type PerimeterBasedAccessRuleArray []PerimeterBasedAccessRuleInput
-
-func (PerimeterBasedAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PerimeterBasedAccessRule)(nil)).Elem()
-}
-
-func (i PerimeterBasedAccessRuleArray) ToPerimeterBasedAccessRuleArrayOutput() PerimeterBasedAccessRuleArrayOutput {
-	return i.ToPerimeterBasedAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i PerimeterBasedAccessRuleArray) ToPerimeterBasedAccessRuleArrayOutputWithContext(ctx context.Context) PerimeterBasedAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PerimeterBasedAccessRuleArrayOutput)
-}
-
-type PerimeterBasedAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (PerimeterBasedAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PerimeterBasedAccessRule)(nil)).Elem()
-}
-
-func (o PerimeterBasedAccessRuleOutput) ToPerimeterBasedAccessRuleOutput() PerimeterBasedAccessRuleOutput {
-	return o
-}
-
-func (o PerimeterBasedAccessRuleOutput) ToPerimeterBasedAccessRuleOutputWithContext(ctx context.Context) PerimeterBasedAccessRuleOutput {
-	return o
-}
-
-// NSP id in the ARM id format.
-func (o PerimeterBasedAccessRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PerimeterBasedAccessRule) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type PerimeterBasedAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (PerimeterBasedAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PerimeterBasedAccessRule)(nil)).Elem()
-}
-
-func (o PerimeterBasedAccessRuleArrayOutput) ToPerimeterBasedAccessRuleArrayOutput() PerimeterBasedAccessRuleArrayOutput {
-	return o
-}
-
-func (o PerimeterBasedAccessRuleArrayOutput) ToPerimeterBasedAccessRuleArrayOutputWithContext(ctx context.Context) PerimeterBasedAccessRuleArrayOutput {
-	return o
-}
-
-func (o PerimeterBasedAccessRuleArrayOutput) Index(i pulumi.IntInput) PerimeterBasedAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PerimeterBasedAccessRule {
-		return vs[0].([]PerimeterBasedAccessRule)[vs[1].(int)]
-	}).(PerimeterBasedAccessRuleOutput)
-}
-
 type PerimeterBasedAccessRuleResponse struct {
 	// NSP id in the ARM id format.
-	Id *string `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// Location of the NSP supplied.
 	Location string `pulumi:"location"`
 	// Resource guid of the NSP supplied.
@@ -54490,8 +54393,8 @@ func (o PerimeterBasedAccessRuleResponseOutput) ToPerimeterBasedAccessRuleRespon
 }
 
 // NSP id in the ARM id format.
-func (o PerimeterBasedAccessRuleResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PerimeterBasedAccessRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o PerimeterBasedAccessRuleResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PerimeterBasedAccessRuleResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Location of the NSP supplied.
@@ -56488,6 +56391,110 @@ func (o PrivateLinkServiceConnectionArrayOutput) Index(i pulumi.IntInput) Privat
 	}).(PrivateLinkServiceConnectionOutput)
 }
 
+// PrivateLinkServiceConnection resource.
+type PrivateLinkServiceConnectionResponse struct {
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to.
+	GroupIds []string `pulumi:"groupIds"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// A collection of read-only information about the state of the connection to the remote resource.
+	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The resource id of private link service.
+	PrivateLinkServiceId *string `pulumi:"privateLinkServiceId"`
+	// The provisioning state of the private link service connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
+	RequestMessage *string `pulumi:"requestMessage"`
+	// The resource type.
+	Type string `pulumi:"type"`
+}
+
+// PrivateLinkServiceConnection resource.
+type PrivateLinkServiceConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutput() PrivateLinkServiceConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseOutput {
+	return o
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PrivateLinkServiceConnectionResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to.
+func (o PrivateLinkServiceConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Resource ID.
+func (o PrivateLinkServiceConnectionResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o PrivateLinkServiceConnectionResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A collection of read-only information about the state of the connection to the remote resource.
+func (o PrivateLinkServiceConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
+// The resource id of private link service.
+func (o PrivateLinkServiceConnectionResponseOutput) PrivateLinkServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.PrivateLinkServiceId }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the private link service connection resource.
+func (o PrivateLinkServiceConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
+func (o PrivateLinkServiceConnectionResponseOutput) RequestMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
+}
+
+// The resource type.
+func (o PrivateLinkServiceConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateLinkServiceConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateLinkServiceConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutput() PrivateLinkServiceConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateLinkServiceConnectionResponse {
+		return vs[0].([]PrivateLinkServiceConnectionResponse)[vs[1].(int)]
+	}).(PrivateLinkServiceConnectionResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ARecordOutput{})
 	pulumi.RegisterOutputType(ARecordArrayOutput{})
@@ -57374,8 +57381,6 @@ func init() {
 	pulumi.RegisterOutputType(PartnerManagedResourcePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PeerExpressRouteCircuitConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PeerExpressRouteCircuitConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PerimeterBasedAccessRuleOutput{})
-	pulumi.RegisterOutputType(PerimeterBasedAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(PerimeterBasedAccessRuleResponseOutput{})
 	pulumi.RegisterOutputType(PerimeterBasedAccessRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicySettingsOutput{})
@@ -57402,4 +57407,6 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceTypePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionArrayOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionResponseArrayOutput{})
 }

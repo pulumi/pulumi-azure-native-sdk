@@ -77,6 +77,9 @@ func NewHunt(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Hunt"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Hunt"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Hunt

@@ -108,6 +108,9 @@ func NewStorageAccountCredential(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:StorageAccountCredential"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:StorageAccountCredential"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageAccountCredential

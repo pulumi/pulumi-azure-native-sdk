@@ -65,6 +65,9 @@ func NewRoutingIntent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20221101:RoutingIntent"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230401:RoutingIntent"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource RoutingIntent

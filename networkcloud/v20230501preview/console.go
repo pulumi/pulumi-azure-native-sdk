@@ -73,6 +73,9 @@ func NewConsole(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:Console"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230701:Console"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Console

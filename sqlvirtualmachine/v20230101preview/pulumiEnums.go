@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+type AdditionalVmPatch string
+
+const (
+	AdditionalVmPatchNotSet          = AdditionalVmPatch("NotSet")
+	AdditionalVmPatchMicrosoftUpdate = AdditionalVmPatch("MicrosoftUpdate")
+)
+
 // Day of the week to run assessment.
 type AssessmentDayOfWeek string
 

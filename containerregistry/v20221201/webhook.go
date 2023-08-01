@@ -91,6 +91,9 @@ func NewWebhook(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230101preview:Webhook"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20230601preview:Webhook"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Webhook

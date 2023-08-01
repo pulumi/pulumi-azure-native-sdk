@@ -93,6 +93,9 @@ func NewKubernetesCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230501preview:KubernetesCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230701:KubernetesCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource KubernetesCluster

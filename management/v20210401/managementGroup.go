@@ -60,6 +60,9 @@ func NewManagementGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:management/v20201001:ManagementGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:management/v20230401:ManagementGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ManagementGroup

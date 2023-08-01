@@ -77,6 +77,9 @@ func NewFileServiceProperties(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20220901:FileServiceProperties"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230101:FileServiceProperties"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FileServiceProperties

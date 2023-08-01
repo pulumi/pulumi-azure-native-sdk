@@ -144,6 +144,9 @@ func NewFusionAlertRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230501preview:FusionAlertRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:FusionAlertRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FusionAlertRule

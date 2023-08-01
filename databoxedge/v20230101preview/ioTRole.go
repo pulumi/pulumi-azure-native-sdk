@@ -117,6 +117,9 @@ func NewIoTRole(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20221201preview:IoTRole"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTRole"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource IoTRole

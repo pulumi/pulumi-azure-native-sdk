@@ -139,6 +139,9 @@ func NewFirewallPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20221101:FirewallPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230401:FirewallPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource FirewallPolicy

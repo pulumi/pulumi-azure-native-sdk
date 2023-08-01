@@ -10,110 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// PrivateLinkServiceConnection resource.
-type PrivateLinkServiceConnectionResponse struct {
-	// A unique read-only string that changes whenever the resource is updated.
-	Etag string `pulumi:"etag"`
-	// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to.
-	GroupIds []string `pulumi:"groupIds"`
-	// Resource ID.
-	Id *string `pulumi:"id"`
-	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name *string `pulumi:"name"`
-	// A collection of read-only information about the state of the connection to the remote resource.
-	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The resource id of private link service.
-	PrivateLinkServiceId *string `pulumi:"privateLinkServiceId"`
-	// The provisioning state of the private link service connection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
-	RequestMessage *string `pulumi:"requestMessage"`
-	// The resource type.
-	Type string `pulumi:"type"`
-}
-
-// PrivateLinkServiceConnection resource.
-type PrivateLinkServiceConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutput() PrivateLinkServiceConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseOutput {
-	return o
-}
-
-// A unique read-only string that changes whenever the resource is updated.
-func (o PrivateLinkServiceConnectionResponseOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) string { return v.Etag }).(pulumi.StringOutput)
-}
-
-// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to.
-func (o PrivateLinkServiceConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// Resource ID.
-func (o PrivateLinkServiceConnectionResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-func (o PrivateLinkServiceConnectionResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// A collection of read-only information about the state of the connection to the remote resource.
-func (o PrivateLinkServiceConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
-// The resource id of private link service.
-func (o PrivateLinkServiceConnectionResponseOutput) PrivateLinkServiceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.PrivateLinkServiceId }).(pulumi.StringPtrOutput)
-}
-
-// The provisioning state of the private link service connection resource.
-func (o PrivateLinkServiceConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
-func (o PrivateLinkServiceConnectionResponseOutput) RequestMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
-}
-
-// The resource type.
-func (o PrivateLinkServiceConnectionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateLinkServiceConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateLinkServiceConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutput() PrivateLinkServiceConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateLinkServiceConnectionResponse {
-		return vs[0].([]PrivateLinkServiceConnectionResponse)[vs[1].(int)]
-	}).(PrivateLinkServiceConnectionResponseOutput)
-}
-
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionState struct {
 	// A message indicating if changes on the service provider require any updates on the consumer.
@@ -25107,8 +25003,6 @@ func (o WebApplicationFirewallScrubbingRulesResponseArrayOutput) Index(i pulumi.
 }
 
 func init() {
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionResponseOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})

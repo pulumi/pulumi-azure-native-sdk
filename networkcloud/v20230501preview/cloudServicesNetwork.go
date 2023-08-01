@@ -77,6 +77,9 @@ func NewCloudServicesNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20221212preview:CloudServicesNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230701:CloudServicesNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CloudServicesNetwork

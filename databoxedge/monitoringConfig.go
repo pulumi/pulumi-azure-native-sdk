@@ -79,6 +79,9 @@ func NewMonitoringConfig(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:MonitoringConfig"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:MonitoringConfig"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource MonitoringConfig

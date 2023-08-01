@@ -92,6 +92,9 @@ func NewStorageAppliance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230501preview:StorageAppliance"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230701:StorageAppliance"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageAppliance

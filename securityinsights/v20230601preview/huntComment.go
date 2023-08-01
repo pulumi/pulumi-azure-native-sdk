@@ -56,6 +56,9 @@ func NewHuntComment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230501preview:HuntComment"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:HuntComment"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource HuntComment

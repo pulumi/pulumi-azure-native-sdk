@@ -23,7 +23,7 @@ type SqlVirtualMachine struct {
 	AutoPatchingSettings AutoPatchingSettingsResponsePtrOutput `pulumi:"autoPatchingSettings"`
 	// Enable automatic upgrade of Sql IaaS extension Agent.
 	EnableAutomaticUpgrade pulumi.BoolPtrOutput `pulumi:"enableAutomaticUpgrade"`
-	// Azure Active Directory identity of the server.
+	// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 	Identity ResourceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Key vault credential settings.
 	KeyVaultCredentialSettings KeyVaultCredentialSettingsResponsePtrOutput `pulumi:"keyVaultCredentialSettings"`
@@ -74,6 +74,9 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.AutoPatchingSettings != nil {
+		args.AutoPatchingSettings = args.AutoPatchingSettings.ToAutoPatchingSettingsPtrOutput().ApplyT(func(v *AutoPatchingSettings) *AutoPatchingSettings { return v.Defaults() }).(AutoPatchingSettingsPtrOutput)
 	}
 	if args.EnableAutomaticUpgrade == nil {
 		args.EnableAutomaticUpgrade = pulumi.BoolPtr(false)
@@ -148,7 +151,7 @@ type sqlVirtualMachineArgs struct {
 	AutoPatchingSettings *AutoPatchingSettings `pulumi:"autoPatchingSettings"`
 	// Enable automatic upgrade of Sql IaaS extension Agent.
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// Azure Active Directory identity of the server.
+	// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 	Identity *ResourceIdentity `pulumi:"identity"`
 	// Key vault credential settings.
 	KeyVaultCredentialSettings *KeyVaultCredentialSettings `pulumi:"keyVaultCredentialSettings"`
@@ -194,7 +197,7 @@ type SqlVirtualMachineArgs struct {
 	AutoPatchingSettings AutoPatchingSettingsPtrInput
 	// Enable automatic upgrade of Sql IaaS extension Agent.
 	EnableAutomaticUpgrade pulumi.BoolPtrInput
-	// Azure Active Directory identity of the server.
+	// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 	Identity ResourceIdentityPtrInput
 	// Key vault credential settings.
 	KeyVaultCredentialSettings KeyVaultCredentialSettingsPtrInput
@@ -287,7 +290,7 @@ func (o SqlVirtualMachineOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.BoolPtrOutput { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// Azure Active Directory identity of the server.
+// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 func (o SqlVirtualMachineOutput) Identity() ResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) ResourceIdentityResponsePtrOutput { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }

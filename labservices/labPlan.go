@@ -72,6 +72,9 @@ func NewLabPlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:labservices/v20220801:LabPlan"),
 		},
+		{
+			Type: pulumi.String("azure-native:labservices/v20230607:LabPlan"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource LabPlan

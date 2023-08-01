@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:containerregistry:AgentPool":
 		r = &AgentPool{}
+	case "azure-native:containerregistry:Archife":
+		r = &Archife{}
+	case "azure-native:containerregistry:ArchiveVersion":
+		r = &ArchiveVersion{}
 	case "azure-native:containerregistry:BuildStep":
 		r = &BuildStep{}
 	case "azure-native:containerregistry:CacheRule":

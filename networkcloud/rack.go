@@ -77,6 +77,9 @@ func NewRack(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230501preview:Rack"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20230701:Rack"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Rack

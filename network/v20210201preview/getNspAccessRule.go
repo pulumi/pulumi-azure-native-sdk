@@ -47,7 +47,7 @@ type LookupNspAccessRuleResult struct {
 	Location *string `pulumi:"location"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// Inbound rule specified by the perimeter id.
+	// Rule specified by the perimeter id.
 	NetworkSecurityPerimeters []PerimeterBasedAccessRuleResponse `pulumi:"networkSecurityPerimeters"`
 	// Outbound rules phone number format.
 	PhoneNumbers []string `pulumi:"phoneNumbers"`
@@ -139,7 +139,7 @@ func (o LookupNspAccessRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Inbound rule specified by the perimeter id.
+// Rule specified by the perimeter id.
 func (o LookupNspAccessRuleResultOutput) NetworkSecurityPerimeters() PerimeterBasedAccessRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) []PerimeterBasedAccessRuleResponse {
 		return v.NetworkSecurityPerimeters
