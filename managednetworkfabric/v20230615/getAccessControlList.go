@@ -17,7 +17,7 @@ func LookupAccessControlList(ctx *pulumi.Context, args *LookupAccessControlListA
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupAccessControlListArgs struct {
@@ -39,6 +39,8 @@ type LookupAccessControlListResult struct {
 	ConfigurationState string `pulumi:"configurationState"`
 	// Input method to configure Access Control List.
 	ConfigurationType string `pulumi:"configurationType"`
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction *string `pulumi:"defaultAction"`
 	// List of dynamic match configurations.
 	DynamicMatchConfigurations []CommonDynamicMatchConfigurationResponse `pulumi:"dynamicMatchConfigurations"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -59,6 +61,19 @@ type LookupAccessControlListResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupAccessControlListResult
+func (val *LookupAccessControlListResult) Defaults() *LookupAccessControlListResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DefaultAction == nil {
+		defaultAction_ := "Permit"
+		tmp.DefaultAction = &defaultAction_
+	}
+	return &tmp
 }
 
 func LookupAccessControlListOutput(ctx *pulumi.Context, args LookupAccessControlListOutputArgs, opts ...pulumi.InvokeOption) LookupAccessControlListResultOutput {
@@ -123,6 +138,11 @@ func (o LookupAccessControlListResultOutput) ConfigurationState() pulumi.StringO
 // Input method to configure Access Control List.
 func (o LookupAccessControlListResultOutput) ConfigurationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+func (o LookupAccessControlListResultOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
 // List of dynamic match configurations.

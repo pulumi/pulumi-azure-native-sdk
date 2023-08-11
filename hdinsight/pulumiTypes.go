@@ -10,6 +10,100 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Identity properties of the AKS cluster agentpool MSI
+type AksClusterProfileResponseAksClusterAgentPoolIdentityProfile struct {
+	// ClientId of the MSI.
+	MsiClientId string `pulumi:"msiClientId"`
+	// ObjectId of the MSI.
+	MsiObjectId string `pulumi:"msiObjectId"`
+	// ResourceId of the MSI.
+	MsiResourceId string `pulumi:"msiResourceId"`
+}
+
+// Identity properties of the AKS cluster agentpool MSI
+type AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput struct{ *pulumi.OutputState }
+
+func (AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AksClusterProfileResponseAksClusterAgentPoolIdentityProfile)(nil)).Elem()
+}
+
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) ToAksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput() AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput {
+	return o
+}
+
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) ToAksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutputWithContext(ctx context.Context) AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput {
+	return o
+}
+
+// ClientId of the MSI.
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) MsiClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v AksClusterProfileResponseAksClusterAgentPoolIdentityProfile) string { return v.MsiClientId }).(pulumi.StringOutput)
+}
+
+// ObjectId of the MSI.
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) MsiObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v AksClusterProfileResponseAksClusterAgentPoolIdentityProfile) string { return v.MsiObjectId }).(pulumi.StringOutput)
+}
+
+// ResourceId of the MSI.
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) MsiResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AksClusterProfileResponseAksClusterAgentPoolIdentityProfile) string { return v.MsiResourceId }).(pulumi.StringOutput)
+}
+
+type AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AksClusterProfileResponseAksClusterAgentPoolIdentityProfile)(nil)).Elem()
+}
+
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) ToAksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput() AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput {
+	return o
+}
+
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) ToAksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutputWithContext(ctx context.Context) AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput {
+	return o
+}
+
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) Elem() AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput {
+	return o.ApplyT(func(v *AksClusterProfileResponseAksClusterAgentPoolIdentityProfile) AksClusterProfileResponseAksClusterAgentPoolIdentityProfile {
+		if v != nil {
+			return *v
+		}
+		var ret AksClusterProfileResponseAksClusterAgentPoolIdentityProfile
+		return ret
+	}).(AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput)
+}
+
+// ClientId of the MSI.
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) MsiClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AksClusterProfileResponseAksClusterAgentPoolIdentityProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MsiClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ObjectId of the MSI.
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) MsiObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AksClusterProfileResponseAksClusterAgentPoolIdentityProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MsiObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceId of the MSI.
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) MsiResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AksClusterProfileResponseAksClusterAgentPoolIdentityProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MsiResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets the application SSH endpoint
 type ApplicationGetEndpoint struct {
 	// The destination port to connect to.
@@ -3321,6 +3415,772 @@ func (o ClusterIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedI
 		}
 		return v.UserAssignedIdentities
 	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+// CLuster pool profile.
+type ClusterPoolResourcePropertiesClusterPoolProfile struct {
+	// Cluster pool version is a 2-part version.
+	ClusterPoolVersion string `pulumi:"clusterPoolVersion"`
+}
+
+// ClusterPoolResourcePropertiesClusterPoolProfileInput is an input type that accepts ClusterPoolResourcePropertiesClusterPoolProfileArgs and ClusterPoolResourcePropertiesClusterPoolProfileOutput values.
+// You can construct a concrete instance of `ClusterPoolResourcePropertiesClusterPoolProfileInput` via:
+//
+//	ClusterPoolResourcePropertiesClusterPoolProfileArgs{...}
+type ClusterPoolResourcePropertiesClusterPoolProfileInput interface {
+	pulumi.Input
+
+	ToClusterPoolResourcePropertiesClusterPoolProfileOutput() ClusterPoolResourcePropertiesClusterPoolProfileOutput
+	ToClusterPoolResourcePropertiesClusterPoolProfileOutputWithContext(context.Context) ClusterPoolResourcePropertiesClusterPoolProfileOutput
+}
+
+// CLuster pool profile.
+type ClusterPoolResourcePropertiesClusterPoolProfileArgs struct {
+	// Cluster pool version is a 2-part version.
+	ClusterPoolVersion pulumi.StringInput `pulumi:"clusterPoolVersion"`
+}
+
+func (ClusterPoolResourcePropertiesClusterPoolProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesClusterPoolProfile)(nil)).Elem()
+}
+
+func (i ClusterPoolResourcePropertiesClusterPoolProfileArgs) ToClusterPoolResourcePropertiesClusterPoolProfileOutput() ClusterPoolResourcePropertiesClusterPoolProfileOutput {
+	return i.ToClusterPoolResourcePropertiesClusterPoolProfileOutputWithContext(context.Background())
+}
+
+func (i ClusterPoolResourcePropertiesClusterPoolProfileArgs) ToClusterPoolResourcePropertiesClusterPoolProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesClusterPoolProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesClusterPoolProfileOutput)
+}
+
+func (i ClusterPoolResourcePropertiesClusterPoolProfileArgs) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutput() ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
+	return i.ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPoolResourcePropertiesClusterPoolProfileArgs) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesClusterPoolProfileOutput).ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(ctx)
+}
+
+// ClusterPoolResourcePropertiesClusterPoolProfilePtrInput is an input type that accepts ClusterPoolResourcePropertiesClusterPoolProfileArgs, ClusterPoolResourcePropertiesClusterPoolProfilePtr and ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput values.
+// You can construct a concrete instance of `ClusterPoolResourcePropertiesClusterPoolProfilePtrInput` via:
+//
+//	        ClusterPoolResourcePropertiesClusterPoolProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPoolResourcePropertiesClusterPoolProfilePtrInput interface {
+	pulumi.Input
+
+	ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutput() ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput
+	ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(context.Context) ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput
+}
+
+type clusterPoolResourcePropertiesClusterPoolProfilePtrType ClusterPoolResourcePropertiesClusterPoolProfileArgs
+
+func ClusterPoolResourcePropertiesClusterPoolProfilePtr(v *ClusterPoolResourcePropertiesClusterPoolProfileArgs) ClusterPoolResourcePropertiesClusterPoolProfilePtrInput {
+	return (*clusterPoolResourcePropertiesClusterPoolProfilePtrType)(v)
+}
+
+func (*clusterPoolResourcePropertiesClusterPoolProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesClusterPoolProfile)(nil)).Elem()
+}
+
+func (i *clusterPoolResourcePropertiesClusterPoolProfilePtrType) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutput() ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
+	return i.ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPoolResourcePropertiesClusterPoolProfilePtrType) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput)
+}
+
+// CLuster pool profile.
+type ClusterPoolResourcePropertiesClusterPoolProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesClusterPoolProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesClusterPoolProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesClusterPoolProfileOutput) ToClusterPoolResourcePropertiesClusterPoolProfileOutput() ClusterPoolResourcePropertiesClusterPoolProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesClusterPoolProfileOutput) ToClusterPoolResourcePropertiesClusterPoolProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesClusterPoolProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesClusterPoolProfileOutput) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutput() ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
+	return o.ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPoolResourcePropertiesClusterPoolProfileOutput) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPoolResourcePropertiesClusterPoolProfile) *ClusterPoolResourcePropertiesClusterPoolProfile {
+		return &v
+	}).(ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput)
+}
+
+// Cluster pool version is a 2-part version.
+func (o ClusterPoolResourcePropertiesClusterPoolProfileOutput) ClusterPoolVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesClusterPoolProfile) string { return v.ClusterPoolVersion }).(pulumi.StringOutput)
+}
+
+type ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesClusterPoolProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutput() ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) Elem() ClusterPoolResourcePropertiesClusterPoolProfileOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesClusterPoolProfile) ClusterPoolResourcePropertiesClusterPoolProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPoolResourcePropertiesClusterPoolProfile
+		return ret
+	}).(ClusterPoolResourcePropertiesClusterPoolProfileOutput)
+}
+
+// Cluster pool version is a 2-part version.
+func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) ClusterPoolVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesClusterPoolProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterPoolVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// CLuster pool compute profile.
+type ClusterPoolResourcePropertiesComputeProfile struct {
+	// The virtual machine SKU.
+	VmSize string `pulumi:"vmSize"`
+}
+
+// ClusterPoolResourcePropertiesComputeProfileInput is an input type that accepts ClusterPoolResourcePropertiesComputeProfileArgs and ClusterPoolResourcePropertiesComputeProfileOutput values.
+// You can construct a concrete instance of `ClusterPoolResourcePropertiesComputeProfileInput` via:
+//
+//	ClusterPoolResourcePropertiesComputeProfileArgs{...}
+type ClusterPoolResourcePropertiesComputeProfileInput interface {
+	pulumi.Input
+
+	ToClusterPoolResourcePropertiesComputeProfileOutput() ClusterPoolResourcePropertiesComputeProfileOutput
+	ToClusterPoolResourcePropertiesComputeProfileOutputWithContext(context.Context) ClusterPoolResourcePropertiesComputeProfileOutput
+}
+
+// CLuster pool compute profile.
+type ClusterPoolResourcePropertiesComputeProfileArgs struct {
+	// The virtual machine SKU.
+	VmSize pulumi.StringInput `pulumi:"vmSize"`
+}
+
+func (ClusterPoolResourcePropertiesComputeProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesComputeProfile)(nil)).Elem()
+}
+
+func (i ClusterPoolResourcePropertiesComputeProfileArgs) ToClusterPoolResourcePropertiesComputeProfileOutput() ClusterPoolResourcePropertiesComputeProfileOutput {
+	return i.ToClusterPoolResourcePropertiesComputeProfileOutputWithContext(context.Background())
+}
+
+func (i ClusterPoolResourcePropertiesComputeProfileArgs) ToClusterPoolResourcePropertiesComputeProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesComputeProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesComputeProfileOutput)
+}
+
+// CLuster pool compute profile.
+type ClusterPoolResourcePropertiesComputeProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesComputeProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesComputeProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesComputeProfileOutput) ToClusterPoolResourcePropertiesComputeProfileOutput() ClusterPoolResourcePropertiesComputeProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesComputeProfileOutput) ToClusterPoolResourcePropertiesComputeProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesComputeProfileOutput {
+	return o
+}
+
+// The virtual machine SKU.
+func (o ClusterPoolResourcePropertiesComputeProfileOutput) VmSize() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesComputeProfile) string { return v.VmSize }).(pulumi.StringOutput)
+}
+
+// Cluster pool log analytics profile to enable OMS agent for AKS cluster.
+type ClusterPoolResourcePropertiesLogAnalyticsProfile struct {
+	// True if log analytics is enabled for cluster pool, otherwise false.
+	Enabled bool `pulumi:"enabled"`
+	// Log analytics workspace to associate with the OMS agent.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// ClusterPoolResourcePropertiesLogAnalyticsProfileInput is an input type that accepts ClusterPoolResourcePropertiesLogAnalyticsProfileArgs and ClusterPoolResourcePropertiesLogAnalyticsProfileOutput values.
+// You can construct a concrete instance of `ClusterPoolResourcePropertiesLogAnalyticsProfileInput` via:
+//
+//	ClusterPoolResourcePropertiesLogAnalyticsProfileArgs{...}
+type ClusterPoolResourcePropertiesLogAnalyticsProfileInput interface {
+	pulumi.Input
+
+	ToClusterPoolResourcePropertiesLogAnalyticsProfileOutput() ClusterPoolResourcePropertiesLogAnalyticsProfileOutput
+	ToClusterPoolResourcePropertiesLogAnalyticsProfileOutputWithContext(context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfileOutput
+}
+
+// Cluster pool log analytics profile to enable OMS agent for AKS cluster.
+type ClusterPoolResourcePropertiesLogAnalyticsProfileArgs struct {
+	// True if log analytics is enabled for cluster pool, otherwise false.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Log analytics workspace to associate with the OMS agent.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesLogAnalyticsProfile)(nil)).Elem()
+}
+
+func (i ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ToClusterPoolResourcePropertiesLogAnalyticsProfileOutput() ClusterPoolResourcePropertiesLogAnalyticsProfileOutput {
+	return i.ToClusterPoolResourcePropertiesLogAnalyticsProfileOutputWithContext(context.Background())
+}
+
+func (i ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ToClusterPoolResourcePropertiesLogAnalyticsProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesLogAnalyticsProfileOutput)
+}
+
+func (i ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput() ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
+	return i.ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesLogAnalyticsProfileOutput).ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(ctx)
+}
+
+// ClusterPoolResourcePropertiesLogAnalyticsProfilePtrInput is an input type that accepts ClusterPoolResourcePropertiesLogAnalyticsProfileArgs, ClusterPoolResourcePropertiesLogAnalyticsProfilePtr and ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput values.
+// You can construct a concrete instance of `ClusterPoolResourcePropertiesLogAnalyticsProfilePtrInput` via:
+//
+//	        ClusterPoolResourcePropertiesLogAnalyticsProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPoolResourcePropertiesLogAnalyticsProfilePtrInput interface {
+	pulumi.Input
+
+	ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput() ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput
+	ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput
+}
+
+type clusterPoolResourcePropertiesLogAnalyticsProfilePtrType ClusterPoolResourcePropertiesLogAnalyticsProfileArgs
+
+func ClusterPoolResourcePropertiesLogAnalyticsProfilePtr(v *ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ClusterPoolResourcePropertiesLogAnalyticsProfilePtrInput {
+	return (*clusterPoolResourcePropertiesLogAnalyticsProfilePtrType)(v)
+}
+
+func (*clusterPoolResourcePropertiesLogAnalyticsProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesLogAnalyticsProfile)(nil)).Elem()
+}
+
+func (i *clusterPoolResourcePropertiesLogAnalyticsProfilePtrType) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput() ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
+	return i.ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPoolResourcePropertiesLogAnalyticsProfilePtrType) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput)
+}
+
+// Cluster pool log analytics profile to enable OMS agent for AKS cluster.
+type ClusterPoolResourcePropertiesLogAnalyticsProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesLogAnalyticsProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) ToClusterPoolResourcePropertiesLogAnalyticsProfileOutput() ClusterPoolResourcePropertiesLogAnalyticsProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) ToClusterPoolResourcePropertiesLogAnalyticsProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput() ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
+	return o.ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPoolResourcePropertiesLogAnalyticsProfile) *ClusterPoolResourcePropertiesLogAnalyticsProfile {
+		return &v
+	}).(ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput)
+}
+
+// True if log analytics is enabled for cluster pool, otherwise false.
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesLogAnalyticsProfile) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Log analytics workspace to associate with the OMS agent.
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesLogAnalyticsProfile) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesLogAnalyticsProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput() ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) Elem() ClusterPoolResourcePropertiesLogAnalyticsProfileOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesLogAnalyticsProfile) ClusterPoolResourcePropertiesLogAnalyticsProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPoolResourcePropertiesLogAnalyticsProfile
+		return ret
+	}).(ClusterPoolResourcePropertiesLogAnalyticsProfileOutput)
+}
+
+// True if log analytics is enabled for cluster pool, otherwise false.
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesLogAnalyticsProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Log analytics workspace to associate with the OMS agent.
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesLogAnalyticsProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster pool network profile.
+type ClusterPoolResourcePropertiesNetworkProfile struct {
+	// Cluster pool subnet resource id.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// ClusterPoolResourcePropertiesNetworkProfileInput is an input type that accepts ClusterPoolResourcePropertiesNetworkProfileArgs and ClusterPoolResourcePropertiesNetworkProfileOutput values.
+// You can construct a concrete instance of `ClusterPoolResourcePropertiesNetworkProfileInput` via:
+//
+//	ClusterPoolResourcePropertiesNetworkProfileArgs{...}
+type ClusterPoolResourcePropertiesNetworkProfileInput interface {
+	pulumi.Input
+
+	ToClusterPoolResourcePropertiesNetworkProfileOutput() ClusterPoolResourcePropertiesNetworkProfileOutput
+	ToClusterPoolResourcePropertiesNetworkProfileOutputWithContext(context.Context) ClusterPoolResourcePropertiesNetworkProfileOutput
+}
+
+// Cluster pool network profile.
+type ClusterPoolResourcePropertiesNetworkProfileArgs struct {
+	// Cluster pool subnet resource id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (ClusterPoolResourcePropertiesNetworkProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesNetworkProfile)(nil)).Elem()
+}
+
+func (i ClusterPoolResourcePropertiesNetworkProfileArgs) ToClusterPoolResourcePropertiesNetworkProfileOutput() ClusterPoolResourcePropertiesNetworkProfileOutput {
+	return i.ToClusterPoolResourcePropertiesNetworkProfileOutputWithContext(context.Background())
+}
+
+func (i ClusterPoolResourcePropertiesNetworkProfileArgs) ToClusterPoolResourcePropertiesNetworkProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesNetworkProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesNetworkProfileOutput)
+}
+
+func (i ClusterPoolResourcePropertiesNetworkProfileArgs) ToClusterPoolResourcePropertiesNetworkProfilePtrOutput() ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
+	return i.ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPoolResourcePropertiesNetworkProfileArgs) ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesNetworkProfileOutput).ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(ctx)
+}
+
+// ClusterPoolResourcePropertiesNetworkProfilePtrInput is an input type that accepts ClusterPoolResourcePropertiesNetworkProfileArgs, ClusterPoolResourcePropertiesNetworkProfilePtr and ClusterPoolResourcePropertiesNetworkProfilePtrOutput values.
+// You can construct a concrete instance of `ClusterPoolResourcePropertiesNetworkProfilePtrInput` via:
+//
+//	        ClusterPoolResourcePropertiesNetworkProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPoolResourcePropertiesNetworkProfilePtrInput interface {
+	pulumi.Input
+
+	ToClusterPoolResourcePropertiesNetworkProfilePtrOutput() ClusterPoolResourcePropertiesNetworkProfilePtrOutput
+	ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(context.Context) ClusterPoolResourcePropertiesNetworkProfilePtrOutput
+}
+
+type clusterPoolResourcePropertiesNetworkProfilePtrType ClusterPoolResourcePropertiesNetworkProfileArgs
+
+func ClusterPoolResourcePropertiesNetworkProfilePtr(v *ClusterPoolResourcePropertiesNetworkProfileArgs) ClusterPoolResourcePropertiesNetworkProfilePtrInput {
+	return (*clusterPoolResourcePropertiesNetworkProfilePtrType)(v)
+}
+
+func (*clusterPoolResourcePropertiesNetworkProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesNetworkProfile)(nil)).Elem()
+}
+
+func (i *clusterPoolResourcePropertiesNetworkProfilePtrType) ToClusterPoolResourcePropertiesNetworkProfilePtrOutput() ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
+	return i.ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPoolResourcePropertiesNetworkProfilePtrType) ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesNetworkProfilePtrOutput)
+}
+
+// Cluster pool network profile.
+type ClusterPoolResourcePropertiesNetworkProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesNetworkProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesNetworkProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesNetworkProfileOutput) ToClusterPoolResourcePropertiesNetworkProfileOutput() ClusterPoolResourcePropertiesNetworkProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesNetworkProfileOutput) ToClusterPoolResourcePropertiesNetworkProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesNetworkProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesNetworkProfileOutput) ToClusterPoolResourcePropertiesNetworkProfilePtrOutput() ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
+	return o.ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPoolResourcePropertiesNetworkProfileOutput) ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPoolResourcePropertiesNetworkProfile) *ClusterPoolResourcePropertiesNetworkProfile {
+		return &v
+	}).(ClusterPoolResourcePropertiesNetworkProfilePtrOutput)
+}
+
+// Cluster pool subnet resource id.
+func (o ClusterPoolResourcePropertiesNetworkProfileOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesNetworkProfile) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type ClusterPoolResourcePropertiesNetworkProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesNetworkProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesNetworkProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) ToClusterPoolResourcePropertiesNetworkProfilePtrOutput() ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) Elem() ClusterPoolResourcePropertiesNetworkProfileOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesNetworkProfile) ClusterPoolResourcePropertiesNetworkProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPoolResourcePropertiesNetworkProfile
+		return ret
+	}).(ClusterPoolResourcePropertiesNetworkProfileOutput)
+}
+
+// Cluster pool subnet resource id.
+func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesNetworkProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of underlying AKS cluster.
+type ClusterPoolResourcePropertiesResponseAksClusterProfile struct {
+	// Identity properties of the AKS cluster agentpool MSI
+	AksClusterAgentPoolIdentityProfile *AksClusterProfileResponseAksClusterAgentPoolIdentityProfile `pulumi:"aksClusterAgentPoolIdentityProfile"`
+	// ARM Resource ID of the AKS cluster
+	AksClusterResourceId *string `pulumi:"aksClusterResourceId"`
+	// AKS control plane and default node pool version of this ClusterPool
+	AksVersion string `pulumi:"aksVersion"`
+}
+
+// Properties of underlying AKS cluster.
+type ClusterPoolResourcePropertiesResponseAksClusterProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesResponseAksClusterProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) ToClusterPoolResourcePropertiesResponseAksClusterProfileOutput() ClusterPoolResourcePropertiesResponseAksClusterProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) ToClusterPoolResourcePropertiesResponseAksClusterProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseAksClusterProfileOutput {
+	return o
+}
+
+// Identity properties of the AKS cluster agentpool MSI
+func (o ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) AksClusterAgentPoolIdentityProfile() AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseAksClusterProfile) *AksClusterProfileResponseAksClusterAgentPoolIdentityProfile {
+		return v.AksClusterAgentPoolIdentityProfile
+	}).(AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput)
+}
+
+// ARM Resource ID of the AKS cluster
+func (o ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) AksClusterResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseAksClusterProfile) *string { return v.AksClusterResourceId }).(pulumi.StringPtrOutput)
+}
+
+// AKS control plane and default node pool version of this ClusterPool
+func (o ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) AksVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseAksClusterProfile) string { return v.AksVersion }).(pulumi.StringOutput)
+}
+
+// CLuster pool profile.
+type ClusterPoolResourcePropertiesResponseClusterPoolProfile struct {
+	// Cluster pool version is a 2-part version.
+	ClusterPoolVersion string `pulumi:"clusterPoolVersion"`
+}
+
+// CLuster pool profile.
+type ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesResponseClusterPoolProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput) ToClusterPoolResourcePropertiesResponseClusterPoolProfileOutput() ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput) ToClusterPoolResourcePropertiesResponseClusterPoolProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput {
+	return o
+}
+
+// Cluster pool version is a 2-part version.
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput) ClusterPoolVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseClusterPoolProfile) string { return v.ClusterPoolVersion }).(pulumi.StringOutput)
+}
+
+type ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesResponseClusterPoolProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) ToClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput() ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) ToClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) Elem() ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesResponseClusterPoolProfile) ClusterPoolResourcePropertiesResponseClusterPoolProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPoolResourcePropertiesResponseClusterPoolProfile
+		return ret
+	}).(ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput)
+}
+
+// Cluster pool version is a 2-part version.
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) ClusterPoolVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesResponseClusterPoolProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterPoolVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// CLuster pool compute profile.
+type ClusterPoolResourcePropertiesResponseComputeProfile struct {
+	// The number of virtual machines.
+	Count int `pulumi:"count"`
+	// The virtual machine SKU.
+	VmSize string `pulumi:"vmSize"`
+}
+
+// CLuster pool compute profile.
+type ClusterPoolResourcePropertiesResponseComputeProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesResponseComputeProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesResponseComputeProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) ToClusterPoolResourcePropertiesResponseComputeProfileOutput() ClusterPoolResourcePropertiesResponseComputeProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) ToClusterPoolResourcePropertiesResponseComputeProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseComputeProfileOutput {
+	return o
+}
+
+// The number of virtual machines.
+func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseComputeProfile) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The virtual machine SKU.
+func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) VmSize() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseComputeProfile) string { return v.VmSize }).(pulumi.StringOutput)
+}
+
+// Cluster pool log analytics profile to enable OMS agent for AKS cluster.
+type ClusterPoolResourcePropertiesResponseLogAnalyticsProfile struct {
+	// True if log analytics is enabled for cluster pool, otherwise false.
+	Enabled bool `pulumi:"enabled"`
+	// Log analytics workspace to associate with the OMS agent.
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
+// Cluster pool log analytics profile to enable OMS agent for AKS cluster.
+type ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesResponseLogAnalyticsProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput) ToClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput() ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput) ToClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput {
+	return o
+}
+
+// True if log analytics is enabled for cluster pool, otherwise false.
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseLogAnalyticsProfile) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Log analytics workspace to associate with the OMS agent.
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseLogAnalyticsProfile) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesResponseLogAnalyticsProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) ToClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput() ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) ToClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) Elem() ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesResponseLogAnalyticsProfile) ClusterPoolResourcePropertiesResponseLogAnalyticsProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPoolResourcePropertiesResponseLogAnalyticsProfile
+		return ret
+	}).(ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput)
+}
+
+// True if log analytics is enabled for cluster pool, otherwise false.
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesResponseLogAnalyticsProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Log analytics workspace to associate with the OMS agent.
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesResponseLogAnalyticsProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster pool network profile.
+type ClusterPoolResourcePropertiesResponseNetworkProfile struct {
+	// Cluster pool subnet resource id.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// Cluster pool network profile.
+type ClusterPoolResourcePropertiesResponseNetworkProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesResponseNetworkProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPoolResourcePropertiesResponseNetworkProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesResponseNetworkProfileOutput) ToClusterPoolResourcePropertiesResponseNetworkProfileOutput() ClusterPoolResourcePropertiesResponseNetworkProfileOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseNetworkProfileOutput) ToClusterPoolResourcePropertiesResponseNetworkProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseNetworkProfileOutput {
+	return o
+}
+
+// Cluster pool subnet resource id.
+func (o ClusterPoolResourcePropertiesResponseNetworkProfileOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseNetworkProfile) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPoolResourcePropertiesResponseNetworkProfile)(nil)).Elem()
+}
+
+func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) ToClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput() ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) ToClusterPoolResourcePropertiesResponseNetworkProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput {
+	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) Elem() ClusterPoolResourcePropertiesResponseNetworkProfileOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesResponseNetworkProfile) ClusterPoolResourcePropertiesResponseNetworkProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPoolResourcePropertiesResponseNetworkProfile
+		return ret
+	}).(ClusterPoolResourcePropertiesResponseNetworkProfileOutput)
+}
+
+// Cluster pool subnet resource id.
+func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPoolResourcePropertiesResponseNetworkProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The compute isolation properties.
@@ -9481,6 +10341,8 @@ func (o VirtualNetworkProfileResponsePtrOutput) Subnet() pulumi.StringPtrOutput 
 }
 
 func init() {
+	pulumi.RegisterOutputType(AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput{})
+	pulumi.RegisterOutputType(AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput{})
 	pulumi.RegisterOutputType(ApplicationGetEndpointOutput{})
 	pulumi.RegisterOutputType(ApplicationGetEndpointArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationGetEndpointResponseOutput{})
@@ -9526,6 +10388,21 @@ func init() {
 	pulumi.RegisterOutputType(ClusterIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesClusterPoolProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesComputeProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesLogAnalyticsProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesNetworkProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesNetworkProfilePtrOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesResponseAksClusterProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesResponseComputeProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesResponseNetworkProfileOutput{})
+	pulumi.RegisterOutputType(ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput{})
 	pulumi.RegisterOutputType(ComputeIsolationPropertiesOutput{})
 	pulumi.RegisterOutputType(ComputeIsolationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ComputeIsolationPropertiesResponseOutput{})

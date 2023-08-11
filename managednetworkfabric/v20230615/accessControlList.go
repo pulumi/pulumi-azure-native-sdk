@@ -25,6 +25,8 @@ type AccessControlList struct {
 	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
 	// Input method to configure Access Control List.
 	ConfigurationType pulumi.StringOutput `pulumi:"configurationType"`
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction pulumi.StringPtrOutput `pulumi:"defaultAction"`
 	// List of dynamic match configurations.
 	DynamicMatchConfigurations CommonDynamicMatchConfigurationResponseArrayOutput `pulumi:"dynamicMatchConfigurations"`
 	// The last synced timestamp.
@@ -57,6 +59,9 @@ func NewAccessControlList(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.DefaultAction == nil {
+		args.DefaultAction = pulumi.StringPtr("Permit")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -107,6 +112,8 @@ type accessControlListArgs struct {
 	Annotation *string `pulumi:"annotation"`
 	// Input method to configure Access Control List.
 	ConfigurationType string `pulumi:"configurationType"`
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction *string `pulumi:"defaultAction"`
 	// List of dynamic match configurations.
 	DynamicMatchConfigurations []CommonDynamicMatchConfiguration `pulumi:"dynamicMatchConfigurations"`
 	// The geo-location where the resource lives
@@ -129,6 +136,8 @@ type AccessControlListArgs struct {
 	Annotation pulumi.StringPtrInput
 	// Input method to configure Access Control List.
 	ConfigurationType pulumi.StringInput
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction pulumi.StringPtrInput
 	// List of dynamic match configurations.
 	DynamicMatchConfigurations CommonDynamicMatchConfigurationArrayInput
 	// The geo-location where the resource lives
@@ -201,6 +210,11 @@ func (o AccessControlListOutput) ConfigurationState() pulumi.StringOutput {
 // Input method to configure Access Control List.
 func (o AccessControlListOutput) ConfigurationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessControlList) pulumi.StringOutput { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+func (o AccessControlListOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessControlList) pulumi.StringPtrOutput { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
 // List of dynamic match configurations.

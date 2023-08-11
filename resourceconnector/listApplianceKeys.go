@@ -22,6 +22,8 @@ func ListApplianceKeys(ctx *pulumi.Context, args *ListApplianceKeysArgs, opts ..
 }
 
 type ListApplianceKeysArgs struct {
+	// This sets the type of artifact being returned, when empty no artifact endpoint is returned.
+	ArtifactType *string `pulumi:"artifactType"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Appliances name.
@@ -52,6 +54,8 @@ func ListApplianceKeysOutput(ctx *pulumi.Context, args ListApplianceKeysOutputAr
 }
 
 type ListApplianceKeysOutputArgs struct {
+	// This sets the type of artifact being returned, when empty no artifact endpoint is returned.
+	ArtifactType pulumi.StringPtrInput `pulumi:"artifactType"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Appliances name.

@@ -84,7 +84,7 @@ const (
 	EncapsulationGRE  = Encapsulation("GRE")
 )
 
-// Encapsulation Type.
+// Encapsulation Type that needs to be matched.
 type EncapsulationType string
 
 const (
@@ -159,7 +159,7 @@ const (
 	PortTypeDestinationPort = PortType("DestinationPort")
 )
 
-// IP Prefix Type.
+// IP Prefix Type that needs to be matched.
 type PrefixType string
 
 const (
@@ -183,7 +183,7 @@ const (
 	RedistributeStaticRoutesFalse = RedistributeStaticRoutes("False")
 )
 
-// IP Address type.
+// IP Address type that needs to be matched.
 type SourceDestinationType string
 
 const (

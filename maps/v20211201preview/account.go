@@ -70,6 +70,9 @@ func NewAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:maps/v20210701preview:Account"),
 		},
+		{
+			Type: pulumi.String("azure-native:maps/v20230601:Account"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Account

@@ -61,6 +61,9 @@ func NewWorkloadNetworkVMGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20220501:WorkloadNetworkVMGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkVMGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource WorkloadNetworkVMGroup

@@ -57,6 +57,9 @@ func NewHcxEnterpriseSite(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20211201:HcxEnterpriseSite"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230301:HcxEnterpriseSite"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource HcxEnterpriseSite

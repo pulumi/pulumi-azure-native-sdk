@@ -23,6 +23,8 @@ type RoutePolicy struct {
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
 	// Configuration state of the resource.
 	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction pulumi.StringPtrOutput `pulumi:"defaultAction"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -59,6 +61,9 @@ func NewRoutePolicy(ctx *pulumi.Context,
 	}
 	if args.AddressFamilyType == nil {
 		args.AddressFamilyType = pulumi.StringPtr("IPv4")
+	}
+	if args.DefaultAction == nil {
+		args.DefaultAction = pulumi.StringPtr("Deny")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -105,6 +110,8 @@ type routePolicyArgs struct {
 	AddressFamilyType *string `pulumi:"addressFamilyType"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction *string `pulumi:"defaultAction"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Arm Resource ID of Network Fabric.
@@ -125,6 +132,8 @@ type RoutePolicyArgs struct {
 	AddressFamilyType pulumi.StringPtrInput
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Arm Resource ID of Network Fabric.
@@ -194,6 +203,11 @@ func (o RoutePolicyOutput) Annotation() pulumi.StringPtrOutput {
 // Configuration state of the resource.
 func (o RoutePolicyOutput) ConfigurationState() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoutePolicy) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+func (o RoutePolicyOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutePolicy) pulumi.StringPtrOutput { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives

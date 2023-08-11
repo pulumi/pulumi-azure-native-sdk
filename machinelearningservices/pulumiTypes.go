@@ -23795,13 +23795,13 @@ type RegistryType struct {
 	ManagedResourceGroup *ArmResourceId `pulumi:"managedResourceGroup"`
 	// MLFlow Registry URI for the Registry
 	MlFlowRegistryUri *string `pulumi:"mlFlowRegistryUri"`
+	// Private endpoint connections info used for pending connections in private link portal
+	PrivateEndpointConnections []RegistryPrivateEndpointConnection `pulumi:"privateEndpointConnections"`
 	// Is the Registry accessible from the internet?
 	// Possible values: "Enabled" or "Disabled"
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails []RegistryRegionArmDetails `pulumi:"regionDetails"`
-	// Private endpoint connections info used for pending connections in private link portal
-	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnection `pulumi:"registryPrivateEndpointConnections"`
 }
 
 // RegistryTypeInput is an input type that accepts RegistryTypeArgs and RegistryTypeOutput values.
@@ -23825,13 +23825,13 @@ type RegistryTypeArgs struct {
 	ManagedResourceGroup ArmResourceIdPtrInput `pulumi:"managedResourceGroup"`
 	// MLFlow Registry URI for the Registry
 	MlFlowRegistryUri pulumi.StringPtrInput `pulumi:"mlFlowRegistryUri"`
+	// Private endpoint connections info used for pending connections in private link portal
+	PrivateEndpointConnections RegistryPrivateEndpointConnectionArrayInput `pulumi:"privateEndpointConnections"`
 	// Is the Registry accessible from the internet?
 	// Possible values: "Enabled" or "Disabled"
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails RegistryRegionArmDetailsArrayInput `pulumi:"regionDetails"`
-	// Private endpoint connections info used for pending connections in private link portal
-	RegistryPrivateEndpointConnections RegistryPrivateEndpointConnectionArrayInput `pulumi:"registryPrivateEndpointConnections"`
 }
 
 func (RegistryTypeArgs) ElementType() reflect.Type {
@@ -23881,6 +23881,11 @@ func (o RegistryTypeOutput) MlFlowRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryType) *string { return v.MlFlowRegistryUri }).(pulumi.StringPtrOutput)
 }
 
+// Private endpoint connections info used for pending connections in private link portal
+func (o RegistryTypeOutput) PrivateEndpointConnections() RegistryPrivateEndpointConnectionArrayOutput {
+	return o.ApplyT(func(v RegistryType) []RegistryPrivateEndpointConnection { return v.PrivateEndpointConnections }).(RegistryPrivateEndpointConnectionArrayOutput)
+}
+
 // Is the Registry accessible from the internet?
 // Possible values: "Enabled" or "Disabled"
 func (o RegistryTypeOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
@@ -23890,11 +23895,6 @@ func (o RegistryTypeOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 // Details of each region the registry is in
 func (o RegistryTypeOutput) RegionDetails() RegistryRegionArmDetailsArrayOutput {
 	return o.ApplyT(func(v RegistryType) []RegistryRegionArmDetails { return v.RegionDetails }).(RegistryRegionArmDetailsArrayOutput)
-}
-
-// Private endpoint connections info used for pending connections in private link portal
-func (o RegistryTypeOutput) RegistryPrivateEndpointConnections() RegistryPrivateEndpointConnectionArrayOutput {
-	return o.ApplyT(func(v RegistryType) []RegistryPrivateEndpointConnection { return v.RegistryPrivateEndpointConnections }).(RegistryPrivateEndpointConnectionArrayOutput)
 }
 
 type RegistryListCredentialsResultResponse struct {
@@ -23932,7 +23932,7 @@ func (o RegistryListCredentialsResultResponseOutput) Username() pulumi.StringOut
 // Private endpoint connection definition.
 type RegistryPrivateEndpointConnection struct {
 	// This is the private endpoint connection name created on SRP
-	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/privateEndpointConnections/{peConnectionName}
 	Id *string `pulumi:"id"`
 	// Same as workspace location.
 	Location *string `pulumi:"location"`
@@ -23954,7 +23954,7 @@ type RegistryPrivateEndpointConnectionInput interface {
 // Private endpoint connection definition.
 type RegistryPrivateEndpointConnectionArgs struct {
 	// This is the private endpoint connection name created on SRP
-	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/privateEndpointConnections/{peConnectionName}
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Same as workspace location.
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -24015,7 +24015,7 @@ func (o RegistryPrivateEndpointConnectionOutput) ToRegistryPrivateEndpointConnec
 }
 
 // This is the private endpoint connection name created on SRP
-// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/privateEndpointConnections/{peConnectionName}
 func (o RegistryPrivateEndpointConnectionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -24058,10 +24058,10 @@ type RegistryPrivateEndpointConnectionProperties struct {
 	GroupIds []string `pulumi:"groupIds"`
 	// The PE network resource that is linked to this PE connection.
 	PrivateEndpoint *PrivateEndpointResource `pulumi:"privateEndpoint"`
+	// The connection state.
+	PrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// The connection state.
-	RegistryPrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionState `pulumi:"registryPrivateLinkServiceConnectionState"`
 }
 
 // RegistryPrivateEndpointConnectionPropertiesInput is an input type that accepts RegistryPrivateEndpointConnectionPropertiesArgs and RegistryPrivateEndpointConnectionPropertiesOutput values.
@@ -24081,10 +24081,10 @@ type RegistryPrivateEndpointConnectionPropertiesArgs struct {
 	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
 	// The PE network resource that is linked to this PE connection.
 	PrivateEndpoint PrivateEndpointResourcePtrInput `pulumi:"privateEndpoint"`
+	// The connection state.
+	PrivateLinkServiceConnectionState RegistryPrivateLinkServiceConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
 	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
-	// The connection state.
-	RegistryPrivateLinkServiceConnectionState RegistryPrivateLinkServiceConnectionStatePtrInput `pulumi:"registryPrivateLinkServiceConnectionState"`
 }
 
 func (RegistryPrivateEndpointConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -24175,16 +24175,16 @@ func (o RegistryPrivateEndpointConnectionPropertiesOutput) PrivateEndpoint() Pri
 	return o.ApplyT(func(v RegistryPrivateEndpointConnectionProperties) *PrivateEndpointResource { return v.PrivateEndpoint }).(PrivateEndpointResourcePtrOutput)
 }
 
+// The connection state.
+func (o RegistryPrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnectionProperties) *RegistryPrivateLinkServiceConnectionState {
+		return v.PrivateLinkServiceConnectionState
+	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
+}
+
 // One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
 func (o RegistryPrivateEndpointConnectionPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryPrivateEndpointConnectionProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionProperties) *RegistryPrivateLinkServiceConnectionState {
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
 }
 
 type RegistryPrivateEndpointConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -24231,6 +24231,16 @@ func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) PrivateEndpoint() 
 	}).(PrivateEndpointResourcePtrOutput)
 }
 
+// The connection state.
+func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) PrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionProperties) *RegistryPrivateLinkServiceConnectionState {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkServiceConnectionState
+	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
+}
+
 // One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
 func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionProperties) *string {
@@ -24241,26 +24251,16 @@ func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) ProvisioningState(
 	}).(pulumi.StringPtrOutput)
 }
 
-// The connection state.
-func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionProperties) *RegistryPrivateLinkServiceConnectionState {
-		if v == nil {
-			return nil
-		}
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
-}
-
 // Properties of the Private Endpoint Connection
 type RegistryPrivateEndpointConnectionPropertiesResponse struct {
 	// The group ids
 	GroupIds []string `pulumi:"groupIds"`
 	// The PE network resource that is linked to this PE connection.
 	PrivateEndpoint *PrivateEndpointResourceResponse `pulumi:"privateEndpoint"`
+	// The connection state.
+	PrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// The connection state.
-	RegistryPrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionStateResponse `pulumi:"registryPrivateLinkServiceConnectionState"`
 }
 
 // Properties of the Private Endpoint Connection
@@ -24290,16 +24290,16 @@ func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoi
 	}).(PrivateEndpointResourceResponsePtrOutput)
 }
 
+// The connection state.
+func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) PrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnectionPropertiesResponse) *RegistryPrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
 // One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
 func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryPrivateEndpointConnectionPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionPropertiesResponse) *RegistryPrivateLinkServiceConnectionStateResponse {
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
 type RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -24346,6 +24346,16 @@ func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateEnd
 	}).(PrivateEndpointResourceResponsePtrOutput)
 }
 
+// The connection state.
+func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionPropertiesResponse) *RegistryPrivateLinkServiceConnectionStateResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkServiceConnectionState
+	}).(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
 // One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
 func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionPropertiesResponse) *string {
@@ -24356,20 +24366,10 @@ func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) Provisioni
 	}).(pulumi.StringPtrOutput)
 }
 
-// The connection state.
-func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionPropertiesResponse) *RegistryPrivateLinkServiceConnectionStateResponse {
-		if v == nil {
-			return nil
-		}
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
 // Private endpoint connection definition.
 type RegistryPrivateEndpointConnectionResponse struct {
 	// This is the private endpoint connection name created on SRP
-	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/privateEndpointConnections/{peConnectionName}
 	Id *string `pulumi:"id"`
 	// Same as workspace location.
 	Location *string `pulumi:"location"`
@@ -24393,7 +24393,7 @@ func (o RegistryPrivateEndpointConnectionResponseOutput) ToRegistryPrivateEndpoi
 }
 
 // This is the private endpoint connection name created on SRP
-// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/privateEndpointConnections/{peConnectionName}
 func (o RegistryPrivateEndpointConnectionResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -24892,13 +24892,13 @@ type RegistryResponse struct {
 	ManagedResourceGroup *ArmResourceIdResponse `pulumi:"managedResourceGroup"`
 	// MLFlow Registry URI for the Registry
 	MlFlowRegistryUri *string `pulumi:"mlFlowRegistryUri"`
+	// Private endpoint connections info used for pending connections in private link portal
+	PrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Is the Registry accessible from the internet?
 	// Possible values: "Enabled" or "Disabled"
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails []RegistryRegionArmDetailsResponse `pulumi:"regionDetails"`
-	// Private endpoint connections info used for pending connections in private link portal
-	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"registryPrivateEndpointConnections"`
 }
 
 // Details of the Registry
@@ -24936,6 +24936,13 @@ func (o RegistryResponseOutput) MlFlowRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryResponse) *string { return v.MlFlowRegistryUri }).(pulumi.StringPtrOutput)
 }
 
+// Private endpoint connections info used for pending connections in private link portal
+func (o RegistryResponseOutput) PrivateEndpointConnections() RegistryPrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v RegistryResponse) []RegistryPrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(RegistryPrivateEndpointConnectionResponseArrayOutput)
+}
+
 // Is the Registry accessible from the internet?
 // Possible values: "Enabled" or "Disabled"
 func (o RegistryResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
@@ -24945,13 +24952,6 @@ func (o RegistryResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 // Details of each region the registry is in
 func (o RegistryResponseOutput) RegionDetails() RegistryRegionArmDetailsResponseArrayOutput {
 	return o.ApplyT(func(v RegistryResponse) []RegistryRegionArmDetailsResponse { return v.RegionDetails }).(RegistryRegionArmDetailsResponseArrayOutput)
-}
-
-// Private endpoint connections info used for pending connections in private link portal
-func (o RegistryResponseOutput) RegistryPrivateEndpointConnections() RegistryPrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v RegistryResponse) []RegistryPrivateEndpointConnectionResponse {
-		return v.RegistryPrivateEndpointConnections
-	}).(RegistryPrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Regression task in AutoML Table vertical.

@@ -3,7 +3,47 @@
 
 package containerstorage
 
-// Reclaim Policy, Delete or Retain
+// Sku name
+type AzureDiskSkuName string
+
+const (
+	// Premium_LRS SKU
+	AzureDiskSkuName_Premium_LRS = AzureDiskSkuName("Premium_LRS")
+	// Standard_LRS SKU
+	AzureDiskSkuName_Standard_LRS = AzureDiskSkuName("Standard_LRS")
+	// StandardSSD_LRS SKU
+	AzureDiskSkuName_StandardSSD_LRS = AzureDiskSkuName("StandardSSD_LRS")
+	// UltraSSD_LRS SKU
+	AzureDiskSkuName_UltraSSD_LRS = AzureDiskSkuName("UltraSSD_LRS")
+	// Premium_ZRS SKU
+	AzureDiskSkuName_Premium_ZRS = AzureDiskSkuName("Premium_ZRS")
+	// PremiumV2_LRS SKU
+	AzureDiskSkuName_PremiumV2_LRS = AzureDiskSkuName("PremiumV2_LRS")
+	// StandardSSD_ZRS SKU
+	AzureDiskSkuName_StandardSSD_ZRS = AzureDiskSkuName("StandardSSD_ZRS")
+)
+
+// Sku name
+type ElasticSanSkuName string
+
+const (
+	// Premium_LRS SKU
+	ElasticSanSkuName_Premium_LRS = ElasticSanSkuName("Premium_LRS")
+	// Premium_ZRS SKU
+	ElasticSanSkuName_Premium_ZRS = ElasticSanSkuName("Premium_ZRS")
+)
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+type ManagedServiceIdentityType string
+
+const (
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned, UserAssigned")
+)
+
+// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
 type ReclaimPolicy string
 
 const (
@@ -13,14 +53,16 @@ const (
 	ReclaimPolicyRetain = ReclaimPolicy("Retain")
 )
 
-// Indicates how the volumes created from the snapshot should be attached
-type VolumeMode string
+// Availability Zones
+type Zone string
 
 const (
-	// FileSystem volume mode
-	VolumeModeFilesystem = VolumeMode("Filesystem")
-	// Raw volume mode
-	VolumeModeRaw = VolumeMode("Raw")
+	// First availability zone.
+	ZoneZone1 = Zone("1")
+	// Second availability zone.
+	ZoneZone2 = Zone("2")
+	// Third availability zone.
+	ZoneZone3 = Zone("3")
 )
 
 func init() {

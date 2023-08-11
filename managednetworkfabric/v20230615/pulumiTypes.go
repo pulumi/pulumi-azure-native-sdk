@@ -174,21 +174,21 @@ func (o AccessControlListActionResponseArrayOutput) Index(i pulumi.IntInput) Acc
 
 // Defines the match condition that is supported to filter the traffic.
 type AccessControlListMatchCondition struct {
-	// List of DSCP Markings that needs to be matched.
+	// List of DSCP Markings that need to be matched.
 	DscpMarkings []string `pulumi:"dscpMarkings"`
-	// List of ether type values that needs to be matched.
+	// List of ether type values that need to be matched.
 	EtherTypes []string `pulumi:"etherTypes"`
-	// List of IP fragment packets that needs to be matched.
+	// List of IP fragment packets that need to be matched.
 	Fragments []string `pulumi:"fragments"`
 	// IP condition that needs to be matched.
 	IpCondition *IpMatchCondition `pulumi:"ipCondition"`
-	// List of IP Lengths that needs to be matched.
+	// List of IP Lengths that need to be matched.
 	IpLengths []string `pulumi:"ipLengths"`
 	// Defines the port condition that needs to be matched.
 	PortCondition *AccessControlListPortCondition `pulumi:"portCondition"`
 	// List of the protocols that need to be matched.
 	ProtocolTypes []string `pulumi:"protocolTypes"`
-	// List of TTL [Time To Live] values that needs to be matched.
+	// List of TTL [Time To Live] values that need to be matched.
 	TtlValues []string `pulumi:"ttlValues"`
 	// Vlan match condition that needs to be matched.
 	VlanMatchCondition *VlanMatchCondition `pulumi:"vlanMatchCondition"`
@@ -207,21 +207,21 @@ type AccessControlListMatchConditionInput interface {
 
 // Defines the match condition that is supported to filter the traffic.
 type AccessControlListMatchConditionArgs struct {
-	// List of DSCP Markings that needs to be matched.
+	// List of DSCP Markings that need to be matched.
 	DscpMarkings pulumi.StringArrayInput `pulumi:"dscpMarkings"`
-	// List of ether type values that needs to be matched.
+	// List of ether type values that need to be matched.
 	EtherTypes pulumi.StringArrayInput `pulumi:"etherTypes"`
-	// List of IP fragment packets that needs to be matched.
+	// List of IP fragment packets that need to be matched.
 	Fragments pulumi.StringArrayInput `pulumi:"fragments"`
 	// IP condition that needs to be matched.
 	IpCondition IpMatchConditionPtrInput `pulumi:"ipCondition"`
-	// List of IP Lengths that needs to be matched.
+	// List of IP Lengths that need to be matched.
 	IpLengths pulumi.StringArrayInput `pulumi:"ipLengths"`
 	// Defines the port condition that needs to be matched.
 	PortCondition AccessControlListPortConditionPtrInput `pulumi:"portCondition"`
 	// List of the protocols that need to be matched.
 	ProtocolTypes pulumi.StringArrayInput `pulumi:"protocolTypes"`
-	// List of TTL [Time To Live] values that needs to be matched.
+	// List of TTL [Time To Live] values that need to be matched.
 	TtlValues pulumi.StringArrayInput `pulumi:"ttlValues"`
 	// Vlan match condition that needs to be matched.
 	VlanMatchCondition VlanMatchConditionPtrInput `pulumi:"vlanMatchCondition"`
@@ -279,17 +279,17 @@ func (o AccessControlListMatchConditionOutput) ToAccessControlListMatchCondition
 	return o
 }
 
-// List of DSCP Markings that needs to be matched.
+// List of DSCP Markings that need to be matched.
 func (o AccessControlListMatchConditionOutput) DscpMarkings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.DscpMarkings }).(pulumi.StringArrayOutput)
 }
 
-// List of ether type values that needs to be matched.
+// List of ether type values that need to be matched.
 func (o AccessControlListMatchConditionOutput) EtherTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.EtherTypes }).(pulumi.StringArrayOutput)
 }
 
-// List of IP fragment packets that needs to be matched.
+// List of IP fragment packets that need to be matched.
 func (o AccessControlListMatchConditionOutput) Fragments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.Fragments }).(pulumi.StringArrayOutput)
 }
@@ -299,7 +299,7 @@ func (o AccessControlListMatchConditionOutput) IpCondition() IpMatchConditionPtr
 	return o.ApplyT(func(v AccessControlListMatchCondition) *IpMatchCondition { return v.IpCondition }).(IpMatchConditionPtrOutput)
 }
 
-// List of IP Lengths that needs to be matched.
+// List of IP Lengths that need to be matched.
 func (o AccessControlListMatchConditionOutput) IpLengths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.IpLengths }).(pulumi.StringArrayOutput)
 }
@@ -314,7 +314,7 @@ func (o AccessControlListMatchConditionOutput) ProtocolTypes() pulumi.StringArra
 	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
 }
 
-// List of TTL [Time To Live] values that needs to be matched.
+// List of TTL [Time To Live] values that need to be matched.
 func (o AccessControlListMatchConditionOutput) TtlValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.TtlValues }).(pulumi.StringArrayOutput)
 }
@@ -346,21 +346,21 @@ func (o AccessControlListMatchConditionArrayOutput) Index(i pulumi.IntInput) Acc
 
 // Defines the match condition that is supported to filter the traffic.
 type AccessControlListMatchConditionResponse struct {
-	// List of DSCP Markings that needs to be matched.
+	// List of DSCP Markings that need to be matched.
 	DscpMarkings []string `pulumi:"dscpMarkings"`
-	// List of ether type values that needs to be matched.
+	// List of ether type values that need to be matched.
 	EtherTypes []string `pulumi:"etherTypes"`
-	// List of IP fragment packets that needs to be matched.
+	// List of IP fragment packets that need to be matched.
 	Fragments []string `pulumi:"fragments"`
 	// IP condition that needs to be matched.
 	IpCondition *IpMatchConditionResponse `pulumi:"ipCondition"`
-	// List of IP Lengths that needs to be matched.
+	// List of IP Lengths that need to be matched.
 	IpLengths []string `pulumi:"ipLengths"`
 	// Defines the port condition that needs to be matched.
 	PortCondition *AccessControlListPortConditionResponse `pulumi:"portCondition"`
 	// List of the protocols that need to be matched.
 	ProtocolTypes []string `pulumi:"protocolTypes"`
-	// List of TTL [Time To Live] values that needs to be matched.
+	// List of TTL [Time To Live] values that need to be matched.
 	TtlValues []string `pulumi:"ttlValues"`
 	// Vlan match condition that needs to be matched.
 	VlanMatchCondition *VlanMatchConditionResponse `pulumi:"vlanMatchCondition"`
@@ -381,17 +381,17 @@ func (o AccessControlListMatchConditionResponseOutput) ToAccessControlListMatchC
 	return o
 }
 
-// List of DSCP Markings that needs to be matched.
+// List of DSCP Markings that need to be matched.
 func (o AccessControlListMatchConditionResponseOutput) DscpMarkings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.DscpMarkings }).(pulumi.StringArrayOutput)
 }
 
-// List of ether type values that needs to be matched.
+// List of ether type values that need to be matched.
 func (o AccessControlListMatchConditionResponseOutput) EtherTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.EtherTypes }).(pulumi.StringArrayOutput)
 }
 
-// List of IP fragment packets that needs to be matched.
+// List of IP fragment packets that need to be matched.
 func (o AccessControlListMatchConditionResponseOutput) Fragments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.Fragments }).(pulumi.StringArrayOutput)
 }
@@ -401,7 +401,7 @@ func (o AccessControlListMatchConditionResponseOutput) IpCondition() IpMatchCond
 	return o.ApplyT(func(v AccessControlListMatchConditionResponse) *IpMatchConditionResponse { return v.IpCondition }).(IpMatchConditionResponsePtrOutput)
 }
 
-// List of IP Lengths that needs to be matched.
+// List of IP Lengths that need to be matched.
 func (o AccessControlListMatchConditionResponseOutput) IpLengths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.IpLengths }).(pulumi.StringArrayOutput)
 }
@@ -418,7 +418,7 @@ func (o AccessControlListMatchConditionResponseOutput) ProtocolTypes() pulumi.St
 	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
 }
 
-// List of TTL [Time To Live] values that needs to be matched.
+// List of TTL [Time To Live] values that need to be matched.
 func (o AccessControlListMatchConditionResponseOutput) TtlValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.TtlValues }).(pulumi.StringArrayOutput)
 }
@@ -668,11 +668,11 @@ func (o AccessControlListMatchConfigurationResponseArrayOutput) Index(i pulumi.I
 
 // Defines the port condition that needs to be matched.
 type AccessControlListPortCondition struct {
-	// List of protocol flags that needs to be matched.
+	// List of protocol flags that need to be matched.
 	Flags []string `pulumi:"flags"`
 	// Layer4 protocol type that needs to be matched.
 	Layer4Protocol string `pulumi:"layer4Protocol"`
-	// List of the port Group Names that to be matched.
+	// List of the port Group Names that need to be matched.
 	PortGroupNames []string `pulumi:"portGroupNames"`
 	// Port type that needs to be matched.
 	PortType *string `pulumi:"portType"`
@@ -693,11 +693,11 @@ type AccessControlListPortConditionInput interface {
 
 // Defines the port condition that needs to be matched.
 type AccessControlListPortConditionArgs struct {
-	// List of protocol flags that needs to be matched.
+	// List of protocol flags that need to be matched.
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
 	// Layer4 protocol type that needs to be matched.
 	Layer4Protocol pulumi.StringInput `pulumi:"layer4Protocol"`
-	// List of the port Group Names that to be matched.
+	// List of the port Group Names that need to be matched.
 	PortGroupNames pulumi.StringArrayInput `pulumi:"portGroupNames"`
 	// Port type that needs to be matched.
 	PortType pulumi.StringPtrInput `pulumi:"portType"`
@@ -783,7 +783,7 @@ func (o AccessControlListPortConditionOutput) ToAccessControlListPortConditionPt
 	}).(AccessControlListPortConditionPtrOutput)
 }
 
-// List of protocol flags that needs to be matched.
+// List of protocol flags that need to be matched.
 func (o AccessControlListPortConditionOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListPortCondition) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
@@ -793,7 +793,7 @@ func (o AccessControlListPortConditionOutput) Layer4Protocol() pulumi.StringOutp
 	return o.ApplyT(func(v AccessControlListPortCondition) string { return v.Layer4Protocol }).(pulumi.StringOutput)
 }
 
-// List of the port Group Names that to be matched.
+// List of the port Group Names that need to be matched.
 func (o AccessControlListPortConditionOutput) PortGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListPortCondition) []string { return v.PortGroupNames }).(pulumi.StringArrayOutput)
 }
@@ -832,7 +832,7 @@ func (o AccessControlListPortConditionPtrOutput) Elem() AccessControlListPortCon
 	}).(AccessControlListPortConditionOutput)
 }
 
-// List of protocol flags that needs to be matched.
+// List of protocol flags that need to be matched.
 func (o AccessControlListPortConditionPtrOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessControlListPortCondition) []string {
 		if v == nil {
@@ -852,7 +852,7 @@ func (o AccessControlListPortConditionPtrOutput) Layer4Protocol() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of the port Group Names that to be matched.
+// List of the port Group Names that need to be matched.
 func (o AccessControlListPortConditionPtrOutput) PortGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessControlListPortCondition) []string {
 		if v == nil {
@@ -884,11 +884,11 @@ func (o AccessControlListPortConditionPtrOutput) Ports() pulumi.StringArrayOutpu
 
 // Defines the port condition that needs to be matched.
 type AccessControlListPortConditionResponse struct {
-	// List of protocol flags that needs to be matched.
+	// List of protocol flags that need to be matched.
 	Flags []string `pulumi:"flags"`
 	// Layer4 protocol type that needs to be matched.
 	Layer4Protocol string `pulumi:"layer4Protocol"`
-	// List of the port Group Names that to be matched.
+	// List of the port Group Names that need to be matched.
 	PortGroupNames []string `pulumi:"portGroupNames"`
 	// Port type that needs to be matched.
 	PortType *string `pulumi:"portType"`
@@ -911,7 +911,7 @@ func (o AccessControlListPortConditionResponseOutput) ToAccessControlListPortCon
 	return o
 }
 
-// List of protocol flags that needs to be matched.
+// List of protocol flags that need to be matched.
 func (o AccessControlListPortConditionResponseOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListPortConditionResponse) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
@@ -921,7 +921,7 @@ func (o AccessControlListPortConditionResponseOutput) Layer4Protocol() pulumi.St
 	return o.ApplyT(func(v AccessControlListPortConditionResponse) string { return v.Layer4Protocol }).(pulumi.StringOutput)
 }
 
-// List of the port Group Names that to be matched.
+// List of the port Group Names that need to be matched.
 func (o AccessControlListPortConditionResponseOutput) PortGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessControlListPortConditionResponse) []string { return v.PortGroupNames }).(pulumi.StringArrayOutput)
 }
@@ -960,7 +960,7 @@ func (o AccessControlListPortConditionResponsePtrOutput) Elem() AccessControlLis
 	}).(AccessControlListPortConditionResponseOutput)
 }
 
-// List of protocol flags that needs to be matched.
+// List of protocol flags that need to be matched.
 func (o AccessControlListPortConditionResponsePtrOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessControlListPortConditionResponse) []string {
 		if v == nil {
@@ -980,7 +980,7 @@ func (o AccessControlListPortConditionResponsePtrOutput) Layer4Protocol() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of the port Group Names that to be matched.
+// List of the port Group Names that need to be matched.
 func (o AccessControlListPortConditionResponsePtrOutput) PortGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessControlListPortConditionResponse) []string {
 		if v == nil {
@@ -2246,7 +2246,7 @@ func (o BfdConfigurationResponsePtrOutput) Multiplier() pulumi.IntPtrOutput {
 type CommonDynamicMatchConfiguration struct {
 	// List of IP Groups.
 	IpGroups []IpGroupProperties `pulumi:"ipGroups"`
-	// List of the port group.
+	// List of the port groups.
 	PortGroups []PortGroupProperties `pulumi:"portGroups"`
 	// List of vlan groups.
 	VlanGroups []VlanGroupProperties `pulumi:"vlanGroups"`
@@ -2267,7 +2267,7 @@ type CommonDynamicMatchConfigurationInput interface {
 type CommonDynamicMatchConfigurationArgs struct {
 	// List of IP Groups.
 	IpGroups IpGroupPropertiesArrayInput `pulumi:"ipGroups"`
-	// List of the port group.
+	// List of the port groups.
 	PortGroups PortGroupPropertiesArrayInput `pulumi:"portGroups"`
 	// List of vlan groups.
 	VlanGroups VlanGroupPropertiesArrayInput `pulumi:"vlanGroups"`
@@ -2330,7 +2330,7 @@ func (o CommonDynamicMatchConfigurationOutput) IpGroups() IpGroupPropertiesArray
 	return o.ApplyT(func(v CommonDynamicMatchConfiguration) []IpGroupProperties { return v.IpGroups }).(IpGroupPropertiesArrayOutput)
 }
 
-// List of the port group.
+// List of the port groups.
 func (o CommonDynamicMatchConfigurationOutput) PortGroups() PortGroupPropertiesArrayOutput {
 	return o.ApplyT(func(v CommonDynamicMatchConfiguration) []PortGroupProperties { return v.PortGroups }).(PortGroupPropertiesArrayOutput)
 }
@@ -2364,7 +2364,7 @@ func (o CommonDynamicMatchConfigurationArrayOutput) Index(i pulumi.IntInput) Com
 type CommonDynamicMatchConfigurationResponse struct {
 	// List of IP Groups.
 	IpGroups []IpGroupPropertiesResponse `pulumi:"ipGroups"`
-	// List of the port group.
+	// List of the port groups.
 	PortGroups []PortGroupPropertiesResponse `pulumi:"portGroups"`
 	// List of vlan groups.
 	VlanGroups []VlanGroupPropertiesResponse `pulumi:"vlanGroups"`
@@ -2390,7 +2390,7 @@ func (o CommonDynamicMatchConfigurationResponseOutput) IpGroups() IpGroupPropert
 	return o.ApplyT(func(v CommonDynamicMatchConfigurationResponse) []IpGroupPropertiesResponse { return v.IpGroups }).(IpGroupPropertiesResponseArrayOutput)
 }
 
-// List of the port group.
+// List of the port groups.
 func (o CommonDynamicMatchConfigurationResponseOutput) PortGroups() PortGroupPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v CommonDynamicMatchConfigurationResponse) []PortGroupPropertiesResponse { return v.PortGroups }).(PortGroupPropertiesResponseArrayOutput)
 }
@@ -6914,11 +6914,11 @@ func (o IpGroupPropertiesResponseArrayOutput) Index(i pulumi.IntInput) IpGroupPr
 type IpMatchCondition struct {
 	// The List of IP Group Names that need to be matched.
 	IpGroupNames []string `pulumi:"ipGroupNames"`
-	// The list of IP Prefixes.
+	// The list of IP Prefixes that need to be matched.
 	IpPrefixValues []string `pulumi:"ipPrefixValues"`
-	// IP Prefix Type.
+	// IP Prefix Type that needs to be matched.
 	PrefixType *string `pulumi:"prefixType"`
-	// IP Address type.
+	// IP Address type that needs to be matched.
 	Type *string `pulumi:"type"`
 }
 
@@ -6937,11 +6937,11 @@ type IpMatchConditionInput interface {
 type IpMatchConditionArgs struct {
 	// The List of IP Group Names that need to be matched.
 	IpGroupNames pulumi.StringArrayInput `pulumi:"ipGroupNames"`
-	// The list of IP Prefixes.
+	// The list of IP Prefixes that need to be matched.
 	IpPrefixValues pulumi.StringArrayInput `pulumi:"ipPrefixValues"`
-	// IP Prefix Type.
+	// IP Prefix Type that needs to be matched.
 	PrefixType pulumi.StringPtrInput `pulumi:"prefixType"`
-	// IP Address type.
+	// IP Address type that needs to be matched.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -7028,17 +7028,17 @@ func (o IpMatchConditionOutput) IpGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IpMatchCondition) []string { return v.IpGroupNames }).(pulumi.StringArrayOutput)
 }
 
-// The list of IP Prefixes.
+// The list of IP Prefixes that need to be matched.
 func (o IpMatchConditionOutput) IpPrefixValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IpMatchCondition) []string { return v.IpPrefixValues }).(pulumi.StringArrayOutput)
 }
 
-// IP Prefix Type.
+// IP Prefix Type that needs to be matched.
 func (o IpMatchConditionOutput) PrefixType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpMatchCondition) *string { return v.PrefixType }).(pulumi.StringPtrOutput)
 }
 
-// IP Address type.
+// IP Address type that needs to be matched.
 func (o IpMatchConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpMatchCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -7077,7 +7077,7 @@ func (o IpMatchConditionPtrOutput) IpGroupNames() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The list of IP Prefixes.
+// The list of IP Prefixes that need to be matched.
 func (o IpMatchConditionPtrOutput) IpPrefixValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IpMatchCondition) []string {
 		if v == nil {
@@ -7087,7 +7087,7 @@ func (o IpMatchConditionPtrOutput) IpPrefixValues() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// IP Prefix Type.
+// IP Prefix Type that needs to be matched.
 func (o IpMatchConditionPtrOutput) PrefixType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpMatchCondition) *string {
 		if v == nil {
@@ -7097,7 +7097,7 @@ func (o IpMatchConditionPtrOutput) PrefixType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP Address type.
+// IP Address type that needs to be matched.
 func (o IpMatchConditionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpMatchCondition) *string {
 		if v == nil {
@@ -7111,11 +7111,11 @@ func (o IpMatchConditionPtrOutput) Type() pulumi.StringPtrOutput {
 type IpMatchConditionResponse struct {
 	// The List of IP Group Names that need to be matched.
 	IpGroupNames []string `pulumi:"ipGroupNames"`
-	// The list of IP Prefixes.
+	// The list of IP Prefixes that need to be matched.
 	IpPrefixValues []string `pulumi:"ipPrefixValues"`
-	// IP Prefix Type.
+	// IP Prefix Type that needs to be matched.
 	PrefixType *string `pulumi:"prefixType"`
-	// IP Address type.
+	// IP Address type that needs to be matched.
 	Type *string `pulumi:"type"`
 }
 
@@ -7139,17 +7139,17 @@ func (o IpMatchConditionResponseOutput) IpGroupNames() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v IpMatchConditionResponse) []string { return v.IpGroupNames }).(pulumi.StringArrayOutput)
 }
 
-// The list of IP Prefixes.
+// The list of IP Prefixes that need to be matched.
 func (o IpMatchConditionResponseOutput) IpPrefixValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IpMatchConditionResponse) []string { return v.IpPrefixValues }).(pulumi.StringArrayOutput)
 }
 
-// IP Prefix Type.
+// IP Prefix Type that needs to be matched.
 func (o IpMatchConditionResponseOutput) PrefixType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpMatchConditionResponse) *string { return v.PrefixType }).(pulumi.StringPtrOutput)
 }
 
-// IP Address type.
+// IP Address type that needs to be matched.
 func (o IpMatchConditionResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpMatchConditionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -7188,7 +7188,7 @@ func (o IpMatchConditionResponsePtrOutput) IpGroupNames() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// The list of IP Prefixes.
+// The list of IP Prefixes that need to be matched.
 func (o IpMatchConditionResponsePtrOutput) IpPrefixValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IpMatchConditionResponse) []string {
 		if v == nil {
@@ -7198,7 +7198,7 @@ func (o IpMatchConditionResponsePtrOutput) IpPrefixValues() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// IP Prefix Type.
+// IP Prefix Type that needs to be matched.
 func (o IpMatchConditionResponsePtrOutput) PrefixType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpMatchConditionResponse) *string {
 		if v == nil {
@@ -7208,7 +7208,7 @@ func (o IpMatchConditionResponsePtrOutput) PrefixType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP Address type.
+// IP Address type that needs to be matched.
 func (o IpMatchConditionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpMatchConditionResponse) *string {
 		if v == nil {
@@ -9497,7 +9497,7 @@ func (o NetworkTapRuleActionResponseArrayOutput) Index(i pulumi.IntInput) Networ
 
 // Defines the match condition that is supported to filter the traffic.
 type NetworkTapRuleMatchCondition struct {
-	// Encapsulation Type.
+	// Encapsulation Type that needs to be matched.
 	EncapsulationType *string `pulumi:"encapsulationType"`
 	// IP condition that needs to be matched.
 	IpCondition *IpMatchCondition `pulumi:"ipCondition"`
@@ -9535,7 +9535,7 @@ type NetworkTapRuleMatchConditionInput interface {
 
 // Defines the match condition that is supported to filter the traffic.
 type NetworkTapRuleMatchConditionArgs struct {
-	// Encapsulation Type.
+	// Encapsulation Type that needs to be matched.
 	EncapsulationType pulumi.StringPtrInput `pulumi:"encapsulationType"`
 	// IP condition that needs to be matched.
 	IpCondition IpMatchConditionPtrInput `pulumi:"ipCondition"`
@@ -9610,7 +9610,7 @@ func (o NetworkTapRuleMatchConditionOutput) ToNetworkTapRuleMatchConditionOutput
 	return o
 }
 
-// Encapsulation Type.
+// Encapsulation Type that needs to be matched.
 func (o NetworkTapRuleMatchConditionOutput) EncapsulationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkTapRuleMatchCondition) *string { return v.EncapsulationType }).(pulumi.StringPtrOutput)
 }
@@ -9657,7 +9657,7 @@ func (o NetworkTapRuleMatchConditionArrayOutput) Index(i pulumi.IntInput) Networ
 
 // Defines the match condition that is supported to filter the traffic.
 type NetworkTapRuleMatchConditionResponse struct {
-	// Encapsulation Type.
+	// Encapsulation Type that needs to be matched.
 	EncapsulationType *string `pulumi:"encapsulationType"`
 	// IP condition that needs to be matched.
 	IpCondition *IpMatchConditionResponse `pulumi:"ipCondition"`
@@ -9697,7 +9697,7 @@ func (o NetworkTapRuleMatchConditionResponseOutput) ToNetworkTapRuleMatchConditi
 	return o
 }
 
-// Encapsulation Type.
+// Encapsulation Type that needs to be matched.
 func (o NetworkTapRuleMatchConditionResponseOutput) EncapsulationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkTapRuleMatchConditionResponse) *string { return v.EncapsulationType }).(pulumi.StringPtrOutput)
 }
@@ -10678,7 +10678,7 @@ func (o NpbStaticRouteConfigurationResponsePtrOutput) Ipv6Routes() StaticRoutePr
 type PortCondition struct {
 	// Layer4 protocol type that needs to be matched.
 	Layer4Protocol string `pulumi:"layer4Protocol"`
-	// List of the port Group Names that to be matched.
+	// List of the port Group Names that need to be matched.
 	PortGroupNames []string `pulumi:"portGroupNames"`
 	// Port type that needs to be matched.
 	PortType *string `pulumi:"portType"`
@@ -10701,7 +10701,7 @@ type PortConditionInput interface {
 type PortConditionArgs struct {
 	// Layer4 protocol type that needs to be matched.
 	Layer4Protocol pulumi.StringInput `pulumi:"layer4Protocol"`
-	// List of the port Group Names that to be matched.
+	// List of the port Group Names that need to be matched.
 	PortGroupNames pulumi.StringArrayInput `pulumi:"portGroupNames"`
 	// Port type that needs to be matched.
 	PortType pulumi.StringPtrInput `pulumi:"portType"`
@@ -10792,7 +10792,7 @@ func (o PortConditionOutput) Layer4Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v PortCondition) string { return v.Layer4Protocol }).(pulumi.StringOutput)
 }
 
-// List of the port Group Names that to be matched.
+// List of the port Group Names that need to be matched.
 func (o PortConditionOutput) PortGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PortCondition) []string { return v.PortGroupNames }).(pulumi.StringArrayOutput)
 }
@@ -10841,7 +10841,7 @@ func (o PortConditionPtrOutput) Layer4Protocol() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of the port Group Names that to be matched.
+// List of the port Group Names that need to be matched.
 func (o PortConditionPtrOutput) PortGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PortCondition) []string {
 		if v == nil {
@@ -10875,7 +10875,7 @@ func (o PortConditionPtrOutput) Ports() pulumi.StringArrayOutput {
 type PortConditionResponse struct {
 	// Layer4 protocol type that needs to be matched.
 	Layer4Protocol string `pulumi:"layer4Protocol"`
-	// List of the port Group Names that to be matched.
+	// List of the port Group Names that need to be matched.
 	PortGroupNames []string `pulumi:"portGroupNames"`
 	// Port type that needs to be matched.
 	PortType *string `pulumi:"portType"`
@@ -10903,7 +10903,7 @@ func (o PortConditionResponseOutput) Layer4Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v PortConditionResponse) string { return v.Layer4Protocol }).(pulumi.StringOutput)
 }
 
-// List of the port Group Names that to be matched.
+// List of the port Group Names that need to be matched.
 func (o PortConditionResponseOutput) PortGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PortConditionResponse) []string { return v.PortGroupNames }).(pulumi.StringArrayOutput)
 }
@@ -10952,7 +10952,7 @@ func (o PortConditionResponsePtrOutput) Layer4Protocol() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of the port Group Names that to be matched.
+// List of the port Group Names that need to be matched.
 func (o PortConditionResponsePtrOutput) PortGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PortConditionResponse) []string {
 		if v == nil {
@@ -10986,7 +10986,7 @@ func (o PortConditionResponsePtrOutput) Ports() pulumi.StringArrayOutput {
 type PortGroupProperties struct {
 	// The name of the port group.
 	Name *string `pulumi:"name"`
-	// List of the ports that needs to be matched.
+	// List of the ports that need to be matched.
 	Ports []string `pulumi:"ports"`
 }
 
@@ -11005,7 +11005,7 @@ type PortGroupPropertiesInput interface {
 type PortGroupPropertiesArgs struct {
 	// The name of the port group.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// List of the ports that needs to be matched.
+	// List of the ports that need to be matched.
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
 }
 
@@ -11066,7 +11066,7 @@ func (o PortGroupPropertiesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortGroupProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// List of the ports that needs to be matched.
+// List of the ports that need to be matched.
 func (o PortGroupPropertiesOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PortGroupProperties) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
@@ -11095,7 +11095,7 @@ func (o PortGroupPropertiesArrayOutput) Index(i pulumi.IntInput) PortGroupProper
 type PortGroupPropertiesResponse struct {
 	// The name of the port group.
 	Name *string `pulumi:"name"`
-	// List of the ports that needs to be matched.
+	// List of the ports that need to be matched.
 	Ports []string `pulumi:"ports"`
 }
 
@@ -11119,7 +11119,7 @@ func (o PortGroupPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortGroupPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// List of the ports that needs to be matched.
+// List of the ports that need to be matched.
 func (o PortGroupPropertiesResponseOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PortGroupPropertiesResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
@@ -12646,13 +12646,13 @@ func (o VlanGroupPropertiesResponseArrayOutput) Index(i pulumi.IntInput) VlanGro
 	}).(VlanGroupPropertiesResponseOutput)
 }
 
-// The vlan match conditions that needs to be matched.
+// The vlan match conditions that need to be matched.
 type VlanMatchCondition struct {
-	// List of inner vlans that needs to be matched.
+	// List of inner vlans that need to be matched.
 	InnerVlans []string `pulumi:"innerVlans"`
-	// List of vlan group names that to be matched.
+	// List of vlan group names that need to be matched.
 	VlanGroupNames []string `pulumi:"vlanGroupNames"`
-	// List of vlans that needs to be matched.
+	// List of vlans that need to be matched.
 	Vlans []string `pulumi:"vlans"`
 }
 
@@ -12667,13 +12667,13 @@ type VlanMatchConditionInput interface {
 	ToVlanMatchConditionOutputWithContext(context.Context) VlanMatchConditionOutput
 }
 
-// The vlan match conditions that needs to be matched.
+// The vlan match conditions that need to be matched.
 type VlanMatchConditionArgs struct {
-	// List of inner vlans that needs to be matched.
+	// List of inner vlans that need to be matched.
 	InnerVlans pulumi.StringArrayInput `pulumi:"innerVlans"`
-	// List of vlan group names that to be matched.
+	// List of vlan group names that need to be matched.
 	VlanGroupNames pulumi.StringArrayInput `pulumi:"vlanGroupNames"`
-	// List of vlans that needs to be matched.
+	// List of vlans that need to be matched.
 	Vlans pulumi.StringArrayInput `pulumi:"vlans"`
 }
 
@@ -12730,7 +12730,7 @@ func (i *vlanMatchConditionPtrType) ToVlanMatchConditionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(VlanMatchConditionPtrOutput)
 }
 
-// The vlan match conditions that needs to be matched.
+// The vlan match conditions that need to be matched.
 type VlanMatchConditionOutput struct{ *pulumi.OutputState }
 
 func (VlanMatchConditionOutput) ElementType() reflect.Type {
@@ -12755,17 +12755,17 @@ func (o VlanMatchConditionOutput) ToVlanMatchConditionPtrOutputWithContext(ctx c
 	}).(VlanMatchConditionPtrOutput)
 }
 
-// List of inner vlans that needs to be matched.
+// List of inner vlans that need to be matched.
 func (o VlanMatchConditionOutput) InnerVlans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VlanMatchCondition) []string { return v.InnerVlans }).(pulumi.StringArrayOutput)
 }
 
-// List of vlan group names that to be matched.
+// List of vlan group names that need to be matched.
 func (o VlanMatchConditionOutput) VlanGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VlanMatchCondition) []string { return v.VlanGroupNames }).(pulumi.StringArrayOutput)
 }
 
-// List of vlans that needs to be matched.
+// List of vlans that need to be matched.
 func (o VlanMatchConditionOutput) Vlans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VlanMatchCondition) []string { return v.Vlans }).(pulumi.StringArrayOutput)
 }
@@ -12794,7 +12794,7 @@ func (o VlanMatchConditionPtrOutput) Elem() VlanMatchConditionOutput {
 	}).(VlanMatchConditionOutput)
 }
 
-// List of inner vlans that needs to be matched.
+// List of inner vlans that need to be matched.
 func (o VlanMatchConditionPtrOutput) InnerVlans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VlanMatchCondition) []string {
 		if v == nil {
@@ -12804,7 +12804,7 @@ func (o VlanMatchConditionPtrOutput) InnerVlans() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of vlan group names that to be matched.
+// List of vlan group names that need to be matched.
 func (o VlanMatchConditionPtrOutput) VlanGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VlanMatchCondition) []string {
 		if v == nil {
@@ -12814,7 +12814,7 @@ func (o VlanMatchConditionPtrOutput) VlanGroupNames() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of vlans that needs to be matched.
+// List of vlans that need to be matched.
 func (o VlanMatchConditionPtrOutput) Vlans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VlanMatchCondition) []string {
 		if v == nil {
@@ -12824,17 +12824,17 @@ func (o VlanMatchConditionPtrOutput) Vlans() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The vlan match conditions that needs to be matched.
+// The vlan match conditions that need to be matched.
 type VlanMatchConditionResponse struct {
-	// List of inner vlans that needs to be matched.
+	// List of inner vlans that need to be matched.
 	InnerVlans []string `pulumi:"innerVlans"`
-	// List of vlan group names that to be matched.
+	// List of vlan group names that need to be matched.
 	VlanGroupNames []string `pulumi:"vlanGroupNames"`
-	// List of vlans that needs to be matched.
+	// List of vlans that need to be matched.
 	Vlans []string `pulumi:"vlans"`
 }
 
-// The vlan match conditions that needs to be matched.
+// The vlan match conditions that need to be matched.
 type VlanMatchConditionResponseOutput struct{ *pulumi.OutputState }
 
 func (VlanMatchConditionResponseOutput) ElementType() reflect.Type {
@@ -12849,17 +12849,17 @@ func (o VlanMatchConditionResponseOutput) ToVlanMatchConditionResponseOutputWith
 	return o
 }
 
-// List of inner vlans that needs to be matched.
+// List of inner vlans that need to be matched.
 func (o VlanMatchConditionResponseOutput) InnerVlans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VlanMatchConditionResponse) []string { return v.InnerVlans }).(pulumi.StringArrayOutput)
 }
 
-// List of vlan group names that to be matched.
+// List of vlan group names that need to be matched.
 func (o VlanMatchConditionResponseOutput) VlanGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VlanMatchConditionResponse) []string { return v.VlanGroupNames }).(pulumi.StringArrayOutput)
 }
 
-// List of vlans that needs to be matched.
+// List of vlans that need to be matched.
 func (o VlanMatchConditionResponseOutput) Vlans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VlanMatchConditionResponse) []string { return v.Vlans }).(pulumi.StringArrayOutput)
 }
@@ -12888,7 +12888,7 @@ func (o VlanMatchConditionResponsePtrOutput) Elem() VlanMatchConditionResponseOu
 	}).(VlanMatchConditionResponseOutput)
 }
 
-// List of inner vlans that needs to be matched.
+// List of inner vlans that need to be matched.
 func (o VlanMatchConditionResponsePtrOutput) InnerVlans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VlanMatchConditionResponse) []string {
 		if v == nil {
@@ -12898,7 +12898,7 @@ func (o VlanMatchConditionResponsePtrOutput) InnerVlans() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of vlan group names that to be matched.
+// List of vlan group names that need to be matched.
 func (o VlanMatchConditionResponsePtrOutput) VlanGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VlanMatchConditionResponse) []string {
 		if v == nil {
@@ -12908,7 +12908,7 @@ func (o VlanMatchConditionResponsePtrOutput) VlanGroupNames() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of vlans that needs to be matched.
+// List of vlans that need to be matched.
 func (o VlanMatchConditionResponsePtrOutput) Vlans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VlanMatchConditionResponse) []string {
 		if v == nil {
