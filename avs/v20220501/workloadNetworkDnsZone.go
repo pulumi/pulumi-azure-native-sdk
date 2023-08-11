@@ -64,6 +64,9 @@ func NewWorkloadNetworkDnsZone(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20211201:WorkloadNetworkDnsZone"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkDnsZone"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource WorkloadNetworkDnsZone

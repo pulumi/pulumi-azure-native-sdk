@@ -12,28 +12,26 @@ import (
 )
 
 // Pool resource
-// Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2023-03-01-preview
+// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 1.x: 2023-03-01-preview
 type Pool struct {
 	pulumi.CustomResourceState
 
-	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For portable there can be many.
-	Assignments pulumi.StringArrayOutput `pulumi:"assignments"`
-	// Disk Pool Properties
-	DiskPoolProperties DiskPoolPropertiesResponsePtrOutput `pulumi:"diskPoolProperties"`
-	// Elastic San Pool Properties
-	ElasticSanPoolProperties ElasticSanPoolPropertiesResponseOutput `pulumi:"elasticSanPoolProperties"`
-	// Ephemeral Pool Properties
-	EphemeralPoolProperties EphemeralPoolPropertiesResponsePtrOutput `pulumi:"ephemeralPoolProperties"`
+	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
+	Assignments AssignmentResponseArrayOutput `pulumi:"assignments"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Initial capacity of the pool in GiB.
-	PoolCapacityGiB pulumi.Float64Output `pulumi:"poolCapacityGiB"`
-	// Type of the Pool: ephemeral, disk, managed, or elasticsan.
-	PoolType pulumi.Float64Output `pulumi:"poolType"`
+	// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
+	PoolType PoolTypeResponseOutput `pulumi:"poolType"`
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
+	ReclaimPolicy pulumi.StringPtrOutput `pulumi:"reclaimPolicy"`
+	// Resources represent the resources the pool should have.
+	Resources ResourcesResponsePtrOutput `pulumi:"resources"`
+	// The operational status of the resource
+	Status ResourceOperationalStatusResponseOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -51,33 +49,19 @@ func NewPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Assignments == nil {
-		return nil, errors.New("invalid value for required argument 'Assignments'")
-	}
-	if args.ElasticSanPoolProperties == nil {
-		return nil, errors.New("invalid value for required argument 'ElasticSanPoolProperties'")
-	}
-	if args.PoolCapacityGiB == nil {
-		return nil, errors.New("invalid value for required argument 'PoolCapacityGiB'")
-	}
 	if args.PoolType == nil {
 		return nil, errors.New("invalid value for required argument 'PoolType'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.Zones == nil {
-		return nil, errors.New("invalid value for required argument 'Zones'")
-	}
-	if args.DiskPoolProperties != nil {
-		args.DiskPoolProperties = args.DiskPoolProperties.ToDiskPoolPropertiesPtrOutput().ApplyT(func(v *DiskPoolProperties) *DiskPoolProperties { return v.Defaults() }).(DiskPoolPropertiesPtrOutput)
-	}
-	if args.EphemeralPoolProperties != nil {
-		args.EphemeralPoolProperties = args.EphemeralPoolProperties.ToEphemeralPoolPropertiesPtrOutput().ApplyT(func(v *EphemeralPoolProperties) *EphemeralPoolProperties { return v.Defaults() }).(EphemeralPoolPropertiesPtrOutput)
+	args.PoolType = args.PoolType.ToPoolTypeOutput().ApplyT(func(v PoolType) PoolType { return *v.Defaults() }).(PoolTypeOutput)
+	if args.Resources != nil {
+		args.Resources = args.Resources.ToResourcesPtrOutput().ApplyT(func(v *Resources) *Resources { return v.Defaults() }).(ResourcesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerstorage/v20230301preview:Pool"),
+			Type: pulumi.String("azure-native:containerstorage/v20230701preview:Pool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -113,24 +97,20 @@ func (PoolState) ElementType() reflect.Type {
 }
 
 type poolArgs struct {
-	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For portable there can be many.
-	Assignments []string `pulumi:"assignments"`
-	// Disk Pool Properties
-	DiskPoolProperties *DiskPoolProperties `pulumi:"diskPoolProperties"`
-	// Elastic San Pool Properties
-	ElasticSanPoolProperties ElasticSanPoolProperties `pulumi:"elasticSanPoolProperties"`
-	// Ephemeral Pool Properties
-	EphemeralPoolProperties *EphemeralPoolProperties `pulumi:"ephemeralPoolProperties"`
+	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
+	Assignments []Assignment `pulumi:"assignments"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Initial capacity of the pool in GiB.
-	PoolCapacityGiB float64 `pulumi:"poolCapacityGiB"`
 	// Pool Object
 	PoolName *string `pulumi:"poolName"`
-	// Type of the Pool: ephemeral, disk, managed, or elasticsan.
-	PoolType float64 `pulumi:"poolType"`
+	// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
+	PoolType PoolType `pulumi:"poolType"`
+	// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
+	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Resources represent the resources the pool should have.
+	Resources *Resources `pulumi:"resources"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// List of availability zones that resources can be created in.
@@ -139,24 +119,20 @@ type poolArgs struct {
 
 // The set of arguments for constructing a Pool resource.
 type PoolArgs struct {
-	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For portable there can be many.
-	Assignments pulumi.StringArrayInput
-	// Disk Pool Properties
-	DiskPoolProperties DiskPoolPropertiesPtrInput
-	// Elastic San Pool Properties
-	ElasticSanPoolProperties ElasticSanPoolPropertiesInput
-	// Ephemeral Pool Properties
-	EphemeralPoolProperties EphemeralPoolPropertiesPtrInput
+	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
+	Assignments AssignmentArrayInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Initial capacity of the pool in GiB.
-	PoolCapacityGiB pulumi.Float64Input
 	// Pool Object
 	PoolName pulumi.StringPtrInput
-	// Type of the Pool: ephemeral, disk, managed, or elasticsan.
-	PoolType pulumi.Float64Input
+	// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
+	PoolType PoolTypeInput
+	// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
+	ReclaimPolicy pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Resources represent the resources the pool should have.
+	Resources ResourcesPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// List of availability zones that resources can be created in.
@@ -200,24 +176,9 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
 }
 
-// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For portable there can be many.
-func (o PoolOutput) Assignments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Pool) pulumi.StringArrayOutput { return v.Assignments }).(pulumi.StringArrayOutput)
-}
-
-// Disk Pool Properties
-func (o PoolOutput) DiskPoolProperties() DiskPoolPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *Pool) DiskPoolPropertiesResponsePtrOutput { return v.DiskPoolProperties }).(DiskPoolPropertiesResponsePtrOutput)
-}
-
-// Elastic San Pool Properties
-func (o PoolOutput) ElasticSanPoolProperties() ElasticSanPoolPropertiesResponseOutput {
-	return o.ApplyT(func(v *Pool) ElasticSanPoolPropertiesResponseOutput { return v.ElasticSanPoolProperties }).(ElasticSanPoolPropertiesResponseOutput)
-}
-
-// Ephemeral Pool Properties
-func (o PoolOutput) EphemeralPoolProperties() EphemeralPoolPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *Pool) EphemeralPoolPropertiesResponsePtrOutput { return v.EphemeralPoolProperties }).(EphemeralPoolPropertiesResponsePtrOutput)
+// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
+func (o PoolOutput) Assignments() AssignmentResponseArrayOutput {
+	return o.ApplyT(func(v *Pool) AssignmentResponseArrayOutput { return v.Assignments }).(AssignmentResponseArrayOutput)
 }
 
 // The geo-location where the resource lives
@@ -230,19 +191,29 @@ func (o PoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Initial capacity of the pool in GiB.
-func (o PoolOutput) PoolCapacityGiB() pulumi.Float64Output {
-	return o.ApplyT(func(v *Pool) pulumi.Float64Output { return v.PoolCapacityGiB }).(pulumi.Float64Output)
-}
-
-// Type of the Pool: ephemeral, disk, managed, or elasticsan.
-func (o PoolOutput) PoolType() pulumi.Float64Output {
-	return o.ApplyT(func(v *Pool) pulumi.Float64Output { return v.PoolType }).(pulumi.Float64Output)
+// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
+func (o PoolOutput) PoolType() PoolTypeResponseOutput {
+	return o.ApplyT(func(v *Pool) PoolTypeResponseOutput { return v.PoolType }).(PoolTypeResponseOutput)
 }
 
 // The status of the last operation.
 func (o PoolOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
+func (o PoolOutput) ReclaimPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Resources represent the resources the pool should have.
+func (o PoolOutput) Resources() ResourcesResponsePtrOutput {
+	return o.ApplyT(func(v *Pool) ResourcesResponsePtrOutput { return v.Resources }).(ResourcesResponsePtrOutput)
+}
+
+// The operational status of the resource
+func (o PoolOutput) Status() ResourceOperationalStatusResponseOutput {
+	return o.ApplyT(func(v *Pool) ResourceOperationalStatusResponseOutput { return v.Status }).(ResourceOperationalStatusResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

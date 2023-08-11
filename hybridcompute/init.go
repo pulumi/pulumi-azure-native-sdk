@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Machine{}
 	case "azure-native:hybridcompute:MachineExtension":
 		r = &MachineExtension{}
-	case "azure-native:hybridcompute:MachineRunCommand":
-		r = &MachineRunCommand{}
 	case "azure-native:hybridcompute:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:hybridcompute:PrivateLinkScope":

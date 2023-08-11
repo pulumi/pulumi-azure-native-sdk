@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Pool
-// Azure REST API version: 2023-03-01-preview.
+// Azure REST API version: 2023-07-01-preview.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:containerstorage:getPool", args, &rv, opts...)
@@ -30,26 +30,24 @@ type LookupPoolArgs struct {
 
 // Pool resource
 type LookupPoolResult struct {
-	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For portable there can be many.
-	Assignments []string `pulumi:"assignments"`
-	// Disk Pool Properties
-	DiskPoolProperties *DiskPoolPropertiesResponse `pulumi:"diskPoolProperties"`
-	// Elastic San Pool Properties
-	ElasticSanPoolProperties ElasticSanPoolPropertiesResponse `pulumi:"elasticSanPoolProperties"`
-	// Ephemeral Pool Properties
-	EphemeralPoolProperties *EphemeralPoolPropertiesResponse `pulumi:"ephemeralPoolProperties"`
+	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
+	Assignments []AssignmentResponse `pulumi:"assignments"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Initial capacity of the pool in GiB.
-	PoolCapacityGiB float64 `pulumi:"poolCapacityGiB"`
-	// Type of the Pool: ephemeral, disk, managed, or elasticsan.
-	PoolType float64 `pulumi:"poolType"`
+	// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
+	PoolType PoolTypeResponse `pulumi:"poolType"`
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
+	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
+	// Resources represent the resources the pool should have.
+	Resources *ResourcesResponse `pulumi:"resources"`
+	// The operational status of the resource
+	Status ResourceOperationalStatusResponse `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -66,9 +64,9 @@ func (val *LookupPoolResult) Defaults() *LookupPoolResult {
 		return nil
 	}
 	tmp := *val
-	tmp.DiskPoolProperties = tmp.DiskPoolProperties.Defaults()
+	tmp.PoolType = *tmp.PoolType.Defaults()
 
-	tmp.EphemeralPoolProperties = tmp.EphemeralPoolProperties.Defaults()
+	tmp.Resources = tmp.Resources.Defaults()
 
 	return &tmp
 }
@@ -112,24 +110,9 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.
 	return o
 }
 
-// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For portable there can be many.
-func (o LookupPoolResultOutput) Assignments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupPoolResult) []string { return v.Assignments }).(pulumi.StringArrayOutput)
-}
-
-// Disk Pool Properties
-func (o LookupPoolResultOutput) DiskPoolProperties() DiskPoolPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupPoolResult) *DiskPoolPropertiesResponse { return v.DiskPoolProperties }).(DiskPoolPropertiesResponsePtrOutput)
-}
-
-// Elastic San Pool Properties
-func (o LookupPoolResultOutput) ElasticSanPoolProperties() ElasticSanPoolPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupPoolResult) ElasticSanPoolPropertiesResponse { return v.ElasticSanPoolProperties }).(ElasticSanPoolPropertiesResponseOutput)
-}
-
-// Ephemeral Pool Properties
-func (o LookupPoolResultOutput) EphemeralPoolProperties() EphemeralPoolPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupPoolResult) *EphemeralPoolPropertiesResponse { return v.EphemeralPoolProperties }).(EphemeralPoolPropertiesResponsePtrOutput)
+// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
+func (o LookupPoolResultOutput) Assignments() AssignmentResponseArrayOutput {
+	return o.ApplyT(func(v LookupPoolResult) []AssignmentResponse { return v.Assignments }).(AssignmentResponseArrayOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -147,19 +130,29 @@ func (o LookupPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Initial capacity of the pool in GiB.
-func (o LookupPoolResultOutput) PoolCapacityGiB() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupPoolResult) float64 { return v.PoolCapacityGiB }).(pulumi.Float64Output)
-}
-
-// Type of the Pool: ephemeral, disk, managed, or elasticsan.
-func (o LookupPoolResultOutput) PoolType() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupPoolResult) float64 { return v.PoolType }).(pulumi.Float64Output)
+// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
+func (o LookupPoolResultOutput) PoolType() PoolTypeResponseOutput {
+	return o.ApplyT(func(v LookupPoolResult) PoolTypeResponse { return v.PoolType }).(PoolTypeResponseOutput)
 }
 
 // The status of the last operation.
 func (o LookupPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
+func (o LookupPoolResultOutput) ReclaimPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPoolResult) *string { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Resources represent the resources the pool should have.
+func (o LookupPoolResultOutput) Resources() ResourcesResponsePtrOutput {
+	return o.ApplyT(func(v LookupPoolResult) *ResourcesResponse { return v.Resources }).(ResourcesResponsePtrOutput)
+}
+
+// The operational status of the resource
+func (o LookupPoolResultOutput) Status() ResourceOperationalStatusResponseOutput {
+	return o.ApplyT(func(v LookupPoolResult) ResourceOperationalStatusResponse { return v.Status }).(ResourceOperationalStatusResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

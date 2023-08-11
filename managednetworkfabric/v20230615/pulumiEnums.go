@@ -44,7 +44,7 @@ const (
 	BooleanEnumPropertyFalse = BooleanEnumProperty("False")
 )
 
-// Action to be taken on the configuration. Example: Permit | Deny.
+// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
 type CommunityActionTypes string
 
 const (
@@ -86,7 +86,7 @@ const (
 	EncapsulationGRE  = Encapsulation("GRE")
 )
 
-// Encapsulation Type.
+// Encapsulation Type that needs to be matched.
 type EncapsulationType string
 
 const (
@@ -200,7 +200,7 @@ const (
 	PortTypeDestinationPort = PortType("DestinationPort")
 )
 
-// IP Prefix Type.
+// IP Prefix Type that needs to be matched.
 type PrefixType string
 
 const (
@@ -241,7 +241,7 @@ const (
 	RoutePolicyConditionTypeAnd = RoutePolicyConditionType("And")
 )
 
-// IP Address type.
+// IP Address type that needs to be matched.
 type SourceDestinationType string
 
 const (

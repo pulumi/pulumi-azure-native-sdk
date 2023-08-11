@@ -48,6 +48,9 @@ func NewCloudLink(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20211201:CloudLink"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230301:CloudLink"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CloudLink

@@ -12,7 +12,7 @@ import (
 )
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
-// Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2023-03-01-preview
+// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 1.x: 2023-03-01-preview
 type Volume struct {
 	pulumi.CustomResourceState
 
@@ -20,20 +20,18 @@ type Volume struct {
 	CapacityGiB pulumi.Float64Output `pulumi:"capacityGiB"`
 	// String KV pairs indicating labels
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// List of string mount options
-	MountOptions pulumi.StringArrayOutput `pulumi:"mountOptions"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Reclaim Policy, Delete or Retain
-	ReclaimPolicy pulumi.StringOutput `pulumi:"reclaimPolicy"`
+	// The status of the resource.
+	Status ResourceOperationalStatusResponseOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Indicates how the volume should be attached
-	VolumeMode pulumi.StringOutput `pulumi:"volumeMode"`
+	// Properties of the volume
+	VolumeType VolumeTypeResponseOutput `pulumi:"volumeType"`
 }
 
 // NewVolume registers a new resource with the given unique name, arguments, and options.
@@ -49,24 +47,15 @@ func NewVolume(ctx *pulumi.Context,
 	if args.Labels == nil {
 		return nil, errors.New("invalid value for required argument 'Labels'")
 	}
-	if args.MountOptions == nil {
-		return nil, errors.New("invalid value for required argument 'MountOptions'")
-	}
 	if args.PoolName == nil {
 		return nil, errors.New("invalid value for required argument 'PoolName'")
-	}
-	if args.ReclaimPolicy == nil {
-		return nil, errors.New("invalid value for required argument 'ReclaimPolicy'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.VolumeMode == nil {
-		return nil, errors.New("invalid value for required argument 'VolumeMode'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerstorage/v20230301preview:Volume"),
+			Type: pulumi.String("azure-native:containerstorage/v20230701preview:Volume"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -106,16 +95,10 @@ type volumeArgs struct {
 	CapacityGiB float64 `pulumi:"capacityGiB"`
 	// String KV pairs indicating labels
 	Labels map[string]string `pulumi:"labels"`
-	// List of string mount options
-	MountOptions []string `pulumi:"mountOptions"`
 	// Pool Object
 	PoolName string `pulumi:"poolName"`
-	// Reclaim Policy, Delete or Retain
-	ReclaimPolicy string `pulumi:"reclaimPolicy"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Indicates how the volume should be attached
-	VolumeMode string `pulumi:"volumeMode"`
 	// Volume Resource
 	VolumeName *string `pulumi:"volumeName"`
 }
@@ -126,16 +109,10 @@ type VolumeArgs struct {
 	CapacityGiB pulumi.Float64Input
 	// String KV pairs indicating labels
 	Labels pulumi.StringMapInput
-	// List of string mount options
-	MountOptions pulumi.StringArrayInput
 	// Pool Object
 	PoolName pulumi.StringInput
-	// Reclaim Policy, Delete or Retain
-	ReclaimPolicy pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Indicates how the volume should be attached
-	VolumeMode pulumi.StringInput
 	// Volume Resource
 	VolumeName pulumi.StringPtrInput
 }
@@ -187,11 +164,6 @@ func (o VolumeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// List of string mount options
-func (o VolumeOutput) MountOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.MountOptions }).(pulumi.StringArrayOutput)
-}
-
 // The name of the resource
 func (o VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -202,9 +174,9 @@ func (o VolumeOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Reclaim Policy, Delete or Retain
-func (o VolumeOutput) ReclaimPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ReclaimPolicy }).(pulumi.StringOutput)
+// The status of the resource.
+func (o VolumeOutput) Status() ResourceOperationalStatusResponseOutput {
+	return o.ApplyT(func(v *Volume) ResourceOperationalStatusResponseOutput { return v.Status }).(ResourceOperationalStatusResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -217,9 +189,9 @@ func (o VolumeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates how the volume should be attached
-func (o VolumeOutput) VolumeMode() pulumi.StringOutput {
-	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.VolumeMode }).(pulumi.StringOutput)
+// Properties of the volume
+func (o VolumeOutput) VolumeType() VolumeTypeResponseOutput {
+	return o.ApplyT(func(v *Volume) VolumeTypeResponseOutput { return v.VolumeType }).(VolumeTypeResponseOutput)
 }
 
 func init() {

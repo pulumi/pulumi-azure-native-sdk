@@ -62,6 +62,9 @@ func NewGlobalReachConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20211201:GlobalReachConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230301:GlobalReachConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource GlobalReachConnection

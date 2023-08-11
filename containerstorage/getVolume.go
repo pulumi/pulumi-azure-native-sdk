@@ -11,7 +11,7 @@ import (
 )
 
 // Get a Volume
-// Azure REST API version: 2023-03-01-preview.
+// Azure REST API version: 2023-07-01-preview.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:containerstorage:getVolume", args, &rv, opts...)
@@ -38,20 +38,18 @@ type LookupVolumeResult struct {
 	Id string `pulumi:"id"`
 	// String KV pairs indicating labels
 	Labels map[string]string `pulumi:"labels"`
-	// List of string mount options
-	MountOptions []string `pulumi:"mountOptions"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Reclaim Policy, Delete or Retain
-	ReclaimPolicy string `pulumi:"reclaimPolicy"`
+	// The status of the resource.
+	Status ResourceOperationalStatusResponse `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Indicates how the volume should be attached
-	VolumeMode string `pulumi:"volumeMode"`
+	// Properties of the volume
+	VolumeType VolumeTypeResponse `pulumi:"volumeType"`
 }
 
 func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeResultOutput {
@@ -110,11 +108,6 @@ func (o LookupVolumeResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVolumeResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// List of string mount options
-func (o LookupVolumeResultOutput) MountOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupVolumeResult) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
-}
-
 // The name of the resource
 func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
@@ -125,9 +118,9 @@ func (o LookupVolumeResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Reclaim Policy, Delete or Retain
-func (o LookupVolumeResultOutput) ReclaimPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVolumeResult) string { return v.ReclaimPolicy }).(pulumi.StringOutput)
+// The status of the resource.
+func (o LookupVolumeResultOutput) Status() ResourceOperationalStatusResponseOutput {
+	return o.ApplyT(func(v LookupVolumeResult) ResourceOperationalStatusResponse { return v.Status }).(ResourceOperationalStatusResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -140,9 +133,9 @@ func (o LookupVolumeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates how the volume should be attached
-func (o LookupVolumeResultOutput) VolumeMode() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVolumeResult) string { return v.VolumeMode }).(pulumi.StringOutput)
+// Properties of the volume
+func (o LookupVolumeResultOutput) VolumeType() VolumeTypeResponseOutput {
+	return o.ApplyT(func(v LookupVolumeResult) VolumeTypeResponse { return v.VolumeType }).(VolumeTypeResponseOutput)
 }
 
 func init() {

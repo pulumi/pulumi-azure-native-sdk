@@ -46,6 +46,9 @@ func NewPlacementPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20211201:PlacementPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230301:PlacementPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PlacementPolicy

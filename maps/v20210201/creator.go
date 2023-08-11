@@ -56,6 +56,9 @@ func NewCreator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:maps/v20211201preview:Creator"),
 		},
+		{
+			Type: pulumi.String("azure-native:maps/v20230601:Creator"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Creator

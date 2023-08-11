@@ -37,6 +37,8 @@ type LookupRoutePolicyResult struct {
 	Annotation *string `pulumi:"annotation"`
 	// Configuration state of the resource.
 	ConfigurationState string `pulumi:"configurationState"`
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction *string `pulumi:"defaultAction"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -66,6 +68,10 @@ func (val *LookupRoutePolicyResult) Defaults() *LookupRoutePolicyResult {
 	if tmp.AddressFamilyType == nil {
 		addressFamilyType_ := "IPv4"
 		tmp.AddressFamilyType = &addressFamilyType_
+	}
+	if tmp.DefaultAction == nil {
+		defaultAction_ := "Deny"
+		tmp.DefaultAction = &defaultAction_
 	}
 	return &tmp
 }
@@ -127,6 +133,11 @@ func (o LookupRoutePolicyResultOutput) Annotation() pulumi.StringPtrOutput {
 // Configuration state of the resource.
 func (o LookupRoutePolicyResultOutput) ConfigurationState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutePolicyResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+func (o LookupRoutePolicyResultOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRoutePolicyResult) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

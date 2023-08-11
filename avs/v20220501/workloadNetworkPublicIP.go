@@ -52,6 +52,9 @@ func NewWorkloadNetworkPublicIP(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20211201:WorkloadNetworkPublicIP"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkPublicIP"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource WorkloadNetworkPublicIP

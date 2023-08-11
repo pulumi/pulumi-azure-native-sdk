@@ -5732,7 +5732,7 @@ type ClusterResourcePropertiesResponse struct {
 	PowerState string `pulumi:"powerState"`
 	// Provisioning state of the Service
 	ProvisioningState string `pulumi:"provisioningState"`
-	// ServiceInstanceEntity GUID which uniquely identifies a created resource
+	// ServiceInstanceEntity Id which uniquely identifies a created resource
 	ServiceId string `pulumi:"serviceId"`
 	// Version of the Service
 	Version int `pulumi:"version"`
@@ -5806,7 +5806,7 @@ func (o ClusterResourcePropertiesResponseOutput) ProvisioningState() pulumi.Stri
 	return o.ApplyT(func(v ClusterResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// ServiceInstanceEntity GUID which uniquely identifies a created resource
+// ServiceInstanceEntity Id which uniquely identifies a created resource
 func (o ClusterResourcePropertiesResponseOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterResourcePropertiesResponse) string { return v.ServiceId }).(pulumi.StringOutput)
 }
@@ -10427,6 +10427,64 @@ func (o DeploymentSettingsResponsePtrOutput) TerminationGracePeriodSeconds() pul
 	}).(pulumi.IntPtrOutput)
 }
 
+type DevToolPortalComponentResponse struct {
+	// Collection of instances belong to Dev Tool Portal.
+	Instances []DevToolPortalInstanceResponse `pulumi:"instances"`
+	Name      string                          `pulumi:"name"`
+	// The requested resource quantity for required CPU and Memory.
+	ResourceRequests DevToolPortalResourceRequestsResponse `pulumi:"resourceRequests"`
+}
+
+type DevToolPortalComponentResponseOutput struct{ *pulumi.OutputState }
+
+func (DevToolPortalComponentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevToolPortalComponentResponse)(nil)).Elem()
+}
+
+func (o DevToolPortalComponentResponseOutput) ToDevToolPortalComponentResponseOutput() DevToolPortalComponentResponseOutput {
+	return o
+}
+
+func (o DevToolPortalComponentResponseOutput) ToDevToolPortalComponentResponseOutputWithContext(ctx context.Context) DevToolPortalComponentResponseOutput {
+	return o
+}
+
+// Collection of instances belong to Dev Tool Portal.
+func (o DevToolPortalComponentResponseOutput) Instances() DevToolPortalInstanceResponseArrayOutput {
+	return o.ApplyT(func(v DevToolPortalComponentResponse) []DevToolPortalInstanceResponse { return v.Instances }).(DevToolPortalInstanceResponseArrayOutput)
+}
+
+func (o DevToolPortalComponentResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DevToolPortalComponentResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The requested resource quantity for required CPU and Memory.
+func (o DevToolPortalComponentResponseOutput) ResourceRequests() DevToolPortalResourceRequestsResponseOutput {
+	return o.ApplyT(func(v DevToolPortalComponentResponse) DevToolPortalResourceRequestsResponse {
+		return v.ResourceRequests
+	}).(DevToolPortalResourceRequestsResponseOutput)
+}
+
+type DevToolPortalComponentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DevToolPortalComponentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevToolPortalComponentResponse)(nil)).Elem()
+}
+
+func (o DevToolPortalComponentResponseArrayOutput) ToDevToolPortalComponentResponseArrayOutput() DevToolPortalComponentResponseArrayOutput {
+	return o
+}
+
+func (o DevToolPortalComponentResponseArrayOutput) ToDevToolPortalComponentResponseArrayOutputWithContext(ctx context.Context) DevToolPortalComponentResponseArrayOutput {
+	return o
+}
+
+func (o DevToolPortalComponentResponseArrayOutput) Index(i pulumi.IntInput) DevToolPortalComponentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevToolPortalComponentResponse {
+		return vs[0].([]DevToolPortalComponentResponse)[vs[1].(int)]
+	}).(DevToolPortalComponentResponseOutput)
+}
+
 // Detail settings for Dev Tool Portal feature
 type DevToolPortalFeatureDetail struct {
 	// State of the plugin
@@ -11216,16 +11274,14 @@ func (o DevToolPortalPropertiesPtrOutput) SsoProperties() DevToolPortalSsoProper
 
 // Dev Tool Portal properties payload
 type DevToolPortalPropertiesResponse struct {
+	// Collection of components belong to Dev Tool Portal.
+	Components []DevToolPortalComponentResponse `pulumi:"components"`
 	// Settings for Dev Tool Portal
 	Features *DevToolPortalFeatureSettingsResponse `pulumi:"features"`
-	// Collection of instances belong to Dev Tool Portal.
-	Instances []DevToolPortalInstanceResponse `pulumi:"instances"`
 	// State of the Dev Tool Portal.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Indicates whether the resource exposes public endpoint
 	Public *bool `pulumi:"public"`
-	// The requested resource quantity for required CPU and Memory.
-	ResourceRequests DevToolPortalResourceRequestsResponse `pulumi:"resourceRequests"`
 	// Single sign-on related configuration
 	SsoProperties *DevToolPortalSsoPropertiesResponse `pulumi:"ssoProperties"`
 	// URL of the resource, exposed when 'public' is true.
@@ -11262,14 +11318,14 @@ func (o DevToolPortalPropertiesResponseOutput) ToDevToolPortalPropertiesResponse
 	return o
 }
 
+// Collection of components belong to Dev Tool Portal.
+func (o DevToolPortalPropertiesResponseOutput) Components() DevToolPortalComponentResponseArrayOutput {
+	return o.ApplyT(func(v DevToolPortalPropertiesResponse) []DevToolPortalComponentResponse { return v.Components }).(DevToolPortalComponentResponseArrayOutput)
+}
+
 // Settings for Dev Tool Portal
 func (o DevToolPortalPropertiesResponseOutput) Features() DevToolPortalFeatureSettingsResponsePtrOutput {
 	return o.ApplyT(func(v DevToolPortalPropertiesResponse) *DevToolPortalFeatureSettingsResponse { return v.Features }).(DevToolPortalFeatureSettingsResponsePtrOutput)
-}
-
-// Collection of instances belong to Dev Tool Portal.
-func (o DevToolPortalPropertiesResponseOutput) Instances() DevToolPortalInstanceResponseArrayOutput {
-	return o.ApplyT(func(v DevToolPortalPropertiesResponse) []DevToolPortalInstanceResponse { return v.Instances }).(DevToolPortalInstanceResponseArrayOutput)
 }
 
 // State of the Dev Tool Portal.
@@ -11280,13 +11336,6 @@ func (o DevToolPortalPropertiesResponseOutput) ProvisioningState() pulumi.String
 // Indicates whether the resource exposes public endpoint
 func (o DevToolPortalPropertiesResponseOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevToolPortalPropertiesResponse) *bool { return v.Public }).(pulumi.BoolPtrOutput)
-}
-
-// The requested resource quantity for required CPU and Memory.
-func (o DevToolPortalPropertiesResponseOutput) ResourceRequests() DevToolPortalResourceRequestsResponseOutput {
-	return o.ApplyT(func(v DevToolPortalPropertiesResponse) DevToolPortalResourceRequestsResponse {
-		return v.ResourceRequests
-	}).(DevToolPortalResourceRequestsResponseOutput)
 }
 
 // Single sign-on related configuration
@@ -22620,6 +22669,8 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentSettingsResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DevToolPortalComponentResponseOutput{})
+	pulumi.RegisterOutputType(DevToolPortalComponentResponseArrayOutput{})
 	pulumi.RegisterOutputType(DevToolPortalFeatureDetailOutput{})
 	pulumi.RegisterOutputType(DevToolPortalFeatureDetailPtrOutput{})
 	pulumi.RegisterOutputType(DevToolPortalFeatureDetailResponseOutput{})

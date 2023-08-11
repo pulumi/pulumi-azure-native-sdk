@@ -442,6 +442,14 @@ const (
 	ScalingHostPoolTypePooled = ScalingHostPoolType("Pooled")
 )
 
+// Action to be taken after a logoff during the ramp up period.
+type SessionHandlingOperation string
+
+const (
+	SessionHandlingOperationNone       = SessionHandlingOperation("None")
+	SessionHandlingOperationDeallocate = SessionHandlingOperation("Deallocate")
+)
+
 // The type of maintenance for session host components.
 type SessionHostComponentUpdateType string
 
@@ -458,6 +466,14 @@ type SessionHostLoadBalancingAlgorithm string
 const (
 	SessionHostLoadBalancingAlgorithmBreadthFirst = SessionHostLoadBalancingAlgorithm("BreadthFirst")
 	SessionHostLoadBalancingAlgorithmDepthFirst   = SessionHostLoadBalancingAlgorithm("DepthFirst")
+)
+
+// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
+type SetStartVMOnConnect string
+
+const (
+	SetStartVMOnConnectEnable  = SetStartVMOnConnect("Enable")
+	SetStartVMOnConnectDisable = SetStartVMOnConnect("Disable")
 )
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -626,6 +642,18 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
+
+// The desired startup behavior during the ramp up period for personal vms in the hostpool.
+type StartupBehavior string
+
+const (
+	// Session hosts will not be started by the service. This setting depends on Start VM on Connect to be enabled to start the session hosts.
+	StartupBehaviorNone = StartupBehavior("None")
+	// Session hosts with an assigned user will be started during Ramp Up
+	StartupBehaviorWithAssignedUser = StartupBehavior("WithAssignedUser")
+	// All personal session hosts in the hostpool will be started during ramp up.
+	StartupBehaviorAll = StartupBehavior("All")
+)
 
 // Specifies when to stop hosts during ramp down period.
 type StopHostsWhen string
